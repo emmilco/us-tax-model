@@ -105,11 +105,11 @@
   },
   {
     "id": "fw2",
-    "url": "https://www.irs.gov/pub/irs-pdf/fw2.pdf"
+    "url": "https://www.irs.gov/pub/irs-prior/fw2--2025.pdf"
   },
   {
     "id": "iw2w3",
-    "url": "https://www.irs.gov/pub/irs-pdf/iw2w3.pdf"
+    "url": "https://www.irs.gov/pub/irs-prior/iw2w3--2025.pdf"
   },
   {
     "id": "f1099int",
@@ -120,7 +120,11 @@
     "url": "https://www.irs.gov/pub/irs-pdf/f1099div.pdf"
   },
   {
-    "id": "i1099id",
-    "url": "https://www.irs.gov/pub/irs-pdf/i1099id.pdf"
+    "id": "i1099int",
+    "url": "https://www.irs.gov/pub/irs-pdf/i1099int.pdf"
+  },
+  {
+    "id": "i1099div",
+    "url": "https://www.irs.gov/pub/irs-pdf/i1099div.pdf"
   }
 ]
