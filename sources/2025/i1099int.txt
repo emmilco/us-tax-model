@@ -1,0 +1,578 @@
+Instructions for Forms
+                                                                                                         Department of the Treasury
+                                                                                                         Internal Revenue Service
+
+1099-INT and 1099-OID
+(Rev. January 2024)
+Interest Income and Original Issue Discount
+Section references are to the Internal Revenue Code unless                 1. To whom you paid amounts reportable in boxes 1, 3, or 8
+otherwise noted.                                                       of at least $10 (or at least $600 of interest paid in the course of
+                                                                       your trade or business described in the instructions for Box 1.
+Future Developments                                                    Interest Income, later);
+For the latest information about developments related to Forms             2. For whom you withheld and paid any foreign tax on
+1099-INT and 1099-OID and their instructions, such as                  interest; or
+legislation enacted after they were published, go to IRS.gov/              3. From whom you withheld (and did not refund) any federal
+Form1099INT and IRS.gov/Form1099OID.                                   income tax under the backup withholding rules regardless of the
+Reminders                                                              amount of the payment.
+
+In addition to these specific instructions, you should also use the       Report only interest payments made in the course of your
+current General Instructions for Certain Information Returns.          trade or business including federal, state, and local government
+Those general instructions include information about the               agencies and activities deemed nonprofit, or for which you were
+following topics.                                                      a nominee/middleman. Report interest that is taxable OID in
+• Who must file.                                                       box 1 or 8 of Form 1099-OID, Original Issue Discount, not on
+• When and where to file.                                              Form 1099-INT. Report interest that is tax-exempt OID in box 11
+• Electronic reporting.                                                of Form 1099-OID, not on Form 1099-INT. Report
+• Corrected and void returns.                                          exempt-interest dividends from a mutual fund or other regulated
+• Statements to recipients.                                            investment company (RIC) on Form 1099-DIV.
+• Taxpayer identification numbers (TINs).                                 For a specified private activity bond with OID, report the
+• Backup withholding.                                                  tax-exempt OID in box 11 on Form 1099-OID, and the
+• Penalties.                                                           tax-exempt stated interest in boxes 8 and 9 on Form 1099-INT.
+• The definitions of terms applicable for chapter 4 purposes that
+are referenced in these instructions.                                  Exceptions to reporting. No Form 1099-INT must be filed for
+• Other general topics.                                                payments made to exempt recipients or for interest excluded
+                                                                       from reporting.
+   You can get the General Instructions for Certain Information            Exempt recipients. You are not required to file Form
+Returns at IRS.gov/1099GeneralInstructions, or go to IRS.gov/          1099-INT for payments made to certain payees including, but not
+Form1099INT or IRS.gov/Form1099OID.                                    limited to, a corporation, a tax-exempt organization, any
+Online fillable Copies 1, B, and 2. To ease statement                  individual retirement arrangement (IRA), Archer medical savings
+furnishing requirements, Copies 1, B, and 2 are fillable online in     account (MSA), Medicare Advantage MSA, health savings
+a PDF format available at IRS.gov/Form1099INT and IRS.gov/             account (HSA), a U.S. agency, a state, the District of Columbia, a
+Form1099OID. You can complete these copies online for                  U.S. territory, a registered securities or commodities dealer, a
+furnishing statements to recipients and for retaining in your own      nominee or custodian, a broker, or notional principal contract
+files.                                                                 (swap) dealer. For additional exempt recipients, see Regulations
+                                                                       section 1.6049-4 for more information. For situations when you
+Continuous-use forms and instructions. Form 1099-INT,                  are required to file Form 1099-INT for certain recipients that are
+Form 1099-OID, and these instructions, contained herein, are           otherwise generally exempt, but that receive credits from tax
+continuous use. Both the forms and instructions will be updated        credit bonds, see Interest to holders of tax credit bonds under
+as needed. For the most recent version, go to IRS.gov/                 Box 1. Interest Income, later.
+Form1099INT or IRS.gov/Form1099OID.
+                                                                           Interest excluded from reporting. You are not required to
+Nonresident aliens. If you pay U.S. bank deposit interest of at        file Form 1099-INT for interest on an obligation issued by an
+least $10 to certain nonresident alien individuals, report the         individual, interest on amounts from sources outside the United
+interest on Form 1042-S, Foreign Person's U.S. Source Income           States paid outside the United States by a non-U.S. payer or
+Subject to Withholding. To determine whether an information            non-U.S. middleman, certain portfolio interest, interest on an
+return is required for original issue discount, see Regulations        obligation issued by an international organization and paid by
+sections 1.6049-4(d)(2), 1.6049-5(f) and 1.6049-8(a). This             that organization, and payments made to a foreign beneficial
+interest may be subject to backup withholding. See the                 owner or foreign payee. See Regulations section 1.6049-5 for
+Instructions for Form 1042-S. Also, see Rev. Proc. 2012-24,            more information.
+2012-20 I.R.B. 913, available at IRS.gov/irb/                              Other exception. Do not report tax-deferred interest, such as
+2012-20_IRB#RP-2012-24.                                                interest that is earned but not distributed from an IRA.
+                                                                       When is a payment made? Generally, interest is paid when it
+Specific Instructions for Form                                         is credited or set apart for a person without any substantial
+                                                                       limitation or restriction as to the time, manner, or condition of
+1099-INT                                                               payment. The interest must be made available so that it may be
+Note. For the most recent version, go to IRS.gov/Form1099INT.          drawn on at any time and its receipt brought within the control
+  File Form 1099-INT, Interest Income, for each person:                and disposition of the person.
+
+
+
+Nov 2, 2023                                                   Cat. No. 27980N
+    For payments made on obligations subject to transactional         recipient’s TIN (social security number (SSN), individual
+reporting (for example, U.S. Savings Bonds, interest coupons,         taxpayer identification number (ITIN), adoption taxpayer
+and other demand obligations), interest is paid at the time the       identification number (ATIN), or employer identification number
+obligation is presented for payment. For example, interest on a       (EIN)) on payee statements. Truncation is not allowed on any
+coupon detached from a bond is paid when it is presented for          documents the filer files with the IRS. A payer's TIN may not be
+payment.                                                              truncated on any form. See part J in the current General
+    For rules regarding when interest earned by a trust interest      Instructions for Certain Information Returns.
+holder (TIH) in a widely held fixed investment trust (WHFIT) is       Account number. The account number is required if you have
+reportable, see Regulations section 1.671-5.                          multiple accounts for a recipient for whom you are filing more
+    A credit allowed from tax credit bonds reportable on Form         than one Form 1099-INT. The account number is also required if
+1099-INT is treated as paid on the credit allowance date. For         you check the “FATCA filing requirement” box. See FATCA filing
+information on credit allowance dates, see Interest to holders of     requirement checkbox, later. Additionally, the IRS encourages
+tax credit bonds under Box 1. Interest Income, later.                 you to designate an account number for all Forms 1099-INT that
+                                                                      you file. See part L in the current General Instructions for Certain
+Reporting interest and OID. If you are reporting qualified            Information Returns.
+stated interest and OID on any obligation that is not a specified
+private activity bond, you may report both the qualified stated       FATCA filing requirement checkbox. Check the box if you are
+interest and the OID on Form 1099-OID. It is not necessary to file    a U.S. payer that is reporting on Form(s) 1099 (including
+both Forms 1099-INT and 1099-OID. On Form 1099-OID, report            reporting payments in boxes 1, 3, 8, 9, and 10 on this Form
+the qualified stated interest in box 2 and the OID in box 1, 8, or    1099-INT) as part of satisfying your requirement to report with
+11, as applicable. However, you may choose to report the              respect to a U.S. account for chapter 4 purposes, as described
+qualified stated interest on Form 1099-INT and the OID on Form        in Regulations section 1.1471-4(d)(2)(iii)(A). In addition, check
+1099-OID. For a specified private activity bond with OID, report      the box if you are a foreign financial institution (FFI) reporting
+the tax-exempt OID in box 11 on Form 1099-OID and the                 payments to a U.S. account pursuant to an election described in
+tax-exempt stated interest in boxes 8 and 9 on Form 1099-INT.         Regulations section 1.1471-4(d)(5)(i)(A).
+Reporting interest and bond premium. For a covered                    2nd TIN not. You may enter an “X” in this box if you were
+security acquired with bond premium, you must report the              notified by the IRS twice within 3 calendar years that the payee
+amount of bond premium amortization for the tax year. See             provided an incorrect TIN. If you mark this box, the IRS will not
+Regulations section 1.6045-1(a)(15) to determine if a debt            send you any further notices about this account.
+instrument is a covered security. However, in the case of a               However, if you received both IRS notices in the same year, or
+taxable bond, if you have been notified by the taxpayer that the      if you received them in different years but they both related to
+taxpayer does not elect to amortize bond premium, you must not        information returns filed for the same year, do not check the box
+report any amount of bond premium amortization. See                   at this time. For purposes of the two-notices-in-3-years rule, you
+Regulations section 1.6045-1(n)(5).                                   are considered to have received one notice and you are not
+    For a covered security acquired with OID and bond premium,        required to send a second “B” notice to the taxpayer on receipt of
+if you choose to report qualified stated interest in box 2 of Form    the second notice. See part N in the current General Instructions
+1099-OID, you must report any bond premium amortization on            for Certain Information Returns for more information.
+that security in box 10 of Form 1099-OID. You may not report the              For information on the TIN Matching System offered by
+qualified stated interest on Form 1099-OID and the bond
+                                                                       TIP the IRS, see Items You Should Note in the current
+premium amortization allocable to the interest on Form                        General Instructions for Certain Information Returns.
+1099-INT.
+    If you are required to report the amount of bond premium          Payer's RTN (optional). If you are a financial institution that
+amortization allocable to an interest payment, you may report         wishes to participate in the program for direct deposit of refunds,
+either (1) a net amount of interest that reflects the offset of the   you may enter your routing transit number (RTN).
+interest payment by the amount of bond premium amortization
+allocable to the interest payment, or (2) a gross amount for both     Box 1. Interest Income
+the interest payment and the bond premium amortization                Enter taxable interest not included in box 3. Include amounts of
+allocable to the interest payment. For example, if a taxpayer         $10 or more, whether or not designated as interest, that are paid
+receives $20 of taxable interest from a corporate bond and the        or credited to the person's account by savings and loan
+amount of bond premium amortization allocable to the interest is      associations, mutual savings banks not having capital stock
+$2, you may report $18 of interest income in box 1 of Form            represented by shares, building and loan associations,
+1099-INT and $0 in box 11, or you may report $20 of interest          cooperative banks, homestead associations, credit unions, or
+income in box 1 and $2 in box 11. For a noncovered security           similar organizations. Include interest on bank deposits,
+acquired with bond premium, you are only required to report the       accumulated dividends paid by a life insurance company,
+gross amount of interest.                                             indebtedness (including bonds, debentures, notes, and
+Statements to recipients. If you are required to file Form            certificates other than those of the U.S. Treasury) issued in
+1099-INT, you must furnish a statement to the recipient. For          registered form or of a type offered to the public, or amounts
+more information about the requirement to furnish an official form    from which you withheld federal income tax or foreign tax. In
+or acceptable substitute statement to recipients, see part M in       addition, report interest of $10 or more attributable to a TIH of a
+the current General Instructions for Certain Information Returns.     WHFIT, or accrued by a real estate mortgage investment conduit
+If you have furnished Forms 1099-INT to a recipient for amounts       (REMIC) or financial asset securitization investment trust
+received during the year at the time of the transactions, such as     (FASIT) regular interest holder, or paid to a collateralized debt
+you might have done for window transactions, do not include           obligation (CDO) holder, as explained later.
+these same amounts in a Form 1099-INT furnished to the same               Also, include interest of $600 or more paid in the course of
+recipient for other payments during the year.                         your trade or business not meeting the above criteria, such as
+Truncating recipient’s TIN. Pursuant to Regulations section           interest on delayed death benefits paid by a life insurance
+301.6109-4, all filers of Form 1099-INT may truncate a                company, interest received with damages, interest on a state or
+
+
+2                                                                           Instr. for Forms 1099-INT and 1099-OID (Rev. 01-2024)
+federal income tax refund, or interest attributable to certain       Box 4. Federal Income Tax Withheld
+notional principal contracts with nonperiodic payments.
+                                                                     Enter backup withholding. For example, if a recipient does not
+    Include in box 1 any accrued qualified stated interest on        furnish its TIN to you in the manner required, you must backup
+bonds sold between interest dates (or on a payment date). Also       withhold on payments required to be reported in box 1 (which
+show OID on short-term obligations of 1 year or less and interest    may be reduced by the amount reported in box 2), box 3, and
+on all bearer certificates of deposit. For a taxable covered         box 8 on this form.
+security acquired at a premium, see Box 11. Bond Premium,              For more information on backup withholding, including the
+later.                                                               applicable rate, see part N in the current General Instructions for
+                                                                     Certain Information Returns.
+   Do not include in box 1 interest on tax-free covenant bonds or
+dividends from money market funds (which are reportable on              For information on requesting the recipient's TIN, see part J in
+Form 1099-DIV). Do not include any description in box 1.             the current General Instructions for Certain Information Returns.
+Interest to holders of tax credit bonds. Report tax credits in       Box 5. Investment Expenses
+amounts of $10 or more allowed from the following tax credit
+bonds.                                                               For single-class REMICs only, see Box 5. Investment Expenses
+                                                                     under Rules for REMICs, FASITs, and Issuers of CDOs, later.
+ • Clean renewable energy bonds.
+ • New clean renewable energy bonds.                                 Note. This amount is not deductible.
+ • Qualified energy conservation bonds.
+ • Qualified zone academy bonds.                                     Box 6. Foreign Tax Paid
+ • Qualified school construction bonds.
+ • Build America bonds (Tax Credit).                                 Enter any foreign tax paid on interest. Report this amount in U.S.
+                                                                     dollars.
+    Treat these amounts as paid on the credit allowance date.
+The credit allowance dates are March 15, June 15, September          Box 7. Foreign Country or U.S. Territory
+15, December 15, and the last day on which the bond is
+outstanding. For bonds issued during the 3-month period ending       Enter the name of the foreign country or U.S. territory for which
+on a credit allowance date and for bonds which are redeemed or       the foreign tax was paid and reported in box 6.
+mature, the amount of the credit is determined ratably based on
+the portion of the 3-month period during which the bond is           Box 8. Tax-Exempt Interest
+outstanding.                                                         Enter tax-exempt interest that is not OID of $10 or more that is
+    Generally, interest paid is not required to be reported to the   credited or paid to the person's account if that interest is paid on
+list of recipients below. However, if they are holders of, or        obligations issued by a state, the District of Columbia, a U.S.
+recipients of credit from, the tax credit bonds listed above, the    territory, an Indian tribal government, or their political
+tax credit must be reported.                                         subdivisions, or qualified volunteer fire departments to finance
+ • A corporation.                                                    eligible expenditures. A political subdivision may include port
+ • A dealer in securities or commodities required to register as     authorities, toll road commissions, utility services authorities,
+such under the laws of the United States, a state, the District of   community redevelopment agencies, and similar governmental
+Columbia, or a territory of the United States.                       entities that meet the requirements of Regulations section
+ • A real estate investment trust (REIT) as defined in section       1.103-1(b). Include in box 8 any accrued qualified stated interest
+856.                                                                 on these bonds sold between interest dates (or on a payment
+ • An entity registered at all times during the tax year under the   date). For a tax-exempt covered security acquired at a premium,
+Investment Company Act of 1940.                                      see Box 13. Bond Premium on Tax-Exempt Bond, later.
+ • A common trust fund as defined in section 584(a).                   Any exempt-interest dividends from a mutual fund or other
+ • Any trust which is exempt from tax under section 664(c).          RIC are reported on Form 1099-DIV.
+
+Box 2. Early Withdrawal Penalty                                         Include specified private activity bond interest in box 9 and in
+                                                                     the total for box 8. See the instructions for box 9 next.
+Enter interest or principal forfeited because of an early
+withdrawal of time deposits, such as an early withdrawal from a
+                                                                     Box 9. Specified Private Activity Bond Interest
+certificate of deposit (CD), that is deductible from gross income
+by the recipient. Do not reduce the amount reported in box 1 by      Enter interest of $10 or more from specified private activity
+the amount of the forfeiture. For detailed instructions for          bonds. Generally, “specified private activity bond” means any
+determining the amount of forfeiture deductible by the depositor,    private activity bond defined in section 141 and issued after
+see Rev. Ruls. 75-20, 1975-1 C.B. 29, and 75-21, 1975-1 C.B.         August 7, 1986. See section 57(a)(5) for more details. Also, see
+367.                                                                 the Instructions for Form 6251, Alternative Minimum
+                                                                     Tax—Individuals, available at IRS.gov/Form6251.
+Box 3. Interest on U.S. Savings Bonds and
+Treasury Obligations                                                 Box 10. Market Discount
+                                                                     For a covered security acquired with market discount, if the
+Enter interest on U.S. Savings Bonds, Treasury bills, Treasury
+                                                                     recipient notified you that a section 1278(b) election was made,
+notes, and Treasury bonds. Do not include in box 1. For a
+                                                                     enter the amount of market discount that accrued on the debt
+taxable covered security acquired at a premium, see Box 12.
+                                                                     instrument during the tax year in the amount of $10 or more. For
+Bond Premium on U.S. Treasury Obligations, later.
+                                                                     more details, see Regulations section 1.6045-1(n). Unless the
+    If you make payment on a U.S. Savings Bond or other U.S.         taxpayer notified you that the taxpayer did not make a section
+obligation on which interest is reportable, enter your name,         1276(b) election, use the constant yield method described in
+address, and TIN on Form 1099-INT and Form 1096, Annual              section 1276(b)(2) to determine the accruals of market discount
+Summary and Transmittal of U.S. Information Returns, not those       for the debt instrument. See Regulations section 1.6045-1(n)(11)
+of the U.S. Treasury Department or the Bureau of the Fiscal          (i)(B). For a covered security with OID, report the accruals of
+Service.                                                             market discount on Form 1099-OID rather than on Form
+                                                                     1099-INT.
+
+Instr. for Forms 1099-INT and 1099-OID (Rev. 01-2024)                                                                                    3
+Box 11. Bond Premium                                                  Requirement to furnish a tax information statement to the
+For a taxable covered security acquired at a premium (other than      TIH. A tax information statement that includes the information
+a U.S. Treasury obligation), enter the amount of bond premium         provided to the IRS on Form 1099-INT, as well as additional
+amortization allocable to the interest paid during the tax year,      information identified in Regulations section 1.671-5(e), must be
+unless you were notified in writing that the holder did not want to   provided to TIHs. The written tax information statement must be
+amortize bond premium under section 171. See Regulations              furnished to the TIH by March 15. The amount of an item of a
+sections 1.6045-1(n)(5) and 1.6049-9(b). If you are required to       trust expense that is attributable to a TIH must be included on
+report bond premium amortization and you reported a net               the tax information statement provided to the TIH and is not
+amount of interest in box 1, leave this box blank.                    required to be included in box 5 of Form 1099-INT.
+                                                                          WHFIT interest income information may be included in
+Box 12. Bond Premium on Treasury Obligations                          summary totals reported to the IRS and the TIH. Information
+For a U.S. Treasury obligation that is a covered security, enter      about WHFIT interest income may also be included in a
+the amount of bond premium amortization allocable to the              composite statement furnished to the TIH.
+interest paid during the tax year, unless you were notified in            For more filing requirements, see the current General
+writing that the holder did not want to amortize bond premium         Instructions for Certain Information Returns.
+under section 171. See Regulations sections 1.6045-1(n)(5) and
+1.6049-9(b). If you are required to report bond premium               Rules for REMICs, FASITs, and Issuers of CDOs
+amortization and you reported a net amount of interest in box 3,
+leave this box blank.                                                          In the case of a FASIT, these reporting rules apply only
+                                                                        !      to FASITs in existence on October 22, 2004, to the
+                                                                       CAUTION extent that regular interests issued by the FASIT before
+Box 13. Bond Premium on Tax-Exempt Bond
+                                                                      that date continue to remain outstanding in accordance with the
+For a tax-exempt covered security acquired at a premium, enter
+                                                                      original terms of issue.
+the amount of bond premium amortization allocable to the
+interest paid during the tax year. If you reported a net amount of       REMICs, holders of ownership interests in FASITs, issuers of
+interest in box 8 or 9, whichever is applicable, leave this box       CDOs, and any broker or middleman who holds as a nominee a
+blank.                                                                REMIC or FASIT regular interest or CDO must file Form
+                                                                      1099-INT. The form is used to report interest of $10 or more,
+Box 14. Tax-Exempt and Tax Credit Bond CUSIP                          other than OID, accrued to a REMIC or FASIT regular interest
+No.                                                                   holder during the year or paid to a holder of a CDO. If you are
+                                                                      also reporting OID, this interest and the OID can be reported on
+For single bonds or accounts containing a single bond, enter the      Form 1099-OID. You do not have to file both Forms 1099-INT
+CUSIP number of the tax-exempt bond for which tax-exempt              and 1099-OID.
+interest is reported in box 8 or tax credit bond (including build
+America bond and specified tax credit bond) for which a tax              You are not required to file or issue Form 1099-INT for exempt
+credit or taxable interest, as applicable, is reported in box 1.      recipients including, but not limited to, the following.
+Enter the CUSIP number of the bond for which interest was paid        • A corporation.
+or tax credit was allowed. If the tax-exempt interest or the tax      • A broker.
+credit is reported in the aggregate for multiple bonds or             • A middleman/nominee.
+accounts, enter “various.”                                            • A financial institution.
+                                                                      • Any IRA, Archer MSA, Medicare Advantage MSA, or HSA.
+Boxes 15–17. State Information                                        • A tax-exempt organization.
+These boxes may be used by payers who participate in the                 For additional exempt recipients, see Regulations section
+Combined Federal/State Filing Program and/or who are required         1.6049-7(c).
+to file paper copies of this form with a state tax department. See
+Pub. 1220 for more information regarding the Combined Federal/
+State Filing Program. They are provided for your convenience          Box 1. Interest Income
+only and need not be completed for the IRS. Use the state
+information boxes to report payments for up to two states. Keep       Report in box 1 the amount of interest, other than OID, accrued
+the information for each state separated by the dash line. If you     to each REMIC or FASIT regular interest holder or paid to a CDO
+withheld state income tax on this payment, you may enter it in        holder for the period during the year for which the return is made.
+box 17. In box 15, enter the abbreviated name of the state, and       If you are a single-class REMIC (as defined in Temporary
+in box 16, enter the payer's state identification number. The state   Regulations section 1.67-3T(a)(2)(ii)(B)), increase the amount
+number is the payer's identification number assigned by the           otherwise reportable in box 1 by the regular interest holder's
+individual state.                                                     share of investment expenses of the REMIC for the year. No
+                                                                      amount should be reported in box 3.
+   If a state tax department requires that you send them a paper
+copy of this form, use Copy 1 to provide information to the state     Box 5. Investment Expenses
+tax department. Give Copy 2 to the recipient for use in filing the
+recipient's state income tax return.                                  Enter the regular interest holder's pro rata share of investment
+                                                                      expenses.
+Rules for WHFITs
+Trustees and middlemen must report the gross amount of
+interest attributable to the TIH for the calendar year on Form
+                                                                      Statements to Holders
+1099-INT if that amount exceeds $10. If the trustee provides
+                                                                      For each Form 1099-INT you are required to file, you must
+WHFIT information using the safe harbor rules in Regulations
+                                                                      furnish a statement to the REMIC or FASIT regular interest
+section 1.671-5(f)(1) or (g)(1), the trustee or middleman must
+                                                                      holder or CDO holder identified on the form. The statement must
+determine the amounts reported on Form 1099-INT under
+                                                                      contain the information shown on Form 1099-INT, including the
+Regulations section 1.671-5(f)(2) or (g)(2), as appropriate.
+                                                                      legend shown on Copy B of the official Form 1099-INT, and an
+                                                                      indication that these items are being furnished to the IRS. The
+
+4                                                                           Instr. for Forms 1099-INT and 1099-OID (Rev. 01-2024)
+statement must also show the information specified in                investment trust (FASIT), or an issuer of a collateralized debt
+Regulations section 1.6049-7(f)(2)(i). In addition, the statement    obligation (CDO).
+furnished by a REMIC must show, for each calendar quarter, the
+information specified in Regulations section 1.6049-7(f)(3). Also,      Also, file Form 1099-OID for any person for whom you
+see Regulations section 1.6049-7(f)(3)(ii) for information that      withheld and paid any foreign tax on OID or from whom you
+may be required to be reported to a REIT that holds a REMIC          withheld (and did not refund) any federal income tax under the
+regular interest.                                                    backup withholding rules even if the amount of the OID is less
+                                                                     than $10.
+   A single-class REMIC (as defined in Temporary Regulations         Original issue discount. OID is the excess of an obligation's
+section 1.67-3T(a)(2)(ii)(B)) must include in the statement the      stated redemption price at maturity over its issue price
+investment expenses paid or accrued during each calendar             (acquisition price for a stripped bond or coupon). In the case of a
+quarter by the REMIC for which the REMIC is allowed a                taxable obligation, a discount of less than 1/4 of 1% of the stated
+deduction under section 212 and the proportionate share of           redemption price at maturity, multiplied by the number of full
+those investment expenses allocated to the regular interest          years from the date of issue to maturity, is considered to be zero.
+holder.                                                              Reporting OID. You must prepare a Form 1099-OID for each
+                                                                     person who is a holder of record of the obligation if the total daily
+    The statement must be furnished to holders by March 15. To       portions of OID for that person is at least $10. See the
+meet the statement requirement, you may furnish a copy of Form       instructions for Box 1, later, for taxable OID; Box 8, later, for
+1099-INT and a separate statement containing the additional          taxable OID on U.S. Treasury obligations; and Box 11, later, for
+information to the REMIC or FASIT regular interest holder or         tax-exempt OID.
+CDO holder.
+                                                                        Ordinarily, you will file only one Form 1099-OID for the
+                                                                     depositor or holder of a particular obligation for the calendar
+    For information about reporting income to REMIC residual         year. If a person holds more than one discount obligation, issue
+interest holders, see the instructions for Schedule Q (Form          a separate Form 1099-OID for each obligation. However, if a
+1066), Quarterly Notice to Residual Interest Holder of REMIC         person holds more than one certificate, you can file a single
+Taxable Income or Net Loss Allocation, in the Instructions for       Form 1099-OID only if (1) they are the same issue, (2) held the
+Form 1066, available at IRS.gov/Form1066.                            same amount of time during the calendar year, (3) acquired at
+                                                                     the same time, (4) acquired for the same price, and (5) all debt
+Form 8811 and Reporting by Brokers or                                elections (or lack of elections) are the same for all certificates.
+Middlemen                                                               For information about how to compute OID, see sections
+                                                                     1271–1275 and their regulations and section 1288.
+REMICs and issuers of CDOs must also file Form 8811,                    If you are a broker or middleman who holds a bank CD as
+Information Return for Real Estate Mortgage Investment               nominee, whether or not you sold the CD to the owner, you must
+Conduits (REMICs) and Issuers of Collateralized Debt                 determine the amount of OID includible in the income of the
+Obligations, within 30 days after the start-up date of the REMIC     owner, if any, and report it on Form 1099-OID.
+or issue date of a CDO. The IRS will use the information on             Pub. 1212, Guide to Original Issue Discount (OID)
+Forms 8811 to update Pub. 938, Real Estate Mortgage                  Instruments, contains information on certain outstanding publicly
+Investment Conduits (REMICs) Reporting Information, for use by       offered discount obligations. It is available at IRS.gov/Pub1212.
+certain brokers, middlemen, corporations, and others specified
+in Regulations section 1.6049-7(e)(4). Pub. 938 is available at         Issuers of certain publicly offered debt instruments having
+IRS.gov/Pub938.                                                      OID must file Form 8281, Information Return for Publicly Offered
+                                                                     Original Issue Discount Instruments, generally within 30 days
+                                                                     after the date of issuance, or, if later, the date of registration with
+   For the requirements that a REMIC or CDO issuer or a broker
+                                                                     the Securities and Exchange Commission. The information
+or middleman who holds as a nominee a REMIC or FASIT
+                                                                     provided on that form will enable the IRS to update Pub. 1212.
+regular interest or a CDO furnish certain information on request,
+                                                                     See Form 8281, available at IRS.gov/Form8281, and
+see Regulations sections 1.6049-7(e) and 1.6049-7(f)(7).
+                                                                     Regulations section 1.1275-3(c) for details.
+                                                                     Exceptions. You are not required to file Form 1099-OID for
+Specific Instructions for Form                                       payments made to certain payees including a corporation, a
+1099-OID                                                             tax-exempt organization, any individual retirement arrangement
+                                                                     (IRA), an Archer medical savings account (MSA), Medicare
+Note. For the most recent version, go to IRS.gov/Form1099OID.
+                                                                     Advantage MSA, health savings account (HSA), a U.S. agency, a
+   File Form 1099-OID, Original Issue Discount, if the total daily   state, the District of Columbia, a U.S. territory, or a registered
+portions of original issue discount (OID) for a holder is at least   securities or commodities dealer.
+$10 and you are any of the following.
+ • An issuer with any bond outstanding or other evidence of                  Report interest on U.S. Savings Bonds on Form
+indebtedness in registered or bearer form issued with OID.              !    1099-INT. Also, report OID on obligations with a term of
+ • An issuer of a certificate of deposit (CD) made, purchased, or    CAUTION 1 year or less on Form 1099-INT.
+
+renewed after 1970 if the CD has OID and a term of more than 1
+year (see Caution, later).                                           Reporting interest and OID. If you are reporting qualified
+ • A financial institution having other deposit arrangements, such   stated interest and OID on an obligation, you may report both the
+as time deposits or bonus-savings plans, if the arrangements         interest and the OID on Form 1099-OID. It is not necessary to file
+have OID and a term of more than 1 year.                             both Forms 1099-INT and 1099-OID. On Form 1099-OID, report
+ • A broker or other middleman holding an OID obligation,            the qualified stated interest in box 2 and the OID in box 1, 8, or
+including CDs, as nominee for the actual owner.                      11, as applicable. You may choose to report the interest on Form
+ • A trustee or middleman of a widely held fixed investment trust    1099-INT and the OID on Form 1099-OID.
+(WHFIT) or widely held mortgage trust (WHMT).                        Reporting OID and acquisition premium. For a covered
+ • A real estate mortgage investment conduit (REMIC), a holder       security acquired with acquisition premium, you must report the
+of an ownership interest in a financial asset securitization
+
+Instr. for Forms 1099-INT and 1099-OID (Rev. 01-2024)                                                                                      5
+amount of acquisition premium amortization for the tax year. See       the second notice. See part N in the current General Instructions
+Regulations section 1.6045-1(a)(15) to determine if a debt             for Certain Information Returns for more information.
+instrument is a covered security. In general, you must use the
+                                                                               For information on the TIN Matching System offered by
+rules in Regulations section 1.1272-2(b)(4) to amortize the
+acquisition premium. See Regulations section 1.6049-9(c). You
+                                                                        TIP the IRS, see Items You Should Note in the current
+                                                                               General Instructions for Certain Information Returns.
+may, but are not required to, report the acquisition premium
+amortization for a tax-exempt obligation that is a covered
+security acquired before January 1, 2017.                              Box 1. Original Issue Discount
+   If you are required to report the amount of acquisition             Report the taxable OID on the obligation for the part of the year it
+premium amortized for the tax year, you may report either (1) a        was owned by the record holder. Do not include the amount
+net amount of OID that reflects the offset of OID by the amount of     reported in box 8. For a discussion of WHFITs, WHMTs,
+acquisition premium amortization for the year, or (2) a gross          REMICs, FASITs, and CDOs, see the instructions, later.
+amount for both the OID and the acquisition premium
+amortization for the year. For example, if $20 of OID accrues on       Box 2. Other Periodic Interest
+a corporate bond during the year and there is acquisition              Enter any qualified stated interest paid or credited on this
+premium amortization of $2 for the year, you may report $18 of         obligation during the year. However, you may report any qualified
+OID in box 1 and $0 in box 6, or you may report $20 of OID in          stated interest on this obligation on Form 1099-INT rather than
+box 1 and $2 in box 6. For a noncovered security acquired with         on Form 1099-OID. For example, you may report any qualified
+acquisition premium, you are only required to report the gross         stated interest on Treasury Inflation Protected Securities in box 3
+amount of OID.                                                         of Form 1099-INT rather than in box 2 of Form 1099-OID. For a
+Reporting interest and bond premium. For a debt instrument             discussion of REMICs, FASITs, and CDOs, see the instructions,
+with OID that is a covered security, if you choose to report           later.
+qualified stated interest in box 2 of Form 1099-OID, report any
+bond premium amortization allocable to the interest in box 10 of       Box 3. Early Withdrawal Penalty
+Form 1099-OID and not in boxes 11–13 of Form 1099-INT.                 Enter interest or principal forfeited because of an early
+                                                                       withdrawal of time deposits, such as an early withdrawal from a
+Statements to recipients. If you are required to file Form             CD, that is deductible from gross income by the recipient. Do not
+1099-OID, you must furnish a statement to the recipient. For           reduce the amounts in boxes 1 and 2 by the amount of the
+more information about the requirement to furnish an official form     forfeiture. For detailed instructions for determining the amount of
+or acceptable substitute statement to recipients, see part M in        forfeiture deductible by the holder, see Rev. Ruls. 75-20, 1975-1
+the current General Instructions for Certain Information Returns.      C.B. 29, and 75-21, 1975-1 C.B. 367.
+Truncating recipient’s TIN on payee statements. Pursuant
+to Regulations section 301.6109-4, all filers of Form 1099-OID         Box 4. Federal Income Tax Withheld
+may truncate a recipient’s TIN (social security number (SSN),          Enter backup withholding. For example, if a recipient does not
+individual taxpayer identification number (ITIN), adoption             furnish its TIN to you in the manner required, you must backup
+taxpayer identification number (ATIN), or employer identification      withhold. The applicable interest rate applies to amounts
+number (EIN)) on payee statements. Truncation is not allowed on        required to be reported in boxes 1, 2, and 8, but is limited to the
+any documents the filer files with the IRS. A payer's TIN may not      cash paid on these obligations. Before applying the applicable
+be truncated on any form. See part J in the current General            interest rate, you may reduce the amounts reported in boxes 1
+Instructions for Certain Information Returns.                          and 2 by the amount reported in box 3.
+FATCA filing requirement checkbox. Check the box if you are
+                                                                         For more information on backup withholding, including the
+a U.S. payer that is reporting on Form(s) 1099 (including
+                                                                       applicable rate, see part N in the current General Instructions for
+reporting amounts in boxes 1, 2, and 8 on this Form 1099-OID)
+                                                                       Certain Information Returns.
+as part of satisfying your requirement to report with respect to a
+U.S. account for chapter 4 purposes, as described in                      For information on requesting the recipient's TIN, see part J in
+Regulations section 1.1471-4(d)(2)(iii)(A). In addition, check the     the current General Instructions for Certain Information Returns.
+box if you are a Foreign Financial Institution (FFI) reporting
+payments to a U.S. account pursuant to an election described in        Box 5. Market Discount
+Regulations section 1.1471-4(d)(5)(i)(A).
+                                                                       For a covered security acquired with market discount and OID, if
+Account number. The account number is required if you have             the recipient notified you that a section 1278(b) election was
+multiple accounts for a recipient for whom you are filing more         made, enter the amount of market discount that accrued on the
+than one Form 1099-OID. The account number is also required if         debt instrument during the tax year in the amount of $10 or more.
+you check the “FATCA filing requirement” box. See FATCA filing         For more details, see Regulations section 1.6045-1(n). Unless
+requirement checkbox, earlier. Additionally, the IRS encourages        the recipient notified you that the recipient did not make a
+you to designate an account number for all Forms 1099-OID that         section 1276(b) election, use the constant yield method
+you file. See part L in the current General Instructions for Certain   described in section 1276(b)(2) to determine the accruals of
+Information Returns.                                                   market discount for the debt instrument. See Regulations section
+2nd TIN not. You may enter an “X” in this box if you were              1.6045-1(n)(11)(i)(B). You may, but are not required to, report the
+notified by the IRS twice within 3 calendar years that the payee       market discount for a tax-exempt obligation that is a covered
+provided an incorrect TIN. If you mark this box, the IRS will not      security acquired before January 1, 2017.
+send you any further notices about this account.
+                                                                       Box 6. Acquisition Premium
+    However, if you received both IRS notices in the same year, or
+if you received them in different years but they both related to       For a covered security acquired with acquisition premium, enter
+information returns filed for the same year, do not check the box      the amount of premium amortization for the part of the year the
+at this time. For purposes of the two-notices-in-3-years rule, you     debt instrument was owned by the holder. See Regulations
+are considered to have received one notice and you are not             sections 1.6045-1(n)(5) and 1.6049-9(c). If you reported a net
+required to send a second “B” notice to the recipient on receipt of    amount of OID in box 1, 8, or 11, as applicable, leave this box
+                                                                       blank. You may, but are not required to, report the acquisition
+
+6                                                                            Instr. for Forms 1099-INT and 1099-OID (Rev. 01-2024)
+premium for a tax-exempt obligation that is a covered security        Rules for WHFITs and WHMTs
+acquired before January 1, 2017.
+                                                                      If the OID attributable to a trust interest holder (TIH) exceeds $10
+                                                                      for the calendar year, trustees and middlemen must use Form
+Box 7. Description                                                    1099-OID to report both the gross amount of OID (box 1) and
+Enter the CUSIP number, if any. If there is no CUSIP number,          interest (box 2) of the WHFIT that is attributable to the TIH. If the
+enter the abbreviation for the stock exchange, the abbreviation       trustee provides WHFIT information using the safe harbor rules
+for the issuer used by the stock exchange, the coupon rate, and       in Regulations section 1.671-5(f)(1) or (g)(1), the trustee or
+the year of maturity (for example, NYSE XYZ 121/2 25). If the         middleman must determine the amounts reported on Form
+issuer of the obligation is other than the payer, show the name of    1099-OID under Regulations section 1.671-5(f)(2) or (g)(2), as
+the issuer.                                                           appropriate.
+Box 8. Original Issue Discount on U.S. Treasury                       Reporting OID for a WHMT. If a WHMT has a start-up date
+                                                                      before August 13, 1998, trustees and middlemen of the WHMT
+Obligations                                                           are not required to report OID information. If the WHMT has a
+Enter the amount of OID on a U.S. Treasury obligation for the         start-up date on or after August 13, 1998, and on or before
+part of the year it was owned by the record holder. Do not include    January 24, 2006, and the trustee has attempted in good faith,
+this amount in box 1. You may enter any qualified stated interest     but without success, to obtain the historical information required
+on the Treasury obligation in box 2. The amount in box 8 may be       to provide OID information, no penalties will be imposed if the
+a negative number (for example, if a Treasury Inflation Protected     trustee and middlemen of the WHMT do not provide OID
+Security has a deflation adjustment for the year).                    information. The trustee must provide a statement to middlemen
+                                                                      indicating that the trustee is not providing OID information
+    If you make payment on a U.S. Treasury obligation on which
+                                                                      because the trustee has attempted, in good faith, to obtain the
+OID is reportable, enter your name, address, and TIN on Forms
+                                                                      information necessary to calculate OID but has been
+1099-OID and 1096, not those of the U.S. Treasury Department
+                                                                      unsuccessful. See Regulations section 1.671-5(m)(2).
+or the Bureau of the Fiscal Service.
+                                                                      Requirement to furnish a tax information statement to the
+Box 9. Investment Expenses                                            TIH. A tax information statement that includes the information
+For single-class REMICs only, see Box 9. Investment Expenses          provided to the IRS on Form 1099-OID, as well as additional
+under Rules for REMICs, FASITs, and Issuers of CDOs, later.           information identified in Regulations section 1.671-5(e), must be
+                                                                      provided to TIHs. The written tax information statement must be
+Note. This amount is not deductible.                                  furnished to the TIH by March 15. The amount of an item of a
+                                                                      trust expense that is attributable to a TIH must be included on
+Box 10. Bond Premium                                                  the tax information statement provided to the TIH and is not
+For a taxable covered security acquired at a premium, enter the       required to be included in box 9 of Form 1099-OID.
+amount of bond premium amortization allocable to the interest             For more filing requirements, see the current General
+paid during the tax year, unless you were notified in writing that    Instructions for Certain Information Returns.
+the holder did not want to amortize bond premium under section
+171. See Regulations sections 1.6045-1(n)(5) and 1.6049-9(b).         Rules for REMICs, FASITs, and Issuers of CDOs
+For a tax-exempt covered security acquired at a premium, enter                 In the case of FASIT, these reporting rules apply only to
+the amount of bond premium amortization allocable to the                       FASITs in existence on October 22, 2004, to the extent
+interest paid during the tax year. If you are required to report        !
+                                                                      CAUTION that regular interests issued by the FASIT before that
+bond premium amortization and you reported a net amount of            date continue to remain outstanding in accordance with the
+interest in box 2, leave this box blank.                              original terms of issue.
+Box 11. Tax-Exempt OID                                                    REMICs, holders of ownership interests in FASITs, issuers of
+For a tax-exempt obligation that is a covered security acquired       CDOs, and any broker or middleman who holds as a nominee a
+on or after January 1, 2017, enter the OID for the part of the year   REMIC or FASIT regular interest or CDO must file Form
+it was owned by the record holder. You may, but are not required      1099-OID. The form is used to report OID of $10 or more
+to, report the OID for a tax-exempt obligation that is a covered      accrued to a REMIC or FASIT regular interest holder or to a
+security acquired before January 1, 2017.                             holder of a CDO. Also, use Form 1099-OID to report other
+                                                                      interest accrued to a REMIC or FASIT regular interest holder
+Boxes 12–14. State Information                                        during the year or paid to a holder of a CDO. You may use Form
+                                                                      1099-INT rather than Form 1099-OID to report interest for an
+These boxes may be used by payers who participate in the              instrument issued with OID if no OID is includible in the regular
+Combined Federal/State Filing Program and/or who are required         interest holder's or CDO holder's income for the year.
+to file paper copies of this form with a state tax department. See
+Pub. 1220 for more information regarding the Combined Federal/           You are not required to file or issue Form 1099-OID for
+State Filing Program. They are provided for your convenience          exempt recipients including, but not limited to, the following.
+only and need not be completed for the IRS. Use the state             • A corporation.
+information boxes to report payments for up to two states. Keep       • A broker.
+the information for each state separated by the dash line. If you     • A middleman/nominee.
+withheld state income tax on this payment, enter it in box 14. In     • A financial institution.
+box 12, enter the abbreviated name of the state, and in box 13,       • Any IRA, Archer MSA, Medicare Advantage MSA, or HSA.
+enter the payer's state identification number. The state number is    • A tax-exempt organization.
+the payer's identification number assigned by the individual
+                                                                         For additional exempt recipients, see Regulations section
+state.
+                                                                      1.6049-7(c).
+   If a state tax department requires that you send them a paper
+copy of this form, use Copy 1 to provide information to the state
+tax department. Give Copy 2 to the recipient for use in filing the
+recipient's state income tax return.
+
+Instr. for Forms 1099-INT and 1099-OID (Rev. 01-2024)                                                                                      7
+Box 1. Original Issue Discount                                       investment expenses paid or accrued during each calendar
+                                                                     quarter by the REMIC for which the REMIC is allowed a
+Report in box 1 the aggregate amount of OID includible in the        deduction under section 212 and the proportionate share of
+gross income of each REMIC or FASIT regular interest holder or       those investment expenses allocated to the regular interest
+CDO holder for the period during the year for which the return is    holder.
+made. No amount should be reported in box 8.
+                                                                         The statement must be furnished to holders by March 15. To
+                                                                     meet the statement requirement, you may furnish a copy of Form
+Box 2. Other Periodic Interest                                       1099-OID and a separate statement containing the additional
+                                                                     information to the REMIC or FASIT regular interest holder or
+Report in box 2 any amount of interest, other than OID, accrued      CDO holder.
+to each REMIC or FASIT regular interest holder or paid to each
+CDO holder. If you are a single-class REMIC (as defined in               For information about reporting income to REMIC residual
+Temporary Regulations section 1.67-3T(a)(2)(ii)(B)), increase        interest holders, see the instructions for Schedule Q (Form
+the amount otherwise reportable in box 2 by the regular interest     1066), Quarterly Notice to Residual Interest Holder of REMIC
+holder's share of investment expenses of the REMIC for the year.     Taxable Income or Net Loss Allocation, in the Instructions for
+                                                                     Form 1066, available at IRS.gov/Form1066.
+Box 9. Investment Expenses
+                                                                     Form 8811 and Reporting by Brokers or
+Enter the regular interest holder's pro rata share of investment
+expenses.                                                            Middlemen
+                                                                     REMICs and issuers of CDOs must also file Form 8811,
+Statements to Holders                                                Information Return for Real Estate Mortgage Investment
+                                                                     Conduits (REMICs) and Issuers of Collateralized Debt
+For each Form 1099-OID you are required to file, you must            Obligations, within 30 days after the start-up date of the REMIC
+furnish a statement to the REMIC or FASIT regular interest           or issue date of a CDO. The IRS will use the information on
+holder or CDO holder identified on the form. The statement must      Forms 8811 to update Pub. 938, Real Estate Mortgage
+contain the information shown on Form 1099-OID, including the        Investment Conduits (REMICs) Reporting Information, for use by
+legend shown on Copy B of the official Form 1099-OID, and an         certain brokers, middlemen, corporations, and others specified
+indication that these items are being furnished to the IRS. The      in Regulations section 1.6049-7(e)(4). Pub. 938 is available at
+statement must also show the information specified in                IRS.gov/Pub938.
+Regulations section 1.6049-7(f)(2)(ii). In addition, the statement
+furnished by a REMIC must show, for each calendar quarter, the          For the requirements that a REMIC or CDO issuer or a broker
+information specified in Regulations section 1.6049-7(f)(3). Also,   or middleman who holds as a nominee a REMIC or FASIT
+see Regulations section 1.6049-7(f)(3)(ii) for information that      regular interest or a CDO furnish certain information on request,
+may be required to be reported to a real estate investment trust     see Regulations sections 1.6049-7(e) and 1.6049-7(f)(7).
+(REIT) that holds a REMIC regular interest.
+
+   A single-class REMIC (as defined in Temporary Regulations
+section 1.67-3T(a)(2)(ii)(B)) must include in the statement the
+
+
+
+
+8                                                                          Instr. for Forms 1099-INT and 1099-OID (Rev. 01-2024)
+
