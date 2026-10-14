@@ -8,7 +8,7 @@
 form:
   id: f1040
   kind: form
-  title: "Form 1040 — selected lines (Stage 1)"
+  title: "Form 1040 — selected lines (Stages 1–2)"
   tax_year: 2025
   lines:
 
@@ -23,8 +23,8 @@ form:
       printed: "3a"
       label: "Qualified dividends"
       type: NonNegDollars
-      expr: { op: input, source: "Form 1099-DIV box 1a plus box 1b if applicable; or as figured per the line 3a instructions (the line 3a worksheet is outside Stage 1)." }
-      cite: { doc: i1040gi, locator: "Instructions for Form 1040, line 3a" }
+      expr: { op: input, source: "Form 1040 line 3a total qualified dividends, generally Form 1099-DIV box 1b, after the line 3a exceptions. Supplied as a subtotal; qualification checks are outside this stage." }
+      cite: { doc: i1040gi, locator: "Instructions for Form 1040, pp. 25–26, line 3a and exceptions" }
 
     - id: f1040.line7a
       printed: "7a"
@@ -70,3 +70,10 @@ form:
               bind: { amount: "f1040.line15", status: "f1040.status" }
               line: "tax"
       cite: { doc: i1040gi, locator: "Instructions for Form 1040, line 16" }
+
+    - id: f1040.line31
+      printed: "31"
+      label: "Amount from Schedule 3, line 15"
+      type: NonNegDollars
+      expr: { op: copy, from: s3.line15 }
+      cite: { doc: f1040, locator: "Form 1040 (2025), line 31" }

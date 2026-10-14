@@ -22,6 +22,7 @@ export const VOCABULARY = [
 ] as const;
 
 export const IMPLEMENTED = new Set<string>([
+  "sum_over",
   "input",
   "copy",
   "param",

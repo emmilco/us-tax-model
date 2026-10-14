@@ -6,7 +6,7 @@ export type Rate = { num: number; den: number };
 // Operands: a line reference ("form.line"), a literal, or a parameter.
 export type Operand =
   | string // line reference, resolved within file or across forms
-  | { const: number | string | boolean }
+  | { const: number | string | boolean; type?: "Count" }
   | { param: string };
 
 // A reference to another line, optionally through a parameterized def instance.
@@ -39,10 +39,11 @@ export type Expr =
   | TestExpr
   | { op: "round"; of: string; unit: number; rule: string }
   | { op: "bracket_schedule"; table: string; key: string; status: string }
-  | { op: "sum_over"; of: string }
+  | { op: "sum_over"; collection: string; field: string; where?: TestExpr }
   | { op: "opaque"; name: string };
 
 export type ValueType =
+  | "Count"
   | "Dollars"
   | "NonNegDollars"
   | "Rate"
@@ -72,6 +73,8 @@ export interface Line {
   expr: Expr | { op: "input"; source: string };
   cite: CiteFilled;
   note?: string;
+  ambiguity?: string;
+  refuses?: { when: string; form: string; remedy: string; cite: CiteFilled }[];
 }
 
 export interface FormDoc {
@@ -80,6 +83,7 @@ export interface FormDoc {
   title: string;
   tax_year: number;
   parameters?: string[];
+  collection?: { parent?: string; cite: CiteFilled };
   note?: string;
   lines: Line[];
 }
@@ -132,3 +136,5 @@ export interface CanonicalData {
   tables: TableDoc[];
   register: RegisterDoc;
 }
+
+export type Inputs = Record<string, unknown>;

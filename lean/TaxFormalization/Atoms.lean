@@ -11,6 +11,10 @@ def sumList : List Int → Int
   | [] => 0
   | x :: xs => x + sumList xs
 
+/-- Sum one column of a collection selected by a Boolean predicate. -/
+def sumOver {α : Type} (xs : List α) (field : α → Int) (keep : α → Bool) : Int :=
+  sumList ((xs.filter keep).map field)
+
 /-- Signed subtraction. -/
 def subtract (a b : Int) : Int := a - b
 

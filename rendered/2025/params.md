@@ -13,6 +13,10 @@
 | `qdcg.rate_15` | Rate | 15% (0.15) | [i1040gi] QDCGT worksheet, line 18 (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `qdcg.rate_20` | Rate | 20% (0.20) | [i1040gi] QDCGT worksheet, line 21 (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `qdcg.zero_rate_ceiling` | Dollars | single $48,350; mfj $96,700; mfs $48,350; hoh $64,750; qss $96,700 | [i1040gi] QDCGT worksheet, line 6 (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `ss.base` | NonNegDollars | $176,100 | [i1040gi] p. 117, Schedule 3 line 11; independently confirmed iw2w3 p. 18 (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `ss.limit` | NonNegDollars | $10,918.20 | [i1040gi] p. 117, Schedule 3 line 11; independently confirmed iw2w3 p. 18 (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `ss.one` | Count | 1 | [i1040gi] p. 117, Schedule 3 line 11, more than one employer (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `ss.zero` | NonNegDollars | $0 | [i1040gi] p. 117, Schedule 3 line 11, amount withheld in excess (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `tcw.hoh.b1.rate` | Rate | 22% (0.22) | [i1040gi] TCW Section D, row 1 (multiply by 22%) (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `tcw.hoh.b1.subtract` | Dollars | $6,825 | [i1040gi] TCW Section D, row 1 (subtraction amount $6,825.00) (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `tcw.hoh.b1.upper` | Dollars | $103,350 | [i1040gi] TCW Section D, row 1 (not over $103,350) (2025; printed date 2026-02-25; sha256 482e9c48) |

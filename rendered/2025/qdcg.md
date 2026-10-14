@@ -5,14 +5,14 @@
 
 ## (question) — `qdcg.schedule_d_filed`
 
-- **IRS:** Are you filing Schedule D?
+- **Authored helper label:** Are you filing Schedule D?
 - **Encoded (Bool):** Input — The taxpayer's answer to the worksheet question 'Are you filing Schedule D?'
 - Expr: `{"op":"input","source":"The taxpayer's answer to the worksheet question 'Are you filing Schedule D?'"}`
 - Cite: [i1040gi] QDCGT worksheet, line 3 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (input) — `qdcg.schedule_d_net_gain`
 
-- **IRS:** Enter the smaller of line 15 or line 16 of Schedule D. If either line 15 or line 16 is blank or a loss, enter -0-.
+- **Authored helper label:** Enter the smaller of line 15 or line 16 of Schedule D. If either line 15 or line 16 is blank or a loss, enter -0-.
 - **Encoded (NonNegDollars):** Input — Schedule D (Form 1040) lines 15 and 16: the smaller of the two, or 0 if either is blank or a loss. Schedule D is outside Stage 1; the value is supplied directly.
 - Expr: `{"op":"input","source":"Schedule D (Form 1040) lines 15 and 16: the smaller of the two, or 0 if either is blank or a loss. Schedule D is outside Stage 1; the value is supplied directly."}`
 - Cite: [i1040gi] QDCGT worksheet, line 3 (2025; printed date 2026-02-25; sha256 482e9c48)

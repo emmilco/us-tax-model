@@ -5,12 +5,14 @@
 // `test-fixtures` runs every case THROUGH THE COMMAND-LINE PROGRAM and
 // compares. `coverage` reports which case takes each choose-guard.
 
-import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { isDeepStrictEqual } from "node:util";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { spawnSync } from "node:child_process";
 import { loadCanonical } from "./canonical.js";
 import { evaluate } from "./eval.js";
+import type { Inputs } from "./types.js";
 import type { Value } from "./eval.js";
 
 const ROOT = resolve(import.meta.dirname, "../..");
@@ -22,7 +24,7 @@ export interface FixtureCase {
   covers: string[];
   evidence: string;
   evidence_note?: string;
-  inputs: Record<string, number | boolean | string>;
+  inputs: Inputs;
   expect?: Record<string, Value>;
 }
 
@@ -31,8 +33,9 @@ export interface FixtureFile {
   cases: FixtureCase[];
 }
 
-function loadCases(): FixtureFile {
-  return JSON.parse(readFileSync(CASES_PATH, "utf-8")) as FixtureFile;
+export function loadCases(): FixtureFile {
+  const dir = join(ROOT, "fixtures", "2025");
+  return { tax_year: 2025, cases: readdirSync(dir).filter(f => /^stage[0-9]+\.json$/.test(f)).sort().flatMap(f => (JSON.parse(readFileSync(join(dir,f),"utf8")) as FixtureFile).cases) };
 }
 
 function saveCases(file: FixtureFile): void {
@@ -43,8 +46,8 @@ const VALUE_KINDS = new Set(["money", "bool", "enum"]);
 
 export function recordFixtures(): void {
   const data = loadCanonical();
-  const file = loadCases();
-  const targets = data.forms.flatMap((doc) => doc.lines.map((l) => l.id));
+  const file = JSON.parse(readFileSync(CASES_PATH, "utf8")) as FixtureFile;
+  const targets = data.forms.filter(d => !d.collection).flatMap((doc) => doc.lines.map((l) => l.id));
   for (const c of file.cases) {
     const result = evaluate(data, c.inputs, targets);
     const expect: Record<string, Value> = {};
@@ -89,7 +92,7 @@ export function testFixtures(): number {
         const actual = got.get(key);
         if (!actual) {
           problems.push(`${key}: not evaluated`);
-        } else if (JSON.stringify(actual) !== JSON.stringify(expected)) {
+        } else if (!isDeepStrictEqual(actual, expected)) {
           problems.push(`${key}: expected ${JSON.stringify(expected)} got ${JSON.stringify(actual)}`);
         }
       }
@@ -110,14 +113,26 @@ export function testFixtures(): number {
 export function coverageReport(): void {
   const data = loadCanonical();
   const file = loadCases();
-  const targets = data.forms.flatMap((doc) => doc.lines.map((l) => l.id));
+  const targets = data.forms.filter(d => !d.collection).flatMap((doc) => doc.lines.map((l) => l.id));
   // (lineKey, guardIndex) -> case ids
   const taken = new Map<string, string[]>();
+  const branches = new Map<string, Set<string>>();
+  const evidence = new Map<string, Set<string>>();
+  const template = (key: string) => key.includes("[") ? key.replace(/(?:[a-zA-Z0-9_]+\[[^\]]+\]\.)+/g, m => m.split(".").filter(Boolean).at(-1)!.split("[")[0]+".") : key;
+  const mark = (key: string, c: FixtureCase) => { const set=branches.get(key)??new Set();set.add(c.id);branches.set(key,set); };
+
   for (const c of file.cases) {
     const result = evaluate(data, c.inputs, targets);
     for (const der of result.derivations.values()) {
+      const id=template(der.line);
+      if (der.value.kind !== "unknown") { const set=evidence.get(id)??new Set();set.add(c.evidence);evidence.set(id,set); }
+      if (der.value.kind === "bool") mark(`${id}:${der.value.value}`,c);
+      if (["subtract_floor0","smaller_of","larger_of"].includes(der.op)) {
+        const values=der.operands.filter(o=>o.value.kind==="money").map(o=>(o.value as {cents:number}).cents);
+        if (values.length>=2) mark(`${id}:${der.op==="subtract_floor0" ? (values[0]!>values[1]! ? "positive":"floor") : (values[0]!<=values[1]! ? "left":"right")}`,c);
+      }
       if (der.op === "choose" && der.takenGuardIndex !== undefined) {
-        const key = `${der.line}#${der.takenGuardIndex}`;
+        const key = `${der.line.includes("[") ? der.line.replace(/(?:[a-zA-Z0-9_]+\[[^\]]+\]\.)+/g, m => m.split(".").filter(Boolean).at(-1)!.split("[")[0]+".") : der.line}#${der.takenGuardIndex}`;
         taken.set(key, [...(taken.get(key) ?? []), c.id]);
       }
     }
@@ -136,7 +151,7 @@ export function coverageReport(): void {
   }
 
   const out: string[] = [];
-  out.push("# Branch coverage — Stage 1 fixtures");
+  out.push("# Branch coverage — all stage fixtures");
   out.push("");
   out.push("Which fixture case takes each choose-guard. Def lines appear per instance binding;");
   out.push("because guard predicates depend only on the bound amount, each def's guards are");
@@ -178,8 +193,61 @@ export function coverageReport(): void {
     out.push("");
   }
 
+  out.push("## Gates and arithmetic branches", "");
+  for (const doc of data.forms) for (const line of doc.lines) {
+    const sides = line.type === "Bool" ? ["false","true"] : line.expr.op === "subtract_floor0" ? ["floor","positive"] : ["smaller_of","larger_of"].includes(line.expr.op) ? ["left","right"] : [];
+    for (const side of sides) {
+      const cases=branches.get(`${line.id}:${side}`);
+      out.push(`- ${line.id} ${side}: ${cases ? [...cases].join(", ") : "**UNOBSERVED**"}`);
+      if (!cases) uncovered++;
+    }
+  }
+  out.push("", "## Evidence by line", "", "Synthetic regressions are not class B; independent human hand-work remains pending.", "", "| Line | Evidence labels observed |", "| --- | --- |");
+  for(const doc of [...data.forms,...data.defs]) for(const line of doc.lines) {
+    const labels=evidence.get(line.id);
+    out.push(`| ${line.id} | ${labels ? [...labels].sort().join(", ") : doc.kind === "def" ? "See bound instances above" : "unobserved"} |`);
+  }
   const outPath = join(ROOT, "reports", "2025", "coverage.md");
   writeFileSync(outPath, out.join("\n"));
   console.log(`coverage: ${taken.size} guards observed; ${uncovered} guards unobserved`);
   console.log(`report: reports/2025/coverage.md`);
+}
+
+/** Review packet: fixture expectations remain candidate answers, not class B. */
+export function reviewStage2(): void {
+  const cases=loadCases().cases.filter(c=>c.id.startsWith("ss."));
+  const out=["# Stage 2 review packet", "", "Status: implementation checked; owner source review and independent hand-work pending.", "",
+    "## Source transcription", "", "Read rendered/2025/w2.md, rendered/2025/person.md, rendered/2025/s3.md and the added Form 1040 line 31 against the archived sources below. Helper labels are authored explanations, not verbatim IRS lines.", "",
+    "- i1040gi.pdf, printed p. 117, Schedule 3 line 11.", "- iw2w3.pdf, printed p. 18, boxes 3, 4 and 7; pp. 12–13 for the railroad exclusion.", "- fw2.pdf, employee and employer identity and boxes 3, 4 and 7.", "- f1040s3.pdf, lines 9–15; f1040.pdf, line 31.", "",
+    "Record reviewer, date, snapshot hashes and corrections in reviews/2025/stage2.md (preserved, not generated). Current reviewer: pending.", "",
+    "## Candidate fixture answers — not class B", "",
+    "Use integer cents below. Work each case independently on the archived instructions before comparing the candidate answer. Synthetic boundary inputs can deliberately contain unusual withholding; they test the encoded instructions, not payroll plausibility.", "",
+    "| Case | Status | Per-employer (box 3; box 7; box 4), cents | Candidate line 11 |", "| --- | --- | --- | --- |"];
+  for(const c of cases){
+    const prefixes = new Set(Object.keys(c.inputs).filter(k=>/\.box[347]$/.test(k)).map(k=>k.slice(0,-5)));
+    const entries = [...prefixes].sort().map(k=>`${k}: ${c.inputs[k+".box3"] ?? "unknown"}; ${c.inputs[k+".box7"] ?? "unknown"}; ${c.inputs[k+".box4"] ?? "unknown"}`);
+    const v=c.expect?.["s3.line11"];
+    out.push(`| ${c.id} | ${c.inputs["f1040.status"]} | ${entries.join(" / ") || "none"} | ${v?.kind==="money"?v.cents:v?.kind==="refusal"?`refusal: ${v.form}`:"unknown"} |`);
+  }
+  out.push("", "RRTA case has the railroad answer true. Other Schedule 3 components are zero except ss.other.components: lines 9, 10, 12 and 14 are 123, 500, 7 and 20 cents; line 15 and Form 1040 line 31 should be 148830 cents.", "",
+    "ss.person.separation is a generic engine test with two people, one employer each. It is not an enabled interview path.", "",
+    "The additional qdcg.table.minimum.regression covers the previously unobserved final minimum: taxable income $50,010, qualified dividends $1, Single; both ordinary and full income use the $50,000–$50,050 Tax Table cell ($5,920). The candidate preferred calculation is $5,920.15, so the ordinary tax wins. This is also pending human review.", "",
+    "## Remaining limits", "", "- This is a slice, not a complete return. Non-Social-Security Schedule 3 components are explicitly supplied subtotals; their underlying forms are not prepared.",
+    "- One person is reachable through the interview. Married filing statuses and RRTA are refused.",
+    "- Whole-dollar return-wide rounding remains deferred; the slice operates in cents.",
+    "- Build-time interview checks enumerate finite enum/Boolean answers over fixture amounts and roster sizes. They are not a proof for unbounded collections.",
+    "- Lean proves the added aggregation non-negativity and fixed-filter monotonicity. Evaluator agreement is testing, not a proof of the TypeScript evaluator or of the IRS transcription.",
+    "- Stage 1 human review remains outstanding. Stage 3 has not started.", "");
+  writeFileSync(join(ROOT,"reports","2025","stage2-review.md"),out.join("\n"));
+  const tmp=mkdtempSync(join(tmpdir(),"review-"));
+  try {
+    for(const id of ["ss.multi","ss.single.over"]){
+      const c=cases.find(c=>c.id===id)!;
+      const path=join(tmp,"inputs.json");writeFileSync(path,JSON.stringify(c.inputs));
+      const proc=spawnSync(process.execPath,[DIST_MAIN,"eval","--inputs",path,"--target","f1040.line31"],{encoding:"utf8"});
+      if(proc.status!==0)throw new Error(proc.stderr);
+      writeFileSync(join(ROOT,"reports","2025",`${id}.txt`),proc.stdout);
+    }
+  } finally {rmSync(tmp,{recursive:true,force:true});}
+  console.log("review packet: reports/2025/stage2-review.md; synthetic values sheets: ss.multi.txt, ss.single.over.txt");
 }

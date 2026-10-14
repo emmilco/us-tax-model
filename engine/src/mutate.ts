@@ -6,6 +6,7 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { loadCanonical } from "./canonical.js";
 import { evaluate } from "./eval.js";
+import { loadCases } from "./fixtures.js";
 import { runChecks } from "./check.js";
 import type { CanonicalData, Expr, FormDoc, Line } from "./types.js";
 
@@ -48,6 +49,9 @@ function mutations(data: CanonicalData): Mutation[] {
       const expr = line.expr as Expr;
       const where = `${doc.id}.${line.id}`;
 
+      if (expr.op === "sum_over" && expr.where) out.push({id:`filter.${where}`,kind:"remove collection filter",where,apply:d=>{const e=findLine(d,line.id)!.expr; if(e.op==="sum_over") delete e.where;}});
+      for (let i=0;i<(line.refuses?.length??0);i++) out.push({id:`refusal.${where}.${i}`,kind:"remove refusal",where,apply:d=>{findLine(d,line.id)!.refuses!.splice(i,1);}});
+      if (expr.op === "test" && "gt" in expr && expr.gt) out.push({id:`boundary.${where}`,kind:"replace strict greater-than with inclusive",where,apply:d=>{const e=findLine(d,line.id)!.expr as {op:"test";gt?:unknown;ge?:unknown};e.ge=e.gt;delete e.gt;}});
       if (expr.op === "smaller_of" || expr.op === "larger_of") {
         out.push({
           id: `minmax.${where}`,
@@ -150,10 +154,8 @@ const EQUIVALENT: Record<string, string> = {
 
 export function runMutation(): number {
   const baseline = loadCanonical();
-  const fixtureFile = JSON.parse(readFileSync(FIXTURES, "utf-8")) as {
-    cases: { id: string; inputs: Record<string, number | boolean | string>; expect?: Record<string, { kind: string; cents?: number; value?: unknown }> }[];
-  };
-  const targets = baseline.forms.flatMap((doc) => doc.lines.map((l) => l.id));
+  const fixtureFile = loadCases();
+  const targets = baseline.forms.filter(d => !d.collection).flatMap((doc) => doc.lines.map((l) => l.id));
 
   const normal = (v: { kind: string; cents?: number; value?: unknown }): string =>
     v.kind === "unknown" ? "unknown" : v.kind === "money" ? `money:${v.cents}` : `${v.kind}:${JSON.stringify(v.value)}`;
@@ -195,7 +197,7 @@ export function runMutation(): number {
   const adjusted = total - equivalentSurvivors.length === 0 ? 1 : killed / (total - equivalentSurvivors.length);
 
   const report: string[] = [];
-  report.push("# Mutation score — Stage 1 worksheets");
+  report.push("# Mutation score — implemented worksheets");
   report.push("");
   report.push("Single-atom mutations applied to the canonical data; a mutant is killed if the");
   report.push("build-time checker fails on it or if any fixture case's value changes. Fixture");

@@ -23,3 +23,11 @@ register:
         doc: i1040gi
         locator: "QDCGT worksheet, lines 18 and 21; Rounding Off to Whole Dollars, p. 23"
       status: "Chosen for Stage 1; shown to the user whenever it can affect the return."
+
+    - id: amb.2025.ss_wages
+      text_at_issue: "Schedule 3 line 11 says total wages without naming W-2 boxes."
+      readings: ["Box 1 taxable compensation", "Social Security wages and tips in boxes 3 plus 7"]
+      chosen: "Use boxes 3 plus 7, summed across employers separately per person."
+      reason: "Owner approved the Stage 2 proposal. iw2w3 p. 18 defines these boxes and their combined wage base; box 1 can exclude deferrals subject to Social Security."
+      cite: { doc: iw2w3, locator: "p. 18, boxes 3 and 7; compare i1040gi p. 117, Schedule 3 line 11" }
+      status: "Owner approved modeling interpretation; source transcription review remains open."

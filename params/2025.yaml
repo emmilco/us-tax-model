@@ -278,3 +278,20 @@ params:
       type: Dollars
       value: 4471800
       cite: { doc: i1040gi, locator: "TCW Section D, row 5 (subtraction amount $44,718.00)" }
+
+    ss.base:
+      type: NonNegDollars
+      value: 17610000
+      cite: { doc: i1040gi, locator: "p. 117, Schedule 3 line 11; independently confirmed iw2w3 p. 18" }
+    ss.limit:
+      type: NonNegDollars
+      value: 1091820
+      cite: { doc: i1040gi, locator: "p. 117, Schedule 3 line 11; independently confirmed iw2w3 p. 18" }
+    ss.one:
+      type: Count
+      value: 1
+      cite: { doc: i1040gi, locator: "p. 117, Schedule 3 line 11, more than one employer" }
+    ss.zero:
+      type: NonNegDollars
+      value: 0
+      cite: { doc: i1040gi, locator: "p. 117, Schedule 3 line 11, amount withheld in excess" }

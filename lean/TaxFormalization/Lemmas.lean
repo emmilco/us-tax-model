@@ -15,6 +15,24 @@ theorem sumList_nonneg (xs : List Int) (h : ∀ x ∈ xs, 0 ≤ x) : 0 ≤ sumLi
     have hys : ∀ x ∈ ys, 0 ≤ x := fun x hx => h x (by simp [hx])
     simpa [sumList] using Int.add_nonneg hy (ih hys)
 
+theorem sumOver_nonneg {α : Type} (xs : List α) (field : α → Int) (keep : α → Bool)
+    (h : ∀ x ∈ xs, 0 ≤ field x) : 0 ≤ sumOver xs field keep := by
+  apply sumList_nonneg
+  intro y hy
+  obtain ⟨x, hx, rfl⟩ := List.mem_map.mp hy
+  exact h x ((List.mem_filter.mp hx).1)
+
+theorem sumOver_mono {α : Type} (xs : List α) (f g : α → Int) (keep : α → Bool)
+    (h : ∀ x, f x ≤ g x) : sumOver xs f keep ≤ sumOver xs g keep := by
+  induction xs with
+  | nil => simp [sumOver, sumList]
+  | cons x xs ih =>
+    by_cases hk : keep x = true
+    · simp [sumOver, hk, sumList] at *
+      have hx := h x
+      omega
+    · simpa [sumOver, List.filter_cons, hk, sumList] using ih
+
 theorem subtractFloor0_nonneg (a b : Int) : 0 ≤ subtractFloor0 a b := by
   simp only [subtractFloor0]
   omega

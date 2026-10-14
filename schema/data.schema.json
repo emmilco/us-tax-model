@@ -4,9 +4,10 @@
   "title": "Tax formalization data",
   "description": "Schema for the canonical JSON built from forms/, params/, tables/ and ambiguities/. Money is integer cents; rates are integer pairs.",
   "$defs": {
+    "interview": {"type": "object", "required": ["tax_year", "targets", "initial", "cite", "questions"], "additionalProperties": false, "properties": {"tax_year": {"const": 2025}, "targets": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}}, "initial": {"type": "object"}, "cite": {"$ref": "#/$defs/cite"}, "questions": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["input", "prompt", "help", "order", "cite"], "additionalProperties": false, "properties": {"input": {"type": "string", "minLength": 1}, "prompt": {"type": "string", "minLength": 1}, "help": {"type": "string", "minLength": 1}, "order": {"type": "integer"}, "cite": {"$ref": "#/$defs/cite"}}}}}},
     "valueType": {
       "type": "string",
-      "pattern": "^(Dollars|NonNegDollars|Rate|Bool|Enum\\([a-z_]+\\))$"
+      "pattern": "^(Count|Dollars|NonNegDollars|Rate|Bool|Enum\\([a-z_]+\\))$"
     },
     "rate": {
       "type": "object",
@@ -17,7 +18,7 @@
     "operand": {
       "oneOf": [
         { "type": "string", "minLength": 1 },
-        { "type": "object", "required": ["const"], "additionalProperties": false, "properties": { "const": { "type": ["number", "string", "boolean"] } } },
+        { "type": "object", "required": ["const"], "additionalProperties": false, "properties": { "const": { "type": ["integer", "string", "boolean"] }, "type": { "const": "Count" } } },
         { "type": "object", "required": ["param"], "additionalProperties": false, "properties": { "param": { "type": "string", "minLength": 1 } } }
       ]
     },
@@ -69,7 +70,7 @@
         { "type": "object", "required": ["op", "table", "key", "status"], "additionalProperties": false, "properties": { "op": { "const": "table_lookup" }, "table": { "type": "string" }, "key": { "type": "string" }, "status": { "type": "string" } } },
         { "type": "object", "required": ["op", "of", "unit", "rule"], "additionalProperties": false, "properties": { "op": { "const": "round" }, "of": { "type": "string" }, "unit": { "type": "integer" }, "rule": { "type": "string" } } },
         { "type": "object", "required": ["op", "table", "key", "status"], "additionalProperties": false, "properties": { "op": { "const": "bracket_schedule" }, "table": { "type": "string" }, "key": { "type": "string" }, "status": { "type": "string" } } },
-        { "type": "object", "required": ["op", "of"], "additionalProperties": false, "properties": { "op": { "const": "sum_over" }, "of": { "type": "string" } } },
+        {"type": "object", "required": ["op", "collection", "field"], "additionalProperties": false, "properties": {"op": {"const": "sum_over"}, "collection": {"type": "string"}, "field": {"type": "string"}, "where": {"$ref": "#/$defs/test"}}},
         { "type": "object", "required": ["op", "alternatives"], "additionalProperties": false, "properties": { "op": { "const": "choose" }, "alternatives": { "type": "array", "minItems": 1, "items": { "type": "object", "required": ["guard", "then"], "additionalProperties": false, "properties": { "guard": { "$ref": "#/$defs/test" }, "then": { "$ref": "#/$defs/lineRef" } } } } } },
         { "$ref": "#/$defs/test" },
         { "type": "object", "required": ["op", "name"], "additionalProperties": false, "properties": { "op": { "const": "opaque" }, "name": { "type": "string", "minLength": 1 } } }
@@ -99,7 +100,9 @@
         "type": { "$ref": "#/$defs/valueType" },
         "expr": { "$ref": "#/$defs/expr" },
         "cite": { "$ref": "#/$defs/cite" },
-        "note": { "type": "string" }
+        "note": { "type": "string" },
+        "ambiguity": { "type": "string", "minLength": 1 },
+        "refuses": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["when", "form", "remedy", "cite"], "additionalProperties": false, "properties": {"when": {"type": "string"}, "form": {"type": "string"}, "remedy": {"type": "string"}, "cite": {"$ref": "#/$defs/cite"}}}}
       }
     },
     "formDoc": {
@@ -113,6 +116,7 @@
         "tax_year": { "type": "integer" },
         "parameters": { "type": "array", "items": { "type": "string" } },
         "note": { "type": "string" },
+        "collection": {"type": "object", "required": ["cite"], "additionalProperties": false, "properties": {"parent": {"type": "string"}, "cite": {"$ref": "#/$defs/cite"}}},
         "lines": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/line" } }
       }
     },

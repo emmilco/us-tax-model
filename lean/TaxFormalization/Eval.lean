@@ -46,13 +46,14 @@ private def strGet (j : Json) (k : String) : Option String := (objGet j k).bind 
 
 def unknown (reason : String) : Json := Json.mkObj [("kind", Json.str "unknown"), ("reason", Json.str reason)]
 def mkMoney (n : Int) : Json := Json.mkObj [("kind", Json.str "money"), ("cents", Json.num (JsonNumber.fromInt n))]
+def mkCount (n : Int) : Json := Json.mkObj [("kind", Json.str "count"), ("value", Json.num (JsonNumber.fromInt n))]
 def mkBool (b : Bool) : Json := Json.mkObj [("kind", Json.str "bool"), ("value", Json.bool b)]
 def mkEnum (s : String) : Json := Json.mkObj [("kind", Json.str "enum"), ("value", Json.str s)]
 def mkRate (n d : Int) : Json :=
   Json.mkObj [("kind", Json.str "rate"), ("num", Json.num (JsonNumber.fromInt n)), ("den", Json.num (JsonNumber.fromInt d))]
 
 def kindOf (v : Json) : Option String := strGet v "kind"
-def isUnknown (v : Json) : Bool := kindOf v == some "unknown"
+def isUnknown (v : Json) : Bool := kindOf v == some "unknown" || kindOf v == some "refusal"
 def isMoney (v : Json) : Bool := kindOf v == some "money"
 def isBool (v : Json) : Bool := kindOf v == some "bool"
 def isEnum (v : Json) : Bool := kindOf v == some "enum"
@@ -117,26 +118,28 @@ partial def eval (ctx : Ctx) (frame : Frame) : Cmd → IO Json
       | some (.str p) => evalParam ctx p
       | _ =>
         match objGet op "const" with
-        | some c => pure (constValue c)
+        | some c => pure (if strGet op "type" == some "Count" then mkCount (c.getInt?.toOption.getD 0) else constValue c)
         | none => pure (unknown "bad operand")
   | .test t => do
     match objGet t "all" with
     | some (.arr ts) =>
+      let mut missing : Option Json := none
       for x in ts do
         let v ← eval ctx frame (.test x)
-        if isUnknown v then return v
-        if !(isBool v) then return unknown "guard not bool"
-        if objGet v "value" == some (Json.bool false) then return mkBool false
-      return mkBool true
+        if kindOf v == some "refusal" then return v
+        if isUnknown v then missing := some v
+        else if objGet v "value" == some (Json.bool false) then return mkBool false
+      return missing.getD (mkBool true)
     | _ =>
     match objGet t "any" with
     | some (.arr ts) =>
+      let mut missing : Option Json := none
       for x in ts do
         let v ← eval ctx frame (.test x)
-        if isUnknown v then return v
-        if !(isBool v) then return unknown "guard not bool"
-        if objGet v "value" == some (Json.bool true) then return mkBool true
-      return mkBool false
+        if kindOf v == some "refusal" then return v
+        if isUnknown v then missing := some v
+        else if objGet v "value" == some (Json.bool true) then return mkBool true
+      return missing.getD (mkBool false)
     | _ =>
     match objGet t "not" with
     | some inner =>
@@ -153,11 +156,16 @@ partial def eval (ctx : Ctx) (frame : Frame) : Cmd → IO Json
           | some (.arr #[a, b]) => do
             let av ← eval ctx frame (.operand a)
             let bv ← eval ctx frame (.operand b)
+            match numGet av "lowerBound", numGet bv "value" with
+            | some lower, some bound =>
+              let certain := if k == "gt" || k == "le" then lower > bound else if k == "ge" || k == "lt" then lower ≥ bound else lower > bound
+              if certain then return mkBool (k == "gt" || k == "ge" || k == "ne")
+            | _, _ => pure ()
             if isUnknown av then pure av
             else if isUnknown bv then pure bv
-            else if isMoney av && isMoney bv then
-              let x := (moneyOf av).getD 0
-              let y := (moneyOf bv).getD 0
+            else if (isMoney av && isMoney bv) || (kindOf av == some "count" && kindOf bv == some "count") then
+              let x := (if isMoney av then moneyOf av else numGet av "value").getD 0
+              let y := (if isMoney bv then moneyOf bv else numGet bv "value").getD 0
               pure (mkBool (match k with
                 | "eq" => x == y | "ne" => x != y | "lt" => x < y
                 | "le" => x ≤ y | "gt" => x > y | _ => x ≥ y))
@@ -191,7 +199,7 @@ where
     | none => pure (unknown s!"parameter {name} missing")
     | some e =>
       match objGet e "value" with
-      | some (.num n) => pure (mkMoney n.mantissa)
+      | some (.num n) => pure (if strGet e "type" == some "Count" then mkCount n.mantissa else mkMoney n.mantissa)
       | some (.bool b) => pure (mkBool b)
       | some v@(.obj _) =>
         match numGet v "num", numGet v "den" with
@@ -209,6 +217,16 @@ where
   evalFresh (ctx : Ctx) (frame : Frame) (lineId : String) : IO Json := do
     match findLine frame.doc lineId with
     | some line =>
+      match objGet line "refuses" with
+      | some (.arr rs) =>
+        for r in rs do
+          let gate := (strGet r "when").getD ""
+          let gv ← eval ctx frame (.line gate)
+          if isUnknown gv then return gv
+          if objGet gv "value" == some (Json.bool true) then
+            return Json.mkObj [("kind", Json.str "refusal"), ("gate", Json.str (keyOf frame gate)),
+              ("form", objGetD r "form" Json.null), ("remedy", objGetD r "remedy" Json.null), ("cite", objGetD r "cite" Json.null)]
+      | _ => pure ()
       let expr := objGetD line "expr" Json.null
       let op := (strGet expr "op").getD ""
       if frame.instKey.isSome && isParam frame.doc lineId then
@@ -219,8 +237,8 @@ where
           | none => pure (unknown s!"unbound parameter {lineId}")
         | none => pure (unknown s!"unbound parameter {lineId}")
       else if op == "input" then
-        match objGet ctx.inputs lineId with
-        | some v => pure (inputValue v)
+        match objGet ctx.inputs (keyOf frame lineId) with
+        | some v => pure (if strGet line "type" == some "Count" then mkCount (v.getInt?.toOption.getD 0) else inputValue v)
         | none => pure (unknown s!"no input supplied for {lineId}")
       else evalExpr ctx frame expr op line
     | none =>
@@ -253,6 +271,39 @@ where
       match strGet expr "ref" with
       | some p => evalParam ctx p
       | none => pure (unknown "param has no ref")
+    | "sum_over" =>
+      let col := (strGet expr "collection").getD ""
+      match ctx.forms.get? col with
+      | none => return unknown "missing collection"
+      | some doc =>
+        let nested := (objGet (objGetD doc "collection" Json.null) "parent").isSome
+        let parent := if nested then frame.instKey.getD "" else ""
+        let rosterKey := "$" ++ col ++ (if parent == "" then "" else "@" ++ parent)
+        match objGet ctx.inputs rosterKey with
+        | some (.arr entries) =>
+          let field := (strGet expr "field").getD ""
+          let isCount := strGet ((findLine doc field).getD Json.null) "type" == some "Count"
+          let mut total : Int := 0
+          let mut missing : Option Json := none
+          let sorted := entries.qsort (fun a b => a.compress < b.compress)
+          for entry in sorted do
+            let entryKey := entry.getStr?.toOption.getD ""
+            let key := (if parent == "" then "" else parent ++ ".") ++ col ++ "[" ++ entryKey ++ "]"
+            let inner : Frame := {docId := col, doc, instKey := some key, bind := Json.null, caller := some frame}
+            let selected ← match objGet expr "where" with
+              | some t => eval ctx inner (.test t)
+              | none => pure (mkBool true)
+            if kindOf selected == some "refusal" then return selected
+            if isUnknown selected then missing := some selected
+            else if objGet selected "value" == some (Json.bool true) then
+              let v ← eval ctx inner (.line field)
+              if kindOf v == some "refusal" then return v
+              if isUnknown v then missing := some v
+              else total := total + (if isCount then numGet v "value" else moneyOf v).getD 0
+          match missing with
+          | some v => return if isCount then Json.mkObj [("kind", Json.str "unknown"), ("reason", Json.str "partial count"), ("lowerBound", Json.num (JsonNumber.fromInt total))] else v
+          | none => return if isCount then mkCount total else mkMoney total
+        | _ => return unknown "collection roster not confirmed"
     | "sum" =>
       match objGet expr "of" with
       | some (.arr refs) =>
@@ -262,6 +313,7 @@ where
           match r.getStr? with
           | .ok ref => do
             let v ← eval ctx frame (.line ref)
+            if kindOf v == some "refusal" then return v
             if isMoney v then
               total := total + (moneyOf v).getD 0
             else if isUnknown v then

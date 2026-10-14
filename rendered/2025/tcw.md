@@ -5,84 +5,84 @@
 
 ## (a) — `amount`
 
-- **IRS:** Enter the amount from line 15
+- **Authored helper label:** Enter the amount from line 15
 - **Encoded (NonNegDollars):** Input — Bound by the calling line (the amount whose tax is computed).
 - Expr: `{"op":"input","source":"Bound by the calling line (the amount whose tax is computed)."}`
 - Cite: [i1040gi] TCW, column (a) (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (status) — `status`
 
-- **IRS:** Use the section for your filing status
+- **Authored helper label:** Use the section for your filing status
 - **Encoded (Enum(filing_status)):** Input — Bound by the calling line (Form 1040 filing status).
 - Expr: `{"op":"input","source":"Bound by the calling line (Form 1040 filing status)."}`
 - Cite: [i1040gi] TCW, sections A-D (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (c) — `single.row1.product`
 
-- **IRS:** Multiply line (a) by 22% (0.22)
+- **Authored helper label:** Multiply line (a) by 22% (0.22)
 - **Encoded (NonNegDollars):** Multiply line (a) by 22% (0.22) (tcw.single.b1.rate).
 - Expr: `{"amount":"amount","op":"multiply_rate","rate":{"param":"tcw.single.b1.rate"}}`
 - Cite: [i1040gi] TCW Section A, row 1 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (d) — `single.row1.tax`
 
-- **IRS:** Subtract (d) from (c)
+- **Authored helper label:** Subtract (d) from (c)
 - **Encoded (Dollars):** Subtract $5,086 (tcw.single.b1.subtract) from line (c).
 - Expr: `{"from":"single.row1.product","op":"subtract","take":{"param":"tcw.single.b1.subtract"}}`
 - Cite: [i1040gi] TCW Section A, row 1 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (c) — `single.row2.product`
 
-- **IRS:** Multiply line (a) by 24% (0.24)
+- **Authored helper label:** Multiply line (a) by 24% (0.24)
 - **Encoded (NonNegDollars):** Multiply line (a) by 24% (0.24) (tcw.single.b2.rate).
 - Expr: `{"amount":"amount","op":"multiply_rate","rate":{"param":"tcw.single.b2.rate"}}`
 - Cite: [i1040gi] TCW Section A, row 2 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (d) — `single.row2.tax`
 
-- **IRS:** Subtract (d) from (c)
+- **Authored helper label:** Subtract (d) from (c)
 - **Encoded (Dollars):** Subtract $7,153 (tcw.single.b2.subtract) from line (c).
 - Expr: `{"from":"single.row2.product","op":"subtract","take":{"param":"tcw.single.b2.subtract"}}`
 - Cite: [i1040gi] TCW Section A, row 2 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (c) — `single.row3.product`
 
-- **IRS:** Multiply line (a) by 32% (0.32)
+- **Authored helper label:** Multiply line (a) by 32% (0.32)
 - **Encoded (NonNegDollars):** Multiply line (a) by 32% (0.32) (tcw.single.b3.rate).
 - Expr: `{"amount":"amount","op":"multiply_rate","rate":{"param":"tcw.single.b3.rate"}}`
 - Cite: [i1040gi] TCW Section A, row 3 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (d) — `single.row3.tax`
 
-- **IRS:** Subtract (d) from (c)
+- **Authored helper label:** Subtract (d) from (c)
 - **Encoded (Dollars):** Subtract $22,937 (tcw.single.b3.subtract) from line (c).
 - Expr: `{"from":"single.row3.product","op":"subtract","take":{"param":"tcw.single.b3.subtract"}}`
 - Cite: [i1040gi] TCW Section A, row 3 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (c) — `single.row4.product`
 
-- **IRS:** Multiply line (a) by 35% (0.35)
+- **Authored helper label:** Multiply line (a) by 35% (0.35)
 - **Encoded (NonNegDollars):** Multiply line (a) by 35% (0.35) (tcw.single.b4.rate).
 - Expr: `{"amount":"amount","op":"multiply_rate","rate":{"param":"tcw.single.b4.rate"}}`
 - Cite: [i1040gi] TCW Section A, row 4 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (d) — `single.row4.tax`
 
-- **IRS:** Subtract (d) from (c)
+- **Authored helper label:** Subtract (d) from (c)
 - **Encoded (Dollars):** Subtract $30,452.75 (tcw.single.b4.subtract) from line (c).
 - Expr: `{"from":"single.row4.product","op":"subtract","take":{"param":"tcw.single.b4.subtract"}}`
 - Cite: [i1040gi] TCW Section A, row 4 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (c) — `single.row5.product`
 
-- **IRS:** Multiply line (a) by 37% (0.37)
+- **Authored helper label:** Multiply line (a) by 37% (0.37)
 - **Encoded (NonNegDollars):** Multiply line (a) by 37% (0.37) (tcw.single.b5.rate).
 - Expr: `{"amount":"amount","op":"multiply_rate","rate":{"param":"tcw.single.b5.rate"}}`
 - Cite: [i1040gi] TCW Section A, row 5 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (d) — `single.row5.tax`
 
-- **IRS:** Subtract (d) from (c)
+- **Authored helper label:** Subtract (d) from (c)
 - **Encoded (Dollars):** Subtract $42,979.75 (tcw.single.b5.subtract) from line (c).
 - Expr: `{"from":"single.row5.product","op":"subtract","take":{"param":"tcw.single.b5.subtract"}}`
 - Cite: [i1040gi] TCW Section A, row 5 (2025; printed date 2026-02-25; sha256 482e9c48)
@@ -96,70 +96,70 @@
 
 ## (c) — `mfj.row1.product`
 
-- **IRS:** Multiply line (a) by 22% (0.22)
+- **Authored helper label:** Multiply line (a) by 22% (0.22)
 - **Encoded (NonNegDollars):** Multiply line (a) by 22% (0.22) (tcw.mfj.b1.rate).
 - Expr: `{"amount":"amount","op":"multiply_rate","rate":{"param":"tcw.mfj.b1.rate"}}`
 - Cite: [i1040gi] TCW Section B, row 1 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (d) — `mfj.row1.tax`
 
-- **IRS:** Subtract (d) from (c)
+- **Authored helper label:** Subtract (d) from (c)
 - **Encoded (Dollars):** Subtract $10,172 (tcw.mfj.b1.subtract) from line (c).
 - Expr: `{"from":"mfj.row1.product","op":"subtract","take":{"param":"tcw.mfj.b1.subtract"}}`
 - Cite: [i1040gi] TCW Section B, row 1 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (c) — `mfj.row2.product`
 
-- **IRS:** Multiply line (a) by 24% (0.24)
+- **Authored helper label:** Multiply line (a) by 24% (0.24)
 - **Encoded (NonNegDollars):** Multiply line (a) by 24% (0.24) (tcw.mfj.b2.rate).
 - Expr: `{"amount":"amount","op":"multiply_rate","rate":{"param":"tcw.mfj.b2.rate"}}`
 - Cite: [i1040gi] TCW Section B, row 2 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (d) — `mfj.row2.tax`
 
-- **IRS:** Subtract (d) from (c)
+- **Authored helper label:** Subtract (d) from (c)
 - **Encoded (Dollars):** Subtract $14,306 (tcw.mfj.b2.subtract) from line (c).
 - Expr: `{"from":"mfj.row2.product","op":"subtract","take":{"param":"tcw.mfj.b2.subtract"}}`
 - Cite: [i1040gi] TCW Section B, row 2 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (c) — `mfj.row3.product`
 
-- **IRS:** Multiply line (a) by 32% (0.32)
+- **Authored helper label:** Multiply line (a) by 32% (0.32)
 - **Encoded (NonNegDollars):** Multiply line (a) by 32% (0.32) (tcw.mfj.b3.rate).
 - Expr: `{"amount":"amount","op":"multiply_rate","rate":{"param":"tcw.mfj.b3.rate"}}`
 - Cite: [i1040gi] TCW Section B, row 3 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (d) — `mfj.row3.tax`
 
-- **IRS:** Subtract (d) from (c)
+- **Authored helper label:** Subtract (d) from (c)
 - **Encoded (Dollars):** Subtract $45,874 (tcw.mfj.b3.subtract) from line (c).
 - Expr: `{"from":"mfj.row3.product","op":"subtract","take":{"param":"tcw.mfj.b3.subtract"}}`
 - Cite: [i1040gi] TCW Section B, row 3 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (c) — `mfj.row4.product`
 
-- **IRS:** Multiply line (a) by 35% (0.35)
+- **Authored helper label:** Multiply line (a) by 35% (0.35)
 - **Encoded (NonNegDollars):** Multiply line (a) by 35% (0.35) (tcw.mfj.b4.rate).
 - Expr: `{"amount":"amount","op":"multiply_rate","rate":{"param":"tcw.mfj.b4.rate"}}`
 - Cite: [i1040gi] TCW Section B, row 4 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (d) — `mfj.row4.tax`
 
-- **IRS:** Subtract (d) from (c)
+- **Authored helper label:** Subtract (d) from (c)
 - **Encoded (Dollars):** Subtract $60,905.50 (tcw.mfj.b4.subtract) from line (c).
 - Expr: `{"from":"mfj.row4.product","op":"subtract","take":{"param":"tcw.mfj.b4.subtract"}}`
 - Cite: [i1040gi] TCW Section B, row 4 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (c) — `mfj.row5.product`
 
-- **IRS:** Multiply line (a) by 37% (0.37)
+- **Authored helper label:** Multiply line (a) by 37% (0.37)
 - **Encoded (NonNegDollars):** Multiply line (a) by 37% (0.37) (tcw.mfj.b5.rate).
 - Expr: `{"amount":"amount","op":"multiply_rate","rate":{"param":"tcw.mfj.b5.rate"}}`
 - Cite: [i1040gi] TCW Section B, row 5 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (d) — `mfj.row5.tax`
 
-- **IRS:** Subtract (d) from (c)
+- **Authored helper label:** Subtract (d) from (c)
 - **Encoded (Dollars):** Subtract $75,937.50 (tcw.mfj.b5.subtract) from line (c).
 - Expr: `{"from":"mfj.row5.product","op":"subtract","take":{"param":"tcw.mfj.b5.subtract"}}`
 - Cite: [i1040gi] TCW Section B, row 5 (2025; printed date 2026-02-25; sha256 482e9c48)
@@ -173,70 +173,70 @@
 
 ## (c) — `mfs.row1.product`
 
-- **IRS:** Multiply line (a) by 22% (0.22)
+- **Authored helper label:** Multiply line (a) by 22% (0.22)
 - **Encoded (NonNegDollars):** Multiply line (a) by 22% (0.22) (tcw.mfs.b1.rate).
 - Expr: `{"amount":"amount","op":"multiply_rate","rate":{"param":"tcw.mfs.b1.rate"}}`
 - Cite: [i1040gi] TCW Section C, row 1 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (d) — `mfs.row1.tax`
 
-- **IRS:** Subtract (d) from (c)
+- **Authored helper label:** Subtract (d) from (c)
 - **Encoded (Dollars):** Subtract $5,086 (tcw.mfs.b1.subtract) from line (c).
 - Expr: `{"from":"mfs.row1.product","op":"subtract","take":{"param":"tcw.mfs.b1.subtract"}}`
 - Cite: [i1040gi] TCW Section C, row 1 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (c) — `mfs.row2.product`
 
-- **IRS:** Multiply line (a) by 24% (0.24)
+- **Authored helper label:** Multiply line (a) by 24% (0.24)
 - **Encoded (NonNegDollars):** Multiply line (a) by 24% (0.24) (tcw.mfs.b2.rate).
 - Expr: `{"amount":"amount","op":"multiply_rate","rate":{"param":"tcw.mfs.b2.rate"}}`
 - Cite: [i1040gi] TCW Section C, row 2 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (d) — `mfs.row2.tax`
 
-- **IRS:** Subtract (d) from (c)
+- **Authored helper label:** Subtract (d) from (c)
 - **Encoded (Dollars):** Subtract $7,153 (tcw.mfs.b2.subtract) from line (c).
 - Expr: `{"from":"mfs.row2.product","op":"subtract","take":{"param":"tcw.mfs.b2.subtract"}}`
 - Cite: [i1040gi] TCW Section C, row 2 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (c) — `mfs.row3.product`
 
-- **IRS:** Multiply line (a) by 32% (0.32)
+- **Authored helper label:** Multiply line (a) by 32% (0.32)
 - **Encoded (NonNegDollars):** Multiply line (a) by 32% (0.32) (tcw.mfs.b3.rate).
 - Expr: `{"amount":"amount","op":"multiply_rate","rate":{"param":"tcw.mfs.b3.rate"}}`
 - Cite: [i1040gi] TCW Section C, row 3 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (d) — `mfs.row3.tax`
 
-- **IRS:** Subtract (d) from (c)
+- **Authored helper label:** Subtract (d) from (c)
 - **Encoded (Dollars):** Subtract $22,937 (tcw.mfs.b3.subtract) from line (c).
 - Expr: `{"from":"mfs.row3.product","op":"subtract","take":{"param":"tcw.mfs.b3.subtract"}}`
 - Cite: [i1040gi] TCW Section C, row 3 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (c) — `mfs.row4.product`
 
-- **IRS:** Multiply line (a) by 35% (0.35)
+- **Authored helper label:** Multiply line (a) by 35% (0.35)
 - **Encoded (NonNegDollars):** Multiply line (a) by 35% (0.35) (tcw.mfs.b4.rate).
 - Expr: `{"amount":"amount","op":"multiply_rate","rate":{"param":"tcw.mfs.b4.rate"}}`
 - Cite: [i1040gi] TCW Section C, row 4 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (d) — `mfs.row4.tax`
 
-- **IRS:** Subtract (d) from (c)
+- **Authored helper label:** Subtract (d) from (c)
 - **Encoded (Dollars):** Subtract $30,452.75 (tcw.mfs.b4.subtract) from line (c).
 - Expr: `{"from":"mfs.row4.product","op":"subtract","take":{"param":"tcw.mfs.b4.subtract"}}`
 - Cite: [i1040gi] TCW Section C, row 4 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (c) — `mfs.row5.product`
 
-- **IRS:** Multiply line (a) by 37% (0.37)
+- **Authored helper label:** Multiply line (a) by 37% (0.37)
 - **Encoded (NonNegDollars):** Multiply line (a) by 37% (0.37) (tcw.mfs.b5.rate).
 - Expr: `{"amount":"amount","op":"multiply_rate","rate":{"param":"tcw.mfs.b5.rate"}}`
 - Cite: [i1040gi] TCW Section C, row 5 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (d) — `mfs.row5.tax`
 
-- **IRS:** Subtract (d) from (c)
+- **Authored helper label:** Subtract (d) from (c)
 - **Encoded (Dollars):** Subtract $37,968.75 (tcw.mfs.b5.subtract) from line (c).
 - Expr: `{"from":"mfs.row5.product","op":"subtract","take":{"param":"tcw.mfs.b5.subtract"}}`
 - Cite: [i1040gi] TCW Section C, row 5 (2025; printed date 2026-02-25; sha256 482e9c48)
@@ -250,70 +250,70 @@
 
 ## (c) — `hoh.row1.product`
 
-- **IRS:** Multiply line (a) by 22% (0.22)
+- **Authored helper label:** Multiply line (a) by 22% (0.22)
 - **Encoded (NonNegDollars):** Multiply line (a) by 22% (0.22) (tcw.hoh.b1.rate).
 - Expr: `{"amount":"amount","op":"multiply_rate","rate":{"param":"tcw.hoh.b1.rate"}}`
 - Cite: [i1040gi] TCW Section D, row 1 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (d) — `hoh.row1.tax`
 
-- **IRS:** Subtract (d) from (c)
+- **Authored helper label:** Subtract (d) from (c)
 - **Encoded (Dollars):** Subtract $6,825 (tcw.hoh.b1.subtract) from line (c).
 - Expr: `{"from":"hoh.row1.product","op":"subtract","take":{"param":"tcw.hoh.b1.subtract"}}`
 - Cite: [i1040gi] TCW Section D, row 1 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (c) — `hoh.row2.product`
 
-- **IRS:** Multiply line (a) by 24% (0.24)
+- **Authored helper label:** Multiply line (a) by 24% (0.24)
 - **Encoded (NonNegDollars):** Multiply line (a) by 24% (0.24) (tcw.hoh.b2.rate).
 - Expr: `{"amount":"amount","op":"multiply_rate","rate":{"param":"tcw.hoh.b2.rate"}}`
 - Cite: [i1040gi] TCW Section D, row 2 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (d) — `hoh.row2.tax`
 
-- **IRS:** Subtract (d) from (c)
+- **Authored helper label:** Subtract (d) from (c)
 - **Encoded (Dollars):** Subtract $8,892 (tcw.hoh.b2.subtract) from line (c).
 - Expr: `{"from":"hoh.row2.product","op":"subtract","take":{"param":"tcw.hoh.b2.subtract"}}`
 - Cite: [i1040gi] TCW Section D, row 2 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (c) — `hoh.row3.product`
 
-- **IRS:** Multiply line (a) by 32% (0.32)
+- **Authored helper label:** Multiply line (a) by 32% (0.32)
 - **Encoded (NonNegDollars):** Multiply line (a) by 32% (0.32) (tcw.hoh.b3.rate).
 - Expr: `{"amount":"amount","op":"multiply_rate","rate":{"param":"tcw.hoh.b3.rate"}}`
 - Cite: [i1040gi] TCW Section D, row 3 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (d) — `hoh.row3.tax`
 
-- **IRS:** Subtract (d) from (c)
+- **Authored helper label:** Subtract (d) from (c)
 - **Encoded (Dollars):** Subtract $24,676 (tcw.hoh.b3.subtract) from line (c).
 - Expr: `{"from":"hoh.row3.product","op":"subtract","take":{"param":"tcw.hoh.b3.subtract"}}`
 - Cite: [i1040gi] TCW Section D, row 3 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (c) — `hoh.row4.product`
 
-- **IRS:** Multiply line (a) by 35% (0.35)
+- **Authored helper label:** Multiply line (a) by 35% (0.35)
 - **Encoded (NonNegDollars):** Multiply line (a) by 35% (0.35) (tcw.hoh.b4.rate).
 - Expr: `{"amount":"amount","op":"multiply_rate","rate":{"param":"tcw.hoh.b4.rate"}}`
 - Cite: [i1040gi] TCW Section D, row 4 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (d) — `hoh.row4.tax`
 
-- **IRS:** Subtract (d) from (c)
+- **Authored helper label:** Subtract (d) from (c)
 - **Encoded (Dollars):** Subtract $32,191 (tcw.hoh.b4.subtract) from line (c).
 - Expr: `{"from":"hoh.row4.product","op":"subtract","take":{"param":"tcw.hoh.b4.subtract"}}`
 - Cite: [i1040gi] TCW Section D, row 4 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (c) — `hoh.row5.product`
 
-- **IRS:** Multiply line (a) by 37% (0.37)
+- **Authored helper label:** Multiply line (a) by 37% (0.37)
 - **Encoded (NonNegDollars):** Multiply line (a) by 37% (0.37) (tcw.hoh.b5.rate).
 - Expr: `{"amount":"amount","op":"multiply_rate","rate":{"param":"tcw.hoh.b5.rate"}}`
 - Cite: [i1040gi] TCW Section D, row 5 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (d) — `hoh.row5.tax`
 
-- **IRS:** Subtract (d) from (c)
+- **Authored helper label:** Subtract (d) from (c)
 - **Encoded (Dollars):** Subtract $44,718 (tcw.hoh.b5.subtract) from line (c).
 - Expr: `{"from":"hoh.row5.product","op":"subtract","take":{"param":"tcw.hoh.b5.subtract"}}`
 - Cite: [i1040gi] TCW Section D, row 5 (2025; printed date 2026-02-25; sha256 482e9c48)

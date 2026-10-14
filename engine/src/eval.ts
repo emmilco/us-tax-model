@@ -4,14 +4,16 @@
 // register entry amb.2025.multiplication_subcent) and the explicit whole-
 // dollar rounding the caller asks for when displaying results.
 
-import type { CanonicalData, CiteFilled, Expr, FormDoc, Operand, TableDoc, TestExpr } from "./types.js";
+import type { CanonicalData, CiteFilled, Expr, FormDoc, Operand, TableDoc, TestExpr, Inputs, Line } from "./types.js";
 
 export type Value =
+  | { kind: "count"; value: number }
+  | { kind: "refusal"; gate: string; form: string; remedy: string; cite: CiteFilled }
   | { kind: "money"; cents: number }
   | { kind: "rate"; num: number; den: number }
   | { kind: "bool"; value: boolean }
   | { kind: "enum"; value: string }
-  | { kind: "unknown"; reason: string };
+  | { kind: "unknown"; reason: string; input?: string; lowerBound?: number };
 
 export interface Derivation {
   line: string; // canonical id (instance keyed when inside a def)
@@ -39,7 +41,7 @@ interface Frame {
 interface Ctx {
   data: CanonicalData;
   byId: Map<string, FormDoc>;
-  inputs: Record<string, number | boolean | string>;
+  inputs: Inputs;
   memo: Map<string, Derivation>;
   inProgress: Set<string>;
   errors: string[];
@@ -47,9 +49,10 @@ interface Ctx {
 
 export function evaluate(
   data: CanonicalData,
-  inputs: Record<string, number | boolean | string>,
+  inputs: Inputs,
   targets: string[],
 ): EvalResult {
+  validateInputs(data, inputs);
   const ctx: Ctx = {
     data,
     byId: new Map([...data.forms, ...data.defs].map((d) => [d.id, d])),
@@ -77,10 +80,10 @@ export function evaluate(
 }
 
 /** Evaluate every line of the given documents (used by compare/fixtures). */
-export function evaluateAll(data: CanonicalData, inputs: Record<string, number | boolean | string>): EvalResult {
+export function evaluateAll(data: CanonicalData, inputs: Inputs): EvalResult {
   const targets: string[] = [];
   for (const doc of [...data.forms, ...data.defs]) {
-    if (doc.kind === "def") continue;
+    if (doc.kind === "def" || doc.collection) continue;
     for (const line of doc.lines) targets.push(line.id);
   }
   return evaluate(data, inputs, targets);
@@ -143,19 +146,37 @@ function evalLine(ctx: Ctx, frame: Frame, lineId: string): Derivation {
       guardsNotTaken: [],
       notes: [],
     };
-  } else if (line.expr.op === "input") {
-    const raw = ctx.inputs[lineId];
-    const value: Value =
-      raw === undefined
-        ? { kind: "unknown", reason: `no input supplied for ${lineId}` }
-        : typeof raw === "number"
-          ? { kind: "money", cents: raw }
-          : typeof raw === "boolean"
-            ? { kind: "bool", value: raw }
-            : { kind: "enum", value: raw };
-    result = { line: key, op: "input", value, operands: [], cite: line.cite, guardsNotTaken: [], notes: [] };
   } else {
-    result = evalExpr(ctx, frame, lineId, line.expr as Expr, line.cite);
+    const gateOps: { ref: string; value: Value }[] = [];
+    let blocked: Value | null = null;
+    for (const refusal of line.refuses ?? []) {
+      const gate = evalLine(ctx, frame, refusal.when);
+      gateOps.push({ ref: gate.line, value: gate.value });
+      if (gate.value.kind === "bool" && gate.value.value) {
+        blocked = { kind: "refusal", gate: gate.line, form: refusal.form, remedy: refusal.remedy, cite: refusal.cite };
+        break;
+      }
+      if (gate.value.kind !== "bool") { blocked = gate.value; break; }
+    }
+    if (blocked) {
+      result = { line: key, op: "gate", value: blocked, operands: [], cite: line.cite, guardsNotTaken: [], notes: [] };
+    } else if (line.expr.op === "input") {
+      const raw = ctx.inputs[key];
+      const value: Value = raw === undefined || raw === null
+        ? { kind: "unknown", reason: `no input supplied for ${key}`, input: key }
+        : line.type === "Count" ? { kind: "count", value: raw as number }
+        : typeof raw === "number" ? { kind: "money", cents: raw }
+        : typeof raw === "boolean" ? { kind: "bool", value: raw }
+        : { kind: "enum", value: raw as string };
+      result = { line: key, op: "input", value, operands: [], cite: line.cite, guardsNotTaken: [], notes: [] };
+    } else {
+      result = evalExpr(ctx, frame, lineId, line.expr as Expr, line.cite);
+    }
+    result.operands.unshift(...gateOps);
+  }
+  if (line?.ambiguity) {
+    const entry=ctx.data.register.entries.find(e=>e.id===line.ambiguity);
+    if(entry) result.notes.push(`Interpretation ${entry.id}: ${entry.chosen} ${entry.reason} (${entry.cite.doc}, ${entry.cite.locator})`);
   }
   ctx.memo.set(key, result);
   ctx.inProgress.delete(key);
@@ -171,7 +192,7 @@ function operandDisplay(op: Operand): string {
 function evalOperand(ctx: Ctx, frame: Frame, op: Operand, operandsOut?: { ref: string; value: Value }[]): Value {
   if (typeof op === "string") {
     const d = evalLine(ctx, frame, op);
-    operandsOut?.push({ ref: op, value: d.value });
+    operandsOut?.push({ ref: d.line, value: d.value });
     return d.value;
   }
   if ("param" in op) {
@@ -181,7 +202,7 @@ function evalOperand(ctx: Ctx, frame: Frame, op: Operand, operandsOut?: { ref: s
     }
     let value: Value;
     if (typeof entry.value === "number") {
-      value = { kind: "money", cents: entry.value };
+      value = entry.type === "Count" ? { kind: "count", value: entry.value } : { kind: "money", cents: entry.value };
     } else if (typeof entry.value === "boolean") {
       value = { kind: "bool", value: entry.value };
     } else if ("num" in entry.value) {
@@ -201,14 +222,16 @@ function evalOperand(ctx: Ctx, frame: Frame, op: Operand, operandsOut?: { ref: s
   }
   const v = op.const;
   const value: Value =
-    typeof v === "number" ? { kind: "money", cents: v } : typeof v === "boolean" ? { kind: "bool", value: v } : { kind: "enum", value: v };
+    op.type === "Count" ? { kind: "count", value: v as number } : typeof v === "number" ? { kind: "money", cents: v } : typeof v === "boolean" ? { kind: "bool", value: v } : { kind: "enum", value: v };
   operandsOut?.push({ ref: operandDisplay(op), value });
   return value;
 }
 
 /** Half-up at the cent: floor((2*a*n + d) / (2*d)) computes round-half-up of a*n/d toward +infinity. */
 export function multiplyRateHalfUp(cents: number, num: number, den: number): number {
-  return Math.floor((2 * cents * num + den) / (2 * den));
+  const n = 2n * BigInt(cents) * BigInt(num) + BigInt(den);
+  const d = 2n * BigInt(den);
+  return safeNumber(n / d - (n < 0n && n % d !== 0n ? 1n : 0n));
 }
 
 export function exactBracketCents(rows: { upper: number | null; base: number; rate: { num: number; den: number }; over: number }[], amount: number): { n: bigint; d: bigint } | null {
@@ -256,27 +279,55 @@ function evalExpr(ctx: Ctx, frame: Frame, lineId: string, expr: Expr, cite: Cite
       const v = evalOperand(ctx, frame, { param: expr.ref }, ops);
       return d(v, "param", ops);
     }
+    case "sum_over": {
+      const entry = ctx.byId.get(expr.collection)!;
+      const parent = entry.collection?.parent ? frame.instKey : null;
+      const rosterKey = `$${entry.id}${parent ? "@" + parent : ""}`;
+      const roster = ctx.inputs[rosterKey];
+      if (!Array.isArray(roster)) return d({ kind: "unknown", reason: "collection roster not confirmed", input: rosterKey }, "sum_over", ops);
+      let total = 0n;
+      let missing: Value | null = null;
+      const fieldType = entry.lines.find(l => l.id === expr.field)!.type;
+      for (const key of [...roster].sort()) {
+        const inner: Frame = { doc: entry, instKey: `${parent ? parent + "." : ""}${entry.id}[${key}]`, bind: null, caller: frame };
+        if (expr.where) {
+          const selected = evalTest(ctx, inner, expr.where, ops);
+          if (selected.kind === "refusal") return d(selected, "sum_over", ops);
+          if (selected.kind !== "bool") { missing = selected; continue; }
+          if (!selected.value) continue;
+        }
+        const item = evalLine(ctx, inner, expr.field);
+        ops.push({ ref: item.line, value: item.value });
+        if (item.value.kind === "refusal") return d(item.value, "sum_over", ops);
+        if (item.value.kind === "unknown") { missing = item.value; continue; }
+        if (item.value.kind === "money") total += BigInt(item.value.cents);
+        else if (item.value.kind === "count") total += BigInt(item.value.value);
+      }
+      if (missing?.kind === "unknown" && fieldType === "Count") missing = { ...missing, lowerBound: safeNumber(total) };
+      return d(missing ?? (fieldType === "Count" ? { kind: "count", value: safeNumber(total) } : { kind: "money", cents: safeNumber(total) }), "sum_over", ops, [], [`confirmed roster ${rosterKey}: ${roster.join(", ")}`]);
+    }
     case "sum": {
-      let total = 0;
+      let total = 0n;
       let unknown: Value | null = null;
       for (const ref of expr.of) {
         const v = evalOperand(ctx, frame, ref, ops);
-        if (v.kind === "money") total += v.cents;
+        if (v.kind === "money") total += BigInt(v.cents);
+        else if (v.kind === "refusal") return d(v, "sum", ops);
         else if (v.kind === "unknown") unknown = v;
         else return d({ kind: "unknown", reason: `sum operand ${ref} is not money` }, "sum", ops);
       }
-      return d(unknown ?? { kind: "money", cents: total }, "sum", ops);
+      return d(unknown ?? { kind: "money", cents: safeNumber(total) }, "sum", ops);
     }
     case "subtract":
     case "subtract_floor0": {
       const from = evalOperand(ctx, frame, expr.from, ops);
       const take = evalOperand(ctx, frame, expr.take, ops);
-      if (from.kind === "unknown") return d(from, expr.op, ops);
-      if (take.kind === "unknown") return d(take, expr.op, ops);
+      if ((from.kind === "unknown" || from.kind === "refusal")) return d(from, expr.op, ops);
+      if ((take.kind === "unknown" || take.kind === "refusal")) return d(take, expr.op, ops);
       if (from.kind !== "money" || take.kind !== "money") {
         return d({ kind: "unknown", reason: "operands are not money" }, expr.op, ops);
       }
-      const diff = from.cents - take.cents;
+      const diff = safeNumber(BigInt(from.cents) - BigInt(take.cents));
       const value = expr.op === "subtract_floor0" ? Math.max(0, diff) : diff;
       return d({ kind: "money", cents: value }, expr.op, ops);
     }
@@ -285,7 +336,7 @@ function evalExpr(ctx: Ctx, frame: Frame, lineId: string, expr: Expr, cite: Cite
       const vals: number[] = [];
       for (const ref of expr.of) {
         const v = evalOperand(ctx, frame, ref, ops);
-        if (v.kind === "unknown") return d(v, expr.op, ops);
+        if ((v.kind === "unknown" || v.kind === "refusal")) return d(v, expr.op, ops);
         if (v.kind !== "money") return d({ kind: "unknown", reason: "operands are not money" }, expr.op, ops);
         vals.push(v.cents);
       }
@@ -295,8 +346,8 @@ function evalExpr(ctx: Ctx, frame: Frame, lineId: string, expr: Expr, cite: Cite
     case "multiply_rate": {
       const amount = evalOperand(ctx, frame, expr.amount, ops);
       const rate = evalOperand(ctx, frame, expr.rate, ops);
-      if (amount.kind === "unknown") return d(amount, "multiply_rate", ops);
-      if (rate.kind === "unknown") return d(rate, "multiply_rate", ops);
+      if ((amount.kind === "unknown" || amount.kind === "refusal")) return d(amount, "multiply_rate", ops);
+      if ((rate.kind === "unknown" || rate.kind === "refusal")) return d(rate, "multiply_rate", ops);
       if (amount.kind !== "money" || rate.kind !== "rate") {
         return d({ kind: "unknown", reason: "multiply_rate operands wrong" }, "multiply_rate", ops);
       }
@@ -321,9 +372,9 @@ function evalExpr(ctx: Ctx, frame: Frame, lineId: string, expr: Expr, cite: Cite
       const guardsNotTaken: { guard: string; value: Value }[] = [];
       for (let gi = 0; gi < expr.alternatives.length; gi++) {
         const alt = expr.alternatives[gi]!;
-        const g = evalTest(ctx, frame, alt.guard);
+        const g = evalTest(ctx, frame, alt.guard, ops);
         const gText = JSON.stringify(alt.guard);
-        if (g.kind === "unknown") return d(g, "choose", ops, guardsNotTaken, [`guard unknown: ${g.reason}`]);
+        if ((g.kind === "unknown" || g.kind === "refusal")) return d(g, "choose", ops, guardsNotTaken, [`guard incomplete`]);
         if (g.kind !== "bool") return d({ kind: "unknown", reason: "guard not bool" }, "choose", ops);
         if (g.value) {
           const then =
@@ -349,7 +400,7 @@ function evalExpr(ctx: Ctx, frame: Frame, lineId: string, expr: Expr, cite: Cite
       return d({ kind: "unknown", reason: "no guard matched" }, "choose", ops, guardsNotTaken);
     }
     case "test": {
-      const v = evalTest(ctx, frame, expr as TestExpr);
+      const v = evalTest(ctx, frame, expr as TestExpr, ops);
       return d(v, "test", ops);
     }
     default:
@@ -371,38 +422,38 @@ function findBand(table: TableDoc, cents: number): { at_least: number; less_than
   return null;
 }
 
-function evalTest(ctx: Ctx, frame: Frame, test: TestExpr): Value {
-  if ("all" in test) {
-    for (const t of test.all) {
-      const v = evalTest(ctx, frame, t);
-      if (v.kind !== "bool") return v;
-      if (!v.value) return { kind: "bool", value: false };
+function evalTest(ctx: Ctx, frame: Frame, test: TestExpr, ops?: { ref: string; value: Value }[]): Value {
+  if ("all" in test || "any" in test) {
+    const isAll = "all" in test;
+    const tests = "all" in test ? test.all : test.any;
+    let pending: Value | null = null;
+    for (const t of tests) {
+      const v = evalTest(ctx, frame, t, ops);
+      if (v.kind === "refusal") return v;
+      if (v.kind !== "bool") { pending = v; continue; }
+      if (v.value !== isAll) return {kind:"bool", value: !isAll};
     }
-    return { kind: "bool", value: true };
-  }
-  if ("any" in test) {
-    for (const t of test.any) {
-      const v = evalTest(ctx, frame, t);
-      if (v.kind !== "bool") return v;
-      if (v.value) return { kind: "bool", value: true };
-    }
-    return { kind: "bool", value: false };
+    return pending ?? {kind:"bool", value:isAll};
   }
   if ("not" in test) {
-    const v = evalTest(ctx, frame, test.not);
+    const v = evalTest(ctx, frame, test.not, ops);
     if (v.kind !== "bool") return v;
     return { kind: "bool", value: !v.value };
   }
   const key = (["eq", "ne", "lt", "le", "gt", "ge"] as const).find((k) => (test as Record<string, unknown>)[k] !== undefined)!;
   const [a, b] = (test as unknown as Record<string, [Operand, Operand]>)[key]!;
-  const av = evalOperand(ctx, frame, a);
-  const bv = evalOperand(ctx, frame, b);
-  if (av.kind === "unknown") return av;
-  if (bv.kind === "unknown") return bv;
+  const av = evalOperand(ctx, frame, a, ops);
+  const bv = evalOperand(ctx, frame, b, ops);
+  if (av.kind === "unknown" && av.lowerBound !== undefined && bv.kind === "count") {
+    const certain = (key === "gt" || key === "le") ? av.lowerBound > bv.value : (key === "ge" || key === "lt") ? av.lowerBound >= bv.value : av.lowerBound > bv.value;
+    if (certain) return {kind:"bool",value:key === "gt" || key === "ge" || key === "ne"};
+  }
+  if ((av.kind === "unknown" || av.kind === "refusal")) return av;
+  if ((bv.kind === "unknown" || bv.kind === "refusal")) return bv;
   let result: boolean;
-  if (av.kind === "money" && bv.kind === "money") {
-    const x = av.cents;
-    const y = bv.cents;
+  if ((av.kind === "money" && bv.kind === "money") || (av.kind === "count" && bv.kind === "count")) {
+    const x = av.kind === "money" ? av.cents : av.value;
+    const y = bv.kind === "money" ? bv.cents : bv.value;
     result = key === "eq" ? x === y : key === "ne" ? x !== y : key === "lt" ? x < y : key === "le" ? x <= y : key === "gt" ? x > y : x >= y;
   } else if (av.kind === "enum" && bv.kind === "enum") {
     result = key === "eq" ? av.value === bv.value : key === "ne" ? av.value !== bv.value : false;
@@ -412,4 +463,39 @@ function evalTest(ctx: Ctx, frame: Frame, test: TestExpr): Value {
     return { kind: "unknown", reason: "comparison operand types" };
   }
   return { kind: "bool", value: result };
+}
+
+export function safeNumber(n: bigint): number {
+  const v = Number(n);
+  if (!Number.isSafeInteger(v)) throw new Error("integer exceeds exact JSON number range");
+  return v;
+}
+
+/** Validate all supplied inputs, including values on currently unselected branches. */
+export function validateInputs(data: CanonicalData, inputs: Inputs): void {
+  const legal = new Map<string, Line>();
+  const rosters = new Set<string>();
+  const visit = (doc: FormDoc, prefix: string): void => {
+    for (const line of doc.lines) if (line.expr.op === "input") legal.set(prefix + "." + line.id.slice(doc.id.length + 1), line);
+    for (const child of data.forms.filter(d => d.collection?.parent === doc.id)) visitCollection(child, prefix);
+  };
+  const visitCollection = (doc: FormDoc, parent: string | null): void => {
+    const rk = `$${doc.id}${parent ? "@" + parent : ""}`;
+    rosters.add(rk);
+    const raw = inputs[rk];
+    if (raw === undefined || raw === null) return;
+    if (!Array.isArray(raw) || raw.some(k => typeof k !== "string" || !/^[a-zA-Z0-9_-]+$/.test(k)) || new Set(raw).size !== raw.length) throw new Error(`${rk}: expected distinct stable entry keys`);
+    for (const k of raw) visit(doc, `${parent ? parent + "." : ""}${doc.id}[${k}]`);
+  };
+  for (const doc of data.forms) {
+    if (!doc.collection) visit(doc, doc.id);
+    else if (!doc.collection.parent) visitCollection(doc, null);
+  }
+  for (const [key, raw] of Object.entries(inputs)) {
+    if (rosters.has(key)) continue;
+    const line = legal.get(key);
+    if (!line) throw new Error(`${key}: input is not declared or belongs to an unlisted collection entry`);
+    if (raw === null) continue;
+    if (line.type === "Bool" ? typeof raw !== "boolean" : line.type.startsWith("Enum(") ? !data.params.enums[line.type.slice(5, -1)]!.values.includes(raw as string) : typeof raw !== "number" || !Number.isSafeInteger(raw) || (line.type !== "Dollars" && raw < 0)) throw new Error(`${key}: invalid ${line.type} input`);
+  }
 }

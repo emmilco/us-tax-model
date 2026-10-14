@@ -8,6 +8,8 @@ import { parse as parseYaml } from "yaml";
 import { Ajv2020 } from "ajv/dist/2020.js";
 import type { ValidateFunction } from "ajv";
 import { stableStringify } from "./util.js";
+import { type InterviewData } from "./interview.js";
+import { checkInterview } from "./interview-check.js";
 import { runChecks } from "./check.js";
 import type {
   CanonicalData,
@@ -79,7 +81,9 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
     }
     const doc = (raw as Record<string, FormDoc>)[key]!;
     const taxYear = doc.tax_year;
+    if (doc.collection) doc.collection.cite = fillCite(doc.collection.cite, taxYear, `${doc.id} collection`);
     for (const line of doc.lines ?? []) {
+      for (const refusal of line.refuses ?? []) refusal.cite = fillCite(refusal.cite, taxYear, `${line.id} refusal`);
       line.cite = fillCite(line.cite as unknown as CiteAuthored, taxYear, `${doc.id}.${line.id}`);
     }
     return doc;
@@ -121,6 +125,15 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
     entry.cite = fillCite(entry.cite as unknown as CiteAuthored, register.tax_year, `register ${entry.id}`);
   }
 
+  const interview = (parseYaml(readFileSync(join(ROOT, "interview", "2025.yaml"), "utf8")) as {interview: InterviewData}).interview;
+  interview.cite = fillCite(interview.cite, interview.tax_year, "interview");
+  for (const q of interview.questions) {
+    q.cite = fillCite(q.cite, interview.tax_year, `question ${q.input}`);
+    if (!q.prompt || !q.help || !Number.isSafeInteger(q.order)) errors.push(`invalid question ${q.input}`);
+    const declared = q.input.startsWith("$") ? forms.some(d => d.collection && "$" + d.id === q.input) : forms.some(d => d.lines.some(l => l.id === q.input && l.expr.op === "input"));
+    if (!declared) errors.push(`question ${q.input}: undeclared input`);
+  }
+  if (new Set(interview.questions.map(q => q.input)).size !== interview.questions.length) errors.push("duplicate questions");
   const data: CanonicalData = { forms, defs, params, tables, register };
 
   // Schema validation on the canonical form.
@@ -143,6 +156,7 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
       errors.push(`${what}: schema validation failed: ${ajv.errorsText(validator.errors).slice(0, 500)}`);
     }
   };
+  validate(validateWith("interview"), interview, "interview");
   for (const doc of forms) validate(formFileValidator, { form: doc }, `form ${doc.id}`);
   for (const doc of defs) validate(defFileValidator, { def: doc }, `def ${doc.id}`);
   validate(paramsValidator, { params }, "params");
@@ -154,6 +168,9 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
   errors.push(...checkResult.errors);
   stats.push(...checkResult.stats);
 
+  if (errors.length === 0) errors.push(...checkInterview(data, interview));
+  stats.push("interview: finite enum/Boolean combinations checked against Stage 2 numeric and roster representatives");
+
   // Write canonical output.
   if (errors.length === 0) {
     rmSync(OUT_DIR, { recursive: true, force: true });
@@ -164,6 +181,7 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
     for (const doc of defs) {
       writeFileSync(join(OUT_DIR, `${doc.id}.json`), stableStringify({ def: doc }));
     }
+    writeFileSync(join(OUT_DIR, "interview.json"), stableStringify(interview));
     writeFileSync(join(OUT_DIR, "params.json"), stableStringify({ params }));
     for (const table of tables) {
       writeFileSync(join(OUT_DIR, "tables", `${table.id}.json`), stableStringify({ table }));

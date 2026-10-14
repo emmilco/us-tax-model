@@ -1,0 +1,80 @@
+form:
+  id: w2
+  kind: form
+  title: Form W-2 — Social Security boxes by employer
+  tax_year: 2025
+  lines:
+    - id: w2.box3
+      printed: "3"
+      label: Social security wages
+      type: NonNegDollars
+      expr:
+        op: input
+        source: Social security wages
+      cite:
+        doc: iw2w3
+        locator: p. 18, boxes 3, 4 and 7
+    - id: w2.box7
+      printed: "7"
+      label: Social security tips
+      type: NonNegDollars
+      expr:
+        op: input
+        source: Social security tips
+      cite:
+        doc: iw2w3
+        locator: p. 18, boxes 3, 4 and 7
+    - id: w2.box4
+      printed: "4"
+      label: Social security tax withheld
+      type: NonNegDollars
+      expr:
+        op: input
+        source: Social security tax withheld
+      cite:
+        doc: iw2w3
+        locator: p. 18, boxes 3, 4 and 7
+    - id: w2.wages
+      printed: (helper)
+      label: Add social security wages and social security tips
+      type: NonNegDollars
+      expr:
+        op: sum
+        of:
+          - w2.box3
+          - w2.box7
+      cite:
+        doc: iw2w3
+        locator: p. 18, boxes 3, 4 and 7
+    - id: w2.one
+      printed: (helper)
+      label: One employer entry
+      type: Count
+      expr:
+        op: param
+        ref: ss.one
+      cite:
+        doc: i1040gi
+        locator: p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax
+          Withheld
+    - id: w2.over
+      printed: (helper)
+      label: Did this employer withhold more than $10,918.20?
+      type: Bool
+      expr:
+        op: test
+        gt:
+          - w2.box4
+          - param: ss.limit
+      cite:
+        doc: i1040gi
+        locator: p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax
+          Withheld
+  collection:
+    parent: person
+    cite:
+      doc: i1040gi
+      locator: p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax
+        Withheld
+  note: Keyed by employer within person; consolidate repeated forms for the same
+    employer explicitly. These are helper lines as well as printed boxes.

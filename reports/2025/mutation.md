@@ -1,4 +1,4 @@
-# Mutation score — Stage 1 worksheets
+# Mutation score — implemented worksheets
 
 Single-atom mutations applied to the canonical data; a mutant is killed if the
 build-time checker fails on it or if any fixture case's value changes. Fixture
@@ -7,11 +7,11 @@ the fixture test compares).
 
 | Metric | Value |
 | --- | --- |
-| Mutants | 100 |
-| Killed by the checker | 9 |
-| Killed by fixtures | 89 |
+| Mutants | 111 |
+| Killed by the checker | 10 |
+| Killed by fixtures | 99 |
 | Surviving | 2 (2 provably equivalent) |
-| Mutation score (raw) | 98.0% |
+| Mutation score (raw) | 98.2% |
 | Mutation score (equivalent mutants excluded) | 100.0% |
 
 ## Surviving — classified equivalent

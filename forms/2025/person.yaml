@@ -1,0 +1,181 @@
+form:
+  id: person
+  kind: worksheet
+  title: Excess Social Security credit — separately per person
+  tax_year: 2025
+  lines:
+    - id: person.rrta
+      printed: rrta
+      label: Do any wage statements report railroad retirement compensation or taxes
+        (W-2 box 14)?
+      type: Bool
+      expr:
+        op: input
+        source: Do any wage statements report railroad retirement compensation or taxes
+          (W-2 box 14)?
+      cite:
+        doc: iw2w3
+        locator: "pp. 12–13, Railroad employers: RRTA compensation and taxes in box 14;
+          boxes 3–7 are not used for RRTA"
+    - id: person.employers
+      printed: employers
+      label: Total w2.one for this person
+      type: Count
+      expr:
+        op: sum_over
+        collection: w2
+        field: w2.one
+      cite:
+        doc: i1040gi
+        locator: p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax
+          Withheld
+    - id: person.overcount
+      printed: overcount
+      label: Total w2.one for this person
+      type: Count
+      expr:
+        op: sum_over
+        collection: w2
+        field: w2.one
+        where:
+          op: test
+          eq:
+            - w2.over
+            - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax
+          Withheld
+    - id: person.over
+      printed: over
+      label: Any employer withheld more than the limit
+      type: Bool
+      expr:
+        op: test
+        gt:
+          - person.overcount
+          - const: 0
+            type: Count
+      cite:
+        doc: i1040gi
+        locator: p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax
+          Withheld
+    - id: person.wages
+      printed: wages
+      label: Total w2.wages for this person
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: w2
+        field: w2.wages
+      cite:
+        doc: i1040gi
+        locator: p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax
+          Withheld
+      ambiguity: amb.2025.ss_wages
+    - id: person.withheld
+      printed: withheld
+      label: Total w2.box4 for this person
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: w2
+        field: w2.box4
+      cite:
+        doc: i1040gi
+        locator: p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax
+          Withheld
+    - id: person.eligible
+      printed: eligible
+      label: More than one employer and total social security wages over $176,100
+      type: Bool
+      expr:
+        op: test
+        all:
+          - op: test
+            gt:
+              - person.employers
+              - const: 1
+                type: Count
+          - op: test
+            gt:
+              - person.wages
+              - param: ss.base
+      cite:
+        doc: i1040gi
+        locator: p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax
+          Withheld
+    - id: person.excess
+      printed: excess
+      label: Withholding above $10,918.20, if any
+      type: NonNegDollars
+      expr:
+        op: subtract_floor0
+        from: person.withheld
+        take:
+          param: ss.limit
+      cite:
+        doc: i1040gi
+        locator: p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax
+          Withheld
+    - id: person.zero
+      printed: zero
+      label: No excess credit
+      type: NonNegDollars
+      expr:
+        op: param
+        ref: ss.zero
+      cite:
+        doc: i1040gi
+        locator: p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax
+          Withheld
+    - id: person.credit
+      printed: credit
+      label: Excess social security tax withheld, figured separately for this person
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - person.eligible
+                - const: true
+            then: person.excess
+          - guard:
+              op: test
+              eq:
+                - person.eligible
+                - const: false
+            then: person.zero
+      cite:
+        doc: i1040gi
+        locator: p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax
+          Withheld
+      refuses:
+        - when: person.rrta
+          form: Schedule 3 line 11 (RRTA path)
+          remedy: This stage handles Social Security only. Use the railroad retirement
+            instructions; excess Tier 2 tax uses Form 843 rather than Form 1040.
+          cite:
+            doc: i1040gi
+            locator: p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax
+              Withheld
+        - when: person.over
+          form: Form 843
+          remedy: An employer withheld more than $10,918.20. Ask that employer to adjust
+            the tax. If the employer does not adjust the overcollection, you can
+            file a refund claim using Form 843. This tool cannot complete the
+            credit until the overcollection is resolved.
+          cite:
+            doc: i1040gi
+            locator: p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax
+              Withheld
+  collection:
+    cite:
+      doc: i1040gi
+      locator: p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax
+        Withheld
+  note: Helper worksheet. Wages means boxes 3 plus 7 under approved interpretation
+    amb.2025.ss_wages. Independent lines may compute while credit and dependent
+    totals are refused.

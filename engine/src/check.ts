@@ -20,6 +20,7 @@ import type {
 
 type Ty =
   | { kind: "money"; nonneg: boolean }
+  | { kind: "count" }
   | { kind: "rate" }
   | { kind: "bool" }
   | { kind: "enum"; name: string };
@@ -56,7 +57,26 @@ export function runChecks(data: CanonicalData): { errors: string[]; stats: strin
   }
 
   for (const doc of [...data.forms, ...data.defs]) {
+    if (doc.collection) {
+      checkCite(ctx, doc.collection.cite, `${doc.id} collection`);
+      if (doc.kind === "def") ctx.errors.push(`${doc.id}: def cannot be a collection`);
+      const seen = new Set([doc.id]);
+      let parent = doc.collection.parent;
+      while (parent) {
+        if (seen.has(parent)) { ctx.errors.push(`${doc.id}: collection parent cycle`); break; }
+        seen.add(parent);
+        const pd = ctx.byId.get(parent);
+        if (!pd?.collection) { ctx.errors.push(`${doc.id}: missing collection parent ${parent}`); break; }
+        parent = pd.collection.parent;
+      }
+    }
     for (const line of doc.lines) {
+      for (const r of line.refuses ?? []) {
+        const hit = requireRef(ctx, doc, r.when, line.id);
+        if (hit && hit.line.type !== "Bool") ctx.errors.push(`${line.id}: refusal gate must be Bool`);
+        checkCite(ctx, r.cite, `${line.id} refusal`);
+      }
+      if (line.ambiguity && !data.register.entries.some(e=>e.id===line.ambiguity)) ctx.errors.push(`${line.id}: unknown ambiguity`);
       checkLine(ctx, doc, line);
       checkCite(ctx, line.cite, `${doc.id}.${line.id}`);
     }
@@ -115,6 +135,7 @@ export function runChecks(data: CanonicalData): { errors: string[]; stats: strin
 // type helpers
 
 function parseTy(ctx: Ctx, t: string, where: string): Ty {
+  if (t === "Count") return { kind: "count" };
   if (t === "Dollars") return { kind: "money", nonneg: false };
   if (t === "NonNegDollars") return { kind: "money", nonneg: true };
   if (t === "Rate") return { kind: "rate" };
@@ -146,6 +167,7 @@ function compatible(ctx: Ctx, declared: Ty, inferred: Ty, where: string): void {
 }
 
 function paramEntryTy(entry: ParamEntry): Ty {
+  if (entry.type === "Count") return { kind: "count" };
   if (entry.type === "Rate") return { kind: "rate" };
   if (entry.type === "Bool") return { kind: "bool" };
   const m = /^Enum\(([a-z_]+)\)$/.exec(entry.type);
@@ -186,6 +208,10 @@ function resolveRef(ctx: Ctx, from: FormDoc, ref: string): { doc: FormDoc; line:
 
 function requireRef(ctx: Ctx, from: FormDoc, ref: string, where: string): { doc: FormDoc; line: Line; index: number } | null {
   const hit = resolveRef(ctx, from, ref);
+  if (hit?.doc.collection && hit.doc.id !== from.id) {
+    ctx.errors.push(`${where}: collection reference requires sum_over`);
+    return null;
+  }
   if (!hit) {
     ctx.errors.push(`${where}: reference '${ref}' does not resolve`);
     return null;
@@ -202,6 +228,10 @@ function operandTyOf(ctx: Ctx, from: FormDoc, op: Operand, where: string): Ty {
     const hit = requireRef(ctx, from, op, where);
     return hit ? declaredTyOf(ctx, hit.doc, hit.line) : tyMoney(false);
   }
+  if ("const" in op && op.type === "Count") {
+    if (typeof op.const !== "number" || !Number.isSafeInteger(op.const) || op.const < 0) ctx.errors.push(`${where}: invalid Count literal`);
+    return { kind: "count" };
+  }
   if ("param" in op) {
     const entry = ctx.params.values[op.param];
     if (!entry) {
@@ -211,6 +241,7 @@ function operandTyOf(ctx: Ctx, from: FormDoc, op: Operand, where: string): Ty {
     return paramEntryTy(entry);
   }
   const v = op.const;
+  if (typeof v === "number" && !Number.isSafeInteger(v)) ctx.errors.push(`${where}: literal must be an exact integer`);
   if (typeof v === "number") return tyMoney(false);
   if (typeof v === "boolean") return { kind: "bool" };
   return { kind: "enum", name: "" }; // string constants are matched in checkTestType
@@ -253,6 +284,20 @@ function checkLine(ctx: Ctx, doc: FormDoc, line: Line): void {
       } else {
         compatible(ctx, declared, paramEntryTy(entry), where);
       }
+      break;
+    }
+    case "sum_over": {
+      const entry = ctx.byId.get(expr.collection);
+      if (!entry?.collection) { ctx.errors.push(`${where}: unknown collection ${expr.collection}`); break; }
+      if (entry.collection.parent !== (doc.collection ? doc.id : undefined)) ctx.errors.push(`${where}: collection parent binding mismatch`);
+      const field = requireRef(ctx, entry, expr.field, where);
+      if (field) {
+        if (field.doc.id !== entry.id) ctx.errors.push(`${where}: sum_over field must belong to its collection`);
+        const ty = declaredTyOf(ctx, field.doc, field.line);
+        if (ty.kind !== "money" && ty.kind !== "count") ctx.errors.push(`${where}: sum_over field must be money or Count`);
+        compatible(ctx, declared, ty, where);
+      }
+      if (expr.where) checkTestType(ctx, entry, expr.where, where);
       break;
     }
     case "sum": {
@@ -421,6 +466,7 @@ function checkTestType(ctx: Ctx, doc: FormDoc, test: TestExpr, where: string): v
   const [a, b] = (test as unknown as Record<string, [Operand, Operand]>)[cmp]!;
   const at = operandTyOf(ctx, doc, a, where);
   const bt = operandTyOf(ctx, doc, b, where);
+  if (at.kind === "count" && bt.kind === "count") return;
   if (at.kind === "money" && bt.kind === "money") return;
   if (at.kind === "bool" && bt.kind === "bool") return;
   if (at.kind === "enum" && bt.kind === "enum") {
@@ -456,8 +502,19 @@ function checkCycles(ctx: Ctx, data: CanonicalData): void {
     const refs: string[] = [];
     const operands: Operand[] = [];
     const instances: { def: string; bind: Record<string, Operand>; line: string }[] = [];
+    const testOps = (test: TestExpr): void => {
+      if ("all" in test) test.all.forEach(testOps);
+      else if ("any" in test) test.any.forEach(testOps);
+      else if ("not" in test) testOps(test.not);
+      else for (const k of ["eq", "ne", "lt", "le", "gt", "ge"]) {
+        const pair = (test as unknown as Record<string, Operand[]>)[k];
+        if (pair) operands.push(...pair);
+      }
+    };
     switch (expr.op) {
+      case "test": testOps(expr); break;
       case "sum":
+      case "larger_of":
       case "smaller_of":
         refs.push(...expr.of);
         break;
@@ -479,6 +536,7 @@ function checkCycles(ctx: Ctx, data: CanonicalData): void {
         break;
       case "choose":
         for (const alt of expr.alternatives) {
+          testOps(alt.guard);
           if (typeof alt.then === "string") refs.push(alt.then);
           else instances.push({ def: alt.then.def, bind: alt.then.bind, line: alt.then.line });
         }
@@ -529,11 +587,22 @@ function checkCycles(ctx: Ctx, data: CanonicalData): void {
     const line = ctx.lineMaps.get(frame.doc.id)?.get(lineId)?.line;
     if (line) {
       const { refs, operands, instances } = collectRefs(line.expr as Expr);
+      refs.push(...(line.refuses ?? []).map(r => r.when));
+      if (line.expr.op === "sum_over") {
+        const expr = line.expr;
+        const entry = ctx.byId.get(expr.collection);
+        if (entry) {
+          const inner: Frame = { doc: entry, instKey: null, bind: null, caller: null };
+          visitRef(inner, expr.field);
+          if (expr.where) for (const op of collectRefs(expr.where).operands) visitOperand(inner, op);
+        }
+      }
       for (const ref of refs) visitRef(frame, ref);
       for (const op of operands) visitOperand(frame, op);
       for (const inst of instances) {
         const def = ctx.byId.get(inst.def);
         if (!def) continue;
+        if (stack.some(n => n.includes(`inst:${inst.def}#`))) { emit(`recursive def ${inst.def}`); continue; }
         const key = `${frame.instKey ?? "root"}|inst:${inst.def}#${stableStringify(inst.bind).trim()}`;
         const inner: Frame = { doc: def, instKey: key, bind: inst.bind, caller: frame };
         for (const defLine of def.lines) visitNode(inner, defLine.id);
@@ -768,7 +837,9 @@ function boundNumber(ctx: Ctx, op: Operand): number | null {
 function checkParams(ctx: Ctx): void {
   for (const [name, entry] of Object.entries(ctx.params.values)) {
     const where = `param ${name}`;
-    if (entry.type === "Rate") {
+    if (entry.type === "Count") {
+      if (typeof entry.value !== "number" || !Number.isSafeInteger(entry.value) || entry.value < 0) ctx.errors.push(`${where}: invalid Count`);
+    } else if (entry.type === "Rate") {
       const r = entry.value as { num?: number; den?: number };
       if (typeof r?.num !== "number" || typeof r?.den !== "number" || r.den <= 0 || r.num < 0) {
         ctx.errors.push(`${where}: invalid rate`);
@@ -783,13 +854,13 @@ function checkParams(ctx: Ctx): void {
       if (typeof entry.value !== "boolean") ctx.errors.push(`${where}: Bool value expected`);
     } else {
       if (typeof entry.value === "number") {
-        if (!Number.isInteger(entry.value)) ctx.errors.push(`${where}: money must be integer cents`);
+        if (!Number.isSafeInteger(entry.value)) ctx.errors.push(`${where}: money must be integer cents`);
       } else if (entry.value && typeof entry.value === "object") {
         for (const [status, v] of Object.entries(entry.value as Record<string, number>)) {
           if (!ctx.enumValues.get("filing_status")?.includes(status)) {
             ctx.errors.push(`${where}: unknown filing status key '${status}'`);
           }
-          if (!Number.isInteger(v)) ctx.errors.push(`${where}: money must be integer cents`);
+          if (!Number.isSafeInteger(v)) ctx.errors.push(`${where}: money must be integer cents`);
         }
         for (const v of ctx.enumValues.get("filing_status") ?? []) {
           if (!(v in (entry.value as Record<string, number>))) ctx.errors.push(`${where}: missing value for '${v}'`);
@@ -826,7 +897,7 @@ function checkTable(ctx: Ctx, table: TableDoc): void {
       if (b.tax.length !== cols.length) {
         ctx.errors.push(`table ${table.id}: band ${i} has ${b.tax.length} values for ${cols.length} columns`);
       }
-      if (!b.tax.every((v) => Number.isInteger(v) && v >= 0)) {
+      if (!b.tax.every((v) => Number.isSafeInteger(v) && v >= 0)) {
         ctx.errors.push(`table ${table.id}: band ${i} has non-money values`);
       }
       const next = bands[i + 1];
@@ -863,7 +934,7 @@ function checkTable(ctx: Ctx, table: TableDoc): void {
         if (row.upper !== null && next?.upper != null && row.upper >= next.upper) {
           ctx.errors.push(`table ${table.id}.${s}: bounds not increasing at row ${i}`);
         }
-        if (!Number.isInteger(row.base) || row.base < 0 || !Number.isInteger(row.over)) {
+        if (!Number.isSafeInteger(row.base) || row.base < 0 || !Number.isSafeInteger(row.over)) {
           ctx.errors.push(`table ${table.id}.${s}: row ${i} has invalid amounts`);
         }
       });

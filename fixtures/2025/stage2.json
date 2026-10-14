@@ -1,0 +1,1103 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "ss.multi",
+      "covers": [
+        "s3.line11",
+        "s3.line15",
+        "f1040.line31"
+      ],
+      "evidence": "synthetic-regression",
+      "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
+      "inputs": {
+        "f1040.status": "single",
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].rrta": false,
+        "$w2@person[taxpayer]": [
+          "a",
+          "b"
+        ],
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0,
+        "person[taxpayer].w2[a].box3": 10000000,
+        "person[taxpayer].w2[a].box7": 0,
+        "person[taxpayer].w2[a].box4": 620000,
+        "person[taxpayer].w2[b].box3": 10000000,
+        "person[taxpayer].w2[b].box7": 0,
+        "person[taxpayer].w2[b].box4": 620000
+      },
+      "expect": {
+        "s3.line11": {
+          "kind": "money",
+          "cents": 148180
+        },
+        "s3.line15": {
+          "kind": "money",
+          "cents": 148180
+        },
+        "f1040.line31": {
+          "kind": "money",
+          "cents": 148180
+        }
+      }
+    },
+    {
+      "id": "ss.base.below",
+      "covers": [
+        "s3.line11",
+        "s3.line15",
+        "f1040.line31"
+      ],
+      "evidence": "synthetic-regression",
+      "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
+      "inputs": {
+        "f1040.status": "single",
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].rrta": false,
+        "$w2@person[taxpayer]": [
+          "a",
+          "b"
+        ],
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0,
+        "person[taxpayer].w2[a].box3": 10000000,
+        "person[taxpayer].w2[a].box7": 0,
+        "person[taxpayer].w2[a].box4": 620000,
+        "person[taxpayer].w2[b].box3": 7609999,
+        "person[taxpayer].w2[b].box7": 0,
+        "person[taxpayer].w2[b].box4": 471820
+      },
+      "expect": {
+        "s3.line11": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line15": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line31": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "ss.base.exact",
+      "covers": [
+        "s3.line11",
+        "s3.line15",
+        "f1040.line31"
+      ],
+      "evidence": "synthetic-regression",
+      "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
+      "inputs": {
+        "f1040.status": "single",
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].rrta": false,
+        "$w2@person[taxpayer]": [
+          "a",
+          "b"
+        ],
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0,
+        "person[taxpayer].w2[a].box3": 10000000,
+        "person[taxpayer].w2[a].box7": 0,
+        "person[taxpayer].w2[a].box4": 620000,
+        "person[taxpayer].w2[b].box3": 7610000,
+        "person[taxpayer].w2[b].box7": 0,
+        "person[taxpayer].w2[b].box4": 471821
+      },
+      "expect": {
+        "s3.line11": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line15": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line31": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "ss.base.above",
+      "covers": [
+        "s3.line11",
+        "s3.line15",
+        "f1040.line31"
+      ],
+      "evidence": "synthetic-regression",
+      "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
+      "inputs": {
+        "f1040.status": "single",
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].rrta": false,
+        "$w2@person[taxpayer]": [
+          "a",
+          "b"
+        ],
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0,
+        "person[taxpayer].w2[a].box3": 10000000,
+        "person[taxpayer].w2[a].box7": 0,
+        "person[taxpayer].w2[a].box4": 620000,
+        "person[taxpayer].w2[b].box3": 7610001,
+        "person[taxpayer].w2[b].box7": 0,
+        "person[taxpayer].w2[b].box4": 471821
+      },
+      "expect": {
+        "s3.line11": {
+          "kind": "money",
+          "cents": 1
+        },
+        "s3.line15": {
+          "kind": "money",
+          "cents": 1
+        },
+        "f1040.line31": {
+          "kind": "money",
+          "cents": 1
+        }
+      }
+    },
+    {
+      "id": "ss.withheld.below",
+      "covers": [
+        "s3.line11",
+        "s3.line15",
+        "f1040.line31"
+      ],
+      "evidence": "synthetic-regression",
+      "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
+      "inputs": {
+        "f1040.status": "single",
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].rrta": false,
+        "$w2@person[taxpayer]": [
+          "a",
+          "b"
+        ],
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0,
+        "person[taxpayer].w2[a].box3": 10000000,
+        "person[taxpayer].w2[a].box7": 0,
+        "person[taxpayer].w2[a].box4": 600000,
+        "person[taxpayer].w2[b].box3": 10000000,
+        "person[taxpayer].w2[b].box7": 0,
+        "person[taxpayer].w2[b].box4": 491819
+      },
+      "expect": {
+        "s3.line11": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line15": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line31": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "ss.withheld.exact",
+      "covers": [
+        "s3.line11",
+        "s3.line15",
+        "f1040.line31"
+      ],
+      "evidence": "synthetic-regression",
+      "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
+      "inputs": {
+        "f1040.status": "single",
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].rrta": false,
+        "$w2@person[taxpayer]": [
+          "a",
+          "b"
+        ],
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0,
+        "person[taxpayer].w2[a].box3": 10000000,
+        "person[taxpayer].w2[a].box7": 0,
+        "person[taxpayer].w2[a].box4": 600000,
+        "person[taxpayer].w2[b].box3": 10000000,
+        "person[taxpayer].w2[b].box7": 0,
+        "person[taxpayer].w2[b].box4": 491820
+      },
+      "expect": {
+        "s3.line11": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line15": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line31": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "ss.withheld.above",
+      "covers": [
+        "s3.line11",
+        "s3.line15",
+        "f1040.line31"
+      ],
+      "evidence": "synthetic-regression",
+      "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
+      "inputs": {
+        "f1040.status": "single",
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].rrta": false,
+        "$w2@person[taxpayer]": [
+          "a",
+          "b"
+        ],
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0,
+        "person[taxpayer].w2[a].box3": 10000000,
+        "person[taxpayer].w2[a].box7": 0,
+        "person[taxpayer].w2[a].box4": 600000,
+        "person[taxpayer].w2[b].box3": 10000000,
+        "person[taxpayer].w2[b].box7": 0,
+        "person[taxpayer].w2[b].box4": 491821
+      },
+      "expect": {
+        "s3.line11": {
+          "kind": "money",
+          "cents": 1
+        },
+        "s3.line15": {
+          "kind": "money",
+          "cents": 1
+        },
+        "f1040.line31": {
+          "kind": "money",
+          "cents": 1
+        }
+      }
+    },
+    {
+      "id": "ss.single.exact",
+      "covers": [
+        "s3.line11",
+        "s3.line15",
+        "f1040.line31"
+      ],
+      "evidence": "synthetic-regression",
+      "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
+      "inputs": {
+        "f1040.status": "single",
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].rrta": false,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0,
+        "person[taxpayer].w2[a].box3": 17610000,
+        "person[taxpayer].w2[a].box7": 0,
+        "person[taxpayer].w2[a].box4": 1091820
+      },
+      "expect": {
+        "s3.line11": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line15": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line31": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "ss.single.below",
+      "covers": [
+        "s3.line11",
+        "s3.line15",
+        "f1040.line31"
+      ],
+      "evidence": "synthetic-regression",
+      "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
+      "inputs": {
+        "f1040.status": "single",
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].rrta": false,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0,
+        "person[taxpayer].w2[a].box3": 17609999,
+        "person[taxpayer].w2[a].box7": 0,
+        "person[taxpayer].w2[a].box4": 1091819
+      },
+      "expect": {
+        "s3.line11": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line15": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line31": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "ss.single.over",
+      "covers": [
+        "s3.line11",
+        "s3.line15",
+        "f1040.line31"
+      ],
+      "evidence": "synthetic-regression",
+      "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
+      "inputs": {
+        "f1040.status": "single",
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].rrta": false,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0,
+        "person[taxpayer].w2[a].box3": 17610000,
+        "person[taxpayer].w2[a].box7": 0,
+        "person[taxpayer].w2[a].box4": 1091821
+      },
+      "expect": {
+        "s3.line11": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].over",
+          "form": "Form 843",
+          "remedy": "An employer withheld more than $10,918.20. Ask that employer to adjust the tax. If the employer does not adjust the overcollection, you can file a refund claim using Form 843. This tool cannot complete the credit until the overcollection is resolved.",
+          "cite": {
+            "doc": "i1040gi",
+            "tax_year": 2025,
+            "revision": "2025; printed date 2026-02-25",
+            "locator": "p. 117, Schedule 3 line 11 \u2014 Excess Social Security and Tier 1 RRTA Tax Withheld",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a"
+          }
+        },
+        "s3.line15": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].over",
+          "form": "Form 843",
+          "remedy": "An employer withheld more than $10,918.20. Ask that employer to adjust the tax. If the employer does not adjust the overcollection, you can file a refund claim using Form 843. This tool cannot complete the credit until the overcollection is resolved.",
+          "cite": {
+            "doc": "i1040gi",
+            "tax_year": 2025,
+            "revision": "2025; printed date 2026-02-25",
+            "locator": "p. 117, Schedule 3 line 11 \u2014 Excess Social Security and Tier 1 RRTA Tax Withheld",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a"
+          }
+        },
+        "f1040.line31": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].over",
+          "form": "Form 843",
+          "remedy": "An employer withheld more than $10,918.20. Ask that employer to adjust the tax. If the employer does not adjust the overcollection, you can file a refund claim using Form 843. This tool cannot complete the credit until the overcollection is resolved.",
+          "cite": {
+            "doc": "i1040gi",
+            "tax_year": 2025,
+            "revision": "2025; printed date 2026-02-25",
+            "locator": "p. 117, Schedule 3 line 11 \u2014 Excess Social Security and Tier 1 RRTA Tax Withheld",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a"
+          }
+        }
+      }
+    },
+    {
+      "id": "ss.multi.over",
+      "covers": [
+        "s3.line11",
+        "s3.line15",
+        "f1040.line31"
+      ],
+      "evidence": "synthetic-regression",
+      "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
+      "inputs": {
+        "f1040.status": "single",
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].rrta": false,
+        "$w2@person[taxpayer]": [
+          "a",
+          "b"
+        ],
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0,
+        "person[taxpayer].w2[a].box3": 17610000,
+        "person[taxpayer].w2[a].box7": 0,
+        "person[taxpayer].w2[a].box4": 1091821,
+        "person[taxpayer].w2[b].box3": 5000000,
+        "person[taxpayer].w2[b].box7": 0,
+        "person[taxpayer].w2[b].box4": 310000
+      },
+      "expect": {
+        "s3.line11": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].over",
+          "form": "Form 843",
+          "remedy": "An employer withheld more than $10,918.20. Ask that employer to adjust the tax. If the employer does not adjust the overcollection, you can file a refund claim using Form 843. This tool cannot complete the credit until the overcollection is resolved.",
+          "cite": {
+            "doc": "i1040gi",
+            "tax_year": 2025,
+            "revision": "2025; printed date 2026-02-25",
+            "locator": "p. 117, Schedule 3 line 11 \u2014 Excess Social Security and Tier 1 RRTA Tax Withheld",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a"
+          }
+        },
+        "s3.line15": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].over",
+          "form": "Form 843",
+          "remedy": "An employer withheld more than $10,918.20. Ask that employer to adjust the tax. If the employer does not adjust the overcollection, you can file a refund claim using Form 843. This tool cannot complete the credit until the overcollection is resolved.",
+          "cite": {
+            "doc": "i1040gi",
+            "tax_year": 2025,
+            "revision": "2025; printed date 2026-02-25",
+            "locator": "p. 117, Schedule 3 line 11 \u2014 Excess Social Security and Tier 1 RRTA Tax Withheld",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a"
+          }
+        },
+        "f1040.line31": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].over",
+          "form": "Form 843",
+          "remedy": "An employer withheld more than $10,918.20. Ask that employer to adjust the tax. If the employer does not adjust the overcollection, you can file a refund claim using Form 843. This tool cannot complete the credit until the overcollection is resolved.",
+          "cite": {
+            "doc": "i1040gi",
+            "tax_year": 2025,
+            "revision": "2025; printed date 2026-02-25",
+            "locator": "p. 117, Schedule 3 line 11 \u2014 Excess Social Security and Tier 1 RRTA Tax Withheld",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a"
+          }
+        }
+      }
+    },
+    {
+      "id": "ss.tips",
+      "covers": [
+        "s3.line11",
+        "s3.line15",
+        "f1040.line31"
+      ],
+      "evidence": "synthetic-regression",
+      "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
+      "inputs": {
+        "f1040.status": "single",
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].rrta": false,
+        "$w2@person[taxpayer]": [
+          "a",
+          "b"
+        ],
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0,
+        "person[taxpayer].w2[a].box3": 9000000,
+        "person[taxpayer].w2[a].box7": 1000000,
+        "person[taxpayer].w2[a].box4": 620000,
+        "person[taxpayer].w2[b].box3": 7610001,
+        "person[taxpayer].w2[b].box7": 0,
+        "person[taxpayer].w2[b].box4": 471821
+      },
+      "expect": {
+        "s3.line11": {
+          "kind": "money",
+          "cents": 1
+        },
+        "s3.line15": {
+          "kind": "money",
+          "cents": 1
+        },
+        "f1040.line31": {
+          "kind": "money",
+          "cents": 1
+        }
+      }
+    },
+    {
+      "id": "ss.none",
+      "covers": [
+        "s3.line11",
+        "s3.line15",
+        "f1040.line31"
+      ],
+      "evidence": "synthetic-regression",
+      "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
+      "inputs": {
+        "f1040.status": "single",
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].rrta": false,
+        "$w2@person[taxpayer]": [],
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0
+      },
+      "expect": {
+        "s3.line11": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line15": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line31": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "ss.mfj",
+      "covers": [
+        "s3.line11",
+        "s3.line15",
+        "f1040.line31"
+      ],
+      "evidence": "synthetic-regression",
+      "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].rrta": false,
+        "$w2@person[taxpayer]": [],
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0
+      },
+      "expect": {
+        "s3.line11": {
+          "kind": "refusal",
+          "gate": "s3.married",
+          "form": "Schedule 3 line 11 (per-spouse computation)",
+          "remedy": "The interview currently represents one person. Married filing statuses are unsupported for this per-spouse rule.",
+          "cite": {
+            "doc": "i1040gi",
+            "tax_year": 2025,
+            "revision": "2025; printed date 2026-02-25",
+            "locator": "p. 117, Schedule 3 line 11 \u2014 Excess Social Security and Tier 1 RRTA Tax Withheld",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a"
+          }
+        },
+        "s3.line15": {
+          "kind": "refusal",
+          "gate": "s3.married",
+          "form": "Schedule 3 line 11 (per-spouse computation)",
+          "remedy": "The interview currently represents one person. Married filing statuses are unsupported for this per-spouse rule.",
+          "cite": {
+            "doc": "i1040gi",
+            "tax_year": 2025,
+            "revision": "2025; printed date 2026-02-25",
+            "locator": "p. 117, Schedule 3 line 11 \u2014 Excess Social Security and Tier 1 RRTA Tax Withheld",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a"
+          }
+        },
+        "f1040.line31": {
+          "kind": "refusal",
+          "gate": "s3.married",
+          "form": "Schedule 3 line 11 (per-spouse computation)",
+          "remedy": "The interview currently represents one person. Married filing statuses are unsupported for this per-spouse rule.",
+          "cite": {
+            "doc": "i1040gi",
+            "tax_year": 2025,
+            "revision": "2025; printed date 2026-02-25",
+            "locator": "p. 117, Schedule 3 line 11 \u2014 Excess Social Security and Tier 1 RRTA Tax Withheld",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a"
+          }
+        }
+      }
+    },
+    {
+      "id": "ss.mfs",
+      "covers": [
+        "s3.line11",
+        "s3.line15",
+        "f1040.line31"
+      ],
+      "evidence": "synthetic-regression",
+      "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].rrta": false,
+        "$w2@person[taxpayer]": [],
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0
+      },
+      "expect": {
+        "s3.line11": {
+          "kind": "refusal",
+          "gate": "s3.married",
+          "form": "Schedule 3 line 11 (per-spouse computation)",
+          "remedy": "The interview currently represents one person. Married filing statuses are unsupported for this per-spouse rule.",
+          "cite": {
+            "doc": "i1040gi",
+            "tax_year": 2025,
+            "revision": "2025; printed date 2026-02-25",
+            "locator": "p. 117, Schedule 3 line 11 \u2014 Excess Social Security and Tier 1 RRTA Tax Withheld",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a"
+          }
+        },
+        "s3.line15": {
+          "kind": "refusal",
+          "gate": "s3.married",
+          "form": "Schedule 3 line 11 (per-spouse computation)",
+          "remedy": "The interview currently represents one person. Married filing statuses are unsupported for this per-spouse rule.",
+          "cite": {
+            "doc": "i1040gi",
+            "tax_year": 2025,
+            "revision": "2025; printed date 2026-02-25",
+            "locator": "p. 117, Schedule 3 line 11 \u2014 Excess Social Security and Tier 1 RRTA Tax Withheld",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a"
+          }
+        },
+        "f1040.line31": {
+          "kind": "refusal",
+          "gate": "s3.married",
+          "form": "Schedule 3 line 11 (per-spouse computation)",
+          "remedy": "The interview currently represents one person. Married filing statuses are unsupported for this per-spouse rule.",
+          "cite": {
+            "doc": "i1040gi",
+            "tax_year": 2025,
+            "revision": "2025; printed date 2026-02-25",
+            "locator": "p. 117, Schedule 3 line 11 \u2014 Excess Social Security and Tier 1 RRTA Tax Withheld",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a"
+          }
+        }
+      }
+    },
+    {
+      "id": "ss.rrta",
+      "covers": [
+        "s3.line11",
+        "s3.line15",
+        "f1040.line31"
+      ],
+      "evidence": "synthetic-regression",
+      "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
+      "inputs": {
+        "f1040.status": "single",
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].rrta": true,
+        "$w2@person[taxpayer]": [],
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0
+      },
+      "expect": {
+        "s3.line11": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].rrta",
+          "form": "Schedule 3 line 11 (RRTA path)",
+          "remedy": "This stage handles Social Security only. Use the railroad retirement instructions; excess Tier 2 tax uses Form 843 rather than Form 1040.",
+          "cite": {
+            "doc": "i1040gi",
+            "tax_year": 2025,
+            "revision": "2025; printed date 2026-02-25",
+            "locator": "p. 117, Schedule 3 line 11 \u2014 Excess Social Security and Tier 1 RRTA Tax Withheld",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a"
+          }
+        },
+        "s3.line15": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].rrta",
+          "form": "Schedule 3 line 11 (RRTA path)",
+          "remedy": "This stage handles Social Security only. Use the railroad retirement instructions; excess Tier 2 tax uses Form 843 rather than Form 1040.",
+          "cite": {
+            "doc": "i1040gi",
+            "tax_year": 2025,
+            "revision": "2025; printed date 2026-02-25",
+            "locator": "p. 117, Schedule 3 line 11 \u2014 Excess Social Security and Tier 1 RRTA Tax Withheld",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a"
+          }
+        },
+        "f1040.line31": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].rrta",
+          "form": "Schedule 3 line 11 (RRTA path)",
+          "remedy": "This stage handles Social Security only. Use the railroad retirement instructions; excess Tier 2 tax uses Form 843 rather than Form 1040.",
+          "cite": {
+            "doc": "i1040gi",
+            "tax_year": 2025,
+            "revision": "2025; printed date 2026-02-25",
+            "locator": "p. 117, Schedule 3 line 11 \u2014 Excess Social Security and Tier 1 RRTA Tax Withheld",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a"
+          }
+        }
+      }
+    },
+    {
+      "id": "ss.hoh",
+      "covers": [
+        "s3.line11",
+        "s3.line15",
+        "f1040.line31"
+      ],
+      "evidence": "synthetic-regression",
+      "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].rrta": false,
+        "$w2@person[taxpayer]": [
+          "a",
+          "b"
+        ],
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0,
+        "person[taxpayer].w2[a].box3": 10000000,
+        "person[taxpayer].w2[a].box7": 0,
+        "person[taxpayer].w2[a].box4": 620000,
+        "person[taxpayer].w2[b].box3": 10000000,
+        "person[taxpayer].w2[b].box7": 0,
+        "person[taxpayer].w2[b].box4": 620000
+      },
+      "expect": {
+        "s3.line11": {
+          "kind": "money",
+          "cents": 148180
+        },
+        "s3.line15": {
+          "kind": "money",
+          "cents": 148180
+        },
+        "f1040.line31": {
+          "kind": "money",
+          "cents": 148180
+        }
+      }
+    },
+    {
+      "id": "ss.qss",
+      "covers": [
+        "s3.line11",
+        "s3.line15",
+        "f1040.line31"
+      ],
+      "evidence": "synthetic-regression",
+      "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
+      "inputs": {
+        "f1040.status": "qss",
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].rrta": false,
+        "$w2@person[taxpayer]": [
+          "a",
+          "b"
+        ],
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0,
+        "person[taxpayer].w2[a].box3": 10000000,
+        "person[taxpayer].w2[a].box7": 0,
+        "person[taxpayer].w2[a].box4": 620000,
+        "person[taxpayer].w2[b].box3": 10000000,
+        "person[taxpayer].w2[b].box7": 0,
+        "person[taxpayer].w2[b].box4": 620000
+      },
+      "expect": {
+        "s3.line11": {
+          "kind": "money",
+          "cents": 148180
+        },
+        "s3.line15": {
+          "kind": "money",
+          "cents": 148180
+        },
+        "f1040.line31": {
+          "kind": "money",
+          "cents": 148180
+        }
+      }
+    },
+    {
+      "id": "ss.other.components",
+      "covers": [
+        "s3.line11",
+        "s3.line15",
+        "f1040.line31"
+      ],
+      "evidence": "synthetic-regression",
+      "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
+      "inputs": {
+        "f1040.status": "single",
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].rrta": false,
+        "$w2@person[taxpayer]": [
+          "a",
+          "b"
+        ],
+        "s3.line9": 123,
+        "s3.line10": 500,
+        "s3.line12": 7,
+        "s3.line14": 20,
+        "person[taxpayer].w2[a].box3": 10000000,
+        "person[taxpayer].w2[a].box7": 0,
+        "person[taxpayer].w2[a].box4": 620000,
+        "person[taxpayer].w2[b].box3": 10000000,
+        "person[taxpayer].w2[b].box7": 0,
+        "person[taxpayer].w2[b].box4": 620000
+      },
+      "expect": {
+        "s3.line11": {
+          "kind": "money",
+          "cents": 148180
+        },
+        "s3.line15": {
+          "kind": "money",
+          "cents": 148830
+        },
+        "f1040.line31": {
+          "kind": "money",
+          "cents": 148830
+        }
+      }
+    },
+    {
+      "id": "ss.person.separation",
+      "covers": [
+        "s3.line11",
+        "s3.line15",
+        "f1040.line31"
+      ],
+      "evidence": "synthetic-regression",
+      "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
+      "inputs": {
+        "f1040.status": "single",
+        "$person": [
+          "taxpayer",
+          "second"
+        ],
+        "person[taxpayer].rrta": false,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0,
+        "person[taxpayer].w2[a].box3": 10000000,
+        "person[taxpayer].w2[a].box7": 0,
+        "person[taxpayer].w2[a].box4": 620000,
+        "person[second].rrta": false,
+        "$w2@person[second]": [
+          "a"
+        ],
+        "person[second].w2[a].box3": 10000000,
+        "person[second].w2[a].box7": 0,
+        "person[second].w2[a].box4": 620000
+      },
+      "expect": {
+        "s3.line11": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line15": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line31": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "qdcg.table.minimum.regression",
+      "covers": [
+        "qdcg.line25 right"
+      ],
+      "evidence": "synthetic-regression",
+      "evidence_note": "Agent-derived regression, pending human review: i1040gi Tax Table $50,000\u2013$50,050 Single cell is $5,920; QDCG ordinary portion $50,009 and total $50,010 are in that same band, while $1 at 15% adds $0.15 to line 23. Line 24 must win. Not class B.",
+      "inputs": {
+        "f1040.status": "single",
+        "f1040.line15": 5001000,
+        "f1040.line3a": 100,
+        "f1040.line7a": 0,
+        "qdcg.schedule_d_filed": false
+      },
+      "expect": {
+        "qdcg.line22": {
+          "kind": "money",
+          "cents": 592000
+        },
+        "qdcg.line23": {
+          "kind": "money",
+          "cents": 592015
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 592000
+        },
+        "qdcg.line25": {
+          "kind": "money",
+          "cents": 592000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 592000
+        }
+      }
+    },
+    {
+      "id": "ss.early.refusal",
+      "covers": [
+        "s3.line11",
+        "s3.line15",
+        "f1040.line31"
+      ],
+      "evidence": "synthetic-regression",
+      "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
+      "inputs": {
+        "f1040.status": "single",
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].rrta": false,
+        "$w2@person[taxpayer]": [
+          "a",
+          "b"
+        ],
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0,
+        "person[taxpayer].w2[a].box7": 0,
+        "person[taxpayer].w2[a].box4": 1091821,
+        "person[taxpayer].w2[b].box3": 5000000,
+        "person[taxpayer].w2[b].box7": 0
+      },
+      "expect": {
+        "s3.line11": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].over",
+          "form": "Form 843",
+          "remedy": "An employer withheld more than $10,918.20. Ask that employer to adjust the tax. If the employer does not adjust the overcollection, you can file a refund claim using Form 843. This tool cannot complete the credit until the overcollection is resolved.",
+          "cite": {
+            "doc": "i1040gi",
+            "tax_year": 2025,
+            "revision": "2025; printed date 2026-02-25",
+            "locator": "p. 117, Schedule 3 line 11 \u2014 Excess Social Security and Tier 1 RRTA Tax Withheld",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a"
+          }
+        },
+        "s3.line15": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].over",
+          "form": "Form 843",
+          "remedy": "An employer withheld more than $10,918.20. Ask that employer to adjust the tax. If the employer does not adjust the overcollection, you can file a refund claim using Form 843. This tool cannot complete the credit until the overcollection is resolved.",
+          "cite": {
+            "doc": "i1040gi",
+            "tax_year": 2025,
+            "revision": "2025; printed date 2026-02-25",
+            "locator": "p. 117, Schedule 3 line 11 \u2014 Excess Social Security and Tier 1 RRTA Tax Withheld",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a"
+          }
+        },
+        "f1040.line31": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].over",
+          "form": "Form 843",
+          "remedy": "An employer withheld more than $10,918.20. Ask that employer to adjust the tax. If the employer does not adjust the overcollection, you can file a refund claim using Form 843. This tool cannot complete the credit until the overcollection is resolved.",
+          "cite": {
+            "doc": "i1040gi",
+            "tax_year": 2025,
+            "revision": "2025; printed date 2026-02-25",
+            "locator": "p. 117, Schedule 3 line 11 \u2014 Excess Social Security and Tier 1 RRTA Tax Withheld",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a"
+          }
+        }
+      }
+    }
+  ]
+}

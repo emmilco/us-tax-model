@@ -7,6 +7,8 @@ import type { EvalResult, Value } from "./eval.js";
 
 export function fmtValue(v: Value): string {
   switch (v.kind) {
+    case "count": return String(v.value);
+    case "refusal": return `REFUSED: ${v.form}. ${v.remedy} (trigger: ${v.gate}; ${v.cite.doc}, ${v.cite.locator})`;
     case "money":
       return fmtMoney(v.cents);
     case "rate":
@@ -22,15 +24,16 @@ export function fmtValue(v: Value): string {
 
 export function renderValuesSheet(data: CanonicalData, result: EvalResult, targetDocs: string[]): string {
   const lines: string[] = [];
-  lines.push("Values sheet — tax year 2025 (Stage 1 slice)");
+  lines.push("Values sheet — tax year 2025 (implemented slice; not a complete return)");
   lines.push("");
   for (const docId of targetDocs) {
     const doc = [...data.forms].find((f) => f.id === docId);
-    if (!doc) continue;
+    if (!doc || doc.collection || !doc.lines.some(l=>result.derivations.has(l.id))) continue;
     lines.push(`== ${doc.title} ==`);
     for (const line of doc.lines) {
-      const key = `${doc.id}.${line.id}`;
+      const key = line.id;
       const der = result.derivations.get(key);
+      if (!der) continue;
       const value = der ? fmtValue(der.value) : "(not evaluated)";
       lines.push(`  ${line.printed.padEnd(3)} ${line.label}`);
       lines.push(`      = ${value}`);
@@ -43,7 +46,18 @@ export function renderValuesSheet(data: CanonicalData, result: EvalResult, targe
     }
     lines.push("");
   }
-  lines.push("This is a computation of published IRS forms and instructions; it is not tax advice.");
+  lines.push("Collection entries and derivations:");
+  for (const [key, der] of result.derivations) {
+    if (!key.includes("[")) continue;
+    lines.push(`  ${key} = ${fmtValue(der.value)}`);
+    if (der.cite) lines.push(`    cite: ${der.cite.doc}, ${der.cite.locator} (${der.cite.revision}; ${shortHash(der.cite.snapshot)})`);
+  }
+  for (const [key, der] of result.derivations) {
+    if (der.operands.length) lines.push(`  ${key}: ${der.op}(${der.operands.map(o => `${o.ref} = ${fmtValue(o.value)}`).join("; ")})`);
+  }
+  for (const note of new Set([...result.derivations.values()].flatMap(d=>d.notes.filter(n=>n.startsWith("Interpretation "))))) lines.push(note);
+  lines.push("Scope: implemented worksheet slices only; unsupported paths are refused. No filing or transmission.");
+  lines.push("This is a computation of published IRS forms and instructions; it is not tax or legal advice. Published instructions are not the law itself.");
   lines.push("The user is responsible for the return. Not affiliated with or endorsed by the IRS.");
   return lines.join("\n");
 }
@@ -54,10 +68,17 @@ export function resultToJson(result: EvalResult): string {
     values[key] = {
       value: der.value,
       op: der.op,
-      cite: der.cite ? { doc: der.cite.doc, locator: der.cite.locator } : null,
+      cite: der.cite,
+      operands: der.operands,
       guardsNotTaken: der.guardsNotTaken,
       notes: der.notes,
     };
   }
   return JSON.stringify({ values }, null, 2);
+}
+
+export function renderValuesHtml(data: CanonicalData, result: EvalResult, targetDocs: string[]): string {
+  const escaped = renderValuesSheet(data, result, targetDocs).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+  return `<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>2025 values sheet</title><body><pre style="white-space:pre-wrap">${escaped}</pre></body></html>`;
 }

@@ -50,6 +50,7 @@ function citeLine(cite: CiteFilled): string {
 function operandText(op: Operand, doc: FormDoc, ctx: RenderCtx): string {
   if (typeof op === "string") return refText(doc, op, ctx);
   if ("param" in op) return paramText(op.param, ctx);
+  if (op.type === "Count") return `${op.const} employer(s)`;
   const v = op.const;
   if (typeof v === "boolean") return v ? "true" : "false";
   if (typeof v === "number") return fmtMoney(v);
@@ -87,7 +88,7 @@ function paramValueText(value: unknown): string {
 function paramText(name: string, ctx: RenderCtx): string {
   const entry = ctx.params.values[name];
   if (!entry) return `parameter ${name} (missing)`;
-  return `${paramValueText(entry.value)} (${name})`;
+  return `${entry.type === "Count" ? entry.value : paramValueText(entry.value)} (${name})`;
 }
 
 function testText(test: TestExpr, doc: FormDoc, ctx: RenderCtx): string {
@@ -118,6 +119,8 @@ function exprText(expr: Expr, doc: FormDoc, ctx: RenderCtx): string {
         .join(", ")}).${expr.from.line}.`;
     case "param":
       return `Enter ${paramText(expr.ref, ctx)}.`;
+    case "sum_over":
+      return `Add ${expr.field} over every confirmed ${expr.collection} entry${expr.where ? ` for which ${testText(expr.where, ctx.forms.get(expr.collection)!, ctx)}` : ""}, within the current person when parent-bound. An unanswered roster is unknown.`;
     case "sum":
       return `Add ${listAnd(expr.of.map((r) => refText(doc, r, ctx)))}.`;
     case "subtract":
@@ -172,14 +175,17 @@ function renderDoc(doc: FormDoc, ctx: RenderCtx): string {
   out.push(`# ${doc.title}`);
   out.push("");
   out.push(`- Document: \`${doc.id}\` (${doc.kind}, tax year ${doc.tax_year})`);
+  if (doc.collection) out.push(`- Collection: keyed entries${doc.collection.parent ? ` within ${doc.collection.parent}` : ""}; ${citeLine(doc.collection.cite)}`);
   if (doc.parameters?.length) out.push(`- Parameters: ${doc.parameters.join(", ")}`);
   if (doc.note) out.push(`- Note: ${doc.note}`);
   out.push("");
   for (const line of doc.lines) {
     out.push(`## ${line.printed} — \`${line.id}\``);
     out.push("");
-    out.push(`- **IRS:** ${line.label}`);
+    out.push(`- **${doc.collection && doc.kind === "worksheet" || line.printed.startsWith("(") ? "Authored helper label" : "IRS"}:** ${line.label}`);
     out.push(`- **Encoded (${line.type}):** ${exprText(line.expr as Expr, doc, ctx)}`);
+    for (const r of line.refuses ?? []) out.push(`- **Refusal:** when ${r.when} is true, cannot complete ${r.form}. ${r.remedy} Cite: ${citeLine(r.cite)}`);
+    if (line.ambiguity) out.push(`- Interpretation: ${line.ambiguity}`);
     if (line.note) out.push(`- Note: ${line.note}`);
     out.push(`- Expr: \`${JSON.stringify(line.expr)}\``);
     out.push(`- Cite: ${citeLine(line.cite)}`);
@@ -203,7 +209,7 @@ function renderParams(params: CanonicalData["params"]): string {
   out.push("| Parameter | Type | Value | Cite |");
   out.push("| --- | --- | --- | --- |");
   for (const [name, entry] of Object.entries(params.values).sort((a, b) => (a[0] < b[0] ? -1 : 1))) {
-    out.push(`| \`${name}\` | ${entry.type} | ${paramValueText(entry.value)} | ${citeLine(entry.cite)} |`);
+    out.push(`| \`${name}\` | ${entry.type} | ${entry.type === "Count" ? entry.value : paramValueText(entry.value)} | ${citeLine(entry.cite)} |`);
   }
   out.push("");
   return out.join("\n");
@@ -268,7 +274,7 @@ function renderRegister(register: CanonicalData["register"]): string {
 
 function renderIndex(data: CanonicalData): string {
   const out: string[] = [];
-  out.push("# Stage 1 rendered data");
+  out.push("# Rendered data — implemented stages");
   out.push("");
   out.push("Review these renderings line by line against the archived IRS sources in `sources/2025/`.");
   out.push("");

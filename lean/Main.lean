@@ -7,6 +7,7 @@ Evaluates every line of f1040 and qdcg from the canonical JSON and writes
 -/
 
 import TaxFormalization.Eval
+import TaxFormalization.Lemmas
 
 open Lean (Json)
 
@@ -77,7 +78,7 @@ def main (args : List String) : IO UInt32 := do
     let ctx : Ctx := { forms, params, tables, inputs, memo, inflight }
     let mut pairs : List (String × Json) := []
     let mut count : Nat := 0
-    for docId in ["f1040", "qdcg"] do
+    for docId in ["f1040", "qdcg", "s3"] do
       match forms.get? docId with
       | none => pure ()
       | some doc =>
@@ -94,6 +95,8 @@ def main (args : List String) : IO UInt32 := do
               | none => pure ()
             | none => pure ()
         | _ => pure ()
+    for (key, value) in (← memo.get).toList do
+      if key.contains '[' then pairs := (key, value) :: pairs
     let sorted := pairs.toArray.qsort (fun a b => a.1 < b.1)
     let out := Json.mkObj sorted.toList
     IO.FS.writeFile outp (out.compress ++ "\n")

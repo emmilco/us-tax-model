@@ -8,6 +8,8 @@ import { join, resolve } from "node:path";
 import { spawnSync } from "node:child_process";
 import { loadCanonical } from "./canonical.js";
 import { evaluate } from "./eval.js";
+import { loadCases } from "./fixtures.js";
+import type { Inputs } from "./types.js";
 import type { Value } from "./eval.js";
 
 const ROOT = resolve(import.meta.dirname, "../..");
@@ -17,11 +19,11 @@ const FIXTURES = join(ROOT, "fixtures", "2025", "stage1.json");
 
 interface Case {
   id: string;
-  inputs: Record<string, number | boolean | string>;
+  inputs: Inputs;
 }
 
 function fixtureCases(): Case[] {
-  const file = JSON.parse(readFileSync(FIXTURES, "utf-8")) as { cases: Case[] };
+  const file = loadCases();
   return file.cases.map((c) => ({ id: c.id, inputs: c.inputs }));
 }
 
@@ -49,6 +51,14 @@ function generatedCases(n: number): Case[] {
       inputs["qdcg.schedule_d_filed"] = sdFiled;
       if (sdFiled) inputs["qdcg.schedule_d_net_gain"] = Math.floor(rnd() * 5000000);
     }
+    const stage2: Inputs = { ...inputs, "$person": ["taxpayer"], "person[taxpayer].rrta": false,
+      "$w2@person[taxpayer]": ["a", "b"], "s3.line9": 0, "s3.line10": 0, "s3.line12": 0, "s3.line14": 0 };
+    for (const employer of ["a", "b"]) {
+      stage2[`person[taxpayer].w2[${employer}].box3`] = Math.floor(rnd() * 17610001);
+      stage2[`person[taxpayer].w2[${employer}].box7`] = 0;
+      stage2[`person[taxpayer].w2[${employer}].box4`] = Math.floor(rnd() * 1200000);
+    }
+    cases.push({id: `collections.${i}`, inputs: stage2});
     cases.push({ id: `generated.${String(i).padStart(3, "0")}`, inputs });
   }
   return cases;
@@ -56,6 +66,7 @@ function generatedCases(n: number): Case[] {
 
 function normalize(v: Value | Record<string, unknown>): string {
   const val = v as { kind?: string; cents?: number; value?: unknown };
+  if (val.kind === "refusal") { const r = v as Record<string, unknown>; return `refusal:${r.gate}:${r.form}:${r.remedy}:${JSON.stringify(Object.entries(r.cite as Record<string, unknown>).sort())}`; }
   if (val.kind === "unknown") return "unknown";
   if (val.kind === "money") return `money:${val.cents}`;
   return `${val.kind}:${JSON.stringify(val.value)}`;
@@ -67,7 +78,7 @@ export function compareEvaluators(): number {
     return 2;
   }
   const data = loadCanonical();
-  const targets = data.forms.flatMap((doc) => doc.lines.map((l) => l.id));
+  const targets = data.forms.filter(d => !d.collection).flatMap((doc) => doc.lines.map((l) => l.id));
   const cases = [...fixtureCases(), ...generatedCases(200)];
   const tmp = mkdtempSync(join(tmpdir(), "compare-"));
   let failures = 0;
@@ -97,6 +108,7 @@ export function compareEvaluators(): number {
         const der = ts.derivations.get(target);
         if (der) tsValues[target] = der.value;
       }
+      for (const [key, der] of ts.derivations) if (key.includes("[")) tsValues[key] = der.value;
       const tsKeys = Object.keys(tsValues).sort();
       const leanKeys = Object.keys(leanValues).sort();
       const problems: string[] = [];
@@ -124,9 +136,9 @@ export function compareEvaluators(): number {
   const report: string[] = [];
   report.push("# Evaluator agreement — TypeScript engine vs Lean reference");
   report.push("");
-  report.push("Every fixture case and a deterministic set of 200 generated inputs were evaluated");
-  report.push("by both independently written evaluators; every line of f1040 and qdcg was compared");
-  report.push("(money cents, booleans, enums; unknowns compared by kind).");
+  report.push("Every fixture case and deterministic sets of 200 ordinary-income and 200 collection inputs were evaluated");
+  report.push("by both independently written evaluators; every root form line and reached collection entry was compared");
+  report.push("(money cents, counts, booleans, enums, full refusals; unknowns compared by kind).");
   report.push("");
   report.push("| Metric | Value |");
   report.push("| --- | --- |");
