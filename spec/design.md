@@ -193,7 +193,7 @@ Done when: the official single-transaction examples in the Schedule D and Form 8
 
 ### Stage 4. The remaining forms
 
-Schedule A with Forms 4952 and 8283 and the choice between it and the standard deduction; Schedule B; the Schedule D Tax Worksheet with its two feeder worksheets; Form 8959; Form 8960; Form 8995 for section 199A dividends; the simple foreign tax credit path; Schedule 2.
+Schedule A with Forms 4952 and 8283 and the choice between it and the standard deduction; Schedule B; the Schedule D Tax Worksheet with its two feeder worksheets; Form 8959; Form 8960; Forms 8995 and 8995-A for section 199A dividends, with cited form selection; the simple foreign tax credit path; Schedule 2.
 
 Done when: every refusal in `spec.md` section 2.2 has a gate, a citation and a test.
 

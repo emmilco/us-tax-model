@@ -38,7 +38,7 @@ Development targets the tax year 2025 final forms and instructions. Tax year 202
 | Schedule 2 | Lines fed by Forms 8959 and 8960 |
 | Form 8959 | Additional Medicare Tax |
 | Form 8960 | Net Investment Income Tax, for the income types in scope |
-| Form 8995 | Section 199A dividends from Form 1099-DIV box 5 only |
+| Forms 8995 and 8995-A | Section 199A dividends from Form 1099-DIV box 5 only; select the form using its cited applicability conditions. Form 8995-A coverage is limited to the dividend-only path and the lines necessary to compute and report that deduction |
 
 ### 2.2 Refused with a cited explanation
 
