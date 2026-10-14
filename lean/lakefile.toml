@@ -1,0 +1,9 @@
+name = "taxformalization"
+defaultTargets = ["taxeval"]
+
+[[lean_lib]]
+name = "TaxFormalization"
+
+[[lean_exe]]
+name = "taxeval"
+root = "Main"

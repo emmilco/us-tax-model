@@ -9,7 +9,14 @@
     "compile": "tsc -p engine",
     "build": "npm run compile --silent && node engine/dist/main.js build",
     "render": "node engine/dist/main.js render",
-    "stage1": "npm run build --silent && npm run render --silent"
+    "stage1": "npm run build --silent && npm run render --silent",
+    "conjecture": "node engine/dist/main.js conjecture",
+    "record-fixtures": "npm run compile --silent && node engine/dist/main.js record-fixtures",
+    "fixtures": "node engine/dist/main.js test-fixtures",
+    "coverage": "node engine/dist/main.js coverage",
+    "check-all": "npm run build --silent && npm run render --silent && node engine/dist/main.js conjecture && node engine/dist/main.js test-fixtures && node engine/dist/main.js coverage && node engine/dist/main.js mutate && npm run compare --silent",
+    "compare": "cd lean && lake build taxeval >/dev/null 2>&1 && cd .. && npm run compile --silent && node engine/dist/main.js compare",
+    "mutate": "node engine/dist/main.js mutate"
   },
   "dependencies": {
     "ajv": "^8.20.0",

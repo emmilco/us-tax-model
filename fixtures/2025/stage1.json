@@ -1,0 +1,5750 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "table.band.first",
+      "covers": [
+        "tax_table band 0-5",
+        "tax_on_amount table side"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "single",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 200
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 200
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 200
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 200
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 53340000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 200
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 200
+        }
+      }
+    },
+    {
+      "id": "table.band.mid",
+      "covers": [
+        "tax_table mid band",
+        "single column"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "single",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 2500000
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 2500000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 276500
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 2500000
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 2500000
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 53340000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 2500000
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 276500
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 2500000
+        }
+      }
+    },
+    {
+      "id": "table.band.last",
+      "covers": [
+        "tax_table last band"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "single",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 9999000
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 9999000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 1690900
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 9999000
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 9999000
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 53340000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 9999000
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 1690900
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 4835000
+        }
+      }
+    },
+    {
+      "id": "switch.below",
+      "covers": [
+        "tax_on_amount table side below the boundary"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "single",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 9999999
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 9999999
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 1690900
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 9999999
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 9999999
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 53340000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 9999999
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 1690900
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 4835000
+        }
+      }
+    },
+    {
+      "id": "switch.exact",
+      "covers": [
+        "tax_on_amount worksheet side at the exact $100,000 boundary"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "single",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 10000000
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 10000000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 1691400
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 10000000
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 10000000
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 53340000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 10000000
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 1691400
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 4835000
+        }
+      }
+    },
+    {
+      "id": "tcw.single.b1",
+      "covers": [
+        "tcw.single guard 0"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "single",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 10167500
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 10167500
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 1728250
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 10167500
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 10167500
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 53340000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 10167500
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 1728250
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 4835000
+        }
+      }
+    },
+    {
+      "id": "tcw.single.b2",
+      "covers": [
+        "tcw.single guard 1"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "single",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 15032500
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 15032500
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 2892500
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 15032500
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 15032500
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 53340000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 15032500
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 2892500
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 4835000
+        }
+      }
+    },
+    {
+      "id": "tcw.single.b3",
+      "covers": [
+        "tcw.single guard 2"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "single",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 22391250
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 22391250
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 4871500
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 22391250
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 22391250
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 53340000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 22391250
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 4871500
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 4835000
+        }
+      }
+    },
+    {
+      "id": "tcw.single.b4",
+      "covers": [
+        "tcw.single guard 3"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "single",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 43843750
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 43843750
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 12300038
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 43843750
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 43843750
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 53340000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 43843750
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 12300038
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 4835000
+        }
+      }
+    },
+    {
+      "id": "tcw.single.b5",
+      "covers": [
+        "tcw.single guard 4"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "single",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 70000000
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 70000000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 21602025
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 70000000
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 70000000
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 53340000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 53340000
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 21602025
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 4835000
+        }
+      }
+    },
+    {
+      "id": "tcw.single.seam.103350",
+      "covers": [
+        "tcw.single b1/b2 seam (upper bound belongs to the next band)"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "single",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 10335000
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 10335000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 1765100
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 10335000
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 10335000
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 53340000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 10335000
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 1765100
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 4835000
+        }
+      }
+    },
+    {
+      "id": "tcw.single.seam.250525",
+      "covers": [
+        "tcw.single b3/b4 seam"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "single",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 25052500
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 25052500
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 5723100
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 25052500
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 25052500
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 53340000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 25052500
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 5723100
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 4835000
+        }
+      }
+    },
+    {
+      "id": "tcw.single.seam.626350",
+      "covers": [
+        "tcw.single b4/b5 seam"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "single",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 62635000
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 62635000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 18876975
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 62635000
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 62635000
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 53340000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 53340000
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 18876975
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 4835000
+        }
+      }
+    },
+    {
+      "id": "tcw.mfj.b1",
+      "covers": [
+        "tcw.mfj guard 0 (via mfj)"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 15335000
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 15335000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 2356500
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "mfj"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 15335000
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "mfj"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 15335000
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 60005000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 15335000
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 2356500
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 9670000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 9670000
+        }
+      }
+    },
+    {
+      "id": "tcw.mfj.b2",
+      "covers": [
+        "tcw.mfj guard 1"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 30065000
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 30065000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 5785000
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "mfj"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 30065000
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "mfj"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 30065000
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 60005000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 30065000
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 5785000
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 9670000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 9670000
+        }
+      }
+    },
+    {
+      "id": "tcw.mfj.b3",
+      "covers": [
+        "tcw.mfj guard 2"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 44782500
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 44782500
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 9743000
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "mfj"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 44782500
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "mfj"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 44782500
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 60005000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 44782500
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 9743000
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 9670000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 9670000
+        }
+      }
+    },
+    {
+      "id": "tcw.mfj.b4",
+      "covers": [
+        "tcw.mfj guard 3"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 62632500
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 62632500
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 15830825
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "mfj"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 62632500
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "mfj"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 62632500
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 60005000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 60005000
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 15830825
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 9670000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 9670000
+        }
+      }
+    },
+    {
+      "id": "tcw.mfj.b5",
+      "covers": [
+        "tcw.mfj guard 4"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 80000000
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 80000000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 22006250
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "mfj"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 80000000
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "mfj"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 80000000
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 60005000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 60005000
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 22006250
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 9670000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 9670000
+        }
+      }
+    },
+    {
+      "id": "tcw.mfs.b1",
+      "covers": [
+        "tcw.mfs guard 0"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 10167500
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 10167500
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 1728250
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "mfs"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 10167500
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "mfs"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 10167500
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 30000000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 10167500
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 1728250
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 4835000
+        }
+      }
+    },
+    {
+      "id": "tcw.mfs.b2",
+      "covers": [
+        "tcw.mfs guard 1"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 15032500
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 15032500
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 2892500
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "mfs"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 15032500
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "mfs"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 15032500
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 30000000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 15032500
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 2892500
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 4835000
+        }
+      }
+    },
+    {
+      "id": "tcw.mfs.b3",
+      "covers": [
+        "tcw.mfs guard 2"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 22391250
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 22391250
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 4871500
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "mfs"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 22391250
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "mfs"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 22391250
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 30000000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 22391250
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 4871500
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 4835000
+        }
+      }
+    },
+    {
+      "id": "tcw.mfs.b4",
+      "covers": [
+        "tcw.mfs guard 3"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 31316250
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 31316250
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 7915413
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "mfs"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 31316250
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "mfs"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 31316250
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 30000000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 30000000
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 7915413
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 4835000
+        }
+      }
+    },
+    {
+      "id": "tcw.mfs.b5",
+      "covers": [
+        "tcw.mfs guard 4"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 50000000
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 50000000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 14703125
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "mfs"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 50000000
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "mfs"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 50000000
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 30000000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 30000000
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 14703125
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 4835000
+        }
+      }
+    },
+    {
+      "id": "tcw.hoh.b1",
+      "covers": [
+        "tcw.hoh guard 0"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 10167500
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 10167500
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 1554350
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "hoh"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 10167500
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "hoh"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 10167500
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 56670000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 10167500
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 1554350
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 6475000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 6475000
+        }
+      }
+    },
+    {
+      "id": "tcw.hoh.b2",
+      "covers": [
+        "tcw.hoh guard 1"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 15032500
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 15032500
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 2718600
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "hoh"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 15032500
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "hoh"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 15032500
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 56670000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 15032500
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 2718600
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 6475000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 6475000
+        }
+      }
+    },
+    {
+      "id": "tcw.hoh.b3",
+      "covers": [
+        "tcw.hoh guard 2"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 22390000
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 22390000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 4697200
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "hoh"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 22390000
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "hoh"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 22390000
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 56670000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 22390000
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 4697200
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 6475000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 6475000
+        }
+      }
+    },
+    {
+      "id": "tcw.hoh.b4",
+      "covers": [
+        "tcw.hoh guard 3"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 43842500
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 43842500
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 12125775
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "hoh"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 43842500
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "hoh"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 43842500
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 56670000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 43842500
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 12125775
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 6475000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 6475000
+        }
+      }
+    },
+    {
+      "id": "tcw.hoh.b5",
+      "covers": [
+        "tcw.hoh guard 4"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 70000000
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 70000000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 21428200
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "hoh"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 70000000
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "hoh"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 70000000
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 56670000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 56670000
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 21428200
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 6475000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 6475000
+        }
+      }
+    },
+    {
+      "id": "tcw.qss.b1",
+      "covers": [
+        "tcw.tax qss guard (qss takes the joint section)"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "qss",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 15335000
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 15335000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 2356500
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "qss"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 15335000
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "qss"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 15335000
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 60005000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 15335000
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 2356500
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 9670000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 9670000
+        }
+      }
+    },
+    {
+      "id": "tcw.qss.b2",
+      "covers": [
+        "tcw.tax qss guard, second band"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "qss",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 30065000
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 30065000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 5785000
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "qss"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 30065000
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "qss"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 30065000
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 60005000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 30065000
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 5785000
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 9670000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 9670000
+        }
+      }
+    },
+    {
+      "id": "example.official",
+      "covers": [
+        "official worked example, i1040gi p. 68 (25,300 MFJ -> 2,562)"
+      ],
+      "evidence": "A",
+      "evidence_note": "Official IRS example: 2025 Tax Table, page 68 (Example: married filing jointly, taxable income $25,300, tax $2,562).",
+      "inputs": {
+        "f1040.status": "mfj",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 2530000
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 2530000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 256200
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "mfj"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 2530000
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "mfj"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 2530000
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 60005000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 2530000
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 256200
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 9670000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 2530000
+        }
+      }
+    },
+    {
+      "id": "qdcg.handworked.single",
+      "covers": [
+        "qdcg path end to end with qualified dividends",
+        "15% bracket"
+      ],
+      "evidence": "B",
+      "evidence_note": "Worked by the agent against the archived worksheet text; human re-work pending. 50,000 taxable, 5,000 qualified dividends, single -> 5,412.50.",
+      "inputs": {
+        "f1040.status": "single",
+        "f1040.line3a": 500000,
+        "f1040.line7a": 0,
+        "f1040.line15": 5000000,
+        "qdcg.schedule_d_filed": false
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 541250
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.qdcg.line25": {
+          "kind": "money",
+          "cents": 541250
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "qdcg.f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "qdcg.line10": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "qdcg.line11": {
+          "kind": "money",
+          "cents": 335000
+        },
+        "qdcg.line12": {
+          "kind": "money",
+          "cents": 165000
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 53340000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "qdcg.line15": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line16": {
+          "kind": "money",
+          "cents": 165000
+        },
+        "qdcg.line17": {
+          "kind": "money",
+          "cents": 165000
+        },
+        "qdcg.line18": {
+          "kind": "money",
+          "cents": 24750
+        },
+        "qdcg.line19": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "qdcg.line20": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line21": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line22": {
+          "kind": "money",
+          "cents": 516500
+        },
+        "qdcg.line23": {
+          "kind": "money",
+          "cents": 541250
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 592000
+        },
+        "qdcg.line25": {
+          "kind": "money",
+          "cents": 541250
+        },
+        "qdcg.line3": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line4": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "qdcg.line5": {
+          "kind": "money",
+          "cents": 4500000
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line8": {
+          "kind": "money",
+          "cents": 4500000
+        },
+        "qdcg.line9": {
+          "kind": "money",
+          "cents": 335000
+        },
+        "qdcg.schedule_d_filed": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "qdcg.gate.cgd",
+      "covers": [
+        "f1040.gate qdcg_applies true via capital gain distributions"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "single",
+        "f1040.line3a": 0,
+        "f1040.line7a": 500000,
+        "f1040.line15": 5000000,
+        "qdcg.schedule_d_filed": false
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 541250
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "f1040.qdcg.line25": {
+          "kind": "money",
+          "cents": 541250
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.line7a": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "qdcg.line10": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "qdcg.line11": {
+          "kind": "money",
+          "cents": 335000
+        },
+        "qdcg.line12": {
+          "kind": "money",
+          "cents": 165000
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 53340000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "qdcg.line15": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line16": {
+          "kind": "money",
+          "cents": 165000
+        },
+        "qdcg.line17": {
+          "kind": "money",
+          "cents": 165000
+        },
+        "qdcg.line18": {
+          "kind": "money",
+          "cents": 24750
+        },
+        "qdcg.line19": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line20": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line21": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line22": {
+          "kind": "money",
+          "cents": 516500
+        },
+        "qdcg.line23": {
+          "kind": "money",
+          "cents": 541250
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 592000
+        },
+        "qdcg.line25": {
+          "kind": "money",
+          "cents": 541250
+        },
+        "qdcg.line3": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "qdcg.line4": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "qdcg.line5": {
+          "kind": "money",
+          "cents": 4500000
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line8": {
+          "kind": "money",
+          "cents": 4500000
+        },
+        "qdcg.line9": {
+          "kind": "money",
+          "cents": 335000
+        },
+        "qdcg.schedule_d_filed": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "qdcg.sd.side",
+      "covers": [
+        "qdcg.line3 true side (Schedule D declared input)"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "single",
+        "f1040.line3a": 500000,
+        "f1040.line7a": 0,
+        "f1040.line15": 5000000,
+        "qdcg.schedule_d_filed": true,
+        "qdcg.schedule_d_net_gain": 300000
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 505250
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.qdcg.line25": {
+          "kind": "money",
+          "cents": 505250
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "qdcg.line10": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "qdcg.line11": {
+          "kind": "money",
+          "cents": 635000
+        },
+        "qdcg.line12": {
+          "kind": "money",
+          "cents": 165000
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 53340000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "qdcg.line15": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line16": {
+          "kind": "money",
+          "cents": 165000
+        },
+        "qdcg.line17": {
+          "kind": "money",
+          "cents": 165000
+        },
+        "qdcg.line18": {
+          "kind": "money",
+          "cents": 24750
+        },
+        "qdcg.line19": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "qdcg.line20": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line21": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line22": {
+          "kind": "money",
+          "cents": 480500
+        },
+        "qdcg.line23": {
+          "kind": "money",
+          "cents": 505250
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 592000
+        },
+        "qdcg.line25": {
+          "kind": "money",
+          "cents": 505250
+        },
+        "qdcg.line3": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "qdcg.line4": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "qdcg.line5": {
+          "kind": "money",
+          "cents": 4200000
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line8": {
+          "kind": "money",
+          "cents": 4200000
+        },
+        "qdcg.line9": {
+          "kind": "money",
+          "cents": 635000
+        },
+        "qdcg.schedule_d_filed": {
+          "kind": "bool",
+          "value": true
+        },
+        "qdcg.schedule_d_net_gain": {
+          "kind": "money",
+          "cents": 300000
+        }
+      }
+    },
+    {
+      "id": "qdcg.l5.floor0",
+      "covers": [
+        "qdcg.line5 floor0 zero side"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "single",
+        "f1040.line3a": 2000000,
+        "f1040.line7a": 0,
+        "f1040.line15": 1000000,
+        "qdcg.schedule_d_filed": false
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.qdcg.line25": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "qdcg.f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "qdcg.line10": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "qdcg.line11": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "qdcg.line12": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 53340000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "qdcg.line15": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "qdcg.line16": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line17": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line18": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line19": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "qdcg.line20": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line21": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line22": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line23": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 100300
+        },
+        "qdcg.line25": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line3": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line4": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "qdcg.line5": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "qdcg.line8": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line9": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "qdcg.schedule_d_filed": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "qdcg.l16.floor0",
+      "covers": [
+        "qdcg.line16 floor0 zero side"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "single",
+        "f1040.line3a": 600000,
+        "f1040.line7a": 0,
+        "f1040.line15": 500000,
+        "qdcg.schedule_d_filed": false
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.qdcg.line25": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "qdcg.f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "qdcg.line10": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "qdcg.line11": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "qdcg.line12": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 53340000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "qdcg.line15": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "qdcg.line16": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line17": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line18": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line19": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "qdcg.line20": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line21": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line22": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line23": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 50300
+        },
+        "qdcg.line25": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line3": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line4": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "qdcg.line5": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "qdcg.line8": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line9": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "qdcg.schedule_d_filed": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "qdcg.20pct",
+      "covers": [
+        "qdcg.line20 20% bracket region",
+        "qdcg.line13 cap binds"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "single",
+        "f1040.line3a": 70000000,
+        "f1040.line7a": 0,
+        "f1040.line15": 70000000,
+        "qdcg.schedule_d_filed": false
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 70000000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 10607750
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 70000000
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.qdcg.line25": {
+          "kind": "money",
+          "cents": 10607750
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 70000000
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 70000000
+        },
+        "qdcg.f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 70000000
+        },
+        "qdcg.line10": {
+          "kind": "money",
+          "cents": 70000000
+        },
+        "qdcg.line11": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line12": {
+          "kind": "money",
+          "cents": 65165000
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 53340000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 53340000
+        },
+        "qdcg.line15": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line16": {
+          "kind": "money",
+          "cents": 48505000
+        },
+        "qdcg.line17": {
+          "kind": "money",
+          "cents": 48505000
+        },
+        "qdcg.line18": {
+          "kind": "money",
+          "cents": 7275750
+        },
+        "qdcg.line19": {
+          "kind": "money",
+          "cents": 53340000
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 70000000
+        },
+        "qdcg.line20": {
+          "kind": "money",
+          "cents": 16660000
+        },
+        "qdcg.line21": {
+          "kind": "money",
+          "cents": 3332000
+        },
+        "qdcg.line22": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line23": {
+          "kind": "money",
+          "cents": 10607750
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 21602025
+        },
+        "qdcg.line25": {
+          "kind": "money",
+          "cents": 10607750
+        },
+        "qdcg.line3": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line4": {
+          "kind": "money",
+          "cents": 70000000
+        },
+        "qdcg.line5": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line8": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line9": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.schedule_d_filed": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "qdcg.l7.picks.line1",
+      "covers": [
+        "qdcg.line7 takes line 1"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "single",
+        "f1040.line3a": 1000000,
+        "f1040.line7a": 0,
+        "f1040.line15": 2000000,
+        "qdcg.schedule_d_filed": false
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 100300
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.qdcg.line25": {
+          "kind": "money",
+          "cents": 100300
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "qdcg.f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "qdcg.line10": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "qdcg.line11": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "qdcg.line12": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 53340000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "qdcg.line15": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "qdcg.line16": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line17": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line18": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line19": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "qdcg.line20": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line21": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line22": {
+          "kind": "money",
+          "cents": 100300
+        },
+        "qdcg.line23": {
+          "kind": "money",
+          "cents": 100300
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 216500
+        },
+        "qdcg.line25": {
+          "kind": "money",
+          "cents": 100300
+        },
+        "qdcg.line3": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line4": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "qdcg.line5": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "qdcg.line8": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "qdcg.line9": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "qdcg.schedule_d_filed": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "qdcg.mfj.ceilings",
+      "covers": [
+        "qdcg mfj-keyed ceilings"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "f1040.line3a": 10000000,
+        "f1040.line7a": 0,
+        "f1040.line15": 20000000,
+        "qdcg.schedule_d_filed": false
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 20000000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 2682800
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 10000000
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.qdcg.line25": {
+          "kind": "money",
+          "cents": 2682800
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "mfj"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 20000000
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 10000000
+        },
+        "qdcg.f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "mfj"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 20000000
+        },
+        "qdcg.line10": {
+          "kind": "money",
+          "cents": 10000000
+        },
+        "qdcg.line11": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line12": {
+          "kind": "money",
+          "cents": 10000000
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 60005000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 20000000
+        },
+        "qdcg.line15": {
+          "kind": "money",
+          "cents": 10000000
+        },
+        "qdcg.line16": {
+          "kind": "money",
+          "cents": 10000000
+        },
+        "qdcg.line17": {
+          "kind": "money",
+          "cents": 10000000
+        },
+        "qdcg.line18": {
+          "kind": "money",
+          "cents": 1500000
+        },
+        "qdcg.line19": {
+          "kind": "money",
+          "cents": 10000000
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 10000000
+        },
+        "qdcg.line20": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line21": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line22": {
+          "kind": "money",
+          "cents": 1182800
+        },
+        "qdcg.line23": {
+          "kind": "money",
+          "cents": 2682800
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 3382800
+        },
+        "qdcg.line25": {
+          "kind": "money",
+          "cents": 2682800
+        },
+        "qdcg.line3": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line4": {
+          "kind": "money",
+          "cents": 10000000
+        },
+        "qdcg.line5": {
+          "kind": "money",
+          "cents": 10000000
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 9670000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 9670000
+        },
+        "qdcg.line8": {
+          "kind": "money",
+          "cents": 9670000
+        },
+        "qdcg.line9": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.schedule_d_filed": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "qdcg.mfs.ceilings",
+      "covers": [
+        "qdcg mfs-keyed ceilings"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "f1040.line3a": 1000000,
+        "f1040.line7a": 0,
+        "f1040.line15": 5000000,
+        "qdcg.schedule_d_filed": false
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 481250
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.qdcg.line25": {
+          "kind": "money",
+          "cents": 481250
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "mfs"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "qdcg.f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "mfs"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "qdcg.line10": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "qdcg.line11": {
+          "kind": "money",
+          "cents": 835000
+        },
+        "qdcg.line12": {
+          "kind": "money",
+          "cents": 165000
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 30000000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "qdcg.line15": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line16": {
+          "kind": "money",
+          "cents": 165000
+        },
+        "qdcg.line17": {
+          "kind": "money",
+          "cents": 165000
+        },
+        "qdcg.line18": {
+          "kind": "money",
+          "cents": 24750
+        },
+        "qdcg.line19": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "qdcg.line20": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line21": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line22": {
+          "kind": "money",
+          "cents": 456500
+        },
+        "qdcg.line23": {
+          "kind": "money",
+          "cents": 481250
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 592000
+        },
+        "qdcg.line25": {
+          "kind": "money",
+          "cents": 481250
+        },
+        "qdcg.line3": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line4": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "qdcg.line5": {
+          "kind": "money",
+          "cents": 4000000
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line8": {
+          "kind": "money",
+          "cents": 4000000
+        },
+        "qdcg.line9": {
+          "kind": "money",
+          "cents": 835000
+        },
+        "qdcg.schedule_d_filed": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "qdcg.hoh.ceilings",
+      "covers": [
+        "qdcg hoh-keyed ceilings"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "f1040.line3a": 1000000,
+        "f1040.line7a": 0,
+        "f1040.line15": 5000000,
+        "qdcg.schedule_d_filed": false
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 446300
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.qdcg.line25": {
+          "kind": "money",
+          "cents": 446300
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "hoh"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "qdcg.f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "hoh"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "qdcg.line10": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "qdcg.line11": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "qdcg.line12": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 56670000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "qdcg.line15": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "qdcg.line16": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line17": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line18": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line19": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "qdcg.line20": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line21": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line22": {
+          "kind": "money",
+          "cents": 446300
+        },
+        "qdcg.line23": {
+          "kind": "money",
+          "cents": 446300
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 566300
+        },
+        "qdcg.line25": {
+          "kind": "money",
+          "cents": 446300
+        },
+        "qdcg.line3": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line4": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "qdcg.line5": {
+          "kind": "money",
+          "cents": 4000000
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 6475000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "qdcg.line8": {
+          "kind": "money",
+          "cents": 4000000
+        },
+        "qdcg.line9": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "qdcg.schedule_d_filed": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "qdcg.qss.ceilings",
+      "covers": [
+        "qdcg qss-keyed ceilings"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "qss",
+        "f1040.line3a": 1000000,
+        "f1040.line7a": 0,
+        "f1040.line15": 5000000,
+        "qdcg.schedule_d_filed": false
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 432600
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.qdcg.line25": {
+          "kind": "money",
+          "cents": 432600
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "qss"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "qdcg.f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "qss"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "qdcg.line10": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "qdcg.line11": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "qdcg.line12": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 60005000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "qdcg.line15": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "qdcg.line16": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line17": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line18": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line19": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "qdcg.line20": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line21": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line22": {
+          "kind": "money",
+          "cents": 432600
+        },
+        "qdcg.line23": {
+          "kind": "money",
+          "cents": 432600
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 552600
+        },
+        "qdcg.line25": {
+          "kind": "money",
+          "cents": 432600
+        },
+        "qdcg.line3": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line4": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "qdcg.line5": {
+          "kind": "money",
+          "cents": 4000000
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 9670000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "qdcg.line8": {
+          "kind": "money",
+          "cents": 4000000
+        },
+        "qdcg.line9": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "qdcg.schedule_d_filed": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "qdcg.tcw.through.line22",
+      "covers": [
+        "QDCGT line 22 invoking the Tax Computation Worksheet (line 5 >= $100,000)"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "single",
+        "f1040.line3a": 15000000,
+        "f1040.line7a": 0,
+        "f1040.line15": 30000000,
+        "qdcg.schedule_d_filed": false
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 30000000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 5134700
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 15000000
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.qdcg.line25": {
+          "kind": "money",
+          "cents": 5134700
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 30000000
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 15000000
+        },
+        "qdcg.f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 30000000
+        },
+        "qdcg.line10": {
+          "kind": "money",
+          "cents": 15000000
+        },
+        "qdcg.line11": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line12": {
+          "kind": "money",
+          "cents": 15000000
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 53340000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 30000000
+        },
+        "qdcg.line15": {
+          "kind": "money",
+          "cents": 15000000
+        },
+        "qdcg.line16": {
+          "kind": "money",
+          "cents": 15000000
+        },
+        "qdcg.line17": {
+          "kind": "money",
+          "cents": 15000000
+        },
+        "qdcg.line18": {
+          "kind": "money",
+          "cents": 2250000
+        },
+        "qdcg.line19": {
+          "kind": "money",
+          "cents": 15000000
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 15000000
+        },
+        "qdcg.line20": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line21": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line22": {
+          "kind": "money",
+          "cents": 2884700
+        },
+        "qdcg.line23": {
+          "kind": "money",
+          "cents": 5134700
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 7454725
+        },
+        "qdcg.line25": {
+          "kind": "money",
+          "cents": 5134700
+        },
+        "qdcg.line3": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line4": {
+          "kind": "money",
+          "cents": 15000000
+        },
+        "qdcg.line5": {
+          "kind": "money",
+          "cents": 15000000
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line8": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line9": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.schedule_d_filed": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "tcw.single.bound1.plus99c",
+      "covers": [
+        "tcw.single band 1/2 boundary +99 cents (kills +$1 bound mutations)"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "single",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 10335099
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 10335099
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 1765124
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 10335099
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 10335099
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 53340000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 10335099
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 1765124
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 4835000
+        }
+      }
+    },
+    {
+      "id": "tcw.single.bound2.plus99c",
+      "covers": [
+        "tcw.single band 2/3 boundary +99 cents (kills +$1 bound mutations)"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "single",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 19730099
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 19730099
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 4019932
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 19730099
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 19730099
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 53340000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 19730099
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 4019932
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 4835000
+        }
+      }
+    },
+    {
+      "id": "tcw.single.bound3.plus99c",
+      "covers": [
+        "tcw.single band 3/4 boundary +99 cents (kills +$1 bound mutations)"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "single",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 25052599
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 25052599
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 5723135
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 25052599
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 25052599
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 53340000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 25052599
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 5723135
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 4835000
+        }
+      }
+    },
+    {
+      "id": "tcw.single.bound4.plus99c",
+      "covers": [
+        "tcw.single band 4/5 boundary +99 cents (kills +$1 bound mutations)"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "single",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 62635099
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 62635099
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 18877012
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 62635099
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "single"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 62635099
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 53340000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 53340000
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 18877012
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 4835000
+        }
+      }
+    },
+    {
+      "id": "tcw.mfj.bound1.plus99c",
+      "covers": [
+        "tcw.mfj band 1/2 boundary +99 cents (kills +$1 bound mutations)"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 20670099
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 20670099
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 3530224
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "mfj"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 20670099
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "mfj"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 20670099
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 60005000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 20670099
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 3530224
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 9670000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 9670000
+        }
+      }
+    },
+    {
+      "id": "tcw.mfj.bound2.plus99c",
+      "covers": [
+        "tcw.mfj band 2/3 boundary +99 cents (kills +$1 bound mutations)"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 39460099
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 39460099
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 8039832
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "mfj"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 39460099
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "mfj"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 39460099
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 60005000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 39460099
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 8039832
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 9670000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 9670000
+        }
+      }
+    },
+    {
+      "id": "tcw.mfj.bound3.plus99c",
+      "covers": [
+        "tcw.mfj band 3/4 boundary +99 cents (kills +$1 bound mutations)"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 50105099
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 50105099
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 11446235
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "mfj"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 50105099
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "mfj"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 50105099
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 60005000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 50105099
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 11446235
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 9670000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 9670000
+        }
+      }
+    },
+    {
+      "id": "tcw.mfj.bound4.plus99c",
+      "covers": [
+        "tcw.mfj band 4/5 boundary +99 cents (kills +$1 bound mutations)"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 75160099
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 75160099
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 20215487
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "mfj"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 75160099
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "mfj"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 75160099
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 60005000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 60005000
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 20215487
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 9670000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 9670000
+        }
+      }
+    },
+    {
+      "id": "tcw.mfs.bound1.plus99c",
+      "covers": [
+        "tcw.mfs band 1/2 boundary +99 cents (kills +$1 bound mutations)"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 10335099
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 10335099
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 1765124
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "mfs"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 10335099
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "mfs"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 10335099
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 30000000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 10335099
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 1765124
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 4835000
+        }
+      }
+    },
+    {
+      "id": "tcw.mfs.bound2.plus99c",
+      "covers": [
+        "tcw.mfs band 2/3 boundary +99 cents (kills +$1 bound mutations)"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 19730099
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 19730099
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 4019932
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "mfs"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 19730099
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "mfs"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 19730099
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 30000000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 19730099
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 4019932
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 4835000
+        }
+      }
+    },
+    {
+      "id": "tcw.mfs.bound3.plus99c",
+      "covers": [
+        "tcw.mfs band 3/4 boundary +99 cents (kills +$1 bound mutations)"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 25052599
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 25052599
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 5723135
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "mfs"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 25052599
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "mfs"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 25052599
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 30000000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 25052599
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 5723135
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 4835000
+        }
+      }
+    },
+    {
+      "id": "tcw.mfs.bound4.plus99c",
+      "covers": [
+        "tcw.mfs band 4/5 boundary +99 cents (kills +$1 bound mutations)"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 37580099
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 37580099
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 10107762
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "mfs"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 37580099
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "mfs"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 37580099
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 30000000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 30000000
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 10107762
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 4835000
+        }
+      }
+    },
+    {
+      "id": "tcw.hoh.bound1.plus99c",
+      "covers": [
+        "tcw.hoh band 1/2 boundary +99 cents (kills +$1 bound mutations)"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 10335099
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 10335099
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 1591224
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "hoh"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 10335099
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "hoh"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 10335099
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 56670000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 10335099
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 1591224
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 6475000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 6475000
+        }
+      }
+    },
+    {
+      "id": "tcw.hoh.bound2.plus99c",
+      "covers": [
+        "tcw.hoh band 2/3 boundary +99 cents (kills +$1 bound mutations)"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 19730099
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 19730099
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 3846032
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "hoh"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 19730099
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "hoh"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 19730099
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 56670000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 19730099
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 3846032
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 6475000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 6475000
+        }
+      }
+    },
+    {
+      "id": "tcw.hoh.bound3.plus99c",
+      "covers": [
+        "tcw.hoh band 3/4 boundary +99 cents (kills +$1 bound mutations)"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 25050099
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 25050099
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 5548435
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "hoh"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 25050099
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "hoh"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 25050099
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 56670000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 25050099
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 5548435
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 6475000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 6475000
+        }
+      }
+    },
+    {
+      "id": "tcw.hoh.bound4.plus99c",
+      "covers": [
+        "tcw.hoh band 4/5 boundary +99 cents (kills +$1 bound mutations)"
+      ],
+      "evidence": "C",
+      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "f1040.line3a": 0,
+        "f1040.line7a": 0,
+        "f1040.line15": 62635099
+      },
+      "expect": {
+        "f1040.gate.qdcg_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 62635099
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 18703187
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.status": {
+          "kind": "enum",
+          "value": "hoh"
+        },
+        "qdcg.f1040.line15": {
+          "kind": "money",
+          "cents": 62635099
+        },
+        "qdcg.f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.f1040.status": {
+          "kind": "enum",
+          "value": "hoh"
+        },
+        "qdcg.line1": {
+          "kind": "money",
+          "cents": 62635099
+        },
+        "qdcg.line13": {
+          "kind": "money",
+          "cents": 56670000
+        },
+        "qdcg.line14": {
+          "kind": "money",
+          "cents": 56670000
+        },
+        "qdcg.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 18703187
+        },
+        "qdcg.line6": {
+          "kind": "money",
+          "cents": 6475000
+        },
+        "qdcg.line7": {
+          "kind": "money",
+          "cents": 6475000
+        }
+      }
+    }
+  ]
+}

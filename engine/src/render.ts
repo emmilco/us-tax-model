@@ -2,21 +2,13 @@
 // data — each line's encoded English beside its IRS label and citation —
 // plus the parameters, tables and ambiguity register.
 
-import { mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
+import { mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { fmtMoney, fmtRate, shortHash } from "./util.js";
-import type {
-  CanonicalData,
-  CiteFilled,
-  Expr,
-  FormDoc,
-  Line,
-  Operand,
-  TestExpr,
-} from "./types.js";
+import { loadCanonical } from "./canonical.js";
+import type { CanonicalData, CiteFilled, Expr, FormDoc, Line, Operand, TestExpr } from "./types.js";
 
 const ROOT = resolve(import.meta.dirname, "../..");
-const CANON = join(ROOT, "canonical", "2025");
 const OUT = join(ROOT, "rendered", "2025");
 
 interface RenderCtx {
@@ -46,26 +38,6 @@ export function renderAll(): void {
   writeFileSync(join(OUT, "ambiguities.md"), renderRegister(data.register));
   writeFileSync(join(OUT, "index.md"), renderIndex(data));
   console.log(`rendered ${2 + 1 + 2 + 1 + data.forms.length + data.defs.length} files to rendered/2025/`);
-}
-
-function loadCanonical(): CanonicalData {
-  const forms: FormDoc[] = [];
-  const defs: FormDoc[] = [];
-  for (const name of readdirSync(CANON).filter((f) => f.endsWith(".json")).sort()) {
-    const raw = JSON.parse(readFileSync(join(CANON, name), "utf-8")) as { form?: FormDoc; def?: FormDoc };
-    if (raw.form) forms.push(raw.form);
-    if (raw.def) defs.push(raw.def);
-  }
-  const params = (JSON.parse(readFileSync(join(CANON, "params.json"), "utf-8")) as { params: CanonicalData["params"] })
-    .params;
-  const tables = readdirSync(join(CANON, "tables"))
-    .filter((f) => f.endsWith(".json"))
-    .sort()
-    .map((f) => (JSON.parse(readFileSync(join(CANON, "tables", f), "utf-8")) as { table: CanonicalData["tables"][number] }).table);
-  const register = (JSON.parse(readFileSync(join(CANON, "register.json"), "utf-8")) as {
-    register: CanonicalData["register"];
-  }).register;
-  return { forms, defs, params, tables, register };
 }
 
 // ---------------------------------------------------------------------------
