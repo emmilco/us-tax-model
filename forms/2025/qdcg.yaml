@@ -15,14 +15,14 @@ form:
       printed: "(question)"
       label: "Are you filing Schedule D?"
       type: Bool
-      expr: { op: input, source: "The taxpayer's answer to the worksheet question 'Are you filing Schedule D?'" }
+      expr: { op: copy, from: sd.filed }
       cite: { doc: i1040gi, locator: "QDCGT worksheet, line 3" }
 
     - id: qdcg.schedule_d_net_gain
-      printed: "(input)"
+      printed: "(computed helper)"
       label: "Enter the smaller of line 15 or line 16 of Schedule D. If either line 15 or line 16 is blank or a loss, enter -0-."
       type: NonNegDollars
-      expr: { op: input, source: "Schedule D (Form 1040) lines 15 and 16: the smaller of the two, or 0 if either is blank or a loss. Schedule D is outside Stage 1; the value is supplied directly." }
+      expr: { op: copy, from: sd.net_gain }
       cite: { doc: i1040gi, locator: "QDCGT worksheet, line 3" }
 
     - id: qdcg.line1
@@ -49,7 +49,7 @@ form:
           - guard: { op: test, eq: ["qdcg.schedule_d_filed", { const: true }] }
             then: "qdcg.schedule_d_net_gain"
           - guard: { op: test, eq: ["qdcg.schedule_d_filed", { const: false }] }
-            then: "f1040.line7a"
+            then: "sd.distributions"
       cite: { doc: i1040gi, locator: "QDCGT worksheet, line 3" }
 
     - id: qdcg.line4

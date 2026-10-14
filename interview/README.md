@@ -77,3 +77,33 @@ amounts and roster shapes. It checks termination, final-answer order invariance
 and that questions are drawn from unresolved reachable inputs. The CLI tests
 separately cover unknown answers, corrections, early refusal and invalid inputs.
 This finite enumeration is not a proof for arbitrary numbers of entries.
+
+## Stage 3 sales profile
+
+Start with `node engine/dist/main.js interview start --profile sales --log /tmp/sales.jsonl`.
+The log pins its profile; subsequent `advance` and `answer` commands infer it.
+The targets are Form 1040 lines 7a and 16, using supplied taxable income,
+qualified dividends and special-gain worksheet subtotals. This is a slice, not a
+complete return. Required Schedule D Tax Worksheet cases are refused until Stage 4.
+
+`$sales` lists stable transaction keys. For example, `sales[lot1].box` is the
+manually determined A–F classification. The interview explains the reporting and
+holding-period categories; it does not derive them from dates. Enter each sale
+once and select `detail` or `aggregate`. The latter is allowed only for eligible
+A/D transactions with no adjustments. Both routes use the same roster, preventing
+duplicate routing of an entry. Distinct keys still require the user to avoid
+entering the same sale twice.
+
+Code B uses reported basis in column (e) and reported-minus-correct basis in (g)
+for covered A/D sales. Noncovered B/E sales use correct basis directly. Code W
+uses the supplied correct nondeductible loss. BW combines both adjustments.
+Digital assets, other codes, specified special property, carryovers and additional
+source forms produce cited refusals. Dates/descriptions, basis determination,
+automatic wash-sale detection and statement/PDF preparation remain outside this
+calculation interface. Keep the underlying records, including any required
+explanation when correcting a reported wash loss downward.
+
+Amounts remain exact cents. See the rounding ambiguity register. Build-time
+checks walk every Stage 3 fixture path and reverse its answer events; CLI tests
+also exercise corrections and roster removal/restoration. Unlike the Stage 2
+finite-domain checks, Stage 3 path coverage is representative, not exhaustive.

@@ -1,0 +1,442 @@
+form:
+  id: sales
+  kind: form
+  title: Form 8949 and Schedule D — manually classified securities transactions
+  tax_year: 2025
+  collection:
+    cite:
+      doc: f8949
+      locator: Parts I and II, transaction rows
+  note: Stable keys identify transactions. The taxpayer supplies holding-period
+    and reporting classifications from records. Dates/descriptions and completed
+    PDF preparation are deferred; this is a calculation values sheet. Wash-sale
+    detection and basis determination are not automated.
+  lines:
+    - id: sales.box
+      printed: (helper)
+      label: "Classification from records: A/B/C short-term, D/E/F long-term; G–L
+        digital assets"
+      type: Enum(sales_box)
+      expr:
+        op: input
+        source: "Classification from records: A/B/C short-term, D/E/F long-term; G–L
+          digital assets"
+      cite:
+        doc: i8949
+        locator: pp. 2–5, holding period and checkbox classifications
+    - id: sales.route
+      printed: (helper)
+      label: Report this transaction in detail on Form 8949 or directly in Schedule D
+        aggregate totals
+      type: Enum(sales_route)
+      expr:
+        op: input
+        source: Report this transaction in detail on Form 8949 or directly in Schedule D
+          aggregate totals
+      cite:
+        doc: i1040sd
+        locator: p. 10, lines 1a and 8a
+    - id: sales.code
+      printed: (helper)
+      label: "Adjustment codes: none, B, W, BW; choose other for any additional code"
+      type: Enum(sales_code)
+      expr:
+        op: input
+        source: "Adjustment codes: none, B, W, BW; choose other for any additional code"
+      cite:
+        doc: i8949
+        locator: pp. 7–11, columns (e) through (h), codes B and W
+    - id: sales.special
+      printed: (helper)
+      label: Does this sale involve collectibles, section 1202 stock, or section 1250
+        property?
+      type: Bool
+      expr:
+        op: input
+        source: Does this sale involve collectibles, section 1202 stock, or section 1250
+          property?
+      cite:
+        doc: i1040sd
+        locator: pp. 11–12, lines 18 and 19
+    - id: sales.aggregate_eligible
+      printed: (helper)
+      label: "Confirm all aggregate conditions: basis reported, no broker adjustments,
+        no Ordinary box, no QOF disposition/deferral, no corrections, no
+        collectibles"
+      type: Bool
+      expr:
+        op: input
+        source: "Confirm all aggregate conditions: basis reported, no broker
+          adjustments, no Ordinary box, no QOF disposition/deferral, no
+          corrections, no collectibles"
+      cite:
+        doc: i1040sd
+        locator: p. 10, lines 1a and 8a
+    - id: sales.proceeds
+      printed: (helper)
+      label: "Column (d): proceeds per broker report, or net proceeds if no report"
+      type: NonNegDollars
+      expr:
+        op: input
+        source: "Column (d): proceeds per broker report, or net proceeds if no report"
+      cite:
+        doc: i8949
+        locator: p. 6, column (d)
+    - id: sales.reported_basis
+      printed: (helper)
+      label: Basis shown on broker report
+      type: NonNegDollars
+      expr:
+        op: input
+        source: Basis shown on broker report
+      cite:
+        doc: i8949
+        locator: pp. 7–11, columns (e) through (h), codes B and W
+    - id: sales.correct_basis
+      printed: (helper)
+      label: Correct adjusted basis from records
+      type: NonNegDollars
+      expr:
+        op: input
+        source: Correct adjusted basis from records
+      cite:
+        doc: i8949
+        locator: pp. 7–11, columns (e) through (h), codes B and W
+    - id: sales.wash_loss
+      printed: (helper)
+      label: Correct nondeductible wash-sale loss; positive cents, including losses
+        not reported by broker
+      type: NonNegDollars
+      expr:
+        op: input
+        source: Correct nondeductible wash-sale loss; positive cents, including losses
+          not reported by broker
+      cite:
+        doc: i8949
+        locator: p. 10, code W; a lower corrected loss requires an explanation statement
+    - id: sales.covered
+      printed: (helper)
+      label: Basis reported to IRS
+      type: Bool
+      expr:
+        op: test
+        any:
+          - op: test
+            eq:
+              - sales.box
+              - const: A
+          - op: test
+            eq:
+              - sales.box
+              - const: D
+      cite:
+        doc: i8949
+        locator: pp. 7–11, columns (e) through (h), codes B and W
+    - id: sales.digital
+      printed: (helper)
+      label: Digital asset box G–L
+      type: Bool
+      expr:
+        op: test
+        any:
+          - op: test
+            eq:
+              - sales.box
+              - const: G
+          - op: test
+            eq:
+              - sales.box
+              - const: H
+          - op: test
+            eq:
+              - sales.box
+              - const: I
+          - op: test
+            eq:
+              - sales.box
+              - const: J
+          - op: test
+            eq:
+              - sales.box
+              - const: K
+          - op: test
+            eq:
+              - sales.box
+              - const: L
+      cite:
+        doc: f8949
+        locator: Parts I and II, boxes G–L
+    - id: sales.has_b
+      printed: (helper)
+      label: Basis correction code B applies
+      type: Bool
+      expr:
+        op: test
+        any:
+          - op: test
+            eq:
+              - sales.code
+              - const: B
+          - op: test
+            eq:
+              - sales.code
+              - const: BW
+      cite:
+        doc: i8949
+        locator: pp. 7–11, columns (e) through (h), codes B and W
+    - id: sales.has_w
+      printed: (helper)
+      label: Wash-sale code W applies
+      type: Bool
+      expr:
+        op: test
+        any:
+          - op: test
+            eq:
+              - sales.code
+              - const: W
+          - op: test
+            eq:
+              - sales.code
+              - const: BW
+      cite:
+        doc: i8949
+        locator: pp. 7–11, columns (e) through (h), codes B and W
+    - id: sales.bad_code
+      printed: (helper)
+      label: Unsupported adjustment or code B without a broker basis report
+      type: Bool
+      expr:
+        op: test
+        any:
+          - op: test
+            eq:
+              - sales.code
+              - const: other
+          - op: test
+            all:
+              - op: test
+                eq:
+                  - sales.has_b
+                  - const: true
+              - op: test
+                any:
+                  - op: test
+                    eq:
+                      - sales.box
+                      - const: C
+                  - op: test
+                    eq:
+                      - sales.box
+                      - const: F
+      cite:
+        doc: i8949
+        locator: pp. 7–11, columns (e) through (h), codes B and W
+    - id: sales.bad_aggregate
+      printed: (helper)
+      label: Aggregate route fails its eligibility conditions
+      type: Bool
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - sales.route
+              - const: aggregate
+          - op: test
+            any:
+              - op: test
+                eq:
+                  - sales.covered
+                  - const: false
+              - op: test
+                ne:
+                  - sales.code
+                  - const: none
+              - op: test
+                eq:
+                  - sales.aggregate_eligible
+                  - const: false
+      cite:
+        doc: i1040sd
+        locator: p. 10, lines 1a and 8a
+    - id: sales.one
+      printed: (helper)
+      label: Screen this transaction before any aggregation
+      type: Count
+      expr:
+        op: param
+        ref: sales.one
+      cite:
+        doc: i8949
+        locator: pp. 7–11, columns (e) through (h), codes B and W
+      refuses:
+        - when: sales.digital
+          form: Form 8949 digital asset boxes G–L
+          remedy: Digital asset transactions are outside this tool; prepare the applicable
+            digital-asset part.
+          cite:
+            doc: f8949
+            locator: Parts I and II, boxes G–L
+        - when: sales.special
+          form: Schedule D special gains worksheets
+          remedy: Direct sales of collectibles, section 1202 stock and section 1250
+            property are unsupported.
+          cite:
+            doc: i1040sd
+            locator: pp. 11–12, lines 18 and 19
+        - when: sales.bad_code
+          form: Form 8949 adjustment instructions
+          remedy: Only applicable B and W adjustments are supported. Review the required
+            code and prepare the unsupported adjustment.
+          cite:
+            doc: i8949
+            locator: pp. 7–11, columns (e) through (h), codes B and W
+        - when: sales.bad_aggregate
+          form: Form 8949
+          remedy: Use the detail route; this transaction does not qualify for Schedule D
+            lines 1a/8a.
+          cite:
+            doc: i1040sd
+            locator: p. 10, lines 1a and 8a
+    - id: sales.zero
+      printed: (helper)
+      label: No adjustment
+      type: NonNegDollars
+      expr:
+        op: param
+        ref: sales.zero
+      cite:
+        doc: i8949
+        locator: pp. 7–11, columns (e) through (h), codes B and W
+    - id: sales.e
+      printed: (e)
+      label: "Column (e): reported basis if covered; correct basis otherwise"
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sales.covered
+                - const: true
+            then: sales.reported_basis
+          - guard:
+              op: test
+              eq:
+                - sales.covered
+                - const: false
+            then: sales.correct_basis
+      cite:
+        doc: i8949
+        locator: pp. 7–11, columns (e) through (h), codes B and W
+    - id: sales.b_difference
+      printed: (helper)
+      label: Reported basis minus correct basis
+      type: Dollars
+      expr:
+        op: subtract
+        from: sales.reported_basis
+        take: sales.correct_basis
+      cite:
+        doc: i8949
+        locator: pp. 7–11, columns (e) through (h), codes B and W
+    - id: sales.adjust_b
+      printed: (helper)
+      label: Correct reported basis in column (g)
+      type: Bool
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - sales.covered
+              - const: true
+          - op: test
+            eq:
+              - sales.has_b
+              - const: true
+      cite:
+        doc: i8949
+        locator: pp. 7–11, columns (e) through (h), codes B and W
+    - id: sales.b
+      printed: (helper)
+      label: Basis correction in column (g)
+      type: Dollars
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sales.adjust_b
+                - const: true
+            then: sales.b_difference
+          - guard:
+              op: test
+              eq:
+                - sales.adjust_b
+                - const: false
+            then: sales.zero
+      cite:
+        doc: i8949
+        locator: pp. 7–11, columns (e) through (h), codes B and W
+    - id: sales.w
+      printed: (helper)
+      label: Wash-sale adjustment in column (g)
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sales.has_w
+                - const: true
+            then: sales.wash_loss
+          - guard:
+              op: test
+              eq:
+                - sales.has_w
+                - const: false
+            then: sales.zero
+      cite:
+        doc: i8949
+        locator: pp. 7–11, columns (e) through (h), codes B and W
+    - id: sales.g
+      printed: (g)
+      label: "Column (g): net adjustments"
+      type: Dollars
+      expr:
+        op: sum
+        of:
+          - sales.b
+          - sales.w
+      cite:
+        doc: i8949
+        locator: pp. 7–11, columns (e) through (h), codes B and W
+    - id: sales.before_adjustment
+      printed: (helper)
+      label: Proceeds less column (e)
+      type: Dollars
+      expr:
+        op: subtract
+        from: sales.proceeds
+        take: sales.e
+      cite:
+        doc: i8949
+        locator: pp. 7–11, columns (e) through (h), codes B and W
+    - id: sales.h
+      printed: (h)
+      label: "Column (h): proceeds less basis plus adjustments"
+      type: Dollars
+      expr:
+        op: sum
+        of:
+          - sales.before_adjustment
+          - sales.g
+      cite:
+        doc: i8949
+        locator: p. 11, column (h)
+      ambiguity: amb.2025.sales_rounding

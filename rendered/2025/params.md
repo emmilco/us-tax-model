@@ -3,6 +3,9 @@
 ## Enums
 
 - `filing_status`: single, mfj, mfs, hoh, qss — [f1040] Form 1040, Filing Status (checkboxes) (2025; created 2025-09-05; sha256 3d31c226)
+- `sales_box`: A, B, C, D, E, F, G, H, I, J, K, L — [f8949] Parts I and II, checkbox classifications (2025; created 2025-05-05; sha256 27451389)
+- `sales_code`: none, B, W, BW, other — [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; sha256 f077991c)
+- `sales_route`: detail, aggregate — [i1040sd] p. 10, lines 1a and 8a (2025; printed date 2025-12-11; sha256 650643a6)
 
 ## Values
 
@@ -13,6 +16,9 @@
 | `qdcg.rate_15` | Rate | 15% (0.15) | [i1040gi] QDCGT worksheet, line 18 (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `qdcg.rate_20` | Rate | 20% (0.20) | [i1040gi] QDCGT worksheet, line 21 (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `qdcg.zero_rate_ceiling` | Dollars | single $48,350; mfj $96,700; mfs $48,350; hoh $64,750; qss $96,700 | [i1040gi] QDCGT worksheet, line 6 (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `sales.one` | Count | 1 | [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; sha256 f077991c) |
+| `sales.zero` | NonNegDollars | $0 | [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; sha256 f077991c) |
+| `sd.loss_limit` | Dollars | single -$3,000; mfj -$3,000; mfs -$1,500; hoh -$3,000; qss -$3,000 | [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b) |
 | `ss.base` | NonNegDollars | $176,100 | [i1040gi] p. 117, Schedule 3 line 11; independently confirmed iw2w3 p. 18 (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `ss.limit` | NonNegDollars | $10,918.20 | [i1040gi] p. 117, Schedule 3 line 11; independently confirmed iw2w3 p. 18 (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `ss.one` | Count | 1 | [i1040gi] p. 117, Schedule 3 line 11, more than one employer (2025; printed date 2026-02-25; sha256 482e9c48) |

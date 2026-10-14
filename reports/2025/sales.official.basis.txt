@@ -1,0 +1,228 @@
+Values sheet — tax year 2025 (implemented slice; not a complete return)
+
+== Form 1040 — selected lines (Stages 1–3) ==
+  Filing Status Single. Married filing jointly (even if only one had income). Married filing separately. Head of household (HOH). Qualifying surviving spouse (QSS).
+      = single
+      cite: [f1040] Form 1040, Filing Status (2025; created 2025-09-05; 3d31c226)
+  3a  Qualified dividends
+      = $0
+      cite: [i1040gi] Instructions for Form 1040, pp. 25–26, line 3a and exceptions (2025; printed date 2026-02-25; 482e9c48)
+  7a  Capital gain or (loss). Attach Schedule D if required
+      = $900
+      cite: [i1040gi] Instructions for Form 1040, line 7a (2025; printed date 2026-02-25; 482e9c48)
+  15  Subtract line 14 from line 11b. If zero or less, enter -0-. This is your taxable income
+      = $50,000
+      cite: [i1040gi] Instructions for Form 1040, line 15 (2025; printed date 2026-02-25; 482e9c48)
+  (gate) Use the Qualified Dividends and Capital Gain Tax Worksheet?
+      = false
+      cite: [i1040gi] Instructions for Form 1040, line 16 (Qualified Dividends and Capital Gain Tax Worksheet) (2025; printed date 2026-02-25; 482e9c48)
+  (gate) Schedule D Tax Worksheet required after its exceptions
+      = false
+      cite: [i1040sd] p. 15, Schedule D Tax Worksheet applicability and exceptions (2025; printed date 2025-12-11; 650643a6)
+      note: Interpretation amb.2025.sd4952_selection: Use the detailed worksheet conditions, including line 4g and exceptions. The worksheet explicitly limits its own use and the Form 1040 line 16 instructions repeat the line 4g condition. (i1040sd, p. 15, Schedule D Tax Worksheet applicability; compare f1040sd line 20 and i1040gi p. 36)
+  16  Tax (see instructions). Check if any from Form(s): 1 8814 2 4972 3
+      = $5,920
+      cite: [i1040gi] Instructions for Form 1040, line 16 (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["f1040.gate.qdcg_applies",{"const":false}],"op":"test"}
+
+== Schedule D — securities sales and supplied distribution subtotals ==
+  (helper) Are there gains/losses from Forms 4797, 2439, 6252, 4684, 6781, 8824 or Schedule K-1?
+      = false
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+  (helper) Is there a capital loss carryover from the prior year?
+      = false
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+  (helper) Capital gain distributions, generally Form 1099-DIV box 2a
+      = $0
+      cite: [i1040sd] p. 11, line 13 (2025; printed date 2025-12-11; 650643a6)
+  (helper) Count screened transactions
+      = 1
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      note: confirmed roster $sales: a
+  (helper) Transaction screening dependency
+      = false
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+  (helper) Schedule D required for entered sales or special distribution gains
+      = true
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+  (helper) No amount on an inapplicable line
+      = $0
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+  1a(h) Line 1a, column (h) totals
+      = $0
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      note: confirmed roster $sales: a
+  1b(h) Line 1b, column (h) totals
+      = $900
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      note: confirmed roster $sales: a
+  2(h) Line 2, column (h) totals
+      = $0
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      note: confirmed roster $sales: a
+  3(h) Line 3, column (h) totals
+      = $0
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      note: confirmed roster $sales: a
+  8a(h) Line 8a, column (h) totals
+      = $0
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      note: confirmed roster $sales: a
+  8b(h) Line 8b, column (h) totals
+      = $0
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      note: confirmed roster $sales: a
+  9(h) Line 9, column (h) totals
+      = $0
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      note: confirmed roster $sales: a
+  10(h) Line 10, column (h) totals
+      = $0
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      note: confirmed roster $sales: a
+  4   Line 4: zero only after unsupported source/carryover screening
+      = $0
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+  5   Line 5: zero only after unsupported source/carryover screening
+      = $0
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+  6   Line 6: zero only after unsupported source/carryover screening
+      = $0
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+  11  Line 11: zero only after unsupported source/carryover screening
+      = $0
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+  12  Line 12: zero only after unsupported source/carryover screening
+      = $0
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+  14  Line 14: zero only after unsupported source/carryover screening
+      = $0
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+  13  Capital gain distributions
+      = $0
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+  7   Combine the amounts for Schedule D line 7
+      = $900
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+  15  Combine the amounts for Schedule D line 15
+      = $0
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+  16  Combine the amounts for Schedule D line 16
+      = $900
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+  17  Are lines 15 and 16 both gains?
+      = false
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+  (helper) Line 16 is a loss
+      = false
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+  (helper) Capital gain or limited capital loss for Form 1040 line 7a
+      = $900
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      note: taken: {"eq":["sd.has_loss",{"const":false}],"op":"test"}
+
+Collection entries and derivations:
+  sales[a].box = A
+    cite: i8949, pp. 2–5, holding period and checkbox classifications (2025; printed date 2026-01-20; f077991c)
+  sales[a].digital = false
+    cite: f8949, Parts I and II, boxes G–L (2025; created 2025-05-05; 27451389)
+  sales[a].special = false
+    cite: i1040sd, pp. 11–12, lines 18 and 19 (2025; printed date 2025-12-11; 650643a6)
+  sales[a].code = B
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[a].has_b = true
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[a].bad_code = false
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[a].route = detail
+    cite: i1040sd, p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
+  sales[a].bad_aggregate = false
+    cite: i1040sd, p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
+  sales[a].one = 1
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[a].proceeds = $1,000
+    cite: i8949, p. 6, column (d) (2025; printed date 2026-01-20; f077991c)
+  sales[a].covered = true
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[a].reported_basis = $900
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[a].e = $900
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[a].before_adjustment = $100
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[a].adjust_b = true
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[a].correct_basis = $100
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[a].b_difference = $800
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[a].b = $800
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[a].has_w = false
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[a].zero = $0
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[a].w = $0
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[a].g = $800
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[a].h = $900
+    cite: i8949, p. 11, column (h) (2025; printed date 2026-01-20; f077991c)
+  sales[a].digital: test(sales[a].box = A; "G" = G; sales[a].box = A; "H" = H; sales[a].box = A; "I" = I; sales[a].box = A; "J" = J; sales[a].box = A; "K" = K; sales[a].box = A; "L" = L)
+  sales[a].has_b: test(sales[a].code = B; "B" = B)
+  sales[a].bad_code: test(sales[a].code = B; "other" = other; sales[a].has_b = true; true = true; sales[a].box = A; "C" = C; sales[a].box = A; "F" = F)
+  sales[a].bad_aggregate: test(sales[a].route = detail; "aggregate" = aggregate)
+  sales[a].one: param(sales[a].digital = false; sales[a].special = false; sales[a].bad_code = false; sales[a].bad_aggregate = false; #sales.one = 1)
+  sd.count: sum_over(sd.other_forms = false; sd.carryover = false; sales[a].one = 1)
+  sd.screen: test(sd.count = 1; 0 = 0)
+  sd.line1a.h: sum_over(sd.screen = false; sales[a].box = A; "A" = A; sales[a].route = detail; "aggregate" = aggregate)
+  sales[a].covered: test(sales[a].box = A; "A" = A)
+  sales[a].e: choose(sales[a].covered = true; true = true; sales[a].reported_basis = $900)
+  sales[a].before_adjustment: subtract(sales[a].proceeds = $1,000; sales[a].e = $900)
+  sales[a].adjust_b: test(sales[a].covered = true; true = true; sales[a].has_b = true; true = true)
+  sales[a].b_difference: subtract(sales[a].reported_basis = $900; sales[a].correct_basis = $100)
+  sales[a].b: choose(sales[a].adjust_b = true; true = true; sales[a].b_difference = $800)
+  sales[a].has_w: test(sales[a].code = B; "W" = W; sales[a].code = B; "BW" = BW)
+  sales[a].zero: param(#sales.zero = $0)
+  sales[a].w: choose(sales[a].has_w = false; true = true; sales[a].has_w = false; false = false; sales[a].zero = $0)
+  sales[a].g: sum(sales[a].b = $800; sales[a].w = $0)
+  sales[a].h: sum(sales[a].before_adjustment = $100; sales[a].g = $800)
+  sd.line1b.h: sum_over(sd.screen = false; sales[a].box = A; "A" = A; sales[a].route = detail; "detail" = detail; sales[a].h = $900)
+  sd.line2.h: sum_over(sd.screen = false; sales[a].box = A; "B" = B)
+  sd.line3.h: sum_over(sd.screen = false; sales[a].box = A; "C" = C)
+  sd.zero: param(#sales.zero = $0)
+  sd.line4: copy(sd.other_forms = false; sd.carryover = false; sd.zero = $0)
+  sd.line5: copy(sd.other_forms = false; sd.carryover = false; sd.zero = $0)
+  sd.line6: copy(sd.other_forms = false; sd.carryover = false; sd.zero = $0)
+  sd.line7: sum(sd.line1a.h = $0; sd.line1b.h = $900; sd.line2.h = $0; sd.line3.h = $0; sd.line4 = $0; sd.line5 = $0; sd.line6 = $0)
+  sd.line8a.h: sum_over(sd.screen = false; sales[a].box = A; "D" = D)
+  sd.line8b.h: sum_over(sd.screen = false; sales[a].box = A; "D" = D)
+  sd.line9.h: sum_over(sd.screen = false; sales[a].box = A; "E" = E)
+  sd.line10.h: sum_over(sd.screen = false; sales[a].box = A; "F" = F)
+  sd.line11: copy(sd.other_forms = false; sd.carryover = false; sd.zero = $0)
+  sd.line12: copy(sd.other_forms = false; sd.carryover = false; sd.zero = $0)
+  sd.line13: copy(sd.distributions = $0)
+  sd.line14: copy(sd.other_forms = false; sd.carryover = false; sd.zero = $0)
+  sd.line15: sum(sd.line8a.h = $0; sd.line8b.h = $0; sd.line9.h = $0; sd.line10.h = $0; sd.line11 = $0; sd.line12 = $0; sd.line13 = $0; sd.line14 = $0)
+  sd.line16: sum(sd.line7 = $900; sd.line15 = $0)
+  sd.has_loss: test(sd.line16 = $900; 0 = $0)
+  sd.to1040: choose(sd.has_loss = false; true = true; sd.has_loss = false; false = false; sd.line16 = $900)
+  f1040.sd.to1040: choose(sd.has_loss = false; true = true; sd.has_loss = false; false = false; sd.line16 = $900)
+  f1040.line7a: copy(sd.to1040 = $900)
+  sd.filed: test(sd.count = 1; 0 = 0)
+  f1040.sd.filed: test(sd.count = 1; 0 = 0)
+  sd.line17: test(sd.line15 = $0; 0 = $0)
+  f1040.sd.line17: test(sd.line15 = $0; 0 = $0)
+  f1040.gate.qdcg_applies: test(f1040.line15 = $50,000; 0 = $0; f1040.line3a = $0; 0 = $0; sd.filed = true; false = false; sd.line17 = false; true = true)
+  f1040.gate.sdtw: test(f1040.gate.qdcg_applies = false; true = true)
+  root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.amount: bound(f1040.line15 = $50,000)
+  root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.below_boundary: test(root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.amount = $50,000; #ordinary.table_boundary = $100,000)
+  root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.status: bound(f1040.status = single)
+  root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.table_tax: table_lookup(root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.amount = $50,000; root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.status = single)
+  root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.tax: choose(root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.below_boundary = true; true = true; root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.table_tax = $5,920)
+  f1040.line16: choose(f1040.gate.sdtw = false; f1040.gate.qdcg_applies = false; true = true; f1040.gate.qdcg_applies = false; false = false; bind amount = f1040.line15 = $50,000; bind status = f1040.status = single)
+Interpretation amb.2025.sales_rounding: Preserve exact cents throughout Stage 3; whole-dollar mode remains deferred. Avoid choosing a reconciliation policy without explicit support; cents are expressly permitted. (i8949, p. 3, Rounding Off to Whole Dollars; compare i1040gi p. 23)
+Interpretation amb.2025.sd4952_selection: Use the detailed worksheet conditions, including line 4g and exceptions. The worksheet explicitly limits its own use and the Form 1040 line 16 instructions repeat the line 4g condition. (i1040sd, p. 15, Schedule D Tax Worksheet applicability; compare f1040sd line 20 and i1040gi p. 36)
+Scope: implemented worksheet slices only; unsupported paths are refused. No filing or transmission.
+This is a computation of published IRS forms and instructions; it is not tax or legal advice. Published instructions are not the law itself.
+The user is responsible for the return. Not affiliated with or endorsed by the IRS.

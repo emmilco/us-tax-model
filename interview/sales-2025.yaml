@@ -1,0 +1,203 @@
+interview:
+  tax_year: 2025
+  targets:
+    - f1040.line7a
+    - f1040.line16
+  initial: {}
+  cite:
+    doc: f8949
+    locator: Parts I and II, transaction rows
+  questions:
+    - input: $sales
+      prompt: List stable transaction keys for all sales, including transactions
+        intended for aggregate reporting. Use [] only if there are no sales.
+      help: Enter a JSON array of distinct keys. Enter each transaction once; the
+        route selects Form 8949 or Schedule D aggregate reporting.
+      order: 1
+      cite:
+        doc: f8949
+        locator: Parts I and II, transaction rows
+    - input: sales.box
+      prompt: "Classification from records: A/B/C short-term, D/E/F long-term; G–L
+        digital assets"
+      help: "Use records and the broker report: A/D basis reported, B/E basis not
+        reported, C/F no 1099-B. A–C short-term, D–F long-term. Generally more
+        than one year is long-term; inherited property has special rules.
+        Holding periods are not calculated here."
+      order: 2
+      cite:
+        doc: i8949
+        locator: pp. 2–5, holding period and checkbox classifications
+    - input: sales.route
+      prompt: Report this transaction in detail on Form 8949 or directly in Schedule D
+        aggregate totals
+      help: Money is integer cents; enter true/false for questions and one of the
+        stated values for classifications. Unknown answers may be null; they
+        never become zero.
+      order: 5
+      cite:
+        doc: i1040sd
+        locator: p. 10, lines 1a and 8a
+    - input: sales.code
+      prompt: "Adjustment codes: none, B, W, BW; choose other for any additional code"
+      help: Money is integer cents; enter true/false for questions and one of the
+        stated values for classifications. Unknown answers may be null; they
+        never become zero.
+      order: 4
+      cite:
+        doc: i8949
+        locator: pp. 7–11, columns (e) through (h), codes B and W
+    - input: sales.special
+      prompt: Does this sale involve collectibles, section 1202 stock, or section 1250
+        property?
+      help: Money is integer cents; enter true/false for questions and one of the
+        stated values for classifications. Unknown answers may be null; they
+        never become zero.
+      order: 3
+      cite:
+        doc: i1040sd
+        locator: pp. 11–12, lines 18 and 19
+    - input: sales.aggregate_eligible
+      prompt: "Confirm all aggregate conditions: basis reported, no broker
+        adjustments, no Ordinary box, no QOF disposition/deferral, no
+        corrections, no collectibles"
+      help: Money is integer cents; enter true/false for questions and one of the
+        stated values for classifications. Unknown answers may be null; they
+        never become zero.
+      order: 10
+      cite:
+        doc: i1040sd
+        locator: p. 10, lines 1a and 8a
+    - input: sales.proceeds
+      prompt: "Column (d): proceeds per broker report, or net proceeds if no report"
+      help: Money is integer cents; enter true/false for questions and one of the
+        stated values for classifications. Unknown answers may be null; they
+        never become zero.
+      order: 10
+      cite:
+        doc: i8949
+        locator: p. 6, column (d)
+    - input: sales.reported_basis
+      prompt: Basis shown on broker report
+      help: Money is integer cents; enter true/false for questions and one of the
+        stated values for classifications. Unknown answers may be null; they
+        never become zero.
+      order: 10
+      cite:
+        doc: i8949
+        locator: pp. 7–11, columns (e) through (h), codes B and W
+    - input: sales.correct_basis
+      prompt: Correct adjusted basis from records
+      help: Money is integer cents; enter true/false for questions and one of the
+        stated values for classifications. Unknown answers may be null; they
+        never become zero.
+      order: 10
+      cite:
+        doc: i8949
+        locator: pp. 7–11, columns (e) through (h), codes B and W
+    - input: sales.wash_loss
+      prompt: Correct nondeductible wash-sale loss; positive cents, including losses
+        not reported by broker
+      help: Enter correct disallowed loss in integer cents. Wash sales are not
+        detected automatically. If correcting a broker amount downward, attach
+        the explanation required by code W.
+      order: 10
+      cite:
+        doc: i8949
+        locator: p. 10, code W; a lower corrected loss requires an explanation statement
+    - input: sd.other_forms
+      prompt: Are there gains/losses from Forms 4797, 2439, 6252, 4684, 6781, 8824 or
+        Schedule K-1?
+      help: Money is integer cents; enter true/false for questions and one of the
+        stated values for classifications. Unknown answers may be null; they
+        never become zero.
+      order: 10
+      cite:
+        doc: f1040sd
+        locator: Schedule D (2025), Parts I–III
+    - input: sd.carryover
+      prompt: Is there a capital loss carryover from the prior year?
+      help: Money is integer cents; enter true/false for questions and one of the
+        stated values for classifications. Unknown answers may be null; they
+        never become zero.
+      order: 10
+      cite:
+        doc: f1040sd
+        locator: Schedule D (2025), Parts I–III
+    - input: sd.distributions
+      prompt: Capital gain distributions, generally Form 1099-DIV box 2a
+      help: Money is integer cents; enter true/false for questions and one of the
+        stated values for classifications. Unknown answers may be null; they
+        never become zero.
+      order: 10
+      cite:
+        doc: i1040sd
+        locator: p. 11, line 13
+    - input: sd.line18
+      prompt: 28% Rate Gain Worksheet result (supplied subtotal; worksheet deferred to
+        Stage 4)
+      help: Money is integer cents; enter true/false for questions and one of the
+        stated values for classifications. Unknown answers may be null; they
+        never become zero.
+      order: 10
+      cite:
+        doc: i1040sd
+        locator: p. 11, line 18
+    - input: sd.line19
+      prompt: Unrecaptured Section 1250 Gain Worksheet result (supplied subtotal;
+        worksheet deferred to Stage 4)
+      help: Money is integer cents; enter true/false for questions and one of the
+        stated values for classifications. Unknown answers may be null; they
+        never become zero.
+      order: 10
+      cite:
+        doc: i1040sd
+        locator: pp. 11–12, line 19
+    - input: sd.filing4952
+      prompt: Are you filing Form 4952?
+      help: Money is integer cents; enter true/false for questions and one of the
+        stated values for classifications. Unknown answers may be null; they
+        never become zero.
+      order: 10
+      cite:
+        doc: f1040sd
+        locator: Schedule D (2025), Parts I–III
+    - input: sd.investment_election
+      prompt: Form 4952 line 4g (supplied subtotal; Form 4952 deferred to Stage 4)
+      help: Money is integer cents; enter true/false for questions and one of the
+        stated values for classifications. Unknown answers may be null; they
+        never become zero.
+      order: 10
+      cite:
+        doc: i1040sd
+        locator: p. 15, Schedule D Tax Worksheet applicability
+    - input: f1040.status
+      prompt: Form 1040, Filing Status checkboxes
+      help: Money is integer cents; enter true/false for questions and one of the
+        stated values for classifications. Unknown answers may be null; they
+        never become zero.
+      order: 10
+      cite:
+        doc: f1040
+        locator: Form 1040, Filing Status
+    - input: f1040.line3a
+      prompt: Form 1040 line 3a total qualified dividends, generally Form 1099-DIV box
+        1b, after the line 3a exceptions. Supplied as a subtotal; qualification
+        checks are outside this stage.
+      help: Money is integer cents; enter true/false for questions and one of the
+        stated values for classifications. Unknown answers may be null; they
+        never become zero.
+      order: 10
+      cite:
+        doc: i1040gi
+        locator: Instructions for Form 1040, pp. 25–26, line 3a and exceptions
+    - input: f1040.line15
+      prompt: Form 1040 line 15; in Stage 1 supplied as an input (the lines that
+        figure it are outside this stage).
+      help: Money is integer cents; enter true/false for questions and one of the
+        stated values for classifications. Unknown answers may be null; they
+        never become zero.
+      order: 10
+      cite:
+        doc: i1040gi
+        locator: Instructions for Form 1040, line 15

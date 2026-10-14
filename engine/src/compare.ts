@@ -41,15 +41,18 @@ function generatedCases(n: number): Case[] {
     const line3a = rnd() < 0.6 ? Math.floor(rnd() * line15) : 0;
     const line7a = rnd() < 0.3 ? Math.floor(rnd() * 3000000) : 0;
     const sdFiled = rnd() < 0.25;
-    const inputs: Record<string, number | boolean | string> = {
+    const inputs: Inputs = {
       "f1040.status": status,
       "f1040.line15": line15,
       "f1040.line3a": line3a,
-      "f1040.line7a": line7a,
+      "sd.distributions": line7a,
+      "$sales": [], "sd.other_forms": false, "sd.carryover": false,
+      "sd.line18": 0, "sd.line19": 0, "sd.filing4952": false, "sd.investment_election": 0,
     };
-    if (line3a > 0 || line7a > 0 || sdFiled) {
-      inputs["qdcg.schedule_d_filed"] = sdFiled;
-      if (sdFiled) inputs["qdcg.schedule_d_net_gain"] = Math.floor(rnd() * 5000000);
+    if (sdFiled) {
+      inputs["$sales"] = ["generated"];
+      Object.assign(inputs, Object.fromEntries(Object.entries({box:"D", route:"detail", code:"none", special:false,
+        proceeds:Math.floor(rnd()*5000000), reported_basis:Math.floor(rnd()*5000000)}).map(([k,v])=>[`sales[generated].${k}`,v])));
     }
     const stage2: Inputs = { ...inputs, "$person": ["taxpayer"], "person[taxpayer].rrta": false,
       "$w2@person[taxpayer]": ["a", "b"], "s3.line9": 0, "s3.line10": 0, "s3.line12": 0, "s3.line14": 0 };
@@ -60,6 +63,20 @@ function generatedCases(n: number): Case[] {
     }
     cases.push({id: `collections.${i}`, inputs: stage2});
     cases.push({ id: `generated.${String(i).padStart(3, "0")}`, inputs });
+    const salesInputs:Inputs={...inputs,"$sales":[]};
+    for(const key of Object.keys(salesInputs)) if(key.startsWith("sales["))delete salesInputs[key];
+    const keys=Array.from({length:Math.floor(rnd()*5)},(_,j)=>`row${j}`);
+    salesInputs["$sales"]=keys;
+    for(const key of keys) {
+      const box="ABCDEF"[Math.floor(rnd()*6)]!;
+      const code=["none","B","W","BW"][Math.floor(rnd()*4)]!;
+      const route=(box==="A"||box==="D")&&code==="none"&&rnd()<0.5?"aggregate":"detail";
+      const fields={box,code,route,special:false,aggregate_eligible:true,
+        proceeds:Math.floor(rnd()*1000000),reported_basis:Math.floor(rnd()*1000000),
+        correct_basis:Math.floor(rnd()*1000000),wash_loss:Math.floor(rnd()*100000)};
+      for(const [field,value] of Object.entries(fields))salesInputs[`sales[${key}].${field}`]=value;
+    }
+    cases.push({id:`sales-generated.${i}`,inputs:salesInputs});
   }
   return cases;
 }

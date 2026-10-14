@@ -6,15 +6,15 @@
 ## (question) — `qdcg.schedule_d_filed`
 
 - **Authored helper label:** Are you filing Schedule D?
-- **Encoded (Bool):** Input — The taxpayer's answer to the worksheet question 'Are you filing Schedule D?'
-- Expr: `{"op":"input","source":"The taxpayer's answer to the worksheet question 'Are you filing Schedule D?'"}`
+- **Encoded (Bool):** Enter the amount from sd "(helper)".
+- Expr: `{"from":"sd.filed","op":"copy"}`
 - Cite: [i1040gi] QDCGT worksheet, line 3 (2025; printed date 2026-02-25; sha256 482e9c48)
 
-## (input) — `qdcg.schedule_d_net_gain`
+## (computed helper) — `qdcg.schedule_d_net_gain`
 
 - **Authored helper label:** Enter the smaller of line 15 or line 16 of Schedule D. If either line 15 or line 16 is blank or a loss, enter -0-.
-- **Encoded (NonNegDollars):** Input — Schedule D (Form 1040) lines 15 and 16: the smaller of the two, or 0 if either is blank or a loss. Schedule D is outside Stage 1; the value is supplied directly.
-- Expr: `{"op":"input","source":"Schedule D (Form 1040) lines 15 and 16: the smaller of the two, or 0 if either is blank or a loss. Schedule D is outside Stage 1; the value is supplied directly."}`
+- **Encoded (NonNegDollars):** Enter the amount from sd "(helper)".
+- Expr: `{"from":"sd.net_gain","op":"copy"}`
 - Cite: [i1040gi] QDCGT worksheet, line 3 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 1 — `qdcg.line1`
@@ -34,8 +34,8 @@
 ## 3 — `qdcg.line3`
 
 - **IRS:** Are you filing Schedule D? Yes. Enter the smaller of line 15 or line 16 of Schedule D. If either line 15 or line 16 is blank or a loss, enter -0-. No. Enter the amount from Form 1040 or 1040-SR, line 7a
-- **Encoded (NonNegDollars):** Choose — [line (question) = true → line (input)] [line (question) = false → f1040 line 7a]
-- Expr: `{"alternatives":[{"guard":{"eq":["qdcg.schedule_d_filed",{"const":true}],"op":"test"},"then":"qdcg.schedule_d_net_gain"},{"guard":{"eq":["qdcg.schedule_d_filed",{"const":false}],"op":"test"},"then":"f1040.line7a"}],"op":"choose"}`
+- **Encoded (NonNegDollars):** Choose — [line (question) = true → line (computed helper)] [line (question) = false → sd "(helper)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["qdcg.schedule_d_filed",{"const":true}],"op":"test"},"then":"qdcg.schedule_d_net_gain"},{"guard":{"eq":["qdcg.schedule_d_filed",{"const":false}],"op":"test"},"then":"sd.distributions"}],"op":"choose"}`
 - Cite: [i1040gi] QDCGT worksheet, line 3 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 4 — `qdcg.line4`

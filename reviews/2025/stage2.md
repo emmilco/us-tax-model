@@ -1,4 +1,4 @@
-# Stage 2 owner review — pending
+# Stage 2 owner review — approved to proceed
 
 This file is not generated. Preserve reviewer entries across rebuilds.
 The implementation and automated tests do not count as this review.
@@ -37,3 +37,11 @@ Do not relabel the fixtures class B until the human work is recorded.
 - [ ] Human branch-covering fixture expectations recorded
 - [ ] Remaining scope limits understood
 - Decision and notes:
+
+## Owner response, 2026-10-14
+
+After receiving the review packet and an explanation of the source comparison
+and independent hand-work, the owner approved.
+Recorded as approval of the review and authorization to begin Stage 3.
+No separate case-by-case arithmetic or reviewer annotations were supplied;
+fixture evidence labels remain unchanged and are not promoted to class B.

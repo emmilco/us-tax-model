@@ -4,6 +4,7 @@
 
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
+import { stableStringify } from "./util.js";
 import { loadCanonical } from "./canonical.js";
 import { evaluate } from "./eval.js";
 import { loadCases } from "./fixtures.js";
@@ -150,6 +151,14 @@ const EQUIVALENT: Record<string, string> = {
     "min(line 5, min(line 1, line 6)) = min(line 5, line 6), so substituting line 6 for line 7 cannot change any value.",
   "operand.qdcg.qdcg.line12.line11":
     "Provably equivalent: line 11 is 'Enter the amount from line 9' (a copy), so the substituted operand is the same value at every input.",
+  "operand.sd.sd.line5.zero": "Both source lines are zero after identical unsupported-source/carryover gates. The destination checks the same gates before either source is evaluated.",
+  "operand.sd.sd.line6.zero": "Both source lines are zero after identical unsupported-source/carryover gates. The destination checks the same gates before either source is evaluated.",
+  "operand.sd.sd.line11.zero": "Both source lines are zero after identical unsupported-source/carryover gates. The destination checks the same gates before either source is evaluated.",
+  "operand.sd.sd.line12.zero": "Both source lines are zero after identical unsupported-source/carryover gates. The destination checks the same gates before either source is evaluated.",
+  "operand.sd.sd.line14.zero": "Both source lines are zero after identical unsupported-source/carryover gates. The destination checks the same gates before either source is evaluated.",
+  "operand.sd.sd.line7.line4": "Both source lines are identically zero with identical refusal gates; substitution preserves known, unknown and refused values.",
+  "operand.sd.sd.line7.line5": "Both source lines are identically zero with identical refusal gates; substitution preserves known, unknown and refused values.",
+  "operand.sd.sd.line7.line6": "Both source lines are identically zero with identical refusal gates; substitution preserves known, unknown and refused values.",
 };
 
 export function runMutation(): number {
@@ -158,8 +167,16 @@ export function runMutation(): number {
   const targets = baseline.forms.filter(d => !d.collection).flatMap((doc) => doc.lines.map((l) => l.id));
 
   const normal = (v: { kind: string; cents?: number; value?: unknown }): string =>
-    v.kind === "unknown" ? "unknown" : v.kind === "money" ? `money:${v.cents}` : `${v.kind}:${JSON.stringify(v.value)}`;
+    v.kind === "refusal" ? stableStringify(v) : v.kind === "unknown" ? "unknown" : v.kind === "money" ? `money:${v.cents}` : `${v.kind}:${JSON.stringify(v.value)}`;
 
+  // A mismatching baseline must never make every mutant look killed.
+  for (const c of fixtureFile.cases) {
+    const result=evaluate(baseline,c.inputs,targets);
+    for (const [key,expected] of Object.entries(c.expect ?? {})) {
+      const actual=result.derivations.get(key)?.value;
+      if (!actual || normal(actual)!==normal(expected)) throw new Error(`mutation baseline mismatch: ${c.id} ${key}`);
+    }
+  }
   const muts = mutations(baseline);
   const survivors: Mutation[] = [];
   let killedByCheck = 0;

@@ -9,7 +9,7 @@ import { Ajv2020 } from "ajv/dist/2020.js";
 import type { ValidateFunction } from "ajv";
 import { stableStringify } from "./util.js";
 import { type InterviewData } from "./interview.js";
-import { checkInterview } from "./interview-check.js";
+import { checkInterview, checkSalesInterview } from "./interview-check.js";
 import { runChecks } from "./check.js";
 import type {
   CanonicalData,
@@ -134,6 +134,14 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
     if (!declared) errors.push(`question ${q.input}: undeclared input`);
   }
   if (new Set(interview.questions.map(q => q.input)).size !== interview.questions.length) errors.push("duplicate questions");
+  const salesInterview = (parseYaml(readFileSync(join(ROOT, "interview", "sales-2025.yaml"), "utf8")) as {interview: InterviewData}).interview;
+  salesInterview.cite = fillCite(salesInterview.cite, 2025, "sales interview");
+  for (const q of salesInterview.questions) {
+    q.cite = fillCite(q.cite, 2025, `sales question ${q.input}`);
+    const declared = q.input.startsWith("$") ? forms.some(d => d.collection && "$" + d.id === q.input) : forms.some(d => d.lines.some(l => l.id === q.input && l.expr.op === "input"));
+    if (!declared || !q.prompt || !q.help) errors.push(`invalid sales question ${q.input}`);
+  }
+  if (new Set(salesInterview.questions.map(q=>q.input)).size !== salesInterview.questions.length) errors.push("duplicate sales questions");
   const data: CanonicalData = { forms, defs, params, tables, register };
 
   // Schema validation on the canonical form.
@@ -157,6 +165,7 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
     }
   };
   validate(validateWith("interview"), interview, "interview");
+  validate(validateWith("interview"), salesInterview, "sales interview");
   for (const doc of forms) validate(formFileValidator, { form: doc }, `form ${doc.id}`);
   for (const doc of defs) validate(defFileValidator, { def: doc }, `def ${doc.id}`);
   validate(paramsValidator, { params }, "params");
@@ -168,8 +177,8 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
   errors.push(...checkResult.errors);
   stats.push(...checkResult.stats);
 
-  if (errors.length === 0) errors.push(...checkInterview(data, interview));
-  stats.push("interview: finite enum/Boolean combinations checked against Stage 2 numeric and roster representatives");
+  if (errors.length === 0) errors.push(...checkInterview(data, interview), ...checkSalesInterview(data, salesInterview));
+  stats.push("interview: Stage 2 finite domains checked; Stage 3 fixture paths checked for reachability, termination and answer-order invariance (not exhaustive)");
 
   // Write canonical output.
   if (errors.length === 0) {
@@ -182,6 +191,7 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
       writeFileSync(join(OUT_DIR, `${doc.id}.json`), stableStringify({ def: doc }));
     }
     writeFileSync(join(OUT_DIR, "interview.json"), stableStringify(interview));
+    writeFileSync(join(OUT_DIR, "interview-sales.json"), stableStringify(salesInterview));
     writeFileSync(join(OUT_DIR, "params.json"), stableStringify({ params }));
     for (const table of tables) {
       writeFileSync(join(OUT_DIR, "tables", `${table.id}.json`), stableStringify({ table }));

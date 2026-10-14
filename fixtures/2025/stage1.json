@@ -12,8 +12,15 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 200
+        "f1040.line15": 200,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -93,8 +100,15 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 2500000
+        "f1040.line15": 2500000,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -173,8 +187,15 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 9999000
+        "f1040.line15": 9999000,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -253,8 +274,15 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 9999999
+        "f1040.line15": 9999999,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -333,8 +361,15 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 10000000
+        "f1040.line15": 10000000,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -413,8 +448,15 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 10167500
+        "f1040.line15": 10167500,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -493,8 +535,15 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 15032500
+        "f1040.line15": 15032500,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -573,8 +622,15 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 22391250
+        "f1040.line15": 22391250,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -653,8 +709,15 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 43843750
+        "f1040.line15": 43843750,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -733,8 +796,15 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 70000000
+        "f1040.line15": 70000000,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -813,8 +883,15 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 10335000
+        "f1040.line15": 10335000,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -893,8 +970,15 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 25052500
+        "f1040.line15": 25052500,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -973,8 +1057,15 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 62635000
+        "f1040.line15": 62635000,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1053,8 +1144,15 @@
       "inputs": {
         "f1040.status": "mfj",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 15335000
+        "f1040.line15": 15335000,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1133,8 +1231,15 @@
       "inputs": {
         "f1040.status": "mfj",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 30065000
+        "f1040.line15": 30065000,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1213,8 +1318,15 @@
       "inputs": {
         "f1040.status": "mfj",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 44782500
+        "f1040.line15": 44782500,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1293,8 +1405,15 @@
       "inputs": {
         "f1040.status": "mfj",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 62632500
+        "f1040.line15": 62632500,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1373,8 +1492,15 @@
       "inputs": {
         "f1040.status": "mfj",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 80000000
+        "f1040.line15": 80000000,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1453,8 +1579,15 @@
       "inputs": {
         "f1040.status": "mfs",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 10167500
+        "f1040.line15": 10167500,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1533,8 +1666,15 @@
       "inputs": {
         "f1040.status": "mfs",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 15032500
+        "f1040.line15": 15032500,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1613,8 +1753,15 @@
       "inputs": {
         "f1040.status": "mfs",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 22391250
+        "f1040.line15": 22391250,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1693,8 +1840,15 @@
       "inputs": {
         "f1040.status": "mfs",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 31316250
+        "f1040.line15": 31316250,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1773,8 +1927,15 @@
       "inputs": {
         "f1040.status": "mfs",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 50000000
+        "f1040.line15": 50000000,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1853,8 +2014,15 @@
       "inputs": {
         "f1040.status": "hoh",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 10167500
+        "f1040.line15": 10167500,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1933,8 +2101,15 @@
       "inputs": {
         "f1040.status": "hoh",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 15032500
+        "f1040.line15": 15032500,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2013,8 +2188,15 @@
       "inputs": {
         "f1040.status": "hoh",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 22390000
+        "f1040.line15": 22390000,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2093,8 +2275,15 @@
       "inputs": {
         "f1040.status": "hoh",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 43842500
+        "f1040.line15": 43842500,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2173,8 +2362,15 @@
       "inputs": {
         "f1040.status": "hoh",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 70000000
+        "f1040.line15": 70000000,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2253,8 +2449,15 @@
       "inputs": {
         "f1040.status": "qss",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 15335000
+        "f1040.line15": 15335000,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2333,8 +2536,15 @@
       "inputs": {
         "f1040.status": "qss",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 30065000
+        "f1040.line15": 30065000,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2413,8 +2623,15 @@
       "inputs": {
         "f1040.status": "mfj",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 2530000
+        "f1040.line15": 2530000,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2494,9 +2711,15 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 500000,
-        "f1040.line7a": 0,
         "f1040.line15": 5000000,
-        "qdcg.schedule_d_filed": false
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2534,10 +2757,6 @@
         "qdcg.f1040.line3a": {
           "kind": "money",
           "cents": 500000
-        },
-        "qdcg.f1040.line7a": {
-          "kind": "money",
-          "cents": 0
         },
         "qdcg.f1040.status": {
           "kind": "enum",
@@ -2646,6 +2865,10 @@
         "qdcg.schedule_d_filed": {
           "kind": "bool",
           "value": false
+        },
+        "qdcg.sd.distributions": {
+          "kind": "money",
+          "cents": 0
         }
       }
     },
@@ -2659,9 +2882,15 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line7a": 500000,
         "f1040.line15": 5000000,
-        "qdcg.schedule_d_filed": false
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 500000,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2699,10 +2928,6 @@
         "qdcg.f1040.line3a": {
           "kind": "money",
           "cents": 0
-        },
-        "qdcg.f1040.line7a": {
-          "kind": "money",
-          "cents": 500000
         },
         "qdcg.f1040.status": {
           "kind": "enum",
@@ -2811,6 +3036,10 @@
         "qdcg.schedule_d_filed": {
           "kind": "bool",
           "value": false
+        },
+        "qdcg.sd.distributions": {
+          "kind": "money",
+          "cents": 500000
         }
       }
     },
@@ -2824,10 +3053,26 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 500000,
-        "f1040.line7a": 0,
         "f1040.line15": 5000000,
-        "qdcg.schedule_d_filed": true,
-        "qdcg.schedule_d_net_gain": 300000
+        "$sales": [
+          "a"
+        ],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0,
+        "sales[a].box": "D",
+        "sales[a].route": "detail",
+        "sales[a].code": "none",
+        "sales[a].special": false,
+        "sales[a].aggregate_eligible": true,
+        "sales[a].proceeds": 300000,
+        "sales[a].reported_basis": 0,
+        "sales[a].correct_basis": 0,
+        "sales[a].wash_loss": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2848,7 +3093,7 @@
         },
         "f1040.line7a": {
           "kind": "money",
-          "cents": 0
+          "cents": 300000
         },
         "f1040.qdcg.line25": {
           "kind": "money",
@@ -2990,9 +3235,15 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 2000000,
-        "f1040.line7a": 0,
         "f1040.line15": 1000000,
-        "qdcg.schedule_d_filed": false
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -3030,10 +3281,6 @@
         "qdcg.f1040.line3a": {
           "kind": "money",
           "cents": 2000000
-        },
-        "qdcg.f1040.line7a": {
-          "kind": "money",
-          "cents": 0
         },
         "qdcg.f1040.status": {
           "kind": "enum",
@@ -3142,6 +3389,10 @@
         "qdcg.schedule_d_filed": {
           "kind": "bool",
           "value": false
+        },
+        "qdcg.sd.distributions": {
+          "kind": "money",
+          "cents": 0
         }
       }
     },
@@ -3155,9 +3406,15 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 600000,
-        "f1040.line7a": 0,
         "f1040.line15": 500000,
-        "qdcg.schedule_d_filed": false
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -3195,10 +3452,6 @@
         "qdcg.f1040.line3a": {
           "kind": "money",
           "cents": 600000
-        },
-        "qdcg.f1040.line7a": {
-          "kind": "money",
-          "cents": 0
         },
         "qdcg.f1040.status": {
           "kind": "enum",
@@ -3307,6 +3560,10 @@
         "qdcg.schedule_d_filed": {
           "kind": "bool",
           "value": false
+        },
+        "qdcg.sd.distributions": {
+          "kind": "money",
+          "cents": 0
         }
       }
     },
@@ -3321,9 +3578,15 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 70000000,
-        "f1040.line7a": 0,
         "f1040.line15": 70000000,
-        "qdcg.schedule_d_filed": false
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -3361,10 +3624,6 @@
         "qdcg.f1040.line3a": {
           "kind": "money",
           "cents": 70000000
-        },
-        "qdcg.f1040.line7a": {
-          "kind": "money",
-          "cents": 0
         },
         "qdcg.f1040.status": {
           "kind": "enum",
@@ -3473,6 +3732,10 @@
         "qdcg.schedule_d_filed": {
           "kind": "bool",
           "value": false
+        },
+        "qdcg.sd.distributions": {
+          "kind": "money",
+          "cents": 0
         }
       }
     },
@@ -3486,9 +3749,15 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 1000000,
-        "f1040.line7a": 0,
         "f1040.line15": 2000000,
-        "qdcg.schedule_d_filed": false
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -3526,10 +3795,6 @@
         "qdcg.f1040.line3a": {
           "kind": "money",
           "cents": 1000000
-        },
-        "qdcg.f1040.line7a": {
-          "kind": "money",
-          "cents": 0
         },
         "qdcg.f1040.status": {
           "kind": "enum",
@@ -3638,6 +3903,10 @@
         "qdcg.schedule_d_filed": {
           "kind": "bool",
           "value": false
+        },
+        "qdcg.sd.distributions": {
+          "kind": "money",
+          "cents": 0
         }
       }
     },
@@ -3651,9 +3920,15 @@
       "inputs": {
         "f1040.status": "mfj",
         "f1040.line3a": 10000000,
-        "f1040.line7a": 0,
         "f1040.line15": 20000000,
-        "qdcg.schedule_d_filed": false
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -3691,10 +3966,6 @@
         "qdcg.f1040.line3a": {
           "kind": "money",
           "cents": 10000000
-        },
-        "qdcg.f1040.line7a": {
-          "kind": "money",
-          "cents": 0
         },
         "qdcg.f1040.status": {
           "kind": "enum",
@@ -3803,6 +4074,10 @@
         "qdcg.schedule_d_filed": {
           "kind": "bool",
           "value": false
+        },
+        "qdcg.sd.distributions": {
+          "kind": "money",
+          "cents": 0
         }
       }
     },
@@ -3816,9 +4091,15 @@
       "inputs": {
         "f1040.status": "mfs",
         "f1040.line3a": 1000000,
-        "f1040.line7a": 0,
         "f1040.line15": 5000000,
-        "qdcg.schedule_d_filed": false
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -3856,10 +4137,6 @@
         "qdcg.f1040.line3a": {
           "kind": "money",
           "cents": 1000000
-        },
-        "qdcg.f1040.line7a": {
-          "kind": "money",
-          "cents": 0
         },
         "qdcg.f1040.status": {
           "kind": "enum",
@@ -3968,6 +4245,10 @@
         "qdcg.schedule_d_filed": {
           "kind": "bool",
           "value": false
+        },
+        "qdcg.sd.distributions": {
+          "kind": "money",
+          "cents": 0
         }
       }
     },
@@ -3981,9 +4262,15 @@
       "inputs": {
         "f1040.status": "hoh",
         "f1040.line3a": 1000000,
-        "f1040.line7a": 0,
         "f1040.line15": 5000000,
-        "qdcg.schedule_d_filed": false
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4021,10 +4308,6 @@
         "qdcg.f1040.line3a": {
           "kind": "money",
           "cents": 1000000
-        },
-        "qdcg.f1040.line7a": {
-          "kind": "money",
-          "cents": 0
         },
         "qdcg.f1040.status": {
           "kind": "enum",
@@ -4133,6 +4416,10 @@
         "qdcg.schedule_d_filed": {
           "kind": "bool",
           "value": false
+        },
+        "qdcg.sd.distributions": {
+          "kind": "money",
+          "cents": 0
         }
       }
     },
@@ -4146,9 +4433,15 @@
       "inputs": {
         "f1040.status": "qss",
         "f1040.line3a": 1000000,
-        "f1040.line7a": 0,
         "f1040.line15": 5000000,
-        "qdcg.schedule_d_filed": false
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4186,10 +4479,6 @@
         "qdcg.f1040.line3a": {
           "kind": "money",
           "cents": 1000000
-        },
-        "qdcg.f1040.line7a": {
-          "kind": "money",
-          "cents": 0
         },
         "qdcg.f1040.status": {
           "kind": "enum",
@@ -4298,6 +4587,10 @@
         "qdcg.schedule_d_filed": {
           "kind": "bool",
           "value": false
+        },
+        "qdcg.sd.distributions": {
+          "kind": "money",
+          "cents": 0
         }
       }
     },
@@ -4311,9 +4604,15 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 15000000,
-        "f1040.line7a": 0,
         "f1040.line15": 30000000,
-        "qdcg.schedule_d_filed": false
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4351,10 +4650,6 @@
         "qdcg.f1040.line3a": {
           "kind": "money",
           "cents": 15000000
-        },
-        "qdcg.f1040.line7a": {
-          "kind": "money",
-          "cents": 0
         },
         "qdcg.f1040.status": {
           "kind": "enum",
@@ -4463,6 +4758,10 @@
         "qdcg.schedule_d_filed": {
           "kind": "bool",
           "value": false
+        },
+        "qdcg.sd.distributions": {
+          "kind": "money",
+          "cents": 0
         }
       }
     },
@@ -4476,8 +4775,15 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 10335099
+        "f1040.line15": 10335099,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4556,8 +4862,15 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 19730099
+        "f1040.line15": 19730099,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4636,8 +4949,15 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 25052599
+        "f1040.line15": 25052599,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4716,8 +5036,15 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 62635099
+        "f1040.line15": 62635099,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4796,8 +5123,15 @@
       "inputs": {
         "f1040.status": "mfj",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 20670099
+        "f1040.line15": 20670099,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4876,8 +5210,15 @@
       "inputs": {
         "f1040.status": "mfj",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 39460099
+        "f1040.line15": 39460099,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4956,8 +5297,15 @@
       "inputs": {
         "f1040.status": "mfj",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 50105099
+        "f1040.line15": 50105099,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -5036,8 +5384,15 @@
       "inputs": {
         "f1040.status": "mfj",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 75160099
+        "f1040.line15": 75160099,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -5116,8 +5471,15 @@
       "inputs": {
         "f1040.status": "mfs",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 10335099
+        "f1040.line15": 10335099,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -5196,8 +5558,15 @@
       "inputs": {
         "f1040.status": "mfs",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 19730099
+        "f1040.line15": 19730099,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -5276,8 +5645,15 @@
       "inputs": {
         "f1040.status": "mfs",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 25052599
+        "f1040.line15": 25052599,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -5356,8 +5732,15 @@
       "inputs": {
         "f1040.status": "mfs",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 37580099
+        "f1040.line15": 37580099,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -5436,8 +5819,15 @@
       "inputs": {
         "f1040.status": "hoh",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 10335099
+        "f1040.line15": 10335099,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -5516,8 +5906,15 @@
       "inputs": {
         "f1040.status": "hoh",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 19730099
+        "f1040.line15": 19730099,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -5596,8 +5993,15 @@
       "inputs": {
         "f1040.status": "hoh",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 25050099
+        "f1040.line15": 25050099,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -5676,8 +6080,15 @@
       "inputs": {
         "f1040.status": "hoh",
         "f1040.line3a": 0,
-        "f1040.line7a": 0,
-        "f1040.line15": 62635099
+        "f1040.line15": 62635099,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {

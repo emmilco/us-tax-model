@@ -55,6 +55,14 @@ theorem smallerOf_mono_left {a a' b : Int} (h : a ≤ a') : smallerOf a b ≤ sm
   simp only [smallerOf]
   omega
 
+theorem largerOf_nonneg {a b : Int} (ha : 0 ≤ a) : 0 ≤ largerOf a b := by
+  simp only [largerOf]
+  omega
+
+theorem largerOf_mono_left {a a' b : Int} (h : a ≤ a') : largerOf a b ≤ largerOf a' b := by
+  simp only [largerOf]
+  omega
+
 theorem largerOf_ge_left (a b : Int) : a ≤ largerOf a b := by
   simp only [largerOf]
   omega

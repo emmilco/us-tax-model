@@ -325,6 +325,7 @@ function checkLine(ctx: Ctx, doc: FormDoc, line: Line): void {
       compatible(ctx, declared, tyMoney(expr.op === "subtract_floor0"), where);
       break;
     }
+    case "larger_of":
     case "smaller_of": {
       let allNonneg = true;
       for (const ref of expr.of) {

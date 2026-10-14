@@ -1003,8 +1003,14 @@
         "f1040.status": "single",
         "f1040.line15": 5001000,
         "f1040.line3a": 100,
-        "f1040.line7a": 0,
-        "qdcg.schedule_d_filed": false
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "sd.line18": 0,
+        "sd.line19": 0,
+        "sd.filing4952": false,
+        "sd.investment_election": 0
       },
       "expect": {
         "qdcg.line22": {

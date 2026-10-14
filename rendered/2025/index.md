@@ -4,10 +4,12 @@ Review these renderings line by line against the archived IRS sources in `source
 
 | File | Kind | Lines |
 | --- | --- | --- |
-| f1040.md | form | 7 |
+| f1040.md | form | 8 |
 | person.md | worksheet | 10 |
 | qdcg.md | worksheet | 27 |
 | s3.md | form | 7 |
+| sales.md | form | 25 |
+| sd.md | form | 63 |
 | tax_on_amount.md | def | 6 |
 | tcw.md | def | 47 |
 | w2.md | form | 6 |

@@ -1,6 +1,6 @@
 # Stage 2 review packet
 
-Status: implementation checked; owner source review and independent hand-work pending.
+Status: owner approved proceeding after Stage 2; detailed reviewer annotations and independent hand-work were not supplied. See reviews/2025/stage2.md.
 
 ## Source transcription
 
@@ -11,7 +11,7 @@ Read rendered/2025/w2.md, rendered/2025/person.md, rendered/2025/s3.md and the a
 - fw2.pdf, employee and employer identity and boxes 3, 4 and 7.
 - f1040s3.pdf, lines 9–15; f1040.pdf, line 31.
 
-Record reviewer, date, snapshot hashes and corrections in reviews/2025/stage2.md (preserved, not generated). Current reviewer: pending.
+Record reviewer, date, snapshot hashes and corrections in reviews/2025/stage2.md (preserved, not generated). Owner response is recorded in that file.
 
 ## Candidate fixture answers — not class B
 

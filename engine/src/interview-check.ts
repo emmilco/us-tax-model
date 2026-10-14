@@ -45,3 +45,31 @@ export function checkInterview(data: CanonicalData, config: InterviewData): stri
   }
   return errors;
 }
+
+// Sales fixtures cover complete paths and refusal paths. Unlike the Stage 2
+// enumeration above, this is representative coverage, not a Cartesian proof.
+export function checkSalesInterview(data: CanonicalData, config: InterviewData): string[] {
+  const errors: string[]=[];
+  const fixtures=JSON.parse(readFileSync(resolve(import.meta.dirname,"../../fixtures/2025/stage3.json"),"utf8")) as {cases:{id:string;inputs:Inputs}[]};
+  for (const fixture of fixtures.cases) {
+    try {
+      let current: Inputs=structuredClone(config.initial);
+      const events:{input:string;value:unknown}[]=[];
+      let ended=false;
+      for(let step=0;step<200;step++) {
+        const state=interviewState(data,config,current);
+        if(state.status!=="incomplete") {ended=true;break;}
+        const key=state.question?.input;
+        if(!key || !(key in fixture.inputs) || key in current) throw new Error(`missing or repeated question ${key}`);
+        if(!state.reachableInputs.includes(key)) throw new Error(`irrelevant question ${key}`);
+        events.push({input:key,value:fixture.inputs[key]});
+        current={...current,[key]:fixture.inputs[key]};
+      }
+      if(!ended) throw new Error("path did not terminate");
+      const reversed=replay(config,[{version:1,tax_year:2025},...events.toReversed()]);
+      const a=interviewState(data,config,current), b=interviewState(data,config,reversed);
+      if(!isDeepStrictEqual(a.values,b.values)||a.status!==b.status)throw new Error("answer order changes result");
+    } catch(e) {errors.push(`${fixture.id}: ${String(e)}`);}
+  }
+  return errors;
+}

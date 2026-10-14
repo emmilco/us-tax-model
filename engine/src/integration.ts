@@ -73,6 +73,34 @@ export function integrationChecks(): void {
     badData(d=>{line(d,"person.over").expr={op:"test",gt:["person.overcount",{const:0}]};});
     // A filter edge back to the aggregate must not escape the cycle walk.
     badData(d=>{line(d,"w2.over").expr={op:"test",gt:["person.overcount",{const:0,type:"Count"}]};});
+    // Sales profile: complete, corrected refusal, restored roster, and early digital refusal.
+    for (const id of ["sales.official.basis", "sales.official.two_aggregate", "sales.refuse.digital.G", "sales.select.sdtw.election"]) {
+      const sales = loadCases().cases.find(c=>c.id===id)!;
+      const salesLog=join(dir,id+".jsonl");
+      let salesState=cli(["interview","start","--profile","sales","--log",salesLog]);
+      let count=0;
+      while(salesState.status==="incomplete" && count++<50) {
+        const key=salesState.question.input;
+        assert.ok(key in sales.inputs, `missing sales input ${key}`);
+        salesState=cli(["interview","answer","--log",salesLog,"--input",key,"--value",JSON.stringify(sales.inputs[key])]);
+      }
+      assert.equal(salesState.status, id.includes("refuse") || id.includes("sdtw") ? "refused" : "complete");
+      if (id==="sales.official.basis") {
+        assert.equal(salesState.values["f1040.line7a"].value.cents,90000);
+        const correction=(input:string,value:unknown)=>cli(["interview","answer","--log",salesLog,"--input",input,"--value",JSON.stringify(value)]);
+        salesState=correction("sales[a].box","G"); assert.equal(salesState.status,"refused");
+        salesState=correction("sales[a].box","A"); assert.equal(salesState.status,"complete");
+        salesState=correction("$sales",[]); assert.equal(salesState.values["f1040.line7a"].value.cents,0);
+        salesState=correction("$sales",["a"]); assert.equal(salesState.values["f1040.line7a"].value.cents,90000);
+        cli(["interview","advance","--profile","social-security","--log",salesLog],false);
+      }
+    }
+    const sale=loadCases().cases.find(c=>c.id==="sales.official.basis")!.inputs;
+    evaluate({...sale,"$sales":["a","a"]},false,"f1040.line7a");
+    evaluate({...sale,"sales[a].wash_loss":-1},false,"f1040.line7a");
+    evaluate({...sale,"sales[a].box":"Z"},false,"f1040.line7a");
+    assert.equal(evaluate({...sale,"$sales":["a","missing"]},true,"f1040.line7a").values["f1040.line7a"].value.kind,"unknown");
+    badData(d=>{line(d,"sd.limited_loss").expr={op:"larger_of",of:["sd.limited_loss","sd.loss_limit"]};});
     console.log(`integration: ${checks} CLI invocations passed (interview, corrections, early refusals, invalid inputs, graph/type failures)`);
   } finally {rmSync(dir,{recursive:true,force:true});}
 }

@@ -30,6 +30,7 @@ export const IMPLEMENTED = new Set<string>([
   "subtract",
   "subtract_floor0",
   "smaller_of",
+  "larger_of",
   "multiply_rate",
   "table_lookup",
   "test",

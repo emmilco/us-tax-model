@@ -7,6 +7,40 @@
 params:
   tax_year: 2025
   enums:
+    sales_box:
+      values:
+        - A
+        - B
+        - C
+        - D
+        - E
+        - F
+        - G
+        - H
+        - I
+        - J
+        - K
+        - L
+      cite:
+        doc: f8949
+        locator: Parts I and II, checkbox classifications
+    sales_route:
+      values:
+        - detail
+        - aggregate
+      cite:
+        doc: i1040sd
+        locator: p. 10, lines 1a and 8a
+    sales_code:
+      values:
+        - none
+        - B
+        - W
+        - BW
+        - other
+      cite:
+        doc: i8949
+        locator: pp. 7–11, columns (e) through (h), codes B and W
     filing_status:
       values: [single, mfj, mfs, hoh, qss]
       cite: { doc: f1040, locator: "Form 1040, Filing Status (checkboxes)" }
@@ -295,3 +329,27 @@ params:
       type: NonNegDollars
       value: 0
       cite: { doc: i1040gi, locator: "p. 117, Schedule 3 line 11, amount withheld in excess" }
+
+    sales.zero:
+      value: 0
+      type: NonNegDollars
+      cite:
+        doc: i8949
+        locator: pp. 7–11, columns (e) through (h), codes B and W
+    sales.one:
+      value: 1
+      type: Count
+      cite:
+        doc: i8949
+        locator: pp. 7–11, columns (e) through (h), codes B and W
+    sd.loss_limit:
+      value:
+        single: -300000
+        mfj: -300000
+        mfs: -150000
+        hoh: -300000
+        qss: -300000
+      type: Dollars
+      cite:
+        doc: f1040sd
+        locator: Schedule D (2025), Parts I–III

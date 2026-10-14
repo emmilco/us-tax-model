@@ -1,0 +1,779 @@
+Values sheet — tax year 2025 (implemented slice; not a complete return)
+
+== Form 1040 — selected lines (Stages 1–3) ==
+  Filing Status Single. Married filing jointly (even if only one had income). Married filing separately. Head of household (HOH). Qualifying surviving spouse (QSS).
+      = single
+      cite: [f1040] Form 1040, Filing Status (2025; created 2025-09-05; 3d31c226)
+  3a  Qualified dividends
+      = $0
+      cite: [i1040gi] Instructions for Form 1040, pp. 25–26, line 3a and exceptions (2025; printed date 2026-02-25; 482e9c48)
+  7a  Capital gain or (loss). Attach Schedule D if required
+      = $1,230
+      cite: [i1040gi] Instructions for Form 1040, line 7a (2025; printed date 2026-02-25; 482e9c48)
+  15  Subtract line 14 from line 11b. If zero or less, enter -0-. This is your taxable income
+      = $50,000
+      cite: [i1040gi] Instructions for Form 1040, line 15 (2025; printed date 2026-02-25; 482e9c48)
+  (gate) Use the Qualified Dividends and Capital Gain Tax Worksheet?
+      = true
+      cite: [i1040gi] Instructions for Form 1040, line 16 (Qualified Dividends and Capital Gain Tax Worksheet) (2025; printed date 2026-02-25; 482e9c48)
+  (gate) Schedule D Tax Worksheet required after its exceptions
+      = false
+      cite: [i1040sd] p. 15, Schedule D Tax Worksheet applicability and exceptions (2025; printed date 2025-12-11; 650643a6)
+      note: Interpretation amb.2025.sd4952_selection: Use the detailed worksheet conditions, including line 4g and exceptions. The worksheet explicitly limits its own use and the Form 1040 line 16 instructions repeat the line 4g condition. (i1040sd, p. 15, Schedule D Tax Worksheet applicability; compare f1040sd line 20 and i1040gi p. 36)
+  16  Tax (see instructions). Check if any from Form(s): 1 8814 2 4972 3
+      = $5,861.50
+      cite: [i1040gi] Instructions for Form 1040, line 16 (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["f1040.gate.qdcg_applies",{"const":true}],"op":"test"}
+
+== Qualified Dividends and Capital Gain Tax Worksheet—Line 16 ==
+  (question) Are you filing Schedule D?
+      = true
+      cite: [i1040gi] QDCGT worksheet, line 3 (2025; printed date 2026-02-25; 482e9c48)
+  (input) Enter the smaller of line 15 or line 16 of Schedule D. If either line 15 or line 16 is blank or a loss, enter -0-.
+      = $710
+      cite: [i1040gi] QDCGT worksheet, line 3 (2025; printed date 2026-02-25; 482e9c48)
+  1   Enter the amount from Form 1040 or 1040-SR, line 15. However, if you are filing Form 2555 (relating to foreign earned income), enter the amount from line 3 of the Foreign Earned Income Tax Worksheet
+      = $50,000
+      cite: [i1040gi] QDCGT worksheet, line 1 (2025; printed date 2026-02-25; 482e9c48)
+  2   Enter the amount from Form 1040 or 1040-SR, line 3a
+      = $0
+      cite: [i1040gi] QDCGT worksheet, line 2 (2025; printed date 2026-02-25; 482e9c48)
+  3   Are you filing Schedule D? Yes. Enter the smaller of line 15 or line 16 of Schedule D. If either line 15 or line 16 is blank or a loss, enter -0-. No. Enter the amount from Form 1040 or 1040-SR, line 7a
+      = $710
+      cite: [i1040gi] QDCGT worksheet, line 3 (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["qdcg.schedule_d_filed",{"const":true}],"op":"test"}
+  4   Add lines 2 and 3
+      = $710
+      cite: [i1040gi] QDCGT worksheet, line 4 (2025; printed date 2026-02-25; 482e9c48)
+  5   Subtract line 4 from line 1. If zero or less, enter -0-
+      = $49,290
+      cite: [i1040gi] QDCGT worksheet, line 5 (2025; printed date 2026-02-25; 482e9c48)
+  6   Enter: $48,350 if single or married filing separately, $96,700 if married filing jointly or qualifying surviving spouse, $64,750 if head of household
+      = $48,350
+      cite: [i1040gi] QDCGT worksheet, line 6 (2025; printed date 2026-02-25; 482e9c48)
+  7   Enter the smaller of line 1 or line 6
+      = $48,350
+      cite: [i1040gi] QDCGT worksheet, line 7 (2025; printed date 2026-02-25; 482e9c48)
+  8   Enter the smaller of line 5 or line 7
+      = $48,350
+      cite: [i1040gi] QDCGT worksheet, line 8 (2025; printed date 2026-02-25; 482e9c48)
+  9   Subtract line 8 from line 7. This amount is taxed at 0%
+      = $0
+      cite: [i1040gi] QDCGT worksheet, line 9 (2025; printed date 2026-02-25; 482e9c48)
+  10  Enter the smaller of line 1 or line 4
+      = $710
+      cite: [i1040gi] QDCGT worksheet, line 10 (2025; printed date 2026-02-25; 482e9c48)
+  11  Enter the amount from line 9
+      = $0
+      cite: [i1040gi] QDCGT worksheet, line 11 (2025; printed date 2026-02-25; 482e9c48)
+  12  Subtract line 11 from line 10
+      = $710
+      cite: [i1040gi] QDCGT worksheet, line 12 (2025; printed date 2026-02-25; 482e9c48)
+  13  Enter: $533,400 if single, $300,000 if married filing separately, $600,050 if married filing jointly or qualifying surviving spouse, $566,700 if head of household
+      = $533,400
+      cite: [i1040gi] QDCGT worksheet, line 13 (2025; printed date 2026-02-25; 482e9c48)
+  14  Enter the smaller of line 1 or line 13
+      = $50,000
+      cite: [i1040gi] QDCGT worksheet, line 14 (2025; printed date 2026-02-25; 482e9c48)
+  15  Add lines 5 and 9
+      = $49,290
+      cite: [i1040gi] QDCGT worksheet, line 15 (2025; printed date 2026-02-25; 482e9c48)
+  16  Subtract line 15 from line 14. If zero or less, enter -0-
+      = $710
+      cite: [i1040gi] QDCGT worksheet, line 16 (2025; printed date 2026-02-25; 482e9c48)
+  17  Enter the smaller of line 12 or line 16
+      = $710
+      cite: [i1040gi] QDCGT worksheet, line 17 (2025; printed date 2026-02-25; 482e9c48)
+  18  Multiply line 17 by 15% (0.15)
+      = $106.50
+      cite: [i1040gi] QDCGT worksheet, line 18 (2025; printed date 2026-02-25; 482e9c48)
+      note: half-up to the cent per the ambiguity register
+  19  Add lines 9 and 17
+      = $710
+      cite: [i1040gi] QDCGT worksheet, line 19 (2025; printed date 2026-02-25; 482e9c48)
+  20  Subtract line 19 from line 10
+      = $0
+      cite: [i1040gi] QDCGT worksheet, line 20 (2025; printed date 2026-02-25; 482e9c48)
+  21  Multiply line 20 by 20% (0.20)
+      = $0
+      cite: [i1040gi] QDCGT worksheet, line 21 (2025; printed date 2026-02-25; 482e9c48)
+      note: half-up to the cent per the ambiguity register
+  22  Figure the tax on the amount on line 5. If the amount on line 5 is less than $100,000, use the Tax Table to figure the tax. If the amount on line 5 is $100,000 or more, use the Tax Computation Worksheet
+      = $5,755
+      cite: [i1040gi] QDCGT worksheet, line 22 (2025; printed date 2026-02-25; 482e9c48)
+      note: via tax_on_amount line tax
+  23  Add lines 18, 21, and 22
+      = $5,861.50
+      cite: [i1040gi] QDCGT worksheet, line 23 (2025; printed date 2026-02-25; 482e9c48)
+  24  Figure the tax on the amount on line 1. If the amount on line 1 is less than $100,000, use the Tax Table to figure the tax. If the amount on line 1 is $100,000 or more, use the Tax Computation Worksheet
+      = $5,920
+      cite: [i1040gi] QDCGT worksheet, line 24 (2025; printed date 2026-02-25; 482e9c48)
+      note: via tax_on_amount line tax
+  25  Tax on all taxable income. Enter the smaller of line 23 or line 24. Also include this amount on the entry space on Form 1040 or 1040-SR, line 16. If you are filing Form 2555, don't enter this amount on the entry space on Form 1040 or 1040-SR, line 16. Instead, enter it on line 4 of the Foreign Earned Income Tax Worksheet
+      = $5,861.50
+      cite: [i1040gi] QDCGT worksheet, line 25 (2025; printed date 2026-02-25; 482e9c48)
+
+== Schedule D — securities sales and supplied distribution subtotals ==
+  (helper) Are there gains/losses from Forms 4797, 2439, 6252, 4684, 6781, 8824 or Schedule K-1?
+      = false
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+  (helper) Is there a capital loss carryover from the prior year?
+      = false
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+  (helper) Capital gain distributions, generally Form 1099-DIV box 2a
+      = $0
+      cite: [i1040sd] p. 11, line 13 (2025; printed date 2025-12-11; 650643a6)
+  (helper) 28% Rate Gain Worksheet result (supplied subtotal; worksheet deferred to Stage 4)
+      = $0
+      cite: [i1040sd] p. 11, line 18 (2025; printed date 2025-12-11; 650643a6)
+  (helper) Unrecaptured Section 1250 Gain Worksheet result (supplied subtotal; worksheet deferred to Stage 4)
+      = $0
+      cite: [i1040sd] pp. 11–12, line 19 (2025; printed date 2025-12-11; 650643a6)
+  (helper) Are you filing Form 4952?
+      = false
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+  (helper) Count screened transactions
+      = 8
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      note: confirmed roster $sales: 1a, 1b, 2, 3, 8a, 8b, 9, 10
+  (helper) Transaction screening dependency
+      = false
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+  (helper) Schedule D required for entered sales or special distribution gains
+      = true
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+  (helper) No amount on an inapplicable line
+      = $0
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+  1a(h) Line 1a, column (h) totals
+      = $90
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      note: confirmed roster $sales: 1a, 1b, 2, 3, 8a, 8b, 9, 10
+  1b(h) Line 1b, column (h) totals
+      = $170
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      note: confirmed roster $sales: 1a, 1b, 2, 3, 8a, 8b, 9, 10
+  2(h) Line 2, column (h) totals
+      = -$80
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      note: confirmed roster $sales: 1a, 1b, 2, 3, 8a, 8b, 9, 10
+  3(h) Line 3, column (h) totals
+      = $340
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      note: confirmed roster $sales: 1a, 1b, 2, 3, 8a, 8b, 9, 10
+  8a(h) Line 8a, column (h) totals
+      = $430
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      note: confirmed roster $sales: 1a, 1b, 2, 3, 8a, 8b, 9, 10
+  8b(h) Line 8b, column (h) totals
+      = -$170
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      note: confirmed roster $sales: 1a, 1b, 2, 3, 8a, 8b, 9, 10
+  9(h) Line 9, column (h) totals
+      = $610
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      note: confirmed roster $sales: 1a, 1b, 2, 3, 8a, 8b, 9, 10
+  10(h) Line 10, column (h) totals
+      = -$160
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      note: confirmed roster $sales: 1a, 1b, 2, 3, 8a, 8b, 9, 10
+  4   Line 4: zero only after unsupported source/carryover screening
+      = $0
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+  5   Line 5: zero only after unsupported source/carryover screening
+      = $0
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+  6   Line 6: zero only after unsupported source/carryover screening
+      = $0
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+  11  Line 11: zero only after unsupported source/carryover screening
+      = $0
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+  12  Line 12: zero only after unsupported source/carryover screening
+      = $0
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+  14  Line 14: zero only after unsupported source/carryover screening
+      = $0
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+  13  Capital gain distributions
+      = $0
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+  7   Combine the amounts for Schedule D line 7
+      = $520
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+  15  Combine the amounts for Schedule D line 15
+      = $710
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+  16  Combine the amounts for Schedule D line 16
+      = $1,230
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+  17  Are lines 15 and 16 both gains?
+      = true
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+  (helper) Line 16 is a loss
+      = false
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+  (helper) Capital gain or limited capital loss for Form 1040 line 7a
+      = $1,230
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      note: taken: {"eq":["sd.has_loss",{"const":false}],"op":"test"}
+  (helper) Smaller of Schedule D lines 15 and 16
+      = $710
+      cite: [i1040gi] QDCGT worksheet, line 3 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Nonnegative net capital gain for QDCGT
+      = $710
+      cite: [i1040gi] QDCGT worksheet, line 3 (2025; printed date 2026-02-25; 482e9c48)
+
+Collection entries and derivations:
+  sales[10].box = F
+    cite: i8949, pp. 2–5, holding period and checkbox classifications (2025; printed date 2026-01-20; f077991c)
+  sales[10].digital = false
+    cite: f8949, Parts I and II, boxes G–L (2025; created 2025-05-05; 27451389)
+  sales[10].special = false
+    cite: i1040sd, pp. 11–12, lines 18 and 19 (2025; printed date 2025-12-11; 650643a6)
+  sales[10].code = W
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[10].has_b = false
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[10].bad_code = false
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[10].route = detail
+    cite: i1040sd, p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
+  sales[10].bad_aggregate = false
+    cite: i1040sd, p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
+  sales[10].one = 1
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[1a].box = A
+    cite: i8949, pp. 2–5, holding period and checkbox classifications (2025; printed date 2026-01-20; f077991c)
+  sales[1a].digital = false
+    cite: f8949, Parts I and II, boxes G–L (2025; created 2025-05-05; 27451389)
+  sales[1a].special = false
+    cite: i1040sd, pp. 11–12, lines 18 and 19 (2025; printed date 2025-12-11; 650643a6)
+  sales[1a].code = none
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[1a].has_b = false
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[1a].bad_code = false
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[1a].route = aggregate
+    cite: i1040sd, p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
+  sales[1a].covered = true
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[1a].aggregate_eligible = true
+    cite: i1040sd, p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
+  sales[1a].bad_aggregate = false
+    cite: i1040sd, p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
+  sales[1a].one = 1
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[1b].box = A
+    cite: i8949, pp. 2–5, holding period and checkbox classifications (2025; printed date 2026-01-20; f077991c)
+  sales[1b].digital = false
+    cite: f8949, Parts I and II, boxes G–L (2025; created 2025-05-05; 27451389)
+  sales[1b].special = false
+    cite: i1040sd, pp. 11–12, lines 18 and 19 (2025; printed date 2025-12-11; 650643a6)
+  sales[1b].code = B
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[1b].has_b = true
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[1b].bad_code = false
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[1b].route = detail
+    cite: i1040sd, p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
+  sales[1b].bad_aggregate = false
+    cite: i1040sd, p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
+  sales[1b].one = 1
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[2].box = B
+    cite: i8949, pp. 2–5, holding period and checkbox classifications (2025; printed date 2026-01-20; f077991c)
+  sales[2].digital = false
+    cite: f8949, Parts I and II, boxes G–L (2025; created 2025-05-05; 27451389)
+  sales[2].special = false
+    cite: i1040sd, pp. 11–12, lines 18 and 19 (2025; printed date 2025-12-11; 650643a6)
+  sales[2].code = W
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[2].has_b = false
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[2].bad_code = false
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[2].route = detail
+    cite: i1040sd, p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
+  sales[2].bad_aggregate = false
+    cite: i1040sd, p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
+  sales[2].one = 1
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[3].box = C
+    cite: i8949, pp. 2–5, holding period and checkbox classifications (2025; printed date 2026-01-20; f077991c)
+  sales[3].digital = false
+    cite: f8949, Parts I and II, boxes G–L (2025; created 2025-05-05; 27451389)
+  sales[3].special = false
+    cite: i1040sd, pp. 11–12, lines 18 and 19 (2025; printed date 2025-12-11; 650643a6)
+  sales[3].code = none
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[3].has_b = false
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[3].bad_code = false
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[3].route = detail
+    cite: i1040sd, p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
+  sales[3].bad_aggregate = false
+    cite: i1040sd, p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
+  sales[3].one = 1
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[8a].box = D
+    cite: i8949, pp. 2–5, holding period and checkbox classifications (2025; printed date 2026-01-20; f077991c)
+  sales[8a].digital = false
+    cite: f8949, Parts I and II, boxes G–L (2025; created 2025-05-05; 27451389)
+  sales[8a].special = false
+    cite: i1040sd, pp. 11–12, lines 18 and 19 (2025; printed date 2025-12-11; 650643a6)
+  sales[8a].code = none
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[8a].has_b = false
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[8a].bad_code = false
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[8a].route = aggregate
+    cite: i1040sd, p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
+  sales[8a].covered = true
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[8a].aggregate_eligible = true
+    cite: i1040sd, p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
+  sales[8a].bad_aggregate = false
+    cite: i1040sd, p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
+  sales[8a].one = 1
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[8b].box = D
+    cite: i8949, pp. 2–5, holding period and checkbox classifications (2025; printed date 2026-01-20; f077991c)
+  sales[8b].digital = false
+    cite: f8949, Parts I and II, boxes G–L (2025; created 2025-05-05; 27451389)
+  sales[8b].special = false
+    cite: i1040sd, pp. 11–12, lines 18 and 19 (2025; printed date 2025-12-11; 650643a6)
+  sales[8b].code = BW
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[8b].has_b = true
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[8b].bad_code = false
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[8b].route = detail
+    cite: i1040sd, p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
+  sales[8b].bad_aggregate = false
+    cite: i1040sd, p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
+  sales[8b].one = 1
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[9].box = E
+    cite: i8949, pp. 2–5, holding period and checkbox classifications (2025; printed date 2026-01-20; f077991c)
+  sales[9].digital = false
+    cite: f8949, Parts I and II, boxes G–L (2025; created 2025-05-05; 27451389)
+  sales[9].special = false
+    cite: i1040sd, pp. 11–12, lines 18 and 19 (2025; printed date 2025-12-11; 650643a6)
+  sales[9].code = B
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[9].has_b = true
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[9].bad_code = false
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[9].route = detail
+    cite: i1040sd, p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
+  sales[9].bad_aggregate = false
+    cite: i1040sd, p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
+  sales[9].one = 1
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[1a].proceeds = $100
+    cite: i8949, p. 6, column (d) (2025; printed date 2026-01-20; f077991c)
+  sales[1a].reported_basis = $10
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[1a].e = $10
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[1a].before_adjustment = $90
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[1a].adjust_b = false
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[1a].zero = $0
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[1a].b = $0
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[1a].has_w = false
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[1a].w = $0
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[1a].g = $0
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[1a].h = $90
+    cite: i8949, p. 11, column (h) (2025; printed date 2026-01-20; f077991c)
+  sales[1b].proceeds = $200
+    cite: i8949, p. 6, column (d) (2025; printed date 2026-01-20; f077991c)
+  sales[1b].covered = true
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[1b].reported_basis = $20
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[1b].e = $20
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[1b].before_adjustment = $180
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[1b].adjust_b = true
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[1b].correct_basis = $30
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[1b].b_difference = -$10
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[1b].b = -$10
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[1b].has_w = false
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[1b].zero = $0
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[1b].w = $0
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[1b].g = -$10
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[1b].h = $170
+    cite: i8949, p. 11, column (h) (2025; printed date 2026-01-20; f077991c)
+  sales[2].proceeds = $300
+    cite: i8949, p. 6, column (d) (2025; printed date 2026-01-20; f077991c)
+  sales[2].covered = false
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[2].correct_basis = $400
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[2].e = $400
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[2].before_adjustment = -$100
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[2].adjust_b = false
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[2].zero = $0
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[2].b = $0
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[2].has_w = true
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[2].wash_loss = $20
+    cite: i8949, p. 10, code W; a lower corrected loss requires an explanation statement (2025; printed date 2026-01-20; f077991c)
+  sales[2].w = $20
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[2].g = $20
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[2].h = -$80
+    cite: i8949, p. 11, column (h) (2025; printed date 2026-01-20; f077991c)
+  sales[3].proceeds = $400
+    cite: i8949, p. 6, column (d) (2025; printed date 2026-01-20; f077991c)
+  sales[3].covered = false
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[3].correct_basis = $60
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[3].e = $60
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[3].before_adjustment = $340
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[3].adjust_b = false
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[3].zero = $0
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[3].b = $0
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[3].has_w = false
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[3].w = $0
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[3].g = $0
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[3].h = $340
+    cite: i8949, p. 11, column (h) (2025; printed date 2026-01-20; f077991c)
+  sales[8a].proceeds = $500
+    cite: i8949, p. 6, column (d) (2025; printed date 2026-01-20; f077991c)
+  sales[8a].reported_basis = $70
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[8a].e = $70
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[8a].before_adjustment = $430
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[8a].adjust_b = false
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[8a].zero = $0
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[8a].b = $0
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[8a].has_w = false
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[8a].w = $0
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[8a].g = $0
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[8a].h = $430
+    cite: i8949, p. 11, column (h) (2025; printed date 2026-01-20; f077991c)
+  sales[8b].proceeds = $600
+    cite: i8949, p. 6, column (d) (2025; printed date 2026-01-20; f077991c)
+  sales[8b].covered = true
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[8b].reported_basis = $700
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[8b].e = $700
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[8b].before_adjustment = -$100
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[8b].adjust_b = true
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[8b].correct_basis = $800
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[8b].b_difference = -$100
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[8b].b = -$100
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[8b].has_w = true
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[8b].wash_loss = $30
+    cite: i8949, p. 10, code W; a lower corrected loss requires an explanation statement (2025; printed date 2026-01-20; f077991c)
+  sales[8b].w = $30
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[8b].g = -$70
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[8b].h = -$170
+    cite: i8949, p. 11, column (h) (2025; printed date 2026-01-20; f077991c)
+  sales[9].proceeds = $700
+    cite: i8949, p. 6, column (d) (2025; printed date 2026-01-20; f077991c)
+  sales[9].covered = false
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[9].correct_basis = $90
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[9].e = $90
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[9].before_adjustment = $610
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[9].adjust_b = false
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[9].zero = $0
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[9].b = $0
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[9].has_w = false
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[9].w = $0
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[9].g = $0
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[9].h = $610
+    cite: i8949, p. 11, column (h) (2025; printed date 2026-01-20; f077991c)
+  sales[10].proceeds = $800
+    cite: i8949, p. 6, column (d) (2025; printed date 2026-01-20; f077991c)
+  sales[10].covered = false
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[10].correct_basis = $1,000
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[10].e = $1,000
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[10].before_adjustment = -$200
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[10].adjust_b = false
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[10].zero = $0
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[10].b = $0
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[10].has_w = true
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[10].wash_loss = $40
+    cite: i8949, p. 10, code W; a lower corrected loss requires an explanation statement (2025; printed date 2026-01-20; f077991c)
+  sales[10].w = $40
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[10].g = $40
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[10].h = -$160
+    cite: i8949, p. 11, column (h) (2025; printed date 2026-01-20; f077991c)
+  sales[10].digital: test(sales[10].box = F; "G" = G; sales[10].box = F; "H" = H; sales[10].box = F; "I" = I; sales[10].box = F; "J" = J; sales[10].box = F; "K" = K; sales[10].box = F; "L" = L)
+  sales[10].has_b: test(sales[10].code = W; "B" = B; sales[10].code = W; "BW" = BW)
+  sales[10].bad_code: test(sales[10].code = W; "other" = other; sales[10].has_b = false; true = true)
+  sales[10].bad_aggregate: test(sales[10].route = detail; "aggregate" = aggregate)
+  sales[10].one: param(sales[10].digital = false; sales[10].special = false; sales[10].bad_code = false; sales[10].bad_aggregate = false; #sales.one = 1)
+  sales[1a].digital: test(sales[1a].box = A; "G" = G; sales[1a].box = A; "H" = H; sales[1a].box = A; "I" = I; sales[1a].box = A; "J" = J; sales[1a].box = A; "K" = K; sales[1a].box = A; "L" = L)
+  sales[1a].has_b: test(sales[1a].code = none; "B" = B; sales[1a].code = none; "BW" = BW)
+  sales[1a].bad_code: test(sales[1a].code = none; "other" = other; sales[1a].has_b = false; true = true)
+  sales[1a].covered: test(sales[1a].box = A; "A" = A)
+  sales[1a].bad_aggregate: test(sales[1a].route = aggregate; "aggregate" = aggregate; sales[1a].covered = true; false = false; sales[1a].code = none; "none" = none; sales[1a].aggregate_eligible = true; false = false)
+  sales[1a].one: param(sales[1a].digital = false; sales[1a].special = false; sales[1a].bad_code = false; sales[1a].bad_aggregate = false; #sales.one = 1)
+  sales[1b].digital: test(sales[1b].box = A; "G" = G; sales[1b].box = A; "H" = H; sales[1b].box = A; "I" = I; sales[1b].box = A; "J" = J; sales[1b].box = A; "K" = K; sales[1b].box = A; "L" = L)
+  sales[1b].has_b: test(sales[1b].code = B; "B" = B)
+  sales[1b].bad_code: test(sales[1b].code = B; "other" = other; sales[1b].has_b = true; true = true; sales[1b].box = A; "C" = C; sales[1b].box = A; "F" = F)
+  sales[1b].bad_aggregate: test(sales[1b].route = detail; "aggregate" = aggregate)
+  sales[1b].one: param(sales[1b].digital = false; sales[1b].special = false; sales[1b].bad_code = false; sales[1b].bad_aggregate = false; #sales.one = 1)
+  sales[2].digital: test(sales[2].box = B; "G" = G; sales[2].box = B; "H" = H; sales[2].box = B; "I" = I; sales[2].box = B; "J" = J; sales[2].box = B; "K" = K; sales[2].box = B; "L" = L)
+  sales[2].has_b: test(sales[2].code = W; "B" = B; sales[2].code = W; "BW" = BW)
+  sales[2].bad_code: test(sales[2].code = W; "other" = other; sales[2].has_b = false; true = true)
+  sales[2].bad_aggregate: test(sales[2].route = detail; "aggregate" = aggregate)
+  sales[2].one: param(sales[2].digital = false; sales[2].special = false; sales[2].bad_code = false; sales[2].bad_aggregate = false; #sales.one = 1)
+  sales[3].digital: test(sales[3].box = C; "G" = G; sales[3].box = C; "H" = H; sales[3].box = C; "I" = I; sales[3].box = C; "J" = J; sales[3].box = C; "K" = K; sales[3].box = C; "L" = L)
+  sales[3].has_b: test(sales[3].code = none; "B" = B; sales[3].code = none; "BW" = BW)
+  sales[3].bad_code: test(sales[3].code = none; "other" = other; sales[3].has_b = false; true = true)
+  sales[3].bad_aggregate: test(sales[3].route = detail; "aggregate" = aggregate)
+  sales[3].one: param(sales[3].digital = false; sales[3].special = false; sales[3].bad_code = false; sales[3].bad_aggregate = false; #sales.one = 1)
+  sales[8a].digital: test(sales[8a].box = D; "G" = G; sales[8a].box = D; "H" = H; sales[8a].box = D; "I" = I; sales[8a].box = D; "J" = J; sales[8a].box = D; "K" = K; sales[8a].box = D; "L" = L)
+  sales[8a].has_b: test(sales[8a].code = none; "B" = B; sales[8a].code = none; "BW" = BW)
+  sales[8a].bad_code: test(sales[8a].code = none; "other" = other; sales[8a].has_b = false; true = true)
+  sales[8a].covered: test(sales[8a].box = D; "A" = A; sales[8a].box = D; "D" = D)
+  sales[8a].bad_aggregate: test(sales[8a].route = aggregate; "aggregate" = aggregate; sales[8a].covered = true; false = false; sales[8a].code = none; "none" = none; sales[8a].aggregate_eligible = true; false = false)
+  sales[8a].one: param(sales[8a].digital = false; sales[8a].special = false; sales[8a].bad_code = false; sales[8a].bad_aggregate = false; #sales.one = 1)
+  sales[8b].digital: test(sales[8b].box = D; "G" = G; sales[8b].box = D; "H" = H; sales[8b].box = D; "I" = I; sales[8b].box = D; "J" = J; sales[8b].box = D; "K" = K; sales[8b].box = D; "L" = L)
+  sales[8b].has_b: test(sales[8b].code = BW; "B" = B; sales[8b].code = BW; "BW" = BW)
+  sales[8b].bad_code: test(sales[8b].code = BW; "other" = other; sales[8b].has_b = true; true = true; sales[8b].box = D; "C" = C; sales[8b].box = D; "F" = F)
+  sales[8b].bad_aggregate: test(sales[8b].route = detail; "aggregate" = aggregate)
+  sales[8b].one: param(sales[8b].digital = false; sales[8b].special = false; sales[8b].bad_code = false; sales[8b].bad_aggregate = false; #sales.one = 1)
+  sales[9].digital: test(sales[9].box = E; "G" = G; sales[9].box = E; "H" = H; sales[9].box = E; "I" = I; sales[9].box = E; "J" = J; sales[9].box = E; "K" = K; sales[9].box = E; "L" = L)
+  sales[9].has_b: test(sales[9].code = B; "B" = B)
+  sales[9].bad_code: test(sales[9].code = B; "other" = other; sales[9].has_b = true; true = true; sales[9].box = E; "C" = C; sales[9].box = E; "F" = F)
+  sales[9].bad_aggregate: test(sales[9].route = detail; "aggregate" = aggregate)
+  sales[9].one: param(sales[9].digital = false; sales[9].special = false; sales[9].bad_code = false; sales[9].bad_aggregate = false; #sales.one = 1)
+  sd.count: sum_over(sd.other_forms = false; sd.carryover = false; sales[10].one = 1; sales[1a].one = 1; sales[1b].one = 1; sales[2].one = 1; sales[3].one = 1; sales[8a].one = 1; sales[8b].one = 1; sales[9].one = 1)
+  sd.screen: test(sd.count = 8; 0 = 0)
+  sales[1a].e: choose(sales[1a].covered = true; true = true; sales[1a].reported_basis = $10)
+  sales[1a].before_adjustment: subtract(sales[1a].proceeds = $100; sales[1a].e = $10)
+  sales[1a].adjust_b: test(sales[1a].covered = true; true = true; sales[1a].has_b = false; true = true)
+  sales[1a].zero: param(#sales.zero = $0)
+  sales[1a].b: choose(sales[1a].adjust_b = false; true = true; sales[1a].adjust_b = false; false = false; sales[1a].zero = $0)
+  sales[1a].has_w: test(sales[1a].code = none; "W" = W; sales[1a].code = none; "BW" = BW)
+  sales[1a].w: choose(sales[1a].has_w = false; true = true; sales[1a].has_w = false; false = false; sales[1a].zero = $0)
+  sales[1a].g: sum(sales[1a].b = $0; sales[1a].w = $0)
+  sales[1a].h: sum(sales[1a].before_adjustment = $90; sales[1a].g = $0)
+  sd.line1a.h: sum_over(sd.screen = false; sales[10].box = F; "A" = A; sales[1a].box = A; "A" = A; sales[1a].route = aggregate; "aggregate" = aggregate; sales[1a].h = $90; sales[1b].box = A; "A" = A; sales[1b].route = detail; "aggregate" = aggregate; sales[2].box = B; "A" = A; sales[3].box = C; "A" = A; sales[8a].box = D; "A" = A; sales[8b].box = D; "A" = A; sales[9].box = E; "A" = A)
+  sales[1b].covered: test(sales[1b].box = A; "A" = A)
+  sales[1b].e: choose(sales[1b].covered = true; true = true; sales[1b].reported_basis = $20)
+  sales[1b].before_adjustment: subtract(sales[1b].proceeds = $200; sales[1b].e = $20)
+  sales[1b].adjust_b: test(sales[1b].covered = true; true = true; sales[1b].has_b = true; true = true)
+  sales[1b].b_difference: subtract(sales[1b].reported_basis = $20; sales[1b].correct_basis = $30)
+  sales[1b].b: choose(sales[1b].adjust_b = true; true = true; sales[1b].b_difference = -$10)
+  sales[1b].has_w: test(sales[1b].code = B; "W" = W; sales[1b].code = B; "BW" = BW)
+  sales[1b].zero: param(#sales.zero = $0)
+  sales[1b].w: choose(sales[1b].has_w = false; true = true; sales[1b].has_w = false; false = false; sales[1b].zero = $0)
+  sales[1b].g: sum(sales[1b].b = -$10; sales[1b].w = $0)
+  sales[1b].h: sum(sales[1b].before_adjustment = $180; sales[1b].g = -$10)
+  sd.line1b.h: sum_over(sd.screen = false; sales[10].box = F; "A" = A; sales[1a].box = A; "A" = A; sales[1a].route = aggregate; "detail" = detail; sales[1b].box = A; "A" = A; sales[1b].route = detail; "detail" = detail; sales[1b].h = $170; sales[2].box = B; "A" = A; sales[3].box = C; "A" = A; sales[8a].box = D; "A" = A; sales[8b].box = D; "A" = A; sales[9].box = E; "A" = A)
+  sales[2].covered: test(sales[2].box = B; "A" = A; sales[2].box = B; "D" = D)
+  sales[2].e: choose(sales[2].covered = false; true = true; sales[2].covered = false; false = false; sales[2].correct_basis = $400)
+  sales[2].before_adjustment: subtract(sales[2].proceeds = $300; sales[2].e = $400)
+  sales[2].adjust_b: test(sales[2].covered = false; true = true)
+  sales[2].zero: param(#sales.zero = $0)
+  sales[2].b: choose(sales[2].adjust_b = false; true = true; sales[2].adjust_b = false; false = false; sales[2].zero = $0)
+  sales[2].has_w: test(sales[2].code = W; "W" = W)
+  sales[2].w: choose(sales[2].has_w = true; true = true; sales[2].wash_loss = $20)
+  sales[2].g: sum(sales[2].b = $0; sales[2].w = $20)
+  sales[2].h: sum(sales[2].before_adjustment = -$100; sales[2].g = $20)
+  sd.line2.h: sum_over(sd.screen = false; sales[10].box = F; "B" = B; sales[1a].box = A; "B" = B; sales[1b].box = A; "B" = B; sales[2].box = B; "B" = B; sales[2].route = detail; "detail" = detail; sales[2].h = -$80; sales[3].box = C; "B" = B; sales[8a].box = D; "B" = B; sales[8b].box = D; "B" = B; sales[9].box = E; "B" = B)
+  sales[3].covered: test(sales[3].box = C; "A" = A; sales[3].box = C; "D" = D)
+  sales[3].e: choose(sales[3].covered = false; true = true; sales[3].covered = false; false = false; sales[3].correct_basis = $60)
+  sales[3].before_adjustment: subtract(sales[3].proceeds = $400; sales[3].e = $60)
+  sales[3].adjust_b: test(sales[3].covered = false; true = true)
+  sales[3].zero: param(#sales.zero = $0)
+  sales[3].b: choose(sales[3].adjust_b = false; true = true; sales[3].adjust_b = false; false = false; sales[3].zero = $0)
+  sales[3].has_w: test(sales[3].code = none; "W" = W; sales[3].code = none; "BW" = BW)
+  sales[3].w: choose(sales[3].has_w = false; true = true; sales[3].has_w = false; false = false; sales[3].zero = $0)
+  sales[3].g: sum(sales[3].b = $0; sales[3].w = $0)
+  sales[3].h: sum(sales[3].before_adjustment = $340; sales[3].g = $0)
+  sd.line3.h: sum_over(sd.screen = false; sales[10].box = F; "C" = C; sales[1a].box = A; "C" = C; sales[1b].box = A; "C" = C; sales[2].box = B; "C" = C; sales[3].box = C; "C" = C; sales[3].route = detail; "detail" = detail; sales[3].h = $340; sales[8a].box = D; "C" = C; sales[8b].box = D; "C" = C; sales[9].box = E; "C" = C)
+  sd.zero: param(#sales.zero = $0)
+  sd.line4: copy(sd.other_forms = false; sd.carryover = false; sd.zero = $0)
+  sd.line5: copy(sd.other_forms = false; sd.carryover = false; sd.zero = $0)
+  sd.line6: copy(sd.other_forms = false; sd.carryover = false; sd.zero = $0)
+  sd.line7: sum(sd.line1a.h = $90; sd.line1b.h = $170; sd.line2.h = -$80; sd.line3.h = $340; sd.line4 = $0; sd.line5 = $0; sd.line6 = $0)
+  sales[8a].e: choose(sales[8a].covered = true; true = true; sales[8a].reported_basis = $70)
+  sales[8a].before_adjustment: subtract(sales[8a].proceeds = $500; sales[8a].e = $70)
+  sales[8a].adjust_b: test(sales[8a].covered = true; true = true; sales[8a].has_b = false; true = true)
+  sales[8a].zero: param(#sales.zero = $0)
+  sales[8a].b: choose(sales[8a].adjust_b = false; true = true; sales[8a].adjust_b = false; false = false; sales[8a].zero = $0)
+  sales[8a].has_w: test(sales[8a].code = none; "W" = W; sales[8a].code = none; "BW" = BW)
+  sales[8a].w: choose(sales[8a].has_w = false; true = true; sales[8a].has_w = false; false = false; sales[8a].zero = $0)
+  sales[8a].g: sum(sales[8a].b = $0; sales[8a].w = $0)
+  sales[8a].h: sum(sales[8a].before_adjustment = $430; sales[8a].g = $0)
+  sd.line8a.h: sum_over(sd.screen = false; sales[10].box = F; "D" = D; sales[1a].box = A; "D" = D; sales[1b].box = A; "D" = D; sales[2].box = B; "D" = D; sales[3].box = C; "D" = D; sales[8a].box = D; "D" = D; sales[8a].route = aggregate; "aggregate" = aggregate; sales[8a].h = $430; sales[8b].box = D; "D" = D; sales[8b].route = detail; "aggregate" = aggregate; sales[9].box = E; "D" = D)
+  sales[8b].covered: test(sales[8b].box = D; "A" = A; sales[8b].box = D; "D" = D)
+  sales[8b].e: choose(sales[8b].covered = true; true = true; sales[8b].reported_basis = $700)
+  sales[8b].before_adjustment: subtract(sales[8b].proceeds = $600; sales[8b].e = $700)
+  sales[8b].adjust_b: test(sales[8b].covered = true; true = true; sales[8b].has_b = true; true = true)
+  sales[8b].b_difference: subtract(sales[8b].reported_basis = $700; sales[8b].correct_basis = $800)
+  sales[8b].b: choose(sales[8b].adjust_b = true; true = true; sales[8b].b_difference = -$100)
+  sales[8b].has_w: test(sales[8b].code = BW; "W" = W; sales[8b].code = BW; "BW" = BW)
+  sales[8b].w: choose(sales[8b].has_w = true; true = true; sales[8b].wash_loss = $30)
+  sales[8b].g: sum(sales[8b].b = -$100; sales[8b].w = $30)
+  sales[8b].h: sum(sales[8b].before_adjustment = -$100; sales[8b].g = -$70)
+  sd.line8b.h: sum_over(sd.screen = false; sales[10].box = F; "D" = D; sales[1a].box = A; "D" = D; sales[1b].box = A; "D" = D; sales[2].box = B; "D" = D; sales[3].box = C; "D" = D; sales[8a].box = D; "D" = D; sales[8a].route = aggregate; "detail" = detail; sales[8b].box = D; "D" = D; sales[8b].route = detail; "detail" = detail; sales[8b].h = -$170; sales[9].box = E; "D" = D)
+  sales[9].covered: test(sales[9].box = E; "A" = A; sales[9].box = E; "D" = D)
+  sales[9].e: choose(sales[9].covered = false; true = true; sales[9].covered = false; false = false; sales[9].correct_basis = $90)
+  sales[9].before_adjustment: subtract(sales[9].proceeds = $700; sales[9].e = $90)
+  sales[9].adjust_b: test(sales[9].covered = false; true = true)
+  sales[9].zero: param(#sales.zero = $0)
+  sales[9].b: choose(sales[9].adjust_b = false; true = true; sales[9].adjust_b = false; false = false; sales[9].zero = $0)
+  sales[9].has_w: test(sales[9].code = B; "W" = W; sales[9].code = B; "BW" = BW)
+  sales[9].w: choose(sales[9].has_w = false; true = true; sales[9].has_w = false; false = false; sales[9].zero = $0)
+  sales[9].g: sum(sales[9].b = $0; sales[9].w = $0)
+  sales[9].h: sum(sales[9].before_adjustment = $610; sales[9].g = $0)
+  sd.line9.h: sum_over(sd.screen = false; sales[10].box = F; "E" = E; sales[1a].box = A; "E" = E; sales[1b].box = A; "E" = E; sales[2].box = B; "E" = E; sales[3].box = C; "E" = E; sales[8a].box = D; "E" = E; sales[8b].box = D; "E" = E; sales[9].box = E; "E" = E; sales[9].route = detail; "detail" = detail; sales[9].h = $610)
+  sales[10].covered: test(sales[10].box = F; "A" = A; sales[10].box = F; "D" = D)
+  sales[10].e: choose(sales[10].covered = false; true = true; sales[10].covered = false; false = false; sales[10].correct_basis = $1,000)
+  sales[10].before_adjustment: subtract(sales[10].proceeds = $800; sales[10].e = $1,000)
+  sales[10].adjust_b: test(sales[10].covered = false; true = true)
+  sales[10].zero: param(#sales.zero = $0)
+  sales[10].b: choose(sales[10].adjust_b = false; true = true; sales[10].adjust_b = false; false = false; sales[10].zero = $0)
+  sales[10].has_w: test(sales[10].code = W; "W" = W)
+  sales[10].w: choose(sales[10].has_w = true; true = true; sales[10].wash_loss = $40)
+  sales[10].g: sum(sales[10].b = $0; sales[10].w = $40)
+  sales[10].h: sum(sales[10].before_adjustment = -$200; sales[10].g = $40)
+  sd.line10.h: sum_over(sd.screen = false; sales[10].box = F; "F" = F; sales[10].route = detail; "detail" = detail; sales[10].h = -$160; sales[1a].box = A; "F" = F; sales[1b].box = A; "F" = F; sales[2].box = B; "F" = F; sales[3].box = C; "F" = F; sales[8a].box = D; "F" = F; sales[8b].box = D; "F" = F; sales[9].box = E; "F" = F)
+  sd.line11: copy(sd.other_forms = false; sd.carryover = false; sd.zero = $0)
+  sd.line12: copy(sd.other_forms = false; sd.carryover = false; sd.zero = $0)
+  sd.line13: copy(sd.distributions = $0)
+  sd.line14: copy(sd.other_forms = false; sd.carryover = false; sd.zero = $0)
+  sd.line15: sum(sd.line8a.h = $430; sd.line8b.h = -$170; sd.line9.h = $610; sd.line10.h = -$160; sd.line11 = $0; sd.line12 = $0; sd.line13 = $0; sd.line14 = $0)
+  sd.line16: sum(sd.line7 = $520; sd.line15 = $710)
+  sd.has_loss: test(sd.line16 = $1,230; 0 = $0)
+  sd.to1040: choose(sd.has_loss = false; true = true; sd.has_loss = false; false = false; sd.line16 = $1,230)
+  f1040.sd.to1040: choose(sd.has_loss = false; true = true; sd.has_loss = false; false = false; sd.line16 = $1,230)
+  f1040.line7a: copy(sd.to1040 = $1,230)
+  sd.filed: test(sd.count = 8; 0 = 0)
+  f1040.sd.filed: test(sd.count = 8; 0 = 0)
+  sd.line17: test(sd.line15 = $710; 0 = $0; sd.line16 = $1,230; 0 = $0)
+  f1040.sd.line17: test(sd.line15 = $710; 0 = $0; sd.line16 = $1,230; 0 = $0)
+  f1040.gate.qdcg_applies: test(f1040.line15 = $50,000; 0 = $0; f1040.line3a = $0; 0 = $0; sd.filed = true; false = false; sd.line17 = true; true = true)
+  f1040.gate.sdtw: test(f1040.gate.qdcg_applies = true; true = true; sd.line17 = true; true = true; sd.line18 = $0; 0 = $0; sd.line19 = $0; 0 = $0; sd.filing4952 = false; true = true)
+  qdcg.line1: copy(f1040.line15 = $50,000)
+  qdcg.line2: copy(f1040.line3a = $0)
+  qdcg.sd.filed: test(sd.count = 8; 0 = 0)
+  qdcg.schedule_d_filed: copy(sd.filed = true)
+  sd.net_gain_raw: smaller_of(sd.line15 = $710; sd.line16 = $1,230)
+  sd.net_gain: subtract_floor0(sd.net_gain_raw = $710; 0 = $0)
+  qdcg.sd.net_gain: subtract_floor0(sd.net_gain_raw = $710; 0 = $0)
+  qdcg.schedule_d_net_gain: copy(sd.net_gain = $710)
+  qdcg.line3: choose(qdcg.schedule_d_filed = true; true = true; qdcg.schedule_d_net_gain = $710)
+  qdcg.line4: sum(qdcg.line2 = $0; qdcg.line3 = $710)
+  qdcg.line10: smaller_of(qdcg.line1 = $50,000; qdcg.line4 = $710)
+  qdcg.line6: param(#qdcg.zero_rate_ceiling = $48,350)
+  qdcg.line7: smaller_of(qdcg.line1 = $50,000; qdcg.line6 = $48,350)
+  qdcg.line5: subtract_floor0(qdcg.line1 = $50,000; qdcg.line4 = $710)
+  qdcg.line8: smaller_of(qdcg.line5 = $49,290; qdcg.line7 = $48,350)
+  qdcg.line9: subtract(qdcg.line7 = $48,350; qdcg.line8 = $48,350)
+  qdcg.line11: copy(qdcg.line9 = $0)
+  qdcg.line12: subtract(qdcg.line10 = $710; qdcg.line11 = $0)
+  qdcg.line13: param(#qdcg.fifteen_rate_ceiling = $533,400)
+  qdcg.line14: smaller_of(qdcg.line1 = $50,000; qdcg.line13 = $533,400)
+  qdcg.line15: sum(qdcg.line5 = $49,290; qdcg.line9 = $0)
+  qdcg.line16: subtract_floor0(qdcg.line14 = $50,000; qdcg.line15 = $49,290)
+  qdcg.line17: smaller_of(qdcg.line12 = $710; qdcg.line16 = $710)
+  qdcg.line18: multiply_rate(qdcg.line17 = $710; #qdcg.rate_15 = 15/100)
+  qdcg.line19: sum(qdcg.line9 = $0; qdcg.line17 = $710)
+  qdcg.line20: subtract(qdcg.line10 = $710; qdcg.line19 = $710)
+  qdcg.line21: multiply_rate(qdcg.line20 = $0; #qdcg.rate_20 = 20/100)
+  root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.amount: bound(qdcg.line5 = $49,290)
+  root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.below_boundary: test(root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.amount = $49,290; #ordinary.table_boundary = $100,000)
+  root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.status: bound(f1040.status = single)
+  root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.table_tax: table_lookup(root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.amount = $49,290; root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.status = single)
+  root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.tax: choose(root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.below_boundary = true; true = true; root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.table_tax = $5,755)
+  qdcg.line22: copy(instance)(bind amount = qdcg.line5 = $49,290; bind status = f1040.status = single)
+  qdcg.line23: sum(qdcg.line18 = $106.50; qdcg.line21 = $0; qdcg.line22 = $5,755)
+  root|inst:tax_on_amount#{"amount":"qdcg.line1","status":"f1040.status"}.amount: bound(qdcg.line1 = $50,000)
+  root|inst:tax_on_amount#{"amount":"qdcg.line1","status":"f1040.status"}.below_boundary: test(root|inst:tax_on_amount#{"amount":"qdcg.line1","status":"f1040.status"}.amount = $50,000; #ordinary.table_boundary = $100,000)
+  root|inst:tax_on_amount#{"amount":"qdcg.line1","status":"f1040.status"}.status: bound(f1040.status = single)
+  root|inst:tax_on_amount#{"amount":"qdcg.line1","status":"f1040.status"}.table_tax: table_lookup(root|inst:tax_on_amount#{"amount":"qdcg.line1","status":"f1040.status"}.amount = $50,000; root|inst:tax_on_amount#{"amount":"qdcg.line1","status":"f1040.status"}.status = single)
+  root|inst:tax_on_amount#{"amount":"qdcg.line1","status":"f1040.status"}.tax: choose(root|inst:tax_on_amount#{"amount":"qdcg.line1","status":"f1040.status"}.below_boundary = true; true = true; root|inst:tax_on_amount#{"amount":"qdcg.line1","status":"f1040.status"}.table_tax = $5,920)
+  qdcg.line24: copy(instance)(bind amount = qdcg.line1 = $50,000; bind status = f1040.status = single)
+  qdcg.line25: smaller_of(qdcg.line23 = $5,861.50; qdcg.line24 = $5,920)
+  f1040.qdcg.line25: smaller_of(qdcg.line23 = $5,861.50; qdcg.line24 = $5,920)
+  f1040.line16: choose(f1040.gate.sdtw = false; f1040.gate.qdcg_applies = true; true = true; qdcg.line25 = $5,861.50)
+Interpretation amb.2025.sales_rounding: Preserve exact cents throughout Stage 3; whole-dollar mode remains deferred. Avoid choosing a reconciliation policy without explicit support; cents are expressly permitted. (i8949, p. 3, Rounding Off to Whole Dollars; compare i1040gi p. 23)
+Interpretation amb.2025.sd4952_selection: Use the detailed worksheet conditions, including line 4g and exceptions. The worksheet explicitly limits its own use and the Form 1040 line 16 instructions repeat the line 4g condition. (i1040sd, p. 15, Schedule D Tax Worksheet applicability; compare f1040sd line 20 and i1040gi p. 36)
+Scope: implemented worksheet slices only; unsupported paths are refused. No filing or transmission.
+This is a computation of published IRS forms and instructions; it is not tax or legal advice. Published instructions are not the law itself.
+The user is responsible for the return. Not affiliated with or endorsed by the IRS.

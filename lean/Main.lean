@@ -78,7 +78,8 @@ def main (args : List String) : IO UInt32 := do
     let ctx : Ctx := { forms, params, tables, inputs, memo, inflight }
     let mut pairs : List (String × Json) := []
     let mut count : Nat := 0
-    for docId in ["f1040", "qdcg", "s3"] do
+    for (docId, candidate) in forms.toList do
+      if (candidate.getObjVal? "collection").isOk || (candidate.getObjValAs? String "kind").toOption == some "def" then continue
       match forms.get? docId with
       | none => pure ()
       | some doc =>

@@ -125,11 +125,11 @@ export function coverageReport(): void {
     const result = evaluate(data, c.inputs, targets);
     for (const der of result.derivations.values()) {
       const id=template(der.line);
-      if (der.value.kind !== "unknown") { const set=evidence.get(id)??new Set();set.add(c.evidence);evidence.set(id,set); }
+      if (der.value.kind !== "unknown" && c.expect && der.line in c.expect) { const set=evidence.get(id)??new Set();set.add(c.evidence);evidence.set(id,set); }
       if (der.value.kind === "bool") mark(`${id}:${der.value.value}`,c);
       if (["subtract_floor0","smaller_of","larger_of"].includes(der.op)) {
         const values=der.operands.filter(o=>o.value.kind==="money").map(o=>(o.value as {cents:number}).cents);
-        if (values.length>=2) mark(`${id}:${der.op==="subtract_floor0" ? (values[0]!>values[1]! ? "positive":"floor") : (values[0]!<=values[1]! ? "left":"right")}`,c);
+        if (values.length>=2) mark(`${id}:${der.op==="subtract_floor0" ? (values[0]!>values[1]! ? "positive":"floor") : ((der.op==="larger_of" ? values[0]!>=values[1]! : values[0]!<=values[1]!) ? "left":"right")}`,c);
       }
       if (der.op === "choose" && der.takenGuardIndex !== undefined) {
         const key = `${der.line.includes("[") ? der.line.replace(/(?:[a-zA-Z0-9_]+\[[^\]]+\]\.)+/g, m => m.split(".").filter(Boolean).at(-1)!.split("[")[0]+".") : der.line}#${der.takenGuardIndex}`;
@@ -197,12 +197,13 @@ export function coverageReport(): void {
   for (const doc of data.forms) for (const line of doc.lines) {
     const sides = line.type === "Bool" ? ["false","true"] : line.expr.op === "subtract_floor0" ? ["floor","positive"] : ["smaller_of","larger_of"].includes(line.expr.op) ? ["left","right"] : [];
     for (const side of sides) {
+      if (line.id === "sd.screen" && side === "true") { out.push("- sd.screen true: unreachable by Count non-negativity; structural propagation gate, not a tax branch."); continue; }
       const cases=branches.get(`${line.id}:${side}`);
       out.push(`- ${line.id} ${side}: ${cases ? [...cases].join(", ") : "**UNOBSERVED**"}`);
       if (!cases) uncovered++;
     }
   }
-  out.push("", "## Evidence by line", "", "Synthetic regressions are not class B; independent human hand-work remains pending.", "", "| Line | Evidence labels observed |", "| --- | --- |");
+  out.push("", "## Evidence by line", "", "Synthetic regressions are not class B; independent human hand-work remains pending.", "", "| Line | Evidence labels on asserted expectations |", "| --- | --- |");
   for(const doc of [...data.forms,...data.defs]) for(const line of doc.lines) {
     const labels=evidence.get(line.id);
     out.push(`| ${line.id} | ${labels ? [...labels].sort().join(", ") : doc.kind === "def" ? "See bound instances above" : "unobserved"} |`);
@@ -216,10 +217,10 @@ export function coverageReport(): void {
 /** Review packet: fixture expectations remain candidate answers, not class B. */
 export function reviewStage2(): void {
   const cases=loadCases().cases.filter(c=>c.id.startsWith("ss."));
-  const out=["# Stage 2 review packet", "", "Status: implementation checked; owner source review and independent hand-work pending.", "",
+  const out=["# Stage 2 review packet", "", "Status: owner approved proceeding after Stage 2; detailed reviewer annotations and independent hand-work were not supplied. See reviews/2025/stage2.md.", "",
     "## Source transcription", "", "Read rendered/2025/w2.md, rendered/2025/person.md, rendered/2025/s3.md and the added Form 1040 line 31 against the archived sources below. Helper labels are authored explanations, not verbatim IRS lines.", "",
     "- i1040gi.pdf, printed p. 117, Schedule 3 line 11.", "- iw2w3.pdf, printed p. 18, boxes 3, 4 and 7; pp. 12–13 for the railroad exclusion.", "- fw2.pdf, employee and employer identity and boxes 3, 4 and 7.", "- f1040s3.pdf, lines 9–15; f1040.pdf, line 31.", "",
-    "Record reviewer, date, snapshot hashes and corrections in reviews/2025/stage2.md (preserved, not generated). Current reviewer: pending.", "",
+    "Record reviewer, date, snapshot hashes and corrections in reviews/2025/stage2.md (preserved, not generated). Owner response is recorded in that file.", "",
     "## Candidate fixture answers — not class B", "",
     "Use integer cents below. Work each case independently on the archived instructions before comparing the candidate answer. Synthetic boundary inputs can deliberately contain unusual withholding; they test the encoded instructions, not payroll plausibility.", "",
     "| Case | Status | Per-employer (box 3; box 7; box 4), cents | Candidate line 11 |", "| --- | --- | --- | --- |"];
@@ -250,4 +251,31 @@ export function reviewStage2(): void {
     }
   } finally {rmSync(tmp,{recursive:true,force:true});}
   console.log("review packet: reports/2025/stage2-review.md; synthetic values sheets: ss.multi.txt, ss.single.over.txt");
+}
+
+export function reviewStage3(): void {
+  const dir=join(ROOT,"reports","2025");
+  const selected=["sales.official.basis","sales.mixed_columns","sales.refuse.digital.G","sales.select.sdtw.election"];
+  const tmp=mkdtempSync(join(tmpdir(),"stage3-review-"));
+  try {
+    for(const id of selected) {
+      const fixture=loadCases().cases.find(c=>c.id===id)!;
+      const input=join(tmp,"inputs.json");writeFileSync(input,JSON.stringify(fixture.inputs));
+      const proc=spawnSync(process.execPath,[DIST_MAIN,"eval","--inputs",input,"--target","f1040.line7a,f1040.line16"],{encoding:"utf8"});
+      if(proc.status!==0)throw new Error(proc.stderr);
+      writeFileSync(join(dir,id+".txt"),proc.stdout);
+    }
+    writeFileSync(join(dir,"stage3-review.md"),[
+      "# Stage 3 review packet", "",
+      "Read rendered/2025/sales.md and sd.md alongside archived i8949 pp. 7–11, i1040sd pp. 10–11 and f1040sd. Check the Form 1040 selector against i1040sd p. 15 and i1040gi p. 36.", "",
+      "Official arithmetic: i8949 p. 11 examples 1–4 and the repeated Schedule D column-(h) examples; i1040sd pp. 10–11 aggregate example and its two-transaction continuation. The adjustment example supplies no code: the fixture's B routing is synthetic scaffolding, not official evidence. Example 4 explicitly supplies code B. Official digital-asset examples 5–6 and the main-home EH example are outside scope; digital boxes and unsupported codes are refused, not claimed computed.", "",
+      "Review choices: exact cents (whole-dollar mode deferred); supplied A–F classification (holding periods, dates, descriptions and basis determination not computed); code W takes a supplied correct disallowed loss; corrected broker wash loss may require a statement. See ambiguities/2025.yaml for rounding and Form 4952 worksheet selection.", "",
+      "Schedule D lines 18/19 and Form 4952 amounts remain supplied subtotals. A required Schedule D Tax Worksheet is refused until Stage 4. Capital-loss carryovers and additional source forms are refused. This is not a complete return.", "",
+      "The synthetic cases are regressions, not class B. No independent human hand-work is claimed. Stage 3 interview build checks cover fixture paths and answer-order invariance; they are not exhaustive over all finite domains or roster sizes.", "",
+      "Earlier fixture inputs were migrated from supplied Form 1040 line 7a/QDCG net-gain inputs to actual sales and distribution inputs. Existing tax expectations were retained. The Schedule-D fixture's line 7a now reflects its $3,000 computed gain; the old zero was an inconsistent placeholder. Obsolete trace aliases now point to the distribution input.", "",
+      ...selected.map(id=>`- [${id}](${id}.txt)`), "",
+      "See coverage.md, mutation.md and evaluator_agreement.md for generated verification evidence. Record owner observations in reviews/2025/stage3.md.", ""
+    ].join("\n"));
+  } finally {rmSync(tmp,{recursive:true,force:true});}
+  console.log("review: reports/2025/stage3-review.md and four CLI values sheets");
 }

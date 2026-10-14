@@ -1,60 +1,133 @@
-# Form 1040, selected lines (Stage 1).
-#
-# Stage 1 encodes only what the tax-on-taxable-income path needs: the filing
-# status, lines 3a, 7a and 15 as inputs, and the line 16 method choice. The
-# lines a return would normally use to figure those values are outside this
-# stage; the inputs stand in for them and say so.
-
 form:
   id: f1040
   kind: form
-  title: "Form 1040 — selected lines (Stages 1–2)"
+  title: Form 1040 — selected lines (Stages 1–3)
   tax_year: 2025
   lines:
-
     - id: f1040.status
-      printed: "Filing Status"
-      label: "Single. Married filing jointly (even if only one had income). Married filing separately. Head of household (HOH). Qualifying surviving spouse (QSS)."
+      printed: Filing Status
+      label: Single. Married filing jointly (even if only one had income). Married
+        filing separately. Head of household (HOH). Qualifying surviving spouse
+        (QSS).
       type: Enum(filing_status)
-      expr: { op: input, source: "Form 1040, Filing Status checkboxes" }
-      cite: { doc: f1040, locator: "Form 1040, Filing Status" }
-
-    - id: f1040.line3a
-      printed: "3a"
-      label: "Qualified dividends"
-      type: NonNegDollars
-      expr: { op: input, source: "Form 1040 line 3a total qualified dividends, generally Form 1099-DIV box 1b, after the line 3a exceptions. Supplied as a subtotal; qualification checks are outside this stage." }
-      cite: { doc: i1040gi, locator: "Instructions for Form 1040, pp. 25–26, line 3a and exceptions" }
-
-    - id: f1040.line7a
-      printed: "7a"
-      label: "Capital gain or (loss). Attach Schedule D if required"
-      type: NonNegDollars
-      expr: { op: input, source: "Form 1099-DIV box 2a when Schedule D is not required; otherwise the net gain from Schedule D (Schedule D is outside Stage 1)." }
-      cite: { doc: i1040gi, locator: "Instructions for Form 1040, line 7a" }
-
-    - id: f1040.line15
-      printed: "15"
-      label: "Subtract line 14 from line 11b. If zero or less, enter -0-. This is your taxable income"
-      type: NonNegDollars
-      expr: { op: input, source: "Form 1040 line 15; in Stage 1 supplied as an input (the lines that figure it are outside this stage)." }
-      cite: { doc: i1040gi, locator: "Instructions for Form 1040, line 15" }
-
-    - id: f1040.gate.qdcg_applies
-      printed: "(gate)"
-      label: "Use the Qualified Dividends and Capital Gain Tax Worksheet?"
-      type: Bool
-      note: "Stage 1 encodes the two applicability bullets that do not require Schedule D. The 'filing Schedule D' bullet and the Schedule D Tax Worksheet arrive with Stage 3."
       expr:
-        op: test
-        any:
-          - { op: test, gt: ["f1040.line3a", { const: 0 }] }
-          - { op: test, gt: ["f1040.line7a", { const: 0 }] }
+        op: input
+        source: Form 1040, Filing Status checkboxes
+      cite:
+        doc: f1040
+        locator: Form 1040, Filing Status
+    - id: f1040.line3a
+      printed: 3a
+      label: Qualified dividends
+      type: NonNegDollars
+      expr:
+        op: input
+        source: Form 1040 line 3a total qualified dividends, generally Form 1099-DIV box
+          1b, after the line 3a exceptions. Supplied as a subtotal;
+          qualification checks are outside this stage.
       cite:
         doc: i1040gi
-        locator: "Instructions for Form 1040, line 16 (Qualified Dividends and Capital Gain Tax Worksheet)"
-        quote: "Use the Qualified Dividends and Capital Gain Tax Worksheet, later, to figure your tax if you don't have to use the Schedule D Tax Worksheet and if any of the following applies. • You reported qualified dividends on Form 1040 or 1040-SR, line 3a. • You don't have to file Schedule D and you reported capital gain distributions on Form 1040 or 1040-SR, line 7a."
-
+        locator: Instructions for Form 1040, pp. 25–26, line 3a and exceptions
+    - id: f1040.line7a
+      printed: 7a
+      label: Capital gain or (loss). Attach Schedule D if required
+      type: Dollars
+      expr:
+        op: copy
+        from: sd.to1040
+      cite:
+        doc: i1040gi
+        locator: Instructions for Form 1040, line 7a
+    - id: f1040.line15
+      printed: "15"
+      label: Subtract line 14 from line 11b. If zero or less, enter -0-. This is your
+        taxable income
+      type: NonNegDollars
+      expr:
+        op: input
+        source: Form 1040 line 15; in Stage 1 supplied as an input (the lines that
+          figure it are outside this stage).
+      cite:
+        doc: i1040gi
+        locator: Instructions for Form 1040, line 15
+    - id: f1040.gate.qdcg_applies
+      printed: (gate)
+      label: Use the Qualified Dividends and Capital Gain Tax Worksheet?
+      type: Bool
+      expr:
+        op: test
+        all:
+          - op: test
+            gt:
+              - f1040.line15
+              - const: 0
+          - op: test
+            any:
+              - op: test
+                gt:
+                  - f1040.line3a
+                  - const: 0
+              - op: test
+                all:
+                  - op: test
+                    eq:
+                      - sd.filed
+                      - const: false
+                  - op: test
+                    gt:
+                      - sd.distributions
+                      - const: 0
+              - op: test
+                eq:
+                  - sd.line17
+                  - const: true
+      cite:
+        doc: i1040gi
+        locator: Instructions for Form 1040, line 16 (Qualified Dividends and Capital
+          Gain Tax Worksheet)
+    - id: f1040.gate.sdtw
+      printed: (gate)
+      type: Bool
+      label: Schedule D Tax Worksheet required after its exceptions
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - f1040.gate.qdcg_applies
+              - const: true
+          - op: test
+            any:
+              - op: test
+                all:
+                  - op: test
+                    eq:
+                      - sd.line17
+                      - const: true
+                  - op: test
+                    any:
+                      - op: test
+                        gt:
+                          - sd.line18
+                          - const: 0
+                      - op: test
+                        gt:
+                          - sd.line19
+                          - const: 0
+              - op: test
+                all:
+                  - op: test
+                    eq:
+                      - sd.filing4952
+                      - const: true
+                  - op: test
+                    gt:
+                      - sd.investment_election
+                      - const: 0
+      cite:
+        doc: i1040sd
+        locator: p. 15, Schedule D Tax Worksheet applicability and exceptions
+      ambiguity: amb.2025.sd4952_selection
     - id: f1040.line16
       printed: "16"
       label: "Tax (see instructions). Check if any from Form(s): 1 8814 2 4972 3"
@@ -62,18 +135,41 @@ form:
       expr:
         op: choose
         alternatives:
-          - guard: { op: test, eq: ["f1040.gate.qdcg_applies", { const: true }] }
-            then: "qdcg.line25"
-          - guard: { op: test, eq: ["f1040.gate.qdcg_applies", { const: false }] }
+          - guard:
+              op: test
+              eq:
+                - f1040.gate.qdcg_applies
+                - const: true
+            then: qdcg.line25
+          - guard:
+              op: test
+              eq:
+                - f1040.gate.qdcg_applies
+                - const: false
             then:
               def: tax_on_amount
-              bind: { amount: "f1040.line15", status: "f1040.status" }
-              line: "tax"
-      cite: { doc: i1040gi, locator: "Instructions for Form 1040, line 16" }
-
+              bind:
+                amount: f1040.line15
+                status: f1040.status
+              line: tax
+      cite:
+        doc: i1040gi
+        locator: Instructions for Form 1040, line 16
+      refuses:
+        - when: f1040.gate.sdtw
+          form: Schedule D Tax Worksheet
+          remedy: This worksheet is required and is deferred to Stage 4; no tax is
+            calculated by the alternative worksheet.
+          cite:
+            doc: i1040sd
+            locator: p. 15, Schedule D Tax Worksheet applicability and exceptions
     - id: f1040.line31
       printed: "31"
-      label: "Amount from Schedule 3, line 15"
+      label: Amount from Schedule 3, line 15
       type: NonNegDollars
-      expr: { op: copy, from: s3.line15 }
-      cite: { doc: f1040, locator: "Form 1040 (2025), line 31" }
+      expr:
+        op: copy
+        from: s3.line15
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 31
