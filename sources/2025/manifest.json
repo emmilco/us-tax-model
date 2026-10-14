@@ -599,6 +599,21 @@
       "revision": "December 2025; printed date 2026-02-26",
       "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
       "revision_locator": "PDF page 1, printed heading and/or footer"
+    },
+    {
+      "id": "rp-2024-40",
+      "url": "https://www.irs.gov/pub/irs-drop/rp-24-40.pdf",
+      "document_tax_year": 2025,
+      "purpose": "Stage 1 rate schedule for the Tax Table midpoint conjecture and a 2025 parameter cross-check; not a form or worksheet source",
+      "resolved_url": "https://www.irs.gov/pub/irs-drop/rp-24-40.pdf",
+      "fetched_at": "2026-10-14T03:57:09.509535+00:00",
+      "file": "rp-2024-40.pdf",
+      "sha256": "4de9db6b6662b5c305a59100a027051628823b42fd5817ea4e383ad4c302af1f",
+      "text_file": "rp-2024-40.txt",
+      "text_sha256": "7520978136b2105fe174efb571e59e32d91f854238549872a5a9ada3d01fe2d9",
+      "revision": "Rev. Proc. 2024-40; 2025 adjusted items; released 2024-10",
+      "revision_status": "Printed identification inspected in extracted text; archived for the Stage 1 rate schedule (Tax Table midpoint conjecture) and parameter cross-check; content review tracked in the form and parameter citations",
+      "revision_locator": "PDF page 1 (heading); \u00a73.01 Tax Rate Tables"
     }
   ]
 }
