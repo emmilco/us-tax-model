@@ -1,0 +1,76 @@
+# Tax on an amount: Tax Table or Tax Computation Worksheet (Stage 1 helper).
+#
+# The composite the worksheets invoke when they say "figure the tax on the
+# amount on line N": below $100,000 the Tax Table, at $100,000 or more the
+# Tax Computation Worksheet. A def is evaluated once per binding; QDCGT lines
+# 22 and 24 and Form 1040 line 16 each instantiate it.
+
+def:
+  id: tax_on_amount
+  kind: def
+  title: "Tax on an amount — Tax Table or Tax Computation Worksheet"
+  tax_year: 2025
+  parameters: [amount, status]
+  lines:
+
+    - id: amount
+      printed: "(a)"
+      label: "Amount to compute the tax on"
+      type: NonNegDollars
+      expr: { op: input, source: "Bound by the calling line (the amount on a worksheet line)." }
+      cite: { doc: i1040gi, locator: "Instructions for Form 1040, line 16" }
+
+    - id: status
+      printed: "(status)"
+      label: "The return's filing status"
+      type: Enum(filing_status)
+      expr: { op: input, source: "Bound by the calling line (Form 1040 filing status)." }
+      cite: { doc: i1040gi, locator: "Instructions for Form 1040, line 16" }
+
+    - id: below_boundary
+      printed: "(gate)"
+      label: "Is the amount less than $100,000?"
+      type: Bool
+      expr: { op: test, lt: ["amount", { param: "ordinary.table_boundary" }] }
+      cite:
+        doc: i1040gi
+        locator: "Instructions for Form 1040, line 16"
+
+    - id: table_tax
+      printed: "(a)"
+      label: "Use the Tax Table"
+      type: NonNegDollars
+      expr: { op: table_lookup, table: "tax_table", key: "amount", status: "status" }
+      cite:
+        doc: i1040gi
+        locator: "2025 Tax Table, p. 68"
+
+    - id: worksheet_tax
+      printed: "(a)"
+      label: "Use the Tax Computation Worksheet"
+      type: Dollars
+      expr:
+        op: copy
+        from:
+          def: tcw
+          bind: { amount: "amount", status: "status" }
+          line: "tax"
+      cite:
+        doc: i1040gi
+        locator: "2025 Tax Computation Worksheet, p. 80 (Note)"
+
+    - id: tax
+      printed: "(b)"
+      label: "Tax on the amount"
+      type: Dollars
+      expr:
+        op: choose
+        alternatives:
+          - guard: { op: test, eq: ["below_boundary", { const: true }] }
+            then: "table_tax"
+          - guard: { op: test, eq: ["below_boundary", { const: false }] }
+            then: "worksheet_tax"
+      cite:
+        doc: i1040gi
+        locator: "Instructions for Form 1040, line 16"
+        quote: "If your taxable income is less than $100,000, you must use the Tax Table ... If your taxable income is $100,000 or more, use the Tax Computation Worksheet right after the Tax Table."

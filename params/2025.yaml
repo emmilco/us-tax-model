@@ -1,0 +1,280 @@
+# Tax year 2025 parameters (Stage 1 subset), each with a citation.
+#
+# Money values are integer cents. Rates are integer pairs {num, den}.
+# Status-keyed values carry one value per filing-status key; `qss` is
+# qualifying surviving spouse.
+
+params:
+  tax_year: 2025
+  enums:
+    filing_status:
+      values: [single, mfj, mfs, hoh, qss]
+      cite: { doc: f1040, locator: "Form 1040, Filing Status (checkboxes)" }
+  values:
+
+    # The switch between the Tax Table and the Tax Computation Worksheet.
+    ordinary.table_boundary:
+      type: Dollars
+      value: 10000000
+      cite:
+        doc: i1040gi
+        locator: "Instructions for Form 1040, line 16 (Tax Table or Tax Computation Worksheet)"
+        quote: "If your taxable income is less than $100,000, you must use the Tax Table ... If your taxable income is $100,000 or more, use the Tax Computation Worksheet right after the Tax Table."
+
+    # Qualified Dividends and Capital Gain Tax Worksheet, lines 6 and 13 and
+    # the two rates applied on lines 18 and 21.
+    qdcg.zero_rate_ceiling:
+      type: Dollars
+      value: { single: 4835000, mfs: 4835000, mfj: 9670000, qss: 9670000, hoh: 6475000 }
+      cite:
+        doc: i1040gi
+        locator: "QDCGT worksheet, line 6"
+        quote: "$48,350 if single or married filing separately, $96,700 if married filing jointly or qualifying surviving spouse, $64,750 if head of household."
+    qdcg.fifteen_rate_ceiling:
+      type: Dollars
+      value: { single: 53340000, mfs: 30000000, mfj: 60005000, qss: 60005000, hoh: 56670000 }
+      cite:
+        doc: i1040gi
+        locator: "QDCGT worksheet, line 13"
+        quote: "$533,400 if single, $300,000 if married filing separately, $600,050 if married filing jointly or qualifying surviving spouse, $566,700 if head of household."
+    qdcg.rate_15:
+      type: Rate
+      value: { num: 15, den: 100 }
+      cite: { doc: i1040gi, locator: "QDCGT worksheet, line 18" }
+    qdcg.rate_20:
+      type: Rate
+      value: { num: 20, den: 100 }
+      cite: { doc: i1040gi, locator: "QDCGT worksheet, line 21" }
+
+    # Tax Computation Worksheet, i1040gi p. 80. One entry per printed row:
+    # the row's "not over" bound (upper), multiplication rate, and
+    # subtraction amount. The first band's lower bound is
+    # ordinary.table_boundary; each later band's lower bound is the previous
+    # band's upper.
+    tcw.single.b1.upper:
+      type: Dollars
+      value: 10335000
+      cite: { doc: i1040gi, locator: "TCW Section A, row 1 (not over $103,350)" }
+    tcw.single.b1.rate:
+      type: Rate
+      value: { num: 22, den: 100 }
+      cite: { doc: i1040gi, locator: "TCW Section A, row 1 (multiply by 22%)" }
+    tcw.single.b1.subtract:
+      type: Dollars
+      value: 508600
+      cite: { doc: i1040gi, locator: "TCW Section A, row 1 (subtraction amount $5,086.00)" }
+    tcw.single.b2.upper:
+      type: Dollars
+      value: 19730000
+      cite: { doc: i1040gi, locator: "TCW Section A, row 2 (not over $197,300)" }
+    tcw.single.b2.rate:
+      type: Rate
+      value: { num: 24, den: 100 }
+      cite: { doc: i1040gi, locator: "TCW Section A, row 2 (multiply by 24%)" }
+    tcw.single.b2.subtract:
+      type: Dollars
+      value: 715300
+      cite: { doc: i1040gi, locator: "TCW Section A, row 2 (subtraction amount $7,153.00)" }
+    tcw.single.b3.upper:
+      type: Dollars
+      value: 25052500
+      cite: { doc: i1040gi, locator: "TCW Section A, row 3 (not over $250,525)" }
+    tcw.single.b3.rate:
+      type: Rate
+      value: { num: 32, den: 100 }
+      cite: { doc: i1040gi, locator: "TCW Section A, row 3 (multiply by 32%)" }
+    tcw.single.b3.subtract:
+      type: Dollars
+      value: 2293700
+      cite: { doc: i1040gi, locator: "TCW Section A, row 3 (subtraction amount $22,937.00)" }
+    tcw.single.b4.upper:
+      type: Dollars
+      value: 62635000
+      cite: { doc: i1040gi, locator: "TCW Section A, row 4 (not over $626,350)" }
+    tcw.single.b4.rate:
+      type: Rate
+      value: { num: 35, den: 100 }
+      cite: { doc: i1040gi, locator: "TCW Section A, row 4 (multiply by 35%)" }
+    tcw.single.b4.subtract:
+      type: Dollars
+      value: 3045275
+      cite: { doc: i1040gi, locator: "TCW Section A, row 4 (subtraction amount $30,452.75)" }
+    tcw.single.b5.rate:
+      type: Rate
+      value: { num: 37, den: 100 }
+      cite: { doc: i1040gi, locator: "TCW Section A, row 5 (multiply by 37%)" }
+    tcw.single.b5.subtract:
+      type: Dollars
+      value: 4297975
+      cite: { doc: i1040gi, locator: "TCW Section A, row 5 (subtraction amount $42,979.75)" }
+
+    tcw.mfj.b1.upper:
+      type: Dollars
+      value: 20670000
+      cite: { doc: i1040gi, locator: "TCW Section B, row 1 (not over $206,700)" }
+    tcw.mfj.b1.rate:
+      type: Rate
+      value: { num: 22, den: 100 }
+      cite: { doc: i1040gi, locator: "TCW Section B, row 1 (multiply by 22%)" }
+    tcw.mfj.b1.subtract:
+      type: Dollars
+      value: 1017200
+      cite: { doc: i1040gi, locator: "TCW Section B, row 1 (subtraction amount $10,172.00)" }
+    tcw.mfj.b2.upper:
+      type: Dollars
+      value: 39460000
+      cite: { doc: i1040gi, locator: "TCW Section B, row 2 (not over $394,600)" }
+    tcw.mfj.b2.rate:
+      type: Rate
+      value: { num: 24, den: 100 }
+      cite: { doc: i1040gi, locator: "TCW Section B, row 2 (multiply by 24%)" }
+    tcw.mfj.b2.subtract:
+      type: Dollars
+      value: 1430600
+      cite: { doc: i1040gi, locator: "TCW Section B, row 2 (subtraction amount $14,306.00)" }
+    tcw.mfj.b3.upper:
+      type: Dollars
+      value: 50105000
+      cite: { doc: i1040gi, locator: "TCW Section B, row 3 (not over $501,050)" }
+    tcw.mfj.b3.rate:
+      type: Rate
+      value: { num: 32, den: 100 }
+      cite: { doc: i1040gi, locator: "TCW Section B, row 3 (multiply by 32%)" }
+    tcw.mfj.b3.subtract:
+      type: Dollars
+      value: 4587400
+      cite: { doc: i1040gi, locator: "TCW Section B, row 3 (subtraction amount $45,874.00)" }
+    tcw.mfj.b4.upper:
+      type: Dollars
+      value: 75160000
+      cite: { doc: i1040gi, locator: "TCW Section B, row 4 (not over $751,600)" }
+    tcw.mfj.b4.rate:
+      type: Rate
+      value: { num: 35, den: 100 }
+      cite: { doc: i1040gi, locator: "TCW Section B, row 4 (multiply by 35%)" }
+    tcw.mfj.b4.subtract:
+      type: Dollars
+      value: 6090550
+      cite: { doc: i1040gi, locator: "TCW Section B, row 4 (subtraction amount $60,905.50)" }
+    tcw.mfj.b5.rate:
+      type: Rate
+      value: { num: 37, den: 100 }
+      cite: { doc: i1040gi, locator: "TCW Section B, row 5 (multiply by 37%)" }
+    tcw.mfj.b5.subtract:
+      type: Dollars
+      value: 7593750
+      cite: { doc: i1040gi, locator: "TCW Section B, row 5 (subtraction amount $75,937.50)" }
+
+    tcw.mfs.b1.upper:
+      type: Dollars
+      value: 10335000
+      cite: { doc: i1040gi, locator: "TCW Section C, row 1 (not over $103,350)" }
+    tcw.mfs.b1.rate:
+      type: Rate
+      value: { num: 22, den: 100 }
+      cite: { doc: i1040gi, locator: "TCW Section C, row 1 (multiply by 22%)" }
+    tcw.mfs.b1.subtract:
+      type: Dollars
+      value: 508600
+      cite: { doc: i1040gi, locator: "TCW Section C, row 1 (subtraction amount $5,086.00)" }
+    tcw.mfs.b2.upper:
+      type: Dollars
+      value: 19730000
+      cite: { doc: i1040gi, locator: "TCW Section C, row 2 (not over $197,300)" }
+    tcw.mfs.b2.rate:
+      type: Rate
+      value: { num: 24, den: 100 }
+      cite: { doc: i1040gi, locator: "TCW Section C, row 2 (multiply by 24%)" }
+    tcw.mfs.b2.subtract:
+      type: Dollars
+      value: 715300
+      cite: { doc: i1040gi, locator: "TCW Section C, row 2 (subtraction amount $7,153.00)" }
+    tcw.mfs.b3.upper:
+      type: Dollars
+      value: 25052500
+      cite: { doc: i1040gi, locator: "TCW Section C, row 3 (not over $250,525)" }
+    tcw.mfs.b3.rate:
+      type: Rate
+      value: { num: 32, den: 100 }
+      cite: { doc: i1040gi, locator: "TCW Section C, row 3 (multiply by 32%)" }
+    tcw.mfs.b3.subtract:
+      type: Dollars
+      value: 2293700
+      cite: { doc: i1040gi, locator: "TCW Section C, row 3 (subtraction amount $22,937.00)" }
+    tcw.mfs.b4.upper:
+      type: Dollars
+      value: 37580000
+      cite: { doc: i1040gi, locator: "TCW Section C, row 4 (not over $375,800)" }
+    tcw.mfs.b4.rate:
+      type: Rate
+      value: { num: 35, den: 100 }
+      cite: { doc: i1040gi, locator: "TCW Section C, row 4 (multiply by 35%)" }
+    tcw.mfs.b4.subtract:
+      type: Dollars
+      value: 3045275
+      cite: { doc: i1040gi, locator: "TCW Section C, row 4 (subtraction amount $30,452.75)" }
+    tcw.mfs.b5.rate:
+      type: Rate
+      value: { num: 37, den: 100 }
+      cite: { doc: i1040gi, locator: "TCW Section C, row 5 (multiply by 37%)" }
+    tcw.mfs.b5.subtract:
+      type: Dollars
+      value: 3796875
+      cite: { doc: i1040gi, locator: "TCW Section C, row 5 (subtraction amount $37,968.75)" }
+
+    tcw.hoh.b1.upper:
+      type: Dollars
+      value: 10335000
+      cite: { doc: i1040gi, locator: "TCW Section D, row 1 (not over $103,350)" }
+    tcw.hoh.b1.rate:
+      type: Rate
+      value: { num: 22, den: 100 }
+      cite: { doc: i1040gi, locator: "TCW Section D, row 1 (multiply by 22%)" }
+    tcw.hoh.b1.subtract:
+      type: Dollars
+      value: 682500
+      cite: { doc: i1040gi, locator: "TCW Section D, row 1 (subtraction amount $6,825.00)" }
+    tcw.hoh.b2.upper:
+      type: Dollars
+      value: 19730000
+      cite: { doc: i1040gi, locator: "TCW Section D, row 2 (not over $197,300)" }
+    tcw.hoh.b2.rate:
+      type: Rate
+      value: { num: 24, den: 100 }
+      cite: { doc: i1040gi, locator: "TCW Section D, row 2 (multiply by 24%)" }
+    tcw.hoh.b2.subtract:
+      type: Dollars
+      value: 889200
+      cite: { doc: i1040gi, locator: "TCW Section D, row 2 (subtraction amount $8,892.00)" }
+    tcw.hoh.b3.upper:
+      type: Dollars
+      value: 25050000
+      cite: { doc: i1040gi, locator: "TCW Section D, row 3 (not over $250,500)" }
+    tcw.hoh.b3.rate:
+      type: Rate
+      value: { num: 32, den: 100 }
+      cite: { doc: i1040gi, locator: "TCW Section D, row 3 (multiply by 32%)" }
+    tcw.hoh.b3.subtract:
+      type: Dollars
+      value: 2467600
+      cite: { doc: i1040gi, locator: "TCW Section D, row 3 (subtraction amount $24,676.00)" }
+    tcw.hoh.b4.upper:
+      type: Dollars
+      value: 62635000
+      cite: { doc: i1040gi, locator: "TCW Section D, row 4 (not over $626,350)" }
+    tcw.hoh.b4.rate:
+      type: Rate
+      value: { num: 35, den: 100 }
+      cite: { doc: i1040gi, locator: "TCW Section D, row 4 (multiply by 35%)" }
+    tcw.hoh.b4.subtract:
+      type: Dollars
+      value: 3219100
+      cite: { doc: i1040gi, locator: "TCW Section D, row 4 (subtraction amount $32,191.00)" }
+    tcw.hoh.b5.rate:
+      type: Rate
+      value: { num: 37, den: 100 }
+      cite: { doc: i1040gi, locator: "TCW Section D, row 5 (multiply by 37%)" }
+    tcw.hoh.b5.subtract:
+      type: Dollars
+      value: 4471800
+      cite: { doc: i1040gi, locator: "TCW Section D, row 5 (subtraction amount $44,718.00)" }

@@ -1,0 +1,872 @@
+// Static checks over the canonical data. Fails the build unless:
+// references resolve; the dependency graph is acyclic; expressions type
+// check (including the non-negative refinement and the dollars/rates ban);
+// choose guards are exhaustive and disjoint; citations are complete with a
+// snapshot hash; and the tables satisfy their structural invariants.
+
+import { IMPLEMENTED, VOCABULARY } from "./atoms.js";
+import { stableStringify } from "./util.js";
+import type {
+  CanonicalData,
+  Expr,
+  FormDoc,
+  Line,
+  Operand,
+  ParamEntry,
+  TableDoc,
+  TestExpr,
+  ValueType,
+} from "./types.js";
+
+type Ty =
+  | { kind: "money"; nonneg: boolean }
+  | { kind: "rate" }
+  | { kind: "bool" }
+  | { kind: "enum"; name: string };
+
+interface Ctx {
+  errors: string[];
+  byId: Map<string, FormDoc>;
+  lineMaps: Map<string, Map<string, { line: Line; index: number }>>;
+  params: CanonicalData["params"];
+  tables: Map<string, TableDoc>;
+  enumValues: Map<string, string[]>;
+}
+
+export function runChecks(data: CanonicalData): { errors: string[]; stats: string[] } {
+  const ctx: Ctx = {
+    errors: [],
+    byId: new Map(),
+    lineMaps: new Map(),
+    params: data.params,
+    tables: new Map(data.tables.map((t) => [t.id, t])),
+    enumValues: new Map(Object.entries(data.params.enums).map(([k, v]) => [k, v.values])),
+  };
+  const stats: string[] = [];
+
+  for (const doc of [...data.forms, ...data.defs]) {
+    if (ctx.byId.has(doc.id)) ctx.errors.push(`duplicate document id '${doc.id}'`);
+    ctx.byId.set(doc.id, doc);
+    const lm = new Map<string, { line: Line; index: number }>();
+    doc.lines.forEach((line, index) => {
+      if (lm.has(line.id)) ctx.errors.push(`${doc.id}: duplicate line id '${line.id}'`);
+      lm.set(line.id, { line, index });
+    });
+    ctx.lineMaps.set(doc.id, lm);
+  }
+
+  for (const doc of [...data.forms, ...data.defs]) {
+    for (const line of doc.lines) {
+      checkLine(ctx, doc, line);
+      checkCite(ctx, line.cite, `${doc.id}.${line.id}`);
+    }
+  }
+
+  checkCycles(ctx, data);
+
+  let chooseCount = 0;
+  let guardCount = 0;
+  for (const doc of [...data.forms, ...data.defs]) {
+    for (const line of doc.lines) {
+      if (line.expr.op === "choose") {
+        chooseCount++;
+        guardCount += line.expr.alternatives.length;
+        analyzeGuards(ctx, doc, line);
+      }
+    }
+  }
+
+  checkParams(ctx);
+  for (const table of data.tables) checkTable(ctx, table);
+  for (const entry of data.register.entries) {
+    checkCite(ctx, entry.cite, `register ${entry.id}`);
+    if (!entry.text_at_issue || !entry.chosen || !entry.reason || entry.readings.length === 0) {
+      ctx.errors.push(`register ${entry.id}: entry is incomplete`);
+    }
+  }
+
+  const opHistogram = new Map<string, number>();
+  let lineCount = 0;
+  let opaqueCount = 0;
+  let unimplemented = 0;
+  for (const doc of [...data.forms, ...data.defs]) {
+    for (const line of doc.lines) {
+      lineCount++;
+      opHistogram.set(line.expr.op, (opHistogram.get(line.expr.op) ?? 0) + 1);
+      if (line.expr.op === "opaque") opaqueCount++;
+      if (!IMPLEMENTED.has(line.expr.op) && line.expr.op !== "opaque") unimplemented++;
+    }
+  }
+  stats.push(`lines checked: ${lineCount}`);
+  stats.push(
+    `atoms used: ${[...opHistogram.entries()]
+      .sort((a, b) => (a[0] < b[0] ? -1 : 1))
+      .map(([op, n]) => `${op} ${n}`)
+      .join(", ")}`,
+  );
+  stats.push(`choose lines: ${chooseCount}; guards checked: ${guardCount}`);
+  stats.push(`opaque escapes: ${opaqueCount} (share ${lineCount ? (opaqueCount / lineCount).toFixed(4) : "0"})`);
+  if (unimplemented > 0) stats.push(`lines using not-yet-implemented atoms: ${unimplemented}`);
+
+  return { errors: ctx.errors, stats };
+}
+
+// ---------------------------------------------------------------------------
+// type helpers
+
+function parseTy(ctx: Ctx, t: string, where: string): Ty {
+  if (t === "Dollars") return { kind: "money", nonneg: false };
+  if (t === "NonNegDollars") return { kind: "money", nonneg: true };
+  if (t === "Rate") return { kind: "rate" };
+  if (t === "Bool") return { kind: "bool" };
+  const m = /^Enum\(([a-z_]+)\)$/.exec(t);
+  if (m && m[1]) {
+    if (!ctx.enumValues.has(m[1])) ctx.errors.push(`${where}: unknown enum '${m[1]}'`);
+    return { kind: "enum", name: m[1] };
+  }
+  ctx.errors.push(`${where}: unknown type '${t}'`);
+  return { kind: "money", nonneg: false };
+}
+
+function tyMoney(nonneg: boolean): Ty {
+  return { kind: "money", nonneg };
+}
+
+/** declared must be able to hold inferred (money widens NonNeg -> Dollars). */
+function compatible(ctx: Ctx, declared: Ty, inferred: Ty, where: string): void {
+  if (declared.kind === "money" && inferred.kind === "money") {
+    if (declared.nonneg && !inferred.nonneg) {
+      ctx.errors.push(`${where}: declared NonNegDollars but the expression does not prove non-negativity`);
+    }
+    return;
+  }
+  if (declared.kind !== inferred.kind) {
+    ctx.errors.push(`${where}: declared ${declared.kind} but the expression produces ${inferred.kind}`);
+  }
+}
+
+function paramEntryTy(entry: ParamEntry): Ty {
+  if (entry.type === "Rate") return { kind: "rate" };
+  if (entry.type === "Bool") return { kind: "bool" };
+  const m = /^Enum\(([a-z_]+)\)$/.exec(entry.type);
+  if (m && m[1]) return { kind: "enum", name: m[1] };
+  if (typeof entry.value === "number") return tyMoney(entry.value >= 0);
+  if (entry.value && typeof entry.value === "object") {
+    const vals = Object.values(entry.value as Record<string, number>);
+    return tyMoney(vals.length > 0 && vals.every((v) => v >= 0));
+  }
+  return tyMoney(false);
+}
+
+function checkCite(
+  ctx: Ctx,
+  cite: { doc: string; revision: string; locator: string; snapshot: string },
+  where: string,
+): void {
+  if (!cite || cite.doc === "?" || cite.locator === "?") ctx.errors.push(`${where}: citation incomplete`);
+  if (!/^[0-9a-f]{64}$/.test(cite?.snapshot ?? "")) ctx.errors.push(`${where}: citation has no snapshot hash`);
+  if (!cite?.revision || cite.revision === "?") ctx.errors.push(`${where}: citation has no revision`);
+}
+
+// ---------------------------------------------------------------------------
+// static reference resolution
+
+function resolveRef(ctx: Ctx, from: FormDoc, ref: string): { doc: FormDoc; line: Line; index: number } | null {
+  const lm = ctx.lineMaps.get(from.id);
+  const direct = lm?.get(ref);
+  if (direct) return { doc: from, ...direct };
+  const dot = ref.indexOf(".");
+  if (dot > 0) {
+    const target = ctx.byId.get(ref.slice(0, dot));
+    const hit = target && ctx.lineMaps.get(target.id)?.get(ref);
+    if (target && hit) return { doc: target, ...hit };
+  }
+  return null;
+}
+
+function requireRef(ctx: Ctx, from: FormDoc, ref: string, where: string): { doc: FormDoc; line: Line; index: number } | null {
+  const hit = resolveRef(ctx, from, ref);
+  if (!hit) {
+    ctx.errors.push(`${where}: reference '${ref}' does not resolve`);
+    return null;
+  }
+  return hit;
+}
+
+function declaredTyOf(ctx: Ctx, doc: FormDoc, line: Line): Ty {
+  return parseTy(ctx, line.type, `${doc.id}.${line.id}`);
+}
+
+function operandTyOf(ctx: Ctx, from: FormDoc, op: Operand, where: string): Ty {
+  if (typeof op === "string") {
+    const hit = requireRef(ctx, from, op, where);
+    return hit ? declaredTyOf(ctx, hit.doc, hit.line) : tyMoney(false);
+  }
+  if ("param" in op) {
+    const entry = ctx.params.values[op.param];
+    if (!entry) {
+      ctx.errors.push(`${where}: parameter '${op.param}' does not exist`);
+      return tyMoney(false);
+    }
+    return paramEntryTy(entry);
+  }
+  const v = op.const;
+  if (typeof v === "number") return tyMoney(false);
+  if (typeof v === "boolean") return { kind: "bool" };
+  return { kind: "enum", name: "" }; // string constants are matched in checkTestType
+}
+
+// ---------------------------------------------------------------------------
+// per-line checks
+
+function checkLine(ctx: Ctx, doc: FormDoc, line: Line): void {
+  const where = `${doc.id}.${line.id}`;
+  const expr = line.expr as Expr;
+  if (!VOCABULARY.includes(expr.op as (typeof VOCABULARY)[number])) {
+    ctx.errors.push(`${where}: '${expr.op}' is not in the atom vocabulary`);
+    return;
+  }
+  if (!IMPLEMENTED.has(expr.op)) {
+    ctx.errors.push(`${where}: atom '${expr.op}' is not implemented in this stage`);
+  }
+  const declared = declaredTyOf(ctx, doc, line);
+
+  switch (expr.op) {
+    case "input": {
+      if (!expr.source) ctx.errors.push(`${where}: input has no source`);
+      break;
+    }
+    case "copy": {
+      if (typeof expr.from === "string") {
+        const hit = requireRef(ctx, doc, expr.from, where);
+        if (hit) compatible(ctx, declared, declaredTyOf(ctx, hit.doc, hit.line), where);
+      } else {
+        const resultTy = checkInstance(ctx, doc, expr.from, where);
+        if (resultTy) compatible(ctx, declared, resultTy, where);
+      }
+      break;
+    }
+    case "param": {
+      const entry = ctx.params.values[expr.ref];
+      if (!entry) {
+        ctx.errors.push(`${where}: parameter '${expr.ref}' does not exist`);
+      } else {
+        compatible(ctx, declared, paramEntryTy(entry), where);
+      }
+      break;
+    }
+    case "sum": {
+      if (expr.of.length === 0) ctx.errors.push(`${where}: sum of nothing`);
+      let allNonneg = true;
+      for (const ref of expr.of) {
+        const hit = requireRef(ctx, doc, ref, where);
+        if (hit) {
+          const ty = declaredTyOf(ctx, hit.doc, hit.line);
+          if (ty.kind !== "money") ctx.errors.push(`${where}: sum operand '${ref}' is not money`);
+          allNonneg = allNonneg && ty.kind === "money" && ty.nonneg;
+        }
+      }
+      compatible(ctx, declared, tyMoney(allNonneg), where);
+      break;
+    }
+    case "subtract":
+    case "subtract_floor0": {
+      const hit = requireRef(ctx, doc, expr.from, where);
+      if (hit && declaredTyOf(ctx, hit.doc, hit.line).kind !== "money") {
+        ctx.errors.push(`${where}: operand '${expr.from}' is not money`);
+      }
+      const takeTy = operandTyOf(ctx, doc, expr.take, where);
+      if (takeTy.kind !== "money") ctx.errors.push(`${where}: operand is not money`);
+      compatible(ctx, declared, tyMoney(expr.op === "subtract_floor0"), where);
+      break;
+    }
+    case "smaller_of": {
+      let allNonneg = true;
+      for (const ref of expr.of) {
+        const hit = requireRef(ctx, doc, ref, where);
+        if (hit) {
+          const ty = declaredTyOf(ctx, hit.doc, hit.line);
+          if (ty.kind !== "money") ctx.errors.push(`${where}: operand '${ref}' is not money`);
+          allNonneg = allNonneg && ty.kind === "money" && ty.nonneg;
+        }
+      }
+      compatible(ctx, declared, tyMoney(allNonneg), where);
+      break;
+    }
+    case "multiply_rate": {
+      const hit = requireRef(ctx, doc, expr.amount, where);
+      let amountNonneg = false;
+      if (hit) {
+        const ty = declaredTyOf(ctx, hit.doc, hit.line);
+        if (ty.kind !== "money") ctx.errors.push(`${where}: amount '${expr.amount}' is not money`);
+        amountNonneg = ty.kind === "money" && ty.nonneg;
+      }
+      const rateTy = operandTyOf(ctx, doc, expr.rate, where);
+      if (rateTy.kind !== "rate") ctx.errors.push(`${where}: rate operand is not a Rate`);
+      compatible(ctx, declared, tyMoney(amountNonneg), where);
+      break;
+    }
+    case "table_lookup": {
+      const table = ctx.tables.get(expr.table);
+      if (!table) ctx.errors.push(`${where}: table '${expr.table}' does not exist`);
+      else if (table.kind !== "tax_table") ctx.errors.push(`${where}: '${expr.table}' is not a tax table`);
+      const key = requireRef(ctx, doc, expr.key, where);
+      if (key && declaredTyOf(ctx, key.doc, key.line).kind !== "money") {
+        ctx.errors.push(`${where}: lookup key is not money`);
+      }
+      const status = requireRef(ctx, doc, expr.status, where);
+      if (status) {
+        const ty = declaredTyOf(ctx, status.doc, status.line);
+        if (ty.kind !== "enum") {
+          ctx.errors.push(`${where}: status operand is not an enum`);
+        } else {
+          const values = ctx.enumValues.get(ty.name) ?? [];
+          const covered = new Set((table?.columns ?? []).flatMap((c) => c.statuses));
+          for (const v of values) {
+            if (!covered.has(v)) ctx.errors.push(`${where}: table '${expr.table}' has no column for status '${v}'`);
+          }
+        }
+      }
+      const min = Math.min(...(table?.bands?.length ? table.bands.map((b) => Math.min(...b.tax)) : [0]));
+      compatible(ctx, declared, tyMoney(min >= 0), where);
+      break;
+    }
+    case "choose": {
+      if (expr.alternatives.length === 0) ctx.errors.push(`${where}: choose with no alternatives`);
+      let allNonneg = true;
+      for (const alt of expr.alternatives) {
+        checkTestType(ctx, doc, alt.guard, where);
+        if (typeof alt.then === "string") {
+          const hit = requireRef(ctx, doc, alt.then, where);
+          if (hit) {
+            const ty = declaredTyOf(ctx, hit.doc, hit.line);
+            if (ty.kind !== "money") ctx.errors.push(`${where}: choose branch '${alt.then}' is not money`);
+            allNonneg = allNonneg && ty.kind === "money" && ty.nonneg;
+          }
+        } else {
+          const ty = checkInstance(ctx, doc, alt.then, where);
+          if (ty && ty.kind !== "money") ctx.errors.push(`${where}: choose branch is not money`);
+          allNonneg = false;
+        }
+      }
+      compatible(ctx, declared, tyMoney(allNonneg), where);
+      break;
+    }
+    case "test": {
+      checkTestType(ctx, doc, expr as TestExpr, where);
+      compatible(ctx, declared, { kind: "bool" }, where);
+      break;
+    }
+    default: {
+      ctx.errors.push(`${where}: atom '${expr.op}' has no checker support in this stage`);
+    }
+  }
+}
+
+function checkInstance(
+  ctx: Ctx,
+  from: FormDoc,
+  inst: { def: string; bind: Record<string, Operand>; line: string },
+  where: string,
+): Ty | null {
+  const def = ctx.byId.get(inst.def);
+  if (!def || def.kind !== "def") {
+    ctx.errors.push(`${where}: instance def '${inst.def}' does not exist`);
+    return null;
+  }
+  const params = def.parameters ?? [];
+  const bindKeys = Object.keys(inst.bind).sort();
+  if (stableStringify(bindKeys) !== stableStringify([...params].sort())) {
+    ctx.errors.push(`${where}: instance of '${inst.def}' must bind exactly [${params.join(", ")}]`);
+  }
+  const lm = ctx.lineMaps.get(def.id);
+  for (const [name, op] of Object.entries(inst.bind)) {
+    const paramLine = lm?.get(name)?.line;
+    const opTy = operandTyOf(ctx, from, op, `${where} (binding ${name})`);
+    if (paramLine) {
+      compatible(ctx, declaredTyOf(ctx, def, paramLine), opTy, `${where} (binding ${name})`);
+    }
+  }
+  const result = lm?.get(inst.line)?.line;
+  if (!result) {
+    ctx.errors.push(`${where}: '${inst.def}' has no line '${inst.line}'`);
+    return null;
+  }
+  return declaredTyOf(ctx, def, result);
+}
+
+// ---------------------------------------------------------------------------
+// test typing
+
+function checkTestType(ctx: Ctx, doc: FormDoc, test: TestExpr, where: string): void {
+  if ("all" in test) {
+    if (test.all.length === 0) ctx.errors.push(`${where}: empty all`);
+    for (const t of test.all) checkTestType(ctx, doc, t, where);
+    return;
+  }
+  if ("any" in test) {
+    if (test.any.length === 0) ctx.errors.push(`${where}: empty any`);
+    for (const t of test.any) checkTestType(ctx, doc, t, where);
+    return;
+  }
+  if ("not" in test) {
+    checkTestType(ctx, doc, test.not, where);
+    return;
+  }
+  const cmp = ["eq", "ne", "lt", "le", "gt", "ge"].find((k) => (test as Record<string, unknown>)[k] !== undefined);
+  if (!cmp) {
+    ctx.errors.push(`${where}: test has no comparison`);
+    return;
+  }
+  const [a, b] = (test as unknown as Record<string, [Operand, Operand]>)[cmp]!;
+  const at = operandTyOf(ctx, doc, a, where);
+  const bt = operandTyOf(ctx, doc, b, where);
+  if (at.kind === "money" && bt.kind === "money") return;
+  if (at.kind === "bool" && bt.kind === "bool") return;
+  if (at.kind === "enum" && bt.kind === "enum") {
+    if (at.name !== "" && bt.name !== "" && at.name !== bt.name) {
+      ctx.errors.push(`${where}: comparing different enum types`);
+    }
+    return;
+  }
+  ctx.errors.push(`${where}: comparison operands have incompatible types`);
+}
+
+// ---------------------------------------------------------------------------
+// cycles (expanded over def instances)
+
+interface Frame {
+  doc: FormDoc;
+  instKey: string | null;
+  bind: Record<string, Operand> | null;
+  caller: Frame | null;
+}
+
+function checkCycles(ctx: Ctx, data: CanonicalData): void {
+  const WHITE = 0,
+    GRAY = 1,
+    BLACK = 2;
+  const color = new Map<string, number>();
+  const stack: string[] = [];
+  const emit = (msg: string) => ctx.errors.push(msg);
+
+  const collectRefs = (
+    expr: Expr,
+  ): { refs: string[]; operands: Operand[]; instances: { def: string; bind: Record<string, Operand>; line: string }[] } => {
+    const refs: string[] = [];
+    const operands: Operand[] = [];
+    const instances: { def: string; bind: Record<string, Operand>; line: string }[] = [];
+    switch (expr.op) {
+      case "sum":
+      case "smaller_of":
+        refs.push(...expr.of);
+        break;
+      case "subtract":
+      case "subtract_floor0":
+        refs.push(expr.from);
+        operands.push(expr.take);
+        break;
+      case "multiply_rate":
+        refs.push(expr.amount);
+        operands.push(expr.rate);
+        break;
+      case "table_lookup":
+        refs.push(expr.key, expr.status);
+        break;
+      case "copy":
+        if (typeof expr.from === "string") refs.push(expr.from);
+        else instances.push({ def: expr.from.def, bind: expr.from.bind, line: expr.from.line });
+        break;
+      case "choose":
+        for (const alt of expr.alternatives) {
+          if (typeof alt.then === "string") refs.push(alt.then);
+          else instances.push({ def: alt.then.def, bind: alt.then.bind, line: alt.then.line });
+        }
+        break;
+      default:
+        break;
+    }
+    return { refs, operands, instances };
+  };
+
+  const visitRef = (frame: Frame, ref: string): void => {
+    const lm = ctx.lineMaps.get(frame.doc.id);
+    if (lm?.has(ref)) {
+      if (frame.instKey && (frame.doc.parameters ?? []).includes(ref) && frame.bind && frame.caller) {
+        const op = frame.bind[ref];
+        if (op !== undefined) visitOperand(frame.caller, op);
+        return;
+      }
+      visitNode(frame, ref);
+      return;
+    }
+    const dot = ref.indexOf(".");
+    if (dot > 0) {
+      const target = ctx.byId.get(ref.slice(0, dot));
+      if (target && ctx.lineMaps.get(target.id)?.has(ref)) {
+        visitNode({ doc: target, instKey: null, bind: null, caller: null }, ref);
+        return;
+      }
+    }
+    emit(`cycle walk: unresolved reference '${ref}'`);
+  };
+
+  const visitOperand = (frame: Frame, op: Operand): void => {
+    if (typeof op === "string") visitRef(frame, op);
+  };
+
+  const visitNode = (frame: Frame, lineId: string): void => {
+    const node = `${frame.instKey ?? frame.doc.id}.${lineId}`;
+    const c = color.get(node) ?? WHITE;
+    if (c === BLACK) return;
+    if (c === GRAY) {
+      const at = stack.indexOf(node);
+      emit(`cycle: ${[...stack.slice(at), node].join(" -> ")}`);
+      return;
+    }
+    color.set(node, GRAY);
+    stack.push(node);
+    const line = ctx.lineMaps.get(frame.doc.id)?.get(lineId)?.line;
+    if (line) {
+      const { refs, operands, instances } = collectRefs(line.expr as Expr);
+      for (const ref of refs) visitRef(frame, ref);
+      for (const op of operands) visitOperand(frame, op);
+      for (const inst of instances) {
+        const def = ctx.byId.get(inst.def);
+        if (!def) continue;
+        const key = `${frame.instKey ?? "root"}|inst:${inst.def}#${stableStringify(inst.bind).trim()}`;
+        const inner: Frame = { doc: def, instKey: key, bind: inst.bind, caller: frame };
+        for (const defLine of def.lines) visitNode(inner, defLine.id);
+      }
+    }
+    stack.pop();
+    color.set(node, BLACK);
+  };
+
+  for (const doc of [...data.forms, ...data.defs]) {
+    if (doc.kind === "def") continue; // defs are visited through their instances
+    const frame: Frame = { doc, instKey: null, bind: null, caller: null };
+    for (const line of doc.lines) visitNode(frame, line.id);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// guards
+
+interface BoolG {
+  kind: "bool";
+  ref: string;
+  value: boolean;
+}
+interface EnumG {
+  kind: "enum";
+  ref: string;
+  value: string;
+}
+interface IntervalG {
+  kind: "interval";
+  ref: string;
+  lo: number | undefined;
+  loInc: boolean;
+  hi: number | undefined;
+  hiInc: boolean;
+}
+
+function analyzeGuards(ctx: Ctx, doc: FormDoc, line: Line): void {
+  const where = `${doc.id}.${line.id}`;
+  const expr = line.expr as Extract<Expr, { op: "choose" }>;
+  const parsed = expr.alternatives.map((alt) => parseGuard(ctx, doc, alt.guard));
+  if (parsed.some((g) => g === null)) {
+    ctx.errors.push(`${where}: guard form not analyzable (supported: Bool pairs, Enum coverage, interval tiling)`);
+    return;
+  }
+  const guards = parsed as (BoolG | EnumG | IntervalG)[];
+  const kinds = new Set(guards.map((g) => g.kind));
+  if (kinds.size !== 1) {
+    ctx.errors.push(`${where}: guards mix kinds (${[...kinds].join(", ")})`);
+    return;
+  }
+
+  if (kinds.has("bool")) {
+    const refs = new Set(guards.map((g) => (g as BoolG).ref));
+    if (refs.size !== 1) {
+      ctx.errors.push(`${where}: Bool guards reference different lines`);
+      return;
+    }
+    const values = (guards as BoolG[]).map((g) => g.value).sort();
+    if (values.length !== 2 || values[0] !== false || values[1] !== true) {
+      ctx.errors.push(`${where}: Bool guards are not exhaustive and disjoint`);
+    }
+    return;
+  }
+
+  if (kinds.has("enum")) {
+    const refs = new Set(guards.map((g) => (g as EnumG).ref));
+    if (refs.size !== 1) {
+      ctx.errors.push(`${where}: enum guards reference different lines`);
+      return;
+    }
+    const ref = [...refs][0]!;
+    const hit = resolveRef(ctx, doc, ref);
+    const ty = hit ? declaredTyOf(ctx, hit.doc, hit.line) : null;
+    const name = ty && ty.kind === "enum" ? ty.name : null;
+    const expected = name ? ctx.enumValues.get(name) ?? [] : [];
+    if (!name) ctx.errors.push(`${where}: enum guard reference '${ref}' is not an enum line`);
+    const seen = (guards as EnumG[]).map((g) => g.value);
+    if (new Set(seen).size !== seen.length) ctx.errors.push(`${where}: enum guards duplicate a value`);
+    for (const v of seen) {
+      if (!expected.includes(v)) ctx.errors.push(`${where}: enum guard '${v}' is not a member`);
+    }
+    for (const v of expected) {
+      if (!seen.includes(v)) ctx.errors.push(`${where}: enum guards are missing value '${v}'`);
+    }
+    return;
+  }
+
+  const refs = new Set(guards.map((g) => (g as IntervalG).ref));
+  if (refs.size !== 1) {
+    ctx.errors.push(`${where}: interval guards reference different lines`);
+    return;
+  }
+  const ivs = (guards as IntervalG[]).map((g) => ({ ...g })).sort((a, b) => (a.lo ?? -Infinity) - (b.lo ?? -Infinity));
+  if (ivs[0]!.lo === undefined) {
+    ctx.errors.push(`${where}: interval guards start at -infinity`);
+    return;
+  }
+  for (let i = 0; i < ivs.length; i++) {
+    const g = ivs[i]!;
+    if (g.lo !== undefined && g.hi !== undefined && g.lo >= g.hi) {
+      ctx.errors.push(`${where}: interval guard ${i + 1} is empty`);
+      continue;
+    }
+    const next = ivs[i + 1];
+    if (!next) {
+      if (g.hi !== undefined) ctx.errors.push(`${where}: interval guards do not reach +infinity`);
+      break;
+    }
+    if (g.hi === undefined) {
+      ctx.errors.push(`${where}: interval guard ${i + 1} has no upper bound but is not last`);
+      break;
+    }
+    if (g.hi !== next.lo) {
+      ctx.errors.push(`${where}: gap or overlap between interval guards ${i + 1} and ${i + 2}`);
+      break;
+    }
+    if (g.hiInc || !next.loInc) {
+      ctx.errors.push(`${where}: interval guards ${i + 1}/${i + 2} are not half-open at the seam`);
+      break;
+    }
+  }
+}
+
+function parseGuard(ctx: Ctx, doc: FormDoc, test: TestExpr): BoolG | EnumG | IntervalG | null {
+  if ("not" in test) {
+    const inner = parseGuard(ctx, doc, test.not);
+    if (inner && inner.kind === "bool") return { ...inner, value: !inner.value };
+    return null;
+  }
+  if ("all" in test) {
+    let combined: { ref: string; lo: number | undefined; loInc: boolean; hi: number | undefined; hiInc: boolean } | null =
+      null;
+    for (const part of test.all) {
+      const piece = cmpToInterval(ctx, part);
+      if (!piece) return null;
+      if (!combined) combined = piece;
+      else if (combined.ref !== piece.ref) return null;
+      else {
+        combined.lo = piece.lo !== undefined ? piece.lo : combined.lo;
+        combined.loInc = piece.lo !== undefined ? piece.loInc : combined.loInc;
+        combined.hi = piece.hi !== undefined ? piece.hi : combined.hi;
+        combined.hiInc = piece.hi !== undefined ? piece.hiInc : combined.hiInc;
+      }
+    }
+    if (!combined) return null;
+    return { kind: "interval", ...combined };
+  }
+  if ("any" in test) return null;
+  const key = (["eq", "ne", "lt", "le", "gt", "ge"] as const).find(
+    (k) => (test as Record<string, unknown>)[k] !== undefined,
+  );
+  if (key === "ge" || key === "gt" || key === "le" || key === "lt") {
+    const piece = cmpToInterval(ctx, test);
+    return piece ? { kind: "interval", ...piece } : null;
+  }
+  if (key !== "eq") return null;
+  const [a, b] = (test as unknown as Record<string, [Operand, Operand]>).eq!;
+  const ref = typeof a === "string" ? a : typeof b === "string" ? (b as string) : null;
+  const con: Operand | undefined = typeof a === "string" ? b : a;
+  if (!ref || con === undefined || typeof con !== "object" || !("const" in con)) return null;
+  if (typeof con.const === "boolean") return { kind: "bool", ref, value: con.const };
+  if (typeof con.const === "string") return { kind: "enum", ref, value: con.const };
+  return null;
+}
+
+/** Map one ge/gt/le/lt comparison to an interval piece on a single reference. */
+function cmpToInterval(
+  ctx: Ctx,
+  part: TestExpr,
+): { ref: string; lo: number | undefined; loInc: boolean; hi: number | undefined; hiInc: boolean } | null {
+  if (!("ge" in part || "gt" in part || "le" in part || "lt" in part)) return null;
+  const key = (["ge", "gt", "le", "lt"] as const).find((k) => (part as Record<string, unknown>)[k] !== undefined)!;
+  const [a, b] = (part as unknown as Record<string, [Operand, Operand]>)[key]!;
+  const refLeft = typeof a === "string";
+  const refRight = typeof b === "string";
+  if (refLeft === refRight) return null; // both or neither are references
+  const ref = (refLeft ? a : b) as string;
+  const bound = boundNumber(ctx, refLeft ? b : a);
+  if (bound === null) return null;
+  let lo: number | undefined;
+  let loInc = false;
+  let hi: number | undefined;
+  let hiInc = false;
+  if (refLeft) {
+    if (key === "ge") {
+      lo = bound;
+      loInc = true;
+    } else if (key === "gt") {
+      lo = bound;
+      loInc = false;
+    } else if (key === "le") {
+      hi = bound;
+      hiInc = true;
+    } else {
+      hi = bound;
+      hiInc = false;
+    }
+  } else {
+    if (key === "ge") {
+      hi = bound;
+      hiInc = true;
+    } else if (key === "gt") {
+      hi = bound;
+      hiInc = false;
+    } else if (key === "le") {
+      lo = bound;
+      loInc = true;
+    } else {
+      lo = bound;
+      loInc = false;
+    }
+  }
+  return { ref, lo, loInc, hi, hiInc };
+}
+
+function boundNumber(ctx: Ctx, op: Operand): number | null {
+  if (typeof op === "string") return null; // line-vs-line bounds are not analyzable here
+  if ("const" in op && typeof op.const === "number") return op.const;
+  if ("param" in op) {
+    const entry = ctx.params.values[op.param];
+    if (entry && typeof entry.value === "number") return entry.value;
+    return null;
+  }
+  return null;
+}
+
+// ---------------------------------------------------------------------------
+// params and tables
+
+function checkParams(ctx: Ctx): void {
+  for (const [name, entry] of Object.entries(ctx.params.values)) {
+    const where = `param ${name}`;
+    if (entry.type === "Rate") {
+      const r = entry.value as { num?: number; den?: number };
+      if (typeof r?.num !== "number" || typeof r?.den !== "number" || r.den <= 0 || r.num < 0) {
+        ctx.errors.push(`${where}: invalid rate`);
+      }
+    } else if (entry.type.includes("Enum(")) {
+      const m = /^Enum\(([a-z_]+)\)$/.exec(entry.type);
+      const values = m && m[1] ? ctx.enumValues.get(m[1]) : undefined;
+      if (!values || !values.includes(String(entry.value))) {
+        ctx.errors.push(`${where}: value '${String(entry.value)}' is not a member of the enum`);
+      }
+    } else if (entry.type === "Bool") {
+      if (typeof entry.value !== "boolean") ctx.errors.push(`${where}: Bool value expected`);
+    } else {
+      if (typeof entry.value === "number") {
+        if (!Number.isInteger(entry.value)) ctx.errors.push(`${where}: money must be integer cents`);
+      } else if (entry.value && typeof entry.value === "object") {
+        for (const [status, v] of Object.entries(entry.value as Record<string, number>)) {
+          if (!ctx.enumValues.get("filing_status")?.includes(status)) {
+            ctx.errors.push(`${where}: unknown filing status key '${status}'`);
+          }
+          if (!Number.isInteger(v)) ctx.errors.push(`${where}: money must be integer cents`);
+        }
+        for (const v of ctx.enumValues.get("filing_status") ?? []) {
+          if (!(v in (entry.value as Record<string, number>))) ctx.errors.push(`${where}: missing value for '${v}'`);
+        }
+      } else {
+        ctx.errors.push(`${where}: value is not money`);
+      }
+    }
+  }
+  for (const [name, en] of Object.entries(ctx.params.enums)) {
+    checkCite(ctx, en.cite, `enum ${name}`);
+    if (new Set(en.values).size !== en.values.length) ctx.errors.push(`enum ${name}: duplicate values`);
+  }
+}
+
+function checkTable(ctx: Ctx, table: TableDoc): void {
+  checkCite(ctx, table.cite, `table ${table.id}`);
+  if (table.kind === "tax_table") {
+    const cols = table.columns ?? [];
+    const bands = table.bands ?? [];
+    if (cols.length === 0 || bands.length === 0) {
+      ctx.errors.push(`table ${table.id}: empty table`);
+      return;
+    }
+    const statuses = ctx.enumValues.get("filing_status") ?? [];
+    const covered = new Map<string, number>();
+    cols.forEach((c) => c.statuses.forEach((s) => covered.set(s, (covered.get(s) ?? 0) + 1)));
+    for (const s of statuses) {
+      if (covered.get(s) !== 1) ctx.errors.push(`table ${table.id}: status '${s}' is covered ${covered.get(s) ?? 0} times`);
+    }
+    if (bands[0]!.at_least !== 0) ctx.errors.push(`table ${table.id}: first band does not start at 0`);
+    for (let i = 0; i < bands.length; i++) {
+      const b = bands[i]!;
+      if (b.tax.length !== cols.length) {
+        ctx.errors.push(`table ${table.id}: band ${i} has ${b.tax.length} values for ${cols.length} columns`);
+      }
+      if (!b.tax.every((v) => Number.isInteger(v) && v >= 0)) {
+        ctx.errors.push(`table ${table.id}: band ${i} has non-money values`);
+      }
+      const next = bands[i + 1];
+      if (next && b.less_than !== next.at_least) {
+        ctx.errors.push(`table ${table.id}: bands are not contiguous at band ${i}`);
+        break;
+      }
+    }
+    const boundary = ctx.params.values["ordinary.table_boundary"]?.value;
+    const last = bands[bands.length - 1]!;
+    if (typeof boundary === "number" && last.less_than !== boundary) {
+      ctx.errors.push(`table ${table.id}: last band ends at ${last.less_than} but ordinary.table_boundary is ${boundary}`);
+    }
+  }
+  if (table.kind === "bracket_schedule") {
+    const schedules = table.schedules ?? {};
+    for (const [from, to] of Object.entries(table.status_alias ?? {})) {
+      if (!ctx.enumValues.get("filing_status")?.includes(from)) {
+        ctx.errors.push(`table ${table.id}: unknown status alias key '${from}'`);
+      }
+      if (!(to in schedules)) {
+        ctx.errors.push(`table ${table.id}: alias '${from}' points at missing schedule '${to}'`);
+      }
+    }
+    for (const s of ["single", "mfj", "mfs", "hoh"]) {
+      const rows = schedules[s];
+      if (!rows || rows.length === 0) {
+        ctx.errors.push(`table ${table.id}: missing schedule '${s}'`);
+        continue;
+      }
+      rows.forEach((row, i) => {
+        const next = rows[i + 1];
+        if (row.upper === null && next) ctx.errors.push(`table ${table.id}.${s}: null upper bound is not last`);
+        if (row.upper !== null && next?.upper != null && row.upper >= next.upper) {
+          ctx.errors.push(`table ${table.id}.${s}: bounds not increasing at row ${i}`);
+        }
+        if (!Number.isInteger(row.base) || row.base < 0 || !Number.isInteger(row.over)) {
+          ctx.errors.push(`table ${table.id}.${s}: row ${i} has invalid amounts`);
+        }
+      });
+    }
+  }
+}

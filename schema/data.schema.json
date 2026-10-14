@@ -1,0 +1,257 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tax-formalization.local/schema/data.schema.json",
+  "title": "Tax formalization data",
+  "description": "Schema for the canonical JSON built from forms/, params/, tables/ and ambiguities/. Money is integer cents; rates are integer pairs.",
+  "$defs": {
+    "valueType": {
+      "type": "string",
+      "pattern": "^(Dollars|NonNegDollars|Rate|Bool|Enum\\([a-z_]+\\))$"
+    },
+    "rate": {
+      "type": "object",
+      "required": ["num", "den"],
+      "additionalProperties": false,
+      "properties": { "num": { "type": "integer", "minimum": 0 }, "den": { "type": "integer", "minimum": 1 } }
+    },
+    "operand": {
+      "oneOf": [
+        { "type": "string", "minLength": 1 },
+        { "type": "object", "required": ["const"], "additionalProperties": false, "properties": { "const": { "type": ["number", "string", "boolean"] } } },
+        { "type": "object", "required": ["param"], "additionalProperties": false, "properties": { "param": { "type": "string", "minLength": 1 } } }
+      ]
+    },
+    "lineRef": {
+      "oneOf": [
+        { "type": "string", "minLength": 1 },
+        {
+          "type": "object",
+          "required": ["def", "bind", "line"],
+          "additionalProperties": false,
+          "properties": {
+            "def": { "type": "string", "minLength": 1 },
+            "bind": { "type": "object", "additionalProperties": { "$ref": "#/$defs/operand" } },
+            "line": { "type": "string", "minLength": 1 }
+          }
+        }
+      ]
+    },
+    "testPair": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/operand" },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "test": {
+      "oneOf": [
+        { "type": "object", "required": ["op", "eq"], "additionalProperties": false, "properties": { "op": { "const": "test" }, "eq": { "$ref": "#/$defs/testPair" } } },
+        { "type": "object", "required": ["op", "ne"], "additionalProperties": false, "properties": { "op": { "const": "test" }, "ne": { "$ref": "#/$defs/testPair" } } },
+        { "type": "object", "required": ["op", "lt"], "additionalProperties": false, "properties": { "op": { "const": "test" }, "lt": { "$ref": "#/$defs/testPair" } } },
+        { "type": "object", "required": ["op", "le"], "additionalProperties": false, "properties": { "op": { "const": "test" }, "le": { "$ref": "#/$defs/testPair" } } },
+        { "type": "object", "required": ["op", "gt"], "additionalProperties": false, "properties": { "op": { "const": "test" }, "gt": { "$ref": "#/$defs/testPair" } } },
+        { "type": "object", "required": ["op", "ge"], "additionalProperties": false, "properties": { "op": { "const": "test" }, "ge": { "$ref": "#/$defs/testPair" } } },
+        { "type": "object", "required": ["op", "all"], "additionalProperties": false, "properties": { "op": { "const": "test" }, "all": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/test" } } } },
+        { "type": "object", "required": ["op", "any"], "additionalProperties": false, "properties": { "op": { "const": "test" }, "any": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/test" } } } },
+        { "type": "object", "required": ["op", "not"], "additionalProperties": false, "properties": { "op": { "const": "test" }, "not": { "$ref": "#/$defs/test" } } }
+      ]
+    },
+    "expr": {
+      "oneOf": [
+        { "type": "object", "required": ["op", "source"], "additionalProperties": false, "properties": { "op": { "const": "input" }, "source": { "type": "string", "minLength": 1 } } },
+        { "type": "object", "required": ["op", "from"], "additionalProperties": false, "properties": { "op": { "const": "copy" }, "from": { "$ref": "#/$defs/lineRef" } } },
+        { "type": "object", "required": ["op", "ref"], "additionalProperties": false, "properties": { "op": { "const": "param" }, "ref": { "type": "string", "minLength": 1 } } },
+        { "type": "object", "required": ["op", "of"], "additionalProperties": false, "properties": { "op": { "const": "sum" }, "of": { "type": "array", "minItems": 2, "items": { "type": "string" } } } },
+        { "type": "object", "required": ["op", "from", "take"], "additionalProperties": false, "properties": { "op": { "const": "subtract" }, "from": { "type": "string" }, "take": { "$ref": "#/$defs/operand" } } },
+        { "type": "object", "required": ["op", "from", "take"], "additionalProperties": false, "properties": { "op": { "const": "subtract_floor0" }, "from": { "type": "string" }, "take": { "$ref": "#/$defs/operand" } } },
+        { "type": "object", "required": ["op", "of"], "additionalProperties": false, "properties": { "op": { "const": "smaller_of" }, "of": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "type": "string" } } } },
+        { "type": "object", "required": ["op", "of"], "additionalProperties": false, "properties": { "op": { "const": "larger_of" }, "of": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "type": "string" } } } },
+        { "type": "object", "required": ["op", "amount", "rate"], "additionalProperties": false, "properties": { "op": { "const": "multiply_rate" }, "amount": { "type": "string" }, "rate": { "$ref": "#/$defs/operand" } } },
+        { "type": "object", "required": ["op", "table", "key", "status"], "additionalProperties": false, "properties": { "op": { "const": "table_lookup" }, "table": { "type": "string" }, "key": { "type": "string" }, "status": { "type": "string" } } },
+        { "type": "object", "required": ["op", "of", "unit", "rule"], "additionalProperties": false, "properties": { "op": { "const": "round" }, "of": { "type": "string" }, "unit": { "type": "integer" }, "rule": { "type": "string" } } },
+        { "type": "object", "required": ["op", "table", "key", "status"], "additionalProperties": false, "properties": { "op": { "const": "bracket_schedule" }, "table": { "type": "string" }, "key": { "type": "string" }, "status": { "type": "string" } } },
+        { "type": "object", "required": ["op", "of"], "additionalProperties": false, "properties": { "op": { "const": "sum_over" }, "of": { "type": "string" } } },
+        { "type": "object", "required": ["op", "alternatives"], "additionalProperties": false, "properties": { "op": { "const": "choose" }, "alternatives": { "type": "array", "minItems": 1, "items": { "type": "object", "required": ["guard", "then"], "additionalProperties": false, "properties": { "guard": { "$ref": "#/$defs/test" }, "then": { "$ref": "#/$defs/lineRef" } } } } } },
+        { "$ref": "#/$defs/test" },
+        { "type": "object", "required": ["op", "name"], "additionalProperties": false, "properties": { "op": { "const": "opaque" }, "name": { "type": "string", "minLength": 1 } } }
+      ]
+    },
+    "cite": {
+      "type": "object",
+      "required": ["doc", "tax_year", "revision", "locator", "snapshot"],
+      "additionalProperties": false,
+      "properties": {
+        "doc": { "type": "string", "minLength": 1 },
+        "tax_year": { "type": "integer" },
+        "revision": { "type": "string", "minLength": 1 },
+        "locator": { "type": "string", "minLength": 1 },
+        "snapshot": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "quote": { "type": "string" }
+      }
+    },
+    "line": {
+      "type": "object",
+      "required": ["id", "printed", "label", "type", "expr", "cite"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "printed": { "type": "string" },
+        "label": { "type": "string", "minLength": 1 },
+        "type": { "$ref": "#/$defs/valueType" },
+        "expr": { "$ref": "#/$defs/expr" },
+        "cite": { "$ref": "#/$defs/cite" },
+        "note": { "type": "string" }
+      }
+    },
+    "formDoc": {
+      "type": "object",
+      "required": ["id", "kind", "title", "tax_year", "lines"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "kind": { "enum": ["form", "worksheet", "def"] },
+        "title": { "type": "string", "minLength": 1 },
+        "tax_year": { "type": "integer" },
+        "parameters": { "type": "array", "items": { "type": "string" } },
+        "note": { "type": "string" },
+        "lines": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/line" } }
+      }
+    },
+    "formFile": { "type": "object", "required": ["form"], "additionalProperties": false, "properties": { "form": { "$ref": "#/$defs/formDoc" } } },
+    "defFile": { "type": "object", "required": ["def"], "additionalProperties": false, "properties": { "def": { "$ref": "#/$defs/formDoc" } } },
+    "paramEntry": {
+      "type": "object",
+      "required": ["type", "value", "cite"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "$ref": "#/$defs/valueType" },
+        "value": {
+          "oneOf": [
+            { "type": "integer" },
+            { "$ref": "#/$defs/rate" },
+            { "type": "boolean" },
+            {
+              "type": "object",
+              "propertyNames": { "enum": ["single", "mfj", "mfs", "hoh", "qss"] },
+              "additionalProperties": { "type": "integer" }
+            }
+          ]
+        },
+        "cite": { "$ref": "#/$defs/cite" }
+      }
+    },
+    "paramsDoc": {
+      "type": "object",
+      "required": ["tax_year", "enums", "values"],
+      "additionalProperties": false,
+      "properties": {
+        "tax_year": { "type": "integer" },
+        "enums": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "required": ["values", "cite"],
+            "additionalProperties": false,
+            "properties": { "values": { "type": "array", "minItems": 1, "items": { "type": "string" } }, "cite": { "$ref": "#/$defs/cite" } }
+          }
+        },
+        "values": { "type": "object", "additionalProperties": { "$ref": "#/$defs/paramEntry" } }
+      }
+    },
+    "paramsFile": { "type": "object", "required": ["params"], "additionalProperties": false, "properties": { "params": { "$ref": "#/$defs/paramsDoc" } } },
+    "taxTable": {
+      "type": "object",
+      "required": ["id", "kind", "title", "tax_year", "cite", "columns", "bands"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "kind": { "const": "tax_table" },
+        "title": { "type": "string" },
+        "tax_year": { "type": "integer" },
+        "cite": { "$ref": "#/$defs/cite" },
+        "columns": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["key", "statuses"],
+            "additionalProperties": false,
+            "properties": { "key": { "type": "string" }, "statuses": { "type": "array", "minItems": 1, "items": { "type": "string" } }, "note": { "type": "string" } }
+          }
+        },
+        "bands": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["at_least", "less_than", "tax"],
+            "additionalProperties": false,
+            "properties": {
+              "at_least": { "type": "integer" },
+              "less_than": { "type": "integer" },
+              "tax": { "type": "array", "minItems": 1, "items": { "type": "integer", "minimum": 0 } }
+            }
+          }
+        }
+      }
+    },
+    "bracketSchedule": {
+      "type": "object",
+      "required": ["id", "kind", "title", "tax_year", "cite", "schedules"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "kind": { "const": "bracket_schedule" },
+        "title": { "type": "string" },
+        "tax_year": { "type": "integer" },
+        "cite": { "$ref": "#/$defs/cite" },
+        "status_alias": { "type": "object", "additionalProperties": { "type": "string" } },
+        "schedules": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["upper", "base", "rate", "over"],
+              "additionalProperties": false,
+              "properties": {
+                "upper": { "type": ["integer", "null"] },
+                "base": { "type": "integer", "minimum": 0 },
+                "rate": { "$ref": "#/$defs/rate" },
+                "over": { "type": "integer", "minimum": 0 }
+              }
+            }
+          }
+        }
+      }
+    },
+    "tableFile": { "type": "object", "required": ["table"], "additionalProperties": false, "properties": { "table": { "oneOf": [{ "$ref": "#/$defs/taxTable" }, { "$ref": "#/$defs/bracketSchedule" }] } } },
+    "registerEntry": {
+      "type": "object",
+      "required": ["id", "text_at_issue", "readings", "chosen", "reason", "cite"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "text_at_issue": { "type": "string", "minLength": 1 },
+        "readings": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "chosen": { "type": "string", "minLength": 1 },
+        "reason": { "type": "string", "minLength": 1 },
+        "cite": { "$ref": "#/$defs/cite" },
+        "status": { "type": "string" }
+      }
+    },
+    "registerFile": {
+      "type": "object",
+      "required": ["register"],
+      "additionalProperties": false,
+      "properties": {
+        "register": {
+          "type": "object",
+          "required": ["tax_year", "entries"],
+          "additionalProperties": false,
+          "properties": { "tax_year": { "type": "integer" }, "entries": { "type": "array", "items": { "$ref": "#/$defs/registerEntry" } } }
+        }
+      }
+    }
+  }
+}

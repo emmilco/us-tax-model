@@ -1,0 +1,23 @@
+{
+  "name": "tax-formalization",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Open, verifiable formalization of the IRS individual income tax forms-and-instructions layer, plus a guided self-preparation tool as its first client.",
+  "license": "Apache-2.0",
+  "scripts": {
+    "compile": "tsc -p engine",
+    "build": "npm run compile --silent && node engine/dist/main.js build",
+    "render": "node engine/dist/main.js render",
+    "stage1": "npm run build --silent && npm run render --silent"
+  },
+  "dependencies": {
+    "ajv": "^8.20.0",
+    "fast-check": "^4.10.2",
+    "yaml": "^2.9.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "typescript": "^7.0.2"
+  }
+}

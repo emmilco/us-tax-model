@@ -1,0 +1,55 @@
+// The atom vocabulary: the frozen list from spec section 4.2, and the subset
+// this stage implements. Data may only use implemented atoms; the checker
+// reports the share of lines that would need an `opaque` escape.
+
+export const VOCABULARY = [
+  "input",
+  "copy",
+  "param",
+  "sum",
+  "subtract",
+  "subtract_floor0",
+  "smaller_of",
+  "larger_of",
+  "multiply_rate",
+  "round",
+  "table_lookup",
+  "bracket_schedule",
+  "sum_over",
+  "test",
+  "choose",
+  "opaque",
+] as const;
+
+export const IMPLEMENTED = new Set<string>([
+  "input",
+  "copy",
+  "param",
+  "sum",
+  "subtract",
+  "subtract_floor0",
+  "smaller_of",
+  "multiply_rate",
+  "table_lookup",
+  "test",
+  "choose",
+]);
+
+export const PRIMITIVE_OPS = new Set<string>([
+  "input",
+  "copy",
+  "param",
+  "sum",
+  "subtract",
+  "subtract_floor0",
+  "smaller_of",
+  "multiply_rate",
+  "table_lookup",
+  "test",
+  "choose",
+  "larger_of",
+  "round",
+  "bracket_schedule",
+  "sum_over",
+  "opaque",
+]);

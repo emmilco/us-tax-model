@@ -1,0 +1,52 @@
+# 2025 tax rate schedules (section 1(j)(2)) from Rev. Proc. 2024-40.
+#
+# Each row: { upper (cents or null for the top row), base (cents), rate,
+# over (cents) }. Tax is base + rate x (amount - over). This schedule is
+# used by the Tax Table midpoint conjecture test and as the second-source
+# cross-check for the Tax Computation Worksheet parameters.
+
+table:
+  id: rate_schedule
+  kind: bracket_schedule
+  title: "2025 Tax Rate Schedules (section 1(j)(2))"
+  tax_year: 2025
+  cite:
+    doc: rp-2024-40
+    locator: "section 3.01, Tables 1-4"
+    quote: "For taxable years beginning in 2025, the tax rate tables under § 1 are as follows"
+  # Qualifying surviving spouses use the joint-return schedule (Table 1:
+  # "Married Individuals Filing Joint Returns and Surviving Spouses").
+  status_alias: { qss: mfj }
+  schedules:
+    single:
+      - { upper: 1192500, base: 0, rate: { num: 10, den: 100 }, over: 0 }
+      - { upper: 4847500, base: 119250, rate: { num: 12, den: 100 }, over: 1192500 }
+      - { upper: 10335000, base: 557850, rate: { num: 22, den: 100 }, over: 4847500 }
+      - { upper: 19730000, base: 1765100, rate: { num: 24, den: 100 }, over: 10335000 }
+      - { upper: 25052500, base: 4019900, rate: { num: 32, den: 100 }, over: 19730000 }
+      - { upper: 62635000, base: 5723100, rate: { num: 35, den: 100 }, over: 25052500 }
+      - { upper: null, base: 18876975, rate: { num: 37, den: 100 }, over: 62635000 }
+    mfj:
+      - { upper: 2385000, base: 0, rate: { num: 10, den: 100 }, over: 0 }
+      - { upper: 9695000, base: 238500, rate: { num: 12, den: 100 }, over: 2385000 }
+      - { upper: 20670000, base: 1115700, rate: { num: 22, den: 100 }, over: 9695000 }
+      - { upper: 39460000, base: 3530200, rate: { num: 24, den: 100 }, over: 20670000 }
+      - { upper: 50105000, base: 8039800, rate: { num: 32, den: 100 }, over: 39460000 }
+      - { upper: 75160000, base: 11446200, rate: { num: 35, den: 100 }, over: 50105000 }
+      - { upper: null, base: 20215450, rate: { num: 37, den: 100 }, over: 75160000 }
+    mfs:
+      - { upper: 1192500, base: 0, rate: { num: 10, den: 100 }, over: 0 }
+      - { upper: 4847500, base: 119250, rate: { num: 12, den: 100 }, over: 1192500 }
+      - { upper: 10335000, base: 557850, rate: { num: 22, den: 100 }, over: 4847500 }
+      - { upper: 19730000, base: 1765100, rate: { num: 24, den: 100 }, over: 10335000 }
+      - { upper: 25052500, base: 4019900, rate: { num: 32, den: 100 }, over: 19730000 }
+      - { upper: 37580000, base: 5723100, rate: { num: 35, den: 100 }, over: 25052500 }
+      - { upper: null, base: 10107725, rate: { num: 37, den: 100 }, over: 37580000 }
+    hoh:
+      - { upper: 1700000, base: 0, rate: { num: 10, den: 100 }, over: 0 }
+      - { upper: 6485000, base: 170000, rate: { num: 12, den: 100 }, over: 1700000 }
+      - { upper: 10335000, base: 744200, rate: { num: 22, den: 100 }, over: 6485000 }
+      - { upper: 19730000, base: 1591200, rate: { num: 24, den: 100 }, over: 10335000 }
+      - { upper: 25050000, base: 3846000, rate: { num: 32, den: 100 }, over: 19730000 }
+      - { upper: 62635000, base: 5548400, rate: { num: 35, den: 100 }, over: 25050000 }
+      - { upper: null, base: 18703150, rate: { num: 37, den: 100 }, over: 62635000 }
