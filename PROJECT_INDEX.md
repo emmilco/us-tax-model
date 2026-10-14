@@ -11,7 +11,7 @@ Research and design are complete. Stage 0 source grounding is underway; no tax e
 | `PROJECT_INDEX.md` | This file: structure, directory purposes, naming conventions |
 | `HANDOFF.md` | Prompt for starting the build in a fresh session: reading order, settled decisions, constraints, and the first stage |
 | `tools/` | Deliberate IRS source fetcher, source catalog, offline archive verification, and toolchain notes |
-| `sources/2025/` | Archived IRS PDFs, extracted text, hash/revision manifest, and Stage 0 premise findings; sources require revision review before encoding |
+| `sources/2025/` | Archived IRS sources (PDFs and instruction web-page snapshots), extracted text, hash/revision manifest, and Stage 0 premise findings; sources require revision review before encoding |
 | `research/` | Research pass outputs. `report.md` is the cross-workstream synthesis with the committed recommendation; one detailed findings file per workstream sits beside it |
 | `spec/` | `spec.md` (scope, non-goals, data model, provenance, tests, versioning, explanation model) and `design.md` (architecture, components, first vertical slice). The agreed contract for the build |
 

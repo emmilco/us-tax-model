@@ -2,6 +2,20 @@
   "tax_year": 2025,
   "documents": [
     {
+      "id": "about-8995",
+      "url": "https://www.irs.gov/forms-pubs/about-form-8995",
+      "format": "html",
+      "resolved_url": "https://www.irs.gov/forms-pubs/about-form-8995",
+      "fetched_at": "2026-10-14T03:31:45.748814+00:00",
+      "file": "about-8995.html",
+      "sha256": "f1c4bbeefe8c03fde5456834c16a5c31bf25ce2520993b7fe3e55c752eb5a84d",
+      "text_file": "about-8995.txt",
+      "text_sha256": "e09f4e0423cc8a54f1871abdb1b35379f6810c7d640688b9da4039e8936b2d68",
+      "revision": "About Form 8995 page (web); lists the 2026-02-13 corrections notice; page last reviewed 2026-06-28",
+      "revision_status": "Web snapshot; title and last-reviewed date inspected in extracted text; content review tracked separately in PREMISES.md",
+      "revision_locator": "Extracted text, line 1 title and 'Page Last Reviewed' footer line"
+    },
+    {
       "id": "f1040",
       "url": "https://www.irs.gov/pub/irs-pdf/f1040.pdf",
       "resolved_url": "https://www.irs.gov/pub/irs-pdf/f1040.pdf",
@@ -223,6 +237,20 @@
       "revision_locator": "PDF page 1, printed heading and/or footer"
     },
     {
+      "id": "i1040gi-html",
+      "url": "https://www.irs.gov/instructions/i1040gi",
+      "format": "html",
+      "resolved_url": "https://www.irs.gov/instructions/i1040gi",
+      "fetched_at": "2026-10-14T03:31:42.146122+00:00",
+      "file": "i1040gi-html.html",
+      "sha256": "c74f3c88750f8b17ff18aeb392c9ba0a3f6a3aae35d09137322d386c1c7a055c",
+      "text_file": "i1040gi-html.txt",
+      "text_sha256": "acdf61d767f53b522017f5e60a680c20af56cd7532d07f11ea741276b1e5a977",
+      "revision": "1040 (2025) instructions, web version; page last reviewed 2026-05-07",
+      "revision_status": "Web snapshot; title and last-reviewed date inspected in extracted text; content review tracked separately in PREMISES.md",
+      "revision_locator": "Extracted text, line 1 title and 'Page Last Reviewed' footer line"
+    },
+    {
       "id": "i1040sca",
       "url": "https://www.irs.gov/pub/irs-pdf/i1040sca.pdf",
       "resolved_url": "https://www.irs.gov/pub/irs-pdf/i1040sca.pdf",
@@ -236,6 +264,20 @@
       "revision_locator": "PDF page 1, printed heading and/or footer"
     },
     {
+      "id": "i1040sca-html",
+      "url": "https://www.irs.gov/instructions/i1040sca",
+      "format": "html",
+      "resolved_url": "https://www.irs.gov/instructions/i1040sca",
+      "fetched_at": "2026-10-14T03:31:42.544407+00:00",
+      "file": "i1040sca-html.html",
+      "sha256": "4e5951d3ec10125105c30fa70dd2def52761beb82647377adda77978e93871a7",
+      "text_file": "i1040sca-html.txt",
+      "text_sha256": "d4aa684dec33d131d19433bd5c7c95ca55d8d934b1f9ca13fdc0e34e192fd787",
+      "revision": "Instructions for Schedule A (Form 1040) (2025), web version; page last reviewed 2026-04-30",
+      "revision_status": "Web snapshot; title and last-reviewed date inspected in extracted text; content review tracked separately in PREMISES.md",
+      "revision_locator": "Extracted text, line 1 title and 'Page Last Reviewed' footer line"
+    },
+    {
       "id": "i1040sd",
       "url": "https://www.irs.gov/pub/irs-pdf/i1040sd.pdf",
       "resolved_url": "https://www.irs.gov/pub/irs-pdf/i1040sd.pdf",
@@ -247,6 +289,20 @@
       "revision": "2025; printed date 2025-12-11",
       "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
       "revision_locator": "PDF page 1, printed heading and/or footer"
+    },
+    {
+      "id": "i1040sd-html",
+      "url": "https://www.irs.gov/instructions/i1040sd",
+      "format": "html",
+      "resolved_url": "https://www.irs.gov/instructions/i1040sd",
+      "fetched_at": "2026-10-14T03:31:42.872500+00:00",
+      "file": "i1040sd-html.html",
+      "sha256": "9a36951957b233841a3d8dc4ba64be76cf27ddcbbe779dbe18e3f2e55341c216",
+      "text_file": "i1040sd-html.txt",
+      "text_sha256": "14d977b5bb9410f371cc292669df24630633d1e84a31a66b25d0173beea9a6f1",
+      "revision": "Instructions for Schedule D (Form 1040) (2025), web version; page last reviewed 2026-04-30",
+      "revision_status": "Web snapshot; title and last-reviewed date inspected in extracted text; content review tracked separately in PREMISES.md",
+      "revision_locator": "Extracted text, line 1 title and 'Page Last Reviewed' footer line"
     },
     {
       "id": "i1099div",
@@ -288,6 +344,20 @@
       "revision_locator": "PDF page 1, printed heading and/or footer"
     },
     {
+      "id": "i1116-html",
+      "url": "https://www.irs.gov/instructions/i1116",
+      "format": "html",
+      "resolved_url": "https://www.irs.gov/instructions/i1116",
+      "fetched_at": "2026-10-14T03:31:44.672855+00:00",
+      "file": "i1116-html.html",
+      "sha256": "624bb56ad348296d700f76f81a38a964c6064478e86bacde97e3c29f9bdcf7a5",
+      "text_file": "i1116-html.txt",
+      "text_sha256": "5dfc7e7ae3b0c0f02727355e0157eb1ebaf4c26300d0eb161a61a9c7ee6f47ca",
+      "revision": "Instructions for Form 1116 (2025), web version; page last reviewed 2026-04-30",
+      "revision_status": "Web snapshot; title and last-reviewed date inspected in extracted text; content review tracked separately in PREMISES.md",
+      "revision_locator": "Extracted text, line 1 title and 'Page Last Reviewed' footer line"
+    },
+    {
       "id": "i8283",
       "url": "https://www.irs.gov/pub/irs-pdf/i8283.pdf",
       "resolved_url": "https://www.irs.gov/pub/irs-pdf/i8283.pdf",
@@ -299,6 +369,20 @@
       "revision": "December 2025; printed date 2026-01-30",
       "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
       "revision_locator": "PDF page 1, printed heading and/or footer"
+    },
+    {
+      "id": "i8283-html",
+      "url": "https://www.irs.gov/instructions/i8283",
+      "format": "html",
+      "resolved_url": "https://www.irs.gov/instructions/i8283",
+      "fetched_at": "2026-10-14T03:31:43.395672+00:00",
+      "file": "i8283-html.html",
+      "sha256": "8d20f8dca13dd4353cc82b00bcba48d895e87f27099da461daff724a424dda14",
+      "text_file": "i8283-html.txt",
+      "text_sha256": "80f509d006f61534ccf37c6ce2f745e06856dc6e54180cda94db63e1faf520cf",
+      "revision": "Instructions for Form 8283 (12/2025), web version; page last reviewed 2026-04-30",
+      "revision_status": "Web snapshot; title and last-reviewed date inspected in extracted text; content review tracked separately in PREMISES.md",
+      "revision_locator": "Extracted text, line 1 title and 'Page Last Reviewed' footer line"
     },
     {
       "id": "i8949",
@@ -314,6 +398,20 @@
       "revision_locator": "PDF page 1, printed heading and/or footer"
     },
     {
+      "id": "i8949-html",
+      "url": "https://www.irs.gov/instructions/i8949",
+      "format": "html",
+      "resolved_url": "https://www.irs.gov/instructions/i8949",
+      "fetched_at": "2026-10-14T03:31:43.094109+00:00",
+      "file": "i8949-html.html",
+      "sha256": "1eb49c0247fc5f62cd7bd62c8d2d3951308e0855151782bb121cecaa15b2dcb5",
+      "text_file": "i8949-html.txt",
+      "text_sha256": "bdb3e62627c261829624e1ea826e4e870289b287a8f489c4786a13cb8130826d",
+      "revision": "Instructions for Form 8949 (2025), web version; page last reviewed 2026-04-30",
+      "revision_status": "Web snapshot; title and last-reviewed date inspected in extracted text; content review tracked separately in PREMISES.md",
+      "revision_locator": "Extracted text, line 1 title and 'Page Last Reviewed' footer line"
+    },
+    {
       "id": "i8959",
       "url": "https://www.irs.gov/pub/irs-pdf/i8959.pdf",
       "resolved_url": "https://www.irs.gov/pub/irs-pdf/i8959.pdf",
@@ -325,6 +423,20 @@
       "revision": "2025; printed date 2025-08-07",
       "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
       "revision_locator": "PDF page 1, printed heading and/or footer"
+    },
+    {
+      "id": "i8959-html",
+      "url": "https://www.irs.gov/instructions/i8959",
+      "format": "html",
+      "resolved_url": "https://www.irs.gov/instructions/i8959",
+      "fetched_at": "2026-10-14T03:31:43.630935+00:00",
+      "file": "i8959-html.html",
+      "sha256": "253921da27fc6ab744ffded48d5a80b58307a679623c07fb4f375520272d3eda",
+      "text_file": "i8959-html.txt",
+      "text_sha256": "d6b29a1a775098357d3072bdd2abb1933154bb55128c0f544aa781cc4a73bcb9",
+      "revision": "Instructions for Form 8959 (2025), web version; page last reviewed 2026-04-30",
+      "revision_status": "Web snapshot; title and last-reviewed date inspected in extracted text; content review tracked separately in PREMISES.md",
+      "revision_locator": "Extracted text, line 1 title and 'Page Last Reviewed' footer line"
     },
     {
       "id": "i8960",
@@ -340,6 +452,20 @@
       "revision_locator": "PDF page 1, printed heading and/or footer"
     },
     {
+      "id": "i8960-html",
+      "url": "https://www.irs.gov/instructions/i8960",
+      "format": "html",
+      "resolved_url": "https://www.irs.gov/instructions/i8960",
+      "fetched_at": "2026-10-14T03:31:43.929678+00:00",
+      "file": "i8960-html.html",
+      "sha256": "b469fef3a86ed2789828acfacdca55cdea4115bd9b0919e69e15a876676b5399",
+      "text_file": "i8960-html.txt",
+      "text_sha256": "0b471958289c74736829532fa8518b4e9815c92608a2080adde9b169f688ff1c",
+      "revision": "Instructions for Form 8960 (2025), web version; page last reviewed 2026-04-30",
+      "revision_status": "Web snapshot; title and last-reviewed date inspected in extracted text; content review tracked separately in PREMISES.md",
+      "revision_locator": "Extracted text, line 1 title and 'Page Last Reviewed' footer line"
+    },
+    {
       "id": "i8995",
       "url": "https://www.irs.gov/pub/irs-pdf/i8995.pdf",
       "resolved_url": "https://www.irs.gov/pub/irs-pdf/i8995.pdf",
@@ -351,6 +477,34 @@
       "revision": "2025; printed date 2026-01-26",
       "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
       "revision_locator": "PDF page 1, printed heading and/or footer"
+    },
+    {
+      "id": "i8995-correction",
+      "url": "https://www.irs.gov/forms-pubs/corrections-to-the-instructions-on-how-to-calculate-the-taxable-income-before-qbi-deduction-for-form-8995",
+      "format": "html",
+      "resolved_url": "https://www.irs.gov/forms-pubs/corrections-to-the-instructions-on-how-to-calculate-the-taxable-income-before-qbi-deduction-for-form-8995",
+      "fetched_at": "2026-10-14T03:31:45.540163+00:00",
+      "file": "i8995-correction.html",
+      "sha256": "926735a01ef20ab4a35006d93d2e61a5b967b3a786e845727bf2677de1adae7b",
+      "text_file": "i8995-correction.txt",
+      "text_sha256": "879132e6955e44a171e1d163d25d817e0c1a0d004bb9ab14b79e424dd3ab75eb",
+      "revision": "Post-release correction to the 2025 Instructions for Form 8995 (published 2026-02-13); page last reviewed 2026-06-28",
+      "revision_status": "Web snapshot; title and last-reviewed date inspected in extracted text; content review tracked separately in PREMISES.md",
+      "revision_locator": "Extracted text, line 1 title and 'Page Last Reviewed' footer line"
+    },
+    {
+      "id": "i8995-html",
+      "url": "https://www.irs.gov/instructions/i8995",
+      "format": "html",
+      "resolved_url": "https://www.irs.gov/instructions/i8995",
+      "fetched_at": "2026-10-14T03:31:44.124234+00:00",
+      "file": "i8995-html.html",
+      "sha256": "f2b7846b9fb7a557ae63d37a4a7e5577e696ae2d360549d619c266113263c4d1",
+      "text_file": "i8995-html.txt",
+      "text_sha256": "3e8d6ed35bc0739f56af0fd0934ef7b44d81f7c60a6d62caaf00a3dc0137d1f1",
+      "revision": "Instructions for Form 8995 (2025), web version; page last reviewed 2026-04-30",
+      "revision_status": "Web snapshot; title and last-reviewed date inspected in extracted text; content review tracked separately in PREMISES.md",
+      "revision_locator": "Extracted text, line 1 title and 'Page Last Reviewed' footer line"
     },
     {
       "id": "i8995a",
@@ -366,6 +520,20 @@
       "revision_locator": "PDF page 1, printed heading and/or footer"
     },
     {
+      "id": "i8995a-html",
+      "url": "https://www.irs.gov/instructions/i8995a",
+      "format": "html",
+      "resolved_url": "https://www.irs.gov/instructions/i8995a",
+      "fetched_at": "2026-10-14T03:31:44.428618+00:00",
+      "file": "i8995a-html.html",
+      "sha256": "6cea716d3984543b17561aa59fbdc0e03e98e0b6474388fc66b22094d1117b13",
+      "text_file": "i8995a-html.txt",
+      "text_sha256": "d555ac557960507488ae99dc3badb1a7e1cf7fa309ef5dd35ee74ff1db0e312b",
+      "revision": "Instructions for Form 8995-A (2025), web version; page last reviewed 2026-04-30",
+      "revision_status": "Web snapshot; title and last-reviewed date inspected in extracted text; content review tracked separately in PREMISES.md",
+      "revision_locator": "Extracted text, line 1 title and 'Page Last Reviewed' footer line"
+    },
+    {
       "id": "iw2w3",
       "url": "https://www.irs.gov/pub/irs-prior/iw2w3--2025.pdf",
       "resolved_url": "https://www.irs.gov/pub/irs-prior/iw2w3--2025.pdf",
@@ -376,6 +544,21 @@
       "text_sha256": "27ad850a44d58d9186afcccb33b8a32f4747911e2b1b3138de515f44d4de33f3",
       "revision": "2025; printed date 2025-02-19",
       "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
+      "revision_locator": "PDF page 1, printed heading and/or footer"
+    },
+    {
+      "id": "p505-2026",
+      "url": "https://www.irs.gov/pub/irs-pdf/p505.pdf",
+      "document_tax_year": 2026,
+      "purpose": "Stage 0 P14 evidence only; not a TY2025 computational source",
+      "resolved_url": "https://www.irs.gov/pub/irs-pdf/p505.pdf",
+      "fetched_at": "2026-10-14T03:31:45.124158+00:00",
+      "file": "p505-2026.pdf",
+      "sha256": "c69e87caa93cdefa4493f0ec1d8478b1ff9ec1329ee18c7b9d442f2dcb79c621",
+      "text_file": "p505-2026.txt",
+      "text_sha256": "20f03830cae118b995b4895f47b39b64f88549a93b3e08c5b173392ce4bf7f06",
+      "revision": "2026; printed date 2026-03-31 ('For use in 2026')",
+      "revision_status": "Printed year/revision inspected in extracted text; archived as Stage 0 P14 evidence only; content review tracked separately in PREMISES.md",
       "revision_locator": "PDF page 1, printed heading and/or footer"
     },
     {

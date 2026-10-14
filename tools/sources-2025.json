@@ -126,5 +126,71 @@
   {
     "id": "i1099div",
     "url": "https://www.irs.gov/pub/irs-pdf/i1099div.pdf"
+  },
+  {
+    "id": "i1040gi-html",
+    "url": "https://www.irs.gov/instructions/i1040gi",
+    "format": "html"
+  },
+  {
+    "id": "i1040sca-html",
+    "url": "https://www.irs.gov/instructions/i1040sca",
+    "format": "html"
+  },
+  {
+    "id": "i1040sd-html",
+    "url": "https://www.irs.gov/instructions/i1040sd",
+    "format": "html"
+  },
+  {
+    "id": "i8949-html",
+    "url": "https://www.irs.gov/instructions/i8949",
+    "format": "html"
+  },
+  {
+    "id": "i8283-html",
+    "url": "https://www.irs.gov/instructions/i8283",
+    "format": "html"
+  },
+  {
+    "id": "i8959-html",
+    "url": "https://www.irs.gov/instructions/i8959",
+    "format": "html"
+  },
+  {
+    "id": "i8960-html",
+    "url": "https://www.irs.gov/instructions/i8960",
+    "format": "html"
+  },
+  {
+    "id": "i8995-html",
+    "url": "https://www.irs.gov/instructions/i8995",
+    "format": "html"
+  },
+  {
+    "id": "i8995a-html",
+    "url": "https://www.irs.gov/instructions/i8995a",
+    "format": "html"
+  },
+  {
+    "id": "i1116-html",
+    "url": "https://www.irs.gov/instructions/i1116",
+    "format": "html"
+  },
+  {
+    "id": "p505-2026",
+    "url": "https://www.irs.gov/pub/irs-pdf/p505.pdf",
+    "document_tax_year": 2026,
+    "purpose": "Stage 0 P14 evidence only; not a TY2025 computational source"
+  },
+  {
+    "id": "i8995-correction",
+    "url": "https://www.irs.gov/forms-pubs/corrections-to-the-instructions-on-how-to-calculate-the-taxable-income-before-qbi-deduction-for-form-8995",
+    "format": "html"
+  },
+  {
+    "id": "about-8995",
+    "url": "https://www.irs.gov/forms-pubs/about-form-8995",
+    "format": "html"
   }
 ]

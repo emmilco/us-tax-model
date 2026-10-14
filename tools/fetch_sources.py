@@ -4,6 +4,7 @@
 import argparse
 import datetime
 import hashlib
+from html.parser import HTMLParser
 import json
 from pathlib import Path
 import subprocess
@@ -13,6 +14,36 @@ from urllib.parse import urlparse
 ROOT = Path(__file__).resolve().parents[1]
 ARCHIVE = ROOT / "sources" / "2025"
 CATALOG = Path(__file__).with_name("sources-2025.json")
+
+
+class ReadableHTML(HTMLParser):
+    """Produce a search aid; the original HTML remains the cited snapshot."""
+
+    def __init__(self):
+        super().__init__()
+        self.parts = []
+        self.hidden = 0
+
+    def handle_starttag(self, tag, attrs):
+        if tag in ("script", "style"):
+            self.hidden += 1
+        if tag in ("p", "div", "li", "tr", "h1", "h2", "h3", "h4", "br"):
+            self.parts.append("\n")
+
+    def handle_endtag(self, tag):
+        if tag in ("script", "style"):
+            self.hidden = max(0, self.hidden - 1)
+        if tag in ("p", "div", "li", "tr", "h1", "h2", "h3", "h4"):
+            self.parts.append("\n")
+        if tag in ("td", "th"):
+            self.parts.append(" | ")
+
+    def handle_data(self, data):
+        if not self.hidden:
+            self.parts.append(data)
+
+    def text(self):
+        return "\n".join(" ".join(line.split()) for line in "".join(self.parts).splitlines() if line.strip()) + "\n"
 
 
 def digest(path):
@@ -50,41 +81,54 @@ def main():
             continue
         if item["id"] in existing:
             entry = existing[item["id"]]
-            if digest(ARCHIVE / entry["file"]) != entry["sha256"]:
-                raise ValueError(f"hash mismatch: {entry['file']}")
+            for file_key, hash_key in [("file", "sha256"), ("text_file", "text_sha256")]:
+                if digest(ARCHIVE / entry[file_key]) != entry[hash_key]:
+                    raise ValueError(f"hash mismatch: {entry[file_key]}")
             print(f"Preserved {item['id']}", flush=True)
             continue
         url = item["url"]
         if urlparse(url).scheme != "https" or urlparse(url).hostname != "www.irs.gov":
             raise ValueError("catalog must use HTTPS www.irs.gov addresses")
+        kind = item.get("format", "pdf")
+        if kind not in ("pdf", "html"):
+            raise ValueError("unsupported source format")
         with tempfile.TemporaryDirectory() as temp:
-            pdf = Path(temp) / "source.pdf"
+            source = Path(temp) / ("source." + kind)
             result = subprocess.run([
                 "curl", "--fail", "--silent", "--show-error", "--location",
                 "--proto", "=https", "--proto-redir", "=https", "--retry", "2",
-                "--connect-timeout", "20", "--max-time", "120", "--output", str(pdf),
+                "--connect-timeout", "20", "--max-time", "120", "--output", str(source),
                 "--write-out", "%{url_effective}", url,
             ], stdout=subprocess.PIPE, text=True, check=True)
             if urlparse(result.stdout).hostname != "www.irs.gov":
                 raise ValueError("unexpected redirect host")
-            if not pdf.read_bytes().startswith(b"%PDF-"):
-                raise ValueError("source is not a PDF")
             txt = Path(temp) / "source.txt"
-            subprocess.run(["pdftotext", "-layout", str(pdf), str(txt)], check=True)
+            if kind == "pdf":
+                if not source.read_bytes().startswith(b"%PDF-"):
+                    raise ValueError("source is not a PDF")
+                subprocess.run(["pdftotext", "-layout", str(source), str(txt)], check=True)
+            else:
+                html = source.read_text(encoding="utf-8")
+                if "<html" not in html.lower():
+                    raise ValueError("source is not HTML")
+                parser = ReadableHTML()
+                parser.feed(html)
+                txt.write_text(parser.text(), encoding="utf-8")
             entry = dict(item)
             entry.update({
                 "resolved_url": result.stdout,
                 "fetched_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
-                "file": item["id"] + ".pdf", "sha256": digest(pdf),
+                "file": item["id"] + "." + kind, "sha256": digest(source),
                 "text_file": item["id"] + ".txt", "text_sha256": digest(txt),
                 "revision": None,
                 "revision_status": "Pending inspection of archived document; not cleared for encoding",
             })
-            for source, key in [(pdf, "file"), (txt, "text_file")]:
-                target = ARCHIVE / entry[key]
+            targets = [(source, ARCHIVE / entry["file"]), (txt, ARCHIVE / entry["text_file"])]
+            for _, target in targets:
                 if target.exists():
                     raise ValueError(f"refusing to overwrite unmanifested file: {target}")
-                target.write_bytes(source.read_bytes())
+            for origin, target in targets:
+                target.write_bytes(origin.read_bytes())
             existing[entry["id"]] = entry
             manifest["documents"] = sorted(existing.values(), key=lambda row: row["id"])
             temporary_manifest = manifest_path.with_suffix(".json.tmp")
