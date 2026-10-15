@@ -55,8 +55,7 @@ form:
         ref: ss.one
       cite:
         doc: i1040gi
-        locator: p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax
-          Withheld
+        locator: p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld
     - id: w2.over
       printed: (helper)
       label: Did this employer withhold more than $10,918.20?
@@ -68,13 +67,31 @@ form:
           - param: ss.limit
       cite:
         doc: i1040gi
-        locator: p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax
-          Withheld
+        locator: p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld
+    - id: w2.box5
+      printed: "5"
+      type: NonNegDollars
+      label: Medicare wages and tips
+      expr:
+        op: input
+        source: Form W-2 box 5
+      cite:
+        doc: f8959
+        locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3
+    - id: w2.box6
+      printed: "6"
+      type: NonNegDollars
+      label: Medicare tax withheld
+      expr:
+        op: input
+        source: Form W-2 box 6
+      cite:
+        doc: f8959
+        locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3
   collection:
     parent: person
     cite:
       doc: i1040gi
-      locator: p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax
-        Withheld
-  note: Keyed by employer within person; consolidate repeated forms for the same
-    employer explicitly. These are helper lines as well as printed boxes.
+      locator: p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld
+  note: Keyed by employer within person; consolidate repeated forms for the same employer explicitly.
+    These are helper lines as well as printed boxes.

@@ -2,13 +2,12 @@
 
 ## amb.2025.multiplication_subcent
 
-- Text at issue: QDCGT lines 18 and 21 multiply an amount by 15% and 20%. With the return-wide rounding setting off (dollars and cents), the instructions do not state how a fractional cent in the product is treated.
-
+- Text at issue: Percentage calculations can produce fractional cents when exact-cents mode is used. The form instructions do not specify subcent handling.
 - Candidate readings: Round the product half-up to the nearest cent at the multiplication. | Truncate the product toward zero to whole cents. | Carry the exact fraction forward until some later rounding step.
 - **Chosen:** Round the product half-up to the nearest cent at the multiplication.
 - Reason: Matches the half-up convention of the printed whole-dollar rounding rules. The whole-dollar default is unaffected: whole-dollar amounts multiplied by these rates produce exact cents, so the reading only matters when cents are turned on.
 
-- Status: Chosen for Stage 1; shown to the user whenever it can affect the return.
+- Status: Applied throughout Stages 1–4; whole-dollar mode remains deferred.
 - Cite: [i1040gi] QDCGT worksheet, lines 18 and 21; Rounding Off to Whole Dollars, p. 23 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## amb.2025.ss_wages
@@ -37,3 +36,12 @@
 - Reason: The worksheet explicitly limits its own use and the Form 1040 line 16 instructions repeat the line 4g condition.
 - Status: Explicit Stage 3 source interpretation for review.
 - Cite: [i1040sd] p. 15, Schedule D Tax Worksheet applicability; compare f1040sd line 20 and i1040gi p. 36 (2025; printed date 2025-12-11; sha256 650643a6)
+
+## amb.2025.box2c_scope
+
+- Text at issue: The computed-scope table includes Form 1099-DIV box 2c, but the refusal list excludes Form 8949 code Q and Form 6251.
+- Candidate readings: Expand the distribution-only section 1202 exclusion path and associated AMT treatment. | Retain the explicit code Q/Form 6251 exclusions and refuse box 2c pending scope expansion.
+- **Chosen:** Refuse nonzero box 2c; no exclusion or AMT amount is silently omitted.
+- Reason: Archived Schedule D instructions require the exclusion on Form 8949 code Q and describe an AMT adjustment for 50/60/75-percent exclusions. The existing explicit exclusions are retained; the owner was notified and asked, then said continue without selecting an expansion.
+- Status: Scope conflict disclosed; expansion remains open.
+- Cite: [i1040sd] p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax (2025; printed date 2025-12-11; sha256 650643a6)

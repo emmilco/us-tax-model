@@ -1,0 +1,161 @@
+form:
+  id: f8995a
+  kind: form
+  title: Form 8995-A — Part IV dividend-only computation
+  tax_year: 2025
+  note: Parts I–III are skipped for this no-business dividend-only path. High taxable income changes
+    the required form, not the dividend component formula.
+  lines:
+    - id: f8995a.line27
+      printed: "27"
+      type: NonNegDollars
+      label: Amount from qbi.zero
+      expr:
+        op: copy
+        from: qbi.zero
+      cite:
+        doc: f8995a
+        locator: p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income
+    - id: f8995a.line29
+      printed: "29"
+      type: NonNegDollars
+      label: Amount from qbi.zero
+      expr:
+        op: copy
+        from: qbi.zero
+      cite:
+        doc: f8995a
+        locator: p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income
+    - id: f8995a.line38
+      printed: "38"
+      type: NonNegDollars
+      label: Amount from qbi.zero
+      expr:
+        op: copy
+        from: qbi.zero
+      cite:
+        doc: f8995a
+        locator: p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income
+    - id: f8995a.line40
+      printed: "40"
+      type: NonNegDollars
+      label: Amount from qbi.zero
+      expr:
+        op: copy
+        from: qbi.zero
+      cite:
+        doc: f8995a
+        locator: p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income
+    - id: f8995a.line28
+      printed: "28"
+      type: NonNegDollars
+      label: Amount from qbi.eligible
+      expr:
+        op: copy
+        from: qbi.eligible
+      cite:
+        doc: f8995a
+        locator: p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income
+    - id: f8995a.line30
+      printed: "30"
+      type: NonNegDollars
+      label: Amount from f8995a.line28
+      expr:
+        op: copy
+        from: f8995a.line28
+      cite:
+        doc: f8995a
+        locator: p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income
+    - id: f8995a.line31
+      printed: "31"
+      type: NonNegDollars
+      label: Multiply f8995a.line30 by qbi.rate
+      expr:
+        op: multiply_rate
+        amount: f8995a.line30
+        rate:
+          param: qbi.rate
+      cite:
+        doc: f8995a
+        locator: p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income
+      ambiguity: amb.2025.multiplication_subcent
+    - id: f8995a.line32
+      printed: "32"
+      type: NonNegDollars
+      label: Add f8995a.line27, f8995a.line31
+      expr:
+        op: sum
+        of:
+          - f8995a.line27
+          - f8995a.line31
+      cite:
+        doc: f8995a
+        locator: p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income
+    - id: f8995a.line33
+      printed: "33"
+      type: NonNegDollars
+      label: Amount from qbi.taxable_before
+      expr:
+        op: copy
+        from: qbi.taxable_before
+      cite:
+        doc: f8995a
+        locator: p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income
+    - id: f8995a.line34
+      printed: "34"
+      type: NonNegDollars
+      label: Amount from qbi.net_capital_gain
+      expr:
+        op: copy
+        from: qbi.net_capital_gain
+      cite:
+        doc: f8995a
+        locator: p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income
+    - id: f8995a.line35
+      printed: "35"
+      type: NonNegDollars
+      label: Subtract f8995a.line34 from f8995a.line33; if zero or less, enter zero
+      expr:
+        op: subtract_floor0
+        from: f8995a.line33
+        take: f8995a.line34
+      cite:
+        doc: f8995a
+        locator: p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income
+    - id: f8995a.line36
+      printed: "36"
+      type: NonNegDollars
+      label: Multiply f8995a.line35 by qbi.rate
+      expr:
+        op: multiply_rate
+        amount: f8995a.line35
+        rate:
+          param: qbi.rate
+      cite:
+        doc: f8995a
+        locator: p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income
+      ambiguity: amb.2025.multiplication_subcent
+    - id: f8995a.line37
+      printed: "37"
+      type: NonNegDollars
+      label: Smaller of f8995a.line32, f8995a.line36
+      expr:
+        op: smaller_of
+        of:
+          - f8995a.line32
+          - f8995a.line36
+      cite:
+        doc: f8995a
+        locator: p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income
+    - id: f8995a.line39
+      printed: "39"
+      type: NonNegDollars
+      label: Add f8995a.line37, f8995a.line38
+      expr:
+        op: sum
+        of:
+          - f8995a.line37
+          - f8995a.line38
+      cite:
+        doc: f8995a
+        locator: p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income

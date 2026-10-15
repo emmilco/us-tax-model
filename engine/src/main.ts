@@ -13,7 +13,7 @@ import { loadCanonical } from "./canonical.js";
 import { evaluate } from "./eval.js";
 import { renderValuesSheet, renderValuesHtml, resultToJson } from "./output.js";
 import { runConjecture } from "./conjecture.js";
-import { coverageReport, recordFixtures, testFixtures, reviewStage2, reviewStage3 } from "./fixtures.js";
+import { coverageReport, recordFixtures, testFixtures, reviewStage2, reviewStage3, reviewStage4 } from "./fixtures.js";
 import { compareEvaluators } from "./compare.js";
 import { runMutation } from "./mutate.js";
 
@@ -24,7 +24,9 @@ import { runInterview } from "./interview.js";
 
 const command = process.argv[2];
 
-if (command === "review-stage3") {
+if (command === "review-stage4") {
+  reviewStage4();
+} else if (command === "review-stage3") {
   reviewStage3();
 } else if (command === "review-stage2") {
   reviewStage2();

@@ -251,6 +251,19 @@
       "revision_locator": "Extracted text, line 1 title and 'Page Last Reviewed' footer line"
     },
     {
+      "id": "i1040sb",
+      "url": "https://www.irs.gov/pub/irs-prior/i1040sb--2025.pdf",
+      "description": "2025 Schedule B instructions",
+      "resolved_url": "https://www.irs.gov/pub/irs-prior/i1040sb--2025.pdf",
+      "fetched_at": "2026-10-14T23:15:55.386931+00:00",
+      "file": "i1040sb.pdf",
+      "sha256": "b92f31ece57a82ea576ac96507fe5df637dbda7489a80eb28aaab88e7c87b287",
+      "text_file": "i1040sb.txt",
+      "text_sha256": "2bf62267574473b36fd9a69b6e0837ef74d72ac7d5dcbf1d26e7047d099f1e05",
+      "revision": "TY2025; printed April 23, 2025",
+      "revision_status": "Inspected archived text: 2025 title and April 23, 2025 footer on page 1; three pages read for Stage 4."
+    },
+    {
       "id": "i1040sca",
       "url": "https://www.irs.gov/pub/irs-pdf/i1040sca.pdf",
       "resolved_url": "https://www.irs.gov/pub/irs-pdf/i1040sca.pdf",

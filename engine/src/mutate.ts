@@ -161,6 +161,31 @@ const EQUIVALENT: Record<string, string> = {
   "operand.sd.sd.line7.line6": "Both source lines are identically zero with identical refusal gates; substitution preserves known, unknown and refused values.",
 };
 
+// Copy-chain equivalence is checked under the containing line's already-false
+// refusal gates. This recognizes aliases, not numerical agreement on samples.
+function aliasEquivalence(data: CanonicalData, mutation: Mutation): string | undefined {
+  if (mutation.kind!=="replace an operand" || !mutation.note) return undefined;
+  const match=/^(\S+) -> (\S+) /.exec(mutation.note);
+  if(!match)return undefined;
+  const parent=findLine(data,mutation.where.slice(mutation.where.indexOf(".")+1));
+  if(!parent)return undefined;
+  const known=new Set((parent.refuses??[]).map(r=>r.when));
+  const normalize=(id:string, falseGates:Set<string>, seen:Set<string>):unknown=>{
+    if(seen.has(id))return {cycle:id};
+    const l=findLine(data,id);if(!l)return {unresolved:id};
+    const next=new Set(seen);next.add(id);
+    const guards=(l.refuses??[]).filter(r=>!falseGates.has(r.when));
+    const context=new Set([...falseGates,...guards.map(r=>r.when)]);
+    const expr=l.expr;
+    const value=expr.op==="copy"&&typeof expr.from==="string" ? normalize(expr.from,context,next)
+      : expr.op==="param" ? {parameter:data.params.values[expr.ref]?.value,type:l.type}
+      : {line:id};
+    return guards.length?{guards,value}:value;
+  };
+  if(stableStringify(normalize(match[1]!,known,new Set()))!==stableStringify(normalize(match[2]!,known,new Set())))return undefined;
+  return `Copy-chain identity: ${match[1]} and ${match[2]} expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.`;
+}
+
 export function runMutation(): number {
   const baseline = loadCanonical();
   const fixtureFile = loadCases();
@@ -209,6 +234,10 @@ export function runMutation(): number {
   const total = muts.length;
   const killed = killedByCheck + killedByFixtures;
   const score = total === 0 ? 0 : killed / total;
+  for(const survivor of survivors) {
+    const reason=aliasEquivalence(baseline,survivor);
+    if(reason)EQUIVALENT[survivor.id]=reason;
+  }
   const equivalentSurvivors = survivors.filter((s) => s.id in EQUIVALENT);
   const unexplained = survivors.filter((s) => !(s.id in EQUIVALENT));
   const adjusted = total - equivalentSurvivors.length === 0 ? 1 : killed / (total - equivalentSurvivors.length);

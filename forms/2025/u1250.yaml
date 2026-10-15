@@ -1,0 +1,211 @@
+form:
+  id: u1250
+  kind: form
+  title: Unrecaptured Section 1250 Gain Worksheet — distribution-only path
+  tax_year: 2025
+  note: Form 4797 and other non-distribution sources are outside scope; lines 1–9 are skipped. Box 2b
+    is reduced by remaining short-term losses after collectibles gain, as printed.
+  lines:
+    - id: u1250.line1
+      printed: "1"
+      type: NonNegDollars
+      label: Amount from div.screen
+      expr:
+        op: copy
+        from: div.screen
+      cite:
+        doc: i1040sd
+        locator: p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18
+    - id: u1250.line2
+      printed: "2"
+      type: NonNegDollars
+      label: Amount from div.screen
+      expr:
+        op: copy
+        from: div.screen
+      cite:
+        doc: i1040sd
+        locator: p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18
+    - id: u1250.line3
+      printed: "3"
+      type: NonNegDollars
+      label: Amount from div.screen
+      expr:
+        op: copy
+        from: div.screen
+      cite:
+        doc: i1040sd
+        locator: p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18
+    - id: u1250.line4
+      printed: "4"
+      type: NonNegDollars
+      label: Amount from div.screen
+      expr:
+        op: copy
+        from: div.screen
+      cite:
+        doc: i1040sd
+        locator: p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18
+    - id: u1250.line5
+      printed: "5"
+      type: NonNegDollars
+      label: Amount from div.screen
+      expr:
+        op: copy
+        from: div.screen
+      cite:
+        doc: i1040sd
+        locator: p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18
+    - id: u1250.line6
+      printed: "6"
+      type: NonNegDollars
+      label: Amount from div.screen
+      expr:
+        op: copy
+        from: div.screen
+      cite:
+        doc: i1040sd
+        locator: p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18
+    - id: u1250.line7
+      printed: "7"
+      type: NonNegDollars
+      label: Amount from div.screen
+      expr:
+        op: copy
+        from: div.screen
+      cite:
+        doc: i1040sd
+        locator: p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18
+    - id: u1250.line8
+      printed: "8"
+      type: NonNegDollars
+      label: Amount from div.screen
+      expr:
+        op: copy
+        from: div.screen
+      cite:
+        doc: i1040sd
+        locator: p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18
+    - id: u1250.line9
+      printed: "9"
+      type: NonNegDollars
+      label: Amount from div.screen
+      expr:
+        op: copy
+        from: div.screen
+      cite:
+        doc: i1040sd
+        locator: p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18
+    - id: u1250.line10
+      printed: "10"
+      type: NonNegDollars
+      label: Amount from div.screen
+      expr:
+        op: copy
+        from: div.screen
+      cite:
+        doc: i1040sd
+        locator: p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18
+    - id: u1250.line12
+      printed: "12"
+      type: NonNegDollars
+      label: Amount from div.screen
+      expr:
+        op: copy
+        from: div.screen
+      cite:
+        doc: i1040sd
+        locator: p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18
+    - id: u1250.line16
+      printed: "16"
+      type: NonNegDollars
+      label: Amount from div.screen
+      expr:
+        op: copy
+        from: div.screen
+      cite:
+        doc: i1040sd
+        locator: p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18
+    - id: u1250.line11
+      printed: "11"
+      type: NonNegDollars
+      label: Amount from div.box2b
+      expr:
+        op: copy
+        from: div.box2b
+      cite:
+        doc: i1040sd
+        locator: p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18
+    - id: u1250.line13
+      printed: "13"
+      type: NonNegDollars
+      label: Add u1250.line9, u1250.line10, u1250.line11, u1250.line12
+      expr:
+        op: sum
+        of:
+          - u1250.line9
+          - u1250.line10
+          - u1250.line11
+          - u1250.line12
+      cite:
+        doc: i1040sd
+        locator: p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18
+    - id: u1250.line14
+      printed: "14"
+      type: NonNegDollars
+      label: Add g28.line1, g28.line2, g28.line3, g28.line4
+      expr:
+        op: sum
+        of:
+          - g28.line1
+          - g28.line2
+          - g28.line3
+          - g28.line4
+      cite:
+        doc: i1040sd
+        locator: p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18
+    - id: u1250.line15
+      printed: "15"
+      type: Dollars
+      label: Amount from g28.line6
+      expr:
+        op: copy
+        from: g28.line6
+      cite:
+        doc: i1040sd
+        locator: p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18
+    - id: u1250.combined
+      printed: (helper)
+      type: Dollars
+      label: Add u1250.line14, u1250.line15, u1250.line16
+      expr:
+        op: sum
+        of:
+          - u1250.line14
+          - u1250.line15
+          - u1250.line16
+      cite:
+        doc: i1040sd
+        locator: p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18
+    - id: u1250.line17
+      printed: "17"
+      type: NonNegDollars
+      label: Subtract u1250.combined from sd.zero; if zero or less, enter zero
+      expr:
+        op: subtract_floor0
+        from: sd.zero
+        take: u1250.combined
+      cite:
+        doc: i1040sd
+        locator: p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18
+    - id: u1250.line18
+      printed: "18"
+      type: NonNegDollars
+      label: Subtract u1250.line17 from u1250.line13; if zero or less, enter zero
+      expr:
+        op: subtract_floor0
+        from: u1250.line13
+        take: u1250.line17
+      cite:
+        doc: i1040sd
+        locator: p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18

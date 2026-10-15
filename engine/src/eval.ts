@@ -304,7 +304,7 @@ function evalExpr(ctx: Ctx, frame: Frame, lineId: string, expr: Expr, cite: Cite
         else if (item.value.kind === "count") total += BigInt(item.value.value);
       }
       if (missing?.kind === "unknown" && fieldType === "Count") missing = { ...missing, lowerBound: safeNumber(total) };
-      return d(missing ?? (fieldType === "Count" ? { kind: "count", value: safeNumber(total) } : { kind: "money", cents: safeNumber(total) }), "sum_over", ops, [], [`confirmed roster ${rosterKey}: ${roster.join(", ")}`]);
+      return d(missing ?? (fieldType === "Count" ? { kind: "count", value: safeNumber(total) } : { kind: "money", cents: safeNumber(total) }), "sum_over", ops, [], [`confirmed roster ${rosterKey}: ${roster.join(", ")}`.trimEnd()]);
     }
     case "sum": {
       let total = 0n;

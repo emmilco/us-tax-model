@@ -1,0 +1,128 @@
+form:
+  id: qbi
+  kind: form
+  title: Section 199A dividend-only deduction and form selection
+  tax_year: 2025
+  note: Only qualified REIT/RIC section 199A dividends, not trade/business or PTP amounts. Taxable
+    income before QBI is AGI less the selected deduction; Schedule 1-A is outside scope. The Jan.
+    27, 2026 Form 8995 instruction correction is followed.
+  lines:
+    - id: qbi.dividends
+      printed: (helper)
+      type: NonNegDollars
+      label: Qualified section 199A dividends from Form 1099-DIV box 5 after confirming holding-period and
+        related-payment requirements
+      expr:
+        op: input
+        source: Qualified section 199A dividends from Form 1099-DIV box 5 after confirming holding-period
+          and related-payment requirements
+      cite:
+        doc: f8995
+        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+    - id: qbi.unsupported
+      printed: (helper)
+      type: Bool
+      label: Any QBI or PTP income/loss other than section 199A dividends, prior-year QBI/REIT/PTP loss
+        carryover, or agricultural/horticultural cooperative patronage?
+      expr:
+        op: input
+        source: Any QBI or PTP income/loss other than section 199A dividends, prior-year QBI/REIT/PTP loss
+          carryover, or agricultural/horticultural cooperative patronage?
+      cite:
+        doc: f8995
+        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+    - id: qbi.zero
+      printed: (helper)
+      type: NonNegDollars
+      label: Year parameter sales.zero
+      expr:
+        op: param
+        ref: sales.zero
+      cite:
+        doc: f8995
+        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+    - id: qbi.eligible
+      printed: (helper)
+      type: NonNegDollars
+      label: Amount from qbi.dividends
+      expr:
+        op: copy
+        from: qbi.dividends
+      cite:
+        doc: f8995
+        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+      refuses:
+        - when: qbi.unsupported
+          form: Forms 8995 / 8995-A business or PTP path
+          remedy: Only section 199A dividend income without loss carryovers is supported.
+          cite:
+            doc: f8995
+            locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+    - id: qbi.taxable_before
+      printed: (helper)
+      type: NonNegDollars
+      label: Subtract sa.deduction from sa.agi; if zero or less, enter zero
+      expr:
+        op: subtract_floor0
+        from: sa.agi
+        take: sa.deduction
+      cite:
+        doc: i8995-correction
+        locator: "Correction to 2025 Form 8995 instructions, line 11: Form 1040 line 11a minus lines 12e and
+          13b; Schedule 1-A refused in this slice"
+    - id: qbi.net_capital_gain
+      printed: (helper)
+      type: NonNegDollars
+      label: Add sd.net_gain, f1040.line3a
+      expr:
+        op: sum
+        of:
+          - sd.net_gain
+          - f1040.line3a
+      cite:
+        doc: f8995
+        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+    - id: qbi.threshold
+      printed: (helper)
+      type: NonNegDollars
+      label: Year parameter qbi.threshold
+      expr:
+        op: param
+        ref: qbi.threshold
+      cite:
+        doc: f8995
+        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+    - id: qbi.use_8995a
+      printed: (helper)
+      type: Bool
+      label: Taxable income before QBI exceeds the Form 8995 threshold
+      expr:
+        op: test
+        gt:
+          - qbi.taxable_before
+          - qbi.threshold
+      cite:
+        doc: f8995
+        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+    - id: qbi.deduction
+      printed: (helper)
+      type: NonNegDollars
+      label: Select Form 8995 or dividend-only Form 8995-A
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - qbi.use_8995a
+                - const: true
+            then: f8995a.line39
+          - guard:
+              op: test
+              eq:
+                - qbi.use_8995a
+                - const: false
+            then: f8995.line15
+      cite:
+        doc: f8995
+        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4

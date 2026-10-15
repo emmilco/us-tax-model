@@ -14,7 +14,7 @@
     "record-fixtures": "npm run compile --silent && node engine/dist/main.js record-fixtures",
     "fixtures": "node engine/dist/main.js test-fixtures",
     "coverage": "node engine/dist/main.js coverage",
-    "check-all": "python3 tools/fetch_sources.py && npm run build --silent && npm run render --silent && node engine/dist/main.js conjecture && node engine/dist/main.js test-fixtures && node engine/dist/main.js test-integration && node engine/dist/main.js coverage && node engine/dist/main.js mutate && npm run compare --silent && node engine/dist/main.js review-stage2 && node engine/dist/main.js review-stage3",
+    "check-all": "python3 tools/fetch_sources.py && npm run build --silent && npm run render --silent && node engine/dist/main.js conjecture && node engine/dist/main.js test-fixtures && node engine/dist/main.js test-integration && node engine/dist/main.js coverage && node engine/dist/main.js mutate && npm run compare --silent && node engine/dist/main.js review-stage2 && node engine/dist/main.js review-stage3 && node engine/dist/main.js review-stage4",
     "compare": "cd lean && lake build taxeval >/dev/null 2>&1 && cd .. && npm run compile --silent && node engine/dist/main.js compare",
     "mutate": "node engine/dist/main.js mutate"
   },

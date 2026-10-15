@@ -84,7 +84,7 @@ export function integrationChecks(): void {
         assert.ok(key in sales.inputs, `missing sales input ${key}`);
         salesState=cli(["interview","answer","--log",salesLog,"--input",key,"--value",JSON.stringify(sales.inputs[key])]);
       }
-      assert.equal(salesState.status, id.includes("refuse") || id.includes("sdtw") ? "refused" : "complete");
+      assert.equal(salesState.status, id.includes("refuse") ? "refused" : "complete");
       if (id==="sales.official.basis") {
         assert.equal(salesState.values["f1040.line7a"].value.cents,90000);
         const correction=(input:string,value:unknown)=>cli(["interview","answer","--log",salesLog,"--input",input,"--value",JSON.stringify(value)]);
@@ -101,6 +101,23 @@ export function integrationChecks(): void {
     evaluate({...sale,"sales[a].box":"Z"},false,"f1040.line7a");
     assert.equal(evaluate({...sale,"$sales":["a","missing"]},true,"f1040.line7a").values["f1040.line7a"].value.kind,"unknown");
     badData(d=>{line(d,"sd.limited_loss").expr={op:"larger_of",of:["sd.limited_loss","sd.loss_limit"]};});
+    for(const id of ["stage4.base","stage4.sdtw.special_rates","stage4.refuse.scope.schedule1"]) {
+      const fixture=loadCases().cases.find(c=>c.id===id)!;
+      const path=join(dir,id+".jsonl");
+      let state=cli(["interview","start","--profile","stage4","--log",path]);
+      for(let step=0;state.status==="incomplete"&&step<150;step++) {
+        const key=state.question.input;assert.ok(key in fixture.inputs,`missing ${key}`);
+        state=cli(["interview","answer","--log",path,"--input",key,"--value",JSON.stringify(fixture.inputs[key])]);
+      }
+      assert.equal(state.status,id.includes("refuse")?"refused":"complete");
+      if(id==="stage4.sdtw.special_rates")assert.equal(state.values["f1040.line16"].value.cents,6166300);
+      if(id==="stage4.base") {
+        assert.equal(state.values["sa.deduction"].value.cents,1575000);
+        state=cli(["interview","answer","--log",path,"--input","sa.line8a","--value","2000000"]);
+        assert.equal(state.values["sa.deduction"].value.cents,2000000);
+        cli(["interview","answer","--log",path,"--input","f8959.line18","--value","1"],false);
+      }
+    }
     console.log(`integration: ${checks} CLI invocations passed (interview, corrections, early refusals, invalid inputs, graph/type failures)`);
   } finally {rmSync(dir,{recursive:true,force:true});}
 }

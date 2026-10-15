@@ -15,8 +15,8 @@ export interface InterviewData {
   questions: { input: string; prompt: string; help: string; order: number; cite: CiteFilled }[];
 }
 export function loadInterview(profile = "social-security"): InterviewData {
-  if (!["social-security", "sales"].includes(profile)) throw new Error("unknown interview profile");
-  return JSON.parse(readFileSync(resolve(CANON_DIR, profile === "sales" ? "interview-sales.json" : "interview.json"), "utf8")) as InterviewData;
+  if (!["social-security", "sales", "stage4"].includes(profile)) throw new Error("unknown interview profile");
+  return JSON.parse(readFileSync(resolve(CANON_DIR, profile === "social-security" ? "interview.json" : `interview-${profile}.json`), "utf8")) as InterviewData;
 }
 export function questionTemplate(key: string): string {
   if (key.startsWith("$")) return key.split("@")[0]!;
@@ -37,7 +37,7 @@ export function interviewState(data: CanonicalData, config: InterviewData, input
   return { status: refused ? "refused" : complete ? "complete" : "incomplete", refusal: refused ?? null,
     question: refused || complete ? null : pending[0] ?? null,
     reachableInputs: [...needed].sort(),
-    scope: config.targets.includes("f1040.line7a") ? "Stage 3 securities sales, Schedule D, and tax-method selection using supplied taxable income, dividends and feeder subtotals; not a complete return." : "Stage 2 Social Security credit and supplied Schedule 3 Part II subtotals; not a complete return. Other forms are not prepared.",
+    scope: config.targets.includes("scope.ready") ? "Stage 4 form slices with supplied AGI and taxable income, eligibility/valuation screening and allocation inputs. Not a complete return; whole-return wiring is Stage 5." : config.targets.includes("f1040.line7a") ? "Stage 3 securities sales, Schedule D, and tax-method selection using supplied taxable income, dividends and feeder subtotals; not a complete return." : "Stage 2 Social Security credit and supplied Schedule 3 Part II subtotals; not a complete return. Other forms are not prepared.",
     notices: "Not tax or legal advice. You are responsible for the return. Published IRS instructions are not the law itself. Not affiliated with or endorsed by the IRS.",
     values: JSON.parse(resultToJson(result)).values as unknown,
     sheet: renderValuesSheet(data, result, data.forms.map(f=>f.id)) };

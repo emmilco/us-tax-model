@@ -83,8 +83,8 @@ This finite enumeration is not a proof for arbitrary numbers of entries.
 Start with `node engine/dist/main.js interview start --profile sales --log /tmp/sales.jsonl`.
 The log pins its profile; subsequent `advance` and `answer` commands infer it.
 The targets are Form 1040 lines 7a and 16, using supplied taxable income,
-qualified dividends and special-gain worksheet subtotals. This is a slice, not a
-complete return. Required Schedule D Tax Worksheet cases are refused until Stage 4.
+qualified dividends and distribution components. Stage 4 now computes the special-gain
+feeders, Form 4952 and Schedule D Tax Worksheet. This remains a form slice.
 
 `$sales` lists stable transaction keys. For example, `sales[lot1].box` is the
 manually determined A–F classification. The interview explains the reporting and
@@ -107,3 +107,14 @@ Amounts remain exact cents. See the rounding ambiguity register. Build-time
 checks walk every Stage 3 fixture path and reverse its answer events; CLI tests
 also exercise corrections and roster removal/restoration. Unlike the Stage 2
 finite-domain checks, Stage 3 path coverage is representative, not exhaustive.
+
+## Stage 4 profile
+
+Start with `node engine/dist/main.js interview start LOG --profile stage4`.
+This profile covers the additional forms and scope screens described in
+`reports/2025/stage4-review.md`. AGI and taxable income are still supplied subtotals.
+Interest payer totals and noncash gift groups use keyed collections. Explicit
+eligibility answers are required; missing values never silently default to zero.
+Corrections append events and recompute the dependency graph. Fixture paths and
+reversed event orders are checked at build time; this is not an exhaustive proof
+of every possible interview path.

@@ -1,0 +1,355 @@
+form:
+  id: div
+  kind: form
+  title: Form 1099-DIV — distribution components and scope screening
+  tax_year: 2025
+  note: Boxes 1a/1b/2a/5 are the shared supplied totals used by the other forms. Box 7 feeds the
+    supplied creditable foreign-tax total in ftc.taxes; box 8 is supporting country information.
+    Boxes 14–16 concern state reporting; state tax paid is entered once on Schedule A. This is a
+    values sheet, not a prepared information return.
+  lines:
+    - id: div.box2b
+      printed: (helper)
+      type: NonNegDollars
+      label: Unrecaptured section 1250 gain, box 2b
+      expr:
+        op: input
+        source: Unrecaptured section 1250 gain, box 2b
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, boxes 1–16
+    - id: div.box2c
+      printed: (helper)
+      type: NonNegDollars
+      label: Section 1202 gain, box 2c
+      expr:
+        op: input
+        source: Section 1202 gain, box 2c
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, boxes 1–16
+    - id: div.box2d
+      printed: (helper)
+      type: NonNegDollars
+      label: Collectibles (28%) gain, box 2d
+      expr:
+        op: input
+        source: Collectibles (28%) gain, box 2d
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, boxes 1–16
+    - id: div.box2e
+      printed: (helper)
+      type: NonNegDollars
+      label: Section 897 ordinary dividends, box 2e
+      expr:
+        op: input
+        source: Section 897 ordinary dividends, box 2e
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, boxes 1–16
+    - id: div.box2f
+      printed: (helper)
+      type: NonNegDollars
+      label: Section 897 capital gain, box 2f
+      expr:
+        op: input
+        source: Section 897 capital gain, box 2f
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, boxes 1–16
+    - id: div.box3
+      printed: (helper)
+      type: NonNegDollars
+      label: Nondividend distributions/return of capital, box 3
+      expr:
+        op: input
+        source: Nondividend distributions/return of capital, box 3
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, boxes 1–16
+    - id: div.box4
+      printed: (helper)
+      type: NonNegDollars
+      label: Federal income tax withheld, box 4
+      expr:
+        op: input
+        source: Federal income tax withheld, box 4
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, boxes 1–16
+    - id: div.box6
+      printed: (helper)
+      type: NonNegDollars
+      label: Investment expenses already included in box 1a, box 6
+      expr:
+        op: input
+        source: Investment expenses already included in box 1a, box 6
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, boxes 1–16
+    - id: div.box9
+      printed: (helper)
+      type: NonNegDollars
+      label: Cash liquidation distributions, box 9
+      expr:
+        op: input
+        source: Cash liquidation distributions, box 9
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, boxes 1–16
+    - id: div.box10
+      printed: (helper)
+      type: NonNegDollars
+      label: Noncash liquidation distributions, box 10
+      expr:
+        op: input
+        source: Noncash liquidation distributions, box 10
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, boxes 1–16
+    - id: div.box12
+      printed: (helper)
+      type: NonNegDollars
+      label: Exempt-interest dividends, box 12
+      expr:
+        op: input
+        source: Exempt-interest dividends, box 12
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, boxes 1–16
+    - id: div.box13
+      printed: (helper)
+      type: NonNegDollars
+      label: Specified private activity bond interest dividends, box 13
+      expr:
+        op: input
+        source: Specified private activity bond interest dividends, box 13
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, boxes 1–16
+    - id: div.basis_reconciled
+      printed: (helper)
+      type: Bool
+      label: For box 3, have basis reductions been applied to records with no distribution exceeding
+        basis?
+      expr:
+        op: input
+        source: For box 3, have basis reductions been applied to records with no distribution exceeding
+          basis?
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, boxes 1–16
+    - id: div.fatca
+      printed: (helper)
+      type: Bool
+      label: Is the FATCA reporting checkbox checked? Review Form 8938 requirements separately.
+      expr:
+        op: input
+        source: Is the FATCA reporting checkbox checked? Review Form 8938 requirements separately.
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, boxes 1–16
+    - id: div.box1a
+      printed: (helper)
+      type: NonNegDollars
+      label: Amount from sb.ordinary_dividends
+      expr:
+        op: copy
+        from: sb.ordinary_dividends
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, boxes 1–16
+    - id: div.box1b
+      printed: (helper)
+      type: NonNegDollars
+      label: Amount from f1040.line3a
+      expr:
+        op: copy
+        from: f1040.line3a
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, boxes 1–16
+    - id: div.box2a
+      printed: (helper)
+      type: NonNegDollars
+      label: Amount from sd.distributions
+      expr:
+        op: copy
+        from: sd.distributions
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, boxes 1–16
+    - id: div.box5
+      printed: (helper)
+      type: NonNegDollars
+      label: Amount from qbi.dividends
+      expr:
+        op: copy
+        from: qbi.dividends
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, boxes 1–16
+    - id: div.section1202
+      printed: (helper)
+      type: Bool
+      label: Section 1202 distribution present
+      expr:
+        op: test
+        gt:
+          - div.box2c
+          - const: 0
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, boxes 1–16
+    - id: div.amt
+      printed: (helper)
+      type: Bool
+      label: Specified private activity bond dividends present
+      expr:
+        op: test
+        gt:
+          - div.box13
+          - const: 0
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, boxes 1–16
+    - id: div.unsupported
+      printed: (helper)
+      type: Bool
+      label: Unsupported section 897, liquidation or unreconciled basis/excess distribution
+      expr:
+        op: test
+        any:
+          - op: test
+            gt:
+              - div.box2e
+              - const: 0
+          - op: test
+            gt:
+              - div.box2f
+              - const: 0
+          - op: test
+            gt:
+              - div.box9
+              - const: 0
+          - op: test
+            gt:
+              - div.box10
+              - const: 0
+          - op: test
+            all:
+              - op: test
+                gt:
+                  - div.box3
+                  - const: 0
+              - op: test
+                eq:
+                  - div.basis_reconciled
+                  - const: false
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, boxes 1–16
+    - id: div.bad_special
+      printed: (helper)
+      type: Bool
+      label: A gain component exceeds total capital gain distributions
+      expr:
+        op: test
+        any:
+          - op: test
+            gt:
+              - div.box2b
+              - sd.distributions
+          - op: test
+            gt:
+              - div.box2c
+              - sd.distributions
+          - op: test
+            gt:
+              - div.box2d
+              - sd.distributions
+          - op: test
+            gt:
+              - div.special_total
+              - sd.distributions
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, boxes 1–16
+    - id: div.screen
+      printed: (helper)
+      type: NonNegDollars
+      label: Zero only after distribution scope checks
+      expr:
+        op: param
+        ref: sales.zero
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, boxes 1–16
+      refuses:
+        - when: div.section1202
+          form: Form 8949 code Q / Form 6251
+          remedy: Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form
+            6251 remain outside scope.
+          cite:
+            doc: i1040sd
+            locator: p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax
+        - when: div.amt
+          form: Form 6251
+          remedy: Review private activity bond interest for the alternative minimum tax; Form 6251 is outside
+            scope.
+          cite:
+            doc: f1099div
+            locator: Instructions for Recipient, boxes 1–16
+        - when: div.unsupported
+          form: Form 1099-DIV special distribution treatment
+          remedy: Prepare the required section 897/liquidation treatment or reconcile return-of-capital basis
+            and any excess gain.
+          cite:
+            doc: f1099div
+            locator: Instructions for Recipient, boxes 1–16
+        - when: div.bad_special
+          form: Form 1099-DIV corrected amounts
+          remedy: Boxes 2b, 2c and 2d are portions of box 2a. Correct inconsistent supplied amounts.
+          cite:
+            doc: f1099div
+            locator: Instructions for Recipient, boxes 1–16
+        - when: div.bad_components
+          form: Form 1099-DIV dividend components
+          remedy: "Correct the supplied totals: qualified dividends and section 199A dividends are portions of
+            ordinary dividends."
+          cite:
+            doc: f1099div
+            locator: Instructions for Recipient, boxes 1a, 1b and 5
+      ambiguity: amb.2025.box2c_scope
+    - id: div.bad_components
+      printed: (gate)
+      label: Qualified or section 199A dividends exceed ordinary dividends
+      type: Bool
+      expr:
+        op: test
+        any:
+          - op: test
+            gt:
+              - f1040.line3a
+              - sb.ordinary_dividends
+          - op: test
+            gt:
+              - qbi.dividends
+              - sb.ordinary_dividends
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, boxes 1a, 1b and 5
+    - id: div.special_total
+      printed: (helper)
+      type: NonNegDollars
+      label: Total special capital-gain distribution components
+      expr:
+        op: sum
+        of:
+          - div.box2b
+          - div.box2c
+          - div.box2d
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, capital gain components in boxes 2b–2d

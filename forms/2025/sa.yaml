@@ -1,0 +1,863 @@
+form:
+  id: sa
+  kind: form
+  title: Schedule A — supported itemized deductions and standard comparison
+  tax_year: 2025
+  note: Income and deduction eligibility are explicit supplied facts. Charity valuation,
+    substantiation and income-limit screening are not computed; an affirmative limitation answer is
+    refused. The SALT formula follows the printed 2025 worksheet, including its MFS halving step.
+  lines:
+    - id: sa.unsupported
+      printed: (helper)
+      type: Bool
+      label: Any casualty/theft loss, other itemized deduction, foreign tax deduction, mortgage interest
+        not on Form 1098 or subject to debt/use limits, or sales-tax election?
+      expr:
+        op: input
+        source: Any casualty/theft loss, other itemized deduction, foreign tax deduction, mortgage interest
+          not on Form 1098 or subject to debt/use limits, or sales-tax election?
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.charity_limited
+      printed: (helper)
+      type: Bool
+      label: Are any charitable deductions reduced by income limits, or carried over from a prior year?
+        Determine under Publication 526 before answering.
+      expr:
+        op: input
+        source: Are any charitable deductions reduced by income limits, or carried over from a prior year?
+          Determine under Publication 526 before answering.
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.excluded_income
+      printed: (helper)
+      type: Bool
+      label: Any excluded Puerto Rico income, Form 2555 or Form 4563 amounts?
+      expr:
+        op: input
+        source: Any excluded Puerto Rico income, Form 2555 or Form 4563 amounts?
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.dependent
+      printed: (helper)
+      type: Bool
+      label: Can someone claim you or your spouse as a dependent, or are you a dual-status alien?
+      expr:
+        op: input
+        source: Can someone claim you or your spouse as a dependent, or are you a dual-status alien?
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.spouse_extra
+      printed: (helper)
+      type: Bool
+      label: Claiming any age/blindness standard-deduction boxes for a spouse?
+      expr:
+        op: input
+        source: Claiming any age/blindness standard-deduction boxes for a spouse?
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.age65
+      printed: (helper)
+      type: Bool
+      label: Were you born before January 2, 1961?
+      expr:
+        op: input
+        source: Were you born before January 2, 1961?
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.blind
+      printed: (helper)
+      type: Bool
+      label: Are you blind under the standard-deduction instructions?
+      expr:
+        op: input
+        source: Are you blind under the standard-deduction instructions?
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.spouse_itemizes
+      printed: (helper)
+      type: Bool
+      label: Married filing separately with a spouse who itemizes?
+      expr:
+        op: input
+        source: Married filing separately with a spouse who itemizes?
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.elect_itemize
+      printed: (helper)
+      type: Bool
+      label: Elect to itemize even if the standard deduction is larger?
+      expr:
+        op: input
+        source: Elect to itemize even if the standard deduction is larger?
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.agi
+      printed: (helper)
+      type: Dollars
+      label: Form 1040 line 11b adjusted gross income (supplied subtotal until Stage 5)
+      expr:
+        op: input
+        source: Form 1040 line 11b adjusted gross income (supplied subtotal until Stage 5)
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.line1
+      printed: "1"
+      type: NonNegDollars
+      label: Unreimbursed eligible medical and dental expenses
+      expr:
+        op: input
+        source: Unreimbursed eligible medical and dental expenses
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.line5a
+      printed: 5a
+      type: NonNegDollars
+      label: State/local income taxes paid, including withholding; no sales-tax election
+      expr:
+        op: input
+        source: State/local income taxes paid, including withholding; no sales-tax election
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.line5b
+      printed: 5b
+      type: NonNegDollars
+      label: Deductible state/local real estate taxes
+      expr:
+        op: input
+        source: Deductible state/local real estate taxes
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.line5c
+      printed: 5c
+      type: NonNegDollars
+      label: Deductible state/local personal property taxes
+      expr:
+        op: input
+        source: Deductible state/local personal property taxes
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.line8a
+      printed: 8a
+      type: NonNegDollars
+      label: Eligible home mortgage interest and points on Form 1098, after confirming the debt/use limits
+        do not apply
+      expr:
+        op: input
+        source: Eligible home mortgage interest and points on Form 1098, after confirming the debt/use
+          limits do not apply
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.line11
+      printed: "11"
+      type: NonNegDollars
+      label: Deductible cash/check charitable gifts before income limits, after benefits received and
+        required substantiation
+      expr:
+        op: input
+        source: Deductible cash/check charitable gifts before income limits, after benefits received and
+          required substantiation
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.zero
+      printed: (helper)
+      type: NonNegDollars
+      label: Year parameter sales.zero
+      expr:
+        op: param
+        ref: sales.zero
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.line2
+      printed: "2"
+      type: Dollars
+      label: Amount from sa.agi
+      expr:
+        op: copy
+        from: sa.agi
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.line3
+      printed: "3"
+      type: Dollars
+      label: Multiply sa.line2 by sa.medical_rate
+      expr:
+        op: multiply_rate
+        amount: sa.line2
+        rate:
+          param: sa.medical_rate
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+      ambiguity: amb.2025.multiplication_subcent
+    - id: sa.line4
+      printed: "4"
+      type: NonNegDollars
+      label: Subtract sa.line3 from sa.line1; if zero or less, enter zero
+      expr:
+        op: subtract_floor0
+        from: sa.line1
+        take: sa.line3
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.line5d
+      printed: 5d
+      type: NonNegDollars
+      label: Add sa.line5a, sa.line5b, sa.line5c
+      expr:
+        op: sum
+        of:
+          - sa.line5a
+          - sa.line5b
+          - sa.line5c
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.saltbase
+      printed: (helper)
+      type: NonNegDollars
+      label: Year parameter sa.salt_base
+      expr:
+        op: param
+        ref: sa.salt_base
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.saltfloor
+      printed: (helper)
+      type: NonNegDollars
+      label: Year parameter sa.salt_floor
+      expr:
+        op: param
+        ref: sa.salt_floor
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.saltthreshold
+      printed: (helper)
+      type: NonNegDollars
+      label: Year parameter sa.salt_threshold
+      expr:
+        op: param
+        ref: sa.salt_threshold
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.saltexcess
+      printed: (helper)
+      type: NonNegDollars
+      label: Subtract sa.saltthreshold from sa.agi; if zero or less, enter zero
+      expr:
+        op: subtract_floor0
+        from: sa.agi
+        take: sa.saltthreshold
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.saltreduction
+      printed: (helper)
+      type: NonNegDollars
+      label: Multiply sa.saltexcess by sa.salt_rate
+      expr:
+        op: multiply_rate
+        amount: sa.saltexcess
+        rate:
+          param: sa.salt_rate
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+      ambiguity: amb.2025.multiplication_subcent
+    - id: sa.saltremaining
+      printed: (helper)
+      type: NonNegDollars
+      label: Subtract sa.saltreduction from sa.saltbase; if zero or less, enter zero
+      expr:
+        op: subtract_floor0
+        from: sa.saltbase
+        take: sa.saltreduction
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.saltfloor_applied
+      printed: (helper)
+      type: NonNegDollars
+      label: Larger of remaining ceiling and $10,000
+      expr:
+        op: larger_of
+        of:
+          - sa.saltremaining
+          - sa.saltfloor
+      cite:
+        doc: i1040sca
+        locator: p. 7, State and Local Tax Deduction Worksheet
+    - id: sa.salthalf
+      printed: (helper)
+      type: NonNegDollars
+      label: Multiply sa.saltfloor_applied by sa.half
+      expr:
+        op: multiply_rate
+        amount: sa.saltfloor_applied
+        rate:
+          param: sa.half
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+      ambiguity: amb.2025.multiplication_subcent
+    - id: sa.mfs
+      printed: (helper)
+      type: Bool
+      label: Married filing separately
+      expr:
+        op: test
+        eq:
+          - f1040.status
+          - const: mfs
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.saltlimit
+      printed: (helper)
+      type: NonNegDollars
+      label: Half the worksheet ceiling if married filing separately
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sa.mfs
+                - const: true
+            then: sa.salthalf
+          - guard:
+              op: test
+              eq:
+                - sa.mfs
+                - const: false
+            then: sa.saltfloor_applied
+      cite:
+        doc: i1040sca
+        locator: p. 7, State and Local Tax Deduction Worksheet
+    - id: sa.line5e
+      printed: 5e
+      type: NonNegDollars
+      label: Smaller of sa.line5d, sa.saltlimit
+      expr:
+        op: smaller_of
+        of:
+          - sa.line5d
+          - sa.saltlimit
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.line6
+      printed: "6"
+      type: NonNegDollars
+      label: Amount from sa.zero
+      expr:
+        op: copy
+        from: sa.zero
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+      refuses:
+        - when: sa.unsupported
+          form: Schedule A unsupported item / Form 4684
+          remedy: Prepare the applicable deduction or limitation; only the listed Schedule A items are
+            supported.
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2025), lines 1–18
+        - when: sa.charity_limited
+          form: Schedule A charitable limitation / carryover
+          remedy: Income-limited and carried-over charitable deductions are outside scope.
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2025), lines 1–18
+        - when: sa.excluded_income
+          form: Schedule A SALT Worksheet / Forms 2555 and 4563
+          remedy: Excluded-income addbacks are outside scope.
+          cite:
+            doc: i1040sca
+            locator: p. 7, State and Local Tax Deduction Worksheet
+    - id: sa.line8b
+      printed: 8b
+      type: NonNegDollars
+      label: Amount from sa.zero
+      expr:
+        op: copy
+        from: sa.zero
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+      refuses:
+        - when: sa.unsupported
+          form: Schedule A unsupported item / Form 4684
+          remedy: Prepare the applicable deduction or limitation; only the listed Schedule A items are
+            supported.
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2025), lines 1–18
+        - when: sa.charity_limited
+          form: Schedule A charitable limitation / carryover
+          remedy: Income-limited and carried-over charitable deductions are outside scope.
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2025), lines 1–18
+        - when: sa.excluded_income
+          form: Schedule A SALT Worksheet / Forms 2555 and 4563
+          remedy: Excluded-income addbacks are outside scope.
+          cite:
+            doc: i1040sca
+            locator: p. 7, State and Local Tax Deduction Worksheet
+    - id: sa.line8c
+      printed: 8c
+      type: NonNegDollars
+      label: Amount from sa.zero
+      expr:
+        op: copy
+        from: sa.zero
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+      refuses:
+        - when: sa.unsupported
+          form: Schedule A unsupported item / Form 4684
+          remedy: Prepare the applicable deduction or limitation; only the listed Schedule A items are
+            supported.
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2025), lines 1–18
+        - when: sa.charity_limited
+          form: Schedule A charitable limitation / carryover
+          remedy: Income-limited and carried-over charitable deductions are outside scope.
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2025), lines 1–18
+        - when: sa.excluded_income
+          form: Schedule A SALT Worksheet / Forms 2555 and 4563
+          remedy: Excluded-income addbacks are outside scope.
+          cite:
+            doc: i1040sca
+            locator: p. 7, State and Local Tax Deduction Worksheet
+    - id: sa.line13
+      printed: "13"
+      type: NonNegDollars
+      label: Amount from sa.zero
+      expr:
+        op: copy
+        from: sa.zero
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+      refuses:
+        - when: sa.unsupported
+          form: Schedule A unsupported item / Form 4684
+          remedy: Prepare the applicable deduction or limitation; only the listed Schedule A items are
+            supported.
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2025), lines 1–18
+        - when: sa.charity_limited
+          form: Schedule A charitable limitation / carryover
+          remedy: Income-limited and carried-over charitable deductions are outside scope.
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2025), lines 1–18
+        - when: sa.excluded_income
+          form: Schedule A SALT Worksheet / Forms 2555 and 4563
+          remedy: Excluded-income addbacks are outside scope.
+          cite:
+            doc: i1040sca
+            locator: p. 7, State and Local Tax Deduction Worksheet
+    - id: sa.line15
+      printed: "15"
+      type: NonNegDollars
+      label: Amount from sa.zero
+      expr:
+        op: copy
+        from: sa.zero
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+      refuses:
+        - when: sa.unsupported
+          form: Schedule A unsupported item / Form 4684
+          remedy: Prepare the applicable deduction or limitation; only the listed Schedule A items are
+            supported.
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2025), lines 1–18
+        - when: sa.charity_limited
+          form: Schedule A charitable limitation / carryover
+          remedy: Income-limited and carried-over charitable deductions are outside scope.
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2025), lines 1–18
+        - when: sa.excluded_income
+          form: Schedule A SALT Worksheet / Forms 2555 and 4563
+          remedy: Excluded-income addbacks are outside scope.
+          cite:
+            doc: i1040sca
+            locator: p. 7, State and Local Tax Deduction Worksheet
+    - id: sa.line16
+      printed: "16"
+      type: NonNegDollars
+      label: Amount from sa.zero
+      expr:
+        op: copy
+        from: sa.zero
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+      refuses:
+        - when: sa.unsupported
+          form: Schedule A unsupported item / Form 4684
+          remedy: Prepare the applicable deduction or limitation; only the listed Schedule A items are
+            supported.
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2025), lines 1–18
+        - when: sa.charity_limited
+          form: Schedule A charitable limitation / carryover
+          remedy: Income-limited and carried-over charitable deductions are outside scope.
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2025), lines 1–18
+        - when: sa.excluded_income
+          form: Schedule A SALT Worksheet / Forms 2555 and 4563
+          remedy: Excluded-income addbacks are outside scope.
+          cite:
+            doc: i1040sca
+            locator: p. 7, State and Local Tax Deduction Worksheet
+    - id: sa.line7
+      printed: "7"
+      type: NonNegDollars
+      label: Add sa.line5e, sa.line6
+      expr:
+        op: sum
+        of:
+          - sa.line5e
+          - sa.line6
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.line8e
+      printed: 8e
+      type: NonNegDollars
+      label: Add sa.line8a, sa.line8b, sa.line8c
+      expr:
+        op: sum
+        of:
+          - sa.line8a
+          - sa.line8b
+          - sa.line8c
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.line9
+      printed: "9"
+      type: NonNegDollars
+      label: Amount from f4952.line8
+      expr:
+        op: copy
+        from: f4952.line8
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.line10
+      printed: "10"
+      type: NonNegDollars
+      label: Add sa.line8e, sa.line9
+      expr:
+        op: sum
+        of:
+          - sa.line8e
+          - sa.line9
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.line12
+      printed: "12"
+      type: NonNegDollars
+      label: Total supported noncash donations before income limits
+      expr:
+        op: sum_over
+        collection: gift
+        field: gift.allowed
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+      refuses:
+        - when: sa.unsupported
+          form: Schedule A unsupported item / Form 4684
+          remedy: Prepare the applicable deduction or limitation; only the listed Schedule A items are
+            supported.
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2025), lines 1–18
+        - when: sa.charity_limited
+          form: Schedule A charitable limitation / carryover
+          remedy: Income-limited and carried-over charitable deductions are outside scope.
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2025), lines 1–18
+        - when: sa.excluded_income
+          form: Schedule A SALT Worksheet / Forms 2555 and 4563
+          remedy: Excluded-income addbacks are outside scope.
+          cite:
+            doc: i1040sca
+            locator: p. 7, State and Local Tax Deduction Worksheet
+    - id: sa.form8283
+      printed: (helper)
+      type: Bool
+      label: Noncash total exceeds $500; Form 8283 attachment required
+      expr:
+        op: test
+        gt:
+          - sa.line12
+          - const: 50000
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.line14
+      printed: "14"
+      type: NonNegDollars
+      label: Add sa.line11, sa.line12, sa.line13
+      expr:
+        op: sum
+        of:
+          - sa.line11
+          - sa.line12
+          - sa.line13
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.line17
+      printed: "17"
+      type: NonNegDollars
+      label: Add sa.line4, sa.line7, sa.line10, sa.line14, sa.line15, sa.line16
+      expr:
+        op: sum
+        of:
+          - sa.line4
+          - sa.line7
+          - sa.line10
+          - sa.line14
+          - sa.line15
+          - sa.line16
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+      refuses:
+        - when: sa.unsupported
+          form: Schedule A unsupported item / Form 4684
+          remedy: Prepare the applicable deduction or limitation; only the listed Schedule A items are
+            supported.
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2025), lines 1–18
+        - when: sa.charity_limited
+          form: Schedule A charitable limitation / carryover
+          remedy: Income-limited and carried-over charitable deductions are outside scope.
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2025), lines 1–18
+        - when: sa.excluded_income
+          form: Schedule A SALT Worksheet / Forms 2555 and 4563
+          remedy: Excluded-income addbacks are outside scope.
+          cite:
+            doc: i1040sca
+            locator: p. 7, State and Local Tax Deduction Worksheet
+    - id: sa.standardbase
+      printed: (helper)
+      type: NonNegDollars
+      label: Year parameter sa.standard_base
+      expr:
+        op: param
+        ref: sa.standard_base
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.extra
+      printed: (helper)
+      type: NonNegDollars
+      label: Year parameter sa.standard_extra
+      expr:
+        op: param
+        ref: sa.standard_extra
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.extra_age65
+      printed: (helper)
+      type: NonNegDollars
+      label: Additional standard deduction for age65
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sa.age65
+                - const: true
+            then: sa.extra
+          - guard:
+              op: test
+              eq:
+                - sa.age65
+                - const: false
+            then: sa.zero
+      cite:
+        doc: i1040gi
+        locator: pp. 34–35, line 12e and Standard Deduction Chart
+    - id: sa.extra_blind
+      printed: (helper)
+      type: NonNegDollars
+      label: Additional standard deduction for blind
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sa.blind
+                - const: true
+            then: sa.extra
+          - guard:
+              op: test
+              eq:
+                - sa.blind
+                - const: false
+            then: sa.zero
+      cite:
+        doc: i1040gi
+        locator: pp. 34–35, line 12e and Standard Deduction Chart
+    - id: sa.standardraw
+      printed: (helper)
+      type: NonNegDollars
+      label: Add sa.standardbase, sa.extra_age65, sa.extra_blind
+      expr:
+        op: sum
+        of:
+          - sa.standardbase
+          - sa.extra_age65
+          - sa.extra_blind
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.standard
+      printed: (helper)
+      type: NonNegDollars
+      label: Standard deduction, zero when MFS spouse itemizes
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sa.mfs_spouse_itemizes
+                - const: true
+            then: sa.zero
+          - guard:
+              op: test
+              eq:
+                - sa.mfs_spouse_itemizes
+                - const: false
+            then: sa.standardraw
+      cite:
+        doc: i1040gi
+        locator: pp. 34–35, line 12e and Standard Deduction Chart
+      refuses:
+        - when: sa.dependent
+          form: Standard Deduction Worksheet for Dependents / dual-status rules
+          remedy: Dependent and dual-status standard deductions are outside this resident nondependent slice.
+          cite:
+            doc: i1040gi
+            locator: pp. 34–35, line 12e and Standard Deduction Chart
+        - when: sa.spouse_extra
+          form: Standard Deduction Chart spouse boxes
+          remedy: Spouse age/blindness claims require the unsupported per-spouse interview.
+          cite:
+            doc: i1040gi
+            locator: pp. 34–35, line 12e and Standard Deduction Chart
+    - id: sa.itemizes
+      printed: (helper)
+      type: Bool
+      label: Itemize if elected, required, or itemized total exceeds standard
+      expr:
+        op: test
+        any:
+          - op: test
+            eq:
+              - sa.elect_itemize
+              - const: true
+          - op: test
+            eq:
+              - sa.mfs_spouse_itemizes
+              - const: true
+          - op: test
+            gt:
+              - sa.line17
+              - sa.standard
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.deduction
+      printed: (helper)
+      type: NonNegDollars
+      label: Deduction selected for Form 1040 line 12e
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sa.itemizes
+                - const: true
+            then: sa.line17
+          - guard:
+              op: test
+              eq:
+                - sa.itemizes
+                - const: false
+            then: sa.standard
+      cite:
+        doc: i1040gi
+        locator: pp. 34–35, line 12e and Standard Deduction Chart
+    - id: sa.mfs_spouse_itemizes
+      printed: (helper)
+      type: Bool
+      label: MFS with spouse itemizing
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - sa.mfs
+              - const: true
+          - op: test
+            eq:
+              - sa.spouse_itemizes
+              - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 34, line 12e exception 2

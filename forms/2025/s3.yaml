@@ -4,6 +4,16 @@ form:
   title: Schedule 3 — Part II selected lines
   tax_year: 2025
   lines:
+    - id: s3.line1
+      printed: "1"
+      type: Dollars
+      label: Foreign tax credit
+      expr:
+        op: copy
+        from: ftc.credit
+      cite:
+        doc: f1040s3
+        locator: Schedule 3 (2025), Part I line 1
     - id: s3.married
       printed: (gate)
       label: Married filing status requires unsupported per-spouse interview
@@ -21,21 +31,18 @@ form:
               - const: mfs
       cite:
         doc: i1040gi
-        locator: p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax
-          Withheld
+        locator: p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld
     - id: s3.line9
       printed: "9"
       label: Net premium tax credit. Attach Form 8962
       type: NonNegDollars
       expr:
         op: input
-        source: Net premium tax credit from Form 8962 (supplied subtotal; preparation
-          outside Stage 2)
+        source: Net premium tax credit from Form 8962 (supplied subtotal; preparation outside Stage 2)
       cite:
         doc: f1040s3
         locator: Schedule 3 (2025), line 9
-      note: Supplied subtotal; this stage does not prepare the underlying form or
-        lines.
+      note: Supplied subtotal; this stage does not prepare the underlying form or lines.
     - id: s3.line10
       printed: "10"
       label: Amount paid with request for extension to file (see instructions)
@@ -60,38 +67,34 @@ form:
       refuses:
         - when: s3.married
           form: Schedule 3 line 11 (per-spouse computation)
-          remedy: The interview currently represents one person. Married filing statuses
-            are unsupported for this per-spouse rule.
+          remedy: The interview currently represents one person. Married filing statuses are unsupported for
+            this per-spouse rule.
           cite:
             doc: i1040gi
-            locator: p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax
-              Withheld
+            locator: p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld
     - id: s3.line12
       printed: "12"
       label: Credit for federal tax on fuels. Attach Form 4136
       type: NonNegDollars
       expr:
         op: input
-        source: Credit for federal tax on fuels from Form 4136 (supplied subtotal;
-          preparation outside Stage 2)
+        source: Credit for federal tax on fuels from Form 4136 (supplied subtotal; preparation outside Stage
+          2)
       cite:
         doc: f1040s3
         locator: Schedule 3 (2025), line 12
-      note: Supplied subtotal; this stage does not prepare the underlying form or
-        lines.
+      note: Supplied subtotal; this stage does not prepare the underlying form or lines.
     - id: s3.line14
       printed: "14"
       label: Total other payments or refundable credits. Add lines 13a through 13z
       type: NonNegDollars
       expr:
         op: input
-        source: Total other payments or refundable credits (supplied subtotal;
-          preparation outside Stage 2)
+        source: Total other payments or refundable credits (supplied subtotal; preparation outside Stage 2)
       cite:
         doc: f1040s3
         locator: Schedule 3 (2025), line 14
-      note: Supplied subtotal; this stage does not prepare the underlying form or
-        lines.
+      note: Supplied subtotal; this stage does not prepare the underlying form or lines.
     - id: s3.line15
       printed: "15"
       label: Add lines 9 through 12 and 14. Enter here and on Form 1040, line 31
@@ -107,6 +110,5 @@ form:
       cite:
         doc: f1040s3
         locator: Schedule 3 (2025), line 15
-  note: Line 11 Social Security path is computed. Other Part II components are
-    explicit supplied subtotals, not prepared forms; unknowns never default to
-    zero.
+  note: Line 11 Social Security path is computed. Other Part II components are explicit supplied
+    subtotals, not prepared forms; unknowns never default to zero.

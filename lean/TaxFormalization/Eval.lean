@@ -224,7 +224,7 @@ where
           let gv ← eval ctx frame (.line gate)
           if isUnknown gv then return gv
           if objGet gv "value" == some (Json.bool true) then
-            return Json.mkObj [("kind", Json.str "refusal"), ("gate", Json.str (keyOf frame gate)),
+            return Json.mkObj [("kind", Json.str "refusal"), ("gate", Json.str (if (findLine frame.doc gate).isSome then keyOf frame gate else gate)),
               ("form", objGetD r "form" Json.null), ("remedy", objGetD r "remedy" Json.null), ("cite", objGetD r "cite" Json.null)]
       | _ => pure ()
       let expr := objGetD line "expr" Json.null

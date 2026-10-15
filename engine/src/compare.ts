@@ -47,7 +47,8 @@ function generatedCases(n: number): Case[] {
       "f1040.line3a": line3a,
       "sd.distributions": line7a,
       "$sales": [], "sd.other_forms": false, "sd.carryover": false,
-      "sd.line18": 0, "sd.line19": 0, "sd.filing4952": false, "sd.investment_election": 0,
+      "qbi.dividends":0,"div.box2b":0,"div.box2c":0,"div.box2d":0,"div.box2e":0,"div.box2f":0,"div.box3":0,"div.box9":0,"div.box10":0,"div.box13":0,"div.basis_reconciled":true, "f4952.line1": 0, "f4952.line4g": 0,
+      "f4952.carryover": false, "f4952.unsupported": false, "f4952.alternative_allocation": false, "$interest": [], "sb.ordinary_dividends": line3a, "sb.unsupported": false, "sb.line7a": false, "sb.fbar_required": false, "sb.form8938": false, "sb.line8": false,
     };
     if (sdFiled) {
       inputs["$sales"] = ["generated"];

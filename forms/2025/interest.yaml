@@ -1,0 +1,21 @@
+form:
+  id: interest
+  kind: form
+  title: Schedule B — interest payer entries
+  tax_year: 2025
+  note: Amounts are supplied from payer records; special treatments are screened at Schedule B.
+  lines:
+    - id: interest.amount
+      printed: (helper)
+      type: NonNegDollars
+      label: Taxable interest from this payer, including Treasury interest; exclude tax-exempt interest
+      expr:
+        op: input
+        source: Taxable interest from this payer, including Treasury interest; exclude tax-exempt interest
+      cite:
+        doc: i1040sb
+        locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+  collection:
+    cite:
+      doc: i1040sb
+      locator: pp. 1–3, interest, dividends and foreign accounts/trusts

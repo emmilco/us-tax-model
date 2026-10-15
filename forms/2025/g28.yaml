@@ -1,0 +1,97 @@
+form:
+  id: g28
+  kind: form
+  title: 28% Rate Gain Worksheet — distribution-only path
+  tax_year: 2025
+  note: Only 1099-DIV box 2d is supported. Direct collectibles/section 1202 sales, other source forms
+    and carryovers are screened by Schedule D; box 2c is explicitly refused.
+  lines:
+    - id: g28.line1
+      printed: "1"
+      type: NonNegDollars
+      label: Amount from div.screen
+      expr:
+        op: copy
+        from: div.screen
+      cite:
+        doc: i1040sd
+        locator: p. 11, 28% Rate Gain Worksheet, lines 1–7
+    - id: g28.line2
+      printed: "2"
+      type: NonNegDollars
+      label: Amount from div.screen
+      expr:
+        op: copy
+        from: div.screen
+      cite:
+        doc: i1040sd
+        locator: p. 11, 28% Rate Gain Worksheet, lines 1–7
+    - id: g28.line3
+      printed: "3"
+      type: NonNegDollars
+      label: Amount from div.screen
+      expr:
+        op: copy
+        from: div.screen
+      cite:
+        doc: i1040sd
+        locator: p. 11, 28% Rate Gain Worksheet, lines 1–7
+    - id: g28.line5
+      printed: "5"
+      type: NonNegDollars
+      label: Amount from div.screen
+      expr:
+        op: copy
+        from: div.screen
+      cite:
+        doc: i1040sd
+        locator: p. 11, 28% Rate Gain Worksheet, lines 1–7
+    - id: g28.line4
+      printed: "4"
+      type: NonNegDollars
+      label: Amount from div.box2d
+      expr:
+        op: copy
+        from: div.box2d
+      cite:
+        doc: i1040sd
+        locator: p. 11, 28% Rate Gain Worksheet, lines 1–7
+    - id: g28.line6
+      printed: "6"
+      type: Dollars
+      label: Smaller of sd.line7, sd.zero
+      expr:
+        op: smaller_of
+        of:
+          - sd.line7
+          - sd.zero
+      cite:
+        doc: i1040sd
+        locator: p. 11, 28% Rate Gain Worksheet, lines 1–7
+    - id: g28.combined
+      printed: (helper)
+      type: Dollars
+      label: Add g28.line1, g28.line2, g28.line3, g28.line4, g28.line5, g28.line6
+      expr:
+        op: sum
+        of:
+          - g28.line1
+          - g28.line2
+          - g28.line3
+          - g28.line4
+          - g28.line5
+          - g28.line6
+      cite:
+        doc: i1040sd
+        locator: p. 11, 28% Rate Gain Worksheet, lines 1–7
+    - id: g28.line7
+      printed: "7"
+      type: NonNegDollars
+      label: Subtract sd.zero from g28.combined; if zero or less, enter zero
+      expr:
+        op: subtract_floor0
+        from: g28.combined
+        take: sd.zero
+      cite:
+        doc: i1040sd
+        locator: p. 11, 28% Rate Gain Worksheet, lines 1–7

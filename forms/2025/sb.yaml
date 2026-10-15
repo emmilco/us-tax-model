@@ -1,0 +1,244 @@
+form:
+  id: sb
+  kind: form
+  title: Schedule B — supported interest and ordinary dividends
+  tax_year: 2025
+  note: Payer keys identify records. Foreign-account and trust answers are retained even where income
+    is below the threshold. FBAR/Form 8938 determinations remain explicit taxpayer answers; required
+    foreign forms cause named refusals.
+  lines:
+    - id: sb.unsupported
+      printed: (helper)
+      type: Bool
+      label: Any nominee income, original issue discount, accrued interest adjustment, bond premium,
+        seller-financed mortgage interest, savings-bond exclusion, foreign corporation reporting, or
+        other special treatment?
+      expr:
+        op: input
+        source: Any nominee income, original issue discount, accrued interest adjustment, bond premium,
+          seller-financed mortgage interest, savings-bond exclusion, foreign corporation reporting,
+          or other special treatment?
+      cite:
+        doc: i1040sb
+        locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+    - id: sb.ordinary_dividends
+      printed: (helper)
+      type: NonNegDollars
+      label: Total ordinary dividends, Form 1099-DIV box 1a
+      expr:
+        op: input
+        source: Total ordinary dividends, Form 1099-DIV box 1a
+      cite:
+        doc: i1040sb
+        locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+    - id: sb.line7a
+      printed: 7a
+      type: Bool
+      label: Any financial interest in or signature authority over a foreign financial account during
+        2025?
+      expr:
+        op: input
+        source: Any financial interest in or signature authority over a foreign financial account during
+          2025?
+      cite:
+        doc: i1040sb
+        locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+    - id: sb.fbar_required
+      printed: (helper)
+      type: Bool
+      label: Are you required to file FinCEN Form 114 (FBAR)? Determine under its instructions; this tool
+        does not determine foreign account values or exceptions.
+      expr:
+        op: input
+        source: Are you required to file FinCEN Form 114 (FBAR)? Determine under its instructions; this tool
+          does not determine foreign account values or exceptions.
+      cite:
+        doc: i1040sb
+        locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+    - id: sb.form8938
+      printed: (helper)
+      type: Bool
+      label: Are you required to file Form 8938 for specified foreign financial assets?
+      expr:
+        op: input
+        source: Are you required to file Form 8938 for specified foreign financial assets?
+      cite:
+        doc: i1040sb
+        locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+    - id: sb.line8
+      printed: "8"
+      type: Bool
+      label: Received a distribution from, or were grantor of or transferor to, a foreign trust during
+        2025?
+      expr:
+        op: input
+        source: Received a distribution from, or were grantor of or transferor to, a foreign trust during
+          2025?
+      cite:
+        doc: i1040sb
+        locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+    - id: sb.zero
+      printed: (helper)
+      type: NonNegDollars
+      label: Year parameter sales.zero
+      expr:
+        op: param
+        ref: sales.zero
+      cite:
+        doc: i1040sb
+        locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+    - id: sb.line2
+      printed: "2"
+      type: NonNegDollars
+      label: Total taxable interest from all payers
+      expr:
+        op: sum_over
+        collection: interest
+        field: interest.amount
+      cite:
+        doc: i1040sb
+        locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+      refuses:
+        - when: sb.unsupported
+          form: Schedule B special treatment / Form 8815
+          remedy: Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable
+            interest and ordinary dividends.
+          cite:
+            doc: i1040sb
+            locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+        - when: sb.fbar_required
+          form: FinCEN Form 114 (FBAR)
+          remedy: Foreign-account reporting and the required country list are outside this tool. Prepare the
+            separate FBAR and Schedule B disclosures.
+          cite:
+            doc: i1040sb
+            locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+        - when: sb.form8938
+          form: Form 8938
+          remedy: Prepare the required foreign financial asset disclosure; this tool does not prepare Form
+            8938.
+          cite:
+            doc: i1040sb
+            locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+        - when: sb.line8
+          form: Form 3520 / Form 3520-A
+          remedy: Review and prepare the required foreign-trust information returns; this path is outside
+            scope.
+          cite:
+            doc: i1040sb
+            locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+    - id: sb.line3
+      printed: "3"
+      type: NonNegDollars
+      label: Amount from sb.zero
+      expr:
+        op: copy
+        from: sb.zero
+      cite:
+        doc: i1040sb
+        locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+      refuses:
+        - when: sb.unsupported
+          form: Schedule B special treatment / Form 8815
+          remedy: Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable
+            interest and ordinary dividends.
+          cite:
+            doc: i1040sb
+            locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+        - when: sb.fbar_required
+          form: FinCEN Form 114 (FBAR)
+          remedy: Foreign-account reporting and the required country list are outside this tool. Prepare the
+            separate FBAR and Schedule B disclosures.
+          cite:
+            doc: i1040sb
+            locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+        - when: sb.form8938
+          form: Form 8938
+          remedy: Prepare the required foreign financial asset disclosure; this tool does not prepare Form
+            8938.
+          cite:
+            doc: i1040sb
+            locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+        - when: sb.line8
+          form: Form 3520 / Form 3520-A
+          remedy: Review and prepare the required foreign-trust information returns; this path is outside
+            scope.
+          cite:
+            doc: i1040sb
+            locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+    - id: sb.line4
+      printed: "4"
+      type: Dollars
+      label: Subtract sb.line3 from sb.line2
+      expr:
+        op: subtract
+        from: sb.line2
+        take: sb.line3
+      cite:
+        doc: i1040sb
+        locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+    - id: sb.line6
+      printed: "6"
+      type: NonNegDollars
+      label: Amount from sb.ordinary_dividends
+      expr:
+        op: copy
+        from: sb.ordinary_dividends
+      cite:
+        doc: i1040sb
+        locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+      refuses:
+        - when: sb.unsupported
+          form: Schedule B special treatment / Form 8815
+          remedy: Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable
+            interest and ordinary dividends.
+          cite:
+            doc: i1040sb
+            locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+        - when: sb.fbar_required
+          form: FinCEN Form 114 (FBAR)
+          remedy: Foreign-account reporting and the required country list are outside this tool. Prepare the
+            separate FBAR and Schedule B disclosures.
+          cite:
+            doc: i1040sb
+            locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+        - when: sb.form8938
+          form: Form 8938
+          remedy: Prepare the required foreign financial asset disclosure; this tool does not prepare Form
+            8938.
+          cite:
+            doc: i1040sb
+            locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+        - when: sb.line8
+          form: Form 3520 / Form 3520-A
+          remedy: Review and prepare the required foreign-trust information returns; this path is outside
+            scope.
+          cite:
+            doc: i1040sb
+            locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+    - id: sb.partIII
+      printed: (helper)
+      type: Bool
+      label: Complete Part III for interest/dividends over $1,500 or foreign account/trust
+      expr:
+        op: test
+        any:
+          - op: test
+            gt:
+              - sb.line4
+              - const: 150000
+          - op: test
+            gt:
+              - sb.line6
+              - const: 150000
+          - op: test
+            eq:
+              - sb.line7a
+              - const: true
+          - op: test
+            eq:
+              - sb.line8
+              - const: true
+      cite:
+        doc: i1040sb
+        locator: pp. 1–3, interest, dividends and foreign accounts/trusts

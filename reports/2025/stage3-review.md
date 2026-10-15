@@ -6,7 +6,7 @@ Official arithmetic: i8949 p. 11 examples 1–4 and the repeated Schedule D colu
 
 Review choices: exact cents (whole-dollar mode deferred); supplied A–F classification (holding periods, dates, descriptions and basis determination not computed); code W takes a supplied correct disallowed loss; corrected broker wash loss may require a statement. See ambiguities/2025.yaml for rounding and Form 4952 worksheet selection.
 
-Schedule D lines 18/19 and Form 4952 amounts remain supplied subtotals. A required Schedule D Tax Worksheet is refused until Stage 4. Capital-loss carryovers and additional source forms are refused. This is not a complete return.
+Stage 4 now computes Schedule D lines 18/19 from distribution feeders, Form 4952 amounts and the Schedule D Tax Worksheet; these regenerated examples reflect that extension. Capital-loss carryovers and additional source forms are refused. This is not a complete return.
 
 The synthetic cases are regressions, not class B. No independent human hand-work is claimed. Stage 3 interview build checks cover fixture paths and answer-order invariance; they are not exhaustive over all finite domains or roster sizes.
 

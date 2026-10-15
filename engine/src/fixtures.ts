@@ -5,7 +5,7 @@
 // `test-fixtures` runs every case THROUGH THE COMMAND-LINE PROGRAM and
 // compares. `coverage` reports which case takes each choose-guard.
 
-import { mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { isDeepStrictEqual } from "node:util";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
@@ -197,6 +197,9 @@ export function coverageReport(): void {
   for (const doc of data.forms) for (const line of doc.lines) {
     const sides = line.type === "Bool" ? ["false","true"] : line.expr.op === "subtract_floor0" ? ["floor","positive"] : ["smaller_of","larger_of"].includes(line.expr.op) ? ["left","right"] : [];
     for (const side of sides) {
+      if ((["f8959.line12","f8959.line16"].includes(line.id) && side==="positive") || (line.id==="scope.ready" && side==="false")) {
+        out.push(`- ${line.id} ${side}: unreachable in the supported slice; the source amount is structurally zero, or the scope gate returns a refusal instead.`); continue;
+      }
       if (line.id === "sd.screen" && side === "true") { out.push("- sd.screen true: unreachable by Count non-negativity; structural propagation gate, not a tax branch."); continue; }
       const cases=branches.get(`${line.id}:${side}`);
       out.push(`- ${line.id} ${side}: ${cases ? [...cases].join(", ") : "**UNOBSERVED**"}`);
@@ -270,7 +273,7 @@ export function reviewStage3(): void {
       "Read rendered/2025/sales.md and sd.md alongside archived i8949 pp. 7–11, i1040sd pp. 10–11 and f1040sd. Check the Form 1040 selector against i1040sd p. 15 and i1040gi p. 36.", "",
       "Official arithmetic: i8949 p. 11 examples 1–4 and the repeated Schedule D column-(h) examples; i1040sd pp. 10–11 aggregate example and its two-transaction continuation. The adjustment example supplies no code: the fixture's B routing is synthetic scaffolding, not official evidence. Example 4 explicitly supplies code B. Official digital-asset examples 5–6 and the main-home EH example are outside scope; digital boxes and unsupported codes are refused, not claimed computed.", "",
       "Review choices: exact cents (whole-dollar mode deferred); supplied A–F classification (holding periods, dates, descriptions and basis determination not computed); code W takes a supplied correct disallowed loss; corrected broker wash loss may require a statement. See ambiguities/2025.yaml for rounding and Form 4952 worksheet selection.", "",
-      "Schedule D lines 18/19 and Form 4952 amounts remain supplied subtotals. A required Schedule D Tax Worksheet is refused until Stage 4. Capital-loss carryovers and additional source forms are refused. This is not a complete return.", "",
+      "Stage 4 now computes Schedule D lines 18/19 from distribution feeders, Form 4952 amounts and the Schedule D Tax Worksheet; these regenerated examples reflect that extension. Capital-loss carryovers and additional source forms are refused. This is not a complete return.", "",
       "The synthetic cases are regressions, not class B. No independent human hand-work is claimed. Stage 3 interview build checks cover fixture paths and answer-order invariance; they are not exhaustive over all finite domains or roster sizes.", "",
       "Earlier fixture inputs were migrated from supplied Form 1040 line 7a/QDCG net-gain inputs to actual sales and distribution inputs. Existing tax expectations were retained. The Schedule-D fixture's line 7a now reflects its $3,000 computed gain; the old zero was an inconsistent placeholder. Obsolete trace aliases now point to the distribution input.", "",
       ...selected.map(id=>`- [${id}](${id}.txt)`), "",
@@ -278,4 +281,39 @@ export function reviewStage3(): void {
     ].join("\n"));
   } finally {rmSync(tmp,{recursive:true,force:true});}
   console.log("review: reports/2025/stage3-review.md and four CLI values sheets");
+}
+
+export function reviewStage4(): void {
+  const dir=join(ROOT,"reports","2025");
+  const selected=["stage4.sdtw.special_rates","stage4.deductions.combined","stage4.additional_taxes.combined","stage4.refuse.div.section1202","stage4.refuse.ftc.limit"];
+  const targets="scope.ready,f1040.line7a,f1040.line16,sa.deduction,f4952.line8,qbi.deduction,s2.line21,f8959.line24,s3.line1";
+  const tmp=mkdtempSync(join(tmpdir(),"stage4-review-"));
+  try {
+    mkdirSync(dir,{recursive:true});
+    for(const id of selected) {
+      const fixture=loadCases().cases.find(c=>c.id===id)!;
+      const input=join(tmp,"inputs.json");writeFileSync(input,JSON.stringify(fixture.inputs));
+      const proc=spawnSync(process.execPath,[DIST_MAIN,"eval","--inputs",input,"--target",targets],{encoding:"utf8"});
+      if(proc.status!==0)throw new Error(proc.stderr);
+      writeFileSync(join(dir,id+".txt"),proc.stdout);
+    }
+    writeFileSync(join(dir,"stage4-review.md"),[
+      "# Stage 4 review packet", "",
+      "Stage 4 implements additional form slices and their CLI interview. AGI and taxable income remain supplied subtotals; Stage 5 must connect a complete Form 1040. These sample values sheets are synthetic worksheet exercises, not complete returns.", "",
+      "## Review against archived sources", "",
+      "Compare rendered/2025/sa.md with f1040sa and i1040sca p. 7 (SALT); f4952.md with f4952; gift.md with i8283 pp. 1–3. Check standard deduction amounts and exceptions against i1040gi pp. 34–35. Compare sb.md with f1040sb and i1040sb.", "",
+      "Compare sdtw.md with i1040sd pp. 15–16, g28.md and u1250.md with pp. 11–14. The special-rates fixture asserts all 47 worksheet lines; independently hand-work those expectations, including the printed skip instructions.", "",
+      "Compare f8959.md and f8960.md with their forms and instructions (NIIT deductions pp. 17–18 and MAGI p. 22). Compare qbi.md, f8995.md and f8995a.md with their forms, i8995-correction and i8995a. Compare ftc.md with i1116 pp. 1–2 and s2.md with f1040s2.", "",
+      "## Concrete checks", "",
+      "The combined-deductions case gives $2,500 medical + $9,000 taxes + $11,000 interest + $5,200 charity = $27,700 itemized deductions. The additional-taxes case gives $450 Additional Medicare Tax + $646 NIIT = $1,096 Schedule 2 line 21; additional withholding is separately $450. Check each amount and its source assumptions.", "",
+      ...selected.map(id=>`- [${id}](${id}.txt)`), "",
+      "## Limits and evidence", "",
+      "1099-DIV box 2c remains a cited refusal because its inclusion conflicts with the code Q/Form 6251 exclusions. See amb.2025.box2c_scope; no owner decision to expand scope is recorded. Boxes 2b/2d feed the special-gain worksheets. Direct special-property sales remain refused.", "",
+      "Eligibility screens rely on explicit answers. Charity valuation, basis reductions and income-limit checks, mortgage eligibility, NIIT allocation, REIT-dividend eligibility and simple FTC eligibility are supplied determinations. Form 8283 support groups amounts and routes Section A/B; dates, descriptions and donee records are not prepared. Per-spouse interviews remain refused. Exact-cent calculations continue; return-wide whole-dollar rounding is deferred.", "",
+      "Official evidence added: i8959 p. 2 example 5 supplies $75,000 wages subject to additional tax; its married inputs are arithmetic scaffolding, not support for a married interview. Other i8959 examples require self-employment/RRTA, which are screened out. i8283 p. 2 supplies the $5,400 grouped-books Section B example. The i8960 rental allocation example is outside scope and is not claimed computed. Synthetic expectations remain regressions, not independently human-verified class B.", "",
+      "All spec 2.2 refusal categories have cited screens and fixtures: FTC (ftc), other QBI (qbi), carryover/digital/unsupported adjustments/direct special-property sales (sd/sales), AMT (s2/div), Schedule 1/1-A and other credits (scope), excluded itemized deductions (sa/gift/f4952), special interest treatment and foreign reporting (sb), married per-spouse treatment (s3/scope). Screening is a target of the Stage 4 interview; individual form evaluations are not a whole-return acceptance decision.", "",
+      "See coverage.md, mutation.md and evaluator_agreement.md for current counts and remaining gaps. Mutation survivors are published, including unresolved ones; coverage does not certify tax correctness. Interview fixture-path checks are representative, not exhaustive. Record source-review and hand-work observations in reviews/2025/stage4.md.", ""
+    ].join("\n"));
+  } finally {rmSync(tmp,{recursive:true,force:true});}
+  console.log("review: reports/2025/stage4-review.md and five CLI values sheets");
 }

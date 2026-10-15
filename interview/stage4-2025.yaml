@@ -1,0 +1,782 @@
+interview:
+  tax_year: 2025
+  targets:
+    - scope.ready
+    - f1040.line7a
+    - f1040.line16
+    - sa.deduction
+    - f4952.line8
+    - qbi.deduction
+    - s2.line21
+    - f8959.line24
+    - s3.line1
+  initial:
+    $person:
+      - taxpayer
+  cite:
+    doc: f1040
+    locator: Form 1040 (2025), related form references
+  questions:
+    - input: div.box2b
+      prompt: Unrecaptured section 1250 gain, box 2b
+      help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown
+        may be null.
+      order: 10
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, boxes 1–16
+    - input: div.box2c
+      prompt: Section 1202 gain, box 2c
+      help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown
+        may be null.
+      order: 10
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, boxes 1–16
+    - input: div.box2d
+      prompt: Collectibles (28%) gain, box 2d
+      help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown
+        may be null.
+      order: 10
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, boxes 1–16
+    - input: div.box2e
+      prompt: Section 897 ordinary dividends, box 2e
+      help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown
+        may be null.
+      order: 10
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, boxes 1–16
+    - input: div.box2f
+      prompt: Section 897 capital gain, box 2f
+      help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown
+        may be null.
+      order: 10
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, boxes 1–16
+    - input: div.box3
+      prompt: Nondividend distributions/return of capital, box 3
+      help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown
+        may be null.
+      order: 10
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, boxes 1–16
+    - input: div.box4
+      prompt: Federal income tax withheld, box 4
+      help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown
+        may be null.
+      order: 10
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, boxes 1–16
+    - input: div.box6
+      prompt: Investment expenses already included in box 1a, box 6
+      help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown
+        may be null.
+      order: 10
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, boxes 1–16
+    - input: div.box9
+      prompt: Cash liquidation distributions, box 9
+      help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown
+        may be null.
+      order: 10
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, boxes 1–16
+    - input: div.box10
+      prompt: Noncash liquidation distributions, box 10
+      help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown
+        may be null.
+      order: 10
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, boxes 1–16
+    - input: div.box12
+      prompt: Exempt-interest dividends, box 12
+      help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown
+        may be null.
+      order: 10
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, boxes 1–16
+    - input: div.box13
+      prompt: Specified private activity bond interest dividends, box 13
+      help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown
+        may be null.
+      order: 10
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, boxes 1–16
+    - input: div.basis_reconciled
+      prompt: For box 3, have basis reductions been applied to records with no distribution exceeding
+        basis?
+      help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown
+        may be null.
+      order: 10
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, boxes 1–16
+    - input: div.fatca
+      prompt: Is the FATCA reporting checkbox checked? Review Form 8938 requirements separately.
+      help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown
+        may be null.
+      order: 10
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, boxes 1–16
+    - input: f1040.status
+      prompt: Form 1040, Filing Status checkboxes
+      help: Money is integer cents; enter true/false for questions and one of the stated values for
+        classifications. Unknown answers may be null; they never become zero.
+      order: 10
+      cite:
+        doc: f1040
+        locator: Form 1040, Filing Status
+    - input: f1040.line3a
+      prompt: Form 1040 line 3a total qualified dividends, generally Form 1099-DIV box 1b, after the line
+        3a exceptions. Supplied as a subtotal; qualification checks are outside this stage.
+      help: Money is integer cents; enter true/false for questions and one of the stated values for
+        classifications. Unknown answers may be null; they never become zero.
+      order: 10
+      cite:
+        doc: i1040gi
+        locator: Instructions for Form 1040, pp. 25–26, line 3a and exceptions
+    - input: f1040.line15
+      prompt: Form 1040 line 15; in Stage 1 supplied as an input (the lines that figure it are outside
+        this stage).
+      help: Money is integer cents; enter true/false for questions and one of the stated values for
+        classifications. Unknown answers may be null; they never become zero.
+      order: 10
+      cite:
+        doc: i1040gi
+        locator: Instructions for Form 1040, line 15
+    - input: f4952.line1
+      prompt: Investment interest paid or accrued in 2025
+      help: Money is integer cents; answer true/false for screening questions. Unknown may be null.
+      order: 10
+      cite:
+        doc: f4952
+        locator: pp. 1, 3–4, Investment Interest Expense Deduction
+    - input: f4952.carryover
+      prompt: Any prior-year disallowed investment interest carryover?
+      help: Money is integer cents; answer true/false for screening questions. Unknown may be null.
+      order: 10
+      cite:
+        doc: f4952
+        locator: pp. 1, 3–4, Investment Interest Expense Deduction
+    - input: f4952.unsupported
+      prompt: Interest attributable to royalties, a business, passive activities, tax-exempt income, or
+        at-risk limitations; other unsupported investment income or expenses?
+      help: Money is integer cents; answer true/false for screening questions. Unknown may be null.
+      order: 10
+      cite:
+        doc: f4952
+        locator: pp. 1, 3–4, Investment Interest Expense Deduction
+    - input: f4952.alternative_allocation
+      prompt: Elect an alternative allocation of Form 4952 line 4g to qualified dividends instead of
+        capital gains first?
+      help: Money is integer cents; answer true/false for screening questions. Unknown may be null.
+      order: 10
+      cite:
+        doc: f4952
+        locator: pp. 1, 3–4, Investment Interest Expense Deduction
+    - input: f4952.line4g
+      prompt: Amount of qualified dividends and net capital gain elected into investment income
+      help: Enter integer cents. Elected income loses preferential rates. Once made, the election can be
+        revoked only with IRS consent; this tool does not make it automatically.
+      order: 10
+      cite:
+        doc: f4952
+        locator: pp. 1, 3–4, Investment Interest Expense Deduction
+    - input: f8959.unsupported
+      prompt: Any self-employment income, RRTA compensation, unreported tips (Form 4137), or Form 8919
+        wages?
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f8959
+        locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3
+    - input: f8960.unsupported
+      prompt: Any annuity, rental, royalty, business/pass-through income, CFC/PFIC holding, section 911
+        exclusion, disposition adjustment, NOL or other NIIT modification outside this slice?
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f8960
+        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+    - input: f8960.refund
+      prompt: Any recovery/refund of a previously deducted expense, including state/local tax deducted in
+        an itemized year?
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f8960
+        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+    - input: f8960.allocated_taxes
+      prompt: Deductible state/local income and property taxes reasonably allocated to net investment
+        income; exclude foreign taxes for which a credit is claimed
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f8960
+        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+    - input: ftc.taxes
+      prompt: Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and
+        Form 1099-DIV box 7
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: i1116
+        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular
+          tax
+    - input: ftc.all_passive
+      prompt: Was all foreign-source gross income passive category income under the small-tax election
+        rules?
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: i1116
+        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular
+          tax
+    - input: ftc.statements
+      prompt: Were all foreign income and taxes reported on qualified payee statements?
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: i1116
+        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular
+          tax
+    - input: ftc.eligible
+      prompt: Have creditability, holding-period, related-payment and required foreign-tax reduction rules
+        been satisfied?
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: i1116
+        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular
+          tax
+    - input: ftc.elect
+      prompt: Elect the credit without Form 1116, with no carryover to or from this election year?
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: i1116
+        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular
+          tax
+    - input: $gift
+      prompt: List stable keys for Form 8283 — groups of similar noncash property.
+      help: Enter a JSON array of distinct keys. Empty [] means none. For gifts, group similar items
+        across all donees.
+      order: 5
+      cite:
+        doc: i8283
+        locator: pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A
+    - input: gift.deduction
+      prompt: Deduction before income limits for this item or group of similar items across all donees,
+        after required valuation/basis reductions
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: i8283
+        locator: pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A
+    - input: gift.public_securities
+      prompt: Is this group publicly traded securities?
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: i8283
+        locator: pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A
+    - input: gift.special
+      prompt: Does this group need an appraisal or other special treatment (including vehicles,
+        pass-through entity gifts, intellectual property, inventory, conservation or partial interests)?
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: i8283
+        locator: pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A
+    - input: $interest
+      prompt: List stable keys for taxable interest payers. Use [] when there are none.
+      help: Enter a JSON array of distinct keys. Include all taxable interest payers.
+      order: 8
+      cite:
+        doc: i1040sb
+        locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+    - input: interest.amount
+      prompt: Taxable interest from this payer, including Treasury interest; exclude tax-exempt interest
+      help: Money is integer cents. Answer true/false to screening questions. Unknown may be null.
+      order: 10
+      cite:
+        doc: i1040sb
+        locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+    - input: person.rrta
+      prompt: Do any wage statements report railroad retirement compensation or taxes (W-2 box 14)?
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: iw2w3
+        locator: "pp. 12–13, Railroad employers: RRTA compensation and taxes in box 14; boxes 3–7 are not
+          used for RRTA"
+    - input: qbi.dividends
+      prompt: Qualified section 199A dividends from Form 1099-DIV box 5 after confirming holding-period
+        and related-payment requirements
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f8995
+        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+    - input: qbi.unsupported
+      prompt: Any QBI or PTP income/loss other than section 199A dividends, prior-year QBI/REIT/PTP loss
+        carryover, or agricultural/horticultural cooperative patronage?
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f8995
+        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+    - input: s2.amt
+      prompt: Are you required to file Form 6251 or do you have an AMT adjustment requiring its review?
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f1040s2
+        locator: Schedule 2 (2025), lines 2, 3, 11, 12 and 21
+    - input: s2.other
+      prompt: Any Schedule 2 tax other than Additional Medicare Tax or Net Investment Income Tax?
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f1040s2
+        locator: Schedule 2 (2025), lines 2, 3, 11, 12 and 21
+    - input: s3.line9
+      prompt: Net premium tax credit from Form 8962 (supplied subtotal; preparation outside Stage 2)
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f1040s3
+        locator: Schedule 3 (2025), line 9
+    - input: s3.line10
+      prompt: Amount paid with request for extension to file
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f1040s3
+        locator: Schedule 3 (2025), line 10
+    - input: s3.line12
+      prompt: Credit for federal tax on fuels from Form 4136 (supplied subtotal; preparation outside Stage
+        2)
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f1040s3
+        locator: Schedule 3 (2025), line 12
+    - input: s3.line14
+      prompt: Total other payments or refundable credits (supplied subtotal; preparation outside Stage 2)
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f1040s3
+        locator: Schedule 3 (2025), line 14
+    - input: sa.unsupported
+      prompt: Any casualty/theft loss, other itemized deduction, foreign tax deduction, mortgage interest
+        not on Form 1098 or subject to debt/use limits, or sales-tax election?
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - input: sa.charity_limited
+      prompt: Are any charitable deductions reduced by income limits, or carried over from a prior year?
+        Determine under Publication 526 before answering.
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - input: sa.excluded_income
+      prompt: Any excluded Puerto Rico income, Form 2555 or Form 4563 amounts?
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - input: sa.dependent
+      prompt: Can someone claim you or your spouse as a dependent, or are you a dual-status alien?
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - input: sa.spouse_extra
+      prompt: Claiming any age/blindness standard-deduction boxes for a spouse?
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - input: sa.age65
+      prompt: Were you born before January 2, 1961?
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - input: sa.blind
+      prompt: Are you blind under the standard-deduction instructions?
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - input: sa.spouse_itemizes
+      prompt: Married filing separately with a spouse who itemizes?
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - input: sa.elect_itemize
+      prompt: Elect to itemize even if the standard deduction is larger?
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - input: sa.agi
+      prompt: Form 1040 line 11b adjusted gross income (supplied subtotal until Stage 5)
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - input: sa.line1
+      prompt: Unreimbursed eligible medical and dental expenses
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - input: sa.line5a
+      prompt: State/local income taxes paid, including withholding; no sales-tax election
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - input: sa.line5b
+      prompt: Deductible state/local real estate taxes
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - input: sa.line5c
+      prompt: Deductible state/local personal property taxes
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - input: sa.line8a
+      prompt: Eligible home mortgage interest and points on Form 1098, after confirming the debt/use
+        limits do not apply
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - input: sa.line11
+      prompt: Deductible cash/check charitable gifts before income limits, after benefits received and
+        required substantiation
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - input: $sales
+      prompt: List stable transaction keys for all sales, including transactions intended for aggregate
+        reporting. Use [] only if there are no sales.
+      help: Enter a JSON array of distinct keys. Enter each transaction once; the route selects Form 8949
+        or Schedule D aggregate reporting.
+      order: 1
+      cite:
+        doc: f8949
+        locator: Parts I and II, transaction rows
+    - input: sales.box
+      prompt: "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets"
+      help: "Use records and the broker report: A/D basis reported, B/E basis not reported, C/F no 1099-B.
+        A–C short-term, D–F long-term. Generally more than one year is long-term; inherited property
+        has special rules. Holding periods are not calculated here."
+      order: 2
+      cite:
+        doc: i8949
+        locator: pp. 2–5, holding period and checkbox classifications
+    - input: sales.route
+      prompt: Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals
+      help: Money is integer cents; enter true/false for questions and one of the stated values for
+        classifications. Unknown answers may be null; they never become zero.
+      order: 5
+      cite:
+        doc: i1040sd
+        locator: p. 10, lines 1a and 8a
+    - input: sales.code
+      prompt: "Adjustment codes: none, B, W, BW; choose other for any additional code"
+      help: Money is integer cents; enter true/false for questions and one of the stated values for
+        classifications. Unknown answers may be null; they never become zero.
+      order: 4
+      cite:
+        doc: i8949
+        locator: pp. 7–11, columns (e) through (h), codes B and W
+    - input: sales.special
+      prompt: Does this sale involve collectibles, section 1202 stock, or section 1250 property?
+      help: Money is integer cents; enter true/false for questions and one of the stated values for
+        classifications. Unknown answers may be null; they never become zero.
+      order: 3
+      cite:
+        doc: i1040sd
+        locator: pp. 11–12, lines 18 and 19
+    - input: sales.aggregate_eligible
+      prompt: "Confirm all aggregate conditions: basis reported, no broker adjustments, no Ordinary box,
+        no QOF disposition/deferral, no corrections, no collectibles"
+      help: Money is integer cents; enter true/false for questions and one of the stated values for
+        classifications. Unknown answers may be null; they never become zero.
+      order: 10
+      cite:
+        doc: i1040sd
+        locator: p. 10, lines 1a and 8a
+    - input: sales.proceeds
+      prompt: "Column (d): proceeds per broker report, or net proceeds if no report"
+      help: Money is integer cents; enter true/false for questions and one of the stated values for
+        classifications. Unknown answers may be null; they never become zero.
+      order: 10
+      cite:
+        doc: i8949
+        locator: p. 6, column (d)
+    - input: sales.reported_basis
+      prompt: Basis shown on broker report
+      help: Money is integer cents; enter true/false for questions and one of the stated values for
+        classifications. Unknown answers may be null; they never become zero.
+      order: 10
+      cite:
+        doc: i8949
+        locator: pp. 7–11, columns (e) through (h), codes B and W
+    - input: sales.correct_basis
+      prompt: Correct adjusted basis from records
+      help: Money is integer cents; enter true/false for questions and one of the stated values for
+        classifications. Unknown answers may be null; they never become zero.
+      order: 10
+      cite:
+        doc: i8949
+        locator: pp. 7–11, columns (e) through (h), codes B and W
+    - input: sales.wash_loss
+      prompt: Correct nondeductible wash-sale loss; positive cents, including losses not reported by broker
+      help: Enter correct disallowed loss in integer cents. Wash sales are not detected automatically. If
+        correcting a broker amount downward, attach the explanation required by code W.
+      order: 10
+      cite:
+        doc: i8949
+        locator: p. 10, code W; a lower corrected loss requires an explanation statement
+    - input: sb.unsupported
+      prompt: Any nominee income, original issue discount, accrued interest adjustment, bond premium,
+        seller-financed mortgage interest, savings-bond exclusion, foreign corporation reporting, or
+        other special treatment?
+      help: Money is integer cents. Answer true/false to screening questions. Unknown may be null.
+      order: 10
+      cite:
+        doc: i1040sb
+        locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+    - input: sb.ordinary_dividends
+      prompt: Total ordinary dividends, Form 1099-DIV box 1a
+      help: Money is integer cents. Answer true/false to screening questions. Unknown may be null.
+      order: 10
+      cite:
+        doc: i1040sb
+        locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+    - input: sb.line7a
+      prompt: Any financial interest in or signature authority over a foreign financial account during
+        2025?
+      help: Money is integer cents. Answer true/false to screening questions. Unknown may be null.
+      order: 10
+      cite:
+        doc: i1040sb
+        locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+    - input: sb.fbar_required
+      prompt: Are you required to file FinCEN Form 114 (FBAR)? Determine under its instructions; this tool
+        does not determine foreign account values or exceptions.
+      help: Money is integer cents. Answer true/false to screening questions. Unknown may be null.
+      order: 10
+      cite:
+        doc: i1040sb
+        locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+    - input: sb.form8938
+      prompt: Are you required to file Form 8938 for specified foreign financial assets?
+      help: Money is integer cents. Answer true/false to screening questions. Unknown may be null.
+      order: 10
+      cite:
+        doc: i1040sb
+        locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+    - input: sb.line8
+      prompt: Received a distribution from, or were grantor of or transferor to, a foreign trust during
+        2025?
+      help: Money is integer cents. Answer true/false to screening questions. Unknown may be null.
+      order: 10
+      cite:
+        doc: i1040sb
+        locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+    - input: scope.schedule1
+      prompt: Any income or adjustment requiring Schedule 1, including a taxable state/local tax refund?
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 0
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
+    - input: scope.schedule1a
+      prompt: Any deduction claimed on Schedule 1-A, including tips, overtime, car-loan interest or
+        enhanced senior deduction?
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 0
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
+    - input: scope.credits
+      prompt: Any dependent or other credit outside the simple foreign tax credit and excess Social
+        Security credit?
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 0
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
+    - input: scope.other_income
+      prompt: Any retirement, Social Security, nonresident or other income/return treatment outside wages,
+        interest, dividends and supported securities sales?
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 0
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
+    - input: scope.other_line16
+      prompt: Any additional Form 1040 line 16 tax, including Forms 8814, 4972, 8615 or a section 962
+        election?
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 0
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
+    - input: sd.other_forms
+      prompt: Are there gains/losses from Forms 4797, 2439, 6252, 4684, 6781, 8824 or Schedule K-1?
+      help: Money is integer cents; enter true/false for questions and one of the stated values for
+        classifications. Unknown answers may be null; they never become zero.
+      order: 10
+      cite:
+        doc: f1040sd
+        locator: Schedule D (2025), Parts I–III
+    - input: sd.carryover
+      prompt: Is there a capital loss carryover from the prior year?
+      help: Money is integer cents; enter true/false for questions and one of the stated values for
+        classifications. Unknown answers may be null; they never become zero.
+      order: 10
+      cite:
+        doc: f1040sd
+        locator: Schedule D (2025), Parts I–III
+    - input: sd.distributions
+      prompt: Capital gain distributions, generally Form 1099-DIV box 2a
+      help: Money is integer cents; enter true/false for questions and one of the stated values for
+        classifications. Unknown answers may be null; they never become zero.
+      order: 10
+      cite:
+        doc: i1040sd
+        locator: p. 11, line 13
+    - input: $w2
+      prompt: List stable keys for Form W-2 — Social Security boxes by employer.
+      help: Enter a JSON array of distinct keys. Empty [] means none. For gifts, group similar items
+        across all donees.
+      order: 5
+      cite:
+        doc: i1040gi
+        locator: p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld
+    - input: w2.box3
+      prompt: Social security wages
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: iw2w3
+        locator: p. 18, boxes 3, 4 and 7
+    - input: w2.box7
+      prompt: Social security tips
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: iw2w3
+        locator: p. 18, boxes 3, 4 and 7
+    - input: w2.box4
+      prompt: Social security tax withheld
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: iw2w3
+        locator: p. 18, boxes 3, 4 and 7
+    - input: w2.box5
+      prompt: Form W-2 box 5
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f8959
+        locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3
+    - input: w2.box6
+      prompt: Form W-2 box 6
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f8959
+        locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3

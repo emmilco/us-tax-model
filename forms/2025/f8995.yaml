@@ -1,0 +1,178 @@
+form:
+  id: f8995
+  kind: form
+  title: Form 8995 — dividend-only simplified computation
+  tax_year: 2025
+  note: Business and prior-year-loss lines are zero only on the separately screened dividend-only path.
+  lines:
+    - id: f8995.line2
+      printed: "2"
+      type: NonNegDollars
+      label: Amount from qbi.zero
+      expr:
+        op: copy
+        from: qbi.zero
+      cite:
+        doc: f8995
+        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+    - id: f8995.line3
+      printed: "3"
+      type: NonNegDollars
+      label: Amount from qbi.zero
+      expr:
+        op: copy
+        from: qbi.zero
+      cite:
+        doc: f8995
+        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+    - id: f8995.line4
+      printed: "4"
+      type: NonNegDollars
+      label: Amount from qbi.zero
+      expr:
+        op: copy
+        from: qbi.zero
+      cite:
+        doc: f8995
+        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+    - id: f8995.line5
+      printed: "5"
+      type: NonNegDollars
+      label: Amount from qbi.zero
+      expr:
+        op: copy
+        from: qbi.zero
+      cite:
+        doc: f8995
+        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+    - id: f8995.line7
+      printed: "7"
+      type: NonNegDollars
+      label: Amount from qbi.zero
+      expr:
+        op: copy
+        from: qbi.zero
+      cite:
+        doc: f8995
+        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+    - id: f8995.line16
+      printed: "16"
+      type: NonNegDollars
+      label: Amount from qbi.zero
+      expr:
+        op: copy
+        from: qbi.zero
+      cite:
+        doc: f8995
+        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+    - id: f8995.line17
+      printed: "17"
+      type: NonNegDollars
+      label: Amount from qbi.zero
+      expr:
+        op: copy
+        from: qbi.zero
+      cite:
+        doc: f8995
+        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+    - id: f8995.line6
+      printed: "6"
+      type: NonNegDollars
+      label: Amount from qbi.eligible
+      expr:
+        op: copy
+        from: qbi.eligible
+      cite:
+        doc: f8995
+        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+    - id: f8995.line8
+      printed: "8"
+      type: NonNegDollars
+      label: Amount from f8995.line6
+      expr:
+        op: copy
+        from: f8995.line6
+      cite:
+        doc: f8995
+        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+    - id: f8995.line9
+      printed: "9"
+      type: NonNegDollars
+      label: Multiply f8995.line8 by qbi.rate
+      expr:
+        op: multiply_rate
+        amount: f8995.line8
+        rate:
+          param: qbi.rate
+      cite:
+        doc: f8995
+        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+      ambiguity: amb.2025.multiplication_subcent
+    - id: f8995.line10
+      printed: "10"
+      type: NonNegDollars
+      label: Add f8995.line5, f8995.line9
+      expr:
+        op: sum
+        of:
+          - f8995.line5
+          - f8995.line9
+      cite:
+        doc: f8995
+        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+    - id: f8995.line11
+      printed: "11"
+      type: NonNegDollars
+      label: Amount from qbi.taxable_before
+      expr:
+        op: copy
+        from: qbi.taxable_before
+      cite:
+        doc: f8995
+        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+    - id: f8995.line12
+      printed: "12"
+      type: NonNegDollars
+      label: Amount from qbi.net_capital_gain
+      expr:
+        op: copy
+        from: qbi.net_capital_gain
+      cite:
+        doc: f8995
+        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+    - id: f8995.line13
+      printed: "13"
+      type: NonNegDollars
+      label: Subtract f8995.line12 from f8995.line11; if zero or less, enter zero
+      expr:
+        op: subtract_floor0
+        from: f8995.line11
+        take: f8995.line12
+      cite:
+        doc: f8995
+        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+    - id: f8995.line14
+      printed: "14"
+      type: NonNegDollars
+      label: Multiply f8995.line13 by qbi.rate
+      expr:
+        op: multiply_rate
+        amount: f8995.line13
+        rate:
+          param: qbi.rate
+      cite:
+        doc: f8995
+        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+      ambiguity: amb.2025.multiplication_subcent
+    - id: f8995.line15
+      printed: "15"
+      type: NonNegDollars
+      label: Smaller of f8995.line10, f8995.line14
+      expr:
+        op: smaller_of
+        of:
+          - f8995.line10
+          - f8995.line14
+      cite:
+        doc: f8995
+        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4

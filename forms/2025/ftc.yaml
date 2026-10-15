@@ -1,0 +1,188 @@
+form:
+  id: ftc
+  kind: form
+  title: Foreign tax credit — election without Form 1116
+  tax_year: 2025
+  note: Creditable foreign tax is a supplied amount after reductions; this slice does not determine
+    foreign-tax law or automate holdings/related-payment tests. The election is an explicit user
+    choice. NIIT is excluded from regular tax.
+  lines:
+    - id: ftc.taxes
+      printed: (helper)
+      type: NonNegDollars
+      label: Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and
+        Form 1099-DIV box 7
+      expr:
+        op: input
+        source: Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and
+          Form 1099-DIV box 7
+      cite:
+        doc: i1116
+        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular
+          tax
+    - id: ftc.all_passive
+      printed: (helper)
+      type: Bool
+      label: Was all foreign-source gross income passive category income under the small-tax election
+        rules?
+      expr:
+        op: input
+        source: Was all foreign-source gross income passive category income under the small-tax election
+          rules?
+      cite:
+        doc: i1116
+        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular
+          tax
+    - id: ftc.statements
+      printed: (helper)
+      type: Bool
+      label: Were all foreign income and taxes reported on qualified payee statements?
+      expr:
+        op: input
+        source: Were all foreign income and taxes reported on qualified payee statements?
+      cite:
+        doc: i1116
+        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular
+          tax
+    - id: ftc.eligible
+      printed: (helper)
+      type: Bool
+      label: Have creditability, holding-period, related-payment and required foreign-tax reduction rules
+        been satisfied?
+      expr:
+        op: input
+        source: Have creditability, holding-period, related-payment and required foreign-tax reduction rules
+          been satisfied?
+      cite:
+        doc: i1116
+        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular
+          tax
+    - id: ftc.elect
+      printed: (helper)
+      type: Bool
+      label: Elect the credit without Form 1116, with no carryover to or from this election year?
+      expr:
+        op: input
+        source: Elect the credit without Form 1116, with no carryover to or from this election year?
+      cite:
+        doc: i1116
+        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular
+          tax
+    - id: ftc.limit
+      printed: (helper)
+      type: NonNegDollars
+      label: Year parameter ftc.limit
+      expr:
+        op: param
+        ref: ftc.limit
+      cite:
+        doc: i1116
+        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular
+          tax
+    - id: ftc.zero
+      printed: (helper)
+      type: NonNegDollars
+      label: Year parameter sales.zero
+      expr:
+        op: param
+        ref: sales.zero
+      cite:
+        doc: i1116
+        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular
+          tax
+    - id: ftc.has_tax
+      printed: (helper)
+      type: Bool
+      label: Positive foreign taxes
+      expr:
+        op: test
+        gt:
+          - ftc.taxes
+          - const: 0
+      cite:
+        doc: i1116
+        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular
+          tax
+    - id: ftc.needs1116
+      printed: (helper)
+      type: Bool
+      label: Fails a condition of the election
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - ftc.has_tax
+              - const: true
+          - op: test
+            any:
+              - op: test
+                gt:
+                  - ftc.taxes
+                  - ftc.limit
+              - op: test
+                eq:
+                  - ftc.all_passive
+                  - const: false
+              - op: test
+                eq:
+                  - ftc.statements
+                  - const: false
+              - op: test
+                eq:
+                  - ftc.eligible
+                  - const: false
+              - op: test
+                eq:
+                  - ftc.elect
+                  - const: false
+      cite:
+        doc: i1116
+        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular
+          tax
+    - id: ftc.limited
+      printed: (helper)
+      type: Dollars
+      label: Smaller of ftc.taxes, f1040.line16
+      expr:
+        op: smaller_of
+        of:
+          - ftc.taxes
+          - f1040.line16
+      cite:
+        doc: i1116
+        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular
+          tax
+    - id: ftc.credit
+      printed: (helper)
+      type: Dollars
+      label: Credit is the smaller of creditable foreign tax and regular income tax; zero if no foreign
+        tax
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - ftc.has_tax
+                - const: true
+            then: ftc.limited
+          - guard:
+              op: test
+              eq:
+                - ftc.has_tax
+                - const: false
+            then: ftc.zero
+      cite:
+        doc: i1116
+        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular
+          tax
+      refuses:
+        - when: ftc.needs1116
+          form: Form 1116
+          remedy: The small-tax election is unavailable or not chosen. Form 1116 is deferred, not dropped;
+            prepare it separately.
+          cite:
+            doc: i1116
+            locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular
+              tax

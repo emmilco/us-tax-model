@@ -198,5 +198,10 @@
     "url": "https://www.irs.gov/pub/irs-drop/rp-24-40.pdf",
     "document_tax_year": 2025,
     "purpose": "Stage 1 rate schedule for the Tax Table midpoint conjecture and a 2025 parameter cross-check; not a form or worksheet source"
+  },
+  {
+    "id": "i1040sb",
+    "url": "https://www.irs.gov/pub/irs-prior/i1040sb--2025.pdf",
+    "description": "2025 Schedule B instructions"
   }
 ]

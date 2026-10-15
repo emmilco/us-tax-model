@@ -1,0 +1,545 @@
+form:
+  id: f8960
+  kind: form
+  title: Form 8960 — wage, interest, dividend and securities slice
+  tax_year: 2025
+  note: The taxpayer supplies a reasonable tax allocation. No ratio is chosen automatically. Schedule
+    A amounts are used only if actually itemized. NIIT uses the limited capital loss on Form 1040
+    line 7a, not the unlimited Schedule D loss.
+  lines:
+    - id: f8960.unsupported
+      printed: (helper)
+      type: Bool
+      label: Any annuity, rental, royalty, business/pass-through income, CFC/PFIC holding, section 911
+        exclusion, disposition adjustment, NOL or other NIIT modification outside this slice?
+      expr:
+        op: input
+        source: Any annuity, rental, royalty, business/pass-through income, CFC/PFIC holding, section 911
+          exclusion, disposition adjustment, NOL or other NIIT modification outside this slice?
+      cite:
+        doc: f8960
+        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+    - id: f8960.refund
+      printed: (helper)
+      type: Bool
+      label: Any recovery/refund of a previously deducted expense, including state/local tax deducted in
+        an itemized year?
+      expr:
+        op: input
+        source: Any recovery/refund of a previously deducted expense, including state/local tax deducted in
+          an itemized year?
+      cite:
+        doc: f8960
+        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+    - id: f8960.allocated_taxes
+      printed: (helper)
+      type: NonNegDollars
+      label: Deductible state/local income and property taxes reasonably allocated to net investment
+        income; exclude foreign taxes for which a credit is claimed
+      expr:
+        op: input
+        source: Deductible state/local income and property taxes reasonably allocated to net investment
+          income; exclude foreign taxes for which a credit is claimed
+      cite:
+        doc: f8960
+        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+    - id: f8960.zero
+      printed: (helper)
+      type: NonNegDollars
+      label: Year parameter sales.zero
+      expr:
+        op: param
+        ref: sales.zero
+      cite:
+        doc: f8960
+        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+    - id: f8960.line1
+      printed: "1"
+      type: NonNegDollars
+      label: Amount from sb.line2
+      expr:
+        op: copy
+        from: sb.line2
+      cite:
+        doc: f8960
+        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+      refuses:
+        - when: f8960.unsupported
+          form: Form 8960 additional adjustments
+          remedy: The required investment-income or MAGI modifications are outside this supported slice.
+          cite:
+            doc: f8960
+            locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+        - when: f8960.refund
+          form: Form 8960 Deduction Recoveries Worksheet / Schedule 1
+          remedy: A prior deducted expense recovery needs the NIIT recovery worksheet and review of Schedule 1
+            reporting; this path is outside scope.
+          cite:
+            doc: i8960
+            locator: pp. 14–15, deduction recoveries; compare i1040gi p. 90, state/local income tax refund
+              worksheet
+    - id: f8960.line2
+      printed: "2"
+      type: NonNegDollars
+      label: Amount from sb.line6
+      expr:
+        op: copy
+        from: sb.line6
+      cite:
+        doc: f8960
+        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+    - id: f8960.line3
+      printed: "3"
+      type: NonNegDollars
+      label: Amount from f8960.zero
+      expr:
+        op: copy
+        from: f8960.zero
+      cite:
+        doc: f8960
+        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+      refuses:
+        - when: f8960.unsupported
+          form: Form 8960 additional adjustments
+          remedy: The required investment-income or MAGI modifications are outside this supported slice.
+          cite:
+            doc: f8960
+            locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+        - when: f8960.refund
+          form: Form 8960 Deduction Recoveries Worksheet / Schedule 1
+          remedy: A prior deducted expense recovery needs the NIIT recovery worksheet and review of Schedule 1
+            reporting; this path is outside scope.
+          cite:
+            doc: i8960
+            locator: pp. 14–15, deduction recoveries; compare i1040gi p. 90, state/local income tax refund
+              worksheet
+    - id: f8960.line4a
+      printed: 4a
+      type: NonNegDollars
+      label: Amount from f8960.zero
+      expr:
+        op: copy
+        from: f8960.zero
+      cite:
+        doc: f8960
+        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+      refuses:
+        - when: f8960.unsupported
+          form: Form 8960 additional adjustments
+          remedy: The required investment-income or MAGI modifications are outside this supported slice.
+          cite:
+            doc: f8960
+            locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+        - when: f8960.refund
+          form: Form 8960 Deduction Recoveries Worksheet / Schedule 1
+          remedy: A prior deducted expense recovery needs the NIIT recovery worksheet and review of Schedule 1
+            reporting; this path is outside scope.
+          cite:
+            doc: i8960
+            locator: pp. 14–15, deduction recoveries; compare i1040gi p. 90, state/local income tax refund
+              worksheet
+    - id: f8960.line4b
+      printed: 4b
+      type: NonNegDollars
+      label: Amount from f8960.zero
+      expr:
+        op: copy
+        from: f8960.zero
+      cite:
+        doc: f8960
+        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+      refuses:
+        - when: f8960.unsupported
+          form: Form 8960 additional adjustments
+          remedy: The required investment-income or MAGI modifications are outside this supported slice.
+          cite:
+            doc: f8960
+            locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+        - when: f8960.refund
+          form: Form 8960 Deduction Recoveries Worksheet / Schedule 1
+          remedy: A prior deducted expense recovery needs the NIIT recovery worksheet and review of Schedule 1
+            reporting; this path is outside scope.
+          cite:
+            doc: i8960
+            locator: pp. 14–15, deduction recoveries; compare i1040gi p. 90, state/local income tax refund
+              worksheet
+    - id: f8960.line5b
+      printed: 5b
+      type: NonNegDollars
+      label: Amount from f8960.zero
+      expr:
+        op: copy
+        from: f8960.zero
+      cite:
+        doc: f8960
+        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+      refuses:
+        - when: f8960.unsupported
+          form: Form 8960 additional adjustments
+          remedy: The required investment-income or MAGI modifications are outside this supported slice.
+          cite:
+            doc: f8960
+            locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+        - when: f8960.refund
+          form: Form 8960 Deduction Recoveries Worksheet / Schedule 1
+          remedy: A prior deducted expense recovery needs the NIIT recovery worksheet and review of Schedule 1
+            reporting; this path is outside scope.
+          cite:
+            doc: i8960
+            locator: pp. 14–15, deduction recoveries; compare i1040gi p. 90, state/local income tax refund
+              worksheet
+    - id: f8960.line5c
+      printed: 5c
+      type: NonNegDollars
+      label: Amount from f8960.zero
+      expr:
+        op: copy
+        from: f8960.zero
+      cite:
+        doc: f8960
+        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+      refuses:
+        - when: f8960.unsupported
+          form: Form 8960 additional adjustments
+          remedy: The required investment-income or MAGI modifications are outside this supported slice.
+          cite:
+            doc: f8960
+            locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+        - when: f8960.refund
+          form: Form 8960 Deduction Recoveries Worksheet / Schedule 1
+          remedy: A prior deducted expense recovery needs the NIIT recovery worksheet and review of Schedule 1
+            reporting; this path is outside scope.
+          cite:
+            doc: i8960
+            locator: pp. 14–15, deduction recoveries; compare i1040gi p. 90, state/local income tax refund
+              worksheet
+    - id: f8960.line6
+      printed: "6"
+      type: NonNegDollars
+      label: Amount from f8960.zero
+      expr:
+        op: copy
+        from: f8960.zero
+      cite:
+        doc: f8960
+        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+      refuses:
+        - when: f8960.unsupported
+          form: Form 8960 additional adjustments
+          remedy: The required investment-income or MAGI modifications are outside this supported slice.
+          cite:
+            doc: f8960
+            locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+        - when: f8960.refund
+          form: Form 8960 Deduction Recoveries Worksheet / Schedule 1
+          remedy: A prior deducted expense recovery needs the NIIT recovery worksheet and review of Schedule 1
+            reporting; this path is outside scope.
+          cite:
+            doc: i8960
+            locator: pp. 14–15, deduction recoveries; compare i1040gi p. 90, state/local income tax refund
+              worksheet
+    - id: f8960.line7
+      printed: "7"
+      type: NonNegDollars
+      label: Amount from f8960.zero
+      expr:
+        op: copy
+        from: f8960.zero
+      cite:
+        doc: f8960
+        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+      refuses:
+        - when: f8960.unsupported
+          form: Form 8960 additional adjustments
+          remedy: The required investment-income or MAGI modifications are outside this supported slice.
+          cite:
+            doc: f8960
+            locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+        - when: f8960.refund
+          form: Form 8960 Deduction Recoveries Worksheet / Schedule 1
+          remedy: A prior deducted expense recovery needs the NIIT recovery worksheet and review of Schedule 1
+            reporting; this path is outside scope.
+          cite:
+            doc: i8960
+            locator: pp. 14–15, deduction recoveries; compare i1040gi p. 90, state/local income tax refund
+              worksheet
+    - id: f8960.line9c
+      printed: 9c
+      type: NonNegDollars
+      label: Amount from f8960.zero
+      expr:
+        op: copy
+        from: f8960.zero
+      cite:
+        doc: f8960
+        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+      refuses:
+        - when: f8960.unsupported
+          form: Form 8960 additional adjustments
+          remedy: The required investment-income or MAGI modifications are outside this supported slice.
+          cite:
+            doc: f8960
+            locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+        - when: f8960.refund
+          form: Form 8960 Deduction Recoveries Worksheet / Schedule 1
+          remedy: A prior deducted expense recovery needs the NIIT recovery worksheet and review of Schedule 1
+            reporting; this path is outside scope.
+          cite:
+            doc: i8960
+            locator: pp. 14–15, deduction recoveries; compare i1040gi p. 90, state/local income tax refund
+              worksheet
+    - id: f8960.line10
+      printed: "10"
+      type: NonNegDollars
+      label: Amount from f8960.zero
+      expr:
+        op: copy
+        from: f8960.zero
+      cite:
+        doc: f8960
+        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+      refuses:
+        - when: f8960.unsupported
+          form: Form 8960 additional adjustments
+          remedy: The required investment-income or MAGI modifications are outside this supported slice.
+          cite:
+            doc: f8960
+            locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+        - when: f8960.refund
+          form: Form 8960 Deduction Recoveries Worksheet / Schedule 1
+          remedy: A prior deducted expense recovery needs the NIIT recovery worksheet and review of Schedule 1
+            reporting; this path is outside scope.
+          cite:
+            doc: i8960
+            locator: pp. 14–15, deduction recoveries; compare i1040gi p. 90, state/local income tax refund
+              worksheet
+    - id: f8960.line4c
+      printed: 4c
+      type: NonNegDollars
+      label: Add f8960.line4a, f8960.line4b
+      expr:
+        op: sum
+        of:
+          - f8960.line4a
+          - f8960.line4b
+      cite:
+        doc: f8960
+        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+    - id: f8960.line5a
+      printed: 5a
+      type: Dollars
+      label: Amount from f1040.line7a
+      expr:
+        op: copy
+        from: f1040.line7a
+      cite:
+        doc: f8960
+        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+    - id: f8960.line5d
+      printed: 5d
+      type: Dollars
+      label: Add f8960.line5a, f8960.line5b, f8960.line5c
+      expr:
+        op: sum
+        of:
+          - f8960.line5a
+          - f8960.line5b
+          - f8960.line5c
+      cite:
+        doc: f8960
+        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+    - id: f8960.line8
+      printed: "8"
+      type: Dollars
+      label: Add f8960.line1, f8960.line2, f8960.line3, f8960.line4c, f8960.line5d, f8960.line6,
+        f8960.line7
+      expr:
+        op: sum
+        of:
+          - f8960.line1
+          - f8960.line2
+          - f8960.line3
+          - f8960.line4c
+          - f8960.line5d
+          - f8960.line6
+          - f8960.line7
+      cite:
+        doc: f8960
+        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+    - id: f8960.line9a
+      printed: 9a
+      type: NonNegDollars
+      label: Investment interest actually deducted on Schedule A
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sa.itemizes
+                - const: true
+            then: sa.line9
+          - guard:
+              op: test
+              eq:
+                - sa.itemizes
+                - const: false
+            then: f8960.zero
+      cite:
+        doc: i8960
+        locator: p. 17, line 9a
+    - id: f8960.line9b
+      printed: 9b
+      type: NonNegDollars
+      label: Allowed tax deduction reasonably allocable to NII
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sa.itemizes
+                - const: true
+            then: f8960.allocated_taxes
+          - guard:
+              op: test
+              eq:
+                - sa.itemizes
+                - const: false
+            then: f8960.zero
+      cite:
+        doc: i8960
+        locator: pp. 17–18, line 9b; any reasonable allocation method
+      refuses:
+        - when: f8960.bad_allocation
+          form: Form 8960 line 9b
+          remedy: "Correct the allocation: the amount allocated to net investment income cannot exceed the
+            allowed Schedule A tax deduction."
+          cite:
+            doc: i8960
+            locator: pp. 17–18, allowable taxes allocable to net investment income
+    - id: f8960.line9d
+      printed: 9d
+      type: NonNegDollars
+      label: Add f8960.line9a, f8960.line9b, f8960.line9c
+      expr:
+        op: sum
+        of:
+          - f8960.line9a
+          - f8960.line9b
+          - f8960.line9c
+      cite:
+        doc: f8960
+        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+    - id: f8960.line11
+      printed: "11"
+      type: NonNegDollars
+      label: Add f8960.line9d, f8960.line10
+      expr:
+        op: sum
+        of:
+          - f8960.line9d
+          - f8960.line10
+      cite:
+        doc: f8960
+        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+    - id: f8960.line12
+      printed: "12"
+      type: NonNegDollars
+      label: Subtract f8960.line11 from f8960.line8; if zero or less, enter zero
+      expr:
+        op: subtract_floor0
+        from: f8960.line8
+        take: f8960.line11
+      cite:
+        doc: f8960
+        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+    - id: f8960.line13
+      printed: "13"
+      type: Dollars
+      label: Amount from sa.agi
+      expr:
+        op: copy
+        from: sa.agi
+      cite:
+        doc: i8960
+        locator: p. 22, line 13; absent section 911/CFC/PFIC adjustments MAGI equals AGI
+      refuses:
+        - when: f8960.unsupported
+          form: Form 8960 additional adjustments
+          remedy: The required investment-income or MAGI modifications are outside this supported slice.
+          cite:
+            doc: f8960
+            locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+        - when: f8960.refund
+          form: Form 8960 Deduction Recoveries Worksheet / Schedule 1
+          remedy: A prior deducted expense recovery needs the NIIT recovery worksheet and review of Schedule 1
+            reporting; this path is outside scope.
+          cite:
+            doc: i8960
+            locator: pp. 14–15, deduction recoveries; compare i1040gi p. 90, state/local income tax refund
+              worksheet
+    - id: f8960.line14
+      printed: "14"
+      type: NonNegDollars
+      label: Year parameter niit.threshold
+      expr:
+        op: param
+        ref: niit.threshold
+      cite:
+        doc: f8960
+        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+    - id: f8960.line15
+      printed: "15"
+      type: NonNegDollars
+      label: Subtract f8960.line14 from f8960.line13; if zero or less, enter zero
+      expr:
+        op: subtract_floor0
+        from: f8960.line13
+        take: f8960.line14
+      cite:
+        doc: f8960
+        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+    - id: f8960.line16
+      printed: "16"
+      type: NonNegDollars
+      label: Smaller of f8960.line12, f8960.line15
+      expr:
+        op: smaller_of
+        of:
+          - f8960.line12
+          - f8960.line15
+      cite:
+        doc: f8960
+        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+    - id: f8960.line17
+      printed: "17"
+      type: NonNegDollars
+      label: Multiply f8960.line16 by niit.rate
+      expr:
+        op: multiply_rate
+        amount: f8960.line16
+        rate:
+          param: niit.rate
+      cite:
+        doc: f8960
+        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+      ambiguity: amb.2025.multiplication_subcent
+    - id: f8960.bad_allocation
+      printed: (gate)
+      label: Claimed NIIT tax allocation exceeds the Schedule A tax deduction
+      type: Bool
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - sa.itemizes
+              - const: true
+          - op: test
+            gt:
+              - f8960.allocated_taxes
+              - sa.line5e
+      cite:
+        doc: i8960
+        locator: pp. 17–18, allowable taxes allocable to net investment income

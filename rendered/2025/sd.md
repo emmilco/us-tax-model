@@ -1,7 +1,7 @@
 # Schedule D — securities sales and supplied distribution subtotals
 
 - Document: `sd` (form, tax year 2025)
-- Note: Lines 18 and 19 and Form 4952 amounts remain supplied subtotals until Stage 4. Boolean lines 17, 20 and 22 show their predicate values even when printed flow skips them. No carryover to a later year is computed.
+- Note: Special-gain feeders are computed from 1099-DIV box 2b/2d. Section 1202 distributions, non-securities source forms and prior-year carryovers are refused. Boolean flow predicates are shown even when their printed line is skipped.
 
 ## (helper) — `sd.other_forms`
 
@@ -27,29 +27,29 @@
 ## (helper) — `sd.line18`
 
 - **Authored helper label:** 28% Rate Gain Worksheet result (supplied subtotal; worksheet deferred to Stage 4)
-- **Encoded (NonNegDollars):** Input — 28% Rate Gain Worksheet result (supplied subtotal; worksheet deferred to Stage 4)
-- Expr: `{"op":"input","source":"28% Rate Gain Worksheet result (supplied subtotal; worksheet deferred to Stage 4)"}`
+- **Encoded (NonNegDollars):** Enter the amount from g28 line 7.
+- Expr: `{"from":"g28.line7","op":"copy"}`
 - Cite: [i1040sd] p. 11, line 18 (2025; printed date 2025-12-11; sha256 650643a6)
 
 ## (helper) — `sd.line19`
 
 - **Authored helper label:** Unrecaptured Section 1250 Gain Worksheet result (supplied subtotal; worksheet deferred to Stage 4)
-- **Encoded (NonNegDollars):** Input — Unrecaptured Section 1250 Gain Worksheet result (supplied subtotal; worksheet deferred to Stage 4)
-- Expr: `{"op":"input","source":"Unrecaptured Section 1250 Gain Worksheet result (supplied subtotal; worksheet deferred to Stage 4)"}`
+- **Encoded (NonNegDollars):** Enter the amount from u1250 line 18.
+- Expr: `{"from":"u1250.line18","op":"copy"}`
 - Cite: [i1040sd] pp. 11–12, line 19 (2025; printed date 2025-12-11; sha256 650643a6)
 
 ## (helper) — `sd.filing4952`
 
 - **Authored helper label:** Are you filing Form 4952?
-- **Encoded (Bool):** Input — Are you filing Form 4952?
-- Expr: `{"op":"input","source":"Are you filing Form 4952?"}`
+- **Encoded (Bool):** Enter the amount from f4952 "(helper)".
+- Expr: `{"from":"f4952.required","op":"copy"}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 
 ## (helper) — `sd.investment_election`
 
 - **Authored helper label:** Form 4952 line 4g (supplied subtotal; Form 4952 deferred to Stage 4)
-- **Encoded (NonNegDollars):** Input — Form 4952 line 4g (supplied subtotal; Form 4952 deferred to Stage 4)
-- Expr: `{"op":"input","source":"Form 4952 line 4g (supplied subtotal; Form 4952 deferred to Stage 4)"}`
+- **Encoded (NonNegDollars):** Enter the amount from f4952 "(helper)".
+- Expr: `{"from":"f4952.election","op":"copy"}`
 - Cite: [i1040sd] p. 15, Schedule D Tax Worksheet applicability (2025; printed date 2025-12-11; sha256 650643a6)
 
 ## (helper) — `sd.count`
@@ -396,8 +396,8 @@
 ## 13 — `sd.line13`
 
 - **IRS:** Capital gain distributions
-- **Encoded (NonNegDollars):** Enter the amount from line (helper).
-- Expr: `{"from":"sd.distributions","op":"copy"}`
+- **Encoded (NonNegDollars):** Add line (helper) and div "(helper)".
+- Expr: `{"of":["sd.distributions","div.screen"],"op":"sum"}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 
 ## 7 — `sd.line7`

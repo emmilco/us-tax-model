@@ -3,19 +3,17 @@ form:
   kind: form
   title: Schedule D — securities sales and supplied distribution subtotals
   tax_year: 2025
-  note: Lines 18 and 19 and Form 4952 amounts remain supplied subtotals until
-    Stage 4. Boolean lines 17, 20 and 22 show their predicate values even when
-    printed flow skips them. No carryover to a later year is computed.
+  note: Special-gain feeders are computed from 1099-DIV box 2b/2d. Section 1202 distributions,
+    non-securities source forms and prior-year carryovers are refused. Boolean flow predicates are
+    shown even when their printed line is skipped.
   lines:
     - id: sd.other_forms
       printed: (helper)
-      label: Are there gains/losses from Forms 4797, 2439, 6252, 4684, 6781, 8824 or
-        Schedule K-1?
+      label: Are there gains/losses from Forms 4797, 2439, 6252, 4684, 6781, 8824 or Schedule K-1?
       type: Bool
       expr:
         op: input
-        source: Are there gains/losses from Forms 4797, 2439, 6252, 4684, 6781, 8824 or
-          Schedule K-1?
+        source: Are there gains/losses from Forms 4797, 2439, 6252, 4684, 6781, 8824 or Schedule K-1?
       cite:
         doc: f1040sd
         locator: Schedule D (2025), Parts I–III
@@ -41,25 +39,22 @@ form:
         locator: p. 11, line 13
     - id: sd.line18
       printed: (helper)
-      label: 28% Rate Gain Worksheet result (supplied subtotal; worksheet deferred to
-        Stage 4)
+      label: 28% Rate Gain Worksheet result (supplied subtotal; worksheet deferred to Stage 4)
       type: NonNegDollars
       expr:
-        op: input
-        source: 28% Rate Gain Worksheet result (supplied subtotal; worksheet deferred to
-          Stage 4)
+        op: copy
+        from: g28.line7
       cite:
         doc: i1040sd
         locator: p. 11, line 18
     - id: sd.line19
       printed: (helper)
-      label: Unrecaptured Section 1250 Gain Worksheet result (supplied subtotal;
-        worksheet deferred to Stage 4)
+      label: Unrecaptured Section 1250 Gain Worksheet result (supplied subtotal; worksheet deferred to
+        Stage 4)
       type: NonNegDollars
       expr:
-        op: input
-        source: Unrecaptured Section 1250 Gain Worksheet result (supplied subtotal;
-          worksheet deferred to Stage 4)
+        op: copy
+        from: u1250.line18
       cite:
         doc: i1040sd
         locator: pp. 11–12, line 19
@@ -68,8 +63,8 @@ form:
       label: Are you filing Form 4952?
       type: Bool
       expr:
-        op: input
-        source: Are you filing Form 4952?
+        op: copy
+        from: f4952.required
       cite:
         doc: f1040sd
         locator: Schedule D (2025), Parts I–III
@@ -78,8 +73,8 @@ form:
       label: Form 4952 line 4g (supplied subtotal; Form 4952 deferred to Stage 4)
       type: NonNegDollars
       expr:
-        op: input
-        source: Form 4952 line 4g (supplied subtotal; Form 4952 deferred to Stage 4)
+        op: copy
+        from: f4952.election
       cite:
         doc: i1040sd
         locator: p. 15, Schedule D Tax Worksheet applicability
@@ -97,15 +92,14 @@ form:
       refuses:
         - when: sd.other_forms
           form: Schedule D additional source forms
-          remedy: Prepare the required source forms; their gains/losses are outside the
-            supported securities slice.
+          remedy: Prepare the required source forms; their gains/losses are outside the supported securities
+            slice.
           cite:
             doc: f1040sd
             locator: Schedule D (2025), Parts I–III
         - when: sd.carryover
           form: Capital Loss Carryover Worksheet
-          remedy: Prior-year capital loss carryovers are unsupported; prepare the
-            carryover worksheet.
+          remedy: Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.
           cite:
             doc: f1040sd
             locator: Schedule D (2025), Parts I–III
@@ -122,9 +116,9 @@ form:
       cite:
         doc: f1040sd
         locator: Schedule D (2025), Parts I–III
-      note: "Structural propagation gate: a valid Count is never negative, so true is
-        unreachable. Unknown or refused transaction screening propagates through
-        this test before any category filter can omit a transaction."
+      note: "Structural propagation gate: a valid Count is never negative, so true is unreachable. Unknown
+        or refused transaction screening propagates through this test before any category filter can
+        omit a transaction."
     - id: sd.filed
       printed: (helper)
       label: Schedule D required for entered sales or special distribution gains
@@ -1099,15 +1093,14 @@ form:
       refuses:
         - when: sd.other_forms
           form: Schedule D additional source forms
-          remedy: Prepare the required source forms; their gains/losses are outside the
-            supported securities slice.
+          remedy: Prepare the required source forms; their gains/losses are outside the supported securities
+            slice.
           cite:
             doc: f1040sd
             locator: Schedule D (2025), Parts I–III
         - when: sd.carryover
           form: Capital Loss Carryover Worksheet
-          remedy: Prior-year capital loss carryovers are unsupported; prepare the
-            carryover worksheet.
+          remedy: Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.
           cite:
             doc: f1040sd
             locator: Schedule D (2025), Parts I–III
@@ -1124,15 +1117,14 @@ form:
       refuses:
         - when: sd.other_forms
           form: Schedule D additional source forms
-          remedy: Prepare the required source forms; their gains/losses are outside the
-            supported securities slice.
+          remedy: Prepare the required source forms; their gains/losses are outside the supported securities
+            slice.
           cite:
             doc: f1040sd
             locator: Schedule D (2025), Parts I–III
         - when: sd.carryover
           form: Capital Loss Carryover Worksheet
-          remedy: Prior-year capital loss carryovers are unsupported; prepare the
-            carryover worksheet.
+          remedy: Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.
           cite:
             doc: f1040sd
             locator: Schedule D (2025), Parts I–III
@@ -1149,15 +1141,14 @@ form:
       refuses:
         - when: sd.other_forms
           form: Schedule D additional source forms
-          remedy: Prepare the required source forms; their gains/losses are outside the
-            supported securities slice.
+          remedy: Prepare the required source forms; their gains/losses are outside the supported securities
+            slice.
           cite:
             doc: f1040sd
             locator: Schedule D (2025), Parts I–III
         - when: sd.carryover
           form: Capital Loss Carryover Worksheet
-          remedy: Prior-year capital loss carryovers are unsupported; prepare the
-            carryover worksheet.
+          remedy: Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.
           cite:
             doc: f1040sd
             locator: Schedule D (2025), Parts I–III
@@ -1174,15 +1165,14 @@ form:
       refuses:
         - when: sd.other_forms
           form: Schedule D additional source forms
-          remedy: Prepare the required source forms; their gains/losses are outside the
-            supported securities slice.
+          remedy: Prepare the required source forms; their gains/losses are outside the supported securities
+            slice.
           cite:
             doc: f1040sd
             locator: Schedule D (2025), Parts I–III
         - when: sd.carryover
           form: Capital Loss Carryover Worksheet
-          remedy: Prior-year capital loss carryovers are unsupported; prepare the
-            carryover worksheet.
+          remedy: Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.
           cite:
             doc: f1040sd
             locator: Schedule D (2025), Parts I–III
@@ -1199,15 +1189,14 @@ form:
       refuses:
         - when: sd.other_forms
           form: Schedule D additional source forms
-          remedy: Prepare the required source forms; their gains/losses are outside the
-            supported securities slice.
+          remedy: Prepare the required source forms; their gains/losses are outside the supported securities
+            slice.
           cite:
             doc: f1040sd
             locator: Schedule D (2025), Parts I–III
         - when: sd.carryover
           form: Capital Loss Carryover Worksheet
-          remedy: Prior-year capital loss carryovers are unsupported; prepare the
-            carryover worksheet.
+          remedy: Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.
           cite:
             doc: f1040sd
             locator: Schedule D (2025), Parts I–III
@@ -1224,15 +1213,14 @@ form:
       refuses:
         - when: sd.other_forms
           form: Schedule D additional source forms
-          remedy: Prepare the required source forms; their gains/losses are outside the
-            supported securities slice.
+          remedy: Prepare the required source forms; their gains/losses are outside the supported securities
+            slice.
           cite:
             doc: f1040sd
             locator: Schedule D (2025), Parts I–III
         - when: sd.carryover
           form: Capital Loss Carryover Worksheet
-          remedy: Prior-year capital loss carryovers are unsupported; prepare the
-            carryover worksheet.
+          remedy: Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet.
           cite:
             doc: f1040sd
             locator: Schedule D (2025), Parts I–III
@@ -1241,8 +1229,10 @@ form:
       label: Capital gain distributions
       type: NonNegDollars
       expr:
-        op: copy
-        from: sd.distributions
+        op: sum
+        of:
+          - sd.distributions
+          - div.screen
       cite:
         doc: f1040sd
         locator: Schedule D (2025), Parts I–III

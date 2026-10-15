@@ -1,0 +1,129 @@
+form:
+  id: s2
+  kind: form
+  title: Schedule 2 — supported Additional Medicare Tax and NIIT
+  tax_year: 2025
+  note: Other Schedule 2 sources are screened, not silently defaulted. Form 1040 integration is
+    completed in Stage 5.
+  lines:
+    - id: s2.amt
+      printed: (helper)
+      type: Bool
+      label: Are you required to file Form 6251 or do you have an AMT adjustment requiring its review?
+      expr:
+        op: input
+        source: Are you required to file Form 6251 or do you have an AMT adjustment requiring its review?
+      cite:
+        doc: f1040s2
+        locator: Schedule 2 (2025), lines 2, 3, 11, 12 and 21
+    - id: s2.other
+      printed: (helper)
+      type: Bool
+      label: Any Schedule 2 tax other than Additional Medicare Tax or Net Investment Income Tax?
+      expr:
+        op: input
+        source: Any Schedule 2 tax other than Additional Medicare Tax or Net Investment Income Tax?
+      cite:
+        doc: f1040s2
+        locator: Schedule 2 (2025), lines 2, 3, 11, 12 and 21
+    - id: s2.zero
+      printed: (helper)
+      type: NonNegDollars
+      label: Year parameter sales.zero
+      expr:
+        op: param
+        ref: sales.zero
+      cite:
+        doc: f1040s2
+        locator: Schedule 2 (2025), lines 2, 3, 11, 12 and 21
+    - id: s2.line2
+      printed: "2"
+      type: NonNegDollars
+      label: Amount from s2.zero
+      expr:
+        op: copy
+        from: s2.zero
+      cite:
+        doc: f1040s2
+        locator: Schedule 2 (2025), lines 2, 3, 11, 12 and 21
+      refuses:
+        - when: s2.amt
+          form: Form 6251
+          remedy: Alternative minimum tax is outside scope; prepare Form 6251.
+          cite:
+            doc: f1040s2
+            locator: Schedule 2 (2025), lines 2, 3, 11, 12 and 21
+        - when: s2.other
+          form: Schedule 2 additional source forms
+          remedy: Prepare the other required tax forms; this slice supports only Forms 8959 and 8960.
+          cite:
+            doc: f1040s2
+            locator: Schedule 2 (2025), lines 2, 3, 11, 12 and 21
+    - id: s2.line3
+      printed: "3"
+      type: NonNegDollars
+      label: Amount from s2.zero
+      expr:
+        op: copy
+        from: s2.zero
+      cite:
+        doc: f1040s2
+        locator: Schedule 2 (2025), lines 2, 3, 11, 12 and 21
+      refuses:
+        - when: s2.amt
+          form: Form 6251
+          remedy: Alternative minimum tax is outside scope; prepare Form 6251.
+          cite:
+            doc: f1040s2
+            locator: Schedule 2 (2025), lines 2, 3, 11, 12 and 21
+        - when: s2.other
+          form: Schedule 2 additional source forms
+          remedy: Prepare the other required tax forms; this slice supports only Forms 8959 and 8960.
+          cite:
+            doc: f1040s2
+            locator: Schedule 2 (2025), lines 2, 3, 11, 12 and 21
+    - id: s2.line11
+      printed: "11"
+      type: NonNegDollars
+      label: Amount from f8959.line18
+      expr:
+        op: copy
+        from: f8959.line18
+      cite:
+        doc: f1040s2
+        locator: Schedule 2 (2025), lines 2, 3, 11, 12 and 21
+    - id: s2.line12
+      printed: "12"
+      type: NonNegDollars
+      label: Amount from f8960.line17
+      expr:
+        op: copy
+        from: f8960.line17
+      cite:
+        doc: f1040s2
+        locator: Schedule 2 (2025), lines 2, 3, 11, 12 and 21
+    - id: s2.line21
+      printed: "21"
+      type: NonNegDollars
+      label: Add s2.line11, s2.line12
+      expr:
+        op: sum
+        of:
+          - s2.line11
+          - s2.line12
+      cite:
+        doc: f1040s2
+        locator: Schedule 2 (2025), lines 2, 3, 11, 12 and 21
+      refuses:
+        - when: s2.amt
+          form: Form 6251
+          remedy: Alternative minimum tax is outside scope; prepare Form 6251.
+          cite:
+            doc: f1040s2
+            locator: Schedule 2 (2025), lines 2, 3, 11, 12 and 21
+        - when: s2.other
+          form: Schedule 2 additional source forms
+          remedy: Prepare the other required tax forms; this slice supports only Forms 8959 and 8960.
+          cite:
+            doc: f1040s2
+            locator: Schedule 2 (2025), lines 2, 3, 11, 12 and 21

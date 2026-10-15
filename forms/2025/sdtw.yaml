@@ -1,0 +1,1114 @@
+form:
+  id: sdtw
+  kind: worksheet
+  title: Schedule D Tax Worksheet
+  tax_year: 2025
+  note: Default Form 4952 capital-gain-first allocation. Form 2555 and alternative dotted-line
+    allocation are outside scope. Skipped lines contribute zero; raw helpers show arithmetic before
+    skip rules.
+  lines:
+    - id: sdtw.zero
+      printed: (helper)
+      type: NonNegDollars
+      label: Zero for skipped worksheet lines
+      expr:
+        op: param
+        ref: sales.zero
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.ordinary_ceiling
+      printed: (helper)
+      type: NonNegDollars
+      label: Ordinary-income ceiling for line 19
+      expr:
+        op: param
+        ref: sdtw.ordinary_ceiling
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.after22
+      printed: (helper)
+      type: Bool
+      label: Continue after line 22 when lines 1 and 16 differ
+      expr:
+        op: test
+        ne:
+          - sdtw.line1
+          - sdtw.line16
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.after32
+      printed: (helper)
+      type: Bool
+      label: Continue after line 32 when lines 1 and 32 differ
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - sdtw.after22
+              - const: true
+          - op: test
+            ne:
+              - sdtw.line1
+              - sdtw.line32
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.use1250
+      printed: (helper)
+      type: Bool
+      label: Compute lines 35–40 when Schedule D line 19 is positive
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - sdtw.after32
+              - const: true
+          - op: test
+            gt:
+              - sd.line19
+              - const: 0
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.use28
+      printed: (helper)
+      type: Bool
+      label: Follow printed flow to lines 41–43
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - sdtw.after32
+              - const: true
+          - op: test
+            any:
+              - op: test
+                eq:
+                  - sd.line19
+                  - const: 0
+              - op: test
+                gt:
+                  - sd.line18
+                  - const: 0
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line1
+      printed: "1"
+      type: NonNegDollars
+      label: Taxable income
+      expr:
+        op: copy
+        from: f1040.line15
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line2
+      printed: "2"
+      type: NonNegDollars
+      label: Qualified dividends
+      expr:
+        op: copy
+        from: f1040.line3a
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line3
+      printed: "3"
+      type: NonNegDollars
+      label: Form 4952 line 4g election
+      expr:
+        op: copy
+        from: sd.investment_election
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line4
+      printed: "4"
+      type: NonNegDollars
+      label: Form 4952 line 4e, default capital-gain-first allocation
+      expr:
+        op: copy
+        from: f4952.line4e
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line5
+      printed: "5"
+      type: NonNegDollars
+      label: Subtract line 4 from line 3; floor at zero
+      expr:
+        op: subtract_floor0
+        from: sdtw.line3
+        take: sdtw.line4
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line6
+      printed: "6"
+      type: NonNegDollars
+      label: Subtract line 5 from line 2; floor at zero
+      expr:
+        op: subtract_floor0
+        from: sdtw.line2
+        take: sdtw.line5
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line7
+      printed: "7"
+      type: Dollars
+      label: Smaller of Schedule D lines 15 and 16
+      expr:
+        op: smaller_of
+        of:
+          - sd.line15
+          - sd.line16
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line8
+      printed: "8"
+      type: NonNegDollars
+      label: Smaller of lines 3 and 4
+      expr:
+        op: smaller_of
+        of:
+          - sdtw.line3
+          - sdtw.line4
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line9
+      printed: "9"
+      type: NonNegDollars
+      label: Subtract line 8 from line 7; floor at zero
+      expr:
+        op: subtract_floor0
+        from: sdtw.line7
+        take: sdtw.line8
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line10
+      printed: "10"
+      type: NonNegDollars
+      label: Add lines 6 and 9
+      expr:
+        op: sum
+        of:
+          - sdtw.line6
+          - sdtw.line9
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line11
+      printed: "11"
+      type: NonNegDollars
+      label: Add Schedule D lines 18 and 19
+      expr:
+        op: sum
+        of:
+          - sd.line18
+          - sd.line19
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line12
+      printed: "12"
+      type: NonNegDollars
+      label: Smaller of lines 9 and 11
+      expr:
+        op: smaller_of
+        of:
+          - sdtw.line9
+          - sdtw.line11
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line13
+      printed: "13"
+      type: Dollars
+      label: Subtract line 12 from line 10
+      expr:
+        op: subtract
+        from: sdtw.line10
+        take: sdtw.line12
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line14
+      printed: "14"
+      type: NonNegDollars
+      label: Subtract line 13 from line 1; floor at zero
+      expr:
+        op: subtract_floor0
+        from: sdtw.line1
+        take: sdtw.line13
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line15
+      printed: "15"
+      type: NonNegDollars
+      label: Zero-rate ceiling by filing status
+      expr:
+        op: param
+        ref: qdcg.zero_rate_ceiling
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line16
+      printed: "16"
+      type: NonNegDollars
+      label: Smaller of lines 1 and 15
+      expr:
+        op: smaller_of
+        of:
+          - sdtw.line1
+          - sdtw.line15
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line17
+      printed: "17"
+      type: NonNegDollars
+      label: Smaller of lines 14 and 16
+      expr:
+        op: smaller_of
+        of:
+          - sdtw.line14
+          - sdtw.line16
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line18
+      printed: "18"
+      type: NonNegDollars
+      label: Subtract line 10 from line 1; floor at zero
+      expr:
+        op: subtract_floor0
+        from: sdtw.line1
+        take: sdtw.line10
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line19
+      printed: "19"
+      type: NonNegDollars
+      label: Smaller of taxable income and ordinary-income ceiling
+      expr:
+        op: smaller_of
+        of:
+          - sdtw.line1
+          - sdtw.ordinary_ceiling
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line20
+      printed: "20"
+      type: NonNegDollars
+      label: Smaller of lines 14 and 19
+      expr:
+        op: smaller_of
+        of:
+          - sdtw.line14
+          - sdtw.line19
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line21
+      printed: "21"
+      type: NonNegDollars
+      label: Larger of lines 18 and 20
+      expr:
+        op: larger_of
+        of:
+          - sdtw.line18
+          - sdtw.line20
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line22
+      printed: "22"
+      type: Dollars
+      label: Subtract line 17 from line 16; taxed at zero percent
+      expr:
+        op: subtract
+        from: sdtw.line16
+        take: sdtw.line17
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.raw23
+      printed: (helper)
+      type: Dollars
+      label: Smaller of lines 1 and 13 before skip rule
+      expr:
+        op: smaller_of
+        of:
+          - sdtw.line1
+          - sdtw.line13
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line23
+      printed: "23"
+      type: Dollars
+      label: Smaller of lines 1 and 13
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sdtw.after22
+                - const: true
+            then: sdtw.raw23
+          - guard:
+              op: test
+              eq:
+                - sdtw.after22
+                - const: false
+            then: sdtw.zero
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.raw24
+      printed: (helper)
+      type: Dollars
+      label: Amount from line 22 before skip rule
+      expr:
+        op: copy
+        from: sdtw.line22
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line24
+      printed: "24"
+      type: Dollars
+      label: Amount from line 22
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sdtw.after22
+                - const: true
+            then: sdtw.raw24
+          - guard:
+              op: test
+              eq:
+                - sdtw.after22
+                - const: false
+            then: sdtw.zero
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.raw25
+      printed: (helper)
+      type: NonNegDollars
+      label: Subtract line 24 from line 23; floor at zero before skip rule
+      expr:
+        op: subtract_floor0
+        from: sdtw.line23
+        take: sdtw.line24
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line25
+      printed: "25"
+      type: NonNegDollars
+      label: Subtract line 24 from line 23; floor at zero
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sdtw.after22
+                - const: true
+            then: sdtw.raw25
+          - guard:
+              op: test
+              eq:
+                - sdtw.after22
+                - const: false
+            then: sdtw.zero
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.raw26
+      printed: (helper)
+      type: NonNegDollars
+      label: 15-percent ceiling by filing status before skip rule
+      expr:
+        op: param
+        ref: qdcg.fifteen_rate_ceiling
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line26
+      printed: "26"
+      type: NonNegDollars
+      label: 15-percent ceiling by filing status
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sdtw.after22
+                - const: true
+            then: sdtw.raw26
+          - guard:
+              op: test
+              eq:
+                - sdtw.after22
+                - const: false
+            then: sdtw.zero
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.raw27
+      printed: (helper)
+      type: NonNegDollars
+      label: Smaller of lines 1 and 26 before skip rule
+      expr:
+        op: smaller_of
+        of:
+          - sdtw.line1
+          - sdtw.line26
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line27
+      printed: "27"
+      type: NonNegDollars
+      label: Smaller of lines 1 and 26
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sdtw.after22
+                - const: true
+            then: sdtw.raw27
+          - guard:
+              op: test
+              eq:
+                - sdtw.after22
+                - const: false
+            then: sdtw.zero
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.raw28
+      printed: (helper)
+      type: Dollars
+      label: Add lines 21 and 22 before skip rule
+      expr:
+        op: sum
+        of:
+          - sdtw.line21
+          - sdtw.line22
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line28
+      printed: "28"
+      type: Dollars
+      label: Add lines 21 and 22
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sdtw.after22
+                - const: true
+            then: sdtw.raw28
+          - guard:
+              op: test
+              eq:
+                - sdtw.after22
+                - const: false
+            then: sdtw.zero
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.raw29
+      printed: (helper)
+      type: NonNegDollars
+      label: Subtract line 28 from line 27; floor at zero before skip rule
+      expr:
+        op: subtract_floor0
+        from: sdtw.line27
+        take: sdtw.line28
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line29
+      printed: "29"
+      type: NonNegDollars
+      label: Subtract line 28 from line 27; floor at zero
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sdtw.after22
+                - const: true
+            then: sdtw.raw29
+          - guard:
+              op: test
+              eq:
+                - sdtw.after22
+                - const: false
+            then: sdtw.zero
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.raw30
+      printed: (helper)
+      type: NonNegDollars
+      label: Smaller of lines 25 and 29 before skip rule
+      expr:
+        op: smaller_of
+        of:
+          - sdtw.line25
+          - sdtw.line29
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line30
+      printed: "30"
+      type: NonNegDollars
+      label: Smaller of lines 25 and 29
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sdtw.after22
+                - const: true
+            then: sdtw.raw30
+          - guard:
+              op: test
+              eq:
+                - sdtw.after22
+                - const: false
+            then: sdtw.zero
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.raw31
+      printed: (helper)
+      type: NonNegDollars
+      label: Multiply line 30 by 15 percent before skip rule
+      expr:
+        op: multiply_rate
+        amount: sdtw.line30
+        rate:
+          param: sdtw.rate15
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+      ambiguity: amb.2025.multiplication_subcent
+    - id: sdtw.line31
+      printed: "31"
+      type: NonNegDollars
+      label: Multiply line 30 by 15 percent
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sdtw.after22
+                - const: true
+            then: sdtw.raw31
+          - guard:
+              op: test
+              eq:
+                - sdtw.after22
+                - const: false
+            then: sdtw.zero
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.raw32
+      printed: (helper)
+      type: Dollars
+      label: Add lines 24 and 30 before skip rule
+      expr:
+        op: sum
+        of:
+          - sdtw.line24
+          - sdtw.line30
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line32
+      printed: "32"
+      type: Dollars
+      label: Add lines 24 and 30
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sdtw.after22
+                - const: true
+            then: sdtw.raw32
+          - guard:
+              op: test
+              eq:
+                - sdtw.after22
+                - const: false
+            then: sdtw.zero
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.raw33
+      printed: (helper)
+      type: Dollars
+      label: Subtract line 32 from line 23 before skip rule
+      expr:
+        op: subtract
+        from: sdtw.line23
+        take: sdtw.line32
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line33
+      printed: "33"
+      type: Dollars
+      label: Subtract line 32 from line 23
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sdtw.after32
+                - const: true
+            then: sdtw.raw33
+          - guard:
+              op: test
+              eq:
+                - sdtw.after32
+                - const: false
+            then: sdtw.zero
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.raw34
+      printed: (helper)
+      type: Dollars
+      label: Multiply line 33 by 20 percent before skip rule
+      expr:
+        op: multiply_rate
+        amount: sdtw.line33
+        rate:
+          param: sdtw.rate20
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+      ambiguity: amb.2025.multiplication_subcent
+    - id: sdtw.line34
+      printed: "34"
+      type: Dollars
+      label: Multiply line 33 by 20 percent
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sdtw.after32
+                - const: true
+            then: sdtw.raw34
+          - guard:
+              op: test
+              eq:
+                - sdtw.after32
+                - const: false
+            then: sdtw.zero
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.raw35
+      printed: (helper)
+      type: NonNegDollars
+      label: Smaller of line 9 and Schedule D line 19 before skip rule
+      expr:
+        op: smaller_of
+        of:
+          - sdtw.line9
+          - sd.line19
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line35
+      printed: "35"
+      type: NonNegDollars
+      label: Smaller of line 9 and Schedule D line 19
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sdtw.use1250
+                - const: true
+            then: sdtw.raw35
+          - guard:
+              op: test
+              eq:
+                - sdtw.use1250
+                - const: false
+            then: sdtw.zero
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.raw36
+      printed: (helper)
+      type: NonNegDollars
+      label: Add lines 10 and 21 before skip rule
+      expr:
+        op: sum
+        of:
+          - sdtw.line10
+          - sdtw.line21
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line36
+      printed: "36"
+      type: NonNegDollars
+      label: Add lines 10 and 21
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sdtw.use1250
+                - const: true
+            then: sdtw.raw36
+          - guard:
+              op: test
+              eq:
+                - sdtw.use1250
+                - const: false
+            then: sdtw.zero
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.raw37
+      printed: (helper)
+      type: NonNegDollars
+      label: Amount from line 1 before skip rule
+      expr:
+        op: copy
+        from: sdtw.line1
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line37
+      printed: "37"
+      type: NonNegDollars
+      label: Amount from line 1
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sdtw.use1250
+                - const: true
+            then: sdtw.raw37
+          - guard:
+              op: test
+              eq:
+                - sdtw.use1250
+                - const: false
+            then: sdtw.zero
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.raw38
+      printed: (helper)
+      type: NonNegDollars
+      label: Subtract line 37 from line 36; floor at zero before skip rule
+      expr:
+        op: subtract_floor0
+        from: sdtw.line36
+        take: sdtw.line37
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line38
+      printed: "38"
+      type: NonNegDollars
+      label: Subtract line 37 from line 36; floor at zero
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sdtw.use1250
+                - const: true
+            then: sdtw.raw38
+          - guard:
+              op: test
+              eq:
+                - sdtw.use1250
+                - const: false
+            then: sdtw.zero
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.raw39
+      printed: (helper)
+      type: NonNegDollars
+      label: Subtract line 38 from line 35; floor at zero before skip rule
+      expr:
+        op: subtract_floor0
+        from: sdtw.line35
+        take: sdtw.line38
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line39
+      printed: "39"
+      type: NonNegDollars
+      label: Subtract line 38 from line 35; floor at zero
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sdtw.use1250
+                - const: true
+            then: sdtw.raw39
+          - guard:
+              op: test
+              eq:
+                - sdtw.use1250
+                - const: false
+            then: sdtw.zero
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.raw40
+      printed: (helper)
+      type: NonNegDollars
+      label: Multiply line 39 by 25 percent before skip rule
+      expr:
+        op: multiply_rate
+        amount: sdtw.line39
+        rate:
+          param: sdtw.rate25
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+      ambiguity: amb.2025.multiplication_subcent
+    - id: sdtw.line40
+      printed: "40"
+      type: NonNegDollars
+      label: Multiply line 39 by 25 percent
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sdtw.use1250
+                - const: true
+            then: sdtw.raw40
+          - guard:
+              op: test
+              eq:
+                - sdtw.use1250
+                - const: false
+            then: sdtw.zero
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.raw41
+      printed: (helper)
+      type: Dollars
+      label: Add lines 21, 22, 30, 33 and 39 before skip rule
+      expr:
+        op: sum
+        of:
+          - sdtw.line21
+          - sdtw.line22
+          - sdtw.line30
+          - sdtw.line33
+          - sdtw.line39
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line41
+      printed: "41"
+      type: Dollars
+      label: Add lines 21, 22, 30, 33 and 39
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sdtw.use28
+                - const: true
+            then: sdtw.raw41
+          - guard:
+              op: test
+              eq:
+                - sdtw.use28
+                - const: false
+            then: sdtw.zero
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.raw42
+      printed: (helper)
+      type: Dollars
+      label: Subtract line 41 from line 1 before skip rule
+      expr:
+        op: subtract
+        from: sdtw.line1
+        take: sdtw.line41
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line42
+      printed: "42"
+      type: Dollars
+      label: Subtract line 41 from line 1
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sdtw.use28
+                - const: true
+            then: sdtw.raw42
+          - guard:
+              op: test
+              eq:
+                - sdtw.use28
+                - const: false
+            then: sdtw.zero
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.raw43
+      printed: (helper)
+      type: Dollars
+      label: Multiply line 42 by 28 percent before skip rule
+      expr:
+        op: multiply_rate
+        amount: sdtw.line42
+        rate:
+          param: sdtw.rate28
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+      ambiguity: amb.2025.multiplication_subcent
+    - id: sdtw.line43
+      printed: "43"
+      type: Dollars
+      label: Multiply line 42 by 28 percent
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sdtw.use28
+                - const: true
+            then: sdtw.raw43
+          - guard:
+              op: test
+              eq:
+                - sdtw.use28
+                - const: false
+            then: sdtw.zero
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line44
+      printed: "44"
+      type: Dollars
+      label: Tax on line 21 using Tax Table or Tax Computation Worksheet
+      expr:
+        op: copy
+        from:
+          def: tax_on_amount
+          bind:
+            amount: sdtw.line21
+            status: f1040.status
+          line: tax
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line45
+      printed: "45"
+      type: Dollars
+      label: Add lines 31, 34, 40, 43 and 44
+      expr:
+        op: sum
+        of:
+          - sdtw.line31
+          - sdtw.line34
+          - sdtw.line40
+          - sdtw.line43
+          - sdtw.line44
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line46
+      printed: "46"
+      type: Dollars
+      label: Tax on all taxable income using Tax Table or Tax Computation Worksheet
+      expr:
+        op: copy
+        from:
+          def: tax_on_amount
+          bind:
+            amount: sdtw.line1
+            status: f1040.status
+          line: tax
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet
+    - id: sdtw.line47
+      printed: "47"
+      type: Dollars
+      label: Smaller of lines 45 and 46; tax on all taxable income
+      expr:
+        op: smaller_of
+        of:
+          - sdtw.line45
+          - sdtw.line46
+      cite:
+        doc: i1040sd
+        locator: pp. 15–16, Schedule D Tax Worksheet

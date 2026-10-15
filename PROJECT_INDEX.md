@@ -2,11 +2,12 @@
 
 An open, verifiable formalization of the IRS forms-and-instructions layer for US federal individual income tax, plus a guided self-preparation interview tool as its first client. The user files their own return; the software never files, signs, or transmits.
 
-Stages 0–2 are implemented, and the owner approved proceeding after Stage 2.
-Stage 3 adds manually classified securities sales, Form 8949 B/W adjustments,
-Schedule D through line 22, loss limits, tax-method selection and a sales CLI
-interview. Required Schedule D Tax Worksheet cases are refused until Stage 4.
-See `reports/2025/stage3-review.md`; independent human hand-work remains pending.
+Stages 0–3 are implemented; the owner approved proceeding after Stage 3.
+Stage 4 adds Schedule A/B, investment interest, noncash-gift grouping, the Schedule D
+Tax Worksheet and feeders, Additional Medicare Tax, NIIT, dividend-only QBI,
+simple FTC, Schedule 2 and a CLI interview. See `reports/2025/stage4-review.md`.
+AGI and taxable income remain supplied; complete Form 1040 wiring is Stage 5.
+Independent human source review and hand-work remain pending.
 
 ## Folder structure
 
@@ -31,7 +32,7 @@ See `reports/2025/stage3-review.md`; independent human hand-work remains pending
 | `lean/` | Lean 4: atom semantics over the integers, lemmas, and the reference evaluator that reads the same canonical JSON |
 | `fixtures/2025/stage*.json` | Test fixtures: covering cases with inputs, expected values, evidence labels and notes; Stage 3 adds official column-arithmetic examples; synthetic values remain regressions pending human hand-work |
 | `rendered/2025/` | Committed renderer output (each line beside its IRS label and citation) for line-by-line review |
-| `reports/2025/` | Generated reports: Tax Table midpoint conjecture, branch/gate/arithmetic coverage and evidence, evaluator agreement, mutation score, Stage 2/3 review packets and CLI values sheets |
+| `reports/2025/` | Generated reports: Tax Table midpoint conjecture, branch/gate/arithmetic coverage and evidence, evaluator agreement, mutation score, Stage 2/3/4 review packets and CLI values sheets |
 
 ## Naming conventions
 

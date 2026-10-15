@@ -1,0 +1,411 @@
+form:
+  id: f4952
+  kind: form
+  title: Form 4952 — supported investment-interest deduction and election
+  tax_year: 2025
+  note: The election is supplied by the taxpayer, not optimized or made automatically.
+    Capital-gain-first allocation is used. A calculated carryforward to 2026 is shown; prior-year
+    carryovers are refused.
+  lines:
+    - id: f4952.line1
+      printed: "1"
+      type: NonNegDollars
+      label: Investment interest paid or accrued in 2025
+      expr:
+        op: input
+        source: Investment interest paid or accrued in 2025
+      cite:
+        doc: f4952
+        locator: pp. 1, 3–4, Investment Interest Expense Deduction
+    - id: f4952.carryover
+      printed: (helper)
+      type: Bool
+      label: Any prior-year disallowed investment interest carryover?
+      expr:
+        op: input
+        source: Any prior-year disallowed investment interest carryover?
+      cite:
+        doc: f4952
+        locator: pp. 1, 3–4, Investment Interest Expense Deduction
+    - id: f4952.unsupported
+      printed: (helper)
+      type: Bool
+      label: Interest attributable to royalties, a business, passive activities, tax-exempt income, or
+        at-risk limitations; other unsupported investment income or expenses?
+      expr:
+        op: input
+        source: Interest attributable to royalties, a business, passive activities, tax-exempt income, or
+          at-risk limitations; other unsupported investment income or expenses?
+      cite:
+        doc: f4952
+        locator: pp. 1, 3–4, Investment Interest Expense Deduction
+    - id: f4952.alternative_allocation
+      printed: (helper)
+      type: Bool
+      label: Elect an alternative allocation of Form 4952 line 4g to qualified dividends instead of
+        capital gains first?
+      expr:
+        op: input
+        source: Elect an alternative allocation of Form 4952 line 4g to qualified dividends instead of
+          capital gains first?
+      cite:
+        doc: f4952
+        locator: pp. 1, 3–4, Investment Interest Expense Deduction
+    - id: f4952.line4a
+      printed: 4a
+      type: NonNegDollars
+      label: Gross taxable interest and ordinary dividends from investment property, before subtracting
+        qualified dividends
+      expr:
+        op: sum
+        of:
+          - sb.line2
+          - sb.line6
+      cite:
+        doc: f4952
+        locator: pp. 1, 3–4, Investment Interest Expense Deduction
+    - id: f4952.line4g
+      printed: 4g
+      type: NonNegDollars
+      label: Amount of qualified dividends and net capital gain elected into investment income
+      expr:
+        op: input
+        source: Amount of qualified dividends and net capital gain elected into investment income
+      cite:
+        doc: f4952
+        locator: pp. 1, 3–4, Investment Interest Expense Deduction
+    - id: f4952.zero
+      printed: (helper)
+      type: NonNegDollars
+      label: Zero amount
+      expr:
+        op: param
+        ref: sales.zero
+      cite:
+        doc: f4952
+        locator: pp. 1, 3–4, Investment Interest Expense Deduction
+    - id: f4952.line2
+      printed: "2"
+      type: NonNegDollars
+      label: Prior-year disallowed interest is zero after screening
+      expr:
+        op: copy
+        from: f4952.zero
+      cite:
+        doc: f4952
+        locator: pp. 1, 3–4, Investment Interest Expense Deduction
+      refuses:
+        - when: f4952.carryover
+          form: Form 4952
+          remedy: Prior-year investment-interest carryovers are outside scope.
+          cite:
+            doc: f4952
+            locator: pp. 1, 3–4, Investment Interest Expense Deduction
+        - when: f4952.unsupported
+          form: Form 4952 / Form 6198 / Schedule E
+          remedy: Allocate the interest and prepare the applicable unsupported schedule or at-risk
+            computation.
+          cite:
+            doc: f4952
+            locator: pp. 1, 3–4, Investment Interest Expense Deduction
+        - when: f4952.alternative_allocation
+          form: Form 4952 alternative allocation
+          remedy: Only the default capital-gain-first allocation is supported; alternative allocation and Form
+            1116 coordination are outside scope.
+          cite:
+            doc: f4952
+            locator: pp. 1, 3–4, Investment Interest Expense Deduction
+    - id: f4952.line3
+      printed: "3"
+      type: NonNegDollars
+      label: Add lines 1 and 2
+      expr:
+        op: sum
+        of:
+          - f4952.line1
+          - f4952.line2
+      cite:
+        doc: f4952
+        locator: pp. 1, 3–4, Investment Interest Expense Deduction
+    - id: f4952.line4b
+      printed: 4b
+      type: NonNegDollars
+      label: Qualified dividends included on line 4a
+      expr:
+        op: copy
+        from: f1040.line3a
+      cite:
+        doc: f4952
+        locator: pp. 1, 3–4, Investment Interest Expense Deduction
+    - id: f4952.bad_dividends
+      printed: (helper)
+      type: Bool
+      label: Qualified dividends exceed gross investment income
+      expr:
+        op: test
+        gt:
+          - f4952.line4b
+          - f4952.line4a
+      cite:
+        doc: f4952
+        locator: pp. 1, 3–4, Investment Interest Expense Deduction
+    - id: f4952.line4c
+      printed: 4c
+      type: Dollars
+      label: Subtract line 4b from line 4a
+      expr:
+        op: subtract
+        from: f4952.line4a
+        take: f4952.line4b
+      cite:
+        doc: f4952
+        locator: pp. 1, 3–4, Investment Interest Expense Deduction
+      refuses:
+        - when: f4952.bad_dividends
+          form: Form 4952
+          remedy: "Correct investment-income inputs: line 4b is included in line 4a."
+          cite:
+            doc: f4952
+            locator: pp. 1, 3–4, Investment Interest Expense Deduction
+    - id: f4952.line4d
+      printed: 4d
+      type: NonNegDollars
+      label: Net gain from investment-property dispositions, including distributions
+      expr:
+        op: subtract_floor0
+        from: sd.line16
+        take:
+          const: 0
+      cite:
+        doc: f4952
+        locator: pp. 1, 3–4, Investment Interest Expense Deduction
+    - id: f4952.line4e
+      printed: 4e
+      type: NonNegDollars
+      label: Smaller of line 4d and net capital gain
+      expr:
+        op: smaller_of
+        of:
+          - f4952.line4d
+          - sd.net_gain
+      cite:
+        doc: f4952
+        locator: pp. 1, 3–4, Investment Interest Expense Deduction
+    - id: f4952.line4f
+      printed: 4f
+      type: Dollars
+      label: Subtract line 4e from line 4d
+      expr:
+        op: subtract
+        from: f4952.line4d
+        take: f4952.line4e
+      cite:
+        doc: f4952
+        locator: pp. 1, 3–4, Investment Interest Expense Deduction
+    - id: f4952.election_limit
+      printed: (helper)
+      type: NonNegDollars
+      label: "Maximum election: add lines 4b and 4e"
+      expr:
+        op: sum
+        of:
+          - f4952.line4b
+          - f4952.line4e
+      cite:
+        doc: f4952
+        locator: pp. 1, 3–4, Investment Interest Expense Deduction
+    - id: f4952.bad_election
+      printed: (helper)
+      type: Bool
+      label: Election exceeds lines 4b plus 4e
+      expr:
+        op: test
+        gt:
+          - f4952.line4g
+          - f4952.election_limit
+      cite:
+        doc: f4952
+        locator: pp. 1, 3–4, Investment Interest Expense Deduction
+    - id: f4952.election
+      printed: (helper)
+      type: NonNegDollars
+      label: Validated default-allocation election
+      expr:
+        op: copy
+        from: f4952.line4g
+      cite:
+        doc: f4952
+        locator: pp. 1, 3–4, Investment Interest Expense Deduction
+      refuses:
+        - when: f4952.carryover
+          form: Form 4952
+          remedy: Prior-year investment-interest carryovers are outside scope.
+          cite:
+            doc: f4952
+            locator: pp. 1, 3–4, Investment Interest Expense Deduction
+        - when: f4952.unsupported
+          form: Form 4952 / Form 6198 / Schedule E
+          remedy: Allocate the interest and prepare the applicable unsupported schedule or at-risk
+            computation.
+          cite:
+            doc: f4952
+            locator: pp. 1, 3–4, Investment Interest Expense Deduction
+        - when: f4952.alternative_allocation
+          form: Form 4952 alternative allocation
+          remedy: Only the default capital-gain-first allocation is supported; alternative allocation and Form
+            1116 coordination are outside scope.
+          cite:
+            doc: f4952
+            locator: pp. 1, 3–4, Investment Interest Expense Deduction
+        - when: f4952.bad_election
+          form: Form 4952
+          remedy: Enter no more than the sum of lines 4b and 4e on line 4g.
+          cite:
+            doc: f4952
+            locator: pp. 1, 3–4, Investment Interest Expense Deduction
+    - id: f4952.line4h
+      printed: 4h
+      type: Dollars
+      label: Add lines 4c, 4f and 4g
+      expr:
+        op: sum
+        of:
+          - f4952.line4c
+          - f4952.line4f
+          - f4952.election
+      cite:
+        doc: f4952
+        locator: pp. 1, 3–4, Investment Interest Expense Deduction
+    - id: f4952.line5
+      printed: "5"
+      type: NonNegDollars
+      label: Other deductible investment expenses are zero in the supported securities slice
+      expr:
+        op: copy
+        from: f4952.zero
+      cite:
+        doc: f4952
+        locator: pp. 1, 3–4, Investment Interest Expense Deduction
+      refuses:
+        - when: f4952.carryover
+          form: Form 4952
+          remedy: Prior-year investment-interest carryovers are outside scope.
+          cite:
+            doc: f4952
+            locator: pp. 1, 3–4, Investment Interest Expense Deduction
+        - when: f4952.unsupported
+          form: Form 4952 / Form 6198 / Schedule E
+          remedy: Allocate the interest and prepare the applicable unsupported schedule or at-risk
+            computation.
+          cite:
+            doc: f4952
+            locator: pp. 1, 3–4, Investment Interest Expense Deduction
+        - when: f4952.alternative_allocation
+          form: Form 4952 alternative allocation
+          remedy: Only the default capital-gain-first allocation is supported; alternative allocation and Form
+            1116 coordination are outside scope.
+          cite:
+            doc: f4952
+            locator: pp. 1, 3–4, Investment Interest Expense Deduction
+    - id: f4952.line6
+      printed: "6"
+      type: NonNegDollars
+      label: Line 4h less line 5; floor at zero
+      expr:
+        op: subtract_floor0
+        from: f4952.line4h
+        take: f4952.line5
+      cite:
+        doc: f4952
+        locator: pp. 1, 3–4, Investment Interest Expense Deduction
+    - id: f4952.line7
+      printed: "7"
+      type: NonNegDollars
+      label: "Interest carryforward to 2026: line 3 less line 6; floor at zero"
+      expr:
+        op: subtract_floor0
+        from: f4952.line3
+        take: f4952.line6
+      cite:
+        doc: f4952
+        locator: pp. 1, 3–4, Investment Interest Expense Deduction
+    - id: f4952.line8
+      printed: "8"
+      type: NonNegDollars
+      label: "Investment interest deduction: smaller of lines 3 and 6"
+      expr:
+        op: smaller_of
+        of:
+          - f4952.line3
+          - f4952.line6
+      cite:
+        doc: f4952
+        locator: pp. 1, 3–4, Investment Interest Expense Deduction
+    - id: f4952.exception
+      printed: (helper)
+      type: Bool
+      label: "Filing exception: interest and ordinary dividends less qualified dividends exceed investment
+        interest, with no other deductible expenses or carryover"
+      expr:
+        op: test
+        all:
+          - op: test
+            gt:
+              - f4952.line4c
+              - f4952.line1
+          - op: test
+            eq:
+              - f4952.line5
+              - const: 0
+          - op: test
+            eq:
+              - f4952.carryover
+              - const: false
+      cite:
+        doc: f4952
+        locator: pp. 1, 3–4, Investment Interest Expense Deduction
+    - id: f4952.required
+      printed: (helper)
+      type: Bool
+      label: File for an election, or to claim interest when the exception does not apply
+      expr:
+        op: test
+        any:
+          - op: test
+            gt:
+              - f4952.election
+              - const: 0
+          - op: test
+            all:
+              - op: test
+                gt:
+                  - f4952.line1
+                  - const: 0
+              - op: test
+                eq:
+                  - f4952.exception
+                  - const: false
+      cite:
+        doc: f4952
+        locator: pp. 1, 3–4, Investment Interest Expense Deduction
+      refuses:
+        - when: f4952.carryover
+          form: Form 4952
+          remedy: Prior-year investment-interest carryovers are outside scope.
+          cite:
+            doc: f4952
+            locator: pp. 1, 3–4, Investment Interest Expense Deduction
+        - when: f4952.unsupported
+          form: Form 4952 / Form 6198 / Schedule E
+          remedy: Allocate the interest and prepare the applicable unsupported schedule or at-risk
+            computation.
+          cite:
+            doc: f4952
+            locator: pp. 1, 3–4, Investment Interest Expense Deduction
+        - when: f4952.alternative_allocation
+          form: Form 4952 alternative allocation
+          remedy: Only the default capital-gain-first allocation is supported; alternative allocation and Form
+            1116 coordination are outside scope.
+          cite:
+            doc: f4952
+            locator: pp. 1, 3–4, Investment Interest Expense Deduction
