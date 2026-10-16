@@ -1,0 +1,184 @@
+# Walk 1 — stage5.return.owed (profile full)
+start -> status=incomplete; first question: [f1040.status] Form 1040, Filing Status checkboxes
+step 1: [scope.credits] Any dependent or other credit outside the simple foreign tax credit and excess S -> incomplete
+step 2: [scope.schedule1] Any income or adjustment requiring Schedule 1, including a taxable state/local t -> incomplete
+step 3: [scope.other_income] Any retirement, Social Security, nonresident or other income/return treatment ou -> incomplete
+step 4: [scope.schedule1a] Any deduction claimed on Schedule 1-A, including tips, overtime, car-loan intere -> incomplete
+step 5: [scope.other_line16] Any additional Form 1040 line 16 tax, including Forms 8814, 4972, 8615 or a sect -> incomplete
+step 6: [$w2@person[taxpayer]] List stable keys for Form W-2 — Social Security boxes by employer. -> incomplete
+step 7: [person[taxpayer].w2[emp_a].box1] Wages, tips, other compensation -> incomplete
+step 8: [person[taxpayer].w2[emp_a].box2] Federal income tax withheld -> incomplete
+step 9: [person[taxpayer].w2[emp_b].box1] Wages, tips, other compensation -> incomplete
+step 10: [person[taxpayer].w2[emp_b].box2] Federal income tax withheld -> incomplete
+step 11: [f1040.line25b] Federal income tax withheld on Form(s) 1099 -> incomplete
+step 12: [f1040.line25c] Federal income tax withheld on other forms (see instructions) -> incomplete
+step 13: [f1040.line26] 2025 estimated tax payments and amount applied from 2024 return -> incomplete
+step 14: [f1040.line26] answered null -> status=incomplete; helpRequested=true; same question re-asked: true
+step 14: [f1040.line3a] Form 1040 line 3a total qualified dividends, generally Form 1099-DIV box 1b, aft -> incomplete
+step 15: [f4952.carryover] Any prior-year disallowed investment interest carryover? -> incomplete
+step 16: [f4952.unsupported] Interest attributable to royalties, a business, passive activities, tax-exempt i -> incomplete
+step 17: [f4952.alternative_allocation] Elect an alternative allocation of Form 4952 line 4g to qualified dividends inst -> incomplete
+step 18: [f4952.line1] Investment interest paid or accrued in 2025 -> incomplete
+step 19: [f4952.line4g] Amount of qualified dividends and net capital gain elected into investment incom -> incomplete
+step 20: [ftc.all_passive] Was all foreign-source gross income passive category income under the small-tax  -> incomplete
+step 21: [ftc.elect] Elect the credit without Form 1116, with no carryover to or from this election y -> incomplete
+step 22: [ftc.eligible] Have creditability, holding-period, related-payment and required foreign-tax red -> incomplete
+step 23: [ftc.statements] Were all foreign income and taxes reported on qualified payee statements? -> incomplete
+step 24: [ftc.taxes] Total creditable foreign taxes after required reductions; generally Form 1099-IN -> incomplete
+step 25: [person[taxpayer].rrta] Do any wage statements report railroad retirement compensation or taxes (W-2 box -> incomplete
+step 26: [person[taxpayer].w2[emp_a].box4] Social security tax withheld -> incomplete
+step 27: [person[taxpayer].w2[emp_b].box4] Social security tax withheld -> incomplete
+step 28: [person[taxpayer].w2[emp_a].box3] Social security wages -> incomplete
+step 29: [person[taxpayer].w2[emp_a].box7] Social security tips -> incomplete
+step 30: [person[taxpayer].w2[emp_b].box3] Social security wages -> incomplete
+step 31: [person[taxpayer].w2[emp_b].box7] Social security tips -> incomplete
+step 32: [s2.amt] Are you required to file Form 6251 or do you have an AMT adjustment requiring it -> incomplete
+step 33: [s2.other] Any Schedule 2 tax other than Additional Medicare Tax or Net Investment Income T -> incomplete
+step 34: [f8959.unsupported] Any self-employment income, RRTA compensation, unreported tips (Form 4137), or F -> incomplete
+step 35: [person[taxpayer].w2[emp_a].box5] Form W-2 box 5 -> incomplete
+step 36: [person[taxpayer].w2[emp_b].box5] Form W-2 box 5 -> incomplete
+step 37: [f8960.allocated_taxes] Deductible state/local income and property taxes reasonably allocated to net inv -> incomplete
+step 38: [f8960.unsupported] Any annuity, rental, royalty, business/pass-through income, CFC/PFIC holding, se -> incomplete
+step 39: [f8960.refund] Any recovery/refund of a previously deducted expense, including state/local tax  -> incomplete
+step 40: [s3.line10] Amount paid with request for extension to file -> incomplete
+step 41: [s3.line12] Credit for federal tax on fuels from Form 4136 (supplied subtotal; preparation o -> incomplete
+step 42: [s3.line14] Total other payments or refundable credits (supplied subtotal; preparation outsi -> incomplete
+step 43: [s3.line9] Net premium tax credit from Form 8962 (supplied subtotal; preparation outside St -> incomplete
+step 44: [sa.dependent] Can someone claim you or your spouse as a dependent, or are you a dual-status al -> incomplete
+step 45: [sa.elect_itemize] Elect to itemize even if the standard deduction is larger? -> incomplete
+step 46: [sa.line5a] State/local income taxes paid, including withholding; no sales-tax election -> incomplete
+step 47: [sa.line5b] Deductible state/local real estate taxes -> incomplete
+step 48: [sa.line5c] Deductible state/local personal property taxes -> incomplete
+step 49: [sa.spouse_extra] Claiming any age/blindness standard-deduction boxes for a spouse? -> incomplete
+step 50: [sa.age65] Were you born before January 2, 1961? -> incomplete
+step 51: [sa.blind] Are you blind under the standard-deduction instructions? -> incomplete
+step 52: [sa.unsupported] Any casualty/theft loss, other itemized deduction, foreign tax deduction, mortga -> incomplete
+step 53: [sa.charity_limited] Are any charitable deductions reduced by income limits, or carried over from a p -> incomplete
+step 54: [sa.excluded_income] Any excluded Puerto Rico income, Form 2555 or Form 4563 amounts? -> incomplete
+step 55: [$gift] List stable keys for Form 8283 — groups of similar noncash property. -> incomplete
+step 56: [sa.line1] Unreimbursed eligible medical and dental expenses -> incomplete
+step 57: [sa.line11] Deductible cash/check charitable gifts before income limits, after benefits rece -> incomplete
+step 58: [sa.line8a] Eligible home mortgage interest and points on Form 1098, after confirming the de -> incomplete
+step 59: [sb.unsupported] Any nominee income, original issue discount, accrued interest adjustment, bond p -> incomplete
+step 60: [sb.fbar_required] Are you required to file FinCEN Form 114 (FBAR)? Determine under its instruction -> incomplete
+step 61: [sb.form8938] Are you required to file Form 8938 for specified foreign financial assets? -> incomplete
+step 62: [sb.line8] Received a distribution from, or were grantor of or transferor to, a foreign tru -> incomplete
+step 63: [$interest] List stable keys for taxable interest payers. Use [] when there are none. -> incomplete
+step 64: [interest[bank_a].amount] Taxable interest from this payer, including Treasury interest; exclude tax-exemp -> incomplete
+step 65: [sb.ordinary_dividends] Total ordinary dividends, Form 1099-DIV box 1a -> incomplete
+step 66: [sd.distributions] Capital gain distributions, generally Form 1099-DIV box 2a -> incomplete
+step 67: [sd.other_forms] Are there gains/losses from Forms 4797, 2439, 6252, 4684, 6781, 8824 or Schedule -> incomplete
+step 68: [sd.carryover] Is there a capital loss carryover from the prior year? -> incomplete
+step 69: [$sales] List stable transaction keys for all sales, including transactions intended for  -> incomplete
+step 70: [div.box2b] Unrecaptured section 1250 gain, box 2b -> incomplete
+step 71: [div.box2c] Section 1202 gain, box 2c -> incomplete
+step 72: [div.box13] Specified private activity bond interest dividends, box 13 -> incomplete
+step 73: [div.basis_reconciled] For box 3, have basis reductions been applied to records with no distribution ex -> incomplete
+step 74: [div.box10] Noncash liquidation distributions, box 10 -> incomplete
+step 75: [div.box2d] Collectibles (28%) gain, box 2d -> incomplete
+step 76: [div.box2e] Section 897 ordinary dividends, box 2e -> incomplete
+step 77: [div.box2f] Section 897 capital gain, box 2f -> incomplete
+step 78: [div.box3] Nondividend distributions/return of capital, box 3 -> incomplete
+step 79: [div.box9] Cash liquidation distributions, box 9 -> incomplete
+step 80: [qbi.dividends] Qualified section 199A dividends from Form 1099-DIV box 5 after confirming holdi -> incomplete
+step 81: [qbi.unsupported] Any QBI or PTP income/loss other than section 199A dividends, prior-year QBI/REI -> incomplete
+step 82: [(none)]  -> complete
+walk done: steps=82, status=complete
+  outcome f1040.line15 = $108950.00 (fixture expects $108950.00)
+  outcome f1040.line16 = $18860.00 (fixture expects $18860.00)
+  outcome f1040.line24 = $18860.00 (fixture expects $18860.00)
+  outcome f1040.line33 = $17000.00 (fixture expects $17000.00)
+  outcome f1040.line37 = $1860.00 (fixture expects $1860.00)
+  (fixture-only keys, not in the interview response slice: f1040.line35a, f1040.line36)
+  43 spine values present in the interview response all match the fixture expectations
+correction: interest 1,200.00 -> 2,000.00: line15=$109750.00, line24=$19052.00, line37=$2052.00 (was $1860.00)
+reverted: line37=$1860.00 — original values restored
+
+# Walk 2 — stage5.refuse.screens (screen refusals)
+walk done: steps=2, status=refused
+refusal: gate=scope.credits form=Schedule 8812 / other credit forms
+  remedy: Dependent and other unsupported credits require forms outside this proof of concept.
+
+# Question sequence as asked (82 questions before completion)
+  [ 0] f1040.status                           Form 1040, Filing Status checkboxes
+  [ 0] scope.credits                          Any dependent or other credit outside the simple foreign tax credit and excess Social Secu
+  [ 0] scope.schedule1                        Any income or adjustment requiring Schedule 1, including a taxable state/local tax refund?
+  [ 0] scope.other_income                     Any retirement, Social Security, nonresident or other income/return treatment outside wage
+  [ 0] scope.schedule1a                       Any deduction claimed on Schedule 1-A, including tips, overtime, car-loan interest or enha
+  [ 0] scope.other_line16                     Any additional Form 1040 line 16 tax, including Forms 8814, 4972, 8615 or a section 962 el
+  [ 5] $w2@person[taxpayer]                   List stable keys for Form W-2 — Social Security boxes by employer.
+  [ 3] person[taxpayer].w2[emp_a].box1        Wages, tips, other compensation
+  [ 3] person[taxpayer].w2[emp_a].box2        Federal income tax withheld
+  [ 3] person[taxpayer].w2[emp_b].box1        Wages, tips, other compensation
+  [ 3] person[taxpayer].w2[emp_b].box2        Federal income tax withheld
+  [10] f1040.line25b                          Federal income tax withheld on Form(s) 1099
+  [10] f1040.line25c                          Federal income tax withheld on other forms (see instructions)
+  [10] f1040.line26                           2025 estimated tax payments and amount applied from 2024 return
+  [10] f1040.line3a                           Form 1040 line 3a total qualified dividends, generally Form 1099-DIV box 1b, after the lin
+  [10] f4952.carryover                        Any prior-year disallowed investment interest carryover?
+  [10] f4952.unsupported                      Interest attributable to royalties, a business, passive activities, tax-exempt income, or
+  [10] f4952.alternative_allocation           Elect an alternative allocation of Form 4952 line 4g to qualified dividends instead of cap
+  [10] f4952.line1                            Investment interest paid or accrued in 2025
+  [10] f4952.line4g                           Amount of qualified dividends and net capital gain elected into investment income
+  [10] ftc.all_passive                        Was all foreign-source gross income passive category income under the small-tax election r
+  [10] ftc.elect                              Elect the credit without Form 1116, with no carryover to or from this election year?
+  [10] ftc.eligible                           Have creditability, holding-period, related-payment and required foreign-tax reduction rul
+  [10] ftc.statements                         Were all foreign income and taxes reported on qualified payee statements?
+  [10] ftc.taxes                              Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 an
+  [10] person[taxpayer].rrta                  Do any wage statements report railroad retirement compensation or taxes (W-2 box 14)?
+  [ 3] person[taxpayer].w2[emp_a].box4        Social security tax withheld
+  [ 3] person[taxpayer].w2[emp_b].box4        Social security tax withheld
+  [ 4] person[taxpayer].w2[emp_a].box3        Social security wages
+  [ 4] person[taxpayer].w2[emp_a].box7        Social security tips
+  [ 4] person[taxpayer].w2[emp_b].box3        Social security wages
+  [ 4] person[taxpayer].w2[emp_b].box7        Social security tips
+  [10] s2.amt                                 Are you required to file Form 6251 or do you have an AMT adjustment requiring its review?
+  [10] s2.other                               Any Schedule 2 tax other than Additional Medicare Tax or Net Investment Income Tax?
+  [10] f8959.unsupported                      Any self-employment income, RRTA compensation, unreported tips (Form 4137), or Form 8919 w
+  [ 4] person[taxpayer].w2[emp_a].box5        Form W-2 box 5
+  [ 4] person[taxpayer].w2[emp_b].box5        Form W-2 box 5
+  [10] f8960.allocated_taxes                  Deductible state/local income and property taxes reasonably allocated to net investment in
+  [10] f8960.unsupported                      Any annuity, rental, royalty, business/pass-through income, CFC/PFIC holding, section 911
+  [10] f8960.refund                           Any recovery/refund of a previously deducted expense, including state/local tax deducted i
+  [10] s3.line10                              Amount paid with request for extension to file
+  [10] s3.line12                              Credit for federal tax on fuels from Form 4136 (supplied subtotal; preparation outside Sta
+  [10] s3.line14                              Total other payments or refundable credits (supplied subtotal; preparation outside Stage 2
+  [10] s3.line9                               Net premium tax credit from Form 8962 (supplied subtotal; preparation outside Stage 2)
+  [10] sa.dependent                           Can someone claim you or your spouse as a dependent, or are you a dual-status alien?
+  [10] sa.elect_itemize                       Elect to itemize even if the standard deduction is larger?
+  [10] sa.line5a                              State/local income taxes paid, including withholding; no sales-tax election
+  [10] sa.line5b                              Deductible state/local real estate taxes
+  [10] sa.line5c                              Deductible state/local personal property taxes
+  [10] sa.spouse_extra                        Claiming any age/blindness standard-deduction boxes for a spouse?
+  [10] sa.age65                               Were you born before January 2, 1961?
+  [10] sa.blind                               Are you blind under the standard-deduction instructions?
+  [10] sa.unsupported                         Any casualty/theft loss, other itemized deduction, foreign tax deduction, mortgage interes
+  [10] sa.charity_limited                     Are any charitable deductions reduced by income limits, or carried over from a prior year?
+  [10] sa.excluded_income                     Any excluded Puerto Rico income, Form 2555 or Form 4563 amounts?
+  [ 5] $gift                                  List stable keys for Form 8283 — groups of similar noncash property.
+  [10] sa.line1                               Unreimbursed eligible medical and dental expenses
+  [10] sa.line11                              Deductible cash/check charitable gifts before income limits, after benefits received and r
+  [10] sa.line8a                              Eligible home mortgage interest and points on Form 1098, after confirming the debt/use lim
+  [10] sb.unsupported                         Any nominee income, original issue discount, accrued interest adjustment, bond premium, se
+  [10] sb.fbar_required                       Are you required to file FinCEN Form 114 (FBAR)? Determine under its instructions; this to
+  [10] sb.form8938                            Are you required to file Form 8938 for specified foreign financial assets?
+  [10] sb.line8                               Received a distribution from, or were grantor of or transferor to, a foreign trust during
+  [ 8] $interest                              List stable keys for taxable interest payers. Use [] when there are none.
+  [10] interest[bank_a].amount                Taxable interest from this payer, including Treasury interest; exclude tax-exempt interest
+  [10] sb.ordinary_dividends                  Total ordinary dividends, Form 1099-DIV box 1a
+  [10] sd.distributions                       Capital gain distributions, generally Form 1099-DIV box 2a
+  [10] sd.other_forms                         Are there gains/losses from Forms 4797, 2439, 6252, 4684, 6781, 8824 or Schedule K-1?
+  [10] sd.carryover                           Is there a capital loss carryover from the prior year?
+  [ 1] $sales                                 List stable transaction keys for all sales, including transactions intended for aggregate
+  [15] div.box2b                              Unrecaptured section 1250 gain, box 2b
+  [15] div.box2c                              Section 1202 gain, box 2c
+  [15] div.box13                              Specified private activity bond interest dividends, box 13
+  [15] div.basis_reconciled                   For box 3, have basis reductions been applied to records with no distribution exceeding ba
+  [15] div.box10                              Noncash liquidation distributions, box 10
+  [15] div.box2d                              Collectibles (28%) gain, box 2d
+  [15] div.box2e                              Section 897 ordinary dividends, box 2e
+  [15] div.box2f                              Section 897 capital gain, box 2f
+  [15] div.box3                               Nondividend distributions/return of capital, box 3
+  [15] div.box9                               Cash liquidation distributions, box 9
+  [10] qbi.dividends                          Qualified section 199A dividends from Form 1099-DIV box 5 after confirming holding-period
+  [10] qbi.unsupported                        Any QBI or PTP income/loss other than section 199A dividends, prior-year QBI/REIT/PTP loss

@@ -17,7 +17,7 @@ interview:
       prompt: Unrecaptured section 1250 gain, box 2b
       help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown
         may be null.
-      order: 10
+      order: 15
       cite:
         doc: f1099div
         locator: Instructions for Recipient, boxes 1–16
@@ -25,7 +25,7 @@ interview:
       prompt: Section 1202 gain, box 2c
       help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown
         may be null.
-      order: 10
+      order: 15
       cite:
         doc: f1099div
         locator: Instructions for Recipient, boxes 1–16
@@ -33,7 +33,7 @@ interview:
       prompt: Collectibles (28%) gain, box 2d
       help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown
         may be null.
-      order: 10
+      order: 15
       cite:
         doc: f1099div
         locator: Instructions for Recipient, boxes 1–16
@@ -41,7 +41,7 @@ interview:
       prompt: Section 897 ordinary dividends, box 2e
       help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown
         may be null.
-      order: 10
+      order: 15
       cite:
         doc: f1099div
         locator: Instructions for Recipient, boxes 1–16
@@ -49,7 +49,7 @@ interview:
       prompt: Section 897 capital gain, box 2f
       help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown
         may be null.
-      order: 10
+      order: 15
       cite:
         doc: f1099div
         locator: Instructions for Recipient, boxes 1–16
@@ -57,7 +57,7 @@ interview:
       prompt: Nondividend distributions/return of capital, box 3
       help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown
         may be null.
-      order: 10
+      order: 15
       cite:
         doc: f1099div
         locator: Instructions for Recipient, boxes 1–16
@@ -65,7 +65,7 @@ interview:
       prompt: Federal income tax withheld, box 4
       help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown
         may be null.
-      order: 10
+      order: 15
       cite:
         doc: f1099div
         locator: Instructions for Recipient, boxes 1–16
@@ -73,7 +73,7 @@ interview:
       prompt: Investment expenses already included in box 1a, box 6
       help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown
         may be null.
-      order: 10
+      order: 15
       cite:
         doc: f1099div
         locator: Instructions for Recipient, boxes 1–16
@@ -81,7 +81,7 @@ interview:
       prompt: Cash liquidation distributions, box 9
       help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown
         may be null.
-      order: 10
+      order: 15
       cite:
         doc: f1099div
         locator: Instructions for Recipient, boxes 1–16
@@ -89,7 +89,7 @@ interview:
       prompt: Noncash liquidation distributions, box 10
       help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown
         may be null.
-      order: 10
+      order: 15
       cite:
         doc: f1099div
         locator: Instructions for Recipient, boxes 1–16
@@ -97,7 +97,7 @@ interview:
       prompt: Exempt-interest dividends, box 12
       help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown
         may be null.
-      order: 10
+      order: 15
       cite:
         doc: f1099div
         locator: Instructions for Recipient, boxes 1–16
@@ -105,7 +105,7 @@ interview:
       prompt: Specified private activity bond interest dividends, box 13
       help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown
         may be null.
-      order: 10
+      order: 15
       cite:
         doc: f1099div
         locator: Instructions for Recipient, boxes 1–16
@@ -114,7 +114,7 @@ interview:
         basis?
       help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown
         may be null.
-      order: 10
+      order: 15
       cite:
         doc: f1099div
         locator: Instructions for Recipient, boxes 1–16
@@ -122,7 +122,7 @@ interview:
       prompt: Is the FATCA reporting checkbox checked? Review Form 8938 requirements separately.
       help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown
         may be null.
-      order: 10
+      order: 15
       cite:
         doc: f1099div
         locator: Instructions for Recipient, boxes 1–16
@@ -130,7 +130,7 @@ interview:
       prompt: Form 1040, Filing Status checkboxes
       help: Money is integer cents; enter true/false for questions and one of the stated values for
         classifications. Unknown answers may be null; they never become zero.
-      order: 10
+      order: 0
       cite:
         doc: f1040
         locator: Form 1040, Filing Status
@@ -185,7 +185,7 @@ interview:
       prompt: Any self-employment income, RRTA compensation, unreported tips (Form 4137), or Form 8919
         wages?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f8959
@@ -194,7 +194,7 @@ interview:
       prompt: Any annuity, rental, royalty, business/pass-through income, CFC/PFIC holding, section 911
         exclusion, disposition adjustment, NOL or other NIIT modification outside this slice?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f8960
@@ -203,7 +203,7 @@ interview:
       prompt: Any recovery/refund of a previously deducted expense, including state/local tax deducted in
         an itemized year?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f8960
@@ -212,7 +212,7 @@ interview:
       prompt: Deductible state/local income and property taxes reasonably allocated to net investment
         income; exclude foreign taxes for which a credit is claimed
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f8960
@@ -221,7 +221,7 @@ interview:
       prompt: Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and
         Form 1099-DIV box 7
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 10
       cite:
         doc: i1116
@@ -231,7 +231,7 @@ interview:
       prompt: Was all foreign-source gross income passive category income under the small-tax election
         rules?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 10
       cite:
         doc: i1116
@@ -240,7 +240,7 @@ interview:
     - input: ftc.statements
       prompt: Were all foreign income and taxes reported on qualified payee statements?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 10
       cite:
         doc: i1116
@@ -250,7 +250,7 @@ interview:
       prompt: Have creditability, holding-period, related-payment and required foreign-tax reduction rules
         been satisfied?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 10
       cite:
         doc: i1116
@@ -259,7 +259,7 @@ interview:
     - input: ftc.elect
       prompt: Elect the credit without Form 1116, with no carryover to or from this election year?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 10
       cite:
         doc: i1116
@@ -277,7 +277,7 @@ interview:
       prompt: Deduction before income limits for this item or group of similar items across all donees,
         after required valuation/basis reductions
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 10
       cite:
         doc: i8283
@@ -285,7 +285,7 @@ interview:
     - input: gift.public_securities
       prompt: Is this group publicly traded securities?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 10
       cite:
         doc: i8283
@@ -294,7 +294,7 @@ interview:
       prompt: Does this group need an appraisal or other special treatment (including vehicles,
         pass-through entity gifts, intellectual property, inventory, conservation or partial interests)?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 10
       cite:
         doc: i8283
@@ -316,7 +316,7 @@ interview:
     - input: person.rrta
       prompt: Do any wage statements report railroad retirement compensation or taxes (W-2 box 14)?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 10
       cite:
         doc: iw2w3
@@ -326,7 +326,7 @@ interview:
       prompt: Qualified section 199A dividends from Form 1099-DIV box 5 after confirming holding-period
         and related-payment requirements
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f8995
@@ -335,7 +335,7 @@ interview:
       prompt: Any QBI or PTP income/loss other than section 199A dividends, prior-year QBI/REIT/PTP loss
         carryover, or agricultural/horticultural cooperative patronage?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f8995
@@ -343,7 +343,7 @@ interview:
     - input: s2.amt
       prompt: Are you required to file Form 6251 or do you have an AMT adjustment requiring its review?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040s2
@@ -351,7 +351,7 @@ interview:
     - input: s2.other
       prompt: Any Schedule 2 tax other than Additional Medicare Tax or Net Investment Income Tax?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040s2
@@ -359,7 +359,7 @@ interview:
     - input: s3.line9
       prompt: Net premium tax credit from Form 8962 (supplied subtotal; preparation outside Stage 2)
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040s3
@@ -367,7 +367,7 @@ interview:
     - input: s3.line10
       prompt: Amount paid with request for extension to file
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040s3
@@ -376,7 +376,7 @@ interview:
       prompt: Credit for federal tax on fuels from Form 4136 (supplied subtotal; preparation outside Stage
         2)
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040s3
@@ -384,7 +384,7 @@ interview:
     - input: s3.line14
       prompt: Total other payments or refundable credits (supplied subtotal; preparation outside Stage 2)
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040s3
@@ -393,7 +393,7 @@ interview:
       prompt: Any casualty/theft loss, other itemized deduction, foreign tax deduction, mortgage interest
         not on Form 1098 or subject to debt/use limits, or sales-tax election?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040sa
@@ -402,7 +402,7 @@ interview:
       prompt: Are any charitable deductions reduced by income limits, or carried over from a prior year?
         Determine under Publication 526 before answering.
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040sa
@@ -410,7 +410,7 @@ interview:
     - input: sa.excluded_income
       prompt: Any excluded Puerto Rico income, Form 2555 or Form 4563 amounts?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040sa
@@ -418,7 +418,7 @@ interview:
     - input: sa.dependent
       prompt: Can someone claim you or your spouse as a dependent, or are you a dual-status alien?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040sa
@@ -426,7 +426,7 @@ interview:
     - input: sa.spouse_extra
       prompt: Claiming any age/blindness standard-deduction boxes for a spouse?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040sa
@@ -434,7 +434,7 @@ interview:
     - input: sa.age65
       prompt: Were you born before January 2, 1961?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040sa
@@ -442,7 +442,7 @@ interview:
     - input: sa.blind
       prompt: Are you blind under the standard-deduction instructions?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040sa
@@ -450,7 +450,7 @@ interview:
     - input: sa.spouse_itemizes
       prompt: Married filing separately with a spouse who itemizes?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040sa
@@ -458,7 +458,7 @@ interview:
     - input: sa.elect_itemize
       prompt: Elect to itemize even if the standard deduction is larger?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040sa
@@ -466,7 +466,7 @@ interview:
     - input: sa.line1
       prompt: Unreimbursed eligible medical and dental expenses
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040sa
@@ -474,7 +474,7 @@ interview:
     - input: sa.line5a
       prompt: State/local income taxes paid, including withholding; no sales-tax election
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040sa
@@ -482,7 +482,7 @@ interview:
     - input: sa.line5b
       prompt: Deductible state/local real estate taxes
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040sa
@@ -490,7 +490,7 @@ interview:
     - input: sa.line5c
       prompt: Deductible state/local personal property taxes
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040sa
@@ -499,7 +499,7 @@ interview:
       prompt: Eligible home mortgage interest and points on Form 1098, after confirming the debt/use
         limits do not apply
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040sa
@@ -508,7 +508,7 @@ interview:
       prompt: Deductible cash/check charitable gifts before income limits, after benefits received and
         required substantiation
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040sa
@@ -646,7 +646,7 @@ interview:
     - input: scope.schedule1
       prompt: Any income or adjustment requiring Schedule 1, including a taxable state/local tax refund?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 0
       cite:
         doc: f1040
@@ -655,7 +655,7 @@ interview:
       prompt: Any deduction claimed on Schedule 1-A, including tips, overtime, car-loan interest or
         enhanced senior deduction?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 0
       cite:
         doc: f1040
@@ -664,7 +664,7 @@ interview:
       prompt: Any dependent or other credit outside the simple foreign tax credit and excess Social
         Security credit?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 0
       cite:
         doc: f1040
@@ -673,7 +673,7 @@ interview:
       prompt: Any retirement, Social Security, nonresident or other income/return treatment outside wages,
         interest, dividends and supported securities sales?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 0
       cite:
         doc: f1040
@@ -682,7 +682,7 @@ interview:
       prompt: Any additional Form 1040 line 16 tax, including Forms 8814, 4972, 8615 or a section 962
         election?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
       order: 0
       cite:
         doc: f1040
@@ -722,48 +722,48 @@ interview:
     - input: w2.box1
       prompt: Wages, tips, other compensation
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
-      order: 10
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+      order: 3
       cite:
         doc: iw2w3
         locator: p. 17, box 1
     - input: w2.box3
       prompt: Social security wages
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
-      order: 10
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+      order: 4
       cite:
         doc: iw2w3
         locator: p. 18, boxes 3, 4 and 7
     - input: w2.box7
       prompt: Social security tips
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
-      order: 10
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+      order: 4
       cite:
         doc: iw2w3
         locator: p. 18, boxes 3, 4 and 7
     - input: w2.box4
       prompt: Social security tax withheld
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
-      order: 10
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+      order: 3
       cite:
         doc: iw2w3
         locator: p. 18, boxes 3, 4 and 7
     - input: w2.box5
       prompt: Form W-2 box 5
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
-      order: 10
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+      order: 4
       cite:
         doc: f8959
         locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3
     - input: w2.box6
       prompt: Form W-2 box 6
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
-      order: 10
+        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+      order: 4
       cite:
         doc: f8959
         locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3
