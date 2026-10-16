@@ -5,7 +5,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | File | Kind | Lines |
 | --- | --- | --- |
 | div.md | form | 25 |
-| f1040.md | form | 9 |
+| f1040.md | form | 45 |
 | f4952.md | form | 25 |
 | f8959.md | form | 26 |
 | f8960.md | form | 30 |
@@ -15,11 +15,11 @@ Review these renderings line by line against the archived IRS sources in `source
 | g28.md | form | 8 |
 | gift.md | form | 5 |
 | interest.md | form | 1 |
-| person.md | worksheet | 12 |
+| person.md | worksheet | 14 |
 | qbi.md | form | 9 |
 | qdcg.md | worksheet | 27 |
 | s2.md | form | 8 |
-| s3.md | form | 8 |
+| s3.md | form | 10 |
 | sa.md | form | 55 |
 | sales.md | form | 25 |
 | sb.md | form | 12 |
@@ -29,7 +29,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | tax_on_amount.md | def | 6 |
 | tcw.md | def | 47 |
 | u1250.md | form | 19 |
-| w2.md | form | 8 |
+| w2.md | form | 10 |
 | rate_schedule.md | bracket_schedule | 4 rows |
 | tax_table.md | tax_table | 2062 rows |
 | params.md | parameters | |

@@ -1,9 +1,29 @@
 form:
   id: w2
   kind: form
-  title: Form W-2 — Social Security boxes by employer
+  title: Form W-2 — wage, withholding and Social Security boxes by employer
   tax_year: 2025
   lines:
+    - id: w2.box1
+      printed: "1"
+      label: Wages, tips, other compensation
+      type: NonNegDollars
+      expr:
+        op: input
+        source: Wages, tips, other compensation
+      cite:
+        doc: iw2w3
+        locator: p. 17, box 1
+    - id: w2.box2
+      printed: "2"
+      label: Federal income tax withheld
+      type: NonNegDollars
+      expr:
+        op: input
+        source: Federal income tax withheld
+      cite:
+        doc: iw2w3
+        locator: p. 17, box 2
     - id: w2.box3
       printed: "3"
       label: Social security wages

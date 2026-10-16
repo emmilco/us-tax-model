@@ -39,17 +39,29 @@ function generatedCases(n: number): Case[] {
     const status = statuses[Math.floor(rnd() * statuses.length)]!;
     const line15 = Math.floor(rnd() * 120000000); // up to $1.2M
     const line3a = rnd() < 0.6 ? Math.floor(rnd() * line15) : 0;
+    const standard: Record<string, number> = { single: 1575000, mfj: 3150000, mfs: 1575000, hoh: 2362500, qss: 3150000 };
     const line7a = rnd() < 0.3 ? Math.floor(rnd() * 3000000) : 0;
     const sdFiled = rnd() < 0.25;
     const inputs: Inputs = {
       "f1040.status": status,
-      "f1040.line15": line15,
       "f1040.line3a": line3a,
       "sd.distributions": line7a,
       "$sales": [], "sd.other_forms": false, "sd.carryover": false,
       "qbi.dividends":0,"div.box2b":0,"div.box2c":0,"div.box2d":0,"div.box2e":0,"div.box2f":0,"div.box3":0,"div.box9":0,"div.box10":0,"div.box13":0,"div.basis_reconciled":true, "f4952.line1": 0, "f4952.line4g": 0,
       "f4952.carryover": false, "f4952.unsupported": false, "f4952.alternative_allocation": false, "$interest": [], "sb.ordinary_dividends": line3a, "sb.unsupported": false, "sb.line7a": false, "sb.fbar_required": false, "sb.form8938": false, "sb.line8": false,
     };
+    inputs["$person"] = ["taxpayer"];
+    inputs["$w2@person[taxpayer]"] = ["a"];
+    inputs["person[taxpayer].w2[a].box1"] = Math.max(0, line15 + standard[status]! - 2 * line3a);
+    inputs["scope.schedule1"] = false;
+    inputs["scope.schedule1a"] = false;
+    inputs["scope.other_income"] = false;
+    inputs["sa.unsupported"] = false; inputs["sa.charity_limited"] = false; inputs["sa.excluded_income"] = false;
+    inputs["sa.dependent"] = false; inputs["sa.spouse_extra"] = false; inputs["sa.age65"] = false; inputs["sa.blind"] = false;
+    inputs["sa.spouse_itemizes"] = false; inputs["sa.elect_itemize"] = false;
+    inputs["sa.line1"] = 0; inputs["sa.line5a"] = 0; inputs["sa.line5b"] = 0; inputs["sa.line5c"] = 0; inputs["sa.line8a"] = 0; inputs["sa.line11"] = 0;
+    inputs["$gift"] = [];
+    inputs["qbi.unsupported"] = false;
     if (sdFiled) {
       inputs["$sales"] = ["generated"];
       Object.assign(inputs, Object.fromEntries(Object.entries({box:"D", route:"detail", code:"none", special:false,
@@ -61,6 +73,7 @@ function generatedCases(n: number): Case[] {
       stage2[`person[taxpayer].w2[${employer}].box3`] = Math.floor(rnd() * 17610001);
       stage2[`person[taxpayer].w2[${employer}].box7`] = 0;
       stage2[`person[taxpayer].w2[${employer}].box4`] = Math.floor(rnd() * 1200000);
+      if (employer === "b") stage2[`person[taxpayer].w2[b].box1`] = 0;
     }
     cases.push({id: `collections.${i}`, inputs: stage2});
     cases.push({ id: `generated.${String(i).padStart(3, "0")}`, inputs });

@@ -12,7 +12,6 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 200,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -43,7 +42,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 1575200
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -123,7 +153,6 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 2500000,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -154,7 +183,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 4075000
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -233,7 +293,6 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 9999000,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -264,7 +323,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 11574000
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -343,7 +433,6 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 9999999,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -374,7 +463,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 11574999
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -453,7 +573,6 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 10000000,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -484,7 +603,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 11575000
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -563,7 +713,6 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 10167500,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -594,7 +743,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 11742500
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -673,7 +853,6 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 15032500,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -704,7 +883,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 16607500
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -783,7 +993,6 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 22391250,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -814,7 +1023,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 23966250
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -893,7 +1133,6 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 43843750,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -924,7 +1163,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 45418750
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1003,7 +1273,6 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 70000000,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -1034,7 +1303,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 71575000
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1113,7 +1413,6 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 10335000,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -1144,7 +1443,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 11910000
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1223,7 +1553,6 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 25052500,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -1254,7 +1583,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 26627500
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1333,7 +1693,6 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 62635000,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -1364,7 +1723,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 64210000
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1443,7 +1833,6 @@
       "inputs": {
         "f1040.status": "mfj",
         "f1040.line3a": 0,
-        "f1040.line15": 15335000,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -1474,7 +1863,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 18485000
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1553,7 +1973,6 @@
       "inputs": {
         "f1040.status": "mfj",
         "f1040.line3a": 0,
-        "f1040.line15": 30065000,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -1584,7 +2003,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 33215000
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1663,7 +2113,6 @@
       "inputs": {
         "f1040.status": "mfj",
         "f1040.line3a": 0,
-        "f1040.line15": 44782500,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -1694,7 +2143,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 47932500
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1773,7 +2253,6 @@
       "inputs": {
         "f1040.status": "mfj",
         "f1040.line3a": 0,
-        "f1040.line15": 62632500,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -1804,7 +2283,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 65782500
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1883,7 +2393,6 @@
       "inputs": {
         "f1040.status": "mfj",
         "f1040.line3a": 0,
-        "f1040.line15": 80000000,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -1914,7 +2423,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 83150000
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1993,7 +2533,6 @@
       "inputs": {
         "f1040.status": "mfs",
         "f1040.line3a": 0,
-        "f1040.line15": 10167500,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -2024,7 +2563,39 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.spouse_itemizes": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 11742500
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2103,7 +2674,6 @@
       "inputs": {
         "f1040.status": "mfs",
         "f1040.line3a": 0,
-        "f1040.line15": 15032500,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -2134,7 +2704,39 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.spouse_itemizes": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 16607500
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2213,7 +2815,6 @@
       "inputs": {
         "f1040.status": "mfs",
         "f1040.line3a": 0,
-        "f1040.line15": 22391250,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -2244,7 +2845,39 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.spouse_itemizes": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 23966250
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2323,7 +2956,6 @@
       "inputs": {
         "f1040.status": "mfs",
         "f1040.line3a": 0,
-        "f1040.line15": 31316250,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -2354,7 +2986,39 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.spouse_itemizes": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 32891250
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2433,7 +3097,6 @@
       "inputs": {
         "f1040.status": "mfs",
         "f1040.line3a": 0,
-        "f1040.line15": 50000000,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -2464,7 +3127,39 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.spouse_itemizes": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 51575000
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2543,7 +3238,6 @@
       "inputs": {
         "f1040.status": "hoh",
         "f1040.line3a": 0,
-        "f1040.line15": 10167500,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -2574,7 +3268,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 12530000
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2653,7 +3378,6 @@
       "inputs": {
         "f1040.status": "hoh",
         "f1040.line3a": 0,
-        "f1040.line15": 15032500,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -2684,7 +3408,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 17395000
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2763,7 +3518,6 @@
       "inputs": {
         "f1040.status": "hoh",
         "f1040.line3a": 0,
-        "f1040.line15": 22390000,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -2794,7 +3548,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 24752500
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2873,7 +3658,6 @@
       "inputs": {
         "f1040.status": "hoh",
         "f1040.line3a": 0,
-        "f1040.line15": 43842500,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -2904,7 +3688,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 46205000
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2983,7 +3798,6 @@
       "inputs": {
         "f1040.status": "hoh",
         "f1040.line3a": 0,
-        "f1040.line15": 70000000,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -3014,7 +3828,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 72362500
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -3093,7 +3938,6 @@
       "inputs": {
         "f1040.status": "qss",
         "f1040.line3a": 0,
-        "f1040.line15": 15335000,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -3124,7 +3968,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 18485000
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -3203,7 +4078,6 @@
       "inputs": {
         "f1040.status": "qss",
         "f1040.line3a": 0,
-        "f1040.line15": 30065000,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -3234,7 +4108,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 33215000
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -3313,7 +4218,6 @@
       "inputs": {
         "f1040.status": "mfj",
         "f1040.line3a": 0,
-        "f1040.line15": 2530000,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -3344,7 +4248,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 5680000
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -3424,7 +4359,6 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 500000,
-        "f1040.line15": 5000000,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -3455,7 +4389,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 5575000
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -3618,7 +4583,6 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -3649,7 +4613,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 6075000
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -3812,7 +4807,6 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 500000,
-        "f1040.line15": 5000000,
         "$sales": [
           "a"
         ],
@@ -3854,7 +4848,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 5275000
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4017,7 +5042,6 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 2000000,
-        "f1040.line15": 1000000,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -4048,7 +5072,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": true,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 3000000,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4211,7 +5266,6 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 600000,
-        "f1040.line15": 500000,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -4242,7 +5296,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 875000
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4406,7 +5491,6 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 70000000,
-        "f1040.line15": 70000000,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -4437,7 +5521,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": true,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 70000000,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4600,7 +5715,6 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 1000000,
-        "f1040.line15": 2000000,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -4631,7 +5745,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 1575000
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4794,7 +5939,6 @@
       "inputs": {
         "f1040.status": "mfj",
         "f1040.line3a": 10000000,
-        "f1040.line15": 20000000,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -4825,7 +5969,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 3150000
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4988,7 +6163,6 @@
       "inputs": {
         "f1040.status": "mfs",
         "f1040.line3a": 1000000,
-        "f1040.line15": 5000000,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -5019,7 +6193,39 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.spouse_itemizes": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 4575000
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -5182,7 +6388,6 @@
       "inputs": {
         "f1040.status": "hoh",
         "f1040.line3a": 1000000,
-        "f1040.line15": 5000000,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -5213,7 +6418,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 5362500
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -5376,7 +6612,6 @@
       "inputs": {
         "f1040.status": "qss",
         "f1040.line3a": 1000000,
-        "f1040.line15": 5000000,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -5407,7 +6642,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 6150000
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -5570,7 +6836,6 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 15000000,
-        "f1040.line15": 30000000,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -5601,7 +6866,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 1575000
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -5764,7 +7060,6 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 10335099,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -5795,7 +7090,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 11910099
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -5874,7 +7200,6 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 19730099,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -5905,7 +7230,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 21305099
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -5984,7 +7340,6 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 25052599,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -6015,7 +7370,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 26627599
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -6094,7 +7480,6 @@
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 62635099,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -6125,7 +7510,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 64210099
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -6204,7 +7620,6 @@
       "inputs": {
         "f1040.status": "mfj",
         "f1040.line3a": 0,
-        "f1040.line15": 20670099,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -6235,7 +7650,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 23820099
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -6314,7 +7760,6 @@
       "inputs": {
         "f1040.status": "mfj",
         "f1040.line3a": 0,
-        "f1040.line15": 39460099,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -6345,7 +7790,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 42610099
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -6424,7 +7900,6 @@
       "inputs": {
         "f1040.status": "mfj",
         "f1040.line3a": 0,
-        "f1040.line15": 50105099,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -6455,7 +7930,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 53255099
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -6534,7 +8040,6 @@
       "inputs": {
         "f1040.status": "mfj",
         "f1040.line3a": 0,
-        "f1040.line15": 75160099,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -6565,7 +8070,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 78310099
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -6644,7 +8180,6 @@
       "inputs": {
         "f1040.status": "mfs",
         "f1040.line3a": 0,
-        "f1040.line15": 10335099,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -6675,7 +8210,39 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.spouse_itemizes": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 11910099
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -6754,7 +8321,6 @@
       "inputs": {
         "f1040.status": "mfs",
         "f1040.line3a": 0,
-        "f1040.line15": 19730099,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -6785,7 +8351,39 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.spouse_itemizes": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 21305099
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -6864,7 +8462,6 @@
       "inputs": {
         "f1040.status": "mfs",
         "f1040.line3a": 0,
-        "f1040.line15": 25052599,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -6895,7 +8492,39 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.spouse_itemizes": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 26627599
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -6974,7 +8603,6 @@
       "inputs": {
         "f1040.status": "mfs",
         "f1040.line3a": 0,
-        "f1040.line15": 37580099,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -7005,7 +8633,39 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.spouse_itemizes": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 39155099
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -7084,7 +8744,6 @@
       "inputs": {
         "f1040.status": "hoh",
         "f1040.line3a": 0,
-        "f1040.line15": 10335099,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -7115,7 +8774,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 12697599
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -7194,7 +8884,6 @@
       "inputs": {
         "f1040.status": "hoh",
         "f1040.line3a": 0,
-        "f1040.line15": 19730099,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -7225,7 +8914,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 22092599
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -7304,7 +9024,6 @@
       "inputs": {
         "f1040.status": "hoh",
         "f1040.line3a": 0,
-        "f1040.line15": 25050099,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -7335,7 +9054,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 27412599
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -7414,7 +9164,6 @@
       "inputs": {
         "f1040.status": "hoh",
         "f1040.line3a": 0,
-        "f1040.line15": 62635099,
         "$sales": [],
         "sd.other_forms": false,
         "sd.carryover": false,
@@ -7445,7 +9194,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 64997599
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -7511,6 +9291,107 @@
         "qdcg.line7": {
           "kind": "money",
           "cents": 6475000
+        }
+      }
+    },
+    {
+      "id": "qdcg.table.minimum.regression",
+      "covers": [
+        "qdcg.line25 right"
+      ],
+      "evidence": "synthetic-regression",
+      "evidence_note": "Agent-derived regression, pending human review: i1040gi Tax Table $50,000\u2013$50,050 Single cell is $5,920; QDCG ordinary portion $50,009 and total $50,010 are in that same band, while $1 at 15% adds $0.15 to line 23. Line 24 must win. Not class B.",
+      "inputs": {
+        "f1040.status": "single",
+        "f1040.line3a": 100,
+        "$sales": [],
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "f4952.line1": 0,
+        "f4952.carryover": false,
+        "f4952.unsupported": false,
+        "f4952.alternative_allocation": false,
+        "f4952.line4g": 0,
+        "$interest": [],
+        "sb.ordinary_dividends": 100,
+        "sb.unsupported": false,
+        "sb.line7a": false,
+        "sb.fbar_required": false,
+        "sb.form8938": false,
+        "sb.line8": false,
+        "div.box2b": 0,
+        "div.box2c": 0,
+        "div.box2d": 0,
+        "div.box2e": 0,
+        "div.box2f": 0,
+        "div.box3": 0,
+        "div.box4": 0,
+        "div.box6": 0,
+        "div.box9": 0,
+        "div.box10": 0,
+        "div.box12": 0,
+        "div.box13": 0,
+        "div.basis_reconciled": true,
+        "div.fatca": false,
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "person[taxpayer].rrta": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 6575800
+      },
+      "expect": {
+        "qdcg.line22": {
+          "kind": "money",
+          "cents": 592000
+        },
+        "qdcg.line23": {
+          "kind": "money",
+          "cents": 592015
+        },
+        "qdcg.line24": {
+          "kind": "money",
+          "cents": 592000
+        },
+        "qdcg.line25": {
+          "kind": "money",
+          "cents": 592000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 592000
         }
       }
     }

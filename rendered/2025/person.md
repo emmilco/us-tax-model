@@ -47,6 +47,20 @@
 - Expr: `{"collection":"w2","field":"w2.box4","op":"sum_over"}`
 - Cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `person.box1`
+
+- **Authored helper label:** Total W-2 box 1 for this person
+- **Encoded (NonNegDollars):** Add w2.box1 over every confirmed w2 entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"w2","field":"w2.box1","op":"sum_over"}`
+- Cite: [f1040] Form 1040 (2025), line 1a (2025; created 2025-09-05; sha256 3d31c226)
+
+## (helper) — `person.box2`
+
+- **Authored helper label:** Total W-2 box 2 for this person
+- **Encoded (NonNegDollars):** Add w2.box2 over every confirmed w2 entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"w2","field":"w2.box2","op":"sum_over"}`
+- Cite: [f1040] Form 1040 (2025), line 25a (2025; created 2025-09-05; sha256 3d31c226)
+
 ## eligible — `person.eligible`
 
 - **Authored helper label:** More than one employer and total social security wages over $176,100

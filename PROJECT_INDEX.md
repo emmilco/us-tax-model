@@ -2,12 +2,12 @@
 
 An open, verifiable formalization of the IRS forms-and-instructions layer for US federal individual income tax, plus a guided self-preparation interview tool as its first client. The user files their own return; the software never files, signs, or transmits.
 
-Stages 0–3 are implemented; the owner approved proceeding after Stage 3.
-Stage 4 adds Schedule A/B, investment interest, noncash-gift grouping, the Schedule D
-Tax Worksheet and feeders, Additional Medicare Tax, NIIT, dividend-only QBI,
-simple FTC, Schedule 2 and a CLI interview. See `reports/2025/stage4-review.md`.
-AGI and taxable income remain supplied; complete Form 1040 wiring is Stage 5.
-Independent human source review and hand-work remain pending.
+Stages 0–5 are implemented; the owner approved proceeding after Stage 4.
+Stage 5 computes the whole single-person return: Form 1040 lines 1a–37 end to
+end, the full interview profile, whole-return fixtures, per-line evidence
+coverage and the differential scaffolding. See `reports/2025/stage5-review.md`.
+AGI and taxable income are computed. Independent human source review, hand-work
+and the calculator differential remain pending. Tax year 2026 is Stage 6.
 
 ## Folder structure
 
@@ -17,22 +17,22 @@ Independent human source review and hand-work remain pending.
 | `HANDOFF-STAGE-2.md` | Stage 2 handoff and acceptance checklist |
 | `spec/stage2-proposal.md` | Owner-approved modeling choices and concrete collection binding |
 | `reviews/2025/stage2.md` | Preserved owner approval and hand-work record (not generated) |
-| `interview/` | Cited 2025 question data and CLI/collection documentation |
+| `interview/` | Cited 2025 question data and CLI/collection documentation; `full-2025.yaml` is the whole-return profile |
 | `HANDOFF.md` | Prompt for starting the build in a fresh session: reading order, settled decisions, constraints, and the first stage |
 | `spec/` | `spec.md` (scope, non-goals, data model, provenance, tests, versioning, explanation model) and `design.md` (architecture, components, build order). The agreed contract for the build |
 | `research/` | Research pass outputs. `report.md` is the cross-workstream synthesis with the committed recommendation; one detailed findings file per workstream sits beside it |
 | `sources/2025/` | Archived IRS sources (PDFs and instruction web-page snapshots), extracted text, hash/revision manifest, and Stage 0 premise findings; sources require revision review before encoding |
 | `tools/` | Source fetcher (`fetch_sources.py`), source catalog, Tax Table extractor (`extract_tax_table.py`); fixture generator, mutation tool and year diff land here or in `engine/` as they grow |
 | `schema/` | JSON Schema for all canonical data (`data.schema.json`) |
-| `forms/2025/` | Form and worksheet definitions as YAML: `f1040.yaml` (selected lines), `qdcg.yaml`, `tcw.yaml`, `tax_on_amount.yaml`; Stage 2 adds `w2.yaml`, `person.yaml`, `s3.yaml`; Stage 3 adds `sales.yaml` and `sd.yaml` |
+| `forms/2025/` | Form and worksheet definitions as YAML: `f1040.yaml` (the implemented slice, lines 1a–37), `qdcg.yaml`, `tcw.yaml`, `tax_on_amount.yaml`; Stage 2 adds `w2.yaml`, `person.yaml`, `s3.yaml`; Stage 3 adds `sales.yaml` and `sd.yaml`; Stage 4 adds the remaining forms |
 | `params/2025.yaml` | Year parameters (bracket ceilings, Tax Computation Worksheet rows, table boundary), each with a citation |
 | `tables/2025/` | Pinned data tables: `tax_table.yaml` (cell-by-cell 2025 Tax Table) and `rate_schedule.yaml` (Rev. Proc. 2024-40 schedules for the midpoint conjecture) |
 | `ambiguities/2025.yaml` | Ambiguity register (readings chosen where the instructions are silent) |
 | `engine/` | TypeScript: build (YAML to canonical JSON), checker, renderer, evaluator, interview, finite path checks, CLI integration tests, and the command-line program (the backend; every client and integration test goes through it) |
 | `lean/` | Lean 4: atom semantics over the integers, lemmas, and the reference evaluator that reads the same canonical JSON |
-| `fixtures/2025/stage*.json` | Test fixtures: covering cases with inputs, expected values, evidence labels and notes; Stage 3 adds official column-arithmetic examples; synthetic values remain regressions pending human hand-work |
+| `fixtures/2025/stage*.json` | Test fixtures: covering cases with inputs, expected values, evidence labels and notes; Stage 3 adds official column-arithmetic examples; Stage 5 adds whole-return cases (`stage5.json`) and the calculator-record directory (`differential/`); synthetic values remain regressions pending human hand-work |
 | `rendered/2025/` | Committed renderer output (each line beside its IRS label and citation) for line-by-line review |
-| `reports/2025/` | Generated reports: Tax Table midpoint conjecture, branch/gate/arithmetic coverage and evidence, evaluator agreement, mutation score, Stage 2/3/4 review packets and CLI values sheets |
+| `reports/2025/` | Generated reports: Tax Table midpoint conjecture, branch/gate/arithmetic coverage, per-line evidence coverage, evaluator agreement, mutation score, differential comparison and entry sheets, Stage 2–5 review packets and CLI values sheets |
 
 ## Naming conventions
 

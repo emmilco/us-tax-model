@@ -79,7 +79,7 @@ export function integrationChecks(): void {
       const salesLog=join(dir,id+".jsonl");
       let salesState=cli(["interview","start","--profile","sales","--log",salesLog]);
       let count=0;
-      while(salesState.status==="incomplete" && count++<50) {
+      while(salesState.status==="incomplete" && count++<150) {
         const key=salesState.question.input;
         assert.ok(key in sales.inputs, `missing sales input ${key}`);
         salesState=cli(["interview","answer","--log",salesLog,"--input",key,"--value",JSON.stringify(sales.inputs[key])]);
@@ -117,6 +117,18 @@ export function integrationChecks(): void {
         assert.equal(state.values["sa.deduction"].value.cents,2000000);
         cli(["interview","answer","--log",path,"--input","f8959.line18","--value","1"],false);
       }
+    }
+    for(const id of ["stage5.return.owed","stage5.return.refund"]) {
+      const fixture=loadCases().cases.find(c=>c.id===id)!;
+      const path=join(dir,id+".jsonl");
+      let state=cli(["interview","start","--profile","full","--log",path]);
+      for(let step=0;state.status==="incomplete"&&step<200;step++) {
+        const key=state.question.input;assert.ok(key in fixture.inputs,`missing ${key}`);
+        state=cli(["interview","answer","--log",path,"--input",key,"--value",JSON.stringify(fixture.inputs[key])]);
+      }
+      assert.equal(state.status,"complete");
+      if(id==="stage5.return.owed")assert.equal(state.values["f1040.line37"].value.cents,186000);
+      if(id==="stage5.return.refund")assert.equal(state.values["f1040.line34"].value.cents,173300);
     }
     console.log(`integration: ${checks} CLI invocations passed (interview, corrections, early refusals, invalid inputs, graph/type failures)`);
   } finally {rmSync(dir,{recursive:true,force:true});}

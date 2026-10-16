@@ -68,9 +68,9 @@
 
 ## (helper) — `sa.agi`
 
-- **Authored helper label:** Form 1040 line 11b adjusted gross income (supplied subtotal until Stage 5)
-- **Encoded (Dollars):** Input — Form 1040 line 11b adjusted gross income (supplied subtotal until Stage 5)
-- Expr: `{"op":"input","source":"Form 1040 line 11b adjusted gross income (supplied subtotal until Stage 5)"}`
+- **Authored helper label:** Form 1040 line 11b adjusted gross income
+- **Encoded (Dollars):** Enter the amount from f1040 line 11b.
+- Expr: `{"from":"f1040.line11b","op":"copy"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 
 ## 1 — `sa.line1`

@@ -3,7 +3,9 @@ interview:
   targets:
     - f1040.line7a
     - f1040.line16
-  initial: {}
+  initial:
+    $person:
+      - taxpayer
   cite:
     doc: f8949
     locator: Parts I and II, transaction rows
@@ -132,15 +134,6 @@ interview:
       cite:
         doc: i1040gi
         locator: Instructions for Form 1040, pp. 25–26, line 3a and exceptions
-    - input: f1040.line15
-      prompt: Form 1040 line 15; in Stage 1 supplied as an input (the lines that figure it are outside
-        this stage).
-      help: Money is integer cents; enter true/false for questions and one of the stated values for
-        classifications. Unknown answers may be null; they never become zero.
-      order: 10
-      cite:
-        doc: i1040gi
-        locator: Instructions for Form 1040, line 15
     - input: f4952.line1
       prompt: Investment interest paid or accrued in 2025
       help: Money is integer cents; answer true/false for screening questions. Unknown may be null.
@@ -360,3 +353,186 @@ interview:
       cite:
         doc: f1099div
         locator: Instructions for Recipient, boxes 1a, 1b and 5
+    - input: $gift
+      prompt: List stable keys for Form 8283 — groups of similar noncash property.
+      help: Enter a JSON array of distinct keys. Empty [] means none. For gifts, group similar items
+        across all donees.
+      order: 5
+      cite:
+        doc: i8283
+        locator: pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A
+    - input: $w2
+      prompt: List stable keys for Form W-2 — Social Security boxes by employer.
+      help: Enter a JSON array of distinct keys. Empty [] means none. For gifts, group similar items
+        across all donees.
+      order: 5
+      cite:
+        doc: i1040gi
+        locator: p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld
+    - input: qbi.unsupported
+      prompt: Any QBI or PTP income/loss other than section 199A dividends, prior-year QBI/REIT/PTP loss
+        carryover, or agricultural/horticultural cooperative patronage?
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f8995
+        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+    - input: sa.age65
+      prompt: Were you born before January 2, 1961?
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - input: sa.blind
+      prompt: Are you blind under the standard-deduction instructions?
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - input: sa.charity_limited
+      prompt: Are any charitable deductions reduced by income limits, or carried over from a prior year?
+        Determine under Publication 526 before answering.
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - input: sa.dependent
+      prompt: Can someone claim you or your spouse as a dependent, or are you a dual-status alien?
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - input: sa.elect_itemize
+      prompt: Elect to itemize even if the standard deduction is larger?
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - input: sa.excluded_income
+      prompt: Any excluded Puerto Rico income, Form 2555 or Form 4563 amounts?
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - input: sa.line1
+      prompt: Unreimbursed eligible medical and dental expenses
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - input: sa.line11
+      prompt: Deductible cash/check charitable gifts before income limits, after benefits received and
+        required substantiation
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - input: sa.line5a
+      prompt: State/local income taxes paid, including withholding; no sales-tax election
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - input: sa.line5b
+      prompt: Deductible state/local real estate taxes
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - input: sa.line5c
+      prompt: Deductible state/local personal property taxes
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - input: sa.line8a
+      prompt: Eligible home mortgage interest and points on Form 1098, after confirming the debt/use
+        limits do not apply
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - input: sa.spouse_extra
+      prompt: Claiming any age/blindness standard-deduction boxes for a spouse?
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - input: sa.spouse_itemizes
+      prompt: Married filing separately with a spouse who itemizes?
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - input: sa.unsupported
+      prompt: Any casualty/theft loss, other itemized deduction, foreign tax deduction, mortgage interest
+        not on Form 1098 or subject to debt/use limits, or sales-tax election?
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - input: scope.other_income
+      prompt: Any retirement, Social Security, nonresident or other income/return treatment outside wages,
+        interest, dividends and supported securities sales?
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 0
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
+    - input: scope.schedule1
+      prompt: Any income or adjustment requiring Schedule 1, including a taxable state/local tax refund?
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 0
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
+    - input: scope.schedule1a
+      prompt: Any deduction claimed on Schedule 1-A, including tips, overtime, car-loan interest or
+        enhanced senior deduction?
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 0
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
+    - input: w2.box1
+      prompt: Wages, tips, other compensation
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: iw2w3
+        locator: p. 17, box 1

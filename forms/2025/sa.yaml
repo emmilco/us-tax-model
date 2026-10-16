@@ -104,10 +104,10 @@ form:
     - id: sa.agi
       printed: (helper)
       type: Dollars
-      label: Form 1040 line 11b adjusted gross income (supplied subtotal until Stage 5)
+      label: Form 1040 line 11b adjusted gross income
       expr:
-        op: input
-        source: Form 1040 line 11b adjusted gross income (supplied subtotal until Stage 5)
+        op: copy
+        from: f1040.line11b
       cite:
         doc: f1040sa
         locator: Schedule A (2025), lines 1–18

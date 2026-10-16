@@ -1,4 +1,4 @@
-Values sheet — tax year 2025 (implemented slice; not a complete return)
+Values sheet — tax year 2025 (single-person slice; not a complete return for all filers)
 
 == Form 1040 — selected lines (Stages 1–4) ==
   Filing Status Single. Married filing jointly (even if only one had income). Married filing separately. Head of household (HOH). Qualifying surviving spouse (QSS).
@@ -8,7 +8,7 @@ Values sheet — tax year 2025 (implemented slice; not a complete return)
       = $1,481.80
       cite: [f1040] Form 1040 (2025), line 31 (2025; created 2025-09-05; 3d31c226)
 
-== Schedule 3 — Part II selected lines ==
+== Schedule 3 — selected lines ==
   (gate) Married filing status requires unsupported per-spouse interview
       = false
       cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
@@ -31,6 +31,9 @@ Values sheet — tax year 2025 (implemented slice; not a complete return)
   15  Add lines 9 through 12 and 14. Enter here and on Form 1040, line 31
       = $1,481.80
       cite: [f1040s3] Schedule 3 (2025), line 15 (2025; created 2025-11-17; 008cfd3f)
+
+Path choices (guard wording per the rendered worksheets in rendered/2025/):
+  person[taxpayer].credit: chose $1,481.80 (guard 0)
 
 Collection entries and derivations:
   person[taxpayer].rrta = false
@@ -95,6 +98,8 @@ Collection entries and derivations:
   f1040.s3.line15: sum(s3.line9 = $0; s3.line10 = $0; s3.line11 = $1,481.80; s3.line12 = $0; s3.line14 = $0)
   f1040.line31: copy(s3.line15 = $1,481.80)
 Interpretation amb.2025.ss_wages: Use boxes 3 plus 7, summed across employers separately per person. Owner approved the Stage 2 proposal. iw2w3 p. 18 defines these boxes and their combined wage base; box 1 can exclude deferrals subject to Social Security. (iw2w3, p. 18, boxes 3 and 7; compare i1040gi p. 117, Schedule 3 line 11)
-Scope: implemented worksheet slices only; unsupported paths are refused. No filing or transmission.
+Scope: single-person return (Form 1040 lines 1a–37 with the in-scope schedules and refusal screens). Unsupported paths are refused with citations. No filing or transmission.
+Rounding: amounts are exact cents; the return-wide whole-dollar rounding setting is deferred (see ambiguities/2025.yaml).
+Estimated tax penalty: not computed; the IRS will figure it (see i1040gi, line 38).
 This is a computation of published IRS forms and instructions; it is not tax or legal advice. Published instructions are not the law itself.
 The user is responsible for the return. Not affiliated with or endorsed by the IRS.

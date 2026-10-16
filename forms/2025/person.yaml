@@ -78,6 +78,28 @@ form:
       cite:
         doc: i1040gi
         locator: p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld
+    - id: person.box1
+      printed: (helper)
+      label: Total W-2 box 1 for this person
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: w2
+        field: w2.box1
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 1a
+    - id: person.box2
+      printed: (helper)
+      label: Total W-2 box 2 for this person
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: w2
+        field: w2.box2
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 25a
     - id: person.eligible
       printed: eligible
       label: More than one employer and total social security wages over $176,100

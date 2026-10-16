@@ -1,14 +1,48 @@
-Values sheet — tax year 2025 (implemented slice; not a complete return)
+Values sheet — tax year 2025 (single-person slice; not a complete return for all filers)
 
 == Form 1040 — selected lines (Stages 1–4) ==
+  Filing Status Single. Married filing jointly (even if only one had income). Married filing separately. Head of household (HOH). Qualifying surviving spouse (QSS).
+      = single
+      cite: [f1040] Form 1040, Filing Status (2025; created 2025-09-05; 3d31c226)
+  1a  Total amount from Form(s) W-2, box 1
+      = $0
+      cite: [i1040gi] Instructions for Form 1040, pp. 23–24, lines 1a–1h (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
+  1z  Add lines 1a through 1h
+      = $0
+      cite: [f1040] Form 1040 (2025), line 1z (2025; created 2025-09-05; 3d31c226)
+  2b  Taxable interest
+      = $0
+      cite: [i1040gi] Instructions for Form 1040, p. 25, line 2b (2025; printed date 2026-02-25; 482e9c48)
+  3b  Ordinary dividends
+      = $0
+      cite: [i1040gi] Instructions for Form 1040, p. 26, line 3b (2025; printed date 2026-02-25; 482e9c48)
   3a  Qualified dividends
       = $0
       cite: [i1040gi] Instructions for Form 1040, pp. 25–26, line 3a and exceptions (2025; printed date 2026-02-25; 482e9c48)
   7a  Capital gain or (loss). Attach Schedule D if required
       = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
       cite: [i1040gi] Instructions for Form 1040, line 7a (2025; printed date 2026-02-25; 482e9c48)
+  9   Add lines 1z, 2b, 3b, 4b, 5b, 6b, 7a, and 8. This is your total income
+      = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
+      cite: [f1040] Form 1040 (2025), line 9 (2025; created 2025-09-05; 3d31c226)
+  10  Adjustments to income from Schedule 1, line 26
+      = $0
+      cite: [f1040] Form 1040 (2025), line 10 (2025; created 2025-09-05; 3d31c226)
+  11a Subtract line 10 from line 9. This is your adjusted gross income
+      = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
+      cite: [f1040] Form 1040 (2025), line 11a (2025; created 2025-09-05; 3d31c226)
+  11b Amount from line 11a (adjusted gross income)
+      = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
+      cite: [f1040] Form 1040 (2025), line 11b (2025; created 2025-09-05; 3d31c226)
+  12e Standard deduction or itemized deductions (from Schedule A)
+      = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
+      cite: [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart (2025; printed date 2026-02-25; 482e9c48)
+  14  Add lines 12e, 13a, and 13b
+      = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
+      cite: [f1040] Form 1040 (2025), line 14 (2025; created 2025-09-05; 3d31c226)
   15  Subtract line 14 from line 11b. If zero or less, enter -0-. This is your taxable income
-      = $50,000
+      = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
       cite: [i1040gi] Instructions for Form 1040, line 15 (2025; printed date 2026-02-25; 482e9c48)
   (gate) Use the Qualified Dividends and Capital Gain Tax Worksheet?
       = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
@@ -22,6 +56,124 @@ Values sheet — tax year 2025 (implemented slice; not a complete return)
       cite: [i1040gi] Instructions for Form 1040, line 16 (2025; printed date 2026-02-25; 482e9c48)
       note: guard incomplete
 
+== Schedule A — supported itemized deductions and standard comparison ==
+  (helper) Any casualty/theft loss, other itemized deduction, foreign tax deduction, mortgage interest not on Form 1098 or subject to debt/use limits, or sales-tax election?
+      = false
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Are any charitable deductions reduced by income limits, or carried over from a prior year? Determine under Publication 526 before answering.
+      = false
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Any excluded Puerto Rico income, Form 2555 or Form 4563 amounts?
+      = false
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Can someone claim you or your spouse as a dependent, or are you a dual-status alien?
+      = false
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Claiming any age/blindness standard-deduction boxes for a spouse?
+      = false
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Were you born before January 2, 1961?
+      = false
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Are you blind under the standard-deduction instructions?
+      = false
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Elect to itemize even if the standard deduction is larger?
+      = false
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Form 1040 line 11b adjusted gross income
+      = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  1   Unreimbursed eligible medical and dental expenses
+      = $0
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Year parameter sales.zero
+      = $0
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  2   Amount from sa.agi
+      = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  3   Multiply sa.line2 by sa.medical_rate
+      = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+      note: Interpretation amb.2025.multiplication_subcent: Round the product half-up to the nearest cent at the multiplication. Matches the half-up convention of the printed whole-dollar rounding rules. The whole-dollar default is unaffected: whole-dollar amounts multiplied by these rates produce exact cents, so the reading only matters when cents are turned on.
+ (i1040gi, QDCGT worksheet, lines 18 and 21; Rounding Off to Whole Dollars, p. 23)
+  4   Subtract sa.line3 from sa.line1; if zero or less, enter zero
+      = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Married filing separately
+      = false
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  17  Add sa.line4, sa.line7, sa.line10, sa.line14, sa.line15, sa.line16
+      = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Year parameter sa.standard_base
+      = $15,750
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Additional standard deduction for age65
+      = $0
+      cite: [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["sa.age65",{"const":false}],"op":"test"}
+  (helper) Additional standard deduction for blind
+      = $0
+      cite: [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["sa.blind",{"const":false}],"op":"test"}
+  (helper) Add sa.standardbase, sa.extra_age65, sa.extra_blind
+      = $15,750
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Standard deduction, zero when MFS spouse itemizes
+      = $15,750
+      cite: [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["sa.mfs_spouse_itemizes",{"const":false}],"op":"test"}
+  (helper) Itemize if elected, required, or itemized total exceeds standard
+      = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Deduction selected for Form 1040 line 12e
+      = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
+      cite: [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart (2025; printed date 2026-02-25; 482e9c48)
+      note: guard incomplete
+  (helper) MFS with spouse itemizing
+      = false
+      cite: [i1040gi] p. 34, line 12e exception 2 (2025; printed date 2026-02-25; 482e9c48)
+
+== Schedule B — supported interest and ordinary dividends ==
+  (helper) Any nominee income, original issue discount, accrued interest adjustment, bond premium, seller-financed mortgage interest, savings-bond exclusion, foreign corporation reporting, or other special treatment?
+      = false
+      cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
+  (helper) Total ordinary dividends, Form 1099-DIV box 1a
+      = $0
+      cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
+  (helper) Are you required to file FinCEN Form 114 (FBAR)? Determine under its instructions; this tool does not determine foreign account values or exceptions.
+      = false
+      cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
+  (helper) Are you required to file Form 8938 for specified foreign financial assets?
+      = false
+      cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
+  8   Received a distribution from, or were grantor of or transferor to, a foreign trust during 2025?
+      = false
+      cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
+  (helper) Year parameter sales.zero
+      = $0
+      cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
+  2   Total taxable interest from all payers
+      = $0
+      cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
+      note: confirmed roster $interest:
+  3   Amount from sb.zero
+      = $0
+      cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
+  4   Subtract sb.line3 from sb.line2
+      = $0
+      cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
+  6   Amount from sb.ordinary_dividends
+      = $0
+      cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
+
+== Proof-of-concept scope screening ==
+  (helper) Any income or adjustment requiring Schedule 1, including a taxable state/local tax refund?
+      = false
+      cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
+
 == Schedule D — securities sales and supplied distribution subtotals ==
   (helper) Are there gains/losses from Forms 4797, 2439, 6252, 4684, 6781, 8824 or Schedule K-1?
       = false
@@ -33,9 +185,6 @@ Values sheet — tax year 2025 (implemented slice; not a complete return)
       = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
       cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
   (helper) Transaction screening dependency
-      = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
-      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
-  (helper) Schedule D required for entered sales or special distribution gains
       = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
       cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
   1a(h) Line 1a, column (h) totals
@@ -55,6 +204,19 @@ Values sheet — tax year 2025 (implemented slice; not a complete return)
       cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
       note: guard incomplete
 
+Path choices (guard wording per the rendered worksheets in rendered/2025/):
+  sd.to1040: chose REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
+  f1040.sd.to1040: chose REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
+  sa.extra_age65: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sa.extra_blind: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sa.standard: chose $15,750 (guard 1)
+      not taken: guard 0 = false
+  sa.deduction: chose REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
+  f1040.sa.deduction: chose REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
+  f1040.line16: chose REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
+
 Collection entries and derivations:
   sales[a].box = G
     cite: i8949, pp. 2–5, holding period and checkbox classifications (2025; printed date 2026-01-20; f077991c)
@@ -62,6 +224,8 @@ Collection entries and derivations:
     cite: f8949, Parts I and II, boxes G–L (2025; created 2025-05-05; 27451389)
   sales[a].one = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
     cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  person[taxpayer].box1 = $0
+    cite: f1040, Form 1040 (2025), line 1a (2025; created 2025-09-05; 3d31c226)
   sales[a].digital: test(sales[a].box = G; "G" = G)
   sales[a].one: gate(sales[a].digital = true)
   sd.count: sum_over(sd.other_forms = false; sd.carryover = false; sales[a].one = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
@@ -73,12 +237,49 @@ Collection entries and derivations:
   sd.to1040: choose(sd.has_loss = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L); true = true)
   f1040.sd.to1040: choose(sd.has_loss = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L); true = true)
   f1040.line7a: copy(sd.to1040 = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
-  sd.filed: test(sd.count = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L); 0 = 0)
-  f1040.sd.filed: test(sd.count = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L); 0 = 0)
-  f1040.gate.qdcg_applies: test(f1040.line15 = $50,000; 0 = $0; f1040.line3a = $0; 0 = $0; sd.filed = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L); false = false)
+  f1040.line1a: sum_over(person[taxpayer].box1 = $0)
+  f1040.line1z: copy(f1040.line1a = $0)
+  sb.line2: sum_over(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false)
+  sb.zero: param(#sales.zero = $0)
+  sb.line3: copy(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; sb.zero = $0)
+  sb.line4: subtract(sb.line2 = $0; sb.line3 = $0)
+  f1040.sb.line4: subtract(sb.line2 = $0; sb.line3 = $0)
+  f1040.line2b: copy(sb.line4 = $0)
+  sb.line6: copy(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; sb.ordinary_dividends = $0)
+  f1040.sb.line6: copy(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; sb.ordinary_dividends = $0)
+  f1040.line3b: copy(sb.line6 = $0)
+  f1040.line9: sum(f1040.line1z = $0; f1040.line2b = $0; f1040.line3a = $0; f1040.line3b = $0; f1040.line7a = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
+  f1040.line10: param(scope.schedule1 = false; #sales.zero = $0)
+  f1040.line11a: subtract(f1040.line9 = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L); f1040.line10 = $0)
+  f1040.line11b: copy(f1040.line11a = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
+  sa.mfs: test(f1040.status = single; "mfs" = mfs)
+  sa.mfs_spouse_itemizes: test(sa.mfs = false; true = true)
+  sa.f1040.line11b: copy(f1040.line11a = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
+  sa.agi: copy(f1040.line11b = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
+  sa.line2: copy(sa.agi = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
+  sa.line3: multiply_rate(sa.line2 = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L); #sa.medical_rate = 75/1000)
+  sa.line4: subtract_floor0(sa.line1 = $0; sa.line3 = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
+  sa.line17: sum(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.line4 = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
+  sa.standardbase: param(#sa.standard_base = $15,750)
+  sa.zero: param(#sales.zero = $0)
+  sa.extra_age65: choose(sa.age65 = false; true = true; sa.age65 = false; false = false; sa.zero = $0)
+  sa.extra_blind: choose(sa.blind = false; true = true; sa.blind = false; false = false; sa.zero = $0)
+  sa.standardraw: sum(sa.standardbase = $15,750; sa.extra_age65 = $0; sa.extra_blind = $0)
+  sa.standard: choose(sa.dependent = false; sa.spouse_extra = false; sa.mfs_spouse_itemizes = false; true = true; sa.mfs_spouse_itemizes = false; false = false; sa.standardraw = $15,750)
+  sa.itemizes: test(sa.elect_itemize = false; true = true; sa.mfs_spouse_itemizes = false; true = true; sa.line17 = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L); sa.standard = $15,750)
+  sa.deduction: choose(sa.itemizes = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L); true = true)
+  f1040.sa.deduction: choose(sa.itemizes = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L); true = true)
+  f1040.line12e: copy(sa.deduction = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
+  f1040.line14: sum(f1040.line12e = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
+  f1040.line15: subtract_floor0(f1040.line11b = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L); f1040.line14 = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
+  f1040.gate.qdcg_applies: test(f1040.line15 = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L); 0 = $0)
   f1040.gate.sdtw: test(f1040.gate.qdcg_applies = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L); true = true)
   f1040.line16: choose(f1040.gate.sdtw = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L); true = true)
+Interpretation amb.2025.multiplication_subcent: Round the product half-up to the nearest cent at the multiplication. Matches the half-up convention of the printed whole-dollar rounding rules. The whole-dollar default is unaffected: whole-dollar amounts multiplied by these rates produce exact cents, so the reading only matters when cents are turned on.
+ (i1040gi, QDCGT worksheet, lines 18 and 21; Rounding Off to Whole Dollars, p. 23)
 Interpretation amb.2025.sd4952_selection: Use the detailed worksheet conditions, including line 4g and exceptions. The worksheet explicitly limits its own use and the Form 1040 line 16 instructions repeat the line 4g condition. (i1040sd, p. 15, Schedule D Tax Worksheet applicability; compare f1040sd line 20 and i1040gi p. 36)
-Scope: implemented worksheet slices only; unsupported paths are refused. No filing or transmission.
+Scope: single-person return (Form 1040 lines 1a–37 with the in-scope schedules and refusal screens). Unsupported paths are refused with citations. No filing or transmission.
+Rounding: amounts are exact cents; the return-wide whole-dollar rounding setting is deferred (see ambiguities/2025.yaml).
+Estimated tax penalty: not computed; the IRS will figure it (see i1040gi, line 38).
 This is a computation of published IRS forms and instructions; it is not tax or legal advice. Published instructions are not the law itself.
 The user is responsible for the return. Not affiliated with or endorsed by the IRS.

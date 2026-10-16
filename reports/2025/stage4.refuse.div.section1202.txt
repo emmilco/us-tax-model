@@ -1,4 +1,4 @@
-Values sheet — tax year 2025 (implemented slice; not a complete return)
+Values sheet — tax year 2025 (single-person slice; not a complete return for all filers)
 
 == Form 1099-DIV — distribution components and scope screening ==
   (helper) Section 1202 gain, box 2c
@@ -16,14 +16,45 @@ Values sheet — tax year 2025 (implemented slice; not a complete return)
   Filing Status Single. Married filing jointly (even if only one had income). Married filing separately. Head of household (HOH). Qualifying surviving spouse (QSS).
       = single
       cite: [f1040] Form 1040, Filing Status (2025; created 2025-09-05; 3d31c226)
+  1a  Total amount from Form(s) W-2, box 1
+      = $0
+      cite: [i1040gi] Instructions for Form 1040, pp. 23–24, lines 1a–1h (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
+  1z  Add lines 1a through 1h
+      = $0
+      cite: [f1040] Form 1040 (2025), line 1z (2025; created 2025-09-05; 3d31c226)
+  2b  Taxable interest
+      = $0
+      cite: [i1040gi] Instructions for Form 1040, p. 25, line 2b (2025; printed date 2026-02-25; 482e9c48)
+  3b  Ordinary dividends
+      = $0
+      cite: [i1040gi] Instructions for Form 1040, p. 26, line 3b (2025; printed date 2026-02-25; 482e9c48)
   3a  Qualified dividends
       = $0
       cite: [i1040gi] Instructions for Form 1040, pp. 25–26, line 3a and exceptions (2025; printed date 2026-02-25; 482e9c48)
   7a  Capital gain or (loss). Attach Schedule D if required
       = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
       cite: [i1040gi] Instructions for Form 1040, line 7a (2025; printed date 2026-02-25; 482e9c48)
+  9   Add lines 1z, 2b, 3b, 4b, 5b, 6b, 7a, and 8. This is your total income
+      = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
+      cite: [f1040] Form 1040 (2025), line 9 (2025; created 2025-09-05; 3d31c226)
+  10  Adjustments to income from Schedule 1, line 26
+      = $0
+      cite: [f1040] Form 1040 (2025), line 10 (2025; created 2025-09-05; 3d31c226)
+  11a Subtract line 10 from line 9. This is your adjusted gross income
+      = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
+      cite: [f1040] Form 1040 (2025), line 11a (2025; created 2025-09-05; 3d31c226)
+  11b Amount from line 11a (adjusted gross income)
+      = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
+      cite: [f1040] Form 1040 (2025), line 11b (2025; created 2025-09-05; 3d31c226)
+  12e Standard deduction or itemized deductions (from Schedule A)
+      = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
+      cite: [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart (2025; printed date 2026-02-25; 482e9c48)
+  14  Add lines 12e, 13a, and 13b
+      = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
+      cite: [f1040] Form 1040 (2025), line 14 (2025; created 2025-09-05; 3d31c226)
   15  Subtract line 14 from line 11b. If zero or less, enter -0-. This is your taxable income
-      = $84,250
+      = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
       cite: [i1040gi] Instructions for Form 1040, line 15 (2025; printed date 2026-02-25; 482e9c48)
   (gate) Use the Qualified Dividends and Capital Gain Tax Worksheet?
       = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
@@ -260,17 +291,6 @@ Values sheet — tax year 2025 (implemented slice; not a complete return)
       cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular tax (2025; printed date 2025-12-23; 6998cf8c)
       note: taken: {"eq":["ftc.has_tax",{"const":false}],"op":"test"}
 
-== 28% Rate Gain Worksheet — distribution-only path ==
-  1   Amount from div.screen
-      = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
-      cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
-  (helper) Add g28.line1, g28.line2, g28.line3, g28.line4, g28.line5, g28.line6
-      = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
-      cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
-  7   Subtract sd.zero from g28.combined; if zero or less, enter zero
-      = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
-      cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
-
 == Section 199A dividend-only deduction and form selection ==
   (helper) Subtract sa.deduction from sa.agi; if zero or less, enter zero
       = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
@@ -303,7 +323,7 @@ Values sheet — tax year 2025 (implemented slice; not a complete return)
       = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
       cite: [f1040s2] Schedule 2 (2025), lines 2, 3, 11, 12 and 21 (2025; created 2025-05-08; 64d867b6)
 
-== Schedule 3 — Part II selected lines ==
+== Schedule 3 — selected lines ==
   1   Foreign tax credit
       = $0
       cite: [f1040s3] Schedule 3 (2025), Part I line 1 (2025; created 2025-11-17; 008cfd3f)
@@ -336,94 +356,28 @@ Values sheet — tax year 2025 (implemented slice; not a complete return)
   (helper) Elect to itemize even if the standard deduction is larger?
       = false
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  (helper) Form 1040 line 11b adjusted gross income (supplied subtotal until Stage 5)
-      = $100,000
+  (helper) Form 1040 line 11b adjusted gross income
+      = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
   1   Unreimbursed eligible medical and dental expenses
-      = $0
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  5a  State/local income taxes paid, including withholding; no sales-tax election
-      = $0
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  5b  Deductible state/local real estate taxes
-      = $0
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  5c  Deductible state/local personal property taxes
-      = $0
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  8a  Eligible home mortgage interest and points on Form 1098, after confirming the debt/use limits do not apply
       = $0
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
   (helper) Year parameter sales.zero
       = $0
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
   2   Amount from sa.agi
-      = $100,000
+      = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
   3   Multiply sa.line2 by sa.medical_rate
-      = $7,500
+      = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-      note: half-up to the cent per the ambiguity register; Interpretation amb.2025.multiplication_subcent: Round the product half-up to the nearest cent at the multiplication. Matches the half-up convention of the printed whole-dollar rounding rules. The whole-dollar default is unaffected: whole-dollar amounts multiplied by these rates produce exact cents, so the reading only matters when cents are turned on.
+      note: Interpretation amb.2025.multiplication_subcent: Round the product half-up to the nearest cent at the multiplication. Matches the half-up convention of the printed whole-dollar rounding rules. The whole-dollar default is unaffected: whole-dollar amounts multiplied by these rates produce exact cents, so the reading only matters when cents are turned on.
  (i1040gi, QDCGT worksheet, lines 18 and 21; Rounding Off to Whole Dollars, p. 23)
   4   Subtract sa.line3 from sa.line1; if zero or less, enter zero
-      = $0
+      = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  5d  Add sa.line5a, sa.line5b, sa.line5c
-      = $0
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  (helper) Year parameter sa.salt_base
-      = $40,000
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  (helper) Year parameter sa.salt_floor
-      = $10,000
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  (helper) Year parameter sa.salt_threshold
-      = $500,000
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  (helper) Subtract sa.saltthreshold from sa.agi; if zero or less, enter zero
-      = $0
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  (helper) Multiply sa.saltexcess by sa.salt_rate
-      = $0
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-      note: half-up to the cent per the ambiguity register; Interpretation amb.2025.multiplication_subcent: Round the product half-up to the nearest cent at the multiplication. Matches the half-up convention of the printed whole-dollar rounding rules. The whole-dollar default is unaffected: whole-dollar amounts multiplied by these rates produce exact cents, so the reading only matters when cents are turned on.
- (i1040gi, QDCGT worksheet, lines 18 and 21; Rounding Off to Whole Dollars, p. 23)
-  (helper) Subtract sa.saltreduction from sa.saltbase; if zero or less, enter zero
-      = $40,000
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  (helper) Larger of remaining ceiling and $10,000
-      = $40,000
-      cite: [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; b0999b12)
   (helper) Married filing separately
       = false
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  (helper) Half the worksheet ceiling if married filing separately
-      = $40,000
-      cite: [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; b0999b12)
-      note: taken: {"eq":["sa.mfs",{"const":false}],"op":"test"}
-  5e  Smaller of sa.line5d, sa.saltlimit
-      = $0
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  6   Amount from sa.zero
-      = $0
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  8b  Amount from sa.zero
-      = $0
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  8c  Amount from sa.zero
-      = $0
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  7   Add sa.line5e, sa.line6
-      = $0
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  8e  Add sa.line8a, sa.line8b, sa.line8c
-      = $0
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  9   Amount from f4952.line8
-      = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  10  Add sa.line8e, sa.line9
-      = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
   17  Add sa.line4, sa.line7, sa.line10, sa.line14, sa.line15, sa.line16
       = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
@@ -473,10 +427,19 @@ Values sheet — tax year 2025 (implemented slice; not a complete return)
   8   Received a distribution from, or were grantor of or transferor to, a foreign trust during 2025?
       = false
       cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
+  (helper) Year parameter sales.zero
+      = $0
+      cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
   2   Total taxable interest from all payers
       = $0
       cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
       note: confirmed roster $interest:
+  3   Amount from sb.zero
+      = $0
+      cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
+  4   Subtract sb.line3 from sb.line2
+      = $0
+      cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
   6   Amount from sb.ordinary_dividends
       = $0
       cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
@@ -511,18 +474,12 @@ Values sheet — tax year 2025 (implemented slice; not a complete return)
   (helper) Capital gain distributions, generally Form 1099-DIV box 2a
       = $1
       cite: [i1040sd] p. 11, line 13 (2025; printed date 2025-12-11; 650643a6)
-  (helper) 28% Rate Gain Worksheet result (supplied subtotal; worksheet deferred to Stage 4)
-      = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
-      cite: [i1040sd] p. 11, line 18 (2025; printed date 2025-12-11; 650643a6)
   (helper) Count screened transactions
       = 0
       cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
       note: confirmed roster $sales:
   (helper) Transaction screening dependency
       = false
-      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
-  (helper) Schedule D required for entered sales or special distribution gains
-      = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
       cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
   (helper) No amount on an inapplicable line
       = $0
@@ -594,7 +551,31 @@ Values sheet — tax year 2025 (implemented slice; not a complete return)
       cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
       note: guard incomplete
 
+Path choices (guard wording per the rendered worksheets in rendered/2025/):
+  sd.to1040: chose REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
+  f1040.sd.to1040: chose REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
+  sa.extra_age65: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sa.extra_blind: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sa.standard: chose $15,750 (guard 1)
+      not taken: guard 0 = false
+  sa.deduction: chose REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
+  f1040.sa.deduction: chose REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
+  f1040.line16: chose REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
+  qbi.sa.deduction: chose REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
+  qbi.deduction: chose REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
+  f8960.line9a: chose REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
+  ftc.credit: chose $0 (guard 1)
+      not taken: guard 0 = false
+  s3.ftc.credit: chose $0 (guard 1)
+      not taken: guard 0 = false
+
 Collection entries and derivations:
+  person[taxpayer].w2[a].box1 = $0
+    cite: iw2w3, p. 17, box 1 (2025; printed date 2025-02-19; bfecbc99)
+  person[taxpayer].box1 = $0
+    cite: f1040, Form 1040 (2025), line 1a (2025; created 2025-09-05; 3d31c226)
   person[taxpayer].rrta = false
     cite: iw2w3, pp. 12–13, Railroad employers: RRTA compensation and taxes in box 14; boxes 3–7 are not used for RRTA (2025; printed date 2025-02-19; bfecbc99)
   person[taxpayer].w2[a].box5 = $200,000
@@ -635,46 +616,50 @@ Collection entries and derivations:
   sd.to1040: choose(sd.has_loss = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); true = true)
   f1040.sd.to1040: choose(sd.has_loss = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); true = true)
   f1040.line7a: copy(sd.to1040 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
-  g28.div.screen: gate(div.section1202 = true)
-  g28.line1: copy(div.screen = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
-  g28.combined: sum(g28.line1 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
-  g28.sd.zero: param(#sales.zero = $0)
-  g28.line7: subtract_floor0(g28.combined = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); sd.zero = $0)
-  sd.g28.line7: subtract_floor0(g28.combined = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); sd.zero = $0)
-  sd.line18: copy(g28.line7 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
-  sd.filed: test(sd.count = 0; 0 = 0; sd.line18 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); 0 = $0)
-  f1040.sd.filed: test(sd.count = 0; 0 = 0; sd.line18 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); 0 = $0)
-  f1040.gate.qdcg_applies: test(f1040.line15 = $84,250; 0 = $0; f1040.line3a = $0; 0 = $0; sd.filed = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); false = false)
-  f1040.gate.sdtw: test(f1040.gate.qdcg_applies = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); true = true)
-  f1040.line16: choose(f1040.gate.sdtw = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); true = true)
+  person[taxpayer].box1: sum_over(person[taxpayer].w2[a].box1 = $0)
+  f1040.line1a: sum_over(person[taxpayer].box1 = $0)
+  f1040.line1z: copy(f1040.line1a = $0)
+  sb.line2: sum_over(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false)
+  sb.zero: param(#sales.zero = $0)
+  sb.line3: copy(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; sb.zero = $0)
+  sb.line4: subtract(sb.line2 = $0; sb.line3 = $0)
+  f1040.sb.line4: subtract(sb.line2 = $0; sb.line3 = $0)
+  f1040.line2b: copy(sb.line4 = $0)
+  sb.line6: copy(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; sb.ordinary_dividends = $0)
+  f1040.sb.line6: copy(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; sb.ordinary_dividends = $0)
+  f1040.line3b: copy(sb.line6 = $0)
+  f1040.line9: sum(f1040.line1z = $0; f1040.line2b = $0; f1040.line3a = $0; f1040.line3b = $0; f1040.line7a = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
+  f1040.line10: param(scope.schedule1 = false; #sales.zero = $0)
+  f1040.line11a: subtract(f1040.line9 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); f1040.line10 = $0)
+  f1040.line11b: copy(f1040.line11a = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
   sa.mfs: test(f1040.status = single; "mfs" = mfs)
   sa.mfs_spouse_itemizes: test(sa.mfs = false; true = true)
-  sa.line2: copy(sa.agi = $100,000)
-  sa.line3: multiply_rate(sa.line2 = $100,000; #sa.medical_rate = 75/1000)
-  sa.line4: subtract_floor0(sa.line1 = $0; sa.line3 = $7,500)
-  sa.line5d: sum(sa.line5a = $0; sa.line5b = $0; sa.line5c = $0)
-  sa.saltbase: param(#sa.salt_base = $40,000)
-  sa.saltthreshold: param(#sa.salt_threshold = $500,000)
-  sa.saltexcess: subtract_floor0(sa.agi = $100,000; sa.saltthreshold = $500,000)
-  sa.saltreduction: multiply_rate(sa.saltexcess = $0; #sa.salt_rate = 3/10)
-  sa.saltremaining: subtract_floor0(sa.saltbase = $40,000; sa.saltreduction = $0)
-  sa.saltfloor: param(#sa.salt_floor = $10,000)
-  sa.saltfloor_applied: larger_of(sa.saltremaining = $40,000; sa.saltfloor = $10,000)
-  sa.saltlimit: choose(sa.mfs = false; true = true; sa.mfs = false; false = false; sa.saltfloor_applied = $40,000)
-  sa.line5e: smaller_of(sa.line5d = $0; sa.saltlimit = $40,000)
+  sa.f1040.line11b: copy(f1040.line11a = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
+  sa.agi: copy(f1040.line11b = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
+  sa.line2: copy(sa.agi = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
+  sa.line3: multiply_rate(sa.line2 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); #sa.medical_rate = 75/1000)
+  sa.line4: subtract_floor0(sa.line1 = $0; sa.line3 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
+  sa.line17: sum(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.line4 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
+  sa.standardbase: param(#sa.standard_base = $15,750)
   sa.zero: param(#sales.zero = $0)
-  sa.line6: copy(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.zero = $0)
-  sa.line7: sum(sa.line5e = $0; sa.line6 = $0)
-  sa.line8b: copy(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.zero = $0)
-  sa.line8c: copy(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.zero = $0)
-  sa.line8e: sum(sa.line8a = $0; sa.line8b = $0; sa.line8c = $0)
+  sa.extra_age65: choose(sa.age65 = false; true = true; sa.age65 = false; false = false; sa.zero = $0)
+  sa.extra_blind: choose(sa.blind = false; true = true; sa.blind = false; false = false; sa.zero = $0)
+  sa.standardraw: sum(sa.standardbase = $15,750; sa.extra_age65 = $0; sa.extra_blind = $0)
+  sa.standard: choose(sa.dependent = false; sa.spouse_extra = false; sa.mfs_spouse_itemizes = false; true = true; sa.mfs_spouse_itemizes = false; false = false; sa.standardraw = $15,750)
+  sa.itemizes: test(sa.elect_itemize = false; true = true; sa.mfs_spouse_itemizes = false; true = true; sa.line17 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); sa.standard = $15,750)
+  sa.deduction: choose(sa.itemizes = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); true = true)
+  f1040.sa.deduction: choose(sa.itemizes = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); true = true)
+  f1040.line12e: copy(sa.deduction = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
+  f1040.line14: sum(f1040.line12e = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
+  f1040.line15: subtract_floor0(f1040.line11b = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); f1040.line14 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
+  f1040.gate.qdcg_applies: test(f1040.line15 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); 0 = $0)
+  f1040.gate.sdtw: test(f1040.gate.qdcg_applies = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); true = true)
+  f1040.line16: choose(f1040.gate.sdtw = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); true = true)
   f4952.zero: param(#sales.zero = $0)
   f4952.line2: copy(f4952.carryover = false; f4952.unsupported = false; f4952.alternative_allocation = false; f4952.zero = $0)
   f4952.line3: sum(f4952.line1 = $0; f4952.line2 = $0)
   f4952.line4b: copy(f1040.line3a = $0)
-  sb.line2: sum_over(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false)
   f4952.sb.line2: sum_over(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false)
-  sb.line6: copy(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; sb.ordinary_dividends = $0)
   f4952.sb.line6: copy(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; sb.ordinary_dividends = $0)
   f4952.line4a: sum(sb.line2 = $0; sb.line6 = $0)
   f4952.bad_dividends: test(f4952.line4b = $0; f4952.line4a = $0)
@@ -687,19 +672,9 @@ Collection entries and derivations:
   f4952.line5: copy(f4952.carryover = false; f4952.unsupported = false; f4952.alternative_allocation = false; f4952.zero = $0)
   f4952.line6: subtract_floor0(f4952.line4h = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); f4952.line5 = $0)
   f4952.line8: smaller_of(f4952.line3 = $0; f4952.line6 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
-  sa.f4952.line8: smaller_of(f4952.line3 = $0; f4952.line6 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
-  sa.line9: copy(f4952.line8 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
-  sa.line10: sum(sa.line8e = $0; sa.line9 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
-  sa.line17: sum(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.line4 = $0; sa.line7 = $0; sa.line10 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
-  sa.standardbase: param(#sa.standard_base = $15,750)
-  sa.extra_age65: choose(sa.age65 = false; true = true; sa.age65 = false; false = false; sa.zero = $0)
-  sa.extra_blind: choose(sa.blind = false; true = true; sa.blind = false; false = false; sa.zero = $0)
-  sa.standardraw: sum(sa.standardbase = $15,750; sa.extra_age65 = $0; sa.extra_blind = $0)
-  sa.standard: choose(sa.dependent = false; sa.spouse_extra = false; sa.mfs_spouse_itemizes = false; true = true; sa.mfs_spouse_itemizes = false; false = false; sa.standardraw = $15,750)
-  sa.itemizes: test(sa.elect_itemize = false; true = true; sa.mfs_spouse_itemizes = false; true = true; sa.line17 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); sa.standard = $15,750)
-  sa.deduction: choose(sa.itemizes = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); true = true)
+  qbi.sa.agi: copy(f1040.line11b = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
   qbi.sa.deduction: choose(sa.itemizes = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); true = true)
-  qbi.taxable_before: subtract_floor0(sa.agi = $100,000; sa.deduction = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
+  qbi.taxable_before: subtract_floor0(sa.agi = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); sa.deduction = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
   qbi.threshold: param(#qbi.threshold = $197,300)
   qbi.use_8995a: test(qbi.taxable_before = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); qbi.threshold = $197,300)
   qbi.deduction: choose(qbi.use_8995a = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); true = true)
@@ -762,9 +737,11 @@ Collection entries and derivations:
   s3.ftc.credit: choose(ftc.needs1116 = false; ftc.has_tax = false; true = true; ftc.has_tax = false; false = false; ftc.zero = $0)
   s3.line1: copy(ftc.credit = $0)
 Interpretation amb.2025.box2c_scope: Refuse nonzero box 2c; no exclusion or AMT amount is silently omitted. Archived Schedule D instructions require the exclusion on Form 8949 code Q and describe an AMT adjustment for 50/60/75-percent exclusions. The existing explicit exclusions are retained; the owner was notified and asked, then said continue without selecting an expansion. (i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
-Interpretation amb.2025.sd4952_selection: Use the detailed worksheet conditions, including line 4g and exceptions. The worksheet explicitly limits its own use and the Form 1040 line 16 instructions repeat the line 4g condition. (i1040sd, p. 15, Schedule D Tax Worksheet applicability; compare f1040sd line 20 and i1040gi p. 36)
 Interpretation amb.2025.multiplication_subcent: Round the product half-up to the nearest cent at the multiplication. Matches the half-up convention of the printed whole-dollar rounding rules. The whole-dollar default is unaffected: whole-dollar amounts multiplied by these rates produce exact cents, so the reading only matters when cents are turned on.
  (i1040gi, QDCGT worksheet, lines 18 and 21; Rounding Off to Whole Dollars, p. 23)
-Scope: implemented worksheet slices only; unsupported paths are refused. No filing or transmission.
+Interpretation amb.2025.sd4952_selection: Use the detailed worksheet conditions, including line 4g and exceptions. The worksheet explicitly limits its own use and the Form 1040 line 16 instructions repeat the line 4g condition. (i1040sd, p. 15, Schedule D Tax Worksheet applicability; compare f1040sd line 20 and i1040gi p. 36)
+Scope: single-person return (Form 1040 lines 1a–37 with the in-scope schedules and refusal screens). Unsupported paths are refused with citations. No filing or transmission.
+Rounding: amounts are exact cents; the return-wide whole-dollar rounding setting is deferred (see ambiguities/2025.yaml).
+Estimated tax penalty: not computed; the IRS will figure it (see i1040gi, line 38).
 This is a computation of published IRS forms and instructions; it is not tax or legal advice. Published instructions are not the law itself.
 The user is responsible for the return. Not affiliated with or endorsed by the IRS.

@@ -39,7 +39,7 @@ Use integer cents below. Work each case independently on the archived instructio
 | ss.qss | qss | person[taxpayer].w2[a]: 10000000; 0; 620000 / person[taxpayer].w2[b]: 10000000; 0; 620000 | 148180 |
 | ss.other.components | single | person[taxpayer].w2[a]: 10000000; 0; 620000 / person[taxpayer].w2[b]: 10000000; 0; 620000 | 148180 |
 | ss.person.separation | single | person[second].w2[a]: 10000000; 0; 620000 / person[taxpayer].w2[a]: 10000000; 0; 620000 | 0 |
-| ss.early.refusal | single | person[taxpayer].w2[a]: unknown; 0; 1091821 / person[taxpayer].w2[b]: 5000000; 0; unknown | refusal: Form 843 |
+| ss.early.refusal | single | person[taxpayer].w2[a]: unknown; 0; 1091821 / person[taxpayer].w2[b]: 5000000; 0; 0 | refusal: Form 843 |
 
 RRTA case has the railroad answer true. Other Schedule 3 components are zero except ss.other.components: lines 9, 10, 12 and 14 are 123, 500, 7 and 20 cents; line 15 and Form 1040 line 31 should be 148830 cents.
 

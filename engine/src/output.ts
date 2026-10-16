@@ -24,7 +24,7 @@ export function fmtValue(v: Value): string {
 
 export function renderValuesSheet(data: CanonicalData, result: EvalResult, targetDocs: string[]): string {
   const lines: string[] = [];
-  lines.push("Values sheet — tax year 2025 (implemented slice; not a complete return)");
+  lines.push("Values sheet — tax year 2025 (single-person slice; not a complete return for all filers)");
   lines.push("");
   for (const docId of targetDocs) {
     const doc = [...data.forms].find((f) => f.id === docId);
@@ -46,6 +46,18 @@ export function renderValuesSheet(data: CanonicalData, result: EvalResult, targe
     }
     lines.push("");
   }
+  const choices = [...result.derivations.entries()].filter(([, d]) => d.op === "choose");
+  if (choices.length > 0) {
+    lines.push("Path choices (guard wording per the rendered worksheets in rendered/2025/):");
+    for (const [key, der] of choices) {
+      lines.push(`  ${key}: chose ${fmtValue(der.value)}${der.takenGuardIndex !== undefined ? ` (guard ${der.takenGuardIndex})` : ""}`);
+      for (let gi = 0; gi < der.guardsNotTaken.length; gi++) {
+        const g = der.guardsNotTaken[gi]!;
+        lines.push(`      not taken: guard ${gi} = ${fmtValue(g.value)}`);
+      }
+    }
+    lines.push("");
+  }
   lines.push("Collection entries and derivations:");
   for (const [key, der] of result.derivations) {
     if (!key.includes("[")) continue;
@@ -56,7 +68,9 @@ export function renderValuesSheet(data: CanonicalData, result: EvalResult, targe
     if (der.operands.length) lines.push(`  ${key}: ${der.op}(${der.operands.map(o => `${o.ref} = ${fmtValue(o.value)}`).join("; ")})`);
   }
   for (const note of new Set([...result.derivations.values()].flatMap(d=>d.notes.filter(n=>n.startsWith("Interpretation "))))) lines.push(note);
-  lines.push("Scope: implemented worksheet slices only; unsupported paths are refused. No filing or transmission.");
+  lines.push("Scope: single-person return (Form 1040 lines 1a–37 with the in-scope schedules and refusal screens). Unsupported paths are refused with citations. No filing or transmission.");
+  lines.push("Rounding: amounts are exact cents; the return-wide whole-dollar rounding setting is deferred (see ambiguities/2025.yaml).");
+  lines.push("Estimated tax penalty: not computed; the IRS will figure it (see i1040gi, line 38).");
   lines.push("This is a computation of published IRS forms and instructions; it is not tax or legal advice. Published instructions are not the law itself.");
   lines.push("The user is responsible for the return. Not affiliated with or endorsed by the IRS.");
   return lines.join("\n");

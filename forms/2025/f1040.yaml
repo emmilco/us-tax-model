@@ -15,6 +15,47 @@ form:
       cite:
         doc: f1040
         locator: Form 1040, Filing Status
+    - id: f1040.line1a
+      printed: 1a
+      label: Total amount from Form(s) W-2, box 1
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: person
+        field: person.box1
+      cite:
+        doc: i1040gi
+        locator: Instructions for Form 1040, pp. 23–24, lines 1a–1h
+    - id: f1040.line1z
+      printed: 1z
+      label: Add lines 1a through 1h
+      type: NonNegDollars
+      expr:
+        op: copy
+        from: f1040.line1a
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 1z
+    - id: f1040.line2b
+      printed: 2b
+      label: Taxable interest
+      type: Dollars
+      expr:
+        op: copy
+        from: sb.line4
+      cite:
+        doc: i1040gi
+        locator: Instructions for Form 1040, p. 25, line 2b
+    - id: f1040.line3b
+      printed: 3b
+      label: Ordinary dividends
+      type: NonNegDollars
+      expr:
+        op: copy
+        from: sb.line6
+      cite:
+        doc: i1040gi
+        locator: Instructions for Form 1040, p. 26, line 3b
     - id: f1040.line3a
       printed: 3a
       label: Qualified dividends
@@ -36,14 +77,141 @@ form:
       cite:
         doc: i1040gi
         locator: Instructions for Form 1040, line 7a
+    - id: f1040.line8
+      printed: "8"
+      label: Additional income from Schedule 1, line 10
+      type: NonNegDollars
+      expr:
+        op: param
+        ref: sales.zero
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 8
+      refuses:
+        - when: scope.schedule1
+          form: Schedule 1
+          remedy: Schedule 1 income and adjustments are outside this proof of concept.
+          cite:
+            doc: f1040
+            locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
+        - when: scope.other_income
+          form: Form 1040 additional income/return forms
+          remedy: Prepare the required unsupported income or return treatment.
+          cite:
+            doc: f1040
+            locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
+    - id: f1040.line9
+      printed: "9"
+      label: Add lines 1z, 2b, 3b, 4b, 5b, 6b, 7a, and 8. This is your total income
+      type: Dollars
+      expr:
+        op: sum
+        of:
+          - f1040.line1z
+          - f1040.line2b
+          - f1040.line3a
+          - f1040.line3b
+          - f1040.line7a
+          - f1040.line8
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 9
+    - id: f1040.line10
+      printed: "10"
+      label: Adjustments to income from Schedule 1, line 26
+      type: NonNegDollars
+      expr:
+        op: param
+        ref: sales.zero
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 10
+      refuses:
+        - when: scope.schedule1
+          form: Schedule 1
+          remedy: Schedule 1 income and adjustments are outside this proof of concept.
+          cite:
+            doc: f1040
+            locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
+    - id: f1040.line11a
+      printed: 11a
+      label: Subtract line 10 from line 9. This is your adjusted gross income
+      type: Dollars
+      expr:
+        op: subtract
+        from: f1040.line9
+        take: f1040.line10
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 11a
+    - id: f1040.line11b
+      printed: 11b
+      label: Amount from line 11a (adjusted gross income)
+      type: Dollars
+      expr:
+        op: copy
+        from: f1040.line11a
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 11b
+    - id: f1040.line12e
+      printed: 12e
+      label: Standard deduction or itemized deductions (from Schedule A)
+      type: NonNegDollars
+      expr:
+        op: copy
+        from: sa.deduction
+      cite:
+        doc: i1040gi
+        locator: pp. 34–35, line 12e and Standard Deduction Chart
+    - id: f1040.line13a
+      printed: 13a
+      label: Qualified business income deduction from Form 8995 or Form 8995-A
+      type: NonNegDollars
+      expr:
+        op: copy
+        from: qbi.deduction
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 13a
+    - id: f1040.line13b
+      printed: 13b
+      label: Additional deductions from Schedule 1-A, line 38
+      type: NonNegDollars
+      expr:
+        op: param
+        ref: sales.zero
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 13b
+      refuses:
+        - when: scope.schedule1a
+          form: Schedule 1-A
+          remedy: Schedule 1-A deductions are outside this proof of concept.
+          cite:
+            doc: f1040
+            locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
+    - id: f1040.line14
+      printed: "14"
+      label: Add lines 12e, 13a, and 13b
+      type: NonNegDollars
+      expr:
+        op: sum
+        of:
+          - f1040.line12e
+          - f1040.line13a
+          - f1040.line13b
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 14
     - id: f1040.line15
       printed: "15"
       label: Subtract line 14 from line 11b. If zero or less, enter -0-. This is your taxable income
       type: NonNegDollars
       expr:
-        op: input
-        source: Form 1040 line 15; in Stage 1 supplied as an input (the lines that figure it are outside
-          this stage).
+        op: subtract_floor0
+        from: f1040.line11b
+        take: f1040.line14
       cite:
         doc: i1040gi
         locator: Instructions for Form 1040, line 15
@@ -173,6 +341,222 @@ form:
       cite:
         doc: i1040gi
         locator: Instructions for Form 1040, line 16
+    - id: f1040.line17
+      printed: "17"
+      label: Amount from Schedule 2, line 3
+      type: NonNegDollars
+      expr:
+        op: copy
+        from: s2.line3
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 17
+    - id: f1040.line18
+      printed: "18"
+      label: Add lines 16 and 17
+      type: Dollars
+      expr:
+        op: sum
+        of:
+          - f1040.line16
+          - f1040.line17
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 18
+    - id: f1040.line19
+      printed: "19"
+      label: Child tax credit or credit for other dependents from Schedule 8812
+      type: NonNegDollars
+      expr:
+        op: param
+        ref: sales.zero
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 19
+      refuses:
+        - when: scope.credits
+          form: Schedule 8812 / other credit forms
+          remedy: Dependent and other unsupported credits require forms outside this proof of concept.
+          cite:
+            doc: f1040
+            locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
+    - id: f1040.line20
+      printed: "20"
+      label: Amount from Schedule 3, line 8
+      type: Dollars
+      expr:
+        op: copy
+        from: s3.line8
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 20
+    - id: f1040.line21
+      printed: "21"
+      label: Add lines 19 and 20
+      type: Dollars
+      expr:
+        op: sum
+        of:
+          - f1040.line19
+          - f1040.line20
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 21
+    - id: f1040.line22
+      printed: "22"
+      label: Subtract line 21 from line 18. If zero or less, enter -0-
+      type: NonNegDollars
+      expr:
+        op: subtract_floor0
+        from: f1040.line18
+        take: f1040.line21
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 22
+    - id: f1040.line23
+      printed: "23"
+      label: Other taxes, including self-employment tax, from Schedule 2, line 21
+      type: NonNegDollars
+      expr:
+        op: copy
+        from: s2.line21
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 23
+    - id: f1040.line24
+      printed: "24"
+      label: Add lines 22 and 23. This is your total tax
+      type: NonNegDollars
+      expr:
+        op: sum
+        of:
+          - f1040.line22
+          - f1040.line23
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 24
+    - id: f1040.line25a
+      printed: 25a
+      label: Federal income tax withheld from Form(s) W-2
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: person
+        field: person.box2
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 25a
+    - id: f1040.line25b
+      printed: 25b
+      label: Federal income tax withheld from Form(s) 1099
+      type: NonNegDollars
+      expr:
+        op: input
+        source: Federal income tax withheld from Form(s) 1099 (supplied total; read box 4 on each 1099)
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 25b
+    - id: f1040.line25c
+      printed: 25c
+      label: Federal income tax withheld from other forms (see instructions)
+      type: NonNegDollars
+      expr:
+        op: input
+        source: Federal income tax withheld from other forms (supplied total)
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 25c
+    - id: f1040.line25d
+      printed: 25d
+      label: Add lines 25a through 25c
+      type: NonNegDollars
+      expr:
+        op: sum
+        of:
+          - f1040.line25a
+          - f1040.line25b
+          - f1040.line25c
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 25d
+    - id: f1040.line26
+      printed: "26"
+      label: 2025 estimated tax payments and amount applied from 2024 return
+      type: NonNegDollars
+      expr:
+        op: input
+        source: 2025 estimated tax payments and amount applied from your 2024 return (supplied total)
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 26
+    - id: f1040.line27a
+      printed: 27a
+      label: Earned income credit (EIC)
+      type: NonNegDollars
+      expr:
+        op: param
+        ref: sales.zero
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 27a
+      refuses:
+        - when: scope.credits
+          form: Schedule 8812 / other credit forms
+          remedy: Dependent and other unsupported credits require forms outside this proof of concept.
+          cite:
+            doc: f1040
+            locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
+    - id: f1040.line28
+      printed: "28"
+      label: Additional child tax credit (ACTC) from Schedule 8812
+      type: NonNegDollars
+      expr:
+        op: param
+        ref: sales.zero
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 28
+      refuses:
+        - when: scope.credits
+          form: Schedule 8812 / other credit forms
+          remedy: Dependent and other unsupported credits require forms outside this proof of concept.
+          cite:
+            doc: f1040
+            locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
+    - id: f1040.line29
+      printed: "29"
+      label: American opportunity credit from Form 8863, line 8
+      type: NonNegDollars
+      expr:
+        op: param
+        ref: sales.zero
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 29
+      refuses:
+        - when: scope.credits
+          form: Schedule 8812 / other credit forms
+          remedy: Dependent and other unsupported credits require forms outside this proof of concept.
+          cite:
+            doc: f1040
+            locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
+    - id: f1040.line30
+      printed: "30"
+      label: Refundable adoption credit from Form 8839, line 13
+      type: NonNegDollars
+      expr:
+        op: param
+        ref: sales.zero
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 30
+      refuses:
+        - when: scope.credits
+          form: Schedule 8812 / other credit forms
+          remedy: Dependent and other unsupported credits require forms outside this proof of concept.
+          cite:
+            doc: f1040
+            locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
     - id: f1040.line31
       printed: "31"
       label: Amount from Schedule 3, line 15
@@ -183,3 +567,73 @@ form:
       cite:
         doc: f1040
         locator: Form 1040 (2025), line 31
+    - id: f1040.line32
+      printed: "32"
+      label: Add lines 27a, 28, 29, 30, and 31. These are your total other payments and refundable credits
+      type: NonNegDollars
+      expr:
+        op: sum
+        of:
+          - f1040.line27a
+          - f1040.line28
+          - f1040.line29
+          - f1040.line30
+          - f1040.line31
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 32
+    - id: f1040.line33
+      printed: "33"
+      label: Add lines 25d, 26, and 32. These are your total payments
+      type: NonNegDollars
+      expr:
+        op: sum
+        of:
+          - f1040.line25d
+          - f1040.line26
+          - f1040.line32
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 33
+    - id: f1040.line34
+      printed: "34"
+      label: If line 33 is more than line 24, subtract line 24 from line 33. This is the amount you overpaid
+      type: NonNegDollars
+      expr:
+        op: subtract_floor0
+        from: f1040.line33
+        take: f1040.line24
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 34
+    - id: f1040.line35a
+      printed: 35a
+      label: Amount of line 34 you want refunded to you
+      type: NonNegDollars
+      expr:
+        op: input
+        source: Amount of line 34 you want refunded to you (supplied election)
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 35a
+    - id: f1040.line36
+      printed: "36"
+      label: Amount of line 34 you want applied to your 2026 estimated tax
+      type: NonNegDollars
+      expr:
+        op: input
+        source: Amount of line 34 you want applied to your 2026 estimated tax (supplied election)
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 36
+    - id: f1040.line37
+      printed: "37"
+      label: Subtract line 33 from line 24. This is the amount you owe
+      type: NonNegDollars
+      expr:
+        op: subtract_floor0
+        from: f1040.line24
+        take: f1040.line33
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 37

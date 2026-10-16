@@ -1,0 +1,1306 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "stage5.return.owed",
+      "covers": [
+        "whole return"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Synthetic whole return: two employers $80,000+$40,000, interest $1,200, dividends $2,000 ordinary/$1,500 qualified; single; standard deduction; balance due. No independent human hand-work is claimed.",
+      "inputs": {
+        "f1040.status": "single",
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].rrta": false,
+        "$interest": [
+          "bank_a"
+        ],
+        "$sales": [],
+        "$gift": [],
+        "sb.ordinary_dividends": 200000,
+        "sb.unsupported": false,
+        "sb.line7a": false,
+        "sb.fbar_required": false,
+        "sb.form8938": false,
+        "sb.line8": false,
+        "f1040.line3a": 150000,
+        "div.box2b": 0,
+        "div.box2c": 0,
+        "div.box2d": 0,
+        "div.box2e": 0,
+        "div.box2f": 0,
+        "div.box3": 0,
+        "div.box4": 0,
+        "div.box6": 0,
+        "div.box9": 0,
+        "div.box10": 0,
+        "div.box12": 0,
+        "div.box13": 0,
+        "div.basis_reconciled": true,
+        "div.fatca": false,
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "qbi.dividends": 0,
+        "qbi.unsupported": false,
+        "f4952.line1": 0,
+        "f4952.line4g": 0,
+        "f4952.carryover": false,
+        "f4952.unsupported": false,
+        "f4952.alternative_allocation": false,
+        "f8959.unsupported": false,
+        "f8960.unsupported": false,
+        "f8960.refund": false,
+        "f8960.allocated_taxes": 0,
+        "ftc.taxes": 0,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0,
+        "sa.unsupported": false,
+        "sa.charity_limited": false,
+        "sa.excluded_income": false,
+        "sa.dependent": false,
+        "sa.spouse_extra": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.spouse_itemizes": false,
+        "sa.elect_itemize": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "scope.schedule1": false,
+        "scope.schedule1a": false,
+        "scope.credits": false,
+        "scope.other_income": false,
+        "scope.other_line16": false,
+        "s2.amt": false,
+        "s2.other": false,
+        "f1040.line25b": 0,
+        "f1040.line25c": 0,
+        "f1040.line26": 0,
+        "f1040.line35a": 0,
+        "f1040.line36": 0,
+        "$w2@person[taxpayer]": [
+          "emp_a",
+          "emp_b"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 8000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box3": 8000000,
+        "person[taxpayer].w2[emp_a].box4": 496000,
+        "person[taxpayer].w2[emp_a].box5": 8000000,
+        "person[taxpayer].w2[emp_a].box6": 116000,
+        "person[taxpayer].w2[emp_a].box7": 0,
+        "person[taxpayer].w2[emp_b].box1": 4000000,
+        "person[taxpayer].w2[emp_b].box2": 500000,
+        "person[taxpayer].w2[emp_b].box3": 4000000,
+        "person[taxpayer].w2[emp_b].box4": 248000,
+        "person[taxpayer].w2[emp_b].box5": 4000000,
+        "person[taxpayer].w2[emp_b].box6": 58000,
+        "person[taxpayer].w2[emp_b].box7": 0,
+        "interest[bank_a].amount": 120000
+      },
+      "expect": {
+        "f1040.line1a": {
+          "kind": "money",
+          "cents": 12000000
+        },
+        "f1040.line1z": {
+          "kind": "money",
+          "cents": 12000000
+        },
+        "f1040.line2b": {
+          "kind": "money",
+          "cents": 120000
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "f1040.line3b": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line8": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line9": {
+          "kind": "money",
+          "cents": 12470000
+        },
+        "f1040.line10": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 12470000
+        },
+        "f1040.line11b": {
+          "kind": "money",
+          "cents": 12470000
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "f1040.line13a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line13b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line14": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 10895000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 1886000
+        },
+        "f1040.line17": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 1886000
+        },
+        "f1040.line19": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line20": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line21": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line22": {
+          "kind": "money",
+          "cents": 1886000
+        },
+        "f1040.line23": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line24": {
+          "kind": "money",
+          "cents": 1886000
+        },
+        "f1040.line25a": {
+          "kind": "money",
+          "cents": 1700000
+        },
+        "f1040.line25b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line25c": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line25d": {
+          "kind": "money",
+          "cents": 1700000
+        },
+        "f1040.line26": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line27a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line28": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line29": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line30": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line31": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line32": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line33": {
+          "kind": "money",
+          "cents": 1700000
+        },
+        "f1040.line34": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line35a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line36": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line37": {
+          "kind": "money",
+          "cents": 186000
+        },
+        "s3.line8": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sa.deduction": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "sa.itemizes": {
+          "kind": "bool",
+          "value": false
+        },
+        "qbi.deduction": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage5.return.refund",
+      "covers": [
+        "whole return"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Synthetic whole return: one employer $130,000, $2,000 estimated payments; single; standard deduction; refund by withholding. No independent human hand-work is claimed.",
+      "inputs": {
+        "f1040.status": "single",
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].rrta": false,
+        "$interest": [],
+        "$sales": [],
+        "$gift": [],
+        "sb.ordinary_dividends": 0,
+        "sb.unsupported": false,
+        "sb.line7a": false,
+        "sb.fbar_required": false,
+        "sb.form8938": false,
+        "sb.line8": false,
+        "f1040.line3a": 0,
+        "div.box2b": 0,
+        "div.box2c": 0,
+        "div.box2d": 0,
+        "div.box2e": 0,
+        "div.box2f": 0,
+        "div.box3": 0,
+        "div.box4": 0,
+        "div.box6": 0,
+        "div.box9": 0,
+        "div.box10": 0,
+        "div.box12": 0,
+        "div.box13": 0,
+        "div.basis_reconciled": true,
+        "div.fatca": false,
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "qbi.dividends": 0,
+        "qbi.unsupported": false,
+        "f4952.line1": 0,
+        "f4952.line4g": 0,
+        "f4952.carryover": false,
+        "f4952.unsupported": false,
+        "f4952.alternative_allocation": false,
+        "f8959.unsupported": false,
+        "f8960.unsupported": false,
+        "f8960.refund": false,
+        "f8960.allocated_taxes": 0,
+        "ftc.taxes": 0,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0,
+        "sa.unsupported": false,
+        "sa.charity_limited": false,
+        "sa.excluded_income": false,
+        "sa.dependent": false,
+        "sa.spouse_extra": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.spouse_itemizes": false,
+        "sa.elect_itemize": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "scope.schedule1": false,
+        "scope.schedule1a": false,
+        "scope.credits": false,
+        "scope.other_income": false,
+        "scope.other_line16": false,
+        "s2.amt": false,
+        "s2.other": false,
+        "f1040.line25b": 0,
+        "f1040.line25c": 0,
+        "f1040.line26": 200000,
+        "f1040.line35a": 173300,
+        "f1040.line36": 0,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 13000000,
+        "person[taxpayer].w2[emp_a].box2": 2000000,
+        "person[taxpayer].w2[emp_a].box3": 13000000,
+        "person[taxpayer].w2[emp_a].box4": 806000,
+        "person[taxpayer].w2[emp_a].box5": 13000000,
+        "person[taxpayer].w2[emp_a].box6": 188500,
+        "person[taxpayer].w2[emp_a].box7": 0
+      },
+      "expect": {
+        "f1040.line1a": {
+          "kind": "money",
+          "cents": 13000000
+        },
+        "f1040.line1z": {
+          "kind": "money",
+          "cents": 13000000
+        },
+        "f1040.line2b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line3b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line8": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line9": {
+          "kind": "money",
+          "cents": 13000000
+        },
+        "f1040.line10": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 13000000
+        },
+        "f1040.line11b": {
+          "kind": "money",
+          "cents": 13000000
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "f1040.line13a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line13b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line14": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 11425000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 2026700
+        },
+        "f1040.line17": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 2026700
+        },
+        "f1040.line19": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line20": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line21": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line22": {
+          "kind": "money",
+          "cents": 2026700
+        },
+        "f1040.line23": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line24": {
+          "kind": "money",
+          "cents": 2026700
+        },
+        "f1040.line25a": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "f1040.line25b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line25c": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line25d": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "f1040.line26": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f1040.line27a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line28": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line29": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line30": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line31": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line32": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line33": {
+          "kind": "money",
+          "cents": 2200000
+        },
+        "f1040.line34": {
+          "kind": "money",
+          "cents": 173300
+        },
+        "f1040.line35a": {
+          "kind": "money",
+          "cents": 173300
+        },
+        "f1040.line36": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line37": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line8": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sa.deduction": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "sa.itemizes": {
+          "kind": "bool",
+          "value": false
+        },
+        "qbi.deduction": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage5.return.itemized",
+      "covers": [
+        "whole return"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Synthetic whole return: $90,000 wages, $1,000 interest, $4,000 dividends ($2,000 qualified), $6,000 long-term gain, itemized $25,000; single. No independent human hand-work is claimed.",
+      "inputs": {
+        "f1040.status": "single",
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].rrta": false,
+        "$interest": [
+          "bank_a"
+        ],
+        "$sales": [
+          "s1"
+        ],
+        "$gift": [
+          "books"
+        ],
+        "sb.ordinary_dividends": 400000,
+        "sb.unsupported": false,
+        "sb.line7a": false,
+        "sb.fbar_required": false,
+        "sb.form8938": false,
+        "sb.line8": false,
+        "f1040.line3a": 200000,
+        "div.box2b": 0,
+        "div.box2c": 0,
+        "div.box2d": 0,
+        "div.box2e": 0,
+        "div.box2f": 0,
+        "div.box3": 0,
+        "div.box4": 0,
+        "div.box6": 0,
+        "div.box9": 0,
+        "div.box10": 0,
+        "div.box12": 0,
+        "div.box13": 0,
+        "div.basis_reconciled": true,
+        "div.fatca": false,
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 150000,
+        "qbi.dividends": 30000,
+        "qbi.unsupported": false,
+        "f4952.line1": 150000,
+        "f4952.line4g": 0,
+        "f4952.carryover": false,
+        "f4952.unsupported": false,
+        "f4952.alternative_allocation": false,
+        "f8959.unsupported": false,
+        "f8960.unsupported": false,
+        "f8960.refund": false,
+        "f8960.allocated_taxes": 0,
+        "ftc.taxes": 12000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0,
+        "sa.unsupported": false,
+        "sa.charity_limited": false,
+        "sa.excluded_income": false,
+        "sa.dependent": false,
+        "sa.spouse_extra": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.spouse_itemizes": false,
+        "sa.elect_itemize": false,
+        "sa.line1": 300000,
+        "sa.line5a": 1000000,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 1000000,
+        "sa.line11": 500000,
+        "scope.schedule1": false,
+        "scope.schedule1a": false,
+        "scope.credits": false,
+        "scope.other_income": false,
+        "scope.other_line16": false,
+        "s2.amt": false,
+        "s2.other": false,
+        "f1040.line25b": 0,
+        "f1040.line25c": 0,
+        "f1040.line26": 0,
+        "f1040.line35a": 0,
+        "f1040.line36": 0,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 9000000,
+        "person[taxpayer].w2[emp_a].box2": 1000000,
+        "person[taxpayer].w2[emp_a].box3": 9000000,
+        "person[taxpayer].w2[emp_a].box4": 558000,
+        "person[taxpayer].w2[emp_a].box5": 9000000,
+        "person[taxpayer].w2[emp_a].box6": 130500,
+        "person[taxpayer].w2[emp_a].box7": 0,
+        "interest[bank_a].amount": 100000,
+        "sales[s1].box": "D",
+        "sales[s1].route": "detail",
+        "sales[s1].code": "none",
+        "sales[s1].special": false,
+        "sales[s1].proceeds": 1600000,
+        "sales[s1].reported_basis": 1000000,
+        "gift[books].deduction": 80000,
+        "gift[books].public_securities": false,
+        "gift[books].special": false
+      },
+      "expect": {
+        "f1040.line1a": {
+          "kind": "money",
+          "cents": 9000000
+        },
+        "f1040.line1z": {
+          "kind": "money",
+          "cents": 9000000
+        },
+        "f1040.line2b": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f1040.line3b": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 750000
+        },
+        "f1040.line8": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line9": {
+          "kind": "money",
+          "cents": 10450000
+        },
+        "f1040.line10": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 10450000
+        },
+        "f1040.line11b": {
+          "kind": "money",
+          "cents": 10450000
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 2730000
+        },
+        "f1040.line13a": {
+          "kind": "money",
+          "cents": 6000
+        },
+        "f1040.line13b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line14": {
+          "kind": "money",
+          "cents": 2736000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 7714000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 1121700
+        },
+        "f1040.line17": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 1121700
+        },
+        "f1040.line19": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line20": {
+          "kind": "money",
+          "cents": 12000
+        },
+        "f1040.line21": {
+          "kind": "money",
+          "cents": 12000
+        },
+        "f1040.line22": {
+          "kind": "money",
+          "cents": 1109700
+        },
+        "f1040.line23": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line24": {
+          "kind": "money",
+          "cents": 1109700
+        },
+        "f1040.line25a": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "f1040.line25b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line25c": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line25d": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "f1040.line26": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line27a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line28": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line29": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line30": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line31": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line32": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line33": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "f1040.line34": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line35a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line36": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line37": {
+          "kind": "money",
+          "cents": 109700
+        },
+        "s3.line8": {
+          "kind": "money",
+          "cents": 12000
+        },
+        "sa.deduction": {
+          "kind": "money",
+          "cents": 2730000
+        },
+        "sa.itemizes": {
+          "kind": "bool",
+          "value": true
+        },
+        "qbi.deduction": {
+          "kind": "money",
+          "cents": 6000
+        }
+      }
+    },
+    {
+      "id": "stage5.refuse.screens",
+      "covers": [
+        "whole-return refusal propagation"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Synthetic refusal regression: Schedule 1, Schedule 1-A and credit screens all fire; the refused lines and their propagation are asserted. No independent human review is claimed.",
+      "inputs": {
+        "f1040.status": "single",
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].rrta": false,
+        "$interest": [],
+        "$sales": [],
+        "$gift": [],
+        "sb.ordinary_dividends": 0,
+        "sb.unsupported": false,
+        "sb.line7a": false,
+        "sb.fbar_required": false,
+        "sb.form8938": false,
+        "sb.line8": false,
+        "f1040.line3a": 0,
+        "div.box2b": 0,
+        "div.box2c": 0,
+        "div.box2d": 0,
+        "div.box2e": 0,
+        "div.box2f": 0,
+        "div.box3": 0,
+        "div.box4": 0,
+        "div.box6": 0,
+        "div.box9": 0,
+        "div.box10": 0,
+        "div.box12": 0,
+        "div.box13": 0,
+        "div.basis_reconciled": true,
+        "div.fatca": false,
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "qbi.dividends": 0,
+        "qbi.unsupported": false,
+        "f4952.line1": 0,
+        "f4952.line4g": 0,
+        "f4952.carryover": false,
+        "f4952.unsupported": false,
+        "f4952.alternative_allocation": false,
+        "f8959.unsupported": false,
+        "f8960.unsupported": false,
+        "f8960.refund": false,
+        "f8960.allocated_taxes": 0,
+        "ftc.taxes": 0,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0,
+        "sa.unsupported": false,
+        "sa.charity_limited": false,
+        "sa.excluded_income": false,
+        "sa.dependent": false,
+        "sa.spouse_extra": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.spouse_itemizes": false,
+        "sa.elect_itemize": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "scope.schedule1": true,
+        "scope.schedule1a": true,
+        "scope.credits": true,
+        "scope.other_income": false,
+        "scope.other_line16": false,
+        "s2.amt": false,
+        "s2.other": false,
+        "f1040.line25b": 0,
+        "f1040.line25c": 0,
+        "f1040.line26": 0,
+        "f1040.line35a": 0,
+        "f1040.line36": 0,
+        "$w2@person[taxpayer]": []
+      },
+      "expect": {
+        "f1040.line8": {
+          "kind": "refusal",
+          "gate": "scope.schedule1",
+          "form": "Schedule 1",
+          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "cite": {
+            "doc": "f1040",
+            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
+            "revision": "2025; created 2025-09-05",
+            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line9": {
+          "kind": "refusal",
+          "gate": "scope.schedule1",
+          "form": "Schedule 1",
+          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "cite": {
+            "doc": "f1040",
+            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
+            "revision": "2025; created 2025-09-05",
+            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line10": {
+          "kind": "refusal",
+          "gate": "scope.schedule1",
+          "form": "Schedule 1",
+          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "cite": {
+            "doc": "f1040",
+            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
+            "revision": "2025; created 2025-09-05",
+            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line11a": {
+          "kind": "refusal",
+          "gate": "scope.schedule1",
+          "form": "Schedule 1",
+          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "cite": {
+            "doc": "f1040",
+            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
+            "revision": "2025; created 2025-09-05",
+            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line13b": {
+          "kind": "refusal",
+          "gate": "scope.schedule1a",
+          "form": "Schedule 1-A",
+          "remedy": "Schedule 1-A deductions are outside this proof of concept.",
+          "cite": {
+            "doc": "f1040",
+            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
+            "revision": "2025; created 2025-09-05",
+            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line15": {
+          "kind": "refusal",
+          "gate": "scope.schedule1",
+          "form": "Schedule 1",
+          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "cite": {
+            "doc": "f1040",
+            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
+            "revision": "2025; created 2025-09-05",
+            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line19": {
+          "kind": "refusal",
+          "gate": "scope.credits",
+          "form": "Schedule 8812 / other credit forms",
+          "remedy": "Dependent and other unsupported credits require forms outside this proof of concept.",
+          "cite": {
+            "doc": "f1040",
+            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
+            "revision": "2025; created 2025-09-05",
+            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line21": {
+          "kind": "refusal",
+          "gate": "scope.credits",
+          "form": "Schedule 8812 / other credit forms",
+          "remedy": "Dependent and other unsupported credits require forms outside this proof of concept.",
+          "cite": {
+            "doc": "f1040",
+            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
+            "revision": "2025; created 2025-09-05",
+            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line22": {
+          "kind": "refusal",
+          "gate": "scope.schedule1",
+          "form": "Schedule 1",
+          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "cite": {
+            "doc": "f1040",
+            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
+            "revision": "2025; created 2025-09-05",
+            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line24": {
+          "kind": "refusal",
+          "gate": "scope.schedule1",
+          "form": "Schedule 1",
+          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "cite": {
+            "doc": "f1040",
+            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
+            "revision": "2025; created 2025-09-05",
+            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line27a": {
+          "kind": "refusal",
+          "gate": "scope.credits",
+          "form": "Schedule 8812 / other credit forms",
+          "remedy": "Dependent and other unsupported credits require forms outside this proof of concept.",
+          "cite": {
+            "doc": "f1040",
+            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
+            "revision": "2025; created 2025-09-05",
+            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line28": {
+          "kind": "refusal",
+          "gate": "scope.credits",
+          "form": "Schedule 8812 / other credit forms",
+          "remedy": "Dependent and other unsupported credits require forms outside this proof of concept.",
+          "cite": {
+            "doc": "f1040",
+            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
+            "revision": "2025; created 2025-09-05",
+            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line32": {
+          "kind": "refusal",
+          "gate": "scope.credits",
+          "form": "Schedule 8812 / other credit forms",
+          "remedy": "Dependent and other unsupported credits require forms outside this proof of concept.",
+          "cite": {
+            "doc": "f1040",
+            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
+            "revision": "2025; created 2025-09-05",
+            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line33": {
+          "kind": "refusal",
+          "gate": "scope.credits",
+          "form": "Schedule 8812 / other credit forms",
+          "remedy": "Dependent and other unsupported credits require forms outside this proof of concept.",
+          "cite": {
+            "doc": "f1040",
+            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
+            "revision": "2025; created 2025-09-05",
+            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line37": {
+          "kind": "refusal",
+          "gate": "scope.schedule1",
+          "form": "Schedule 1",
+          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "cite": {
+            "doc": "f1040",
+            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
+            "revision": "2025; created 2025-09-05",
+            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage5.refuse.other_income",
+      "covers": [
+        "whole-return refusal propagation"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Synthetic refusal regression: other-income screen fires; line 8 and its downstream lines refuse with the cited identity. No independent human review is claimed.",
+      "inputs": {
+        "f1040.status": "single",
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].rrta": false,
+        "$interest": [],
+        "$sales": [],
+        "$gift": [],
+        "sb.ordinary_dividends": 0,
+        "sb.unsupported": false,
+        "sb.line7a": false,
+        "sb.fbar_required": false,
+        "sb.form8938": false,
+        "sb.line8": false,
+        "f1040.line3a": 0,
+        "div.box2b": 0,
+        "div.box2c": 0,
+        "div.box2d": 0,
+        "div.box2e": 0,
+        "div.box2f": 0,
+        "div.box3": 0,
+        "div.box4": 0,
+        "div.box6": 0,
+        "div.box9": 0,
+        "div.box10": 0,
+        "div.box12": 0,
+        "div.box13": 0,
+        "div.basis_reconciled": true,
+        "div.fatca": false,
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "qbi.dividends": 0,
+        "qbi.unsupported": false,
+        "f4952.line1": 0,
+        "f4952.line4g": 0,
+        "f4952.carryover": false,
+        "f4952.unsupported": false,
+        "f4952.alternative_allocation": false,
+        "f8959.unsupported": false,
+        "f8960.unsupported": false,
+        "f8960.refund": false,
+        "f8960.allocated_taxes": 0,
+        "ftc.taxes": 0,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0,
+        "sa.unsupported": false,
+        "sa.charity_limited": false,
+        "sa.excluded_income": false,
+        "sa.dependent": false,
+        "sa.spouse_extra": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.spouse_itemizes": false,
+        "sa.elect_itemize": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "scope.schedule1": false,
+        "scope.schedule1a": false,
+        "scope.credits": false,
+        "scope.other_income": true,
+        "scope.other_line16": false,
+        "s2.amt": false,
+        "s2.other": false,
+        "f1040.line25b": 0,
+        "f1040.line25c": 0,
+        "f1040.line26": 0,
+        "f1040.line35a": 0,
+        "f1040.line36": 0,
+        "$w2@person[taxpayer]": []
+      },
+      "expect": {
+        "f1040.line8": {
+          "kind": "refusal",
+          "gate": "scope.other_income",
+          "form": "Form 1040 additional income/return forms",
+          "remedy": "Prepare the required unsupported income or return treatment.",
+          "cite": {
+            "doc": "f1040",
+            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
+            "revision": "2025; created 2025-09-05",
+            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line9": {
+          "kind": "refusal",
+          "gate": "scope.other_income",
+          "form": "Form 1040 additional income/return forms",
+          "remedy": "Prepare the required unsupported income or return treatment.",
+          "cite": {
+            "doc": "f1040",
+            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
+            "revision": "2025; created 2025-09-05",
+            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line11a": {
+          "kind": "refusal",
+          "gate": "scope.other_income",
+          "form": "Form 1040 additional income/return forms",
+          "remedy": "Prepare the required unsupported income or return treatment.",
+          "cite": {
+            "doc": "f1040",
+            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
+            "revision": "2025; created 2025-09-05",
+            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line15": {
+          "kind": "refusal",
+          "gate": "scope.other_income",
+          "form": "Form 1040 additional income/return forms",
+          "remedy": "Prepare the required unsupported income or return treatment.",
+          "cite": {
+            "doc": "f1040",
+            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
+            "revision": "2025; created 2025-09-05",
+            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
+            "tax_year": 2025
+          }
+        }
+      }
+    }
+  ]
+}

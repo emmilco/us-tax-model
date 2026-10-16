@@ -1,4 +1,4 @@
-Values sheet — tax year 2025 (implemented slice; not a complete return)
+Values sheet — tax year 2025 (single-person slice; not a complete return for all filers)
 
 == Form 1099-DIV — distribution components and scope screening ==
   (helper) Unrecaptured section 1250 gain, box 2b
@@ -55,12 +55,52 @@ Values sheet — tax year 2025 (implemented slice; not a complete return)
   Filing Status Single. Married filing jointly (even if only one had income). Married filing separately. Head of household (HOH). Qualifying surviving spouse (QSS).
       = single
       cite: [f1040] Form 1040, Filing Status (2025; created 2025-09-05; 3d31c226)
+  1a  Total amount from Form(s) W-2, box 1
+      = $64,520
+      cite: [i1040gi] Instructions for Form 1040, pp. 23–24, lines 1a–1h (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
+  1z  Add lines 1a through 1h
+      = $64,520
+      cite: [f1040] Form 1040 (2025), line 1z (2025; created 2025-09-05; 3d31c226)
+  2b  Taxable interest
+      = $0
+      cite: [i1040gi] Instructions for Form 1040, p. 25, line 2b (2025; printed date 2026-02-25; 482e9c48)
+  3b  Ordinary dividends
+      = $0
+      cite: [i1040gi] Instructions for Form 1040, p. 26, line 3b (2025; printed date 2026-02-25; 482e9c48)
   3a  Qualified dividends
       = $0
       cite: [i1040gi] Instructions for Form 1040, pp. 25–26, line 3a and exceptions (2025; printed date 2026-02-25; 482e9c48)
   7a  Capital gain or (loss). Attach Schedule D if required
       = $1,230
       cite: [i1040gi] Instructions for Form 1040, line 7a (2025; printed date 2026-02-25; 482e9c48)
+  8   Additional income from Schedule 1, line 10
+      = $0
+      cite: [f1040] Form 1040 (2025), line 8 (2025; created 2025-09-05; 3d31c226)
+  9   Add lines 1z, 2b, 3b, 4b, 5b, 6b, 7a, and 8. This is your total income
+      = $65,750
+      cite: [f1040] Form 1040 (2025), line 9 (2025; created 2025-09-05; 3d31c226)
+  10  Adjustments to income from Schedule 1, line 26
+      = $0
+      cite: [f1040] Form 1040 (2025), line 10 (2025; created 2025-09-05; 3d31c226)
+  11a Subtract line 10 from line 9. This is your adjusted gross income
+      = $65,750
+      cite: [f1040] Form 1040 (2025), line 11a (2025; created 2025-09-05; 3d31c226)
+  11b Amount from line 11a (adjusted gross income)
+      = $65,750
+      cite: [f1040] Form 1040 (2025), line 11b (2025; created 2025-09-05; 3d31c226)
+  12e Standard deduction or itemized deductions (from Schedule A)
+      = $15,750
+      cite: [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart (2025; printed date 2026-02-25; 482e9c48)
+  13a Qualified business income deduction from Form 8995 or Form 8995-A
+      = $0
+      cite: [f1040] Form 1040 (2025), line 13a (2025; created 2025-09-05; 3d31c226)
+  13b Additional deductions from Schedule 1-A, line 38
+      = $0
+      cite: [f1040] Form 1040 (2025), line 13b (2025; created 2025-09-05; 3d31c226)
+  14  Add lines 12e, 13a, and 13b
+      = $15,750
+      cite: [f1040] Form 1040 (2025), line 14 (2025; created 2025-09-05; 3d31c226)
   15  Subtract line 14 from line 11b. If zero or less, enter -0-. This is your taxable income
       = $50,000
       cite: [i1040gi] Instructions for Form 1040, line 15 (2025; printed date 2026-02-25; 482e9c48)
@@ -93,10 +133,28 @@ Values sheet — tax year 2025 (implemented slice; not a complete return)
   (helper) Elect an alternative allocation of Form 4952 line 4g to qualified dividends instead of capital gains first?
       = false
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
+  4a  Gross taxable interest and ordinary dividends from investment property, before subtracting qualified dividends
+      = $0
+      cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
   4g  Amount of qualified dividends and net capital gain elected into investment income
       = $0
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
+  (helper) Zero amount
+      = $0
+      cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
+  2   Prior-year disallowed interest is zero after screening
+      = $0
+      cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
+  3   Add lines 1 and 2
+      = $0
+      cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
   4b  Qualified dividends included on line 4a
+      = $0
+      cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
+  (helper) Qualified dividends exceed gross investment income
+      = false
+      cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
+  4c  Subtract line 4b from line 4a
       = $0
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
   4d  Net gain from investment-property dispositions, including distributions
@@ -104,6 +162,9 @@ Values sheet — tax year 2025 (implemented slice; not a complete return)
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
   4e  Smaller of line 4d and net capital gain
       = $710
+      cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
+  4f  Subtract line 4e from line 4d
+      = $520
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
   (helper) Maximum election: add lines 4b and 4e
       = $710
@@ -114,9 +175,57 @@ Values sheet — tax year 2025 (implemented slice; not a complete return)
   (helper) Validated default-allocation election
       = $0
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
+  4h  Add lines 4c, 4f and 4g
+      = $520
+      cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
+  5   Other deductible investment expenses are zero in the supported securities slice
+      = $0
+      cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
+  6   Line 4h less line 5; floor at zero
+      = $520
+      cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
+  8   Investment interest deduction: smaller of lines 3 and 6
+      = $0
+      cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
   (helper) File for an election, or to claim interest when the exception does not apply
       = false
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
+
+== Form 8995 — dividend-only simplified computation ==
+  5   Amount from qbi.zero
+      = $0
+      cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
+  6   Amount from qbi.eligible
+      = $0
+      cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
+  8   Amount from f8995.line6
+      = $0
+      cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
+  9   Multiply f8995.line8 by qbi.rate
+      = $0
+      cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
+      note: half-up to the cent per the ambiguity register; Interpretation amb.2025.multiplication_subcent: Round the product half-up to the nearest cent at the multiplication. Matches the half-up convention of the printed whole-dollar rounding rules. The whole-dollar default is unaffected: whole-dollar amounts multiplied by these rates produce exact cents, so the reading only matters when cents are turned on.
+ (i1040gi, QDCGT worksheet, lines 18 and 21; Rounding Off to Whole Dollars, p. 23)
+  10  Add f8995.line5, f8995.line9
+      = $0
+      cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
+  11  Amount from qbi.taxable_before
+      = $50,000
+      cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
+  12  Amount from qbi.net_capital_gain
+      = $710
+      cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
+  13  Subtract f8995.line12 from f8995.line11; if zero or less, enter zero
+      = $49,290
+      cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
+  14  Multiply f8995.line13 by qbi.rate
+      = $9,858
+      cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
+      note: half-up to the cent per the ambiguity register; Interpretation amb.2025.multiplication_subcent: Round the product half-up to the nearest cent at the multiplication. Matches the half-up convention of the printed whole-dollar rounding rules. The whole-dollar default is unaffected: whole-dollar amounts multiplied by these rates produce exact cents, so the reading only matters when cents are turned on.
+ (i1040gi, QDCGT worksheet, lines 18 and 21; Rounding Off to Whole Dollars, p. 23)
+  15  Smaller of f8995.line10, f8995.line14
+      = $0
+      cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
 
 == 28% Rate Gain Worksheet — distribution-only path ==
   1   Amount from div.screen
@@ -148,6 +257,31 @@ Values sheet — tax year 2025 (implemented slice; not a complete return)
   (helper) Qualified section 199A dividends from Form 1099-DIV box 5 after confirming holding-period and related-payment requirements
       = $0
       cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
+  (helper) Any QBI or PTP income/loss other than section 199A dividends, prior-year QBI/REIT/PTP loss carryover, or agricultural/horticultural cooperative patronage?
+      = false
+      cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
+  (helper) Year parameter sales.zero
+      = $0
+      cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
+  (helper) Amount from qbi.dividends
+      = $0
+      cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
+  (helper) Subtract sa.deduction from sa.agi; if zero or less, enter zero
+      = $50,000
+      cite: [i8995-correction] Correction to 2025 Form 8995 instructions, line 11: Form 1040 line 11a minus lines 12e and 13b; Schedule 1-A refused in this slice (Post-release correction to the 2025 Instructions for Form 8995 (published 2026-02-13); page last reviewed 2026-06-28; 926735a0)
+  (helper) Add sd.net_gain, f1040.line3a
+      = $710
+      cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
+  (helper) Year parameter qbi.threshold
+      = $197,300
+      cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
+  (helper) Taxable income before QBI exceeds the Form 8995 threshold
+      = false
+      cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
+  (helper) Select Form 8995 or dividend-only Form 8995-A
+      = $0
+      cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
+      note: taken: {"eq":["qbi.use_8995a",{"const":false}],"op":"test"}
 
 == Qualified Dividends and Capital Gain Tax Worksheet—Line 16 ==
   (question) Are you filing Schedule D?
@@ -237,10 +371,214 @@ Values sheet — tax year 2025 (implemented slice; not a complete return)
       = $5,861.50
       cite: [i1040gi] QDCGT worksheet, line 25 (2025; printed date 2026-02-25; 482e9c48)
 
+== Schedule A — supported itemized deductions and standard comparison ==
+  (helper) Any casualty/theft loss, other itemized deduction, foreign tax deduction, mortgage interest not on Form 1098 or subject to debt/use limits, or sales-tax election?
+      = false
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Are any charitable deductions reduced by income limits, or carried over from a prior year? Determine under Publication 526 before answering.
+      = false
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Any excluded Puerto Rico income, Form 2555 or Form 4563 amounts?
+      = false
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Can someone claim you or your spouse as a dependent, or are you a dual-status alien?
+      = false
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Claiming any age/blindness standard-deduction boxes for a spouse?
+      = false
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Were you born before January 2, 1961?
+      = false
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Are you blind under the standard-deduction instructions?
+      = false
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Elect to itemize even if the standard deduction is larger?
+      = false
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Form 1040 line 11b adjusted gross income
+      = $65,750
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  1   Unreimbursed eligible medical and dental expenses
+      = $0
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  5a  State/local income taxes paid, including withholding; no sales-tax election
+      = $0
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  5b  Deductible state/local real estate taxes
+      = $0
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  5c  Deductible state/local personal property taxes
+      = $0
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  8a  Eligible home mortgage interest and points on Form 1098, after confirming the debt/use limits do not apply
+      = $0
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  11  Deductible cash/check charitable gifts before income limits, after benefits received and required substantiation
+      = $0
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Year parameter sales.zero
+      = $0
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  2   Amount from sa.agi
+      = $65,750
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  3   Multiply sa.line2 by sa.medical_rate
+      = $4,931.25
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+      note: half-up to the cent per the ambiguity register; Interpretation amb.2025.multiplication_subcent: Round the product half-up to the nearest cent at the multiplication. Matches the half-up convention of the printed whole-dollar rounding rules. The whole-dollar default is unaffected: whole-dollar amounts multiplied by these rates produce exact cents, so the reading only matters when cents are turned on.
+ (i1040gi, QDCGT worksheet, lines 18 and 21; Rounding Off to Whole Dollars, p. 23)
+  4   Subtract sa.line3 from sa.line1; if zero or less, enter zero
+      = $0
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  5d  Add sa.line5a, sa.line5b, sa.line5c
+      = $0
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Year parameter sa.salt_base
+      = $40,000
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Year parameter sa.salt_floor
+      = $10,000
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Year parameter sa.salt_threshold
+      = $500,000
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Subtract sa.saltthreshold from sa.agi; if zero or less, enter zero
+      = $0
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Multiply sa.saltexcess by sa.salt_rate
+      = $0
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+      note: half-up to the cent per the ambiguity register; Interpretation amb.2025.multiplication_subcent: Round the product half-up to the nearest cent at the multiplication. Matches the half-up convention of the printed whole-dollar rounding rules. The whole-dollar default is unaffected: whole-dollar amounts multiplied by these rates produce exact cents, so the reading only matters when cents are turned on.
+ (i1040gi, QDCGT worksheet, lines 18 and 21; Rounding Off to Whole Dollars, p. 23)
+  (helper) Subtract sa.saltreduction from sa.saltbase; if zero or less, enter zero
+      = $40,000
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Larger of remaining ceiling and $10,000
+      = $40,000
+      cite: [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; b0999b12)
+  (helper) Married filing separately
+      = false
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Half the worksheet ceiling if married filing separately
+      = $40,000
+      cite: [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; b0999b12)
+      note: taken: {"eq":["sa.mfs",{"const":false}],"op":"test"}
+  5e  Smaller of sa.line5d, sa.saltlimit
+      = $0
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  6   Amount from sa.zero
+      = $0
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  8b  Amount from sa.zero
+      = $0
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  8c  Amount from sa.zero
+      = $0
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  13  Amount from sa.zero
+      = $0
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  15  Amount from sa.zero
+      = $0
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  16  Amount from sa.zero
+      = $0
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  7   Add sa.line5e, sa.line6
+      = $0
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  8e  Add sa.line8a, sa.line8b, sa.line8c
+      = $0
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  9   Amount from f4952.line8
+      = $0
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  10  Add sa.line8e, sa.line9
+      = $0
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  12  Total supported noncash donations before income limits
+      = $0
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+      note: confirmed roster $gift:
+  14  Add sa.line11, sa.line12, sa.line13
+      = $0
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  17  Add sa.line4, sa.line7, sa.line10, sa.line14, sa.line15, sa.line16
+      = $0
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Year parameter sa.standard_base
+      = $15,750
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Additional standard deduction for age65
+      = $0
+      cite: [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["sa.age65",{"const":false}],"op":"test"}
+  (helper) Additional standard deduction for blind
+      = $0
+      cite: [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["sa.blind",{"const":false}],"op":"test"}
+  (helper) Add sa.standardbase, sa.extra_age65, sa.extra_blind
+      = $15,750
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Standard deduction, zero when MFS spouse itemizes
+      = $15,750
+      cite: [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["sa.mfs_spouse_itemizes",{"const":false}],"op":"test"}
+  (helper) Itemize if elected, required, or itemized total exceeds standard
+      = false
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Deduction selected for Form 1040 line 12e
+      = $15,750
+      cite: [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["sa.itemizes",{"const":false}],"op":"test"}
+  (helper) MFS with spouse itemizing
+      = false
+      cite: [i1040gi] p. 34, line 12e exception 2 (2025; printed date 2026-02-25; 482e9c48)
+
 == Schedule B — supported interest and ordinary dividends ==
+  (helper) Any nominee income, original issue discount, accrued interest adjustment, bond premium, seller-financed mortgage interest, savings-bond exclusion, foreign corporation reporting, or other special treatment?
+      = false
+      cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
   (helper) Total ordinary dividends, Form 1099-DIV box 1a
       = $0
       cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
+  (helper) Are you required to file FinCEN Form 114 (FBAR)? Determine under its instructions; this tool does not determine foreign account values or exceptions.
+      = false
+      cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
+  (helper) Are you required to file Form 8938 for specified foreign financial assets?
+      = false
+      cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
+  8   Received a distribution from, or were grantor of or transferor to, a foreign trust during 2025?
+      = false
+      cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
+  (helper) Year parameter sales.zero
+      = $0
+      cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
+  2   Total taxable interest from all payers
+      = $0
+      cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
+      note: confirmed roster $interest:
+  3   Amount from sb.zero
+      = $0
+      cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
+  4   Subtract sb.line3 from sb.line2
+      = $0
+      cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
+  6   Amount from sb.ordinary_dividends
+      = $0
+      cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
+
+== Proof-of-concept scope screening ==
+  (helper) Any income or adjustment requiring Schedule 1, including a taxable state/local tax refund?
+      = false
+      cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
+  (helper) Any deduction claimed on Schedule 1-A, including tips, overtime, car-loan interest or enhanced senior deduction?
+      = false
+      cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
+  (helper) Any retirement, Social Security, nonresident or other income/return treatment outside wages, interest, dividends and supported securities sales?
+      = false
+      cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
 
 == Schedule D — securities sales and supplied distribution subtotals ==
   (helper) Are there gains/losses from Forms 4797, 2439, 6252, 4684, 6781, 8824 or Schedule K-1?
@@ -387,6 +725,75 @@ Values sheet — tax year 2025 (implemented slice; not a complete return)
   18  Subtract u1250.line17 from u1250.line13; if zero or less, enter zero
       = $0
       cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
+
+Path choices (guard wording per the rendered worksheets in rendered/2025/):
+  sales[1a].e: chose $10 (guard 0)
+  sales[1a].b: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sales[1a].w: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sales[1b].e: chose $20 (guard 0)
+  sales[1b].b: chose -$10 (guard 0)
+  sales[1b].w: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sales[2].e: chose $400 (guard 1)
+      not taken: guard 0 = false
+  sales[2].b: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sales[2].w: chose $20 (guard 0)
+  sales[3].e: chose $60 (guard 1)
+      not taken: guard 0 = false
+  sales[3].b: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sales[3].w: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sales[8a].e: chose $70 (guard 0)
+  sales[8a].b: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sales[8a].w: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sales[8b].e: chose $700 (guard 0)
+  sales[8b].b: chose -$100 (guard 0)
+  sales[8b].w: chose $30 (guard 0)
+  sales[9].e: chose $90 (guard 1)
+      not taken: guard 0 = false
+  sales[9].b: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sales[9].w: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sales[10].e: chose $1,000 (guard 1)
+      not taken: guard 0 = false
+  sales[10].b: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sales[10].w: chose $40 (guard 0)
+  sd.to1040: chose $1,230 (guard 1)
+      not taken: guard 0 = false
+  f1040.sd.to1040: chose $1,230 (guard 1)
+      not taken: guard 0 = false
+  sa.saltlimit: chose $40,000 (guard 1)
+      not taken: guard 0 = false
+  sa.extra_age65: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sa.extra_blind: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sa.standard: chose $15,750 (guard 1)
+      not taken: guard 0 = false
+  sa.deduction: chose $15,750 (guard 1)
+      not taken: guard 0 = false
+  f1040.sa.deduction: chose $15,750 (guard 1)
+      not taken: guard 0 = false
+  qbi.sa.deduction: chose $15,750 (guard 1)
+      not taken: guard 0 = false
+  qbi.deduction: chose $0 (guard 1)
+      not taken: guard 0 = false
+  f1040.qbi.deduction: chose $0 (guard 1)
+      not taken: guard 0 = false
+  qdcg.line3: chose $710 (guard 0)
+  root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.tax: chose $5,755 (guard 0)
+  root|inst:tax_on_amount#{"amount":"qdcg.line1","status":"f1040.status"}.tax: chose $5,920 (guard 0)
+  f1040.non_sdtw_tax: chose $5,861.50 (guard 0)
+  f1040.line16: chose $5,861.50 (guard 1)
+      not taken: guard 0 = false
 
 Collection entries and derivations:
   sales[10].box = F
@@ -741,6 +1148,10 @@ Collection entries and derivations:
     cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
   sales[10].h = -$160
     cite: i8949, p. 11, column (h) (2025; printed date 2026-01-20; f077991c)
+  person[taxpayer].w2[migrated].box1 = $64,520
+    cite: iw2w3, p. 17, box 1 (2025; printed date 2025-02-19; bfecbc99)
+  person[taxpayer].box1 = $64,520
+    cite: f1040, Form 1040 (2025), line 1a (2025; created 2025-09-05; 3d31c226)
   sales[10].digital: test(sales[10].box = F; "G" = G; sales[10].box = F; "H" = H; sales[10].box = F; "I" = I; sales[10].box = F; "J" = J; sales[10].box = F; "K" = K; sales[10].box = F; "L" = L)
   sales[10].has_b: test(sales[10].code = W; "B" = B; sales[10].code = W; "BW" = BW)
   sales[10].bad_code: test(sales[10].code = W; "other" = other; sales[10].has_b = false; true = true)
@@ -895,6 +1306,117 @@ Collection entries and derivations:
   sd.to1040: choose(sd.has_loss = false; true = true; sd.has_loss = false; false = false; sd.line16 = $1,230)
   f1040.sd.to1040: choose(sd.has_loss = false; true = true; sd.has_loss = false; false = false; sd.line16 = $1,230)
   f1040.line7a: copy(sd.to1040 = $1,230)
+  person[taxpayer].box1: sum_over(person[taxpayer].w2[migrated].box1 = $64,520)
+  f1040.line1a: sum_over(person[taxpayer].box1 = $64,520)
+  f1040.line1z: copy(f1040.line1a = $64,520)
+  sb.line2: sum_over(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false)
+  sb.zero: param(#sales.zero = $0)
+  sb.line3: copy(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; sb.zero = $0)
+  sb.line4: subtract(sb.line2 = $0; sb.line3 = $0)
+  f1040.sb.line4: subtract(sb.line2 = $0; sb.line3 = $0)
+  f1040.line2b: copy(sb.line4 = $0)
+  sb.line6: copy(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; sb.ordinary_dividends = $0)
+  f1040.sb.line6: copy(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; sb.ordinary_dividends = $0)
+  f1040.line3b: copy(sb.line6 = $0)
+  f1040.line8: param(scope.schedule1 = false; scope.other_income = false; #sales.zero = $0)
+  f1040.line9: sum(f1040.line1z = $64,520; f1040.line2b = $0; f1040.line3a = $0; f1040.line3b = $0; f1040.line7a = $1,230; f1040.line8 = $0)
+  f1040.line10: param(scope.schedule1 = false; #sales.zero = $0)
+  f1040.line11a: subtract(f1040.line9 = $65,750; f1040.line10 = $0)
+  f1040.line11b: copy(f1040.line11a = $65,750)
+  sa.mfs: test(f1040.status = single; "mfs" = mfs)
+  sa.mfs_spouse_itemizes: test(sa.mfs = false; true = true)
+  sa.f1040.line11b: copy(f1040.line11a = $65,750)
+  sa.agi: copy(f1040.line11b = $65,750)
+  sa.line2: copy(sa.agi = $65,750)
+  sa.line3: multiply_rate(sa.line2 = $65,750; #sa.medical_rate = 75/1000)
+  sa.line4: subtract_floor0(sa.line1 = $0; sa.line3 = $4,931.25)
+  sa.line5d: sum(sa.line5a = $0; sa.line5b = $0; sa.line5c = $0)
+  sa.saltbase: param(#sa.salt_base = $40,000)
+  sa.saltthreshold: param(#sa.salt_threshold = $500,000)
+  sa.saltexcess: subtract_floor0(sa.agi = $65,750; sa.saltthreshold = $500,000)
+  sa.saltreduction: multiply_rate(sa.saltexcess = $0; #sa.salt_rate = 3/10)
+  sa.saltremaining: subtract_floor0(sa.saltbase = $40,000; sa.saltreduction = $0)
+  sa.saltfloor: param(#sa.salt_floor = $10,000)
+  sa.saltfloor_applied: larger_of(sa.saltremaining = $40,000; sa.saltfloor = $10,000)
+  sa.saltlimit: choose(sa.mfs = false; true = true; sa.mfs = false; false = false; sa.saltfloor_applied = $40,000)
+  sa.line5e: smaller_of(sa.line5d = $0; sa.saltlimit = $40,000)
+  sa.zero: param(#sales.zero = $0)
+  sa.line6: copy(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.zero = $0)
+  sa.line7: sum(sa.line5e = $0; sa.line6 = $0)
+  sa.line8b: copy(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.zero = $0)
+  sa.line8c: copy(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.zero = $0)
+  sa.line8e: sum(sa.line8a = $0; sa.line8b = $0; sa.line8c = $0)
+  f4952.zero: param(#sales.zero = $0)
+  f4952.line2: copy(f4952.carryover = false; f4952.unsupported = false; f4952.alternative_allocation = false; f4952.zero = $0)
+  f4952.line3: sum(f4952.line1 = $0; f4952.line2 = $0)
+  f4952.line4b: copy(f1040.line3a = $0)
+  f4952.sb.line2: sum_over(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false)
+  f4952.sb.line6: copy(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; sb.ordinary_dividends = $0)
+  f4952.line4a: sum(sb.line2 = $0; sb.line6 = $0)
+  f4952.bad_dividends: test(f4952.line4b = $0; f4952.line4a = $0)
+  f4952.line4c: subtract(f4952.bad_dividends = false; f4952.line4a = $0; f4952.line4b = $0)
+  f4952.sd.line16: sum(sd.line7 = $520; sd.line15 = $710)
+  f4952.line4d: subtract_floor0(sd.line16 = $1,230; 0 = $0)
+  sd.net_gain_raw: smaller_of(sd.line15 = $710; sd.line16 = $1,230)
+  sd.net_gain: subtract_floor0(sd.net_gain_raw = $710; 0 = $0)
+  f4952.sd.net_gain: subtract_floor0(sd.net_gain_raw = $710; 0 = $0)
+  f4952.line4e: smaller_of(f4952.line4d = $1,230; sd.net_gain = $710)
+  f4952.line4f: subtract(f4952.line4d = $1,230; f4952.line4e = $710)
+  f4952.election_limit: sum(f4952.line4b = $0; f4952.line4e = $710)
+  f4952.bad_election: test(f4952.line4g = $0; f4952.election_limit = $710)
+  f4952.election: copy(f4952.carryover = false; f4952.unsupported = false; f4952.alternative_allocation = false; f4952.bad_election = false; f4952.line4g = $0)
+  f4952.line4h: sum(f4952.line4c = $0; f4952.line4f = $520; f4952.election = $0)
+  f4952.line5: copy(f4952.carryover = false; f4952.unsupported = false; f4952.alternative_allocation = false; f4952.zero = $0)
+  f4952.line6: subtract_floor0(f4952.line4h = $520; f4952.line5 = $0)
+  f4952.line8: smaller_of(f4952.line3 = $0; f4952.line6 = $520)
+  sa.f4952.line8: smaller_of(f4952.line3 = $0; f4952.line6 = $520)
+  sa.line9: copy(f4952.line8 = $0)
+  sa.line10: sum(sa.line8e = $0; sa.line9 = $0)
+  sa.line12: sum_over(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false)
+  sa.line13: copy(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.zero = $0)
+  sa.line14: sum(sa.line11 = $0; sa.line12 = $0; sa.line13 = $0)
+  sa.line15: copy(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.zero = $0)
+  sa.line16: copy(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.zero = $0)
+  sa.line17: sum(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.line4 = $0; sa.line7 = $0; sa.line10 = $0; sa.line14 = $0; sa.line15 = $0; sa.line16 = $0)
+  sa.standardbase: param(#sa.standard_base = $15,750)
+  sa.extra_age65: choose(sa.age65 = false; true = true; sa.age65 = false; false = false; sa.zero = $0)
+  sa.extra_blind: choose(sa.blind = false; true = true; sa.blind = false; false = false; sa.zero = $0)
+  sa.standardraw: sum(sa.standardbase = $15,750; sa.extra_age65 = $0; sa.extra_blind = $0)
+  sa.standard: choose(sa.dependent = false; sa.spouse_extra = false; sa.mfs_spouse_itemizes = false; true = true; sa.mfs_spouse_itemizes = false; false = false; sa.standardraw = $15,750)
+  sa.itemizes: test(sa.elect_itemize = false; true = true; sa.mfs_spouse_itemizes = false; true = true; sa.line17 = $0; sa.standard = $15,750)
+  sa.deduction: choose(sa.itemizes = false; true = true; sa.itemizes = false; false = false; sa.standard = $15,750)
+  f1040.sa.deduction: choose(sa.itemizes = false; true = true; sa.itemizes = false; false = false; sa.standard = $15,750)
+  f1040.line12e: copy(sa.deduction = $15,750)
+  qbi.sa.agi: copy(f1040.line11b = $65,750)
+  qbi.sa.deduction: choose(sa.itemizes = false; true = true; sa.itemizes = false; false = false; sa.standard = $15,750)
+  qbi.taxable_before: subtract_floor0(sa.agi = $65,750; sa.deduction = $15,750)
+  qbi.threshold: param(#qbi.threshold = $197,300)
+  qbi.use_8995a: test(qbi.taxable_before = $50,000; qbi.threshold = $197,300)
+  qbi.zero: param(#sales.zero = $0)
+  f8995.qbi.zero: param(#sales.zero = $0)
+  f8995.line5: copy(qbi.zero = $0)
+  qbi.eligible: copy(qbi.unsupported = false; qbi.dividends = $0)
+  f8995.qbi.eligible: copy(qbi.unsupported = false; qbi.dividends = $0)
+  f8995.line6: copy(qbi.eligible = $0)
+  f8995.line8: copy(f8995.line6 = $0)
+  f8995.line9: multiply_rate(f8995.line8 = $0; #qbi.rate = 1/5)
+  f8995.line10: sum(f8995.line5 = $0; f8995.line9 = $0)
+  f8995.qbi.taxable_before: subtract_floor0(sa.agi = $65,750; sa.deduction = $15,750)
+  f8995.line11: copy(qbi.taxable_before = $50,000)
+  qbi.sd.net_gain: subtract_floor0(sd.net_gain_raw = $710; 0 = $0)
+  qbi.net_capital_gain: sum(sd.net_gain = $710; f1040.line3a = $0)
+  f8995.qbi.net_capital_gain: sum(sd.net_gain = $710; f1040.line3a = $0)
+  f8995.line12: copy(qbi.net_capital_gain = $710)
+  f8995.line13: subtract_floor0(f8995.line11 = $50,000; f8995.line12 = $710)
+  f8995.line14: multiply_rate(f8995.line13 = $49,290; #qbi.rate = 1/5)
+  f8995.line15: smaller_of(f8995.line10 = $0; f8995.line14 = $9,858)
+  qbi.f8995.line15: smaller_of(f8995.line10 = $0; f8995.line14 = $9,858)
+  qbi.deduction: choose(qbi.use_8995a = false; true = true; qbi.use_8995a = false; false = false; f8995.line15 = $0)
+  f1040.qbi.deduction: choose(qbi.use_8995a = false; true = true; qbi.use_8995a = false; false = false; f8995.line15 = $0)
+  f1040.line13a: copy(qbi.deduction = $0)
+  f1040.line13b: param(scope.schedule1a = false; #sales.zero = $0)
+  f1040.line14: sum(f1040.line12e = $15,750; f1040.line13a = $0; f1040.line13b = $0)
+  f1040.line15: subtract_floor0(f1040.line11b = $65,750; f1040.line14 = $15,750)
   sd.filed: test(sd.count = 8; 0 = 0)
   f1040.sd.filed: test(sd.count = 8; 0 = 0)
   sd.line17: test(sd.line15 = $710; 0 = $0; sd.line16 = $1,230; 0 = $0)
@@ -935,21 +1457,12 @@ Collection entries and derivations:
   sd.u1250.line18: subtract_floor0(u1250.line13 = $0; u1250.line17 = $0)
   sd.line19: copy(u1250.line18 = $0)
   f1040.sd.line19: copy(u1250.line18 = $0)
-  f4952.line4b: copy(f1040.line3a = $0)
-  f4952.sd.line16: sum(sd.line7 = $520; sd.line15 = $710)
-  f4952.line4d: subtract_floor0(sd.line16 = $1,230; 0 = $0)
-  sd.net_gain_raw: smaller_of(sd.line15 = $710; sd.line16 = $1,230)
-  sd.net_gain: subtract_floor0(sd.net_gain_raw = $710; 0 = $0)
-  f4952.sd.net_gain: subtract_floor0(sd.net_gain_raw = $710; 0 = $0)
-  f4952.line4e: smaller_of(f4952.line4d = $1,230; sd.net_gain = $710)
-  f4952.election_limit: sum(f4952.line4b = $0; f4952.line4e = $710)
-  f4952.bad_election: test(f4952.line4g = $0; f4952.election_limit = $710)
-  f4952.election: copy(f4952.carryover = false; f4952.unsupported = false; f4952.alternative_allocation = false; f4952.bad_election = false; f4952.line4g = $0)
   f4952.required: test(f4952.carryover = false; f4952.unsupported = false; f4952.alternative_allocation = false; f4952.election = $0; 0 = $0; f4952.line1 = $0; 0 = $0)
   sd.f4952.required: test(f4952.carryover = false; f4952.unsupported = false; f4952.alternative_allocation = false; f4952.election = $0; 0 = $0; f4952.line1 = $0; 0 = $0)
   sd.filing4952: copy(f4952.required = false)
   f1040.sd.filing4952: copy(f4952.required = false)
   f1040.gate.sdtw: test(f1040.gate.qdcg_applies = true; true = true; sd.line17 = true; true = true; sd.line18 = $0; 0 = $0; sd.line19 = $0; 0 = $0; sd.filing4952 = false; true = true)
+  qdcg.f1040.line15: subtract_floor0(f1040.line11b = $65,750; f1040.line14 = $15,750)
   qdcg.line1: copy(f1040.line15 = $50,000)
   qdcg.line2: copy(f1040.line3a = $0)
   qdcg.sd.filed: test(sd.count = 8; 0 = 0)
@@ -994,7 +1507,11 @@ Collection entries and derivations:
   f1040.line16: choose(f1040.gate.sdtw = false; true = true; f1040.gate.sdtw = false; false = false; f1040.non_sdtw_tax = $5,861.50)
 Interpretation amb.2025.sales_rounding: Preserve exact cents throughout Stage 3; whole-dollar mode remains deferred. Avoid choosing a reconciliation policy without explicit support; cents are expressly permitted. (i8949, p. 3, Rounding Off to Whole Dollars; compare i1040gi p. 23)
 Interpretation amb.2025.box2c_scope: Refuse nonzero box 2c; no exclusion or AMT amount is silently omitted. Archived Schedule D instructions require the exclusion on Form 8949 code Q and describe an AMT adjustment for 50/60/75-percent exclusions. The existing explicit exclusions are retained; the owner was notified and asked, then said continue without selecting an expansion. (i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
+Interpretation amb.2025.multiplication_subcent: Round the product half-up to the nearest cent at the multiplication. Matches the half-up convention of the printed whole-dollar rounding rules. The whole-dollar default is unaffected: whole-dollar amounts multiplied by these rates produce exact cents, so the reading only matters when cents are turned on.
+ (i1040gi, QDCGT worksheet, lines 18 and 21; Rounding Off to Whole Dollars, p. 23)
 Interpretation amb.2025.sd4952_selection: Use the detailed worksheet conditions, including line 4g and exceptions. The worksheet explicitly limits its own use and the Form 1040 line 16 instructions repeat the line 4g condition. (i1040sd, p. 15, Schedule D Tax Worksheet applicability; compare f1040sd line 20 and i1040gi p. 36)
-Scope: implemented worksheet slices only; unsupported paths are refused. No filing or transmission.
+Scope: single-person return (Form 1040 lines 1a–37 with the in-scope schedules and refusal screens). Unsupported paths are refused with citations. No filing or transmission.
+Rounding: amounts are exact cents; the return-wide whole-dollar rounding setting is deferred (see ambiguities/2025.yaml).
+Estimated tax penalty: not computed; the IRS will figure it (see i1040gi, line 38).
 This is a computation of published IRS forms and instructions; it is not tax or legal advice. Published instructions are not the law itself.
 The user is responsible for the return. Not affiliated with or endorsed by the IRS.

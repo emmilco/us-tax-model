@@ -13,7 +13,8 @@ import { loadCanonical } from "./canonical.js";
 import { evaluate } from "./eval.js";
 import { renderValuesSheet, renderValuesHtml, resultToJson } from "./output.js";
 import { runConjecture } from "./conjecture.js";
-import { coverageReport, recordFixtures, testFixtures, reviewStage2, reviewStage3, reviewStage4 } from "./fixtures.js";
+import { coverageReport, evidenceReport, recordFixtures, testFixtures, reviewStage2, reviewStage3, reviewStage4, reviewStage5 } from "./fixtures.js";
+import { differential } from "./differential.js";
 import { compareEvaluators } from "./compare.js";
 import { runMutation } from "./mutate.js";
 
@@ -24,7 +25,9 @@ import { runInterview } from "./interview.js";
 
 const command = process.argv[2];
 
-if (command === "review-stage4") {
+if (command === "review-stage5") {
+  reviewStage5();
+} else if (command === "review-stage4") {
   reviewStage4();
 } else if (command === "review-stage3") {
   reviewStage3();
@@ -91,6 +94,10 @@ if (command === "review-stage4") {
   process.exit(testFixtures() === 0 ? 0 : 1);
 } else if (command === "coverage") {
   coverageReport();
+} else if (command === "evidence") {
+  evidenceReport();
+} else if (command === "differential") {
+  process.exit(differential() === 0 ? 0 : 1);
 } else if (command === "compare") {
   process.exit(compareEvaluators());
 } else if (command === "mutate") {

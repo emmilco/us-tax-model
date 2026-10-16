@@ -7,12 +7,12 @@ the fixture test compares).
 
 | Metric | Value |
 | --- | --- |
-| Mutants | 644 |
-| Killed by the checker | 36 |
-| Killed by fixtures | 530 |
-| Surviving | 78 (38 provably equivalent) |
-| Mutation score (raw) | 87.9% |
-| Mutation score (equivalent mutants excluded) | 93.4% |
+| Mutants | 695 |
+| Killed by the checker | 40 |
+| Killed by fixtures | 570 |
+| Surviving | 85 (39 provably equivalent) |
+| Mutation score (raw) | 87.8% |
+| Mutation score (equivalent mutants excluded) | 93.0% |
 
 ## Surviving — classified equivalent
 
@@ -37,6 +37,7 @@ the fixture test compares).
 - `operand.qdcg.qdcg.line8.line7` (replace an operand, qdcg.qdcg.line8): Provably equivalent: line 8 is min(line 5, line 7) and line 7 is min(line 1, line 6) with line 5 ≤ line 1; min(line 5, min(line 1, line 6)) = min(line 5, line 6), so substituting line 6 for line 7 cannot change any value.
 - `operand.qdcg.qdcg.line12.line11` (replace an operand, qdcg.qdcg.line12): Copy-chain identity: qdcg.line11 and qdcg.line9 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.s2.s2.line3.zero` (replace an operand, s2.s2.line3): Copy-chain identity: s2.zero and s2.line2 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
+- `operand.sa.sa.line3.line2` (replace an operand, sa.sa.line3): Copy-chain identity: sa.line2 and sa.agi expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.sa.sa.line8b.zero` (replace an operand, sa.sa.line8b): Copy-chain identity: sa.zero and sa.line6 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.sa.sa.line8c.zero` (replace an operand, sa.sa.line8c): Copy-chain identity: sa.zero and sa.line8b expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.sa.sa.line13.zero` (replace an operand, sa.sa.line13): Copy-chain identity: sa.zero and sa.line8c expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
@@ -59,12 +60,17 @@ the fixture test compares).
 
 | Mutant | Kind | Location | Note |
 | --- | --- | --- | --- |
+| operand.f1040.f1040.line11b.line11a | replace an operand | f1040.f1040.line11b | f1040.line11a -> f1040.line9 (Dollars) |
+| operand.f1040.f1040.line14.line13b | replace an operand | f1040.f1040.line14 | f1040.line13b -> f1040.line10 (NonNegDollars) |
+| operand.f1040.f1040.line18.line16 | replace an operand | f1040.f1040.line18 | f1040.line16 -> f1040.non_sdtw_tax (Dollars) |
+| operand.f1040.f1040.line24.line23 | replace an operand | f1040.f1040.line24 | f1040.line23 -> f1040.line19 (NonNegDollars) |
+| refusal.f1040.f1040.line29.0 | remove refusal | f1040.f1040.line29 |  |
+| refusal.f1040.f1040.line30.0 | remove refusal | f1040.f1040.line30 |  |
 | operand.f4952.f4952.line3.line2 | replace an operand | f4952.f4952.line3 | f4952.line2 -> f4952.zero (NonNegDollars) |
 | refusal.f4952.f4952.required.1 | remove refusal | f4952.f4952.required |  |
 | refusal.f4952.f4952.required.2 | remove refusal | f4952.f4952.required |  |
 | operand.f8959.f8959.line11.line9 | replace an operand | f8959.f8959.line11 | f8959.line9 -> f8959.line7 (NonNegDollars) |
 | operand.f8959.f8959.line12.line11 | replace an operand | f8959.f8959.line12 | f8959.line11 -> f8959.line10 (NonNegDollars) |
-| operand.f8959.f8959.line13.line12 | replace an operand | f8959.f8959.line13 | f8959.line12 -> f8959.line11 (NonNegDollars) |
 | operand.f8959.f8959.line16.line14 | replace an operand | f8959.f8959.line16 | f8959.line14 -> f8959.line13 (NonNegDollars) |
 | operand.f8959.f8959.line16.line15 | replace an operand | f8959.f8959.line16 | f8959.line15 -> f8959.line13 (NonNegDollars) |
 | operand.f8959.f8959.line18.line13 | replace an operand | f8959.f8959.line18 | f8959.line13 -> f8959.line16 (NonNegDollars) |
@@ -74,6 +80,7 @@ the fixture test compares).
 | operand.f8960.f8960.line12.line11 | replace an operand | f8960.f8960.line12 | f8960.line11 -> f8960.line9d (NonNegDollars) |
 | refusal.person.person.medicare5.0 | remove refusal | person.person.medicare5 |  |
 | refusal.person.person.medicare6.0 | remove refusal | person.person.medicare6 |  |
+| refusal.s3.s3.line8.0 | remove refusal | s3.s3.line8 |  |
 | operand.sa.sa.salthalf.saltfloor_applied | replace an operand | sa.sa.salthalf | sa.saltfloor_applied -> sa.saltremaining (NonNegDollars) |
 | refusal.sa.sa.line17.1 | remove refusal | sa.sa.line17 |  |
 | refusal.sa.sa.line17.2 | remove refusal | sa.sa.line17 |  |

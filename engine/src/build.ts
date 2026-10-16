@@ -149,6 +149,14 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
     const declared = q.input.startsWith("$") ? forms.some(d => d.collection && "$" + d.id === q.input) : forms.some(d => d.lines.some(l => l.id === q.input && l.expr.op === "input"));
     if (!declared) errors.push(`invalid Stage 4 question ${q.input}`);
   }
+  const fullInterview = (parseYaml(readFileSync(join(ROOT, "interview", "full-2025.yaml"), "utf8")) as {interview: InterviewData}).interview;
+  fullInterview.cite = fillCite(fullInterview.cite, 2025, "full interview");
+  for (const q of fullInterview.questions) {
+    q.cite = fillCite(q.cite, 2025, `full-interview question ${q.input}`);
+    const declared = q.input.startsWith("$") ? forms.some(d => d.collection && "$" + d.id === q.input) : forms.some(d => d.lines.some(l => l.id === q.input && l.expr.op === "input"));
+    if (!declared) errors.push(`invalid full-interview question ${q.input}`);
+  }
+  if (new Set(fullInterview.questions.map(q=>q.input)).size !== fullInterview.questions.length) errors.push("duplicate full-interview questions");
   const data: CanonicalData = { forms, defs, params, tables, register };
 
   // Schema validation on the canonical form.
@@ -174,6 +182,7 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
   validate(validateWith("interview"), interview, "interview");
   validate(validateWith("interview"), salesInterview, "sales interview");
   validate(validateWith("interview"), stage4Interview, "Stage 4 interview");
+  validate(validateWith("interview"), fullInterview, "full interview");
   for (const doc of forms) validate(formFileValidator, { form: doc }, `form ${doc.id}`);
   for (const doc of defs) validate(defFileValidator, { def: doc }, `def ${doc.id}`);
   validate(paramsValidator, { params }, "params");
@@ -185,7 +194,7 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
   errors.push(...checkResult.errors);
   stats.push(...checkResult.stats);
 
-  if (errors.length === 0) errors.push(...checkInterview(data, interview), ...checkSalesInterview(data, salesInterview), ...checkSalesInterview(data, stage4Interview, "stage4"));
+  if (errors.length === 0) errors.push(...checkInterview(data, interview), ...checkSalesInterview(data, salesInterview), ...checkSalesInterview(data, stage4Interview, "stage4"), ...checkSalesInterview(data, fullInterview, "stage5"));
   stats.push("interview: Stage 2 finite domains checked; Stage 3 fixture paths checked for reachability, termination and answer-order invariance (not exhaustive)");
 
   // Write canonical output.
@@ -201,6 +210,7 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
     writeFileSync(join(OUT_DIR, "interview.json"), stableStringify(interview));
     writeFileSync(join(OUT_DIR, "interview-sales.json"), stableStringify(salesInterview));
     writeFileSync(join(OUT_DIR, "interview-stage4.json"), stableStringify(stage4Interview));
+    writeFileSync(join(OUT_DIR, "interview-full.json"), stableStringify(fullInterview));
     writeFileSync(join(OUT_DIR, "params.json"), stableStringify({ params }));
     for (const table of tables) {
       writeFileSync(join(OUT_DIR, "tables", `${table.id}.json`), stableStringify({ table }));

@@ -147,15 +147,6 @@ interview:
       cite:
         doc: i1040gi
         locator: Instructions for Form 1040, pp. 25–26, line 3a and exceptions
-    - input: f1040.line15
-      prompt: Form 1040 line 15; in Stage 1 supplied as an input (the lines that figure it are outside
-        this stage).
-      help: Money is integer cents; enter true/false for questions and one of the stated values for
-        classifications. Unknown answers may be null; they never become zero.
-      order: 10
-      cite:
-        doc: i1040gi
-        locator: Instructions for Form 1040, line 15
     - input: f4952.line1
       prompt: Investment interest paid or accrued in 2025
       help: Money is integer cents; answer true/false for screening questions. Unknown may be null.
@@ -476,14 +467,6 @@ interview:
       cite:
         doc: f1040sa
         locator: Schedule A (2025), lines 1–18
-    - input: sa.agi
-      prompt: Form 1040 line 11b adjusted gross income (supplied subtotal until Stage 5)
-      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes a form slice, not a complete filed return.
-      order: 10
-      cite:
-        doc: f1040sa
-        locator: Schedule A (2025), lines 1–18
     - input: sa.line1
       prompt: Unreimbursed eligible medical and dental expenses
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
@@ -740,6 +723,14 @@ interview:
       cite:
         doc: i1040gi
         locator: p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld
+    - input: w2.box1
+      prompt: Wages, tips, other compensation
+      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
+        guess. This computes a form slice, not a complete filed return.
+      order: 10
+      cite:
+        doc: iw2w3
+        locator: p. 17, box 1
     - input: w2.box3
       prompt: Social security wages
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not

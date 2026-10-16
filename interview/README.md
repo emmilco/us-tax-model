@@ -112,9 +112,21 @@ finite-domain checks, Stage 3 path coverage is representative, not exhaustive.
 
 Start with `node engine/dist/main.js interview start LOG --profile stage4`.
 This profile covers the additional forms and scope screens described in
-`reports/2025/stage4-review.md`. AGI and taxable income are still supplied subtotals.
-Interest payer totals and noncash gift groups use keyed collections. Explicit
-eligibility answers are required; missing values never silently default to zero.
-Corrections append events and recompute the dependency graph. Fixture paths and
-reversed event orders are checked at build time; this is not an exhaustive proof
-of every possible interview path.
+`reports/2025/stage4-review.md`. AGI and taxable income are computed through
+Form 1040 lines 11b and 15. Interest payer totals and noncash gift groups use
+keyed collections. Explicit eligibility answers are required; missing values
+never silently default to zero. Corrections append events and recompute the
+dependency graph. Fixture paths and reversed event orders are checked at build
+time; this is not an exhaustive proof of every possible interview path.
+
+## Full profile
+
+Start with `node engine/dist/main.js interview start LOG --profile full`.
+This profile covers the whole single-person return: Form 1040 lines 1a–37 with
+the in-scope schedules and refusal screens, computing total tax, payments and
+the refund/amount-owed lines. The estimated tax penalty is not computed; the
+output states that the IRS will figure it. Withholding totals on lines 25b and
+25c, estimated payments on line 26, and the refund split on lines 35a and 36
+are supplied amounts read from the filer's records. The three synthetic
+whole-return fixtures (`fixtures/2025/stage5.json`) walk this profile at build
+time.

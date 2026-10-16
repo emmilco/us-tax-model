@@ -17,7 +17,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "A",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -53,7 +52,30 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sales[a].h": {
@@ -82,7 +104,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "A",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -118,7 +139,30 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sales[a].h": {
@@ -147,7 +191,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "A",
         "sales[a].route": "detail",
         "sales[a].code": "B",
@@ -183,7 +226,30 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sales[a].h": {
@@ -212,7 +278,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "A",
         "sales[a].route": "detail",
         "sales[a].code": "B",
@@ -248,7 +313,30 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sales[a].h": {
@@ -277,7 +365,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "D",
         "sales[a].route": "aggregate",
         "sales[a].code": "none",
@@ -313,7 +400,30 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sd.line8a.d": {
@@ -347,7 +457,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "D",
         "sales[a].route": "aggregate",
         "sales[a].code": "none",
@@ -392,7 +501,30 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sd.line8a.d": {
@@ -425,7 +557,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "A",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -461,7 +592,30 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sd.line1b.h": {
@@ -498,7 +652,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "B",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -534,7 +687,30 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sd.line2.h": {
@@ -571,7 +747,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "C",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -607,7 +782,30 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sd.line3.h": {
@@ -644,7 +842,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "D",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -680,7 +877,30 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sd.line8b.h": {
@@ -717,7 +937,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "E",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -753,7 +972,30 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sd.line9.h": {
@@ -790,7 +1032,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "F",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -826,7 +1067,30 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sd.line10.h": {
@@ -863,7 +1127,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "A",
         "sales[a].route": "detail",
         "sales[a].code": "B",
@@ -899,7 +1162,30 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sales[a].g": {
@@ -936,7 +1222,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "A",
         "sales[a].route": "detail",
         "sales[a].code": "W",
@@ -972,7 +1257,30 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sales[a].g": {
@@ -1009,7 +1317,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "A",
         "sales[a].route": "detail",
         "sales[a].code": "BW",
@@ -1045,7 +1352,30 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sales[a].g": {
@@ -1082,7 +1412,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "B",
         "sales[a].route": "detail",
         "sales[a].code": "B",
@@ -1118,7 +1447,30 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sales[a].g": {
@@ -1155,7 +1507,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "B",
         "sales[a].route": "detail",
         "sales[a].code": "W",
@@ -1191,7 +1542,30 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sales[a].g": {
@@ -1228,7 +1602,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "B",
         "sales[a].route": "detail",
         "sales[a].code": "BW",
@@ -1264,7 +1637,30 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sales[a].g": {
@@ -1301,7 +1697,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "D",
         "sales[a].route": "detail",
         "sales[a].code": "B",
@@ -1337,7 +1732,30 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sales[a].g": {
@@ -1374,7 +1792,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "D",
         "sales[a].route": "detail",
         "sales[a].code": "W",
@@ -1410,7 +1827,30 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sales[a].g": {
@@ -1447,7 +1887,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "D",
         "sales[a].route": "detail",
         "sales[a].code": "BW",
@@ -1483,7 +1922,30 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sales[a].g": {
@@ -1520,7 +1982,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "E",
         "sales[a].route": "detail",
         "sales[a].code": "B",
@@ -1556,7 +2017,30 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sales[a].g": {
@@ -1593,7 +2077,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "E",
         "sales[a].route": "detail",
         "sales[a].code": "W",
@@ -1629,7 +2112,30 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sales[a].g": {
@@ -1666,7 +2172,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "E",
         "sales[a].route": "detail",
         "sales[a].code": "BW",
@@ -1702,7 +2207,30 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sales[a].g": {
@@ -1739,7 +2267,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "A",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -1775,7 +2302,30 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sd.line16": {
@@ -1812,7 +2362,6 @@
         "sd.distributions": 0,
         "f1040.status": "mfs",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "A",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -1848,7 +2397,31 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.spouse_itemizes": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sd.line16": {
@@ -1885,7 +2458,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "A",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -1921,7 +2493,30 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sd.line16": {
@@ -1958,7 +2553,6 @@
         "sd.distributions": 0,
         "f1040.status": "mfs",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "A",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -1994,7 +2588,31 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.spouse_itemizes": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sd.line16": {
@@ -2031,7 +2649,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "A",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -2067,7 +2684,30 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sd.line16": {
@@ -2104,7 +2744,6 @@
         "sd.distributions": 0,
         "f1040.status": "mfs",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "A",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -2140,7 +2779,31 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.spouse_itemizes": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sd.line16": {
@@ -2177,7 +2840,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "A",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -2213,7 +2875,30 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sd.line16": {
@@ -2250,7 +2935,6 @@
         "sd.distributions": 0,
         "f1040.status": "mfs",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "A",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -2286,7 +2970,31 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.spouse_itemizes": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sd.line16": {
@@ -2323,7 +3031,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "A",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -2359,7 +3066,30 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sd.line16": {
@@ -2396,7 +3126,6 @@
         "sd.distributions": 0,
         "f1040.status": "mfs",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "A",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -2432,7 +3161,31 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.spouse_itemizes": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sd.line16": {
@@ -2469,7 +3222,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "A",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -2505,7 +3257,30 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sd.line16": {
@@ -2542,7 +3317,6 @@
         "sd.distributions": 0,
         "f1040.status": "mfs",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "A",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -2578,7 +3352,31 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.spouse_itemizes": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sd.line16": {
@@ -2615,7 +3413,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "A",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -2651,7 +3448,30 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sd.line16": {
@@ -2688,7 +3508,6 @@
         "sd.distributions": 0,
         "f1040.status": "mfs",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "A",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -2724,7 +3543,31 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.spouse_itemizes": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sd.line16": {
@@ -2761,7 +3604,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "A",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -2797,7 +3639,30 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sd.line16": {
@@ -2834,7 +3699,6 @@
         "sd.distributions": 0,
         "f1040.status": "mfs",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "A",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -2870,7 +3734,31 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.spouse_itemizes": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sd.line16": {
@@ -2907,7 +3795,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "A",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -2943,7 +3830,30 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sd.line16": {
@@ -2984,7 +3894,6 @@
         "sd.distributions": 0,
         "f1040.status": "mfs",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "A",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -3020,7 +3929,31 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.spouse_itemizes": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sd.line16": {
@@ -3058,7 +3991,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "A",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -3103,7 +4035,30 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false
       },
       "expect": {
         "sd.line1b.h": {
@@ -3134,7 +4089,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "f4952.line1": 0,
         "f4952.carryover": false,
         "f4952.unsupported": false,
@@ -3161,7 +4115,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 6575000
       },
       "expect": {
         "sd.filed": {
@@ -3200,7 +4185,6 @@
         "sd.distributions": 400000,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "f4952.line1": 0,
         "f4952.carryover": false,
         "f4952.unsupported": false,
@@ -3227,7 +4211,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 6175000
       },
       "expect": {
         "sd.filed": {
@@ -3267,7 +4282,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "G",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -3303,7 +4317,29 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "$w2@person[taxpayer]": [],
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "scope.schedule1a": false,
+        "scope.other_income": false,
+        "$gift": [],
+        "sa.line11": 0
       },
       "expect": {
         "f1040.line7a": {
@@ -3778,7 +4814,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "H",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -3814,7 +4849,29 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "$w2@person[taxpayer]": [],
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "scope.schedule1a": false,
+        "scope.other_income": false,
+        "$gift": [],
+        "sa.line11": 0
       },
       "expect": {
         "f1040.line7a": {
@@ -4289,7 +5346,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "I",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -4325,7 +5381,29 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "$w2@person[taxpayer]": [],
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "scope.schedule1a": false,
+        "scope.other_income": false,
+        "$gift": [],
+        "sa.line11": 0
       },
       "expect": {
         "f1040.line7a": {
@@ -4800,7 +5878,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "J",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -4836,7 +5913,29 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "$w2@person[taxpayer]": [],
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "scope.schedule1a": false,
+        "scope.other_income": false,
+        "$gift": [],
+        "sa.line11": 0
       },
       "expect": {
         "f1040.line7a": {
@@ -5311,7 +6410,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "K",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -5347,7 +6445,29 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "$w2@person[taxpayer]": [],
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "scope.schedule1a": false,
+        "scope.other_income": false,
+        "$gift": [],
+        "sa.line11": 0
       },
       "expect": {
         "f1040.line7a": {
@@ -5822,7 +6942,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "L",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -5858,7 +6977,29 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "$w2@person[taxpayer]": [],
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "scope.schedule1a": false,
+        "scope.other_income": false,
+        "$gift": [],
+        "sa.line11": 0
       },
       "expect": {
         "f1040.line7a": {
@@ -6333,7 +7474,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "A",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -6369,7 +7509,29 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "$w2@person[taxpayer]": [],
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "scope.schedule1a": false,
+        "scope.other_income": false,
+        "$gift": [],
+        "sa.line11": 0
       },
       "expect": {
         "f1040.line7a": {
@@ -6844,7 +8006,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "A",
         "sales[a].route": "detail",
         "sales[a].code": "other",
@@ -6880,7 +8041,29 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "$w2@person[taxpayer]": [],
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "scope.schedule1a": false,
+        "scope.other_income": false,
+        "$gift": [],
+        "sa.line11": 0
       },
       "expect": {
         "f1040.line7a": {
@@ -7355,7 +8538,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "C",
         "sales[a].route": "detail",
         "sales[a].code": "B",
@@ -7391,7 +8573,29 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "$w2@person[taxpayer]": [],
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "scope.other_income": false,
+        "scope.schedule1a": false,
+        "$gift": [],
+        "sa.line11": 0
       },
       "expect": {
         "f1040.line7a": {
@@ -7866,7 +9070,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "A",
         "sales[a].route": "aggregate",
         "sales[a].code": "none",
@@ -7902,7 +9105,29 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "$w2@person[taxpayer]": [],
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "scope.other_income": false,
+        "scope.schedule1a": false,
+        "$gift": [],
+        "sa.line11": 0
       },
       "expect": {
         "f1040.line7a": {
@@ -8377,7 +9602,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "B",
         "sales[a].route": "aggregate",
         "sales[a].code": "none",
@@ -8413,7 +9637,29 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "$w2@person[taxpayer]": [],
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "scope.other_income": false,
+        "scope.schedule1a": false,
+        "$gift": [],
+        "sa.line11": 0
       },
       "expect": {
         "f1040.line7a": {
@@ -8888,7 +10134,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "A",
         "sales[a].route": "aggregate",
         "sales[a].code": "W",
@@ -8924,7 +10169,29 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "$w2@person[taxpayer]": [],
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "scope.other_income": false,
+        "scope.schedule1a": false,
+        "$gift": [],
+        "sa.line11": 0
       },
       "expect": {
         "f1040.line7a": {
@@ -9399,7 +10666,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "A",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -9435,7 +10701,29 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "$w2@person[taxpayer]": [],
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "scope.other_income": false,
+        "scope.schedule1a": false,
+        "$gift": [],
+        "sa.line11": 0
       },
       "expect": {
         "f1040.line7a": {
@@ -9988,7 +11276,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "A",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -10024,7 +11311,29 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "$w2@person[taxpayer]": [],
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "scope.other_income": false,
+        "scope.schedule1a": false,
+        "$gift": [],
+        "sa.line11": 0
       },
       "expect": {
         "f1040.line7a": {
@@ -10577,7 +11886,6 @@
         "sd.distributions": 1,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "D",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -10613,7 +11921,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 6175000
       },
       "expect": {
         "f1040.line16": {
@@ -10642,7 +11981,6 @@
         "sd.distributions": 1,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "D",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -10678,7 +12016,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 6175000
       },
       "expect": {
         "f1040.line16": {
@@ -10707,7 +12076,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "D",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -10743,7 +12111,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 6175000
       },
       "expect": {
         "f1040.line16": {
@@ -10772,7 +12171,6 @@
         "sd.distributions": 10000,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 0,
         "sales[a].box": "D",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -10808,7 +12206,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 1175000
       },
       "expect": {
         "f1040.gate.sdtw": {
@@ -10840,7 +12269,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "D",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -10876,7 +12304,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 6175000
       },
       "expect": {
         "f1040.gate.sdtw": {
@@ -10908,7 +12367,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "A",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -10944,7 +12402,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 6175000
       },
       "expect": {
         "f1040.gate.sdtw": {
@@ -10976,7 +12465,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 10000,
-        "f1040.line15": 5000000,
         "sales[a].box": "D",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -11012,7 +12500,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 6755000
       },
       "expect": {
         "f1040.gate.sdtw": {
@@ -11044,7 +12563,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "D",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -11080,7 +12598,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 6775000
       },
       "expect": {
         "f1040.gate.sdtw": {
@@ -11113,7 +12662,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[a].box": "D",
         "sales[a].route": "detail",
         "sales[a].code": "none",
@@ -11158,7 +12706,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 6375000
       },
       "expect": {
         "sd.line7": {
@@ -11207,7 +12786,6 @@
         "sd.distributions": 0,
         "f1040.status": "single",
         "f1040.line3a": 0,
-        "f1040.line15": 5000000,
         "sales[1a].box": "A",
         "sales[1a].route": "aggregate",
         "sales[1a].code": "none",
@@ -11306,7 +12884,38 @@
         "div.box13": 0,
         "div.basis_reconciled": true,
         "div.fatca": false,
-        "qbi.dividends": 0
+        "qbi.dividends": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "scope.schedule1": false,
+        "sa.elect_itemize": false,
+        "sa.unsupported": false,
+        "sa.dependent": false,
+        "scope.schedule1a": false,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "scope.other_income": false,
+        "sa.charity_limited": false,
+        "sa.spouse_extra": false,
+        "sa.excluded_income": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "$gift": [],
+        "qbi.unsupported": false,
+        "person[taxpayer].w2[migrated].box3": 0,
+        "person[taxpayer].w2[migrated].box4": 0,
+        "person[taxpayer].w2[migrated].box5": 0,
+        "person[taxpayer].w2[migrated].box6": 0,
+        "person[taxpayer].w2[migrated].box7": 0,
+        "person[taxpayer].w2[migrated].box1": 6452000
       },
       "expect": {
         "sd.line1a.d": {
