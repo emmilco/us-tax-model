@@ -149,7 +149,7 @@ I could not inspect a PDF, so this item is weak.
 | Form 8959 instructions | 8 examples, mostly multi-employer and joint thresholds | 8, directly relevant | High |
 | Form 8960 instructions | About 4, none basic | About 0 | Medium |
 | Form 2210 instructions | 5, about payment timing | Few | High |
-| MeF ATS scenarios, TY2025 | Ten 1040-family scenario PDFs. Scenario 3 includes Schedule D with Schedules 1, 2, E, F, SE and no Form 8949 listed (search snippet) | 0–2 whole returns, none matching the slice | Low; PDFs unparsed |
+| MeF ATS scenarios, TY2025 | Ten 1040-family scenario PDFs. Scenario 3 was read directly (text extracted, pages rendered): it lists Form 1040, Form 1099-R, Schedules 1, 2, D, E, F, SE and Form 4835, and supplies inputs only — source-document figures (the 1099-R amounts, Schedule D proceeds and basis, Schedule F entries) with every computed line on Form 1040 and the schedules left blank. The IRS grades the submitted XML on its side and publishes no answer key | 0 whole-return oracles; inputs could seed a case whose expected values come from elsewhere | High for scenario 3; the other nine not opened |
 | VITA/TCE Publications 4491, 4012, 6744 | They exist (Rev. 10-2025); contents not read | Unknown | Low |
 | Publications 505, 544, 551 | Not examined | Unknown | — |
 
@@ -168,7 +168,7 @@ Sources read directly: 1040 instructions https://www.irs.gov/instructions/i1040g
 
 ## Implications for this project
 
-1. **Change the first-test strategy.** Official examples can seed unit tests for 8949 rows, wash sales, holding periods and the 8959 thresholds. They cannot seed the QDCGTW or a whole return. Whole-return oracles will have to come from ATS scenarios, VITA materials, or cross-validation against other software, which is a different evidentiary class from "official worked example."
+1. **Change the first-test strategy.** Official examples can seed unit tests for 8949 rows, wash sales, holding periods and the 8959 thresholds. They cannot seed the QDCGTW or a whole return. Whole-return oracles will have to come from VITA materials or cross-validation against other software, which is a different evidentiary class from "official worked example." ATS scenarios supply inputs without computed values and are not oracles.
 2. **Redefine the slice honestly.** The proposed slice needs the Tax Computation Worksheet, Schedule 2, Form 8959, probably Form 8960, the Schedule D Tax Worksheet with its two feeder worksheets (driven by 1099-DIV boxes 2b–2d), the Capital Loss Carryover Worksheet, the foreign-tax election test, and a decision about the line 38 penalty. Otherwise the tool needs explicit out-of-scope refusals for each.
 3. **Use HTML instructions as the primary text source**, with PDFs as the layout and citation authority. Snapshot both with hashes at fetch time, because the current-year URLs mutate.
 4. **Make revision pinning line-level.** Schedule 1-A is line 13b in 2025 and 13a in the 2026 draft.
@@ -195,7 +195,7 @@ Sources read directly: 1040 instructions https://www.irs.gov/instructions/i1040g
 3. Are 1099-DIV boxes 2b, 2c and 2d in scope (forcing the Schedule D Tax Worksheet), or refused?
 4. What counts as an acceptable test oracle where no official worked example exists?
 5. Do Publications 4491, 4012 or 6744 contain filled QDCGTW or whole-return examples with keys? This needs a PDF-capable pass.
-6. Do the ATS scenario PDFs give enough inputs to reproduce line 16 independently?
+6. Do the ATS scenario PDFs give enough inputs to reproduce line 16 independently? Answered for scenario 3: the inputs are present but no computed values are, so the scenario cannot check line 16.
 7. How does the IRS's own software resolve row rounding against total rounding on Form 8949 and Schedule D?
 8. What is the actual AcroForm/XFA structure and year-to-year field-name stability? This needs a local dump of the 2024, 2025 and 2026-draft PDFs.
 9. Has the TY2026 revision of Publication 1167 been issued, and does it change anything for filled official PDFs?
@@ -221,7 +221,7 @@ Sources read directly: 1040 instructions https://www.irs.gov/instructions/i1040g
 - https://www.irs.gov/e-file-providers/modernized-e-file-schemas-and-business-rules-for-individual-tax-returns-and-extensions — index of TY2025 and TY2026 individual packages
 - https://www.irs.gov/e-file-providers/release-memo-for-tax-year-2026-modernized-e-file-schema-and-business-rules-for-individual-tax-returns-version-4-point-0 — v4.0 memo, 2026-09-24
 - https://www.irs.gov/e-file-providers/tax-year-2025-form-1040-series-and-extensions-modernized-e-file-mef-assurance-testing-system-ats-information — TY2025 ATS scenario list
-- https://www.irs.gov/pub/irs-efile/ty25-1040-mef-ats-scenario-3-10202025.pdf — ATS scenario 3; not parsed
+- https://www.irs.gov/pub/irs-efile/ty25-1040-mef-ats-scenario-3-10202025.pdf — ATS scenario 3; read directly (inputs only, no computed values)
 - https://www.irs.gov/publications/p550 — Publication 550 (2025), partially read
 - https://www.irs.gov/publications/p17 — Publication 17 (2025), removed chapters
 - https://www.irs.gov/forms-pubs/accessible-irs-tax-products — available formats
