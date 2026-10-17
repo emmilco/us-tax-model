@@ -5,20 +5,8 @@
   {
    "printed": "12",
    "restated": "Add gift.allowed over every confirmed gift entry, within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "Line 12 is 'Other than by cash or check' (noncash gifts, Form 8283 if over $500). The restatement sums an undefined 'gift.allowed' over gift entries and does not say the entries are restricted to noncash gifts or how the allowed amount is figured.",
+   "model": "The form says only \"Other than by cash or check... see instructions. You must attach Form 8283 if over $500\". The line 12 instructions are not in the pages given, and the per-entry value gift.allowed is not defined in the glossary, so its computation cannot be checked.",
    "ruling": "Ruling: representation; project retained. The gift collection holds noncash gifts only (forms/2025/gift.yaml, cited to i8283), and `gift.allowed` is each entry's deductible amount after its Form 8283 screens; cash and check gifts are the line 11 input. No change to the data."
-  },
-  {
-   "printed": "6",
-   "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
-   "model": "The instructions say 'Include on this line income taxes you paid to a foreign country and generation-skipping tax (GST) imposed on certain income distributions.' The refusal gate covers only the foreign tax deduction, so a filer with GST would get $0 without a refusal.",
-   "ruling": "Ruling: second reading right; data changed under BUG-0005. The instructions include on line 6 \"income taxes you paid to a foreign country and generation-skipping tax (GST) imposed on certain income distributions\" (i1040sca p. 7); the screen `sa.unsupported` named only the foreign tax deduction. The screen now names the generation-skipping tax deduction; the line stays zero behind it."
-  },
-  {
-   "printed": "8c",
-   "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
-   "model": "Line 8c is 'Points not reported to you on Form 1098.' The gate names only 'mortgage interest not on Form 1098', not points, so unreported points would be entered as $0 without a refusal.",
-   "ruling": "Ruling: second reading right; data changed under BUG-0006. Line 8c is \"Points not reported to you on Form 1098\"; the screen `sa.unsupported` named mortgage interest not on Form 1098 and not points. The screen now names mortgage interest or points not on Form 1098; the line stays zero behind it."
   }
  ]
 }

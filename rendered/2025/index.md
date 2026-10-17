@@ -15,7 +15,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | ftc.md | form | 11 |
 | g28.md | form | 8 |
 | gift.md | form | 5 |
-| household.md | form | 11 |
+| household.md | form | 10 |
 | interest.md | form | 1 |
 | person.md | worksheet | 14 |
 | qbi.md | form | 10 |

@@ -5,13 +5,13 @@
   {
    "printed": "1",
    "restated": "Enter the amount from f1040 line 15.",
-   "model": "The restatement always uses f1040 line 15 and has no refusal for Form 2555 filers. The IRS line says \"if you are filing Form 2555 (relating to foreign earned income), enter instead the amount from line 3 of the Foreign Earned Income Tax Worksheet.\"",
+   "model": "The restatement always uses Form 1040 line 15 and has no refusal for the Form 2555 case. The IRS text says \"(However, if you are filing Form 2555 (relating to foreign earned income), enter instead the amount from line 3 of the Foreign Earned Income Tax Worksheet...)\".",
    "ruling": "Ruling: scope; project retained. The Foreign Earned Income Tax Worksheet alternative applies only to a filer who claimed the exclusion or housing deduction on Form 2555 (i1040gi p. 36, line 16: \"If you claimed the foreign earned income exclusion, housing exclusion, or housing deduction on Form 2555, you must use the Foreign Earned Income Tax Worksheet\"). That filer reports the exclusion on Schedule 1, line 8d (i1040gi p. 91: \"Foreign earned income exclusion and housing exclusion from Form 2555\"), and the return refuses any Schedule 1 income at Form 1040 line 8 (`scope.schedule1`, forms/2025/f1040.yaml) before line 16 is reached. The alternative is recorded as not encoded in the worksheet note. No change to the data."
   },
   {
    "printed": "4",
    "restated": "Enter the amount from f4952 line 4e.",
-   "model": "The restatement always uses f4952 line 4e and omits the footnote: \"* If applicable, enter instead the smaller amount you entered on the dotted line next to line 4e of Form 4952.\" No refusal covers that case.",
+   "model": "The restatement always uses Form 4952 line 4e and does not cover the footnote: \"* If applicable, enter instead the smaller amount you entered on the dotted line next to line 4e of Form 4952.\" No refusal names this case.",
    "ruling": "Ruling: scope; project retained. The footnote's dotted-line amount arises only under the alternative allocation of Form 4952 line 4e, which is refused (`f4952.election` refuses when `f4952.alternative_allocation`: \"Only the default capital-gain-first allocation is supported; alternative allocation and Form 1116 coordination are outside scope\"). No change to the data."
   }
  ]

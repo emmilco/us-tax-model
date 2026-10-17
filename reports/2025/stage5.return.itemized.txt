@@ -648,9 +648,6 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
 
 == Household facts for dependents and head of household ==
-  (helper) Your age at the end of 2025
-      = 40
-      cite: [i1040gi] p. 17, Step 1, "Under age 19 at the end of 2025 and younger than you" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Do you have an SSN or ITIN issued on or before the due date of your return, or have you applied for an ITIN by then?
       = true
       cite: [i1040gi] p. 19, Step 5, question 1 (2025; printed date 2026-02-25; 482e9c48)

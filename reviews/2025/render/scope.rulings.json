@@ -1,0 +1,12 @@
+{
+ "kind": "render",
+ "form": "scope",
+ "rulings": [
+  {
+   "printed": "credits",
+   "restated": "Input — Any credit outside the simple foreign tax credit, the excess Social Security credit, the child tax credit, the credit for other dependents and the additional child tax credit?",
+   "model": "Form 1040 shows lines 19, 20, 27a, 28 and 29–31, and the instructions show Schedule 3 Part II lines 9–13z. Schedule 3 Part I lines 1–6m (foreign tax credit, 5b, 6d and so on) are not in the given text, so the exclusions the refusal names cannot be checked. Also, Schedule 3 line 10 ('Amount Paid With Request for Extension') flows to line 31 but is not a credit, so this screen would not catch it.",
+   "ruling": "Ruling: representation; project retained. The screen names the credits the slice computes; Schedule 3 Part I (lines 1 to 6m) is encoded in `s3.yaml` and judged in its own render log, where line 1 is the foreign tax credit by election and lines 2 to 4, 5b and 6d to 6m refuse on this screen. Schedule 3 line 10 (amount paid with a request for extension) is a payment the filer supplies as `s3.line10`, not a credit, and is not screened here. No change to the data."
+  }
+ ]
+}

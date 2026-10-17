@@ -3,27 +3,33 @@
  "form": "f4952",
  "rulings": [
   {
-   "printed": "2",
-   "project": "{\"const\": 0}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"f4952.carryover\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"f4952.carryover\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"f4952.h_prior_line7\"}}], \"op\": \"choose\"}",
-   "ruling": "Ruling: scope; project retained. Prior-year disallowed investment interest is refused (`f4952.carryover`, spec 2.2); the project pins the line to zero within scope while the second transcription reads the carryover when present. Equivalent within scope."
-  },
-  {
    "printed": "4a",
    "project": "{\"of\": [{\"ref\": \"sb.line2\"}, {\"ref\": \"sb.line6\"}], \"op\": \"sum\"}",
    "second": "{\"of\": [{\"ref\": \"f1040.line2b\"}, {\"ref\": \"f1040.line3b\"}], \"op\": \"sum\"}",
    "ruling": "Ruling: equivalent within scope; project retained. The project sums Schedule B line 2 (total interest before the excludable savings-bond interest on line 3, which is refused and zero) and Schedule B line 6 (ordinary dividends); the second sums Form 1040 lines 2b and 3b, which are those Schedule B totals carried to Form 1040. Same values within scope (Form 4952 instructions pp. 3–4, line 4a)."
   },
   {
+   "printed": "4d",
+   "project": "{\"from\": {\"ref\": \"sd.line16\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}",
+   "second": "{\"of\": [{\"const\": 0}, {\"ref\": \"sd.line16\"}], \"op\": \"larger_of\"}",
+   "ruling": "Ruling: equivalent representation; project retained. Schedule D line 16 less zero, floored at zero, is the larger of zero and line 16. Within the slice every disposition is of property held for investment (securities sales and capital gain distributions), so line 16 is the net gain the line asks for. No change to the data."
+  },
+  {
+   "printed": "4h",
+   "project": "{\"of\": [{\"line\": \"4c\"}, {\"line\": \"4f\"}, {\"line\": \"4g\"}], \"op\": \"sum\"}",
+   "second": "{\"of\": [{\"line\": \"4c\"}, {\"line\": \"4f\"}, {\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"line\": \"4g\"}, {\"of\": [{\"line\": \"4b\"}, {\"line\": \"4e\"}], \"op\": \"sum\"}], \"test\": \"le\"}, {\"args\": [{\"const\": true}, {\"input\": \"f4952.alternative_allocation\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"then\": {\"line\": \"4g\"}}], \"op\": \"choose\"}], \"op\": \"sum\"}",
+   "ruling": "Ruling: equivalent within scope; project retained. The second adds a validated election helper where the project adds line 4g itself; an election above lines 4b plus 4e, or under the alternative allocation, refuses the return (`f4952.bad_election`, `f4952.alternative_allocation`), so wherever a value is produced the two are equal. No change to the data."
+  },
+  {
    "printed": "f4952.election",
    "project": "{\"line\": \"4g\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"f4952.alternative_allocation\"}], \"test\": \"eq\"}, {\"args\": [{\"line\": \"4g\"}, {\"of\": [{\"line\": \"4b\"}, {\"line\": \"4e\"}], \"op\": \"sum\"}], \"test\": \"le\"}], \"test\": \"all\"}, \"then\": {\"line\": \"4g\"}}, {\"guard\": {\"args\": [{\"args\": [{\"of\": [{\"line\": \"4b\"}, {\"line\": \"4e\"}], \"op\": \"sum\"}, {\"line\": \"4g\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": false}, {\"input\": \"f4952.alternative_allocation\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
+   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"line\": \"4g\"}, {\"of\": [{\"line\": \"4b\"}, {\"line\": \"4e\"}], \"op\": \"sum\"}], \"test\": \"le\"}, {\"args\": [{\"const\": true}, {\"input\": \"f4952.alternative_allocation\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"then\": {\"line\": \"4g\"}}], \"op\": \"choose\"}",
    "ruling": "Ruling: refusal representation; project retained. The project takes line 4g as the election and refuses the return through `f4952.bad_election` when 4g exceeds lines 4b plus 4e, and through `f4952.alternative_allocation` when the alternative allocation is chosen; the second transcription guards the same conditions inline. Equivalent within the non-refused scope."
   },
   {
    "printed": "f4952.required",
    "project": "{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"line\": \"4c\"}, {\"line\": \"1\"}], \"test\": \"le\"}, {\"args\": [{\"const\": 0}, {\"line\": \"5\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": false}, {\"input\": \"f4952.carryover\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}], \"test\": \"any\"}",
-   "second": "{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"line\": \"4c\"}, {\"line\": \"1\"}], \"test\": \"le\"}, {\"args\": [{\"const\": 0}, {\"line\": \"5\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": false}, {\"input\": \"f4952.carryover\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0}, {\"line\": \"3\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}], \"test\": \"any\"}",
+   "second": "{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f4952.carryover\"}], \"test\": \"eq\"}, {\"args\": [{\"line\": \"4c\"}, {\"line\": \"1\"}], \"test\": \"le\"}, {\"args\": [{\"const\": 0}, {\"line\": \"5\"}], \"test\": \"lt\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0}, {\"line\": \"3\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}], \"test\": \"any\"}",
    "ruling": "Ruling: equivalent within scope; project retained. The project tests line 1 (investment interest paid) above zero where the second tests line 3 (line 1 plus the prior-year disallowed amount on line 2); line 2 is zero within scope because carryovers are refused (`f4952.carryover`), so the tests agree."
   }
  ]

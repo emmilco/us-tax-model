@@ -65,8 +65,8 @@ const MODELLED = new Set([
 interface Employer { box1: number; box2pct: number; box7: number; over: number }
 interface Sale { box: string; aggregate: boolean; code: string; special: boolean; aggregate_eligible: boolean; proceeds: number; reported_basis: number; correct_basis: number; wash_loss: number; invalid: boolean }
 interface Gift { deduction: number; public_securities: boolean; special: boolean }
-interface Dependent { relationship: string; age: number; student: boolean; disabled: boolean; months: number; self_support: boolean; joint_return: boolean; citizen: boolean; canada_mexico: boolean; married: boolean; tin: boolean; work_ssn: boolean; gross_income: number; supported: boolean; other_claimant: boolean; divorced_rule: boolean; multiple_support: boolean; parent_home_paid: boolean }
-interface Household { taxpayer_age: number; taxpayer_tin: boolean; taxpayer_work_ssn: boolean; home_cost: boolean; unmarried: boolean }
+interface Dependent { relationship: string; age: number; younger: boolean; student: boolean; disabled: boolean; months: number; self_support: boolean; joint_return: boolean; citizen: boolean; canada_mexico: boolean; married: boolean; tin: boolean; work_ssn: boolean; gross_income: number; supported: boolean; other_claimant: boolean; divorced_rule: boolean; multiple_support: boolean; parent_home_paid: boolean }
+interface Household { taxpayer_tin: boolean; taxpayer_work_ssn: boolean; home_cost: boolean; unmarried: boolean }
 
 interface Spec {
   status: string;
@@ -112,14 +112,14 @@ export function returnArbitrary(data: CanonicalData): fc.Arbitrary<Inputs> {
   const dependent = fc.record<Dependent>({
     relationship: fc.constantFrom("child", "child", "child", "sibling", "parent", "in_law", "household_member", "other"),
     age: fc.oneof({ weight: 3, arbitrary: fc.integer({ min: 0, max: 16 }) }, { weight: 1, arbitrary: fc.integer({ min: 17, max: 30 }) }, { weight: 1, arbitrary: fc.integer({ min: 31, max: 90 }) }),
-    student: rareTrue(30), disabled: rareTrue(5),
+    younger: rareTrue(90), student: rareTrue(30), disabled: rareTrue(5),
     months: fc.oneof({ weight: 4, arbitrary: fc.constant(12) }, { weight: 1, arbitrary: fc.integer({ min: 0, max: 12 }) }),
     self_support: rareTrue(5), joint_return: rareTrue(3), citizen: rareTrue(90), canada_mexico: rareTrue(20), married: rareTrue(3),
     tin: rareTrue(95), work_ssn: rareTrue(90), gross_income: rareMoney(1_000_000, 20), supported: rareTrue(90),
     other_claimant: rareTrue(3), divorced_rule: rareTrue(3), multiple_support: rareTrue(2), parent_home_paid: rareTrue(30),
   });
   const household = fc.record<Household>({
-    taxpayer_age: fc.integer({ min: 18, max: 80 }), taxpayer_tin: rareTrue(97), taxpayer_work_ssn: rareTrue(93),
+    taxpayer_tin: rareTrue(97), taxpayer_work_ssn: rareTrue(93),
     home_cost: rareTrue(70), unmarried: rareTrue(90),
   });
   const gift = fc.record<Gift>({

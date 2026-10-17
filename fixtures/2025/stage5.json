@@ -110,7 +110,6 @@
         "person[taxpayer].w2[emp_b].box7": 0,
         "interest[bank_a].amount": 120000,
         "$dependent": [],
-        "household.taxpayer_age": 40,
         "household.taxpayer_tin": true,
         "household.taxpayer_work_ssn": true,
         "household.home_cost": false,
@@ -399,7 +398,6 @@
         "person[taxpayer].w2[emp_a].box6": 188500,
         "person[taxpayer].w2[emp_a].box7": 0,
         "$dependent": [],
-        "household.taxpayer_age": 40,
         "household.taxpayer_tin": true,
         "household.taxpayer_work_ssn": true,
         "household.home_cost": false,
@@ -704,7 +702,6 @@
         "gift[books].public_securities": false,
         "gift[books].special": false,
         "$dependent": [],
-        "household.taxpayer_age": 40,
         "household.taxpayer_tin": true,
         "household.taxpayer_work_ssn": true,
         "household.home_cost": false,
@@ -984,7 +981,6 @@
         "f1040.line36": 0,
         "$w2@person[taxpayer]": [],
         "$dependent": [],
-        "household.taxpayer_age": 40,
         "household.taxpayer_tin": true,
         "household.taxpayer_work_ssn": true,
         "household.home_cost": false,
@@ -1126,8 +1122,8 @@
         "f1040.line27a": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Schedule 8812 / other credit forms",
-          "remedy": "Dependent and other unsupported credits require forms outside this proof of concept.",
+          "form": "Other credit forms (Schedule 3 lines 2 to 4, 5b, 6d, 6f, 6l and 6m; Form 1040 lines 27a and 29 to 31)",
+          "remedy": "Credits other than the foreign tax credit by election, the excess social security credit and the Schedule 8812 credits require forms outside this proof of concept.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -1152,8 +1148,8 @@
         "f1040.line32": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Schedule 8812 / other credit forms",
-          "remedy": "Dependent and other unsupported credits require forms outside this proof of concept.",
+          "form": "Other credit forms (Schedule 3 lines 2 to 4, 5b, 6d, 6f, 6l and 6m; Form 1040 lines 27a and 29 to 31)",
+          "remedy": "Credits other than the foreign tax credit by election, the excess social security credit and the Schedule 8812 credits require forms outside this proof of concept.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -1165,8 +1161,8 @@
         "f1040.line33": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Schedule 8812 / other credit forms",
-          "remedy": "Dependent and other unsupported credits require forms outside this proof of concept.",
+          "form": "Other credit forms (Schedule 3 lines 2 to 4, 5b, 6d, 6f, 6l and 6m; Form 1040 lines 27a and 29 to 31)",
+          "remedy": "Credits other than the foreign tax credit by election, the excess social security credit and the Schedule 8812 credits require forms outside this proof of concept.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -1279,7 +1275,6 @@
         "f1040.line36": 0,
         "$w2@person[taxpayer]": [],
         "$dependent": [],
-        "household.taxpayer_age": 40,
         "household.taxpayer_tin": true,
         "household.taxpayer_work_ssn": true,
         "household.home_cost": false,

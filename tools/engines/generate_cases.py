@@ -151,14 +151,14 @@ def gen_case(rng, i):
     inputs["$dependent"] = [f"child_{k + 1}" for k in range(n_children)]
     for k, age in enumerate(ages):
         key = f"dependent[child_{k + 1}]"
-        inputs.update({f"{key}.relationship": "child", f"{key}.age": age, f"{key}.student": age >= 17, f"{key}.disabled": False,
+        inputs.update({f"{key}.relationship": "child", f"{key}.age": age, f"{key}.younger": True, f"{key}.student": age >= 17, f"{key}.disabled": False,
                        f"{key}.months": 12, f"{key}.self_support": False, f"{key}.joint_return": False, f"{key}.citizen": True,
                        f"{key}.canada_mexico": False, f"{key}.married": False, f"{key}.tin": True, f"{key}.work_ssn": True,
                        f"{key}.gross_income": 0, f"{key}.supported": True, f"{key}.other_claimant": False,
                        f"{key}.divorced_rule": False, f"{key}.multiple_support": False, f"{key}.parent_home_paid": False})
     hoh = n_children > 0 and rng.random() < 0.5
     inputs["f1040.status"] = "hoh" if hoh else "single"
-    inputs.update({"household.taxpayer_age": 40, "household.taxpayer_tin": True, "household.taxpayer_work_ssn": True,
+    inputs.update({"household.taxpayer_tin": True, "household.taxpayer_work_ssn": True,
                    "household.home_cost": True, "household.unmarried": True, "s8812.combat_pay": False, "s8812.puerto_rico": False})
     facts.update(children=ages, n24=sum(1 for a in ages if a < 17), hoh=hoh)
     if n_children:

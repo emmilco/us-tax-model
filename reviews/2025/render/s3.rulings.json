@@ -5,13 +5,13 @@
   {
    "printed": "1",
    "restated": "Enter the amount from ftc helper \"Credit is the smaller of creditable foreign tax and regular income tax; zero if no foreign tax\".",
-   "model": "The form says only \"Foreign tax credit. Attach Form 1116 if required\". The pages given have no line 1 instructions, so nothing here supports the small-tax election conditions, the $300/$600 limit, or capping the credit at Form 1040 line 16.",
+   "model": "The form says only \"Foreign tax credit. Attach Form 1116 if required,\" and no instruction text for line 1 is given. The text therefore does not support the restatement's \"smaller of foreign taxes and Form 1040 line 16\" rule, the $300/$600 thresholds, or the other conditions for claiming the credit without Form 1116.",
    "ruling": "Ruling: representation; project retained. The helper is the election to claim the credit without Form 1116 (i1116 pp. 1–2, the election to claim the foreign tax credit without filing Form 1116: the credit is the smaller of the total foreign tax and the regular tax when all foreign income is passive, reported on payee statements and within the $300/$600 limit); every failed condition refuses through `ftc.needs1116`. The ftc worksheet has its own render log. No change to the data."
   },
   {
    "printed": "11",
    "restated": "Add person.credit over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "The instructions allow a credit only for the \"amount withheld in excess of $10,918.20\", and not for any excess withheld by a single employer. person.credit is not defined in the glossary, so it cannot be checked against that rule. The refusal for married filers excludes the case where the amount is figured \"separately for you and your spouse\".",
+   "model": "The married refusal properly covers \"Figure this amount separately for you and your spouse.\" However, person.credit is not defined in the glossary, so the text gives no way to check whether it applies the \"more than one employer\" condition, the \"amount withheld in excess of $10,918.20,\" and the bar when \"any one employer withheld more than $10,918.20.\"",
    "ruling": "Ruling: representation; project retained. `person.credit` is the per-person credit of i1040gi p. 117: zero unless more than one employer and total social security wages over $176,100, otherwise the withholding above $10,918.20, refused when any one employer withheld more than the limit (Form 843). The person worksheet has its own render log. No change to the data."
   }
  ]

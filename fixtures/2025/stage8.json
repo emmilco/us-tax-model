@@ -104,7 +104,6 @@
         "$dependent": [
           "child"
         ],
-        "household.taxpayer_age": 40,
         "household.taxpayer_tin": true,
         "household.taxpayer_work_ssn": true,
         "household.home_cost": true,
@@ -128,7 +127,8 @@
         "dependent[child].other_claimant": false,
         "dependent[child].divorced_rule": false,
         "dependent[child].multiple_support": false,
-        "dependent[child].parent_home_paid": false
+        "dependent[child].parent_home_paid": false,
+        "dependent[child].younger": true
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -545,7 +545,6 @@
         "$dependent": [
           "child"
         ],
-        "household.taxpayer_age": 40,
         "household.taxpayer_tin": true,
         "household.taxpayer_work_ssn": true,
         "household.home_cost": true,
@@ -569,7 +568,8 @@
         "dependent[child].other_claimant": false,
         "dependent[child].divorced_rule": false,
         "dependent[child].multiple_support": false,
-        "dependent[child].parent_home_paid": false
+        "dependent[child].parent_home_paid": false,
+        "dependent[child].younger": true
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -988,7 +988,6 @@
           "b",
           "c"
         ],
-        "household.taxpayer_age": 40,
         "household.taxpayer_tin": true,
         "household.taxpayer_work_ssn": true,
         "household.home_cost": true,
@@ -1048,7 +1047,10 @@
         "dependent[c].other_claimant": false,
         "dependent[c].divorced_rule": false,
         "dependent[c].multiple_support": false,
-        "dependent[c].parent_home_paid": false
+        "dependent[c].parent_home_paid": false,
+        "dependent[a].younger": true,
+        "dependent[b].younger": true,
+        "dependent[c].younger": true
       },
       "expect": {
         "dependent[a].actc_amount": {
@@ -1593,7 +1595,6 @@
           "b",
           "c"
         ],
-        "household.taxpayer_age": 40,
         "household.taxpayer_tin": true,
         "household.taxpayer_work_ssn": true,
         "household.home_cost": true,
@@ -1653,7 +1654,10 @@
         "dependent[c].other_claimant": false,
         "dependent[c].divorced_rule": false,
         "dependent[c].multiple_support": false,
-        "dependent[c].parent_home_paid": false
+        "dependent[c].parent_home_paid": false,
+        "dependent[a].younger": true,
+        "dependent[b].younger": true,
+        "dependent[c].younger": true
       },
       "expect": {
         "dependent[a].actc_amount": {
@@ -2197,7 +2201,6 @@
         "$dependent": [
           "child"
         ],
-        "household.taxpayer_age": 40,
         "household.taxpayer_tin": true,
         "household.taxpayer_work_ssn": true,
         "household.home_cost": false,
@@ -2221,7 +2224,8 @@
         "dependent[child].other_claimant": false,
         "dependent[child].divorced_rule": false,
         "dependent[child].multiple_support": false,
-        "dependent[child].parent_home_paid": false
+        "dependent[child].parent_home_paid": false,
+        "dependent[child].younger": true
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -2637,7 +2641,6 @@
         "$dependent": [
           "parent"
         ],
-        "household.taxpayer_age": 40,
         "household.taxpayer_tin": true,
         "household.taxpayer_work_ssn": true,
         "household.home_cost": false,
@@ -2661,7 +2664,8 @@
         "dependent[parent].other_claimant": false,
         "dependent[parent].divorced_rule": false,
         "dependent[parent].multiple_support": false,
-        "dependent[parent].parent_home_paid": true
+        "dependent[parent].parent_home_paid": true,
+        "dependent[parent].younger": false
       },
       "expect": {
         "dependent[parent].actc_amount": {
@@ -3085,7 +3089,6 @@
         "$dependent": [
           "child"
         ],
-        "household.taxpayer_age": 40,
         "household.taxpayer_tin": true,
         "household.taxpayer_work_ssn": true,
         "household.home_cost": true,
@@ -3109,7 +3112,8 @@
         "dependent[child].other_claimant": false,
         "dependent[child].divorced_rule": false,
         "dependent[child].multiple_support": false,
-        "dependent[child].parent_home_paid": false
+        "dependent[child].parent_home_paid": false,
+        "dependent[child].younger": true
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -3697,7 +3701,6 @@
           "age19",
           "mexico"
         ],
-        "household.taxpayer_age": 40,
         "household.taxpayer_tin": true,
         "household.taxpayer_work_ssn": true,
         "household.home_cost": false,
@@ -3775,7 +3778,11 @@
         "dependent[mexico].other_claimant": false,
         "dependent[mexico].divorced_rule": false,
         "dependent[mexico].multiple_support": false,
-        "dependent[mexico].parent_home_paid": false
+        "dependent[mexico].parent_home_paid": false,
+        "dependent[six_months].younger": true,
+        "dependent[income_limit].younger": false,
+        "dependent[age19].younger": true,
+        "dependent[mexico].younger": true
       },
       "expect": {
         "dependent[age19].actc_amount": {
@@ -4408,7 +4415,6 @@
           "student24",
           "age17"
         ],
-        "household.taxpayer_age": 40,
         "household.taxpayer_tin": true,
         "household.taxpayer_work_ssn": true,
         "household.home_cost": false,
@@ -4468,7 +4474,10 @@
         "dependent[age17].other_claimant": false,
         "dependent[age17].divorced_rule": false,
         "dependent[age17].multiple_support": false,
-        "dependent[age17].parent_home_paid": false
+        "dependent[age17].parent_home_paid": false,
+        "dependent[student23].younger": true,
+        "dependent[student24].younger": true,
+        "dependent[age17].younger": true
       },
       "expect": {
         "dependent[age17].actc_amount": {
@@ -5027,7 +5036,6 @@
           "disabled",
           "no_work_ssn"
         ],
-        "household.taxpayer_age": 40,
         "household.taxpayer_tin": true,
         "household.taxpayer_work_ssn": true,
         "household.home_cost": false,
@@ -5105,7 +5113,11 @@
         "dependent[no_work_ssn].other_claimant": false,
         "dependent[no_work_ssn].divorced_rule": false,
         "dependent[no_work_ssn].multiple_support": false,
-        "dependent[no_work_ssn].parent_home_paid": false
+        "dependent[no_work_ssn].parent_home_paid": false,
+        "dependent[all_year].younger": true,
+        "dependent[eleven_months].younger": true,
+        "dependent[disabled].younger": true,
+        "dependent[no_work_ssn].younger": true
       },
       "expect": {
         "dependent[all_year].actc_amount": {
@@ -5711,7 +5723,6 @@
         "$dependent": [
           "child"
         ],
-        "household.taxpayer_age": 40,
         "household.taxpayer_tin": true,
         "household.taxpayer_work_ssn": true,
         "household.home_cost": false,
@@ -5735,7 +5746,8 @@
         "dependent[child].other_claimant": false,
         "dependent[child].divorced_rule": false,
         "dependent[child].multiple_support": false,
-        "dependent[child].parent_home_paid": false
+        "dependent[child].parent_home_paid": false,
+        "dependent[child].younger": true
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -6313,7 +6325,6 @@
         "$dependent": [
           "child"
         ],
-        "household.taxpayer_age": 40,
         "household.taxpayer_tin": true,
         "household.taxpayer_work_ssn": false,
         "household.home_cost": false,
@@ -6337,7 +6348,8 @@
         "dependent[child].other_claimant": false,
         "dependent[child].divorced_rule": false,
         "dependent[child].multiple_support": false,
-        "dependent[child].parent_home_paid": false
+        "dependent[child].parent_home_paid": false,
+        "dependent[child].younger": true
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -6750,7 +6762,6 @@
         "$dependent": [
           "child"
         ],
-        "household.taxpayer_age": 40,
         "household.taxpayer_tin": false,
         "household.taxpayer_work_ssn": false,
         "household.home_cost": false,
@@ -6774,7 +6785,8 @@
         "dependent[child].other_claimant": false,
         "dependent[child].divorced_rule": false,
         "dependent[child].multiple_support": false,
-        "dependent[child].parent_home_paid": false
+        "dependent[child].parent_home_paid": false,
+        "dependent[child].younger": true
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -7187,7 +7199,6 @@
         "$dependent": [
           "child"
         ],
-        "household.taxpayer_age": 40,
         "household.taxpayer_tin": true,
         "household.taxpayer_work_ssn": true,
         "household.home_cost": false,
@@ -7211,7 +7222,8 @@
         "dependent[child].other_claimant": true,
         "dependent[child].divorced_rule": false,
         "dependent[child].multiple_support": false,
-        "dependent[child].parent_home_paid": false
+        "dependent[child].parent_home_paid": false,
+        "dependent[child].younger": true
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -7870,7 +7882,6 @@
         "$dependent": [
           "child"
         ],
-        "household.taxpayer_age": 40,
         "household.taxpayer_tin": true,
         "household.taxpayer_work_ssn": true,
         "household.home_cost": false,
@@ -7894,7 +7905,8 @@
         "dependent[child].other_claimant": false,
         "dependent[child].divorced_rule": true,
         "dependent[child].multiple_support": false,
-        "dependent[child].parent_home_paid": false
+        "dependent[child].parent_home_paid": false,
+        "dependent[child].younger": true
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -8553,7 +8565,6 @@
         "$dependent": [
           "child"
         ],
-        "household.taxpayer_age": 40,
         "household.taxpayer_tin": true,
         "household.taxpayer_work_ssn": true,
         "household.home_cost": false,
@@ -8577,7 +8588,8 @@
         "dependent[child].other_claimant": false,
         "dependent[child].divorced_rule": false,
         "dependent[child].multiple_support": false,
-        "dependent[child].parent_home_paid": false
+        "dependent[child].parent_home_paid": false,
+        "dependent[child].younger": true
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -9236,7 +9248,6 @@
         "$dependent": [
           "parent"
         ],
-        "household.taxpayer_age": 40,
         "household.taxpayer_tin": true,
         "household.taxpayer_work_ssn": true,
         "household.home_cost": false,
@@ -9260,7 +9271,8 @@
         "dependent[parent].other_claimant": false,
         "dependent[parent].divorced_rule": false,
         "dependent[parent].multiple_support": true,
-        "dependent[parent].parent_home_paid": false
+        "dependent[parent].parent_home_paid": false,
+        "dependent[parent].younger": false
       },
       "expect": {
         "dependent[parent].actc_amount": {
@@ -9904,7 +9916,6 @@
         "$dependent": [
           "parent"
         ],
-        "household.taxpayer_age": 40,
         "household.taxpayer_tin": true,
         "household.taxpayer_work_ssn": true,
         "household.home_cost": false,
@@ -9928,7 +9939,8 @@
         "dependent[parent].other_claimant": false,
         "dependent[parent].divorced_rule": false,
         "dependent[parent].multiple_support": false,
-        "dependent[parent].parent_home_paid": false
+        "dependent[parent].parent_home_paid": false,
+        "dependent[parent].younger": false
       },
       "expect": {
         "dependent[parent].actc_amount": {
@@ -10582,7 +10594,6 @@
         "$dependent": [
           "child"
         ],
-        "household.taxpayer_age": 40,
         "household.taxpayer_tin": true,
         "household.taxpayer_work_ssn": true,
         "household.home_cost": false,
@@ -10606,7 +10617,8 @@
         "dependent[child].other_claimant": false,
         "dependent[child].divorced_rule": false,
         "dependent[child].multiple_support": false,
-        "dependent[child].parent_home_paid": false
+        "dependent[child].parent_home_paid": false,
+        "dependent[child].younger": true
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -11254,7 +11266,6 @@
         "$dependent": [
           "child"
         ],
-        "household.taxpayer_age": 40,
         "household.taxpayer_tin": true,
         "household.taxpayer_work_ssn": true,
         "household.home_cost": false,
@@ -11278,7 +11289,8 @@
         "dependent[child].other_claimant": false,
         "dependent[child].divorced_rule": false,
         "dependent[child].multiple_support": false,
-        "dependent[child].parent_home_paid": false
+        "dependent[child].parent_home_paid": false,
+        "dependent[child].younger": true
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -11378,8 +11390,8 @@
         "f1040.line34": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Schedule 8812 / other credit forms",
-          "remedy": "Dependent and other unsupported credits require forms outside this proof of concept.",
+          "form": "Other credit forms (Schedule 3 lines 2 to 4, 5b, 6d, 6f, 6l and 6m; Form 1040 lines 27a and 29 to 31)",
+          "remedy": "Credits other than the foreign tax credit by election, the excess social security credit and the Schedule 8812 credits require forms outside this proof of concept.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -11663,8 +11675,8 @@
         "s8812.line24": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Schedule 8812 / other credit forms",
-          "remedy": "Dependent and other unsupported credits require forms outside this proof of concept.",
+          "form": "Other credit forms (Schedule 3 lines 2 to 4, 5b, 6d, 6f, 6l and 6m; Form 1040 lines 27a and 29 to 31)",
+          "remedy": "Credits other than the foreign tax credit by election, the excess social security credit and the Schedule 8812 credits require forms outside this proof of concept.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -11676,8 +11688,8 @@
         "s8812.line25": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Schedule 8812 / other credit forms",
-          "remedy": "Dependent and other unsupported credits require forms outside this proof of concept.",
+          "form": "Other credit forms (Schedule 3 lines 2 to 4, 5b, 6d, 6f, 6l and 6m; Form 1040 lines 27a and 29 to 31)",
+          "remedy": "Credits other than the foreign tax credit by election, the excess social security credit and the Schedule 8812 credits require forms outside this proof of concept.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -11689,8 +11701,8 @@
         "s8812.line26": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Schedule 8812 / other credit forms",
-          "remedy": "Dependent and other unsupported credits require forms outside this proof of concept.",
+          "form": "Other credit forms (Schedule 3 lines 2 to 4, 5b, 6d, 6f, 6l and 6m; Form 1040 lines 27a and 29 to 31)",
+          "remedy": "Credits other than the foreign tax credit by election, the excess social security credit and the Schedule 8812 credits require forms outside this proof of concept.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -11871,7 +11883,6 @@
         "$dependent": [
           "child"
         ],
-        "household.taxpayer_age": 40,
         "household.taxpayer_tin": true,
         "household.taxpayer_work_ssn": true,
         "household.home_cost": true,
@@ -11895,7 +11906,8 @@
         "dependent[child].other_claimant": false,
         "dependent[child].divorced_rule": false,
         "dependent[child].multiple_support": false,
-        "dependent[child].parent_home_paid": false
+        "dependent[child].parent_home_paid": false,
+        "dependent[child].younger": true
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -12455,7 +12467,6 @@
         "$dependent": [
           "child"
         ],
-        "household.taxpayer_age": 40,
         "household.taxpayer_tin": true,
         "household.taxpayer_work_ssn": true,
         "household.home_cost": true,
@@ -12479,7 +12490,8 @@
         "dependent[child].other_claimant": false,
         "dependent[child].divorced_rule": false,
         "dependent[child].multiple_support": false,
-        "dependent[child].parent_home_paid": false
+        "dependent[child].parent_home_paid": false,
+        "dependent[child].younger": true
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -13207,7 +13219,6 @@
         "$dependent": [
           "child"
         ],
-        "household.taxpayer_age": 40,
         "household.taxpayer_tin": true,
         "household.taxpayer_work_ssn": true,
         "household.home_cost": true,
@@ -13231,7 +13242,8 @@
         "dependent[child].other_claimant": false,
         "dependent[child].divorced_rule": false,
         "dependent[child].multiple_support": false,
-        "dependent[child].parent_home_paid": false
+        "dependent[child].parent_home_paid": false,
+        "dependent[child].younger": true
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -13824,7 +13836,6 @@
         "$dependent": [
           "child"
         ],
-        "household.taxpayer_age": 40,
         "household.taxpayer_tin": true,
         "household.taxpayer_work_ssn": true,
         "household.home_cost": true,
@@ -13848,7 +13859,8 @@
         "dependent[child].other_claimant": false,
         "dependent[child].divorced_rule": false,
         "dependent[child].multiple_support": false,
-        "dependent[child].parent_home_paid": false
+        "dependent[child].parent_home_paid": false,
+        "dependent[child].younger": true
       },
       "expect": {
         "dependent[child].actc_amount": {

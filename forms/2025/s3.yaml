@@ -38,8 +38,8 @@ form:
         locator: Schedule 3 (2025), line 8
       refuses:
         - when: scope.credits
-          form: Schedule 8812 / other credit forms
-          remedy: Dependent and other unsupported credits require forms outside this proof of concept.
+          form: Other credit forms (Schedule 3 lines 2 to 4, 5b, 6d, 6f, 6l and 6m; Form 1040 lines 27a and 29 to 31)
+          remedy: Credits other than the foreign tax credit by election, the excess social security credit and the Schedule 8812 credits require forms outside this proof of concept.
           cite:
             doc: f1040
             locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31

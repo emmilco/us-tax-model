@@ -4,19 +4,20 @@ Second transcription of `Form 1099-DIV — distribution components and scope scr
 
 | field | value |
 | --- | --- |
-| date | 2026-10-16 |
+| date | 2026-10-17 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 27b496f69da3e176bae62d84f29e8b9979803cbeffdc2752e48cb1a69befb714 |
+| prompt sha256 | 37b06bb871d19523b31c4ae12b5ca9ddeba0042d87a75971e7e17ad967f313db |
 | printed lines compared | 1 |
 | agree / disagree / missing | 0 / 1 / 0 |
 | extra printed lines in second | none |
 
 ## Source pages given to the model
 
-| document | revision | pages | selection | text sha256 |
-| --- | --- | --- | --- | --- |
-| f1099div | January 2024 (continuous-use form) | 1, 2, 3, 4, 5, 6 | whole document | 833d93e5f2d0bfcc8c9d720c0e8cb8e623cd2c6a8ee25f364f1f69f49fa490e3 |
+| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
+| --- | --- | --- | --- | --- | --- | --- |
+| f1099div | January 2024 (continuous-use form) | 1, 2, 3, 4, 5, 6 | whole document | 833d93e5f2d0bfcc8c9d720c0e8cb8e623cd2c6a8ee25f364f1f69f49fa490e3 | 5 | bfaac0e73b8640fe9cb209f96905d33fc22bf29f3aec472330d0132cda9cc329 |
+| i1040sd | 2025; printed date 2025-12-11 | 8 | cited pages | 145b3d02ba6ce4257939dfbd8f99d519875224cb4ceb4237a1aa24ed862360f1 | 8 | ac7a0c9cbb9e635491b2505e7d04cea3381b892402408ddc97f8d49d80a6640b |
 
 ## Lines
 
@@ -32,10 +33,8 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "div.basis_reconciled"}], "test": "eq"}, {"args": [{"input": "div.box3"}, {"const": 0}], "test": "le"}], "test": "any"}, {"args": [{"input": "div.box10"}, {"const": 0}], "test": "le"}, {"args": [{"input": "div.box2c"}, {"const": 0}], "test": "le"}, {"args": [{"input": "div.box2e"}, {"const": 0}], "test": "le"}, {"args": [{"input": "div.box2f"}, {"const": 0}], "test": "le"}, {"args": [{"input": "div.box9"}, {"const": 0}], "test": "le"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"args": [{"const": 0}, {"input": "div.box3"}], "test": "lt"}, {"args": [{"const": true}, {"input": "div.basis_reconciled"}], "test": "ne"}], "test": "all"}, {"args": [{"const": 0}, {"input": "div.box10"}], "test": "lt"}, {"args": [{"const": 0}, {"input": "div.box2c"}], "test": "lt"}, {"args": [{"const": 0}, {"input": "div.box2e"}], "test": "lt"}, {"args": [{"const": 0}, {"input": "div.box2f"}], "test": "lt"}, {"args": [{"const": 0}, {"input": "div.box9"}], "test": "lt"}], "test": "any"}, "then": {"of": [{"input": "div.box10"}, {"input": "div.box2c"}, {"input": "div.box2e"}, {"input": "div.box2f"}, {"input": "div.box3"}, {"input": "div.box9"}], "op": "sum"}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"args": [{"input": "div.basis_reconciled"}, {"args": [{"const": 0}, {"input": "div.box3"}], "test": "eq"}], "test": "any"}, {"args": [{"const": 0}, {"input": "div.box10"}], "test": "eq"}, {"args": [{"const": 0}, {"input": "div.box2c"}], "test": "eq"}, {"args": [{"const": 0}, {"input": "div.box2e"}], "test": "eq"}, {"args": [{"const": 0}, {"input": "div.box2f"}], "test": "eq"}, {"args": [{"const": 0}, {"input": "div.box9"}], "test": "eq"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"args": [{"const": 0}, {"input": "div.box3"}], "test": "ne"}, {"args": [{"input": "div.basis_reconciled"}], "test": "not"}], "test": "all"}, {"args": [{"const": 0}, {"input": "div.box10"}], "test": "ne"}, {"args": [{"const": 0}, {"input": "div.box2c"}], "test": "ne"}, {"args": [{"const": 0}, {"input": "div.box2e"}], "test": "ne"}, {"args": [{"const": 0}, {"input": "div.box2f"}], "test": "ne"}, {"args": [{"const": 0}, {"input": "div.box9"}], "test": "ne"}], "test": "any"}, "then": {"input": "div.h_unsupported"}}], "op": "choose"}
 ```
-
-Second transcription's note: The request listed no printed lines to transcribe, so only helper lines are produced. The grammar has no error atom, so a failed screen is shown as a positive amount instead of an error. The guards are exhaustive and disjoint (h_pass is the negation of h_fail).
 
 Ruling: refusal representation; project retained. `div.screen` is a zero-valued line whose `refuses` entries fire the Form 1099-DIV scope refusals (section 1202 gain, AMT interest, unreconciled basis, unsupported boxes); the grammar given to the second transcriber had no refusal construct, so it expressed a failed screen as a positive amount. The screening conditions it encoded are the same ones the project refuses on. The prompt now lacks `refuses`; recorded for the tool, not a data change.
 
@@ -44,69 +43,61 @@ Ruling: refusal representation; project retained. `div.screen` is a zero-valued 
 ```yaml
 ```yaml
 lines:
-  - id: div.h_has2c
+  - id: div.h_box2c_zero
     printed: "(helper)"
-    label: "Section 1202 gain reported (box 2c is more than zero)"
+    label: "No section 1202 gain in box 2c (box 2c: portion of box 2a that is section 1202 gain from certain small business stock that may be subject to an exclusion)"
     type: Bool
-    expr: {op: test, gt: [div.box2c, {const: 0}]}
-    note: "Box 2c is section 1202 gain from certain small business stock that 'may be subject to an exclusion. See the Schedule D (Form 1040) instructions.' The text here does not explain how the exclusion works, so a positive box 2c fails the screen."
-  - id: div.h_has2e
+    expr: {op: test, eq: [div.box2c, {const: 0}]}
+    note: "Open: the text sends a box 2c gain to a Form 8949 Part II entry with code Q and a negative exclusion in column (g), and possibly to 28% Rate Gain Worksheet line 2. That treatment is not modelled here. Chose: any positive box 2c amount fails the scope screen."
+  - id: div.h_box2e_zero
     printed: "(helper)"
-    label: "Section 897 ordinary dividends reported (box 2e is more than zero)"
+    label: "No section 897 ordinary dividends in box 2e (applies only to foreign persons and entities)"
     type: Bool
-    expr: {op: test, gt: [div.box2e, {const: 0}]}
-    note: "'Boxes 2e and 2f apply only to foreign persons and entities ... It is generally treated as effectively connected to a trade or business within the United States. See the instructions for your tax return.' The text gives no computation, so a positive amount fails the screen."
-  - id: div.h_has2f
+    expr: {op: test, eq: [div.box2e, {const: 0}]}
+  - id: div.h_box2f_zero
     printed: "(helper)"
-    label: "Section 897 capital gain reported (box 2f is more than zero)"
+    label: "No section 897 capital gain in box 2f (applies only to foreign persons and entities)"
     type: Bool
-    expr: {op: test, gt: [div.box2f, {const: 0}]}
-    note: "Same reason as box 2e: the box applies only to foreign persons and entities, and the text gives no computation."
-  - id: div.h_has9
+    expr: {op: test, eq: [div.box2f, {const: 0}]}
+  - id: div.h_box3_zero
     printed: "(helper)"
-    label: "Cash liquidation distributions reported (box 9 is more than zero)"
+    label: "No nondividend distributions (return of capital) in box 3"
     type: Bool
-    expr: {op: test, gt: [div.box9, {const: 0}]}
-    note: "The text only says 'Boxes 9 and 10. Show cash and noncash liquidation distributions' and gives no treatment, so I chose to fail the screen."
-  - id: div.h_has10
+    expr: {op: test, eq: [div.box3, {const: 0}]}
+  - id: div.h_box3_ok
     printed: "(helper)"
-    label: "Noncash liquidation distributions reported (box 10 is more than zero)"
+    label: "Box 3 is zero, or basis reductions have been applied and no distribution exceeds basis (any excess over basis is taxable as capital gain)"
     type: Bool
-    expr: {op: test, gt: [div.box10, {const: 0}]}
-    note: "Same as box 9: the text gives no treatment, so I chose to fail the screen."
-  - id: div.h_has3
+    expr: {op: test, any: [div.h_box3_zero, div.basis_reconciled]}
+  - id: div.h_box9_zero
     printed: "(helper)"
-    label: "Nondividend distributions reported (box 3 is more than zero)"
+    label: "No cash liquidation distributions in box 9"
     type: Bool
-    expr: {op: test, gt: [div.box3, {const: 0}]}
-  - id: div.h_basis_ok
+    expr: {op: test, eq: [div.box9, {const: 0}]}
+    note: "Open: the text says only that boxes 9 and 10 show liquidation distributions and gives no reporting rule. Chose: treat any positive amount as outside scope."
+  - id: div.h_box10_zero
     printed: "(helper)"
-    label: "Basis reductions applied and no distribution exceeds basis"
+    label: "No noncash liquidation distributions in box 10"
     type: Bool
-    expr: {op: test, eq: [div.basis_reconciled, {const: true}]}
-  - id: div.h_box3_fail
-    printed: "(helper)"
-    label: "Box 3: 'To the extent of your cost (or other basis) in the stock, the distribution reduces your basis and is not taxable. Any amount received in excess of your basis is taxable to you as capital gain.' Fails when not reconciled"
-    type: Bool
-    expr: {op: test, all: [div.h_has3, {op: test, not: div.h_basis_ok}]}
-    note: "Open point: the text does not say how to model the box 3 basis reduction. I chose this: box 3 passes only when the taxpayer confirms that basis has been reduced and no distribution exceeds basis. Any excess would be capital gain, and the text gives no computation for it."
-  - id: div.h_fail
-    printed: "(helper)"
-    label: "Any distribution component outside scope"
-    type: Bool
-    expr: {op: test, any: [div.h_has2c, div.h_has2e, div.h_has2f, div.h_has9, div.h_has10, div.h_box3_fail]}
-    note: "Not counted as failures: box 2b and box 2d (other worksheets use them), box 4 ('Include this amount on your income tax return as tax withheld'), box 6 ('This amount is included in box 1a'), box 12 (reported per the Form 1040 instructions), box 13 (its AMT effect is screened via Form 6251 / s2.amt) and FATCA box 11 ('You may also have a filing requirement. See the Instructions for Form 8938'; reviewed separately according to the div.fatca question). I chose to leave these out because the text gives no instruction that blocks the computation."
-  - id: div.h_pass
+    expr: {op: test, eq: [div.box10, {const: 0}]}
+    note: "Open: the text gives no reporting rule for box 10. Chose: treat any positive amount as outside scope."
+  - id: div.h_in_scope
     printed: "(helper)"
     label: "All distribution scope checks passed"
     type: Bool
-    expr: {op: test, not: div.h_fail}
-  - id: div.h_unsupported_total
+    expr: {op: test, all: [div.h_box2c_zero, div.h_box2e_zero, div.h_box2f_zero, div.h_box3_ok, div.h_box9_zero, div.h_box10_zero]}
+    note: "Not screened here: boxes 4, 6 and 12, and the FATCA box. Box 4 is reported as withholding. Box 6 is already included in box 1a. Box 12 is reported per the Form 1040 instructions. The FATCA box only says to review Form 8938 separately. Box 13 (AMT, Form 6251) is also not screened; the AMT question is left to the Schedule 2 screen (s2.amt)."
+  - id: div.h_out_of_scope
     printed: "(helper)"
-    label: "Total of out-of-scope distribution amounts (boxes 2c, 2e, 2f, 3, 9, 10)"
+    label: "A distribution scope check failed"
+    type: Bool
+    expr: {op: test, not: {op: test, eq: [div.h_in_scope, {const: true}]}}
+  - id: div.h_unsupported
+    printed: "(helper)"
+    label: "Distribution outside supported scope; no supported value"
     type: NonNegDollars
-    expr: {op: sum, of: [div.box2c, div.box2e, div.box2f, div.box3, div.box9, div.box10]}
-    note: "When div.h_fail is true, at least one of these amounts is positive, so this total is more than zero. That makes div.screen nonzero whenever a check fails."
+    expr: {op: input, source: "Not supported: box 2c, 2e, 2f, 9 or 10 amount, or unreconciled box 3 basis; this line is never supplied, so the return cannot be completed"}
+    note: "The grammar has no error atom. Chose: an input that is never supplied, so this line stays unknown and blocks the return."
   - id: div.screen
     printed: "(helper)"
     label: "Zero only after distribution scope checks"
@@ -114,8 +105,9 @@ lines:
     expr:
       op: choose
       alternatives:
-        - {guard: div.h_pass, then: {const: 0}}
-        - {guard: div.h_fail, then: div.h_unsupported_total}
-    note: "The request listed no printed lines to transcribe, so only helper lines are produced. The grammar has no error atom, so a failed screen is shown as a positive amount instead of an error. The guards are exhaustive and disjoint (h_pass is the negation of h_fail)."
+        - guard: {op: test, eq: [div.h_in_scope, {const: true}]}
+          then: {const: 0}
+        - guard: {op: test, eq: [div.h_out_of_scope, {const: true}]}
+          then: div.h_unsupported
 ```
 ```

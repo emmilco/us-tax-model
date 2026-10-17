@@ -19,7 +19,10 @@ form:
           sister, half brother or half sister), sibling_descendant (any other descendant of a sibling, such as a
           grandniece or a stepsibling's child), parent (father or mother), parent_relative (a grandparent, aunt or
           uncle: an ancestor or sibling of a parent), in_law (step-parent or in-law), household_member (any other
-          person who lived with you all year), or other"
+          person, other than your spouse, who lived with you all year as a member of your household, if your
+          relationship did not violate local law), or other (any other relationship; such a person is a Step 4 relative
+          only if they lived with you all year as a member of your household and the relationship did not violate
+          local law)"
       cite:
         doc: i1040gi
         locator: pp. 17 and 19, Steps 1 and 4, "A qualifying child is your..." and "A qualifying relative is your..."
@@ -60,12 +63,14 @@ form:
       expr:
         op: input
         source: Months this person lived with you in 2025, counting temporary absences for school, vacation, business,
-          medical care, military service or detention as time lived with you (0–12); for a person born, died, adopted
-          or placed with you in 2025, enter 12 if your home was their home for more than half the time they were
-          alive or with you, and 0 otherwise
+          medical care, military service or detention as time lived with you (0–12). For a person born, died, adopted
+          or placed with you in 2025 who meets the other conditions to be your qualifying child, enter 12 if your home
+          was their home for more than half the time they were alive or with you, and 0 otherwise; for any other person
+          born or who died in 2025, enter 12 only if your home was their home for the entire time they were alive, and
+          0 otherwise
       cite:
         doc: i1040gi
-        locator: p. 17, Step 1, "Who lived with you for more than half of 2025", and p. 14, Exception to time lived with you
+        locator: p. 17, Step 1, "Who lived with you for more than half of 2025", and p. 21, Exception to time lived with you ("the child ... for more than half the part of the year the child was alive"; "Any other person is considered to have lived with you for all of 2025 if the person was born or died in 2025 and your home was this person's home for the entire time the person was alive in 2025")
     - id: dependent.self_support
       printed: (helper)
       type: Bool
@@ -92,10 +97,11 @@ form:
       label: U.S. citizen, U.S. national or U.S. resident alien?
       expr:
         op: input
-        source: Was this person a U.S. citizen, U.S. national or U.S. resident alien?
+        source: Was this person a U.S. citizen, U.S. national or U.S. resident alien? (Answer yes for your adopted child
+          who lived with you all year as a member of your household, if you are a U.S. citizen or U.S. national.)
       cite:
         doc: i1040gi
-        locator: p. 18, Step 2, question 1, and Step 3, question 2
+        locator: p. 18, Step 2, question 1, and Step 3, question 2; p. 20, Exception to citizen test ("If you are a U.S. citizen or U.S. national and your adopted child lived with you all year as a member of your household, that child meets the requirement to be a U.S. citizen in Step 2, question 1; Step 3, question 2; Step 4, question 2; and Step 5, question 3")
     - id: dependent.canada_mexico
       printed: (helper)
       type: Bool
@@ -123,7 +129,7 @@ form:
       expr:
         op: input
         source: Did this person have an SSN, ITIN or ATIN issued on or before the due date of your 2025 return (including
-          extensions), or have you applied for one by then?
+          extensions), or have you applied for an ITIN or ATIN for this person by then?
       cite:
         doc: i1040gi
         locator: p. 18, Step 3, question 1, and p. 19, Step 5, question 2
@@ -244,15 +250,13 @@ form:
     - id: dependent.younger
       printed: (helper)
       type: Bool
-      label: Younger than you
+      label: Younger than you?
       expr:
-        op: test
-        lt:
-          - dependent.age
-          - household.taxpayer_age
+        op: input
+        source: Was this person younger than you?
       cite:
         doc: i1040gi
-        locator: p. 17, Step 1, "and younger than you"
+        locator: p. 17, Step 1, "and younger than you (or your spouse if filing jointly)"
     - id: dependent.qc_age
       printed: (helper)
       type: Bool
@@ -752,6 +756,14 @@ form:
                 ne:
                   - dependent.relationship
                   - const: household_member
+              - op: test
+                ne:
+                  - dependent.relationship
+                  - const: sibling_descendant
+              - op: test
+                ne:
+                  - dependent.relationship
+                  - const: other
           - op: test
             all:
               - op: test
@@ -768,7 +780,7 @@ form:
                   - const: true
       cite:
         doc: i1040gi
-        locator: p. 14, Head of Household, Test 2 (a dependent, other than one who is your dependent only because they lived with you all year, or your unmarried qualifying child, who lived with you more than half the year)
+        locator: p. 14, Head of Household, Test 2 (a dependent, other than one who is your dependent only because they lived with you all year, which is any person claimed through the last Step 4 bullet, or your unmarried qualifying child, who lived with you more than half the year)
     - id: dependent.hoh_test1
       printed: (helper)
       type: Bool

@@ -7,8 +7,8 @@
 ## (helper) — `dependent.relationship`
 
 - **Authored helper label:** Relationship to you
-- **Encoded (Enum(dependent_relationship)):** Input — Relationship to you: child (son, daughter, stepchild, foster child or their descendant), sibling (brother, sister, half brother, half sister, stepbrother or stepsister, or a son or daughter of a brother, sister, half brother or half sister), sibling_descendant (any other descendant of a sibling, such as a grandniece or a stepsibling's child), parent (father or mother), parent_relative (a grandparent, aunt or uncle: an ancestor or sibling of a parent), in_law (step-parent or in-law), household_member (any other person who lived with you all year), or other
-- Expr: `{"op":"input","source":"Relationship to you: child (son, daughter, stepchild, foster child or their descendant), sibling (brother, sister, half brother, half sister, stepbrother or stepsister, or a son or daughter of a brother, sister, half brother or half sister), sibling_descendant (any other descendant of a sibling, such as a grandniece or a stepsibling's child), parent (father or mother), parent_relative (a grandparent, aunt or uncle: an ancestor or sibling of a parent), in_law (step-parent or in-law), household_member (any other person who lived with you all year), or other"}`
+- **Encoded (Enum(dependent_relationship)):** Input — Relationship to you: child (son, daughter, stepchild, foster child or their descendant), sibling (brother, sister, half brother, half sister, stepbrother or stepsister, or a son or daughter of a brother, sister, half brother or half sister), sibling_descendant (any other descendant of a sibling, such as a grandniece or a stepsibling's child), parent (father or mother), parent_relative (a grandparent, aunt or uncle: an ancestor or sibling of a parent), in_law (step-parent or in-law), household_member (any other person, other than your spouse, who lived with you all year as a member of your household, if your relationship did not violate local law), or other (any other relationship; such a person is a Step 4 relative only if they lived with you all year as a member of your household and the relationship did not violate local law)
+- Expr: `{"op":"input","source":"Relationship to you: child (son, daughter, stepchild, foster child or their descendant), sibling (brother, sister, half brother, half sister, stepbrother or stepsister, or a son or daughter of a brother, sister, half brother or half sister), sibling_descendant (any other descendant of a sibling, such as a grandniece or a stepsibling's child), parent (father or mother), parent_relative (a grandparent, aunt or uncle: an ancestor or sibling of a parent), in_law (step-parent or in-law), household_member (any other person, other than your spouse, who lived with you all year as a member of your household, if your relationship did not violate local law), or other (any other relationship; such a person is a Step 4 relative only if they lived with you all year as a member of your household and the relationship did not violate local law)"}`
 - Cite: [i1040gi] pp. 17 and 19, Steps 1 and 4, "A qualifying child is your..." and "A qualifying relative is your..." (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `dependent.age`
@@ -35,9 +35,9 @@
 ## (helper) — `dependent.months`
 
 - **Authored helper label:** Months lived with you in 2025, counting temporary absences
-- **Encoded (Count):** Input — Months this person lived with you in 2025, counting temporary absences for school, vacation, business, medical care, military service or detention as time lived with you (0–12); for a person born, died, adopted or placed with you in 2025, enter 12 if your home was their home for more than half the time they were alive or with you, and 0 otherwise
-- Expr: `{"op":"input","source":"Months this person lived with you in 2025, counting temporary absences for school, vacation, business, medical care, military service or detention as time lived with you (0–12); for a person born, died, adopted or placed with you in 2025, enter 12 if your home was their home for more than half the time they were alive or with you, and 0 otherwise"}`
-- Cite: [i1040gi] p. 17, Step 1, "Who lived with you for more than half of 2025", and p. 14, Exception to time lived with you (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Encoded (Count):** Input — Months this person lived with you in 2025, counting temporary absences for school, vacation, business, medical care, military service or detention as time lived with you (0–12). For a person born, died, adopted or placed with you in 2025 who meets the other conditions to be your qualifying child, enter 12 if your home was their home for more than half the time they were alive or with you, and 0 otherwise; for any other person born or who died in 2025, enter 12 only if your home was their home for the entire time they were alive, and 0 otherwise
+- Expr: `{"op":"input","source":"Months this person lived with you in 2025, counting temporary absences for school, vacation, business, medical care, military service or detention as time lived with you (0–12). For a person born, died, adopted or placed with you in 2025 who meets the other conditions to be your qualifying child, enter 12 if your home was their home for more than half the time they were alive or with you, and 0 otherwise; for any other person born or who died in 2025, enter 12 only if your home was their home for the entire time they were alive, and 0 otherwise"}`
+- Cite: [i1040gi] p. 17, Step 1, "Who lived with you for more than half of 2025", and p. 21, Exception to time lived with you ("the child ... for more than half the part of the year the child was alive"; "Any other person is considered to have lived with you for all of 2025 if the person was born or died in 2025 and your home was this person's home for the entire time the person was alive in 2025") (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `dependent.self_support`
 
@@ -56,9 +56,9 @@
 ## (helper) — `dependent.citizen`
 
 - **Authored helper label:** U.S. citizen, U.S. national or U.S. resident alien?
-- **Encoded (Bool):** Input — Was this person a U.S. citizen, U.S. national or U.S. resident alien?
-- Expr: `{"op":"input","source":"Was this person a U.S. citizen, U.S. national or U.S. resident alien?"}`
-- Cite: [i1040gi] p. 18, Step 2, question 1, and Step 3, question 2 (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Encoded (Bool):** Input — Was this person a U.S. citizen, U.S. national or U.S. resident alien? (Answer yes for your adopted child who lived with you all year as a member of your household, if you are a U.S. citizen or U.S. national.)
+- Expr: `{"op":"input","source":"Was this person a U.S. citizen, U.S. national or U.S. resident alien? (Answer yes for your adopted child who lived with you all year as a member of your household, if you are a U.S. citizen or U.S. national.)"}`
+- Cite: [i1040gi] p. 18, Step 2, question 1, and Step 3, question 2; p. 20, Exception to citizen test ("If you are a U.S. citizen or U.S. national and your adopted child lived with you all year as a member of your household, that child meets the requirement to be a U.S. citizen in Step 2, question 1; Step 3, question 2; Step 4, question 2; and Step 5, question 3") (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `dependent.canada_mexico`
 
@@ -77,8 +77,8 @@
 ## (helper) — `dependent.tin`
 
 - **Authored helper label:** SSN, ITIN or ATIN issued on or before the due date of your return?
-- **Encoded (Bool):** Input — Did this person have an SSN, ITIN or ATIN issued on or before the due date of your 2025 return (including extensions), or have you applied for one by then?
-- Expr: `{"op":"input","source":"Did this person have an SSN, ITIN or ATIN issued on or before the due date of your 2025 return (including extensions), or have you applied for one by then?"}`
+- **Encoded (Bool):** Input — Did this person have an SSN, ITIN or ATIN issued on or before the due date of your 2025 return (including extensions), or have you applied for an ITIN or ATIN for this person by then?
+- Expr: `{"op":"input","source":"Did this person have an SSN, ITIN or ATIN issued on or before the due date of your 2025 return (including extensions), or have you applied for an ITIN or ATIN for this person by then?"}`
 - Cite: [i1040gi] p. 18, Step 3, question 1, and p. 19, Step 5, question 2 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `dependent.work_ssn`
@@ -153,15 +153,15 @@
 
 ## (helper) — `dependent.younger`
 
-- **Authored helper label:** Younger than you
-- **Encoded (Bool):** helper "Age at the end of 2025" < household helper "Your age at the end of 2025"
-- Expr: `{"lt":["dependent.age","household.taxpayer_age"],"op":"test"}`
-- Cite: [i1040gi] p. 17, Step 1, "and younger than you" (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Authored helper label:** Younger than you?
+- **Encoded (Bool):** Input — Was this person younger than you?
+- Expr: `{"op":"input","source":"Was this person younger than you?"}`
+- Cite: [i1040gi] p. 17, Step 1, "and younger than you (or your spouse if filing jointly)" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `dependent.qc_age`
 
 - **Authored helper label:** Under 19 and younger than you, under 24 a full-time student and younger than you, or permanently and totally disabled
-- **Encoded (Bool):** (helper "Age at the end of 2025" < 19 (qc.age_limit) and helper "Younger than you" = true or helper "Age at the end of 2025" < 24 (qc.student_age_limit) and helper "Full-time student in 2025?" = true and helper "Younger than you" = true or helper "Permanently and totally disabled?" = true)
+- **Encoded (Bool):** (helper "Age at the end of 2025" < 19 (qc.age_limit) and helper "Younger than you?" = true or helper "Age at the end of 2025" < 24 (qc.student_age_limit) and helper "Full-time student in 2025?" = true and helper "Younger than you?" = true or helper "Permanently and totally disabled?" = true)
 - Expr: `{"any":[{"all":[{"lt":["dependent.age",{"param":"qc.age_limit"}],"op":"test"},{"eq":["dependent.younger",{"const":true}],"op":"test"}],"op":"test"},{"all":[{"lt":["dependent.age",{"param":"qc.student_age_limit"}],"op":"test"},{"eq":["dependent.student",{"const":true}],"op":"test"},{"eq":["dependent.younger",{"const":true}],"op":"test"}],"op":"test"},{"eq":["dependent.disabled",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 17, Step 1, the age conditions (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -307,9 +307,9 @@
 ## (helper) — `dependent.hoh_test2`
 
 - **Authored helper label:** A Test 2 person who lived with you more than half the year (the home-cost condition of Test 2 is tested on the household form)
-- **Encoded (Bool):** (helper "Your dependent" = true and helper "Lived with you for more than half of 2025" = true and helper "Relationship to you" ≠ 'household_member' or helper "Qualifying child (Step 1)" = true and helper "Married?" = false and helper "Lived with you for more than half of 2025" = true)
-- Expr: `{"any":[{"all":[{"eq":["dependent.claimed",{"const":true}],"op":"test"},{"eq":["dependent.lived_half",{"const":true}],"op":"test"},{"ne":["dependent.relationship",{"const":"household_member"}],"op":"test"}],"op":"test"},{"all":[{"eq":["dependent.qualifying_child",{"const":true}],"op":"test"},{"eq":["dependent.married",{"const":false}],"op":"test"},{"eq":["dependent.lived_half",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}`
-- Cite: [i1040gi] p. 14, Head of Household, Test 2 (a dependent, other than one who is your dependent only because they lived with you all year, or your unmarried qualifying child, who lived with you more than half the year) (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Encoded (Bool):** (helper "Your dependent" = true and helper "Lived with you for more than half of 2025" = true and helper "Relationship to you" ≠ 'household_member' and helper "Relationship to you" ≠ 'sibling_descendant' and helper "Relationship to you" ≠ 'other' or helper "Qualifying child (Step 1)" = true and helper "Married?" = false and helper "Lived with you for more than half of 2025" = true)
+- Expr: `{"any":[{"all":[{"eq":["dependent.claimed",{"const":true}],"op":"test"},{"eq":["dependent.lived_half",{"const":true}],"op":"test"},{"ne":["dependent.relationship",{"const":"household_member"}],"op":"test"},{"ne":["dependent.relationship",{"const":"sibling_descendant"}],"op":"test"},{"ne":["dependent.relationship",{"const":"other"}],"op":"test"}],"op":"test"},{"all":[{"eq":["dependent.qualifying_child",{"const":true}],"op":"test"},{"eq":["dependent.married",{"const":false}],"op":"test"},{"eq":["dependent.lived_half",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 14, Head of Household, Test 2 (a dependent, other than one who is your dependent only because they lived with you all year, which is any person claimed through the last Step 4 bullet, or your unmarried qualifying child, who lived with you more than half the year) (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `dependent.hoh_test1`
 

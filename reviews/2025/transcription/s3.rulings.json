@@ -1,0 +1,12 @@
+{
+ "kind": "transcription",
+ "form": "s3",
+ "rulings": [
+  {
+   "printed": "8",
+   "project": "{\"line\": \"1\"}",
+   "second": "{\"of\": [{\"input\": \"s3.h_line2\"}, {\"input\": \"s3.h_line3\"}, {\"input\": \"s3.h_line4\"}, {\"input\": \"s3.h_line5a\"}, {\"input\": \"s3.h_line5b\"}, {\"input\": \"s3.h_line7\"}, {\"line\": \"1\"}], \"op\": \"sum\"}",
+   "ruling": "Ruling: scope; project retained. Lines 2 through 4, 5a, 5b and 7 are the credits the slice refuses (`scope.credits`), so line 8 is line 1 alone within scope; the second lists them as inputs. No change to the data."
+  }
+ ]
+}

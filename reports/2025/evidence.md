@@ -109,10 +109,10 @@ Unasserted lines: div.box1a, div.box1b, div.box2a, div.box5, div.section1202, di
 | f1040.line15 | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 8 |
 | f1040.gate.qdcg_applies | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 7 |
 | f1040.gate.sdtw | — | — | — | 5 |
-| f1040.non_sdtw_tax | — | — | — | — |
-| f1040.line16 | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 13 |
-| f1040.line17 | — | — | — | 6 |
-| f1040.line18 | — | — | — | 6 |
+| f1040.non_sdtw_tax | — | — | — | 2 (stage4.sdtw.special_rates, stage4.sdtw.skip22) |
+| f1040.line16 | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 14 |
+| f1040.line17 | — | — | — | 8 |
+| f1040.line18 | — | — | — | 8 |
 | f1040.line19 | — | — | — | 31 |
 | f1040.line20 | — | — | — | 6 |
 | f1040.line21 | — | — | — | 7 |
@@ -135,8 +135,6 @@ Unasserted lines: div.box1a, div.box1b, div.box2a, div.box5, div.section1202, di
 | f1040.line35a | — | — | — | 3 |
 | f1040.line36 | — | — | — | 3 |
 | f1040.line37 | — | — | — | 31 |
-
-Unasserted lines: f1040.non_sdtw_tax
 
 ## Form 4952 — supported investment-interest deduction and election
 
@@ -329,7 +327,6 @@ Unasserted lines: gift.section_b, gift.allowed
 
 | line | A | B | C | R |
 | --- | --- | --- | --- | --- |
-| household.taxpayer_age | — | — | — | — |
 | household.taxpayer_tin | — | — | — | — |
 | household.taxpayer_work_ssn | — | — | — | — |
 | household.home_cost | — | — | — | — |
@@ -615,10 +612,10 @@ Unasserted lines: sales.covered, sales.digital, sales.has_b, sales.has_w, sales.
 | sb.form8938 | — | — | — | — |
 | sb.line8 | — | — | — | — |
 | sb.zero | — | — | — | — |
-| sb.line2 | — | — | — | 8 |
-| sb.line3 | — | — | — | 8 |
-| sb.line4 | — | — | — | 8 |
-| sb.line6 | — | — | — | 7 |
+| sb.line2 | — | — | — | 9 |
+| sb.line3 | — | — | — | 9 |
+| sb.line4 | — | — | — | 9 |
+| sb.line6 | — | — | — | 8 |
 | sb.partIII | — | — | — | 1 (stage4.sb.foreign_no_filing) |
 
 Unasserted lines: sb.zero
@@ -895,5 +892,5 @@ Unasserted lines: below_boundary, table_tax, worksheet_tax, tax
 
 Unasserted lines: single.row1.product, single.row1.tax, single.row2.product, single.row2.tax, single.row3.product, single.row3.tax, single.row4.product, single.row4.tax, single.row5.product, single.row5.tax, single.result, mfj.row1.product, mfj.row1.tax, mfj.row2.product, mfj.row2.tax, mfj.row3.product, mfj.row3.tax, mfj.row4.product, mfj.row4.tax, mfj.row5.product, mfj.row5.tax, mfj.result, mfs.row1.product, mfs.row1.tax, mfs.row2.product, mfs.row2.tax, mfs.row3.product, mfs.row3.tax, mfs.row4.product, mfs.row4.tax, mfs.row5.product, mfs.row5.tax, mfs.result, hoh.row1.product, hoh.row1.tax, hoh.row2.product, hoh.row2.tax, hoh.row3.product, hoh.row3.tax, hoh.row4.product, hoh.row4.tax, hoh.row5.product, hoh.row5.tax, hoh.result, tax
 
-Unasserted computed lines across all documents: 175. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
+Unasserted computed lines across all documents: 174. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
 Asserted keys not matching a line id: qdcg.f1040.line15, qdcg.f1040.line3a, qdcg.f1040.status, f1040.qdcg.line25, qdcg.sd.distributions

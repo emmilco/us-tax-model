@@ -126,3 +126,8 @@ review rested on is now checked and no longer the only reading:
   extractor defects (negative page coordinates, table-header and index
   rejoins, merged column lines), none in the archived layout text.
 - Rulings live in `<form>.rulings.json` beside each log (T-024).
+- All 74 reviews were rerun on the new text (`tools/transcription/rerun_all.py`);
+  the rerun found BUG-0017 to BUG-0024 on the dependents worksheet and the
+  credit refusals, all fixed and re-reviewed. `tools/extraction/page_review.py`
+  builds a local page-by-page view (image beside the text the model reads) for
+  a person to judge a reading against the page.

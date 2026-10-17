@@ -3,13 +3,6 @@
 - Document: `household` (form, tax year 2025)
 - Note: Facts about the filer that the dependent tests and the head of household status read. Married filing statuses remain refused elsewhere; "unmarried" here is the instructions' unmarried or considered unmarried at the end of 2025.
 
-## (helper) — `household.taxpayer_age`
-
-- **Authored helper label:** Your age at the end of 2025
-- **Encoded (Count):** Input — Your age at the end of 2025 (whole years)
-- Expr: `{"op":"input","source":"Your age at the end of 2025 (whole years)"}`
-- Cite: [i1040gi] p. 17, Step 1, "Under age 19 at the end of 2025 and younger than you" (2025; printed date 2026-02-25; sha256 482e9c48)
-
 ## (helper) — `household.taxpayer_tin`
 
 - **Authored helper label:** Do you have an SSN or ITIN issued on or before the due date of your return, or have you applied for an ITIN by then?

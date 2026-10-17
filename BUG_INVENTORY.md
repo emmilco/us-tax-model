@@ -201,3 +201,96 @@ later grouping.
 - **Fix:** the heading remainder is anchored to its line (`[^\n]*`) in all three parsers; the `s8812` log was restored from the previous commit and re-derived offline from the saved responses with all 15 rulings kept. A parse count over every committed log (transcription, render, class M) shows the fixed parsers recover all 235 non-open rulings, where the old parsers keyed 148 of them correctly and would have lost 87 on rerun.
 - **Tags:** tooling; regex-spans-sections; ruling-loss; recorded-expectation-laundering; caught-by-mutation-baseline
 
+
+## BUG-0017 — Months-lived question gave every person the qualifying-child born-or-died rule
+
+- **Date:** 2026-10-17
+- **Caught by:** render comparison (spec 6.5), rerun on the reading-order text after T-022: the model judged `dependent.months` MISMATCH because the question told every person born, died, adopted or placed in 2025 to enter 12 when the home was theirs for more than half the time alive, while the instructions give that rule to a qualifying child only and say of anyone else "Any other person is considered to have lived with you for all of 2025 if the person was born or died in 2025 and your home was this person's home for the entire time the person was alive in 2025" (i1040gi p. 21, Exception to time lived with you; p. 15 for head of household).
+- **Symptom:** a household-member dependent born mid-year who lived with the filer for most but not all of their life would have passed the all-year test.
+- **Root cause:** `forms/2025/dependent.yaml`, line `dependent.months`: the BUG-0014 fix carried the qualifying-child rule into the question without its condition.
+- **Why it survived:** the render comparison that produced BUG-0014 read the interleaved layout text; the rerun on reading-order text is the first in which the model quoted the "any other person" sentence.
+- **Fix:** the question states both rules, keyed on whether the person meets the other qualifying-child conditions; the citation names p. 21. No expression changed.
+- **Tags:** scope-screen-wider-than-line; household-predicates; caught-by-render-comparison; corrects-BUG-0014; reading-order-text
+
+---
+
+## BUG-0018 — TIN question counted a pending SSN application
+
+- **Date:** 2026-10-17
+- **Caught by:** render comparison rerun (as BUG-0017): "Answer 'Yes' if you are applying for an ITIN or ATIN for the child" (i1040gi p. 18, Step 3, question 1); the question said "or have you applied for one by then", which includes an SSN application.
+- **Symptom:** a child with an SSN applied for but not issued by the due date would have been counted for the credits.
+- **Root cause:** `forms/2025/dependent.yaml`, line `dependent.tin`: the question generalised the parenthetical.
+- **Why it survived:** as BUG-0017.
+- **Fix:** the question names an ITIN or ATIN application. No expression changed.
+- **Tags:** scope-screen-wider-than-line; household-predicates; caught-by-render-comparison; reading-order-text
+
+---
+
+## BUG-0019 — "Younger than you" compared whole-year ages
+
+- **Date:** 2026-10-17
+- **Caught by:** render comparison rerun (as BUG-0017): the model noted that comparing whole-year ages "misses a child born later in the same age year" (i1040gi p. 17, Step 1, "and younger than you").
+- **Symptom:** a sibling of the same whole-year age as the filer, younger by months, failed the qualifying-child age test.
+- **Root cause:** `forms/2025/dependent.yaml`, line `dependent.younger`, tested the person's age below the filer's age, both in whole years (`household.taxpayer_age`).
+- **Why it survived:** the generated corpus never pairs a filer and a dependent of the same whole-year age; no fixture did.
+- **Fix:** `dependent.younger` is a question the filer answers; `household.taxpayer_age` is removed from the household form, the four interview profiles, the generators and the engine differential cases; every fixture dependent carries the answer derived from the ages it had (144 dependents), so no expected value changed.
+- **Tags:** derived-where-asked-is-needed; household-predicates; caught-by-render-comparison; reading-order-text
+
+---
+
+## BUG-0020 — Household-member relationship omitted the local-law condition
+
+- **Date:** 2026-10-17
+- **Caught by:** render comparison rerun (as BUG-0017): Step 4's last bullet admits "Any other person (other than your spouse) who lived with you all year as a member of your household if your relationship didn't violate local law" (i1040gi p. 19); the relationship question's household-member value said only "any other person who lived with you all year".
+- **Symptom:** a person whose relationship violated local law would have been admitted as a qualifying relative.
+- **Root cause:** `forms/2025/dependent.yaml`, line `dependent.relationship`: the value's description dropped the condition.
+- **Why it survived:** as BUG-0017.
+- **Fix:** the value's description carries the condition and the spouse exclusion. No expression changed.
+- **Tags:** scope-screen-wider-than-line; household-predicates; caught-by-render-comparison; reading-order-text
+
+---
+
+## BUG-0021 — Head of household Test 2 excluded only one of the three all-year relationship values (corrects BUG-0015)
+
+- **Date:** 2026-10-17
+- **Caught by:** render comparison rerun (as BUG-0017): Test 2 excludes "Any person who is your dependent only because the person lived with you for all of 2025" (i1040gi p. 14); after BUG-0015 three relationship values (`household_member`, `sibling_descendant`, `other`) are dependents only through the all-year bullet, and `dependent.hoh_test2` excluded `household_member` alone.
+- **Symptom:** a grandniece or an unrelated person claimed through the all-year bullet would have qualified the filer for head of household.
+- **Root cause:** BUG-0015 widened the all-year bullet to three values without widening the Test 2 exclusion that mirrors it.
+- **Why it survived:** the BUG-0015 render comparison judged `qr_relationship`, not `hoh_test2`; no fixture had a non-household-member all-year dependent on a head of household return.
+- **Fix:** the first branch of `dependent.hoh_test2` excludes all three values.
+- **Tags:** condition-attached-to-wrong-branch; household-predicates; caught-by-render-comparison; corrects-BUG-0015; reading-order-text
+
+---
+
+## BUG-0022 — Credit refusals still named Schedule 8812 as unsupported
+
+- **Date:** 2026-10-17
+- **Caught by:** render comparison rerun (as BUG-0017): the model judged `scope.credits` UNCLEAR because the screen exempts the Schedule 8812 credits while its refusal is titled "Schedule 8812 / other credit forms".
+- **Symptom:** a refusal message naming a schedule the tool computes.
+- **Root cause:** five refusal entries (`forms/2025/f1040.yaml` lines 29 to 31, `s3.yaml`, `scope.yaml`) written before Stage 8 encoded Schedule 8812 and not revisited.
+- **Why it survived:** refusal titles are not compared by any check; the Stage 8 render comparison judged the new lines, not the old refusals that mention them.
+- **Fix:** the five entries are titled "Other credit forms (Schedule 3 lines 2 to 4, 5b, 6d, 6f, 6l and 6m; Form 1040 lines 27a and 29 to 31)" and their remedy names the credits the slice does compute.
+- **Tags:** stale-text-after-scope-change; caught-by-render-comparison
+
+
+## BUG-0023 — Citizenship question omitted the adopted-child rule
+
+- **Date:** 2026-10-17
+- **Caught by:** render comparison rerun on the reading-order text after BUG-0017 to BUG-0022: an adopted child of a U.S. citizen or national who "lived with you all year as a member of your household ... meets the requirement to be a U.S. citizen in Step 2, question 1; Step 3, question 2; Step 4, question 2; and Step 5, question 3" (i1040gi p. 20, Exception to citizen test); the question asked only about actual citizenship, nationality or residence.
+- **Symptom:** such a child would have been denied dependency and both credits.
+- **Root cause:** `forms/2025/dependent.yaml`, line `dependent.citizen`: the question was written from the step questions without the "Exception to citizen test" paragraph.
+- **Why it survived:** as BUG-0017; the earlier comparison read the spliced columns.
+- **Fix:** the question carries the rule in a parenthetical. No expression changed.
+- **Tags:** scope-screen-narrower-than-line; household-predicates; caught-by-render-comparison; reading-order-text
+
+---
+
+## BUG-0024 — The "other" relationship value lacked the all-year bullet's conditions (completes BUG-0020)
+
+- **Date:** 2026-10-17
+- **Caught by:** render comparison rerun (as BUG-0023): the model judged `dependent.qr_relationship` MISMATCH because the `other` value qualifies through the same bullet as `household_member` when the person lived with the filer all year, and BUG-0020 added the bullet's conditions ("other than your spouse", "if your relationship didn't violate local law", i1040gi p. 19) to the household-member value only.
+- **Symptom:** a person entered as `other` whose relationship violated local law would have been admitted as a qualifying relative.
+- **Root cause:** BUG-0020's fix attached the conditions to one of the three values that share the bullet (`sibling_descendant`, the third, is a blood relation and is not affected by the local-law condition).
+- **Why it survived:** the BUG-0020 render comparison was ruled on the household-member wording.
+- **Fix:** the `other` value's description states the conditions. No expression changed.
+- **Tags:** scope-screen-wider-than-line; household-predicates; caught-by-render-comparison; corrects-BUG-0020

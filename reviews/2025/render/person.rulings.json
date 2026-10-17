@@ -5,8 +5,14 @@
   {
    "printed": "employers",
    "restated": "Add w2.one over every confirmed w2 entry, within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "The IRS condition is 'had more than one employer for 2025', but the program counts confirmed W-2 entries. The text given does not say that each W-2 entry is a distinct employer, so it cannot confirm the count when one employer issues more than one W-2.",
+   "model": "The IRS test is whether you 'had more than one employer.' The program counts W-2 entries per person instead. The text given does not say each employer issues exactly one W-2, so a count of W-2s may not equal a count of employers.",
    "ruling": "Ruling: representation; project retained. The W-2 collection is keyed by employer, and repeated forms from one employer are consolidated into one entry (\"Keyed by employer within person; consolidate repeated forms for the same employer explicitly\", forms/2025/w2.yaml collection note), so the count of entries is the count of employers that \"had more than one employer for 2025\" (i1040gi p. 117) asks for. No change to the data."
+  },
+  {
+   "printed": "wages",
+   "restated": "Add w2.wages over every confirmed w2 entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The IRS condition is 'total wages of more than $176,100,' figured separately per person. The text does not say which W-2 box supplies 'wages' (box 1 or box 3), and the restatement's w2.wages does not identify the box either.",
+   "ruling": "Ruling: representation; project retained. The $176,100 test is on social security wages, the wage base above which no social security tax is withheld (i1040gi p. 117, line 11; $10,918.20 is 6.2% of $176,100), so `w2.wages` sums Form W-2 box 3 (social security wages) and box 7 (social security tips), the amounts the tax was withheld on. No change to the data."
   }
  ]
 }

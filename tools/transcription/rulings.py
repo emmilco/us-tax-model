@@ -10,6 +10,7 @@ same ruling without parsing the prose log. `rule.py` writes both files;
 
     rulings.py --migrate     # build every sidecar from the rulings already in the logs
     rulings.py --check       # report log/sidecar disagreements (exit 1 on any)
+    rulings.py --prune       # drop sidecar entries whose disagreement no longer occurs
 """
 import argparse, json, os, re, sys
 
@@ -127,6 +128,24 @@ def migrate():
     print(f"rulings: {total} written to sidecars")
 
 
+def prune():
+    """Drop sidecar entries whose disagreement no longer occurs in the log."""
+    dropped = 0
+    for kind in KINDS:
+        for form in forms_with_logs(kind):
+            text = open(log_path(kind, form), encoding="utf-8").read()
+            live = {key for key, _ in log_sections(kind, text)}
+            side = load(kind, form)
+            kept = {k: v for k, v in side.items() if k in live}
+            if len(kept) != len(side):
+                dropped += len(side) - len(kept)
+                if kept:
+                    save(kind, form, kept)
+                else:
+                    os.remove(sidecar_path(kind, form))
+    print(f"rulings: {dropped} stale sidecar entries pruned")
+
+
 def check():
     """A log's non-open rulings must each equal the sidecar's; sidecar entries with no
     matching section are reported (a disagreement that no longer occurs) but pass."""
@@ -157,10 +176,13 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--migrate", action="store_true")
     ap.add_argument("--check", action="store_true")
+    ap.add_argument("--prune", action="store_true", help="drop sidecar entries whose disagreement no longer occurs")
     a = ap.parse_args()
     if a.migrate:
         migrate()
+    if a.prune:
+        prune()
     if a.check:
         sys.exit(check())
-    if not (a.migrate or a.check):
+    if not (a.migrate or a.check or a.prune):
         ap.print_help()

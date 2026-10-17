@@ -11,13 +11,13 @@
 
 ## Source pages given to the model
 
-| document | revision | pages | selection | text sha256 |
-| --- | --- | --- | --- | --- |
-| i1040gi | 2025; printed date 2026-02-25 | 38 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 |
+| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
+| --- | --- | --- | --- | --- | --- | --- |
+| i1040gi | 2025; printed date 2026-02-25 | 38 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | - | 816ff8c5ed82d0349bfa79ae008e9b4492c04005a8702145dcd8cd0139eacc47 |
 
 ## Lines
 
-### case classm.qdcg.1 — prompt sha256 9313187b9eaf7b250630e403ff4d3bf7f33c762063044db4ba4a2e3307b21352; branches: qdcg.schedule_d_filed:true, qdcg.line3#0, qdcg.line5:positive, qdcg.line7:right, qdcg.line8:right, qdcg.line10:right, qdcg.line14:left, qdcg.line16:positive, qdcg.line17:left, qdcg.line25:left
+### case classm.qdcg.1 — prompt sha256 8b52fd00c43b7f086500858d448e1f6356a919c553256daa60d2f37a24e2e5d6; branches: qdcg.schedule_d_filed:true, qdcg.line3#0, qdcg.line5:positive, qdcg.line7:right, qdcg.line8:right, qdcg.line10:right, qdcg.line14:left, qdcg.line16:positive, qdcg.line17:left, qdcg.line25:left
 
 ### classm.qdcg.1 — 1 — Enter the amount from Form 1040 or 1040-SR, line 15. However, if you are filing 
 Status: **AGREE**
@@ -134,7 +134,7 @@ Status: **AGREE**
 
 Value: $85,646.95
 
-### case classm.qdcg.2 — prompt sha256 1a04c631ff8cc733691b6bf7dc7b99904903345eb6a753dcc1f097407499f6b1; branches: qdcg.schedule_d_filed:false, qdcg.line3#1, qdcg.line5:floor, qdcg.line7:left, qdcg.line8:left, qdcg.line10:left, qdcg.line14:left, qdcg.line16:floor, qdcg.line17:left, qdcg.line25:left
+### case classm.qdcg.2 — prompt sha256 6427f95b60b448fa423bce7ef6a1e7239271308ab28d6dc39e5b6285e7844719; branches: qdcg.schedule_d_filed:false, qdcg.line3#1, qdcg.line5:floor, qdcg.line7:left, qdcg.line8:left, qdcg.line10:left, qdcg.line14:left, qdcg.line16:floor, qdcg.line17:left, qdcg.line25:left
 
 ### classm.qdcg.2 — 1 — Enter the amount from Form 1040 or 1040-SR, line 15. However, if you are filing 
 Status: **AGREE**
@@ -251,7 +251,7 @@ Status: **AGREE**
 
 Value: $0.00
 
-### case classm.qdcg.3 — prompt sha256 4df20c1315c161a6b33f4a564d6ad16756b221172cebbcc015ee96f9901cfe72; branches: qdcg.schedule_d_filed:true, qdcg.line3#0, qdcg.line5:positive, qdcg.line7:right, qdcg.line8:left, qdcg.line10:right, qdcg.line14:right, qdcg.line16:positive, qdcg.line17:right, qdcg.line25:left
+### case classm.qdcg.3 — prompt sha256 3d586afd67a1f54dad3836aea2ca45de890f825dd4cb9d57dcb8aa51dfa2df26; branches: qdcg.schedule_d_filed:true, qdcg.line3#0, qdcg.line5:positive, qdcg.line7:right, qdcg.line8:left, qdcg.line10:right, qdcg.line14:right, qdcg.line16:positive, qdcg.line17:right, qdcg.line25:left
 
 ### classm.qdcg.3 — 1 — Enter the amount from Form 1040 or 1040-SR, line 15. However, if you are filing 
 Status: **AGREE**
@@ -382,7 +382,7 @@ lines:
     work: "Form 1040 line 3a = 0.00"
   - printed: "3"
     value: "5770.00"
-    work: "Filing Schedule D (yes): smaller of Sch D line 15 or 16, nonnegative = 5,770.00"
+    work: "Filing Schedule D: yes; smaller of Sch D line 15 or 16 (nonnegative net capital gain) = 5,770.00"
   - printed: "4"
     value: "5770.00"
     work: "0.00 + 5,770.00"
@@ -391,7 +391,7 @@ lines:
     work: "339,977.00 - 5,770.00"
   - printed: "6"
     value: "64750.00"
-    work: "Head of household threshold"
+    work: "Head of household = 64,750"
   - printed: "7"
     value: "64750.00"
     work: "smaller of 339,977.00 or 64,750.00"
@@ -406,13 +406,13 @@ lines:
     work: "smaller of 339,977.00 or 5,770.00"
   - printed: "11"
     value: "0.00"
-    work: "line 9"
+    work: "line 9 = 0.00"
   - printed: "12"
     value: "5770.00"
     work: "5,770.00 - 0.00"
   - printed: "13"
     value: "566700.00"
-    work: "Head of household threshold"
+    work: "Head of household = 566,700"
   - printed: "14"
     value: "339977.00"
     work: "smaller of 339,977.00 or 566,700.00"
@@ -458,67 +458,67 @@ lines:
     work: "Form 1040 line 3a = 24,189.00"
   - printed: "3"
     value: "19947.00"
-    work: "Not filing Schedule D -> Form 1040 line 7a (capital gain distributions) = 19,947.00"
+    work: "Not filing Schedule D; Form 1040 line 7a (capital gain distributions) = 19,947.00"
   - printed: "4"
     value: "44136.00"
-    work: "24,189.00 + 19,947.00 = 44,136.00"
+    work: "24,189.00 + 19,947.00"
   - printed: "5"
     value: "0.00"
-    work: "0.00 - 44,136.00 < 0 -> -0-"
+    work: "0.00 - 44,136.00 < 0, enter -0-"
   - printed: "6"
     value: "48350.00"
-    work: "Single -> 48,350"
+    work: "Single: 48,350"
   - printed: "7"
     value: "0.00"
-    work: "smaller of 0.00 or 48,350.00 = 0.00"
+    work: "smaller of 0.00 or 48,350.00"
   - printed: "8"
     value: "0.00"
-    work: "smaller of 0.00 or 0.00 = 0.00"
+    work: "smaller of 0.00 or 0.00"
   - printed: "9"
     value: "0.00"
-    work: "0.00 - 0.00 = 0.00"
+    work: "0.00 - 0.00"
   - printed: "10"
     value: "0.00"
-    work: "smaller of 0.00 or 44,136.00 = 0.00"
+    work: "smaller of 0.00 or 44,136.00"
   - printed: "11"
     value: "0.00"
-    work: "line 9 = 0.00"
+    work: "line 9"
   - printed: "12"
     value: "0.00"
-    work: "0.00 - 0.00 = 0.00"
+    work: "0.00 - 0.00"
   - printed: "13"
     value: "533400.00"
-    work: "Single -> 533,400"
+    work: "Single: 533,400"
   - printed: "14"
     value: "0.00"
-    work: "smaller of 0.00 or 533,400.00 = 0.00"
+    work: "smaller of 0.00 or 533,400.00"
   - printed: "15"
     value: "0.00"
-    work: "0.00 + 0.00 = 0.00"
+    work: "0.00 + 0.00"
   - printed: "16"
     value: "0.00"
-    work: "0.00 - 0.00 = 0.00"
+    work: "0.00 - 0.00 = 0, enter -0-"
   - printed: "17"
     value: "0.00"
-    work: "smaller of 0.00 or 0.00 = 0.00"
+    work: "smaller of 0.00 or 0.00"
   - printed: "18"
     value: "0.00"
-    work: "0.00 x 0.15 = 0.00"
+    work: "0.00 x 0.15"
   - printed: "19"
     value: "0.00"
-    work: "0.00 + 0.00 = 0.00"
+    work: "0.00 + 0.00"
   - printed: "20"
     value: "0.00"
-    work: "0.00 - 0.00 = 0.00"
+    work: "0.00 - 0.00"
   - printed: "21"
     value: "0.00"
-    work: "0.00 x 0.20 = 0.00"
+    work: "0.00 x 0.20"
   - printed: "23"
     value: "0.00"
-    work: "0.00 + 0.00 + 0.00 (line 22 given) = 0.00"
+    work: "0.00 + 0.00 + 0.00 (line 22 given 0.00)"
   - printed: "25"
     value: "0.00"
-    work: "smaller of line 23 0.00 or line 24 0.00 (given) = 0.00"
+    work: "smaller of line 23 0.00 or line 24 0.00"
 ```
 ```
 
@@ -535,7 +535,7 @@ lines:
     work: "Form 1040 line 3a = 320,000.00"
   - printed: "3"
     value: "19848.00"
-    work: "Filing Schedule D: yes; smaller of Sch D lines 15/16 (nonnegative net capital gain) = 19,848.00"
+    work: "Filing Schedule D: smaller of Sch D line 15 or 16 = 19,848.00"
   - printed: "4"
     value: "339848.00"
     work: "320,000.00 + 19,848.00"

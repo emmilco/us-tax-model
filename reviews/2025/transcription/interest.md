@@ -4,19 +4,19 @@ Second transcription of `Schedule B — interest payer entries` by an isolated m
 
 | field | value |
 | --- | --- |
-| date | 2026-10-16 |
+| date | 2026-10-17 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 2c56447927ffdafd488280531164209f742dae7db3e7d900105ba0e7168bd787 |
+| prompt sha256 | 78fc10ee911fa7acc8432d4d62d5e9e46449d964322fe6fc2463460967a1ec31 |
 | printed lines compared | 0 |
 | agree / disagree / missing | 0 / 0 / 0 |
 | extra printed lines in second | none |
 
 ## Source pages given to the model
 
-| document | revision | pages | selection | text sha256 |
-| --- | --- | --- | --- | --- |
-| i1040sb | TY2025; printed April 23, 2025 | 1, 2, 3 | whole document | 2bf62267574473b36fd9a69b6e0837ef74d72ac7d5dcbf1d26e7047d099f1e05 |
+| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
+| --- | --- | --- | --- | --- | --- | --- |
+| i1040sb | TY2025; printed April 23, 2025 | 1, 2, 3 | whole document | 2bf62267574473b36fd9a69b6e0837ef74d72ac7d5dcbf1d26e7047d099f1e05 | 1, 2, 3 | 0d38b25d416cb650ef264faf8c1f118dfa4666f3949fbba7120f8c04d4e6914e |
 
 ## Lines
 
@@ -24,11 +24,6 @@ Second transcription of `Schedule B — interest payer entries` by an isolated m
 
 ```yaml
 ```yaml
-# The prompt's list of printed lines to transcribe is empty. The only line for this
-# per-payer entry, interest.amount, already exists and must not be redefined.
-# The IRS text's per-payer item (Schedule B line 1: list each payer's name and amount,
-# taxable interest only, excluding tax-exempt interest) is fully covered by
-# interest.amount. No new line records are needed.
 lines: []
 ```
 ```

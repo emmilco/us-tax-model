@@ -3,12 +3,6 @@
  "form": "qdcg",
  "rulings": [
   {
-   "printed": "(question)",
-   "project": "{\"args\": [{\"args\": [{\"const\": 0}, {\"collection\": \"sales\", \"field\": \"sales.one\", \"op\": \"sum_over\", \"where\": null}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"ref\": \"g28.line7\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"ref\": \"u1250.line18\"}], \"test\": \"lt\"}], \"test\": \"any\"}",
-   "second": "{\"input\": \"Interview question: Are you filing Schedule D? (Qualified Di\"}",
-   "ruling": "Ruling: equivalent representation; project retained. The project derives the answer to “Are you filing Schedule D?” from Schedule D’s own filing test (`sd.filed`: any sale entered, or a 28% rate gain or unrecaptured section 1250 gain), so it cannot contradict the Schedule D the return actually contains; the second transcription asks it as an interview question. No change to the data."
-  },
-  {
    "printed": "3",
    "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"line\": \"(question)\"}], \"test\": \"eq\"}, \"then\": {\"ref\": \"sd.distributions\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"line\": \"(question)\"}], \"test\": \"eq\"}, \"then\": {\"from\": {\"of\": [{\"ref\": \"sd.line15\"}, {\"ref\": \"sd.line16\"}], \"op\": \"smaller_of\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}}], \"op\": \"choose\"}",
    "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"line\": \"(question)\"}], \"test\": \"eq\"}, \"then\": {\"ref\": \"f1040.line7a\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"line\": \"(question)\"}], \"test\": \"eq\"}, \"then\": {\"from\": {\"of\": [{\"ref\": \"sd.line15\"}, {\"ref\": \"sd.line16\"}], \"op\": \"smaller_of\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}}], \"op\": \"choose\"}",

@@ -7,16 +7,6 @@ form:
     filing statuses remain refused elsewhere; "unmarried" here is the instructions' unmarried or
     considered unmarried at the end of 2025.
   lines:
-    - id: household.taxpayer_age
-      printed: (helper)
-      type: Count
-      label: Your age at the end of 2025
-      expr:
-        op: input
-        source: Your age at the end of 2025 (whole years)
-      cite:
-        doc: i1040gi
-        locator: p. 17, Step 1, "Under age 19 at the end of 2025 and younger than you"
     - id: household.taxpayer_tin
       printed: (helper)
       type: Bool

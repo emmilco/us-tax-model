@@ -5,37 +5,25 @@
   {
    "printed": "16b",
    "restated": "Add dependent.actc_amount over every confirmed dependent entry, within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "The IRS line is the number of qualifying children \"x $1,700\". The restatement sums dependent.actc_amount, which is not defined in the text given.",
+   "model": "The IRS line is the number of qualifying children \"x $1,700\", using the same count as line 4. The restatement adds up dependent.actc_amount, which is not defined, so I can't confirm it is $1,700 for each child counted on line 4.",
    "ruling": "Ruling: representation; project retained. The count and the dollar lines are sums over the listed persons of a per-person amount ($2,200, $500 or $1,700 for a person who qualifies, else zero), defined on the dependent worksheet, which has its own transcription, render and class M logs; the per-person predicates are Steps 3 and 5 of the Form 1040 instructions. The count times the dollar figure and the sum of the per-person figures are the same number. No change to the data."
   },
   {
    "printed": "21",
    "restated": "Subtract f8959 line 22 from helper \"Additional Medicare Tax and RRTA Tax Worksheet, line 4. Add social security tax withheld, Medicare tax withheld (Form 8959, line 19) and Form 8959, line 7\".",
-   "model": "The restatement computes only worksheet line 6 (lines 1 through 3, less Form 8959 line 22). The worksheet's line 21 amount is \"Add lines 6, 7, 11, and 15\", and the program omits the Tier 1 RRTA amounts on lines 11 and 15 without any refusal naming them.",
+   "model": "The restatement stops at worksheet line 6 (lines 1+2+3 minus Form 8959 line 22), but the IRS says line 21 is \"Add lines 6, 7, 11, and 15. Enter here and on line 21 of Schedule 8812\". It leaves out the Tier 1 RRTA amounts (lines 11 and 15) and half of the Additional Medicare Tax on self-employment income (line 7), and line 21 has no refusal naming those cases.",
    "ruling": "Ruling: scope; project retained. The Tier 1 RRTA amounts on lines 11 and 15 of the Additional Medicare Tax and RRTA Tax Worksheet are outside the slice: `person.rrta` refuses the per-person Medicare totals that Form 8959 line 19 sums, and this line reads that total, so a return with RRTA compensation refuses here. No change to the data."
-  },
-  {
-   "printed": "4",
-   "restated": "Add dependent.one over every confirmed dependent entry for which helper \"Qualifying child for the child tax credit (Step 3)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "The line counts \"qualifying children under age 17 with the required social security number.\" The restatement counts dependents flagged by helper \"Qualifying child for the child tax credit (Step 3)\", whose definition is not in the glossary or the IRS pages given, so the age and SSN tests cannot be checked.",
-   "ruling": "Ruling: representation; project retained. The count and the dollar lines are sums over the listed persons of a per-person amount ($2,200, $500 or $1,700 for a person who qualifies, else zero), defined on the dependent worksheet, which has its own transcription, render and class M logs; the per-person predicates are Steps 3 and 5 of the Form 1040 instructions. The count times the dollar figure and the sum of the per-person figures are the same number. No change to the data."
   },
   {
    "printed": "5",
    "restated": "Add dependent.ctc_amount over every confirmed dependent entry, within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "The IRS line says \"Multiply line 4 by $2,200\". The restatement sums dependent.ctc_amount, which is not defined in the text given, so it cannot be confirmed to be $2,200 per child counted on line 4.",
-   "ruling": "Ruling: representation; project retained. The count and the dollar lines are sums over the listed persons of a per-person amount ($2,200, $500 or $1,700 for a person who qualifies, else zero), defined on the dependent worksheet, which has its own transcription, render and class M logs; the per-person predicates are Steps 3 and 5 of the Form 1040 instructions. The count times the dollar figure and the sum of the per-person figures are the same number. No change to the data."
-  },
-  {
-   "printed": "6",
-   "restated": "Add dependent.one over every confirmed dependent entry for which helper \"Dependent for the credit for other dependents (Steps 3 and 5)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "The line counts other dependents, excluding yourself, your spouse, non-citizens/nationals/residents and \"anyone you included on line 4\". The predicate helper \"Dependent for the credit for other dependents (Steps 3 and 5)\" is not defined in the text given.",
+   "model": "The IRS line says \"Multiply line 4 by $2,200\", but the restatement adds up dependent.ctc_amount for each dependent. That field is not defined, so I can't tell whether it is $2,200 for each child counted on line 4 and $0 for everyone else.",
    "ruling": "Ruling: representation; project retained. The count and the dollar lines are sums over the listed persons of a per-person amount ($2,200, $500 or $1,700 for a person who qualifies, else zero), defined on the dependent worksheet, which has its own transcription, render and class M logs; the per-person predicates are Steps 3 and 5 of the Form 1040 instructions. The count times the dollar figure and the sum of the per-person figures are the same number. No change to the data."
   },
   {
    "printed": "7",
    "restated": "Add dependent.odc_amount over every confirmed dependent entry, within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "The IRS line says \"Multiply line 6 by $500\". The restatement sums dependent.odc_amount, which is not defined in the text given.",
+   "model": "The IRS line says \"Multiply line 6 by $500\", but the restatement adds up dependent.odc_amount for each dependent. That field is not defined, so I can't tell whether it is $500 for each dependent counted on line 6.",
    "ruling": "Ruling: representation; project retained. The count and the dollar lines are sums over the listed persons of a per-person amount ($2,200, $500 or $1,700 for a person who qualifies, else zero), defined on the dependent worksheet, which has its own transcription, render and class M logs; the per-person predicates are Steps 3 and 5 of the Form 1040 instructions. The count times the dollar figure and the sum of the per-person figures are the same number. No change to the data."
   }
  ]

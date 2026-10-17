@@ -3,21 +3,9 @@
  "form": "f1040",
  "rulings": [
   {
-   "printed": "16",
-   "restated": "Choose — [helper \"Schedule D Tax Worksheet required after its exceptions\" = true → sdtw line 47] [helper \"Schedule D Tax Worksheet required after its exceptions\" = false → helper \"Tax when Schedule D Tax Worksheet does not apply\"]",
-   "model": "The worksheet selection follows the Schedule D Tax Worksheet and QDCG Worksheet rules and their exceptions. However, the IRS says 'Include in the total on the entry space on line 16 all of the following taxes that apply'. That list includes tax from Form 8814, tax from Form 4972, section 962 tax, education credit recapture, Form 8621 and Form 8978, and the restatement neither adds these nor refuses them.",
-   "ruling": "Ruling: second reading right in part; data changed under BUG-0009. The additional line-16 taxes the instructions list (i1040gi, line 16: \"Include in the total on the entry space on line 16 all of the following taxes that apply\", Forms 8814, 4972, section 962, education credit recapture, Forms 8621 and 8978) are outside the slice and screened by `scope.other_line16`; that screen gated only `scope.ready`, a target of the whole-return interview, and not line 16 itself. Line 16 now refuses when the screen is true, so the refusal propagates through lines 16–37. The worksheet selection the model accepted is unchanged."
-  },
-  {
-   "printed": "1z",
-   "restated": "Enter the amount from line 1a.",
-   "model": "The IRS line says 'Add lines 1a through 1h', but the restatement enters only line 1a. No refusal on this line names the omitted lines 1b–1h, such as household wages, unreported tips, Medicaid waiver payments or Form 8919 wages.",
-   "ruling": "Ruling: scope; project retained, screen widened. Lines 1b–1h are outside the slice and are refused through `scope.other_income` at Form 1040 line 8, which line 9 sums; the screen did not name the line 1b–1h items, which is BUG-0008 (fixed: the question now names wages or tips not on a Form W-2, Medicaid waiver payments, dependent care or adoption benefits and other earned income). Line 1z must become the sum of lines 1a–1h when those lines come into scope (recorded in the transcription rulings)."
-  },
-  {
    "printed": "7a",
    "restated": "Enter the amount from sd helper \"Capital gain or limited capital loss for Form 1040 line 7a\".",
-   "model": "The restatement takes Schedule D line 16 or line 21, depending on whether line 16 is a loss. The Schedule D text for lines 16 and 21 is not provided, so this cannot be checked. Nor can the case where Schedule D is not required and capital gain distributions go directly on line 7a.",
+   "model": "The form says only 'Capital gain or (loss). Attach Schedule D if required.' The text given does not include the wording of Schedule D lines 16 and 21 or the line 7a instructions, so the choice between line 16 and line 21 cannot be checked. It also cannot be confirmed that capital gain distributions reported without Schedule D reach line 16.",
    "ruling": "Ruling: representation; project retained. The Schedule D helper carries line 16 when it is a gain and line 21 when line 16 is a loss (f1040sd p. 2, line 16: \"If line 16 is a gain, enter the amount from line 16 on Form 1040, 1040-SR, or 1040-NR, line 7a\"; line 21: \"If line 16 is a loss, enter here and on Form 1040, 1040-SR, or 1040-NR, line 7a, the smaller of: the loss on line 16; or ($3,000), or if married filing separately, ($1,500)\"). When Schedule D is not required (i1040gi p. 31, line 7a, Exception 1) the only Schedule D entry is line 13, so line 16 equals the Form 1099-DIV box 2a total that line 7a takes directly. No change to the data."
   }
  ]
