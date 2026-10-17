@@ -28,10 +28,8 @@ python3 tools/transcription/transcribe.py --form qdcg --from-response   # re-com
 
 This is a deliberate network step like the source fetcher; it is not run by
 `check-all`. `check_logs.py` runs in `check-all` and fails on an open ruling
-or a log made against a different source snapshot. Until every form has a log
-it reports the missing ones and is allowed to pass
-(`TRANSCRIPTION_LOGS_OPTIONAL=1` in `package.json`); that allowance goes away
-when the stage's done-condition is met.
+a missing log, or a log made against a different source snapshot. Every form
+has a log; a new form fails `check-all` until it has one.
 
 Raw prompts and responses are kept under the git-ignored `.transcription/`;
 the committed artifact is the log.
@@ -43,6 +41,31 @@ text's page breaks; a whole document when it has six pages or fewer; and for
 a locator that names a worksheet or an instruction line without a page, the
 page whose heading starts a line. The log records which pages were used.
 
+## Rulings
+
+```
+python3 tools/transcription/rule.py --form sd --rulings rulings.json   # {"<printed or id>": "Ruling: ...", "*": "..."}
+```
+
+A ruling is written into the log under the disagreement it answers, with the
+source quote and page it rests on, and one of three outcomes: project
+retained (representation or scope difference), second transcription right
+(a data fix follows, with a bug inventory entry), or genuine ambiguity (an
+ambiguity register entry). Re-comparing a saved response keeps every ruling
+whose disagreement is unchanged.
+
+## What is compared
+
+Printed computed lines, matched by printed number. In addition, helper lines
+that other forms read (for example `qbi.deduction`, `ftc.credit`, the
+per-person W-2 totals) and the result lines of the shared definitions
+(`tax_on_amount.tax`, `tcw.tax`) are listed in the prompt by id and compared
+by id after full expansion, since no printed line exposes their logic. The
+prompt also lists the collections with their entry fields, the enumerations
+with their permitted values, the year parameters, and every other form's
+lines including helpers, so the second transcriber can reference what exists
+instead of inventing it.
+
 ## Comparison
 
 Each printed line of both transcriptions is expanded into a tree over inputs,
@@ -51,8 +74,10 @@ either side does not matter. Shared parameterised definitions are inlined with
 their bindings; another form's helper lines are expanded in place; guards are
 normalised (`X == true` is `X`, negation pushed through `all`/`any`,
 comparisons oriented one way, a zero test on a non-negative line read as a
-bound); literal-valued parameters compare as constants. Lines agree when the
-canonical trees are equal.
+bound, a guard written as a Boolean line reference expanded); literal-valued
+parameters compare as constants; zero terms are dropped from sums; `choose`
+alternatives that select the same target are merged under one `any` guard.
+Lines agree when the canonical trees are equal.
 
 Representational differences the comparison cannot see through remain as
 disagreements and get a ruling: typically a value the project derives from

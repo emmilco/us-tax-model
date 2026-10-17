@@ -60,7 +60,7 @@ Second:
 
 Second transcription's note: Typed as signed Dollars because the 'No' branch copies Form 1040 line 7a, and the text does not state that this value is non-negative. The Form 2555 footnote is not encoded.
 
-Ruling: open
+Ruling: equivalent representation; project retained. The No branch reads “Enter the amount from Form 1040 or 1040-SR, line 7a” (i1040gi p. 38). When Schedule D is not required, line 7a carries the total capital gain distributions from Form 1099-DIV box 2a (i1040gi p. 33, line 7a, Exception 1), which is the value the project references directly (`sd.distributions`); the second transcription references line 7a literally. No change to the data.
 
 ### 4 — Add lines 2 and 3
 Status: **AGREE**

@@ -99,27 +99,27 @@ def:
               op: test
               all:
                 - { op: test, ge: ["amount", { param: "ordinary.table_boundary" }] }
-                - { op: test, lt: ["amount", { param: "tcw.single.b1.upper" }] }
+                - { op: test, le: ["amount", { param: "tcw.single.b1.upper" }] }
             then: "single.row1.tax"
           - guard:
               op: test
               all:
-                - { op: test, ge: ["amount", { param: "tcw.single.b1.upper" }] }
-                - { op: test, lt: ["amount", { param: "tcw.single.b2.upper" }] }
+                - { op: test, gt: ["amount", { param: "tcw.single.b1.upper" }] }
+                - { op: test, le: ["amount", { param: "tcw.single.b2.upper" }] }
             then: "single.row2.tax"
           - guard:
               op: test
               all:
-                - { op: test, ge: ["amount", { param: "tcw.single.b2.upper" }] }
-                - { op: test, lt: ["amount", { param: "tcw.single.b3.upper" }] }
+                - { op: test, gt: ["amount", { param: "tcw.single.b2.upper" }] }
+                - { op: test, le: ["amount", { param: "tcw.single.b3.upper" }] }
             then: "single.row3.tax"
           - guard:
               op: test
               all:
-                - { op: test, ge: ["amount", { param: "tcw.single.b3.upper" }] }
-                - { op: test, lt: ["amount", { param: "tcw.single.b4.upper" }] }
+                - { op: test, gt: ["amount", { param: "tcw.single.b3.upper" }] }
+                - { op: test, le: ["amount", { param: "tcw.single.b4.upper" }] }
             then: "single.row4.tax"
-          - guard: { op: test, ge: ["amount", { param: "tcw.single.b4.upper" }] }
+          - guard: { op: test, gt: ["amount", { param: "tcw.single.b4.upper" }] }
             then: "single.row5.tax"
       cite: { doc: i1040gi, locator: "TCW Section A" }
 
@@ -195,27 +195,27 @@ def:
               op: test
               all:
                 - { op: test, ge: ["amount", { param: "ordinary.table_boundary" }] }
-                - { op: test, lt: ["amount", { param: "tcw.mfj.b1.upper" }] }
+                - { op: test, le: ["amount", { param: "tcw.mfj.b1.upper" }] }
             then: "mfj.row1.tax"
           - guard:
               op: test
               all:
-                - { op: test, ge: ["amount", { param: "tcw.mfj.b1.upper" }] }
-                - { op: test, lt: ["amount", { param: "tcw.mfj.b2.upper" }] }
+                - { op: test, gt: ["amount", { param: "tcw.mfj.b1.upper" }] }
+                - { op: test, le: ["amount", { param: "tcw.mfj.b2.upper" }] }
             then: "mfj.row2.tax"
           - guard:
               op: test
               all:
-                - { op: test, ge: ["amount", { param: "tcw.mfj.b2.upper" }] }
-                - { op: test, lt: ["amount", { param: "tcw.mfj.b3.upper" }] }
+                - { op: test, gt: ["amount", { param: "tcw.mfj.b2.upper" }] }
+                - { op: test, le: ["amount", { param: "tcw.mfj.b3.upper" }] }
             then: "mfj.row3.tax"
           - guard:
               op: test
               all:
-                - { op: test, ge: ["amount", { param: "tcw.mfj.b3.upper" }] }
-                - { op: test, lt: ["amount", { param: "tcw.mfj.b4.upper" }] }
+                - { op: test, gt: ["amount", { param: "tcw.mfj.b3.upper" }] }
+                - { op: test, le: ["amount", { param: "tcw.mfj.b4.upper" }] }
             then: "mfj.row4.tax"
-          - guard: { op: test, ge: ["amount", { param: "tcw.mfj.b4.upper" }] }
+          - guard: { op: test, gt: ["amount", { param: "tcw.mfj.b4.upper" }] }
             then: "mfj.row5.tax"
       cite: { doc: i1040gi, locator: "TCW Section B" }
 
@@ -291,27 +291,27 @@ def:
               op: test
               all:
                 - { op: test, ge: ["amount", { param: "ordinary.table_boundary" }] }
-                - { op: test, lt: ["amount", { param: "tcw.mfs.b1.upper" }] }
+                - { op: test, le: ["amount", { param: "tcw.mfs.b1.upper" }] }
             then: "mfs.row1.tax"
           - guard:
               op: test
               all:
-                - { op: test, ge: ["amount", { param: "tcw.mfs.b1.upper" }] }
-                - { op: test, lt: ["amount", { param: "tcw.mfs.b2.upper" }] }
+                - { op: test, gt: ["amount", { param: "tcw.mfs.b1.upper" }] }
+                - { op: test, le: ["amount", { param: "tcw.mfs.b2.upper" }] }
             then: "mfs.row2.tax"
           - guard:
               op: test
               all:
-                - { op: test, ge: ["amount", { param: "tcw.mfs.b2.upper" }] }
-                - { op: test, lt: ["amount", { param: "tcw.mfs.b3.upper" }] }
+                - { op: test, gt: ["amount", { param: "tcw.mfs.b2.upper" }] }
+                - { op: test, le: ["amount", { param: "tcw.mfs.b3.upper" }] }
             then: "mfs.row3.tax"
           - guard:
               op: test
               all:
-                - { op: test, ge: ["amount", { param: "tcw.mfs.b3.upper" }] }
-                - { op: test, lt: ["amount", { param: "tcw.mfs.b4.upper" }] }
+                - { op: test, gt: ["amount", { param: "tcw.mfs.b3.upper" }] }
+                - { op: test, le: ["amount", { param: "tcw.mfs.b4.upper" }] }
             then: "mfs.row4.tax"
-          - guard: { op: test, ge: ["amount", { param: "tcw.mfs.b4.upper" }] }
+          - guard: { op: test, gt: ["amount", { param: "tcw.mfs.b4.upper" }] }
             then: "mfs.row5.tax"
       cite: { doc: i1040gi, locator: "TCW Section C" }
 
@@ -387,27 +387,27 @@ def:
               op: test
               all:
                 - { op: test, ge: ["amount", { param: "ordinary.table_boundary" }] }
-                - { op: test, lt: ["amount", { param: "tcw.hoh.b1.upper" }] }
+                - { op: test, le: ["amount", { param: "tcw.hoh.b1.upper" }] }
             then: "hoh.row1.tax"
           - guard:
               op: test
               all:
-                - { op: test, ge: ["amount", { param: "tcw.hoh.b1.upper" }] }
-                - { op: test, lt: ["amount", { param: "tcw.hoh.b2.upper" }] }
+                - { op: test, gt: ["amount", { param: "tcw.hoh.b1.upper" }] }
+                - { op: test, le: ["amount", { param: "tcw.hoh.b2.upper" }] }
             then: "hoh.row2.tax"
           - guard:
               op: test
               all:
-                - { op: test, ge: ["amount", { param: "tcw.hoh.b2.upper" }] }
-                - { op: test, lt: ["amount", { param: "tcw.hoh.b3.upper" }] }
+                - { op: test, gt: ["amount", { param: "tcw.hoh.b2.upper" }] }
+                - { op: test, le: ["amount", { param: "tcw.hoh.b3.upper" }] }
             then: "hoh.row3.tax"
           - guard:
               op: test
               all:
-                - { op: test, ge: ["amount", { param: "tcw.hoh.b3.upper" }] }
-                - { op: test, lt: ["amount", { param: "tcw.hoh.b4.upper" }] }
+                - { op: test, gt: ["amount", { param: "tcw.hoh.b3.upper" }] }
+                - { op: test, le: ["amount", { param: "tcw.hoh.b4.upper" }] }
             then: "hoh.row4.tax"
-          - guard: { op: test, ge: ["amount", { param: "tcw.hoh.b4.upper" }] }
+          - guard: { op: test, gt: ["amount", { param: "tcw.hoh.b4.upper" }] }
             then: "hoh.row5.tax"
       cite: { doc: i1040gi, locator: "TCW Section D" }
 

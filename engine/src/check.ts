@@ -722,8 +722,10 @@ function analyzeGuards(ctx: Ctx, doc: FormDoc, line: Line): void {
       ctx.errors.push(`${where}: gap or overlap between interval guards ${i + 1} and ${i + 2}`);
       break;
     }
-    if (g.hiInc || !next.loInc) {
-      ctx.errors.push(`${where}: interval guards ${i + 1}/${i + 2} are not half-open at the seam`);
+    // Exactly one side of a seam includes the seam point: [lo, hi) then [hi, ...),
+    // or (lo, hi] then (hi, ...] as the Tax Computation Worksheet's "not over" rows read.
+    if (g.hiInc === next.loInc) {
+      ctx.errors.push(`${where}: interval guards ${i + 1}/${i + 2} ${g.hiInc ? "both include" : "both exclude"} the seam point`);
       break;
     }
   }

@@ -110,6 +110,66 @@ def excerpt_for(form_doc, mani):
     return "\n\n".join(excerpt), used
 
 
+# ---------- exported lines ----------
+
+def operand_refs(node):
+    """Every line id an expression reads, walking operand positions only (a definition
+    reference's `line` names a line inside that definition, not here)."""
+    out = set()
+    def ref(r):
+        if isinstance(r, str):
+            out.add(r)
+        elif isinstance(r, dict) and "def" in r:
+            for v in r.get("bind", {}).values():
+                ref(v)
+    def walk(e):
+        if not isinstance(e, dict):
+            return
+        for k in ("from", "take", "amount", "key", "status", "then", "rate"):
+            if k in e:
+                ref(e[k])
+        for k in ("of",):
+            for x in e.get(k, []):
+                ref(x)
+        for k in ("eq", "ne", "lt", "le", "gt", "ge"):
+            if k in e:
+                for x in e[k]:
+                    ref(x)
+        for k in ("all", "any"):
+            for x in e.get(k, []):
+                walk(x)
+        if "not" in e:
+            walk(e["not"])
+        if "where" in e and e["where"]:
+            walk(e["where"])
+        for alt in e.get("alternatives", []):
+            walk(alt.get("guard")); ref(alt.get("then"))
+    walk(node)
+    return out
+
+
+def exported_lines(form_doc):
+    """Computed helper lines other forms depend on (for a form), or the result lines
+    nothing else in the definition reads (for a def). These carry logic that no
+    printed line exposes, so they are transcribed and compared by id."""
+    global ALL_LINES
+    if ALL_LINES is None:
+        ALL_LINES = load_all_lines()
+    fid = form_doc["id"]
+    computed = [l for l in form_doc["lines"] if l["expr"].get("op") != "input"]
+    helpers = [l for l in computed if l["printed"] in HELPER_PRINTED]
+    if fid in load_defs():
+        referenced = set()
+        for l in form_doc["lines"]:
+            referenced |= operand_refs(l["expr"])
+        return [l for l in computed if l["id"] not in referenced]
+    refs = set()
+    for other_id, (other_fid, line) in ALL_LINES.items():
+        if other_fid != fid:
+            refs.update(re.findall(r'"(' + re.escape(fid) + r'\.[a-z0-9_.]+)"', json.dumps(line["expr"])))
+    return [l for l in helpers if l["id"] in refs]
+
+
 # ---------- prompt ----------
 
 GRAMMAR = """Expression grammar (YAML). Exactly one atom per line. Operands written as a line reference
@@ -165,6 +225,8 @@ def build_prompt(form_doc, excerpt, params, other_lines):
     inputs = [l for l in lines if l["expr"].get("op") == "input"]
     targets = [l for l in lines if l["printed"] not in HELPER_PRINTED and l["expr"].get("op") != "input"]
     tgt = "\n".join(f"  - printed {l['printed']!r}: {l['label']}" for l in targets)
+    exported = exported_lines(form_doc)
+    exp = "\n".join(f"  - id {l['id']} ({l['type']}): {l['label']}" for l in exported)
     inp = "\n".join(f"  - {l['id']} (printed {l['printed']!r}, type {l['type']}): {l['expr'].get('source','')[:160]}" for l in inputs)
     prm = "\n".join(f"  - {k}: {v}" for k, v in params.items())
     oth = "\n".join(f"  - {k}: {v}" for k, v in other_lines.items())
@@ -189,6 +251,10 @@ Tax year: {form_doc['tax_year']}
 Transcribe these printed lines, each as one line record with id "{form_doc['id']}.line<printed>"
 (for example {form_doc['id']}.line{targets[0]['printed'] if targets else '1'}), in this order:
 {tgt}
+
+Also produce these intermediate values, which other forms depend on, each as a line with EXACTLY
+this id (printed "(helper)"); they may reference the printed lines above and the inputs below:
+{exp if exp else '  (none)'}
 
 These input lines already exist and must be referenced by these exact ids (do not redefine them):
 {inp if inp else '  (none)'}
@@ -311,7 +377,9 @@ class Expander:
                 return self.bound[r]
             if r in self.inputs and r not in self.by_id:
                 line = self.inputs[r]
-                return {"line": line["printed"]} if line["printed"] not in HELPER_PRINTED else {"input": r}
+                if line["printed"] not in HELPER_PRINTED and self.form_id not in self.defs:
+                    return {"line": line["printed"]}
+                return {"input": r}
             if r in self.by_id:
                 line = self.by_id[r]
                 if line["expr"].get("op") == "input" or depth > 40:
@@ -422,7 +490,12 @@ class Expander:
         if op == "param":
             return self.param(e["ref"])
         if op in ("sum", "smaller_of", "larger_of"):
-            return {"op": op, "of": sorted((self.ref(x, depth) for x in e["of"]), key=json.dumps)}
+            parts = [self.ref(x, depth) for x in e["of"]]
+            if op == "sum":   # zero terms carry nothing: scope placeholders and screens
+                parts = [t for t in parts if t != {"const": 0}] or [{"const": 0}]
+                if len(parts) == 1:
+                    return parts[0]
+            return {"op": op, "of": sorted(parts, key=json.dumps)}
         if op in ("subtract", "subtract_floor0"):
             return {"op": op, "from": self.ref(e["from"], depth), "take": self.operand(e["take"], depth)}
         if op == "multiply_rate":
@@ -436,7 +509,17 @@ class Expander:
             return self.test(e, depth)
         if op == "choose":
             alts = [{"guard": self.test(a["guard"], depth), "then": self.ref(a["then"], depth)} for a in e["alternatives"]]
-            return {"op": op, "alternatives": sorted(alts, key=json.dumps)}
+            # Alternatives that select the same target are one case: merge their guards with `any`.
+            by_then = {}
+            for alt in alts:
+                by_then.setdefault(json.dumps(alt["then"], sort_keys=True), []).append(alt)
+            merged = []
+            for group in by_then.values():
+                if len(group) == 1:
+                    merged.append(group[0])
+                else:
+                    merged.append({"guard": {"test": "any", "args": sorted((g["guard"] for g in group), key=json.dumps)}, "then": group[0]["then"]})
+            return {"op": op, "alternatives": sorted(merged, key=json.dumps)}
         return {"unknown": json.dumps(e, sort_keys=True)}
 
 
@@ -452,9 +535,23 @@ def compare(form_id, project_lines, second_lines):
     a = Expander(form_id, project_lines, defs, inputs=inputs, params=pvals)
     b = Expander(form_id, second_lines, defs, inputs=inputs, params=pvals)
     results = []
+    second_by_id = {l["id"]: l for l in second_lines}
+    for l in exported_lines({"id": form_id, "lines": project_lines}):
+        pa = canonical(a.expr(l["expr"]))
+        s = second_by_id.get(l["id"])
+        if s is None:
+            results.append({"printed": l["id"], "label": l["label"], "status": "MISSING", "project": pa, "second": None, "note": None})
+            continue
+        try:
+            sb = canonical(b.expr(s["expr"]))
+        except Exception as ex:
+            sb = f"<unparseable: {ex}>"
+        results.append({"printed": l["id"], "label": l["label"], "status": "AGREE" if pa == sb else "DISAGREE",
+                        "project": pa, "second": sb, "note": s.get("note")})
     second_by_printed = {l["printed"]: l for l in second_lines if l["printed"] not in HELPER_PRINTED}
+    is_def = form_id in defs
     for l in project_lines:
-        if l["printed"] in HELPER_PRINTED or l["expr"].get("op") == "input":
+        if l["printed"] in HELPER_PRINTED or l["expr"].get("op") == "input" or is_def:
             continue
         s = second_by_printed.get(l["printed"])
         pa = canonical(a.expr(l["expr"]))
