@@ -23,15 +23,13 @@ The rendered English of every printed line of `Schedule B — interest payer ent
 ### amount — Taxable interest from this payer, including Treasury interest; exclude tax-exempt interest
 Status: **MATCH**
 
-Model: Line 1 says "Report on line 1 all of your taxable interest... List each payer's name and the amount. Don't report on line 1 any tax-exempt interest" and to "Include interest from series EE, H, HH, and I U.S. savings bonds." Those bonds are Treasury interest, so the per-payer input of taxable interest, with Treasury interest included and tax-exempt interest left out, matches the line.
+Model: The line 1 instructions say to 'Report on line 1 all of your taxable interest', to 'Include interest from series EE, H, HH, and I U.S. savings bonds', to 'List each payer's name and the amount' and 'Don't report on line 1 any tax-exempt interest.' The per-payer input of taxable interest, Treasury interest included and tax-exempt interest left out, fits that text. It is entered as reported, without the nominee, OID or ABP subtractions, and the instructions put those below the subtotal rather than in the payer's amount.
 
 ## Raw response
 
 ```yaml
-```yaml
 lines:
   - key: "amount"
     status: MATCH
-    reason: "Line 1 says \"Report on line 1 all of your taxable interest... List each payer's name and the amount. Don't report on line 1 any tax-exempt interest\" and to \"Include interest from series EE, H, HH, and I U.S. savings bonds.\" Those bonds are Treasury interest, so the per-payer input of taxable interest, with Treasury interest included and tax-exempt interest left out, matches the line."
-```
+    reason: "The line 1 instructions say to 'Report on line 1 all of your taxable interest', to 'Include interest from series EE, H, HH, and I U.S. savings bonds', to 'List each payer's name and the amount' and 'Don't report on line 1 any tax-exempt interest.' The per-payer input of taxable interest, Treasury interest included and tax-exempt interest left out, fits that text. It is entered as reported, without the nominee, OID or ABP subtractions, and the instructions put those below the subtotal rather than in the payer's amount."
 ```

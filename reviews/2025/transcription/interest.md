@@ -7,7 +7,7 @@ Second transcription of `Schedule B — interest payer entries` by an isolated m
 | date | 2026-10-17 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 78fc10ee911fa7acc8432d4d62d5e9e46449d964322fe6fc2463460967a1ec31 |
+| prompt sha256 | 220d448327a623dbc3b1311e87c99069902865e2951ac8b6e010decb8957c0b8 |
 | printed lines compared | 0 |
 | agree / disagree / missing | 0 / 0 / 0 |
 | extra printed lines in second | none |
@@ -24,6 +24,8 @@ Second transcription of `Schedule B — interest payer entries` by an isolated m
 
 ```yaml
 ```yaml
+# No printed lines or helper ids were requested for form "interest". Each entry
+# has one input, interest.amount, which already exists, so this file defines no lines.
 lines: []
 ```
 ```

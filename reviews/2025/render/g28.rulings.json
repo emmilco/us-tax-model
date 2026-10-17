@@ -5,25 +5,31 @@
   {
    "printed": "1",
    "restated": "Enter the amount from div helper \"Zero only after distribution scope checks\".",
-   "model": "IRS line 1 says to 'Enter the total of all collectibles gain or (loss) from items you reported on Form 8949, Part II'. The program enters $0, and none of the listed refusals covers Form 8949 collectibles sales, so whether the distribution-only path actually screens them out is not shown.",
+   "model": "The IRS line is \"the total of all collectibles gain or (loss) from items you reported on Form 8949, Part II\". The program enters $0, and its refusals only screen 1099-DIV distribution boxes. None of them shows that Form 8949 Part II collectibles sales are excluded, so it can't be confirmed that $0 is right within scope.",
    "ruling": "Ruling: scope; project retained. Collectibles gain or loss on Form 8949 Part II is refused at the transaction: `sales.one` refuses when `sales.special` (\"Direct sales of collectibles, section 1202 stock and section 1250 property are unsupported\"), and the refusal reaches Form 1040 line 7a through `sd.count`. Line 1 is zero only behind that refusal. No change to the data."
+  },
+  {
+   "printed": "2",
+   "restated": "Enter the amount from div helper \"Zero only after distribution scope checks\".",
+   "model": "The IRS line counts section 1202 exclusions \"you reported in column (g) of Form 8949, Part II, with code \"Q\"\". The program enters $0. Its refusal covers only box 2c distributions, and nothing shown excludes code Q exclusions on the filer's own Form 8949 sales.",
+   "ruling": "Ruling: scope; project retained. A section 1202 exclusion (code Q) on the filer's own sales is refused at the transaction: `sales.one` refuses when `sales.special` ('Direct sales of collectibles, section 1202 stock ...'), and adjustment codes other than B and W refuse through `sales.bad_code`; box 2c distributions refuse through the distribution screen. Line 2 is zero within scope."
   },
   {
    "printed": "3",
    "restated": "Enter the amount from div helper \"Zero only after distribution scope checks\".",
-   "model": "IRS line 3 takes collectibles gain or (loss) 'from Form 4684, line 4 ...; Form 6252; Form 6781, Part II; and Form 8824'. The program enters $0, and no refusal names these forms, so the exclusion cannot be confirmed from what is given.",
+   "model": "The IRS line covers collectibles gain or (loss) \"from Form 4684, line 4 ...; Form 6252; Form 6781, Part II; and Form 8824\". The program enters $0, and no refusal or gate shown excludes those forms.",
    "ruling": "Ruling: scope; project retained. Forms 4684, 6252, 6781 and 8824 are refused before this worksheet is used: `sd.count` refuses on `sd.other_forms` (\"Are there gains/losses from Forms 4797, 2439, 6252, 4684, 6781, 8824 or Schedule K-1?\") and on `sd.carryover` (\"Is there a capital loss carryover from the prior year?\"), and that refusal reaches Form 1040 line 7a through Schedule D lines 7, 15 and 16, so no return with those items is prepared. No change to the data."
   },
   {
    "printed": "4",
    "restated": "Enter the amount from div helper \"Collectibles (28%) gain, box 2d\".",
-   "model": "IRS line 4 is the total of collectibles gain on 'Form 1099-DIV, box 2d; Form 2439, box 1d; and Schedule K-1 from a partnership, S corporation, estate, or trust'. The program uses only box 2d, and no refusal names Form 2439 or Schedule K-1 as excluded.",
+   "model": "The IRS line is the total of collectibles gain reported on \"Form 1099-DIV, box 2d; • Form 2439, box 1d; and • Schedule K-1 from a partnership, S corporation, estate, or trust\". The program enters only box 2d, and no refusal excludes Form 2439 or Schedule K-1 amounts.",
    "ruling": "Ruling: scope; project retained. Form 2439 box 1d and Schedule K-1 amounts are refused before this worksheet is used: `sd.count` refuses on `sd.other_forms` (\"Are there gains/losses from Forms 4797, 2439, 6252, 4684, 6781, 8824 or Schedule K-1?\") and on `sd.carryover` (\"Is there a capital loss carryover from the prior year?\"), and that refusal reaches Form 1040 line 7a through Schedule D lines 7, 15 and 16, so no return with those items is prepared. Line 4 is Form 1099-DIV box 2d alone within the slice. No change to the data."
   },
   {
    "printed": "5",
    "restated": "Enter the amount from div helper \"Zero only after distribution scope checks\".",
-   "model": "IRS line 5 says 'Enter your long-term capital loss carryovers from Schedule D, line 14; and Schedule K-1 (Form 1041), box 11, code D'. The program always enters $0 with no refusal for carryovers, which a distribution-only filer can still have, so the value can be wrong.",
+   "model": "The IRS says \"Enter your long-term capital loss carryovers from Schedule D, line 14; and Schedule K-1 (Form 1041), box 11, code D\", entered as a (loss). The program enters $0 with no refusal excluding carryovers. Carryovers aren't sales, so the distribution-only scope doesn't account for leaving them out.",
    "ruling": "Ruling: scope; project retained. Carryovers are refused before this worksheet is used: `sd.count` refuses on `sd.other_forms` (\"Are there gains/losses from Forms 4797, 2439, 6252, 4684, 6781, 8824 or Schedule K-1?\") and on `sd.carryover` (\"Is there a capital loss carryover from the prior year?\"), and that refusal reaches Form 1040 line 7a through Schedule D lines 7, 15 and 16, so no return with those items is prepared. A positive carryover must be subtracted here when carryovers come into scope (recorded in the transcription rulings). No change to the data."
   }
  ]

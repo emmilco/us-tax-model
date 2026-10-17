@@ -650,8 +650,10 @@ def call_model(prompt, model, timeout=900, system=TRANSCRIBE_SYSTEM):
 
 
 def extract_yaml(text):
-    m = re.search(r"```(?:yaml)?\s*\n(.*?)```", text, re.S)
-    body = m.group(1) if m else text
+    # A response may hold an abandoned draft block before the finished one; the answer is the last block.
+    blocks = re.findall(r"```(?:yaml)?\s*\n(.*?)```", text, re.S)
+    m = blocks[-1] if blocks else None
+    body = m if m is not None else text
     doc = yaml.safe_load(body)
     if not isinstance(doc, dict) or "lines" not in doc:
         raise ValueError("second transcription has no `lines`")

@@ -5,7 +5,7 @@
   {
    "printed": "34",
    "restated": "Enter the amount from qbi helper \"Add sd.net_gain, f1040.line3a\".",
-   "model": "The restatement always takes net capital gain from Schedule D lines 15/16. The instructions also say: 'If you're not required to file Schedule D (Form 1040), your net capital gain is the amount reported on Form 1040, 1040-SR, or 1040-NR, line 7a'. That line 7a case is omitted and is not covered by any refusal.",
+   "model": "The instructions say 'If you're not required to file Schedule D (Form 1040), your net capital gain is the amount reported on Form 1040... line 7a,' but the restatement uses only the smaller of Schedule D lines 15 and 16. The text given does not show whether Schedule D is always computed, including any capital gain distributions, when the filer is not required to file it.",
    "ruling": "Ruling: representation; project retained. For a Schedule D filer the helper is the smaller of Schedule D lines 15 and 16, floored at zero, plus Form 1040 line 3a, as the instructions say. When Schedule D is not required (i8995 p. 4: \"your net capital gain is the amount reported on Form 1040, 1040-SR, or 1040-NR, line 7a\") the Schedule D lines are still computed from line 13 alone, so lines 15 and 16 both equal the box 2a total that line 7a carries, and the helper gives the same amount. No change to the data."
   }
  ]

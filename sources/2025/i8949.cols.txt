@@ -140,7 +140,6 @@ How To Complete Form 8949, Columns (f) and (g)
 For most transactions, you don't need to complete columns (f) and (g) and can leave them blank. You may need to complete columns (f) and (g) if you got a Form 1099-B, Form 1099-DA, or Form 1099-S (or substitute statement) that is incorrect, if you are excluding or postponing a capital gain, if you have a disallowed loss, or in certain other situations. Details are in the table below. If you enter more than one code in column (f), see More than one code in the instructions for column (g) above.
 THEN enter this code
 IF . . .
-AND. . .
 in column (f) . . .
 You received a Form 1099-B or Form 1099-DA (or substitute statement) and the basis shown in box 1e on Form 1099-B or box 1g on Form 1099-DA is incorrect
 B
@@ -148,65 +147,57 @@ You disposed of collectibles (see the Schedule D instructions)
 C
 You received a Form 1099-B or Form 1099-DA (or substitute statement) showing accrued market discount in box 1f on Form 1099-B or box 1h on Form 1099-DA
 D
+AND. . .
 • If this transaction is reported on Part I with box B or box H checked at the top or if this transaction is reported on Part II with box E or box K checked at the top, enter the correct basis in column (e), and enter -0- in column (g). • If this transaction is reported on Part I with box A or box G checked at the top or if this transaction is reported on Part II with box D or box J checked at the top, enter the basis shown on Form 1099-B or Form 1099-DA (or substitute statement) in column (e), even though that basis is incorrect. Correct the error by entering an adjustment in column (g). To figure the adjustment needed, see the Worksheet for Basis Adjustments in Column (g), later. Also, see Example 4—Adjustment for incorrect basis in the instructions for column (h), later.
 Enter -0- in column (g). Report the disposition on Form 8949 as you would report any sale or exchange.
 Use the Worksheet for Accrued Market Discount Adjustment in Column (g), later, to figure the amount to enter in column (g). However: • If you received a partial payment of principal on a bond, don't use the worksheet. Instead, enter the smaller of the accrued market discount or your proceeds in column (g). Also, report it as interest on your tax return. • If you chose to include market discount in income currently, enter -0- in column (g). Before figuring your gain (or loss), increase your basis in the bond by the market discount you have included in income for all years. See the instructions for code B above. If the disposition of a market discount bond results in a loss subject to the wash sale rules, enter “W” in column (f) and follow the instructions for code W below.
 8
 Instructions for Form 8949 (2025)
-THEN enter this code
-IF . . .
-AND. . .
-in column (f) . . .
+IF . . .
 You received a Form 1099-B, Form 1099-DA, or Form 1099-S (or substitute statement) for a transaction and there are selling expenses, option premiums, or digital asset transaction costs that aren't reflected on the form or statement by an adjustment to either the proceeds or basis shown
 You sold or exchanged your main home at a gain, must report the sale or exchange on Part II of Form 8949 (as explained in Sale of Your Home in the Instructions for Schedule D (Form 1040)), and can exclude some or all of the gain
 You have a nondeductible loss other than a loss indicated by code W
-You report multiple transactions on a single row, as described in Exception 2 or Special provision for certain corporations, partnerships, securities dealers, and other
+You report multiple transactions on a single row, as described in Exception 2 or Special provision for certain corporations, partnerships, securities dealers, and other qualified entities under Exceptions to reporting each transaction on a separate row, earlier
+You received a Form 1099-B, Form 1099-DA, or Form 1099-S (or substitute statement) as a nominee for the actual owner of the property
+You are a nonresident alien individual, foreign trust, foreign estate, or foreign corporation who sold or exchanged an interest in a partnership engaged in a U.S. trade or business
+You sold or exchanged QSB stock and can exclude part of the gain
+THEN enter this code in column (f) . . .
+AND. . .
 Enter in column (d) the proceeds shown on the form or statement you received. Enter in column (e) any cost or other basis shown on Form 1099-B, Form 1099-DA, or Form 1099-S (or substitute statement). In column (g), enter as a negative number (in parentheses) selling expenses, digital asset transaction costs, and option premiums that you paid (and that aren't reflected on the form or statement you received) and enter as a positive number any option premium that you received (and that isn't reflected on the form or statement you received). Selling expenses resulting from transactions reported on Form 1099-B or Form 1099-S may have differing treatment than digital asset transaction costs reported on Form 1099-DA. For more information about option premiums, see Gain or Loss From Options in the Instructions for Schedule D (Form 1040).
 E
 Report the sale or exchange on Form 8949 as you would if you weren't taking the exclusion. Then enter the amount of excluded (nontaxable) gain as a negative number (in parentheses) in column (g). See the example in the instructions for column (g).
 H
 Report the sale or exchange on Form 8949 and enter the amount of the nondeductible loss as a positive number in column (g). See Certain Nondeductible Losses in the Instructions for Schedule D (Form 1040).
 L
-See Exception 2 and Special provision for certain corporations, partnerships, securities dealers, and other qualified entities under Exceptions to reporting each
+See Exception 2 and Special provision for certain corporations, partnerships, securities dealers, and other qualified entities under Exceptions to reporting each transaction on a separate row, earlier. Enter -0- in column (g) unless an adjustment is required because of another code.
 M
-qualified entities under Exceptions to reporting each transaction on a separate row, earlier
-You received a Form 1099-B, Form 1099-DA, or Form 1099-S (or substitute statement) as a nominee for the actual owner of the property
-You are a nonresident alien individual, foreign trust, foreign estate, or foreign corporation who sold or exchanged an interest in a partnership engaged in a U.S. trade or business
-You sold or exchanged QSB stock and can exclude part of the gain
-transaction on a separate row, earlier. Enter -0- in column (g) unless an adjustment is required because of another code.
 Report the transaction on Form 8949 as you would if you were the actual owner, but also enter any resulting gain as a negative adjustment (in parentheses) in column (g) or any resulting loss as a positive adjustment in column (g). As a result of this adjustment, the amount in column (h) should be zero. However, if you received capital gain distributions as a nominee, report them instead, as described under Capital Gain Distributions in the Instructions for Schedule D (Form 1040).
 N
 Report on Form 8949 the gain or loss on the sale or exchange. Enter in column (g) any adjustment resulting from the application of Regulations section 1.864(c)(8)-1(b) and (c). If you are required to file Schedule P (Form 1040-NR), see the instructions for Part II, lines 9 and 17. If you are required to file Schedule P (Form 1120-F), see the instructions for Part V, line 9.
 P
-Report the sale or exchange on Form 8949 as you would if you weren't taking the exclusion and enter the amount of the exclusion as a negative number (in parentheses) in
+Report the sale or exchange on Form 8949 as you would if you weren't taking the exclusion and enter the amount of the exclusion as a negative number (in parentheses) in column (g). However, if the transaction is reported as an installment sale, see Gain from an Installment Sale of QSB Stock in the Instructions for Schedule D (Form 1040).
 Q
-column (g). However, if the transaction is reported as an installment sale, see Gain from an Installment Sale of QSB Stock in the Instructions for Schedule D (Form 1040).
 9
 Instructions for Form 8949 (2025)
-THEN enter this code
-IF . . .
-AND. . .
-in column (f) . . .
-You are electing to postpone all or part of your gain under the rules explained in the Schedule D instructions for any rollover of
-Report the sale or exchange on Form 8949 as you would if you weren't making the election. Then enter the amount of
-R
-gain (for example, rollover of gain from QSB stock)
-You had a loss from the sale, exchange, or worthlessness of small business (section 1244) stock and the total loss is more than
-postponed gain as a negative number (in parentheses) in column (g).
-See Small Business (Section 1244) Stock in the Schedule D (Form 1040) instructions.
-S
-the maximum amount that can be treated as an ordinary loss
+IF . . .
+You are electing to postpone all or part of your gain under the rules explained in the Schedule D instructions for any rollover of gain (for example, rollover of gain from QSB stock)
+You had a loss from the sale, exchange, or worthlessness of small business (section 1244) stock and the total loss is more than the maximum amount that can be treated as an ordinary loss
 You received a Form 1099-B or Form 1099-DA (or substitute statement) and the type of gain (or loss) shown in box 2 on Form 1099-B or box 6 on Form 1099-DA is incorrect
 Tip: If you received a Form 1099-B or Form 1099-DA (or substiture statement) with the Ordinary box in box 2 on Form 1099-B or box 6 on Form 1099-DA checked and the security is a taxable contingent payment debt instrument subject to the noncontingent bond method, enter code “O” for the transaction in column (f) of the appropriate part of Form 8949 and complete the Worksheet for Contingent Payment Debt Instrument Adjustment in Column (g), later, to figure the amount to enter in column (g).
 You have a nondeductible loss from a wash sale
-Report the transaction on the correct part of Form 8949, and enter -0- in column (g) on that part of the form if there are no adjustments needed for the transaction.
-T
-Report the sale or exchange on Form 8949 and enter the amount of the nondeductible loss as a positive number in column (g). See the Schedule D instructions for more information about wash sales generally and Pub. 550 for more information on wash sales involving substantially similar stock or securities. If you received a Form 1099-B or Form 1099-DA (or substitute statement) and the amount of nondeductible wash sale loss shown in box 1g on Form
-W
 You can exclude all or part of your gain under the rules explained in the Schedule D instructions for DC Zone assets or qualified community assets
 You are reporting your gain from a QOF investment that you deferred in a prior tax year
 You are electing to postpone all or part of your gain under the rules explained in the Schedule D instructions for investments in QOFs
-1099-B or box 1i on Form 1099-DA is incorrect, enter the correct amount of the nondeductible loss as a positive number in column (g). If the amount of the nondeductible loss is less than the amount shown on Form 1099-B or Form 1099-DA (or substitute statement), attach a statement explaining the difference. If no part of the loss is a nondeductible loss from a wash sale transaction, enter -0- in column (g).
+THEN enter this code in column (f) . . .
+AND. . .
+Report the sale or exchange on Form 8949 as you would if you weren't making the election. Then enter the amount of postponed gain as a negative number (in parentheses) in column (g).
+R
+See Small Business (Section 1244) Stock in the Schedule D (Form 1040) instructions.
+S
+Report the transaction on the correct part of Form 8949, and enter -0- in column (g) on that part of the form if there are no adjustments needed for the transaction.
+T
+Report the sale or exchange on Form 8949 and enter the amount of the nondeductible loss as a positive number in column (g). See the Schedule D instructions for more information about wash sales generally and Pub. 550 for more information on wash sales involving substantially similar stock or securities. If you received a Form 1099-B or Form 1099-DA (or substitute statement) and the amount of nondeductible wash sale loss shown in box 1g on Form 1099-B or box 1i on Form 1099-DA is incorrect, enter the correct amount of the nondeductible loss as a positive number in column (g). If the amount of the nondeductible loss is less than the amount shown on Form 1099-B or Form 1099-DA (or substitute statement), attach a statement explaining the difference. If no part of the loss is a nondeductible loss from a wash sale transaction, enter -0- in column (g).
+W
 Report the sale or exchange on Form 8949 as you would if you weren't taking the exclusion. Then enter the amount of the exclusion as a negative number (in parentheses) in column (g).
 X
 See How To Report Gain Previously Deferred in a QOF Investment, later.

@@ -5,14 +5,8 @@
   {
    "printed": "5a",
    "restated": "Enter the amount from f1040 line 7a.",
-   "model": "Form line 5a is \"Net gain or loss from disposition of property (see instructions)\". The line 5a instructions are not among the pages given, so it cannot be confirmed that Form 1040 line 7a (\"Capital gain or (loss)\") is the amount to enter.",
+   "model": "The form says only 'Net gain or loss from disposition of property (see instructions)', and the line 5a instructions are not in the pages given. Without them it cannot be confirmed that Form 1040 line 7a (capital gain or loss, after the loss limit and including capital gain distributions) is the right amount.",
    "ruling": "Ruling: representation; project retained. The dispositions of property in net investment income within the slice are the securities sales and capital gain distributions Schedule D carries to Form 1040 line 7a; every other disposition or adjustment (i8960 p. 9, line 5a) is refused by `f8960.unsupported` (\"Any annuity, rental, royalty, business/pass-through income, CFC/PFIC holding, section 911 exclusion, disposition adjustment, NOL or other NIIT modification outside this slice?\"). No change to the data."
-  },
-  {
-   "printed": "9b",
-   "restated": "Choose — [sa helper \"Itemize if elected, required, or itemized total exceeds standard\" = true → helper \"Deductible state/local income and property taxes reasonably allocated to net investment income; exclude foreign taxes for which a credit is claimed\"] [sa helper \"Itemize if elected, required, or itemized total exceeds standard\" = false → helper \"Year parameter sales.zero\"]",
-   "model": "The instructions say to \"Include state, local, and foreign income taxes ... Include also state, local, and foreign real property taxes.\" The restatement limits the input to state/local taxes and caps it at Schedule A line 5e, so deducted foreign taxes for which no credit was taken are left out.",
-   "ruling": "Ruling: scope; project retained. The instructions include \"state, local, and foreign income taxes\" and \"foreign real property taxes\" except those for which a credit was taken (i8960 p. 17, line 9b). In this slice no foreign tax is ever deducted: Schedule A line 5a takes state and local income taxes only, line 6 is zero behind the screen that names the foreign tax deduction, and foreign taxes paid are credited through the Schedule 3 line 1 election or refused (`ftc.needs1116`). The deductible taxes allocable to net investment income are therefore state and local, as encoded. No change to the data."
   }
  ]
 }

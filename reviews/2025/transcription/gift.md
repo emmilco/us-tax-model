@@ -7,7 +7,7 @@ Second transcription of `Form 8283 — groups of similar noncash property` by an
 | date | 2026-10-17 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 9fcdfcf5edbdf84448827f5ebbd5117d31d05a8d2e04b24f1c628d33f80098fc |
+| prompt sha256 | 726712e97130074447c7ac7a4b6f2fc7befe3241899cf12c0865eea49413c701 |
 | printed lines compared | 1 |
 | agree / disagree / missing | 1 / 0 / 0 |
 | extra printed lines in second | none |
@@ -33,6 +33,6 @@ lines:
     label: "Amount from gift.deduction"
     type: NonNegDollars
     expr: {op: copy, from: gift.deduction}
-    note: "No printed lines were listed for transcription, so only the requested helper is produced. The instructions say 'amount of your deduction' means the deduction before any income limits, after required reductions (i8283 p.1, Who Must File; p.3, Reductions to contribution). The text also says Form 8283 is not used to figure the deduction. So the allowed amount is a straight copy of the input gift.deduction, with no further computation on this form."
+    note: "The request lists no printed lines to transcribe, so this is the only line. The instructions say not to use Form 8283 to figure the charitable contribution deduction. They say the 'amount of your deduction' is the amount before any income limits, after required reductions (Who Must File; Reductions to contribution). The form computes nothing further, so I copy gift.deduction unchanged. Neither gift.public_securities nor gift.special affects this amount. Those inputs only decide whether Section A or Section B applies."
 ```
 ```

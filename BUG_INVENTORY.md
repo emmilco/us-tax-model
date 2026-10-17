@@ -294,3 +294,15 @@ later grouping.
 - **Why it survived:** the BUG-0020 render comparison was ruled on the household-member wording.
 - **Fix:** the `other` value's description states the conditions. No expression changed.
 - **Tags:** scope-screen-wider-than-line; household-predicates; caught-by-render-comparison; corrects-BUG-0020
+
+---
+
+## BUG-0025 — Review tools read the first YAML block of a response, not the finished one
+
+- **Date:** 2026-10-17
+- **Caught by:** ruling the class M rerun on the reading-order text: `classm.f1040.1` lines 33, 34 and 37 showed "Model: $0.00, Work: placeholder" and "no answer", while the saved response ended with the agreeing values ($56,000.00, $0.00, $68,722.52).
+- **Symptom:** a model response holding an abandoned draft block (ending at line 33 with a placeholder) followed by a complete block was parsed from the draft, turning agreements into disagreements and missing lines.
+- **Root cause:** `extract` in `tools/transcription/classm.py`, `render_compare.py` and `transcribe.py` took the first fenced block (`re.search`).
+- **Why it survived:** every earlier response had one block; a scan of the 102 saved responses of this rerun found this one with two.
+- **Fix:** the three tools take the last fenced block. `classm.py --doc f1040 --from-response` re-derived the log: 105 agreements, no disagreement.
+- **Tags:** review-tool-parsing; caught-by-ruling

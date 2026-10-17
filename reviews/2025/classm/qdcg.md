@@ -13,7 +13,7 @@
 
 | document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
 | --- | --- | --- | --- | --- | --- | --- |
-| i1040gi | 2025; printed date 2026-02-25 | 38 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | - | 816ff8c5ed82d0349bfa79ae008e9b4492c04005a8702145dcd8cd0139eacc47 |
+| i1040gi | 2025; printed date 2026-02-25 | 38 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | - | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
 
 ## Lines
 
@@ -373,16 +373,17 @@ Value: $57,163.90
 ### classm.qdcg.1
 
 ```yaml
+```yaml
 lines:
   - printed: "1"
     value: "339977.00"
-    work: "Form 1040 line 15 = 339,977.00"
+    work: "Form 1040 line 15 = 339,977.00 (no Form 2555)"
   - printed: "2"
     value: "0.00"
     work: "Form 1040 line 3a = 0.00"
   - printed: "3"
     value: "5770.00"
-    work: "Filing Schedule D: yes; smaller of Sch D line 15 or 16 (nonnegative net capital gain) = 5,770.00"
+    work: "Filing Schedule D: yes; smaller of Sch D line 15 or 16 = 5,770.00"
   - printed: "4"
     value: "5770.00"
     work: "0.00 + 5,770.00"
@@ -391,7 +392,7 @@ lines:
     work: "339,977.00 - 5,770.00"
   - printed: "6"
     value: "64750.00"
-    work: "Head of household = 64,750"
+    work: "Head of household threshold"
   - printed: "7"
     value: "64750.00"
     work: "smaller of 339,977.00 or 64,750.00"
@@ -406,13 +407,13 @@ lines:
     work: "smaller of 339,977.00 or 5,770.00"
   - printed: "11"
     value: "0.00"
-    work: "line 9 = 0.00"
+    work: "line 9"
   - printed: "12"
     value: "5770.00"
     work: "5,770.00 - 0.00"
   - printed: "13"
     value: "566700.00"
-    work: "Head of household = 566,700"
+    work: "Head of household threshold"
   - printed: "14"
     value: "339977.00"
     work: "smaller of 339,977.00 or 566,700.00"
@@ -444,10 +445,10 @@ lines:
     value: "85646.95"
     work: "smaller of 85,646.95 or 86,800.95"
 ```
+```
 
 ### classm.qdcg.2
 
-```yaml
 ```yaml
 lines:
   - printed: "1"
@@ -458,49 +459,49 @@ lines:
     work: "Form 1040 line 3a = 24,189.00"
   - printed: "3"
     value: "19947.00"
-    work: "Not filing Schedule D; Form 1040 line 7a (capital gain distributions) = 19,947.00"
+    work: "No Schedule D; Form 1040 line 7a gets the capital gain distributions = 19,947.00"
   - printed: "4"
     value: "44136.00"
-    work: "24,189.00 + 19,947.00"
+    work: "24,189.00 + 19,947.00 = 44,136.00"
   - printed: "5"
     value: "0.00"
-    work: "0.00 - 44,136.00 < 0, enter -0-"
+    work: "0.00 - 44,136.00 is less than zero, so enter -0-"
   - printed: "6"
     value: "48350.00"
-    work: "Single: 48,350"
+    work: "Single = 48,350.00"
   - printed: "7"
     value: "0.00"
-    work: "smaller of 0.00 or 48,350.00"
+    work: "smaller of 0.00 and 48,350.00"
   - printed: "8"
     value: "0.00"
-    work: "smaller of 0.00 or 0.00"
+    work: "smaller of 0.00 and 0.00"
   - printed: "9"
     value: "0.00"
     work: "0.00 - 0.00"
   - printed: "10"
     value: "0.00"
-    work: "smaller of 0.00 or 44,136.00"
+    work: "smaller of 0.00 and 44,136.00"
   - printed: "11"
     value: "0.00"
-    work: "line 9"
+    work: "line 9 = 0.00"
   - printed: "12"
     value: "0.00"
     work: "0.00 - 0.00"
   - printed: "13"
     value: "533400.00"
-    work: "Single: 533,400"
+    work: "Single = 533,400.00"
   - printed: "14"
     value: "0.00"
-    work: "smaller of 0.00 or 533,400.00"
+    work: "smaller of 0.00 and 533,400.00"
   - printed: "15"
     value: "0.00"
     work: "0.00 + 0.00"
   - printed: "16"
     value: "0.00"
-    work: "0.00 - 0.00 = 0, enter -0-"
+    work: "0.00 - 0.00 = 0, so enter -0-"
   - printed: "17"
     value: "0.00"
-    work: "smaller of 0.00 or 0.00"
+    work: "smaller of 0.00 and 0.00"
   - printed: "18"
     value: "0.00"
     work: "0.00 x 0.15"
@@ -515,11 +516,10 @@ lines:
     work: "0.00 x 0.20"
   - printed: "23"
     value: "0.00"
-    work: "0.00 + 0.00 + 0.00 (line 22 given 0.00)"
+    work: "0.00 + 0.00 + 0.00 (line 22 given)"
   - printed: "25"
     value: "0.00"
-    work: "smaller of line 23 0.00 or line 24 0.00"
-```
+    work: "smaller of 0.00 and 0.00 (line 24 given)"
 ```
 
 ### classm.qdcg.3
@@ -529,13 +529,13 @@ lines:
 lines:
   - printed: "1"
     value: "376357.00"
-    work: "Form 1040 line 15 = 376,357.00"
+    work: "Form 1040 line 15 = 376,357.00 (no Form 2555)"
   - printed: "2"
     value: "320000.00"
     work: "Form 1040 line 3a = 320,000.00"
   - printed: "3"
     value: "19848.00"
-    work: "Filing Schedule D: smaller of Sch D line 15 or 16 = 19,848.00"
+    work: "Filing Schedule D: yes; smaller of Sch D line 15 or 16 = 19,848.00"
   - printed: "4"
     value: "339848.00"
     work: "320,000.00 + 19,848.00"

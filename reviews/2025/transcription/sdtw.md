@@ -7,17 +7,17 @@ Second transcription of `Schedule D Tax Worksheet` by an isolated model (spec 6.
 | date | 2026-10-17 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 34794e68df1f0cef8ae1da7dcd701ce8c06755998c788379738bf8e4af1e2524 |
+| prompt sha256 | 91fe51bf770f4e2dda8e6178a674e08b5034166fceeaf18a16c1e574bf650c88 |
 | printed lines compared | 47 |
-| agree / disagree / missing | 29 / 18 / 0 |
+| agree / disagree / missing | 28 / 19 / 0 |
 | extra printed lines in second | none |
 
 ## Source pages given to the model
 
 | document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
 | --- | --- | --- | --- | --- | --- | --- |
-| i1040sd | 2025; printed date 2025-12-11 | 15, 16 | cited pages | 145b3d02ba6ce4257939dfbd8f99d519875224cb4ceb4237a1aa24ed862360f1 | - | ac7a0c9cbb9e635491b2505e7d04cea3381b892402408ddc97f8d49d80a6640b |
-| i1040gi | 2025; printed date 2026-02-25 | 38 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | - | 816ff8c5ed82d0349bfa79ae008e9b4492c04005a8702145dcd8cd0139eacc47 |
+| i1040sd | 2025; printed date 2025-12-11 | 15, 16 | cited pages | 145b3d02ba6ce4257939dfbd8f99d519875224cb4ceb4237a1aa24ed862360f1 | - | 0120691acc1fa8bf63941916a3b9423db8fba10d67f098a580fdc518c5fd08ec |
+| i1040gi | 2025; printed date 2026-02-25 | 38 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | - | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
 
 ## Lines
 
@@ -119,7 +119,7 @@ Second:
 {"line": "22"}
 ```
 
-Second transcription's note: Line 22 is always computed in this transcription, so it is never blank.
+Second transcription's note: Line 22 is always computed in this model, so the blank case does not arise.
 
 Ruling: representation of the skip rules; project retained; equivalence argued, not proved. The worksheet says to skip lines 23–43 when lines 1 and 16 are the same, lines 33–43 when lines 1 and 32 are the same, lines 35–40 when Schedule D line 19 is zero or blank, and lines 41–43 when Schedule D line 18 is zero or blank (i1040sd pp. 15–16, Schedule D Tax Worksheet). The project encodes each skip as a zero-valued alternative on every skipped line; the second transcription computes every line unconditionally and treats a skipped line as blank only where a later line reads it. The two agree in value when the skipped lines are zero anyway: with lines 1 and 16 equal, line 17 equals line 1 less line 13 and line 22 equals line 13, so lines 25 and 29, hence 30–34, are zero; with Schedule D line 19 zero, line 35 and so 39–40 are zero; with Schedule D line 18 zero, line 42 is the remainder of line 1 after the ordinary, 0%, 15%, 20% and 25% portions (lines 21, 22, 30, 33, 39) and is zero. That argument is recorded here, not machine-checked; it is a candidate property for the data-level property tests of spec 6.3 (a skipped line evaluates to zero under the project's reading and under unconditional computation). No change to the data.
 
@@ -155,7 +155,7 @@ Second:
 {"param": "qdcg.fifteen_rate_ceiling"}
 ```
 
-Second transcription's note: The parameter is keyed by filing status (f1040.status).
+Second transcription's note: The parameter is keyed by filing status; it is taken under f1040.status.
 
 Ruling: representation of the skip rules; project retained; equivalence argued, not proved. The worksheet says to skip lines 23–43 when lines 1 and 16 are the same, lines 33–43 when lines 1 and 32 are the same, lines 35–40 when Schedule D line 19 is zero or blank, and lines 41–43 when Schedule D line 18 is zero or blank (i1040sd pp. 15–16, Schedule D Tax Worksheet). The project encodes each skip as a zero-valued alternative on every skipped line; the second transcription computes every line unconditionally and treats a skipped line as blank only where a later line reads it. The two agree in value when the skipped lines are zero anyway: with lines 1 and 16 equal, line 17 equals line 1 less line 13 and line 22 equals line 13, so lines 25 and 29, hence 30–34, are zero; with Schedule D line 19 zero, line 35 and so 39–40 are zero; with Schedule D line 18 zero, line 42 is the remainder of line 1 after the ordinary, 0%, 15%, 20% and 25% portions (lines 21, 22, 30, 33, 39) and is zero. That argument is recorded here, not machine-checked; it is a candidate property for the data-level property tests of spec 6.3 (a skipped line evaluates to zero under the project's reading and under unconditional computation). No change to the data.
 
@@ -227,6 +227,8 @@ Second:
 ```json
 {"amount": {"line": "30"}, "op": "multiply_rate", "rate": {"param": "sdtw.rate15"}}
 ```
+
+Second transcription's note: The text states no rounding of the product; none is applied.
 
 Ruling: representation of the skip rules; project retained; equivalence argued, not proved. The worksheet says to skip lines 23–43 when lines 1 and 16 are the same, lines 33–43 when lines 1 and 32 are the same, lines 35–40 when Schedule D line 19 is zero or blank, and lines 41–43 when Schedule D line 18 is zero or blank (i1040sd pp. 15–16, Schedule D Tax Worksheet). The project encodes each skip as a zero-valued alternative on every skipped line; the second transcription computes every line unconditionally and treats a skipped line as blank only where a later line reads it. The two agree in value when the skipped lines are zero anyway: with lines 1 and 16 equal, line 17 equals line 1 less line 13 and line 22 equals line 13, so lines 25 and 29, hence 30–34, are zero; with Schedule D line 19 zero, line 35 and so 39–40 are zero; with Schedule D line 18 zero, line 42 is the remainder of line 1 after the ordinary, 0%, 15%, 20% and 25% portions (lines 21, 22, 30, 33, 39) and is zero. That argument is recorded here, not machine-checked; it is a candidate property for the data-level property tests of spec 6.3 (a skipped line evaluates to zero under the project's reading and under unconditional computation). No change to the data.
 
@@ -336,7 +338,21 @@ Second:
 Ruling: representation of the skip rules; project retained; equivalence argued, not proved. The worksheet says to skip lines 23–43 when lines 1 and 16 are the same, lines 33–43 when lines 1 and 32 are the same, lines 35–40 when Schedule D line 19 is zero or blank, and lines 41–43 when Schedule D line 18 is zero or blank (i1040sd pp. 15–16, Schedule D Tax Worksheet). The project encodes each skip as a zero-valued alternative on every skipped line; the second transcription computes every line unconditionally and treats a skipped line as blank only where a later line reads it. The two agree in value when the skipped lines are zero anyway: with lines 1 and 16 equal, line 17 equals line 1 less line 13 and line 22 equals line 13, so lines 25 and 29, hence 30–34, are zero; with Schedule D line 19 zero, line 35 and so 39–40 are zero; with Schedule D line 18 zero, line 42 is the remainder of line 1 after the ordinary, 0%, 15%, 20% and 25% portions (lines 21, 22, 30, 33, 39) and is zero. That argument is recorded here, not machine-checked; it is a candidate property for the data-level property tests of spec 6.3 (a skipped line evaluates to zero under the project's reading and under unconditional computation). No change to the data.
 
 ### 39 — Subtract line 38 from line 35; floor at zero
-Status: **AGREE**
+Status: **DISAGREE**
+
+Project:
+
+```json
+{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"line": "1"}, {"line": "16"}], "test": "ne"}, {"args": [{"line": "1"}, {"line": "32"}], "test": "ne"}], "test": "all"}, {"args": [{"const": 0}, {"ref": "u1250.line18"}], "test": "lt"}], "test": "all"}, "then": {"from": {"line": "35"}, "op": "subtract_floor0", "take": {"line": "38"}}}, {"guard": {"args": [{"args": [{"args": [{"line": "1"}, {"line": "16"}], "test": "eq"}, {"args": [{"line": "1"}, {"line": "32"}], "test": "eq"}], "test": "any"}, {"args": [{"ref": "u1250.line18"}, {"const": 0}], "test": "le"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
+```
+
+Second:
+
+```json
+{"alternatives": [{"guard": {"args": [{"args": [{"const": 0}, {"ref": "u1250.line18"}], "test": "lt"}, {"args": [{"line": "1"}, {"line": "16"}], "test": "ne"}, {"args": [{"line": "1"}, {"line": "32"}], "test": "ne"}], "test": "all"}, "then": {"from": {"line": "35"}, "op": "subtract_floor0", "take": {"line": "38"}}}, {"guard": {"args": [{"args": [{"line": "1"}, {"line": "16"}], "test": "eq"}, {"args": [{"line": "1"}, {"line": "32"}], "test": "eq"}, {"args": [{"ref": "u1250.line18"}, {"const": 0}], "test": "le"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
+```
+
+Ruling: equivalent representation; project retained. The two guards are the same conditions with different nesting and order (all of (all of a, b), c against all of c, a, b; any of (any of x, y), z against any of x, y, z); the structural comparison does not flatten nested tests.
 
 ### 40 — Multiply line 39 by 25 percent
 Status: **DISAGREE**
@@ -384,10 +400,10 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"line": "1"}, {"line": "16"}], "test": "ne"}, {"args": [{"line": "1"}, {"line": "32"}], "test": "ne"}], "test": "all"}, {"args": [{"const": 0}, {"ref": "g28.line7"}], "test": "lt"}], "test": "all"}, "then": {"from": {"line": "1"}, "op": "subtract", "take": {"line": "41"}}}, {"guard": {"args": [{"args": [{"args": [{"line": "1"}, {"line": "16"}], "test": "eq"}, {"args": [{"line": "1"}, {"line": "32"}], "test": "eq"}], "test": "any"}, {"args": [{"ref": "g28.line7"}, {"const": 0}], "test": "le"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"args": [{"const": 0}, {"ref": "g28.line7"}], "test": "lt"}, {"args": [{"line": "1"}, {"line": "16"}], "test": "ne"}, {"args": [{"line": "1"}, {"line": "32"}], "test": "ne"}], "test": "all"}, "then": {"from": {"line": "1"}, "op": "subtract", "take": {"line": "41"}}}, {"guard": {"args": [{"args": [{"line": "1"}, {"line": "16"}], "test": "eq"}, {"args": [{"line": "1"}, {"line": "32"}], "test": "eq"}, {"args": [{"ref": "g28.line7"}, {"const": 0}], "test": "le"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Second transcription's note: This line is blank (zero) when lines 41-43 are skipped: either Schedule D line 18 is zero or blank, or an earlier skip covers it.
+Second transcription's note: The text gives no floor; kept signed as printed.
 
 Ruling: representation of the skip rules; project retained; equivalence argued, not proved. The worksheet says to skip lines 23–43 when lines 1 and 16 are the same, lines 33–43 when lines 1 and 32 are the same, lines 35–40 when Schedule D line 19 is zero or blank, and lines 41–43 when Schedule D line 18 is zero or blank (i1040sd pp. 15–16, Schedule D Tax Worksheet). The project encodes each skip as a zero-valued alternative on every skipped line; the second transcription computes every line unconditionally and treats a skipped line as blank only where a later line reads it. The two agree in value when the skipped lines are zero anyway: with lines 1 and 16 equal, line 17 equals line 1 less line 13 and line 22 equals line 13, so lines 25 and 29, hence 30–34, are zero; with Schedule D line 19 zero, line 35 and so 39–40 are zero; with Schedule D line 18 zero, line 42 is the remainder of line 1 after the ordinary, 0%, 15%, 20% and 25% portions (lines 21, 22, 30, 33, 39) and is zero. That argument is recorded here, not machine-checked; it is a candidate property for the data-level property tests of spec 6.3 (a skipped line evaluates to zero under the project's reading and under unconditional computation). No change to the data.
 
@@ -425,17 +441,12 @@ Status: **AGREE**
 ```yaml
 ```yaml
 lines:
-  - id: sdtw.h_zero
-    printed: "(helper)"
-    label: "Zero amount for a skipped (blank) line"
-    type: NonNegDollars
-    expr: {op: param, ref: sales.zero}
   - id: sdtw.line1
     printed: "1"
     label: "Enter your taxable income from Form 1040, 1040-SR, or 1040-NR, line 15. (However, if you are filing Form 2555 (relating to foreign earned income), enter instead the amount from line 3 of the Foreign Earned Income Tax Worksheet in the instructions for Form 1040, line 16.)"
     type: NonNegDollars
     expr: {op: copy, from: f1040.line15}
-    note: "Form 2555 alternative (Foreign Earned Income Tax Worksheet line 3) is not encoded; there is no line for it. Chose Form 1040 line 15."
+    note: "Form 2555 substitution not modelled (no Foreign Earned Income Tax Worksheet line available); chose Form 1040 line 15, assuming Form 2555 filers are screened out of scope."
   - id: sdtw.line2
     printed: "2"
     label: "Enter your qualified dividends from Form 1040, 1040-SR, or 1040-NR, line 3a"
@@ -448,10 +459,10 @@ lines:
     expr: {op: copy, from: f4952.line4g}
   - id: sdtw.line4
     printed: "4"
-    label: "Enter the amount from Form 4952, line 4e* (* If applicable, enter instead the smaller amount you entered on the dotted line next to line 4e of Form 4952.)"
+    label: "Enter the amount from Form 4952, line 4e*"
     type: NonNegDollars
     expr: {op: copy, from: f4952.line4e}
-    note: "The footnote allows a smaller amount from the dotted line next to Form 4952 line 4e. The data model has no line for that amount, so this uses line 4e (the default capital-gain-first allocation)."
+    note: "Footnote: 'If applicable, enter instead the smaller amount you entered on the dotted line next to line 4e of Form 4952.' No dotted-line amount is available. Chose Form 4952 line 4e, the default allocation, assuming the alternative allocation (f4952.alternative_allocation) is screened out."
   - id: sdtw.line5
     printed: "5"
     label: "Subtract line 4 from line 3. If zero or less, enter -0-"
@@ -462,13 +473,13 @@ lines:
     label: "Subtract line 5 from line 2. If zero or less, enter -0-**"
     type: NonNegDollars
     expr: {op: subtract_floor0, from: sdtw.line2, take: sdtw.line5}
-    note: "The ** Form 2555 footnote is not encoded."
+    note: "Footnote ** (Form 2555) not modelled."
   - id: sdtw.line7
     printed: "7"
     label: "Enter the smaller of line 15 or line 16 of Schedule D"
     type: Dollars
     expr: {op: smaller_of, of: [sd.line15, sd.line16]}
-    note: "The worksheet text does not say to floor this line at zero. It can be negative only on the Form 4952 entry path. Left signed as printed; line 9 floors the result."
+    note: "The text gives no floor here; it may be negative if the worksheet is used only because of a Form 4952 line 4g amount. Kept signed; line 9 floors the result."
   - id: sdtw.line8
     printed: "8"
     label: "Enter the smaller of line 3 or line 4"
@@ -487,17 +498,17 @@ lines:
   - id: sdtw.line11
     printed: "11"
     label: "Add lines 18 and 19 of Schedule D**"
-    type: Dollars
+    type: NonNegDollars
     expr: {op: sum, of: [sd.line18, sd.line19]}
   - id: sdtw.line12
     printed: "12"
     label: "Enter the smaller of line 9 or line 11"
-    type: Dollars
+    type: NonNegDollars
     expr: {op: smaller_of, of: [sdtw.line9, sdtw.line11]}
   - id: sdtw.line13
     printed: "13"
     label: "Subtract line 12 from line 10"
-    type: Dollars
+    type: NonNegDollars
     expr: {op: subtract, from: sdtw.line10, take: sdtw.line12}
   - id: sdtw.line14
     printed: "14"
@@ -509,7 +520,7 @@ lines:
     label: "Enter: $48,350 if single or married filing separately; $96,700 if married filing jointly or qualifying surviving spouse; or $64,750 if head of household."
     type: NonNegDollars
     expr: {op: param, ref: qdcg.zero_rate_ceiling}
-    note: "The parameter is keyed by filing status (f1040.status)."
+    note: "The parameter is keyed by filing status; it is taken under f1040.status."
   - id: sdtw.line16
     printed: "16"
     label: "Enter the smaller of line 1 or line 15"
@@ -530,7 +541,7 @@ lines:
     label: "$197,300 if single or married filing separately; $394,600 if married filing jointly or qualifying surviving spouse; or $197,300 if head of household"
     type: NonNegDollars
     expr: {op: param, ref: sdtw.ordinary_ceiling}
-    note: "The parameter is keyed by filing status (f1040.status)."
+    note: "The parameter is keyed by filing status; it is taken under f1040.status."
   - id: sdtw.line19
     printed: "19"
     label: "Enter the smaller of line 1 or: $197,300 if single or married filing separately; $394,600 if married filing jointly or qualifying surviving spouse; or $197,300 if head of household."
@@ -551,27 +562,28 @@ lines:
     label: "Subtract line 17 from line 16. This amount is taxed at 0%"
     type: NonNegDollars
     expr: {op: subtract, from: sdtw.line16, take: sdtw.line17}
-  - id: sdtw.h_skip23
+  - id: sdtw.h_zero
+    printed: "(helper)"
+    label: "Zero amount for a skipped (blank) line"
+    type: NonNegDollars
+    expr: {op: param, ref: sales.zero}
+    note: "A skipped line is treated as blank, and a blank line as -0- in later additions. The zero comes from parameter sales.zero because the choose grammar takes a reference."
+  - id: sdtw.h_skip_a
     printed: "(helper)"
     label: "If lines 1 and 16 are the same, skip lines 23 through 43 and go to line 44"
     type: Bool
     expr: {op: test, eq: [sdtw.line1, sdtw.line16]}
-  - id: sdtw.h_not_skip23
-    printed: "(helper)"
-    label: "Lines 1 and 16 differ; go to line 23"
-    type: Bool
-    expr: {op: test, not: sdtw.h_skip23}
   - id: sdtw.line23
     printed: "23"
     label: "Enter the smaller of line 1 or line 13"
-    type: Dollars
+    type: NonNegDollars
     expr: {op: smaller_of, of: [sdtw.line1, sdtw.line13]}
   - id: sdtw.line24
     printed: "24"
     label: "Enter the amount from line 22. (If line 22 is blank, enter -0-.)"
     type: NonNegDollars
     expr: {op: copy, from: sdtw.line22}
-    note: "Line 22 is always computed in this transcription, so it is never blank."
+    note: "Line 22 is always computed in this model, so the blank case does not arise."
   - id: sdtw.line25
     printed: "25"
     label: "Subtract line 24 from line 23. If zero or less, enter -0-"
@@ -582,7 +594,7 @@ lines:
     label: "Enter: $533,400 if single; $300,000 if married filing separately; $600,050 if married filing jointly or qualifying surviving spouse; or $566,700 if head of household."
     type: NonNegDollars
     expr: {op: param, ref: qdcg.fifteen_rate_ceiling}
-    note: "The parameter is keyed by filing status (f1040.status)."
+    note: "The parameter is keyed by filing status; it is taken under f1040.status."
   - id: sdtw.line27
     printed: "27"
     label: "Enter the smaller of line 1 or line 26"
@@ -598,9 +610,9 @@ lines:
     label: "Subtract line 28 from line 27. If zero or less, enter -0-"
     type: NonNegDollars
     expr: {op: subtract_floor0, from: sdtw.line27, take: sdtw.line28}
-  - id: sdtw.h_line30_raw
+  - id: sdtw.h_line30_computed
     printed: "(helper)"
-    label: "Smaller of line 25 or line 29, before the skip instruction"
+    label: "Smaller of line 25 or line 29, when line 30 is reached"
     type: NonNegDollars
     expr: {op: smaller_of, of: [sdtw.line25, sdtw.line29]}
   - id: sdtw.line30
@@ -610,73 +622,53 @@ lines:
     expr:
       op: choose
       alternatives:
-        - {guard: sdtw.h_skip23, then: sdtw.h_zero}
-        - {guard: sdtw.h_not_skip23, then: sdtw.h_line30_raw}
-    note: "The skip instruction after line 22 (skip lines 23-43 when lines 1 and 16 match) is encoded by blanking this line to zero. Downstream lines 31, 32 and 41 therefore treat it as blank (zero)."
+        - {guard: {op: test, eq: [sdtw.h_skip_a, {const: true}]}, then: sdtw.h_zero}
+        - {guard: {op: test, eq: [sdtw.h_skip_a, {const: false}]}, then: sdtw.h_line30_computed}
+    note: "Line 30 is blank (zero) when lines 23 through 43 are skipped because lines 1 and 16 are the same. This makes lines 31 and 32 zero or harmless downstream."
   - id: sdtw.line31
     printed: "31"
     label: "Multiply line 30 by 15% (0.15)"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: sdtw.line30, rate: {param: sdtw.rate15}}
+    note: "The text states no rounding of the product; none is applied."
   - id: sdtw.line32
     printed: "32"
     label: "Add lines 24 and 30"
     type: NonNegDollars
     expr: {op: sum, of: [sdtw.line24, sdtw.line30]}
-  - id: sdtw.h_eq1_32
+  - id: sdtw.h_skip_b
     printed: "(helper)"
-    label: "Lines 1 and 32 are the same"
+    label: "If lines 1 and 32 are the same, skip lines 33 through 43 and go to line 44"
     type: Bool
     expr: {op: test, eq: [sdtw.line1, sdtw.line32]}
-  - id: sdtw.h_skip33
+  - id: sdtw.h_skip_ab
     printed: "(helper)"
-    label: "Lines 33 through 43 skipped (by the line 22 or the line 32 instruction)"
+    label: "Line 33 skipped: lines 1 and 16 are the same, or lines 1 and 32 are the same"
     type: Bool
-    expr: {op: test, any: [sdtw.h_skip23, sdtw.h_eq1_32]}
-  - id: sdtw.h_not_skip33
+    expr: {op: test, any: [{op: test, eq: [sdtw.line1, sdtw.line16]}, {op: test, eq: [sdtw.line1, sdtw.line32]}]}
+  - id: sdtw.h_line33_computed
     printed: "(helper)"
-    label: "Go to line 33"
-    type: Bool
-    expr: {op: test, not: sdtw.h_skip33}
-  - id: sdtw.h_line33_raw
-    printed: "(helper)"
-    label: "Line 23 minus line 32, before the skip instruction"
-    type: Dollars
+    label: "Line 23 less line 32, when line 33 is reached"
+    type: NonNegDollars
     expr: {op: subtract, from: sdtw.line23, take: sdtw.line32}
   - id: sdtw.line33
     printed: "33"
     label: "Subtract line 32 from line 23"
-    type: Dollars
+    type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - {guard: sdtw.h_skip33, then: sdtw.h_zero}
-        - {guard: sdtw.h_not_skip33, then: sdtw.h_line33_raw}
-    note: "This line is blank (zero) when lines 33-43 are skipped by the instruction after line 22 or after line 32."
+        - {guard: {op: test, eq: [sdtw.h_skip_ab, {const: true}]}, then: sdtw.h_zero}
+        - {guard: {op: test, eq: [sdtw.h_skip_ab, {const: false}]}, then: sdtw.h_line33_computed}
   - id: sdtw.line34
     printed: "34"
     label: "Multiply line 33 by 20% (0.20)"
-    type: Dollars
+    type: NonNegDollars
     expr: {op: multiply_rate, amount: sdtw.line33, rate: {param: sdtw.rate20}}
-  - id: sdtw.h_sd19_zero
-    printed: "(helper)"
-    label: "Schedule D, line 19, is zero or blank"
-    type: Bool
-    expr: {op: test, eq: [sd.line19, {const: 0}]}
-  - id: sdtw.h_skip35
-    printed: "(helper)"
-    label: "Lines 35 through 40 skipped"
-    type: Bool
-    expr: {op: test, any: [sdtw.h_skip33, sdtw.h_sd19_zero]}
-  - id: sdtw.h_not_skip35
-    printed: "(helper)"
-    label: "Go to line 35"
-    type: Bool
-    expr: {op: test, not: sdtw.h_skip35}
   - id: sdtw.line35
     printed: "35"
     label: "Enter the smaller of line 9 above or Schedule D, line 19"
-    type: Dollars
+    type: NonNegDollars
     expr: {op: smaller_of, of: [sdtw.line9, sd.line19]}
   - id: sdtw.line36
     printed: "36"
@@ -693,9 +685,15 @@ lines:
     label: "Subtract line 37 from line 36. If zero or less, enter -0-"
     type: NonNegDollars
     expr: {op: subtract_floor0, from: sdtw.line36, take: sdtw.line37}
-  - id: sdtw.h_line39_raw
+  - id: sdtw.h_skip_abc
     printed: "(helper)"
-    label: "Line 35 minus line 38, floored at zero, before the skip instructions"
+    label: "Line 39 skipped: lines 1 and 16 are the same, lines 1 and 32 are the same, or Schedule D line 19 is zero or blank"
+    type: Bool
+    expr: {op: test, any: [{op: test, eq: [sdtw.line1, sdtw.line16]}, {op: test, eq: [sdtw.line1, sdtw.line32]}, {op: test, eq: [sd.line19, {const: 0}]}]}
+    note: "'Zero or blank' is read as equal to zero; a blank Schedule D line 19 is held as zero."
+  - id: sdtw.h_line39_computed
+    printed: "(helper)"
+    label: "Line 35 less line 38, floor zero, when line 39 is reached"
     type: NonNegDollars
     expr: {op: subtract_floor0, from: sdtw.line35, take: sdtw.line38}
   - id: sdtw.line39
@@ -705,37 +703,27 @@ lines:
     expr:
       op: choose
       alternatives:
-        - {guard: sdtw.h_skip35, then: sdtw.h_zero}
-        - {guard: sdtw.h_not_skip35, then: sdtw.h_line39_raw}
-    note: "This line is blank (zero) when lines 35-40 are skipped: either Schedule D line 19 is zero or blank, or an earlier skip covers it."
+        - {guard: {op: test, eq: [sdtw.h_skip_abc, {const: true}]}, then: sdtw.h_zero}
+        - {guard: {op: test, eq: [sdtw.h_skip_abc, {const: false}]}, then: sdtw.h_line39_computed}
   - id: sdtw.line40
     printed: "40"
     label: "Multiply line 39 by 25% (0.25)"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: sdtw.line39, rate: {param: sdtw.rate25}}
-  - id: sdtw.h_sd18_zero
-    printed: "(helper)"
-    label: "Schedule D, line 18, is zero or blank"
-    type: Bool
-    expr: {op: test, eq: [sd.line18, {const: 0}]}
-  - id: sdtw.h_skip41
-    printed: "(helper)"
-    label: "Lines 41 through 43 skipped"
-    type: Bool
-    expr: {op: test, any: [sdtw.h_skip33, sdtw.h_sd18_zero]}
-  - id: sdtw.h_not_skip41
-    printed: "(helper)"
-    label: "Go to line 41"
-    type: Bool
-    expr: {op: test, not: sdtw.h_skip41}
   - id: sdtw.line41
     printed: "41"
     label: "Add lines 21, 22, 30, 33, and 39"
-    type: Dollars
+    type: NonNegDollars
     expr: {op: sum, of: [sdtw.line21, sdtw.line22, sdtw.line30, sdtw.line33, sdtw.line39]}
-  - id: sdtw.h_line42_raw
+  - id: sdtw.h_skip_abd
     printed: "(helper)"
-    label: "Line 1 minus line 41, before the skip instructions"
+    label: "Line 42 skipped: lines 1 and 16 are the same, lines 1 and 32 are the same, or Schedule D line 18 is zero or blank"
+    type: Bool
+    expr: {op: test, any: [{op: test, eq: [sdtw.line1, sdtw.line16]}, {op: test, eq: [sdtw.line1, sdtw.line32]}, {op: test, eq: [sd.line18, {const: 0}]}]}
+    note: "'Zero or blank' is read as equal to zero; a blank Schedule D line 18 is held as zero."
+  - id: sdtw.h_line42_computed
+    printed: "(helper)"
+    label: "Line 1 less line 41, when line 42 is reached"
     type: Dollars
     expr: {op: subtract, from: sdtw.line1, take: sdtw.line41}
   - id: sdtw.line42
@@ -745,9 +733,9 @@ lines:
     expr:
       op: choose
       alternatives:
-        - {guard: sdtw.h_skip41, then: sdtw.h_zero}
-        - {guard: sdtw.h_not_skip41, then: sdtw.h_line42_raw}
-    note: "This line is blank (zero) when lines 41-43 are skipped: either Schedule D line 18 is zero or blank, or an earlier skip covers it."
+        - {guard: {op: test, eq: [sdtw.h_skip_abd, {const: true}]}, then: sdtw.h_zero}
+        - {guard: {op: test, eq: [sdtw.h_skip_abd, {const: false}]}, then: sdtw.h_line42_computed}
+    note: "The text gives no floor; kept signed as printed."
   - id: sdtw.line43
     printed: "43"
     label: "Multiply line 42 by 28% (0.28)"
@@ -773,6 +761,6 @@ lines:
     label: "Tax on all taxable income (including capital gains and qualified dividends). Enter the smaller of line 45 or line 46. Also, include this amount on Form 1040, 1040-SR, or 1040-NR, line 16."
     type: Dollars
     expr: {op: smaller_of, of: [sdtw.line45, sdtw.line46]}
-    note: "The Form 2555 redirection (enter on line 4 of the Foreign Earned Income Tax Worksheet) is not encoded. The text does not say how to round the multiplications on lines 31, 34, 40 and 43, so no rounding is applied."
+    note: "The Form 2555 redirection to the Foreign Earned Income Tax Worksheet is not modelled."
 ```
 ```

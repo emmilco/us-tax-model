@@ -23,45 +23,47 @@ The rendered English of every printed line of `Form 8283 — groups of similar n
 ### deduction — Deduction before income limits for this item or group of similar items across all donees, 
 Status: **MATCH**
 
-Model: The instructions define the amount of the deduction as the deduction 'before applying any income limits that could result in a carryover,' after 'any required reductions.' For a group, the filer must 'consider all items in the group, even if items in the group were donated to more than one donee organization.' The input's label matches this.
+Model: The text defines "amount of your deduction" as "your deduction before applying any income limits that could result in a carryover", with "any required reductions" made first. For a group, it says to "consider all items in the group, even if items in the group were donated to more than one donee organization." The filer-supplied input says the same.
 
 ### public_securities — Is this group publicly traded securities?
 Status: **MATCH**
 
-Model: Section A includes publicly traded securities 'even if the claimed value was more than $5,000.' The input flag captures that exception. The other security categories in 2.d are only refused more broadly through section_b, which narrows the program but does not misstate the text.
+Model: The text names "publicly traded securities" as items reported in Section A even above $5,000. The exchange-listed, over-the-counter and mutual fund securities in items 2.a–2.c fit this yes/no input.
 
 ### special — Does this group need an appraisal or other special treatment (including vehicles, pass-thr
 Status: **MATCH**
 
-Model: The instructions treat several categories specially: vehicles, intellectual property, inventory, pass-through entity gifts, conservation and partial interests, and 'a single article of clothing or household item that is not in good used condition or better ... over $500' (which needs Section B). The program refuses all of these, so it narrows the supported cases without miscomputing the ones it handles.
+Model: The text gives separate treatment to vehicles, intellectual property, inventory, partial interests, conservation contributions and pass-through entity gifts. It also requires Section B for "a single article of clothing or household item that is not in good used condition or better and for which you are claiming a deduction of over $500." Because this input only triggers a refusal, it narrows what the program supports without changing any computed value.
 
 ### section_b — Appraisal threshold: non-publicly-traded group over $5,000
 Status: **MATCH**
 
-Model: The instructions put in Section B items with a deduction 'of more than $5,000' per item or group, excluding Section A items such as publicly traded securities. Those items 'require a written qualified appraisal.' The other Section A exceptions are either caught by the special refusal or refused conservatively, which narrows the program but is not wrong.
+Model: The text says to use Section B for items or groups "for which you claimed a deduction of more than $5,000," with publicly traded securities excepted to Section A. The restatement's strict > $5,000 test matches. It also refuses 'certain other securities' (item 2.d) that could go in Section A. That is a refusal only and does not change any value.
 
 ### allowed — Amount from gift.deduction
 Status: **MATCH**
 
-Model: Within the supported cases (Section A only, no special property), the amount reported is the deduction figured before income limits. The refusals name Section B and special-treatment property as the excluded cases.
+Model: Within the supported cases (not special, not Section B), the program reports the deduction before income limits, which is the amount the text uses to decide whether Form 8283 is required and which section applies. The refusals name the excluded cases: special-property treatment and Section B with a qualified appraisal.
 
 ## Raw response
 
 ```yaml
+```yaml
 lines:
   - key: "deduction"
     status: MATCH
-    reason: "The instructions define the amount of the deduction as the deduction 'before applying any income limits that could result in a carryover,' after 'any required reductions.' For a group, the filer must 'consider all items in the group, even if items in the group were donated to more than one donee organization.' The input's label matches this."
+    reason: "The text defines \"amount of your deduction\" as \"your deduction before applying any income limits that could result in a carryover\", with \"any required reductions\" made first. For a group, it says to \"consider all items in the group, even if items in the group were donated to more than one donee organization.\" The filer-supplied input says the same."
   - key: "public_securities"
     status: MATCH
-    reason: "Section A includes publicly traded securities 'even if the claimed value was more than $5,000.' The input flag captures that exception. The other security categories in 2.d are only refused more broadly through section_b, which narrows the program but does not misstate the text."
+    reason: "The text names \"publicly traded securities\" as items reported in Section A even above $5,000. The exchange-listed, over-the-counter and mutual fund securities in items 2.a–2.c fit this yes/no input."
   - key: "special"
     status: MATCH
-    reason: "The instructions treat several categories specially: vehicles, intellectual property, inventory, pass-through entity gifts, conservation and partial interests, and 'a single article of clothing or household item that is not in good used condition or better ... over $500' (which needs Section B). The program refuses all of these, so it narrows the supported cases without miscomputing the ones it handles."
+    reason: "The text gives separate treatment to vehicles, intellectual property, inventory, partial interests, conservation contributions and pass-through entity gifts. It also requires Section B for \"a single article of clothing or household item that is not in good used condition or better and for which you are claiming a deduction of over $500.\" Because this input only triggers a refusal, it narrows what the program supports without changing any computed value."
   - key: "section_b"
     status: MATCH
-    reason: "The instructions put in Section B items with a deduction 'of more than $5,000' per item or group, excluding Section A items such as publicly traded securities. Those items 'require a written qualified appraisal.' The other Section A exceptions are either caught by the special refusal or refused conservatively, which narrows the program but is not wrong."
+    reason: "The text says to use Section B for items or groups \"for which you claimed a deduction of more than $5,000,\" with publicly traded securities excepted to Section A. The restatement's strict > $5,000 test matches. It also refuses 'certain other securities' (item 2.d) that could go in Section A. That is a refusal only and does not change any value."
   - key: "allowed"
     status: MATCH
-    reason: "Within the supported cases (Section A only, no special property), the amount reported is the deduction figured before income limits. The refusals name Section B and special-treatment property as the excluded cases."
+    reason: "Within the supported cases (not special, not Section B), the program reports the deduction before income limits, which is the amount the text uses to decide whether Form 8283 is required and which section applies. The refusals name the excluded cases: special-property treatment and Section B with a qualified appraisal."
+```
 ```

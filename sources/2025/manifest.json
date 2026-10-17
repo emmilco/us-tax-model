@@ -28,10 +28,10 @@
       "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
       "revision_locator": "PDF page 1, printed heading and/or footer",
       "cols_file": "f1040.cols.txt",
-      "cols_sha256": "d0173256c777b69a079b5239cb98fe29d3353314f410cdc88356a94a2182d702",
+      "cols_sha256": "72926cc2b256a68592e6cf0f2aa384ef8371eec968a0c8c62e050edf5bfea76a",
       "pages_file": "f1040.pages.json",
-      "pages_sha256": "0d7ff08039fa32d7d59d3541d05f719738d006f115441952fb004d94c8ba24c0",
-      "extract_tool_version": "0.8"
+      "pages_sha256": "09d5d304fd4376a3691a0a2050ba4eaad698455f0acb64e6056307253e65f442",
+      "extract_tool_version": "0.10"
     },
     {
       "id": "f1040s2",
@@ -48,8 +48,8 @@
       "cols_file": "f1040s2.cols.txt",
       "cols_sha256": "129b2541cce9743c9bde3a48fdfcc2512767d88b7cbbbe562d7989b117232d62",
       "pages_file": "f1040s2.pages.json",
-      "pages_sha256": "08b4d353410ec7842b970752731779472153da63b9eb14863fb66dcf303816fc",
-      "extract_tool_version": "0.8"
+      "pages_sha256": "a183bb4d1897a6c7408f6a34e5b63a1e904532641642f7aa07c87eecf03b811c",
+      "extract_tool_version": "0.10"
     },
     {
       "id": "f1040s3",
@@ -66,8 +66,8 @@
       "cols_file": "f1040s3.cols.txt",
       "cols_sha256": "1ae44325c8d22211a6eadd11b393254317542704e5fed0fb419e41690210fc48",
       "pages_file": "f1040s3.pages.json",
-      "pages_sha256": "6c4a74da2b78a2e36f247e9689dc303e02c9ebc6166c894118dcee5007768cb4",
-      "extract_tool_version": "0.8"
+      "pages_sha256": "15efd280670444fedb397ba38ea6067acd5933dd69b07eedd7aa63c4db22e6ef",
+      "extract_tool_version": "0.10"
     },
     {
       "id": "f1040s8812",
@@ -83,8 +83,8 @@
       "cols_file": "f1040s8812.cols.txt",
       "cols_sha256": "3525d47f51cb713591081610a862cae77eff08a8aa7e2064a96b15cee4fd5cb9",
       "pages_file": "f1040s8812.pages.json",
-      "pages_sha256": "37e54e082c9584373ab21cb01a1a12576004b5138d79af9612391c41413e2a1f",
-      "extract_tool_version": "0.8"
+      "pages_sha256": "756ab324b18db7eed6677c5fd1fae4238f37148c07489353c97ff79c0d25574d",
+      "extract_tool_version": "0.10"
     },
     {
       "id": "f1040sa",
@@ -99,10 +99,10 @@
       "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
       "revision_locator": "PDF page 1, printed heading and/or footer",
       "cols_file": "f1040sa.cols.txt",
-      "cols_sha256": "7f4c8c493a59613863198e30bb448788826a174558e6089ec0810eefe3b25334",
+      "cols_sha256": "bfe55c01a948d1f96bacf363a8b5cbb1bf7273cbc8672598f1a66c31504a59fe",
       "pages_file": "f1040sa.pages.json",
-      "pages_sha256": "ade2a90de2ba50fc3adb203e9b1a949f2080b1556056564c1ba1ea03d5f93c9c",
-      "extract_tool_version": "0.8"
+      "pages_sha256": "f0a11bffdfe240f80ba80021eeec6cb21345e018c9fef2a8e0fb235b2ca531c4",
+      "extract_tool_version": "0.10"
     },
     {
       "id": "f1040sb",
@@ -119,8 +119,8 @@
       "cols_file": "f1040sb.cols.txt",
       "cols_sha256": "df11693629afb7112b9883e2927694d80b0373e3dc65cfb1631fe3229a99650f",
       "pages_file": "f1040sb.pages.json",
-      "pages_sha256": "6c4a74da2b78a2e36f247e9689dc303e02c9ebc6166c894118dcee5007768cb4",
-      "extract_tool_version": "0.8"
+      "pages_sha256": "15efd280670444fedb397ba38ea6067acd5933dd69b07eedd7aa63c4db22e6ef",
+      "extract_tool_version": "0.10"
     },
     {
       "id": "f1040sd",
@@ -135,10 +135,10 @@
       "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
       "revision_locator": "PDF page 1, printed heading and/or footer",
       "cols_file": "f1040sd.cols.txt",
-      "cols_sha256": "f265dc3989a82f04fbea0f04cf8495b9b5ff8f18335d395176aa06773cc8072f",
+      "cols_sha256": "eb461181b39879c79d1c0b7761ca0cd9ade46fdb1531cdee3281053c348f6c41",
       "pages_file": "f1040sd.pages.json",
-      "pages_sha256": "bfede18d4ebda5d2595c80c3deb893eca8a8dcde12fe4888da08494e3ea542ed",
-      "extract_tool_version": "0.8"
+      "pages_sha256": "6b6af075b76a3bd0d0b7fba2d22369000a67c039d54022edb98a798e2a5d81ac",
+      "extract_tool_version": "0.10"
     },
     {
       "id": "f1099div",
@@ -153,10 +153,10 @@
       "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
       "revision_locator": "PDF page 2, printed form year/revision",
       "cols_file": "f1099div.cols.txt",
-      "cols_sha256": "bfaac0e73b8640fe9cb209f96905d33fc22bf29f3aec472330d0132cda9cc329",
+      "cols_sha256": "617419bd079b1520174ceca8549065c9e4001f2b06a16d1425c5469bbe49fa3d",
       "pages_file": "f1099div.pages.json",
-      "pages_sha256": "27d1b4c29eb32085433b8d5d0aa17c6062b5e81ff911d702c647e8c781f89487",
-      "extract_tool_version": "0.8"
+      "pages_sha256": "ed7e4697fd2fd3b8d6ba50bc8d67448c46f095af9961456e2029caf54df770af",
+      "extract_tool_version": "0.10"
     },
     {
       "id": "f1099int",
@@ -171,10 +171,10 @@
       "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
       "revision_locator": "PDF page 2, printed form year/revision",
       "cols_file": "f1099int.cols.txt",
-      "cols_sha256": "994c9351ee4b7e53db8d2e39b826f28a8629355ad4b8345ab142ddcb6c8e2854",
+      "cols_sha256": "b47750922f8b8b3274e9efb422b49fb83b89ea5ce9f68e24fb860381516355a2",
       "pages_file": "f1099int.pages.json",
-      "pages_sha256": "88da151dd06c4cc23efc1b78543c0ad0e7c70de547d90ff593154a470d5bb4ea",
-      "extract_tool_version": "0.8"
+      "pages_sha256": "5c27ab558624d7575ec227cd03ad6ac0621f3e0172832b3d2c2aa588afd69690",
+      "extract_tool_version": "0.10"
     },
     {
       "id": "f4952",
@@ -191,8 +191,8 @@
       "cols_file": "f4952.cols.txt",
       "cols_sha256": "c98eb27a83a89faecfdd0cd6597e8063fbd86a14ba1606f3e96c1c5f016d2b5c",
       "pages_file": "f4952.pages.json",
-      "pages_sha256": "de65472cdbf988e518b38bc809b97b867f4547ec0b04dc2c615958804ce58f70",
-      "extract_tool_version": "0.8"
+      "pages_sha256": "9abf814a1a84ec0415d0691b2747926628b7183df338b3ba46b4d5ddea0f2f44",
+      "extract_tool_version": "0.10"
     },
     {
       "id": "f8283",
@@ -209,8 +209,8 @@
       "cols_file": "f8283.cols.txt",
       "cols_sha256": "2a4ef5ee41c489f0de7f68915540d45a11937f39759f0c9ffb0f326461ee9320",
       "pages_file": "f8283.pages.json",
-      "pages_sha256": "df284448b01e4eee61ba7ff282d58d1d8d43ec3cdda416989688bfd626ec1570",
-      "extract_tool_version": "0.8"
+      "pages_sha256": "91a3a2149eb2ba180a0f03de802c4b0a89dc3ccc930bd196a0d83ebdcd697246",
+      "extract_tool_version": "0.10"
     },
     {
       "id": "f8949",
@@ -227,8 +227,8 @@
       "cols_file": "f8949.cols.txt",
       "cols_sha256": "cc308c3ff7751456647bed9c2855d077dcbd0a55469b57f9e8cccb6f4927f232",
       "pages_file": "f8949.pages.json",
-      "pages_sha256": "c57541a9a928faf84c13f4c4e2ad39bb023f7b135894d0b1ab1f551374e37d51",
-      "extract_tool_version": "0.8"
+      "pages_sha256": "bf0852bd973bb19fc53b8a6e0a93dbab617d549ade0d93ea6eb6a287652edb60",
+      "extract_tool_version": "0.10"
     },
     {
       "id": "f8959",
@@ -245,8 +245,8 @@
       "cols_file": "f8959.cols.txt",
       "cols_sha256": "cfcb0cc50de26876183ca7956c570cc3d19f0401875794de2f0c86a5cf87d60c",
       "pages_file": "f8959.pages.json",
-      "pages_sha256": "6c4a74da2b78a2e36f247e9689dc303e02c9ebc6166c894118dcee5007768cb4",
-      "extract_tool_version": "0.8"
+      "pages_sha256": "15efd280670444fedb397ba38ea6067acd5933dd69b07eedd7aa63c4db22e6ef",
+      "extract_tool_version": "0.10"
     },
     {
       "id": "f8960",
@@ -261,10 +261,10 @@
       "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
       "revision_locator": "PDF page 1, printed heading and/or footer",
       "cols_file": "f8960.cols.txt",
-      "cols_sha256": "6efc6c94f0078e1d676a888f6b2d31584cad9dc3e834890a72b7850ef1cb4a39",
+      "cols_sha256": "35521c3ad7dfcd341a9de35529db4ea02c74bde6b9659da0d9388cfa46f9e4cb",
       "pages_file": "f8960.pages.json",
-      "pages_sha256": "ade2a90de2ba50fc3adb203e9b1a949f2080b1556056564c1ba1ea03d5f93c9c",
-      "extract_tool_version": "0.8"
+      "pages_sha256": "f0a11bffdfe240f80ba80021eeec6cb21345e018c9fef2a8e0fb235b2ca531c4",
+      "extract_tool_version": "0.10"
     },
     {
       "id": "f8995",
@@ -281,8 +281,8 @@
       "cols_file": "f8995.cols.txt",
       "cols_sha256": "8e2e78d7610e1d45e93c10c8b03f9026d46a1166678c6ed93f852569c382f346",
       "pages_file": "f8995.pages.json",
-      "pages_sha256": "6c4a74da2b78a2e36f247e9689dc303e02c9ebc6166c894118dcee5007768cb4",
-      "extract_tool_version": "0.8"
+      "pages_sha256": "15efd280670444fedb397ba38ea6067acd5933dd69b07eedd7aa63c4db22e6ef",
+      "extract_tool_version": "0.10"
     },
     {
       "id": "f8995a",
@@ -299,8 +299,8 @@
       "cols_file": "f8995a.cols.txt",
       "cols_sha256": "c6abd31f2fb127536ba771d57a44e1487beebf502d934a3ebb8614e0508370d4",
       "pages_file": "f8995a.pages.json",
-      "pages_sha256": "08b4d353410ec7842b970752731779472153da63b9eb14863fb66dcf303816fc",
-      "extract_tool_version": "0.8"
+      "pages_sha256": "a183bb4d1897a6c7408f6a34e5b63a1e904532641642f7aa07c87eecf03b811c",
+      "extract_tool_version": "0.10"
     },
     {
       "id": "fw2",
@@ -315,10 +315,10 @@
       "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
       "revision_locator": "PDF page 2, printed form year/revision",
       "cols_file": "fw2.cols.txt",
-      "cols_sha256": "46d70243a1e32e68572df918f6b00298cad197b5d25f9f7cf3bd3446770fad9f",
+      "cols_sha256": "2340d3c27b805bd389bfc5b9234ffa4c5e42c590b2fef8c77cb354fd686509fc",
       "pages_file": "fw2.pages.json",
-      "pages_sha256": "bedf81190674051ee1450e4d3d4aac18f1c9834413726a7bf29e186d5f021f2c",
-      "extract_tool_version": "0.8"
+      "pages_sha256": "7eaeb19b3201ab7b28bcb14007ce290aa393fd3b7d615a96de958f877d6b2a7e",
+      "extract_tool_version": "0.10"
     },
     {
       "id": "i1040gi",
@@ -333,10 +333,10 @@
       "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
       "revision_locator": "PDF page 1, printed heading and/or footer",
       "cols_file": "i1040gi.cols.txt",
-      "cols_sha256": "816ff8c5ed82d0349bfa79ae008e9b4492c04005a8702145dcd8cd0139eacc47",
+      "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420",
       "pages_file": "i1040gi.pages.json",
-      "pages_sha256": "bae0775a0bea2be272c564976934de70d21dbad2bcfcab64e0ee75a0140a48d2",
-      "extract_tool_version": "0.8"
+      "pages_sha256": "0ab036d010fb61c8d7c818bf2a1755fdf8a3da5389b03386615422a1976116de",
+      "extract_tool_version": "0.10"
     },
     {
       "id": "i1040gi-html",
@@ -364,10 +364,10 @@
       "revision": "2025; printed date 2026-01-23",
       "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
       "cols_file": "i1040s8812.cols.txt",
-      "cols_sha256": "f42213196c43d70da4dcd9e56f0f3340160eb841119046d63ad34e9c5722ef50",
+      "cols_sha256": "e6ba91f54df679c9c19c23169c369f14bff012ba2fe110c3973bde59676c1d45",
       "pages_file": "i1040s8812.pages.json",
-      "pages_sha256": "fd237a5a64b6bb2bd51ef04627efa6ecc0da28da300ba37958550a4895cacd32",
-      "extract_tool_version": "0.8"
+      "pages_sha256": "5e4cfb9be421a9f2fb522cb383b1a4cbbeb2ffa47c58204f6720dee6902f86bc",
+      "extract_tool_version": "0.10"
     },
     {
       "id": "i1040sb",
@@ -384,8 +384,8 @@
       "cols_file": "i1040sb.cols.txt",
       "cols_sha256": "0d38b25d416cb650ef264faf8c1f118dfa4666f3949fbba7120f8c04d4e6914e",
       "pages_file": "i1040sb.pages.json",
-      "pages_sha256": "00390633905b8c9dfd7d3523da7e52591e189c8b03f5f7384ef5b24d860c2eba",
-      "extract_tool_version": "0.8"
+      "pages_sha256": "6c8e66cc9b87e58586e4dd7548ca800f90424075609bcd07f55680d9402ae176",
+      "extract_tool_version": "0.10"
     },
     {
       "id": "i1040sca",
@@ -402,8 +402,8 @@
       "cols_file": "i1040sca.cols.txt",
       "cols_sha256": "5e2e018247f585c4ecb192b2c1a75e444bbf96b9653026722bc9720d70cc114c",
       "pages_file": "i1040sca.pages.json",
-      "pages_sha256": "2b59962cf1720a8db8d69e78eba80f393974b6e4cf8f6145378cdea0e9cab0fb",
-      "extract_tool_version": "0.8"
+      "pages_sha256": "2df2df3dda4525e7be7f65d99115f76bbc27578996d459715e981cbecdd72440",
+      "extract_tool_version": "0.10"
     },
     {
       "id": "i1040sca-html",
@@ -432,10 +432,10 @@
       "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
       "revision_locator": "PDF page 1, printed heading and/or footer",
       "cols_file": "i1040sd.cols.txt",
-      "cols_sha256": "ac7a0c9cbb9e635491b2505e7d04cea3381b892402408ddc97f8d49d80a6640b",
+      "cols_sha256": "0120691acc1fa8bf63941916a3b9423db8fba10d67f098a580fdc518c5fd08ec",
       "pages_file": "i1040sd.pages.json",
-      "pages_sha256": "051cfa918091bc0d5601735c939b7fa641f455d5a1079ea4dd48b48576bc4255",
-      "extract_tool_version": "0.8"
+      "pages_sha256": "e5ea2bb96df0cf460fb61d7b98f379fb448ba9300c120232b01f5252463d9610",
+      "extract_tool_version": "0.10"
     },
     {
       "id": "i1040sd-html",
@@ -466,8 +466,8 @@
       "cols_file": "i1099div.cols.txt",
       "cols_sha256": "d9599f4871f4d473ff9c582e205b5e9385bd865210e9c2af4c4aede3a33af4f3",
       "pages_file": "i1099div.pages.json",
-      "pages_sha256": "f20654d00d01c6340935d433ceede9908210e3cdd40512002dc839a2764638cb",
-      "extract_tool_version": "0.8"
+      "pages_sha256": "8f4cacdc521b324e311217308792075b1cff01714bee348e2259983517938e5f",
+      "extract_tool_version": "0.10"
     },
     {
       "id": "i1099int",
@@ -484,8 +484,8 @@
       "cols_file": "i1099int.cols.txt",
       "cols_sha256": "0dec64518f7cfa8ed72b507e6843c749182c3f2678249f7b545d2a1ba2edede1",
       "pages_file": "i1099int.pages.json",
-      "pages_sha256": "a77c01a979954ece3953f38ed53bb02278fba47761125a89eb094784d3d5b0cf",
-      "extract_tool_version": "0.8"
+      "pages_sha256": "c50e21946f1cae9e1310521368666e70d8f0b51203a0892cfefa43e5d02d6e6d",
+      "extract_tool_version": "0.10"
     },
     {
       "id": "i1116",
@@ -500,10 +500,10 @@
       "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
       "revision_locator": "PDF page 1, printed heading and/or footer",
       "cols_file": "i1116.cols.txt",
-      "cols_sha256": "cd35caf7283cb41a304b322a1438a3c7c78d3d692012065b8f15e84dd6340afa",
+      "cols_sha256": "4e9025bfc8a73bcfd687c7f45cb1a037cd39e7445319bbc71c748e12db68a46a",
       "pages_file": "i1116.pages.json",
-      "pages_sha256": "e6f360f226b85d4acecfbafdc7639b863414e35dcf80831e3f07a44539bb5483",
-      "extract_tool_version": "0.8"
+      "pages_sha256": "ab63e4de5bbac60e06f9216cf9538fb7c876e84cbc02b46863ac44f0bc4a0249",
+      "extract_tool_version": "0.10"
     },
     {
       "id": "i1116-html",
@@ -534,8 +534,8 @@
       "cols_file": "i8283.cols.txt",
       "cols_sha256": "53a4b54ff613d5c600c1af7ba5bf9024418fe89441ae8d629a955bd59aa6e3c7",
       "pages_file": "i8283.pages.json",
-      "pages_sha256": "7b0ce4eed46e0b10e09725f9ba59dd8f412fa28e6df1a3039be8ea5454e2d863",
-      "extract_tool_version": "0.8"
+      "pages_sha256": "17e0101b5a64b2bb2c437fcd52acc8c46c51bdc6eb3165ebe5657a1a03ea81a4",
+      "extract_tool_version": "0.10"
     },
     {
       "id": "i8283-html",
@@ -564,10 +564,10 @@
       "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
       "revision_locator": "PDF page 1, printed heading and/or footer",
       "cols_file": "i8949.cols.txt",
-      "cols_sha256": "7fca69da50288287e68c08bd90231a46194bd409c9f01f797573fd41f1ce0d2e",
+      "cols_sha256": "cabdc81a0677c0e4de4a89f9a71d328395c4cc839206ebadb56aeb54bf954b85",
       "pages_file": "i8949.pages.json",
-      "pages_sha256": "fa5a412664837403e9941d72eae3f9da6dbf722f36a4f346bdbf5c80b000e354",
-      "extract_tool_version": "0.8"
+      "pages_sha256": "88d4111bb41edffe99fd9b2cbe89869b58c4e4a7b06f31731008494a86d90ebe",
+      "extract_tool_version": "0.10"
     },
     {
       "id": "i8949-html",
@@ -598,8 +598,8 @@
       "cols_file": "i8959.cols.txt",
       "cols_sha256": "926d666edb486650f74da8863ef35ce5a9fe82c240719196138fdc8d40bf40df",
       "pages_file": "i8959.pages.json",
-      "pages_sha256": "049e61ad84a59d696369178d2d60f1fe096da4347b5ef182a81d5a19c04cf9e6",
-      "extract_tool_version": "0.8"
+      "pages_sha256": "e1e8e4ec989e7cb355f84714ea4b815be8cc1531f75ff1a7ae618099eb0a2138",
+      "extract_tool_version": "0.10"
     },
     {
       "id": "i8959-html",
@@ -628,10 +628,10 @@
       "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
       "revision_locator": "PDF page 1, printed heading and/or footer",
       "cols_file": "i8960.cols.txt",
-      "cols_sha256": "8a1dc76d9705fc3d61968c59c1fffd8891e70fb4bfd73236ffb615f6956f67e9",
+      "cols_sha256": "d6dc1f475c511790abb02d6d6cfff554a59b40c0da1c56eb2f26af4e3cb7fa51",
       "pages_file": "i8960.pages.json",
-      "pages_sha256": "c8cbc5a85aef906d19536c643f345704451437163d7bfe727cd924bfb53300bd",
-      "extract_tool_version": "0.8"
+      "pages_sha256": "6a00ed462c2bea5203cff68feef658e83db21240be98813cc7e3fbe9a5fdf8fa",
+      "extract_tool_version": "0.10"
     },
     {
       "id": "i8960-html",
@@ -660,10 +660,10 @@
       "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
       "revision_locator": "PDF page 1, printed heading and/or footer",
       "cols_file": "i8995.cols.txt",
-      "cols_sha256": "bfdf022f2a6af7d4bc0be6b72286aa5dc86aa8f0ddab24c4ad8ccce36f5e8683",
+      "cols_sha256": "6671a64ba0011f89e03eb5985954073dcd984b3f346495182916b0ecaa42ec1a",
       "pages_file": "i8995.pages.json",
-      "pages_sha256": "c992e8f7c7e44b0b05941826a0575fde8c0a7042183103d8f415768263eae7d3",
-      "extract_tool_version": "0.8"
+      "pages_sha256": "3ef40553968c174a65b1f88f562815134e758560e8439e9f1816ef11fb8637d6",
+      "extract_tool_version": "0.10"
     },
     {
       "id": "i8995-correction",
@@ -706,10 +706,10 @@
       "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
       "revision_locator": "PDF page 1, printed heading and/or footer",
       "cols_file": "i8995a.cols.txt",
-      "cols_sha256": "2f2c87d55edd0988bcbca2df0cd2db2023dbc7bf671f6eb566bd8c2da0ca9e83",
+      "cols_sha256": "1843d02e5f17b6a3f1ba9d1ab3304a5c0b6862916c5ff0e622e3ccb411a89af3",
       "pages_file": "i8995a.pages.json",
-      "pages_sha256": "0973cb868472ab7900c60a236038b1d7aeacd135379710829fdf457982e30b84",
-      "extract_tool_version": "0.8"
+      "pages_sha256": "646f9edfa9118bf8ed6b23305c4e06f67836984e270609a4d3d79ecb06fd1e6d",
+      "extract_tool_version": "0.10"
     },
     {
       "id": "i8995a-html",
@@ -738,10 +738,10 @@
       "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
       "revision_locator": "PDF page 1, printed heading and/or footer",
       "cols_file": "iw2w3.cols.txt",
-      "cols_sha256": "041478fca3ac83c1ab32e205578acf77d55143fd6c318cda2fbe6e33bf77e593",
+      "cols_sha256": "3876738db222e8abe6103f29d8a8654a3139b9896f97e325d50e80b87ed5b26a",
       "pages_file": "iw2w3.pages.json",
-      "pages_sha256": "c455741f482c5b98e5d358ecb92d10e04c146f83deacfa4f2596e542e7fddbdd",
-      "extract_tool_version": "0.8"
+      "pages_sha256": "31212f9999e9c5dc02b0e116f3580812beb63580ffb70a04af8b19d6632ae545",
+      "extract_tool_version": "0.10"
     },
     {
       "id": "p505-2026",
@@ -758,10 +758,10 @@
       "revision_status": "Printed year/revision inspected in extracted text; archived as Stage 0 P14 evidence only; content review tracked separately in PREMISES.md",
       "revision_locator": "PDF page 1, printed heading and/or footer",
       "cols_file": "p505-2026.cols.txt",
-      "cols_sha256": "754f0a4615cabe59a70302fdad78e94fabefd5544c7ef4eef39dfe42f3649431",
+      "cols_sha256": "304473ab0c9e7f21359bbd0d45965068cd9a04cad73e47dead4a1b160c6f4871",
       "pages_file": "p505-2026.pages.json",
-      "pages_sha256": "56324a6a1554363dba1f4ff7c3c267dd6b339ee30dd810845e13d8d858e97ea3",
-      "extract_tool_version": "0.8"
+      "pages_sha256": "ea1d708ddf13330b4ff5bd54852ddbade8a9af985b7ac762f9a061f56aa4ce70",
+      "extract_tool_version": "0.10"
     },
     {
       "id": "p526",
@@ -776,10 +776,10 @@
       "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
       "revision_locator": "PDF page 1, printed heading and/or footer",
       "cols_file": "p526.cols.txt",
-      "cols_sha256": "e7a748ce493406c4681a40c1afbeecd8cfe13d0192e38d951ede3ddbdcfba58e",
+      "cols_sha256": "f95b6955fefaad988c4dacf20b5169ea5d8cd4a54fe8b1ff85a7f5cc1b721a0e",
       "pages_file": "p526.pages.json",
-      "pages_sha256": "53a08dd9b2c6c4468c82e7db3eb16143c31458d81164a3d15f1fc8439369d79c",
-      "extract_tool_version": "0.8"
+      "pages_sha256": "a01dfeee9577326e4f4638b1c53477a0a1b5ecf494fdb460f76425bc955583e0",
+      "extract_tool_version": "0.10"
     },
     {
       "id": "p550",
@@ -794,10 +794,10 @@
       "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
       "revision_locator": "PDF page 1, printed heading and/or footer",
       "cols_file": "p550.cols.txt",
-      "cols_sha256": "26519526e1c25d6db75cacbc0840fd0eb92eb9b0ad166c4efd0fda38b69d4e4c",
+      "cols_sha256": "7629580e9cb35aa5f67e5d7c035b45850164eb1fe458f8acaa2781578ad0bf51",
       "pages_file": "p550.pages.json",
-      "pages_sha256": "68e01167a8082f5d5e2c6d3ad5d7d952eb80d9722f2c6f1701012f6e77fa1302",
-      "extract_tool_version": "0.8"
+      "pages_sha256": "047228c81d6a5ac84f493d3c772c46f867149ac5366eab23d4258bae09ddef34",
+      "extract_tool_version": "0.10"
     },
     {
       "id": "p561",
@@ -814,8 +814,8 @@
       "cols_file": "p561.cols.txt",
       "cols_sha256": "123292e5ff33ecc1aefc310cf0933907e6ff3c07de80c7a3d60a5d76514b4e57",
       "pages_file": "p561.pages.json",
-      "pages_sha256": "cb724ace43bbde1ff1e96c7a25458a053d1cf0798719f9d6713ab069fbedc84e",
-      "extract_tool_version": "0.8"
+      "pages_sha256": "aa5a2efc23d99a10f94211f7ba8f6b5e590e2962d3c68fa2599aa48e395b4879",
+      "extract_tool_version": "0.10"
     },
     {
       "id": "rp-2024-40",
@@ -832,10 +832,10 @@
       "revision_status": "Printed identification inspected in extracted text; archived for the Stage 1 rate schedule (Tax Table midpoint conjecture) and parameter cross-check; content review tracked in the form and parameter citations",
       "revision_locator": "PDF page 1 (heading); \u00a73.01 Tax Rate Tables",
       "cols_file": "rp-2024-40.cols.txt",
-      "cols_sha256": "811839dc6e6e59ddfaf6fa6ec4ca95973dc7580c3ad7d4644367de965281f5c5",
+      "cols_sha256": "fc1ad85af631cb8c6e628604590c2edf4794db9fe94244682737ff577799298e",
       "pages_file": "rp-2024-40.pages.json",
-      "pages_sha256": "c030787550b05cf1e119650e352300a1d4d5edd27184c12616f1671456fec761",
-      "extract_tool_version": "0.8"
+      "pages_sha256": "b0ffd05c3929f8faacde01daa72f021e048bdf6709bf735b81c06c90aae3be8d",
+      "extract_tool_version": "0.10"
     }
   ]
 }

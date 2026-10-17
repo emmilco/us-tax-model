@@ -15,6 +15,14 @@ text for columnar prose and keep the layout text for worksheets and tables:
     prose    two or more columns, most lines are sentences, few lines cross a gutter
     table    most lines are short (numbers, labels, worksheet cells)
     single   one column; the layout text already reads in order
+    mixed    regions with different column structures (a table above prose, a title box
+             beside a caution); such a page is cut into horizontal bands at full-width gaps,
+             each band with its own gutters, and is reclassified from its bands: prose when a
+             band is columnar prose and the others are prose or single, single when every
+             band is single, mixed otherwise
+
+A line crosses a gutter only when it reaches past both of its edges; a line starting inside
+a gutter (an item number set out into it) belongs to the column on its right.
 
     extract_text.py <file.pdf> --out <file.cols.txt> [--pages <file.pages.json>]
 
@@ -29,7 +37,7 @@ import subprocess
 import tempfile
 from pathlib import Path
 
-TOOL_VERSION = "0.8"
+TOOL_VERSION = "0.10"
 GUTTER_MIN_WIDTH = 8.0     # points of near-empty horizontal space that count as a gutter
 GUTTER_COVER_SHARE = 0.08  # a gutter bin may be crossed by at most this share of body lines
 BODY_WORDS = 4             # a line with fewer words is a label, a number or a cell
@@ -155,12 +163,12 @@ def place(line, guts):
     col = 0
     for g0, g1 in guts:
         mid = (g0 + g1) / 2
-        if line.x1 <= mid:
-            return col
-        if line.x0 >= mid:
-            col += 1
+        if line.x0 < g0 and line.x1 > g1:
+            return None  # reaches past both edges: crosses this gutter
+        if line.x0 >= mid or line.x0 >= g0:
+            col += 1  # right of the gutter, or starting inside it (an outdented item number)
             continue
-        return None  # crosses this gutter
+        return col
     return col
 
 
@@ -249,13 +257,75 @@ def classify(lines, guts):
     return "prose" if span_words / total <= PROSE_SPAN_SHARE else "mixed"
 
 
+BAND_GAP = 3.0         # points of vertical space no line occupies that may separate two bands
+BAND_MIN_BODY = 6      # a band with fewer body lines cannot fix its own gutters and joins the band above
+
+
+def compatible(a, b):
+    """Two gutter sets describe the same columns: as many gutters, pairwise overlapping."""
+    return len(a) == len(b) and all(g0 < h1 and h0 < g1 for (g0, g1), (h0, h1) in zip(a, b))
+
+
+def bands(width, lines):
+    """A mixed page as horizontal bands, each with its own gutters. The page is cut wherever
+    a vertical gap of at least BAND_GAP crosses its full width; a band too small to fix its
+    gutters joins the band above, and neighbouring bands with compatible gutters merge, so an
+    accidental gap across all columns of one region does not split it."""
+    runs, run, bottom = [], [], None
+    for l in sorted(lines, key=lambda l: (l.y0, l.x0)):
+        if run and l.y0 > bottom + BAND_GAP:
+            runs.append(run); run = []
+        run.append(l)
+        bottom = l.y1 if bottom is None or not run[:-1] else max(bottom, l.y1)
+    if run:
+        runs.append(run)
+    out = []  # [raw lines, determining lines, gutters]; gutters come from the determining lines only
+    for run in runs:
+        determined = sum(1 for l in run if len(l.words) >= BODY_WORDS) >= BAND_MIN_BODY
+        guts = analyze(width, run)[1] if determined else None
+        if out and guts is None:
+            out[-1][0] = out[-1][0] + run
+        elif out and out[-1][2] is not None and compatible(out[-1][2], guts):
+            out[-1][0] = out[-1][0] + run
+            out[-1][1] = out[-1][1] + run
+            out[-1][2] = analyze(width, out[-1][1])[1]
+        else:
+            out.append([run, run if determined else [], guts])
+    parts = []
+    for raw, _, guts in out:
+        guts = guts if guts is not None else analyze(width, raw)[1]
+        parts.append((split_at_gutters(raw, guts), guts))
+    return parts
+
+
+def classify_bands(parts):
+    """A banded page reads as prose when at least one band is columnar prose and every other
+    band is prose or a single column; as single when every band is a single column (a flow
+    chart, a worksheet); otherwise it stays mixed."""
+    kinds = {classify(l, g) for l, g in parts}
+    if kinds == {"single"}:
+        return "single"
+    return "prose" if "prose" in kinds and kinds <= {"prose", "single"} else "mixed"
+
+
 def extract(pdf):
     texts, kinds, columns = [], [], []
     for width, height, raw in bbox_pages(pdf):
         lines, guts = analyze(width, raw)
+        kind = classify(lines, guts)
+        if kind == "mixed":
+            body = [l for l in raw if l.y0 < FOOTER_BAND * height]
+            footer = [l for l in raw if l.y0 >= FOOTER_BAND * height]
+            parts = bands(width, body)
+            ordered = [l for blines, bguts in parts for l in order(width, float("inf"), blines, bguts)]
+            ordered += sorted(analyze(width, footer)[0], key=lambda l: (l.y0, l.x0))
+            texts.append(paragraphs(ordered))
+            kinds.append(classify_bands(parts))
+            columns.append(max(len(g) + 1 for _, g in parts))
+            continue
         ordered = order(width, height, lines, guts)
         texts.append(paragraphs(ordered))
-        kinds.append(classify(lines, guts))
+        kinds.append(kind)
         columns.append(len(guts) + 1 if lines else 0)
     return texts, kinds, columns
 

@@ -229,8 +229,10 @@ No prose before or after the YAML.
 
 
 def extract(text):
-    m = re.search(r"```(?:yaml)?\s*\n(.*?)```", text, re.S)
-    doc = yaml.safe_load(m.group(1) if m else text)
+    # A response may hold an abandoned draft block before the finished one; the answer is the last block.
+    blocks = re.findall(r"```(?:yaml)?\s*\n(.*?)```", text, re.S)
+    m = blocks[-1] if blocks else None
+    doc = yaml.safe_load(m if m is not None else text)
     if not isinstance(doc, dict) or not isinstance(doc.get("lines"), list):
         raise ValueError("response has no `lines`")
     out = {}

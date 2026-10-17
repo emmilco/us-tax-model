@@ -5,13 +5,13 @@
   {
    "printed": "credit",
    "restated": "Choose — [helper \"Positive foreign taxes\" = true → helper \"Smaller of ftc.taxes, f1040.line16\"] [helper \"Positive foreign taxes\" = false → helper \"Year parameter sales.zero\"]",
-   "model": "The structure matches the text: the smaller of total foreign tax or regular tax, zero when there is no tax, and a refusal when the election conditions fail. However, it depends on 'regular tax', which the text defines only by reference to the line 20 instructions, and those are not provided.",
+   "model": "The structure (smaller of foreign tax or regular tax, zero if no foreign tax, refusal to Form 1116 when the election fails) is consistent with the text. However, it depends on the 'limited' operand, whose definition of regular tax is in line 20 instructions that are not provided.",
    "ruling": "Ruling: representation; project retained. Regular tax for the election is \"your total U.S. income tax against which the credit is allowed (regular tax liability, as defined in section 26(b)(1))\", excluding the net investment income tax (i1116 p. 25, line 20), which on the return in this slice is Form 1040 line 16: the additional line-16 taxes are refused by `scope.other_line16` and the net investment income and additional Medicare taxes sit on Schedule 2, after line 16. No change to the data."
   },
   {
    "printed": "limited",
    "restated": "Enter the smaller of helper \"Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and Form 1099-DIV box 7\" or f1040 line 16.",
-   "model": "The text says to enter 'the smaller of (a) your total foreign tax, or (b) your regular tax. See the instructions for line 20, later, for how to figure your regular tax.' The line 20 instructions are not in the pages given, so it cannot be confirmed that regular tax equals f1040 line 16.",
+   "model": "The text says to enter 'the smaller of (a) your total foreign tax, or (b) your regular tax. See the instructions for line 20, later, for how to figure your regular tax.' Those line 20 instructions are not provided, so it cannot be confirmed that Form 1040 line 16 equals 'regular tax' for this purpose.",
    "ruling": "Ruling: representation; project retained. Regular tax for the election is \"your total U.S. income tax against which the credit is allowed (regular tax liability, as defined in section 26(b)(1))\", excluding the net investment income tax (i1116 p. 25, line 20), which on the return in this slice is Form 1040 line 16: the additional line-16 taxes are refused by `scope.other_line16` and the net investment income and additional Medicare taxes sit on Schedule 2, after line 16. No change to the data."
   }
  ]

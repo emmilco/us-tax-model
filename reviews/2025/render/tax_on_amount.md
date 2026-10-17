@@ -16,29 +16,29 @@ The rendered English of every printed line of `Tax on an amount — Tax Table or
 
 | document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
 | --- | --- | --- | --- | --- | --- | --- |
-| i1040gi | 2025; printed date 2026-02-25 | 68, 80 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | - | 816ff8c5ed82d0349bfa79ae008e9b4492c04005a8702145dcd8cd0139eacc47 |
+| i1040gi | 2025; printed date 2026-02-25 | 68, 80 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | - | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
 
 ## Lines
 
 ### (a) (amount) — Amount to compute the tax on
 Status: **MATCH**
 
-Model: The worksheet Note says to 'enter the amount from that form or worksheet in column (a) of the row that applies to the amount you are looking up', so the amount comes from the calling line.
+Model: The Note on the Tax Computation Worksheet says to 'enter the amount from that form or worksheet in column (a)' when figuring tax on an amount from another form or worksheet. That matches an input supplied by the calling line.
 
 ### (a) (table_tax) — Use the Tax Table
 Status: **MATCH**
 
-Model: The Tax Table is read by finding the 'At least / But less than' row for the amount and reading down the filing-status column ('The amount shown where the taxable income line and filing status column meet'). The rule that a qualifying surviving spouse uses the married filing jointly column ('This column must also be used by a qualifying surviving spouse') is assumed to be handled by the table lookup for the status.
+Model: The Tax Table says to 'find the ... taxable income line', then 'find the column for' the filing status and read where they meet. That matches a lookup by amount and filing status. The table marks the married filing jointly column with '* This column must also be used by a qualifying surviving spouse'; the restatement leaves this to the filing-status lookup.
 
 ### (a) (worksheet_tax) — Use the Tax Computation Worksheet
 Status: **MATCH**
 
-Model: The Tax Computation Worksheet picks a section by filing status (Sections A–D) and a row by the amount in column (a), then gives tax as '(a) by (b)' minus '(d)'. The Note allows it to be used 'to figure the tax on an amount from another form or worksheet', which is what this line does.
+Model: The worksheet Note says to 'enter the amount from that form or worksheet in column (a) of the row that applies' and 'Enter the result on the appropriate line of the form or worksheet that you are completing'. Each Section is chosen by filing status, which matches computing the worksheet tax with this amount and status.
 
 ### (b) — Tax on the amount
 Status: **MATCH**
 
-Model: Every worksheet section starts at 'At least $100,000', so the worksheet covers amounts of $100,000 or more and the Tax Table covers amounts below that. The $100,000 split is consistent with this. The general rule on which method to use is in 'the instructions for line 16', which were not provided, so the split is inferred from where the worksheet rows begin.
+Model: Every Section of the Tax Computation Worksheet starts at 'At least $100,000', so amounts below $100,000 use the Tax Table and amounts of $100,000 or more use the worksheet. That matches the strict less-than-$100,000 test. The line 16 instructions mentioned in the CAUTION notes are not in the text provided, but the worksheet rows set the same boundary.
 
 ## Raw response
 
@@ -47,15 +47,15 @@ Model: Every worksheet section starts at 'At least $100,000', so the worksheet c
 lines:
   - key: "(a) (amount)"
     status: MATCH
-    reason: "The worksheet Note says to 'enter the amount from that form or worksheet in column (a) of the row that applies to the amount you are looking up', so the amount comes from the calling line."
+    reason: "The Note on the Tax Computation Worksheet says to 'enter the amount from that form or worksheet in column (a)' when figuring tax on an amount from another form or worksheet. That matches an input supplied by the calling line."
   - key: "(a) (table_tax)"
     status: MATCH
-    reason: "The Tax Table is read by finding the 'At least / But less than' row for the amount and reading down the filing-status column ('The amount shown where the taxable income line and filing status column meet'). The rule that a qualifying surviving spouse uses the married filing jointly column ('This column must also be used by a qualifying surviving spouse') is assumed to be handled by the table lookup for the status."
+    reason: "The Tax Table says to 'find the ... taxable income line', then 'find the column for' the filing status and read where they meet. That matches a lookup by amount and filing status. The table marks the married filing jointly column with '* This column must also be used by a qualifying surviving spouse'; the restatement leaves this to the filing-status lookup."
   - key: "(a) (worksheet_tax)"
     status: MATCH
-    reason: "The Tax Computation Worksheet picks a section by filing status (Sections A–D) and a row by the amount in column (a), then gives tax as '(a) by (b)' minus '(d)'. The Note allows it to be used 'to figure the tax on an amount from another form or worksheet', which is what this line does."
+    reason: "The worksheet Note says to 'enter the amount from that form or worksheet in column (a) of the row that applies' and 'Enter the result on the appropriate line of the form or worksheet that you are completing'. Each Section is chosen by filing status, which matches computing the worksheet tax with this amount and status."
   - key: "(b)"
     status: MATCH
-    reason: "Every worksheet section starts at 'At least $100,000', so the worksheet covers amounts of $100,000 or more and the Tax Table covers amounts below that. The $100,000 split is consistent with this. The general rule on which method to use is in 'the instructions for line 16', which were not provided, so the split is inferred from where the worksheet rows begin."
+    reason: "Every Section of the Tax Computation Worksheet starts at 'At least $100,000', so amounts below $100,000 use the Tax Table and amounts of $100,000 or more use the worksheet. That matches the strict less-than-$100,000 test. The line 16 instructions mentioned in the CAUTION notes are not in the text provided, but the worksheet rows set the same boundary."
 ```
 ```

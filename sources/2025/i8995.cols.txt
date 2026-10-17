@@ -134,20 +134,19 @@ Instructions for Form 8995 (2025)
 QBI Flow Chart (continued)
 Figure 2. Use this chart to determine if an item of income, gain, deduction, or loss is included in QBI.
 11. Is the item an amount received for reasonable compensation from an S corporation, an amount received as a guaranteed payment, a payment received for services other than in a capacity as a partner under section 707(a), or an amount with respect to which a deduction is allowable to the taxpayer as a qualified tip under section 224(a) for the taxable year?
+Yes
+No
 No
 12. Is the item related to an SSTB?
 Yes
+Yes
 13. Is your taxable income at or below the threshold?
 No
-14. Is your taxable income above the threshold and within the
+14. Is your taxable income above the threshold and within the phase-in range? If “Yes,” this item is partially includible in QBI. Use Form 8995-A, instead, and complete Schedule A (Form 8995-A).
 Yes
-No
-Yes
-Yes
-phase-in range? If “Yes,” this item is partially includible in QBI. Use Form 8995-A, instead, and complete Schedule A (Form 8995-A).
-No
-This item is QBI.
 This item isn’t QBI.
+This item is QBI.
+No
 7
 Instructions for Form 8995 (2025)
 Tracking Losses or Deductions Suspended by Other Provisions
@@ -195,17 +194,9 @@ Code
 Part I
 Suspended & Allowed Losses
 B. QBI fixed percentage
-A. Total suspended
-C. Prior year
-losses in year
-D. Allowed losses
-suspended
-of disallowance
-limited by other
-losses allowed
+A. Total suspended losses in year of disallowance
 0.00 %
 1a. Pre-2018 b. 2018 c. 2019 d. 2020 e. 2021 f. 2022 g. 2023 h. 20XX 2. Total
-% % % % % % %
 Non-QBI Suspended and Allowed Losses
 Part II
 Allocable to Non-QBI
@@ -213,7 +204,6 @@ F. Allocated E. prior year Suspended suspended losses losses allowed
 G(i). Utilized 2018
 G(ii). Utilized 2019
 G(iii). Utilized 2020
-G(iv). Utilized 2021
 1a. Pre-2018 b. 2018 c. 2019 d. 2020 e. 2021 f. 2022 g. 2023 h. 20XX 2. Total
 3. Allocation of allowed losses limited by other Code sections . . .
 Part III
@@ -221,17 +211,20 @@ QBI Suspended and Allowed Losses
 Allocable to QBI
 J. Allocated I. prior year Suspended suspended losses losses allowed
 K(iii). Utilized 2020
-K(iv). Utilized 2021
 K(i). Utilized 2018
 K(ii). Utilized 2019
 1a. Pre-2018 b. 2018 c. 2019 d. 2020 e. 2021 f. 2022 g. 2023 h. 20XX 2. Total 3. Allocation of allowed losses limited by other Code sections . . .
 4. Total prior year suspended losses allowed that must be included in QBI . . . . . . . . .
-Code sections
+C. Prior year suspended losses allowed
+D. Allowed losses limited by other Code sections
+% % % % % % %
 H. Remaining suspended losses
+G(iv). Utilized 2021
 G(v). Utilized 2022
 G(vi). Utilized 2023
 G(vii). Utilized 20XX
 L. Remaining suspended losses
+K(iv). Utilized 2021
 K(v). Utilized 2022
 K(vi). Utilized 2023
 K(vii). Utilized 20XX

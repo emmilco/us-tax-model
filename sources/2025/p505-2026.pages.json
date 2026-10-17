@@ -1,5 +1,5 @@
 {
- "tool_version": "0.8",
+ "tool_version": "0.10",
  "pages": [
   "single",
   "prose",
@@ -21,7 +21,7 @@
   "single",
   "single",
   "prose",
-  "mixed",
+  "prose",
   "prose",
   "prose",
   "prose",
@@ -42,7 +42,7 @@
   "single",
   "table",
   "table",
-  "mixed",
+  "single",
   "single",
   "prose",
   "prose",
@@ -92,7 +92,7 @@
   1,
   1,
   2,
-  2,
+  1,
   1,
   3,
   3,

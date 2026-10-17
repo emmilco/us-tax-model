@@ -271,39 +271,38 @@ Tax Withholding for 2026
 Note: Don’t use this chart if you are 65 or older or blind, or if you will itemize your deductions or claim tax credits. Instead, see the discussions in this chapter under Exemption From Withholding. If none of these situations apply to you, but you have adjustments to income, use the 2026 Estimated Tax Worksheet.
 Start Here
 For 2025, did you have a right to a refund of ALL federal income tax withheld because you had NO tax liability?
-No
-Yes
 You CAN’T claim exemption from withholding.
+No
 Yes
-Will your 2026 total income be more than the amount shown below for
+Yes
+Will your 2026 total income be more than the amount shown below for your filing status?
 For 2026, will someone (such as your parent) be able to claim you as a dependent?
-No
 Yes
-No
 Will your 2026 income be more than $1,350?
 Yes
 Will your 2026 income include more than $450 of unearned income (interest, dividends, etc.)?
-Yes
 No
-income tax, not to social security or Medicare tax.
-You can claim exemption from withholding for 2026 only if both of the following situations apply. • For 2025, you had a right to a refund of all federal income tax withheld because you had no tax liability. • For 2026, you expect a refund of all federal income tax withheld because you expect to have no tax liability.
-Use Figure 1-A to help you decide whether you can claim exemption from withholding. Don’t use Figure 1-A if you: • Are 65 or older, • Are blind,
-your filing status?
 Single Head of household Married filing separately for BOTH 2025 and 2026 Other married status (include BOTH spouses’ income whether filing separately or jointly) Qualifying surviving spouse
+$16,100 24,150
+No
+16,100
+32,200 32,200
+No
+No
 You CAN’T claim exemption from withholding.
+You CAN claim exemption from withholding.
+Yes
 No
 Will your 2026 total income be $16,100 or less?
 Yes
+income tax, not to social security or Medicare tax.
+You can claim exemption from withholding for 2026 only if both of the following situations apply. • For 2025, you had a right to a refund of all federal income tax withheld because you had no tax liability. • For 2026, you expect a refund of all federal income tax withheld because you expect to have no tax liability.
+Use Figure 1-A to help you decide whether you can claim exemption from withholding. Don’t use Figure 1-A if you: • Are 65 or older, • Are blind,
 • Will itemize deductions on your 2026 re-
 turn, or • Will claim any tax credits on your 2026 return.
 These situations are discussed later.
 Students. If you are a student, you are not automatically exempt. If you work only part time or during the summer, you may qualify for exemption from withholding.
 Example 1. You are a high school student and expect to earn $2,500 from a summer job. You don’t expect to have any other income during the year, and your parents will be able to claim you as a dependent on their tax return. You worked last summer and had $375 federal
-$16,100 24,150
-16,100
-32,200 32,200
-No
-You CAN claim exemption from withholding.
 income tax withheld from your pay. The entire $375 was refunded when you filed your 2025 return. Using Figure 1-A, you find that you can claim exemption from withholding.
 Example 2. The facts are the same as in Example 1, except that you also have a savings account and expect to have $475 interest income during the year. Using Figure 1-A, you find that you can’t claim exemption from withholding because your unearned income will be more than $450 and your total income will be more than $1,350.
 You may have to file a tax return, even if you are exempt from withholding. See Pub. 501 to see whether you must file a
@@ -1858,21 +1857,13 @@ Publication 505 (2026)
 Worksheet 2-9. 2026 Annualized Estimated Tax Worksheet (Continued)
 Keep for Your Records
 Section B (For Figuring Your Annualized Estimated Self-Employment Tax)—Complete each column after end of period shown.
-(a)
-(b)
+(a) 1/1/26–3/31/26
 (Form 1040 or 1040-SR filers only)
-1/1/26–3/31/26
-(c)
-(d)
-1/1/26–5/31/26
 33. Net earnings from self-employment for the period
 ..........
 33.
 $46,125
 34.
-1/1/26–8/31/26
-1/1/26–12/31/26
-$76,875
 34. Prorated social security tax limit . . . . . . . . . . . . . . . . . . . . . . .
 35. Enter actual wages for the period subject to social security tax or the 6.2% portion of the tier 1 railroad retirement tax. Exception: If you file Form 4137 or Form 8919, see instructions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 35.
@@ -1881,17 +1872,11 @@ $76,875
 37. Annualization amounts . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 37.
 0.496
-$123,000
-$184,500
-0.2976
 38. Multiply line 37 by the smaller of line 33 or line 36 . . . . . . . . . .
 38.
 39. Annualization amounts . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 39.
 0.116
-0.186
-0.124
-0.0696
 40. Multiply line 33 by line 39 . . . . . . . . . . . . . . . . . . . . . . . . . . .
 40.
 41. Add lines 38 and 40. Enter the result here and on line 17 of Section A . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
@@ -1899,11 +1884,21 @@ $184,500
 42. Annualization amounts . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 42.
 8
+43. Deduction for self-employment tax. Divide line 41 by line 42. Enter the result here. Use this result to figure your AGI on line 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+43.
+(b) 1/1/26–5/31/26
+(c) 1/1/26–8/31/26
+(d) 1/1/26–12/31/26
+$76,875
+$123,000
+$184,500
+0.2976
+0.186
+0.124
+0.0696
 0.0435
 0.029
 4.8
-43. Deduction for self-employment tax. Divide line 41 by line 42. Enter the result here. Use this result to figure your AGI on line 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-43.
 3
 2
 Publication 505 (2026)
@@ -1944,12 +1939,10 @@ b. Enter the smaller of line 1 or: • $201,775 if Single or Married filing sepa
 b.
 c. Enter the smaller of line 10 or line 13b . . . . . . . . . . . . . . . . .
 c.
-14. Enter the larger of line 13a or 13c . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+14. Enter the larger of line 13a or 13c . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . Note: If line 11 and line 12 are the same, skip line 15 and go to line 16 .
 14.
-Note: If line 11 and line 12 are the same, skip line 15 and go to line 16 .
-15. Subtract line 12 from line 11. This is the amount taxed at 0% . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+15. Subtract line 12 from line 11. This is the amount taxed at 0% . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . Note: If lines 1 and 11 are the same, skip lines 16 through 36 and go to line 37.
 15.
-Note: If lines 1 and 11 are the same, skip lines 16 through 36 and go to line 37.
 16. Enter the smaller of line 1 or line 9
 ...................................
 16.
@@ -1968,12 +1961,13 @@ Note: If lines 1 and 11 are the same, skip lines 16 through 36 and go to line 37
 23. Enter the smaller of line 18 or line 22 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 23.
 24. Multiply line 23 by 15% (0.15) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+24.
 25. Add lines 17 and 23. If line 1 equals the sum of lines 21 and 23, skip lines 26 through 36 and go to line 37 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 25.
 26. Subtract line 25 from line 16 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-24.
 26.
 27. Multiply line 26 by 20% (0.20) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+27.
 28. Enter the smaller of line 3 or line 6
 ...................................
 28.
@@ -1985,12 +1979,11 @@ Note: If lines 1 and 11 are the same, skip lines 16 through 36 and go to line 37
 31. Subtract line 30 from line 29. If zero or less, enter -0- . . . . . . . . . . . . . . . . . . . . . . .
 31.
 32. Subtract line 31 from line 28. If zero or less, enter -0- . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-27.
 32.
 33. Multiply line 32 by 25% (0.25) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . Note: If line 5 is zero or blank, skip lines 34 through 36 and go to line 37.
+33.
 ....................................................
 34. Add lines 14, 15, 23, 26, and 32
-33.
 34.
 35. Subtract line 34 from line 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 35.
