@@ -104,7 +104,12 @@ export function differential(): number {
   }
   console.log(`differential: entry sheets written for ${returnCases.length} whole-return cases (reports/2025/differential.<case>.md)`);
   if (!existsSync(DIR)) { console.log("differential: no calculator records yet; comparison pending."); return 0; }
-  const files = readdirSync(DIR).filter((f) => f.endsWith(".json")).sort();
+  // Calculator records are objects with a `calculator` field; the directory also holds
+  // the engine differential's investigation log, which is a JSON array.
+  const files = readdirSync(DIR).filter((f) => f.endsWith(".json")).sort().filter((f) => {
+    const parsed = JSON.parse(readFileSync(join(DIR, f), "utf8")) as unknown;
+    return typeof parsed === "object" && parsed !== null && !Array.isArray(parsed) && "calculator" in parsed;
+  });
   if (files.length === 0) { console.log("differential: no calculator records yet; comparison pending."); return 0; }
   const lines: string[] = [];
   lines.push("# Differential comparison — recorded independent calculators", "");

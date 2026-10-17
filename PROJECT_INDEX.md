@@ -26,6 +26,7 @@ trust statement in spec 3.
 | `sources/2025/` | Archived IRS sources (PDFs and instruction web-page snapshots), extracted text, hash/revision manifest, and Stage 0 premise findings; sources require revision review before encoding |
 | `BUG_INVENTORY.md` | Append-only record of every defect caught, with cause, catch method and pattern tags (spec 6.6); `tools/check_bug_inventory.py` enforces append-only in `check-all` |
 | `tools/` | Source fetcher (`fetch_sources.py`), source catalog, Tax Table extractor (`extract_tax_table.py`), bug-inventory check (`check_bug_inventory.py`); fixture generator and year diff land here or in `engine/` as they grow |
+| `tools/engines/` | Engine differential (spec 6.5, class C at scale): case generator, adapters for PolicyEngine-US and Tax-Calculator, comparison and report; engines install into the git-ignored `.engines/` via `setup.sh` |
 | `schema/` | JSON Schema for all canonical data (`data.schema.json`) |
 | `forms/2025/` | Form and worksheet definitions as YAML: `f1040.yaml` (the implemented slice, lines 1a–37), `qdcg.yaml`, `tcw.yaml`, `tax_on_amount.yaml`; Stage 2 adds `w2.yaml`, `person.yaml`, `s3.yaml`; Stage 3 adds `sales.yaml` and `sd.yaml`; Stage 4 adds the remaining forms |
 | `params/2025.yaml` | Year parameters (bracket ceilings, Tax Computation Worksheet rows, table boundary), each with a citation |
@@ -33,9 +34,10 @@ trust statement in spec 3.
 | `ambiguities/2025.yaml` | Ambiguity register (readings chosen where the instructions are silent) |
 | `engine/` | TypeScript: build (YAML to canonical JSON), checker, renderer, evaluator, interview, finite path checks, CLI integration tests, and the command-line program (the backend; every client and integration test goes through it) |
 | `lean/` | Lean 4: atom semantics over the integers, lemmas, and the reference evaluator that reads the same canonical JSON |
+| `fixtures/2025/differential/` | Calculator records (class C) and `engine_investigations.json`, the cited causes for engine differences |
 | `fixtures/2025/stage*.json` | Test fixtures: covering cases with inputs, expected values, evidence labels and notes; Stage 3 adds official column-arithmetic examples; Stage 5 adds whole-return cases (`stage5.json`) and the calculator-record directory (`differential/`); synthetic values remain regressions pending human hand-work |
 | `rendered/2025/` | Committed renderer output (each line beside its IRS label and citation) for line-by-line review |
-| `reports/2025/` | Generated reports: Tax Table midpoint conjecture, branch/gate/arithmetic coverage, per-line evidence coverage, evaluator agreement, mutation score, differential comparison and entry sheets, Stage 2–5 review packets and CLI values sheets |
+| `reports/2025/` | Generated reports: Tax Table midpoint conjecture, branch/gate/arithmetic coverage, per-line evidence coverage, evaluator agreement, mutation score, calculator differential entry sheets, engine differential (`engine_differential.md`), Stage 2–5 review packets and CLI values sheets |
 
 ## Naming conventions
 

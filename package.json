@@ -14,9 +14,10 @@
     "record-fixtures": "npm run compile --silent && node engine/dist/main.js record-fixtures",
     "fixtures": "node engine/dist/main.js test-fixtures",
     "coverage": "node engine/dist/main.js coverage",
-    "check-all": "python3 tools/fetch_sources.py && python3 tools/check_bug_inventory.py && npm run build --silent && npm run render --silent && node engine/dist/main.js conjecture && node engine/dist/main.js test-fixtures && node engine/dist/main.js test-integration && node engine/dist/main.js coverage && node engine/dist/main.js evidence && node engine/dist/main.js differential && node engine/dist/main.js mutate && npm run compare --silent && node engine/dist/main.js review-stage2 && node engine/dist/main.js review-stage3 && node engine/dist/main.js review-stage4 && node engine/dist/main.js review-stage5",
+    "check-all": "python3 tools/fetch_sources.py && python3 tools/check_bug_inventory.py && npm run build --silent && npm run render --silent && node engine/dist/main.js conjecture && node engine/dist/main.js test-fixtures && node engine/dist/main.js test-integration && node engine/dist/main.js coverage && node engine/dist/main.js evidence && node engine/dist/main.js differential && tools/engines/run.sh && node engine/dist/main.js mutate && npm run compare --silent && node engine/dist/main.js review-stage2 && node engine/dist/main.js review-stage3 && node engine/dist/main.js review-stage4 && node engine/dist/main.js review-stage5",
     "compare": "cd lean && lake build taxeval >/dev/null 2>&1 && cd .. && npm run compile --silent && node engine/dist/main.js compare",
-    "mutate": "node engine/dist/main.js mutate"
+    "mutate": "node engine/dist/main.js mutate",
+    "engine-differential": "tools/engines/run.sh"
   },
   "dependencies": {
     "ajv": "^8.20.0",

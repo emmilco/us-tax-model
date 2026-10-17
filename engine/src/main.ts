@@ -4,6 +4,7 @@
 //   node engine/dist/main.js render                render worksheets for review
 //   node engine/dist/main.js eval --inputs F [--json]
 //                                                  evaluate a return from inputs
+//   node engine/dist/main.js eval --batch F        evaluate many returns ([{id, inputs}]) as JSON
 //   node engine/dist/main.js conjecture            test the Tax Table conjecture
 
 import { readFileSync } from "node:fs";
@@ -55,11 +56,13 @@ if (command === "review-stage5") {
 } else if (command === "eval") {
   const args = process.argv.slice(3);
   let inputsPath: string | null = null;
+  let batchPath: string | null = null;
   let json = false;
   let html = false;
   let targetsOverride: string[] | null = null;
   for (let i = 0; i < args.length; i++) {
     if (args[i] === "--inputs") inputsPath = args[++i] ?? null;
+    else if (args[i] === "--batch") batchPath = args[++i] ?? null;
     else if (args[i] === "--json") json = true;
     else if (args[i] === "--html") html = true;
     else if (args[i] === "--target") targetsOverride = (args[++i] ?? "").split(",").filter(Boolean);
@@ -69,6 +72,17 @@ if (command === "review-stage5") {
     }
   }
   if (json && html) throw new Error("select either --json or --html");
+  if (batchPath) {
+    // Batch mode: a JSON array of { id, inputs }; emits { cases: { id: <eval json> } }.
+    const data = loadCanonical();
+    const cases = JSON.parse(readFileSync(batchPath, "utf-8")) as { id: string; inputs: Record<string, number | boolean | string> }[];
+    const targets =
+      targetsOverride ?? [...data.forms].filter(d => !d.collection).flatMap((doc) => doc.lines.map((l) => l.id));
+    const out: Record<string, unknown> = {};
+    for (const c of cases) out[c.id] = JSON.parse(resultToJson(evaluate(data, c.inputs, targets)));
+    // Written without process.exit so a large payload is not truncated on a pipe.
+    process.stdout.write(JSON.stringify({ cases: out }) + "\n");
+  } else {
   if (!inputsPath) {
     console.error("eval: --inputs <file.json> is required");
     process.exit(2);
@@ -85,6 +99,7 @@ if (command === "review-stage5") {
     console.log(renderValuesHtml(data, result, data.forms.map(f=>f.id)));
   } else {
     console.log(renderValuesSheet(data, result, [...data.forms].map((f) => f.id)));
+  }
   }
 } else if (command === "conjecture") {
   runConjecture();
@@ -104,7 +119,7 @@ if (command === "review-stage5") {
   runMutation();
 } else {
   console.error(
-    "usage: main.js build | render | eval --inputs <file> [--json|--html] [--target <lines>] | interview start|advance|answer --log <file> | conjecture | record-fixtures | test-fixtures | test-integration | coverage | mutate | compare",
+    "usage: main.js build | render | eval --inputs <file> [--json|--html] [--target <lines>] | eval --batch <file> | interview start|advance|answer --log <file> | conjecture | record-fixtures | test-fixtures | test-integration | coverage | mutate | compare",
   );
   process.exit(2);
 }
