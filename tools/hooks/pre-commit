@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Refuses a commit unless its tree is exactly the tree the last green
+# check-all run tested (tools/check_all.sh). Enable once per clone with
+#   git config core.hooksPath tools/hooks
+set -euo pipefail
+cd "$(git rev-parse --show-toplevel)"
+. tools/green.sh
+
+if [ ! -s "$MARKER" ]; then
+  echo "pre-commit: no green check-all run recorded; run npm run check-all" >&2
+  exit 1
+fi
+green="$(cat "$MARKER")"
+staged="$(git write-tree)"
+[ "$staged" = "$green" ] && exit 0
+
+if [ "$(worktree_tree)" = "$green" ]; then
+  echo "pre-commit: the staged tree is only part of the tested tree; stage everything (git add -A) or rerun check-all" >&2
+else
+  echo "pre-commit: the working tree changed since the last green check-all run; rerun npm run check-all" >&2
+fi
+exit 1

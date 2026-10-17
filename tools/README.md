@@ -29,3 +29,18 @@ Lake 5.0.0 (the installed Lean build), and pdftotext 26.01.0. Python 3 and curl
 are also present. No installation was needed. Elan's remote `stable` query
 failed in the sandbox but the installed Lean toolchain ran successfully.
 No project toolchain is pinned yet; engine/proof configuration belongs to Stage 1.
+
+## Commit guard
+
+`npm run check-all` runs `tools/check_all.sh`, which runs the whole suite
+(`npm run check-all-steps`) and, when it passes, writes the hash of the tested
+working tree to `.git/check-all-green`. The run counts as green only if nothing
+outside the suite's own outputs (`reports/`, `rendered/`) changed while it ran.
+
+`tools/hooks/pre-commit` refuses any commit whose tree is not exactly the
+tested tree: no green run, a tree changed since the run, or a partial stage.
+Enable it once per clone:
+
+    git config core.hooksPath tools/hooks
+
+`git commit --no-verify` bypasses it; that is a deliberate act, not a routine.
