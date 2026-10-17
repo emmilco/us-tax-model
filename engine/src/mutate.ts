@@ -174,30 +174,121 @@ const EQUIVALENT: Record<string, string> = {
   "operand.sd.sd.line7.line6": "Both source lines are identically zero with identical refusal gates; substitution preserves known, unknown and refused values.",
 };
 
+// The copy-chain normal form of a line: copies are followed to a parameter or a computed
+// line, and each refusal gate met on the way is kept unless it is already known false.
+function normalizeChain(data: CanonicalData, id: string, falseGates: Set<string> = new Set(), seen: Set<string> = new Set()): unknown {
+  if (seen.has(id)) return { cycle: id };
+  const l = findLine(data, id); if (!l) return { unresolved: id };
+  const next = new Set(seen); next.add(id);
+  const guards = (l.refuses ?? []).filter((r) => !falseGates.has(r.when));
+  const context = new Set([...falseGates, ...guards.map((r) => r.when)]);
+  const expr = l.expr;
+  const value = expr.op === "copy" && typeof expr.from === "string" ? normalizeChain(data, expr.from, context, next)
+    : expr.op === "param" ? { parameter: data.params.values[expr.ref]?.value, type: l.type }
+    : { line: id };
+  return guards.length ? { guards, value } : value;
+}
+
+function stripGuards(n: unknown): unknown {
+  return n !== null && typeof n === "object" && "guards" in n ? stripGuards((n as unknown as { value: unknown }).value) : n;
+}
+
+function gateWhens(n: unknown): string[] {
+  if (n === null || typeof n !== "object" || !("guards" in n)) return [];
+  const g = n as { guards: { when: string }[]; value: unknown };
+  return [...g.guards.map((r) => r.when), ...gateWhens(g.value)];
+}
+
+function lineOf(mutation: Mutation): string {
+  return mutation.where.slice(mutation.where.indexOf(".") + 1);
+}
+
+// Every line id an expression reads, in evaluation order (parameter references,
+// collection names and constants are not lines).
+function operandRefs(data: CanonicalData, expr: unknown): string[] {
+  const ids = new Set(allDocs(data).flatMap((doc) => doc.lines.map((l) => l.id)));
+  const out: string[] = [];
+  const skip = new Set(["ref", "collection", "const", "cite", "type", "op", "unit", "rule", "source", "label"]);
+  const walk = (node: unknown): void => {
+    if (typeof node === "string") { if (ids.has(node)) out.push(node); return; }
+    if (Array.isArray(node)) { for (const n of node) walk(n); return; }
+    if (node !== null && typeof node === "object") for (const [k, v] of Object.entries(node)) if (!skip.has(k)) walk(v);
+  };
+  walk(expr);
+  return out;
+}
+
+function readersOf(data: CanonicalData, id: string): string[] {
+  return allDocs(data).flatMap((doc) => doc.lines.filter((l) => operandRefs(data, l.expr).includes(id)).map((l) => l.id));
+}
+
 // Copy-chain equivalence is checked under the containing line's already-false
 // refusal gates. This recognizes aliases, not numerical agreement on samples.
 function aliasEquivalence(data: CanonicalData, mutation: Mutation): string | undefined {
   if (mutation.kind!=="replace an operand" || !mutation.note) return undefined;
   const match=/^(\S+) -> (\S+) /.exec(mutation.note);
   if(!match)return undefined;
-  const parent=findLine(data,mutation.where.slice(mutation.where.indexOf(".")+1));
+  const parent=findLine(data,lineOf(mutation));
   if(!parent)return undefined;
   const known=new Set((parent.refuses??[]).map(r=>r.when));
-  const normalize=(id:string, falseGates:Set<string>, seen:Set<string>):unknown=>{
-    if(seen.has(id))return {cycle:id};
-    const l=findLine(data,id);if(!l)return {unresolved:id};
-    const next=new Set(seen);next.add(id);
-    const guards=(l.refuses??[]).filter(r=>!falseGates.has(r.when));
-    const context=new Set([...falseGates,...guards.map(r=>r.when)]);
-    const expr=l.expr;
-    const value=expr.op==="copy"&&typeof expr.from==="string" ? normalize(expr.from,context,next)
-      : expr.op==="param" ? {parameter:data.params.values[expr.ref]?.value,type:l.type}
-      : {line:id};
-    return guards.length?{guards,value}:value;
-  };
-  if(stableStringify(normalize(match[1]!,known,new Set()))!==stableStringify(normalize(match[2]!,known,new Set())))return undefined;
+  if(stableStringify(normalizeChain(data,match[1]!,known))!==stableStringify(normalizeChain(data,match[2]!,known)))return undefined;
   return `Copy-chain identity: ${match[1]} and ${match[2]} expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.`;
 }
+
+// A sum operand that is a value behind refusal gates, replaced by the same value without
+// them, cannot change the sum when every other gated operand of the sum carries the
+// identical gates: whichever operand refuses, the refusal is the same object, and when
+// none refuses the two operands are equal. Checked structurally on every run.
+function sharedGateEquivalence(data: CanonicalData, mutation: Mutation): string | undefined {
+  if (mutation.kind !== "replace an operand" || !mutation.note) return undefined;
+  const match = /^(\S+) -> (\S+) /.exec(mutation.note);
+  if (!match) return undefined;
+  const [, x, y] = match as unknown as [string, string, string];
+  const parent = findLine(data, lineOf(mutation));
+  if (!parent || parent.expr.op !== "sum") return undefined;
+  const known = new Set((parent.refuses ?? []).map((r) => r.when));
+  const nx = normalizeChain(data, x, known); const ny = normalizeChain(data, y, known);
+  if (stableStringify(nx) === stableStringify(ny)) return undefined; // an alias, not this rule
+  if (stableStringify(stripGuards(nx)) !== stableStringify(ny)) return undefined;
+  const others = (parent.expr.of as string[]).filter((o) => o !== x);
+  const gated = others.filter((o) => gateWhens(normalizeChain(data, o, known)).length > 0);
+  if (gated.length === 0) return undefined;
+  if (!gated.every((o) => stableStringify(normalizeChain(data, o, known)) === stableStringify(nx))) return undefined;
+  return `Shared-gate identity: ${x} and ${gated.join(", ")} are the same value behind the same refusal gates (${[...new Set(gateWhens(nx))].join(", ")}) with identical refusal text, and ${y} is that value ungated; whichever operand refuses, the sum carries the same refusal, and when none does the operands are equal.`;
+}
+
+// Equivalences that need an argument about evaluation order or reachability. Each is
+// accepted only while the structural facts it rests on hold in the current data; when
+// they lapse, the mutant is reported as unexplained again.
+const EQUIVALENT_IF: Record<string, { reason: string; holds: (data: CanonicalData) => boolean }> = {
+  "operand.s8812.s8812.line13.clw_a5": {
+    reason: "Credit Limit Worksheet A line 5 is line 3 less line 4, and line 4 is zero behind the same gate that line 2, an operand of line 3, carries. When the gate fires, line 3 already refuses and the subtraction returns its first operand's refusal; when it does not, line 4 is zero. Line 13 therefore reads the same value from line 5 as from line 3 on every input.",
+    holds: (d) => {
+      const a5 = findLine(d, "s8812.clw_a5"); const a3 = findLine(d, "s8812.clw_a3");
+      if (!a5 || !a3 || a5.expr.op !== "subtract" || a5.expr.from !== "s8812.clw_a3" || a5.expr.take !== "s8812.clw_a4" || a3.expr.op !== "subtract") return false;
+      const n4 = normalizeChain(d, "s8812.clw_a4");
+      const whens = gateWhens(n4);
+      const zero = stripGuards(n4) as { parameter?: unknown };
+      if (whens.length === 0 || zero.parameter !== 0) return false;
+      const carriers = [a3, findLine(d, a3.expr.from), typeof a3.expr.take === "string" ? findLine(d, a3.expr.take) : undefined];
+      return whens.every((w) => carriers.some((l) => (l?.refuses ?? []).some((r) => r.when === w)));
+    },
+  },
+  "refusal.dependent.dependent.qualifying_relative.2": {
+    reason: "The married gate on the qualifying-relative test duplicates, word for word, the married gate on the qualifying-child test. The qualifying-relative test is read only by qr_dependent, which is read only by claimed, whose any-test evaluates qc_dependent, and so qualifying_child, before qr_dependent; for a married person qualifying_child refuses first with the same refusal, so this gate never fires.",
+    holds: (d) => {
+      const qr = findLine(d, "dependent.qualifying_relative"); const qc = findLine(d, "dependent.qualifying_child");
+      const entry = qr?.refuses?.[2];
+      if (!qr || !qc || !entry || entry.when !== "dependent.married") return false;
+      if (!(qc.refuses ?? []).some((r) => stableStringify(r) === stableStringify(entry))) return false;
+      if (stableStringify(readersOf(d, "dependent.qualifying_relative")) !== stableStringify(["dependent.qr_dependent"])) return false;
+      if (stableStringify(readersOf(d, "dependent.qr_dependent")) !== stableStringify(["dependent.claimed"])) return false;
+      const claimed = findLine(d, "dependent.claimed"); const qcd = findLine(d, "dependent.qc_dependent");
+      if (!claimed || !qcd || claimed.expr.op !== "test" || !("any" in claimed.expr) || qcd.expr.op !== "test" || !("all" in qcd.expr)) return false;
+      return operandRefs(d, claimed.expr)[0] === "dependent.qc_dependent" && operandRefs(d, qcd.expr)[0] === "dependent.qualifying_child";
+    },
+  },
+};
 
 export function runMutation(): number {
   const baseline = loadCanonical();
@@ -248,8 +339,10 @@ export function runMutation(): number {
   const killed = killedByCheck + killedByFixtures;
   const score = total === 0 ? 0 : killed / total;
   for(const survivor of survivors) {
-    const reason=aliasEquivalence(baseline,survivor);
+    const reason=aliasEquivalence(baseline,survivor) ?? sharedGateEquivalence(baseline,survivor);
     if(reason)EQUIVALENT[survivor.id]=reason;
+    const conditional=EQUIVALENT_IF[survivor.id];
+    if(conditional && conditional.holds(baseline))EQUIVALENT[survivor.id]=conditional.reason+" (structural conditions re-checked this run.)";
   }
   const equivalentSurvivors = survivors.filter((s) => s.id in EQUIVALENT);
   const unexplained = survivors.filter((s) => !(s.id in EQUIVALENT));

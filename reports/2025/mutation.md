@@ -10,12 +10,13 @@ the fixture test compares).
 | Mutants | 791 |
 | Killed by the checker | 45 |
 | Killed by fixtures | 661 |
-| Surviving | 85 (43 provably equivalent) |
+| Surviving | 85 (48 provably equivalent) |
 | Mutation score (raw) | 89.3% |
-| Mutation score (equivalent mutants excluded) | 94.4% |
+| Mutation score (equivalent mutants excluded) | 95.0% |
 
 ## Surviving — classified equivalent
 
+- `refusal.dependent.dependent.qualifying_relative.2` (remove refusal, dependent.dependent.qualifying_relative): The married gate on the qualifying-relative test duplicates, word for word, the married gate on the qualifying-child test. The qualifying-relative test is read only by qr_dependent, which is read only by claimed, whose any-test evaluates qc_dependent, and so qualifying_child, before qr_dependent; for a married person qualifying_child refuses first with the same refusal, so this gate never fires. (structural conditions re-checked this run.)
 - `operand.f8959.f8959.line3.zero` (replace an operand, f8959.f8959.line3): Copy-chain identity: f8959.zero and f8959.line2 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f8959.f8959.line8.zero` (replace an operand, f8959.f8959.line8): Copy-chain identity: f8959.zero and f8959.line3 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f8959.f8959.line14.zero` (replace an operand, f8959.f8959.line14): Copy-chain identity: f8959.zero and f8959.line8 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
@@ -39,6 +40,10 @@ the fixture test compares).
 - `operand.s2.s2.line3.zero` (replace an operand, s2.s2.line3): Copy-chain identity: s2.zero and s2.line2 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.s8812.s8812.line2b.zero` (replace an operand, s8812.s8812.line2b): Copy-chain identity: s8812.zero and s8812.line2a expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.s8812.s8812.line2c.zero` (replace an operand, s8812.s8812.line2c): Copy-chain identity: s8812.zero and s8812.line2b expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
+- `operand.s8812.s8812.line2d.line2a` (replace an operand, s8812.s8812.line2d): Shared-gate identity: s8812.line2a and s8812.line2b, s8812.line2c are the same value behind the same refusal gates (sa.excluded_income) with identical refusal text, and s8812.zero is that value ungated; whichever operand refuses, the sum carries the same refusal, and when none does the operands are equal.
+- `operand.s8812.s8812.line2d.line2b` (replace an operand, s8812.s8812.line2d): Shared-gate identity: s8812.line2b and s8812.line2a, s8812.line2c are the same value behind the same refusal gates (sa.excluded_income) with identical refusal text, and s8812.zero is that value ungated; whichever operand refuses, the sum carries the same refusal, and when none does the operands are equal.
+- `operand.s8812.s8812.line2d.line2c` (replace an operand, s8812.s8812.line2d): Shared-gate identity: s8812.line2c and s8812.line2a, s8812.line2b are the same value behind the same refusal gates (sa.excluded_income) with identical refusal text, and s8812.zero is that value ungated; whichever operand refuses, the sum carries the same refusal, and when none does the operands are equal.
+- `operand.s8812.s8812.line13.clw_a5` (replace an operand, s8812.s8812.line13): Credit Limit Worksheet A line 5 is line 3 less line 4, and line 4 is zero behind the same gate that line 2, an operand of line 3, carries. When the gate fires, line 3 already refuses and the subtraction returns its first operand's refusal; when it does not, line 4 is zero. Line 13 therefore reads the same value from line 5 as from line 3 on every input. (structural conditions re-checked this run.)
 - `operand.s8812.s8812.line14.line13` (replace an operand, s8812.s8812.line14): Copy-chain identity: s8812.line13 and s8812.clw_a5 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.s8812.s8812.eiw_5.zero` (replace an operand, s8812.s8812.eiw_5): Copy-chain identity: s8812.zero and s8812.eiw_4 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.sa.sa.line3.line2` (replace an operand, sa.sa.line3): Copy-chain identity: sa.line2 and sa.agi expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
@@ -64,7 +69,6 @@ the fixture test compares).
 
 | Mutant | Kind | Location | Note |
 | --- | --- | --- | --- |
-| refusal.dependent.dependent.qualifying_relative.2 | remove refusal | dependent.dependent.qualifying_relative |  |
 | operand.f1040.f1040.line11b.line11a | replace an operand | f1040.f1040.line11b | f1040.line11a -> f1040.line9 (Dollars) |
 | operand.f1040.f1040.line14.line13b | replace an operand | f1040.f1040.line14 | f1040.line13b -> f1040.line10 (NonNegDollars) |
 | refusal.f1040.f1040.line16.0 | remove refusal | f1040.f1040.line16 |  |
@@ -85,10 +89,6 @@ the fixture test compares).
 | refusal.person.person.medicare5.0 | remove refusal | person.person.medicare5 |  |
 | refusal.person.person.medicare6.0 | remove refusal | person.person.medicare6 |  |
 | refusal.s3.s3.line8.0 | remove refusal | s3.s3.line8 |  |
-| operand.s8812.s8812.line2d.line2a | replace an operand | s8812.s8812.line2d | s8812.line2a -> s8812.zero (NonNegDollars) |
-| operand.s8812.s8812.line2d.line2b | replace an operand | s8812.s8812.line2d | s8812.line2b -> s8812.zero (NonNegDollars) |
-| operand.s8812.s8812.line2d.line2c | replace an operand | s8812.s8812.line2d | s8812.line2c -> s8812.zero (NonNegDollars) |
-| operand.s8812.s8812.line13.clw_a5 | replace an operand | s8812.s8812.line13 | s8812.clw_a5 -> s8812.clw_a3 (Dollars) |
 | refusal.sa.sa.line17.1 | remove refusal | sa.sa.line17 |  |
 | refusal.sa.sa.line17.2 | remove refusal | sa.sa.line17 |  |
 | operand.sdtw.sdtw.line12.line9 | replace an operand | sdtw.sdtw.line12 | sdtw.line9 -> sdtw.line10 (NonNegDollars) |
