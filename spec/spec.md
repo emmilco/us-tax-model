@@ -314,6 +314,8 @@ These come from the research pass, which read sources through a summarising tool
 
 ## 11. Open items
 
+Scope items not yet taken up. Work items of every kind, including these, are tracked in `TASKS.md` at the repository root.
+
 - Form 1116, deferred by decision.
 - Filling official PDFs.
 - Capital loss carryover in and out.

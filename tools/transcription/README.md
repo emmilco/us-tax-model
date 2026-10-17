@@ -4,8 +4,9 @@ The data-layer counterpart of the engine differential (spec 6.5): every
 worksheet is transcribed a second time by a model that sees only the archived
 IRS pages the project's own citations name, plus the data model, and the two
 transcriptions are compared line by line. Agreement is evidence that the
-operand structure follows the text; a disagreement is adjudicated by a person
-reading the source page, and the ruling is recorded. Nothing here writes to
+operand structure follows the text; a disagreement is adjudicated by the
+agent reading the source page, with the quote and page recorded in the
+ruling. No human reading is claimed (spec 3, requirement 11). Nothing here writes to
 `forms/`; a transcription defect becomes an ordinary fix with a bug inventory
 entry.
 

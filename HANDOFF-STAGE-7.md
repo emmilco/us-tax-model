@@ -1,7 +1,7 @@
 # Handoff: Stage 7 in progress — the integrity stack
 
 Read `HANDOFF.md` first (what the project is; decisions not to reopen; hard
-constraints). Then `spec/spec.md` sections 1, 2.4, 3 (requirement 11), 6.1,
+constraints), then `TASKS.md` (everything known and not done). Then `spec/spec.md` sections 1, 2.4, 3 (requirement 11), 6.1,
 6.5, 6.6 and `spec/design.md` section 5 (Stages 6–9), all amended this stage.
 `PROJECT_INDEX.md` is current. `BUG_INVENTORY.md` is append-only and checked.
 
@@ -104,18 +104,11 @@ eight).
   written from the lines it gates on one form, narrower than the instruction
   text of a line it also stands in for (five of the eight).
 
-## Follow-ups recorded inside the transcription rulings (grep "records that")
+## Follow-ups
 
-- Schedule D lines 6/14 and the 28% worksheet line 5: a positive carryover
-  must be subtracted (parentheses convention) when carryovers come into scope.
-- Schedule D line filters must widen to boxes G–L when digital assets come
-  into scope; `sd.filed` must then test the raw 1099-DIV boxes, not the
-  netted worksheet results.
-- Form 1040 line 1z must change when lines 1b–1h come into scope; Form 8995
-  line 8 when line 7 can be nonzero.
-- The transcription prompt's grammar has no `refuses` construct, so refusal
-  gates always surface as disagreements; adding it would remove four
-  standing rulings.
+All tracked in `TASKS.md` (one row per item, with source and trigger). The
+rulings still carry the sentence that raised each one.
+
 
 ## Facts about the environment and tools
 
