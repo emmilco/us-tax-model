@@ -651,7 +651,7 @@ def existing_rulings(path):
         return {}
     text = open(path, encoding="utf-8").read()
     out = {}
-    for m in re.finditer(r"### (\S+) \u2014 .*?\nStatus: \*\*(?:DISAGREE|MISSING)\*\*\n\nProject:\n\n```json\n(.*?)\n```\n\nSecond:\n\n```json\n(.*?)\n```(?:\n\nSecond transcription's note: .*?)?\n\n(Ruling: .*?)\n\n", text, re.S):
+    for m in re.finditer(r"### (\S+) \u2014 [^\n]*\nStatus: \*\*(?:DISAGREE|MISSING)\*\*\n\nProject:\n\n```json\n(.*?)\n```\n\nSecond:\n\n```json\n(.*?)\n```(?:\n\nSecond transcription's note: .*?)?\n\n(Ruling: .*?)\n\n", text, re.S):
         if m.group(4).strip() != "Ruling: open":
             out[(m.group(1), m.group(2), m.group(3))] = m.group(4).strip()
     return out

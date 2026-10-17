@@ -77,3 +77,24 @@ Commit only after reading the suite's exit line (T-021 proposes a guard).
 - He will not read lines or hand-work fixtures. Keep logs legible and
   provenance lines honest (inspected vs inferred).
 - Commit coherent units with messages via `-F <file>`; no destructive git.
+
+## After T-020 (same day)
+
+- `fixtures/2025/stage8.json`: 24 cases over the dependent tests, the head of
+  household tests and the Schedule 8812 chain; every asserted Boolean and the
+  key amounts were predicted by hand before recording, and the evidence notes
+  say which predictions the engine corrected. Raw mutation score 83.3% to
+  89.3%; adjusted 88.1% to 95.0%.
+- The mutation tool classifies equivalent mutants by three mechanisms, all
+  recomputed every run: copy-chain identity, shared-gate identity (a sum
+  whose gated operands are identical), and a register whose entries hold only
+  while the structural facts they cite hold in the data (`EQUIVALENT_IF`).
+  No survivor on the Stage 8 lines is unexplained.
+- Class M on `s8812` was rerun ($0.52): the same four cases and the same 15
+  disagreements, all the model declining to fill lines after a printed "Stop
+  here". Two `s8812` branches are unreachable by a computed generated case
+  (the combat pay and Puerto Rico refusals).
+- BUG-0016: all three review tools lost standing rulings on rerun when a
+  disagreement followed an agreement (87 of 235 rulings in the committed logs
+  would have been lost). Fixed in the parsers; before this fix, a reopened
+  ruling after a rerun was not evidence that the key had changed.

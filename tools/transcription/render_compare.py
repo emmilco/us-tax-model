@@ -246,7 +246,7 @@ def existing_rulings(path):
         return {}
     text = open(path, encoding="utf-8").read()
     out = {}
-    for m in re.finditer(r"### (\S+) — .*?\nStatus: \*\*(?:MISMATCH|UNCLEAR|MISSING)\*\*\n\nRestated: (.*?)\n\nModel: (.*?)\n\n(Ruling: .*?)\n\n", text, re.S):
+    for m in re.finditer(r"### (\S+) — [^\n]*\nStatus: \*\*(?:MISMATCH|UNCLEAR|MISSING)\*\*\n\nRestated: (.*?)\n\nModel: (.*?)\n\n(Ruling: .*?)\n\n", text, re.S):
         if m.group(4).strip() != "Ruling: open":
             out[(m.group(1), m.group(2), m.group(3))] = m.group(4).strip()
     return out

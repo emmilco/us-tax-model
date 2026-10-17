@@ -4648,7 +4648,7 @@
     "s8812"
    ],
    "evidence": "M",
-   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 099de0b2425fc2e9e5cfc8b4690354d5e1dedcef096b020af49f9c21c7ef5dda; pages f1040s8812 1,2 (9b38295071c4); i1040s8812 4,8,9 (fd50a5266cc2); branches s8812.excess:positive, s8812.line12:floor, s8812.line14:left, s8812.line16a:floor, s8812.line17:left, s8812.combat_pay:false, s8812.puerto_rico:false, s8812.line19:positive, s8812.line25:positive, s8812.line26:left, s8812.few_children:true, s8812.earned_covers:true, s8812.from_part_iia:left, s8812.from_part_iib:left, s8812.part_iib_result#0, s8812.line27#0; dropped after ruling: s8812.line13; dropped after ruling: s8812.line16b; dropped after ruling: s8812.line18a; dropped after ruling: s8812.line19; dropped after ruling: s8812.line20; dropped after ruling: s8812.line21; dropped after ruling: s8812.line23; dropped after ruling: s8812.line24; dropped after ruling: s8812.line25; dropped after ruling: s8812.line26",
+   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 099de0b2425fc2e9e5cfc8b4690354d5e1dedcef096b020af49f9c21c7ef5dda; pages f1040s8812 1,2 (9b38295071c4); i1040s8812 4,8,9 (fd50a5266cc2); branches s8812.excess:positive, s8812.line12:floor, s8812.line14:left, s8812.line16a:floor, s8812.line17:left, s8812.combat_pay:false, s8812.puerto_rico:false, s8812.line19:positive, s8812.line25:positive, s8812.line26:left, s8812.few_children:true, s8812.earned_covers:true, s8812.from_part_iia:left, s8812.from_part_iib:left, s8812.part_iib_result#0, s8812.line27#0",
    "inputs": {
     "div.box2b": 0,
     "div.box2c": 0,
@@ -5179,7 +5179,7 @@
     "s8812"
    ],
    "evidence": "M",
-   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 e904aa660ca0fe9af14dcc68e5db41cec71d0394aadf5d373040e3da5ac8b99a; pages f1040s8812 1,2 (9b38295071c4); i1040s8812 4,8,9 (fd50a5266cc2); branches s8812.excess:floor, s8812.line12:positive, s8812.line14:left, s8812.line16a:floor, s8812.line17:left, s8812.combat_pay:false, s8812.puerto_rico:false, s8812.line19:floor, s8812.line25:floor, s8812.line26:left, s8812.few_children:false, s8812.earned_covers:true, s8812.from_part_iia:left, s8812.from_part_iib:left, s8812.part_iib_result#0, s8812.line27#1; dropped after ruling: s8812.line16b",
+   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 e904aa660ca0fe9af14dcc68e5db41cec71d0394aadf5d373040e3da5ac8b99a; pages f1040s8812 1,2 (9b38295071c4); i1040s8812 4,8,9 (fd50a5266cc2); branches s8812.excess:floor, s8812.line12:positive, s8812.line14:left, s8812.line16a:floor, s8812.line17:left, s8812.combat_pay:false, s8812.puerto_rico:false, s8812.line19:floor, s8812.line25:floor, s8812.line26:left, s8812.few_children:false, s8812.earned_covers:true, s8812.from_part_iia:left, s8812.from_part_iib:left, s8812.part_iib_result#0, s8812.line27#1",
    "inputs": {
     "div.box2b": 0,
     "div.box2c": 0,
@@ -5487,7 +5487,7 @@
     "s8812"
    ],
    "evidence": "M",
-   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 d618774ef545011b1c8b3424160db239820fad75654dee63005ac6525c382be6; pages f1040s8812 1,2 (9b38295071c4); i1040s8812 4,8,9 (fd50a5266cc2); branches s8812.excess:floor, s8812.line12:floor, s8812.line14:left, s8812.line16a:floor, s8812.line17:left, s8812.combat_pay:false, s8812.puerto_rico:false, s8812.line19:floor, s8812.line25:positive, s8812.line26:right, s8812.few_children:true, s8812.earned_covers:true, s8812.from_part_iia:left, s8812.from_part_iib:left, s8812.part_iib_result#0, s8812.line27#0; dropped after ruling: s8812.line21; dropped after ruling: s8812.line23; dropped after ruling: s8812.line25; dropped after ruling: s8812.line26",
+   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 d618774ef545011b1c8b3424160db239820fad75654dee63005ac6525c382be6; pages f1040s8812 1,2 (9b38295071c4); i1040s8812 4,8,9 (fd50a5266cc2); branches s8812.excess:floor, s8812.line12:floor, s8812.line14:left, s8812.line16a:floor, s8812.line17:left, s8812.combat_pay:false, s8812.puerto_rico:false, s8812.line19:floor, s8812.line25:positive, s8812.line26:right, s8812.few_children:true, s8812.earned_covers:true, s8812.from_part_iia:left, s8812.from_part_iib:left, s8812.part_iib_result#0, s8812.line27#0",
    "inputs": {
     "div.box2b": 0,
     "div.box2c": 0,

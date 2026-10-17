@@ -158,7 +158,9 @@ def existing_rulings(path):
         return {}
     text = open(path, encoding="utf-8").read()
     out = {}
-    for m in re.finditer(r"### (\S+) — (\S+) .*?\nStatus: \*\*(?:DISAGREE|MISSING)\*\*\n\nProject: (.*?)\nModel: (.*?)\n(?:Work: .*?\n)?\n(Ruling: .*?)\n\n", text, re.S):
+    # The heading's remainder must stay on its line: a match that spans into the next section
+    # keys the ruling under the wrong line and loses it on rerun.
+    for m in re.finditer(r"### (\S+) — (\S+) [^\n]*\nStatus: \*\*(?:DISAGREE|MISSING)\*\*\n\nProject: ([^\n]*)\nModel: ([^\n]*)\n(?:Work: [^\n]*\n)?\n(Ruling: [^\n]*)\n", text):
         if m.group(5).strip() != "Ruling: open":
             out[(m.group(1), m.group(2), m.group(3), m.group(4))] = m.group(5).strip()
     return out
