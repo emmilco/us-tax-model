@@ -6,6 +6,7 @@
 //                                                  evaluate a return from inputs
 //   node engine/dist/main.js eval --batch F        evaluate many returns ([{id, inputs}]) as JSON
 //   node engine/dist/main.js conjecture            test the Tax Table conjecture
+//   node engine/dist/main.js properties            check the data-level properties over generated returns
 
 import { readFileSync } from "node:fs";
 import { runBuild } from "./build.js";
@@ -18,6 +19,7 @@ import { coverageReport, evidenceReport, recordFixtures, testFixtures, reviewSta
 import { differential } from "./differential.js";
 import { compareEvaluators } from "./compare.js";
 import { runMutation } from "./mutate.js";
+import { runProperties } from "./properties.js";
 
 import { integrationChecks } from "./integration.js";
 import { runChecks } from "./check.js";
@@ -117,9 +119,11 @@ if (command === "review-stage5") {
   process.exit(compareEvaluators());
 } else if (command === "mutate") {
   runMutation();
+} else if (command === "properties") {
+  process.exit(runProperties());
 } else {
   console.error(
-    "usage: main.js build | render | eval --inputs <file> [--json|--html] [--target <lines>] | eval --batch <file> | interview start|advance|answer --log <file> | conjecture | record-fixtures | test-fixtures | test-integration | coverage | mutate | compare",
+    "usage: main.js build | render | eval --inputs <file> [--json|--html] [--target <lines>] | eval --batch <file> | interview start|advance|answer --log <file> | conjecture | record-fixtures | test-fixtures | test-integration | coverage | properties | mutate | compare",
   );
   process.exit(2);
 }

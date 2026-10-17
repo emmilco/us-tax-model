@@ -42,21 +42,32 @@ Done, in `check-all`:
   Read `tools/transcription/README.md` before running it; a run costs about
   $0.25–0.55 per form in nominal usage and is a deliberate network step.
 
+- **Data-level properties** (`engine/src/properties.ts`, report
+  `reports/2025/properties.md`, `node engine/dist/main.js properties`,
+  `PROPERTY_RUNS` to change the 400-case default): five properties of spec
+  6.3 over fast-check-generated returns in every filing status, each with
+  an "applicable" count so a property cannot pass by never applying. The
+  Schedule D Tax Worksheet skip rule is now machine-checked (the argument in
+  `reviews/2025/transcription/sdtw.md` stands; lines 1 = 32 with 1 ≠ 16 is
+  exercised only by the investor profile); tax bounds and method never above
+  the ordinary computation; the deduction choice never worse; a refusal never
+  becomes a number; tax monotone in wages. The generator
+  (`engine/src/generate.ts`) covers every declared input and reports which
+  branches the corpus reaches; the unreached ones at 400 cases are the
+  structural ones the fixture coverage report also exempts, plus the narrow
+  band where the worksheet tax exceeds the ordinary tax (`qdcg.line25:right`,
+  `sdtw.line47:right`), which class M should target.
+
 Not done (spec 6.5, design Stage 7):
 
 1. **Render comparison** — an isolated model reads `rendered/2025/<form>.md`
    against the archived pages and flags lines whose English says something
    else. Same scaffold as transcription; not built.
 2. **Class M hand-work** — branch-covering inputs worked on the archived
-   worksheet by an isolated model, becoming class M fixtures. No input
-   generator exists yet (design 2.10 promised one); `engine/src/compare.ts`
-   has a random generator for the evaluator agreement that could seed it.
-3. **Data-level properties** (spec 6.3, extended this stage): first concrete
-   target is the Schedule D Tax Worksheet skip rule — a skipped line
-   evaluates to zero under the project's reading and under unconditional
-   computation (argued, not proved, in `reviews/2025/transcription/sdtw.md`).
-   Others: deduction choice never worse; refusal never becomes a number; the
-   chosen tax method never exceeds the ordinary computation.
+   worksheet by an isolated model, becoming class M fixtures. Seed it from
+   `engine/src/generate.ts` (the corpus plus its branch report) rather than
+   writing another generator; design 2.10's per-worksheet generator is the
+   gap that remains.
 
 Then Stage 8: one dependent, qualifying-child tests, head of household, the
 child tax credit — the test of whether the atom vocabulary expresses
@@ -88,8 +99,8 @@ eight).
 
 ## Facts about the environment and tools
 
-- `npm run check-all` is green at `0c80b0e`; takes several minutes (Lean
-  build, mutation, the engine differential at ~30 s).
+- `npm run check-all` takes several minutes (Lean build, mutation, the
+  engine differential at ~30 s); the properties step takes about a second.
 - `node engine/dist/main.js eval --batch cases.json` evaluates many returns
   in one process (added this stage).
 - Transcription logs key their rulings to the exact expanded trees; a

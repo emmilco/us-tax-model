@@ -11,6 +11,7 @@ import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { spawnSync } from "node:child_process";
 import { loadCanonical } from "./canonical.js";
+import { branchKeys, templateKey } from "./branches.js";
 import { evaluate } from "./eval.js";
 import { differentialClassC } from "./differential.js";
 import type { Inputs } from "./types.js";
@@ -212,23 +213,16 @@ export function coverageReport(): void {
   const taken = new Map<string, string[]>();
   const branches = new Map<string, Set<string>>();
   const evidence = new Map<string, Set<string>>();
-  const template = (key: string) => key.includes("[") ? key.replace(/(?:[a-zA-Z0-9_]+\[[^\]]+\]\.)+/g, m => m.split(".").filter(Boolean).at(-1)!.split("[")[0]+".") : key;
   const mark = (key: string, c: FixtureCase) => { const set=branches.get(key)??new Set();set.add(c.id);branches.set(key,set); };
 
   for (const c of file.cases) {
     const result = evaluate(data, c.inputs, targets);
     for (const der of result.derivations.values()) {
-      const id=template(der.line);
+      const id=templateKey(der.line);
       if (der.value.kind !== "unknown" && c.expect && der.line in c.expect) { const set=evidence.get(id)??new Set();set.add(c.evidence);evidence.set(id,set); }
-      if (der.value.kind === "bool") mark(`${id}:${der.value.value}`,c);
-      if (["subtract_floor0","smaller_of","larger_of"].includes(der.op)) {
-        const values=der.operands.filter(o=>o.value.kind==="money").map(o=>(o.value as {cents:number}).cents);
-        if (values.length>=2) mark(`${id}:${der.op==="subtract_floor0" ? (values[0]!>values[1]! ? "positive":"floor") : ((der.op==="larger_of" ? values[0]!>=values[1]! : values[0]!<=values[1]!) ? "left":"right")}`,c);
-      }
-      if (der.op === "choose" && der.takenGuardIndex !== undefined) {
-        const key = `${der.line.includes("[") ? der.line.replace(/(?:[a-zA-Z0-9_]+\[[^\]]+\]\.)+/g, m => m.split(".").filter(Boolean).at(-1)!.split("[")[0]+".") : der.line}#${der.takenGuardIndex}`;
-        taken.set(key, [...(taken.get(key) ?? []), c.id]);
-      }
+      const b = branchKeys(der);
+      for (const key of b.sides) mark(key, c);
+      for (const key of b.guards) taken.set(key, [...(taken.get(key) ?? []), c.id]);
     }
   }
 
