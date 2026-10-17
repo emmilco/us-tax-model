@@ -26,30 +26,30 @@ Fixtures that assert each line, by evidence class. A — official IRS example. B
 | dependent.parent_home_paid | — | — | — | — |
 | dependent.one | — | — | — | — |
 | dependent.zero | — | — | — | — |
-| dependent.qc_relationship | — | — | — | 21 |
+| dependent.qc_relationship | — | — | — | 26 |
 | dependent.younger | — | — | — | 18 |
-| dependent.qc_age | — | — | — | 18 |
-| dependent.lived_half | — | — | — | 19 |
-| dependent.qualifying_child | — | — | — | 24 |
-| dependent.resident | — | — | — | 19 |
-| dependent.qc_dependent | — | — | — | 24 |
-| dependent.qr_relationship | — | — | — | 6 |
-| dependent.qr_income | — | — | — | 6 |
-| dependent.income_exception | — | — | — | 7 |
-| dependent.qualifying_relative | — | — | — | 8 |
-| dependent.qr_dependent | — | — | — | 8 |
-| dependent.claimed | — | — | — | 24 |
-| dependent.under_ctc_age | — | — | — | 15 |
-| dependent.ctc_child | — | — | — | 24 |
-| dependent.odc_person | — | — | — | 24 |
+| dependent.qc_age | — | — | — | 23 |
+| dependent.lived_half | — | — | — | 24 |
+| dependent.qualifying_child | — | — | — | 29 |
+| dependent.resident | — | — | — | 24 |
+| dependent.qc_dependent | — | — | — | 29 |
+| dependent.qr_relationship | — | — | — | 11 |
+| dependent.qr_income | — | — | — | 11 |
+| dependent.income_exception | — | — | — | 12 |
+| dependent.qualifying_relative | — | — | — | 13 |
+| dependent.qr_dependent | — | — | — | 13 |
+| dependent.claimed | — | — | — | 29 |
+| dependent.under_ctc_age | — | — | — | 20 |
+| dependent.ctc_child | — | — | — | 29 |
+| dependent.odc_person | — | — | — | 29 |
 | dependent.ctc_per_child | — | — | — | — |
-| dependent.ctc_amount | — | — | — | 24 |
+| dependent.ctc_amount | — | — | — | 29 |
 | dependent.odc_per_dependent | — | — | — | — |
-| dependent.odc_amount | — | — | — | 24 |
+| dependent.odc_amount | — | — | — | 29 |
 | dependent.actc_per_child | — | — | — | — |
-| dependent.actc_amount | — | — | — | 24 |
-| dependent.hoh_test2 | — | — | — | 24 |
-| dependent.hoh_test1 | — | — | — | 24 |
+| dependent.actc_amount | — | — | — | 29 |
+| dependent.hoh_test2 | — | — | — | 29 |
+| dependent.hoh_test1 | — | — | — | 29 |
 | dependent.hoh_person | — | — | — | — |
 
 Unasserted lines: dependent.one, dependent.zero, dependent.ctc_per_child, dependent.odc_per_dependent, dependent.actc_per_child, dependent.hoh_person
@@ -318,10 +318,8 @@ Unasserted lines: g28.combined
 | gift.deduction | — | — | — | — |
 | gift.public_securities | — | — | — | — |
 | gift.special | — | — | — | — |
-| gift.section_b | — | — | — | — |
-| gift.allowed | — | — | — | — |
-
-Unasserted lines: gift.section_b, gift.allowed
+| gift.section_b | — | — | — | 1 (classm.gift.1) |
+| gift.allowed | — | — | — | 1 (classm.gift.1) |
 
 ## Household facts for dependents and head of household
 
@@ -349,21 +347,21 @@ Unasserted lines: gift.section_b, gift.allowed
 | line | A | B | C | R |
 | --- | --- | --- | --- | --- |
 | person.rrta | — | — | — | — |
-| person.employers | — | — | — | — |
-| person.overcount | — | — | — | — |
-| person.over | — | — | — | — |
-| person.wages | — | — | — | — |
-| person.withheld | — | — | — | — |
-| person.box1 | — | — | — | — |
-| person.box2 | — | — | — | — |
-| person.eligible | — | — | — | — |
-| person.excess | — | — | — | — |
+| person.employers | — | — | — | 2 (classm.person.1, classm.person.2) |
+| person.overcount | — | — | — | 2 (classm.person.1, classm.person.2) |
+| person.over | — | — | — | 2 (classm.person.1, classm.person.2) |
+| person.wages | — | — | — | 1 (classm.person.1) |
+| person.withheld | — | — | — | 2 (classm.person.1, classm.person.2) |
+| person.box1 | — | — | — | 2 (classm.person.1, classm.person.2) |
+| person.box2 | — | — | — | 2 (classm.person.1, classm.person.2) |
+| person.eligible | — | — | — | 2 (classm.person.1, classm.person.2) |
+| person.excess | — | — | — | 1 (classm.person.1) |
 | person.zero | — | — | — | — |
-| person.credit | — | — | — | — |
-| person.medicare5 | — | — | — | — |
-| person.medicare6 | — | — | — | — |
+| person.credit | — | — | — | 2 (classm.person.1, classm.person.2) |
+| person.medicare5 | — | — | — | 2 (classm.person.1, classm.person.2) |
+| person.medicare6 | — | — | — | 2 (classm.person.1, classm.person.2) |
 
-Unasserted lines: person.employers, person.overcount, person.over, person.wages, person.withheld, person.box1, person.box2, person.eligible, person.excess, person.zero, person.credit, person.medicare5, person.medicare6
+Unasserted lines: person.zero
 
 ## Section 199A dividend-only deduction and form selection
 
@@ -582,24 +580,24 @@ Unasserted lines: sa.agi, sa.zero, sa.saltbase, sa.saltfloor, sa.saltthreshold, 
 | sales.reported_basis | — | — | — | — |
 | sales.correct_basis | — | — | — | — |
 | sales.wash_loss | — | — | — | — |
-| sales.covered | — | — | — | — |
-| sales.digital | — | — | — | — |
-| sales.has_b | — | — | — | — |
-| sales.has_w | — | — | — | — |
-| sales.bad_code | — | — | — | — |
-| sales.bad_aggregate | — | — | — | — |
+| sales.covered | — | — | — | 1 (classm.sales.1) |
+| sales.digital | — | — | — | 1 (classm.sales.1) |
+| sales.has_b | — | — | — | 1 (classm.sales.1) |
+| sales.has_w | — | — | — | 1 (classm.sales.1) |
+| sales.bad_code | — | — | — | 1 (classm.sales.1) |
+| sales.bad_aggregate | — | — | — | 1 (classm.sales.1) |
 | sales.one | — | — | — | — |
 | sales.zero | — | — | — | — |
-| sales.e | — | — | — | — |
-| sales.b_difference | — | — | — | — |
-| sales.adjust_b | — | — | — | — |
-| sales.b | — | — | — | — |
-| sales.w | — | — | — | — |
-| sales.g | 4 | — | — | 12 |
-| sales.before_adjustment | — | — | — | — |
-| sales.h | 4 | — | — | 12 |
+| sales.e | — | — | — | 1 (classm.sales.1) |
+| sales.b_difference | — | — | — | 1 (classm.sales.1) |
+| sales.adjust_b | — | — | — | 1 (classm.sales.1) |
+| sales.b | — | — | — | 1 (classm.sales.1) |
+| sales.w | — | — | — | 1 (classm.sales.1) |
+| sales.g | 4 | — | — | 13 |
+| sales.before_adjustment | — | — | — | 1 (classm.sales.1) |
+| sales.h | 4 | — | — | 13 |
 
-Unasserted lines: sales.covered, sales.digital, sales.has_b, sales.has_w, sales.bad_code, sales.bad_aggregate, sales.one, sales.zero, sales.e, sales.b_difference, sales.adjust_b, sales.b, sales.w, sales.before_adjustment
+Unasserted lines: sales.one, sales.zero
 
 ## Schedule B — supported interest and ordinary dividends
 
@@ -819,11 +817,11 @@ Unasserted lines: u1250.combined
 | w2.box4 | — | — | — | — |
 | w2.wages | — | — | — | — |
 | w2.one | — | — | — | — |
-| w2.over | — | — | — | — |
+| w2.over | — | — | — | 1 (classm.w2.1) |
 | w2.box5 | — | — | — | — |
 | w2.box6 | — | — | — | — |
 
-Unasserted lines: w2.wages, w2.one, w2.over
+Unasserted lines: w2.wages, w2.one
 
 ## Tax on an amount — Tax Table or Tax Computation Worksheet
 
@@ -892,5 +890,5 @@ Unasserted lines: below_boundary, table_tax, worksheet_tax, tax
 
 Unasserted lines: single.row1.product, single.row1.tax, single.row2.product, single.row2.tax, single.row3.product, single.row3.tax, single.row4.product, single.row4.tax, single.row5.product, single.row5.tax, single.result, mfj.row1.product, mfj.row1.tax, mfj.row2.product, mfj.row2.tax, mfj.row3.product, mfj.row3.tax, mfj.row4.product, mfj.row4.tax, mfj.row5.product, mfj.row5.tax, mfj.result, mfs.row1.product, mfs.row1.tax, mfs.row2.product, mfs.row2.tax, mfs.row3.product, mfs.row3.tax, mfs.row4.product, mfs.row4.tax, mfs.row5.product, mfs.row5.tax, mfs.result, hoh.row1.product, hoh.row1.tax, hoh.row2.product, hoh.row2.tax, hoh.row3.product, hoh.row3.tax, hoh.row4.product, hoh.row4.tax, hoh.row5.product, hoh.row5.tax, hoh.result, tax
 
-Unasserted computed lines across all documents: 174. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
-Asserted keys not matching a line id: qdcg.f1040.line15, qdcg.f1040.line3a, qdcg.f1040.status, f1040.qdcg.line25, qdcg.sd.distributions
+Unasserted computed lines across all documents: 147. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
+Asserted keys not matching a line id: root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.below_boundary, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.tax, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.below_boundary, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.tax, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, root|inst:tax_on_amount#{"amount":"qdcg.line1","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, qdcg.f1040.line15, qdcg.f1040.line3a, qdcg.f1040.status, f1040.qdcg.line25, qdcg.sd.distributions

@@ -3,6 +3,10 @@
 // values that flow into the document from elsewhere. An isolated model works
 // the document by hand from those values and its archived pages
 // (tools/transcription/classm.py); the agreements become class M fixtures.
+// A keyed collection is worked once per entry: every computed line the
+// evaluation reached for each entry, from the entry's own inputs. A shared
+// definition is worked per instance (an amount and a filing status drawn from
+// the generated returns): its gate tests and its result.
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { loadCanonical } from "./canonical.js";
@@ -25,9 +29,12 @@ interface Job {
   given: Given[];
   own_inputs: { id: string; printed: string; source: string; value: Value }[];
   collections: Record<string, Record<string, EntryField[]>>;
-  fill: { id: string; printed: string; type: string; label: string }[];
+  fill: { id: string; printed: string; type: string; label: string; entry?: string }[];
   project: Record<string, Value>;
   branches: string[];
+  /** "collection": the document is worked once per entry; "def": one instance of a shared definition. */
+  kind?: "collection" | "def";
+  entries?: Record<string, EntryField[]>;
 }
 
 function isHelper(line: Line): boolean { return line.printed.startsWith("("); }
@@ -82,7 +89,7 @@ function docKeys(doc: FormDoc): string[] {
   return keys;
 }
 
-function buildJob(data: CanonicalData, doc: FormDoc, inputs: Inputs, r: EvalResult, n: number, branches: string[]): Job | null {
+function buildJob(data: CanonicalData, doc: FormDoc, inputs: Inputs, r: EvalResult, n: number, branches: string[], entryLevel = false): Job | null {
   const byId = new Map<string, { doc: FormDoc; line: Line }>();
   for (const d of data.forms) for (const l of d.lines) byId.set(l.id, { doc: d, line: l });
   const refs = new Set<string>(); const sums: { collection: string; field: string; where: Set<string> }[] = [];
@@ -110,7 +117,7 @@ function buildJob(data: CanonicalData, doc: FormDoc, inputs: Inputs, r: EvalResu
     given.push({ ref: line.id, doc: doc.id, printed: line.printed, label: line.label, value: v!, note: "result of the shared tax computation (Tax Table or Tax Computation Worksheet), given rather than worked" });
   }
   const status = inputs["f1040.status"] as string;
-  const own_inputs = doc.lines.filter((l) => l.expr.op === "input").map((l) => ({ id: l.id, printed: l.printed, source: (l.expr as { source: string }).source, value: val(l.id)! }));
+  const own_inputs = entryLevel ? [] : doc.lines.filter((l) => l.expr.op === "input").map((l) => ({ id: l.id, printed: l.printed, source: (l.expr as { source: string }).source, value: val(l.id)! }));
   if (own_inputs.some((o) => !computed(o.value))) return null;
   // Collections: every entry of each summed collection, with the summed field and the fields its filter reads.
   const collections: Record<string, Record<string, EntryField[]>> = {};
@@ -130,10 +137,92 @@ function buildJob(data: CanonicalData, doc: FormDoc, inputs: Inputs, r: EvalResu
       collections[s.collection]![entry]!.push({ field: fid, label, value: der.value });
     }
   }
+  if (entryLevel) return { id: `classm.${doc.id}.${n}`, doc: doc.id, inputs, status, given, own_inputs: [], collections, fill: [], project: {}, branches };
   const fill = doc.lines.filter((l) => !isHelper(l) && l.expr.op !== "input" && !defLines.includes(l)).map((l) => ({ id: l.id, printed: l.printed, type: l.type, label: l.label }));
   const project: Record<string, Value> = {};
   for (const l of fill) { const v = val(l.id); if (!computed(v)) return null; project[l.id] = v!; }
   return { id: `classm.${doc.id}.${n}`, doc: doc.id, inputs, status, given, own_inputs, collections, fill, project, branches };
+}
+
+/** The entries of collection `id` in a result: entry prefix -> field id -> derivation key. */
+function entriesOf(id: string, r: EvalResult): Map<string, Map<string, string>> {
+  const out = new Map<string, Map<string, string>>();
+  const re = new RegExp(`^((?:.*\\.)?${id}\\[[^\\]]+\\])\\.([a-z0-9_]+)$`);
+  for (const key of r.derivations.keys()) {
+    const m = key.match(re);
+    if (!m) continue;
+    if (!out.has(m[1]!)) out.set(m[1]!, new Map());
+    out.get(m[1]!)!.set(`${id}.${m[2]}`, key);
+  }
+  return out;
+}
+
+/** Lines of a collection worked by hand: every computed line except year constants. */
+function collectionFill(doc: FormDoc): Line[] { return doc.lines.filter((l) => l.expr.op !== "input" && l.expr.op !== "param"); }
+
+/** A collection document worked once per entry, for one generated return. */
+function buildCollectionJob(data: CanonicalData, doc: FormDoc, inputs: Inputs, r: EvalResult, n: number, branches: string[]): Job | null {
+  const base = buildJob(data, { ...doc, lines: collectionFill(doc).concat(doc.lines.filter((l) => l.expr.op === "input")) }, inputs, r, n, branches, true);
+  if (!base) return null;
+  const entries: Record<string, EntryField[]> = {};
+  const fill: Job["fill"] = []; const project: Record<string, Value> = {};
+  const inputLines = doc.lines.filter((l) => l.expr.op === "input");
+  for (const [entry, fields] of entriesOf(doc.id, r)) {
+    entries[entry] = [];
+    for (const l of inputLines) {
+      const key = fields.get(l.id); const v = key ? r.derivations.get(key)?.value : undefined;
+      if (!computed(v)) continue; // an input the entry does not carry
+      entries[entry]!.push({ field: l.id, label: l.label, value: v! });
+    }
+    // The lines the evaluation reached for this entry: a test settled early leaves the rest
+    // underived, as a STOP in the printed flow chart ends the hand-work.
+    for (const l of collectionFill(doc)) {
+      const key = fields.get(l.id); const v = key ? r.derivations.get(key)?.value : undefined;
+      if (!key || !v) continue;
+      if (!computed(v)) return null;
+      fill.push({ id: key, printed: key, type: l.type, label: l.label, entry });
+      project[key] = v;
+    }
+  }
+  if (fill.length === 0) return null;
+  return { ...base, kind: "collection", own_inputs: [], entries, fill, project };
+}
+
+/** Gate tests and the result of a shared definition: the lines a hand calculation decides. */
+function defFill(def: FormDoc): Line[] { return def.lines.filter((l, i) => l.expr.op !== "input" && (l.type === "Bool" || i === def.lines.length - 1)); }
+
+interface DefInstance { prefix: string; caseIndex: number; keys: Set<string> }
+
+/** Instances of shared definition `def` in a result: instance prefix -> local line id -> derivation key. */
+function instancesOf(def: FormDoc, r: EvalResult): Map<string, Map<string, string>> {
+  const out = new Map<string, Map<string, string>>();
+  const marker = `inst:${def.id}#`;
+  for (const key of r.derivations.keys()) {
+    const at = key.lastIndexOf(marker);
+    if (at < 0) continue;
+    const close = key.indexOf("}.", at);
+    if (close < 0) continue;
+    const prefix = key.slice(0, close + 1), local = key.slice(close + 2);
+    if (prefix.indexOf("|inst:", at) >= 0) continue; // a line of another definition nested inside this instance
+    if (!out.has(prefix)) out.set(prefix, new Map());
+    out.get(prefix)!.set(local, key);
+  }
+  return out;
+}
+
+function buildDefJob(def: FormDoc, inputs: Inputs, r: EvalResult, inst: DefInstance, n: number, branches: string[]): Job | null {
+  const lines = instancesOf(def, r).get(inst.prefix)!;
+  const amount = r.derivations.get(lines.get("amount")!)?.value, status = r.derivations.get(lines.get("status")!)?.value;
+  if (!computed(amount) || !computed(status)) return null;
+  const fill: Job["fill"] = []; const project: Record<string, Value> = {};
+  for (const l of defFill(def)) {
+    const key = lines.get(l.id); const v = key ? r.derivations.get(key)?.value : undefined;
+    if (!key || !computed(v)) return null;
+    fill.push({ id: key, printed: l.id, type: l.type, label: l.label });
+    project[key] = v!;
+  }
+  const given: Given[] = [{ ref: "amount", doc: def.id, printed: "(a)", label: def.lines.find((l) => l.id === "amount")!.label, value: amount! }];
+  return { id: `classm.${def.id}.${n}`, doc: def.id, kind: "def", inputs, status: (status as { value: string }).value, given, own_inputs: [], collections: {}, fill, project, branches };
 }
 
 export function classmJobs(args: string[]): void {
@@ -151,11 +240,21 @@ export function classmJobs(args: string[]): void {
   const summary: string[] = [];
   for (const doc of data.forms) {
     if (only && !only.includes(doc.id)) continue;
-    if (doc.collection) continue;
-    if (!doc.lines.some((l) => !isHelper(l) && l.expr.op !== "input")) continue;
+    const isCollection = !!doc.collection;
+    if (isCollection ? collectionFill(doc).length === 0 : !doc.lines.some((l) => !isHelper(l) && l.expr.op !== "input")) continue;
     const keys = docKeys(doc);
-    // Candidate cases: the document's printed lines all computed.
-    const candidates = corpus.map((_, i) => i).filter((i) => doc.lines.filter((l) => !isHelper(l)).every((l) => computed(results[i]!.derivations.get(l.id)?.value)));
+    // Candidate cases: the document's printed lines all computed; for a collection, at least one
+    // entry, every entry's worked lines computed.
+    const candidates = corpus.map((_, i) => i).filter((i) => {
+      if (!isCollection) return doc.lines.filter((l) => !isHelper(l)).every((l) => computed(results[i]!.derivations.get(l.id)?.value));
+      const entries = entriesOf(doc.id, results[i]!);
+      // Every value derived for an entry must be computed: a refusal anywhere in the entry (a
+      // screen held on a constant line included) puts the case outside the hand-worked scope.
+      const r = results[i]!;
+      return entries.size > 0 && [...entries.values()].every((f) =>
+        [...f.values()].every((key) => r.derivations.get(key)?.value.kind !== "refusal") &&
+        collectionFill(doc).every((l) => { const v = r.derivations.get(f.get(l.id) ?? "")?.value; return !v || computed(v); }));
+    });
     const reachable = new Set(keys.filter((k) => candidates.some((i) => keysPerCase[i]!.has(k))));
     const covered = new Set<string>(); const chosen: number[] = [];
     while (covered.size < reachable.size) {
@@ -167,10 +266,45 @@ export function classmJobs(args: string[]): void {
     let n = 0;
     for (const i of chosen) {
       const branches = keys.filter((k) => keysPerCase[i]!.has(k));
-      const job = buildJob(data, doc, corpus[i]!, results[i]!, ++n, branches);
+      const job = isCollection ? buildCollectionJob(data, doc, corpus[i]!, results[i]!, ++n, branches) : buildJob(data, doc, corpus[i]!, results[i]!, ++n, branches);
       if (job) jobs.push(job); else n--;
     }
     summary.push(`${doc.id}: ${n} case(s) cover ${covered.size}/${keys.length} branches (${keys.length - reachable.size} not reachable by a computed case)`);
+  }
+  // Shared definitions: instances (an amount and a filing status) drawn from the corpus, chosen to
+  // take every reachable branch of the definition.
+  for (const def of data.defs) {
+    if (only && !only.includes(def.id)) continue;
+    const keys = docKeys(def);
+    const instances: DefInstance[] = []; const seen = new Set<string>();
+    results.forEach((r, caseIndex) => {
+      for (const [prefix, lines] of instancesOf(def, r)) {
+        const amount = r.derivations.get(lines.get("amount") ?? "")?.value, status = r.derivations.get(lines.get("status") ?? "")?.value;
+        const sig = JSON.stringify([amount, status]);
+        if (!computed(amount) || seen.has(sig)) continue;
+        seen.add(sig);
+        const ks = new Set<string>();
+        for (const [local, key] of lines) {
+          const b = branchKeys(r.derivations.get(key)!);
+          for (const k of [...b.sides, ...b.guards]) ks.add(local + k.slice(k.search(/[:#][^:#]*$/)));
+        }
+        instances.push({ prefix, caseIndex, keys: ks });
+      }
+    });
+    const reachable = new Set(keys.filter((k) => instances.some((x) => x.keys.has(k))));
+    const covered = new Set<string>(); const chosen: DefInstance[] = [];
+    while (covered.size < reachable.size) {
+      let best: DefInstance | null = null, gain = 0;
+      for (const x of instances) { let g = 0; for (const k of reachable) if (!covered.has(k) && x.keys.has(k)) g++; if (g > gain) { gain = g; best = x; } }
+      if (!best) break;
+      chosen.push(best); for (const k of best.keys) if (reachable.has(k)) covered.add(k);
+    }
+    let n = 0;
+    for (const x of chosen) {
+      const job = buildDefJob(def, corpus[x.caseIndex]!, results[x.caseIndex]!, x, ++n, keys.filter((k) => x.keys.has(k)));
+      if (job) jobs.push(job); else n--;
+    }
+    summary.push(`${def.id}: ${n} instance(s) cover ${covered.size}/${keys.length} branches (${keys.length - reachable.size} not reachable by a computed instance)`);
   }
   mkdirSync(join(out, ".."), { recursive: true });
   // With --docs, the other documents' jobs are kept as they are.

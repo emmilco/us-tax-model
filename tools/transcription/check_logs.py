@@ -17,17 +17,22 @@ forms = sorted(f[:-5] for f in os.listdir(FORMS) if f.endswith(".yaml"))
 
 
 def classm_forms():
-    """Documents class M covers: not a collection, with a printed computed line."""
+    """Documents class M covers (as `classm-jobs` builds them): a form with a printed computed
+    line; a keyed collection with a computed line other than a year constant (worked per entry);
+    a shared definition (worked per instance)."""
     import yaml
     out = []
     for fid in forms:
         d = yaml.safe_load(open(os.path.join(FORMS, fid + ".yaml"), encoding="utf-8"))
         if "def" in d:
-            continue  # shared definitions are worked through the documents that use them
+            out.append(fid); continue
         d = d.get("form")
-        if not d or d.get("collection") or "lines" not in d:
+        if not d or "lines" not in d:
             continue
-        if any(not str(l["printed"]).startswith("(") and l["expr"].get("op") != "input" for l in d["lines"]):
+        if d.get("collection"):
+            if any(l["expr"].get("op") not in ("input", "param") for l in d["lines"]):
+                out.append(fid)
+        elif any(not str(l["printed"]).startswith("(") and l["expr"].get("op") != "input" for l in d["lines"]):
             out.append(fid)
     return out
 

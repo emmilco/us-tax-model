@@ -128,6 +128,79 @@ No prose before or after the YAML.
 """
 
 
+def build_entry_prompt(form_doc, excerpt, job):
+    """A keyed collection worked once per entry, or one instance of a shared definition."""
+    fid = form_doc["id"]
+    given = []
+    for g in job["given"]:
+        if g["ref"] == "f1040.status":
+            continue
+        if job.get("kind") == "def":
+            given.append(f"- {g['label']}: {dollars(g['value'])}")
+            continue
+        note = f" [{g['note']}]" if g.get("note") else ""
+        given.append(f"- {given_name(g, fid)}: {dollars(g['value'])}{note}")
+    entries = []
+    for entry, fields in (job.get("entries") or {}).items():
+        entries.append(f"- {entry}: " + ("; ".join(f"{f['label']} = {dollars(f['value'])}" for f in fields) or "(no amounts given)"))
+    coll = []
+    for cname, ents in job["collections"].items():
+        for entry, fields in ents.items():
+            coll.append(f"- {entry}: " + "; ".join(f"{f['label']} = {dollars(f['value'])}" for f in fields))
+    fill = "\n".join(f'- "{l["printed"]}" ({l["type"]}): {l["label"]}' for l in job["fill"])
+    if job.get("kind") == "def":
+        what = ("This is a shared computation the forms invoke on an amount: work it for the one amount and "
+                "filing status given.")
+    else:
+        what = ("This document is filled in once per entry (one row or one record per person, employer, sale "
+                "or gift). Each entry below is named by its key; work every listed line for every entry.")
+    return f"""You are working one IRS computation by hand for one taxpayer, working ONLY from the IRS text
+provided below and the amounts given here. Do not rely on memory of the tax law or of any software.
+Follow the printed instructions exactly, including every test, every "if zero or less, enter -0-",
+every "smaller of" and "larger of", and every filing-status choice.
+
+# The computation
+
+Id: {fid}
+Title: {form_doc['title']}
+Tax year: {form_doc['tax_year']}
+Filing status: {STATUS_WORDS.get(job['status'], job['status'])}
+
+{what}
+
+# Amounts given
+
+Use them as they are; they are already correct. Amounts are dollars and cents.
+
+{chr(10).join(given) if given else '(none)'}
+{(chr(10) + 'Entries (each with the amounts and answers the filer supplied for it):' + chr(10) + chr(10).join(entries)) if entries else ''}
+{(chr(10) + 'Entries of other keyed collections this one totals:' + chr(10) + chr(10).join(coll)) if coll else ''}
+
+# Lines to fill
+
+Each line is named by a quoted handle, with its value type and what it asks: a money line takes a
+dollar amount; a Bool line takes yes or no (the answer to the question or test as stated); a Count
+line takes a whole number.
+
+{fill}
+
+# Output
+
+Return ONLY a YAML document of the form
+
+lines:
+  - printed: "<the quoted handle, exactly as given>"
+    value: "<dollars.cents, or yes/no, or a whole number>"
+    work: "<one short line citing the rule or the arithmetic>"
+
+No prose before or after the YAML.
+
+# IRS text (archived snapshots; page markers show document, revision and page)
+
+{excerpt}
+"""
+
+
 def parse_value(raw, vtype):
     s = str(raw).strip().strip("$").replace(",", "").lower()
     if s in ("", "blank", "-0-", "skip", "skipped", "none", "n/a"):
@@ -238,7 +311,7 @@ def main():
     excerpt, used = excerpt_for(form_doc, manifest())
     runs, meta_all = {}, {}
     for job in jobs:
-        prompt = build_prompt(form_doc, excerpt, job)
+        prompt = build_entry_prompt(form_doc, excerpt, job) if job.get("kind") else build_prompt(form_doc, excerpt, job)
         base = os.path.join(RAW, job["id"])
         open(base + ".prompt.txt", "w", encoding="utf-8").write(prompt)
         sha = hashlib.sha256(prompt.encode()).hexdigest()
