@@ -263,9 +263,9 @@ def write_log(form_doc, model, prompt, used, printed, verdicts, raw_text, meta):
            f"| lines judged | {len(results)} |",
            f"| match / mismatch / unclear / missing | {counts['MATCH']} / {counts['MISMATCH']} / {counts['UNCLEAR']} / {counts['MISSING']} |",
            f"| verdicts for lines not in the form | {', '.join(extra) if extra else 'none'} |", "",
-           "## Source pages given to the model", "", "| document | revision | pages | selection | text sha256 |", "| --- | --- | --- | --- | --- |"]
+           "## Source pages given to the model", "", "| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |", "| --- | --- | --- | --- | --- | --- | --- |"]
     for u in used:
-        out.append(f"| {u['doc']} | {u['revision']} | {', '.join(map(str, u['pages'])) or '-'} | {u['how']} | {u['text_sha256']} |")
+        out.append(f"| {u['doc']} | {u['revision']} | {', '.join(map(str, u['pages'])) or '-'} | {u['how']} | {u['text_sha256']} | {', '.join(map(str, u.get('cols_pages', []))) or '-'} | {u.get('cols_sha256', '-')} |")
     out += ["", "## Lines", ""]
     for r in results:
         out.append(f"### {r['printed']} — {r['label'][:90]}")

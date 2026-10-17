@@ -98,3 +98,31 @@ Commit only after reading the suite's exit line (T-021 proposes a guard).
   disagreement followed an agreement (87 of 235 rulings in the committed logs
   would have been lost). Fixed in the parsers; before this fix, a reopened
   ruling after a rerun was not evidence that the key had changed.
+
+## Extraction made evidence (same day, after the T-020 work)
+
+The single `pdftotext -layout` pass that every encoded line and every model
+review rested on is now checked and no longer the only reading:
+
+- `tools/extract_text.py` writes reading-order text (`<id>.cols.txt`) beside the
+  layout text of every archived PDF, from poppler's word boxes: gutters are
+  found per page from word coverage (two or three columns), lines poppler ran
+  across a gutter are split, bands are read column by column, hyphenated line
+  breaks are rejoined only where geometry says the next line continues the
+  word, and icon labels (TIP, CAUTION) stand alone. `<id>.pages.json` classifies
+  each page as prose, table, mixed or single; `fetch_sources.py --derive`
+  (re)builds both and records their hashes, and the plain run verifies them.
+- The review tools give the model the reading-order text for pages classified
+  as prose and the layout text for the rest, and their logs record both hashes;
+  `check_logs.py` verifies both. Every review log predates this and must be
+  rerun (the accepted plan: rerun all 74).
+- `tools/check_extraction.py` runs in `check-all`: layout and reading-order text
+  must agree character for character; PDFKit (an independent reader of the text
+  layer) must find no word poppler lacks; every word of an instruction booklet's
+  pages must occur in the IRS's HTML publication of it. Accepted per-page
+  differences carry reasons in `tools/extraction/exceptions.json` (the QBI flow
+  charts and loss worksheet, the sample check: images in the HTML). Report:
+  `reports/2025/extraction.md`. Building the checks found and fixed four
+  extractor defects (negative page coordinates, table-header and index
+  rejoins, merged column lines), none in the archived layout text.
+- Rulings live in `<form>.rulings.json` beside each log (T-024).

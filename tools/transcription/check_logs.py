@@ -42,10 +42,12 @@ def check(kind, logs, optional_env, expected=None):
         text = open(path, encoding="utf-8").read()
         if "Ruling: open" in text:
             problems.append(f"{fid}: open ruling(s) in the {kind} log")
-        for row in re.findall(r"^\| (\S+) \| [^|]* \| [^|]* \| [^|]* \| ([0-9a-f]{64}) \|$", text, flags=re.M):
-            doc_id, sha = row
+        for row in re.findall(r"^\| (\S+) \| [^|]* \| [^|]* \| [^|]* \| ([0-9a-f]{64}) \|(?: [^|]* \| ([0-9a-f]{64}|-) \|)?$", text, flags=re.M):
+            doc_id, sha, cols_sha = row
             if doc_id in docs and docs[doc_id]["text_sha256"] != sha:
                 problems.append(f"{fid}: {kind} log was made against a different snapshot of {doc_id}")
+            if doc_id in docs and cols_sha and cols_sha != "-" and docs[doc_id].get("cols_sha256") != cols_sha:
+                problems.append(f"{fid}: {kind} log was made against a different reading-order text of {doc_id}")
     allow_missing = os.environ.get(optional_env) == "1"
     missing = [p for p in problems if p.endswith(f"no {kind} log")]
     hard = [p for p in problems if not p.endswith(f"no {kind} log")]

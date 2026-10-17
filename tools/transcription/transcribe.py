@@ -34,12 +34,19 @@ def manifest():
     return {d["id"]: d for d in docs}
 
 
-def doc_pages(doc):
-    text = open(os.path.join(SOURCES, doc["text_file"]), encoding="utf-8").read()
+def doc_pages(doc, key="text_file"):
+    text = open(os.path.join(SOURCES, doc[key]), encoding="utf-8").read()
     pages = text.split("\f")
     if pages and not pages[-1].strip():
         pages = pages[:-1]
     return pages
+
+
+def page_kinds(doc):
+    """The per-page classification of the reading-order extraction, or None."""
+    if "pages_file" not in doc:
+        return None
+    return json.load(open(os.path.join(SOURCES, doc["pages_file"]), encoding="utf-8"))["pages"]
 
 
 def locator_pages(locator):
@@ -143,10 +150,19 @@ def excerpt_for(form_doc, mani):
                     chosen |= heading_pages(pages, loc)
             how = "cited pages" if locators else "pages named by another document's citation"
         chosen = sorted(p for p in chosen if 1 <= p <= len(pages))
+        # A page classified as columnar prose is given in reading order (tools/extract_text.py);
+        # worksheets, tables and single-column pages keep the layout text.
+        kinds = page_kinds(doc)
+        cols = doc_pages(doc, "cols_file") if kinds else None
+        cols_pages = [p for p in chosen if kinds and kinds[p - 1] == "prose"]
         used.append({"doc": doc_id, "revision": doc.get("revision", ""), "text_sha256": doc["text_sha256"],
-                     "pages": chosen, "how": how, "locators": sorted(locators)})
+                     "pages": chosen, "how": how, "locators": sorted(locators),
+                     "cols_pages": cols_pages, "cols_sha256": doc.get("cols_sha256", "-")})
         for p in chosen:
-            excerpt.append(f"===== {doc_id} ({doc.get('revision','')}) page {p} of {len(pages)} =====\n{pages[p - 1]}")
+            if p in cols_pages:
+                excerpt.append(f"===== {doc_id} ({doc.get('revision','')}) page {p} of {len(pages)}, in reading order =====\n{cols[p - 1]}")
+            else:
+                excerpt.append(f"===== {doc_id} ({doc.get('revision','')}) page {p} of {len(pages)}, as laid out =====\n{pages[p - 1]}")
     return "\n\n".join(excerpt), used
 
 
@@ -662,9 +678,9 @@ def write_log(form_doc, model, prompt, used, results, extra, raw_text, meta, dry
            f"| printed lines compared | {len(results)} |",
            f"| agree / disagree / missing | {counts['AGREE']} / {counts['DISAGREE']} / {counts['MISSING']} |",
            f"| extra printed lines in second | {', '.join(extra) if extra else 'none'} |", "",
-           "## Source pages given to the model", "", "| document | revision | pages | selection | text sha256 |", "| --- | --- | --- | --- | --- |"]
+           "## Source pages given to the model", "", "| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |", "| --- | --- | --- | --- | --- | --- | --- |"]
     for u in used:
-        out.append(f"| {u['doc']} | {u['revision']} | {', '.join(map(str, u['pages'])) or '-'} | {u['how']} | {u['text_sha256']} |")
+        out.append(f"| {u['doc']} | {u['revision']} | {', '.join(map(str, u['pages'])) or '-'} | {u['how']} | {u['text_sha256']} | {', '.join(map(str, u.get('cols_pages', []))) or '-'} | {u.get('cols_sha256', '-')} |")
     out += ["", "## Lines", ""]
     for r in results:
         out.append(f"### {r['printed']} — {r['label'][:90]}")

@@ -170,9 +170,9 @@ def write_outputs(form_doc, model, jobs, runs, meta_all):
            f"| model reported | {', '.join(sorted({m for meta in meta_all.values() for m in meta.get('model_reported', [])})) or '-'} |",
            f"| cases | {len(jobs)} |"]
     used = runs[jobs[0]["id"]]["used"]
-    out += ["", "## Source pages given to the model", "", "| document | revision | pages | selection | text sha256 |", "| --- | --- | --- | --- | --- |"]
+    out += ["", "## Source pages given to the model", "", "| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |", "| --- | --- | --- | --- | --- | --- | --- |"]
     for u in used:
-        out.append(f"| {u['doc']} | {u['revision']} | {', '.join(map(str, u['pages'])) or '-'} | {u['how']} | {u['text_sha256']} |")
+        out.append(f"| {u['doc']} | {u['revision']} | {', '.join(map(str, u['pages'])) or '-'} | {u['how']} | {u['text_sha256']} | {', '.join(map(str, u.get('cols_pages', []))) or '-'} | {u.get('cols_sha256', '-')} |")
     out += ["", "## Lines", ""]
     fixture_cases = []
     for job in jobs:
