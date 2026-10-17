@@ -131,3 +131,39 @@ expression the description flatters. A line both pass has an expression that
 a second transcriber built the same way and an English restatement a second
 reader accepts against the page.
 
+## Class M hand-work
+
+The third construction here (spec 6.1 class M, 6.5): `classm.py` has an
+isolated model fill one document by hand from its archived pages and the
+amounts that flow into it, for the generated returns that together take every
+reachable branch of the document. `node engine/dist/main.js classm-jobs`
+chooses those returns (whole-dollar inputs, a greedy cover of the document's
+choose guards, Bool sides and floor/min/max sides over a 2,000-return
+corpus) and writes `.classm/jobs.json` with, per case, the whole-return
+inputs, the values the document reads from other documents (printed lines by
+title and number, helpers by label, collection entries field by field), the
+filer's own inputs, and the project's values for comparison, which the model
+never sees. Results of the shared tax computation (Tax Table or Tax
+Computation Worksheet) are given, not worked; that computation is covered by
+the Tax Table conjecture and the transcription and render logs of `tcw` and
+`tax_on_amount`.
+
+```
+node engine/dist/main.js classm-jobs [--docs qdcg,sd]
+python3 tools/transcription/classm.py --doc qdcg            # one call per case
+python3 tools/transcription/classm.py --doc qdcg --dry-run
+python3 tools/transcription/rule.py --kind classm --form qdcg --rulings r.json
+```
+
+One log per document in `reviews/2025/classm/<doc>.md`: pages, model,
+prompt hash per case, the branches each case takes, every line's agreement
+or disagreement with the model's own arithmetic shown, and a ruling under
+each disagreement. The agreements are fixture cases `classm.<doc>.<n>` in
+`fixtures/2025/classm.json`, evidence class M, run by `test-fixtures` like
+any other. A disagreement is written into the fixture as the model's value,
+so the build fails until it is ruled: a project defect gets a data fix and an
+inventory entry; a model arithmetic error is dropped from the fixture with
+`{"ruling": "...", "drop": true}` and stays in the log. Documents that are
+collections (`person`, `w2`, `sales`, `gift`, `interest`) or definitions
+(`tcw`, `tax_on_amount`) have no class M cases yet.
+

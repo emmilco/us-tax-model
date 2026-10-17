@@ -37,7 +37,7 @@ export interface FixtureFile {
 
 export function loadCases(): FixtureFile {
   const dir = join(ROOT, "fixtures", "2025");
-  return { tax_year: 2025, cases: readdirSync(dir).filter(f => /^stage[0-9]+\.json$/.test(f)).sort().flatMap(f => (JSON.parse(readFileSync(join(dir,f),"utf8")) as FixtureFile).cases) };
+  return { tax_year: 2025, cases: readdirSync(dir).filter(f => /^(stage[0-9]+|classm)\.json$/.test(f)).sort().flatMap(f => (JSON.parse(readFileSync(join(dir,f),"utf8")) as FixtureFile).cases) };
 }
 
 function saveCases(file: FixtureFile): void {
@@ -178,7 +178,7 @@ export function evidenceReport(): void {
   }
   const out: string[] = [];
   out.push("# Evidence coverage per line", "");
-  out.push("Fixtures that assert each line, by evidence class. A — official IRS example. B — human hand-work (pending; marked where recorded). C — recorded value also confirmed by the independently written Lean reference evaluator (running evaluator agreement, reports/2025/evaluator_agreement.md); the external-calculator comparison is the Stage 5 differential and remains pending. R — recorded synthetic regression, no class claimed, human review pending.", "");
+  out.push("Fixtures that assert each line, by evidence class. A — official IRS example. B — human hand-work (pending; marked where recorded). C — recorded value also confirmed by the independently written Lean reference evaluator (running evaluator agreement, reports/2025/evaluator_agreement.md); the external-calculator comparison is the Stage 5 differential and remains pending. M — an isolated model worked the document by hand from its archived pages and the amounts flowing into it (reviews/2025/classm/). R — recorded synthetic regression, no class claimed, human review pending.", "");
   const fmt = (s: Set<string>) => s.size === 0 ? "—" : `${s.size}${s.size <= 2 ? " (" + [...s].join(", ") + ")" : ""}`;
   let totalGaps = 0; const allGaps: string[] = [];
   for (const doc of [...data.forms, ...data.defs]) {

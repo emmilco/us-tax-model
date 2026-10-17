@@ -75,15 +75,22 @@ Done, in `check-all`:
   are mostly scope (digital assets, Forms 4797/2439/6252/K-1, carryovers,
   Form 2555) and representation (derived questions, cross-form wiring).
 
-Not done (spec 6.5, design Stage 7):
+- **Class M hand-work** (`engine/src/classm.ts` chooses the cases,
+  `tools/transcription/classm.py` runs them; logs in
+  `reviews/2025/classm/<doc>.md`, fixtures in `fixtures/2025/classm.json`):
+  for each of the 15 non-collection documents with printed computed lines, a
+  greedy cover of every branch a computed case can reach, worked by hand by
+  an isolated model from the document's pages and the amounts flowing into
+  it. 39 cases, 889 lines worked, 882 agree; the 7 disagreements are all
+  blank-versus-computed on skipped parts or lines (Form 8959 parts the
+  filer skips, Schedule D line 20 after a loss, Schedule D Tax Worksheet
+  lines 41–43 after the line-19 skip), ruled and dropped from the fixtures.
+  Cost about $4.50 for all 15. Collections and shared definitions have no
+  class M cases yet (T-015).
 
-1. **Class M hand-work** — branch-covering inputs worked on the archived
-   worksheet by an isolated model, becoming class M fixtures. Seed it from
-   `engine/src/generate.ts` (the corpus plus its branch report) rather than
-   writing another generator; design 2.10's per-worksheet generator is the
-   gap that remains. The narrow band where the worksheet tax exceeds the
-   ordinary tax (`qdcg.line25:right`, `sdtw.line47:right`) needs targeted
-   inputs.
+Stage 7's constructions are all built. Its done-when still wants class M
+for the collection documents and definitions (T-015) and the evidence report
+free of computed lines without an asserted fixture; check the report.
 
 Then Stage 8: one dependent, qualifying-child tests, head of household, the
 child tax credit — the test of whether the atom vocabulary expresses

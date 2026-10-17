@@ -9,10 +9,10 @@ the fixture test compares).
 | --- | --- |
 | Mutants | 697 |
 | Killed by the checker | 40 |
-| Killed by fixtures | 571 |
-| Surviving | 86 (39 provably equivalent) |
-| Mutation score (raw) | 87.7% |
-| Mutation score (equivalent mutants excluded) | 92.9% |
+| Killed by fixtures | 581 |
+| Surviving | 76 (39 provably equivalent) |
+| Mutation score (raw) | 89.1% |
+| Mutation score (equivalent mutants excluded) | 94.4% |
 
 ## Surviving — classified equivalent
 
@@ -63,8 +63,6 @@ the fixture test compares).
 | operand.f1040.f1040.line11b.line11a | replace an operand | f1040.f1040.line11b | f1040.line11a -> f1040.line9 (Dollars) |
 | operand.f1040.f1040.line14.line13b | replace an operand | f1040.f1040.line14 | f1040.line13b -> f1040.line10 (NonNegDollars) |
 | refusal.f1040.f1040.line16.0 | remove refusal | f1040.f1040.line16 |  |
-| operand.f1040.f1040.line18.line16 | replace an operand | f1040.f1040.line18 | f1040.line16 -> f1040.non_sdtw_tax (Dollars) |
-| operand.f1040.f1040.line24.line23 | replace an operand | f1040.f1040.line24 | f1040.line23 -> f1040.line19 (NonNegDollars) |
 | refusal.f1040.f1040.line29.0 | remove refusal | f1040.f1040.line29 |  |
 | refusal.f1040.f1040.line30.0 | remove refusal | f1040.f1040.line30 |  |
 | operand.f4952.f4952.line3.line2 | replace an operand | f4952.f4952.line3 | f4952.line2 -> f4952.zero (NonNegDollars) |
@@ -82,17 +80,9 @@ the fixture test compares).
 | refusal.person.person.medicare5.0 | remove refusal | person.person.medicare5 |  |
 | refusal.person.person.medicare6.0 | remove refusal | person.person.medicare6 |  |
 | refusal.s3.s3.line8.0 | remove refusal | s3.s3.line8 |  |
-| operand.sa.sa.salthalf.saltfloor_applied | replace an operand | sa.sa.salthalf | sa.saltfloor_applied -> sa.saltremaining (NonNegDollars) |
 | refusal.sa.sa.line17.1 | remove refusal | sa.sa.line17 |  |
 | refusal.sa.sa.line17.2 | remove refusal | sa.sa.line17 |  |
-| operand.sdtw.sdtw.line5.line3 | replace an operand | sdtw.sdtw.line5 | sdtw.line3 -> sdtw.line2 (NonNegDollars) |
-| minmax.sdtw.sdtw.line7 | swap smaller_of/larger_of | sdtw.sdtw.line7 |  |
-| operand.sdtw.sdtw.line8.line3 | replace an operand | sdtw.sdtw.line8 | sdtw.line3 -> sdtw.line6 (NonNegDollars) |
-| operand.sdtw.sdtw.line8.line4 | replace an operand | sdtw.sdtw.line8 | sdtw.line4 -> sdtw.line6 (NonNegDollars) |
-| operand.sdtw.sdtw.line9.line8 | replace an operand | sdtw.sdtw.line9 | sdtw.line8 -> sdtw.line6 (NonNegDollars) |
-| operand.sdtw.sdtw.line10.line6 | replace an operand | sdtw.sdtw.line10 | sdtw.line6 -> sdtw.line8 (NonNegDollars) |
 | operand.sdtw.sdtw.line12.line9 | replace an operand | sdtw.sdtw.line12 | sdtw.line9 -> sdtw.line10 (NonNegDollars) |
-| operand.sdtw.sdtw.line13.line10 | replace an operand | sdtw.sdtw.line13 | sdtw.line10 -> sdtw.line7 (Dollars) |
 | operand.sdtw.sdtw.line17.line16 | replace an operand | sdtw.sdtw.line17 | sdtw.line16 -> sdtw.line15 (NonNegDollars) |
 | operand.sdtw.sdtw.raw27.line26 | replace an operand | sdtw.sdtw.raw27 | sdtw.line26 -> sdtw.raw26 (NonNegDollars) |
 | operand.sdtw.sdtw.raw28.line22 | replace an operand | sdtw.sdtw.raw28 | sdtw.line22 -> sdtw.line24 (Dollars) |

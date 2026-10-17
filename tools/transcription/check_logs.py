@@ -13,10 +13,26 @@ docs = {d["id"]: d for d in (m["documents"] if isinstance(m, dict) else m)}
 forms = sorted(f[:-5] for f in os.listdir(FORMS) if f.endswith(".yaml"))
 
 
-def check(kind, logs, optional_env):
+def classm_forms():
+    """Documents class M covers: not a collection, with a printed computed line."""
+    import yaml
+    out = []
+    for fid in forms:
+        d = yaml.safe_load(open(os.path.join(FORMS, fid + ".yaml"), encoding="utf-8"))
+        if "def" in d:
+            continue  # shared definitions are worked through the documents that use them
+        d = d.get("form")
+        if not d or d.get("collection") or "lines" not in d:
+            continue
+        if any(not str(l["printed"]).startswith("(") and l["expr"].get("op") != "input" for l in d["lines"]):
+            out.append(fid)
+    return out
+
+
+def check(kind, logs, optional_env, expected=None):
     """One log per form under `logs`; no open ruling; every source hash current."""
     problems = []
-    for fid in forms:
+    for fid in (expected if expected is not None else forms):
         path = os.path.join(logs, fid + ".md")
         if not os.path.exists(path):
             problems.append(f"{fid}: no {kind} log"); continue
@@ -32,14 +48,16 @@ def check(kind, logs, optional_env):
     hard = [p for p in problems if not p.endswith(f"no {kind} log")]
     for p in hard:
         print(p, file=sys.stderr)
+    total = len(expected if expected is not None else forms)
     if missing:
-        print(f"{kind} logs: {len(forms) - len(missing)}/{len(forms)} forms logged; missing: " + ", ".join(p.split(':')[0] for p in missing))
-    else:
-        print(f"{kind} logs OK ({len(forms)} forms, no open rulings, snapshots current)")
+        print(f"{kind} logs: {total - len(missing)}/{total} forms logged; missing: " + ", ".join(p.split(':')[0] for p in missing))
+    elif not hard:
+        print(f"{kind} logs OK ({total} forms, no open rulings, snapshots current)")
     return bool(hard or (missing and not allow_missing))
 
 
 failed = check("transcription", LOGS, "TRANSCRIPTION_LOGS_OPTIONAL")
 failed = check("render", os.path.join(ROOT, "reviews", "2025", "render"), "RENDER_LOGS_OPTIONAL") or failed
+failed = check("classm", os.path.join(ROOT, "reviews", "2025", "classm"), "CLASSM_LOGS_OPTIONAL", classm_forms()) or failed
 if failed:
     sys.exit(1)
