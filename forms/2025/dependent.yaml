@@ -63,11 +63,13 @@ form:
       expr:
         op: input
         source: Months this person lived with you in 2025, counting temporary absences for school, vacation, business,
-          medical care, military service or detention as time lived with you (0–12). For a person born, died, adopted
+          medical care, military service or detention in a juvenile facility as time lived with you (0–12); enter 7 if
+          the person lived with you for more than half of 2025 but fewer than 7 full months. For a person born, died, adopted
           or placed with you in 2025 who meets the other conditions to be your qualifying child, enter 12 if your home
           was their home for more than half the time they were alive or with you, and 0 otherwise; for any other person
-          born or who died in 2025, enter 12 only if your home was their home for the entire time they were alive, and
-          0 otherwise
+          born or who died in 2025, or adopted, lawfully placed with you for legal adoption, or placed with you as an eligible
+          foster child in 2025, enter 12 only if your home was their home for the entire time they were alive or since
+          the adoption or placement, and 0 otherwise
       cite:
         doc: i1040gi
         locator: p. 17, Step 1, "Who lived with you for more than half of 2025", and p. 21, Exception to time lived with you ("the child ... for more than half the part of the year the child was alive"; "Any other person is considered to have lived with you for all of 2025 if the person was born or died in 2025 and your home was this person's home for the entire time the person was alive in 2025")
@@ -257,6 +259,22 @@ form:
       cite:
         doc: i1040gi
         locator: p. 17, Step 1, "and younger than you (or your spouse if filing jointly)"
+    - id: dependent.us_half
+      printed: (helper)
+      type: Bool
+      label: Lived with you in the United States for more than half of 2025?
+      expr:
+        op: input
+        source: Did this person live with you in the United States (the 50 states and the District of Columbia) for more
+          than half of 2025? Temporary absences for school, vacation, business, medical care, military service or
+          juvenile detention count as time lived with you. A child born or who died in 2025 counts if your home was
+          the child's home for more than half the time the child was alive, and a child you adopted, who was lawfully
+          placed with you for legal adoption, or who was placed with you as an eligible foster child in 2025 counts if
+          your main home was the child's main home for more than half the time since the adoption or placement.
+      cite:
+        doc: i1040gi
+        locator: p. 41, Step 3, "Who lived with you in the United States for more than half of 2025"; p. 43, Exception to
+          time lived with you; p. 45, United States
     - id: dependent.qc_age
       printed: (helper)
       type: Bool
@@ -784,7 +802,7 @@ form:
     - id: dependent.hoh_test1
       printed: (helper)
       type: Bool
-      label: Qualifies you for head of household under Test 1 (a parent whose main home you kept up)
+      label: Qualifies you for head of household under Test 1 through a parent who does not live with you (a parent who lives with you qualifies you through Test 2)
       expr:
         op: test
         all:
@@ -821,6 +839,66 @@ form:
       cite:
         doc: i1040gi
         locator: p. 14, Head of Household, Tests 1 and 2
+    - id: dependent.eic_child
+      printed: (helper)
+      type: Bool
+      label: Qualifying child for the EIC (relationship, age, not filing a joint return, lived with you in the United States for more than half of 2025)
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - dependent.qc_relationship
+              - const: true
+          - op: test
+            eq:
+              - dependent.qc_age
+              - const: true
+          - op: test
+            eq:
+              - dependent.joint_return
+              - const: false
+          - op: test
+            eq:
+              - dependent.us_half
+              - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 41, Step 3, "A qualifying child for the EIC is your..." (relationship AND age AND not filing a joint
+          return AND lived with you in the United States for more than half of 2025)
+      refuses:
+        - when: dependent.other_claimant
+          form: Qualifying child of more than one person (EIC)
+          remedy: The tie-breaker rules for a child who is the qualifying child of more than one person are outside this tool.
+          cite:
+            doc: i1040gi
+            locator: p. 44, Qualifying child of more than one person
+        - when: dependent.married
+          form: Married child (EIC)
+          remedy: A married child is a qualifying child for the EIC only under the dependency rules, which are outside this tool for a married person.
+          cite:
+            doc: i1040gi
+            locator: p. 44, Married child
+    - id: dependent.eic_ssn_child
+      printed: (helper)
+      type: Bool
+      label: Qualifying child for the EIC who has a valid SSN
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - dependent.eic_child
+              - const: true
+          - op: test
+            eq:
+              - dependent.work_ssn
+              - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 46, Worksheet A, line 2, "the number of qualifying children you have who have valid SSNs"; pp. 44–45,
+          Social security number (SSN), "For the EIC, a valid SSN is a number issued by the Social Security Administration
+          unless 'Not Valid for Employment' is printed on the social security card"
   collection:
     cite:
       doc: f1040

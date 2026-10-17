@@ -52,6 +52,7 @@ const BOOL_TRUE_PERCENT: Record<string, number> = {
   "div.basis_reconciled": 95,
   "ftc.all_passive": 90, "ftc.statements": 90, "ftc.eligible": 90, "ftc.elect": 90,
   "sa.elect_itemize": 10,
+  "eic.born_before_2001": 85, "eic.us_home": 95,
 };
 const DEFAULT_TRUE_PERCENT = 10;
 
@@ -65,7 +66,7 @@ const MODELLED = new Set([
 interface Employer { box1: number; box2pct: number; box7: number; over: number }
 interface Sale { box: string; aggregate: boolean; code: string; special: boolean; aggregate_eligible: boolean; proceeds: number; reported_basis: number; correct_basis: number; wash_loss: number; invalid: boolean }
 interface Gift { deduction: number; public_securities: boolean; special: boolean }
-interface Dependent { relationship: string; age: number; younger: boolean; student: boolean; disabled: boolean; months: number; self_support: boolean; joint_return: boolean; citizen: boolean; canada_mexico: boolean; married: boolean; tin: boolean; work_ssn: boolean; gross_income: number; supported: boolean; other_claimant: boolean; divorced_rule: boolean; multiple_support: boolean; parent_home_paid: boolean }
+interface Dependent { relationship: string; age: number; younger: boolean; student: boolean; disabled: boolean; months: number; self_support: boolean; joint_return: boolean; citizen: boolean; canada_mexico: boolean; married: boolean; tin: boolean; work_ssn: boolean; gross_income: number; supported: boolean; other_claimant: boolean; divorced_rule: boolean; multiple_support: boolean; parent_home_paid: boolean; us_half: boolean }
 interface Household { taxpayer_tin: boolean; taxpayer_work_ssn: boolean; home_cost: boolean; unmarried: boolean }
 
 interface Spec {
@@ -117,6 +118,7 @@ export function returnArbitrary(data: CanonicalData): fc.Arbitrary<Inputs> {
     self_support: rareTrue(5), joint_return: rareTrue(3), citizen: rareTrue(90), canada_mexico: rareTrue(20), married: rareTrue(3),
     tin: rareTrue(95), work_ssn: rareTrue(90), gross_income: rareMoney(1_000_000, 20), supported: rareTrue(90),
     other_claimant: rareTrue(3), divorced_rule: rareTrue(3), multiple_support: rareTrue(2), parent_home_paid: rareTrue(30),
+    us_half: rareTrue(85),
   });
   const household = fc.record<Household>({
     taxpayer_tin: rareTrue(97), taxpayer_work_ssn: rareTrue(93),
@@ -129,7 +131,7 @@ export function returnArbitrary(data: CanonicalData): fc.Arbitrary<Inputs> {
 });
   const spec = fc.record<Spec>({
     status: fc.constantFrom("single", "single", "single", "hoh", "mfj", "mfs", "qss"),
-    profile: fc.constantFrom("wage", "wage", "wage", "investor"),
+    profile: fc.constantFrom("wage", "wage", "wage", "investor", "low", "low"),
     rrta: rareTrue(3),
     clean: rareTrue(75),
     badDividends: rareTrue(3),
@@ -159,8 +161,11 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   for (const [key, v] of Object.entries(s.extras)) inputs[key] = s.clean ? 0 : v;
   inputs["f1040.status"] = s.status;
   // An investor has no wages and only qualified dividends and gains, which is
-  // the only way the worksheets' upper skip rules and ceilings are reached.
+  // the only way the worksheets' upper skip rules and ceilings are reached. A
+  // low earner has modest wages, little interest and no dividends or sales,
+  // the returns on which the earned income credit is figured.
   const investor = s.profile === "investor";
+  const low = s.profile === "low";
 
   inputs["$person"] = ["taxpayer"];
   inputs["person[taxpayer].rrta"] = s.rrta;
@@ -168,7 +173,7 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   inputs["$w2@person[taxpayer]"] = employers;
   s.employers.forEach((e, i) => {
     const p = `person[taxpayer].w2[${employers[i]}]`;
-    const box1 = investor ? 0 : e.box1;
+    const box1 = investor ? 0 : low ? e.box1 % 7_000_000 : e.box1;
     const box7 = investor ? 0 : e.box7;
     const box3 = Math.min(box1, Math.max(0, WAGE_BASE - box7));
     const box5 = box1 + box7;
@@ -181,21 +186,23 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
     inputs[`${p}.box6`] = rate(box5, 145, 10000) + (box5 > ADDL_MEDICARE_START ? rate(box5 - ADDL_MEDICARE_START, 9, 1000) : 0);
   });
 
-  const interest = investor ? [] : s.interest;
+  const interest = investor ? [] : low ? s.interest.map((a) => a % 50_000) : s.interest;
   inputs["$interest"] = interest.map((_, i) => `bank_${String.fromCharCode(97 + i)}`);
   interest.forEach((a, i) => { inputs[`interest[bank_${String.fromCharCode(97 + i)}].amount`] = a; });
 
-  const ordinary = investor ? s.ordinary * 4 : s.ordinary;
+  const ordinary = investor ? s.ordinary * 4 : low ? 0 : s.ordinary;
   inputs["sb.ordinary_dividends"] = ordinary;
   inputs["f1040.line3a"] = s.badDividends ? ordinary + 100 : rate(ordinary, investor ? 100 : s.qpct, 100);
   inputs["qbi.dividends"] = rate(ordinary, s.qbipct, 100);
-  inputs["sd.distributions"] = s.distributions;
-  const box2b = rate(s.distributions, s.b2bpct, 100);
+  const distributions = low ? 0 : s.distributions;
+  inputs["sd.distributions"] = distributions;
+  const box2b = rate(distributions, s.b2bpct, 100);
   inputs["div.box2b"] = box2b;
-  inputs["div.box2d"] = rate(s.distributions - box2b, s.b2dpct, 100);
+  inputs["div.box2d"] = rate(distributions - box2b, s.b2dpct, 100);
 
-  inputs["$sales"] = s.sales.map((_, i) => `s${i + 1}`);
-  s.sales.forEach((sale, i) => {
+  const sales = low ? [] : s.sales;
+  inputs["$sales"] = sales.map((_, i) => `s${i + 1}`);
+  sales.forEach((sale, i) => {
     // The aggregate route needs a basis-reported box (A or D), no code and
     // eligibility; code B needs a basis-reported box. Invalid entries keep
     // whatever came out so the gates are exercised too.

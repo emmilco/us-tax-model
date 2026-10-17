@@ -475,16 +475,42 @@ form:
       cite:
         doc: i1040s8812
         locator: p. 8, Earned Income Worksheet, line 7
+    - id: s8812.taking_eic
+      printed: (helper)
+      type: Bool
+      label: Taking the EIC on Form 1040, line 27a
+      expr:
+        op: test
+        gt:
+          - f1040.line27a
+          - param: sales.zero
+      cite:
+        doc: i1040s8812
+        locator: p. 7, Earned Income Chart—Line 18a, "are taking the EIC on Form 1040 or 1040-SR, line 27a"
     - id: s8812.line18a
       printed: 18a
       type: Dollars
       label: Earned income (see instructions)
       expr:
-        op: copy
-        from: s8812.eiw_7
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - s8812.taking_eic
+                - const: true
+            then: eic.earned_income
+          - guard:
+              op: test
+              eq:
+                - s8812.taking_eic
+                - const: false
+            then: s8812.eiw_7
       cite:
-        doc: f1040s8812
-        locator: Schedule 8812 (2025), line 18a
+        doc: i1040s8812
+        locator: p. 7, Earned Income Chart—Line 18a (taking the EIC without Worksheet B, "your earned income from Step 5 of
+          the EIC instructions ... plus all of your nontaxable combat pay if you did not elect to include it"; combat pay is
+          refused; not taking the EIC, the Earned Income Worksheet)
     - id: s8812.line18b
       printed: 18b
       type: NonNegDollars

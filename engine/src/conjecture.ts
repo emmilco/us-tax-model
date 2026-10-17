@@ -91,3 +91,94 @@ export function runConjecture(): void {
   console.log(`conjecture: ${cells} cells tested, ${mismatches.length} mismatches`);
   console.log(`report: reports/2025/tax_table_conjecture.md`);
 }
+
+// The EIC Table against Rev. Proc. 2024-40 section 3.06(1): for each child
+// count and status column, the credit at a band's midpoint m is the smaller of
+// m x (maximum / earned income amount) and the maximum, less
+// (maximum / (completed phaseout - threshold phaseout)) x (m - threshold), not
+// below zero, rounded half-up to whole dollars. The rates are those the Rev.
+// Proc. amounts imply (the statutory percentages are not in the archive), so a
+// cell may differ by $1 where the implied rate is rounded; a larger difference
+// means a misread row or column. The result is recorded either way.
+export function runEicConjecture(): void {
+  const data = loadCanonical();
+  const p = (k: string): bigint => {
+    const v = data.params.values[k]?.value;
+    if (typeof v !== "number") { console.error(`conjecture: parameter ${k} missing`); process.exit(1); }
+    return BigInt(v);
+  };
+  let cells = 0, exact = 0, off1 = 0, kink = 0;
+  const worse: string[] = [];
+  for (let k = 0; k < 4; k++) {
+    const table = data.tables.find((t) => t.id === `eic_${k}`);
+    if (!table || table.kind !== "tax_table") { console.error(`conjecture: eic_${k} missing`); process.exit(1); }
+    const eia = p(`eic.earned_amount${k}`), max = p(`eic.maximum${k}`);
+    table.columns!.forEach((col, ci) => {
+      const side = col.key === "joint" ? "joint" : "other";
+      const thr = p(`eic.ws_threshold${k === 0 ? 0 : 1}.${side}`), end = p(`eic.limit${k}.${side}`);
+      const bands = table.bands!;
+      for (let bi = 0; bi < bands.length; bi++) {
+        const band = bands[bi]!;
+        // A row split for a footnote in one column keeps the whole row's printed value in the
+        // other column, figured at the whole row's midpoint.
+        const prev = bands[bi - 1], next = bands[bi + 1];
+        const sibling = band.less_than % 5000 !== 0 ? next : band.at_least % 5000 !== 0 && band.at_least !== 100 ? prev : undefined;
+        const rowValue = sibling !== undefined && sibling.tax[ci] === band.tax[ci];
+        const lo = rowValue ? Math.min(band.at_least, sibling!.at_least) : band.at_least;
+        const hi = rowValue ? Math.max(band.less_than, sibling!.less_than) : band.less_than;
+        const m2 = BigInt(lo + hi); // twice the midpoint, in cents
+        // The band that contains the earned income amount prints the maximum credit.
+        if (BigInt(band.at_least) < eia && eia < BigInt(band.less_than)) {
+          cells++; kink++;
+          if (band.tax[ci] === Number(max)) exact++;
+          else worse.push(`- ${k} children, ${col.key}, ${band.at_least / 100}-${band.less_than / 100}: printed ${band.tax[ci]! / 100}, maximum ${Number(max) / 100}`);
+          continue;
+        }
+        // Work in units of cents / (2 * eia * (end - thr)) so every term is an integer.
+        const span = end - thr;
+        const den = 2n * eia * span;
+        let build = m2 * max * span; // m * max/eia, scaled by den
+        const cap = max * den;
+        if (build > cap) build = cap;
+        const over = m2 - 2n * thr; // 2 (m - thr)
+        const phase = over > 0n ? over * max * eia : 0n; // (m - thr) * max/span, scaled by den
+        let credit = build - phase;
+        if (credit < 0n) credit = 0n;
+        const dollars = (credit + 50n * den) / (100n * den);
+        const expected = Number(dollars) * 100;
+        const printed = band.tax[ci]!;
+        cells++;
+        if (expected === printed) exact++;
+        else if (Math.abs(expected - printed) === 100) off1++;
+        else worse.push(`- ${k} children, ${col.key}, ${band.at_least / 100}-${band.less_than / 100}: printed ${printed / 100}, formula ${expected / 100}`);
+      }
+    });
+  }
+  const report = [
+    "# EIC Table against Rev. Proc. 2024-40 — result for 2025",
+    "",
+    "Method: for every band of `eic_0` to `eic_3` (extracted from i1040gi pp. 49-60 by `tools/extract_eic_table.py`)",
+    "and both status columns, the credit at the band's midpoint is the smaller of the midpoint times (maximum",
+    "credit / earned income amount) and the maximum credit, less (maximum credit / (completed phaseout amount -",
+    "threshold phaseout amount)) times the excess of the midpoint over the threshold phaseout amount, not below",
+    "zero, rounded half-up to whole dollars. The four amounts per child count and status are the year parameters",
+    "`eic.earned_amount*`, `eic.maximum*` (Rev. Proc. 2024-40 section 3.06(1)) and `eic.ws_threshold*`, `eic.limit*`",
+    "(the instructions' Worksheet A line 5 and Step 1 amounts, which equal the Rev. Proc.'s threshold and completed",
+    "phaseout amounts). The rates are those the Rev. Proc. amounts imply; the statutory percentages are not archived,",
+    "so a difference of $1 is expected where an implied rate is rounded. A larger difference would mean a misread",
+    "row or column. Two readings of the printed table are part of the method: a row split for a footnote in one",
+    "column keeps the whole row's value, figured at the whole row's midpoint, in the other column; and the band",
+    "that contains the earned income amount prints the maximum credit (checked as equality with the maximum).",
+    "",
+    `- Cells tested: ${cells} (of which ${kink} in a band containing the earned income amount)`,
+    `- Equal to the formula: ${exact}`,
+    `- Differing by $1: ${off1}`,
+    `- Differing by more than $1: ${worse.length}`,
+    "",
+    ...(worse.length ? ["Cells differing by more than $1:", "", ...worse.slice(0, 200), ""] : ["No cell differs by more than $1.", ""]),
+  ];
+  writeFileSync(join(ROOT, "reports", "2025", "eic_table_conjecture.md"), report.join("\n"));
+  console.log(`eic conjecture: ${cells} cells, ${exact} equal, ${off1} within $1, ${worse.length} worse`);
+  console.log("report: reports/2025/eic_table_conjecture.md");
+  if (worse.length) process.exitCode = 1;
+}

@@ -4,9 +4,10 @@ Review these renderings line by line against the archived IRS sources in `source
 
 | File | Kind | Lines |
 | --- | --- | --- |
-| dependent.md | worksheet | 45 |
+| dependent.md | worksheet | 48 |
 | div.md | form | 25 |
-| f1040.md | form | 45 |
+| eic.md | worksheet | 67 |
+| f1040.md | form | 46 |
 | f4952.md | form | 25 |
 | f8959.md | form | 26 |
 | f8960.md | form | 30 |
@@ -22,7 +23,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | qdcg.md | worksheet | 27 |
 | s2.md | form | 8 |
 | s3.md | form | 10 |
-| s8812.md | form | 54 |
+| s8812.md | form | 55 |
 | sa.md | form | 55 |
 | sales.md | form | 25 |
 | sb.md | form | 12 |
@@ -33,6 +34,10 @@ Review these renderings line by line against the archived IRS sources in `source
 | tcw.md | def | 47 |
 | u1250.md | form | 19 |
 | w2.md | form | 10 |
+| eic_0.md | tax_table | 1376 rows |
+| eic_1.md | tax_table | 1376 rows |
+| eic_2.md | tax_table | 1376 rows |
+| eic_3.md | tax_table | 1376 rows |
 | rate_schedule.md | bracket_schedule | 4 rows |
 | tax_table.md | tax_table | 2062 rows |
 | params.md | parameters | |

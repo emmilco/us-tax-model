@@ -313,6 +313,15 @@ interview:
       cite:
         doc: i1040sb
         locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+    - input: f1040.line2a
+      prompt: Total tax-exempt interest for 2025 (Form 1099-INT box 8, tax-exempt OID from Form 1099-OID, and exempt-interest dividends in Form 1099-DIV box 12), net of amortized bond premium
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 30
+      cite:
+        doc: i1040gi
+        locator: p. 25, line 2a
     - input: person.rrta
       prompt: Do any wage statements report railroad retirement compensation or taxes (W-2 box 14)?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
@@ -870,7 +879,7 @@ interview:
         doc: i1040gi
         locator: p. 17, Step 1, "Any age and permanently and totally disabled (defined later)"
     - input: dependent.months
-      prompt: Months this person lived with you in 2025, counting temporary absences for school, vacation, business, medical care, military service or detention as time lived with you (0–12); for a person born, died, adopted or placed with you in 2025, enter 12 if your home was their home for more than half the time they were alive or with you, and 0 otherwise
+      prompt: 'Months this person lived with you in 2025, counting temporary absences for school, vacation, business, medical care, military service or detention in a juvenile facility as time lived with you (0–12); enter 7 if the person lived with you for more than half of 2025 but fewer than 7 full months. For a person born, died, adopted or placed with you in 2025 who meets the other conditions to be your qualifying child, enter 12 if your home was their home for more than half the time they were alive or with you, and 0 otherwise; for any other person born or who died in 2025, or adopted, lawfully placed with you for legal adoption, or placed with you as an eligible foster child in 2025, enter 12 only if your home was their home for the entire time they were alive or since the adoption or placement, and 0 otherwise'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
         be null; do not guess. This computes the single-person return; joint returns and unsupported items
         are refused with citations.
@@ -879,6 +888,15 @@ interview:
         doc: i1040gi
         locator: p. 17, Step 1, "Who lived with you for more than half of 2025", and p. 14, Exception to time
           lived with you
+    - input: dependent.us_half
+      prompt: Did this person live with you in the United States (the 50 states and the District of Columbia) for more than half of 2025? Temporary absences for school, vacation, business, medical care, military service or juvenile detention count as time lived with you, a child born or who died in 2025 counts if your home was the child's home for more than half the time the child was alive, and a child you adopted, who was lawfully placed with you for legal adoption, or who was placed with you as an eligible foster child in 2025 counts if your main home was the child's main home for more than half the time since the adoption or placement.
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 30
+      cite:
+        doc: i1040gi
+        locator: p. 41, Step 3; p. 43, Exception to time lived with you; p. 45, United States
     - input: dependent.self_support
       prompt: Did this person provide over half of their own support for 2025?
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
@@ -1030,6 +1048,42 @@ interview:
       cite:
         doc: i1040gi
         locator: p. 14, Head of Household, Test 2
+    - input: eic.qc_of_another
+      prompt: Could you be a qualifying child of another person for 2025? Answer false if that person isn't required to file, and isn't filing, a 2025 return or files only to claim a refund of withheld or estimated tax.
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 30
+      cite:
+        doc: i1040gi
+        locator: p. 41, Step 3, question 6; p. 42, Step 4, question 5
+    - input: eic.born_before_2001
+      prompt: Were you born before January 2, 2001?
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 30
+      cite:
+        doc: i1040gi
+        locator: p. 41, Step 4, question 2
+    - input: eic.us_home
+      prompt: Was your main home in the United States (the 50 states and the District of Columbia) for more than half of 2025? Time on extended active military duty outside the United States counts as a main home in the United States.
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 30
+      cite:
+        doc: i1040gi
+        locator: p. 42, Step 4, question 3; p. 44, Members of the military
+    - input: eic.married
+      prompt: Were you married at the end of 2025 (including married but considered unmarried for head of household status)?
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 30
+      cite:
+        doc: i1040gi
+        locator: p. 41, Step 3, question 3, and Step 4, question 1
     - input: household.unmarried
       prompt: Were you unmarried, or considered unmarried under the head of household rules, at the end of
         2025?

@@ -306,3 +306,51 @@ later grouping.
 - **Why it survived:** every earlier response had one block; a scan of the 102 saved responses of this rerun found this one with two.
 - **Fix:** the three tools take the last fenced block. `classm.py --doc f1040 --from-response` re-derived the log: 105 agreements, no disagreement.
 - **Tags:** review-tool-parsing; caught-by-ruling
+
+---
+
+## BUG-0026 — `table_lookup` turned a refused key into an unknown
+
+- **Date:** 2026-10-17
+- **Caught by:** the `refusal_propagates` property after Stage 9 added EIC Table lookups keyed by Form 1040 line 11b: with Schedule 1 refusing the adjusted gross income, `eic.line3_table0` evaluated to `unknown` ("lookup key or status missing") instead of the refusal.
+- **Symptom:** a lookup whose key or status was refused reported a missing input rather than the refusal and its citation; the Lean reference evaluator (`isUnknown` covers refusals) passed the refusal through, so the two evaluators would have disagreed on such a line.
+- **Root cause:** `engine/src/eval.ts`, case `table_lookup`, tested only that the key was money and the status an enum.
+- **Why it survived:** the Tax Table's keys (taxable income inside the tax computation) are reached only after the screens that refuse them have already ended the return; no earlier key could be refused at the lookup.
+- **Fix:** the case returns an unknown or refused key or status unchanged, as every other atom does.
+- **Tags:** evaluator; refusal-propagation; caught-by-property
+
+---
+
+## BUG-0027 — The months-lived question left out adoption and placement for a person who is not a qualifying child
+
+- **Date:** 2026-10-17
+- **Caught by:** Stage 9 render comparison of `dependent.months`: the "Exception to time lived with you" (i1040gi p. 21) treats any person other than a qualifying child as living with you all year if born or died in 2025, "or if you adopted the person in 2025, the person was lawfully placed with you for legal adoption by you in 2025, or the person was an eligible foster child placed with you during 2025" and your main home was the person's main home for the entire time since.
+- **Symptom:** a household member adopted or placed with the filer during 2025 would have been entered with fewer than 12 months and lost qualifying-relative status through the all-year household bullet.
+- **Root cause:** `forms/2025/dependent.yaml`, `dependent.months`: the source text gave the adoption and placement route to qualifying children only; the four interview prompts carried an older wording that did not separate the two groups at all.
+- **Why it survived:** the Stage 8 render comparison read the column-spliced p. 21 before T-025 fixed the reading-order text of the flow-chart pages.
+- **Fix:** the question and every interview prompt carry the full exception for both groups. No expression changed.
+- **Tags:** scope-screen-narrower-than-line; household-predicates; caught-by-render-comparison; reading-order-text
+
+---
+
+## BUG-0028 — The EIC lived-in-the-United-States question left out adoption and placement
+
+- **Date:** 2026-10-17
+- **Caught by:** Stage 9 render comparison of the new `dependent.us_half`: the EIC's "Exception to time lived with you" (i1040gi p. 43) counts a child adopted, lawfully placed for adoption or placed as an eligible foster child in 2025 if your main home was the child's main home for more than half the time since.
+- **Symptom:** such a child could have been answered "no" and dropped from the EIC count.
+- **Root cause:** the question was written from the temporary-absence and birth-or-death sentences only.
+- **Why it survived:** caught at the first review of the line.
+- **Fix:** the question and its interview prompt carry the adoption and placement sentence.
+- **Tags:** scope-screen-narrower-than-line; household-predicates; caught-by-render-comparison
+
+---
+
+## BUG-0029 — The months-lived question counted any detention and lost part-month stays
+
+- **Date:** 2026-10-17
+- **Caught by:** Stage 9 render comparison of `dependent.months` and `dependent.lived_half`: the exception counts "detention in a juvenile facility" (i1040gi p. 21), not any detention; and the test "lived with you for more than half of 2025" is encoded as more than 6 whole months, so a person who lived with the filer 6 months and some days would be entered as 6 and fail.
+- **Symptom:** an adult detained elsewhere could have been counted as living with the filer; a person living with the filer just over half the year could have failed the residency test.
+- **Root cause:** `forms/2025/dependent.yaml`, `dependent.months`: the question shortened the instructions' wording and asked for whole months without saying how to enter a stay of more than half the year but fewer than seven full months.
+- **Why it survived:** as BUG-0027; the earlier comparison read the spliced p. 21.
+- **Fix:** the question says "detention in a juvenile facility" and "enter 7 if the person lived with you for more than half of 2025 but fewer than 7 full months", so "more than 6" is "more than half of 2025". No expression changed.
+- **Tags:** scope-screen-wider-than-line; scope-screen-narrower-than-line; household-predicates; caught-by-render-comparison; reading-order-text

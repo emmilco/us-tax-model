@@ -109,6 +109,8 @@ export interface TableDoc {
   // tax_table
   columns?: { key: string; statuses: string[]; note?: string }[];
   bands?: { at_least: Money; less_than: Money; tax: Money[] }[];
+  /** The amounts a printed table covers when not [0, ordinary.table_boundary). */
+  bounds?: { at_least: Money; less_than: Money };
   // bracket_schedule
   status_alias?: Record<string, string>;
   schedules?: Record<string, { upper: Money | null; base: Money; rate: Rate; over: Money }[]>;

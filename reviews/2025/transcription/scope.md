@@ -7,7 +7,7 @@ Second transcription of `Proof-of-concept scope screening` by an isolated model 
 | date | 2026-10-17 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | ed52b0b037167edec0c59bad1a8ae0b914b6014dd5bc1a5f8639e1f4465c6c52 |
+| prompt sha256 | b2fa50eeb178b21a3d172deaccfc3d17f50b36c910a1517f0a9fdbf32f5d2d45 |
 | printed lines compared | 0 |
 | agree / disagree / missing | 0 / 0 / 0 |
 | extra printed lines in second | none |
@@ -25,6 +25,9 @@ Second transcription of `Proof-of-concept scope screening` by an isolated model 
 
 ```yaml
 ```yaml
+# The request lists no printed lines and no required intermediate values for form "scope",
+# and the IRS text supplied defines no scope-screening lines. The five scope.* inputs
+# already exist and are not redefined here, so there is nothing to transcribe.
 lines: []
 ```
 ```

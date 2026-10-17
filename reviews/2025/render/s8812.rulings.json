@@ -5,25 +5,25 @@
   {
    "printed": "16b",
    "restated": "Add dependent.actc_amount over every confirmed dependent entry, within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "The form says \"Number of qualifying children ... x $1,700.\" The restatement instead sums dependent.actc_amount, which is not defined, so it cannot be confirmed to equal $1,700 per qualifying child.",
+   "model": "The form says 'Number of qualifying children under age 17 with the required social security number: x $1,700'. The program instead adds dependent.actc_amount over every confirmed dependent. The text given does not define dependent.actc_amount, so I can't confirm it is $1,700 for each line-4 child and zero for everyone else.",
    "ruling": "Ruling: representation; project retained. The count and the dollar lines are sums over the listed persons of a per-person amount ($2,200, $500 or $1,700 for a person who qualifies, else zero), defined on the dependent worksheet, which has its own transcription, render and class M logs; the per-person predicates are Steps 3 and 5 of the Form 1040 instructions. The count times the dollar figure and the sum of the per-person figures are the same number. No change to the data."
   },
   {
    "printed": "21",
    "restated": "Subtract f8959 line 22 from helper \"Additional Medicare Tax and RRTA Tax Worksheet, line 4. Add social security tax withheld, Medicare tax withheld (Form 8959, line 19) and Form 8959, line 7\".",
-   "model": "The restatement uses only worksheet lines 1 through 5, but the worksheet says \"16. Add lines 6, 7, 11, and 15. Enter here and on line 21 of Schedule 8812.\" It leaves out the Tier 1 RRTA amounts (lines 11 and 15) and the self-employment Additional Medicare Tax (line 7), and no refusal names the RRTA cases.",
+   "model": "The worksheet line 16 says 'Add lines 6, 7, 11, and 15'. The program computes only line 6: worksheet line 4 minus Form 8959 line 22. It leaves out the Tier 1 RRTA amounts on lines 8–15, and no refusal names RRTA. Line 7 (half of Form 8959 line 13, Additional Medicare Tax on self-employment income) is also left out, though that is likely covered by the Schedule 1 refusal.",
    "ruling": "Ruling: scope; project retained. The Tier 1 RRTA amounts on lines 11 and 15 of the Additional Medicare Tax and RRTA Tax Worksheet are outside the slice: `person.rrta` refuses the per-person Medicare totals that Form 8959 line 19 sums, and this line reads that total, so a return with RRTA compensation refuses here. No change to the data."
   },
   {
    "printed": "5",
    "restated": "Add dependent.ctc_amount over every confirmed dependent entry, within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "The form says \"Multiply line 4 by $2,200.\" The restatement instead sums dependent.ctc_amount, which is not defined in the glossary, so it cannot be confirmed to equal $2,200 per child counted on line 4.",
+   "model": "The form says 'Multiply line 4 by $2,200'. The program instead adds dependent.ctc_amount over every confirmed dependent, not only the qualifying children. The text given does not define dependent.ctc_amount, so I can't confirm it is $2,200 for each line-4 child and zero for everyone else.",
    "ruling": "Ruling: representation; project retained. The count and the dollar lines are sums over the listed persons of a per-person amount ($2,200, $500 or $1,700 for a person who qualifies, else zero), defined on the dependent worksheet, which has its own transcription, render and class M logs; the per-person predicates are Steps 3 and 5 of the Form 1040 instructions. The count times the dollar figure and the sum of the per-person figures are the same number. No change to the data."
   },
   {
    "printed": "7",
    "restated": "Add dependent.odc_amount over every confirmed dependent entry, within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "The form says \"Multiply line 6 by $500.\" The restatement instead sums dependent.odc_amount, which is not defined, so it cannot be confirmed to equal $500 per dependent counted on line 6.",
+   "model": "The form says 'Multiply line 6 by $500'. The program instead adds dependent.odc_amount over every confirmed dependent. The text given does not define dependent.odc_amount, so I can't confirm it is $500 for each line-6 dependent and zero for everyone else.",
    "ruling": "Ruling: representation; project retained. The count and the dollar lines are sums over the listed persons of a per-person amount ($2,200, $500 or $1,700 for a person who qualifies, else zero), defined on the dependent worksheet, which has its own transcription, render and class M logs; the per-person predicates are Steps 3 and 5 of the Form 1040 instructions. The count times the dollar figure and the sum of the per-person figures are the same number. No change to the data."
   }
  ]

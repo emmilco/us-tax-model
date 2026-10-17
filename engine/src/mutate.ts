@@ -261,6 +261,23 @@ function sharedGateEquivalence(data: CanonicalData, mutation: Mutation): string 
 // accepted only while the structural facts it rests on hold in the current data; when
 // they lapse, the mutant is reported as unexplained again.
 const EQUIVALENT_IF: Record<string, { reason: string; holds: (data: CanonicalData) => boolean }> = {
+  "operand.eic.eic.step5_line4.zero": {
+    reason: "Step 5 line 4 keeps its own combat-pay refusal whatever it reads; the substituted line 2 is the same zero (a copy of eic.zero) carrying only the gate scope.other_income, and earned income adds line 3 (line 1 less line 2) before line 4, so when that gate is true line 3 has already refused with the same refusal. No value can change.",
+    holds: (d) => {
+      const l4 = findLine(d, "eic.step5_line4"), l2 = findLine(d, "eic.step5_line2"), l3 = findLine(d, "eic.step5_line3"), ei = findLine(d, "eic.earned_income");
+      if (!l4 || !l2 || !l3 || !ei || l4.expr.op !== "copy" || l2.expr.op !== "copy" || l4.expr.from !== "eic.zero" || l2.expr.from !== "eic.zero") return false;
+      if (l3.expr.op !== "subtract" || l3.expr.take !== "eic.step5_line2" || ei.expr.op !== "sum") return false;
+      const of = ei.expr.of as string[];
+      return of[0] === "eic.step5_line3" && of[1] === "eic.step5_line4" && (l2.refuses ?? []).every((r) => r.when === "scope.other_income");
+    },
+  },
+  "refusal.eic.eic.step1_resident.0": agiFirst("scope.other_income", "eic.step1_resident", 0),
+  "refusal.eic.eic.step5_line2.0": agiFirst("scope.other_income", "eic.step5_line2", 0),
+  "refusal.eic.eic.step2_other.0": agiFirst("scope.schedule1", "eic.step2_other", 0),
+  "refusal.eic.eic.step5_line1.0": agiFirst("scope.schedule1", "eic.step5_line1", 0),
+  "param.eic.ws_threshold0.other.$1": thresholdAtPlateau("eic.ws_threshold0.other", ["eic_0"], 0),
+  "param.eic.ws_threshold0.joint.$1": thresholdAtPlateau("eic.ws_threshold0.joint", ["eic_0"], 1),
+  "param.eic.ws_threshold1.joint.$1": thresholdAtPlateau("eic.ws_threshold1.joint", ["eic_1", "eic_2", "eic_3"], 1),
   "operand.s8812.s8812.line13.clw_a5": {
     reason: "Credit Limit Worksheet A line 5 is line 3 less line 4, and line 4 is zero behind the same gate that line 2, an operand of line 3, carries. When the gate fires, line 3 already refuses and the subtraction returns its first operand's refusal; when it does not, line 4 is zero. Line 13 therefore reads the same value from line 5 as from line 3 on every input.",
     holds: (d) => {
@@ -289,6 +306,58 @@ const EQUIVALENT_IF: Record<string, { reason: string; holds: (data: CanonicalDat
     },
   },
 };
+
+// A shifted parameter that no line of any form or definition reads cannot change a value;
+// such parameters serve the cross-checks (for example the Rev. Proc. amounts behind the EIC
+// Table check). Checked on every run against the current data.
+function unreadParameter(data: CanonicalData, mutation: Mutation): string | undefined {
+  if (!mutation.id.startsWith("param.")) return undefined;
+  const name = mutation.where;
+  const reads = (node: unknown): boolean => {
+    if (Array.isArray(node)) return node.some(reads);
+    if (node === null || typeof node !== "object") return false;
+    const o = node as Record<string, unknown>;
+    if (o["param"] === name || (o["op"] === "param" && o["ref"] === name)) return true;
+    return Object.values(o).some(reads);
+  };
+  const tableBound = name === "ordinary.table_boundary";
+  if (tableBound || allDocs(data).some((doc) => doc.lines.some((l) => reads(l.expr)))) return undefined;
+  return `Unread parameter: no line of any form or definition reads ${name}; it serves a cross-check outside the computation, so shifting it cannot change any value.`;
+}
+
+// The EIC's first test reads Form 1040 line 11b. A refusal gate that already refuses a line
+// line 11b reads ends the EIC with that refusal before any EIC line carrying the same gate is
+// reached from Form 1040, so removing the EIC copy of the gate changes no Form 1040 line.
+function agiFirst(gate: string, line: string, index: number) {
+  return {
+    reason: `The gate ${gate} also refuses a line that Form 1040 line 11b reads, and eic.eligible tests eic.below_top (which reads line 11b) first, so the return's EIC refuses through line 11b whenever ${gate} is true; the copy of the gate on ${line} adds nothing to any Form 1040 line.`,
+    holds: (d: CanonicalData): boolean => {
+      const l = findLine(d, line); if (!l || l.refuses?.[index]?.when !== gate) return false;
+      const seen = new Set<string>(); const stack = ["f1040.line11b"]; let found = false;
+      while (stack.length) { const id = stack.pop()!; if (seen.has(id)) continue; seen.add(id); const x = findLine(d, id); if (!x) continue; if ((x.refuses ?? []).some((r) => r.when === gate)) found = true; stack.push(...operandRefs(d, x.expr)); }
+      const el = findLine(d, "eic.eligible"); const bt = findLine(d, "eic.below_top");
+      return found && !!el && !!bt && operandRefs(d, el.expr)[0] === "eic.below_top" && operandRefs(d, bt.expr)[0] === "f1040.line11b";
+    },
+  };
+}
+
+// A Worksheet A line 5 amount whose EIC Table band prints the maximum credit in every column
+// that uses it: with line 3 inside [amount, amount + $1) the lookup returns the maximum, line 6
+// takes the smaller of it and line 2 (never above the maximum), so blank or not, line 6 is line 2.
+function thresholdAtPlateau(param: string, tables: string[], col: number) {
+  return {
+    reason: `Line 5 amount ${param}: in ${tables.join(", ")} the bands covering [${param}, ${param} + $1) print each table's maximum in the column used, so shifting the amount by $1 can only turn a lookup equal to the maximum into a blank line 5; line 6 is line 2 either way.`,
+    holds: (d: CanonicalData): boolean => {
+      const v = d.params.values[param]?.value; if (typeof v !== "number") return false;
+      return tables.every((t) => {
+        const tb = d.tables.find((x) => x.id === t); if (!tb?.bands) return false;
+        const max = Math.max(...tb.bands.map((b) => b.tax[col]!));
+        const cover = tb.bands.filter((b) => b.at_least < v + 100 && b.less_than > v);
+        return cover.length > 0 && cover.every((b) => b.tax[col] === max);
+      });
+    },
+  };
+}
 
 export function runMutation(): number {
   const baseline = loadCanonical();
@@ -339,7 +408,7 @@ export function runMutation(): number {
   const killed = killedByCheck + killedByFixtures;
   const score = total === 0 ? 0 : killed / total;
   for(const survivor of survivors) {
-    const reason=aliasEquivalence(baseline,survivor) ?? sharedGateEquivalence(baseline,survivor);
+    const reason=aliasEquivalence(baseline,survivor) ?? sharedGateEquivalence(baseline,survivor) ?? unreadParameter(baseline,survivor);
     if(reason)EQUIVALENT[survivor.id]=reason;
     const conditional=EQUIVALENT_IF[survivor.id];
     if(conditional && conditional.holds(baseline))EQUIVALENT[survivor.id]=conditional.reason+" (structural conditions re-checked this run.)";

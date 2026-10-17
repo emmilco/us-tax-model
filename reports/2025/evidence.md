@@ -26,31 +26,34 @@ Fixtures that assert each line, by evidence class. A — official IRS example. B
 | dependent.parent_home_paid | — | — | — | — |
 | dependent.one | — | — | — | — |
 | dependent.zero | — | — | — | — |
-| dependent.qc_relationship | — | — | — | 26 |
+| dependent.qc_relationship | — | — | — | 27 |
 | dependent.younger | — | — | — | 18 |
-| dependent.qc_age | — | — | — | 23 |
-| dependent.lived_half | — | — | — | 24 |
-| dependent.qualifying_child | — | — | — | 29 |
-| dependent.resident | — | — | — | 24 |
-| dependent.qc_dependent | — | — | — | 29 |
-| dependent.qr_relationship | — | — | — | 11 |
-| dependent.qr_income | — | — | — | 11 |
-| dependent.income_exception | — | — | — | 12 |
-| dependent.qualifying_relative | — | — | — | 13 |
-| dependent.qr_dependent | — | — | — | 13 |
-| dependent.claimed | — | — | — | 29 |
-| dependent.under_ctc_age | — | — | — | 20 |
-| dependent.ctc_child | — | — | — | 29 |
-| dependent.odc_person | — | — | — | 29 |
+| dependent.us_half | — | — | — | — |
+| dependent.qc_age | — | — | — | 24 |
+| dependent.lived_half | — | — | — | 25 |
+| dependent.qualifying_child | — | — | — | 30 |
+| dependent.resident | — | — | — | 25 |
+| dependent.qc_dependent | — | — | — | 30 |
+| dependent.qr_relationship | — | — | — | 12 |
+| dependent.qr_income | — | — | — | 12 |
+| dependent.income_exception | — | — | — | 13 |
+| dependent.qualifying_relative | — | — | — | 14 |
+| dependent.qr_dependent | — | — | — | 14 |
+| dependent.claimed | — | — | — | 30 |
+| dependent.under_ctc_age | — | — | — | 17 |
+| dependent.ctc_child | — | — | — | 30 |
+| dependent.odc_person | — | — | — | 30 |
 | dependent.ctc_per_child | — | — | — | — |
-| dependent.ctc_amount | — | — | — | 29 |
+| dependent.ctc_amount | — | — | — | 30 |
 | dependent.odc_per_dependent | — | — | — | — |
-| dependent.odc_amount | — | — | — | 29 |
+| dependent.odc_amount | — | — | — | 30 |
 | dependent.actc_per_child | — | — | — | — |
-| dependent.actc_amount | — | — | — | 29 |
-| dependent.hoh_test2 | — | — | — | 29 |
-| dependent.hoh_test1 | — | — | — | 29 |
+| dependent.actc_amount | — | — | — | 30 |
+| dependent.hoh_test2 | — | — | — | 30 |
+| dependent.hoh_test1 | — | — | — | 30 |
 | dependent.hoh_person | — | — | — | — |
+| dependent.eic_child | — | — | — | 6 |
+| dependent.eic_ssn_child | — | — | — | 6 |
 
 Unasserted lines: dependent.one, dependent.zero, dependent.ctc_per_child, dependent.odc_per_dependent, dependent.actc_per_child, dependent.hoh_person
 
@@ -86,55 +89,130 @@ Unasserted lines: dependent.one, dependent.zero, dependent.ctc_per_child, depend
 
 Unasserted lines: div.box1a, div.box1b, div.box2a, div.box5, div.section1202, div.amt, div.unsupported, div.bad_special, div.screen, div.bad_components, div.special_total
 
+## Earned Income Credit (EIC)—Steps 1 to 6 and Worksheet A—Line 27a
+
+| line | A | B | C | R |
+| --- | --- | --- | --- | --- |
+| eic.qc_of_another | — | — | — | — |
+| eic.born_before_2001 | — | — | — | — |
+| eic.us_home | — | — | — | — |
+| eic.married | — | — | — | — |
+| eic.zero | — | — | — | — |
+| eic.qc_count | — | — | — | — |
+| eic.ssn_count | — | — | — | 3 |
+| eic.has_qc | — | — | — | 2 (stage9.eic.child_without_ssn, stage9.eic.parent_not_qualifying_child) |
+| eic.married_rules | — | — | — | — |
+| eic.top_limit | — | — | — | — |
+| eic.below_top | — | — | — | — |
+| eic.limit0_other | — | — | — | — |
+| eic.limit1_other | — | — | — | — |
+| eic.limit2_other | — | — | — | — |
+| eic.limit3_other | — | — | — | — |
+| eic.limit0_joint | — | — | — | — |
+| eic.limit1_joint | — | — | — | — |
+| eic.limit2_joint | — | — | — | — |
+| eic.limit3_joint | — | — | — | — |
+| eic.limit_other | — | — | — | — |
+| eic.limit_joint | — | — | — | — |
+| eic.limit | — | — | — | — |
+| eic.step1_income | — | — | — | — |
+| eic.step1_ssn | — | — | — | — |
+| eic.step1_foreign | — | — | — | — |
+| eic.step1_resident | — | — | — | — |
+| eic.gain_7a | — | — | — | 1 (stage9.eic.capital_gain_in_investment_income) |
+| eic.investment_income | — | — | — | — |
+| eic.step2_income | — | — | — | 3 |
+| eic.step2_other | — | — | — | — |
+| eic.step3 | — | — | — | — |
+| eic.step4 | — | — | — | 1 (stage9.eic.no_child.over65) |
+| eic.step34 | — | — | — | — |
+| eic.step5_line1 | — | — | — | — |
+| eic.step5_line2 | — | — | — | — |
+| eic.step5_line3 | — | — | — | — |
+| eic.step5_line4 | — | — | — | — |
+| eic.earned_income | — | — | — | — |
+| eic.step5_income | — | — | — | — |
+| eic.eligible | — | — | — | 19 |
+| eic.line1 | — | — | — | 9 |
+| eic.line1_in_table | — | — | — | — |
+| eic.line1_table0 | — | — | — | — |
+| eic.line1_table1 | — | — | — | — |
+| eic.line1_table2 | — | — | — | — |
+| eic.line1_table3 | — | — | — | — |
+| eic.line1_table | — | — | — | — |
+| eic.line2 | — | — | — | 22 |
+| eic.line3 | — | — | — | 2 (classm.eic.3, classm.eic.6) |
+| eic.line4 | — | — | — | 11 |
+| eic.threshold_other | — | — | — | — |
+| eic.threshold_joint | — | — | — | — |
+| eic.line5_threshold | — | — | — | — |
+| eic.threshold0_other | — | — | — | — |
+| eic.threshold1_other | — | — | — | — |
+| eic.threshold0_joint | — | — | — | — |
+| eic.threshold1_joint | — | — | — | — |
+| eic.line5_blank | — | — | — | 1 (stage9.eic.one_child.at_line5_amount) |
+| eic.line3_table0 | — | — | — | — |
+| eic.line3_table1 | — | — | — | — |
+| eic.line3_table2 | — | — | — | — |
+| eic.line3_table3 | — | — | — | — |
+| eic.line5 | — | — | — | 8 |
+| eic.smaller | — | — | — | — |
+| eic.after_line4 | — | — | — | — |
+| eic.line6 | — | — | — | 15 |
+| eic.credit | — | — | — | — |
+
+Unasserted lines: eic.zero, eic.qc_count, eic.married_rules, eic.top_limit, eic.below_top, eic.limit0_other, eic.limit1_other, eic.limit2_other, eic.limit3_other, eic.limit0_joint, eic.limit1_joint, eic.limit2_joint, eic.limit3_joint, eic.limit_other, eic.limit_joint, eic.limit, eic.step1_income, eic.step1_ssn, eic.step1_foreign, eic.step1_resident, eic.investment_income, eic.step2_other, eic.step3, eic.step34, eic.step5_line1, eic.step5_line2, eic.step5_line3, eic.step5_line4, eic.earned_income, eic.step5_income, eic.line1_in_table, eic.line1_table0, eic.line1_table1, eic.line1_table2, eic.line1_table3, eic.line1_table, eic.threshold_other, eic.threshold_joint, eic.line5_threshold, eic.threshold0_other, eic.threshold1_other, eic.threshold0_joint, eic.threshold1_joint, eic.line3_table0, eic.line3_table1, eic.line3_table2, eic.line3_table3, eic.smaller, eic.after_line4, eic.credit
+
 ## Form 1040 — selected lines (Stages 1–4)
 
 | line | A | B | C | R |
 | --- | --- | --- | --- | --- |
 | f1040.status | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | — |
-| f1040.line1a | — | — | — | 6 |
-| f1040.line1z | — | — | — | 6 |
-| f1040.line2b | — | — | — | 6 |
-| f1040.line3b | — | — | — | 6 |
+| f1040.line1a | — | — | — | 5 |
+| f1040.line1z | — | — | — | 5 |
+| f1040.line2a | — | — | — | — |
+| f1040.line2b | — | — | — | 5 |
+| f1040.line3b | — | — | — | 5 |
 | f1040.line3a | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 3 |
-| f1040.line7a | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 65 |
-| f1040.line8 | — | — | — | 8 |
-| f1040.line9 | — | — | — | 8 |
-| f1040.line10 | — | — | — | 7 |
-| f1040.line11a | — | — | — | 8 |
-| f1040.line11b | — | — | — | 6 |
-| f1040.line12e | — | — | — | 30 |
-| f1040.line13a | — | — | — | 6 |
-| f1040.line13b | — | — | — | 7 |
-| f1040.line14 | — | — | — | 6 |
-| f1040.line15 | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 8 |
+| f1040.line7a | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 64 |
+| f1040.line8 | — | — | — | 7 |
+| f1040.line9 | — | — | — | 7 |
+| f1040.line10 | — | — | — | 6 |
+| f1040.line11a | — | — | — | 7 |
+| f1040.line11b | — | — | — | 21 |
+| f1040.line12e | — | — | — | 29 |
+| f1040.line13a | — | — | — | 5 |
+| f1040.line13b | — | — | — | 6 |
+| f1040.line14 | — | — | — | 5 |
+| f1040.line15 | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 7 |
 | f1040.gate.qdcg_applies | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 7 |
 | f1040.gate.sdtw | — | — | — | 5 |
 | f1040.non_sdtw_tax | — | — | — | 2 (stage4.sdtw.special_rates, stage4.sdtw.skip22) |
-| f1040.line16 | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 14 |
-| f1040.line17 | — | — | — | 8 |
-| f1040.line18 | — | — | — | 8 |
-| f1040.line19 | — | — | — | 31 |
-| f1040.line20 | — | — | — | 6 |
-| f1040.line21 | — | — | — | 7 |
-| f1040.line22 | — | — | — | 7 |
-| f1040.line23 | — | — | — | 6 |
-| f1040.line24 | — | — | — | 7 |
-| f1040.line25a | — | — | — | 6 |
+| f1040.line16 | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 13 |
+| f1040.line17 | — | — | — | 7 |
+| f1040.line18 | — | — | — | 7 |
+| f1040.line19 | — | — | — | 30 |
+| f1040.line20 | — | — | — | 5 |
+| f1040.line21 | — | — | — | 6 |
+| f1040.line22 | — | — | — | 6 |
+| f1040.line23 | — | — | — | 5 |
+| f1040.line24 | — | — | — | 6 |
+| f1040.line25a | — | — | — | 5 |
 | f1040.line25b | — | — | — | 3 |
 | f1040.line25c | — | — | — | 3 |
-| f1040.line25d | — | — | — | 6 |
+| f1040.line25d | — | — | — | 5 |
 | f1040.line26 | — | — | — | 3 |
-| f1040.line27a | — | — | — | 7 |
+| f1040.line27a | — | — | — | 47 |
 | f1040.line28 | — | — | — | 31 |
-| f1040.line29 | — | — | — | 6 |
-| f1040.line30 | — | — | — | 6 |
-| f1040.line31 | — | — | — | 27 |
-| f1040.line32 | — | — | — | 7 |
-| f1040.line33 | — | — | — | 7 |
-| f1040.line34 | — | — | — | 30 |
+| f1040.line29 | — | — | — | 5 |
+| f1040.line30 | — | — | — | 5 |
+| f1040.line31 | — | — | — | 26 |
+| f1040.line32 | — | — | — | 6 |
+| f1040.line33 | — | — | — | 22 |
+| f1040.line34 | — | — | — | 45 |
 | f1040.line35a | — | — | — | 3 |
 | f1040.line36 | — | — | — | 3 |
-| f1040.line37 | — | — | — | 31 |
+| f1040.line37 | — | — | — | 46 |
 
 ## Form 4952 — supported investment-interest deduction and election
 
@@ -484,22 +562,23 @@ Unasserted lines: s3.zero, s3.married
 | s8812.eiw_5 | — | — | — | 24 |
 | s8812.eiw_6 | — | — | — | 24 |
 | s8812.eiw_7 | — | — | — | 24 |
-| s8812.line18a | — | — | — | 26 |
+| s8812.taking_eic | — | — | — | 4 |
+| s8812.line18a | — | — | — | 27 |
 | s8812.line18b | — | — | — | 27 |
 | s8812.line19 | — | — | — | 26 |
 | s8812.line20 | — | — | — | 26 |
 | s8812.ss_withheld | — | — | — | 24 |
 | s8812.amt_ws4 | — | — | — | 24 |
-| s8812.line21 | — | — | — | 25 |
+| s8812.line21 | — | — | — | 24 |
 | s8812.line22 | — | — | — | 27 |
-| s8812.line23 | — | — | — | 25 |
-| s8812.line24 | — | — | — | 27 |
-| s8812.line25 | — | — | — | 25 |
+| s8812.line23 | — | — | — | 24 |
+| s8812.line24 | — | — | — | 26 |
+| s8812.line25 | — | — | — | 26 |
 | s8812.line26 | — | — | — | 25 |
 | s8812.few_children | — | — | — | 24 |
 | s8812.earned_covers | — | — | — | 24 |
 | s8812.from_part_iia | — | — | — | 24 |
-| s8812.from_part_iib | — | — | — | 24 |
+| s8812.from_part_iib | — | — | — | 25 |
 | s8812.part_iib_result | — | — | — | 24 |
 | s8812.line27 | — | — | — | 27 |
 
@@ -890,5 +969,5 @@ Unasserted lines: below_boundary, table_tax, worksheet_tax, tax
 
 Unasserted lines: single.row1.product, single.row1.tax, single.row2.product, single.row2.tax, single.row3.product, single.row3.tax, single.row4.product, single.row4.tax, single.row5.product, single.row5.tax, single.result, mfj.row1.product, mfj.row1.tax, mfj.row2.product, mfj.row2.tax, mfj.row3.product, mfj.row3.tax, mfj.row4.product, mfj.row4.tax, mfj.row5.product, mfj.row5.tax, mfj.result, mfs.row1.product, mfs.row1.tax, mfs.row2.product, mfs.row2.tax, mfs.row3.product, mfs.row3.tax, mfs.row4.product, mfs.row4.tax, mfs.row5.product, mfs.row5.tax, mfs.result, hoh.row1.product, hoh.row1.tax, hoh.row2.product, hoh.row2.tax, hoh.row3.product, hoh.row3.tax, hoh.row4.product, hoh.row4.tax, hoh.row5.product, hoh.row5.tax, hoh.result, tax
 
-Unasserted computed lines across all documents: 147. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
+Unasserted computed lines across all documents: 197. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
 Asserted keys not matching a line id: root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.below_boundary, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.tax, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.below_boundary, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.tax, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, root|inst:tax_on_amount#{"amount":"qdcg.line1","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, qdcg.f1040.line15, qdcg.f1040.line3a, qdcg.f1040.status, f1040.qdcg.line25, qdcg.sd.distributions

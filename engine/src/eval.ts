@@ -378,6 +378,8 @@ function evalExpr(ctx: Ctx, frame: Frame, lineId: string, expr: Expr, cite: Cite
       const status = evalOperand(ctx, frame, expr.status, ops);
       const table = ctx.data.tables.find((t) => t.id === expr.table);
       if (!table || table.kind !== "tax_table") return d({ kind: "unknown", reason: `table ${expr.table} missing` }, "table_lookup", ops);
+      if (key.kind === "unknown" || key.kind === "refusal") return d(key, "table_lookup", ops);
+      if (status.kind === "unknown" || status.kind === "refusal") return d(status, "table_lookup", ops);
       if (key.kind !== "money" || status.kind !== "enum") {
         return d({ kind: "unknown", reason: "lookup key or status missing" }, "table_lookup", ops);
       }

@@ -7,16 +7,21 @@ the fixture test compares).
 
 | Metric | Value |
 | --- | --- |
-| Mutants | 791 |
-| Killed by the checker | 45 |
-| Killed by fixtures | 661 |
-| Surviving | 85 (48 provably equivalent) |
-| Mutation score (raw) | 89.3% |
-| Mutation score (equivalent mutants excluded) | 95.0% |
+| Mutants | 838 |
+| Killed by the checker | 46 |
+| Killed by fixtures | 691 |
+| Surviving | 101 (64 provably equivalent) |
+| Mutation score (raw) | 87.9% |
+| Mutation score (equivalent mutants excluded) | 95.2% |
 
 ## Surviving — classified equivalent
 
 - `refusal.dependent.dependent.qualifying_relative.2` (remove refusal, dependent.dependent.qualifying_relative): The married gate on the qualifying-relative test duplicates, word for word, the married gate on the qualifying-child test. The qualifying-relative test is read only by qr_dependent, which is read only by claimed, whose any-test evaluates qc_dependent, and so qualifying_child, before qr_dependent; for a married person qualifying_child refuses first with the same refusal, so this gate never fires. (structural conditions re-checked this run.)
+- `refusal.eic.eic.step1_resident.0` (remove refusal, eic.eic.step1_resident): The gate scope.other_income also refuses a line that Form 1040 line 11b reads, and eic.eligible tests eic.below_top (which reads line 11b) first, so the return's EIC refuses through line 11b whenever scope.other_income is true; the copy of the gate on eic.step1_resident adds nothing to any Form 1040 line. (structural conditions re-checked this run.)
+- `refusal.eic.eic.step2_other.0` (remove refusal, eic.eic.step2_other): The gate scope.schedule1 also refuses a line that Form 1040 line 11b reads, and eic.eligible tests eic.below_top (which reads line 11b) first, so the return's EIC refuses through line 11b whenever scope.schedule1 is true; the copy of the gate on eic.step2_other adds nothing to any Form 1040 line. (structural conditions re-checked this run.)
+- `refusal.eic.eic.step5_line1.0` (remove refusal, eic.eic.step5_line1): The gate scope.schedule1 also refuses a line that Form 1040 line 11b reads, and eic.eligible tests eic.below_top (which reads line 11b) first, so the return's EIC refuses through line 11b whenever scope.schedule1 is true; the copy of the gate on eic.step5_line1 adds nothing to any Form 1040 line. (structural conditions re-checked this run.)
+- `refusal.eic.eic.step5_line2.0` (remove refusal, eic.eic.step5_line2): The gate scope.other_income also refuses a line that Form 1040 line 11b reads, and eic.eligible tests eic.below_top (which reads line 11b) first, so the return's EIC refuses through line 11b whenever scope.other_income is true; the copy of the gate on eic.step5_line2 adds nothing to any Form 1040 line. (structural conditions re-checked this run.)
+- `operand.eic.eic.step5_line4.zero` (replace an operand, eic.eic.step5_line4): Step 5 line 4 keeps its own combat-pay refusal whatever it reads; the substituted line 2 is the same zero (a copy of eic.zero) carrying only the gate scope.other_income, and earned income adds line 3 (line 1 less line 2) before line 4, so when that gate is true line 3 has already refused with the same refusal. No value can change. (structural conditions re-checked this run.)
 - `operand.f8959.f8959.line3.zero` (replace an operand, f8959.f8959.line3): Copy-chain identity: f8959.zero and f8959.line2 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f8959.f8959.line8.zero` (replace an operand, f8959.f8959.line8): Copy-chain identity: f8959.zero and f8959.line3 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f8959.f8959.line14.zero` (replace an operand, f8959.f8959.line14): Copy-chain identity: f8959.zero and f8959.line8 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
@@ -64,6 +69,17 @@ the fixture test compares).
 - `operand.u1250.u1250.line13.line9` (replace an operand, u1250.u1250.line13): Copy-chain identity: u1250.line9 and u1250.line16 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.u1250.u1250.line13.line10` (replace an operand, u1250.u1250.line13): Copy-chain identity: u1250.line10 and u1250.line16 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.u1250.u1250.line13.line12` (replace an operand, u1250.u1250.line13): Copy-chain identity: u1250.line12 and u1250.line16 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
+- `param.eic.earned_amount0.$1` (shift a money parameter (+$1), eic.earned_amount0): Unread parameter: no line of any form or definition reads eic.earned_amount0; it serves a cross-check outside the computation, so shifting it cannot change any value.
+- `param.eic.earned_amount1.$1` (shift a money parameter (+$1), eic.earned_amount1): Unread parameter: no line of any form or definition reads eic.earned_amount1; it serves a cross-check outside the computation, so shifting it cannot change any value.
+- `param.eic.earned_amount2.$1` (shift a money parameter (+$1), eic.earned_amount2): Unread parameter: no line of any form or definition reads eic.earned_amount2; it serves a cross-check outside the computation, so shifting it cannot change any value.
+- `param.eic.earned_amount3.$1` (shift a money parameter (+$1), eic.earned_amount3): Unread parameter: no line of any form or definition reads eic.earned_amount3; it serves a cross-check outside the computation, so shifting it cannot change any value.
+- `param.eic.maximum0.$1` (shift a money parameter (+$1), eic.maximum0): Unread parameter: no line of any form or definition reads eic.maximum0; it serves a cross-check outside the computation, so shifting it cannot change any value.
+- `param.eic.maximum1.$1` (shift a money parameter (+$1), eic.maximum1): Unread parameter: no line of any form or definition reads eic.maximum1; it serves a cross-check outside the computation, so shifting it cannot change any value.
+- `param.eic.maximum2.$1` (shift a money parameter (+$1), eic.maximum2): Unread parameter: no line of any form or definition reads eic.maximum2; it serves a cross-check outside the computation, so shifting it cannot change any value.
+- `param.eic.maximum3.$1` (shift a money parameter (+$1), eic.maximum3): Unread parameter: no line of any form or definition reads eic.maximum3; it serves a cross-check outside the computation, so shifting it cannot change any value.
+- `param.eic.ws_threshold0.joint.$1` (shift a money parameter (+$1), eic.ws_threshold0.joint): Line 5 amount eic.ws_threshold0.joint: in eic_0 the bands covering [eic.ws_threshold0.joint, eic.ws_threshold0.joint + $1) print each table's maximum in the column used, so shifting the amount by $1 can only turn a lookup equal to the maximum into a blank line 5; line 6 is line 2 either way. (structural conditions re-checked this run.)
+- `param.eic.ws_threshold0.other.$1` (shift a money parameter (+$1), eic.ws_threshold0.other): Line 5 amount eic.ws_threshold0.other: in eic_0 the bands covering [eic.ws_threshold0.other, eic.ws_threshold0.other + $1) print each table's maximum in the column used, so shifting the amount by $1 can only turn a lookup equal to the maximum into a blank line 5; line 6 is line 2 either way. (structural conditions re-checked this run.)
+- `param.eic.ws_threshold1.joint.$1` (shift a money parameter (+$1), eic.ws_threshold1.joint): Line 5 amount eic.ws_threshold1.joint: in eic_1, eic_2, eic_3 the bands covering [eic.ws_threshold1.joint, eic.ws_threshold1.joint + $1) print each table's maximum in the column used, so shifting the amount by $1 can only turn a lookup equal to the maximum into a blank line 5; line 6 is line 2 either way. (structural conditions re-checked this run.)
 
 ## Surviving — not yet explained
 

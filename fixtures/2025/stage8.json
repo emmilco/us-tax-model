@@ -451,7 +451,7 @@
         "s8812.line26:right"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Synthetic: head of household, wages $4,000, one qualifying child age 3. No tax, so the whole $2,200 is unused (line 16a); line 16b is $1,700; earned income $4,000 less $2,500 at 15% gives $225 on line 20; fewer than three children, so Part II-B is skipped and line 27 is the smaller of line 17 ($1,700) and line 20 ($225). The Part II-B lines are still computed: withheld social security $248 plus Medicare $58 is $306 on lines 21, 23 and 25, which exceeds line 20, so line 26 is $306. Predicted by the authoring session from the archived Schedule 8812; no independent human hand-work is claimed.",
+      "evidence_note": "Synthetic: head of household, wages $4,000, one qualifying child age 3. No tax, so the whole $2,200 is unused (line 16a); line 16b is $1,700; earned income $4,000 less $2,500 at 15% gives $225 on line 20; fewer than three children, so Part II-B is skipped and line 27 is the smaller of line 17 ($1,700) and line 20 ($225). The Part II-B lines are still computed: withheld social security $248 plus Medicare $58 is $306 on lines 21, 23 and 25, which exceeds line 20, so line 26 is $306. Predicted by the authoring session from the archived Schedule 8812; no independent human hand-work is claimed. Stage 9: the EIC applies (one qualifying child with a valid SSN, head of household, earned income and AGI $4,000); predicted by hand from the printed EIC Table row $4,000-$4,050, one child, $1,369 (i1040gi p. 50), Worksheet A line 4 Yes so line 6 is line 2; the refund rises by $1,369; Part II-B line 24 carries the EIC.",
       "inputs": {
         "f1040.status": "hoh",
         "$person": [
@@ -569,7 +569,13 @@
         "dependent[child].divorced_rule": false,
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
-        "dependent[child].younger": true
+        "dependent[child].younger": true,
+        "f1040.line2a": 0,
+        "eic.qc_of_another": false,
+        "eic.born_before_2001": true,
+        "eic.us_home": true,
+        "eic.married": false,
+        "dependent[child].us_half": true
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -650,7 +656,7 @@
         },
         "f1040.line34": {
           "kind": "money",
-          "cents": 62500
+          "cents": 199400
         },
         "f1040.line37": {
           "kind": "money",
@@ -750,7 +756,7 @@
         },
         "s8812.from_part_iib": {
           "kind": "money",
-          "cents": 30600
+          "cents": 22500
         },
         "s8812.line1": {
           "kind": "money",
@@ -818,15 +824,15 @@
         },
         "s8812.line24": {
           "kind": "money",
-          "cents": 0
+          "cents": 136900
         },
         "s8812.line25": {
           "kind": "money",
-          "cents": 30600
+          "cents": 0
         },
         "s8812.line26": {
           "kind": "money",
-          "cents": 30600
+          "cents": 22500
         },
         "s8812.line27": {
           "kind": "money",
@@ -874,11 +880,39 @@
         },
         "s8812.part_iib_result": {
           "kind": "money",
-          "cents": 30600
+          "cents": 22500
         },
         "s8812.ss_withheld": {
           "kind": "money",
           "cents": 24800
+        },
+        "f1040.line27a": {
+          "kind": "money",
+          "cents": 136900
+        },
+        "eic.eligible": {
+          "kind": "bool",
+          "value": true
+        },
+        "eic.line1": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "eic.line2": {
+          "kind": "money",
+          "cents": 136900
+        },
+        "eic.line4": {
+          "kind": "bool",
+          "value": true
+        },
+        "eic.line6": {
+          "kind": "money",
+          "cents": 136900
+        },
+        "s8812.taking_eic": {
+          "kind": "bool",
+          "value": true
         }
       }
     },
@@ -892,7 +926,7 @@
         "s8812.line26:left"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Synthetic: head of household, wages $30,000, three qualifying children (ages 2, 5, 8). Line 8 is $6,600; the tax is $638 (taxable income $6,375 after the $23,625 head of household standard deduction, read from the Tax Table, whose cell is the rounded tax at the midpoint of the $6,350-$6,400 row), so line 14 is $638 and line 16a is $5,962; line 16b is exactly $5,100, which is \"$5,100 or more\", so Part II-B applies; line 20 ($4,125) is less than line 17 ($5,100); withheld social security and Medicare total $2,295 on line 25; line 26 is the larger, $4,125; line 27 is the smaller of line 17 and line 26, $4,125. Predicted by the authoring session from the archived Schedule 8812; no independent human hand-work is claimed.",
+      "evidence_note": "Synthetic: head of household, wages $30,000, three qualifying children (ages 2, 5, 8). Line 8 is $6,600; the tax is $638 (taxable income $6,375 after the $23,625 head of household standard deduction, read from the Tax Table, whose cell is the rounded tax at the midpoint of the $6,350-$6,400 row), so line 14 is $638 and line 16a is $5,962; line 16b is exactly $5,100, which is \"$5,100 or more\", so Part II-B applies; line 20 ($4,125) is less than line 17 ($5,100); withheld social security and Medicare total $2,295 on line 25; line 26 is the larger, $4,125; line 27 is the smaller of line 17 and line 26, $4,125. Predicted by the authoring session from the archived Schedule 8812; no independent human hand-work is claimed. Stage 9: the EIC applies; printed row $30,000-$30,050, three children, $6,640 (i1040gi p. 53); line 4 Yes; Part II-B line 25 falls to zero and line 26 stays at line 20, so the ACTC is unchanged and the refund rises by $6,640.",
       "inputs": {
         "f1040.status": "hoh",
         "$person": [
@@ -1050,7 +1084,15 @@
         "dependent[c].parent_home_paid": false,
         "dependent[a].younger": true,
         "dependent[b].younger": true,
-        "dependent[c].younger": true
+        "dependent[c].younger": true,
+        "f1040.line2a": 0,
+        "eic.qc_of_another": false,
+        "eic.born_before_2001": true,
+        "eic.us_home": true,
+        "eic.married": false,
+        "dependent[a].us_half": true,
+        "dependent[b].us_half": true,
+        "dependent[c].us_half": true
       },
       "expect": {
         "dependent[a].actc_amount": {
@@ -1259,7 +1301,7 @@
         },
         "f1040.line34": {
           "kind": "money",
-          "cents": 712500
+          "cents": 1376500
         },
         "f1040.line37": {
           "kind": "money",
@@ -1427,11 +1469,11 @@
         },
         "s8812.line24": {
           "kind": "money",
-          "cents": 0
+          "cents": 664000
         },
         "s8812.line25": {
           "kind": "money",
-          "cents": 229500
+          "cents": 0
         },
         "s8812.line26": {
           "kind": "money",
@@ -1488,6 +1530,34 @@
         "s8812.ss_withheld": {
           "kind": "money",
           "cents": 186000
+        },
+        "f1040.line27a": {
+          "kind": "money",
+          "cents": 664000
+        },
+        "eic.eligible": {
+          "kind": "bool",
+          "value": true
+        },
+        "eic.line1": {
+          "kind": "money",
+          "cents": 3000000
+        },
+        "eic.line2": {
+          "kind": "money",
+          "cents": 664000
+        },
+        "eic.line4": {
+          "kind": "bool",
+          "value": true
+        },
+        "eic.line6": {
+          "kind": "money",
+          "cents": 664000
+        },
+        "s8812.taking_eic": {
+          "kind": "bool",
+          "value": true
         }
       }
     },
@@ -1499,7 +1569,7 @@
         "s8812.few_children:false"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Synthetic: head of household, wages $5,000, three qualifying children. No tax; line 16a $6,600; line 16b $5,100; line 20 is 15% of $2,500, $375; withheld social security $310 plus Medicare $72.50 is $382.50 on line 25, which is larger than line 20, so line 26 is $382.50 and line 27 is the smaller of line 17 ($5,100) and line 26, $382.50. Predicted by the authoring session from the archived Schedule 8812; no independent human hand-work is claimed.",
+      "evidence_note": "Synthetic: head of household, wages $5,000, three qualifying children. No tax; line 16a $6,600; line 16b $5,100; line 20 is 15% of $2,500, $375; withheld social security $310 plus Medicare $72.50 is $382.50 on line 25, which is larger than line 20, so line 26 is $382.50 and line 27 is the smaller of line 17 ($5,100) and line 26, $382.50. Predicted by the authoring session from the archived Schedule 8812; no independent human hand-work is claimed. Stage 9: the EIC applies; printed row $5,000-$5,050, three children, $2,261 (i1040gi p. 50); Part II-B line 25 ($382.50 before) falls to zero once line 24 carries the EIC, so line 26 is line 20 ($375) and the ACTC falls by $7.50; refund $882.50 - $7.50 + $2,261 = $3,136.",
       "inputs": {
         "f1040.status": "hoh",
         "$person": [
@@ -1657,7 +1727,15 @@
         "dependent[c].parent_home_paid": false,
         "dependent[a].younger": true,
         "dependent[b].younger": true,
-        "dependent[c].younger": true
+        "dependent[c].younger": true,
+        "f1040.line2a": 0,
+        "eic.qc_of_another": false,
+        "eic.born_before_2001": true,
+        "eic.us_home": true,
+        "eic.married": false,
+        "dependent[a].us_half": true,
+        "dependent[b].us_half": true,
+        "dependent[c].us_half": true
       },
       "expect": {
         "dependent[a].actc_amount": {
@@ -1862,11 +1940,11 @@
         },
         "f1040.line28": {
           "kind": "money",
-          "cents": 38250
+          "cents": 37500
         },
         "f1040.line34": {
           "kind": "money",
-          "cents": 88250
+          "cents": 313600
         },
         "f1040.line37": {
           "kind": "money",
@@ -1966,7 +2044,7 @@
         },
         "s8812.from_part_iib": {
           "kind": "money",
-          "cents": 38250
+          "cents": 37500
         },
         "s8812.line1": {
           "kind": "money",
@@ -2034,19 +2112,19 @@
         },
         "s8812.line24": {
           "kind": "money",
-          "cents": 0
+          "cents": 226100
         },
         "s8812.line25": {
           "kind": "money",
-          "cents": 38250
+          "cents": 0
         },
         "s8812.line26": {
           "kind": "money",
-          "cents": 38250
+          "cents": 37500
         },
         "s8812.line27": {
           "kind": "money",
-          "cents": 38250
+          "cents": 37500
         },
         "s8812.line2a": {
           "kind": "money",
@@ -2090,11 +2168,39 @@
         },
         "s8812.part_iib_result": {
           "kind": "money",
-          "cents": 38250
+          "cents": 37500
         },
         "s8812.ss_withheld": {
           "kind": "money",
           "cents": 31000
+        },
+        "f1040.line27a": {
+          "kind": "money",
+          "cents": 226100
+        },
+        "eic.eligible": {
+          "kind": "bool",
+          "value": true
+        },
+        "eic.line1": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "eic.line2": {
+          "kind": "money",
+          "cents": 226100
+        },
+        "eic.line4": {
+          "kind": "bool",
+          "value": true
+        },
+        "eic.line6": {
+          "kind": "money",
+          "cents": 226100
+        },
+        "s8812.taking_eic": {
+          "kind": "bool",
+          "value": true
         }
       }
     },
@@ -11172,7 +11278,7 @@
         "s8812.clw_a4:refuse"
       ],
       "evidence": "synthetic refusal regression",
-      "evidence_note": "Synthetic refusal regression: other credits are claimed, so Credit Limit Worksheet A lines 2 and 4 refuse and Schedule 8812 line 13 follows. No independent human review is claimed.",
+      "evidence_note": "Synthetic refusal regression: other credits are claimed, so Credit Limit Worksheet A lines 2 and 4 refuse and Schedule 8812 line 13 follows. No independent human review is claimed. Stage 9: line 27a left the credits screen, so Schedule 8812 line 24 (Form 1040 line 27a plus Schedule 3 line 11) is $0 for this filer, whose AGI is above every EIC limit.",
       "inputs": {
         "f1040.status": "single",
         "$person": [
@@ -11390,13 +11496,13 @@
         "f1040.line34": {
           "kind": "refusal",
           "gate": "scope.credits",
-          "form": "Other credit forms (Schedule 3 lines 2 to 4, 5b, 6d, 6f, 6l and 6m; Form 1040 lines 27a and 29 to 31)",
-          "remedy": "Credits other than the foreign tax credit by election, the excess social security credit and the Schedule 8812 credits require forms outside this proof of concept.",
+          "form": "Credit Limit Worksheet A, line 2 (Schedule 3 lines 2–4, 5b, 6d, 6f, 6l, 6m)",
+          "remedy": "Credits other than the foreign tax credit and the dependent credits are outside this tool.",
           "cite": {
-            "doc": "f1040",
-            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
-            "revision": "2025; created 2025-09-05",
-            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
+            "doc": "i1040s8812",
+            "locator": "p. 4, Credit Limit Worksheet A, line 2",
+            "revision": "2025; printed date 2026-01-23",
+            "snapshot": "bb9788cdf068f9d3a666b2fc351b6bd963e1e848f295d0d01df63848628e1794",
             "tax_year": 2025
           }
         },
@@ -11673,43 +11779,16 @@
           "cents": 918000
         },
         "s8812.line24": {
-          "kind": "refusal",
-          "gate": "scope.credits",
-          "form": "Other credit forms (Schedule 3 lines 2 to 4, 5b, 6d, 6f, 6l and 6m; Form 1040 lines 27a and 29 to 31)",
-          "remedy": "Credits other than the foreign tax credit by election, the excess social security credit and the Schedule 8812 credits require forms outside this proof of concept.",
-          "cite": {
-            "doc": "f1040",
-            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
-            "revision": "2025; created 2025-09-05",
-            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
-            "tax_year": 2025
-          }
+          "kind": "money",
+          "cents": 0
         },
         "s8812.line25": {
-          "kind": "refusal",
-          "gate": "scope.credits",
-          "form": "Other credit forms (Schedule 3 lines 2 to 4, 5b, 6d, 6f, 6l and 6m; Form 1040 lines 27a and 29 to 31)",
-          "remedy": "Credits other than the foreign tax credit by election, the excess social security credit and the Schedule 8812 credits require forms outside this proof of concept.",
-          "cite": {
-            "doc": "f1040",
-            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
-            "revision": "2025; created 2025-09-05",
-            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
-            "tax_year": 2025
-          }
+          "kind": "money",
+          "cents": 918000
         },
         "s8812.line26": {
-          "kind": "refusal",
-          "gate": "scope.credits",
-          "form": "Other credit forms (Schedule 3 lines 2 to 4, 5b, 6d, 6f, 6l and 6m; Form 1040 lines 27a and 29 to 31)",
-          "remedy": "Credits other than the foreign tax credit by election, the excess social security credit and the Schedule 8812 credits require forms outside this proof of concept.",
-          "cite": {
-            "doc": "f1040",
-            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
-            "revision": "2025; created 2025-09-05",
-            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
-            "tax_year": 2025
-          }
+          "kind": "money",
+          "cents": 1762500
         },
         "s8812.line27": {
           "kind": "refusal",
@@ -11907,7 +11986,13 @@
         "dependent[child].divorced_rule": false,
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
-        "dependent[child].younger": true
+        "dependent[child].younger": true,
+        "f1040.line2a": 0,
+        "eic.qc_of_another": false,
+        "eic.born_before_2001": true,
+        "eic.us_home": true,
+        "eic.married": false,
+        "dependent[child].us_half": true
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -11985,39 +12070,39 @@
         "f1040.line28": {
           "kind": "refusal",
           "gate": "s8812.combat_pay",
-          "form": "Earned Income Worksheet, line 1b (nontaxable combat pay)",
+          "form": "Nontaxable combat pay (EIC, Step 5, line 4)",
           "remedy": "Nontaxable combat pay is outside this tool.",
           "cite": {
-            "doc": "i1040s8812",
-            "locator": "p. 8, Earned Income Worksheet, line 1b",
-            "revision": "2025; printed date 2026-01-23",
-            "snapshot": "bb9788cdf068f9d3a666b2fc351b6bd963e1e848f295d0d01df63848628e1794",
+            "doc": "i1040gi",
+            "locator": "p. 42, Step 5, worksheet line 4; p. 43, Combat pay, nontaxable",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
             "tax_year": 2025
           }
         },
         "f1040.line34": {
           "kind": "refusal",
           "gate": "s8812.combat_pay",
-          "form": "Earned Income Worksheet, line 1b (nontaxable combat pay)",
+          "form": "Nontaxable combat pay (EIC, Step 5, line 4)",
           "remedy": "Nontaxable combat pay is outside this tool.",
           "cite": {
-            "doc": "i1040s8812",
-            "locator": "p. 8, Earned Income Worksheet, line 1b",
-            "revision": "2025; printed date 2026-01-23",
-            "snapshot": "bb9788cdf068f9d3a666b2fc351b6bd963e1e848f295d0d01df63848628e1794",
+            "doc": "i1040gi",
+            "locator": "p. 42, Step 5, worksheet line 4; p. 43, Combat pay, nontaxable",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
             "tax_year": 2025
           }
         },
         "f1040.line37": {
           "kind": "refusal",
           "gate": "s8812.combat_pay",
-          "form": "Earned Income Worksheet, line 1b (nontaxable combat pay)",
+          "form": "Nontaxable combat pay (EIC, Step 5, line 4)",
           "remedy": "Nontaxable combat pay is outside this tool.",
           "cite": {
-            "doc": "i1040s8812",
-            "locator": "p. 8, Earned Income Worksheet, line 1b",
-            "revision": "2025; printed date 2026-01-23",
-            "snapshot": "bb9788cdf068f9d3a666b2fc351b6bd963e1e848f295d0d01df63848628e1794",
+            "doc": "i1040gi",
+            "locator": "p. 42, Step 5, worksheet line 4; p. 43, Combat pay, nontaxable",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
             "tax_year": 2025
           }
         },
@@ -12072,13 +12157,13 @@
         "s8812.earned_covers": {
           "kind": "refusal",
           "gate": "s8812.combat_pay",
-          "form": "Earned Income Worksheet, line 1b (nontaxable combat pay)",
+          "form": "Nontaxable combat pay (EIC, Step 5, line 4)",
           "remedy": "Nontaxable combat pay is outside this tool.",
           "cite": {
-            "doc": "i1040s8812",
-            "locator": "p. 8, Earned Income Worksheet, line 1b",
-            "revision": "2025; printed date 2026-01-23",
-            "snapshot": "bb9788cdf068f9d3a666b2fc351b6bd963e1e848f295d0d01df63848628e1794",
+            "doc": "i1040gi",
+            "locator": "p. 42, Step 5, worksheet line 4; p. 43, Combat pay, nontaxable",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
             "tax_year": 2025
           }
         },
@@ -12148,26 +12233,26 @@
         "s8812.from_part_iia": {
           "kind": "refusal",
           "gate": "s8812.combat_pay",
-          "form": "Earned Income Worksheet, line 1b (nontaxable combat pay)",
+          "form": "Nontaxable combat pay (EIC, Step 5, line 4)",
           "remedy": "Nontaxable combat pay is outside this tool.",
           "cite": {
-            "doc": "i1040s8812",
-            "locator": "p. 8, Earned Income Worksheet, line 1b",
-            "revision": "2025; printed date 2026-01-23",
-            "snapshot": "bb9788cdf068f9d3a666b2fc351b6bd963e1e848f295d0d01df63848628e1794",
+            "doc": "i1040gi",
+            "locator": "p. 42, Step 5, worksheet line 4; p. 43, Combat pay, nontaxable",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
             "tax_year": 2025
           }
         },
         "s8812.from_part_iib": {
           "kind": "refusal",
           "gate": "s8812.combat_pay",
-          "form": "Earned Income Worksheet, line 1b (nontaxable combat pay)",
+          "form": "Nontaxable combat pay (EIC, Step 5, line 4)",
           "remedy": "Nontaxable combat pay is outside this tool.",
           "cite": {
-            "doc": "i1040s8812",
-            "locator": "p. 8, Earned Income Worksheet, line 1b",
-            "revision": "2025; printed date 2026-01-23",
-            "snapshot": "bb9788cdf068f9d3a666b2fc351b6bd963e1e848f295d0d01df63848628e1794",
+            "doc": "i1040gi",
+            "locator": "p. 42, Step 5, worksheet line 4; p. 43, Combat pay, nontaxable",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
             "tax_year": 2025
           }
         },
@@ -12210,13 +12295,13 @@
         "s8812.line18a": {
           "kind": "refusal",
           "gate": "s8812.combat_pay",
-          "form": "Earned Income Worksheet, line 1b (nontaxable combat pay)",
+          "form": "Nontaxable combat pay (EIC, Step 5, line 4)",
           "remedy": "Nontaxable combat pay is outside this tool.",
           "cite": {
-            "doc": "i1040s8812",
-            "locator": "p. 8, Earned Income Worksheet, line 1b",
-            "revision": "2025; printed date 2026-01-23",
-            "snapshot": "bb9788cdf068f9d3a666b2fc351b6bd963e1e848f295d0d01df63848628e1794",
+            "doc": "i1040gi",
+            "locator": "p. 42, Step 5, worksheet line 4; p. 43, Combat pay, nontaxable",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
             "tax_year": 2025
           }
         },
@@ -12236,26 +12321,26 @@
         "s8812.line19": {
           "kind": "refusal",
           "gate": "s8812.combat_pay",
-          "form": "Earned Income Worksheet, line 1b (nontaxable combat pay)",
+          "form": "Nontaxable combat pay (EIC, Step 5, line 4)",
           "remedy": "Nontaxable combat pay is outside this tool.",
           "cite": {
-            "doc": "i1040s8812",
-            "locator": "p. 8, Earned Income Worksheet, line 1b",
-            "revision": "2025; printed date 2026-01-23",
-            "snapshot": "bb9788cdf068f9d3a666b2fc351b6bd963e1e848f295d0d01df63848628e1794",
+            "doc": "i1040gi",
+            "locator": "p. 42, Step 5, worksheet line 4; p. 43, Combat pay, nontaxable",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
             "tax_year": 2025
           }
         },
         "s8812.line20": {
           "kind": "refusal",
           "gate": "s8812.combat_pay",
-          "form": "Earned Income Worksheet, line 1b (nontaxable combat pay)",
+          "form": "Nontaxable combat pay (EIC, Step 5, line 4)",
           "remedy": "Nontaxable combat pay is outside this tool.",
           "cite": {
-            "doc": "i1040s8812",
-            "locator": "p. 8, Earned Income Worksheet, line 1b",
-            "revision": "2025; printed date 2026-01-23",
-            "snapshot": "bb9788cdf068f9d3a666b2fc351b6bd963e1e848f295d0d01df63848628e1794",
+            "doc": "i1040gi",
+            "locator": "p. 42, Step 5, worksheet line 4; p. 43, Combat pay, nontaxable",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
             "tax_year": 2025
           }
         },
@@ -12272,36 +12357,54 @@
           "cents": 30600
         },
         "s8812.line24": {
-          "kind": "money",
-          "cents": 0
+          "kind": "refusal",
+          "gate": "s8812.combat_pay",
+          "form": "Nontaxable combat pay (EIC, Step 5, line 4)",
+          "remedy": "Nontaxable combat pay is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 42, Step 5, worksheet line 4; p. 43, Combat pay, nontaxable",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
         },
         "s8812.line25": {
-          "kind": "money",
-          "cents": 30600
+          "kind": "refusal",
+          "gate": "s8812.combat_pay",
+          "form": "Nontaxable combat pay (EIC, Step 5, line 4)",
+          "remedy": "Nontaxable combat pay is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 42, Step 5, worksheet line 4; p. 43, Combat pay, nontaxable",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
         },
         "s8812.line26": {
           "kind": "refusal",
           "gate": "s8812.combat_pay",
-          "form": "Earned Income Worksheet, line 1b (nontaxable combat pay)",
+          "form": "Nontaxable combat pay (EIC, Step 5, line 4)",
           "remedy": "Nontaxable combat pay is outside this tool.",
           "cite": {
-            "doc": "i1040s8812",
-            "locator": "p. 8, Earned Income Worksheet, line 1b",
-            "revision": "2025; printed date 2026-01-23",
-            "snapshot": "bb9788cdf068f9d3a666b2fc351b6bd963e1e848f295d0d01df63848628e1794",
+            "doc": "i1040gi",
+            "locator": "p. 42, Step 5, worksheet line 4; p. 43, Combat pay, nontaxable",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
             "tax_year": 2025
           }
         },
         "s8812.line27": {
           "kind": "refusal",
           "gate": "s8812.combat_pay",
-          "form": "Earned Income Worksheet, line 1b (nontaxable combat pay)",
+          "form": "Nontaxable combat pay (EIC, Step 5, line 4)",
           "remedy": "Nontaxable combat pay is outside this tool.",
           "cite": {
-            "doc": "i1040s8812",
-            "locator": "p. 8, Earned Income Worksheet, line 1b",
-            "revision": "2025; printed date 2026-01-23",
-            "snapshot": "bb9788cdf068f9d3a666b2fc351b6bd963e1e848f295d0d01df63848628e1794",
+            "doc": "i1040gi",
+            "locator": "p. 42, Step 5, worksheet line 4; p. 43, Combat pay, nontaxable",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
             "tax_year": 2025
           }
         },
@@ -12348,13 +12451,13 @@
         "s8812.part_iib_result": {
           "kind": "refusal",
           "gate": "s8812.combat_pay",
-          "form": "Earned Income Worksheet, line 1b (nontaxable combat pay)",
+          "form": "Nontaxable combat pay (EIC, Step 5, line 4)",
           "remedy": "Nontaxable combat pay is outside this tool.",
           "cite": {
-            "doc": "i1040s8812",
-            "locator": "p. 8, Earned Income Worksheet, line 1b",
-            "revision": "2025; printed date 2026-01-23",
-            "snapshot": "bb9788cdf068f9d3a666b2fc351b6bd963e1e848f295d0d01df63848628e1794",
+            "doc": "i1040gi",
+            "locator": "p. 42, Step 5, worksheet line 4; p. 43, Combat pay, nontaxable",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
             "tax_year": 2025
           }
         },
@@ -12491,7 +12594,13 @@
         "dependent[child].divorced_rule": false,
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
-        "dependent[child].younger": true
+        "dependent[child].younger": true,
+        "f1040.line2a": 0,
+        "eic.qc_of_another": false,
+        "eic.born_before_2001": true,
+        "eic.us_home": true,
+        "eic.married": false,
+        "dependent[child].us_half": true
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -12701,13 +12810,13 @@
         "s8812.earned_covers": {
           "kind": "refusal",
           "gate": "scope.schedule1",
-          "form": "Earned Income Worksheet, lines 2a–2e (Schedule C, F, SE or K-1 income)",
-          "remedy": "Self-employment and partnership income are outside this tool.",
+          "form": "Schedule 1",
+          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
           "cite": {
-            "doc": "i1040s8812",
-            "locator": "p. 8, Earned Income Worksheet, lines 2a–2e",
-            "revision": "2025; printed date 2026-01-23",
-            "snapshot": "bb9788cdf068f9d3a666b2fc351b6bd963e1e848f295d0d01df63848628e1794",
+            "doc": "f1040",
+            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
+            "revision": "2025; created 2025-09-05",
+            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
             "tax_year": 2025
           }
         },
@@ -12938,13 +13047,13 @@
         "s8812.line18a": {
           "kind": "refusal",
           "gate": "scope.schedule1",
-          "form": "Earned Income Worksheet, lines 2a–2e (Schedule C, F, SE or K-1 income)",
-          "remedy": "Self-employment and partnership income are outside this tool.",
+          "form": "Schedule 1",
+          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
           "cite": {
-            "doc": "i1040s8812",
-            "locator": "p. 8, Earned Income Worksheet, lines 2a–2e",
-            "revision": "2025; printed date 2026-01-23",
-            "snapshot": "bb9788cdf068f9d3a666b2fc351b6bd963e1e848f295d0d01df63848628e1794",
+            "doc": "f1040",
+            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
+            "revision": "2025; created 2025-09-05",
+            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
             "tax_year": 2025
           }
         },
@@ -12955,26 +13064,26 @@
         "s8812.line19": {
           "kind": "refusal",
           "gate": "scope.schedule1",
-          "form": "Earned Income Worksheet, lines 2a–2e (Schedule C, F, SE or K-1 income)",
-          "remedy": "Self-employment and partnership income are outside this tool.",
+          "form": "Schedule 1",
+          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
           "cite": {
-            "doc": "i1040s8812",
-            "locator": "p. 8, Earned Income Worksheet, lines 2a–2e",
-            "revision": "2025; printed date 2026-01-23",
-            "snapshot": "bb9788cdf068f9d3a666b2fc351b6bd963e1e848f295d0d01df63848628e1794",
+            "doc": "f1040",
+            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
+            "revision": "2025; created 2025-09-05",
+            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
             "tax_year": 2025
           }
         },
         "s8812.line20": {
           "kind": "refusal",
           "gate": "scope.schedule1",
-          "form": "Earned Income Worksheet, lines 2a–2e (Schedule C, F, SE or K-1 income)",
-          "remedy": "Self-employment and partnership income are outside this tool.",
+          "form": "Schedule 1",
+          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
           "cite": {
-            "doc": "i1040s8812",
-            "locator": "p. 8, Earned Income Worksheet, lines 2a–2e",
-            "revision": "2025; printed date 2026-01-23",
-            "snapshot": "bb9788cdf068f9d3a666b2fc351b6bd963e1e848f295d0d01df63848628e1794",
+            "doc": "f1040",
+            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
+            "revision": "2025; created 2025-09-05",
+            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
             "tax_year": 2025
           }
         },
@@ -13009,8 +13118,17 @@
           }
         },
         "s8812.line24": {
-          "kind": "money",
-          "cents": 0
+          "kind": "refusal",
+          "gate": "scope.schedule1",
+          "form": "Schedule 1",
+          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "cite": {
+            "doc": "f1040",
+            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
+            "revision": "2025; created 2025-09-05",
+            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
+            "tax_year": 2025
+          }
         },
         "s8812.line25": {
           "kind": "refusal",
@@ -13028,13 +13146,13 @@
         "s8812.line26": {
           "kind": "refusal",
           "gate": "scope.schedule1",
-          "form": "Earned Income Worksheet, lines 2a–2e (Schedule C, F, SE or K-1 income)",
-          "remedy": "Self-employment and partnership income are outside this tool.",
+          "form": "Schedule 1",
+          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
           "cite": {
-            "doc": "i1040s8812",
-            "locator": "p. 8, Earned Income Worksheet, lines 2a–2e",
-            "revision": "2025; printed date 2026-01-23",
-            "snapshot": "bb9788cdf068f9d3a666b2fc351b6bd963e1e848f295d0d01df63848628e1794",
+            "doc": "f1040",
+            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
+            "revision": "2025; created 2025-09-05",
+            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
             "tax_year": 2025
           }
         },
@@ -13103,13 +13221,13 @@
         "s8812.part_iib_result": {
           "kind": "refusal",
           "gate": "scope.schedule1",
-          "form": "Earned Income Worksheet, lines 2a–2e (Schedule C, F, SE or K-1 income)",
-          "remedy": "Self-employment and partnership income are outside this tool.",
+          "form": "Schedule 1",
+          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
           "cite": {
-            "doc": "i1040s8812",
-            "locator": "p. 8, Earned Income Worksheet, lines 2a–2e",
-            "revision": "2025; printed date 2026-01-23",
-            "snapshot": "bb9788cdf068f9d3a666b2fc351b6bd963e1e848f295d0d01df63848628e1794",
+            "doc": "f1040",
+            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
+            "revision": "2025; created 2025-09-05",
+            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
             "tax_year": 2025
           }
         },
@@ -13243,7 +13361,13 @@
         "dependent[child].divorced_rule": false,
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
-        "dependent[child].younger": true
+        "dependent[child].younger": true,
+        "f1040.line2a": 0,
+        "eic.qc_of_another": false,
+        "eic.born_before_2001": true,
+        "eic.us_home": true,
+        "eic.married": false,
+        "dependent[child].us_half": true
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -13636,7 +13760,7 @@
         },
         "s8812.line24": {
           "kind": "money",
-          "cents": 0
+          "cents": 136900
         },
         "s8812.line25": {
           "kind": "refusal",
@@ -13860,7 +13984,13 @@
         "dependent[child].divorced_rule": false,
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
-        "dependent[child].younger": true
+        "dependent[child].younger": true,
+        "f1040.line2a": 0,
+        "eic.qc_of_another": false,
+        "eic.born_before_2001": true,
+        "eic.us_home": true,
+        "eic.married": false,
+        "dependent[child].us_half": true
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -14068,7 +14198,7 @@
         },
         "s8812.from_part_iib": {
           "kind": "money",
-          "cents": 30600
+          "cents": 22500
         },
         "s8812.line1": {
           "kind": "money",
@@ -14136,15 +14266,15 @@
         },
         "s8812.line24": {
           "kind": "money",
-          "cents": 0
+          "cents": 136900
         },
         "s8812.line25": {
           "kind": "money",
-          "cents": 30600
+          "cents": 0
         },
         "s8812.line26": {
           "kind": "money",
-          "cents": 30600
+          "cents": 22500
         },
         "s8812.line27": {
           "kind": "refusal",
@@ -14201,7 +14331,7 @@
         },
         "s8812.part_iib_result": {
           "kind": "money",
-          "cents": 30600
+          "cents": 22500
         },
         "s8812.ss_withheld": {
           "kind": "money",

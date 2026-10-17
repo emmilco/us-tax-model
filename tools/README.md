@@ -44,3 +44,14 @@ Enable it once per clone:
     git config core.hooksPath tools/hooks
 
 `git commit --no-verify` bypasses it; that is a deliberate act, not a routine.
+
+## EIC Table
+
+`python3 tools/extract_eic_table.py` reads the 2025 Earned Income Credit Table
+(i1040gi pp. 49-60) from word boxes and writes `tables/2025/eic_0.yaml` to
+`eic_3.yaml`, one table per number of qualifying children with valid SSNs. It
+refuses to write unless the rows tile $1 to $68,700 in $50 steps and every
+starred cell's footnote (read from the page text, matched by order) fits the row
+and the column. `node engine/dist/main.js conjecture` checks every cell against
+the credit formula built from Rev. Proc. 2024-40 section 3.06(1); see
+`reports/2025/eic_table_conjecture.md`.

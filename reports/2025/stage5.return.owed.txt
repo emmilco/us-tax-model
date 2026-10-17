@@ -78,6 +78,224 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       = $0
       cite: [f1099div] Instructions for Recipient, capital gain components in boxes 2b–2d (January 2024 (continuous-use form); 4ea1de80)
 
+== Earned Income Credit (EIC)—Steps 1 to 6 and Worksheet A—Line 27a ==
+  (helper) Could you be a qualifying child of another person for 2025?
+      = UNKNOWN (no input supplied for eic.qc_of_another)
+      cite: [i1040gi] p. 41, Step 3, question 6, and p. 42, Step 4, question 5 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Were you born before January 2, 2001?
+      = UNKNOWN (no input supplied for eic.born_before_2001)
+      cite: [i1040gi] p. 41, Step 4, question 2, "Check 'Yes' if you ... were born after December 31, 1960, and before January 2, 2001" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Was your main home in the United States for more than half of 2025?
+      = UNKNOWN (no input supplied for eic.us_home)
+      cite: [i1040gi] p. 42, Step 4, question 3; p. 44, Members of the military; p. 45, United States (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Were you married at the end of 2025?
+      = UNKNOWN (no input supplied for eic.married)
+      cite: [i1040gi] p. 41, Step 3, question 3, and Step 4, question 1, "Are you a married taxpayer whose filing status is married filing separately or head of household?" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) No amount
+      = $0
+      cite: [i1040gi] p. 42, Step 5, worksheet lines 2 and 4 (zero in this tool) (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Number of qualifying children for the EIC
+      = 0
+      cite: [i1040gi] p. 41, Step 3, question 1, "Do you have at least one child who meets the conditions to be your qualifying child for the purpose of claiming the EIC?" (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $dependent:
+  (helper) Number of qualifying children for the EIC who have valid SSNs
+      = 0
+      cite: [i1040gi] p. 40, Step 1, question 1, "children who have valid SSNs lived with you"; p. 46, Worksheet A, line 2 (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $dependent:
+  (helper) At least one qualifying child for the EIC
+      = false
+      cite: [i1040gi] p. 41, Step 3, question 1 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) A married filer whose filing status is married filing separately or head of household
+      = false
+      cite: [i1040gi] p. 41, Step 3, question 3, and Step 4, question 1 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Largest Step 1 income limit for the filing status (three or more children)
+      = $61,555
+      cite: [i1040gi] p. 40, Step 1, question 1, "3 or more children ... less than $61,555 ($68,675 if married filing jointly)" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["f1040.status",{"const":"single"}],"op":"test"}
+  (helper) Adjusted gross income below the largest Step 1 limit (otherwise question 1 is "No" for any number of children)
+      = false
+      cite: [i1040gi] p. 40, Step 1, question 1 (each limit for fewer children is lower than the limit for 3 or more children) (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Step 1 and Step 5 limit, no children
+      = $19,104
+      cite: [i1040gi] p. 40, Step 1, question 1 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Step 1 and Step 5 limit, 1 child
+      = $50,434
+      cite: [i1040gi] p. 40, Step 1, question 1 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Step 1 and Step 5 limit, 2 children
+      = $57,310
+      cite: [i1040gi] p. 40, Step 1, question 1 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Step 1 and Step 5 limit, 3 or more children
+      = $61,555
+      cite: [i1040gi] p. 40, Step 1, question 1 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Step 1 and Step 5 limit, no children, married filing jointly
+      = $26,214
+      cite: [i1040gi] p. 40, Step 1, question 1 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Step 1 and Step 5 limit, 1 child, married filing jointly
+      = $57,554
+      cite: [i1040gi] p. 40, Step 1, question 1 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Step 1 and Step 5 limit, 2 children, married filing jointly
+      = $64,430
+      cite: [i1040gi] p. 40, Step 1, question 1 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Step 1 and Step 5 limit, 3 or more children, married filing jointly
+      = $68,675
+      cite: [i1040gi] p. 40, Step 1, question 1 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Step 1 and Step 5 limit by the number of qualifying children with valid SSNs
+      = $19,104
+      cite: [i1040gi] p. 40, Step 1, question 1, and p. 42, Step 5, question 3 (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"all":[{"ge":["eic.ssn_count",{"const":0,"type":"Count"}],"op":"test"},{"lt":["eic.ssn_count",{"const":1,"type":"Count"}],"op":"test"}],"op":"test"}
+  (helper) Step 1 and Step 5 limit by the number of qualifying children with valid SSNs, married filing jointly
+      = $26,214
+      cite: [i1040gi] p. 40, Step 1, question 1, and p. 42, Step 5, question 3 (the amounts in parentheses) (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"all":[{"ge":["eic.ssn_count",{"const":0,"type":"Count"}],"op":"test"},{"lt":["eic.ssn_count",{"const":1,"type":"Count"}],"op":"test"}],"op":"test"}
+  (helper) Step 1 and Step 5 limit for the filing status and the number of qualifying children with valid SSNs
+      = $19,104
+      cite: [i1040gi] p. 40, Step 1, question 1, and p. 42, Step 5, question 3 (the same four limits) (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["f1040.status",{"const":"single"}],"op":"test"}
+  (helper) Step 1, question 1. Is the amount on Form 1040, line 11b, less than the limit for the number of children who have valid SSNs?
+      = false
+      cite: [i1040gi] p. 40, Step 1, question 1 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Step 1, question 2. Do you have a social security number issued on or before the due date of your return that allows you to work and is valid for EIC purposes?
+      = true
+      cite: [i1040gi] p. 40, Step 1, question 2; pp. 44–45, Social security number (SSN) (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Step 1, question 3. Not filing Form 2555 (foreign earned income)
+      = true
+      cite: [i1040gi] p. 40, Step 1, question 3 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Step 1, question 4. Not a nonresident alien for any part of 2025
+      = true
+      cite: [i1040gi] p. 40, Step 1, question 4 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Form 1040, line 7a; if line 7a is a loss, enter -0-
+      = $0
+      cite: [i1040gi] p. 40, Step 2, question 1, "*If line 7a is a loss, enter -0-." (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Step 2, question 1. Investment income: Form 1040, lines 2a, 2b, 3b and 7a
+      = UNKNOWN (no input supplied for f1040.line2a)
+      cite: [i1040gi] p. 40, Step 2, question 1, "Add the amounts from Form 1040 or 1040-SR: Line 2a + Line 2b + Line 3b + Line 7a*" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Step 2, question 2. Investment income not more than $11,950 (more than $11,950 stops at question 3 without Form 4797)
+      = UNKNOWN (no input supplied for f1040.line2a)
+      cite: [i1040gi] p. 40, Step 2, questions 2 and 3 (Form 4797 is refused before this question, so question 3 is "No. STOP") (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Step 2, question 4. No Schedule E, rental of personal property, Form 8814 or passive activity
+      = true
+      cite: [i1040gi] p. 40, Step 2, question 4 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Step 3, questions 2 to 6: filing jointly, or you could not be a qualifying child of another person
+      = UNKNOWN (no input supplied for eic.qc_of_another)
+      cite: [i1040gi] p. 41, Step 3, questions 2 and 6 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Step 4: not a married filer filing separately or as head of household, aged 25 to 64, main home in the United States, and not a qualifying child or dependent of another person
+      = UNKNOWN (no input supplied for eic.qc_of_another)
+      cite: [i1040gi] pp. 41–42, Step 4, questions 1 to 6 (question 2 "at least age 25 but under age 65", born after December 31, 1960 and before January 2, 2001; sa.age65 is born before January 2, 1961) (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Step 3 for a filer with a qualifying child, Step 4 otherwise
+      = UNKNOWN (no input supplied for eic.qc_of_another)
+      cite: [i1040gi] p. 41, Step 3, question 1, "No. Skip questions 2 through 6; go to Step 4" (2025; printed date 2026-02-25; 482e9c48)
+  (Step 5, 1) Enter the amount from Form 1040 or 1040-SR, line 1z
+      = $120,000
+      cite: [i1040gi] p. 42, Step 5, worksheet line 1 (2025; printed date 2026-02-25; 482e9c48)
+  (Step 5, 2) Medicaid waiver payments excluded from income on Schedule 1, line 8s, unless chosen as earned income; zero in this tool
+      = $0
+      cite: [i1040gi] p. 42, Step 5, worksheet line 2 (2025; printed date 2026-02-25; 482e9c48)
+  (Step 5, 3) Subtract line 2 from line 1
+      = $120,000
+      cite: [i1040gi] p. 42, Step 5, worksheet line 3 (2025; printed date 2026-02-25; 482e9c48)
+  (Step 5, 4) Nontaxable combat pay you elect to include in earned income; zero in this tool
+      = $0
+      cite: [i1040gi] p. 42, Step 5, worksheet line 4 (2025; printed date 2026-02-25; 482e9c48)
+  (Step 5, 5) Add lines 3 and 4. This is your earned income
+      = $120,000
+      cite: [i1040gi] p. 42, Step 5, worksheet line 5 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Step 5, question 3. Is your earned income less than the limit for the number of qualifying children with valid SSNs?
+      = false
+      cite: [i1040gi] p. 42, Step 5, question 3 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Steps 1 to 5 passed in order (Step 6, figure the credit on Worksheet A)
+      = false
+      cite: [i1040gi] pp. 40–43, Steps 1 to 6 (each "No. STOP. You can't take the credit" ends the flow chart; Step 6, question 1, "No. Go to Worksheet A") (2025; printed date 2026-02-25; 482e9c48)
+  1   Enter your earned income from Step 5
+      = $120,000
+      cite: [i1040gi] p. 46, Worksheet A, line 1 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Line 1 is at least $1, the first amount the EIC Table lists
+      = true
+      cite: [i1040gi] p. 49, EIC Table, first row "At least 1" (see the ambiguity register, amb.2025.eic_below_table) (2025; printed date 2026-02-25; 482e9c48)
+  (helper) EIC Table credit for line 1, no qualifying children with valid SSNs
+      = UNKNOWN (no band for 12000000 cents)
+      cite: [i1040gi] pp. 49–60, EIC Table, column 0 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) EIC Table credit for line 1, one qualifying child with a valid SSN
+      = UNKNOWN (no band for 12000000 cents)
+      cite: [i1040gi] pp. 49–60, EIC Table, column 1 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) EIC Table credit for line 1, two qualifying children with valid SSNs
+      = UNKNOWN (no band for 12000000 cents)
+      cite: [i1040gi] pp. 49–60, EIC Table, column 2 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) EIC Table credit for line 1, three or more qualifying children with valid SSNs
+      = UNKNOWN (no band for 12000000 cents)
+      cite: [i1040gi] pp. 49–60, EIC Table, column 3 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) EIC Table credit for line 1 in the column for the number of qualifying children with valid SSNs
+      = UNKNOWN (no band for 12000000 cents)
+      cite: [i1040gi] p. 46, Worksheet A, line 2, "the number of qualifying children you have who have valid SSNs" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"all":[{"ge":["eic.ssn_count",{"const":0,"type":"Count"}],"op":"test"},{"lt":["eic.ssn_count",{"const":1,"type":"Count"}],"op":"test"}],"op":"test"}
+  2   Look up the amount on line 1 in the EIC Table to find the credit, using the column for your filing status and the number of qualifying children who have valid SSNs
+      = UNKNOWN (no band for 12000000 cents)
+      cite: [i1040gi] p. 46, Worksheet A, line 2 (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["eic.line1_in_table",{"const":true}],"op":"test"}
+  3   Enter the amount from Form 1040 or 1040-SR, line 11b
+      = $123,200
+      cite: [i1040gi] p. 46, Worksheet A, line 3 (2025; printed date 2026-02-25; 482e9c48)
+  4   Are the amounts on lines 3 and 1 the same?
+      = false
+      cite: [i1040gi] p. 46, Worksheet A, line 4 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Line 5 amount by whether you have a qualifying child with a valid SSN
+      = $10,620
+      cite: [i1040gi] p. 46, Worksheet A, line 5 (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"all":[{"ge":["eic.ssn_count",{"const":0,"type":"Count"}],"op":"test"},{"lt":["eic.ssn_count",{"const":1,"type":"Count"}],"op":"test"}],"op":"test"}
+  (helper) Line 5 amount by whether you have a qualifying child with a valid SSN, married filing jointly
+      = $17,730
+      cite: [i1040gi] p. 46, Worksheet A, line 5 (the amounts in parentheses) (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"all":[{"ge":["eic.ssn_count",{"const":0,"type":"Count"}],"op":"test"},{"lt":["eic.ssn_count",{"const":1,"type":"Count"}],"op":"test"}],"op":"test"}
+  (helper) Line 5 amount for the filing status and whether you have a qualifying child with a valid SSN
+      = $10,620
+      cite: [i1040gi] p. 46, Worksheet A, line 5 (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["f1040.status",{"const":"single"}],"op":"test"}
+  (helper) Line 5 amount, no qualifying children
+      = $10,620
+      cite: [i1040gi] p. 46, Worksheet A, line 5 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Line 5 amount, 1 or more qualifying children
+      = $23,350
+      cite: [i1040gi] p. 46, Worksheet A, line 5 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Line 5 amount, no qualifying children, married filing jointly
+      = $17,730
+      cite: [i1040gi] p. 46, Worksheet A, line 5 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Line 5 amount, 1 or more qualifying children, married filing jointly
+      = $30,470
+      cite: [i1040gi] p. 46, Worksheet A, line 5 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Line 5. Is the amount on line 3 less than the line 5 amount? (Yes leaves line 5 blank)
+      = false
+      cite: [i1040gi] p. 46, Worksheet A, line 5, "Yes. Leave line 5 blank; enter the amount from line 2 on line 6" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) EIC Table credit for line 3, no qualifying children with valid SSNs
+      = UNKNOWN (no band for 12320000 cents)
+      cite: [i1040gi] pp. 49–60, EIC Table, column 0 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) EIC Table credit for line 3, one qualifying child with a valid SSN
+      = UNKNOWN (no band for 12320000 cents)
+      cite: [i1040gi] pp. 49–60, EIC Table, column 1 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) EIC Table credit for line 3, two qualifying children with valid SSNs
+      = UNKNOWN (no band for 12320000 cents)
+      cite: [i1040gi] pp. 49–60, EIC Table, column 2 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) EIC Table credit for line 3, three or more qualifying children with valid SSNs
+      = UNKNOWN (no band for 12320000 cents)
+      cite: [i1040gi] pp. 49–60, EIC Table, column 3 (2025; printed date 2026-02-25; 482e9c48)
+  5   Look up the amount on line 3 in the EIC Table to find the credit, using the column for your filing status and the number of qualifying children who have valid SSNs
+      = UNKNOWN (no band for 12320000 cents)
+      cite: [i1040gi] p. 46, Worksheet A, line 5, "No. Look up the amount on line 3 in the EIC Table to find the credit" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"all":[{"ge":["eic.ssn_count",{"const":0,"type":"Count"}],"op":"test"},{"lt":["eic.ssn_count",{"const":1,"type":"Count"}],"op":"test"}],"op":"test"}
+  (helper) The smaller of lines 5 and 2
+      = UNKNOWN (no band for 12320000 cents)
+      cite: [i1040gi] p. 46, Worksheet A, line 5, "Look at the amounts on lines 5 and 2. Then, enter the smaller amount on line 6" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) When line 4 is No, line 2 if line 5 is left blank and otherwise the smaller of lines 5 and 2
+      = UNKNOWN (no band for 12320000 cents)
+      cite: [i1040gi] p. 46, Worksheet A, line 5 (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["eic.line5_blank",{"const":false}],"op":"test"}
+  6   This is your earned income credit
+      = UNKNOWN (no band for 12320000 cents)
+      cite: [i1040gi] p. 46, Worksheet A, line 4, "Yes. Skip line 5; enter the amount from line 2 on line 6", and line 6 (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["eic.line4",{"const":false}],"op":"test"}
+  (helper) Earned income credit for Form 1040, line 27a (Worksheet A, line 6 when Steps 1 to 5 are passed; zero otherwise)
+      = $0
+      cite: [i1040gi] pp. 40–46, each "STOP. You can't take the credit"; Worksheet A, line 6, "Enter this amount on Form 1040 or 1040-SR, line 27a" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["eic.eligible",{"const":false}],"op":"test"}
+
 == Form 1040 — selected lines (Stages 1–4) ==
   Filing Status Single. Married filing jointly (even if only one had income). Married filing separately. Head of household (HOH). Qualifying surviving spouse (QSS).
       = single
@@ -89,6 +307,9 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
   1z  Add lines 1a through 1h
       = $120,000
       cite: [f1040] Form 1040 (2025), line 1z (2025; created 2025-09-05; 3d31c226)
+  2a  Tax-exempt interest
+      = UNKNOWN (no input supplied for f1040.line2a)
+      cite: [i1040gi] Instructions for Form 1040, p. 25, line 2a, "Enter the total on line 2a" and "Also include on line 2a any exempt-interest dividends from a mutual fund" (2025; printed date 2026-02-25; 482e9c48)
   2b  Taxable interest
       = $1,200
       cite: [i1040gi] Instructions for Form 1040, p. 25, line 2b (2025; printed date 2026-02-25; 482e9c48)
@@ -188,7 +409,7 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       cite: [f1040] Form 1040 (2025), line 26 (2025; created 2025-09-05; 3d31c226)
   27a Earned income credit (EIC)
       = $0
-      cite: [f1040] Form 1040 (2025), line 27a (2025; created 2025-09-05; 3d31c226)
+      cite: [i1040gi] pp. 40–48, Lines 27a, 27b, and 27c—Earned Income Credit (EIC), Worksheet A line 6, "Enter this amount on Form 1040 or 1040-SR, line 27a" (2025; printed date 2026-02-25; 482e9c48)
   28  Additional child tax credit (ACTC) from Schedule 8812
       = $0
       cite: [f1040] Form 1040 (2025), line 28 (2025; created 2025-09-05; 3d31c226)
@@ -977,9 +1198,13 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
   (helper) Earned Income Worksheet, line 7. Subtract line 6 from line 3. Enter this amount on line 18a of Schedule 8812
       = $120,000
       cite: [i1040s8812] p. 8, Earned Income Worksheet, line 7 (2025; printed date 2026-01-23; bb9788cd)
+  (helper) Taking the EIC on Form 1040, line 27a
+      = false
+      cite: [i1040s8812] p. 7, Earned Income Chart—Line 18a, "are taking the EIC on Form 1040 or 1040-SR, line 27a" (2025; printed date 2026-01-23; bb9788cd)
   18a Earned income (see instructions)
       = $120,000
-      cite: [f1040s8812] Schedule 8812 (2025), line 18a (2025; created 2025-07-30; 6936462d)
+      cite: [i1040s8812] p. 7, Earned Income Chart—Line 18a (taking the EIC without Worksheet B, "your earned income from Step 5 of the EIC instructions ... plus all of your nontaxable combat pay if you did not elect to include it"; combat pay is refused; not taking the EIC, the Earned Income Worksheet) (2025; printed date 2026-01-23; bb9788cd)
+      note: taken: {"eq":["s8812.taking_eic",{"const":false}],"op":"test"}
   18b Nontaxable combat pay (see instructions)
       = $0
       cite: [f1040s8812] Schedule 8812 (2025), line 18b (2025; created 2025-07-30; 6936462d)
@@ -1262,7 +1487,7 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
   (helper) Any deduction claimed on Schedule 1-A, including tips, overtime, car-loan interest or enhanced senior deduction?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
-  (helper) Any credit outside the simple foreign tax credit, the excess Social Security credit, the child tax credit, the credit for other dependents and the additional child tax credit?
+  (helper) Any credit outside the simple foreign tax credit, the excess Social Security credit, the child tax credit, the credit for other dependents, the additional child tax credit and the earned income credit?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
   (helper) Any retirement, Social Security, nonresident or other income/return treatment outside wages, interest, dividends and supported securities sales, including wages or tips not on a Form W-2, Medicaid waiver payments, dependent care or adoption benefits, or other earned income (Form 1040 lines 1b–1h)?
@@ -1816,9 +2041,25 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
 
 Path choices (guard wording per the rendered worksheets in rendered/2025/):
+  eic.top_limit: chose $61,555 (guard 0)
   sd.to1040: chose $0 (guard 1)
       not taken: guard 0 = false
   f1040.sd.to1040: chose $0 (guard 1)
+      not taken: guard 0 = false
+  eic.limit_other: chose $19,104 (guard 0)
+  eic.limit_joint: chose $26,214 (guard 0)
+  eic.limit: chose $19,104 (guard 0)
+  eic.line1_table: chose UNKNOWN (no band for 12000000 cents) (guard 0)
+  eic.line2: chose UNKNOWN (no band for 12000000 cents) (guard 0)
+  eic.threshold_other: chose $10,620 (guard 0)
+  eic.threshold_joint: chose $17,730 (guard 0)
+  eic.line5_threshold: chose $10,620 (guard 0)
+  eic.line5: chose UNKNOWN (no band for 12320000 cents) (guard 0)
+  eic.after_line4: chose UNKNOWN (no band for 12320000 cents) (guard 1)
+      not taken: guard 0 = false
+  eic.line6: chose UNKNOWN (no band for 12320000 cents) (guard 1)
+      not taken: guard 0 = false
+  eic.credit: chose $0 (guard 1)
       not taken: guard 0 = false
   sa.saltlimit: chose $40,000 (guard 1)
       not taken: guard 0 = false
@@ -1860,6 +2101,10 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   f8960.line9a: chose $0 (guard 1)
       not taken: guard 0 = false
   f8960.line9b: chose $0 (guard 1)
+      not taken: guard 0 = false
+  f1040.eic.credit: chose $0 (guard 1)
+      not taken: guard 0 = false
+  s8812.line18a: chose $120,000 (guard 1)
       not taken: guard 0 = false
   s8812.line27: chose $0 (guard 0)
   f1040.s8812.line27: chose $0 (guard 0)
@@ -1988,6 +2233,11 @@ Collection entries and derivations:
   div.bad_special: test(div.box2b = $0; sd.distributions = $0; div.box2c = $0; sd.distributions = $0; div.box2d = $0; sd.distributions = $0; div.special_total = $0; sd.distributions = $0)
   div.bad_components: test(f1040.line3a = $1,500; sb.ordinary_dividends = $2,000; qbi.dividends = $0; sb.ordinary_dividends = $2,000)
   div.screen: param(div.section1202 = false; div.amt = false; div.unsupported = false; div.bad_special = false; div.bad_components = false; #sales.zero = $0)
+  eic.zero: param(#sales.zero = $0)
+  eic.has_qc: test(eic.qc_count = 0; 0 = 0)
+  eic.married_rules: test(f1040.status = single; "mfs" = mfs; f1040.status = single; "hoh" = hoh)
+  eic.limit3_other: param(#eic.limit3.other = $61,555)
+  eic.top_limit: choose(f1040.status = single; "single" = single; eic.limit3_other = $61,555)
   person[taxpayer].box1: sum_over(person[taxpayer].w2[emp_a].box1 = $80,000; person[taxpayer].w2[emp_b].box1 = $40,000)
   f1040.line1a: sum_over(person[taxpayer].box1 = $120,000)
   f1040.line1z: copy(f1040.line1a = $120,000)
@@ -2031,6 +2281,67 @@ Collection entries and derivations:
   f1040.line10: param(scope.schedule1 = false; #sales.zero = $0)
   f1040.line11a: subtract(f1040.line9 = $123,200; f1040.line10 = $0)
   f1040.line11b: copy(f1040.line11a = $123,200)
+  eic.f1040.line11b: copy(f1040.line11a = $123,200)
+  eic.below_top: test(f1040.line11b = $123,200; eic.top_limit = $61,555)
+  eic.limit0_other: param(#eic.limit0.other = $19,104)
+  eic.limit1_other: param(#eic.limit1.other = $50,434)
+  eic.limit2_other: param(#eic.limit2.other = $57,310)
+  eic.limit0_joint: param(#eic.limit0.joint = $26,214)
+  eic.limit1_joint: param(#eic.limit1.joint = $57,554)
+  eic.limit2_joint: param(#eic.limit2.joint = $64,430)
+  eic.limit3_joint: param(#eic.limit3.joint = $68,675)
+  eic.limit_other: choose(eic.ssn_count = 0; 0 = 0; eic.ssn_count = 0; 1 = 1; eic.limit0_other = $19,104)
+  eic.limit_joint: choose(eic.ssn_count = 0; 0 = 0; eic.ssn_count = 0; 1 = 1; eic.limit0_joint = $26,214)
+  eic.limit: choose(f1040.status = single; "single" = single; eic.limit_other = $19,104)
+  eic.step1_income: test(f1040.line11b = $123,200; eic.limit = $19,104)
+  eic.step1_ssn: test(household.taxpayer_work_ssn = true; true = true)
+  eic.step1_foreign: test(sa.excluded_income = false; sa.excluded_income = false; false = false)
+  eic.step1_resident: test(scope.other_income = false; scope.other_income = false; false = false)
+  eic.f1040.line7a: copy(sd.to1040 = $0)
+  eic.gain_7a: subtract_floor0(f1040.line7a = $0; eic.zero = $0)
+  eic.f1040.line2b: copy(sb.line4 = $1,200)
+  eic.f1040.line3b: copy(sb.line6 = $2,000)
+  eic.investment_income: sum(f1040.line2a = UNKNOWN (no input supplied for f1040.line2a); f1040.line2b = $1,200; f1040.line3b = $2,000; eic.gain_7a = $0)
+  eic.step2_income: test(eic.investment_income = UNKNOWN (no input supplied for f1040.line2a); #eic.investment_limit = $11,950)
+  eic.step2_other: test(scope.schedule1 = false; scope.other_line16 = false; scope.schedule1 = false; false = false; scope.other_line16 = false; false = false)
+  eic.step3: test(eic.married_rules = false; f1040.status = single; "mfj" = mfj; eic.qc_of_another = UNKNOWN (no input supplied for eic.qc_of_another); false = false)
+  eic.step4: test(sa.dependent = false; eic.married_rules = false; false = false; eic.born_before_2001 = UNKNOWN (no input supplied for eic.born_before_2001); true = true; sa.age65 = false; false = false; eic.us_home = UNKNOWN (no input supplied for eic.us_home); true = true; f1040.status = single; "mfj" = mfj; eic.qc_of_another = UNKNOWN (no input supplied for eic.qc_of_another); false = false; sa.dependent = false; false = false)
+  eic.step34: test(eic.has_qc = false; true = true; eic.has_qc = false; false = false; eic.step4 = UNKNOWN (no input supplied for eic.qc_of_another); true = true)
+  eic.f1040.line1z: copy(f1040.line1a = $120,000)
+  eic.step5_line1: copy(scope.schedule1 = false; f1040.line1z = $120,000)
+  eic.step5_line2: copy(scope.other_income = false; eic.zero = $0)
+  eic.step5_line3: subtract(eic.step5_line1 = $120,000; eic.step5_line2 = $0)
+  eic.step5_line4: copy(s8812.combat_pay = false; eic.zero = $0)
+  eic.earned_income: sum(eic.step5_line3 = $120,000; eic.step5_line4 = $0)
+  eic.step5_income: test(eic.earned_income = $120,000; eic.limit = $19,104)
+  eic.eligible: test(eic.below_top = false; true = true)
+  eic.line1: copy(eic.earned_income = $120,000)
+  eic.line1_in_table: test(eic.line1 = $120,000; #eic.table_start = $1)
+  eic.line1_table0: table_lookup(eic.line1 = $120,000; f1040.status = single)
+  eic.line1_table1: table_lookup(eic.line1 = $120,000; f1040.status = single)
+  eic.line1_table2: table_lookup(eic.line1 = $120,000; f1040.status = single)
+  eic.line1_table3: table_lookup(eic.line1 = $120,000; f1040.status = single)
+  eic.line1_table: choose(eic.ssn_count = 0; 0 = 0; eic.ssn_count = 0; 1 = 1; eic.line1_table0 = UNKNOWN (no band for 12000000 cents))
+  eic.line2: choose(eic.line1_in_table = true; true = true; eic.line1_table = UNKNOWN (no band for 12000000 cents))
+  eic.line3: copy(f1040.line11b = $123,200)
+  eic.line4: test(eic.line3 = $123,200; eic.line1 = $120,000)
+  eic.threshold0_other: param(#eic.ws_threshold0.other = $10,620)
+  eic.threshold_other: choose(eic.ssn_count = 0; 0 = 0; eic.ssn_count = 0; 1 = 1; eic.threshold0_other = $10,620)
+  eic.threshold0_joint: param(#eic.ws_threshold0.joint = $17,730)
+  eic.threshold_joint: choose(eic.ssn_count = 0; 0 = 0; eic.ssn_count = 0; 1 = 1; eic.threshold0_joint = $17,730)
+  eic.line5_threshold: choose(f1040.status = single; "single" = single; eic.threshold_other = $10,620)
+  eic.threshold1_other: param(#eic.ws_threshold1.other = $23,350)
+  eic.threshold1_joint: param(#eic.ws_threshold1.joint = $30,470)
+  eic.line5_blank: test(eic.line3 = $123,200; eic.line5_threshold = $10,620)
+  eic.line3_table0: table_lookup(eic.line3 = $123,200; f1040.status = single)
+  eic.line3_table1: table_lookup(eic.line3 = $123,200; f1040.status = single)
+  eic.line3_table2: table_lookup(eic.line3 = $123,200; f1040.status = single)
+  eic.line3_table3: table_lookup(eic.line3 = $123,200; f1040.status = single)
+  eic.line5: choose(eic.ssn_count = 0; 0 = 0; eic.ssn_count = 0; 1 = 1; eic.line3_table0 = UNKNOWN (no band for 12320000 cents))
+  eic.smaller: smaller_of(eic.line5 = UNKNOWN (no band for 12320000 cents))
+  eic.after_line4: choose(eic.line5_blank = false; true = true; eic.line5_blank = false; false = false; eic.smaller = UNKNOWN (no band for 12320000 cents))
+  eic.line6: choose(eic.line4 = false; true = true; eic.line4 = false; false = false; eic.after_line4 = UNKNOWN (no band for 12320000 cents))
+  eic.credit: choose(eic.eligible = false; true = true; eic.eligible = false; false = false; eic.zero = $0)
   household.hoh_fails: test(f1040.status = single; "hoh" = hoh)
   f1040.household.hoh_fails: test(f1040.status = single; "hoh" = hoh)
   sa.mfs: test(f1040.status = single; "mfs" = mfs)
@@ -2329,10 +2640,13 @@ Collection entries and derivations:
   person[taxpayer].box2: sum_over(person[taxpayer].w2[emp_a].box2 = $12,000; person[taxpayer].w2[emp_b].box2 = $5,000)
   f1040.line25a: sum_over(person[taxpayer].box2 = $17,000)
   f1040.line25d: sum(f1040.line25a = $17,000; f1040.line25b = $0; f1040.line25c = $0)
-  f1040.line27a: param(scope.credits = false; #sales.zero = $0)
+  f1040.eic.credit: choose(eic.eligible = false; true = true; eic.eligible = false; false = false; eic.zero = $0)
+  f1040.line27a: copy(eic.credit = $0)
   s8812.few_children: test(s8812.line16b = $0; #actc.three_children = $5,100)
   s8812.line16a: subtract_floor0(s8812.line12 = $0; s8812.line14 = $0)
   s8812.line17: smaller_of(s8812.line16a = $0; s8812.line16b = $0)
+  s8812.f1040.line27a: copy(eic.credit = $0)
+  s8812.taking_eic: test(f1040.line27a = $0; #sales.zero = $0)
   s8812.f1040.line1z: copy(f1040.line1a = $120,000)
   s8812.eiw_1a: copy(f1040.line1z = $120,000)
   s8812.eiw_1b: copy(s8812.combat_pay = false; s8812.zero = $0)
@@ -2341,7 +2655,7 @@ Collection entries and derivations:
   s8812.eiw_5: copy(scope.schedule1 = false; s8812.zero = $0)
   s8812.eiw_6: sum(s8812.eiw_4 = $0; s8812.eiw_5 = $0)
   s8812.eiw_7: subtract(s8812.eiw_3 = $120,000; s8812.eiw_6 = $0)
-  s8812.line18a: copy(s8812.eiw_7 = $120,000)
+  s8812.line18a: choose(s8812.taking_eic = false; true = true; s8812.taking_eic = false; false = false; s8812.eiw_7 = $120,000)
   s8812.line19: subtract_floor0(s8812.line18a = $120,000; #actc.earned_floor = $2,500)
   s8812.line20: multiply_rate(s8812.line19 = $117,500; #actc.rate = 15/100)
   s8812.from_part_iia: smaller_of(s8812.line17 = $0; s8812.line20 = $17,625)
@@ -2424,7 +2738,6 @@ Collection entries and derivations:
   s8812.line21: subtract(s8812.amt_ws4 = $9,180; f8959.line22 = $0)
   s8812.line22: copy(scope.schedule1 = false; s2.other = false; s8812.zero = $0)
   s8812.line23: sum(s8812.line21 = $9,180; s8812.line22 = $0)
-  s8812.f1040.line27a: param(scope.credits = false; #sales.zero = $0)
   s8812.s3.line11: sum_over(s3.married = false; person[taxpayer].credit = $0)
   s8812.line24: sum(f1040.line27a = $0; s3.line11 = $0)
   s8812.line25: subtract_floor0(s8812.line23 = $9,180; s8812.line24 = $0)

@@ -15,7 +15,7 @@ import { renderAll } from "./render.js";
 import { loadCanonical } from "./canonical.js";
 import { evaluate } from "./eval.js";
 import { renderValuesSheet, renderValuesHtml, resultToJson } from "./output.js";
-import { runConjecture } from "./conjecture.js";
+import { runConjecture, runEicConjecture } from "./conjecture.js";
 import { coverageReport, evidenceReport, recordFixtures, testFixtures, reviewStage2, reviewStage3, reviewStage4, reviewStage5 } from "./fixtures.js";
 import { differential } from "./differential.js";
 import { compareEvaluators } from "./compare.js";
@@ -107,6 +107,7 @@ if (command === "review-stage5") {
   }
 } else if (command === "conjecture") {
   runConjecture();
+  runEicConjecture();
 } else if (command === "record-fixtures") {
   recordFixtures();
 } else if (command === "test-fixtures") {

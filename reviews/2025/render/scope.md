@@ -7,9 +7,9 @@ The rendered English of every printed line of `Proof-of-concept scope screening`
 | date | 2026-10-17 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 26ee903da5220ab780c6dc71a65ca5b76a6e7e3a92cfea47c1e13a37766ff738 |
+| prompt sha256 | 9914d5a7dfc7326a92db2d8a7937c673d1a241f48adb38050823658aa7610d40 |
 | lines judged | 6 |
-| match / mismatch / unclear / missing | 5 / 0 / 1 / 0 |
+| match / mismatch / unclear / missing | 6 / 0 / 0 / 0 |
 | verdicts for lines not in the form | none |
 
 ## Source pages given to the model
@@ -24,36 +24,32 @@ The rendered English of every printed line of `Proof-of-concept scope screening`
 ### schedule1 — Any income or adjustment requiring Schedule 1, including a taxable state/local tax refund?
 Status: **MATCH**
 
-Model: Form 1040 line 8 is 'Additional income from Schedule 1, line 10' and line 10 is 'Adjustments to income from Schedule 1, line 26', so a yes/no screen for any Schedule 1 item matches. The refusal names Schedule 1 as excluded. The state/local refund example is not in the given text, but it does not change the gate.
+Model: This is a filer-answered scope screen. Form 1040 takes Schedule 1 amounts only on line 8 ("Additional income from Schedule 1, line 10") and line 10 ("Adjustments to income from Schedule 1, line 26"), and the screen refuses any such case. The state/local refund example is not in the text given, but it only narrows the screen.
 
 ### schedule1a — Any deduction claimed on Schedule 1-A, including tips, overtime, car-loan interest or enha
 Status: **MATCH**
 
-Model: Form 1040 line 13b reads 'Additional deductions from Schedule 1-A, line 38', so screening for any Schedule 1-A deduction matches. The refusal names Schedule 1-A. The listed examples (tips, overtime, car-loan interest, senior deduction) are not in the given text, but they do not change the gate.
+Model: Form 1040 line 13b reads "Additional deductions from Schedule 1-A, line 38", and this screen refuses any Schedule 1-A deduction. The listed examples (tips, overtime, car-loan interest, senior deduction) are not in the text given, but the screen's "any deduction" wording does not depend on them.
 
 ### credits — Any credit outside the simple foreign tax credit, the excess Social Security credit, the c
-Status: **UNCLEAR**
+Status: **MATCH**
 
-Restated: Input — Any credit outside the simple foreign tax credit, the excess Social Security credit, the child tax credit, the credit for other dependents and the additional child tax credit?
-
-Model: Schedule 3 Part I text is not provided, so the refusal's list of Schedule 3 lines (2–4, 5b, 6d, 6f, 6l, 6m) cannot be checked against the excluded credits. Page 117 also shows that 1040 line 31 (Schedule 3 line 15) includes non-credit items such as line 10 'Amount Paid With Request for Extension To File'. A question asking only about 'credits' may not capture those items.
-
-Ruling: representation; project retained. The screen names the credits the slice computes; Schedule 3 Part I (lines 1 to 6m) is encoded in `s3.yaml` and judged in its own render log, where line 1 is the foreign tax credit by election and lines 2 to 4, 5b and 6d to 6m refuse on this screen. Schedule 3 line 10 (amount paid with a request for extension) is a payment the filer supplies as `s3.line10`, not a credit, and is not screened here. No change to the data.
+Model: The supported credits match Form 1040 lines 19, 27a and 28 and the Schedule 3 line 11 excess social security credit described in the instructions; any other credit (for example Form 1040 lines 29–31 or Schedule 3 line 12 fuel credits) triggers the refusal. The Schedule 3 nonrefundable line numbers in the refusal (lines 2–4, 5b, 6d, 6f, 6l, 6m) and the 'simple foreign tax credit' cannot be checked against the pages given. Non-credit Schedule 3 payments (line 10 extension payment, line 13d deferred 965 amount) fall outside this screen's wording.
 
 ### other_income — Any retirement, Social Security, nonresident or other income/return treatment outside wage
 Status: **MATCH**
 
-Model: The screen covers what Form 1040 lines 1b–1h and 4–6 report. Lines 1b–1h are 'Household employee wages not reported on Form(s) W-2', 'Tip income not reported on line 1a', 'Medicaid waiver payments', 'Taxable dependent care benefits', 'Employer-provided adoption benefits', 'Wages from Form 8919' and 'Other earned income'. Lines 4–6 report IRA distributions, pensions and social security. The refusal names these as excluded.
+Model: The screen covers Form 1040 lines 1b–1h: household wages, tips and Form 8919 wages not on a W-2, "Medicaid waiver payments", dependent care benefits, adoption benefits and "Other earned income". It also covers IRA, pension and Social Security lines 4–6, leaving only lines 1a, 2b, 3b and 7a in scope. The line 1i "Nontaxable combat pay election" is not named explicitly but falls under 'other ... return treatment'.
 
 ### other_line16 — Any additional Form 1040 line 16 tax, including Forms 8814, 4972, 8615 or a section 962 el
 Status: **MATCH**
 
-Model: Form 1040 line 16 reads 'Check if any from Form(s): 1 8814 2 4972 3'. Screening for any such additional tax and refusing it is a valid narrowing. Form 8615 and the section 962 election are not named in the given text; the third box is unlabeled, but including them only broadens the refusal.
+Model: Line 16 reads "Check if any from Form(s): 1 8814 2 4972 3". The screen names 8814 and 4972 and covers the open box 3 through 'any additional ... tax'. Forms 8615 and section 962 are not in the text given, but they are offered only as examples.
 
 ### ready — All declared scope screens passed
 Status: **MATCH**
 
-Model: This is a constant gate with each excluded case covered by a named refusal. The s3.married refusal relies on the instruction 'Figure this amount separately for you and your spouse', which applies to excess social security for joint filers. Refusing MFS as well is broader than the text requires, but an over-broad refusal is permitted narrowing.
+Model: Ready is a constant true that is gated by the refusals, which properly exclude each unsupported case. The married-status refusal follows the Schedule 3 line 11 instruction "Figure this amount separately for you and your spouse". That rule applies only "if filing a joint return", so also refusing MFS is a permissible over-narrowing.
 
 ## Raw response
 
@@ -62,21 +58,21 @@ Model: This is a constant gate with each excluded case covered by a named refusa
 lines:
   - key: "schedule1"
     status: MATCH
-    reason: "Form 1040 line 8 is 'Additional income from Schedule 1, line 10' and line 10 is 'Adjustments to income from Schedule 1, line 26', so a yes/no screen for any Schedule 1 item matches. The refusal names Schedule 1 as excluded. The state/local refund example is not in the given text, but it does not change the gate."
+    reason: "This is a filer-answered scope screen. Form 1040 takes Schedule 1 amounts only on line 8 (\"Additional income from Schedule 1, line 10\") and line 10 (\"Adjustments to income from Schedule 1, line 26\"), and the screen refuses any such case. The state/local refund example is not in the text given, but it only narrows the screen."
   - key: "schedule1a"
     status: MATCH
-    reason: "Form 1040 line 13b reads 'Additional deductions from Schedule 1-A, line 38', so screening for any Schedule 1-A deduction matches. The refusal names Schedule 1-A. The listed examples (tips, overtime, car-loan interest, senior deduction) are not in the given text, but they do not change the gate."
+    reason: "Form 1040 line 13b reads \"Additional deductions from Schedule 1-A, line 38\", and this screen refuses any Schedule 1-A deduction. The listed examples (tips, overtime, car-loan interest, senior deduction) are not in the text given, but the screen's \"any deduction\" wording does not depend on them."
   - key: "credits"
-    status: UNCLEAR
-    reason: "Schedule 3 Part I text is not provided, so the refusal's list of Schedule 3 lines (2–4, 5b, 6d, 6f, 6l, 6m) cannot be checked against the excluded credits. Page 117 also shows that 1040 line 31 (Schedule 3 line 15) includes non-credit items such as line 10 'Amount Paid With Request for Extension To File'. A question asking only about 'credits' may not capture those items."
+    status: MATCH
+    reason: "The supported credits match Form 1040 lines 19, 27a and 28 and the Schedule 3 line 11 excess social security credit described in the instructions; any other credit (for example Form 1040 lines 29–31 or Schedule 3 line 12 fuel credits) triggers the refusal. The Schedule 3 nonrefundable line numbers in the refusal (lines 2–4, 5b, 6d, 6f, 6l, 6m) and the 'simple foreign tax credit' cannot be checked against the pages given. Non-credit Schedule 3 payments (line 10 extension payment, line 13d deferred 965 amount) fall outside this screen's wording."
   - key: "other_income"
     status: MATCH
-    reason: "The screen covers what Form 1040 lines 1b–1h and 4–6 report. Lines 1b–1h are 'Household employee wages not reported on Form(s) W-2', 'Tip income not reported on line 1a', 'Medicaid waiver payments', 'Taxable dependent care benefits', 'Employer-provided adoption benefits', 'Wages from Form 8919' and 'Other earned income'. Lines 4–6 report IRA distributions, pensions and social security. The refusal names these as excluded."
+    reason: "The screen covers Form 1040 lines 1b–1h: household wages, tips and Form 8919 wages not on a W-2, \"Medicaid waiver payments\", dependent care benefits, adoption benefits and \"Other earned income\". It also covers IRA, pension and Social Security lines 4–6, leaving only lines 1a, 2b, 3b and 7a in scope. The line 1i \"Nontaxable combat pay election\" is not named explicitly but falls under 'other ... return treatment'."
   - key: "other_line16"
     status: MATCH
-    reason: "Form 1040 line 16 reads 'Check if any from Form(s): 1 8814 2 4972 3'. Screening for any such additional tax and refusing it is a valid narrowing. Form 8615 and the section 962 election are not named in the given text; the third box is unlabeled, but including them only broadens the refusal."
+    reason: "Line 16 reads \"Check if any from Form(s): 1 8814 2 4972 3\". The screen names 8814 and 4972 and covers the open box 3 through 'any additional ... tax'. Forms 8615 and section 962 are not in the text given, but they are offered only as examples."
   - key: "ready"
     status: MATCH
-    reason: "This is a constant gate with each excluded case covered by a named refusal. The s3.married refusal relies on the instruction 'Figure this amount separately for you and your spouse', which applies to excess social security for joint filers. Refusing MFS as well is broader than the text requires, but an over-broad refusal is permitted narrowing."
+    reason: "Ready is a constant true that is gated by the refusals, which properly exclude each unsupported case. The married-status refusal follows the Schedule 3 line 11 instruction \"Figure this amount separately for you and your spouse\". That rule applies only \"if filing a joint return\", so also refusing MFS is a permissible over-narrowing."
 ```
 ```

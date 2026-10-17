@@ -910,7 +910,8 @@ function checkTable(ctx: Ctx, table: TableDoc): void {
     for (const s of statuses) {
       if (covered.get(s) !== 1) ctx.errors.push(`table ${table.id}: status '${s}' is covered ${covered.get(s) ?? 0} times`);
     }
-    if (bands[0]!.at_least !== 0) ctx.errors.push(`table ${table.id}: first band does not start at 0`);
+    const start = table.bounds?.at_least ?? 0;
+    if (bands[0]!.at_least !== start) ctx.errors.push(`table ${table.id}: first band does not start at ${start}`);
     for (let i = 0; i < bands.length; i++) {
       const b = bands[i]!;
       if (b.tax.length !== cols.length) {
@@ -925,10 +926,14 @@ function checkTable(ctx: Ctx, table: TableDoc): void {
         break;
       }
     }
-    const boundary = ctx.params.values["ordinary.table_boundary"]?.value;
     const last = bands[bands.length - 1]!;
-    if (typeof boundary === "number" && last.less_than !== boundary) {
-      ctx.errors.push(`table ${table.id}: last band ends at ${last.less_than} but ordinary.table_boundary is ${boundary}`);
+    if (table.bounds) {
+      if (last.less_than !== table.bounds.less_than) ctx.errors.push(`table ${table.id}: last band ends at ${last.less_than} but the table's bounds end at ${table.bounds.less_than}`);
+    } else {
+      const boundary = ctx.params.values["ordinary.table_boundary"]?.value;
+      if (typeof boundary === "number" && last.less_than !== boundary) {
+        ctx.errors.push(`table ${table.id}: last band ends at ${last.less_than} but ordinary.table_boundary is ${boundary}`);
+      }
     }
   }
   if (table.kind === "bracket_schedule") {

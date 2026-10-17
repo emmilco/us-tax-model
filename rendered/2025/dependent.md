@@ -35,8 +35,8 @@
 ## (helper) — `dependent.months`
 
 - **Authored helper label:** Months lived with you in 2025, counting temporary absences
-- **Encoded (Count):** Input — Months this person lived with you in 2025, counting temporary absences for school, vacation, business, medical care, military service or detention as time lived with you (0–12). For a person born, died, adopted or placed with you in 2025 who meets the other conditions to be your qualifying child, enter 12 if your home was their home for more than half the time they were alive or with you, and 0 otherwise; for any other person born or who died in 2025, enter 12 only if your home was their home for the entire time they were alive, and 0 otherwise
-- Expr: `{"op":"input","source":"Months this person lived with you in 2025, counting temporary absences for school, vacation, business, medical care, military service or detention as time lived with you (0–12). For a person born, died, adopted or placed with you in 2025 who meets the other conditions to be your qualifying child, enter 12 if your home was their home for more than half the time they were alive or with you, and 0 otherwise; for any other person born or who died in 2025, enter 12 only if your home was their home for the entire time they were alive, and 0 otherwise"}`
+- **Encoded (Count):** Input — Months this person lived with you in 2025, counting temporary absences for school, vacation, business, medical care, military service or detention in a juvenile facility as time lived with you (0–12); enter 7 if the person lived with you for more than half of 2025 but fewer than 7 full months. For a person born, died, adopted or placed with you in 2025 who meets the other conditions to be your qualifying child, enter 12 if your home was their home for more than half the time they were alive or with you, and 0 otherwise; for any other person born or who died in 2025, or adopted, lawfully placed with you for legal adoption, or placed with you as an eligible foster child in 2025, enter 12 only if your home was their home for the entire time they were alive or since the adoption or placement, and 0 otherwise
+- Expr: `{"op":"input","source":"Months this person lived with you in 2025, counting temporary absences for school, vacation, business, medical care, military service or detention in a juvenile facility as time lived with you (0–12); enter 7 if the person lived with you for more than half of 2025 but fewer than 7 full months. For a person born, died, adopted or placed with you in 2025 who meets the other conditions to be your qualifying child, enter 12 if your home was their home for more than half the time they were alive or with you, and 0 otherwise; for any other person born or who died in 2025, or adopted, lawfully placed with you for legal adoption, or placed with you as an eligible foster child in 2025, enter 12 only if your home was their home for the entire time they were alive or since the adoption or placement, and 0 otherwise"}`
 - Cite: [i1040gi] p. 17, Step 1, "Who lived with you for more than half of 2025", and p. 21, Exception to time lived with you ("the child ... for more than half the part of the year the child was alive"; "Any other person is considered to have lived with you for all of 2025 if the person was born or died in 2025 and your home was this person's home for the entire time the person was alive in 2025") (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `dependent.self_support`
@@ -157,6 +157,13 @@
 - **Encoded (Bool):** Input — Was this person younger than you?
 - Expr: `{"op":"input","source":"Was this person younger than you?"}`
 - Cite: [i1040gi] p. 17, Step 1, "and younger than you (or your spouse if filing jointly)" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `dependent.us_half`
+
+- **Authored helper label:** Lived with you in the United States for more than half of 2025?
+- **Encoded (Bool):** Input — Did this person live with you in the United States (the 50 states and the District of Columbia) for more than half of 2025? Temporary absences for school, vacation, business, medical care, military service or juvenile detention count as time lived with you. A child born or who died in 2025 counts if your home was the child's home for more than half the time the child was alive, and a child you adopted, who was lawfully placed with you for legal adoption, or who was placed with you as an eligible foster child in 2025 counts if your main home was the child's main home for more than half the time since the adoption or placement.
+- Expr: `{"op":"input","source":"Did this person live with you in the United States (the 50 states and the District of Columbia) for more than half of 2025? Temporary absences for school, vacation, business, medical care, military service or juvenile detention count as time lived with you. A child born or who died in 2025 counts if your home was the child's home for more than half the time the child was alive, and a child you adopted, who was lawfully placed with you for legal adoption, or who was placed with you as an eligible foster child in 2025 counts if your main home was the child's main home for more than half the time since the adoption or placement."}`
+- Cite: [i1040gi] p. 41, Step 3, "Who lived with you in the United States for more than half of 2025"; p. 43, Exception to time lived with you; p. 45, United States (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `dependent.qc_age`
 
@@ -313,7 +320,7 @@
 
 ## (helper) — `dependent.hoh_test1`
 
-- **Authored helper label:** Qualifies you for head of household under Test 1 (a parent whose main home you kept up)
+- **Authored helper label:** Qualifies you for head of household under Test 1 through a parent who does not live with you (a parent who lives with you qualifies you through Test 2)
 - **Encoded (Bool):** helper "Relationship to you" = 'parent' and helper "Your dependent" = true and helper "For a parent not living with you, you paid over half the cost of their main home for all of 2025?" = true
 - Expr: `{"all":[{"eq":["dependent.relationship",{"const":"parent"}],"op":"test"},{"eq":["dependent.claimed",{"const":true}],"op":"test"},{"eq":["dependent.parent_home_paid",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 14, Head of Household, Test 1, "You paid over half the cost of keeping up a home that was the main home for all of 2025 of your parent whom you can claim as a dependent" (2025; printed date 2026-02-25; sha256 482e9c48)
@@ -321,6 +328,22 @@
 ## (helper) — `dependent.hoh_person`
 
 - **Authored helper label:** Qualifies you for head of household (Test 1 or Test 2)
-- **Encoded (Bool):** (helper "Qualifies you for head of household under Test 1 (a parent whose main home you kept up)" = true or helper "A Test 2 person who lived with you more than half the year (the home-cost condition of Test 2 is tested on the household form)" = true)
+- **Encoded (Bool):** (helper "Qualifies you for head of household under Test 1 through a parent who does not live with you (a parent who lives with you qualifies you through Test 2)" = true or helper "A Test 2 person who lived with you more than half the year (the home-cost condition of Test 2 is tested on the household form)" = true)
 - Expr: `{"any":[{"eq":["dependent.hoh_test1",{"const":true}],"op":"test"},{"eq":["dependent.hoh_test2",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 14, Head of Household, Tests 1 and 2 (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `dependent.eic_child`
+
+- **Authored helper label:** Qualifying child for the EIC (relationship, age, not filing a joint return, lived with you in the United States for more than half of 2025)
+- **Encoded (Bool):** helper "A child, sibling, or a descendant of either" = true and helper "Under 19 and younger than you, under 24 a full-time student and younger than you, or permanently and totally disabled" = true and helper "Filing a joint return other than only to claim a refund?" = false and helper "Lived with you in the United States for more than half of 2025?" = true
+- **Refusal:** when dependent.other_claimant is true, cannot complete Qualifying child of more than one person (EIC). The tie-breaker rules for a child who is the qualifying child of more than one person are outside this tool. Cite: [i1040gi] p. 44, Qualifying child of more than one person (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Refusal:** when dependent.married is true, cannot complete Married child (EIC). A married child is a qualifying child for the EIC only under the dependency rules, which are outside this tool for a married person. Cite: [i1040gi] p. 44, Married child (2025; printed date 2026-02-25; sha256 482e9c48)
+- Expr: `{"all":[{"eq":["dependent.qc_relationship",{"const":true}],"op":"test"},{"eq":["dependent.qc_age",{"const":true}],"op":"test"},{"eq":["dependent.joint_return",{"const":false}],"op":"test"},{"eq":["dependent.us_half",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 41, Step 3, "A qualifying child for the EIC is your..." (relationship AND age AND not filing a joint return AND lived with you in the United States for more than half of 2025) (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `dependent.eic_ssn_child`
+
+- **Authored helper label:** Qualifying child for the EIC who has a valid SSN
+- **Encoded (Bool):** helper "Qualifying child for the EIC (relationship, age, not filing a joint return, lived with you in the United States for more than half of 2025)" = true and helper "SSN valid for employment issued before the due date of your return?" = true
+- Expr: `{"all":[{"eq":["dependent.eic_child",{"const":true}],"op":"test"},{"eq":["dependent.work_ssn",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 46, Worksheet A, line 2, "the number of qualifying children you have who have valid SSNs"; pp. 44–45, Social security number (SSN), "For the EIC, a valid SSN is a number issued by the Social Security Administration unless 'Not Valid for Employment' is printed on the social security card" (2025; printed date 2026-02-25; sha256 482e9c48)

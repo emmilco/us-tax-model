@@ -16,6 +16,7 @@ Categories per (engine, case, line):
   UNEXPLAINED    a disagreement with no cause; fails the run
 """
 import argparse, json, sys, os
+from fractions import Fraction
 from collections import Counter, defaultdict
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -31,7 +32,34 @@ def load_tables():
     table = json.load(open(os.path.join(ROOT, "canonical", "2025", "tables", "tax_table.json")))["table"]
     params = json.load(open(os.path.join(ROOT, "canonical", "2025", "params.json")))["params"]["values"]
     boundary = params["ordinary.table_boundary"]["value"]
-    return {"schedules": sched["schedules"], "alias": sched.get("status_alias", {}), "table": table, "boundary": boundary}
+    return {"schedules": sched["schedules"], "alias": sched.get("status_alias", {}), "table": table, "boundary": boundary, "params": params}
+
+
+def eic_formula(values, t):
+    """Form 1040 line 27a recomputed along the project's own Worksheet A path with each EIC Table
+    lookup replaced by the credit at the exact amount: the smaller of amount x (maximum / earned income
+    amount) and the maximum, less (maximum / (completed - threshold phaseout)) x the excess over the
+    threshold phaseout, not below zero. The rates are those the Rev. Proc. 2024-40 amounts imply. None
+    when the project did not reach the worksheet."""
+    def v(k):
+        d = values.get(k, {}).get("value", {})
+        return d.get("cents", d.get("value")) if d.get("kind") in ("money", "count", "bool", "enum") else None
+    if v("eic.eligible") is not True:
+        return 0 if v("eic.eligible") is False else None
+    n, status, ei, agi = v("eic.ssn_count"), v("f1040.status"), v("eic.line1"), v("eic.line3")
+    if None in (n, status, ei, agi):
+        return None
+    k, side = min(n, 3), "joint" if status == "mfj" else "other"
+    P = lambda name: Fraction(t["params"][name]["value"])
+    mx, eia = P(f"eic.maximum{k}"), P(f"eic.earned_amount{k}")
+    thr, end = P(f"eic.ws_threshold{0 if k == 0 else 1}.{side}"), P(f"eic.limit{k}.{side}")
+    def credit(x):
+        c = min(Fraction(x) * mx / eia, mx) - mx / (end - thr) * max(Fraction(0), Fraction(x) - thr)
+        return max(Fraction(0), c)
+    line2 = credit(ei) if ei >= 100 else Fraction(0)
+    if agi == ei or agi < thr:
+        return round(line2)
+    return round(min(credit(agi), line2))
 
 
 def schedule_tax(t, status, amount):
@@ -201,6 +229,8 @@ def main():
                     stats[(ename, line)]["exact"] += 1; continue
                 if line in TAX_LINES and schedule_mode[line] != pv and abs(ev - schedule_mode[line]) <= bound:
                     stats[(ename, line)]["table-adjusted"] += 1; continue
+                if line == "f1040.line27a" and (ef := eic_formula(values, tables)) is not None and abs(ev - ef) <= max(bound, 100):
+                    stats[(ename, line)]["table-adjusted"] += 1; continue
                 if abs(diff) <= bound:
                     stats[(ename, line)]["float"] += 1; continue
                 cause = next((inv for inv in investigations
@@ -217,7 +247,7 @@ def main():
                  f"Cases: {len(cases)} generated single-filer returns (tools/engines/generate_cases.py). "
                  "Engines run locally under .engines/venv (tools/engines/setup.sh); versions: "
                  + ", ".join(f"{n} {e['version']}" for n, e in engines.items()) + ".", "",
-                 "`table-adjusted` means the engine equals the project's tax lines recomputed with every Tax Table lookup replaced by the rate schedule (engines compute from the schedule where the form prescribes the table), keeping the worksheet path and re-taking its smaller-of; an identified cause, not a tolerance. `float` means the difference is within two units in the last place of the engine's floating-point representation (PolicyEngine-US computes in float32, Tax-Calculator in float64), a bound derived from the engine's precision. `excluded` lines carry the engine limitation stated below. Every other difference must be explained in fixtures/2025/differential/engine_investigations.json or the run fails.", ""]
+                 "`table-adjusted` means the engine equals the project's tax lines recomputed with every Tax Table lookup replaced by the rate schedule (engines compute from the schedule where the form prescribes the table), keeping the worksheet path and re-taking its smaller-of; an identified cause, not a tolerance. For Form 1040 line 27a, `table-adjusted` means the engine is within $1 of the project's Worksheet A path recomputed with each EIC Table lookup replaced by the credit at the exact amount (the engines compute from the formula where the instructions prescribe the table built at each $50 band's midpoint); the $1 allows for the engines' statutory percentages, which the archive does not hold, against the rates the Rev. Proc. 2024-40 amounts imply (at most about $0.20 apart over the table's range). `float` means the difference is within two units in the last place of the engine's floating-point representation (PolicyEngine-US computes in float32, Tax-Calculator in float64), a bound derived from the engine's precision. `excluded` lines carry the engine limitation stated below. Every other difference must be explained in fixtures/2025/differential/engine_investigations.json or the run fails.", ""]
     for ename in engines:
         lines_out += [f"## {ename}", "", "| line | exact | table-adjusted | float | excluded | explained | UNEXPLAINED | not computed |", "| --- | --- | --- | --- | --- | --- | --- | --- |"]
         for (en, line), c in sorted(stats.items()):

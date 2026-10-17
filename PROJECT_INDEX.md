@@ -9,16 +9,17 @@ fixtures, per-line evidence coverage and the differential scaffolding. See
 verification regime are in `spec/spec.md` sections 1, 2.4 and 6.5; the stages
 that follow (integrity stack, household architecture test, coverage) are in
 `spec/design.md` section 5. No human line-by-line reading is claimed; see the
-trust statement in spec 3. Stage 7 (the integrity stack) and Stage 8 (dependents,
-head of household and Schedule 8812) are complete; see `HANDOFF-STAGE-8.md` to
-continue.
+trust statement in spec 3. Stage 7 (the integrity stack), Stage 8 (dependents,
+head of household and Schedule 8812) and Stage 9 (the earned income credit) are
+complete; see `HANDOFF-STAGE-9.md` to continue.
 
 ## Folder structure
 
 | Path | Purpose |
 |------|---------|
 | `PROJECT_INDEX.md` | This file: structure, directory purposes, naming conventions |
-| `HANDOFF-STAGE-8.md` | Current handoff: Stage 8 done, the extraction-as-evidence work and the review reruns of 2026-10-17, facts a fresh session needs, open items |
+| `HANDOFF-STAGE-9.md` | Current handoff: the commit guard, the interview-check bound, class M for collections and definitions, the per-band extraction and Stage 9 (earned income credit), with open items |
+| `HANDOFF-STAGE-8.md` | Previous handoff: Stage 8 done, the extraction-as-evidence work and the review reruns of 2026-10-17, facts a fresh session needs |
 | `HANDOFF-STAGE-7.md` | Previous handoff: the Stage 7 integrity stack in detail, with a Stage 8 section appended during the build |
 | `HANDOFF-STAGE-2.md` | Stage 2 handoff and acceptance checklist (historical) |
 | `spec/stage2-proposal.md` | Owner-approved modeling choices and concrete collection binding |
@@ -30,7 +31,7 @@ continue.
 | `sources/2025/` | Archived IRS sources (PDFs and instruction web-page snapshots), their extracted text in two forms (`<id>.txt`, `pdftotext -layout`; `<id>.cols.txt`, reading order from line boxes, with `<id>.pages.json` classifying each page as prose, table, mixed or single), the hash/revision manifest, and Stage 0 premise findings; sources require revision review before encoding |
 | `TASKS.md` | The one tracked list of known, undone work: follow-ups from rulings and reviews, stage remainders, scope items, each with its source and trigger |
 | `BUG_INVENTORY.md` | Append-only record of every defect caught, with cause, catch method and pattern tags (spec 6.6); `tools/check_bug_inventory.py` enforces append-only in `check-all` |
-| `tools/` | Source fetcher (`fetch_sources.py`, which also derives and verifies the reading-order text), source catalog, reading-order extractor (`extract_text.py`), extraction conservation checks (`check_extraction.py`, in `check-all`), the image-grounded text-layer audit (`ocr_audit.py`, one-time), Tax Table extractor (`extract_tax_table.py`), bug-inventory check (`check_bug_inventory.py`), the commit guard (`check_all.sh` runs the suite and records the green tree; `green.sh` holds the shared tree hash); fixture generator and year diff land here or in `engine/` as they grow |
+| `tools/` | Source fetcher (`fetch_sources.py`, which also derives and verifies the reading-order text), source catalog, reading-order extractor (`extract_text.py`), extraction conservation checks (`check_extraction.py`, in `check-all`), the image-grounded text-layer audit (`ocr_audit.py`, one-time), Tax Table and EIC Table extractors (`extract_tax_table.py`, `extract_eic_table.py`), bug-inventory check (`check_bug_inventory.py`), the commit guard (`check_all.sh` runs the suite and records the green tree; `green.sh` holds the shared tree hash); fixture generator and year diff land here or in `engine/` as they grow |
 | `tools/hooks/` | Git hooks, enabled with `git config core.hooksPath tools/hooks`: `pre-commit` refuses a commit whose tree is not the tree the last green `check-all` run tested |
 | `tools/extraction/` | Data for the conservation checks: the PDFKit reader (`pdfkit_text.swift`, an independent reading of the text layer), page furniture allowed to be absent from the HTML snapshots (`furniture.txt`), accepted per-page differences with their reasons (`exceptions.json`), and the side-by-side page review generator (`page_review.py`, writing the git-ignored `.extraction-review/`: page image left, the text the model reads right) |
 | `tools/transcription/` | Transcription agreement, render comparison and class M hand-work (spec 6.5); rulings live as data in `<form>.rulings.json` beside each log (`rulings.py`) and the logs are rendered from them: `transcribe.py` has an isolated model re-transcribe one form from its cited archived pages and compares the two structurally; `render_compare.py` has an isolated model judge each printed line's rendered English against the same pages; `classm.py` has an isolated model work a document by hand for branch-covering generated returns (a keyed collection once per entry, a shared definition once per instance), producing class M fixtures; `rerun_all.py` reruns every review a few at a time; `rule.py` writes rulings into any of the three logs; `check_logs.py` verifies all three sets of logs offline in `check-all` |
@@ -42,13 +43,13 @@ continue.
 | `schema/` | JSON Schema for all canonical data (`data.schema.json`) |
 | `forms/2025/` | Form and worksheet definitions as YAML: `f1040.yaml` (the implemented slice, lines 1a–37), `qdcg.yaml`, `tcw.yaml`, `tax_on_amount.yaml`; Stage 2 adds `w2.yaml`, `person.yaml`, `s3.yaml`; Stage 3 adds `sales.yaml` and `sd.yaml`; Stage 4 adds the remaining forms; Stage 8 adds `dependent.yaml` (per-dependent tests), `household.yaml` (filer facts and head of household) and `s8812.yaml` (Schedule 8812) |
 | `params/2025.yaml` | Year parameters (bracket ceilings, Tax Computation Worksheet rows, table boundary), each with a citation |
-| `tables/2025/` | Pinned data tables: `tax_table.yaml` (cell-by-cell 2025 Tax Table) and `rate_schedule.yaml` (Rev. Proc. 2024-40 schedules for the midpoint conjecture) |
+| `tables/2025/` | Pinned data tables: `tax_table.yaml` (cell-by-cell 2025 Tax Table), `rate_schedule.yaml` (Rev. Proc. 2024-40 schedules for the midpoint conjecture) and `eic_0.yaml` to `eic_3.yaml` (the 2025 EIC Table, one table per number of qualifying children with valid SSNs, footnoted rows split at their amounts; written by `tools/extract_eic_table.py` and checked cell by cell against Rev. Proc. 2024-40 in `reports/2025/eic_table_conjecture.md`) |
 | `ambiguities/2025.yaml` | Ambiguity register (readings chosen where the instructions are silent) |
 | `engine/` | TypeScript: build (YAML to canonical JSON), checker, renderer, evaluator, interview, finite path checks, CLI integration tests, the generated-return arbitrary and data-level property tests (`generate.ts`, `properties.ts`), and the command-line program (the backend; every client and integration test goes through it) |
 | `lean/` | Lean 4: atom semantics over the integers, lemmas, and the reference evaluator that reads the same canonical JSON |
 | `fixtures/2025/differential/` | Calculator records (class C) and `engine_investigations.json`, the cited causes for engine differences |
 | `fixtures/2025/classm.json` | Class M fixtures: generated returns whose worksheet lines an isolated model worked by hand; written by `tools/transcription/classm.py` |
-| `fixtures/2025/stage*.json` | Test fixtures: covering cases with inputs, expected values, evidence labels and notes; Stage 3 adds official column-arithmetic examples; Stage 5 adds whole-return cases (`stage5.json`) and the calculator-record directory (`differential/`); `stage8.json` asserts the per-person dependent tests, the head of household tests and the Schedule 8812 chain across their branches and refusals; synthetic values remain regressions pending human hand-work |
+| `fixtures/2025/stage*.json` | Test fixtures: covering cases with inputs, expected values, evidence labels and notes; Stage 3 adds official column-arithmetic examples; Stage 5 adds whole-return cases (`stage5.json`) and the calculator-record directory (`differential/`); `stage8.json` asserts the per-person dependent tests, the head of household tests and the Schedule 8812 chain across their branches and refusals; `stage9.json` asserts the earned income credit across its steps, worksheet paths, table footnotes, limits and refusals; synthetic values remain regressions pending human hand-work |
 | `rendered/2025/` | Committed renderer output (each line beside its IRS label and citation) for line-by-line review |
 | `reports/2025/` | Generated reports: extraction conservation checks (`extraction.md`), Tax Table midpoint conjecture, branch/gate/arithmetic coverage, per-line evidence coverage, evaluator agreement, data-level properties over generated returns (`properties.md`), mutation score, calculator differential entry sheets, engine differential (`engine_differential.md`), Stage 2–5 review packets and CLI values sheets |
 

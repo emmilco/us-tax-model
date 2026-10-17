@@ -548,6 +548,139 @@ params:
       cite:
         doc: f1040s8812
         locator: Schedule 8812 (2025), line 19, "Is the amount on line 18a more than $2,500?"
+    # Earned income credit (i1040gi pp. 40-60; Rev. Proc. 2024-40 section 3.06).
+    eic.limit0.other:
+      type: NonNegDollars
+      value: 1910400
+      cite:
+        doc: i1040gi
+        locator: 'p. 40, Step 1, question 1, and p. 42, Step 5, question 3: "No children ... less than $19,104"'
+    eic.limit0.joint:
+      type: NonNegDollars
+      value: 2621400
+      cite:
+        doc: i1040gi
+        locator: 'p. 40, Step 1, question 1, and p. 42, Step 5, question 3: "($26,214 if married filing jointly)"'
+    eic.limit1.other:
+      type: NonNegDollars
+      value: 5043400
+      cite:
+        doc: i1040gi
+        locator: 'p. 40, Step 1, question 1, and p. 42, Step 5, question 3: "1 child ... less than $50,434"'
+    eic.limit1.joint:
+      type: NonNegDollars
+      value: 5755400
+      cite:
+        doc: i1040gi
+        locator: 'p. 40, Step 1, question 1, and p. 42, Step 5, question 3: "($57,554 if married filing jointly)"'
+    eic.limit2.other:
+      type: NonNegDollars
+      value: 5731000
+      cite:
+        doc: i1040gi
+        locator: 'p. 40, Step 1, question 1, and p. 42, Step 5, question 3: "2 children ... less than $57,310"'
+    eic.limit2.joint:
+      type: NonNegDollars
+      value: 6443000
+      cite:
+        doc: i1040gi
+        locator: 'p. 40, Step 1, question 1, and p. 42, Step 5, question 3: "($64,430 if married filing jointly)"'
+    eic.limit3.other:
+      type: NonNegDollars
+      value: 6155500
+      cite:
+        doc: i1040gi
+        locator: 'p. 40, Step 1, question 1, and p. 42, Step 5, question 3: "3 or more children ... less than $61,555"'
+    eic.limit3.joint:
+      type: NonNegDollars
+      value: 6867500
+      cite:
+        doc: i1040gi
+        locator: 'p. 40, Step 1, question 1, and p. 42, Step 5, question 3: "($68,675 if married filing jointly)"'
+    eic.investment_limit:
+      type: NonNegDollars
+      value: 1195000
+      cite:
+        doc: i1040gi
+        locator: 'p. 40, Step 2, question 2, "Is your investment income more than $11,950?"'
+    eic.ws_threshold0.other:
+      type: NonNegDollars
+      value: 1062000
+      cite:
+        doc: i1040gi
+        locator: 'p. 46, Worksheet A, line 5, "No qualifying children ... less than $10,620"'
+    eic.ws_threshold0.joint:
+      type: NonNegDollars
+      value: 1773000
+      cite:
+        doc: i1040gi
+        locator: 'p. 46, Worksheet A, line 5, "($17,730 if married filing jointly)"'
+    eic.ws_threshold1.other:
+      type: NonNegDollars
+      value: 2335000
+      cite:
+        doc: i1040gi
+        locator: 'p. 46, Worksheet A, line 5, "1 or more qualifying children ... less than $23,350"'
+    eic.ws_threshold1.joint:
+      type: NonNegDollars
+      value: 3047000
+      cite:
+        doc: i1040gi
+        locator: 'p. 46, Worksheet A, line 5, "($30,470 if married filing jointly)"'
+    eic.table_start:
+      type: NonNegDollars
+      value: 100
+      cite:
+        doc: i1040gi
+        locator: 'p. 49, 2025 Earned Income Credit (EIC) Table, first row "At least 1 But less than 50"'
+    eic.earned_amount0:
+      type: NonNegDollars
+      value: 849000
+      cite:
+        doc: rp-2024-40
+        locator: 'section 3.06(1), Earned Income Amount, none'
+    eic.maximum0:
+      type: NonNegDollars
+      value: 64900
+      cite:
+        doc: rp-2024-40
+        locator: 'section 3.06(1), Maximum Amount of Credit, none'
+    eic.earned_amount1:
+      type: NonNegDollars
+      value: 1273000
+      cite:
+        doc: rp-2024-40
+        locator: 'section 3.06(1), Earned Income Amount, one qualifying child'
+    eic.maximum1:
+      type: NonNegDollars
+      value: 432800
+      cite:
+        doc: rp-2024-40
+        locator: 'section 3.06(1), Maximum Amount of Credit, one qualifying child'
+    eic.earned_amount2:
+      type: NonNegDollars
+      value: 1788000
+      cite:
+        doc: rp-2024-40
+        locator: 'section 3.06(1), Earned Income Amount, two qualifying children'
+    eic.maximum2:
+      type: NonNegDollars
+      value: 715200
+      cite:
+        doc: rp-2024-40
+        locator: 'section 3.06(1), Maximum Amount of Credit, two qualifying children'
+    eic.earned_amount3:
+      type: NonNegDollars
+      value: 1788000
+      cite:
+        doc: rp-2024-40
+        locator: 'section 3.06(1), Earned Income Amount, three or more qualifying children'
+    eic.maximum3:
+      type: NonNegDollars
+      value: 804600
+      cite:
+        doc: rp-2024-40
+        locator: 'section 3.06(1), Maximum Amount of Credit, three or more qualifying children'
     actc.rate:
       type: Rate
       value:

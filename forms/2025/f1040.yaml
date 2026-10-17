@@ -36,6 +36,18 @@ form:
       cite:
         doc: f1040
         locator: Form 1040 (2025), line 1z
+    - id: f1040.line2a
+      printed: 2a
+      label: Tax-exempt interest
+      type: NonNegDollars
+      expr:
+        op: input
+        source: Total tax-exempt interest for 2025, net of amortized bond premium (Form 1099-INT box 8, tax-exempt OID from
+          Form 1099-OID, and exempt-interest dividends in Form 1099-DIV box 12)
+      cite:
+        doc: i1040gi
+        locator: Instructions for Form 1040, p. 25, line 2a, "Enter the total on line 2a" and "Also include on line 2a any
+          exempt-interest dividends from a mutual fund"
     - id: f1040.line2b
       printed: 2b
       label: Taxable interest
@@ -500,18 +512,12 @@ form:
       label: Earned income credit (EIC)
       type: NonNegDollars
       expr:
-        op: param
-        ref: sales.zero
+        op: copy
+        from: eic.credit
       cite:
-        doc: f1040
-        locator: Form 1040 (2025), line 27a
-      refuses:
-        - when: scope.credits
-          form: Other credit forms (Schedule 3 lines 2 to 4, 5b, 6d, 6f, 6l and 6m; Form 1040 lines 27a and 29 to 31)
-          remedy: Credits other than the foreign tax credit by election, the excess social security credit and the Schedule 8812 credits require forms outside this proof of concept.
-          cite:
-            doc: f1040
-            locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
+        doc: i1040gi
+        locator: pp. 40–48, Lines 27a, 27b, and 27c—Earned Income Credit (EIC), Worksheet A line 6, "Enter this amount on
+          Form 1040 or 1040-SR, line 27a"
     - id: f1040.line28
       printed: "28"
       label: Additional child tax credit (ACTC) from Schedule 8812
@@ -534,8 +540,8 @@ form:
         locator: Form 1040 (2025), line 29
       refuses:
         - when: scope.credits
-          form: Other credit forms (Schedule 3 lines 2 to 4, 5b, 6d, 6f, 6l and 6m; Form 1040 lines 27a and 29 to 31)
-          remedy: Credits other than the foreign tax credit by election, the excess social security credit and the Schedule 8812 credits require forms outside this proof of concept.
+          form: Other credit forms (Schedule 3 lines 2 to 4, 5b, 6d, 6f, 6l and 6m; Form 1040 lines 29 to 31)
+          remedy: Credits other than the foreign tax credit by election, the excess social security credit, the Schedule 8812 credits and the earned income credit require forms outside this proof of concept.
           cite:
             doc: f1040
             locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
@@ -551,8 +557,8 @@ form:
         locator: Form 1040 (2025), line 30
       refuses:
         - when: scope.credits
-          form: Other credit forms (Schedule 3 lines 2 to 4, 5b, 6d, 6f, 6l and 6m; Form 1040 lines 27a and 29 to 31)
-          remedy: Credits other than the foreign tax credit by election, the excess social security credit and the Schedule 8812 credits require forms outside this proof of concept.
+          form: Other credit forms (Schedule 3 lines 2 to 4, 5b, 6d, 6f, 6l and 6m; Form 1040 lines 29 to 31)
+          remedy: Credits other than the foreign tax credit by election, the excess social security credit, the Schedule 8812 credits and the earned income credit require forms outside this proof of concept.
           cite:
             doc: f1040
             locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31

@@ -3,10 +3,10 @@
  "form": "f1040",
  "rulings": [
   {
-   "printed": "13a",
-   "restated": "Enter the amount from qbi helper \"Select Form 8995 or dividend-only Form 8995-A\".",
-   "model": "The selection tests only the taxable-income threshold. The IRS also requires \"You aren't a patron in a specified agricultural or horticultural cooperative\" to use Form 8995, and no refusal or helper addresses that condition.",
-   "ruling": "Ruling: scope; project retained. Agricultural or horticultural cooperative patronage is refused by the QBI screen (`forms/2025/qbi.yaml`: 'Any QBI beyond section 199A dividends ... or agricultural/horticultural cooperative patronage?'), so a filer who reaches this selection is not a patron and the Form 8995 condition holds."
+   "printed": "27a",
+   "restated": "Enter the amount from eic helper \"Earned income credit for Form 1040, line 27a (Worksheet A, line 6 when Steps 1 to 5 are passed; zero otherwise)\".",
+   "model": "The SSN and age tests check only the filer. The IRS asks 'Do you, and your spouse if filing a joint return, have a social security number...' and 'Were you, or your spouse if filing a joint return, at least age 25 but under age 65', so a joint return can get a different result.",
+   "ruling": "Ruling: scope; project retained. The spouse variants of the SSN and age tests ('and your spouse if filing a joint return') arise only on a joint return, and married filing statuses are refused (s3.married); within scope the filer's own tests are the tests."
   }
  ]
 }

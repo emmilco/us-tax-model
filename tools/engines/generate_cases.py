@@ -50,6 +50,9 @@ def gen_case(rng, i):
         "scope.schedule1": False, "scope.schedule1a": False, "scope.credits": False, "scope.other_income": False,
         "scope.other_line16": False, "s2.amt": False, "s2.other": False,
         "f1040.line25b": 0, "f1040.line25c": 0, "f1040.line26": 0, "f1040.line35a": 0, "f1040.line36": 0,
+        # Earned income credit questions: an adult aged 25 to 64 living in the United States who is
+        # nobody's qualifying child, with no tax-exempt interest.
+        "f1040.line2a": 0, "eic.qc_of_another": False, "eic.born_before_2001": True, "eic.us_home": True, "eic.married": False,
     }
     facts = {}
     features = set()
@@ -155,12 +158,15 @@ def gen_case(rng, i):
                        f"{key}.months": 12, f"{key}.self_support": False, f"{key}.joint_return": False, f"{key}.citizen": True,
                        f"{key}.canada_mexico": False, f"{key}.married": False, f"{key}.tin": True, f"{key}.work_ssn": True,
                        f"{key}.gross_income": 0, f"{key}.supported": True, f"{key}.other_claimant": False,
-                       f"{key}.divorced_rule": False, f"{key}.multiple_support": False, f"{key}.parent_home_paid": False})
+                       f"{key}.divorced_rule": False, f"{key}.multiple_support": False, f"{key}.parent_home_paid": False,
+                       f"{key}.us_half": True})
     hoh = n_children > 0 and rng.random() < 0.5
     inputs["f1040.status"] = "hoh" if hoh else "single"
     inputs.update({"household.taxpayer_tin": True, "household.taxpayer_work_ssn": True,
                    "household.home_cost": True, "household.unmarried": True, "s8812.combat_pay": False, "s8812.puerto_rico": False})
-    facts.update(children=ages, n24=sum(1 for a in ages if a < 17), hoh=hoh)
+    # Every generated child is a qualifying child for the EIC (under 19, or a full-time student under 24,
+    # living with the filer in the United States all year, with an SSN).
+    facts.update(children=ages, n24=sum(1 for a in ages if a < 17), hoh=hoh, eic_children=min(3, n_children))
     if n_children:
         features.add("dependents")
     if any(a >= 17 for a in ages):

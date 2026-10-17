@@ -600,7 +600,7 @@ interview:
         doc: i1040gi
         locator: p. 17, Step 1, "Any age and permanently and totally disabled (defined later)"
     - input: dependent.months
-      prompt: Months this person lived with you in 2025, counting temporary absences for school, vacation, business, medical care, military service or detention as time lived with you (0–12); for a person born, died, adopted or placed with you in 2025, enter 12 if your home was their home for more than half the time they were alive or with you, and 0 otherwise
+      prompt: 'Months this person lived with you in 2025, counting temporary absences for school, vacation, business, medical care, military service or detention in a juvenile facility as time lived with you (0–12); enter 7 if the person lived with you for more than half of 2025 but fewer than 7 full months. For a person born, died, adopted or placed with you in 2025 who meets the other conditions to be your qualifying child, enter 12 if your home was their home for more than half the time they were alive or with you, and 0 otherwise; for any other person born or who died in 2025, or adopted, lawfully placed with you for legal adoption, or placed with you as an eligible foster child in 2025, enter 12 only if your home was their home for the entire time they were alive or since the adoption or placement, and 0 otherwise'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
         be null; do not guess. This computes the single-person return; joint returns and unsupported items
         are refused with citations.

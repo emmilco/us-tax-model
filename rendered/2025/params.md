@@ -21,6 +21,28 @@
 | `ctc.phaseout_rate` | Rate | 5% (0.05) | [f1040s8812] Schedule 8812 (2025), line 11, "Multiply line 10 by 5% (0.05)" (2025; created 2025-07-30; sha256 6936462d) |
 | `ctc.threshold` | NonNegDollars | single $200,000; mfj $400,000; mfs $200,000; hoh $200,000; qss $200,000 | [f1040s8812] Schedule 8812 (2025), line 9, "Married filing jointly—$400,000; All other filing statuses—$200,000" (2025; created 2025-07-30; sha256 6936462d) |
 | `dependent.one` | Count | 1 | [f1040s8812] Schedule 8812 (2025), lines 4 and 6, "Number of qualifying children" and "Number of other dependents" (2025; created 2025-07-30; sha256 6936462d) |
+| `eic.earned_amount0` | NonNegDollars | $8,490 | [rp-2024-40] section 3.06(1), Earned Income Amount, none (Rev. Proc. 2024-40; 2025 adjusted items; released 2024-10; sha256 4de9db6b) |
+| `eic.earned_amount1` | NonNegDollars | $12,730 | [rp-2024-40] section 3.06(1), Earned Income Amount, one qualifying child (Rev. Proc. 2024-40; 2025 adjusted items; released 2024-10; sha256 4de9db6b) |
+| `eic.earned_amount2` | NonNegDollars | $17,880 | [rp-2024-40] section 3.06(1), Earned Income Amount, two qualifying children (Rev. Proc. 2024-40; 2025 adjusted items; released 2024-10; sha256 4de9db6b) |
+| `eic.earned_amount3` | NonNegDollars | $17,880 | [rp-2024-40] section 3.06(1), Earned Income Amount, three or more qualifying children (Rev. Proc. 2024-40; 2025 adjusted items; released 2024-10; sha256 4de9db6b) |
+| `eic.investment_limit` | NonNegDollars | $11,950 | [i1040gi] p. 40, Step 2, question 2, "Is your investment income more than $11,950?" (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `eic.limit0.joint` | NonNegDollars | $26,214 | [i1040gi] p. 40, Step 1, question 1, and p. 42, Step 5, question 3: "($26,214 if married filing jointly)" (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `eic.limit0.other` | NonNegDollars | $19,104 | [i1040gi] p. 40, Step 1, question 1, and p. 42, Step 5, question 3: "No children ... less than $19,104" (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `eic.limit1.joint` | NonNegDollars | $57,554 | [i1040gi] p. 40, Step 1, question 1, and p. 42, Step 5, question 3: "($57,554 if married filing jointly)" (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `eic.limit1.other` | NonNegDollars | $50,434 | [i1040gi] p. 40, Step 1, question 1, and p. 42, Step 5, question 3: "1 child ... less than $50,434" (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `eic.limit2.joint` | NonNegDollars | $64,430 | [i1040gi] p. 40, Step 1, question 1, and p. 42, Step 5, question 3: "($64,430 if married filing jointly)" (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `eic.limit2.other` | NonNegDollars | $57,310 | [i1040gi] p. 40, Step 1, question 1, and p. 42, Step 5, question 3: "2 children ... less than $57,310" (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `eic.limit3.joint` | NonNegDollars | $68,675 | [i1040gi] p. 40, Step 1, question 1, and p. 42, Step 5, question 3: "($68,675 if married filing jointly)" (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `eic.limit3.other` | NonNegDollars | $61,555 | [i1040gi] p. 40, Step 1, question 1, and p. 42, Step 5, question 3: "3 or more children ... less than $61,555" (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `eic.maximum0` | NonNegDollars | $649 | [rp-2024-40] section 3.06(1), Maximum Amount of Credit, none (Rev. Proc. 2024-40; 2025 adjusted items; released 2024-10; sha256 4de9db6b) |
+| `eic.maximum1` | NonNegDollars | $4,328 | [rp-2024-40] section 3.06(1), Maximum Amount of Credit, one qualifying child (Rev. Proc. 2024-40; 2025 adjusted items; released 2024-10; sha256 4de9db6b) |
+| `eic.maximum2` | NonNegDollars | $7,152 | [rp-2024-40] section 3.06(1), Maximum Amount of Credit, two qualifying children (Rev. Proc. 2024-40; 2025 adjusted items; released 2024-10; sha256 4de9db6b) |
+| `eic.maximum3` | NonNegDollars | $8,046 | [rp-2024-40] section 3.06(1), Maximum Amount of Credit, three or more qualifying children (Rev. Proc. 2024-40; 2025 adjusted items; released 2024-10; sha256 4de9db6b) |
+| `eic.table_start` | NonNegDollars | $1 | [i1040gi] p. 49, 2025 Earned Income Credit (EIC) Table, first row "At least 1 But less than 50" (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `eic.ws_threshold0.joint` | NonNegDollars | $17,730 | [i1040gi] p. 46, Worksheet A, line 5, "($17,730 if married filing jointly)" (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `eic.ws_threshold0.other` | NonNegDollars | $10,620 | [i1040gi] p. 46, Worksheet A, line 5, "No qualifying children ... less than $10,620" (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `eic.ws_threshold1.joint` | NonNegDollars | $30,470 | [i1040gi] p. 46, Worksheet A, line 5, "($30,470 if married filing jointly)" (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `eic.ws_threshold1.other` | NonNegDollars | $23,350 | [i1040gi] p. 46, Worksheet A, line 5, "1 or more qualifying children ... less than $23,350" (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `ftc.limit` | NonNegDollars | single $300; mfj $600; mfs $300; hoh $300; qss $300 | [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular tax (2025; printed date 2025-12-23; sha256 6998cf8c) |
 | `medicare.additional_rate` | Rate | 9/1000 | [f8959] Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; sha256 13e64004) |
 | `medicare.regular_rate` | Rate | 145/10000 | [f8959] Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; sha256 13e64004) |

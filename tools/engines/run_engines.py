@@ -41,6 +41,7 @@ PE_MAP = {
     # limiting tax liability, which is Schedule 8812 line 14.
     "f1040.line19": ["min:ctc,ctc_limiting_tax_liability"],
     "f1040.line28": ["refundable_ctc"],
+    "f1040.line27a": ["eitc"],
     "sa.line17": ["itemized_taxable_income_deductions"],
     "sa.standard": ["standard_deduction"],
     "sa.deduction": ["taxable_income_deductions", "-qualified_business_income_deduction"],
@@ -52,8 +53,8 @@ PE_MAP = {
 }
 PE_PRECISION = "float32"
 PE_LIMITATIONS = [
-    {"feature": "other_dependents", "lines": ["f1040.line19", "f1040.line28"],
-     "reason": "PolicyEngine-US does not treat the generated 17-23-year-old full-time students as dependents of the unit (its dependency test needs inputs the project does not model) and pays no credit for other dependents for them"},
+    {"feature": "other_dependents", "lines": ["f1040.line19", "f1040.line28", "f1040.line27a"],
+     "reason": "PolicyEngine-US does not treat the generated 17-23-year-old full-time students as dependents of the unit (its dependency test needs inputs the project does not model) and pays no credit for other dependents for them; it does not count them as qualifying children for the earned income credit either (Tax-Calculator, given the count, agrees with the project on these returns)"},
     {"feature": "excess_social_security", "lines": ['s3.line11'],
      "reason": "PolicyEngine-US takes excess payroll tax withheld as an input and does not compute it from per-employer withholding"},
     {"feature": "investment_interest_limited", "lines": ['sa.line17', 'sa.deduction', 'f1040.line15', 'f1040.line16', 'f1040.tax_before_credits', 'f8960.tax', 'f1040.line19', 'f1040.line28'],
@@ -77,6 +78,7 @@ TC_MAP = {
     "f1040.line16": ["taxbc"],
     "f1040.line19": ["c07220", "odc"],
     "f1040.line28": ["c11070"],
+    "f1040.line27a": ["eitc"],
     "f1040.line20": ["c07300"],
     "sa.line17": ["c04470"],
     "sa.deduction": ["standard", "c04470"],
@@ -182,7 +184,7 @@ def run_taxcalc(cases):
         rows.append(dict(
             RECID=i + 1, MARS=4 if f.get("hoh") else 1, age_head=40, FLPDYR=YEAR,
             XTOT=1 + len(ages), n24=sum(1 for a in ages if a < 17), nu18=sum(1 for a in ages if a < 18),
-            n1820=sum(1 for a in ages if 18 <= a <= 20), n21=sum(1 for a in ages if a >= 21), EIC=0,
+            n1820=sum(1 for a in ages if 18 <= a <= 20), n21=sum(1 for a in ages if a >= 21), EIC=f.get("eic_children", 0),
             e00200=dollars(f["wages"]), e00200p=dollars(f["wages"]),
             e00300=dollars(f["interest"]), e00600=dollars(f["ordinary_dividends"]), e00650=dollars(f["qualified_dividends"]),
             # Distributions enter Schedule D line 13 and net against sales; Tax-Calculator's
@@ -198,9 +200,10 @@ def run_taxcalc(cases):
     def run(reform):
         recs = tc.Records(data=df.copy(), start_year=YEAR, gfactors=None, weights=None, adjust_ratios=None)
         pol = tc.Policy()
-        # Tax-Calculator zeroes the additional child tax credit by a random take-up draw that
-        # is not on the form; the documented scale of 9e99 means the credit is always claimed.
-        pol.implement_reform({"actc_claim_prob_scale": {YEAR: 9e99}, **(reform or {})})
+        # Tax-Calculator zeroes the additional child tax credit and the earned income credit by
+        # random take-up draws that are not on the form; the documented scale of 9e99 means the
+        # credit is always claimed.
+        pol.implement_reform({"actc_claim_prob_scale": {YEAR: 9e99}, "eitc_claim_prob_scale": {YEAR: 9e99}, **(reform or {})})
         calc = tc.Calculator(policy=pol, records=recs, verbose=False)
         calc.advance_to_year(YEAR); calc.calc_all()
         return calc
