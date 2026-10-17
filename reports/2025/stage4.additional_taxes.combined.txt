@@ -466,6 +466,11 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       = $0
       cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
 
+== Household facts for dependents and head of household ==
+  (gate) Head of household checked without meeting its tests
+      = false
+      cite: [i1040gi] p. 14, Head of Household (2025; printed date 2026-02-25; 482e9c48)
+
 == Section 199A dividend-only deduction and form selection ==
   (helper) Qualified section 199A dividends from Form 1099-DIV box 5 after confirming holding-period and related-payment requirements
       = $0
@@ -784,7 +789,7 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
   (helper) Any deduction claimed on Schedule 1-A, including tips, overtime, car-loan interest or enhanced senior deduction?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
-  (helper) Any dependent or other credit outside the simple foreign tax credit and excess Social Security credit?
+  (helper) Any credit outside the simple foreign tax credit, the excess Social Security credit, the child tax credit, the credit for other dependents and the additional child tax credit?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
   (helper) Any retirement, Social Security, nonresident or other income/return treatment outside wages, interest, dividends and supported securities sales, including wages or tips not on a Form W-2, Medicaid waiver payments, dependent care or adoption benefits, or other earned income (Form 1040 lines 1b–1h)?
@@ -1112,6 +1117,8 @@ Collection entries and derivations:
   f1040.line10: param(scope.schedule1 = false; #sales.zero = $0)
   f1040.line11a: subtract(f1040.line9 = $300,000; f1040.line10 = $0)
   f1040.line11b: copy(f1040.line11a = $300,000)
+  household.hoh_fails: test(f1040.status = single; "hoh" = hoh)
+  f1040.household.hoh_fails: test(f1040.status = single; "hoh" = hoh)
   sa.itemizes: test(sa.elect_itemize = true; true = true)
   sa.f1040.line11b: copy(f1040.line11a = $300,000)
   sa.agi: copy(f1040.line11b = $300,000)
@@ -1169,7 +1176,7 @@ Collection entries and derivations:
   sa.line17: sum(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.line4 = $0; sa.line7 = $5,000; sa.line10 = $1,000; sa.line14 = $0; sa.line15 = $0; sa.line16 = $0)
   sa.deduction: choose(sa.itemizes = true; true = true; sa.line17 = $6,000)
   f1040.sa.deduction: choose(sa.itemizes = true; true = true; sa.line17 = $6,000)
-  f1040.line12e: copy(sa.deduction = $6,000)
+  f1040.line12e: copy(household.hoh_fails = false; sa.deduction = $6,000)
   qbi.sa.agi: copy(f1040.line11b = $300,000)
   qbi.sa.deduction: choose(sa.itemizes = true; true = true; sa.line17 = $6,000)
   f1040.line13b: param(scope.schedule1a = false; #sales.zero = $0)

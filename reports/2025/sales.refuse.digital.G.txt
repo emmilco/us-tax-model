@@ -53,6 +53,11 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       cite: [i1040gi] Instructions for Form 1040, line 16 (2025; printed date 2026-02-25; 482e9c48)
       note: guard incomplete
 
+== Household facts for dependents and head of household ==
+  (gate) Head of household checked without meeting its tests
+      = false
+      cite: [i1040gi] p. 14, Head of Household (2025; printed date 2026-02-25; 482e9c48)
+
 == Schedule A — supported itemized deductions and standard comparison ==
   (helper) Any casualty/theft loss, other itemized deduction, foreign tax or generation-skipping tax deduction, mortgage interest or points not on Form 1098 or subject to debt/use limits, or sales-tax election?
       = false
@@ -252,6 +257,8 @@ Collection entries and derivations:
   f1040.line10: param(scope.schedule1 = false; #sales.zero = $0)
   f1040.line11a: subtract(f1040.line9 = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L); f1040.line10 = $0)
   f1040.line11b: copy(f1040.line11a = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
+  household.hoh_fails: test(f1040.status = single; "hoh" = hoh)
+  f1040.household.hoh_fails: test(f1040.status = single; "hoh" = hoh)
   sa.mfs: test(f1040.status = single; "mfs" = mfs)
   sa.mfs_spouse_itemizes: test(sa.mfs = false; true = true)
   sa.f1040.line11b: copy(f1040.line11a = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
@@ -269,7 +276,7 @@ Collection entries and derivations:
   sa.itemizes: test(sa.elect_itemize = false; true = true; sa.mfs_spouse_itemizes = false; true = true; sa.line17 = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L); sa.standard = $15,750)
   sa.deduction: choose(sa.itemizes = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L); true = true)
   f1040.sa.deduction: choose(sa.itemizes = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L); true = true)
-  f1040.line12e: copy(sa.deduction = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
+  f1040.line12e: copy(household.hoh_fails = false; sa.deduction = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
   f1040.line14: sum(f1040.line12e = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
   f1040.line15: subtract_floor0(f1040.line11b = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L); f1040.line14 = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
   f1040.gate.qdcg_applies: test(f1040.line15 = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L); 0 = $0)

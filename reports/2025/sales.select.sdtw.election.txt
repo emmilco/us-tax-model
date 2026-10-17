@@ -249,6 +249,11 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       = $0
       cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
 
+== Household facts for dependents and head of household ==
+  (gate) Head of household checked without meeting its tests
+      = false
+      cite: [i1040gi] p. 14, Head of Household (2025; printed date 2026-02-25; 482e9c48)
+
 == Section 199A dividend-only deduction and form selection ==
   (helper) Qualified section 199A dividends from Form 1099-DIV box 5 after confirming holding-period and related-payment requirements
       = $0
@@ -1025,6 +1030,8 @@ Collection entries and derivations:
   f1040.line10: param(scope.schedule1 = false; #sales.zero = $0)
   f1040.line11a: subtract(f1040.line9 = $65,750; f1040.line10 = $0)
   f1040.line11b: copy(f1040.line11a = $65,750)
+  household.hoh_fails: test(f1040.status = single; "hoh" = hoh)
+  f1040.household.hoh_fails: test(f1040.status = single; "hoh" = hoh)
   sa.mfs: test(f1040.status = single; "mfs" = mfs)
   sa.mfs_spouse_itemizes: test(sa.mfs = false; true = true)
   sa.f1040.line11b: copy(f1040.line11a = $65,750)
@@ -1088,7 +1095,7 @@ Collection entries and derivations:
   sa.itemizes: test(sa.elect_itemize = false; true = true; sa.mfs_spouse_itemizes = false; true = true; sa.line17 = $0; sa.standard = $15,750)
   sa.deduction: choose(sa.itemizes = false; true = true; sa.itemizes = false; false = false; sa.standard = $15,750)
   f1040.sa.deduction: choose(sa.itemizes = false; true = true; sa.itemizes = false; false = false; sa.standard = $15,750)
-  f1040.line12e: copy(sa.deduction = $15,750)
+  f1040.line12e: copy(household.hoh_fails = false; sa.deduction = $15,750)
   qbi.sa.agi: copy(f1040.line11b = $65,750)
   qbi.sa.deduction: choose(sa.itemizes = false; true = true; sa.itemizes = false; false = false; sa.standard = $15,750)
   f1040.line13b: param(scope.schedule1a = false; #sales.zero = $0)

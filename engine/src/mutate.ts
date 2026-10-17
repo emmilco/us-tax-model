@@ -111,8 +111,9 @@ function mutations(data: CanonicalData): Mutation[] {
           note: `${ref} -> ${candidate.id} (${candidate.type})`,
           apply: (d) => {
             const l = findLine(d, line.id)!;
-            const e = l.expr as Expr & { of?: string[]; from?: string; take?: string | object; amount?: string };
-            if (e.of) e.of = e.of.map((r) => (r === ref ? candidate.id : r));
+            const e = l.expr as Expr & { of?: string[] | string; from?: string; take?: string | object; amount?: string };
+            if (Array.isArray(e.of)) e.of = e.of.map((r) => (r === ref ? candidate.id : r));
+            else if (e.of === ref) e.of = candidate.id; // round takes one operand
             if (e.from === ref) e.from = candidate.id;
             if (e.take === ref) e.take = candidate.id;
             if (e.amount === ref) e.amount = candidate.id;

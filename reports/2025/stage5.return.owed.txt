@@ -647,6 +647,43 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       = $0
       cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
 
+== Household facts for dependents and head of household ==
+  (helper) Your age at the end of 2025
+      = 40
+      cite: [i1040gi] p. 17, Step 1, "Under age 19 at the end of 2025 and younger than you" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Do you have an SSN or ITIN issued on or before the due date of your return, or have you applied for an ITIN by then?
+      = true
+      cite: [i1040gi] p. 19, Step 5, question 1 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Do you have an SSN valid for employment issued before the due date of your return?
+      = true
+      cite: [i1040gi] p. 18, Step 3, question 4 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Did you pay over half the cost of keeping up your home for 2025?
+      = false
+      cite: [i1040gi] p. 14, Head of Household, Test 2 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Were you unmarried, or considered unmarried under the head of household rules, at the end of 2025?
+      = true
+      cite: [i1040gi] p. 14, Head of Household, "You are considered unmarried for this purpose if any of the following applies" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Number of parents who qualify you under Test 1
+      = 0
+      cite: [i1040gi] p. 14, Head of Household, Test 1 (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $dependent:
+  (helper) Number of persons who qualify you under Test 2
+      = 0
+      cite: [i1040gi] p. 14, Head of Household, Test 2 (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $dependent:
+  (helper) Test 1 met
+      = false
+      cite: [i1040gi] p. 14, Head of Household, Test 1 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Test 2 met, having paid over half the cost of keeping up your own home
+      = false
+      cite: [i1040gi] p. 14, Head of Household, Test 2, "You paid over half the cost of keeping up a home in which you lived and in which one of the following also lived for more than half of the year" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Unmarried or considered unmarried, and Test 1 or Test 2 applies
+      = false
+      cite: [i1040gi] p. 14, Head of Household, "Check the box only if you are unmarried (or considered unmarried) and either Test 1 or Test 2 applies" (2025; printed date 2026-02-25; 482e9c48)
+  (gate) Head of household checked without meeting its tests
+      = false
+      cite: [i1040gi] p. 14, Head of Household (2025; printed date 2026-02-25; 482e9c48)
+
 == Section 199A dividend-only deduction and form selection ==
   (helper) Qualified section 199A dividends from Form 1099-DIV box 5 after confirming holding-period and related-payment requirements
       = $0
@@ -826,6 +863,182 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
   15  Add lines 9 through 12 and 14. Enter here and on Form 1040, line 31
       = $0
       cite: [f1040s3] Schedule 3 (2025), line 15 (2025; created 2025-11-17; 008cfd3f)
+
+== Schedule 8812 — Credits for Qualifying Children and Other Dependents ==
+  1   Enter the amount from line 11a of your Form 1040, 1040-SR, or 1040-NR
+      = $123,200
+      cite: [f1040s8812] Schedule 8812 (2025), line 1 (2025; created 2025-07-30; 6936462d)
+  (helper) Year parameter sales.zero
+      = $0
+      cite: [f1040s8812] Schedule 8812 (2025), lines 2a–2c (2025; created 2025-07-30; 6936462d)
+  2a  Enter income from Puerto Rico that you excluded
+      = $0
+      cite: [f1040s8812] Schedule 8812 (2025), line 2a (2025; created 2025-07-30; 6936462d)
+  2b  Enter the amounts from lines 45 and 50 of your Form 2555
+      = $0
+      cite: [f1040s8812] Schedule 8812 (2025), line 2b (2025; created 2025-07-30; 6936462d)
+  2c  Enter the amount from line 15 of your Form 4563
+      = $0
+      cite: [f1040s8812] Schedule 8812 (2025), line 2c (2025; created 2025-07-30; 6936462d)
+  2d  Add lines 2a through 2c
+      = $0
+      cite: [f1040s8812] Schedule 8812 (2025), line 2d (2025; created 2025-07-30; 6936462d)
+  3   Add lines 1 and 2d
+      = $123,200
+      cite: [f1040s8812] Schedule 8812 (2025), line 3 (2025; created 2025-07-30; 6936462d)
+  4   Number of qualifying children under age 17 with the required social security number
+      = 0
+      cite: [f1040s8812] Schedule 8812 (2025), line 4 (2025; created 2025-07-30; 6936462d)
+      note: confirmed roster $dependent:
+  5   Multiply line 4 by $2,200
+      = $0
+      cite: [f1040s8812] Schedule 8812 (2025), line 5 (2025; created 2025-07-30; 6936462d)
+      note: confirmed roster $dependent:
+  6   Number of other dependents, including any qualifying children who are not under age 17 or who do not have the required social security number
+      = 0
+      cite: [f1040s8812] Schedule 8812 (2025), line 6 (2025; created 2025-07-30; 6936462d)
+      note: confirmed roster $dependent:
+  7   Multiply line 6 by $500
+      = $0
+      cite: [f1040s8812] Schedule 8812 (2025), line 7 (2025; created 2025-07-30; 6936462d)
+      note: confirmed roster $dependent:
+  8   Add lines 5 and 7
+      = $0
+      cite: [f1040s8812] Schedule 8812 (2025), line 8 (2025; created 2025-07-30; 6936462d)
+  9   Enter the amount shown below for your filing status. Married filing jointly—$400,000; all other filing statuses—$200,000
+      = $200,000
+      cite: [f1040s8812] Schedule 8812 (2025), line 9 (2025; created 2025-07-30; 6936462d)
+  (helper) Line 3 less line 9, before rounding up; zero or less is zero
+      = $0
+      cite: [f1040s8812] Schedule 8812 (2025), line 10, "Subtract line 9 from line 3. If zero or less, enter -0-" (2025; created 2025-07-30; 6936462d)
+  10  Subtract line 9 from line 3. If zero or less, enter -0-. If more than zero and not a multiple of $1,000, enter the next multiple of $1,000
+      = $0
+      cite: [f1040s8812] Schedule 8812 (2025), line 10 (2025; created 2025-07-30; 6936462d)
+      note: up to a multiple of 100000 cents
+  11  Multiply line 10 by 5% (0.05)
+      = $0
+      cite: [f1040s8812] Schedule 8812 (2025), line 11 (2025; created 2025-07-30; 6936462d)
+      note: half-up to the cent per the ambiguity register
+  12  Is the amount on line 8 more than the amount on line 11? No. Stop here; you cannot take the credits. Yes. Subtract line 11 from line 8
+      = $0
+      cite: [f1040s8812] Schedule 8812 (2025), line 12 (2025; created 2025-07-30; 6936462d)
+  (helper) Credit Limit Worksheet A, line 1. Enter the amount from line 18 of your Form 1040
+      = $18,500
+      cite: [i1040s8812] p. 4, Credit Limit Worksheet A, line 1 (2025; printed date 2026-01-23; bb9788cd)
+  (helper) Credit Limit Worksheet A, line 2. Schedule 3 lines 1, 2, 3, 4, 5b, 6d, 6f, 6l and 6m; in this slice Schedule 3 line 1 alone, the other credits being refused
+      = $0
+      cite: [i1040s8812] p. 4, Credit Limit Worksheet A, line 2 (2025; printed date 2026-01-23; bb9788cd)
+  (helper) Credit Limit Worksheet A, line 3. Subtract line 2 from line 1
+      = $18,500
+      cite: [i1040s8812] p. 4, Credit Limit Worksheet A, line 3 (2025; printed date 2026-01-23; bb9788cd)
+  (helper) Credit Limit Worksheet A, line 4. Credit Limit Worksheet B amount, zero when that worksheet is not completed
+      = $0
+      cite: [i1040s8812] p. 4, Credit Limit Worksheet A, line 4, "If you are not completing Credit Limit Worksheet B, enter -0-" (2025; printed date 2026-01-23; bb9788cd)
+  (helper) Credit Limit Worksheet A, line 5. Subtract line 4 from line 3. Enter here and on Schedule 8812, line 13
+      = $18,500
+      cite: [i1040s8812] p. 4, Credit Limit Worksheet A, line 5 (2025; printed date 2026-01-23; bb9788cd)
+  13  Enter the amount from Credit Limit Worksheet A
+      = $18,500
+      cite: [f1040s8812] Schedule 8812 (2025), line 13 (2025; created 2025-07-30; 6936462d)
+  14  Enter the smaller of line 12 or line 13. This is your child tax credit and credit for other dependents
+      = $0
+      cite: [f1040s8812] Schedule 8812 (2025), line 14 (2025; created 2025-07-30; 6936462d)
+  16a Subtract line 14 from line 12. If zero, stop here; you cannot take the additional child tax credit
+      = $0
+      cite: [f1040s8812] Schedule 8812 (2025), line 16a (2025; created 2025-07-30; 6936462d)
+  16b Number of qualifying children under age 17 with the required social security number x $1,700. If zero, stop here
+      = $0
+      cite: [f1040s8812] Schedule 8812 (2025), line 16b (2025; created 2025-07-30; 6936462d)
+      note: confirmed roster $dependent:
+  17  Enter the smaller of line 16a or line 16b
+      = $0
+      cite: [f1040s8812] Schedule 8812 (2025), line 17 (2025; created 2025-07-30; 6936462d)
+  (helper) Any nontaxable combat pay (Form W-2, box 12, code Q)?
+      = false
+      cite: [i1040s8812] p. 8, Earned Income Worksheet, line 1b (2025; printed date 2026-01-23; bb9788cd)
+  (helper) Bona fide resident of Puerto Rico?
+      = false
+      cite: [f1040s8812] Schedule 8812 (2025), after line 20, "If you are a bona fide resident of Puerto Rico, go to line 21" (2025; created 2025-07-30; 6936462d)
+  (helper) Earned Income Worksheet, line 1a. Enter the amount from line 1z of Form 1040
+      = $120,000
+      cite: [i1040s8812] p. 8, Earned Income Worksheet, line 1a (2025; printed date 2026-01-23; bb9788cd)
+  (helper) Earned Income Worksheet, line 1b. Nontaxable combat pay received; zero in this slice
+      = $0
+      cite: [i1040s8812] p. 8, Earned Income Worksheet, line 1b (2025; printed date 2026-01-23; bb9788cd)
+  (helper) Earned Income Worksheet, line 3. Combine lines 1a, 1b, 2a, 2b and 2e; lines 2a–2e are skipped without Schedule C, F, SE or a partnership K-1
+      = $120,000
+      cite: [i1040s8812] p. 8, Earned Income Worksheet, line 3, and "if you are filing Schedule C, F, or SE, or you received a Schedule K-1 (Form 1065), go to line 2a. Otherwise, skip lines 2a through 2e" (2025; printed date 2026-01-23; bb9788cd)
+  (helper) Earned Income Worksheet, line 4. Medicaid waiver payments excluded on Schedule 1, line 8s, not chosen as earned income; zero in this slice
+      = $0
+      cite: [i1040s8812] p. 8, Earned Income Worksheet, line 4 (2025; printed date 2026-01-23; bb9788cd)
+  (helper) Earned Income Worksheet, line 5. Enter the amount from Schedule 1, line 15; zero in this slice
+      = $0
+      cite: [i1040s8812] p. 8, Earned Income Worksheet, line 5 (2025; printed date 2026-01-23; bb9788cd)
+  (helper) Earned Income Worksheet, line 6. Add lines 4 and 5
+      = $0
+      cite: [i1040s8812] p. 8, Earned Income Worksheet, line 6 (2025; printed date 2026-01-23; bb9788cd)
+  (helper) Earned Income Worksheet, line 7. Subtract line 6 from line 3. Enter this amount on line 18a of Schedule 8812
+      = $120,000
+      cite: [i1040s8812] p. 8, Earned Income Worksheet, line 7 (2025; printed date 2026-01-23; bb9788cd)
+  18a Earned income (see instructions)
+      = $120,000
+      cite: [f1040s8812] Schedule 8812 (2025), line 18a (2025; created 2025-07-30; 6936462d)
+  18b Nontaxable combat pay (see instructions)
+      = $0
+      cite: [f1040s8812] Schedule 8812 (2025), line 18b (2025; created 2025-07-30; 6936462d)
+  19  Is the amount on line 18a more than $2,500? No. Leave line 19 blank and enter -0- on line 20. Yes. Subtract $2,500 from the amount on line 18a
+      = $117,500
+      cite: [f1040s8812] Schedule 8812 (2025), line 19 (2025; created 2025-07-30; 6936462d)
+  20  Multiply the amount on line 19 by 15% (0.15) and enter the result
+      = $17,625
+      cite: [f1040s8812] Schedule 8812 (2025), line 20 (2025; created 2025-07-30; 6936462d)
+      note: half-up to the cent per the ambiguity register; Interpretation amb.2025.multiplication_subcent: Round the product half-up to the nearest cent at the multiplication. Matches the half-up convention of the printed whole-dollar rounding rules. The whole-dollar default is unaffected: whole-dollar amounts multiplied by these rates produce exact cents, so the reading only matters when cents are turned on.
+ (i1040gi, QDCGT worksheet, lines 18 and 21; Rounding Off to Whole Dollars, p. 23)
+  (helper) Social security tax withheld, Form(s) W-2 box 4, all persons
+      = $7,440
+      cite: [i1040s8812] p. 9, Additional Medicare Tax and RRTA Tax Worksheet, line 1 (2025; printed date 2026-01-23; bb9788cd)
+      note: confirmed roster $person: taxpayer
+  (helper) Additional Medicare Tax and RRTA Tax Worksheet, line 4. Add social security tax withheld, Medicare tax withheld (Form 8959, line 19) and Form 8959, line 7
+      = $9,180
+      cite: [i1040s8812] p. 9, Additional Medicare Tax and RRTA Tax Worksheet, lines 1–4 (2025; printed date 2026-01-23; bb9788cd)
+  21  Withheld social security, Medicare, and Additional Medicare taxes from Form(s) W-2, boxes 4 and 6; with Additional Medicare Tax, the worksheet amount (line 4 less the Additional Medicare Tax withheld, Form 8959 line 22)
+      = $9,180
+      cite: [i1040s8812] p. 9, Additional Medicare Tax and RRTA Tax Worksheet, lines 5 and 6, "Subtract line 5 from line 4" (2025; printed date 2026-01-23; bb9788cd)
+  22  Enter the total of the amounts from Schedule 1, line 15; Schedule 2, line 5; Schedule 2, line 6; and Schedule 2, line 13; zero in this slice
+      = $0
+      cite: [f1040s8812] Schedule 8812 (2025), line 22 (2025; created 2025-07-30; 6936462d)
+  23  Add lines 21 and 22
+      = $9,180
+      cite: [f1040s8812] Schedule 8812 (2025), line 23 (2025; created 2025-07-30; 6936462d)
+  24  1040 and 1040-SR filers. Enter the total of the amounts from Form 1040, line 27a, and Schedule 3, line 11
+      = $0
+      cite: [f1040s8812] Schedule 8812 (2025), line 24 (2025; created 2025-07-30; 6936462d)
+  25  Subtract line 24 from line 23. If zero or less, enter -0-
+      = $9,180
+      cite: [f1040s8812] Schedule 8812 (2025), line 25 (2025; created 2025-07-30; 6936462d)
+  26  Enter the larger of line 20 or line 25
+      = $17,625
+      cite: [f1040s8812] Schedule 8812 (2025), line 26 (2025; created 2025-07-30; 6936462d)
+  (helper) On line 16b, is the amount less than $5,100 (fewer than three qualifying children)?
+      = true
+      cite: [f1040s8812] Schedule 8812 (2025), after line 20, "On line 16b, is the amount $5,100 or more?" (2025; created 2025-07-30; 6936462d)
+  (helper) Line 20 is equal to or more than line 17
+      = true
+      cite: [f1040s8812] Schedule 8812 (2025), after line 20, "If line 20 is equal to or more than line 17, skip Part II-B" (2025; created 2025-07-30; 6936462d)
+  (helper) Smaller of line 17 or line 20
+      = $0
+      cite: [f1040s8812] Schedule 8812 (2025), after line 20, "enter the smaller of line 17 or line 20 on line 27" (2025; created 2025-07-30; 6936462d)
+  (helper) Smaller of line 17 or line 26
+      = $0
+      cite: [f1040s8812] Schedule 8812 (2025), after line 26, "enter the smaller of line 17 or line 26 on line 27" (2025; created 2025-07-30; 6936462d)
+  (helper) With three or more qualifying children, line 17 when line 20 covers it, otherwise the smaller of line 17 or line 26
+      = $0
+      cite: [f1040s8812] Schedule 8812 (2025), after line 20, "Yes. If line 20 is equal to or more than line 17, skip Part II-B and enter the amount from line 17 on line 27. Otherwise, go to line 21" (2025; created 2025-07-30; 6936462d)
+      note: taken: {"eq":["s8812.earned_covers",{"const":true}],"op":"test"}
+  27  This is your additional child tax credit. Enter this amount on Form 1040, line 28
+      = $0
+      cite: [f1040s8812] Schedule 8812 (2025), lines 20 (Next) through 27 (2025; created 2025-07-30; 6936462d)
+      note: taken: {"eq":["s8812.few_children",{"const":true}],"op":"test"}
 
 == Schedule A — supported itemized deductions and standard comparison ==
   (helper) Any casualty/theft loss, other itemized deduction, foreign tax or generation-skipping tax deduction, mortgage interest or points not on Form 1098 or subject to debt/use limits, or sales-tax election?
@@ -1052,7 +1265,7 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
   (helper) Any deduction claimed on Schedule 1-A, including tips, overtime, car-loan interest or enhanced senior deduction?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
-  (helper) Any dependent or other credit outside the simple foreign tax credit and excess Social Security credit?
+  (helper) Any credit outside the simple foreign tax credit, the excess Social Security credit, the child tax credit, the credit for other dependents and the additional child tax credit?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
   (helper) Any retirement, Social Security, nonresident or other income/return treatment outside wages, interest, dividends and supported securities sales, including wages or tips not on a Form W-2, Medicaid waiver payments, dependent care or adoption benefits, or other earned income (Form 1040 lines 1b–1h)?
@@ -1651,10 +1864,13 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   f8960.line9b: chose $0 (guard 1)
       not taken: guard 0 = false
+  s8812.line27: chose $0 (guard 0)
+  f1040.s8812.line27: chose $0 (guard 0)
   person[taxpayer].credit: chose $0 (guard 1)
       not taken: guard 0 = false
   ftc.f1040.line16: chose $18,500 (guard 1)
       not taken: guard 0 = false
+  s8812.part_iib_result: chose $0 (guard 0)
   sd.line21: chose $0 (guard 1)
       not taken: guard 0 = false
   sdtw.line24: chose $0 (guard 0)
@@ -1762,6 +1978,8 @@ Collection entries and derivations:
     cite: f8959, Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; 13e64004)
   person[taxpayer].medicare6 = $1,740
     cite: f8959, Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; 13e64004)
+  person[taxpayer].withheld = $7,440
+    cite: i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
   div.box1a: copy(sb.ordinary_dividends = $2,000)
   div.box1b: copy(f1040.line3a = $1,500)
   div.box2a: copy(sd.distributions = $0)
@@ -1816,6 +2034,8 @@ Collection entries and derivations:
   f1040.line10: param(scope.schedule1 = false; #sales.zero = $0)
   f1040.line11a: subtract(f1040.line9 = $123,200; f1040.line10 = $0)
   f1040.line11b: copy(f1040.line11a = $123,200)
+  household.hoh_fails: test(f1040.status = single; "hoh" = hoh)
+  f1040.household.hoh_fails: test(f1040.status = single; "hoh" = hoh)
   sa.mfs: test(f1040.status = single; "mfs" = mfs)
   sa.mfs_spouse_itemizes: test(sa.mfs = false; true = true)
   sa.f1040.line11b: copy(f1040.line11a = $123,200)
@@ -1879,7 +2099,7 @@ Collection entries and derivations:
   sa.itemizes: test(sa.elect_itemize = false; true = true; sa.mfs_spouse_itemizes = false; true = true; sa.line17 = $0; sa.standard = $15,750)
   sa.deduction: choose(sa.itemizes = false; true = true; sa.itemizes = false; false = false; sa.standard = $15,750)
   f1040.sa.deduction: choose(sa.itemizes = false; true = true; sa.itemizes = false; false = false; sa.standard = $15,750)
-  f1040.line12e: copy(sa.deduction = $15,750)
+  f1040.line12e: copy(household.hoh_fails = false; sa.deduction = $15,750)
   qbi.sa.agi: copy(f1040.line11b = $123,200)
   qbi.sa.deduction: choose(sa.itemizes = false; true = true; sa.itemizes = false; false = false; sa.standard = $15,750)
   f1040.line13b: param(scope.schedule1a = false; #sales.zero = $0)
@@ -2012,13 +2232,37 @@ Collection entries and derivations:
   f1040.s2.line3: copy(s2.amt = false; s2.other = false; s2.zero = $0)
   f1040.line17: copy(s2.line3 = $0)
   f1040.line18: sum(f1040.line16 = $18,500; f1040.line17 = $0)
-  f1040.line19: param(scope.credits = false; #sales.zero = $0)
+  s8812.line8: sum(s8812.line5 = $0; s8812.line7 = $0)
+  s8812.f1040.line11a: subtract(f1040.line9 = $123,200; f1040.line10 = $0)
+  s8812.line1: copy(f1040.line11a = $123,200)
+  s8812.zero: param(#sales.zero = $0)
+  s8812.line2a: copy(sa.excluded_income = false; s8812.zero = $0)
+  s8812.line2b: copy(sa.excluded_income = false; s8812.zero = $0)
+  s8812.line2c: copy(sa.excluded_income = false; s8812.zero = $0)
+  s8812.line2d: sum(s8812.line2a = $0; s8812.line2b = $0; s8812.line2c = $0)
+  s8812.line3: sum(s8812.line1 = $123,200; s8812.line2d = $0)
+  s8812.line9: param(#ctc.threshold = $200,000)
+  s8812.excess: subtract_floor0(s8812.line3 = $123,200; s8812.line9 = $200,000)
+  s8812.line10: round(s8812.excess = $0)
+  s8812.line11: multiply_rate(s8812.line10 = $0; #ctc.phaseout_rate = 5/100)
+  s8812.line12: subtract_floor0(s8812.line8 = $0; s8812.line11 = $0)
+  s8812.f1040.line18: sum(f1040.line16 = $18,500; f1040.line17 = $0)
+  s8812.clw_a1: copy(f1040.line18 = $18,500)
   ftc.has_tax: test(ftc.taxes = $0; 0 = $0)
   ftc.needs1116: test(ftc.has_tax = false; true = true)
   ftc.zero: param(#sales.zero = $0)
   ftc.credit: choose(ftc.needs1116 = false; ftc.has_tax = false; true = true; ftc.has_tax = false; false = false; ftc.zero = $0)
   s3.ftc.credit: choose(ftc.needs1116 = false; ftc.has_tax = false; true = true; ftc.has_tax = false; false = false; ftc.zero = $0)
   s3.line1: copy(ftc.credit = $0)
+  s8812.s3.line1: copy(ftc.credit = $0)
+  s8812.clw_a2: copy(scope.credits = false; s3.line1 = $0)
+  s8812.clw_a3: subtract(s8812.clw_a1 = $18,500; s8812.clw_a2 = $0)
+  s8812.clw_a4: copy(scope.credits = false; s8812.zero = $0)
+  s8812.clw_a5: subtract(s8812.clw_a3 = $18,500; s8812.clw_a4 = $0)
+  s8812.line13: copy(s8812.clw_a5 = $18,500)
+  s8812.line14: smaller_of(s8812.line12 = $0; s8812.line13 = $18,500)
+  f1040.s8812.line14: smaller_of(s8812.line12 = $0; s8812.line13 = $18,500)
+  f1040.line19: copy(s8812.line14 = $0)
   s3.zero: param(#sales.zero = $0)
   s3.line8: sum(scope.credits = false; s3.line1 = $0; s3.zero = $0)
   f1040.s3.line8: sum(scope.credits = false; s3.line1 = $0; s3.zero = $0)
@@ -2089,7 +2333,24 @@ Collection entries and derivations:
   f1040.line25a: sum_over(person[taxpayer].box2 = $17,000)
   f1040.line25d: sum(f1040.line25a = $17,000; f1040.line25b = $0; f1040.line25c = $0)
   f1040.line27a: param(scope.credits = false; #sales.zero = $0)
-  f1040.line28: param(scope.credits = false; #sales.zero = $0)
+  s8812.few_children: test(s8812.line16b = $0; #actc.three_children = $5,100)
+  s8812.line16a: subtract_floor0(s8812.line12 = $0; s8812.line14 = $0)
+  s8812.line17: smaller_of(s8812.line16a = $0; s8812.line16b = $0)
+  s8812.f1040.line1z: copy(f1040.line1a = $120,000)
+  s8812.eiw_1a: copy(f1040.line1z = $120,000)
+  s8812.eiw_1b: copy(s8812.combat_pay = false; s8812.zero = $0)
+  s8812.eiw_3: sum(scope.schedule1 = false; s8812.eiw_1a = $120,000; s8812.eiw_1b = $0)
+  s8812.eiw_4: copy(scope.schedule1 = false; s8812.zero = $0)
+  s8812.eiw_5: copy(scope.schedule1 = false; s8812.zero = $0)
+  s8812.eiw_6: sum(s8812.eiw_4 = $0; s8812.eiw_5 = $0)
+  s8812.eiw_7: subtract(s8812.eiw_3 = $120,000; s8812.eiw_6 = $0)
+  s8812.line18a: copy(s8812.eiw_7 = $120,000)
+  s8812.line19: subtract_floor0(s8812.line18a = $120,000; #actc.earned_floor = $2,500)
+  s8812.line20: multiply_rate(s8812.line19 = $117,500; #actc.rate = 15/100)
+  s8812.from_part_iia: smaller_of(s8812.line17 = $0; s8812.line20 = $17,625)
+  s8812.line27: choose(s8812.puerto_rico = false; s8812.few_children = true; true = true; s8812.from_part_iia = $0)
+  f1040.s8812.line27: choose(s8812.puerto_rico = false; s8812.few_children = true; true = true; s8812.from_part_iia = $0)
+  f1040.line28: copy(s8812.line27 = $0)
   f1040.line29: param(scope.credits = false; #sales.zero = $0)
   f1040.line30: param(scope.credits = false; #sales.zero = $0)
   s3.married: test(f1040.status = single; "mfj" = mfj; f1040.status = single; "mfs" = mfs)
@@ -2150,9 +2411,30 @@ Collection entries and derivations:
   ftc.limit: param(#ftc.limit = $300)
   ftc.f1040.line16: choose(scope.other_line16 = false; f1040.gate.sdtw = false; true = true; f1040.gate.sdtw = false; false = false; f1040.non_sdtw_tax = $18,500)
   ftc.limited: smaller_of(ftc.taxes = $0; f1040.line16 = $18,500)
+  household.test1_met: test(household.test1_persons = 0; 0 = 0)
+  household.test2_met: test(household.home_cost = false; true = true)
+  household.hoh_eligible: test(household.unmarried = true; true = true; household.test1_met = false; true = true; household.test2_met = false; true = true)
   qdcg.sd.net_gain: subtract_floor0(sd.net_gain_raw = $0; 0 = $0)
   qdcg.schedule_d_net_gain: copy(sd.net_gain = $0)
   s2.line2: copy(s2.amt = false; s2.other = false; s2.zero = $0)
+  s8812.line18b: copy(s8812.eiw_1b = $0)
+  person[taxpayer].withheld: sum_over(person[taxpayer].w2[emp_a].box4 = $4,960; person[taxpayer].w2[emp_b].box4 = $2,480)
+  s8812.ss_withheld: sum_over(person[taxpayer].withheld = $7,440)
+  s8812.f8959.line19: sum_over(f8959.unsupported = false; person[taxpayer].medicare6 = $1,740)
+  s8812.f8959.line7: multiply_rate(f8959.line6 = $0; #medicare.additional_rate = 9/1000)
+  s8812.amt_ws4: sum(s8812.ss_withheld = $7,440; f8959.line19 = $1,740; f8959.line7 = $0)
+  s8812.f8959.line22: subtract_floor0(f8959.line19 = $1,740; f8959.line21 = $1,740)
+  s8812.line21: subtract(s8812.amt_ws4 = $9,180; f8959.line22 = $0)
+  s8812.line22: copy(scope.schedule1 = false; s2.other = false; s8812.zero = $0)
+  s8812.line23: sum(s8812.line21 = $9,180; s8812.line22 = $0)
+  s8812.f1040.line27a: param(scope.credits = false; #sales.zero = $0)
+  s8812.s3.line11: sum_over(s3.married = false; person[taxpayer].credit = $0)
+  s8812.line24: sum(f1040.line27a = $0; s3.line11 = $0)
+  s8812.line25: subtract_floor0(s8812.line23 = $9,180; s8812.line24 = $0)
+  s8812.line26: larger_of(s8812.line20 = $17,625; s8812.line25 = $9,180)
+  s8812.earned_covers: test(s8812.line20 = $17,625; s8812.line17 = $0)
+  s8812.from_part_iib: smaller_of(s8812.line17 = $0; s8812.line26 = $17,625)
+  s8812.part_iib_result: choose(s8812.earned_covers = true; true = true; s8812.line17 = $0)
   sa.salthalf: multiply_rate(sa.saltfloor_applied = $40,000; #sa.half = 1/2)
   sa.form8283: test(sa.line12 = $0; 50000 = $500)
   sa.extra: param(#sa.standard_extra = $2,000)
