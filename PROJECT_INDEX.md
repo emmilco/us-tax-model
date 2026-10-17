@@ -26,6 +26,8 @@ trust statement in spec 3.
 | `sources/2025/` | Archived IRS sources (PDFs and instruction web-page snapshots), extracted text, hash/revision manifest, and Stage 0 premise findings; sources require revision review before encoding |
 | `BUG_INVENTORY.md` | Append-only record of every defect caught, with cause, catch method and pattern tags (spec 6.6); `tools/check_bug_inventory.py` enforces append-only in `check-all` |
 | `tools/` | Source fetcher (`fetch_sources.py`), source catalog, Tax Table extractor (`extract_tax_table.py`), bug-inventory check (`check_bug_inventory.py`); fixture generator and year diff land here or in `engine/` as they grow |
+| `tools/transcription/` | Transcription agreement (spec 6.5): `transcribe.py` has an isolated model re-transcribe one form from its cited archived pages and compares the two structurally; `check_logs.py` verifies the logs offline in `check-all` |
+| `reviews/2025/transcription/` | One log per form: pages given, model, prompt hash, every printed line's agreement or disagreement with both expansions, and the ruling on each disagreement, written by a person against the source page |
 | `tools/engines/` | Engine differential (spec 6.5, class C at scale): case generator, adapters for PolicyEngine-US and Tax-Calculator, comparison and report; engines install into the git-ignored `.engines/` via `setup.sh` |
 | `schema/` | JSON Schema for all canonical data (`data.schema.json`) |
 | `forms/2025/` | Form and worksheet definitions as YAML: `f1040.yaml` (the implemented slice, lines 1a–37), `qdcg.yaml`, `tcw.yaml`, `tax_on_amount.yaml`; Stage 2 adds `w2.yaml`, `person.yaml`, `s3.yaml`; Stage 3 adds `sales.yaml` and `sd.yaml`; Stage 4 adds the remaining forms |
