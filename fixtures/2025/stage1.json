@@ -4420,7 +4420,7 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 5575000
+        "person[taxpayer].w2[migrated].box1": 6075000
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4879,7 +4879,7 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 5275000
+        "person[taxpayer].w2[migrated].box1": 5775000
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -5103,7 +5103,7 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 0
+        "person[taxpayer].w2[migrated].box1": 2000000
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -5327,7 +5327,7 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 875000
+        "person[taxpayer].w2[migrated].box1": 1475000
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -5552,7 +5552,7 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 0
+        "person[taxpayer].w2[migrated].box1": 70000000
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -5776,7 +5776,7 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 1575000
+        "person[taxpayer].w2[migrated].box1": 2575000
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -6000,7 +6000,7 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 3150000
+        "person[taxpayer].w2[migrated].box1": 13150000
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -6225,7 +6225,7 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 4575000
+        "person[taxpayer].w2[migrated].box1": 5575000
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -6449,7 +6449,7 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 5362500
+        "person[taxpayer].w2[migrated].box1": 6362500
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -6673,7 +6673,7 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 6150000
+        "person[taxpayer].w2[migrated].box1": 7150000
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -6897,7 +6897,7 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 1575000
+        "person[taxpayer].w2[migrated].box1": 16575000
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -9300,7 +9300,7 @@
         "qdcg.line25 right"
       ],
       "evidence": "synthetic-regression",
-      "evidence_note": "Agent-derived regression, pending human review: i1040gi Tax Table $50,000\u2013$50,050 Single cell is $5,920; QDCG ordinary portion $50,009 and total $50,010 are in that same band, while $1 at 15% adds $0.15 to line 23. Line 24 must win. Not class B.",
+      "evidence_note": "Agent-derived regression, pending human review: i1040gi Tax Table $50,000–$50,050 Single cell is $5,920; QDCG ordinary portion $50,009 and total $50,010 are in that same band, while $1 at 15% adds $0.15 to line 23. Line 24 must win. Not class B.",
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 100,

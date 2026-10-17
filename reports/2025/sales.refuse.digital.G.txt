@@ -17,9 +17,6 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
   3b  Ordinary dividends
       = $0
       cite: [i1040gi] Instructions for Form 1040, p. 26, line 3b (2025; printed date 2026-02-25; 482e9c48)
-  3a  Qualified dividends
-      = $0
-      cite: [i1040gi] Instructions for Form 1040, pp. 25–26, line 3a and exceptions (2025; printed date 2026-02-25; 482e9c48)
   7a  Capital gain or (loss). Attach Schedule D if required
       = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
       cite: [i1040gi] Instructions for Form 1040, line 7a (2025; printed date 2026-02-25; 482e9c48)
@@ -248,7 +245,7 @@ Collection entries and derivations:
   sb.line6: copy(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; sb.ordinary_dividends = $0)
   f1040.sb.line6: copy(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; sb.ordinary_dividends = $0)
   f1040.line3b: copy(sb.line6 = $0)
-  f1040.line9: sum(f1040.line1z = $0; f1040.line2b = $0; f1040.line3a = $0; f1040.line3b = $0; f1040.line7a = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
+  f1040.line9: sum(f1040.line1z = $0; f1040.line2b = $0; f1040.line3b = $0; f1040.line7a = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
   f1040.line10: param(scope.schedule1 = false; #sales.zero = $0)
   f1040.line11a: subtract(f1040.line9 = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L); f1040.line10 = $0)
   f1040.line11b: copy(f1040.line11a = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))

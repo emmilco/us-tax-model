@@ -18,7 +18,7 @@ records here are their outputs, compared offline against the computed values.
   "calculator": "FreeTaxUSA",
   "version": "2025 tax year, accessed 2026-10-16",
   "case": "stage5.return.owed",
-  "values": { "f1040.line15": 10895000 },
+  "values": { "f1040.line15": 10745000 },
   "investigations": {}
 }
 ```

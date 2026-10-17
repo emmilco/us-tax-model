@@ -1785,7 +1785,7 @@ Collection entries and derivations:
   f1040.sd.to1040: choose(sd.has_loss = false; true = true; sd.has_loss = false; false = false; sd.line16 = $0)
   f1040.line7a: copy(sd.to1040 = $0)
   f1040.line8: param(scope.schedule1 = false; scope.other_income = false; #sales.zero = $0)
-  f1040.line9: sum(f1040.line1z = $130,000; f1040.line2b = $0; f1040.line3a = $0; f1040.line3b = $0; f1040.line7a = $0; f1040.line8 = $0)
+  f1040.line9: sum(f1040.line1z = $130,000; f1040.line2b = $0; f1040.line3b = $0; f1040.line7a = $0; f1040.line8 = $0)
   f1040.line10: param(scope.schedule1 = false; #sales.zero = $0)
   f1040.line11a: subtract(f1040.line9 = $130,000; f1040.line10 = $0)
   f1040.line11b: copy(f1040.line11a = $130,000)

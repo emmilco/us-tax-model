@@ -258,6 +258,10 @@ Every language-model invocation in this section runs under the AI Security and I
 
 The shared blind spot of every model-driven check is that it reads the same English. The engine differential is the only check against a shared misreading, which is why it is required for every tax year supported.
 
+### 6.6 Bug inventory
+
+Every defect caught, by any check or reading, is recorded in `BUG_INVENTORY.md` at the repository root before or with its fix. The file is append-only: entries are never edited or removed, and a correction is a new entry citing the old one. Each entry records how the defect was caught, its symptom, its root cause, where it lived, why the existing checks did not catch it, the fix and its commit, and pattern tags. `check-all` fails if the committed prefix of the file changes or the ids are not sequential. The purpose is to make defect patterns visible, so that a recurring pattern becomes a new check rather than a recurring fix.
+
 ## 7. Versioning
 
 - One definition file per form per revision; one parameter file per tax year.

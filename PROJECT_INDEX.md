@@ -2,12 +2,14 @@
 
 An open, verifiable formalization of the IRS forms-and-instructions layer for US federal individual income tax, plus a guided self-preparation interview tool as its first client. The user files their own return; the software never files, signs, or transmits.
 
-Stages 0–5 are implemented; the owner approved proceeding after Stage 4.
-Stage 5 computes the whole single-person return: Form 1040 lines 1a–37 end to
-end, the full interview profile, whole-return fixtures, per-line evidence
-coverage and the differential scaffolding. See `reports/2025/stage5-review.md`.
-AGI and taxable income are computed. Independent human source review, hand-work
-and the calculator differential remain pending. Tax year 2026 is Stage 6.
+Stages 0–5 are implemented. Stage 5 computes the whole single-person return:
+Form 1040 lines 1a–37 end to end, the full interview profile, whole-return
+fixtures, per-line evidence coverage and the differential scaffolding. See
+`reports/2025/stage5-review.md`. The product goal, coverage plan and
+verification regime are in `spec/spec.md` sections 1, 2.4 and 6.5; the stages
+that follow (integrity stack, household architecture test, coverage) are in
+`spec/design.md` section 5. No human line-by-line reading is claimed; see the
+trust statement in spec 3.
 
 ## Folder structure
 
@@ -22,7 +24,8 @@ and the calculator differential remain pending. Tax year 2026 is Stage 6.
 | `spec/` | `spec.md` (scope, non-goals, data model, provenance, tests, versioning, explanation model) and `design.md` (architecture, components, build order). The agreed contract for the build |
 | `research/` | Research pass outputs. `report.md` is the cross-workstream synthesis with the committed recommendation; one detailed findings file per workstream sits beside it |
 | `sources/2025/` | Archived IRS sources (PDFs and instruction web-page snapshots), extracted text, hash/revision manifest, and Stage 0 premise findings; sources require revision review before encoding |
-| `tools/` | Source fetcher (`fetch_sources.py`), source catalog, Tax Table extractor (`extract_tax_table.py`); fixture generator, mutation tool and year diff land here or in `engine/` as they grow |
+| `BUG_INVENTORY.md` | Append-only record of every defect caught, with cause, catch method and pattern tags (spec 6.6); `tools/check_bug_inventory.py` enforces append-only in `check-all` |
+| `tools/` | Source fetcher (`fetch_sources.py`), source catalog, Tax Table extractor (`extract_tax_table.py`), bug-inventory check (`check_bug_inventory.py`); fixture generator and year diff land here or in `engine/` as they grow |
 | `schema/` | JSON Schema for all canonical data (`data.schema.json`) |
 | `forms/2025/` | Form and worksheet definitions as YAML: `f1040.yaml` (the implemented slice, lines 1a–37), `qdcg.yaml`, `tcw.yaml`, `tax_on_amount.yaml`; Stage 2 adds `w2.yaml`, `person.yaml`, `s3.yaml`; Stage 3 adds `sales.yaml` and `sd.yaml`; Stage 4 adds the remaining forms |
 | `params/2025.yaml` | Year parameters (bracket ceilings, Tax Computation Worksheet rows, table boundary), each with a citation |

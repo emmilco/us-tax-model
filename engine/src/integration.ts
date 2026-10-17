@@ -127,7 +127,7 @@ export function integrationChecks(): void {
         state=cli(["interview","answer","--log",path,"--input",key,"--value",JSON.stringify(fixture.inputs[key])]);
       }
       assert.equal(state.status,"complete");
-      if(id==="stage5.return.owed")assert.equal(state.values["f1040.line37"].value.cents,186000);
+      if(id==="stage5.return.owed")assert.equal(state.values["f1040.line37"].value.cents,150000);
       if(id==="stage5.return.refund")assert.equal(state.values["f1040.line34"].value.cents,173300);
     }
     console.log(`integration: ${checks} CLI invocations passed (interview, corrections, early refusals, invalid inputs, graph/type failures)`);

@@ -628,7 +628,7 @@ Collection entries and derivations:
   sb.line6: copy(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; sb.ordinary_dividends = $0)
   f1040.sb.line6: copy(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; sb.ordinary_dividends = $0)
   f1040.line3b: copy(sb.line6 = $0)
-  f1040.line9: sum(f1040.line1z = $0; f1040.line2b = $0; f1040.line3a = $0; f1040.line3b = $0; f1040.line7a = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
+  f1040.line9: sum(f1040.line1z = $0; f1040.line2b = $0; f1040.line3b = $0; f1040.line7a = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
   f1040.line10: param(scope.schedule1 = false; #sales.zero = $0)
   f1040.line11a: subtract(f1040.line9 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); f1040.line10 = $0)
   f1040.line11b: copy(f1040.line11a = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))

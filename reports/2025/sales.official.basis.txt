@@ -702,7 +702,7 @@ Collection entries and derivations:
   f1040.sb.line6: copy(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; sb.ordinary_dividends = $0)
   f1040.line3b: copy(sb.line6 = $0)
   f1040.line8: param(scope.schedule1 = false; scope.other_income = false; #sales.zero = $0)
-  f1040.line9: sum(f1040.line1z = $0; f1040.line2b = $0; f1040.line3a = $0; f1040.line3b = $0; f1040.line7a = $900; f1040.line8 = $0)
+  f1040.line9: sum(f1040.line1z = $0; f1040.line2b = $0; f1040.line3b = $0; f1040.line7a = $900; f1040.line8 = $0)
   f1040.line10: param(scope.schedule1 = false; #sales.zero = $0)
   f1040.line11a: subtract(f1040.line9 = $900; f1040.line10 = $0)
   f1040.line11b: copy(f1040.line11a = $900)
