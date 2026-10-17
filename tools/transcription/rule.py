@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Write rulings into a transcription, render-comparison or class M log.
+"""Write rulings into a transcription, render-comparison or class M log and its rulings sidecar.
 
 Usage: rule.py --form f1040 --rulings rulings.json [--kind transcription|render|classm]
 where rulings.json is {"<printed>": "Ruling: ...", ...}; a key "*" applies to every
@@ -8,7 +8,10 @@ section is keyed "<case> — <printed>" and a ruling given as {"ruling": "...",
 "drop": true} also removes that line from the fixture (a model arithmetic error is not
 evidence); the ruling text is suffixed "[dropped]".
 """
-import argparse, json, os, re
+import argparse, json, os, re, sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import rulings as sidecar  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 REVIEWS = os.path.join(ROOT, "reviews", "2025")
@@ -21,6 +24,7 @@ def apply(form, rulings, kind="transcription"):
     body, sep2, tail = rest.partition("\n## Raw ")
     parts = body.split("\n### ")
     applied = []
+    stored = sidecar.load(kind, form)
     for i in range(1, len(parts)):
         title, _, content = parts[i].partition("\n")
         printed = title.split(" — ")[0]
@@ -37,6 +41,10 @@ def apply(form, rulings, kind="transcription"):
             ruling = ruling["ruling"] if isinstance(ruling, dict) else ruling
             if not ruling.startswith("Ruling:"):
                 ruling = "Ruling: " + ruling
+            found = sidecar.section_key(kind, title, content)
+            if found is None:
+                raise SystemExit(f"{form}: cannot key the disagreement at {printed} for the sidecar")
+            stored[found[0]] = {"ruling": ruling.rstrip(), "drop": bool(drop)}
             if drop:
                 ruling = ruling.rstrip() + " [dropped]"
                 drop_from_fixture(form, printed.split(" \u2014 ")[0], rest.split(" \u2014 ")[0])
@@ -45,6 +53,8 @@ def apply(form, rulings, kind="transcription"):
         parts[i] = title + "\n" + content
     body = "\n### ".join(parts)
     open(path, "w", encoding="utf-8").write(head + sep + body + sep2 + tail)
+    if applied:
+        sidecar.save(kind, form, stored)
     return applied
 
 

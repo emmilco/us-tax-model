@@ -1,0 +1,18 @@
+{
+ "kind": "render",
+ "form": "household",
+ "rulings": [
+  {
+   "printed": "test1_persons",
+   "restated": "Add dependent.one over every confirmed dependent entry for which helper \"Qualifies you for head of household under Test 1 (a parent whose main home you kept up)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Counting over dependent entries fits Test 1, which requires \"your parent whom you can claim as a dependent\". But the per-entry helper it counts isn't defined in the glossary. So I can't confirm it requires \"main home for all of 2025\", that you paid over half the cost of that home, and the exclusion \"except under a multiple support agreement\".",
+   "ruling": "Ruling: representation; project retained. The per-dependent `dependent.hoh_test1` requires the parent to be claimed as a dependent and the filer to have paid over half the cost of the parent's main home for all of 2025 (`dependent.parent_home_paid`, whose question says so); a multiple support agreement is refused (`dependent.qualifying_relative` refuses on `dependent.multiple_support`). The dependent worksheet has its own logs. No change to the data."
+  },
+  {
+   "printed": "test2_persons",
+   "restated": "Add dependent.one over every confirmed dependent entry for which helper \"Qualifies you for head of household under Test 2 (lived with you more than half the year)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "It counts only confirmed dependent entries, but Test 2 also covers people who aren't your dependents: \"2. Your unmarried qualifying child who isn't your dependent\", plus items 3 and 4. The restatement also doesn't show the exclusions a–c (divorced-parent rule, \"lived with you for all of 2025\" only, multiple support agreement) or the \"more than half of the year\" condition.",
+   "ruling": "Ruling: representation; project retained. \"Confirmed entry\" is the renderer's wording for every person listed, not for dependents only; `dependent.hoh_test2` counts a claimed dependent who lived with the filer more than half the year and is not a household-member-only dependent, or an unmarried qualifying child who lived with the filer more than half the year whether or not a dependent (i1040gi p. 14, Test 2, items 1 and 2). Items 3 and 4 and exclusions (a) and (c) are the divorced-parent and multiple-support rules, which are refused. No change to the data."
+  }
+ ]
+}

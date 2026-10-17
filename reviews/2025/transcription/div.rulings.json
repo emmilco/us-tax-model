@@ -1,0 +1,12 @@
+{
+ "kind": "transcription",
+ "form": "div",
+ "rulings": [
+  {
+   "printed": "div.screen",
+   "project": "{\"const\": 0}",
+   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"div.basis_reconciled\"}], \"test\": \"eq\"}, {\"args\": [{\"input\": \"div.box3\"}, {\"const\": 0}], \"test\": \"le\"}], \"test\": \"any\"}, {\"args\": [{\"input\": \"div.box10\"}, {\"const\": 0}], \"test\": \"le\"}, {\"args\": [{\"input\": \"div.box2c\"}, {\"const\": 0}], \"test\": \"le\"}, {\"args\": [{\"input\": \"div.box2e\"}, {\"const\": 0}], \"test\": \"le\"}, {\"args\": [{\"input\": \"div.box2f\"}, {\"const\": 0}], \"test\": \"le\"}, {\"args\": [{\"input\": \"div.box9\"}, {\"const\": 0}], \"test\": \"le\"}], \"test\": \"all\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"args\": [{\"args\": [{\"const\": 0}, {\"input\": \"div.box3\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": true}, {\"input\": \"div.basis_reconciled\"}], \"test\": \"ne\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"input\": \"div.box10\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"input\": \"div.box2c\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"input\": \"div.box2e\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"input\": \"div.box2f\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"input\": \"div.box9\"}], \"test\": \"lt\"}], \"test\": \"any\"}, \"then\": {\"of\": [{\"input\": \"div.box10\"}, {\"input\": \"div.box2c\"}, {\"input\": \"div.box2e\"}, {\"input\": \"div.box2f\"}, {\"input\": \"div.box3\"}, {\"input\": \"div.box9\"}], \"op\": \"sum\"}}], \"op\": \"choose\"}",
+   "ruling": "Ruling: refusal representation; project retained. `div.screen` is a zero-valued line whose `refuses` entries fire the Form 1099-DIV scope refusals (section 1202 gain, AMT interest, unreconciled basis, unsupported boxes); the grammar given to the second transcriber had no refusal construct, so it expressed a failed screen as a positive amount. The screening conditions it encoded are the same ones the project refuses on. The prompt now lacks `refuses`; recorded for the tool, not a data change."
+  }
+ ]
+}

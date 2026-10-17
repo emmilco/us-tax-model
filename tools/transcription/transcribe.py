@@ -14,6 +14,9 @@ Usage: transcribe.py --form qdcg [--model claude-opus-5-5] [--dry-run]
 import argparse, datetime, hashlib, json, os, re, subprocess, sys
 import yaml
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import rulings  # noqa: E402
+
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 SOURCES = os.path.join(ROOT, "sources", "2025")
 FORMS = os.path.join(ROOT, "forms", "2025")
@@ -644,23 +647,10 @@ def extract_yaml(text):
 
 # ---------- log ----------
 
-def existing_rulings(path):
-    """Rulings already written into a log, keyed by printed line and both trees, so a
-    re-comparison keeps them when the disagreement is unchanged."""
-    if not os.path.exists(path):
-        return {}
-    text = open(path, encoding="utf-8").read()
-    out = {}
-    for m in re.finditer(r"### (\S+) \u2014 [^\n]*\nStatus: \*\*(?:DISAGREE|MISSING)\*\*\n\nProject:\n\n```json\n(.*?)\n```\n\nSecond:\n\n```json\n(.*?)\n```(?:\n\nSecond transcription's note: .*?)?\n\n(Ruling: .*?)\n\n", text, re.S):
-        if m.group(4).strip() != "Ruling: open":
-            out[(m.group(1), m.group(2), m.group(3))] = m.group(4).strip()
-    return out
-
-
 def write_log(form_doc, model, prompt, used, results, extra, raw_text, meta, dry_run=False):
     os.makedirs(LOGS, exist_ok=True)
     fid = form_doc["id"]
-    kept = existing_rulings(os.path.join(LOGS, fid + ".md"))
+    kept = rulings.kept("transcription", fid)
     counts = {k: sum(1 for r in results if r["status"] == k) for k in ("AGREE", "DISAGREE", "MISSING")}
     out = [f"# Transcription agreement — {fid}", "",
            f"Second transcription of `{form_doc['title']}` by an isolated model (spec 6.5), compared line by line with `forms/2025/{fid}.yaml`.", "",

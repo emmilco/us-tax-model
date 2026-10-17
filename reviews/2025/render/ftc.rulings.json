@@ -1,0 +1,18 @@
+{
+ "kind": "render",
+ "form": "ftc",
+ "rulings": [
+  {
+   "printed": "credit",
+   "restated": "Choose — [helper \"Positive foreign taxes\" = true → helper \"Smaller of ftc.taxes, f1040.line16\"] [helper \"Positive foreign taxes\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The structure matches the text: credit is the smaller of foreign tax and regular tax, and Form 1116 is required when the election is unavailable or not chosen. However, the value depends on 'regular tax' as defined in the line 20 instructions, which are not provided.",
+   "ruling": "Ruling: representation; project retained. Regular tax for the election is \"your total U.S. income tax against which the credit is allowed (regular tax liability, as defined in section 26(b)(1))\", excluding the net investment income tax (i1116 p. 25, line 20), which on the return in this slice is Form 1040 line 16: the additional line-16 taxes are refused by `scope.other_line16` and the net investment income and additional Medicare taxes sit on Schedule 2, after line 16. No change to the data."
+  },
+  {
+   "printed": "limited",
+   "restated": "Enter the smaller of helper \"Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and Form 1099-DIV box 7\" or f1040 line 16.",
+   "model": "The text says to enter 'the smaller of (a) your total foreign tax, or (b) your regular tax. See the instructions for line 20, later, for how to figure your regular tax.' The line 20 instructions are not in the pages given, so it cannot be confirmed that regular tax equals Form 1040 line 16.",
+   "ruling": "Ruling: representation; project retained. Regular tax for the election is \"your total U.S. income tax against which the credit is allowed (regular tax liability, as defined in section 26(b)(1))\", excluding the net investment income tax (i1116 p. 25, line 20), which on the return in this slice is Form 1040 line 16: the additional line-16 taxes are refused by `scope.other_line16` and the net investment income and additional Medicare taxes sit on Schedule 2, after line 16. No change to the data."
+  }
+ ]
+}

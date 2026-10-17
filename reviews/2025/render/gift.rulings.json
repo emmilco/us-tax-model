@@ -1,0 +1,12 @@
+{
+ "kind": "render",
+ "form": "gift",
+ "rulings": [
+  {
+   "printed": "allowed",
+   "restated": "Enter the amount from helper \"Deduction before income limits for this item or group of similar items across all donees, after required valuation/basis reductions\".",
+   "model": "Copying the deduction amount is correct. However, no refusal covers a case the text sends to Section B below $5,000: 'You must file Form 8283, Section B, if you are contributing a single article of clothing or household item that is not in good used condition or better and for which you are claiming a deduction of over $500.' The program would go ahead in that case without naming the exclusion.",
+   "ruling": "Ruling: second reading right; data changed under BUG-0010. Form 8283 Section B is also required for \"a single article of clothing or household item that is not in good used condition or better and for which you are claiming a deduction of over $500\" (i8283 p. 3); the screen `gift.special` did not name that case. It now does, so such an item is refused; the line itself is unchanged."
+  }
+ ]
+}

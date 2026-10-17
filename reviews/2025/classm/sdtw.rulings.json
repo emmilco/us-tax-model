@@ -1,0 +1,14 @@
+{
+ "kind": "classm",
+ "form": "sdtw",
+ "rulings": [
+  {
+   "case": "classm.sdtw.1",
+   "printed": "41",
+   "project": "$339,977.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. With Schedule D line 19 zero the worksheet says \"skip lines 35 through 40 and go to line 41\" (i1040sd p. 16); the instruction to skip lines 41 through 43 when Schedule D line 18 is zero follows line 40 and is only reached through lines 35–40. The project follows the printed flow and computes line 41 (the sum of lines 21, 22, 30, 33 and 39, here all of taxable income), so line 42 is zero and line 43 is zero; the model applied the line-40 instruction from line 34 and left lines 41–43 blank. Lines 42–45 agree either way, and the data-level property `sdtw_skip_rule` checks that a skipped line 42 is zero when computed. No change to the data.",
+   "drop": true
+  }
+ ]
+}

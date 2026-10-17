@@ -1,0 +1,12 @@
+{
+ "kind": "transcription",
+ "form": "g28",
+ "rulings": [
+  {
+   "printed": "7",
+   "project": "{\"from\": {\"of\": [{\"line\": \"1\"}, {\"line\": \"2\"}, {\"line\": \"3\"}, {\"line\": \"4\"}, {\"line\": \"5\"}, {\"line\": \"6\"}], \"op\": \"sum\"}, \"op\": \"subtract_floor0\", \"take\": {\"param\": \"sales.zero\"}}",
+   "second": "{\"from\": {\"of\": [{\"line\": \"6\"}, {\"from\": {\"of\": [{\"line\": \"1\"}, {\"line\": \"2\"}, {\"line\": \"3\"}, {\"line\": \"4\"}], \"op\": \"sum\"}, \"op\": \"subtract\", \"take\": {\"line\": \"5\"}}], \"op\": \"sum\"}, \"op\": \"subtract_floor0\", \"take\": {\"param\": \"sales.zero\"}}",
+   "ruling": "Ruling: scope and sign convention; project retained. The difference is line 5, the long-term capital loss carryover, which the project refuses (`sd.carryover`, spec 2.2) and carries as zero; the second transcription reads the parentheses on the worksheet's line 5 (i1040sd p. 11, 28% Rate Gain Worksheet) as a positive amount to be subtracted. Within scope the two agree. When carryovers come into scope, line 5 must be subtracted or held negative, as recorded for Schedule D lines 7 and 15."
+  }
+ ]
+}

@@ -1,0 +1,18 @@
+{
+ "kind": "render",
+ "form": "f8995a",
+ "rulings": [
+  {
+   "printed": "33",
+   "restated": "Enter the amount from qbi helper \"Taxable income before the QBI deduction; Form 1040 line 11a minus lines 12e and 13b, floored at zero\".",
+   "model": "The instructions define taxable income before the QBI deduction for Form 1040 filers as 'Form 1040 or 1040-SR, line 11a, minus lines 12e and 13b'. The program subtracts only line 12e (the deduction) from AGI and omits line 13b.",
+   "ruling": "Ruling: second reading right; data changed under BUG-0007. The corrected instruction reads \"Form 1040 or 1040-SR, line 11a, minus lines 12e and 13b\" (i8995-correction); the helper subtracted line 12e only, leaving out line 13b because the slice refuses Schedule 1-A. The helper now subtracts the sum of lines 12e and 13b; line 13b is the zero behind the Schedule 1-A refusal, so values are unchanged and the refusal propagates."
+  },
+  {
+   "printed": "34",
+   "restated": "Enter the amount from qbi helper \"Add sd.net_gain, f1040.line3a\".",
+   "model": "The instructions say 'If you're not required to file Schedule D (Form 1040), your net capital gain is the amount reported on Form 1040, 1040-SR, or 1040-NR, line 7a.' The program always takes net capital gain from Schedule D lines 15/16 and has no line 7a path. The Schedule D filer case (smaller of 15 or 16, nothing added if zero or less) matches.",
+   "ruling": "Ruling: representation; project retained. For a Schedule D filer the helper is the smaller of Schedule D lines 15 and 16, floored at zero, plus Form 1040 line 3a, as the instructions say. When Schedule D is not required (i8995 p. 4: \"your net capital gain is the amount reported on Form 1040, 1040-SR, or 1040-NR, line 7a\") the Schedule D lines are still computed from line 13 alone, so lines 15 and 16 both equal the box 2a total that line 7a carries, and the helper gives the same amount. No change to the data."
+  }
+ ]
+}

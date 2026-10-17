@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 """Fail unless every form has a transcription-agreement log and a render-comparison log,
-each with no open ruling and current source hashes. Runs offline in check-all; the logs
+each with no open ruling, current source hashes, and rulings that agree with its sidecar. Runs offline in check-all; the logs
 themselves are produced deliberately by transcribe.py and render_compare.py (network steps)."""
 import json, os, re, sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import rulings  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 FORMS = os.path.join(ROOT, "forms", "2025")
@@ -59,5 +62,6 @@ def check(kind, logs, optional_env, expected=None):
 failed = check("transcription", LOGS, "TRANSCRIPTION_LOGS_OPTIONAL")
 failed = check("render", os.path.join(ROOT, "reviews", "2025", "render"), "RENDER_LOGS_OPTIONAL") or failed
 failed = check("classm", os.path.join(ROOT, "reviews", "2025", "classm"), "CLASSM_LOGS_OPTIONAL", classm_forms()) or failed
+failed = bool(rulings.check()) or failed
 if failed:
     sys.exit(1)

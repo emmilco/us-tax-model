@@ -1,0 +1,54 @@
+{
+ "kind": "render",
+ "form": "dependent",
+ "rulings": [
+  {
+   "printed": "ctc_child",
+   "restated": "helper \"Qualifying child who is your dependent (Step 2)\" = true and helper \"SSN, ITIN or ATIN issued on or before the due date of your return?\" = true and helper \"U.S. citizen, U.S. national or U.S. resident alien?\" = true and helper \"Under age 17 at the end of 2025\" = true and helper \"SSN valid for employment issued before the due date of your return?\" = true and household helper \"Do you have an SSN valid for employment issued before the due date of your return?\" = true",
+   "model": "The program requires your own SSN valid for employment. Step 3 question 4 reads \"Did you, or your spouse if filing a joint return, and this child have SSNs valid for employment\". The text adds that \"only one spouse is required to have a valid SSN.\"",
+   "ruling": "Ruling: scope; project retained. The spouse variants (\"or your spouse if filing jointly\"; \"only one spouse is required to have a valid SSN\"; the joint-return branches of Steps 2 and 4) arise only on a joint return, and married filing statuses are refused (`s3.married`). The `sa.dependent` gate also names a dual-status alien, which the instructions refuse for the dependents section too (i1040gi p. 18, Step 2, question 4, and the nonresident and dual-status alien rules); a single filer answers for themselves alone. No change to the data."
+  },
+  {
+   "printed": "hoh_test2",
+   "restated": "(helper \"Your dependent\" = true and helper \"Lived with you for more than half of 2025\" = true and helper \"Relationship to you\" ≠ 'household_member' or helper \"Qualifying child (Step 1)\" = true and helper \"Married?\" = false and helper \"Lived with you for more than half of 2025\" = true)",
+   "model": "The label says the person qualifies you, but Test 2 requires \"You paid over half the cost of keeping up a home in which you lived and in which one of the following also lived\". The program has no cost-of-home condition, unlike its hoh_test1.",
+   "ruling": "Ruling: representation; project retained; label clarified. The home-cost condition of Test 2 is tested once on the household form (`household.test2_met`), not per person; the per-person line carries the residency and category conditions, and its label now says so. No change to the expression."
+  },
+  {
+   "printed": "lived_half",
+   "restated": "helper \"Months lived with you in 2025, counting temporary absences\" > 6 (a count)",
+   "model": "Counting more than 6 whole months ignores the exception for a person born or died in 2025. The text reads \"the person is considered to have lived with you for more than half of 2025 if your home was this person's home for more than half the time the person was alive in 2025.\" The same applies to adoption or foster placement in 2025.",
+   "ruling": "Ruling: second reading right; data changed under BUG-0014. The months question now tells the filer to enter 12 for a person born, died, adopted or placed in 2025 whose home was the filer's for more than half the time alive or with them (i1040gi p. 14, Exception to time lived with you); the test itself is unchanged."
+  },
+  {
+   "printed": "odc_person",
+   "restated": "helper \"Your dependent\" = true and helper \"SSN, ITIN or ATIN issued on or before the due date of your return?\" = true and helper \"U.S. citizen, U.S. national or U.S. resident alien?\" = true and helper \"Qualifying child for the child tax credit (Step 3)\" = false and household helper \"Do you have an SSN or ITIN issued on or before the due date of your return, or have you applied for an ITIN by then?\" = true",
+   "model": "The program checks only your own SSN or ITIN. The text reads \"you, and your spouse if filing jointly, must have either an SSN or ITIN issued on or before the due date,\" and Step 5 question 1 says the same.",
+   "ruling": "Ruling: scope; project retained. The spouse variants (\"or your spouse if filing jointly\"; \"only one spouse is required to have a valid SSN\"; the joint-return branches of Steps 2 and 4) arise only on a joint return, and married filing statuses are refused (`s3.married`). The `sa.dependent` gate also names a dual-status alien, which the instructions refuse for the dependents section too (i1040gi p. 18, Step 2, question 4, and the nonresident and dual-status alien rules); a single filer answers for themselves alone. No change to the data."
+  },
+  {
+   "printed": "qc_dependent",
+   "restated": "helper \"Qualifying child (Step 1)\" = true and helper \"U.S. citizen, national or resident alien, or a resident of Canada or Mexico\" = true and sa helper \"Can someone claim you or your spouse as a dependent, or are you a dual-status alien?\" = false",
+   "model": "Step 2 question 3 reads \"Are you filing a joint return for 2025? Yes. You can claim this child as a dependent.\" The program still requires the sa answer to be false in that case. Step 2 question 4 asks only \"Could you be claimed as a dependent on someone else's 2025 tax return?\", but the sa helper also includes your spouse and dual-status aliens.",
+   "ruling": "Ruling: scope; project retained. The spouse variants (\"or your spouse if filing jointly\"; \"only one spouse is required to have a valid SSN\"; the joint-return branches of Steps 2 and 4) arise only on a joint return, and married filing statuses are refused (`s3.married`). The `sa.dependent` gate also names a dual-status alien, which the instructions refuse for the dependents section too (i1040gi p. 18, Step 2, question 4, and the nonresident and dual-status alien rules); a single filer answers for themselves alone. No change to the data."
+  },
+  {
+   "printed": "qr_dependent",
+   "restated": "helper \"Qualifying relative (Step 4)\" = true and helper \"U.S. citizen, national or resident alien, or a resident of Canada or Mexico\" = true and sa helper \"Can someone claim you or your spouse as a dependent, or are you a dual-status alien?\" = false",
+   "model": "Step 4 question 4 reads \"Are you filing a joint return for 2025? Yes. You can claim this person as a dependent.\" The program still requires the sa answer to be false in that case. Question 5 asks only whether you could be claimed as a dependent, not about your spouse or dual-status aliens.",
+   "ruling": "Ruling: scope; project retained. The spouse variants (\"or your spouse if filing jointly\"; \"only one spouse is required to have a valid SSN\"; the joint-return branches of Steps 2 and 4) arise only on a joint return, and married filing statuses are refused (`s3.married`). The `sa.dependent` gate also names a dual-status alien, which the instructions refuse for the dependents section too (i1040gi p. 18, Step 2, question 4, and the nonresident and dual-status alien rules); a single filer answers for themselves alone. No change to the data."
+  },
+  {
+   "printed": "qr_relationship",
+   "restated": "(helper \"Relationship to you\" = 'child' or helper \"Relationship to you\" = 'sibling' or helper \"Relationship to you\" = 'parent' or helper \"Relationship to you\" = 'parent_relative' or helper \"Relationship to you\" = 'in_law' or (helper \"Relationship to you\" = 'household_member' or helper \"Relationship to you\" = 'sibling_descendant' or helper \"Relationship to you\" = 'other') and helper \"Months lived with you in 2025, counting temporary absences\" = 12 (a count))",
+   "model": "The 'sibling' category includes a step sibling's son or daughter, but Step 4 lists only \"Brother, sister, half brother, half sister, or a son or daughter of any of them\". The line also excludes a sibling_descendant who lived with you all year, although Step 4 includes \"Any other person (other than your spouse) who lived with you all year as a member of your household.\"",
+   "ruling": "Ruling: second reading right; data changed under BUG-0015. The `sibling` value now ends at the children of a brother, sister, half brother or half sister, and any other relationship (`sibling_descendant`, `household_member`, `other`) is a Step 4 relative when the person lived with the filer all year (i1040gi p. 19, Step 4, the last bullet). The restatement in this log predates the fix."
+  },
+  {
+   "printed": "younger",
+   "restated": "helper \"Age at the end of 2025\" < household helper \"Your age at the end of 2025\"",
+   "model": "The program compares the child only with your own age. Step 1 reads \"younger than you (or your spouse if filing jointly)\".",
+   "ruling": "Ruling: scope; project retained. The spouse variants (\"or your spouse if filing jointly\"; \"only one spouse is required to have a valid SSN\"; the joint-return branches of Steps 2 and 4) arise only on a joint return, and married filing statuses are refused (`s3.married`). The `sa.dependent` gate also names a dual-status alien, which the instructions refuse for the dependents section too (i1040gi p. 18, Step 2, question 4, and the nonresident and dual-status alien rules); a single filer answers for themselves alone. No change to the data."
+  }
+ ]
+}

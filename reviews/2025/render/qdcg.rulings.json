@@ -1,0 +1,36 @@
+{
+ "kind": "render",
+ "form": "qdcg",
+ "rulings": [
+  {
+   "printed": "1",
+   "restated": "Enter the amount from f1040 line 15.",
+   "model": "The restatement always uses f1040 line 15. The IRS text says \"However, if you are filing Form 2555 (relating to foreign earned income), enter the amount from line 3 of the Foreign Earned Income Tax Worksheet.\" No refusal names the Form 2555 case.",
+   "ruling": "Ruling: scope; project retained. The Foreign Earned Income Tax Worksheet alternative applies only to a filer who claimed the exclusion or housing deduction on Form 2555 (i1040gi p. 36, line 16: \"If you claimed the foreign earned income exclusion, housing exclusion, or housing deduction on Form 2555, you must use the Foreign Earned Income Tax Worksheet\"). That filer reports the exclusion on Schedule 1, line 8d (i1040gi p. 91: \"Foreign earned income exclusion and housing exclusion from Form 2555\"), and the return refuses any Schedule 1 income at Form 1040 line 8 (`scope.schedule1`, forms/2025/f1040.yaml) before line 16 is reached. The alternative is recorded as not encoded in the worksheet note. No change to the data."
+  },
+  {
+   "printed": "2",
+   "restated": "Enter the amount from f1040 line 3a.",
+   "model": "Entering f1040 line 3a matches the line's own words. The asterisk footnote says \"If you are filing Form 2555, see the footnote in the Foreign Earned Income Tax Worksheet.\" That footnote's text is not given, and no refusal covers Form 2555.",
+   "ruling": "Ruling: scope; project retained. The footnote applies only to Form 2555 filers, who are refused at Form 1040 line 8 through `scope.schedule1` because the exclusion is a Schedule 1, line 8d entry (i1040gi p. 91). Same ground as line 1. No change to the data."
+  },
+  {
+   "printed": "22",
+   "restated": "Enter \"tax\" of Tax on an amount — Tax Table or Tax Computation Worksheet with amount = line 5 and status = f1040 line Filing Status.",
+   "model": "The IRS says to use the Tax Table \"If the amount on line 5 is less than $100,000\" and the Tax Computation Worksheet if it is \"$100,000 or more.\" The \"Tax on an amount\" helper is not defined in the glossary, so whether it applies this $100,000 switch cannot be checked.",
+   "ruling": "Ruling: representation; project retained. \"Tax on an amount\" is the shared definition that applies the $100,000 switch the line states: its line (b) chooses the Tax Table when the amount is below $100,000 (`ordinary.table_boundary`) and the Tax Computation Worksheet at or above (forms/2025/tax_on_amount.yaml; its own render log, 4 lines, all MATCH). No change to the data."
+  },
+  {
+   "printed": "24",
+   "restated": "Enter \"tax\" of Tax on an amount — Tax Table or Tax Computation Worksheet with amount = line 1 and status = f1040 line Filing Status.",
+   "model": "The IRS says to use the Tax Table \"If the amount on line 1 is less than $100,000\" and the Tax Computation Worksheet otherwise. The \"Tax on an amount\" helper is undefined, so whether it applies this switch cannot be checked.",
+   "ruling": "Ruling: representation; project retained. Same ground as line 22. No change to the data."
+  },
+  {
+   "printed": "3",
+   "restated": "Choose — [helper \"Are you filing Schedule D?\" = true → helper \"Enter the smaller of line 15 or line 16 of Schedule D. If either line 15 or line 16 is blank or a loss, enter -0-.\"] [helper \"Are you filing Schedule D?\" = false → sd helper \"Capital gain distributions, generally Form 1099-DIV box 2a\"]",
+   "model": "The Yes branch matches, because the smaller of Schedule D lines 15 and 16 floored at zero gives -0- when either line is a loss. For No, the IRS says \"Enter the amount from Form 1040 or 1040-SR, line 7a\" but the program uses a 1099-DIV box 2a input, and the text given does not show these are equal. The text also does not support the program's test for whether Schedule D is filed.",
+   "ruling": "Ruling: representation; project retained. \"Are you filing Schedule D?\" is derived rather than asked: Schedule D is required when any sale is entered or a 28% or unrecaptured section 1250 amount exists, and a filer with only capital gain distributions need not file it (i1040gi p. 31, line 7a, Exception 1: \"You don't have to file Form 8949 or Schedule D if you aren't deferring any capital gain by investing in a qualified opportunity fund and both of the following apply. 1. You have no capital losses, and your only capital gains are capital gain distributions\"), in which case line 7a carries the Form 1099-DIV box 2a total the No branch reads. The transcription log for qdcg carries the same ruling. No change to the data."
+  }
+ ]
+}

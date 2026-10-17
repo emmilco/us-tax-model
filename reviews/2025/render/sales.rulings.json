@@ -1,0 +1,18 @@
+{
+ "kind": "render",
+ "form": "sales",
+ "rulings": [
+  {
+   "printed": "(e)",
+   "restated": "Choose — [helper \"Basis reported to IRS\" = true → helper \"Basis shown on broker report\"] [helper \"Basis reported to IRS\" = false → helper \"Correct adjusted basis from records\"]",
+   "model": "The program treats basis as reported to the IRS only for boxes A and D, so boxes G and J (digital assets with basis reported) get the correct basis instead of the broker's figure. The IRS says 'If this transaction is reported on Part I with box A or box G checked ... or ... Part II with box D or box J checked ... enter the basis shown on Form 1099-B or Form 1099-DA ... in column (e), even though that basis is incorrect.'",
+   "ruling": "Ruling: scope; project retained. Boxes G–L (digital assets reported on Form 1099-DA; f8949 p. 1: \"(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\") are refused at the transaction: `sales.one` refuses when `sales.digital` is true, the refusal propagates through `sd.count` to `sd.screen`, and every Schedule D total refuses on `sd.screen` before any box filter runs. Within the supported boxes A–F the filter reads as the line does. The filters must widen to boxes G–L when digital assets come into scope (recorded in the transcription rulings). No change to the data."
+  },
+  {
+   "printed": "(g)",
+   "restated": "Add helper \"Basis correction in column (g)\" and helper \"Wash-sale adjustment in column (g)\".",
+   "model": "The sign of the basis correction (reported minus correct) and the positive wash-sale amount, netted, agree with the worksheet and 'enter the net adjustment in column (g)'. But because the basis correction is gated on boxes A and D only, boxes G and J get no correction, although the IRS says for box A or G and D or J to 'Correct the error by entering an adjustment in column (g)'. The 'other' code also yields $0 with no refusal naming the excluded case.",
+   "ruling": "Ruling: scope; project retained. Boxes G and J are refused with every digital-asset box (see column (e)), so the basis correction's A/D condition is the whole supported case. Adjustment codes other than B and W are refused: `sales.one` refuses when `sales.bad_code` (\"Only applicable B and W adjustments are supported\"), and the refusal reaches the Schedule D totals through `sd.count`. No change to the data."
+  }
+ ]
+}

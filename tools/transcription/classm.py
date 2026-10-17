@@ -9,7 +9,8 @@ a ruling.
     python3 tools/transcription/classm.py --doc qdcg [--model M] [--dry-run] [--from-response]
     python3 tools/transcription/rule.py --kind classm --doc qdcg --rulings r.json
 
-Logs go to reviews/2025/classm/<doc>.md. A ruling may drop a line from the fixture (a model
+Logs go to reviews/2025/classm/<doc>.md. Rulings persist in <doc>.rulings.json beside the log
+(rulings.py) and are reapplied on rerun. A ruling may drop a line from the fixture (a model
 arithmetic error is not evidence) by giving {"ruling": "...", "drop": true}.
 """
 import argparse, datetime, hashlib, json, os, re, sys
@@ -17,6 +18,7 @@ import yaml
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from transcribe import ROOT, manifest, excerpt_for, call_model, load_form  # noqa: E402
+import rulings  # noqa: E402
 
 JOBS = os.path.join(ROOT, ".classm", "jobs.json")
 RAW = os.path.join(ROOT, ".classm")
@@ -153,25 +155,12 @@ def same(a, b):
     return a.get("kind") == b.get("kind") and (a.get("cents") == b.get("cents") if a.get("kind") == "money" else a.get("value") == b.get("value"))
 
 
-def existing_rulings(path):
-    if not os.path.exists(path):
-        return {}
-    text = open(path, encoding="utf-8").read()
-    out = {}
-    # The heading's remainder must stay on its line: a match that spans into the next section
-    # keys the ruling under the wrong line and loses it on rerun.
-    for m in re.finditer(r"### (\S+) — (\S+) [^\n]*\nStatus: \*\*(?:DISAGREE|MISSING)\*\*\n\nProject: ([^\n]*)\nModel: ([^\n]*)\n(?:Work: [^\n]*\n)?\n(Ruling: [^\n]*)\n", text):
-        if m.group(5).strip() != "Ruling: open":
-            out[(m.group(1), m.group(2), m.group(3), m.group(4))] = m.group(5).strip()
-    return out
-
-
 def write_outputs(form_doc, model, jobs, runs, meta_all):
     """One log for the document and the fixture cases for it."""
     os.makedirs(LOGS, exist_ok=True)
     fid = form_doc["id"]
     path = os.path.join(LOGS, fid + ".md")
-    kept = existing_rulings(path)
+    kept = rulings.kept("classm", fid)
     counts = {"AGREE": 0, "DISAGREE": 0, "MISSING": 0}
     out = [f"# Class M hand-work — {fid}", "",
            f"`{form_doc['title']}` worked by hand by an isolated model from its archived pages and the amounts flowing into it, for generated returns that together take every reachable branch (spec 6.1, class M; spec 6.5). Agreements are class M fixtures in `fixtures/2025/classm.json`; each disagreement carries a ruling.", "",

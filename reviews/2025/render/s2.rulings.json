@@ -1,0 +1,18 @@
+{
+ "kind": "render",
+ "form": "s2",
+ "rulings": [
+  {
+   "printed": "11",
+   "restated": "Enter the amount from f8959 line 18.",
+   "model": "Schedule 2 says only \"Additional Medicare Tax. Attach Form 8959\" and does not name which Form 8959 line to carry. The Form 8959 pages, which would show that line 18 is the total Additional Medicare Tax, are not provided.",
+   "ruling": "Ruling: representation; project retained. Form 8959 line 18 is the total the schedule takes (f8959 p. 1, line 18: \"Total Additional Medicare Tax. Add lines 7, 13, and 17. Also include this amount on Schedule 2 (Form 1040), line 11\"). No change to the data."
+  },
+  {
+   "printed": "12",
+   "restated": "Enter the amount from f8960 line 17.",
+   "model": "Schedule 2 says only \"Net investment income tax. Attach Form 8960\" and does not name which Form 8960 line to carry. The Form 8960 pages, which would show that line 17 is the final NIIT amount, are not provided.",
+   "ruling": "Ruling: representation; project retained. Form 8960 line 17 is the individual tax the schedule takes (f8960 p. 1, line 17: \"Net investment income tax for individuals. Multiply line 16 by 3.8% (0.038). Enter here and include on your tax return\"). No change to the data."
+  }
+ ]
+}

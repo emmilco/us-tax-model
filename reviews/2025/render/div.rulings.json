@@ -1,0 +1,12 @@
+{
+ "kind": "render",
+ "form": "div",
+ "rulings": [
+  {
+   "printed": "bad_special",
+   "restated": "(helper \"Unrecaptured section 1250 gain, box 2b\" > sd helper \"Capital gain distributions, generally Form 1099-DIV box 2a\" or helper \"Section 1202 gain, box 2c\" > sd helper \"Capital gain distributions, generally Form 1099-DIV box 2a\" or helper \"Collectibles (28%) gain, box 2d\" > sd helper \"Capital gain distributions, generally Form 1099-DIV box 2a\" or helper \"Total special capital-gain distribution components\" > sd helper \"Capital gain distributions, generally Form 1099-DIV box 2a\")",
+   "model": "The text supports each of 2b, 2c and 2d being no more than 2a, since each is 'the portion of the amount in box 2a'. However, it never says these portions are mutually exclusive, so the check that their sum must not exceed 2a cannot be confirmed from the text.",
+   "ruling": "Ruling: representation; project retained, with a recorded reservation. Boxes 2b, 2c and 2d are each \"the portion of the amount in box 2a\" (i1099div p. 4), which supports the per-box test. The further test that their sum not exceed box 2a assumes the portions are disjoint; the text does not say so, though unrecaptured section 1250 gain, section 1202 gain and collectibles gain are gains on different property. Where that assumption fails the gate refuses rather than computes, which is the safe direction. Recorded: the sum test is a candidate for the ambiguity register. No change to the data."
+  }
+ ]
+}

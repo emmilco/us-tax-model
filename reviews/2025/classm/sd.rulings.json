@@ -1,0 +1,22 @@
+{
+ "kind": "classm",
+ "form": "sd",
+ "rulings": [
+  {
+   "case": "classm.sd.2",
+   "printed": "20",
+   "project": "yes",
+   "model": "no",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Schedule D says \"If line 16 is a loss, skip lines 17 through 20 below. Then, go to line 21\" and, for zero, to skip lines 17 through 21 (f1040sd p. 2, line 16), so the question on line 20 is not answered on the page; the model wrote no for a skipped line. The project answers the question from lines 18, 19 and the Form 4952 flag regardless, and uses it only where the tax-method choice is reached with a gain. No change to the data.",
+   "drop": true
+  },
+  {
+   "case": "classm.sd.3",
+   "printed": "20",
+   "project": "yes",
+   "model": "no",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Schedule D says \"If line 16 is a loss, skip lines 17 through 20 below. Then, go to line 21\" and, for zero, to skip lines 17 through 21 (f1040sd p. 2, line 16), so the question on line 20 is not answered on the page; the model wrote no for a skipped line. The project answers the question from lines 18, 19 and the Form 4952 flag regardless, and uses it only where the tax-method choice is reached with a gain. No change to the data.",
+   "drop": true
+  }
+ ]
+}

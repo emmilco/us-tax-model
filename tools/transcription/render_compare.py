@@ -16,6 +16,7 @@ import yaml
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from transcribe import ROOT, RAW, manifest, excerpt_for, call_model, load_form  # noqa: E402
+import rulings  # noqa: E402
 
 RENDERED = os.path.join(ROOT, "rendered", "2025")
 LOGS = os.path.join(ROOT, "reviews", "2025", "render")
@@ -240,23 +241,11 @@ def extract(text):
     return out
 
 
-def existing_rulings(path):
-    """Rulings already in a log, keyed by printed line, restatement and the model's reason."""
-    if not os.path.exists(path):
-        return {}
-    text = open(path, encoding="utf-8").read()
-    out = {}
-    for m in re.finditer(r"### (\S+) — [^\n]*\nStatus: \*\*(?:MISMATCH|UNCLEAR|MISSING)\*\*\n\nRestated: (.*?)\n\nModel: (.*?)\n\n(Ruling: .*?)\n\n", text, re.S):
-        if m.group(4).strip() != "Ruling: open":
-            out[(m.group(1), m.group(2), m.group(3))] = m.group(4).strip()
-    return out
-
-
 def write_log(form_doc, model, prompt, used, printed, verdicts, raw_text, meta):
     os.makedirs(LOGS, exist_ok=True)
     fid = form_doc["id"]
     path = os.path.join(LOGS, fid + ".md")
-    kept = existing_rulings(path)
+    kept = rulings.kept("render", fid)
     results = []
     for e in printed:
         v = verdicts.get(e["key"])
