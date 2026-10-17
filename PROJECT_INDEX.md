@@ -17,7 +17,8 @@ the transcription agreement are done; see `HANDOFF-STAGE-7.md` to continue.
 | Path | Purpose |
 |------|---------|
 | `PROJECT_INDEX.md` | This file: structure, directory purposes, naming conventions |
-| `HANDOFF-STAGE-7.md` | Current handoff: where Stage 7 (integrity stack) stands, decisions made, defects found, follow-ups, and how to continue |
+| `HANDOFF-STAGE-8.md` | Current handoff: Stage 8 done, the accepted next step (fixtures and class M for the Stage 8 lines), facts a fresh session needs, process note |
+| `HANDOFF-STAGE-7.md` | Previous handoff: the Stage 7 integrity stack in detail, with a Stage 8 section appended during the build |
 | `HANDOFF-STAGE-2.md` | Stage 2 handoff and acceptance checklist (historical) |
 | `spec/stage2-proposal.md` | Owner-approved modeling choices and concrete collection binding |
 | `reviews/2025/stage2.md` | Preserved owner approval and hand-work record (not generated) |
