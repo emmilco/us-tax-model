@@ -9,8 +9,9 @@ fixtures, per-line evidence coverage and the differential scaffolding. See
 verification regime are in `spec/spec.md` sections 1, 2.4 and 6.5; the stages
 that follow (integrity stack, household architecture test, coverage) are in
 `spec/design.md` section 5. No human line-by-line reading is claimed; see the
-trust statement in spec 3. Stage 7 is in progress: the engine differential and
-the transcription agreement are done; see `HANDOFF-STAGE-7.md` to continue.
+trust statement in spec 3. Stage 7 (the integrity stack) and Stage 8 (dependents,
+head of household and Schedule 8812) are complete; see `HANDOFF-STAGE-8.md` to
+continue.
 
 ## Folder structure
 
@@ -44,7 +45,7 @@ the transcription agreement are done; see `HANDOFF-STAGE-7.md` to continue.
 | `lean/` | Lean 4: atom semantics over the integers, lemmas, and the reference evaluator that reads the same canonical JSON |
 | `fixtures/2025/differential/` | Calculator records (class C) and `engine_investigations.json`, the cited causes for engine differences |
 | `fixtures/2025/classm.json` | Class M fixtures: generated returns whose worksheet lines an isolated model worked by hand; written by `tools/transcription/classm.py` |
-| `fixtures/2025/stage*.json` | Test fixtures: covering cases with inputs, expected values, evidence labels and notes; Stage 3 adds official column-arithmetic examples; Stage 5 adds whole-return cases (`stage5.json`) and the calculator-record directory (`differential/`); synthetic values remain regressions pending human hand-work |
+| `fixtures/2025/stage*.json` | Test fixtures: covering cases with inputs, expected values, evidence labels and notes; Stage 3 adds official column-arithmetic examples; Stage 5 adds whole-return cases (`stage5.json`) and the calculator-record directory (`differential/`); `stage8.json` asserts the per-person dependent tests, the head of household tests and the Schedule 8812 chain across their branches and refusals; synthetic values remain regressions pending human hand-work |
 | `rendered/2025/` | Committed renderer output (each line beside its IRS label and citation) for line-by-line review |
 | `reports/2025/` | Generated reports: Tax Table midpoint conjecture, branch/gate/arithmetic coverage, per-line evidence coverage, evaluator agreement, data-level properties over generated returns (`properties.md`), mutation score, calculator differential entry sheets, engine differential (`engine_differential.md`), Stage 2–5 review packets and CLI values sheets |
 

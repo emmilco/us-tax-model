@@ -6,7 +6,7 @@ by both independently written evaluators; every root form line and reached colle
 
 | Metric | Value |
 | --- | --- |
-| Cases | 919 |
-| Line values compared | 526892 |
+| Cases | 943 |
+| Line values compared | 541644 |
 | Cases with differences | 0 |
 | Result | **agreement on every value** |
