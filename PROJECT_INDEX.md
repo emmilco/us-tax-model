@@ -9,14 +9,16 @@ fixtures, per-line evidence coverage and the differential scaffolding. See
 verification regime are in `spec/spec.md` sections 1, 2.4 and 6.5; the stages
 that follow (integrity stack, household architecture test, coverage) are in
 `spec/design.md` section 5. No human line-by-line reading is claimed; see the
-trust statement in spec 3.
+trust statement in spec 3. Stage 7 is in progress: the engine differential and
+the transcription agreement are done; see `HANDOFF-STAGE-7.md` to continue.
 
 ## Folder structure
 
 | Path | Purpose |
 |------|---------|
 | `PROJECT_INDEX.md` | This file: structure, directory purposes, naming conventions |
-| `HANDOFF-STAGE-2.md` | Stage 2 handoff and acceptance checklist |
+| `HANDOFF-STAGE-7.md` | Current handoff: where Stage 7 (integrity stack) stands, decisions made, defects found, follow-ups, and how to continue |
+| `HANDOFF-STAGE-2.md` | Stage 2 handoff and acceptance checklist (historical) |
 | `spec/stage2-proposal.md` | Owner-approved modeling choices and concrete collection binding |
 | `reviews/2025/stage2.md` | Preserved owner approval and hand-work record (not generated) |
 | `interview/` | Cited 2025 question data and CLI/collection documentation; `full-2025.yaml` is the whole-return profile |
