@@ -91,7 +91,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sa.standard": {
@@ -218,7 +226,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 19999999,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f8959.line6": {
@@ -321,7 +337,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f8959.line6": {
@@ -424,7 +448,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20100000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f8959.line6": {
@@ -527,7 +559,35 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 19999999,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [
+          "child"
+        ],
+        "dependent[child].relationship": "child",
+        "dependent[child].age": 10,
+        "dependent[child].student": false,
+        "dependent[child].disabled": false,
+        "dependent[child].months": 12,
+        "dependent[child].self_support": false,
+        "dependent[child].joint_return": false,
+        "dependent[child].citizen": false,
+        "dependent[child].canada_mexico": true,
+        "dependent[child].married": false,
+        "dependent[child].tin": false,
+        "dependent[child].work_ssn": false,
+        "dependent[child].gross_income": 0,
+        "dependent[child].supported": true,
+        "dependent[child].other_claimant": false,
+        "dependent[child].divorced_rule": false,
+        "dependent[child].multiple_support": false,
+        "dependent[child].parent_home_paid": false,
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f8959.line6": {
@@ -630,7 +690,35 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [
+          "child"
+        ],
+        "dependent[child].relationship": "child",
+        "dependent[child].age": 10,
+        "dependent[child].student": false,
+        "dependent[child].disabled": false,
+        "dependent[child].months": 12,
+        "dependent[child].self_support": false,
+        "dependent[child].joint_return": false,
+        "dependent[child].citizen": false,
+        "dependent[child].canada_mexico": true,
+        "dependent[child].married": false,
+        "dependent[child].tin": false,
+        "dependent[child].work_ssn": false,
+        "dependent[child].gross_income": 0,
+        "dependent[child].supported": true,
+        "dependent[child].other_claimant": false,
+        "dependent[child].divorced_rule": false,
+        "dependent[child].multiple_support": false,
+        "dependent[child].parent_home_paid": false,
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f8959.line6": {
@@ -733,7 +821,35 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20100000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [
+          "child"
+        ],
+        "dependent[child].relationship": "child",
+        "dependent[child].age": 10,
+        "dependent[child].student": false,
+        "dependent[child].disabled": false,
+        "dependent[child].months": 12,
+        "dependent[child].self_support": false,
+        "dependent[child].joint_return": false,
+        "dependent[child].citizen": false,
+        "dependent[child].canada_mexico": true,
+        "dependent[child].married": false,
+        "dependent[child].tin": false,
+        "dependent[child].work_ssn": false,
+        "dependent[child].gross_income": 0,
+        "dependent[child].supported": true,
+        "dependent[child].other_claimant": false,
+        "dependent[child].divorced_rule": false,
+        "dependent[child].multiple_support": false,
+        "dependent[child].parent_home_paid": false,
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f8959.line6": {
@@ -836,7 +952,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 19999999,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f8959.line6": {
@@ -939,7 +1063,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f8959.line6": {
@@ -1042,7 +1174,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20100000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f8959.line6": {
@@ -1145,7 +1285,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 12499999,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f8959.line6": {
@@ -1248,7 +1396,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 12500000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f8959.line6": {
@@ -1351,7 +1507,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 12600000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f8959.line6": {
@@ -1454,7 +1618,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 24999999,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f8959.line6": {
@@ -1557,7 +1729,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 25000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f8959.line6": {
@@ -1660,7 +1840,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 25100000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f8959.line6": {
@@ -1763,7 +1951,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 25000000,
         "person[taxpayer].w2[a].box6": 407500,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f8959.line18": {
@@ -1954,7 +2150,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 280000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f8959.line24": {
@@ -2053,7 +2257,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 49999999
+        "person[taxpayer].w2[a].box1": 49999999,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sa.line5e": {
@@ -2152,7 +2364,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 50000000
+        "person[taxpayer].w2[a].box1": 50000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sa.line5e": {
@@ -2251,7 +2471,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 55000000
+        "person[taxpayer].w2[a].box1": 55000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sa.line5e": {
@@ -2350,7 +2578,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 60000000
+        "person[taxpayer].w2[a].box1": 60000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sa.line5e": {
@@ -2449,7 +2685,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 70000000
+        "person[taxpayer].w2[a].box1": 70000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sa.line5e": {
@@ -2548,7 +2792,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 30000000
+        "person[taxpayer].w2[a].box1": 30000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sa.line5e": {
@@ -2647,7 +2899,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 35000000
+        "person[taxpayer].w2[a].box1": 35000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sa.line5e": {
@@ -2750,7 +3010,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 70000000
+        "person[taxpayer].w2[a].box1": 70000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sa.line5e": {
@@ -2849,7 +3117,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sa.line3": {
@@ -2952,7 +3228,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sa.line4": {
@@ -3051,7 +3335,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sa.standard": {
@@ -3150,7 +3442,35 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [
+          "child"
+        ],
+        "dependent[child].relationship": "child",
+        "dependent[child].age": 10,
+        "dependent[child].student": false,
+        "dependent[child].disabled": false,
+        "dependent[child].months": 12,
+        "dependent[child].self_support": false,
+        "dependent[child].joint_return": false,
+        "dependent[child].citizen": false,
+        "dependent[child].canada_mexico": true,
+        "dependent[child].married": false,
+        "dependent[child].tin": false,
+        "dependent[child].work_ssn": false,
+        "dependent[child].gross_income": 0,
+        "dependent[child].supported": true,
+        "dependent[child].other_claimant": false,
+        "dependent[child].divorced_rule": false,
+        "dependent[child].multiple_support": false,
+        "dependent[child].parent_home_paid": false,
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sa.standard": {
@@ -3249,7 +3569,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sa.standard": {
@@ -3348,7 +3676,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sa.standard": {
@@ -3447,7 +3783,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sa.standard": {
@@ -3546,7 +3890,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sa.standard": {
@@ -3649,7 +4001,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sa.itemizes": {
@@ -3752,7 +4112,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sa.itemizes": {
@@ -3855,7 +4223,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 9940000
+        "person[taxpayer].w2[a].box1": 9940000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f4952.line8": {
@@ -3962,7 +4338,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 9800000
+        "person[taxpayer].w2[a].box1": 9800000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f4952.line8": {
@@ -4069,7 +4453,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 9800000
+        "person[taxpayer].w2[a].box1": 9800000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f4952.line8": {
@@ -4195,7 +4587,15 @@
         "sales[a].proceeds": 1000000,
         "sales[a].reported_basis": 0,
         "interest[bank].amount": 300000,
-        "person[taxpayer].w2[a].box1": 28000000
+        "person[taxpayer].w2[a].box1": 28000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f8960.line8": {
@@ -4310,7 +4710,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 19800000
+        "person[taxpayer].w2[a].box1": 19800000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f8960.line17": {
@@ -4409,7 +4817,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 19900000
+        "person[taxpayer].w2[a].box1": 19900000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f8960.line17": {
@@ -4508,7 +4924,35 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 19800000
+        "person[taxpayer].w2[a].box1": 19800000,
+        "$dependent": [
+          "child"
+        ],
+        "dependent[child].relationship": "child",
+        "dependent[child].age": 10,
+        "dependent[child].student": false,
+        "dependent[child].disabled": false,
+        "dependent[child].months": 12,
+        "dependent[child].self_support": false,
+        "dependent[child].joint_return": false,
+        "dependent[child].citizen": false,
+        "dependent[child].canada_mexico": true,
+        "dependent[child].married": false,
+        "dependent[child].tin": false,
+        "dependent[child].work_ssn": false,
+        "dependent[child].gross_income": 0,
+        "dependent[child].supported": true,
+        "dependent[child].other_claimant": false,
+        "dependent[child].divorced_rule": false,
+        "dependent[child].multiple_support": false,
+        "dependent[child].parent_home_paid": false,
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f8960.line17": {
@@ -4607,7 +5051,35 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 19900000
+        "person[taxpayer].w2[a].box1": 19900000,
+        "$dependent": [
+          "child"
+        ],
+        "dependent[child].relationship": "child",
+        "dependent[child].age": 10,
+        "dependent[child].student": false,
+        "dependent[child].disabled": false,
+        "dependent[child].months": 12,
+        "dependent[child].self_support": false,
+        "dependent[child].joint_return": false,
+        "dependent[child].citizen": false,
+        "dependent[child].canada_mexico": true,
+        "dependent[child].married": false,
+        "dependent[child].tin": false,
+        "dependent[child].work_ssn": false,
+        "dependent[child].gross_income": 0,
+        "dependent[child].supported": true,
+        "dependent[child].other_claimant": false,
+        "dependent[child].divorced_rule": false,
+        "dependent[child].multiple_support": false,
+        "dependent[child].parent_home_paid": false,
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f8960.line17": {
@@ -4706,7 +5178,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 24800000
+        "person[taxpayer].w2[a].box1": 24800000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f8960.line17": {
@@ -4805,7 +5285,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 24900000
+        "person[taxpayer].w2[a].box1": 24900000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f8960.line17": {
@@ -4904,7 +5392,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 24800000
+        "person[taxpayer].w2[a].box1": 24800000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f8960.line17": {
@@ -5003,7 +5499,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 24900000
+        "person[taxpayer].w2[a].box1": 24900000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f8960.line17": {
@@ -5102,7 +5606,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 12300000
+        "person[taxpayer].w2[a].box1": 12300000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f8960.line17": {
@@ -5201,7 +5713,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 12400000
+        "person[taxpayer].w2[a].box1": 12400000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f8960.line17": {
@@ -5300,7 +5820,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 29800000
+        "person[taxpayer].w2[a].box1": 29800000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f8960.line9a": {
@@ -5407,7 +5935,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 21204999
+        "person[taxpayer].w2[a].box1": 21204999,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "qbi.use_8995a": {
@@ -5518,7 +6054,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 21205000
+        "person[taxpayer].w2[a].box1": 21205000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "qbi.use_8995a": {
@@ -5629,7 +6173,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 21205001
+        "person[taxpayer].w2[a].box1": 21205001,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "qbi.use_8995a": {
@@ -5740,7 +6292,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 675000
+        "person[taxpayer].w2[a].box1": 675000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "qbi.taxable_before": {
@@ -5851,7 +6411,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 575000
+        "person[taxpayer].w2[a].box1": 575000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "qbi.deduction": {
@@ -5958,7 +6526,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "ftc.credit": {
@@ -6057,7 +6633,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "ftc.credit": {
@@ -6156,7 +6740,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 1575000
+        "person[taxpayer].w2[a].box1": 1575000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "ftc.credit": {
@@ -6255,7 +6847,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 21575000
+        "person[taxpayer].w2[a].box1": 21575000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sdtw.line31": {
@@ -6542,7 +7142,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 0
+        "person[taxpayer].w2[a].box1": 0,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sdtw.after22": {
@@ -6657,7 +7265,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 1575000
+        "person[taxpayer].w2[a].box1": 1575000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sdtw.after32": {
@@ -6772,7 +7388,15 @@
         "sales[s].special": false,
         "sales[s].proceeds": 0,
         "sales[s].reported_basis": 300000,
-        "person[taxpayer].w2[a].box1": 9300000
+        "person[taxpayer].w2[a].box1": 9300000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "g28.line7": {
@@ -6884,7 +7508,15 @@
         "gift[books].deduction": 50000,
         "gift[books].public_securities": false,
         "gift[books].special": false,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sa.line12": {
@@ -6992,7 +7624,15 @@
         "gift[books].deduction": 500000,
         "gift[books].public_securities": false,
         "gift[books].special": false,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sa.line12": {
@@ -7100,7 +7740,15 @@
         "gift[books].deduction": 500001,
         "gift[books].public_securities": true,
         "gift[books].special": false,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sa.line12": {
@@ -7202,7 +7850,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 0
+        "person[taxpayer].w2[a].box1": 0,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "scope.ready": {
@@ -7309,7 +7965,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "scope.ready": {
@@ -7416,7 +8080,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "scope.ready": {
@@ -7523,7 +8195,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 0
+        "person[taxpayer].w2[a].box1": 0,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "scope.ready": {
@@ -7630,7 +8310,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "scope.ready": {
@@ -7737,7 +8425,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f4952.line8": {
@@ -7896,7 +8592,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f4952.line8": {
@@ -8055,7 +8759,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f4952.line8": {
@@ -8214,7 +8926,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f4952.election": {
@@ -8321,7 +9041,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f8959.line18": {
@@ -8519,7 +9247,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f8960.line17": {
@@ -8769,7 +9505,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f8960.line17": {
@@ -9019,7 +9763,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sa.line17": {
@@ -9217,7 +9969,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sa.line17": {
@@ -9415,7 +10175,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sa.line17": {
@@ -9613,7 +10381,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sa.standard": {
@@ -9720,7 +10496,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sa.standard": {
@@ -9827,7 +10611,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 0
+        "person[taxpayer].w2[a].box1": 0,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sb.line4": {
@@ -9973,7 +10765,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 0
+        "person[taxpayer].w2[a].box1": 0,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sb.line4": {
@@ -10119,7 +10919,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 0
+        "person[taxpayer].w2[a].box1": 0,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sb.line4": {
@@ -10265,7 +11073,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 0
+        "person[taxpayer].w2[a].box1": 0,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sb.line4": {
@@ -10411,7 +11227,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "qbi.deduction": {
@@ -10518,7 +11342,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "ftc.credit": {
@@ -10625,7 +11457,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "ftc.credit": {
@@ -10732,7 +11572,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "ftc.credit": {
@@ -10839,7 +11687,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "ftc.credit": {
@@ -10946,7 +11802,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "ftc.credit": {
@@ -11053,7 +11917,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "s2.line21": {
@@ -11186,7 +12058,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "s2.line21": {
@@ -11324,7 +12204,15 @@
         "gift[books].deduction": 540000,
         "gift[books].public_securities": false,
         "gift[books].special": false,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sa.line12": {
@@ -11437,7 +12325,15 @@
         "gift[books].deduction": 100,
         "gift[books].public_securities": false,
         "gift[books].special": true,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sa.line12": {
@@ -11544,7 +12440,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 0
+        "person[taxpayer].w2[a].box1": 0,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f1040.line7a": {
@@ -11651,7 +12555,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 0
+        "person[taxpayer].w2[a].box1": 0,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f1040.line7a": {
@@ -11758,7 +12670,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 0
+        "person[taxpayer].w2[a].box1": 0,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f1040.line7a": {
@@ -11865,7 +12785,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 0
+        "person[taxpayer].w2[a].box1": 0,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f1040.line7a": {
@@ -11973,7 +12901,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 51575000
+        "person[taxpayer].w2[a].box1": 51575000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sdtw.line30": {
@@ -12108,7 +13044,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 9575000
+        "person[taxpayer].w2[a].box1": 9575000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sdtw.line21": {
@@ -12231,7 +13175,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 0
+        "person[taxpayer].w2[a].box1": 0,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "qbi.taxable_before": {
@@ -12342,7 +13294,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sb.partIII": {
@@ -12453,7 +13413,15 @@
         "sales[s].special": false,
         "sales[s].proceeds": 0,
         "sales[s].reported_basis": 700000,
-        "person[taxpayer].w2[a].box1": 30300000
+        "person[taxpayer].w2[a].box1": 30300000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f8960.line5a": {
@@ -12560,7 +13528,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 32500000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f8959.line6": {
@@ -12658,7 +13634,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 0
+        "person[taxpayer].w2[a].box1": 0,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f4952.line8": {
@@ -12765,7 +13749,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 0
+        "person[taxpayer].w2[a].box1": 0,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f1040.line7a": {
@@ -12872,7 +13864,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 0
+        "person[taxpayer].w2[a].box1": 0,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f1040.line7a": {
@@ -12979,7 +13979,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 0
+        "person[taxpayer].w2[a].box1": 0,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f1040.line7a": {
@@ -13086,7 +14094,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f8960.line17": {
@@ -13193,7 +14209,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f4952.line8": {
@@ -13352,7 +14376,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sa.line17": {
@@ -13550,7 +14582,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f8960.line17": {
@@ -13800,7 +14840,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 0
+        "person[taxpayer].w2[a].box1": 0,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sb.line4": {
@@ -13946,7 +14994,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "s2.line21": {
@@ -14088,7 +15144,15 @@
         "sales[s].special": false,
         "sales[s].proceeds": 1000000,
         "sales[s].reported_basis": 0,
-        "person[taxpayer].w2[a].box1": 9000000
+        "person[taxpayer].w2[a].box1": 9000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f4952.line4d": {
@@ -14207,7 +15271,15 @@
         "gift[books].public_securities": false,
         "gift[books].special": false,
         "interest[bank].amount": 200000,
-        "person[taxpayer].w2[a].box1": 9800000
+        "person[taxpayer].w2[a].box1": 9800000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sa.line4": {
@@ -14369,7 +15441,15 @@
         "sales[a].proceeds": 1000000,
         "sales[a].reported_basis": 0,
         "interest[bank].amount": 300000,
-        "person[taxpayer].w2[a].box1": 28000000
+        "person[taxpayer].w2[a].box1": 28000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f8960.line8": {
@@ -14508,7 +15588,15 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "scope.ready": {

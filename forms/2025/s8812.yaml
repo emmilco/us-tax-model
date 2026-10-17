@@ -1,0 +1,726 @@
+form:
+  id: s8812
+  kind: form
+  title: Schedule 8812 — Credits for Qualifying Children and Other Dependents
+  tax_year: 2025
+  note: Part I, Part II-A and Part II-B for a filer in the supported slice. Lines 4 to 7 and 16b are
+    sums of per-dependent amounts rather than a count times a dollar figure; the count lines are kept
+    beside them. Credit Limit Worksheet A and the Earned Income Worksheet are encoded as helpers with
+    the slice's refusals where their lines read forms outside it.
+  lines:
+    - id: s8812.line1
+      printed: "1"
+      type: Dollars
+      label: Enter the amount from line 11a of your Form 1040, 1040-SR, or 1040-NR
+      expr:
+        op: copy
+        from: f1040.line11a
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 1
+    - id: s8812.zero
+      printed: (helper)
+      type: NonNegDollars
+      label: Year parameter sales.zero
+      expr:
+        op: param
+        ref: sales.zero
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), lines 2a–2c
+    - id: s8812.line2a
+      printed: 2a
+      type: NonNegDollars
+      label: Enter income from Puerto Rico that you excluded
+      expr:
+        op: copy
+        from: s8812.zero
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 2a
+      refuses:
+        - when: sa.excluded_income
+          form: Schedule 8812 lines 2a–2c
+          remedy: Excluded Puerto Rico income, Form 2555 and Form 4563 amounts are outside this tool.
+          cite:
+            doc: f1040s8812
+            locator: Schedule 8812 (2025), lines 2a–2c
+    - id: s8812.line2b
+      printed: 2b
+      type: NonNegDollars
+      label: Enter the amounts from lines 45 and 50 of your Form 2555
+      expr:
+        op: copy
+        from: s8812.zero
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 2b
+      refuses:
+        - when: sa.excluded_income
+          form: Schedule 8812 lines 2a–2c
+          remedy: Excluded Puerto Rico income, Form 2555 and Form 4563 amounts are outside this tool.
+          cite:
+            doc: f1040s8812
+            locator: Schedule 8812 (2025), lines 2a–2c
+    - id: s8812.line2c
+      printed: 2c
+      type: NonNegDollars
+      label: Enter the amount from line 15 of your Form 4563
+      expr:
+        op: copy
+        from: s8812.zero
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 2c
+      refuses:
+        - when: sa.excluded_income
+          form: Schedule 8812 lines 2a–2c
+          remedy: Excluded Puerto Rico income, Form 2555 and Form 4563 amounts are outside this tool.
+          cite:
+            doc: f1040s8812
+            locator: Schedule 8812 (2025), lines 2a–2c
+    - id: s8812.line2d
+      printed: 2d
+      type: NonNegDollars
+      label: Add lines 2a through 2c
+      expr:
+        op: sum
+        of:
+          - s8812.line2a
+          - s8812.line2b
+          - s8812.line2c
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 2d
+    - id: s8812.line3
+      printed: "3"
+      type: Dollars
+      label: Add lines 1 and 2d
+      expr:
+        op: sum
+        of:
+          - s8812.line1
+          - s8812.line2d
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 3
+    - id: s8812.line4
+      printed: "4"
+      type: Count
+      label: Number of qualifying children under age 17 with the required social security number
+      expr:
+        op: sum_over
+        collection: dependent
+        field: dependent.one
+        where:
+          op: test
+          eq:
+            - dependent.ctc_child
+            - const: true
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 4
+    - id: s8812.line5
+      printed: "5"
+      type: NonNegDollars
+      label: Multiply line 4 by $2,200
+      expr:
+        op: sum_over
+        collection: dependent
+        field: dependent.ctc_amount
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 5
+      note: The sum over dependents of $2,200 for each qualifying child counted on line 4.
+    - id: s8812.line6
+      printed: "6"
+      type: Count
+      label: Number of other dependents, including any qualifying children who are not under age 17 or who do not have the required social security number
+      expr:
+        op: sum_over
+        collection: dependent
+        field: dependent.one
+        where:
+          op: test
+          eq:
+            - dependent.odc_person
+            - const: true
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 6
+    - id: s8812.line7
+      printed: "7"
+      type: NonNegDollars
+      label: Multiply line 6 by $500
+      expr:
+        op: sum_over
+        collection: dependent
+        field: dependent.odc_amount
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 7
+      note: The sum over dependents of $500 for each other dependent counted on line 6.
+    - id: s8812.line8
+      printed: "8"
+      type: NonNegDollars
+      label: Add lines 5 and 7
+      expr:
+        op: sum
+        of:
+          - s8812.line5
+          - s8812.line7
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 8
+    - id: s8812.line9
+      printed: "9"
+      type: NonNegDollars
+      label: Enter the amount shown below for your filing status. Married filing jointly—$400,000; all other filing statuses—$200,000
+      expr:
+        op: param
+        ref: ctc.threshold
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 9
+    - id: s8812.excess
+      printed: (helper)
+      type: NonNegDollars
+      label: Line 3 less line 9, before rounding up; zero or less is zero
+      expr:
+        op: subtract_floor0
+        from: s8812.line3
+        take: s8812.line9
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 10, "Subtract line 9 from line 3. If zero or less, enter -0-"
+    - id: s8812.line10
+      printed: "10"
+      type: NonNegDollars
+      label: Subtract line 9 from line 3. If zero or less, enter -0-. If more than zero and not a multiple of $1,000, enter the next multiple of $1,000
+      expr:
+        op: round
+        of: s8812.excess
+        unit: 100000
+        rule: up
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 10
+    - id: s8812.line11
+      printed: "11"
+      type: NonNegDollars
+      label: Multiply line 10 by 5% (0.05)
+      expr:
+        op: multiply_rate
+        amount: s8812.line10
+        rate:
+          param: ctc.phaseout_rate
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 11
+    - id: s8812.line12
+      printed: "12"
+      type: NonNegDollars
+      label: Is the amount on line 8 more than the amount on line 11? No. Stop here; you cannot take the credits. Yes. Subtract line 11 from line 8
+      expr:
+        op: subtract_floor0
+        from: s8812.line8
+        take: s8812.line11
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 12
+      note: A line 8 not more than line 11 gives zero here, and zero on every line that reads it, which is the printed "Stop here".
+    - id: s8812.clw_a1
+      printed: (helper)
+      type: Dollars
+      label: Credit Limit Worksheet A, line 1. Enter the amount from line 18 of your Form 1040
+      expr:
+        op: copy
+        from: f1040.line18
+      cite:
+        doc: i1040s8812
+        locator: p. 4, Credit Limit Worksheet A, line 1
+    - id: s8812.clw_a2
+      printed: (helper)
+      type: Dollars
+      label: Credit Limit Worksheet A, line 2. Schedule 3 lines 1, 2, 3, 4, 5b, 6d, 6f, 6l and 6m; in this slice Schedule 3 line 1 alone, the other credits being refused
+      expr:
+        op: copy
+        from: s3.line1
+      cite:
+        doc: i1040s8812
+        locator: p. 4, Credit Limit Worksheet A, line 2
+      refuses:
+        - when: scope.credits
+          form: Credit Limit Worksheet A, line 2 (Schedule 3 lines 2–4, 5b, 6d, 6f, 6l, 6m)
+          remedy: Credits other than the foreign tax credit and the dependent credits are outside this tool.
+          cite:
+            doc: i1040s8812
+            locator: p. 4, Credit Limit Worksheet A, line 2
+    - id: s8812.clw_a3
+      printed: (helper)
+      type: Dollars
+      label: Credit Limit Worksheet A, line 3. Subtract line 2 from line 1
+      expr:
+        op: subtract
+        from: s8812.clw_a1
+        take: s8812.clw_a2
+      cite:
+        doc: i1040s8812
+        locator: p. 4, Credit Limit Worksheet A, line 3
+    - id: s8812.clw_a4
+      printed: (helper)
+      type: NonNegDollars
+      label: Credit Limit Worksheet A, line 4. Credit Limit Worksheet B amount, zero when that worksheet is not completed
+      expr:
+        op: copy
+        from: s8812.zero
+      cite:
+        doc: i1040s8812
+        locator: p. 4, Credit Limit Worksheet A, line 4, "If you are not completing Credit Limit Worksheet B, enter -0-"
+      refuses:
+        - when: scope.credits
+          form: Credit Limit Worksheet B (Forms 8396, 8839, 5695 Part I, 8859)
+          remedy: The credits that call for Credit Limit Worksheet B are outside this tool.
+          cite:
+            doc: i1040s8812
+            locator: p. 4, Credit Limit Worksheet A, "Complete Credit Limit Worksheet B only if you meet all the following"
+    - id: s8812.clw_a5
+      printed: (helper)
+      type: Dollars
+      label: Credit Limit Worksheet A, line 5. Subtract line 4 from line 3. Enter here and on Schedule 8812, line 13
+      expr:
+        op: subtract
+        from: s8812.clw_a3
+        take: s8812.clw_a4
+      cite:
+        doc: i1040s8812
+        locator: p. 4, Credit Limit Worksheet A, line 5
+    - id: s8812.line13
+      printed: "13"
+      type: Dollars
+      label: Enter the amount from Credit Limit Worksheet A
+      expr:
+        op: copy
+        from: s8812.clw_a5
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 13
+    - id: s8812.line14
+      printed: "14"
+      type: Dollars
+      label: Enter the smaller of line 12 or line 13. This is your child tax credit and credit for other dependents
+      expr:
+        op: smaller_of
+        of:
+          - s8812.line12
+          - s8812.line13
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 14
+    - id: s8812.line16a
+      printed: 16a
+      type: NonNegDollars
+      label: Subtract line 14 from line 12. If zero, stop here; you cannot take the additional child tax credit
+      expr:
+        op: subtract_floor0
+        from: s8812.line12
+        take: s8812.line14
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 16a
+    - id: s8812.line16b
+      printed: 16b
+      type: NonNegDollars
+      label: Number of qualifying children under age 17 with the required social security number x $1,700. If zero, stop here
+      expr:
+        op: sum_over
+        collection: dependent
+        field: dependent.actc_amount
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 16b
+      note: The sum over dependents of $1,700 for each qualifying child counted on line 4.
+    - id: s8812.line17
+      printed: "17"
+      type: NonNegDollars
+      label: Enter the smaller of line 16a or line 16b
+      expr:
+        op: smaller_of
+        of:
+          - s8812.line16a
+          - s8812.line16b
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 17
+    - id: s8812.combat_pay
+      printed: (helper)
+      type: Bool
+      label: Any nontaxable combat pay (Form W-2, box 12, code Q)?
+      expr:
+        op: input
+        source: Did you receive any nontaxable combat pay (Form W-2, box 12, code Q)?
+      cite:
+        doc: i1040s8812
+        locator: p. 8, Earned Income Worksheet, line 1b
+    - id: s8812.puerto_rico
+      printed: (helper)
+      type: Bool
+      label: Bona fide resident of Puerto Rico?
+      expr:
+        op: input
+        source: Were you a bona fide resident of Puerto Rico in 2025?
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), after line 20, "If you are a bona fide resident of Puerto Rico, go to line 21"
+    - id: s8812.eiw_1a
+      printed: (helper)
+      type: NonNegDollars
+      label: Earned Income Worksheet, line 1a. Enter the amount from line 1z of Form 1040
+      expr:
+        op: copy
+        from: f1040.line1z
+      cite:
+        doc: i1040s8812
+        locator: p. 8, Earned Income Worksheet, line 1a
+    - id: s8812.eiw_1b
+      printed: (helper)
+      type: NonNegDollars
+      label: Earned Income Worksheet, line 1b. Nontaxable combat pay received; zero in this slice
+      expr:
+        op: copy
+        from: s8812.zero
+      cite:
+        doc: i1040s8812
+        locator: p. 8, Earned Income Worksheet, line 1b
+      refuses:
+        - when: s8812.combat_pay
+          form: Earned Income Worksheet, line 1b (nontaxable combat pay)
+          remedy: Nontaxable combat pay is outside this tool.
+          cite:
+            doc: i1040s8812
+            locator: p. 8, Earned Income Worksheet, line 1b
+    - id: s8812.eiw_3
+      printed: (helper)
+      type: NonNegDollars
+      label: Earned Income Worksheet, line 3. Combine lines 1a, 1b, 2a, 2b and 2e; lines 2a–2e are skipped without Schedule C, F, SE or a partnership K-1
+      expr:
+        op: sum
+        of:
+          - s8812.eiw_1a
+          - s8812.eiw_1b
+      cite:
+        doc: i1040s8812
+        locator: p. 8, Earned Income Worksheet, line 3, and "if you are filing Schedule C, F, or SE, or you received a Schedule K-1 (Form 1065), go to line 2a. Otherwise, skip lines 2a through 2e"
+      refuses:
+        - when: scope.schedule1
+          form: Earned Income Worksheet, lines 2a–2e (Schedule C, F, SE or K-1 income)
+          remedy: Self-employment and partnership income are outside this tool.
+          cite:
+            doc: i1040s8812
+            locator: p. 8, Earned Income Worksheet, lines 2a–2e
+    - id: s8812.eiw_4
+      printed: (helper)
+      type: NonNegDollars
+      label: Earned Income Worksheet, line 4. Medicaid waiver payments excluded on Schedule 1, line 8s, not chosen as earned income; zero in this slice
+      expr:
+        op: copy
+        from: s8812.zero
+      cite:
+        doc: i1040s8812
+        locator: p. 8, Earned Income Worksheet, line 4
+      refuses:
+        - when: scope.schedule1
+          form: Earned Income Worksheet, line 4 (Schedule 1, line 8s)
+          remedy: Schedule 1 amounts are outside this tool.
+          cite:
+            doc: i1040s8812
+            locator: p. 8, Earned Income Worksheet, line 4
+    - id: s8812.eiw_5
+      printed: (helper)
+      type: NonNegDollars
+      label: Earned Income Worksheet, line 5. Enter the amount from Schedule 1, line 15; zero in this slice
+      expr:
+        op: copy
+        from: s8812.zero
+      cite:
+        doc: i1040s8812
+        locator: p. 8, Earned Income Worksheet, line 5
+      refuses:
+        - when: scope.schedule1
+          form: Earned Income Worksheet, line 5 (Schedule 1, line 15)
+          remedy: Schedule 1 amounts are outside this tool.
+          cite:
+            doc: i1040s8812
+            locator: p. 8, Earned Income Worksheet, line 5
+    - id: s8812.eiw_6
+      printed: (helper)
+      type: NonNegDollars
+      label: Earned Income Worksheet, line 6. Add lines 4 and 5
+      expr:
+        op: sum
+        of:
+          - s8812.eiw_4
+          - s8812.eiw_5
+      cite:
+        doc: i1040s8812
+        locator: p. 8, Earned Income Worksheet, line 6
+    - id: s8812.eiw_7
+      printed: (helper)
+      type: Dollars
+      label: Earned Income Worksheet, line 7. Subtract line 6 from line 3. Enter this amount on line 18a of Schedule 8812
+      expr:
+        op: subtract
+        from: s8812.eiw_3
+        take: s8812.eiw_6
+      cite:
+        doc: i1040s8812
+        locator: p. 8, Earned Income Worksheet, line 7
+    - id: s8812.line18a
+      printed: 18a
+      type: Dollars
+      label: Earned income (see instructions)
+      expr:
+        op: copy
+        from: s8812.eiw_7
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 18a
+    - id: s8812.line18b
+      printed: 18b
+      type: NonNegDollars
+      label: Nontaxable combat pay (see instructions)
+      expr:
+        op: copy
+        from: s8812.eiw_1b
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 18b
+    - id: s8812.line19
+      printed: "19"
+      type: NonNegDollars
+      label: Is the amount on line 18a more than $2,500? No. Leave line 19 blank and enter -0- on line 20. Yes. Subtract $2,500 from the amount on line 18a
+      expr:
+        op: subtract_floor0
+        from: s8812.line18a
+        take:
+          param: actc.earned_floor
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 19
+    - id: s8812.line20
+      printed: "20"
+      type: NonNegDollars
+      label: Multiply the amount on line 19 by 15% (0.15) and enter the result
+      expr:
+        op: multiply_rate
+        amount: s8812.line19
+        rate:
+          param: actc.rate
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 20
+      ambiguity: amb.2025.multiplication_subcent
+    - id: s8812.ss_withheld
+      printed: (helper)
+      type: NonNegDollars
+      label: Social security tax withheld, Form(s) W-2 box 4, all persons
+      expr:
+        op: sum_over
+        collection: person
+        field: person.withheld
+      cite:
+        doc: i1040s8812
+        locator: p. 9, Additional Medicare Tax and RRTA Tax Worksheet, line 1
+    - id: s8812.amt_ws4
+      printed: (helper)
+      type: NonNegDollars
+      label: Additional Medicare Tax and RRTA Tax Worksheet, line 4. Add social security tax withheld, Medicare tax withheld (Form 8959, line 19) and Form 8959, line 7
+      expr:
+        op: sum
+        of:
+          - s8812.ss_withheld
+          - f8959.line19
+          - f8959.line7
+      cite:
+        doc: i1040s8812
+        locator: p. 9, Additional Medicare Tax and RRTA Tax Worksheet, lines 1–4
+    - id: s8812.line21
+      printed: "21"
+      type: Dollars
+      label: Withheld social security, Medicare, and Additional Medicare taxes from Form(s) W-2, boxes 4 and 6; with Additional Medicare Tax, the worksheet amount (line 4 less the Additional Medicare Tax withheld, Form 8959 line 22)
+      expr:
+        op: subtract
+        from: s8812.amt_ws4
+        take: f8959.line22
+      cite:
+        doc: i1040s8812
+        locator: p. 9, Additional Medicare Tax and RRTA Tax Worksheet, lines 5 and 6, "Subtract line 5 from line 4"
+    - id: s8812.line22
+      printed: "22"
+      type: NonNegDollars
+      label: Enter the total of the amounts from Schedule 1, line 15; Schedule 2, line 5; Schedule 2, line 6; and Schedule 2, line 13; zero in this slice
+      expr:
+        op: copy
+        from: s8812.zero
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 22
+      refuses:
+        - when: scope.schedule1
+          form: Schedule 8812 line 22 (Schedule 1, line 15)
+          remedy: Self-employment tax and its deduction are outside this tool.
+          cite:
+            doc: f1040s8812
+            locator: Schedule 8812 (2025), line 22
+        - when: s2.other
+          form: Schedule 8812 line 22 (Schedule 2, lines 5, 6 and 13)
+          remedy: Other Schedule 2 taxes are outside this tool.
+          cite:
+            doc: f1040s8812
+            locator: Schedule 8812 (2025), line 22
+    - id: s8812.line23
+      printed: "23"
+      type: Dollars
+      label: Add lines 21 and 22
+      expr:
+        op: sum
+        of:
+          - s8812.line21
+          - s8812.line22
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 23
+    - id: s8812.line24
+      printed: "24"
+      type: NonNegDollars
+      label: 1040 and 1040-SR filers. Enter the total of the amounts from Form 1040, line 27a, and Schedule 3, line 11
+      expr:
+        op: sum
+        of:
+          - f1040.line27a
+          - s3.line11
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 24
+    - id: s8812.line25
+      printed: "25"
+      type: NonNegDollars
+      label: Subtract line 24 from line 23. If zero or less, enter -0-
+      expr:
+        op: subtract_floor0
+        from: s8812.line23
+        take: s8812.line24
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 25
+    - id: s8812.line26
+      printed: "26"
+      type: NonNegDollars
+      label: Enter the larger of line 20 or line 25
+      expr:
+        op: larger_of
+        of:
+          - s8812.line20
+          - s8812.line25
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 26
+    - id: s8812.few_children
+      printed: (helper)
+      type: Bool
+      label: On line 16b, is the amount less than $5,100 (fewer than three qualifying children)?
+      expr:
+        op: test
+        lt:
+          - s8812.line16b
+          - param: actc.three_children
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), after line 20, "On line 16b, is the amount $5,100 or more?"
+    - id: s8812.earned_covers
+      printed: (helper)
+      type: Bool
+      label: Line 20 is equal to or more than line 17
+      expr:
+        op: test
+        ge:
+          - s8812.line20
+          - s8812.line17
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), after line 20, "If line 20 is equal to or more than line 17, skip Part II-B"
+    - id: s8812.from_part_iia
+      printed: (helper)
+      type: NonNegDollars
+      label: Smaller of line 17 or line 20
+      expr:
+        op: smaller_of
+        of:
+          - s8812.line17
+          - s8812.line20
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), after line 20, "enter the smaller of line 17 or line 20 on line 27"
+    - id: s8812.from_part_iib
+      printed: (helper)
+      type: NonNegDollars
+      label: Smaller of line 17 or line 26
+      expr:
+        op: smaller_of
+        of:
+          - s8812.line17
+          - s8812.line26
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), after line 26, "enter the smaller of line 17 or line 26 on line 27"
+    - id: s8812.part_iib_result
+      printed: (helper)
+      type: NonNegDollars
+      label: With three or more qualifying children, line 17 when line 20 covers it, otherwise the smaller of line 17 or line 26
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - s8812.earned_covers
+                - const: true
+            then: s8812.line17
+          - guard:
+              op: test
+              eq:
+                - s8812.earned_covers
+                - const: false
+            then: s8812.from_part_iib
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), after line 20, "Yes. If line 20 is equal to or more than line 17, skip Part II-B and enter the amount from line 17 on line 27. Otherwise, go to line 21"
+    - id: s8812.line27
+      printed: "27"
+      type: NonNegDollars
+      label: This is your additional child tax credit. Enter this amount on Form 1040, line 28
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - s8812.few_children
+                - const: true
+            then: s8812.from_part_iia
+          - guard:
+              op: test
+              eq:
+                - s8812.few_children
+                - const: false
+            then: s8812.part_iib_result
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), lines 20 (Next) through 27
+      refuses:
+        - when: s8812.puerto_rico
+          form: Schedule 8812 Part II-B for bona fide residents of Puerto Rico
+          remedy: The Puerto Rico path through Part II-B is outside this tool.
+          cite:
+            doc: f1040s8812
+            locator: Schedule 8812 (2025), after line 20, "If you are a bona fide resident of Puerto Rico, go to line 21"

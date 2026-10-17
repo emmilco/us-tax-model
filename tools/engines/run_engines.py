@@ -36,6 +36,11 @@ PE_MAP = {
     "f1040.line13a": ["qualified_business_income_deduction"],
     "f1040.line15": ["taxable_income"],
     "f1040.line16": ["regular_tax_before_credits"],
+    # The engine's non_refundable_ctc is the credit left after the refundable part, not the
+    # amount used against tax; line 19 is the smaller of the credit after phase-out and the
+    # limiting tax liability, which is Schedule 8812 line 14.
+    "f1040.line19": ["min:ctc,ctc_limiting_tax_liability"],
+    "f1040.line28": ["refundable_ctc"],
     "sa.line17": ["itemized_taxable_income_deductions"],
     "sa.standard": ["standard_deduction"],
     "sa.deduction": ["taxable_income_deductions", "-qualified_business_income_deduction"],
@@ -47,17 +52,19 @@ PE_MAP = {
 }
 PE_PRECISION = "float32"
 PE_LIMITATIONS = [
-    {"feature": "excess_social_security", "lines": ["s3.line11"],
+    {"feature": "other_dependents", "lines": ["f1040.line19", "f1040.line28"],
+     "reason": "PolicyEngine-US does not treat the generated 17-23-year-old full-time students as dependents of the unit (its dependency test needs inputs the project does not model) and pays no credit for other dependents for them"},
+    {"feature": "excess_social_security", "lines": ['s3.line11'],
      "reason": "PolicyEngine-US takes excess payroll tax withheld as an input and does not compute it from per-employer withholding"},
-    {"feature": "investment_interest_limited", "lines": ["sa.line17", "sa.deduction", "f1040.line15", "f1040.line16", "f1040.tax_before_credits", "f8960.tax"],
+    {"feature": "investment_interest_limited", "lines": ['sa.line17', 'sa.deduction', 'f1040.line15', 'f1040.line16', 'f1040.tax_before_credits', 'f8960.tax', 'f1040.line19', 'f1040.line28'],
      "reason": "PolicyEngine-US deducts investment interest expense in full; it does not apply the Form 4952 net-investment-income limit"},
-    {"feature": "foreign_tax", "lines": ["f1040.line20", "f1040.line24"],
+    {"feature": "foreign_tax", "lines": ['f1040.line20', 'f1040.line24', 'f1040.line19', 'f1040.line28'],
      "reason": "PolicyEngine-US takes the foreign tax credit as a supplied amount with a Form 1116-style limit on foreign-source income; the simple no-Form-1116 path is compared before credits instead"},
-    {"feature": "section_1250_netted", "lines": ["f1040.line16", "f1040.tax_before_credits"],
+    {"feature": "section_1250_netted", "lines": ['f1040.line16', 'f1040.tax_before_credits', 'f1040.line19', 'f1040.line28'],
      "reason": "PolicyEngine-US takes unrecaptured section 1250 gain as an already-netted input; the Unrecaptured Section 1250 Gain Worksheet (Schedule D instructions, lines 14-18) reduces it by the net short-term loss and the 28% worksheet amounts, which the project does"},
-    {"feature": "salt_exceeds_agi", "lines": ["sa.line17", "sa.deduction"],
+    {"feature": "salt_exceeds_agi", "lines": ['sa.line17', 'sa.deduction'],
      "reason": "PolicyEngine-US limits the state and local tax deduction to adjusted gross income; Schedule A line 5e limits it only by the statutory cap"},
-    {"feature": "investment_interest_on_8960", "lines": ["f8960.tax", "f1040.line24", "f1040.tax_before_credits"],
+    {"feature": "investment_interest_on_8960", "lines": ['f8960.tax', 'f1040.line24', 'f1040.tax_before_credits', 'f1040.line19', 'f1040.line28'],
      "reason": "PolicyEngine-US does not deduct investment interest expense (Form 4952 line 8) on Form 8960 line 9a"},
 ]
 # Tax-Calculator variables per project line. c09200 is income tax before refundable
@@ -68,6 +75,8 @@ TC_MAP = {
     "f1040.line13a": ["qbided"],
     "f1040.line15": ["c04800"],
     "f1040.line16": ["taxbc"],
+    "f1040.line19": ["c07220", "odc"],
+    "f1040.line28": ["c11070"],
     "f1040.line20": ["c07300"],
     "sa.line17": ["c04470"],
     "sa.deduction": ["standard", "c04470"],
@@ -78,25 +87,32 @@ TC_MAP = {
 }
 TC_PRECISION = "float64"
 TC_LIMITATIONS = [
-    {"feature": "excess_social_security", "lines": ["s3.line11"],
+    {"feature": "ctc_phaseout", "lines": ["f1040.line19", "f1040.line24", "f1040.line28"],
+     "reason": "Tax-Calculator phases the child tax credit out by 5% of the exact excess of income over the threshold; Schedule 8812 line 10 rounds the excess up to the next multiple of $1,000 first"},
+    {"feature": "excess_social_security", "lines": ['s3.line11'],
      "reason": "Tax-Calculator does not compute the excess Social Security withholding credit"},
-    {"feature": "qbi_dividends", "lines": ["f1040.line13a", "sa.deduction", "f1040.line15", "f1040.line16", "f1040.line20", "f1040.line24", "f1040.tax_before_credits"],
+    {"feature": "qbi_dividends", "lines": ['f1040.line13a', 'sa.deduction', 'f1040.line15', 'f1040.line16', 'f1040.line20', 'f1040.line24', 'f1040.tax_before_credits', 'f1040.line19', 'f1040.line28'],
      "reason": "Tax-Calculator has no input for section 199A dividends (Form 1099-DIV box 5), so its QBI deduction is zero"},
-    {"feature": "special_gains", "lines": ["f1040.line16", "f1040.line20", "f1040.line24", "f1040.tax_before_credits"],
+    {"feature": "special_gains", "lines": ['f1040.line16', 'f1040.line20', 'f1040.line24', 'f1040.tax_before_credits', 'f1040.line19', 'f1040.line28'],
      "reason": "Tax-Calculator has no inputs for unrecaptured section 1250 gain or 28% rate gain (Form 1099-DIV boxes 2b, 2d)"},
-    {"feature": "investment_interest_limited", "lines": ["sa.line17", "sa.deduction", "f1040.line15", "f1040.line16", "f1040.line20", "f1040.line24", "f1040.tax_before_credits"],
+    {"feature": "investment_interest_limited", "lines": ['sa.line17', 'sa.deduction', 'f1040.line15', 'f1040.line16', 'f1040.line20', 'f1040.line24', 'f1040.tax_before_credits', 'f1040.line19', 'f1040.line28'],
      "reason": "Tax-Calculator deducts investment interest in full within itemizable interest paid; it does not apply the Form 4952 net-investment-income limit"},
-    {"feature": "no_tax_either_way", "lines": ["sa.deduction", "f1040.line15"],
+    {"feature": "no_tax_either_way", "lines": ['sa.deduction', 'f1040.line15', 'f1040.line19', 'f1040.line28'],
      "reason": "Tax-Calculator treats a unit owing no tax under either deduction as taking the standard deduction; the project itemizes whenever itemized deductions exceed the standard deduction. The itemized total itself is compared on every return through a forced-itemize pass"},
-    {"feature": "investment_interest_on_8960", "lines": ["f8960.tax", "f1040.line24", "f1040.tax_before_credits"],
+    {"feature": "investment_interest_on_8960", "lines": ['f8960.tax', 'f1040.line24', 'f1040.tax_before_credits', 'f1040.line19', 'f1040.line28'],
      "reason": "Tax-Calculator does not deduct investment interest expense (Form 4952 line 8) on Form 8960 line 9a"},
 ]
 
 
 def combine(get, spec):
+    """Sum of the named variables; a leading "-" subtracts; "min:a,b" takes the smaller of two."""
     total = 0.0
     for v in spec:
-        total += -get(v[1:]) if v.startswith("-") else get(v)
+        if v.startswith("min:"):
+            a, b = v[4:].split(",")
+            total += min(get(a), get(b))
+        else:
+            total += -get(v[1:]) if v.startswith("-") else get(v)
     return total
 
 
@@ -128,12 +144,19 @@ def run_policyengine(cases):
             # against the net short-term loss on its own, as the 28% Rate Gain Worksheet does.
             "collectibles_gain_or_loss": y(dollars(f["gain_28pct"])),
         }
-        units[pid] = {"members": [pid],
+        members = [pid]
+        for k, age in enumerate(f.get("children", [])):
+            cid = f"{pid}_c{k + 1}"
+            # Children 17 and over are full-time students in the generated cases.
+            people[cid] = {"age": y(age), "is_full_time_student": y(age >= 17)}
+            members.append(cid)
+        units[pid] = {"members": members,
+                      "filing_status": y("HEAD_OF_HOUSEHOLD" if f.get("hoh") else "SINGLE"),
                       "state_and_local_sales_or_income_tax": y(dollars(f["salt_income_tax"])),
                       "unrecaptured_section_1250_gain": y(dollars(f["unrecaptured_1250"])),
                       "foreign_tax_credit": y(dollars(f["foreign_tax"]))}
-        fams[pid] = {"members": [pid]}; spms[pid] = {"members": [pid]}
-        hhs[pid] = {"members": [pid], "state_code": y("TX")}
+        fams[pid] = {"members": members}; spms[pid] = {"members": members}
+        hhs[pid] = {"members": members, "state_code": y("TX")}
     sim = Simulation(situation={"people": people, "tax_units": units, "families": fams, "spm_units": spms, "households": hhs})
     # Tax-unit ids come back in situation order.
     order = list(units.keys())
@@ -155,8 +178,11 @@ def run_taxcalc(cases):
     rows = []
     for i, c in enumerate(cases):
         f = c["facts"]
+        ages = f.get("children", [])
         rows.append(dict(
-            RECID=i + 1, MARS=1, age_head=40, FLPDYR=YEAR,
+            RECID=i + 1, MARS=4 if f.get("hoh") else 1, age_head=40, FLPDYR=YEAR,
+            XTOT=1 + len(ages), n24=sum(1 for a in ages if a < 17), nu18=sum(1 for a in ages if a < 18),
+            n1820=sum(1 for a in ages if 18 <= a <= 20), n21=sum(1 for a in ages if a >= 21), EIC=0,
             e00200=dollars(f["wages"]), e00200p=dollars(f["wages"]),
             e00300=dollars(f["interest"]), e00600=dollars(f["ordinary_dividends"]), e00650=dollars(f["qualified_dividends"]),
             # Distributions enter Schedule D line 13 and net against sales; Tax-Calculator's
@@ -167,13 +193,14 @@ def run_taxcalc(cases):
             e19800=dollars(f["cash_gifts"]), e20100=dollars(f["noncash_gifts"]), e07300=dollars(f["foreign_tax"]),
         ))
     df = pd.DataFrame(rows).astype(float)
-    for col in ("RECID", "MARS", "FLPDYR"):
+    for col in ("RECID", "MARS", "FLPDYR", "XTOT", "n24", "nu18", "n1820", "n21", "EIC"):
         df[col] = df[col].astype(int)
     def run(reform):
         recs = tc.Records(data=df.copy(), start_year=YEAR, gfactors=None, weights=None, adjust_ratios=None)
         pol = tc.Policy()
-        if reform:
-            pol.implement_reform(reform)
+        # Tax-Calculator zeroes the additional child tax credit by a random take-up draw that
+        # is not on the form; the documented scale of 9e99 means the credit is always claimed.
+        pol.implement_reform({"actc_claim_prob_scale": {YEAR: 9e99}, **(reform or {})})
         calc = tc.Calculator(policy=pol, records=recs, verbose=False)
         calc.advance_to_year(YEAR); calc.calc_all()
         return calc

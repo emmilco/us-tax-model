@@ -55,6 +55,18 @@
       "revision_locator": "PDF page 1, printed heading and/or footer"
     },
     {
+      "id": "f1040s8812",
+      "url": "https://www.irs.gov/pub/irs-pdf/f1040s8.pdf",
+      "resolved_url": "https://www.irs.gov/pub/irs-pdf/f1040s8.pdf",
+      "fetched_at": "2026-10-17T05:50:56.396197+00:00",
+      "file": "f1040s8812.pdf",
+      "sha256": "6936462d67e2309d14a795aa0b88ef613cc6d79617431cfda3a2edf44aea52db",
+      "text_file": "f1040s8812.txt",
+      "text_sha256": "9b38295071c42fe489ec8f93e117b31eda11355b5a95e3fe388eeee69601c8c9",
+      "revision": "2025; created 2025-07-30",
+      "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md"
+    },
+    {
       "id": "f1040sa",
       "url": "https://www.irs.gov/pub/irs-pdf/f1040sa.pdf",
       "resolved_url": "https://www.irs.gov/pub/irs-pdf/f1040sa.pdf",
@@ -249,6 +261,18 @@
       "revision": "1040 (2025) instructions, web version; page last reviewed 2026-05-07",
       "revision_status": "Web snapshot; title and last-reviewed date inspected in extracted text; content review tracked separately in PREMISES.md",
       "revision_locator": "Extracted text, line 1 title and 'Page Last Reviewed' footer line"
+    },
+    {
+      "id": "i1040s8812",
+      "url": "https://www.irs.gov/pub/irs-pdf/i1040s8.pdf",
+      "resolved_url": "https://www.irs.gov/pub/irs-pdf/i1040s8.pdf",
+      "fetched_at": "2026-10-17T05:50:56.717024+00:00",
+      "file": "i1040s8812.pdf",
+      "sha256": "bb9788cdf068f9d3a666b2fc351b6bd963e1e848f295d0d01df63848628e1794",
+      "text_file": "i1040s8812.txt",
+      "text_sha256": "fd50a5266cc20aa5a31de0535658793f75c7abbb12fd83b65dc5b21c6ede2765",
+      "revision": "2025; printed date 2026-01-23",
+      "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md"
     },
     {
       "id": "i1040sb",

@@ -145,6 +145,10 @@ function exprText(expr: Expr, doc: FormDoc, ctx: RenderCtx): string {
       return `Enter the larger of ${listOr(expr.of.map((r) => refText(doc, r, ctx)))}.`;
     case "multiply_rate":
       return `Multiply ${refText(doc, expr.amount, ctx)} by ${operandText(expr.rate, doc, ctx)}.`;
+    case "round": {
+      const how = expr.rule === "up" ? "up to the next multiple of" : expr.rule === "down" ? "down to a multiple of" : "to the nearest multiple of (half up)";
+      return `Round ${refText(doc, expr.of, ctx)} ${how} ${fmtMoney(expr.unit)}.`;
+    }
     case "table_lookup": {
       const table = ctx.tables.find((t) => t.id === expr.table);
       return `Use ${table?.title ?? expr.table} at ${refText(doc, expr.key, ctx)} for the filing status (${refText(

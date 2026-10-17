@@ -64,6 +64,17 @@ function mutations(data: CanonicalData): Mutation[] {
           },
         });
       }
+      if (expr.op === "round") {
+        out.push({
+          id: `roundrule.${where}`,
+          kind: "change the rounding rule",
+          where,
+          apply: (d) => {
+            const l = findLine(d, line.id)!;
+            (l.expr as { rule: string }).rule = expr.rule === "up" ? "down" : "up";
+          },
+        });
+      }
       if (expr.op === "subtract_floor0") {
         out.push({
           id: `floor.${where}`,
@@ -84,6 +95,7 @@ function mutations(data: CanonicalData): Mutation[] {
         if (typeof expr.take === "string") refs.push(expr.take);
       }
       if (expr.op === "multiply_rate") refs.push(expr.amount);
+      if (expr.op === "round") refs.push(expr.of);
       if (expr.op === "copy" && typeof expr.from === "string") refs.push(expr.from);
       for (const ref of refs) {
         if (!ref.startsWith(doc.id + ".")) continue; // same-document only

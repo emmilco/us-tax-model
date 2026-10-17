@@ -228,6 +228,16 @@ function evalOperand(ctx: Ctx, frame: Frame, op: Operand, operandsOut?: { ref: s
 }
 
 /** Half-up at the cent: floor((2*a*n + d) / (2*d)) computes round-half-up of a*n/d toward +infinity. */
+/** Round cents to a multiple of `unit` by the named rule; floor division throughout, as the Lean atoms. */
+export function roundToUnit(cents: number, unit: number, rule: string): number | null {
+  const x = BigInt(cents); const u = BigInt(unit);
+  const floorDiv = (a: bigint, b: bigint): bigint => { const q = a / b; return (a % b !== 0n && (a < 0n) !== (b < 0n)) ? q - 1n : q; };
+  if (rule === "half_up") return safeNumber(floorDiv(2n * x + u, 2n * u) * u);
+  if (rule === "up") return safeNumber(floorDiv(x + u - 1n, u) * u);
+  if (rule === "down") return safeNumber(floorDiv(x, u) * u);
+  return null;
+}
+
 export function multiplyRateHalfUp(cents: number, num: number, den: number): number {
   const n = 2n * BigInt(cents) * BigInt(num) + BigInt(den);
   const d = 2n * BigInt(den);
@@ -353,6 +363,15 @@ function evalExpr(ctx: Ctx, frame: Frame, lineId: string, expr: Expr, cite: Cite
       }
       const cents = multiplyRateHalfUp(amount.cents, rate.num, rate.den);
       return d({ kind: "money", cents }, "multiply_rate", ops, [], ["half-up to the cent per the ambiguity register"]);
+    }
+    case "round": {
+      const v = evalOperand(ctx, frame, expr.of, ops);
+      if ((v.kind === "unknown" || v.kind === "refusal")) return d(v, "round", ops);
+      if (v.kind !== "money") return d({ kind: "unknown", reason: "round operand is not money" }, "round", ops);
+      if (!(Number.isInteger(expr.unit) && expr.unit > 0)) return d({ kind: "unknown", reason: "round unit is not a positive integer" }, "round", ops);
+      const cents = roundToUnit(v.cents, expr.unit, expr.rule);
+      if (cents === null) return d({ kind: "unknown", reason: `round rule ${expr.rule} unknown` }, "round", ops);
+      return d({ kind: "money", cents }, "round", ops, [], [`${expr.rule} to a multiple of ${expr.unit} cents`]);
     }
     case "table_lookup": {
       const key = evalOperand(ctx, frame, expr.key, ops);

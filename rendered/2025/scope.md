@@ -19,9 +19,9 @@
 
 ## (helper) — `scope.credits`
 
-- **Authored helper label:** Any dependent or other credit outside the simple foreign tax credit and excess Social Security credit?
-- **Encoded (Bool):** Input — Any dependent or other credit outside the simple foreign tax credit and excess Social Security credit?
-- Expr: `{"op":"input","source":"Any dependent or other credit outside the simple foreign tax credit and excess Social Security credit?"}`
+- **Authored helper label:** Any credit outside the simple foreign tax credit, the excess Social Security credit, the child tax credit, the credit for other dependents and the additional child tax credit?
+- **Encoded (Bool):** Input — Any credit outside the simple foreign tax credit, the excess Social Security credit, the child tax credit, the credit for other dependents and the additional child tax credit?
+- Expr: `{"op":"input","source":"Any credit outside the simple foreign tax credit, the excess Social Security credit, the child tax credit, the credit for other dependents and the additional child tax credit?"}`
 - Cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; sha256 3d31c226)
 
 ## (helper) — `scope.other_income`

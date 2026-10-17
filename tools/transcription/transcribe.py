@@ -223,6 +223,7 @@ GRAMMAR = """Expression grammar (YAML). Exactly one atom per line. Operands writ
   {op: smaller_of, of: [<ref>, <ref>]}
   {op: larger_of, of: [<ref>, <ref>]}
   {op: multiply_rate, amount: <ref>, rate: {param: name}}  # rate is a parameter
+  {op: round, of: <ref>, unit: <integer cents>, rule: half_up | up | down}  # e.g. up to the next $1,000: unit 100000, rule up
   {op: table_lookup, table: tax_table, key: <ref>, status: <ref>}
   {op: sum_over, collection: <collection id>, field: <line id within the entry>, where: <test>}  # where optional
   {op: test, eq: [<operand>, <operand>]}        # also ne, lt, le, gt, ge; or {op: test, all: [<test>, ...]},
@@ -537,6 +538,8 @@ class Expander:
             return {"op": op, "from": self.ref(e["from"], depth), "take": self.operand(e["take"], depth)}
         if op == "multiply_rate":
             return {"op": op, "amount": self.ref(e["amount"], depth), "rate": self.operand(e["rate"], depth)}
+        if op == "round":
+            return {"op": op, "of": self.ref(e["of"], depth), "unit": e.get("unit"), "rule": e.get("rule")}
         if op == "table_lookup":
             return {"op": op, "table": e.get("table"), "key": self.ref(e["key"], depth), "status": self.ref(e["status"], depth)}
         if op == "sum_over":

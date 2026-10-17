@@ -299,6 +299,10 @@ export function coverageReport(): void {
     const labels=evidence.get(line.id);
     out.push(`| ${line.id} | ${labels ? [...labels].sort().join(", ") : doc.kind === "def" ? "See bound instances above" : "unobserved"} |`);
   }
+  // The share of lines that escape the atom vocabulary (design Stage 8 stop condition).
+  const allLines = [...data.forms, ...data.defs].flatMap((d) => d.lines);
+  const opaqueLines = allLines.filter((l) => l.expr.op === "opaque");
+  out.push("", "## Opaque escapes", "", `${opaqueLines.length} of ${allLines.length} lines use \`opaque\` (share ${(opaqueLines.length / allLines.length).toFixed(4)}); the design's stop condition is one in eight.${opaqueLines.length ? " Lines: " + opaqueLines.map((l) => l.id).join(", ") : ""}`, "");
   const outPath = join(ROOT, "reports", "2025", "coverage.md");
   writeFileSync(outPath, out.join("\n"));
   console.log(`coverage: ${taken.size} guards observed; ${uncovered} guards unobserved`);

@@ -19,7 +19,7 @@ import argparse, json, sys, os
 from collections import Counter, defaultdict
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-TAX_LINES = {"f1040.line16", "f1040.line20", "f1040.line24", "f1040.tax_before_credits"}
+TAX_LINES = {"f1040.line16", "f1040.line19", "f1040.line20", "f1040.line24", "f1040.line28", "f1040.tax_before_credits"}
 
 
 def half_up(n, d):
@@ -80,8 +80,21 @@ def schedule_mode_expectations(values, case, t):
     line23 = m("f1040.line23") or 0
     ftc_taxes = case["inputs"].get("ftc.taxes", 0) if (m("f1040.line20") or 0) > 0 or case["inputs"].get("ftc.taxes", 0) > 0 else 0
     tax20 = min(ftc_taxes, tax16) if m("f1040.line20") is not None else 0
-    return {"f1040.line16": tax16, "f1040.line20": tax20,
-            "f1040.line24": max(0, tax16 + line17 - tax20) + line23,
+    # Schedule 8812: line 13 is the tax after the foreign tax credit, so lines 19 and 28
+    # move with the table-versus-schedule difference through the credit limit.
+    line12 = m("s8812.line12") or 0
+    tax19 = min(line12, max(0, tax16 + line17 - tax20))
+    line16a = line12 - tax19
+    line17_8812 = min(line16a, m("s8812.line16b") or 0)
+    line20_8812 = m("s8812.line20") or 0
+    if b("s8812.few_children"):
+        tax28 = min(line17_8812, line20_8812)
+    elif line20_8812 >= line17_8812:
+        tax28 = line17_8812
+    else:
+        tax28 = min(line17_8812, m("s8812.line26") or 0)
+    return {"f1040.line16": tax16, "f1040.line19": tax19, "f1040.line20": tax20, "f1040.line28": tax28,
+            "f1040.line24": max(0, tax16 + line17 - tax20 - tax19) + line23,
             "f1040.tax_before_credits": tax16 + line17 + line23}
 
 
@@ -101,6 +114,8 @@ def float_bound_cents(precision, engine_cents, components=1):
 def derived_features(case, values):
     """The generator's feature flags plus flags read off the project's own values."""
     feats = set(case["features"])
+    if (m0 := (values.get("s8812.line10", {}).get("value", {}).get("cents") or 0)) > 0:
+        feats.add("ctc_phaseout")
     def m(line):
         v = values.get(line, {}).get("value", {})
         return v.get("cents") if v.get("kind") == "money" else None

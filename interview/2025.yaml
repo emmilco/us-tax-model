@@ -95,3 +95,248 @@ interview:
         a count of W-2 sheets. Check employer identity in W-2 boxes b and c.
       order: 2
       cite: *a1
+    - input: $dependent
+      prompt: List a stable key for each person you list as a dependent or who qualifies you for head of household
+        (for example child_a). [] confirms none.
+      help: Use stable local labels. One entry per person; the questions that follow are asked per entry.
+      order: 2
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), Dependents, rows (1)–(7)
+    - input: dependent.relationship
+      prompt: 'Relationship to you: child (son, daughter, stepchild, foster child or their descendant), sibling (brother, sister, half brother, half sister, stepbrother or stepsister, or a son or daughter of a brother, sister, half brother or half sister), sibling_descendant (any other descendant of a sibling, such as a grandniece or a stepsibling''s child), parent (father or mother), parent_relative (a grandparent, aunt or uncle: an ancestor or sibling of a parent), in_law (step-parent or in-law), household_member (any other person who lived with you all year), or other'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: pp. 17 and 19, Steps 1 and 4, "A qualifying child is your..." and "A qualifying relative
+          is your..."
+    - input: dependent.age
+      prompt: Age at the end of 2025 (whole years)
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: p. 17, Step 1, "Under age 19 at the end of 2025"
+    - input: dependent.student
+      prompt: Was this person a full-time student in 2025?
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: p. 17, Step 1, "Under age 24 at the end of 2025, a full-time student (defined later)"
+    - input: dependent.disabled
+      prompt: Was this person permanently and totally disabled at any time in 2025?
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: p. 17, Step 1, "Any age and permanently and totally disabled (defined later)"
+    - input: dependent.months
+      prompt: Months this person lived with you in 2025, counting temporary absences for school, vacation, business, medical care, military service or detention as time lived with you (0–12); for a person born, died, adopted or placed with you in 2025, enter 12 if your home was their home for more than half the time they were alive or with you, and 0 otherwise
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: p. 17, Step 1, "Who lived with you for more than half of 2025", and p. 14, Exception to time
+          lived with you
+    - input: dependent.self_support
+      prompt: Did this person provide over half of their own support for 2025?
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: p. 17, Step 1, "Who didn't provide over half of their own support for 2025"
+    - input: dependent.joint_return
+      prompt: Is this person filing a joint return for 2025, other than only to claim a refund of withheld
+        or estimated tax?
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: p. 17, Step 1, "Who isn't filing a joint return for 2025 or is filing a joint return for
+          2025 only to claim a refund"
+    - input: dependent.citizen
+      prompt: Was this person a U.S. citizen, U.S. national or U.S. resident alien?
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: p. 18, Step 2, question 1, and Step 3, question 2
+    - input: dependent.canada_mexico
+      prompt: If not a U.S. citizen, national or resident alien, was this person a resident of Canada or Mexico?
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: p. 18, Step 2, question 1, "or a resident of Canada or Mexico"
+    - input: dependent.married
+      prompt: Was this person married at the end of 2025?
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: p. 18, Step 2, question 2, "Was the child married? Yes. See Married person, later"
+    - input: dependent.tin
+      prompt: Did this person have an SSN, ITIN or ATIN issued on or before the due date of your 2025 return
+        (including extensions), or have you applied for one by then?
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: p. 18, Step 3, question 1, and p. 19, Step 5, question 2
+    - input: dependent.work_ssn
+      prompt: Did this person have an SSN valid for employment, issued before the due date of your 2025 return
+        (including extensions)?
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: p. 18, Step 3, question 4
+    - input: dependent.gross_income
+      prompt: This person's gross income for 2025
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: p. 19, Step 4, "Who had gross income of less than $5,200 in 2025"
+    - input: dependent.supported
+      prompt: Did you provide over half of this person's support in 2025?
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: p. 19, Step 4, "For whom you provided over half of the person's support in 2025"
+    - input: dependent.other_claimant
+      prompt: Does this person meet the conditions to be the qualifying child of any other person for 2025?
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: p. 17, Step 1, "If the child meets the conditions to be a qualifying child of any other person
+          ... see Qualifying child of more than one person"
+    - input: dependent.divorced_rule
+      prompt: Does the rule for children of divorced or separated parents apply to this person?
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: p. 19, Step 4, "But see Children of divorced or separated parents"
+    - input: dependent.multiple_support
+      prompt: Is this person claimed under a multiple support agreement?
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: p. 19, Step 4, "Multiple support agreements"
+    - input: dependent.parent_home_paid
+      prompt: If this person is your parent, did you pay over half the cost of keeping up a home that was
+        their main home for all of 2025?
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: p. 14, Head of Household, Test 1
+    - input: household.taxpayer_age
+      prompt: Your age at the end of 2025 (whole years)
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: p. 17, Step 1, "Under age 19 at the end of 2025 and younger than you"
+    - input: household.taxpayer_tin
+      prompt: Do you have an SSN or ITIN issued on or before the due date of your 2025 return (including extensions), or have you applied for an ITIN by then?
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: p. 19, Step 5, question 1
+    - input: household.taxpayer_work_ssn
+      prompt: Do you have an SSN valid for employment, issued before the due date of your 2025 return (including
+        extensions)?
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: p. 18, Step 3, question 4
+    - input: household.home_cost
+      prompt: Did you pay over half the cost of keeping up your home for 2025?
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: p. 14, Head of Household, Test 2
+    - input: household.unmarried
+      prompt: Were you unmarried, or considered unmarried under the head of household rules, at the end of
+        2025?
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: p. 14, Head of Household, "You are considered unmarried for this purpose if any of the following
+          applies"
+    - input: s8812.combat_pay
+      prompt: Did you receive any nontaxable combat pay (Form W-2, box 12, code Q)?
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 20
+      cite:
+        doc: i1040s8812
+        locator: p. 8, Earned Income Worksheet, line 1b
+    - input: s8812.puerto_rico
+      prompt: Were you a bona fide resident of Puerto Rico in 2025?
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 20
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), after line 20, "If you are a bona fide resident of Puerto Rico, go
+          to line 21"

@@ -352,6 +352,19 @@ function checkLine(ctx: Ctx, doc: FormDoc, line: Line): void {
       compatible(ctx, declared, tyMoney(amountNonneg), where);
       break;
     }
+    case "round": {
+      const hit = requireRef(ctx, doc, expr.of, where);
+      let nonneg = false;
+      if (hit) {
+        const ty = declaredTyOf(ctx, hit.doc, hit.line);
+        if (ty.kind !== "money") ctx.errors.push(`${where}: round operand '${expr.of}' is not money`);
+        nonneg = ty.kind === "money" && ty.nonneg;
+      }
+      if (!(Number.isInteger(expr.unit) && expr.unit > 0)) ctx.errors.push(`${where}: round unit must be a positive integer number of cents`);
+      if (!["half_up", "up", "down"].includes(expr.rule)) ctx.errors.push(`${where}: round rule must be half_up, up or down`);
+      compatible(ctx, declared, tyMoney(nonneg), where);
+      break;
+    }
     case "table_lookup": {
       const table = ctx.tables.get(expr.table);
       if (!table) ctx.errors.push(`${where}: table '${expr.table}' does not exist`);
@@ -527,6 +540,9 @@ function checkCycles(ctx: Ctx, data: CanonicalData): void {
       case "multiply_rate":
         refs.push(expr.amount);
         operands.push(expr.rate);
+        break;
+      case "round":
+        refs.push(expr.of);
         break;
       case "table_lookup":
         refs.push(expr.key, expr.status);

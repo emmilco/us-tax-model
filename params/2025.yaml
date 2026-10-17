@@ -45,6 +45,27 @@ params:
       cite:
         doc: f1040
         locator: Form 1040, Filing Status (checkboxes)
+    dependent_relationship:
+      values:
+        - child
+        - sibling
+        - sibling_descendant
+        - parent
+        - parent_relative
+        - in_law
+        - household_member
+        - other
+      cite:
+        doc: i1040gi
+        locator: "pp. 17 and 19, Who Qualifies as Your Dependent, Steps 1 and 4: child is a son, daughter, stepchild,
+          foster child or a descendant of any of them; sibling is a brother, sister, stepbrother, stepsister, half
+          brother or half sister, or a son or daughter of a brother, sister, half brother or half sister (Step 4 lists
+          step siblings but not their children); sibling_descendant is any other descendant of a sibling, including a
+          step sibling's child (a qualifying child relationship under Step 1, and a Step 4 relative only as a
+          household member who lived with you all year); parent is a father or
+          mother; parent_relative is an ancestor or sibling of a parent (a Step 4 relative, but not the parent of
+          Head of Household Test 1); in_law is a step-parent or an in-law; household_member is any other person
+          who lived with you all year"
   values:
     ordinary.table_boundary:
       type: Dollars
@@ -484,6 +505,93 @@ params:
       cite:
         doc: i1040gi
         locator: p. 117, Schedule 3 line 11; independently confirmed iw2w3 p. 18
+    ctc.per_child:
+      type: NonNegDollars
+      value: 220000
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 5, "Multiply line 4 by $2,200"
+    odc.per_dependent:
+      type: NonNegDollars
+      value: 50000
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 7, "Multiply line 6 by $500"
+    ctc.threshold:
+      type: NonNegDollars
+      value:
+        single: 20000000
+        mfs: 20000000
+        hoh: 20000000
+        qss: 20000000
+        mfj: 40000000
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 9, "Married filing jointly—$400,000; All other filing statuses—$200,000"
+    ctc.phaseout_rate:
+      type: Rate
+      value:
+        num: 5
+        den: 100
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 11, "Multiply line 10 by 5% (0.05)"
+    actc.per_child:
+      type: NonNegDollars
+      value: 170000
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 16b, "x $1,700"
+    actc.earned_floor:
+      type: NonNegDollars
+      value: 250000
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 19, "Is the amount on line 18a more than $2,500?"
+    actc.rate:
+      type: Rate
+      value:
+        num: 15
+        den: 100
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 20, "Multiply the amount on line 19 by 15% (0.15)"
+    actc.three_children:
+      type: NonNegDollars
+      value: 510000
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), after line 20, "On line 16b, is the amount $5,100 or more?"
+    qc.age_limit:
+      type: Count
+      value: 19
+      cite:
+        doc: i1040gi
+        locator: p. 17, Step 1, "Under age 19 at the end of 2025 and younger than you"
+    qc.student_age_limit:
+      type: Count
+      value: 24
+      cite:
+        doc: i1040gi
+        locator: p. 17, Step 1, "Under age 24 at the end of 2025, a full-time student"
+    ctc.age_limit:
+      type: Count
+      value: 17
+      cite:
+        doc: i1040gi
+        locator: p. 18, Step 3, "Was the child under age 17 at the end of 2025?"
+    qr.gross_income_limit:
+      type: NonNegDollars
+      value: 520000
+      cite:
+        doc: i1040gi
+        locator: p. 19, Step 4, "Who had gross income of less than $5,200 in 2025"
+    dependent.one:
+      type: Count
+      value: 1
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), lines 4 and 6, "Number of qualifying children" and "Number of other dependents"
     ss.one:
       type: Count
       value: 1

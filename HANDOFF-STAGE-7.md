@@ -88,6 +88,40 @@ Done, in `check-all`:
   Cost about $4.50 for all 15. Collections and shared definitions have no
   class M cases yet (T-015).
 
+## Stage 8 (household architecture test): built in this session
+
+- New documents: `dependent` (a root collection: the qualifying-child and
+  qualifying-relative tests of Steps 1–5 per listed person, credit
+  eligibility, and the head of household Tests 1 and 2), `household` (filer
+  facts: age, TIN, work SSN, home cost, unmarried; head of household
+  eligibility gating Form 1040 line 12e), `s8812` (Schedule 8812 Parts I,
+  II-A and II-B with Credit Limit Worksheet A and the Earned Income
+  Worksheet). Form 1040 lines 19 and 28 read it; the credits screen now
+  excludes the three dependent credits. Married statuses stay refused; the
+  earned income credit is T-018.
+- Result of the test: zero `opaque` lines (the coverage report now
+  publishes the share). The one vocabulary gap was the `round` atom, in the
+  schema and the type but implemented nowhere; it now exists in both
+  evaluators, the checker, the renderer, the mutation tool and the
+  transcription grammar (Lean proofs: T-017).
+- Verification: all Stage 7 constructions extended. The engine differential
+  maps children and head of household into both engines; Tax-Calculator
+  needed a fixed claim draw (it zeroes the additional credit by a random
+  take-up model) and a rule for its unrounded phase-out; PolicyEngine's
+  "non-refundable CTC" is the remainder after the refundable part, so line
+  19 is compared as the smaller of its credit and its limiting tax, and it
+  does not recognise the 17–23-year-old students as dependents (T-019).
+- Defects found before commit by the render comparison: BUG-0011 to
+  BUG-0015 (relationship values broader than the tests, twice; Test 1
+  behind the Test 2 home-cost condition; an ITIN question and the
+  months-lived question each missing a clause of the instruction).
+- Sources: Schedule 8812 and its instructions were fetched and their
+  revisions inspected. Official examples in both are qualitative; no class
+  A arithmetic fixture exists for the credit.
+- Fixture note: the head-of-household fixtures from earlier stages now carry
+  a child who is a dependent through the Canada/Mexico residency rule but
+  earns no credit (not a citizen, no SSN), so their recorded values hold.
+
 Stage 7's constructions are all built. Its done-when still wants class M
 for the collection documents and definitions (T-015) and the evidence report
 free of computed lines without an asserted fixture; check the report.

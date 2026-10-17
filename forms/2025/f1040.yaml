@@ -163,6 +163,13 @@ form:
       cite:
         doc: i1040gi
         locator: pp. 34–35, line 12e and Standard Deduction Chart
+      refuses:
+        - when: household.hoh_fails
+          form: Head of household filing status
+          remedy: Head of household is checked but the tests are not met; you must be unmarried or considered unmarried, have paid over half the cost of keeping up your home, and have a qualifying person.
+          cite:
+            doc: i1040gi
+            locator: p. 14, Head of Household
     - id: f1040.line13a
       printed: 13a
       label: Qualified business income deduction from Form 8995 or Form 8995-A
@@ -372,20 +379,13 @@ form:
     - id: f1040.line19
       printed: "19"
       label: Child tax credit or credit for other dependents from Schedule 8812
-      type: NonNegDollars
+      type: Dollars
       expr:
-        op: param
-        ref: sales.zero
+        op: copy
+        from: s8812.line14
       cite:
         doc: f1040
         locator: Form 1040 (2025), line 19
-      refuses:
-        - when: scope.credits
-          form: Schedule 8812 / other credit forms
-          remedy: Dependent and other unsupported credits require forms outside this proof of concept.
-          cite:
-            doc: f1040
-            locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
     - id: f1040.line20
       printed: "20"
       label: Amount from Schedule 3, line 8
@@ -517,18 +517,11 @@ form:
       label: Additional child tax credit (ACTC) from Schedule 8812
       type: NonNegDollars
       expr:
-        op: param
-        ref: sales.zero
+        op: copy
+        from: s8812.line27
       cite:
         doc: f1040
         locator: Form 1040 (2025), line 28
-      refuses:
-        - when: scope.credits
-          form: Schedule 8812 / other credit forms
-          remedy: Dependent and other unsupported credits require forms outside this proof of concept.
-          cite:
-            doc: f1040
-            locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
     - id: f1040.line29
       printed: "29"
       label: American opportunity credit from Form 8863, line 8

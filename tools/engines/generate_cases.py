@@ -143,6 +143,33 @@ def gen_case(rng, i):
     if distributions: features.add("capital_gain_distributions")
     if inv_interest: features.add("investment_interest")
 
+    # Dependents: children who qualify in full (citizen, SSN, lived all year, supported),
+    # under 17 for the child tax credit or 17-23 full-time students for the credit for
+    # other dependents; head of household when a child qualifies, on half of those cases.
+    n_children = rng.choice([0, 0, 0, 1, 1, 2, 3])
+    ages = [rng.randint(0, 16) if rng.random() < 0.75 else rng.randint(17, 23) for _ in range(n_children)]
+    inputs["$dependent"] = [f"child_{k + 1}" for k in range(n_children)]
+    for k, age in enumerate(ages):
+        key = f"dependent[child_{k + 1}]"
+        inputs.update({f"{key}.relationship": "child", f"{key}.age": age, f"{key}.student": age >= 17, f"{key}.disabled": False,
+                       f"{key}.months": 12, f"{key}.self_support": False, f"{key}.joint_return": False, f"{key}.citizen": True,
+                       f"{key}.canada_mexico": False, f"{key}.married": False, f"{key}.tin": True, f"{key}.work_ssn": True,
+                       f"{key}.gross_income": 0, f"{key}.supported": True, f"{key}.other_claimant": False,
+                       f"{key}.divorced_rule": False, f"{key}.multiple_support": False, f"{key}.parent_home_paid": False})
+    hoh = n_children > 0 and rng.random() < 0.5
+    inputs["f1040.status"] = "hoh" if hoh else "single"
+    inputs.update({"household.taxpayer_age": 40, "household.taxpayer_tin": True, "household.taxpayer_work_ssn": True,
+                   "household.home_cost": True, "household.unmarried": True, "s8812.combat_pay": False, "s8812.puerto_rico": False})
+    facts.update(children=ages, n24=sum(1 for a in ages if a < 17), hoh=hoh)
+    if n_children:
+        features.add("dependents")
+    if any(a >= 17 for a in ages):
+        features.add("other_dependents")
+    if hoh:
+        features.add("head_of_household")
+    if facts["n24"] >= 3:
+        features.add("three_or_more_children")
+
     # Foreign tax within the simple-path limit.
     ftc = rng.randint(100, 30_000) if rng.random() < 0.25 else 0
     inputs["ftc.taxes"] = ftc; facts["foreign_tax"] = ftc

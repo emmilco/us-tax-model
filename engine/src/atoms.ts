@@ -35,6 +35,7 @@ export const IMPLEMENTED = new Set<string>([
   "table_lookup",
   "test",
   "choose",
+  "round",
 ]);
 
 export const PRIMITIVE_OPS = new Set<string>([

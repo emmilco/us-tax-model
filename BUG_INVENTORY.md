@@ -130,3 +130,63 @@ later grouping.
 - **Fix:** the question now names a clothing or household item not in good used condition claimed at over $500. No expression changed.
 - **Tags:** scope-screen-narrower-than-line; value-neutral; caught-by-render-comparison
 
+---
+
+## BUG-0011 — Relationship enum conflated categories the dependent tests separate
+
+- **Date:** 2026-10-17
+- **Caught by:** render comparison (spec 6.5) on the new dependent worksheet, before the stage was committed: the model judged `dependent.qr_relationship` and `dependent.hoh_person` MISMATCH because the `sibling` value covered every descendant of a sibling where Step 4 admits only "a son or daughter of any of them" (i1040gi p. 19), and the `parent` value covered ancestors and siblings of a parent where Head of Household Test 1 admits only "your parent" (i1040gi p. 14).
+- **Symptom:** a grandniece who lived with the filer less than the whole year would have passed the qualifying-relative relationship test; a grandparent or aunt whose home the filer kept up would have qualified the filer for head of household under Test 1.
+- **Root cause:** `params/2025.yaml`, enum `dependent_relationship`: one value each for the sibling and parent families, written from Step 1's broader wording, where Step 4 and Test 1 draw a narrower line.
+- **Why it survived:** the encoding was hours old; the generated corpus does not produce the distant relatives; no fixture had one.
+- **Fix:** two values added, `sibling_descendant` (a qualifying-child relationship only) and `parent_relative` (a Step 4 relative but not a Test 1 parent); the two tests read the split values.
+- **Tags:** enum-value-over-inclusive; household-predicates; caught-by-render-comparison; pre-commit
+
+---
+
+## BUG-0012 — Head of household Test 1 demanded the filer's own home cost
+
+- **Date:** 2026-10-17
+- **Caught by:** render comparison (spec 6.5) on the new household form, before the stage was committed: the model judged `household.hoh_eligible` MISMATCH because it required the "paid over half the cost of keeping up your home" answer for every qualifying person, while Test 1 is met by keeping up the parent's home, who "didn't have to live with you" (i1040gi p. 14).
+- **Symptom:** a filer who met only Test 1 and answered the own-home question No would have been refused head of household.
+- **Root cause:** `forms/2025/household.yaml`: one eligibility test combined both tests' persons behind the Test 2 home-cost condition.
+- **Why it survived:** as BUG-0011.
+- **Fix:** the per-dependent line splits into Test 1 and Test 2, the household form counts each, and eligibility is unmarried and (Test 1 met, or Test 2 met with the own-home cost).
+- **Tags:** condition-attached-to-wrong-branch; household-predicates; caught-by-render-comparison; pre-commit
+
+---
+
+## BUG-0013 — Taxpayer TIN question did not name the applied-for ITIN
+
+- **Date:** 2026-10-17
+- **Caught by:** render comparison (spec 6.5) on the new household form, before the stage was committed: Step 5, question 1 says to answer Yes "if you are applying for an ITIN on or before the return due date (including extensions)" (i1040gi p. 19); the question asked only about an issued SSN or ITIN.
+- **Symptom:** a filer who had applied for an ITIN would answer No and lose the credit for other dependents.
+- **Root cause:** `forms/2025/household.yaml`, line `household.taxpayer_tin`: the question was written from the first clause of the step's question.
+- **Why it survived:** as BUG-0011.
+- **Fix:** the question now names the applied-for ITIN, as the dependent's own TIN question already did.
+- **Tags:** scope-screen-narrower-than-line; household-predicates; caught-by-render-comparison; pre-commit
+
+---
+
+## BUG-0014 — Months-lived question did not carry the born-or-died exception
+
+- **Date:** 2026-10-17
+- **Caught by:** render comparison (spec 6.5) on the dependent worksheet, before commit: the model judged `dependent.lived_half` MISMATCH because "more than 6 months" ignores "the person is considered to have lived with you for more than half of 2025 if your home was this person's home for more than half the time the person was alive in 2025" and the same rule for adoption and placement (i1040gi p. 14, Exception to time lived with you).
+- **Symptom:** a child born in the second half of 2025 who lived with the filer from birth would have failed the residency test.
+- **Root cause:** `forms/2025/dependent.yaml`, line `dependent.months`: the question carried the temporary-absence rule and not the born-or-died rule.
+- **Why it survived:** as BUG-0011.
+- **Fix:** the question tells the filer to enter 12 for a person born, died, adopted or placed in 2025 whose home was the filer's for more than half the time alive or with them, and 0 otherwise. No expression changed.
+- **Tags:** scope-screen-narrower-than-line; household-predicates; caught-by-render-comparison; pre-commit
+
+---
+
+## BUG-0015 — Sibling category still broader than Step 4; all-year relatives not counted (corrects BUG-0011)
+
+- **Date:** 2026-10-17
+- **Caught by:** render comparison (spec 6.5) rerun after BUG-0011: the model judged `dependent.qr_relationship` MISMATCH on two counts: Step 4 admits "a son or daughter" of a brother, sister, half brother or half sister but not of a stepbrother or stepsister, which the `sibling` value still included; and a `sibling_descendant` who "lived with you all year as a member of your household" is a Step 4 relative under the last bullet, which the test excluded (i1040gi p. 19).
+- **Symptom:** a stepsibling's child would have passed the qualifying-relative relationship test without living with the filer all year; a grandniece who did live with the filer all year would have failed it.
+- **Root cause:** BUG-0011's split put step siblings' children on the Step 4 side, and the all-year bullet was tied to one enum value.
+- **Why it survived:** the first fix was read against the Step 1 wording, which does admit step siblings' descendants.
+- **Fix:** the `sibling` value now ends at the children of a brother, sister, half brother or half sister; any other relationship (`sibling_descendant`, `household_member`, `other`) is a Step 4 relative when the person lived with the filer all year.
+- **Tags:** enum-value-over-inclusive; household-predicates; caught-by-render-comparison; pre-commit; corrects-BUG-0011
+

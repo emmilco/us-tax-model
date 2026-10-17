@@ -38,4 +38,18 @@ def multiplyRateHalfUp (a num den : Int) : Int := halfUpDiv (a * num) den
     unit = 100). -/
 def roundHalfUpToUnit (x unit : Int) : Int := ((2 * x + unit) / (2 * unit)) * unit
 
+/-- Round up to the next multiple of the unit (the "next multiple of $1,000"
+    rule of Schedule 8812, line 10); a multiple stays where it is. -/
+def roundUpToUnit (x unit : Int) : Int := ((x + unit - 1) / unit) * unit
+
+/-- Round down to a multiple of the unit. -/
+def roundDownToUnit (x unit : Int) : Int := (x / unit) * unit
+
+/-- The `round` atom: rule "half_up", "up" or "down"; none otherwise. -/
+def roundByRule (rule : String) (x unit : Int) : Option Int :=
+  if rule == "half_up" then some (roundHalfUpToUnit x unit)
+  else if rule == "up" then some (roundUpToUnit x unit)
+  else if rule == "down" then some (roundDownToUnit x unit)
+  else none
+
 end TaxFormalization

@@ -82,3 +82,22 @@ engine: neither computes it from per-employer withholding.
   it limits the state and local tax deduction to adjusted gross income; and
   neither engine deducts Form 4952 investment interest on Form 8960 line 9a.
   Each is a stated limitation keyed by a feature read off the project's values.
+
+## Dependents and head of household (Stage 8)
+
+The generator adds up to three children who qualify in full (under 17, or 17–23
+full-time students for the credit for other dependents) and files head of
+household on half of the cases with a qualifying child. PolicyEngine-US gets
+each child as a person in the unit with age and student status and the unit's
+filing status; Tax-Calculator gets `MARS`, `XTOT`, `n24`, `nu18`, `n1820`,
+`n21` and a fixed `credit_claim_urn` of zero, because it otherwise zeroes the
+additional child tax credit by a random take-up model that is not on the form.
+Form 1040 line 19 is compared with PolicyEngine as the smaller of its credit
+after phase-out and its limiting tax liability (its `non_refundable_ctc` is the
+remainder after the refundable part), and with Tax-Calculator as `c07220` plus
+`odc`; line 28 with `refundable_ctc` and `c11070`. The Tax Table adjustment is
+carried through Schedule 8812's credit limit. Limitations keyed by feature:
+Tax-Calculator phases out on the exact excess (`ctc_phaseout`); PolicyEngine
+does not treat the generated 17–23-year-old students as dependents
+(`other_dependents`).
+

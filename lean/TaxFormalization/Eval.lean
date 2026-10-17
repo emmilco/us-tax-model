@@ -370,6 +370,20 @@ where
           pure (mkMoney (multiplyRateHalfUp a n d))
         else pure (unknown "multiply_rate operands wrong")
       | none => pure (unknown "multiply_rate has no amount")
+    | "round" =>
+      match strGet expr "of" with
+      | some ofRef =>
+        let v ← eval ctx frame (.line ofRef)
+        if isUnknown v then pure v
+        else if !(isMoney v) then pure (unknown "round operand is not money")
+        else
+          let unit := (numGet expr "unit").getD 0
+          if unit ≤ 0 then pure (unknown "round unit is not a positive integer")
+          else
+            match roundByRule ((strGet expr "rule").getD "") ((moneyOf v).getD 0) unit with
+            | some r => pure (mkMoney r)
+            | none => pure (unknown "round rule unknown")
+      | none => pure (unknown "round has no operand")
     | "table_lookup" =>
       let tableId := (strGet expr "table").getD ""
       match ctx.tables.get? tableId with

@@ -8,22 +8,26 @@ Cases: 1000 generated single-filer returns (tools/engines/generate_cases.py). En
 
 | line | exact | table-adjusted | float | excluded | explained | UNEXPLAINED | not computed |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| f1040.line11b | 795 | 0 | 205 | 0 | 0 | 0 | 0 |
+| f1040.line11b | 806 | 0 | 194 | 0 | 0 | 0 | 0 |
 | f1040.line13a | 1000 | 0 | 0 | 0 | 0 | 0 | 0 |
-| f1040.line15 | 720 | 0 | 222 | 58 | 0 | 0 | 0 |
-| f1040.line16 | 293 | 546 | 82 | 79 | 0 | 0 | 0 |
-| f1040.tax_before_credits | 272 | 524 | 87 | 117 | 0 | 0 | 0 |
+| f1040.line15 | 724 | 0 | 215 | 61 | 0 | 0 | 0 |
+| f1040.line16 | 277 | 571 | 79 | 73 | 0 | 0 | 0 |
+| f1040.line19 | 475 | 54 | 0 | 471 | 0 | 0 | 0 |
+| f1040.line28 | 496 | 33 | 0 | 471 | 0 | 0 | 0 |
+| f1040.tax_before_credits | 256 | 559 | 84 | 101 | 0 | 0 | 0 |
 | f8959.tax | 1000 | 0 | 0 | 0 | 0 | 0 | 0 |
-| f8960.tax | 903 | 0 | 1 | 96 | 0 | 0 | 0 |
-| sa.deduction | 932 | 0 | 8 | 60 | 0 | 0 | 0 |
-| sa.line17 | 931 | 0 | 9 | 60 | 0 | 0 | 0 |
+| f8960.tax | 910 | 0 | 1 | 89 | 0 | 0 | 0 |
+| sa.deduction | 928 | 0 | 4 | 68 | 0 | 0 | 0 |
+| sa.line17 | 926 | 0 | 6 | 68 | 0 | 0 | 0 |
 | sa.standard | 1000 | 0 | 0 | 0 | 0 | 0 | 0 |
 
 Exclusions:
 
 - PolicyEngine-US deducts investment interest expense in full; it does not apply the Form 4952 net-investment-income limit
 - PolicyEngine-US does not deduct investment interest expense (Form 4952 line 8) on Form 8960 line 9a
+- PolicyEngine-US does not treat the generated 17-23-year-old full-time students as dependents of the unit (its dependency test needs inputs the project does not model) and pays no credit for other dependents for them
 - PolicyEngine-US limits the state and local tax deduction to adjusted gross income; Schedule A line 5e limits it only by the statutory cap
+- PolicyEngine-US takes the foreign tax credit as a supplied amount with a Form 1116-style limit on foreign-source income; the simple no-Form-1116 path is compared before credits instead
 - PolicyEngine-US takes unrecaptured section 1250 gain as an already-netted input; the Unrecaptured Section 1250 Gain Worksheet (Schedule D instructions, lines 14-18) reduces it by the net short-term loss and the 28% worksheet amounts, which the project does
 
 ## Tax-Calculator
@@ -31,16 +35,18 @@ Exclusions:
 | line | exact | table-adjusted | float | excluded | explained | UNEXPLAINED | not computed |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | f1040.line11b | 1000 | 0 | 0 | 0 | 0 | 0 | 0 |
-| f1040.line13a | 833 | 0 | 0 | 167 | 0 | 0 | 0 |
-| f1040.line15 | 679 | 0 | 2 | 319 | 0 | 0 | 0 |
-| f1040.line16 | 257 | 399 | 28 | 316 | 0 | 0 | 0 |
-| f1040.line20 | 682 | 2 | 0 | 316 | 0 | 0 | 0 |
-| f1040.line24 | 237 | 381 | 35 | 347 | 0 | 0 | 0 |
-| f1040.tax_before_credits | 235 | 383 | 35 | 347 | 0 | 0 | 0 |
+| f1040.line13a | 837 | 0 | 0 | 163 | 0 | 0 | 0 |
+| f1040.line15 | 675 | 0 | 0 | 325 | 0 | 0 | 0 |
+| f1040.line16 | 243 | 406 | 34 | 317 | 0 | 0 | 0 |
+| f1040.line19 | 425 | 79 | 0 | 496 | 0 | 0 | 0 |
+| f1040.line20 | 680 | 3 | 0 | 317 | 0 | 0 | 0 |
+| f1040.line24 | 262 | 319 | 19 | 400 | 0 | 0 | 0 |
+| f1040.line28 | 462 | 41 | 1 | 496 | 0 | 0 | 0 |
+| f1040.tax_before_credits | 222 | 401 | 46 | 331 | 0 | 0 | 0 |
 | f8959.tax | 1000 | 0 | 0 | 0 | 0 | 0 | 0 |
-| f8960.tax | 941 | 0 | 0 | 59 | 0 | 0 | 0 |
-| sa.deduction | 680 | 0 | 1 | 319 | 0 | 0 | 0 |
-| sa.line17 | 939 | 0 | 3 | 58 | 0 | 0 | 0 |
+| f8960.tax | 947 | 0 | 1 | 52 | 0 | 0 | 0 |
+| sa.deduction | 675 | 0 | 0 | 325 | 0 | 0 | 0 |
+| sa.line17 | 938 | 0 | 1 | 61 | 0 | 0 | 0 |
 
 Exclusions:
 
@@ -48,6 +54,7 @@ Exclusions:
 - Tax-Calculator does not deduct investment interest expense (Form 4952 line 8) on Form 8960 line 9a
 - Tax-Calculator has no input for section 199A dividends (Form 1099-DIV box 5), so its QBI deduction is zero
 - Tax-Calculator has no inputs for unrecaptured section 1250 gain or 28% rate gain (Form 1099-DIV boxes 2b, 2d)
+- Tax-Calculator phases the child tax credit out by 5% of the exact excess of income over the threshold; Schedule 8812 line 10 rounds the excess up to the next multiple of $1,000 first
 - Tax-Calculator treats a unit owing no tax under either deduction as taking the standard deduction; the project itemizes whenever itemized deductions exceed the standard deduction. The itemized total itself is compared on every return through a forced-itemize pass
 
 ## Unexplained differences

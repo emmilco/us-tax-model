@@ -35,7 +35,7 @@ the transcription agreement are done; see `HANDOFF-STAGE-7.md` to continue.
 | `reviews/2025/render/` | One log per form: pages given, model, prompt hash, each printed line's MATCH / MISMATCH / UNCLEAR verdict with the model's reason, and the ruling on each non-match, written against the source page |
 | `tools/engines/` | Engine differential (spec 6.5, class C at scale): case generator, adapters for PolicyEngine-US and Tax-Calculator, comparison and report; engines install into the git-ignored `.engines/` via `setup.sh` |
 | `schema/` | JSON Schema for all canonical data (`data.schema.json`) |
-| `forms/2025/` | Form and worksheet definitions as YAML: `f1040.yaml` (the implemented slice, lines 1a–37), `qdcg.yaml`, `tcw.yaml`, `tax_on_amount.yaml`; Stage 2 adds `w2.yaml`, `person.yaml`, `s3.yaml`; Stage 3 adds `sales.yaml` and `sd.yaml`; Stage 4 adds the remaining forms |
+| `forms/2025/` | Form and worksheet definitions as YAML: `f1040.yaml` (the implemented slice, lines 1a–37), `qdcg.yaml`, `tcw.yaml`, `tax_on_amount.yaml`; Stage 2 adds `w2.yaml`, `person.yaml`, `s3.yaml`; Stage 3 adds `sales.yaml` and `sd.yaml`; Stage 4 adds the remaining forms; Stage 8 adds `dependent.yaml` (per-dependent tests), `household.yaml` (filer facts and head of household) and `s8812.yaml` (Schedule 8812) |
 | `params/2025.yaml` | Year parameters (bracket ceilings, Tax Computation Worksheet rows, table boundary), each with a citation |
 | `tables/2025/` | Pinned data tables: `tax_table.yaml` (cell-by-cell 2025 Tax Table) and `rate_schedule.yaml` (Rev. Proc. 2024-40 schedules for the midpoint conjecture) |
 | `ambiguities/2025.yaml` | Ambiguity register (readings chosen where the instructions are silent) |

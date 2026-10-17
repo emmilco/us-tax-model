@@ -1,0 +1,166 @@
+form:
+  id: household
+  kind: form
+  title: Household facts for dependents and head of household
+  tax_year: 2025
+  note: Facts about the filer that the dependent tests and the head of household status read. Married
+    filing statuses remain refused elsewhere; "unmarried" here is the instructions' unmarried or
+    considered unmarried at the end of 2025.
+  lines:
+    - id: household.taxpayer_age
+      printed: (helper)
+      type: Count
+      label: Your age at the end of 2025
+      expr:
+        op: input
+        source: Your age at the end of 2025 (whole years)
+      cite:
+        doc: i1040gi
+        locator: p. 17, Step 1, "Under age 19 at the end of 2025 and younger than you"
+    - id: household.taxpayer_tin
+      printed: (helper)
+      type: Bool
+      label: Do you have an SSN or ITIN issued on or before the due date of your return, or have you applied for an ITIN by then?
+      expr:
+        op: input
+        source: Do you have an SSN or ITIN issued on or before the due date of your 2025 return (including extensions), or
+          have you applied for an ITIN by then?
+      cite:
+        doc: i1040gi
+        locator: p. 19, Step 5, question 1
+    - id: household.taxpayer_work_ssn
+      printed: (helper)
+      type: Bool
+      label: Do you have an SSN valid for employment issued before the due date of your return?
+      expr:
+        op: input
+        source: Do you have an SSN valid for employment, issued before the due date of your 2025 return (including extensions)?
+      cite:
+        doc: i1040gi
+        locator: p. 18, Step 3, question 4
+    - id: household.home_cost
+      printed: (helper)
+      type: Bool
+      label: Did you pay over half the cost of keeping up your home for 2025?
+      expr:
+        op: input
+        source: Did you pay over half the cost of keeping up your home for 2025?
+      cite:
+        doc: i1040gi
+        locator: p. 14, Head of Household, Test 2
+    - id: household.unmarried
+      printed: (helper)
+      type: Bool
+      label: Were you unmarried, or considered unmarried under the head of household rules, at the end of 2025?
+      expr:
+        op: input
+        source: Were you unmarried, or considered unmarried under the head of household rules, at the end of 2025?
+      cite:
+        doc: i1040gi
+        locator: p. 14, Head of Household, "You are considered unmarried for this purpose if any of the following applies"
+    - id: household.test1_persons
+      printed: (helper)
+      type: Count
+      label: Number of parents who qualify you under Test 1
+      expr:
+        op: sum_over
+        collection: dependent
+        field: dependent.one
+        where:
+          op: test
+          eq:
+            - dependent.hoh_test1
+            - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 14, Head of Household, Test 1
+    - id: household.test2_persons
+      printed: (helper)
+      type: Count
+      label: Number of persons who qualify you under Test 2
+      expr:
+        op: sum_over
+        collection: dependent
+        field: dependent.one
+        where:
+          op: test
+          eq:
+            - dependent.hoh_test2
+            - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 14, Head of Household, Test 2
+    - id: household.test1_met
+      printed: (helper)
+      type: Bool
+      label: Test 1 met
+      expr:
+        op: test
+        gt:
+          - household.test1_persons
+          - const: 0
+            type: Count
+      cite:
+        doc: i1040gi
+        locator: p. 14, Head of Household, Test 1
+    - id: household.test2_met
+      printed: (helper)
+      type: Bool
+      label: Test 2 met, having paid over half the cost of keeping up your own home
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - household.home_cost
+              - const: true
+          - op: test
+            gt:
+              - household.test2_persons
+              - const: 0
+                type: Count
+      cite:
+        doc: i1040gi
+        locator: p. 14, Head of Household, Test 2, "You paid over half the cost of keeping up a home in which you lived and in which one of the following also lived for more than half of the year"
+    - id: household.hoh_eligible
+      printed: (helper)
+      type: Bool
+      label: Unmarried or considered unmarried, and Test 1 or Test 2 applies
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - household.unmarried
+              - const: true
+          - op: test
+            any:
+              - op: test
+                eq:
+                  - household.test1_met
+                  - const: true
+              - op: test
+                eq:
+                  - household.test2_met
+                  - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 14, Head of Household, "Check the box only if you are unmarried (or considered unmarried) and either Test 1 or Test 2 applies"
+    - id: household.hoh_fails
+      printed: (gate)
+      type: Bool
+      label: Head of household checked without meeting its tests
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - f1040.status
+              - const: hoh
+          - op: test
+            eq:
+              - household.hoh_eligible
+              - const: false
+      cite:
+        doc: i1040gi
+        locator: p. 14, Head of Household

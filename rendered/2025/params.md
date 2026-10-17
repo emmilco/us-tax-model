@@ -2,6 +2,7 @@
 
 ## Enums
 
+- `dependent_relationship`: child, sibling, sibling_descendant, parent, parent_relative, in_law, household_member, other — [i1040gi] pp. 17 and 19, Who Qualifies as Your Dependent, Steps 1 and 4: child is a son, daughter, stepchild, foster child or a descendant of any of them; sibling is a brother, sister, stepbrother, stepsister, half brother or half sister, or a son or daughter of a brother, sister, half brother or half sister (Step 4 lists step siblings but not their children); sibling_descendant is any other descendant of a sibling, including a step sibling's child (a qualifying child relationship under Step 1, and a Step 4 relative only as a household member who lived with you all year); parent is a father or mother; parent_relative is an ancestor or sibling of a parent (a Step 4 relative, but not the parent of Head of Household Test 1); in_law is a step-parent or an in-law; household_member is any other person who lived with you all year (2025; printed date 2026-02-25; sha256 482e9c48)
 - `filing_status`: single, mfj, mfs, hoh, qss — [f1040] Form 1040, Filing Status (checkboxes) (2025; created 2025-09-05; sha256 3d31c226)
 - `sales_box`: A, B, C, D, E, F, G, H, I, J, K, L — [f8949] Parts I and II, checkbox classifications (2025; created 2025-05-05; sha256 27451389)
 - `sales_code`: none, B, W, BW, other — [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; sha256 f077991c)
@@ -11,19 +12,32 @@
 
 | Parameter | Type | Value | Cite |
 | --- | --- | --- | --- |
+| `actc.earned_floor` | NonNegDollars | $2,500 | [f1040s8812] Schedule 8812 (2025), line 19, "Is the amount on line 18a more than $2,500?" (2025; created 2025-07-30; sha256 6936462d) |
+| `actc.per_child` | NonNegDollars | $1,700 | [f1040s8812] Schedule 8812 (2025), line 16b, "x $1,700" (2025; created 2025-07-30; sha256 6936462d) |
+| `actc.rate` | Rate | 15% (0.15) | [f1040s8812] Schedule 8812 (2025), line 20, "Multiply the amount on line 19 by 15% (0.15)" (2025; created 2025-07-30; sha256 6936462d) |
+| `actc.three_children` | NonNegDollars | $5,100 | [f1040s8812] Schedule 8812 (2025), after line 20, "On line 16b, is the amount $5,100 or more?" (2025; created 2025-07-30; sha256 6936462d) |
+| `ctc.age_limit` | Count | 17 | [i1040gi] p. 18, Step 3, "Was the child under age 17 at the end of 2025?" (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `ctc.per_child` | NonNegDollars | $2,200 | [f1040s8812] Schedule 8812 (2025), line 5, "Multiply line 4 by $2,200" (2025; created 2025-07-30; sha256 6936462d) |
+| `ctc.phaseout_rate` | Rate | 5% (0.05) | [f1040s8812] Schedule 8812 (2025), line 11, "Multiply line 10 by 5% (0.05)" (2025; created 2025-07-30; sha256 6936462d) |
+| `ctc.threshold` | NonNegDollars | single $200,000; mfj $400,000; mfs $200,000; hoh $200,000; qss $200,000 | [f1040s8812] Schedule 8812 (2025), line 9, "Married filing jointly—$400,000; All other filing statuses—$200,000" (2025; created 2025-07-30; sha256 6936462d) |
+| `dependent.one` | Count | 1 | [f1040s8812] Schedule 8812 (2025), lines 4 and 6, "Number of qualifying children" and "Number of other dependents" (2025; created 2025-07-30; sha256 6936462d) |
 | `ftc.limit` | NonNegDollars | single $300; mfj $600; mfs $300; hoh $300; qss $300 | [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular tax (2025; printed date 2025-12-23; sha256 6998cf8c) |
 | `medicare.additional_rate` | Rate | 9/1000 | [f8959] Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; sha256 13e64004) |
 | `medicare.regular_rate` | Rate | 145/10000 | [f8959] Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; sha256 13e64004) |
 | `medicare.threshold` | NonNegDollars | single $200,000; mfj $250,000; mfs $125,000; hoh $200,000; qss $200,000 | [f8959] Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; sha256 13e64004) |
 | `niit.rate` | Rate | 38/1000 | [i8960] p. 2 thresholds; Form 8960 line 17 (2025; printed date 2026-02-04; sha256 b10fbb23) |
 | `niit.threshold` | NonNegDollars | single $200,000; mfj $250,000; mfs $125,000; hoh $200,000; qss $250,000 | [i8960] p. 2 thresholds; Form 8960 line 17 (2025; printed date 2026-02-04; sha256 b10fbb23) |
+| `odc.per_dependent` | NonNegDollars | $500 | [f1040s8812] Schedule 8812 (2025), line 7, "Multiply line 6 by $500" (2025; created 2025-07-30; sha256 6936462d) |
 | `ordinary.table_boundary` | Dollars | $100,000 | [i1040gi] Instructions for Form 1040, line 16 (Tax Table or Tax Computation Worksheet) (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `qbi.rate` | Rate | 1/5 | [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; sha256 55380ad2) |
 | `qbi.threshold` | NonNegDollars | single $197,300; mfj $394,600; mfs $197,300; hoh $197,300; qss $197,300 | [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; sha256 55380ad2) |
+| `qc.age_limit` | Count | 19 | [i1040gi] p. 17, Step 1, "Under age 19 at the end of 2025 and younger than you" (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `qc.student_age_limit` | Count | 24 | [i1040gi] p. 17, Step 1, "Under age 24 at the end of 2025, a full-time student" (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `qdcg.fifteen_rate_ceiling` | Dollars | single $533,400; mfj $600,050; mfs $300,000; hoh $566,700; qss $600,050 | [i1040gi] QDCGT worksheet, line 13 (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `qdcg.rate_15` | Rate | 15% (0.15) | [i1040gi] QDCGT worksheet, line 18 (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `qdcg.rate_20` | Rate | 20% (0.20) | [i1040gi] QDCGT worksheet, line 21 (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `qdcg.zero_rate_ceiling` | Dollars | single $48,350; mfj $96,700; mfs $48,350; hoh $64,750; qss $96,700 | [i1040gi] QDCGT worksheet, line 6 (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `qr.gross_income_limit` | NonNegDollars | $5,200 | [i1040gi] p. 19, Step 4, "Who had gross income of less than $5,200 in 2025" (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `sa.half` | Rate | 1/2 | [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12) |
 | `sa.medical_rate` | Rate | 75/1000 | [f1040sa] Schedule A (2025), line 3 (2025; created 2025-11-20; sha256 c14acf34) |
 | `sa.salt_base` | NonNegDollars | $40,000 | [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12) |

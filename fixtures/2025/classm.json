@@ -131,7 +131,35 @@
     "sales[s3].reported_basis": 2947300,
     "sales[s3].correct_basis": 3637800,
     "sales[s3].wash_loss": 0,
-    "$gift": []
+    "$gift": [],
+    "$dependent": [
+     "child"
+    ],
+    "dependent[child].relationship": "child",
+    "dependent[child].age": 10,
+    "dependent[child].student": false,
+    "dependent[child].disabled": false,
+    "dependent[child].months": 12,
+    "dependent[child].self_support": false,
+    "dependent[child].joint_return": false,
+    "dependent[child].citizen": false,
+    "dependent[child].canada_mexico": true,
+    "dependent[child].married": false,
+    "dependent[child].tin": false,
+    "dependent[child].work_ssn": false,
+    "dependent[child].gross_income": 0,
+    "dependent[child].supported": true,
+    "dependent[child].other_claimant": false,
+    "dependent[child].divorced_rule": false,
+    "dependent[child].multiple_support": false,
+    "dependent[child].parent_home_paid": false,
+    "household.taxpayer_age": 40,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": true,
+    "household.unmarried": true,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false
    },
    "expect": {
     "f1040.line1a": {
@@ -384,7 +412,15 @@
     "gift[item_a].special": false,
     "gift[item_b].deduction": 1587700,
     "gift[item_b].public_securities": true,
-    "gift[item_b].special": false
+    "gift[item_b].special": false,
+    "$dependent": [],
+    "household.taxpayer_age": 40,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": false,
+    "household.unmarried": true,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false
    },
    "expect": {
     "f1040.line1a": {
@@ -647,7 +683,15 @@
     "sales[s1].reported_basis": 1571600,
     "sales[s1].correct_basis": 4728000,
     "sales[s1].wash_loss": 0,
-    "$gift": []
+    "$gift": [],
+    "$dependent": [],
+    "household.taxpayer_age": 40,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": false,
+    "household.unmarried": true,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false
    },
    "expect": {
     "f1040.line1a": {
@@ -899,7 +943,35 @@
     "sales[s1].reported_basis": 243900,
     "sales[s1].correct_basis": 0,
     "sales[s1].wash_loss": 0,
-    "$gift": []
+    "$gift": [],
+    "$dependent": [
+     "child"
+    ],
+    "dependent[child].relationship": "child",
+    "dependent[child].age": 10,
+    "dependent[child].student": false,
+    "dependent[child].disabled": false,
+    "dependent[child].months": 12,
+    "dependent[child].self_support": false,
+    "dependent[child].joint_return": false,
+    "dependent[child].citizen": false,
+    "dependent[child].canada_mexico": true,
+    "dependent[child].married": false,
+    "dependent[child].tin": false,
+    "dependent[child].work_ssn": false,
+    "dependent[child].gross_income": 0,
+    "dependent[child].supported": true,
+    "dependent[child].other_claimant": false,
+    "dependent[child].divorced_rule": false,
+    "dependent[child].multiple_support": false,
+    "dependent[child].parent_home_paid": false,
+    "household.taxpayer_age": 40,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": true,
+    "household.unmarried": true,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false
    },
    "expect": {
     "f4952.line4a": {
@@ -1072,7 +1144,15 @@
     "gift[item_a].special": false,
     "gift[item_b].deduction": 0,
     "gift[item_b].public_securities": true,
-    "gift[item_b].special": false
+    "gift[item_b].special": false,
+    "$dependent": [],
+    "household.taxpayer_age": 40,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": false,
+    "household.unmarried": true,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false
    },
    "expect": {
     "f4952.line4a": {
@@ -1259,7 +1339,15 @@
     ],
     "gift[item_a].deduction": 185500,
     "gift[item_a].public_securities": false,
-    "gift[item_a].special": false
+    "gift[item_a].special": false,
+    "$dependent": [],
+    "household.taxpayer_age": 40,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": false,
+    "household.unmarried": true,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false
    },
    "expect": {
     "f4952.line4a": {
@@ -1423,7 +1511,15 @@
     "sales[s1].reported_basis": 0,
     "sales[s1].correct_basis": 3499000,
     "sales[s1].wash_loss": 0,
-    "$gift": []
+    "$gift": [],
+    "$dependent": [],
+    "household.taxpayer_age": 40,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": false,
+    "household.unmarried": true,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false
    },
    "expect": {
     "f8959.line1": {
@@ -1615,7 +1711,35 @@
     "sales[s1].reported_basis": 243900,
     "sales[s1].correct_basis": 0,
     "sales[s1].wash_loss": 0,
-    "$gift": []
+    "$gift": [],
+    "$dependent": [
+     "child"
+    ],
+    "dependent[child].relationship": "child",
+    "dependent[child].age": 10,
+    "dependent[child].student": false,
+    "dependent[child].disabled": false,
+    "dependent[child].months": 12,
+    "dependent[child].self_support": false,
+    "dependent[child].joint_return": false,
+    "dependent[child].citizen": false,
+    "dependent[child].canada_mexico": true,
+    "dependent[child].married": false,
+    "dependent[child].tin": false,
+    "dependent[child].work_ssn": false,
+    "dependent[child].gross_income": 0,
+    "dependent[child].supported": true,
+    "dependent[child].other_claimant": false,
+    "dependent[child].divorced_rule": false,
+    "dependent[child].multiple_support": false,
+    "dependent[child].parent_home_paid": false,
+    "household.taxpayer_age": 40,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": true,
+    "household.unmarried": true,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false
    },
    "expect": {
     "f8959.line1": {
@@ -1823,7 +1947,35 @@
     "sales[s1].reported_basis": 243900,
     "sales[s1].correct_basis": 0,
     "sales[s1].wash_loss": 0,
-    "$gift": []
+    "$gift": [],
+    "$dependent": [
+     "child"
+    ],
+    "dependent[child].relationship": "child",
+    "dependent[child].age": 10,
+    "dependent[child].student": false,
+    "dependent[child].disabled": false,
+    "dependent[child].months": 12,
+    "dependent[child].self_support": false,
+    "dependent[child].joint_return": false,
+    "dependent[child].citizen": false,
+    "dependent[child].canada_mexico": true,
+    "dependent[child].married": false,
+    "dependent[child].tin": false,
+    "dependent[child].work_ssn": false,
+    "dependent[child].gross_income": 0,
+    "dependent[child].supported": true,
+    "dependent[child].other_claimant": false,
+    "dependent[child].divorced_rule": false,
+    "dependent[child].multiple_support": false,
+    "dependent[child].parent_home_paid": false,
+    "household.taxpayer_age": 40,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": true,
+    "household.unmarried": true,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false
    },
    "expect": {
     "f8960.line1": {
@@ -2051,7 +2203,15 @@
     ],
     "gift[item_a].deduction": 138500,
     "gift[item_a].public_securities": true,
-    "gift[item_a].special": false
+    "gift[item_a].special": false,
+    "$dependent": [],
+    "household.taxpayer_age": 40,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": false,
+    "household.unmarried": true,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false
    },
    "expect": {
     "f8960.line1": {
@@ -2296,7 +2456,35 @@
     ],
     "gift[item_a].deduction": 325700,
     "gift[item_a].public_securities": false,
-    "gift[item_a].special": false
+    "gift[item_a].special": false,
+    "$dependent": [
+     "child"
+    ],
+    "dependent[child].relationship": "child",
+    "dependent[child].age": 10,
+    "dependent[child].student": false,
+    "dependent[child].disabled": false,
+    "dependent[child].months": 12,
+    "dependent[child].self_support": false,
+    "dependent[child].joint_return": false,
+    "dependent[child].citizen": false,
+    "dependent[child].canada_mexico": true,
+    "dependent[child].married": false,
+    "dependent[child].tin": false,
+    "dependent[child].work_ssn": false,
+    "dependent[child].gross_income": 0,
+    "dependent[child].supported": true,
+    "dependent[child].other_claimant": false,
+    "dependent[child].divorced_rule": false,
+    "dependent[child].multiple_support": false,
+    "dependent[child].parent_home_paid": false,
+    "household.taxpayer_age": 40,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": true,
+    "household.unmarried": true,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false
    },
    "expect": {
     "f8960.line1": {
@@ -2508,7 +2696,35 @@
     "sales[s1].reported_basis": 243900,
     "sales[s1].correct_basis": 0,
     "sales[s1].wash_loss": 0,
-    "$gift": []
+    "$gift": [],
+    "$dependent": [
+     "child"
+    ],
+    "dependent[child].relationship": "child",
+    "dependent[child].age": 10,
+    "dependent[child].student": false,
+    "dependent[child].disabled": false,
+    "dependent[child].months": 12,
+    "dependent[child].self_support": false,
+    "dependent[child].joint_return": false,
+    "dependent[child].citizen": false,
+    "dependent[child].canada_mexico": true,
+    "dependent[child].married": false,
+    "dependent[child].tin": false,
+    "dependent[child].work_ssn": false,
+    "dependent[child].gross_income": 0,
+    "dependent[child].supported": true,
+    "dependent[child].other_claimant": false,
+    "dependent[child].divorced_rule": false,
+    "dependent[child].multiple_support": false,
+    "dependent[child].parent_home_paid": false,
+    "household.taxpayer_age": 40,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": true,
+    "household.unmarried": true,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false
    },
    "expect": {
     "f8995.line2": {
@@ -2689,7 +2905,15 @@
     ],
     "gift[item_a].deduction": 274600,
     "gift[item_a].public_securities": false,
-    "gift[item_a].special": false
+    "gift[item_a].special": false,
+    "$dependent": [],
+    "household.taxpayer_age": 40,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": false,
+    "household.unmarried": true,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false
    },
    "expect": {
     "f8995.line2": {
@@ -2865,7 +3089,35 @@
     "sales[s1].reported_basis": 243900,
     "sales[s1].correct_basis": 0,
     "sales[s1].wash_loss": 0,
-    "$gift": []
+    "$gift": [],
+    "$dependent": [
+     "child"
+    ],
+    "dependent[child].relationship": "child",
+    "dependent[child].age": 10,
+    "dependent[child].student": false,
+    "dependent[child].disabled": false,
+    "dependent[child].months": 12,
+    "dependent[child].self_support": false,
+    "dependent[child].joint_return": false,
+    "dependent[child].citizen": false,
+    "dependent[child].canada_mexico": true,
+    "dependent[child].married": false,
+    "dependent[child].tin": false,
+    "dependent[child].work_ssn": false,
+    "dependent[child].gross_income": 0,
+    "dependent[child].supported": true,
+    "dependent[child].other_claimant": false,
+    "dependent[child].divorced_rule": false,
+    "dependent[child].multiple_support": false,
+    "dependent[child].parent_home_paid": false,
+    "household.taxpayer_age": 40,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": true,
+    "household.unmarried": true,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false
    },
    "expect": {
     "f8995a.line27": {
@@ -3038,7 +3290,15 @@
     ],
     "gift[item_a].deduction": 274600,
     "gift[item_a].public_securities": false,
-    "gift[item_a].special": false
+    "gift[item_a].special": false,
+    "$dependent": [],
+    "household.taxpayer_age": 40,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": false,
+    "household.unmarried": true,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false
    },
    "expect": {
     "f8995a.line27": {
@@ -3206,7 +3466,35 @@
     "sales[s1].reported_basis": 243900,
     "sales[s1].correct_basis": 0,
     "sales[s1].wash_loss": 0,
-    "$gift": []
+    "$gift": [],
+    "$dependent": [
+     "child"
+    ],
+    "dependent[child].relationship": "child",
+    "dependent[child].age": 10,
+    "dependent[child].student": false,
+    "dependent[child].disabled": false,
+    "dependent[child].months": 12,
+    "dependent[child].self_support": false,
+    "dependent[child].joint_return": false,
+    "dependent[child].citizen": false,
+    "dependent[child].canada_mexico": true,
+    "dependent[child].married": false,
+    "dependent[child].tin": false,
+    "dependent[child].work_ssn": false,
+    "dependent[child].gross_income": 0,
+    "dependent[child].supported": true,
+    "dependent[child].other_claimant": false,
+    "dependent[child].divorced_rule": false,
+    "dependent[child].multiple_support": false,
+    "dependent[child].parent_home_paid": false,
+    "household.taxpayer_age": 40,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": true,
+    "household.unmarried": true,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false
    },
    "expect": {
     "g28.line1": {
@@ -3351,7 +3639,15 @@
     ],
     "gift[item_a].deduction": 45800,
     "gift[item_a].public_securities": false,
-    "gift[item_a].special": false
+    "gift[item_a].special": false,
+    "$dependent": [],
+    "household.taxpayer_age": 40,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": false,
+    "household.unmarried": true,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false
    },
    "expect": {
     "g28.line1": {
@@ -3491,7 +3787,35 @@
     "sales[s1].reported_basis": 243900,
     "sales[s1].correct_basis": 0,
     "sales[s1].wash_loss": 0,
-    "$gift": []
+    "$gift": [],
+    "$dependent": [
+     "child"
+    ],
+    "dependent[child].relationship": "child",
+    "dependent[child].age": 10,
+    "dependent[child].student": false,
+    "dependent[child].disabled": false,
+    "dependent[child].months": 12,
+    "dependent[child].self_support": false,
+    "dependent[child].joint_return": false,
+    "dependent[child].citizen": false,
+    "dependent[child].canada_mexico": true,
+    "dependent[child].married": false,
+    "dependent[child].tin": false,
+    "dependent[child].work_ssn": false,
+    "dependent[child].gross_income": 0,
+    "dependent[child].supported": true,
+    "dependent[child].other_claimant": false,
+    "dependent[child].divorced_rule": false,
+    "dependent[child].multiple_support": false,
+    "dependent[child].parent_home_paid": false,
+    "household.taxpayer_age": 40,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": true,
+    "household.unmarried": true,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false
    },
    "expect": {
     "qdcg.line1": {
@@ -3700,7 +4024,15 @@
     ],
     "gift[item_a].deduction": 274600,
     "gift[item_a].public_securities": false,
-    "gift[item_a].special": false
+    "gift[item_a].special": false,
+    "$dependent": [],
+    "household.taxpayer_age": 40,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": false,
+    "household.unmarried": true,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false
    },
    "expect": {
     "qdcg.line1": {
@@ -3909,7 +4241,15 @@
     ],
     "gift[item_a].deduction": 45800,
     "gift[item_a].public_securities": false,
-    "gift[item_a].special": false
+    "gift[item_a].special": false,
+    "$dependent": [],
+    "household.taxpayer_age": 40,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": false,
+    "household.unmarried": true,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false
    },
    "expect": {
     "qdcg.line1": {
@@ -4113,7 +4453,35 @@
     "sales[s1].reported_basis": 243900,
     "sales[s1].correct_basis": 0,
     "sales[s1].wash_loss": 0,
-    "$gift": []
+    "$gift": [],
+    "$dependent": [
+     "child"
+    ],
+    "dependent[child].relationship": "child",
+    "dependent[child].age": 10,
+    "dependent[child].student": false,
+    "dependent[child].disabled": false,
+    "dependent[child].months": 12,
+    "dependent[child].self_support": false,
+    "dependent[child].joint_return": false,
+    "dependent[child].citizen": false,
+    "dependent[child].canada_mexico": true,
+    "dependent[child].married": false,
+    "dependent[child].tin": false,
+    "dependent[child].work_ssn": false,
+    "dependent[child].gross_income": 0,
+    "dependent[child].supported": true,
+    "dependent[child].other_claimant": false,
+    "dependent[child].divorced_rule": false,
+    "dependent[child].multiple_support": false,
+    "dependent[child].parent_home_paid": false,
+    "household.taxpayer_age": 40,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": true,
+    "household.unmarried": true,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false
    },
    "expect": {
     "s2.line2": {
@@ -4245,7 +4613,15 @@
     "sales[s1].reported_basis": 0,
     "sales[s1].correct_basis": 3499000,
     "sales[s1].wash_loss": 0,
-    "$gift": []
+    "$gift": [],
+    "$dependent": [],
+    "household.taxpayer_age": 40,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": false,
+    "household.unmarried": true,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false
    },
    "expect": {
     "s3.line1": {
@@ -4261,6 +4637,1144 @@
      "cents": 0
     },
     "s3.line15": {
+     "kind": "money",
+     "cents": 0
+    }
+   }
+  },
+  {
+   "id": "classm.s8812.1",
+   "covers": [
+    "s8812"
+   ],
+   "evidence": "M",
+   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 099de0b2425fc2e9e5cfc8b4690354d5e1dedcef096b020af49f9c21c7ef5dda; pages f1040s8812 1,2 (9b38295071c4); i1040s8812 4,8,9 (fd50a5266cc2); branches s8812.excess:positive, s8812.line12:floor, s8812.line14:left, s8812.line16a:floor, s8812.line17:left, s8812.combat_pay:false, s8812.puerto_rico:false, s8812.line19:positive, s8812.line25:positive, s8812.line26:left, s8812.few_children:true, s8812.earned_covers:true, s8812.from_part_iia:left, s8812.from_part_iib:left, s8812.part_iib_result#0, s8812.line27#0; dropped after ruling: s8812.line13; dropped after ruling: s8812.line16b; dropped after ruling: s8812.line18a; dropped after ruling: s8812.line19; dropped after ruling: s8812.line20; dropped after ruling: s8812.line21; dropped after ruling: s8812.line23; dropped after ruling: s8812.line24; dropped after ruling: s8812.line25; dropped after ruling: s8812.line26",
+   "inputs": {
+    "div.box2b": 0,
+    "div.box2c": 0,
+    "div.box2d": 0,
+    "div.box2e": 0,
+    "div.box2f": 0,
+    "div.box3": 0,
+    "div.box4": 0,
+    "div.box6": 0,
+    "div.box9": 0,
+    "div.box10": 0,
+    "div.box12": 0,
+    "div.box13": 0,
+    "div.basis_reconciled": true,
+    "div.fatca": false,
+    "f1040.status": "single",
+    "f1040.line3a": 0,
+    "f1040.line25b": 0,
+    "f1040.line25c": 0,
+    "f1040.line26": 0,
+    "f1040.line35a": 0,
+    "f1040.line36": 0,
+    "f4952.line1": 837500,
+    "f4952.carryover": false,
+    "f4952.unsupported": false,
+    "f4952.alternative_allocation": false,
+    "f4952.line4g": 0,
+    "f8959.unsupported": false,
+    "f8960.unsupported": false,
+    "f8960.refund": false,
+    "f8960.allocated_taxes": 0,
+    "ftc.taxes": 0,
+    "ftc.all_passive": true,
+    "ftc.statements": true,
+    "ftc.eligible": true,
+    "ftc.elect": true,
+    "household.taxpayer_age": 48,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": true,
+    "household.unmarried": true,
+    "qbi.dividends": 0,
+    "qbi.unsupported": false,
+    "s2.amt": false,
+    "s2.other": false,
+    "s3.line9": 0,
+    "s3.line10": 0,
+    "s3.line12": 0,
+    "s3.line14": 0,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false,
+    "sa.unsupported": false,
+    "sa.charity_limited": false,
+    "sa.excluded_income": false,
+    "sa.dependent": false,
+    "sa.spouse_extra": false,
+    "sa.age65": false,
+    "sa.blind": false,
+    "sa.spouse_itemizes": false,
+    "sa.elect_itemize": false,
+    "sa.line1": 1740600,
+    "sa.line5a": 349100,
+    "sa.line5b": 618100,
+    "sa.line5c": 0,
+    "sa.line8a": 2499600,
+    "sa.line11": 1985000,
+    "sb.unsupported": false,
+    "sb.ordinary_dividends": 0,
+    "sb.line7a": false,
+    "sb.fbar_required": false,
+    "sb.form8938": false,
+    "sb.line8": false,
+    "scope.schedule1": false,
+    "scope.schedule1a": false,
+    "scope.credits": false,
+    "scope.other_income": false,
+    "scope.other_line16": false,
+    "sd.other_forms": false,
+    "sd.carryover": false,
+    "sd.distributions": 0,
+    "$person": [
+     "taxpayer"
+    ],
+    "person[taxpayer].rrta": false,
+    "$w2@person[taxpayer]": [
+     "emp_a",
+     "emp_b"
+    ],
+    "person[taxpayer].w2[emp_a].box1": 1604600,
+    "person[taxpayer].w2[emp_a].box2": 401200,
+    "person[taxpayer].w2[emp_a].box3": 1604600,
+    "person[taxpayer].w2[emp_a].box7": 0,
+    "person[taxpayer].w2[emp_a].box4": 99500,
+    "person[taxpayer].w2[emp_a].box5": 1604600,
+    "person[taxpayer].w2[emp_a].box6": 23300,
+    "person[taxpayer].w2[emp_b].box1": 36842200,
+    "person[taxpayer].w2[emp_b].box2": 5526300,
+    "person[taxpayer].w2[emp_b].box3": 17610000,
+    "person[taxpayer].w2[emp_b].box7": 0,
+    "person[taxpayer].w2[emp_b].box4": 1091800,
+    "person[taxpayer].w2[emp_b].box5": 36842200,
+    "person[taxpayer].w2[emp_b].box6": 685800,
+    "$interest": [
+     "bank_a"
+    ],
+    "interest[bank_a].amount": 4959800,
+    "$sales": [],
+    "$gift": [],
+    "$dependent": [
+     "dep_a"
+    ],
+    "dependent[dep_a].relationship": "sibling",
+    "dependent[dep_a].age": 9,
+    "dependent[dep_a].student": false,
+    "dependent[dep_a].disabled": false,
+    "dependent[dep_a].months": 12,
+    "dependent[dep_a].self_support": false,
+    "dependent[dep_a].joint_return": false,
+    "dependent[dep_a].citizen": true,
+    "dependent[dep_a].canada_mexico": false,
+    "dependent[dep_a].married": false,
+    "dependent[dep_a].tin": true,
+    "dependent[dep_a].work_ssn": true,
+    "dependent[dep_a].gross_income": 0,
+    "dependent[dep_a].supported": true,
+    "dependent[dep_a].other_claimant": false,
+    "dependent[dep_a].divorced_rule": false,
+    "dependent[dep_a].multiple_support": false,
+    "dependent[dep_a].parent_home_paid": true
+   },
+   "expect": {
+    "s8812.line1": {
+     "kind": "money",
+     "cents": 43406600
+    },
+    "s8812.line2a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line2b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line2c": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line2d": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line3": {
+     "kind": "money",
+     "cents": 43406600
+    },
+    "s8812.line4": {
+     "kind": "count",
+     "value": 1
+    },
+    "s8812.line5": {
+     "kind": "money",
+     "cents": 220000
+    },
+    "s8812.line6": {
+     "kind": "count",
+     "value": 0
+    },
+    "s8812.line7": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line8": {
+     "kind": "money",
+     "cents": 220000
+    },
+    "s8812.line9": {
+     "kind": "money",
+     "cents": 20000000
+    },
+    "s8812.line10": {
+     "kind": "money",
+     "cents": 23500000
+    },
+    "s8812.line11": {
+     "kind": "money",
+     "cents": 1175000
+    },
+    "s8812.line12": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line14": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line16a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line17": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line18b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line22": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line27": {
+     "kind": "money",
+     "cents": 0
+    }
+   }
+  },
+  {
+   "id": "classm.s8812.2",
+   "covers": [
+    "s8812"
+   ],
+   "evidence": "M",
+   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 3467bd223ecee36e4bd151a6c0b454edb260c8afcabf27d8de817e3f183b91e7; pages f1040s8812 1,2 (9b38295071c4); i1040s8812 4,8,9 (fd50a5266cc2); branches s8812.excess:floor, s8812.line12:positive, s8812.line14:right, s8812.line16a:positive, s8812.line17:right, s8812.combat_pay:false, s8812.puerto_rico:false, s8812.line19:floor, s8812.line25:floor, s8812.line26:left, s8812.few_children:true, s8812.earned_covers:false, s8812.from_part_iia:right, s8812.from_part_iib:right, s8812.part_iib_result#1, s8812.line27#0",
+   "inputs": {
+    "div.box2b": 0,
+    "div.box2c": 0,
+    "div.box2d": 0,
+    "div.box2e": 0,
+    "div.box2f": 0,
+    "div.box3": 0,
+    "div.box4": 0,
+    "div.box6": 0,
+    "div.box9": 0,
+    "div.box10": 0,
+    "div.box12": 0,
+    "div.box13": 0,
+    "div.basis_reconciled": true,
+    "div.fatca": false,
+    "f1040.status": "single",
+    "f1040.line3a": 2418900,
+    "f1040.line25b": 0,
+    "f1040.line25c": 0,
+    "f1040.line26": 0,
+    "f1040.line35a": 0,
+    "f1040.line36": 0,
+    "f4952.line1": 920600,
+    "f4952.carryover": false,
+    "f4952.unsupported": false,
+    "f4952.alternative_allocation": false,
+    "f4952.line4g": 0,
+    "f8959.unsupported": false,
+    "f8960.unsupported": false,
+    "f8960.refund": false,
+    "f8960.allocated_taxes": 0,
+    "ftc.taxes": 0,
+    "ftc.all_passive": true,
+    "ftc.statements": true,
+    "ftc.eligible": true,
+    "ftc.elect": true,
+    "household.taxpayer_age": 46,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": false,
+    "household.unmarried": true,
+    "qbi.dividends": 659700,
+    "qbi.unsupported": false,
+    "s2.amt": false,
+    "s2.other": false,
+    "s3.line9": 0,
+    "s3.line10": 0,
+    "s3.line12": 0,
+    "s3.line14": 0,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false,
+    "sa.unsupported": false,
+    "sa.charity_limited": false,
+    "sa.excluded_income": false,
+    "sa.dependent": false,
+    "sa.spouse_extra": false,
+    "sa.age65": false,
+    "sa.blind": false,
+    "sa.spouse_itemizes": false,
+    "sa.elect_itemize": false,
+    "sa.line1": 0,
+    "sa.line5a": 5000000,
+    "sa.line5b": 1794200,
+    "sa.line5c": 0,
+    "sa.line8a": 417500,
+    "sa.line11": 1119600,
+    "sb.unsupported": false,
+    "sb.ordinary_dividends": 3665000,
+    "sb.line7a": false,
+    "sb.fbar_required": false,
+    "sb.form8938": false,
+    "sb.line8": false,
+    "scope.schedule1": false,
+    "scope.schedule1a": false,
+    "scope.credits": false,
+    "scope.other_income": false,
+    "scope.other_line16": false,
+    "sd.other_forms": false,
+    "sd.carryover": false,
+    "sd.distributions": 1994700,
+    "$person": [
+     "taxpayer"
+    ],
+    "person[taxpayer].rrta": false,
+    "$w2@person[taxpayer]": [
+     "emp_a",
+     "emp_b"
+    ],
+    "person[taxpayer].w2[emp_a].box1": 0,
+    "person[taxpayer].w2[emp_a].box2": 0,
+    "person[taxpayer].w2[emp_a].box3": 0,
+    "person[taxpayer].w2[emp_a].box7": 0,
+    "person[taxpayer].w2[emp_a].box4": 0,
+    "person[taxpayer].w2[emp_a].box5": 0,
+    "person[taxpayer].w2[emp_a].box6": 0,
+    "person[taxpayer].w2[emp_b].box1": 0,
+    "person[taxpayer].w2[emp_b].box2": 0,
+    "person[taxpayer].w2[emp_b].box3": 0,
+    "person[taxpayer].w2[emp_b].box7": 0,
+    "person[taxpayer].w2[emp_b].box4": 0,
+    "person[taxpayer].w2[emp_b].box5": 0,
+    "person[taxpayer].w2[emp_b].box6": 0,
+    "$interest": [
+     "bank_a"
+    ],
+    "interest[bank_a].amount": 0,
+    "$sales": [],
+    "$gift": [
+     "item_a"
+    ],
+    "gift[item_a].deduction": 274600,
+    "gift[item_a].public_securities": false,
+    "gift[item_a].special": false,
+    "$dependent": [
+     "dep_a",
+     "dep_b",
+     "dep_c"
+    ],
+    "dependent[dep_a].relationship": "child",
+    "dependent[dep_a].age": 3,
+    "dependent[dep_a].student": false,
+    "dependent[dep_a].disabled": false,
+    "dependent[dep_a].months": 12,
+    "dependent[dep_a].self_support": false,
+    "dependent[dep_a].joint_return": false,
+    "dependent[dep_a].citizen": true,
+    "dependent[dep_a].canada_mexico": false,
+    "dependent[dep_a].married": false,
+    "dependent[dep_a].tin": true,
+    "dependent[dep_a].work_ssn": true,
+    "dependent[dep_a].gross_income": 0,
+    "dependent[dep_a].supported": true,
+    "dependent[dep_a].other_claimant": false,
+    "dependent[dep_a].divorced_rule": false,
+    "dependent[dep_a].multiple_support": false,
+    "dependent[dep_a].parent_home_paid": false,
+    "dependent[dep_b].relationship": "child",
+    "dependent[dep_b].age": 5,
+    "dependent[dep_b].student": false,
+    "dependent[dep_b].disabled": false,
+    "dependent[dep_b].months": 12,
+    "dependent[dep_b].self_support": true,
+    "dependent[dep_b].joint_return": false,
+    "dependent[dep_b].citizen": true,
+    "dependent[dep_b].canada_mexico": false,
+    "dependent[dep_b].married": false,
+    "dependent[dep_b].tin": true,
+    "dependent[dep_b].work_ssn": false,
+    "dependent[dep_b].gross_income": 0,
+    "dependent[dep_b].supported": false,
+    "dependent[dep_b].other_claimant": false,
+    "dependent[dep_b].divorced_rule": false,
+    "dependent[dep_b].multiple_support": false,
+    "dependent[dep_b].parent_home_paid": false,
+    "dependent[dep_c].relationship": "in_law",
+    "dependent[dep_c].age": 2,
+    "dependent[dep_c].student": false,
+    "dependent[dep_c].disabled": false,
+    "dependent[dep_c].months": 12,
+    "dependent[dep_c].self_support": false,
+    "dependent[dep_c].joint_return": false,
+    "dependent[dep_c].citizen": true,
+    "dependent[dep_c].canada_mexico": false,
+    "dependent[dep_c].married": false,
+    "dependent[dep_c].tin": true,
+    "dependent[dep_c].work_ssn": true,
+    "dependent[dep_c].gross_income": 0,
+    "dependent[dep_c].supported": true,
+    "dependent[dep_c].other_claimant": false,
+    "dependent[dep_c].divorced_rule": false,
+    "dependent[dep_c].multiple_support": false,
+    "dependent[dep_c].parent_home_paid": false
+   },
+   "expect": {
+    "s8812.line1": {
+     "kind": "money",
+     "cents": 5659700
+    },
+    "s8812.line2a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line2b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line2c": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line2d": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line3": {
+     "kind": "money",
+     "cents": 5659700
+    },
+    "s8812.line4": {
+     "kind": "count",
+     "value": 1
+    },
+    "s8812.line5": {
+     "kind": "money",
+     "cents": 220000
+    },
+    "s8812.line6": {
+     "kind": "count",
+     "value": 1
+    },
+    "s8812.line7": {
+     "kind": "money",
+     "cents": 50000
+    },
+    "s8812.line8": {
+     "kind": "money",
+     "cents": 270000
+    },
+    "s8812.line9": {
+     "kind": "money",
+     "cents": 20000000
+    },
+    "s8812.line10": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line11": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line12": {
+     "kind": "money",
+     "cents": 270000
+    },
+    "s8812.line13": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line14": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line16a": {
+     "kind": "money",
+     "cents": 270000
+    },
+    "s8812.line16b": {
+     "kind": "money",
+     "cents": 170000
+    },
+    "s8812.line17": {
+     "kind": "money",
+     "cents": 170000
+    },
+    "s8812.line18a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line18b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line19": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line20": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line21": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line22": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line23": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line24": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line25": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line26": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line27": {
+     "kind": "money",
+     "cents": 0
+    }
+   }
+  },
+  {
+   "id": "classm.s8812.3",
+   "covers": [
+    "s8812"
+   ],
+   "evidence": "M",
+   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 e904aa660ca0fe9af14dcc68e5db41cec71d0394aadf5d373040e3da5ac8b99a; pages f1040s8812 1,2 (9b38295071c4); i1040s8812 4,8,9 (fd50a5266cc2); branches s8812.excess:floor, s8812.line12:positive, s8812.line14:left, s8812.line16a:floor, s8812.line17:left, s8812.combat_pay:false, s8812.puerto_rico:false, s8812.line19:floor, s8812.line25:floor, s8812.line26:left, s8812.few_children:false, s8812.earned_covers:true, s8812.from_part_iia:left, s8812.from_part_iib:left, s8812.part_iib_result#0, s8812.line27#1; dropped after ruling: s8812.line16b",
+   "inputs": {
+    "div.box2b": 0,
+    "div.box2c": 0,
+    "div.box2d": 0,
+    "div.box2e": 0,
+    "div.box2f": 0,
+    "div.box3": 0,
+    "div.box4": 0,
+    "div.box6": 0,
+    "div.box9": 0,
+    "div.box10": 0,
+    "div.box12": 0,
+    "div.box13": 0,
+    "div.basis_reconciled": true,
+    "div.fatca": false,
+    "f1040.status": "single",
+    "f1040.line3a": 16906200,
+    "f1040.line25b": 0,
+    "f1040.line25c": 0,
+    "f1040.line26": 0,
+    "f1040.line35a": 0,
+    "f1040.line36": 0,
+    "f4952.line1": 665400,
+    "f4952.carryover": false,
+    "f4952.unsupported": false,
+    "f4952.alternative_allocation": false,
+    "f4952.line4g": 0,
+    "f8959.unsupported": false,
+    "f8960.unsupported": false,
+    "f8960.refund": false,
+    "f8960.allocated_taxes": 0,
+    "ftc.taxes": 0,
+    "ftc.all_passive": true,
+    "ftc.statements": true,
+    "ftc.eligible": true,
+    "ftc.elect": true,
+    "household.taxpayer_age": 18,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": true,
+    "household.unmarried": true,
+    "qbi.dividends": 845300,
+    "qbi.unsupported": false,
+    "s2.amt": false,
+    "s2.other": false,
+    "s3.line9": 0,
+    "s3.line10": 0,
+    "s3.line12": 0,
+    "s3.line14": 0,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false,
+    "sa.unsupported": false,
+    "sa.charity_limited": false,
+    "sa.excluded_income": false,
+    "sa.dependent": false,
+    "sa.spouse_extra": false,
+    "sa.age65": false,
+    "sa.blind": false,
+    "sa.spouse_itemizes": false,
+    "sa.elect_itemize": false,
+    "sa.line1": 0,
+    "sa.line5a": 2130000,
+    "sa.line5b": 0,
+    "sa.line5c": 0,
+    "sa.line8a": 1860500,
+    "sa.line11": 0,
+    "sb.unsupported": false,
+    "sb.ordinary_dividends": 16906200,
+    "sb.line7a": false,
+    "sb.fbar_required": false,
+    "sb.form8938": false,
+    "sb.line8": false,
+    "scope.schedule1": false,
+    "scope.schedule1a": false,
+    "scope.credits": false,
+    "scope.other_income": false,
+    "scope.other_line16": false,
+    "sd.other_forms": false,
+    "sd.carryover": false,
+    "sd.distributions": 0,
+    "$person": [
+     "taxpayer"
+    ],
+    "person[taxpayer].rrta": false,
+    "$w2@person[taxpayer]": [
+     "emp_a"
+    ],
+    "person[taxpayer].w2[emp_a].box1": 0,
+    "person[taxpayer].w2[emp_a].box2": 0,
+    "person[taxpayer].w2[emp_a].box3": 0,
+    "person[taxpayer].w2[emp_a].box7": 0,
+    "person[taxpayer].w2[emp_a].box4": 0,
+    "person[taxpayer].w2[emp_a].box5": 0,
+    "person[taxpayer].w2[emp_a].box6": 0,
+    "$interest": [],
+    "$sales": [
+     "s1",
+     "s2"
+    ],
+    "sales[s1].box": "F",
+    "sales[s1].route": "detail",
+    "sales[s1].code": "W",
+    "sales[s1].special": false,
+    "sales[s1].aggregate_eligible": true,
+    "sales[s1].proceeds": 0,
+    "sales[s1].reported_basis": 182900,
+    "sales[s1].correct_basis": 0,
+    "sales[s1].wash_loss": 100000,
+    "sales[s2].box": "E",
+    "sales[s2].route": "detail",
+    "sales[s2].code": "W",
+    "sales[s2].special": false,
+    "sales[s2].aggregate_eligible": true,
+    "sales[s2].proceeds": 0,
+    "sales[s2].reported_basis": 1269000,
+    "sales[s2].correct_basis": 2309200,
+    "sales[s2].wash_loss": 0,
+    "$gift": [],
+    "$dependent": [
+     "dep_a",
+     "dep_b",
+     "dep_c"
+    ],
+    "dependent[dep_a].relationship": "child",
+    "dependent[dep_a].age": 3,
+    "dependent[dep_a].student": false,
+    "dependent[dep_a].disabled": false,
+    "dependent[dep_a].months": 12,
+    "dependent[dep_a].self_support": false,
+    "dependent[dep_a].joint_return": false,
+    "dependent[dep_a].citizen": true,
+    "dependent[dep_a].canada_mexico": false,
+    "dependent[dep_a].married": false,
+    "dependent[dep_a].tin": true,
+    "dependent[dep_a].work_ssn": true,
+    "dependent[dep_a].gross_income": 0,
+    "dependent[dep_a].supported": true,
+    "dependent[dep_a].other_claimant": false,
+    "dependent[dep_a].divorced_rule": false,
+    "dependent[dep_a].multiple_support": false,
+    "dependent[dep_a].parent_home_paid": true,
+    "dependent[dep_b].relationship": "child",
+    "dependent[dep_b].age": 9,
+    "dependent[dep_b].student": true,
+    "dependent[dep_b].disabled": false,
+    "dependent[dep_b].months": 12,
+    "dependent[dep_b].self_support": false,
+    "dependent[dep_b].joint_return": false,
+    "dependent[dep_b].citizen": true,
+    "dependent[dep_b].canada_mexico": false,
+    "dependent[dep_b].married": false,
+    "dependent[dep_b].tin": true,
+    "dependent[dep_b].work_ssn": true,
+    "dependent[dep_b].gross_income": 0,
+    "dependent[dep_b].supported": true,
+    "dependent[dep_b].other_claimant": false,
+    "dependent[dep_b].divorced_rule": false,
+    "dependent[dep_b].multiple_support": false,
+    "dependent[dep_b].parent_home_paid": true,
+    "dependent[dep_c].relationship": "child",
+    "dependent[dep_c].age": 4,
+    "dependent[dep_c].student": false,
+    "dependent[dep_c].disabled": false,
+    "dependent[dep_c].months": 12,
+    "dependent[dep_c].self_support": false,
+    "dependent[dep_c].joint_return": false,
+    "dependent[dep_c].citizen": true,
+    "dependent[dep_c].canada_mexico": true,
+    "dependent[dep_c].married": false,
+    "dependent[dep_c].tin": true,
+    "dependent[dep_c].work_ssn": true,
+    "dependent[dep_c].gross_income": 0,
+    "dependent[dep_c].supported": true,
+    "dependent[dep_c].other_claimant": false,
+    "dependent[dep_c].divorced_rule": false,
+    "dependent[dep_c].multiple_support": false,
+    "dependent[dep_c].parent_home_paid": true
+   },
+   "expect": {
+    "s8812.line1": {
+     "kind": "money",
+     "cents": 16606200
+    },
+    "s8812.line2a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line2b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line2c": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line2d": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line3": {
+     "kind": "money",
+     "cents": 16606200
+    },
+    "s8812.line4": {
+     "kind": "count",
+     "value": 3
+    },
+    "s8812.line5": {
+     "kind": "money",
+     "cents": 660000
+    },
+    "s8812.line6": {
+     "kind": "count",
+     "value": 0
+    },
+    "s8812.line7": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line8": {
+     "kind": "money",
+     "cents": 660000
+    },
+    "s8812.line9": {
+     "kind": "money",
+     "cents": 20000000
+    },
+    "s8812.line10": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line11": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line12": {
+     "kind": "money",
+     "cents": 660000
+    },
+    "s8812.line13": {
+     "kind": "money",
+     "cents": 1167105
+    },
+    "s8812.line14": {
+     "kind": "money",
+     "cents": 660000
+    },
+    "s8812.line16a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line17": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line18a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line18b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line19": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line20": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line21": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line22": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line23": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line24": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line25": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line26": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line27": {
+     "kind": "money",
+     "cents": 0
+    }
+   }
+  },
+  {
+   "id": "classm.s8812.4",
+   "covers": [
+    "s8812"
+   ],
+   "evidence": "M",
+   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 d618774ef545011b1c8b3424160db239820fad75654dee63005ac6525c382be6; pages f1040s8812 1,2 (9b38295071c4); i1040s8812 4,8,9 (fd50a5266cc2); branches s8812.excess:floor, s8812.line12:floor, s8812.line14:left, s8812.line16a:floor, s8812.line17:left, s8812.combat_pay:false, s8812.puerto_rico:false, s8812.line19:floor, s8812.line25:positive, s8812.line26:right, s8812.few_children:true, s8812.earned_covers:true, s8812.from_part_iia:left, s8812.from_part_iib:left, s8812.part_iib_result#0, s8812.line27#0; dropped after ruling: s8812.line21; dropped after ruling: s8812.line23; dropped after ruling: s8812.line25; dropped after ruling: s8812.line26",
+   "inputs": {
+    "div.box2b": 0,
+    "div.box2c": 0,
+    "div.box2d": 0,
+    "div.box2e": 0,
+    "div.box2f": 0,
+    "div.box3": 0,
+    "div.box4": 0,
+    "div.box6": 0,
+    "div.box9": 0,
+    "div.box10": 0,
+    "div.box12": 0,
+    "div.box13": 0,
+    "div.basis_reconciled": true,
+    "div.fatca": false,
+    "f1040.status": "single",
+    "f1040.line3a": 3821600,
+    "f1040.line25b": 0,
+    "f1040.line25c": 0,
+    "f1040.line26": 0,
+    "f1040.line35a": 0,
+    "f1040.line36": 0,
+    "f4952.line1": 1000000,
+    "f4952.carryover": false,
+    "f4952.unsupported": false,
+    "f4952.alternative_allocation": false,
+    "f4952.line4g": 0,
+    "f8959.unsupported": false,
+    "f8960.unsupported": false,
+    "f8960.refund": false,
+    "f8960.allocated_taxes": 0,
+    "ftc.taxes": 0,
+    "ftc.all_passive": true,
+    "ftc.statements": true,
+    "ftc.eligible": true,
+    "ftc.elect": true,
+    "household.taxpayer_age": 78,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": true,
+    "household.unmarried": true,
+    "qbi.dividends": 78800,
+    "qbi.unsupported": false,
+    "s2.amt": false,
+    "s2.other": false,
+    "s3.line9": 0,
+    "s3.line10": 0,
+    "s3.line12": 0,
+    "s3.line14": 0,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false,
+    "sa.unsupported": false,
+    "sa.charity_limited": false,
+    "sa.excluded_income": false,
+    "sa.dependent": false,
+    "sa.spouse_extra": false,
+    "sa.age65": false,
+    "sa.blind": false,
+    "sa.spouse_itemizes": false,
+    "sa.elect_itemize": false,
+    "sa.line1": 3000000,
+    "sa.line5a": 3113200,
+    "sa.line5b": 1288600,
+    "sa.line5c": 0,
+    "sa.line8a": 3627400,
+    "sa.line11": 700200,
+    "sb.unsupported": false,
+    "sb.ordinary_dividends": 3939800,
+    "sb.line7a": false,
+    "sb.fbar_required": false,
+    "sb.form8938": false,
+    "sb.line8": false,
+    "scope.schedule1": false,
+    "scope.schedule1a": false,
+    "scope.credits": false,
+    "scope.other_income": false,
+    "scope.other_line16": false,
+    "sd.other_forms": false,
+    "sd.carryover": false,
+    "sd.distributions": 529600,
+    "$person": [
+     "taxpayer"
+    ],
+    "person[taxpayer].rrta": false,
+    "$w2@person[taxpayer]": [
+     "emp_a"
+    ],
+    "person[taxpayer].w2[emp_a].box1": 0,
+    "person[taxpayer].w2[emp_a].box2": 0,
+    "person[taxpayer].w2[emp_a].box3": 0,
+    "person[taxpayer].w2[emp_a].box7": 361500,
+    "person[taxpayer].w2[emp_a].box4": 22400,
+    "person[taxpayer].w2[emp_a].box5": 361500,
+    "person[taxpayer].w2[emp_a].box6": 5200,
+    "$interest": [
+     "bank_a"
+    ],
+    "interest[bank_a].amount": 3114200,
+    "$sales": [
+     "s1",
+     "s2"
+    ],
+    "sales[s1].box": "D",
+    "sales[s1].route": "detail",
+    "sales[s1].code": "W",
+    "sales[s1].special": false,
+    "sales[s1].aggregate_eligible": true,
+    "sales[s1].proceeds": 4670200,
+    "sales[s1].reported_basis": 4445500,
+    "sales[s1].correct_basis": 514800,
+    "sales[s1].wash_loss": 0,
+    "sales[s2].box": "F",
+    "sales[s2].route": "detail",
+    "sales[s2].code": "W",
+    "sales[s2].special": false,
+    "sales[s2].aggregate_eligible": false,
+    "sales[s2].proceeds": 0,
+    "sales[s2].reported_basis": 2437100,
+    "sales[s2].correct_basis": 3119100,
+    "sales[s2].wash_loss": 0,
+    "$gift": [],
+    "$dependent": [
+     "dep_a",
+     "dep_b",
+     "dep_c"
+    ],
+    "dependent[dep_a].relationship": "household_member",
+    "dependent[dep_a].age": 5,
+    "dependent[dep_a].student": false,
+    "dependent[dep_a].disabled": false,
+    "dependent[dep_a].months": 10,
+    "dependent[dep_a].self_support": false,
+    "dependent[dep_a].joint_return": false,
+    "dependent[dep_a].citizen": true,
+    "dependent[dep_a].canada_mexico": false,
+    "dependent[dep_a].married": false,
+    "dependent[dep_a].tin": true,
+    "dependent[dep_a].work_ssn": true,
+    "dependent[dep_a].gross_income": 0,
+    "dependent[dep_a].supported": true,
+    "dependent[dep_a].other_claimant": false,
+    "dependent[dep_a].divorced_rule": false,
+    "dependent[dep_a].multiple_support": false,
+    "dependent[dep_a].parent_home_paid": true,
+    "dependent[dep_b].relationship": "household_member",
+    "dependent[dep_b].age": 11,
+    "dependent[dep_b].student": false,
+    "dependent[dep_b].disabled": false,
+    "dependent[dep_b].months": 12,
+    "dependent[dep_b].self_support": false,
+    "dependent[dep_b].joint_return": false,
+    "dependent[dep_b].citizen": true,
+    "dependent[dep_b].canada_mexico": false,
+    "dependent[dep_b].married": false,
+    "dependent[dep_b].tin": true,
+    "dependent[dep_b].work_ssn": true,
+    "dependent[dep_b].gross_income": 0,
+    "dependent[dep_b].supported": false,
+    "dependent[dep_b].other_claimant": false,
+    "dependent[dep_b].divorced_rule": false,
+    "dependent[dep_b].multiple_support": false,
+    "dependent[dep_b].parent_home_paid": false,
+    "dependent[dep_c].relationship": "child",
+    "dependent[dep_c].age": 24,
+    "dependent[dep_c].student": false,
+    "dependent[dep_c].disabled": false,
+    "dependent[dep_c].months": 12,
+    "dependent[dep_c].self_support": false,
+    "dependent[dep_c].joint_return": false,
+    "dependent[dep_c].citizen": false,
+    "dependent[dep_c].canada_mexico": false,
+    "dependent[dep_c].married": false,
+    "dependent[dep_c].tin": true,
+    "dependent[dep_c].work_ssn": true,
+    "dependent[dep_c].gross_income": 0,
+    "dependent[dep_c].supported": false,
+    "dependent[dep_c].other_claimant": false,
+    "dependent[dep_c].divorced_rule": false,
+    "dependent[dep_c].multiple_support": false,
+    "dependent[dep_c].parent_home_paid": false
+   },
+   "expect": {
+    "s8812.line1": {
+     "kind": "money",
+     "cents": 6754000
+    },
+    "s8812.line2a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line2b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line2c": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line2d": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line3": {
+     "kind": "money",
+     "cents": 6754000
+    },
+    "s8812.line4": {
+     "kind": "count",
+     "value": 0
+    },
+    "s8812.line5": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line6": {
+     "kind": "count",
+     "value": 0
+    },
+    "s8812.line7": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line8": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line9": {
+     "kind": "money",
+     "cents": 20000000
+    },
+    "s8812.line10": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line11": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line12": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line13": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line14": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line16a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line16b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line17": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line18a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line18b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line19": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line20": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line22": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line24": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s8812.line27": {
      "kind": "money",
      "cents": 0
     }
@@ -4373,7 +5887,35 @@
     "sales[s1].reported_basis": 243900,
     "sales[s1].correct_basis": 0,
     "sales[s1].wash_loss": 0,
-    "$gift": []
+    "$gift": [],
+    "$dependent": [
+     "child"
+    ],
+    "dependent[child].relationship": "child",
+    "dependent[child].age": 10,
+    "dependent[child].student": false,
+    "dependent[child].disabled": false,
+    "dependent[child].months": 12,
+    "dependent[child].self_support": false,
+    "dependent[child].joint_return": false,
+    "dependent[child].citizen": false,
+    "dependent[child].canada_mexico": true,
+    "dependent[child].married": false,
+    "dependent[child].tin": false,
+    "dependent[child].work_ssn": false,
+    "dependent[child].gross_income": 0,
+    "dependent[child].supported": true,
+    "dependent[child].other_claimant": false,
+    "dependent[child].divorced_rule": false,
+    "dependent[child].multiple_support": false,
+    "dependent[child].parent_home_paid": false,
+    "household.taxpayer_age": 40,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": true,
+    "household.unmarried": true,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false
    },
    "expect": {
     "sa.line2": {
@@ -4576,7 +6118,15 @@
     "gift[item_a].special": false,
     "gift[item_b].deduction": 243300,
     "gift[item_b].public_securities": false,
-    "gift[item_b].special": false
+    "gift[item_b].special": false,
+    "$dependent": [],
+    "household.taxpayer_age": 40,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": false,
+    "household.unmarried": true,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false
    },
    "expect": {
     "sa.line2": {
@@ -4760,7 +6310,15 @@
     "sales[s1].reported_basis": 8607500,
     "sales[s1].correct_basis": 3763200,
     "sales[s1].wash_loss": 0,
-    "$gift": []
+    "$gift": [],
+    "$dependent": [],
+    "household.taxpayer_age": 40,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": false,
+    "household.unmarried": true,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false
    },
    "expect": {
     "sa.line2": {
@@ -4977,7 +6535,15 @@
     ],
     "gift[item_a].deduction": 0,
     "gift[item_a].public_securities": true,
-    "gift[item_a].special": false
+    "gift[item_a].special": false,
+    "$dependent": [],
+    "household.taxpayer_age": 40,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": false,
+    "household.unmarried": true,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false
    },
    "expect": {
     "sa.line2": {
@@ -5169,7 +6735,15 @@
     "sales[s1].reported_basis": 0,
     "sales[s1].correct_basis": 1876300,
     "sales[s1].wash_loss": 0,
-    "$gift": []
+    "$gift": [],
+    "$dependent": [],
+    "household.taxpayer_age": 40,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": false,
+    "household.unmarried": true,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false
    },
    "expect": {
     "sa.line2": {
@@ -5347,7 +6921,35 @@
     ],
     "gift[item_a].deduction": 299200,
     "gift[item_a].public_securities": false,
-    "gift[item_a].special": false
+    "gift[item_a].special": false,
+    "$dependent": [
+     "child"
+    ],
+    "dependent[child].relationship": "child",
+    "dependent[child].age": 10,
+    "dependent[child].student": false,
+    "dependent[child].disabled": false,
+    "dependent[child].months": 12,
+    "dependent[child].self_support": false,
+    "dependent[child].joint_return": false,
+    "dependent[child].citizen": false,
+    "dependent[child].canada_mexico": true,
+    "dependent[child].married": false,
+    "dependent[child].tin": false,
+    "dependent[child].work_ssn": false,
+    "dependent[child].gross_income": 0,
+    "dependent[child].supported": true,
+    "dependent[child].other_claimant": false,
+    "dependent[child].divorced_rule": false,
+    "dependent[child].multiple_support": false,
+    "dependent[child].parent_home_paid": false,
+    "household.taxpayer_age": 40,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": true,
+    "household.unmarried": true,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false
    },
    "expect": {
     "sa.line2": {
@@ -5531,7 +7133,35 @@
     "sales[s1].reported_basis": 243900,
     "sales[s1].correct_basis": 0,
     "sales[s1].wash_loss": 0,
-    "$gift": []
+    "$gift": [],
+    "$dependent": [
+     "child"
+    ],
+    "dependent[child].relationship": "child",
+    "dependent[child].age": 10,
+    "dependent[child].student": false,
+    "dependent[child].disabled": false,
+    "dependent[child].months": 12,
+    "dependent[child].self_support": false,
+    "dependent[child].joint_return": false,
+    "dependent[child].citizen": false,
+    "dependent[child].canada_mexico": true,
+    "dependent[child].married": false,
+    "dependent[child].tin": false,
+    "dependent[child].work_ssn": false,
+    "dependent[child].gross_income": 0,
+    "dependent[child].supported": true,
+    "dependent[child].other_claimant": false,
+    "dependent[child].divorced_rule": false,
+    "dependent[child].multiple_support": false,
+    "dependent[child].parent_home_paid": false,
+    "household.taxpayer_age": 40,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": true,
+    "household.unmarried": true,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false
    },
    "expect": {
     "sb.line2": {
@@ -5695,7 +7325,15 @@
     ],
     "gift[item_a].deduction": 0,
     "gift[item_a].public_securities": false,
-    "gift[item_a].special": false
+    "gift[item_a].special": false,
+    "$dependent": [],
+    "household.taxpayer_age": 40,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": false,
+    "household.unmarried": true,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false
    },
    "expect": {
     "sb.line2": {
@@ -5823,7 +7461,35 @@
     "sales[s1].reported_basis": 243900,
     "sales[s1].correct_basis": 0,
     "sales[s1].wash_loss": 0,
-    "$gift": []
+    "$gift": [],
+    "$dependent": [
+     "child"
+    ],
+    "dependent[child].relationship": "child",
+    "dependent[child].age": 10,
+    "dependent[child].student": false,
+    "dependent[child].disabled": false,
+    "dependent[child].months": 12,
+    "dependent[child].self_support": false,
+    "dependent[child].joint_return": false,
+    "dependent[child].citizen": false,
+    "dependent[child].canada_mexico": true,
+    "dependent[child].married": false,
+    "dependent[child].tin": false,
+    "dependent[child].work_ssn": false,
+    "dependent[child].gross_income": 0,
+    "dependent[child].supported": true,
+    "dependent[child].other_claimant": false,
+    "dependent[child].divorced_rule": false,
+    "dependent[child].multiple_support": false,
+    "dependent[child].parent_home_paid": false,
+    "household.taxpayer_age": 40,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": true,
+    "household.unmarried": true,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false
    },
    "expect": {
     "sd.line1a.d": {
@@ -6142,7 +7808,15 @@
     ],
     "gift[item_a].deduction": 300300,
     "gift[item_a].public_securities": false,
-    "gift[item_a].special": false
+    "gift[item_a].special": false,
+    "$dependent": [],
+    "household.taxpayer_age": 40,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": false,
+    "household.unmarried": true,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false
    },
    "expect": {
     "sd.line1a.d": {
@@ -6434,7 +8108,15 @@
     ],
     "interest[bank_a].amount": 4959800,
     "$sales": [],
-    "$gift": []
+    "$gift": [],
+    "$dependent": [],
+    "household.taxpayer_age": 40,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": false,
+    "household.unmarried": true,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false
    },
    "expect": {
     "sd.line1a.d": {
@@ -6726,7 +8408,35 @@
     "sales[s1].reported_basis": 243900,
     "sales[s1].correct_basis": 0,
     "sales[s1].wash_loss": 0,
-    "$gift": []
+    "$gift": [],
+    "$dependent": [
+     "child"
+    ],
+    "dependent[child].relationship": "child",
+    "dependent[child].age": 10,
+    "dependent[child].student": false,
+    "dependent[child].disabled": false,
+    "dependent[child].months": 12,
+    "dependent[child].self_support": false,
+    "dependent[child].joint_return": false,
+    "dependent[child].citizen": false,
+    "dependent[child].canada_mexico": true,
+    "dependent[child].married": false,
+    "dependent[child].tin": false,
+    "dependent[child].work_ssn": false,
+    "dependent[child].gross_income": 0,
+    "dependent[child].supported": true,
+    "dependent[child].other_claimant": false,
+    "dependent[child].divorced_rule": false,
+    "dependent[child].multiple_support": false,
+    "dependent[child].parent_home_paid": false,
+    "household.taxpayer_age": 40,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": true,
+    "household.unmarried": true,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false
    },
    "expect": {
     "sdtw.line1": {
@@ -7042,7 +8752,35 @@
     ],
     "gift[item_a].deduction": 500000,
     "gift[item_a].public_securities": true,
-    "gift[item_a].special": false
+    "gift[item_a].special": false,
+    "$dependent": [
+     "child"
+    ],
+    "dependent[child].relationship": "child",
+    "dependent[child].age": 10,
+    "dependent[child].student": false,
+    "dependent[child].disabled": false,
+    "dependent[child].months": 12,
+    "dependent[child].self_support": false,
+    "dependent[child].joint_return": false,
+    "dependent[child].citizen": false,
+    "dependent[child].canada_mexico": true,
+    "dependent[child].married": false,
+    "dependent[child].tin": false,
+    "dependent[child].work_ssn": false,
+    "dependent[child].gross_income": 0,
+    "dependent[child].supported": true,
+    "dependent[child].other_claimant": false,
+    "dependent[child].divorced_rule": false,
+    "dependent[child].multiple_support": false,
+    "dependent[child].parent_home_paid": false,
+    "household.taxpayer_age": 40,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": true,
+    "household.unmarried": true,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false
    },
    "expect": {
     "sdtw.line1": {
@@ -7339,7 +9077,15 @@
     ],
     "gift[item_a].deduction": 45800,
     "gift[item_a].public_securities": false,
-    "gift[item_a].special": false
+    "gift[item_a].special": false,
+    "$dependent": [],
+    "household.taxpayer_age": 40,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": false,
+    "household.unmarried": true,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false
    },
    "expect": {
     "sdtw.line1": {
@@ -7643,7 +9389,15 @@
     "gift[item_a].special": false,
     "gift[item_b].deduction": 0,
     "gift[item_b].public_securities": false,
-    "gift[item_b].special": false
+    "gift[item_b].special": false,
+    "$dependent": [],
+    "household.taxpayer_age": 40,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": false,
+    "household.unmarried": true,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false
    },
    "expect": {
     "sdtw.line1": {
@@ -7935,7 +9689,35 @@
     "sales[s1].reported_basis": 243900,
     "sales[s1].correct_basis": 0,
     "sales[s1].wash_loss": 0,
-    "$gift": []
+    "$gift": [],
+    "$dependent": [
+     "child"
+    ],
+    "dependent[child].relationship": "child",
+    "dependent[child].age": 10,
+    "dependent[child].student": false,
+    "dependent[child].disabled": false,
+    "dependent[child].months": 12,
+    "dependent[child].self_support": false,
+    "dependent[child].joint_return": false,
+    "dependent[child].citizen": false,
+    "dependent[child].canada_mexico": true,
+    "dependent[child].married": false,
+    "dependent[child].tin": false,
+    "dependent[child].work_ssn": false,
+    "dependent[child].gross_income": 0,
+    "dependent[child].supported": true,
+    "dependent[child].other_claimant": false,
+    "dependent[child].divorced_rule": false,
+    "dependent[child].multiple_support": false,
+    "dependent[child].parent_home_paid": false,
+    "household.taxpayer_age": 40,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": true,
+    "household.unmarried": true,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false
    },
    "expect": {
     "u1250.line1": {
@@ -8145,7 +9927,15 @@
     ],
     "gift[item_a].deduction": 37900,
     "gift[item_a].public_securities": true,
-    "gift[item_a].special": false
+    "gift[item_a].special": false,
+    "$dependent": [],
+    "household.taxpayer_age": 40,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": false,
+    "household.unmarried": true,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false
    },
    "expect": {
     "u1250.line1": {

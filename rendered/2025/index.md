@@ -4,6 +4,7 @@ Review these renderings line by line against the archived IRS sources in `source
 
 | File | Kind | Lines |
 | --- | --- | --- |
+| dependent.md | worksheet | 45 |
 | div.md | form | 25 |
 | f1040.md | form | 45 |
 | f4952.md | form | 25 |
@@ -14,12 +15,14 @@ Review these renderings line by line against the archived IRS sources in `source
 | ftc.md | form | 11 |
 | g28.md | form | 8 |
 | gift.md | form | 5 |
+| household.md | form | 11 |
 | interest.md | form | 1 |
 | person.md | worksheet | 14 |
 | qbi.md | form | 10 |
 | qdcg.md | worksheet | 27 |
 | s2.md | form | 8 |
 | s3.md | form | 10 |
+| s8812.md | form | 54 |
 | sa.md | form | 55 |
 | sales.md | form | 25 |
 | sb.md | form | 12 |

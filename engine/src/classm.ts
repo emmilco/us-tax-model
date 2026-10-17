@@ -3,7 +3,7 @@
 // values that flow into the document from elsewhere. An isolated model works
 // the document by hand from those values and its archived pages
 // (tools/transcription/classm.py); the agreements become class M fixtures.
-import { mkdirSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { loadCanonical } from "./canonical.js";
 import { evaluateAll } from "./eval.js";
@@ -173,7 +173,10 @@ export function classmJobs(args: string[]): void {
     summary.push(`${doc.id}: ${n} case(s) cover ${covered.size}/${keys.length} branches (${keys.length - reachable.size} not reachable by a computed case)`);
   }
   mkdirSync(join(out, ".."), { recursive: true });
-  writeFileSync(out, JSON.stringify({ seed: SEED, corpus: corpusSize, jobs }, null, 1));
+  // With --docs, the other documents' jobs are kept as they are.
+  let kept: Job[] = [];
+  if (only && existsSync(out)) kept = (JSON.parse(readFileSync(out, "utf8")) as { jobs: Job[] }).jobs.filter((j) => !only!.includes(j.doc));
+  writeFileSync(out, JSON.stringify({ seed: SEED, corpus: corpusSize, jobs: [...kept, ...jobs] }, null, 1));
   for (const s of summary) console.log(s);
   console.log(`classm: ${jobs.length} jobs -> ${out}`);
 }

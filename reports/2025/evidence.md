@@ -2,6 +2,58 @@
 
 Fixtures that assert each line, by evidence class. A — official IRS example. B — human hand-work (pending; marked where recorded). C — recorded value also confirmed by the independently written Lean reference evaluator (running evaluator agreement, reports/2025/evaluator_agreement.md); the external-calculator comparison is the Stage 5 differential and remains pending. M — an isolated model worked the document by hand from its archived pages and the amounts flowing into it (reviews/2025/classm/). R — recorded synthetic regression, no class claimed, human review pending.
 
+## Dependents — qualifying child and qualifying relative tests, per person listed
+
+| line | A | B | C | R |
+| --- | --- | --- | --- | --- |
+| dependent.relationship | — | — | — | — |
+| dependent.age | — | — | — | — |
+| dependent.student | — | — | — | — |
+| dependent.disabled | — | — | — | — |
+| dependent.months | — | — | — | — |
+| dependent.self_support | — | — | — | — |
+| dependent.joint_return | — | — | — | — |
+| dependent.citizen | — | — | — | — |
+| dependent.canada_mexico | — | — | — | — |
+| dependent.married | — | — | — | — |
+| dependent.tin | — | — | — | — |
+| dependent.work_ssn | — | — | — | — |
+| dependent.gross_income | — | — | — | — |
+| dependent.supported | — | — | — | — |
+| dependent.other_claimant | — | — | — | — |
+| dependent.divorced_rule | — | — | — | — |
+| dependent.multiple_support | — | — | — | — |
+| dependent.parent_home_paid | — | — | — | — |
+| dependent.one | — | — | — | — |
+| dependent.zero | — | — | — | — |
+| dependent.qc_relationship | — | — | — | — |
+| dependent.younger | — | — | — | — |
+| dependent.qc_age | — | — | — | — |
+| dependent.lived_half | — | — | — | — |
+| dependent.qualifying_child | — | — | — | — |
+| dependent.resident | — | — | — | — |
+| dependent.qc_dependent | — | — | — | — |
+| dependent.qr_relationship | — | — | — | — |
+| dependent.qr_income | — | — | — | — |
+| dependent.income_exception | — | — | — | — |
+| dependent.qualifying_relative | — | — | — | — |
+| dependent.qr_dependent | — | — | — | — |
+| dependent.claimed | — | — | — | — |
+| dependent.under_ctc_age | — | — | — | — |
+| dependent.ctc_child | — | — | — | — |
+| dependent.odc_person | — | — | — | — |
+| dependent.ctc_per_child | — | — | — | — |
+| dependent.ctc_amount | — | — | — | — |
+| dependent.odc_per_dependent | — | — | — | — |
+| dependent.odc_amount | — | — | — | — |
+| dependent.actc_per_child | — | — | — | — |
+| dependent.actc_amount | — | — | — | — |
+| dependent.hoh_test2 | — | — | — | — |
+| dependent.hoh_test1 | — | — | — | — |
+| dependent.hoh_person | — | — | — | — |
+
+Unasserted lines: dependent.one, dependent.zero, dependent.qc_relationship, dependent.younger, dependent.qc_age, dependent.lived_half, dependent.qualifying_child, dependent.resident, dependent.qc_dependent, dependent.qr_relationship, dependent.qr_income, dependent.income_exception, dependent.qualifying_relative, dependent.qr_dependent, dependent.claimed, dependent.under_ctc_age, dependent.ctc_child, dependent.odc_person, dependent.ctc_per_child, dependent.ctc_amount, dependent.odc_per_dependent, dependent.odc_amount, dependent.actc_per_child, dependent.actc_amount, dependent.hoh_test2, dependent.hoh_test1, dependent.hoh_person
+
 ## Form 1099-DIV — distribution components and scope screening
 
 | line | A | B | C | R |
@@ -273,6 +325,24 @@ Unasserted lines: g28.combined
 
 Unasserted lines: gift.section_b, gift.allowed
 
+## Household facts for dependents and head of household
+
+| line | A | B | C | R |
+| --- | --- | --- | --- | --- |
+| household.taxpayer_age | — | — | — | — |
+| household.taxpayer_tin | — | — | — | — |
+| household.taxpayer_work_ssn | — | — | — | — |
+| household.home_cost | — | — | — | — |
+| household.unmarried | — | — | — | — |
+| household.test1_persons | — | — | — | — |
+| household.test2_persons | — | — | — | — |
+| household.test1_met | — | — | — | — |
+| household.test2_met | — | — | — | — |
+| household.hoh_eligible | — | — | — | — |
+| household.hoh_fails | — | — | — | — |
+
+Unasserted lines: household.test1_persons, household.test2_persons, household.test1_met, household.test2_met, household.hoh_eligible, household.hoh_fails
+
 ## Schedule B — interest payer entries
 
 | line | A | B | C | R |
@@ -380,6 +450,67 @@ Unasserted lines: s2.zero
 | s3.line15 | — | — | — | 22 |
 
 Unasserted lines: s3.zero, s3.married
+
+## Schedule 8812 — Credits for Qualifying Children and Other Dependents
+
+| line | A | B | C | R |
+| --- | --- | --- | --- | --- |
+| s8812.line1 | — | — | — | 4 |
+| s8812.zero | — | — | — | — |
+| s8812.line2a | — | — | — | 4 |
+| s8812.line2b | — | — | — | 4 |
+| s8812.line2c | — | — | — | 4 |
+| s8812.line2d | — | — | — | 4 |
+| s8812.line3 | — | — | — | 4 |
+| s8812.line4 | — | — | — | 4 |
+| s8812.line5 | — | — | — | 4 |
+| s8812.line6 | — | — | — | 4 |
+| s8812.line7 | — | — | — | 4 |
+| s8812.line8 | — | — | — | 4 |
+| s8812.line9 | — | — | — | 4 |
+| s8812.excess | — | — | — | — |
+| s8812.line10 | — | — | — | 4 |
+| s8812.line11 | — | — | — | 4 |
+| s8812.line12 | — | — | — | 4 |
+| s8812.clw_a1 | — | — | — | — |
+| s8812.clw_a2 | — | — | — | — |
+| s8812.clw_a3 | — | — | — | — |
+| s8812.clw_a4 | — | — | — | — |
+| s8812.clw_a5 | — | — | — | — |
+| s8812.line13 | — | — | — | 3 |
+| s8812.line14 | — | — | — | 4 |
+| s8812.line16a | — | — | — | 4 |
+| s8812.line16b | — | — | — | 2 (classm.s8812.2, classm.s8812.4) |
+| s8812.line17 | — | — | — | 4 |
+| s8812.combat_pay | — | — | — | — |
+| s8812.puerto_rico | — | — | — | — |
+| s8812.eiw_1a | — | — | — | — |
+| s8812.eiw_1b | — | — | — | — |
+| s8812.eiw_3 | — | — | — | — |
+| s8812.eiw_4 | — | — | — | — |
+| s8812.eiw_5 | — | — | — | — |
+| s8812.eiw_6 | — | — | — | — |
+| s8812.eiw_7 | — | — | — | — |
+| s8812.line18a | — | — | — | 3 |
+| s8812.line18b | — | — | — | 4 |
+| s8812.line19 | — | — | — | 3 |
+| s8812.line20 | — | — | — | 3 |
+| s8812.ss_withheld | — | — | — | — |
+| s8812.amt_ws4 | — | — | — | — |
+| s8812.line21 | — | — | — | 2 (classm.s8812.2, classm.s8812.3) |
+| s8812.line22 | — | — | — | 4 |
+| s8812.line23 | — | — | — | 2 (classm.s8812.2, classm.s8812.3) |
+| s8812.line24 | — | — | — | 3 |
+| s8812.line25 | — | — | — | 2 (classm.s8812.2, classm.s8812.3) |
+| s8812.line26 | — | — | — | 2 (classm.s8812.2, classm.s8812.3) |
+| s8812.few_children | — | — | — | — |
+| s8812.earned_covers | — | — | — | — |
+| s8812.from_part_iia | — | — | — | — |
+| s8812.from_part_iib | — | — | — | — |
+| s8812.part_iib_result | — | — | — | — |
+| s8812.line27 | — | — | — | 4 |
+
+Unasserted lines: s8812.zero, s8812.excess, s8812.clw_a1, s8812.clw_a2, s8812.clw_a3, s8812.clw_a4, s8812.clw_a5, s8812.eiw_1a, s8812.eiw_1b, s8812.eiw_3, s8812.eiw_4, s8812.eiw_5, s8812.eiw_6, s8812.eiw_7, s8812.ss_withheld, s8812.amt_ws4, s8812.few_children, s8812.earned_covers, s8812.from_part_iia, s8812.from_part_iib, s8812.part_iib_result
 
 ## Schedule A — supported itemized deductions and standard comparison
 
@@ -766,5 +897,5 @@ Unasserted lines: below_boundary, table_tax, worksheet_tax, tax
 
 Unasserted lines: single.row1.product, single.row1.tax, single.row2.product, single.row2.tax, single.row3.product, single.row3.tax, single.row4.product, single.row4.tax, single.row5.product, single.row5.tax, single.result, mfj.row1.product, mfj.row1.tax, mfj.row2.product, mfj.row2.tax, mfj.row3.product, mfj.row3.tax, mfj.row4.product, mfj.row4.tax, mfj.row5.product, mfj.row5.tax, mfj.result, mfs.row1.product, mfs.row1.tax, mfs.row2.product, mfs.row2.tax, mfs.row3.product, mfs.row3.tax, mfs.row4.product, mfs.row4.tax, mfs.row5.product, mfs.row5.tax, mfs.result, hoh.row1.product, hoh.row1.tax, hoh.row2.product, hoh.row2.tax, hoh.row3.product, hoh.row3.tax, hoh.row4.product, hoh.row4.tax, hoh.row5.product, hoh.row5.tax, hoh.result, tax
 
-Unasserted computed lines across all documents: 168. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
+Unasserted computed lines across all documents: 222. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
 Asserted keys not matching a line id: qdcg.f1040.line15, qdcg.f1040.line3a, qdcg.f1040.status, f1040.qdcg.line25, qdcg.sd.distributions

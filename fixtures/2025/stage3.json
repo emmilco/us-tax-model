@@ -76,7 +76,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sales[a].h": {
@@ -164,7 +172,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sales[a].h": {
@@ -252,7 +268,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sales[a].h": {
@@ -340,7 +364,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sales[a].h": {
@@ -428,7 +460,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sd.line8a.d": {
@@ -530,7 +570,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sd.line8a.d": {
@@ -622,7 +670,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sd.line1b.h": {
@@ -718,7 +774,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sd.line2.h": {
@@ -814,7 +878,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sd.line3.h": {
@@ -910,7 +982,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sd.line8b.h": {
@@ -1006,7 +1086,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sd.line9.h": {
@@ -1102,7 +1190,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sd.line10.h": {
@@ -1198,7 +1294,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sales[a].g": {
@@ -1294,7 +1398,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sales[a].g": {
@@ -1390,7 +1502,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sales[a].g": {
@@ -1486,7 +1606,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sales[a].g": {
@@ -1582,7 +1710,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sales[a].g": {
@@ -1678,7 +1814,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sales[a].g": {
@@ -1774,7 +1918,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sales[a].g": {
@@ -1870,7 +2022,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sales[a].g": {
@@ -1966,7 +2126,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sales[a].g": {
@@ -2062,7 +2230,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sales[a].g": {
@@ -2158,7 +2334,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sales[a].g": {
@@ -2254,7 +2438,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sales[a].g": {
@@ -2350,7 +2542,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sd.line16": {
@@ -2447,7 +2647,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sd.line16": {
@@ -2543,7 +2751,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sd.line16": {
@@ -2640,7 +2856,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sd.line16": {
@@ -2736,7 +2960,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sd.line16": {
@@ -2833,7 +3065,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sd.line16": {
@@ -2929,7 +3169,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sd.line16": {
@@ -3026,7 +3274,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sd.line16": {
@@ -3122,7 +3378,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sd.line16": {
@@ -3219,7 +3483,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sd.line16": {
@@ -3315,7 +3587,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sd.line16": {
@@ -3412,7 +3692,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sd.line16": {
@@ -3508,7 +3796,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sd.line16": {
@@ -3605,7 +3901,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sd.line16": {
@@ -3701,7 +4005,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sd.line16": {
@@ -3798,7 +4110,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sd.line16": {
@@ -3894,7 +4214,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sd.line16": {
@@ -3995,7 +4323,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sd.line16": {
@@ -4101,7 +4437,15 @@
         "sa.line11": 0,
         "$gift": [],
         "qbi.unsupported": false,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sd.line1b.h": {
@@ -4190,7 +4534,15 @@
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
         "person[taxpayer].w2[migrated].box1": 6575000,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sd.filed": {
@@ -4287,7 +4639,15 @@
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
         "person[taxpayer].w2[migrated].box1": 6175000,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sd.filed": {
@@ -4385,7 +4745,15 @@
         "scope.other_income": false,
         "$gift": [],
         "sa.line11": 0,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f1040.line7a": {
@@ -4918,7 +5286,15 @@
         "scope.other_income": false,
         "$gift": [],
         "sa.line11": 0,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f1040.line7a": {
@@ -5451,7 +5827,15 @@
         "scope.other_income": false,
         "$gift": [],
         "sa.line11": 0,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f1040.line7a": {
@@ -5984,7 +6368,15 @@
         "scope.other_income": false,
         "$gift": [],
         "sa.line11": 0,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f1040.line7a": {
@@ -6517,7 +6909,15 @@
         "scope.other_income": false,
         "$gift": [],
         "sa.line11": 0,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f1040.line7a": {
@@ -7050,7 +7450,15 @@
         "scope.other_income": false,
         "$gift": [],
         "sa.line11": 0,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f1040.line7a": {
@@ -7583,7 +7991,15 @@
         "scope.other_income": false,
         "$gift": [],
         "sa.line11": 0,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f1040.line7a": {
@@ -8116,7 +8532,15 @@
         "scope.other_income": false,
         "$gift": [],
         "sa.line11": 0,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f1040.line7a": {
@@ -8649,7 +9073,15 @@
         "scope.schedule1a": false,
         "$gift": [],
         "sa.line11": 0,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f1040.line7a": {
@@ -9182,7 +9614,15 @@
         "scope.schedule1a": false,
         "$gift": [],
         "sa.line11": 0,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f1040.line7a": {
@@ -9715,7 +10155,15 @@
         "scope.schedule1a": false,
         "$gift": [],
         "sa.line11": 0,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f1040.line7a": {
@@ -10248,7 +10696,15 @@
         "scope.schedule1a": false,
         "$gift": [],
         "sa.line11": 0,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f1040.line7a": {
@@ -10781,7 +11237,15 @@
         "scope.schedule1a": false,
         "$gift": [],
         "sa.line11": 0,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f1040.line7a": {
@@ -11392,7 +11856,15 @@
         "scope.schedule1a": false,
         "$gift": [],
         "sa.line11": 0,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f1040.line7a": {
@@ -12012,7 +12484,15 @@
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
         "person[taxpayer].w2[migrated].box1": 6175000,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f1040.line16": {
@@ -12108,7 +12588,15 @@
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
         "person[taxpayer].w2[migrated].box1": 6175000,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f1040.line16": {
@@ -12204,7 +12692,15 @@
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
         "person[taxpayer].w2[migrated].box1": 6175000,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f1040.line16": {
@@ -12300,7 +12796,15 @@
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
         "person[taxpayer].w2[migrated].box1": 1175000,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f1040.gate.sdtw": {
@@ -12399,7 +12903,15 @@
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
         "person[taxpayer].w2[migrated].box1": 6175000,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f1040.gate.sdtw": {
@@ -12498,7 +13010,15 @@
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
         "person[taxpayer].w2[migrated].box1": 6175000,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f1040.gate.sdtw": {
@@ -12597,7 +13117,15 @@
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
         "person[taxpayer].w2[migrated].box1": 6755000,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f1040.gate.sdtw": {
@@ -12696,7 +13224,15 @@
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
         "person[taxpayer].w2[migrated].box1": 6775000,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "f1040.gate.sdtw": {
@@ -12805,7 +13341,15 @@
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
         "person[taxpayer].w2[migrated].box1": 6375000,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sd.line7": {
@@ -12984,7 +13528,15 @@
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
         "person[taxpayer].w2[migrated].box1": 6452000,
-        "scope.other_line16": false
+        "scope.other_line16": false,
+        "$dependent": [],
+        "household.taxpayer_age": 40,
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false
       },
       "expect": {
         "sd.line1a.d": {

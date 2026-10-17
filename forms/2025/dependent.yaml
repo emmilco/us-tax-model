@@ -1,0 +1,815 @@
+form:
+  id: dependent
+  kind: worksheet
+  title: Dependents — qualifying child and qualifying relative tests, per person listed
+  tax_year: 2025
+  note: One entry per person the filer lists. The tests of Steps 1 through 5 of "Who Qualifies as Your
+    Dependent" are encoded per entry; the rules for married persons, children of divorced or separated
+    parents, multiple support agreements and a child who is the qualifying child of another person are
+    refused rather than decided. Temporary absences count as months lived with you, as the instructions say.
+  lines:
+    - id: dependent.relationship
+      printed: (helper)
+      type: Enum(dependent_relationship)
+      label: Relationship to you
+      expr:
+        op: input
+        source: "Relationship to you: child (son, daughter, stepchild, foster child or their descendant), sibling
+          (brother, sister, half brother, half sister, stepbrother or stepsister, or a son or daughter of a brother,
+          sister, half brother or half sister), sibling_descendant (any other descendant of a sibling, such as a
+          grandniece or a stepsibling's child), parent (father or mother), parent_relative (a grandparent, aunt or
+          uncle: an ancestor or sibling of a parent), in_law (step-parent or in-law), household_member (any other
+          person who lived with you all year), or other"
+      cite:
+        doc: i1040gi
+        locator: pp. 17 and 19, Steps 1 and 4, "A qualifying child is your..." and "A qualifying relative is your..."
+    - id: dependent.age
+      printed: (helper)
+      type: Count
+      label: Age at the end of 2025
+      expr:
+        op: input
+        source: Age at the end of 2025 (whole years)
+      cite:
+        doc: i1040gi
+        locator: p. 17, Step 1, "Under age 19 at the end of 2025"
+    - id: dependent.student
+      printed: (helper)
+      type: Bool
+      label: Full-time student in 2025?
+      expr:
+        op: input
+        source: Was this person a full-time student in 2025?
+      cite:
+        doc: i1040gi
+        locator: p. 17, Step 1, "Under age 24 at the end of 2025, a full-time student (defined later)"
+    - id: dependent.disabled
+      printed: (helper)
+      type: Bool
+      label: Permanently and totally disabled?
+      expr:
+        op: input
+        source: Was this person permanently and totally disabled at any time in 2025?
+      cite:
+        doc: i1040gi
+        locator: p. 17, Step 1, "Any age and permanently and totally disabled (defined later)"
+    - id: dependent.months
+      printed: (helper)
+      type: Count
+      label: Months lived with you in 2025, counting temporary absences
+      expr:
+        op: input
+        source: Months this person lived with you in 2025, counting temporary absences for school, vacation, business,
+          medical care, military service or detention as time lived with you (0–12); for a person born, died, adopted
+          or placed with you in 2025, enter 12 if your home was their home for more than half the time they were
+          alive or with you, and 0 otherwise
+      cite:
+        doc: i1040gi
+        locator: p. 17, Step 1, "Who lived with you for more than half of 2025", and p. 14, Exception to time lived with you
+    - id: dependent.self_support
+      printed: (helper)
+      type: Bool
+      label: Provided over half of their own support?
+      expr:
+        op: input
+        source: Did this person provide over half of their own support for 2025?
+      cite:
+        doc: i1040gi
+        locator: p. 17, Step 1, "Who didn't provide over half of their own support for 2025"
+    - id: dependent.joint_return
+      printed: (helper)
+      type: Bool
+      label: Filing a joint return other than only to claim a refund?
+      expr:
+        op: input
+        source: Is this person filing a joint return for 2025, other than only to claim a refund of withheld or estimated tax?
+      cite:
+        doc: i1040gi
+        locator: p. 17, Step 1, "Who isn't filing a joint return for 2025 or is filing a joint return for 2025 only to claim a refund"
+    - id: dependent.citizen
+      printed: (helper)
+      type: Bool
+      label: U.S. citizen, U.S. national or U.S. resident alien?
+      expr:
+        op: input
+        source: Was this person a U.S. citizen, U.S. national or U.S. resident alien?
+      cite:
+        doc: i1040gi
+        locator: p. 18, Step 2, question 1, and Step 3, question 2
+    - id: dependent.canada_mexico
+      printed: (helper)
+      type: Bool
+      label: Resident of Canada or Mexico (if not a U.S. citizen, national or resident alien)?
+      expr:
+        op: input
+        source: If not a U.S. citizen, national or resident alien, was this person a resident of Canada or Mexico?
+      cite:
+        doc: i1040gi
+        locator: p. 18, Step 2, question 1, "or a resident of Canada or Mexico"
+    - id: dependent.married
+      printed: (helper)
+      type: Bool
+      label: Married?
+      expr:
+        op: input
+        source: Was this person married at the end of 2025?
+      cite:
+        doc: i1040gi
+        locator: p. 18, Step 2, question 2, "Was the child married? Yes. See Married person, later"
+    - id: dependent.tin
+      printed: (helper)
+      type: Bool
+      label: SSN, ITIN or ATIN issued on or before the due date of your return?
+      expr:
+        op: input
+        source: Did this person have an SSN, ITIN or ATIN issued on or before the due date of your 2025 return (including
+          extensions), or have you applied for one by then?
+      cite:
+        doc: i1040gi
+        locator: p. 18, Step 3, question 1, and p. 19, Step 5, question 2
+    - id: dependent.work_ssn
+      printed: (helper)
+      type: Bool
+      label: SSN valid for employment issued before the due date of your return?
+      expr:
+        op: input
+        source: Did this person have an SSN valid for employment, issued before the due date of your 2025 return (including
+          extensions)?
+      cite:
+        doc: i1040gi
+        locator: p. 18, Step 3, question 4
+    - id: dependent.gross_income
+      printed: (helper)
+      type: NonNegDollars
+      label: Gross income for 2025
+      expr:
+        op: input
+        source: This person's gross income for 2025
+      cite:
+        doc: i1040gi
+        locator: p. 19, Step 4, "Who had gross income of less than $5,200 in 2025"
+    - id: dependent.supported
+      printed: (helper)
+      type: Bool
+      label: You provided over half of this person's support?
+      expr:
+        op: input
+        source: Did you provide over half of this person's support in 2025?
+      cite:
+        doc: i1040gi
+        locator: p. 19, Step 4, "For whom you provided over half of the person's support in 2025"
+    - id: dependent.other_claimant
+      printed: (helper)
+      type: Bool
+      label: Meets the conditions to be the qualifying child of another person?
+      expr:
+        op: input
+        source: Does this person meet the conditions to be the qualifying child of any other person for 2025?
+      cite:
+        doc: i1040gi
+        locator: p. 17, Step 1, "If the child meets the conditions to be a qualifying child of any other person ... see Qualifying child of more than one person"
+    - id: dependent.divorced_rule
+      printed: (helper)
+      type: Bool
+      label: Rule for children of divorced or separated parents applies?
+      expr:
+        op: input
+        source: Does the rule for children of divorced or separated parents apply to this person?
+      cite:
+        doc: i1040gi
+        locator: p. 19, Step 4, "But see Children of divorced or separated parents"
+    - id: dependent.multiple_support
+      printed: (helper)
+      type: Bool
+      label: Claimed under a multiple support agreement?
+      expr:
+        op: input
+        source: Is this person claimed under a multiple support agreement?
+      cite:
+        doc: i1040gi
+        locator: p. 19, Step 4, "Multiple support agreements"
+    - id: dependent.parent_home_paid
+      printed: (helper)
+      type: Bool
+      label: For a parent not living with you, you paid over half the cost of their main home for all of 2025?
+      expr:
+        op: input
+        source: If this person is your parent, did you pay over half the cost of keeping up a home that was their main
+          home for all of 2025?
+      cite:
+        doc: i1040gi
+        locator: p. 14, Head of Household, Test 1
+    - id: dependent.one
+      printed: (helper)
+      type: Count
+      label: One person listed
+      expr:
+        op: param
+        ref: dependent.one
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), lines 4 and 6
+    - id: dependent.zero
+      printed: (helper)
+      type: NonNegDollars
+      label: No amount for this person
+      expr:
+        op: param
+        ref: sales.zero
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), lines 5 and 7
+    - id: dependent.qc_relationship
+      printed: (helper)
+      type: Bool
+      label: A child, sibling, or a descendant of either
+      expr:
+        op: test
+        any:
+          - op: test
+            eq:
+              - dependent.relationship
+              - const: child
+          - op: test
+            eq:
+              - dependent.relationship
+              - const: sibling
+          - op: test
+            eq:
+              - dependent.relationship
+              - const: sibling_descendant
+      cite:
+        doc: i1040gi
+        locator: p. 17, Step 1, "Son, daughter, stepchild, foster child, brother, sister, stepbrother, stepsister, half brother, half sister, or a descendant of any of them"
+    - id: dependent.younger
+      printed: (helper)
+      type: Bool
+      label: Younger than you
+      expr:
+        op: test
+        lt:
+          - dependent.age
+          - household.taxpayer_age
+      cite:
+        doc: i1040gi
+        locator: p. 17, Step 1, "and younger than you"
+    - id: dependent.qc_age
+      printed: (helper)
+      type: Bool
+      label: Under 19 and younger than you, under 24 a full-time student and younger than you, or permanently and totally disabled
+      expr:
+        op: test
+        any:
+          - op: test
+            all:
+              - op: test
+                lt:
+                  - dependent.age
+                  - param: qc.age_limit
+              - op: test
+                eq:
+                  - dependent.younger
+                  - const: true
+          - op: test
+            all:
+              - op: test
+                lt:
+                  - dependent.age
+                  - param: qc.student_age_limit
+              - op: test
+                eq:
+                  - dependent.student
+                  - const: true
+              - op: test
+                eq:
+                  - dependent.younger
+                  - const: true
+          - op: test
+            eq:
+              - dependent.disabled
+              - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 17, Step 1, the age conditions
+    - id: dependent.lived_half
+      printed: (helper)
+      type: Bool
+      label: Lived with you for more than half of 2025
+      expr:
+        op: test
+        gt:
+          - dependent.months
+          - const: 6
+            type: Count
+      cite:
+        doc: i1040gi
+        locator: p. 17, Step 1, "Who lived with you for more than half of 2025"
+    - id: dependent.qualifying_child
+      printed: (helper)
+      type: Bool
+      label: Qualifying child (Step 1)
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - dependent.qc_relationship
+              - const: true
+          - op: test
+            eq:
+              - dependent.qc_age
+              - const: true
+          - op: test
+            eq:
+              - dependent.self_support
+              - const: false
+          - op: test
+            eq:
+              - dependent.joint_return
+              - const: false
+          - op: test
+            eq:
+              - dependent.lived_half
+              - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 17, Step 1, "Do you have a child who meets the conditions to be your qualifying child?"
+      refuses:
+        - when: dependent.other_claimant
+          form: Qualifying child of more than one person (tie-breaker rules)
+          remedy: This person may be the qualifying child of another person. The tie-breaker rules are outside this tool.
+          cite:
+            doc: i1040gi
+            locator: p. 21, Qualifying child of more than one person
+        - when: dependent.divorced_rule
+          form: Children of divorced or separated parents
+          remedy: The rule for children of divorced or separated parents is outside this tool.
+          cite:
+            doc: i1040gi
+            locator: p. 20, Children of divorced or separated parents
+        - when: dependent.married
+          form: Married person rules
+          remedy: A married dependent is outside this tool; see Married person in the instructions.
+          cite:
+            doc: i1040gi
+            locator: p. 21, Married person
+    - id: dependent.resident
+      printed: (helper)
+      type: Bool
+      label: U.S. citizen, national or resident alien, or a resident of Canada or Mexico
+      expr:
+        op: test
+        any:
+          - op: test
+            eq:
+              - dependent.citizen
+              - const: true
+          - op: test
+            eq:
+              - dependent.canada_mexico
+              - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 18, Step 2, question 1
+    - id: dependent.qc_dependent
+      printed: (helper)
+      type: Bool
+      label: Qualifying child who is your dependent (Step 2)
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - dependent.qualifying_child
+              - const: true
+          - op: test
+            eq:
+              - dependent.resident
+              - const: true
+          - op: test
+            eq:
+              - sa.dependent
+              - const: false
+      cite:
+        doc: i1040gi
+        locator: p. 18, Step 2, questions 1 and 4
+    - id: dependent.qr_relationship
+      printed: (helper)
+      type: Bool
+      label: A relative listed in Step 4, or any other person who lived with you all year
+      expr:
+        op: test
+        any:
+          - op: test
+            eq:
+              - dependent.relationship
+              - const: child
+          - op: test
+            eq:
+              - dependent.relationship
+              - const: sibling
+          - op: test
+            eq:
+              - dependent.relationship
+              - const: parent
+          - op: test
+            eq:
+              - dependent.relationship
+              - const: parent_relative
+          - op: test
+            eq:
+              - dependent.relationship
+              - const: in_law
+          - op: test
+            all:
+              - op: test
+                any:
+                  - op: test
+                    eq:
+                      - dependent.relationship
+                      - const: household_member
+                  - op: test
+                    eq:
+                      - dependent.relationship
+                      - const: sibling_descendant
+                  - op: test
+                    eq:
+                      - dependent.relationship
+                      - const: other
+              - op: test
+                eq:
+                  - dependent.months
+                  - const: 12
+                    type: Count
+      cite:
+        doc: i1040gi
+        locator: p. 19, Step 4, "A qualifying relative is your..." through "Any other person (other than your spouse) who lived with you all year as a member of your household"
+    - id: dependent.qr_income
+      printed: (helper)
+      type: Bool
+      label: Gross income under $5,200
+      expr:
+        op: test
+        lt:
+          - dependent.gross_income
+          - param: qr.gross_income_limit
+      cite:
+        doc: i1040gi
+        locator: p. 19, Step 4, "Who had gross income of less than $5,200 in 2025"
+    - id: dependent.income_exception
+      printed: (gate)
+      type: Bool
+      label: Permanently and totally disabled with gross income at or over the limit
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - dependent.disabled
+              - const: true
+          - op: test
+            eq:
+              - dependent.qr_income
+              - const: false
+      cite:
+        doc: i1040gi
+        locator: p. 19, Step 4, "If the person was permanently and totally disabled, see Exception to gross income test"
+    - id: dependent.qualifying_relative
+      printed: (helper)
+      type: Bool
+      label: Qualifying relative (Step 4)
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - dependent.qr_relationship
+              - const: true
+          - op: test
+            eq:
+              - dependent.qualifying_child
+              - const: false
+          - op: test
+            eq:
+              - dependent.qr_income
+              - const: true
+          - op: test
+            eq:
+              - dependent.supported
+              - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 19, Step 4, "Does any person meet the conditions to be your qualifying relative?"
+      refuses:
+        - when: dependent.multiple_support
+          form: Multiple support agreements
+          remedy: A person claimed under a multiple support agreement is outside this tool.
+          cite:
+            doc: i1040gi
+            locator: p. 20, Multiple support agreements
+        - when: dependent.income_exception
+          form: Exception to gross income test
+          remedy: The sheltered-workshop exception to the gross income test for a disabled person is outside this tool.
+          cite:
+            doc: i1040gi
+            locator: pp. 19–20, Exception to gross income test
+        - when: dependent.married
+          form: Married person rules
+          remedy: A married dependent is outside this tool; see Married person in the instructions.
+          cite:
+            doc: i1040gi
+            locator: p. 21, Married person
+    - id: dependent.qr_dependent
+      printed: (helper)
+      type: Bool
+      label: Qualifying relative who is your dependent (Step 4, questions 2 and 5)
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - dependent.qualifying_relative
+              - const: true
+          - op: test
+            eq:
+              - dependent.resident
+              - const: true
+          - op: test
+            eq:
+              - sa.dependent
+              - const: false
+      cite:
+        doc: i1040gi
+        locator: p. 19, Step 4, questions 2 and 5
+    - id: dependent.claimed
+      printed: (helper)
+      type: Bool
+      label: Your dependent
+      expr:
+        op: test
+        any:
+          - op: test
+            eq:
+              - dependent.qc_dependent
+              - const: true
+          - op: test
+            eq:
+              - dependent.qr_dependent
+              - const: true
+      cite:
+        doc: i1040gi
+        locator: pp. 17–19, Who Qualifies as Your Dependent
+    - id: dependent.under_ctc_age
+      printed: (helper)
+      type: Bool
+      label: Under age 17 at the end of 2025
+      expr:
+        op: test
+        lt:
+          - dependent.age
+          - param: ctc.age_limit
+      cite:
+        doc: i1040gi
+        locator: p. 18, Step 3, question 3
+    - id: dependent.ctc_child
+      printed: (helper)
+      type: Bool
+      label: Qualifying child for the child tax credit (Step 3)
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - dependent.qc_dependent
+              - const: true
+          - op: test
+            eq:
+              - dependent.tin
+              - const: true
+          - op: test
+            eq:
+              - dependent.citizen
+              - const: true
+          - op: test
+            eq:
+              - dependent.under_ctc_age
+              - const: true
+          - op: test
+            eq:
+              - dependent.work_ssn
+              - const: true
+          - op: test
+            eq:
+              - household.taxpayer_work_ssn
+              - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 18, Step 3, questions 1–4
+    - id: dependent.odc_person
+      printed: (helper)
+      type: Bool
+      label: Dependent for the credit for other dependents (Steps 3 and 5)
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - dependent.claimed
+              - const: true
+          - op: test
+            eq:
+              - dependent.tin
+              - const: true
+          - op: test
+            eq:
+              - dependent.citizen
+              - const: true
+          - op: test
+            eq:
+              - dependent.ctc_child
+              - const: false
+          - op: test
+            eq:
+              - household.taxpayer_tin
+              - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 18, Step 3, question 3, and p. 19, Step 5
+    - id: dependent.ctc_per_child
+      printed: (helper)
+      type: NonNegDollars
+      label: Year parameter ctc.per_child
+      expr:
+        op: param
+        ref: ctc.per_child
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 5
+    - id: dependent.ctc_amount
+      printed: (helper)
+      type: NonNegDollars
+      label: Child tax credit amount for this person before limits ($2,200 for a qualifying child, else 0)
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - dependent.ctc_child
+                - const: true
+            then: dependent.ctc_per_child
+          - guard:
+              op: test
+              eq:
+                - dependent.ctc_child
+                - const: false
+            then: dependent.zero
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 5, "Multiply line 4 by $2,200"
+    - id: dependent.odc_per_dependent
+      printed: (helper)
+      type: NonNegDollars
+      label: Year parameter odc.per_dependent
+      expr:
+        op: param
+        ref: odc.per_dependent
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 7
+    - id: dependent.odc_amount
+      printed: (helper)
+      type: NonNegDollars
+      label: Credit for other dependents amount for this person before limits ($500 for an other dependent, else 0)
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - dependent.odc_person
+                - const: true
+            then: dependent.odc_per_dependent
+          - guard:
+              op: test
+              eq:
+                - dependent.odc_person
+                - const: false
+            then: dependent.zero
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 7, "Multiply line 6 by $500"
+    - id: dependent.actc_per_child
+      printed: (helper)
+      type: NonNegDollars
+      label: Year parameter actc.per_child
+      expr:
+        op: param
+        ref: actc.per_child
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 16b
+    - id: dependent.actc_amount
+      printed: (helper)
+      type: NonNegDollars
+      label: Additional child tax credit ceiling for this person ($1,700 for a qualifying child, else 0)
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - dependent.ctc_child
+                - const: true
+            then: dependent.actc_per_child
+          - guard:
+              op: test
+              eq:
+                - dependent.ctc_child
+                - const: false
+            then: dependent.zero
+      cite:
+        doc: f1040s8812
+        locator: Schedule 8812 (2025), line 16b, "Number of qualifying children under age 17 with the required social security number x $1,700"
+    - id: dependent.hoh_test2
+      printed: (helper)
+      type: Bool
+      label: A Test 2 person who lived with you more than half the year (the home-cost condition of Test 2 is tested on the household form)
+      expr:
+        op: test
+        any:
+          - op: test
+            all:
+              - op: test
+                eq:
+                  - dependent.claimed
+                  - const: true
+              - op: test
+                eq:
+                  - dependent.lived_half
+                  - const: true
+              - op: test
+                ne:
+                  - dependent.relationship
+                  - const: household_member
+          - op: test
+            all:
+              - op: test
+                eq:
+                  - dependent.qualifying_child
+                  - const: true
+              - op: test
+                eq:
+                  - dependent.married
+                  - const: false
+              - op: test
+                eq:
+                  - dependent.lived_half
+                  - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 14, Head of Household, Test 2 (a dependent, other than one who is your dependent only because they lived with you all year, or your unmarried qualifying child, who lived with you more than half the year)
+    - id: dependent.hoh_test1
+      printed: (helper)
+      type: Bool
+      label: Qualifies you for head of household under Test 1 (a parent whose main home you kept up)
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - dependent.relationship
+              - const: parent
+          - op: test
+            eq:
+              - dependent.claimed
+              - const: true
+          - op: test
+            eq:
+              - dependent.parent_home_paid
+              - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 14, Head of Household, Test 1, "You paid over half the cost of keeping up a home that was the main home for all of 2025 of your parent whom you can claim as a dependent"
+    - id: dependent.hoh_person
+      printed: (helper)
+      type: Bool
+      label: Qualifies you for head of household (Test 1 or Test 2)
+      expr:
+        op: test
+        any:
+          - op: test
+            eq:
+              - dependent.hoh_test1
+              - const: true
+          - op: test
+            eq:
+              - dependent.hoh_test2
+              - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 14, Head of Household, Tests 1 and 2
+  collection:
+    cite:
+      doc: f1040
+      locator: Form 1040 (2025), Dependents, rows (1)–(7)
