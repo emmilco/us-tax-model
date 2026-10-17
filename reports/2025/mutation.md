@@ -7,12 +7,12 @@ the fixture test compares).
 
 | Metric | Value |
 | --- | --- |
-| Mutants | 695 |
+| Mutants | 697 |
 | Killed by the checker | 40 |
-| Killed by fixtures | 570 |
-| Surviving | 85 (39 provably equivalent) |
-| Mutation score (raw) | 87.8% |
-| Mutation score (equivalent mutants excluded) | 93.0% |
+| Killed by fixtures | 571 |
+| Surviving | 86 (39 provably equivalent) |
+| Mutation score (raw) | 87.7% |
+| Mutation score (equivalent mutants excluded) | 92.9% |
 
 ## Surviving — classified equivalent
 
@@ -62,6 +62,7 @@ the fixture test compares).
 | --- | --- | --- | --- |
 | operand.f1040.f1040.line11b.line11a | replace an operand | f1040.f1040.line11b | f1040.line11a -> f1040.line9 (Dollars) |
 | operand.f1040.f1040.line14.line13b | replace an operand | f1040.f1040.line14 | f1040.line13b -> f1040.line10 (NonNegDollars) |
+| refusal.f1040.f1040.line16.0 | remove refusal | f1040.f1040.line16 |  |
 | operand.f1040.f1040.line18.line16 | replace an operand | f1040.f1040.line18 | f1040.line16 -> f1040.non_sdtw_tax (Dollars) |
 | operand.f1040.f1040.line24.line23 | replace an operand | f1040.f1040.line24 | f1040.line23 -> f1040.line19 (NonNegDollars) |
 | refusal.f1040.f1040.line29.0 | remove refusal | f1040.f1040.line29 |  |

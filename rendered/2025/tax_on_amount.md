@@ -20,27 +20,27 @@
 ## (gate) — `below_boundary`
 
 - **Authored helper label:** Is the amount less than $100,000?
-- **Encoded (Bool):** line (a) < $100,000 (ordinary.table_boundary)
+- **Encoded (Bool):** column (a) (amount) < $100,000 (ordinary.table_boundary)
 - Expr: `{"lt":["amount",{"param":"ordinary.table_boundary"}],"op":"test"}`
 - Cite: [i1040gi] Instructions for Form 1040, line 16 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (a) — `table_tax`
 
 - **Authored helper label:** Use the Tax Table
-- **Encoded (NonNegDollars):** Use 2025 Tax Table at line (a) for the filing status (line (status)).
+- **Encoded (NonNegDollars):** Use 2025 Tax Table at column (a) (amount) for the filing status (helper "The return's filing status").
 - Expr: `{"key":"amount","op":"table_lookup","status":"status","table":"tax_table"}`
 - Cite: [i1040gi] 2025 Tax Table, p. 68 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (a) — `worksheet_tax`
 
 - **Authored helper label:** Use the Tax Computation Worksheet
-- **Encoded (Dollars):** Enter the amount from tcw(amount = line (a), status = line (status)).tax.
+- **Encoded (Dollars):** Enter "tax" of Tax Computation Worksheet—Line 16 with amount = column (a) (amount) and status = helper "The return's filing status".
 - Expr: `{"from":{"bind":{"amount":"amount","status":"status"},"def":"tcw","line":"tax"},"op":"copy"}`
 - Cite: [i1040gi] 2025 Tax Computation Worksheet, p. 80 (Note) (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (b) — `tax`
 
 - **Authored helper label:** Tax on the amount
-- **Encoded (Dollars):** Choose — [line (gate) = true → line (a)] [line (gate) = false → line (a)]
+- **Encoded (Dollars):** Choose — [helper "Is the amount less than $100,000?" = true → column (a) (table_tax)] [helper "Is the amount less than $100,000?" = false → column (a) (worksheet_tax)]
 - Expr: `{"alternatives":[{"guard":{"eq":["below_boundary",{"const":true}],"op":"test"},"then":"table_tax"},{"guard":{"eq":["below_boundary",{"const":false}],"op":"test"},"then":"worksheet_tax"}],"op":"choose"}`
 - Cite: [i1040gi] Instructions for Form 1040, line 16 (2025; printed date 2026-02-25; sha256 482e9c48)

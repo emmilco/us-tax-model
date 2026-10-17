@@ -58,18 +58,31 @@ form:
           cite:
             doc: f8995
             locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
-    - id: qbi.taxable_before
+    - id: qbi.deductions_before
       printed: (helper)
       type: NonNegDollars
-      label: Subtract sa.deduction from sa.agi; if zero or less, enter zero
+      label: Form 1040 lines 12e and 13b, the deductions taken before the QBI deduction
       expr:
-        op: subtract_floor0
-        from: sa.agi
-        take: sa.deduction
+        op: sum
+        of:
+          - sa.deduction
+          - f1040.line13b
       cite:
         doc: i8995-correction
         locator: "Correction to 2025 Form 8995 instructions, line 11: Form 1040 line 11a minus lines 12e and
-          13b; Schedule 1-A refused in this slice"
+          13b"
+    - id: qbi.taxable_before
+      printed: (helper)
+      type: NonNegDollars
+      label: Taxable income before the QBI deduction; Form 1040 line 11a minus lines 12e and 13b, floored at zero
+      expr:
+        op: subtract_floor0
+        from: sa.agi
+        take: qbi.deductions_before
+      cite:
+        doc: i8995-correction
+        locator: "Correction to 2025 Form 8995 instructions, line 11: Form 1040 line 11a minus lines 12e and
+          13b"
     - id: qbi.net_capital_gain
       printed: (helper)
       type: NonNegDollars

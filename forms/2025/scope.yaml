@@ -44,11 +44,15 @@ form:
       printed: (helper)
       type: Bool
       label: Any retirement, Social Security, nonresident or other income/return treatment outside wages,
-        interest, dividends and supported securities sales?
+        interest, dividends and supported securities sales, including wages or tips not on a Form W-2,
+        Medicaid waiver payments, dependent care or adoption benefits, or other earned income (Form
+        1040 lines 1b–1h)?
       expr:
         op: input
         source: Any retirement, Social Security, nonresident or other income/return treatment outside wages,
-          interest, dividends and supported securities sales?
+          interest, dividends and supported securities sales, including wages or tips not on a Form W-2,
+          Medicaid waiver payments, dependent care or adoption benefits, or other earned income (Form
+          1040 lines 1b–1h)?
       cite:
         doc: f1040
         locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31

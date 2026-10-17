@@ -298,7 +298,7 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
 
 == Form 8959 — wage-only Additional Medicare Tax ==
-  (helper) Any self-employment income, RRTA compensation, unreported tips (Form 4137), or Form 8919 wages?
+  (helper) Any self-employment income, RRTA compensation, unreported tips (Form 4137), Form 8919 wages, or uncollected Medicare tax in Form W-2 box 12 (codes B or N)?
       = false
       cite: [f8959] Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; 13e64004)
   (helper) Year parameter sales.zero
@@ -660,9 +660,12 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
   (helper) Amount from qbi.dividends
       = $300
       cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
-  (helper) Subtract sa.deduction from sa.agi; if zero or less, enter zero
+  (helper) Form 1040 lines 12e and 13b, the deductions taken before the QBI deduction
+      = $27,300
+      cite: [i8995-correction] Correction to 2025 Form 8995 instructions, line 11: Form 1040 line 11a minus lines 12e and 13b (Post-release correction to the 2025 Instructions for Form 8995 (published 2026-02-13); page last reviewed 2026-06-28; 926735a0)
+  (helper) Taxable income before the QBI deduction; Form 1040 line 11a minus lines 12e and 13b, floored at zero
       = $75,200
-      cite: [i8995-correction] Correction to 2025 Form 8995 instructions, line 11: Form 1040 line 11a minus lines 12e and 13b; Schedule 1-A refused in this slice (Post-release correction to the 2025 Instructions for Form 8995 (published 2026-02-13); page last reviewed 2026-06-28; 926735a0)
+      cite: [i8995-correction] Correction to 2025 Form 8995 instructions, line 11: Form 1040 line 11a minus lines 12e and 13b (Post-release correction to the 2025 Instructions for Form 8995 (published 2026-02-13); page last reviewed 2026-06-28; 926735a0)
   (helper) Add sd.net_gain, f1040.line3a
       = $9,500
       cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
@@ -825,7 +828,7 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       cite: [f1040s3] Schedule 3 (2025), line 15 (2025; created 2025-11-17; 008cfd3f)
 
 == Schedule A — supported itemized deductions and standard comparison ==
-  (helper) Any casualty/theft loss, other itemized deduction, foreign tax deduction, mortgage interest not on Form 1098 or subject to debt/use limits, or sales-tax election?
+  (helper) Any casualty/theft loss, other itemized deduction, foreign tax or generation-skipping tax deduction, mortgage interest or points not on Form 1098 or subject to debt/use limits, or sales-tax election?
       = false
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
   (helper) Are any charitable deductions reduced by income limits, or carried over from a prior year? Determine under Publication 526 before answering.
@@ -1052,7 +1055,7 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
   (helper) Any dependent or other credit outside the simple foreign tax credit and excess Social Security credit?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
-  (helper) Any retirement, Social Security, nonresident or other income/return treatment outside wages, interest, dividends and supported securities sales?
+  (helper) Any retirement, Social Security, nonresident or other income/return treatment outside wages, interest, dividends and supported securities sales, including wages or tips not on a Form W-2, Medicaid waiver payments, dependent care or adoption benefits, or other earned income (Form 1040 lines 1b–1h)?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
   (helper) Any additional Form 1040 line 16 tax, including Forms 8814, 4972, 8615 or a section 962 election?
@@ -1901,7 +1904,10 @@ Collection entries and derivations:
   f1040.line12e: copy(sa.deduction = $27,300)
   qbi.sa.agi: copy(f1040.line11b = $102,500)
   qbi.sa.deduction: choose(sa.itemizes = true; true = true; sa.line17 = $27,300)
-  qbi.taxable_before: subtract_floor0(sa.agi = $102,500; sa.deduction = $27,300)
+  f1040.line13b: param(scope.schedule1a = false; #sales.zero = $0)
+  qbi.f1040.line13b: param(scope.schedule1a = false; #sales.zero = $0)
+  qbi.deductions_before: sum(sa.deduction = $27,300; f1040.line13b = $0)
+  qbi.taxable_before: subtract_floor0(sa.agi = $102,500; qbi.deductions_before = $27,300)
   qbi.threshold: param(#qbi.threshold = $197,300)
   qbi.use_8995a: test(qbi.taxable_before = $75,200; qbi.threshold = $197,300)
   qbi.zero: param(#sales.zero = $0)
@@ -1913,7 +1919,7 @@ Collection entries and derivations:
   f8995.line8: copy(f8995.line6 = $300)
   f8995.line9: multiply_rate(f8995.line8 = $300; #qbi.rate = 1/5)
   f8995.line10: sum(f8995.line5 = $0; f8995.line9 = $60)
-  f8995.qbi.taxable_before: subtract_floor0(sa.agi = $102,500; sa.deduction = $27,300)
+  f8995.qbi.taxable_before: subtract_floor0(sa.agi = $102,500; qbi.deductions_before = $27,300)
   f8995.line11: copy(qbi.taxable_before = $75,200)
   qbi.sd.net_gain: subtract_floor0(sd.net_gain_raw = $7,500; 0 = $0)
   qbi.net_capital_gain: sum(sd.net_gain = $7,500; f1040.line3a = $2,000)
@@ -1926,7 +1932,6 @@ Collection entries and derivations:
   qbi.deduction: choose(qbi.use_8995a = false; true = true; qbi.use_8995a = false; false = false; f8995.line15 = $60)
   f1040.qbi.deduction: choose(qbi.use_8995a = false; true = true; qbi.use_8995a = false; false = false; f8995.line15 = $60)
   f1040.line13a: copy(qbi.deduction = $60)
-  f1040.line13b: param(scope.schedule1a = false; #sales.zero = $0)
   f1040.line14: sum(f1040.line12e = $27,300; f1040.line13a = $60; f1040.line13b = $0)
   f1040.line15: subtract_floor0(f1040.line11b = $102,500; f1040.line14 = $27,360)
   f1040.gate.qdcg_applies: test(f1040.line15 = $75,140; 0 = $0; f1040.line3a = $2,000; 0 = $0)
@@ -2016,7 +2021,7 @@ Collection entries and derivations:
   qdcg.line25: smaller_of(qdcg.line23 = $10,777; qdcg.line24 = $11,442)
   f1040.qdcg.line25: smaller_of(qdcg.line23 = $10,777; qdcg.line24 = $11,442)
   f1040.non_sdtw_tax: choose(f1040.gate.qdcg_applies = true; true = true; qdcg.line25 = $10,777)
-  f1040.line16: choose(f1040.gate.sdtw = false; true = true; f1040.gate.sdtw = false; false = false; f1040.non_sdtw_tax = $10,777)
+  f1040.line16: choose(scope.other_line16 = false; f1040.gate.sdtw = false; true = true; f1040.gate.sdtw = false; false = false; f1040.non_sdtw_tax = $10,777)
   s2.zero: param(#sales.zero = $0)
   s2.line3: copy(s2.amt = false; s2.other = false; s2.zero = $0)
   f1040.s2.line3: copy(s2.amt = false; s2.other = false; s2.zero = $0)
@@ -2026,7 +2031,7 @@ Collection entries and derivations:
   ftc.has_tax: test(ftc.taxes = $120; 0 = $0)
   ftc.limit: param(#ftc.limit = $300)
   ftc.needs1116: test(ftc.has_tax = true; true = true; ftc.taxes = $120; ftc.limit = $300; ftc.all_passive = true; false = false; ftc.statements = true; false = false; ftc.eligible = true; false = false; ftc.elect = true; false = false)
-  ftc.f1040.line16: choose(f1040.gate.sdtw = false; true = true; f1040.gate.sdtw = false; false = false; f1040.non_sdtw_tax = $10,777)
+  ftc.f1040.line16: choose(scope.other_line16 = false; f1040.gate.sdtw = false; true = true; f1040.gate.sdtw = false; false = false; f1040.non_sdtw_tax = $10,777)
   ftc.limited: smaller_of(ftc.taxes = $120; f1040.line16 = $10,777)
   ftc.credit: choose(ftc.needs1116 = false; ftc.has_tax = true; true = true; ftc.limited = $120)
   s3.ftc.credit: choose(ftc.needs1116 = false; ftc.has_tax = true; true = true; ftc.limited = $120)
@@ -2147,7 +2152,7 @@ Collection entries and derivations:
   f8995a.line30: copy(f8995a.line28 = $300)
   f8995a.line31: multiply_rate(f8995a.line30 = $300; #qbi.rate = 1/5)
   f8995a.line32: sum(f8995a.line27 = $0; f8995a.line31 = $60)
-  f8995a.qbi.taxable_before: subtract_floor0(sa.agi = $102,500; sa.deduction = $27,300)
+  f8995a.qbi.taxable_before: subtract_floor0(sa.agi = $102,500; qbi.deductions_before = $27,300)
   f8995a.line33: copy(qbi.taxable_before = $75,200)
   f8995a.qbi.net_capital_gain: sum(sd.net_gain = $7,500; f1040.line3a = $2,000)
   f8995a.line34: copy(qbi.net_capital_gain = $9,500)

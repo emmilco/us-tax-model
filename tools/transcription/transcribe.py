@@ -83,25 +83,62 @@ def heading_pages(pages, locator):
     return found
 
 
-def excerpt_for(form_doc, mani):
-    """The cited pages of every cited document, with what was used and why."""
-    cites = {}
+def secondary_pages(locator, mani, primary):
+    """Pages of other archived documents a locator names inline, such as
+    'i8995 pp. 3-4' in a form citation; returns {doc_id: pages} and the locator
+    with those mentions removed so they are not read as pages of the primary document."""
+    out = {}
+    def take(m):
+        doc_id = m.group(1)
+        if doc_id in mani and doc_id != primary:
+            out.setdefault(doc_id, set()).update(locator_pages(m.group(0)))
+            return ""
+        return m.group(0)
+    rest = re.sub(r"\b([a-z][a-z0-9]*)\s+(pp?\.\s*[0-9][0-9,\s\u2013\u2014-]*)", take, locator)
+    return out, rest
+
+
+def param_cites(form_doc):
+    """Citations of the year parameters a form's lines reference."""
+    names = set()
     for line in form_doc["lines"]:
-        c = line["cite"]
-        cites.setdefault(c["doc"], set()).add(c["locator"])
+        text = json.dumps(line.get("expr", {}))
+        names.update(re.findall(r'"param": "([a-z0-9_.]+)"', text))
+        if line.get("expr", {}).get("op") == "param":
+            names.add(line["expr"]["ref"])
+    params_doc = yaml.safe_load(open(os.path.join(ROOT, "params", "2025.yaml"), encoding="utf-8"))
+    values = (params_doc.get("params") or params_doc)["values"]
+    # Structural constants (a zero amount, a count of one) cite the pages that
+    # justify their use, not a figure to check; they are left out.
+    return [values[n]["cite"] for n in sorted(names)
+            if n in values and "cite" in values[n] and values[n].get("value") not in (0, 1)]
+
+
+def excerpt_for(form_doc, mani):
+    """The cited pages of every cited document, with what was used and why. A locator
+    that names pages of another archived document gives those pages too, and so do
+    the citations of the year parameters the form references."""
+    cites, extra = {}, {}
+    for line in form_doc["lines"] + [{"cite": c} for c in param_cites(form_doc)]:
+      for c in [line["cite"]] + [r["cite"] for r in line.get("refuses", [])]:
+        more, rest = secondary_pages(c["locator"], mani, c["doc"])
+        cites.setdefault(c["doc"], set()).add(rest)
+        for doc_id, pages in more.items():
+            extra.setdefault(doc_id, set()).update(pages)
     excerpt, used = [], []
-    for doc_id, locators in cites.items():
+    for doc_id in list(cites) + [d for d in extra if d not in cites]:
+        locators = cites.get(doc_id, set())
         doc = mani[doc_id]
         pages = doc_pages(doc)
         if len(pages) <= WHOLE_DOC_MAX_PAGES:
             chosen = set(range(1, len(pages) + 1)); how = "whole document"
         else:
-            chosen = set()
+            chosen = set(extra.get(doc_id, set()))
             for loc in locators:
                 chosen |= locator_pages(loc)
                 if not locator_pages(loc):
                     chosen |= heading_pages(pages, loc)
-            how = "cited pages"
+            how = "cited pages" if locators else "pages named by another document's citation"
         chosen = sorted(p for p in chosen if 1 <= p <= len(pages))
         used.append({"doc": doc_id, "revision": doc.get("revision", ""), "text_sha256": doc["text_sha256"],
                      "pages": chosen, "how": how, "locators": sorted(locators)})
@@ -570,11 +607,14 @@ def compare(form_id, project_lines, second_lines):
 
 # ---------- model call ----------
 
-def call_model(prompt, model, timeout=900):
+TRANSCRIBE_SYSTEM = ("You transcribe IRS worksheets into a formal data model from the text given to you. "
+                     "You have no tools and no other sources. Output only the YAML requested.")
+
+
+def call_model(prompt, model, timeout=900, system=TRANSCRIBE_SYSTEM):
     cmd = ["claude", "-p", "--no-session-persistence", "--setting-sources", "", "--tools", "",
            "--permission-prompts", "none", "--output-format", "json", "--model", model,
-           "--system-prompt", "You transcribe IRS worksheets into a formal data model from the text given to you. "
-                              "You have no tools and no other sources. Output only the YAML requested."]
+           "--system-prompt", system]
     proc = subprocess.run(cmd, input=prompt, capture_output=True, text=True, timeout=timeout)
     if proc.returncode != 0:
         raise RuntimeError(f"claude exited {proc.returncode}: {proc.stderr[:400]}")

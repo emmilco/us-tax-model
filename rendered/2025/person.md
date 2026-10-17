@@ -20,15 +20,15 @@
 
 ## overcount — `person.overcount`
 
-- **Authored helper label:** Total w2.one for this person
-- **Encoded (Count):** Add w2.one over every confirmed w2 entry for which line (helper) = true, within the current person when parent-bound. An unanswered roster is unknown.
+- **Authored helper label:** Number of employers that withheld more than the limit
+- **Encoded (Count):** Add w2.one over every confirmed w2 entry for which helper "Did this employer withhold more than $10,918.20?" = true, within the current person when parent-bound. An unanswered roster is unknown.
 - Expr: `{"collection":"w2","field":"w2.one","op":"sum_over","where":{"eq":["w2.over",{"const":true}],"op":"test"}}`
 - Cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## over — `person.over`
 
 - **Authored helper label:** Any employer withheld more than the limit
-- **Encoded (Bool):** line overcount > 0 employer(s)
+- **Encoded (Bool):** line overcount > 0 (a count)
 - Expr: `{"gt":["person.overcount",{"const":0,"type":"Count"}],"op":"test"}`
 - Cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -64,7 +64,7 @@
 ## eligible — `person.eligible`
 
 - **Authored helper label:** More than one employer and total social security wages over $176,100
-- **Encoded (Bool):** line employers > 1 employer(s) and line wages > $176,100 (ss.base)
+- **Encoded (Bool):** line employers > 1 (a count) and line wages > $176,100 (ss.base)
 - Expr: `{"all":[{"gt":["person.employers",{"const":1,"type":"Count"}],"op":"test"},{"gt":["person.wages",{"param":"ss.base"}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; sha256 482e9c48)
 

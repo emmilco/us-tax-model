@@ -312,13 +312,14 @@ Unasserted lines: person.employers, person.overcount, person.over, person.wages,
 | qbi.unsupported | — | — | — | — |
 | qbi.zero | — | — | — | — |
 | qbi.eligible | — | — | — | — |
+| qbi.deductions_before | — | — | — | — |
 | qbi.taxable_before | — | — | — | 2 (stage4.qbi.income_limit, stage4.qbi.zero_income) |
 | qbi.net_capital_gain | — | — | — | — |
 | qbi.threshold | — | — | — | — |
 | qbi.use_8995a | — | — | — | 3 |
 | qbi.deduction | — | — | — | 11 |
 
-Unasserted lines: qbi.zero, qbi.eligible, qbi.net_capital_gain, qbi.threshold
+Unasserted lines: qbi.zero, qbi.eligible, qbi.deductions_before, qbi.net_capital_gain, qbi.threshold
 
 ## Qualified Dividends and Capital Gain Tax Worksheet—Line 16
 
@@ -769,5 +770,5 @@ Unasserted lines: below_boundary, table_tax, worksheet_tax, tax
 
 Unasserted lines: single.row1.product, single.row1.tax, single.row2.product, single.row2.tax, single.row3.product, single.row3.tax, single.row4.product, single.row4.tax, single.row5.product, single.row5.tax, single.result, mfj.row1.product, mfj.row1.tax, mfj.row2.product, mfj.row2.tax, mfj.row3.product, mfj.row3.tax, mfj.row4.product, mfj.row4.tax, mfj.row5.product, mfj.row5.tax, mfj.result, mfs.row1.product, mfs.row1.tax, mfs.row2.product, mfs.row2.tax, mfs.row3.product, mfs.row3.tax, mfs.row4.product, mfs.row4.tax, mfs.row5.product, mfs.row5.tax, mfs.result, hoh.row1.product, hoh.row1.tax, hoh.row2.product, hoh.row2.tax, hoh.row3.product, hoh.row3.tax, hoh.row4.product, hoh.row4.tax, hoh.row5.product, hoh.row5.tax, hoh.result, tax
 
-Unasserted computed lines across all documents: 234. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
+Unasserted computed lines across all documents: 235. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
 Asserted keys not matching a line id: qdcg.f1040.line15, qdcg.f1040.line3a, qdcg.f1040.status, f1040.qdcg.line25, qdcg.sd.distributions

@@ -104,7 +104,7 @@
 ## (helper) — `div.box1a`
 
 - **Authored helper label:** Amount from sb.ordinary_dividends
-- **Encoded (NonNegDollars):** Enter the amount from sb "(helper)".
+- **Encoded (NonNegDollars):** Enter the amount from sb helper "Total ordinary dividends, Form 1099-DIV box 1a".
 - Expr: `{"from":"sb.ordinary_dividends","op":"copy"}`
 - Cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); sha256 4ea1de80)
 
@@ -118,42 +118,42 @@
 ## (helper) — `div.box2a`
 
 - **Authored helper label:** Amount from sd.distributions
-- **Encoded (NonNegDollars):** Enter the amount from sd "(helper)".
+- **Encoded (NonNegDollars):** Enter the amount from sd helper "Capital gain distributions, generally Form 1099-DIV box 2a".
 - Expr: `{"from":"sd.distributions","op":"copy"}`
 - Cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); sha256 4ea1de80)
 
 ## (helper) — `div.box5`
 
 - **Authored helper label:** Amount from qbi.dividends
-- **Encoded (NonNegDollars):** Enter the amount from qbi "(helper)".
+- **Encoded (NonNegDollars):** Enter the amount from qbi helper "Qualified section 199A dividends from Form 1099-DIV box 5 after confirming holding-period and related-payment requirements".
 - Expr: `{"from":"qbi.dividends","op":"copy"}`
 - Cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); sha256 4ea1de80)
 
 ## (helper) — `div.section1202`
 
 - **Authored helper label:** Section 1202 distribution present
-- **Encoded (Bool):** line (helper) > $0
+- **Encoded (Bool):** helper "Section 1202 gain, box 2c" > $0
 - Expr: `{"gt":["div.box2c",{"const":0}],"op":"test"}`
 - Cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); sha256 4ea1de80)
 
 ## (helper) — `div.amt`
 
 - **Authored helper label:** Specified private activity bond dividends present
-- **Encoded (Bool):** line (helper) > $0
+- **Encoded (Bool):** helper "Specified private activity bond interest dividends, box 13" > $0
 - Expr: `{"gt":["div.box13",{"const":0}],"op":"test"}`
 - Cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); sha256 4ea1de80)
 
 ## (helper) — `div.unsupported`
 
 - **Authored helper label:** Unsupported section 897, liquidation or unreconciled basis/excess distribution
-- **Encoded (Bool):** (line (helper) > $0 or line (helper) > $0 or line (helper) > $0 or line (helper) > $0 or line (helper) > $0 and line (helper) = false)
+- **Encoded (Bool):** (helper "Section 897 ordinary dividends, box 2e" > $0 or helper "Section 897 capital gain, box 2f" > $0 or helper "Cash liquidation distributions, box 9" > $0 or helper "Noncash liquidation distributions, box 10" > $0 or helper "Nondividend distributions/return of capital, box 3" > $0 and helper "For box 3, have basis reductions been applied to records with no distribution exceeding basis?" = false)
 - Expr: `{"any":[{"gt":["div.box2e",{"const":0}],"op":"test"},{"gt":["div.box2f",{"const":0}],"op":"test"},{"gt":["div.box9",{"const":0}],"op":"test"},{"gt":["div.box10",{"const":0}],"op":"test"},{"all":[{"gt":["div.box3",{"const":0}],"op":"test"},{"eq":["div.basis_reconciled",{"const":false}],"op":"test"}],"op":"test"}],"op":"test"}`
 - Cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); sha256 4ea1de80)
 
 ## (helper) — `div.bad_special`
 
 - **Authored helper label:** A gain component exceeds total capital gain distributions
-- **Encoded (Bool):** (line (helper) > sd "(helper)" or line (helper) > sd "(helper)" or line (helper) > sd "(helper)" or line (helper) > sd "(helper)")
+- **Encoded (Bool):** (helper "Unrecaptured section 1250 gain, box 2b" > sd helper "Capital gain distributions, generally Form 1099-DIV box 2a" or helper "Section 1202 gain, box 2c" > sd helper "Capital gain distributions, generally Form 1099-DIV box 2a" or helper "Collectibles (28%) gain, box 2d" > sd helper "Capital gain distributions, generally Form 1099-DIV box 2a" or helper "Total special capital-gain distribution components" > sd helper "Capital gain distributions, generally Form 1099-DIV box 2a")
 - Expr: `{"any":[{"gt":["div.box2b","sd.distributions"],"op":"test"},{"gt":["div.box2c","sd.distributions"],"op":"test"},{"gt":["div.box2d","sd.distributions"],"op":"test"},{"gt":["div.special_total","sd.distributions"],"op":"test"}],"op":"test"}`
 - Cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); sha256 4ea1de80)
 
@@ -173,13 +173,13 @@
 ## (gate) — `div.bad_components`
 
 - **Authored helper label:** Qualified or section 199A dividends exceed ordinary dividends
-- **Encoded (Bool):** (f1040 line 3a > sb "(helper)" or qbi "(helper)" > sb "(helper)")
+- **Encoded (Bool):** (f1040 line 3a > sb helper "Total ordinary dividends, Form 1099-DIV box 1a" or qbi helper "Qualified section 199A dividends from Form 1099-DIV box 5 after confirming holding-period and related-payment requirements" > sb helper "Total ordinary dividends, Form 1099-DIV box 1a")
 - Expr: `{"any":[{"gt":["f1040.line3a","sb.ordinary_dividends"],"op":"test"},{"gt":["qbi.dividends","sb.ordinary_dividends"],"op":"test"}],"op":"test"}`
 - Cite: [f1099div] Instructions for Recipient, boxes 1a, 1b and 5 (January 2024 (continuous-use form); sha256 4ea1de80)
 
 ## (helper) — `div.special_total`
 
 - **Authored helper label:** Total special capital-gain distribution components
-- **Encoded (NonNegDollars):** Add line (helper), line (helper), and line (helper).
+- **Encoded (NonNegDollars):** Add helper "Unrecaptured section 1250 gain, box 2b", helper "Section 1202 gain, box 2c", and helper "Collectibles (28%) gain, box 2d".
 - Expr: `{"of":["div.box2b","div.box2c","div.box2d"],"op":"sum"}`
 - Cite: [f1099div] Instructions for Recipient, capital gain components in boxes 2b–2d (January 2024 (continuous-use form); sha256 4ea1de80)

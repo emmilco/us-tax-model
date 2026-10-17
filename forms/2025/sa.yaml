@@ -10,12 +10,14 @@ form:
     - id: sa.unsupported
       printed: (helper)
       type: Bool
-      label: Any casualty/theft loss, other itemized deduction, foreign tax deduction, mortgage interest
-        not on Form 1098 or subject to debt/use limits, or sales-tax election?
+      label: Any casualty/theft loss, other itemized deduction, foreign tax or generation-skipping tax
+        deduction, mortgage interest or points not on Form 1098 or subject to debt/use limits, or
+        sales-tax election?
       expr:
         op: input
-        source: Any casualty/theft loss, other itemized deduction, foreign tax deduction, mortgage interest
-          not on Form 1098 or subject to debt/use limits, or sales-tax election?
+        source: Any casualty/theft loss, other itemized deduction, foreign tax or generation-skipping tax
+          deduction, mortgage interest or points not on Form 1098 or subject to debt/use limits, or
+          sales-tax election?
       cite:
         doc: f1040sa
         locator: Schedule A (2025), lines 1–18

@@ -58,23 +58,39 @@ Done, in `check-all`:
   band where the worksheet tax exceeds the ordinary tax (`qdcg.line25:right`,
   `sdtw.line47:right`), which class M should target.
 
+- **Render comparison** (`tools/transcription/render_compare.py`, logs in
+  `reviews/2025/render/<form>.md`, all 26 adjudicated, about $0.10–0.40 per
+  form): an isolated model judges each printed line's rendered English
+  against the cited pages (MATCH / MISMATCH / UNCLEAR with a reason). Built
+  on the transcription scaffold; `check_logs.py` holds both log sets to the
+  same rules and `rule.py --kind render` writes rulings. The renderer now
+  names helpers by label, qualifies shared printed markers by id, and words
+  def references and counts readably; the excerpt builder now also gives
+  pages a locator names for another document, refusal citations, and
+  parameter citations. It found eight defects (BUG-0003 to BUG-0010): one
+  copied helper label, six scope screens narrower than the lines they stand
+  in for or not wired to the line, and one expression that dropped a refused
+  line (QBI taxable income before the deduction omitted Form 1040 line 13b).
+  None changed a value on any fixture or generated return. Standing rulings
+  are mostly scope (digital assets, Forms 4797/2439/6252/K-1, carryovers,
+  Form 2555) and representation (derived questions, cross-form wiring).
+
 Not done (spec 6.5, design Stage 7):
 
-1. **Render comparison** — an isolated model reads `rendered/2025/<form>.md`
-   against the archived pages and flags lines whose English says something
-   else. Same scaffold as transcription; not built.
-2. **Class M hand-work** — branch-covering inputs worked on the archived
+1. **Class M hand-work** — branch-covering inputs worked on the archived
    worksheet by an isolated model, becoming class M fixtures. Seed it from
    `engine/src/generate.ts` (the corpus plus its branch report) rather than
    writing another generator; design 2.10's per-worksheet generator is the
-   gap that remains.
+   gap that remains. The narrow band where the worksheet tax exceeds the
+   ordinary tax (`qdcg.line25:right`, `sdtw.line47:right`) needs targeted
+   inputs.
 
 Then Stage 8: one dependent, qualifying-child tests, head of household, the
 child tax credit — the test of whether the atom vocabulary expresses
 household predicates without `opaque` (stop condition: more than one line in
 eight).
 
-## Defects found this stage
+## Defects found this stage (BUG_INVENTORY.md has the detail)
 
 - BUG-0001: Form 1040 line 9 summed line 3a (qualified dividends) in
   addition to 3b. Caught by the engine scout. Fixed; 13 fixtures corrected.
@@ -83,6 +99,10 @@ eight).
   continuous at breakpoints) but contradicted the page and its rendering.
   Caught by the second transcription. Fixed; the checker's seam rule now
   requires exactly one side of a seam to include the seam point.
+- BUG-0003 to BUG-0010: found by the render comparison and by reading the
+  renderings while building it. Pattern worth watching: a scope screen
+  written from the lines it gates on one form, narrower than the instruction
+  text of a line it also stands in for (five of the eight).
 
 ## Follow-ups recorded inside the transcription rulings (grep "records that")
 
@@ -103,6 +123,9 @@ eight).
   engine differential at ~30 s); the properties step takes about a second.
 - `node engine/dist/main.js eval --batch cases.json` evaluates many returns
   in one process (added this stage).
+- Render logs key their rulings to (printed line, restatement, model
+  reason); a renderer change that alters a restatement, or a new response,
+  reopens them. A rerun costs about $3 for all 26 forms.
 - Transcription logs key their rulings to the exact expanded trees; a
   changed response or a changed normalisation reopens a ruling. Re-compare a
   saved response with `--from-response` (no model call) after changing the

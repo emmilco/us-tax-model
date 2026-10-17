@@ -70,42 +70,42 @@
 ## (helper) — `sales.covered`
 
 - **Authored helper label:** Basis reported to IRS
-- **Encoded (Bool):** (line (helper) = 'A' or line (helper) = 'D')
+- **Encoded (Bool):** (helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'A' or helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'D')
 - Expr: `{"any":[{"eq":["sales.box",{"const":"A"}],"op":"test"},{"eq":["sales.box",{"const":"D"}],"op":"test"}],"op":"test"}`
 - Cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; sha256 f077991c)
 
 ## (helper) — `sales.digital`
 
 - **Authored helper label:** Digital asset box G–L
-- **Encoded (Bool):** (line (helper) = 'G' or line (helper) = 'H' or line (helper) = 'I' or line (helper) = 'J' or line (helper) = 'K' or line (helper) = 'L')
+- **Encoded (Bool):** (helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'G' or helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'H' or helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'I' or helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'J' or helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'K' or helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'L')
 - Expr: `{"any":[{"eq":["sales.box",{"const":"G"}],"op":"test"},{"eq":["sales.box",{"const":"H"}],"op":"test"},{"eq":["sales.box",{"const":"I"}],"op":"test"},{"eq":["sales.box",{"const":"J"}],"op":"test"},{"eq":["sales.box",{"const":"K"}],"op":"test"},{"eq":["sales.box",{"const":"L"}],"op":"test"}],"op":"test"}`
 - Cite: [f8949] Parts I and II, boxes G–L (2025; created 2025-05-05; sha256 27451389)
 
 ## (helper) — `sales.has_b`
 
 - **Authored helper label:** Basis correction code B applies
-- **Encoded (Bool):** (line (helper) = 'B' or line (helper) = 'BW')
+- **Encoded (Bool):** (helper "Adjustment codes: none, B, W, BW; choose other for any additional code" = 'B' or helper "Adjustment codes: none, B, W, BW; choose other for any additional code" = 'BW')
 - Expr: `{"any":[{"eq":["sales.code",{"const":"B"}],"op":"test"},{"eq":["sales.code",{"const":"BW"}],"op":"test"}],"op":"test"}`
 - Cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; sha256 f077991c)
 
 ## (helper) — `sales.has_w`
 
 - **Authored helper label:** Wash-sale code W applies
-- **Encoded (Bool):** (line (helper) = 'W' or line (helper) = 'BW')
+- **Encoded (Bool):** (helper "Adjustment codes: none, B, W, BW; choose other for any additional code" = 'W' or helper "Adjustment codes: none, B, W, BW; choose other for any additional code" = 'BW')
 - Expr: `{"any":[{"eq":["sales.code",{"const":"W"}],"op":"test"},{"eq":["sales.code",{"const":"BW"}],"op":"test"}],"op":"test"}`
 - Cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; sha256 f077991c)
 
 ## (helper) — `sales.bad_code`
 
 - **Authored helper label:** Unsupported adjustment or code B without a broker basis report
-- **Encoded (Bool):** (line (helper) = 'other' or line (helper) = true and (line (helper) = 'C' or line (helper) = 'F'))
+- **Encoded (Bool):** (helper "Adjustment codes: none, B, W, BW; choose other for any additional code" = 'other' or helper "Basis correction code B applies" = true and (helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'C' or helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'F'))
 - Expr: `{"any":[{"eq":["sales.code",{"const":"other"}],"op":"test"},{"all":[{"eq":["sales.has_b",{"const":true}],"op":"test"},{"any":[{"eq":["sales.box",{"const":"C"}],"op":"test"},{"eq":["sales.box",{"const":"F"}],"op":"test"}],"op":"test"}],"op":"test"}],"op":"test"}`
 - Cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; sha256 f077991c)
 
 ## (helper) — `sales.bad_aggregate`
 
 - **Authored helper label:** Aggregate route fails its eligibility conditions
-- **Encoded (Bool):** line (helper) = 'aggregate' and (line (helper) = false or line (helper) ≠ 'none' or line (helper) = false)
+- **Encoded (Bool):** helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'aggregate' and (helper "Basis reported to IRS" = false or helper "Adjustment codes: none, B, W, BW; choose other for any additional code" ≠ 'none' or helper "Confirm all aggregate conditions: basis reported, no broker adjustments, no Ordinary box, no QOF disposition/deferral, no corrections, no collectibles" = false)
 - Expr: `{"all":[{"eq":["sales.route",{"const":"aggregate"}],"op":"test"},{"any":[{"eq":["sales.covered",{"const":false}],"op":"test"},{"ne":["sales.code",{"const":"none"}],"op":"test"},{"eq":["sales.aggregate_eligible",{"const":false}],"op":"test"}],"op":"test"}],"op":"test"}`
 - Cite: [i1040sd] p. 10, lines 1a and 8a (2025; printed date 2025-12-11; sha256 650643a6)
 
@@ -130,56 +130,56 @@
 ## (e) — `sales.e`
 
 - **Authored helper label:** Column (e): reported basis if covered; correct basis otherwise
-- **Encoded (NonNegDollars):** Choose — [line (helper) = true → line (helper)] [line (helper) = false → line (helper)]
+- **Encoded (NonNegDollars):** Choose — [helper "Basis reported to IRS" = true → helper "Basis shown on broker report"] [helper "Basis reported to IRS" = false → helper "Correct adjusted basis from records"]
 - Expr: `{"alternatives":[{"guard":{"eq":["sales.covered",{"const":true}],"op":"test"},"then":"sales.reported_basis"},{"guard":{"eq":["sales.covered",{"const":false}],"op":"test"},"then":"sales.correct_basis"}],"op":"choose"}`
 - Cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; sha256 f077991c)
 
 ## (helper) — `sales.b_difference`
 
 - **Authored helper label:** Reported basis minus correct basis
-- **Encoded (Dollars):** Subtract line (helper) from line (helper).
+- **Encoded (Dollars):** Subtract helper "Correct adjusted basis from records" from helper "Basis shown on broker report".
 - Expr: `{"from":"sales.reported_basis","op":"subtract","take":"sales.correct_basis"}`
 - Cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; sha256 f077991c)
 
 ## (helper) — `sales.adjust_b`
 
 - **Authored helper label:** Correct reported basis in column (g)
-- **Encoded (Bool):** line (helper) = true and line (helper) = true
+- **Encoded (Bool):** helper "Basis reported to IRS" = true and helper "Basis correction code B applies" = true
 - Expr: `{"all":[{"eq":["sales.covered",{"const":true}],"op":"test"},{"eq":["sales.has_b",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; sha256 f077991c)
 
 ## (helper) — `sales.b`
 
 - **Authored helper label:** Basis correction in column (g)
-- **Encoded (Dollars):** Choose — [line (helper) = true → line (helper)] [line (helper) = false → line (helper)]
+- **Encoded (Dollars):** Choose — [helper "Correct reported basis in column (g)" = true → helper "Reported basis minus correct basis"] [helper "Correct reported basis in column (g)" = false → helper "No adjustment"]
 - Expr: `{"alternatives":[{"guard":{"eq":["sales.adjust_b",{"const":true}],"op":"test"},"then":"sales.b_difference"},{"guard":{"eq":["sales.adjust_b",{"const":false}],"op":"test"},"then":"sales.zero"}],"op":"choose"}`
 - Cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; sha256 f077991c)
 
 ## (helper) — `sales.w`
 
 - **Authored helper label:** Wash-sale adjustment in column (g)
-- **Encoded (NonNegDollars):** Choose — [line (helper) = true → line (helper)] [line (helper) = false → line (helper)]
+- **Encoded (NonNegDollars):** Choose — [helper "Wash-sale code W applies" = true → helper "Correct nondeductible wash-sale loss; positive cents, including losses not reported by broker"] [helper "Wash-sale code W applies" = false → helper "No adjustment"]
 - Expr: `{"alternatives":[{"guard":{"eq":["sales.has_w",{"const":true}],"op":"test"},"then":"sales.wash_loss"},{"guard":{"eq":["sales.has_w",{"const":false}],"op":"test"},"then":"sales.zero"}],"op":"choose"}`
 - Cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; sha256 f077991c)
 
 ## (g) — `sales.g`
 
 - **Authored helper label:** Column (g): net adjustments
-- **Encoded (Dollars):** Add line (helper) and line (helper).
+- **Encoded (Dollars):** Add helper "Basis correction in column (g)" and helper "Wash-sale adjustment in column (g)".
 - Expr: `{"of":["sales.b","sales.w"],"op":"sum"}`
 - Cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; sha256 f077991c)
 
 ## (helper) — `sales.before_adjustment`
 
 - **Authored helper label:** Proceeds less column (e)
-- **Encoded (Dollars):** Subtract line (e) from line (helper).
+- **Encoded (Dollars):** Subtract column (e) from helper "Column (d): proceeds per broker report, or net proceeds if no report".
 - Expr: `{"from":"sales.proceeds","op":"subtract","take":"sales.e"}`
 - Cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; sha256 f077991c)
 
 ## (h) — `sales.h`
 
 - **Authored helper label:** Column (h): proceeds less basis plus adjustments
-- **Encoded (Dollars):** Add line (helper) and line (g).
+- **Encoded (Dollars):** Add helper "Proceeds less column (e)" and column (g).
 - Interpretation: amb.2025.sales_rounding
 - Expr: `{"of":["sales.before_adjustment","sales.g"],"op":"sum"}`
 - Cite: [i8949] p. 11, column (h) (2025; printed date 2026-01-20; sha256 f077991c)

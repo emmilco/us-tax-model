@@ -41,14 +41,14 @@
 ## (helper) — `sd.filing4952`
 
 - **Authored helper label:** Are you filing Form 4952?
-- **Encoded (Bool):** Enter the amount from f4952 "(helper)".
+- **Encoded (Bool):** Enter the amount from f4952 helper "File for an election, or to claim interest when the exception does not apply".
 - Expr: `{"from":"f4952.required","op":"copy"}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 
 ## (helper) — `sd.investment_election`
 
 - **Authored helper label:** Form 4952 line 4g (supplied subtotal; Form 4952 deferred to Stage 4)
-- **Encoded (NonNegDollars):** Enter the amount from f4952 "(helper)".
+- **Encoded (NonNegDollars):** Enter the amount from f4952 helper "Validated default-allocation election".
 - Expr: `{"from":"f4952.election","op":"copy"}`
 - Cite: [i1040sd] p. 15, Schedule D Tax Worksheet applicability (2025; printed date 2025-12-11; sha256 650643a6)
 
@@ -64,7 +64,7 @@
 ## (helper) — `sd.screen`
 
 - **Authored helper label:** Transaction screening dependency
-- **Encoded (Bool):** line (helper) < 0 employer(s)
+- **Encoded (Bool):** helper "Count screened transactions" < 0 (a count)
 - Note: Structural propagation gate: a valid Count is never negative, so true is unreachable. Unknown or refused transaction screening propagates through this test before any category filter can omit a transaction.
 - Expr: `{"lt":["sd.count",{"const":0,"type":"Count"}],"op":"test"}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
@@ -72,7 +72,7 @@
 ## (helper) — `sd.filed`
 
 - **Authored helper label:** Schedule D required for entered sales or special distribution gains
-- **Encoded (Bool):** (line (helper) > 0 employer(s) or line (helper) > $0 or line (helper) > $0)
+- **Encoded (Bool):** (helper "Count screened transactions" > 0 (a count) or helper "28% Rate Gain Worksheet result (supplied subtotal; worksheet deferred to Stage 4)" > $0 or helper "Unrecaptured Section 1250 Gain Worksheet result (supplied subtotal; worksheet deferred to Stage 4)" > $0)
 - Expr: `{"any":[{"gt":["sd.count",{"const":0,"type":"Count"}],"op":"test"},{"gt":["sd.line18",{"const":0}],"op":"test"},{"gt":["sd.line19",{"const":0}],"op":"test"}],"op":"test"}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 
@@ -86,7 +86,7 @@
 ## 1a(d) — `sd.line1a.d`
 
 - **IRS:** Line 1a, column (d) totals
-- **Encoded (NonNegDollars):** Add sales.proceeds over every confirmed sales entry for which line (helper) = 'A' and line (helper) = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (NonNegDollars):** Add sales.proceeds over every confirmed sales entry for which helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'A' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"collection":"sales","field":"sales.proceeds","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"A"}],"op":"test"},{"eq":["sales.route",{"const":"aggregate"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
@@ -94,7 +94,7 @@
 ## 1a(e) — `sd.line1a.e`
 
 - **IRS:** Line 1a, column (e) totals
-- **Encoded (NonNegDollars):** Add sales.e over every confirmed sales entry for which line (helper) = 'A' and line (helper) = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (NonNegDollars):** Add sales.e over every confirmed sales entry for which helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'A' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"collection":"sales","field":"sales.e","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"A"}],"op":"test"},{"eq":["sales.route",{"const":"aggregate"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
@@ -102,7 +102,7 @@
 ## 1a(g) — `sd.line1a.g`
 
 - **IRS:** Line 1a, column (g) totals
-- **Encoded (Dollars):** Add sales.g over every confirmed sales entry for which line (helper) = 'A' and line (helper) = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Dollars):** Add sales.g over every confirmed sales entry for which helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'A' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"collection":"sales","field":"sales.g","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"A"}],"op":"test"},{"eq":["sales.route",{"const":"aggregate"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
@@ -110,7 +110,7 @@
 ## 1a(h) — `sd.line1a.h`
 
 - **IRS:** Line 1a, column (h) totals
-- **Encoded (Dollars):** Add sales.h over every confirmed sales entry for which line (helper) = 'A' and line (helper) = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Dollars):** Add sales.h over every confirmed sales entry for which helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'A' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"collection":"sales","field":"sales.h","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"A"}],"op":"test"},{"eq":["sales.route",{"const":"aggregate"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
@@ -118,7 +118,7 @@
 ## 1b(d) — `sd.line1b.d`
 
 - **IRS:** Line 1b, column (d) totals
-- **Encoded (NonNegDollars):** Add sales.proceeds over every confirmed sales entry for which line (helper) = 'A' and line (helper) = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (NonNegDollars):** Add sales.proceeds over every confirmed sales entry for which helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'A' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"collection":"sales","field":"sales.proceeds","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"A"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
@@ -126,7 +126,7 @@
 ## 1b(e) — `sd.line1b.e`
 
 - **IRS:** Line 1b, column (e) totals
-- **Encoded (NonNegDollars):** Add sales.e over every confirmed sales entry for which line (helper) = 'A' and line (helper) = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (NonNegDollars):** Add sales.e over every confirmed sales entry for which helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'A' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"collection":"sales","field":"sales.e","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"A"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
@@ -134,7 +134,7 @@
 ## 1b(g) — `sd.line1b.g`
 
 - **IRS:** Line 1b, column (g) totals
-- **Encoded (Dollars):** Add sales.g over every confirmed sales entry for which line (helper) = 'A' and line (helper) = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Dollars):** Add sales.g over every confirmed sales entry for which helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'A' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"collection":"sales","field":"sales.g","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"A"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
@@ -142,7 +142,7 @@
 ## 1b(h) — `sd.line1b.h`
 
 - **IRS:** Line 1b, column (h) totals
-- **Encoded (Dollars):** Add sales.h over every confirmed sales entry for which line (helper) = 'A' and line (helper) = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Dollars):** Add sales.h over every confirmed sales entry for which helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'A' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"collection":"sales","field":"sales.h","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"A"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
@@ -150,7 +150,7 @@
 ## 2(d) — `sd.line2.d`
 
 - **IRS:** Line 2, column (d) totals
-- **Encoded (NonNegDollars):** Add sales.proceeds over every confirmed sales entry for which line (helper) = 'B' and line (helper) = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (NonNegDollars):** Add sales.proceeds over every confirmed sales entry for which helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'B' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"collection":"sales","field":"sales.proceeds","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"B"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
@@ -158,7 +158,7 @@
 ## 2(e) — `sd.line2.e`
 
 - **IRS:** Line 2, column (e) totals
-- **Encoded (NonNegDollars):** Add sales.e over every confirmed sales entry for which line (helper) = 'B' and line (helper) = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (NonNegDollars):** Add sales.e over every confirmed sales entry for which helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'B' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"collection":"sales","field":"sales.e","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"B"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
@@ -166,7 +166,7 @@
 ## 2(g) — `sd.line2.g`
 
 - **IRS:** Line 2, column (g) totals
-- **Encoded (Dollars):** Add sales.g over every confirmed sales entry for which line (helper) = 'B' and line (helper) = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Dollars):** Add sales.g over every confirmed sales entry for which helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'B' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"collection":"sales","field":"sales.g","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"B"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
@@ -174,7 +174,7 @@
 ## 2(h) — `sd.line2.h`
 
 - **IRS:** Line 2, column (h) totals
-- **Encoded (Dollars):** Add sales.h over every confirmed sales entry for which line (helper) = 'B' and line (helper) = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Dollars):** Add sales.h over every confirmed sales entry for which helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'B' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"collection":"sales","field":"sales.h","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"B"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
@@ -182,7 +182,7 @@
 ## 3(d) — `sd.line3.d`
 
 - **IRS:** Line 3, column (d) totals
-- **Encoded (NonNegDollars):** Add sales.proceeds over every confirmed sales entry for which line (helper) = 'C' and line (helper) = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (NonNegDollars):** Add sales.proceeds over every confirmed sales entry for which helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'C' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"collection":"sales","field":"sales.proceeds","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"C"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
@@ -190,7 +190,7 @@
 ## 3(e) — `sd.line3.e`
 
 - **IRS:** Line 3, column (e) totals
-- **Encoded (NonNegDollars):** Add sales.e over every confirmed sales entry for which line (helper) = 'C' and line (helper) = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (NonNegDollars):** Add sales.e over every confirmed sales entry for which helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'C' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"collection":"sales","field":"sales.e","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"C"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
@@ -198,7 +198,7 @@
 ## 3(g) — `sd.line3.g`
 
 - **IRS:** Line 3, column (g) totals
-- **Encoded (Dollars):** Add sales.g over every confirmed sales entry for which line (helper) = 'C' and line (helper) = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Dollars):** Add sales.g over every confirmed sales entry for which helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'C' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"collection":"sales","field":"sales.g","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"C"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
@@ -206,7 +206,7 @@
 ## 3(h) — `sd.line3.h`
 
 - **IRS:** Line 3, column (h) totals
-- **Encoded (Dollars):** Add sales.h over every confirmed sales entry for which line (helper) = 'C' and line (helper) = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Dollars):** Add sales.h over every confirmed sales entry for which helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'C' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"collection":"sales","field":"sales.h","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"C"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
@@ -214,7 +214,7 @@
 ## 8a(d) — `sd.line8a.d`
 
 - **IRS:** Line 8a, column (d) totals
-- **Encoded (NonNegDollars):** Add sales.proceeds over every confirmed sales entry for which line (helper) = 'D' and line (helper) = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (NonNegDollars):** Add sales.proceeds over every confirmed sales entry for which helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'D' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"collection":"sales","field":"sales.proceeds","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"D"}],"op":"test"},{"eq":["sales.route",{"const":"aggregate"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
@@ -222,7 +222,7 @@
 ## 8a(e) — `sd.line8a.e`
 
 - **IRS:** Line 8a, column (e) totals
-- **Encoded (NonNegDollars):** Add sales.e over every confirmed sales entry for which line (helper) = 'D' and line (helper) = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (NonNegDollars):** Add sales.e over every confirmed sales entry for which helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'D' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"collection":"sales","field":"sales.e","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"D"}],"op":"test"},{"eq":["sales.route",{"const":"aggregate"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
@@ -230,7 +230,7 @@
 ## 8a(g) — `sd.line8a.g`
 
 - **IRS:** Line 8a, column (g) totals
-- **Encoded (Dollars):** Add sales.g over every confirmed sales entry for which line (helper) = 'D' and line (helper) = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Dollars):** Add sales.g over every confirmed sales entry for which helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'D' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"collection":"sales","field":"sales.g","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"D"}],"op":"test"},{"eq":["sales.route",{"const":"aggregate"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
@@ -238,7 +238,7 @@
 ## 8a(h) — `sd.line8a.h`
 
 - **IRS:** Line 8a, column (h) totals
-- **Encoded (Dollars):** Add sales.h over every confirmed sales entry for which line (helper) = 'D' and line (helper) = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Dollars):** Add sales.h over every confirmed sales entry for which helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'D' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"collection":"sales","field":"sales.h","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"D"}],"op":"test"},{"eq":["sales.route",{"const":"aggregate"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
@@ -246,7 +246,7 @@
 ## 8b(d) — `sd.line8b.d`
 
 - **IRS:** Line 8b, column (d) totals
-- **Encoded (NonNegDollars):** Add sales.proceeds over every confirmed sales entry for which line (helper) = 'D' and line (helper) = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (NonNegDollars):** Add sales.proceeds over every confirmed sales entry for which helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'D' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"collection":"sales","field":"sales.proceeds","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"D"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
@@ -254,7 +254,7 @@
 ## 8b(e) — `sd.line8b.e`
 
 - **IRS:** Line 8b, column (e) totals
-- **Encoded (NonNegDollars):** Add sales.e over every confirmed sales entry for which line (helper) = 'D' and line (helper) = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (NonNegDollars):** Add sales.e over every confirmed sales entry for which helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'D' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"collection":"sales","field":"sales.e","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"D"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
@@ -262,7 +262,7 @@
 ## 8b(g) — `sd.line8b.g`
 
 - **IRS:** Line 8b, column (g) totals
-- **Encoded (Dollars):** Add sales.g over every confirmed sales entry for which line (helper) = 'D' and line (helper) = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Dollars):** Add sales.g over every confirmed sales entry for which helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'D' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"collection":"sales","field":"sales.g","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"D"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
@@ -270,7 +270,7 @@
 ## 8b(h) — `sd.line8b.h`
 
 - **IRS:** Line 8b, column (h) totals
-- **Encoded (Dollars):** Add sales.h over every confirmed sales entry for which line (helper) = 'D' and line (helper) = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Dollars):** Add sales.h over every confirmed sales entry for which helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'D' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"collection":"sales","field":"sales.h","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"D"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
@@ -278,7 +278,7 @@
 ## 9(d) — `sd.line9.d`
 
 - **IRS:** Line 9, column (d) totals
-- **Encoded (NonNegDollars):** Add sales.proceeds over every confirmed sales entry for which line (helper) = 'E' and line (helper) = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (NonNegDollars):** Add sales.proceeds over every confirmed sales entry for which helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'E' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"collection":"sales","field":"sales.proceeds","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"E"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
@@ -286,7 +286,7 @@
 ## 9(e) — `sd.line9.e`
 
 - **IRS:** Line 9, column (e) totals
-- **Encoded (NonNegDollars):** Add sales.e over every confirmed sales entry for which line (helper) = 'E' and line (helper) = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (NonNegDollars):** Add sales.e over every confirmed sales entry for which helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'E' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"collection":"sales","field":"sales.e","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"E"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
@@ -294,7 +294,7 @@
 ## 9(g) — `sd.line9.g`
 
 - **IRS:** Line 9, column (g) totals
-- **Encoded (Dollars):** Add sales.g over every confirmed sales entry for which line (helper) = 'E' and line (helper) = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Dollars):** Add sales.g over every confirmed sales entry for which helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'E' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"collection":"sales","field":"sales.g","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"E"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
@@ -302,7 +302,7 @@
 ## 9(h) — `sd.line9.h`
 
 - **IRS:** Line 9, column (h) totals
-- **Encoded (Dollars):** Add sales.h over every confirmed sales entry for which line (helper) = 'E' and line (helper) = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Dollars):** Add sales.h over every confirmed sales entry for which helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'E' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"collection":"sales","field":"sales.h","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"E"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
@@ -310,7 +310,7 @@
 ## 10(d) — `sd.line10.d`
 
 - **IRS:** Line 10, column (d) totals
-- **Encoded (NonNegDollars):** Add sales.proceeds over every confirmed sales entry for which line (helper) = 'F' and line (helper) = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (NonNegDollars):** Add sales.proceeds over every confirmed sales entry for which helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'F' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"collection":"sales","field":"sales.proceeds","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"F"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
@@ -318,7 +318,7 @@
 ## 10(e) — `sd.line10.e`
 
 - **IRS:** Line 10, column (e) totals
-- **Encoded (NonNegDollars):** Add sales.e over every confirmed sales entry for which line (helper) = 'F' and line (helper) = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (NonNegDollars):** Add sales.e over every confirmed sales entry for which helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'F' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"collection":"sales","field":"sales.e","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"F"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
@@ -326,7 +326,7 @@
 ## 10(g) — `sd.line10.g`
 
 - **IRS:** Line 10, column (g) totals
-- **Encoded (Dollars):** Add sales.g over every confirmed sales entry for which line (helper) = 'F' and line (helper) = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Dollars):** Add sales.g over every confirmed sales entry for which helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'F' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"collection":"sales","field":"sales.g","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"F"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
@@ -334,7 +334,7 @@
 ## 10(h) — `sd.line10.h`
 
 - **IRS:** Line 10, column (h) totals
-- **Encoded (Dollars):** Add sales.h over every confirmed sales entry for which line (helper) = 'F' and line (helper) = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Dollars):** Add sales.h over every confirmed sales entry for which helper "Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets" = 'F' and helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.
 - **Refusal:** when sd.screen is true, cannot complete Schedule D. Resolve transaction screening before calculating totals. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"collection":"sales","field":"sales.h","op":"sum_over","where":{"all":[{"eq":["sales.box",{"const":"F"}],"op":"test"},{"eq":["sales.route",{"const":"detail"}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
@@ -342,7 +342,7 @@
 ## 4 — `sd.line4`
 
 - **IRS:** Line 4: zero only after unsupported source/carryover screening
-- **Encoded (Dollars):** Enter the amount from line (helper).
+- **Encoded (Dollars):** Enter the amount from helper "No amount on an inapplicable line".
 - **Refusal:** when sd.other_forms is true, cannot complete Schedule D additional source forms. Prepare the required source forms; their gains/losses are outside the supported securities slice. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - **Refusal:** when sd.carryover is true, cannot complete Capital Loss Carryover Worksheet. Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"from":"sd.zero","op":"copy"}`
@@ -351,7 +351,7 @@
 ## 5 — `sd.line5`
 
 - **IRS:** Line 5: zero only after unsupported source/carryover screening
-- **Encoded (Dollars):** Enter the amount from line (helper).
+- **Encoded (Dollars):** Enter the amount from helper "No amount on an inapplicable line".
 - **Refusal:** when sd.other_forms is true, cannot complete Schedule D additional source forms. Prepare the required source forms; their gains/losses are outside the supported securities slice. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - **Refusal:** when sd.carryover is true, cannot complete Capital Loss Carryover Worksheet. Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"from":"sd.zero","op":"copy"}`
@@ -360,7 +360,7 @@
 ## 6 — `sd.line6`
 
 - **IRS:** Line 6: zero only after unsupported source/carryover screening
-- **Encoded (Dollars):** Enter the amount from line (helper).
+- **Encoded (Dollars):** Enter the amount from helper "No amount on an inapplicable line".
 - **Refusal:** when sd.other_forms is true, cannot complete Schedule D additional source forms. Prepare the required source forms; their gains/losses are outside the supported securities slice. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - **Refusal:** when sd.carryover is true, cannot complete Capital Loss Carryover Worksheet. Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"from":"sd.zero","op":"copy"}`
@@ -369,7 +369,7 @@
 ## 11 — `sd.line11`
 
 - **IRS:** Line 11: zero only after unsupported source/carryover screening
-- **Encoded (Dollars):** Enter the amount from line (helper).
+- **Encoded (Dollars):** Enter the amount from helper "No amount on an inapplicable line".
 - **Refusal:** when sd.other_forms is true, cannot complete Schedule D additional source forms. Prepare the required source forms; their gains/losses are outside the supported securities slice. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - **Refusal:** when sd.carryover is true, cannot complete Capital Loss Carryover Worksheet. Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"from":"sd.zero","op":"copy"}`
@@ -378,7 +378,7 @@
 ## 12 — `sd.line12`
 
 - **IRS:** Line 12: zero only after unsupported source/carryover screening
-- **Encoded (Dollars):** Enter the amount from line (helper).
+- **Encoded (Dollars):** Enter the amount from helper "No amount on an inapplicable line".
 - **Refusal:** when sd.other_forms is true, cannot complete Schedule D additional source forms. Prepare the required source forms; their gains/losses are outside the supported securities slice. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - **Refusal:** when sd.carryover is true, cannot complete Capital Loss Carryover Worksheet. Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"from":"sd.zero","op":"copy"}`
@@ -387,7 +387,7 @@
 ## 14 — `sd.line14`
 
 - **IRS:** Line 14: zero only after unsupported source/carryover screening
-- **Encoded (Dollars):** Enter the amount from line (helper).
+- **Encoded (Dollars):** Enter the amount from helper "No amount on an inapplicable line".
 - **Refusal:** when sd.other_forms is true, cannot complete Schedule D additional source forms. Prepare the required source forms; their gains/losses are outside the supported securities slice. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - **Refusal:** when sd.carryover is true, cannot complete Capital Loss Carryover Worksheet. Prior-year capital loss carryovers are unsupported; prepare the carryover worksheet. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"from":"sd.zero","op":"copy"}`
@@ -396,7 +396,7 @@
 ## 13 — `sd.line13`
 
 - **IRS:** Capital gain distributions
-- **Encoded (NonNegDollars):** Add line (helper) and div "(helper)".
+- **Encoded (NonNegDollars):** Add helper "Capital gain distributions, generally Form 1099-DIV box 2a" and div helper "Zero only after distribution scope checks".
 - Expr: `{"of":["sd.distributions","div.screen"],"op":"sum"}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 
@@ -431,7 +431,7 @@
 ## 20 — `sd.line20`
 
 - **IRS:** Are lines 18 and 19 zero and are you not filing Form 4952?
-- **Encoded (Bool):** line (helper) = $0 and line (helper) = $0 and line (helper) = false
+- **Encoded (Bool):** helper "28% Rate Gain Worksheet result (supplied subtotal; worksheet deferred to Stage 4)" = $0 and helper "Unrecaptured Section 1250 Gain Worksheet result (supplied subtotal; worksheet deferred to Stage 4)" = $0 and helper "Are you filing Form 4952?" = false
 - Expr: `{"all":[{"eq":["sd.line18",{"const":0}],"op":"test"},{"eq":["sd.line19",{"const":0}],"op":"test"},{"eq":["sd.filing4952",{"const":false}],"op":"test"}],"op":"test"}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 
@@ -445,7 +445,7 @@
 ## (helper) — `sd.limited_loss`
 
 - **Authored helper label:** Loss limited to the annual deduction
-- **Encoded (Dollars):** Enter the larger of line 16 or line (helper).
+- **Encoded (Dollars):** Enter the larger of line 16 or helper "Signed annual capital loss limit".
 - Expr: `{"of":["sd.line16","sd.loss_limit"],"op":"larger_of"}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 
@@ -459,7 +459,7 @@
 ## 21 — `sd.line21`
 
 - **IRS:** Deductible loss, signed; zero when line 21 is skipped
-- **Encoded (Dollars):** Choose — [line (helper) = true → line (helper)] [line (helper) = false → line (helper)]
+- **Encoded (Dollars):** Choose — [helper "Line 16 is a loss" = true → helper "Loss limited to the annual deduction"] [helper "Line 16 is a loss" = false → helper "No amount on an inapplicable line"]
 - Expr: `{"alternatives":[{"guard":{"eq":["sd.has_loss",{"const":true}],"op":"test"},"then":"sd.limited_loss"},{"guard":{"eq":["sd.has_loss",{"const":false}],"op":"test"},"then":"sd.zero"}],"op":"choose"}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 
@@ -473,7 +473,7 @@
 ## (helper) — `sd.to1040`
 
 - **Authored helper label:** Capital gain or limited capital loss for Form 1040 line 7a
-- **Encoded (Dollars):** Choose — [line (helper) = true → line 21] [line (helper) = false → line 16]
+- **Encoded (Dollars):** Choose — [helper "Line 16 is a loss" = true → line 21] [helper "Line 16 is a loss" = false → line 16]
 - Expr: `{"alternatives":[{"guard":{"eq":["sd.has_loss",{"const":true}],"op":"test"},"then":"sd.line21"},{"guard":{"eq":["sd.has_loss",{"const":false}],"op":"test"},"then":"sd.line16"}],"op":"choose"}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 
@@ -487,6 +487,6 @@
 ## (helper) — `sd.net_gain`
 
 - **Authored helper label:** Nonnegative net capital gain for QDCGT
-- **Encoded (NonNegDollars):** Subtract $0 from line (helper). If zero or less, enter -0-.
+- **Encoded (NonNegDollars):** Subtract $0 from helper "Smaller of Schedule D lines 15 and 16". If zero or less, enter -0-.
 - Expr: `{"from":"sd.net_gain_raw","op":"subtract_floor0","take":{"const":0}}`
 - Cite: [i1040gi] QDCGT worksheet, line 3 (2025; printed date 2026-02-25; sha256 482e9c48)

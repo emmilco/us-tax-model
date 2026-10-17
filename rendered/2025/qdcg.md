@@ -6,14 +6,14 @@
 ## (question) — `qdcg.schedule_d_filed`
 
 - **Authored helper label:** Are you filing Schedule D?
-- **Encoded (Bool):** Enter the amount from sd "(helper)".
+- **Encoded (Bool):** Enter the amount from sd helper "Schedule D required for entered sales or special distribution gains".
 - Expr: `{"from":"sd.filed","op":"copy"}`
 - Cite: [i1040gi] QDCGT worksheet, line 3 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (computed helper) — `qdcg.schedule_d_net_gain`
 
 - **Authored helper label:** Enter the smaller of line 15 or line 16 of Schedule D. If either line 15 or line 16 is blank or a loss, enter -0-.
-- **Encoded (NonNegDollars):** Enter the amount from sd "(helper)".
+- **Encoded (NonNegDollars):** Enter the amount from sd helper "Nonnegative net capital gain for QDCGT".
 - Expr: `{"from":"sd.net_gain","op":"copy"}`
 - Cite: [i1040gi] QDCGT worksheet, line 3 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -34,7 +34,7 @@
 ## 3 — `qdcg.line3`
 
 - **IRS:** Are you filing Schedule D? Yes. Enter the smaller of line 15 or line 16 of Schedule D. If either line 15 or line 16 is blank or a loss, enter -0-. No. Enter the amount from Form 1040 or 1040-SR, line 7a
-- **Encoded (NonNegDollars):** Choose — [line (question) = true → line (computed helper)] [line (question) = false → sd "(helper)"]
+- **Encoded (NonNegDollars):** Choose — [helper "Are you filing Schedule D?" = true → helper "Enter the smaller of line 15 or line 16 of Schedule D. If either line 15 or line 16 is blank or a loss, enter -0-."] [helper "Are you filing Schedule D?" = false → sd helper "Capital gain distributions, generally Form 1099-DIV box 2a"]
 - Expr: `{"alternatives":[{"guard":{"eq":["qdcg.schedule_d_filed",{"const":true}],"op":"test"},"then":"qdcg.schedule_d_net_gain"},{"guard":{"eq":["qdcg.schedule_d_filed",{"const":false}],"op":"test"},"then":"sd.distributions"}],"op":"choose"}`
 - Cite: [i1040gi] QDCGT worksheet, line 3 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -167,7 +167,7 @@
 ## 22 — `qdcg.line22`
 
 - **IRS:** Figure the tax on the amount on line 5. If the amount on line 5 is less than $100,000, use the Tax Table to figure the tax. If the amount on line 5 is $100,000 or more, use the Tax Computation Worksheet
-- **Encoded (Dollars):** Enter the amount from tax_on_amount(amount = line 5, status = f1040 "Filing Status").tax.
+- **Encoded (Dollars):** Enter "tax" of Tax on an amount — Tax Table or Tax Computation Worksheet with amount = line 5 and status = f1040 line Filing Status.
 - Expr: `{"from":{"bind":{"amount":"qdcg.line5","status":"f1040.status"},"def":"tax_on_amount","line":"tax"},"op":"copy"}`
 - Cite: [i1040gi] QDCGT worksheet, line 22 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -181,7 +181,7 @@
 ## 24 — `qdcg.line24`
 
 - **IRS:** Figure the tax on the amount on line 1. If the amount on line 1 is less than $100,000, use the Tax Table to figure the tax. If the amount on line 1 is $100,000 or more, use the Tax Computation Worksheet
-- **Encoded (Dollars):** Enter the amount from tax_on_amount(amount = line 1, status = f1040 "Filing Status").tax.
+- **Encoded (Dollars):** Enter "tax" of Tax on an amount — Tax Table or Tax Computation Worksheet with amount = line 1 and status = f1040 line Filing Status.
 - Expr: `{"from":{"bind":{"amount":"qdcg.line1","status":"f1040.status"},"def":"tax_on_amount","line":"tax"},"op":"copy"}`
 - Cite: [i1040gi] QDCGT worksheet, line 24 (2025; printed date 2026-02-25; sha256 482e9c48)
 

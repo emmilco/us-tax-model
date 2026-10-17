@@ -33,11 +33,13 @@ form:
       printed: (helper)
       type: Bool
       label: Does this group need an appraisal or other special treatment (including vehicles,
-        pass-through entity gifts, intellectual property, inventory, conservation or partial interests)?
+        pass-through entity gifts, intellectual property, inventory, conservation or partial interests,
+        or a clothing or household item not in good used condition claimed at over $500)?
       expr:
         op: input
         source: Does this group need an appraisal or other special treatment (including vehicles,
-          pass-through entity gifts, intellectual property, inventory, conservation or partial interests)?
+          pass-through entity gifts, intellectual property, inventory, conservation or partial interests,
+          or a clothing or household item not in good used condition claimed at over $500)?
       cite:
         doc: i8283
         locator: pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A

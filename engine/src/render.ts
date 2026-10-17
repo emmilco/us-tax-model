@@ -50,24 +50,37 @@ function citeLine(cite: CiteFilled): string {
 function operandText(op: Operand, doc: FormDoc, ctx: RenderCtx): string {
   if (typeof op === "string") return refText(doc, op, ctx);
   if ("param" in op) return paramText(op.param, ctx);
-  if (op.type === "Count") return `${op.const} employer(s)`;
+  if (op.type === "Count") return `${op.const} (a count)`;
   const v = op.const;
   if (typeof v === "boolean") return v ? "true" : "false";
   if (typeof v === "number") return fmtMoney(v);
   return `'${v}'`;
 }
 
+// Printed markers of lines that are not on the IRS page: helpers, gates and
+// interview questions. They are named by their authored label, since the
+// marker alone says nothing a reader could check.
+const HELPER_MARKERS = new Set(["(helper)", "(gate)", "(computed helper)", "(question)", "(status)"]);
+
+function lineName(line: Line, prefix: string, doc: FormDoc): string {
+  if (HELPER_MARKERS.has(line.printed)) return `${prefix}helper "${line.label}"`;
+  // A marker several lines share (a worksheet's repeated row columns) is
+  // qualified by the line id, since the marker alone names no single line.
+  const shared = doc.lines.filter((l) => l.printed === line.printed).length > 1;
+  const marker = shared ? `${line.printed} (${line.id})` : line.printed;
+  if (line.printed.startsWith("(")) return `${prefix}column ${marker}`;
+  return `${prefix}line ${marker}`;
+}
+
 function refText(doc: FormDoc, ref: string, ctx: RenderCtx): string {
   // Same-document reference?
   const same = doc.lines.find((l) => l.id === ref);
-  if (same) return `line ${same.printed}`;
+  if (same) return lineName(same, "", doc);
   const dot = ref.indexOf(".");
   if (dot > 0) {
     const target = ctx.forms.get(ref.slice(0, dot));
     const line = target?.lines.find((l) => l.id === ref);
-    if (target && line) {
-      return /^[0-9]/.test(line.printed) ? `${target.id} line ${line.printed}` : `${target.id} "${line.printed}"`;
-    }
+    if (target && line) return lineName(line, `${target.id} `, target);
   }
   return ref;
 }
@@ -114,9 +127,8 @@ function exprText(expr: Expr, doc: FormDoc, ctx: RenderCtx): string {
       return `Input — ${expr.source}`;
     case "copy":
       if (typeof expr.from === "string") return `Enter the amount from ${refText(doc, expr.from, ctx)}.`;
-      return `Enter the amount from ${expr.from.def}(${Object.entries(expr.from.bind)
-        .map(([k, v]) => `${k} = ${operandText(v, doc, ctx)}`)
-        .join(", ")}).${expr.from.line}.`;
+      return `Enter "${expr.from.line}" of ${ctx.forms.get(expr.from.def)?.title ?? expr.from.def} with ${listAnd(Object.entries(expr.from.bind)
+        .map(([k, v]) => `${k} = ${operandText(v, doc, ctx)}`))}.`;
     case "param":
       return `Enter ${paramText(expr.ref, ctx)}.`;
     case "sum_over":
@@ -146,7 +158,7 @@ function exprText(expr: Expr, doc: FormDoc, ctx: RenderCtx): string {
         .map(
           (alt) =>
             `[${testText(alt.guard, doc, ctx)} → ${
-              typeof alt.then === "string" ? refText(doc, alt.then, ctx) : `instance of ${alt.then.def} line ${alt.then.line}`
+              typeof alt.then === "string" ? refText(doc, alt.then, ctx) : `"${alt.then.line}" of ${ctx.forms.get(alt.then.def)?.title ?? alt.then.def} with ${listAnd(Object.entries(alt.then.bind).map(([k, v]) => `${k} = ${operandText(v, doc, ctx)}`))}`
             }]`,
         )
         .join(" ")}`;

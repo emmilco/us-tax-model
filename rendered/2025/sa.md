@@ -5,9 +5,9 @@
 
 ## (helper) — `sa.unsupported`
 
-- **Authored helper label:** Any casualty/theft loss, other itemized deduction, foreign tax deduction, mortgage interest not on Form 1098 or subject to debt/use limits, or sales-tax election?
-- **Encoded (Bool):** Input — Any casualty/theft loss, other itemized deduction, foreign tax deduction, mortgage interest not on Form 1098 or subject to debt/use limits, or sales-tax election?
-- Expr: `{"op":"input","source":"Any casualty/theft loss, other itemized deduction, foreign tax deduction, mortgage interest not on Form 1098 or subject to debt/use limits, or sales-tax election?"}`
+- **Authored helper label:** Any casualty/theft loss, other itemized deduction, foreign tax or generation-skipping tax deduction, mortgage interest or points not on Form 1098 or subject to debt/use limits, or sales-tax election?
+- **Encoded (Bool):** Input — Any casualty/theft loss, other itemized deduction, foreign tax or generation-skipping tax deduction, mortgage interest or points not on Form 1098 or subject to debt/use limits, or sales-tax election?
+- Expr: `{"op":"input","source":"Any casualty/theft loss, other itemized deduction, foreign tax or generation-skipping tax deduction, mortgage interest or points not on Form 1098 or subject to debt/use limits, or sales-tax election?"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 
 ## (helper) — `sa.charity_limited`
@@ -125,7 +125,7 @@
 ## 2 — `sa.line2`
 
 - **IRS:** Amount from sa.agi
-- **Encoded (Dollars):** Enter the amount from line (helper).
+- **Encoded (Dollars):** Enter the amount from helper "Form 1040 line 11b adjusted gross income".
 - Expr: `{"from":"sa.agi","op":"copy"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 
@@ -175,14 +175,14 @@
 ## (helper) — `sa.saltexcess`
 
 - **Authored helper label:** Subtract sa.saltthreshold from sa.agi; if zero or less, enter zero
-- **Encoded (NonNegDollars):** Subtract line (helper) from line (helper). If zero or less, enter -0-.
+- **Encoded (NonNegDollars):** Subtract helper "Year parameter sa.salt_threshold" from helper "Form 1040 line 11b adjusted gross income". If zero or less, enter -0-.
 - Expr: `{"from":"sa.agi","op":"subtract_floor0","take":"sa.saltthreshold"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 
 ## (helper) — `sa.saltreduction`
 
 - **Authored helper label:** Multiply sa.saltexcess by sa.salt_rate
-- **Encoded (NonNegDollars):** Multiply line (helper) by 3/10 (sa.salt_rate).
+- **Encoded (NonNegDollars):** Multiply helper "Subtract sa.saltthreshold from sa.agi; if zero or less, enter zero" by 3/10 (sa.salt_rate).
 - Interpretation: amb.2025.multiplication_subcent
 - Expr: `{"amount":"sa.saltexcess","op":"multiply_rate","rate":{"param":"sa.salt_rate"}}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
@@ -190,21 +190,21 @@
 ## (helper) — `sa.saltremaining`
 
 - **Authored helper label:** Subtract sa.saltreduction from sa.saltbase; if zero or less, enter zero
-- **Encoded (NonNegDollars):** Subtract line (helper) from line (helper). If zero or less, enter -0-.
+- **Encoded (NonNegDollars):** Subtract helper "Multiply sa.saltexcess by sa.salt_rate" from helper "Year parameter sa.salt_base". If zero or less, enter -0-.
 - Expr: `{"from":"sa.saltbase","op":"subtract_floor0","take":"sa.saltreduction"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 
 ## (helper) — `sa.saltfloor_applied`
 
 - **Authored helper label:** Larger of remaining ceiling and $10,000
-- **Encoded (NonNegDollars):** Enter the larger of line (helper) or line (helper).
+- **Encoded (NonNegDollars):** Enter the larger of helper "Subtract sa.saltreduction from sa.saltbase; if zero or less, enter zero" or helper "Year parameter sa.salt_floor".
 - Expr: `{"of":["sa.saltremaining","sa.saltfloor"],"op":"larger_of"}`
 - Cite: [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12)
 
 ## (helper) — `sa.salthalf`
 
 - **Authored helper label:** Multiply sa.saltfloor_applied by sa.half
-- **Encoded (NonNegDollars):** Multiply line (helper) by 1/2 (sa.half).
+- **Encoded (NonNegDollars):** Multiply helper "Larger of remaining ceiling and $10,000" by 1/2 (sa.half).
 - Interpretation: amb.2025.multiplication_subcent
 - Expr: `{"amount":"sa.saltfloor_applied","op":"multiply_rate","rate":{"param":"sa.half"}}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
@@ -212,28 +212,28 @@
 ## (helper) — `sa.mfs`
 
 - **Authored helper label:** Married filing separately
-- **Encoded (Bool):** f1040 "Filing Status" = 'mfs'
+- **Encoded (Bool):** f1040 line Filing Status = 'mfs'
 - Expr: `{"eq":["f1040.status",{"const":"mfs"}],"op":"test"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 
 ## (helper) — `sa.saltlimit`
 
 - **Authored helper label:** Half the worksheet ceiling if married filing separately
-- **Encoded (NonNegDollars):** Choose — [line (helper) = true → line (helper)] [line (helper) = false → line (helper)]
+- **Encoded (NonNegDollars):** Choose — [helper "Married filing separately" = true → helper "Multiply sa.saltfloor_applied by sa.half"] [helper "Married filing separately" = false → helper "Larger of remaining ceiling and $10,000"]
 - Expr: `{"alternatives":[{"guard":{"eq":["sa.mfs",{"const":true}],"op":"test"},"then":"sa.salthalf"},{"guard":{"eq":["sa.mfs",{"const":false}],"op":"test"},"then":"sa.saltfloor_applied"}],"op":"choose"}`
 - Cite: [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12)
 
 ## 5e — `sa.line5e`
 
 - **IRS:** Smaller of sa.line5d, sa.saltlimit
-- **Encoded (NonNegDollars):** Enter the smaller of line 5d or line (helper).
+- **Encoded (NonNegDollars):** Enter the smaller of line 5d or helper "Half the worksheet ceiling if married filing separately".
 - Expr: `{"of":["sa.line5d","sa.saltlimit"],"op":"smaller_of"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 
 ## 6 — `sa.line6`
 
 - **IRS:** Amount from sa.zero
-- **Encoded (NonNegDollars):** Enter the amount from line (helper).
+- **Encoded (NonNegDollars):** Enter the amount from helper "Year parameter sales.zero".
 - **Refusal:** when sa.unsupported is true, cannot complete Schedule A unsupported item / Form 4684. Prepare the applicable deduction or limitation; only the listed Schedule A items are supported. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.charity_limited is true, cannot complete Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.excluded_income is true, cannot complete Schedule A SALT Worksheet / Forms 2555 and 4563. Excluded-income addbacks are outside scope. Cite: [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12)
@@ -243,7 +243,7 @@
 ## 8b — `sa.line8b`
 
 - **IRS:** Amount from sa.zero
-- **Encoded (NonNegDollars):** Enter the amount from line (helper).
+- **Encoded (NonNegDollars):** Enter the amount from helper "Year parameter sales.zero".
 - **Refusal:** when sa.unsupported is true, cannot complete Schedule A unsupported item / Form 4684. Prepare the applicable deduction or limitation; only the listed Schedule A items are supported. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.charity_limited is true, cannot complete Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.excluded_income is true, cannot complete Schedule A SALT Worksheet / Forms 2555 and 4563. Excluded-income addbacks are outside scope. Cite: [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12)
@@ -253,7 +253,7 @@
 ## 8c — `sa.line8c`
 
 - **IRS:** Amount from sa.zero
-- **Encoded (NonNegDollars):** Enter the amount from line (helper).
+- **Encoded (NonNegDollars):** Enter the amount from helper "Year parameter sales.zero".
 - **Refusal:** when sa.unsupported is true, cannot complete Schedule A unsupported item / Form 4684. Prepare the applicable deduction or limitation; only the listed Schedule A items are supported. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.charity_limited is true, cannot complete Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.excluded_income is true, cannot complete Schedule A SALT Worksheet / Forms 2555 and 4563. Excluded-income addbacks are outside scope. Cite: [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12)
@@ -263,7 +263,7 @@
 ## 13 — `sa.line13`
 
 - **IRS:** Amount from sa.zero
-- **Encoded (NonNegDollars):** Enter the amount from line (helper).
+- **Encoded (NonNegDollars):** Enter the amount from helper "Year parameter sales.zero".
 - **Refusal:** when sa.unsupported is true, cannot complete Schedule A unsupported item / Form 4684. Prepare the applicable deduction or limitation; only the listed Schedule A items are supported. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.charity_limited is true, cannot complete Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.excluded_income is true, cannot complete Schedule A SALT Worksheet / Forms 2555 and 4563. Excluded-income addbacks are outside scope. Cite: [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12)
@@ -273,7 +273,7 @@
 ## 15 — `sa.line15`
 
 - **IRS:** Amount from sa.zero
-- **Encoded (NonNegDollars):** Enter the amount from line (helper).
+- **Encoded (NonNegDollars):** Enter the amount from helper "Year parameter sales.zero".
 - **Refusal:** when sa.unsupported is true, cannot complete Schedule A unsupported item / Form 4684. Prepare the applicable deduction or limitation; only the listed Schedule A items are supported. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.charity_limited is true, cannot complete Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.excluded_income is true, cannot complete Schedule A SALT Worksheet / Forms 2555 and 4563. Excluded-income addbacks are outside scope. Cite: [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12)
@@ -283,7 +283,7 @@
 ## 16 — `sa.line16`
 
 - **IRS:** Amount from sa.zero
-- **Encoded (NonNegDollars):** Enter the amount from line (helper).
+- **Encoded (NonNegDollars):** Enter the amount from helper "Year parameter sales.zero".
 - **Refusal:** when sa.unsupported is true, cannot complete Schedule A unsupported item / Form 4684. Prepare the applicable deduction or limitation; only the listed Schedule A items are supported. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.charity_limited is true, cannot complete Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.excluded_income is true, cannot complete Schedule A SALT Worksheet / Forms 2555 and 4563. Excluded-income addbacks are outside scope. Cite: [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12)
@@ -369,28 +369,28 @@
 ## (helper) — `sa.extra_age65`
 
 - **Authored helper label:** Additional standard deduction for age65
-- **Encoded (NonNegDollars):** Choose — [line (helper) = true → line (helper)] [line (helper) = false → line (helper)]
+- **Encoded (NonNegDollars):** Choose — [helper "Were you born before January 2, 1961?" = true → helper "Year parameter sa.standard_extra"] [helper "Were you born before January 2, 1961?" = false → helper "Year parameter sales.zero"]
 - Expr: `{"alternatives":[{"guard":{"eq":["sa.age65",{"const":true}],"op":"test"},"then":"sa.extra"},{"guard":{"eq":["sa.age65",{"const":false}],"op":"test"},"then":"sa.zero"}],"op":"choose"}`
 - Cite: [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `sa.extra_blind`
 
 - **Authored helper label:** Additional standard deduction for blind
-- **Encoded (NonNegDollars):** Choose — [line (helper) = true → line (helper)] [line (helper) = false → line (helper)]
+- **Encoded (NonNegDollars):** Choose — [helper "Are you blind under the standard-deduction instructions?" = true → helper "Year parameter sa.standard_extra"] [helper "Are you blind under the standard-deduction instructions?" = false → helper "Year parameter sales.zero"]
 - Expr: `{"alternatives":[{"guard":{"eq":["sa.blind",{"const":true}],"op":"test"},"then":"sa.extra"},{"guard":{"eq":["sa.blind",{"const":false}],"op":"test"},"then":"sa.zero"}],"op":"choose"}`
 - Cite: [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `sa.standardraw`
 
 - **Authored helper label:** Add sa.standardbase, sa.extra_age65, sa.extra_blind
-- **Encoded (NonNegDollars):** Add line (helper), line (helper), and line (helper).
+- **Encoded (NonNegDollars):** Add helper "Year parameter sa.standard_base", helper "Additional standard deduction for age65", and helper "Additional standard deduction for blind".
 - Expr: `{"of":["sa.standardbase","sa.extra_age65","sa.extra_blind"],"op":"sum"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 
 ## (helper) — `sa.standard`
 
 - **Authored helper label:** Standard deduction, zero when MFS spouse itemizes
-- **Encoded (NonNegDollars):** Choose — [line (helper) = true → line (helper)] [line (helper) = false → line (helper)]
+- **Encoded (NonNegDollars):** Choose — [helper "MFS with spouse itemizing" = true → helper "Year parameter sales.zero"] [helper "MFS with spouse itemizing" = false → helper "Add sa.standardbase, sa.extra_age65, sa.extra_blind"]
 - **Refusal:** when sa.dependent is true, cannot complete Standard Deduction Worksheet for Dependents / dual-status rules. Dependent and dual-status standard deductions are outside this resident nondependent slice. Cite: [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart (2025; printed date 2026-02-25; sha256 482e9c48)
 - **Refusal:** when sa.spouse_extra is true, cannot complete Standard Deduction Chart spouse boxes. Spouse age/blindness claims require the unsupported per-spouse interview. Cite: [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"alternatives":[{"guard":{"eq":["sa.mfs_spouse_itemizes",{"const":true}],"op":"test"},"then":"sa.zero"},{"guard":{"eq":["sa.mfs_spouse_itemizes",{"const":false}],"op":"test"},"then":"sa.standardraw"}],"op":"choose"}`
@@ -399,20 +399,20 @@
 ## (helper) — `sa.itemizes`
 
 - **Authored helper label:** Itemize if elected, required, or itemized total exceeds standard
-- **Encoded (Bool):** (line (helper) = true or line (helper) = true or line 17 > line (helper))
+- **Encoded (Bool):** (helper "Elect to itemize even if the standard deduction is larger?" = true or helper "MFS with spouse itemizing" = true or line 17 > helper "Standard deduction, zero when MFS spouse itemizes")
 - Expr: `{"any":[{"eq":["sa.elect_itemize",{"const":true}],"op":"test"},{"eq":["sa.mfs_spouse_itemizes",{"const":true}],"op":"test"},{"gt":["sa.line17","sa.standard"],"op":"test"}],"op":"test"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 
 ## (helper) — `sa.deduction`
 
 - **Authored helper label:** Deduction selected for Form 1040 line 12e
-- **Encoded (NonNegDollars):** Choose — [line (helper) = true → line 17] [line (helper) = false → line (helper)]
+- **Encoded (NonNegDollars):** Choose — [helper "Itemize if elected, required, or itemized total exceeds standard" = true → line 17] [helper "Itemize if elected, required, or itemized total exceeds standard" = false → helper "Standard deduction, zero when MFS spouse itemizes"]
 - Expr: `{"alternatives":[{"guard":{"eq":["sa.itemizes",{"const":true}],"op":"test"},"then":"sa.line17"},{"guard":{"eq":["sa.itemizes",{"const":false}],"op":"test"},"then":"sa.standard"}],"op":"choose"}`
 - Cite: [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `sa.mfs_spouse_itemizes`
 
 - **Authored helper label:** MFS with spouse itemizing
-- **Encoded (Bool):** line (helper) = true and line (helper) = true
+- **Encoded (Bool):** helper "Married filing separately" = true and helper "Married filing separately with a spouse who itemizes?" = true
 - Expr: `{"all":[{"eq":["sa.mfs",{"const":true}],"op":"test"},{"eq":["sa.spouse_itemizes",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 34, line 12e exception 2 (2025; printed date 2026-02-25; sha256 482e9c48)

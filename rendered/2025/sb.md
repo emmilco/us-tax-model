@@ -66,7 +66,7 @@
 ## 3 — `sb.line3`
 
 - **IRS:** Amount from sb.zero
-- **Encoded (NonNegDollars):** Enter the amount from line (helper).
+- **Encoded (NonNegDollars):** Enter the amount from helper "Year parameter sales.zero".
 - **Refusal:** when sb.unsupported is true, cannot complete Schedule B special treatment / Form 8815. Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable interest and ordinary dividends. Cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; sha256 b92f31ec)
 - **Refusal:** when sb.fbar_required is true, cannot complete FinCEN Form 114 (FBAR). Foreign-account reporting and the required country list are outside this tool. Prepare the separate FBAR and Schedule B disclosures. Cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; sha256 b92f31ec)
 - **Refusal:** when sb.form8938 is true, cannot complete Form 8938. Prepare the required foreign financial asset disclosure; this tool does not prepare Form 8938. Cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; sha256 b92f31ec)
@@ -84,7 +84,7 @@
 ## 6 — `sb.line6`
 
 - **IRS:** Amount from sb.ordinary_dividends
-- **Encoded (NonNegDollars):** Enter the amount from line (helper).
+- **Encoded (NonNegDollars):** Enter the amount from helper "Total ordinary dividends, Form 1099-DIV box 1a".
 - **Refusal:** when sb.unsupported is true, cannot complete Schedule B special treatment / Form 8815. Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable interest and ordinary dividends. Cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; sha256 b92f31ec)
 - **Refusal:** when sb.fbar_required is true, cannot complete FinCEN Form 114 (FBAR). Foreign-account reporting and the required country list are outside this tool. Prepare the separate FBAR and Schedule B disclosures. Cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; sha256 b92f31ec)
 - **Refusal:** when sb.form8938 is true, cannot complete Form 8938. Prepare the required foreign financial asset disclosure; this tool does not prepare Form 8938. Cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; sha256 b92f31ec)

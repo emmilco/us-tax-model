@@ -73,7 +73,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 1575200
+        "person[taxpayer].w2[migrated].box1": 1575200,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -214,7 +215,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 4075000
+        "person[taxpayer].w2[migrated].box1": 4075000,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -354,7 +356,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 11574000
+        "person[taxpayer].w2[migrated].box1": 11574000,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -494,7 +497,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 11574999
+        "person[taxpayer].w2[migrated].box1": 11574999,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -634,7 +638,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 11575000
+        "person[taxpayer].w2[migrated].box1": 11575000,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -774,7 +779,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 11742500
+        "person[taxpayer].w2[migrated].box1": 11742500,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -914,7 +920,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 16607500
+        "person[taxpayer].w2[migrated].box1": 16607500,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1054,7 +1061,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 23966250
+        "person[taxpayer].w2[migrated].box1": 23966250,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1194,7 +1202,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 45418750
+        "person[taxpayer].w2[migrated].box1": 45418750,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1334,7 +1343,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 71575000
+        "person[taxpayer].w2[migrated].box1": 71575000,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1474,7 +1484,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 11910000
+        "person[taxpayer].w2[migrated].box1": 11910000,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1614,7 +1625,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 26627500
+        "person[taxpayer].w2[migrated].box1": 26627500,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1754,7 +1766,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 64210000
+        "person[taxpayer].w2[migrated].box1": 64210000,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1894,7 +1907,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 18485000
+        "person[taxpayer].w2[migrated].box1": 18485000,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2034,7 +2048,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 33215000
+        "person[taxpayer].w2[migrated].box1": 33215000,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2174,7 +2189,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 47932500
+        "person[taxpayer].w2[migrated].box1": 47932500,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2314,7 +2330,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 65782500
+        "person[taxpayer].w2[migrated].box1": 65782500,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2454,7 +2471,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 83150000
+        "person[taxpayer].w2[migrated].box1": 83150000,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2595,7 +2613,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 11742500
+        "person[taxpayer].w2[migrated].box1": 11742500,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2736,7 +2755,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 16607500
+        "person[taxpayer].w2[migrated].box1": 16607500,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2877,7 +2897,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 23966250
+        "person[taxpayer].w2[migrated].box1": 23966250,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -3018,7 +3039,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 32891250
+        "person[taxpayer].w2[migrated].box1": 32891250,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -3159,7 +3181,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 51575000
+        "person[taxpayer].w2[migrated].box1": 51575000,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -3299,7 +3322,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 12530000
+        "person[taxpayer].w2[migrated].box1": 12530000,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -3439,7 +3463,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 17395000
+        "person[taxpayer].w2[migrated].box1": 17395000,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -3579,7 +3604,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 24752500
+        "person[taxpayer].w2[migrated].box1": 24752500,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -3719,7 +3745,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 46205000
+        "person[taxpayer].w2[migrated].box1": 46205000,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -3859,7 +3886,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 72362500
+        "person[taxpayer].w2[migrated].box1": 72362500,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -3999,7 +4027,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 18485000
+        "person[taxpayer].w2[migrated].box1": 18485000,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4139,7 +4168,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 33215000
+        "person[taxpayer].w2[migrated].box1": 33215000,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4279,7 +4309,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 5680000
+        "person[taxpayer].w2[migrated].box1": 5680000,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4420,7 +4451,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 6075000
+        "person[taxpayer].w2[migrated].box1": 6075000,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4644,7 +4676,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 6075000
+        "person[taxpayer].w2[migrated].box1": 6075000,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4879,7 +4912,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 5775000
+        "person[taxpayer].w2[migrated].box1": 5775000,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -5103,7 +5137,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 2000000
+        "person[taxpayer].w2[migrated].box1": 2000000,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -5327,7 +5362,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 1475000
+        "person[taxpayer].w2[migrated].box1": 1475000,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -5552,7 +5588,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 70000000
+        "person[taxpayer].w2[migrated].box1": 70000000,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -5776,7 +5813,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 2575000
+        "person[taxpayer].w2[migrated].box1": 2575000,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -6000,7 +6038,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 13150000
+        "person[taxpayer].w2[migrated].box1": 13150000,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -6225,7 +6264,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 5575000
+        "person[taxpayer].w2[migrated].box1": 5575000,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -6449,7 +6489,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 6362500
+        "person[taxpayer].w2[migrated].box1": 6362500,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -6673,7 +6714,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 7150000
+        "person[taxpayer].w2[migrated].box1": 7150000,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -6897,7 +6939,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 16575000
+        "person[taxpayer].w2[migrated].box1": 16575000,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -7121,7 +7164,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 11910099
+        "person[taxpayer].w2[migrated].box1": 11910099,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -7261,7 +7305,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 21305099
+        "person[taxpayer].w2[migrated].box1": 21305099,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -7401,7 +7446,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 26627599
+        "person[taxpayer].w2[migrated].box1": 26627599,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -7541,7 +7587,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 64210099
+        "person[taxpayer].w2[migrated].box1": 64210099,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -7681,7 +7728,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 23820099
+        "person[taxpayer].w2[migrated].box1": 23820099,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -7821,7 +7869,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 42610099
+        "person[taxpayer].w2[migrated].box1": 42610099,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -7961,7 +8010,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 53255099
+        "person[taxpayer].w2[migrated].box1": 53255099,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -8101,7 +8151,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 78310099
+        "person[taxpayer].w2[migrated].box1": 78310099,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -8242,7 +8293,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 11910099
+        "person[taxpayer].w2[migrated].box1": 11910099,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -8383,7 +8435,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 21305099
+        "person[taxpayer].w2[migrated].box1": 21305099,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -8524,7 +8577,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 26627599
+        "person[taxpayer].w2[migrated].box1": 26627599,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -8665,7 +8719,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 39155099
+        "person[taxpayer].w2[migrated].box1": 39155099,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -8805,7 +8860,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 12697599
+        "person[taxpayer].w2[migrated].box1": 12697599,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -8945,7 +9001,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 22092599
+        "person[taxpayer].w2[migrated].box1": 22092599,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -9085,7 +9142,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 27412599
+        "person[taxpayer].w2[migrated].box1": 27412599,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -9225,7 +9283,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 64997599
+        "person[taxpayer].w2[migrated].box1": 64997599,
+        "scope.other_line16": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -9370,7 +9429,8 @@
         "person[taxpayer].w2[migrated].box5": 0,
         "person[taxpayer].w2[migrated].box6": 0,
         "person[taxpayer].w2[migrated].box7": 0,
-        "person[taxpayer].w2[migrated].box1": 6575800
+        "person[taxpayer].w2[migrated].box1": 6575800,
+        "scope.other_line16": false
       },
       "expect": {
         "qdcg.line22": {

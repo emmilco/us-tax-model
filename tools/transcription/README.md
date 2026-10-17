@@ -83,3 +83,50 @@ Representational differences the comparison cannot see through remain as
 disagreements and get a ruling: typically a value the project derives from
 another form where the second transcriber asked a question, or a line the
 project pins to zero because the spec refuses that part of the return.
+
+## Render comparison
+
+The second construction in this directory (spec 6.5): `render_compare.py`
+gives an isolated model the rendered English of every printed line of one
+form (`rendered/2025/<form>.md`: the encoded restatement, its refusal rules,
+and a glossary of the helper values it names, followed transitively) together
+with the same cited pages, and asks for a verdict per printed line: MATCH,
+MISMATCH (quoting the IRS words that differ) or UNCLEAR (what is missing).
+The model never sees the YAML or an expression tree; it judges whether the
+English says what the page says. Same isolation and the same `claude -p`
+invocation as the transcription, with its own task-only system prompt; about
+$0.10 per form.
+
+```
+python3 tools/transcription/render_compare.py --form qdcg            # one model call
+python3 tools/transcription/render_compare.py --form qdcg --dry-run  # prompt only
+python3 tools/transcription/render_compare.py --form qdcg --from-response
+python3 tools/transcription/rule.py --kind render --form qdcg --rulings rulings.json
+```
+
+The glossary names each helper by its label (the renderer writes helper
+references that way), lists the gate lines that refusals name by id, and ends
+with the IRS wording of every line of another form the restatements mention.
+The excerpt is the transcription excerpt plus the pages a locator names for
+another document ("i8995 pp. 3–4"), the pages refusal citations name, and the
+pages cited by the year parameters the form uses (structural zeros and ones
+excepted). Printed lines are keyed by printed number, a marker several rows
+share (the Tax Computation Worksheet's columns) is qualified by the line id,
+and a form whose lines are all helpers is judged line by line keyed by name.
+
+Logs go to `reviews/2025/render/<form>.md`, one per form, with the pages
+given, the model and prompt hash, every line's verdict and the model's
+reason, and a ruling under each MISMATCH or UNCLEAR. `check_logs.py` holds
+render logs to the same rules as transcription logs. Rulings are keyed by the
+restatement and the model's reason, so a changed rendering or a new response
+reopens them. A renderer change that alters a restatement therefore reopens
+the rulings on that line; a value-neutral wording change is still a change
+to what was judged.
+
+The two constructions see different things. Transcription agreement compares
+operand structure and is blind to a rendering that misdescribes a correct
+expression; the render comparison reads the description and is blind to an
+expression the description flatters. A line both pass has an expression that
+a second transcriber built the same way and an English restatement a second
+reader accepts against the page.
+

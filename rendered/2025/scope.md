@@ -26,9 +26,9 @@
 
 ## (helper) — `scope.other_income`
 
-- **Authored helper label:** Any retirement, Social Security, nonresident or other income/return treatment outside wages, interest, dividends and supported securities sales?
-- **Encoded (Bool):** Input — Any retirement, Social Security, nonresident or other income/return treatment outside wages, interest, dividends and supported securities sales?
-- Expr: `{"op":"input","source":"Any retirement, Social Security, nonresident or other income/return treatment outside wages, interest, dividends and supported securities sales?"}`
+- **Authored helper label:** Any retirement, Social Security, nonresident or other income/return treatment outside wages, interest, dividends and supported securities sales, including wages or tips not on a Form W-2, Medicaid waiver payments, dependent care or adoption benefits, or other earned income (Form 1040 lines 1b–1h)?
+- **Encoded (Bool):** Input — Any retirement, Social Security, nonresident or other income/return treatment outside wages, interest, dividends and supported securities sales, including wages or tips not on a Form W-2, Medicaid waiver payments, dependent care or adoption benefits, or other earned income (Form 1040 lines 1b–1h)?
+- Expr: `{"op":"input","source":"Any retirement, Social Security, nonresident or other income/return treatment outside wages, interest, dividends and supported securities sales, including wages or tips not on a Form W-2, Medicaid waiver payments, dependent care or adoption benefits, or other earned income (Form 1040 lines 1b–1h)?"}`
 - Cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; sha256 3d31c226)
 
 ## (helper) — `scope.other_line16`

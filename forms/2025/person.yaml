@@ -28,7 +28,7 @@ form:
         locator: p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld
     - id: person.overcount
       printed: overcount
-      label: Total w2.one for this person
+      label: Number of employers that withheld more than the limit
       type: Count
       expr:
         op: sum_over

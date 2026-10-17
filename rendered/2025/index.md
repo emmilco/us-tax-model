@@ -16,7 +16,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | gift.md | form | 5 |
 | interest.md | form | 1 |
 | person.md | worksheet | 14 |
-| qbi.md | form | 9 |
+| qbi.md | form | 10 |
 | qdcg.md | worksheet | 27 |
 | s2.md | form | 8 |
 | s3.md | form | 10 |
