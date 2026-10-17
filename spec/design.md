@@ -143,16 +143,16 @@ spec/                          this specification and design
 ## 4. Authoring a worksheet
 
 1. Archive the source and record its hash.
-2. Two independent transcriptions of the worksheet into YAML: one by a person, one by a language model given only the archived text. Differences are resolved against the source.
+2. Two independent transcriptions of the worksheet into YAML, each by a language model in an isolated context given only the archived text and the schema, neither having seen the other or any existing data. Differences are resolved against the source and the resolution is recorded (spec 6.5). A person may supply either transcription when available.
 3. Run the checker.
-4. Render, and read the rendering against the IRS text line by line. Record who did so and against which snapshot.
+4. Render, and compare the rendering against the IRS text line by line by an isolated model that has not seen the YAML. Record which model, which prompt, and which snapshot; a person may do this reading when available, and is recorded the same way.
 5. Enter parameters separately and confirm each against a second official source where one exists.
-6. Generate branch-covering inputs; work them by hand; add as class B fixtures.
+6. Generate branch-covering inputs; have them worked on the archived worksheet by an isolated model (class M), or by a person when available (class B); add as fixtures.
 7. Add every official example as a class A fixture.
 8. Run differential tests and investigate every difference.
 9. Run the mutation tool; add fixtures until the surviving mutations are understood and listed.
 
-No language model output reaches the data without steps 3, 4 and 6.
+No language model output reaches the data without steps 3, 4 and 6. Every model invocation in steps 2, 4 and 6 runs under the AI Security and Isolation Protocol: isolated context, archived source and schema only, no network, model and prompt recorded.
 
 ## 5. Build order
 
@@ -206,6 +206,24 @@ Done when: one command, with no network, rebuilds the data, runs every check and
 ### Stage 6. Tax year 2026
 
 Archive the TY2026 documents as they are published, produce the diff, re-derive the fixtures, and release only against final documents.
+
+Done when: the TY2026 return for the proof-of-concept slice passes every check of Stage 7 that exists at the time, and the year-diff tool reports every changed line, parameter and table cell.
+
+### Stage 7. Integrity stack
+
+The independent constructions of spec 6.5, built as pipeline steps and run by `check-all`: the engine differential over generated returns, the second transcription of every existing worksheet with its disagreement log, the render comparison, class M hand-work for every worksheet's branch-covering inputs, and the data-level properties of spec 6.3. Mutation survivors and unasserted lines are driven down with the fixtures these produce.
+
+Done when: every existing worksheet has a second transcription and a logged adjudication; every generated branch has a class M or B fixture; the engine differential runs over at least a thousand generated returns per supported year with every difference carrying a cited cause; and the evidence report shows no computed line without an asserted fixture.
+
+### Stage 8. Household architecture test
+
+One dependent: the qualifying-child tests, head of household, the child tax credit with its refundable part, and the credit for other dependents. Small by design; the question is whether the atom vocabulary expresses household predicates without `opaque` escapes, and whether the person dimension carries relationships, ages and months without rework.
+
+Done when: the slice passes the Stage 7 checks, and the share of lines needing `opaque` is published. If that share exceeds one in eight, the atom language is reconsidered before Stage 9.
+
+### Stage 9 onward. Coverage
+
+The items of spec 2.4 in order, one or more per stage, each with the Stage 7 checks. Direct File's public scenarios and other published cases become comparators where their situations fall in scope. Any state return follows federal coverage as its own stage sequence with its own sources.
 
 ## 6. Choices made here that are open to challenge
 

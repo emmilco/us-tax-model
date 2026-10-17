@@ -2,13 +2,15 @@
 
 An open, verifiable formalization of the IRS individual income tax forms-and-instructions layer, and a guided self-preparation tool built on it.
 
-Status: agreed scope and requirements for the proof of concept. Architecture and build order are in `design.md`. The evidence behind these choices is in `../research/report.md`.
+Status: agreed scope and requirements. The proof of concept (section 2) is built; the coverage goal (section 2.4) and the verification regime (section 6) govern the work that follows. Architecture and build order are in `design.md`. The evidence behind the original choices is in `../research/report.md`.
 
 ## 1. Purpose
 
-The durable asset is the formalization: a public, machine-readable encoding of IRS forms, worksheets and instructions in which every line can be checked by a non-programmer against the official text, and in which computations are built from a small set of primitive operations with proved properties.
+The product is a prepared, cited federal return: a tool that asks a person questions, decides which forms apply, computes them, explains every value, and hands back a values sheet the person files themselves. The aim is to do for ordinary filers what the IRS Direct File program did, short of transmission, and to extend beyond its scope until the tool covers the tax situations of most of the filing population (section 2.4).
 
-The interview tool is the first client. It asks a person questions, decides which forms apply, computes them, and explains every value. The person files the return themselves.
+The formalization is how the product earns trust. It is a public, machine-readable encoding of IRS forms, worksheets and instructions in which every line can be checked by a non-programmer against the official text, and in which computations are built from a small set of primitive operations with proved properties. The tool is built largely by language-model agents, so it cannot be trusted because of who wrote it; it has to be trusted because of what can be checked about it. The forms-as-cited-data design exists to make that checking possible.
+
+What can be established mechanically has a ceiling, and the product states it wherever it describes itself: the atoms behave as specified, every computation is composed from them, the composition is acyclic and well-typed, independent evaluators agree, and stated properties hold over the data. That the encoding matches the law cannot be proved. It can only be shown to match the published text, and only by independent readings of that text agreeing (section 6.5).
 
 What is formalized is the IRS's published procedure. It is not the Internal Revenue Code, and the IRS's forms can embed judgments about the law that are not announced. The project says so wherever it describes itself.
 
@@ -63,11 +65,25 @@ The estimated tax penalty is not computed. The tool states that the IRS will fig
 - Filing, signing or transmitting a return, or producing electronic filing data.
 - Automating entry into any IRS system.
 - Any hosted service, account, telemetry, analytics or network call carrying return data.
-- State returns.
+- State returns, until the federal coverage goal is met (section 2.4).
 - Importing broker files.
 - Filling official PDFs. Deferred until the PDF field structure has been inspected.
 - A language model anywhere in the runtime path.
 - Formalizing the statute.
+
+### 2.4 Coverage goal beyond the proof of concept
+
+The proof-of-concept slice (2.1) was chosen to exercise the architecture: worksheets, tables, keyed collections and per-person rules. The goal is coverage of the situations of most individual filers. Growth proceeds in order of the share of filers affected, each addition as a stage under `design.md` section 5 with the same authoring and verification discipline:
+
+1. Dependents and the rules that attach to them: the qualifying-child and qualifying-relative tests, head of household, the child tax credit and its refundable part, the credit for other dependents, and the earned income credit. These are household predicates rather than column arithmetic, and the architecture has not yet been tested on them; they come first for that reason.
+2. Retirement income: Form 1099-R and the Social Security benefits worksheet.
+3. Unemployment compensation and the common Schedule 1 adjustments (educator expenses, student loan interest, HSA).
+4. Self-employment: Schedule C with Schedule SE and the qualified business income deduction beyond section 199A dividends.
+5. The premium tax credit and the education credits.
+6. Married filing jointly as a two-person data change, then married filing separately.
+7. Form 1116 and the remaining deferrals of 2.2.
+
+State returns are outside the federal goal. A state return after it is a separate decision with its own sources, and nothing in the federal encoding assumes one.
 
 ## 3. Evidentiary requirements
 
@@ -83,6 +99,7 @@ These are the acceptance criteria for the formalization. Each is checkable by a 
 8. **Year and revision pinning.** Every definition, parameter, example and source snapshot is pinned to a tax year and a document revision.
 9. **Third-party reproducibility.** One documented command rebuilds everything and runs every check with no network access and no trust in the authors.
 10. **No floating point.** Money is integer cents; rates are integer pairs; rounding happens only where an explicit, cited rounding step says so.
+11. **Independent construction.** No human line-by-line reading of the encoding against the source is claimed. Transcription, expected values and whole-return results are each produced at least twice by constructions that share no artifact (section 6.5), and every disagreement is logged with its resolution. The published trust statement is: *no human has read this encoding against the IRS text; it is verified by agreement among independent constructions, and every disagreement is recorded.*
 
 ## 4. Data model for forms
 
@@ -181,16 +198,19 @@ Every expected value in the test suite is labelled with one class.
 |---|---|
 | A | An official IRS worked example, cited |
 | B | A human working the official form or worksheet by hand, recorded with the worker and the document revision |
-| C | Agreement with an independent calculator, named with its version |
+| C | Agreement with an independent engine or calculator, named with its version, run outside the repository |
 | D | A property that must hold for all inputs |
+| M | A language model, in an isolated context given only the archived text and the inputs, working the form by hand; recorded with the model, the prompt hash and the snapshot. Not human hand-work and never labelled B |
 
 Research found official examples for single rules only: none for the Qualified Dividends and Capital Gain Tax Worksheet and none for a whole return in scope. Class A therefore cannot carry worksheet arithmetic. The project's public claims say this plainly.
+
+Class B is retained for human hand-work when it is offered; the project does not depend on it. Class M is its mechanical substitute. The classes differ in independence, and the evidence report keeps them distinct.
 
 ### 6.2 Required coverage
 
 - Every official example found for a form in scope is a class A fixture.
-- Every worksheet has class B fixtures that together take both sides of every `smaller_of`, `larger_of`, `subtract_floor0`, `choose` and gate. The inputs are generated from the encoded worksheet; the expected values are worked by hand on the official document.
-- Whole returns are compared (class C) against at least two independent calculators for the development tax year. Differences are investigated to a cited cause, never tolerated by a margin.
+- Every worksheet has class B or class M fixtures that together take both sides of every `smaller_of`, `larger_of`, `subtract_floor0`, `choose` and gate. The inputs are generated from the encoded worksheet; the expected values are worked on the official document by a construction that has not seen the encoding.
+- Whole returns are compared (class C) against at least two independent engines run locally over generated inputs, for every tax year supported, and against named calculators where their records can be obtained. Differences are investigated to a cited cause, never tolerated by a margin. Where an engine is known to approximate (for example, by not using the Tax Table), the approximation is recorded as the cited cause once and the comparison excludes it thereafter.
 - A mutation score is computed and published per worksheet: the share of single-atom mutations that some fixture detects.
 - A report shows, per line, which evidence classes cover it.
 
@@ -202,23 +222,41 @@ Proved in Lean 4 over the integers, once, for the atoms:
 - `round` matches its stated rule, is idempotent, and moves a value by less than one unit.
 - Each atom is monotone or antitone in each argument, as tabulated.
 - Evaluation of a well-formed, acyclic form terminates and is deterministic.
-- The acyclicity and reference checker is sound.
+
+Not pursued: a proof that the acyclicity and reference checker is sound. Both evaluators detect a cycle at evaluation time, so an unsound checker cannot produce a wrong value, only a late failure. Proof effort goes to properties over the data instead.
 
 Checked per worksheet by property test, and by proof where practical:
 
 - Tax is non-negative and does not exceed the top rate times taxable income.
 - Tax does not decrease as ordinary taxable income rises, other inputs fixed, within one computation method.
 - The Tax Table agrees with the rate schedule applied at each band's midpoint, tested against every cell. This is a conjecture to test, not an assumption.
+- The standard-or-itemized choice never selects the larger tax, other inputs fixed.
+- A refusal never becomes a number: every line downstream of a fired gate is a refusal.
+- Where a worksheet offers a method choice (Tax Table or worksheet, QDCG or Schedule D Tax Worksheet), the selected method's tax does not exceed the ordinary computation on the same taxable income.
 
 The Lean reference evaluator and the TypeScript evaluator read the same data files and must agree on every fixture and on generated inputs.
 
-Not claimed: that the transcription matches the IRS text. No proof addresses that. The renderer, hand-worked fixtures and independent calculators do.
+Not claimed: that the transcription matches the IRS text. No proof addresses that. The independent constructions of section 6.5 do, and no human reading is claimed.
 
 ### 6.4 Interview checks
 
 - Every combination of enumerated and yes/no answers leads to a complete form set or a cited refusal.
 - The same answers always give the same return, regardless of the order in which they were given.
 - No question is asked whose answer cannot affect a reachable line.
+
+### 6.5 Independent construction
+
+The checks that stand in for a human reader. Each produces its artifact at least twice from constructions that share nothing but the archived source, and every disagreement is logged with its resolution and cited cause. The logs are committed.
+
+- **Transcription agreement.** Each worksheet is transcribed into YAML a second time by a language model in an isolated context that is given only the archived text and the data schema, never the existing data. The two transcriptions are compared structurally, atom by atom and operand by operand. A disagreement is adjudicated against the source and the adjudication is recorded.
+- **Render comparison.** The rendered English of each line is compared against the archived instruction text by an isolated model that has not seen the YAML, which reports any line whose rendering does not say what the text says.
+- **Model hand-work (class M).** Branch-covering inputs are worked on the archived worksheet by an isolated model, and the results become class M fixtures.
+- **Engine differential (class C).** Generated whole returns are run through independent engines maintained by other people and compared line for line where lines exist and total for total otherwise.
+- **Evaluator agreement.** The TypeScript and Lean evaluators, already required by 6.3.
+
+Every language-model invocation in this section runs under the AI Security and Isolation Protocol, with no access to the repository beyond the archived source and the schema, and no network. The model, the prompt, and the snapshot hash are recorded with each artifact.
+
+The shared blind spot of every model-driven check is that it reads the same English. The engine differential is the only check against a shared misreading, which is why it is required for every tax year supported.
 
 ## 7. Versioning
 
@@ -276,6 +314,8 @@ These come from the research pass, which read sources through a summarising tool
 - Filling official PDFs.
 - Capital loss carryover in and out.
 - Married filing statuses for per-person rules.
-- Credits for dependents, which a Head of Household filer will commonly need.
+- Credits for dependents, which a Head of Household filer will commonly need; first item of the coverage goal (2.4).
+- The household architecture test: whether the atom vocabulary expresses the qualifying-child and head-of-household predicates without `opaque` escapes.
+- State returns, after the federal coverage goal.
 - A count of official single-line answers in the IRS volunteer test (Form 6744) that touch the slice.
 - The questions for a lawyer listed in `../research/04_legal_liability.md`.
