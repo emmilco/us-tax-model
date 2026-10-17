@@ -58,6 +58,7 @@ continue.
   - `04_legal_liability.md`
   - `05_tooling_language.md`
   - `06_architecture.md`
+  - `07_text_extraction_prior_art.md` (added after the build: what another extraction pipeline offers this project; source of T-022 to T-024)
 - Synthesis: `research/report.md`
 - Spec documents: `spec/spec.md`, `spec/design.md`
 - Form and worksheet definitions: `forms/<year>/<form>.yaml`; line ids are `<form>.<name>` and survive renumbering (the printed number is a field)
