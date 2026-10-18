@@ -7,9 +7,9 @@ The rendered English of every printed line of `Excess Social Security credit —
 | date | 2026-10-17 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | ce904f54eedc7d650f1c9efe47506c6b12b586a55d2ca10449a5c11372423ebb |
+| prompt sha256 | b14957ba271b84bb79fa253b61f5961c1b7daa74345d31e54e80d6e0cabc59ec |
 | lines judged | 10 |
-| match / mismatch / unclear / missing | 8 / 0 / 2 / 0 |
+| match / mismatch / unclear / missing | 7 / 0 / 3 / 0 |
 | verdicts for lines not in the form | none |
 
 ## Source pages given to the model
@@ -24,63 +24,67 @@ The rendered English of every printed line of `Excess Social Security credit —
 
 ## Lines
 
-### rrta — Do any wage statements report railroad retirement compensation or taxes (W-2 box 14)?
+### rrta — Do any wage statements report railroad retirement compensation or taxes (W-2 box 14), or d
 Status: **MATCH**
 
-Model: The W-2/W-3 instructions say railroad employers 'Use Form W-2, box 14, to report total RRTA compensation, Tier 1, Tier 2...'. A yes/no input on whether box 14 reports RRTA amounts is a fair gate for the RRTA refusal on the credit line.
+Model: Line 11 covers "social security or tier 1 railroad retirement (RRTA) tax", and RRTA amounts are reported in "Form W-2, box 14" or by an "employee representative" on Form CT-2. Asking about these as a gate for the RRTA refusal is consistent with the text.
 
 ### employers — Total w2.one for this person
 Status: **UNCLEAR**
 
 Restated: Add w2.one over every confirmed w2 entry, within the current person when parent-bound. An unanswered roster is unknown.
 
-Model: The line 11 test is 'had more than one employer for 2025', but the program counts W-2 entries. The text does not say whether each W-2 is a distinct employer, so two W-2s from one employer could be miscounted.
+Model: The IRS condition is "had more than one employer for 2025", but the restatement counts confirmed W-2 entries. The text given does not say each W-2 entry is a distinct employer, so it cannot be confirmed that the count equals the number of employers.
 
 Ruling: representation; project retained. The W-2 collection is keyed by employer, and repeated forms from one employer are consolidated into one entry ("Keyed by employer within person; consolidate repeated forms for the same employer explicitly", forms/2025/w2.yaml collection note), so the count of entries is the count of employers that "had more than one employer for 2025" (i1040gi p. 117) asks for. No change to the data.
 
 ### overcount — Number of employers that withheld more than the limit
-Status: **MATCH**
+Status: **UNCLEAR**
 
-Model: This tracks 'if any one employer withheld more than $10,918.20, you can't claim the excess on your return,' counted per person. The helper's label matches the IRS condition, though it is evaluated per W-2 entry rather than per distinct employer.
+Restated: Add w2.one over every confirmed w2 entry for which helper "Did this employer withhold more than $10,918.20?" = true, within the current person when parent-bound. An unanswered roster is unknown.
+
+Model: The IRS test is "if any one employer withheld more than $10,918.20", but the restatement tests each W-2 entry. The text does not establish that one W-2 entry equals one employer, and an employer issuing several W-2s could exceed the limit in total while no single entry does.
+
+Ruling: representation; project retained. The W-2 collection is keyed by employer, and repeated forms from one employer are consolidated into one entry ('Keyed by employer within person; consolidate repeated forms for the same employer explicitly', forms/2025/w2.yaml), so the count of entries over the limit is the count of employers over the limit.
 
 ### over — Any employer withheld more than the limit
 Status: **MATCH**
 
-Model: A count above zero means at least one employer withheld more than $10,918.20, which is the IRS condition 'if any one employer withheld more than $10,918.20.'
+Model: A positive count of employers withholding more than $10,918.20 matches "if any one employer withheld more than $10,918.20".
 
 ### wages — Total w2.wages for this person
 Status: **UNCLEAR**
 
 Restated: Add w2.wages over every confirmed w2 entry, within the current person when parent-bound. An unanswered roster is unknown.
 
-Model: The IRS text says only 'total wages of more than $176,100' and does not say which W-2 box is meant. The field w2.wages is not defined (box 1 vs. box 3/7), so the operand cannot be confirmed.
+Model: The IRS text says only "total wages of more than $176,100" and does not say which W-2 box supplies those wages. The program's field w2.wages is not defined in the text given, so the operand cannot be verified.
 
 Ruling: representation; project retained. The $176,100 test is on social security wages, the wage base above which no social security tax is withheld (i1040gi p. 117, line 11; $10,918.20 is 6.2% of $176,100), so `w2.wages` sums Form W-2 box 3 (social security wages) and box 7 (social security tips), the amounts the tax was withheld on. No change to the data.
 
 ### withheld — Total w2.box4 for this person
 Status: **MATCH**
 
-Model: Summing W-2 box 4 ('Social security tax withheld') per person matches 'too much social security ... tax may have been withheld' and 'Figure this amount separately for you and your spouse.' The tier 1 RRTA portion is excluded by the RRTA refusal.
+Model: W-2 box 4 is "Social security tax withheld", so summing it across this person's W-2s gives the social security tax withheld that line 11 compares to $10,918.20. Tier 1 RRTA is excluded by the RRTA refusal.
 
 ### eligible — More than one employer and total social security wages over $176,100
 Status: **MATCH**
 
-Model: This mirrors 'had more than one employer for 2025 and total wages of more than $176,100,' with both comparisons strict as in the text. It inherits the open questions on the employers and wages operands.
+Model: This matches "had more than one employer for 2025 and total wages of more than $176,100", given the employer and wage lines.
 
 ### excess — Withholding above $10,918.20, if any
 Status: **MATCH**
 
-Model: This matches 'You can take a credit on this line for the amount withheld in excess of $10,918.20', floored at zero.
+Model: This matches "a credit on this line for the amount withheld in excess of $10,918.20". Flooring the result at zero is consistent with that wording.
 
 ### zero — No excess credit
 Status: **MATCH**
 
-Model: This is a constant zero used when the eligibility conditions in the line 11 instructions are not met.
+Model: When the eligibility conditions are not met, no credit is available, so zero is the correct value for that case.
 
 ### credit — Excess social security tax withheld, figured separately for this person
 Status: **MATCH**
 
-Model: The credit is the excess when the filer has more than one employer and wages above $176,100, and zero otherwise, figured 'separately for you and your spouse.' The refusals correctly exclude the cases the text routes elsewhere: 'If the employer doesn't adjust the overcollection, you can file a claim for refund using Form 843' and 'You can't claim a refund for excess tier 2 RRTA tax on Form 1040 ... Instead, use Form 843.'
+Model: The credit is the excess when eligible and zero otherwise, figured per person ("Figure this amount separately for you and your spouse"). The refusals correctly exclude the RRTA cases ("use Form 843" for tier 2) and the single-employer overcollection case ("you can't claim the excess on your return... file a claim for refund using Form 843").
 
 ## Raw response
 
@@ -88,32 +92,32 @@ Model: The credit is the excess when the filer has more than one employer and wa
 lines:
   - key: "rrta"
     status: MATCH
-    reason: "The W-2/W-3 instructions say railroad employers 'Use Form W-2, box 14, to report total RRTA compensation, Tier 1, Tier 2...'. A yes/no input on whether box 14 reports RRTA amounts is a fair gate for the RRTA refusal on the credit line."
+    reason: "Line 11 covers \"social security or tier 1 railroad retirement (RRTA) tax\", and RRTA amounts are reported in \"Form W-2, box 14\" or by an \"employee representative\" on Form CT-2. Asking about these as a gate for the RRTA refusal is consistent with the text."
   - key: "employers"
     status: UNCLEAR
-    reason: "The line 11 test is 'had more than one employer for 2025', but the program counts W-2 entries. The text does not say whether each W-2 is a distinct employer, so two W-2s from one employer could be miscounted."
+    reason: "The IRS condition is \"had more than one employer for 2025\", but the restatement counts confirmed W-2 entries. The text given does not say each W-2 entry is a distinct employer, so it cannot be confirmed that the count equals the number of employers."
   - key: "overcount"
-    status: MATCH
-    reason: "This tracks 'if any one employer withheld more than $10,918.20, you can't claim the excess on your return,' counted per person. The helper's label matches the IRS condition, though it is evaluated per W-2 entry rather than per distinct employer."
+    status: UNCLEAR
+    reason: "The IRS test is \"if any one employer withheld more than $10,918.20\", but the restatement tests each W-2 entry. The text does not establish that one W-2 entry equals one employer, and an employer issuing several W-2s could exceed the limit in total while no single entry does."
   - key: "over"
     status: MATCH
-    reason: "A count above zero means at least one employer withheld more than $10,918.20, which is the IRS condition 'if any one employer withheld more than $10,918.20.'"
+    reason: "A positive count of employers withholding more than $10,918.20 matches \"if any one employer withheld more than $10,918.20\"."
   - key: "wages"
     status: UNCLEAR
-    reason: "The IRS text says only 'total wages of more than $176,100' and does not say which W-2 box is meant. The field w2.wages is not defined (box 1 vs. box 3/7), so the operand cannot be confirmed."
+    reason: "The IRS text says only \"total wages of more than $176,100\" and does not say which W-2 box supplies those wages. The program's field w2.wages is not defined in the text given, so the operand cannot be verified."
   - key: "withheld"
     status: MATCH
-    reason: "Summing W-2 box 4 ('Social security tax withheld') per person matches 'too much social security ... tax may have been withheld' and 'Figure this amount separately for you and your spouse.' The tier 1 RRTA portion is excluded by the RRTA refusal."
+    reason: "W-2 box 4 is \"Social security tax withheld\", so summing it across this person's W-2s gives the social security tax withheld that line 11 compares to $10,918.20. Tier 1 RRTA is excluded by the RRTA refusal."
   - key: "eligible"
     status: MATCH
-    reason: "This mirrors 'had more than one employer for 2025 and total wages of more than $176,100,' with both comparisons strict as in the text. It inherits the open questions on the employers and wages operands."
+    reason: "This matches \"had more than one employer for 2025 and total wages of more than $176,100\", given the employer and wage lines."
   - key: "excess"
     status: MATCH
-    reason: "This matches 'You can take a credit on this line for the amount withheld in excess of $10,918.20', floored at zero."
+    reason: "This matches \"a credit on this line for the amount withheld in excess of $10,918.20\". Flooring the result at zero is consistent with that wording."
   - key: "zero"
     status: MATCH
-    reason: "This is a constant zero used when the eligibility conditions in the line 11 instructions are not met."
+    reason: "When the eligibility conditions are not met, no credit is available, so zero is the correct value for that case."
   - key: "credit"
     status: MATCH
-    reason: "The credit is the excess when the filer has more than one employer and wages above $176,100, and zero otherwise, figured 'separately for you and your spouse.' The refusals correctly exclude the cases the text routes elsewhere: 'If the employer doesn't adjust the overcollection, you can file a claim for refund using Form 843' and 'You can't claim a refund for excess tier 2 RRTA tax on Form 1040 ... Instead, use Form 843.'"
+    reason: "The credit is the excess when eligible and zero otherwise, figured per person (\"Figure this amount separately for you and your spouse\"). The refusals correctly exclude the RRTA cases (\"use Form 843\" for tier 2) and the single-employer overcollection case (\"you can't claim the excess on your return... file a claim for refund using Form 843\")."
 ```

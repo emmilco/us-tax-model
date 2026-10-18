@@ -7,7 +7,7 @@ Second transcription of `Tax Computation Worksheet—Line 16` by an isolated mod
 | date | 2026-10-17 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | aa509e21bc0cdab8e99a28061aca23f559cedbc1e577f035fe282784c30c293f |
+| prompt sha256 | 720ad5b3acf12b5ad914265c1ff8a642d40498c3e7d77912275d809bc7fc99c3 |
 | printed lines compared | 1 |
 | agree / disagree / missing | 0 / 1 / 0 |
 | extra printed lines in second | none |
@@ -42,84 +42,69 @@ Ruling: equivalent representation; project retained after BUG-0002. The first ro
 ```yaml
 ```yaml
 lines:
-  - id: tcw.lineA1(c)
+  # ---------------- Section A — Single ----------------
+  - id: tcw.line(c).single.b1
     printed: "(c)"
-    label: "Section A—Single. At least $100,000 but not over $103,350. Multiply line (a) by 22% (0.22)"
+    label: "Multiply line (a) by 22% (0.22)"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: amount, rate: {param: tcw.single.b1.rate}}
-    note: "The printed labels (c), (d) and Tax repeat in every row and section, so the literal id 'tcw.line<printed>' would not be unique. Chosen: insert the section letter (A-D) and row number (1-5) after 'line', e.g. tcw.lineA1(c). Each section's Tax line is tcw.lineTax_<section> and the overall Tax line is tcw.lineTax. Column (a) is the bound input 'amount', which the Note says may come from another form or worksheet. The text does not say whether the product in (c) is rounded. Chosen: no rounding beyond the multiply_rate atom."
-  - id: tcw.lineA1(d)
+    cite: "i1040gi 2025 p.80, Tax Computation Worksheet, Section A, row 1, column (c)"
+    note: "Printed ids repeat across rows and sections, so each id has a section/row suffix added after tcw.line<printed>."
+  - id: tcw.line(d).single.b1
     printed: "(d)"
-    label: "Section A—Single. At least $100,000 but not over $103,350. Subtraction amount $5,086.00"
-    type: NonNegDollars
-    expr: {op: param, ref: tcw.single.b1.subtract}
-    note: "The supplied label for this line reads 'Subtract (d) from (c)', which is the wording of the Tax column. Printed column (d) is headed 'Subtraction amount.' Chosen: (d) holds the printed subtraction amount, and the row result (c) minus (d) is a helper line."
-  - id: tcw.h_A1_result
-    printed: "(helper)"
-    label: "Section A, row 1: Subtract (d) from (c)"
+    label: "Subtract (d) from (c)"
     type: Dollars
-    expr: {op: subtract, from: tcw.lineA1(c), take: tcw.lineA1(d)}
-  - id: tcw.lineA2(c)
+    expr: {op: subtract, from: tcw.line(c).single.b1, take: {param: tcw.single.b1.subtract}}
+    cite: "i1040gi 2025 p.80, Section A, row 1 ($5,086.00 subtraction amount)"
+  - id: tcw.line(c).single.b2
     printed: "(c)"
-    label: "Section A—Single. Over $103,350 but not over $197,300. Multiply line (a) by 24% (0.24)"
+    label: "Multiply line (a) by 24% (0.24)"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: amount, rate: {param: tcw.single.b2.rate}}
-  - id: tcw.lineA2(d)
+    cite: "i1040gi 2025 p.80, Section A, row 2, column (c)"
+  - id: tcw.line(d).single.b2
     printed: "(d)"
-    label: "Section A—Single. Over $103,350 but not over $197,300. Subtraction amount $7,153.00"
-    type: NonNegDollars
-    expr: {op: param, ref: tcw.single.b2.subtract}
-  - id: tcw.h_A2_result
-    printed: "(helper)"
-    label: "Section A, row 2: Subtract (d) from (c)"
+    label: "Subtract (d) from (c)"
     type: Dollars
-    expr: {op: subtract, from: tcw.lineA2(c), take: tcw.lineA2(d)}
-  - id: tcw.lineA3(c)
+    expr: {op: subtract, from: tcw.line(c).single.b2, take: {param: tcw.single.b2.subtract}}
+    cite: "i1040gi 2025 p.80, Section A, row 2 ($7,153.00)"
+  - id: tcw.line(c).single.b3
     printed: "(c)"
-    label: "Section A—Single. Over $197,300 but not over $250,525. Multiply line (a) by 32% (0.32)"
+    label: "Multiply line (a) by 32% (0.32)"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: amount, rate: {param: tcw.single.b3.rate}}
-  - id: tcw.lineA3(d)
+    cite: "i1040gi 2025 p.80, Section A, row 3, column (c)"
+  - id: tcw.line(d).single.b3
     printed: "(d)"
-    label: "Section A—Single. Over $197,300 but not over $250,525. Subtraction amount $22,937.00"
-    type: NonNegDollars
-    expr: {op: param, ref: tcw.single.b3.subtract}
-  - id: tcw.h_A3_result
-    printed: "(helper)"
-    label: "Section A, row 3: Subtract (d) from (c)"
+    label: "Subtract (d) from (c)"
     type: Dollars
-    expr: {op: subtract, from: tcw.lineA3(c), take: tcw.lineA3(d)}
-  - id: tcw.lineA4(c)
+    expr: {op: subtract, from: tcw.line(c).single.b3, take: {param: tcw.single.b3.subtract}}
+    cite: "i1040gi 2025 p.80, Section A, row 3 ($22,937.00)"
+  - id: tcw.line(c).single.b4
     printed: "(c)"
-    label: "Section A—Single. Over $250,525 but not over $626,350. Multiply line (a) by 35% (0.35)"
+    label: "Multiply line (a) by 35% (0.35)"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: amount, rate: {param: tcw.single.b4.rate}}
-  - id: tcw.lineA4(d)
+    cite: "i1040gi 2025 p.80, Section A, row 4, column (c)"
+  - id: tcw.line(d).single.b4
     printed: "(d)"
-    label: "Section A—Single. Over $250,525 but not over $626,350. Subtraction amount $30,452.75"
-    type: NonNegDollars
-    expr: {op: param, ref: tcw.single.b4.subtract}
-  - id: tcw.h_A4_result
-    printed: "(helper)"
-    label: "Section A, row 4: Subtract (d) from (c)"
+    label: "Subtract (d) from (c)"
     type: Dollars
-    expr: {op: subtract, from: tcw.lineA4(c), take: tcw.lineA4(d)}
-  - id: tcw.lineA5(c)
+    expr: {op: subtract, from: tcw.line(c).single.b4, take: {param: tcw.single.b4.subtract}}
+    cite: "i1040gi 2025 p.80, Section A, row 4 ($30,452.75)"
+  - id: tcw.line(c).single.b5
     printed: "(c)"
-    label: "Section A—Single. Over $626,350. Multiply line (a) by 37% (0.37)"
+    label: "Multiply line (a) by 37% (0.37)"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: amount, rate: {param: tcw.single.b5.rate}}
-  - id: tcw.lineA5(d)
+    cite: "i1040gi 2025 p.80, Section A, row 5, column (c)"
+  - id: tcw.line(d).single.b5
     printed: "(d)"
-    label: "Section A—Single. Over $626,350. Subtraction amount $42,979.75"
-    type: NonNegDollars
-    expr: {op: param, ref: tcw.single.b5.subtract}
-  - id: tcw.h_A5_result
-    printed: "(helper)"
-    label: "Section A, row 5: Subtract (d) from (c)"
+    label: "Subtract (d) from (c)"
     type: Dollars
-    expr: {op: subtract, from: tcw.lineA5(c), take: tcw.lineA5(d)}
-  - id: tcw.lineTax_A
+    expr: {op: subtract, from: tcw.line(c).single.b5, take: {param: tcw.single.b5.subtract}}
+    cite: "i1040gi 2025 p.80, Section A, row 5 ($42,979.75)"
+  - id: tcw.lineTax.single
     printed: "Tax"
     label: "Section A—Use if your filing status is Single. Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
     type: Dollars
@@ -127,92 +112,80 @@ lines:
       op: choose
       alternatives:
         - guard: {op: test, le: [amount, {param: tcw.single.b1.upper}]}
-          then: tcw.h_A1_result
+          then: tcw.line(d).single.b1
         - guard: {op: test, all: [{op: test, gt: [amount, {param: tcw.single.b1.upper}]}, {op: test, le: [amount, {param: tcw.single.b2.upper}]}]}
-          then: tcw.h_A2_result
+          then: tcw.line(d).single.b2
         - guard: {op: test, all: [{op: test, gt: [amount, {param: tcw.single.b2.upper}]}, {op: test, le: [amount, {param: tcw.single.b3.upper}]}]}
-          then: tcw.h_A3_result
+          then: tcw.line(d).single.b3
         - guard: {op: test, all: [{op: test, gt: [amount, {param: tcw.single.b3.upper}]}, {op: test, le: [amount, {param: tcw.single.b4.upper}]}]}
-          then: tcw.h_A4_result
+          then: tcw.line(d).single.b4
         - guard: {op: test, gt: [amount, {param: tcw.single.b4.upper}]}
-          then: tcw.h_A5_result
-    note: "Row 1 applies only to amounts of at least $100,000; amounts below $100,000 are outside this worksheet. Chosen: row 1's guard is simply 'not over' the row-1 upper bound, so the guards are exhaustive. The caller is expected to send only amounts of $100,000 or more. The same reading applies to Sections B, C and D."
-  - id: tcw.lineB1(c)
+          then: tcw.line(d).single.b5
+    cite: "i1040gi 2025 p.80, Section A, 'Complete the row below that applies to you'"
+    note: "The first row reads 'At least $100,000 but not over $103,350'. The worksheet does not cover amounts below $100,000, which go to the Tax Table through the calling line. Because choose guards must be exhaustive, row 1's guard is 'not over $103,350' with no lower bound."
+
+  # ---------------- Section B — MFJ / QSS ----------------
+  - id: tcw.line(c).mfj.b1
     printed: "(c)"
-    label: "Section B—MFJ or QSS. At least $100,000 but not over $206,700. Multiply line (a) by 22% (0.22)"
+    label: "Multiply line (a) by 22% (0.22)"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: amount, rate: {param: tcw.mfj.b1.rate}}
-  - id: tcw.lineB1(d)
+    cite: "i1040gi 2025 p.80, Section B, row 1, column (c)"
+  - id: tcw.line(d).mfj.b1
     printed: "(d)"
-    label: "Section B—MFJ or QSS. At least $100,000 but not over $206,700. Subtraction amount $10,172.00"
-    type: NonNegDollars
-    expr: {op: param, ref: tcw.mfj.b1.subtract}
-  - id: tcw.h_B1_result
-    printed: "(helper)"
-    label: "Section B, row 1: Subtract (d) from (c)"
+    label: "Subtract (d) from (c)"
     type: Dollars
-    expr: {op: subtract, from: tcw.lineB1(c), take: tcw.lineB1(d)}
-  - id: tcw.lineB2(c)
+    expr: {op: subtract, from: tcw.line(c).mfj.b1, take: {param: tcw.mfj.b1.subtract}}
+    cite: "i1040gi 2025 p.80, Section B, row 1 ($10,172.00)"
+  - id: tcw.line(c).mfj.b2
     printed: "(c)"
-    label: "Section B—MFJ or QSS. Over $206,700 but not over $394,600. Multiply line (a) by 24% (0.24)"
+    label: "Multiply line (a) by 24% (0.24)"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: amount, rate: {param: tcw.mfj.b2.rate}}
-  - id: tcw.lineB2(d)
+    cite: "i1040gi 2025 p.80, Section B, row 2, column (c)"
+  - id: tcw.line(d).mfj.b2
     printed: "(d)"
-    label: "Section B—MFJ or QSS. Over $206,700 but not over $394,600. Subtraction amount $14,306.00"
-    type: NonNegDollars
-    expr: {op: param, ref: tcw.mfj.b2.subtract}
-  - id: tcw.h_B2_result
-    printed: "(helper)"
-    label: "Section B, row 2: Subtract (d) from (c)"
+    label: "Subtract (d) from (c)"
     type: Dollars
-    expr: {op: subtract, from: tcw.lineB2(c), take: tcw.lineB2(d)}
-  - id: tcw.lineB3(c)
+    expr: {op: subtract, from: tcw.line(c).mfj.b2, take: {param: tcw.mfj.b2.subtract}}
+    cite: "i1040gi 2025 p.80, Section B, row 2 ($14,306.00)"
+  - id: tcw.line(c).mfj.b3
     printed: "(c)"
-    label: "Section B—MFJ or QSS. Over $394,600 but not over $501,050. Multiply line (a) by 32% (0.32)"
+    label: "Multiply line (a) by 32% (0.32)"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: amount, rate: {param: tcw.mfj.b3.rate}}
-  - id: tcw.lineB3(d)
+    cite: "i1040gi 2025 p.80, Section B, row 3, column (c)"
+  - id: tcw.line(d).mfj.b3
     printed: "(d)"
-    label: "Section B—MFJ or QSS. Over $394,600 but not over $501,050. Subtraction amount $45,874.00"
-    type: NonNegDollars
-    expr: {op: param, ref: tcw.mfj.b3.subtract}
-  - id: tcw.h_B3_result
-    printed: "(helper)"
-    label: "Section B, row 3: Subtract (d) from (c)"
+    label: "Subtract (d) from (c)"
     type: Dollars
-    expr: {op: subtract, from: tcw.lineB3(c), take: tcw.lineB3(d)}
-  - id: tcw.lineB4(c)
+    expr: {op: subtract, from: tcw.line(c).mfj.b3, take: {param: tcw.mfj.b3.subtract}}
+    cite: "i1040gi 2025 p.80, Section B, row 3 ($45,874.00)"
+  - id: tcw.line(c).mfj.b4
     printed: "(c)"
-    label: "Section B—MFJ or QSS. Over $501,050 but not over $751,600. Multiply line (a) by 35% (0.35)"
+    label: "Multiply line (a) by 35% (0.35)"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: amount, rate: {param: tcw.mfj.b4.rate}}
-  - id: tcw.lineB4(d)
+    cite: "i1040gi 2025 p.80, Section B, row 4, column (c)"
+  - id: tcw.line(d).mfj.b4
     printed: "(d)"
-    label: "Section B—MFJ or QSS. Over $501,050 but not over $751,600. Subtraction amount $60,905.50"
-    type: NonNegDollars
-    expr: {op: param, ref: tcw.mfj.b4.subtract}
-  - id: tcw.h_B4_result
-    printed: "(helper)"
-    label: "Section B, row 4: Subtract (d) from (c)"
+    label: "Subtract (d) from (c)"
     type: Dollars
-    expr: {op: subtract, from: tcw.lineB4(c), take: tcw.lineB4(d)}
-  - id: tcw.lineB5(c)
+    expr: {op: subtract, from: tcw.line(c).mfj.b4, take: {param: tcw.mfj.b4.subtract}}
+    cite: "i1040gi 2025 p.80, Section B, row 4 ($60,905.50)"
+  - id: tcw.line(c).mfj.b5
     printed: "(c)"
-    label: "Section B—MFJ or QSS. Over $751,600. Multiply line (a) by 37% (0.37)"
+    label: "Multiply line (a) by 37% (0.37)"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: amount, rate: {param: tcw.mfj.b5.rate}}
-  - id: tcw.lineB5(d)
+    cite: "i1040gi 2025 p.80, Section B, row 5, column (c)"
+  - id: tcw.line(d).mfj.b5
     printed: "(d)"
-    label: "Section B—MFJ or QSS. Over $751,600. Subtraction amount $75,937.50"
-    type: NonNegDollars
-    expr: {op: param, ref: tcw.mfj.b5.subtract}
-  - id: tcw.h_B5_result
-    printed: "(helper)"
-    label: "Section B, row 5: Subtract (d) from (c)"
+    label: "Subtract (d) from (c)"
     type: Dollars
-    expr: {op: subtract, from: tcw.lineB5(c), take: tcw.lineB5(d)}
-  - id: tcw.lineTax_B
+    expr: {op: subtract, from: tcw.line(c).mfj.b5, take: {param: tcw.mfj.b5.subtract}}
+    cite: "i1040gi 2025 p.80, Section B, row 5 ($75,937.50)"
+  - id: tcw.lineTax.mfj
     printed: "Tax"
     label: "Section B—Use if your filing status is Married filing jointly or Qualifying surviving spouse. Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
     type: Dollars
@@ -220,91 +193,80 @@ lines:
       op: choose
       alternatives:
         - guard: {op: test, le: [amount, {param: tcw.mfj.b1.upper}]}
-          then: tcw.h_B1_result
+          then: tcw.line(d).mfj.b1
         - guard: {op: test, all: [{op: test, gt: [amount, {param: tcw.mfj.b1.upper}]}, {op: test, le: [amount, {param: tcw.mfj.b2.upper}]}]}
-          then: tcw.h_B2_result
+          then: tcw.line(d).mfj.b2
         - guard: {op: test, all: [{op: test, gt: [amount, {param: tcw.mfj.b2.upper}]}, {op: test, le: [amount, {param: tcw.mfj.b3.upper}]}]}
-          then: tcw.h_B3_result
+          then: tcw.line(d).mfj.b3
         - guard: {op: test, all: [{op: test, gt: [amount, {param: tcw.mfj.b3.upper}]}, {op: test, le: [amount, {param: tcw.mfj.b4.upper}]}]}
-          then: tcw.h_B4_result
+          then: tcw.line(d).mfj.b4
         - guard: {op: test, gt: [amount, {param: tcw.mfj.b4.upper}]}
-          then: tcw.h_B5_result
-  - id: tcw.lineC1(c)
+          then: tcw.line(d).mfj.b5
+    cite: "i1040gi 2025 p.80, Section B"
+    note: "Row 1 has no lower bound, for the same reason as Section A."
+
+  # ---------------- Section C — MFS ----------------
+  - id: tcw.line(c).mfs.b1
     printed: "(c)"
-    label: "Section C—MFS. At least $100,000 but not over $103,350. Multiply line (a) by 22% (0.22)"
+    label: "Multiply line (a) by 22% (0.22)"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: amount, rate: {param: tcw.mfs.b1.rate}}
-  - id: tcw.lineC1(d)
+    cite: "i1040gi 2025 p.80, Section C, row 1, column (c)"
+  - id: tcw.line(d).mfs.b1
     printed: "(d)"
-    label: "Section C—MFS. At least $100,000 but not over $103,350. Subtraction amount $5,086.00"
-    type: NonNegDollars
-    expr: {op: param, ref: tcw.mfs.b1.subtract}
-  - id: tcw.h_C1_result
-    printed: "(helper)"
-    label: "Section C, row 1: Subtract (d) from (c)"
+    label: "Subtract (d) from (c)"
     type: Dollars
-    expr: {op: subtract, from: tcw.lineC1(c), take: tcw.lineC1(d)}
-  - id: tcw.lineC2(c)
+    expr: {op: subtract, from: tcw.line(c).mfs.b1, take: {param: tcw.mfs.b1.subtract}}
+    cite: "i1040gi 2025 p.80, Section C, row 1 ($5,086.00)"
+  - id: tcw.line(c).mfs.b2
     printed: "(c)"
-    label: "Section C—MFS. Over $103,350 but not over $197,300. Multiply line (a) by 24% (0.24)"
+    label: "Multiply line (a) by 24% (0.24)"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: amount, rate: {param: tcw.mfs.b2.rate}}
-  - id: tcw.lineC2(d)
+    cite: "i1040gi 2025 p.80, Section C, row 2, column (c)"
+  - id: tcw.line(d).mfs.b2
     printed: "(d)"
-    label: "Section C—MFS. Over $103,350 but not over $197,300. Subtraction amount $7,153.00"
-    type: NonNegDollars
-    expr: {op: param, ref: tcw.mfs.b2.subtract}
-  - id: tcw.h_C2_result
-    printed: "(helper)"
-    label: "Section C, row 2: Subtract (d) from (c)"
+    label: "Subtract (d) from (c)"
     type: Dollars
-    expr: {op: subtract, from: tcw.lineC2(c), take: tcw.lineC2(d)}
-  - id: tcw.lineC3(c)
+    expr: {op: subtract, from: tcw.line(c).mfs.b2, take: {param: tcw.mfs.b2.subtract}}
+    cite: "i1040gi 2025 p.80, Section C, row 2 ($7,153.00)"
+  - id: tcw.line(c).mfs.b3
     printed: "(c)"
-    label: "Section C—MFS. Over $197,300 but not over $250,525. Multiply line (a) by 32% (0.32)"
+    label: "Multiply line (a) by 32% (0.32)"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: amount, rate: {param: tcw.mfs.b3.rate}}
-  - id: tcw.lineC3(d)
+    cite: "i1040gi 2025 p.80, Section C, row 3, column (c)"
+  - id: tcw.line(d).mfs.b3
     printed: "(d)"
-    label: "Section C—MFS. Over $197,300 but not over $250,525. Subtraction amount $22,937.00"
-    type: NonNegDollars
-    expr: {op: param, ref: tcw.mfs.b3.subtract}
-  - id: tcw.h_C3_result
-    printed: "(helper)"
-    label: "Section C, row 3: Subtract (d) from (c)"
+    label: "Subtract (d) from (c)"
     type: Dollars
-    expr: {op: subtract, from: tcw.lineC3(c), take: tcw.lineC3(d)}
-  - id: tcw.lineC4(c)
+    expr: {op: subtract, from: tcw.line(c).mfs.b3, take: {param: tcw.mfs.b3.subtract}}
+    cite: "i1040gi 2025 p.80, Section C, row 3 ($22,937.00)"
+  - id: tcw.line(c).mfs.b4
     printed: "(c)"
-    label: "Section C—MFS. Over $250,525 but not over $375,800. Multiply line (a) by 35% (0.35)"
+    label: "Multiply line (a) by 35% (0.35)"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: amount, rate: {param: tcw.mfs.b4.rate}}
-  - id: tcw.lineC4(d)
+    cite: "i1040gi 2025 p.80, Section C, row 4, column (c)"
+  - id: tcw.line(d).mfs.b4
     printed: "(d)"
-    label: "Section C—MFS. Over $250,525 but not over $375,800. Subtraction amount $30,452.75"
-    type: NonNegDollars
-    expr: {op: param, ref: tcw.mfs.b4.subtract}
-  - id: tcw.h_C4_result
-    printed: "(helper)"
-    label: "Section C, row 4: Subtract (d) from (c)"
+    label: "Subtract (d) from (c)"
     type: Dollars
-    expr: {op: subtract, from: tcw.lineC4(c), take: tcw.lineC4(d)}
-  - id: tcw.lineC5(c)
+    expr: {op: subtract, from: tcw.line(c).mfs.b4, take: {param: tcw.mfs.b4.subtract}}
+    cite: "i1040gi 2025 p.80, Section C, row 4 ($30,452.75)"
+  - id: tcw.line(c).mfs.b5
     printed: "(c)"
-    label: "Section C—MFS. Over $375,800. Multiply line (a) by 37% (0.37)"
+    label: "Multiply line (a) by 37% (0.37)"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: amount, rate: {param: tcw.mfs.b5.rate}}
-  - id: tcw.lineC5(d)
+    cite: "i1040gi 2025 p.80, Section C, row 5, column (c)"
+  - id: tcw.line(d).mfs.b5
     printed: "(d)"
-    label: "Section C—MFS. Over $375,800. Subtraction amount $37,968.75"
-    type: NonNegDollars
-    expr: {op: param, ref: tcw.mfs.b5.subtract}
-  - id: tcw.h_C5_result
-    printed: "(helper)"
-    label: "Section C, row 5: Subtract (d) from (c)"
+    label: "Subtract (d) from (c)"
     type: Dollars
-    expr: {op: subtract, from: tcw.lineC5(c), take: tcw.lineC5(d)}
-  - id: tcw.lineTax_C
+    expr: {op: subtract, from: tcw.line(c).mfs.b5, take: {param: tcw.mfs.b5.subtract}}
+    cite: "i1040gi 2025 p.80, Section C, row 5 ($37,968.75)"
+  - id: tcw.lineTax.mfs
     printed: "Tax"
     label: "Section C—Use if your filing status is Married filing separately. Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
     type: Dollars
@@ -312,91 +274,80 @@ lines:
       op: choose
       alternatives:
         - guard: {op: test, le: [amount, {param: tcw.mfs.b1.upper}]}
-          then: tcw.h_C1_result
+          then: tcw.line(d).mfs.b1
         - guard: {op: test, all: [{op: test, gt: [amount, {param: tcw.mfs.b1.upper}]}, {op: test, le: [amount, {param: tcw.mfs.b2.upper}]}]}
-          then: tcw.h_C2_result
+          then: tcw.line(d).mfs.b2
         - guard: {op: test, all: [{op: test, gt: [amount, {param: tcw.mfs.b2.upper}]}, {op: test, le: [amount, {param: tcw.mfs.b3.upper}]}]}
-          then: tcw.h_C3_result
+          then: tcw.line(d).mfs.b3
         - guard: {op: test, all: [{op: test, gt: [amount, {param: tcw.mfs.b3.upper}]}, {op: test, le: [amount, {param: tcw.mfs.b4.upper}]}]}
-          then: tcw.h_C4_result
+          then: tcw.line(d).mfs.b4
         - guard: {op: test, gt: [amount, {param: tcw.mfs.b4.upper}]}
-          then: tcw.h_C5_result
-  - id: tcw.lineD1(c)
+          then: tcw.line(d).mfs.b5
+    cite: "i1040gi 2025 p.80, Section C"
+    note: "Row 1 has no lower bound, for the same reason as Section A."
+
+  # ---------------- Section D — HOH ----------------
+  - id: tcw.line(c).hoh.b1
     printed: "(c)"
-    label: "Section D—Head of household. At least $100,000 but not over $103,350. Multiply line (a) by 22% (0.22)"
+    label: "Multiply line (a) by 22% (0.22)"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: amount, rate: {param: tcw.hoh.b1.rate}}
-  - id: tcw.lineD1(d)
+    cite: "i1040gi 2025 p.80, Section D, row 1, column (c)"
+  - id: tcw.line(d).hoh.b1
     printed: "(d)"
-    label: "Section D—Head of household. At least $100,000 but not over $103,350. Subtraction amount $6,825.00"
-    type: NonNegDollars
-    expr: {op: param, ref: tcw.hoh.b1.subtract}
-  - id: tcw.h_D1_result
-    printed: "(helper)"
-    label: "Section D, row 1: Subtract (d) from (c)"
+    label: "Subtract (d) from (c)"
     type: Dollars
-    expr: {op: subtract, from: tcw.lineD1(c), take: tcw.lineD1(d)}
-  - id: tcw.lineD2(c)
+    expr: {op: subtract, from: tcw.line(c).hoh.b1, take: {param: tcw.hoh.b1.subtract}}
+    cite: "i1040gi 2025 p.80, Section D, row 1 ($6,825.00)"
+  - id: tcw.line(c).hoh.b2
     printed: "(c)"
-    label: "Section D—Head of household. Over $103,350 but not over $197,300. Multiply line (a) by 24% (0.24)"
+    label: "Multiply line (a) by 24% (0.24)"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: amount, rate: {param: tcw.hoh.b2.rate}}
-  - id: tcw.lineD2(d)
+    cite: "i1040gi 2025 p.80, Section D, row 2, column (c)"
+  - id: tcw.line(d).hoh.b2
     printed: "(d)"
-    label: "Section D—Head of household. Over $103,350 but not over $197,300. Subtraction amount $8,892.00"
-    type: NonNegDollars
-    expr: {op: param, ref: tcw.hoh.b2.subtract}
-  - id: tcw.h_D2_result
-    printed: "(helper)"
-    label: "Section D, row 2: Subtract (d) from (c)"
+    label: "Subtract (d) from (c)"
     type: Dollars
-    expr: {op: subtract, from: tcw.lineD2(c), take: tcw.lineD2(d)}
-  - id: tcw.lineD3(c)
+    expr: {op: subtract, from: tcw.line(c).hoh.b2, take: {param: tcw.hoh.b2.subtract}}
+    cite: "i1040gi 2025 p.80, Section D, row 2 ($8,892.00)"
+  - id: tcw.line(c).hoh.b3
     printed: "(c)"
-    label: "Section D—Head of household. Over $197,300 but not over $250,500. Multiply line (a) by 32% (0.32)"
+    label: "Multiply line (a) by 32% (0.32)"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: amount, rate: {param: tcw.hoh.b3.rate}}
-  - id: tcw.lineD3(d)
+    cite: "i1040gi 2025 p.80, Section D, row 3, column (c)"
+  - id: tcw.line(d).hoh.b3
     printed: "(d)"
-    label: "Section D—Head of household. Over $197,300 but not over $250,500. Subtraction amount $24,676.00"
-    type: NonNegDollars
-    expr: {op: param, ref: tcw.hoh.b3.subtract}
-  - id: tcw.h_D3_result
-    printed: "(helper)"
-    label: "Section D, row 3: Subtract (d) from (c)"
+    label: "Subtract (d) from (c)"
     type: Dollars
-    expr: {op: subtract, from: tcw.lineD3(c), take: tcw.lineD3(d)}
-  - id: tcw.lineD4(c)
+    expr: {op: subtract, from: tcw.line(c).hoh.b3, take: {param: tcw.hoh.b3.subtract}}
+    cite: "i1040gi 2025 p.80, Section D, row 3 ($24,676.00)"
+  - id: tcw.line(c).hoh.b4
     printed: "(c)"
-    label: "Section D—Head of household. Over $250,500 but not over $626,350. Multiply line (a) by 35% (0.35)"
+    label: "Multiply line (a) by 35% (0.35)"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: amount, rate: {param: tcw.hoh.b4.rate}}
-  - id: tcw.lineD4(d)
+    cite: "i1040gi 2025 p.80, Section D, row 4, column (c)"
+  - id: tcw.line(d).hoh.b4
     printed: "(d)"
-    label: "Section D—Head of household. Over $250,500 but not over $626,350. Subtraction amount $32,191.00"
-    type: NonNegDollars
-    expr: {op: param, ref: tcw.hoh.b4.subtract}
-  - id: tcw.h_D4_result
-    printed: "(helper)"
-    label: "Section D, row 4: Subtract (d) from (c)"
+    label: "Subtract (d) from (c)"
     type: Dollars
-    expr: {op: subtract, from: tcw.lineD4(c), take: tcw.lineD4(d)}
-  - id: tcw.lineD5(c)
+    expr: {op: subtract, from: tcw.line(c).hoh.b4, take: {param: tcw.hoh.b4.subtract}}
+    cite: "i1040gi 2025 p.80, Section D, row 4 ($32,191.00)"
+  - id: tcw.line(c).hoh.b5
     printed: "(c)"
-    label: "Section D—Head of household. Over $626,350. Multiply line (a) by 37% (0.37)"
+    label: "Multiply line (a) by 37% (0.37)"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: amount, rate: {param: tcw.hoh.b5.rate}}
-  - id: tcw.lineD5(d)
+    cite: "i1040gi 2025 p.80, Section D, row 5, column (c)"
+  - id: tcw.line(d).hoh.b5
     printed: "(d)"
-    label: "Section D—Head of household. Over $626,350. Subtraction amount $44,718.00"
-    type: NonNegDollars
-    expr: {op: param, ref: tcw.hoh.b5.subtract}
-  - id: tcw.h_D5_result
-    printed: "(helper)"
-    label: "Section D, row 5: Subtract (d) from (c)"
+    label: "Subtract (d) from (c)"
     type: Dollars
-    expr: {op: subtract, from: tcw.lineD5(c), take: tcw.lineD5(d)}
-  - id: tcw.lineTax_D
+    expr: {op: subtract, from: tcw.line(c).hoh.b5, take: {param: tcw.hoh.b5.subtract}}
+    cite: "i1040gi 2025 p.80, Section D, row 5 ($44,718.00)"
+  - id: tcw.lineTax.hoh
     printed: "Tax"
     label: "Section D—Use if your filing status is Head of household. Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
     type: Dollars
@@ -404,15 +355,19 @@ lines:
       op: choose
       alternatives:
         - guard: {op: test, le: [amount, {param: tcw.hoh.b1.upper}]}
-          then: tcw.h_D1_result
+          then: tcw.line(d).hoh.b1
         - guard: {op: test, all: [{op: test, gt: [amount, {param: tcw.hoh.b1.upper}]}, {op: test, le: [amount, {param: tcw.hoh.b2.upper}]}]}
-          then: tcw.h_D2_result
+          then: tcw.line(d).hoh.b2
         - guard: {op: test, all: [{op: test, gt: [amount, {param: tcw.hoh.b2.upper}]}, {op: test, le: [amount, {param: tcw.hoh.b3.upper}]}]}
-          then: tcw.h_D3_result
+          then: tcw.line(d).hoh.b3
         - guard: {op: test, all: [{op: test, gt: [amount, {param: tcw.hoh.b3.upper}]}, {op: test, le: [amount, {param: tcw.hoh.b4.upper}]}]}
-          then: tcw.h_D4_result
+          then: tcw.line(d).hoh.b4
         - guard: {op: test, gt: [amount, {param: tcw.hoh.b4.upper}]}
-          then: tcw.h_D5_result
+          then: tcw.line(d).hoh.b5
+    cite: "i1040gi 2025 p.80, Section D"
+    note: "Row 1 has no lower bound, for the same reason as Section A."
+
+  # ---------------- Section selection by filing status ----------------
   - id: tcw.lineTax
     printed: "Tax"
     label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
@@ -421,18 +376,21 @@ lines:
       op: choose
       alternatives:
         - guard: {op: test, eq: [status, {const: "single"}]}
-          then: tcw.lineTax_A
+          then: tcw.lineTax.single
         - guard: {op: test, any: [{op: test, eq: [status, {const: "mfj"}]}, {op: test, eq: [status, {const: "qss"}]}]}
-          then: tcw.lineTax_B
+          then: tcw.lineTax.mfj
         - guard: {op: test, eq: [status, {const: "mfs"}]}
-          then: tcw.lineTax_C
+          then: tcw.lineTax.mfs
         - guard: {op: test, eq: [status, {const: "hoh"}]}
-          then: tcw.lineTax_D
-    note: "Sections A-D are each selected by filing status. Section B covers both Married filing jointly and Qualifying surviving spouse. The five enum values make these guards exhaustive and disjoint."
+          then: tcw.lineTax.hoh
+    cite: "i1040gi 2025 p.80, Section headings A–D (filing status)"
+    note: "The worksheet does not say to round the column (c) product. The result is kept in exact cents with no rounding."
+
   - id: tax
     printed: "(helper)"
     label: "Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
     type: Dollars
     expr: {op: copy, from: tcw.lineTax}
+    cite: "i1040gi 2025 p.80, Tax Computation Worksheet, Tax column"
 ```
 ```

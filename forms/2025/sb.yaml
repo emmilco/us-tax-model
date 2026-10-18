@@ -10,14 +10,10 @@ form:
     - id: sb.unsupported
       printed: (helper)
       type: Bool
-      label: Any nominee income, original issue discount, accrued interest adjustment, bond premium,
-        seller-financed mortgage interest, savings-bond exclusion, foreign corporation reporting, or
-        other special treatment?
+      label: 'Any nominee income, original issue discount reported in an amount other than on Form 1099-OID, accrued interest paid on a bond purchase, bond premium adjustment, accrued market discount, a contingent payment debt instrument, seller-financed mortgage interest, a savings bond interest exclusion, foreign corporation reporting, or other special treatment?'
       expr:
         op: input
-        source: Any nominee income, original issue discount, accrued interest adjustment, bond premium,
-          seller-financed mortgage interest, savings-bond exclusion, foreign corporation reporting,
-          or other special treatment?
+        source: 'Any nominee income, original issue discount reported in an amount other than on Form 1099-OID, accrued interest paid on a bond purchase, bond premium adjustment, accrued market discount, a contingent payment debt instrument, seller-financed mortgage interest, a savings bond interest exclusion, foreign corporation reporting, or other special treatment?'
       cite:
         doc: i1040sb
         locator: pp. 1–3, interest, dividends and foreign accounts/trusts

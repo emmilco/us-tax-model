@@ -5,16 +5,16 @@
 
 ## (helper) — `sd.other_forms`
 
-- **Authored helper label:** Are there gains/losses from Forms 4797, 2439, 6252, 4684, 6781, 8824 or Schedule K-1?
-- **Encoded (Bool):** Input — Are there gains/losses from Forms 4797, 2439, 6252, 4684, 6781, 8824 or Schedule K-1?
-- Expr: `{"op":"input","source":"Are there gains/losses from Forms 4797, 2439, 6252, 4684, 6781, 8824 or Schedule K-1?"}`
+- **Authored helper label:** Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1? Count section 1256 contracts and a casualty or theft of property whether you held the property directly or through an entity.
+- **Encoded (Bool):** Input — Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1? Count section 1256 contracts and a casualty or theft of property whether you held the property directly or through an entity.
+- Expr: `{"op":"input","source":"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1? Count section 1256 contracts and a casualty or theft of property whether you held the property directly or through an entity."}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 
 ## (helper) — `sd.carryover`
 
-- **Authored helper label:** Is there a capital loss carryover from the prior year?
-- **Encoded (Bool):** Input — Is there a capital loss carryover from the prior year?
-- Expr: `{"op":"input","source":"Is there a capital loss carryover from the prior year?"}`
+- **Authored helper label:** Is there a capital loss carried into 2025 from any earlier year?
+- **Encoded (Bool):** Input — Is there a capital loss carried into 2025 from any earlier year?
+- Expr: `{"op":"input","source":"Is there a capital loss carried into 2025 from any earlier year?"}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 
 ## (helper) — `sd.distributions`

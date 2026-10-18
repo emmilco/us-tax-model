@@ -5,8 +5,14 @@
   {
    "printed": "5a",
    "restated": "Enter the amount from f1040 line 7a.",
-   "model": "The form says only 'Net gain or loss from disposition of property (see instructions)', and the line 5a instructions are not in the pages given. Without them it cannot be confirmed that Form 1040 line 7a (capital gain or loss, after the loss limit and including capital gain distributions) is the right amount.",
+   "model": "The form says 'Net gain or loss from disposition of property (see instructions)', but the line 5a instructions are not in the pages given. Nothing given ties the line to Form 1040 line 7a or covers gains reported elsewhere, such as Form 4797.",
    "ruling": "Ruling: representation; project retained. The dispositions of property in net investment income within the slice are the securities sales and capital gain distributions Schedule D carries to Form 1040 line 7a; every other disposition or adjustment (i8960 p. 9, line 5a) is refused by `f8960.unsupported` (\"Any annuity, rental, royalty, business/pass-through income, CFC/PFIC holding, section 911 exclusion, disposition adjustment, NOL or other NIIT modification outside this slice?\"). No change to the data."
+  },
+  {
+   "printed": "9b",
+   "restated": "Choose — [sa helper \"Itemize if elected, required, or itemized total exceeds standard\" = true → helper \"Deductible state/local income and property taxes reasonably allocated to net investment income; exclude foreign taxes for which a credit is claimed\"] [sa helper \"Itemize if elected, required, or itemized total exceeds standard\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The instructions include 'foreign income taxes' and 'foreign real property taxes' on line 9b, but the bad_allocation refusal caps the allocation at Schedule A line 5e, which holds only state and local taxes. A valid allocation that includes deductible foreign taxes would be refused as an error, and the text gives no basis for that cap.",
+   "ruling": "Ruling: scope; project retained. A deduction for foreign income or foreign real property taxes is refused on Schedule A (sa.unsupported names the foreign tax deduction), so within scope the allocable taxes are the state and local taxes on Schedule A line 5e."
   }
  ]
 }

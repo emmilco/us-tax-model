@@ -5,9 +5,9 @@
 
 ## (helper) — `sb.unsupported`
 
-- **Authored helper label:** Any nominee income, original issue discount, accrued interest adjustment, bond premium, seller-financed mortgage interest, savings-bond exclusion, foreign corporation reporting, or other special treatment?
-- **Encoded (Bool):** Input — Any nominee income, original issue discount, accrued interest adjustment, bond premium, seller-financed mortgage interest, savings-bond exclusion, foreign corporation reporting, or other special treatment?
-- Expr: `{"op":"input","source":"Any nominee income, original issue discount, accrued interest adjustment, bond premium, seller-financed mortgage interest, savings-bond exclusion, foreign corporation reporting, or other special treatment?"}`
+- **Authored helper label:** Any nominee income, original issue discount reported in an amount other than on Form 1099-OID, accrued interest paid on a bond purchase, bond premium adjustment, accrued market discount, a contingent payment debt instrument, seller-financed mortgage interest, a savings bond interest exclusion, foreign corporation reporting, or other special treatment?
+- **Encoded (Bool):** Input — Any nominee income, original issue discount reported in an amount other than on Form 1099-OID, accrued interest paid on a bond purchase, bond premium adjustment, accrued market discount, a contingent payment debt instrument, seller-financed mortgage interest, a savings bond interest exclusion, foreign corporation reporting, or other special treatment?
+- Expr: `{"op":"input","source":"Any nominee income, original issue discount reported in an amount other than on Form 1099-OID, accrued interest paid on a bond purchase, bond premium adjustment, accrued market discount, a contingent payment debt instrument, seller-financed mortgage interest, a savings bond interest exclusion, foreign corporation reporting, or other special treatment?"}`
 - Cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; sha256 b92f31ec)
 
 ## (helper) — `sb.ordinary_dividends`

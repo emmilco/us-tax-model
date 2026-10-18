@@ -27,9 +27,9 @@
 
 ## (helper) — `sales.special`
 
-- **Authored helper label:** Does this sale involve collectibles, section 1202 stock, or section 1250 property?
-- **Encoded (Bool):** Input — Does this sale involve collectibles, section 1202 stock, or section 1250 property?
-- Expr: `{"op":"input","source":"Does this sale involve collectibles, section 1202 stock, or section 1250 property?"}`
+- **Authored helper label:** Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust holding such property?
+- **Encoded (Bool):** Input — Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust holding such property?
+- Expr: `{"op":"input","source":"Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust holding such property?"}`
 - Cite: [i1040sd] pp. 11–12, lines 18 and 19 (2025; printed date 2025-12-11; sha256 650643a6)
 
 ## (helper) — `sales.aggregate_eligible`

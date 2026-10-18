@@ -10,24 +10,20 @@ form:
     - id: f8960.unsupported
       printed: (helper)
       type: Bool
-      label: Any annuity, rental, royalty, business/pass-through income, CFC/PFIC holding, section 911
-        exclusion, disposition adjustment, NOL or other NIIT modification outside this slice?
+      label: 'Any annuity, rental, royalty, business or pass-through income; a CFC or PFIC holding; a section 911 exclusion; a disposition adjustment; a section 1411 net operating loss; excluded savings bond interest (Form 8815); a deductible investment expense other than investment interest or state and local tax; or another net investment income adjustment?'
       expr:
         op: input
-        source: Any annuity, rental, royalty, business/pass-through income, CFC/PFIC holding, section 911
-          exclusion, disposition adjustment, NOL or other NIIT modification outside this slice?
+        source: 'Any annuity, rental, royalty, business or pass-through income; a CFC or PFIC holding; a section 911 exclusion; a disposition adjustment; a section 1411 net operating loss; excluded savings bond interest (Form 8815); a deductible investment expense other than investment interest or state and local tax; or another net investment income adjustment?'
       cite:
         doc: f8960
         locator: Form 8960 (2025), Parts I–III, individual lines 1–17
     - id: f8960.refund
       printed: (helper)
       type: Bool
-      label: Any recovery/refund of a previously deducted expense, including state/local tax deducted in
-        an itemized year?
+      label: 'Any recovery or refund in 2025 of an amount deducted on an earlier Form 8960 (for example a state or local income tax refund, or a refund of foreign income tax), even if none of it is taxable on Form 1040?'
       expr:
         op: input
-        source: Any recovery/refund of a previously deducted expense, including state/local tax deducted in
-          an itemized year?
+        source: 'Any recovery or refund in 2025 of an amount deducted on an earlier Form 8960 (for example a state or local income tax refund, or a refund of foreign income tax), even if none of it is taxable on Form 1040?'
       cite:
         doc: f8960
         locator: Form 8960 (2025), Parts I–III, individual lines 1–17

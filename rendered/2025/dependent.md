@@ -70,8 +70,8 @@
 ## (helper) — `dependent.married`
 
 - **Authored helper label:** Married?
-- **Encoded (Bool):** Input — Was this person married at the end of 2025?
-- Expr: `{"op":"input","source":"Was this person married at the end of 2025?"}`
+- **Encoded (Bool):** Input — Was this person married at the end of 2025 (a person legally separated under a decree of divorce or separate maintenance is not married), or is this person filing a joint return for 2025 (for example with a spouse who died during 2025)?
+- Expr: `{"op":"input","source":"Was this person married at the end of 2025 (a person legally separated under a decree of divorce or separate maintenance is not married), or is this person filing a joint return for 2025 (for example with a spouse who died during 2025)?"}`
 - Cite: [i1040gi] p. 18, Step 2, question 2, "Was the child married? Yes. See Married person, later" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `dependent.tin`
@@ -105,22 +105,22 @@
 ## (helper) — `dependent.other_claimant`
 
 - **Authored helper label:** Meets the conditions to be the qualifying child of another person?
-- **Encoded (Bool):** Input — Does this person meet the conditions to be the qualifying child of any other person for 2025?
-- Expr: `{"op":"input","source":"Does this person meet the conditions to be the qualifying child of any other person for 2025?"}`
+- **Encoded (Bool):** Input — Does this person meet the conditions to be the qualifying child of any other person for 2025, under the dependent rules or under the EIC rules (which have no support test)?
+- Expr: `{"op":"input","source":"Does this person meet the conditions to be the qualifying child of any other person for 2025, under the dependent rules or under the EIC rules (which have no support test)?"}`
 - Cite: [i1040gi] p. 17, Step 1, "If the child meets the conditions to be a qualifying child of any other person ... see Qualifying child of more than one person" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `dependent.divorced_rule`
 
 - **Authored helper label:** Rule for children of divorced or separated parents applies?
-- **Encoded (Bool):** Input — Does the rule for children of divorced or separated parents apply to this person?
-- Expr: `{"op":"input","source":"Does the rule for children of divorced or separated parents apply to this person?"}`
+- **Encoded (Bool):** Input — Does the special rule for children of divorced or separated parents, or parents who lived apart (including parents who never married), apply to this person, for example because a Form 8332 release or a decree lets the noncustodial parent claim the child?
+- Expr: `{"op":"input","source":"Does the special rule for children of divorced or separated parents, or parents who lived apart (including parents who never married), apply to this person, for example because a Form 8332 release or a decree lets the noncustodial parent claim the child?"}`
 - Cite: [i1040gi] p. 19, Step 4, "But see Children of divorced or separated parents" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `dependent.multiple_support`
 
 - **Authored helper label:** Claimed under a multiple support agreement?
-- **Encoded (Bool):** Input — Is this person claimed under a multiple support agreement?
-- Expr: `{"op":"input","source":"Is this person claimed under a multiple support agreement?"}`
+- **Encoded (Bool):** Input — Did you and others together provide over half of this person's support for 2025, with no one person providing over half (a multiple support situation), whether you or another contributor claims the person?
+- Expr: `{"op":"input","source":"Did you and others together provide over half of this person's support for 2025, with no one person providing over half (a multiple support situation), whether you or another contributor claims the person?"}`
 - Cite: [i1040gi] p. 19, Step 4, "Multiple support agreements" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `dependent.parent_home_paid`
@@ -206,7 +206,7 @@
 ## (helper) — `dependent.qc_dependent`
 
 - **Authored helper label:** Qualifying child who is your dependent (Step 2)
-- **Encoded (Bool):** helper "Qualifying child (Step 1)" = true and helper "U.S. citizen, national or resident alien, or a resident of Canada or Mexico" = true and sa helper "Can someone claim you or your spouse as a dependent, or are you a dual-status alien?" = false
+- **Encoded (Bool):** helper "Qualifying child (Step 1)" = true and helper "U.S. citizen, national or resident alien, or a resident of Canada or Mexico" = true and sa helper "Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)" = false
 - Expr: `{"all":[{"eq":["dependent.qualifying_child",{"const":true}],"op":"test"},{"eq":["dependent.resident",{"const":true}],"op":"test"},{"eq":["sa.dependent",{"const":false}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 18, Step 2, questions 1 and 4 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -244,7 +244,7 @@
 ## (helper) — `dependent.qr_dependent`
 
 - **Authored helper label:** Qualifying relative who is your dependent (Step 4, questions 2 and 5)
-- **Encoded (Bool):** helper "Qualifying relative (Step 4)" = true and helper "U.S. citizen, national or resident alien, or a resident of Canada or Mexico" = true and sa helper "Can someone claim you or your spouse as a dependent, or are you a dual-status alien?" = false
+- **Encoded (Bool):** helper "Qualifying relative (Step 4)" = true and helper "U.S. citizen, national or resident alien, or a resident of Canada or Mexico" = true and sa helper "Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)" = false
 - Expr: `{"all":[{"eq":["dependent.qualifying_relative",{"const":true}],"op":"test"},{"eq":["dependent.resident",{"const":true}],"op":"test"},{"eq":["sa.dependent",{"const":false}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 19, Step 4, questions 2 and 5 (2025; printed date 2026-02-25; sha256 482e9c48)
 

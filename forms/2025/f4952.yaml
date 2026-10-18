@@ -30,12 +30,10 @@ form:
     - id: f4952.unsupported
       printed: (helper)
       type: Bool
-      label: Interest attributable to royalties, a business, passive activities, tax-exempt income, or
-        at-risk limitations; other unsupported investment income or expenses?
+      label: 'Any interest expense attributable to royalties, a business, passive activities, tax-exempt income or at-risk limitations; any deductible investment expense other than interest (for example depreciation or depletion on assets that produce investment income, or investment expenses on a Schedule K-1); or any other investment income or expense beyond interest, dividends and securities sales?'
       expr:
         op: input
-        source: Interest attributable to royalties, a business, passive activities, tax-exempt income, or
-          at-risk limitations; other unsupported investment income or expenses?
+        source: 'Any interest expense attributable to royalties, a business, passive activities, tax-exempt income or at-risk limitations; any deductible investment expense other than interest (for example depreciation or depletion on assets that produce investment income, or investment expenses on a Schedule K-1); or any other investment income or expense beyond interest, dividends and securities sales?'
       cite:
         doc: f4952
         locator: pp. 1, 3–4, Investment Interest Expense Deduction

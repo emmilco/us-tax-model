@@ -7,7 +7,7 @@ The rendered English of every printed line of `Schedule B — supported interest
 | date | 2026-10-17 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 9a86055e618ba4c544e13736a7d7fcba9a56fde9ce13843db501ea05d64ffa6f |
+| prompt sha256 | 1b4e65077720724e8bec281c9ef1a95069c825fa6af3d03fbf976bd141352c15 |
 | lines judged | 6 |
 | match / mismatch / unclear / missing | 5 / 0 / 1 / 0 |
 | verdicts for lines not in the form | none |
@@ -23,57 +23,59 @@ The rendered English of every printed line of `Schedule B — supported interest
 ### 7a — Any financial interest in or signature authority over a foreign financial account during 2
 Status: **MATCH**
 
-Model: The instructions say to check "Yes" if "at any time during 2025 you had a financial interest in or signature authority over a financial account located in a foreign country," which the restatement captures.
+Model: The Line 7a Question 1 instruction asks whether 'at any time during 2025 you had a financial interest in or signature authority over a financial account located in a foreign country,' which the input restates.
 
 ### 8 — Received a distribution from, or were grantor of or transferor to, a foreign trust during 
 Status: **MATCH**
 
-Model: The IRS text covers a filer who "received a distribution from, or were a grantor of, or transferor to, a foreign trust," which matches the restatement. The program refuses the Form 3520/3520-A path.
+Model: The Line 8 instructions cover anyone who 'received a distribution from a foreign trust' or 'were the grantor of, or transferor to, a foreign trust that existed during 2025,' which the input captures.
 
 ### 2 — Total taxable interest from all payers
 Status: **MATCH**
 
-Model: Line 1 reports "all of your taxable interest." Line 2 differs from the line 1 subtotal only by the nominee, accrued interest, OID and ABP subtractions, and sb.unsupported refuses those cases. Within the supported cases, summing the interest entries gives line 2.
+Model: Line 1 reports 'all of your taxable interest,' and line 2 is that subtotal less any nominee, accrued-interest, OID or ABP subtraction. Those subtractions are refused via sb.unsupported, so line 2 is the sum of line 1 entries in the supported cases, assuming interest entries hold only taxable interest.
 
 ### 3 — Amount from sb.zero
 Status: **MATCH**
 
-Model: Line 3 is the savings-bond interest exclusion from Form 8815. The program refuses that case under sb.unsupported, so $0 is correct within scope.
+Model: Line 3 is the Form 8815 exclusion for 'series EE or I U.S. savings bonds issued after 1989.' The savings bond interest exclusion is refused under sb.unsupported, so $0 is correct in the supported cases.
 
 ### 4 — Subtract sb.line3 from sb.line2
 Status: **UNCLEAR**
 
 Restated: Subtract line 3 from line 2.
 
-Model: The instruction pages given have no text for line 4, and the form face is not provided. I cannot confirm from the IRS text that line 4 is line 2 minus line 3.
+Model: The instructions provided contain no text for line 4, and the Schedule B form face is not included. The subtraction of line 3 from line 2 cannot be confirmed from the given text.
 
 Ruling: representation; project retained. The form face reads "4 Subtract line 3 from line 2. Enter the result here and on Form 1040 or 1040-SR, line 2b" (f1040sb p. 1), which is the restatement. No change to the data.
 
 ### 6 — Amount from sb.ordinary_dividends
 Status: **MATCH**
 
-Model: Line 5 ordinary dividends "should be shown in box 1a of your Forms 1099-DIV." Line 6 is the line 5 subtotal less any nominee distribution, and nominee income is refused. Within scope, line 6 equals total box 1a dividends.
+Model: Line 5 ordinary dividends 'should be shown in box 1a of your Forms 1099-DIV,' and line 6 is that subtotal less any nominee distribution. Nominee income is refused under sb.unsupported, so total box 1a equals line 6 in the supported cases.
 
 ## Raw response
 
 ```yaml
+```yaml
 lines:
   - key: "7a"
     status: MATCH
-    reason: "The instructions say to check \"Yes\" if \"at any time during 2025 you had a financial interest in or signature authority over a financial account located in a foreign country,\" which the restatement captures."
+    reason: "The Line 7a Question 1 instruction asks whether 'at any time during 2025 you had a financial interest in or signature authority over a financial account located in a foreign country,' which the input restates."
   - key: "8"
     status: MATCH
-    reason: "The IRS text covers a filer who \"received a distribution from, or were a grantor of, or transferor to, a foreign trust,\" which matches the restatement. The program refuses the Form 3520/3520-A path."
+    reason: "The Line 8 instructions cover anyone who 'received a distribution from a foreign trust' or 'were the grantor of, or transferor to, a foreign trust that existed during 2025,' which the input captures."
   - key: "2"
     status: MATCH
-    reason: "Line 1 reports \"all of your taxable interest.\" Line 2 differs from the line 1 subtotal only by the nominee, accrued interest, OID and ABP subtractions, and sb.unsupported refuses those cases. Within the supported cases, summing the interest entries gives line 2."
+    reason: "Line 1 reports 'all of your taxable interest,' and line 2 is that subtotal less any nominee, accrued-interest, OID or ABP subtraction. Those subtractions are refused via sb.unsupported, so line 2 is the sum of line 1 entries in the supported cases, assuming interest entries hold only taxable interest."
   - key: "3"
     status: MATCH
-    reason: "Line 3 is the savings-bond interest exclusion from Form 8815. The program refuses that case under sb.unsupported, so $0 is correct within scope."
+    reason: "Line 3 is the Form 8815 exclusion for 'series EE or I U.S. savings bonds issued after 1989.' The savings bond interest exclusion is refused under sb.unsupported, so $0 is correct in the supported cases."
   - key: "4"
     status: UNCLEAR
-    reason: "The instruction pages given have no text for line 4, and the form face is not provided. I cannot confirm from the IRS text that line 4 is line 2 minus line 3."
+    reason: "The instructions provided contain no text for line 4, and the Schedule B form face is not included. The subtraction of line 3 from line 2 cannot be confirmed from the given text."
   - key: "6"
     status: MATCH
-    reason: "Line 5 ordinary dividends \"should be shown in box 1a of your Forms 1099-DIV.\" Line 6 is the line 5 subtotal less any nominee distribution, and nominee income is refused. Within scope, line 6 equals total box 1a dividends."
+    reason: "Line 5 ordinary dividends 'should be shown in box 1a of your Forms 1099-DIV,' and line 6 is that subtotal less any nominee distribution. Nominee income is refused under sb.unsupported, so total box 1a equals line 6 in the supported cases."
+```
 ```

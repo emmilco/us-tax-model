@@ -120,7 +120,7 @@ form:
       label: Married?
       expr:
         op: input
-        source: Was this person married at the end of 2025?
+        source: 'Was this person married at the end of 2025 (a person legally separated under a decree of divorce or separate maintenance is not married), or is this person filing a joint return for 2025 (for example with a spouse who died during 2025)?'
       cite:
         doc: i1040gi
         locator: p. 18, Step 2, question 2, "Was the child married? Yes. See Married person, later"
@@ -172,7 +172,7 @@ form:
       label: Meets the conditions to be the qualifying child of another person?
       expr:
         op: input
-        source: Does this person meet the conditions to be the qualifying child of any other person for 2025?
+        source: 'Does this person meet the conditions to be the qualifying child of any other person for 2025, under the dependent rules or under the EIC rules (which have no support test)?'
       cite:
         doc: i1040gi
         locator: p. 17, Step 1, "If the child meets the conditions to be a qualifying child of any other person ... see Qualifying child of more than one person"
@@ -182,7 +182,7 @@ form:
       label: Rule for children of divorced or separated parents applies?
       expr:
         op: input
-        source: Does the rule for children of divorced or separated parents apply to this person?
+        source: 'Does the special rule for children of divorced or separated parents, or parents who lived apart (including parents who never married), apply to this person, for example because a Form 8332 release or a decree lets the noncustodial parent claim the child?'
       cite:
         doc: i1040gi
         locator: p. 19, Step 4, "But see Children of divorced or separated parents"
@@ -192,7 +192,7 @@ form:
       label: Claimed under a multiple support agreement?
       expr:
         op: input
-        source: Is this person claimed under a multiple support agreement?
+        source: 'Did you and others together provide over half of this person''s support for 2025, with no one person providing over half (a multiple support situation), whether you or another contributor claims the person?'
       cite:
         doc: i1040gi
         locator: p. 19, Step 4, "Multiple support agreements"

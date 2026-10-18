@@ -5,13 +5,13 @@
   {
    "printed": "4d",
    "restated": "Subtract $0 from sd line 16. If zero or less, enter -0-.",
-   "model": "Line 4d is 'Net gain from the disposition of property held for investment,' including capital gain distributions and capital loss carryovers. The only description given for Schedule D line 16 is 'Combine the amounts for Schedule D line 16', and no refusal limits it to property held for investment, so I can't confirm it equals the line 4d amount.",
+   "model": "Line 4d is the \"excess, if any, of your total gains over your total losses from the disposition of property held for investment.\" The only wording given for sd line 16 is \"Combine the amounts for Schedule D line 16,\" which does not show that it is limited to property held for investment. None of the gates excludes non-investment dispositions on Schedule D.",
    "ruling": "Ruling: scope and representation; project retained. Within scope Schedule D line 16 holds only securities sales and capital gain distributions (property held for investment); carryovers and other dispositions are refused (`sd.other_forms`), so line 16 floored at zero is the net gain from the disposition of property held for investment."
   },
   {
    "printed": "4e",
    "restated": "Enter the smaller of line 4d or sd helper \"Nonnegative net capital gain for QDCGT\".",
-   "model": "Line 4e uses 'the excess, if any, of your net long-term capital gain over your net short-term capital loss from the disposition of property held for investment.' The IRS text given doesn't describe Schedule D lines 15 and 16 or limit them to property held for investment, so I can't confirm that the smaller of those lines, floored at zero, is that amount.",
+   "model": "Line 4e is the smaller of 4d or \"net long-term capital gain over your net short-term capital loss from the disposition of property held for investment.\" Schedule D line 15's wording is not provided, and nothing shows the Schedule D figures are limited to property held for investment. So the helper's min(line 15, line 16) floored at zero cannot be confirmed.",
    "ruling": "Ruling: scope and representation; project retained. As for line 4d: within scope the smaller of Schedule D lines 15 and 16, floored at zero, is the excess of net long-term capital gain over net short-term capital loss from investment property; the alternative allocation that changes line 4e is refused (`f4952.alternative_allocation`)."
   }
  ]

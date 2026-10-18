@@ -5,20 +5,8 @@
   {
    "printed": "bad_special",
    "restated": "(helper \"Unrecaptured section 1250 gain, box 2b\" > sd helper \"Capital gain distributions, generally Form 1099-DIV box 2a\" or helper \"Section 1202 gain, box 2c\" > sd helper \"Capital gain distributions, generally Form 1099-DIV box 2a\" or helper \"Collectibles (28%) gain, box 2d\" > sd helper \"Capital gain distributions, generally Form 1099-DIV box 2a\" or helper \"Total special capital-gain distribution components\" > sd helper \"Capital gain distributions, generally Form 1099-DIV box 2a\")",
-   "model": "The text says boxes 2b, 2c and 2d are each \"the portion of the amount in box 2a\", which supports the checks on each box alone. It doesn't say the three boxes never overlap, so the rule that their sum can't exceed box 2a can't be confirmed.",
+   "model": "The text supports each of boxes 2b, 2c and 2d being \"the portion of the amount in box 2a\", which justifies checking each one against 2a. It does not say these components are mutually exclusive, so whether their sum may exceed box 2a cannot be judged from the text given.",
    "ruling": "Ruling: project retained pending T-006. Boxes 2b, 2c and 2d are each 'the portion of the amount in box 2a'; whether the sum test (2b + 2c + 2d not more than 2a) assumes disjoint portions is the ambiguity-register candidate T-006, still undecided."
-  },
-  {
-   "printed": "box1b",
-   "restated": "Enter the amount from f1040 line 3a.",
-   "model": "Box 1b \"Shows the portion of the amount in box 1a that may be eligible\", and the box 1b instructions point to \"the Instructions for Form 1040 for how to determine this amount\". Those instructions aren't provided, so I can't confirm that Form 1040 line 3a always equals box 1b.",
-   "ruling": "Ruling: representation; project retained. Form 1040 line 3a is the filer's qualified dividends, which are 'generally ... shown in box 1b of Form(s) 1099-DIV' (i1040gi p. 25, line 3a). The line is the input the filer answers and the box is rendered as that amount; within the slice they are the same figure. No change to the data."
-  },
-  {
-   "printed": "box5",
-   "restated": "Enter the amount from qbi helper \"Qualified section 199A dividends from Form 1099-DIV box 5 after confirming holding-period and related-payment requirements\".",
-   "model": "Box 5 shows the portion of box 1a that \"may be eligible\" for the section 199A deduction. The source helper is box 5 \"after confirming holding-period and related-payment requirements\", and the Form 8995/8995-A instructions that would show whether that changes the amount aren't provided.",
-   "ruling": "Ruling: representation; project retained. Box 5 is the section 199A dividend amount that 'may be eligible'; `qbi.dividends` is the amount the filer confirms eligible after the holding-period and related-payment requirements of the Form 8995 instructions, which is what Form 8995 line 6 takes. The box is rendered from that input so the eligibility screen is the filer's own answer. No change to the data."
   }
  ]
 }

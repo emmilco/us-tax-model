@@ -171,54 +171,54 @@ Unasserted lines: eic.zero, eic.qc_count, eic.married_rules, eic.top_limit, eic.
 | line | A | B | C | R |
 | --- | --- | --- | --- | --- |
 | f1040.status | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | — |
-| f1040.line1a | — | — | — | 5 |
-| f1040.line1z | — | — | — | 5 |
+| f1040.line1a | — | — | — | 6 |
+| f1040.line1z | — | — | — | 6 |
 | f1040.line2a | — | — | — | — |
-| f1040.line2b | — | — | — | 5 |
-| f1040.line3b | — | — | — | 5 |
+| f1040.line2b | — | — | — | 6 |
+| f1040.line3b | — | — | — | 6 |
 | f1040.line3a | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 3 |
-| f1040.line7a | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 64 |
-| f1040.line8 | — | — | — | 7 |
-| f1040.line9 | — | — | — | 7 |
-| f1040.line10 | — | — | — | 6 |
-| f1040.line11a | — | — | — | 7 |
-| f1040.line11b | — | — | — | 20 |
-| f1040.line12e | — | — | — | 29 |
-| f1040.line13a | — | — | — | 5 |
-| f1040.line13b | — | — | — | 6 |
-| f1040.line14 | — | — | — | 5 |
-| f1040.line15 | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 7 |
+| f1040.line7a | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 65 |
+| f1040.line8 | — | — | — | 8 |
+| f1040.line9 | — | — | — | 8 |
+| f1040.line10 | — | — | — | 7 |
+| f1040.line11a | — | — | — | 8 |
+| f1040.line11b | — | — | — | 21 |
+| f1040.line12e | — | — | — | 30 |
+| f1040.line13a | — | — | — | 6 |
+| f1040.line13b | — | — | — | 7 |
+| f1040.line14 | — | — | — | 6 |
+| f1040.line15 | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 8 |
 | f1040.gate.qdcg_applies | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 7 |
 | f1040.gate.sdtw | — | — | — | 5 |
 | f1040.non_sdtw_tax | — | — | — | 2 (stage4.sdtw.special_rates, stage4.sdtw.skip22) |
-| f1040.line16 | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 13 |
-| f1040.line17 | — | — | — | 7 |
-| f1040.line18 | — | — | — | 7 |
-| f1040.line19 | — | — | — | 30 |
-| f1040.line20 | — | — | — | 5 |
-| f1040.line21 | — | — | — | 6 |
-| f1040.line22 | — | — | — | 6 |
-| f1040.line23 | — | — | — | 5 |
-| f1040.line24 | — | — | — | 6 |
-| f1040.line25a | — | — | — | 5 |
+| f1040.line16 | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 14 |
+| f1040.line17 | — | — | — | 8 |
+| f1040.line18 | — | — | — | 8 |
+| f1040.line19 | — | — | — | 31 |
+| f1040.line20 | — | — | — | 6 |
+| f1040.line21 | — | — | — | 7 |
+| f1040.line22 | — | — | — | 7 |
+| f1040.line23 | — | — | — | 6 |
+| f1040.line24 | — | — | — | 7 |
+| f1040.line25a | — | — | — | 6 |
 | f1040.line25b | — | — | — | 3 |
 | f1040.line25c | — | — | — | 3 |
-| f1040.line25d | — | — | — | 5 |
+| f1040.line25d | — | — | — | 6 |
 | f1040.line26 | — | — | — | 3 |
-| f1040.line27a | — | — | — | 50 |
-| f1040.line27b | — | — | — | 2 (stage9.eic.no_child.4000, stage9.eic.refuse.clergy_schedule1) |
-| f1040.line27c | — | — | — | 10 |
-| f1040.separated_spouses | — | — | — | 4 |
-| f1040.line28 | — | — | — | 31 |
-| f1040.line29 | — | — | — | 5 |
-| f1040.line30 | — | — | — | 5 |
-| f1040.line31 | — | — | — | 26 |
-| f1040.line32 | — | — | — | 6 |
-| f1040.line33 | — | — | — | 20 |
-| f1040.line34 | — | — | — | 44 |
+| f1040.line27a | — | — | — | 51 |
+| f1040.line27b | — | — | — | 5 |
+| f1040.line27c | — | — | — | 13 |
+| f1040.separated_spouses | — | — | — | 7 |
+| f1040.line28 | — | — | — | 32 |
+| f1040.line29 | — | — | — | 6 |
+| f1040.line30 | — | — | — | 6 |
+| f1040.line31 | — | — | — | 27 |
+| f1040.line32 | — | — | — | 7 |
+| f1040.line33 | — | — | — | 22 |
+| f1040.line34 | — | — | — | 45 |
 | f1040.line35a | — | — | — | 3 |
 | f1040.line36 | — | — | — | 3 |
-| f1040.line37 | — | — | — | 45 |
+| f1040.line37 | — | — | — | 46 |
 
 ## Form 4952 — supported investment-interest deduction and election
 

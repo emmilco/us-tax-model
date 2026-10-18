@@ -18,8 +18,7 @@ interview:
         doc: f1040
         locator: Form 1040, Filing Status
     - input: person.rrta
-      prompt: Do any wage statements report railroad retirement compensation or taxes
-        (W-2 box 14)?
+      prompt: 'Do any wage statements report railroad retirement compensation or taxes (W-2 box 14), or did you file Form CT-2 as an employee representative?'
       help: "Read iw2w3, pp. 12–13, Railroad employers: RRTA compensation and taxes in
         box 14; boxes 3–7 are not used for RRTA. Enter cents for money. Enter
         null if you do not know; it never becomes zero."
@@ -198,7 +197,7 @@ interview:
         doc: i1040gi
         locator: p. 18, Step 2, question 1, "or a resident of Canada or Mexico"
     - input: dependent.married
-      prompt: Was this person married at the end of 2025?
+      prompt: 'Was this person married at the end of 2025 (a person legally separated under a decree of divorce or separate maintenance is not married), or is this person filing a joint return for 2025 (for example with a spouse who died during 2025)?'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
         be null; do not guess. This computes the single-person return; joint returns and unsupported items
         are refused with citations.
@@ -245,7 +244,7 @@ interview:
         doc: i1040gi
         locator: p. 19, Step 4, "For whom you provided over half of the person's support in 2025"
     - input: dependent.other_claimant
-      prompt: Does this person meet the conditions to be the qualifying child of any other person for 2025?
+      prompt: 'Does this person meet the conditions to be the qualifying child of any other person for 2025, under the dependent rules or under the EIC rules (which have no support test)?'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
         be null; do not guess. This computes the single-person return; joint returns and unsupported items
         are refused with citations.
@@ -255,7 +254,7 @@ interview:
         locator: p. 17, Step 1, "If the child meets the conditions to be a qualifying child of any other person
           ... see Qualifying child of more than one person"
     - input: dependent.divorced_rule
-      prompt: Does the rule for children of divorced or separated parents apply to this person?
+      prompt: 'Does the special rule for children of divorced or separated parents, or parents who lived apart (including parents who never married), apply to this person, for example because a Form 8332 release or a decree lets the noncustodial parent claim the child?'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
         be null; do not guess. This computes the single-person return; joint returns and unsupported items
         are refused with citations.
@@ -264,7 +263,7 @@ interview:
         doc: i1040gi
         locator: p. 19, Step 4, "But see Children of divorced or separated parents"
     - input: dependent.multiple_support
-      prompt: Is this person claimed under a multiple support agreement?
+      prompt: 'Did you and others together provide over half of this person''s support for 2025, with no one person providing over half (a multiple support situation), whether you or another contributor claims the person?'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
         be null; do not guess. This computes the single-person return; joint returns and unsupported items
         are refused with citations.
@@ -322,7 +321,7 @@ interview:
         locator: p. 14, Head of Household, "You are considered unmarried for this purpose if any of the following
           applies"
     - input: s8812.combat_pay
-      prompt: Did you receive any nontaxable combat pay (Form W-2, box 12, code Q)?
+      prompt: 'Did you receive any nontaxable combat pay in 2025 (it is generally shown in Form W-2, box 12, code Q)?'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
         be null; do not guess. This computes the single-person return; joint returns and unsupported items
         are refused with citations.

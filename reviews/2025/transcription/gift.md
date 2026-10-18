@@ -7,7 +7,7 @@ Second transcription of `Form 8283 — groups of similar noncash property` by an
 | date | 2026-10-17 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 726712e97130074447c7ac7a4b6f2fc7befe3241899cf12c0865eea49413c701 |
+| prompt sha256 | ce0dc65622a81dad89d8ef3e99d136fcd9c683f67dc992802c39635e341678e7 |
 | printed lines compared | 1 |
 | agree / disagree / missing | 1 / 0 / 0 |
 | extra printed lines in second | none |
@@ -23,6 +23,14 @@ Second transcription of `Form 8283 — groups of similar noncash property` by an
 ### gift.allowed — Amount from gift.deduction
 Status: **AGREE**
 
+## Refusal gates listed by the second transcription
+
+Reported, not judged: the project often refuses before a worksheet is used, on the line that chooses it, which a per-line comparison cannot see.
+
+| line | gates listed | not read by the project's line |
+| --- | --- | --- |
+| gift.allowed | gift.special | - |
+
 ## Raw second transcription
 
 ```yaml
@@ -33,6 +41,7 @@ lines:
     label: "Amount from gift.deduction"
     type: NonNegDollars
     expr: {op: copy, from: gift.deduction}
-    note: "The request lists no printed lines to transcribe, so this is the only line. The instructions say not to use Form 8283 to figure the charitable contribution deduction. They say the 'amount of your deduction' is the amount before any income limits, after required reductions (Who Must File; Reductions to contribution). The form computes nothing further, so I copy gift.deduction unchanged. Neither gift.public_securities nor gift.special affects this amount. Those inputs only decide whether Section A or Section B applies."
+    refuses: [gift.special]
+    note: "The task lists no printed lines to transcribe, so this is the only line. The provided text says Form 8283 is not used to figure the deduction ('do not use Form 8283 to figure your charitable contribution deduction'). The amount therefore passes through unchanged from gift.deduction, which is already the deduction before income limits after required reductions. Section B items need a qualified appraisal and are outside what this tool computes. These include groups over $5,000 that are not publicly traded securities, partial interests, restricted-use property, and clothing or household items not in good used condition claimed over $500. Section A special items include vehicles, intellectual property and inventory. These cases are covered by the screening input gift.special, so this line refuses when it is true instead of computing them."
 ```
 ```

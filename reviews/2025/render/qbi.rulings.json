@@ -5,13 +5,13 @@
   {
    "printed": "deduction",
    "restated": "Choose — [helper \"Taxable income before QBI exceeds the Form 8995 threshold\" = true → f8995a line 39] [helper \"Taxable income before QBI exceeds the Form 8995 threshold\" = false → f8995 line 15]",
-   "model": "The Form 8995 branch matches line 15, 'Qualified business income deduction. Enter the smaller of line 10 or line 14.' No Form 8995-A text or instructions were provided, so I cannot confirm that f8995a line 39 is the dividend-only deduction amount.",
+   "model": "The Form 8995 branch matches: line 15 is the 'Qualified business income deduction. Enter the smaller of line 10 or line 14.' But none of the Form 8995-A form or instruction text is provided. Without it, I can't confirm that line 39 ('Add f8995a.line37, f8995a.line38') is the final QBI deduction for a filer with only dividends above the threshold.",
    "ruling": "Ruling: representation; project retained. Form 8995-A line 39 is \"Total qualified business income deduction. Add lines 37 and 38\" (f8995a p. 2), the amount the form carries to Form 1040 line 13a; the dividend-only Form 8995-A path has its own render log (all lines MATCH after the line 33 and 34 rulings). No change to the data."
   },
   {
    "printed": "net_capital_gain",
    "restated": "Add sd helper \"Nonnegative net capital gain for QDCGT\" and f1040 line 3a.",
-   "model": "The instructions say 'If you're not required to file Schedule D (Form 1040), your net capital gain is the amount reported on Form 1040, 1040-SR, or 1040-NR, line 7a.' The restatement always uses the smaller of Schedule D lines 15 and 16, floored at zero, and has no line 7a branch and no refusal for that case.",
+   "model": "The restatement always takes net capital gain from Schedule D and has no refusal for filers without one. The instructions say: 'If you're not required to file Schedule D (Form 1040), your net capital gain is the amount reported on Form 1040, 1040-SR, or 1040-NR, line 7a.' The Schedule D case (smaller of line 15 or 16, adding nothing if zero or less) does match.",
    "ruling": "Ruling: representation; project retained. For a Schedule D filer the helper is the smaller of Schedule D lines 15 and 16, floored at zero, plus Form 1040 line 3a, as the instructions say. When Schedule D is not required (i8995 p. 4: \"your net capital gain is the amount reported on Form 1040, 1040-SR, or 1040-NR, line 7a\") the Schedule D lines are still computed from line 13 alone, so lines 15 and 16 both equal the box 2a total that line 7a carries, and the helper gives the same amount. No change to the data."
   }
  ]

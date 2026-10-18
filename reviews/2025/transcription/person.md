@@ -7,7 +7,7 @@ Second transcription of `Excess Social Security credit — separately per person
 | date | 2026-10-17 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | f438e3baabb9431cf318b97e9aaeea315506d2915cec298b718cad9893364b0a |
+| prompt sha256 | ec80a360f9adba7ae36d545b9d331db288ea16e71246142f083e917db7d0fd19 |
 | printed lines compared | 13 |
 | agree / disagree / missing | 12 / 1 / 0 |
 | extra printed lines in second | none |
@@ -72,12 +72,20 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"const": false}, {"line": "over"}], "test": "eq"}, {"args": [{"const": true}, {"line": "eligible"}], "test": "eq"}], "test": "all"}, "then": {"line": "excess"}}, {"guard": {"args": [{"args": [{"const": false}, {"line": "eligible"}], "test": "eq"}, {"args": [{"const": true}, {"line": "over"}], "test": "eq"}], "test": "any"}, "then": {"line": "zero"}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"line": "eligible"}, {"args": [{"line": "over"}], "test": "not"}], "test": "all"}, "then": {"line": "excess"}}, {"guard": {"args": [{"line": "over"}, {"args": [{"line": "eligible"}], "test": "not"}], "test": "any"}, "then": {"line": "zero"}}], "op": "choose"}
 ```
 
-Second transcription's note: The text says: 'if any one employer withheld more than $10,918.20, you can't claim the excess on your return.' I read this as making the whole credit zero for this person, not only that employer's share. The text also allows excess tier 1 RRTA tax withheld, which is reported in W-2 box 14. No tier 1 inputs exist, so this line uses W-2 box 4 only. RRTA cases (person.rrta true) are assumed to be screened out elsewhere, and person.rrta is not used in the guards.
+Second transcription's note: The text says that if any one employer withheld more than $10,918.20 'you can't claim the excess on your return' and the employer should adjust it. It does not say whether this bars only that employer's overcollection or the whole credit. Read as barring the whole credit for this person (credit zero, Form 843 route). Tier 1 RRTA tax is outside the tool, so the line refuses when person.rrta is true.
 
 Ruling: refusal representation; project retained. The instruction says that if any one employer withheld more than $10,918.20 the excess cannot be claimed on the return and the employer should adjust it, otherwise Form 843 (i1040gi p. 117). The project refuses the return on that condition and on railroad (RRTA) compensation through the line's `refuses` entries; the second transcription returns a zero credit. The project's reading is the spec's refusal policy (spec 2.2, 2.5); within the non-refused scope the credit agrees (eligible: more than one employer and wages over the base; excess over the limit).
+
+## Refusal gates listed by the second transcription
+
+Reported, not judged: the project often refuses before a worksheet is used, on the line that chooses it, which a per-line comparison cannot see.
+
+| line | gates listed | not read by the project's line |
+| --- | --- | --- |
+| credit | person.rrta | - |
 
 ## Raw second transcription
 
@@ -89,7 +97,6 @@ lines:
     label: "Total w2.one for this person"
     type: Count
     expr: {op: sum_over, collection: w2, field: w2.one}
-    note: "The IRS text says 'more than one employer'. Each Form W-2 entry is counted as one employer through w2.one. Several W-2s from one employer are not combined here. The text does not say how to handle them, and I chose one W-2 per employer."
 
   - id: person.lineovercount
     printed: "overcount"
@@ -119,16 +126,24 @@ lines:
     type: NonNegDollars
     expr: {op: sum_over, collection: w2, field: w2.box4}
 
+  - id: person.h_multi
+    printed: "(helper)"
+    label: "More than one employer for 2025"
+    type: Bool
+    expr: {op: test, gt: [person.lineemployers, {param: ss.one}]}
+
+  - id: person.h_wages_over
+    printed: "(helper)"
+    label: "Total wages of more than $176,100"
+    type: Bool
+    expr: {op: test, gt: [person.linewages, {param: ss.base}]}
+    note: "The instructions say 'total wages of more than $176,100' without naming boxes; read as total social security wages and tips (W-2 boxes 3 and 7, i.e. w2.wages), per the printed line label."
+
   - id: person.lineeligible
     printed: "eligible"
     label: "More than one employer and total social security wages over $176,100"
     type: Bool
-    expr:
-      op: test
-      all:
-        - {op: test, gt: [person.lineemployers, {param: ss.one}]}
-        - {op: test, gt: [person.linewages, {param: ss.base}]}
-    note: "The Form 1040 instructions say 'total wages of more than $176,100' without naming a measure of wages. I read this as social security wages plus social security tips (W-2 boxes 3 and 7, totaled as w2.wages). The $176,100 wage base in the W-2 instructions applies to that measure."
+    expr: {op: test, all: [person.h_multi, person.h_wages_over]}
 
   - id: person.lineexcess
     printed: "excess"
@@ -140,7 +155,13 @@ lines:
     printed: "zero"
     label: "No excess credit"
     type: NonNegDollars
-    expr: {op: param, ref: sales.zero}
+    expr: {op: param, ref: ss.zero}
+
+  - id: person.h_claim
+    printed: "(helper)"
+    label: "Eligible for the credit and no one employer withheld more than $10,918.20"
+    type: Bool
+    expr: {op: test, all: [person.lineeligible, {op: test, not: person.lineover}]}
 
   - id: person.linecredit
     printed: "credit"
@@ -149,19 +170,12 @@ lines:
     expr:
       op: choose
       alternatives:
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [person.lineeligible, {const: true}]}
-              - {op: test, eq: [person.lineover, {const: false}]}
+        - guard: {op: test, eq: [person.h_claim, {const: true}]}
           then: person.lineexcess
-        - guard:
-            op: test
-            any:
-              - {op: test, eq: [person.lineeligible, {const: false}]}
-              - {op: test, eq: [person.lineover, {const: true}]}
+        - guard: {op: test, eq: [person.h_claim, {const: false}]}
           then: person.linezero
-    note: "The text says: 'if any one employer withheld more than $10,918.20, you can't claim the excess on your return.' I read this as making the whole credit zero for this person, not only that employer's share. The text also allows excess tier 1 RRTA tax withheld, which is reported in W-2 box 14. No tier 1 inputs exist, so this line uses W-2 box 4 only. RRTA cases (person.rrta true) are assumed to be screened out elsewhere, and person.rrta is not used in the guards."
+    refuses: [person.rrta]
+    note: "The text says that if any one employer withheld more than $10,918.20 'you can't claim the excess on your return' and the employer should adjust it. It does not say whether this bars only that employer's overcollection or the whole credit. Read as barring the whole credit for this person (credit zero, Form 843 route). Tier 1 RRTA tax is outside the tool, so the line refuses when person.rrta is true."
 
   - id: person.box1
     printed: "(helper)"

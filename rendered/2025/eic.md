@@ -174,7 +174,7 @@
 ## (helper) — `eic.step1_foreign`
 
 - **Authored helper label:** Step 1, question 3. Not filing Form 2555 (foreign earned income)
-- **Encoded (Bool):** sa helper "Any excluded Puerto Rico income, Form 2555 or Form 4563 amounts?" = false
+- **Encoded (Bool):** sa helper "Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico?" = false
 - **Refusal:** when sa.excluded_income is true, cannot complete Form 2555 (EIC, Step 1, question 3). A filer excluding foreign earned income can't take the EIC; Form 2555 and excluded income are outside this tool. Cite: [i1040gi] p. 40, Step 1, question 3, "Are you filing Form 2555 (relating to foreign earned income)? Yes. STOP" (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"eq":["sa.excluded_income",{"const":false}],"op":"test"}`
 - Cite: [i1040gi] p. 40, Step 1, question 3 (2025; printed date 2026-02-25; sha256 482e9c48)
@@ -182,7 +182,7 @@
 ## (helper) — `eic.step1_resident`
 
 - **Authored helper label:** Step 1, question 4. Not a nonresident alien for any part of 2025
-- **Encoded (Bool):** scope helper "Any retirement, Social Security, nonresident or other income/return treatment outside wages, interest, dividends and supported securities sales, including wages or tips not on a Form W-2, Medicaid waiver payments, dependent care or adoption benefits, or other earned income (Form 1040 lines 1b–1h)?" = false
+- **Encoded (Bool):** scope helper "Any retirement, Social Security, nonresident alien (you or your spouse, for any part of 2025) or other income or return treatment outside wages, interest, dividends and supported securities sales, including wages or tips not on a Form W-2, Medicaid waiver payments (whether or not in Form W-2 box 1), dependent care or adoption benefits, other earned income (Form 1040 lines 1b-1h), or income or loss from a passive activity (including gain on selling an interest in one)?" = false
 - **Refusal:** when scope.other_income is true, cannot complete Nonresident aliens (EIC, Step 1, question 4). Nonresident and dual-status treatment is outside this tool. Cite: [i1040gi] p. 40, Step 1, question 4; p. 44, Nonresident aliens (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"eq":["scope.other_income",{"const":false}],"op":"test"}`
 - Cite: [i1040gi] p. 40, Step 1, question 4 (2025; printed date 2026-02-25; sha256 482e9c48)
@@ -211,7 +211,7 @@
 ## (helper) — `eic.step2_other`
 
 - **Authored helper label:** Step 2, question 4. No Schedule E, rental of personal property, Form 8814 or passive activity
-- **Encoded (Bool):** scope helper "Any income or adjustment requiring Schedule 1, including a taxable state/local tax refund?" = false and scope helper "Any additional Form 1040 line 16 tax, including Forms 8814, 4972, 8615 or a section 962 election?" = false
+- **Encoded (Bool):** scope helper "Any income or adjustment requiring Schedule 1, including a taxable state or local tax refund, unemployment compensation, self-employment income or Schedule SE (including clergy and church employee income), Schedule C income including statutory-employee wages, or an exclusion of Medicaid waiver payments (Schedule 1 line 8s)? (Schedule 1-A deductions are asked separately.)" = false and scope helper "Any additional Form 1040 line 16 tax or filing, including filing Form 8814 (even with no tax), Form 4972, Form 8615, a section 962 election, Form 8621, a Form 8978 amount, or recapture of an education credit?" = false
 - **Refusal:** when scope.schedule1 is true, cannot complete Pub. 596, Worksheet 1 (EIC, Step 2, question 4). Schedule E, rental of personal property and passive activity income are outside this tool. Cite: [i1040gi] p. 40, Step 2, question 4, "Yes. Use Worksheet 1 in Pub. 596" (2025; printed date 2026-02-25; sha256 482e9c48)
 - **Refusal:** when scope.other_line16 is true, cannot complete Form 8814 (EIC, Step 2, question 4). Reporting a child's interest and dividends on Form 8814 is outside this tool. Cite: [i1040gi] p. 40, Step 2, question 4 (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"all":[{"eq":["scope.schedule1",{"const":false}],"op":"test"},{"eq":["scope.other_line16",{"const":false}],"op":"test"}],"op":"test"}`
@@ -248,7 +248,7 @@
 ## (helper) — `eic.step4`
 
 - **Authored helper label:** Step 4: not a married filer filing separately or as head of household, aged 25 to 64, main home in the United States, and not a qualifying child or dependent of another person
-- **Encoded (Bool):** helper "A married filer whose filing status is married filing separately or head of household" = false and helper "Were you born before January 2, 2001?" = true and sa helper "Were you born before January 2, 1961?" = false and helper "Was your main home in the United States for more than half of 2025?" = true and (f1040 line Filing Status = 'mfj' or helper "Could you be a qualifying child of another person for 2025?" = false and sa helper "Can someone claim you or your spouse as a dependent, or are you a dual-status alien?" = false)
+- **Encoded (Bool):** helper "A married filer whose filing status is married filing separately or head of household" = false and helper "Were you born before January 2, 2001?" = true and sa helper "Were you born before January 2, 1961?" = false and helper "Was your main home in the United States for more than half of 2025?" = true and (f1040 line Filing Status = 'mfj' or helper "Could you be a qualifying child of another person for 2025?" = false and sa helper "Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)" = false)
 - **Refusal:** when sa.dependent is true, cannot complete Dependent of another person or dual-status alien (EIC, Step 4, question 6). A filer who can be claimed as a dependent, or a dual-status alien, is outside this tool. Cite: [i1040gi] p. 42, Step 4, question 6 (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"all":[{"eq":["eic.married_rules",{"const":false}],"op":"test"},{"eq":["eic.born_before_2001",{"const":true}],"op":"test"},{"eq":["sa.age65",{"const":false}],"op":"test"},{"eq":["eic.us_home",{"const":true}],"op":"test"},{"any":[{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},{"all":[{"eq":["eic.qc_of_another",{"const":false}],"op":"test"},{"eq":["sa.dependent",{"const":false}],"op":"test"}],"op":"test"}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] pp. 41–42, Step 4, questions 1 to 6 (question 2 "at least age 25 but under age 65", born after December 31, 1960 and before January 2, 2001; sa.age65 is born before January 2, 1961) (2025; printed date 2026-02-25; sha256 482e9c48)
@@ -525,7 +525,7 @@
 ## (helper) — `eic.clergy`
 
 - **Authored helper label:** A member of the clergy filing Schedule SE with an amount also on Form 1040, line 1z (refused; Schedule SE is outside the tool)
-- **Encoded (Bool):** scope helper "Any income or adjustment requiring Schedule 1, including a taxable state/local tax refund?" = true
+- **Encoded (Bool):** scope helper "Any income or adjustment requiring Schedule 1, including a taxable state or local tax refund, unemployment compensation, self-employment income or Schedule SE (including clergy and church employee income), Schedule C income including statutory-employee wages, or an exclusion of Medicaid waiver payments (Schedule 1 line 8s)? (Schedule 1-A deductions are asked separately.)" = true
 - **Refusal:** when scope.schedule1 is true, cannot complete Clergy filing Schedule SE (Form 1040, line 27b). Schedule SE is outside this tool. Cite: [i1040gi] p. 43, Line 27b, and Clergy (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"eq":["scope.schedule1",{"const":true}],"op":"test"}`
 - Cite: [i1040gi] p. 43, Line 27b (2025; printed date 2026-02-25; sha256 482e9c48)

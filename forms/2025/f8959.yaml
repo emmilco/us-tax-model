@@ -9,12 +9,10 @@ form:
     - id: f8959.unsupported
       printed: (helper)
       type: Bool
-      label: Any self-employment income, RRTA compensation, unreported tips (Form 4137), Form 8919
-        wages, or uncollected Medicare tax in Form W-2 box 12 (codes B or N)?
+      label: 'Any self-employment income (including church employee income), RRTA compensation, tips not reported to your employer or allocated tips in Form W-2 box 8 (Form 4137), Form 8919 wages, uncollected Medicare tax in Form W-2 box 12 (codes B or N), or Medicare wages on a wage statement from a U.S. territory (such as Form 499R-2/W-2PR)?'
       expr:
         op: input
-        source: Any self-employment income, RRTA compensation, unreported tips (Form 4137), Form 8919
-          wages, or uncollected Medicare tax in Form W-2 box 12 (codes B or N)?
+        source: 'Any self-employment income (including church employee income), RRTA compensation, tips not reported to your employer or allocated tips in Form W-2 box 8 (Form 4137), Form 8919 wages, uncollected Medicare tax in Form W-2 box 12 (codes B or N), or Medicare wages on a wage statement from a U.S. territory (such as Form 499R-2/W-2PR)?'
       cite:
         doc: f8959
         locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3

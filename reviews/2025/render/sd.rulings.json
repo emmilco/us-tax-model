@@ -5,193 +5,193 @@
   {
    "printed": "10(d)",
    "restated": "Add sales.proceeds over every confirmed sales entry for which helper \"Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets\" = 'F' and helper \"Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals\" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "The IRS line covers \"Box F or Box L checked.\" Only classification 'F' is summed, so Box L is omitted without a refusal.",
+   "model": "The IRS line says 'with Box F or Box L checked', but only classification 'F' is summed and there is no refusal for L.",
    "ruling": "Ruling: scope; project retained. Boxes G–L (digital assets reported on Form 1099-DA; f8949 p. 1: \"(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\") are refused at the transaction: `sales.one` refuses when `sales.digital` is true, the refusal propagates through `sd.count` to `sd.screen`, and every Schedule D total refuses on `sd.screen` before any box filter runs. Within the supported boxes A–F the filter reads as the line does. The filters must widen to boxes G–L when digital assets come into scope (recorded in the transcription rulings). No change to the data."
   },
   {
    "printed": "10(e)",
    "restated": "Add sales.e over every confirmed sales entry for which helper \"Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets\" = 'F' and helper \"Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals\" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "The IRS line covers \"Box F or Box L checked.\" Only classification 'F' is summed, so Box L is omitted.",
+   "model": "The IRS line says 'with Box F or Box L checked', but only classification 'F' is summed and there is no refusal for L.",
    "ruling": "Ruling: scope; project retained. Boxes G–L (digital assets reported on Form 1099-DA; f8949 p. 1: \"(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\") are refused at the transaction: `sales.one` refuses when `sales.digital` is true, the refusal propagates through `sd.count` to `sd.screen`, and every Schedule D total refuses on `sd.screen` before any box filter runs. Within the supported boxes A–F the filter reads as the line does. The filters must widen to boxes G–L when digital assets come into scope (recorded in the transcription rulings). No change to the data."
   },
   {
    "printed": "10(g)",
    "restated": "Add sales.g over every confirmed sales entry for which helper \"Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets\" = 'F' and helper \"Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals\" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "The IRS line covers \"Box F or Box L checked.\" Only classification 'F' is summed, so Box L is omitted.",
+   "model": "The IRS line says 'with Box F or Box L checked', but only classification 'F' is summed and there is no refusal for L.",
    "ruling": "Ruling: scope; project retained. Boxes G–L (digital assets reported on Form 1099-DA; f8949 p. 1: \"(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\") are refused at the transaction: `sales.one` refuses when `sales.digital` is true, the refusal propagates through `sd.count` to `sd.screen`, and every Schedule D total refuses on `sd.screen` before any box filter runs. Within the supported boxes A–F the filter reads as the line does. The filters must widen to boxes G–L when digital assets come into scope (recorded in the transcription rulings). No change to the data."
   },
   {
    "printed": "10(h)",
    "restated": "Add sales.h over every confirmed sales entry for which helper \"Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets\" = 'F' and helper \"Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals\" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "The IRS line covers \"Box F or Box L checked.\" Only classification 'F' is summed, so Box L is omitted.",
+   "model": "The IRS line says 'with Box F or Box L checked', but only classification 'F' is summed and there is no refusal for L.",
    "ruling": "Ruling: scope; project retained. Boxes G–L (digital assets reported on Form 1099-DA; f8949 p. 1: \"(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\") are refused at the transaction: `sales.one` refuses when `sales.digital` is true, the refusal propagates through `sd.count` to `sd.screen`, and every Schedule D total refuses on `sd.screen` before any box filter runs. Within the supported boxes A–F the filter reads as the line does. The filters must widen to boxes G–L when digital assets come into scope (recorded in the transcription rulings). No change to the data."
   },
   {
    "printed": "1a(d)",
    "restated": "Add sales.proceeds over every confirmed sales entry for which helper \"Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets\" = 'A' and helper \"Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals\" = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "Line 1a covers short-term transactions \"reported on Form 1099-B or Form 1099-DA for which basis was reported to the IRS and for which you have no adjustments.\" The sum takes only classification 'A', so aggregate digital-asset entries (class G) are left out, and no refusal excludes digital assets.",
+   "model": "Only classification 'A' is summed, but line 1a covers short-term transactions 'reported on Form 1099-B or Form 1099-DA for which basis was reported to the IRS'. The digital-asset counterpart (G) is left out, and no refusal names it.",
    "ruling": "Ruling: scope; project retained. Boxes G–L (digital assets reported on Form 1099-DA; f8949 p. 1: \"(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\") are refused at the transaction: `sales.one` refuses when `sales.digital` is true, the refusal propagates through `sd.count` to `sd.screen`, and every Schedule D total refuses on `sd.screen` before any box filter runs. Within the supported boxes A–F the filter reads as the line does. The filters must widen to boxes G–L when digital assets come into scope (recorded in the transcription rulings). No change to the data."
   },
   {
    "printed": "1a(e)",
    "restated": "Add sales.e over every confirmed sales entry for which helper \"Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets\" = 'A' and helper \"Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals\" = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "Line 1a includes transactions \"reported on Form 1099-B or Form 1099-DA,\" but the sum takes only classification 'A'. Aggregate digital-asset entries (G) are omitted, and no refusal excludes them.",
+   "model": "Only classification 'A' is summed, but line 1a covers transactions 'reported on Form 1099-B or Form 1099-DA'. Digital-asset class G is omitted, and no refusal excludes it.",
    "ruling": "Ruling: scope; project retained. Boxes G–L (digital assets reported on Form 1099-DA; f8949 p. 1: \"(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\") are refused at the transaction: `sales.one` refuses when `sales.digital` is true, the refusal propagates through `sd.count` to `sd.screen`, and every Schedule D total refuses on `sd.screen` before any box filter runs. Within the supported boxes A–F the filter reads as the line does. The filters must widen to boxes G–L when digital assets come into scope (recorded in the transcription rulings). No change to the data."
   },
   {
    "printed": "1a(g)",
    "restated": "Add sales.g over every confirmed sales entry for which helper \"Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets\" = 'A' and helper \"Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals\" = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "Line 1a includes \"Form 1099-B or Form 1099-DA\" transactions, but only classification 'A' is summed. Digital-asset class G is omitted without a refusal.",
+   "model": "Only classification 'A' is summed, but line 1a covers transactions 'reported on Form 1099-B or Form 1099-DA'. Digital-asset class G is omitted, and no refusal excludes it.",
    "ruling": "Ruling: scope; project retained. Boxes G–L (digital assets reported on Form 1099-DA; f8949 p. 1: \"(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\") are refused at the transaction: `sales.one` refuses when `sales.digital` is true, the refusal propagates through `sd.count` to `sd.screen`, and every Schedule D total refuses on `sd.screen` before any box filter runs. Within the supported boxes A–F the filter reads as the line does. The filters must widen to boxes G–L when digital assets come into scope (recorded in the transcription rulings). No change to the data."
   },
   {
    "printed": "1a(h)",
    "restated": "Add sales.h over every confirmed sales entry for which helper \"Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets\" = 'A' and helper \"Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals\" = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "Line 1a includes \"Form 1099-B or Form 1099-DA\" transactions, but only classification 'A' is summed. Digital-asset class G is omitted without a refusal.",
+   "model": "Only classification 'A' is summed, but line 1a covers transactions 'reported on Form 1099-B or Form 1099-DA'. Digital-asset class G is omitted, and no refusal excludes it.",
    "ruling": "Ruling: scope; project retained. Boxes G–L (digital assets reported on Form 1099-DA; f8949 p. 1: \"(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\") are refused at the transaction: `sales.one` refuses when `sales.digital` is true, the refusal propagates through `sd.count` to `sd.screen`, and every Schedule D total refuses on `sd.screen` before any box filter runs. Within the supported boxes A–F the filter reads as the line does. The filters must widen to boxes G–L when digital assets come into scope (recorded in the transcription rulings). No change to the data."
   },
   {
    "printed": "1b(d)",
    "restated": "Add sales.proceeds over every confirmed sales entry for which helper \"Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets\" = 'A' and helper \"Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals\" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "The IRS line is \"Totals for all transactions reported on Form(s) 8949 with Box A or Box G checked.\" The restatement sums only classification 'A' and omits Box G, with no refusal for digital assets.",
+   "model": "The IRS line says 'with Box A or Box G checked', but the restatement sums only classification 'A' and has no refusal for G.",
    "ruling": "Ruling: scope; project retained. Boxes G–L (digital assets reported on Form 1099-DA; f8949 p. 1: \"(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\") are refused at the transaction: `sales.one` refuses when `sales.digital` is true, the refusal propagates through `sd.count` to `sd.screen`, and every Schedule D total refuses on `sd.screen` before any box filter runs. Within the supported boxes A–F the filter reads as the line does. The filters must widen to boxes G–L when digital assets come into scope (recorded in the transcription rulings). No change to the data."
   },
   {
    "printed": "1b(e)",
    "restated": "Add sales.e over every confirmed sales entry for which helper \"Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets\" = 'A' and helper \"Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals\" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "The IRS line covers \"Box A or Box G checked.\" Only classification 'A' is summed, so Box G is omitted.",
+   "model": "The IRS line says 'with Box A or Box G checked', but the restatement sums only classification 'A' and has no refusal for G.",
    "ruling": "Ruling: scope; project retained. Boxes G–L (digital assets reported on Form 1099-DA; f8949 p. 1: \"(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\") are refused at the transaction: `sales.one` refuses when `sales.digital` is true, the refusal propagates through `sd.count` to `sd.screen`, and every Schedule D total refuses on `sd.screen` before any box filter runs. Within the supported boxes A–F the filter reads as the line does. The filters must widen to boxes G–L when digital assets come into scope (recorded in the transcription rulings). No change to the data."
   },
   {
    "printed": "1b(g)",
    "restated": "Add sales.g over every confirmed sales entry for which helper \"Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets\" = 'A' and helper \"Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals\" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "The IRS line covers \"Box A or Box G checked.\" Only classification 'A' is summed, so Box G is omitted.",
+   "model": "The IRS line says 'with Box A or Box G checked', but the restatement sums only classification 'A' and has no refusal for G.",
    "ruling": "Ruling: scope; project retained. Boxes G–L (digital assets reported on Form 1099-DA; f8949 p. 1: \"(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\") are refused at the transaction: `sales.one` refuses when `sales.digital` is true, the refusal propagates through `sd.count` to `sd.screen`, and every Schedule D total refuses on `sd.screen` before any box filter runs. Within the supported boxes A–F the filter reads as the line does. The filters must widen to boxes G–L when digital assets come into scope (recorded in the transcription rulings). No change to the data."
   },
   {
    "printed": "1b(h)",
    "restated": "Add sales.h over every confirmed sales entry for which helper \"Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets\" = 'A' and helper \"Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals\" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "The IRS line covers \"Box A or Box G checked.\" Only classification 'A' is summed, so Box G is omitted.",
+   "model": "The IRS line says 'with Box A or Box G checked', but the restatement sums only classification 'A' and has no refusal for G.",
    "ruling": "Ruling: scope; project retained. Boxes G–L (digital assets reported on Form 1099-DA; f8949 p. 1: \"(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\") are refused at the transaction: `sales.one` refuses when `sales.digital` is true, the refusal propagates through `sd.count` to `sd.screen`, and every Schedule D total refuses on `sd.screen` before any box filter runs. Within the supported boxes A–F the filter reads as the line does. The filters must widen to boxes G–L when digital assets come into scope (recorded in the transcription rulings). No change to the data."
   },
   {
    "printed": "2(d)",
    "restated": "Add sales.proceeds over every confirmed sales entry for which helper \"Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets\" = 'B' and helper \"Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals\" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "The IRS line covers \"Box B or Box H checked.\" Only classification 'B' is summed, so Box H is omitted without a refusal.",
+   "model": "The IRS line says 'with Box B or Box H checked', but only classification 'B' is summed and there is no refusal for H.",
    "ruling": "Ruling: scope; project retained. Boxes G–L (digital assets reported on Form 1099-DA; f8949 p. 1: \"(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\") are refused at the transaction: `sales.one` refuses when `sales.digital` is true, the refusal propagates through `sd.count` to `sd.screen`, and every Schedule D total refuses on `sd.screen` before any box filter runs. Within the supported boxes A–F the filter reads as the line does. The filters must widen to boxes G–L when digital assets come into scope (recorded in the transcription rulings). No change to the data."
   },
   {
    "printed": "2(e)",
    "restated": "Add sales.e over every confirmed sales entry for which helper \"Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets\" = 'B' and helper \"Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals\" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "The IRS line covers \"Box B or Box H checked.\" Only classification 'B' is summed, so Box H is omitted.",
+   "model": "The IRS line says 'with Box B or Box H checked', but only classification 'B' is summed and there is no refusal for H.",
    "ruling": "Ruling: scope; project retained. Boxes G–L (digital assets reported on Form 1099-DA; f8949 p. 1: \"(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\") are refused at the transaction: `sales.one` refuses when `sales.digital` is true, the refusal propagates through `sd.count` to `sd.screen`, and every Schedule D total refuses on `sd.screen` before any box filter runs. Within the supported boxes A–F the filter reads as the line does. The filters must widen to boxes G–L when digital assets come into scope (recorded in the transcription rulings). No change to the data."
   },
   {
    "printed": "2(g)",
    "restated": "Add sales.g over every confirmed sales entry for which helper \"Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets\" = 'B' and helper \"Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals\" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "The IRS line covers \"Box B or Box H checked.\" Only classification 'B' is summed, so Box H is omitted.",
+   "model": "The IRS line says 'with Box B or Box H checked', but only classification 'B' is summed and there is no refusal for H.",
    "ruling": "Ruling: scope; project retained. Boxes G–L (digital assets reported on Form 1099-DA; f8949 p. 1: \"(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\") are refused at the transaction: `sales.one` refuses when `sales.digital` is true, the refusal propagates through `sd.count` to `sd.screen`, and every Schedule D total refuses on `sd.screen` before any box filter runs. Within the supported boxes A–F the filter reads as the line does. The filters must widen to boxes G–L when digital assets come into scope (recorded in the transcription rulings). No change to the data."
   },
   {
    "printed": "2(h)",
    "restated": "Add sales.h over every confirmed sales entry for which helper \"Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets\" = 'B' and helper \"Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals\" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "The IRS line covers \"Box B or Box H checked.\" Only classification 'B' is summed, so Box H is omitted.",
+   "model": "The IRS line says 'with Box B or Box H checked', but only classification 'B' is summed and there is no refusal for H.",
    "ruling": "Ruling: scope; project retained. Boxes G–L (digital assets reported on Form 1099-DA; f8949 p. 1: \"(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\") are refused at the transaction: `sales.one` refuses when `sales.digital` is true, the refusal propagates through `sd.count` to `sd.screen`, and every Schedule D total refuses on `sd.screen` before any box filter runs. Within the supported boxes A–F the filter reads as the line does. The filters must widen to boxes G–L when digital assets come into scope (recorded in the transcription rulings). No change to the data."
   },
   {
    "printed": "3(d)",
    "restated": "Add sales.proceeds over every confirmed sales entry for which helper \"Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets\" = 'C' and helper \"Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals\" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "The IRS line covers \"Box C or Box I checked.\" Only classification 'C' is summed, so Box I is omitted without a refusal.",
+   "model": "The IRS line says 'with Box C or Box I checked', but only classification 'C' is summed and there is no refusal for I.",
    "ruling": "Ruling: scope; project retained. Boxes G–L (digital assets reported on Form 1099-DA; f8949 p. 1: \"(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\") are refused at the transaction: `sales.one` refuses when `sales.digital` is true, the refusal propagates through `sd.count` to `sd.screen`, and every Schedule D total refuses on `sd.screen` before any box filter runs. Within the supported boxes A–F the filter reads as the line does. The filters must widen to boxes G–L when digital assets come into scope (recorded in the transcription rulings). No change to the data."
   },
   {
    "printed": "3(e)",
    "restated": "Add sales.e over every confirmed sales entry for which helper \"Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets\" = 'C' and helper \"Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals\" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "The IRS line covers \"Box C or Box I checked.\" Only classification 'C' is summed, so Box I is omitted.",
+   "model": "The IRS line says 'with Box C or Box I checked', but only classification 'C' is summed and there is no refusal for I.",
    "ruling": "Ruling: scope; project retained. Boxes G–L (digital assets reported on Form 1099-DA; f8949 p. 1: \"(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\") are refused at the transaction: `sales.one` refuses when `sales.digital` is true, the refusal propagates through `sd.count` to `sd.screen`, and every Schedule D total refuses on `sd.screen` before any box filter runs. Within the supported boxes A–F the filter reads as the line does. The filters must widen to boxes G–L when digital assets come into scope (recorded in the transcription rulings). No change to the data."
   },
   {
    "printed": "3(g)",
    "restated": "Add sales.g over every confirmed sales entry for which helper \"Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets\" = 'C' and helper \"Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals\" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "The IRS line covers \"Box C or Box I checked.\" Only classification 'C' is summed, so Box I is omitted.",
+   "model": "The IRS line says 'with Box C or Box I checked', but only classification 'C' is summed and there is no refusal for I.",
    "ruling": "Ruling: scope; project retained. Boxes G–L (digital assets reported on Form 1099-DA; f8949 p. 1: \"(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\") are refused at the transaction: `sales.one` refuses when `sales.digital` is true, the refusal propagates through `sd.count` to `sd.screen`, and every Schedule D total refuses on `sd.screen` before any box filter runs. Within the supported boxes A–F the filter reads as the line does. The filters must widen to boxes G–L when digital assets come into scope (recorded in the transcription rulings). No change to the data."
   },
   {
    "printed": "3(h)",
    "restated": "Add sales.h over every confirmed sales entry for which helper \"Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets\" = 'C' and helper \"Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals\" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "The IRS line covers \"Box C or Box I checked.\" Only classification 'C' is summed, so Box I is omitted.",
+   "model": "The IRS line says 'with Box C or Box I checked', but only classification 'C' is summed and there is no refusal for I.",
    "ruling": "Ruling: scope; project retained. Boxes G–L (digital assets reported on Form 1099-DA; f8949 p. 1: \"(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\") are refused at the transaction: `sales.one` refuses when `sales.digital` is true, the refusal propagates through `sd.count` to `sd.screen`, and every Schedule D total refuses on `sd.screen` before any box filter runs. Within the supported boxes A–F the filter reads as the line does. The filters must widen to boxes G–L when digital assets come into scope (recorded in the transcription rulings). No change to the data."
   },
   {
    "printed": "8a(d)",
    "restated": "Add sales.proceeds over every confirmed sales entry for which helper \"Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets\" = 'D' and helper \"Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals\" = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "Line 8a covers long-term transactions \"reported on Form 1099-B or Form 1099-DA for which basis was reported.\" Only classification 'D' is summed, so aggregate digital-asset entries (J) are omitted without a refusal.",
+   "model": "Line 8a covers long-term transactions 'reported on Form 1099-B or Form 1099-DA for which basis was reported'. The restatement sums only classification 'D', omitting digital-asset class J, and no refusal excludes it.",
    "ruling": "Ruling: scope; project retained. Boxes G–L (digital assets reported on Form 1099-DA; f8949 p. 1: \"(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\") are refused at the transaction: `sales.one` refuses when `sales.digital` is true, the refusal propagates through `sd.count` to `sd.screen`, and every Schedule D total refuses on `sd.screen` before any box filter runs. Within the supported boxes A–F the filter reads as the line does. The filters must widen to boxes G–L when digital assets come into scope (recorded in the transcription rulings). No change to the data."
   },
   {
    "printed": "8a(e)",
    "restated": "Add sales.e over every confirmed sales entry for which helper \"Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets\" = 'D' and helper \"Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals\" = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "Line 8a includes \"Form 1099-B or Form 1099-DA\" transactions, but only classification 'D' is summed. Digital-asset class J is omitted.",
+   "model": "Line 8a covers transactions 'reported on Form 1099-B or Form 1099-DA'. Only classification 'D' is summed, digital-asset class J is omitted, and no refusal excludes it.",
    "ruling": "Ruling: scope; project retained. Boxes G–L (digital assets reported on Form 1099-DA; f8949 p. 1: \"(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\") are refused at the transaction: `sales.one` refuses when `sales.digital` is true, the refusal propagates through `sd.count` to `sd.screen`, and every Schedule D total refuses on `sd.screen` before any box filter runs. Within the supported boxes A–F the filter reads as the line does. The filters must widen to boxes G–L when digital assets come into scope (recorded in the transcription rulings). No change to the data."
   },
   {
    "printed": "8a(g)",
    "restated": "Add sales.g over every confirmed sales entry for which helper \"Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets\" = 'D' and helper \"Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals\" = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "Line 8a includes \"Form 1099-B or Form 1099-DA\" transactions, but only classification 'D' is summed. Digital-asset class J is omitted.",
+   "model": "Line 8a covers transactions 'reported on Form 1099-B or Form 1099-DA'. Only classification 'D' is summed, digital-asset class J is omitted, and no refusal excludes it.",
    "ruling": "Ruling: scope; project retained. Boxes G–L (digital assets reported on Form 1099-DA; f8949 p. 1: \"(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\") are refused at the transaction: `sales.one` refuses when `sales.digital` is true, the refusal propagates through `sd.count` to `sd.screen`, and every Schedule D total refuses on `sd.screen` before any box filter runs. Within the supported boxes A–F the filter reads as the line does. The filters must widen to boxes G–L when digital assets come into scope (recorded in the transcription rulings). No change to the data."
   },
   {
    "printed": "8a(h)",
    "restated": "Add sales.h over every confirmed sales entry for which helper \"Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets\" = 'D' and helper \"Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals\" = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "Line 8a includes \"Form 1099-B or Form 1099-DA\" transactions, but only classification 'D' is summed. Digital-asset class J is omitted.",
+   "model": "Line 8a covers transactions 'reported on Form 1099-B or Form 1099-DA'. Only classification 'D' is summed, digital-asset class J is omitted, and no refusal excludes it.",
    "ruling": "Ruling: scope; project retained. Boxes G–L (digital assets reported on Form 1099-DA; f8949 p. 1: \"(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\") are refused at the transaction: `sales.one` refuses when `sales.digital` is true, the refusal propagates through `sd.count` to `sd.screen`, and every Schedule D total refuses on `sd.screen` before any box filter runs. Within the supported boxes A–F the filter reads as the line does. The filters must widen to boxes G–L when digital assets come into scope (recorded in the transcription rulings). No change to the data."
   },
   {
    "printed": "8b(d)",
    "restated": "Add sales.proceeds over every confirmed sales entry for which helper \"Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets\" = 'D' and helper \"Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals\" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "The IRS line covers \"Box D or Box J checked.\" Only classification 'D' is summed, so Box J is omitted without a refusal.",
+   "model": "The IRS line says 'with Box D or Box J checked', but only classification 'D' is summed and there is no refusal for J.",
    "ruling": "Ruling: scope; project retained. Boxes G–L (digital assets reported on Form 1099-DA; f8949 p. 1: \"(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\") are refused at the transaction: `sales.one` refuses when `sales.digital` is true, the refusal propagates through `sd.count` to `sd.screen`, and every Schedule D total refuses on `sd.screen` before any box filter runs. Within the supported boxes A–F the filter reads as the line does. The filters must widen to boxes G–L when digital assets come into scope (recorded in the transcription rulings). No change to the data."
   },
   {
    "printed": "8b(e)",
    "restated": "Add sales.e over every confirmed sales entry for which helper \"Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets\" = 'D' and helper \"Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals\" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "The IRS line covers \"Box D or Box J checked.\" Only classification 'D' is summed, so Box J is omitted.",
+   "model": "The IRS line says 'with Box D or Box J checked', but only classification 'D' is summed and there is no refusal for J.",
    "ruling": "Ruling: scope; project retained. Boxes G–L (digital assets reported on Form 1099-DA; f8949 p. 1: \"(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\") are refused at the transaction: `sales.one` refuses when `sales.digital` is true, the refusal propagates through `sd.count` to `sd.screen`, and every Schedule D total refuses on `sd.screen` before any box filter runs. Within the supported boxes A–F the filter reads as the line does. The filters must widen to boxes G–L when digital assets come into scope (recorded in the transcription rulings). No change to the data."
   },
   {
    "printed": "8b(g)",
    "restated": "Add sales.g over every confirmed sales entry for which helper \"Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets\" = 'D' and helper \"Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals\" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "The IRS line covers \"Box D or Box J checked.\" Only classification 'D' is summed, so Box J is omitted.",
+   "model": "The IRS line says 'with Box D or Box J checked', but only classification 'D' is summed and there is no refusal for J.",
    "ruling": "Ruling: scope; project retained. Boxes G–L (digital assets reported on Form 1099-DA; f8949 p. 1: \"(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\") are refused at the transaction: `sales.one` refuses when `sales.digital` is true, the refusal propagates through `sd.count` to `sd.screen`, and every Schedule D total refuses on `sd.screen` before any box filter runs. Within the supported boxes A–F the filter reads as the line does. The filters must widen to boxes G–L when digital assets come into scope (recorded in the transcription rulings). No change to the data."
   },
   {
    "printed": "8b(h)",
    "restated": "Add sales.h over every confirmed sales entry for which helper \"Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets\" = 'D' and helper \"Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals\" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "The IRS line covers \"Box D or Box J checked.\" Only classification 'D' is summed, so Box J is omitted.",
+   "model": "The IRS line says 'with Box D or Box J checked', but only classification 'D' is summed and there is no refusal for J.",
    "ruling": "Ruling: scope; project retained. Boxes G–L (digital assets reported on Form 1099-DA; f8949 p. 1: \"(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\") are refused at the transaction: `sales.one` refuses when `sales.digital` is true, the refusal propagates through `sd.count` to `sd.screen`, and every Schedule D total refuses on `sd.screen` before any box filter runs. Within the supported boxes A–F the filter reads as the line does. The filters must widen to boxes G–L when digital assets come into scope (recorded in the transcription rulings). No change to the data."
   },
   {
    "printed": "9(d)",
    "restated": "Add sales.proceeds over every confirmed sales entry for which helper \"Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets\" = 'E' and helper \"Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals\" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "The IRS line covers \"Box E or Box K checked.\" Only classification 'E' is summed, so Box K is omitted without a refusal.",
+   "model": "The IRS line says 'with Box E or Box K checked', but only classification 'E' is summed and there is no refusal for K.",
    "ruling": "Ruling: scope; project retained. Boxes G–L (digital assets reported on Form 1099-DA; f8949 p. 1: \"(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\") are refused at the transaction: `sales.one` refuses when `sales.digital` is true, the refusal propagates through `sd.count` to `sd.screen`, and every Schedule D total refuses on `sd.screen` before any box filter runs. Within the supported boxes A–F the filter reads as the line does. The filters must widen to boxes G–L when digital assets come into scope (recorded in the transcription rulings). No change to the data."
   },
   {
    "printed": "9(e)",
    "restated": "Add sales.e over every confirmed sales entry for which helper \"Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets\" = 'E' and helper \"Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals\" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "The IRS line covers \"Box E or Box K checked.\" Only classification 'E' is summed, so Box K is omitted.",
+   "model": "The IRS line says 'with Box E or Box K checked', but only classification 'E' is summed and there is no refusal for K.",
    "ruling": "Ruling: scope; project retained. Boxes G–L (digital assets reported on Form 1099-DA; f8949 p. 1: \"(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\") are refused at the transaction: `sales.one` refuses when `sales.digital` is true, the refusal propagates through `sd.count` to `sd.screen`, and every Schedule D total refuses on `sd.screen` before any box filter runs. Within the supported boxes A–F the filter reads as the line does. The filters must widen to boxes G–L when digital assets come into scope (recorded in the transcription rulings). No change to the data."
   },
   {
    "printed": "9(g)",
    "restated": "Add sales.g over every confirmed sales entry for which helper \"Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets\" = 'E' and helper \"Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals\" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "The IRS line covers \"Box E or Box K checked.\" Only classification 'E' is summed, so Box K is omitted.",
+   "model": "The IRS line says 'with Box E or Box K checked', but only classification 'E' is summed and there is no refusal for K.",
    "ruling": "Ruling: scope; project retained. Boxes G–L (digital assets reported on Form 1099-DA; f8949 p. 1: \"(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\") are refused at the transaction: `sales.one` refuses when `sales.digital` is true, the refusal propagates through `sd.count` to `sd.screen`, and every Schedule D total refuses on `sd.screen` before any box filter runs. Within the supported boxes A–F the filter reads as the line does. The filters must widen to boxes G–L when digital assets come into scope (recorded in the transcription rulings). No change to the data."
   },
   {
    "printed": "9(h)",
    "restated": "Add sales.h over every confirmed sales entry for which helper \"Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets\" = 'E' and helper \"Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals\" = 'detail', within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "The IRS line covers \"Box E or Box K checked.\" Only classification 'E' is summed, so Box K is omitted.",
+   "model": "The IRS line says 'with Box E or Box K checked', but only classification 'E' is summed and there is no refusal for K.",
    "ruling": "Ruling: scope; project retained. Boxes G–L (digital assets reported on Form 1099-DA; f8949 p. 1: \"(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\") are refused at the transaction: `sales.one` refuses when `sales.digital` is true, the refusal propagates through `sd.count` to `sd.screen`, and every Schedule D total refuses on `sd.screen` before any box filter runs. Within the supported boxes A–F the filter reads as the line does. The filters must widen to boxes G–L when digital assets come into scope (recorded in the transcription rulings). No change to the data."
   }
  ]

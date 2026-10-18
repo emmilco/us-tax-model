@@ -6,11 +6,11 @@ form:
   lines:
     - id: person.rrta
       printed: rrta
-      label: Do any wage statements report railroad retirement compensation or taxes (W-2 box 14)?
+      label: 'Do any wage statements report railroad retirement compensation or taxes (W-2 box 14), or did you file Form CT-2 as an employee representative?'
       type: Bool
       expr:
         op: input
-        source: Do any wage statements report railroad retirement compensation or taxes (W-2 box 14)?
+        source: 'Do any wage statements report railroad retirement compensation or taxes (W-2 box 14), or did you file Form CT-2 as an employee representative?'
       cite:
         doc: iw2w3
         locator: "pp. 12–13, Railroad employers: RRTA compensation and taxes in box 14; boxes 3–7 are not

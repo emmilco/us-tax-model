@@ -3,10 +3,28 @@
  "form": "f1040",
  "rulings": [
   {
+   "printed": "13a",
+   "restated": "Enter the amount from qbi helper \"Select Form 8995 or dividend-only Form 8995-A\".",
+   "model": "The instructions say 'Use Form 8995 if: ... taxable income ... is less than or equal to $197,300 ($394,600 if married filing jointly); and • You aren't a patron in a specified agricultural or horticultural cooperative.' The restatement picks Form 8995 on the income threshold alone. It never tests patron status, and no refusal names it.",
+   "ruling": "Ruling: scope; project retained. Agricultural or horticultural cooperative patronage is refused by the QBI screen (`forms/2025/qbi.yaml`: 'Any QBI beyond section 199A dividends ... or agricultural/horticultural cooperative patronage?'), so a filer who reaches this selection is not a patron and the Form 8995 condition holds."
+  },
+  {
    "printed": "27a",
    "restated": "Enter the amount from eic helper \"Earned income credit for Form 1040, line 27a (Worksheet A, line 6 when Steps 1 to 5 are passed; zero otherwise)\".",
-   "model": "The SSN and age tests check only the filer. The IRS asks 'Do you, and your spouse if filing a joint return, have a social security number...' and 'Were you, or your spouse if filing a joint return, at least age 25 but under age 65', so a joint return can get a different result.",
-   "ruling": "Ruling: scope; project retained. The spouse variants of the SSN and age tests ('and your spouse if filing a joint return') arise only on a joint return, and married filing statuses are refused (s3.married); within scope the filer's own tests are the tests."
+   "model": "Step 4 question 2 says 'Were you, or your spouse if filing a joint return, at least age 25 but under age 65 ... (Check “Yes” if ... born after December 31, 1960, and before January 2, 2001.)' The program tests only the filer, and it rejects anyone born before January 2, 1961, so a filer born January 1, 1961 fails when the text says they pass. Step 1 question 2 also asks about 'you, and your spouse if filing a joint return,' but only the filer's SSN is asked.",
+   "ruling": "Ruling: scope; project retained. The spouse variants of the SSN and age tests arise only on a joint return, and married filing statuses are refused (s3.married); within scope the filer's own tests are the tests (Step 4, question 2 applies only to a filer with no qualifying child)."
+  },
+  {
+   "printed": "27c",
+   "restated": "Enter the amount from eic helper \"The instructions say to check the box on line 27c (a STOP that says so, or Worksheet A line 2 is zero); the filer's own choice not to claim the EIC is not asked\".",
+   "model": "The line 27c instructions say to check the box 'if you do not want to claim the earned income credit or if you have been instructed to check the box.' The program never asks whether the filer wants to claim the credit. Its Step 4 question 3 and question 5 paths also carry the age error from 27a (filer only, and the 'born after December 31, 1960' cutoff applied wrongly).",
+   "ruling": "Ruling: scope; project retained. The filer's choice not to claim the EIC is not asked (the line's label says so); the instructed checks follow the flow chart."
+  },
+  {
+   "printed": "7a",
+   "restated": "Enter the amount from sd helper \"Capital gain or limited capital loss for Form 1040 line 7a\".",
+   "model": "The form says only 'Capital gain or (loss). Attach Schedule D if required.' The wording of Schedule D lines 16 and 21 is not in the text given, so I can't confirm that a loss goes to line 21 and a gain to line 16.",
+   "ruling": "Ruling: representation; project retained. Schedule D says so on its own lines: line 16 'Combine lines 7 and 15' carries a gain to Form 1040 line 7a (through line 17's 'If line 16 is a gain, enter the amount from line 16 on Form 1040 line 7a'), and line 21 'If line 16 is a loss, enter here and on Form 1040, 1040-SR, or 1040-NR, line 7a, the smaller of' the loss or the limit (f1040sd); the Schedule D render log judges those lines."
   }
  ]
 }

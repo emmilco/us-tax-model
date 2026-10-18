@@ -10,14 +10,10 @@ form:
     - id: sa.unsupported
       printed: (helper)
       type: Bool
-      label: Any casualty/theft loss, other itemized deduction, foreign tax or generation-skipping tax
-        deduction, mortgage interest or points not on Form 1098 or subject to debt/use limits, or
-        sales-tax election?
+      label: 'Any casualty or theft loss (including a disaster loss added to the standard deduction); a deduction from the Schedule A line 16 list; a foreign tax or generation-skipping tax deduction; mortgage interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds not all used to buy, build or improve the home, or debt over the limit); or the sales-tax election?'
       expr:
         op: input
-        source: Any casualty/theft loss, other itemized deduction, foreign tax or generation-skipping tax
-          deduction, mortgage interest or points not on Form 1098 or subject to debt/use limits, or
-          sales-tax election?
+        source: 'Any casualty or theft loss (including a disaster loss added to the standard deduction); a deduction from the Schedule A line 16 list; a foreign tax or generation-skipping tax deduction; mortgage interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds not all used to buy, build or improve the home, or debt over the limit); or the sales-tax election?'
       cite:
         doc: f1040sa
         locator: Schedule A (2025), lines 1–18
@@ -36,20 +32,20 @@ form:
     - id: sa.excluded_income
       printed: (helper)
       type: Bool
-      label: Any excluded Puerto Rico income, Form 2555 or Form 4563 amounts?
+      label: 'Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico?'
       expr:
         op: input
-        source: Any excluded Puerto Rico income, Form 2555 or Form 4563 amounts?
+        source: 'Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico?'
       cite:
         doc: f1040sa
         locator: Schedule A (2025), lines 1–18
     - id: sa.dependent
       printed: (helper)
       type: Bool
-      label: Can someone claim you or your spouse as a dependent, or are you a dual-status alien?
+      label: 'Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)'
       expr:
         op: input
-        source: Can someone claim you or your spouse as a dependent, or are you a dual-status alien?
+        source: 'Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)'
       cite:
         doc: f1040sa
         locator: Schedule A (2025), lines 1–18

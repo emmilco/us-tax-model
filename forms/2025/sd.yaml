@@ -9,21 +9,21 @@ form:
   lines:
     - id: sd.other_forms
       printed: (helper)
-      label: Are there gains/losses from Forms 4797, 2439, 6252, 4684, 6781, 8824 or Schedule K-1?
+      label: 'Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1? Count section 1256 contracts and a casualty or theft of property whether you held the property directly or through an entity.'
       type: Bool
       expr:
         op: input
-        source: Are there gains/losses from Forms 4797, 2439, 6252, 4684, 6781, 8824 or Schedule K-1?
+        source: 'Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1? Count section 1256 contracts and a casualty or theft of property whether you held the property directly or through an entity.'
       cite:
         doc: f1040sd
         locator: Schedule D (2025), Parts I–III
     - id: sd.carryover
       printed: (helper)
-      label: Is there a capital loss carryover from the prior year?
+      label: 'Is there a capital loss carried into 2025 from any earlier year?'
       type: Bool
       expr:
         op: input
-        source: Is there a capital loss carryover from the prior year?
+        source: 'Is there a capital loss carried into 2025 from any earlier year?'
       cite:
         doc: f1040sd
         locator: Schedule D (2025), Parts I–III

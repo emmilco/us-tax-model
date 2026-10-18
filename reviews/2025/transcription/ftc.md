@@ -7,9 +7,9 @@ Second transcription of `Foreign tax credit — election without Form 1116` by a
 | date | 2026-10-17 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 3b6a842de3641503007052640802dce9d4ad712773c49b50350de633e67a1115 |
+| prompt sha256 | 4832ac61714b63de68eba91cc30a786b5e5cd62c2e1977cd43a4593351438628 |
 | printed lines compared | 1 |
-| agree / disagree / missing | 0 / 1 / 0 |
+| agree / disagree / missing | 1 / 0 / 0 |
 | extra printed lines in second | none |
 
 ## Source pages given to the model
@@ -21,71 +21,71 @@ Second transcription of `Foreign tax credit — election without Form 1116` by a
 ## Lines
 
 ### ftc.credit — Credit is the smaller of creditable foreign tax and regular income tax; zero if no foreign
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project:
+## Refusal gates listed by the second transcription
 
-```json
-{"alternatives": [{"guard": {"args": [{"input": "ftc.taxes"}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"input": "ftc.taxes"}], "test": "lt"}, "then": {"of": [{"input": "ftc.taxes"}, {"ref": "f1040.line16"}], "op": "smaller_of"}}], "op": "choose"}
-```
+Reported, not judged: the project often refuses before a worksheet is used, on the line that chooses it, which a per-line comparison cannot see.
 
-Second:
-
-```json
-{"alternatives": [{"guard": {"args": [{"args": [{"input": "ftc.all_passive"}, {"input": "ftc.elect"}, {"input": "ftc.eligible"}, {"input": "ftc.statements"}, {"args": [{"input": "ftc.taxes"}, {"param": "ftc.limit"}], "test": "le"}], "test": "all"}, {"args": [{"const": 0}, {"input": "ftc.taxes"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"input": "ftc.taxes"}, {"ref": "f1040.line16"}], "op": "smaller_of"}}, {"guard": {"args": [{"args": [{"args": [{"param": "ftc.limit"}, {"input": "ftc.taxes"}], "test": "lt"}, {"args": [{"input": "ftc.all_passive"}], "test": "not"}, {"args": [{"input": "ftc.elect"}], "test": "not"}, {"args": [{"input": "ftc.eligible"}], "test": "not"}, {"args": [{"input": "ftc.statements"}], "test": "not"}], "test": "any"}, {"args": [{"input": "ftc.taxes"}, {"const": 0}], "test": "le"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
-```
-
-Second transcription's note: The text does not say what happens when the election conditions are not met or the election is not made; in that case Form 1116 would be filed, which this model does not cover. I chose a zero credit for that case, so the Form 1116 route must be screened out elsewhere. The no-carryover rule is only an acknowledgment captured by ftc.elect and has no arithmetic effect here.
-
-Ruling: refusal representation; project retained. The project gives the credit as the smaller of creditable foreign taxes and the tax on line 16 when any foreign tax exists, and refuses the return through the election gates (not all passive, no election, not eligible, statements not received, taxes over the no-Form-1116 limit, i1116 pp. 1–2) rather than returning zero. The second transcription folds those conditions into the credit as zero. Within the non-refused scope the values agree.
+| line | gates listed | not read by the project's line |
+| --- | --- | --- |
+| ftc.credit | ftc.h_needs_1116 | ftc.h_needs_1116 |
 
 ## Raw second transcription
 
 ```yaml
 ```yaml
 lines:
-  - id: ftc.h_zero
-    printed: "(helper)"
-    label: "No credit amount"
-    type: NonNegDollars
-    expr: {op: param, ref: sales.zero}
   - id: ftc.h_limit
     printed: "(helper)"
-    label: "Your total creditable foreign taxes aren't more than $300 ($600 if married filing a joint return)"
+    label: "$300 ($600 if married filing a joint return)"
     type: NonNegDollars
     expr: {op: param, ref: ftc.limit}
+    note: "The text gives $600 only for married filing jointly and $300 otherwise. The parameter is keyed by filing status with those values."
   - id: ftc.h_within_limit
     printed: "(helper)"
-    label: "Total creditable foreign taxes aren't more than $300 ($600 if married filing a joint return)"
+    label: "Your total creditable foreign taxes aren't more than $300 ($600 if married filing a joint return)"
     type: Bool
     expr: {op: test, le: [ftc.taxes, ftc.h_limit]}
-    note: "The text keys the limit only to 'married filing a joint return'. The parameter ftc.limit is keyed by filing status, and its non-MFJ values are $300, which matches. Qualifying surviving spouse is treated as $300 because it is not a joint return."
-  - id: ftc.h_election_valid
-    printed: "(helper)"
-    label: "This election is available only if you meet all of the following conditions, and you make the election"
-    type: Bool
-    expr: {op: test, all: [ftc.all_passive, ftc.statements, ftc.h_within_limit, ftc.eligible, ftc.elect]}
   - id: ftc.h_has_tax
     printed: "(helper)"
     label: "Any creditable foreign tax"
     type: Bool
     expr: {op: test, gt: [ftc.taxes, {const: 0}]}
-  - id: ftc.h_applies
+  - id: ftc.h_qualifies
     printed: "(helper)"
-    label: "Election made and valid, with foreign tax to credit"
+    label: "All conditions met and election made: all foreign source gross income was passive category income; all income and foreign taxes were reported on a qualified payee statement; total creditable foreign taxes within the limit; creditability and line 12 reduction rules applied; election made"
     type: Bool
-    expr: {op: test, all: [ftc.h_election_valid, ftc.h_has_tax]}
-  - id: ftc.h_regular_tax
+    expr:
+      op: test
+      all:
+        - {op: test, eq: [ftc.all_passive, {const: true}]}
+        - {op: test, eq: [ftc.statements, {const: true}]}
+        - {op: test, eq: [ftc.eligible, {const: true}]}
+        - {op: test, eq: [ftc.elect, {const: true}]}
+        - {op: test, eq: [ftc.h_within_limit, {const: true}]}
+  - id: ftc.h_not_qualifies
     printed: "(helper)"
-    label: "Your regular tax (see the instructions for line 20)"
-    type: NonNegDollars
-    expr: {op: copy, from: f1040.line16}
-    note: "The election text points to the Form 1116 line 20 instructions for how to figure regular tax, but that text is not in the provided pages. I chose Form 1040 line 16 (tax before AMT and credits). This should be confirmed against the line 20 instructions."
+    label: "The election without Form 1116 doesn't apply"
+    type: Bool
+    expr: {op: test, not: ftc.h_qualifies}
+  - id: ftc.h_needs_1116
+    printed: "(helper)"
+    label: "File Form 1116 to claim the foreign tax credit if the election doesn't apply"
+    type: Bool
+    expr: {op: test, all: [ftc.h_has_tax, ftc.h_not_qualifies]}
+    note: "If there is foreign tax and the election conditions are not met, or the election is not made, Form 1116 is needed (or the tax can be deducted instead). The tool computes neither, so it stops here."
   - id: ftc.h_smaller
     printed: "(helper)"
     label: "The smaller of (a) your total foreign tax, or (b) your regular tax"
     type: NonNegDollars
-    expr: {op: smaller_of, of: [ftc.taxes, ftc.h_regular_tax]}
+    expr: {op: smaller_of, of: [ftc.taxes, f1040.line16]}
+    note: "The text sends you to the line 20 instructions for how to figure regular tax, but those instructions are not in the supplied text. I used Form 1040 line 16 as regular tax. I did not use line 18, because it adds Schedule 2 line 3, which is not regular tax; that amount is zero after the s2.amt screen anyway."
+  - id: ftc.h_zero
+    printed: "(helper)"
+    label: "No foreign tax credit"
+    type: NonNegDollars
+    expr: {op: param, ref: sales.zero}
   - id: ftc.credit
     printed: "(helper)"
     label: "To make the election, just enter on the foreign tax credit line of your tax return (for example, Schedule 3 (Form 1040), Part I, line 1) the smaller of (a) your total foreign tax, or (b) your regular tax"
@@ -93,10 +93,9 @@ lines:
     expr:
       op: choose
       alternatives:
-        - guard: ftc.h_applies
-          then: ftc.h_smaller
-        - guard: {op: test, not: ftc.h_applies}
-          then: ftc.h_zero
-    note: "The text does not say what happens when the election conditions are not met or the election is not made; in that case Form 1116 would be filed, which this model does not cover. I chose a zero credit for that case, so the Form 1116 route must be screened out elsewhere. The no-carryover rule is only an acknowledgment captured by ftc.elect and has no arithmetic effect here."
+        - {guard: {op: test, eq: [ftc.h_has_tax, {const: true}]}, then: ftc.h_smaller}
+        - {guard: {op: test, not: ftc.h_has_tax}, then: ftc.h_zero}
+    refuses: [ftc.h_needs_1116]
+    note: "The credit is zero when there is no foreign tax. The text does not say this directly. I read it from 'the smaller of total foreign tax or regular tax', which gives zero when foreign tax is zero."
 ```
 ```

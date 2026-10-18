@@ -7,7 +7,7 @@ Second transcription of `Tax on an amount — Tax Table or Tax Computation Works
 | date | 2026-10-17 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | ead306f1547e00433cc5ab21012a1722c888d0575fcbdb3a9739cec829db3e3f |
+| prompt sha256 | 53a276666f071199eca3505de47d947e0e68ef8cbccc390232ceab58a69b97a0 |
 | printed lines compared | 1 |
 | agree / disagree / missing | 0 / 1 / 0 |
 | extra printed lines in second | none |
@@ -42,60 +42,54 @@ Ruling: equivalent representation; project retained. Below $100,000 both use the
 ```yaml
 ```yaml
 lines:
-  - id: tax_on_amount.h_below_table_boundary
-    printed: "(helper)"
-    label: "Amount is less than $100,000 (Tax Table range); the Tax Computation Worksheet rows begin at 'At least $100,000'"
-    type: Bool
-    expr: {op: test, lt: [amount, {param: ordinary.table_boundary}]}
-    note: "The Tax Table pages given here only show amounts up to $3,000. The amount at which the Tax Table stops is taken from the Tax Computation Worksheet, whose first row in every section reads 'At least $100,000'. So amounts under $100,000 use the Tax Table, and $100,000 or more uses the worksheet (parameter ordinary.table_boundary)."
-
-  - id: tax_on_amount.h_qss_or_mfj
-    printed: "(helper)"
-    label: "Filing status is Married filing jointly or Qualifying surviving spouse (Section B; Tax Table married filing jointly column)"
-    type: Bool
-    expr: {op: test, any: [{op: test, eq: [status, {const: "mfj"}]}, {op: test, eq: [status, {const: "qss"}]}]}
-
   - id: tax_on_amount.line(a)
     printed: "(a)"
-    label: "Use the Tax Table. Find the line for the taxable income amount and the column for your filing status; the amount where they meet is your tax"
+    label: "Use the Tax Table"
     type: NonNegDollars
-    expr: {op: table_lookup, table: tax_table, key: amount, status: status}
-    note: "The Tax Table footnote says the married filing jointly column 'must also be used by a qualifying surviving spouse.' The lookup gets the raw status. The pinned tax_table is assumed to send qss to the married filing jointly column."
-
-  - id: tax_on_amount.line(a)_tcw
+    expr:
+      op: table_lookup
+      table: tax_table
+      key: amount
+      status: status
+    note: "The Tax Table is read by finding the 'At least / But less than' row for the amount and the column for the filing status. The page footnote says the married filing jointly column must also be used by a qualifying surviving spouse. This line is used only when the amount is below the point where the Tax Computation Worksheet begins (see line (b))."
+  - id: tax_on_amount.line(a).tcw
     printed: "(a)"
-    label: "Use the Tax Computation Worksheet. Section A (Single), B (Married filing jointly or Qualifying surviving spouse), C (Married filing separately), or D (Head of household): Tax. Subtract (d) from (c)"
-    type: Dollars
+    label: "Use the Tax Computation Worksheet"
+    type: NonNegDollars
     expr:
       op: choose
       alternatives:
         - guard: {op: test, eq: [status, {const: "single"}]}
           then: single.result
-        - guard: {op: test, eq: [tax_on_amount.h_qss_or_mfj, {const: true}]}
+        - guard:
+            op: test
+            any:
+              - {op: test, eq: [status, {const: "mfj"}]}
+              - {op: test, eq: [status, {const: "qss"}]}
           then: mfj.result
         - guard: {op: test, eq: [status, {const: "mfs"}]}
           then: mfs.result
         - guard: {op: test, eq: [status, {const: "hoh"}]}
           then: hoh.result
-    note: "The requested id pattern gives both printed '(a)' lines the same id, 'tax_on_amount.line(a)'. That id is kept for the Tax Table line, and this line gets the suffix '_tcw' to keep ids unique. The worksheet's column (a) is the amount; the result of each section is the existing line <section>.result."
-
+    note: "Two printed lines are both labelled '(a)', so the id pattern 'tax_on_amount.line<printed>' would give both the same id. I kept the exact id for the Tax Table line and gave this line the suffix '.tcw'. Section B applies to both married filing jointly and qualifying surviving spouse, as printed. Within each section, the row is chosen by the amount entered in column (a), per the worksheet note."
   - id: tax_on_amount.line(b)
     printed: "(b)"
     label: "Tax on the amount"
-    type: Dollars
+    type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, eq: [tax_on_amount.h_below_table_boundary, {const: true}]}
+        - guard: {op: test, lt: [amount, {param: ordinary.table_boundary}]}
           then: tax_on_amount.line(a)
-        - guard: {op: test, not: {op: test, eq: [tax_on_amount.h_below_table_boundary, {const: true}]}}
-          then: tax_on_amount.line(a)_tcw
-    note: "The text does not say to round the worksheet result. The Tax Table gives whole dollars, while worksheet results can include cents (subtraction amounts such as $30,452.75). No rounding is applied here."
-
+        - guard: {op: test, ge: [amount, {param: ordinary.table_boundary}]}
+          then: tax_on_amount.line(a).tcw
+    note: "The line 16 instructions that say when each method must be used are not in the supplied text. I chose the split from the Tax Computation Worksheet, whose first row in every section begins 'At least $100,000'. Amounts below $100,000 (ordinary.table_boundary) use the Tax Table. Amounts of $100,000 or more use the Tax Computation Worksheet."
   - id: tax
     printed: "(helper)"
     label: "Tax on the amount"
     type: Dollars
-    expr: {op: copy, from: tax_on_amount.line(b)}
+    expr:
+      op: copy
+      from: tax_on_amount.line(b)
 ```
 ```

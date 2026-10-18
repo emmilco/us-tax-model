@@ -5,7 +5,7 @@
   {
    "printed": "12",
    "restated": "Add gift.allowed over every confirmed gift entry, within the current person when parent-bound. An unanswered roster is unknown.",
-   "model": "The form line is 'Other than by cash or check', but gift.allowed and the gift roster are not defined in the glossary. I cannot confirm the sum is limited to non-cash gifts, so cash gifts already counted on line 11 might be counted again.",
+   "model": "Line 12 is gifts 'Other than by cash or check.' The value gift.allowed and the gift entries it is summed over are not defined in the text given, so it cannot be confirmed that only noncash gifts are counted and that the cash gifts on line 11 are excluded.",
    "ruling": "Ruling: representation; project retained. The gift collection holds noncash gifts only (forms/2025/gift.yaml, cited to i8283), and `gift.allowed` is each entry's deductible amount after its Form 8283 screens; cash and check gifts are the line 11 input. No change to the data."
   }
  ]

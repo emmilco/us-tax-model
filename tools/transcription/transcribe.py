@@ -249,6 +249,13 @@ GRAMMAR = """Expression grammar (YAML). Exactly one atom per line. Operands writ
                                                # {op: test, any: [...]}, {op: test, not: <test>}
   {op: choose, alternatives: [{guard: <test>, then: <ref>}, ...]}   # guards exhaustive and disjoint
 
+A line may also carry `refuses: [<id>, ...]`, a list of Bool inputs or lines: when any of them is true
+the tool stops at this line and names the form the filer needs instead of computing it. The tool
+supports only part of what some lines cover; the screening inputs listed below stand for the
+situations it does not compute. Where the IRS text of a line covers such a situation, encode only the
+case the tool computes and list the screening input under `refuses`, instead of adding inputs for the
+unsupported amounts or writing the unsupported case as a zero.
+
 Money is integer cents. Rates are parameters. There are no loops, strings, functions or arithmetic
 beyond these atoms; a line that needs more than one atom is written as several lines, the extra ones
 being helper lines (printed: "(helper)") with ids of your own choosing."""
@@ -269,6 +276,44 @@ def collection_notes():
         out.append(f"  - collection `{doc['id']}`" + (f" nested in each `{parent}` entry" if parent else "") +
                    f" — one entry per {doc['title'][:70]}; entry fields: {fields}")
     return "\n".join(out)
+
+
+def screen_notes():
+    """Every Bool input that some line names as a refusal gate, with the question it asks."""
+    lines = load_all_lines()
+    gates = {r["when"] for _, l in lines.values() for r in (l.get("refuses") or [])}
+    out = []
+    for g in sorted(gates):
+        hit = lines.get(g)
+        if hit and hit[1]["expr"].get("op") == "input":
+            out.append(f"  - {g}: {' '.join(hit[1]['expr'].get('source', '').split())[:220]}")
+    return "\n".join(out)
+
+
+def gate_closure(line_id, lines, seen=None):
+    """Every refusal gate that can make a line refuse: its own and those of every line it reads, across forms."""
+    seen = set() if seen is None else seen
+    if line_id in seen or line_id not in lines:
+        return set()
+    seen.add(line_id)
+    l = lines[line_id][1]
+    out = {r["when"] for r in (l.get("refuses") or [])}
+    for ref in operand_refs(l.get("expr", {})):
+        out |= gate_closure(ref, lines, seen)
+    return out
+
+
+def second_gates(line, by_id, seen=None):
+    """Refusal gates a second transcription lists on a line and on the helper lines it reads."""
+    seen = set() if seen is None else seen
+    if line["id"] in seen:
+        return set()
+    seen.add(line["id"])
+    out = set(line.get("refuses") or [])
+    for ref in operand_refs(line.get("expr", {})):
+        if ref in by_id:
+            out |= second_gates(by_id[ref], by_id, seen)
+    return out
 
 
 def enum_notes():
@@ -327,6 +372,9 @@ Keyed collections (Form W-2s, payers, sales, gifts): a total over entries is wri
 collection is summed within each parent entry, and the parent's per-entry totals summed again:
 {collection_notes()}
 
+Screening inputs (answered yes, the tool refuses the lines that list them under `refuses`):
+{screen_notes()}
+
 Lines on other forms you may reference by id (only where the IRS text says the value comes from
 there; "(helper)" lines are that form's intermediate values):
 {oth}
@@ -341,6 +389,7 @@ lines:
     label: "<the IRS wording>"
     type: <Dollars | NonNegDollars | Rate | Count | Bool | Enum(name)>
     expr: <one atom>
+    refuses: [<screening input id>, ...]   # optional
   - ...
 
 plus any helper lines you need (printed: "(helper)", ids "{form_doc['id']}.h_<name>"). No prose before
@@ -586,6 +635,20 @@ def canonical(tree):
     return json.dumps(tree, sort_keys=True, ensure_ascii=False)
 
 
+def gate_check(result, project_id, second_line, second_by_id):
+    """Refusal gates are reported, not judged: the expressions decide agreement. The project often
+    refuses before a worksheet is used (a gate on the line that chooses the worksheet), which no
+    per-line comparison can see, so a gate the second lists that the project's line does not read
+    is recorded in the log for the reviewer rather than counted as a disagreement."""
+    global ALL_LINES
+    ALL_LINES = ALL_LINES or load_all_lines()
+    listed = sorted(second_gates(second_line, second_by_id))
+    if listed:
+        unread = [g for g in listed if g not in gate_closure(project_id, ALL_LINES)]
+        result["gates"] = {"second": listed, "not_in_project_line": unread}
+    return result
+
+
 def compare(form_id, project_lines, second_lines):
     defs = load_defs()
     params_doc = yaml.safe_load(open(os.path.join(ROOT, "params", "2025.yaml"), encoding="utf-8"))
@@ -605,8 +668,8 @@ def compare(form_id, project_lines, second_lines):
             sb = canonical(b.expr(s["expr"]))
         except Exception as ex:
             sb = f"<unparseable: {ex}>"
-        results.append({"printed": l["id"], "label": l["label"], "status": "AGREE" if pa == sb else "DISAGREE",
-                        "project": pa, "second": sb, "note": s.get("note")})
+        results.append(gate_check({"printed": l["id"], "label": l["label"], "status": "AGREE" if pa == sb else "DISAGREE",
+                        "project": pa, "second": sb, "note": s.get("note")}, l["id"], s, second_by_id))
     second_by_printed = {l["printed"]: l for l in second_lines if l["printed"] not in HELPER_PRINTED}
     is_def = form_id in defs
     for l in project_lines:
@@ -621,8 +684,8 @@ def compare(form_id, project_lines, second_lines):
             sb = canonical(b.expr(s["expr"]))
         except Exception as ex:  # malformed second transcription
             sb = f"<unparseable: {ex}>"
-        results.append({"printed": l["printed"], "label": l["label"], "status": "AGREE" if pa == sb else "DISAGREE",
-                        "project": pa, "second": sb, "note": s.get("note")})
+        results.append(gate_check({"printed": l["printed"], "label": l["label"], "status": "AGREE" if pa == sb else "DISAGREE",
+                        "project": pa, "second": sb, "note": s.get("note")}, l["id"], s, second_by_id))
     extra = [p for p in second_by_printed if p not in {l["printed"] for l in project_lines}]
     return results, extra
 
@@ -660,6 +723,8 @@ def extract_yaml(text):
     for l in doc["lines"]:
         l["printed"] = str(l.get("printed", ""))
         l.setdefault("expr", {})
+        if not isinstance(l.get("refuses", []), list):
+            l["refuses"] = [l["refuses"]]
     return doc
 
 
@@ -695,6 +760,14 @@ def write_log(form_doc, model, prompt, used, results, extra, raw_text, meta, dry
             out += ["", ruling, ""]
         else:
             out.append("")
+    gated = [r for r in results if r.get("gates")]
+    if gated:
+        out += ["## Refusal gates listed by the second transcription", "",
+                "Reported, not judged: the project often refuses before a worksheet is used, on the line that chooses it, which a per-line comparison cannot see.", "",
+                "| line | gates listed | not read by the project's line |", "| --- | --- | --- |"]
+        for r in gated:
+            out.append(f"| {r['printed']} | {', '.join(r['gates']['second'])} | {', '.join(r['gates']['not_in_project_line']) or '-'} |")
+        out.append("")
     out += ["## Raw second transcription", "", "```yaml", raw_text.strip(), "```", ""]
     path = os.path.join(LOGS, fid + ".md")
     if not dry_run:

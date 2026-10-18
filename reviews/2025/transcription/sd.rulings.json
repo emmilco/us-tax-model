@@ -113,8 +113,8 @@
   {
    "printed": "20",
    "project": "{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"f4952.carryover\"}], \"test\": \"eq\"}, {\"args\": [{\"ref\": \"f4952.line5\"}, {\"const\": 0}], \"test\": \"le\"}, {\"args\": [{\"ref\": \"f4952.line1\"}, {\"ref\": \"f4952.line4c\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"ref\": \"f4952.line1\"}, {\"const\": 0}], \"test\": \"le\"}], \"test\": \"any\"}, {\"args\": [{\"ref\": \"f4952.line4g\"}, {\"const\": 0}], \"test\": \"le\"}], \"test\": \"all\"}, {\"args\": [{\"ref\": \"g28.line7\"}, {\"const\": 0}], \"test\": \"le\"}, {\"args\": [{\"ref\": \"u1250.line18\"}, {\"const\": 0}], \"test\": \"le\"}], \"test\": \"all\"}",
-   "second": "{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"f4952.carryover\"}], \"test\": \"eq\"}, {\"args\": [{\"ref\": \"f4952.line5\"}, {\"const\": 0}], \"test\": \"le\"}, {\"args\": [{\"ref\": \"f4952.line1\"}, {\"ref\": \"f4952.line4c\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"ref\": \"f4952.line1\"}, {\"const\": 0}], \"test\": \"le\"}], \"test\": \"any\"}, {\"args\": [{\"ref\": \"f4952.line4g\"}, {\"const\": 0}], \"test\": \"le\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"alternatives\": [{\"guard\": {\"line\": \"17\"}, \"then\": {\"ref\": \"g28.line7\"}}, {\"guard\": {\"args\": [{\"line\": \"17\"}], \"test\": \"not\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0}, {\"alternatives\": [{\"guard\": {\"line\": \"17\"}, \"then\": {\"ref\": \"u1250.line18\"}}, {\"guard\": {\"args\": [{\"line\": \"17\"}], \"test\": \"not\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}], \"test\": \"eq\"}], \"test\": \"all\"}",
-   "ruling": "Ruling: equivalent in effect; project retained. The second transcription tests its line 18, which it zeroes unless line 17 is Yes; the project tests the 28% Rate Gain Worksheet result directly. Line 20 is read only on the Yes path of line 17 (the worksheet selection gate requires line 17), so the tests agree where the line is used. The same reasoning as for sd.line18."
+   "second": "{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"f4952.carryover\"}], \"test\": \"eq\"}, {\"args\": [{\"ref\": \"f4952.line5\"}, {\"const\": 0}], \"test\": \"le\"}, {\"args\": [{\"ref\": \"f4952.line1\"}, {\"ref\": \"f4952.line4c\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"ref\": \"f4952.line1\"}, {\"const\": 0}], \"test\": \"le\"}], \"test\": \"any\"}, {\"args\": [{\"ref\": \"f4952.line4g\"}, {\"const\": 0}], \"test\": \"le\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"line\": \"17\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"line\": \"17\"}], \"test\": \"eq\"}, \"then\": {\"ref\": \"g28.line7\"}}], \"op\": \"choose\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"line\": \"17\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"line\": \"17\"}], \"test\": \"eq\"}, \"then\": {\"ref\": \"u1250.line18\"}}], \"op\": \"choose\"}], \"test\": \"eq\"}], \"test\": \"all\"}",
+   "ruling": "Ruling: representation; project retained. As lines 18 and 19: the second's line 17 gates on the two worksheet results; the project's callers reach line 20 only when line 17 is Yes."
   },
   {
    "printed": "3(d)",
@@ -227,20 +227,26 @@
   {
    "printed": "sd.line18",
    "project": "{\"ref\": \"g28.line7\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"line\": \"17\"}, \"then\": {\"ref\": \"g28.line7\"}}, {\"guard\": {\"args\": [{\"line\": \"17\"}], \"test\": \"not\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
-   "ruling": "Ruling: equivalent in effect; project retained. The second transcription zeroes line 18 unless line 17 is Yes, as the form skips it; the project copies the 28% Rate Gain Worksheet result unconditionally and uses line 17 in the gate that selects the Schedule D Tax Worksheet (`f1040.gate.sdtw` requires line 17), so the value is read only when line 17 is true. No change to the data."
+   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"line\": \"17\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"line\": \"17\"}], \"test\": \"eq\"}, \"then\": {\"ref\": \"g28.line7\"}}], \"op\": \"choose\"}",
+   "ruling": "Ruling: representation; project retained. The second gates line 18 on line 17; the project reads the 28% Rate Gain Worksheet result, which its callers use only when line 17 is Yes."
   },
   {
    "printed": "sd.line19",
    "project": "{\"ref\": \"u1250.line18\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"line\": \"17\"}, \"then\": {\"ref\": \"u1250.line18\"}}, {\"guard\": {\"args\": [{\"line\": \"17\"}], \"test\": \"not\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
-   "ruling": "Ruling: equivalent in effect; project retained. As for line 18, with the Unrecaptured Section 1250 Gain Worksheet result."
+   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"line\": \"17\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"line\": \"17\"}], \"test\": \"eq\"}, \"then\": {\"ref\": \"u1250.line18\"}}], \"op\": \"choose\"}",
+   "ruling": "Ruling: representation; project retained. As line 18, for the Unrecaptured Section 1250 Gain Worksheet."
   },
   {
    "printed": "sd.net_gain",
    "project": "{\"from\": {\"of\": [{\"line\": \"15\"}, {\"line\": \"16\"}], \"op\": \"smaller_of\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}",
-   "second": "{\"of\": [{\"const\": 0}, {\"of\": [{\"line\": \"15\"}, {\"line\": \"16\"}], \"op\": \"smaller_of\"}], \"op\": \"larger_of\"}",
-   "ruling": "Ruling: equivalent representation; project retained. The smaller of lines 15 and 16 floored at zero equals the larger of zero and that smaller amount."
+   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"line\": \"17\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"line\": \"17\"}], \"test\": \"eq\"}, \"then\": {\"of\": [{\"line\": \"15\"}, {\"line\": \"16\"}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}",
+   "ruling": "Ruling: equivalent representation; project retained. When line 17 is No the smaller of lines 15 and 16 is not positive, so the project's floor at zero gives zero as the second's guard does; otherwise both take the smaller amount, floored at zero."
+  },
+  {
+   "printed": "sd.to1040",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": 0}, {\"line\": \"16\"}], \"test\": \"le\"}, \"then\": {\"line\": \"16\"}}, {\"guard\": {\"args\": [{\"line\": \"16\"}, {\"const\": 0}], \"test\": \"lt\"}, \"then\": {\"line\": \"21\"}}], \"op\": \"choose\"}",
+   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": 0}, {\"line\": \"16\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"line\": \"16\"}], \"test\": \"lt\"}, \"then\": {\"line\": \"16\"}}, {\"guard\": {\"args\": [{\"line\": \"16\"}, {\"const\": 0}], \"test\": \"lt\"}, \"then\": {\"line\": \"21\"}}], \"op\": \"choose\"}",
+   "ruling": "Ruling: equivalent representation; project retained. When line 16 is zero both enter zero; otherwise both enter line 16 or line 21."
   }
  ]
 }

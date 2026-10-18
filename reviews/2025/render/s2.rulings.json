@@ -1,0 +1,18 @@
+{
+ "kind": "render",
+ "form": "s2",
+ "rulings": [
+  {
+   "printed": "11",
+   "restated": "Enter the amount from f8959 line 18.",
+   "model": "Schedule 2 says only 'Additional Medicare Tax. Attach Form 8959' and does not name which Form 8959 line to carry over. The Form 8959 page or instructions identifying line 18 as the total Additional Medicare Tax are not in the text given.",
+   "ruling": "Ruling: representation; project retained. Form 8959 line 18 reads 'Add lines 7, 13, and 17. Also include this amount on Schedule 2 (Form 1040), line 11' (f8959), which is the carried line."
+  },
+  {
+   "printed": "12",
+   "restated": "Enter the amount from f8960 line 17.",
+   "model": "Schedule 2 says only 'Net investment income tax. Attach Form 8960' and does not name which Form 8960 line to carry over. The Form 8960 page or instructions identifying line 17 as the net investment income tax are not in the text given.",
+   "ruling": "Ruling: representation; project retained. Form 8960 line 17 reads 'Net investment income tax for individuals. Multiply line 16 by 3.8% (0.038). Enter here and include on your tax return' (f8960); Schedule 2 line 12 is where it is included."
+  }
+ ]
+}

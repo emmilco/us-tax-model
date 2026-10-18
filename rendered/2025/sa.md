@@ -5,9 +5,9 @@
 
 ## (helper) — `sa.unsupported`
 
-- **Authored helper label:** Any casualty/theft loss, other itemized deduction, foreign tax or generation-skipping tax deduction, mortgage interest or points not on Form 1098 or subject to debt/use limits, or sales-tax election?
-- **Encoded (Bool):** Input — Any casualty/theft loss, other itemized deduction, foreign tax or generation-skipping tax deduction, mortgage interest or points not on Form 1098 or subject to debt/use limits, or sales-tax election?
-- Expr: `{"op":"input","source":"Any casualty/theft loss, other itemized deduction, foreign tax or generation-skipping tax deduction, mortgage interest or points not on Form 1098 or subject to debt/use limits, or sales-tax election?"}`
+- **Authored helper label:** Any casualty or theft loss (including a disaster loss added to the standard deduction); a deduction from the Schedule A line 16 list; a foreign tax or generation-skipping tax deduction; mortgage interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds not all used to buy, build or improve the home, or debt over the limit); or the sales-tax election?
+- **Encoded (Bool):** Input — Any casualty or theft loss (including a disaster loss added to the standard deduction); a deduction from the Schedule A line 16 list; a foreign tax or generation-skipping tax deduction; mortgage interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds not all used to buy, build or improve the home, or debt over the limit); or the sales-tax election?
+- Expr: `{"op":"input","source":"Any casualty or theft loss (including a disaster loss added to the standard deduction); a deduction from the Schedule A line 16 list; a foreign tax or generation-skipping tax deduction; mortgage interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds not all used to buy, build or improve the home, or debt over the limit); or the sales-tax election?"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 
 ## (helper) — `sa.charity_limited`
@@ -19,16 +19,16 @@
 
 ## (helper) — `sa.excluded_income`
 
-- **Authored helper label:** Any excluded Puerto Rico income, Form 2555 or Form 4563 amounts?
-- **Encoded (Bool):** Input — Any excluded Puerto Rico income, Form 2555 or Form 4563 amounts?
-- Expr: `{"op":"input","source":"Any excluded Puerto Rico income, Form 2555 or Form 4563 amounts?"}`
+- **Authored helper label:** Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico?
+- **Encoded (Bool):** Input — Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico?
+- Expr: `{"op":"input","source":"Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico?"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 
 ## (helper) — `sa.dependent`
 
-- **Authored helper label:** Can someone claim you or your spouse as a dependent, or are you a dual-status alien?
-- **Encoded (Bool):** Input — Can someone claim you or your spouse as a dependent, or are you a dual-status alien?
-- Expr: `{"op":"input","source":"Can someone claim you or your spouse as a dependent, or are you a dual-status alien?"}`
+- **Authored helper label:** Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)
+- **Encoded (Bool):** Input — Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)
+- Expr: `{"op":"input","source":"Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 
 ## (helper) — `sa.spouse_extra`

@@ -27,7 +27,7 @@ Status: **MISMATCH**
 
 Restated: Choose — [helper "Basis reported to IRS" = true → helper "Basis shown on broker report"] [helper "Basis reported to IRS" = false → helper "Correct adjusted basis from records"]
 
-Model: The gate "Basis reported to IRS" is true only for boxes A and D, but the box input also accepts G–L, and no refusal excludes them. For boxes G and J the program enters the correct basis from records, while the IRS says "If this transaction is reported on Part I with box A or box G checked ... or ... Part II with box D or box J checked ... enter the basis shown on Form 1099-B or Form 1099-DA (or substitute statement) in column (e), even though that basis is incorrect."
+Model: Helper "Basis reported to IRS" is true only for boxes A and D, so boxes G and J fall back to the correct basis. The IRS text says "If this transaction is reported on Part I with box A or box G checked ... or on Part II with box D or box J checked ... enter the basis shown on Form 1099-B or Form 1099-DA (or substitute statement) in column (e), even though that basis is incorrect."
 
 Ruling: scope; project retained. Boxes G–L (digital assets reported on Form 1099-DA; f8949 p. 1: "(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS") are refused at the transaction: `sales.one` refuses when `sales.digital` is true, the refusal propagates through `sd.count` to `sd.screen`, and every Schedule D total refuses on `sd.screen` before any box filter runs. Within the supported boxes A–F the filter reads as the line does. The filters must widen to boxes G–L when digital assets come into scope (recorded in the transcription rulings). No change to the data.
 
@@ -36,14 +36,14 @@ Status: **MISMATCH**
 
 Restated: Add helper "Basis correction in column (g)" and helper "Wash-sale adjustment in column (g)".
 
-Model: Within boxes A and D the basis correction (reported minus correct) matches the worksheet, and the wash-sale amount matches 'enter the correct amount of the nondeductible loss as a positive number in column (g)'. But for boxes G and J with code B the program enters no basis correction, while the IRS says 'Correct the error by entering an adjustment in column (g)' using the Worksheet for Basis Adjustments. Also, code 'other' yields no adjustment and no refusal, though the IRS requires adjustments for other codes (e.g., E, L).
+Model: The code B basis correction is limited to boxes A and D, so a box G or J row with an incorrect reported basis gets no column (g) correction. The IRS text says for "box A or box G ... box D or box J ... Correct the error by entering an adjustment in column (g)" using the Worksheet for Basis Adjustments. Summing the B and W amounts as the net adjustment, and entering the wash-sale loss as a positive number, otherwise match the text.
 
 Ruling: scope; project retained. Boxes G and J are refused with every digital-asset box (see column (e)), so the basis correction's A/D condition is the whole supported case. Adjustment codes other than B and W are refused: `sales.one` refuses when `sales.bad_code` ("Only applicable B and W adjustments are supported"), and the refusal reaches the Schedule D totals through `sd.count`. No change to the data.
 
 ### (h) — Column (h): proceeds less basis plus adjustments
 Status: **MATCH**
 
-Model: The IRS says 'Subtract column (e) from column (d) and combine the result with column (g)'. The restatement computes (d) − (e) plus (g); any errors come from columns (e) and (g), not from this line's formula.
+Model: The IRS text says "Subtract column (e) from column (d) and combine the result with column (g)." The restatement adds column (g) to proceeds less column (e), which is that computation.
 
 ## Raw response
 
@@ -52,12 +52,12 @@ Model: The IRS says 'Subtract column (e) from column (d) and combine the result 
 lines:
   - key: "(e)"
     status: MISMATCH
-    reason: "The gate \"Basis reported to IRS\" is true only for boxes A and D, but the box input also accepts G–L, and no refusal excludes them. For boxes G and J the program enters the correct basis from records, while the IRS says \"If this transaction is reported on Part I with box A or box G checked ... or ... Part II with box D or box J checked ... enter the basis shown on Form 1099-B or Form 1099-DA (or substitute statement) in column (e), even though that basis is incorrect.\""
+    reason: "Helper \"Basis reported to IRS\" is true only for boxes A and D, so boxes G and J fall back to the correct basis. The IRS text says \"If this transaction is reported on Part I with box A or box G checked ... or on Part II with box D or box J checked ... enter the basis shown on Form 1099-B or Form 1099-DA (or substitute statement) in column (e), even though that basis is incorrect.\""
   - key: "(g)"
     status: MISMATCH
-    reason: "Within boxes A and D the basis correction (reported minus correct) matches the worksheet, and the wash-sale amount matches 'enter the correct amount of the nondeductible loss as a positive number in column (g)'. But for boxes G and J with code B the program enters no basis correction, while the IRS says 'Correct the error by entering an adjustment in column (g)' using the Worksheet for Basis Adjustments. Also, code 'other' yields no adjustment and no refusal, though the IRS requires adjustments for other codes (e.g., E, L)."
+    reason: "The code B basis correction is limited to boxes A and D, so a box G or J row with an incorrect reported basis gets no column (g) correction. The IRS text says for \"box A or box G ... box D or box J ... Correct the error by entering an adjustment in column (g)\" using the Worksheet for Basis Adjustments. Summing the B and W amounts as the net adjustment, and entering the wash-sale loss as a positive number, otherwise match the text."
   - key: "(h)"
     status: MATCH
-    reason: "The IRS says 'Subtract column (e) from column (d) and combine the result with column (g)'. The restatement computes (d) − (e) plus (g); any errors come from columns (e) and (g), not from this line's formula."
+    reason: "The IRS text says \"Subtract column (e) from column (d) and combine the result with column (g).\" The restatement adds column (g) to proceeds less column (e), which is that computation."
 ```
 ```

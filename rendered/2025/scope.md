@@ -5,37 +5,37 @@
 
 ## (helper) — `scope.schedule1`
 
-- **Authored helper label:** Any income or adjustment requiring Schedule 1, including a taxable state/local tax refund?
-- **Encoded (Bool):** Input — Any income or adjustment requiring Schedule 1, including a taxable state/local tax refund?
-- Expr: `{"op":"input","source":"Any income or adjustment requiring Schedule 1, including a taxable state/local tax refund?"}`
+- **Authored helper label:** Any income or adjustment requiring Schedule 1, including a taxable state or local tax refund, unemployment compensation, self-employment income or Schedule SE (including clergy and church employee income), Schedule C income including statutory-employee wages, or an exclusion of Medicaid waiver payments (Schedule 1 line 8s)? (Schedule 1-A deductions are asked separately.)
+- **Encoded (Bool):** Input — Any income or adjustment requiring Schedule 1, including a taxable state or local tax refund, unemployment compensation, self-employment income or Schedule SE (including clergy and church employee income), Schedule C income including statutory-employee wages, or an exclusion of Medicaid waiver payments (Schedule 1 line 8s)? (Schedule 1-A deductions are asked separately.)
+- Expr: `{"op":"input","source":"Any income or adjustment requiring Schedule 1, including a taxable state or local tax refund, unemployment compensation, self-employment income or Schedule SE (including clergy and church employee income), Schedule C income including statutory-employee wages, or an exclusion of Medicaid waiver payments (Schedule 1 line 8s)? (Schedule 1-A deductions are asked separately.)"}`
 - Cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; sha256 3d31c226)
 
 ## (helper) — `scope.schedule1a`
 
-- **Authored helper label:** Any deduction claimed on Schedule 1-A, including tips, overtime, car-loan interest or enhanced senior deduction?
-- **Encoded (Bool):** Input — Any deduction claimed on Schedule 1-A, including tips, overtime, car-loan interest or enhanced senior deduction?
-- Expr: `{"op":"input","source":"Any deduction claimed on Schedule 1-A, including tips, overtime, car-loan interest or enhanced senior deduction?"}`
+- **Authored helper label:** Do you qualify for any Schedule 1-A deduction (qualified tips, qualified overtime compensation, qualified passenger vehicle loan interest, or the enhanced deduction for a filer born before January 2, 1961), whether or not you planned to claim it?
+- **Encoded (Bool):** Input — Do you qualify for any Schedule 1-A deduction (qualified tips, qualified overtime compensation, qualified passenger vehicle loan interest, or the enhanced deduction for a filer born before January 2, 1961), whether or not you planned to claim it?
+- Expr: `{"op":"input","source":"Do you qualify for any Schedule 1-A deduction (qualified tips, qualified overtime compensation, qualified passenger vehicle loan interest, or the enhanced deduction for a filer born before January 2, 1961), whether or not you planned to claim it?"}`
 - Cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; sha256 3d31c226)
 
 ## (helper) — `scope.credits`
 
-- **Authored helper label:** Any credit outside the simple foreign tax credit, the excess Social Security credit, the child tax credit, the credit for other dependents, the additional child tax credit and the earned income credit?
-- **Encoded (Bool):** Input — Any credit outside the simple foreign tax credit, the excess Social Security credit, the child tax credit, the credit for other dependents, the additional child tax credit and the earned income credit?
-- Expr: `{"op":"input","source":"Any credit outside the simple foreign tax credit, the excess Social Security credit, the child tax credit, the credit for other dependents, the additional child tax credit and the earned income credit?"}`
+- **Authored helper label:** Do you want to claim any credit other than the foreign tax credit claimed without Form 1116, the excess social security credit, the child tax credit, the credit for other dependents, the additional child tax credit and the earned income credit, or do you have any other amount for Schedule 3 Part I (for example a Form 8978 adjustment)?
+- **Encoded (Bool):** Input — Do you want to claim any credit other than the foreign tax credit claimed without Form 1116, the excess social security credit, the child tax credit, the credit for other dependents, the additional child tax credit and the earned income credit, or do you have any other amount for Schedule 3 Part I (for example a Form 8978 adjustment)?
+- Expr: `{"op":"input","source":"Do you want to claim any credit other than the foreign tax credit claimed without Form 1116, the excess social security credit, the child tax credit, the credit for other dependents, the additional child tax credit and the earned income credit, or do you have any other amount for Schedule 3 Part I (for example a Form 8978 adjustment)?"}`
 - Cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; sha256 3d31c226)
 
 ## (helper) — `scope.other_income`
 
-- **Authored helper label:** Any retirement, Social Security, nonresident or other income/return treatment outside wages, interest, dividends and supported securities sales, including wages or tips not on a Form W-2, Medicaid waiver payments, dependent care or adoption benefits, or other earned income (Form 1040 lines 1b–1h)?
-- **Encoded (Bool):** Input — Any retirement, Social Security, nonresident or other income/return treatment outside wages, interest, dividends and supported securities sales, including wages or tips not on a Form W-2, Medicaid waiver payments, dependent care or adoption benefits, or other earned income (Form 1040 lines 1b–1h)?
-- Expr: `{"op":"input","source":"Any retirement, Social Security, nonresident or other income/return treatment outside wages, interest, dividends and supported securities sales, including wages or tips not on a Form W-2, Medicaid waiver payments, dependent care or adoption benefits, or other earned income (Form 1040 lines 1b–1h)?"}`
+- **Authored helper label:** Any retirement, Social Security, nonresident alien (you or your spouse, for any part of 2025) or other income or return treatment outside wages, interest, dividends and supported securities sales, including wages or tips not on a Form W-2, Medicaid waiver payments (whether or not in Form W-2 box 1), dependent care or adoption benefits, other earned income (Form 1040 lines 1b-1h), or income or loss from a passive activity (including gain on selling an interest in one)?
+- **Encoded (Bool):** Input — Any retirement, Social Security, nonresident alien (you or your spouse, for any part of 2025) or other income or return treatment outside wages, interest, dividends and supported securities sales, including wages or tips not on a Form W-2, Medicaid waiver payments (whether or not in Form W-2 box 1), dependent care or adoption benefits, other earned income (Form 1040 lines 1b-1h), or income or loss from a passive activity (including gain on selling an interest in one)?
+- Expr: `{"op":"input","source":"Any retirement, Social Security, nonresident alien (you or your spouse, for any part of 2025) or other income or return treatment outside wages, interest, dividends and supported securities sales, including wages or tips not on a Form W-2, Medicaid waiver payments (whether or not in Form W-2 box 1), dependent care or adoption benefits, other earned income (Form 1040 lines 1b-1h), or income or loss from a passive activity (including gain on selling an interest in one)?"}`
 - Cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; sha256 3d31c226)
 
 ## (helper) — `scope.other_line16`
 
-- **Authored helper label:** Any additional Form 1040 line 16 tax, including Forms 8814, 4972, 8615 or a section 962 election?
-- **Encoded (Bool):** Input — Any additional Form 1040 line 16 tax, including Forms 8814, 4972, 8615 or a section 962 election?
-- Expr: `{"op":"input","source":"Any additional Form 1040 line 16 tax, including Forms 8814, 4972, 8615 or a section 962 election?"}`
+- **Authored helper label:** Any additional Form 1040 line 16 tax or filing, including filing Form 8814 (even with no tax), Form 4972, Form 8615, a section 962 election, Form 8621, a Form 8978 amount, or recapture of an education credit?
+- **Encoded (Bool):** Input — Any additional Form 1040 line 16 tax or filing, including filing Form 8814 (even with no tax), Form 4972, Form 8615, a section 962 election, Form 8621, a Form 8978 amount, or recapture of an education credit?
+- Expr: `{"op":"input","source":"Any additional Form 1040 line 16 tax or filing, including filing Form 8814 (even with no tax), Form 4972, Form 8615, a section 962 election, Form 8621, a Form 8978 amount, or recapture of an education credit?"}`
 - Cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; sha256 3d31c226)
 
 ## (helper) — `scope.ready`
