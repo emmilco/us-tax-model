@@ -61,9 +61,9 @@
 - Text at issue: Form 8889 line 3 instructions, rule 2, "If the last-month rule ... applies, you are considered an eligible individual for the entire year. You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month", and rule 4, "If you were, or were considered, an eligible individual for the entire year and you changed your type of coverage during the year, enter on line 3 ... the greater of" the Line 3 Limitation Chart and Worksheet or the maximum for the December 1 coverage.
 - Candidate readings: Under the last-month rule, line 3 is the maximum for the December 1 coverage (rule 2's same coverage for the year). | Under the last-month rule with a change of coverage type, line 3 is the greater of the chart and the December 1 maximum (rule 4 names a filer who "were considered" eligible all year).
 - **Chosen:** The greater of the chart and the December 1 maximum when the coverage type changed among the eligible months; the December 1 maximum otherwise (f8889.line3_last_month).
-- Reason: Rule 4 names the filer considered eligible all year, which is the last-month rule's filer, so it reads as the stricter fit to the text; the result is never less than rule 2's amount. Found by the Stage 11 class M hand-work (the model applied rule 4), adopted under the owner's standing preference for the strictly accurate reading.
+- Reason: Rule 4 names the filer considered eligible all year, which is the last-month rule's filer, so it reads as the stricter fit to the text; the result is never less than rule 2's amount. Found by the Stage 11 class M hand-work (the model applied rule 4; the second transcription read rule 2); the owner chose rule 4.
 
-- Status: Adopted in Stage 11 from the class M review; put to the owner in the Stage 11 report.
+- Status: Owner ruling after Stage 11 (keep rule 4).
 - Cite: [i8889] p. 4, Line 3, rules 2, 3 and 4 (2025; sha256 da6f2f58)
 
 ## amb.2025.sli_ratio_places

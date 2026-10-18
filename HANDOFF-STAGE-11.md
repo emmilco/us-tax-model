@@ -39,7 +39,7 @@ is current; `BUG_INVENTORY.md` has 34 entries.
 5. **Readings recorded.** `amb.2025.sli_ratio_places` (owner) and
    `amb.2025.hsa_last_month_change` (rule 4 of the line 3 instructions applied to
    a last-month-rule filer who changed coverage type; found by class M, adopted as
-   the strictly accurate reading; to confirm with the owner).
+   the strictly accurate reading; the owner confirmed rule 4, T-033).
 
 ## Evidence
 
@@ -69,5 +69,4 @@ is current; `BUG_INVENTORY.md` has 34 entries.
 
 ## Open items (see TASKS.md)
 
-- Confirm `amb.2025.hsa_last_month_change` with the owner.
 - T-030 (collection entry lines), T-011 (the 2026 refetch), and the earlier open items.
