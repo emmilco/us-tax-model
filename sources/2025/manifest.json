@@ -938,12 +938,117 @@
       "text_sha256": "7520978136b2105fe174efb571e59e32d91f854238549872a5a9ada3d01fe2d9",
       "revision": "Rev. Proc. 2024-40; 2025 adjusted items; released 2024-10",
       "revision_status": "Printed identification inspected in extracted text; archived for the Stage 1 rate schedule (Tax Table midpoint conjecture) and parameter cross-check; content review tracked in the form and parameter citations",
-      "revision_locator": "PDF page 1 (heading); §3.01 Tax Rate Tables",
+      "revision_locator": "PDF page 1 (heading); \u00a73.01 Tax Rate Tables",
       "cols_file": "rp-2024-40.cols.txt",
       "cols_sha256": "fc1ad85af631cb8c6e628604590c2edf4794db9fe94244682737ff577799298e",
       "pages_file": "rp-2024-40.pages.json",
       "pages_sha256": "b0ffd05c3929f8faacde01daa72f021e048bdf6709bf735b81c06c90aae3be8d",
       "extract_tool_version": "0.10"
+    },
+    {
+      "id": "soi-23in12ms",
+      "format": "xls",
+      "url": "https://www.irs.gov/pub/irs-soi/23in12ms.xls",
+      "resolved_url": "https://www.irs.gov/pub/irs-soi/23in12ms.xls",
+      "fetched_at": "2026-10-18T22:43:46.219052+00:00",
+      "file": "soi-23in12ms.xls",
+      "sha256": "549861a1c7b38256abf9506a6111dcf82110266d0168199dfa465a5d61134490",
+      "revision": null,
+      "revision_status": "Pending inspection of archived document; not cleared for encoding"
+    },
+    {
+      "id": "soi-23in14acg",
+      "format": "xls",
+      "url": "https://www.irs.gov/pub/irs-soi/23in14acg.xls",
+      "resolved_url": "https://www.irs.gov/pub/irs-soi/23in14acg.xls",
+      "fetched_at": "2026-10-18T22:43:46.708592+00:00",
+      "file": "soi-23in14acg.xls",
+      "sha256": "5b35c2f007f16503c0dcf6cc085d3a6b049ca523d99b7d7ae29afdbdd2d02e70",
+      "revision": null,
+      "revision_status": "Pending inspection of archived document; not cleared for encoding"
+    },
+    {
+      "id": "soi-23in14ar",
+      "format": "xls",
+      "url": "https://www.irs.gov/pub/irs-soi/23in14ar.xls",
+      "resolved_url": "https://www.irs.gov/pub/irs-soi/23in14ar.xls",
+      "fetched_at": "2026-10-18T22:43:46.418663+00:00",
+      "file": "soi-23in14ar.xls",
+      "sha256": "b6c1f87fbb5533417e195f6938538e5de09b6a0825a6a54346bf9363a18d96af",
+      "revision": null,
+      "revision_status": "Pending inspection of archived document; not cleared for encoding"
+    },
+    {
+      "id": "soi-23in16ag",
+      "format": "xls",
+      "url": "https://www.irs.gov/pub/irs-soi/23in16ag.xls",
+      "resolved_url": "https://www.irs.gov/pub/irs-soi/23in16ag.xls",
+      "fetched_at": "2026-10-18T22:43:46.940915+00:00",
+      "file": "soi-23in16ag.xls",
+      "sha256": "629c8bf04a81de4535f738d3541b5b52b203fcb462f0e072199896d1146a48fd",
+      "revision": null,
+      "revision_status": "Pending inspection of archived document; not cleared for encoding"
+    },
+    {
+      "id": "soi-23in27aca",
+      "format": "xls",
+      "url": "https://www.irs.gov/pub/irs-soi/23in27aca.xls",
+      "resolved_url": "https://www.irs.gov/pub/irs-soi/23in27aca.xls",
+      "fetched_at": "2026-10-18T22:43:47.400429+00:00",
+      "file": "soi-23in27aca.xls",
+      "sha256": "62e3cf3e15d68cf03639053a5b796bf29cc5ba241951fc388f0fd737da737d33",
+      "revision": null,
+      "revision_status": "Pending inspection of archived document; not cleared for encoding"
+    },
+    {
+      "id": "soi-23in33ar",
+      "format": "xls",
+      "url": "https://www.irs.gov/pub/irs-soi/23in33ar.xls",
+      "resolved_url": "https://www.irs.gov/pub/irs-soi/23in33ar.xls",
+      "fetched_at": "2026-10-18T22:43:47.132889+00:00",
+      "file": "soi-23in33ar.xls",
+      "sha256": "e749d3e9636d9784e2a5e8639f49ce5389a4ca0aaeedca6c671cee0b71264c04",
+      "revision": null,
+      "revision_status": "Pending inspection of archived document; not cleared for encoding"
+    },
+    {
+      "id": "soi-agi-size",
+      "format": "html",
+      "url": "https://www.irs.gov/statistics/soi-tax-stats-individual-statistical-tables-by-size-of-adjusted-gross-income",
+      "resolved_url": "https://www.irs.gov/statistics/soi-tax-stats-individual-statistical-tables-by-size-of-adjusted-gross-income",
+      "fetched_at": "2026-10-18T22:43:16.965945+00:00",
+      "file": "soi-agi-size.html",
+      "sha256": "ead35275b746275a11f71b7bc15c8bbc5992c57d6bde16ce55a37771442cafb0",
+      "text_file": "soi-agi-size.txt",
+      "text_sha256": "c707822b23965a6793e4ea34d2c18a31d0e47c552d2399df86f61754fc261b65",
+      "revision": null,
+      "revision_status": "Pending inspection of archived document; not cleared for encoding"
+    },
+    {
+      "id": "soi-filing-status",
+      "format": "html",
+      "url": "https://www.irs.gov/statistics/soi-tax-stats-individual-statistical-tables-by-filing-status",
+      "resolved_url": "https://www.irs.gov/statistics/soi-tax-stats-individual-statistical-tables-by-filing-status",
+      "fetched_at": "2026-10-18T22:43:16.709196+00:00",
+      "file": "soi-filing-status.html",
+      "sha256": "50904dfeda04aab35ef3f42f36df34f06740b52f0bedb013206a3ff087971050",
+      "text_file": "soi-filing-status.txt",
+      "text_sha256": "310ec109a3b710239709046a3f0e70d542c7a29c446217536ac7ac426502ecae",
+      "revision": null,
+      "revision_status": "Pending inspection of archived document; not cleared for encoding"
+    },
+    {
+      "id": "soi-pub1304",
+      "format": "html",
+      "url": "https://www.irs.gov/statistics/soi-tax-stats-individual-income-tax-returns-complete-report-publication-1304",
+      "resolved_url": "https://www.irs.gov/statistics/soi-tax-stats-individual-income-tax-returns-complete-report-publication-1304",
+      "fetched_at": "2026-10-18T22:43:16.370824+00:00",
+      "file": "soi-pub1304.html",
+      "sha256": "304632e565d066e545f193d839990803d88dcfffcf1793dce7f5886135c30032",
+      "text_file": "soi-pub1304.txt",
+      "text_sha256": "579b9fdd15ce1f21d881e1ac39a2c295c5fe474d6eb336297eb192300c9788ae",
+      "revision": null,
+      "revision_status": "Pending inspection of archived document; not cleared for encoding"
     }
   ]
 }

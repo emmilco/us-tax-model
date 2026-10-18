@@ -1,0 +1,582 @@
+{
+ "tax_year_counts": 2023,
+ "simulated_year": 2025,
+ "irs_total_returns": 160602107.0,
+ "microdata_filing_units_unweighted_total": 157629339.546014,
+ "raking_max_share_error": 7.132191345032847e-07,
+ "coverage": {
+  "central": 0.1787200865102252,
+  "low": 0.010852137164279463,
+  "high": 0.2213747425744314,
+  "microdata_part": 0.2213747425744314,
+  "irs_only_independent_factor": 0.8073192290675857,
+  "irs_only_share_sum": 0.21052260541015194
+ },
+ "categories": [
+  {
+   "id": "mfj",
+   "group": "married",
+   "label": "Married filing jointly",
+   "gates": [
+    "s3.married"
+   ],
+   "irs_returns": null,
+   "microdata_share_before_raking": 0.5065700162025811,
+   "share": 0.33557921990979234,
+   "basis": "IRS count with qualifying surviving spouses (joint_or_qss), overlap from microdata"
+  },
+  {
+   "id": "mfs",
+   "group": "married",
+   "label": "Married filing separately",
+   "gates": [
+    "s3.married"
+   ],
+   "irs_returns": 4139858.0,
+   "microdata_share_before_raking": 0.01213388637242343,
+   "share": 0.02577710728090902,
+   "basis": "IRS count, overlap from microdata"
+  },
+  {
+   "id": "senior",
+   "group": "schedule1a",
+   "label": "Enhanced deduction for seniors",
+   "gates": [
+    "scope.schedule1a"
+   ],
+   "irs_returns": null,
+   "microdata_share_before_raking": 0.19720239971730436,
+   "share": 0.18258972965537848,
+   "basis": "microdata model only (no IRS count; new for 2025)"
+  },
+  {
+   "id": "tips",
+   "group": "schedule1a",
+   "label": "Qualified tips deduction",
+   "gates": [
+    "scope.schedule1a"
+   ],
+   "irs_returns": null,
+   "microdata_share_before_raking": 0.0095740067401813,
+   "share": 0.01092764410072315,
+   "basis": "microdata model only (no IRS count; new for 2025)"
+  },
+  {
+   "id": "overtime",
+   "group": "schedule1a",
+   "label": "Qualified overtime deduction",
+   "gates": [
+    "scope.schedule1a"
+   ],
+   "irs_returns": null,
+   "microdata_share_before_raking": 0.1482476994158221,
+   "share": 0.13127369079961881,
+   "basis": "microdata model only (no IRS count; new for 2025)"
+  },
+  {
+   "id": "car_loan",
+   "group": "schedule1a",
+   "label": "Car loan interest deduction",
+   "gates": [
+    "scope.schedule1a"
+   ],
+   "irs_returns": null,
+   "microdata_share_before_raking": 0.26801279598220346,
+   "share": 0.26910197559733784,
+   "basis": "microdata model only (no IRS count; new for 2025)"
+  },
+  {
+   "id": "schedule_c",
+   "group": "self_employment",
+   "label": "Schedule C income or loss",
+   "gates": [
+    "scope.schedule1",
+    "qbi.unsupported"
+   ],
+   "irs_returns": 30478887.0,
+   "microdata_share_before_raking": 0.1872266734913825,
+   "share": 0.1897788504155207,
+   "basis": "IRS count, overlap from microdata"
+  },
+  {
+   "id": "ptc",
+   "group": "premium_tax_credit",
+   "label": "Premium tax credit or advance payments (Form 8962 is not prepared; line 9 is a supplied subtotal)",
+   "gates": [
+    "s2.other"
+   ],
+   "irs_returns": 9604913.0,
+   "microdata_share_before_raking": 0.04995625745841605,
+   "share": 0.059805658553198277,
+   "basis": "IRS count, overlap from microdata"
+  },
+  {
+   "id": "education",
+   "group": "education",
+   "label": "Education credits",
+   "gates": [
+    "scope.credits"
+   ],
+   "irs_returns": 7211349.0,
+   "microdata_share_before_raking": 0.005307730052777667,
+   "share": 0.04490196447608361,
+   "basis": "IRS count, overlap from microdata"
+  },
+  {
+   "id": "cdcc",
+   "group": "other_credits",
+   "label": "Child and dependent care credit",
+   "gates": [
+    "scope.credits"
+   ],
+   "irs_returns": 5720294.0,
+   "microdata_share_before_raking": 0.0400503037780639,
+   "share": 0.03561780626819611,
+   "basis": "IRS count, overlap from microdata"
+  },
+  {
+   "id": "savers",
+   "group": "other_credits",
+   "label": "Saver's credit",
+   "gates": [
+    "scope.credits"
+   ],
+   "irs_returns": 9831548.0,
+   "microdata_share_before_raking": null,
+   "share": 0.06121680582932825,
+   "basis": "IRS count only (independence assumed)"
+  },
+  {
+   "id": "energy",
+   "group": "other_credits",
+   "label": "Residential energy credits",
+   "gates": [
+    "scope.credits"
+   ],
+   "irs_returns": 2570561.0,
+   "microdata_share_before_raking": null,
+   "share": 0.01600577382213298,
+   "basis": "IRS count only (independence assumed)"
+  },
+  {
+   "id": "other_nonrefundable",
+   "group": "other_credits",
+   "label": "Other nonrefundable credits (general business, adoption, clean vehicle and others)",
+   "gates": [
+    "scope.credits"
+   ],
+   "irs_returns": 1467567.0,
+   "microdata_share_before_raking": null,
+   "share": 0.009137906266696737,
+   "basis": "IRS count only (independence assumed)"
+  },
+  {
+   "id": "rental_royalty",
+   "group": "schedule_e",
+   "label": "Rental and royalty income or loss",
+   "gates": [
+    "scope.schedule1"
+   ],
+   "irs_returns": 9542639.0,
+   "microdata_share_before_raking": 0.08643474415508426,
+   "share": 0.05941794955251735,
+   "basis": "IRS count, overlap from microdata"
+  },
+  {
+   "id": "partnership_scorp",
+   "group": "schedule_e",
+   "label": "Partnership or S corporation income or loss",
+   "gates": [
+    "scope.schedule1"
+   ],
+   "irs_returns": 5554014.0,
+   "microdata_share_before_raking": 0.07133107065455048,
+   "share": 0.034582464688104574,
+   "basis": "IRS count, overlap from microdata"
+  },
+  {
+   "id": "estate_trust",
+   "group": "schedule_e",
+   "label": "Estate or trust income or loss",
+   "gates": [
+    "scope.schedule1"
+   ],
+   "irs_returns": 685175.0,
+   "microdata_share_before_raking": 0.005400635913196769,
+   "share": 0.004266291542925806,
+   "basis": "IRS count, overlap from microdata"
+  },
+  {
+   "id": "farm",
+   "group": "farm",
+   "label": "Farm income or loss",
+   "gates": [
+    "scope.schedule1"
+   ],
+   "irs_returns": 1743031.0,
+   "microdata_share_before_raking": 0.0012370253462135729,
+   "share": 0.010853103599370926,
+   "basis": "IRS count, overlap from microdata"
+  },
+  {
+   "id": "capital_loss_carryover",
+   "group": "capital_loss_carryover",
+   "label": "Capital loss carryover from 2024",
+   "gates": [
+    "sd.carryover"
+   ],
+   "irs_returns": 5622923.0,
+   "microdata_share_before_raking": null,
+   "share": 0.03501151451269565,
+   "basis": "IRS count only (independence assumed)"
+  },
+  {
+   "id": "form5329",
+   "group": "retirement_penalty",
+   "label": "Additional tax on qualified plans (Form 5329)",
+   "gates": [
+    "retirement.special",
+    "s2.other"
+   ],
+   "irs_returns": 5092999.0,
+   "microdata_share_before_raking": null,
+   "share": 0.03171190649447706,
+   "basis": "IRS count only (independence assumed)"
+  },
+  {
+   "id": "ira_deduction",
+   "group": "schedule1_misc",
+   "label": "IRA deduction",
+   "gates": [
+    "scope.schedule1"
+   ],
+   "irs_returns": 2503934.0,
+   "microdata_share_before_raking": 0.1694866136957643,
+   "share": 0.015590916513470094,
+   "basis": "IRS count, overlap from microdata"
+  },
+  {
+   "id": "state_refund",
+   "group": "schedule1_misc",
+   "label": "Taxable state or local income tax refund",
+   "gates": [
+    "scope.schedule1"
+   ],
+   "irs_returns": 3109096.0,
+   "microdata_share_before_raking": 0.09672884080775841,
+   "share": 0.01935900036868337,
+   "basis": "IRS count, overlap from microdata"
+  },
+  {
+   "id": "alimony_received",
+   "group": "schedule1_misc",
+   "label": "Alimony received",
+   "gates": [
+    "scope.schedule1"
+   ],
+   "irs_returns": 183582.0,
+   "microdata_share_before_raking": 0.0019053227387494753,
+   "share": 0.0011430858235995868,
+   "basis": "IRS count, overlap from microdata"
+  },
+  {
+   "id": "alimony_paid",
+   "group": "schedule1_misc",
+   "label": "Alimony paid",
+   "gates": [
+    "scope.schedule1"
+   ],
+   "irs_returns": 278541.0,
+   "microdata_share_before_raking": 0.001841026848388117,
+   "share": 0.0017343548861238156,
+   "basis": "IRS count, overlap from microdata"
+  },
+  {
+   "id": "other_income",
+   "group": "schedule1_misc",
+   "label": "Other income (Schedule 1 line 8z and similar)",
+   "gates": [
+    "scope.schedule1"
+   ],
+   "irs_returns": 7787273.0,
+   "microdata_share_before_raking": 0.02492695317235646,
+   "share": 0.048487987769674785,
+   "basis": "IRS count, overlap from microdata"
+  },
+  {
+   "id": "gambling",
+   "group": "schedule1_misc",
+   "label": "Gambling winnings",
+   "gates": [
+    "scope.schedule1"
+   ],
+   "irs_returns": 2304901.0,
+   "microdata_share_before_raking": null,
+   "share": 0.014351623668299694,
+   "basis": "IRS count only (independence assumed)"
+  },
+  {
+   "id": "nol",
+   "group": "schedule1_misc",
+   "label": "Net operating loss deduction",
+   "gates": [
+    "scope.schedule1"
+   ],
+   "irs_returns": 1019019.0,
+   "microdata_share_before_raking": null,
+   "share": 0.006344991476357156,
+   "basis": "IRS count only (independence assumed)"
+  },
+  {
+   "id": "cancellation_of_debt",
+   "group": "schedule1_misc",
+   "label": "Cancellation of debt",
+   "gates": [
+    "scope.schedule1"
+   ],
+   "irs_returns": 386021.0,
+   "microdata_share_before_raking": null,
+   "share": 0.0024035861497134657,
+   "basis": "IRS count only (independence assumed)"
+  },
+  {
+   "id": "form4797",
+   "group": "schedule1_misc",
+   "label": "Sales of business property (Form 4797)",
+   "gates": [
+    "scope.schedule1"
+   ],
+   "irs_returns": 1720509.0,
+   "microdata_share_before_raking": null,
+   "share": 0.010712866923968813,
+   "basis": "IRS count only (independence assumed)"
+  },
+  {
+   "id": "hsa_distribution",
+   "group": "schedule1_misc",
+   "label": "Taxable HSA distributions",
+   "gates": [
+    "f8889.unsupported"
+   ],
+   "irs_returns": 464689.0,
+   "microdata_share_before_raking": null,
+   "share": 0.002893417830439796,
+   "basis": "IRS count only (independence assumed)"
+  },
+  {
+   "id": "early_withdrawal",
+   "group": "schedule1_misc",
+   "label": "Penalty on early withdrawal of savings",
+   "gates": [
+    "scope.schedule1"
+   ],
+   "irs_returns": 904938.0,
+   "microdata_share_before_raking": null,
+   "share": 0.005634658329856158,
+   "basis": "IRS count only (independence assumed)"
+  },
+  {
+   "id": "foreign_earned_income",
+   "group": "schedule1_misc",
+   "label": "Foreign earned income exclusion (Form 2555)",
+   "gates": [
+    "sa.excluded_income"
+   ],
+   "irs_returns": 432724.0,
+   "microdata_share_before_raking": null,
+   "share": 0.0026943855724134427,
+   "basis": "IRS count only (independence assumed)"
+  },
+  {
+   "id": "amt",
+   "group": "schedule2_misc",
+   "label": "Alternative minimum tax",
+   "gates": [
+    "s2.amt"
+   ],
+   "irs_returns": 150167.0,
+   "microdata_share_before_raking": null,
+   "share": 0.0009350250927903455,
+   "basis": "IRS count only (independence assumed)"
+  },
+  {
+   "id": "schedule2_other",
+   "group": "schedule2_misc",
+   "label": "Household employment, uncollected tip taxes, homebuyer credit repayment",
+   "gates": [
+    "s2.other"
+   ],
+   "irs_returns": 574187.0,
+   "microdata_share_before_raking": null,
+   "share": 0.003575214614089714,
+   "basis": "IRS count only (independence assumed)"
+  },
+  {
+   "id": "wages_not_w2",
+   "group": "other_earned_income",
+   "label": "Wages or tips not on Form W-2, dependent care benefits, other earned income",
+   "gates": [
+    "scope.other_income"
+   ],
+   "irs_returns": 1267621.0,
+   "microdata_share_before_raking": null,
+   "share": 0.007892928826892664,
+   "basis": "IRS count only (independence assumed)"
+  }
+ ],
+ "greedy_order": [
+  {
+   "group": "schedule1a",
+   "label": "Schedule 1-A deductions (new for 2025)",
+   "coverage_after": 0.33858962324888203
+  },
+  {
+   "group": "married",
+   "label": "Married filing jointly and separately",
+   "coverage_after": 0.4918066973835906
+  },
+  {
+   "group": "self_employment",
+   "label": "Self-employment (Schedule C and SE)",
+   "coverage_after": 0.5981764728774922
+  },
+  {
+   "group": "other_credits",
+   "label": "Other credits (dependent care, saver's, energy, others)",
+   "coverage_after": 0.6732423297177376
+  },
+  {
+   "group": "schedule1_misc",
+   "label": "Other Schedule 1 income and adjustments",
+   "coverage_after": 0.7528375617277323
+  },
+  {
+   "group": "schedule_e",
+   "label": "Rental, royalty, partnership, S corporation, estate (Schedule E)",
+   "coverage_after": 0.8223744534508876
+  },
+  {
+   "group": "premium_tax_credit",
+   "label": "Premium tax credit (Form 8962)",
+   "coverage_after": 0.871381200333951
+  },
+  {
+   "group": "education",
+   "label": "Education credits (Form 8863)",
+   "coverage_after": 0.9128182537717436
+  },
+  {
+   "group": "capital_loss_carryover",
+   "label": "Capital loss carryover",
+   "coverage_after": 0.9459369386265624
+  },
+  {
+   "group": "retirement_penalty",
+   "label": "Additional tax on retirement plans (Form 5329)",
+   "coverage_after": 0.9769168339166064
+  },
+  {
+   "group": "farm",
+   "label": "Farm income (Schedule F)",
+   "coverage_after": 0.9876357469972091
+  },
+  {
+   "group": "other_earned_income",
+   "label": "Wages not on Form W-2 and other earned income",
+   "coverage_after": 0.9954931032084963
+  },
+  {
+   "group": "schedule2_misc",
+   "label": "Other Schedule 2 taxes (AMT and others)",
+   "coverage_after": 1.0
+  }
+ ],
+ "coverage_without_model_only_category": {
+  "senior": 0.21236266838485973,
+  "tips": 0.18154595303426155,
+  "overtime": 0.20494957238738137,
+  "car_loan": 0.25412039189510427
+ },
+ "gain_if_covered_alone": {
+  "married": 0.05498508849656325,
+  "schedule1a": 0.15986953673865684,
+  "self_employment": 0.03623689228678448,
+  "premium_tax_credit": 0.009390417501294962,
+  "education": 0.006884838201048099,
+  "other_credits": 0.02117080008962155,
+  "schedule_e": 0.009222056432978715,
+  "capital_loss_carryover": 0.006484285560571429,
+  "retirement_penalty": 0.0058531698469808935,
+  "schedule1_misc": 0.015930178475180357,
+  "schedule2_misc": 0.0008091196030129977,
+  "other_earned_income": 0.001421847463594167,
+  "farm": 0.0022214806945317356
+ },
+ "gates_mapped": [
+  "f8889.unsupported",
+  "qbi.unsupported",
+  "retirement.special",
+  "s2.amt",
+  "s2.other",
+  "s3.married",
+  "sa.excluded_income",
+  "scope.credits",
+  "scope.other_income",
+  "scope.schedule1",
+  "scope.schedule1a",
+  "sd.carryover"
+ ],
+ "gates_unmeasured": [
+  "dependent.divorced_rule",
+  "dependent.income_exception",
+  "dependent.married",
+  "dependent.multiple_support",
+  "dependent.other_claimant",
+  "div.amt",
+  "div.bad_components",
+  "div.bad_special",
+  "div.section1202",
+  "div.unsupported",
+  "f4952.alternative_allocation",
+  "f4952.bad_dividends",
+  "f4952.bad_election",
+  "f4952.carryover",
+  "f4952.unsupported",
+  "f8889.bad_months",
+  "f8889.excess",
+  "f8889.married",
+  "f8959.unsupported",
+  "f8960.bad_allocation",
+  "f8960.refund",
+  "f8960.unsupported",
+  "ftc.needs1116",
+  "gift.section_b",
+  "gift.special",
+  "household.hoh_fails",
+  "person.over",
+  "person.rrta",
+  "retirement.annuity_rollover",
+  "retirement.bad_code",
+  "s1.uc_unsupported",
+  "s8812.combat_pay",
+  "s8812.puerto_rico",
+  "sa.charity_limited",
+  "sa.dependent",
+  "sa.spouse_extra",
+  "sa.unsupported",
+  "sales.bad_aggregate",
+  "sales.bad_code",
+  "sales.digital",
+  "sales.special",
+  "sb.fbar_required",
+  "sb.form8938",
+  "sb.line8",
+  "sb.unsupported",
+  "scope.other_line16",
+  "sd.other_forms",
+  "sd.screen",
+  "ssb.lump_sum",
+  "ssb.pub915",
+  "ssb.terror_disability"
+ ]
+}

@@ -73,15 +73,29 @@ The estimated tax penalty is not computed. The tool states that the IRS will fig
 
 ### 2.4 Coverage goal beyond the proof of concept
 
-The proof-of-concept slice (2.1) was chosen to exercise the architecture: worksheets, tables, keyed collections and per-person rules. The goal is coverage of the situations of most individual filers. Growth proceeds in order of the share of filers affected, each addition as a stage under `design.md` section 5 with the same authoring and verification discipline:
+The proof-of-concept slice (2.1) was chosen to exercise the architecture: worksheets, tables, keyed collections and per-person rules. The goal is coverage of all individual returns, measured over whole returns: a return counts as covered only when nothing on it is refused. The baseline is 80% of returns. Beyond it, coverage continues toward 90 to 95%, as far as it can go without reaching situations that are genuinely exotic.
 
-1. Dependents and the rules that attach to them: the qualifying-child and qualifying-relative tests, head of household, the child tax credit and its refundable part, the credit for other dependents, and the earned income credit. These are household predicates rather than column arithmetic, and the architecture has not yet been tested on them; they come first for that reason.
-2. Retirement income: Form 1099-R and the Social Security benefits worksheet.
-3. Unemployment compensation and the common Schedule 1 adjustments (educator expenses, student loan interest, HSA).
-4. Self-employment: Schedule C with Schedule SE and the qualified business income deduction beyond section 199A dividends.
-5. The premium tax credit and the education credits.
-6. Married filing jointly as a two-person data change, then married filing separately.
-7. Form 1116 and the remaining deferrals of 2.2.
+Coverage is estimated by `tools/coverage/estimate.py`, which writes `reports/2025/filer_coverage.md`. The archived IRS Statistics of Income counts give the share of returns each refused situation affects; household microdata (PolicyEngine-US), reweighted to match those counts, gives the overlaps between situations. The report states what it cannot measure.
+
+Growth proceeds in order of the coverage each addition gains under that estimate, each addition as a stage under `design.md` section 5 with the same authoring and verification discipline. A dependency between stages, where one needs structure another builds, may change the order; the reason is then recorded here. Done so far:
+
+- Dependents and the rules that attach to them: the qualifying-child and qualifying-relative tests, head of household, the child tax credit and its refundable part, the credit for other dependents, and the earned income credit. These came first, ahead of their share, because they were the architecture's first test of household predicates.
+- Retirement income: Form 1099-R and the Social Security benefits worksheet.
+- Unemployment compensation and the common Schedule 1 adjustments (educator expenses, student loan interest, HSA).
+
+Remaining, in the order of the estimate when this section was last revised:
+
+1. The Schedule 1-A deductions: the enhanced deduction for seniors, qualified overtime compensation, qualified tips and qualified passenger vehicle loan interest.
+2. Married filing jointly as a two-person data change, then married filing separately.
+3. Self-employment: Schedule C with Schedule SE and the qualified business income deduction beyond section 199A dividends.
+4. Other credits: child and dependent care, the saver's credit, the residential energy credits.
+5. The remaining Schedule 1 income and adjustments, among them a taxable state refund, other income, gambling winnings and the IRA deduction.
+6. Schedule E: rental and royalty income, partnerships, S corporations, estates and trusts.
+7. The premium tax credit.
+8. The education credits.
+9. The capital loss carryover.
+10. The additional tax on qualified retirement plans (Form 5329).
+11. Form 1116 and the remaining deferrals of 2.2, and the smaller situations the report lists.
 
 State returns are outside the federal goal. A state return after it is a separate decision with its own sources, and nothing in the federal encoding assumes one.
 

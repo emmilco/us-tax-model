@@ -1,0 +1,808 @@
+{
+ "description": "Coverage categories: each refused situation, the IRS Statistics of Income count that sizes it, and the microdata predicate that places it. Where the IRS gives only parts of a category with unknown overlap, 'max' takes the largest part, a lower bound on the category.",
+ "irs_total": {
+  "source": "soi-23in12ms",
+  "column": 1,
+  "header": "All returns / Number of returns"
+ },
+ "groups": {
+  "married": "Married filing jointly and separately",
+  "schedule1a": "Schedule 1-A deductions (new for 2025)",
+  "self_employment": "Self-employment (Schedule C and SE)",
+  "premium_tax_credit": "Premium tax credit (Form 8962)",
+  "education": "Education credits (Form 8863)",
+  "other_credits": "Other credits (dependent care, saver's, energy, others)",
+  "schedule_e": "Rental, royalty, partnership, S corporation, estate (Schedule E)",
+  "capital_loss_carryover": "Capital loss carryover",
+  "retirement_penalty": "Additional tax on retirement plans (Form 5329)",
+  "schedule1_misc": "Other Schedule 1 income and adjustments",
+  "schedule2_misc": "Other Schedule 2 taxes (AMT and others)",
+  "other_earned_income": "Wages not on Form W-2 and other earned income",
+  "farm": "Farm income (Schedule F)"
+ },
+ "categories": [
+  {
+   "id": "joint_or_qss",
+   "group": null,
+   "refused": false,
+   "label": "Joint or qualifying surviving spouse (calibration only; QSS is supported)",
+   "micro": {
+    "filing_status": [
+     "JOINT",
+     "SURVIVING_SPOUSE"
+    ]
+   },
+   "irs": {
+    "combine": "sum",
+    "cells": [
+     {
+      "source": "soi-23in12ms",
+      "column": 13,
+      "header": "married persons filing jointly"
+     }
+    ]
+   }
+  },
+  {
+   "id": "mfj",
+   "group": "married",
+   "gates": [
+    "s3.married"
+   ],
+   "label": "Married filing jointly",
+   "micro": {
+    "filing_status": [
+     "JOINT"
+    ]
+   },
+   "calibrated_by": "joint_or_qss"
+  },
+  {
+   "id": "mfs",
+   "group": "married",
+   "gates": [
+    "s3.married"
+   ],
+   "label": "Married filing separately",
+   "micro": {
+    "filing_status": [
+     "SEPARATE"
+    ]
+   },
+   "irs": {
+    "combine": "sum",
+    "cells": [
+     {
+      "source": "soi-23in12ms",
+      "column": 25,
+      "header": "married persons filing separately"
+     }
+    ]
+   }
+  },
+  {
+   "id": "senior",
+   "group": "schedule1a",
+   "gates": [
+    "scope.schedule1a"
+   ],
+   "label": "Enhanced deduction for seniors",
+   "micro": {
+    "positive": [
+     "additional_senior_deduction"
+    ]
+   }
+  },
+  {
+   "id": "tips",
+   "group": "schedule1a",
+   "gates": [
+    "scope.schedule1a"
+   ],
+   "label": "Qualified tips deduction",
+   "micro": {
+    "positive": [
+     "tip_income_deduction"
+    ]
+   }
+  },
+  {
+   "id": "overtime",
+   "group": "schedule1a",
+   "gates": [
+    "scope.schedule1a"
+   ],
+   "label": "Qualified overtime deduction",
+   "micro": {
+    "positive": [
+     "overtime_income_deduction"
+    ]
+   }
+  },
+  {
+   "id": "car_loan",
+   "group": "schedule1a",
+   "gates": [
+    "scope.schedule1a"
+   ],
+   "label": "Car loan interest deduction",
+   "micro": {
+    "positive": [
+     "auto_loan_interest_deduction"
+    ]
+   }
+  },
+  {
+   "id": "schedule_c",
+   "group": "self_employment",
+   "gates": [
+    "scope.schedule1",
+    "qbi.unsupported"
+   ],
+   "label": "Schedule C income or loss",
+   "micro": {
+    "nonzero": [
+     "self_employment_income"
+    ]
+   },
+   "irs": {
+    "combine": "sum",
+    "cells": [
+     {
+      "source": "soi-23in14ar",
+      "column": 31,
+      "header": "Business or profession / Net income"
+     },
+     {
+      "source": "soi-23in14ar",
+      "column": 33,
+      "header": "Business or profession / Net loss"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ptc",
+   "group": "premium_tax_credit",
+   "gates": [
+    "s2.other"
+   ],
+   "label": "Premium tax credit or advance payments (Form 8962 is not prepared; line 9 is a supplied subtotal)",
+   "micro": {
+    "positive": [
+     "premium_tax_credit"
+    ]
+   },
+   "irs": {
+    "combine": "max",
+    "cells": [
+     {
+      "source": "soi-23in27aca",
+      "column": 3,
+      "header": "Total premium tax credit"
+     },
+     {
+      "source": "soi-23in27aca",
+      "column": 5,
+      "header": "Advance payment of premium tax credit"
+     }
+    ]
+   }
+  },
+  {
+   "id": "education",
+   "group": "education",
+   "gates": [
+    "scope.credits"
+   ],
+   "label": "Education credits",
+   "micro": {
+    "positive": [
+     "american_opportunity_credit",
+     "lifetime_learning_credit"
+    ]
+   },
+   "irs": {
+    "combine": "max",
+    "cells": [
+     {
+      "source": "soi-23in33ar",
+      "column": 8,
+      "header": "Nonrefundable education credit"
+     },
+     {
+      "source": "soi-23in33ar",
+      "column": 40,
+      "header": "American opportunity credit"
+     }
+    ]
+   }
+  },
+  {
+   "id": "cdcc",
+   "group": "other_credits",
+   "gates": [
+    "scope.credits"
+   ],
+   "label": "Child and dependent care credit",
+   "micro": {
+    "positive": [
+     "cdcc"
+    ]
+   },
+   "irs": {
+    "combine": "sum",
+    "cells": [
+     {
+      "source": "soi-23in33ar",
+      "column": 6,
+      "header": "Credit for child and dependent care"
+     }
+    ]
+   }
+  },
+  {
+   "id": "savers",
+   "group": "other_credits",
+   "gates": [
+    "scope.credits"
+   ],
+   "label": "Saver's credit",
+   "irs": {
+    "combine": "sum",
+    "cells": [
+     {
+      "source": "soi-23in33ar",
+      "column": 10,
+      "header": "Retirement savings contribution credit"
+     }
+    ]
+   },
+   "note": "IRS count only: in the microdata every saver's credit comes with a traditional IRA deduction, so raking cannot match both IRS counts."
+  },
+  {
+   "id": "energy",
+   "group": "other_credits",
+   "gates": [
+    "scope.credits"
+   ],
+   "label": "Residential energy credits",
+   "irs": {
+    "combine": "max",
+    "cells": [
+     {
+      "source": "soi-23in33ar",
+      "column": 14,
+      "header": "Residential clean energy credit"
+     },
+     {
+      "source": "soi-23in33ar",
+      "column": 16,
+      "header": "Energy efficient home improvement credit"
+     }
+    ]
+   }
+  },
+  {
+   "id": "other_nonrefundable",
+   "group": "other_credits",
+   "gates": [
+    "scope.credits"
+   ],
+   "label": "Other nonrefundable credits (general business, adoption, clean vehicle and others)",
+   "irs": {
+    "combine": "sum",
+    "cells": [
+     {
+      "source": "soi-23in33ar",
+      "column": 18,
+      "header": "Other nonrefundable credits / Total"
+     }
+    ]
+   }
+  },
+  {
+   "id": "rental_royalty",
+   "group": "schedule_e",
+   "gates": [
+    "scope.schedule1"
+   ],
+   "label": "Rental and royalty income or loss",
+   "micro": {
+    "nonzero": [
+     "rental_income"
+    ]
+   },
+   "irs": {
+    "combine": "sum",
+    "cells": [
+     {
+      "source": "soi-23in14ar",
+      "column": 63,
+      "header": "Total rental and royalty / Net income"
+     },
+     {
+      "source": "soi-23in14ar",
+      "column": 65,
+      "header": "Total rental and royalty / Net loss"
+     }
+    ]
+   }
+  },
+  {
+   "id": "partnership_scorp",
+   "group": "schedule_e",
+   "gates": [
+    "scope.schedule1"
+   ],
+   "label": "Partnership or S corporation income or loss",
+   "micro": {
+    "nonzero": [
+     "partnership_s_corp_income"
+    ]
+   },
+   "irs": {
+    "combine": "max_of_sums",
+    "cells": [
+     [
+      {
+       "source": "soi-23in14ar",
+       "column": 67,
+       "header": "Partnership"
+      },
+      {
+       "source": "soi-23in14ar",
+       "column": 69,
+       "header": "Net loss"
+      }
+     ],
+     [
+      {
+       "source": "soi-23in14ar",
+       "column": 71,
+       "header": "S corporation"
+      },
+      {
+       "source": "soi-23in14ar",
+       "column": 73,
+       "header": "Net loss"
+      }
+     ]
+    ]
+   }
+  },
+  {
+   "id": "estate_trust",
+   "group": "schedule_e",
+   "gates": [
+    "scope.schedule1"
+   ],
+   "label": "Estate or trust income or loss",
+   "micro": {
+    "nonzero": [
+     "estate_income"
+    ]
+   },
+   "irs": {
+    "combine": "sum",
+    "cells": [
+     {
+      "source": "soi-23in14ar",
+      "column": 75,
+      "header": "Estate and trust / Net income"
+     },
+     {
+      "source": "soi-23in14ar",
+      "column": 77,
+      "header": "Net loss"
+     }
+    ]
+   }
+  },
+  {
+   "id": "farm",
+   "group": "farm",
+   "gates": [
+    "scope.schedule1"
+   ],
+   "label": "Farm income or loss",
+   "micro": {
+    "nonzero": [
+     "farm_income"
+    ]
+   },
+   "irs": {
+    "combine": "sum",
+    "cells": [
+     {
+      "source": "soi-23in14ar",
+      "column": 79,
+      "header": "Farm / Net income"
+     },
+     {
+      "source": "soi-23in14ar",
+      "column": 81,
+      "header": "Farm / Net loss"
+     }
+    ]
+   }
+  },
+  {
+   "id": "capital_loss_carryover",
+   "group": "capital_loss_carryover",
+   "gates": [
+    "sd.carryover"
+   ],
+   "label": "Capital loss carryover from 2024",
+   "irs": {
+    "combine": "max",
+    "cells": [
+     {
+      "source": "soi-23in14acg",
+      "column": 59,
+      "header": "Short-term loss carryover"
+     },
+     {
+      "source": "soi-23in14acg",
+      "column": 117,
+      "header": "Long-term loss carryover"
+     }
+    ]
+   }
+  },
+  {
+   "id": "form5329",
+   "group": "retirement_penalty",
+   "gates": [
+    "retirement.special",
+    "s2.other"
+   ],
+   "label": "Additional tax on qualified plans (Form 5329)",
+   "irs": {
+    "combine": "sum",
+    "cells": [
+     {
+      "source": "soi-23in33ar",
+      "column": 76,
+      "header": "Penalty tax on qualified retirement plans"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ira_deduction",
+   "group": "schedule1_misc",
+   "gates": [
+    "scope.schedule1"
+   ],
+   "label": "IRA deduction",
+   "micro": {
+    "positive": [
+     "traditional_ira_deduction"
+    ]
+   },
+   "irs": {
+    "combine": "sum",
+    "cells": [
+     {
+      "source": "soi-23in14ar",
+      "column": 123,
+      "header": "IRA payments"
+     }
+    ]
+   }
+  },
+  {
+   "id": "state_refund",
+   "group": "schedule1_misc",
+   "gates": [
+    "scope.schedule1"
+   ],
+   "label": "Taxable state or local income tax refund",
+   "micro": {
+    "positive": [
+     "salt_refund_income"
+    ]
+   },
+   "irs": {
+    "combine": "sum",
+    "cells": [
+     {
+      "source": "soi-23in14ar",
+      "column": 27,
+      "header": "State income tax refunds"
+     }
+    ]
+   }
+  },
+  {
+   "id": "alimony_received",
+   "group": "schedule1_misc",
+   "gates": [
+    "scope.schedule1"
+   ],
+   "label": "Alimony received",
+   "micro": {
+    "positive": [
+     "alimony_income"
+    ]
+   },
+   "irs": {
+    "combine": "sum",
+    "cells": [
+     {
+      "source": "soi-23in14ar",
+      "column": 29,
+      "header": "Alimony received"
+     }
+    ]
+   }
+  },
+  {
+   "id": "alimony_paid",
+   "group": "schedule1_misc",
+   "gates": [
+    "scope.schedule1"
+   ],
+   "label": "Alimony paid",
+   "micro": {
+    "positive": [
+     "alimony_expense"
+    ]
+   },
+   "irs": {
+    "combine": "sum",
+    "cells": [
+     {
+      "source": "soi-23in14ar",
+      "column": 121,
+      "header": "Alimony paid"
+     }
+    ]
+   }
+  },
+  {
+   "id": "other_income",
+   "group": "schedule1_misc",
+   "gates": [
+    "scope.schedule1"
+   ],
+   "label": "Other income (Schedule 1 line 8z and similar)",
+   "micro": {
+    "nonzero": [
+     "miscellaneous_income"
+    ]
+   },
+   "irs": {
+    "combine": "sum",
+    "cells": [
+     {
+      "source": "soi-23in14ar",
+      "column": 91,
+      "header": "Other income / Net income"
+     },
+     {
+      "source": "soi-23in14ar",
+      "column": 93,
+      "header": "Net loss"
+     }
+    ]
+   }
+  },
+  {
+   "id": "gambling",
+   "group": "schedule1_misc",
+   "gates": [
+    "scope.schedule1"
+   ],
+   "label": "Gambling winnings",
+   "irs": {
+    "combine": "sum",
+    "cells": [
+     {
+      "source": "soi-23in14ar",
+      "column": 97,
+      "header": "Gambling earnings"
+     }
+    ]
+   }
+  },
+  {
+   "id": "nol",
+   "group": "schedule1_misc",
+   "gates": [
+    "scope.schedule1"
+   ],
+   "label": "Net operating loss deduction",
+   "irs": {
+    "combine": "sum",
+    "cells": [
+     {
+      "source": "soi-23in14ar",
+      "column": 95,
+      "header": "Net operating loss"
+     }
+    ]
+   }
+  },
+  {
+   "id": "cancellation_of_debt",
+   "group": "schedule1_misc",
+   "gates": [
+    "scope.schedule1"
+   ],
+   "label": "Cancellation of debt",
+   "irs": {
+    "combine": "sum",
+    "cells": [
+     {
+      "source": "soi-23in14ar",
+      "column": 99,
+      "header": "Cancellation of debt"
+     }
+    ]
+   }
+  },
+  {
+   "id": "form4797",
+   "group": "schedule1_misc",
+   "gates": [
+    "scope.schedule1"
+   ],
+   "label": "Sales of business property (Form 4797)",
+   "irs": {
+    "combine": "sum",
+    "cells": [
+     {
+      "source": "soi-23in14ar",
+      "column": 41,
+      "header": "Sales of property other than capital assets"
+     },
+     {
+      "source": "soi-23in14ar",
+      "column": 43,
+      "header": "Sales of property other than capital assets"
+     }
+    ]
+   }
+  },
+  {
+   "id": "hsa_distribution",
+   "group": "schedule1_misc",
+   "gates": [
+    "f8889.unsupported"
+   ],
+   "label": "Taxable HSA distributions",
+   "irs": {
+    "combine": "sum",
+    "cells": [
+     {
+      "source": "soi-23in14ar",
+      "column": 101,
+      "header": "Taxable health savings account distributions"
+     }
+    ]
+   }
+  },
+  {
+   "id": "early_withdrawal",
+   "group": "schedule1_misc",
+   "gates": [
+    "scope.schedule1"
+   ],
+   "label": "Penalty on early withdrawal of savings",
+   "irs": {
+    "combine": "sum",
+    "cells": [
+     {
+      "source": "soi-23in14ar",
+      "column": 119,
+      "header": "Penalty on early withdrawal of savings"
+     }
+    ]
+   }
+  },
+  {
+   "id": "foreign_earned_income",
+   "group": "schedule1_misc",
+   "gates": [
+    "sa.excluded_income"
+   ],
+   "label": "Foreign earned income exclusion (Form 2555)",
+   "irs": {
+    "combine": "sum",
+    "cells": [
+     {
+      "source": "soi-23in14ar",
+      "column": 89,
+      "header": "Foreign-earned income exclusion"
+     }
+    ]
+   }
+  },
+  {
+   "id": "amt",
+   "group": "schedule2_misc",
+   "gates": [
+    "s2.amt"
+   ],
+   "label": "Alternative minimum tax",
+   "irs": {
+    "combine": "sum",
+    "cells": [
+     {
+      "source": "soi-23in14ar",
+      "column": 143,
+      "header": "Alternative minimum tax"
+     }
+    ]
+   }
+  },
+  {
+   "id": "schedule2_other",
+   "group": "schedule2_misc",
+   "gates": [
+    "s2.other"
+   ],
+   "label": "Household employment, uncollected tip taxes, homebuyer credit repayment",
+   "irs": {
+    "combine": "max",
+    "cells": [
+     {
+      "source": "soi-23in33ar",
+      "column": 78,
+      "header": "Household employment tax"
+     },
+     {
+      "source": "soi-23in33ar",
+      "column": 72,
+      "header": "Uncollected Social Security and Medicare tax on tips"
+     },
+     {
+      "source": "soi-23in33ar",
+      "column": 80,
+      "header": "First-time homebuyer credit repayment"
+     },
+     {
+      "source": "soi-23in33ar",
+      "column": 66,
+      "header": "Social Security taxes on tip income"
+     }
+    ]
+   }
+  },
+  {
+   "id": "wages_not_w2",
+   "group": "other_earned_income",
+   "gates": [
+    "scope.other_income"
+   ],
+   "label": "Wages or tips not on Form W-2, dependent care benefits, other earned income",
+   "irs": {
+    "combine": "max",
+    "cells": [
+     {
+      "source": "soi-23in14ar",
+      "column": 17,
+      "header": "Other earned income"
+     },
+     {
+      "source": "soi-23in14ar",
+      "column": 9,
+      "header": "Household employee wages"
+     },
+     {
+      "source": "soi-23in14ar",
+      "column": 13,
+      "header": "Taxable dependent care benefits"
+     },
+     {
+      "source": "soi-23in14ar",
+      "column": 11,
+      "header": "Tip income not reported"
+     }
+    ]
+   }
+  }
+ ]
+}

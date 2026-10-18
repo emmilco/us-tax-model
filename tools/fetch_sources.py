@@ -2,6 +2,9 @@
 # SPDX-License-Identifier: Apache-2.0
 """Deliberately archive public IRS sources; never accepts return data.
 
+Spreadsheets (`"format": "xls"`, the IRS Statistics of Income tables) are archived
+as published, with their hash and no derived text.
+
 Each archived PDF has three derived files beside it: `<id>.txt` (pdftotext -layout,
 the geometry-preserving text), `<id>.cols.txt` (reading-order text from line boxes,
 tools/extract_text.py) and `<id>.pages.json` (that tool's per-page classification).
@@ -136,7 +139,7 @@ def main():
         if urlparse(url).scheme != "https" or urlparse(url).hostname != "www.irs.gov":
             raise ValueError("catalog must use HTTPS www.irs.gov addresses")
         kind = item.get("format", "pdf")
-        if kind not in ("pdf", "html"):
+        if kind not in ("pdf", "html", "xls"):
             raise ValueError("unsupported source format")
         with tempfile.TemporaryDirectory() as temp:
             source = Path(temp) / ("source." + kind)
@@ -149,7 +152,10 @@ def main():
             if urlparse(result.stdout).hostname != "www.irs.gov":
                 raise ValueError("unexpected redirect host")
             txt = Path(temp) / "source.txt"
-            if kind == "pdf":
+            if kind == "xls":
+                if not source.read_bytes().startswith((b"\xd0\xcf\x11\xe0", b"PK\x03\x04")):
+                    raise ValueError("source is not a spreadsheet")
+            elif kind == "pdf":
                 if not source.read_bytes().startswith(b"%PDF-"):
                     raise ValueError("source is not a PDF")
                 subprocess.run(["pdftotext", "-layout", str(source), str(txt)], check=True)
@@ -165,11 +171,13 @@ def main():
                 "resolved_url": result.stdout,
                 "fetched_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
                 "file": item["id"] + "." + kind, "sha256": digest(source),
-                "text_file": item["id"] + ".txt", "text_sha256": digest(txt),
                 "revision": None,
                 "revision_status": "Pending inspection of archived document; not cleared for encoding",
             })
-            targets = [(source, ARCHIVE / entry["file"]), (txt, ARCHIVE / entry["text_file"])]
+            targets = [(source, ARCHIVE / entry["file"])]
+            if kind != "xls":
+                entry.update({"text_file": item["id"] + ".txt", "text_sha256": digest(txt)})
+                targets.append((txt, ARCHIVE / entry["text_file"]))
             if kind == "pdf":
                 cols, pages = Path(temp) / "source.cols.txt", Path(temp) / "source.pages.json"
                 version = derive_reading_order(source, cols, pages)
