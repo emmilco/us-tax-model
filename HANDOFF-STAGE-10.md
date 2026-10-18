@@ -104,3 +104,6 @@ has 34 entries.
   monotonicity table is complete and property `tax_monotone_by_method`
   checks each worksheet's tax separately. Termination and determinism of
   evaluation remain open (the Lean evaluator is a `partial def`).
+- T-019: PolicyEngine-US now gets the tax-unit roles (`tax_unit_role_input`);
+  by age ordering it had made an adult student the filer's spouse. The credit
+  for other dependents and the EIC are compared on every generated return.

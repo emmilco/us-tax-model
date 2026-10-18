@@ -54,8 +54,6 @@ PE_MAP = {
 }
 PE_PRECISION = "float32"
 PE_LIMITATIONS = [
-    {"feature": "other_dependents", "lines": ["f1040.line19", "f1040.line28", "f1040.line27a"],
-     "reason": "PolicyEngine-US does not treat the generated 17-23-year-old full-time students as dependents of the unit (its dependency test needs inputs the project does not model) and pays no credit for other dependents for them; it does not count them as qualifying children for the earned income credit either (Tax-Calculator, given the count, agrees with the project on these returns)"},
     {"feature": "excess_social_security", "lines": ['s3.line11'],
      "reason": "PolicyEngine-US takes excess payroll tax withheld as an input and does not compute it from per-employer withholding"},
     {"feature": "investment_interest_limited", "lines": ['sa.line17', 'sa.deduction', 'f1040.line15', 'f1040.line16', 'f1040.tax_before_credits', 'f8960.tax', 'f1040.line19', 'f1040.line28'],
@@ -148,12 +146,15 @@ def run_policyengine(cases):
             # Form 1099-DIV box 2d is a collectibles gain before netting; the engine nets it
             # against the net short-term loss on its own, as the 28% Rate Gain Worksheet does.
             "collectibles_gain_or_loss": y(dollars(f["gain_28pct"])),
+            # Roles are supplied so an adult child stays a dependent; by age ordering
+            # the engine would make an adult child the filer's spouse.
+            "tax_unit_role_input": y("HEAD"),
         }
         members = [pid]
         for k, age in enumerate(f.get("children", [])):
             cid = f"{pid}_c{k + 1}"
             # Children 17 and over are full-time students in the generated cases.
-            people[cid] = {"age": y(age), "is_full_time_student": y(age >= 17)}
+            people[cid] = {"age": y(age), "is_full_time_student": y(age >= 17), "tax_unit_role_input": y("DEPENDENT")}
             members.append(cid)
         units[pid] = {"members": members,
                       "filing_status": y("HEAD_OF_HOUSEHOLD" if f.get("hoh") else "SINGLE"),

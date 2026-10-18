@@ -12,9 +12,9 @@ Cases: 1000 generated single-filer returns (tools/engines/generate_cases.py). En
 | f1040.line13a | 1000 | 0 | 0 | 0 | 0 | 0 | 0 |
 | f1040.line15 | 685 | 0 | 255 | 60 | 0 | 0 | 0 |
 | f1040.line16 | 323 | 507 | 92 | 77 | 1 | 0 | 0 |
-| f1040.line19 | 464 | 60 | 0 | 476 | 0 | 0 | 0 |
-| f1040.line27a | 637 | 143 | 0 | 220 | 0 | 0 | 0 |
-| f1040.line28 | 483 | 41 | 0 | 476 | 0 | 0 | 0 |
+| f1040.line19 | 583 | 78 | 0 | 339 | 0 | 0 | 0 |
+| f1040.line27a | 810 | 190 | 0 | 0 | 0 | 0 | 0 |
+| f1040.line28 | 610 | 51 | 0 | 339 | 0 | 0 | 0 |
 | f1040.line6b | 974 | 0 | 26 | 0 | 0 | 0 | 0 |
 | f1040.tax_before_credits | 310 | 483 | 88 | 119 | 0 | 0 | 0 |
 | f8959.tax | 1000 | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -27,7 +27,6 @@ Exclusions:
 
 - PolicyEngine-US deducts investment interest expense in full; it does not apply the Form 4952 net-investment-income limit
 - PolicyEngine-US does not deduct investment interest expense (Form 4952 line 8) on Form 8960 line 9a
-- PolicyEngine-US does not treat the generated 17-23-year-old full-time students as dependents of the unit (its dependency test needs inputs the project does not model) and pays no credit for other dependents for them; it does not count them as qualifying children for the earned income credit either (Tax-Calculator, given the count, agrees with the project on these returns)
 - PolicyEngine-US limits the state and local tax deduction to adjusted gross income; Schedule A line 5e limits it only by the statutory cap
 - PolicyEngine-US takes the foreign tax credit as a supplied amount with a Form 1116-style limit on foreign-source income; the simple no-Form-1116 path is compared before credits instead
 - PolicyEngine-US takes unrecaptured section 1250 gain as an already-netted input; the Unrecaptured Section 1250 Gain Worksheet (Schedule D instructions, lines 14-18) reduces it by the net short-term loss and the 28% worksheet amounts, which the project does
