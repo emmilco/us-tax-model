@@ -90,6 +90,22 @@ register:
         the steepest build-up rate (45%), is under $0.45 and rounds to $0, and earned income is never negative in scope
         (self-employment is refused).
 
+    - id: amb.2025.qbi_cooperative_patron
+      text_at_issue: Form 8995 says to use the form if "you aren't a patron of an agricultural or horticultural cooperative";
+        the Instructions for Form 8995 and the Form 1040 instructions for line 13a say "you aren't a patron in a specified
+        agricultural or horticultural cooperative".
+      readings:
+        - Only a patron of a specified agricultural or horticultural cooperative is outside Form 8995 (the instructions).
+        - Any patron of an agricultural or horticultural cooperative is outside Form 8995 (the form).
+      chosen: Refuse any patron of an agricultural or horticultural cooperative, specified or not (qbi.unsupported).
+      reason: >
+        The owner asked for the strictly accurate reading. Refusing every patron satisfies both texts: a filer the form
+        excludes is never computed on it, and a filer the instructions exclude is a patron the form also excludes. The
+        cost is a refusal for a patron of a cooperative that is not specified, which the instructions would allow.
+      cite:
+        doc: f8995
+        locator: Form 8995 (2025), note above line 1; i8995, Who Can Use Form 8995; i1040gi line 13a
+      status: Owner ruling (choose the strictly accurate reading), after Stage 10.
     - id: amb.2025.eic_valid_ssn
       text_at_issue: For the EIC a child's valid SSN is "a number issued by the Social Security Administration unless 'Not
         Valid for Employment' is printed on the social security card and the number was issued solely to allow the

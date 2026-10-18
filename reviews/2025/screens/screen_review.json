@@ -795,32 +795,26 @@
  },
  {
   "screen": "qbi.unsupported",
-  "question": "Do you have any of these: qualified business income or PTP income or loss other than section 199A dividends; a prior-year qualified business, REIT or PTP loss carryforward (including suspended losses allowed this year); or qualified payments from a specified agricultural or horticultural cooperative (Form 1099-PATR)?",
+  "question": "Do you have any of these: qualified business income or loss, or PTP income or loss, other than section 199A dividends; a prior-year qualified business, REIT or PTP loss carryforward (including suspended losses allowed this year); or are you a patron in a specified agricultural or horticultural cooperative (including any qualified payments from one on Form 1099-PATR)?",
   "lines": [
    "qbi.eligible"
   ],
-  "verdict": "UNCLEAR",
+  "verdict": "NARROW",
   "findings": [
    {
-    "kind": "UNCLEAR",
-    "situation": "A filer has a current-year qualified business net loss, for example a Schedule C or K-1 ordinary loss, with no positive QBI. The wording can be read as asking only about income, so the filer might answer NO, and the tool then ignores the loss and the line 16 carryforward it creates.",
-    "irs_text": "f8995 (2025) line 1(c) 'Qualified business income or (loss)'; line 16 'Total qualified business (loss) carryforward. Combine lines 2 and 3'; i8995 p. 4 Line 4: 'If you have a qualified business net loss for the year ... The loss will be carried forward to next year.'",
-    "why": "In 'qualified business income or PTP income or loss', the words 'or loss' can be read as attaching only to PTP. A filer with only a business loss could then truthfully say they have no 'qualified business income', even though Form 8995 needs line 1(c) and line 16 to track that loss."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "A filer is allowed a previously suspended loss this year, such as a section 469 or 465 loss, but the loss was incurred before 2018 or is otherwise non-qualified. The wording leads the filer to answer YES, although the tool's treatment of it as zero is correct.",
-    "irs_text": "i8995 p. 3: 'In general, losses and deductions incurred prior to 2018 are not qualified losses or deductions and are not included in QBI in the year they are included in calculating taxable income.'",
-    "why": "The parenthetical '(including suspended losses allowed this year)' does not say the suspended loss has to be a qualified loss. A filer whose released loss is pre-2018 or otherwise non-qualified could answer YES and be refused, even though nothing goes on line 3 or line 7."
+    "kind": "NARROW",
+    "situation": "A filer is a patron of an agricultural or horticultural cooperative that is not a 'specified' cooperative, or does not know whether it is one, and has only section 199A dividends otherwise.",
+    "irs_text": "f8995 (2025) p.1: \"Use this form if your taxable income ... is at or below $197,300 ... and you aren't a patron of an agricultural or horticultural cooperative.\"",
+    "why": "Form 8995 shuts out any patron of an agricultural or horticultural cooperative, but the question asks only about a 'specified' cooperative. Such a filer can truthfully answer NO, and the tool then computes Form 8995 amounts the form says this filer may not use."
    },
    {
     "kind": "UNCLEAR",
-    "situation": "A filer receives patronage dividends or other Form 1099-PATR amounts connected to a trade or business, but the cooperative does not report them as qualified payments from a specified agricultural or horticultural cooperative. The filer might answer NO because only 'qualified payments' are named.",
-    "irs_text": "i8995 p. 3: 'Payments may be included in QBI to the extent they are (1) related to your trade or business, (2) reported to you by the cooperative as qualified income items on an attachment to Form 1099-PATR...'; f8995: 'Use this form if ... you aren't a patron of an agricultural or horticultural cooperative.'",
-    "why": "These amounts can be QBI and so fall under the first clause. But because the question lists Form 1099-PATR only under 'qualified payments from a specified ... cooperative', a filer could reasonably think other Form 1099-PATR items don't count and answer NO."
+    "situation": "A filer has a business or PTP loss on a Schedule K-1 that is fully suspended this year (for example by the section 469 passive-loss rules or the section 465 at-risk rules) and has no other QBI items.",
+    "irs_text": "i8995 (2025) p.3: \"Losses or deductions from a qualified trade or business that are suspended by other provisions of the Internal Revenue Code are not qualified losses or deductions and, therefore, are not included in your QBI for the year.\"",
+    "why": "The question's \"qualified business income or loss, or PTP income or loss\" can be read to include a loss that was incurred but suspended, which pushes the filer to YES. Under the IRS text that loss is not QBI this year, so a computed zero is correct, which would make this a WIDE case. Read the other way, the filer answers NO."
    }
   ],
-  "prompt_sha": "e2af5e6fb752284bc633a64f769c28e0b7e109998a7cf5f1be4626a2655cf126",
+  "prompt_sha": "a93659ebd551c228db50979a659e57512f4cd4c8545f21d5541d597af0b91a36",
   "used": [
    {
     "doc": "f8995",
@@ -853,8 +847,8 @@
     "cols_sha256": "6671a64ba0011f89e03eb5985954073dcd984b3f346495182916b0ecaa42ec1a"
    }
   ],
-  "cost": 0,
-  "model": ""
+  "cost": 0.12598,
+  "model": "claude-opus-5-5"
  },
  {
   "screen": "retirement.special",

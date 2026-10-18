@@ -6,7 +6,7 @@
    "printed": "13a",
    "restated": "Enter the amount from qbi helper \"Select Form 8995 or dividend-only Form 8995-A\".",
    "model": "The $197,300/$394,600 threshold choice matches the text, but the IRS also requires Form 8995-A if you are 'a patron in a specified agricultural or horticultural cooperative'. The restatement has no such condition, and the given text does not show whether that case is refused elsewhere.",
-   "ruling": "Ruling: scope; project retained. Agricultural or horticultural cooperative patronage is refused by the QBI screen (qbi.unsupported asks about 'qualified payments from a specified agricultural or horticultural cooperative (Form 1099-PATR)'), so a filer who reaches this selection has no such payments; the Form 8995-A condition for a patron is taken as met by that screen."
+   "ruling": "Ruling: scope; project retained. Agricultural or horticultural cooperative patronage is refused by the QBI screen (qbi.unsupported refuses any patron of an agricultural or horticultural cooperative, specified or not, which covers both the form's condition and the instructions' 'specified' condition; amb.2025.qbi_cooperative_patron), so a filer who reaches this selection is not a patron and the Form 8995 condition holds."
   },
   {
    "printed": "27a",

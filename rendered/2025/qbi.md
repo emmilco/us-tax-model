@@ -12,9 +12,10 @@
 
 ## (helper) — `qbi.unsupported`
 
-- **Authored helper label:** Do you have any of these: qualified business income or loss, or PTP income or loss, other than section 199A dividends; a prior-year qualified business, REIT or PTP loss carryforward (including suspended losses allowed this year); or qualified payments from a specified agricultural or horticultural cooperative (Form 1099-PATR)?
-- **Encoded (Bool):** Input — Do you have any of these: qualified business income or loss, or PTP income or loss, other than section 199A dividends; a prior-year qualified business, REIT or PTP loss carryforward (including suspended losses allowed this year); or qualified payments from a specified agricultural or horticultural cooperative (Form 1099-PATR)?
-- Expr: `{"op":"input","source":"Do you have any of these: qualified business income or loss, or PTP income or loss, other than section 199A dividends; a prior-year qualified business, REIT or PTP loss carryforward (including suspended losses allowed this year); or qualified payments from a specified agricultural or horticultural cooperative (Form 1099-PATR)?"}`
+- **Authored helper label:** Do you have any of these: qualified business income or loss, or PTP income or loss, other than section 199A dividends; a prior-year qualified business, REIT or PTP loss carryforward (including suspended losses allowed this year); or are you a patron of any agricultural or horticultural cooperative, specified or not (including any qualified payments from one on Form 1099-PATR)?
+- **Encoded (Bool):** Input — Do you have any of these: qualified business income or loss, or PTP income or loss, other than section 199A dividends; a prior-year qualified business, REIT or PTP loss carryforward (including suspended losses allowed this year); or are you a patron of any agricultural or horticultural cooperative, specified or not (including any qualified payments from one on Form 1099-PATR)?
+- Interpretation: amb.2025.qbi_cooperative_patron
+- Expr: `{"op":"input","source":"Do you have any of these: qualified business income or loss, or PTP income or loss, other than section 199A dividends; a prior-year qualified business, REIT or PTP loss carryforward (including suspended losses allowed this year); or are you a patron of any agricultural or horticultural cooperative, specified or not (including any qualified payments from one on Form 1099-PATR)?"}`
 - Cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; sha256 55380ad2)
 
 ## (helper) — `qbi.zero`

@@ -56,6 +56,16 @@
 - Status: Owner approved ($0) after the check that it cannot err; below $1 every column's credit, figured at the steepest build-up rate (45%), is under $0.45 and rounds to $0, and earned income is never negative in scope (self-employment is refused).
 - Cite: [i1040gi] p. 46, Worksheet A, line 2; p. 49, EIC Table, first row (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## amb.2025.qbi_cooperative_patron
+
+- Text at issue: Form 8995 says to use the form if "you aren't a patron of an agricultural or horticultural cooperative"; the Instructions for Form 8995 and the Form 1040 instructions for line 13a say "you aren't a patron in a specified agricultural or horticultural cooperative".
+- Candidate readings: Only a patron of a specified agricultural or horticultural cooperative is outside Form 8995 (the instructions). | Any patron of an agricultural or horticultural cooperative is outside Form 8995 (the form).
+- **Chosen:** Refuse any patron of an agricultural or horticultural cooperative, specified or not (qbi.unsupported).
+- Reason: The owner asked for the strictly accurate reading. Refusing every patron satisfies both texts: a filer the form excludes is never computed on it, and a filer the instructions exclude is a patron the form also excludes. The cost is a refusal for a patron of a cooperative that is not specified, which the instructions would allow.
+
+- Status: Owner ruling (choose the strictly accurate reading), after Stage 10.
+- Cite: [f8995] Form 8995 (2025), note above line 1; i8995, Who Can Use Form 8995; i1040gi line 13a (2025; created 2025-09-12; sha256 55380ad2)
+
 ## amb.2025.eic_valid_ssn
 
 - Text at issue: For the EIC a child's valid SSN is "a number issued by the Social Security Administration unless 'Not Valid for Employment' is printed on the social security card and the number was issued solely to allow the recipient ... to apply for or receive a federally funded benefit", issued on or before the due date of the return. The child tax credit asks for "an SSN valid for employment" issued before the due date.
