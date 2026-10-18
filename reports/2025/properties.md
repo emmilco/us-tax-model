@@ -25,11 +25,13 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 
 ## Branch coverage of the generated corpus
 
-589 of 605 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
+601 of 619 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
 
 - eic.step1_foreign:false
 - eic.step1_resident:false
 - eic.step2_other:false
+- eic.clergy:true
+- f1040.line27b:true
 - f8959.line12:positive
 - f8959.line16:positive
 - f8960.bad_allocation:true

@@ -518,6 +518,36 @@ form:
         doc: i1040gi
         locator: pp. 40–48, Lines 27a, 27b, and 27c—Earned Income Credit (EIC), Worksheet A line 6, "Enter this amount on
           Form 1040 or 1040-SR, line 27a"
+    - id: f1040.line27b
+      printed: 27b
+      label: Clergy filing Schedule SE (see instructions)
+      type: Bool
+      expr:
+        op: copy
+        from: eic.clergy
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 27b
+    - id: f1040.line27c
+      printed: 27c
+      label: If you do not want to claim the EIC, check here
+      type: Bool
+      expr:
+        op: copy
+        from: eic.check_27c
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 27c
+    - id: f1040.separated_spouses
+      printed: Dependents (separated spouses)
+      label: Check if your filing status is MFS or HOH and you lived apart from your spouse for the last 6 months of 2025, or you are legally separated according to your state law under a written separation agreement or a decree of separate maintenance and you did not live in the same household as your spouse at the end of 2025.
+      type: Bool
+      expr:
+        op: copy
+        from: eic.separated_box
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), Dependents section, box below row (7)
     - id: f1040.line28
       printed: "28"
       label: Additional child tax credit (ACTC) from Schedule 8812

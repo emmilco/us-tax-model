@@ -1362,3 +1362,210 @@ form:
         doc: i1040gi
         locator: pp. 40–46, each "STOP. You can't take the credit"; Worksheet A, line 6, "Enter this amount on Form 1040 or
           1040-SR, line 27a"
+
+    # Boxes the instructions tell the filer to check (Form 1040 lines 27b and 27c, the Dependents section box).
+    - id: eic.reached_step3
+      printed: (helper)
+      type: Bool
+      label: Steps 1 and 2 passed, so Step 3 or Step 4 is asked
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - eic.below_top
+              - const: true
+          - op: test
+            eq:
+              - eic.step1_income
+              - const: true
+          - op: test
+            eq:
+              - eic.step1_ssn
+              - const: true
+          - op: test
+            eq:
+              - eic.step1_foreign
+              - const: true
+          - op: test
+            eq:
+              - eic.step1_resident
+              - const: true
+          - op: test
+            eq:
+              - eic.step2_income
+              - const: true
+          - op: test
+            eq:
+              - eic.step2_other
+              - const: true
+      cite:
+        doc: i1040gi
+        locator: pp. 40–41, Steps 1 and 2 ("Go to Step 3")
+    - id: eic.check_27c
+      printed: (helper)
+      type: Bool
+      label: The instructions say to check the box on line 27c (a STOP that says so, or Worksheet A line 2 is zero); the filer's own choice not to claim the EIC is not asked
+      expr:
+        op: test
+        any:
+          - op: test
+            all:
+              - op: test
+                eq:
+                  - eic.below_top
+                  - const: true
+              - op: test
+                eq:
+                  - eic.step1_income
+                  - const: true
+              - op: test
+                eq:
+                  - eic.step1_ssn
+                  - const: false
+          - op: test
+            all:
+              - op: test
+                eq:
+                  - eic.reached_step3
+                  - const: true
+              - op: test
+                eq:
+                  - eic.has_qc
+                  - const: true
+              - op: test
+                eq:
+                  - eic.step3_married
+                  - const: true
+              - op: test
+                ne:
+                  - f1040.status
+                  - const: mfj
+              - op: test
+                eq:
+                  - eic.qc_of_another
+                  - const: true
+          - op: test
+            all:
+              - op: test
+                eq:
+                  - eic.reached_step3
+                  - const: true
+              - op: test
+                eq:
+                  - eic.has_qc
+                  - const: false
+              - op: test
+                eq:
+                  - eic.married_rules
+                  - const: false
+              - op: test
+                eq:
+                  - eic.born_before_2001
+                  - const: true
+              - op: test
+                eq:
+                  - sa.age65
+                  - const: false
+              - op: test
+                eq:
+                  - eic.us_home
+                  - const: false
+          - op: test
+            all:
+              - op: test
+                eq:
+                  - eic.reached_step3
+                  - const: true
+              - op: test
+                eq:
+                  - eic.has_qc
+                  - const: false
+              - op: test
+                eq:
+                  - eic.married_rules
+                  - const: false
+              - op: test
+                eq:
+                  - eic.born_before_2001
+                  - const: true
+              - op: test
+                eq:
+                  - sa.age65
+                  - const: false
+              - op: test
+                eq:
+                  - eic.us_home
+                  - const: true
+              - op: test
+                ne:
+                  - f1040.status
+                  - const: mfj
+              - op: test
+                eq:
+                  - eic.qc_of_another
+                  - const: true
+          - op: test
+            all:
+              - op: test
+                eq:
+                  - eic.eligible
+                  - const: true
+              - op: test
+                eq:
+                  - eic.line2
+                  - param: sales.zero
+      cite:
+        doc: i1040gi
+        locator: p. 40, Step 1, question 2; p. 41, Step 3, question 6; p. 42, Step 4, questions 3 and 5; p. 43, Line 27c; p.
+          46, Worksheet A, line 2 ("Check the box on Form 1040 or 1040-SR, line 27c")
+    - id: eic.separated_box
+      printed: (helper)
+      type: Bool
+      label: A married filer filing separately or as head of household who passes Step 3, questions 4 and 5, and answers No to question 6 (the special rule for separated spouses)
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - eic.reached_step3
+              - const: true
+          - op: test
+            eq:
+              - eic.has_qc
+              - const: true
+          - op: test
+            eq:
+              - eic.married_rules
+              - const: true
+          - op: test
+            eq:
+              - eic.step3_married
+              - const: true
+          - op: test
+            eq:
+              - eic.qc_of_another
+              - const: false
+      cite:
+        doc: i1040gi
+        locator: p. 41, Step 3, question 6, "No. Check the box in the Dependents section that discusses the special rule for
+          separated spouses"; p. 44, Special rule for separated spouses
+    - id: eic.clergy
+      printed: (helper)
+      type: Bool
+      label: A member of the clergy filing Schedule SE with an amount also on Form 1040, line 1z (refused; Schedule SE is outside the tool)
+      expr:
+        op: test
+        eq:
+          - scope.schedule1
+          - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 43, Line 27b
+      refuses:
+        - when: scope.schedule1
+          form: Clergy filing Schedule SE (Form 1040, line 27b)
+          remedy: Schedule SE is outside this tool.
+          cite:
+            doc: i1040gi
+            locator: p. 43, Line 27b, and Clergy

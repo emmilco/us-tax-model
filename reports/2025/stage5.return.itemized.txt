@@ -292,6 +292,18 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       = $0
       cite: [i1040gi] pp. 40–46, each "STOP. You can't take the credit"; Worksheet A, line 6, "Enter this amount on Form 1040 or 1040-SR, line 27a" (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["eic.eligible",{"const":false}],"op":"test"}
+  (helper) Steps 1 and 2 passed, so Step 3 or Step 4 is asked
+      = false
+      cite: [i1040gi] pp. 40–41, Steps 1 and 2 ("Go to Step 3") (2025; printed date 2026-02-25; 482e9c48)
+  (helper) The instructions say to check the box on line 27c (a STOP that says so, or Worksheet A line 2 is zero); the filer's own choice not to claim the EIC is not asked
+      = false
+      cite: [i1040gi] p. 40, Step 1, question 2; p. 41, Step 3, question 6; p. 42, Step 4, questions 3 and 5; p. 43, Line 27c; p. 46, Worksheet A, line 2 ("Check the box on Form 1040 or 1040-SR, line 27c") (2025; printed date 2026-02-25; 482e9c48)
+  (helper) A married filer filing separately or as head of household who passes Step 3, questions 4 and 5, and answers No to question 6 (the special rule for separated spouses)
+      = false
+      cite: [i1040gi] p. 41, Step 3, question 6, "No. Check the box in the Dependents section that discusses the special rule for separated spouses"; p. 44, Special rule for separated spouses (2025; printed date 2026-02-25; 482e9c48)
+  (helper) A member of the clergy filing Schedule SE with an amount also on Form 1040, line 1z (refused; Schedule SE is outside the tool)
+      = false
+      cite: [i1040gi] p. 43, Line 27b (2025; printed date 2026-02-25; 482e9c48)
 
 == Form 1040 — selected lines (Stages 1–4) ==
   Filing Status Single. Married filing jointly (even if only one had income). Married filing separately. Head of household (HOH). Qualifying surviving spouse (QSS).
@@ -407,6 +419,15 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
   27a Earned income credit (EIC)
       = $0
       cite: [i1040gi] pp. 40–48, Lines 27a, 27b, and 27c—Earned Income Credit (EIC), Worksheet A line 6, "Enter this amount on Form 1040 or 1040-SR, line 27a" (2025; printed date 2026-02-25; 482e9c48)
+  27b Clergy filing Schedule SE (see instructions)
+      = false
+      cite: [f1040] Form 1040 (2025), line 27b (2025; created 2025-09-05; 3d31c226)
+  27c If you do not want to claim the EIC, check here
+      = false
+      cite: [f1040] Form 1040 (2025), line 27c (2025; created 2025-09-05; 3d31c226)
+  Dependents (separated spouses) Check if your filing status is MFS or HOH and you lived apart from your spouse for the last 6 months of 2025, or you are legally separated according to your state law under a written separation agreement or a decree of separate maintenance and you did not live in the same household as your spouse at the end of 2025.
+      = false
+      cite: [f1040] Form 1040 (2025), Dependents section, box below row (7) (2025; created 2025-09-05; 3d31c226)
   28  Additional child tax credit (ACTC) from Schedule 8812
       = $0
       cite: [f1040] Form 1040 (2025), line 28 (2025; created 2025-09-05; 3d31c226)
@@ -2360,6 +2381,10 @@ Collection entries and derivations:
   eic.after_line4: choose(eic.line5_blank = false; true = true; eic.line5_blank = false; false = false; eic.smaller = UNKNOWN (no band for 10250000 cents))
   eic.line6: choose(eic.line4 = false; true = true; eic.line4 = false; false = false; eic.after_line4 = UNKNOWN (no band for 10250000 cents))
   eic.credit: choose(eic.eligible = false; true = true; eic.eligible = false; false = false; eic.zero = $0)
+  eic.reached_step3: test(eic.below_top = false; true = true)
+  eic.check_27c: test(eic.below_top = false; true = true; eic.reached_step3 = false; true = true; eic.reached_step3 = false; true = true; eic.reached_step3 = false; true = true; eic.eligible = false; true = true)
+  eic.separated_box: test(eic.reached_step3 = false; true = true)
+  eic.clergy: test(scope.schedule1 = false; scope.schedule1 = false; true = true)
   household.hoh_fails: test(f1040.status = single; "hoh" = hoh)
   f1040.household.hoh_fails: test(f1040.status = single; "hoh" = hoh)
   sa.mfs: test(f1040.status = single; "mfs" = mfs)
@@ -2659,6 +2684,12 @@ Collection entries and derivations:
   f1040.line25d: sum(f1040.line25a = $10,000; f1040.line25b = $0; f1040.line25c = $0)
   f1040.eic.credit: choose(eic.eligible = false; true = true; eic.eligible = false; false = false; eic.zero = $0)
   f1040.line27a: copy(eic.credit = $0)
+  f1040.eic.clergy: test(scope.schedule1 = false; scope.schedule1 = false; true = true)
+  f1040.line27b: copy(eic.clergy = false)
+  f1040.eic.check_27c: test(eic.below_top = false; true = true; eic.reached_step3 = false; true = true; eic.reached_step3 = false; true = true; eic.reached_step3 = false; true = true; eic.eligible = false; true = true)
+  f1040.line27c: copy(eic.check_27c = false)
+  f1040.eic.separated_box: test(eic.reached_step3 = false; true = true)
+  f1040.separated_spouses: copy(eic.separated_box = false)
   s8812.few_children: test(s8812.line16b = $0; #actc.three_children = $5,100)
   s8812.line16a: subtract_floor0(s8812.line12 = $0; s8812.line14 = $0)
   s8812.line17: smaller_of(s8812.line16a = $0; s8812.line16b = $0)
