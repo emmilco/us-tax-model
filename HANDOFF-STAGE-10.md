@@ -94,3 +94,13 @@ has 34 entries.
   10 and 11).
 - T-029, T-011 the 2026 refetch, T-019 PolicyEngine students, and the earlier
   open items.
+
+## After Stage 10 (the owner's overnight queue: small fixes, Lean proofs, T-019, then the next coverage stage)
+
+- T-029: Form 1040 line 2a is tax-exempt interest plus Form 1099-DIV box 12.
+- T-014: the `g28` and `u1250` printed lines carry the worksheets' words.
+- T-009: the render glossary includes invoked shared definitions.
+- T-017: Lean lemmas for the `up` and `down` round rules; T-013: the Lean
+  monotonicity table is complete and property `tax_monotone_by_method`
+  checks each worksheet's tax separately. Termination and determinism of
+  evaluation remain open (the Lean evaluator is a `partial def`).

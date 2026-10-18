@@ -9,7 +9,7 @@ form:
     - id: g28.line1
       printed: "1"
       type: NonNegDollars
-      label: Amount from div.screen
+      label: "Enter the total of all collectibles gain or (loss) from items you reported on Form 8949, Part II"
       expr:
         op: copy
         from: div.screen
@@ -19,7 +19,7 @@ form:
     - id: g28.line2
       printed: "2"
       type: NonNegDollars
-      label: Amount from div.screen
+      label: "Enter as a positive number the total of: any section 1202 exclusion you reported in column (g) of Form 8949, Part II, with code “Q” in column (f), that is 50% of the gain; 2/3 of any such exclusion that is 60% of the gain; and 1/3 of any such exclusion that is 75% of the gain. Don’t make an entry for any section 1202 exclusion that is 100% of the gain"
       expr:
         op: copy
         from: div.screen
@@ -29,7 +29,7 @@ form:
     - id: g28.line3
       printed: "3"
       type: NonNegDollars
-      label: Amount from div.screen
+      label: "Enter the total of all collectibles gain or (loss) from Form 4684, line 4 (but only if Form 4684, line 15, is more than zero); Form 6252; Form 6781, Part II; and Form 8824"
       expr:
         op: copy
         from: div.screen
@@ -39,7 +39,7 @@ form:
     - id: g28.line5
       printed: "5"
       type: NonNegDollars
-      label: Amount from div.screen
+      label: "Enter your long-term capital loss carryovers from Schedule D, line 14; and Schedule K-1 (Form 1041), box 11, code D"
       expr:
         op: copy
         from: div.screen
@@ -49,7 +49,7 @@ form:
     - id: g28.line4
       printed: "4"
       type: NonNegDollars
-      label: Amount from div.box2d
+      label: "Enter the total of any collectibles gain reported to you on: Form 1099-DIV, box 2d; Form 2439, box 1d; and Schedule K-1 from a partnership, S corporation, estate, or trust"
       expr:
         op: copy
         from: div.box2d
@@ -59,7 +59,7 @@ form:
     - id: g28.line6
       printed: "6"
       type: Dollars
-      label: Smaller of sd.line7, sd.zero
+      label: "If Schedule D, line 7, is a (loss), enter that (loss) here. Otherwise, enter -0-"
       expr:
         op: smaller_of
         of:
@@ -87,7 +87,7 @@ form:
     - id: g28.line7
       printed: "7"
       type: NonNegDollars
-      label: Subtract sd.zero from g28.combined; if zero or less, enter zero
+      label: "Combine lines 1 through 6. If zero or less, enter -0-. If more than zero, also enter this amount on Schedule D, line 18"
       expr:
         op: subtract_floor0
         from: g28.combined

@@ -102,14 +102,15 @@
         "household.unmarried": true,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
         "eic.married": false,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -259,14 +260,15 @@
         "household.unmarried": true,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
         "eic.married": false,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -400,14 +402,15 @@
         "household.unmarried": true,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
         "eic.married": false,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": false
+        "eic.born_after_1960": false,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -545,14 +548,15 @@
         "household.unmarried": true,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
         "eic.married": false,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -666,14 +670,15 @@
         "household.unmarried": true,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": false,
         "eic.us_home": true,
         "eic.married": false,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -803,14 +808,15 @@
         "household.unmarried": true,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": false,
         "eic.married": false,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -944,14 +950,15 @@
         "household.unmarried": true,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "f1040.line2a": 0,
         "eic.qc_of_another": true,
         "eic.born_before_2001": true,
         "eic.us_home": true,
         "eic.married": false,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -1108,7 +1115,6 @@
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
         "dependent[child].younger": true,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
@@ -1118,7 +1124,9 @@
         "dependent[child].eic_ssn": true,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -1263,7 +1271,6 @@
         "household.unmarried": true,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
@@ -1312,7 +1319,9 @@
         "dependent[c2].eic_ssn": true,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -1450,7 +1459,6 @@
         "household.unmarried": true,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
@@ -1520,7 +1528,9 @@
         "dependent[c3].eic_ssn": true,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -1677,7 +1687,6 @@
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
         "dependent[child].younger": true,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
@@ -1687,7 +1696,9 @@
         "dependent[child].eic_ssn": true,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -1842,14 +1853,15 @@
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
         "dependent[child].younger": true,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.us_home": true,
         "eic.married": false,
         "dependent[child].us_half": true,
         "dependent[child].eic_ssn": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -1985,7 +1997,6 @@
         "household.unmarried": true,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
@@ -1993,7 +2004,9 @@
         "interest[bank_a].amount": 100000,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -2127,14 +2140,15 @@
         "household.unmarried": true,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
         "eic.married": false,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -2272,14 +2286,15 @@
         "household.unmarried": true,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
         "eic.married": false,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -2430,7 +2445,6 @@
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
         "dependent[child].younger": true,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
@@ -2439,7 +2453,9 @@
         "dependent[child].eic_ssn": true,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -2592,7 +2608,6 @@
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
         "dependent[child].younger": true,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
@@ -2602,7 +2617,9 @@
         "dependent[child].eic_ssn": true,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -2716,14 +2733,15 @@
         "household.unmarried": true,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
         "eic.married": false,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -2860,7 +2878,6 @@
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
         "dependent[child].younger": true,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
@@ -2870,7 +2887,9 @@
         "dependent[child].eic_ssn": true,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -3013,7 +3032,6 @@
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
         "dependent[child].younger": true,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
@@ -3022,7 +3040,9 @@
         "dependent[child].eic_ssn": true,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -3139,7 +3159,6 @@
         "household.unmarried": true,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
@@ -3188,7 +3207,9 @@
         "dependent[c2].eic_ssn": true,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -3306,7 +3327,6 @@
         "household.unmarried": true,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
@@ -3376,7 +3396,9 @@
         "dependent[c3].eic_ssn": true,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -3490,14 +3512,15 @@
         "household.unmarried": true,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
         "eic.married": false,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -3632,7 +3655,6 @@
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
         "dependent[child].younger": true,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
@@ -3641,7 +3663,9 @@
         "dependent[child].eic_ssn": true,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -3758,7 +3782,6 @@
         "household.unmarried": true,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
@@ -3807,7 +3830,9 @@
         "dependent[c2].eic_ssn": true,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -3925,7 +3950,6 @@
         "household.unmarried": true,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
@@ -3995,7 +4019,9 @@
         "dependent[c3].eic_ssn": true,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -4109,14 +4135,15 @@
         "household.unmarried": true,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
         "eic.married": false,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -4253,7 +4280,6 @@
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
         "dependent[child].younger": true,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
@@ -4263,7 +4289,9 @@
         "dependent[child].eic_ssn": true,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -4404,7 +4432,6 @@
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
         "dependent[child].younger": true,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
@@ -4414,7 +4441,9 @@
         "dependent[child].eic_ssn": true,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -4534,7 +4563,6 @@
         "household.unmarried": true,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": false,
         "eic.us_home": true,
@@ -4562,7 +4590,9 @@
         "dependent[parent].eic_ssn": true,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -4676,14 +4706,15 @@
         "household.unmarried": true,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
         "eic.married": false,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -4802,14 +4833,15 @@
         "household.unmarried": true,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
         "eic.married": false,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -4928,14 +4960,15 @@
         "household.unmarried": true,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
         "eic.married": false,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -5088,7 +5121,6 @@
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
         "dependent[child].younger": true,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
@@ -5097,7 +5129,9 @@
         "dependent[child].eic_ssn": true,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -5237,7 +5271,6 @@
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
         "dependent[child].younger": true,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
@@ -5246,7 +5279,9 @@
         "dependent[child].eic_ssn": true,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -5386,7 +5421,6 @@
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
         "dependent[child].younger": true,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
@@ -5395,7 +5429,9 @@
         "dependent[child].eic_ssn": true,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -5548,7 +5584,6 @@
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
         "dependent[child].younger": true,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
@@ -5557,7 +5592,9 @@
         "dependent[child].eic_ssn": true,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -5745,7 +5782,6 @@
         "dependent[a].younger": true,
         "dependent[b].younger": true,
         "dependent[c].younger": true,
-        "f1040.line2a": 0,
         "eic.qc_of_another": true,
         "eic.born_before_2001": true,
         "eic.us_home": true,
@@ -5758,7 +5794,9 @@
         "dependent[c].eic_ssn": true,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -5901,7 +5939,6 @@
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
         "dependent[child].younger": true,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
@@ -5911,7 +5948,9 @@
         "eic.same_home": false,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -6054,7 +6093,6 @@
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
         "dependent[child].younger": true,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
@@ -6065,7 +6103,9 @@
         "eic.legally_separated": true,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -6200,7 +6240,6 @@
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
         "dependent[child].younger": true,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
@@ -6211,7 +6250,9 @@
         "eic.legally_separated": false,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -6358,7 +6399,6 @@
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
         "dependent[child].younger": true,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
@@ -6368,7 +6408,9 @@
         "eic.same_home": false,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -6486,14 +6528,15 @@
         "household.unmarried": true,
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
         "eic.married": false,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "f1040.line27b": {

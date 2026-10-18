@@ -9,7 +9,7 @@ form:
     - id: u1250.line1
       printed: "1"
       type: NonNegDollars
-      label: Amount from div.screen
+      label: "If you have a section 1250 property in Part III of Form 4797 for which you made an entry in Part I of Form 4797 (but not on Form 6252), enter the smaller of line 22 or line 24 of Form 4797 for that property"
       expr:
         op: copy
         from: div.screen
@@ -19,7 +19,7 @@ form:
     - id: u1250.line2
       printed: "2"
       type: NonNegDollars
-      label: Amount from div.screen
+      label: "Enter the amount from Form 4797, line 26g, for the property for which you made an entry on line 1"
       expr:
         op: copy
         from: div.screen
@@ -29,7 +29,7 @@ form:
     - id: u1250.line3
       printed: "3"
       type: NonNegDollars
-      label: Amount from div.screen
+      label: "Subtract line 2 from line 1"
       expr:
         op: copy
         from: div.screen
@@ -39,7 +39,7 @@ form:
     - id: u1250.line4
       printed: "4"
       type: NonNegDollars
-      label: Amount from div.screen
+      label: "Enter the total unrecaptured section 1250 gain included on line 26 or line 37 of Form(s) 6252 from installment sales of trade or business property held more than 1 year"
       expr:
         op: copy
         from: div.screen
@@ -49,7 +49,7 @@ form:
     - id: u1250.line5
       printed: "5"
       type: NonNegDollars
-      label: Amount from div.screen
+      label: "Enter the total of any amounts reported to you on a Schedule K-1 from a partnership or an S corporation as “unrecaptured section 1250 gain”"
       expr:
         op: copy
         from: div.screen
@@ -59,7 +59,7 @@ form:
     - id: u1250.line6
       printed: "6"
       type: NonNegDollars
-      label: Amount from div.screen
+      label: "Add lines 3 through 5"
       expr:
         op: copy
         from: div.screen
@@ -69,7 +69,7 @@ form:
     - id: u1250.line7
       printed: "7"
       type: NonNegDollars
-      label: Amount from div.screen
+      label: "Enter the smaller of line 6 or the gain from Form 4797, line 7"
       expr:
         op: copy
         from: div.screen
@@ -79,7 +79,7 @@ form:
     - id: u1250.line8
       printed: "8"
       type: NonNegDollars
-      label: Amount from div.screen
+      label: "Enter the amount, if any, from Form 4797, line 8"
       expr:
         op: copy
         from: div.screen
@@ -89,7 +89,7 @@ form:
     - id: u1250.line9
       printed: "9"
       type: NonNegDollars
-      label: Amount from div.screen
+      label: "Subtract line 8 from line 7. If zero or less, enter -0-"
       expr:
         op: copy
         from: div.screen
@@ -99,7 +99,7 @@ form:
     - id: u1250.line10
       printed: "10"
       type: NonNegDollars
-      label: Amount from div.screen
+      label: "Enter the amount of any gain from the sale or exchange of an interest in a partnership attributable to unrecaptured section 1250 gain"
       expr:
         op: copy
         from: div.screen
@@ -109,7 +109,7 @@ form:
     - id: u1250.line12
       printed: "12"
       type: NonNegDollars
-      label: Amount from div.screen
+      label: "Enter the total of any unrecaptured section 1250 gain from sales (including installment sales) or other dispositions of section 1250 property held more than 1 year for which you didn’t make an entry in Part I of Form 4797 for the year of sale"
       expr:
         op: copy
         from: div.screen
@@ -119,7 +119,7 @@ form:
     - id: u1250.line16
       printed: "16"
       type: NonNegDollars
-      label: Amount from div.screen
+      label: "Enter your long-term capital loss carryovers from Schedule D, line 14; and Schedule K-1 (Form 1041), box 11, code D"
       expr:
         op: copy
         from: div.screen
@@ -129,7 +129,7 @@ form:
     - id: u1250.line11
       printed: "11"
       type: NonNegDollars
-      label: Amount from div.box2b
+      label: "Enter the total of any amounts reported to you as “unrecaptured section 1250 gain” on a Schedule K-1, Form 1099-DIV, or Form 2439 from an estate, a trust, a real estate investment trust, or a mutual fund (or other regulated investment company) or in connection with a Form 1099-R"
       expr:
         op: copy
         from: div.box2b
@@ -139,7 +139,7 @@ form:
     - id: u1250.line13
       printed: "13"
       type: NonNegDollars
-      label: Add u1250.line9, u1250.line10, u1250.line11, u1250.line12
+      label: "Add lines 9 through 12"
       expr:
         op: sum
         of:
@@ -153,7 +153,7 @@ form:
     - id: u1250.line14
       printed: "14"
       type: NonNegDollars
-      label: Add g28.line1, g28.line2, g28.line3, g28.line4
+      label: "If you had any section 1202 gain or collectibles gain or (loss), enter the total of lines 1 through 4 of the 28% Rate Gain Worksheet. Otherwise, enter -0-"
       expr:
         op: sum
         of:
@@ -167,7 +167,7 @@ form:
     - id: u1250.line15
       printed: "15"
       type: Dollars
-      label: Amount from g28.line6
+      label: "Enter the (loss), if any, from Schedule D, line 7. If Schedule D, line 7, is zero or a gain, enter -0-"
       expr:
         op: copy
         from: g28.line6
@@ -190,7 +190,7 @@ form:
     - id: u1250.line17
       printed: "17"
       type: NonNegDollars
-      label: Subtract u1250.combined from sd.zero; if zero or less, enter zero
+      label: "Combine lines 14 through 16. If the result is a (loss), enter it as a positive amount. If the result is zero or a gain, enter -0-"
       expr:
         op: subtract_floor0
         from: sd.zero
@@ -201,7 +201,7 @@ form:
     - id: u1250.line18
       printed: "18"
       type: NonNegDollars
-      label: Subtract u1250.line17 from u1250.line13; if zero or less, enter zero
+      label: "Unrecaptured section 1250 gain. Subtract line 17 from line 13. If zero or less, enter -0-. If more than zero, enter the result here and on Schedule D, line 19"
       expr:
         op: subtract_floor0
         from: u1250.line13

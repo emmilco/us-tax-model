@@ -26,7 +26,6 @@
     "eic.same_home": false,
     "eic.legally_separated": false,
     "f1040.status": "qss",
-    "f1040.line2a": 0,
     "f1040.line3a": 0,
     "f1040.line25b": 0,
     "f1040.line25c": 0,
@@ -208,7 +207,9 @@
     "dependent[dep_c].eic_ssn": false,
     "$retirement": [],
     "ssb.benefits": 0,
-    "eic.born_after_1960": true
+    "eic.born_after_1960": true,
+    "f1040.tax_exempt_interest": 0,
+    "div.box12": 0
    },
    "expect": {
     "dependent[dep_a].qc_relationship": {
@@ -466,7 +467,6 @@
     "eic.same_home": false,
     "eic.legally_separated": false,
     "f1040.status": "mfs",
-    "f1040.line2a": 0,
     "f1040.line3a": 0,
     "f1040.line25b": 0,
     "f1040.line25c": 0,
@@ -626,7 +626,9 @@
     "dependent[dep_c].eic_ssn": true,
     "$retirement": [],
     "ssb.benefits": 0,
-    "eic.born_after_1960": true
+    "eic.born_after_1960": true,
+    "f1040.tax_exempt_interest": 0,
+    "div.box12": 0
    },
    "expect": {
     "dependent[dep_a].qc_relationship": {
@@ -884,7 +886,6 @@
     "eic.same_home": false,
     "eic.legally_separated": false,
     "f1040.status": "single",
-    "f1040.line2a": 0,
     "f1040.line3a": 0,
     "f1040.line25b": 0,
     "f1040.line25c": 0,
@@ -1047,7 +1048,9 @@
     "dependent[dep_b].eic_ssn": true,
     "$retirement": [],
     "ssb.benefits": 0,
-    "eic.born_after_1960": true
+    "eic.born_after_1960": true,
+    "f1040.tax_exempt_interest": 0,
+    "div.box12": 0
    },
    "expect": {
     "dependent[dep_a].qc_relationship": {
@@ -1233,7 +1236,6 @@
     "eic.same_home": false,
     "eic.legally_separated": false,
     "f1040.status": "mfs",
-    "f1040.line2a": 0,
     "f1040.line3a": 0,
     "f1040.line25b": 0,
     "f1040.line25c": 0,
@@ -1397,7 +1399,9 @@
     "dependent[dep_c].eic_ssn": true,
     "$retirement": [],
     "ssb.benefits": 0,
-    "eic.born_after_1960": true
+    "eic.born_after_1960": true,
+    "f1040.tax_exempt_interest": 0,
+    "div.box12": 0
    },
    "expect": {
     "dependent[dep_a].qc_relationship": {
@@ -1655,7 +1659,6 @@
     "eic.same_home": false,
     "eic.legally_separated": false,
     "f1040.status": "single",
-    "f1040.line2a": 0,
     "f1040.line3a": 0,
     "f1040.line25b": 0,
     "f1040.line25c": 0,
@@ -1826,7 +1829,9 @@
     "dependent[dep_c].eic_ssn": true,
     "$retirement": [],
     "ssb.benefits": 0,
-    "eic.born_after_1960": true
+    "eic.born_after_1960": true,
+    "f1040.tax_exempt_interest": 0,
+    "div.box12": 0
    },
    "expect": {
     "dependent[dep_a].qc_relationship": {
@@ -2072,7 +2077,6 @@
     "eic.same_home": false,
     "eic.legally_separated": false,
     "f1040.status": "single",
-    "f1040.line2a": 0,
     "f1040.line3a": 14660000,
     "f1040.line25b": 0,
     "f1040.line25c": 0,
@@ -2236,7 +2240,9 @@
     "dependent[dep_c].eic_ssn": true,
     "$retirement": [],
     "ssb.benefits": 0,
-    "eic.born_after_1960": true
+    "eic.born_after_1960": true,
+    "f1040.tax_exempt_interest": 0,
+    "div.box12": 0
    },
    "expect": {
     "dependent[dep_a].qc_relationship": {
@@ -2475,7 +2481,6 @@
     "eic.same_home": false,
     "eic.legally_separated": false,
     "f1040.status": "hoh",
-    "f1040.line2a": 0,
     "f1040.line3a": 0,
     "f1040.line25b": 0,
     "f1040.line25c": 0,
@@ -2629,7 +2634,9 @@
     "dependent[dep_c].us_half": true,
     "dependent[dep_c].eic_ssn": true,
     "$retirement": [],
-    "ssb.terror_disability": false
+    "ssb.terror_disability": false,
+    "f1040.tax_exempt_interest": 0,
+    "div.box12": 0
    },
    "expect": {
     "eic.line1": {
@@ -2680,7 +2687,6 @@
     "eic.same_home": false,
     "eic.legally_separated": false,
     "f1040.status": "single",
-    "f1040.line2a": 0,
     "f1040.line3a": 0,
     "f1040.line25b": 0,
     "f1040.line25c": 0,
@@ -2800,7 +2806,9 @@
     "dependent[dep_a].us_half": false,
     "dependent[dep_a].eic_ssn": true,
     "$retirement": [],
-    "ssb.terror_disability": false
+    "ssb.terror_disability": false,
+    "f1040.tax_exempt_interest": 0,
+    "div.box12": 0
    },
    "expect": {
     "eic.line2": {
@@ -2847,7 +2855,6 @@
     "eic.same_home": false,
     "eic.legally_separated": false,
     "f1040.status": "mfs",
-    "f1040.line2a": 0,
     "f1040.line3a": 5198900,
     "f1040.line25b": 0,
     "f1040.line25c": 0,
@@ -2996,7 +3003,9 @@
     "dependent[dep_b].us_half": false,
     "dependent[dep_b].eic_ssn": true,
     "$retirement": [],
-    "ssb.terror_disability": false
+    "ssb.terror_disability": false,
+    "f1040.tax_exempt_interest": 0,
+    "div.box12": 0
    },
    "expect": {
     "eic.line1": {
@@ -3047,7 +3056,6 @@
     "eic.same_home": false,
     "eic.legally_separated": false,
     "f1040.status": "single",
-    "f1040.line2a": 0,
     "f1040.line3a": 0,
     "f1040.line25b": 0,
     "f1040.line25c": 0,
@@ -3209,7 +3217,9 @@
     "dependent[dep_c].us_half": true,
     "dependent[dep_c].eic_ssn": true,
     "$retirement": [],
-    "ssb.terror_disability": false
+    "ssb.terror_disability": false,
+    "f1040.tax_exempt_interest": 0,
+    "div.box12": 0
    },
    "expect": {
     "eic.line1": {
@@ -3256,7 +3266,6 @@
     "eic.same_home": false,
     "eic.legally_separated": false,
     "f1040.status": "qss",
-    "f1040.line2a": 0,
     "f1040.line3a": 0,
     "f1040.line25b": 0,
     "f1040.line25c": 0,
@@ -3410,7 +3419,9 @@
     "dependent[dep_c].us_half": true,
     "dependent[dep_c].eic_ssn": true,
     "$retirement": [],
-    "ssb.terror_disability": false
+    "ssb.terror_disability": false,
+    "f1040.tax_exempt_interest": 0,
+    "div.box12": 0
    },
    "expect": {
     "eic.line2": {
@@ -3453,7 +3464,6 @@
     "eic.same_home": false,
     "eic.legally_separated": false,
     "f1040.status": "mfj",
-    "f1040.line2a": 0,
     "f1040.line3a": 0,
     "f1040.line25b": 0,
     "f1040.line25c": 0,
@@ -3551,7 +3561,9 @@
     "$gift": [],
     "$dependent": [],
     "$retirement": [],
-    "ssb.terror_disability": false
+    "ssb.terror_disability": false,
+    "f1040.tax_exempt_interest": 0,
+    "div.box12": 0
    },
    "expect": {
     "eic.line2": {
@@ -3598,7 +3610,6 @@
     "eic.same_home": true,
     "eic.legally_separated": true,
     "f1040.status": "single",
-    "f1040.line2a": 0,
     "f1040.line3a": 0,
     "f1040.line25b": 0,
     "f1040.line25c": 0,
@@ -3711,7 +3722,9 @@
     "dependent[dep_a].us_half": true,
     "dependent[dep_a].eic_ssn": true,
     "$retirement": [],
-    "ssb.terror_disability": false
+    "ssb.terror_disability": false,
+    "f1040.tax_exempt_interest": 0,
+    "div.box12": 0
    },
    "expect": {
     "eic.line2": {
@@ -3758,7 +3771,6 @@
     "eic.same_home": false,
     "eic.legally_separated": false,
     "f1040.status": "single",
-    "f1040.line2a": 0,
     "f1040.line3a": 0,
     "f1040.line25b": 0,
     "f1040.line25c": 0,
@@ -3928,7 +3940,9 @@
     "dependent[dep_c].us_half": true,
     "dependent[dep_c].eic_ssn": true,
     "$retirement": [],
-    "ssb.terror_disability": false
+    "ssb.terror_disability": false,
+    "f1040.tax_exempt_interest": 0,
+    "div.box12": 0
    },
    "expect": {
     "eic.line2": {
@@ -3975,7 +3989,6 @@
     "eic.same_home": true,
     "eic.legally_separated": false,
     "f1040.status": "mfs",
-    "f1040.line2a": 0,
     "f1040.line3a": 0,
     "f1040.line25b": 0,
     "f1040.line25c": 0,
@@ -4176,7 +4189,9 @@
     "dependent[dep_c].us_half": false,
     "dependent[dep_c].eic_ssn": true,
     "$retirement": [],
-    "ssb.terror_disability": false
+    "ssb.terror_disability": false,
+    "f1040.tax_exempt_interest": 0,
+    "div.box12": 0
    },
    "expect": {
     "eic.line4": {
@@ -4211,7 +4226,6 @@
     "eic.same_home": false,
     "eic.legally_separated": false,
     "f1040.status": "mfs",
-    "f1040.line2a": 0,
     "f1040.line3a": 0,
     "f1040.line25b": 0,
     "f1040.line25c": 0,
@@ -4373,7 +4387,9 @@
     "dependent[dep_c].us_half": true,
     "dependent[dep_c].eic_ssn": true,
     "$retirement": [],
-    "ssb.terror_disability": false
+    "ssb.terror_disability": false,
+    "f1040.tax_exempt_interest": 0,
+    "div.box12": 0
    },
    "expect": {
     "eic.line1": {
@@ -4424,7 +4440,6 @@
     "eic.same_home": false,
     "eic.legally_separated": false,
     "f1040.status": "hoh",
-    "f1040.line2a": 0,
     "f1040.line3a": 0,
     "f1040.line25b": 0,
     "f1040.line25c": 0,
@@ -4578,7 +4593,9 @@
     "dependent[dep_c].us_half": true,
     "dependent[dep_c].eic_ssn": true,
     "$retirement": [],
-    "ssb.terror_disability": false
+    "ssb.terror_disability": false,
+    "f1040.tax_exempt_interest": 0,
+    "div.box12": 0
    },
    "expect": {
     "f1040.line1a": {
@@ -4801,7 +4818,6 @@
     "eic.same_home": false,
     "eic.legally_separated": false,
     "f1040.status": "single",
-    "f1040.line2a": 0,
     "f1040.line3a": 4200000,
     "f1040.line25b": 0,
     "f1040.line25c": 0,
@@ -4995,7 +5011,9 @@
     "retirement[r2].combined_age": 107,
     "retirement[r2].months": 12,
     "retirement[r2].recovered": 4274100,
-    "ssb.terror_disability": false
+    "ssb.terror_disability": false,
+    "f1040.tax_exempt_interest": 0,
+    "div.box12": 0
    },
    "expect": {
     "f1040.line1a": {
@@ -5218,7 +5236,6 @@
     "eic.same_home": false,
     "eic.legally_separated": false,
     "f1040.status": "single",
-    "f1040.line2a": 0,
     "f1040.line3a": 0,
     "f1040.line25b": 0,
     "f1040.line25c": 0,
@@ -5363,7 +5380,9 @@
     "dependent[dep_b].us_half": true,
     "dependent[dep_b].eic_ssn": true,
     "$retirement": [],
-    "ssb.terror_disability": false
+    "ssb.terror_disability": false,
+    "f1040.tax_exempt_interest": 0,
+    "div.box12": 0
    },
    "expect": {
     "f1040.line1a": {
@@ -5586,7 +5605,6 @@
     "eic.same_home": false,
     "eic.legally_separated": false,
     "f1040.status": "single",
-    "f1040.line2a": 0,
     "f1040.line3a": 1676300,
     "f1040.line25b": 0,
     "f1040.line25c": 0,
@@ -5747,7 +5765,9 @@
     "retirement[r1].combined_age": 105,
     "retirement[r1].months": 12,
     "retirement[r1].recovered": 4781900,
-    "ssb.terror_disability": false
+    "ssb.terror_disability": false,
+    "f1040.tax_exempt_interest": 0,
+    "div.box12": 0
    },
    "expect": {
     "f1040.line1a": {
@@ -10551,7 +10571,6 @@
     "eic.same_home": false,
     "eic.legally_separated": false,
     "f1040.status": "qss",
-    "f1040.line2a": 0,
     "f1040.line3a": 4640000,
     "f1040.line25b": 0,
     "f1040.line25c": 0,
@@ -10757,7 +10776,9 @@
     "retirement[r2].age": 68,
     "retirement[r2].combined_age": 125,
     "retirement[r2].months": 12,
-    "retirement[r2].recovered": 4726000
+    "retirement[r2].recovered": 4726000,
+    "f1040.tax_exempt_interest": 0,
+    "div.box12": 0
    },
    "expect": {
     "retirement[r1].is_ira": {
@@ -10936,7 +10957,6 @@
     "eic.same_home": false,
     "eic.legally_separated": false,
     "f1040.status": "mfs",
-    "f1040.line2a": 0,
     "f1040.line3a": 520600,
     "f1040.line25b": 0,
     "f1040.line25c": 0,
@@ -11162,7 +11182,9 @@
     "retirement[r2].age": 63,
     "retirement[r2].combined_age": 146,
     "retirement[r2].months": 12,
-    "retirement[r2].recovered": 0
+    "retirement[r2].recovered": 0,
+    "f1040.tax_exempt_interest": 0,
+    "div.box12": 0
    },
    "expect": {
     "retirement[r1].is_ira": {
@@ -11337,7 +11359,6 @@
     "eic.same_home": false,
     "eic.legally_separated": false,
     "f1040.status": "hoh",
-    "f1040.line2a": 0,
     "f1040.line3a": 7264800,
     "f1040.line25b": 0,
     "f1040.line25c": 0,
@@ -11510,7 +11531,9 @@
     "retirement[r1].age": 52,
     "retirement[r1].combined_age": 126,
     "retirement[r1].months": 12,
-    "retirement[r1].recovered": 524300
+    "retirement[r1].recovered": 524300,
+    "f1040.tax_exempt_interest": 0,
+    "div.box12": 0
    },
    "expect": {
     "retirement[r1].is_ira": {
@@ -11641,7 +11664,6 @@
     "eic.same_home": false,
     "eic.legally_separated": false,
     "f1040.status": "hoh",
-    "f1040.line2a": 0,
     "f1040.line3a": 3688600,
     "f1040.line25b": 0,
     "f1040.line25c": 0,
@@ -11828,7 +11850,9 @@
     "retirement[r2].age": 57,
     "retirement[r2].combined_age": 138,
     "retirement[r2].months": 12,
-    "retirement[r2].recovered": 1748200
+    "retirement[r2].recovered": 1748200,
+    "f1040.tax_exempt_interest": 0,
+    "div.box12": 0
    },
    "expect": {
     "retirement[r1].is_ira": {
@@ -11995,7 +12019,6 @@
     "eic.same_home": false,
     "eic.legally_separated": false,
     "f1040.status": "single",
-    "f1040.line2a": 0,
     "f1040.line3a": 303700,
     "f1040.line25b": 0,
     "f1040.line25c": 0,
@@ -12123,7 +12146,9 @@
     "retirement[r2].age": 64,
     "retirement[r2].combined_age": 110,
     "retirement[r2].months": 12,
-    "retirement[r2].recovered": 4659000
+    "retirement[r2].recovered": 4659000,
+    "f1040.tax_exempt_interest": 0,
+    "div.box12": 0
    },
    "expect": {
     "retirement[r1].is_ira": {
@@ -12298,7 +12323,6 @@
     "eic.same_home": false,
     "eic.legally_separated": false,
     "f1040.status": "mfj",
-    "f1040.line2a": 0,
     "f1040.line3a": 0,
     "f1040.line25b": 0,
     "f1040.line25c": 0,
@@ -12536,7 +12560,9 @@
     "retirement[r2].age": 79,
     "retirement[r2].combined_age": 159,
     "retirement[r2].months": 12,
-    "retirement[r2].recovered": 736800
+    "retirement[r2].recovered": 736800,
+    "f1040.tax_exempt_interest": 0,
+    "div.box12": 0
    },
    "expect": {
     "retirement[r1].is_ira": {
@@ -12683,7 +12709,6 @@
     "eic.same_home": false,
     "eic.legally_separated": false,
     "f1040.status": "mfs",
-    "f1040.line2a": 0,
     "f1040.line3a": 2841000,
     "f1040.line25b": 0,
     "f1040.line25c": 0,
@@ -12840,7 +12865,9 @@
     "retirement[r2].age": 75,
     "retirement[r2].combined_age": 151,
     "retirement[r2].months": 1,
-    "retirement[r2].recovered": 4122200
+    "retirement[r2].recovered": 4122200,
+    "f1040.tax_exempt_interest": 0,
+    "div.box12": 0
    },
    "expect": {
     "retirement[r1].is_ira": {
@@ -13027,7 +13054,6 @@
     "eic.same_home": false,
     "eic.legally_separated": false,
     "f1040.status": "hoh",
-    "f1040.line2a": 0,
     "f1040.line3a": 289000,
     "f1040.line25b": 0,
     "f1040.line25c": 0,
@@ -13219,7 +13245,9 @@
     "retirement[r2].age": 80,
     "retirement[r2].combined_age": 149,
     "retirement[r2].months": 8,
-    "retirement[r2].recovered": 4133300
+    "retirement[r2].recovered": 4133300,
+    "f1040.tax_exempt_interest": 0,
+    "div.box12": 0
    },
    "expect": {
     "retirement[r1].is_ira": {
@@ -13450,7 +13478,6 @@
     "eic.same_home": false,
     "eic.legally_separated": false,
     "f1040.status": "qss",
-    "f1040.line2a": 0,
     "f1040.line3a": 3321500,
     "f1040.line25b": 0,
     "f1040.line25c": 0,
@@ -13610,7 +13637,9 @@
     "retirement[r1].age": 61,
     "retirement[r1].combined_age": 102,
     "retirement[r1].months": 3,
-    "retirement[r1].recovered": 0
+    "retirement[r1].recovered": 0,
+    "f1040.tax_exempt_interest": 0,
+    "div.box12": 0
    },
    "expect": {
     "retirement[r1].is_ira": {
@@ -13741,7 +13770,6 @@
     "eic.same_home": false,
     "eic.legally_separated": false,
     "f1040.status": "hoh",
-    "f1040.line2a": 0,
     "f1040.line3a": 0,
     "f1040.line25b": 0,
     "f1040.line25c": 0,
@@ -13938,7 +13966,9 @@
     "retirement[r1].age": 63,
     "retirement[r1].combined_age": 137,
     "retirement[r1].months": 12,
-    "retirement[r1].recovered": 3511800
+    "retirement[r1].recovered": 3511800,
+    "f1040.tax_exempt_interest": 0,
+    "div.box12": 0
    },
    "expect": {
     "retirement[r1].is_ira": {
@@ -14069,7 +14099,6 @@
     "eic.same_home": false,
     "eic.legally_separated": false,
     "f1040.status": "hoh",
-    "f1040.line2a": 0,
     "f1040.line3a": 64300,
     "f1040.line25b": 0,
     "f1040.line25c": 0,
@@ -14287,7 +14316,9 @@
     "retirement[r2].age": 63,
     "retirement[r2].combined_age": 113,
     "retirement[r2].months": 12,
-    "retirement[r2].recovered": 0
+    "retirement[r2].recovered": 0,
+    "f1040.tax_exempt_interest": 0,
+    "div.box12": 0
    },
    "expect": {
     "retirement[r1].is_ira": {
@@ -14800,7 +14831,6 @@
     "eic.same_home": false,
     "eic.legally_separated": false,
     "f1040.status": "hoh",
-    "f1040.line2a": 0,
     "f1040.line3a": 0,
     "f1040.line25b": 0,
     "f1040.line25c": 0,
@@ -14951,7 +14981,9 @@
     "dependent[dep_c].eic_ssn": true,
     "$retirement": [],
     "ssb.benefits": 0,
-    "eic.born_after_1960": true
+    "eic.born_after_1960": true,
+    "f1040.tax_exempt_interest": 0,
+    "div.box12": 0
    },
    "expect": {
     "s8812.line1": {
@@ -15085,7 +15117,6 @@
     "eic.same_home": false,
     "eic.legally_separated": false,
     "f1040.status": "qss",
-    "f1040.line2a": 0,
     "f1040.line3a": 30745600,
     "f1040.line25b": 0,
     "f1040.line25c": 0,
@@ -15221,7 +15252,9 @@
     "dependent[dep_a].eic_ssn": true,
     "$retirement": [],
     "ssb.benefits": 0,
-    "eic.born_after_1960": true
+    "eic.born_after_1960": true,
+    "f1040.tax_exempt_interest": 0,
+    "div.box12": 0
    },
    "expect": {
     "s8812.line1": {
@@ -15367,7 +15400,6 @@
     "eic.same_home": false,
     "eic.legally_separated": false,
     "f1040.status": "single",
-    "f1040.line2a": 0,
     "f1040.line3a": 2263300,
     "f1040.line25b": 0,
     "f1040.line25c": 0,
@@ -15528,7 +15560,9 @@
     "dependent[dep_c].eic_ssn": true,
     "$retirement": [],
     "ssb.benefits": 0,
-    "eic.born_after_1960": true
+    "eic.born_after_1960": true,
+    "f1040.tax_exempt_interest": 0,
+    "div.box12": 0
    },
    "expect": {
     "s8812.line1": {
@@ -19949,7 +19983,6 @@
     "eic.same_home": false,
     "eic.legally_separated": false,
     "f1040.status": "hoh",
-    "f1040.line2a": 0,
     "f1040.line3a": 0,
     "f1040.line25b": 0,
     "f1040.line25c": 0,
@@ -20104,7 +20137,9 @@
     "dependent[dep_c].eic_ssn": true,
     "$retirement": [],
     "eic.born_after_1960": true,
-    "ssb.terror_disability": false
+    "ssb.terror_disability": false,
+    "f1040.tax_exempt_interest": 0,
+    "div.box12": 0
    },
    "expect": {
     "ssb.line1": {
@@ -20206,7 +20241,6 @@
     "eic.same_home": false,
     "eic.legally_separated": true,
     "f1040.status": "qss",
-    "f1040.line2a": 0,
     "f1040.line3a": 2000300,
     "f1040.line25b": 0,
     "f1040.line25c": 0,
@@ -20342,7 +20376,9 @@
     "retirement[r1].months": 12,
     "retirement[r1].recovered": 3520300,
     "eic.born_after_1960": true,
-    "ssb.terror_disability": false
+    "ssb.terror_disability": false,
+    "f1040.tax_exempt_interest": 0,
+    "div.box12": 0
    },
    "expect": {
     "ssb.line1": {
@@ -20444,7 +20480,6 @@
     "eic.same_home": false,
     "eic.legally_separated": false,
     "f1040.status": "mfs",
-    "f1040.line2a": 0,
     "f1040.line3a": 0,
     "f1040.line25b": 0,
     "f1040.line25c": 0,
@@ -20603,7 +20638,9 @@
     "dependent[dep_a].eic_ssn": true,
     "$retirement": [],
     "eic.born_after_1960": true,
-    "ssb.terror_disability": false
+    "ssb.terror_disability": false,
+    "f1040.tax_exempt_interest": 0,
+    "div.box12": 0
    },
    "expect": {
     "ssb.line1": {
@@ -20705,7 +20742,6 @@
     "eic.same_home": false,
     "eic.legally_separated": false,
     "f1040.status": "single",
-    "f1040.line2a": 0,
     "f1040.line3a": 0,
     "f1040.line25b": 0,
     "f1040.line25c": 0,
@@ -20827,7 +20863,9 @@
     "dependent[dep_a].eic_ssn": true,
     "$retirement": [],
     "eic.born_after_1960": true,
-    "ssb.terror_disability": false
+    "ssb.terror_disability": false,
+    "f1040.tax_exempt_interest": 0,
+    "div.box12": 0
    },
    "expect": {
     "ssb.line1": {
@@ -20929,7 +20967,6 @@
     "eic.same_home": false,
     "eic.legally_separated": false,
     "f1040.status": "mfj",
-    "f1040.line2a": 0,
     "f1040.line3a": 0,
     "f1040.line25b": 0,
     "f1040.line25c": 0,
@@ -21033,7 +21070,9 @@
     "$dependent": [],
     "$retirement": [],
     "eic.born_after_1960": true,
-    "ssb.terror_disability": false
+    "ssb.terror_disability": false,
+    "f1040.tax_exempt_interest": 0,
+    "div.box12": 0
    },
    "expect": {
     "ssb.line1": {

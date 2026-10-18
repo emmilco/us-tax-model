@@ -36,18 +36,31 @@ form:
       cite:
         doc: f1040
         locator: Form 1040 (2025), line 1z
+    - id: f1040.tax_exempt_interest
+      printed: (helper)
+      label: Tax-exempt interest and tax-exempt OID, net of amortized premium
+      type: NonNegDollars
+      expr:
+        op: input
+        source: 'Total tax-exempt interest and tax-exempt OID for 2025 (Form 1099-INT box 8; Form 1099-OID boxes 2 and 11), net of amortized bond premium and acquisition premium; do not include exempt-interest dividends (Form 1099-DIV box 12) or interest earned in an IRA, HSA, Archer or Medicare Advantage MSA, or Coverdell education savings account'
+      cite:
+        doc: i1040gi
+        locator: Instructions for Form 1040, p. 25, line 2a, "Enter the total on line 2a" (Form 1099-INT box 8, Form
+          1099-OID boxes 2 and 11, net of amortized bond premium and acquisition premium)
     - id: f1040.line2a
       printed: 2a
       label: Tax-exempt interest
       type: NonNegDollars
       expr:
-        op: input
-        source: Total tax-exempt interest for 2025, net of amortized bond premium (Form 1099-INT box 8, tax-exempt OID from
-          Form 1099-OID, and exempt-interest dividends in Form 1099-DIV box 12)
+        op: sum
+        of:
+          - f1040.tax_exempt_interest
+          - div.box12
       cite:
         doc: i1040gi
         locator: Instructions for Form 1040, p. 25, line 2a, "Enter the total on line 2a" and "Also include on line 2a any
-          exempt-interest dividends from a mutual fund"
+          exempt-interest dividends from a mutual fund or other regulated investment company. This amount should be
+          shown in box 12 of Form 1099-DIV"
     - id: f1040.line2b
       printed: 2b
       label: Taxable interest

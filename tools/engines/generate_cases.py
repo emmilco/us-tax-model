@@ -52,7 +52,7 @@ def gen_case(rng, i):
         "f1040.line25b": 0, "f1040.line25c": 0, "f1040.line26": 0, "f1040.line35a": 0, "f1040.line36": 0,
         # Earned income credit questions: an adult aged 25 to 64 living in the United States who is
         # nobody's qualifying child, with no tax-exempt interest.
-        "f1040.line2a": 0, "eic.qc_of_another": False, "eic.born_before_2001": True, "eic.born_after_1960": True, "eic.us_home": True, "eic.married": False,
+        "f1040.tax_exempt_interest": 0, "div.box12": 0, "eic.qc_of_another": False, "eic.born_before_2001": True, "eic.born_after_1960": True, "eic.us_home": True, "eic.married": False,
         "$retirement": [],
     }
     facts = {}

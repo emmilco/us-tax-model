@@ -564,7 +564,6 @@
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
         "dependent[child].younger": true,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
@@ -573,7 +572,9 @@
         "dependent[child].eic_ssn": true,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -1079,7 +1080,6 @@
         "dependent[a].younger": true,
         "dependent[b].younger": true,
         "dependent[c].younger": true,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
@@ -1092,7 +1092,9 @@
         "dependent[c].eic_ssn": true,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "dependent[a].actc_amount": {
@@ -1724,7 +1726,6 @@
         "dependent[a].younger": true,
         "dependent[b].younger": true,
         "dependent[c].younger": true,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
@@ -1737,7 +1738,9 @@
         "dependent[c].eic_ssn": true,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "dependent[a].actc_amount": {
@@ -11953,7 +11956,6 @@
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
         "dependent[child].younger": true,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
@@ -11962,7 +11964,9 @@
         "dependent[child].eic_ssn": true,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -12561,7 +12565,6 @@
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
         "dependent[child].younger": true,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
@@ -12570,7 +12573,9 @@
         "dependent[child].eic_ssn": true,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -13328,7 +13333,6 @@
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
         "dependent[child].younger": true,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
@@ -13337,7 +13341,9 @@
         "dependent[child].eic_ssn": true,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -13951,7 +13957,6 @@
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
         "dependent[child].younger": true,
-        "f1040.line2a": 0,
         "eic.qc_of_another": false,
         "eic.born_before_2001": true,
         "eic.us_home": true,
@@ -13960,7 +13965,9 @@
         "dependent[child].eic_ssn": true,
         "$retirement": [],
         "ssb.benefits": 0,
-        "eic.born_after_1960": true
+        "eic.born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0
       },
       "expect": {
         "dependent[child].actc_amount": {

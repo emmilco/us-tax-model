@@ -59,6 +59,13 @@
 - Expr: `{"op":"input","source":"Noncash liquidation distributions, box 10"}`
 - Cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); sha256 4ea1de80)
 
+## (helper) — `div.box12`
+
+- **Authored helper label:** Exempt-interest dividends, box 12
+- **Encoded (NonNegDollars):** Input — Exempt-interest dividends, box 12 (total of all your Forms 1099-DIV; box 13 amounts are already included)
+- Expr: `{"op":"input","source":"Exempt-interest dividends, box 12 (total of all your Forms 1099-DIV; box 13 amounts are already included)"}`
+- Cite: [f1099div] Instructions for Recipient, Box 12 ("Shows exempt-interest dividends from a mutual fund or other RIC paid to you during the calendar year. See the Instructions for Form 1040 for where to report") and Box 13 ("This amount is included in box 12") (January 2024 (continuous-use form); sha256 4ea1de80)
+
 ## (helper) — `div.box13`
 
 - **Authored helper label:** Specified private activity bond interest dividends, box 13

@@ -25,6 +25,9 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
   (helper) Noncash liquidation distributions, box 10
       = $0
       cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); 4ea1de80)
+  (helper) Exempt-interest dividends, box 12
+      = UNKNOWN (no input supplied for div.box12)
+      cite: [f1099div] Instructions for Recipient, Box 12 ("Shows exempt-interest dividends from a mutual fund or other RIC paid to you during the calendar year. See the Instructions for Form 1040 for where to report") and Box 13 ("This amount is included in box 12") (January 2024 (continuous-use form); 4ea1de80)
   (helper) Specified private activity bond interest dividends, box 13
       = $0
       cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); 4ea1de80)
@@ -158,10 +161,10 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       = $0
       cite: [i1040gi] p. 40, Step 2, question 1, "*If line 7a is a loss, enter -0-." (2025; printed date 2026-02-25; 482e9c48)
   (helper) Step 2, question 1. Investment income: Form 1040, lines 2a, 2b, 3b and 7a
-      = UNKNOWN (no input supplied for f1040.line2a)
+      = UNKNOWN (no input supplied for div.box12)
       cite: [i1040gi] p. 40, Step 2, question 1, "Add the amounts from Form 1040 or 1040-SR: Line 2a + Line 2b + Line 3b + Line 7a*" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Step 2, question 2. Investment income not more than $11,950 (more than $11,950 stops at question 3 without Form 4797)
-      = UNKNOWN (no input supplied for f1040.line2a)
+      = UNKNOWN (no input supplied for div.box12)
       cite: [i1040gi] p. 40, Step 2, questions 2 and 3 (Form 4797 is refused before this question, so question 3 is "No. STOP") (2025; printed date 2026-02-25; 482e9c48)
   (helper) Step 2, question 4. No Schedule E, rental of personal property, Form 8814 or passive activity
       = true
@@ -319,9 +322,12 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
   1z  Add lines 1a through 1h
       = $130,000
       cite: [f1040] Form 1040 (2025), line 1z (2025; created 2025-09-05; 3d31c226)
+  (helper) Tax-exempt interest and tax-exempt OID, net of amortized premium
+      = UNKNOWN (no input supplied for f1040.tax_exempt_interest)
+      cite: [i1040gi] Instructions for Form 1040, p. 25, line 2a, "Enter the total on line 2a" (Form 1099-INT box 8, Form 1099-OID boxes 2 and 11, net of amortized bond premium and acquisition premium) (2025; printed date 2026-02-25; 482e9c48)
   2a  Tax-exempt interest
-      = UNKNOWN (no input supplied for f1040.line2a)
-      cite: [i1040gi] Instructions for Form 1040, p. 25, line 2a, "Enter the total on line 2a" and "Also include on line 2a any exempt-interest dividends from a mutual fund" (2025; printed date 2026-02-25; 482e9c48)
+      = UNKNOWN (no input supplied for div.box12)
+      cite: [i1040gi] Instructions for Form 1040, p. 25, line 2a, "Enter the total on line 2a" and "Also include on line 2a any exempt-interest dividends from a mutual fund or other regulated investment company. This amount should be shown in box 12 of Form 1099-DIV" (2025; printed date 2026-02-25; 482e9c48)
   2b  Taxable interest
       = $0
       cite: [i1040gi] Instructions for Form 1040, p. 25, line 2b (2025; printed date 2026-02-25; 482e9c48)
@@ -906,28 +912,28 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       note: taken: {"eq":["ftc.has_tax",{"const":false}],"op":"test"}
 
 == 28% Rate Gain Worksheet — distribution-only path ==
-  1   Amount from div.screen
+  1   Enter the total of all collectibles gain or (loss) from items you reported on Form 8949, Part II
       = $0
       cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
-  2   Amount from div.screen
+  2   Enter as a positive number the total of: any section 1202 exclusion you reported in column (g) of Form 8949, Part II, with code “Q” in column (f), that is 50% of the gain; 2/3 of any such exclusion that is 60% of the gain; and 1/3 of any such exclusion that is 75% of the gain. Don’t make an entry for any section 1202 exclusion that is 100% of the gain
       = $0
       cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
-  3   Amount from div.screen
+  3   Enter the total of all collectibles gain or (loss) from Form 4684, line 4 (but only if Form 4684, line 15, is more than zero); Form 6252; Form 6781, Part II; and Form 8824
       = $0
       cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
-  5   Amount from div.screen
+  5   Enter your long-term capital loss carryovers from Schedule D, line 14; and Schedule K-1 (Form 1041), box 11, code D
       = $0
       cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
-  4   Amount from div.box2d
+  4   Enter the total of any collectibles gain reported to you on: Form 1099-DIV, box 2d; Form 2439, box 1d; and Schedule K-1 from a partnership, S corporation, estate, or trust
       = $0
       cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
-  6   Smaller of sd.line7, sd.zero
+  6   If Schedule D, line 7, is a (loss), enter that (loss) here. Otherwise, enter -0-
       = $0
       cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
   (helper) Add g28.line1, g28.line2, g28.line3, g28.line4, g28.line5, g28.line6
       = $0
       cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
-  7   Subtract sd.zero from g28.combined; if zero or less, enter zero
+  7   Combine lines 1 through 6. If zero or less, enter -0-. If more than zero, also enter this amount on Schedule D, line 18
       = $0
       cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
 
@@ -2073,16 +2079,16 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       = $130,000
       cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 3 (2025; printed date 2026-02-25; 482e9c48)
   4   Enter the amount, if any, from Form 1040 or 1040-SR, line 2a
-      = UNKNOWN (no input supplied for f1040.line2a)
+      = UNKNOWN (no input supplied for div.box12)
       cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 4 (2025; printed date 2026-02-25; 482e9c48)
   5   Combine lines 2, 3, and 4
-      = UNKNOWN (no input supplied for f1040.line2a)
+      = UNKNOWN (no input supplied for div.box12)
       cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 5 (2025; printed date 2026-02-25; 482e9c48)
   6   Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 25; zero in this tool
       = $0
       cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 6 (2025; printed date 2026-02-25; 482e9c48)
   7   Is the amount on line 6 less than the amount on line 5? If yes, subtract line 6 from line 5 (if no, none of the benefits are taxable)
-      = UNKNOWN (no input supplied for f1040.line2a)
+      = UNKNOWN (no input supplied for div.box12)
       cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 7 (2025; printed date 2026-02-25; 482e9c48)
   (helper) Line 8 amount, $25,000
       = $25,000
@@ -2102,7 +2108,7 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 8 (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["f1040.status",{"const":"single"}],"op":"test"}
   9   Is the amount on line 8 less than the amount on line 7? If yes, subtract line 8 from line 7 (if no, none of the benefits are taxable)
-      = UNKNOWN (no input supplied for f1040.line2a)
+      = UNKNOWN (no input supplied for div.box12)
       cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 9 (2025; printed date 2026-02-25; 482e9c48)
   (helper) Line 10 amount, $9,000
       = $9,000
@@ -2119,31 +2125,31 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 10 (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["f1040.status",{"const":"single"}],"op":"test"}
   11  Subtract line 10 from line 9. If zero or less, enter -0-
-      = UNKNOWN (no input supplied for f1040.line2a)
+      = UNKNOWN (no input supplied for div.box12)
       cite: [i1040gi] p. 32, line 11 (2025; printed date 2026-02-25; 482e9c48)
   12  Enter the smaller of line 9 or line 10
-      = UNKNOWN (no input supplied for f1040.line2a)
+      = UNKNOWN (no input supplied for div.box12)
       cite: [i1040gi] p. 32, line 12 (2025; printed date 2026-02-25; 482e9c48)
   13  Enter one-half of line 12
-      = UNKNOWN (no input supplied for f1040.line2a)
+      = UNKNOWN (no input supplied for div.box12)
       cite: [i1040gi] p. 32, line 13 (2025; printed date 2026-02-25; 482e9c48)
   14  Enter the smaller of line 2 or line 13
       = UNKNOWN (no input supplied for ssb.pub915)
       cite: [i1040gi] p. 32, line 14 (2025; printed date 2026-02-25; 482e9c48)
   15  Multiply line 11 by 85% (0.85). If line 11 is zero, enter -0-
-      = UNKNOWN (no input supplied for f1040.line2a)
+      = UNKNOWN (no input supplied for div.box12)
       cite: [i1040gi] p. 32, line 15 (2025; printed date 2026-02-25; 482e9c48)
   (helper) Married filing separately and lived with your spouse at any time in 2025
       = false
       cite: [i1040gi] p. 32, line 8, third bullet (2025; printed date 2026-02-25; 482e9c48)
   (helper) Add lines 14 and 15
-      = UNKNOWN (no input supplied for f1040.line2a)
+      = UNKNOWN (no input supplied for div.box12)
       cite: [i1040gi] p. 32, line 16 (2025; printed date 2026-02-25; 482e9c48)
   (helper) Married filing separately and living with your spouse: line 7 times 85% (0.85)
-      = UNKNOWN (no input supplied for f1040.line2a)
+      = UNKNOWN (no input supplied for div.box12)
       cite: [i1040gi] p. 32, line 8, 'multiply line 7 by 85% (0.85) and enter the result on line 16' (2025; printed date 2026-02-25; 482e9c48)
   16  Add lines 14 and 15
-      = UNKNOWN (no input supplied for f1040.line2a)
+      = UNKNOWN (no input supplied for div.box12)
       cite: [i1040gi] p. 32, line 16 (and line 8 for married filing separately and living with the spouse) (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["ssb.mfs_together",{"const":false}],"op":"test"}
   17  Multiply line 1 by 85% (0.85)
@@ -2151,7 +2157,7 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       cite: [i1040gi] p. 32, line 17 (2025; printed date 2026-02-25; 482e9c48)
       note: half-up to the cent per the ambiguity register
   (helper) The smaller of line 16 or line 17
-      = UNKNOWN (no input supplied for f1040.line2a)
+      = UNKNOWN (no input supplied for div.box12)
       cite: [i1040gi] p. 32, line 18 (2025; printed date 2026-02-25; 482e9c48)
   18  Taxable social security benefits. Enter the smaller of line 16 or line 17
       = $0
@@ -2159,61 +2165,61 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       note: taken: {"eq":["ssb.has_benefits",{"const":false}],"op":"test"}
 
 == Unrecaptured Section 1250 Gain Worksheet — distribution-only path ==
-  1   Amount from div.screen
+  1   If you have a section 1250 property in Part III of Form 4797 for which you made an entry in Part I of Form 4797 (but not on Form 6252), enter the smaller of line 22 or line 24 of Form 4797 for that property
       = $0
       cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  2   Amount from div.screen
+  2   Enter the amount from Form 4797, line 26g, for the property for which you made an entry on line 1
       = $0
       cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  3   Amount from div.screen
+  3   Subtract line 2 from line 1
       = $0
       cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  4   Amount from div.screen
+  4   Enter the total unrecaptured section 1250 gain included on line 26 or line 37 of Form(s) 6252 from installment sales of trade or business property held more than 1 year
       = $0
       cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  5   Amount from div.screen
+  5   Enter the total of any amounts reported to you on a Schedule K-1 from a partnership or an S corporation as “unrecaptured section 1250 gain”
       = $0
       cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  6   Amount from div.screen
+  6   Add lines 3 through 5
       = $0
       cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  7   Amount from div.screen
+  7   Enter the smaller of line 6 or the gain from Form 4797, line 7
       = $0
       cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  8   Amount from div.screen
+  8   Enter the amount, if any, from Form 4797, line 8
       = $0
       cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  9   Amount from div.screen
+  9   Subtract line 8 from line 7. If zero or less, enter -0-
       = $0
       cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  10  Amount from div.screen
+  10  Enter the amount of any gain from the sale or exchange of an interest in a partnership attributable to unrecaptured section 1250 gain
       = $0
       cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  12  Amount from div.screen
+  12  Enter the total of any unrecaptured section 1250 gain from sales (including installment sales) or other dispositions of section 1250 property held more than 1 year for which you didn’t make an entry in Part I of Form 4797 for the year of sale
       = $0
       cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  16  Amount from div.screen
+  16  Enter your long-term capital loss carryovers from Schedule D, line 14; and Schedule K-1 (Form 1041), box 11, code D
       = $0
       cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  11  Amount from div.box2b
+  11  Enter the total of any amounts reported to you as “unrecaptured section 1250 gain” on a Schedule K-1, Form 1099-DIV, or Form 2439 from an estate, a trust, a real estate investment trust, or a mutual fund (or other regulated investment company) or in connection with a Form 1099-R
       = $0
       cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  13  Add u1250.line9, u1250.line10, u1250.line11, u1250.line12
+  13  Add lines 9 through 12
       = $0
       cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  14  Add g28.line1, g28.line2, g28.line3, g28.line4
+  14  If you had any section 1202 gain or collectibles gain or (loss), enter the total of lines 1 through 4 of the 28% Rate Gain Worksheet. Otherwise, enter -0-
       = $0
       cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  15  Amount from g28.line6
+  15  Enter the (loss), if any, from Schedule D, line 7. If Schedule D, line 7, is zero or a gain, enter -0-
       = $0
       cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
   (helper) Add u1250.line14, u1250.line15, u1250.line16
       = $0
       cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  17  Subtract u1250.combined from sd.zero; if zero or less, enter zero
+  17  Combine lines 14 through 16. If the result is a (loss), enter it as a positive amount. If the result is zero or a gain, enter -0-
       = $0
       cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  18  Subtract u1250.line17 from u1250.line13; if zero or less, enter zero
+  18  Unrecaptured section 1250 gain. Subtract line 17 from line 13. If zero or less, enter -0-. If more than zero, enter the result here and on Schedule D, line 19
       = $0
       cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
 
@@ -2342,7 +2348,7 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   ssb.line8: chose $25,000 (guard 0)
   ssb.mfs_adjust: chose UNKNOWN (no input supplied for ssb.lived_apart)
   ssb.line10: chose $9,000 (guard 0)
-  ssb.line16: chose UNKNOWN (no input supplied for f1040.line2a) (guard 1)
+  ssb.line16: chose UNKNOWN (no input supplied for div.box12) (guard 1)
       not taken: guard 0 = false
 
 Collection entries and derivations:
@@ -2467,10 +2473,12 @@ Collection entries and derivations:
   eic.step1_resident: test(scope.other_income = false; scope.other_income = false; false = false)
   eic.f1040.line7a: copy(sd.to1040 = $0)
   eic.gain_7a: subtract_floor0(f1040.line7a = $0; eic.zero = $0)
+  f1040.line2a: sum(f1040.tax_exempt_interest = UNKNOWN (no input supplied for f1040.tax_exempt_interest); div.box12 = UNKNOWN (no input supplied for div.box12))
+  eic.f1040.line2a: sum(f1040.tax_exempt_interest = UNKNOWN (no input supplied for f1040.tax_exempt_interest); div.box12 = UNKNOWN (no input supplied for div.box12))
   eic.f1040.line2b: copy(sb.line4 = $0)
   eic.f1040.line3b: copy(sb.line6 = $0)
-  eic.investment_income: sum(f1040.line2a = UNKNOWN (no input supplied for f1040.line2a); f1040.line2b = $0; f1040.line3b = $0; eic.gain_7a = $0)
-  eic.step2_income: test(eic.investment_income = UNKNOWN (no input supplied for f1040.line2a); #eic.investment_limit = $11,950)
+  eic.investment_income: sum(f1040.line2a = UNKNOWN (no input supplied for div.box12); f1040.line2b = $0; f1040.line3b = $0; eic.gain_7a = $0)
+  eic.step2_income: test(eic.investment_income = UNKNOWN (no input supplied for div.box12); #eic.investment_limit = $11,950)
   eic.step2_other: test(scope.schedule1 = false; scope.other_line16 = false; scope.schedule1 = false; false = false; scope.other_line16 = false; false = false)
   eic.step3_married: test(eic.married_rules = false; false = false)
   eic.step3: test(f1040.status = single; "mfj" = mfj; eic.step3_married = true; true = true; eic.qc_of_another = UNKNOWN (no input supplied for eic.qc_of_another); false = false)
@@ -3083,30 +3091,31 @@ Collection entries and derivations:
   ssb.f1040.line7a: copy(sd.to1040 = $0)
   ssb.f1040.line8: param(scope.schedule1 = false; scope.other_income = false; #sales.zero = $0)
   ssb.line3: sum(f1040.line1z = $130,000; f1040.line2b = $0; f1040.line3b = $0; f1040.line4b = $0; f1040.line5b = $0; f1040.line7a = $0; f1040.line8 = $0)
-  ssb.line4: copy(f1040.line2a = UNKNOWN (no input supplied for f1040.line2a))
-  ssb.line5: sum(ssb.line2 = UNKNOWN (no input supplied for ssb.pub915); ssb.line3 = $130,000; ssb.line4 = UNKNOWN (no input supplied for f1040.line2a))
+  ssb.f1040.line2a: sum(f1040.tax_exempt_interest = UNKNOWN (no input supplied for f1040.tax_exempt_interest); div.box12 = UNKNOWN (no input supplied for div.box12))
+  ssb.line4: copy(f1040.line2a = UNKNOWN (no input supplied for div.box12))
+  ssb.line5: sum(ssb.line2 = UNKNOWN (no input supplied for ssb.pub915); ssb.line3 = $130,000; ssb.line4 = UNKNOWN (no input supplied for div.box12))
   ssb.line6: param(scope.schedule1 = false; #sales.zero = $0)
-  ssb.line7: subtract_floor0(ssb.line5 = UNKNOWN (no input supplied for f1040.line2a); ssb.line6 = $0)
+  ssb.line7: subtract_floor0(ssb.line5 = UNKNOWN (no input supplied for div.box12); ssb.line6 = $0)
   ssb.base_single: param(#ssb.base_single = $25,000)
   ssb.base_joint: param(#ssb.base_joint = $32,000)
   ssb.mfs_base: choose(ssb.lived_apart = UNKNOWN (no input supplied for ssb.lived_apart); true = true)
   ssb.line8: choose(f1040.status = single; "single" = single; ssb.base_single = $25,000)
-  ssb.line9: subtract_floor0(ssb.line7 = UNKNOWN (no input supplied for f1040.line2a); ssb.line8 = $25,000)
+  ssb.line9: subtract_floor0(ssb.line7 = UNKNOWN (no input supplied for div.box12); ssb.line8 = $25,000)
   ssb.adjust_single: param(#ssb.adjust_single = $9,000)
   ssb.adjust_joint: param(#ssb.adjust_joint = $12,000)
   ssb.mfs_adjust: choose(ssb.lived_apart = UNKNOWN (no input supplied for ssb.lived_apart); true = true)
   ssb.line10: choose(f1040.status = single; "single" = single; ssb.adjust_single = $9,000)
-  ssb.line11: subtract_floor0(ssb.line9 = UNKNOWN (no input supplied for f1040.line2a); ssb.line10 = $9,000)
-  ssb.line12: smaller_of(ssb.line9 = UNKNOWN (no input supplied for f1040.line2a))
-  ssb.line13: multiply_rate(ssb.line12 = UNKNOWN (no input supplied for f1040.line2a); #ssb.half = 1/2)
+  ssb.line11: subtract_floor0(ssb.line9 = UNKNOWN (no input supplied for div.box12); ssb.line10 = $9,000)
+  ssb.line12: smaller_of(ssb.line9 = UNKNOWN (no input supplied for div.box12))
+  ssb.line13: multiply_rate(ssb.line12 = UNKNOWN (no input supplied for div.box12); #ssb.half = 1/2)
   ssb.line14: smaller_of(ssb.line2 = UNKNOWN (no input supplied for ssb.pub915))
-  ssb.line15: multiply_rate(ssb.line11 = UNKNOWN (no input supplied for f1040.line2a); #ssb.rate85 = 85/100)
+  ssb.line15: multiply_rate(ssb.line11 = UNKNOWN (no input supplied for div.box12); #ssb.rate85 = 85/100)
   ssb.mfs_together: test(f1040.status = single; "mfs" = mfs)
-  ssb.line16_sum: sum(ssb.line14 = UNKNOWN (no input supplied for ssb.pub915); ssb.line15 = UNKNOWN (no input supplied for f1040.line2a))
-  ssb.line16_together: multiply_rate(ssb.line7 = UNKNOWN (no input supplied for f1040.line2a); #ssb.rate85 = 85/100)
-  ssb.line16: choose(ssb.mfs_together = false; true = true; ssb.mfs_together = false; false = false; ssb.line16_sum = UNKNOWN (no input supplied for f1040.line2a))
+  ssb.line16_sum: sum(ssb.line14 = UNKNOWN (no input supplied for ssb.pub915); ssb.line15 = UNKNOWN (no input supplied for div.box12))
+  ssb.line16_together: multiply_rate(ssb.line7 = UNKNOWN (no input supplied for div.box12); #ssb.rate85 = 85/100)
+  ssb.line16: choose(ssb.mfs_together = false; true = true; ssb.mfs_together = false; false = false; ssb.line16_sum = UNKNOWN (no input supplied for div.box12))
   ssb.line17: multiply_rate(ssb.line1 = $0; #ssb.rate85 = 85/100)
-  ssb.line18_figured: smaller_of(ssb.line16 = UNKNOWN (no input supplied for f1040.line2a))
+  ssb.line18_figured: smaller_of(ssb.line16 = UNKNOWN (no input supplied for div.box12))
   u1250.line1: copy(div.screen = $0)
   u1250.line2: copy(div.screen = $0)
   u1250.line3: copy(div.screen = $0)

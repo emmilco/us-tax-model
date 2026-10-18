@@ -220,6 +220,34 @@ export function runProperties(): number {
     results.push(r);
   }
 
+  // 6. Within one computation method: the Qualified Dividends and Capital Gain
+  // Tax Worksheet's tax (line 25) and the Schedule D Tax Worksheet's tax (line
+  // 47) each do not decrease as wages rise, all else fixed. Both are evaluated
+  // directly, whichever method Form 1040 line 16 uses.
+  {
+    const counts = { qdcg: 0, sdtw: 0 };
+    const obs: string[] = [];
+    const targets = ["qdcg.line25", "sdtw.line47"];
+    const r = runProperty("tax_monotone_by_method", "Raising W-2 box 1 of the first employer, all else fixed, never lowers the Qualified Dividends and Capital Gain Tax Worksheet line 25 or the Schedule D Tax Worksheet line 47, each where it is computed on both returns.", fc.tuple(arb, fc.integer({ min: 1, max: 5_000_000 })), ([inputs, delta]) => {
+      const roster = inputs["$w2@person[taxpayer]"] as string[];
+      const key = `person[taxpayer].w2[${roster[0]}].box1`;
+      const more = { ...inputs, [key]: (inputs[key] as number) + delta };
+      const a = evaluate(data, inputs, targets);
+      const b = evaluate(data, more, targets);
+      let applicable = false;
+      for (const [id, k] of [["qdcg.line25", "qdcg"], ["sdtw.line47", "sdtw"]] as const) {
+        const ta = cents(a.derivations.get(id)?.value);
+        const tb = cents(b.derivations.get(id)?.value);
+        if (ta === null || tb === null) continue;
+        applicable = true; counts[k]++;
+        if (tb < ta) return { applicable: true, ok: false, detail: `${id} falls from ${ta} to ${tb} cents when ${key} rises by ${delta} cents` };
+      }
+      return { applicable, ok: true };
+    }, obs);
+    obs.push(`Cases compared: QDCG worksheet line 25 ${counts.qdcg}, Schedule D Tax Worksheet line 47 ${counts.sdtw}.`);
+    results.push(r);
+  }
+
   // Branch coverage of the generated corpus: which choose guards and
   // arithmetic sides the generator reaches. Informational; feeds class M.
   const corpus = sampleReturns(data, RUNS, SEED);

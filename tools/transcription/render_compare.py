@@ -67,6 +67,24 @@ def helper_refs(text, form_id):
     return out
 
 
+def def_titles():
+    """Shared definitions by title ({title: def id}); a restatement invokes one as
+    '"<output>" of <title>'."""
+    out = {}
+    forms_dir = os.path.join(ROOT, "forms", "2025")
+    for f in sorted(os.listdir(forms_dir)):
+        if f.endswith(".yaml"):
+            d = yaml.safe_load(open(os.path.join(forms_dir, f), encoding="utf-8"))
+            if isinstance(d, dict) and "def" in d:
+                out[d["def"]["title"]] = d["def"]["id"]
+    return out
+
+
+def def_refs(text):
+    """Ids of the shared definitions a restatement invokes."""
+    return [did for title, did in def_titles().items() if f'" of {title}' in text]
+
+
 def gate_refs(refusals):
     """Ids of the gate lines refusal rules name ("when sd.screen is true, ...")."""
     return [m.group(1) for r in refusals for m in re.finditer(r"when ([a-z0-9_]+\.[a-z0-9_.]+) is true", r)]
@@ -77,7 +95,9 @@ def glossary(form_id, lines):
     lines their refusals name (by id), followed transitively, each with its restatement."""
     seen, order, queue = set(), [], []
     def refs_of(text, refusals, fid):
-        return [("label", fid, lab) for fid, lab in helper_refs(text + " " + " ".join(refusals), fid)] + [("id", gid.split(".")[0], gid) for gid in gate_refs(refusals)]
+        return ([("label", fid, lab) for fid, lab in helper_refs(text + " " + " ".join(refusals), fid)]
+                + [("id", gid.split(".")[0], gid) for gid in gate_refs(refusals)]
+                + [("def", did, did) for did in def_refs(text)])
     for l in lines:
         queue += refs_of(l["encoded"], l["refusals"], form_id)
     judged = {(form_id, l["id"]) for l in lines}
@@ -92,6 +112,8 @@ def glossary(form_id, lines):
             continue
         if kind == "label":
             matches = [e for e in entries.values() if e["label"] == key and e["printed"] in HELPER_MARKERS]
+        elif kind == "def":
+            matches = list(entries.values())  # every line of the invoked definition
         else:
             matches = [entries[key]] if key in entries else []
         for e in matches:

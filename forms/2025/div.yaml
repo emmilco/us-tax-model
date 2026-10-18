@@ -88,6 +88,18 @@ form:
       cite:
         doc: f1099div
         locator: Instructions for Recipient, boxes 1–16
+    - id: div.box12
+      printed: (helper)
+      type: NonNegDollars
+      label: Exempt-interest dividends, box 12
+      expr:
+        op: input
+        source: Exempt-interest dividends, box 12 (total of all your Forms 1099-DIV; box 13 amounts are already included)
+      cite:
+        doc: f1099div
+        locator: 'Instructions for Recipient, Box 12 ("Shows exempt-interest dividends from a mutual fund or other RIC
+          paid to you during the calendar year. See the Instructions for Form 1040 for where to report") and Box 13
+          ("This amount is included in box 12")'
     - id: div.box13
       printed: (helper)
       type: NonNegDollars

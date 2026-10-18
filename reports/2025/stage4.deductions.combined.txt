@@ -440,28 +440,28 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       note: taken: {"eq":["ftc.has_tax",{"const":false}],"op":"test"}
 
 == 28% Rate Gain Worksheet — distribution-only path ==
-  1   Amount from div.screen
+  1   Enter the total of all collectibles gain or (loss) from items you reported on Form 8949, Part II
       = $0
       cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
-  2   Amount from div.screen
+  2   Enter as a positive number the total of: any section 1202 exclusion you reported in column (g) of Form 8949, Part II, with code “Q” in column (f), that is 50% of the gain; 2/3 of any such exclusion that is 60% of the gain; and 1/3 of any such exclusion that is 75% of the gain. Don’t make an entry for any section 1202 exclusion that is 100% of the gain
       = $0
       cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
-  3   Amount from div.screen
+  3   Enter the total of all collectibles gain or (loss) from Form 4684, line 4 (but only if Form 4684, line 15, is more than zero); Form 6252; Form 6781, Part II; and Form 8824
       = $0
       cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
-  5   Amount from div.screen
+  5   Enter your long-term capital loss carryovers from Schedule D, line 14; and Schedule K-1 (Form 1041), box 11, code D
       = $0
       cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
-  4   Amount from div.box2d
+  4   Enter the total of any collectibles gain reported to you on: Form 1099-DIV, box 2d; Form 2439, box 1d; and Schedule K-1 from a partnership, S corporation, estate, or trust
       = $0
       cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
-  6   Smaller of sd.line7, sd.zero
+  6   If Schedule D, line 7, is a (loss), enter that (loss) here. Otherwise, enter -0-
       = $0
       cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
   (helper) Add g28.line1, g28.line2, g28.line3, g28.line4, g28.line5, g28.line6
       = $0
       cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
-  7   Subtract sd.zero from g28.combined; if zero or less, enter zero
+  7   Combine lines 1 through 6. If zero or less, enter -0-. If more than zero, also enter this amount on Schedule D, line 18
       = $0
       cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
 
@@ -873,37 +873,37 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       note: taken: {"eq":["ssb.has_benefits",{"const":false}],"op":"test"}
 
 == Unrecaptured Section 1250 Gain Worksheet — distribution-only path ==
-  9   Amount from div.screen
+  9   Subtract line 8 from line 7. If zero or less, enter -0-
       = $0
       cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  10  Amount from div.screen
+  10  Enter the amount of any gain from the sale or exchange of an interest in a partnership attributable to unrecaptured section 1250 gain
       = $0
       cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  12  Amount from div.screen
+  12  Enter the total of any unrecaptured section 1250 gain from sales (including installment sales) or other dispositions of section 1250 property held more than 1 year for which you didn’t make an entry in Part I of Form 4797 for the year of sale
       = $0
       cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  16  Amount from div.screen
+  16  Enter your long-term capital loss carryovers from Schedule D, line 14; and Schedule K-1 (Form 1041), box 11, code D
       = $0
       cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  11  Amount from div.box2b
+  11  Enter the total of any amounts reported to you as “unrecaptured section 1250 gain” on a Schedule K-1, Form 1099-DIV, or Form 2439 from an estate, a trust, a real estate investment trust, or a mutual fund (or other regulated investment company) or in connection with a Form 1099-R
       = $0
       cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  13  Add u1250.line9, u1250.line10, u1250.line11, u1250.line12
+  13  Add lines 9 through 12
       = $0
       cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  14  Add g28.line1, g28.line2, g28.line3, g28.line4
+  14  If you had any section 1202 gain or collectibles gain or (loss), enter the total of lines 1 through 4 of the 28% Rate Gain Worksheet. Otherwise, enter -0-
       = $0
       cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  15  Amount from g28.line6
+  15  Enter the (loss), if any, from Schedule D, line 7. If Schedule D, line 7, is zero or a gain, enter -0-
       = $0
       cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
   (helper) Add u1250.line14, u1250.line15, u1250.line16
       = $0
       cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  17  Subtract u1250.combined from sd.zero; if zero or less, enter zero
+  17  Combine lines 14 through 16. If the result is a (loss), enter it as a positive amount. If the result is zero or a gain, enter -0-
       = $0
       cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
-  18  Subtract u1250.line17 from u1250.line13; if zero or less, enter zero
+  18  Unrecaptured section 1250 gain. Subtract line 17 from line 13. If zero or less, enter -0-. If more than zero, enter the result here and on Schedule D, line 19
       = $0
       cite: [i1040sd] p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18 (2025; printed date 2025-12-11; 650643a6)
 

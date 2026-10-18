@@ -276,8 +276,8 @@ interview:
       cite:
         doc: i1040sb
         locator: pp. 1–3, interest, dividends and foreign accounts/trusts
-    - input: f1040.line2a
-      prompt: Total tax-exempt interest for 2025 (Form 1099-INT box 8, tax-exempt OID from Form 1099-OID, and exempt-interest dividends in Form 1099-DIV box 12), net of amortized bond premium
+    - input: f1040.tax_exempt_interest
+      prompt: 'Total tax-exempt interest and tax-exempt OID for 2025 (Form 1099-INT box 8; Form 1099-OID boxes 2 and 11), net of amortized bond premium and acquisition premium; do not include exempt-interest dividends (Form 1099-DIV box 12) or interest earned in an IRA, HSA, Archer or Medicare Advantage MSA, or Coverdell education savings account'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
         be null; do not guess. This computes the single-person return; joint returns and unsupported items
         are refused with citations.
@@ -285,6 +285,15 @@ interview:
       cite:
         doc: i1040gi
         locator: p. 25, line 2a
+    - input: div.box12
+      prompt: Exempt-interest dividends, Form 1099-DIV box 12 (total of all your Forms 1099-DIV; box 13 amounts are already included)
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 30
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, Box 12 and Box 13
     - input: person.rrta
       prompt: 'Do any wage statements report railroad retirement compensation or taxes (W-2 box 14), or did you file Form CT-2 as an employee representative?'
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not

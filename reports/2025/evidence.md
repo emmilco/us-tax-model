@@ -69,6 +69,7 @@ Unasserted lines: dependent.one, dependent.zero, dependent.ctc_per_child, depend
 | div.box3 | — | — | — | — |
 | div.box9 | — | — | — | — |
 | div.box10 | — | — | — | — |
+| div.box12 | — | — | — | — |
 | div.box13 | — | — | — | — |
 | div.basis_reconciled | — | — | — | — |
 | div.box1a | — | — | — | — |
@@ -174,7 +175,8 @@ Unasserted lines: eic.zero, eic.qc_count, eic.married_rules, eic.top_limit, eic.
 | f1040.status | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | — |
 | f1040.line1a | — | — | — | 7 |
 | f1040.line1z | — | — | — | 7 |
-| f1040.line2a | — | — | — | — |
+| f1040.tax_exempt_interest | — | — | — | — |
+| f1040.line2a | — | — | — | 1 (stage10.ss.exempt_interest_dividends) |
 | f1040.line2b | — | — | — | 7 |
 | f1040.line3b | — | — | — | 7 |
 | f1040.line3a | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 3 |
@@ -187,7 +189,7 @@ Unasserted lines: eic.zero, eic.qc_count, eic.married_rules, eic.top_limit, eic.
 | f1040.plan_rollovers | — | — | — | — |
 | f1040.line5c_rollover | — | — | — | 9 |
 | f1040.line6a | — | — | — | 5 |
-| f1040.line6b | — | — | — | 16 |
+| f1040.line6b | — | — | — | 17 |
 | f1040.line6c | — | — | — | 5 |
 | f1040.line6d | — | — | — | 6 |
 | f1040.line7a | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 66 |
