@@ -107,3 +107,10 @@ has 34 entries.
 - T-019: PolicyEngine-US now gets the tax-unit roles (`tax_unit_role_input`);
   by age ordering it had made an adult student the filer's spouse. The credit
   for other dependents and the EIC are compared on every generated return.
+- QBI screen: any patron of an agricultural or horticultural cooperative is
+  refused (the form and its instructions differ on "specified";
+  amb.2025.qbi_cooperative_patron, owner's ruling).
+- T-013 finished: the Lean evaluator is total by a step budget (default
+  1,000,000; a Stage 10 return needs between 50 and 100) in a pure state
+  monad; `EvalProps.lean` states termination and determinism; `taxeval
+  --budget N` exits 3 when the budget runs out.

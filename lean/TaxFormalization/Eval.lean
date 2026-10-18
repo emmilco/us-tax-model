@@ -3,9 +3,13 @@ The reference evaluator: reads the canonical JSON and evaluates the Stage 1
 slice with the same semantics as the TypeScript evaluator (integer cents,
 half-up multiply via the proved Atoms functions).
 
-The evaluator is a single partial recursive function over an instruction
-dispatch, mirroring the TypeScript evaluator's frame handling for
-parameterized def instances.
+The evaluator is a single function over an instruction dispatch, mirroring
+the TypeScript evaluator's frame handling for parameterized def instances.
+It is total: every recursive call spends one unit of a step budget (fuel),
+so the recursion is structural on the budget, and an exhausted budget gives
+the value "unknown: step budget exhausted". It is pure: the memo and the
+cycle markers are the state of a state monad, so a result is a function of
+the context, the budget, the frame, the instruction and the starting state.
 -/
 
 import Lean.Data.Json
@@ -21,8 +25,14 @@ structure Ctx where
   params : Json
   tables : Std.HashMap String Json
   inputs : Json
-  memo : IO.Ref (Std.HashMap String Json)
-  inflight : IO.Ref (Std.HashMap String Bool)
+
+/-- Evaluation state: line values already computed, and lines being computed
+(a line met again while being computed is a cycle). -/
+structure EvalState where
+  memo : Std.HashMap String Json := ∅
+  inflight : Std.HashMap String Bool := ∅
+
+abbrev EvalM := StateM EvalState
 
 structure Frame where
   docId : String
@@ -35,6 +45,8 @@ inductive Cmd where
   | line (lineId : String)
   | operand (op : Json)
   | test (t : Json)
+  | fresh (lineId : String)
+  | expr (e : Json) (op : String)
 
 -- ---------------------------------------------------------------------------
 -- helpers (non-recursive)
@@ -107,25 +119,58 @@ def inputValue (v : Json) : Json :=
 def constValue (v : Json) : Json := inputValue v
 
 -- ---------------------------------------------------------------------------
+-- parameters (non-recursive)
+
+def evalParam (ctx : Ctx) (name : String) : Json :=
+  let entry := objGetD ctx.params "values" Json.null
+  match objGet entry name with
+  | none => (unknown s!"parameter {name} missing")
+  | some e =>
+    match objGet e "value" with
+    | some (.num n) => (if strGet e "type" == some "Count" then mkCount n.mantissa else mkMoney n.mantissa)
+    | some (.bool b) => (mkBool b)
+    | some v@(.obj _) =>
+      match numGet v "num", numGet v "den" with
+      | some n, some d => (mkRate n d)
+      | _, _ =>
+        -- status-keyed money
+        match objGet ctx.inputs "f1040.status" with
+        | some (.str status) =>
+          match numGet v status with
+          | some cents => (mkMoney cents)
+          | none => (unknown s!"no value for status {status}")
+        | _ => (unknown "filing status not supplied for status-keyed parameter")
+    | _ => (unknown s!"parameter {name} has bad value")
+
+/-- The step budget exhausted: the value an evaluation gives when it runs out of fuel. -/
+def budgetExhausted : Json := unknown "step budget exhausted"
+
+/-- The budget the entry point gives each line: far above the depth of any
+evaluation of the forms (each recursive call spends one unit along one path),
+so an exhausted budget would show as a disagreement in `compare`. -/
+def stepBudget : Nat := 1000000
+
+-- ---------------------------------------------------------------------------
 -- the evaluator
 
-partial def eval (ctx : Ctx) (frame : Frame) : Cmd → IO Json
-  | .operand op => do
+def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
+  | 0, _, _ => pure budgetExhausted
+  | fuel + 1, frame, .operand op => do
     match op with
-    | .str ref => eval ctx frame (.line ref)
+    | .str ref => eval ctx fuel frame (.line ref)
     | _ =>
       match objGet op "param" with
-      | some (.str p) => evalParam ctx p
+      | some (.str p) => pure (evalParam ctx p)
       | _ =>
         match objGet op "const" with
         | some c => pure (if strGet op "type" == some "Count" then mkCount (c.getInt?.toOption.getD 0) else constValue c)
         | none => pure (unknown "bad operand")
-  | .test t => do
+  | fuel + 1, frame, .test t => do
     match objGet t "all" with
     | some (.arr ts) =>
       let mut missing : Option Json := none
       for x in ts do
-        let v ← eval ctx frame (.test x)
+        let v ← eval ctx fuel frame (.test x)
         if kindOf v == some "refusal" then return v
         if isUnknown v then missing := some v
         else if objGet v "value" == some (Json.bool false) then return mkBool false
@@ -135,7 +180,7 @@ partial def eval (ctx : Ctx) (frame : Frame) : Cmd → IO Json
     | some (.arr ts) =>
       let mut missing : Option Json := none
       for x in ts do
-        let v ← eval ctx frame (.test x)
+        let v ← eval ctx fuel frame (.test x)
         if kindOf v == some "refusal" then return v
         if isUnknown v then missing := some v
         else if objGet v "value" == some (Json.bool true) then return mkBool true
@@ -143,19 +188,19 @@ partial def eval (ctx : Ctx) (frame : Frame) : Cmd → IO Json
     | _ =>
     match objGet t "not" with
     | some inner =>
-      let v ← eval ctx frame (.test inner)
+      let v ← eval ctx fuel frame (.test inner)
       if isUnknown v then return v
       if objGet v "value" == some (Json.bool true) then return mkBool false
       return mkBool true
     | none =>
       let keys := ["eq", "ne", "lt", "le", "gt", "ge"]
-      let rec go : List String → IO Json
-        | [] => pure (unknown "test has no comparison")
-        | k :: rest => do
+      match keys.find? (fun k => match objGet t k with | some (.arr #[_, _]) => true | _ => false) with
+      | none => pure (unknown "test has no comparison")
+      | some k =>
           match objGet t k with
           | some (.arr #[a, b]) => do
-            let av ← eval ctx frame (.operand a)
-            let bv ← eval ctx frame (.operand b)
+            let av ← eval ctx fuel frame (.operand a)
+            let bv ← eval ctx fuel frame (.operand b)
             match numGet av "lowerBound", numGet bv "value" with
             | some lower, some bound =>
               let certain := if k == "gt" || k == "le" then lower > bound else if k == "ge" || k == "lt" then lower ≥ bound else lower > bound
@@ -178,50 +223,29 @@ partial def eval (ctx : Ctx) (frame : Frame) : Cmd → IO Json
               let y := objGet bv "value" == some (Json.bool true)
               pure (mkBool (match k with | "eq" => x == y | "ne" => x != y | _ => false))
             else pure (unknown "comparison operand types")
-          | _ => go rest
-      go keys
-  | .line lineId => do
+          | _ => pure (unknown "test has no comparison")
+  | fuel + 1, frame, .line lineId => do
     let key := keyOf frame lineId
-    match (← ctx.memo.get).get? key with
+    match (← get).memo.get? key with
     | some v => return v
     | none =>
-      if (← ctx.inflight.get).get? key == some true then
+      if (← get).inflight.get? key == some true then
         return unknown s!"cycle at {key}"
-      ctx.inflight.modify (fun m => m.insert key true)
-      let result ← evalFresh ctx frame lineId
-      ctx.memo.modify (fun m => m.insert key result)
-      ctx.inflight.modify (fun m => m.insert key false)
+      modify (fun st => { st with inflight := st.inflight.insert key true })
+      let result ← eval ctx fuel frame (.fresh lineId)
+      -- An exhausted budget is not a value of the line, so it is not remembered.
+      if result != budgetExhausted then
+        modify (fun st => { st with memo := st.memo.insert key result })
+      modify (fun st => { st with inflight := st.inflight.insert key false })
       return result
-where
-  evalParam (ctx : Ctx) (name : String) : IO Json := do
-    let entry := objGetD ctx.params "values" Json.null
-    match objGet entry name with
-    | none => pure (unknown s!"parameter {name} missing")
-    | some e =>
-      match objGet e "value" with
-      | some (.num n) => pure (if strGet e "type" == some "Count" then mkCount n.mantissa else mkMoney n.mantissa)
-      | some (.bool b) => pure (mkBool b)
-      | some v@(.obj _) =>
-        match numGet v "num", numGet v "den" with
-        | some n, some d => pure (mkRate n d)
-        | _, _ =>
-          -- status-keyed money
-          match objGet ctx.inputs "f1040.status" with
-          | some (.str status) =>
-            match numGet v status with
-            | some cents => pure (mkMoney cents)
-            | none => pure (unknown s!"no value for status {status}")
-          | _ => pure (unknown "filing status not supplied for status-keyed parameter")
-      | _ => pure (unknown s!"parameter {name} has bad value")
-
-  evalFresh (ctx : Ctx) (frame : Frame) (lineId : String) : IO Json := do
+  | fuel + 1, frame, .fresh lineId => do
     match findLine frame.doc lineId with
     | some line =>
       match objGet line "refuses" with
       | some (.arr rs) =>
         for r in rs do
           let gate := (strGet r "when").getD ""
-          let gv ← eval ctx frame (.line gate)
+          let gv ← eval ctx fuel frame (.line gate)
           if isUnknown gv then return gv
           if objGet gv "value" == some (Json.bool true) then
             return Json.mkObj [("kind", Json.str "refusal"), ("gate", Json.str (if (findLine frame.doc gate).isSome then keyOf frame gate else gate)),
@@ -233,29 +257,29 @@ where
         match objGet frame.bind lineId with
         | some operand =>
           match frame.caller with
-          | some caller => eval ctx caller (.operand operand)
+          | some caller => eval ctx fuel caller (.operand operand)
           | none => pure (unknown s!"unbound parameter {lineId}")
         | none => pure (unknown s!"unbound parameter {lineId}")
       else if op == "input" then
         match objGet ctx.inputs (keyOf frame lineId) with
         | some v => pure (if strGet line "type" == some "Count" then mkCount (v.getInt?.toOption.getD 0) else inputValue v)
         | none => pure (unknown s!"no input supplied for {lineId}")
-      else evalExpr ctx frame expr op line
+      else eval ctx fuel frame (.expr expr op)
     | none =>
       -- cross-document reference
       let formId := (lineId.splitOn ".").headD ""
       match ctx.forms.get? formId with
       | some doc =>
         if (findLine doc lineId).isSome then
-          eval ctx { docId := formId, doc := doc, instKey := none, bind := Json.null, caller := none } (.line lineId)
+          eval ctx fuel { docId := formId, doc := doc, instKey := none, bind := Json.null, caller := none } (.line lineId)
         else pure (unknown s!"unresolved reference {lineId}")
       | none => pure (unknown s!"unresolved reference {lineId}")
 
-  evalExpr (ctx : Ctx) (frame : Frame) (expr : Json) (op : String) (_line : Json) : IO Json := do
+  | fuel + 1, frame, .expr expr op => do
     match op with
     | "copy" =>
       match objGet expr "from" with
-      | some (.str ref) => eval ctx frame (.line ref)
+      | some (.str ref) => eval ctx fuel frame (.line ref)
       | some v@(.obj _) =>
         let defId := (strGet v "def").getD ""
         let bind := objGetD v "bind" (Json.mkObj [])
@@ -264,12 +288,12 @@ where
         | some doc =>
           let parent := frame.instKey.getD "root"
           let key := parent ++ "|inst:" ++ defId ++ "#" ++ bind.compress
-          eval ctx { docId := defId, doc, instKey := some key, bind, caller := some frame } (.line ln)
+          eval ctx fuel { docId := defId, doc, instKey := some key, bind, caller := some frame } (.line ln)
         | none => pure (unknown s!"def {defId} missing")
       | _ => pure (unknown "copy has no source")
     | "param" =>
       match strGet expr "ref" with
-      | some p => evalParam ctx p
+      | some p => pure (evalParam ctx p)
       | none => pure (unknown "param has no ref")
     | "sum_over" =>
       let col := (strGet expr "collection").getD ""
@@ -291,12 +315,12 @@ where
             let key := (if parent == "" then "" else parent ++ ".") ++ col ++ "[" ++ entryKey ++ "]"
             let inner : Frame := {docId := col, doc, instKey := some key, bind := Json.null, caller := some frame}
             let selected ← match objGet expr "where" with
-              | some t => eval ctx inner (.test t)
+              | some t => eval ctx fuel inner (.test t)
               | none => pure (mkBool true)
             if kindOf selected == some "refusal" then return selected
             if isUnknown selected then missing := some selected
             else if objGet selected "value" == some (Json.bool true) then
-              let v ← eval ctx inner (.line field)
+              let v ← eval ctx fuel inner (.line field)
               if kindOf v == some "refusal" then return v
               if isUnknown v then missing := some v
               else total := total + (if isCount then numGet v "value" else moneyOf v).getD 0
@@ -312,7 +336,7 @@ where
         for r in refs do
           match r.getStr? with
           | .ok ref => do
-            let v ← eval ctx frame (.line ref)
+            let v ← eval ctx fuel frame (.line ref)
             if kindOf v == some "refusal" then return v
             if isMoney v then
               total := total + (moneyOf v).getD 0
@@ -328,9 +352,9 @@ where
     | "subtract" | "subtract_floor0" =>
       match strGet expr "from" with
       | some fromRef =>
-        let fromV ← eval ctx frame (.line fromRef)
+        let fromV ← eval ctx fuel frame (.line fromRef)
         let takeJson := objGetD expr "take" Json.null
-        let takeV ← eval ctx frame (.operand takeJson)
+        let takeV ← eval ctx fuel frame (.operand takeJson)
         if isUnknown fromV then pure fromV
         else if isUnknown takeV then pure takeV
         else if isMoney fromV && isMoney takeV then
@@ -345,7 +369,7 @@ where
         for r in refs do
           match r.getStr? with
           | .ok ref =>
-            let v ← eval ctx frame (.line ref)
+            let v ← eval ctx fuel frame (.line ref)
             if isUnknown v then return v
             if !(isMoney v) then return unknown "operands are not money"
             vals := (moneyOf v).getD 0 :: vals
@@ -359,8 +383,8 @@ where
     | "multiply_count" =>
       match strGet expr "amount", strGet expr "count" with
       | some amtRef, some cntRef =>
-        let amtV ← eval ctx frame (.line amtRef)
-        let cntV ← eval ctx frame (.line cntRef)
+        let amtV ← eval ctx fuel frame (.line amtRef)
+        let cntV ← eval ctx fuel frame (.line cntRef)
         if isUnknown amtV then pure amtV
         else if isUnknown cntV then pure cntV
         else if isMoney amtV && kindOf cntV == some "count" then
@@ -370,8 +394,8 @@ where
     | "multiply_rate" =>
       match strGet expr "amount" with
       | some amtRef =>
-        let amtV ← eval ctx frame (.line amtRef)
-        let rateV ← eval ctx frame (.operand (objGetD expr "rate" Json.null))
+        let amtV ← eval ctx fuel frame (.line amtRef)
+        let rateV ← eval ctx fuel frame (.operand (objGetD expr "rate" Json.null))
         if isUnknown amtV then pure amtV
         else if isUnknown rateV then pure rateV
         else if isMoney amtV && isRate rateV then
@@ -384,7 +408,7 @@ where
     | "round" =>
       match strGet expr "of" with
       | some ofRef =>
-        let v ← eval ctx frame (.line ofRef)
+        let v ← eval ctx fuel frame (.line ofRef)
         if isUnknown v then pure v
         else if !(isMoney v) then pure (unknown "round operand is not money")
         else
@@ -400,8 +424,8 @@ where
       match ctx.tables.get? tableId with
       | none => pure (unknown s!"table {tableId} missing")
       | some table =>
-        let keyV ← eval ctx frame (.line ((strGet expr "key").getD ""))
-        let statusV ← eval ctx frame (.line ((strGet expr "status").getD ""))
+        let keyV ← eval ctx fuel frame (.line ((strGet expr "key").getD ""))
+        let statusV ← eval ctx fuel frame (.line ((strGet expr "status").getD ""))
         if isUnknown keyV then pure keyV
         else if isUnknown statusV then pure statusV
         else
@@ -417,11 +441,11 @@ where
       | some (.arr alts) =>
         for alt in alts do
           let guard := objGetD alt "guard" Json.null
-          let gv ← eval ctx frame (.test guard)
+          let gv ← eval ctx fuel frame (.test guard)
           if isUnknown gv then return gv
           if objGet gv "value" == some (Json.bool true) then
             match objGet alt "then" with
-            | some (.str ref) => return (← eval ctx frame (.line ref))
+            | some (.str ref) => return (← eval ctx fuel frame (.line ref))
             | some v@(.obj _) =>
               let defId := (strGet v "def").getD ""
               let bind := objGetD v "bind" (Json.mkObj [])
@@ -430,12 +454,12 @@ where
               | some doc =>
                 let parent := frame.instKey.getD "root"
                 let key := parent ++ "|inst:" ++ defId ++ "#" ++ bind.compress
-                return (← eval ctx { docId := defId, doc, instKey := some key, bind, caller := some frame } (.line ln))
+                return (← eval ctx fuel { docId := defId, doc, instKey := some key, bind, caller := some frame } (.line ln))
               | none => return unknown s!"def {defId} missing"
             | _ => return unknown "choose branch missing"
         return unknown "no guard matched"
       | _ => pure (unknown "choose has no alternatives")
-    | "test" => eval ctx frame (.test expr)
+    | "test" => eval ctx fuel frame (.test expr)
     | _ => pure (unknown s!"atom {op} not implemented")
 
 end TaxFormalization

@@ -225,7 +225,7 @@ Proved in Lean 4 over the integers, once, for the atoms:
 - `round` matches its stated rule, is idempotent, and moves a value by less than one unit.
 - `multiply_count` of a non-negative amount by a count is non-negative, is monotone in each argument, and is repeated addition.
 - Each atom is monotone or antitone in each argument, as tabulated.
-- Evaluation of a well-formed, acyclic form terminates and is deterministic.
+- Evaluation of a well-formed, acyclic form terminates and is deterministic. The reference evaluator is total by a step budget (each recursive call spends one unit, so the recursion is structural) and runs in a pure state monad; an exhausted budget is reported as an error, never as a value.
 
 Not pursued: a proof that the acyclicity and reference checker is sound. Both evaluators detect a cycle at evaluation time, so an unsound checker cannot produce a wrong value, only a late failure. Proof effort goes to properties over the data instead.
 

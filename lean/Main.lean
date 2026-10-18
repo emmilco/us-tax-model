@@ -1,6 +1,6 @@
 /-
 Reference evaluator entry point:
-  lake exe taxeval -- --canonical <dir> --inputs <file.json> --out <file.json>
+  lake exe taxeval -- --canonical <dir> --inputs <file.json> --out <file.json> [--budget N]
 
 Evaluates every line of f1040 and qdcg from the canonical JSON and writes
 { "lineId": value, ... } for comparison with the TypeScript evaluator.
@@ -8,6 +8,7 @@ Evaluates every line of f1040 and qdcg from the canonical JSON and writes
 
 import TaxFormalization.Eval
 import TaxFormalization.Lemmas
+import TaxFormalization.EvalProps
 
 open Lean (Json)
 
@@ -45,19 +46,22 @@ end TaxFormalization
 open TaxFormalization
 
 def main (args : List String) : IO UInt32 := do
-  let rec parseArgs : List String → Option String × Option String × String
+  let rec parseArgs : List String → Option String × Option String × String × Nat
     | "--inputs" :: v :: rest =>
-      let (_, o, c) := parseArgs rest
-      (some v, o, c)
+      let (_, o, c, b) := parseArgs rest
+      (some v, o, c, b)
     | "--out" :: v :: rest =>
-      let (i, _, c) := parseArgs rest
-      (i, some v, c)
+      let (i, _, c, b) := parseArgs rest
+      (i, some v, c, b)
     | "--canonical" :: v :: rest =>
-      let (i, o, _) := parseArgs rest
-      (i, o, v)
+      let (i, o, _, b) := parseArgs rest
+      (i, o, v, b)
+    | "--budget" :: v :: rest =>
+      let (i, o, c, _) := parseArgs rest
+      (i, o, c, v.toNat?.getD stepBudget)
     | _ :: rest => parseArgs rest
-    | [] => (none, none, "../canonical/2025")
-  let (inputsPath, outPath, canonDir) := parseArgs args
+    | [] => (none, none, "../canonical/2025", stepBudget)
+  let (inputsPath, outPath, canonDir, budget) := parseArgs args
   match inputsPath, outPath with
   | some inp, some outp => do
     let canon : System.FilePath := canonDir
@@ -73,9 +77,8 @@ def main (args : List String) : IO UInt32 := do
       match Json.parse inputsRaw with
       | .ok j => j
       | .error e => panic! s!"inputs parse error: {e}"
-    let memo ← IO.mkRef (∅ : Std.HashMap String Json)
-    let inflight ← IO.mkRef (∅ : Std.HashMap String Bool)
-    let ctx : Ctx := { forms, params, tables, inputs, memo, inflight }
+    let ctx : Ctx := { forms, params, tables, inputs }
+    let mut st : EvalState := {}
     let mut pairs : List (String × Json) := []
     let mut count : Nat := 0
     for (docId, candidate) in forms.toList do
@@ -90,19 +93,24 @@ def main (args : List String) : IO UInt32 := do
             | some idJson =>
               match idJson.getStr?.toOption with
               | some id =>
-                let v ← eval ctx { docId, doc, instKey := none, bind := Json.null, caller := none } (.line id)
+                let (v, st') := (eval ctx budget { docId, doc, instKey := none, bind := Json.null, caller := none } (.line id)).run st
+                st := st'
                 pairs := (id, v) :: pairs
                 count := count + 1
               | none => pure ()
             | none => pure ()
         | _ => pure ()
-    for (key, value) in (← memo.get).toList do
+    for (key, value) in st.memo.toList do
       if key.contains '[' then pairs := (key, value) :: pairs
+    -- A line that ran out of budget has no value; refuse to report it as one.
+    if pairs.any (fun p => p.2 == budgetExhausted) then
+      IO.eprintln s!"step budget of {budget} exhausted"
+      return 3
     let sorted := pairs.toArray.qsort (fun a b => a.1 < b.1)
     let out := Json.mkObj sorted.toList
     IO.FS.writeFile outp (out.compress ++ "\n")
     IO.println s!"lean evaluated {count} lines"
     return 0
   | _, _ =>
-    IO.println "usage: taxeval --canonical <dir> --inputs <file> --out <file>"
+    IO.println "usage: taxeval --canonical <dir> --inputs <file> --out <file> [--budget N]"
     return 2
