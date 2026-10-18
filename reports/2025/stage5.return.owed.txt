@@ -175,9 +175,18 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
   (helper) Step 2, question 4. No Schedule E, rental of personal property, Form 8814 or passive activity
       = true
       cite: [i1040gi] p. 40, Step 2, question 4 (2025; printed date 2026-02-25; 482e9c48)
-  (helper) Step 3, questions 2 to 6: filing jointly, or you could not be a qualifying child of another person
+  (helper) Did you and your spouse have the same principal residence for the last 6 months of 2025?
+      = UNKNOWN (no input supplied for eic.same_home)
+      cite: [i1040gi] p. 41, Step 3, question 4 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Are you legally separated under a written separation agreement or a decree of separate maintenance, and did you live apart from your spouse at the end of 2025?
+      = UNKNOWN (no input supplied for eic.legally_separated)
+      cite: [i1040gi] p. 41, Step 3, question 5; p. 44, Special rule for separated spouses (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Step 3, questions 3 to 5: not a married filer filing separately or as head of household, or one who lived apart from the spouse for the last 6 months of 2025 or is legally separated and lived apart at the end of 2025
+      = true
+      cite: [i1040gi] p. 41, Step 3, question 3 ("No. Skip questions 4 and 5"), question 4 ("No. Skip question 5"), question 5 ("No. STOP") (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Step 3, questions 2 to 6: filing jointly, or passing questions 3 to 5 and not a qualifying child of another person
       = UNKNOWN (no input supplied for eic.qc_of_another)
-      cite: [i1040gi] p. 41, Step 3, questions 2 and 6 (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 41, Step 3, questions 2 to 6 (2025; printed date 2026-02-25; 482e9c48)
   (helper) Step 4: not a married filer filing separately or as head of household, aged 25 to 64, main home in the United States, and not a qualifying child or dependent of another person
       = UNKNOWN (no input supplied for eic.qc_of_another)
       cite: [i1040gi] pp. 41–42, Step 4, questions 1 to 6 (question 2 "at least age 25 but under age 65", born after December 31, 1960 and before January 2, 2001; sa.age65 is born before January 2, 1961) (2025; printed date 2026-02-25; 482e9c48)
@@ -2304,7 +2313,8 @@ Collection entries and derivations:
   eic.investment_income: sum(f1040.line2a = UNKNOWN (no input supplied for f1040.line2a); f1040.line2b = $1,200; f1040.line3b = $2,000; eic.gain_7a = $0)
   eic.step2_income: test(eic.investment_income = UNKNOWN (no input supplied for f1040.line2a); #eic.investment_limit = $11,950)
   eic.step2_other: test(scope.schedule1 = false; scope.other_line16 = false; scope.schedule1 = false; false = false; scope.other_line16 = false; false = false)
-  eic.step3: test(eic.married_rules = false; f1040.status = single; "mfj" = mfj; eic.qc_of_another = UNKNOWN (no input supplied for eic.qc_of_another); false = false)
+  eic.step3_married: test(eic.married_rules = false; false = false)
+  eic.step3: test(f1040.status = single; "mfj" = mfj; eic.step3_married = true; true = true; eic.qc_of_another = UNKNOWN (no input supplied for eic.qc_of_another); false = false)
   eic.step4: test(sa.dependent = false; eic.married_rules = false; false = false; eic.born_before_2001 = UNKNOWN (no input supplied for eic.born_before_2001); true = true; sa.age65 = false; false = false; eic.us_home = UNKNOWN (no input supplied for eic.us_home); true = true; f1040.status = single; "mfj" = mfj; eic.qc_of_another = UNKNOWN (no input supplied for eic.qc_of_another); false = false; sa.dependent = false; false = false)
   eic.step34: test(eic.has_qc = false; true = true; eic.has_qc = false; false = false; eic.step4 = UNKNOWN (no input supplied for eic.qc_of_another); true = true)
   eic.f1040.line1z: copy(f1040.line1a = $120,000)

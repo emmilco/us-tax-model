@@ -979,7 +979,8 @@
         "eic.us_home": true,
         "eic.married": false,
         "dependent[child].us_half": true,
-        "interest[bank_a].amount": 500000
+        "interest[bank_a].amount": 500000,
+        "dependent[child].eic_ssn": true
       },
       "expect": {
         "f1040.line27a": {
@@ -1172,7 +1173,9 @@
         "dependent[c2].multiple_support": false,
         "dependent[c2].parent_home_paid": false,
         "dependent[c2].younger": true,
-        "dependent[c2].us_half": true
+        "dependent[c2].us_half": true,
+        "dependent[c1].eic_ssn": true,
+        "dependent[c2].eic_ssn": true
       },
       "expect": {
         "f1040.line27a": {
@@ -1378,7 +1381,10 @@
         "dependent[c3].multiple_support": false,
         "dependent[c3].parent_home_paid": false,
         "dependent[c3].younger": true,
-        "dependent[c3].us_half": true
+        "dependent[c3].us_half": true,
+        "dependent[c1].eic_ssn": true,
+        "dependent[c2].eic_ssn": true,
+        "dependent[c3].eic_ssn": true
       },
       "expect": {
         "f1040.line27a": {
@@ -1545,7 +1551,8 @@
         "eic.us_home": true,
         "eic.married": false,
         "dependent[child].us_half": true,
-        "interest[bank_a].amount": 1200000
+        "interest[bank_a].amount": 1200000,
+        "dependent[child].eic_ssn": true
       },
       "expect": {
         "f1040.line27a": {
@@ -1575,198 +1582,6 @@
         "f1040.line37": {
           "kind": "money",
           "cents": 0
-        }
-      }
-    },
-    {
-      "id": "stage9.eic.married_hoh",
-      "covers": [
-        "eic",
-        "f1040.line27a"
-      ],
-      "evidence": "synthetic refusal regression",
-      "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: Head of household with one child, married at the end of 2025 (considered unmarried): Step 3, questions 3 to 5 and the special rule for separated spouses are refused (p. 41).",
-      "inputs": {
-        "f1040.status": "hoh",
-        "$person": [
-          "taxpayer"
-        ],
-        "person[taxpayer].rrta": false,
-        "$interest": [],
-        "$sales": [],
-        "$gift": [],
-        "sb.ordinary_dividends": 0,
-        "sb.unsupported": false,
-        "sb.line7a": false,
-        "sb.fbar_required": false,
-        "sb.form8938": false,
-        "sb.line8": false,
-        "f1040.line3a": 0,
-        "div.box2b": 0,
-        "div.box2c": 0,
-        "div.box2d": 0,
-        "div.box2e": 0,
-        "div.box2f": 0,
-        "div.box3": 0,
-        "div.box4": 0,
-        "div.box6": 0,
-        "div.box9": 0,
-        "div.box10": 0,
-        "div.box12": 0,
-        "div.box13": 0,
-        "div.basis_reconciled": true,
-        "div.fatca": false,
-        "sd.other_forms": false,
-        "sd.carryover": false,
-        "sd.distributions": 0,
-        "qbi.dividends": 0,
-        "qbi.unsupported": false,
-        "f4952.line1": 0,
-        "f4952.line4g": 0,
-        "f4952.carryover": false,
-        "f4952.unsupported": false,
-        "f4952.alternative_allocation": false,
-        "f8959.unsupported": false,
-        "f8960.unsupported": false,
-        "f8960.refund": false,
-        "f8960.allocated_taxes": 0,
-        "ftc.taxes": 0,
-        "ftc.all_passive": true,
-        "ftc.statements": true,
-        "ftc.eligible": true,
-        "ftc.elect": true,
-        "s3.line9": 0,
-        "s3.line10": 0,
-        "s3.line12": 0,
-        "s3.line14": 0,
-        "sa.unsupported": false,
-        "sa.charity_limited": false,
-        "sa.excluded_income": false,
-        "sa.dependent": false,
-        "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
-        "sa.spouse_itemizes": false,
-        "sa.elect_itemize": false,
-        "sa.line1": 0,
-        "sa.line5a": 0,
-        "sa.line5b": 0,
-        "sa.line5c": 0,
-        "sa.line8a": 0,
-        "sa.line11": 0,
-        "scope.schedule1": false,
-        "scope.schedule1a": false,
-        "scope.credits": false,
-        "scope.other_income": false,
-        "scope.other_line16": false,
-        "s2.amt": false,
-        "s2.other": false,
-        "f1040.line25b": 0,
-        "f1040.line25c": 0,
-        "f1040.line26": 0,
-        "f1040.line35a": 0,
-        "f1040.line36": 0,
-        "$w2@person[taxpayer]": [
-          "emp_a"
-        ],
-        "person[taxpayer].w2[emp_a].box1": 400000,
-        "person[taxpayer].w2[emp_a].box2": 0,
-        "person[taxpayer].w2[emp_a].box3": 400000,
-        "person[taxpayer].w2[emp_a].box4": 24800,
-        "person[taxpayer].w2[emp_a].box5": 400000,
-        "person[taxpayer].w2[emp_a].box6": 5800,
-        "person[taxpayer].w2[emp_a].box7": 0,
-        "$dependent": [
-          "child"
-        ],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
-        "household.home_cost": true,
-        "household.unmarried": true,
-        "s8812.combat_pay": false,
-        "s8812.puerto_rico": false,
-        "dependent[child].relationship": "child",
-        "dependent[child].age": 3,
-        "dependent[child].student": false,
-        "dependent[child].disabled": false,
-        "dependent[child].months": 12,
-        "dependent[child].self_support": false,
-        "dependent[child].joint_return": false,
-        "dependent[child].citizen": true,
-        "dependent[child].canada_mexico": false,
-        "dependent[child].married": false,
-        "dependent[child].tin": true,
-        "dependent[child].work_ssn": true,
-        "dependent[child].gross_income": 0,
-        "dependent[child].supported": true,
-        "dependent[child].other_claimant": false,
-        "dependent[child].divorced_rule": false,
-        "dependent[child].multiple_support": false,
-        "dependent[child].parent_home_paid": false,
-        "dependent[child].younger": true,
-        "f1040.line2a": 0,
-        "eic.qc_of_another": false,
-        "eic.born_before_2001": true,
-        "eic.us_home": true,
-        "eic.married": true,
-        "dependent[child].us_half": true
-      },
-      "expect": {
-        "f1040.line27a": {
-          "kind": "refusal",
-          "gate": "eic.married_rules",
-          "form": "Special rule for separated spouses (EIC, Step 3, questions 3 to 5)",
-          "remedy": "A married filer claiming the EIC under the special rule for separated spouses is outside this tool.",
-          "cite": {
-            "doc": "i1040gi",
-            "locator": "p. 41, Step 3, questions 3 to 5; p. 44, Special rule for separated spouses",
-            "revision": "2025; printed date 2026-02-25",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
-            "tax_year": 2025
-          }
-        },
-        "f1040.line11b": {
-          "kind": "money",
-          "cents": 400000
-        },
-        "f1040.line33": {
-          "kind": "refusal",
-          "gate": "eic.married_rules",
-          "form": "Special rule for separated spouses (EIC, Step 3, questions 3 to 5)",
-          "remedy": "A married filer claiming the EIC under the special rule for separated spouses is outside this tool.",
-          "cite": {
-            "doc": "i1040gi",
-            "locator": "p. 41, Step 3, questions 3 to 5; p. 44, Special rule for separated spouses",
-            "revision": "2025; printed date 2026-02-25",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
-            "tax_year": 2025
-          }
-        },
-        "f1040.line34": {
-          "kind": "refusal",
-          "gate": "eic.married_rules",
-          "form": "Special rule for separated spouses (EIC, Step 3, questions 3 to 5)",
-          "remedy": "A married filer claiming the EIC under the special rule for separated spouses is outside this tool.",
-          "cite": {
-            "doc": "i1040gi",
-            "locator": "p. 41, Step 3, questions 3 to 5; p. 44, Special rule for separated spouses",
-            "revision": "2025; printed date 2026-02-25",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
-            "tax_year": 2025
-          }
-        },
-        "f1040.line37": {
-          "kind": "refusal",
-          "gate": "eic.married_rules",
-          "form": "Special rule for separated spouses (EIC, Step 3, questions 3 to 5)",
-          "remedy": "A married filer claiming the EIC under the special rule for separated spouses is outside this tool.",
-          "cite": {
-            "doc": "i1040gi",
-            "locator": "p. 41, Step 3, questions 3 to 5; p. 44, Special rule for separated spouses",
-            "revision": "2025; printed date 2026-02-25",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
-            "tax_year": 2025
-          }
         }
       }
     },
@@ -1900,7 +1715,8 @@
         "eic.qc_of_another": false,
         "eic.us_home": true,
         "eic.married": false,
-        "dependent[child].us_half": true
+        "dependent[child].us_half": true,
+        "dependent[child].eic_ssn": false
       },
       "expect": {
         "f1040.line27a": {
@@ -2485,7 +2301,8 @@
         "eic.born_before_2001": true,
         "eic.us_home": true,
         "eic.married": false,
-        "dependent[child].us_half": true
+        "dependent[child].us_half": true,
+        "dependent[child].eic_ssn": true
       },
       "expect": {
         "f1040.line27a": {
@@ -2648,7 +2465,8 @@
         "eic.us_home": true,
         "eic.married": false,
         "dependent[child].us_half": true,
-        "interest[bank_a].amount": 1195100
+        "interest[bank_a].amount": 1195100,
+        "dependent[child].eic_ssn": true
       },
       "expect": {
         "f1040.line27a": {
@@ -2917,7 +2735,8 @@
         "eic.us_home": true,
         "eic.married": false,
         "dependent[child].us_half": true,
-        "interest[bank_a].amount": 335000
+        "interest[bank_a].amount": 335000,
+        "dependent[child].eic_ssn": true
       },
       "expect": {
         "f1040.line27a": {
@@ -3069,7 +2888,8 @@
         "eic.born_before_2001": true,
         "eic.us_home": true,
         "eic.married": false,
-        "dependent[child].us_half": true
+        "dependent[child].us_half": true,
+        "dependent[child].eic_ssn": true
       },
       "expect": {
         "f1040.line27a": {
@@ -3234,7 +3054,9 @@
         "dependent[c2].multiple_support": false,
         "dependent[c2].parent_home_paid": false,
         "dependent[c2].younger": true,
-        "dependent[c2].us_half": true
+        "dependent[c2].us_half": true,
+        "dependent[c1].eic_ssn": true,
+        "dependent[c2].eic_ssn": true
       },
       "expect": {
         "f1040.line27a": {
@@ -3420,7 +3242,10 @@
         "dependent[c3].multiple_support": false,
         "dependent[c3].parent_home_paid": false,
         "dependent[c3].younger": true,
-        "dependent[c3].us_half": true
+        "dependent[c3].us_half": true,
+        "dependent[c1].eic_ssn": true,
+        "dependent[c2].eic_ssn": true,
+        "dependent[c3].eic_ssn": true
       },
       "expect": {
         "f1040.line27a": {
@@ -3686,7 +3511,8 @@
         "eic.born_before_2001": true,
         "eic.us_home": true,
         "eic.married": false,
-        "dependent[child].us_half": true
+        "dependent[child].us_half": true,
+        "dependent[child].eic_ssn": true
       },
       "expect": {
         "f1040.line27a": {
@@ -3851,7 +3677,9 @@
         "dependent[c2].multiple_support": false,
         "dependent[c2].parent_home_paid": false,
         "dependent[c2].younger": true,
-        "dependent[c2].us_half": true
+        "dependent[c2].us_half": true,
+        "dependent[c1].eic_ssn": true,
+        "dependent[c2].eic_ssn": true
       },
       "expect": {
         "f1040.line27a": {
@@ -4037,7 +3865,10 @@
         "dependent[c3].multiple_support": false,
         "dependent[c3].parent_home_paid": false,
         "dependent[c3].younger": true,
-        "dependent[c3].us_half": true
+        "dependent[c3].us_half": true,
+        "dependent[c1].eic_ssn": true,
+        "dependent[c2].eic_ssn": true,
+        "dependent[c3].eic_ssn": true
       },
       "expect": {
         "f1040.line27a": {
@@ -4306,7 +4137,8 @@
         "eic.us_home": true,
         "eic.married": false,
         "dependent[child].us_half": true,
-        "interest[bank_a].amount": 700000
+        "interest[bank_a].amount": 700000,
+        "dependent[child].eic_ssn": true
       },
       "expect": {
         "f1040.line27a": {
@@ -4457,7 +4289,8 @@
         "eic.us_home": true,
         "eic.married": false,
         "dependent[child].us_half": true,
-        "interest[bank_a].amount": 1150000
+        "interest[bank_a].amount": 1150000,
+        "dependent[child].eic_ssn": true
       },
       "expect": {
         "f1040.line27a": {
@@ -4605,7 +4438,8 @@
         "dependent[parent].multiple_support": false,
         "dependent[parent].parent_home_paid": true,
         "dependent[parent].younger": false,
-        "dependent[parent].us_half": false
+        "dependent[parent].us_half": false,
+        "dependent[parent].eic_ssn": true
       },
       "expect": {
         "f1040.line27a": {
@@ -5130,7 +4964,8 @@
         "eic.born_before_2001": true,
         "eic.us_home": true,
         "eic.married": false,
-        "dependent[child].us_half": true
+        "dependent[child].us_half": true,
+        "dependent[child].eic_ssn": true
       },
       "expect": {
         "f1040.line27a": {
@@ -5279,7 +5114,8 @@
         "eic.born_before_2001": true,
         "eic.us_home": true,
         "eic.married": false,
-        "dependent[child].us_half": true
+        "dependent[child].us_half": true,
+        "dependent[child].eic_ssn": true
       },
       "expect": {
         "f1040.line27a": {
@@ -5428,7 +5264,8 @@
         "eic.born_before_2001": true,
         "eic.us_home": true,
         "eic.married": false,
-        "dependent[child].us_half": true
+        "dependent[child].us_half": true,
+        "dependent[child].eic_ssn": true
       },
       "expect": {
         "f1040.line27a": {
@@ -5590,7 +5427,8 @@
         "eic.born_before_2001": true,
         "eic.us_home": true,
         "eic.married": false,
-        "dependent[child].us_half": true
+        "dependent[child].us_half": true,
+        "dependent[child].eic_ssn": true
       },
       "expect": {
         "f1040.line27a": {
@@ -5789,7 +5627,10 @@
         "eic.married": false,
         "dependent[a].us_half": true,
         "dependent[b].us_half": true,
-        "dependent[c].us_half": true
+        "dependent[c].us_half": true,
+        "dependent[a].eic_ssn": true,
+        "dependent[b].eic_ssn": true,
+        "dependent[c].eic_ssn": true
       },
       "expect": {
         "f1040.line27a": {
@@ -5807,6 +5648,592 @@
         "f1040.line28": {
           "kind": "money",
           "cents": 38250
+        }
+      }
+    },
+    {
+      "id": "stage9.eic.married_hoh.lived_apart",
+      "covers": [
+        "eic",
+        "f1040.line27a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 9 follow-up, predicted by hand from the printed instructions before recording: Head of household, married at the end of 2025, one child, wages $4,000; you and your spouse did not share a principal residence for the last 6 months: Step 3, question 4 is No, so skip question 5 and go to question 6 (p. 41); the row $4,000-$4,050, one child, is $1,369 (p. 50).",
+      "inputs": {
+        "f1040.status": "hoh",
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].rrta": false,
+        "$interest": [],
+        "$sales": [],
+        "$gift": [],
+        "sb.ordinary_dividends": 0,
+        "sb.unsupported": false,
+        "sb.line7a": false,
+        "sb.fbar_required": false,
+        "sb.form8938": false,
+        "sb.line8": false,
+        "f1040.line3a": 0,
+        "div.box2b": 0,
+        "div.box2c": 0,
+        "div.box2d": 0,
+        "div.box2e": 0,
+        "div.box2f": 0,
+        "div.box3": 0,
+        "div.box4": 0,
+        "div.box6": 0,
+        "div.box9": 0,
+        "div.box10": 0,
+        "div.box12": 0,
+        "div.box13": 0,
+        "div.basis_reconciled": true,
+        "div.fatca": false,
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "qbi.dividends": 0,
+        "qbi.unsupported": false,
+        "f4952.line1": 0,
+        "f4952.line4g": 0,
+        "f4952.carryover": false,
+        "f4952.unsupported": false,
+        "f4952.alternative_allocation": false,
+        "f8959.unsupported": false,
+        "f8960.unsupported": false,
+        "f8960.refund": false,
+        "f8960.allocated_taxes": 0,
+        "ftc.taxes": 0,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0,
+        "sa.unsupported": false,
+        "sa.charity_limited": false,
+        "sa.excluded_income": false,
+        "sa.dependent": false,
+        "sa.spouse_extra": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.spouse_itemizes": false,
+        "sa.elect_itemize": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "scope.schedule1": false,
+        "scope.schedule1a": false,
+        "scope.credits": false,
+        "scope.other_income": false,
+        "scope.other_line16": false,
+        "s2.amt": false,
+        "s2.other": false,
+        "f1040.line25b": 0,
+        "f1040.line25c": 0,
+        "f1040.line26": 0,
+        "f1040.line35a": 0,
+        "f1040.line36": 0,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 400000,
+        "person[taxpayer].w2[emp_a].box2": 0,
+        "person[taxpayer].w2[emp_a].box3": 400000,
+        "person[taxpayer].w2[emp_a].box4": 24800,
+        "person[taxpayer].w2[emp_a].box5": 400000,
+        "person[taxpayer].w2[emp_a].box6": 5800,
+        "person[taxpayer].w2[emp_a].box7": 0,
+        "$dependent": [
+          "child"
+        ],
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false,
+        "dependent[child].relationship": "child",
+        "dependent[child].age": 3,
+        "dependent[child].student": false,
+        "dependent[child].disabled": false,
+        "dependent[child].months": 12,
+        "dependent[child].self_support": false,
+        "dependent[child].joint_return": false,
+        "dependent[child].citizen": true,
+        "dependent[child].canada_mexico": false,
+        "dependent[child].married": false,
+        "dependent[child].tin": true,
+        "dependent[child].work_ssn": true,
+        "dependent[child].gross_income": 0,
+        "dependent[child].supported": true,
+        "dependent[child].other_claimant": false,
+        "dependent[child].divorced_rule": false,
+        "dependent[child].multiple_support": false,
+        "dependent[child].parent_home_paid": false,
+        "dependent[child].younger": true,
+        "f1040.line2a": 0,
+        "eic.qc_of_another": false,
+        "eic.born_before_2001": true,
+        "eic.us_home": true,
+        "eic.married": true,
+        "dependent[child].us_half": true,
+        "dependent[child].eic_ssn": true,
+        "eic.same_home": false
+      },
+      "expect": {
+        "f1040.line27a": {
+          "kind": "money",
+          "cents": 136900
+        },
+        "eic.step3_married": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "stage9.eic.married_hoh.legally_separated",
+      "covers": [
+        "eic",
+        "f1040.line27a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 9 follow-up, predicted by hand from the printed instructions before recording: As lived_apart, but sharing a principal residence for the last 6 months while legally separated under a decree of separate maintenance and living apart at the end of 2025: question 5 is Yes, continue to question 6; $1,369.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].rrta": false,
+        "$interest": [],
+        "$sales": [],
+        "$gift": [],
+        "sb.ordinary_dividends": 0,
+        "sb.unsupported": false,
+        "sb.line7a": false,
+        "sb.fbar_required": false,
+        "sb.form8938": false,
+        "sb.line8": false,
+        "f1040.line3a": 0,
+        "div.box2b": 0,
+        "div.box2c": 0,
+        "div.box2d": 0,
+        "div.box2e": 0,
+        "div.box2f": 0,
+        "div.box3": 0,
+        "div.box4": 0,
+        "div.box6": 0,
+        "div.box9": 0,
+        "div.box10": 0,
+        "div.box12": 0,
+        "div.box13": 0,
+        "div.basis_reconciled": true,
+        "div.fatca": false,
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "qbi.dividends": 0,
+        "qbi.unsupported": false,
+        "f4952.line1": 0,
+        "f4952.line4g": 0,
+        "f4952.carryover": false,
+        "f4952.unsupported": false,
+        "f4952.alternative_allocation": false,
+        "f8959.unsupported": false,
+        "f8960.unsupported": false,
+        "f8960.refund": false,
+        "f8960.allocated_taxes": 0,
+        "ftc.taxes": 0,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0,
+        "sa.unsupported": false,
+        "sa.charity_limited": false,
+        "sa.excluded_income": false,
+        "sa.dependent": false,
+        "sa.spouse_extra": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.spouse_itemizes": false,
+        "sa.elect_itemize": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "scope.schedule1": false,
+        "scope.schedule1a": false,
+        "scope.credits": false,
+        "scope.other_income": false,
+        "scope.other_line16": false,
+        "s2.amt": false,
+        "s2.other": false,
+        "f1040.line25b": 0,
+        "f1040.line25c": 0,
+        "f1040.line26": 0,
+        "f1040.line35a": 0,
+        "f1040.line36": 0,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 400000,
+        "person[taxpayer].w2[emp_a].box2": 0,
+        "person[taxpayer].w2[emp_a].box3": 400000,
+        "person[taxpayer].w2[emp_a].box4": 24800,
+        "person[taxpayer].w2[emp_a].box5": 400000,
+        "person[taxpayer].w2[emp_a].box6": 5800,
+        "person[taxpayer].w2[emp_a].box7": 0,
+        "$dependent": [
+          "child"
+        ],
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false,
+        "dependent[child].relationship": "child",
+        "dependent[child].age": 3,
+        "dependent[child].student": false,
+        "dependent[child].disabled": false,
+        "dependent[child].months": 12,
+        "dependent[child].self_support": false,
+        "dependent[child].joint_return": false,
+        "dependent[child].citizen": true,
+        "dependent[child].canada_mexico": false,
+        "dependent[child].married": false,
+        "dependent[child].tin": true,
+        "dependent[child].work_ssn": true,
+        "dependent[child].gross_income": 0,
+        "dependent[child].supported": true,
+        "dependent[child].other_claimant": false,
+        "dependent[child].divorced_rule": false,
+        "dependent[child].multiple_support": false,
+        "dependent[child].parent_home_paid": false,
+        "dependent[child].younger": true,
+        "f1040.line2a": 0,
+        "eic.qc_of_another": false,
+        "eic.born_before_2001": true,
+        "eic.us_home": true,
+        "eic.married": true,
+        "dependent[child].us_half": true,
+        "dependent[child].eic_ssn": true,
+        "eic.same_home": true,
+        "eic.legally_separated": true
+      },
+      "expect": {
+        "f1040.line27a": {
+          "kind": "money",
+          "cents": 136900
+        },
+        "eic.step3_married": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "stage9.eic.married_hoh.not_separated",
+      "covers": [
+        "eic",
+        "f1040.line27a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 9 follow-up, predicted by hand from the printed instructions before recording: As lived_apart, but sharing a principal residence for the last 6 months and not legally separated: question 5 is No, STOP (p. 41); no credit.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].rrta": false,
+        "$interest": [],
+        "$sales": [],
+        "$gift": [],
+        "sb.ordinary_dividends": 0,
+        "sb.unsupported": false,
+        "sb.line7a": false,
+        "sb.fbar_required": false,
+        "sb.form8938": false,
+        "sb.line8": false,
+        "f1040.line3a": 0,
+        "div.box2b": 0,
+        "div.box2c": 0,
+        "div.box2d": 0,
+        "div.box2e": 0,
+        "div.box2f": 0,
+        "div.box3": 0,
+        "div.box4": 0,
+        "div.box6": 0,
+        "div.box9": 0,
+        "div.box10": 0,
+        "div.box12": 0,
+        "div.box13": 0,
+        "div.basis_reconciled": true,
+        "div.fatca": false,
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "qbi.dividends": 0,
+        "qbi.unsupported": false,
+        "f4952.line1": 0,
+        "f4952.line4g": 0,
+        "f4952.carryover": false,
+        "f4952.unsupported": false,
+        "f4952.alternative_allocation": false,
+        "f8959.unsupported": false,
+        "f8960.unsupported": false,
+        "f8960.refund": false,
+        "f8960.allocated_taxes": 0,
+        "ftc.taxes": 0,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0,
+        "sa.unsupported": false,
+        "sa.charity_limited": false,
+        "sa.excluded_income": false,
+        "sa.dependent": false,
+        "sa.spouse_extra": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.spouse_itemizes": false,
+        "sa.elect_itemize": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "scope.schedule1": false,
+        "scope.schedule1a": false,
+        "scope.credits": false,
+        "scope.other_income": false,
+        "scope.other_line16": false,
+        "s2.amt": false,
+        "s2.other": false,
+        "f1040.line25b": 0,
+        "f1040.line25c": 0,
+        "f1040.line26": 0,
+        "f1040.line35a": 0,
+        "f1040.line36": 0,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 400000,
+        "person[taxpayer].w2[emp_a].box2": 0,
+        "person[taxpayer].w2[emp_a].box3": 400000,
+        "person[taxpayer].w2[emp_a].box4": 24800,
+        "person[taxpayer].w2[emp_a].box5": 400000,
+        "person[taxpayer].w2[emp_a].box6": 5800,
+        "person[taxpayer].w2[emp_a].box7": 0,
+        "$dependent": [
+          "child"
+        ],
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false,
+        "dependent[child].relationship": "child",
+        "dependent[child].age": 3,
+        "dependent[child].student": false,
+        "dependent[child].disabled": false,
+        "dependent[child].months": 12,
+        "dependent[child].self_support": false,
+        "dependent[child].joint_return": false,
+        "dependent[child].citizen": true,
+        "dependent[child].canada_mexico": false,
+        "dependent[child].married": false,
+        "dependent[child].tin": true,
+        "dependent[child].work_ssn": true,
+        "dependent[child].gross_income": 0,
+        "dependent[child].supported": true,
+        "dependent[child].other_claimant": false,
+        "dependent[child].divorced_rule": false,
+        "dependent[child].multiple_support": false,
+        "dependent[child].parent_home_paid": false,
+        "dependent[child].younger": true,
+        "f1040.line2a": 0,
+        "eic.qc_of_another": false,
+        "eic.born_before_2001": true,
+        "eic.us_home": true,
+        "eic.married": true,
+        "dependent[child].us_half": true,
+        "dependent[child].eic_ssn": true,
+        "eic.same_home": true,
+        "eic.legally_separated": false
+      },
+      "expect": {
+        "f1040.line27a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "eic.step3_married": {
+          "kind": "bool",
+          "value": false
+        },
+        "eic.eligible": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "stage9.eic.mfs.lived_apart",
+      "covers": [
+        "eic",
+        "f1040.line27a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 9 follow-up, predicted by hand from the printed instructions before recording: Married filing separately, one child, wages $4,000, no shared principal residence for the last 6 months: Step 3, questions 3 and 4 lead to question 6; the Single/head of household column (the table's star note gives it to married filing separately) is $1,369. The return itself refuses at line 33 (married statuses); line 27a is computed.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].rrta": false,
+        "$interest": [],
+        "$sales": [],
+        "$gift": [],
+        "sb.ordinary_dividends": 0,
+        "sb.unsupported": false,
+        "sb.line7a": false,
+        "sb.fbar_required": false,
+        "sb.form8938": false,
+        "sb.line8": false,
+        "f1040.line3a": 0,
+        "div.box2b": 0,
+        "div.box2c": 0,
+        "div.box2d": 0,
+        "div.box2e": 0,
+        "div.box2f": 0,
+        "div.box3": 0,
+        "div.box4": 0,
+        "div.box6": 0,
+        "div.box9": 0,
+        "div.box10": 0,
+        "div.box12": 0,
+        "div.box13": 0,
+        "div.basis_reconciled": true,
+        "div.fatca": false,
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "qbi.dividends": 0,
+        "qbi.unsupported": false,
+        "f4952.line1": 0,
+        "f4952.line4g": 0,
+        "f4952.carryover": false,
+        "f4952.unsupported": false,
+        "f4952.alternative_allocation": false,
+        "f8959.unsupported": false,
+        "f8960.unsupported": false,
+        "f8960.refund": false,
+        "f8960.allocated_taxes": 0,
+        "ftc.taxes": 0,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0,
+        "sa.unsupported": false,
+        "sa.charity_limited": false,
+        "sa.excluded_income": false,
+        "sa.dependent": false,
+        "sa.spouse_extra": false,
+        "sa.age65": false,
+        "sa.blind": false,
+        "sa.spouse_itemizes": false,
+        "sa.elect_itemize": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "scope.schedule1": false,
+        "scope.schedule1a": false,
+        "scope.credits": false,
+        "scope.other_income": false,
+        "scope.other_line16": false,
+        "s2.amt": false,
+        "s2.other": false,
+        "f1040.line25b": 0,
+        "f1040.line25c": 0,
+        "f1040.line26": 0,
+        "f1040.line35a": 0,
+        "f1040.line36": 0,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 400000,
+        "person[taxpayer].w2[emp_a].box2": 0,
+        "person[taxpayer].w2[emp_a].box3": 400000,
+        "person[taxpayer].w2[emp_a].box4": 24800,
+        "person[taxpayer].w2[emp_a].box5": 400000,
+        "person[taxpayer].w2[emp_a].box6": 5800,
+        "person[taxpayer].w2[emp_a].box7": 0,
+        "$dependent": [
+          "child"
+        ],
+        "household.taxpayer_tin": true,
+        "household.taxpayer_work_ssn": true,
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false,
+        "dependent[child].relationship": "child",
+        "dependent[child].age": 3,
+        "dependent[child].student": false,
+        "dependent[child].disabled": false,
+        "dependent[child].months": 12,
+        "dependent[child].self_support": false,
+        "dependent[child].joint_return": false,
+        "dependent[child].citizen": true,
+        "dependent[child].canada_mexico": false,
+        "dependent[child].married": false,
+        "dependent[child].tin": true,
+        "dependent[child].work_ssn": true,
+        "dependent[child].gross_income": 0,
+        "dependent[child].supported": true,
+        "dependent[child].other_claimant": false,
+        "dependent[child].divorced_rule": false,
+        "dependent[child].multiple_support": false,
+        "dependent[child].parent_home_paid": false,
+        "dependent[child].younger": true,
+        "f1040.line2a": 0,
+        "eic.qc_of_another": false,
+        "eic.born_before_2001": true,
+        "eic.us_home": true,
+        "eic.married": true,
+        "dependent[child].us_half": true,
+        "dependent[child].eic_ssn": true,
+        "eic.same_home": false
+      },
+      "expect": {
+        "f1040.line27a": {
+          "kind": "money",
+          "cents": 136900
         }
       }
     }

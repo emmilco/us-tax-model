@@ -354,3 +354,27 @@ later grouping.
 - **Why it survived:** as BUG-0027; the earlier comparison read the spliced p. 21.
 - **Fix:** the question says "detention in a juvenile facility" and "enter 7 if the person lived with you for more than half of 2025 but fewer than 7 full months", so "more than 6" is "more than half of 2025". No expression changed.
 - **Tags:** scope-screen-wider-than-line; scope-screen-narrower-than-line; household-predicates; caught-by-render-comparison; reading-order-text
+
+---
+
+## BUG-0030 — The EIC lived-in-the-United-States question left out the military rule
+
+- **Date:** 2026-10-17
+- **Caught by:** render comparison of `dependent.us_half` after the owner's Stage 9 rulings: "If you were on extended active duty outside the United States, your main home is considered to be in the United States during that duty period" (i1040gi p. 44, Members of the military, to which p. 45, United States, refers).
+- **Symptom:** a child living with a parent on extended active duty abroad could have been answered "no" and dropped from the EIC count.
+- **Root cause:** the per-person question was written from the Step 3 box and the exception paragraph; the filer-level question `eic.us_home` carried the military rule, the per-person one did not.
+- **Why it survived:** the earlier render comparison of the line was ruled on the adoption sentence (BUG-0028).
+- **Fix:** the question and its interview prompt carry the military rule. No expression changed.
+- **Tags:** scope-screen-narrower-than-line; household-predicates; caught-by-render-comparison
+
+---
+
+## BUG-0031 — The test harness killed an evaluation whose output passed 1 MiB
+
+- **Date:** 2026-10-17
+- **Caught by:** `check-all` after the class M rerun for the owner's Stage 9 rulings: `classm.dependent.1` failed with "eval exited null" although the command-line program, run directly on the same inputs, exits 0.
+- **Symptom:** a fixture whose values sheet is larger than 1,048,576 bytes (this one, a return with several dependents, is 1,055,871) fails as if the program had crashed.
+- **Root cause:** `spawnSync` in `engine/src/fixtures.ts`, `integration.ts` and `compare.ts` used Node's default output buffer of 1 MiB, past which the child is killed and the status is null.
+- **Why it survived:** every earlier fixture's output was under 1 MiB; the new per-person EIC lines pushed this return over.
+- **Fix:** every spawn passes `maxBuffer: 256 MiB`.
+- **Tags:** test-harness; caught-by-check-all

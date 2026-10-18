@@ -1,7 +1,7 @@
 # Earned Income Credit (EIC)—Steps 1 to 6 and Worksheet A—Line 27a
 
 - Document: `eic` (worksheet, tax year 2025)
-- Note: The eligibility steps of the Form 1040 instructions (pp. 40–43) as helper lines, in the order the flow chart asks them, and Worksheet A (p. 46) as printed lines 1 to 6. Worksheet B (self-employment, clergy, church employees, statutory employees) and the married filing statuses are refused with citations; a filer whose income is at or above the largest Step 1 limit for the filing status stops before any person is counted.
+- Note: The eligibility steps of the Form 1040 instructions (pp. 40–43) as helper lines, in the order the flow chart asks them, and Worksheet A (p. 46) as printed lines 1 to 6. Worksheet B (self-employment, clergy, church employees, statutory employees) is refused with citations; married filers who file separately or as head of household answer Step 3, questions 4 and 5; a filer whose income is at or above the largest Step 1 limit for the filing status stops before any person is counted.
 
 ## (helper) — `eic.qc_of_another`
 
@@ -217,13 +217,33 @@
 - Expr: `{"all":[{"eq":["scope.schedule1",{"const":false}],"op":"test"},{"eq":["scope.other_line16",{"const":false}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 40, Step 2, question 4 (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `eic.same_home`
+
+- **Authored helper label:** Did you and your spouse have the same principal residence for the last 6 months of 2025?
+- **Encoded (Bool):** Input — Did you and your spouse have the same principal residence for the last 6 months of 2025?
+- Expr: `{"op":"input","source":"Did you and your spouse have the same principal residence for the last 6 months of 2025?"}`
+- Cite: [i1040gi] p. 41, Step 3, question 4 (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `eic.legally_separated`
+
+- **Authored helper label:** Are you legally separated under a written separation agreement or a decree of separate maintenance, and did you live apart from your spouse at the end of 2025?
+- **Encoded (Bool):** Input — Are you legally separated according to your state law under a written separation agreement or a decree of separate maintenance, and did you live apart from your spouse at the end of 2025?
+- Expr: `{"op":"input","source":"Are you legally separated according to your state law under a written separation agreement or a decree of separate maintenance, and did you live apart from your spouse at the end of 2025?"}`
+- Cite: [i1040gi] p. 41, Step 3, question 5; p. 44, Special rule for separated spouses (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `eic.step3_married`
+
+- **Authored helper label:** Step 3, questions 3 to 5: not a married filer filing separately or as head of household, or one who lived apart from the spouse for the last 6 months of 2025 or is legally separated and lived apart at the end of 2025
+- **Encoded (Bool):** (helper "A married filer whose filing status is married filing separately or head of household" = false or helper "Did you and your spouse have the same principal residence for the last 6 months of 2025?" = false or helper "Are you legally separated under a written separation agreement or a decree of separate maintenance, and did you live apart from your spouse at the end of 2025?" = true)
+- Expr: `{"any":[{"eq":["eic.married_rules",{"const":false}],"op":"test"},{"eq":["eic.same_home",{"const":false}],"op":"test"},{"eq":["eic.legally_separated",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 41, Step 3, question 3 ("No. Skip questions 4 and 5"), question 4 ("No. Skip question 5"), question 5 ("No. STOP") (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (helper) — `eic.step3`
 
-- **Authored helper label:** Step 3, questions 2 to 6: filing jointly, or you could not be a qualifying child of another person
-- **Encoded (Bool):** (f1040 line Filing Status = 'mfj' or helper "Could you be a qualifying child of another person for 2025?" = false)
-- **Refusal:** when eic.married_rules is true, cannot complete Special rule for separated spouses (EIC, Step 3, questions 3 to 5). A married filer claiming the EIC under the special rule for separated spouses is outside this tool. Cite: [i1040gi] p. 41, Step 3, questions 3 to 5; p. 44, Special rule for separated spouses (2025; printed date 2026-02-25; sha256 482e9c48)
-- Expr: `{"any":[{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},{"eq":["eic.qc_of_another",{"const":false}],"op":"test"}],"op":"test"}`
-- Cite: [i1040gi] p. 41, Step 3, questions 2 and 6 (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Authored helper label:** Step 3, questions 2 to 6: filing jointly, or passing questions 3 to 5 and not a qualifying child of another person
+- **Encoded (Bool):** (f1040 line Filing Status = 'mfj' or helper "Step 3, questions 3 to 5: not a married filer filing separately or as head of household, or one who lived apart from the spouse for the last 6 months of 2025 or is legally separated and lived apart at the end of 2025" = true and helper "Could you be a qualifying child of another person for 2025?" = false)
+- Expr: `{"any":[{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},{"all":[{"eq":["eic.step3_married",{"const":true}],"op":"test"},{"eq":["eic.qc_of_another",{"const":false}],"op":"test"}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 41, Step 3, questions 2 to 6 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `eic.step4`
 
@@ -236,7 +256,7 @@
 ## (helper) — `eic.step34`
 
 - **Authored helper label:** Step 3 for a filer with a qualifying child, Step 4 otherwise
-- **Encoded (Bool):** (helper "At least one qualifying child for the EIC" = true and helper "Step 3, questions 2 to 6: filing jointly, or you could not be a qualifying child of another person" = true or helper "At least one qualifying child for the EIC" = false and helper "Step 4: not a married filer filing separately or as head of household, aged 25 to 64, main home in the United States, and not a qualifying child or dependent of another person" = true)
+- **Encoded (Bool):** (helper "At least one qualifying child for the EIC" = true and helper "Step 3, questions 2 to 6: filing jointly, or passing questions 3 to 5 and not a qualifying child of another person" = true or helper "At least one qualifying child for the EIC" = false and helper "Step 4: not a married filer filing separately or as head of household, aged 25 to 64, main home in the United States, and not a qualifying child or dependent of another person" = true)
 - Expr: `{"any":[{"all":[{"eq":["eic.has_qc",{"const":true}],"op":"test"},{"eq":["eic.step3",{"const":true}],"op":"test"}],"op":"test"},{"all":[{"eq":["eic.has_qc",{"const":false}],"op":"test"},{"eq":["eic.step4",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 41, Step 3, question 1, "No. Skip questions 2 through 6; go to Step 4" (2025; printed date 2026-02-25; sha256 482e9c48)
 

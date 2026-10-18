@@ -121,9 +121,7 @@ export function compareEvaluators(): number {
       const inputsPath = join(tmp, `${c.id}.inputs.json`);
       const outPath = join(tmp, `${c.id}.lean.json`);
       writeFileSync(inputsPath, JSON.stringify(c.inputs));
-      const proc = spawnSync(LEAN_BIN, ["--canonical", CANON, "--inputs", inputsPath, "--out", outPath], {
-        encoding: "utf-8",
-      });
+      const proc = spawnSync(LEAN_BIN, ["--canonical", CANON, "--inputs", inputsPath, "--out", outPath], { encoding: "utf-8", maxBuffer: 256 * 1024 * 1024 });
       if (proc.status !== 0) {
         failures++;
         failureDetails.push(`${c.id}: lean evaluator exited ${proc.status}: ${proc.stderr.slice(0, 200)}`);

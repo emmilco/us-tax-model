@@ -7,12 +7,12 @@ the fixture test compares).
 
 | Metric | Value |
 | --- | --- |
-| Mutants | 838 |
+| Mutants | 837 |
 | Killed by the checker | 46 |
 | Killed by fixtures | 691 |
-| Surviving | 101 (64 provably equivalent) |
-| Mutation score (raw) | 87.9% |
-| Mutation score (equivalent mutants excluded) | 95.2% |
+| Surviving | 100 (64 provably equivalent) |
+| Mutation score (raw) | 88.1% |
+| Mutation score (equivalent mutants excluded) | 95.3% |
 
 ## Surviving — classified equivalent
 
@@ -107,7 +107,6 @@ the fixture test compares).
 | refusal.s3.s3.line8.0 | remove refusal | s3.s3.line8 |  |
 | refusal.sa.sa.line17.1 | remove refusal | sa.sa.line17 |  |
 | refusal.sa.sa.line17.2 | remove refusal | sa.sa.line17 |  |
-| operand.sdtw.sdtw.line12.line9 | replace an operand | sdtw.sdtw.line12 | sdtw.line9 -> sdtw.line10 (NonNegDollars) |
 | operand.sdtw.sdtw.line17.line16 | replace an operand | sdtw.sdtw.line17 | sdtw.line16 -> sdtw.line15 (NonNegDollars) |
 | operand.sdtw.sdtw.raw27.line26 | replace an operand | sdtw.sdtw.raw27 | sdtw.line26 -> sdtw.raw26 (NonNegDollars) |
 | operand.sdtw.sdtw.raw28.line22 | replace an operand | sdtw.sdtw.raw28 | sdtw.line22 -> sdtw.line24 (Dollars) |

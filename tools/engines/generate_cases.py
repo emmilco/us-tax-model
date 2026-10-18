@@ -159,7 +159,7 @@ def gen_case(rng, i):
                        f"{key}.canada_mexico": False, f"{key}.married": False, f"{key}.tin": True, f"{key}.work_ssn": True,
                        f"{key}.gross_income": 0, f"{key}.supported": True, f"{key}.other_claimant": False,
                        f"{key}.divorced_rule": False, f"{key}.multiple_support": False, f"{key}.parent_home_paid": False,
-                       f"{key}.us_half": True})
+                       f"{key}.us_half": True, f"{key}.eic_ssn": True})
     hoh = n_children > 0 and rng.random() < 0.5
     inputs["f1040.status"] = "hoh" if hoh else "single"
     inputs.update({"household.taxpayer_tin": True, "household.taxpayer_work_ssn": True,

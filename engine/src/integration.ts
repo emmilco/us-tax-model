@@ -12,7 +12,7 @@ export function integrationChecks(): void {
   const dir=mkdtempSync(join(tmpdir(),"stage2-integration-"));
   let checks=0;
   const cli=(args:string[],ok=true):any=>{
-    const p=spawnSync(process.execPath,[resolve(import.meta.dirname,"main.js"),...args],{encoding:"utf8"});
+    const p=spawnSync(process.execPath,[resolve(import.meta.dirname,"main.js"),...args],{ encoding: "utf-8", maxBuffer: 256 * 1024 * 1024 });
     assert.equal(p.status===0,ok,`${args.join(" ")}: ${p.stderr || p.stdout}`);
     checks++;
     return ok ? JSON.parse(p.stdout) : null;
@@ -57,7 +57,7 @@ export function integrationChecks(): void {
     evaluate({...inputs,"person[taxpayer].w2[ghost].box4":1},false);
     evaluate({...inputs,"person[taxpayer].w2[a].box3":Number.MAX_SAFE_INTEGER,"person[taxpayer].w2[a].box7":1},false);
     const htmlPath=join(dir,"html-input.json");writeFileSync(htmlPath,JSON.stringify(inputs));
-    const html=spawnSync(process.execPath,[resolve(import.meta.dirname,"main.js"),"eval","--inputs",htmlPath,"--target","f1040.line31","--html"],{encoding:"utf8"});
+    const html=spawnSync(process.execPath,[resolve(import.meta.dirname,"main.js"),"eval","--inputs",htmlPath,"--target","f1040.line31","--html"],{ encoding: "utf-8", maxBuffer: 256 * 1024 * 1024 });
     assert.equal(html.status,0);assert.match(html.stdout,/<!doctype html>/);assert.match(html.stdout,/\$1,481\.80/);checks++;
     const checksData=loadCanonical();
     const badData=(change:(d:CanonicalData)=>void)=>{

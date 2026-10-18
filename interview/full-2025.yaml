@@ -889,7 +889,7 @@ interview:
         locator: p. 17, Step 1, "Who lived with you for more than half of 2025", and p. 14, Exception to time
           lived with you
     - input: dependent.us_half
-      prompt: Did this person live with you in the United States (the 50 states and the District of Columbia) for more than half of 2025? Temporary absences for school, vacation, business, medical care, military service or juvenile detention count as time lived with you, a child born or who died in 2025 counts if your home was the child's home for more than half the time the child was alive, and a child you adopted, who was lawfully placed with you for legal adoption, or who was placed with you as an eligible foster child in 2025 counts if your main home was the child's main home for more than half the time since the adoption or placement.
+      prompt: 'Did this person live with you in the United States (the 50 states and the District of Columbia) for more than half of 2025? If you were on extended active military duty outside the United States, your main home is considered to be in the United States during that duty. Temporary absences for school, vacation, business, medical care, military service or juvenile detention count as time lived with you. A child born or who died in 2025 counts if your home was the child''s home for more than half the time the child was alive, and a child you adopted, who was lawfully placed with you for legal adoption, or who was placed with you as an eligible foster child in 2025 counts if your main home was the child''s main home for more than half the time since the adoption or placement.'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
         be null; do not guess. This computes the single-person return; joint returns and unsupported items
         are refused with citations.
@@ -897,6 +897,15 @@ interview:
       cite:
         doc: i1040gi
         locator: p. 41, Step 3; p. 43, Exception to time lived with you; p. 45, United States
+    - input: dependent.eic_ssn
+      prompt: 'Did this person have a social security number issued on or before the due date of your 2025 return (including extensions) that is valid for the EIC? Any number issued by the Social Security Administration is valid unless the card says "Not Valid for Employment" and the number was issued solely to apply for or receive a federally funded benefit; a card that says "Valid for Work Only With DHS Authorization" is valid only while the authorization is valid.'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 30
+      cite:
+        doc: i1040gi
+        locator: pp. 44–45, Social security number (SSN), EIC
     - input: dependent.self_support
       prompt: Did this person provide over half of their own support for 2025?
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
@@ -1084,6 +1093,24 @@ interview:
       cite:
         doc: i1040gi
         locator: p. 41, Step 3, question 3, and Step 4, question 1
+    - input: eic.same_home
+      prompt: 'Did you and your spouse have the same principal residence for the last 6 months of 2025?'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 30
+      cite:
+        doc: i1040gi
+        locator: p. 41, Step 3, question 4
+    - input: eic.legally_separated
+      prompt: 'Are you legally separated according to your state law under a written separation agreement or a decree of separate maintenance, and did you live apart from your spouse at the end of 2025?'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 30
+      cite:
+        doc: i1040gi
+        locator: p. 41, Step 3, question 5
     - input: household.unmarried
       prompt: Were you unmarried, or considered unmarried under the head of household rules, at the end of
         2025?

@@ -53,15 +53,15 @@
 - **Chosen:** The credit on line 2 is zero.
 - Reason: Every column of the table is zero at the far end and rises from $2 to $11 in the first row, so the credit is built up from earned income; with no row for less than $1 the table grants nothing there, and the worksheet's own instruction for a zero line 2 ends the computation. Rev. Proc. 2024-40 section 3.06(1) describes the credit as a percentage of earned income up to the earned income amount, which is zero at zero earned income.
 
-- Status: Chosen during Stage 9; owner review pending.
+- Status: Owner approved ($0) after the check that it cannot err; below $1 every column's credit, figured at the steepest build-up rate (45%), is under $0.45 and rounds to $0, and earned income is never negative in scope (self-employment is refused).
 - Cite: [i1040gi] p. 46, Worksheet A, line 2; p. 49, EIC Table, first row (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## amb.2025.eic_valid_ssn
 
-- Text at issue: For the EIC a child's valid SSN is "a number issued by the Social Security Administration unless 'Not Valid for Employment' is printed on the social security card and the number was issued solely to allow the recipient ... to apply for or receive a federally funded benefit", issued on or before the due date of the return. The tool reuses the child tax credit question, "an SSN valid for employment, issued before the due date".
+- Text at issue: For the EIC a child's valid SSN is "a number issued by the Social Security Administration unless 'Not Valid for Employment' is printed on the social security card and the number was issued solely to allow the recipient ... to apply for or receive a federally funded benefit", issued on or before the due date of the return. The child tax credit asks for "an SSN valid for employment" issued before the due date.
 - Candidate readings: Reuse the child tax credit question for the EIC count. | Ask a separate per-person question in the EIC's own words.
-- **Chosen:** Reuse the child tax credit question.
-- Reason: The two definitions select the same children except for a number issued on the due date itself and a card marked "Not Valid for Employment" for a reason other than federally funded benefits; a separate question would ask every filer with a dependent one more question for those two cases.
+- **Chosen:** Ask a separate per-person question in the EIC's own words (dependent.eic_ssn).
+- Reason: The two definitions differ for a number issued on the due date itself and for a card marked "Not Valid for Employment" for a reason other than federally funded benefits. The owner preferred the separate question as the safer reading; it is asked only for a person who is already a qualifying child for the EIC.
 
-- Status: Chosen during Stage 9; owner review pending (T-028).
+- Status: Owner ruling, Stage 9 follow-up.
 - Cite: [i1040gi] pp. 44-45, Social security number (SSN) (EIC); p. 18, Step 3, question 4 (child tax credit) (2025; printed date 2026-02-25; sha256 482e9c48)

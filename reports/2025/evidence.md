@@ -29,6 +29,7 @@ Fixtures that assert each line, by evidence class. A — official IRS example. B
 | dependent.qc_relationship | — | — | — | 27 |
 | dependent.younger | — | — | — | 18 |
 | dependent.us_half | — | — | — | — |
+| dependent.eic_ssn | — | — | — | — |
 | dependent.qc_age | — | — | — | 24 |
 | dependent.lived_half | — | — | — | 25 |
 | dependent.qualifying_child | — | — | — | 30 |
@@ -40,7 +41,7 @@ Fixtures that assert each line, by evidence class. A — official IRS example. B
 | dependent.qualifying_relative | — | — | — | 14 |
 | dependent.qr_dependent | — | — | — | 14 |
 | dependent.claimed | — | — | — | 30 |
-| dependent.under_ctc_age | — | — | — | 17 |
+| dependent.under_ctc_age | — | — | — | 19 |
 | dependent.ctc_child | — | — | — | 30 |
 | dependent.odc_person | — | — | — | 30 |
 | dependent.ctc_per_child | — | — | — | — |
@@ -123,6 +124,9 @@ Unasserted lines: div.box1a, div.box1b, div.box2a, div.box5, div.section1202, di
 | eic.investment_income | — | — | — | — |
 | eic.step2_income | — | — | — | 3 |
 | eic.step2_other | — | — | — | — |
+| eic.same_home | — | — | — | — |
+| eic.legally_separated | — | — | — | — |
+| eic.step3_married | — | — | — | 3 |
 | eic.step3 | — | — | — | — |
 | eic.step4 | — | — | — | 1 (stage9.eic.no_child.over65) |
 | eic.step34 | — | — | — | — |
@@ -132,17 +136,17 @@ Unasserted lines: div.box1a, div.box1b, div.box2a, div.box5, div.section1202, di
 | eic.step5_line4 | — | — | — | — |
 | eic.earned_income | — | — | — | — |
 | eic.step5_income | — | — | — | — |
-| eic.eligible | — | — | — | 19 |
-| eic.line1 | — | — | — | 9 |
+| eic.eligible | — | — | — | 20 |
+| eic.line1 | — | — | — | 11 |
 | eic.line1_in_table | — | — | — | — |
 | eic.line1_table0 | — | — | — | — |
 | eic.line1_table1 | — | — | — | — |
 | eic.line1_table2 | — | — | — | — |
 | eic.line1_table3 | — | — | — | — |
 | eic.line1_table | — | — | — | — |
-| eic.line2 | — | — | — | 22 |
-| eic.line3 | — | — | — | 2 (classm.eic.3, classm.eic.6) |
-| eic.line4 | — | — | — | 11 |
+| eic.line2 | — | — | — | 21 |
+| eic.line3 | — | — | — | 2 (classm.eic.1, classm.eic.7) |
+| eic.line4 | — | — | — | 12 |
 | eic.threshold_other | — | — | — | — |
 | eic.threshold_joint | — | — | — | — |
 | eic.line5_threshold | — | — | — | — |
@@ -155,10 +159,10 @@ Unasserted lines: div.box1a, div.box1b, div.box2a, div.box5, div.section1202, di
 | eic.line3_table1 | — | — | — | — |
 | eic.line3_table2 | — | — | — | — |
 | eic.line3_table3 | — | — | — | — |
-| eic.line5 | — | — | — | 8 |
+| eic.line5 | — | — | — | 6 |
 | eic.smaller | — | — | — | — |
 | eic.after_line4 | — | — | — | — |
-| eic.line6 | — | — | — | 15 |
+| eic.line6 | — | — | — | 14 |
 | eic.credit | — | — | — | — |
 
 Unasserted lines: eic.zero, eic.qc_count, eic.married_rules, eic.top_limit, eic.below_top, eic.limit0_other, eic.limit1_other, eic.limit2_other, eic.limit3_other, eic.limit0_joint, eic.limit1_joint, eic.limit2_joint, eic.limit3_joint, eic.limit_other, eic.limit_joint, eic.limit, eic.step1_income, eic.step1_ssn, eic.step1_foreign, eic.step1_resident, eic.investment_income, eic.step2_other, eic.step3, eic.step34, eic.step5_line1, eic.step5_line2, eic.step5_line3, eic.step5_line4, eic.earned_income, eic.step5_income, eic.line1_in_table, eic.line1_table0, eic.line1_table1, eic.line1_table2, eic.line1_table3, eic.line1_table, eic.threshold_other, eic.threshold_joint, eic.line5_threshold, eic.threshold0_other, eic.threshold1_other, eic.threshold0_joint, eic.threshold1_joint, eic.line3_table0, eic.line3_table1, eic.line3_table2, eic.line3_table3, eic.smaller, eic.after_line4, eic.credit
@@ -179,7 +183,7 @@ Unasserted lines: eic.zero, eic.qc_count, eic.married_rules, eic.top_limit, eic.
 | f1040.line9 | — | — | — | 7 |
 | f1040.line10 | — | — | — | 6 |
 | f1040.line11a | — | — | — | 7 |
-| f1040.line11b | — | — | — | 21 |
+| f1040.line11b | — | — | — | 20 |
 | f1040.line12e | — | — | — | 29 |
 | f1040.line13a | — | — | — | 5 |
 | f1040.line13b | — | — | — | 6 |
@@ -202,17 +206,17 @@ Unasserted lines: eic.zero, eic.qc_count, eic.married_rules, eic.top_limit, eic.
 | f1040.line25c | — | — | — | 3 |
 | f1040.line25d | — | — | — | 5 |
 | f1040.line26 | — | — | — | 3 |
-| f1040.line27a | — | — | — | 47 |
+| f1040.line27a | — | — | — | 50 |
 | f1040.line28 | — | — | — | 31 |
 | f1040.line29 | — | — | — | 5 |
 | f1040.line30 | — | — | — | 5 |
 | f1040.line31 | — | — | — | 26 |
 | f1040.line32 | — | — | — | 6 |
-| f1040.line33 | — | — | — | 22 |
-| f1040.line34 | — | — | — | 45 |
+| f1040.line33 | — | — | — | 20 |
+| f1040.line34 | — | — | — | 44 |
 | f1040.line35a | — | — | — | 3 |
 | f1040.line36 | — | — | — | 3 |
-| f1040.line37 | — | — | — | 46 |
+| f1040.line37 | — | — | — | 45 |
 
 ## Form 4952 — supported investment-interest deduction and election
 
@@ -551,7 +555,7 @@ Unasserted lines: s3.zero, s3.married
 | s8812.line13 | — | — | — | 26 |
 | s8812.line14 | — | — | — | 27 |
 | s8812.line16a | — | — | — | 27 |
-| s8812.line16b | — | — | — | 27 |
+| s8812.line16b | — | — | — | 26 |
 | s8812.line17 | — | — | — | 27 |
 | s8812.combat_pay | — | — | — | — |
 | s8812.puerto_rico | — | — | — | — |
@@ -563,15 +567,15 @@ Unasserted lines: s3.zero, s3.married
 | s8812.eiw_6 | — | — | — | 24 |
 | s8812.eiw_7 | — | — | — | 24 |
 | s8812.taking_eic | — | — | — | 4 |
-| s8812.line18a | — | — | — | 27 |
+| s8812.line18a | — | — | — | 28 |
 | s8812.line18b | — | — | — | 27 |
-| s8812.line19 | — | — | — | 26 |
-| s8812.line20 | — | — | — | 26 |
+| s8812.line19 | — | — | — | 27 |
+| s8812.line20 | — | — | — | 27 |
 | s8812.ss_withheld | — | — | — | 24 |
 | s8812.amt_ws4 | — | — | — | 24 |
-| s8812.line21 | — | — | — | 24 |
+| s8812.line21 | — | — | — | 25 |
 | s8812.line22 | — | — | — | 27 |
-| s8812.line23 | — | — | — | 24 |
+| s8812.line23 | — | — | — | 25 |
 | s8812.line24 | — | — | — | 26 |
 | s8812.line25 | — | — | — | 26 |
 | s8812.line26 | — | — | — | 25 |

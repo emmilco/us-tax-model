@@ -5,7 +5,8 @@ form:
   tax_year: 2025
   note: The eligibility steps of the Form 1040 instructions (pp. 40–43) as helper lines, in the order the flow
     chart asks them, and Worksheet A (p. 46) as printed lines 1 to 6. Worksheet B (self-employment, clergy,
-    church employees, statutory employees) and the married filing statuses are refused with citations; a filer
+    church employees, statutory employees) is refused with citations; married filers who file separately or as head of
+    household answer Step 3, questions 4 and 5; a filer
     whose income is at or above the largest Step 1 limit for the filing status stops before any person is
     counted.
   lines:
@@ -565,10 +566,54 @@ form:
             locator: p. 40, Step 2, question 4
 
     # Steps 3 and 4.
+    - id: eic.same_home
+      printed: (helper)
+      type: Bool
+      label: Did you and your spouse have the same principal residence for the last 6 months of 2025?
+      expr:
+        op: input
+        source: Did you and your spouse have the same principal residence for the last 6 months of 2025?
+      cite:
+        doc: i1040gi
+        locator: p. 41, Step 3, question 4
+    - id: eic.legally_separated
+      printed: (helper)
+      type: Bool
+      label: Are you legally separated under a written separation agreement or a decree of separate maintenance, and did you live apart from your spouse at the end of 2025?
+      expr:
+        op: input
+        source: Are you legally separated according to your state law under a written separation agreement or a decree of
+          separate maintenance, and did you live apart from your spouse at the end of 2025?
+      cite:
+        doc: i1040gi
+        locator: p. 41, Step 3, question 5; p. 44, Special rule for separated spouses
+    - id: eic.step3_married
+      printed: (helper)
+      type: Bool
+      label: 'Step 3, questions 3 to 5: not a married filer filing separately or as head of household, or one who lived apart from the spouse for the last 6 months of 2025 or is legally separated and lived apart at the end of 2025'
+      expr:
+        op: test
+        any:
+          - op: test
+            eq:
+              - eic.married_rules
+              - const: false
+          - op: test
+            eq:
+              - eic.same_home
+              - const: false
+          - op: test
+            eq:
+              - eic.legally_separated
+              - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 41, Step 3, question 3 ("No. Skip questions 4 and 5"), question 4 ("No. Skip question 5"), question 5
+          ("No. STOP")
     - id: eic.step3
       printed: (helper)
       type: Bool
-      label: 'Step 3, questions 2 to 6: filing jointly, or you could not be a qualifying child of another person'
+      label: 'Step 3, questions 2 to 6: filing jointly, or passing questions 3 to 5 and not a qualifying child of another person'
       expr:
         op: test
         any:
@@ -577,19 +622,18 @@ form:
               - f1040.status
               - const: mfj
           - op: test
-            eq:
-              - eic.qc_of_another
-              - const: false
+            all:
+              - op: test
+                eq:
+                  - eic.step3_married
+                  - const: true
+              - op: test
+                eq:
+                  - eic.qc_of_another
+                  - const: false
       cite:
         doc: i1040gi
-        locator: p. 41, Step 3, questions 2 and 6
-      refuses:
-        - when: eic.married_rules
-          form: Special rule for separated spouses (EIC, Step 3, questions 3 to 5)
-          remedy: A married filer claiming the EIC under the special rule for separated spouses is outside this tool.
-          cite:
-            doc: i1040gi
-            locator: p. 41, Step 3, questions 3 to 5; p. 44, Special rule for separated spouses
+        locator: p. 41, Step 3, questions 2 to 6
     - id: eic.step4
       printed: (helper)
       type: Bool

@@ -36,9 +36,11 @@ current; `BUG_INVENTORY.md` has 29 entries.
      child of another person, born before January 2, 2001, main home in the
      United States, married (head of household only).
    - Schedule 8812 line 18a follows the Earned Income Chart.
+   - Married filers who file separately or as head of household answer Step 3,
+     questions 4 and 5 (owner ruling); the EIC count uses its own SSN question
+     (`dependent.eic_ssn`, owner ruling).
    - Refused with citations: Worksheet B (self-employment, clergy, church
-     employees, statutory employees), married filers (Step 3 questions 3 to 5,
-     the separated-spouse rule), Form 2555, nonresident aliens, Schedule E and
+     employees, statutory employees), Form 2555, nonresident aliens, Schedule E and
      Form 8814, combat pay, Medicaid waiver payments, the tie-breaker and
      married-child rules.
    - Evidence: `fixtures/2025/stage9.json` (38 cases, every value predicted by
@@ -65,7 +67,5 @@ current; `BUG_INVENTORY.md` has 29 entries.
 
 ## Open items (see TASKS.md)
 
-- T-028: owner review of the Stage 9 choices (two ambiguity-register entries,
-  refusing married head of household filers, the AGI shortcut).
 - T-026 (an unread dependent helper), T-027 (Form 1040 lines 27b and 27c).
 - T-011 the 2026 refetch; T-019 PolicyEngine students; the earlier open items.

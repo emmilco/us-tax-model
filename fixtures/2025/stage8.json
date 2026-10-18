@@ -575,7 +575,8 @@
         "eic.born_before_2001": true,
         "eic.us_home": true,
         "eic.married": false,
-        "dependent[child].us_half": true
+        "dependent[child].us_half": true,
+        "dependent[child].eic_ssn": true
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -1092,7 +1093,10 @@
         "eic.married": false,
         "dependent[a].us_half": true,
         "dependent[b].us_half": true,
-        "dependent[c].us_half": true
+        "dependent[c].us_half": true,
+        "dependent[a].eic_ssn": true,
+        "dependent[b].eic_ssn": true,
+        "dependent[c].eic_ssn": true
       },
       "expect": {
         "dependent[a].actc_amount": {
@@ -1735,7 +1739,10 @@
         "eic.married": false,
         "dependent[a].us_half": true,
         "dependent[b].us_half": true,
-        "dependent[c].us_half": true
+        "dependent[c].us_half": true,
+        "dependent[a].eic_ssn": true,
+        "dependent[b].eic_ssn": true,
+        "dependent[c].eic_ssn": true
       },
       "expect": {
         "dependent[a].actc_amount": {
@@ -11992,7 +11999,8 @@
         "eic.born_before_2001": true,
         "eic.us_home": true,
         "eic.married": false,
-        "dependent[child].us_half": true
+        "dependent[child].us_half": true,
+        "dependent[child].eic_ssn": true
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -12600,7 +12608,8 @@
         "eic.born_before_2001": true,
         "eic.us_home": true,
         "eic.married": false,
-        "dependent[child].us_half": true
+        "dependent[child].us_half": true,
+        "dependent[child].eic_ssn": true
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -13367,7 +13376,8 @@
         "eic.born_before_2001": true,
         "eic.us_home": true,
         "eic.married": false,
-        "dependent[child].us_half": true
+        "dependent[child].us_half": true,
+        "dependent[child].eic_ssn": true
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -13990,7 +14000,8 @@
         "eic.born_before_2001": true,
         "eic.us_home": true,
         "eic.married": false,
-        "dependent[child].us_half": true
+        "dependent[child].us_half": true,
+        "dependent[child].eic_ssn": true
       },
       "expect": {
         "dependent[child].actc_amount": {

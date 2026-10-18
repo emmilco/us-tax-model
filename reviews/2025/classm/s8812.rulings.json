@@ -4,30 +4,6 @@
  "rulings": [
   {
    "case": "classm.s8812.1",
-   "printed": "18a",
-   "project": "$32,936.00",
-   "model": "$0.00",
-   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The printed 'Stop here' (Schedule 8812 line 12 when line 8 is not more than line 11, line 16a or 16b at zero) and the skip of Part II-B for fewer than three children leave the later lines blank; the project computes every line regardless, and the lines past the stop do not reach Form 1040 (lines 14 and 27 carry the credits).",
-   "drop": true
-  },
-  {
-   "case": "classm.s8812.1",
-   "printed": "19",
-   "project": "$30,436.00",
-   "model": "$0.00",
-   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The printed 'Stop here' (Schedule 8812 line 12 when line 8 is not more than line 11, line 16a or 16b at zero) and the skip of Part II-B for fewer than three children leave the later lines blank; the project computes every line regardless, and the lines past the stop do not reach Form 1040 (lines 14 and 27 carry the credits).",
-   "drop": true
-  },
-  {
-   "case": "classm.s8812.1",
-   "printed": "20",
-   "project": "$4,565.40",
-   "model": "$0.00",
-   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The printed 'Stop here' (Schedule 8812 line 12 when line 8 is not more than line 11, line 16a or 16b at zero) and the skip of Part II-B for fewer than three children leave the later lines blank; the project computes every line regardless, and the lines past the stop do not reach Form 1040 (lines 14 and 27 carry the credits).",
-   "drop": true
-  },
-  {
-   "case": "classm.s8812.1",
    "printed": "21",
    "project": "$2,925.57",
    "model": "$0.00",
@@ -44,48 +20,40 @@
   },
   {
    "case": "classm.s8812.1",
-   "printed": "25",
-   "project": "$2,925.57",
-   "model": "$0.00",
-   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The printed 'Stop here' (Schedule 8812 line 12 when line 8 is not more than line 11, line 16a or 16b at zero) and the skip of Part II-B for fewer than three children leave the later lines blank; the project computes every line regardless, and the lines past the stop do not reach Form 1040 (lines 14 and 27 carry the credits).",
-   "drop": true
-  },
-  {
-   "case": "classm.s8812.1",
-   "printed": "26",
-   "project": "$4,565.40",
-   "model": "$0.00",
-   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The printed 'Stop here' (Schedule 8812 line 12 when line 8 is not more than line 11, line 16a or 16b at zero) and the skip of Part II-B for fewer than three children leave the later lines blank; the project computes every line regardless, and the lines past the stop do not reach Form 1040 (lines 14 and 27 carry the credits).",
-   "drop": true
-  },
-  {
-   "case": "classm.s8812.2",
-   "printed": "21",
-   "project": "$46.98",
-   "model": "$0.00",
-   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The printed 'Stop here' (Schedule 8812 line 12 when line 8 is not more than line 11, line 16a or 16b at zero) and the skip of Part II-B for fewer than three children leave the later lines blank; the project computes every line regardless, and the lines past the stop do not reach Form 1040 (lines 14 and 27 carry the credits).",
-   "drop": true
-  },
-  {
-   "case": "classm.s8812.2",
-   "printed": "23",
-   "project": "$46.98",
-   "model": "$0.00",
-   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The printed 'Stop here' (Schedule 8812 line 12 when line 8 is not more than line 11, line 16a or 16b at zero) and the skip of Part II-B for fewer than three children leave the later lines blank; the project computes every line regardless, and the lines past the stop do not reach Form 1040 (lines 14 and 27 carry the credits).",
-   "drop": true
-  },
-  {
-   "case": "classm.s8812.2",
    "printed": "24",
-   "project": "$213.00",
+   "project": "$2,798.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The printed 'Stop here' (Schedule 8812 line 12 when line 8 is not more than line 11, line 16a or 16b at zero) and the skip of Part II-B for fewer than three children leave the later lines blank; the project computes every line regardless, and the lines past the stop do not reach Form 1040 (lines 14 and 27 carry the credits).",
    "drop": true
   },
   {
-   "case": "classm.s8812.3",
+   "case": "classm.s8812.1",
+   "printed": "25",
+   "project": "$127.57",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The printed 'Stop here' (Schedule 8812 line 12 when line 8 is not more than line 11, line 16a or 16b at zero) and the skip of Part II-B for fewer than three children leave the later lines blank; the project computes every line regardless, and the lines past the stop do not reach Form 1040 (lines 14 and 27 carry the credits).",
+   "drop": true
+  },
+  {
+   "case": "classm.s8812.1",
+   "printed": "26",
+   "project": "$4,565.40",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The printed 'Stop here' (Schedule 8812 line 12 when line 8 is not more than line 11, line 16a or 16b at zero) and the skip of Part II-B for fewer than three children leave the later lines blank; the project computes every line regardless, and the lines past the stop do not reach Form 1040 (lines 14 and 27 carry the credits).",
+   "drop": true
+  },
+  {
+   "case": "classm.s8812.2",
    "printed": "13",
-   "project": "$32,528.85",
+   "project": "$40,489.02",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The printed 'Stop here' (Schedule 8812 line 12 when line 8 is not more than line 11, line 16a or 16b at zero) and the skip of Part II-B for fewer than three children leave the later lines blank; the project computes every line regardless, and the lines past the stop do not reach Form 1040 (lines 14 and 27 carry the credits).",
+   "drop": true
+  },
+  {
+   "case": "classm.s8812.2",
+   "printed": "16b",
+   "project": "$1,700.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The printed 'Stop here' (Schedule 8812 line 12 when line 8 is not more than line 11, line 16a or 16b at zero) and the skip of Part II-B for fewer than three children leave the later lines blank; the project computes every line regardless, and the lines past the stop do not reach Form 1040 (lines 14 and 27 carry the credits).",
    "drop": true
@@ -93,7 +61,7 @@
   {
    "case": "classm.s8812.3",
    "printed": "21",
-   "project": "$950.00",
+   "project": "$1,248.63",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The printed 'Stop here' (Schedule 8812 line 12 when line 8 is not more than line 11, line 16a or 16b at zero) and the skip of Part II-B for fewer than three children leave the later lines blank; the project computes every line regardless, and the lines past the stop do not reach Form 1040 (lines 14 and 27 carry the credits).",
    "drop": true
@@ -101,7 +69,7 @@
   {
    "case": "classm.s8812.3",
    "printed": "23",
-   "project": "$950.00",
+   "project": "$1,248.63",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The printed 'Stop here' (Schedule 8812 line 12 when line 8 is not more than line 11, line 16a or 16b at zero) and the skip of Part II-B for fewer than three children leave the later lines blank; the project computes every line regardless, and the lines past the stop do not reach Form 1040 (lines 14 and 27 carry the credits).",
    "drop": true
@@ -109,7 +77,7 @@
   {
    "case": "classm.s8812.3",
    "printed": "25",
-   "project": "$950.00",
+   "project": "$1,248.63",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The printed 'Stop here' (Schedule 8812 line 12 when line 8 is not more than line 11, line 16a or 16b at zero) and the skip of Part II-B for fewer than three children leave the later lines blank; the project computes every line regardless, and the lines past the stop do not reach Form 1040 (lines 14 and 27 carry the credits).",
    "drop": true
@@ -117,7 +85,7 @@
   {
    "case": "classm.s8812.3",
    "printed": "26",
-   "project": "$950.00",
+   "project": "$1,248.63",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The printed 'Stop here' (Schedule 8812 line 12 when line 8 is not more than line 11, line 16a or 16b at zero) and the skip of Part II-B for fewer than three children leave the later lines blank; the project computes every line regardless, and the lines past the stop do not reach Form 1040 (lines 14 and 27 carry the credits).",
    "drop": true

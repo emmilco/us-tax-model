@@ -79,9 +79,7 @@ export function testFixtures(): number {
       cases++;
       const inputsPath = join(tmp, `${c.id}.json`);
       writeFileSync(inputsPath, JSON.stringify(c.inputs));
-      const proc = spawnSync(process.execPath, [DIST_MAIN, "eval", "--inputs", inputsPath, "--json"], {
-        encoding: "utf-8",
-      });
+      const proc = spawnSync(process.execPath, [DIST_MAIN, "eval", "--inputs", inputsPath, "--json"], { encoding: "utf-8", maxBuffer: 256 * 1024 * 1024 });
       if (proc.status !== 0) {
         console.error(`FAIL ${c.id}: eval exited ${proc.status}\n${proc.stderr.slice(0, 400)}`);
         failures++;
@@ -121,7 +119,7 @@ export function reviewStage5(): void {
     for(const id of selected) {
       const fixture=loadCases().cases.find(c=>c.id===id)!;
       const input=join(tmp,"inputs.json");writeFileSync(input,JSON.stringify(fixture.inputs));
-      const proc=spawnSync(process.execPath,[DIST_MAIN,"eval","--inputs",input],{encoding:"utf8"});
+      const proc=spawnSync(process.execPath,[DIST_MAIN,"eval","--inputs",input],{ encoding: "utf-8", maxBuffer: 256 * 1024 * 1024 });
       if(proc.status!==0)throw new Error(proc.stderr);
       writeFileSync(join(dir,id+".txt"),proc.stdout);
     }
@@ -340,7 +338,7 @@ export function reviewStage2(): void {
     for(const id of ["ss.multi","ss.single.over"]){
       const c=cases.find(c=>c.id===id)!;
       const path=join(tmp,"inputs.json");writeFileSync(path,JSON.stringify(c.inputs));
-      const proc=spawnSync(process.execPath,[DIST_MAIN,"eval","--inputs",path,"--target","f1040.line31"],{encoding:"utf8"});
+      const proc=spawnSync(process.execPath,[DIST_MAIN,"eval","--inputs",path,"--target","f1040.line31"],{ encoding: "utf-8", maxBuffer: 256 * 1024 * 1024 });
       if(proc.status!==0)throw new Error(proc.stderr);
       writeFileSync(join(ROOT,"reports","2025",`${id}.txt`),proc.stdout);
     }
@@ -356,7 +354,7 @@ export function reviewStage3(): void {
     for(const id of selected) {
       const fixture=loadCases().cases.find(c=>c.id===id)!;
       const input=join(tmp,"inputs.json");writeFileSync(input,JSON.stringify(fixture.inputs));
-      const proc=spawnSync(process.execPath,[DIST_MAIN,"eval","--inputs",input,"--target","f1040.line7a,f1040.line16"],{encoding:"utf8"});
+      const proc=spawnSync(process.execPath,[DIST_MAIN,"eval","--inputs",input,"--target","f1040.line7a,f1040.line16"],{ encoding: "utf-8", maxBuffer: 256 * 1024 * 1024 });
       if(proc.status!==0)throw new Error(proc.stderr);
       writeFileSync(join(dir,id+".txt"),proc.stdout);
     }
@@ -385,7 +383,7 @@ export function reviewStage4(): void {
     for(const id of selected) {
       const fixture=loadCases().cases.find(c=>c.id===id)!;
       const input=join(tmp,"inputs.json");writeFileSync(input,JSON.stringify(fixture.inputs));
-      const proc=spawnSync(process.execPath,[DIST_MAIN,"eval","--inputs",input,"--target",targets],{encoding:"utf8"});
+      const proc=spawnSync(process.execPath,[DIST_MAIN,"eval","--inputs",input,"--target",targets],{ encoding: "utf-8", maxBuffer: 256 * 1024 * 1024 });
       if(proc.status!==0)throw new Error(proc.stderr);
       writeFileSync(join(dir,id+".txt"),proc.stdout);
     }

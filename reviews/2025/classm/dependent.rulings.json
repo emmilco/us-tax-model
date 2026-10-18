@@ -1,0 +1,14 @@
+{
+ "kind": "classm",
+ "form": "dependent",
+ "rulings": [
+  {
+   "case": "classm.dependent.4",
+   "printed": "dependent[dep_a].hoh_test1",
+   "project": "yes",
+   "model": "no",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Test 1 (i1040gi p. 14) covers a parent whose main home you kept up for all of 2025, with or without the parent living with you; the project's hoh_test1 encodes only the parent who does not live with you (the question asks 'For a parent not living with you'), and a dependent parent who lived with you all year in the home you kept up qualifies you through Test 2, item 1, so head of household eligibility is the same either way.",
+   "drop": true
+  }
+ ]
+}
