@@ -195,7 +195,9 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
   stats.push(...checkResult.stats);
 
   // A line no other line reads must be an interview target or say why it is shown (display);
-  // a line marked display must not be read. Unread helpers are how dead logic hides.
+  // a line marked display must not be read. Unread helpers are how dead logic hides. A line of
+  // a collection form is evaluated only when a reader reaches it and the values sheet prints no
+  // entry lines, so display cannot be claimed there.
   {
     const docs = [...data.forms, ...data.defs];
     const ids = new Set(docs.flatMap((d) => d.lines.map((l) => l.id)));
@@ -208,6 +210,7 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
     for (const d of docs) for (const l of d.lines) { walk(l.expr); for (const r of l.refuses ?? []) read.add(r.when); }
     const targets = new Set([interview, salesInterview, stage4Interview, fullInterview].flatMap((i) => i.targets));
     for (const d of data.forms) for (const l of d.lines) {
+      if (d.collection && l.display) errors.push(`${d.id}.${l.id}: marked display in a collection form, whose entry lines are neither evaluated unless read nor shown on the values sheet`);
       if (String(l.printed).startsWith("(") === false) continue; // printed lines are the form's own lines
       const unread = !read.has(l.id) && !targets.has(l.id);
       if (unread && !l.display) errors.push(`${d.id}.${l.id}: no line reads this ${l.expr.op} line and it is not an interview target; remove it or say why it is shown (display)`);

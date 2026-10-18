@@ -1,0 +1,1850 @@
+2025
+Instructions for Forms
+1099-R and 5498
+Distributions From Pensions, Annuities, Retirement or Profit-Sharing Plans, IRAs,
+Insurance Contracts, etc.
+Section references are to the Internal Revenue Code
+unless otherwise noted.                                        Specific Instructions for Form 1099-R
+                                                               File Form 1099-R, Distributions From Pensions, Annuities,
+Future Developments                                            Retirement or Profit-Sharing Plans, IRAs, Insurance
+For the latest information about developments related to       Contracts, etc., for each person to whom you have made a
+Forms 1099-R and 5498 and their instructions, such as          designated distribution or are treated as having made a
+legislation enacted after they were published, go to           distribution of $10 or more from profit-sharing or
+IRS.gov/Form1099R or IRS.gov/Form5498.                         retirement plans, any individual retirement arrangements
+   You can get the General Instructions for Certain            (IRAs), annuities, pensions, insurance contracts, survivor
+Information Returns at IRS.gov/1099GeneralInstructions.        income benefit plans, permanent and total disability
+                                                               payments under life insurance contracts, charitable gift
+What’s New                                                     annuities, etc.
+New code Y for box 7. We added a new code "Y" to the              Designated Roth nonelective contributions and
+list of codes for box 7 to identify a qualified charitable     designated Roth matching contributions must be reported
+distribution (QCD). See Qualified charitable distributions     on Form 1099-R for the year in which the contributions are
+(QCDs), later.                                                 allocated. See Q&A L-9 of Notice 2024-2, available at
+                                                               IRS.gov/irb/2024-02_IRB#NOT-2024-2.
+Reminders
+In addition, see the current General Instructions for             Also, report on Form 1099-R death benefits payments
+Certain Information Returns for information on the             made by employers that are not made as part of a
+following topics.                                              pension, profit-sharing, or retirement plan. See Box 1,
+• Who must file (certain Foreign Financial Institutions        later.
+(FFIs) and U.S. payers that report on Form(s) 1099 to             Payments of reportable death benefits in accordance
+satisfy their Internal Revenue Code chapter 4 reporting        with final regulations published under section 6050Y must
+requirements).                                                 be reported on Form 1099-R.
+• When and where to file.
+• Electronic reporting.                                           Reportable disability payments made from a retirement
+• Corrected and void returns.                                  plan must be reported on Form 1099-R.
+• Statements to recipients.                                       Generally, do not report payments subject to
+• Taxpayer identification numbers (TINs).                      withholding of social security and Medicare taxes on this
+• Backup withholding.                                          form. Report such payments on Form W-2, Wage and Tax
+• Penalties.                                                   Statement.
+• The definitions of terms applicable for chapter 4
+purposes that are referenced in these instructions.                    There is no special reporting for qualified health
+• Other general topics.                                         TIP savings account (HSA) funding distributions
+                                                                        described in section 408(d)(9), or for the payment
+Automatic rollover amount. Beginning January 1,
+                                                               of qualified health insurance premiums (including
+2024, the automatic rollover amount increased from
+                                                               long-term care insurance premiums) for retired public
+$5,000 to $7,000. See Automatic rollovers, later.
+                                                               safety officers described in section 402(l).
+Information Reporting Intake System (IRIS). The IRS
+has developed IRIS, an online portal for e-filing              Reportable death benefits. Under section 6050Y and
+information returns. Go to IRS.gov/IRIS for more               the regulations thereunder, a payer must report reportable
+information.                                                   death benefits paid after December 31, 2018, in
+                                                               connection with a life insurance contract transferred after
+Online fillable forms. To ease statement furnishing
+                                                               December 31, 2018, in a reportable policy sale.
+requirements, Copies B, C, 1, and 2 have been made
+                                                               Reportable death benefits are amounts paid by reason of
+fillable online in a PDF format available at IRS.gov/
+                                                               the death of the insured under a life insurance contract
+Form1099R and IRS.gov/Form5498. You can complete
+                                                               that has been transferred in a reportable policy sale. In
+these copies online for furnishing statements to recipients
+                                                               general, a reportable policy sale is the acquisition of an
+and for retaining in your own files.
+                                                               interest in a life insurance contract, directly or indirectly, if
+                                                               the acquirer has no substantial family, business, or
+                                 Instructions for Form 1099R (2025) Catalog Number 27987M
+Apr 15, 2025                  Department of the Treasury Internal Revenue Service www.irs.gov
+financial relationship with the insured apart from the         distributions from the annuity on Form 1099-R. See
+acquirer's interest in such life insurance contract. The       Charitable gift annuities, later.
+payer of reportable death benefits must file a return that
+                                                               Life insurance, annuity, and endowment contracts.
+includes certain information, including the name of the
+                                                               Report payments of matured or redeemed annuity,
+reportable death benefits payment recipient, the date and
+                                                               endowment, and life insurance contracts. However, you do
+gross amount of each payment, and the payer's estimate
+                                                               not need to file Form 1099-R to report the surrender of a
+of the buyer's investment in the contract. Under
+                                                               life insurance contract if it is reasonable to believe that
+Regulations section 1.6050Y-4(e), however, a payer does
+                                                               none of the payment is includible in the income of the
+not have to file a return for reportable death benefits
+                                                               recipient. If you are reporting the surrender of a life
+payments in certain situations, including when the
+                                                               insurance contract, see Code 7, later. See, however, Box
+reportable death benefits payments are made to certain         1, later, for FFIs reporting in a manner similar to section
+foreign payees and when the payer does not receive, and        6047(d) for the purposes of chapter 4 of the Internal
+has no knowledge of any issuer having received, a              Revenue Code.
+reportable policy sale payment statement.
+                                                                   Report premiums paid by a trustee or custodian for the
+Military retirement annuities. Report payments to              cost of current life or other insurance protection. Costs of
+military retirees or payments of survivor benefit annuities    current life insurance protection are not subject to the 10%
+on Form 1099-R. Report military retirement pay awarded         additional tax under section 72(t). See Cost of current life
+as a property settlement to a former spouse under the          insurance protection, later.
+name and TIN of the recipient, not that of the military
+                                                                   Report charges or payments for a qualified long-term
+retiree.
+                                                               care insurance contract against the cash value of an
+        Use Code 7 in box 7 for reporting military             annuity contract or the cash surrender value of a life
+    !   pensions or survivor benefit annuities. Use Code       insurance contract, which is excludable from gross
+CAUTION 4 for reporting death benefits paid to a survivor      income under section 72(e)(11). See Code W, later.
+beneficiary on a separate Form 1099-R. Do not combine             Section 1035 exchange. A tax-free section 1035
+with any other codes.                                          exchange is the exchange of (a) a life insurance contract
+                                                               for another life insurance contract, or for an endowment or
+Governmental section 457(b) plans. Report on Form              annuity contract, or for a qualified long-term care
+1099-R, not Form W-2, income tax withholding and               insurance contract; (b) a contract of endowment insurance
+distributions from a section 457(b) plan maintained by a       for another contract of endowment insurance that provides
+state or local government employer. Distributions from a       for regular payments to begin no later than they would
+governmental section 457(b) plan to a participant or           have begun under the old contract, or for an annuity
+beneficiary include all amounts that are paid from the         contract, or for a qualified long-term care insurance
+plan. For more information, see Notice 2003-20 on              contract; (c) an annuity contract for an annuity contract or
+page 894 of Internal Revenue Bulletin (IRB) 2003-19 at         for a qualified long-term care insurance contract; or (d) a
+IRS.gov/pub/irs-irbs/irb03-19.pdf. Also, see Governmental      qualified long-term care insurance contract for a qualified
+section 457(b) plan distributions, later, for information on   long-term care insurance contract. A contract shall not fail
+distribution codes.                                            to be treated as an annuity contract or as a life insurance
+Nonqualified plans. Report any reportable distributions        contract solely because a qualified long-term care
+from commercial annuities. Report distributions to             insurance contract is a part of, or a rider on, such contract.
+employee plan participants from section 409A                   However, the distribution of other property or the
+nonqualified deferred compensation plans and eligible          cancellation of a contract loan at the time of the exchange
+nongovernmental section 457(b) plans on Form W-2, not          may be taxable and reportable on a separate Form
+on Form 1099-R; for nonemployees, these payments are           1099-R.
+reportable on Form 1099-NEC. Report distributions to               These exchanges of contracts are generally reportable
+beneficiaries of deceased plan participants on Form            on Form 1099-R. However, reporting on Form 1099-R is
+1099-MISC. For more information, see the Instructions for      not required if (a) the exchange occurs within the same
+Forms 1099-MISC and 1099-NEC at IRS.gov/pub/irs-pdf/           company; (b) the exchange is solely a contract for contract
+i1099mec.pdf.                                                  exchange, as defined above, that does not result in a
+Section 404(k) dividends. Distributions of section             designated distribution; and (c) the company maintains
+404(k) dividends from an employee stock ownership plan         adequate records of the policyholder's basis in the
+(ESOP), including a tax credit ESOP, are reported on           contracts. For example, a life insurance contract issued by
+Form 1099-R. Distributions other than section 404(k)           Company X received in exchange solely for another life
+dividends from the plan must be reported on a separate         insurance contract previously issued by Company X does
+Form 1099-R.                                                   not have to be reported on Form 1099-R as long as the
+                                                               company maintains the required records. See Rev. Proc.
+   Section 404(k) dividends paid directly from the             92-26, 1992-1 C.B. 744, for certain exchanges for which
+corporation to participants or their beneficiaries are         reporting is not required under section 6047(d). Also, see
+reported on Form 1099-DIV. See Announcement 2008-56,           Rev. Rul. 2007-24, 2007-21 I.R.B. 1282, available at
+2008-26 I.R.B. 1192, available at IRS.gov/irb/                 IRS.gov/irb/2007-21_IRB#RR-2007-24, for certain
+2008-26_IRB#ANN-2008-56.                                       transactions that do not qualify as tax-free exchanges. For
+Charitable gift annuities. If cash or capital gain property    more information on partial exchanges of annuity
+is donated in exchange for a charitable gift annuity, report
+
+2                                                                           Instructions for Forms 1099-R and 5498 (2025)
+contracts, see Rev. Proc. 2011-38, 2011-30 I.R.B. 66,            which the employer may contribute to IRAs of their
+available at IRS.gov/irb/2011-30_IRB#RP-2011-38.                 employees.
+   Regulations under section 6050Y provide that a section           Under a simplified employee pension (SEP)
+1035 exchange constitutes a reportable policy sale in            arrangement, an employer contributes to traditional IRAs
+limited circumstances. Death benefits paid by reason of          (sometimes referred to as traditional SEP IRAs) or Roth
+the death of the insured under the life insurance contract       IRAs (sometimes referred to as Roth SEP IRAs) of its
+issued in such circumstances are reportable death                employees. Individuals may separately make their own
+benefits that must be reported on Form 1099-R.                   contributions to the same IRAs to which their employer
+   For more information on reporting taxable exchanges,          contributes under a SEP arrangement.
+see Box 1. Gross Distribution, later.                               Under a savings incentive match plan for employees
+Prohibited transactions. If an IRA owner engages in a            (SIMPLE) IRA plan, an employer contributes salary
+prohibited transaction with respect to an IRA, the assets of     reduction contributions (at the election of the employee),
+the IRA are treated as distributed on the first day of the tax   matching contributions and/or nonelective contributions to
+year in which the prohibited transaction occurs. IRAs that       traditional IRAs (sometimes referred to as traditional
+hold non-marketable securities and/or closely held               SIMPLE IRAs) or Roth IRAs (sometimes referred to as
+investments, in which the IRA owner effectively controls         Roth SIMPLE IRAs) of its employees. However, a SIMPLE
+the underlying assets of such securities or investments,         IRA (whether a traditional SIMPLE IRA or a Roth SIMPLE
+have a greater potential for resulting in a prohibited           IRA) is subject to certain restrictions that do not generally
+transaction. Enter Code 5 in box 7.                              apply to other traditional IRAs or Roth IRAs. For example,
+                                                                 an individual cannot make their own contributions to a
+Designated Roth Account Contributions                            SIMPLE IRA. In addition, there are various restrictions
+                                                                 related to distributions and contributions during the initial 2
+An employer offering a section 401(k), 403(b), or
+                                                                 years of participation in the SIMPLE IRA plan.
+governmental section 457(b) plan may allow participants
+to contribute all or a portion of the elective deferrals they       References to traditional IRAs generally include
+are otherwise eligible to make to a separate designated          traditional SEP IRAs and traditional SIMPLE IRAs, unless
+Roth account established under the plan. These                   otherwise stated. Likewise, references to Roth IRAs
+contributions, which are made in lieu of elective deferrals,     generally include Roth SEP IRAs and Roth SIMPLE IRAs,
+are designated Roth contributions. Contributions made            unless otherwise stated.
+under a section 401(k) plan must meet the requirements           IRAs other than Roth IRAs. Unless otherwise
+of Regulations section 1.401(k)-1(f) (Regulations section        instructed, distributions from any IRA that is not a Roth
+1.403(b)-3(c) for a section 403(b) plan). In addition, a         IRA must be reported in boxes 1 and 2a. Check the
+designated Roth account may include certain nonelective          “Taxable amount not determined” box in box 2b. But see:
+contributions or matching contributions that a participant       • Traditional IRA, later, for how to report the withdrawal of
+designates as Roth contributions. Under the terms of the         IRA contributions under section 408(d)(4) and for
+section 401(k) plan, section 403(b) plan, or governmental        reporting a corrective distribution from an IRA under
+section 457(b) plan, the designated Roth account must            section 408(d)(5);
+meet the requirements of section 402A.                           • Transfers, later, for information on trustee-to-trustee
+        A separate Form 1099-R must be used to report            transfers, including recharacterizations;
+  !     the total annual distribution from a designated          • IRA Revocation or Account Closure, later, for reporting
+CAUTION Roth account.                                            IRA revocations or account closures due to Customer
+                                                                 Identification Program failures; and
+Distributions allocable to an in-plan Roth rollover              • SIMPLE IRAs, later, for reporting a transfer from a
+(IRR). The distribution of an amount allocable to the            traditional SIMPLE IRA to a traditional IRA that is not a
+taxable amount of an IRR, made within the 5-year period          SIMPLE IRA within the first 2 years of plan participation.
+beginning with the first day of the participant’s tax year in        The direct rollover provisions beginning later do not
+which the rollover was made, is treated as includible in         apply to distributions from any IRA. However, taxable
+gross income for purposes of applying section 72(t) to the       distributions from traditional IRAs that are not traditional
+distribution. The total amount allocable to such an IRR is       SIMPLE IRAs may be rolled over into an eligible
+reported in box 10. See the instructions for Box 10.             retirement plan. See section 408(d)(3). Traditional
+Amount Allocable to IRR Within 5 Years, later. An IRR is a       SIMPLE IRAs may also be rolled over into an eligible
+rollover within a retirement plan to a designated Roth           retirement plan, but only after the first 2 years of plan
+account in the same plan. See Notice 2010-84, 2010-51            participation.
+I.R.B. 872, available at IRS.gov/irb/                                An IRA includes all investments under one IRA plan or
+2010-51_IRB#NOT-2010-84, as modified by Notice                   account. File only one Form 1099-R for distributions from
+2013-74, 2013-52 I.R.B. 819, available at IRS.gov/irb/           all investments under one plan that are paid in 1 year to
+2013-52_IRB#NOT-2013-74.                                         one recipient, unless you must enter different codes in
+IRA Distributions                                                box 7. You do not have to file a separate Form 1099-R for
+                                                                 each distribution under the plan.
+Types of IRAs. An IRA can be either a traditional IRA or
+                                                                 Roth IRAs. For distributions from a Roth IRA, report the
+a Roth IRA. In general, individuals may make their own
+                                                                 gross distribution in box 1 but generally leave box 2a
+contributions to their traditional IRAs or Roth IRAs. In
+                                                                 blank. Check the “Taxable amount not determined” box in
+addition, certain employers have arrangements under
+
+Instructions for Forms 1099-R and 5498 (2025)                                                                                 3
+box 2b. Enter Code J, Q, or T, as appropriate, in box 7. Do       or closed, and a distribution is made to the taxpayer, enter
+not use any other codes with Code Q or Code T. You may            the gross distribution in box 1 of Form 1099-R. If no
+enter Code 8, P, or S with Code J. For the withdrawal of          earnings are distributed, enter 0 (zero) in box 2a and
+excess contributions, see Roth IRA under Box 2a. Taxable          Code J in box 7. If earnings are distributed, enter the
+amount, later. It is not necessary to mark the IRA/SEP/           amount of the earnings in box 2a and Code J in box 7.
+SIMPLE checkbox.                                                  These earnings could be subject to the 10% additional tax
+Reporting Roth IRA conversions. You must report a                 under section 72(t).
+traditional IRA distribution that you know is converted this         If an employer makes a contribution under a SEP
+year to a Roth IRA in boxes 1 and 2a (checking box 2b             arrangement or a SIMPLE IRA plan and the employee’s
+“Taxable amount not determined” unless otherwise                  SEP IRA or SIMPLE IRA is revoked by the employee or is
+directed elsewhere in these instructions), even if the            closed by the trustee or custodian, report the distribution
+conversion is a trustee-to-trustee transfer or is with the        as fully taxable.
+same trustee. Enter Code 2 or 7 in box 7 depending on
+the participant's age.                                              For more information on IRAs that have been revoked,
+IRA escheatment. Payments made from IRAs to state                 see Rev. Proc. 91-70, 1991-2 C.B. 899.
+unclaimed property funds must be reported on Form                 Roth SEP IRAs and Roth SIMPLE IRAs
+1099-R. See Rev. Rul. 2018-17, 2018-25 I.R.B. 753,
+available at IRS.gov/irb/2018-25_IRB#RR-2018-17, as               Employer matching and nonelective contributions made to
+modified by Notice 2018-90, 2018-49 I.R.B. 826, available         a Roth SEP or Roth SIMPLE IRA must be reported in the
+at IRS.gov/irb/2018-49_IRB#NOT-2018-90.                           same manner as the reporting that would have applied if
+                                                                  (1) there were no after-tax contributions made to any of
+        For deemed IRAs under section 408(q), use the             the employee's IRAs, and (2) the matching or nonelective
+ TIP rules that apply to traditional IRAs or Roth IRAs,           contributions were made to an IRA that was not a Roth
+      as applicable. SEP IRAs and SIMPLE IRAs,                    IRA and then immediately converted to a Roth IRA. So,
+however, may not be used as deemed IRAs.                          employer matching and nonelective contributions made to
+                                                                  a Roth SEP or Roth SIMPLE IRA must be reported for the
+Deemed IRAs. For more information on deemed IRAs in               year in which the contributions are made to the
+qualified employer plans, see Regulations section                 employee's Roth IRA, with the total reported in boxes 1
+1.408(q)-1.                                                       and 2a, using code 2 or 7 in box 7 and the IRA/SEP/
+                                                                  SIMPLE checkbox in box 7 checked.
+IRA Revocation or Account Closure
+If a traditional or Roth IRA is revoked during its first 7 days   Plan Escheatment
+(under Regulations section 1.408-6(d)(4)(ii)) or is closed        Payments made from qualified plans on or after January 1,
+at any time by the IRA trustee or custodian due to a failure      2022, to state unclaimed property funds must be reported
+of the taxpayer to satisfy the Customer Identification            on Form 1099-R. See Rev. Rul. 2020-24, 2020-45 I.R.B.
+Program requirements described in section 326 of the              965, available at IRS.gov/irb/2020-45_IRB#REV-
+USA PATRIOT Act, the distribution from the IRA must be            RUL-2020-24.
+reported. In addition, Form 5498, IRA Contribution
+Information, must be filed to report any regular, rollover,       Deductible Voluntary Employee Contributions
+Roth IRA conversion, SEP IRA, or SIMPLE IRA                       (DVECs)
+contribution to an IRA that is subsequently revoked or
+                                                                  If you are reporting a total distribution from a plan that
+closed by the trustee or custodian.
+                                                                  includes a distribution of DVECs, you may file a separate
+    If a regular contribution is made to a traditional or Roth    Form 1099-R to report the distribution of DVECs. If you do,
+IRA that is later revoked or closed, and a distribution is        report the distribution of DVECs in boxes 1 and 2a on the
+made to the taxpayer, enter the gross distribution in box 1.      separate Form 1099-R. For the direct rollover (explained
+If no earnings are distributed, enter 0 (zero) in box 2a and      later) of funds that include DVECs, a separate Form
+Code 8 in box 7 for a traditional IRA and Code J for a Roth       1099-R is not required to report the direct rollover of the
+IRA. If earnings are distributed, enter the amount of             DVECs.
+earnings in box 2a. For a traditional IRA, enter Codes 1
+and 8, if applicable, in box 7; for a Roth IRA, enter Codes       Direct Rollovers
+J and 8, if applicable. These earnings could be subject to        You must report a direct rollover of an eligible rollover
+the 10% additional tax under section 72(t). If a rollover         distribution. A direct rollover is the direct payment of the
+contribution is made to a traditional or Roth IRA that is         distribution from a qualified plan, a section 403(b) plan, or
+later revoked or closed, and distribution is made to the          a governmental section 457(b) plan to a traditional IRA,
+taxpayer, enter in boxes 1 and 2a of Form 1099-R the              Roth IRA, or other eligible retirement plan. For additional
+gross distribution and the appropriate code in box 7 (Code        rules regarding the treatment of direct rollovers from
+J for a Roth IRA). Follow this same procedure for a               designated Roth accounts, see Designated Roth
+transfer from a traditional or Roth IRA to another IRA of         accounts, later. A direct rollover may be made for the
+the same type that is later revoked or closed. The                employee, for the employee's surviving spouse, for the
+distribution could be subject to the 10% additional tax           spouse or former spouse who is an alternate payee under
+under section 72(t).                                              a qualified domestic relations order (QDRO), or for a
+    If an IRA conversion contribution or a rollover from a        nonspouse designated beneficiary, in which case the
+qualified plan is made to a Roth IRA that is later revoked        direct rollover can only be made to an inherited IRA. If the
+
+4                                                                              Instructions for Forms 1099-R and 5498 (2025)
+distribution is paid to the surviving spouse, the distribution      Amounts paid under an annuity contract purchased for,
+is treated in the same manner as if the spouse were the           and distributed to, a participant under a qualified plan can
+employee. See Part V of Notice 2007-7, 2007-5 I.R.B.              qualify as eligible rollover distributions. See Regulations
+395, available at IRS.gov/irb/2007-05_IRB#NOT-2007-7,             section 1.402(c)-2, Q/A-10.
+and Notice 2020-51, 2020-29 I.R.B. 73, available at               Automatic rollovers. Eligible rollover distributions may
+IRS.gov/irb/2020-29_IRB#NOT-2020-51, for guidance on              also include involuntary distributions that are more than
+direct rollovers by nonspouse designated beneficiaries.           $1,000 but not more than $7,000 and are made from a
+Also, see Notice 2008-30, Part II, 2008-12 I.R.B. 638,            qualified plan to an IRA on behalf of a plan participant.
+available at IRS.gov/irb/2008-12_IRB#NOT-2008-30,                 Involuntary distributions are generally subject to the
+which has been amplified and clarified by Notice 2009-75,
+                                                                  automatic rollover provisions of section 401(a)(31)(B) and
+2009-39 I.R.B. 436, available at IRS.gov/irb/
+                                                                  must be paid in a direct rollover to an IRA, unless the plan
+2009-39_IRB#NOT-2009-75, for questions and answers
+                                                                  participant elects to have the rollover made to another
+covering rollover contributions to Roth IRAs.
+                                                                  eligible retirement plan or to receive the distribution
+   An eligible rollover distribution is any distribution of all   directly.
+or any portion of the balance to the credit of the employee          For information on the notification requirements, see
+(including net unrealized appreciation (NUA)) from a              Explanation to Recipients Before Eligible Rollover
+qualified plan, a section 403(b) plan, or a governmental          Distributions (Section 402(f) Notice), later. For additional
+section 457(b) plan except the following.                         information, also see Notice 2005-5, 2005-3 I.R.B. 337,
+   1. One of a series of substantially equal periodic             available at IRS.gov/irb/2005-03_IRB#NOT-2005-5, as
+payments made at least annually over:                             modified by Notice 2005-95, 2005-51 I.R.B. 1172,
+   a. The life of the employee or the joint lives of the          available at IRS.gov/irb/2005-51_IRB#NOT-2005-95.
+employee and the employee's designated beneficiary,               Reporting a direct rollover. Report a direct rollover in
+   b. The life expectancy of the employee or the joint life       box 1 and a 0 (zero) in box 2a, unless the rollover is a
+and last survivor expectancy of the employee and the              direct rollover of a qualified rollover contribution other than
+employee's designated beneficiary, or                             from a designated Roth account. See Qualified rollover
+   c. A specified period of 10 years or more.                     contributions as defined in section 408A(e), later. You do
+                                                                  not have to report capital gain in box 3 or NUA in box 6.
+   2. A required minimum distribution (RMD) under                 Enter Code G in box 7 unless the rollover is a direct
+section 401(a)(9). A plan administrator is permitted to           rollover from a designated Roth account to a Roth IRA.
+assume there is no designated beneficiary for purposes of         See Designated Roth accounts, later. If the direct rollover
+determining the minimum distribution.                             is made by a nonspouse designated beneficiary, also
+   3. Elective deferrals (under section 402(g)(3)) and            enter Code 4 in box 7.
+employee contributions (including earnings on each)                  Prepare the form using the name and social security
+returned because of the section 415 limits.                       number (SSN) of the person for whose benefit the funds
+   4. Corrective distributions of excess deferrals (under         were rolled over (generally, the participant), not those of
+section 402(g)) and earnings.                                     the trustee of the traditional IRA or other plan to which the
+   5. Corrective distributions of excess contributions            funds were rolled.
+under a qualified cash or deferred arrangement (under                If part of the distribution is a direct rollover and part is
+section 401(k)) and excess aggregate contributions                distributed to the recipient, prepare two Forms 1099-R.
+(under section 401(m)) and earnings.                                 For guidance on allocation of after-tax amounts to
+   6. Loans treated as deemed distributions (under                rollovers, see Notice 2014-54, 2014-41 I.R.B. 670,
+section 72(p)). However, qualified plan loan offset               available at IRS.gov/irb/2014-41_IRB#NOT-2014-54.
+amounts and plan loan offset amounts can be eligible                 For more information on eligible rollover distributions,
+rollover distributions. See section 402(c)(3)(C);                 including substantially equal periodic payments, RMDs,
+Regulations section 1.402(c)-2, Q/A-9; and Plan loan              and plan loan offset amounts, see Regulations sections
+offsets, later.                                                   1.402(c)-2 and 1.403(b)-7(b). See Rev. Rul. 2014-9,
+   7. Section 404(k) dividends.                                   2014-17 I.R.B. 975, available at IRS.gov/irb/
+   8. Cost of current life insurance protection.                  2014-17_IRB#RR-2014-9, for information on rollovers to
+                                                                  qualified plans. Also, see Rev. Rul. 2002-62, which is on
+   9. Distributions to a payee other than the employee,
+                                                                  page 710 of I.R.B. 2002-42 at IRS.gov/pub/irs-irbs/
+the employee's surviving spouse, a spouse or former
+                                                                  irb02-42.pdf, for guidance on substantially equal periodic
+spouse who is an alternate payee under a QDRO, or a
+                                                                  payments.
+nonspouse designated beneficiary.
+   10. Any hardship distribution.                                         For information on distributions of amounts
+                                                                   TIP attributable to rollover contributions separately
+   11. A permissible withdrawal under section 414(w).                    accounted for by an eligible retirement plan and if
+   12. Prohibited allocations of securities in an S               permissible timing restrictions apply, see Rev. Rul.
+corporation that are treated as deemed distributions.             2004-12, 2004-7 I.R.B. 478, available at IRS.gov/irb/
+   13. Distributions of premiums for accident or health           2004-07_IRB#RR-2004-12, as modified by Notice
+insurance under Regulations section 1.402(a)-1(e).                2013-74.
+
+
+
+Instructions for Forms 1099-R and 5498 (2025)                                                                                   5
+   Designated Roth accounts. A direct rollover from a               • A rollover contribution to a Roth IRA from an eligible
+designated Roth account may only be made to another                 retirement plan (other than an IRA) that meets the
+designated Roth account or to a Roth IRA. A distribution            requirements of section 408A(e)(1)(B).
+from a Roth IRA, however, cannot be rolled over into a                 For reporting a rollover from a traditional IRA to a Roth
+designated Roth account. In addition, a plan is permitted           IRA, see Reporting Roth IRA conversions, earlier.
+to treat the balance of the participant's designated Roth
+                                                                       For a direct rollover of an eligible rollover distribution to
+account and the participant's other accounts under the
+                                                                    a Roth IRA (other than from a designated Roth account),
+plan as accounts held under two separate plans for
+                                                                    report the total amount rolled over in box 1, the taxable
+purposes of applying the automatic rollover rules of
+                                                                    amount in box 2a, and any basis recovery amount in
+section 401(a)(31)(B) and Q/A-9 through Q/A-11 of
+                                                                    box 5. (See the instructions for Box 5. FMV of Account,
+Regulations section 1.401(a)(31)-1. Thus, if a participant's
+                                                                    later.) Use Code G in box 7. If the direct rollover is made
+balance in the designated Roth account is less than $200,
+                                                                    on behalf of a nonspouse designated beneficiary, also
+the plan is not required to offer a direct rollover election or
+                                                                    enter Code 4 in box 7.
+to apply the automatic rollover provisions to such balance.
+                                                                       For reporting instructions for a direct rollover from a
+    A distribution from a designated Roth account that is a
+                                                                    designated Roth account, see Designated Roth accounts,
+qualified distribution is tax free. A qualified distribution is a
+                                                                    earlier.
+payment that is made both after age 591/2 (or after death
+or disabililty) and after the 5-tax-year period that begins         Explanation to Recipients Before Eligible
+with the first day of the first tax year in which a contribution
+is made to the designated Roth account. Certain amounts,
+                                                                    Rollover Distributions (Section 402(f) Notice)
+including corrective distributions, cannot be qualified             For qualified plans, section 403(b) plans, and
+distributions. See Regulations section 1.402A-1.                    governmental section 457(b) plans, the plan administrator
+                                                                    must provide to each recipient of an eligible rollover
+    If any portion of a distribution from a designated Roth
+                                                                    distribution an explanation using either a written paper
+account that is not includible in gross income is to be
+                                                                    document or an electronic medium (section 402(f) notice).
+rolled over into a designated Roth account under another
+                                                                    The explanation must be provided no more than 180 days
+plan, the rollover must be accomplished by a direct
+                                                                    and no fewer than 30 days before making an eligible
+rollover. Any portion not includible in gross income that is
+                                                                    rollover distribution or before the annuity starting date.
+distributed to the employee, however, cannot be rolled
+                                                                    However, if the recipient who has received the section
+over to another designated Roth account, though it can be
+                                                                    402(f) notice affirmatively elects a distribution, you will not
+rolled over into a Roth IRA within the 60-day period
+                                                                    fail to satisfy the timing requirements merely because you
+described in section 402(c)(3). In the case of a direct
+                                                                    make the distribution fewer than 30 days after you
+rollover, the distributing plan is required to report to the
+                                                                    provided the notice as long as you meet the requirements
+recipient plan the amount of the investment (basis) in the
+                                                                    of Regulations section 1.402(f)-1, Q/A-2. The electronic
+contract and the first year of the 5-tax-year period, or that
+                                                                    section 402(f) notice must meet the requirements for using
+the distribution is a qualified distribution.
+                                                                    electronic media in Regulations section 1.401(a)-21.
+    For a direct rollover of a distribution from a designated
+Roth account to a Roth IRA, enter the amount rolled over               The notice must explain the rollover rules, the special
+in box 1 and 0 (zero) in box 2a. Use Code H in box 7. For           tax treatment for certain lump-sum distributions, the direct
+all other distributions from a designated Roth account, use         rollover option (and any default procedures), the
+Code B in box 7, unless Code E applies. If the direct               mandatory 20% withholding rules, and an explanation of
+rollover is from one designated Roth account to another             how distributions from the plan to which the rollover is
+designated Roth account, also enter Code G in box 7.                made may have different restrictions and tax
+                                                                    consequences than the plan from which the rollover is
+    For a direct rollover of a distribution from a section          made.
+401(k) plan, a section 403(b) plan, or a governmental
+section 457(b) plan to a designated Roth account in the                For periodic payments that are eligible rollover
+same plan, enter the amount rolled over in box 1, the               distributions, you must provide the notice before the first
+taxable amount in box 2a, and any basis recovery amount             payment and at least once a year as long as the payments
+in box 5. Use Code G in box 7.                                      continue. For section 403(b) plans, the payer must provide
+    Report designated Roth nonelective contributions and            an explanation of the direct rollover option within the time
+designated Roth matching contributions for the year in              period described earlier or some other reasonable period
+which the contributions are allocated. Enter the total              of time.
+amount of designated Roth nonelective contributions and                Notice 2020-62, 2020-35 I.R.B. 476, available at
+designated Roth matching contributions that are allocated           IRS.gov/irb/2020-35_IRB#NOT-2020-62, contains two
+to an individual's acount in the year in boxes 1 and 2a.            safe harbor explanations that may be provided to
+Use Code G in box 7. See Q&A L-9 of Notice 2024-2,                  recipients of eligible rollover distributions from an
+available at IRS.gov/irb/2024-02_IRB#NOT-2024-2.                    employer plan in order to satisfy section 402(f).
+   Qualified rollover contributions as defined in                   Involuntary distributions. For involuntary distributions
+section 408A(e). A qualified rollover contribution as               paid to an IRA in a direct rollover (automatic rollover), you
+defined in section 408A(e) is:                                      may satisfy the notification requirements of section 401(a)
+• A rollover contribution to a Roth IRA from another IRA            (31)(B)(i) either separately or as a part of the section
+that meets the requirements of section 408(d)(3), or                402(f) notice. The notification must be in writing and may
+                                                                    be sent using electronic media in accordance with Q/A-5
+
+6                                                                                Instructions for Forms 1099-R and 5498 (2025)
+of Regulations section 1.402(f)-1. Also, see Notice              SIMPLE IRAs. Do not report a trustee-to-trustee transfer
+2005-5, Q/A-15.                                                  from one SIMPLE IRA to another SIMPLE IRA (unless it is
+                                                                 a conversion from a traditional SIMPLE IRA to a Roth
+Transfers                                                        SIMPLE IRA). However, you must report as a taxable
+Generally, do not report a transfer between trustees or          distribution in boxes 1 and 2a a trustee-to-trustee transfer
+issuers that involves no payment or distribution of funds to     from a traditional SIMPLE IRA to a traditional IRA that is
+the participant, including a trustee-to-trustee transfer from    not a SIMPLE IRA during the 2-year period beginning on
+one IRA to another IRA, valid transfers from one section         the day contributions are first deposited in the individual's
+403(b) plan in accordance with paragraphs 1 through 3 of         SIMPLE IRA by the employer. For a trustee-to-trustee
+Regulations section 1.403(b)-10(b), or for the purchase of       transfer from a Roth SIMPLE IRA to a Roth IRA that is not
+permissive service credit under section 403(b)(13) or            a SIMPLE IRA during the 2-year period beginning on the
+section 457(e)(17) in accordance with paragraph 4 of             day contributions are first deposited in the individual's
+Regulations section 1.403(b)-10(b) and Regulations               SIMPLE IRA by the employer, report the total distribution
+section 1.457-10(b)(8). However, you must report:                in box 1 and leave box 2a blank. Use Code J and/or S in
+• Recharacterized IRA contributions;                             box 7, if appropriate.
+• Roth IRA conversions;
+• Direct rollovers from qualified plans, section 403(b)          Transfer of an IRA to spouse. If you transfer or
+plans, or governmental section 457(b) plans, including any       re-designate an interest from one spouse's IRA to an IRA
+direct rollovers from such plans that are IRRs or are            for the other spouse under a divorce or separation
+qualified rollover contributions described in section            instrument, the transfer or re-designation, as provided
+408A(e); and                                                     under section 408(d)(6), is tax free. Do not report such a
+• Direct payments from IRAs to accepting employer                transfer on Form 1099-R.
+plans.
+                                                                 Corrective Distributions
+IRA recharacterizations. You must report each                    You must report on Form 1099-R corrective distributions of
+recharacterization of an IRA contribution. If a participant      excess deferrals, excess contributions and excess
+makes a contribution to an IRA (first IRA) for a year, the       aggregate contributions under section 401(a) plans,
+participant may choose to recharacterize the contribution        section 401(k) cash or deferred arrangements, section
+by transferring, in a trustee-to-trustee transfer, any part of   403(a) annuity plans, section 403(b) salary reduction
+the contribution (plus earnings) to another IRA (second          agreements, and salary reduction simplified employee
+IRA). The contribution is treated as made to the second          pensions (SARSEPs) under section 408(k)(6). You must
+IRA (recharacterization). A recharacterization may be            also report on Form 1099-R corrective IRA distributions
+made with the same trustee or with another trustee. The          made under section 408(d)(4). Excess contributions that
+trustee of the first IRA must report the recharacterization      are recharacterized under a section 401(k) plan are
+as a distribution on Form 1099-R and the contribution to         treated as distributed. Corrective distributions must
+the first IRA and its character on Form 5498.                    include earnings through the end of the year in which the
+   Enter the fair market value (FMV) of the amount               excess arose. These distributions are reportable on Form
+recharacterized in box 1, 0 (zero) in box 2a, and Code R in      1099-R and are generally taxable in the year of the
+box 7 if reporting a recharacterization of a prior year          distribution (except for excess deferrals under section
+(2024) contribution or Code N if reporting a                     402(g)). Enter Code 8 or P in box 7 (with Code B, if
+recharacterization of a contribution in the same year            applicable) to designate the distribution and the year it is
+(2025). It is not necessary to check the IRA/SEP/SIMPLE          taxable.
+checkbox. For more information on how to report, see
+                                                                    Use a separate Form 1099-R to report a corrective
+Notice 2000-30 on page 1266 of I.R.B. 2000-25 at
+                                                                 distribution from a designated Roth account.
+IRS.gov/pub/irs-irbs/irb00-25.pdf.
+                                                                         The total amount of the elective deferral is
+Note. A participant is allowed to recharacterize an IRA           TIP reported in box 12 of Form W-2. See the
+contribution made for a prior year when the IRS provides                 Instructions for Forms W-2 and W-3 for more
+tax relief by postponing the tax filing due date, for            information.
+example, due to a federally declared disaster.
+No recharacterizations of conversions made in 2018               Note. A corrective distribution of excess deferrals, excess
+or later. A conversion of a traditional IRA to a Roth IRA,       contributions, and excess aggregate contributions made
+and a rollover from any other eligible retirement plan to a      pursuant to sections 401(k)(8)(D), 401(m)(7), and 402(g)
+Roth IRA, made in the participant’s tax years beginning          (2)(C) are not subject to the 10% additional tax. See
+after December 31, 2017, cannot be recharacterized as            sections 401(k)(8)(D), 401(m)(7), and 402(g)(2)(C).
+having been made to a traditional IRA.                              For more information about reporting corrective
+Section 1035 exchange. You may have to report                    distributions, see Table 1; Notice 89-32, 1989-1 C.B. 671;
+exchanges of insurance contracts, including an exchange          Notice 88-33, 1988-1 C.B. 513; Notice 87-77, 1987-2 C.B.
+under section 1035, under which any designated                   385; and the regulations under sections 401(k), 401(m),
+distribution may be made. For a section 1035 exchange            402(g), and 457.
+that is in part taxable, file a separate Form 1099-R to          Excess deferrals. Excess deferrals under section 402(g)
+report the taxable amount. See Section 1035 exchange,            can occur in section 401(k) plans, section 403(b) plans, or
+earlier.                                                         SARSEPs. If distributed by April 15 of the year following
+
+Instructions for Forms 1099-R and 5498 (2025)                                                                                 7
+the year of deferral, the excess is taxable to the participant   distribution amount in box 1, 0 (zero) in box 2a, and the
+in the year of deferral (other than designated Roth              appropriate distribution code in box 7. However, taxpayers
+contributions), but the earnings are taxable in the year         must include the total amount of the excess deferral
+distributed. Except for a SARSEP, if the distribution occurs     (unadjusted for loss) in income in the year of deferral, and
+after April 15, the excess is taxable in the year of deferral    they may report a loss on the tax return for the year the
+and the year distributed. The earnings are taxable in the        corrective distribution is made.
+year distributed. For a SARSEP, excess deferrals not
+withdrawn by April 15 are considered regular IRA                 Distributions Under Employee Plans
+contributions subject to the IRA contribution limits.            Compliance Resolution System (EPCRS)
+Corrective distributions of excess deferrals are not subject     The procedure for correcting excess annual additions
+to federal income tax withholding or social security and         under section 415 is explained in the latest EPCRS
+Medicare taxes. For losses on excess deferrals, see              revenue procedure in section 6.06 of Rev. Proc. 2021-30,
+Losses, later. See Regulations section 1.457-4(e) for            2021-31 I.R.B. 172, available at IRS.gov/irb/
+special rules relating to excess deferrals under                 2021-31_IRB#REV-PROC-2021-30.
+governmental section 457(b) plans.
+                                                                    Distributions to correct a section 415 failure are not
+Excess contributions. Excess contributions can occur             eligible rollover distributions although they are subject to
+in a section 401(k) plan or a SARSEP. All distributions of       federal income tax withholding under section 3405. They
+the excess contributions plus earnings (other than               are not subject to social security, Medicare, or Federal
+designated Roth contributions), including recharacterized        Unemployment Tax Act (FUTA) taxes. In addition, such
+excess contributions, are taxable to the participant in the      distributions are not subject to the 10% additional tax
+year of distribution. Report the gross distribution in box 1     under section 72(t).
+of Form 1099-R. In box 2a, enter the excess contribution
+and earnings distributed less any designated Roth                   You may report the distribution of elective deferrals
+contributions. For a SARSEP, the employer must notify the        (other than designated Roth contributions) and employee
+participant by March 15 of the year after the year the           contributions (and earnings attributable to such elective
+excess contribution was made that the participant must           deferrals and employee contributions) on the same Form
+withdraw the excess and earnings. All distributions from a       1099-R. However, if you made other distributions during
+SARSEP are taxable in the year of distribution. An excess        the year, report them on a separate Form 1099-R.
+contribution not withdrawn by April 15 of the year after the     Because the distribution of elective deferrals (other than
+year of notification is considered a regular IRA                 designated Roth contributions) is fully taxable in the year
+contribution subject to the IRA contribution limits.             distributed (no part of the distribution is a return of the
+   The 10% additional tax on early distributions does not        investment in the contract), report the total amount of the
+apply to an IRA distribution made pursuant to the rules of       distribution in boxes 1 and 2a. Leave box 5 blank, and
+section 408(d)(4), consisting of a return of a contribution      enter Code E in box 7. For a return of employee
+for that year and any earnings allocable to the                  contributions (or designated Roth contributions) plus
+contribution, as long as the distribution is made on or          earnings, enter the gross distribution in box 1, the
+before the due date (including extensions) of the income         earnings attributable to the employee contributions (or
+tax return.                                                      designated Roth contributions) being returned in box 2a,
+                                                                 and the employee contributions (or designated Roth
+          Regulations have not been updated for SARSEPs.         contributions) being returned in box 5. Enter Code E in
+    !                                                            box 7. For more information, see Rev. Proc. 92-93, 1992-2
+CAUTION
+                                                                 C.B. 505.
+Excess aggregate contributions. Excess aggregate                   Similar rules apply to other corrective distributions
+contributions under section 401(m) can occur in section          under EPCRS. Also, special Form 1099-R reporting is
+401(a), section 401(k), section 403(a), and section 403(b)       available for certain plan loan failures. See section 6.07 of
+plans. In general, a corrective distribution of excess           Rev. Proc. 2021-30 for details.
+aggregate contributions plus earnings is taxable to the
+participant in the year the distribution was made. However,         If excess employer contributions (other than elective
+a corrective distribution of excess aggregate contributions      deferrals), and the earnings on them, under SEP,
+is not includible in gross income (other than earnings) to       SARSEP, or SIMPLE IRA plans are returned to an
+the extent that it represents designated Roth                    employer (with the participant's consent), enter the gross
+contributions. See Treas. Reg. section 1.401(m)-2(b)(2)          distribution (excess and earnings) in box 1 and 0 (zero) in
+(vi)(C). Report the gross distribution in box 1 of Form          box 2a. Enter Code E in box 7.
+1099-R. In box 2a, enter the excess and earnings
+distributed less any after-tax contributions.                    Failing the ADP or ACP Test After a Total
+                                                                 Distribution
+Losses. If a corrective distribution of an excess deferral is
+made in a year after the year of deferral and a net loss has     If you make a total distribution in 2025 and file a Form
+been allocated to the excess deferral, report the corrective     1099-R with the IRS and then discover in 2026 that the
+distribution amount in boxes 1 and 2a of Form 1099-R for         plan failed either the section 401(k)(3) actual deferral
+the year of the distribution with the appropriate distribution   percentage (ADP) test for 2025 and you compute excess
+code in box 7. If the excess deferrals consist of                contributions or the section 401(m)(2) actual contribution
+designated Roth contributions, report the corrective             percentage (ACP) test and you compute excess
+                                                                 aggregate contributions, you must recharacterize part of
+
+8                                                                             Instructions for Forms 1099-R and 5498 (2025)
+the total distribution as excess contributions or excess                Interest that accrues after the deemed distribution of a
+aggregate contributions. First, file a CORRECTED Form                loan is not an additional loan and, therefore, is not
+1099-R for 2025 for the correct amount of the total                  reportable on Form 1099-R.
+distribution (not including the amount recharacterized as               Loans that are treated as deemed distributions or that
+excess contributions or excess aggregate contributions).             are actual distributions are subject to federal income tax
+Second, file a new Form 1099-R for 2025 for the excess               withholding. If such a distribution occurs after the loan is
+contributions or excess aggregate contributions and                  made, you must withhold only if you distributed cash or
+allocable earnings.                                                  property (other than employer securities) at the time of the
+                                                                     deemed or actual distribution. See section 72(p), section
+Note. To avoid a late filing penalty if the new Form
+                                                                     72(e)(4)(A), and Regulations section 1.72(p)-1.
+1099-R is filed after the due date, enter in the bottom
+margin of Form 1096, Annual Summary and Transmittal of               Subsequent repayments. If a participant makes any
+U.S. Information Returns, the words “Filed To Correct                cash repayments on a loan that was reported on Form
+Excess Contributions.”                                               1099-R as a deemed distribution, the repayments
+                                                                     increase the participant's tax basis in the plan as if the
+   You must also issue copies of the Forms 1099-R to the             repayments were after-tax contributions. However, such
+plan participant with an explanation of why these new                repayments are not treated as after-tax contributions for
+forms are being issued. ADP and ACP test corrective                  purposes of section 401(m) or 415(c)(2)(B).
+distributions are exempt from the 10% additional tax under              For a deemed distribution that was reported on Form
+section 72(t).                                                       1099-R but was not repaid, the deemed distribution does
+Loans Treated as Distributions                                       not increase the participant's basis.
+A loan from a qualified plan under section 401(a) or                 Plan loan offsets. If a participant's accrued benefit is
+403(a), from a section 403(b) plan, or from a plan, whether          reduced (offset) to repay a loan, the amount of the
+or not qualified, that is maintained by the United States, a         account balance that is offset against the loan is an actual
+state or political subdivision thereof, or any agency or             distribution. Report it as you would any other actual
+instrumentality thereof, made to a participant or                    distribution. Do not enter Code L in box 7.
+beneficiary is not treated as a distribution from the plan if           A qualified plan loan offset is a type of plan loan offset
+the loan satisfies the following requirements.                       that meets certain requirements. In order to be a qualified
+   1. The loan is evidenced by an enforceable                        plan loan offset, the loan, at the time of the offset, must be
+agreement.                                                           a loan in good standing and the offset must be solely by
+   2. The agreement specifies that the loan must be                  reason of (1) the termination of the qualified employer
+repaid within 5 years, except for a principal residence.             plan, or (2) the failure to meet the repayment terms
+                                                                     because the employee had a severance from
+   3. The loan must be repaid in substantially level                 employment. Report a qualified plan loan offset as you
+installments (at least quarterly).                                   would any other actual distribution. In addition, enter Code
+   4. The loan amount does not exceed the limits in                  M in box 7.
+section 72(p)(2)(A) (maximum limit is equal to the lesser
+of 50% of the vested account balance or $50,000).                    Permissible Withdrawals Under Section 414(w)
+                                                                     For permissible withdrawals from an eligible automatic
+   Certain exceptions, cure periods, and suspension of
+                                                                     contribution arrangement (EACA) under section 414(w):
+the repayment schedule may apply.
+                                                                     • The distribution (except to the extent the distribution
+   The loan agreement must specify the amount of the                 consists of designated Roth contributions) is included in
+loan, the term of the loan, and the repayment schedule.              the employee's gross income in the year distributed;
+The agreement may include more than one document.                    • Report principal and earnings in boxes 1 and 2a except,
+                                                                     in the case of a distribution from a designated Roth
+   If a loan fails to satisfy (1), (2), or (3), the balance of the   account, report only earnings in box 2a;
+loan is a deemed distribution. The distribution may occur            • The distribution is not subject to the 10% additional tax
+at the time the loan is made or later if the loan is not repaid      under section 72(t), indicated by reporting Code 2 in
+in accordance with the repayment schedule.                           box 7; and
+                                                                     • The distribution must be elected by the employee no
+   If a loan fails to satisfy (4) at the time the loan is made,      later than 90 days after the first default elective
+the amount that exceeds the amount permitted to be                   contribution under the EACA, as specified in Regulations
+loaned is a deemed distribution.                                     section 1.414(w)-1(c)(2).
+Deemed distribution. If a loan is treated as a deemed
+distribution, it is reportable on Form 1099-R using the                If the distribution is from a designated Roth account,
+normal taxation rules of section 72, including tax basis             enter Code B as well as Code 2 in box 7.
+rules. The distribution may also be subject to the 10%
+additional tax under section 72(t). It is not eligible to be
+                                                                     Corrected Form 1099-R
+rolled over to an eligible retirement plan nor is it eligible for    If you filed a Form 1099-R with the IRS and later discover
+the 10-year tax option. On Form 1099-R, complete the                 that there is an error on it, you must correct it as soon as
+appropriate boxes, including boxes 1 and 2a, and enter               possible. For example, if you transmit a direct rollover and
+Code L in box 7. Also, enter Code 1 or Code B, if                    file a Form 1099-R with the IRS reporting that none of the
+applicable.                                                          direct rollover is taxable by entering 0 (zero) in box 2a, and
+
+Instructions for Forms 1099-R and 5498 (2025)                                                                                     9
+you then discover that part of the direct rollover consists of   403(a); any annuity, custodial account, or retirement
+RMDs under section 401(a)(9), you must file a corrected          income account under section 403(b); or any IRA account
+Form 1099-R reporting the eligible rollover distribution as      under section 408(a) or (b) are subject to withholding
+the direct rollover and file a new Form 1099-R reporting         under section 1441, unless there is an exception under a
+the RMD as if it had been distributed to the participant.        tax treaty. Report the distribution and withholding on Form
+See part H in the current General Instructions for Certain       1042, Annual Withholding Tax Return for U.S. Source
+Information Returns, or Pub. 1220, if filing electronically.     Income of Foreign Persons, and Form 1042-S, Foreign
+   If you filed a Form 1099-R with the IRS reporting a           Person's U.S. Source Income Subject to Withholding.
+payment of reportable death benefits, you must file a              For guidance regarding covered expatriates, see Notice
+corrected return within 15 calendar days of recovering any       2009-85, 2009-45 I.R.B. 598, available at IRS.gov/irb/
+portion of the reportable death benefits from the                2009-45_IRB#NOT-2009-85.
+reportable death benefits payment recipient as a result of
+the rescission of the reportable policy sale.                    Statements to Recipients
+   If you furnished a statement to the reportable death          If you are required to file Form 1099-R, you must furnish a
+benefits payment recipient, you must furnish the recipient       statement to the recipient. For more information about the
+with a corrected statement within 15 calendar days of            requirement to furnish a statement to each recipient, see
+recovering any portion of the reportable death benefits          part M in the current General Instructions for Certain
+from the reportable death benefits payment recipient as a        Information Returns.
+result of the rescission of the reportable policy sale.          Truncating recipient's TIN on payee statements.
+Filer                                                            Pursuant to Regulations section 301.6109-4, all filers of
+                                                                 Form 1099-R may truncate a recipient’s TIN (social
+The payer, trustee, or plan administrator must file Form         security number (SSN), individual taxpayer identification
+1099-R using the same name and employer identification           number (ITIN), adoption taxpayer identification number
+number (EIN) used to deposit any tax withheld and to file        (ATIN), or employer identification number (EIN)) on payee
+Form 945, Annual Return of Withheld Federal Income Tax.          statements. Truncation is not allowed on any documents
+                                                                 the filer files with the IRS. A payer's TIN may not be
+Beneficiaries
+                                                                 truncated on any form. See part J in the current General
+If you make a distribution to a beneficiary, trust, or estate,   Instructions for Certain Information Returns for more
+prepare Form 1099-R using the name and TIN of the                information.
+beneficiary, trust, or estate, not that of the decedent. If
+there are multiple beneficiaries, report on each Form                    Do not enter a negative amount in any box on
+1099-R only the amount paid to the beneficiary whose              TIP Form 1099-R.
+name appears on the Form 1099-R, and enter the
+percentage in box 9a, if applicable.
+                                                                 Account Number
+Disclaimers. A beneficiary may make a qualified                  The account number is required if you have multiple
+disclaimer of all or some of an IRA account balance if the       accounts for a recipient for whom you are filing more than
+disclaimed amount and income are paid to a new                   one Form 1099-R.
+beneficiary or segregated in a separate account. A
+qualified disclaimer may be made after the beneficiary has          The account number is also required if you check the
+previously received the RMD for the year of the                  “FATCA filing requirement” box. See Box 12. FATCA Filing
+decedent's death. For more information, see Rev. Rul.            Requirement Checkbox, later.
+2005-36, 2005-26 I.R.B. 1368, available at IRS.gov/irb/
+2005-26_IRB#RR-2005-36.                                             Additionally, the IRS encourages you to designate an
+                                                                 account number for all Forms 1099-R that you file. See
+Alternate Payee Under a QDRO                                     part L in the current General Instructions for Certain
+Distributions to an alternate payee who is a spouse or           Information Returns.
+former spouse of the employee under a QDRO are                     The policy number of the life insurance contract under
+reportable on Form 1099-R using the name and TIN of the          which benefits are paid is required if you are reporting a
+alternate payee. If the alternate payee under a QDRO is a        payment of reportable death benefits.
+nonspouse, enter the name and TIN of the employee.
+However, this rule does not apply to IRAs; see Transfer of       Box 1. Gross Distribution
+an IRA to spouse, earlier.
+                                                                 Enter the total amount of the distribution before income
+Nonresident Aliens                                               tax or other deductions were withheld. Include direct
+                                                                 rollovers, IRA direct payments to accepting employer
+If income tax is withheld under section 3405 on any              plans, recharacterized IRA contributions, Roth IRA
+distribution to a nonresident alien, report the distribution     conversions, and premiums paid by a trustee or custodian
+and withholding on Form 1099-R. Also, file Form 945 to           for the cost of current life or other insurance protection.
+report the withholding. See the presumption rules in part S      Also, include in this box distributions to plan participants
+of the current General Instructions for Certain Information      from governmental section 457(b) plans. However, in the
+Returns.                                                         case of a distribution by a trust representing certificates of
+   However, any payments to a nonresident alien from any         deposit (CDs) redeemed early, report the net amount
+trust under section 401(a); any annuity plan under section       distributed. Also, see Box 6, later.
+
+10                                                                            Instructions for Forms 1099-R and 5498 (2025)
+  For a distribution from a traditional IRA of assets that do   Charitable gift annuities. If cash or capital gain property
+not have a readily available FMV, enter Code K in box 7.        is donated in exchange for a charitable gift annuity, report
+   Include in this box the value of U.S. Savings Bonds          the total amount distributed during the year in box 1. See
+distributed from a plan. Enter the appropriate taxable          Charitable gift annuities under Box 3. Capital Gain
+amount in box 2a. Furnish a statement to the plan               (Included in Box 2a), later.
+participant showing the value of each bond at the time of       FFIs reporting in a manner similar to section 6047(d).
+distribution. This will provide them with the information       If you are a participating FFI electing to report with respect
+necessary to figure the interest income on each bond            to a cash value insurance contract or annuity contract that
+when it is redeemed.                                            is a U.S. account held by a specified U.S. person in a
+   Include in box 1 amounts distributed from a qualified        manner similar to section 6047(d), include in box 1 any
+retirement plan for which the recipient elects to pay health    amount paid under the contract during the reporting
+insurance premiums under a cafeteria plan or that are           period (that is, the calendar year or the year ending on the
+paid directly to reimburse medical care expenses incurred       most recent contract anniversary date).
+by the recipient (see Rev. Rul. 2003-62 on page 1034 of                   Do not report the account balance or value (as of
+I.R.B. 2003-25 at IRS.gov/pub/irs-irbs/irb03-25.pdf). Also,               the end of the reporting period) in box 1.
+include this amount in box 2a.                                    !
+                                                                 CAUTION Participating FFIs reporting in a manner similar to
+
+   Include in box 1 charges or payments for qualified           section 6047(d) should check the Recent Developments
+long-term care insurance contracts under combined               section for Form 1099-R at IRS.gov/Form1099R before
+arrangements. Enter Code W in box 7.                            filing for 2025.
+   In addition to reporting distributions to beneficiaries of
+deceased employees, report here any death benefit               Box 2a. Taxable Amount
+payments made by employers that are not made as part of                   When determining the taxable amount to be
+a pension, profit-sharing, or retirement plan. Also, enter                entered in box 2a, do not reduce the taxable
+these amounts in box 2a; enter Code 4 in box 7.                   !
+                                                                 CAUTION amount by any portion of the $3,000 exclusion for
+
+        Do not report accelerated death benefits on Form        which the participant may be eligible as a payment of
+  !     1099-R. Report them on Form 1099-LTC,                   qualified health and long-term care insurance premiums
+CAUTION Long-Term Care and Accelerated Death Benefits.          for retired public safety officers under section 402(l).
+                                                                   Generally, you must enter the taxable amount in box 2a.
+   Include in box 1 the amount of any payment of
+                                                                However, if you are unable to reasonably obtain the data
+reportable death benefits.
+                                                                needed to compute the taxable amount, leave this box
+   For section 1035 exchanges that are reportable on            blank. Except as provided under Box 6, later, do not enter
+Form 1099-R, enter the total value of the contract in box 1,    excludable or tax-deferred amounts reportable in boxes 5,
+0 (zero) in box 2a, the total premiums paid in box 5, and       6, and 8. Enter 0 (zero) in box 2a for:
+Code 6 in box 7.                                                • A direct rollover (other than an IRR) from a qualified
+Designated Roth account distributions. If you are               plan, a section 403(b) plan, or a governmental section
+making a distribution from a designated Roth account,           457(b) plan to another such plan or to a traditional IRA;
+enter the gross distribution in box 1, the taxable portion of   • A direct rollover from a designated Roth account to a
+the distribution in box 2a, the basis included in the           Roth IRA;
+distributed amount in box 5, any amount allocable to an         • An amount from a traditional IRA directly transferred to
+IRR made within the previous 5 years (unless an                 an accepting employer plan;
+exception to section 72(t) applies) in box 10, and the first    • An IRA recharacterization;
+year of the 5-tax-year period for determining qualified         • A nontaxable section 1035 exchange of life insurance,
+distributions in box 11. Also, enter the applicable code(s)     annuity, endowment, or long-term care insurance
+in box 7.                                                       contracts; or
+                                                                • A nontaxable charge or payment, for the purchase of a
+Roth SEP IRAs and Roth SIMPLE IRAs. Employer                    qualified long-term care insurance contract, against the
+matching and nonelective contributions made to a Roth           cash value of an annuity contract or the cash surrender
+SEP or Roth SIMPLE IRA must be reported for the year in         value of a life insurance contract.
+which the contributions are made to the employee's Roth
+IRA, with the total reported in boxes 1 and 2a, using code      Annuity starting date in 1998 or later. If you made
+2 or 7 in box 7 and the IRA/SEP/SIMPLE checkbox in              annuity payments from a qualified plan under section
+box 7 checked.                                                  401(a), 403(a), or 403(b) and the annuity starting date is
+                                                                in 1998 or later, you must use the simplified method under
+Employer securities and other property. If you                  section 72(d)(1) to figure the taxable amount. Under this
+distribute employer securities or other property, include in    method, the expected number of payments you use to
+box 1 the FMV of the securities or other property on the        figure the taxable amount depends on whether the
+date of distribution. If there is a loss, see Losses, later.    payments are based on the life of one or more than one
+   If you are distributing worthless property only, you are     person. See Notice 98-2, 1998-1 C.B. 266, and Pub. 575,
+not required to file Form 1099-R. However, you may file         Pension and Annuity Income, to help you figure the
+and enter 0 (zero) in boxes 1 and 2a and any after-tax          taxable amount to enter in box 2a.
+employee contributions or designated Roth contributions
+in box 5.
+
+Instructions for Forms 1099-R and 5498 (2025)                                                                              11
+Annuity starting date after November 18, 1996, and               Disability retirement annuity. If annuity payments are
+before 1998. Under the simplified method for figuring the        made under a workers’ compensation act or under a
+taxable amount, the expected number of payments is               statute in the nature of a workers’ compensation act, as
+based only on the primary annuitant's age on the annuity         compensation for personal injuries or sickness incurred
+starting date. See Notice 98-2.                                  during the course of employment, and a portion of the
+Annuity starting date before November 19, 1996. If               annuity payments are based on age or length of service
+you properly used the rules in effect before November 19,        under the retirement plan, enter the taxable portion of the
+1996, for annuities that started before that date, continue      annuity in box 2a. See Rev. Rul. 85-105, 1985-2 C.B. 53.
+to report using those rules. No changes are necessary.           Enter distribution code 3 in box 7.
+                                                                 Losses. If a distribution is a loss, do not enter a negative
+Corrective distributions. Enter in box 2a the amount of
+                                                                 amount in this box. For example, if an employee's 401(k)
+excess deferrals, excess contributions, or excess
+                                                                 account balance, consisting solely of stock, is distributed
+aggregate contributions (other than employee
+                                                                 but the value is less than the employee's remaining
+contributions or designated Roth contributions). See
+                                                                 after-tax contributions or designated Roth contributions,
+Corrective Distributions, earlier.
+                                                                 enter the value of the stock in box 1, leave box 2a blank,
+Cost of current life insurance protection. Include               and enter the employee's contributions or designated
+current life insurance protection costs (net premium costs)      Roth contributions in box 5.
+that were reported in box 1. However, do not report these            For a plan with no after-tax contributions or designated
+costs and a distribution on the same Form 1099-R. Use a          Roth contributions, even though the value of the account
+separate Form 1099-R for each. For the cost of current life      may have decreased, there is no loss for reporting
+insurance protection, enter Code 9 in box 7.                     purposes. Therefore, if there are no employer securities
+DVECs. Include DVEC distributions in this box. Also, see         distributed, show the actual cash and/or FMV of property
+Deductible Voluntary Employee Contributions (DVECs),             distributed in boxes 1 and 2a, and make no entry in box 5.
+earlier.                                                         If only employer securities are distributed, show the FMV
+                                                                 of the securities in boxes 1 and 2a and make no entry in
+Designated Roth account. Generally, a distribution from
+                                                                 box 5 or 6. If both employer securities and cash or other
+a designated Roth account that is not a qualified
+                                                                 property are distributed, show the actual cash and/or FMV
+distribution is taxable to the recipient under section 402 in
+                                                                 of the property (including employer securities) distributed
+the case of a plan qualified under section 401(a), under
+                                                                 in box 1, the gross less any NUA on employer securities in
+section 403(b)(1) in the case of a section 403(b) plan, and
+                                                                 box 2a (except as provided under Box 6. Net Unrealized
+under section 457(a)(1)(A) in the case of a governmental
+                                                                 Appreciation in Employer’s Securities, later), no entry in
+section 457(b) plan. For purposes of section 72,
+                                                                 box 5, and any NUA in box 6.
+designated Roth contributions are treated as employer
+contributions, as described in section 72(f)(1) (that is, as     Roth IRA. For a distribution from a Roth IRA, report the
+includible in the participant's gross income).                   total distribution in box 1 and leave box 2a blank except in
+  Examples. Participant A received a nonqualified                the case of an IRA revocation or account closure and a
+distribution of $5,000 from the participant's designated         recharacterization, earlier. Use Code J, Q, or T as
+Roth account. Immediately before the distribution, the           appropriate in box 7. Use Code 8 or P, if applicable, in
+participant's account balance was $10,000, consisting of         box 7 with Code J. Do not combine Code Q or T with any
+$9,400 of designated Roth contributions and $600 of              other codes.
+earnings. The taxable amount of the $5,000 distribution is          However, for the distribution of excess Roth IRA
+$300 ($600/$10,000 x $5,000). The nontaxable portion of          contributions, report the gross distribution in box 1 and
+the distribution is $4,700 ($9,400/$10,000 x $5,000). The        only the earnings in box 2a. Enter Code J and Code 8, P,
+issuer would report on Form 1099-R:                              or S in box 7.
+• Box 1, $5,000 as the gross distribution;                       Roth IRA conversions. Report the total amount
+• Box 2a, $300 as the taxable amount;                            converted from a traditional IRA to a Roth IRA in box 2a.
+• Box 4, $60 ($300 x 20% (0.20) as the withholding on            Check the “Taxable amount not determined” box in
+the earnings portion of the distribution;
+                                                                 box 2b. A conversion is considered a distribution and must
+• Box 5, $4,700 as the designated Roth contribution              be reported even if it is with the same trustee and even if
+basis (nontaxable amount);
+                                                                 the conversion is done by a trustee-to-trustee transfer.
+• Box 7, Code B; and                                             When an individual retirement annuity described in
+• The first year of the 5-tax-year period in box 11.             section 408(b) is converted to a Roth IRA, the amount that
+   Using the same facts as in the example above, except          is treated as distributed is the FMV of the annuity contract
+that the distribution was a direct rollover to a Roth IRA, the   on the date the annuity contract is converted. This rule
+issuer would report on Form 1099-R:                              also applies when a traditional IRA holds an annuity
+• Box 1, $5,000 as the gross distribution;                       contract as an account asset and the traditional IRA is
+• Box 2a, 0 (zero) as the taxable amount;                        converted to a Roth IRA. Determining the FMV of an
+• Box 4, no entry;                                               individual retirement annuity issued by a company
+• Box 5, $4,700 as the designated Roth contribution              regularly engaged in the selling of contracts depends on
+basis (nontaxable amount);                                       the timing of the conversion, as outlined in Q/A-14 of
+• Box 7, Code H; and                                             Regulations section 1.408A-4.
+• The first year of the 5-tax-year period in box 11.
+
+12                                                                            Instructions for Forms 1099-R and 5498 (2025)
+    For a Roth IRA conversion, use Code 2 in box 7 if the         Charitable gift annuities. Report in box 3 any amount
+participant is under age 591/2 or Code 7 if the participant is    from a charitable gift annuity that is taxable as a capital
+at least age 591/2. Also, check the IRA/SEP/SIMPLE                gain. Report in box 1 the total amount distributed during
+checkbox in box 7.                                                the year. Report in box 2a the taxable amount. Advise the
+Roth SEP IRAs and Roth SIMPLE IRAs. Employer                      annuity recipient of any amount in box 3 subject to the
+matching and nonelective contributions made to a Roth             28% rate gain for collectibles and any unrecaptured
+SEP or Roth SIMPLE IRA must be reported for the year in           section 1250 gain. Report in box 5 any nontaxable
+which the contributions are made to the employee's Roth           amount. Enter Code F in box 7. See Regulations section
+IRA, with the total reported in boxes 1 and 2a, using code        1.1011-2(c), Example 8.
+2 or 7 in box 7 and the IRA/SEP/SIMPLE checkbox in                Special rule for participants born before January 2,
+box 7 checked.                                                    1936 (or their beneficiaries). For lump-sum
+Traditional IRA. Generally, you are not required to               distributions from qualified plans only, enter the amount in
+compute the taxable amount of a traditional IRA or                box 2a eligible for the capital gain election under section
+designate whether any part of a distribution is a return of       1122(h)(3) of the Tax Reform Act of 1986 and section
+basis attributable to nondeductible contributions.                641(f)(3) of the Economic Growth and Tax Relief
+Therefore, except as provided below or elsewhere in these         Reconciliation Act of 2001. Enter the full amount eligible
+instructions, report the total amount distributed from a          for the capital gain election. You should not complete this
+traditional IRA in box 2a. This will be the same amount           box for a direct rollover.
+reported in box 1. Check the “Taxable amount not                     To compute the months of an employee's active
+determined” box in box 2b.                                        participation before 1974, count as 12 months any part of
+• For a distribution by a trust representing CDs redeemed         a calendar year in which an employee actively participated
+early, report the net amount distributed. Do not include          under the plan; for active participation after 1973, count as
+any amount paid for IRA insurance protection in this box.         1 month any part of a month in which the employee
+• For a distribution of contributions plus earnings from an       actively participated under the plan. See the Example,
+IRA before the due date of the return under section 408(d)        later.
+(4), report the gross distribution in box 1, only the earnings       Active participation begins with the first month in which
+in box 2a, and enter Code 8 or P, whichever is applicable,        an employee became a participant under the plan and
+in box 7. Also, enter Code 1 or 4, if applicable.                 ends with the earliest of:
+• For a distribution of excess contributions without              • The month in which the employee received a lump-sum
+earnings after the due date of the individual's return under      distribution under the plan;
+section 408(d)(5), leave box 2a blank, and check the              • For an employee, other than a self-employed person or
+“Taxable amount not determined” box in box 2b. Use Code           owner-employee, the month in which the employee
+1 or 7 in box 7 depending on the age of the participant.          separates from service;
+• For an amount in a traditional IRA (including a                 • The month in which the employee dies; or
+traditional SEP IRA, but only including a traditional             • For a self-employed person or owner-employee, the first
+SIMPLE IRA after the first 2 years of plan participation)         month in which the employee becomes disabled within the
+paid directly to an accepting employer plan, enter the            meaning of section 72(m)(7).
+gross amount in box 1, 0 (zero) in box 2a, and Code G in
+box 7.                                                              Example.
+
+Box 2b. Taxable Amount Not Determined                             Method for Computing Amount Eligible for
+Enter an “X” in this box if you are unable to reasonably          Capital Gain Election (See Box 3. Capital
+                                                                  Gain (Included in Box 2a), earlier.)
+obtain the data needed to compute the taxable amount.
+                                                                  Step 1. Total Taxable Amount
+   In addition, enter an “X” in this box if you are an FFI
+reporting in box 1 to satisfy your chapter 4 reporting            A. Total distribution                                    XXXXX
+requirement under the election described in Regulations           B. Less:
+section 1.1471-4(d)(5)(i)(B).                                      1. Current actuarial value of any annuity        XXXX
+                                                                   2. Employee contributions or designated Roth
+   If you check this box, leave box 2a blank; but see             contributions (minus any amounts previously
+Traditional IRA, earlier. Except for traditional IRAs, make       distributed that were not includible in the
+every effort to compute the taxable amount.                       employee's gross income)                          XXXX
+                                                                   3. Net unrealized appreciation in the value of
+Box 2b. Total Distribution                                        any employer securities that was a part of the
+Enter an “X” in this box only if the payment shown in box 1       lump-sum distribution                             XXXX
+is a total distribution. A total distribution is one or more      C. Total of lines 1 through 3                            XXXXX
+distributions within 1 tax year in which the entire balance       D. Total taxable amount. Subtract line C from            XXXXX
+of the account is distributed. If periodic or installment         line A.
+payments are made, mark this box in the year the final
+payment is made.                                                  Step 2. Capital Gain
+
+Box 3. Capital Gain (Included in Box 2a)
+If any amount is taxable as a capital gain, report it in box 3.
+
+Instructions for Forms 1099-R and 5498 (2025)                                                                                 13
+ Total taxable          Months of active                               Depending on the type of plan or arrangement, the
+ amount                 participation before 1974                   payer or, in some cases, the plan administrator is required
+ line D          X      ____________________ = Capital gain         to withhold 20% of eligible rollover distributions from a
+                        Total months of active                      qualified plan's distributed annuity and on eligible rollover
+                        participation                               distributions from a governmental section 457(b) plan. For
+                                                                    additional information, see section 3405(d) and
+                                                                    Regulations sections 35.3405-1T, Q/A A-13; and
+                                                                    31.3405(c)-1, Q/A-4 and -5. For governmental section
+Box 4. Federal Income Tax Withheld                                  457(b) plans only, see Notice 2003-20 on page 894 of
+Enter any federal income tax withheld. This withholding             I.R.B. 2003-19.
+under section 3405 is subject to deposit rules and the                 Any NUA excludable from gross income under section
+withholding tax return is Form 945. Backup withholding              402(e)(4) is not included in the amount of any eligible
+does not apply. See Pub. 15-A, Employer's Supplemental              rollover distribution that is subject to 20% withholding.
+Tax Guide, and the Instructions for Form 945 for more
+withholding information.                                               You are not required to withhold 20% of an eligible
+                                                                    rollover distribution that, when aggregated with other
+  Even though you may be using Code 1 in box 7 to                   eligible rollover distributions made to one person during
+designate an early distribution subject to the 10%                  the year, is less than $200.
+additional tax specified in section 72(q), (t), or (v), you are
+                                                                    IRAs. The 20% withholding does not apply to
+not required to withhold that tax.
+                                                                    distributions from any IRA, but withholding does apply to
+          The amount withheld cannot be more than the               IRAs under the rules for periodic payments and
+ TIP sum of the cash and the FMV of property                        nonperiodic distributions. For withholding, assume that
+         (excluding employer securities) received in the            the entire amount of a distribution from a traditional IRA is
+distribution. If a distribution consists solely of employer         taxable (except for the distribution of contributions under
+securities and cash ($200 or less) in lieu of fractional            section 408(d)(4), in which only the earnings are taxable,
+shares, no withholding is required.                                 and section 408(d)(5), as applicable). Generally, Roth IRA
+                                                                    distributions are not subject to withholding except on the
+   To determine your withholding requirements for any               earnings portion of excess contributions distributed under
+designated distribution under section 3405, you must first          section 408(d)(4).
+determine whether the distribution is an eligible rollover             An IRA recharacterization is not subject to income tax
+distribution. See Direct Rollovers, earlier, for a discussion       withholding.
+of eligible rollover distributions. If the distribution is not an
+eligible rollover distribution, the rules for periodic              Periodic payments. For periodic payments that are not
+payments or nonperiodic distributions apply. For purposes           eligible rollover distributions, withhold on the taxable part
+of withholding, distributions from any IRA are not eligible         as though the periodic payments were wages, based on
+rollover distributions.                                             the recipient's Form W-4P. The recipient may request
+                                                                    additional withholding on Form W-4P or claim exemption
+Eligible rollover distribution; 20% withholding. If an              from withholding. If a recipient does not submit a Form
+eligible rollover distribution is paid directly to an eligible      W-4P, withhold by treating the recipient as single with no
+retirement plan in a direct rollover, do not withhold federal       adjustments. See Regulations section 35.3405-1T, Q/A
+income tax. If any part of an eligible rollover distribution is     A-9, for a definition of periodic payments. See Pub. 15-A
+not a direct rollover, you must withhold 20% of the part            for additional information regarding withholding on
+that is paid to the recipient and includible in gross income.       periodic payments and Pub. 15-T for applicable tables
+This includes the earnings portion of any nonqualified              used to determine withholding on periodic payments.
+designated Roth account distribution that is not directly
+rolled over. The recipient cannot claim exemption from the                  Rather than Form W-4P, military retirees should
+20% withholding but may ask to have additional amounts               TIP give you Form W-4, Employee's Withholding
+withheld on Form W-4P, Withholding Certificate for                          Certificate.
+Pension or Annuity Payments. If the recipient is not asking
+                                                                    Nonperiodic distributions. Withhold 10% of the taxable
+that additional amounts be withheld, Form W-4P is not
+                                                                    part of a nonperiodic distribution that is not an eligible
+required for an eligible rollover distribution because 20%
+                                                                    rollover distribution. In most cases, designated
+withholding is mandatory.
+                                                                    distributions from any IRA are treated as nonperiodic
+    Employer securities and plan loan offset amounts that           distributions subject to withholding at the 10% rate even if
+are part of an eligible rollover distribution must be included      the distributions are paid over a periodic basis. See
+in the amount multiplied by 20% (0.20). However, the                Regulations section 35.3405-1T, Q/A F-15. The recipient
+actual amount to be withheld cannot be more than the                may request additional withholding on Form W-4R or
+sum of the cash and the FMV of property (excluding                  claim exemption from withholding. For more information
+employer securities and plan loan offset amounts). For              on nonperiodic distributions and withholding, see
+example, if the only part of an eligible rollover distribution      Regulations section 35-3405-1T, Q/A A-12, and parts C,
+that is not a direct rollover is employer securities or a plan      D, and F.
+loan offset amount, no withholding is required. However,
+unless otherwise exempt, any cash that is paid in the               Failure to provide TIN. For periodic payments and
+distribution must be used to satisfy the withholding on the         nonperiodic distributions, if a payee fails to furnish their
+employer securities or plan loan offset amount.                     correct TIN to you in the manner required, or if the IRS
+
+14                                                                               Instructions for Forms 1099-R and 5498 (2025)
+notifies you before any distribution that the TIN furnished        For reporting charitable gift annuities, see Charitable
+is incorrect, a payee cannot claim exemption from              gift annuities, earlier.
+withholding. For periodic payments, withhold as if the
+payee was single claiming no withholding allowances. For       Box 6. Net Unrealized Appreciation in
+nonperiodic payments, withhold 10%. Backup withholding         Employer's Securities
+does not apply.                                                Use this box if a distribution from a qualified plan (except a
+                                                               qualified distribution from a designated Roth account)
+Box 5. Employee Contributions/Designated Roth                  includes securities of the employer corporation (or a
+Account Contributions or Insurance Premiums                    subsidiary or parent corporation) and you can compute
+Enter the employee's contributions, designated Roth            the Net Unrealized Appreciation (NUA) in the employer's
+account contributions, or insurance premiums that the          securities. Enter all the NUA in employer securities if this
+employee may recover tax free this year (even if they          is a lump-sum distribution. If this is not a lump-sum
+exceed the box 1 amount). The entry in box 5 may include       distribution, enter only the NUA in employer securities
+any of the following: (a) designated Roth account              attributable to employee contributions. See Regulations
+contributions or contributions actually made on behalf of      section 1.402(a)-1(b) for the determination of the NUA.
+the employee over the years under the plan that were           Also, see Notice 89-25, Q/A-1, 1989-1 C.B. 662. Include
+required to be included in the income of the employee          the NUA in box 1 but not in box 2a except in the case of a
+when contributed (after-tax contributions), (b)                direct rollover to a Roth IRA or a designated Roth account
+contributions made by the employer but considered to           in the same plan (see Notice 2009-75, Q/A-1, and Notice
+have been contributed by the employee under section            2010-84, Q/A-7). You do not have to complete this box for
+72(f), (c) the accumulated cost of premiums paid for life      a direct rollover.
+insurance protection taxable to the employee in previous
+years and in the current year under Regulations section        Box 7. Distribution Code(s)
+1.72-16 (cost of current life insurance protection) (only if   Enter an “X” in the IRA/SEP/SIMPLE checkbox if the
+the life insurance contract itself is distributed), and (d)    distribution is from a traditional IRA or Roth SIMPLE IRA.
+premiums paid on commercial annuities. Do not include          Do not check the box for a distribution from a Roth IRA
+any DVECs, any elective deferrals, or any contribution to a    that is not a Roth SIMPLE IRA or for an IRA
+retirement plan that was not an after-tax contribution.        recharacterization. However, see Roth SEP IRAs and
+                                                               Roth SIMPLE IRAs for special instructions on employer
+   Generally, for qualified plans, section 403(b) plans, and   matching and nonelective contribution made to a Roth
+nonqualified commercial annuities, enter in box 5 the          SEP or Roth SIMPLE IRA.
+employee contributions or insurance premiums recovered
+tax free during the year based on the method you used to       Enter the appropriate code(s) in box 7. Use Table 1 to
+determine the taxable amount to be entered in box 2a. On       determine the appropriate code(s) to enter in box 7 for any
+a separate Form 1099-R, include the portion of the             amounts reported on Form 1099-R. Read the codes
+employee's basis that has been distributed from a              carefully and enter them accurately because the IRS uses
+designated Roth account. See the Examples in the               the codes to help determine whether the recipient has
+instructions for box 2a, earlier.                              properly reported the distribution. If the codes you enter
+                                                               are incorrect, the IRS may improperly propose changes to
+   If periodic payments began before 1993, you are not         the recipient's taxes.
+required, but you are encouraged, to report in box 5.
+                                                                  When applicable, enter a numeric and an alpha code.
+        If you made periodic payments from a qualified         For example, when using Code P for a traditional IRA
+  !     plan and the annuity starting date is after            distribution under section 408(d)(4), you must also enter
+CAUTION November 18, 1996, you must use the simplified         Code 1, if it applies. For a normal distribution from a
+method to figure the tax-free amount each year. See            qualified plan that qualifies for the 10-year tax option,
+Annuity starting date in 1998 or later, earlier.               enter Codes 7 and A. For a direct rollover to an IRA or a
+                                                               qualified plan for the surviving spouse of a deceased
+   If a total distribution is made, the total employee         participant, or on behalf of a nonspouse designated
+contributions or insurance premiums available to be            beneficiary, enter Codes 4 and G (Codes 4 and H if from a
+recovered tax free must be shown only in box 5. If any         designated Roth account to a Roth IRA). If two or more
+previous distributions were made, any amount recovered         distribution codes are not valid combinations, you must file
+tax free in prior years must not appear in box 5.              more than one Form 1099-R.
+   For payments of reportable death benefits, enter your                 Enter a maximum of two alphanumeric codes in
+estimate of the buyer’s investment in the contract in box 5.     !       box 7. See Table 1 for allowable combinations.
+                                                                CAUTION Only three numeric combinations are permitted on
+   If you are unable to reasonably obtain the data             one Form 1099-R: Codes 8 and 1, 8 and 2, or 8 and 4. If
+necessary to compute the taxable amount, leave box 2a          two or more other numeric codes are applicable, you must
+blank, leave box 5 blank (except in the case of a payment      file more than one Form 1099-R. For example, if part of a
+of reportable death benefits), and check the first box in      distribution is premature (Code 1) and part is not (Code
+box 2b. In the case of a payment of reportable death           7), file one Form 1099-R for the part to which Code 1
+benefits, box 5 must be completed.                             applies and another Form 1099-R for the part to which
+  For more information, see Rev. Proc. 92-86, 1992-2           Code 7 applies. In addition, for the distribution of excess
+C.B. 495, and section 72(d).                                   deferrals, parts of the distribution may be taxable in 2
+
+Instructions for Forms 1099-R and 5498 (2025)                                                                                15
+different years. File separate Forms 1099-R using Code 8        directly by the trustee of your IRA to an organization
+or P to indicate the year the amount is taxable.                eligible to receive tax-deductible contributions. See
+                                                                Qualified charitable distributions (QCDs) in Pub. 590-B for
+        If a qualified plan loan offset occurs in a             more information.
+     !  designated Roth account (Codes M and B), or a              To report a QCD use code Y with:
+CAUTION loan is treated as a deemed distribution under
+                                                                • Code 7 for a QCD from a non-inherited (normal
+section 72(p) (Codes L and B), and a numeric code is            distribution) IRA,
+needed to indicate whether the recipient is subject to the      • Code 4 for a QCD from an inherited (death distribution)
+10% tax under section 72(t), omit Code M or L, as               IRA, or
+applicable.                                                     • Code K for a QCD reporting distributions of traditional
+    Even if the employee/taxpayer is age 591/2 or over, use     IRA assets not having a readily available FMV that are
+Code 1 if a series of substantially equal periodic payments     either from non-inherited or inherited IRAs.
+was modified within 5 years of the date of the first            Roth SEP IRAs and Roth SIMPLE IRAs. Employer
+payment (within the meaning of section 72(q)(3) or (t)(4)),     matching and nonelective contributions made to a Roth
+if you have been reporting distributions in previous years      SEP or Roth SIMPLE IRA must be reported for the year in
+using Code 2.                                                   which the contributions are made to the employee's Roth
+    For example, Jordan began receiving payments that           IRA, with the total reported in boxes 1 and 2a, using code
+qualified for the exception for part of a series of             2 or 7 in box 7 and the IRA/SEP/SIMPLE checkbox in
+substantially equal periodic payments under section 72(t)       box 7 checked.
+(2)(A)(iv) when they were 57. When they were 61, Jordan
+modified the payments. Because the payments were                Box 8. Other
+modified within 5 years, use Code 1 in the year the             Lump sum distributions from a plan which include an
+payments were modified, even though Jordan is over              annuity contract. Enter the current actuarial value of an
+591/2.                                                          annuity contract that is part of a lump-sum distribution. Do
+    If you do not know that the taxpayer meets the              not include this item in boxes 1 and 2a.
+requirements for substantially equal periodic payments             To determine the value of an annuity contract, show the
+under section 72(t)(2)(A)(iv), use Code 1 to report the         value as an amount equal to the current actuarial value of
+payments.                                                       the annuity contract, reduced by an amount equal to the
+          For further guidance on what makes a series of        excess of the employee's contributions over the cash and
+          substantially equal periodic payments, see Notice     other property (not including the annuity contract)
+     !
+ CAUTION 2022-6, 2022-05 I.R.B. 460. Note that section          distributed.
+72(t)(2)(A) generally provides that periodic payments will         If an annuity contract is part of a multiple recipient
+not fail to be treated as substantially equal merely            lump-sum distribution, enter in box 8, along with the
+because they are amounts received as an annuity, and            current actuarial value, the percentage of the total annuity
+that periodic payments shall be deemed to be                    contract each Form 1099-R represents.
+substantially equal if they are payable over a period           Charges against the cash value or cash surrender
+described in section 72(t)(2)(A)(iv) and satisfy the            value of a contract for qualified long-term care insur-
+requirements for annuity payments under section 401(a)          ance. Also, enter in box 8 the amount of the reduction in
+(9).                                                            the investment (but not below 0 (zero)) against the cash
+   If part of a distribution is paid in a direct rollover and   value of an annuity contract or the cash surrender value of
+part is not, you must file a separate Form 1099-R for each      a life insurance contract due to charges or payments for
+part showing the appropriate code on each form.                 qualified long-term care insurance contracts.
+   Governmental section 457(b) plan distributions.              Value of annuitized annuity contract. The issuer of a
+Generally, a distribution from a governmental section           commercial annuity contract which has been annuitized
+457(b) plan is not subject to the 10% additional tax under      must report the current actuarial value of the contract as of
+section 72(t). However, an early distribution from a            the end of the year if payments have been made from the
+governmental section 457(b) plan of an amount that is           contract during the year.
+attributable to a rollover from another type of eligible
+retirement plan or IRA is subject to the 10% additional tax     Box 9a. Your Percentage of Total Distribution
+as if the distribution were from a plan described in section    If this is a total distribution and it is made to more than one
+401(a). See section 72(t)(9). If the distribution consists      person, enter the percentage received by the person
+solely of amounts that are not attributable to such a           whose name appears on Form 1099-R. You need not
+rollover, enter Code 2 in box 7. If the distribution consists   complete this box for any IRA distributions or for a direct
+solely of amounts attributable to such a rollover, then enter   rollover.
+the appropriate code in box 7 as if the distribution were
+from a plan described in section 401(a). If the distribution    Box 9b. Total Employee Contributions
+is made up of amounts from both sources, you must file          You are not required to enter the total employee
+separate Forms 1099-R for each part of the distribution         contributions or designated Roth contributions in box 9b.
+unless Code 2 would be entered on each form.                    However, because this information may be helpful to the
+   Qualified charitable distributions (QCDs).                   recipient, you may choose to report them.
+Generally, a QCD is a nontaxable distribution made
+
+16                                                                           Instructions for Forms 1099-R and 5498 (2025)
+   If you choose to report the total employee contributions   payer that is reporting on Form 1099-R as part of
+or designated Roth contributions, do not include any          satisfying your requirement to report with respect to a U.S.
+amounts recovered tax free in prior years. For a total        account for chapter 4 purposes, as described in
+distribution, report the total employee contributions or      Regulations section 1.1471-4(d)(2)(iii)(A).
+designated Roth contributions in box 5 rather than in
+box 9b.                                                       Box 13. Date of Payment
+                                                              Enter here the date payment was made for reportable
+Box 10. Amount Allocable to IRR Within 5 Years                death benefits under section 6050Y.
+Enter the amount of the distribution allocable to an IRR
+made within the 5-year period beginning with the first day    Boxes 14–19. State and Local Information
+of the year in which the rollover was made. Do not            These boxes and Copies 1 and 2 are provided for your
+complete this box if an exception under section 72(t)         convenience only and need not be completed for the IRS.
+applies.                                                      Use the state and local information boxes to report
+   For further guidance on determining amounts allocable      distributions and taxes for up to two states or localities.
+to an IRR, see Notice 2010-84, Q/A-13.                        Keep the information for each state or locality separated
+                                                              by the broken line. If state or local income tax has been
+Box 11. First Year of Desig. Roth Contrib.                    withheld on this distribution, you may enter it in boxes 14
+Enter the first year of the 5-tax-year period. This is the    and 17, as appropriate. In box 15, enter the abbreviated
+year in which the designated Roth account was first           name of the state and the payer's state identification
+established by the recipient.                                 number. The state number is the payer's identification
+                                                              number assigned by the individual state. In box 18, enter
+Box 12. FATCA Filing Requirement Checkbox                     the name of the locality. In boxes 16 and 19, you may
+Check the box if you are an FFI reporting a cash value        enter the amount of the state or local distribution. Copy 1
+insurance contract or annuity contract that is a U.S.         may be used to provide information to the state or local tax
+account in a manner similar to that required under section    department. Copy 2 may be used as the recipient's copy
+6047(d). See Regulations section 1.1471-4(d)(5)(i)(B) for     in filing a state or local income tax return.
+this election. In addition, check the box if you are a U.S.
+
+
+
+
+Instructions for Forms 1099-R and 5498 (2025)                                                                          17
+Table 1. Guide to Distribution Codes
+                                                         Guide to Distribution Codes
+                                                                                                                                    *Used with code (if
+                Distribution Codes          Explanations
+                                                                                                                                    applicable)
+
+1—Early distribution, no known exception.   Use Code 1 only if the participant has not reached age 591/2, and you do not            8, B, D, K, L, M, or P
+                                            know if any of the exceptions under Code 2, 3, or 4 apply. However, use Code 1
+                                            even if the distribution is made for medical expenses, health insurance premiums,
+                                            qualified higher education expenses, a first-time home purchase, a qualified
+                                            reservist distribution, a qualified birth or adoption distribution, an emergency
+                                            personal expense distribution, a terminally ill individual distribution, or an eligible
+                                            distribution to a domestic abuse victim under section 72(t)(2)(B), (D), (E), (F), (G),
+                                            (H), (I), (K), or (L). Code 1 must also be used even if a taxpayer is age 591/2 or
+                                            older and they modify a series of substantially equal periodic payments under
+                                            section 72(q), (t), or (v) prior to the end of the 5-year period that began with the
+                                            first payment.
+2—Early distribution, exception applies.    Use Code 2 only if the participant has not reached age 591/2 and you know the 8, B, D, K, L, M, or P
+                                            distribution is the any of the following.
+                                             • A Roth IRA conversion (an IRA converted to a Roth IRA).
+                                             • A distribution made from a qualified retirement plan or IRA because of an IRS
+                                            levy under section 6331.
+                                             • A governmental section 457(b) plan distribution that is not subject to the
+                                            additional 10% tax. But see Governmental section 457(b) plans, earlier, for
+                                            information on distributions that may be subject to the 10% additional tax.
+                                             • A distribution from a qualified retirement plan after separation from service in
+                                            or after the year the participant has reached age 55.
+                                             • A distribution from a governmental plan to a public safety employee (as
+                                            defined in section 72(t)(10)(B)) after separation from service, in or after the year
+                                            the employee has reached age 50 or 25 years of service under the plan,
+                                            whichever is earlier. A distribution from a qualified plan, a section 403(a) plan, or a
+                                            section 403(b) plan to an employee who provides firefighting services, after
+                                            separation from service, in or after the year the employee has reached age 50 or
+                                            25 years of service under the plan, whichever is earlier.
+                                             • A distribution that is part of a series of substantially equal periodic payments,
+                                            as described in section 72(q), (t), (u), or (v).
+                                             • A distribution that is a permissible withdrawal under an eligible automatic
+                                            contribution arrangement (EACA).
+                                             • Any other distribution subject to an exception under section 72(q), (t), (u), or
+                                            (v) that is not required to be reported using Code 1, 3, or 4.
+                                             • An employer matching or nonelective contribution made to a Roth SEP IRA or
+                                            a Roth SIMPLE IRA.
+3—Disability.                               For these purposes, see section 72(m)(7) and Rev. Rul. 85-105, 1985-2 C.B. 53.          D
+4—Death.                                    Use Code 4 regardless of the age of the participant to indicate payment to a         8, A, B, D, G, H, K, L, M, P,
+                                            decedent's beneficiary, including an estate or trust. Also, use it for death benefit or Y**
+                                            payments made by an employer but not made as part of a pension, profit-sharing,
+                                            or retirement plan. Also, use it for payments of reportable death benefits.
+5—Prohibited transaction.                   Use Code 5 if there was a prohibited transaction involving the IRA account. Code        None
+                                            5 means the account is no longer an IRA.
+6—Section 1035 exchange.                    Use Code 6 to indicate the tax-free exchange of life insurance, annuity, long-term      W
+                                            care insurance, or endowment contracts under section 1035.
+
+
+
+
+18                                                                                             Instructions for Forms 1099-R and 5498 (2025)
+                                                                   Guide to Distribution Codes
+                                                                                                                                               *Used with code (if
+                Distribution Codes                    Explanations
+                                                                                                                                               applicable)
+7—Normal distribution.                                Use Code 7: (a) for a normal distribution from a plan, including a traditional IRA,      A, B, D, K, L, M, or Y**
+                                                      section 401(k), or section 403(b) plan, if the employee/taxpayer is at least age
+                                                      591/2; (b) for a Roth IRA conversion if the participant is at least age 591/2; and (c)
+                                                      to report a distribution from a life insurance, annuity, or endowment contract and
+                                                      for reporting income from a failed life insurance contract under section 7702(g)
+                                                      and (h). See Rev. Proc. 2008-42, 2008-29 I.R.B. 160, available at IRS.gov/irb/
+                                                      2008-29_IRB#RP-2008-42. Generally, use Code 7 if no other code applies. Do
+                                                      not use Code 7 for a Roth IRA.
+                                                      Note. Code 1 must be used even if a taxpayer is age 591/2 or older and they
+                                                      modify a series of substantially equal periodic payments under section 72(q), (t),
+                                                      or (v) prior to the end of the 5-year period that began with the first payment.
+8—Excess contributions plus earnings/excess           Use Code 8 for a corrective IRA distribution under section 408(d)(4), unless Code 1, 2, 4, B, J, or K
+deferrals (and/or earnings) taxable in 2025.          P applies. Also, use this code for corrective distributions of excess deferrals,
+                                                      excess contributions, and excess aggregate contributions, unless Code P
+                                                      applies. See Corrective Distributions, earlier, and IRA Revocation or Account
+                                                      Closure, earlier, for more information.
+9—Cost of current life insurance protection.          Use Code 9 to report premiums paid by a trustee or custodian for current life or         None
+                                                      other insurance protection. See the instructions for Box 2a. Taxable Amount,
+                                                      earlier, for more information.
+A—May be eligible for 10-year tax option.             Use Code A only for participants born before January 2, 1936, or their                   4 or 7
+                                                      beneficiaries to indicate the distribution may be eligible for the 10-year tax option
+                                                      method of computing the tax on lump-sum distributions (on Form 4972, Tax on
+                                                      Lump-Sum Distributions). To determine whether the distribution may be eligible
+                                                      for the tax option, you need not consider whether the recipient used this method
+                                                      (or capital gain treatment) in the past.
+B—Designated Roth account distribution.               Use Code B for a distribution from a designated Roth account. But use Code E for 1, 2, 4, 7, 8, G, L, M, P, or U
+                                                      a section 415 distribution under EPCRS (see Code E) or Code H for a direct
+                                                      rollover to a Roth IRA.
+C—Reportable death benefits under section 6050Y. Use Code C for a distribution to report payments of reportable death benefits.                D
+D—Annuity payments from nonqualified annuities        Use Code D for a distribution from any plan or arrangement not described in              1, 2, 3, 4, 7, or C
+and distributions from life insurance contracts       section 401(a), 403(a), 403(b), 408, 408A, or 457(b).
+that may be subject to tax under section 1411.
+E—Distributions under Employee Plans                  See Distributions Under Employee Plans Compliance Resolution System                      None
+Compliance Resolution System (EPCRS).                 (EPCRS), earlier.
+F—Charitable gift annuity.                            See Charitable gift annuities, earlier.                                                  None
+G—Direct rollover and direct payment.                 Use Code G for a direct rollover from a qualified plan, a section 403(b) plan, or a 4, B, or K
+                                                      governmental section 457(b) plan to an eligible retirement plan (another qualified
+                                                      plan, a section 403(b) plan, a governmental section 457(b) plan, or an IRA). See
+                                                      Direct Rollovers, earlier. Also, use Code G for a direct payment from an IRA to an
+                                                      accepting employer plan, for IRRs that are direct rollovers, and to report
+                                                      designated Roth nonelective contributions and designated Roth matching
+                                                      contributions for the year in which the contributions are allocated.
+                                                      Note. Do not use Code G for a direct rollover from a designated Roth account to a
+                                                      Roth IRA. Use Code H.
+H—Direct rollover of a designated Roth account        Use Code H for a direct rollover of a distribution from a designated Roth account        4
+distribution to a Roth IRA.                           to a Roth IRA.
+J—Early distribution from a Roth IRA, no known        Use Code J for a distribution from a Roth IRA or Roth SIMPLE IRA when Code Q             8, P, or S
+exception.                                            or T does not apply. But use Code 2 for an IRS levy and Code 5 for a prohibited
+                                                      transaction.
+K—Distribution of traditional IRA assets not          Use Code K to report distributions of IRA assets not having a readily available          1, 2, 4, 7, 8, G, or Y**
+having a readily available FMV.                       FMV. These assets may include:
+                                                      • Stock, other ownership interest in a corporation, short- or long-term debt
+                                                      obligations, not readily tradable on an established securities market;
+                                                      • Ownership interest in a limited liability company (LLC), partnership, trust, or
+                                                      similar entity (unless the interest is traded on an established securities market);
+                                                      • Real estate;
+                                                      • Option contracts or similar products not offered for trade on an established
+                                                      option exchange; or
+                                                      • Other asset that does not have a readily available FMV.
+
+
+
+
+Instructions for Forms 1099-R and 5498 (2025)                                                                                                                             19
+                                                                             Guide to Distribution Codes
+                                                                                                                                                      *Used with code (if
+                   Distribution Codes                           Explanations
+                                                                                                                                                      applicable)
+L—Loans treated as deemed distributions under                   Do not use Code L to report a plan loan offset. See Loans Treated as                  1, 2, 4, 7, or B
+section 72(p).                                                  Distributions, earlier.
+M—Qualified plan loan offset.                                   Use Code M for a qualified plan loan offset (which is generally a type of plan loan   1, 2, 4, 7, or B
+                                                                offset due to severance from employment or termination of the plan). See Plan
+                                                                loan offsets, earlier.
+N—Recharacterized IRA contribution made for                     Use Code N for a recharacterization of an IRA contribution made for 2025 and          None
+2025.                                                           recharacterized in 2025 to another type of IRA by a trustee-to-trustee transfer or
+                                                                with the same trustee.
+P—Excess contributions plus earnings/excess                     See the explanation for Code 8. The IRS suggests that anyone using Code P for         1, 2, 4, B, or J
+deferrals taxable in 2024 or a previous year.                   the refund of an IRA contribution under section 408(d)(4), including excess Roth
+                                                                IRA contributions, advise payees, at the time the distribution is made, that the
+                                                                earnings are taxable in the year in which the contributions were made.
+                                                                Note. A participant is allowed to take out a prior year excess contribution when
+                                                                the IRS provides tax relief by postponing the tax filing due date, for example, due
+                                                                to a federally declared disaster.
+Q—Qualified distribution from a Roth IRA.                       Use Code Q for a distribution from a Roth IRA if you know that the participant        None
+                                                                meets the 5-year holding period and:
+                                                                • The participant has reached age 591/2,
+                                                                • The participant died, or
+                                                                • The participant is disabled.
+                                                                Note. If any other code, such as 8 or P, applies, use Code J.
+R—Recharacterized IRA contribution made for                     Use Code R for a recharacterization of an IRA contribution made for 2024 and          None
+2024 or a previous year.                                        recharacterized in 2025 to another type of IRA by a trustee-to-trustee transfer or
+                                                                with the same trustee.
+                                                                Note. A participant is allowed to recharacterize an IRA contribution made for a
+                                                                prior year when the IRS provides tax relief by postponing the tax filing due date,
+                                                                for example, due to a federally declared disaster.
+S—Early distribution from a SIMPLE IRA in the                   Use Code S only if the distribution is from a SIMPLE IRA in the first 2 years, the  J
+first 2 years, no known exception.                              employee/taxpayer has not reached age 591/2, and none of the exceptions under
+                                                                section 72(t) are known to apply when the distribution is made. The 2-year period
+                                                                begins on the day contributions are first deposited in the individual's SIMPLE IRA.
+                                                                Do not use Code S if Code 3 or 4 applies.
+T—Roth IRA distribution, exception applies.                     Use Code T for a distribution from a Roth IRA if you do not know if the 5-year        None
+                                                                holding period has been met but:
+                                                                • The participant has reached age 591/2,
+                                                                • The participant died, or
+                                                                • The participant is disabled.
+                                                                Note. If any other code, such as 8 or P, applies, use Code J.
+U—Dividends distributed from an ESOP under                      Use Code U for a distribution of dividends from an employee stock ownership         B
+section 404(k).                                                 plan (ESOP) under section 404(k). These are not eligible rollover distributions.
+                                                                Note. Do not report dividends paid by the corporation directly to plan participants
+                                                                or their beneficiaries. Continue to report those dividends on Form 1099-DIV.
+W—Charges or payments for purchasing qualified                  Use Code W for charges or payments for purchasing qualified long-term care            6
+long-term care insurance contracts under                        insurance contracts under combined arrangements that are excludable under
+combined arrangements.                                          section 72(e)(11) against the cash value of an annuity contract or the cash
+                                                                surrender value of a life insurance contract.
+Y—Qualified charitable distribution (QCD) claimed Use Code Y for a distribution made directly from an IRA to a charitable           4, 7, or K
+under section 408(d)(8).                          organization and that the taxpayer intends to be a QCD. For more information
+                                                  about QCDs, see Pub. 590-B.
+                                                  Note. When using code Y, you must use either 4, 7, or K. See Qualified charitable
+                                                  distributions (QCDs), earlier.
+*See the first two Cautions for the box 7 instructions, earlier.
+**When reporting a QCD, you must use code Y first with either 4, 7, or K.
+
+
+
+                                                                                               which the employer may contribute to IRAs of their
+Specific Instructions for Form 5498                                                            employees.
+File Form 5498, IRA Contribution Information, with the IRS                                        Under a SEP arrangement, an employer contributes to
+by June 1, 2026, for each person for whom in 2025 you                                          traditional IRAs (sometimes referred to as traditional SEP
+maintained any individual retirement arrangement (IRA),                                        IRAs) or Roth IRAs (sometimes referred to as Roth SEP
+including a deemed IRA under section 408(q).                                                   IRAs) of its employees. Individuals may separately make
+Types of IRAs. An IRA can be either a traditional IRA or                                       their own contributions to the same IRAs to which their
+a Roth IRA. In general, individuals may make their own                                         employer contributes under a SEP arrangement.
+contributions to their traditional IRAs or Roth IRAs. In                                          Under a SIMPLE IRA plan, an employer contributes
+addition, certain employers have arrangements under                                            salary reduction contributions (at the election of the
+                                                                                               employee), matching contributions and/or nonelective
+
+20                                                                                                                Instructions for Forms 1099-R and 5498 (2025)
+contributions to traditional IRAs (sometimes referred to as       • A traditional IRA that is not a traditional SIMPLE IRA to
+traditional SIMPLE IRAs) or Roth IRAs (sometimes                  a traditional SIMPLE IRA after the first 2 years of plan
+referred to as Roth SIMPLE IRAs) of its employees.                participation.
+However, a SIMPLE IRA (whether a traditional SIMPLE               • A traditional SIMPLE IRA to another traditional SIMPLE
+IRA or a Roth SIMPLE IRA) is subject to certain                   IRA.
+restrictions that do not generally apply to other traditional     • A traditional SIMPLE IRA to a traditional IRA after the
+IRAs or Roth IRAs. For example, an individual cannot              first 2 years of plan participation.
+make their own contributions to a SIMPLE IRA. In                  • A Roth IRA that is not a Roth SIMPLE IRA to another
+addition, there are various restrictions related to               Roth IRA that is not a Roth SIMPLE IRA.
+distributions and contributions during the initial 2 years of     • A Roth IRA that is not a Roth SIMPLE IRA to a Roth
+participation in the SIMPLE IRA plan.                             SIMPLE IRA after the first 2 years of plan participation.
+   References to traditional IRAs generally include               • A Roth SIMPLE IRA to another Roth SIMPLE IRA.
+traditional SEP IRAs and traditional SIMPLE IRAs, unless          • A Roth SIMPLE IRA to a Roth IRA after the first 2 years
+otherwise stated. Likewise, references to Roth IRAs               of plan participation.
+generally include Roth SEP IRAs and Roth SIMPLE IRAs,                Recharacterizations. You must report each
+unless otherwise stated.                                          recharacterization of an IRA contribution. If a participant
+                                                                  makes a contribution to an IRA (first IRA) for a year, the
+   An IRA includes all investments under one IRA plan. It         participant may choose to recharacterize the contribution
+is not necessary to file a Form 5498 for each investment          by transferring, in a trustee-to-trustee transfer, any part of
+under one plan. For example, if a participant has three           the contribution (plus earnings) to another IRA (second
+certificates of deposit (CDs) under one IRA plan, only one        IRA). The contribution is treated as made to the second
+Form 5498 is required for all contributions and the fair          IRA (recharacterization). A recharacterization may be
+market values (FMVs) of the CDs under the plan.                   made with the same trustee or with another trustee. The
+However, if a participant has established more than one           trustee of the first IRA must report the amount contributed
+IRA plan with the same trustee, a separate Form 5498              before the recharacterization as a contribution on Form
+must be filed for each plan.                                      5498 and the recharacterization as a distribution on Form
+Contributions. You must report contributions to any IRA           1099-R. The trustee of the second IRA must report the
+on Form 5498. See the instructions under boxes 1, 2, 3, 4,        amount received (FMV) in box 4 on Form 5498 and check
+8, 9, 10, 13a, and 14a, later. If no reportable contributions     the type of IRA in box 7.
+were made for 2025, complete only boxes 5 and 7, and                  All recharacterized contributions received by an IRA in
+boxes 11, 12a, 12b, 15a, and 15b, if applicable. See              the same year must be totaled and reported on one Form
+Reporting FMV of certain specified assets, later.                 5498 in box 4. You may report the FMV of the account on
+                                                                  the same Form 5498 you use to report a
+        You are required to file Form 5498 even if required       recharacterization of an IRA contribution and any other
+  !     minimum distributions (RMDs) or other annuity or          contributions made to the IRA for the year.
+CAUTION periodic payments have started.
+                                                                  No recharacterizations of conversions made in 2018
+   Report contributions to a Kay Bailey Hutchison Spousal         or later. A conversion of a traditional IRA to a Roth IRA,
+IRA under section 219(c) on a separate Form 5498 using            and a rollover from any other eligible retirement plan to a
+the name and TIN of the spouse.                                   Roth IRA, made in the participant’s tax years beginning
+   For contributions made between January 1 and April             after December 31, 2017, cannot be recharacterized as
+15, 2026, trustees and issuers should obtain the                  having been made to a traditional IRA.
+participant's designation of the year for which the               Catch-up contributions. Participants who are age 50 or
+contributions are made.                                           older by the end of the year may be eligible to make
+Direct rollovers, transfers, and recharacterizations.             catch-up IRA contributions or catch-up elective deferral
+You must report the receipt of a direct rollover from a           contributions. The annual IRA regular contribution limit of
+qualified plan, section 403(b) plan, or governmental              $7,000 is increased to $8,000 for participants age 50 or
+section 457(b) plan to an IRA. Report a direct rollover in        older. Catch-up elective deferral contributions reported on
+box 2. For information on direct rollovers of eligible rollover   Form 5498 may be made under a salary reduction SEP
+distributions, see Direct Rollovers, earlier.                     (SARSEP) or under a SIMPLE IRA plan. For 2025, up to
+    If a rollover or trustee-to-trustee transfer is made from a   $7,500 in catch-up elective deferral contributions may
+savings incentive match plan for employees (SIMPLE) IRA           generally be made under a SARSEP, and generally up to
+to an IRA that is not a SIMPLE IRA and the trustee has            $3,500 to a SIMPLE IRA plan. A higher catch-up elective
+adequately substantiated information that the participant         deferral limit may apply to participants who were age 60
+has not satisfied the first 2 years of plan participation,        through 63 as of December 31, 2025, or to participants in
+report the amount as a regular contribution in box 1 even if      certain SIMPLE IRA plans. For more information on
+the amount exceeds $7,000 ($8,000 for participants age            catch-up elective deferral contributions, see Pub. 525,
+50 or older).                                                     Taxable and Nontaxable Income.
+   Transfers. Do not report on Form 5498 a                           Include any catch-up amounts when reporting
+trustee-to-trustee transfer from the following.                   contributions for the year in box 1, 8, 9, or 10, or for a prior
+• A traditional IRA that is not a traditional SIMPLE IRA to       year in box 13a.
+another traditional IRA that is not a traditional SIMPLE
+IRA.
+
+Instructions for Forms 1099-R and 5498 (2025)                                                                                  21
+Roth IRA conversions. You must report the receipt of a          to compute the amount. See the instructions for boxes 11.
+conversion from a traditional IRA to a Roth IRA even if the     Check if RMD for 2026, 12a. RMD Date, and 12b. RMD
+conversion is with the same trustee. Report the total           Amount, later, for how to report.
+amount converted from a traditional IRA to a Roth IRA in           Alternative two. Under this method, the statement
+box 3.                                                          informs the participant that a minimum distribution with
+                                                                respect to the IRA is required for the calendar year and the
+IRA revocation or account closure. If a traditional IRA         date by which such amount must be distributed. You must
+or Roth IRA is revoked during its first 7 days (under           include an offer to furnish the participant with a calculation
+Regulations section 1.408-6(d)(4)(ii)) or closed at any time    of the amount of the RMD if requested by the participant.
+by the IRA trustee pursuant to its resignation or such other
+                                                                   Electronic filing. These statements may be furnished
+event mandating the closure of the account, Form 5498
+                                                                electronically using the procedures described in part F of
+must be filed to report any regular, rollover, IRA
+                                                                the current General Instructions for Certain Information
+conversion, SEP IRA, or SIMPLE IRA contributions to the
+                                                                Returns.
+IRA. For information about reporting a distribution from a
+                                                                   Reporting to the IRS. If an RMD is required, check
+revoked or closed IRA, see IRA Revocation or Account
+                                                                box 11. See Box 11. Check if RMD for 2026, later. For
+Closure under the Specific Instructions for Form 1099-R,
+                                                                example, box 11 is checked on the Form 5498 for a 2026
+earlier.
+                                                                RMD. You are not required to report to the IRS the amount
+Total distribution, no contributions. Generally, if a total     or the date by which the distribution must be made.
+distribution was made from an account during the year           However, see the Caution following the box 11
+and no contributions, including rollovers,                      instructions, later, for reporting RMDs to participants.
+recharacterizations, or Roth IRA conversion amounts,               For more details, see Notice 2002-27 on page 814 of
+were made for that year, you need not file Form 5498 or         I.R.B. 2002-18 at IRS.gov/pub/irs-irbs/irb02-18.pdf, as
+furnish the annual statement to reflect that the FMV on         clarified by Notice 2003-3 on page 258 of I.R.B. 2003-2 at
+December 31 was zero.                                           IRS.gov/pub/irs-irbs/irb03-02.pdf.
+RMDs. A traditional IRA owner/participant must begin            Inherited IRAs. In the year an IRA participant dies, you,
+taking distributions for each calendar year beginning with      as an IRA trustee or issuer, must generally file a Form
+the calendar year in which the participant attains age 73       5498 and furnish an annual statement for the decedent
+(after December 31, 2022, and before January 1, 2033).          and a Form 5498 and an annual statement for each
+The distribution for the 73-year-old must be made no later      nonspouse beneficiary. An IRA holder must be able to
+than April 1 of the following calendar year; RMDs for any       identify the source of each IRA they hold for purposes of
+other year must be made no later than December 31 of            figuring the taxation of a distribution from an IRA. Thus,
+the year. See Public Law (P.L.) 117-328, Div. T, Title III,     the decedent's name must be shown on the beneficiary's
+section 107.                                                    Form 5498 and annual statement. For example, you may
+   For each IRA you held as of December 31 of the prior         enter “Brian Willow as beneficiary of Joan Maple” or
+year, if an RMD is required for the year, you must provide      something similar that signifies that the IRA was once
+a statement to the IRA participant by January 31 regarding      owned by Joan Maple. You may abbreviate the word
+the RMD using one of two alternative methods described          “beneficiary” as, for example, “bene.”
+below. You are not required to use the same method for all         For a spouse beneficiary, unless the spouse makes the
+IRA participants; you can use Alternative one for some          IRA their own, treat the spouse as a nonspouse
+IRA participants and Alternative two for the rest. Under        beneficiary for reporting purposes. If the spouse makes
+both methods, the statement must inform the participant         the IRA their own, do not report the beneficiary
+that you are reporting to the IRS that an RMD is required       designation on Form 5498 and the annual statement.
+for the year. The statement can be provided in conjunction
+with the statement of the FMV.                                     An IRA set up to receive a direct rollover for a
+                                                                nonspouse designated beneficiary is treated as an
+   If the IRA participant is deceased, and the surviving        inherited IRA.
+spouse is the sole beneficiary, special rules apply for RMD        FMV. On the decedent's Form 5498 and annual
+reporting. If the surviving spouse elects to treat the IRA as   statement, you must enter the FMV of the IRA on the date
+the spouse's own, then report with the surviving spouse         of death in box 5. Or you may choose the alternate
+as the owner. However, if the surviving spouse does not         reporting method and report the FMV as of the end of the
+elect to treat the IRA as the spouse's own, then you must       year in which the decedent died. This alternate value will
+continue to treat the surviving spouse as the beneficiary.      usually be zero because you will be reporting the
+Until further guidance is issued, no reporting is required      end-of-year valuation on the beneficiary's Form 5498 and
+for IRAs of deceased participants (except where the             annual statement. The same figure should not be shown
+surviving spouse elects to treat the IRA as the spouse's        on both the beneficiary's and decedent's forms. If you
+own, as described above).                                       choose to report using the alternate method, you must
+  Alternative one. Under this method, include in the            inform the executor or administrator of the decedent's
+statement the amount of the RMD with respect to the IRA         estate of their right to request a date-of-death valuation.
+for the calendar year and the date by which the                    On the beneficiary's Form 5498 and annual statement,
+distribution must be made. The amount may be calculated         the FMV of that beneficiary's share of the IRA as of the
+assuming the sole beneficiary of the IRA is not a spouse        end of the year must be shown in box 5. Every year
+more than 10 years younger than the participant. Use the        thereafter that the IRA exists, you must file Form 5498 and
+value of the account as of December 31 of the prior year
+
+22                                                                           Instructions for Forms 1099-R and 5498 (2025)
+furnish an annual statement for each beneficiary who has           If a qualifying participant designates an IRA
+not received a total distribution of their share of the IRA    contribution for a prior year, other than an IRA contribution
+showing the FMV at the end of the year and identifying the     made by April 15 for the preceding year, you must report
+IRA, as described above.                                       the type of IRA (box 7) and the amount on Form 5498.
+    However, if a beneficiary takes a total distribution of    Report the amount either for (1) the year for which the
+their share of the IRA in the year of death, you need not      contribution was made, or (2) a subsequent year. See the
+file a Form 5498 or furnish an annual statement for that       instructions for boxes 13a, 13b, and 13c, later.
+beneficiary, but you must still file Form 5498 for the             1. If you report a contribution for 2025 made before
+decedent.                                                      April 15, 2026, no special reporting is required. Include
+    If you have no knowledge of the death of an IRA            the contribution in box 1 or 10 of an original Form 5498 or
+participant until after you are required to file Form 5498     of a corrected Form 5498 if an original was previously
+(June 1, 2026), you are not required to file a corrected       filed.
+Form 5498 or furnish a corrected annual statement.                 2. If you report the contribution on Form 5498 in a
+However, you must still provide the date-of-death              subsequent year, you must include the year for which the
+valuation in a timely manner to the executor or                contribution was made, the amount of the contribution,
+administrator upon request.                                    and one of the following indicators.
+    In the case of successor beneficiaries, apply the              a. Use “EO13239” for Afghanistan and those countries
+preceding rules by treating the prior beneficiary as the       in direct support, including Djibouti, Jordan, Kyrgyzstan,
+decedent and the successor beneficiary as the                  Pakistan, Somalia, Syria, Tajikistan, Uzbekistan, and
+beneficiary. Using the example above (Brian Willow as          Yemen.
+beneficiary of Joan Maple), when that account passes to            b. Use “EO12744” for the Arabian Peninsula, including
+Brian's successor beneficiary, Maurice Poplar, Form 5498       air space and adjacent waters (the Persian Gulf; the Red
+and the annual statement for Maurice should state              Sea; the Gulf of Oman, the Gulf of Aden; the portion of the
+“Maurice Poplar as beneficiary of Brian Willow.” The final     Arabian Sea that lies north of 10 degrees north latitude
+Form 5498 and annual statement for Brian Willow will           and west of 68 degrees east longitude; the total land
+state “Brian Willow as beneficiary of Joan Maple” and will     areas of Iraq, Kuwait, Saudi Arabia, Oman, Bahrain,
+show the FMV as of the date of Brian's death or year-end       Qatar, and the United Arab Emirates; Lebanon, and
+valuation, depending on the method chosen.                     Turkey east of longitude 33.51E), and Jordan, which is in
+    For more information about the reporting requirements      direct support of the Arabian Peninsula.
+for inherited IRAs, see Rev. Proc. 89-52, 1989-2 C.B. 632.         c. Use “EO13119” or “P.L.106-21” for the Federal
+Disaster relief reporting. Special rules apply to              Republic of Yugoslavia (Serbia and Montenegro), Albania,
+tax-favored withdrawals, income inclusion, and                 Kosovo, the Adriatic Sea, and the Ionian Sea north of the
+repayments for individuals who suffered economic losses        39th parallel. (Note. The combat zone designation for
+as a result of certain major disasters. See                    Montenegro and Kosovo (previously a province within
+Disaster-Related Relief in Pub. 590-B, for more                Serbia) under Executive Order 13119 remains in force
+information.                                                   even though Montenegro and Kosovo became
+                                                               independent nations since EO13119 was signed.)
+   For information about disaster relief available in your
+area, including postponements, go to IRS News Around               d. Use “P.L.115-97” for the Sinai Peninsula of Egypt.
+the Nation.                                                            For additions to, or subtractions from, the list of
+   See the instructions for boxes 13a through 13c for            !     combat zones or qualified hazardous duty areas
+reporting postponed contributions, later.                      CAUTION implemented by executive orders and public laws,
+
+
+Special reporting for U.S. Armed Forces in designa-            and direct support areas designated by the Secretary of
+ted combat zones. A participant who is serving in, or in       Defense, after the publication date of these instructions,
+support of, the Armed Forces in a designated combat            go to IRS.gov/Form5498.
+zone or qualified hazardous duty area has an additional           Example. For a $4,000 IRA contribution designated by
+period after the normal contribution due date of April 15 to   a participant who served under EO13239 for the tax year
+make IRA contributions for a prior year. The period is the     2024, enter “4000” in box 13a, “2024” in box 13b, and
+time the participant was in the designated zone or area        “EO13239” in box 13c only. Make no entry in box 1 or
+plus at least 180 days. The participant must designate the     box 10.
+IRA contribution for a prior year to claim it as a deduction
+                                                                 Repayment of qualified reservist distributions.
+on the income tax return.
+                                                               Report any repayment of a qualified reservist distribution
+   Under section 219(f), combat zone compensation that         as described in section 72(t)(2)(G) in boxes 14a (amount)
+is excluded from gross income under section 112 is             and 14b (with indicator code “QR”).
+treated as includible compensation for purposes of               Military death gratuities and servicemembers'
+determining IRA contributions.                                 group life insurance (SGLI) payments. Recipients of
+   A qualifying participant is:                                military death gratuities and SGLI payments may
+• Serving or has served in a combat zone;                      contribute amounts received to a Roth IRA, up to the
+• Serving or has served in a qualifying hazardous duty         amount of the gratuity or SGLI payment less any amounts
+area; or                                                       contributed to Coverdell ESAs. Report the amount of the
+• Serving or has served in an active direct support area.      rollover contribution in box 2 only. See section 408A(e)(2),
+
+Instructions for Forms 1099-R and 5498 (2025)                                                                            23
+and Notice 2010-15, 2010-06 I.R.B. 390, available at            participants with a statement of the December 31, 2025,
+IRS.gov/irb/2010-06_IRB#NOT-2010-15, for more                   value of the participant's account (including information
+information on limitations.                                     required to be reported in boxes 15a and 15b for
+   Electronic filers. You may request an automatic waiver       hard-to-value assets) and RMD, if applicable. Trustees of
+from filing Forms 5498 electronically for combat zone           SIMPLE IRAs must also provide a statement of the
+participants by submitting Form 8508, Request for Waiver        account activity by February 2, 2026. Contribution
+From Filing Information Returns Electronically. Once you        information for all other types of IRAs must be provided by
+have received the waiver, you may report all Forms 5498         June 1, 2026. You are not required to provide information
+for combat zone participants on paper. Alternatively, you       to the IRS or to participants as to whether a contribution is
+may report contributions made by the normal contribution        deductible or nondeductible. In addition, the participant is
+due date electronically and report the contributions made       not required to tell you whether a contribution is deductible
+after the normal contribution due date on paper. You may        or nondeductible.
+also report prior year contributions by combat zone                If you furnished a statement of the FMV of the account
+participants on a corrected Form 5498 electronically or on      (including information required to be reported in boxes
+paper.                                                          15a and 15b for hard-to-value assets) and RMD, if
+   See part F in the current General Instructions for           applicable, to the participant by February 2, 2026, and no
+Certain Information Returns for information on how to           reportable contributions, including rollovers,
+request a waiver on Form 8508.                                  recharacterizations, or Roth IRA conversions, were made
+                                                                for 2025, you need not furnish another statement (or Form
+Repayment of qualified disaster distributions. Report
+                                                                5498) to the participant to report zero contributions.
+any repayment of a qualified disaster distribution, as
+                                                                However, you must file Form 5498 with the IRS by June 1,
+described in applicable disaster legislation, in boxes 14a
+                                                                2026, to report the December 31, 2025, FMV of the
+(amount) and 14b (with indicator code “DD”).
+                                                                account and the FMV of hard-to-value assets. This rule
+Repayment of qualified birth or adoption distribu-              also applies to beneficiary accounts under the inherited
+tions. Report any repayment of a qualified birth or             IRA rules, earlier. For more information about the
+adoption distribution as described in section 72(t)(2)(H) in    requirement to furnish statements to participants, see part
+boxes 14a (amount) and 14b (with indicator code “BA”).          M in the current General Instructions for Certain
+Repayment of emergency personal expense distribu-               Information Returns.
+tions. Report any repayment of an emergency personal                     If you do not furnish another statement to the
+expense distribution as described in section 72(t)(2)(I) in       !      participant because no reportable contributions
+boxes 14a (amount) and 14b (with indicator code “EP”).           CAUTION were made for the year, the statement of the FMV
+
+
+Repayment of eligible distributions to a domestic               of the account must contain a legend designating which
+abuse victim. Report any repayment of an eligible               information is being filed with the IRS.
+distribution to a domestic abuse victim as described in
+                                                                Truncating participant's TIN on payee statements.
+section 72(t)(2)(K) in boxes 14a (amount) and 14b (with
+                                                                Pursuant to Regulations section 301.6109-4, all filers of
+indicator code “DA”).
+                                                                Form 5498 may truncate (replace the first five digits of the
+Repayment of terminally ill individual distributions.           nine-digit number with X's or asterisks) a participant’s TIN
+Report any repayment of a terminally ill individual             (social security number (SSN), individual taxpayer
+distribution as described in section 72(t)(2)(L) in boxes       identification number (ITIN), adoption taxpayer
+14a (amount) and 14b (with indicator code “TI”).                identification number (ATIN), or employer identification
+Reporting FMV of certain specified assets. Assets               number (EIN)) on payee statements. Truncation is not
+held in an IRA that are not readily tradable on an              allowed on any documents the filer files with the IRS. A
+established securities market or option exchange, or that       trustee's or issuer's TIN may not be truncated on any form.
+do not have a readily available FMV, must be reported at        See part J in the current General Instructions for Certain
+the FMV determined as of December 31, 2025. See the             Information Returns.
+instructions for boxes 15a and 15b, later.                      Account Number
+Corrected Form 5498. If you file a Form 5498 with the           The account number is required if you have multiple
+IRS and later discover that there is an error on it, you must   accounts for a recipient for whom you are filing more than
+correct it as soon as possible. See part H in the current       one Form 5498. Additionally, the IRS encourages you to
+General Instructions for Certain Information Returns, or        designate an account number for all Forms 5498 that you
+Pub. 1220, if filing electronically. For example, if you        file. See part L in the current General Instructions for
+reported contributions as rollover contributions in box 2,      Certain Information Returns.
+and you later discover that part of the contribution was not
+eligible to be rolled over and was, therefore, a regular        Box 1. IRA Contributions (Other Than Amounts
+contribution that should have been reported in box 1 (even      in Boxes 2–4, 8–10, 13a, and 14a)
+if the amount exceeds the regular contribution limit), you      Enter contributions to a traditional IRA made in 2025 and
+must file a corrected Form 5498.                                through April 15, 2026, designated for 2025.
+Statements to participants. If you are required to file
+Form 5498, you must provide a statement to the                     Report gross contributions, including the amount
+participant. By February 2, 2026, you must provide              allocable to the cost of life insurance (see Box 6. Life
+                                                                Insurance Cost Included in Box 1, later) and including any
+
+24                                                                           Instructions for Forms 1099-R and 5498 (2025)
+excess contributions, even if the excess contributions          Roth IRA to another Roth IRA, or a qualified rollover
+were withdrawn. If an excess contribution is treated as a       contribution under section 408A(e) from an eligible
+contribution in a subsequent year under section 219(f)(6),      retirement plan (other than an IRA) to a Roth IRA. These
+do not report it on Form 5498 for the subsequent year. It       rollovers are reported in box 2.
+has already been reported as a contribution on Form 5498
+for the year it was actually contributed.                       Box 4. Recharacterized Contributions
+   Also include employer contributions to an IRA that are       Enter any amounts recharacterized plus earnings from
+not made pursuant to a SEP arrangement (which include           one type of IRA to another.
+employer contributions that are nominally under a SEP           Box 5. FMV of Account
+arrangement but that exceed the definite written allocation
+formula of the SEP arrangement). Such contributions are         Enter the FMV of the account on December 31, 2025. For
+contributions made by the employee, not by the employer,        inherited IRAs, see Inherited IRAs, earlier.
+that are treated as regular IRA contributions subject to the             Trustees and custodians are responsible for
+100% of compensation and $7,000 ($8,000 for                       !      ensuring that all IRA assets (including those not
+participants age 50 or older) limits of section 219. Do not      CAUTION traded on established markets or not having a
+
+include employer SEP IRA contributions or SARSEP                readily determinable market value) are valued annually at
+contributions under section 408(k)(6). Instead, include         their FMV.
+them in box 8.
+   Also, do not include in box 1 employer contributions,        Box 6. Life Insurance Cost Included in Box 1
+including salary deferrals, to a SIMPLE IRA (report them in     For endowment contracts only, enter the amount included
+box 9) and a Roth IRA that is not a Roth SEP IRA or a           in box 1 allocable to the cost of life insurance.
+Roth SIMPLE IRA (report them in box 10). In addition, do
+not include in box 1 rollovers and recharacterizations          Box 7. Checkboxes
+(report rollovers in box 2 and recharacterizations in box 4),   Check the appropriate box.
+or a Roth IRA conversion amount (report in box 3).
+                                                                IRA. Check “IRA” if you are filing Form 5498 to report
+Box 2. Rollover Contributions                                   information about a traditional IRA account.
+Enter any rollover contributions (or contributions treated      SEP. Check “SEP” if you are filing Form 5498 to report
+as rollovers) to any IRA received by you during 2025.           information about a SEP IRA. If you do not know whether
+These contributions may be any of the following.                the account is a SEP IRA, check the “IRA” box.
+• A 60-day rollover between Roth IRAs or between other          SIMPLE. Check “SIMPLE” if you are filing Form 5498 to
+types of IRAs.                                                  report information about a SIMPLE IRA account. Do not
+• A direct or indirect (within 60 days) rollover from a         file Form 5498 for a SIMPLE 401(k) plan.
+qualified plan, section 403(b) plan, or governmental
+section 457(b) plan.                                            Roth IRA. Check “Roth IRA” if you are filing Form 5498 to
+• Any qualified rollover contribution, as defined in section    report information about a Roth IRA account.
+408A(e) from an eligible retirement plan (other than an         Roth SEP IRA. Check both “SEP” and “Roth IRA” if you
+IRA) to a Roth IRA.                                             are filing Form 5498 to report information about a Roth
+• A military death gratuity.                                    SEP IRA.
+• An SGLI payment.
+                                                                Roth SIMPLE IRA. Check both “SIMPLE” and “Roth IRA”
+    For the rollover of property, enter the FMV of the          if you are filing Form 5498 to report information about a
+property on the date you receive it. This value may be          Roth SIMPLE IRA.
+different from the value of the property on the date it was
+distributed to the participant.                                 Box 8. SEP Contributions
+  For more details, see Pub. 590-A.                             Enter employer contributions made to a SEP IRA
+                                                                (including salary deferrals under a SARSEP) during 2025,
+Note. Do not use box 2 for late rollover contributions,         including contributions made in 2025 for 2024, but not
+including rollovers of qualified plan loan offset amounts       including contributions made in 2026 for 2025. Trustees
+after 60 days or any of the following repayments made           and issuers are not responsible for reporting the year for
+after 60 days.                                                  which SEP contributions are made. Do not enter employer
+• Qualified reservist distributions.                            contributions to an IRA that are not made pursuant to a
+• Qualified disaster distributions.                             SEP arrangement (which include employer contributions
+• Qualified birth or adoption distributions.                    that are nominally under a SEP arrangement but that
+• Emergency personal expense distributions.                     exceed the definite written allocation formula of the SEP
+• Terminally ill individual distributions.                      arrangement). Report any employer contributions to an
+• Eligible distributions to domestic abuse victims.             IRA that are not made pursuant to a SEP arrangement in
+See the instructions for boxes 13a through 13c, 14a, and        box 1. Include in box 8 SEP contributions made by a
+14b, later.                                                     self-employed person to their own account. Also, include
+                                                                in box 8 contributions to a Roth SEP IRA.
+Box 3. Roth IRA Conversion Amount
+Enter the amount converted from a traditional IRA to a
+Roth IRA during 2025. Do not include a rollover from one
+
+Instructions for Forms 1099-R and 5498 (2025)                                                                            25
+Box 9. SIMPLE Contributions                                       declared disasters. See Rev. Proc. 2020-46, 2020-45
+Enter employer contributions, including salary deferrals,         I.R.B. 995, available at IRS.gov/irb/2020-45_IRB#REV-
+made to a SIMPLE IRA during 2025, including                       PROC-2020-46. If the participant also has a postponed
+contributions made in 2025 for 2024, but not including            contribution, use a separate Form 5498 to report a late
+contributions made in 2026 for 2025. Trustees and issuers         rollover.
+are not responsible for reporting the year for which
+                                                                  Box 13b. Year
+SIMPLE contributions are made. Do not include
+contributions to a SIMPLE 401(k) plan. Also, include in           Enter the year for which the postponed contribution in
+box 9 contributions to a Roth SIMPLE IRA.                         box 13a was made. Leave this box blank for late rollover
+                                                                  contributions and rollovers of qualified plan loan offset
+Box 10. Roth IRA Contributions                                    amounts.
+Enter any contributions made to a Roth IRA (not including
+                                                                  Box 13c. Code
+a Roth SEP IRA or Roth SIMPLE IRA) in 2025 and
+through April 15, 2026, designated for 2025. Also enter           Enter the reason the participant made the postponed
+qualified rollover contributions made from a section 529          contribution.
+qualified tuition program (QTP) to a Roth IRA that are            • For participants' service in a combat zone, hazardous
+designated for 2025. Under certain conditions, a                  duty area, or direct support area, enter the appropriate
+beneficiary of a section 529 QTP is permitted to roll over a      executive order or public law, as defined under Special
+distribution from the QTP to a Roth IRA for the benefit of        reporting for U.S. Armed Forces in designated combat
+the beneficiary. The rollover must be (1) paid through a          zones, earlier.
+direct trustee-to-trustee transfer, (2) subject to the Roth       • For participants who are “affected taxpayers,” as
+IRA annual contribution limit and a $35,000 lifetime limit,       described in an IRS News Release relating to a federally
+and (3) from a section 529 account that has been open for         designated disaster area, enter “FD.” (For a repayment of
+more than 15 years. However, report Roth IRA conversion           a qualified disaster distribution, use boxes 14a and 14b.)
+amounts in box 3. Report a qualified rollover contribution        • For participants who are making a rollover of a qualified
+made under section 408A(e) from an eligible retirement            plan loan offset amount, enter “PO.” See the discussion of
+plan (other than an IRA) to a Roth IRA in box 2. Do not           qualified plan loan offsets in the second paragraph under
+include in box 10 contributions to a Roth SEP IRA or Roth         Plan loan offsets in the Form 1099-R instructions, earlier.
+SIMPLE IRA.                                                       • For participants who have certified that the rollover
+                                                                  contribution is late because of one or more of the
+Box 11. Check if RMD for 2026                                     circumstances listed in section 3.02(2) of Rev. Proc.
+Check the box if the participant must take an RMD for             2020-46, enter “SC.”
+2026. You are required to check the box for the year in
+                                                                  Box 14a. Repayments
+which the IRA participant reaches age 73 even though the
+RMD for that year need not be made until April 1 of the           Enter the amount of any repayment of a qualified reservist
+following year. Then, check the box for each subsequent           distribution, a qualified disaster distribution, a qualified
+year an RMD is required to be made.                               birth or adoption distribution, an emergency personal
+                                                                  expense distribution, a terminally ill individual distribution,
+        Boxes 12a and 12b are provided for your use to            or an eligible distribution to a domestic abuse victim.
+     !  report RMD dates and amounts to participants.
+CAUTION You may choose to complete these boxes, or                Box 14b. Code
+continue to provide a separate Form 5498, or a separate           Enter repayment code:
+statement, to report the information required by Alternative      • “QR” for qualified reservist distribution,
+one or Alternative two, earlier. To determine the RMD, see        • “DD” for qualified disaster distribution,
+section 401(a)(9) and Regulations section 1.408-8.                • “BA” for qualified birth or adoption distribution,
+                                                                  • “EP” for emergency personal expense distribution,
+Box 12a. RMD Date                                                 • “TI” for terminally ill individual distribution, and
+Enter the RMD date if you are using Form 5498 to report           • “DA” for eligible distribution to a domestic abuse victim.
+the additional information. See RMDs, earlier.
+                                                                  Box 15a. FMV of Certain Specified Assets
+Box 12b. RMD Amount                                               Enter the FMV of the investments in the IRA that are
+Enter the RMD amount if you are using Form 5498 to                specified in the categories identified below.
+report the additional information under Alternative one.
+See Alternative one, earlier.                                     Box 15b. Code(s)
+                                                                  Enter the code for the type(s) of investments held in the
+Box 13a. Postponed/late contrib.                                  IRA for which the FMV is reported in box 15a. A maximum
+Report the amount of any postponed contribution made in           of two codes can be entered in box 15b. If more than two
+2025 for a prior year. If contributions were made for more        codes apply, enter Code H.
+than 1 prior year, each prior year's postponed contribution       • A—Stock or other ownership interest in a corporation
+must be reported on a separate form. Report the amount            that is not readily tradable on an established securities
+of a late rollover contribution made during 2025, including       market.
+rollovers that are (1) certified by participants, (2) qualified   • B—Short- or long-term debt obligation that is not traded
+plan loan offsets, and (3) related to taxpayers for federally     on an established securities market.
+
+26                                                                             Instructions for Forms 1099-R and 5498 (2025)
+• C—Ownership interest in a limited liability company or     • F—Option contract or similar product that is not offered
+similar entity (unless the interest is traded on an          for trade on an established option exchange.
+established securities market).                              • G—Other asset that does not have a readily available
+• D—Real estate.                                             FMV.
+• E—Ownership interest in a partnership, trust, or similar   • H—More than two types of assets (listed in A through
+entity (unless the interest is traded on an established      G) are held in this IRA.
+securities market).
+
+
+
+
+Instructions for Forms 1099-R and 5498 (2025)                                                                        27
+Index
+
+                                           Federal income tax withholding 14        Qualified rollover contributions 6, 25
+A                                          Form 1099-R 1
+Account closure, IRA 4, 22                 Form 5498 20                             R
+Alternate payee under QDRO 10              Form 945 14                              Recharacterized IRA contributions 7,
+Annuity distributions 1-17                                                            10, 14, 20, 21
+Automatic contribution                     G                                        Reportable death benefits 1
+   arrangements 7                          Guide to Distribution Codes 18-20        Required minimum distribution 22, 26
+Automatic rollovers 5, 6                                                            Retirement payments 1-17
+                                           I                                        Revocation, IRA 4, 22
+B                                          In-plan Roth rollover (IRR) 3, 11, 17    RMD 22, 26
+Beneficiaries 10                           Inherited IRAs 22, 25                    RMD amount 26
+                                           Insurance contracts 1, 15                RMD date 26
+C                                          Involuntary distributions 5, 6           Rollovers 4, 6, 7, 9-11, 14, 15, 21, 22,
+                                                                                      24, 25
+Charitable gift annuities 11               IRA contributions 20
+                                                                                    Roth IRA contributions 22, 25
+Combat zones, designated 23                IRA distributions 1, 3, 16, 17
+                                                                                    Roth IRA conversions 4, 7, 12, 14, 21,
+Corrected Form 1099-R 9                    IRA recharacterizations 3, 7, 11, 14,      22, 25
+Corrected Form 5498 24                        20-22, 24
+                                                                                    Roth IRA distributions 4, 12, 14
+Corrective distributions 7                 IRA revocation 4, 22
+Cost of current life insurance                                                      S
+  protection 11                            L
+                                                                                    Section 1035 exchange 2, 7, 10
+                                           Late rollovers 26
+D                                                                                   Section 402(f) notice 6
+                                           Life insurance contract
+                                              distributions 2                       Section 404(k) dividends 2
+Death benefit payments 10                                                           SEP contributions 4, 13, 21, 24, 25
+Deemed IRAs 4                              Loans treated as distributions 4, 9
+                                           Losses, retirement distributions 8, 12   SEP distributions 4, 13, 15
+Designated Roth account,                                                            Servicemembers' Group Life
+   contributions 3                                                                    Insurance (SGLI) payments 23
+Designated Roth account, direct            M
+                                                                                    SIMPLE contributions 20, 25, 26
+   rollover 4, 6                           Military death gratuities 23             SIMPLE distributions 3, 7, 12, 13, 15
+Designated Roth account,                   Military retirement 2
+   distributions 11, 12, 17                                                         State and local information 17
+Direct rollovers 4-7, 9, 11, 14, 15, 19,                                            Statements to recipients/
+   21, 25
+                                           N                                          participants 10
+Disaster relief reporting 23               Net unrealized appreciation 4, 5, 12,
+Disclaimer of an IRA 10                      14, 15                                 T
+Distributions under EPCRS 8                Nonperiodic distributions 14             Taxable amount, retirement
+DVECs 4                                    Nonqualified plan distributions 2           distributions 11
+                                           Nonresident aliens 10                    Transfers:
+E                                                                                      Form 1099-R 7
+                                           P                                           Form 5498 21
+Eligible rollover distribution 4, 14, 15
+Employee contributions, retirement         Pension distributions 1-17
+   plan 15, 16                             Periodic payments 14                     U
+Employer securities, distributions 9,      Permissible withdrawals under            U.S. Armed Forces, special
+   11, 12, 14, 15                            section 414(w) 9                         reporting 23
+Endowment contracts 2, 25                  Postponed contribution 26
+Excess deferrals, excess                   Profit-sharing distributions 1-17        W
+   contributions, corrective                                                        Withholding 14
+   distributions of 7                      Q                                          Federal income tax 14
+                                           QDRO 4, 7, 10
+F                                          Qualified HSA funding distributions 1
+Failing ADP or ACP test,                   Qualified plan distributions 1-17
+  corrections 8
+
+
+
+
+            28
+

@@ -1,0 +1,14 @@
+{
+ "kind": "classm",
+ "form": "retirement",
+ "rulings": [
+  {
+   "case": "classm.retirement.9",
+   "printed": "retirement[r2].show_a",
+   "project": "yes",
+   "model": "no",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Box 1 is $0, so line 5a is $0 whether or not the entry is shown; the project shows it because box 5 is nonzero on a plan distribution outside the Simplified Method.",
+   "drop": true
+  }
+ ]
+}

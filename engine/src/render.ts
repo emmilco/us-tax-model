@@ -145,6 +145,8 @@ function exprText(expr: Expr, doc: FormDoc, ctx: RenderCtx): string {
       return `Enter the larger of ${listOr(expr.of.map((r) => refText(doc, r, ctx)))}.`;
     case "multiply_rate":
       return `Multiply ${refText(doc, expr.amount, ctx)} by ${operandText(expr.rate, doc, ctx)}.`;
+    case "multiply_count":
+      return `Multiply ${refText(doc, expr.amount, ctx)} by the number on ${refText(doc, expr.count, ctx)}.`;
     case "round": {
       const how = expr.rule === "up" ? "up to the next multiple of" : expr.rule === "down" ? "down to a multiple of" : "to the nearest multiple of (half up)";
       return `Round ${refText(doc, expr.of, ctx)} ${how} ${fmtMoney(expr.unit)}.`;

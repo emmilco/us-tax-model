@@ -96,6 +96,7 @@ function mutations(data: CanonicalData): Mutation[] {
       }
       if (expr.op === "multiply_rate") refs.push(expr.amount);
       if (expr.op === "round") refs.push(expr.of);
+      if (expr.op === "multiply_count") refs.push(expr.amount, expr.count);
       if (expr.op === "copy" && typeof expr.from === "string") refs.push(expr.from);
       for (const ref of refs) {
         if (!ref.startsWith(doc.id + ".")) continue; // same-document only
@@ -111,12 +112,13 @@ function mutations(data: CanonicalData): Mutation[] {
           note: `${ref} -> ${candidate.id} (${candidate.type})`,
           apply: (d) => {
             const l = findLine(d, line.id)!;
-            const e = l.expr as Expr & { of?: string[] | string; from?: string; take?: string | object; amount?: string };
+            const e = l.expr as Expr & { of?: string[] | string; from?: string; take?: string | object; amount?: string; count?: string };
             if (Array.isArray(e.of)) e.of = e.of.map((r) => (r === ref ? candidate.id : r));
             else if (e.of === ref) e.of = candidate.id; // round takes one operand
             if (e.from === ref) e.from = candidate.id;
             if (e.take === ref) e.take = candidate.id;
             if (e.amount === ref) e.amount = candidate.id;
+            if (e.count === ref) e.count = candidate.id;
           },
         });
       }
@@ -291,6 +293,9 @@ const EQUIVALENT_IF: Record<string, { reason: string; holds: (data: CanonicalDat
       return whens.every((w) => carriers.some((l) => (l?.refuses ?? []).some((r) => r.when === w)));
     },
   },
+  "refusal.retirement.retirement.amount_a.0": firstReadCarries("retirement.amount_a", 0, ["retirement.show_a", "retirement.has_rollover", "retirement.rolled"]),
+  "refusal.retirement.retirement.amount_a.1": firstReadCarries("retirement.amount_a", 1, ["retirement.show_a", "retirement.has_rollover", "retirement.rolled"]),
+  "refusal.ssb.ssb.line6.0": firstReadCarries("ssb.line6", 0, ["ssb.line5", "ssb.line3", "f1040.line8"], "ssb.line7"),
   "refusal.dependent.dependent.qualifying_relative.2": {
     reason: "The married gate on the qualifying-relative test duplicates, word for word, the married gate on the qualifying-child test. The qualifying-relative test is read only by qr_dependent, which is read only by claimed, whose any-test evaluates qc_dependent, and so qualifying_child, before qr_dependent; for a married person qualifying_child refuses first with the same refusal, so this gate never fires.",
     holds: (d) => {
@@ -323,6 +328,38 @@ function unreadParameter(data: CanonicalData, mutation: Mutation): string | unde
   const tableBound = name === "ordinary.table_boundary";
   if (tableBound || allDocs(data).some((doc) => doc.lines.some((l) => reads(l.expr)))) return undefined;
   return `Unread parameter: no line of any form or definition reads ${name}; it serves a cross-check outside the computation, so shifting it cannot change any value.`;
+}
+
+// A refusal entry that cannot change any value because another line carrying the same gate
+// refuses first or identically. Without a reader: the line's expression reads chain[0] first
+// and each chain line reads the next first, and the last carries the identical entry (gate,
+// form, remedy and cite), so removing the entry turns the line's own refusal into the same
+// refusal arriving through the chain. With a reader: the line is read only by that reader,
+// the reader reads chain[0] first, chain[i] reads chain[i+1] (first operand, or any operand of
+// a sum, which evaluates every operand and returns a refusal ahead of an unknown), and the last
+// carries the same gate; the reader then returns that refusal before the line's own could reach it.
+function firstReadCarries(line: string, index: number, chain: string[], reader?: string) {
+  return {
+    reason: reader
+      ? `${line} is read only by ${reader}, which reads ${chain.join(" -> ")} first; ${chain[chain.length - 1]} refuses on the same gate, so whenever it is true ${reader} returns a refusal from that chain (or an earlier one) and the entry on ${line} never decides a value.`
+      : `${line} reads ${chain.join(" -> ")} first, and ${chain[chain.length - 1]} carries the identical refusal entry, so without the entry on ${line} the same refusal arrives through the chain.`,
+    holds: (d: CanonicalData): boolean => {
+      const l = findLine(d, line); const entry = l?.refuses?.[index];
+      const last = findLine(d, chain[chain.length - 1]!);
+      const same = (r: { when: string }): boolean => reader ? r.when === entry!.when : stableStringify(r) === stableStringify(entry);
+      if (!l || !entry || !last || !(last.refuses ?? []).some(same)) return false;
+      const reads = (from: string, to: string, anySumOperand: boolean): boolean => {
+        const x = findLine(d, from); if (!x) return false;
+        const refs = operandRefs(d, x.expr);
+        return refs[0] === to || (anySumOperand && x.expr.op === "sum" && refs.includes(to));
+      };
+      if (reader) {
+        if (stableStringify(readersOf(d, line)) !== stableStringify([reader]) || !reads(reader, chain[0]!, false)) return false;
+      } else if (!reads(line, chain[0]!, false)) return false;
+      for (let i = 0; i + 1 < chain.length; i++) if (!reads(chain[i]!, chain[i + 1]!, !!reader)) return false;
+      return true;
+    },
+  };
 }
 
 // The EIC's first test reads Form 1040 line 11b. A refusal gate that already refuses a line

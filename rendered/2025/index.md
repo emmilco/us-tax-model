@@ -6,8 +6,8 @@ Review these renderings line by line against the archived IRS sources in `source
 | --- | --- | --- |
 | dependent.md | worksheet | 48 |
 | div.md | form | 21 |
-| eic.md | worksheet | 74 |
-| f1040.md | form | 49 |
+| eic.md | worksheet | 75 |
+| f1040.md | form | 61 |
 | f4952.md | form | 25 |
 | f8959.md | form | 26 |
 | f8960.md | form | 30 |
@@ -21,6 +21,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | person.md | worksheet | 14 |
 | qbi.md | form | 10 |
 | qdcg.md | worksheet | 27 |
+| retirement.md | form | 56 |
 | s2.md | form | 8 |
 | s3.md | form | 10 |
 | s8812.md | form | 55 |
@@ -30,6 +31,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | scope.md | form | 6 |
 | sd.md | form | 63 |
 | sdtw.md | worksheet | 74 |
+| ssb.md | worksheet | 35 |
 | tax_on_amount.md | def | 6 |
 | tcw.md | def | 47 |
 | u1250.md | form | 19 |

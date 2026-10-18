@@ -111,7 +111,9 @@
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
-        "s8812.puerto_rico": false
+        "s8812.puerto_rico": false,
+        "$retirement": [],
+        "ssb.benefits": 0
       },
       "expect": {
         "f1040.line1a": {
@@ -395,7 +397,9 @@
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
-        "s8812.puerto_rico": false
+        "s8812.puerto_rico": false,
+        "$retirement": [],
+        "ssb.benefits": 0
       },
       "expect": {
         "f1040.line1a": {
@@ -695,7 +699,9 @@
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
-        "s8812.puerto_rico": false
+        "s8812.puerto_rico": false,
+        "$retirement": [],
+        "ssb.benefits": 0
       },
       "expect": {
         "f1040.line1a": {
@@ -970,7 +976,9 @@
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
-        "s8812.puerto_rico": false
+        "s8812.puerto_rico": false,
+        "$retirement": [],
+        "ssb.benefits": 0
       },
       "expect": {
         "f1040.line8": {
@@ -1260,7 +1268,9 @@
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
-        "s8812.puerto_rico": false
+        "s8812.puerto_rico": false,
+        "$retirement": [],
+        "ssb.benefits": 0
       },
       "expect": {
         "f1040.line8": {

@@ -13,6 +13,7 @@ export const VOCABULARY = [
   "larger_of",
   "multiply_rate",
   "round",
+  "multiply_count",
   "table_lookup",
   "bracket_schedule",
   "sum_over",
@@ -36,6 +37,7 @@ export const IMPLEMENTED = new Set<string>([
   "test",
   "choose",
   "round",
+  "multiply_count",
 ]);
 
 export const PRIMITIVE_OPS = new Set<string>([
@@ -52,6 +54,7 @@ export const PRIMITIVE_OPS = new Set<string>([
   "choose",
   "larger_of",
   "round",
+  "multiply_count",
   "bracket_schedule",
   "sum_over",
   "opaque",

@@ -352,6 +352,19 @@ function checkLine(ctx: Ctx, doc: FormDoc, line: Line): void {
       compatible(ctx, declared, tyMoney(amountNonneg), where);
       break;
     }
+    case "multiply_count": {
+      const hit = requireRef(ctx, doc, expr.amount, where);
+      let amountNonneg = false;
+      if (hit) {
+        const ty = declaredTyOf(ctx, hit.doc, hit.line);
+        if (ty.kind !== "money") ctx.errors.push(`${where}: amount '${expr.amount}' is not money`);
+        amountNonneg = ty.kind === "money" && ty.nonneg;
+      }
+      const chit = requireRef(ctx, doc, expr.count, where);
+      if (chit && declaredTyOf(ctx, chit.doc, chit.line).kind !== "count") ctx.errors.push(`${where}: count '${expr.count}' is not a Count`);
+      compatible(ctx, declared, tyMoney(amountNonneg), where);
+      break;
+    }
     case "round": {
       const hit = requireRef(ctx, doc, expr.of, where);
       let nonneg = false;
@@ -543,6 +556,9 @@ function checkCycles(ctx: Ctx, data: CanonicalData): void {
         break;
       case "round":
         refs.push(expr.of);
+        break;
+      case "multiply_count":
+        refs.push(expr.amount, expr.count);
         break;
       case "table_lookup":
         refs.push(expr.key, expr.status);

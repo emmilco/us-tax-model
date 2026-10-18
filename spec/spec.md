@@ -129,6 +129,7 @@ Every value also has a completeness state: unknown, placeholder, or known. A ret
 | `subtract_floor0` | Subtract; if zero or less, zero |
 | `smaller_of`, `larger_of` | Minimum or maximum of two lines |
 | `multiply_rate` | Amount times a rate |
+| `multiply_count` | Amount times a whole number (a `Count` line) |
 | `round` | Round to a stated unit by a stated rule |
 | `table_lookup` | Banded lookup in a pinned table |
 | `bracket_schedule` | Tax from a rate schedule |
@@ -138,6 +139,8 @@ Every value also has a completeness state: unknown, placeholder, or known. A ret
 | `opaque` | A named host-language function with its own citation and tests |
 
 There are no user-defined functions, loops, local variables, strings or recursion. Adding an atom requires a written justification, a rendering template, a Lean definition and its lemmas. The vocabulary is cross-checked against the IRS Fact Graph operator list before it is frozen.
+
+**Additions after the freeze.** `multiply_count` (Stage 10). Justification: the Simplified Method Worksheet (Form 1040 instructions, lines 5a and 5b, line 5) says "Multiply line 4 by the number of months for which this year's payments were made"; the multiplier is a whole number the filer supplies, which `multiply_rate` cannot express because its rate is a year parameter. The atom multiplies cents by a non-negative integer, exactly, with no rounding. Rendering template: "Multiply ⟨amount⟩ by the number on ⟨count⟩." Lean definition `multiplyCount` (`lean/TaxFormalization/Atoms.lean`) with lemmas for non-negativity, monotonicity in each argument, a zero count and repeated addition (`multiplyCount_succ`), in `Lemmas.lean`. The owner approved the addition over restricting the worksheet to twelve-month years.
 
 ### 4.3 Lines
 
@@ -220,6 +223,7 @@ Proved in Lean 4 over the integers, once, for the atoms:
 
 - `subtract_floor0`, `sum` of non-negatives, `smaller_of` of non-negatives and `multiply_rate` by a non-negative rate are non-negative.
 - `round` matches its stated rule, is idempotent, and moves a value by less than one unit.
+- `multiply_count` of a non-negative amount by a count is non-negative, is monotone in each argument, and is repeated addition.
 - Each atom is monotone or antitone in each argument, as tabulated.
 - Evaluation of a well-formed, acyclic form terminates and is deterministic.
 

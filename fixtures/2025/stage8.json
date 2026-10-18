@@ -124,7 +124,9 @@
         "dependent[child].divorced_rule": false,
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
-        "dependent[child].younger": true
+        "dependent[child].younger": true,
+        "$retirement": [],
+        "ssb.benefits": 0
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -568,7 +570,10 @@
         "eic.us_home": true,
         "eic.married": false,
         "dependent[child].us_half": true,
-        "dependent[child].eic_ssn": true
+        "dependent[child].eic_ssn": true,
+        "$retirement": [],
+        "ssb.benefits": 0,
+        "eic.born_after_1960": true
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -1084,7 +1089,10 @@
         "dependent[c].us_half": true,
         "dependent[a].eic_ssn": true,
         "dependent[b].eic_ssn": true,
-        "dependent[c].eic_ssn": true
+        "dependent[c].eic_ssn": true,
+        "$retirement": [],
+        "ssb.benefits": 0,
+        "eic.born_after_1960": true
       },
       "expect": {
         "dependent[a].actc_amount": {
@@ -1726,7 +1734,10 @@
         "dependent[c].us_half": true,
         "dependent[a].eic_ssn": true,
         "dependent[b].eic_ssn": true,
-        "dependent[c].eic_ssn": true
+        "dependent[c].eic_ssn": true,
+        "$retirement": [],
+        "ssb.benefits": 0,
+        "eic.born_after_1960": true
       },
       "expect": {
         "dependent[a].actc_amount": {
@@ -2318,7 +2329,9 @@
         "dependent[child].divorced_rule": false,
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
-        "dependent[child].younger": true
+        "dependent[child].younger": true,
+        "$retirement": [],
+        "ssb.benefits": 0
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -2754,7 +2767,9 @@
         "dependent[parent].divorced_rule": false,
         "dependent[parent].multiple_support": false,
         "dependent[parent].parent_home_paid": true,
-        "dependent[parent].younger": false
+        "dependent[parent].younger": false,
+        "$retirement": [],
+        "ssb.benefits": 0
       },
       "expect": {
         "dependent[parent].actc_amount": {
@@ -3198,7 +3213,9 @@
         "dependent[child].divorced_rule": false,
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
-        "dependent[child].younger": true
+        "dependent[child].younger": true,
+        "$retirement": [],
+        "ssb.benefits": 0
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -3863,7 +3880,9 @@
         "dependent[six_months].younger": true,
         "dependent[income_limit].younger": false,
         "dependent[age19].younger": true,
-        "dependent[mexico].younger": true
+        "dependent[mexico].younger": true,
+        "$retirement": [],
+        "ssb.benefits": 0
       },
       "expect": {
         "dependent[age19].actc_amount": {
@@ -4554,7 +4573,9 @@
         "dependent[age17].parent_home_paid": false,
         "dependent[student23].younger": true,
         "dependent[student24].younger": true,
-        "dependent[age17].younger": true
+        "dependent[age17].younger": true,
+        "$retirement": [],
+        "ssb.benefits": 0
       },
       "expect": {
         "dependent[age17].actc_amount": {
@@ -5190,7 +5211,9 @@
         "dependent[all_year].younger": true,
         "dependent[eleven_months].younger": true,
         "dependent[disabled].younger": true,
-        "dependent[no_work_ssn].younger": true
+        "dependent[no_work_ssn].younger": true,
+        "$retirement": [],
+        "ssb.benefits": 0
       },
       "expect": {
         "dependent[all_year].actc_amount": {
@@ -5816,7 +5839,9 @@
         "dependent[child].divorced_rule": false,
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
-        "dependent[child].younger": true
+        "dependent[child].younger": true,
+        "$retirement": [],
+        "ssb.benefits": 0
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -6414,7 +6439,9 @@
         "dependent[child].divorced_rule": false,
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
-        "dependent[child].younger": true
+        "dependent[child].younger": true,
+        "$retirement": [],
+        "ssb.benefits": 0
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -6847,7 +6874,9 @@
         "dependent[child].divorced_rule": false,
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
-        "dependent[child].younger": true
+        "dependent[child].younger": true,
+        "$retirement": [],
+        "ssb.benefits": 0
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -7280,7 +7309,9 @@
         "dependent[child].divorced_rule": false,
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
-        "dependent[child].younger": true
+        "dependent[child].younger": true,
+        "$retirement": [],
+        "ssb.benefits": 0
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -7959,7 +7990,9 @@
         "dependent[child].divorced_rule": true,
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
-        "dependent[child].younger": true
+        "dependent[child].younger": true,
+        "$retirement": [],
+        "ssb.benefits": 0
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -8638,7 +8671,9 @@
         "dependent[child].divorced_rule": false,
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
-        "dependent[child].younger": true
+        "dependent[child].younger": true,
+        "$retirement": [],
+        "ssb.benefits": 0
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -9317,7 +9352,9 @@
         "dependent[parent].divorced_rule": false,
         "dependent[parent].multiple_support": true,
         "dependent[parent].parent_home_paid": false,
-        "dependent[parent].younger": false
+        "dependent[parent].younger": false,
+        "$retirement": [],
+        "ssb.benefits": 0
       },
       "expect": {
         "dependent[parent].actc_amount": {
@@ -9981,7 +10018,9 @@
         "dependent[parent].divorced_rule": false,
         "dependent[parent].multiple_support": false,
         "dependent[parent].parent_home_paid": false,
-        "dependent[parent].younger": false
+        "dependent[parent].younger": false,
+        "$retirement": [],
+        "ssb.benefits": 0
       },
       "expect": {
         "dependent[parent].actc_amount": {
@@ -10655,7 +10694,9 @@
         "dependent[child].divorced_rule": false,
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
-        "dependent[child].younger": true
+        "dependent[child].younger": true,
+        "$retirement": [],
+        "ssb.benefits": 0
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -11323,7 +11364,9 @@
         "dependent[child].divorced_rule": false,
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
-        "dependent[child].younger": true
+        "dependent[child].younger": true,
+        "$retirement": [],
+        "ssb.benefits": 0
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -11916,7 +11959,10 @@
         "eic.us_home": true,
         "eic.married": false,
         "dependent[child].us_half": true,
-        "dependent[child].eic_ssn": true
+        "dependent[child].eic_ssn": true,
+        "$retirement": [],
+        "ssb.benefits": 0,
+        "eic.born_after_1960": true
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -12521,7 +12567,10 @@
         "eic.us_home": true,
         "eic.married": false,
         "dependent[child].us_half": true,
-        "dependent[child].eic_ssn": true
+        "dependent[child].eic_ssn": true,
+        "$retirement": [],
+        "ssb.benefits": 0,
+        "eic.born_after_1960": true
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -13285,7 +13334,10 @@
         "eic.us_home": true,
         "eic.married": false,
         "dependent[child].us_half": true,
-        "dependent[child].eic_ssn": true
+        "dependent[child].eic_ssn": true,
+        "$retirement": [],
+        "ssb.benefits": 0,
+        "eic.born_after_1960": true
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -13905,7 +13957,10 @@
         "eic.us_home": true,
         "eic.married": false,
         "dependent[child].us_half": true,
-        "dependent[child].eic_ssn": true
+        "dependent[child].eic_ssn": true,
+        "$retirement": [],
+        "ssb.benefits": 0,
+        "eic.born_after_1960": true
       },
       "expect": {
         "dependent[child].actc_amount": {

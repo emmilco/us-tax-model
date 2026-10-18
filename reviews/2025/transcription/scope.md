@@ -4,10 +4,10 @@ Second transcription of `Proof-of-concept scope screening` by an isolated model 
 
 | field | value |
 | --- | --- |
-| date | 2026-10-17 |
+| date | 2026-10-18 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | bd11b13f028db67aeff8ef2e8954d6bdefdc7220e72899c51fccc95d7d0b5db4 |
+| prompt sha256 | dda092f18b23b28eeb1ecdb0d5589614d507c13f23b9f15ab7763f6e02366f8d |
 | printed lines compared | 0 |
 | agree / disagree / missing | 0 / 0 / 0 |
 | extra printed lines in second | none |

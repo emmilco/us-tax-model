@@ -4,6 +4,8 @@
 
 - `dependent_relationship`: child, sibling, sibling_descendant, parent, parent_relative, in_law, household_member, other — [i1040gi] pp. 17 and 19, Who Qualifies as Your Dependent, Steps 1 and 4: child is a son, daughter, stepchild, foster child or a descendant of any of them; sibling is a brother, sister, stepbrother, stepsister, half brother or half sister, or a son or daughter of a brother, sister, half brother or half sister (Step 4 lists step siblings but not their children); sibling_descendant is any other descendant of a sibling, including a step sibling's child (a qualifying child relationship under Step 1, and a Step 4 relative only as a household member who lived with you all year); parent is a father or mother; parent_relative is an ancestor or sibling of a parent (a Step 4 relative, but not the parent of Head of Household Test 1); in_law is a step-parent or an in-law; household_member is any other person who lived with you all year (2025; printed date 2026-02-25; sha256 482e9c48)
 - `filing_status`: single, mfj, mfs, hoh, qss — [f1040] Form 1040, Filing Status (checkboxes) (2025; created 2025-09-05; sha256 3d31c226)
+- `retirement_account`: traditional_ira, roth_ira, plan — [f1099r] Instructions for Recipient: traditional IRA or traditional SIMPLE IRA (the IRA/SEP/SIMPLE box), Roth IRA or Roth SIMPLE IRA, and qualified plans, section 403(b) and governmental 457(b) plans (pensions and annuities); i1040gi pp. 26-28, lines 4a, 4b, 5a and 5b (2025 (calendar-year form); sha256 d6b7be48)
+- `retirement_code`: normal_7, death_4, early_exception_2, direct_rollover_G, qualified_roth_Q, other — [f1099r] Instructions for Recipient, Box 7: 7 normal distribution; 4 death; 2 early distribution, exception applies; G direct rollover to a qualified plan, 403(b), governmental 457(b) or IRA; Q qualified distribution from a Roth IRA; every other code or combination is 'other' (2025 (calendar-year form); sha256 d6b7be48)
 - `sales_box`: A, B, C, D, E, F, G, H, I, J, K, L — [f8949] Parts I and II, checkbox classifications (2025; created 2025-05-05; sha256 27451389)
 - `sales_code`: none, B, W, BW, other — [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; sha256 f077991c)
 - `sales_route`: detail, aggregate — [i1040sd] p. 10, lines 1a and 8a (2025; printed date 2025-12-11; sha256 650643a6)
@@ -76,10 +78,26 @@
 | `sdtw.rate20` | Rate | 20% (0.20) | [i1040sd] pp. 15–16, Schedule D Tax Worksheet (2025; printed date 2025-12-11; sha256 650643a6) |
 | `sdtw.rate25` | Rate | 25% (0.25) | [i1040sd] pp. 15–16, Schedule D Tax Worksheet (2025; printed date 2025-12-11; sha256 650643a6) |
 | `sdtw.rate28` | Rate | 28% (0.28) | [i1040sd] pp. 15–16, Schedule D Tax Worksheet (2025; printed date 2025-12-11; sha256 650643a6) |
+| `smw.table1_160` | Rate | 1/160 | [i1040gi] p. 29, Simplified Method Worksheet, Table 1, age 71 or older, annuity starting date after November 18, 1996: 160 (line 4 divides line 2 by it) (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `smw.table1_210` | Rate | 1/210 | [i1040gi] p. 29, Simplified Method Worksheet, Table 1, age 66-70, annuity starting date after November 18, 1996: 210 (line 4 divides line 2 by it) (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `smw.table1_260` | Rate | 1/260 | [i1040gi] p. 29, Simplified Method Worksheet, Table 1, age 61-65, annuity starting date after November 18, 1996: 260 (line 4 divides line 2 by it) (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `smw.table1_310` | Rate | 1/310 | [i1040gi] p. 29, Simplified Method Worksheet, Table 1, age 56-60, annuity starting date after November 18, 1996: 310 (line 4 divides line 2 by it) (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `smw.table1_360` | Rate | 1/360 | [i1040gi] p. 29, Simplified Method Worksheet, Table 1, age 55 or under, annuity starting date after November 18, 1996: 360 (line 4 divides line 2 by it) (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `smw.table2_210` | Rate | 1/210 | [i1040gi] p. 29, Simplified Method Worksheet, Table 2, combined ages 141 or older: 210 (line 4 divides line 2 by it) (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `smw.table2_260` | Rate | 1/260 | [i1040gi] p. 29, Simplified Method Worksheet, Table 2, combined ages 131-140: 260 (line 4 divides line 2 by it) (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `smw.table2_310` | Rate | 1/310 | [i1040gi] p. 29, Simplified Method Worksheet, Table 2, combined ages 121-130: 310 (line 4 divides line 2 by it) (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `smw.table2_360` | Rate | 1/360 | [i1040gi] p. 29, Simplified Method Worksheet, Table 2, combined ages 111-120: 360 (line 4 divides line 2 by it) (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `smw.table2_410` | Rate | 1/410 | [i1040gi] p. 29, Simplified Method Worksheet, Table 2, combined ages 110 or under: 410 (line 4 divides line 2 by it) (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `ss.base` | NonNegDollars | $176,100 | [i1040gi] p. 117, Schedule 3 line 11; independently confirmed iw2w3 p. 18 (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `ss.limit` | NonNegDollars | $10,918.20 | [i1040gi] p. 117, Schedule 3 line 11; independently confirmed iw2w3 p. 18 (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `ss.one` | Count | 1 | [i1040gi] p. 117, Schedule 3 line 11, more than one employer (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `ss.zero` | NonNegDollars | $0 | [i1040gi] p. 117, Schedule 3 line 11, amount withheld in excess (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `ssb.adjust_joint` | NonNegDollars | $12,000 | [i1040gi] p. 32, Social Security Benefits Worksheet, line 10, $12,000 if married filing jointly (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `ssb.adjust_single` | NonNegDollars | $9,000 | [i1040gi] p. 32, Social Security Benefits Worksheet, line 10, $9,000 (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `ssb.base_joint` | NonNegDollars | $32,000 | [i1040gi] p. 32, Social Security Benefits Worksheet, line 8, $32,000 if married filing jointly (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `ssb.base_single` | NonNegDollars | $25,000 | [i1040gi] p. 32, Social Security Benefits Worksheet, line 8, $25,000 (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `ssb.half` | Rate | 1/2 | [i1040gi] p. 32, Social Security Benefits Worksheet, lines 2 and 13, 50% (0.50) and one-half (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `ssb.rate85` | Rate | 85% (0.85) | [i1040gi] p. 32, Social Security Benefits Worksheet, lines 15, 16 and 17, 85% (0.85) (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `tcw.hoh.b1.rate` | Rate | 22% (0.22) | [i1040gi] TCW Section D, row 1 (multiply by 22%) (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `tcw.hoh.b1.subtract` | Dollars | $6,825 | [i1040gi] TCW Section D, row 1 (subtraction amount $6,825.00) (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `tcw.hoh.b1.upper` | Dollars | $103,350 | [i1040gi] TCW Section D, row 1 (not over $103,350) (2025; printed date 2026-02-25; sha256 482e9c48) |

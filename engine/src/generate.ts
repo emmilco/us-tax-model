@@ -68,6 +68,7 @@ interface Sale { box: string; aggregate: boolean; code: string; special: boolean
 interface Gift { deduction: number; public_securities: boolean; special: boolean }
 interface Dependent { relationship: string; age: number; younger: boolean; student: boolean; disabled: boolean; months: number; self_support: boolean; joint_return: boolean; citizen: boolean; canada_mexico: boolean; married: boolean; tin: boolean; work_ssn: boolean; gross_income: number; supported: boolean; other_claimant: boolean; divorced_rule: boolean; multiple_support: boolean; parent_home_paid: boolean; us_half: boolean; eic_ssn: boolean }
 interface Household { taxpayer_tin: boolean; taxpayer_work_ssn: boolean; home_cost: boolean; unmarried: boolean }
+interface Distribution { account: string; code: string; box1: number; box5: number; rollover: number; special: boolean; annuity: boolean; cost: number; used_last_year: boolean; last_line4: number; joint_life: boolean; age: number; combined_age: number; months: number; recovered: number }
 
 interface Spec {
   status: string;
@@ -84,6 +85,8 @@ interface Spec {
   invInterest: number; election: number; ftcTaxes: number;
   dependents: Dependent[];
   household: Household;
+  pensions: Distribution[];
+  benefits: number;
   flags: Record<string, boolean>;
   extras: Record<string, number>;
 }
@@ -124,6 +127,16 @@ export function returnArbitrary(data: CanonicalData): fc.Arbitrary<Inputs> {
     taxpayer_tin: rareTrue(97), taxpayer_work_ssn: rareTrue(93),
     home_cost: rareTrue(70), unmarried: rareTrue(90),
   });
+  const distribution = fc.record<Distribution>({
+    account: fc.constantFrom("traditional_ira", "traditional_ira", "plan", "plan", "roth_ira"),
+    code: fc.constantFrom("normal_7", "normal_7", "normal_7", "death_4", "early_exception_2", "direct_rollover_G", "qualified_roth_Q", "other"),
+    box1: money(6_000_000), box5: rareMoney(500_000, 20), rollover: rareMoney(3_000_000, 15),
+    special: rareTrue(5), annuity: rareTrue(30),
+    cost: money(20_000_000), used_last_year: rareTrue(40), last_line4: money(200_000),
+    joint_life: rareTrue(30), age: fc.integer({ min: 50, max: 80 }), combined_age: fc.integer({ min: 100, max: 160 }),
+    months: fc.oneof({ weight: 4, arbitrary: fc.constant(12) }, { weight: 1, arbitrary: fc.integer({ min: 1, max: 12 }) }),
+    recovered: money(5_000_000),
+  });
   const gift = fc.record<Gift>({
   deduction: fc.oneof({ weight: 3, arbitrary: money(500_000) }, { weight: 1, arbitrary: fc.integer({ min: 500_001, max: 2_000_000 }) }),
   public_securities: fc.boolean(),
@@ -131,7 +144,7 @@ export function returnArbitrary(data: CanonicalData): fc.Arbitrary<Inputs> {
 });
   const spec = fc.record<Spec>({
     status: fc.constantFrom("single", "single", "single", "hoh", "mfj", "mfs", "qss"),
-    profile: fc.constantFrom("wage", "wage", "wage", "investor", "low", "low"),
+    profile: fc.constantFrom("wage", "wage", "wage", "investor", "low", "low", "retiree", "retiree"),
     rrta: rareTrue(3),
     clean: rareTrue(75),
     badDividends: rareTrue(3),
@@ -145,6 +158,8 @@ export function returnArbitrary(data: CanonicalData): fc.Arbitrary<Inputs> {
     invInterest: money(1_000_000), election: rareMoney(1_000_000, 20), ftcTaxes: rareMoney(45_000, 25),
     dependents: fc.array(dependent, { maxLength: 3 }),
     household,
+    pensions: fc.array(distribution, { minLength: 1, maxLength: 2 }),
+    benefits: money(5_000_000),
     flags: fc.record(Object.fromEntries(boolKeys.map((k) => [k, rareTrue(BOOL_TRUE_PERCENT[k] ?? DEFAULT_TRUE_PERCENT)]))),
     extras: fc.record(Object.fromEntries(extraKeys.map((k) => [k, rareMoney(500_000, 2)]))),
   });
@@ -159,6 +174,8 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   // generated returns compute all the way through; the rest exercise gates.
   for (const [key, v] of Object.entries(s.flags)) inputs[key] = s.clean ? (BOOL_TRUE_PERCENT[key] ?? 0) >= 50 : v;
   for (const [key, v] of Object.entries(s.extras)) inputs[key] = s.clean ? 0 : v;
+  // The EIC's birth-date question agrees with the age-65 answer: no generated filer is born on January 1, 1961.
+  inputs["eic.born_after_1960"] = inputs["sa.age65"] !== true;
   inputs["f1040.status"] = s.status;
   // An investor has no wages and only qualified dividends and gains, which is
   // the only way the worksheets' upper skip rules and ceilings are reached. A
@@ -222,6 +239,19 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   inputs["$dependent"] = s.dependents.map((_, i) => `dep_${String.fromCharCode(97 + i)}`);
   s.dependents.forEach((d, i) => { for (const [k, v] of Object.entries(d)) inputs[`dependent[dep_${String.fromCharCode(97 + i)}].${k}`] = v; });
   for (const [k, v] of Object.entries(s.household)) inputs[`household.${k}`] = v;
+  // A retiree has Form 1099-R distributions and social security benefits; the other
+  // profiles have neither. A Roth IRA is given code Q and a code that the
+  // account does not allow is kept only on unclean returns, so the gates are exercised too.
+  const retiree = s.profile === "retiree";
+  const dists = retiree ? s.pensions : [];
+  inputs["$retirement"] = dists.map((_, i) => `r${i + 1}`);
+  dists.forEach((d, i) => {
+    const code = s.clean ? (d.account === "roth_ira" ? "qualified_roth_Q" : d.code === "qualified_roth_Q" || d.code === "other" ? "normal_7" : d.code) : d.code;
+    const entry = { ...d, code, special: s.clean ? false : d.special, annuity: d.account === "plan" && d.annuity,
+      box5: d.account === "plan" ? d.box5 : 0, rollover: Math.min(d.rollover, d.box1) };
+    for (const [k, v] of Object.entries(entry)) inputs[`retirement[r${i + 1}].${k}`] = v;
+  });
+  inputs["ssb.benefits"] = retiree ? s.benefits : 0;
   inputs["f4952.line1"] = s.invInterest;
   inputs["f4952.line4g"] = s.election;
   inputs["ftc.taxes"] = s.ftcTaxes;

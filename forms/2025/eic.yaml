@@ -34,6 +34,17 @@ form:
         doc: i1040gi
         locator: p. 41, Step 4, question 2, "Check 'Yes' if you ... were born after December 31, 1960, and before January 2,
           2001"
+    - id: eic.born_after_1960
+      printed: (helper)
+      type: Bool
+      label: Were you born after December 31, 1960?
+      expr:
+        op: input
+        source: Were you born after December 31, 1960?
+      cite:
+        doc: i1040gi
+        locator: p. 41, Step 4, question 2, "Check 'Yes' if you ... were born after December 31, 1960, and before January 2,
+          2001"
     - id: eic.us_home
       printed: (helper)
       type: Bool
@@ -651,8 +662,8 @@ form:
               - const: true
           - op: test
             eq:
-              - sa.age65
-              - const: false
+              - eic.born_after_1960
+              - const: true
           - op: test
             eq:
               - eic.us_home
@@ -676,7 +687,7 @@ form:
       cite:
         doc: i1040gi
         locator: pp. 41–42, Step 4, questions 1 to 6 (question 2 "at least age 25 but under age 65", born after December 31,
-          1960 and before January 2, 2001; sa.age65 is born before January 2, 1961)
+          1960 and before January 2, 2001)
       refuses:
         - when: sa.dependent
           form: Dependent of another person or dual-status alien (EIC, Step 4, question 6)
@@ -1465,8 +1476,8 @@ form:
                   - const: true
               - op: test
                 eq:
-                  - sa.age65
-                  - const: false
+                  - eic.born_after_1960
+                  - const: true
               - op: test
                 eq:
                   - eic.us_home
@@ -1491,8 +1502,8 @@ form:
                   - const: true
               - op: test
                 eq:
-                  - sa.age65
-                  - const: false
+                  - eic.born_after_1960
+                  - const: true
               - op: test
                 eq:
                   - eic.us_home

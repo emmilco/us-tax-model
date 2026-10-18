@@ -50,6 +50,7 @@ function walk(expr: Expr | TestExpr, out: { refs: Set<string>; defs: boolean; su
     case "multiply_rate": out.refs.add(e["amount"] as string); op(e["rate"] as Operand); break;
     case "table_lookup": case "bracket_schedule": out.refs.add(e["key"] as string); out.refs.add(e["status"] as string); break;
     case "round": out.refs.add(e["of"] as string); break;
+    case "multiply_count": out.refs.add(e["amount"] as string); out.refs.add(e["count"] as string); break;
     case "choose": for (const alt of e["alternatives"] as { guard: TestExpr; then: unknown }[]) { walk(alt.guard, out); if (typeof alt.then === "string") out.refs.add(alt.then); else { out.defs = true; for (const v of Object.values((alt.then as { bind: Record<string, Operand> }).bind)) op(v); } } break;
     case "sum_over": { const w = new Set<string>(); if (e["where"]) { const inner = { refs: w, defs: false, sums: [] }; walk(e["where"] as TestExpr, inner); } out.sums.push({ collection: e["collection"] as string, field: e["field"] as string, where: w }); break; }
     case "test": {

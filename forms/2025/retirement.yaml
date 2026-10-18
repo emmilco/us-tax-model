@@ -1,0 +1,988 @@
+form:
+  id: retirement
+  kind: form
+  title: Form 1099-R distributions (IRAs, pensions and annuities)
+  tax_year: 2025
+  note: One entry per Form 1099-R. IRA distributions go to Form 1040 lines 4a and 4b, pensions and annuities to
+    lines 5a and 5b. The Simplified Method Worksheet is figured for each annuity with after-tax cost.
+  lines:
+  - id: retirement.account
+    printed: (helper)
+    label: Kind of account the distribution came from
+    type: Enum(retirement_account)
+    expr:
+      op: input
+      source: 'Kind of account: traditional_ira (the IRA/SEP/SIMPLE box on Form 1099-R is checked; includes SEP
+        and traditional SIMPLE IRAs), roth_ira (a Roth IRA or Roth SIMPLE IRA), or plan (a pension, annuity, 401(k),
+        403(b) or governmental 457(b) plan)'
+    cite:
+      doc: f1099r
+      locator: Instructions for Recipient, IRA/SEP/SIMPLE box; i1040gi pp. 26 and 28, lines 4a-4b and 5a-5b
+  - id: retirement.code
+    printed: (helper)
+    label: Distribution code in box 7
+    type: Enum(retirement_code)
+    expr:
+      op: input
+      source: 'Distribution code in box 7: normal_7, death_4, early_exception_2, direct_rollover_G, qualified_roth_Q,
+        or other (any other code, or two codes)'
+    cite:
+      doc: f1099r
+      locator: Instructions for Recipient, Box 7
+  - id: retirement.box1
+    printed: (helper)
+    label: Gross distribution, box 1
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Gross distribution, Form 1099-R box 1
+    cite:
+      doc: f1099r
+      locator: Instructions for Recipient, Box 1
+  - id: retirement.box5
+    printed: (helper)
+    label: Employee contributions recovered tax free, box 5
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Employee contributions, designated Roth contributions or insurance premiums, Form 1099-R box 5 (a
+        pension or annuity; zero for an IRA)
+    cite:
+      doc: f1099r
+      locator: Instructions for Recipient, Box 5
+  - id: retirement.rollover
+    printed: (helper)
+    label: Amount you rolled over within 60 days to a qualified plan or IRA (not a Roth account)
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Amount of this distribution you rolled over within 60 days to a qualified plan or an IRA other than
+        a Roth IRA (for a direct rollover, code G, the whole distribution is treated as rolled over)
+    cite:
+      doc: i1040gi
+      locator: p. 27, Exception 1 (IRA rollovers); p. 30, Rollovers
+  - id: retirement.special
+    printed: (helper)
+    label: 'Does this distribution involve any of these: an early distribution with no known exception (code 1,
+      J or S); a disability pension received before minimum retirement age, or a pension partly excludable because you were disabled as a result of a terrorist attack; a corrective distribution of excess
+      deferrals or contributions; a qualified charitable distribution or HSA funding distribution; nondeductible
+      contributions to any traditional IRA; a conversion or recharacterization (Form 8606); a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025;
+      a rollover to a Roth IRA or designated Roth account; a lump-sum distribution you may report on Form 4972;
+      a nonqualified annuity; the retired public safety officer premium exclusion; a death benefit exclusion; a plan loan offset; a Form RRB-1099-R; U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721); or a pension or annuity in which you have after-tax cost whose annuity starting date was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)?'
+    type: Bool
+    expr:
+      op: input
+      source: 'Does this distribution involve any of these: an early distribution with no known exception (code
+        1, J or S); a disability pension received before minimum retirement age, or a pension partly excludable because you were disabled as a result of a terrorist attack; a corrective distribution of excess
+        deferrals or contributions; a qualified charitable distribution or HSA funding distribution; nondeductible
+        contributions to any traditional IRA; a conversion or recharacterization (Form 8606); a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025;
+        a rollover to a Roth IRA or designated Roth account; a lump-sum distribution you may report on Form 4972;
+        a nonqualified annuity; the retired public safety officer premium exclusion; a death benefit exclusion;
+        a plan loan offset; a Form RRB-1099-R; U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721); or a pension or annuity in which you have after-tax cost whose annuity starting date was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)?'
+    cite:
+      doc: i1040gi
+      locator: 'pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public
+        Safety Officers, Simplified Method; f1099r Box 7 codes'
+  - id: retirement.annuity
+    printed: (helper)
+    label: Is this a pension or annuity from a qualified plan, section 403(b) plan or tax-sheltered annuity, paid
+      in periodic payments in which you have after-tax cost (box 9b or your records), with an annuity starting date
+      after November 18, 1996, and on that date you were under age 75 or had fewer than 5 years of guaranteed payments?
+      (This is when the Simplified Method applies.)
+    type: Bool
+    expr:
+      op: input
+      source: Is this a pension or annuity from a qualified plan, section 403(b) plan or tax-sheltered annuity,
+        paid in periodic payments in which you have after-tax cost (box 9b or your records), with an annuity starting
+        date after November 18, 1996, and on that date you were under age 75 or had fewer than 5 years of guaranteed
+        payments? (This is when the Simplified Method applies.)
+    cite:
+      doc: i1040gi
+      locator: p. 30, Simplified Method, conditions 1 and 2; p. 28, Partially Taxable Pensions and Annuities
+  - id: retirement.cost
+    printed: (helper)
+    label: Your cost in the plan at the annuity starting date (Simplified Method Worksheet, line 2)
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Your cost (net investment, after-tax contributions) in the plan at the annuity starting date; it may
+        be shown in Form 1099-R box 9b
+    cite:
+      doc: i1040gi
+      locator: p. 29, Simplified Method Worksheet, line 2; p. 30, Cost
+  - id: retirement.used_last_year
+    printed: (helper)
+    label: Did you complete this worksheet for this annuity last year?
+    type: Bool
+    expr:
+      op: input
+      source: Did you complete the Simplified Method Worksheet for this annuity last year?
+    cite:
+      doc: i1040gi
+      locator: p. 29, Simplified Method Worksheet, note under line 2
+  - id: retirement.last_line4
+    printed: (helper)
+    label: Line 4 of last year's Simplified Method Worksheet
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The amount on line 4 of last year's Simplified Method Worksheet for this annuity
+    cite:
+      doc: i1040gi
+      locator: p. 29, Simplified Method Worksheet, note under line 2
+  - id: retirement.joint_life
+    printed: (helper)
+    label: Annuity starting date after 1997 and payments for your life and that of your beneficiary?
+    type: Bool
+    expr:
+      op: input
+      source: Was the annuity starting date after 1997, with payments for your life and that of your beneficiary
+        (Table 2)?
+    cite:
+      doc: i1040gi
+      locator: p. 29, Simplified Method Worksheet, line 3 and Table 2
+  - id: retirement.age
+    printed: (helper)
+    label: Age at the annuity starting date
+    type: Count
+    expr:
+      op: input
+      source: Your age at the annuity starting date (if you are the survivor of a retiree, the retiree's age on
+        their annuity starting date)
+    cite:
+      doc: i1040gi
+      locator: p. 29, Table 1; p. 30, Age (or Combined Ages) at Annuity Starting Date
+  - id: retirement.combined_age
+    printed: (helper)
+    label: Combined ages at the annuity starting date
+    type: Count
+    expr:
+      op: input
+      source: Your combined ages (yours and your beneficiary's) at the annuity starting date
+    cite:
+      doc: i1040gi
+      locator: p. 29, Table 2; p. 30, Age (or Combined Ages) at Annuity Starting Date
+  - id: retirement.months
+    printed: (helper)
+    label: Number of months for which this year's payments were made
+    type: Count
+    expr:
+      op: input
+      source: Number of months in 2025 for which payments were made
+    cite:
+      doc: i1040gi
+      locator: p. 29, Simplified Method Worksheet, line 5
+  - id: retirement.recovered
+    printed: (helper)
+    label: Amount recovered tax free in years after 1986 (line 10 of last year's worksheet)
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Amount, if any, recovered tax free in years after 1986 (if you completed this worksheet last year,
+        line 10 of last year's worksheet)
+    cite:
+      doc: i1040gi
+      locator: p. 29, Simplified Method Worksheet, line 6
+  - id: retirement.zero
+    printed: (helper)
+    label: No amount
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: sales.zero
+    cite:
+      doc: i1040gi
+      locator: p. 27, line 4b, Exception 2(b) (enter -0-)
+  - id: retirement.one
+    printed: (helper)
+    label: One distribution
+    type: Count
+    expr:
+      op: param
+      ref: sales.one
+    cite:
+      doc: i1040gi
+      locator: pp. 26-30, lines 4c and 5c
+  - id: retirement.is_ira
+    printed: (helper)
+    label: IRA distribution (lines 4a and 4b)
+    type: Bool
+    expr:
+      op: test
+      ne:
+      - retirement.account
+      - const: plan
+    cite:
+      doc: i1040gi
+      locator: p. 26, Lines 4a and 4b, IRA Distributions
+  - id: retirement.roth
+    printed: (helper)
+    label: Roth IRA distribution
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - retirement.account
+      - const: roth_ira
+    cite:
+      doc: i1040gi
+      locator: p. 27, Exception 2, item 2
+  - id: retirement.direct
+    printed: (helper)
+    label: Direct rollover (code G)
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - retirement.code
+      - const: direct_rollover_G
+    cite:
+      doc: f1099r
+      locator: Box 2a, 'For a direct rollover ... zero should be shown and you must enter zero (-0-) on the Taxable
+        amount line'
+  - id: retirement.bad_code
+    printed: (gate)
+    label: Distribution code the tool does not compute
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        eq:
+        - retirement.code
+        - const: other
+      - op: test
+        all:
+        - op: test
+          eq:
+          - retirement.account
+          - const: roth_ira
+        - op: test
+          ne:
+          - retirement.code
+          - const: qualified_roth_Q
+      - op: test
+        all:
+        - op: test
+          eq:
+          - retirement.code
+          - const: qualified_roth_Q
+        - op: test
+          ne:
+          - retirement.account
+          - const: roth_ira
+    cite:
+      doc: i1040gi
+      locator: p. 27, Exception 2 (a Roth IRA distribution other than code Q needs Form 8606); f1099r Box 7
+  - id: retirement.rolled
+    printed: (helper)
+    label: Amount rolled over (the whole distribution for a direct rollover)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - retirement.direct
+          - const: true
+        then: retirement.box1
+      - guard:
+          op: test
+          eq:
+          - retirement.direct
+          - const: false
+        then: retirement.rollover
+    cite:
+      doc: i1040gi
+      locator: p. 27, Exception 1; p. 30, Rollovers
+    refuses: &id001
+    - when: retirement.special
+      form: Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939)
+      remedy: This distribution needs a form or rule outside this tool.
+      cite:
+        doc: i1040gi
+        locator: 'pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired
+          Public Safety Officers, Simplified Method'
+    - when: retirement.bad_code
+      form: Form 8606 or another Form 1099-R code
+      remedy: A Roth IRA distribution other than a qualified distribution (code Q), or a distribution code other
+        than 7, 4, 2, G or Q, is outside this tool.
+      cite:
+        doc: i1040gi
+        locator: p. 27, Exception 2; f1099r Box 7
+  - id: retirement.has_rollover
+    printed: (helper)
+    label: Part or all of the distribution was rolled over (an amount rolled over, or a direct rollover, code G)
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        gt:
+        - retirement.rolled
+        - param: sales.zero
+      - op: test
+        eq:
+        - retirement.direct
+        - const: true
+    cite:
+      doc: i1040gi
+      locator: p. 27, Exception 1 ('Also check box 1 on line 4c'); p. 30, Rollovers ('Use lines 5a and 5b to report
+        a rollover, including a direct rollover'); p. 31, Line 5c
+  - id: retirement.smw1
+    printed: (SMW 1)
+    label: Enter the total pension or annuity payments from Form 1099-R, box 1
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: retirement.box1
+    cite:
+      doc: i1040gi
+      locator: p. 29, Simplified Method Worksheet, line 1
+  - id: retirement.smw2
+    printed: (SMW 2)
+    label: Enter your cost in the plan at the annuity starting date
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: retirement.cost
+    cite:
+      doc: i1040gi
+      locator: p. 29, Simplified Method Worksheet, line 2
+  - id: retirement.smw4_t1_360
+    printed: (helper)
+    label: Line 2 divided by 360 (Table 1)
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: retirement.smw2
+      rate:
+        param: smw.table1_360
+    cite:
+      doc: i1040gi
+      locator: p. 29, Simplified Method Worksheet, lines 3 and 4, Table 1 (360)
+  - id: retirement.smw4_t1_310
+    printed: (helper)
+    label: Line 2 divided by 310 (Table 1)
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: retirement.smw2
+      rate:
+        param: smw.table1_310
+    cite:
+      doc: i1040gi
+      locator: p. 29, Simplified Method Worksheet, lines 3 and 4, Table 1 (310)
+  - id: retirement.smw4_t1_260
+    printed: (helper)
+    label: Line 2 divided by 260 (Table 1)
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: retirement.smw2
+      rate:
+        param: smw.table1_260
+    cite:
+      doc: i1040gi
+      locator: p. 29, Simplified Method Worksheet, lines 3 and 4, Table 1 (260)
+  - id: retirement.smw4_t1_210
+    printed: (helper)
+    label: Line 2 divided by 210 (Table 1)
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: retirement.smw2
+      rate:
+        param: smw.table1_210
+    cite:
+      doc: i1040gi
+      locator: p. 29, Simplified Method Worksheet, lines 3 and 4, Table 1 (210)
+  - id: retirement.smw4_t1_160
+    printed: (helper)
+    label: Line 2 divided by 160 (Table 1)
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: retirement.smw2
+      rate:
+        param: smw.table1_160
+    cite:
+      doc: i1040gi
+      locator: p. 29, Simplified Method Worksheet, lines 3 and 4, Table 1 (160)
+  - id: retirement.smw4_t2_410
+    printed: (helper)
+    label: Line 2 divided by 410 (Table 2)
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: retirement.smw2
+      rate:
+        param: smw.table2_410
+    cite:
+      doc: i1040gi
+      locator: p. 29, Simplified Method Worksheet, lines 3 and 4, Table 2 (410)
+  - id: retirement.smw4_t2_360
+    printed: (helper)
+    label: Line 2 divided by 360 (Table 2)
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: retirement.smw2
+      rate:
+        param: smw.table2_360
+    cite:
+      doc: i1040gi
+      locator: p. 29, Simplified Method Worksheet, lines 3 and 4, Table 2 (360)
+  - id: retirement.smw4_t2_310
+    printed: (helper)
+    label: Line 2 divided by 310 (Table 2)
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: retirement.smw2
+      rate:
+        param: smw.table2_310
+    cite:
+      doc: i1040gi
+      locator: p. 29, Simplified Method Worksheet, lines 3 and 4, Table 2 (310)
+  - id: retirement.smw4_t2_260
+    printed: (helper)
+    label: Line 2 divided by 260 (Table 2)
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: retirement.smw2
+      rate:
+        param: smw.table2_260
+    cite:
+      doc: i1040gi
+      locator: p. 29, Simplified Method Worksheet, lines 3 and 4, Table 2 (260)
+  - id: retirement.smw4_t2_210
+    printed: (helper)
+    label: Line 2 divided by 210 (Table 2)
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: retirement.smw2
+      rate:
+        param: smw.table2_210
+    cite:
+      doc: i1040gi
+      locator: p. 29, Simplified Method Worksheet, lines 3 and 4, Table 2 (210)
+  - id: retirement.smw4_table1
+    printed: (helper)
+    label: Line 2 divided by the Table 1 number for the age at the annuity starting date
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          all:
+          - op: test
+            ge:
+            - retirement.age
+            - const: 0
+              type: Count
+          - op: test
+            lt:
+            - retirement.age
+            - const: 56
+              type: Count
+        then: retirement.smw4_t1_360
+      - guard:
+          op: test
+          all:
+          - op: test
+            ge:
+            - retirement.age
+            - const: 56
+              type: Count
+          - op: test
+            lt:
+            - retirement.age
+            - const: 61
+              type: Count
+        then: retirement.smw4_t1_310
+      - guard:
+          op: test
+          all:
+          - op: test
+            ge:
+            - retirement.age
+            - const: 61
+              type: Count
+          - op: test
+            lt:
+            - retirement.age
+            - const: 66
+              type: Count
+        then: retirement.smw4_t1_260
+      - guard:
+          op: test
+          all:
+          - op: test
+            ge:
+            - retirement.age
+            - const: 66
+              type: Count
+          - op: test
+            lt:
+            - retirement.age
+            - const: 71
+              type: Count
+        then: retirement.smw4_t1_210
+      - guard:
+          op: test
+          ge:
+          - retirement.age
+          - const: 71
+            type: Count
+        then: retirement.smw4_t1_160
+    cite:
+      doc: i1040gi
+      locator: p. 29, Table 1 for Line 3 (annuity starting date after November 18, 1996)
+  - id: retirement.smw4_table2
+    printed: (helper)
+    label: Line 2 divided by the Table 2 number for the combined ages at the annuity starting date
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          all:
+          - op: test
+            ge:
+            - retirement.combined_age
+            - const: 0
+              type: Count
+          - op: test
+            lt:
+            - retirement.combined_age
+            - const: 111
+              type: Count
+        then: retirement.smw4_t2_410
+      - guard:
+          op: test
+          all:
+          - op: test
+            ge:
+            - retirement.combined_age
+            - const: 111
+              type: Count
+          - op: test
+            lt:
+            - retirement.combined_age
+            - const: 121
+              type: Count
+        then: retirement.smw4_t2_360
+      - guard:
+          op: test
+          all:
+          - op: test
+            ge:
+            - retirement.combined_age
+            - const: 121
+              type: Count
+          - op: test
+            lt:
+            - retirement.combined_age
+            - const: 131
+              type: Count
+        then: retirement.smw4_t2_310
+      - guard:
+          op: test
+          all:
+          - op: test
+            ge:
+            - retirement.combined_age
+            - const: 131
+              type: Count
+          - op: test
+            lt:
+            - retirement.combined_age
+            - const: 141
+              type: Count
+        then: retirement.smw4_t2_260
+      - guard:
+          op: test
+          ge:
+          - retirement.combined_age
+          - const: 141
+            type: Count
+        then: retirement.smw4_t2_210
+    cite:
+      doc: i1040gi
+      locator: p. 29, Table 2 for Line 3
+  - id: retirement.smw4_new
+    printed: (helper)
+    label: Line 2 divided by the number on line 3 (Table 2 for a joint and survivor annuity starting after 1997,
+      Table 1 otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - retirement.joint_life
+          - const: true
+        then: retirement.smw4_table2
+      - guard:
+          op: test
+          eq:
+          - retirement.joint_life
+          - const: false
+        then: retirement.smw4_table1
+    cite:
+      doc: i1040gi
+      locator: p. 29, Simplified Method Worksheet, line 3
+  - id: retirement.smw4
+    printed: (SMW 4)
+    label: Divide line 2 by the number on line 3 (or, if you completed this worksheet last year, line 4 of last
+      year's worksheet)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - retirement.used_last_year
+          - const: true
+        then: retirement.last_line4
+      - guard:
+          op: test
+          eq:
+          - retirement.used_last_year
+          - const: false
+        then: retirement.smw4_new
+    cite:
+      doc: i1040gi
+      locator: p. 29, Simplified Method Worksheet, line 4, and the note under line 2
+  - id: retirement.smw5
+    printed: (SMW 5)
+    label: Multiply line 4 by the number of months for which this year's payments were made
+    type: NonNegDollars
+    expr:
+      op: multiply_count
+      amount: retirement.smw4
+      count: retirement.months
+    cite:
+      doc: i1040gi
+      locator: p. 29, Simplified Method Worksheet, line 5
+  - id: retirement.smw6
+    printed: (SMW 6)
+    label: Enter the amount, if any, recovered tax free in years after 1986
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: retirement.recovered
+    cite:
+      doc: i1040gi
+      locator: p. 29, Simplified Method Worksheet, line 6
+  - id: retirement.smw7
+    printed: (SMW 7)
+    label: Subtract line 6 from line 2
+    type: Dollars
+    expr:
+      op: subtract
+      from: retirement.smw2
+      take: retirement.smw6
+    cite:
+      doc: i1040gi
+      locator: p. 29, Simplified Method Worksheet, line 7
+  - id: retirement.smw8
+    printed: (SMW 8)
+    label: Enter the smaller of line 5 or line 7
+    type: Dollars
+    expr:
+      op: smaller_of
+      of:
+      - retirement.smw5
+      - retirement.smw7
+    cite:
+      doc: i1040gi
+      locator: p. 29, Simplified Method Worksheet, line 8
+  - id: retirement.smw9
+    printed: (SMW 9)
+    label: Taxable amount. Subtract line 8 from line 1. Enter the result, but not less than zero
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: retirement.smw1
+      take: retirement.smw8
+    cite:
+      doc: i1040gi
+      locator: p. 29, Simplified Method Worksheet, line 9
+  - id: retirement.cost_left
+    printed: (helper)
+    label: Some cost is left to recover (line 7 of the Simplified Method Worksheet is more than zero)
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - retirement.smw7
+      - param: sales.zero
+    cite:
+      doc: i1040gi
+      locator: p. 28, Fully Taxable Pensions and Annuities, 'you got your entire cost back tax free before 2025'
+  - id: retirement.annuity_with_cost
+    printed: (helper)
+    label: The Simplified Method applies and some cost is left to recover
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - retirement.annuity
+        - const: true
+      - op: test
+        eq:
+        - retirement.cost_left
+        - const: true
+    cite:
+      doc: i1040gi
+      locator: p. 28, Fully Taxable and Partially Taxable Pensions and Annuities
+  - id: retirement.annuity_rollover
+    printed: (helper)
+    label: A pension or annuity figured by the Simplified Method of which some amount was rolled over
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - retirement.is_ira
+        - const: false
+      - op: test
+        eq:
+        - retirement.annuity
+        - const: true
+      - op: test
+        eq:
+        - retirement.has_rollover
+        - const: true
+    cite:
+      doc: i1040gi
+      locator: p. 30, Rollovers, 'See Pub. 575 for more details on rollovers'
+  - id: retirement.annuity_taxable
+    printed: (helper)
+    label: 'Taxable annuity amount: Simplified Method line 9, or the whole of box 1 once the cost has been recovered'
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - retirement.cost_left
+          - const: true
+        then: retirement.smw9
+      - guard:
+          op: test
+          eq:
+          - retirement.cost_left
+          - const: false
+        then: retirement.box1
+    cite:
+      doc: i1040gi
+      locator: p. 28, Fully Taxable Pensions and Annuities ('If your pension or annuity is fully taxable, enter the
+        total pension or annuity payments (from Form(s) 1099-R, box 1) on line 5b'); p. 29, Simplified Method Worksheet,
+        line 9
+  - id: retirement.ira_taxable
+    printed: (helper)
+    label: 'Taxable IRA amount: the part not rolled over (zero for a qualified Roth IRA distribution)'
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - retirement.roth
+          - const: true
+        then: retirement.zero
+      - guard:
+          op: test
+          eq:
+          - retirement.roth
+          - const: false
+        then: retirement.ira_not_rolled
+    cite:
+      doc: i1040gi
+      locator: p. 27, line 4b, Exception 1 and Exception 2(b)
+  - id: retirement.ira_not_rolled
+    printed: (helper)
+    label: Box 1 less the amount rolled over
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: retirement.box1
+      take: retirement.rolled
+    cite:
+      doc: i1040gi
+      locator: p. 27, Exception 1, 'enter the part not rolled over on line 4b'
+  - id: retirement.plan_excluded
+    printed: (helper)
+    label: Taxable contributions (box 5) and the amount rolled over
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - retirement.box5
+      - retirement.rolled
+    cite:
+      doc: i1040gi
+      locator: p. 30, Rollovers, 'subtract any contributions (usually shown in box 5) ... subtract the amount of
+        the rollover'
+  - id: retirement.plan_simple
+    printed: (helper)
+    label: Box 1 less taxable contributions (box 5) and the amount rolled over
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: retirement.box1
+      take: retirement.plan_excluded
+    cite:
+      doc: i1040gi
+      locator: p. 28, Fully Taxable Pensions and Annuities; p. 30, Rollovers
+  - id: retirement.plan_taxable
+    printed: (helper)
+    label: Taxable pension or annuity amount (the Simplified Method for an annuity with after-tax cost)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - retirement.annuity
+          - const: true
+        then: retirement.annuity_taxable
+      - guard:
+          op: test
+          eq:
+          - retirement.annuity
+          - const: false
+        then: retirement.plan_simple
+    cite:
+      doc: i1040gi
+      locator: p. 28, Partially Taxable Pensions and Annuities; p. 29, Simplified Method Worksheet, line 9
+  - id: retirement.taxable
+    printed: (helper)
+    label: Taxable amount of this distribution (line 4b or 5b)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - retirement.is_ira
+          - const: true
+        then: retirement.ira_taxable
+      - guard:
+          op: test
+          eq:
+          - retirement.is_ira
+          - const: false
+        then: retirement.plan_taxable
+    cite:
+      doc: i1040gi
+      locator: pp. 27-30, lines 4b and 5b
+    refuses: &id002
+    - when: retirement.special
+      form: Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939)
+      remedy: This distribution needs a form or rule outside this tool.
+      cite:
+        doc: i1040gi
+        locator: 'pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired
+          Public Safety Officers, Simplified Method'
+    - when: retirement.bad_code
+      form: Form 8606 or another Form 1099-R code
+      remedy: A Roth IRA distribution other than a qualified distribution (code Q), or a distribution code other
+        than 7, 4, 2, G or Q, is outside this tool.
+      cite:
+        doc: i1040gi
+        locator: p. 27, Exception 2; f1099r Box 7
+    - when: retirement.annuity_rollover
+      form: Pub. 575 (rollover of a pension or annuity figured by the Simplified Method)
+      remedy: A rollover from a pension or annuity whose taxable part is figured with the Simplified Method is
+        outside this tool.
+      cite:
+        doc: i1040gi
+        locator: p. 30, Rollovers, 'See Pub. 575 for more details on rollovers'
+  - id: retirement.show_a
+    printed: (helper)
+    label: An exception applies, so the total distribution goes on line 4a or 5a
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        eq:
+        - retirement.has_rollover
+        - const: true
+      - op: test
+        eq:
+        - retirement.roth
+        - const: true
+      - op: test
+        all:
+        - op: test
+          eq:
+          - retirement.is_ira
+          - const: false
+        - op: test
+          any:
+          - op: test
+            eq:
+            - retirement.annuity_with_cost
+            - const: true
+          - op: test
+            all:
+            - op: test
+              eq:
+              - retirement.annuity
+              - const: false
+            - op: test
+              gt:
+              - retirement.box5
+              - param: sales.zero
+    cite:
+      doc: i1040gi
+      locator: p. 27, line 4b ('If the distribution from your IRA is fully taxable, enter the total distribution
+        on line 4b; don't make an entry on line 4a'); p. 28, Fully Taxable and Partially Taxable Pensions and Annuities;
+        p. 30, Rollovers
+  - id: retirement.amount_a
+    printed: (helper)
+    label: Total distribution entered on line 4a or 5a (none when fully taxable)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - retirement.show_a
+          - const: true
+        then: retirement.box1
+      - guard:
+          op: test
+          eq:
+          - retirement.show_a
+          - const: false
+        then: retirement.zero
+    cite:
+      doc: i1040gi
+      locator: pp. 27-30, lines 4a and 5a
+    refuses: *id002
+  collection:
+    cite:
+      doc: i1040gi
+      locator: pp. 26-30, lines 4a-5b ('If you received more than one distribution, figure the taxable amount of
+        each distribution')

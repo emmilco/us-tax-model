@@ -857,6 +857,74 @@
   "model": ""
  },
  {
+  "screen": "retirement.special",
+  "question": "Does this distribution involve any of these: an early distribution with no known exception (code 1, J or S); a disability pension received before minimum retirement age, or a pension partly excludable because you were disabled as a result of a terrorist attack; a corrective distribution of excess deferrals or contributions; a qualified charitable distribution or HSA funding distribution; nondeductible contributions to any traditional IRA; a conversion, recharacterization or returned contribution (Form 8606); a rollover to a Roth IRA or designated Roth account; a lump-sum distribution you may report on Form 4972; a nonqualified annuity; the retired public safety officer premium exclusion; a death benefit exclusion; a plan loan offset; a Form RRB-1099-R; U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721); or a pension or annuity in which you have after-tax cost whose annuity starting date was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)?",
+  "lines": [
+   "retirement.rolled",
+   "retirement.taxable",
+   "retirement.amount_a"
+  ],
+  "verdict": "NARROW",
+  "findings": [
+   {
+    "kind": "NARROW",
+    "situation": "A filer takes a nonqualified Roth IRA distribution coded T and made their first Roth IRA contribution in 2021 or later, without rolling it over. Nothing in the question covers this, so the filer answers NO, and the tool treats the taxable amount as the part not rolled over instead of sending the filer to Form 8606.",
+    "irs_text": "i1040gi p. 27, Exception 2: \"2. You received a distribution from a Roth IRA. But if either (a) or (b) below applies, enter -0- on line 4b ... a. Distribution code T is shown in box 7 of Form 1099-R and you made a contribution (including a conversion) to a Roth IRA for 2020 or an earlier year. b. Distribution code Q\"",
+    "why": "The question names only nondeductible traditional IRA contributions, conversions, recharacterizations, returned contributions and early distributions coded J. An ordinary Roth IRA distribution that still needs Form 8606 (code T with contributions from 2021 or later) matches none of these items."
+   },
+   {
+    "kind": "NARROW",
+    "situation": "A filer receives a distribution from a designated Roth account in an employer plan that is not qualified (code B, not rolled over). Nothing in the question covers this, so the filer answers NO, and the tool runs the pension or Simplified Method path.",
+    "irs_text": "i1040gi p. 30, Rollovers: \"See Pub. 575 for more details on rollovers, including special rules that apply to rollovers from designated Roth accounts\"; p. 28: \"If your Form 1099-R doesn't show the taxable amount, you must use the General Rule explained in Pub. 939\"",
+    "why": "The question mentions designated Roth accounts only as a rollover destination. A distribution from one that isn't rolled over needs Pub. 575, but the filer would answer NO."
+   },
+   {
+    "kind": "UNCLEAR",
+    "situation": "A filer receives a one-time, non-annuity distribution from an employer plan that includes after-tax contributions (box 5) and rolls over part of it. They may not think of this as a 'pension or annuity in which you have after-tax cost' with a Simplified Method question, so they may answer NO.",
+    "irs_text": "i1040gi p. 30, Rollovers: \"Enter on line 5a the distribution from Form 1099-R, box 1. From this amount, subtract any contributions (usually shown in box 5) that were taxable to you when made. From that result, subtract the amount of the rollover.\"",
+    "why": "The tool's taxable-pension helper applies only the Simplified Method to after-tax cost, and its rollover helper ignores box 5. The question frames after-tax cost only in terms of annuity starting dates and the Simplified Method, so a filer could reasonably read it either way for a lump-sum payment."
+   },
+   {
+    "kind": "UNCLEAR",
+    "situation": "A filer had excess IRA contributions from an earlier year returned in 2025. Each excess contribution has its own exception in the IRS text, and the filer may not count it as a 'returned contribution (Form 8606)'.",
+    "irs_text": "i1040gi p. 27, Exception 2: \"4. You had a 2024 or 2025 IRA contribution returned to you ... 5. You made excess contributions to your IRA for an earlier year and had them returned to you in 2025.\"",
+    "why": "The question's single phrase 'returned contribution' may read as covering only the timely return in item 4, not earlier-year excess contributions returned in 2025 (item 5)."
+   }
+  ],
+  "prompt_sha": "4d74afda39ccf0fac99aee75dbff2f62b2cd3b89627a02020598346bd7fc63f3",
+  "used": [
+   {
+    "doc": "i1040gi",
+    "revision": "2025; printed date 2026-02-25",
+    "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+    "pages": [
+     27,
+     28,
+     29,
+     30
+    ],
+    "how": "cited pages",
+    "locators": [
+     "p. 27, Exception 1; p. 30, Rollovers",
+     "p. 27, Exception 2; f1099r Box 7",
+     "p. 30, Rollovers, 'See Pub. 575 for more details on rollovers'",
+     "pp. 27-30, lines 4a and 5a",
+     "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method",
+     "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method; f1099r Box 7 codes",
+     "pp. 27-30, lines 4b and 5b"
+    ],
+    "cols_pages": [
+     27,
+     28,
+     30
+    ],
+    "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+   }
+  ],
+  "cost": 0.1479606,
+  "model": "claude-opus-5-5"
+ },
+ {
   "screen": "s2.amt",
   "question": "Are you required to file Form 6251 or do you have an AMT adjustment requiring its review?",
   "lines": [
@@ -2304,5 +2372,53 @@
   ],
   "cost": 0,
   "model": ""
+ },
+ {
+  "screen": "ssb.terror_disability",
+  "question": "Are any of your benefits disability payments for injuries incurred as a direct result of a terrorist attack directed against the United States or its allies (including injuries covered by the September 11 Victim Compensation Fund)?",
+  "lines": [
+   "ssb.line2"
+  ],
+  "verdict": "UNCLEAR",
+  "findings": [
+   {
+    "kind": "UNCLEAR",
+    "situation": "A filer was disabled in a terrorist attack, but in an earlier year reached full retirement age, so all of this year's SSA benefits are retirement benefits.",
+    "irs_text": "i1040gi p. 31: \"Because you became eligible for a full retirement benefit in May, the month after you turned age 66, you can exclude only 4 months (January through April) of your annual benefit from income ($6,000). You must report the remaining $12,000 on line 6a.\"",
+    "why": "The question doesn't say that benefits paid after full retirement age stop being disability payments. Such a filer could answer YES because the benefits trace back to the injury, even though nothing is excludable and the tool would compute the lines correctly."
+   },
+   {
+    "kind": "UNCLEAR",
+    "situation": "A filer receives terrorist-attack disability payments from a source other than SSA or RRB, such as an employer or public-safety disability pension, and receives ordinary taxable social security benefits.",
+    "irs_text": "i1040gi p. 32, line 1: \"Enter the total amount from box 5 of all your Forms SSA-1099 and RRB-1099\"; p. 31: \"Don't include in your income any disability payments (including Social Security Disability Insurance (SSDI) payments) you receive for injuries incurred as a direct result of a terrorist attack\"",
+    "why": "\"Any of your benefits\" doesn't say it means only the social security or railroad benefits on SSA-1099/RRB-1099. A filer could answer YES because of a non-SSA disability payment that never enters line 1, and the tool computes those lines correctly."
+   }
+  ],
+  "prompt_sha": "99d2670b9ae4c4235f815882c8821c40fb4b5784c6dfb731097d40a6305c122c",
+  "used": [
+   {
+    "doc": "i1040gi",
+    "revision": "2025; printed date 2026-02-25",
+    "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+    "pages": [
+     31,
+     32
+    ],
+    "how": "cited pages",
+    "locators": [
+     "p. 31, Line 6c",
+     "p. 31, Lines 6a and 6b, Disability payments",
+     "p. 31, Lines 6a and 6b, Exception",
+     "p. 32, Social Security Benefits Worksheet, line 2",
+     "p. 32, Social Security Benefits Worksheet, lines 2 and 13, 50% (0.50) and one-half"
+    ],
+    "cols_pages": [
+     31
+    ],
+    "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+   }
+  ],
+  "cost": 0.072744,
+  "model": "claude-opus-5-5"
  }
 ]

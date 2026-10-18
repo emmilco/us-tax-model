@@ -177,6 +177,24 @@
       "extract_tool_version": "0.10"
     },
     {
+      "id": "f1099r",
+      "url": "https://www.irs.gov/pub/irs-prior/f1099r--2025.pdf",
+      "resolved_url": "https://www.irs.gov/pub/irs-prior/f1099r--2025.pdf",
+      "fetched_at": "2026-10-18T02:50:49.100116+00:00",
+      "file": "f1099r.pdf",
+      "sha256": "d6b7be486a4d7419968df8a7c8cc36284b672d5fe66cff12359255eb56d31f7a",
+      "text_file": "f1099r.txt",
+      "text_sha256": "97b0b54ae7c95303418077d54e349c0106cbbd5c4b5695ef684c23c39a5fda3f",
+      "revision": "2025 (calendar-year form)",
+      "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
+      "cols_file": "f1099r.cols.txt",
+      "cols_sha256": "af300d066f4492afc97aa90824bfc681581f64482976e6d6a705e7e94b0e4e67",
+      "pages_file": "f1099r.pages.json",
+      "pages_sha256": "1720695b874f3c6d338e180a89287e3bf92aad86dcd06a7639a5cb0ed78c6554",
+      "extract_tool_version": "0.10",
+      "revision_locator": "PDF page 1, Copy A, form year box"
+    },
+    {
       "id": "f4952",
       "url": "https://www.irs.gov/pub/irs-pdf/f4952.pdf",
       "resolved_url": "https://www.irs.gov/pub/irs-pdf/f4952.pdf",
@@ -486,6 +504,24 @@
       "pages_file": "i1099int.pages.json",
       "pages_sha256": "c50e21946f1cae9e1310521368666e70d8f0b51203a0892cfefa43e5d02d6e6d",
       "extract_tool_version": "0.10"
+    },
+    {
+      "id": "i1099r",
+      "url": "https://www.irs.gov/pub/irs-prior/i1099r--2025.pdf",
+      "resolved_url": "https://www.irs.gov/pub/irs-prior/i1099r--2025.pdf",
+      "fetched_at": "2026-10-18T02:50:49.619035+00:00",
+      "file": "i1099r.pdf",
+      "sha256": "a2ebc2c5ab6be07cfddefa8941f54138cb4b646f5240db2f1469c4f97a8db61e",
+      "text_file": "i1099r.txt",
+      "text_sha256": "561ea2c661f2e39ce41c87e877331c28041637d4cfff3dac2a8a06f732790f94",
+      "revision": "2025",
+      "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
+      "cols_file": "i1099r.cols.txt",
+      "cols_sha256": "fa68d1729f46517836b85d7a4ba46b1b710ad6825697c66daf0d61f49a224fd2",
+      "pages_file": "i1099r.pages.json",
+      "pages_sha256": "a58f4626c1586738257f73cce6fc301140c046004277f08d28038ab0b0a56f55",
+      "extract_tool_version": "0.10",
+      "revision_locator": "PDF page 1, title; running head 'Instructions for Forms 1099-R and 5498 (2025)'"
     },
     {
       "id": "i1116",

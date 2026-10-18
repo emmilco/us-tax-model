@@ -7,103 +7,167 @@
    "printed": "5",
    "project": "$2,798.00",
    "model": "$0.00",
-   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; line 6 agrees on every case.",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
+   "drop": true
+  },
+  {
+   "case": "classm.eic.10",
+   "printed": "1",
+   "project": "$48,342.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
+   "drop": true
+  },
+  {
+   "case": "classm.eic.10",
+   "printed": "3",
+   "project": "$48,598.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
    "drop": true
   },
   {
    "case": "classm.eic.2",
    "printed": "3",
-   "project": "$5,402.00",
+   "project": "$64,140.00",
    "model": "$0.00",
-   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; line 6 agrees on every case.",
-   "drop": true
-  },
-  {
-   "case": "classm.eic.2",
-   "printed": "5",
-   "project": "$415.00",
-   "model": "$0.00",
-   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; line 6 agrees on every case.",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
    "drop": true
   },
   {
    "case": "classm.eic.3",
    "printed": "3",
-   "project": "$57,180.00",
+   "project": "$33.00",
    "model": "$0.00",
-   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; line 6 agrees on every case.",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
    "drop": true
   },
   {
    "case": "classm.eic.3",
    "printed": "5",
-   "project": "$28.00",
+   "project": "$10.00",
    "model": "$0.00",
-   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; line 6 agrees on every case.",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
+   "drop": true
+  },
+  {
+   "case": "classm.eic.4",
+   "printed": "1",
+   "project": "$45,880.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
    "drop": true
   },
   {
    "case": "classm.eic.4",
    "printed": "3",
-   "project": "$61,822.00",
+   "project": "$45,880.00",
    "model": "$0.00",
-   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; line 6 agrees on every case.",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
+   "drop": true
+  },
+  {
+   "case": "classm.eic.4",
+   "printed": "4",
+   "project": "yes",
+   "model": "no",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
+   "drop": true
+  },
+  {
+   "case": "classm.eic.5",
+   "printed": "1",
+   "project": "$66,499.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
    "drop": true
   },
   {
    "case": "classm.eic.5",
    "printed": "3",
-   "project": "$3,168.00",
+   "project": "$66,558.00",
    "model": "$0.00",
-   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; line 6 agrees on every case.",
-   "drop": true
-  },
-  {
-   "case": "classm.eic.5",
-   "printed": "5",
-   "project": "$1,429.00",
-   "model": "$0.00",
-   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; line 6 agrees on every case.",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
    "drop": true
   },
   {
    "case": "classm.eic.6",
    "printed": "1",
-   "project": "$43,632.00",
+   "project": "$33,401.00",
    "model": "$0.00",
-   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; line 6 agrees on every case.",
-   "drop": true
-  },
-  {
-   "case": "classm.eic.6",
-   "printed": "2",
-   "project": "$2,226.00",
-   "model": "$0.00",
-   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; line 6 agrees on every case.",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
    "drop": true
   },
   {
    "case": "classm.eic.6",
    "printed": "3",
-   "project": "$67,962.00",
+   "project": "$33,704.00",
    "model": "$0.00",
-   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; line 6 agrees on every case.",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
    "drop": true
   },
   {
    "case": "classm.eic.7",
-   "printed": "5",
-   "project": "$197.00",
+   "printed": "1",
+   "project": "$25,428.00",
    "model": "$0.00",
-   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; line 6 agrees on every case.",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
+   "drop": true
+  },
+  {
+   "case": "classm.eic.7",
+   "printed": "3",
+   "project": "$25,686.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
+   "drop": true
+  },
+  {
+   "case": "classm.eic.8",
+   "printed": "1",
+   "project": "$10,723.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
+   "drop": true
+  },
+  {
+   "case": "classm.eic.8",
+   "printed": "2",
+   "project": "$3,647.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
    "drop": true
   },
   {
    "case": "classm.eic.8",
    "printed": "3",
-   "project": "$61,004.00",
+   "project": "$20,673.00",
    "model": "$0.00",
-   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; line 6 agrees on every case.",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
+   "drop": true
+  },
+  {
+   "case": "classm.eic.8",
+   "printed": "5",
+   "project": "$4,328.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
+   "drop": true
+  },
+  {
+   "case": "classm.eic.8",
+   "printed": "6",
+   "project": "$3,647.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
+   "drop": true
+  },
+  {
+   "case": "classm.eic.9",
+   "printed": "5",
+   "project": "$2,787.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
    "drop": true
   }
  ]

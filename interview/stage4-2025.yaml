@@ -631,7 +631,7 @@ interview:
         doc: f1040
         locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
     - input: scope.other_income
-      prompt: 'Any retirement, Social Security, nonresident alien (you or your spouse, for any part of 2025) or other income or return treatment outside wages, interest, dividends and supported securities sales, including wages or tips not on a Form W-2, Medicaid waiver payments (whether or not in Form W-2 box 1), dependent care or adoption benefits, other earned income (Form 1040 lines 1b-1h), or income or loss from a passive activity (including gain on selling an interest in one)?'
+      prompt: 'Any nonresident alien status (you or your spouse, for any part of 2025) or other income or return treatment outside wages, interest, dividends, supported securities sales, Form 1099-R distributions and social security benefits, including wages or tips not on a Form W-2, Medicaid waiver payments (whether or not in Form W-2 box 1), dependent care or adoption benefits, other earned income (Form 1040 lines 1b-1h), or income or loss from a passive activity (including gain on selling an interest in one)?'
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
         guess. This computes a form slice, not a complete filed return.
       order: 0
@@ -971,3 +971,192 @@ interview:
         doc: f1040s8812
         locator: Schedule 8812 (2025), after line 20, "If you are a bona fide resident of Puerto Rico, go
           to line 21"
+    - input: $retirement
+      prompt: 'List stable keys for each Form 1099-R you received (one key per form, for example payer names). Use [] if you received none.'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 1
+      cite:
+        doc: i1040gi
+        locator: 'pp. 26-30, lines 4a-5b'
+    - input: retirement.account
+      prompt: 'Kind of account: traditional_ira (the IRA/SEP/SIMPLE box on Form 1099-R is checked; includes SEP and traditional SIMPLE IRAs), roth_ira (a Roth IRA or Roth SIMPLE IRA), or plan (a pension, annuity, 401(k), 403(b) or governmental 457(b) plan)'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: f1099r
+        locator: 'Instructions for Recipient, IRA/SEP/SIMPLE box; i1040gi pp. 26 and 28, lines 4a-4b and 5a-5b'
+    - input: retirement.code
+      prompt: 'Distribution code in box 7: normal_7, death_4, early_exception_2, direct_rollover_G, qualified_roth_Q, or other (any other code, or two codes)'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: f1099r
+        locator: 'Instructions for Recipient, Box 7'
+    - input: retirement.box1
+      prompt: 'Gross distribution, Form 1099-R box 1'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: f1099r
+        locator: 'Instructions for Recipient, Box 1'
+    - input: retirement.box5
+      prompt: 'Employee contributions, designated Roth contributions or insurance premiums, Form 1099-R box 5 (a pension or annuity; zero for an IRA)'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: f1099r
+        locator: 'Instructions for Recipient, Box 5'
+    - input: retirement.rollover
+      prompt: 'Amount of this distribution you rolled over within 60 days to a qualified plan or an IRA other than a Roth IRA (for a direct rollover, code G, the whole distribution is treated as rolled over)'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: 'p. 27, Exception 1 (IRA rollovers); p. 30, Rollovers'
+    - input: retirement.special
+      prompt: 'Does this distribution involve any of these: an early distribution with no known exception (code 1, J or S); a disability pension received before minimum retirement age, or a pension partly excludable because you were disabled as a result of a terrorist attack; a corrective distribution of excess deferrals or contributions; a qualified charitable distribution or HSA funding distribution; nondeductible contributions to any traditional IRA; a conversion or recharacterization (Form 8606); a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025; a rollover to a Roth IRA or designated Roth account; a lump-sum distribution you may report on Form 4972; a nonqualified annuity; the retired public safety officer premium exclusion; a death benefit exclusion; a plan loan offset; a Form RRB-1099-R; U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721); or a pension or annuity in which you have after-tax cost whose annuity starting date was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)?'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: 'pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method; f1099r Box 7 codes'
+    - input: retirement.annuity
+      prompt: 'Is this a pension or annuity from a qualified plan, section 403(b) plan or tax-sheltered annuity, paid in periodic payments in which you have after-tax cost (box 9b or your records), with an annuity starting date after November 18, 1996, and on that date you were under age 75 or had fewer than 5 years of guaranteed payments? (This is when the Simplified Method applies.)'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: 'p. 30, Simplified Method, conditions 1 and 2; p. 28, Partially Taxable Pensions and Annuities'
+    - input: retirement.cost
+      prompt: 'Your cost (net investment, after-tax contributions) in the plan at the annuity starting date; it may be shown in Form 1099-R box 9b'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: 'p. 29, Simplified Method Worksheet, line 2; p. 30, Cost'
+    - input: retirement.used_last_year
+      prompt: 'Did you complete the Simplified Method Worksheet for this annuity last year?'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: 'p. 29, Simplified Method Worksheet, note under line 2'
+    - input: retirement.last_line4
+      prompt: 'The amount on line 4 of last year''s Simplified Method Worksheet for this annuity'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: 'p. 29, Simplified Method Worksheet, note under line 2'
+    - input: retirement.joint_life
+      prompt: 'Was the annuity starting date after 1997, with payments for your life and that of your beneficiary (Table 2)?'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: 'p. 29, Simplified Method Worksheet, line 3 and Table 2'
+    - input: retirement.age
+      prompt: 'Your age at the annuity starting date (if you are the survivor of a retiree, the retiree''s age on their annuity starting date)'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: 'p. 29, Table 1; p. 30, Age (or Combined Ages) at Annuity Starting Date'
+    - input: retirement.combined_age
+      prompt: 'Your combined ages (yours and your beneficiary''s) at the annuity starting date'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: 'p. 29, Table 2; p. 30, Age (or Combined Ages) at Annuity Starting Date'
+    - input: retirement.months
+      prompt: 'Number of months in 2025 for which payments were made'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: 'p. 29, Simplified Method Worksheet, line 5'
+    - input: retirement.recovered
+      prompt: 'Amount, if any, recovered tax free in years after 1986 (if you completed this worksheet last year, line 10 of last year''s worksheet)'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: 'p. 29, Simplified Method Worksheet, line 6'
+    - input: ssb.benefits
+      prompt: 'Total of box 5 (net benefits) of all your Forms SSA-1099 and RRB-1099 for 2025'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 10
+      cite:
+        doc: i1040gi
+        locator: 'p. 32, Social Security Benefits Worksheet, line 1; p. 31, Lines 6a and 6b'
+    - input: ssb.pub915
+      prompt: 'Does any of these apply: you made contributions to a traditional IRA for 2025 and you or your spouse were covered by a retirement plan at work or through self-employment; your social security repayments in 2025 (box 4) were more than your benefits (box 3); you file Form 2555, 4563 or 8815; or you exclude employer-provided adoption benefits or income from sources within Puerto Rico?'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 10
+      cite:
+        doc: i1040gi
+        locator: 'p. 31, Lines 6a and 6b, Exception'
+    - input: ssb.lump_sum
+      prompt: 'Do you elect to use the lump-sum election method for a social security benefit payment that was for an earlier year?'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 10
+      cite:
+        doc: i1040gi
+        locator: 'p. 31, Line 6c; p. 32, worksheet TIP'
+    - input: ssb.terror_disability
+      prompt: 'Are any of the social security or railroad retirement benefits on your Forms SSA-1099 or RRB-1099 disability payments for injuries incurred as a direct result of a terrorist attack directed against the United States or its allies (including injuries covered by the September 11 Victim Compensation Fund)?'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 10
+      cite:
+        doc: i1040gi
+        locator: p. 31, Lines 6a and 6b, Disability payments
+    - input: ssb.lived_apart
+      prompt: 'If you are married filing separately: did you live apart from your spouse for all of 2025?'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 30
+      cite:
+        doc: i1040gi
+        locator: 'p. 31, Line 6d; p. 32, worksheet, Before you begin and line 8'

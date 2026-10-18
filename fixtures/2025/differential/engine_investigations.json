@@ -1,1 +1,8 @@
-[]
+[
+  {
+    "engine": "PolicyEngine-US",
+    "line": "f1040.line16",
+    "case": "gen-00816",
+    "cause": "Carried float32 error: PolicyEngine-US computes in float32, where one unit in the last place at this AGI ($255,108.89) is about 1.6 cents; its AGI (line 11b) and taxable income (line 15) are each 1 cent lower than the project's, within their own float bounds, and that cent moves its rate-schedule tax by 2 cents. Investigated 2026-10-18 when social security benefits entered the generated cases."
+  }
+]

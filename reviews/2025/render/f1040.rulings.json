@@ -3,28 +3,40 @@
  "form": "f1040",
  "rulings": [
   {
-   "printed": "13a",
-   "restated": "Enter the amount from qbi helper \"Select Form 8995 or dividend-only Form 8995-A\".",
-   "model": "The instructions say 'Use Form 8995 if: ... taxable income ... is less than or equal to $197,300 ($394,600 if married filing jointly); and • You aren't a patron in a specified agricultural or horticultural cooperative.' The restatement picks Form 8995 on the income threshold alone. It never tests patron status, and no refusal names it.",
-   "ruling": "Ruling: scope; project retained. Agricultural or horticultural cooperative patronage is refused by the QBI screen (`forms/2025/qbi.yaml`: 'Any QBI beyond section 199A dividends ... or agricultural/horticultural cooperative patronage?'), so a filer who reaches this selection is not a patron and the Form 8995 condition holds."
-  },
-  {
    "printed": "27a",
    "restated": "Enter the amount from eic helper \"Earned income credit for Form 1040, line 27a (Worksheet A, line 6 when Steps 1 to 5 are passed; zero otherwise)\".",
-   "model": "Step 4 question 2 says 'Were you, or your spouse if filing a joint return, at least age 25 but under age 65 ... (Check “Yes” if ... born after December 31, 1960, and before January 2, 2001.)' The program tests only the filer, and it rejects anyone born before January 2, 1961, so a filer born January 1, 1961 fails when the text says they pass. Step 1 question 2 also asks about 'you, and your spouse if filing a joint return,' but only the filer's SSN is asked.",
-   "ruling": "Ruling: scope; project retained. The spouse variants of the SSN and age tests arise only on a joint return, and married filing statuses are refused (s3.married); within scope the filer's own tests are the tests (Step 4, question 2 applies only to a filer with no qualifying child)."
+   "model": "The Step 4 age test uses \"born before January 2, 1961\" = false, so a filer born January 1, 1961 fails; the IRS says \"Check 'Yes' if you ... were born after December 31, 1960, and before January 2, 2001\". The tests also ignore the spouse on a joint return, against \"Do you, and your spouse if filing a joint return, have a social security number\" and \"Were you, or your spouse if filing a joint return, at least age 25 but under age 65\".",
+   "ruling": "Ruling: defect fixed (BUG-0034); spouse part scope. The age boundary was wrong for a filer born January 1, 1961: Step 4 read sa.age65 (born before January 2, 1961); it now asks eic.born_after_1960 in the instructions' words (owner's ruling), with a fixture for that birth date. The spouse variants of the SSN and age tests arise only on a joint return, and married filing statuses are refused (s3.married)."
   },
   {
    "printed": "27c",
    "restated": "Enter the amount from eic helper \"The instructions say to check the box on line 27c (a STOP that says so, or Worksheet A line 2 is zero); the filer's own choice not to claim the EIC is not asked\".",
-   "model": "The line 27c instructions say to check the box 'if you do not want to claim the earned income credit or if you have been instructed to check the box.' The program never asks whether the filer wants to claim the credit. Its Step 4 question 3 and question 5 paths also carry the age error from 27a (filer only, and the 'born after December 31, 1960' cutoff applied wrongly).",
-   "ruling": "Ruling: scope; project retained. The filer's choice not to claim the EIC is not asked (the line's label says so); the instructed checks follow the flow chart."
+   "model": "The Step 4 branches use the same age test, so a filer born January 1, 1961 is wrongly treated as failing \"born after December 31, 1960, and before January 2, 2001\". The program also never asks the filer's own choice, though the IRS says \"Check the box on line 27c if you do not want to claim the earned income credit\".",
+   "ruling": "Ruling: defect fixed (BUG-0034); choice not asked is scope. The Step 4 age boundary is fixed as for line 27a. The filer's choice not to claim the EIC is not asked (the line's label says so); the instructed checks follow the flow chart."
+  },
+  {
+   "printed": "4c",
+   "restated": "helper \"Number of IRA distributions with a rollover\" > 0 (a count)",
+   "model": "Line 4c is modelled as one rollover flag, but it has three boxes: \"If Exception 3 applies to you, check box 2 on line 4c. If Exception 4 applies to you, check box 3 on line 4c and enter 'HFD'\". No refusal excludes QCDs or HFDs, so those boxes can't be produced.",
+   "ruling": "Ruling: scope; project retained. Exception 3 (a qualified charitable distribution) and Exception 4 (an HSA funding distribution) are refused by retirement.special ('a qualified charitable distribution or HSA funding distribution'), so within scope only box 1 can apply."
+  },
+  {
+   "printed": "5c",
+   "restated": "helper \"Number of pension distributions with a rollover\" > 0 (a count)",
+   "model": "Line 5c is modelled only as the rollover box. The instructions also say \"If you are making the election to exclude ... check box 2 on line 5c\" (PSO) and \"check box 3 on line 5c\", and no refusal excludes the PSO election.",
+   "ruling": "Ruling: scope; project retained. The retired public safety officer premium exclusion (box 2) is refused by retirement.special ('the retired public safety officer premium exclusion'); box 3 applies only when another publication or instruction gives a word or code, and every such case in the Form 1099-R lines is behind the same screen."
   },
   {
    "printed": "7a",
    "restated": "Enter the amount from sd helper \"Capital gain or limited capital loss for Form 1040 line 7a\".",
-   "model": "The form says only 'Capital gain or (loss). Attach Schedule D if required.' The wording of Schedule D lines 16 and 21 is not in the text given, so I can't confirm that a loss goes to line 21 and a gain to line 16.",
+   "model": "The pages given don't include the wording of Schedule D lines 16 and 21. They also don't show whether sd line 16 carries capital gain distributions when Schedule D isn't required (Exception 1), so the choice between line 21 and line 16 can't be checked.",
    "ruling": "Ruling: representation; project retained. Schedule D says so on its own lines: line 16 'Combine lines 7 and 15' carries a gain to Form 1040 line 7a (through line 17's 'If line 16 is a gain, enter the amount from line 16 on Form 1040 line 7a'), and line 21 'If line 16 is a loss, enter here and on Form 1040, 1040-SR, or 1040-NR, line 7a, the smaller of' the loss or the limit (f1040sd); the Schedule D render log judges those lines."
+  },
+  {
+   "printed": "Dependents (separated spouses)",
+   "restated": "Enter the amount from eic helper \"A married filer filing separately or as head of household who passes Step 3, questions 4 and 5, and answers No to question 6 (the special rule for separated spouses)\".",
+   "model": "The program checks the box only when Steps 1–2 are passed and the filer is not a qualifying child of another person. The form's condition has no such gates: \"Check if your filing status is MFS or HOH and you lived apart from your spouse for the last 6 months of 2025, or you are legally separated ...\" (likewise the Special rule: \"If you meet these requirements, make sure you check the box\").",
+   "ruling": "Ruling: representation; project retained (owner's ruling). The box serves the EIC's special rule for separated spouses (Step 3, question 6) and changes no value for a filer who cannot take the EIC; the questions behind it are asked only of a married filer filing separately or as head of household who reaches Step 3, so a filer stopped earlier is not asked them and the box is left unchecked."
   }
  ]
 }

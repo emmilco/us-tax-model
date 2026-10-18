@@ -356,6 +356,17 @@ where
           let allFold := rest.foldl (fun acc y => if op == "smaller_of" then min acc y else max acc y) x
           pure (mkMoney allFold)
       | _ => pure (unknown "no operands")
+    | "multiply_count" =>
+      match strGet expr "amount", strGet expr "count" with
+      | some amtRef, some cntRef =>
+        let amtV ← eval ctx frame (.line amtRef)
+        let cntV ← eval ctx frame (.line cntRef)
+        if isUnknown amtV then pure amtV
+        else if isUnknown cntV then pure cntV
+        else if isMoney amtV && kindOf cntV == some "count" then
+          pure (mkMoney (multiplyCount ((moneyOf amtV).getD 0) ((numGet cntV "value").getD 0)))
+        else pure (unknown "multiply_count operands wrong")
+      | _, _ => pure (unknown "multiply_count needs an amount and a count")
     | "multiply_rate" =>
       match strGet expr "amount" with
       | some amtRef =>

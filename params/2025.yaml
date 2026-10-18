@@ -45,6 +45,25 @@ params:
       cite:
         doc: f1040
         locator: Form 1040, Filing Status (checkboxes)
+    retirement_account:
+      values:
+        - traditional_ira
+        - roth_ira
+        - plan
+      cite:
+        doc: f1099r
+        locator: "Instructions for Recipient: traditional IRA or traditional SIMPLE IRA (the IRA/SEP/SIMPLE box), Roth IRA or Roth SIMPLE IRA, and qualified plans, section 403(b) and governmental 457(b) plans (pensions and annuities); i1040gi pp. 26-28, lines 4a, 4b, 5a and 5b"
+    retirement_code:
+      values:
+        - normal_7
+        - death_4
+        - early_exception_2
+        - direct_rollover_G
+        - qualified_roth_Q
+        - other
+      cite:
+        doc: f1099r
+        locator: "Instructions for Recipient, Box 7: 7 normal distribution; 4 death; 2 early distribution, exception applies; G direct rollover to a qualified plan, 403(b), governmental 457(b) or IRA; Q qualified distribution from a Roth IRA; every other code or combination is 'other'"
     dependent_relationship:
       values:
         - child
@@ -681,6 +700,127 @@ params:
       cite:
         doc: rp-2024-40
         locator: 'section 3.06(1), Maximum Amount of Credit, three or more qualifying children'
+    # Simplified Method Worksheet (i1040gi p. 29) and Social Security Benefits Worksheet (p. 32).
+    smw.table1_360:
+      type: Rate
+      value:
+        num: 1
+        den: 360
+      cite:
+        doc: i1040gi
+        locator: 'p. 29, Simplified Method Worksheet, Table 1, age 55 or under, annuity starting date after November 18, 1996: 360 (line 4 divides line 2 by it)'
+    smw.table1_310:
+      type: Rate
+      value:
+        num: 1
+        den: 310
+      cite:
+        doc: i1040gi
+        locator: 'p. 29, Simplified Method Worksheet, Table 1, age 56-60, annuity starting date after November 18, 1996: 310 (line 4 divides line 2 by it)'
+    smw.table1_260:
+      type: Rate
+      value:
+        num: 1
+        den: 260
+      cite:
+        doc: i1040gi
+        locator: 'p. 29, Simplified Method Worksheet, Table 1, age 61-65, annuity starting date after November 18, 1996: 260 (line 4 divides line 2 by it)'
+    smw.table1_210:
+      type: Rate
+      value:
+        num: 1
+        den: 210
+      cite:
+        doc: i1040gi
+        locator: 'p. 29, Simplified Method Worksheet, Table 1, age 66-70, annuity starting date after November 18, 1996: 210 (line 4 divides line 2 by it)'
+    smw.table1_160:
+      type: Rate
+      value:
+        num: 1
+        den: 160
+      cite:
+        doc: i1040gi
+        locator: 'p. 29, Simplified Method Worksheet, Table 1, age 71 or older, annuity starting date after November 18, 1996: 160 (line 4 divides line 2 by it)'
+    smw.table2_410:
+      type: Rate
+      value:
+        num: 1
+        den: 410
+      cite:
+        doc: i1040gi
+        locator: 'p. 29, Simplified Method Worksheet, Table 2, combined ages 110 or under: 410 (line 4 divides line 2 by it)'
+    smw.table2_360:
+      type: Rate
+      value:
+        num: 1
+        den: 360
+      cite:
+        doc: i1040gi
+        locator: 'p. 29, Simplified Method Worksheet, Table 2, combined ages 111-120: 360 (line 4 divides line 2 by it)'
+    smw.table2_310:
+      type: Rate
+      value:
+        num: 1
+        den: 310
+      cite:
+        doc: i1040gi
+        locator: 'p. 29, Simplified Method Worksheet, Table 2, combined ages 121-130: 310 (line 4 divides line 2 by it)'
+    smw.table2_260:
+      type: Rate
+      value:
+        num: 1
+        den: 260
+      cite:
+        doc: i1040gi
+        locator: 'p. 29, Simplified Method Worksheet, Table 2, combined ages 131-140: 260 (line 4 divides line 2 by it)'
+    smw.table2_210:
+      type: Rate
+      value:
+        num: 1
+        den: 210
+      cite:
+        doc: i1040gi
+        locator: 'p. 29, Simplified Method Worksheet, Table 2, combined ages 141 or older: 210 (line 4 divides line 2 by it)'
+    ssb.base_single:
+      type: NonNegDollars
+      value: 2500000
+      cite:
+        doc: i1040gi
+        locator: 'p. 32, Social Security Benefits Worksheet, line 8, $25,000'
+    ssb.base_joint:
+      type: NonNegDollars
+      value: 3200000
+      cite:
+        doc: i1040gi
+        locator: 'p. 32, Social Security Benefits Worksheet, line 8, $32,000 if married filing jointly'
+    ssb.adjust_single:
+      type: NonNegDollars
+      value: 900000
+      cite:
+        doc: i1040gi
+        locator: 'p. 32, Social Security Benefits Worksheet, line 10, $9,000'
+    ssb.adjust_joint:
+      type: NonNegDollars
+      value: 1200000
+      cite:
+        doc: i1040gi
+        locator: 'p. 32, Social Security Benefits Worksheet, line 10, $12,000 if married filing jointly'
+    ssb.half:
+      type: Rate
+      value:
+        num: 1
+        den: 2
+      cite:
+        doc: i1040gi
+        locator: 'p. 32, Social Security Benefits Worksheet, lines 2 and 13, 50% (0.50) and one-half'
+    ssb.rate85:
+      type: Rate
+      value:
+        num: 85
+        den: 100
+      cite:
+        doc: i1040gi
+        locator: 'p. 32, Social Security Benefits Worksheet, lines 15, 16 and 17, 85% (0.85)'
     actc.rate:
       type: Rate
       value:

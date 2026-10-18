@@ -71,6 +71,17 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
   3a  Qualified dividends
       = $0
       cite: [i1040gi] Instructions for Form 1040, pp. 25–26, line 3a and exceptions (2025; printed date 2026-02-25; 482e9c48)
+  4b  IRA distributions, taxable amount
+      = $0
+      cite: [i1040gi] p. 27, line 4b, 'figure the taxable amount of each distribution and enter the total of the taxable amounts on line 4b' (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $retirement:
+  5b  Pensions and annuities, taxable amount
+      = $0
+      cite: [i1040gi] pp. 28-30, Lines 5a and 5b; p. 29, Simplified Method Worksheet, 'Enter the total of the taxable parts on Form 1040 or 1040-SR, line 5b' (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $retirement:
+  6b  Social security benefits, taxable amount
+      = $0
+      cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 18 (2025; printed date 2026-02-25; 482e9c48)
   7a  Capital gain or (loss). Attach Schedule D if required
       = $900
       cite: [i1040gi] Instructions for Form 1040, line 7a (2025; printed date 2026-02-25; 482e9c48)
@@ -467,7 +478,7 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
   (helper) Do you qualify for any Schedule 1-A deduction (qualified tips, qualified overtime compensation, qualified passenger vehicle loan interest, or the enhanced deduction for a filer born before January 2, 1961), whether or not you planned to claim it?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
-  (helper) Any retirement, Social Security, nonresident alien (you or your spouse, for any part of 2025) or other income or return treatment outside wages, interest, dividends and supported securities sales, including wages or tips not on a Form W-2, Medicaid waiver payments (whether or not in Form W-2 box 1), dependent care or adoption benefits, other earned income (Form 1040 lines 1b-1h), or income or loss from a passive activity (including gain on selling an interest in one)?
+  (helper) Any nonresident alien status (you or your spouse, for any part of 2025) or other income or return treatment outside wages, interest, dividends, supported securities sales, Form 1099-R distributions and social security benefits, including wages or tips not on a Form W-2, Medicaid waiver payments (whether or not in Form W-2 box 1), dependent care or adoption benefits, other earned income (Form 1040 lines 1b-1h), or income or loss from a passive activity (including gain on selling an interest in one)?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
   (helper) Any additional Form 1040 line 16 tax or filing, including filing Form 8814 (even with no tax), Form 4972, Form 8615, a section 962 election, Form 8621, a Form 8978 amount, or recapture of an education credit?
@@ -570,6 +581,24 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       = $0
       cite: [i1040gi] QDCGT worksheet, line 3 (2025; printed date 2026-02-25; 482e9c48)
 
+== Social Security Benefits Worksheet—Lines 6a and 6b ==
+  (helper) Net benefits: total of box 5 of all your Forms SSA-1099 and RRB-1099
+      = $0
+      cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 1; p. 31, Lines 6a and 6b (2025; printed date 2026-02-25; 482e9c48)
+  1   Enter the total amount from box 5 of all your Forms SSA-1099 and RRB-1099
+      = $0
+      cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 1 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Any social security benefits (otherwise the worksheet is not needed)
+      = false
+      cite: [i1040gi] p. 31, Lines 6a and 6b ('Use the Social Security Benefits Worksheet ... to see if any of your benefits are taxable') (2025; printed date 2026-02-25; 482e9c48)
+  (helper) No amount
+      = $0
+      cite: [i1040gi] p. 32, line 8 (married filing separately and living with the spouse skips lines 8 to 15) (2025; printed date 2026-02-25; 482e9c48)
+  18  Taxable social security benefits. Enter the smaller of line 16 or line 17
+      = $0
+      cite: [i1040gi] p. 32, line 18 (with no benefits, none are taxable) (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["ssb.has_benefits",{"const":false}],"op":"test"}
+
 Path choices (guard wording per the rendered worksheets in rendered/2025/):
   sales[a].e: chose $900 (guard 0)
   sales[a].b: chose $800 (guard 0)
@@ -578,6 +607,10 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   sd.to1040: chose $900 (guard 1)
       not taken: guard 0 = false
   f1040.sd.to1040: chose $900 (guard 1)
+      not taken: guard 0 = false
+  ssb.line18: chose $0 (guard 1)
+      not taken: guard 0 = false
+  f1040.ssb.line18: chose $0 (guard 1)
       not taken: guard 0 = false
   sa.saltlimit: chose $40,000 (guard 1)
       not taken: guard 0 = false
@@ -712,8 +745,14 @@ Collection entries and derivations:
   sb.line6: copy(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; sb.ordinary_dividends = $0)
   f1040.sb.line6: copy(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; sb.ordinary_dividends = $0)
   f1040.line3b: copy(sb.line6 = $0)
+  ssb.line1: copy(ssb.benefits = $0)
+  ssb.has_benefits: test(ssb.line1 = $0; #sales.zero = $0)
+  ssb.zero: param(#sales.zero = $0)
+  ssb.line18: choose(ssb.has_benefits = false; true = true; ssb.has_benefits = false; false = false; ssb.zero = $0)
+  f1040.ssb.line18: choose(ssb.has_benefits = false; true = true; ssb.has_benefits = false; false = false; ssb.zero = $0)
+  f1040.line6b: copy(ssb.line18 = $0)
   f1040.line8: param(scope.schedule1 = false; scope.other_income = false; #sales.zero = $0)
-  f1040.line9: sum(f1040.line1z = $0; f1040.line2b = $0; f1040.line3b = $0; f1040.line7a = $900; f1040.line8 = $0)
+  f1040.line9: sum(f1040.line1z = $0; f1040.line2b = $0; f1040.line3b = $0; f1040.line4b = $0; f1040.line5b = $0; f1040.line6b = $0; f1040.line7a = $900; f1040.line8 = $0)
   f1040.line10: param(scope.schedule1 = false; #sales.zero = $0)
   f1040.line11a: subtract(f1040.line9 = $900; f1040.line10 = $0)
   f1040.line11b: copy(f1040.line11a = $900)

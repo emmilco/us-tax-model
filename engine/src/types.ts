@@ -38,6 +38,7 @@ export type Expr =
   | { op: "choose"; alternatives: { guard: TestExpr; then: LineRef }[] }
   | TestExpr
   | { op: "round"; of: string; unit: number; rule: string }
+  | { op: "multiply_count"; amount: string; count: string }
   | { op: "bracket_schedule"; table: string; key: string; status: string }
   | { op: "sum_over"; collection: string; field: string; where?: TestExpr }
   | { op: "opaque"; name: string };

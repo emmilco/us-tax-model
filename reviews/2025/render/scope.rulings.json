@@ -1,0 +1,18 @@
+{
+ "kind": "render",
+ "form": "scope",
+ "rulings": [
+  {
+   "printed": "credits",
+   "restated": "Input — Do you want to claim any credit other than the foreign tax credit claimed without Form 1116, the excess social security credit, the child tax credit, the credit for other dependents, the additional child tax credit and the earned income credit, or do you have any other amount for Schedule 3 Part I (for example a Form 8978 adjustment)?",
+   "model": "The screen catches any \"credit\" and other amounts for Schedule 3 Part I. The instructions also list Part II amounts that are not credits, such as line 10 \"Amount Paid With Request for Extension To File\" and line 13d, the deferred \"net 965 tax liability\". These feed Schedule 3 line 15 and Form 1040 line 31, and neither this screen nor its refusal mentions them. The text given does not show whether the program handles them somewhere else.",
+   "ruling": "Ruling: covered elsewhere; project retained. The screen is for credits; the Schedule 3 Part II amounts that are not credits are inputs of their own: line 10 (amount paid with a request for an extension, s3.line10) and line 14 (the total of lines 13a to 13z, s3.line14), so a filer answering no still enters them."
+  },
+  {
+   "printed": "other_income",
+   "restated": "Input — Any nonresident alien status (you or your spouse, for any part of 2025) or other income or return treatment outside wages, interest, dividends, supported securities sales, Form 1099-R distributions and social security benefits, including wages or tips not on a Form W-2, Medicaid waiver payments (whether or not in Form W-2 box 1), dependent care or adoption benefits, other earned income (Form 1040 lines 1b-1h), or income or loss from a passive activity (including gain on selling an interest in one)?",
+   "model": "The screen names \"Form 1040 lines 1b-1h\" but not line 1i, \"Nontaxable combat pay election\", or line 6c, \"If you elect to use the lump-sum election method\". A filer could answer no even with one of these elections. Whether the catch-all \"return treatment\" is meant to cover them, and whether they would change a value the program computes (for example the EIC), cannot be judged from the text given.",
+   "ruling": "Ruling: covered elsewhere; project retained. Line 1i (the nontaxable combat pay election) is screened by the combat pay questions where it matters (s8812.combat_pay and the EIC's combat pay refusal), and line 6c (the lump-sum election) is asked directly (ssb.lump_sum, which refuses the worksheet and checks line 6c)."
+  }
+ ]
+}

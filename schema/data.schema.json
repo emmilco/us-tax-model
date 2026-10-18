@@ -655,6 +655,26 @@
               "minLength": 1
             }
           }
+        },
+        {
+          "type": "object",
+          "required": [
+            "op",
+            "amount",
+            "count"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "op": {
+              "const": "multiply_count"
+            },
+            "amount": {
+              "type": "string"
+            },
+            "count": {
+              "type": "string"
+            }
+          }
         }
       ]
     },

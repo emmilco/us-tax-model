@@ -1,0 +1,36 @@
+{
+ "kind": "transcription",
+ "form": "ssb",
+ "rulings": [
+  {
+   "printed": "10",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"hoh\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"qss\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"single\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"ssb.adjust_single\"}}, {\"guard\": {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"ssb.adjust_joint\"}}, {\"guard\": {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"ssb.adjust_single\"}}], \"op\": \"choose\"}}], \"op\": \"choose\"}",
+   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"input\": \"ssb.lived_apart\"}, {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"then\": {\"param\": \"ssb.adjust_single\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"input\": \"ssb.lived_apart\"}], \"test\": \"not\"}], \"test\": \"all\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"ssb.adjust_joint\"}}], \"op\": \"choose\"}",
+   "ruling": "Ruling: equivalent; project retained. As line 8, with $9,000 and $12,000."
+  },
+  {
+   "printed": "16",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": false}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"amount\": {\"line\": \"7\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"ssb.rate85\"}}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": false}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"of\": [{\"line\": \"14\"}, {\"line\": \"15\"}], \"op\": \"sum\"}}], \"op\": \"choose\"}",
+   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"input\": \"ssb.lived_apart\"}], \"test\": \"not\"}], \"test\": \"all\"}, \"then\": {\"amount\": {\"line\": \"7\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"ssb.rate85\"}}}, {\"guard\": {\"args\": [{\"input\": \"ssb.lived_apart\"}, {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"of\": [{\"line\": \"14\"}, {\"line\": \"15\"}], \"op\": \"sum\"}}], \"op\": \"choose\"}",
+   "ruling": "Ruling: equivalent; project retained. For a Bool, 'not lived apart' and 'lived apart is false' are the same test; both take 85% of line 7 for a married filer filing separately who lived with the spouse and lines 14 plus 15 otherwise."
+  },
+  {
+   "printed": "18",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"line\": \"1\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}, \"then\": {\"of\": [{\"line\": \"16\"}, {\"line\": \"17\"}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}",
+   "second": "{\"of\": [{\"line\": \"16\"}, {\"line\": \"17\"}], \"op\": \"smaller_of\"}",
+   "ruling": "Ruling: equivalent in value; project retained. With no benefits line 17 is $0, and the smaller of line 16 (never negative) and $0 is $0, so the project's zero branch gives the same value; it exists so a filer without benefits is never asked the worksheet's screens."
+  },
+  {
+   "printed": "8",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"hoh\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"qss\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"single\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"ssb.base_single\"}}, {\"guard\": {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"ssb.base_joint\"}}, {\"guard\": {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"ssb.base_single\"}}], \"op\": \"choose\"}}], \"op\": \"choose\"}",
+   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"input\": \"ssb.lived_apart\"}, {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"then\": {\"param\": \"ssb.base_single\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"input\": \"ssb.lived_apart\"}], \"test\": \"not\"}], \"test\": \"all\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"ssb.base_joint\"}}], \"op\": \"choose\"}",
+   "ruling": "Ruling: equivalent; project retained. Both give $25,000 to single, head of household, qualifying surviving spouse and to married filing separately having lived apart all year, $32,000 to married filing jointly, and $0 to married filing separately having lived with the spouse; the second writes the $25,000 case as '(lived apart or not mfs) and not mfj'. The project asks the lived-apart question only of a married filer filing separately."
+  },
+  {
+   "printed": "ssb.has_benefits",
+   "project": "{\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}",
+   "second": "{\"args\": [{\"const\": 0}, {\"input\": \"ssb.benefits\"}], \"test\": \"lt\"}",
+   "ruling": "Ruling: equivalent; project retained. Worksheet line 1 is a copy of the benefits input, so 'line 1 more than zero' and 'benefits more than zero' are the same test."
+  }
+ ]
+}

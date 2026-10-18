@@ -91,6 +91,7 @@ Unasserted lines: div.box1a, div.box1b, div.box2a, div.box5, div.section1202, di
 | --- | --- | --- | --- | --- |
 | eic.qc_of_another | — | — | — | — |
 | eic.born_before_2001 | — | — | — | — |
+| eic.born_after_1960 | — | — | — | — |
 | eic.us_home | — | — | — | — |
 | eic.married | — | — | — | — |
 | eic.zero | — | — | — | — |
@@ -123,7 +124,7 @@ Unasserted lines: div.box1a, div.box1b, div.box2a, div.box5, div.section1202, di
 | eic.legally_separated | — | — | — | — |
 | eic.step3_married | — | — | — | 3 |
 | eic.step3 | — | — | — | — |
-| eic.step4 | — | — | — | 1 (stage9.eic.no_child.over65) |
+| eic.step4 | — | — | — | 2 (stage9.eic.no_child.over65, stage9.eic.no_child.born_jan1_1961) |
 | eic.step34 | — | — | — | — |
 | eic.step5_line1 | — | — | — | — |
 | eic.step5_line2 | — | — | — | — |
@@ -132,16 +133,16 @@ Unasserted lines: div.box1a, div.box1b, div.box2a, div.box5, div.section1202, di
 | eic.earned_income | — | — | — | — |
 | eic.step5_income | — | — | — | — |
 | eic.eligible | — | — | — | 20 |
-| eic.line1 | — | — | — | 11 |
+| eic.line1 | — | — | — | 8 |
 | eic.line1_in_table | — | — | — | — |
 | eic.line1_table0 | — | — | — | — |
 | eic.line1_table1 | — | — | — | — |
 | eic.line1_table2 | — | — | — | — |
 | eic.line1_table3 | — | — | — | — |
 | eic.line1_table | — | — | — | — |
-| eic.line2 | — | — | — | 21 |
-| eic.line3 | — | — | — | 2 (classm.eic.1, classm.eic.7) |
-| eic.line4 | — | — | — | 12 |
+| eic.line2 | — | — | — | 23 |
+| eic.line3 | — | — | — | 2 (classm.eic.1, classm.eic.9) |
+| eic.line4 | — | — | — | 13 |
 | eic.threshold_other | — | — | — | — |
 | eic.threshold_joint | — | — | — | — |
 | eic.line5_threshold | — | — | — | — |
@@ -154,10 +155,10 @@ Unasserted lines: div.box1a, div.box1b, div.box2a, div.box5, div.section1202, di
 | eic.line3_table1 | — | — | — | — |
 | eic.line3_table2 | — | — | — | — |
 | eic.line3_table3 | — | — | — | — |
-| eic.line5 | — | — | — | 6 |
+| eic.line5 | — | — | — | 9 |
 | eic.smaller | — | — | — | — |
 | eic.after_line4 | — | — | — | — |
-| eic.line6 | — | — | — | 14 |
+| eic.line6 | — | — | — | 15 |
 | eic.credit | — | — | — | — |
 | eic.reached_step3 | — | — | — | — |
 | eic.check_27c | — | — | — | — |
@@ -171,54 +172,68 @@ Unasserted lines: eic.zero, eic.qc_count, eic.married_rules, eic.top_limit, eic.
 | line | A | B | C | R |
 | --- | --- | --- | --- | --- |
 | f1040.status | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | — |
-| f1040.line1a | — | — | — | 6 |
-| f1040.line1z | — | — | — | 6 |
+| f1040.line1a | — | — | — | 7 |
+| f1040.line1z | — | — | — | 7 |
 | f1040.line2a | — | — | — | — |
-| f1040.line2b | — | — | — | 6 |
-| f1040.line3b | — | — | — | 6 |
+| f1040.line2b | — | — | — | 7 |
+| f1040.line3b | — | — | — | 7 |
 | f1040.line3a | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 3 |
-| f1040.line7a | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 65 |
-| f1040.line8 | — | — | — | 8 |
-| f1040.line9 | — | — | — | 8 |
-| f1040.line10 | — | — | — | 7 |
-| f1040.line11a | — | — | — | 8 |
-| f1040.line11b | — | — | — | 21 |
-| f1040.line12e | — | — | — | 30 |
-| f1040.line13a | — | — | — | 6 |
-| f1040.line13b | — | — | — | 7 |
-| f1040.line14 | — | — | — | 6 |
-| f1040.line15 | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 8 |
+| f1040.line4a | — | — | — | 8 |
+| f1040.line4b | — | — | — | 12 |
+| f1040.ira_rollovers | — | — | — | — |
+| f1040.line4c_rollover | — | — | — | 10 |
+| f1040.line5a | — | — | — | 15 |
+| f1040.line5b | — | — | — | 19 |
+| f1040.plan_rollovers | — | — | — | — |
+| f1040.line5c_rollover | — | — | — | 9 |
+| f1040.line6a | — | — | — | 5 |
+| f1040.line6b | — | — | — | 16 |
+| f1040.line6c | — | — | — | 5 |
+| f1040.line6d | — | — | — | 6 |
+| f1040.line7a | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 66 |
+| f1040.line8 | — | — | — | 9 |
+| f1040.line9 | — | — | — | 12 |
+| f1040.line10 | — | — | — | 8 |
+| f1040.line11a | — | — | — | 9 |
+| f1040.line11b | — | — | — | 22 |
+| f1040.line12e | — | — | — | 31 |
+| f1040.line13a | — | — | — | 7 |
+| f1040.line13b | — | — | — | 8 |
+| f1040.line14 | — | — | — | 7 |
+| f1040.line15 | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 9 |
 | f1040.gate.qdcg_applies | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 7 |
 | f1040.gate.sdtw | — | — | — | 5 |
 | f1040.non_sdtw_tax | — | — | — | 2 (stage4.sdtw.special_rates, stage4.sdtw.skip22) |
-| f1040.line16 | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 14 |
-| f1040.line17 | — | — | — | 8 |
-| f1040.line18 | — | — | — | 8 |
-| f1040.line19 | — | — | — | 31 |
-| f1040.line20 | — | — | — | 6 |
-| f1040.line21 | — | — | — | 7 |
-| f1040.line22 | — | — | — | 7 |
-| f1040.line23 | — | — | — | 6 |
-| f1040.line24 | — | — | — | 7 |
-| f1040.line25a | — | — | — | 6 |
+| f1040.line16 | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 15 |
+| f1040.line17 | — | — | — | 9 |
+| f1040.line18 | — | — | — | 9 |
+| f1040.line19 | — | — | — | 32 |
+| f1040.line20 | — | — | — | 7 |
+| f1040.line21 | — | — | — | 8 |
+| f1040.line22 | — | — | — | 8 |
+| f1040.line23 | — | — | — | 7 |
+| f1040.line24 | — | — | — | 8 |
+| f1040.line25a | — | — | — | 7 |
 | f1040.line25b | — | — | — | 3 |
 | f1040.line25c | — | — | — | 3 |
-| f1040.line25d | — | — | — | 6 |
+| f1040.line25d | — | — | — | 7 |
 | f1040.line26 | — | — | — | 3 |
-| f1040.line27a | — | — | — | 51 |
-| f1040.line27b | — | — | — | 5 |
-| f1040.line27c | — | — | — | 13 |
-| f1040.separated_spouses | — | — | — | 7 |
-| f1040.line28 | — | — | — | 32 |
-| f1040.line29 | — | — | — | 6 |
-| f1040.line30 | — | — | — | 6 |
-| f1040.line31 | — | — | — | 27 |
-| f1040.line32 | — | — | — | 7 |
-| f1040.line33 | — | — | — | 22 |
-| f1040.line34 | — | — | — | 45 |
+| f1040.line27a | — | — | — | 53 |
+| f1040.line27b | — | — | — | 6 |
+| f1040.line27c | — | — | — | 14 |
+| f1040.separated_spouses | — | — | — | 8 |
+| f1040.line28 | — | — | — | 33 |
+| f1040.line29 | — | — | — | 7 |
+| f1040.line30 | — | — | — | 7 |
+| f1040.line31 | — | — | — | 28 |
+| f1040.line32 | — | — | — | 8 |
+| f1040.line33 | — | — | — | 23 |
+| f1040.line34 | — | — | — | 46 |
 | f1040.line35a | — | — | — | 3 |
 | f1040.line36 | — | — | — | 3 |
-| f1040.line37 | — | — | — | 46 |
+| f1040.line37 | — | — | — | 47 |
+
+Unasserted lines: f1040.ira_rollovers, f1040.plan_rollovers
 
 ## Form 4952 — supported investment-interest deduction and election
 
@@ -495,6 +510,69 @@ Unasserted lines: qbi.zero, qbi.eligible, qbi.deductions_before, qbi.net_capital
 | qdcg.line23 | — | 1 (qdcg.handworked.single) | 11 | 4 |
 | qdcg.line24 | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 1 (qdcg.table.minimum.regression) |
 | qdcg.line25 | — | 1 (qdcg.handworked.single) | 11 | 4 |
+
+## Form 1099-R distributions (IRAs, pensions and annuities)
+
+| line | A | B | C | R |
+| --- | --- | --- | --- | --- |
+| retirement.account | — | — | — | — |
+| retirement.code | — | — | — | — |
+| retirement.box1 | — | — | — | — |
+| retirement.box5 | — | — | — | — |
+| retirement.rollover | — | — | — | — |
+| retirement.special | — | — | — | — |
+| retirement.annuity | — | — | — | — |
+| retirement.cost | — | — | — | — |
+| retirement.used_last_year | — | — | — | — |
+| retirement.last_line4 | — | — | — | — |
+| retirement.joint_life | — | — | — | — |
+| retirement.age | — | — | — | — |
+| retirement.combined_age | — | — | — | — |
+| retirement.months | — | — | — | — |
+| retirement.recovered | — | — | — | — |
+| retirement.zero | — | — | — | — |
+| retirement.one | — | — | — | — |
+| retirement.is_ira | — | — | — | 11 |
+| retirement.roth | — | — | — | 11 |
+| retirement.direct | — | — | — | 11 |
+| retirement.bad_code | — | — | — | 11 |
+| retirement.rolled | — | — | — | 11 |
+| retirement.has_rollover | — | — | — | 11 |
+| retirement.smw1 | — | — | — | 10 |
+| retirement.smw2 | — | — | — | 11 |
+| retirement.smw4_t1_360 | — | — | — | 1 (classm.retirement.11) |
+| retirement.smw4_t1_310 | — | — | — | 1 (classm.retirement.9) |
+| retirement.smw4_t1_260 | — | — | — | 1 (classm.retirement.6) |
+| retirement.smw4_t1_210 | — | — | — | 1 (classm.retirement.3) |
+| retirement.smw4_t1_160 | — | — | — | 1 (classm.retirement.6) |
+| retirement.smw4_t2_410 | — | — | — | 1 (classm.retirement.7) |
+| retirement.smw4_t2_360 | — | — | — | — |
+| retirement.smw4_t2_310 | — | — | — | 1 (classm.retirement.1) |
+| retirement.smw4_t2_260 | — | — | — | 1 (classm.retirement.8) |
+| retirement.smw4_t2_210 | — | — | — | 1 (classm.retirement.5) |
+| retirement.smw4_table1 | — | — | — | 4 |
+| retirement.smw4_table2 | — | — | — | 4 |
+| retirement.smw4_new | — | — | — | 8 |
+| retirement.smw4 | — | — | — | 14 |
+| retirement.smw5 | — | — | — | 13 |
+| retirement.smw6 | — | — | — | 11 |
+| retirement.smw7 | — | — | — | 11 |
+| retirement.smw8 | — | — | — | 11 |
+| retirement.smw9 | — | — | — | 10 |
+| retirement.cost_left | — | — | — | 11 |
+| retirement.annuity_with_cost | — | — | — | 11 |
+| retirement.annuity_rollover | — | — | — | 11 |
+| retirement.annuity_taxable | — | — | — | 11 |
+| retirement.ira_taxable | — | — | — | 3 |
+| retirement.ira_not_rolled | — | — | — | 2 (classm.retirement.1, classm.retirement.4) |
+| retirement.plan_excluded | — | — | — | 4 |
+| retirement.plan_simple | — | — | — | 4 |
+| retirement.plan_taxable | — | — | — | 11 |
+| retirement.taxable | — | — | — | 11 |
+| retirement.show_a | — | — | — | 11 |
+| retirement.amount_a | — | — | — | 11 |
+
+Unasserted lines: retirement.zero, retirement.one, retirement.smw4_t2_360
 
 ## Schedule 2 — supported Additional Medicare Tax and NIIT
 
@@ -865,6 +943,48 @@ Unasserted lines: sd.line18, sd.line19, sd.filing4952, sd.investment_election, s
 
 Unasserted lines: sdtw.zero, sdtw.ordinary_ceiling, sdtw.use1250, sdtw.use28, sdtw.raw23, sdtw.raw24, sdtw.raw25, sdtw.raw26, sdtw.raw27, sdtw.raw28, sdtw.raw29, sdtw.raw30, sdtw.raw31, sdtw.raw32, sdtw.raw33, sdtw.raw34, sdtw.raw35, sdtw.raw36, sdtw.raw37, sdtw.raw38, sdtw.raw39, sdtw.raw40, sdtw.raw41, sdtw.raw42, sdtw.raw43
 
+## Social Security Benefits Worksheet—Lines 6a and 6b
+
+| line | A | B | C | R |
+| --- | --- | --- | --- | --- |
+| ssb.benefits | — | — | — | — |
+| ssb.pub915 | — | — | — | — |
+| ssb.lump_sum | — | — | — | — |
+| ssb.terror_disability | — | — | — | — |
+| ssb.lived_apart | — | — | — | — |
+| ssb.line1 | — | — | — | 5 |
+| ssb.has_benefits | — | — | — | — |
+| ssb.line2 | — | — | — | 5 |
+| ssb.line3 | — | — | — | 5 |
+| ssb.line4 | — | — | — | 5 |
+| ssb.line5 | — | — | — | 5 |
+| ssb.line6 | — | — | — | 5 |
+| ssb.line7 | — | — | — | 6 |
+| ssb.base_single | — | — | — | — |
+| ssb.base_joint | — | — | — | — |
+| ssb.zero | — | — | — | — |
+| ssb.mfs_base | — | — | — | — |
+| ssb.line8 | — | — | — | 5 |
+| ssb.line9 | — | — | — | 6 |
+| ssb.adjust_single | — | — | — | — |
+| ssb.adjust_joint | — | — | — | — |
+| ssb.mfs_adjust | — | — | — | — |
+| ssb.line10 | — | — | — | 4 |
+| ssb.line11 | — | — | — | 5 |
+| ssb.line12 | — | — | — | 5 |
+| ssb.line13 | — | — | — | 6 |
+| ssb.line14 | — | — | — | 6 |
+| ssb.line15 | — | — | — | 6 |
+| ssb.mfs_together | — | — | — | — |
+| ssb.line16_sum | — | — | — | — |
+| ssb.line16_together | — | — | — | — |
+| ssb.line16 | — | — | — | 7 |
+| ssb.line17 | — | — | — | 5 |
+| ssb.line18_figured | — | — | — | — |
+| ssb.line18 | — | — | — | 5 |
+
+Unasserted lines: ssb.has_benefits, ssb.base_single, ssb.base_joint, ssb.zero, ssb.mfs_base, ssb.adjust_single, ssb.adjust_joint, ssb.mfs_adjust, ssb.mfs_together, ssb.line16_sum, ssb.line16_together, ssb.line18_figured
+
 ## Unrecaptured Section 1250 Gain Worksheet — distribution-only path
 
 | line | A | B | C | R |
@@ -975,5 +1095,5 @@ Unasserted lines: below_boundary, table_tax, worksheet_tax, tax
 
 Unasserted lines: single.row1.product, single.row1.tax, single.row2.product, single.row2.tax, single.row3.product, single.row3.tax, single.row4.product, single.row4.tax, single.row5.product, single.row5.tax, single.result, mfj.row1.product, mfj.row1.tax, mfj.row2.product, mfj.row2.tax, mfj.row3.product, mfj.row3.tax, mfj.row4.product, mfj.row4.tax, mfj.row5.product, mfj.row5.tax, mfj.result, mfs.row1.product, mfs.row1.tax, mfs.row2.product, mfs.row2.tax, mfs.row3.product, mfs.row3.tax, mfs.row4.product, mfs.row4.tax, mfs.row5.product, mfs.row5.tax, mfs.result, hoh.row1.product, hoh.row1.tax, hoh.row2.product, hoh.row2.tax, hoh.row3.product, hoh.row3.tax, hoh.row4.product, hoh.row4.tax, hoh.row5.product, hoh.row5.tax, hoh.result, tax
 
-Unasserted computed lines across all documents: 200. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
+Unasserted computed lines across all documents: 217. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
 Asserted keys not matching a line id: root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.below_boundary, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.tax, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.below_boundary, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.tax, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, root|inst:tax_on_amount#{"amount":"qdcg.line1","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, qdcg.f1040.line15, qdcg.f1040.line3a, qdcg.f1040.status, f1040.qdcg.line25, qdcg.sd.distributions

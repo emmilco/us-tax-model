@@ -42,6 +42,7 @@ PE_MAP = {
     "f1040.line19": ["min:ctc,ctc_limiting_tax_liability"],
     "f1040.line28": ["refundable_ctc"],
     "f1040.line27a": ["eitc"],
+    "f1040.line6b": ["tax_unit_taxable_social_security"],
     "sa.line17": ["itemized_taxable_income_deductions"],
     "sa.standard": ["standard_deduction"],
     "sa.deduction": ["taxable_income_deductions", "-qualified_business_income_deduction"],
@@ -79,6 +80,7 @@ TC_MAP = {
     "f1040.line19": ["c07220", "odc"],
     "f1040.line28": ["c11070"],
     "f1040.line27a": ["eitc"],
+    "f1040.line6b": ["c02500"],
     "f1040.line20": ["c07300"],
     "sa.line17": ["c04470"],
     "sa.deduction": ["standard", "c04470"],
@@ -128,6 +130,7 @@ def run_policyengine(cases):
         people[pid] = {
             "age": y(40),
             "employment_income": y(dollars(f["wages"])),
+            "social_security_retirement": y(dollars(f.get("ss_benefits", 0))),
             "taxable_interest_income": y(dollars(f["interest"])),
             "qualified_dividend_income": y(dollars(f["qualified_dividends"])),
             "non_qualified_dividend_income": y(dollars(f["ordinary_dividends"] - f["qualified_dividends"])),
@@ -185,7 +188,7 @@ def run_taxcalc(cases):
             RECID=i + 1, MARS=4 if f.get("hoh") else 1, age_head=40, FLPDYR=YEAR,
             XTOT=1 + len(ages), n24=sum(1 for a in ages if a < 17), nu18=sum(1 for a in ages if a < 18),
             n1820=sum(1 for a in ages if 18 <= a <= 20), n21=sum(1 for a in ages if a >= 21), EIC=f.get("eic_children", 0),
-            e00200=dollars(f["wages"]), e00200p=dollars(f["wages"]),
+            e00200=dollars(f["wages"]), e00200p=dollars(f["wages"]), e02400=dollars(f.get("ss_benefits", 0)),
             e00300=dollars(f["interest"]), e00600=dollars(f["ordinary_dividends"]), e00650=dollars(f["qualified_dividends"]),
             # Distributions enter Schedule D line 13 and net against sales; Tax-Calculator's
             # e01100 is the no-Schedule-D path, so they go into net long-term gain instead.

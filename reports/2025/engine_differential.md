@@ -8,18 +8,19 @@ Cases: 1000 generated single-filer returns (tools/engines/generate_cases.py). En
 
 | line | exact | table-adjusted | float | excluded | explained | UNEXPLAINED | not computed |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| f1040.line11b | 806 | 0 | 194 | 0 | 0 | 0 | 0 |
+| f1040.line11b | 743 | 0 | 257 | 0 | 0 | 0 | 0 |
 | f1040.line13a | 1000 | 0 | 0 | 0 | 0 | 0 | 0 |
-| f1040.line15 | 724 | 0 | 215 | 61 | 0 | 0 | 0 |
-| f1040.line16 | 277 | 571 | 79 | 73 | 0 | 0 | 0 |
-| f1040.line19 | 475 | 54 | 0 | 471 | 0 | 0 | 0 |
-| f1040.line27a | 672 | 131 | 0 | 197 | 0 | 0 | 0 |
-| f1040.line28 | 496 | 33 | 0 | 471 | 0 | 0 | 0 |
-| f1040.tax_before_credits | 256 | 559 | 84 | 101 | 0 | 0 | 0 |
+| f1040.line15 | 685 | 0 | 255 | 60 | 0 | 0 | 0 |
+| f1040.line16 | 323 | 507 | 92 | 77 | 1 | 0 | 0 |
+| f1040.line19 | 464 | 60 | 0 | 476 | 0 | 0 | 0 |
+| f1040.line27a | 637 | 143 | 0 | 220 | 0 | 0 | 0 |
+| f1040.line28 | 483 | 41 | 0 | 476 | 0 | 0 | 0 |
+| f1040.line6b | 974 | 0 | 26 | 0 | 0 | 0 | 0 |
+| f1040.tax_before_credits | 310 | 483 | 88 | 119 | 0 | 0 | 0 |
 | f8959.tax | 1000 | 0 | 0 | 0 | 0 | 0 | 0 |
-| f8960.tax | 910 | 0 | 1 | 89 | 0 | 0 | 0 |
-| sa.deduction | 928 | 0 | 4 | 68 | 0 | 0 | 0 |
-| sa.line17 | 926 | 0 | 6 | 68 | 0 | 0 | 0 |
+| f8960.tax | 898 | 0 | 0 | 102 | 0 | 0 | 0 |
+| sa.deduction | 929 | 0 | 2 | 69 | 0 | 0 | 0 |
+| sa.line17 | 928 | 0 | 3 | 69 | 0 | 0 | 0 |
 | sa.standard | 1000 | 0 | 0 | 0 | 0 | 0 | 0 |
 
 Exclusions:
@@ -35,20 +36,21 @@ Exclusions:
 
 | line | exact | table-adjusted | float | excluded | explained | UNEXPLAINED | not computed |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| f1040.line11b | 1000 | 0 | 0 | 0 | 0 | 0 | 0 |
-| f1040.line13a | 837 | 0 | 0 | 163 | 0 | 0 | 0 |
-| f1040.line15 | 675 | 0 | 0 | 325 | 0 | 0 | 0 |
-| f1040.line16 | 243 | 406 | 34 | 317 | 0 | 0 | 0 |
-| f1040.line19 | 425 | 79 | 0 | 496 | 0 | 0 | 0 |
-| f1040.line20 | 680 | 3 | 0 | 317 | 0 | 0 | 0 |
-| f1040.line24 | 262 | 319 | 19 | 400 | 0 | 0 | 0 |
-| f1040.line27a | 820 | 180 | 0 | 0 | 0 | 0 | 0 |
-| f1040.line28 | 462 | 41 | 1 | 496 | 0 | 0 | 0 |
-| f1040.tax_before_credits | 222 | 401 | 46 | 331 | 0 | 0 | 0 |
+| f1040.line11b | 983 | 0 | 17 | 0 | 0 | 0 | 0 |
+| f1040.line13a | 823 | 0 | 0 | 177 | 0 | 0 | 0 |
+| f1040.line15 | 646 | 0 | 11 | 343 | 0 | 0 | 0 |
+| f1040.line16 | 269 | 366 | 38 | 327 | 0 | 0 | 0 |
+| f1040.line19 | 395 | 71 | 0 | 534 | 0 | 0 | 0 |
+| f1040.line20 | 670 | 3 | 0 | 327 | 0 | 0 | 0 |
+| f1040.line24 | 273 | 273 | 20 | 434 | 0 | 0 | 0 |
+| f1040.line27a | 810 | 190 | 0 | 0 | 0 | 0 | 0 |
+| f1040.line28 | 418 | 48 | 0 | 534 | 0 | 0 | 0 |
+| f1040.line6b | 985 | 0 | 15 | 0 | 0 | 0 | 0 |
+| f1040.tax_before_credits | 246 | 347 | 50 | 357 | 0 | 0 | 0 |
 | f8959.tax | 1000 | 0 | 0 | 0 | 0 | 0 | 0 |
-| f8960.tax | 947 | 0 | 1 | 52 | 0 | 0 | 0 |
-| sa.deduction | 675 | 0 | 0 | 325 | 0 | 0 | 0 |
-| sa.line17 | 938 | 0 | 1 | 61 | 0 | 0 | 0 |
+| f8960.tax | 937 | 0 | 0 | 63 | 0 | 0 | 0 |
+| sa.deduction | 657 | 0 | 0 | 343 | 0 | 0 | 0 |
+| sa.line17 | 939 | 0 | 1 | 60 | 0 | 0 | 0 |
 
 Exclusions:
 
@@ -58,6 +60,10 @@ Exclusions:
 - Tax-Calculator has no inputs for unrecaptured section 1250 gain or 28% rate gain (Form 1099-DIV boxes 2b, 2d)
 - Tax-Calculator phases the child tax credit out by 5% of the exact excess of income over the threshold; Schedule 8812 line 10 rounds the excess up to the next multiple of $1,000 first
 - Tax-Calculator treats a unit owing no tax under either deduction as taking the standard deduction; the project itemizes whenever itemized deductions exceed the standard deduction. The itemized total itself is compared on every return through a forced-itemize pass
+
+## Explained differences
+
+- PolicyEngine-US gen-00816 f1040.line16: project 5322947 engine 5322945 — Carried float32 error: PolicyEngine-US computes in float32, where one unit in the last place at this AGI ($255,108.89) is about 1.6 cents; its AGI (line 11b) and taxable income (line 15) are each 1 cent lower than the project's, within their own float bounds, and that cent moves its rate-schedule tax by 2 cents. Investigated 2026-10-18 when social security benefits entered the generated cases.
 
 ## Unexplained differences
 

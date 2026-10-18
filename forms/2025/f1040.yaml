@@ -79,6 +79,199 @@ form:
       cite:
         doc: i1040gi
         locator: Instructions for Form 1040, pp. 25–26, line 3a and exceptions
+    - id: f1040.line4a
+      printed: 4a
+      label: IRA distributions
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: retirement
+        field: retirement.amount_a
+        where:
+          op: test
+          eq:
+          - retirement.is_ira
+          - const: true
+      cite:
+        doc: i1040gi
+        locator: pp. 26-27, Lines 4a and 4b (total distributions where an exception applies; 'More than one distribution')
+    - id: f1040.line4b
+      printed: 4b
+      label: IRA distributions, taxable amount
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: retirement
+        field: retirement.taxable
+        where:
+          op: test
+          eq:
+          - retirement.is_ira
+          - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 27, line 4b, 'figure the taxable amount of each distribution and enter the total of the taxable
+          amounts on line 4b'
+    - id: f1040.ira_rollovers
+      printed: (helper)
+      label: Number of IRA distributions with a rollover
+      type: Count
+      expr:
+        op: sum_over
+        collection: retirement
+        field: retirement.one
+        where:
+          op: test
+          all:
+          - op: test
+            eq:
+            - retirement.is_ira
+            - const: true
+          - op: test
+            eq:
+            - retirement.has_rollover
+            - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 27, Exception 1, 'Also check box 1 on line 4c'
+    - id: f1040.line4c_rollover
+      printed: 4c
+      label: Check if (box 1) Rollover
+      type: Bool
+      expr:
+        op: test
+        gt:
+        - f1040.ira_rollovers
+        - const: 0
+          type: Count
+      cite:
+        doc: i1040gi
+        locator: p. 27, Exception 1, 'Also check box 1 on line 4c'
+    - id: f1040.line5a
+      printed: 5a
+      label: Pensions and annuities
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: retirement
+        field: retirement.amount_a
+        where:
+          op: test
+          eq:
+          - retirement.is_ira
+          - const: false
+      cite:
+        doc: i1040gi
+        locator: pp. 28-30, Lines 5a and 5b
+    - id: f1040.line5b
+      printed: 5b
+      label: Pensions and annuities, taxable amount
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: retirement
+        field: retirement.taxable
+        where:
+          op: test
+          eq:
+          - retirement.is_ira
+          - const: false
+      cite:
+        doc: i1040gi
+        locator: pp. 28-30, Lines 5a and 5b; p. 29, Simplified Method Worksheet, 'Enter the total of the taxable parts
+          on Form 1040 or 1040-SR, line 5b'
+    - id: f1040.plan_rollovers
+      printed: (helper)
+      label: Number of pension distributions with a rollover
+      type: Count
+      expr:
+        op: sum_over
+        collection: retirement
+        field: retirement.one
+        where:
+          op: test
+          all:
+          - op: test
+            eq:
+            - retirement.is_ira
+            - const: false
+          - op: test
+            eq:
+            - retirement.has_rollover
+            - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 30, Rollovers, 'Also check box 1 on line 5c'
+    - id: f1040.line5c_rollover
+      printed: 5c
+      label: Check if (box 1) Rollover
+      type: Bool
+      expr:
+        op: test
+        gt:
+        - f1040.plan_rollovers
+        - const: 0
+          type: Count
+      cite:
+        doc: i1040gi
+        locator: pp. 30-31, Line 5c, 'If you have a rollover ... check box 1 on line 5c'
+    - id: f1040.line6a
+      printed: 6a
+      label: Social security benefits
+      type: NonNegDollars
+      expr:
+        op: copy
+        from: ssb.line1
+      cite:
+        doc: i1040gi
+        locator: p. 32, Social Security Benefits Worksheet, line 1, 'Also enter this amount on Form 1040 or 1040-SR,
+          line 6a'
+    - id: f1040.line6b
+      printed: 6b
+      label: Social security benefits, taxable amount
+      type: NonNegDollars
+      expr:
+        op: copy
+        from: ssb.line18
+      cite:
+        doc: i1040gi
+        locator: p. 32, Social Security Benefits Worksheet, line 18
+    - id: f1040.line6c
+      printed: 6c
+      label: If you elect to use the lump-sum election method, check here
+      type: Bool
+      expr:
+        op: test
+        all:
+        - op: test
+          eq:
+          - ssb.has_benefits
+          - const: true
+        - op: test
+          eq:
+          - ssb.lump_sum
+          - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 31, Line 6c (the election itself is refused on the Social Security Benefits Worksheet)
+    - id: f1040.line6d
+      printed: 6d
+      label: If you are married filing separately and lived apart from your spouse the entire year, check here
+      type: Bool
+      expr:
+        op: test
+        all:
+        - op: test
+          eq:
+          - f1040.status
+          - const: mfs
+        - op: test
+          eq:
+          - ssb.lived_apart
+          - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 31, Line 6d
     - id: f1040.line7a
       printed: 7a
       label: Capital gain or (loss). Attach Schedule D if required
@@ -122,6 +315,9 @@ form:
           - f1040.line1z
           - f1040.line2b
           - f1040.line3b
+          - f1040.line4b
+          - f1040.line5b
+          - f1040.line6b
           - f1040.line7a
           - f1040.line8
       cite:

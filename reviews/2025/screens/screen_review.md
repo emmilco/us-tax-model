@@ -7,6 +7,7 @@ One-time review by `tools/transcription/screen_review.py`, 2026-10-17: an isolat
 1. All 34 screens: 123 findings (27 NARROW verdicts). Adjudicated: 25 screens reworded (form source, label and every interview prompt); findings covered by a sibling screen gating the same lines, or by a derived refusal, were not changed.
 2. The 25 reworded screens again: four more rewordings (gift.special, sales.special, f8959.unsupported, scope.other_income), one of them repairing a narrowing introduced in round 1 (gift.special had lost the single-item case).
 3. The four, then gift.special once more; final clarifications to scope.schedule1, qbi.unsupported, sd.other_forms, dependent.married and dependent.multiple_support, and the value-based appraisal trigger for gift.special, were applied from the findings without a further run.
+4. Stage 10 (2026-10-18), the two new screens: `retirement.special` three times (an annuity starting before November 19, 1996 was added from the render comparison before the first run; the runs added the U.S. Civil Service alternative annuity, pensions partly excludable after a terrorist attack, and earlier-year excess contributions returned in 2025) and `ssb.terror_disability` (added from the first `retirement.special` run, which pointed to the p. 31 rule on disability payments for injuries from a terrorist attack) once; its wording was narrowed to the Form SSA-1099 and RRB-1099 benefits from the findings without a further run. Cost about $0.50.
 
 Raw responses are in `.transcription/screens/` (git-ignored); `screen_review.json` holds the last run of each screen. Total cost about $8 by the CLI estimate.
 
@@ -27,6 +28,8 @@ Raw responses are in `.transcription/screens/` (git-ignored); `screen_review.jso
 | `gift.special` | NARROW | 4 | reworded; the value-based appraisal trigger (i8283: 'a qualified appraisal is required for any gift of property valued in excess of $5,000') was added after this run. |
 | `person.rrta` | WIDE | 1 | reworded; remaining findings are WIDE (accepted) or minor UNCLEAR wording (accepted). |
 | `qbi.unsupported` | UNCLEAR | 3 | reworded; remaining findings are WIDE (accepted) or minor UNCLEAR wording (accepted). |
+| `retirement.special` | NARROW | 4 | reworded; a Roth IRA distribution without code Q (codes T, J and others) and a designated Roth account distribution (code B) are refused by `retirement.bad_code`, which gates the same lines; box 5 is subtracted for every plan distribution (`retirement.plan_excluded`), so the box 5 finding misreads the computation; earlier-year excess contributions were added after this run. |
+| `ssb.terror_disability` | UNCLEAR | 2 | both findings lean WIDE (benefits paid after full retirement age, non-SSA disability payments); narrowed to the Form SSA-1099 and RRB-1099 benefits after this run. |
 | `s2.amt` | NARROW | 5 | the other Schedule 2 amounts are screened by s2.other, which gates the same lines. |
 | `s2.other` | WIDE | 2 | reworded; Form 8919 tax falls under 'any amount on Schedule 2'. |
 | `s8812.combat_pay` | WIDE | 1 | reworded; remaining findings are WIDE (accepted) or minor UNCLEAR wording (accepted). |

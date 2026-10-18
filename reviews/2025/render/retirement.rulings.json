@@ -1,0 +1,24 @@
+{
+ "kind": "render",
+ "form": "retirement",
+ "rulings": [
+  {
+   "printed": "(SMW 2)",
+   "restated": "Enter the amount from helper \"Your cost in the plan at the annuity starting date (Simplified Method Worksheet, line 2)\".",
+   "model": "The input is only cost/net investment (box 9b). It leaves out the worksheet's instruction: \"If you are the beneficiary of a deceased employee or former employee who died before August 21, 1996, include any death benefit exclusion that you are entitled to (up to $5,000) in the amount entered on line 2.\" No refusal covers that case.",
+   "ruling": "Ruling: covered by a screen; project retained. A death benefit exclusion is on retirement.special ('a death benefit exclusion'), which refuses the distribution's lines 4a to 5b."
+  },
+  {
+   "printed": "(SMW 4)",
+   "restated": "Choose — [helper \"Did you complete this worksheet for this annuity last year?\" = true → helper \"Line 4 of last year's Simplified Method Worksheet\"] [helper \"Did you complete this worksheet for this annuity last year?\" = false → helper \"Line 2 divided by the number on line 3 (Table 2 for a joint and survivor annuity starting after 1997, Table 1 otherwise)\"]",
+   "model": "The last-year branch and the Table 2 amounts match. Table 1, however, only uses the column \"after November 18, 1996\" (360/310/260/210/160). It leaves out the column \"before November 19, 1996, enter on line 3... 300, 260, 240, 170, 120\", and no refusal excludes those annuity starting dates.",
+   "ruling": "Ruling: covered by a screen; project retained. The Simplified Method question (retirement.annuity) asks for an annuity starting date after November 18, 1996, and retirement.special refuses a pension or annuity with after-tax cost 'whose annuity starting date was before November 19, 1996', so only the after-November-18-1996 column is reached."
+  },
+  {
+   "printed": "(SMW 8)",
+   "restated": "Enter the smaller of column (SMW 5) or column (SMW 7).",
+   "model": "It always enters the smaller of line 5 or line 7. The IRS text says \"If your annuity starting date was before 1987, skip lines 6 and 7 and enter this amount [line 5] on line 8.\" The program has no condition and no refusal for pre-1987 starting dates.",
+   "ruling": "Ruling: covered by a screen; project retained. A starting date before 1987 is before November 19, 1996, so it is refused by retirement.special and never reaches the worksheet."
+  }
+ ]
+}

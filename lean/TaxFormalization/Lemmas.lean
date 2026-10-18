@@ -136,4 +136,28 @@ theorem roundHalfUpToUnit_idem {x unit : Int} (hu : 0 < unit) :
   rw [Int.ediv_eq_zero_of_lt (show 0 ≤ unit by omega) (show unit < 2 * unit by omega)]
   simp
 
+/-! ## `multiply_count` -/
+
+/-- An amount that is not negative, times a count, is not negative. -/
+theorem multiplyCount_nonneg {a n : Int} (ha : 0 ≤ a) (hn : 0 ≤ n) : 0 ≤ multiplyCount a n := by
+  unfold multiplyCount; exact Int.mul_nonneg ha hn
+
+/-- Monotone in the amount for a count that is not negative. -/
+theorem multiplyCount_mono_amount {a a' n : Int} (h : a ≤ a') (hn : 0 ≤ n) :
+    multiplyCount a n ≤ multiplyCount a' n := by
+  unfold multiplyCount; exact Int.mul_le_mul_of_nonneg_right h hn
+
+/-- Monotone in the count for an amount that is not negative. -/
+theorem multiplyCount_mono_count {a n n' : Int} (h : n ≤ n') (ha : 0 ≤ a) :
+    multiplyCount a n ≤ multiplyCount a n' := by
+  unfold multiplyCount; exact Int.mul_le_mul_of_nonneg_left h ha
+
+/-- One more unit of the count adds the amount once: the atom is repeated addition. -/
+theorem multiplyCount_succ (a n : Int) : multiplyCount a (n + 1) = multiplyCount a n + a := by
+  unfold multiplyCount; rw [Int.mul_add, Int.mul_one]
+
+/-- A count of zero gives zero. -/
+theorem multiplyCount_zero (a : Int) : multiplyCount a 0 = 0 := by
+  unfold multiplyCount; exact Int.mul_zero a
+
 end TaxFormalization

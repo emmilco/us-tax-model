@@ -34,6 +34,10 @@ def halfUpDiv (n d : Int) : Int := (2 * n + d) / (2 * d)
 /-- Amount times a rate, half-up at the cent. -/
 def multiplyRateHalfUp (a num den : Int) : Int := halfUpDiv (a * num) den
 
+/-- The `multiply_count` atom: an amount in cents times a whole number (for example a monthly
+    amount times the number of months). Exact; no rounding. -/
+def multiplyCount (a n : Int) : Int := a * n
+
 /-- Round to the nearest unit, half-up (the printed whole-dollar rule with
     unit = 100). -/
 def roundHalfUpToUnit (x unit : Int) : Int := ((2 * x + unit) / (2 * unit)) * unit

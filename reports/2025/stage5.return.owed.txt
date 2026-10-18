@@ -73,6 +73,9 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
   (helper) Were you born before January 2, 2001?
       = UNKNOWN (no input supplied for eic.born_before_2001)
       cite: [i1040gi] p. 41, Step 4, question 2, "Check 'Yes' if you ... were born after December 31, 1960, and before January 2, 2001" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Were you born after December 31, 1960?
+      = UNKNOWN (no input supplied for eic.born_after_1960)
+      cite: [i1040gi] p. 41, Step 4, question 2, "Check 'Yes' if you ... were born after December 31, 1960, and before January 2, 2001" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Was your main home in the United States for more than half of 2025?
       = UNKNOWN (no input supplied for eic.us_home)
       cite: [i1040gi] p. 42, Step 4, question 3; p. 44, Members of the military; p. 45, United States (2025; printed date 2026-02-25; 482e9c48)
@@ -177,7 +180,7 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       cite: [i1040gi] p. 41, Step 3, questions 2 to 6 (2025; printed date 2026-02-25; 482e9c48)
   (helper) Step 4: not a married filer filing separately or as head of household, aged 25 to 64, main home in the United States, and not a qualifying child or dependent of another person
       = UNKNOWN (no input supplied for eic.qc_of_another)
-      cite: [i1040gi] pp. 41–42, Step 4, questions 1 to 6 (question 2 "at least age 25 but under age 65", born after December 31, 1960 and before January 2, 2001; sa.age65 is born before January 2, 1961) (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] pp. 41–42, Step 4, questions 1 to 6 (question 2 "at least age 25 but under age 65", born after December 31, 1960 and before January 2, 2001) (2025; printed date 2026-02-25; 482e9c48)
   (helper) Step 3 for a filer with a qualifying child, Step 4 otherwise
       = UNKNOWN (no input supplied for eic.qc_of_another)
       cite: [i1040gi] p. 41, Step 3, question 1, "No. Skip questions 2 through 6; go to Step 4" (2025; printed date 2026-02-25; 482e9c48)
@@ -328,6 +331,48 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
   3a  Qualified dividends
       = $1,500
       cite: [i1040gi] Instructions for Form 1040, pp. 25–26, line 3a and exceptions (2025; printed date 2026-02-25; 482e9c48)
+  4a  IRA distributions
+      = $0
+      cite: [i1040gi] pp. 26-27, Lines 4a and 4b (total distributions where an exception applies; 'More than one distribution') (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $retirement:
+  4b  IRA distributions, taxable amount
+      = $0
+      cite: [i1040gi] p. 27, line 4b, 'figure the taxable amount of each distribution and enter the total of the taxable amounts on line 4b' (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $retirement:
+  (helper) Number of IRA distributions with a rollover
+      = 0
+      cite: [i1040gi] p. 27, Exception 1, 'Also check box 1 on line 4c' (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $retirement:
+  4c  Check if (box 1) Rollover
+      = false
+      cite: [i1040gi] p. 27, Exception 1, 'Also check box 1 on line 4c' (2025; printed date 2026-02-25; 482e9c48)
+  5a  Pensions and annuities
+      = $0
+      cite: [i1040gi] pp. 28-30, Lines 5a and 5b (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $retirement:
+  5b  Pensions and annuities, taxable amount
+      = $0
+      cite: [i1040gi] pp. 28-30, Lines 5a and 5b; p. 29, Simplified Method Worksheet, 'Enter the total of the taxable parts on Form 1040 or 1040-SR, line 5b' (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $retirement:
+  (helper) Number of pension distributions with a rollover
+      = 0
+      cite: [i1040gi] p. 30, Rollovers, 'Also check box 1 on line 5c' (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $retirement:
+  5c  Check if (box 1) Rollover
+      = false
+      cite: [i1040gi] pp. 30-31, Line 5c, 'If you have a rollover ... check box 1 on line 5c' (2025; printed date 2026-02-25; 482e9c48)
+  6a  Social security benefits
+      = $0
+      cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 1, 'Also enter this amount on Form 1040 or 1040-SR, line 6a' (2025; printed date 2026-02-25; 482e9c48)
+  6b  Social security benefits, taxable amount
+      = $0
+      cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 18 (2025; printed date 2026-02-25; 482e9c48)
+  6c  If you elect to use the lump-sum election method, check here
+      = false
+      cite: [i1040gi] p. 31, Line 6c (the election itself is refused on the Social Security Benefits Worksheet) (2025; printed date 2026-02-25; 482e9c48)
+  6d  If you are married filing separately and lived apart from your spouse the entire year, check here
+      = false
+      cite: [i1040gi] p. 31, Line 6d (2025; printed date 2026-02-25; 482e9c48)
   7a  Capital gain or (loss). Attach Schedule D if required
       = $0
       cite: [i1040gi] Instructions for Form 1040, line 7a (2025; printed date 2026-02-25; 482e9c48)
@@ -1508,7 +1553,7 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
   (helper) Do you want to claim any credit other than the foreign tax credit claimed without Form 1116, the excess social security credit, the child tax credit, the credit for other dependents, the additional child tax credit and the earned income credit, or do you have any other amount for Schedule 3 Part I (for example a Form 8978 adjustment)?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
-  (helper) Any retirement, Social Security, nonresident alien (you or your spouse, for any part of 2025) or other income or return treatment outside wages, interest, dividends and supported securities sales, including wages or tips not on a Form W-2, Medicaid waiver payments (whether or not in Form W-2 box 1), dependent care or adoption benefits, other earned income (Form 1040 lines 1b-1h), or income or loss from a passive activity (including gain on selling an interest in one)?
+  (helper) Any nonresident alien status (you or your spouse, for any part of 2025) or other income or return treatment outside wages, interest, dividends, supported securities sales, Form 1099-R distributions and social security benefits, including wages or tips not on a Form W-2, Medicaid waiver payments (whether or not in Form W-2 box 1), dependent care or adoption benefits, other earned income (Form 1040 lines 1b-1h), or income or loss from a passive activity (including gain on selling an interest in one)?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
   (helper) Any additional Form 1040 line 16 tax or filing, including filing Form 8814 (even with no tax), Form 4972, Form 8615, a section 962 election, Form 8621, a Form 8978 amount, or recapture of an education credit?
@@ -1999,6 +2044,120 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       = $18,500
       cite: [i1040sd] pp. 15–16, Schedule D Tax Worksheet (2025; printed date 2025-12-11; 650643a6)
 
+== Social Security Benefits Worksheet—Lines 6a and 6b ==
+  (helper) Net benefits: total of box 5 of all your Forms SSA-1099 and RRB-1099
+      = $0
+      cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 1; p. 31, Lines 6a and 6b (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Does any of these apply: you made contributions to a traditional IRA for 2025 and you or your spouse were covered by a retirement plan at work or through self-employment; your social security repayments in 2025 (box 4) were more than your benefits (box 3); you file Form 2555, 4563 or 8815; or you exclude employer-provided adoption benefits or income from sources within Puerto Rico?
+      = UNKNOWN (no input supplied for ssb.pub915)
+      cite: [i1040gi] p. 31, Lines 6a and 6b, Exception (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Do you elect to use the lump-sum election method for a social security benefit payment that was for an earlier year?
+      = UNKNOWN (no input supplied for ssb.lump_sum)
+      cite: [i1040gi] p. 31, Line 6c; p. 32, worksheet TIP (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Are any of the social security or railroad retirement benefits on your Forms SSA-1099 or RRB-1099 disability payments for injuries incurred as a direct result of a terrorist attack directed against the United States or its allies (including injuries covered by the September 11 Victim Compensation Fund)?
+      = UNKNOWN (no input supplied for ssb.terror_disability)
+      cite: [i1040gi] p. 31, Lines 6a and 6b, Disability payments (2025; printed date 2026-02-25; 482e9c48)
+  (helper) If you are married filing separately: did you live apart from your spouse for all of 2025?
+      = UNKNOWN (no input supplied for ssb.lived_apart)
+      cite: [i1040gi] p. 31, Line 6d; p. 32, worksheet, Before you begin and line 8 (2025; printed date 2026-02-25; 482e9c48)
+  1   Enter the total amount from box 5 of all your Forms SSA-1099 and RRB-1099
+      = $0
+      cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 1 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Any social security benefits (otherwise the worksheet is not needed)
+      = false
+      cite: [i1040gi] p. 31, Lines 6a and 6b ('Use the Social Security Benefits Worksheet ... to see if any of your benefits are taxable') (2025; printed date 2026-02-25; 482e9c48)
+  2   Multiply line 1 by 50% (0.50)
+      = UNKNOWN (no input supplied for ssb.pub915)
+      cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 2 (2025; printed date 2026-02-25; 482e9c48)
+  3   Combine the amounts from Form 1040 or 1040-SR, lines 1z, 2b, 3b, 4b, 5b, 7a, and 8
+      = $123,200
+      cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 3 (2025; printed date 2026-02-25; 482e9c48)
+  4   Enter the amount, if any, from Form 1040 or 1040-SR, line 2a
+      = UNKNOWN (no input supplied for f1040.line2a)
+      cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 4 (2025; printed date 2026-02-25; 482e9c48)
+  5   Combine lines 2, 3, and 4
+      = UNKNOWN (no input supplied for f1040.line2a)
+      cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 5 (2025; printed date 2026-02-25; 482e9c48)
+  6   Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 25; zero in this tool
+      = $0
+      cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 6 (2025; printed date 2026-02-25; 482e9c48)
+  7   Is the amount on line 6 less than the amount on line 5? If yes, subtract line 6 from line 5 (if no, none of the benefits are taxable)
+      = UNKNOWN (no input supplied for f1040.line2a)
+      cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 7 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Line 8 amount, $25,000
+      = $25,000
+      cite: [i1040gi] p. 32, line 8 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Line 8 amount, $32,000
+      = $32,000
+      cite: [i1040gi] p. 32, line 8 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) No amount
+      = $0
+      cite: [i1040gi] p. 32, line 8 (married filing separately and living with the spouse skips lines 8 to 15) (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Line 8 for married filing separately: $25,000 if you lived apart all year (otherwise lines 8 to 15 are skipped)
+      = UNKNOWN (no input supplied for ssb.lived_apart)
+      cite: [i1040gi] p. 32, line 8 (2025; printed date 2026-02-25; 482e9c48)
+      note: guard incomplete
+  8   $32,000 if married filing jointly; $25,000 if single, head of household, qualifying surviving spouse, or married filing separately and living apart all year
+      = $25,000
+      cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 8 (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["f1040.status",{"const":"single"}],"op":"test"}
+  9   Is the amount on line 8 less than the amount on line 7? If yes, subtract line 8 from line 7 (if no, none of the benefits are taxable)
+      = UNKNOWN (no input supplied for f1040.line2a)
+      cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 9 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Line 10 amount, $9,000
+      = $9,000
+      cite: [i1040gi] p. 32, line 10 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Line 10 amount, $12,000
+      = $12,000
+      cite: [i1040gi] p. 32, line 10 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Line 10 for married filing separately: $9,000 if you lived apart all year
+      = UNKNOWN (no input supplied for ssb.lived_apart)
+      cite: [i1040gi] p. 32, line 10 (2025; printed date 2026-02-25; 482e9c48)
+      note: guard incomplete
+  10  Enter $12,000 if married filing jointly; $9,000 if single, head of household, qualifying surviving spouse, or married filing separately and living apart all year
+      = $9,000
+      cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 10 (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["f1040.status",{"const":"single"}],"op":"test"}
+  11  Subtract line 10 from line 9. If zero or less, enter -0-
+      = UNKNOWN (no input supplied for f1040.line2a)
+      cite: [i1040gi] p. 32, line 11 (2025; printed date 2026-02-25; 482e9c48)
+  12  Enter the smaller of line 9 or line 10
+      = UNKNOWN (no input supplied for f1040.line2a)
+      cite: [i1040gi] p. 32, line 12 (2025; printed date 2026-02-25; 482e9c48)
+  13  Enter one-half of line 12
+      = UNKNOWN (no input supplied for f1040.line2a)
+      cite: [i1040gi] p. 32, line 13 (2025; printed date 2026-02-25; 482e9c48)
+  14  Enter the smaller of line 2 or line 13
+      = UNKNOWN (no input supplied for ssb.pub915)
+      cite: [i1040gi] p. 32, line 14 (2025; printed date 2026-02-25; 482e9c48)
+  15  Multiply line 11 by 85% (0.85). If line 11 is zero, enter -0-
+      = UNKNOWN (no input supplied for f1040.line2a)
+      cite: [i1040gi] p. 32, line 15 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Married filing separately and lived with your spouse at any time in 2025
+      = false
+      cite: [i1040gi] p. 32, line 8, third bullet (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Add lines 14 and 15
+      = UNKNOWN (no input supplied for f1040.line2a)
+      cite: [i1040gi] p. 32, line 16 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Married filing separately and living with your spouse: line 7 times 85% (0.85)
+      = UNKNOWN (no input supplied for f1040.line2a)
+      cite: [i1040gi] p. 32, line 8, 'multiply line 7 by 85% (0.85) and enter the result on line 16' (2025; printed date 2026-02-25; 482e9c48)
+  16  Add lines 14 and 15
+      = UNKNOWN (no input supplied for f1040.line2a)
+      cite: [i1040gi] p. 32, line 16 (and line 8 for married filing separately and living with the spouse) (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["ssb.mfs_together",{"const":false}],"op":"test"}
+  17  Multiply line 1 by 85% (0.85)
+      = $0
+      cite: [i1040gi] p. 32, line 17 (2025; printed date 2026-02-25; 482e9c48)
+      note: half-up to the cent per the ambiguity register
+  (helper) The smaller of line 16 or line 17
+      = UNKNOWN (no input supplied for f1040.line2a)
+      cite: [i1040gi] p. 32, line 18 (2025; printed date 2026-02-25; 482e9c48)
+  18  Taxable social security benefits. Enter the smaller of line 16 or line 17
+      = $0
+      cite: [i1040gi] p. 32, line 18 (with no benefits, none are taxable) (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["ssb.has_benefits",{"const":false}],"op":"test"}
+
 == Unrecaptured Section 1250 Gain Worksheet — distribution-only path ==
   1   Amount from div.screen
       = $0
@@ -2060,6 +2219,10 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
 
 Path choices (guard wording per the rendered worksheets in rendered/2025/):
   eic.top_limit: chose $61,555 (guard 0)
+  ssb.line18: chose $0 (guard 1)
+      not taken: guard 0 = false
+  f1040.ssb.line18: chose $0 (guard 1)
+      not taken: guard 0 = false
   sd.to1040: chose $0 (guard 1)
       not taken: guard 0 = false
   f1040.sd.to1040: chose $0 (guard 1)
@@ -2170,6 +2333,12 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   root|inst:tax_on_amount#{"amount":"sdtw.line1","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax: chose $18,635 (guard 0)
   root|inst:tax_on_amount#{"amount":"sdtw.line1","status":"f1040.status"}.tax: chose $18,635 (guard 1)
       not taken: guard 0 = false
+  ssb.mfs_base: chose UNKNOWN (no input supplied for ssb.lived_apart)
+  ssb.line8: chose $25,000 (guard 0)
+  ssb.mfs_adjust: chose UNKNOWN (no input supplied for ssb.lived_apart)
+  ssb.line10: chose $9,000 (guard 0)
+  ssb.line16: chose UNKNOWN (no input supplied for f1040.line2a) (guard 1)
+      not taken: guard 0 = false
 
 Collection entries and derivations:
   person[taxpayer].w2[emp_a].box1 = $80,000
@@ -2268,6 +2437,12 @@ Collection entries and derivations:
   sb.line6: copy(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; sb.ordinary_dividends = $2,000)
   f1040.sb.line6: copy(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; sb.ordinary_dividends = $2,000)
   f1040.line3b: copy(sb.line6 = $2,000)
+  ssb.line1: copy(ssb.benefits = $0)
+  ssb.has_benefits: test(ssb.line1 = $0; #sales.zero = $0)
+  ssb.zero: param(#sales.zero = $0)
+  ssb.line18: choose(ssb.has_benefits = false; true = true; ssb.has_benefits = false; false = false; ssb.zero = $0)
+  f1040.ssb.line18: choose(ssb.has_benefits = false; true = true; ssb.has_benefits = false; false = false; ssb.zero = $0)
+  f1040.line6b: copy(ssb.line18 = $0)
   sd.count: sum_over(sd.other_forms = false; sd.carryover = false)
   sd.screen: test(sd.count = 0; 0 = 0)
   sd.line1a.h: sum_over(sd.screen = false)
@@ -2295,7 +2470,7 @@ Collection entries and derivations:
   f1040.sd.to1040: choose(sd.has_loss = false; true = true; sd.has_loss = false; false = false; sd.line16 = $0)
   f1040.line7a: copy(sd.to1040 = $0)
   f1040.line8: param(scope.schedule1 = false; scope.other_income = false; #sales.zero = $0)
-  f1040.line9: sum(f1040.line1z = $120,000; f1040.line2b = $1,200; f1040.line3b = $2,000; f1040.line7a = $0; f1040.line8 = $0)
+  f1040.line9: sum(f1040.line1z = $120,000; f1040.line2b = $1,200; f1040.line3b = $2,000; f1040.line4b = $0; f1040.line5b = $0; f1040.line6b = $0; f1040.line7a = $0; f1040.line8 = $0)
   f1040.line10: param(scope.schedule1 = false; #sales.zero = $0)
   f1040.line11a: subtract(f1040.line9 = $123,200; f1040.line10 = $0)
   f1040.line11b: copy(f1040.line11a = $123,200)
@@ -2324,7 +2499,7 @@ Collection entries and derivations:
   eic.step2_other: test(scope.schedule1 = false; scope.other_line16 = false; scope.schedule1 = false; false = false; scope.other_line16 = false; false = false)
   eic.step3_married: test(eic.married_rules = false; false = false)
   eic.step3: test(f1040.status = single; "mfj" = mfj; eic.step3_married = true; true = true; eic.qc_of_another = UNKNOWN (no input supplied for eic.qc_of_another); false = false)
-  eic.step4: test(sa.dependent = false; eic.married_rules = false; false = false; eic.born_before_2001 = UNKNOWN (no input supplied for eic.born_before_2001); true = true; sa.age65 = false; false = false; eic.us_home = UNKNOWN (no input supplied for eic.us_home); true = true; f1040.status = single; "mfj" = mfj; eic.qc_of_another = UNKNOWN (no input supplied for eic.qc_of_another); false = false; sa.dependent = false; false = false)
+  eic.step4: test(sa.dependent = false; eic.married_rules = false; false = false; eic.born_before_2001 = UNKNOWN (no input supplied for eic.born_before_2001); true = true; eic.born_after_1960 = UNKNOWN (no input supplied for eic.born_after_1960); true = true; eic.us_home = UNKNOWN (no input supplied for eic.us_home); true = true; f1040.status = single; "mfj" = mfj; eic.qc_of_another = UNKNOWN (no input supplied for eic.qc_of_another); false = false; sa.dependent = false; false = false)
   eic.step34: test(eic.has_qc = false; true = true; eic.has_qc = false; false = false; eic.step4 = UNKNOWN (no input supplied for eic.qc_of_another); true = true)
   eic.f1040.line1z: copy(f1040.line1a = $120,000)
   eic.step5_line1: copy(scope.schedule1 = false; f1040.line1z = $120,000)
@@ -2365,6 +2540,13 @@ Collection entries and derivations:
   eic.check_27c: test(eic.below_top = false; true = true; eic.reached_step3 = false; true = true; eic.reached_step3 = false; true = true; eic.reached_step3 = false; true = true; eic.eligible = false; true = true)
   eic.separated_box: test(eic.reached_step3 = false; true = true)
   eic.clergy: test(scope.schedule1 = false; scope.schedule1 = false; true = true)
+  f1040.line4c_rollover: test(f1040.ira_rollovers = 0; 0 = 0)
+  f1040.line5c_rollover: test(f1040.plan_rollovers = 0; 0 = 0)
+  f1040.ssb.line1: copy(ssb.benefits = $0)
+  f1040.line6a: copy(ssb.line1 = $0)
+  f1040.ssb.has_benefits: test(ssb.line1 = $0; #sales.zero = $0)
+  f1040.line6c: test(ssb.has_benefits = false; true = true)
+  f1040.line6d: test(f1040.status = single; "mfs" = mfs)
   household.hoh_fails: test(f1040.status = single; "hoh" = hoh)
   f1040.household.hoh_fails: test(f1040.status = single; "hoh" = hoh)
   sa.mfs: test(f1040.status = single; "mfs" = mfs)
@@ -2914,6 +3096,37 @@ Collection entries and derivations:
   root|inst:tax_on_amount#{"amount":"sdtw.line1","status":"f1040.status"}.tax: choose(root|inst:tax_on_amount#{"amount":"sdtw.line1","status":"f1040.status"}.below_boundary = false; true = true; root|inst:tax_on_amount#{"amount":"sdtw.line1","status":"f1040.status"}.below_boundary = false; false = false; root|inst:tax_on_amount#{"amount":"sdtw.line1","status":"f1040.status"}.worksheet_tax = $18,635)
   sdtw.line46: copy(instance)(bind amount = sdtw.line1 = $107,450; bind status = f1040.status = single)
   sdtw.line47: smaller_of(sdtw.line45 = $18,500; sdtw.line46 = $18,635)
+  ssb.line2: gate(ssb.pub915 = UNKNOWN (no input supplied for ssb.pub915))
+  ssb.f1040.line1z: copy(f1040.line1a = $120,000)
+  ssb.f1040.line2b: copy(sb.line4 = $1,200)
+  ssb.f1040.line3b: copy(sb.line6 = $2,000)
+  ssb.f1040.line7a: copy(sd.to1040 = $0)
+  ssb.f1040.line8: param(scope.schedule1 = false; scope.other_income = false; #sales.zero = $0)
+  ssb.line3: sum(f1040.line1z = $120,000; f1040.line2b = $1,200; f1040.line3b = $2,000; f1040.line4b = $0; f1040.line5b = $0; f1040.line7a = $0; f1040.line8 = $0)
+  ssb.line4: copy(f1040.line2a = UNKNOWN (no input supplied for f1040.line2a))
+  ssb.line5: sum(ssb.line2 = UNKNOWN (no input supplied for ssb.pub915); ssb.line3 = $123,200; ssb.line4 = UNKNOWN (no input supplied for f1040.line2a))
+  ssb.line6: param(scope.schedule1 = false; #sales.zero = $0)
+  ssb.line7: subtract_floor0(ssb.line5 = UNKNOWN (no input supplied for f1040.line2a); ssb.line6 = $0)
+  ssb.base_single: param(#ssb.base_single = $25,000)
+  ssb.base_joint: param(#ssb.base_joint = $32,000)
+  ssb.mfs_base: choose(ssb.lived_apart = UNKNOWN (no input supplied for ssb.lived_apart); true = true)
+  ssb.line8: choose(f1040.status = single; "single" = single; ssb.base_single = $25,000)
+  ssb.line9: subtract_floor0(ssb.line7 = UNKNOWN (no input supplied for f1040.line2a); ssb.line8 = $25,000)
+  ssb.adjust_single: param(#ssb.adjust_single = $9,000)
+  ssb.adjust_joint: param(#ssb.adjust_joint = $12,000)
+  ssb.mfs_adjust: choose(ssb.lived_apart = UNKNOWN (no input supplied for ssb.lived_apart); true = true)
+  ssb.line10: choose(f1040.status = single; "single" = single; ssb.adjust_single = $9,000)
+  ssb.line11: subtract_floor0(ssb.line9 = UNKNOWN (no input supplied for f1040.line2a); ssb.line10 = $9,000)
+  ssb.line12: smaller_of(ssb.line9 = UNKNOWN (no input supplied for f1040.line2a))
+  ssb.line13: multiply_rate(ssb.line12 = UNKNOWN (no input supplied for f1040.line2a); #ssb.half = 1/2)
+  ssb.line14: smaller_of(ssb.line2 = UNKNOWN (no input supplied for ssb.pub915))
+  ssb.line15: multiply_rate(ssb.line11 = UNKNOWN (no input supplied for f1040.line2a); #ssb.rate85 = 85/100)
+  ssb.mfs_together: test(f1040.status = single; "mfs" = mfs)
+  ssb.line16_sum: sum(ssb.line14 = UNKNOWN (no input supplied for ssb.pub915); ssb.line15 = UNKNOWN (no input supplied for f1040.line2a))
+  ssb.line16_together: multiply_rate(ssb.line7 = UNKNOWN (no input supplied for f1040.line2a); #ssb.rate85 = 85/100)
+  ssb.line16: choose(ssb.mfs_together = false; true = true; ssb.mfs_together = false; false = false; ssb.line16_sum = UNKNOWN (no input supplied for f1040.line2a))
+  ssb.line17: multiply_rate(ssb.line1 = $0; #ssb.rate85 = 85/100)
+  ssb.line18_figured: smaller_of(ssb.line16 = UNKNOWN (no input supplied for f1040.line2a))
   u1250.line1: copy(div.screen = $0)
   u1250.line2: copy(div.screen = $0)
   u1250.line3: copy(div.screen = $0)

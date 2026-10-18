@@ -353,6 +353,16 @@ function evalExpr(ctx: Ctx, frame: Frame, lineId: string, expr: Expr, cite: Cite
       const value = expr.op === "smaller_of" ? Math.min(...vals) : Math.max(...vals);
       return d({ kind: "money", cents: value }, expr.op, ops);
     }
+    case "multiply_count": {
+      const amount = evalOperand(ctx, frame, expr.amount, ops);
+      const count = evalOperand(ctx, frame, expr.count, ops);
+      if (amount.kind === "unknown" || amount.kind === "refusal") return d(amount, "multiply_count", ops);
+      if (count.kind === "unknown" || count.kind === "refusal") return d(count, "multiply_count", ops);
+      if (amount.kind !== "money" || count.kind !== "count") {
+        return d({ kind: "unknown", reason: "multiply_count operands wrong" }, "multiply_count", ops);
+      }
+      return d({ kind: "money", cents: amount.cents * count.value }, "multiply_count", ops);
+    }
     case "multiply_rate": {
       const amount = evalOperand(ctx, frame, expr.amount, ops);
       const rate = evalOperand(ctx, frame, expr.rate, ops);

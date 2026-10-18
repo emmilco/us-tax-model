@@ -7,12 +7,12 @@ the fixture test compares).
 
 | Metric | Value |
 | --- | --- |
-| Mutants | 838 |
-| Killed by the checker | 46 |
-| Killed by fixtures | 692 |
-| Surviving | 100 (64 provably equivalent) |
-| Mutation score (raw) | 88.1% |
-| Mutation score (equivalent mutants excluded) | 95.3% |
+| Mutants | 927 |
+| Killed by the checker | 55 |
+| Killed by fixtures | 769 |
+| Surviving | 103 (67 provably equivalent) |
+| Mutation score (raw) | 88.9% |
+| Mutation score (equivalent mutants excluded) | 95.8% |
 
 ## Surviving — classified equivalent
 
@@ -42,6 +42,8 @@ the fixture test compares).
 - `operand.f8995a.f8995a.line31.line30` (replace an operand, f8995a.f8995a.line31): Copy-chain identity: f8995a.line30 and f8995a.line28 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.qdcg.qdcg.line8.line7` (replace an operand, qdcg.qdcg.line8): Provably equivalent: line 8 is min(line 5, line 7) and line 7 is min(line 1, line 6) with line 5 ≤ line 1; min(line 5, min(line 1, line 6)) = min(line 5, line 6), so substituting line 6 for line 7 cannot change any value.
 - `operand.qdcg.qdcg.line12.line11` (replace an operand, qdcg.qdcg.line12): Copy-chain identity: qdcg.line11 and qdcg.line9 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
+- `refusal.retirement.retirement.amount_a.0` (remove refusal, retirement.retirement.amount_a): retirement.amount_a reads retirement.show_a -> retirement.has_rollover -> retirement.rolled first, and retirement.rolled carries the identical refusal entry, so without the entry on retirement.amount_a the same refusal arrives through the chain. (structural conditions re-checked this run.)
+- `refusal.retirement.retirement.amount_a.1` (remove refusal, retirement.retirement.amount_a): retirement.amount_a reads retirement.show_a -> retirement.has_rollover -> retirement.rolled first, and retirement.rolled carries the identical refusal entry, so without the entry on retirement.amount_a the same refusal arrives through the chain. (structural conditions re-checked this run.)
 - `operand.s2.s2.line3.zero` (replace an operand, s2.s2.line3): Copy-chain identity: s2.zero and s2.line2 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.s8812.s8812.line2b.zero` (replace an operand, s8812.s8812.line2b): Copy-chain identity: s8812.zero and s8812.line2a expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.s8812.s8812.line2c.zero` (replace an operand, s8812.s8812.line2c): Copy-chain identity: s8812.zero and s8812.line2b expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
@@ -66,6 +68,7 @@ the fixture test compares).
 - `operand.sd.sd.line7.line4` (replace an operand, sd.sd.line7): Copy-chain identity: sd.line4 and sd.line14 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.sd.sd.line7.line5` (replace an operand, sd.sd.line7): Copy-chain identity: sd.line5 and sd.line14 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.sd.sd.line7.line6` (replace an operand, sd.sd.line7): Copy-chain identity: sd.line6 and sd.line14 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
+- `refusal.ssb.ssb.line6.0` (remove refusal, ssb.ssb.line6): ssb.line6 is read only by ssb.line7, which reads ssb.line5 -> ssb.line3 -> f1040.line8 first; f1040.line8 refuses on the same gate, so whenever it is true ssb.line7 returns a refusal from that chain (or an earlier one) and the entry on ssb.line6 never decides a value. (structural conditions re-checked this run.)
 - `operand.u1250.u1250.line13.line9` (replace an operand, u1250.u1250.line13): Copy-chain identity: u1250.line9 and u1250.line16 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.u1250.u1250.line13.line10` (replace an operand, u1250.u1250.line13): Copy-chain identity: u1250.line10 and u1250.line16 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.u1250.u1250.line13.line12` (replace an operand, u1250.u1250.line13): Copy-chain identity: u1250.line12 and u1250.line16 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.

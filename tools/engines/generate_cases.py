@@ -52,7 +52,8 @@ def gen_case(rng, i):
         "f1040.line25b": 0, "f1040.line25c": 0, "f1040.line26": 0, "f1040.line35a": 0, "f1040.line36": 0,
         # Earned income credit questions: an adult aged 25 to 64 living in the United States who is
         # nobody's qualifying child, with no tax-exempt interest.
-        "f1040.line2a": 0, "eic.qc_of_another": False, "eic.born_before_2001": True, "eic.us_home": True, "eic.married": False,
+        "f1040.line2a": 0, "eic.qc_of_another": False, "eic.born_before_2001": True, "eic.born_after_1960": True, "eic.us_home": True, "eic.married": False,
+        "$retirement": [],
     }
     facts = {}
     features = set()
@@ -175,6 +176,13 @@ def gen_case(rng, i):
         features.add("head_of_household")
     if facts["n24"] >= 3:
         features.add("three_or_more_children")
+
+    # Social security benefits on a third of returns (no Form 1099-R distributions: engines take
+    # taxable pensions as an input, so only the benefits worksheet is compared).
+    ss = log_uniform(rng, 100_000, 4_500_000) if rng.random() < 0.33 else 0
+    inputs.update({"ssb.benefits": ss, "ssb.pub915": False, "ssb.lump_sum": False, "ssb.terror_disability": False})
+    facts["ss_benefits"] = ss
+    if ss: features.add("social_security")
 
     # Foreign tax within the simple-path limit.
     ftc = rng.randint(100, 30_000) if rng.random() < 0.25 else 0
