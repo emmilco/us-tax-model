@@ -759,6 +759,11 @@
               }
             }
           }
+        },
+        "display": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Why the line is kept although no line reads it: it is shown on the values sheet (a form box mirrored, an attachment notice). Required for an unread line that is not an interview target; forbidden on a line something reads."
         }
       }
     },

@@ -630,6 +630,7 @@ form:
             locator: p. 7, State and Local Tax Deduction Worksheet
     - id: sa.form8283
       printed: (helper)
+      display: 'Attachment notice on the values sheet: Form 8283 must be attached when noncash gifts exceed $500.'
       type: Bool
       label: Noncash total exceeds $500; Form 8283 attachment required
       expr:

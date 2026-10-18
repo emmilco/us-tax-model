@@ -281,22 +281,6 @@ interview:
       cite:
         doc: f1099div
         locator: Instructions for Recipient, boxes 1–16
-    - input: div.box4
-      prompt: Federal income tax withheld, box 4
-      help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown
-        may be null.
-      order: 10
-      cite:
-        doc: f1099div
-        locator: Instructions for Recipient, boxes 1–16
-    - input: div.box6
-      prompt: Investment expenses already included in box 1a, box 6
-      help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown
-        may be null.
-      order: 10
-      cite:
-        doc: f1099div
-        locator: Instructions for Recipient, boxes 1–16
     - input: div.box9
       prompt: Cash liquidation distributions, box 9
       help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown
@@ -307,14 +291,6 @@ interview:
         locator: Instructions for Recipient, boxes 1–16
     - input: div.box10
       prompt: Noncash liquidation distributions, box 10
-      help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown
-        may be null.
-      order: 10
-      cite:
-        doc: f1099div
-        locator: Instructions for Recipient, boxes 1–16
-    - input: div.box12
-      prompt: Exempt-interest dividends, box 12
       help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown
         may be null.
       order: 10
@@ -332,14 +308,6 @@ interview:
     - input: div.basis_reconciled
       prompt: For box 3, have basis reductions been applied to records with no distribution exceeding
         basis?
-      help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown
-        may be null.
-      order: 10
-      cite:
-        doc: f1099div
-        locator: Instructions for Recipient, boxes 1–16
-    - input: div.fatca
-      prompt: Is the FATCA reporting checkbox checked? Review Form 8938 requirements separately.
       help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown
         may be null.
       order: 10

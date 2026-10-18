@@ -19,19 +19,10 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
   (helper) Nondividend distributions/return of capital, box 3
       = $0
       cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); 4ea1de80)
-  (helper) Federal income tax withheld, box 4
-      = $0
-      cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); 4ea1de80)
-  (helper) Investment expenses already included in box 1a, box 6
-      = $0
-      cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); 4ea1de80)
   (helper) Cash liquidation distributions, box 9
       = $0
       cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); 4ea1de80)
   (helper) Noncash liquidation distributions, box 10
-      = $0
-      cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); 4ea1de80)
-  (helper) Exempt-interest dividends, box 12
       = $0
       cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); 4ea1de80)
   (helper) Specified private activity bond interest dividends, box 13
@@ -39,9 +30,6 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); 4ea1de80)
   (helper) For box 3, have basis reductions been applied to records with no distribution exceeding basis?
       = true
-      cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); 4ea1de80)
-  (helper) Is the FATCA reporting checkbox checked? Review Form 8938 requirements separately.
-      = false
       cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); 4ea1de80)
   (helper) Amount from sb.ordinary_dividends
       = $0

@@ -194,6 +194,26 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
   errors.push(...checkResult.errors);
   stats.push(...checkResult.stats);
 
+  // A line no other line reads must be an interview target or say why it is shown (display);
+  // a line marked display must not be read. Unread helpers are how dead logic hides.
+  {
+    const docs = [...data.forms, ...data.defs];
+    const ids = new Set(docs.flatMap((d) => d.lines.map((l) => l.id)));
+    const read = new Set<string>();
+    const walk = (n: unknown): void => {
+      if (typeof n === "string") { if (ids.has(n)) read.add(n); return; }
+      if (Array.isArray(n)) { n.forEach(walk); return; }
+      if (n && typeof n === "object") for (const [k, v] of Object.entries(n)) if (!["cite", "source", "label", "op", "ref"].includes(k)) walk(v);
+    };
+    for (const d of docs) for (const l of d.lines) { walk(l.expr); for (const r of l.refuses ?? []) read.add(r.when); }
+    const targets = new Set([interview, salesInterview, stage4Interview, fullInterview].flatMap((i) => i.targets));
+    for (const d of data.forms) for (const l of d.lines) {
+      if (String(l.printed).startsWith("(") === false) continue; // printed lines are the form's own lines
+      const unread = !read.has(l.id) && !targets.has(l.id);
+      if (unread && !l.display) errors.push(`${d.id}.${l.id}: no line reads this ${l.expr.op} line and it is not an interview target; remove it or say why it is shown (display)`);
+      if (!unread && l.display) errors.push(`${d.id}.${l.id}: marked display but read by another line or an interview target`);
+    }
+  }
   if (errors.length === 0) errors.push(...checkInterview(data, interview), ...checkSalesInterview(data, salesInterview), ...checkSalesInterview(data, stage4Interview, "stage4"), ...checkSalesInterview(data, fullInterview, "stage5"));
   stats.push("interview: Stage 2 finite domains checked; Stage 3 fixture paths checked for reachability, termination and answer-order invariance (not exhaustive)");
 

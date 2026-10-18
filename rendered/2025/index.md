@@ -4,8 +4,8 @@ Review these renderings line by line against the archived IRS sources in `source
 
 | File | Kind | Lines |
 | --- | --- | --- |
-| dependent.md | worksheet | 49 |
-| div.md | form | 25 |
+| dependent.md | worksheet | 48 |
+| div.md | form | 21 |
 | eic.md | worksheet | 70 |
 | f1040.md | form | 46 |
 | f4952.md | form | 25 |

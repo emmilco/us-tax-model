@@ -36,8 +36,8 @@ def gen_case(rng, i):
     inputs = {
         "f1040.status": "single", "$person": ["taxpayer"], "person[taxpayer].rrta": False,
         "sb.unsupported": False, "sb.line7a": False, "sb.fbar_required": False, "sb.form8938": False, "sb.line8": False,
-        "div.box2c": 0, "div.box2e": 0, "div.box2f": 0, "div.box3": 0, "div.box4": 0, "div.box6": 0,
-        "div.box9": 0, "div.box10": 0, "div.box12": 0, "div.box13": 0, "div.basis_reconciled": True, "div.fatca": False,
+        "div.box2c": 0, "div.box2e": 0, "div.box2f": 0, "div.box3": 0,
+        "div.box9": 0, "div.box10": 0, "div.box13": 0, "div.basis_reconciled": True,
         "sd.other_forms": False, "sd.carryover": False,
         "qbi.unsupported": False,
         "f4952.line4g": 0, "f4952.carryover": False, "f4952.unsupported": False, "f4952.alternative_allocation": False,

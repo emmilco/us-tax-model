@@ -218,6 +218,7 @@ form:
             locator: pp. 1–3, interest, dividends and foreign accounts/trusts
     - id: sb.partIII
       printed: (helper)
+      display: 'Notice on the values sheet: Schedule B Part III must be completed.'
       type: Bool
       label: Complete Part III for interest/dividends over $1,500 or foreign account/trust
       expr:

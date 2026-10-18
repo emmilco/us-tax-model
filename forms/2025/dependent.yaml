@@ -836,24 +836,6 @@ form:
       cite:
         doc: i1040gi
         locator: p. 14, Head of Household, Test 1, "You paid over half the cost of keeping up a home that was the main home for all of 2025 of your parent whom you can claim as a dependent"
-    - id: dependent.hoh_person
-      printed: (helper)
-      type: Bool
-      label: Qualifies you for head of household (Test 1 or Test 2)
-      expr:
-        op: test
-        any:
-          - op: test
-            eq:
-              - dependent.hoh_test1
-              - const: true
-          - op: test
-            eq:
-              - dependent.hoh_test2
-              - const: true
-      cite:
-        doc: i1040gi
-        locator: p. 14, Head of Household, Tests 1 and 2
     - id: dependent.eic_child
       printed: (helper)
       type: Bool

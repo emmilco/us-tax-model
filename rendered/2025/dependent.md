@@ -332,13 +332,6 @@
 - Expr: `{"all":[{"eq":["dependent.relationship",{"const":"parent"}],"op":"test"},{"eq":["dependent.claimed",{"const":true}],"op":"test"},{"eq":["dependent.parent_home_paid",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 14, Head of Household, Test 1, "You paid over half the cost of keeping up a home that was the main home for all of 2025 of your parent whom you can claim as a dependent" (2025; printed date 2026-02-25; sha256 482e9c48)
 
-## (helper) — `dependent.hoh_person`
-
-- **Authored helper label:** Qualifies you for head of household (Test 1 or Test 2)
-- **Encoded (Bool):** (helper "Qualifies you for head of household under Test 1 through a parent who does not live with you (a parent who lives with you qualifies you through Test 2)" = true or helper "A Test 2 person who lived with you more than half the year (the home-cost condition of Test 2 is tested on the household form)" = true)
-- Expr: `{"any":[{"eq":["dependent.hoh_test1",{"const":true}],"op":"test"},{"eq":["dependent.hoh_test2",{"const":true}],"op":"test"}],"op":"test"}`
-- Cite: [i1040gi] p. 14, Head of Household, Tests 1 and 2 (2025; printed date 2026-02-25; sha256 482e9c48)
-
 ## (helper) — `dependent.eic_child`
 
 - **Authored helper label:** Qualifying child for the EIC (relationship, age, not filing a joint return, lived with you in the United States for more than half of 2025)

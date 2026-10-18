@@ -52,11 +52,10 @@ Fixtures that assert each line, by evidence class. A — official IRS example. B
 | dependent.actc_amount | — | — | — | 30 |
 | dependent.hoh_test2 | — | — | — | 30 |
 | dependent.hoh_test1 | — | — | — | 30 |
-| dependent.hoh_person | — | — | — | — |
 | dependent.eic_child | — | — | — | 6 |
 | dependent.eic_ssn_child | — | — | — | 6 |
 
-Unasserted lines: dependent.one, dependent.zero, dependent.ctc_per_child, dependent.odc_per_dependent, dependent.actc_per_child, dependent.hoh_person
+Unasserted lines: dependent.one, dependent.zero, dependent.ctc_per_child, dependent.odc_per_dependent, dependent.actc_per_child
 
 ## Form 1099-DIV — distribution components and scope screening
 
@@ -68,14 +67,10 @@ Unasserted lines: dependent.one, dependent.zero, dependent.ctc_per_child, depend
 | div.box2e | — | — | — | — |
 | div.box2f | — | — | — | — |
 | div.box3 | — | — | — | — |
-| div.box4 | — | — | — | — |
-| div.box6 | — | — | — | — |
 | div.box9 | — | — | — | — |
 | div.box10 | — | — | — | — |
-| div.box12 | — | — | — | — |
 | div.box13 | — | — | — | — |
 | div.basis_reconciled | — | — | — | — |
-| div.fatca | — | — | — | — |
 | div.box1a | — | — | — | — |
 | div.box1b | — | — | — | — |
 | div.box2a | — | — | — | — |
@@ -973,5 +968,5 @@ Unasserted lines: below_boundary, table_tax, worksheet_tax, tax
 
 Unasserted lines: single.row1.product, single.row1.tax, single.row2.product, single.row2.tax, single.row3.product, single.row3.tax, single.row4.product, single.row4.tax, single.row5.product, single.row5.tax, single.result, mfj.row1.product, mfj.row1.tax, mfj.row2.product, mfj.row2.tax, mfj.row3.product, mfj.row3.tax, mfj.row4.product, mfj.row4.tax, mfj.row5.product, mfj.row5.tax, mfj.result, mfs.row1.product, mfs.row1.tax, mfs.row2.product, mfs.row2.tax, mfs.row3.product, mfs.row3.tax, mfs.row4.product, mfs.row4.tax, mfs.row5.product, mfs.row5.tax, mfs.result, hoh.row1.product, hoh.row1.tax, hoh.row2.product, hoh.row2.tax, hoh.row3.product, hoh.row3.tax, hoh.row4.product, hoh.row4.tax, hoh.row5.product, hoh.row5.tax, hoh.result, tax
 
-Unasserted computed lines across all documents: 197. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
+Unasserted computed lines across all documents: 196. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
 Asserted keys not matching a line id: root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.below_boundary, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.tax, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.below_boundary, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.tax, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, root|inst:tax_on_amount#{"amount":"qdcg.line1","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, qdcg.f1040.line15, qdcg.f1040.line3a, qdcg.f1040.status, f1040.qdcg.line25, qdcg.sd.distributions

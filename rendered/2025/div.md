@@ -45,20 +45,6 @@
 - Expr: `{"op":"input","source":"Nondividend distributions/return of capital, box 3"}`
 - Cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); sha256 4ea1de80)
 
-## (helper) — `div.box4`
-
-- **Authored helper label:** Federal income tax withheld, box 4
-- **Encoded (NonNegDollars):** Input — Federal income tax withheld, box 4
-- Expr: `{"op":"input","source":"Federal income tax withheld, box 4"}`
-- Cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); sha256 4ea1de80)
-
-## (helper) — `div.box6`
-
-- **Authored helper label:** Investment expenses already included in box 1a, box 6
-- **Encoded (NonNegDollars):** Input — Investment expenses already included in box 1a, box 6
-- Expr: `{"op":"input","source":"Investment expenses already included in box 1a, box 6"}`
-- Cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); sha256 4ea1de80)
-
 ## (helper) — `div.box9`
 
 - **Authored helper label:** Cash liquidation distributions, box 9
@@ -73,13 +59,6 @@
 - Expr: `{"op":"input","source":"Noncash liquidation distributions, box 10"}`
 - Cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); sha256 4ea1de80)
 
-## (helper) — `div.box12`
-
-- **Authored helper label:** Exempt-interest dividends, box 12
-- **Encoded (NonNegDollars):** Input — Exempt-interest dividends, box 12
-- Expr: `{"op":"input","source":"Exempt-interest dividends, box 12"}`
-- Cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); sha256 4ea1de80)
-
 ## (helper) — `div.box13`
 
 - **Authored helper label:** Specified private activity bond interest dividends, box 13
@@ -92,13 +71,6 @@
 - **Authored helper label:** For box 3, have basis reductions been applied to records with no distribution exceeding basis?
 - **Encoded (Bool):** Input — For box 3, have basis reductions been applied to records with no distribution exceeding basis?
 - Expr: `{"op":"input","source":"For box 3, have basis reductions been applied to records with no distribution exceeding basis?"}`
-- Cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); sha256 4ea1de80)
-
-## (helper) — `div.fatca`
-
-- **Authored helper label:** Is the FATCA reporting checkbox checked? Review Form 8938 requirements separately.
-- **Encoded (Bool):** Input — Is the FATCA reporting checkbox checked? Review Form 8938 requirements separately.
-- Expr: `{"op":"input","source":"Is the FATCA reporting checkbox checked? Review Form 8938 requirements separately."}`
 - Cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); sha256 4ea1de80)
 
 ## (helper) — `div.box1a`

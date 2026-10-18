@@ -68,26 +68,6 @@ form:
       cite:
         doc: f1099div
         locator: Instructions for Recipient, boxes 1–16
-    - id: div.box4
-      printed: (helper)
-      type: NonNegDollars
-      label: Federal income tax withheld, box 4
-      expr:
-        op: input
-        source: Federal income tax withheld, box 4
-      cite:
-        doc: f1099div
-        locator: Instructions for Recipient, boxes 1–16
-    - id: div.box6
-      printed: (helper)
-      type: NonNegDollars
-      label: Investment expenses already included in box 1a, box 6
-      expr:
-        op: input
-        source: Investment expenses already included in box 1a, box 6
-      cite:
-        doc: f1099div
-        locator: Instructions for Recipient, boxes 1–16
     - id: div.box9
       printed: (helper)
       type: NonNegDollars
@@ -105,16 +85,6 @@ form:
       expr:
         op: input
         source: Noncash liquidation distributions, box 10
-      cite:
-        doc: f1099div
-        locator: Instructions for Recipient, boxes 1–16
-    - id: div.box12
-      printed: (helper)
-      type: NonNegDollars
-      label: Exempt-interest dividends, box 12
-      expr:
-        op: input
-        source: Exempt-interest dividends, box 12
       cite:
         doc: f1099div
         locator: Instructions for Recipient, boxes 1–16
@@ -140,18 +110,9 @@ form:
       cite:
         doc: f1099div
         locator: Instructions for Recipient, boxes 1–16
-    - id: div.fatca
-      printed: (helper)
-      type: Bool
-      label: Is the FATCA reporting checkbox checked? Review Form 8938 requirements separately.
-      expr:
-        op: input
-        source: Is the FATCA reporting checkbox checked? Review Form 8938 requirements separately.
-      cite:
-        doc: f1099div
-        locator: Instructions for Recipient, boxes 1–16
     - id: div.box1a
       printed: (helper)
+      display: 'Form 1099-DIV box 1a shown on the values sheet as the ordinary dividends it carries to Schedule B.'
       type: NonNegDollars
       label: Amount from sb.ordinary_dividends
       expr:
@@ -162,6 +123,7 @@ form:
         locator: Instructions for Recipient, boxes 1–16
     - id: div.box1b
       printed: (helper)
+      display: 'Form 1099-DIV box 1b shown on the values sheet as the qualified dividends it carries to Form 1040 line 3a.'
       type: NonNegDollars
       label: Amount from f1040.line3a
       expr:
@@ -172,6 +134,7 @@ form:
         locator: Instructions for Recipient, boxes 1–16
     - id: div.box2a
       printed: (helper)
+      display: 'Form 1099-DIV box 2a shown on the values sheet as the capital gain distributions it carries to Schedule D.'
       type: NonNegDollars
       label: Amount from sd.distributions
       expr:
@@ -182,6 +145,7 @@ form:
         locator: Instructions for Recipient, boxes 1–16
     - id: div.box5
       printed: (helper)
+      display: 'Form 1099-DIV box 5 shown on the values sheet as the section 199A dividends it carries to the QBI deduction.'
       type: NonNegDollars
       label: Amount from qbi.dividends
       expr:

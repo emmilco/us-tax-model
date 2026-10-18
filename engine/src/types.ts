@@ -74,6 +74,8 @@ export interface Line {
   cite: CiteFilled;
   note?: string;
   ambiguity?: string;
+  /** Why an unread line is kept: shown on the values sheet. */
+  display?: string;
   refuses?: { when: string; form: string; remedy: string; cite: CiteFilled }[];
 }
 
