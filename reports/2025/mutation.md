@@ -7,12 +7,12 @@ the fixture test compares).
 
 | Metric | Value |
 | --- | --- |
-| Mutants | 928 |
-| Killed by the checker | 55 |
-| Killed by fixtures | 770 |
-| Surviving | 103 (67 provably equivalent) |
-| Mutation score (raw) | 88.9% |
-| Mutation score (equivalent mutants excluded) | 95.8% |
+| Mutants | 996 |
+| Killed by the checker | 60 |
+| Killed by fixtures | 832 |
+| Surviving | 104 (70 provably equivalent) |
+| Mutation score (raw) | 89.6% |
+| Mutation score (equivalent mutants excluded) | 96.3% |
 
 ## Surviving — classified equivalent
 
@@ -22,6 +22,7 @@ the fixture test compares).
 - `refusal.eic.eic.step5_line1.0` (remove refusal, eic.eic.step5_line1): The gate scope.schedule1 also refuses a line that Form 1040 line 11b reads, and eic.eligible tests eic.below_top (which reads line 11b) first, so the return's EIC refuses through line 11b whenever scope.schedule1 is true; the copy of the gate on eic.step5_line1 adds nothing to any Form 1040 line. (structural conditions re-checked this run.)
 - `refusal.eic.eic.step5_line2.0` (remove refusal, eic.eic.step5_line2): The gate scope.other_income also refuses a line that Form 1040 line 11b reads, and eic.eligible tests eic.below_top (which reads line 11b) first, so the return's EIC refuses through line 11b whenever scope.other_income is true; the copy of the gate on eic.step5_line2 adds nothing to any Form 1040 line. (structural conditions re-checked this run.)
 - `operand.eic.eic.step5_line4.zero` (replace an operand, eic.eic.step5_line4): Step 5 line 4 keeps its own combat-pay refusal whatever it reads; the substituted line 2 is the same zero (a copy of eic.zero) carrying only the gate scope.other_income, and earned income adds line 3 (line 1 less line 2) before line 4, so when that gate is true line 3 has already refused with the same refusal. No value can change. (structural conditions re-checked this run.)
+- `operand.f8889.f8889.line8.line6` (replace an operand, f8889.f8889.line8): Copy-chain identity: f8889.line6 and f8889.line5 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f8959.f8959.line3.zero` (replace an operand, f8959.f8959.line3): Copy-chain identity: f8959.zero and f8959.line2 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f8959.f8959.line8.zero` (replace an operand, f8959.f8959.line8): Copy-chain identity: f8959.zero and f8959.line3 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f8959.f8959.line14.zero` (replace an operand, f8959.f8959.line14): Copy-chain identity: f8959.zero and f8959.line8 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
@@ -68,6 +69,8 @@ the fixture test compares).
 - `operand.sd.sd.line7.line4` (replace an operand, sd.sd.line7): Copy-chain identity: sd.line4 and sd.line14 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.sd.sd.line7.line5` (replace an operand, sd.sd.line7): Copy-chain identity: sd.line5 and sd.line14 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.sd.sd.line7.line6` (replace an operand, sd.sd.line7): Copy-chain identity: sd.line6 and sd.line14 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
+- `boundary.sli.sli.over` (replace strict greater-than with inclusive, sli.sli.over): The test 'line 4 more than line 5' made inclusive adds only the case line 4 = line 5; there line 6 (line 4 less line 5) is zero or negative, the prorate ratio is kept at 0, and the prorated amount equals the skip branch's zero. (structural conditions re-checked this run.)
+- `operand.sli.sli.line9.line8` (replace an operand, sli.sli.line9): Reading the prorated line directly instead of line 8 differs only when line 4 is not more than line 5; there line 6 (line 4 less line 5) is zero or negative, the prorate ratio is kept at 0, and the prorated amount equals the skip branch's zero. (structural conditions re-checked this run.)
 - `refusal.ssb.ssb.line6.0` (remove refusal, ssb.ssb.line6): ssb.line6 is read only by ssb.line7, which reads ssb.line5 -> ssb.line3 -> f1040.line8 first; f1040.line8 refuses on the same gate, so whenever it is true ssb.line7 returns a refusal from that chain (or an earlier one) and the entry on ssb.line6 never decides a value. (structural conditions re-checked this run.)
 - `operand.u1250.u1250.line13.line9` (replace an operand, u1250.u1250.line13): Copy-chain identity: u1250.line9 and u1250.line16 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.u1250.u1250.line13.line10` (replace an operand, u1250.u1250.line13): Copy-chain identity: u1250.line10 and u1250.line16 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
@@ -88,8 +91,6 @@ the fixture test compares).
 
 | Mutant | Kind | Location | Note |
 | --- | --- | --- | --- |
-| operand.f1040.f1040.line11b.line11a | replace an operand | f1040.f1040.line11b | f1040.line11a -> f1040.line9 (Dollars) |
-| operand.f1040.f1040.line14.line13b | replace an operand | f1040.f1040.line14 | f1040.line13b -> f1040.line10 (NonNegDollars) |
 | refusal.f1040.f1040.line16.0 | remove refusal | f1040.f1040.line16 |  |
 | refusal.f1040.f1040.line29.0 | remove refusal | f1040.f1040.line29 |  |
 | refusal.f1040.f1040.line30.0 | remove refusal | f1040.f1040.line30 |  |

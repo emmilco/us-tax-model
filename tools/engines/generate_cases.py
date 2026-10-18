@@ -184,6 +184,32 @@ def gen_case(rng, i):
     facts["ss_benefits"] = ss
     if ss: features.add("social_security")
 
+    # Schedule 1 items. Unemployment compensation and educator expenses on some returns; an HSA with
+    # one coverage type all year, so the deduction is the smaller of the contributions and the limit
+    # less employer contributions (Form 8889 lines 3, 12 and 13); student loan interest, whose phase-out
+    # PolicyEngine-US computes from the interest paid.
+    uc = log_uniform(rng, 100_000, 2_500_000) if rng.random() < 0.2 else 0
+    inputs.update({"s1.uc_paid": uc, "s1.uc_repaid": 0, "s1.uc_unsupported": False}); facts["unemployment"] = uc
+    if uc: features.add("unemployment")
+    edu = rng.randint(1_000, 60_000) if rng.random() < 0.1 else 0
+    inputs.update({"s1.educator_expenses": edu, "s1.eligible_educator": True})
+    facts.update(educator_expenses=edu, educator_deduction=min(edu, 30_000))
+    if edu: features.add("educator_expenses")
+    contrib = employer = hsa_deduction = 0
+    if rng.random() < 0.15:
+        family = rng.random() < 0.4; age55 = rng.random() < 0.2
+        limit = (855_000 if family else 430_000) + (100_000 if age55 else 0)
+        employer = rng.randint(0, limit // 2) if rng.random() < 0.5 else 0
+        contrib = rng.randint(0, limit - employer)
+        hsa_deduction = min(contrib, limit - employer)
+        inputs.update({"f8889.months_eligible": 12, "f8889.months_family": 12 if family else 0, "f8889.age55": age55,
+                       "f8889.dec_coverage": "family" if family else "self_only", "f8889.last_month": False, "f8889.unsupported": False})
+        features.add("hsa")
+    inputs.update({"f8889.line2": contrib, "f8889.line9": employer}); facts["hsa_deduction"] = hsa_deduction
+    sli = rng.randint(1_000, 300_000) if rng.random() < 0.15 else 0
+    inputs.update({"sli.interest": sli, "sli.claimed": False}); facts["student_loan_interest"] = sli
+    if sli: features.add("student_loan_interest")
+
     # Foreign tax within the simple-path limit.
     ftc = rng.randint(100, 30_000) if rng.random() < 0.25 else 0
     inputs["ftc.taxes"] = ftc; facts["foreign_tax"] = ftc

@@ -411,6 +411,68 @@
   "model": ""
  },
  {
+  "screen": "f8889.unsupported",
+  "question": "Any of these: HSA distributions in 2025 that were not all used for qualified medical expenses or rolled over to another HSA; a qualified HSA funding distribution from an IRA in 2025; contributions by you or your employer to an Archer MSA for 2025 (Form 8853); excess HSA contributions from an earlier year; failing to remain an eligible individual during a testing period that began in an earlier year (last-month rule or qualified HSA funding distribution); or an HSA you acquired because of the account beneficiary's death?",
+  "lines": [
+   "f8889.line13_figured"
+  ],
+  "verdict": "WIDE",
+  "findings": [
+   {
+    "kind": "WIDE",
+    "situation": "A filer whose only YES item is a 2025 HSA distribution not used for medical expenses or rolled over, a failed testing period that began in an earlier year, or an inherited HSA answers YES, so line 13 is refused. Yet none of these enters lines 2 through 12, and the tool's 'smaller of line 2 or line 12' would still be correct.",
+    "irs_text": "Question: 'HSA distributions in 2025 that were not all used for qualified medical expenses or rolled over ...; failing to remain an eligible individual during a testing period that began in an earlier year ...; or an HSA you acquired because of the account beneficiary's death?' — f8889 (2025) p.1: '13 HSA deduction ... Subtract line 11 from line 8'; '16 Taxable HSA distributions ... Schedule 1 (Form 1040), Part I, line 8f'; '18 Last-month rule ... 20 Total income'",
+    "why": "On the form, these situations feed only Part II (lines 14a–17b) and Part III (lines 18–21). They never reach line 13, whose inputs are line 2 and lines 3–12, so line 13 is refused in cases the tool computes correctly."
+   },
+   {
+    "kind": "UNCLEAR",
+    "situation": "A filer who made excess HSA contributions in an earlier year but withdrew them, with earnings, by that year's return due date cannot tell whether they have 'excess HSA contributions from an earlier year'.",
+    "irs_text": "i8889 (2025) p.7, Line 10: 'See the discussions under Line 13 for the treatment of excess contributions.' f8889 (2025) p.1, line 14b: 'any excess contributions ... that were withdrawn by the due date of your return'",
+    "why": "The question does not say whether excess contributions that were corrected count, or only excess still in the account that could be deducted or taxed this year. Filers could reasonably answer either way."
+   }
+  ],
+  "prompt_sha": "a4381c6e4bd529aa481503490d8a95723bd3a911459de9d851f620dba7f7c5df",
+  "used": [
+   {
+    "doc": "i8889",
+    "revision": "2025",
+    "text_sha256": "bfbdc8bbe0b85d088325243f176d4c8261b0ca2428f75f4f41e4a339ecb5495c",
+    "pages": [
+     6,
+     7
+    ],
+    "how": "cited pages",
+    "locators": [
+     "Parts II and III, line 4 (Archer MSAs), line 10 (qualified HSA funding distributions), line 13 (Prior Year Excess Contributions), and Death of HSA Account Beneficiary",
+     "Parts II and III; lines 4, 10 and 13",
+     "p. 6, Line 3 Limitation Chart and Worksheet",
+     "p. 7, Line 13, 'Generally, enter the smaller of line 2 or line 12 on line 13 and on Schedule 1 (Form 1040), Part II, line 13'",
+     "p. 7, Line 13, Excess Contributions You Make and Excess Employer Contributions"
+    ],
+    "cols_pages": [
+     7
+    ],
+    "cols_sha256": "533a42f870f12dc6c1984815eae1a4bf59d6fde28cbc909d9a4e76ff41c6eda7"
+   },
+   {
+    "doc": "f8889",
+    "revision": "2025; created 2025-03-28",
+    "text_sha256": "f1ae3589453f3dd1d5277a79409bd7d0bf4772715fa8bd11d58126e6f387c0cf",
+    "pages": [
+     1
+    ],
+    "how": "whole document",
+    "locators": [
+     "Form 8889 (2025), lines 6 and 7"
+    ],
+    "cols_pages": [],
+    "cols_sha256": "85ba6183eb2c35cf7b6d63eb6fd515be7234f5f938da39d7d000a6a7f2359d4e"
+   }
+  ],
+  "cost": 0.107732,
+  "model": "claude-opus-5-5"
+ },
+ {
   "screen": "f8959.unsupported",
   "question": "Any self-employment income (including church employee income), RRTA compensation, tips not reported to your employer or allocated tips in Form W-2 box 8 (Form 4137), Form 8919 wages, uncollected Medicare tax in Form W-2 box 12 (codes B or N), or Medicare wages on a wage statement from a U.S. territory (such as Form 499R-2/W-2PR)?",
   "lines": [
@@ -916,6 +978,51 @@
    }
   ],
   "cost": 0.1479606,
+  "model": "claude-opus-5-5"
+ },
+ {
+  "screen": "s1.uc_unsupported",
+  "question": "Did you make contributions in 2025 to a governmental unemployment compensation program (not counting paid family leave or disability insurance contributions), or repay in 2025 any unemployment compensation you included in income in an earlier year?",
+  "lines": [
+   "s1.line7_figured"
+  ],
+  "verdict": "NARROW",
+  "findings": [
+   {
+    "kind": "NARROW",
+    "situation": "A filer receives unemployment compensation in 2025 and made contributions to a governmental unemployment compensation program in an earlier year (for example 2024 payroll withholding in a state that taxes employees), but made none in 2025.",
+    "irs_text": "i1040gi p. 89, Schedule 1, line 7, Caution: 'If you made contributions to a governmental unemployment compensation program and you aren't itemizing deductions, reduce the amount you report on line 7 by those contributions.'",
+    "why": "The IRS text does not limit the reduction to contributions made in 2025. The question asks only about contributions 'in 2025', so this filer truthfully answers NO and the tool reports line 7 without the reduction."
+   },
+   {
+    "kind": "WIDE",
+    "situation": "A filer had state unemployment insurance withheld from wages in 2025 (for example in New Jersey, Pennsylvania or Alaska) but received no unemployment compensation in 2025 and repaid none from an earlier year.",
+    "irs_text": "i1040gi p. 89, Schedule 1, line 7, Caution: 'reduce the amount you report on line 7 by those contributions.'",
+    "why": "The question ('Did you make contributions in 2025 to a governmental unemployment compensation program...') makes this filer answer YES and the tool refuses. With no compensation received there is nothing to reduce, so the line is -0-, which the tool computes correctly."
+   }
+  ],
+  "prompt_sha": "2192be5c1e73843a20fa6b3bca68215e25244c5c99ec7c04ea9dbd1b89962d65",
+  "used": [
+   {
+    "doc": "i1040gi",
+    "revision": "2025; printed date 2026-02-25",
+    "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+    "pages": [
+     89
+    ],
+    "how": "cited pages",
+    "locators": [
+     "p. 89, Schedule 1, line 7, 'subtract the amount you repaid from the total amount you received. Enter the result on line 7'",
+     "p. 89, Schedule 1, line 7, Caution and the last paragraph",
+     "p. 89, Schedule 1, line 7, contributions to a governmental unemployment compensation program and repayments of more than $3,000 included in income in an earlier year (Pub. 525)"
+    ],
+    "cols_pages": [
+     89
+    ],
+    "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+   }
+  ],
+  "cost": 0.067796,
   "model": "claude-opus-5-5"
  },
  {
@@ -2063,7 +2170,7 @@
  },
  {
   "screen": "scope.schedule1",
-  "question": "Any income or adjustment requiring Schedule 1, including a taxable state or local tax refund, unemployment compensation, self-employment income or Schedule SE (including clergy and church employee income), or excluding Medicaid waiver payments (Schedule 1 line 8s)? (Schedule 1-A deductions are asked separately.)",
+  "question": "Any income or adjustment requiring Schedule 1 other than unemployment compensation, educator expenses, the HSA deduction and student loan interest, including a taxable state or local tax refund; alimony; an IRA deduction; being self-employed or filing Schedule C (income or loss, including statutory-employee wages) or Schedule SE (including clergy, and church employee income: wages from a church that elected exemption from social security and Medicare taxes); rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1); rental of personal property; farm income (Schedule F); gambling winnings, prizes or other income for Schedule 1 line 8; or an exclusion of Medicaid waiver payments (Schedule 1 line 8s)? (Schedule 1-A deductions are asked separately.)",
   "lines": [
    "eic.step2_other",
    "eic.step5_line1",
@@ -2074,36 +2181,31 @@
    "s8812.eiw_4",
    "s8812.eiw_5",
    "s8812.line22",
-   "scope.ready"
+   "scope.ready",
+   "ssb.line6"
   ],
   "verdict": "NARROW",
   "findings": [
    {
     "kind": "NARROW",
-    "situation": "A filer owes Social Security and Medicare tax on unreported tips (Form 4137), on Form 8919 wages, or uncollected tax on tips shown on a W-2, and has no Schedule 1 item, so answers NO while Schedule 8812 line 22 is set to zero.",
-    "irs_text": "f1040s8812 (2025) p. 2, line 22: \"Enter the total of the amounts from Schedule 1 (Form 1040), line 15; Schedule 2 (Form 1040), line 5; Schedule 2 (Form 1040), line 6; and Schedule 2 (Form 1040), line 13\"",
-    "why": "Line 22 is refused only through this Schedule 1 screen, but three of its four sources are Schedule 2 amounts that need no Schedule 1. Nothing in the question asks about Schedule 2, so line 22 is understated for filers in Part II-B."
+    "situation": "A filer has a passive-activity gain that is not reported on Schedule E or a K-1 and is not self-employment income, such as an installment-sale gain this year from a former rental property reported through Form 6252/4797 or Schedule D.",
+    "irs_text": "i1040gi p. 40, Step 2, question 4: \"Do any of the following apply for 2025? ... • You have income or loss from a passive activity. Yes. Use Worksheet 1 in Pub. 596\"",
+    "why": "The question lists only Schedule 1 items (Schedule E, K-1s, rental of personal property, Schedule C/F/SE). It never asks about passive activity income or loss in general, so this filer truthfully answers NO and eic.step2_other is computed as 'No'."
    },
    {
     "kind": "NARROW",
-    "situation": "A filer has passive-activity income reported only on Schedule D or Form 1040 line 7a, such as a capital gain on selling an interest in a passive partnership, with no Schedule E or other Schedule 1 item, so answers NO.",
-    "irs_text": "i1040gi (2025) p. 40, Step 2, question 4: \"You have income or loss from a passive activity. Yes. Use Worksheet 1 in Pub. 596\"",
-    "why": "Step 2 question 4 turns on passive-activity income or loss in any form, not only amounts carried to Schedule 1. A filer with no Schedule 1 item answers NO and skips Worksheet 1."
+    "situation": "A filer owes uncollected social security and Medicare tax on tips or group-term life insurance (W-2 box 12 codes A/B/M/N), or tax on unreported tips (Form 4137) or Form 8919 wages, which go on Schedule 2, lines 13, 5 or 6.",
+    "irs_text": "f1040s8812 Schedule 8812 (2025), line 22: \"Enter the total of the amounts from Schedule 1 (Form 1040), line 15; Schedule 2 (Form 1040), line 5; Schedule 2 (Form 1040), line 6; and Schedule 2 (Form 1040), line 13\"",
+    "why": "s8812.line22 is set to zero whenever this screen is answered NO, but the question asks only about Schedule 1 items. A filer with only these Schedule 2 amounts answers NO, and line 22 drops them unless an unlisted Schedule 2 screen catches them."
    },
    {
     "kind": "UNCLEAR",
-    "situation": "A filer who excludes Medicaid waiver payments on Schedule 1 line 8s reads \"excluding Medicaid waiver payments\" as an exception to the list and answers NO.",
-    "irs_text": "i1040s8812 (2025) p. 8, Earned Income Worksheet, line 4: \"Enter the Medicaid waiver payment amounts excluded from income on Schedule 1 (Form 1040), line 8s\"; i1040gi p. 42, Step 5 worksheet line 2",
-    "why": "The phrase \"or excluding Medicaid waiver payments\" can be read as \"other than Medicaid waiver payments\" instead of \"or you are excluding Medicaid waiver payments.\" On that reading the filer answers NO, and lines 8, 10 and EIW line 4 are computed as zero."
-   },
-   {
-    "kind": "UNCLEAR",
-    "situation": "A statutory employee who files Schedule C for W-2 statutory-employee wages may not treat that as \"self-employment income\" and answers NO.",
-    "irs_text": "i1040gi (2025) p. 42, Step 5, question 2: \"or are you filing Schedule C as a statutory employee? Yes. ... go to Worksheet B\"; i1040s8812 p. 8: \"if you are filing Schedule C, F, or SE ... go to line 2a\"",
-    "why": "The question names self-employment income and Schedule SE but not Schedule C or statutory-employee income. A filer relying on the examples, without knowing that Schedule C flows to Schedule 1, could answer NO."
+    "situation": "A filer received a small amount of wages from a church that elected exemption (under $108.28, so no Schedule SE is required), or is a minister with an approved Form 4361 who does not file Schedule SE.",
+    "irs_text": "i1040gi p. 42, Step 5, question 1: \"Are you filing Schedule SE because you were a member of the clergy or you had church employee income of $108.28 or more?\"",
+    "why": "The question reads \"Schedule SE (including clergy, and church employee income: wages from a church that elected exemption ...)\". This can be read as asking about any clergy status or any church employee income, not only cases where Schedule SE is filed. Under that reading, a filer whose wages the tool handles correctly would answer YES."
    }
   ],
-  "prompt_sha": "080a02537587e0f830fe799dc7f44320e333740f2224b2297aef4091b63c64cb",
+  "prompt_sha": "10a18dcaf3d5cec7381b9c53f1c33595cbb0dc00a803922ab74d752528ad3fd1",
   "used": [
    {
     "doc": "f1040",
@@ -2127,6 +2229,7 @@
     "revision": "2025; printed date 2026-02-25",
     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
     "pages": [
+     32,
      40,
      42,
      43,
@@ -2136,6 +2239,7 @@
     "how": "cited pages",
     "locators": [
      "p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld",
+     "p. 32, Social Security Benefits Worksheet, line 6",
      "p. 40, Step 2, question 4",
      "p. 40, Step 2, question 4, \"Yes. Use Worksheet 1 in Pub. 596\"",
      "p. 42, Step 5, questions 1 and 2; p. 43, Clergy and Church employees; p. 47, Worksheet B",
@@ -2184,8 +2288,8 @@
     "cols_sha256": "3525d47f51cb713591081610a862cae77eff08a8aa7e2064a96b15cee4fd5cb9"
    }
   ],
-  "cost": 0,
-  "model": ""
+  "cost": 0.267436,
+  "model": "claude-opus-5-5"
  },
  {
   "screen": "scope.schedule1a",

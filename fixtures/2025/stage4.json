@@ -96,7 +96,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sa.standard": {
@@ -228,7 +233,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f8959.line6": {
@@ -336,7 +346,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f8959.line6": {
@@ -444,7 +459,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f8959.line6": {
@@ -573,7 +593,12 @@
         "s8812.puerto_rico": false,
         "dependent[child].younger": true,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f8959.line6": {
@@ -702,7 +727,12 @@
         "s8812.puerto_rico": false,
         "dependent[child].younger": true,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f8959.line6": {
@@ -831,7 +861,12 @@
         "s8812.puerto_rico": false,
         "dependent[child].younger": true,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f8959.line6": {
@@ -939,7 +974,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f8959.line6": {
@@ -1047,7 +1087,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f8959.line6": {
@@ -1155,7 +1200,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f8959.line6": {
@@ -1263,7 +1313,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f8959.line6": {
@@ -1371,7 +1426,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f8959.line6": {
@@ -1479,7 +1539,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f8959.line6": {
@@ -1587,7 +1652,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f8959.line6": {
@@ -1695,7 +1765,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f8959.line6": {
@@ -1803,7 +1878,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f8959.line6": {
@@ -1911,7 +1991,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f8959.line18": {
@@ -2107,7 +2192,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f8959.line24": {
@@ -2211,7 +2301,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sa.line5e": {
@@ -2315,7 +2410,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sa.line5e": {
@@ -2419,7 +2519,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sa.line5e": {
@@ -2523,7 +2628,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sa.line5e": {
@@ -2627,7 +2737,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sa.line5e": {
@@ -2731,7 +2846,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sa.line5e": {
@@ -2835,7 +2955,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sa.line5e": {
@@ -2943,7 +3068,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sa.line5e": {
@@ -3047,7 +3177,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sa.line3": {
@@ -3155,7 +3290,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sa.line4": {
@@ -3259,7 +3399,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sa.standard": {
@@ -3384,7 +3529,12 @@
         "s8812.puerto_rico": false,
         "dependent[child].younger": true,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sa.standard": {
@@ -3488,7 +3638,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sa.standard": {
@@ -3592,7 +3747,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sa.standard": {
@@ -3696,7 +3856,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sa.standard": {
@@ -3800,7 +3965,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sa.standard": {
@@ -3908,7 +4078,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sa.itemizes": {
@@ -4016,7 +4191,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sa.itemizes": {
@@ -4124,7 +4304,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f4952.line8": {
@@ -4236,7 +4421,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f4952.line8": {
@@ -4348,7 +4538,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f4952.line8": {
@@ -4479,7 +4674,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f8960.line8": {
@@ -4599,7 +4799,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f8960.line17": {
@@ -4703,7 +4908,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f8960.line17": {
@@ -4828,7 +5038,12 @@
         "s8812.puerto_rico": false,
         "dependent[child].younger": true,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f8960.line17": {
@@ -4953,7 +5168,12 @@
         "s8812.puerto_rico": false,
         "dependent[child].younger": true,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f8960.line17": {
@@ -5057,7 +5277,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f8960.line17": {
@@ -5161,7 +5386,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f8960.line17": {
@@ -5265,7 +5495,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f8960.line17": {
@@ -5369,7 +5604,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f8960.line17": {
@@ -5473,7 +5713,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f8960.line17": {
@@ -5577,7 +5822,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f8960.line17": {
@@ -5681,7 +5931,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f8960.line9a": {
@@ -5793,7 +6048,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "qbi.use_8995a": {
@@ -5909,7 +6169,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "qbi.use_8995a": {
@@ -6025,7 +6290,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "qbi.use_8995a": {
@@ -6141,7 +6411,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "qbi.taxable_before": {
@@ -6257,7 +6532,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "qbi.deduction": {
@@ -6369,7 +6649,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "ftc.credit": {
@@ -6473,7 +6758,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "ftc.credit": {
@@ -6577,7 +6867,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "ftc.credit": {
@@ -6681,7 +6976,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sdtw.line31": {
@@ -6985,7 +7285,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sdtw.after22": {
@@ -7121,7 +7426,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sdtw.after32": {
@@ -7241,7 +7551,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "g28.line7": {
@@ -7358,7 +7673,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sa.line12": {
@@ -7471,7 +7791,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sa.line12": {
@@ -7584,7 +7909,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sa.line12": {
@@ -7691,14 +8021,19 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "scope.ready": {
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "tax_year": 2025,
@@ -7803,7 +8138,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "scope.ready": {
@@ -7915,7 +8255,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "scope.ready": {
@@ -8027,7 +8372,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "scope.ready": {
@@ -8139,7 +8489,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "scope.ready": {
@@ -8251,7 +8606,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f4952.line8": {
@@ -8415,7 +8775,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f4952.line8": {
@@ -8579,7 +8944,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f4952.line8": {
@@ -8743,7 +9113,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f4952.election": {
@@ -8855,7 +9230,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f8959.line18": {
@@ -9058,7 +9438,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f8960.line17": {
@@ -9313,7 +9698,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f8960.line17": {
@@ -9568,7 +9958,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sa.line17": {
@@ -9771,7 +10166,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sa.line17": {
@@ -9974,7 +10374,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sa.line17": {
@@ -10177,7 +10582,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sa.standard": {
@@ -10289,7 +10699,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sa.standard": {
@@ -10401,7 +10816,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sb.line4": {
@@ -10552,7 +10972,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sb.line4": {
@@ -10703,7 +11128,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sb.line4": {
@@ -10854,7 +11284,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sb.line4": {
@@ -11005,7 +11440,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "qbi.deduction": {
@@ -11117,7 +11557,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "ftc.credit": {
@@ -11229,7 +11674,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "ftc.credit": {
@@ -11341,7 +11791,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "ftc.credit": {
@@ -11453,7 +11908,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "ftc.credit": {
@@ -11565,7 +12025,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "ftc.credit": {
@@ -11677,7 +12142,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "s2.line21": {
@@ -11815,7 +12285,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "s2.line21": {
@@ -11958,7 +12433,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sa.line12": {
@@ -12076,7 +12556,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sa.line12": {
@@ -12188,7 +12673,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line7a": {
@@ -12300,7 +12790,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line7a": {
@@ -12412,7 +12907,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line7a": {
@@ -12524,7 +13024,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line7a": {
@@ -12637,7 +13142,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sdtw.line30": {
@@ -12777,7 +13287,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sdtw.line21": {
@@ -12905,7 +13420,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "qbi.taxable_before": {
@@ -13021,7 +13541,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sb.partIII": {
@@ -13137,7 +13662,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f8960.line5a": {
@@ -13249,7 +13779,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f8959.line6": {
@@ -13352,7 +13887,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f4952.line8": {
@@ -13464,7 +14004,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line7a": {
@@ -13576,7 +14121,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line7a": {
@@ -13688,7 +14238,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line7a": {
@@ -13800,7 +14355,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f8960.line17": {
@@ -13912,7 +14472,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f4952.line8": {
@@ -14076,7 +14641,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sa.line17": {
@@ -14279,7 +14849,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f8960.line17": {
@@ -14534,7 +15109,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sb.line4": {
@@ -14685,7 +15265,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "s2.line21": {
@@ -14832,7 +15417,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f4952.line4d": {
@@ -14956,7 +15546,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "sa.line4": {
@@ -15123,7 +15718,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f8960.line8": {
@@ -15267,7 +15867,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "scope.ready": {

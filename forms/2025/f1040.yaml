@@ -300,15 +300,15 @@ form:
       label: Additional income from Schedule 1, line 10
       type: NonNegDollars
       expr:
-        op: param
-        ref: sales.zero
+        op: copy
+        from: s1.line10
       cite:
         doc: f1040
         locator: Form 1040 (2025), line 8
       refuses:
         - when: scope.schedule1
           form: Schedule 1
-          remedy: Schedule 1 income and adjustments are outside this proof of concept.
+          remedy: Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.
           cite:
             doc: f1040
             locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
@@ -341,15 +341,15 @@ form:
       label: Adjustments to income from Schedule 1, line 26
       type: NonNegDollars
       expr:
-        op: param
-        ref: sales.zero
+        op: copy
+        from: s1.line26
       cite:
         doc: f1040
         locator: Form 1040 (2025), line 10
       refuses:
         - when: scope.schedule1
           form: Schedule 1
-          remedy: Schedule 1 income and adjustments are outside this proof of concept.
+          remedy: Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.
           cite:
             doc: f1040
             locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31

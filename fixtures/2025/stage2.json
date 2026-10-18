@@ -31,7 +31,12 @@
         "person[taxpayer].w2[b].box7": 0,
         "person[taxpayer].w2[b].box4": 620000,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "s3.line11": {
@@ -78,7 +83,12 @@
         "person[taxpayer].w2[b].box7": 0,
         "person[taxpayer].w2[b].box4": 471820,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "s3.line11": {
@@ -125,7 +135,12 @@
         "person[taxpayer].w2[b].box7": 0,
         "person[taxpayer].w2[b].box4": 471821,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "s3.line11": {
@@ -172,7 +187,12 @@
         "person[taxpayer].w2[b].box7": 0,
         "person[taxpayer].w2[b].box4": 471821,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "s3.line11": {
@@ -219,7 +239,12 @@
         "person[taxpayer].w2[b].box7": 0,
         "person[taxpayer].w2[b].box4": 491819,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "s3.line11": {
@@ -266,7 +291,12 @@
         "person[taxpayer].w2[b].box7": 0,
         "person[taxpayer].w2[b].box4": 491820,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "s3.line11": {
@@ -313,7 +343,12 @@
         "person[taxpayer].w2[b].box7": 0,
         "person[taxpayer].w2[b].box4": 491821,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "s3.line11": {
@@ -356,7 +391,12 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box4": 1091820,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "s3.line11": {
@@ -399,7 +439,12 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box4": 1091819,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "s3.line11": {
@@ -442,7 +487,12 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box4": 1091821,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "s3.line11": {
@@ -516,7 +566,12 @@
         "person[taxpayer].w2[b].box7": 0,
         "person[taxpayer].w2[b].box4": 310000,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "s3.line11": {
@@ -590,7 +645,12 @@
         "person[taxpayer].w2[b].box7": 0,
         "person[taxpayer].w2[b].box4": 471821,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "s3.line11": {
@@ -628,7 +688,12 @@
         "s3.line12": 0,
         "s3.line14": 0,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "s3.line11": {
@@ -666,7 +731,12 @@
         "s3.line12": 0,
         "s3.line14": 0,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "s3.line11": {
@@ -731,7 +801,12 @@
         "s3.line12": 0,
         "s3.line14": 0,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "s3.line11": {
@@ -796,7 +871,12 @@
         "s3.line12": 0,
         "s3.line14": 0,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "s3.line11": {
@@ -870,7 +950,12 @@
         "person[taxpayer].w2[b].box7": 0,
         "person[taxpayer].w2[b].box4": 620000,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "s3.line11": {
@@ -917,7 +1002,12 @@
         "person[taxpayer].w2[b].box7": 0,
         "person[taxpayer].w2[b].box4": 620000,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "s3.line11": {
@@ -964,7 +1054,12 @@
         "person[taxpayer].w2[b].box7": 0,
         "person[taxpayer].w2[b].box4": 620000,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "s3.line11": {
@@ -1015,7 +1110,12 @@
         "person[second].w2[a].box7": 0,
         "person[second].w2[a].box4": 620000,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "s3.line11": {
@@ -1061,7 +1161,12 @@
         "person[taxpayer].w2[b].box7": 0,
         "person[taxpayer].w2[b].box4": 0,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "s3.line11": {

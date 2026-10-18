@@ -110,7 +110,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -268,7 +273,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -410,7 +420,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": false,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -556,7 +571,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -678,7 +698,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -816,7 +841,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -958,7 +988,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -1126,7 +1161,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -1321,7 +1361,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -1530,7 +1575,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -1698,7 +1748,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -1861,7 +1916,12 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -2006,7 +2066,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -2148,7 +2213,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -2294,7 +2364,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -2455,7 +2530,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -2619,7 +2699,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -2741,7 +2826,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -2889,7 +2979,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -3042,7 +3137,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -3209,7 +3309,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -3398,7 +3503,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -3520,7 +3630,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -3665,7 +3780,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -3832,7 +3952,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -4021,7 +4146,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -4143,7 +4273,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -4291,7 +4426,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -4443,7 +4583,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -4592,7 +4737,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -4714,7 +4864,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -4841,7 +4996,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -4968,7 +5128,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -5131,7 +5296,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -5281,7 +5451,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -5431,7 +5606,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -5594,7 +5774,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -5796,7 +5981,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -5950,7 +6140,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -6105,7 +6300,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -6252,7 +6452,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -6410,7 +6615,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -6536,7 +6746,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line27b": {

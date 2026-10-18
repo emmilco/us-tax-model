@@ -38,6 +38,16 @@ def multiplyRateHalfUp (a num den : Int) : Int := halfUpDiv (a * num) den
     amount times the number of months). Exact; no rounding. -/
 def multiplyCount (a n : Int) : Int := a * n
 
+/-- The ratio of `prorate`: part / whole on a scale of `s` units (s = 10 ^ places),
+half-up, and kept between 0 and s (between 0 and 1.000). -/
+def prorateRatio (part whole s : Int) : Int := max 0 (min s (multiplyRateHalfUp part s whole))
+
+/-- The `prorate` atom: amount times (part / whole), the ratio rounded half-up to
+`places` decimal places and kept between 0 and 1, the product half-up to the cent
+(the Student Loan Interest Deduction Worksheet, lines 7 and 8). -/
+def prorate (a part whole : Int) (places : Nat) : Int :=
+  multiplyRateHalfUp a (prorateRatio part whole ((10 : Int) ^ places)) ((10 : Int) ^ places)
+
 /-- Round to the nearest unit, half-up (the printed whole-dollar rule with
     unit = 100). -/
 def roundHalfUpToUnit (x unit : Int) : Int := ((2 * x + unit) / (2 * unit)) * unit

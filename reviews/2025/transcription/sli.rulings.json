@@ -1,0 +1,36 @@
+{
+ "kind": "transcription",
+ "form": "sli",
+ "rulings": [
+  {
+   "printed": "5",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"hoh\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"qss\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"single\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"sli.base_other\"}}, {\"guard\": {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"sli.base_joint\"}}, {\"guard\": {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
+   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"sli.base_joint\"}}, {\"guard\": {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}, \"then\": {\"param\": \"sli.base_other\"}}], \"op\": \"choose\"}",
+   "ruling": "Ruling: representation; project retained. The worksheet gives no amount for married filing separately, which cannot take the deduction; the project enters zero there and the second enters $85,000. Neither reaches Schedule 1 line 21: sli.deduction is zero for married filing separately."
+  },
+  {
+   "printed": "6",
+   "project": "{\"from\": {\"line\": \"4\"}, \"op\": \"subtract\", \"take\": {\"line\": \"5\"}}",
+   "second": "{\"from\": {\"line\": \"4\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"5\"}}",
+   "ruling": "Ruling: equivalent; project retained. Line 6 is used only when line 4 is more than line 5 (line 8 skips it otherwise), where the signed difference and the floored one are the same."
+  },
+  {
+   "printed": "8",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"line\": \"4\"}, {\"line\": \"5\"}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"line\": \"5\"}, {\"line\": \"4\"}], \"test\": \"lt\"}, \"then\": {\"amount\": {\"line\": \"1\"}, \"op\": \"prorate\", \"part\": {\"line\": \"6\"}, \"places\": 3, \"whole\": {\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"hoh\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"qss\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"single\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"sli.divisor_other\"}}, {\"guard\": {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"sli.divisor_joint\"}}], \"op\": \"choose\"}}}], \"op\": \"choose\"}",
+   "second": "{\"amount\": {\"line\": \"1\"}, \"op\": \"prorate\", \"part\": {\"line\": \"6\"}, \"places\": 3, \"whole\": {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"sli.divisor_joint\"}}, {\"guard\": {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}, \"then\": {\"param\": \"sli.divisor_other\"}}], \"op\": \"choose\"}}",
+   "ruling": "Ruling: equivalent; project retained. The project skips to zero when line 4 is not more than line 5, as the worksheet says; the second always applies the ratio, which then has a part of zero or less, and prorate keeps the ratio at 0 or more, so it also gives zero (the same argument as the classified mutant on sli.line8)."
+  },
+  {
+   "printed": "9",
+   "project": "{\"from\": {\"line\": \"1\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"8\"}}",
+   "second": "{\"from\": {\"line\": \"1\"}, \"op\": \"subtract\", \"take\": {\"line\": \"8\"}}",
+   "ruling": "Ruling: equivalent; project retained. Line 8 never exceeds line 1: prorate's ratio is at most 1.000 (Lean lemma prorate_le_amount), so the floor at zero never applies."
+  },
+  {
+   "printed": "sli.deduction",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"input\": \"sli.interest\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"input\": \"sli.interest\"}], \"test\": \"lt\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"sli.claimed\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"then\": {\"line\": \"9\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": false}, {\"input\": \"sli.claimed\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}}], \"op\": \"choose\"}",
+   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"sli.claimed\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"then\": {\"line\": \"9\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"sli.claimed\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
+   "ruling": "Ruling: equivalent; project retained. The second omits the 'interest more than zero' guard; with no interest line 1 and line 9 are zero, so the value is the same, and the project's guard keeps a filer without student loan interest from being asked whether they are claimed as a dependent. The eligibility tests (not married filing separately, not claimed as a dependent) agree."
+  }
+ ]
+}

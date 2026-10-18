@@ -243,6 +243,7 @@ GRAMMAR = """Expression grammar (YAML). Exactly one atom per line. Operands writ
   {op: larger_of, of: [<ref>, <ref>]}
   {op: multiply_rate, amount: <ref>, rate: {param: name}}  # rate is a parameter
   {op: multiply_count, amount: <ref>, count: <ref>}         # an amount times a whole number (a Count line), e.g. a monthly amount times months
+  {op: prorate, amount: <ref>, part: <ref>, whole: <operand>, places: <int>}  # amount times (part / whole), the ratio rounded half-up to <places> decimal places and kept between 0 and 1
   {op: round, of: <ref>, unit: <integer cents>, rule: half_up | up | down}  # e.g. up to the next $1,000: unit 100000, rule up
   {op: table_lookup, table: tax_table, key: <ref>, status: <ref>}
   {op: sum_over, collection: <collection id>, field: <line id within the entry>, where: <test>}  # where optional
@@ -611,6 +612,8 @@ class Expander:
             return {"op": op, "of": self.ref(e["of"], depth), "unit": e.get("unit"), "rule": e.get("rule")}
         if op == "multiply_count":
             return {"op": op, "amount": self.ref(e["amount"], depth), "count": self.ref(e["count"], depth)}
+        if op == "prorate":
+            return {"op": op, "amount": self.ref(e["amount"], depth), "part": self.ref(e["part"], depth), "whole": self.operand(e["whole"], depth), "places": e.get("places")}
         if op == "table_lookup":
             return {"op": op, "table": e.get("table"), "key": self.ref(e["key"], depth), "status": self.ref(e["status"], depth)}
         if op == "sum_over":

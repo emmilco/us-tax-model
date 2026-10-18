@@ -120,7 +120,12 @@
         "retirement[a].box5": 0,
         "retirement[a].rollover": 0,
         "retirement[a].special": false,
-        "retirement[a].annuity": false
+        "retirement[a].annuity": false,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line4a": {
@@ -260,7 +265,12 @@
         "retirement[a].box5": 0,
         "retirement[a].rollover": 600000,
         "retirement[a].special": false,
-        "retirement[a].annuity": false
+        "retirement[a].annuity": false,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line4a": {
@@ -396,7 +406,12 @@
         "retirement[r].box5": 0,
         "retirement[r].rollover": 0,
         "retirement[r].special": false,
-        "retirement[r].annuity": false
+        "retirement[r].annuity": false,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line4a": {
@@ -528,7 +543,12 @@
         "retirement[r].box5": 0,
         "retirement[r].rollover": 0,
         "retirement[r].special": false,
-        "retirement[r].annuity": false
+        "retirement[r].annuity": false,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line4b": {
@@ -665,7 +685,12 @@
         "retirement[a].box5": 0,
         "retirement[a].rollover": 0,
         "retirement[a].special": false,
-        "retirement[a].annuity": false
+        "retirement[a].annuity": false,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line4b": {
@@ -815,7 +840,12 @@
         "retirement[a].box5": 0,
         "retirement[a].rollover": 0,
         "retirement[a].special": true,
-        "retirement[a].annuity": false
+        "retirement[a].annuity": false,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line4b": {
@@ -965,7 +995,12 @@
         "retirement[p].box5": 0,
         "retirement[p].rollover": 0,
         "retirement[p].special": false,
-        "retirement[p].annuity": false
+        "retirement[p].annuity": false,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line5a": {
@@ -1101,7 +1136,12 @@
         "retirement[p].box5": 120000,
         "retirement[p].rollover": 0,
         "retirement[p].special": false,
-        "retirement[p].annuity": false
+        "retirement[p].annuity": false,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line5a": {
@@ -1243,7 +1283,12 @@
         "retirement[p].months": 12,
         "retirement[p].recovered": 0,
         "retirement[p].joint_life": false,
-        "retirement[p].age": 62
+        "retirement[p].age": 62,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line5a": {
@@ -1388,7 +1433,12 @@
         "retirement[p].used_last_year": true,
         "retirement[p].months": 12,
         "retirement[p].recovered": 500000,
-        "retirement[p].last_line4": 10000
+        "retirement[p].last_line4": 10000,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line5b": {
@@ -1526,7 +1576,12 @@
         "retirement[p].months": 6,
         "retirement[p].recovered": 0,
         "retirement[p].joint_life": true,
-        "retirement[p].combined_age": 125
+        "retirement[p].combined_age": 125,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line5b": {
@@ -1668,7 +1723,12 @@
         "retirement[p].months": 12,
         "retirement[p].recovered": 3050000,
         "retirement[p].joint_life": false,
-        "retirement[p].age": 72
+        "retirement[p].age": 72,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line5b": {
@@ -1794,7 +1854,12 @@
         "div.box12": 0,
         "ssb.pub915": false,
         "ssb.lump_sum": false,
-        "ssb.terror_disability": false
+        "ssb.terror_disability": false,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line6a": {
@@ -1924,7 +1989,12 @@
         "div.box12": 0,
         "ssb.pub915": false,
         "ssb.lump_sum": false,
-        "ssb.terror_disability": false
+        "ssb.terror_disability": false,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line6b": {
@@ -2050,7 +2120,12 @@
         "div.box12": 0,
         "ssb.pub915": false,
         "ssb.lump_sum": false,
-        "ssb.terror_disability": false
+        "ssb.terror_disability": false,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line6b": {
@@ -2189,7 +2264,12 @@
         "retirement[a].annuity": false,
         "ssb.pub915": false,
         "ssb.lump_sum": false,
-        "ssb.terror_disability": false
+        "ssb.terror_disability": false,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line6b": {
@@ -2315,7 +2395,12 @@
         "div.box12": 0,
         "ssb.pub915": false,
         "ssb.lump_sum": false,
-        "ssb.terror_disability": false
+        "ssb.terror_disability": false,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line6b": {
@@ -2438,7 +2523,12 @@
         "ssb.pub915": false,
         "ssb.lump_sum": false,
         "ssb.terror_disability": false,
-        "ssb.lived_apart": false
+        "ssb.lived_apart": false,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line6b": {
@@ -2565,7 +2655,12 @@
         "ssb.pub915": false,
         "ssb.lump_sum": false,
         "ssb.terror_disability": false,
-        "ssb.lived_apart": true
+        "ssb.lived_apart": true,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line6b": {
@@ -2691,7 +2786,12 @@
         "div.box12": 0,
         "ssb.pub915": true,
         "ssb.lump_sum": false,
-        "ssb.terror_disability": false
+        "ssb.terror_disability": false,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line6b": {
@@ -2822,7 +2922,12 @@
         "div.box12": 0,
         "ssb.pub915": false,
         "ssb.lump_sum": true,
-        "ssb.terror_disability": false
+        "ssb.terror_disability": false,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line6b": {
@@ -2971,7 +3076,12 @@
         "retirement[p].box5": 120000,
         "retirement[p].rollover": 0,
         "retirement[p].special": false,
-        "retirement[p].annuity": false
+        "retirement[p].annuity": false,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line4a": {
@@ -3123,7 +3233,12 @@
         "retirement[p].box5": 0,
         "retirement[p].rollover": 500000,
         "retirement[p].special": false,
-        "retirement[p].annuity": false
+        "retirement[p].annuity": false,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line5a": {
@@ -3263,7 +3378,12 @@
         "retirement[r].box5": 0,
         "retirement[r].rollover": 0,
         "retirement[r].special": true,
-        "retirement[r].annuity": false
+        "retirement[r].annuity": false,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line4b": {
@@ -3448,7 +3568,12 @@
         "retirement[k4].months": 12,
         "retirement[k4].recovered": 0,
         "retirement[k4].joint_life": false,
-        "retirement[k4].age": 71
+        "retirement[k4].age": 71,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line5a": {
@@ -3644,7 +3769,12 @@
         "retirement[j4].months": 12,
         "retirement[j4].recovered": 0,
         "retirement[j4].joint_life": true,
-        "retirement[j4].combined_age": 150
+        "retirement[j4].combined_age": 150,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line5b": {
@@ -3782,7 +3912,12 @@
         "div.box12": 0,
         "ssb.pub915": false,
         "ssb.lump_sum": false,
-        "ssb.terror_disability": false
+        "ssb.terror_disability": false,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line6b": {
@@ -3908,7 +4043,12 @@
         "div.box12": 0,
         "ssb.pub915": false,
         "ssb.lump_sum": false,
-        "ssb.terror_disability": false
+        "ssb.terror_disability": false,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line6b": {
@@ -4050,7 +4190,12 @@
         "retirement[p].months": 12,
         "retirement[p].recovered": 3100000,
         "retirement[p].joint_life": false,
-        "retirement[p].age": 62
+        "retirement[p].age": 62,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line5a": {
@@ -4188,7 +4333,12 @@
         "retirement[p].months": 12,
         "retirement[p].recovered": 4000000,
         "retirement[p].joint_life": false,
-        "retirement[p].age": 62
+        "retirement[p].age": 62,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line5a": {
@@ -4326,7 +4476,12 @@
         "retirement[p].months": 12,
         "retirement[p].recovered": 0,
         "retirement[p].joint_life": false,
-        "retirement[p].age": 62
+        "retirement[p].age": 62,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line5a": {
@@ -4470,7 +4625,12 @@
         "div.box12": 0,
         "ssb.pub915": false,
         "ssb.lump_sum": false,
-        "ssb.terror_disability": true
+        "ssb.terror_disability": true,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line6b": {
@@ -4607,7 +4767,12 @@
         "retirement[p].box5": 0,
         "retirement[p].rollover": 0,
         "retirement[p].special": false,
-        "retirement[p].annuity": false
+        "retirement[p].annuity": false,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line5a": {
@@ -4749,7 +4914,12 @@
         "retirement[p].months": 12,
         "retirement[p].recovered": 3100000,
         "retirement[p].joint_life": false,
-        "retirement[p].age": 62
+        "retirement[p].age": 62,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line5a": {
@@ -4875,7 +5045,12 @@
         "div.box12": 100000,
         "ssb.pub915": false,
         "ssb.lump_sum": false,
-        "ssb.terror_disability": false
+        "ssb.terror_disability": false,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line2a": {

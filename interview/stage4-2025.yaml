@@ -607,7 +607,7 @@ interview:
         doc: i1040sb
         locator: pp. 1–3, interest, dividends and foreign accounts/trusts
     - input: scope.schedule1
-      prompt: 'Any income or adjustment requiring Schedule 1, including a taxable state or local tax refund, unemployment compensation, self-employment income or Schedule SE (including clergy and church employee income), Schedule C income including statutory-employee wages, or an exclusion of Medicaid waiver payments (Schedule 1 line 8s)? (Schedule 1-A deductions are asked separately.)'
+      prompt: 'Any income or adjustment requiring Schedule 1 other than unemployment compensation, educator expenses, the HSA deduction and student loan interest, including a taxable state or local tax refund; alimony; an IRA deduction; being self-employed or filing Schedule C (income or loss, including statutory-employee wages) or Schedule SE (including clergy, and church employee income: wages from a church that elected exemption from social security and Medicare taxes); rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1); rental of personal property; farm income (Schedule F); gambling winnings, prizes or other income for Schedule 1 line 8; or an exclusion of Medicaid waiver payments (Schedule 1 line 8s)? (Schedule 1-A deductions are asked separately.)'
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
         guess. This computes a form slice, not a complete filed return.
       order: 0
@@ -1160,3 +1160,138 @@ interview:
       cite:
         doc: i1040gi
         locator: 'p. 31, Line 6d; p. 32, worksheet, Before you begin and line 8'
+    - input: s1.uc_paid
+      prompt: "Unemployment compensation paid to you in 2025: the total of box 1 of your Forms 1099-G (if box 1 is wrong, the amount actually paid to you)"
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 10
+      cite:
+        doc: i1040gi
+        locator: "p. 89, Schedule 1, line 7, 'You should receive a Form 1099-G showing in box 1 the total unemployment compensation paid to you in 2025' and 'If the amount reported in box 1 of your Form(s) 1099-G is incorrect, report on line 7 only the actual amount'"
+    - input: s1.uc_repaid
+      prompt: "Amount you repaid in 2025 of an overpayment of unemployment compensation you received in 2025 (zero if none)"
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 10
+      cite:
+        doc: i1040gi
+        locator: "p. 89, Schedule 1, line 7, 'If you received an overpayment of unemployment compensation in 2025, subtract the amount you repaid from the total amount you received'"
+    - input: s1.uc_unsupported
+      prompt: "Did you make contributions to a governmental unemployment compensation program (not counting paid family leave or disability insurance contributions), or repay in 2025 any unemployment compensation you included in income in an earlier year?"
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 10
+      cite:
+        doc: i1040gi
+        locator: "p. 89, Schedule 1, line 7, contributions to a governmental unemployment compensation program and repayments of more than $3,000 included in income in an earlier year (Pub. 525)"
+    - input: s1.educator_expenses
+      prompt: "Qualified educator expenses you paid in 2025 (professional development courses, and books, supplies, equipment and other materials used in the classroom), reduced by excludable savings bond interest (Form 8815), nontaxable qualified tuition program or Coverdell earnings or distributions, and reimbursements not reported in box 1 of your Form W-2; zero if none"
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 10
+      cite:
+        doc: i1040gi
+        locator: "p. 93, Schedule 1, line 11, Qualified expenses and 'You must reduce your qualified expenses by the following amounts'"
+    - input: s1.eligible_educator
+      prompt: "Were you an eligible educator in 2025 (a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year)?"
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 10
+      cite:
+        doc: i1040gi
+        locator: "p. 93, Schedule 1, line 11, 'An eligible educator is a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year'"
+    - input: f8889.line2
+      prompt: "HSA contributions you made for 2025 (or those made on your behalf), including those made by April 15, 2026 that were for 2025; do not include employer contributions, payroll contributions through a cafeteria plan, rollovers, or qualified HSA funding distributions; zero if none"
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 10
+      cite:
+        doc: f8889
+        locator: "Form 8889 (2025), line 2; i8889 p. 4, Line 2"
+    - input: f8889.line9
+      prompt: "Employer contributions to your HSAs for 2025, including payroll contributions through a cafeteria plan (Form W-2 box 12, code W, less employer contributions for 2024 included there, plus employer contributions for 2025 made in 2026); zero if none"
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 10
+      cite:
+        doc: i8889
+        locator: "p. 6, Line 9 Employer Contributions and the Employer Contribution Worksheet"
+    - input: f8889.unsupported
+      prompt: "Any of these: HSA distributions in 2025 that were not all used for qualified medical expenses or rolled over to another HSA; a qualified HSA funding distribution from an IRA in 2025; contributions by you or your employer to an Archer MSA for 2025 (Form 8853); excess HSA contributions from an earlier year that remain in your HSA; failing to remain an eligible individual during a testing period that began in an earlier year (last-month rule or qualified HSA funding distribution); or an HSA you acquired because of the account beneficiary's death?"
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 10
+      cite:
+        doc: i8889
+        locator: "Parts II and III, line 4 (Archer MSAs), line 10 (qualified HSA funding distributions), line 13 (Prior Year Excess Contributions), and Death of HSA Account Beneficiary"
+    - input: f8889.months_eligible
+      prompt: "Number of months of 2025 on the first day of which you were an eligible individual (covered by a high-deductible health plan, with no other disqualifying health coverage, not enrolled in Medicare, and not able to be claimed as a dependent on someone else's 2025 return); 0 to 12"
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 10
+      cite:
+        doc: i8889
+        locator: "pp. 2 and 6, Eligible Individual and the Line 3 Limitation Chart and Worksheet ('Were you an eligible individual ... on the first day of the month?')"
+    - input: f8889.months_family
+      prompt: "Of those months, the number in which your high-deductible health plan provided family coverage on the first day of the month; 0 to the number of eligible months"
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 10
+      cite:
+        doc: i8889
+        locator: "p. 6, Line 3 Limitation Chart and Worksheet, 'What type of coverage did your HDHP provide on the first day of the month?'"
+    - input: f8889.age55
+      prompt: "Were you age 55 or older at the end of 2025?"
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 10
+      cite:
+        doc: i8889
+        locator: "p. 4, Line 3, rule 6, and p. 6, Line 3 Limitation Chart"
+    - input: f8889.dec_coverage
+      prompt: "Your high-deductible health plan coverage on December 1, 2025, if you were an eligible individual that day: none (not an eligible individual on December 1), self_only, or family"
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 10
+      cite:
+        doc: i8889
+        locator: "p. 4, Line 3, rules 2 and 4(b), 'the type of HDHP coverage you had on the first day of the last month of your tax year'"
+    - input: f8889.last_month
+      prompt: "Do you use the last-month rule: treat yourself as an eligible individual for all of 2025 with the coverage you had on December 1, 2025, which requires you to remain an eligible individual from December 1, 2025 through December 31, 2026 (the testing period)?"
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 10
+      cite:
+        doc: i8889
+        locator: "p. 2, Last-month rule and Testing period; p. 4, Line 3, rule 2"
+    - input: sli.interest
+      prompt: "Total interest you paid in 2025 on qualified student loans (generally Form 1098-E box 1), not counting any amount paid from tax-free qualified tuition program earnings; zero if none"
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 10
+      cite:
+        doc: i1040gi
+        locator: "p. 98, Schedule 1, line 21, 'You paid interest in 2025 on a qualified student loan' and 'Don't include any amount paid from a distribution of earnings made from a qualified tuition program (QTP)'"
+    - input: sli.claimed
+      prompt: "Are you claimed as a dependent on someone else's (such as your parent's) 2025 tax return?"
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 10
+      cite:
+        doc: i1040gi
+        locator: "p. 98, Schedule 1, line 21, 'You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return'"

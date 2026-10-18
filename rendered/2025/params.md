@@ -4,6 +4,7 @@
 
 - `dependent_relationship`: child, sibling, sibling_descendant, parent, parent_relative, in_law, household_member, other — [i1040gi] pp. 17 and 19, Who Qualifies as Your Dependent, Steps 1 and 4: child is a son, daughter, stepchild, foster child or a descendant of any of them; sibling is a brother, sister, stepbrother, stepsister, half brother or half sister, or a son or daughter of a brother, sister, half brother or half sister (Step 4 lists step siblings but not their children); sibling_descendant is any other descendant of a sibling, including a step sibling's child (a qualifying child relationship under Step 1, and a Step 4 relative only as a household member who lived with you all year); parent is a father or mother; parent_relative is an ancestor or sibling of a parent (a Step 4 relative, but not the parent of Head of Household Test 1); in_law is a step-parent or an in-law; household_member is any other person who lived with you all year (2025; printed date 2026-02-25; sha256 482e9c48)
 - `filing_status`: single, mfj, mfs, hoh, qss — [f1040] Form 1040, Filing Status (checkboxes) (2025; created 2025-09-05; sha256 3d31c226)
+- `hsa_coverage`: none, self_only, family — [i8889] p. 4, Line 3, rules 2 and 4(b), and p. 6, Line 3 Limitation Chart: the type of HDHP coverage (self-only or family) on the first day of a month, or not an eligible individual that day (2025; sha256 da6f2f58)
 - `retirement_account`: traditional_ira, roth_ira, plan — [f1099r] Instructions for Recipient: traditional IRA or traditional SIMPLE IRA (the IRA/SEP/SIMPLE box), Roth IRA or Roth SIMPLE IRA, and qualified plans, section 403(b) and governmental 457(b) plans (pensions and annuities); i1040gi pp. 26-28, lines 4a, 4b, 5a and 5b (2025 (calendar-year form); sha256 d6b7be48)
 - `retirement_code`: normal_7, death_4, early_exception_2, direct_rollover_G, qualified_roth_Q, other — [f1099r] Instructions for Recipient, Box 7: 7 normal distribution; 4 death; 2 early distribution, exception applies; G direct rollover to a qualified plan, 403(b), governmental 457(b) or IRA; Q qualified distribution from a Roth IRA; every other code or combination is 'other' (2025 (calendar-year form); sha256 d6b7be48)
 - `sales_box`: A, B, C, D, E, F, G, H, I, J, K, L — [f8949] Parts I and II, checkbox classifications (2025; created 2025-05-05; sha256 27451389)
@@ -46,6 +47,11 @@
 | `eic.ws_threshold1.joint` | NonNegDollars | $30,470 | [i1040gi] p. 46, Worksheet A, line 5, "($30,470 if married filing jointly)" (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `eic.ws_threshold1.other` | NonNegDollars | $23,350 | [i1040gi] p. 46, Worksheet A, line 5, "1 or more qualifying children ... less than $23,350" (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `ftc.limit` | NonNegDollars | single $300; mfj $600; mfs $300; hoh $300; qss $300 | [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular tax (2025; printed date 2025-12-23; sha256 6998cf8c) |
+| `hsa.family` | NonNegDollars | $8,550 | [i8889] p. 6, Line 3 Limitation Chart, family coverage, "Enter $8,550 on the line below for the month" (2025; sha256 da6f2f58) |
+| `hsa.family_55` | NonNegDollars | $9,550 | [i8889] p. 6, Line 3 Limitation Chart, family coverage, "If, at the end of 2025, you were unmarried and age 55 or older, enter $9,550 for the month" (2025; sha256 da6f2f58) |
+| `hsa.self_only` | NonNegDollars | $4,300 | [i8889] p. 6, Line 3 Limitation Chart, self-only coverage, "Enter $4,300 on the line below for the month" (2025; sha256 da6f2f58) |
+| `hsa.self_only_55` | NonNegDollars | $5,300 | [i8889] p. 6, Line 3 Limitation Chart, self-only coverage, "If you were age 55 or older at the end of 2025, enter $5,300 for the month" (2025; sha256 da6f2f58) |
+| `hsa.twelfth` | Rate | 1/12 | [i8889] p. 6, Line 3 Limitation Chart and Worksheet, "Limitation. Divide the total by 12" (2025; sha256 da6f2f58) |
 | `medicare.additional_rate` | Rate | 9/1000 | [f8959] Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; sha256 13e64004) |
 | `medicare.regular_rate` | Rate | 145/10000 | [f8959] Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; sha256 13e64004) |
 | `medicare.threshold` | NonNegDollars | single $200,000; mfj $250,000; mfs $125,000; hoh $200,000; qss $200,000 | [f8959] Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; sha256 13e64004) |
@@ -62,6 +68,7 @@
 | `qdcg.rate_20` | Rate | 20% (0.20) | [i1040gi] QDCGT worksheet, line 21 (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `qdcg.zero_rate_ceiling` | Dollars | single $48,350; mfj $96,700; mfs $48,350; hoh $64,750; qss $96,700 | [i1040gi] QDCGT worksheet, line 6 (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `qr.gross_income_limit` | NonNegDollars | $5,200 | [i1040gi] p. 19, Step 4, "Who had gross income of less than $5,200 in 2025" (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `s1.educator_max` | NonNegDollars | $300 | [i1040gi] p. 93, Schedule 1, line 11, "up to $300 of qualified expenses" (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `sa.half` | Rate | 1/2 | [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12) |
 | `sa.medical_rate` | Rate | 75/1000 | [f1040sa] Schedule A (2025), line 3 (2025; created 2025-11-20; sha256 c14acf34) |
 | `sa.salt_base` | NonNegDollars | $40,000 | [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12) |
@@ -78,6 +85,11 @@
 | `sdtw.rate20` | Rate | 20% (0.20) | [i1040sd] pp. 15–16, Schedule D Tax Worksheet (2025; printed date 2025-12-11; sha256 650643a6) |
 | `sdtw.rate25` | Rate | 25% (0.25) | [i1040sd] pp. 15–16, Schedule D Tax Worksheet (2025; printed date 2025-12-11; sha256 650643a6) |
 | `sdtw.rate28` | Rate | 28% (0.28) | [i1040sd] pp. 15–16, Schedule D Tax Worksheet (2025; printed date 2025-12-11; sha256 650643a6) |
+| `sli.base_joint` | NonNegDollars | $170,000 | [i1040gi] p. 99, Student Loan Interest Deduction Worksheet, line 5, "Married filing jointly—$170,000" (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `sli.base_other` | NonNegDollars | $85,000 | [i1040gi] p. 99, Student Loan Interest Deduction Worksheet, line 5, "Single, head of household, or qualifying surviving spouse—$85,000" (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `sli.divisor_joint` | NonNegDollars | $30,000 | [i1040gi] p. 99, Student Loan Interest Deduction Worksheet, line 7, "($30,000 if married filing jointly)" (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `sli.divisor_other` | NonNegDollars | $15,000 | [i1040gi] p. 99, Student Loan Interest Deduction Worksheet, line 7, "Divide line 6 by $15,000" (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `sli.max` | NonNegDollars | $2,500 | [i1040gi] p. 99, Student Loan Interest Deduction Worksheet, line 1, "Don't enter more than $2,500" (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `smw.table1_160` | Rate | 1/160 | [i1040gi] p. 29, Simplified Method Worksheet, Table 1, age 71 or older, annuity starting date after November 18, 1996: 160 (line 4 divides line 2 by it) (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `smw.table1_210` | Rate | 1/210 | [i1040gi] p. 29, Simplified Method Worksheet, Table 1, age 66-70, annuity starting date after November 18, 1996: 210 (line 4 divides line 2 by it) (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `smw.table1_260` | Rate | 1/260 | [i1040gi] p. 29, Simplified Method Worksheet, Table 1, age 61-65, annuity starting date after November 18, 1996: 260 (line 4 divides line 2 by it) (2025; printed date 2026-02-25; sha256 482e9c48) |

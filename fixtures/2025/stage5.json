@@ -113,7 +113,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line1a": {
@@ -399,7 +404,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line1a": {
@@ -701,7 +711,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line1a": {
@@ -978,14 +993,19 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line8": {
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -998,7 +1018,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -1011,7 +1031,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -1024,7 +1044,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -1050,7 +1070,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -1063,7 +1083,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -1076,7 +1096,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -1089,7 +1109,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -1102,7 +1122,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -1115,7 +1135,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -1128,7 +1148,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -1141,7 +1161,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -1154,7 +1174,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -1167,7 +1187,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -1270,7 +1290,12 @@
         "s8812.combat_pay": false,
         "s8812.puerto_rico": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "f1040.line8": {

@@ -587,6 +587,146 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       = false
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
 
+== Form 8889 — HSA contributions and deduction (Part I) ==
+  (helper) Year parameter sales.zero
+      = $0
+      cite: [f8889] Form 8889 (2025), lines 4, 7 and 10 (2025; created 2025-03-28; 15ed4587)
+  2   HSA contributions you made for 2025 (or those made on your behalf), including those made by the unextended due date of your tax return that were for 2025. Do not include employer contributions, contributions through a cafeteria plan, or rollovers
+      = $0
+      cite: [f8889] Form 8889 (2025), line 2; i8889 p. 4, Line 2 (2025; created 2025-03-28; 15ed4587)
+  9   Employer contributions made to your HSAs for 2025
+      = $0
+      cite: [i8889] p. 6, Line 9 Employer Contributions and the Employer Contribution Worksheet (2025; da6f2f58)
+  (helper) Any HSA contributions for 2025 (yours or your employer's)
+      = false
+      cite: [i8889] pp. 1-2, Who Must File (you or your employer made contributions to your HSA for 2025) (2025; da6f2f58)
+  (helper) Any of these: HSA distributions in 2025 that were not all used for qualified medical expenses or rolled over; a qualified HSA funding distribution from an IRA in 2025; contributions to an Archer MSA for 2025 (Form 8853); excess HSA contributions from an earlier year that remain in your HSA; failing to remain an eligible individual during a testing period that began in an earlier year; or an HSA you acquired because of the account beneficiary's death?
+      = UNKNOWN (no input supplied for f8889.unsupported)
+      cite: [i8889] Parts II and III, line 4 (Archer MSAs), line 10 (qualified HSA funding distributions), line 13 (Prior Year Excess Contributions), and Death of HSA Account Beneficiary (2025; da6f2f58)
+  (helper) Married filing jointly or separately (spouses' HSA rules)
+      = false
+      cite: [f8889] Form 8889 (2025), lines 6 and 7 (spouses with separate HSAs, family coverage, additional contribution amount) (2025; created 2025-03-28; 15ed4587)
+  (helper) Number of months of 2025 on the first day of which you were an eligible individual
+      = UNKNOWN (no input supplied for f8889.months_eligible)
+      cite: [i8889] pp. 2 and 6, Eligible Individual and the Line 3 Limitation Chart and Worksheet ('Were you an eligible individual ... on the first day of the month?') (2025; da6f2f58)
+  (helper) Of those months, the number in which your HDHP provided family coverage on the first day of the month
+      = UNKNOWN (no input supplied for f8889.months_family)
+      cite: [i8889] p. 6, Line 3 Limitation Chart and Worksheet, 'What type of coverage did your HDHP provide on the first day of the month?' (2025; da6f2f58)
+  (helper) The month counts are impossible (more than 12 eligible months, or more family months than eligible months)
+      = UNKNOWN (no input supplied for f8889.months_family)
+      cite: [i8889] p. 6, Line 3 Limitation Chart and Worksheet (twelve months of 2025) (2025; da6f2f58)
+  (helper) Were you age 55 or older at the end of 2025?
+      = UNKNOWN (no input supplied for f8889.age55)
+      cite: [i8889] p. 4, Line 3, rule 6, and p. 6, Line 3 Limitation Chart (2025; da6f2f58)
+  (helper) Line 3 chart amount for a month of self-only coverage ($4,300; $5,300 if age 55 or older at the end of 2025)
+      = UNKNOWN (no input supplied for f8889.age55)
+      cite: [i8889] p. 6, Line 3 Limitation Chart, 'Enter $4,300 on the line below for the month. If you were age 55 or older at the end of 2025, enter $5,300 for the month' (2025; da6f2f58)
+      note: guard incomplete
+  (helper) Year parameter hsa.self_only ($4,300)
+      = $4,300
+      cite: [i8889] p. 6, Line 3 Limitation Chart, $4,300 (2025; da6f2f58)
+  (helper) Year parameter hsa.self_only_55 ($5,300)
+      = $5,300
+      cite: [i8889] p. 6, Line 3 Limitation Chart, $5,300 (2025; da6f2f58)
+  (helper) Line 3 chart amount for a month of family coverage ($8,550; $9,550 if unmarried and age 55 or older at the end of 2025)
+      = UNKNOWN (no input supplied for f8889.age55)
+      cite: [i8889] p. 6, Line 3 Limitation Chart, 'Enter $8,550 on the line below for the month. If, at the end of 2025, you were unmarried and age 55 or older, enter $9,550 for the month' (2025; da6f2f58)
+      note: guard incomplete
+  (helper) Year parameter hsa.family ($8,550)
+      = $8,550
+      cite: [i8889] p. 6, Line 3 Limitation Chart, $8,550 (2025; da6f2f58)
+  (helper) Year parameter hsa.family_55 ($9,550)
+      = $9,550
+      cite: [i8889] p. 6, Line 3 Limitation Chart, $9,550 (2025; da6f2f58)
+  (helper) Family monthly amount less the self-only monthly amount
+      = UNKNOWN (no input supplied for f8889.age55)
+      cite: [i8889] p. 6, Line 3 Limitation Chart and Worksheet (each family month enters the family amount: the self-only amount plus this difference) (2025; da6f2f58)
+  (helper) The self-only monthly amount for every eligible month
+      = UNKNOWN (no input supplied for f8889.age55)
+      cite: [i8889] p. 6, Line 3 Limitation Chart and Worksheet, the monthly amounts (2025; da6f2f58)
+  (helper) The family difference for every month of family coverage
+      = UNKNOWN (no input supplied for f8889.age55)
+      cite: [i8889] p. 6, Line 3 Limitation Chart and Worksheet, the monthly amounts (2025; da6f2f58)
+  (helper) Total for all months (Line 3 Limitation Chart and Worksheet)
+      = UNKNOWN (no input supplied for f8889.age55)
+      cite: [i8889] p. 6, Line 3 Limitation Chart and Worksheet, 'Total for all months' (2025; da6f2f58)
+  (helper) Limitation. Divide the total by 12
+      = UNKNOWN (no input supplied for f8889.age55)
+      cite: [i8889] p. 6, Line 3 Limitation Chart and Worksheet, 'Limitation. Divide the total by 12. Enter here and on line 3' (2025; da6f2f58)
+  (helper) Eligible individual on the first day of every month of 2025
+      = UNKNOWN (no input supplied for f8889.months_eligible)
+      cite: [i8889] p. 4, Line 3, rules 3 and 4 (2025; da6f2f58)
+  (helper) Coverage type changed during the year (family coverage in some eligible months, self-only in others)
+      = UNKNOWN (no input supplied for f8889.months_family)
+      cite: [i8889] p. 4, Line 3, rule 4, 'you changed your type of coverage during the year' (2025; da6f2f58)
+  (helper) Your HDHP coverage on December 1, 2025, as an eligible individual: none, self_only or family
+      = UNKNOWN (no input supplied for f8889.dec_coverage)
+      cite: [i8889] p. 4, Line 3, rules 2 and 4(b), 'the type of HDHP coverage you had on the first day of the last month of your tax year' (2025; da6f2f58)
+  (helper) The maximum amount for the HDHP coverage you had on December 1 (the full-year amount of that coverage type)
+      = UNKNOWN (no input supplied for f8889.dec_coverage)
+      cite: [i8889] p. 4, Line 3, rules 2, 3 and 4(b) (2025; da6f2f58)
+      note: guard incomplete
+  (helper) Do you use the last-month rule (treating yourself as an eligible individual for all of 2025 with your December 1 coverage, subject to the testing period through December 31, 2026)?
+      = UNKNOWN (no input supplied for f8889.last_month)
+      cite: [i8889] p. 2, Last-month rule and Testing period; p. 4, Line 3, rule 2 (2025; da6f2f58)
+  (helper) The last-month rule applies (an eligible individual on December 1 who uses it)
+      = UNKNOWN (no input supplied for f8889.last_month)
+      cite: [i8889] p. 2, Last-month rule; p. 4, Line 3, rule 2 (2025; da6f2f58)
+  (helper) The greater of the Line 3 Limitation Chart and Worksheet and the maximum for your December 1 coverage
+      = UNKNOWN (no input supplied for f8889.age55)
+      cite: [i8889] p. 4, Line 3, rule 4, 'enter on line 3 ... the greater of: a. The limitation shown on the last line of the Line 3 Limitation Chart and Worksheet ... or b. The maximum amount that can be contributed based on the type of HDHP coverage you had on the first day of the last month' (2025; da6f2f58)
+  (helper) Line 3 for an eligible individual all year
+      = UNKNOWN (no input supplied for f8889.months_family)
+      cite: [i8889] p. 4, Line 3, rules 3 and 4 (for a year with one coverage type the chart gives $4,300 or $8,550, plus $1,000 if age 55 or older) (2025; da6f2f58)
+      note: guard incomplete
+  (helper) Line 3 under the last-month rule (considered an eligible individual all year)
+      = UNKNOWN (no input supplied for f8889.months_family)
+      cite: [i8889] p. 4, Line 3, rules 2, 3 and 4 (rule 4 covers a filer who 'were, or were considered, an eligible individual for the entire year' and changed type; amb.2025.hsa_last_month_change) (2025; da6f2f58)
+      note: guard incomplete; Interpretation amb.2025.hsa_last_month_change: The greater of the chart and the December 1 maximum when the coverage type changed among the eligible months; the December 1 maximum otherwise (f8889.line3_last_month). Rule 4 names the filer considered eligible all year, which is the last-month rule's filer, so it reads as the stricter fit to the text; the result is never less than rule 2's amount. Found by the Stage 11 class M hand-work (the model applied rule 4), adopted under the owner's standing preference for the strictly accurate reading.
+ (i8889, p. 4, Line 3, rules 2, 3 and 4)
+  (helper) Line 3 when not an eligible individual every month
+      = UNKNOWN (no input supplied for f8889.last_month)
+      cite: [i8889] p. 4, Line 3, rules 2 and 5 (2025; da6f2f58)
+      note: guard incomplete
+  3   If you were under age 55 at the end of 2025 and, on the first day of every month during 2025, you were, or were considered, an eligible individual with the same coverage, enter $4,300 ($8,550 for family coverage). All others, see the instructions for the amount to enter
+      = UNKNOWN (no input supplied for f8889.months_eligible)
+      cite: [f8889] Form 8889 (2025), line 3; i8889 pp. 4-6, Line 3 (2025; created 2025-03-28; 15ed4587)
+      note: guard incomplete
+  4   Enter the amount you and your employer contributed to your Archer MSAs for 2025 from Form 8853, lines 1 and 2
+      = $0
+      cite: [f8889] Form 8889 (2025), line 4 (Archer MSA contributions are refused by f8889.unsupported) (2025; created 2025-03-28; 15ed4587)
+  5   Subtract line 4 from line 3. If zero or less, enter -0-
+      = UNKNOWN (no input supplied for f8889.months_eligible)
+      cite: [f8889] Form 8889 (2025), line 5 (2025; created 2025-03-28; 15ed4587)
+  6   Enter the amount from line 5. But if you and your spouse each have separate HSAs and had family coverage under an HDHP at any time during 2025, see the instructions for the amount to enter
+      = UNKNOWN (no input supplied for f8889.months_eligible)
+      cite: [f8889] Form 8889 (2025), line 6 (married filers are refused by f8889.married) (2025; created 2025-03-28; 15ed4587)
+  7   If you were age 55 or older at the end of 2025, married, and you or your spouse had family coverage under an HDHP at any time during 2025, enter your additional contribution amount
+      = $0
+      cite: [f8889] Form 8889 (2025), line 7 (married filers are refused by f8889.married; an unmarried filer's $1,000 is in line 3) (2025; created 2025-03-28; 15ed4587)
+  8   Add lines 6 and 7
+      = UNKNOWN (no input supplied for f8889.months_eligible)
+      cite: [f8889] Form 8889 (2025), line 8 (2025; created 2025-03-28; 15ed4587)
+  10  Qualified HSA funding distributions
+      = $0
+      cite: [f8889] Form 8889 (2025), line 10 (qualified HSA funding distributions are refused by f8889.unsupported) (2025; created 2025-03-28; 15ed4587)
+  11  Add lines 9 and 10
+      = $0
+      cite: [f8889] Form 8889 (2025), line 11 (2025; created 2025-03-28; 15ed4587)
+  12  Subtract line 11 from line 8. If zero or less, enter -0-
+      = UNKNOWN (no input supplied for f8889.months_eligible)
+      cite: [f8889] Form 8889 (2025), line 12 (2025; created 2025-03-28; 15ed4587)
+  (helper) Contributions exceed the limit (line 2 more than line 12, or employer contributions more than line 8)
+      = UNKNOWN (no input supplied for f8889.months_eligible)
+      cite: [i8889] p. 7, Line 13, Excess Contributions You Make and Excess Employer Contributions (2025; da6f2f58)
+  (helper) Generally, enter the smaller of line 2 or line 12
+      = UNKNOWN (no input supplied for f8889.unsupported)
+      cite: [i8889] p. 7, Line 13, 'Generally, enter the smaller of line 2 or line 12 on line 13 and on Schedule 1 (Form 1040), Part II, line 13' (2025; da6f2f58)
+  13  HSA deduction (see instructions)
+      = $0
+      cite: [f8889] Form 8889 (2025), line 13 (2025; created 2025-03-28; 15ed4587)
+      note: taken: {"eq":["f8889.any",{"const":false}],"op":"test"}
+
 == Form 8959 — wage-only Additional Medicare Tax ==
   (helper) Any self-employment income (including church employee income), RRTA compensation, tips not reported to your employer or allocated tips in Form W-2 box 8 (Form 4137), Form 8919 wages, uncollected Medicare tax in Form W-2 box 12 (codes B or N), or Medicare wages on a wage statement from a U.S. territory (such as Form 499R-2/W-2PR)?
       = false
@@ -1094,6 +1234,71 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       = $10,777
       cite: [i1040gi] QDCGT worksheet, line 25 (2025; printed date 2026-02-25; 482e9c48)
 
+== Schedule 1 — selected lines (unemployment compensation, educator expenses, HSA deduction, student loan interest) ==
+  (helper) Year parameter sales.zero
+      = $0
+      cite: [f1040s1] Schedule 1 (2025), lines 7, 11, 21 (2025; created 2025-07-25; 8dafec71)
+  (helper) Unemployment compensation paid to you in 2025
+      = $0
+      cite: [i1040gi] p. 89, Schedule 1, line 7, 'You should receive a Form 1099-G showing in box 1 the total unemployment compensation paid to you in 2025' and 'If the amount reported in box 1 of your Form(s) 1099-G is incorrect, report on line 7 only the actual amount' (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Any unemployment compensation
+      = false
+      cite: [i1040gi] p. 89, Schedule 1, line 7 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Amount of a 2025 overpayment of unemployment compensation you repaid in 2025
+      = UNKNOWN (no input supplied for s1.uc_repaid)
+      cite: [i1040gi] p. 89, Schedule 1, line 7, 'If you received an overpayment of unemployment compensation in 2025, subtract the amount you repaid from the total amount you received' (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Did you make contributions to a governmental unemployment compensation program (not counting paid family leave or disability insurance contributions), or repay in 2025 any unemployment compensation you included in income in an earlier year?
+      = UNKNOWN (no input supplied for s1.uc_unsupported)
+      cite: [i1040gi] p. 89, Schedule 1, line 7, contributions to a governmental unemployment compensation program and repayments of more than $3,000 included in income in an earlier year (Pub. 525) (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Unemployment compensation less the amount of a 2025 overpayment repaid
+      = UNKNOWN (no input supplied for s1.uc_unsupported)
+      cite: [i1040gi] p. 89, Schedule 1, line 7, 'subtract the amount you repaid from the total amount you received. Enter the result on line 7' (2025; printed date 2026-02-25; 482e9c48)
+  7   Unemployment compensation
+      = $0
+      cite: [f1040s1] Schedule 1 (2025), line 7 (2025; created 2025-07-25; 8dafec71)
+      note: taken: {"eq":["s1.has_uc",{"const":false}],"op":"test"}
+  7 (box) If you repaid a 2025 overpayment (see instructions), check here
+      = UNKNOWN (no input supplied for s1.uc_repaid)
+      cite: [f1040s1] Schedule 1 (2025), line 7, 'If you repaid a 2025 overpayment (see instructions), check here' (2025; created 2025-07-25; 8dafec71)
+  7 (amount repaid) Enter amount repaid
+      = UNKNOWN (no input supplied for s1.uc_repaid)
+      cite: [f1040s1] Schedule 1 (2025), line 7, 'enter amount repaid' (2025; created 2025-07-25; 8dafec71)
+  10  Combine lines 1 through 7 and 9. This is your additional income. Enter here and on Form 1040, 1040-SR, or 1040-NR, line 8
+      = $0
+      cite: [f1040s1] Schedule 1 (2025), line 10 (lines 1 to 6, 8a to 8z and 9 are outside this tool and refused at Form 1040 line 8 by scope.schedule1) (2025; created 2025-07-25; 8dafec71)
+  (helper) Qualified educator expenses you paid in 2025
+      = $0
+      cite: [i1040gi] p. 93, Schedule 1, line 11, Qualified expenses and 'You must reduce your qualified expenses by the following amounts' (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Any qualified educator expenses
+      = false
+      cite: [i1040gi] p. 93, Schedule 1, line 11 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Were you an eligible educator in 2025 (a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year)?
+      = UNKNOWN (no input supplied for s1.eligible_educator)
+      cite: [i1040gi] p. 93, Schedule 1, line 11, 'An eligible educator is a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year' (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Year parameter s1.educator_max ($300)
+      = $300
+      cite: [i1040gi] p. 93, Schedule 1, line 11, 'up to $300' (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Qualified educator expenses, up to $300
+      = $0
+      cite: [i1040gi] p. 93, Schedule 1, line 11, 'you can deduct on line 11 up to $300 of qualified expenses you paid in 2025' (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Educator expense deduction for an eligible educator
+      = UNKNOWN (no input supplied for s1.eligible_educator)
+      cite: [i1040gi] p. 93, Schedule 1, line 11, 'If you were an eligible educator in 2025' (2025; printed date 2026-02-25; 482e9c48)
+      note: guard incomplete
+  11  Educator expenses
+      = $0
+      cite: [f1040s1] Schedule 1 (2025), line 11 (2025; created 2025-07-25; 8dafec71)
+      note: taken: {"eq":["s1.has_educator_expenses",{"const":false}],"op":"test"}
+  13  Health savings account deduction. Attach Form 8889
+      = $0
+      cite: [f1040s1] Schedule 1 (2025), line 13 (2025; created 2025-07-25; 8dafec71)
+  21  Student loan interest deduction
+      = $0
+      cite: [f1040s1] Schedule 1 (2025), line 21 (2025; created 2025-07-25; 8dafec71)
+  26  Add lines 11 through 23 and 25. These are your adjustments to income. Enter here and on Form 1040, 1040-SR, or 1040-NR, line 10
+      = $0
+      cite: [f1040s1] Schedule 1 (2025), line 26 (lines 12, 14 to 20, 23 and 25 are outside this tool and refused at Form 1040 line 10 by scope.schedule1) (2025; created 2025-07-25; 8dafec71)
+
 == Schedule 2 — supported Additional Medicare Tax and NIIT ==
   (helper) Are you required to file Form 6251 or do you have an AMT adjustment requiring its review?
       = false
@@ -1552,7 +1757,7 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
 
 == Proof-of-concept scope screening ==
-  (helper) Any income or adjustment requiring Schedule 1, including a taxable state or local tax refund, unemployment compensation, self-employment income or Schedule SE (including clergy and church employee income), Schedule C income including statutory-employee wages, or an exclusion of Medicaid waiver payments (Schedule 1 line 8s)? (Schedule 1-A deductions are asked separately.)
+  (helper) Any income or adjustment requiring Schedule 1 other than unemployment compensation, educator expenses, the HSA deduction and student loan interest, including a taxable state or local tax refund; alimony; an IRA deduction; being self-employed or filing Schedule C (income or loss, including statutory-employee wages) or Schedule SE (including clergy, and church employee income: wages from a church that elected exemption from social security and Medicare taxes); rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1); rental of personal property; farm income (Schedule F); gambling winnings, prizes or other income for Schedule 1 line 8; or an exclusion of Medicaid waiver payments (Schedule 1 line 8s)? (Schedule 1-A deductions are asked separately.)
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
   (helper) Do you qualify for any Schedule 1-A deduction (qualified tips, qualified overtime compensation, qualified passenger vehicle loan interest, or the enhanced deduction for a filer born before January 2, 1961), whether or not you planned to claim it?
@@ -2052,6 +2257,84 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       = $10,777
       cite: [i1040sd] pp. 15–16, Schedule D Tax Worksheet (2025; printed date 2025-12-11; 650643a6)
 
+== Student Loan Interest Deduction Worksheet—Schedule 1, Line 21 ==
+  (helper) Year parameter sales.zero
+      = $0
+      cite: [i1040gi] p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Total interest you paid in 2025 on qualified student loans
+      = $0
+      cite: [i1040gi] p. 98, Schedule 1, line 21, 'You paid interest in 2025 on a qualified student loan' and 'Don't include any amount paid from a distribution of earnings made from a qualified tuition program (QTP)' (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Any student loan interest
+      = false
+      cite: [i1040gi] p. 98, Schedule 1, line 21 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Are you claimed as a dependent on someone else's (such as your parent's) 2025 tax return?
+      = UNKNOWN (no input supplied for sli.claimed)
+      cite: [i1040gi] p. 98, Schedule 1, line 21, 'You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return' (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Year parameter sli.max ($2,500)
+      = $2,500
+      cite: [i1040gi] p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 1, $2,500 (2025; printed date 2026-02-25; 482e9c48)
+  1   Enter the total interest you paid in 2025 on qualified student loans (see the instructions for line 21). Don't enter more than $2,500
+      = $0
+      cite: [i1040gi] p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 1 (2025; printed date 2026-02-25; 482e9c48)
+  2   Enter the amount from Form 1040 or 1040-SR, line 9
+      = $102,500
+      cite: [i1040gi] p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 2 (2025; printed date 2026-02-25; 482e9c48)
+  3   Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 25
+      = $0
+      cite: [i1040gi] p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 3 (lines 12 and 14 to 20, 23 and 25 are outside this tool and refused through line 2, Form 1040 line 9, by scope.schedule1) (2025; printed date 2026-02-25; 482e9c48)
+  4   Subtract line 3 from line 2
+      = $102,500
+      cite: [i1040gi] p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 4 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Year parameter sli.base_other ($85,000)
+      = $85,000
+      cite: [i1040gi] p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 5, $85,000 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Year parameter sli.base_joint ($170,000)
+      = $170,000
+      cite: [i1040gi] p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 5, $170,000 (2025; printed date 2026-02-25; 482e9c48)
+  5   Enter the amount shown below for your filing status. Single, head of household, or qualifying surviving spouse—$85,000. Married filing jointly—$170,000
+      = $85,000
+      cite: [i1040gi] p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 5 (no amount for married filing separately, which cannot take the deduction) (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["f1040.status",{"const":"single"}],"op":"test"}
+  (helper) Is the amount on line 4 more than the amount on line 5?
+      = true
+      cite: [i1040gi] p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 6 (2025; printed date 2026-02-25; 482e9c48)
+  6   Subtract line 5 from line 4
+      = $17,500
+      cite: [i1040gi] p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 6 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Year parameter sli.divisor_other ($15,000)
+      = $15,000
+      cite: [i1040gi] p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 7, $15,000 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Year parameter sli.divisor_joint ($30,000)
+      = $30,000
+      cite: [i1040gi] p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 7, $30,000 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) $15,000 ($30,000 if married filing jointly)
+      = $15,000
+      cite: [i1040gi] p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 7 (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["f1040.status",{"const":"single"}],"op":"test"}
+  (helper) Divide line 6 by $15,000 ($30,000 if married filing jointly), rounded to three places, not more than 1.000; multiply line 1 by the result
+      = $0
+      cite: [i1040gi] p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, lines 7 and 8 ('Enter the result as a decimal (rounded to at least three places). If the result is 1.000 or more, enter 1.000' and 'Multiply line 1 by line 7'; three places, amb.2025.sli_ratio_places) (2025; printed date 2026-02-25; 482e9c48)
+      note: ratio 1000/1000, half-up to 3 places and not more than 1; product half-up to the cent; Interpretation amb.2025.sli_ratio_places: Round the ratio half-up to three decimal places (the prorate atom with places 3 on sli.line8_figured). The owner's ruling. Three places is the least precision the text allows and the usual hand computation; the readings differ by at most a few cents of deduction (for example $167.50 against $166.67 on line 8 when line 6 is $1,000 and line 1 is $2,500).
+ (i1040gi, p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 7)
+  8   Multiply line 1 by line 7
+      = $0
+      cite: [i1040gi] p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 6, 'No. Skip lines 6 and 7, enter -0- on line 8, and go to line 9'; line 8 (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["sli.over",{"const":true}],"op":"test"}
+  9   Student loan interest deduction. Subtract line 8 from line 1. Enter the result here and on Schedule 1, line 21
+      = $0
+      cite: [i1040gi] p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 9 (line 8 never exceeds line 1, since the ratio is at most 1.000) (2025; printed date 2026-02-25; 482e9c48)
+  (helper) You can take the deduction: a filing status other than married filing separately, and not claimed as a dependent
+      = UNKNOWN (no input supplied for sli.claimed)
+      cite: [i1040gi] p. 98, Schedule 1, line 21, 'You can take this deduction only if all of the following apply' (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Student loan interest deduction for an eligible filer
+      = UNKNOWN (no input supplied for sli.claimed)
+      cite: [i1040gi] p. 98, Schedule 1, line 21 (2025; printed date 2026-02-25; 482e9c48)
+      note: guard incomplete
+  (helper) Student loan interest deduction (Schedule 1, line 21)
+      = $0
+      cite: [i1040gi] p. 98, Schedule 1, line 21 (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["sli.has",{"const":false}],"op":"test"}
+
 == Social Security Benefits Worksheet—Lines 6a and 6b ==
   (helper) Net benefits: total of box 5 of all your Forms SSA-1099 and RRB-1099
       = $0
@@ -2086,7 +2369,7 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
   5   Combine lines 2, 3, and 4
       = UNKNOWN (no input supplied for div.box12)
       cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 5 (2025; printed date 2026-02-25; 482e9c48)
-  6   Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 25; zero in this tool
+  6   Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 25
       = $0
       cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 6 (2025; printed date 2026-02-25; 482e9c48)
   7   Is the amount on line 6 less than the amount on line 5? If yes, subtract line 6 from line 5 (if no, none of the benefits are taxable)
@@ -2240,6 +2523,18 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   f1040.sd.to1040: chose $7,500 (guard 1)
       not taken: guard 0 = false
+  s1.line7: chose $0 (guard 1)
+      not taken: guard 0 = false
+  s1.line11: chose $0 (guard 1)
+      not taken: guard 0 = false
+  f8889.line13: chose $0 (guard 1)
+      not taken: guard 0 = false
+  s1.f8889.line13: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sli.deduction: chose $0 (guard 1)
+      not taken: guard 0 = false
+  s1.sli.deduction: chose $0 (guard 1)
+      not taken: guard 0 = false
   eic.limit_other: chose $19,104 (guard 0)
   eic.limit_joint: chose $26,214 (guard 0)
   eic.limit: chose $19,104 (guard 0)
@@ -2290,6 +2585,14 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   f1040.s8812.line27: chose $0 (guard 0)
   person[taxpayer].credit: chose $0 (guard 1)
       not taken: guard 0 = false
+  f8889.self_amount: chose UNKNOWN (no input supplied for f8889.age55)
+  f8889.family_amount: chose UNKNOWN (no input supplied for f8889.age55)
+  f8889.dec_amount: chose UNKNOWN (no input supplied for f8889.dec_coverage)
+  f8889.line3_all_year: chose UNKNOWN (no input supplied for f8889.months_family)
+  f8889.line3_last_month: chose UNKNOWN (no input supplied for f8889.months_family)
+  f8889.line3_part_year: chose UNKNOWN (no input supplied for f8889.last_month)
+  f8889.line3: chose UNKNOWN (no input supplied for f8889.months_eligible)
+  s1.educator_deduction: chose UNKNOWN (no input supplied for s1.eligible_educator)
   s8812.part_iib_result: chose $0 (guard 0)
   sd.line21: chose $0 (guard 1)
       not taken: guard 0 = false
@@ -2322,6 +2625,14 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   sdtw.line43: chose $0 (guard 0)
   root|inst:tax_on_amount#{"amount":"sdtw.line21","status":"f1040.status"}.tax: chose $9,352 (guard 0)
   root|inst:tax_on_amount#{"amount":"sdtw.line1","status":"f1040.status"}.tax: chose $11,442 (guard 0)
+  sli.s1.line11: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sli.line5: chose $85,000 (guard 0)
+  sli.divisor: chose $15,000 (guard 0)
+  sli.line8: chose $0 (guard 0)
+  sli.allowed: chose UNKNOWN (no input supplied for sli.claimed)
+  ssb.s1.line11: chose $0 (guard 1)
+      not taken: guard 0 = false
   ssb.mfs_base: chose UNKNOWN (no input supplied for ssb.lived_apart)
   ssb.line8: chose $25,000 (guard 0)
   ssb.mfs_adjust: chose UNKNOWN (no input supplied for ssb.lived_apart)
@@ -2497,9 +2808,28 @@ Collection entries and derivations:
   sd.to1040: choose(sd.has_loss = false; true = true; sd.has_loss = false; false = false; sd.line16 = $7,500)
   f1040.sd.to1040: choose(sd.has_loss = false; true = true; sd.has_loss = false; false = false; sd.line16 = $7,500)
   f1040.line7a: copy(sd.to1040 = $7,500)
-  f1040.line8: param(scope.schedule1 = false; scope.other_income = false; #sales.zero = $0)
+  s1.has_uc: test(s1.uc_paid = $0; #sales.zero = $0)
+  s1.zero: param(#sales.zero = $0)
+  s1.line7: choose(s1.has_uc = false; true = true; s1.has_uc = false; false = false; s1.zero = $0)
+  s1.line10: copy(s1.line7 = $0)
+  f1040.s1.line10: copy(s1.line7 = $0)
+  f1040.line8: copy(scope.schedule1 = false; scope.other_income = false; s1.line10 = $0)
   f1040.line9: sum(f1040.line1z = $90,000; f1040.line2b = $1,000; f1040.line3b = $4,000; f1040.line4b = $0; f1040.line5b = $0; f1040.line6b = $0; f1040.line7a = $7,500; f1040.line8 = $0)
-  f1040.line10: param(scope.schedule1 = false; #sales.zero = $0)
+  s1.has_educator_expenses: test(s1.educator_expenses = $0; #sales.zero = $0)
+  s1.line11: choose(s1.has_educator_expenses = false; true = true; s1.has_educator_expenses = false; false = false; s1.zero = $0)
+  f8889.any: test(f8889.line2 = $0; #sales.zero = $0; f8889.line9 = $0; #sales.zero = $0)
+  f8889.zero: param(#sales.zero = $0)
+  f8889.line13: choose(f8889.any = false; true = true; f8889.any = false; false = false; f8889.zero = $0)
+  s1.f8889.line13: choose(f8889.any = false; true = true; f8889.any = false; false = false; f8889.zero = $0)
+  s1.line13: copy(f8889.line13 = $0)
+  sli.has: test(sli.interest = $0; #sales.zero = $0)
+  sli.zero: param(#sales.zero = $0)
+  sli.deduction: choose(sli.has = false; true = true; sli.has = false; false = false; sli.zero = $0)
+  s1.sli.deduction: choose(sli.has = false; true = true; sli.has = false; false = false; sli.zero = $0)
+  s1.line21: copy(sli.deduction = $0)
+  s1.line26: sum(s1.line11 = $0; s1.line13 = $0; s1.line21 = $0)
+  f1040.s1.line26: sum(s1.line11 = $0; s1.line13 = $0; s1.line21 = $0)
+  f1040.line10: copy(scope.schedule1 = false; s1.line26 = $0)
   f1040.line11a: subtract(f1040.line9 = $102,500; f1040.line10 = $0)
   f1040.line11b: copy(f1040.line11a = $102,500)
   eic.f1040.line11b: copy(f1040.line11a = $102,500)
@@ -2922,6 +3252,38 @@ Collection entries and derivations:
   f1040.line34: subtract_floor0(f1040.line33 = $10,000; f1040.line24 = $10,657)
   f1040.line37: subtract_floor0(f1040.line24 = $10,657; f1040.line33 = $10,000)
   f4952.line7: subtract_floor0(f4952.line3 = $1,500; f4952.line6 = $3,000)
+  f8889.married: test(f1040.status = single; "mfj" = mfj; f1040.status = single; "mfs" = mfs)
+  f8889.bad_months: test(f8889.months_eligible = UNKNOWN (no input supplied for f8889.months_eligible); 12 = 12; f8889.months_family = UNKNOWN (no input supplied for f8889.months_family); f8889.months_eligible = UNKNOWN (no input supplied for f8889.months_eligible))
+  f8889.self_amount: choose(f8889.age55 = UNKNOWN (no input supplied for f8889.age55); true = true)
+  f8889.self_under55: param(#hsa.self_only = $4,300)
+  f8889.self_55: param(#hsa.self_only_55 = $5,300)
+  f8889.family_amount: choose(f8889.age55 = UNKNOWN (no input supplied for f8889.age55); true = true)
+  f8889.family_under55: param(#hsa.family = $8,550)
+  f8889.family_55: param(#hsa.family_55 = $9,550)
+  f8889.family_extra: subtract(f8889.family_amount = UNKNOWN (no input supplied for f8889.age55); f8889.self_amount = UNKNOWN (no input supplied for f8889.age55))
+  f8889.chart_self: multiply_count(f8889.self_amount = UNKNOWN (no input supplied for f8889.age55); f8889.months_eligible = UNKNOWN (no input supplied for f8889.months_eligible))
+  f8889.chart_family: multiply_count(f8889.family_extra = UNKNOWN (no input supplied for f8889.age55); f8889.months_family = UNKNOWN (no input supplied for f8889.months_family))
+  f8889.chart_total: sum(f8889.chart_self = UNKNOWN (no input supplied for f8889.age55); f8889.chart_family = UNKNOWN (no input supplied for f8889.age55))
+  f8889.chart_limit: multiply_rate(f8889.chart_total = UNKNOWN (no input supplied for f8889.age55); #hsa.twelfth = 1/12)
+  f8889.all_year: test(f8889.months_eligible = UNKNOWN (no input supplied for f8889.months_eligible); 12 = 12)
+  f8889.changed: test(f8889.months_family = UNKNOWN (no input supplied for f8889.months_family); 0 = 0; f8889.months_family = UNKNOWN (no input supplied for f8889.months_family); f8889.months_eligible = UNKNOWN (no input supplied for f8889.months_eligible))
+  f8889.dec_amount: choose(f8889.dec_coverage = UNKNOWN (no input supplied for f8889.dec_coverage); "self_only" = self_only)
+  f8889.use_last_month: test(f8889.dec_coverage = UNKNOWN (no input supplied for f8889.dec_coverage); "none" = none; f8889.last_month = UNKNOWN (no input supplied for f8889.last_month); true = true)
+  f8889.line3_changed: larger_of(f8889.chart_limit = UNKNOWN (no input supplied for f8889.age55))
+  f8889.line3_all_year: choose(f8889.changed = UNKNOWN (no input supplied for f8889.months_family); true = true)
+  f8889.line3_last_month: choose(f8889.changed = UNKNOWN (no input supplied for f8889.months_family); true = true)
+  f8889.line3_part_year: choose(f8889.use_last_month = UNKNOWN (no input supplied for f8889.last_month); true = true)
+  f8889.line3: choose(f8889.all_year = UNKNOWN (no input supplied for f8889.months_eligible); true = true)
+  f8889.line4: copy(f8889.zero = $0)
+  f8889.line5: subtract_floor0(f8889.line3 = UNKNOWN (no input supplied for f8889.months_eligible); f8889.line4 = $0)
+  f8889.line6: copy(f8889.line5 = UNKNOWN (no input supplied for f8889.months_eligible))
+  f8889.line7: copy(f8889.zero = $0)
+  f8889.line8: sum(f8889.line6 = UNKNOWN (no input supplied for f8889.months_eligible); f8889.line7 = $0)
+  f8889.line10: copy(f8889.zero = $0)
+  f8889.line11: sum(f8889.line9 = $0; f8889.line10 = $0)
+  f8889.line12: subtract_floor0(f8889.line8 = UNKNOWN (no input supplied for f8889.months_eligible); f8889.line11 = $0)
+  f8889.excess: test(f8889.line2 = $0; f8889.line12 = UNKNOWN (no input supplied for f8889.months_eligible); f8889.line11 = $0; f8889.line8 = UNKNOWN (no input supplied for f8889.months_eligible))
+  f8889.line13_figured: gate(f8889.unsupported = UNKNOWN (no input supplied for f8889.unsupported))
   f8959.line23: copy(f8959.unsupported = false; f8959.zero = $0)
   person[taxpayer].medicare6: sum_over(person[taxpayer].rrta = false; person[taxpayer].w2[emp_a].box6 = $1,305)
   f8959.line19: sum_over(f8959.unsupported = false; person[taxpayer].medicare6 = $1,305)
@@ -2957,6 +3319,12 @@ Collection entries and derivations:
   household.test1_met: test(household.test1_persons = 0; 0 = 0)
   household.test2_met: test(household.home_cost = false; true = true)
   household.hoh_eligible: test(household.unmarried = true; true = true; household.test1_met = false; true = true; household.test2_met = false; true = true)
+  s1.line7_figured: gate(s1.uc_unsupported = UNKNOWN (no input supplied for s1.uc_unsupported))
+  s1.line7_box: test(s1.uc_repaid = UNKNOWN (no input supplied for s1.uc_repaid); #sales.zero = $0)
+  s1.line7_repaid: copy(s1.uc_repaid = UNKNOWN (no input supplied for s1.uc_repaid))
+  s1.educator_max: param(#s1.educator_max = $300)
+  s1.educator_limited: smaller_of(s1.educator_expenses = $0; s1.educator_max = $300)
+  s1.educator_deduction: choose(s1.eligible_educator = UNKNOWN (no input supplied for s1.eligible_educator); true = true)
   s2.line2: copy(s2.amt = false; s2.other = false; s2.zero = $0)
   s8812.line18b: copy(s8812.eiw_1b = $0)
   person[taxpayer].withheld: sum_over(person[taxpayer].w2[emp_a].box4 = $5,580)
@@ -3103,17 +3471,40 @@ Collection entries and derivations:
   root|inst:tax_on_amount#{"amount":"sdtw.line1","status":"f1040.status"}.tax: choose(root|inst:tax_on_amount#{"amount":"sdtw.line1","status":"f1040.status"}.below_boundary = true; true = true; root|inst:tax_on_amount#{"amount":"sdtw.line1","status":"f1040.status"}.table_tax = $11,442)
   sdtw.line46: copy(instance)(bind amount = sdtw.line1 = $75,140; bind status = f1040.status = single)
   sdtw.line47: smaller_of(sdtw.line45 = $10,777; sdtw.line46 = $11,442)
+  sli.max: param(#sli.max = $2,500)
+  sli.line1: smaller_of(sa.excluded_income = false; sli.interest = $0; sli.max = $2,500)
+  sli.f1040.line9: sum(f1040.line1z = $90,000; f1040.line2b = $1,000; f1040.line3b = $4,000; f1040.line4b = $0; f1040.line5b = $0; f1040.line6b = $0; f1040.line7a = $7,500; f1040.line8 = $0)
+  sli.line2: copy(f1040.line9 = $102,500)
+  sli.s1.line11: choose(s1.has_educator_expenses = false; true = true; s1.has_educator_expenses = false; false = false; s1.zero = $0)
+  sli.s1.line13: copy(f8889.line13 = $0)
+  sli.line3: sum(s1.line11 = $0; s1.line13 = $0)
+  sli.line4: subtract(sli.line2 = $102,500; sli.line3 = $0)
+  sli.base_other: param(#sli.base_other = $85,000)
+  sli.base_joint: param(#sli.base_joint = $170,000)
+  sli.line5: choose(f1040.status = single; "single" = single; sli.base_other = $85,000)
+  sli.over: test(sli.line4 = $102,500; sli.line5 = $85,000)
+  sli.line6: subtract(sli.line4 = $102,500; sli.line5 = $85,000)
+  sli.divisor_other: param(#sli.divisor_other = $15,000)
+  sli.divisor_joint: param(#sli.divisor_joint = $30,000)
+  sli.divisor: choose(f1040.status = single; "single" = single; sli.divisor_other = $15,000)
+  sli.line8_figured: prorate(sli.line1 = $0; sli.line6 = $17,500; sli.divisor = $15,000)
+  sli.line8: choose(sli.over = true; true = true; sli.line8_figured = $0)
+  sli.line9: subtract_floor0(sli.line1 = $0; sli.line8 = $0)
+  sli.eligible: test(f1040.status = single; "mfs" = mfs; sli.claimed = UNKNOWN (no input supplied for sli.claimed); false = false)
+  sli.allowed: choose(sli.eligible = UNKNOWN (no input supplied for sli.claimed); true = true)
   ssb.line2: gate(ssb.pub915 = UNKNOWN (no input supplied for ssb.pub915))
   ssb.f1040.line1z: copy(f1040.line1a = $90,000)
   ssb.f1040.line2b: copy(sb.line4 = $1,000)
   ssb.f1040.line3b: copy(sb.line6 = $4,000)
   ssb.f1040.line7a: copy(sd.to1040 = $7,500)
-  ssb.f1040.line8: param(scope.schedule1 = false; scope.other_income = false; #sales.zero = $0)
+  ssb.f1040.line8: copy(scope.schedule1 = false; scope.other_income = false; s1.line10 = $0)
   ssb.line3: sum(f1040.line1z = $90,000; f1040.line2b = $1,000; f1040.line3b = $4,000; f1040.line4b = $0; f1040.line5b = $0; f1040.line7a = $7,500; f1040.line8 = $0)
   ssb.f1040.line2a: sum(f1040.tax_exempt_interest = UNKNOWN (no input supplied for f1040.tax_exempt_interest); div.box12 = UNKNOWN (no input supplied for div.box12))
   ssb.line4: copy(f1040.line2a = UNKNOWN (no input supplied for div.box12))
   ssb.line5: sum(ssb.line2 = UNKNOWN (no input supplied for ssb.pub915); ssb.line3 = $102,500; ssb.line4 = UNKNOWN (no input supplied for div.box12))
-  ssb.line6: param(scope.schedule1 = false; #sales.zero = $0)
+  ssb.s1.line11: choose(s1.has_educator_expenses = false; true = true; s1.has_educator_expenses = false; false = false; s1.zero = $0)
+  ssb.s1.line13: copy(f8889.line13 = $0)
+  ssb.line6: sum(scope.schedule1 = false; s1.line11 = $0; s1.line13 = $0)
   ssb.line7: subtract_floor0(ssb.line5 = UNKNOWN (no input supplied for div.box12); ssb.line6 = $0)
   ssb.base_single: param(#ssb.base_single = $25,000)
   ssb.base_joint: param(#ssb.base_joint = $32,000)
@@ -3150,6 +3541,10 @@ Interpretation amb.2025.multiplication_subcent: Round the product half-up to the
 Interpretation amb.2025.qbi_cooperative_patron: Refuse any patron of an agricultural or horticultural cooperative, specified or not (qbi.unsupported). The owner asked for the strictly accurate reading. Refusing every patron satisfies both texts: a filer the form excludes is never computed on it, and a filer the instructions exclude is a patron the form also excludes. The cost is a refusal for a patron of a cooperative that is not specified, which the instructions would allow.
  (f8995, Form 8995 (2025), note above line 1; i8995, Who Can Use Form 8995; i1040gi line 13a)
 Interpretation amb.2025.sd4952_selection: Use the detailed worksheet conditions, including line 4g and exceptions. The worksheet explicitly limits its own use and the Form 1040 line 16 instructions repeat the line 4g condition. (i1040sd, p. 15, Schedule D Tax Worksheet applicability; compare f1040sd line 20 and i1040gi p. 36)
+Interpretation amb.2025.hsa_last_month_change: The greater of the chart and the December 1 maximum when the coverage type changed among the eligible months; the December 1 maximum otherwise (f8889.line3_last_month). Rule 4 names the filer considered eligible all year, which is the last-month rule's filer, so it reads as the stricter fit to the text; the result is never less than rule 2's amount. Found by the Stage 11 class M hand-work (the model applied rule 4), adopted under the owner's standing preference for the strictly accurate reading.
+ (i8889, p. 4, Line 3, rules 2, 3 and 4)
+Interpretation amb.2025.sli_ratio_places: Round the ratio half-up to three decimal places (the prorate atom with places 3 on sli.line8_figured). The owner's ruling. Three places is the least precision the text allows and the usual hand computation; the readings differ by at most a few cents of deduction (for example $167.50 against $166.67 on line 8 when line 6 is $1,000 and line 1 is $2,500).
+ (i1040gi, p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 7)
 Scope: single-person return (Form 1040 lines 1a–37 with the in-scope schedules and refusal screens). Unsupported paths are refused with citations. No filing or transmission.
 Rounding: amounts are exact cents; the return-wide whole-dollar rounding setting is deferred (see ambiguities/2025.yaml).
 Estimated tax penalty: not computed; the IRS will figure it (see i1040gi, line 38).

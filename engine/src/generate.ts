@@ -61,6 +61,7 @@ const DEFAULT_TRUE_PERCENT = 10;
 const MODELLED = new Set([
   "f1040.line3a", "sb.ordinary_dividends", "qbi.dividends", "sd.distributions", "div.box2b", "div.box2d",
   "sa.line1", "sa.line5a", "sa.line5b", "sa.line8a", "sa.line11", "f4952.line1", "f4952.line4g", "ftc.taxes",
+  "s1.uc_paid", "s1.uc_repaid", "s1.educator_expenses", "f8889.line2", "f8889.line9", "f8889.months_eligible", "f8889.months_family", "sli.interest",
 ]);
 
 interface Employer { box1: number; box2pct: number; box7: number; over: number }
@@ -69,6 +70,11 @@ interface Gift { deduction: number; public_securities: boolean; special: boolean
 interface Dependent { relationship: string; age: number; younger: boolean; student: boolean; disabled: boolean; months: number; self_support: boolean; joint_return: boolean; citizen: boolean; canada_mexico: boolean; married: boolean; tin: boolean; work_ssn: boolean; gross_income: number; supported: boolean; other_claimant: boolean; divorced_rule: boolean; multiple_support: boolean; parent_home_paid: boolean; us_half: boolean; eic_ssn: boolean }
 interface Household { taxpayer_tin: boolean; taxpayer_work_ssn: boolean; home_cost: boolean; unmarried: boolean }
 interface Distribution { account: string; code: string; box1: number; box5: number; rollover: number; special: boolean; annuity: boolean; cost: number; used_last_year: boolean; last_line4: number; joint_life: boolean; age: number; combined_age: number; months: number; recovered: number }
+
+interface Adjustments {
+  uc: number; ucRepaidPct: number; educator: number; sli: number;
+  hsa: boolean; months: number; familyMonths: number; decFamily: boolean; contrib: number; employer: number;
+}
 
 interface Spec {
   status: string;
@@ -87,6 +93,7 @@ interface Spec {
   household: Household;
   pensions: Distribution[];
   benefits: number;
+  adj: Adjustments;
   flags: Record<string, boolean>;
   extras: Record<string, number>;
 }
@@ -160,6 +167,11 @@ export function returnArbitrary(data: CanonicalData): fc.Arbitrary<Inputs> {
     household,
     pensions: fc.array(distribution, { minLength: 1, maxLength: 2 }),
     benefits: money(5_000_000),
+    adj: fc.record<Adjustments>({
+      uc: rareMoney(2_500_000, 15), ucRepaidPct: rareMoney(100, 20), educator: rareMoney(60_000, 10), sli: rareMoney(300_000, 20),
+      hsa: rareTrue(15), months: fc.oneof({ weight: 1, arbitrary: fc.constant(12) }, { weight: 1, arbitrary: fc.integer({ min: 0, max: 12 }) }),
+      familyMonths: fc.integer({ min: 0, max: 12 }), decFamily: fc.boolean(), contrib: money(1_000_000), employer: rareMoney(300_000, 30),
+    }),
     flags: fc.record(Object.fromEntries(boolKeys.map((k) => [k, rareTrue(BOOL_TRUE_PERCENT[k] ?? DEFAULT_TRUE_PERCENT)]))),
     extras: fc.record(Object.fromEntries(extraKeys.map((k) => [k, rareMoney(500_000, 2)]))),
   });
@@ -252,6 +264,21 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
     for (const [k, v] of Object.entries(entry)) inputs[`retirement[r${i + 1}].${k}`] = v;
   });
   inputs["ssb.benefits"] = retiree ? s.benefits : 0;
+  // Schedule 1 items: unemployment (with part of a 2025 overpayment sometimes repaid), educator expenses,
+  // student loan interest, and an HSA whose month counts are always possible (family months at most the
+  // eligible months, December coverage present when eligible all year); the screens are flags.
+  inputs["s1.uc_paid"] = s.adj.uc;
+  inputs["s1.uc_repaid"] = Math.floor((s.adj.uc * s.adj.ucRepaidPct) / 100);
+  inputs["s1.educator_expenses"] = s.adj.educator;
+  inputs["sli.interest"] = s.adj.sli;
+  if (s.adj.hsa) {
+    const months = s.adj.months, family = Math.min(s.adj.familyMonths, months);
+    inputs["f8889.months_eligible"] = months;
+    inputs["f8889.months_family"] = family;
+    inputs["f8889.dec_coverage"] = months === 0 ? "none" : family === months ? "family" : family === 0 ? "self_only" : s.adj.decFamily ? "family" : "self_only";
+    inputs["f8889.line2"] = s.adj.contrib;
+    inputs["f8889.line9"] = s.adj.employer;
+  }
   inputs["f4952.line1"] = s.invInterest;
   inputs["f4952.line4g"] = s.election;
   inputs["ftc.taxes"] = s.ftcTaxes;

@@ -1,0 +1,376 @@
+form:
+  id: sli
+  kind: form
+  title: Student Loan Interest Deduction Worksheet—Schedule 1, Line 21
+  tax_year: 2025
+  note: The worksheet in the Form 1040 instructions; Pub. 970 cases (Form 2555, Form 4563, excluded Puerto Rico income) are
+    refused.
+  lines:
+  - id: sli.zero
+    printed: (helper)
+    label: Year parameter sales.zero
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: sales.zero
+    cite:
+      doc: i1040gi
+      locator: p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21
+  - id: sli.interest
+    printed: (helper)
+    label: Total interest you paid in 2025 on qualified student loans
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Total interest you paid in 2025 on qualified student loans (generally Form 1098-E box 1), not counting any amount
+        paid from tax-free qualified tuition program earnings; zero if none
+    cite:
+      doc: i1040gi
+      locator: p. 98, Schedule 1, line 21, 'You paid interest in 2025 on a qualified student loan' and 'Don't include any
+        amount paid from a distribution of earnings made from a qualified tuition program (QTP)'
+  - id: sli.has
+    printed: (helper)
+    label: Any student loan interest
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - sli.interest
+      - param: sales.zero
+    cite:
+      doc: i1040gi
+      locator: p. 98, Schedule 1, line 21
+  - id: sli.claimed
+    printed: (helper)
+    label: Are you claimed as a dependent on someone else's (such as your parent's) 2025 tax return?
+    type: Bool
+    expr:
+      op: input
+      source: Are you claimed as a dependent on someone else's (such as your parent's) 2025 tax return?
+    cite:
+      doc: i1040gi
+      locator: p. 98, Schedule 1, line 21, 'You, or your spouse if filing jointly, aren't claimed as a dependent on someone
+        else's (such as your parent's) 2025 tax return'
+  - id: sli.max
+    printed: (helper)
+    label: Year parameter sli.max ($2,500)
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: sli.max
+    cite:
+      doc: i1040gi
+      locator: p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 1, $2,500
+  - id: sli.line1
+    printed: '1'
+    label: Enter the total interest you paid in 2025 on qualified student loans (see the instructions for line 21). Don't
+      enter more than $2,500
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - sli.interest
+      - sli.max
+    cite:
+      doc: i1040gi
+      locator: p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 1
+    refuses:
+    - when: sa.excluded_income
+      form: Pub. 970 (student loan interest with Form 2555 or 4563, or excluded Puerto Rico income)
+      remedy: Use Pub. 970 instead of the worksheet; it is outside this tool.
+      cite:
+        doc: i1040gi
+        locator: p. 98, Schedule 1, line 21, Exception
+  - id: sli.line2
+    printed: '2'
+    label: Enter the amount from Form 1040 or 1040-SR, line 9
+    type: Dollars
+    expr:
+      op: copy
+      from: f1040.line9
+    cite:
+      doc: i1040gi
+      locator: p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 2
+  - id: sli.line3
+    printed: '3'
+    label: Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 25
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - s1.line11
+      - s1.line13
+    cite:
+      doc: i1040gi
+      locator: p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 3 (lines 12 and 14 to 20, 23 and
+        25 are outside this tool and refused through line 2, Form 1040 line 9, by scope.schedule1)
+  - id: sli.line4
+    printed: '4'
+    label: Subtract line 3 from line 2
+    type: Dollars
+    expr:
+      op: subtract
+      from: sli.line2
+      take: sli.line3
+    cite:
+      doc: i1040gi
+      locator: p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 4
+  - id: sli.base_other
+    printed: (helper)
+    label: Year parameter sli.base_other ($85,000)
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: sli.base_other
+    cite:
+      doc: i1040gi
+      locator: p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 5, $85,000
+  - id: sli.base_joint
+    printed: (helper)
+    label: Year parameter sli.base_joint ($170,000)
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: sli.base_joint
+    cite:
+      doc: i1040gi
+      locator: p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 5, $170,000
+  - id: sli.line5
+    printed: '5'
+    label: Enter the amount shown below for your filing status. Single, head of household, or qualifying surviving spouse—$85,000.
+      Married filing jointly—$170,000
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f1040.status
+          - const: single
+        then: sli.base_other
+      - guard:
+          op: test
+          eq:
+          - f1040.status
+          - const: mfj
+        then: sli.base_joint
+      - guard:
+          op: test
+          eq:
+          - f1040.status
+          - const: mfs
+        then: sli.zero
+      - guard:
+          op: test
+          eq:
+          - f1040.status
+          - const: hoh
+        then: sli.base_other
+      - guard:
+          op: test
+          eq:
+          - f1040.status
+          - const: qss
+        then: sli.base_other
+    cite:
+      doc: i1040gi
+      locator: p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 5 (no amount for married filing
+        separately, which cannot take the deduction)
+  - id: sli.over
+    printed: (helper)
+    label: Is the amount on line 4 more than the amount on line 5?
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - sli.line4
+      - sli.line5
+    cite:
+      doc: i1040gi
+      locator: p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 6
+  - id: sli.line6
+    printed: '6'
+    label: Subtract line 5 from line 4
+    type: Dollars
+    expr:
+      op: subtract
+      from: sli.line4
+      take: sli.line5
+    cite:
+      doc: i1040gi
+      locator: p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 6
+  - id: sli.divisor_other
+    printed: (helper)
+    label: Year parameter sli.divisor_other ($15,000)
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: sli.divisor_other
+    cite:
+      doc: i1040gi
+      locator: p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 7, $15,000
+  - id: sli.divisor_joint
+    printed: (helper)
+    label: Year parameter sli.divisor_joint ($30,000)
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: sli.divisor_joint
+    cite:
+      doc: i1040gi
+      locator: p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 7, $30,000
+  - id: sli.divisor
+    printed: (helper)
+    label: $15,000 ($30,000 if married filing jointly)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f1040.status
+          - const: single
+        then: sli.divisor_other
+      - guard:
+          op: test
+          eq:
+          - f1040.status
+          - const: mfj
+        then: sli.divisor_joint
+      - guard:
+          op: test
+          eq:
+          - f1040.status
+          - const: mfs
+        then: sli.divisor_other
+      - guard:
+          op: test
+          eq:
+          - f1040.status
+          - const: hoh
+        then: sli.divisor_other
+      - guard:
+          op: test
+          eq:
+          - f1040.status
+          - const: qss
+        then: sli.divisor_other
+    cite:
+      doc: i1040gi
+      locator: p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 7
+  - id: sli.line8_figured
+    printed: (helper)
+    label: Divide line 6 by $15,000 ($30,000 if married filing jointly), rounded to three places, not more than 1.000; multiply
+      line 1 by the result
+    type: NonNegDollars
+    expr:
+      op: prorate
+      amount: sli.line1
+      part: sli.line6
+      whole: sli.divisor
+      places: 3
+    cite:
+      doc: i1040gi
+      locator: p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, lines 7 and 8 ('Enter the result as a
+        decimal (rounded to at least three places). If the result is 1.000 or more, enter 1.000' and 'Multiply line 1 by line
+        7'; three places, amb.2025.sli_ratio_places)
+    ambiguity: amb.2025.sli_ratio_places
+  - id: sli.line8
+    printed: '8'
+    label: Multiply line 1 by line 7
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - sli.over
+          - const: true
+        then: sli.line8_figured
+      - guard:
+          op: test
+          eq:
+          - sli.over
+          - const: false
+        then: sli.zero
+    cite:
+      doc: i1040gi
+      locator: p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 6, 'No. Skip lines 6 and 7, enter
+        -0- on line 8, and go to line 9'; line 8
+  - id: sli.line9
+    printed: '9'
+    label: Student loan interest deduction. Subtract line 8 from line 1. Enter the result here and on Schedule 1, line 21
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: sli.line1
+      take: sli.line8
+    cite:
+      doc: i1040gi
+      locator: p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 9 (line 8 never exceeds line 1,
+        since the ratio is at most 1.000)
+  - id: sli.eligible
+    printed: (helper)
+    label: 'You can take the deduction: a filing status other than married filing separately, and not claimed as a dependent'
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        ne:
+        - f1040.status
+        - const: mfs
+      - op: test
+        eq:
+        - sli.claimed
+        - const: false
+    cite:
+      doc: i1040gi
+      locator: p. 98, Schedule 1, line 21, 'You can take this deduction only if all of the following apply'
+  - id: sli.allowed
+    printed: (helper)
+    label: Student loan interest deduction for an eligible filer
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - sli.eligible
+          - const: true
+        then: sli.line9
+      - guard:
+          op: test
+          eq:
+          - sli.eligible
+          - const: false
+        then: sli.zero
+    cite:
+      doc: i1040gi
+      locator: p. 98, Schedule 1, line 21
+  - id: sli.deduction
+    printed: (helper)
+    label: Student loan interest deduction (Schedule 1, line 21)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - sli.has
+          - const: true
+        then: sli.allowed
+      - guard:
+          op: test
+          eq:
+          - sli.has
+          - const: false
+        then: sli.zero
+    cite:
+      doc: i1040gi
+      locator: p. 98, Schedule 1, line 21

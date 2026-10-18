@@ -32,6 +32,9 @@ def dollars(c):
 # the pre-refundable-credit income tax (which already includes the net investment
 # income tax) and the Additional Medicare Tax, which the engine books as payroll tax.
 PE_MAP = {
+    # The engine's total includes the capital loss allowance (loss_ald), which Form 1040 takes
+    # through Schedule D and line 7a, not through Schedule 1 line 26.
+    "f1040.line10": ["above_the_line_deductions", "-loss_ald"],
     "f1040.line11b": ["adjusted_gross_income"],
     "f1040.line13a": ["qualified_business_income_deduction"],
     "f1040.line15": ["taxable_income"],
@@ -54,6 +57,8 @@ PE_MAP = {
 }
 PE_PRECISION = "float32"
 PE_LIMITATIONS = [
+    {"feature": "sli_phaseout", "lines": ['f1040.line10', 'f1040.line11b', 'f1040.line13a', 'f1040.line15', 'f1040.line16', 'f1040.line19', 'f1040.line28', 'f1040.line27a', 'f1040.line6b', 'sa.line17', 'sa.standard', 'sa.deduction', 'f8959.tax', 'f8960.tax', 'f1040.tax_before_credits'],
+     "reason": "PolicyEngine-US phases the student loan interest deduction out with the exact ratio; the worksheet's line 7 ratio is rounded to three places in the project (amb.2025.sli_ratio_places), which moves the deduction by up to a few dollars"},
     {"feature": "excess_social_security", "lines": ['s3.line11'],
      "reason": "PolicyEngine-US takes excess payroll tax withheld as an input and does not compute it from per-employer withholding"},
     {"feature": "investment_interest_limited", "lines": ['sa.line17', 'sa.deduction', 'f1040.line15', 'f1040.line16', 'f1040.tax_before_credits', 'f8960.tax', 'f1040.line19', 'f1040.line28'],
@@ -71,6 +76,7 @@ PE_LIMITATIONS = [
 # credits and includes both Schedule 2 taxes; `standard` is zero for itemizers, so
 # the chosen deduction is standard + c04470.
 TC_MAP = {
+    "f1040.line10": ["c02900"],
     "f1040.line11b": ["c00100"],
     "f1040.line13a": ["qbided"],
     "f1040.line15": ["c04800"],
@@ -89,6 +95,8 @@ TC_MAP = {
 }
 TC_PRECISION = "float64"
 TC_LIMITATIONS = [
+    {"feature": "student_loan_interest", "lines": ['f1040.line10', 'f1040.line11b', 'f1040.line13a', 'f1040.line15', 'f1040.line16', 'f1040.line19', 'f1040.line28', 'f1040.line27a', 'f1040.line6b', 'f1040.line20', 'sa.line17', 'sa.deduction', 'f8959.tax', 'f8960.tax', 'f1040.line24', 'f1040.tax_before_credits'],
+     "reason": "Tax-Calculator takes the student loan interest deduction as a supplied amount (e03210) rather than computing the worksheet's phase-out, so returns with student loan interest are not compared"},
     {"feature": "ctc_phaseout", "lines": ["f1040.line19", "f1040.line24", "f1040.line28"],
      "reason": "Tax-Calculator phases the child tax credit out by 5% of the exact excess of income over the threshold; Schedule 8812 line 10 rounds the excess up to the next multiple of $1,000 first"},
     {"feature": "excess_social_security", "lines": ['s3.line11'],
@@ -146,6 +154,9 @@ def run_policyengine(cases):
             # Form 1099-DIV box 2d is a collectibles gain before netting; the engine nets it
             # against the net short-term loss on its own, as the 28% Rate Gain Worksheet does.
             "collectibles_gain_or_loss": y(dollars(f["gain_28pct"])),
+            "unemployment_compensation": y(dollars(f.get("unemployment", 0))),
+            "educator_expense": y(dollars(f.get("educator_expenses", 0))),
+            "student_loan_interest": y(dollars(f.get("student_loan_interest", 0))),
             # Roles are supplied so an adult child stays a dependent; by age ordering
             # the engine would make an adult child the filer's spouse.
             "tax_unit_role_input": y("HEAD"),
@@ -160,7 +171,8 @@ def run_policyengine(cases):
                       "filing_status": y("HEAD_OF_HOUSEHOLD" if f.get("hoh") else "SINGLE"),
                       "state_and_local_sales_or_income_tax": y(dollars(f["salt_income_tax"])),
                       "unrecaptured_section_1250_gain": y(dollars(f["unrecaptured_1250"])),
-                      "foreign_tax_credit": y(dollars(f["foreign_tax"]))}
+                      "foreign_tax_credit": y(dollars(f["foreign_tax"])),
+                      "health_savings_account_ald": y(dollars(f.get("hsa_deduction", 0)))}
         fams[pid] = {"members": members}; spms[pid] = {"members": members}
         hhs[pid] = {"members": members, "state_code": y("TX")}
     sim = Simulation(situation={"people": people, "tax_units": units, "families": fams, "spm_units": spms, "households": hhs})
@@ -197,6 +209,7 @@ def run_taxcalc(cases):
             e17500=dollars(f["medical"]), e18400=dollars(f["salt_income_tax"]), e18500=dollars(f["salt_real_estate"]),
             e19200=dollars(f["mortgage_interest"] + f["investment_interest"]),
             e19800=dollars(f["cash_gifts"]), e20100=dollars(f["noncash_gifts"]), e07300=dollars(f["foreign_tax"]),
+            e02300=dollars(f.get("unemployment", 0)), e03220=dollars(f.get("educator_deduction", 0)), e03290=dollars(f.get("hsa_deduction", 0)),
         ))
     df = pd.DataFrame(rows).astype(float)
     for col in ("RECID", "MARS", "FLPDYR", "XTOT", "n24", "nu18", "n1820", "n21", "EIC"):

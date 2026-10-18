@@ -161,18 +161,20 @@ form:
       locator: p. 32, Social Security Benefits Worksheet, line 5
   - id: ssb.line6
     printed: '6'
-    label: Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 25; zero in this tool
+    label: Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 25
     type: NonNegDollars
     expr:
-      op: param
-      ref: sales.zero
+      op: sum
+      of:
+      - s1.line11
+      - s1.line13
     cite:
       doc: i1040gi
       locator: p. 32, Social Security Benefits Worksheet, line 6
     refuses:
     - when: scope.schedule1
       form: Schedule 1 adjustments (Social Security Benefits Worksheet, line 6)
-      remedy: Schedule 1 adjustments are outside this tool.
+      remedy: Schedule 1 adjustments other than educator expenses and the HSA deduction (lines 12 and 14 to 20, 23 and 25) are outside this tool.
       cite:
         doc: i1040gi
         locator: p. 32, Social Security Benefits Worksheet, line 6

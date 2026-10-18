@@ -97,6 +97,7 @@ function mutations(data: CanonicalData): Mutation[] {
       if (expr.op === "multiply_rate") refs.push(expr.amount);
       if (expr.op === "round") refs.push(expr.of);
       if (expr.op === "multiply_count") refs.push(expr.amount, expr.count);
+      if (expr.op === "prorate") refs.push(expr.amount, expr.part);
       if (expr.op === "copy" && typeof expr.from === "string") refs.push(expr.from);
       for (const ref of refs) {
         if (!ref.startsWith(doc.id + ".")) continue; // same-document only
@@ -112,13 +113,14 @@ function mutations(data: CanonicalData): Mutation[] {
           note: `${ref} -> ${candidate.id} (${candidate.type})`,
           apply: (d) => {
             const l = findLine(d, line.id)!;
-            const e = l.expr as Expr & { of?: string[] | string; from?: string; take?: string | object; amount?: string; count?: string };
+            const e = l.expr as Expr & { of?: string[] | string; from?: string; take?: string | object; amount?: string; count?: string; part?: string };
             if (Array.isArray(e.of)) e.of = e.of.map((r) => (r === ref ? candidate.id : r));
             else if (e.of === ref) e.of = candidate.id; // round takes one operand
             if (e.from === ref) e.from = candidate.id;
             if (e.take === ref) e.take = candidate.id;
             if (e.amount === ref) e.amount = candidate.id;
             if (e.count === ref) e.count = candidate.id;
+            if (e.part === ref) e.part = candidate.id;
           },
         });
       }
@@ -296,6 +298,8 @@ const EQUIVALENT_IF: Record<string, { reason: string; holds: (data: CanonicalDat
   "refusal.retirement.retirement.amount_a.0": firstReadCarries("retirement.amount_a", 0, ["retirement.show_a", "retirement.has_rollover", "retirement.rolled"]),
   "refusal.retirement.retirement.amount_a.1": firstReadCarries("retirement.amount_a", 1, ["retirement.show_a", "retirement.has_rollover", "retirement.rolled"]),
   "refusal.ssb.ssb.line6.0": firstReadCarries("ssb.line6", 0, ["ssb.line5", "ssb.line3", "f1040.line8"], "ssb.line7"),
+  "boundary.sli.sli.over": prorateSkip("The test 'line 4 more than line 5' made inclusive adds only the case line 4 = line 5"),
+  "operand.sli.sli.line9.line8": prorateSkip("Reading the prorated line directly instead of line 8 differs only when line 4 is not more than line 5"),
   "refusal.dependent.dependent.qualifying_relative.2": {
     reason: "The married gate on the qualifying-relative test duplicates, word for word, the married gate on the qualifying-child test. The qualifying-relative test is read only by qr_dependent, which is read only by claimed, whose any-test evaluates qc_dependent, and so qualifying_child, before qr_dependent; for a married person qualifying_child refuses first with the same refusal, so this gate never fires.",
     holds: (d) => {
@@ -358,6 +362,27 @@ function firstReadCarries(line: string, index: number, chain: string[], reader?:
       } else if (!reads(line, chain[0]!, false)) return false;
       for (let i = 0; i + 1 < chain.length; i++) if (!reads(chain[i]!, chain[i + 1]!, !!reader)) return false;
       return true;
+    },
+  };
+}
+
+// The Student Loan Interest Deduction Worksheet skips lines 6 and 7 (line 8 is zero) when line 4 is
+// not more than line 5. The prorated line's part is line 6 = line 4 - line 5, which is then zero or
+// negative, and `prorate` keeps its ratio at 0 or more, so the prorated line is zero there too: the
+// skip and the formula agree, and a mutant that crosses between them changes no value.
+function prorateSkip(what: string) {
+  return {
+    reason: `${what}; there line 6 (line 4 less line 5) is zero or negative, the prorate ratio is kept at 0, and the prorated amount equals the skip branch's zero.`,
+    holds: (d: CanonicalData): boolean => {
+      const l8 = findLine(d, "sli.line8"), fig = findLine(d, "sli.line8_figured"), l6 = findLine(d, "sli.line6"), over = findLine(d, "sli.over"), zero = findLine(d, "sli.zero");
+      if (!l8 || !fig || !l6 || !over || !zero) return false;
+      if (fig.expr.op !== "prorate" || fig.expr.part !== "sli.line6") return false;
+      if (l6.expr.op !== "subtract" || l6.expr.from !== "sli.line4" || l6.expr.take !== "sli.line5") return false;
+      if (over.expr.op !== "test" || !("gt" in over.expr) || stableStringify(over.expr.gt) !== stableStringify(["sli.line4", "sli.line5"])) return false;
+      if (zero.expr.op !== "param" || d.params.values[zero.expr.ref]?.value !== 0) return false;
+      if (l8.expr.op !== "choose") return false;
+      const thens = l8.expr.alternatives.map((a) => a.then);
+      return thens.length === 2 && thens.includes("sli.line8_figured") && thens.includes("sli.zero");
     },
   };
 }

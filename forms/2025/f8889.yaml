@@ -1,0 +1,676 @@
+form:
+  id: f8889
+  kind: form
+  title: Form 8889 — HSA contributions and deduction (Part I)
+  tax_year: 2025
+  note: Part I for an unmarried filer, with the Line 3 Limitation Chart and Worksheet and the last-month rule. Parts II and
+    III, Archer MSAs, qualified HSA funding distributions and excess contributions are refused.
+  lines:
+  - id: f8889.zero
+    printed: (helper)
+    label: Year parameter sales.zero
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: sales.zero
+    cite:
+      doc: f8889
+      locator: Form 8889 (2025), lines 4, 7 and 10
+  - id: f8889.line2
+    printed: '2'
+    label: HSA contributions you made for 2025 (or those made on your behalf), including those made by the unextended due
+      date of your tax return that were for 2025. Do not include employer contributions, contributions through a cafeteria
+      plan, or rollovers
+    type: NonNegDollars
+    expr:
+      op: input
+      source: HSA contributions you made for 2025 (or those made on your behalf), including those made by April 15, 2026 that
+        were for 2025; do not include employer contributions, payroll contributions through a cafeteria plan, rollovers, or
+        qualified HSA funding distributions; zero if none
+    cite:
+      doc: f8889
+      locator: Form 8889 (2025), line 2; i8889 p. 4, Line 2
+  - id: f8889.line9
+    printed: '9'
+    label: Employer contributions made to your HSAs for 2025
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Employer contributions to your HSAs for 2025, including payroll contributions through a cafeteria plan (Form
+        W-2 box 12, code W, less employer contributions for 2024 included there, plus employer contributions for 2025 made
+        in 2026); zero if none
+    cite:
+      doc: i8889
+      locator: p. 6, Line 9 Employer Contributions and the Employer Contribution Worksheet
+  - id: f8889.any
+    printed: (helper)
+    label: Any HSA contributions for 2025 (yours or your employer's)
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        gt:
+        - f8889.line2
+        - param: sales.zero
+      - op: test
+        gt:
+        - f8889.line9
+        - param: sales.zero
+    cite:
+      doc: i8889
+      locator: pp. 1-2, Who Must File (you or your employer made contributions to your HSA for 2025)
+  - id: f8889.unsupported
+    printed: (helper)
+    label: 'Any of these: HSA distributions in 2025 that were not all used for qualified medical expenses or rolled over;
+      a qualified HSA funding distribution from an IRA in 2025; contributions to an Archer MSA for 2025 (Form 8853); excess
+      HSA contributions from an earlier year that remain in your HSA; failing to remain an eligible individual during a testing
+      period that began in an earlier year; or an HSA you acquired because of the account beneficiary''s death?'
+    type: Bool
+    expr:
+      op: input
+      source: 'Any of these: HSA distributions in 2025 that were not all used for qualified medical expenses or rolled over
+        to another HSA; a qualified HSA funding distribution from an IRA in 2025; contributions by you or your employer to
+        an Archer MSA for 2025 (Form 8853); excess HSA contributions from an earlier year that remain in your HSA; failing
+        to remain an eligible individual during a testing period that began in an earlier year (last-month rule or qualified
+        HSA funding distribution); or an HSA you acquired because of the account beneficiary''s death?'
+    cite:
+      doc: i8889
+      locator: Parts II and III, line 4 (Archer MSAs), line 10 (qualified HSA funding distributions), line 13 (Prior Year
+        Excess Contributions), and Death of HSA Account Beneficiary
+  - id: f8889.married
+    printed: (helper)
+    label: Married filing jointly or separately (spouses' HSA rules)
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        eq:
+        - f1040.status
+        - const: mfj
+      - op: test
+        eq:
+        - f1040.status
+        - const: mfs
+    cite:
+      doc: f8889
+      locator: Form 8889 (2025), lines 6 and 7 (spouses with separate HSAs, family coverage, additional contribution amount)
+  - id: f8889.months_eligible
+    printed: (helper)
+    label: Number of months of 2025 on the first day of which you were an eligible individual
+    type: Count
+    expr:
+      op: input
+      source: Number of months of 2025 on the first day of which you were an eligible individual (covered by a high-deductible
+        health plan, with no other disqualifying health coverage, not enrolled in Medicare, and not able to be claimed as
+        a dependent on someone else's 2025 return); 0 to 12
+    cite:
+      doc: i8889
+      locator: pp. 2 and 6, Eligible Individual and the Line 3 Limitation Chart and Worksheet ('Were you an eligible individual
+        ... on the first day of the month?')
+  - id: f8889.months_family
+    printed: (helper)
+    label: Of those months, the number in which your HDHP provided family coverage on the first day of the month
+    type: Count
+    expr:
+      op: input
+      source: Of those months, the number in which your high-deductible health plan provided family coverage on the first
+        day of the month; 0 to the number of eligible months
+    cite:
+      doc: i8889
+      locator: p. 6, Line 3 Limitation Chart and Worksheet, 'What type of coverage did your HDHP provide on the first day
+        of the month?'
+  - id: f8889.bad_months
+    printed: (helper)
+    label: The month counts are impossible (more than 12 eligible months, or more family months than eligible months)
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        gt:
+        - f8889.months_eligible
+        - const: 12
+          type: Count
+      - op: test
+        gt:
+        - f8889.months_family
+        - f8889.months_eligible
+    cite:
+      doc: i8889
+      locator: p. 6, Line 3 Limitation Chart and Worksheet (twelve months of 2025)
+  - id: f8889.age55
+    printed: (helper)
+    label: Were you age 55 or older at the end of 2025?
+    type: Bool
+    expr:
+      op: input
+      source: Were you age 55 or older at the end of 2025?
+    cite:
+      doc: i8889
+      locator: p. 4, Line 3, rule 6, and p. 6, Line 3 Limitation Chart
+  - id: f8889.self_amount
+    printed: (helper)
+    label: Line 3 chart amount for a month of self-only coverage ($4,300; $5,300 if age 55 or older at the end of 2025)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8889.age55
+          - const: true
+        then: f8889.self_55
+      - guard:
+          op: test
+          eq:
+          - f8889.age55
+          - const: false
+        then: f8889.self_under55
+    cite:
+      doc: i8889
+      locator: p. 6, Line 3 Limitation Chart, 'Enter $4,300 on the line below for the month. If you were age 55 or older at
+        the end of 2025, enter $5,300 for the month'
+  - id: f8889.self_under55
+    printed: (helper)
+    label: Year parameter hsa.self_only ($4,300)
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: hsa.self_only
+    cite:
+      doc: i8889
+      locator: p. 6, Line 3 Limitation Chart, $4,300
+  - id: f8889.self_55
+    printed: (helper)
+    label: Year parameter hsa.self_only_55 ($5,300)
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: hsa.self_only_55
+    cite:
+      doc: i8889
+      locator: p. 6, Line 3 Limitation Chart, $5,300
+  - id: f8889.family_amount
+    printed: (helper)
+    label: Line 3 chart amount for a month of family coverage ($8,550; $9,550 if unmarried and age 55 or older at the end
+      of 2025)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8889.age55
+          - const: true
+        then: f8889.family_55
+      - guard:
+          op: test
+          eq:
+          - f8889.age55
+          - const: false
+        then: f8889.family_under55
+    cite:
+      doc: i8889
+      locator: p. 6, Line 3 Limitation Chart, 'Enter $8,550 on the line below for the month. If, at the end of 2025, you were
+        unmarried and age 55 or older, enter $9,550 for the month'
+  - id: f8889.family_under55
+    printed: (helper)
+    label: Year parameter hsa.family ($8,550)
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: hsa.family
+    cite:
+      doc: i8889
+      locator: p. 6, Line 3 Limitation Chart, $8,550
+  - id: f8889.family_55
+    printed: (helper)
+    label: Year parameter hsa.family_55 ($9,550)
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: hsa.family_55
+    cite:
+      doc: i8889
+      locator: p. 6, Line 3 Limitation Chart, $9,550
+  - id: f8889.family_extra
+    printed: (helper)
+    label: Family monthly amount less the self-only monthly amount
+    type: Dollars
+    expr:
+      op: subtract
+      from: f8889.family_amount
+      take: f8889.self_amount
+    cite:
+      doc: i8889
+      locator: 'p. 6, Line 3 Limitation Chart and Worksheet (each family month enters the family amount: the self-only amount
+        plus this difference)'
+  - id: f8889.chart_self
+    printed: (helper)
+    label: The self-only monthly amount for every eligible month
+    type: NonNegDollars
+    expr:
+      op: multiply_count
+      amount: f8889.self_amount
+      count: f8889.months_eligible
+    cite:
+      doc: i8889
+      locator: p. 6, Line 3 Limitation Chart and Worksheet, the monthly amounts
+  - id: f8889.chart_family
+    printed: (helper)
+    label: The family difference for every month of family coverage
+    type: Dollars
+    expr:
+      op: multiply_count
+      amount: f8889.family_extra
+      count: f8889.months_family
+    cite:
+      doc: i8889
+      locator: p. 6, Line 3 Limitation Chart and Worksheet, the monthly amounts
+  - id: f8889.chart_total
+    printed: (helper)
+    label: Total for all months (Line 3 Limitation Chart and Worksheet)
+    type: Dollars
+    expr:
+      op: sum
+      of:
+      - f8889.chart_self
+      - f8889.chart_family
+    cite:
+      doc: i8889
+      locator: p. 6, Line 3 Limitation Chart and Worksheet, 'Total for all months'
+  - id: f8889.chart_limit
+    printed: (helper)
+    label: Limitation. Divide the total by 12
+    type: Dollars
+    expr:
+      op: multiply_rate
+      amount: f8889.chart_total
+      rate:
+        param: hsa.twelfth
+    cite:
+      doc: i8889
+      locator: p. 6, Line 3 Limitation Chart and Worksheet, 'Limitation. Divide the total by 12. Enter here and on line 3'
+  - id: f8889.all_year
+    printed: (helper)
+    label: Eligible individual on the first day of every month of 2025
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - f8889.months_eligible
+      - const: 12
+        type: Count
+    cite:
+      doc: i8889
+      locator: p. 4, Line 3, rules 3 and 4
+  - id: f8889.changed
+    printed: (helper)
+    label: Coverage type changed during the year (family coverage in some eligible months, self-only in others)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        gt:
+        - f8889.months_family
+        - const: 0
+          type: Count
+      - op: test
+        lt:
+        - f8889.months_family
+        - f8889.months_eligible
+    cite:
+      doc: i8889
+      locator: p. 4, Line 3, rule 4, 'you changed your type of coverage during the year'
+  - id: f8889.dec_coverage
+    printed: (helper)
+    label: 'Your HDHP coverage on December 1, 2025, as an eligible individual: none, self_only or family'
+    type: Enum(hsa_coverage)
+    expr:
+      op: input
+      source: 'Your high-deductible health plan coverage on December 1, 2025, if you were an eligible individual that day:
+        none (not an eligible individual on December 1), self_only, or family'
+    cite:
+      doc: i8889
+      locator: p. 4, Line 3, rules 2 and 4(b), 'the type of HDHP coverage you had on the first day of the last month of your
+        tax year'
+  - id: f8889.dec_amount
+    printed: (helper)
+    label: The maximum amount for the HDHP coverage you had on December 1 (the full-year amount of that coverage type)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8889.dec_coverage
+          - const: self_only
+        then: f8889.self_amount
+      - guard:
+          op: test
+          eq:
+          - f8889.dec_coverage
+          - const: family
+        then: f8889.family_amount
+      - guard:
+          op: test
+          eq:
+          - f8889.dec_coverage
+          - const: none
+        then: f8889.zero
+    cite:
+      doc: i8889
+      locator: p. 4, Line 3, rules 2, 3 and 4(b)
+  - id: f8889.last_month
+    printed: (helper)
+    label: Do you use the last-month rule (treating yourself as an eligible individual for all of 2025 with your December
+      1 coverage, subject to the testing period through December 31, 2026)?
+    type: Bool
+    expr:
+      op: input
+      source: 'Do you use the last-month rule: treat yourself as an eligible individual for all of 2025 with the coverage
+        you had on December 1, 2025, which requires you to remain an eligible individual from December 1, 2025 through December
+        31, 2026 (the testing period)?'
+    cite:
+      doc: i8889
+      locator: p. 2, Last-month rule and Testing period; p. 4, Line 3, rule 2
+  - id: f8889.use_last_month
+    printed: (helper)
+    label: The last-month rule applies (an eligible individual on December 1 who uses it)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        ne:
+        - f8889.dec_coverage
+        - const: none
+      - op: test
+        eq:
+        - f8889.last_month
+        - const: true
+    cite:
+      doc: i8889
+      locator: p. 2, Last-month rule; p. 4, Line 3, rule 2
+  - id: f8889.line3_changed
+    printed: (helper)
+    label: The greater of the Line 3 Limitation Chart and Worksheet and the maximum for your December 1 coverage
+    type: Dollars
+    expr:
+      op: larger_of
+      of:
+      - f8889.chart_limit
+      - f8889.dec_amount
+    cite:
+      doc: i8889
+      locator: 'p. 4, Line 3, rule 4, ''enter on line 3 ... the greater of: a. The limitation shown on the last line of the
+        Line 3 Limitation Chart and Worksheet ... or b. The maximum amount that can be contributed based on the type of HDHP
+        coverage you had on the first day of the last month'''
+  - id: f8889.line3_all_year
+    printed: (helper)
+    label: Line 3 for an eligible individual all year
+    type: Dollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8889.changed
+          - const: true
+        then: f8889.line3_changed
+      - guard:
+          op: test
+          eq:
+          - f8889.changed
+          - const: false
+        then: f8889.chart_limit
+    cite:
+      doc: i8889
+      locator: p. 4, Line 3, rules 3 and 4 (for a year with one coverage type the chart gives $4,300 or $8,550, plus $1,000
+        if age 55 or older)
+  - id: f8889.line3_last_month
+    printed: (helper)
+    label: Line 3 under the last-month rule (considered an eligible individual all year)
+    type: Dollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8889.changed
+          - const: true
+        then: f8889.line3_changed
+      - guard:
+          op: test
+          eq:
+          - f8889.changed
+          - const: false
+        then: f8889.dec_amount
+    cite:
+      doc: i8889
+      locator: p. 4, Line 3, rules 2, 3 and 4 (rule 4 covers a filer who 'were, or were considered, an eligible individual
+        for the entire year' and changed type; amb.2025.hsa_last_month_change)
+    ambiguity: amb.2025.hsa_last_month_change
+  - id: f8889.line3_part_year
+    printed: (helper)
+    label: Line 3 when not an eligible individual every month
+    type: Dollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8889.use_last_month
+          - const: true
+        then: f8889.line3_last_month
+      - guard:
+          op: test
+          eq:
+          - f8889.use_last_month
+          - const: false
+        then: f8889.chart_limit
+    cite:
+      doc: i8889
+      locator: p. 4, Line 3, rules 2 and 5
+  - id: f8889.line3
+    printed: '3'
+    label: If you were under age 55 at the end of 2025 and, on the first day of every month during 2025, you were, or were
+      considered, an eligible individual with the same coverage, enter $4,300 ($8,550 for family coverage). All others, see
+      the instructions for the amount to enter
+    type: Dollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8889.all_year
+          - const: true
+        then: f8889.line3_all_year
+      - guard:
+          op: test
+          eq:
+          - f8889.all_year
+          - const: false
+        then: f8889.line3_part_year
+    cite:
+      doc: f8889
+      locator: Form 8889 (2025), line 3; i8889 pp. 4-6, Line 3
+  - id: f8889.line4
+    printed: '4'
+    label: Enter the amount you and your employer contributed to your Archer MSAs for 2025 from Form 8853, lines 1 and 2
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f8889.zero
+    cite:
+      doc: f8889
+      locator: Form 8889 (2025), line 4 (Archer MSA contributions are refused by f8889.unsupported)
+  - id: f8889.line5
+    printed: '5'
+    label: Subtract line 4 from line 3. If zero or less, enter -0-
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f8889.line3
+      take: f8889.line4
+    cite:
+      doc: f8889
+      locator: Form 8889 (2025), line 5
+  - id: f8889.line6
+    printed: '6'
+    label: Enter the amount from line 5. But if you and your spouse each have separate HSAs and had family coverage under
+      an HDHP at any time during 2025, see the instructions for the amount to enter
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f8889.line5
+    cite:
+      doc: f8889
+      locator: Form 8889 (2025), line 6 (married filers are refused by f8889.married)
+  - id: f8889.line7
+    printed: '7'
+    label: If you were age 55 or older at the end of 2025, married, and you or your spouse had family coverage under an HDHP
+      at any time during 2025, enter your additional contribution amount
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f8889.zero
+    cite:
+      doc: f8889
+      locator: Form 8889 (2025), line 7 (married filers are refused by f8889.married; an unmarried filer's $1,000 is in line
+        3)
+  - id: f8889.line8
+    printed: '8'
+    label: Add lines 6 and 7
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f8889.line6
+      - f8889.line7
+    cite:
+      doc: f8889
+      locator: Form 8889 (2025), line 8
+  - id: f8889.line10
+    printed: '10'
+    label: Qualified HSA funding distributions
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f8889.zero
+    cite:
+      doc: f8889
+      locator: Form 8889 (2025), line 10 (qualified HSA funding distributions are refused by f8889.unsupported)
+  - id: f8889.line11
+    printed: '11'
+    label: Add lines 9 and 10
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f8889.line9
+      - f8889.line10
+    cite:
+      doc: f8889
+      locator: Form 8889 (2025), line 11
+  - id: f8889.line12
+    printed: '12'
+    label: Subtract line 11 from line 8. If zero or less, enter -0-
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f8889.line8
+      take: f8889.line11
+    cite:
+      doc: f8889
+      locator: Form 8889 (2025), line 12
+  - id: f8889.excess
+    printed: (helper)
+    label: Contributions exceed the limit (line 2 more than line 12, or employer contributions more than line 8)
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        gt:
+        - f8889.line2
+        - f8889.line12
+      - op: test
+        gt:
+        - f8889.line11
+        - f8889.line8
+    cite:
+      doc: i8889
+      locator: p. 7, Line 13, Excess Contributions You Make and Excess Employer Contributions
+  - id: f8889.line13_figured
+    printed: (helper)
+    label: Generally, enter the smaller of line 2 or line 12
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f8889.line2
+      - f8889.line12
+    cite:
+      doc: i8889
+      locator: p. 7, Line 13, 'Generally, enter the smaller of line 2 or line 12 on line 13 and on Schedule 1 (Form 1040),
+        Part II, line 13'
+    refuses:
+    - when: f8889.unsupported
+      form: Form 8889 Parts II and III, Form 8853, or other HSA situations
+      remedy: HSA distributions not used for qualified medical expenses, qualified HSA funding distributions, Archer MSAs,
+        prior-year excess contributions, testing-period failures and inherited HSAs are outside this tool.
+      cite:
+        doc: i8889
+        locator: Parts II and III; lines 4, 10 and 13
+    - when: f8889.married
+      form: Form 8889 for a married filer
+      remedy: The HSA rules for spouses (Form 8889 lines 6 and 7) are outside this tool.
+      cite:
+        doc: f8889
+        locator: Form 8889 (2025), lines 6 and 7
+    - when: f8889.bad_months
+      form: Form 8889 line 3 month counts
+      remedy: The number of eligible months must be at most 12 and the number of family months at most the eligible months.
+      cite:
+        doc: i8889
+        locator: p. 6, Line 3 Limitation Chart and Worksheet
+    - when: f8889.excess
+      form: Form 5329 (excess HSA contributions) or excess employer contributions
+      remedy: Contributions above the limit carry an additional tax (Form 5329) or are income; this tool does not compute
+        them.
+      cite:
+        doc: i8889
+        locator: p. 7, Line 13, Excess Contributions You Make and Excess Employer Contributions
+  - id: f8889.line13
+    printed: '13'
+    label: HSA deduction (see instructions)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8889.any
+          - const: true
+        then: f8889.line13_figured
+      - guard:
+          op: test
+          eq:
+          - f8889.any
+          - const: false
+        then: f8889.zero
+    cite:
+      doc: f8889
+      locator: Form 8889 (2025), line 13

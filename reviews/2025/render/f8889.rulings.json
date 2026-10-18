@@ -1,0 +1,12 @@
+{
+ "kind": "render",
+ "form": "f8889",
+ "rulings": [
+  {
+   "printed": "13",
+   "restated": "Choose — [helper \"Any HSA contributions for 2025 (yours or your employer's)\" = true → helper \"Generally, enter the smaller of line 2 or line 12\"] [helper \"Any HSA contributions for 2025 (yours or your employer's)\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The form says only \"HSA deduction (see instructions)\", and the Line 13 instructions are not among the pages given. Nothing provided states that the deduction is the smaller of line 2 or line 12.",
+   "ruling": "Ruling: representation; project retained. Line 13 chooses the helper f8889.line13_figured, whose citation is the Line 13 instructions (i8889 p. 7: 'Generally, enter the smaller of line 2 or line 12 on line 13 and on Schedule 1 (Form 1040), Part II, line 13'); the excerpt given for this printed line carried only the form's own citation."
+  }
+ ]
+}

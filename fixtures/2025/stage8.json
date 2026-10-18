@@ -126,7 +126,12 @@
         "dependent[child].parent_home_paid": false,
         "dependent[child].younger": true,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -574,7 +579,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -1094,7 +1104,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "dependent[a].actc_amount": {
@@ -1740,7 +1755,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "dependent[a].actc_amount": {
@@ -2334,7 +2354,12 @@
         "dependent[child].parent_home_paid": false,
         "dependent[child].younger": true,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -2772,7 +2797,12 @@
         "dependent[parent].parent_home_paid": true,
         "dependent[parent].younger": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "dependent[parent].actc_amount": {
@@ -3218,7 +3248,12 @@
         "dependent[child].parent_home_paid": false,
         "dependent[child].younger": true,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -3885,7 +3920,12 @@
         "dependent[age19].younger": true,
         "dependent[mexico].younger": true,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "dependent[age19].actc_amount": {
@@ -4578,7 +4618,12 @@
         "dependent[student24].younger": true,
         "dependent[age17].younger": true,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "dependent[age17].actc_amount": {
@@ -5216,7 +5261,12 @@
         "dependent[disabled].younger": true,
         "dependent[no_work_ssn].younger": true,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "dependent[all_year].actc_amount": {
@@ -5844,7 +5894,12 @@
         "dependent[child].parent_home_paid": false,
         "dependent[child].younger": true,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -6444,7 +6499,12 @@
         "dependent[child].parent_home_paid": false,
         "dependent[child].younger": true,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -6879,7 +6939,12 @@
         "dependent[child].parent_home_paid": false,
         "dependent[child].younger": true,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -7314,7 +7379,12 @@
         "dependent[child].parent_home_paid": false,
         "dependent[child].younger": true,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -7995,7 +8065,12 @@
         "dependent[child].parent_home_paid": false,
         "dependent[child].younger": true,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -8676,7 +8751,12 @@
         "dependent[child].parent_home_paid": false,
         "dependent[child].younger": true,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -9357,7 +9437,12 @@
         "dependent[parent].parent_home_paid": false,
         "dependent[parent].younger": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "dependent[parent].actc_amount": {
@@ -10023,7 +10108,12 @@
         "dependent[parent].parent_home_paid": false,
         "dependent[parent].younger": false,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "dependent[parent].actc_amount": {
@@ -10699,7 +10789,12 @@
         "dependent[child].parent_home_paid": false,
         "dependent[child].younger": true,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -11369,7 +11464,12 @@
         "dependent[child].parent_home_paid": false,
         "dependent[child].younger": true,
         "$retirement": [],
-        "ssb.benefits": 0
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -11966,7 +12066,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -12575,7 +12680,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -12646,7 +12756,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -12659,7 +12769,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -12672,7 +12782,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -12685,7 +12795,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -12698,7 +12808,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -12739,7 +12849,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -12756,7 +12866,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -12773,7 +12883,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -12786,7 +12896,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -12872,7 +12982,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -12889,7 +12999,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -12902,7 +13012,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -12915,7 +13025,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -12928,7 +13038,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -12941,7 +13051,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -12954,7 +13064,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -12967,7 +13077,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -12980,7 +13090,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -12993,7 +13103,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -13010,7 +13120,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -13023,7 +13133,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -13040,7 +13150,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -13053,7 +13163,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -13096,7 +13206,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -13122,7 +13232,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -13135,7 +13245,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -13164,7 +13274,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -13197,7 +13307,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments are outside this proof of concept.",
+          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -13343,7 +13453,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -13967,7 +14082,12 @@
         "ssb.benefits": 0,
         "eic.born_after_1960": true,
         "f1040.tax_exempt_interest": 0,
-        "div.box12": 0
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.educator_expenses": 0,
+        "f8889.line2": 0,
+        "f8889.line9": 0,
+        "sli.interest": 0
       },
       "expect": {
         "dependent[child].actc_amount": {

@@ -1,0 +1,30 @@
+{
+ "kind": "render",
+ "form": "s1",
+ "rulings": [
+  {
+   "printed": "10",
+   "restated": "Enter the amount from line 7.",
+   "model": "The form says \"Combine lines 1 through 7 and 9.\" The restatement uses only line 7 and has no refusal naming lines 1–6 and 9 as excluded.",
+   "ruling": "Ruling: scope; project retained. Lines 1 to 6, 8a to 8z and 9 are outside this tool: scope.schedule1 refuses Form 1040 line 8, which copies this line, whenever any of them applies, so within scope they are zero (the line's citation says so)."
+  },
+  {
+   "printed": "11",
+   "restated": "Choose — [helper \"Any qualified educator expenses\" = true → helper \"Educator expense deduction for an eligible educator\"] [helper \"Any qualified educator expenses\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The restatement caps the deduction at $300 for a single educator. The instructions say \"If you and your spouse are filing jointly and both of you were eligible educators, the maximum deduction is $600,\" and no refusal excludes that case.",
+   "ruling": "Ruling: scope; project retained. The $600 maximum is for a joint return with two eligible educators; married filing statuses are refused (s3.married), so the $300 limit is the one within scope."
+  },
+  {
+   "printed": "21",
+   "restated": "Enter the amount from sli helper \"Student loan interest deduction (Schedule 1, line 21)\".",
+   "model": "The form says only \"Student loan interest deduction.\" The line 21 instructions and the Student Loan Interest Deduction Worksheet (including its line 9 and its eligibility conditions) are not in the pages given, so the computed amount cannot be checked.",
+   "ruling": "Ruling: representation; project retained. Line 21 copies the worksheet's result (sli.deduction); the worksheet and the line 21 instructions are judged line by line in the render log of `sli`, where they are given."
+  },
+  {
+   "printed": "26",
+   "restated": "Add line 11, line 13, and line 21.",
+   "model": "The form says \"Add lines 11 through 23 and 25.\" The restatement adds only lines 11, 13 and 21 and has no refusal naming lines 12, 14–20, 22–23 and 25 as excluded.",
+   "ruling": "Ruling: scope; project retained. Lines 12, 14 to 20, 23 and 25 are outside this tool: scope.schedule1 refuses Form 1040 line 10, which copies this line, whenever any of them applies, so within scope they are zero (the line's citation says so)."
+  }
+ ]
+}

@@ -1,0 +1,287 @@
+form:
+  id: s1
+  kind: form
+  title: Schedule 1 — selected lines (unemployment compensation, educator expenses, HSA deduction, student loan interest)
+  tax_year: 2025
+  note: Lines 7, 10, 11, 13, 21 and 26. Every other Schedule 1 item is refused by scope.schedule1 at Form 1040 lines 8 and
+    10.
+  lines:
+  - id: s1.zero
+    printed: (helper)
+    label: Year parameter sales.zero
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: sales.zero
+    cite:
+      doc: f1040s1
+      locator: Schedule 1 (2025), lines 7, 11, 21
+  - id: s1.uc_paid
+    printed: (helper)
+    label: Unemployment compensation paid to you in 2025
+    type: NonNegDollars
+    expr:
+      op: input
+      source: 'Unemployment compensation paid to you in 2025: the total of box 1 of your Forms 1099-G (if box 1 is wrong,
+        the amount actually paid to you)'
+    cite:
+      doc: i1040gi
+      locator: p. 89, Schedule 1, line 7, 'You should receive a Form 1099-G showing in box 1 the total unemployment compensation
+        paid to you in 2025' and 'If the amount reported in box 1 of your Form(s) 1099-G is incorrect, report on line 7 only
+        the actual amount'
+  - id: s1.has_uc
+    printed: (helper)
+    label: Any unemployment compensation
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - s1.uc_paid
+      - param: sales.zero
+    cite:
+      doc: i1040gi
+      locator: p. 89, Schedule 1, line 7
+  - id: s1.uc_repaid
+    printed: (helper)
+    label: Amount of a 2025 overpayment of unemployment compensation you repaid in 2025
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Amount you repaid in 2025 of an overpayment of unemployment compensation you received in 2025 (zero if none)
+    cite:
+      doc: i1040gi
+      locator: p. 89, Schedule 1, line 7, 'If you received an overpayment of unemployment compensation in 2025, subtract the
+        amount you repaid from the total amount you received'
+  - id: s1.uc_unsupported
+    printed: (helper)
+    label: Did you make contributions to a governmental unemployment compensation program (not counting paid family leave
+      or disability insurance contributions), or repay in 2025 any unemployment compensation you included in income in an
+      earlier year?
+    type: Bool
+    expr:
+      op: input
+      source: Did you make contributions to a governmental unemployment compensation program (not counting paid family leave
+        or disability insurance contributions), or repay in 2025 any unemployment compensation you included in income in an
+        earlier year?
+    cite:
+      doc: i1040gi
+      locator: p. 89, Schedule 1, line 7, contributions to a governmental unemployment compensation program and repayments
+        of more than $3,000 included in income in an earlier year (Pub. 525)
+  - id: s1.line7_figured
+    printed: (helper)
+    label: Unemployment compensation less the amount of a 2025 overpayment repaid
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: s1.uc_paid
+      take: s1.uc_repaid
+    cite:
+      doc: i1040gi
+      locator: p. 89, Schedule 1, line 7, 'subtract the amount you repaid from the total amount you received. Enter the result
+        on line 7'
+    refuses:
+    - when: s1.uc_unsupported
+      form: Unemployment compensation contributions or earlier-year repayments (Form 1099-G instructions, Pub. 525)
+      remedy: Reducing unemployment compensation by program contributions, or repayments of amounts included in an earlier
+        year, is outside this tool.
+      cite:
+        doc: i1040gi
+        locator: p. 89, Schedule 1, line 7, Caution and the last paragraph
+  - id: s1.line7
+    printed: '7'
+    label: Unemployment compensation
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - s1.has_uc
+          - const: true
+        then: s1.line7_figured
+      - guard:
+          op: test
+          eq:
+          - s1.has_uc
+          - const: false
+        then: s1.zero
+    cite:
+      doc: f1040s1
+      locator: Schedule 1 (2025), line 7
+  - id: s1.line7_box
+    printed: 7 (box)
+    label: If you repaid a 2025 overpayment (see instructions), check here
+    type: Bool
+    display: The line 7 check box, shown on the values sheet; it changes no amount.
+    expr:
+      op: test
+      gt:
+      - s1.uc_repaid
+      - param: sales.zero
+    cite:
+      doc: f1040s1
+      locator: Schedule 1 (2025), line 7, 'If you repaid a 2025 overpayment (see instructions), check here'
+  - id: s1.line7_repaid
+    printed: 7 (amount repaid)
+    label: Enter amount repaid
+    type: NonNegDollars
+    display: The amount repaid written beside line 7, shown on the values sheet; it changes no amount.
+    expr:
+      op: copy
+      from: s1.uc_repaid
+    cite:
+      doc: f1040s1
+      locator: Schedule 1 (2025), line 7, 'enter amount repaid'
+  - id: s1.line10
+    printed: '10'
+    label: Combine lines 1 through 7 and 9. This is your additional income. Enter here and on Form 1040, 1040-SR, or 1040-NR,
+      line 8
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: s1.line7
+    cite:
+      doc: f1040s1
+      locator: Schedule 1 (2025), line 10 (lines 1 to 6, 8a to 8z and 9 are outside this tool and refused at Form 1040 line
+        8 by scope.schedule1)
+  - id: s1.educator_expenses
+    printed: (helper)
+    label: Qualified educator expenses you paid in 2025
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Qualified educator expenses you paid in 2025 (professional development courses, and books, supplies, equipment
+        and other materials used in the classroom), reduced by excludable savings bond interest (Form 8815), nontaxable qualified
+        tuition program or Coverdell earnings or distributions, and reimbursements not reported in box 1 of your Form W-2;
+        zero if none
+    cite:
+      doc: i1040gi
+      locator: p. 93, Schedule 1, line 11, Qualified expenses and 'You must reduce your qualified expenses by the following
+        amounts'
+  - id: s1.has_educator_expenses
+    printed: (helper)
+    label: Any qualified educator expenses
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - s1.educator_expenses
+      - param: sales.zero
+    cite:
+      doc: i1040gi
+      locator: p. 93, Schedule 1, line 11
+  - id: s1.eligible_educator
+    printed: (helper)
+    label: Were you an eligible educator in 2025 (a kindergarten through grade 12 teacher, instructor, counselor, principal,
+      or aide who worked in a school for at least 900 hours during a school year)?
+    type: Bool
+    expr:
+      op: input
+      source: Were you an eligible educator in 2025 (a kindergarten through grade 12 teacher, instructor, counselor, principal,
+        or aide who worked in a school for at least 900 hours during a school year)?
+    cite:
+      doc: i1040gi
+      locator: p. 93, Schedule 1, line 11, 'An eligible educator is a kindergarten through grade 12 teacher, instructor, counselor,
+        principal, or aide who worked in a school for at least 900 hours during a school year'
+  - id: s1.educator_max
+    printed: (helper)
+    label: Year parameter s1.educator_max ($300)
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: s1.educator_max
+    cite:
+      doc: i1040gi
+      locator: p. 93, Schedule 1, line 11, 'up to $300'
+  - id: s1.educator_limited
+    printed: (helper)
+    label: Qualified educator expenses, up to $300
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - s1.educator_expenses
+      - s1.educator_max
+    cite:
+      doc: i1040gi
+      locator: p. 93, Schedule 1, line 11, 'you can deduct on line 11 up to $300 of qualified expenses you paid in 2025'
+  - id: s1.educator_deduction
+    printed: (helper)
+    label: Educator expense deduction for an eligible educator
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - s1.eligible_educator
+          - const: true
+        then: s1.educator_limited
+      - guard:
+          op: test
+          eq:
+          - s1.eligible_educator
+          - const: false
+        then: s1.zero
+    cite:
+      doc: i1040gi
+      locator: p. 93, Schedule 1, line 11, 'If you were an eligible educator in 2025'
+  - id: s1.line11
+    printed: '11'
+    label: Educator expenses
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - s1.has_educator_expenses
+          - const: true
+        then: s1.educator_deduction
+      - guard:
+          op: test
+          eq:
+          - s1.has_educator_expenses
+          - const: false
+        then: s1.zero
+    cite:
+      doc: f1040s1
+      locator: Schedule 1 (2025), line 11
+  - id: s1.line13
+    printed: '13'
+    label: Health savings account deduction. Attach Form 8889
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f8889.line13
+    cite:
+      doc: f1040s1
+      locator: Schedule 1 (2025), line 13
+  - id: s1.line21
+    printed: '21'
+    label: Student loan interest deduction
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: sli.deduction
+    cite:
+      doc: f1040s1
+      locator: Schedule 1 (2025), line 21
+  - id: s1.line26
+    printed: '26'
+    label: Add lines 11 through 23 and 25. These are your adjustments to income. Enter here and on Form 1040, 1040-SR, or
+      1040-NR, line 10
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - s1.line11
+      - s1.line13
+      - s1.line21
+    cite:
+      doc: f1040s1
+      locator: Schedule 1 (2025), line 26 (lines 12, 14 to 20, 23 and 25 are outside this tool and refused at Form 1040 line
+        10 by scope.schedule1)

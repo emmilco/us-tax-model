@@ -17,7 +17,9 @@ For every archived PDF, per page:
                                PDFKit reads that poppler lacks is evidence of loss and
                                fails the page over the tolerance below. Words poppler
                                reads that PDFKit lacks are counted only: PDFKit skips
-                               icon labels and gives up on some pages entirely.
+                               icon labels and gives up on some pages entirely. A line
+                               label poppler reads as one token ("14a") and PDFKit as two
+                               ("14", "a") counts as the same text.
   3. PDF vs HTML               Where the IRS also publishes the document as HTML and the
                                archive holds that snapshot, every word of a page's
                                reading-order text occurs in the HTML text, bar the page furniture in tools/extraction/furniture.txt,
@@ -147,6 +149,13 @@ def check_pdfkit(entry, layout, lines):
     for i, (a, b) in enumerate(zip(layout, pk), 1):
         ca, cb = Counter(tokens(a)), Counter(tokens(b))
         only_pk = cb - ca
+        # A line label poppler reads as one token ("14a") and PDFKit as two ("14", "a") is the same text.
+        for label, n in (ca - cb).items():
+            m = re.fullmatch(r"(\d+)([a-z])", label)
+            for _ in range(n):
+                if m and only_pk[m.group(1)] > 0 and only_pk[m.group(2)] > 0:
+                    only_pk[m.group(1)] -= 1; only_pk[m.group(2)] -= 1
+        only_pk = +only_pk
         extra += sum(only_pk.values()); skipped += sum((ca - cb).values())
         if sum(cb.values()) < PDFKIT_BLIND_SHARE * sum(ca.values()):
             blind.append(i)

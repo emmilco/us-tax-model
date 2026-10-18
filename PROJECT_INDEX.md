@@ -10,15 +10,17 @@ verification regime are in `spec/spec.md` sections 1, 2.4 and 6.5; the stages
 that follow (integrity stack, household architecture test, coverage) are in
 `spec/design.md` section 5. No human line-by-line reading is claimed; see the
 trust statement in spec 3. Stage 7 (the integrity stack), Stage 8 (dependents,
-head of household and Schedule 8812), Stage 9 (the earned income credit) and
-Stage 10 (retirement income) are complete; see `HANDOFF-STAGE-10.md` to continue.
+head of household and Schedule 8812), Stage 9 (the earned income credit),
+Stage 10 (retirement income) and Stage 11 (unemployment compensation and the common Schedule 1
+adjustments) are complete; see `HANDOFF-STAGE-11.md` to continue.
 
 ## Folder structure
 
 | Path | Purpose |
 |------|---------|
 | `PROJECT_INDEX.md` | This file: structure, directory purposes, naming conventions |
-| `HANDOFF-STAGE-10.md` | Current handoff: Stage 10 (Form 1099-R distributions and taxable social security benefits), the `multiply_count` atom, with open items |
+| `HANDOFF-STAGE-11.md` | Current handoff: Stage 11 (Schedule 1 line 7, educator expenses, the HSA deduction with Form 8889 Part I, student loan interest), the `prorate` atom, with open items |
+| `HANDOFF-STAGE-10.md` | Previous handoff: Stage 10 (Form 1099-R distributions and taxable social security benefits), the `multiply_count` atom, with open items |
 | `HANDOFF-STAGE-9.md` | Previous handoff: the commit guard, the interview-check bound, class M for collections and definitions, the per-band extraction and Stage 9 (earned income credit), with open items |
 | `HANDOFF-STAGE-8.md` | Previous handoff: Stage 8 done, the extraction-as-evidence work and the review reruns of 2026-10-17, facts a fresh session needs |
 | `HANDOFF-STAGE-7.md` | Previous handoff: the Stage 7 integrity stack in detail, with a Stage 8 section appended during the build |
@@ -43,7 +45,7 @@ Stage 10 (retirement income) are complete; see `HANDOFF-STAGE-10.md` to continue
 | `reviews/2025/render/` | One log per form: pages given, model, prompt hash, each printed line's MATCH / MISMATCH / UNCLEAR verdict with the model's reason, and the ruling on each non-match, written against the source page |
 | `tools/engines/` | Engine differential (spec 6.5, class C at scale): case generator, adapters for PolicyEngine-US and Tax-Calculator, comparison and report; engines install into the git-ignored `.engines/` via `setup.sh` |
 | `schema/` | JSON Schema for all canonical data (`data.schema.json`) |
-| `forms/2025/` | Form and worksheet definitions as YAML: `f1040.yaml` (the implemented slice, lines 1a–37), `qdcg.yaml`, `tcw.yaml`, `tax_on_amount.yaml`; Stage 2 adds `w2.yaml`, `person.yaml`, `s3.yaml`; Stage 3 adds `sales.yaml` and `sd.yaml`; Stage 4 adds the remaining forms; Stage 8 adds `dependent.yaml` (per-dependent tests), `household.yaml` (filer facts and head of household) and `s8812.yaml` (Schedule 8812); Stage 9 adds `eic.yaml`; Stage 10 adds `retirement.yaml` (one entry per Form 1099-R, with the Simplified Method Worksheet) and `ssb.yaml` (the Social Security Benefits Worksheet) |
+| `forms/2025/` | Form and worksheet definitions as YAML: `f1040.yaml` (the implemented slice, lines 1a–37), `qdcg.yaml`, `tcw.yaml`, `tax_on_amount.yaml`; Stage 2 adds `w2.yaml`, `person.yaml`, `s3.yaml`; Stage 3 adds `sales.yaml` and `sd.yaml`; Stage 4 adds the remaining forms; Stage 8 adds `dependent.yaml` (per-dependent tests), `household.yaml` (filer facts and head of household) and `s8812.yaml` (Schedule 8812); Stage 9 adds `eic.yaml`; Stage 10 adds `retirement.yaml` (one entry per Form 1099-R, with the Simplified Method Worksheet) and `ssb.yaml` (the Social Security Benefits Worksheet); Stage 11 adds `s1.yaml` (Schedule 1, the supported lines), `f8889.yaml` (Form 8889 Part I with the Line 3 Limitation Chart) and `sli.yaml` (the Student Loan Interest Deduction Worksheet) |
 | `params/2025.yaml` | Year parameters (bracket ceilings, Tax Computation Worksheet rows, table boundary), each with a citation |
 | `tables/2025/` | Pinned data tables: `tax_table.yaml` (cell-by-cell 2025 Tax Table), `rate_schedule.yaml` (Rev. Proc. 2024-40 schedules for the midpoint conjecture) and `eic_0.yaml` to `eic_3.yaml` (the 2025 EIC Table, one table per number of qualifying children with valid SSNs, footnoted rows split at their amounts; written by `tools/extract_eic_table.py` and checked cell by cell against Rev. Proc. 2024-40 in `reports/2025/eic_table_conjecture.md`) |
 | `ambiguities/2025.yaml` | Ambiguity register (readings chosen where the instructions are silent) |
@@ -51,7 +53,7 @@ Stage 10 (retirement income) are complete; see `HANDOFF-STAGE-10.md` to continue
 | `lean/` | Lean 4: atom semantics over the integers (`Atoms.lean`), their lemmas (`Lemmas.lean`), the reference evaluator that reads the same canonical JSON (`Eval.lean`, total by a step budget, pure state), and its termination and determinism theorems (`EvalProps.lean`) |
 | `fixtures/2025/differential/` | Calculator records (class C) and `engine_investigations.json`, the cited causes for engine differences |
 | `fixtures/2025/classm.json` | Class M fixtures: generated returns whose worksheet lines an isolated model worked by hand; written by `tools/transcription/classm.py` |
-| `fixtures/2025/stage*.json` | Test fixtures: covering cases with inputs, expected values, evidence labels and notes; Stage 3 adds official column-arithmetic examples; Stage 5 adds whole-return cases (`stage5.json`) and the calculator-record directory (`differential/`); `stage8.json` asserts the per-person dependent tests, the head of household tests and the Schedule 8812 chain across their branches and refusals; `stage9.json` asserts the earned income credit across its steps, worksheet paths, table footnotes, limits and refusals; `stage10.json` asserts Form 1040 lines 4a to 6d across IRA and plan distributions, rollovers, the Simplified Method tables, the Social Security Benefits Worksheet paths and their refusals; synthetic values remain regressions pending human hand-work |
+| `fixtures/2025/stage*.json` | Test fixtures: covering cases with inputs, expected values, evidence labels and notes; Stage 3 adds official column-arithmetic examples; Stage 5 adds whole-return cases (`stage5.json`) and the calculator-record directory (`differential/`); `stage8.json` asserts the per-person dependent tests, the head of household tests and the Schedule 8812 chain across their branches and refusals; `stage9.json` asserts the earned income credit across its steps, worksheet paths, table footnotes, limits and refusals; `stage10.json` asserts Form 1040 lines 4a to 6d across IRA and plan distributions, rollovers, the Simplified Method tables, the Social Security Benefits Worksheet paths and their refusals; `stage11.json` asserts unemployment compensation, educator expenses, the HSA deduction across the Line 3 chart and the last-month rule, and the student loan interest phase-out including its rounding boundary; synthetic values remain regressions pending human hand-work |
 | `rendered/2025/` | Committed renderer output (each line beside its IRS label and citation) for line-by-line review |
 | `reports/2025/` | Generated reports: extraction conservation checks (`extraction.md`), Tax Table midpoint conjecture, branch/gate/arithmetic coverage, per-line evidence coverage, evaluator agreement, data-level properties over generated returns (`properties.md`), mutation score, calculator differential entry sheets, engine differential (`engine_differential.md`), Stage 2–5 review packets and CLI values sheets |
 

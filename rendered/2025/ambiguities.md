@@ -56,6 +56,26 @@
 - Status: Owner approved ($0) after the check that it cannot err; below $1 every column's credit, figured at the steepest build-up rate (45%), is under $0.45 and rounds to $0, and earned income is never negative in scope (self-employment is refused).
 - Cite: [i1040gi] p. 46, Worksheet A, line 2; p. 49, EIC Table, first row (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## amb.2025.hsa_last_month_change
+
+- Text at issue: Form 8889 line 3 instructions, rule 2, "If the last-month rule ... applies, you are considered an eligible individual for the entire year. You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month", and rule 4, "If you were, or were considered, an eligible individual for the entire year and you changed your type of coverage during the year, enter on line 3 ... the greater of" the Line 3 Limitation Chart and Worksheet or the maximum for the December 1 coverage.
+- Candidate readings: Under the last-month rule, line 3 is the maximum for the December 1 coverage (rule 2's same coverage for the year). | Under the last-month rule with a change of coverage type, line 3 is the greater of the chart and the December 1 maximum (rule 4 names a filer who "were considered" eligible all year).
+- **Chosen:** The greater of the chart and the December 1 maximum when the coverage type changed among the eligible months; the December 1 maximum otherwise (f8889.line3_last_month).
+- Reason: Rule 4 names the filer considered eligible all year, which is the last-month rule's filer, so it reads as the stricter fit to the text; the result is never less than rule 2's amount. Found by the Stage 11 class M hand-work (the model applied rule 4), adopted under the owner's standing preference for the strictly accurate reading.
+
+- Status: Adopted in Stage 11 from the class M review; put to the owner in the Stage 11 report.
+- Cite: [i8889] p. 4, Line 3, rules 2, 3 and 4 (2025; sha256 da6f2f58)
+
+## amb.2025.sli_ratio_places
+
+- Text at issue: The Student Loan Interest Deduction Worksheet, line 7, says "Enter the result as a decimal (rounded to at least three places)".
+- Candidate readings: Round the ratio to exactly three decimal places (half-up), the least precision the text allows. | Keep the ratio at full precision, which also satisfies "at least three places".
+- **Chosen:** Round the ratio half-up to three decimal places (the prorate atom with places 3 on sli.line8_figured).
+- Reason: The owner's ruling. Three places is the least precision the text allows and the usual hand computation; the readings differ by at most a few cents of deduction (for example $167.50 against $166.67 on line 8 when line 6 is $1,000 and line 1 is $2,500).
+
+- Status: Owner ruling, Stage 11.
+- Cite: [i1040gi] p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 7 (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## amb.2025.qbi_cooperative_patron
 
 - Text at issue: Form 8995 says to use the form if "you aren't a patron of an agricultural or horticultural cooperative"; the Instructions for Form 8995 and the Form 1040 instructions for line 13a say "you aren't a patron in a specified agricultural or horticultural cooperative".

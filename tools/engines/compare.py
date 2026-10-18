@@ -157,6 +157,8 @@ def derived_features(case, values):
         feats.add("salt_exceeds_agi")
     if (m("f8960.line9a") or 0) > 0:
         feats.add("investment_interest_on_8960")
+    if 0 < (m("sli.line8") or 0) < (m("sli.line1") or 0):
+        feats.add("sli_phaseout")
     if (m("f1040.line16") or 0) == 0:
         feats.add("no_tax_either_way")
     return feats

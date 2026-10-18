@@ -365,6 +365,21 @@ function checkLine(ctx: Ctx, doc: FormDoc, line: Line): void {
       compatible(ctx, declared, tyMoney(amountNonneg), where);
       break;
     }
+    case "prorate": {
+      const hit = requireRef(ctx, doc, expr.amount, where);
+      let amountNonneg = false;
+      if (hit) {
+        const ty = declaredTyOf(ctx, hit.doc, hit.line);
+        if (ty.kind !== "money") ctx.errors.push(`${where}: amount '${expr.amount}' is not money`);
+        amountNonneg = ty.kind === "money" && ty.nonneg;
+      }
+      const phit = requireRef(ctx, doc, expr.part, where);
+      if (phit && declaredTyOf(ctx, phit.doc, phit.line).kind !== "money") ctx.errors.push(`${where}: part '${expr.part}' is not money`);
+      if (operandTyOf(ctx, doc, expr.whole, where).kind !== "money") ctx.errors.push(`${where}: whole operand is not money`);
+      if (!Number.isInteger(expr.places) || expr.places < 0 || expr.places > 9) ctx.errors.push(`${where}: places must be a whole number from 0 to 9`);
+      compatible(ctx, declared, tyMoney(amountNonneg), where);
+      break;
+    }
     case "round": {
       const hit = requireRef(ctx, doc, expr.of, where);
       let nonneg = false;
@@ -559,6 +574,10 @@ function checkCycles(ctx: Ctx, data: CanonicalData): void {
         break;
       case "multiply_count":
         refs.push(expr.amount, expr.count);
+        break;
+      case "prorate":
+        refs.push(expr.amount, expr.part);
+        operands.push(expr.whole);
         break;
       case "table_lookup":
         refs.push(expr.key, expr.status);

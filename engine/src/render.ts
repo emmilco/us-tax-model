@@ -147,6 +147,8 @@ function exprText(expr: Expr, doc: FormDoc, ctx: RenderCtx): string {
       return `Multiply ${refText(doc, expr.amount, ctx)} by ${operandText(expr.rate, doc, ctx)}.`;
     case "multiply_count":
       return `Multiply ${refText(doc, expr.amount, ctx)} by the number on ${refText(doc, expr.count, ctx)}.`;
+    case "prorate":
+      return `Divide ${refText(doc, expr.part, ctx)} by ${operandText(expr.whole, doc, ctx)}, rounded to ${expr.places} decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply ${refText(doc, expr.amount, ctx)} by the result.`;
     case "round": {
       const how = expr.rule === "up" ? "up to the next multiple of" : expr.rule === "down" ? "down to a multiple of" : "to the nearest multiple of (half up)";
       return `Round ${refText(doc, expr.of, ctx)} ${how} ${fmtMoney(expr.unit)}.`;

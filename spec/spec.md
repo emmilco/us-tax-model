@@ -130,6 +130,7 @@ Every value also has a completeness state: unknown, placeholder, or known. A ret
 | `smaller_of`, `larger_of` | Minimum or maximum of two lines |
 | `multiply_rate` | Amount times a rate |
 | `multiply_count` | Amount times a whole number (a `Count` line) |
+| `prorate` | Amount times (part ÷ whole), the ratio rounded half-up to stated decimal places and kept between 0 and 1 |
 | `round` | Round to a stated unit by a stated rule |
 | `table_lookup` | Banded lookup in a pinned table |
 | `bracket_schedule` | Tax from a rate schedule |
@@ -140,7 +141,7 @@ Every value also has a completeness state: unknown, placeholder, or known. A ret
 
 There are no user-defined functions, loops, local variables, strings or recursion. Adding an atom requires a written justification, a rendering template, a Lean definition and its lemmas. The vocabulary is cross-checked against the IRS Fact Graph operator list before it is frozen.
 
-**Additions after the freeze.** `multiply_count` (Stage 10). Justification: the Simplified Method Worksheet (Form 1040 instructions, lines 5a and 5b, line 5) says "Multiply line 4 by the number of months for which this year's payments were made"; the multiplier is a whole number the filer supplies, which `multiply_rate` cannot express because its rate is a year parameter. The atom multiplies cents by a non-negative integer, exactly, with no rounding. Rendering template: "Multiply ⟨amount⟩ by the number on ⟨count⟩." Lean definition `multiplyCount` (`lean/TaxFormalization/Atoms.lean`) with lemmas for non-negativity, monotonicity in each argument, a zero count and repeated addition (`multiplyCount_succ`), in `Lemmas.lean`. The owner approved the addition over restricting the worksheet to twelve-month years.
+**Additions after the freeze.** `multiply_count` (Stage 10). Justification: the Simplified Method Worksheet (Form 1040 instructions, lines 5a and 5b, line 5) says "Multiply line 4 by the number of months for which this year's payments were made"; the multiplier is a whole number the filer supplies, which `multiply_rate` cannot express because its rate is a year parameter. The atom multiplies cents by a non-negative integer, exactly, with no rounding. Rendering template: "Multiply ⟨amount⟩ by the number on ⟨count⟩." Lean definition `multiplyCount` (`lean/TaxFormalization/Atoms.lean`) with lemmas for non-negativity, monotonicity in each argument, a zero count and repeated addition (`multiplyCount_succ`), in `Lemmas.lean`. The owner approved the addition over restricting the worksheet to twelve-month years. `prorate` (Stage 11). Justification: the Student Loan Interest Deduction Worksheet (Form 1040 instructions, Schedule 1, line 21) says at line 7 "Divide line 6 by $15,000 ($30,000 if married filing jointly). Enter the result as a decimal (rounded to at least three places). If the result is 1.000 or more, enter 1.000" and at line 8 "Multiply line 1 by line 7"; dividing one amount by another is not expressible with `multiply_rate`, whose rate is a year parameter. The atom takes an amount, a part (a money line), a whole (a money operand) and a number of places; the ratio is rounded half-up to that many places (three, the reading recorded as `amb.2025.sli_ratio_places`) and kept between 0 and 1, and the product is rounded half-up to the cent as `multiply_rate` is. Rendering template: "Divide ⟨part⟩ by ⟨whole⟩, rounded to ⟨places⟩ decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply ⟨amount⟩ by the result." Lean definition `prorate` (`lean/TaxFormalization/Atoms.lean`) with lemmas for non-negativity, never exceeding the amount, and monotonicity in the amount and the part, in `Lemmas.lean`. The owner approved the addition over refusing the phase-out range.
 
 ### 4.3 Lines
 
@@ -224,6 +225,7 @@ Proved in Lean 4 over the integers, once, for the atoms:
 - `subtract_floor0`, `sum` of non-negatives, `smaller_of` of non-negatives and `multiply_rate` by a non-negative rate are non-negative.
 - `round` matches its stated rule, is idempotent, and moves a value by less than one unit.
 - `multiply_count` of a non-negative amount by a count is non-negative, is monotone in each argument, and is repeated addition.
+- `prorate` of a non-negative amount is non-negative and never exceeds the amount, and is monotone in the amount and in the part.
 - Each atom is monotone or antitone in each argument, as tabulated.
 - Evaluation of a well-formed, acyclic form terminates and is deterministic. The reference evaluator is total by a step budget (each recursive call spends one unit, so the recursion is structural) and runs in a pure state monad; an exhausted budget is reported as an error, never as a value.
 

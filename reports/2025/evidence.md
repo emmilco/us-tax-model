@@ -176,7 +176,7 @@ Unasserted lines: eic.zero, eic.qc_count, eic.married_rules, eic.top_limit, eic.
 | f1040.line1a | — | — | — | 7 |
 | f1040.line1z | — | — | — | 7 |
 | f1040.tax_exempt_interest | — | — | — | — |
-| f1040.line2a | — | — | — | 1 (stage10.ss.exempt_interest_dividends) |
+| f1040.line2a | — | — | — | 5 |
 | f1040.line2b | — | — | — | 7 |
 | f1040.line3b | — | — | — | 7 |
 | f1040.line3a | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 3 |
@@ -189,20 +189,20 @@ Unasserted lines: eic.zero, eic.qc_count, eic.married_rules, eic.top_limit, eic.
 | f1040.plan_rollovers | — | — | — | — |
 | f1040.line5c_rollover | — | — | — | 9 |
 | f1040.line6a | — | — | — | 5 |
-| f1040.line6b | — | — | — | 17 |
+| f1040.line6b | — | — | — | 19 |
 | f1040.line6c | — | — | — | 5 |
 | f1040.line6d | — | — | — | 6 |
 | f1040.line7a | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 66 |
-| f1040.line8 | — | — | — | 9 |
-| f1040.line9 | — | — | — | 12 |
-| f1040.line10 | — | — | — | 8 |
-| f1040.line11a | — | — | — | 9 |
+| f1040.line8 | — | — | — | 12 |
+| f1040.line9 | — | — | — | 13 |
+| f1040.line10 | — | — | — | 15 |
+| f1040.line11a | — | — | — | 12 |
 | f1040.line11b | — | — | — | 22 |
 | f1040.line12e | — | — | — | 31 |
 | f1040.line13a | — | — | — | 7 |
 | f1040.line13b | — | — | — | 8 |
-| f1040.line14 | — | — | — | 7 |
-| f1040.line15 | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 9 |
+| f1040.line14 | — | — | — | 8 |
+| f1040.line15 | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 10 |
 | f1040.gate.qdcg_applies | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 7 |
 | f1040.gate.sdtw | — | — | — | 5 |
 | f1040.non_sdtw_tax | — | — | — | 2 (stage4.sdtw.special_rates, stage4.sdtw.skip22) |
@@ -268,6 +268,56 @@ Unasserted lines: f1040.ira_rollovers, f1040.plan_rollovers
 | f4952.required | — | — | — | 7 |
 
 Unasserted lines: f4952.zero, f4952.bad_dividends, f4952.bad_election, f4952.exception
+
+## Form 8889 — HSA contributions and deduction (Part I)
+
+| line | A | B | C | R |
+| --- | --- | --- | --- | --- |
+| f8889.zero | — | — | — | — |
+| f8889.line2 | — | — | — | — |
+| f8889.line9 | — | — | — | — |
+| f8889.any | — | — | — | — |
+| f8889.unsupported | — | — | — | — |
+| f8889.married | — | — | — | — |
+| f8889.months_eligible | — | — | — | — |
+| f8889.months_family | — | — | — | — |
+| f8889.bad_months | — | — | — | — |
+| f8889.age55 | — | — | — | — |
+| f8889.self_amount | — | — | — | — |
+| f8889.self_under55 | — | — | — | — |
+| f8889.self_55 | — | — | — | — |
+| f8889.family_amount | — | — | — | — |
+| f8889.family_under55 | — | — | — | — |
+| f8889.family_55 | — | — | — | — |
+| f8889.family_extra | — | — | — | — |
+| f8889.chart_self | — | — | — | — |
+| f8889.chart_family | — | — | — | — |
+| f8889.chart_total | — | — | — | — |
+| f8889.chart_limit | — | — | — | — |
+| f8889.all_year | — | — | — | — |
+| f8889.changed | — | — | — | — |
+| f8889.dec_coverage | — | — | — | — |
+| f8889.dec_amount | — | — | — | — |
+| f8889.last_month | — | — | — | — |
+| f8889.use_last_month | — | — | — | — |
+| f8889.line3_changed | — | — | — | — |
+| f8889.line3_all_year | — | — | — | — |
+| f8889.line3_last_month | — | — | — | — |
+| f8889.line3_part_year | — | — | — | — |
+| f8889.line3 | — | — | — | 11 |
+| f8889.line4 | — | — | — | 4 |
+| f8889.line5 | — | — | — | 4 |
+| f8889.line6 | — | — | — | 4 |
+| f8889.line7 | — | — | — | 4 |
+| f8889.line8 | — | — | — | 4 |
+| f8889.line10 | — | — | — | 4 |
+| f8889.line11 | — | — | — | 4 |
+| f8889.line12 | — | — | — | 6 |
+| f8889.excess | — | — | — | — |
+| f8889.line13_figured | — | — | — | — |
+| f8889.line13 | — | — | — | 12 |
+
+Unasserted lines: f8889.zero, f8889.any, f8889.married, f8889.bad_months, f8889.self_amount, f8889.self_under55, f8889.self_55, f8889.family_amount, f8889.family_under55, f8889.family_55, f8889.family_extra, f8889.chart_self, f8889.chart_family, f8889.chart_total, f8889.chart_limit, f8889.all_year, f8889.changed, f8889.dec_amount, f8889.use_last_month, f8889.line3_changed, f8889.line3_all_year, f8889.line3_last_month, f8889.line3_part_year, f8889.excess, f8889.line13_figured
 
 ## Form 8959 — wage-only Additional Medicare Tax
 
@@ -575,6 +625,33 @@ Unasserted lines: qbi.zero, qbi.eligible, qbi.deductions_before, qbi.net_capital
 | retirement.amount_a | — | — | — | 11 |
 
 Unasserted lines: retirement.zero, retirement.one, retirement.smw4_t2_360
+
+## Schedule 1 — selected lines (unemployment compensation, educator expenses, HSA deduction, student loan interest)
+
+| line | A | B | C | R |
+| --- | --- | --- | --- | --- |
+| s1.zero | — | — | — | — |
+| s1.uc_paid | — | — | — | — |
+| s1.has_uc | — | — | — | — |
+| s1.uc_repaid | — | — | — | — |
+| s1.uc_unsupported | — | — | — | — |
+| s1.line7_figured | — | — | — | — |
+| s1.line7 | — | — | — | 5 |
+| s1.line7_box | — | — | — | 5 |
+| s1.line7_repaid | — | — | — | 4 |
+| s1.line10 | — | — | — | 3 |
+| s1.educator_expenses | — | — | — | — |
+| s1.has_educator_expenses | — | — | — | — |
+| s1.eligible_educator | — | — | — | — |
+| s1.educator_max | — | — | — | — |
+| s1.educator_limited | — | — | — | — |
+| s1.educator_deduction | — | — | — | — |
+| s1.line11 | — | — | — | 6 |
+| s1.line13 | — | — | — | 4 |
+| s1.line21 | — | — | — | 5 |
+| s1.line26 | — | — | — | 4 |
+
+Unasserted lines: s1.zero, s1.has_uc, s1.line7_figured, s1.has_educator_expenses, s1.educator_max, s1.educator_limited, s1.educator_deduction
 
 ## Schedule 2 — supported Additional Medicare Tax and NIIT
 
@@ -945,6 +1022,36 @@ Unasserted lines: sd.line18, sd.line19, sd.filing4952, sd.investment_election, s
 
 Unasserted lines: sdtw.zero, sdtw.ordinary_ceiling, sdtw.use1250, sdtw.use28, sdtw.raw23, sdtw.raw24, sdtw.raw25, sdtw.raw26, sdtw.raw27, sdtw.raw28, sdtw.raw29, sdtw.raw30, sdtw.raw31, sdtw.raw32, sdtw.raw33, sdtw.raw34, sdtw.raw35, sdtw.raw36, sdtw.raw37, sdtw.raw38, sdtw.raw39, sdtw.raw40, sdtw.raw41, sdtw.raw42, sdtw.raw43
 
+## Student Loan Interest Deduction Worksheet—Schedule 1, Line 21
+
+| line | A | B | C | R |
+| --- | --- | --- | --- | --- |
+| sli.zero | — | — | — | — |
+| sli.interest | — | — | — | — |
+| sli.has | — | — | — | — |
+| sli.claimed | — | — | — | — |
+| sli.max | — | — | — | — |
+| sli.line1 | — | — | — | 6 |
+| sli.line2 | — | — | — | 5 |
+| sli.line3 | — | — | — | 6 |
+| sli.line4 | — | — | — | 5 |
+| sli.base_other | — | — | — | — |
+| sli.base_joint | — | — | — | — |
+| sli.line5 | — | — | — | 6 |
+| sli.over | — | — | — | — |
+| sli.line6 | — | — | — | 3 |
+| sli.divisor_other | — | — | — | — |
+| sli.divisor_joint | — | — | — | — |
+| sli.divisor | — | — | — | — |
+| sli.line8_figured | — | — | — | — |
+| sli.line8 | — | — | — | 11 |
+| sli.line9 | — | — | — | 4 |
+| sli.eligible | — | — | — | — |
+| sli.allowed | — | — | — | — |
+| sli.deduction | — | — | — | 10 |
+
+Unasserted lines: sli.zero, sli.has, sli.max, sli.base_other, sli.base_joint, sli.over, sli.divisor_other, sli.divisor_joint, sli.divisor, sli.line8_figured, sli.eligible, sli.allowed
+
 ## Social Security Benefits Worksheet—Lines 6a and 6b
 
 | line | A | B | C | R |
@@ -957,11 +1064,11 @@ Unasserted lines: sdtw.zero, sdtw.ordinary_ceiling, sdtw.use1250, sdtw.use28, sd
 | ssb.line1 | — | — | — | 5 |
 | ssb.has_benefits | — | — | — | — |
 | ssb.line2 | — | — | — | 5 |
-| ssb.line3 | — | — | — | 5 |
+| ssb.line3 | — | — | — | 6 |
 | ssb.line4 | — | — | — | 5 |
 | ssb.line5 | — | — | — | 5 |
-| ssb.line6 | — | — | — | 5 |
-| ssb.line7 | — | — | — | 6 |
+| ssb.line6 | — | — | — | 6 |
+| ssb.line7 | — | — | — | 7 |
 | ssb.base_single | — | — | — | — |
 | ssb.base_joint | — | — | — | — |
 | ssb.zero | — | — | — | — |
@@ -1097,5 +1204,5 @@ Unasserted lines: below_boundary, table_tax, worksheet_tax, tax
 
 Unasserted lines: single.row1.product, single.row1.tax, single.row2.product, single.row2.tax, single.row3.product, single.row3.tax, single.row4.product, single.row4.tax, single.row5.product, single.row5.tax, single.result, mfj.row1.product, mfj.row1.tax, mfj.row2.product, mfj.row2.tax, mfj.row3.product, mfj.row3.tax, mfj.row4.product, mfj.row4.tax, mfj.row5.product, mfj.row5.tax, mfj.result, mfs.row1.product, mfs.row1.tax, mfs.row2.product, mfs.row2.tax, mfs.row3.product, mfs.row3.tax, mfs.row4.product, mfs.row4.tax, mfs.row5.product, mfs.row5.tax, mfs.result, hoh.row1.product, hoh.row1.tax, hoh.row2.product, hoh.row2.tax, hoh.row3.product, hoh.row3.tax, hoh.row4.product, hoh.row4.tax, hoh.row5.product, hoh.row5.tax, hoh.result, tax
 
-Unasserted computed lines across all documents: 217. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
+Unasserted computed lines across all documents: 261. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
 Asserted keys not matching a line id: root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.below_boundary, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.tax, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.below_boundary, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.tax, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, root|inst:tax_on_amount#{"amount":"qdcg.line1","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, qdcg.f1040.line15, qdcg.f1040.line3a, qdcg.f1040.status, f1040.qdcg.line25, qdcg.sd.distributions

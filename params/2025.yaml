@@ -45,6 +45,14 @@ params:
       cite:
         doc: f1040
         locator: Form 1040, Filing Status (checkboxes)
+    hsa_coverage:
+      values:
+        - none
+        - self_only
+        - family
+      cite:
+        doc: i8889
+        locator: "p. 4, Line 3, rules 2 and 4(b), and p. 6, Line 3 Limitation Chart: the type of HDHP coverage (self-only or family) on the first day of a month, or not an eligible individual that day"
     retirement_account:
       values:
         - traditional_ira
@@ -1089,3 +1097,71 @@ params:
         doc: i1116
         locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular
           tax
+    s1.educator_max:
+      type: NonNegDollars
+      value: 30000
+      cite:
+        doc: i1040gi
+        locator: 'p. 93, Schedule 1, line 11, "up to $300 of qualified expenses"'
+    sli.max:
+      type: NonNegDollars
+      value: 250000
+      cite:
+        doc: i1040gi
+        locator: 'p. 99, Student Loan Interest Deduction Worksheet, line 1, "Don''t enter more than $2,500"'
+    sli.base_other:
+      type: NonNegDollars
+      value: 8500000
+      cite:
+        doc: i1040gi
+        locator: 'p. 99, Student Loan Interest Deduction Worksheet, line 5, "Single, head of household, or qualifying surviving spouse—$85,000"'
+    sli.base_joint:
+      type: NonNegDollars
+      value: 17000000
+      cite:
+        doc: i1040gi
+        locator: 'p. 99, Student Loan Interest Deduction Worksheet, line 5, "Married filing jointly—$170,000"'
+    sli.divisor_other:
+      type: NonNegDollars
+      value: 1500000
+      cite:
+        doc: i1040gi
+        locator: 'p. 99, Student Loan Interest Deduction Worksheet, line 7, "Divide line 6 by $15,000"'
+    sli.divisor_joint:
+      type: NonNegDollars
+      value: 3000000
+      cite:
+        doc: i1040gi
+        locator: 'p. 99, Student Loan Interest Deduction Worksheet, line 7, "($30,000 if married filing jointly)"'
+    hsa.self_only:
+      type: NonNegDollars
+      value: 430000
+      cite:
+        doc: i8889
+        locator: 'p. 6, Line 3 Limitation Chart, self-only coverage, "Enter $4,300 on the line below for the month"'
+    hsa.self_only_55:
+      type: NonNegDollars
+      value: 530000
+      cite:
+        doc: i8889
+        locator: 'p. 6, Line 3 Limitation Chart, self-only coverage, "If you were age 55 or older at the end of 2025, enter $5,300 for the month"'
+    hsa.family:
+      type: NonNegDollars
+      value: 855000
+      cite:
+        doc: i8889
+        locator: 'p. 6, Line 3 Limitation Chart, family coverage, "Enter $8,550 on the line below for the month"'
+    hsa.family_55:
+      type: NonNegDollars
+      value: 955000
+      cite:
+        doc: i8889
+        locator: 'p. 6, Line 3 Limitation Chart, family coverage, "If, at the end of 2025, you were unmarried and age 55 or older, enter $9,550 for the month"'
+    hsa.twelfth:
+      type: Rate
+      value:
+        num: 1
+        den: 12
+      cite:
+        doc: i8889
+        locator: 'p. 6, Line 3 Limitation Chart and Worksheet, "Limitation. Divide the total by 12"'

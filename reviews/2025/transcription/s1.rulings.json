@@ -1,0 +1,18 @@
+{
+ "kind": "transcription",
+ "form": "s1",
+ "rulings": [
+  {
+   "printed": "11",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"input\": \"s1.educator_expenses\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"input\": \"s1.educator_expenses\"}], \"test\": \"lt\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"s1.eligible_educator\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"s1.eligible_educator\"}], \"test\": \"eq\"}, \"then\": {\"of\": [{\"input\": \"s1.educator_expenses\"}, {\"param\": \"s1.educator_max\"}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}}], \"op\": \"choose\"}",
+   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"s1.eligible_educator\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"s1.eligible_educator\"}], \"test\": \"eq\"}, \"then\": {\"of\": [{\"input\": \"s1.educator_expenses\"}, {\"param\": \"s1.educator_max\"}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}",
+   "ruling": "Ruling: equivalent; project retained. With no qualified expenses the smaller of the expenses and $300 is zero either way; the project's guard keeps a filer without expenses from being asked whether they were an eligible educator."
+  },
+  {
+   "printed": "7",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"input\": \"s1.uc_paid\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"input\": \"s1.uc_paid\"}], \"test\": \"lt\"}, \"then\": {\"from\": {\"input\": \"s1.uc_paid\"}, \"op\": \"subtract_floor0\", \"take\": {\"input\": \"s1.uc_repaid\"}}}], \"op\": \"choose\"}",
+   "second": "{\"from\": {\"input\": \"s1.uc_paid\"}, \"op\": \"subtract\", \"take\": {\"input\": \"s1.uc_repaid\"}}",
+   "ruling": "Ruling: equivalent within valid inputs; project retained. The amount repaid is part of a 2025 overpayment of the compensation received, so it never exceeds it and the floor at zero does not apply; with no unemployment compensation both give zero, and the project's guard keeps a filer without it from being asked about repayments."
+  }
+ ]
+}

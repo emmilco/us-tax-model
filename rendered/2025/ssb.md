@@ -85,10 +85,10 @@
 
 ## 6 — `ssb.line6`
 
-- **IRS:** Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 25; zero in this tool
-- **Encoded (NonNegDollars):** Enter $0 (sales.zero).
-- **Refusal:** when scope.schedule1 is true, cannot complete Schedule 1 adjustments (Social Security Benefits Worksheet, line 6). Schedule 1 adjustments are outside this tool. Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 6 (2025; printed date 2026-02-25; sha256 482e9c48)
-- Expr: `{"op":"param","ref":"sales.zero"}`
+- **IRS:** Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 25
+- **Encoded (NonNegDollars):** Add s1 line 11 and s1 line 13.
+- **Refusal:** when scope.schedule1 is true, cannot complete Schedule 1 adjustments (Social Security Benefits Worksheet, line 6). Schedule 1 adjustments other than educator expenses and the HSA deduction (lines 12 and 14 to 20, 23 and 25) are outside this tool. Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 6 (2025; printed date 2026-02-25; sha256 482e9c48)
+- Expr: `{"of":["s1.line11","s1.line13"],"op":"sum"}`
 - Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 6 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 7 — `ssb.line7`

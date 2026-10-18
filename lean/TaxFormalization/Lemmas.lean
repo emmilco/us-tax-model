@@ -263,6 +263,59 @@ theorem roundDownToUnit_mono {x x' unit : Int} (h : x ≤ x') (hu : 0 < unit) :
   apply Int.mul_le_mul_of_nonneg_right _ (by omega)
   exact Int.ediv_le_ediv hu h
 
+/-! ## `prorate` -/
+
+theorem prorateRatio_nonneg (part whole s : Int) : 0 ≤ prorateRatio part whole s := by
+  unfold prorateRatio; omega
+
+theorem prorateRatio_le (part whole s : Int) (hs : 0 ≤ s) : prorateRatio part whole s ≤ s := by
+  unfold prorateRatio; omega
+
+theorem pow10_pos (places : Nat) : 0 < (10 : Int) ^ places := by
+  exact Int.pow_pos (by decide)
+
+/-- `prorate` of an amount that is not negative is not negative. -/
+theorem prorate_nonneg {a part whole : Int} {places : Nat} (ha : 0 ≤ a) :
+    0 ≤ prorate a part whole places := by
+  unfold prorate
+  exact multiplyRateHalfUp_nonneg ha (prorateRatio_nonneg _ _ _) (pow10_pos places)
+
+/-- Multiplying by the whole scale gives the amount back. -/
+theorem multiplyRateHalfUp_self {a s : Int} (hs : 0 < s) : multiplyRateHalfUp a s s = a := by
+  unfold multiplyRateHalfUp halfUpDiv
+  have h2s : 2 * s ≠ 0 := by omega
+  rw [show 2 * (a * s) + s = s + 2 * s * a by rw [Int.mul_comm a s, ← Int.mul_assoc]; omega]
+  rw [Int.add_mul_ediv_left s a h2s]
+  rw [Int.ediv_eq_zero_of_lt (by omega) (by omega)]
+  simp
+
+/-- `prorate` never exceeds the amount (the ratio is at most 1). -/
+theorem prorate_le_amount {a part whole : Int} {places : Nat} (ha : 0 ≤ a) :
+    prorate a part whole places ≤ a := by
+  unfold prorate
+  have hs := pow10_pos places
+  have hle := multiplyRateHalfUp_mono_rate (a := a) (den := (10 : Int) ^ places)
+    (prorateRatio_le part whole _ (Int.le_of_lt hs)) ha hs
+  rw [multiplyRateHalfUp_self hs] at hle
+  exact hle
+
+/-- `prorate` is monotone in the amount. -/
+theorem prorate_mono_amount {a a' part whole : Int} {places : Nat} (h : a ≤ a') :
+    prorate a part whole places ≤ prorate a' part whole places := by
+  unfold prorate
+  exact multiplyRateHalfUp_mono_amount h (prorateRatio_nonneg _ _ _) (pow10_pos places)
+
+/-- `prorate` is monotone in the part, for an amount that is not negative and a positive whole. -/
+theorem prorate_mono_part {a part part' whole : Int} {places : Nat} (h : part ≤ part')
+    (ha : 0 ≤ a) (hw : 0 < whole) :
+    prorate a part whole places ≤ prorate a part' whole places := by
+  unfold prorate
+  apply multiplyRateHalfUp_mono_rate _ ha (pow10_pos places)
+  unfold prorateRatio
+  have := multiplyRateHalfUp_mono_amount (num := (10 : Int) ^ places) h
+    (Int.le_of_lt (pow10_pos places)) hw
+  omega
+
 /-! ## `multiply_count` -/
 
 /-- An amount that is not negative, times a count, is not negative. -/

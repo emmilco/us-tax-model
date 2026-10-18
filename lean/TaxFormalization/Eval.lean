@@ -391,6 +391,20 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
           pure (mkMoney (multiplyCount ((moneyOf amtV).getD 0) ((numGet cntV "value").getD 0)))
         else pure (unknown "multiply_count operands wrong")
       | _, _ => pure (unknown "multiply_count needs an amount and a count")
+    | "prorate" =>
+      match strGet expr "amount", strGet expr "part" with
+      | some amtRef, some partRef =>
+        let amtV ← eval ctx fuel frame (.line amtRef)
+        let partV ← eval ctx fuel frame (.line partRef)
+        let wholeV ← eval ctx fuel frame (.operand (objGetD expr "whole" Json.null))
+        if isUnknown amtV then pure amtV
+        else if isUnknown partV then pure partV
+        else if isUnknown wholeV then pure wholeV
+        else if isMoney amtV && isMoney partV && isMoney wholeV && (moneyOf wholeV).getD 0 > 0 then
+          let places := ((numGet expr "places").getD 0).toNat
+          pure (mkMoney (prorate ((moneyOf amtV).getD 0) ((moneyOf partV).getD 0) ((moneyOf wholeV).getD 0) places))
+        else pure (unknown "prorate operands wrong")
+      | _, _ => pure (unknown "prorate needs an amount and a part")
     | "multiply_rate" =>
       match strGet expr "amount" with
       | some amtRef =>

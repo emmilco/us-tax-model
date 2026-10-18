@@ -39,6 +39,7 @@ export type Expr =
   | TestExpr
   | { op: "round"; of: string; unit: number; rule: string }
   | { op: "multiply_count"; amount: string; count: string }
+  | { op: "prorate"; amount: string; part: string; whole: Operand; places: number }
   | { op: "bracket_schedule"; table: string; key: string; status: string }
   | { op: "sum_over"; collection: string; field: string; where?: TestExpr }
   | { op: "opaque"; name: string };

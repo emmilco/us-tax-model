@@ -363,6 +363,19 @@ function evalExpr(ctx: Ctx, frame: Frame, lineId: string, expr: Expr, cite: Cite
       }
       return d({ kind: "money", cents: amount.cents * count.value }, "multiply_count", ops);
     }
+    case "prorate": {
+      const amount = evalOperand(ctx, frame, expr.amount, ops);
+      const part = evalOperand(ctx, frame, expr.part, ops);
+      const whole = evalOperand(ctx, frame, expr.whole, ops);
+      for (const v of [amount, part, whole]) if (v.kind === "unknown" || v.kind === "refusal") return d(v, "prorate", ops);
+      if (amount.kind !== "money" || part.kind !== "money" || whole.kind !== "money" || whole.cents <= 0) {
+        return d({ kind: "unknown", reason: "prorate operands wrong" }, "prorate", ops);
+      }
+      const scale = 10 ** expr.places;
+      const ratio = Math.max(0, Math.min(scale, multiplyRateHalfUp(part.cents, scale, whole.cents)));
+      const cents = multiplyRateHalfUp(amount.cents, ratio, scale);
+      return d({ kind: "money", cents }, "prorate", ops, [], [`ratio ${ratio}/${scale}, half-up to ${expr.places} places and not more than 1; product half-up to the cent`]);
+    }
     case "multiply_rate": {
       const amount = evalOperand(ctx, frame, expr.amount, ops);
       const rate = evalOperand(ctx, frame, expr.rate, ops);
