@@ -990,11 +990,11 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
   (helper) You, and your spouse if filing jointly, have SSNs valid for employment
       = true
       cite: [i1040gi] p. 40, Step 1, question 2, "Do you, and your spouse if filing a joint return, have a social security number ... that allows you to work and is valid for EIC purposes" (2025; printed date 2026-02-25; 482e9c48)
-  (helper) Number of people on the return with an SSN or ITIN
+  (helper) Number of people on the return with an SSN or ITIN, or who have applied for an ITIN
       = 1
-      cite: [i1040gi] p. 17, Before you begin, "If you want to claim the credit for other dependents, you, and your spouse if filing jointly, must have either an SSN or ITIN" (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 17, Before you begin, "If you want to claim the credit for other dependents, you, and your spouse if filing jointly, must have either an SSN or ITIN"; p. 19, Step 5, question 1, "(Answer 'Yes' if you are applying for an ITIN on or before the return due date (including extensions).)" (2025; printed date 2026-02-25; 482e9c48)
       note: confirmed roster $person: taxpayer
-  (helper) You, and your spouse if filing jointly, have an SSN or ITIN
+  (helper) You, and your spouse if filing jointly, have an SSN or ITIN, or have applied for an ITIN
       = true
       cite: [i1040gi] p. 17, Before you begin, "If you want to claim the credit for other dependents, you, and your spouse if filing jointly, must have either an SSN or ITIN" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Number of people on the return with an SSN valid for employment or an SSN or ITIN
@@ -3187,7 +3187,7 @@ Collection entries and derivations:
   person[taxpayer].hsa_share = $0
     cite: i8889, p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3 (2025; da6f2f58)
   person[taxpayer].tin = true
-    cite: i1040gi, p. 19, Step 5, question 1 (2025; printed date 2026-02-25; 482e9c48)
+    cite: i1040gi, p. 17, Before you begin, "The other spouse must have either an SSN or ITIN, and it must have been issued on or before the due date of the return (including extensions)"; p. 19, Step 5, question 1 (2025; printed date 2026-02-25; 482e9c48)
   person[taxpayer].tip_employers = UNKNOWN (collection roster not confirmed)
     cite: i1040gi, p. 104, Schedule 1-A, line 4c (2025; printed date 2026-02-25; 482e9c48)
   person[taxpayer].tip_total = UNKNOWN (collection roster not confirmed)
@@ -3202,6 +3202,8 @@ Collection entries and derivations:
     cite: i1040gi, p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025" (2025; printed date 2026-02-25; 482e9c48)
   person[taxpayer].withheld = $7,440
     cite: i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+  person[taxpayer].itin_applied = UNKNOWN (no input supplied for person[taxpayer].itin_applied)
+    cite: i1040gi, p. 19, Step 5, question 1, "(Answer 'Yes' if you are applying for an ITIN on or before the return due date (including extensions).)" (2025; printed date 2026-02-25; 482e9c48)
   person[taxpayer].eligible_educator = UNKNOWN (no input supplied for person[taxpayer].eligible_educator)
     cite: i1040gi, p. 93, Schedule 1, line 11, 'An eligible educator is a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year' (2025; printed date 2026-02-25; 482e9c48)
   person[taxpayer].educator_max = $300

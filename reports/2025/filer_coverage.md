@@ -7,17 +7,17 @@ Shares are of the 160,602,107 individual returns the IRS counted for tax year 20
 (Statistics of Income, Publication 1304, archived under `sources/2025/soi-*`). Overlaps between situations
 come from PolicyEngine-US microdata simulated for 2025, raked to every IRS count it can place.
 
-**Estimated coverage: 33.9%** of returns. If the IRS-only categories overlapped the rest
-completely the figure would be 41.9%; if they overlapped nothing, 20.9%.
+**Estimated coverage: 47.8%** of returns. If the IRS-only categories overlapped the rest
+completely the figure would be 59.2%; if they overlapped nothing, 38.1%.
 
 Limits of this estimate:
 
 - IRS counts are for 2023; the 2025 shares are assumed similar.
 - Where the IRS gives only parts of a situation with unknown overlap, the largest part is used, a lower bound.
-- 55 of the 66 refusal gates in the forms are not measured (no IRS count or
+- 59 of the 70 refusal gates in the forms are not measured (no IRS count or
   microdata variable), so the true coverage is lower by their share. Gates measured only in part (for example
   `scope.credits`, `scope.other_line16`) also refuse situations not counted here. Unmeasured:
-  `carloan.refi_nested`, `dependent.divorced_rule`, `dependent.income_exception`, `dependent.married`, `dependent.multiple_support`, `dependent.other_claimant`, `div.amt`, `div.bad_components`, `div.bad_special`, `div.section1202`, `div.unsupported`, `f4952.alternative_allocation`, `f4952.bad_dividends`, `f4952.bad_election`, `f4952.carryover`, `f4952.unsupported`, `f8889.bad_months`, `f8889.excess`, `f8889.married`, `f8959.unsupported`, `f8960.bad_allocation`, `f8960.refund`, `f8960.unsupported`, `ftc.needs1116`, `gift.section_b`, `gift.special`, `household.hoh_fails`, `otjob.refused`, `person.over`, `person.rrta`, `retirement.annuity_rollover`, `retirement.bad_code`, `s1.uc_unsupported`, `s1a.senior_decedent`, `s8812.combat_pay`, `s8812.puerto_rico`, `sa.charity_limited`, `sa.dependent`, `sa.spouse_extra`, `sa.unsupported`, `sales.bad_aggregate`, `sales.bad_code`, `sales.digital`, `sales.special`, `sb.fbar_required`, `sb.form8938`, `sb.line8`, `sb.unsupported`, `scope.other_line16`, `sd.other_forms`, `sd.screen`, `ssb.lump_sum`, `ssb.pub915`, `ssb.terror_disability`, `tipjob.mixed`.
+  `carloan.refi_nested`, `dependent.divorced_rule`, `dependent.income_exception`, `dependent.married`, `dependent.multiple_support`, `dependent.other_claimant`, `div.amt`, `div.bad_components`, `div.bad_special`, `div.section1202`, `div.unsupported`, `f4952.alternative_allocation`, `f4952.bad_dividends`, `f4952.bad_election`, `f4952.carryover`, `f4952.unsupported`, `f8889.allocation_bad`, `f8889.bad_months`, `f8889.excess`, `f8889.mfs`, `f8959.unsupported`, `f8960.bad_allocation`, `f8960.refund`, `f8960.unsupported`, `ftc.needs1116`, `gift.section_b`, `gift.special`, `household.hoh_fails`, `household.roster_bad`, `otjob.refused`, `person.hsa_repeated`, `person.over`, `person.rrta`, `retirement.annuity_rollover`, `retirement.bad_code`, `s1.uc_unsupported`, `s1a.senior_decedent`, `s1a.spouse_senior_decedent`, `s8812.combat_pay`, `s8812.puerto_rico`, `sa.charity_limited`, `sa.dependent`, `sa.mfs_spouse_extra`, `sa.unsupported`, `sales.bad_aggregate`, `sales.bad_code`, `sales.digital`, `sales.special`, `sb.fbar_required`, `sb.form8938`, `sb.line8`, `sb.unsupported`, `scope.other_line16`, `sd.other_forms`, `sd.screen`, `ssb.lump_sum`, `ssb.pub915`, `ssb.terror_disability`, `tipjob.mixed`.
 
 ## Coverage gained by each group, in the order that gains most
 
@@ -25,24 +25,23 @@ Coverage here is of the measured situations only; 100% would still leave the unm
 
 | Step | Group | Coverage after | Gain if covered alone now |
 |---|---|---|---|
-| 1 | Married filing jointly and separately | 49.2% (+15.3) | +15.3 |
-| 2 | Self-employment (Schedule C and SE) | 59.8% (+10.6) | +6.7 |
-| 3 | Other credits (dependent care, saver's, energy, others) | 67.3% (+7.5) | +4.0 |
-| 4 | Other Schedule 1 income and adjustments | 75.3% (+8.0) | +3.0 |
-| 5 | Rental, royalty, partnership, S corporation, estate (Schedule E) | 82.2% (+7.0) | +1.7 |
-| 6 | Premium tax credit (Form 8962) | 87.1% (+4.9) | +1.5 |
-| 7 | Education credits (Form 8863) | 91.3% (+4.1) | +1.5 |
-| 8 | Capital loss carryover | 94.6% (+3.3) | +1.2 |
-| 9 | Additional tax on retirement plans (Form 5329) | 97.7% (+3.1) | +1.1 |
+| 1 | Self-employment (Schedule C and SE) | 58.0% (+10.2) | +10.2 |
+| 2 | Other credits (dependent care, saver's, energy, others) | 65.3% (+7.3) | +6.0 |
+| 3 | Other Schedule 1 income and adjustments | 73.1% (+7.8) | +4.7 |
+| 4 | Rental, royalty, partnership, S corporation, estate (Schedule E) | 79.9% (+6.8) | +3.5 |
+| 5 | Premium tax credit (Form 8962) | 84.8% (+4.9) | +2.8 |
+| 6 | Education credits (Form 8863) | 88.9% (+4.1) | +2.2 |
+| 7 | Capital loss carryover | 92.1% (+3.2) | +1.7 |
+| 8 | Additional tax on retirement plans (Form 5329) | 95.1% (+3.0) | +1.6 |
+| 9 | Married filing separately | 97.7% (+2.5) | +1.4 |
 | 10 | Farm income (Schedule F) | 98.8% (+1.1) | +0.2 |
-| 11 | Wages not on Form W-2 and other earned income | 99.5% (+0.8) | +0.3 |
+| 11 | Wages not on Form W-2 and other earned income | 99.5% (+0.8) | +0.4 |
 | 12 | Other Schedule 2 taxes (AMT and others) | 100.0% (+0.5) | +0.2 |
 
 ## Refused situations
 
 | Situation | Group | Share of returns | IRS returns (2023) | Microdata before raking | Basis |
 |---|---|---|---|---|---|
-| Married filing jointly | Married filing jointly and separately | 33.6% | — | 50.7% | IRS count with qualifying surviving spouses (joint_or_qss), overlap from microdata |
 | Schedule C income or loss | Self-employment (Schedule C and SE) | 19.0% | 30,478,887 | 18.7% | IRS count, overlap from microdata |
 | Saver's credit | Other credits (dependent care, saver's, energy, others) | 6.1% | 9,831,548 | — | IRS count only (independence assumed) |
 | Premium tax credit or advance payments (Form 8962 is not prepared; line 9 is a supplied subtotal) | Premium tax credit (Form 8962) | 6.0% | 9,604,913 | 5.0% | IRS count, overlap from microdata |
@@ -53,7 +52,7 @@ Coverage here is of the measured situations only; 100% would still leave the unm
 | Capital loss carryover from 2024 | Capital loss carryover | 3.5% | 5,622,923 | — | IRS count only (independence assumed) |
 | Partnership or S corporation income or loss | Rental, royalty, partnership, S corporation, estate (Schedule E) | 3.5% | 5,554,014 | 7.1% | IRS count, overlap from microdata |
 | Additional tax on qualified plans (Form 5329) | Additional tax on retirement plans (Form 5329) | 3.2% | 5,092,999 | — | IRS count only (independence assumed) |
-| Married filing separately | Married filing jointly and separately | 2.6% | 4,139,858 | 1.2% | IRS count, overlap from microdata |
+| Married filing separately | Married filing separately | 2.6% | 4,139,858 | 1.2% | IRS count, overlap from microdata |
 | Taxable state or local income tax refund | Other Schedule 1 income and adjustments | 1.9% | 3,109,096 | 9.7% | IRS count, overlap from microdata |
 | Residential energy credits | Other credits (dependent care, saver's, energy, others) | 1.6% | 2,570,561 | — | IRS count only (independence assumed) |
 | IRA deduction | Other Schedule 1 income and adjustments | 1.6% | 2,503,934 | 16.9% | IRS count, overlap from microdata |

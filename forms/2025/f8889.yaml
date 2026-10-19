@@ -73,7 +73,7 @@ form:
   - id: f8889.unsupported
     printed: (helper)
     label: 'Any of these: HSA distributions in 2025 that were not all used for qualified medical expenses or rolled over;
-      a qualified HSA funding distribution from an IRA in 2025; contributions to an Archer MSA for 2025 (Form 8853); excess
+      a qualified HSA funding distribution from an IRA in 2025; contributions to an Archer MSA for 2025 (Form 8853), or, if you or your spouse had family coverage at any time during 2025, to your spouse''s Archer MSA; excess
       HSA contributions from an earlier year that remain in your HSA; failing to remain an eligible individual during a testing
       period that began in an earlier year; or an HSA you acquired because of the account beneficiary''s death?'
     type: Bool
@@ -81,7 +81,7 @@ form:
       op: input
       source: 'Any of these: HSA distributions in 2025 that were not all used for qualified medical expenses or rolled over
         to another HSA; a qualified HSA funding distribution from an IRA in 2025; contributions by you or your employer to
-        an Archer MSA for 2025 (Form 8853); excess HSA contributions from an earlier year that remain in your HSA; failing
+        an Archer MSA for 2025 (Form 8853), or, if you or your spouse had family coverage under an HDHP at any time during 2025, to your spouse''s Archer MSA; excess HSA contributions from an earlier year that remain in your HSA; failing
         to remain an eligible individual during a testing period that began in an earlier year (last-month rule or qualified
         HSA funding distribution); or an HSA you acquired because of the account beneficiary''s death?'
     cite:
@@ -262,6 +262,25 @@ form:
     cite:
       doc: i8889
       locator: p. 6, Line 3 Limitation Chart, $5,300
+  - id: f8889.age55_unmarried
+    printed: (helper)
+    label: Unmarried and age 55 or older at the end of 2025
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8889.age55
+        - const: true
+      - op: test
+        ne:
+        - f1040.status
+        - const: mfj
+    cite:
+      doc: i8889
+      locator: p. 6, Line 3 Limitation Chart, 'If, at the end of 2025, you were unmarried and age 55 or older, enter $9,550
+        for the month'
   - id: f8889.family_amount
     printed: (helper)
     label: Line 3 chart amount for a month of family coverage ($8,550; $9,550 if unmarried and age 55 or older at the end
@@ -273,13 +292,13 @@ form:
       - guard:
           op: test
           eq:
-          - f8889.age55_line3
+          - f8889.age55_unmarried
           - const: true
         then: f8889.family_55
       - guard:
           op: test
           eq:
-          - f8889.age55_line3
+          - f8889.age55_unmarried
           - const: false
         then: f8889.family_under55
     cite:

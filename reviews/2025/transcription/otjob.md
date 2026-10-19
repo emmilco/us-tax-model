@@ -4,12 +4,12 @@ Second transcription of `Qualified Overtime Compensation From More Than One Empl
 
 | field | value |
 | --- | --- |
-| date | 2026-10-18 |
+| date | 2026-10-19 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | b9bed8656c188fb7a1994d585d1f5d6233831ab696cb31ef87c4e57202166884 |
-| printed lines compared | 1 |
-| agree / disagree / missing | 0 / 1 / 0 |
+| prompt sha256 | 17c5c01937ae2c35484eb37c6de922aa24db32bf0ac9251aab782a61a0fed045 |
+| printed lines compared | 2 |
+| agree / disagree / missing | 2 / 0 / 0 |
 | extra printed lines in second | none |
 
 ## Source pages given to the model
@@ -21,24 +21,11 @@ Second transcription of `Qualified Overtime Compensation From More Than One Empl
 
 ## Lines
 
+### otjob.one — One employer entry
+Status: **AGREE**
+
 ### 1(b) — Qualified overtime reported on Form W-2, box 1
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"alternatives": [{"guard": {"args": [{"const": false}, {"input": "otjob.flsa"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"input": "otjob.flsa"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "employer_reported"}, {"input": "otjob.method"}], "test": "eq"}, {"args": [{"const": "premium"}, {"input": "otjob.method"}], "test": "eq"}], "test": "any"}, "then": {"input": "otjob.statement"}}, {"guard": {"args": [{"const": "other"}, {"input": "otjob.method"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "premium_double"}, {"input": "otjob.method"}], "test": "eq"}, "then": {"amount": {"input": "otjob.statement"}, "op": "multiply_rate", "rate": {"param": "s1a.ot_half"}}}, {"guard": {"args": [{"const": "total_double"}, {"input": "otjob.method"}], "test": "eq"}, "then": {"amount": {"input": "otjob.statement"}, "op": "multiply_rate", "rate": {"param": "s1a.ot_quarter"}}}, {"guard": {"args": [{"const": "total_time_and_half"}, {"input": "otjob.method"}], "test": "eq"}, "then": {"amount": {"input": "otjob.statement"}, "op": "multiply_rate", "rate": {"param": "s1a.ot_third"}}}], "op": "choose"}}], "op": "choose"}
-```
-
-Second:
-
-```json
-{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "employer_reported"}, {"input": "otjob.method"}], "test": "eq"}, {"args": [{"const": "premium"}, {"input": "otjob.method"}], "test": "eq"}], "test": "any"}, {"args": [{"const": true}, {"input": "otjob.flsa"}], "test": "eq"}], "test": "all"}, "then": {"input": "otjob.statement"}}, {"guard": {"args": [{"args": [{"const": "premium_double"}, {"input": "otjob.method"}], "test": "eq"}, {"args": [{"const": true}, {"input": "otjob.flsa"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"input": "otjob.statement"}, "op": "multiply_rate", "rate": {"param": "s1a.ot_half"}}}, {"guard": {"args": [{"args": [{"const": "total_double"}, {"input": "otjob.method"}], "test": "eq"}, {"args": [{"const": true}, {"input": "otjob.flsa"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"input": "otjob.statement"}, "op": "multiply_rate", "rate": {"param": "s1a.ot_quarter"}}}, {"guard": {"args": [{"args": [{"const": "total_time_and_half"}, {"input": "otjob.method"}], "test": "eq"}, {"args": [{"const": true}, {"input": "otjob.flsa"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"input": "otjob.statement"}, "op": "multiply_rate", "rate": {"param": "s1a.ot_third"}}}, {"guard": {"args": [{"args": [{"args": [{"const": "other"}, {"input": "otjob.method"}], "test": "eq"}, {"args": [{"const": true}, {"input": "otjob.flsa"}], "test": "eq"}], "test": "all"}, {"args": [{"const": false}, {"input": "otjob.flsa"}], "test": "eq"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
-```
-
-Second transcription's note: Open point: the worksheet column only says 'Qualified overtime reported on Form W-2, box 1'. The amount is figured under 'Determining the amount of qualified overtime compensation for 2025'. A Form W-2 box 14 amount, or an amount the employer gives on request, can be relied on (employer_reported). An FLSA Overtime Premium shown separately is used as is (paragraph 1, premium). The other methods are paragraph 2 (divide by 3), paragraph 3 (one-half at double time) and paragraph 4 (one-fourth at double time). Pay to an employee who is not FLSA-eligible is not qualified overtime compensation, so the line is zero for that employee. The 'other' alternative only keeps the guards exhaustive; it is never reached, because otjob.h_refused stops the line first. Only overtime included in Form W-2, box 1, is entered; the text gives no way to check this, so otjob.statement is taken as that amount.
-
-Ruling: equivalent representation; project retained. Both enter zero for an employee who is not FLSA-eligible and figure the FLSA Overtime Premium by the same methods (the amount as reported, one-third, one-half or one-fourth). The second's 'other' branch is never reached, as its note says, because the refusal (otjob.refused) stops the line first. Its reading that only overtime included in box 1 is entered is resolved by the line 14a instruction, now in the otjob.statement question: overtime not in box 1 is included.
+Status: **AGREE**
 
 ## Refusal gates listed by the second transcription
 
@@ -51,36 +38,24 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 ## Raw second transcription
 
 ```yaml
+```yaml
 lines:
+  - id: otjob.one
+    printed: "(helper)"
+    label: "One employer entry (one row, lines 1A through 1E, of the Qualified Overtime Compensation From More Than One Employer Worksheet)"
+    type: Count
+    expr: {op: param, ref: sales.one}
+    note: "No worksheet-specific parameter for the constant 1 is listed; the year parameter sales.one (value 1) is used, as other collections use sales.zero."
+
   - id: otjob.h_zero
     printed: "(helper)"
     label: "No qualified overtime from this employer"
     type: NonNegDollars
     expr: {op: param, ref: sales.zero}
 
-  - id: otjob.h_by_third
-    printed: "(helper)"
-    label: "Statement shows the overtime premium and regular wages: divide the total amount by three (3)"
-    type: NonNegDollars
-    expr: {op: multiply_rate, amount: otjob.statement, rate: {param: s1a.ot_third}}
-
-  - id: otjob.h_by_half
-    printed: "(helper)"
-    label: "Statement shows the portion of the overtime earnings that is more than your regular wage rate, paid at double time: multiply that portion by the appropriate fraction (one-half)"
-    type: NonNegDollars
-    expr: {op: multiply_rate, amount: otjob.statement, rate: {param: s1a.ot_half}}
-    note: "Open point: the instructions only say to use 'the appropriate fraction'. Notice 2025-69 (C) gives one-half for double time, which matches Example 2. The tool handles only the double-time version of this method (method premium_double). Any other rate is sent to method 'other' and refused."
-
-  - id: otjob.h_by_quarter
-    printed: "(helper)"
-    label: "Statement shows the total of all pay for the overtime hours, paid at double time: multiply the total amount by the appropriate fraction (one-fourth)"
-    type: NonNegDollars
-    expr: {op: multiply_rate, amount: otjob.statement, rate: {param: s1a.ot_quarter}}
-    note: "Open point: the instructions only say to use 'the appropriate fraction'. Notice 2025-69 (D) gives one-fourth for double time, which matches Example 3 ($20,000 / 2 x 1.5 / 3 = $5,000). The tool handles only the double-time version of this method (method total_double). Any other rate is sent to method 'other' and refused."
-
   - id: otjob.h_refused
     printed: "(helper)"
-    label: "FLSA-eligible employee whose overtime must be figured under a different FLSA section 7 rule, or by a reasonable method (paragraph 5) or an adjusted method, which the tool does not compute"
+    label: "Overtime from an FLSA-eligible job that must be figured under a section 7 rule other than section 7(a), or by a reasonable method other than paragraphs 1 through 4 or an employer-provided amount"
     type: Bool
     expr:
       op: test
@@ -90,7 +65,49 @@ lines:
           any:
             - {op: test, eq: [otjob.special_rule, {const: true}]}
             - {op: test, eq: [otjob.method, {const: "other"}]}
-    note: "Open point: the instructions say that if an employer is covered by a different overtime rule in section 7, you must figure overtime under that rule and may use any of the methods 'so long as it produces a reasonable result'. Whether a result is reasonable is a judgment the tool cannot check, so these cases are refused. Paragraph 5 (reasonable method) and the adjustment in the TIP (underestimation) are refused the same way, through method 'other'. Nothing is refused for an employee who is not FLSA-eligible, because none of that pay is qualified overtime."
+    note: "The instructions say an employer covered by a different section 7 overtime rule requires computing overtime under that rule, using any method that 'produces a reasonable result'. Paragraph 5 also allows any 'reasonable method'. The tool cannot check either case, so both are refused rather than computed."
+
+  - id: otjob.h_by_third
+    printed: "(helper)"
+    label: "Paragraph 2. Divide the total of all wages for the overtime hours (FLSA Overtime Premium plus regular wages) by three (3)"
+    type: NonNegDollars
+    expr: {op: multiply_rate, amount: otjob.statement, rate: {param: s1a.ot_third}}
+    note: "The text gives no rounding rule for dividing by 3. The multiply_rate atom rounds half-up to the cent, and that is used here."
+
+  - id: otjob.h_by_half
+    printed: "(helper)"
+    label: "Paragraph 3. Multiply the portion of overtime earnings more than your regular wage rate by the appropriate fraction (one-half when overtime is paid at double the regular rate)"
+    type: NonNegDollars
+    expr: {op: multiply_rate, amount: otjob.statement, rate: {param: s1a.ot_half}}
+    note: "The instructions say only 'the appropriate fraction'. Notice 2025-69 (C) gives one-half for double time. Only the double-time case is computed. Other rates fall under method 'other', which is refused."
+
+  - id: otjob.h_by_quarter
+    printed: "(helper)"
+    label: "Paragraph 4. Multiply the total of all pay for the overtime hours by the appropriate fraction (one-fourth when overtime is paid at double the regular rate)"
+    type: NonNegDollars
+    expr: {op: multiply_rate, amount: otjob.statement, rate: {param: s1a.ot_quarter}}
+    note: "Notice 2025-69 (D) gives one-fourth for double time. Only double time is computed. Other rates are refused through method 'other'."
+
+  - id: otjob.h_figured
+    printed: "(helper)"
+    label: "Qualified overtime compensation from this employer by the method chosen"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [otjob.method, {const: "employer_reported"}]}
+          then: otjob.statement
+        - guard: {op: test, eq: [otjob.method, {const: "premium"}]}
+          then: otjob.statement
+        - guard: {op: test, eq: [otjob.method, {const: "total_time_and_half"}]}
+          then: otjob.h_by_third
+        - guard: {op: test, eq: [otjob.method, {const: "premium_double"}]}
+          then: otjob.h_by_half
+        - guard: {op: test, eq: [otjob.method, {const: "total_double"}]}
+          then: otjob.h_by_quarter
+        - guard: {op: test, eq: [otjob.method, {const: "other"}]}
+          then: otjob.h_zero
+    note: "An amount the employer reports in box 14, or gives on request, may be relied on (employer_reported). Paragraph 1 uses the separately shown FLSA Overtime Premium as is. The 'other' branch exists only so the guards are exhaustive. For an FLSA-eligible employee it is never reached as a computed value, because line 1(b) refuses it."
 
   - id: otjob.line1(b)
     printed: "1(b)"
@@ -99,41 +116,11 @@ lines:
     expr:
       op: choose
       alternatives:
+        - guard: {op: test, eq: [otjob.flsa, {const: true}]}
+          then: otjob.h_figured
         - guard: {op: test, eq: [otjob.flsa, {const: false}]}
           then: otjob.h_zero
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [otjob.flsa, {const: true}]}
-              - op: test
-                any:
-                  - {op: test, eq: [otjob.method, {const: "employer_reported"}]}
-                  - {op: test, eq: [otjob.method, {const: "premium"}]}
-          then: otjob.statement
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [otjob.flsa, {const: true}]}
-              - {op: test, eq: [otjob.method, {const: "total_time_and_half"}]}
-          then: otjob.h_by_third
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [otjob.flsa, {const: true}]}
-              - {op: test, eq: [otjob.method, {const: "premium_double"}]}
-          then: otjob.h_by_half
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [otjob.flsa, {const: true}]}
-              - {op: test, eq: [otjob.method, {const: "total_double"}]}
-          then: otjob.h_by_quarter
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [otjob.flsa, {const: true}]}
-              - {op: test, eq: [otjob.method, {const: "other"}]}
-          then: otjob.h_zero
     refuses: [otjob.h_refused]
-    note: "Open point: the worksheet column only says 'Qualified overtime reported on Form W-2, box 1'. The amount is figured under 'Determining the amount of qualified overtime compensation for 2025'. A Form W-2 box 14 amount, or an amount the employer gives on request, can be relied on (employer_reported). An FLSA Overtime Premium shown separately is used as is (paragraph 1, premium). The other methods are paragraph 2 (divide by 3), paragraph 3 (one-half at double time) and paragraph 4 (one-fourth at double time). Pay to an employee who is not FLSA-eligible is not qualified overtime compensation, so the line is zero for that employee. The 'other' alternative only keeps the guards exhaustive; it is never reached, because otjob.h_refused stops the line first. Only overtime included in Form W-2, box 1, is entered; the text gives no way to check this, so otjob.statement is taken as that amount."
+    note: "The text says qualified overtime must be paid to a covered, nonexempt (FLSA-eligible) employee. It also says overtime paid to FLSA-ineligible employees is not qualified overtime compensation. So the entry is zero when the employee is not FLSA-eligible, including when the employer reported an amount in box 14. The instructions say the employer amount 'can generally' be relied on, and that point is left open; this transcription reads the eligibility rule as controlling. The statement amount is taken as covering the entire year (Notice 2025-69 (A) to (D))."
+```
 ```

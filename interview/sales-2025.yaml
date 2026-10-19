@@ -526,7 +526,7 @@ interview:
         doc: i1040gi
         locator: p. 17, Step 1, "Under age 19 at the end of 2025"
     - input: dependent.younger
-      prompt: Was this person younger than you?
+      prompt: Was this person younger than you (or, if you file jointly, younger than you or your spouse)?
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
         be null; do not guess. This computes the single-person return; joint returns and unsupported items
         are refused with citations.
@@ -686,7 +686,7 @@ interview:
         doc: i1040gi
         locator: p. 14, Head of Household, Test 1
     - input: person.tin
-      prompt: Do you have an SSN or ITIN issued on or before the due date of your 2025 return (including extensions), or have you applied for an ITIN by then?
+      prompt: Do you have an SSN or ITIN issued on or before the due date of your 2025 return (including extensions)?
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
         be null; do not guess. This computes the single-person return; joint returns and unsupported items
         are refused with citations.
@@ -694,6 +694,13 @@ interview:
       cite:
         doc: i1040gi
         locator: p. 19, Step 5, question 1
+    - input: person.itin_applied
+      prompt: If you have neither, have you applied for an ITIN on or before the due date of your 2025 return (including extensions)?
+      help: Answer true or false. An application by the due date counts for the credit for other dependents only.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: "p. 19, Step 5, question 1, (Answer 'Yes' if you are applying for an ITIN on or before the return due date (including extensions).)"
     - input: person.work_ssn
       prompt: Do you have an SSN valid for employment, issued before the due date of your 2025 return (including
         extensions)?
@@ -1005,7 +1012,7 @@ interview:
         doc: i8889
         locator: "p. 6, Line 9 Employer Contributions and the Employer Contribution Worksheet"
     - input: f8889.unsupported
-      prompt: "Any of these: HSA distributions in 2025 that were not all used for qualified medical expenses or rolled over to another HSA; a qualified HSA funding distribution from an IRA in 2025; contributions by you or your employer to an Archer MSA for 2025 (Form 8853); excess HSA contributions from an earlier year that remain in your HSA; failing to remain an eligible individual during a testing period that began in an earlier year (last-month rule or qualified HSA funding distribution); or an HSA you acquired because of the account beneficiary's death?"
+      prompt: "Any of these: HSA distributions in 2025 that were not all used for qualified medical expenses or rolled over to another HSA; a qualified HSA funding distribution from an IRA in 2025; contributions by you or your employer to an Archer MSA for 2025 (Form 8853), or, if you or your spouse had family coverage under an HDHP at any time during 2025, to your spouse's Archer MSA; excess HSA contributions from an earlier year that remain in your HSA; failing to remain an eligible individual during a testing period that began in an earlier year (last-month rule or qualified HSA funding distribution); or an HSA you acquired because of the account beneficiary's death?"
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
         be null; do not guess. This computes the single-person return; joint returns and unsupported items
         are refused with citations.

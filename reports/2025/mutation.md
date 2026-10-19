@@ -9,9 +9,9 @@ the fixture test compares).
 | --- | --- |
 | Mutants | 1184 |
 | Killed by the checker | 87 |
-| Killed by fixtures | 966 |
-| Surviving | 131 (97 provably equivalent) |
-| Mutation score (raw) | 88.9% |
+| Killed by fixtures | 968 |
+| Surviving | 129 (95 provably equivalent) |
+| Mutation score (raw) | 89.1% |
 | Mutation score (equivalent mutants excluded) | 96.9% |
 
 ## Surviving — classified equivalent
@@ -22,8 +22,6 @@ the fixture test compares).
 - `refusal.eic.eic.step5_line1.0` (remove refusal, eic.eic.step5_line1): The gate scope.schedule1 also refuses a line that Form 1040 line 11b reads, and eic.eligible tests eic.below_top (which reads line 11b) first, so the return's EIC refuses through line 11b whenever scope.schedule1 is true; the copy of the gate on eic.step5_line1 adds nothing to any Form 1040 line. (structural conditions re-checked this run.)
 - `refusal.eic.eic.step5_line2.0` (remove refusal, eic.eic.step5_line2): The gate scope.other_income also refuses a line that Form 1040 line 11b reads, and eic.eligible tests eic.below_top (which reads line 11b) first, so the return's EIC refuses through line 11b whenever scope.other_income is true; the copy of the gate on eic.step5_line2 adds nothing to any Form 1040 line. (structural conditions re-checked this run.)
 - `operand.eic.eic.step5_line4.zero` (replace an operand, eic.eic.step5_line4): Step 5 line 4 keeps its own combat-pay refusal whatever it reads; the substituted line 2 is the same zero (a copy of eic.zero) carrying only the gate scope.other_income, and earned income adds line 3 (line 1 less line 2) before line 4, so when that gate is true line 3 has already refused with the same refusal. No value can change. (structural conditions re-checked this run.)
-- `operand.f8889.f8889.family_year.family_under55` (replace an operand, f8889.f8889.family_year): f8889.family_year is read only under the last-month rule with family coverage on December 1, where the filer is married with family coverage, so line 3 is the family amount without the additional contribution amount (f8889.age55_line3 is false), line 4 is zero (Archer MSAs are refused) and line 5 equals f8889.family_under55.
-- `operand.f8889.f8889.self_year.self_amount` (replace an operand, f8889.f8889.self_year): f8889.self_year is read only under the last-month rule, by f8889.self_all and, with family coverage on December 1, by f8889.self_dec_year; the only reader of both is Step 4 (f8889.step4_total = self_all - self_in_family), where the two copies cancel, and with self-only coverage on December 1 the spouse rule does not apply, so Step 4 is not read.
 - `operand.f8959.f8959.line3.zero` (replace an operand, f8959.f8959.line3): Copy-chain identity: f8959.zero and f8959.line2 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f8959.f8959.line8.zero` (replace an operand, f8959.f8959.line8): Copy-chain identity: f8959.zero and f8959.line3 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f8959.f8959.line14.zero` (replace an operand, f8959.f8959.line14): Copy-chain identity: f8959.zero and f8959.line8 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.

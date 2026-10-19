@@ -547,3 +547,36 @@ later grouping.
 - **Root cause:** a refusal's condition is evaluated whenever its line is; line 36a carries its refusal on a helper reached only for a filer born before January 2, 1961.
 - **Fix:** each spouse has a decedent gate; the spouse's refusal is on `s1a.line36b_senior`, reached only for a spouse who qualifies. Stage 13 commit.
 - **Tags:** refusal-reachability; caught-by-interview-check
+
+---
+
+## BUG-0047 — A dependent's age test asked only whether the person was younger than you
+
+- **Date:** 2026-10-19
+- **Caught by:** the Stage 13 render comparison of `dependent` ("a child older than you but younger than your joint-filing spouse would fail").
+- **Symptom:** on a joint return a child younger than your spouse but not younger than you failed the qualifying-child age test.
+- **Root cause:** the question kept its single-filer wording when married filing jointly came into scope; the earlier ruling rested on married statuses being refused.
+- **Fix:** the question asks whether the person was younger than you or, on a joint return, your spouse (i1040gi p. 17; Pub. 501 p. 13). Stage 13 commit.
+- **Tags:** stale-scope-ruling; joint-return-wording; caught-by-render-comparison
+
+---
+
+## BUG-0048 — The Form 8889 screen did not name a spouse's Archer MSA
+
+- **Date:** 2026-10-19
+- **Caught by:** the Stage 13 render comparison of `f8889` line 4.
+- **Symptom:** Form 8889 line 4 also includes amounts contributed to your spouse's Archer MSA when you or your spouse had family coverage, but the screen asked only about contributions by you or your employer, so line 4 could be $0 when it should not.
+- **Root cause:** the spouse clause of line 4 had no reader while married filers were refused.
+- **Fix:** `f8889.unsupported` names contributions to your spouse's Archer MSA in that case. Stage 13 commit.
+- **Tags:** stale-scope-ruling; screen-gap; caught-by-render-comparison
+
+---
+
+## BUG-0049 — The child tax credit's test for the other spouse accepted an ITIN application
+
+- **Date:** 2026-10-19
+- **Caught by:** the Stage 13 render comparison of `household` (`id_count`).
+- **Symptom:** one question asked for an SSN or ITIN issued by the due date "or applied for an ITIN by then", so a spouse who had only applied for an ITIN satisfied the child tax credit's rule that the other spouse's number "must have been issued on or before the due date".
+- **Root cause:** the question was written for the credit for other dependents (Step 5, question 1 allows an application) and reused for the child tax credit.
+- **Fix:** `person.tin` asks for an issued number and `person.itin_applied` for an application; the credit for other dependents accepts either, the child tax credit's other-spouse test only the first. Stage 13 commit.
+- **Tags:** reused-question; joint-return-rule; caught-by-render-comparison

@@ -6,7 +6,7 @@
   "header": "All returns / Number of returns"
  },
  "groups": {
-  "married": "Married filing jointly and separately",
+  "married": "Married filing separately",
   "self_employment": "Self-employment (Schedule C and SE)",
   "premium_tax_credit": "Premium tax credit (Form 8962)",
   "education": "Education credits (Form 8863)",
@@ -44,23 +44,21 @@
   },
   {
    "id": "mfj",
-   "group": "married",
-   "gates": [
-    "s3.married"
-   ],
-   "label": "Married filing jointly",
+   "group": null,
+   "label": "Married filing jointly (calibration only; computed since Stage 13)",
    "micro": {
     "filing_status": [
      "JOINT"
     ]
    },
-   "calibrated_by": "joint_or_qss"
+   "calibrated_by": "joint_or_qss",
+   "refused": false
   },
   {
    "id": "mfs",
    "group": "married",
    "gates": [
-    "s3.married"
+    "s3.mfs"
    ],
    "label": "Married filing separately",
    "micro": {

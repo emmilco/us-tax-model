@@ -4,7 +4,7 @@
 
 | field | value |
 | --- | --- |
-| date | 2026-10-18 |
+| date | 2026-10-19 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | cases | 1 |
@@ -17,44 +17,62 @@
 
 ## Lines
 
-### case classm.tipjob.1 — prompt sha256 091dca640be4c09d58b7eea8a4e5dc54f7b479eef1197ddd433a7863c4a44ffd; branches: tipjob.qualified:true, tipjob.mixed:false, tipjob.col_d:left
+### case classm.tipjob.1 — prompt sha256 dcdaae5ccfff8be28ce8781270fbbd0286848d307ad1782f22d8777f34cff6f7; branches: tipjob.qualified:true, tipjob.mixed:false, tipjob.col_d:left
 
-### classm.tipjob.1 — tipjob[tip_1].mixed — Some of this employer's tips are not qualified tips
+### classm.tipjob.1 — person[taxpayer].tipjob[tip_1].mixed — Some of this employer's tips are not qualified tips
 Status: **AGREE**
 
 Value: no
 
-### classm.tipjob.1 — tipjob[tip_1].col_d — Enter the greater of column (b) or column (c)
+### classm.tipjob.1 — person[taxpayer].tipjob[tip_1].col_d — Enter the greater of column (b) or column (c)
 Status: **AGREE**
 
-Value: $30,000.00
+Value: $25,295.00
 
-### classm.tipjob.1 — tipjob[tip_2].mixed — Some of this employer's tips are not qualified tips
+### classm.tipjob.1 — person[taxpayer].tipjob[tip_2].mixed — Some of this employer's tips are not qualified tips
 Status: **AGREE**
 
 Value: no
 
-### classm.tipjob.1 — tipjob[tip_2].col_d — Enter the greater of column (b) or column (c)
+### classm.tipjob.1 — person[taxpayer].tipjob[tip_2].col_d — Enter the greater of column (b) or column (c)
 Status: **AGREE**
 
 Value: $0.00
+
+### classm.tipjob.1 — person[taxpayer].tipjob[tip_3].mixed — Some of this employer's tips are not qualified tips
+Status: **AGREE**
+
+Value: no
+
+### classm.tipjob.1 — person[taxpayer].tipjob[tip_3].col_d — Enter the greater of column (b) or column (c)
+Status: **AGREE**
+
+Value: $1,480.00
 
 ## Raw responses
 
 ### classm.tipjob.1
 
 ```yaml
+```yaml
 lines:
-  - printed: "tipjob[tip_1].mixed"
+  - printed: "person[taxpayer].tipjob[tip_1].mixed"
     value: "no"
-    work: "Filer answered yes: all tips from this employer meet the qualified-tip tests, so none are non-qualified"
-  - printed: "tipjob[tip_1].col_d"
-    value: "30000.00"
-    work: "Greater of col (b) 30,000.00 or col (c) 0.00 (no Form 4137 amount given) = 30,000.00"
-  - printed: "tipjob[tip_2].mixed"
+    work: "Filer answered yes: all tips counted from this employer meet the qualified-tip tests, so none are non-qualified."
+  - printed: "person[taxpayer].tipjob[tip_1].col_d"
+    value: "25295.00"
+    work: "Greater of col (b) 25,295.00 or col (c) 0.00 (no Form 4137 amount given) = 25,295.00. The MFS bar applies on Schedule 1-A, not on this worksheet."
+  - printed: "person[taxpayer].tipjob[tip_2].mixed"
     value: "no"
-    work: "Filer answered yes: all tips from this employer meet the qualified-tip tests, so none are non-qualified"
-  - printed: "tipjob[tip_2].col_d"
+    work: "Filer answered yes: all tips counted from this employer meet the qualified-tip tests, so none are non-qualified."
+  - printed: "person[taxpayer].tipjob[tip_2].col_d"
     value: "0.00"
-    work: "Greater of col (b) 0.00 or col (c) 0.00 (no Form 4137 amount given) = 0.00"
+    work: "Greater of col (b) 0.00 or col (c) 0.00 = 0.00."
+  - printed: "person[taxpayer].tipjob[tip_3].mixed"
+    value: "no"
+    work: "Filer answered yes: all tips counted from this employer meet the qualified-tip tests, so none are non-qualified."
+  - printed: "person[taxpayer].tipjob[tip_3].col_d"
+    value: "1480.00"
+    work: "Greater of col (b) 1,480.00 or col (c) 0.00 = 1,480.00."
+```
 ```

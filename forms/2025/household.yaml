@@ -222,23 +222,29 @@ form:
     - id: household.tin_count
       printed: (helper)
       type: Count
-      label: 'Number of people on the return with an SSN or ITIN'
+      label: 'Number of people on the return with an SSN or ITIN, or who have applied for an ITIN'
       expr:
         op: sum_over
         collection: person
         field: person.one
         where:
           op: test
-          eq:
-          - person.tin
-          - const: true
+          any:
+          - op: test
+            eq:
+            - person.tin
+            - const: true
+          - op: test
+            eq:
+            - person.itin_applied
+            - const: true
       cite:
         doc: i1040gi
-        locator: 'p. 17, Before you begin, "If you want to claim the credit for other dependents, you, and your spouse if filing jointly, must have either an SSN or ITIN"'
+        locator: 'p. 17, Before you begin, "If you want to claim the credit for other dependents, you, and your spouse if filing jointly, must have either an SSN or ITIN"; p. 19, Step 5, question 1, "(Answer ''Yes'' if you are applying for an ITIN on or before the return due date (including extensions).)"'
     - id: household.all_tin
       printed: (helper)
       type: Bool
-      label: 'You, and your spouse if filing jointly, have an SSN or ITIN'
+      label: 'You, and your spouse if filing jointly, have an SSN or ITIN, or have applied for an ITIN'
       expr:
         op: test
         eq:

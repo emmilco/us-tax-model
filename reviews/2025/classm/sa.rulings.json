@@ -1,0 +1,30 @@
+{
+ "kind": "classm",
+ "form": "sa",
+ "rulings": [
+  {
+   "case": "classm.sa.4",
+   "printed": "17",
+   "project": "$62,273.92",
+   "model": "$62,273.93",
+   "ruling": "Ruling: genuine ambiguity (amb.2025.multiplication_subcent); project retained; model value dropped from the fixture. With a negative AGI, 7.5% of -$5,479.00 is -$410.925; the project's half-up rounding goes toward the larger value (-$410.92), the model's away from zero (-$410.93). The register entry governs the rounding of a product to the cent; the one-cent difference carries to lines 4 and 17.",
+   "drop": true
+  },
+  {
+   "case": "classm.sa.4",
+   "printed": "3",
+   "project": "$-410.92",
+   "model": "$-410.93",
+   "ruling": "Ruling: genuine ambiguity (amb.2025.multiplication_subcent); project retained; model value dropped from the fixture. With a negative AGI, 7.5% of -$5,479.00 is -$410.925; the project's half-up rounding goes toward the larger value (-$410.92), the model's away from zero (-$410.93). The register entry governs the rounding of a product to the cent; the one-cent difference carries to lines 4 and 17.",
+   "drop": true
+  },
+  {
+   "case": "classm.sa.4",
+   "printed": "4",
+   "project": "$2,727.92",
+   "model": "$2,727.93",
+   "ruling": "Ruling: genuine ambiguity (amb.2025.multiplication_subcent); project retained; model value dropped from the fixture. With a negative AGI, 7.5% of -$5,479.00 is -$410.925; the project's half-up rounding goes toward the larger value (-$410.92), the model's away from zero (-$410.93). The register entry governs the rounding of a product to the cent; the one-cent difference carries to lines 4 and 17.",
+   "drop": true
+  }
+ ]
+}

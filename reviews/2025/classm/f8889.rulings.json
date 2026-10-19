@@ -3,6 +3,148 @@
  "form": "f8889",
  "rulings": [
   {
+   "case": "classm.f8889.1",
+   "printed": "person[spouse].f8889[hsa].allocation_bad",
+   "project": "no",
+   "model": "yes",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is a helper of a branch not taken on this return (the spouse rule of line 6, which applies only to spouses who each have a Form 8889 and family coverage on a joint return, i8889 p. 7; or a line 3 rule for another case, pp. 4-6); the project figures it whatever the branch and the model enters zero or leaves it out. The printed lines 3 to 13 agree.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.1",
+   "printed": "person[spouse].f8889[hsa].family_amount",
+   "project": "$9,550.00",
+   "model": "$8,550.00",
+   "ruling": "Ruling: second (model) right; data fixed. The chart's $9,550 is for a filer 'unmarried and age 55 or older' (i8889 p. 6, Line 3 Limitation Chart); the line now tests f8889.age55_unmarried, so a married filer aged 55 has the family amount $8,550 (the value was read only through months of family coverage, of which this return has none, so no printed line changed). Stage 13 commit."
+  },
+  {
+   "case": "classm.f8889.1",
+   "printed": "person[spouse].f8889[hsa].family_extra",
+   "project": "$4,250.00",
+   "model": "$3,250.00",
+   "ruling": "Ruling: second (model) right; data fixed. The chart's $9,550 is for a filer 'unmarried and age 55 or older' (i8889 p. 6, Line 3 Limitation Chart); the line now tests f8889.age55_unmarried, so a married filer aged 55 has the family amount $8,550 (the value was read only through months of family coverage, of which this return has none, so no printed line changed). Stage 13 commit."
+  },
+  {
+   "case": "classm.f8889.1",
+   "printed": "person[spouse].f8889[hsa].line6_split",
+   "project": "$6,595.00",
+   "model": "$5,300.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is a helper of a branch not taken on this return (the spouse rule of line 6, which applies only to spouses who each have a Form 8889 and family coverage on a joint return, i8889 p. 7; or a line 3 rule for another case, pp. 4-6); the project figures it whatever the branch and the model enters zero or leaves it out. The printed lines 3 to 13 agree.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.1",
+   "printed": "person[spouse].f8889[hsa].share",
+   "project": "$1,295.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is a helper of a branch not taken on this return (the spouse rule of line 6, which applies only to spouses who each have a Form 8889 and family coverage on a joint return, i8889 p. 7; or a line 3 rule for another case, pp. 4-6); the project figures it whatever the branch and the model enters zero or leaves it out. The printed lines 3 to 13 agree.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.1",
+   "printed": "person[spouse].f8889[hsa].share_raw",
+   "project": "$1,295.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is a helper of a branch not taken on this return (the spouse rule of line 6, which applies only to spouses who each have a Form 8889 and family coverage on a joint return, i8889 p. 7; or a line 3 rule for another case, pp. 4-6); the project figures it whatever the branch and the model enters zero or leaves it out. The printed lines 3 to 13 agree.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.1",
+   "printed": "person[taxpayer].f8889[hsa].allocation_bad",
+   "project": "no",
+   "model": "yes",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is a helper of a branch not taken on this return (the spouse rule of line 6, which applies only to spouses who each have a Form 8889 and family coverage on a joint return, i8889 p. 7; or a line 3 rule for another case, pp. 4-6); the project figures it whatever the branch and the model enters zero or leaves it out. The printed lines 3 to 13 agree.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.1",
+   "printed": "person[taxpayer].f8889[hsa].line6_split",
+   "project": "$7,255.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is a helper of a branch not taken on this return (the spouse rule of line 6, which applies only to spouses who each have a Form 8889 and family coverage on a joint return, i8889 p. 7; or a line 3 rule for another case, pp. 4-6); the project figures it whatever the branch and the model enters zero or leaves it out. The printed lines 3 to 13 agree.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.1",
+   "printed": "person[taxpayer].f8889[hsa].share",
+   "project": "$7,255.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is a helper of a branch not taken on this return (the spouse rule of line 6, which applies only to spouses who each have a Form 8889 and family coverage on a joint return, i8889 p. 7; or a line 3 rule for another case, pp. 4-6); the project figures it whatever the branch and the model enters zero or leaves it out. The printed lines 3 to 13 agree.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.1",
+   "printed": "person[taxpayer].f8889[hsa].share_raw",
+   "project": "$7,255.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is a helper of a branch not taken on this return (the spouse rule of line 6, which applies only to spouses who each have a Form 8889 and family coverage on a joint return, i8889 p. 7; or a line 3 rule for another case, pp. 4-6); the project figures it whatever the branch and the model enters zero or leaves it out. The printed lines 3 to 13 agree.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.2",
+   "printed": "person[spouse].f8889[hsa].line3_last_month",
+   "project": "$5,716.67",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is a helper of a branch not taken on this return (the spouse rule of line 6, which applies only to spouses who each have a Form 8889 and family coverage on a joint return, i8889 p. 7; or a line 3 rule for another case, pp. 4-6); the project figures it whatever the branch and the model enters zero or leaves it out. The printed lines 3 to 13 agree.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.2",
+   "printed": "person[spouse].f8889[hsa].line3_part_year",
+   "project": "$5,716.67",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is a helper of a branch not taken on this return (the spouse rule of line 6, which applies only to spouses who each have a Form 8889 and family coverage on a joint return, i8889 p. 7; or a line 3 rule for another case, pp. 4-6); the project figures it whatever the branch and the model enters zero or leaves it out. The printed lines 3 to 13 agree.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.2",
+   "printed": "person[spouse].f8889[hsa].line7_total",
+   "project": "$12,000.00",
+   "model": "$4,000.00",
+   "ruling": "Ruling: genuine ambiguity (amb.2025.hsa_line7_months) and a helper not taken here (the spouse is under 55, so line 7 is $0 on both sides); model value dropped from the fixture. The model counted family months, the project every eligible month (i8889 p. 7).",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.2",
+   "printed": "person[spouse].f8889[hsa].line7_worksheet",
+   "project": "$1,000.00",
+   "model": "$333.33",
+   "ruling": "Ruling: genuine ambiguity (amb.2025.hsa_line7_months) and a helper not taken here (the spouse is under 55, so line 7 is $0 on both sides); model value dropped from the fixture. The model counted family months, the project every eligible month (i8889 p. 7).",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.2",
+   "printed": "person[taxpayer].f8889[hsa].family_dec_year",
+   "project": "$102,600.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is a helper of a branch not taken on this return (the spouse rule of line 6, which applies only to spouses who each have a Form 8889 and family coverage on a joint return, i8889 p. 7; or a line 3 rule for another case, pp. 4-6); the project figures it whatever the branch and the model enters zero or leaves it out. The printed lines 3 to 13 agree.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.2",
+   "printed": "person[taxpayer].f8889[hsa].line3_all_year",
+   "project": "$2,850.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is a helper of a branch not taken on this return (the spouse rule of line 6, which applies only to spouses who each have a Form 8889 and family coverage on a joint return, i8889 p. 7; or a line 3 rule for another case, pp. 4-6); the project figures it whatever the branch and the model enters zero or leaves it out. The printed lines 3 to 13 agree.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.2",
+   "printed": "person[taxpayer].f8889[hsa].line3_last_month",
+   "project": "$8,550.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is a helper of a branch not taken on this return (the spouse rule of line 6, which applies only to spouses who each have a Form 8889 and family coverage on a joint return, i8889 p. 7; or a line 3 rule for another case, pp. 4-6); the project figures it whatever the branch and the model enters zero or leaves it out. The printed lines 3 to 13 agree.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.2",
+   "printed": "person[taxpayer].f8889[hsa].self_dec_year",
+   "project": "$51,600.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is a helper of a branch not taken on this return (the spouse rule of line 6, which applies only to spouses who each have a Form 8889 and family coverage on a joint return, i8889 p. 7; or a line 3 rule for another case, pp. 4-6); the project figures it whatever the branch and the model enters zero or leaves it out. The printed lines 3 to 13 agree.",
+   "drop": true
+  },
+  {
    "case": "classm.f8889.3",
    "printed": "12",
    "project": "$5,300.00",
@@ -36,6 +178,102 @@
    "project": "$5,300.00",
    "model": "$6,275.00",
    "ruling": "Ruling: defect fixed; model value kept. Under the last-month rule with a change of coverage type among the eligible months, the model applied rule 4 of the line 3 instructions ('If you were, or were considered, an eligible individual for the entire year and you changed your type of coverage during the year, enter ... the greater of' the chart and the December 1 maximum), giving $6,275; the project had used the December 1 maximum alone ($5,300). The project now applies rule 4 to the last-month rule's filer (f8889.line3_last_month, amb.2025.hsa_last_month_change), and stage11.hsa.last_month_changed asserts it."
+  },
+  {
+   "case": "classm.f8889.3",
+   "printed": "person[taxpayer].f8889[hsa].line3_last_month",
+   "project": "$5,716.67",
+   "model": "$4,300.00",
+   "ruling": "Ruling: owner's ruling; project retained (amb.2025.hsa_last_month_change, rule 4 kept after Stage 11); model value dropped from the fixture. Under the last-month rule with a change of coverage type the project enters the greater of the chart and the December 1 maximum (i8889 p. 4, rule 4); the model entered the December 1 amount alone (rule 2).",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.3",
+   "printed": "person[taxpayer].f8889[hsa].line6_split",
+   "project": "$4,300.00",
+   "model": "$4,291.67",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is a helper of a branch not taken on this return (the spouse rule of line 6, which applies only to spouses who each have a Form 8889 and family coverage on a joint return, i8889 p. 7; or a line 3 rule for another case, pp. 4-6); the project figures it whatever the branch and the model enters zero or leaves it out. The printed lines 3 to 13 agree.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.3",
+   "printed": "person[taxpayer].f8889[hsa].self_in_family",
+   "project": "$0.00",
+   "model": "$17,200.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is a helper of a branch not taken on this return (the spouse rule of line 6, which applies only to spouses who each have a Form 8889 and family coverage on a joint return, i8889 p. 7; or a line 3 rule for another case, pp. 4-6); the project figures it whatever the branch and the model enters zero or leaves it out. The printed lines 3 to 13 agree.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.3",
+   "printed": "person[taxpayer].f8889[hsa].share",
+   "project": "$0.00",
+   "model": "$1,425.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is a helper of a branch not taken on this return (the spouse rule of line 6, which applies only to spouses who each have a Form 8889 and family coverage on a joint return, i8889 p. 7; or a line 3 rule for another case, pp. 4-6); the project figures it whatever the branch and the model enters zero or leaves it out. The printed lines 3 to 13 agree.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.3",
+   "printed": "person[taxpayer].f8889[hsa].share_equal",
+   "project": "$0.00",
+   "model": "$1,425.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is a helper of a branch not taken on this return (the spouse rule of line 6, which applies only to spouses who each have a Form 8889 and family coverage on a joint return, i8889 p. 7; or a line 3 rule for another case, pp. 4-6); the project figures it whatever the branch and the model enters zero or leaves it out. The printed lines 3 to 13 agree.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.3",
+   "printed": "person[taxpayer].f8889[hsa].share_raw",
+   "project": "$0.00",
+   "model": "$1,425.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is a helper of a branch not taken on this return (the spouse rule of line 6, which applies only to spouses who each have a Form 8889 and family coverage on a joint return, i8889 p. 7; or a line 3 rule for another case, pp. 4-6); the project figures it whatever the branch and the model enters zero or leaves it out. The printed lines 3 to 13 agree.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.3",
+   "printed": "person[taxpayer].f8889[hsa].step1",
+   "project": "$0.00",
+   "model": "$2,850.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is a helper of a branch not taken on this return (the spouse rule of line 6, which applies only to spouses who each have a Form 8889 and family coverage on a joint return, i8889 p. 7; or a line 3 rule for another case, pp. 4-6); the project figures it whatever the branch and the model enters zero or leaves it out. The printed lines 3 to 13 agree.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.3",
+   "printed": "person[taxpayer].f8889[hsa].step1_line3",
+   "project": "$0.00",
+   "model": "$2,850.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is a helper of a branch not taken on this return (the spouse rule of line 6, which applies only to spouses who each have a Form 8889 and family coverage on a joint return, i8889 p. 7; or a line 3 rule for another case, pp. 4-6); the project figures it whatever the branch and the model enters zero or leaves it out. The printed lines 3 to 13 agree.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.3",
+   "printed": "person[taxpayer].f8889[hsa].step1_total",
+   "project": "$0.00",
+   "model": "$34,200.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is a helper of a branch not taken on this return (the spouse rule of line 6, which applies only to spouses who each have a Form 8889 and family coverage on a joint return, i8889 p. 7; or a line 3 rule for another case, pp. 4-6); the project figures it whatever the branch and the model enters zero or leaves it out. The printed lines 3 to 13 agree.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.3",
+   "printed": "person[taxpayer].f8889[hsa].step1_x2",
+   "project": "$0.00",
+   "model": "$5,700.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is a helper of a branch not taken on this return (the spouse rule of line 6, which applies only to spouses who each have a Form 8889 and family coverage on a joint return, i8889 p. 7; or a line 3 rule for another case, pp. 4-6); the project figures it whatever the branch and the model enters zero or leaves it out. The printed lines 3 to 13 agree.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.3",
+   "printed": "person[taxpayer].f8889[hsa].step4",
+   "project": "$4,300.00",
+   "model": "$2,866.67",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is a helper of a branch not taken on this return (the spouse rule of line 6, which applies only to spouses who each have a Form 8889 and family coverage on a joint return, i8889 p. 7; or a line 3 rule for another case, pp. 4-6); the project figures it whatever the branch and the model enters zero or leaves it out. The printed lines 3 to 13 agree.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.3",
+   "printed": "person[taxpayer].f8889[hsa].step4_total",
+   "project": "$51,600.00",
+   "model": "$34,400.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is a helper of a branch not taken on this return (the spouse rule of line 6, which applies only to spouses who each have a Form 8889 and family coverage on a joint return, i8889 p. 7; or a line 3 rule for another case, pp. 4-6); the project figures it whatever the branch and the model enters zero or leaves it out. The printed lines 3 to 13 agree.",
+   "drop": true
   }
  ]
 }

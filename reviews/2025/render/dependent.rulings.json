@@ -11,6 +11,12 @@
   {
    "printed": "married",
    "restated": "Input — Was this person married at the end of 2025 (a person legally separated under a decree of divorce or separate maintenance is not married), or is this person filing a joint return for 2025 (for example with a spouse who died during 2025)?",
+   "model": "Steps 2 and 4 ask only 'Was the child married?' and the EIC text says 'married at the end of 2025'. The given text never says that a dependent legally separated under a decree is not married; that wording appears only for the filer's own head of household status.",
+   "ruling": "Ruling: representation; project retained. The question adds that a person legally separated under a decree of divorce or separate maintenance is not married, the instructions' rule for marital status (i1040gi, Filing Status: 'If you were divorced or legally separated under a decree ... you are considered unmarried'); answering yes for such a person would only refuse a case, not compute one wrongly."
+  },
+  {
+   "printed": "married",
+   "restated": "Input — Was this person married at the end of 2025 (a person legally separated under a decree of divorce or separate maintenance is not married), or is this person filing a joint return for 2025 (for example with a spouse who died during 2025)?",
    "model": "The text only asks 'Was the child married?' and refers to 'Married person'. It does not say that a person legally separated under a decree counts as unmarried for this purpose; that rule appears only for your own head of household status.",
    "ruling": "Ruling: representation; project retained. The question adds that a person legally separated under a decree of divorce or separate maintenance is not married, the instructions' rule for marital status (i1040gi, Filing Status: 'If you were divorced or legally separated under a decree ... you are considered unmarried'); answering yes for such a person would only refuse a case, not compute one wrongly."
   },
@@ -27,16 +33,40 @@
    "ruling": "Ruling: scope; project retained. The spouse variants (\"or your spouse if filing jointly\"; \"only one spouse is required to have a valid SSN\"; the joint-return branches of Steps 2 and 4; \"other than your spouse if filing jointly\" in the tie-breaker caution; \"younger than you (or your spouse if filing jointly)\") arise only on a joint return, and married filing statuses are refused (`s3.married`). The `sa.dependent` gate also names a dual-status alien, which the instructions refuse for the dependents section too (i1040gi p. 18, Step 2, question 4, and the nonresident and dual-status alien rules); a single filer answers for themself alone. No change to the data."
   },
   {
+   "printed": "qc_dependent",
+   "restated": "helper \"Qualifying child (Step 1)\" = true and helper \"U.S. citizen, national or resident alien, or a resident of Canada or Mexico\" = true and sa helper \"Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)\" = false",
+   "model": "The program always requires that no one can claim you. Step 2 question 3 says 'Are you filing a joint return for 2025? Yes. You can claim this child as a dependent.', so joint filers skip question 4.",
+   "ruling": "Ruling: scope; project retained. On a joint return Step 2, question 3 (and Step 4, question 4) lets you claim the person without question 4 ('Could you be claimed as a dependent by another taxpayer?'). The project reads sa.dependent ('Can someone claim you or your spouse as a dependent'), and a yes refuses the standard deduction (Standard Deduction Worksheet for Dependents, i1040gi pp. 34-35) and with it line 12e and every line after it, on a joint return as on any other; so no value the tool computes rests on the skipped question (i1040gi pp. 17-19, Steps 2 and 4)."
+  },
+  {
    "printed": "qr_dependent",
    "restated": "helper \"Qualifying relative (Step 4)\" = true and helper \"U.S. citizen, national or resident alien, or a resident of Canada or Mexico\" = true and sa helper \"Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)\" = false",
    "model": "Step 4, question 4 says 'Are you filing a joint return for 2025? Yes. You can claim this person as a dependent', which skips question 5. The restatement requires the dependency answer to be no even on a joint return, and adds 'dual-status alien', which the text does not mention.",
    "ruling": "Ruling: scope; project retained. The spouse variants (\"or your spouse if filing jointly\"; \"only one spouse is required to have a valid SSN\"; the joint-return branches of Steps 2 and 4; \"other than your spouse if filing jointly\" in the tie-breaker caution; \"younger than you (or your spouse if filing jointly)\") arise only on a joint return, and married filing statuses are refused (`s3.married`). The `sa.dependent` gate also names a dual-status alien, which the instructions refuse for the dependents section too (i1040gi p. 18, Step 2, question 4, and the nonresident and dual-status alien rules); a single filer answers for themself alone. No change to the data."
   },
   {
+   "printed": "qr_dependent",
+   "restated": "helper \"Qualifying relative (Step 4)\" = true and helper \"U.S. citizen, national or resident alien, or a resident of Canada or Mexico\" = true and sa helper \"Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)\" = false",
+   "model": "The program always requires that no one can claim you. Step 4 question 4 says 'Are you filing a joint return for 2025? Yes. You can claim this person as a dependent.', so joint filers skip question 5.",
+   "ruling": "Ruling: scope; project retained. On a joint return Step 2, question 3 (and Step 4, question 4) lets you claim the person without question 4 ('Could you be claimed as a dependent by another taxpayer?'). The project reads sa.dependent ('Can someone claim you or your spouse as a dependent'), and a yes refuses the standard deduction (Standard Deduction Worksheet for Dependents, i1040gi pp. 34-35) and with it line 12e and every line after it, on a joint return as on any other; so no value the tool computes rests on the skipped question (i1040gi pp. 17-19, Steps 2 and 4)."
+  },
+  {
+   "printed": "qualifying_relative",
+   "restated": "helper \"A relative listed in Step 4, or any other person who lived with you all year\" = true and helper \"Qualifying child (Step 1)\" = false and helper \"Gross income under $5,200\" = true and helper \"You provided over half of this person's support?\" = true",
+   "model": "Step 4 requires that the person 'wasn't a qualifying child (see Step 1) of any taxpayer for 2025'. The program checks only that the person is not your qualifying child, and has no other_claimant refusal on this line.",
+   "ruling": "Ruling: refusal representation; project retained. Step 4 requires that the person 'wasn't a qualifying child (see Step 1) of any taxpayer for 2025' (i1040gi p. 19). The project asks dependent.other_claimant ('Does this person meet the conditions to be the qualifying child of any other person for 2025 ...?') and refuses dependent.qualifying_child on a yes (tie-breaker rules, p. 21); this line reads dependent.qualifying_child, so such a person is refused rather than claimed."
+  },
+  {
    "printed": "younger",
    "restated": "Input — Was this person younger than you?",
    "model": "The text says 'younger than you (or your spouse if filing jointly)'. The input asks only whether the person was younger than you, so on a joint return a person younger only than your spouse would fail the test.",
    "ruling": "Ruling: scope; project retained. The spouse variants (\"or your spouse if filing jointly\"; \"only one spouse is required to have a valid SSN\"; the joint-return branches of Steps 2 and 4; \"other than your spouse if filing jointly\" in the tie-breaker caution; \"younger than you (or your spouse if filing jointly)\") arise only on a joint return, and married filing statuses are refused (`s3.married`). The `sa.dependent` gate also names a dual-status alien, which the instructions refuse for the dependents section too (i1040gi p. 18, Step 2, question 4, and the nonresident and dual-status alien rules); a single filer answers for themself alone. No change to the data."
+  },
+  {
+   "printed": "younger",
+   "restated": "Input — Was this person younger than you?",
+   "model": "The text says 'younger than you (or your spouse if filing jointly)'. The question asks only whether the person was younger than you, so a child older than you but younger than your joint-filing spouse would fail.",
+   "ruling": "Ruling: second transcription right; data fixed. The question now reads 'Was this person younger than you (or, if you file jointly, younger than you or your spouse; the person need not be younger than both of you)?' (i1040gi p. 17, Step 1, 'and younger than you (or your spouse if filing jointly)'; p501 p. 13). BUG-0047."
   }
  ]
 }

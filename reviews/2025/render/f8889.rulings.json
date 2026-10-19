@@ -7,6 +7,24 @@
    "restated": "Choose — [helper \"Any HSA contributions for 2025 (yours or your employer's)\" = true → helper \"Generally, enter the smaller of line 2 or line 12\"] [helper \"Any HSA contributions for 2025 (yours or your employer's)\" = false → helper \"Year parameter sales.zero\"]",
    "model": "The form says only \"HSA deduction (see instructions)\", and the Line 13 instructions are not among the pages given. Nothing provided states that the deduction is the smaller of line 2 or line 12.",
    "ruling": "Ruling: representation; project retained. Line 13 chooses the helper f8889.line13_figured, whose citation is the Line 13 instructions (i8889 p. 7: 'Generally, enter the smaller of line 2 or line 12 on line 13 and on Schedule 1 (Form 1040), Part II, line 13'); the excerpt given for this printed line carried only the form's own citation."
+  },
+  {
+   "printed": "13",
+   "restated": "Choose — [helper \"Any HSA contributions for 2025 (yours or your employer's)\" = true → helper \"Generally, enter the smaller of line 2 or line 12\"] [helper \"Any HSA contributions for 2025 (yours or your employer's)\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The form says only 'HSA deduction (see instructions),' and the line 13 instructions are not among the pages given. The rule 'smaller of line 2 or line 12' therefore cannot be checked against the IRS text.",
+   "ruling": "Ruling: representation; project retained. Line 13 chooses the helper f8889.line13_figured, whose citation is the Line 13 instructions (i8889 p. 7: 'Generally, enter the smaller of line 2 or line 12 on line 13 and on Schedule 1 (Form 1040), Part II, line 13'); the excerpt given for this printed line carried only the form's own citation."
+  },
+  {
+   "printed": "4",
+   "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
+   "model": "The program enters $0, and its refusal covers only Archer MSA contributions 'by you or your employer.' The form also says: 'If you or your spouse had family coverage under an HDHP at any time during 2025, also include any amount contributed to your spouse's Archer MSAs.' No refusal names that case.",
+   "ruling": "Ruling: second transcription right; data fixed. The Form 8889 screen (f8889.unsupported) now names contributions to your spouse's Archer MSA when you or your spouse had family coverage under an HDHP at any time during 2025 (Form 8889 line 4, 'If you or your spouse had family coverage under an HDHP at any time during 2025, also include any amount contributed to your spouse's Archer MSAs'), so line 4 is $0 only when it is $0. BUG-0048."
+  },
+  {
+   "printed": "7",
+   "restated": "Choose — [helper \"Age 55 or older at the end of 2025, married, and treated as having family coverage at any time during 2025\" = true → helper \"Additional Contribution Amount Worksheet, line 2: divide line 1 by 12\"] [helper \"Age 55 or older at the end of 2025, married, and treated as having family coverage at any time during 2025\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The worksheet counts months in which 'You or your spouse had family coverage under an HDHP and were, or were considered to be, an eligible individual on the first day of the month.' The program counts every eligible month, including self-only months. The Note says the additional amount 'is figured on line 7 and is not included on line 3' for married filers with family coverage. The text does not settle how self-only months are counted.",
+   "ruling": "Ruling: genuine ambiguity (amb.2025.hsa_line7_months); project retained pending the owner (TASKS.md T-038). The register entry gives the reading: every eligible month counts, because line 3 leaves out the additional contribution amount for every month once a married filer had family coverage at any time (i8889 p. 5, Note), and 'If items (1) and (2) apply to all months during 2025, enter $1,000' (p. 7)."
   }
  ]
 }

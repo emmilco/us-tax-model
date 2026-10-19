@@ -56,7 +56,7 @@ The tool detects each of these from an interview answer or an input box and stop
 - Schedule A items outside the lines computed: casualty and theft losses, non-cash gifts requiring an appraisal (Form 8283 Section B), charitable contributions limited by income or carried over, an investment interest carryover from a prior year, mortgage interest not reported on Form 1098 or subject to the debt limits, and the election to deduct sales tax in place of income tax.
 - Credits for dependents and any other credit not listed in 2.1.
 - Any condition in Schedule B requiring treatment not covered (nominee income, original issue discount, bond premium, seller-financed mortgage interest, savings bond exclusion).
-- Married filing statuses where a rule in scope is figured per spouse and the interview cannot yet represent two people.
+- Married filing separately.
 
 The estimated tax penalty is not computed. The tool states that the IRS will figure it and cites the instruction.
 
@@ -83,18 +83,19 @@ Growth proceeds in order of the coverage each addition gains under that estimate
 - Retirement income: Form 1099-R and the Social Security benefits worksheet.
 - Unemployment compensation and the common Schedule 1 adjustments (educator expenses, student loan interest, HSA).
 - The Schedule 1-A deductions: the enhanced deduction for seniors, qualified overtime compensation, qualified tips and qualified passenger vehicle loan interest, for unmarried filers.
+- Married filing jointly: a person-by-person record for each spouse (facts, Forms W-2, tip and overtime employers, Form 8889), with the joint rules of the lines in scope, among them the spouses' standard deduction boxes, educator expenses per person, the Schedule 1-A deductions per spouse, the HSA rules for spouses with family coverage, and the identification rules of the earned income credit and the child tax credit.
 
 Remaining, in the order of the estimate when this section was last revised:
 
-1. Married filing jointly as a two-person data change, then married filing separately.
-2. Self-employment: Schedule C with Schedule SE and the qualified business income deduction beyond section 199A dividends.
-3. Other credits: child and dependent care, the saver's credit, the residential energy credits.
-4. The remaining Schedule 1 income and adjustments, among them a taxable state refund, other income, gambling winnings and the IRA deduction.
-5. Schedule E: rental and royalty income, partnerships, S corporations, estates and trusts.
-6. The premium tax credit.
-7. The education credits.
-8. The capital loss carryover.
-9. The additional tax on qualified retirement plans (Form 5329).
+1. Self-employment: Schedule C with Schedule SE and the qualified business income deduction beyond section 199A dividends.
+2. Other credits: child and dependent care, the saver's credit, the residential energy credits.
+3. The remaining Schedule 1 income and adjustments, among them a taxable state refund, other income, gambling winnings and the IRA deduction.
+4. Schedule E: rental and royalty income, partnerships, S corporations, estates and trusts.
+5. The premium tax credit.
+6. The education credits.
+7. The capital loss carryover.
+8. The additional tax on qualified retirement plans (Form 5329).
+9. Married filing separately.
 10. Form 1116 and the remaining deferrals of 2.2, and the smaller situations the report lists.
 
 State returns are outside the federal goal. New York is the first state intended once federal coverage is met; it is a separate decision with its own sources, and nothing in the federal encoding assumes it.
@@ -339,7 +340,7 @@ Scope items not yet taken up. Work items of every kind, including these, are tra
 - Form 1116, deferred by decision.
 - Filling official PDFs.
 - Capital loss carryover in and out.
-- Married filing statuses for per-person rules.
+- Married filing separately.
 - Credits for dependents, which a Head of Household filer will commonly need; first item of the coverage goal (2.4).
 - The household architecture test: whether the atom vocabulary expresses the qualifying-child and head-of-household predicates without `opaque` escapes.
 - New York state return, after the federal coverage goal.

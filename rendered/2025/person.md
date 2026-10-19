@@ -34,10 +34,17 @@
 
 ## (helper) — `person.tin`
 
-- **Authored helper label:** Do you have an SSN or ITIN issued on or before the due date of your return, or have you applied for an ITIN by then?
-- **Encoded (Bool):** Input — Do you have an SSN or ITIN issued on or before the due date of your 2025 return (including extensions), or have you applied for an ITIN by then?
-- Expr: `{"op":"input","source":"Do you have an SSN or ITIN issued on or before the due date of your 2025 return (including extensions), or have you applied for an ITIN by then?"}`
-- Cite: [i1040gi] p. 19, Step 5, question 1 (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Authored helper label:** Do you have an SSN or ITIN issued on or before the due date of your return?
+- **Encoded (Bool):** Input — Do you have an SSN or ITIN issued on or before the due date of your 2025 return (including extensions)?
+- Expr: `{"op":"input","source":"Do you have an SSN or ITIN issued on or before the due date of your 2025 return (including extensions)?"}`
+- Cite: [i1040gi] p. 17, Before you begin, "The other spouse must have either an SSN or ITIN, and it must have been issued on or before the due date of the return (including extensions)"; p. 19, Step 5, question 1 (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.itin_applied`
+
+- **Authored helper label:** If not, have you applied for an ITIN on or before the due date of your return?
+- **Encoded (Bool):** Input — If you have neither, have you applied for an ITIN on or before the due date of your 2025 return (including extensions)?
+- Expr: `{"op":"input","source":"If you have neither, have you applied for an ITIN on or before the due date of your 2025 return (including extensions)?"}`
+- Cite: [i1040gi] p. 19, Step 5, question 1, "(Answer 'Yes' if you are applying for an ITIN on or before the return due date (including extensions).)" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `person.work_ssn`
 

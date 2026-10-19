@@ -4,10 +4,10 @@ Second transcription of `Qualified Tips From More Than One Employer Worksheet (S
 
 | field | value |
 | --- | --- |
-| date | 2026-10-18 |
+| date | 2026-10-19 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | e47c9a8d8678d2abdd6f57954f493600d2b99b98b1e59861335c6dcb507d4ee7 |
+| prompt sha256 | 2473921fcdae3d7ab4b224755411a3be7c3dede9a3fef4e9e2f36f2adaac8297 |
 | printed lines compared | 3 |
 | agree / disagree / missing | 1 / 2 / 0 |
 | extra printed lines in second | none |
@@ -55,7 +55,7 @@ Second:
 {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "tipjob.qualified"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"input": "tipjob.qualified"}], "test": "eq"}, "then": {"of": [{"line": "1(b)"}, {"line": "1(c)"}], "op": "larger_of"}}], "op": "choose"}
 ```
 
-Second transcription's note: The IRS text says 'Do not include tips received in occupations that are not included on this list in line 4a, 4b, or 4c.' The text does not say how to treat a row whose counted tips are not all from a listed occupation. Reading chosen: column (d) is the greater of columns (b) and (c) only when the filer confirms that all the tips counted for this employer were received in a listed occupation. Otherwise this row contributes zero.
+Second transcription's note: The worksheet itself only says to enter the greater of column (b) or column (c). The instructions also say that only tips received in an occupation on the list of occupations that customarily and regularly received tips are qualified tips, and that tips from other occupations must not be included in line 4a, 4b or 4c. The input tipjob.qualified asks whether all of the counted tips from this employer were received in such an occupation. This transcription reads a 'no' answer as meaning the counted tips are not qualified tips, so column (d) is zero. It does not refuse the line or split the amount.
 
 Ruling: owner's ruling; project retained. An employer whose counted tips are not all qualified tips is refused (tipjob.mixed, on column (b)): the owner chose refusal over dropping the employer or splitting its tips. The second reads such a row as contributing zero. Both keep nonqualified tips off line 4c; the project does not silently drop the employer's qualified tips.
 
@@ -64,27 +64,27 @@ Ruling: owner's ruling; project retained. An employer whose counted tips are not
 ```yaml
 ```yaml
 lines:
-  - id: tipjob.one
-    printed: "(helper)"
-    label: "One employer"
-    type: Count
-    expr: {op: param, ref: sales.one}
-    note: "Counts this worksheet row as one employer. The IRS text gives no constant for this, so the year parameter sales.one (value 1) is used."
   - id: tipjob.line1(c)
     printed: "1(c)"
     label: "Qualified tips reported on Form 4137, column 1(c), for this employer"
     type: NonNegDollars
-    expr: {op: input, source: "Form 4137, column 1(c), the qualified tips included for this employer (enter zero if no Form 4137 amount for this employer)"}
-  - id: tipjob.h_zero
-    printed: "(helper)"
-    label: "No amount for this employer"
-    type: NonNegDollars
-    expr: {op: param, ref: sales.zero}
-  - id: tipjob.h_greater
+    expr: {op: input, source: "Form 4137, column 1(c), the qualified tips included for this employer (Qualified Tips From More Than One Employer Worksheet, column (c))"}
+    cite: "Instructions for Schedule 1-A (2025), Determining the amount of qualified tips received by an employee for 2025, paragraph 4; Qualified Tips From More Than One Employer Worksheet, column (c), i1040gi p. 103-104"
+
+  - id: tipjob.h_larger
     printed: "(helper)"
     label: "The greater of column (b) or column (c)"
     type: NonNegDollars
     expr: {op: larger_of, of: [tipjob.amount, tipjob.line1(c)]}
+    cite: "Qualified Tips From More Than One Employer Worksheet, column (d), i1040gi p. 104"
+
+  - id: tipjob.h_zero
+    printed: "(helper)"
+    label: "No qualified tips from this employer"
+    type: NonNegDollars
+    expr: {op: param, ref: sales.zero}
+    cite: "Instructions for Schedule 1-A (2025), Determining the amount of qualified tips received by an employee for 2025, i1040gi p. 103"
+
   - id: tipjob.line1(d)
     printed: "1(d)"
     label: "Enter the greater of column (b) or column (c)"
@@ -93,9 +93,18 @@ lines:
       op: choose
       alternatives:
         - guard: {op: test, eq: [tipjob.qualified, {const: true}]}
-          then: tipjob.h_greater
+          then: tipjob.h_larger
         - guard: {op: test, eq: [tipjob.qualified, {const: false}]}
           then: tipjob.h_zero
-    note: "The IRS text says 'Do not include tips received in occupations that are not included on this list in line 4a, 4b, or 4c.' The text does not say how to treat a row whose counted tips are not all from a listed occupation. Reading chosen: column (d) is the greater of columns (b) and (c) only when the filer confirms that all the tips counted for this employer were received in a listed occupation. Otherwise this row contributes zero."
+    cite: "Qualified Tips From More Than One Employer Worksheet, column (d), i1040gi p. 104; Determining the amount of qualified tips received by an employee for 2025, i1040gi p. 103"
+    note: "The worksheet itself only says to enter the greater of column (b) or column (c). The instructions also say that only tips received in an occupation on the list of occupations that customarily and regularly received tips are qualified tips, and that tips from other occupations must not be included in line 4a, 4b or 4c. The input tipjob.qualified asks whether all of the counted tips from this employer were received in such an occupation. This transcription reads a 'no' answer as meaning the counted tips are not qualified tips, so column (d) is zero. It does not refuse the line or split the amount."
+
+  - id: tipjob.one
+    printed: "(helper)"
+    label: "One employer"
+    type: Count
+    expr: {op: param, ref: sales.one}
+    cite: "Qualified Tips From More Than One Employer Worksheet, rows 1A through 1E (one row per employer), i1040gi p. 104"
+    note: "The text gives no year parameter specific to this worksheet for the count of one employer. This transcription uses the existing year parameter sales.one (value 1), in the same way the other collections use a shared parameter for their per-entry unit count."
 ```
 ```

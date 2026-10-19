@@ -10,7 +10,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | eic.md | worksheet | 75 |
 | f1040.md | form | 62 |
 | f4952.md | form | 25 |
-| f8889.md | form | 77 |
+| f8889.md | form | 78 |
 | f8959.md | form | 26 |
 | f8960.md | form | 30 |
 | f8995.md | form | 16 |
@@ -21,7 +21,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | household.md | form | 28 |
 | interest.md | form | 1 |
 | otjob.md | form | 12 |
-| person.md | worksheet | 42 |
+| person.md | worksheet | 43 |
 | qbi.md | form | 10 |
 | qdcg.md | worksheet | 27 |
 | retirement.md | form | 56 |

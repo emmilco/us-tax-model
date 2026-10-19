@@ -252,13 +252,13 @@ form:
     - id: dependent.younger
       printed: (helper)
       type: Bool
-      label: Younger than you?
+      label: Younger than you (or your spouse if filing jointly)?
       expr:
         op: input
-        source: Was this person younger than you?
+        source: Was this person younger than you (or, if you file jointly, younger than you or your spouse; the person need not be younger than both of you)?
       cite:
         doc: i1040gi
-        locator: p. 17, Step 1, "and younger than you (or your spouse if filing jointly)"
+        locator: p. 17, Step 1, "and younger than you (or your spouse if filing jointly)"; p501 p. 13, "if you are married filing jointly, the child must be younger than you or your spouse but doesnt have to be younger than both of you"
     - id: dependent.us_half
       printed: (helper)
       type: Bool

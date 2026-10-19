@@ -88,6 +88,11 @@ interface TipJob { qualified: boolean; amount: number }
 interface OvertimeJob { flsa: boolean; special: boolean; method: string; statement: number }
 interface CarLoan { kind: string; requirements: boolean; vehicle: boolean; interest: number; mixed: boolean; financed: number; nonqualifying: number; down: number; refiBalance: number; refiWhole: boolean }
 interface ScheduleOneA { tips: TipJob[]; overtime: OvertimeJob[]; loans: CarLoan[] }
+interface SpouseHsa { has: boolean; months: number; familyMonths: number; decFamily: boolean; contrib: number; age55: boolean; agreed: boolean; allocated: number }
+interface Spouse {
+  employers: Employer[]; age65: boolean; blind: boolean; tin: boolean; work_ssn: boolean; died: boolean; eicAge: boolean;
+  educator: number; eligible: boolean; tips: TipJob[]; overtime: OvertimeJob[]; hsa: SpouseHsa;
+}
 
 interface Adjustments {
   uc: number; ucRepaidPct: number; educator: number; sli: number;
@@ -108,6 +113,7 @@ interface Spec {
   medical: number; saltIncome: number; saltRe: number; mortgage: number; cashGifts: number; gifts: Gift[];
   invInterest: number; election: number; ftcTaxes: number;
   dependents: Dependent[];
+  spouse: Spouse;
   household: Household;
   pensions: Distribution[];
   benefits: number;
@@ -183,6 +189,15 @@ export function returnArbitrary(data: CanonicalData): fc.Arbitrary<Inputs> {
     cashGifts: money(2_000_000), gifts: fc.array(gift, { maxLength: 2 }),
     invInterest: money(1_000_000), election: rareMoney(1_000_000, 20), ftcTaxes: rareMoney(45_000, 25),
     dependents: fc.array(dependent, { maxLength: 3 }),
+    // Read only on a joint return: the spouse's own entry.
+    spouse: fc.record<Spouse>({
+      employers: fc.array(employer, { maxLength: 2 }), age65: rareTrue(25), blind: rareTrue(5), tin: rareTrue(97), work_ssn: rareTrue(93),
+      died: rareTrue(3), eicAge: rareTrue(85), educator: rareMoney(60_000, 15), eligible: rareTrue(70),
+      tips: fc.array(fc.record<TipJob>({ qualified: fc.constant(true), amount: money(3_000_000) }), { maxLength: 2 }),
+      overtime: fc.array(fc.record<OvertimeJob>({ flsa: fc.constant(true), special: fc.constant(false), method: fc.constantFrom("premium", "employer_reported", "total_time_and_half"), statement: money(3_000_000) }), { maxLength: 1 }),
+      hsa: fc.record<SpouseHsa>({ has: rareTrue(30), months: fc.oneof({ weight: 1, arbitrary: fc.constant(12) }, { weight: 1, arbitrary: fc.integer({ min: 1, max: 12 }) }),
+        familyMonths: fc.integer({ min: 0, max: 12 }), decFamily: fc.boolean(), contrib: money(1_000_000), age55: rareTrue(25), agreed: rareTrue(20), allocated: money(855_000) }),
+    }),
     household,
     pensions: fc.array(distribution, { minLength: 1, maxLength: 2 }),
     benefits: money(5_000_000),
@@ -289,6 +304,7 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   s.dependents.forEach((d, i) => { for (const [k, v] of Object.entries(d)) inputs[`dependent[dep_${String.fromCharCode(97 + i)}].${k}`] = v; });
   const HOUSEHOLD_KEYS: Record<string, string> = { taxpayer_tin: "person[taxpayer].tin", taxpayer_work_ssn: "person[taxpayer].work_ssn" };
   for (const [k, v] of Object.entries(s.household)) inputs[HOUSEHOLD_KEYS[k] ?? `household.${k}`] = v;
+  inputs["person[taxpayer].itin_applied"] = false;
   // A retiree has Form 1099-R distributions and social security benefits; the other
   // profiles have neither. A Roth IRA is given code Q and a code that the
   // account does not allow is kept only on unclean returns, so the gates are exercised too.
@@ -340,6 +356,44 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
       inputs[`${k}.nonqualifying`] = l.nonqualifying; inputs[`${k}.down`] = l.down;
       inputs[`${k}.refi_balance`] = l.refiBalance; inputs[`${k}.refi_whole`] = l.refiWhole;
     });
+  }
+  // A joint return has an entry for your spouse, with its own facts, wages and entries.
+  if (s.status === "mfj") {
+    const sp = s.spouse, P = "person[spouse]", H = `${P}.f8889[hsa]`;
+    inputs["$person"] = ["taxpayer", "spouse"];
+    Object.assign(inputs, {
+      [`${P}.role`]: "spouse", [`${P}.rrta`]: false, [`${P}.age65`]: sp.age65, [`${P}.blind`]: sp.blind, [`${P}.tin`]: sp.tin || sp.work_ssn,
+      [`${P}.work_ssn`]: sp.work_ssn, [`${P}.itin_applied`]: false, [`${P}.born_before_2001`]: sp.eicAge || sp.age65, [`${P}.born_after_1960`]: !sp.age65 && sp.eicAge,
+      [`${P}.educator_expenses`]: sp.educator, [`${P}.eligible_educator`]: sp.eligible,
+    });
+    if (sp.age65) inputs[`${P}.died_before_65`] = sp.died;
+    const keys = sp.employers.map((_, k) => `emp_${String.fromCharCode(97 + k)}`);
+    inputs[`$w2@${P}`] = keys;
+    sp.employers.forEach((e, k) => {
+      const box1 = e.box1, box3 = Math.min(box1, Math.max(0, WAGE_BASE - e.box7)), box5 = box1 + e.box7;
+      Object.assign(inputs, { [`${P}.w2[${keys[k]}].box1`]: box1, [`${P}.w2[${keys[k]}].box2`]: rate(box1, e.box2pct, 100), [`${P}.w2[${keys[k]}].box3`]: box3,
+        [`${P}.w2[${keys[k]}].box7`]: e.box7, [`${P}.w2[${keys[k]}].box4`]: rate(box3 + e.box7, 62, 1000) + e.over,
+        [`${P}.w2[${keys[k]}].box5`]: box5, [`${P}.w2[${keys[k]}].box6`]: rate(box5, 145, 10000) + (box5 > ADDL_MEDICARE_START ? rate(box5 - ADDL_MEDICARE_START, 9, 1000) : 0) });
+    });
+    inputs[`$tipjob@${P}`] = inputs["s1a.tips"] === true ? sp.tips.map((_, k) => `tip_${k + 1}`) : [];
+    if (inputs["s1a.tips"] === true) sp.tips.forEach((tj, k) => { inputs[`${P}.tipjob[tip_${k + 1}].qualified`] = tj.qualified; inputs[`${P}.tipjob[tip_${k + 1}].amount`] = tj.amount; });
+    inputs[`$otjob@${P}`] = inputs["s1a.overtime"] === true ? sp.overtime.map((_, k) => `ot_${k + 1}`) : [];
+    if (inputs["s1a.overtime"] === true) sp.overtime.forEach((o, k) => {
+      const k2 = `${P}.otjob[ot_${k + 1}]`;
+      inputs[`${k2}.flsa`] = o.flsa; inputs[`${k2}.special_rule`] = o.special; inputs[`${k2}.method`] = o.method; inputs[`${k2}.statement`] = o.statement;
+    });
+    const h = sp.hsa;
+    inputs[`$f8889@${P}`] = h.has ? ["hsa"] : [];
+    if (h.has) {
+      const family = Math.min(h.familyMonths, h.months);
+      Object.assign(inputs, { [`${H}.line2`]: h.contrib, [`${H}.line9`]: 0, [`${H}.unsupported`]: false, [`${H}.months_eligible`]: h.months,
+        [`${H}.months_family`]: family, [`${H}.age55`]: h.age55, [`${H}.last_month`]: false,
+        [`${H}.dec_coverage`]: h.months === 12 ? (family === 12 ? "family" : family === 0 ? "self_only" : h.decFamily ? "family" : "self_only") : (h.decFamily && family > 0 ? "family" : "self_only"),
+        [`${H}.allocation`]: h.agreed ? "agreed" : "equal", [`${H}.allocated`]: h.allocated });
+      // Your own Form 8889 uses the same allocation method; an agreed part is drawn from the same range.
+      inputs[`${HSA}.allocation`] = h.agreed ? "agreed" : "equal";
+      inputs[`${HSA}.allocated`] = Math.max(0, 855_000 - h.allocated);
+    }
   }
   return inputs;
 }

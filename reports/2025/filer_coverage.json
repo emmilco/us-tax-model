@@ -5,32 +5,20 @@
  "microdata_filing_units_unweighted_total": 157629339.546014,
  "raking_max_share_error": 7.132191345032847e-07,
  "coverage": {
-  "central": 0.33858962324888203,
-  "low": 0.2088773185083413,
-  "high": 0.41939992391849323,
-  "microdata_part": 0.41939992391849323,
+  "central": 0.4779202570137164,
+  "low": 0.3814616305725472,
+  "high": 0.5919842359826991,
+  "microdata_part": 0.5919842359826991,
   "irs_only_independent_factor": 0.8073192290675857,
   "irs_only_share_sum": 0.21052260541015194
  },
  "categories": [
   {
-   "id": "mfj",
-   "group": "married",
-   "label": "Married filing jointly",
-   "gates": [
-    "s3.married"
-   ],
-   "irs_returns": null,
-   "microdata_share_before_raking": 0.5065700162025811,
-   "share": 0.33557921990979234,
-   "basis": "IRS count with qualifying surviving spouses (joint_or_qss), overlap from microdata"
-  },
-  {
    "id": "mfs",
    "group": "married",
    "label": "Married filing separately",
    "gates": [
-    "s3.married"
+    "s3.mfs"
    ],
    "irs_returns": 4139858.0,
    "microdata_share_before_raking": 0.01213388637242343,
@@ -378,48 +366,48 @@
  ],
  "greedy_order": [
   {
-   "group": "married",
-   "label": "Married filing jointly and separately",
-   "coverage_after": 0.4918066973835906
-  },
-  {
    "group": "self_employment",
    "label": "Self-employment (Schedule C and SE)",
-   "coverage_after": 0.5981764728774922
+   "coverage_after": 0.5801386940055673
   },
   {
    "group": "other_credits",
    "label": "Other credits (dependent care, saver's, energy, others)",
-   "coverage_after": 0.6732423297177376
+   "coverage_after": 0.6532176303949329
   },
   {
    "group": "schedule1_misc",
    "label": "Other Schedule 1 income and adjustments",
-   "coverage_after": 0.7528375617277323
+   "coverage_after": 0.7309738673521409
   },
   {
    "group": "schedule_e",
    "label": "Rental, royalty, partnership, S corporation, estate (Schedule E)",
-   "coverage_after": 0.8223744534508876
+   "coverage_after": 0.7985864670141478
   },
   {
    "group": "premium_tax_credit",
    "label": "Premium tax credit (Form 8962)",
-   "coverage_after": 0.871381200333951
+   "coverage_after": 0.8475932138972115
   },
   {
    "group": "education",
    "label": "Education credits (Form 8863)",
-   "coverage_after": 0.9128182537717436
+   "coverage_after": 0.8890302673350041
   },
   {
    "group": "capital_loss_carryover",
    "label": "Capital loss carryover",
-   "coverage_after": 0.9459369386265624
+   "coverage_after": 0.9212858813398768
   },
   {
    "group": "retirement_penalty",
    "label": "Additional tax on retirement plans (Form 5329)",
+   "coverage_after": 0.9514584425018772
+  },
+  {
+   "group": "married",
+   "label": "Married filing separately",
    "coverage_after": 0.9769168339166064
   },
   {
@@ -440,18 +428,18 @@
  ],
  "coverage_without_model_only_category": {},
  "gain_if_covered_alone": {
-  "married": 0.1532170741347086,
-  "self_employment": 0.06741037616499179,
-  "premium_tax_credit": 0.015135657230691546,
-  "education": 0.014822054151643616,
-  "other_credits": 0.04022423870631642,
-  "schedule_e": 0.016526066704478315,
-  "capital_loss_carryover": 0.012284639336644643,
-  "retirement_penalty": 0.011088975011141755,
-  "schedule1_misc": 0.030226895486114014,
-  "schedule2_misc": 0.0015328970956590138,
-  "other_earned_income": 0.0026937251789444505,
-  "farm": 0.0022215044210988077
+  "married": 0.013886440369874242,
+  "self_employment": 0.1022184369918509,
+  "premium_tax_credit": 0.027836291064167018,
+  "education": 0.021542456808171517,
+  "other_credits": 0.060419539871222894,
+  "schedule_e": 0.034564444554697704,
+  "capital_loss_carryover": 0.01733980484326436,
+  "retirement_penalty": 0.01565212110309716,
+  "schedule1_misc": 0.047128674272944926,
+  "schedule2_misc": 0.002163688795017882,
+  "other_earned_income": 0.0038022010760180303,
+  "farm": 0.0023106824252625557
  },
  "gates_mapped": [
   "f8889.unsupported",
@@ -459,7 +447,7 @@
   "retirement.special",
   "s2.amt",
   "s2.other",
-  "s3.married",
+  "s3.mfs",
   "sa.excluded_income",
   "scope.credits",
   "scope.other_income",
@@ -483,9 +471,10 @@
   "f4952.bad_election",
   "f4952.carryover",
   "f4952.unsupported",
+  "f8889.allocation_bad",
   "f8889.bad_months",
   "f8889.excess",
-  "f8889.married",
+  "f8889.mfs",
   "f8959.unsupported",
   "f8960.bad_allocation",
   "f8960.refund",
@@ -494,18 +483,21 @@
   "gift.section_b",
   "gift.special",
   "household.hoh_fails",
+  "household.roster_bad",
   "otjob.refused",
+  "person.hsa_repeated",
   "person.over",
   "person.rrta",
   "retirement.annuity_rollover",
   "retirement.bad_code",
   "s1.uc_unsupported",
   "s1a.senior_decedent",
+  "s1a.spouse_senior_decedent",
   "s8812.combat_pay",
   "s8812.puerto_rico",
   "sa.charity_limited",
   "sa.dependent",
-  "sa.spouse_extra",
+  "sa.mfs_spouse_extra",
   "sa.unsupported",
   "sales.bad_aggregate",
   "sales.bad_code",

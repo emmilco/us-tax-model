@@ -6933,6 +6933,7 @@
           "child"
         ],
         "person[taxpayer].tin": false,
+        "person[taxpayer].itin_applied": false,
         "person[taxpayer].work_ssn": false,
         "household.home_cost": false,
         "household.unmarried": true,

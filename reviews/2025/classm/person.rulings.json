@@ -1,0 +1,22 @@
+{
+ "kind": "classm",
+ "form": "person",
+ "rulings": [
+  {
+   "case": "classm.person.3",
+   "printed": "person[taxpayer].tip_employers",
+   "project": "3",
+   "model": "2",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The project counts each employer entered on the tip roster ('List stable keys for each employer from which you received tips'), the model only those with an amount above zero. An entry of $0 changes no amount: line 4c totals the worksheet's column (d), and with two or more employers line 4a is $0 either way (i1040gi p. 104).",
+   "drop": true
+  },
+  {
+   "case": "classm.person.4",
+   "printed": "person[taxpayer].tip_employers",
+   "project": "3",
+   "model": "2",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The project counts each employer entered on the tip roster ('List stable keys for each employer from which you received tips'), the model only those with an amount above zero. An entry of $0 changes no amount: line 4c totals the worksheet's column (d), and with two or more employers line 4a is $0 either way (i1040gi p. 104).",
+   "drop": true
+  }
+ ]
+}

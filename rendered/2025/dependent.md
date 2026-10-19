@@ -153,10 +153,10 @@
 
 ## (helper) — `dependent.younger`
 
-- **Authored helper label:** Younger than you?
-- **Encoded (Bool):** Input — Was this person younger than you?
-- Expr: `{"op":"input","source":"Was this person younger than you?"}`
-- Cite: [i1040gi] p. 17, Step 1, "and younger than you (or your spouse if filing jointly)" (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Authored helper label:** Younger than you (or your spouse if filing jointly)?
+- **Encoded (Bool):** Input — Was this person younger than you (or, if you file jointly, younger than you or your spouse; the person need not be younger than both of you)?
+- Expr: `{"op":"input","source":"Was this person younger than you (or, if you file jointly, younger than you or your spouse; the person need not be younger than both of you)?"}`
+- Cite: [i1040gi] p. 17, Step 1, "and younger than you (or your spouse if filing jointly)"; p501 p. 13, "if you are married filing jointly, the child must be younger than you or your spouse but doesnt have to be younger than both of you" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `dependent.us_half`
 
@@ -175,7 +175,7 @@
 ## (helper) — `dependent.qc_age`
 
 - **Authored helper label:** Under 19 and younger than you, under 24 a full-time student and younger than you, or permanently and totally disabled
-- **Encoded (Bool):** (helper "Age at the end of 2025" < 19 (qc.age_limit) and helper "Younger than you?" = true or helper "Age at the end of 2025" < 24 (qc.student_age_limit) and helper "Full-time student in 2025?" = true and helper "Younger than you?" = true or helper "Permanently and totally disabled?" = true)
+- **Encoded (Bool):** (helper "Age at the end of 2025" < 19 (qc.age_limit) and helper "Younger than you (or your spouse if filing jointly)?" = true or helper "Age at the end of 2025" < 24 (qc.student_age_limit) and helper "Full-time student in 2025?" = true and helper "Younger than you (or your spouse if filing jointly)?" = true or helper "Permanently and totally disabled?" = true)
 - Expr: `{"any":[{"all":[{"lt":["dependent.age",{"param":"qc.age_limit"}],"op":"test"},{"eq":["dependent.younger",{"const":true}],"op":"test"}],"op":"test"},{"all":[{"lt":["dependent.age",{"param":"qc.student_age_limit"}],"op":"test"},{"eq":["dependent.student",{"const":true}],"op":"test"},{"eq":["dependent.younger",{"const":true}],"op":"test"}],"op":"test"},{"eq":["dependent.disabled",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 17, Step 1, the age conditions (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -272,7 +272,7 @@
 ## (helper) — `dependent.odc_person`
 
 - **Authored helper label:** Dependent for the credit for other dependents (Steps 3 and 5)
-- **Encoded (Bool):** helper "Your dependent" = true and helper "SSN, ITIN or ATIN issued on or before the due date of your return?" = true and helper "U.S. citizen, U.S. national or U.S. resident alien?" = true and helper "Qualifying child for the child tax credit (Step 3)" = false and household helper "You, and your spouse if filing jointly, have an SSN or ITIN" = true
+- **Encoded (Bool):** helper "Your dependent" = true and helper "SSN, ITIN or ATIN issued on or before the due date of your return?" = true and helper "U.S. citizen, U.S. national or U.S. resident alien?" = true and helper "Qualifying child for the child tax credit (Step 3)" = false and household helper "You, and your spouse if filing jointly, have an SSN or ITIN, or have applied for an ITIN" = true
 - Expr: `{"all":[{"eq":["dependent.claimed",{"const":true}],"op":"test"},{"eq":["dependent.tin",{"const":true}],"op":"test"},{"eq":["dependent.citizen",{"const":true}],"op":"test"},{"eq":["dependent.ctc_child",{"const":false}],"op":"test"},{"eq":["household.all_tin",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 18, Step 3, question 3, and p. 19, Step 5 (2025; printed date 2026-02-25; sha256 482e9c48)
 

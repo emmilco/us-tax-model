@@ -9,6 +9,18 @@
    "ruling": "Ruling: scope; project retained. Lines 1 to 6, 8a to 8z and 9 are outside this tool: scope.schedule1 refuses Form 1040 line 8, which copies this line, whenever any of them applies, so within scope they are zero (the line's citation says so)."
   },
   {
+   "printed": "10",
+   "restated": "Enter the amount from line 7.",
+   "model": "The form says 'Combine lines 1 through 7 and 9.' The restatement enters only line 7, and no refusal excludes income on lines 1–6 or 9. That income would change the value.",
+   "ruling": "Ruling: scope; project retained. Lines 1 to 6, 8a to 8z and 9 are outside this tool: scope.schedule1 refuses Form 1040 line 8, which copies this line, whenever any of them applies, so within scope they are zero (the line's citation says so)."
+  },
+  {
+   "printed": "11",
+   "restated": "Add person.educator_deduction over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The instructions allow 'up to $300 of qualified expenses' per eligible educator and '$600' when both spouses filing jointly qualify. The restatement sums person.educator_deduction, which is not defined in the glossary, so I cannot check whether the $300 per-person limit and the required reductions are applied.",
+   "ruling": "Ruling: representation; project retained. person.educator_deduction is each person's qualified expenses up to $300 if that person was an eligible educator, else zero (person.educator_limited, person.educator_eligible_amount); line 11 adds them, so two eligible educators on a joint return can deduct up to $600 and neither more than $300 (i1040gi p. 93, Schedule 1, line 11). Fixtures stage13.educator_both and stage13.educator_one_eligible, predicted by hand."
+  },
+  {
    "printed": "11",
    "restated": "Choose — [helper \"Any qualified educator expenses\" = true → helper \"Educator expense deduction for an eligible educator\"] [helper \"Any qualified educator expenses\" = false → helper \"Year parameter sales.zero\"]",
    "model": "The restatement caps the deduction at $300 for a single educator. The instructions say \"If you and your spouse are filing jointly and both of you were eligible educators, the maximum deduction is $600,\" and no refusal excludes that case.",
@@ -21,9 +33,21 @@
    "ruling": "Ruling: representation; project retained. Line 21 copies the worksheet's result (sli.deduction); the worksheet and the line 21 instructions are judged line by line in the render log of `sli`, where they are given."
   },
   {
+   "printed": "21",
+   "restated": "Enter the amount from sli helper \"Student loan interest deduction (Schedule 1, line 21)\".",
+   "model": "The pages given include no instructions or worksheet for Schedule 1 line 21, only the caption 'Student loan interest deduction.' Without them I cannot check the eligibility conditions (not MFS, not claimed as a dependent) or the value of sli line 9.",
+   "ruling": "Ruling: representation; project retained. Line 21 copies the worksheet's result (sli.deduction); the worksheet and the line 21 instructions are judged line by line in the render log of `sli`, where they are given."
+  },
+  {
    "printed": "26",
    "restated": "Add line 11, line 13, and line 21.",
    "model": "The form says \"Add lines 11 through 23 and 25.\" The restatement adds only lines 11, 13 and 21 and has no refusal naming lines 12, 14–20, 22–23 and 25 as excluded.",
+   "ruling": "Ruling: scope; project retained. Lines 12, 14 to 20, 23 and 25 are outside this tool: scope.schedule1 refuses Form 1040 line 10, which copies this line, whenever any of them applies, so within scope they are zero (the line's citation says so)."
+  },
+  {
+   "printed": "26",
+   "restated": "Add line 11, line 13, and line 21.",
+   "model": "The form says 'Add lines 11 through 23 and 25.' The restatement adds only lines 11, 13, and 21, and no refusal excludes amounts on lines 12, 14–20, 23, or 25. Those amounts would change the total.",
    "ruling": "Ruling: scope; project retained. Lines 12, 14 to 20, 23 and 25 are outside this tool: scope.schedule1 refuses Form 1040 line 10, which copies this line, whenever any of them applies, so within scope they are zero (the line's citation says so)."
   }
  ]

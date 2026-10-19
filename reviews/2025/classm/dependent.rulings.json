@@ -3,6 +3,14 @@
  "form": "dependent",
  "rulings": [
   {
+   "case": "classm.dependent.1",
+   "printed": "dependent[dep_c].hoh_test1",
+   "project": "yes",
+   "model": "no",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Test 1 says 'Your parent didn't have to live with you'; the project does not test where the parent lived, the model excludes a parent who lives with you. Such a parent qualifies the filer through Test 2 (hoh_test2 admits a claimed parent who lived with you more than half the year), so head of household eligibility is the same (i1040gi p. 14, Head of Household).",
+   "drop": true
+  },
+  {
    "case": "classm.dependent.4",
    "printed": "dependent[dep_a].hoh_test1",
    "project": "yes",

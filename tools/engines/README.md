@@ -1,6 +1,6 @@
 # Engine differential
 
-Class C evidence at scale (spec 6.5): generated single-filer returns are
+Class C evidence at scale (spec 6.5): generated returns (single, head of household and married filing jointly) are
 computed by the project and by two independent engines maintained by other
 people, and compared line by line. Every difference must carry an identified
 cause or the run fails. This is the only check in the pipeline whose reading

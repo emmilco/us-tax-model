@@ -1,0 +1,110 @@
+{
+ "kind": "classm",
+ "form": "otjob",
+ "rulings": [
+  {
+   "case": "classm.otjob.1",
+   "printed": "person[taxpayer].otjob[ot_1].by_half",
+   "project": "$16,465.50",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is the amount under a method the filer did not choose for this employer; the project figures every method's helper and column (b) reads only the chosen one (Notice 2025-69 Section III.B.2, pp. 22-25). Column (b) agrees.",
+   "drop": true
+  },
+  {
+   "case": "classm.otjob.1",
+   "printed": "person[taxpayer].otjob[ot_1].by_quarter",
+   "project": "$8,232.75",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is the amount under a method the filer did not choose for this employer; the project figures every method's helper and column (b) reads only the chosen one (Notice 2025-69 Section III.B.2, pp. 22-25). Column (b) agrees.",
+   "drop": true
+  },
+  {
+   "case": "classm.otjob.1",
+   "printed": "person[taxpayer].otjob[ot_1].by_third",
+   "project": "$10,977.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is the amount under a method the filer did not choose for this employer; the project figures every method's helper and column (b) reads only the chosen one (Notice 2025-69 Section III.B.2, pp. 22-25). Column (b) agrees.",
+   "drop": true
+  },
+  {
+   "case": "classm.otjob.1",
+   "printed": "person[taxpayer].otjob[ot_1].refused",
+   "project": "no",
+   "model": "yes",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. An employee who is not FLSA-eligible has no qualified overtime compensation (Notice 2025-69, pp. 22-25; i1040gi p. 106), so the project enters $0 for this employer and the method question does not arise; the model also refused the method. The employer's column (b) and line 14a agree.",
+   "drop": true
+  },
+  {
+   "case": "classm.otjob.1",
+   "printed": "person[taxpayer].otjob[ot_2].by_half",
+   "project": "$5,735.50",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is the amount under a method the filer did not choose for this employer; the project figures every method's helper and column (b) reads only the chosen one (Notice 2025-69 Section III.B.2, pp. 22-25). Column (b) agrees.",
+   "drop": true
+  },
+  {
+   "case": "classm.otjob.1",
+   "printed": "person[taxpayer].otjob[ot_2].by_quarter",
+   "project": "$2,867.75",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is the amount under a method the filer did not choose for this employer; the project figures every method's helper and column (b) reads only the chosen one (Notice 2025-69 Section III.B.2, pp. 22-25). Column (b) agrees.",
+   "drop": true
+  },
+  {
+   "case": "classm.otjob.1",
+   "printed": "person[taxpayer].otjob[ot_2].by_third",
+   "project": "$3,823.67",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is the amount under a method the filer did not choose for this employer; the project figures every method's helper and column (b) reads only the chosen one (Notice 2025-69 Section III.B.2, pp. 22-25). Column (b) agrees.",
+   "drop": true
+  },
+  {
+   "case": "classm.otjob.2",
+   "printed": "person[taxpayer].otjob[ot_1].by_half",
+   "project": "$2,583.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is the amount under a method the filer did not choose for this employer; the project figures every method's helper and column (b) reads only the chosen one (Notice 2025-69 Section III.B.2, pp. 22-25). Column (b) agrees.",
+   "drop": true
+  },
+  {
+   "case": "classm.otjob.2",
+   "printed": "person[taxpayer].otjob[ot_1].by_quarter",
+   "project": "$1,291.50",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is the amount under a method the filer did not choose for this employer; the project figures every method's helper and column (b) reads only the chosen one (Notice 2025-69 Section III.B.2, pp. 22-25). Column (b) agrees.",
+   "drop": true
+  },
+  {
+   "case": "classm.otjob.2",
+   "printed": "person[taxpayer].otjob[ot_2].by_quarter",
+   "project": "$4,775.25",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is the amount under a method the filer did not choose for this employer; the project figures every method's helper and column (b) reads only the chosen one (Notice 2025-69 Section III.B.2, pp. 22-25). Column (b) agrees.",
+   "drop": true
+  },
+  {
+   "case": "classm.otjob.2",
+   "printed": "person[taxpayer].otjob[ot_2].by_third",
+   "project": "$6,367.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is the amount under a method the filer did not choose for this employer; the project figures every method's helper and column (b) reads only the chosen one (Notice 2025-69 Section III.B.2, pp. 22-25). Column (b) agrees.",
+   "drop": true
+  },
+  {
+   "case": "classm.otjob.3",
+   "printed": "person[taxpayer].otjob[ot_1].by_half",
+   "project": "$9,201.50",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is the amount under a method the filer did not choose for this employer; the project figures every method's helper and column (b) reads only the chosen one (Notice 2025-69 Section III.B.2, pp. 22-25). Column (b) agrees.",
+   "drop": true
+  },
+  {
+   "case": "classm.otjob.3",
+   "printed": "person[taxpayer].otjob[ot_1].by_third",
+   "project": "$6,134.33",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is the amount under a method the filer did not choose for this employer; the project figures every method's helper and column (b) reads only the chosen one (Notice 2025-69 Section III.B.2, pp. 22-25). Column (b) agrees.",
+   "drop": true
+  }
+ ]
+}
