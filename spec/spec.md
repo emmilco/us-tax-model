@@ -65,7 +65,7 @@ The estimated tax penalty is not computed. The tool states that the IRS will fig
 - Filing, signing or transmitting a return, or producing electronic filing data.
 - Automating entry into any IRS system.
 - Any hosted service, account, telemetry, analytics or network call carrying return data.
-- State returns, until the federal coverage goal is met (section 2.4).
+- State returns, until the federal coverage goal is met. New York is the first state intended thereafter (section 2.4).
 - Importing broker files.
 - Filling official PDFs. Deferred until the PDF field structure has been inspected.
 - A language model anywhere in the runtime path.
@@ -97,7 +97,7 @@ Remaining, in the order of the estimate when this section was last revised:
 9. The additional tax on qualified retirement plans (Form 5329).
 10. Form 1116 and the remaining deferrals of 2.2, and the smaller situations the report lists.
 
-State returns are outside the federal goal. A state return after it is a separate decision with its own sources, and nothing in the federal encoding assumes one.
+State returns are outside the federal goal. New York is the first state intended once federal coverage is met; it is a separate decision with its own sources, and nothing in the federal encoding assumes it.
 
 ## 3. Evidentiary requirements
 
@@ -342,6 +342,6 @@ Scope items not yet taken up. Work items of every kind, including these, are tra
 - Married filing statuses for per-person rules.
 - Credits for dependents, which a Head of Household filer will commonly need; first item of the coverage goal (2.4).
 - The household architecture test: whether the atom vocabulary expresses the qualifying-child and head-of-household predicates without `opaque` escapes.
-- State returns, after the federal coverage goal.
+- New York state return, after the federal coverage goal.
 - A count of official single-line answers in the IRS volunteer test (Form 6744) that touch the slice.
 - The questions for a lawyer listed in `../research/04_legal_liability.md`.

@@ -223,7 +223,7 @@ Done when: the slice passes the Stage 7 checks, and the share of lines needing `
 
 ### Stage 9 onward. Coverage
 
-The items of spec 2.4 in order, one or more per stage, each with the Stage 7 checks. Direct File's public scenarios and other published cases become comparators where their situations fall in scope. Any state return follows federal coverage as its own stage sequence with its own sources.
+The items of spec 2.4 in order, one or more per stage, each with the Stage 7 checks. Direct File's public scenarios and other published cases become comparators where their situations fall in scope. New York follows federal coverage as its own stage sequence with its own sources.
 
 ## 6. Choices made here that are open to challenge
 

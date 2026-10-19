@@ -9,7 +9,7 @@ constraints), then `TASKS.md` (everything known and not done). Then `spec/spec.m
 
 - The product is the prepared, cited federal return the person files
   themselves; coverage grows toward most ordinary filers (spec 2.4), federal
-  first, state returns only after federal. No filing or transmission, ever.
+  first, New York intended after federal. No filing or transmission, ever.
 - The owner does no line-by-line reading and no hand-work. No human reading
   of the encoding against the source is claimed (spec 3, requirement 11).
   Trust rests on agreement among independent constructions (spec 6.5), each
