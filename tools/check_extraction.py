@@ -156,6 +156,15 @@ def check_pdfkit(entry, layout, lines):
                 if m and only_pk[m.group(1)] > 0 and only_pk[m.group(2)] > 0:
                     only_pk[m.group(1)] -= 1; only_pk[m.group(2)] -= 1
         only_pk = +only_pk
+        # A footnote marker after an amount, which poppler reads as its own token ("160", "1")
+        # and PDFKit joins to the number ("1601"), is the same text.
+        only_pop = ca - cb
+        for token, n in list(only_pk.items()):
+            number, marker = token[:-1], token[-1:]
+            for _ in range(n):
+                if number.isdigit() and marker.isdigit() and only_pop[number] > 0 and only_pop[marker] > 0:
+                    only_pop[number] -= 1; only_pop[marker] -= 1; only_pk[token] -= 1
+        only_pk = +only_pk
         extra += sum(only_pk.values()); skipped += sum((ca - cb).values())
         if sum(cb.values()) < PDFKIT_BLIND_SHARE * sum(ca.values()):
             blind.append(i)

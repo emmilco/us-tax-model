@@ -580,3 +580,15 @@ later grouping.
 - **Root cause:** the question was written for the credit for other dependents (Step 5, question 1 allows an application) and reused for the child tax credit.
 - **Fix:** `person.tin` asks for an issued number and `person.itin_applied` for an application; the credit for other dependents accepts either, the child tax credit's other-spouse test only the first. Stage 13 commit.
 - **Tags:** reused-question; joint-return-rule; caught-by-render-comparison
+
+---
+
+## BUG-0050 — The PDFKit extraction check failed footnote markers joined to amounts
+
+- **Date:** 2026-10-19
+- **Caught by:** `check-all` (`tools/check_extraction.py`, PDFKit against poppler) on archiving Pub. 463 and Pub. 946 for Stage 14.
+- **Symptom:** `p463` p. 29 and `p946` pp. 60 and 61 failed with 7 or 8 words "only PDFKit" reads, such as `1601` and `0604`; check-all stopped before the fixtures.
+- **Root cause:** the tables of maximum depreciation for cars place a footnote marker right after an amount. Poppler reads the marker as its own token (`160`, `1`) and PDFKit joins it to the number (`1601`). On all three pages every PDFKit-only word was exactly a poppler-only number plus a poppler-only digit, so no text was lost; the check counted that as loss.
+- **Where:** `tools/check_extraction.py`, `check_pdfkit`, whose same-text rules covered only a line label read as one token or two ("14a", "14 a").
+- **Fix:** a second same-text rule: a PDFKit word that is a poppler-only number followed by a poppler-only digit is the same text. The extraction report changed only for `p463`, `p560` (one occurrence under the tolerance) and `p946`.
+- **Tags:** checker-false-positive; reader-tokenization; caught-by-check-all

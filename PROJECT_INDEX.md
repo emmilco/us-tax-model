@@ -13,14 +13,15 @@ trust statement in spec 3. Stage 7 (the integrity stack), Stage 8 (dependents,
 head of household and Schedule 8812), Stage 9 (the earned income credit),
 Stage 10 (retirement income), Stage 11 (unemployment compensation and the common Schedule 1
 adjustments), Stage 12 (the Schedule 1-A deductions) and Stage 13 (married filing jointly) are complete;
-see `HANDOFF-STAGE-13.md` to continue. The order of later stages follows the coverage estimate (spec 2.4, `reports/roadmap.html`).
+see `HANDOFF-STAGE-14.md` to continue. The order of later stages follows the coverage estimate (spec 2.4, `reports/roadmap.html`).
 
 ## Folder structure
 
 | Path | Purpose |
 |------|---------|
 | `PROJECT_INDEX.md` | This file: structure, directory purposes, naming conventions |
-| `HANDOFF-STAGE-13.md` | Current handoff: Stage 13 (married filing jointly: per-person records, the joint rules, the Form 8889 spouse rules), with open items |
+| `HANDOFF-STAGE-14.md` | Current handoff: Stage 14 (self-employment), in progress: sources archived and feature prevalence measured |
+| `HANDOFF-STAGE-13.md` | Previous handoff: Stage 13 (married filing jointly: per-person records, the joint rules, the Form 8889 spouse rules), with open items |
 | `HANDOFF-STAGE-12.md` | Previous handoff: the coverage goal and estimator, the roadmap, and Stage 12 (Schedule 1-A: tips, overtime, car loan interest, the enhanced deduction for seniors), with open items |
 | `HANDOFF-STAGE-11.md` | Previous handoff: Stage 11 (Schedule 1 line 7, educator expenses, the HSA deduction with Form 8889 Part I, student loan interest), the `prorate` atom, with open items |
 | `HANDOFF-STAGE-10.md` | Previous handoff: Stage 10 (Form 1099-R distributions and taxable social security benefits), the `multiply_count` atom, with open items |
