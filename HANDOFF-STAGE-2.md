@@ -75,7 +75,7 @@ Decomposed:
 
 ## State of the repository
 
-- Clean tree. Latest commits: `6901480` (Stage 1 evaluator, CLI, fixtures, Lean reference evaluator, reports), `df42d8b` (Stage 1 data format, checker, renderer), `de4c7de` (rate-schedule source).
+- Clean tree. Latest commits: `bd35a5c` (Stage 1 evaluator, CLI, fixtures, Lean reference evaluator, reports), `919322a` (Stage 1 data format, checker, renderer), `dd91523` (rate-schedule source).
 - Toolchain already installed on this machine: Node 24 + npm, TypeScript 7 (strict config in `engine/tsconfig.json`), Lean v4.29.1 through elan, `pdftotext`, Python 3.
 - Baseline check: `npm ci && npm run check-all` should be green before you touch anything.
 - Open owner items from Stage 1 (may arrive as corrections — fold them in as ordinary fixes): the render read and the class B hand-work.

@@ -4,7 +4,7 @@ Assessment written 2026-10-17 after reading the extraction and audit
 documents of a separate, unpublished PDF-to-text pipeline against the
 way this project turns archived IRS PDFs into the text its encoding and its
 three model reviews read. Measurements are over the archived `sources/2025/`
-texts as of commit `7ad0871`. Tasks T-022 to T-024 came out of it.
+texts as of commit `da44277`. Tasks T-022 to T-024 came out of it.
 
 ## How this project reads its sources
 

@@ -4,7 +4,7 @@ Read `HANDOFF.md` first, then `TASKS.md`, then this file; `HANDOFF-STAGE-9.md`
 describes the stage before. `PROJECT_INDEX.md` is current; `BUG_INVENTORY.md`
 has 34 entries.
 
-## What was done (2026-10-18, after `3a37103`)
+## What was done (2026-10-18, after `362e08e`)
 
 1. **Scope (owner-confirmed).** Form 1099-R distributions (taxable amounts,
    rollovers, the Simplified Method) and the Social Security Benefits

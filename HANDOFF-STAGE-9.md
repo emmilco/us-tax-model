@@ -4,7 +4,7 @@ Read `HANDOFF.md` first, then `TASKS.md`, then this file; `HANDOFF-STAGE-8.md`
 and `HANDOFF-STAGE-7.md` describe the earlier stages. `PROJECT_INDEX.md` is
 current; `BUG_INVENTORY.md` has 29 entries.
 
-## What was done (2026-10-17, after `289d583`)
+## What was done (2026-10-17, after `0f95705`)
 
 1. **T-021 commit guard.** `npm run check-all` runs `tools/check_all.sh`, which
    records the tested tree's hash in `.git/check-all-green` (green only if

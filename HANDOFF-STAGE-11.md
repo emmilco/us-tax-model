@@ -4,7 +4,7 @@ Read `HANDOFF.md` first, then `TASKS.md`, then this file; `HANDOFF-STAGE-10.md`
 describes the stage before and the overnight queue after it. `PROJECT_INDEX.md`
 is current; `BUG_INVENTORY.md` has 34 entries.
 
-## What was done (2026-10-18, after `e6f746f`)
+## What was done (2026-10-18, after `f88144c`)
 
 1. **Scope (owner-confirmed).** Schedule 1 line 7 (unemployment compensation,
    Form 1099-G box 1, less a 2025 overpayment repaid), line 11 (educator
