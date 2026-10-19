@@ -6,7 +6,7 @@ Offline checks that the archived IRS text is a faithful reading of the archived 
 | --- | --- | --- |
 | layout vs reading order | 63 | 0 |
 | PDFKit against poppler | 63 | 0 |
-| PDF vs HTML snapshot | 10 | 0 |
+| PDF vs HTML snapshot | 12 | 0 |
 
 ## Per document
 
@@ -135,6 +135,10 @@ Offline checks that the archived IRS text is a faithful reading of the archived 
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 29 words poppler reads that PDFKit skips)
 - **p463** layout vs reading order: 62 pages, identical characters (9 page(s) differ only in word spacing)
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 430 words poppler reads that PDFKit skips)
+    - HTML snapshot `p463-html`: every word of every page occurs in the HTML text, 3 page(s) excepted
+        - p. 1 accepted: ['chinese'] — Language links on the first page (IRS.gov/Chinese and others) are not part of the HTML publication text
+        - p. 18 accepted: ['al', 'ay', 'ct', 'de', 'du', 'er'] — Figure B (When Are Transportation Expenses Deductible?): the HTML publication carries the chart as an image
+        - p. 60 accepted: ['develop', 'entries', 'ideas', 'let', 'reach'] — Index request note ("To help us develop a more useful index ...") printed above the PDF index; the HTML publication has no index
 - **p501** layout vs reading order: 31 pages, identical characters (2 page(s) differ only in word spacing)
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (1 such occurrences; 28 words poppler reads that PDFKit skips)
 - **p505-2026** layout vs reading order: 48 pages, identical characters (8 page(s) differ only in word spacing)
@@ -151,5 +155,23 @@ Offline checks that the archived IRS text is a faithful reading of the archived 
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 120 words poppler reads that PDFKit skips)
 - **p946** layout vs reading order: 113 pages, identical characters (15 page(s) differ only in word spacing)
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (1 such occurrences; 28836 words poppler reads that PDFKit skips; PDFKit blind on page(s) [70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 113])
+    - HTML snapshot `p946-html`: every word of every page occurs in the HTML text, 17 page(s) excepted
+        - p. 1 accepted: ['chinese'] — Language links on the first page (IRS.gov/Chinese and others) are not part of the HTML publication text
+        - p. 70 accepted: ['qtr'] — MACRS Percentage Table Guide (Chart 1): the HTML publication carries the chart as an image
+        - p. 98 accepted: ['unery'] — Appendix B introduction: the reading-order text interleaves this page's three columns ("un-" joined to "ery"); every other word is in the HTML
+        - p. 99 accepted: ['accepting', 'activated', 'airframes', 'arithmetic', 'automating', 'auxiliary'] — Appendix B, Tables B-1 and B-2 (class lives and recovery periods): the HTML publication carries the tables as images with separate text descriptions
+        - p. 100 accepted: ['abandoning', 'animal', 'apiaries', 'baskets', 'beets', 'beneficiation'] — Appendix B, Tables B-1 and B-2 (class lives and recovery periods): the HTML publication carries the tables as images with separate text descriptions
+        - p. 101 accepted: ['adhesion', 'apparel', 'backing', 'batting', 'belts', 'bleach'] — Appendix B, Tables B-1 and B-2 (class lives and recovery periods): the HTML publication carries the tables as images with separate text descriptions
+        - p. 102 accepted: ['accessory', 'adapted', 'allied', 'apparel', 'automotive', 'bags'] — Appendix B, Tables B-1 and B-2 (class lives and recovery periods): the HTML publication carries the tables as images with separate text descriptions
+        - p. 103 accepted: ['adapted', 'airborne', 'alloying', 'amplitude', 'apparatus', 'applications'] — Appendix B, Tables B-1 and B-2 (class lives and recovery periods): the HTML publication carries the tables as images with separate text descriptions
+        - p. 104 accepted: ['adapted', 'aerospace', 'airborne', 'art', 'assembly', 'basins'] — Appendix B, Tables B-1 and B-2 (class lives and recovery periods): the HTML publication carries the tables as images with separate text descriptions
+        - p. 105 accepted: ['aeronautics', 'airworthiness', 'board', 'charged', 'classification', 'coal'] — Appendix B, Tables B-1 and B-2 (class lives and recovery periods): the HTML publication carries the tables as images with separate text descriptions
+        - p. 106 accepted: ['aerial', 'amplification', 'antenna', 'antennas', 'apparatus', 'booths'] — Appendix B, Tables B-1 and B-2 (class lives and recovery periods): the HTML publication carries the tables as images with separate text descriptions
+        - p. 107 accepted: ['amplifiers', 'analyzers', 'antennas', 'assemblies', 'attendant', 'boilers'] — Appendix B, Tables B-1 and B-2 (class lives and recovery periods): the HTML publication carries the tables as images with separate text descriptions
+        - p. 108 accepted: ['alleys', 'alternate', 'amusements', 'appurtenances', 'attraction', 'attractions'] — Appendix B, Tables B-1 and B-2 (class lives and recovery periods): the HTML publication carries the tables as images with separate text descriptions
+        - p. 109 accepted: ['atpaid', 'automothe', 'availared', 'biles', 'paror', 'tached'] — Appendix B, Tables B-1 and B-2 (class lives and recovery periods): the HTML publication carries the tables as images with separate text descriptions
+        - p. 110 accepted: ['deproperty', 'earunits', 'ful', 'lier', 'preciation', 'propand'] — Appendix B, Tables B-1 and B-2 (class lives and recovery periods): the HTML publication carries the tables as images with separate text descriptions
+        - p. 111 accepted: ['develop', 'entries', 'ideas', 'let', 'reach'] — Index request note ("To help us develop a more useful index ...") printed above the PDF index; the HTML publication has no index
+        - p. 113 accepted: ['594sp', 'aliens', 'appeal', 'bankruptcy', 'canada', 'care'] — Back cover list of tax publications for business taxpayers, absent from the HTML publication
 - **rp-2024-40** layout vs reading order: 27 pages, identical characters (2 page(s) differ only in word spacing)
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (1 such occurrences; 2 words poppler reads that PDFKit skips)

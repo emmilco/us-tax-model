@@ -1177,6 +1177,19 @@
       "revision_locator": "PDF page 1, \"2025 Returns\""
     },
     {
+      "id": "p463-html",
+      "url": "https://www.irs.gov/publications/p463",
+      "format": "html",
+      "resolved_url": "https://www.irs.gov/publications/p463",
+      "fetched_at": "2026-10-19T17:17:19.574595+00:00",
+      "file": "p463-html.html",
+      "sha256": "2027786a2817e369c6b1c4904c337faeb535c25bf2eb75864aacad664a031352",
+      "revision": null,
+      "revision_status": "Pending inspection of archived document; not cleared for encoding",
+      "text_file": "p463-html.txt",
+      "text_sha256": "b10158354ffbce8c7ddabbfee1bc4b98f08c56f61e825acd83487808b9710253"
+    },
+    {
       "id": "p501",
       "url": "https://www.irs.gov/pub/irs-pdf/p501.pdf",
       "resolved_url": "https://www.irs.gov/pub/irs-pdf/p501.pdf",
@@ -1321,6 +1334,19 @@
       "pages_sha256": "43d3977b4363d5d4c8bf69ca2b806bec0f204c82f61a8398f49167c96e3f22cb",
       "extract_tool_version": "0.10",
       "revision_locator": "PDF page 1, \"2025 Returns\""
+    },
+    {
+      "id": "p946-html",
+      "url": "https://www.irs.gov/publications/p946",
+      "format": "html",
+      "resolved_url": "https://www.irs.gov/publications/p946",
+      "fetched_at": "2026-10-19T17:17:18.498206+00:00",
+      "file": "p946-html.html",
+      "sha256": "b5ac23e5cbf6cdfb516cdbb1bef4a0bdf54875855359b01e5d9adb4fbce941ec",
+      "revision": null,
+      "revision_status": "Pending inspection of archived document; not cleared for encoding",
+      "text_file": "p946-html.txt",
+      "text_sha256": "4a7262659b02732b0051f03745d3f96d7d4fdfe1d6632a39482aed0c0e05926f"
     },
     {
       "id": "rp-2024-40",

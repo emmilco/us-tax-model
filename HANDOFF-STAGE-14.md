@@ -54,3 +54,102 @@ The estimated tax penalty is out of scope by spec (the tool says the IRS will
 figure it). Net losses are common enough that the loss paths (Schedule SE, the
 earned-income readers) are part of the build, not an edge case. These counts are
 for 2020 and 2023; the 2025 shares are assumed similar.
+
+## Owner rulings this stage
+
+- **Prevalence proxy:** dollar shares from Table 2 stand in for per-line counts;
+  the confirmed slice is unchanged.
+- **Extraction check:** a PDFKit word equal to a poppler-only number plus a
+  poppler-only digit counts as the same text (footnote markers in the car
+  depreciation tables of Pubs. 463 and 946; BUG-0050, `BUG_INVENTORY.md` now has
+  50 entries).
+- **Form 4562 depth (option 3 of 3):** Part I (section 179: the dollar limit, the
+  business income limit and the carryover), Part II (the special allowance, 100%
+  for property acquired after January 19, 2025 and 40% before), Part III (MACRS
+  general depreciation for 2025 property with the Pub. 946 tables and the half-year
+  and mid-quarter conventions), and Part V (listed property, including vehicles on
+  actual expenses and the 2025 passenger automobile limits). The limits are printed
+  in `i4562` ("Limits for passenger automobiles": $12,200, or $20,200 with the special
+  allowance, then $19,600) and `p463` ($7,060 for later years), so no further source
+  is needed for them. - **Assets placed in service before 2025 (owner):** derived per asset, not entered
+  as an amount: basis, date placed in service, property class, convention and the
+  part already expensed (section 179, special allowance) are asked, and the 2025
+  deduction is figured from the Pub. 946 tables (Form 4562 line 17, or Schedule C
+  line 13 directly when no Form 4562 is required). Assets outside the tables (ADS,
+  real property, property placed in service before 1987) are refused.
+
+- **Prior-year carryovers (owner):** the section 179 carryover (Form 4562 line 10,
+  from 2024 Form 4562 line 13) and a qualified business loss carryforward (Form 8995
+  line 3) are taken as the amounts printed on last year's return, cited to that line,
+  as the capital loss carryover already is.
+- **Form 7206 (owner):** built, for more than one source of self-employment income
+  and for qualified long-term care premiums with their age limits; Form 2555 and a
+  Marketplace plan with the premium tax credit (Pub. 974) are refused.
+- **Recovery class (owner):** Pub. 946's Table of Class Lives and Recovery Periods
+  (Appendix B) is encoded, so an asset is classified from its asset class.
+- **Second source for Pub. 946 Appendix B (owner):** a second independent
+  transcription by a fixed-prompt `claude -p` run (the `tools/transcription`
+  isolation), compared row by row with the project's parse of pp. 99 to 110, every
+  difference settled against the PDF. The HTML twin carries Tables B-1 and B-2 as
+  images, and their IRS text descriptions (`/media/168781`, `/media/168786`) return
+  404, so no IRS rendering is available as a second source.
+- **HTML twins (owner):** `p946-html` and `p463-html` are archived; pages the HTML
+  cannot reproduce are listed in `tools/extraction/exceptions.json`. The HTML check
+  ignores numbers, so the numeric tables get their second check elsewhere: MACRS
+  rates against rates derived from the method and convention, the car limits
+  between `i4562` and `p463`, Appendix B by the second transcription.
+- **Settled by the text and earlier rulings:** line 16 covers SEP (Pub. 560, Deduction
+  Worksheet for Self-Employed) and SIMPLE (Pub. 560 chapter 3); qualified plans with
+  elective deferrals are refused. A vehicle switched from the standard mileage rate to
+  actual expenses is refused. Form 461 is refused when it applies.
+- **Build order (owner):** straight through, as in Stage 13: the whole premise check,
+  Form 4562 included, then the build, then the reviews.
+
+## Premise check against the archived text (in progress)
+
+Each item was read in the archived 2025 text named; nothing is encoded yet.
+
+**Confirmed amounts.** Schedule SE: 92.35%, the $400 filing floor, the $176,100
+wage base (f1040sse lines 4a, 4c, 7). Standard mileage rate 70 cents (n-25-05 sec. 3;
+i1040sc What's New and line 9). Simplified home office $5 per square foot, at most
+300 (i1040sc Simplified Method Worksheet). Form 8995 thresholds $197,300 / $394,600
+(f8995). Schedule 1 line 17 has its own worksheet in i1040gi, with Form 7206 only
+under the exceptions of that line.
+
+**Schedule C (i1040sc) items that need a screen or a refusal:**
+- Line G "No" (passive activity, Form 8582) and line 32b (amounts not at risk,
+  Form 6198).
+- A loss on line 31 and Form 461 (excess business loss) above its threshold.
+- Statutory employee (W-2 box 13): its own Schedule C, kept off Schedule SE line 2.
+- Notary public fees (kept off Schedule SE).
+- Accounting method other than cash; inventory kept under a method other than
+  cost; a section 481(a) adjustment; capitalization under section 263A.
+- Business interest subject to Form 8990 (not a small business taxpayer); line 12
+  depletion; line 27a (Form 7205); Form 8941, 5884, 8844, 8932, 8994 credit
+  reductions of lines 14 and 26.
+- Line 6 recapture when listed property drops to 50% business use or less
+  (Form 4797 Part IV).
+- Line 9: actual expenses are required with five or more vehicles at once; the
+  standard rate only if used in the vehicle's first year (owned) or for the whole
+  lease; leased-vehicle inclusion amounts (line 20a, Pub. 463).
+- Line 24b: 50% generally, 80% under DOT hours-of-service limits; standard meal
+  allowance rates by locality (GSA) are not in the archive.
+- Line 30, simplified method: gross income limitation (worksheet line 1 with the
+  A to E computation when Form 8949 or 4797 gains or losses relate to the business),
+  daycare reduction (line 3b worksheet), part-year or changed area (monthly
+  average, under 15 days counts zero), shared use, more than one home (Form 8829
+  for the others), actual expenses (Form 8829) refused.
+- Qualified joint venture and community-property business (both spouses on a
+  joint return; each files a Schedule C and SE for their share).
+- Chapter 11 debtors, Form 1040-SS, extraterritorial income (Form 8873), installment
+  sales of timeshares and lots (section 453(l)).
+
+**Schedule SE (i1040sse) items that need a screen or a refusal:** church employee
+income ($108.28 floor, lines 5a and 5b), ministers and Forms 4361/4029, partnership
+earnings (box 14 code A), Conservation Reserve Program payments (line 1b),
+farm income, the optional methods (Part II), community income on separate returns,
+foreign social security agreements and exempt income abroad. On a joint return each
+spouse with self-employment income files their own Schedule SE; the combined tax
+goes on Schedule 2 line 4. Line 8 coordinates with each person's W-2 social
+security wages (and tips) toward the wage base; the 0.9% Additional Medicare Tax
+on self-employment income is figured on Form 8959 Part II.
