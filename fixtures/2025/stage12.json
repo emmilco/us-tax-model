@@ -5814,7 +5814,8 @@
       "inputs": {
         "f1040.status": "mfj",
         "$person": [
-          "taxpayer"
+          "taxpayer",
+          "spouse"
         ],
         "person[taxpayer].role": "taxpayer",
         "$f8889@person[taxpayer]": [],
@@ -5933,7 +5934,20 @@
         "person[taxpayer].otjob[ot0].flsa": true,
         "person[taxpayer].otjob[ot0].special_rule": false,
         "person[taxpayer].otjob[ot0].method": "premium",
-        "person[taxpayer].otjob[ot0].statement": 3000000
+        "person[taxpayer].otjob[ot0].statement": 3000000,
+        "person[spouse].role": "spouse",
+        "person[spouse].rrta": false,
+        "person[spouse].age65": false,
+        "person[spouse].blind": false,
+        "person[spouse].tin": true,
+        "person[spouse].work_ssn": true,
+        "person[spouse].born_before_2001": true,
+        "person[spouse].born_after_1960": true,
+        "person[spouse].educator_expenses": 0,
+        "$w2@person[spouse]": [],
+        "$tipjob@person[spouse]": [],
+        "$otjob@person[spouse]": [],
+        "$f8889@person[spouse]": []
       },
       "expect": {
         "s1a.line9": {
@@ -5972,7 +5986,8 @@
       "inputs": {
         "f1040.status": "mfj",
         "$person": [
-          "taxpayer"
+          "taxpayer",
+          "spouse"
         ],
         "person[taxpayer].role": "taxpayer",
         "$f8889@person[taxpayer]": [],
@@ -6087,7 +6102,18 @@
         "carloan[VIN0].requirements": true,
         "carloan[VIN0].vehicle": true,
         "carloan[VIN0].interest": 500000,
-        "carloan[VIN0].mixed": false
+        "carloan[VIN0].mixed": false,
+        "person[spouse].role": "spouse",
+        "person[spouse].rrta": false,
+        "person[spouse].age65": false,
+        "person[spouse].blind": false,
+        "person[spouse].tin": true,
+        "person[spouse].work_ssn": true,
+        "person[spouse].born_before_2001": true,
+        "person[spouse].born_after_1960": true,
+        "person[spouse].educator_expenses": 0,
+        "$w2@person[spouse]": [],
+        "$f8889@person[spouse]": []
       },
       "expect": {
         "s1a.line26": {
@@ -6114,7 +6140,8 @@
       "inputs": {
         "f1040.status": "mfj",
         "$person": [
-          "taxpayer"
+          "taxpayer",
+          "spouse"
         ],
         "person[taxpayer].role": "taxpayer",
         "$f8889@person[taxpayer]": [],
@@ -6222,7 +6249,19 @@
         "s1a.tips": false,
         "s1a.overtime": false,
         "s1a.carloan": false,
-        "person[taxpayer].died_before_65": false
+        "person[taxpayer].died_before_65": false,
+        "person[spouse].role": "spouse",
+        "person[spouse].rrta": false,
+        "person[spouse].age65": false,
+        "person[spouse].blind": false,
+        "person[spouse].died_before_65": false,
+        "person[spouse].tin": true,
+        "person[spouse].work_ssn": true,
+        "person[spouse].born_before_2001": true,
+        "person[spouse].born_after_1960": true,
+        "person[spouse].educator_expenses": 0,
+        "$w2@person[spouse]": [],
+        "$f8889@person[spouse]": []
       },
       "expect": {
         "s1a.line32": {
@@ -6674,12 +6713,12 @@
       }
     },
     {
-      "id": "stage12.refuse.spouse_senior",
+      "id": "stage12.single.spouse_boxes_answer",
       "covers": [
         "s1a"
       ],
       "evidence": "synthetic refusal regression",
-      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: born before January 2, 1961, with a spouse's standard-deduction boxes claimed (sa.spouse_extra): line 36b refuses, so line 37 refuses.",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: born before January 2, 1961, with a spouse's standard-deduction boxes claimed (sa.spouse_extra): line 36b refuses, so line 37 refuses. Stage 13: a spouses boxes are refused only on a married filing separately return, and line 36b is for a spouse on a joint return, so on this single return line 36b is $0 and line 37 equals line 36a (unchanged). The case formerly expected a refusal; renamed from stage12.refuse.spouse_senior. Joint cases with a spouse born before 1961 are in stage13.json.",
       "inputs": {
         "f1040.status": "single",
         "$person": [
@@ -6798,18 +6837,13 @@
           "kind": "money",
           "cents": 600000
         },
+        "s1a.line36b": {
+          "kind": "money",
+          "cents": 0
+        },
         "s1a.line37": {
-          "kind": "refusal",
-          "gate": "sa.spouse_extra",
-          "form": "Schedule 1-A, line 36b (a spouse born before January 2, 1961, on a joint return)",
-          "remedy": "A spouse's age and blindness boxes, and the spouse's enhanced deduction for seniors, are outside this tool.",
-          "cite": {
-            "doc": "f1040s1a",
-            "locator": "Schedule 1-A (2025), line 36b",
-            "revision": "2025; created 2025-11-04",
-            "snapshot": "64f97b38ff4218e2f188fd55a8aab7043556687487c82bbefe0b6dd1a956ecd4",
-            "tax_year": 2025
-          }
+          "kind": "money",
+          "cents": 600000
         }
       }
     },

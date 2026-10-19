@@ -2030,7 +2030,8 @@
         "div.basis_reconciled": true,
         "qbi.dividends": 0,
         "$person": [
-          "taxpayer"
+          "taxpayer",
+          "spouse"
         ],
         "person[taxpayer].role": "taxpayer",
         "$f8889@person[taxpayer]": [],
@@ -2076,7 +2077,15 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "person[spouse].role": "spouse",
+        "person[spouse].age65": false,
+        "person[spouse].blind": false,
+        "person[spouse].tin": true,
+        "person[spouse].work_ssn": true,
+        "person[spouse].educator_expenses": 0,
+        "$w2@person[spouse]": [],
+        "$f8889@person[spouse]": []
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2183,7 +2192,8 @@
         "div.basis_reconciled": true,
         "qbi.dividends": 0,
         "$person": [
-          "taxpayer"
+          "taxpayer",
+          "spouse"
         ],
         "person[taxpayer].role": "taxpayer",
         "$f8889@person[taxpayer]": [],
@@ -2229,7 +2239,15 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "person[spouse].role": "spouse",
+        "person[spouse].age65": false,
+        "person[spouse].blind": false,
+        "person[spouse].tin": true,
+        "person[spouse].work_ssn": true,
+        "person[spouse].educator_expenses": 0,
+        "$w2@person[spouse]": [],
+        "$f8889@person[spouse]": []
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2336,7 +2354,8 @@
         "div.basis_reconciled": true,
         "qbi.dividends": 0,
         "$person": [
-          "taxpayer"
+          "taxpayer",
+          "spouse"
         ],
         "person[taxpayer].role": "taxpayer",
         "$f8889@person[taxpayer]": [],
@@ -2382,7 +2401,15 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "person[spouse].role": "spouse",
+        "person[spouse].age65": false,
+        "person[spouse].blind": false,
+        "person[spouse].tin": true,
+        "person[spouse].work_ssn": true,
+        "person[spouse].educator_expenses": 0,
+        "$w2@person[spouse]": [],
+        "$f8889@person[spouse]": []
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2489,7 +2516,8 @@
         "div.basis_reconciled": true,
         "qbi.dividends": 0,
         "$person": [
-          "taxpayer"
+          "taxpayer",
+          "spouse"
         ],
         "person[taxpayer].role": "taxpayer",
         "$f8889@person[taxpayer]": [],
@@ -2535,7 +2563,15 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "person[spouse].role": "spouse",
+        "person[spouse].age65": false,
+        "person[spouse].blind": false,
+        "person[spouse].tin": true,
+        "person[spouse].work_ssn": true,
+        "person[spouse].educator_expenses": 0,
+        "$w2@person[spouse]": [],
+        "$f8889@person[spouse]": []
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2642,7 +2678,8 @@
         "div.basis_reconciled": true,
         "qbi.dividends": 0,
         "$person": [
-          "taxpayer"
+          "taxpayer",
+          "spouse"
         ],
         "person[taxpayer].role": "taxpayer",
         "$f8889@person[taxpayer]": [],
@@ -2688,7 +2725,15 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "person[spouse].role": "spouse",
+        "person[spouse].age65": false,
+        "person[spouse].blind": false,
+        "person[spouse].tin": true,
+        "person[spouse].work_ssn": true,
+        "person[spouse].educator_expenses": 0,
+        "$w2@person[spouse]": [],
+        "$f8889@person[spouse]": []
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4741,7 +4786,8 @@
         "div.basis_reconciled": true,
         "qbi.dividends": 0,
         "$person": [
-          "taxpayer"
+          "taxpayer",
+          "spouse"
         ],
         "person[taxpayer].role": "taxpayer",
         "$f8889@person[taxpayer]": [],
@@ -4787,7 +4833,15 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "person[spouse].role": "spouse",
+        "person[spouse].age65": false,
+        "person[spouse].blind": false,
+        "person[spouse].tin": true,
+        "person[spouse].work_ssn": true,
+        "person[spouse].educator_expenses": 0,
+        "$w2@person[spouse]": [],
+        "$f8889@person[spouse]": []
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -6566,7 +6620,8 @@
         "div.basis_reconciled": true,
         "qbi.dividends": 0,
         "$person": [
-          "taxpayer"
+          "taxpayer",
+          "spouse"
         ],
         "person[taxpayer].role": "taxpayer",
         "$f8889@person[taxpayer]": [],
@@ -6612,7 +6667,15 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "person[spouse].role": "spouse",
+        "person[spouse].age65": false,
+        "person[spouse].blind": false,
+        "person[spouse].tin": true,
+        "person[spouse].work_ssn": true,
+        "person[spouse].educator_expenses": 0,
+        "$w2@person[spouse]": [],
+        "$f8889@person[spouse]": []
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -8385,7 +8448,8 @@
         "div.basis_reconciled": true,
         "qbi.dividends": 0,
         "$person": [
-          "taxpayer"
+          "taxpayer",
+          "spouse"
         ],
         "person[taxpayer].role": "taxpayer",
         "$f8889@person[taxpayer]": [],
@@ -8431,7 +8495,15 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "person[spouse].role": "spouse",
+        "person[spouse].age65": false,
+        "person[spouse].blind": false,
+        "person[spouse].tin": true,
+        "person[spouse].work_ssn": true,
+        "person[spouse].educator_expenses": 0,
+        "$w2@person[spouse]": [],
+        "$f8889@person[spouse]": []
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -8538,7 +8610,8 @@
         "div.basis_reconciled": true,
         "qbi.dividends": 0,
         "$person": [
-          "taxpayer"
+          "taxpayer",
+          "spouse"
         ],
         "person[taxpayer].role": "taxpayer",
         "$f8889@person[taxpayer]": [],
@@ -8584,7 +8657,15 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "person[spouse].role": "spouse",
+        "person[spouse].age65": false,
+        "person[spouse].blind": false,
+        "person[spouse].tin": true,
+        "person[spouse].work_ssn": true,
+        "person[spouse].educator_expenses": 0,
+        "$w2@person[spouse]": [],
+        "$f8889@person[spouse]": []
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -8691,7 +8772,8 @@
         "div.basis_reconciled": true,
         "qbi.dividends": 0,
         "$person": [
-          "taxpayer"
+          "taxpayer",
+          "spouse"
         ],
         "person[taxpayer].role": "taxpayer",
         "$f8889@person[taxpayer]": [],
@@ -8737,7 +8819,15 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "person[spouse].role": "spouse",
+        "person[spouse].age65": false,
+        "person[spouse].blind": false,
+        "person[spouse].tin": true,
+        "person[spouse].work_ssn": true,
+        "person[spouse].educator_expenses": 0,
+        "$w2@person[spouse]": [],
+        "$f8889@person[spouse]": []
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -8844,7 +8934,8 @@
         "div.basis_reconciled": true,
         "qbi.dividends": 0,
         "$person": [
-          "taxpayer"
+          "taxpayer",
+          "spouse"
         ],
         "person[taxpayer].role": "taxpayer",
         "$f8889@person[taxpayer]": [],
@@ -8890,7 +8981,15 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "person[spouse].role": "spouse",
+        "person[spouse].age65": false,
+        "person[spouse].blind": false,
+        "person[spouse].tin": true,
+        "person[spouse].work_ssn": true,
+        "person[spouse].educator_expenses": 0,
+        "$w2@person[spouse]": [],
+        "$f8889@person[spouse]": []
       },
       "expect": {
         "f1040.gate.qdcg_applies": {

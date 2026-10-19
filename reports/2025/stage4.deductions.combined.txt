@@ -466,6 +466,20 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
 
 == Household facts for dependents and head of household ==
+  (helper) Number of entries for you
+      = 1
+      cite: [f1040] Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial"; Filing Status (2025; created 2025-09-05; 3d31c226)
+      note: confirmed roster $person: taxpayer
+  (helper) Number of entries for your spouse
+      = 0
+      cite: [f1040] Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial"; Filing Status (2025; created 2025-09-05; 3d31c226)
+      note: confirmed roster $person: taxpayer
+  (helper) One entry for you, and one for your spouse exactly when filing jointly
+      = true
+      cite: [f1040] Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial"; Filing Status (2025; created 2025-09-05; 3d31c226)
+  (gate) The people entered do not match the filing status
+      = false
+      cite: [f1040] Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial"; Filing Status (2025; created 2025-09-05; 3d31c226)
   (gate) Head of household checked without meeting its tests
       = false
       cite: [i1040gi] p. 14, Head of Household (2025; printed date 2026-02-25; 482e9c48)
@@ -522,17 +536,10 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
   10  Combine lines 1 through 7 and 9. This is your additional income. Enter here and on Form 1040, 1040-SR, or 1040-NR, line 8
       = $0
       cite: [f1040s1] Schedule 1 (2025), line 10 (lines 1 to 6, 8a to 8z and 9 are outside this tool and refused at Form 1040 line 8 by scope.schedule1) (2025; created 2025-07-25; 8dafec71)
-  (helper) Qualified educator expenses you paid in 2025
-      = $0
-      cite: [i1040gi] p. 93, Schedule 1, line 11, Qualified expenses and 'You must reduce your qualified expenses by the following amounts' (2025; printed date 2026-02-25; 482e9c48)
-      note: confirmed roster $person: taxpayer
-  (helper) Any qualified educator expenses
-      = false
-      cite: [i1040gi] p. 93, Schedule 1, line 11 (2025; printed date 2026-02-25; 482e9c48)
   11  Educator expenses
       = $0
-      cite: [f1040s1] Schedule 1 (2025), line 11 (2025; created 2025-07-25; 8dafec71)
-      note: taken: {"eq":["s1.has_educator_expenses",{"const":false}],"op":"test"}
+      cite: [f1040s1] Schedule 1 (2025), line 11; i1040gi p. 93, "If you and your spouse are filing jointly and both of you were eligible educators, the maximum deduction is $600. However, neither spouse can deduct more than $300 of their qualified expenses" (2025; created 2025-07-25; 8dafec71)
+      note: confirmed roster $person: taxpayer
   13  Health savings account deduction. Attach Form 8889
       = $0
       cite: [f1040s1] Schedule 1 (2025), line 13; i8889 p. 4, "Combine the amounts on line 13 of both Forms 8889 and enter this amount on Schedule 1 (Form 1040), line 13" (2025; created 2025-07-25; 8dafec71)
@@ -573,9 +580,17 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       = $0
       cite: [f1040s1a] Schedule 1-A (2025), line 36a (2025; created 2025-11-04; 64f97b38)
       note: taken: {"eq":["sa.age65",{"const":false}],"op":"test"}
+  (helper) Your spouse, if born before January 2, 1961, with a valid SSN
+      = 0
+      cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if" and "If you are married filing jointly, the spouse who is claiming the enhanced deduction for seniors must have a valid SSN" (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
+  (helper) Your spouse was born before January 2, 1961, and has a valid SSN
+      = false
+      cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if" and "If you are married filing jointly, the spouse who is claiming the enhanced deduction for seniors must have a valid SSN" (2025; printed date 2026-02-25; 482e9c48)
   36b If you are married filing jointly, your spouse has a valid social security number (see instructions), and your spouse was born before January 2, 1961, enter the amount from line 35
       = $0
-      cite: [f1040s1a] Schedule 1-A (2025), line 36b (2025; created 2025-11-04; 64f97b38)
+      cite: [f1040s1a] Schedule 1-A (2025), line 36b; i1040gi p. 110, "The maximum amount of the enhanced deduction for seniors is $6,000 per person" (2025; created 2025-11-04; 64f97b38)
+      note: taken: {"eq":["s1a.spouse_senior",{"const":false}],"op":"test"}
   37  Enhanced deduction for seniors. Add lines 36a and 36b
       = $0
       cite: [f1040s1a] Schedule 1-A (2025), line 37 (2025; created 2025-11-04; 64f97b38)
@@ -604,9 +619,9 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
   1   Foreign tax credit
       = $0
       cite: [f1040s3] Schedule 3 (2025), Part I line 1 (2025; created 2025-11-17; 008cfd3f)
-  (gate) Married filing status requires unsupported per-spouse interview
+  (gate) Married filing separately
       = false
-      cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 14, Married Filing Separately (2025; printed date 2026-02-25; 482e9c48)
 
 == Schedule A — supported itemized deductions and standard comparison ==
   (helper) Any casualty or theft loss (including a disaster loss added to the standard deduction); a deduction from the Schedule A line 16 list; a foreign tax or generation-skipping tax deduction; mortgage interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds not all used to buy, build or improve the home, or debt over the limit); or the sales-tax election?
@@ -621,21 +636,14 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
   (helper) Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)
       = false
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  (helper) Claiming any age/blindness standard-deduction boxes for a spouse?
+  (gate) Married filing separately and claiming age or blindness boxes for your spouse
       = false
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+      cite: [i1040gi] p. 33, Line 12d, "If your filing status is married filing separately and your spouse was born before January 2, 1961, or was blind at the end of 2025, you can check the appropriate box(es) on line 12d if your spouse had no income, isn't filing a return, and can't be claimed as a dependent on another person's return" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Your entry, if the answer is yes
       = 0
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
       note: confirmed roster $person: taxpayer
   (helper) Were you born before January 2, 1961?
-      = false
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  (helper) Your entry, if the answer is yes
-      = 0
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-      note: confirmed roster $person: taxpayer
-  (helper) Are you blind under the standard-deduction instructions?
       = false
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
   (helper) Elect to itemize even if the standard deduction is larger?
@@ -755,14 +763,23 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
   (helper) Year parameter sa.standard_base
       = $15,750
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  (helper) Additional standard deduction for age65
+  (helper) Year parameter sa.standard_extra
+      = $2,000
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Number of boxes checked for born before January 2, 1961 (you, and your spouse if filing jointly)
+      = 0
+      cite: [i1040gi] p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; pp. 34–35, Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were Blind (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
+  (helper) Additional standard deduction for each box checked for age
       = $0
-      cite: [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart (2025; printed date 2026-02-25; 482e9c48)
-      note: taken: {"eq":["sa.age65",{"const":false}],"op":"test"}
-  (helper) Additional standard deduction for blind
+      cite: [i1040gi] p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; pp. 34–35, Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were Blind (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Number of boxes checked for blindness (you, and your spouse if filing jointly)
+      = 0
+      cite: [i1040gi] p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; pp. 34–35, Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were Blind (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
+  (helper) Additional standard deduction for each box checked for blindness
       = $0
-      cite: [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart (2025; printed date 2026-02-25; 482e9c48)
-      note: taken: {"eq":["sa.blind",{"const":false}],"op":"test"}
+      cite: [i1040gi] p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; pp. 34–35, Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were Blind (2025; printed date 2026-02-25; 482e9c48)
   (helper) Add sa.standardbase, sa.extra_age65, sa.extra_blind
       = $15,750
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
@@ -1018,17 +1035,13 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   s1.line7: chose $0 (guard 1)
       not taken: guard 0 = false
-  s1.line11: chose $0 (guard 1)
+  person[taxpayer].educator_deduction: chose $0 (guard 1)
       not taken: guard 0 = false
   sli.deduction: chose $0 (guard 1)
       not taken: guard 0 = false
   s1.sli.deduction: chose $0 (guard 1)
       not taken: guard 0 = false
   sa.saltlimit: chose $40,000 (guard 1)
-      not taken: guard 0 = false
-  sa.extra_age65: chose $0 (guard 1)
-      not taken: guard 0 = false
-  sa.extra_blind: chose $0 (guard 1)
       not taken: guard 0 = false
   sa.standard: chose $15,750 (guard 1)
       not taken: guard 0 = false
@@ -1039,6 +1052,7 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   s1a.line21: chose $0 (guard 0)
   s1a.line30: chose $0 (guard 0)
   s1a.line36a: chose $0 (guard 0)
+  s1a.line36b: chose $0 (guard 0)
   qbi.deduction: chose $0 (guard 1)
       not taken: guard 0 = false
   f1040.qbi.deduction: chose $0 (guard 1)
@@ -1056,16 +1070,24 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
 
 Collection entries and derivations:
+  person[taxpayer].role = taxpayer
+    cite: f1040, Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial" (2025; created 2025-09-05; 3d31c226)
+  person[taxpayer].one = 1
+    cite: f1040, Form 1040 (2025), page 1, one entry for you and, if joint return, one for your spouse (2025; created 2025-09-05; 3d31c226)
   person[taxpayer].w2[a].box1 = $98,000
     cite: iw2w3, p. 17, box 1 (2025; printed date 2025-02-19; bfecbc99)
   person[taxpayer].box1 = $98,000
     cite: f1040, Form 1040 (2025), line 1a (2025; created 2025-09-05; 3d31c226)
   interest[bank].amount = $2,000
     cite: i1040sb, pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
-  person[taxpayer].role = taxpayer
-    cite: f1040, Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial" (2025; created 2025-09-05; 3d31c226)
   person[taxpayer].educator_expenses = $0
     cite: i1040gi, p. 93, Schedule 1, line 11, Qualified expenses and 'You must reduce your qualified expenses by the following amounts' (2025; printed date 2026-02-25; 482e9c48)
+  person[taxpayer].has_educator_expenses = false
+    cite: i1040gi, p. 93, Schedule 1, line 11 (2025; printed date 2026-02-25; 482e9c48)
+  person[taxpayer].zero = $0
+    cite: i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+  person[taxpayer].educator_deduction = $0
+    cite: i1040gi, p. 93, Schedule 1, line 11, "If you were an eligible educator in 2025, you can deduct on line 11 up to $300 of qualified expenses you paid in 2025"; "If you and your spouse are filing jointly and both of you were eligible educators, the maximum deduction is $600. However, neither spouse can deduct more than $300 of their qualified expenses" (2025; printed date 2026-02-25; 482e9c48)
   person[taxpayer].hsa_forms = 0
     cite: i8889, p. 4, Name and social security number (SSN), "complete a separate Form 8889 for each of you" (2025; da6f2f58)
   person[taxpayer].hsa_repeated = false
@@ -1096,9 +1118,9 @@ Collection entries and derivations:
     cite: f8959, Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; 13e64004)
   person[taxpayer].medicare6 = $2,900
     cite: f8959, Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; 13e64004)
-  s3.married: test(f1040.status = single; "mfj" = mfj; f1040.status = single; "mfs" = mfs)
-  scope.s3.married: test(f1040.status = single; "mfj" = mfj; f1040.status = single; "mfs" = mfs)
-  scope.ready: test(scope.schedule1 = false; scope.credits = false; scope.other_income = false; scope.other_line16 = false; s3.married = false; true = true; true = true)
+  s3.mfs: test(f1040.status = single; "mfs" = mfs)
+  scope.s3.mfs: test(f1040.status = single; "mfs" = mfs)
+  scope.ready: test(scope.schedule1 = false; scope.credits = false; scope.other_income = false; scope.other_line16 = false; s3.mfs = false; true = true; true = true)
   sd.count: sum_over(sd.other_forms = false; sd.carryover = false)
   sd.screen: test(sd.count = 0; 0 = 0)
   sd.line1a.h: sum_over(sd.screen = false)
@@ -1132,8 +1154,14 @@ Collection entries and derivations:
   sd.to1040: choose(sd.has_loss = false; true = true; sd.has_loss = false; false = false; sd.line16 = $0)
   f1040.sd.to1040: choose(sd.has_loss = false; true = true; sd.has_loss = false; false = false; sd.line16 = $0)
   f1040.line7a: copy(sd.to1040 = $0)
+  person[taxpayer].one: param(#person.one = 1)
+  household.taxpayers: sum_over(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].one = 1)
+  household.spouses: sum_over(person[taxpayer].role = taxpayer; "spouse" = spouse)
+  household.roster_ok: test(f1040.status = single; "mfj" = mfj; f1040.status = single; "mfj" = mfj; household.taxpayers = 1; 1 = 1; household.spouses = 0; 0 = 0)
+  household.roster_bad: test(household.roster_ok = true; false = false)
+  f1040.household.roster_bad: test(household.roster_ok = true; false = false)
   person[taxpayer].box1: sum_over(person[taxpayer].w2[a].box1 = $98,000)
-  f1040.line1a: sum_over(person[taxpayer].box1 = $98,000)
+  f1040.line1a: sum_over(household.roster_bad = false; person[taxpayer].box1 = $98,000)
   f1040.line1z: copy(f1040.line1a = $98,000)
   sb.line2: sum_over(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; interest[bank].amount = $2,000)
   sb.zero: param(#sales.zero = $0)
@@ -1157,9 +1185,10 @@ Collection entries and derivations:
   f1040.s1.line10: copy(s1.line7 = $0)
   f1040.line8: copy(scope.schedule1 = false; scope.other_income = false; s1.line10 = $0)
   f1040.line9: sum(f1040.line1z = $98,000; f1040.line2b = $2,000; f1040.line3b = $0; f1040.line4b = $0; f1040.line5b = $0; f1040.line6b = $0; f1040.line7a = $0; f1040.line8 = $0)
-  s1.educator_expenses: sum_over(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].educator_expenses = $0)
-  s1.has_educator_expenses: test(s1.educator_expenses = $0; #sales.zero = $0)
-  s1.line11: choose(s1.has_educator_expenses = false; true = true; s1.has_educator_expenses = false; false = false; s1.zero = $0)
+  person[taxpayer].has_educator_expenses: test(person[taxpayer].educator_expenses = $0; #sales.zero = $0)
+  person[taxpayer].zero: param(#ss.zero = $0)
+  person[taxpayer].educator_deduction: choose(person[taxpayer].has_educator_expenses = false; true = true; person[taxpayer].has_educator_expenses = false; false = false; person[taxpayer].zero = $0)
+  s1.line11: sum_over(person[taxpayer].educator_deduction = $0)
   person[taxpayer].hsa_repeated: test(person[taxpayer].hsa_forms = 0; 1 = 1)
   person[taxpayer].hsa_deduction: sum_over(person[taxpayer].hsa_repeated = false)
   s1.line13: sum_over(person[taxpayer].hsa_deduction = $0)
@@ -1232,15 +1261,15 @@ Collection entries and derivations:
   sa.line15: copy(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.zero = $0)
   sa.line16: copy(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.zero = $0)
   sa.line17: sum(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.line4 = $2,500; sa.line7 = $9,000; sa.line10 = $11,000; sa.line14 = $5,200; sa.line15 = $0; sa.line16 = $0)
+  sa.mfs_spouse_extra: test(f1040.status = single; "mfs" = mfs)
   sa.standardbase: param(#sa.standard_base = $15,750)
-  sa.age65_count: sum_over(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].age65 = false; true = true)
-  sa.age65: test(sa.age65_count = 0; 0 = 0)
-  sa.extra_age65: choose(sa.age65 = false; true = true; sa.age65 = false; false = false; sa.zero = $0)
-  sa.blind_count: sum_over(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].blind = false; true = true)
-  sa.blind: test(sa.blind_count = 0; 0 = 0)
-  sa.extra_blind: choose(sa.blind = false; true = true; sa.blind = false; false = false; sa.zero = $0)
+  sa.extra: param(#sa.standard_extra = $2,000)
+  sa.boxes_age65: sum_over(person[taxpayer].age65 = false; true = true)
+  sa.extra_age65: multiply_count(sa.extra = $2,000; sa.boxes_age65 = 0)
+  sa.boxes_blind: sum_over(person[taxpayer].blind = false; true = true)
+  sa.extra_blind: multiply_count(sa.extra = $2,000; sa.boxes_blind = 0)
   sa.standardraw: sum(sa.standardbase = $15,750; sa.extra_age65 = $0; sa.extra_blind = $0)
-  sa.standard: choose(sa.dependent = false; sa.spouse_extra = false; sa.mfs_spouse_itemizes = false; true = true; sa.mfs_spouse_itemizes = false; false = false; sa.standardraw = $15,750)
+  sa.standard: choose(sa.dependent = false; sa.mfs_spouse_extra = false; sa.mfs_spouse_itemizes = false; true = true; sa.mfs_spouse_itemizes = false; false = false; sa.standardraw = $15,750)
   sa.itemizes: test(sa.elect_itemize = false; true = true; sa.mfs_spouse_itemizes = false; true = true; sa.line17 = $27,700; sa.standard = $15,750)
   sa.deduction: choose(sa.itemizes = true; true = true; sa.line17 = $27,700)
   f1040.sa.deduction: choose(sa.itemizes = true; true = true; sa.line17 = $27,700)
@@ -1251,9 +1280,13 @@ Collection entries and derivations:
   s1a.line13: choose(s1a.tips = false; false = false; s1a.zero = $0)
   s1a.line21: choose(s1a.overtime = false; false = false; s1a.zero = $0)
   s1a.line30: choose(s1a.carloan = false; false = false; s1a.zero = $0)
+  sa.age65_count: sum_over(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].age65 = false; true = true)
+  sa.age65: test(sa.age65_count = 0; 0 = 0)
   s1a.sa.age65: test(sa.age65_count = 0; 0 = 0)
   s1a.line36a: choose(sa.age65 = false; false = false; s1a.zero = $0)
-  s1a.line36b: param(sa.spouse_extra = false; #sales.zero = $0)
+  s1a.spouse_senior_count: sum_over(person[taxpayer].role = taxpayer; "spouse" = spouse)
+  s1a.spouse_senior: test(s1a.spouse_senior_count = 0; 0 = 0)
+  s1a.line36b: choose(s1a.spouse_senior = false; false = false; s1a.zero = $0)
   s1a.line37: sum(s1a.line36a = $0; s1a.line36b = $0)
   s1a.line38: sum(s1a.line13 = $0; s1a.line21 = $0; s1a.line30 = $0; s1a.line37 = $0)
   f1040.s1a.line38: sum(s1a.line13 = $0; s1a.line21 = $0; s1a.line30 = $0; s1a.line37 = $0)

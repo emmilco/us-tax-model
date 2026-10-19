@@ -26,6 +26,15 @@ form:
       cite:
         doc: i1040gi
         locator: Instructions for Form 1040, pp. 23–24, lines 1a–1h
+      refuses:
+        - when: household.roster_bad
+          form: The people on the return
+          remedy: Enter one person with the role taxpayer, and, only when married filing jointly, one person with the
+            role spouse.
+          cite:
+            doc: f1040
+            locator: Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first
+              name and middle initial"; Filing Status
     - id: f1040.line1z
       printed: 1z
       label: Add lines 1a through 1h

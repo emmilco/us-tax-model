@@ -1,21 +1,133 @@
 # Household facts for dependents and head of household
 
 - Document: `household` (form, tax year 2025)
-- Note: Facts about the filer that the dependent tests and the head of household status read. Married filing statuses remain refused elsewhere; "unmarried" here is the instructions' unmarried or considered unmarried at the end of 2025.
+- Note: Facts about the people on the return that the dependent tests, the credits and the head of household status read; "unmarried" here is the instructions' unmarried or considered unmarried at the end of 2025.
 
-## (helper) — `household.taxpayer_tin_count`
+## (helper) — `household.persons`
 
-- **Authored helper label:** Your entry, if the answer is yes
-- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Whose entry is this, yours or your spouse's?" = 'taxpayer' and helper "Do you have an SSN or ITIN issued on or before the due date of your return, or have you applied for an ITIN by then?" = true, within the current person when parent-bound. An unanswered roster is unknown.
-- Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"all":[{"eq":["person.role",{"const":"taxpayer"}],"op":"test"},{"eq":["person.tin",{"const":true}],"op":"test"}],"op":"test"}}`
-- Cite: [i1040gi] p. 19, Step 5, question 1 (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Authored helper label:** Number of people on the return (you, and your spouse if filing jointly)
+- **Encoded (Count):** Add person.one over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.one","op":"sum_over"}`
+- Cite: [f1040] Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial"; Filing Status (2025; created 2025-09-05; sha256 3d31c226)
 
-## (helper) — `household.taxpayer_tin`
+## (helper) — `household.taxpayers`
 
-- **Authored helper label:** Do you have an SSN or ITIN issued on or before the due date of your return, or have you applied for an ITIN by then?
-- **Encoded (Bool):** helper "Your entry, if the answer is yes" > 0 (a count)
-- Expr: `{"gt":["household.taxpayer_tin_count",{"const":0,"type":"Count"}],"op":"test"}`
-- Cite: [i1040gi] p. 19, Step 5, question 1 (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Authored helper label:** Number of entries for you
+- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Whose entry is this, yours or your spouse's?" = 'taxpayer', within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"eq":["person.role",{"const":"taxpayer"}],"op":"test"}}`
+- Cite: [f1040] Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial"; Filing Status (2025; created 2025-09-05; sha256 3d31c226)
+
+## (helper) — `household.spouses`
+
+- **Authored helper label:** Number of entries for your spouse
+- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Whose entry is this, yours or your spouse's?" = 'spouse', within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"eq":["person.role",{"const":"spouse"}],"op":"test"}}`
+- Cite: [f1040] Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial"; Filing Status (2025; created 2025-09-05; sha256 3d31c226)
+
+## (helper) — `household.roster_ok`
+
+- **Authored helper label:** One entry for you, and one for your spouse exactly when filing jointly
+- **Encoded (Bool):** (f1040 line Filing Status = 'mfj' and helper "Number of entries for you" = 1 (a count) and helper "Number of entries for your spouse" = 1 (a count) or f1040 line Filing Status ≠ 'mfj' and helper "Number of entries for you" = 1 (a count) and helper "Number of entries for your spouse" = 0 (a count))
+- Expr: `{"any":[{"all":[{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},{"eq":["household.taxpayers",{"const":1,"type":"Count"}],"op":"test"},{"eq":["household.spouses",{"const":1,"type":"Count"}],"op":"test"}],"op":"test"},{"all":[{"ne":["f1040.status",{"const":"mfj"}],"op":"test"},{"eq":["household.taxpayers",{"const":1,"type":"Count"}],"op":"test"},{"eq":["household.spouses",{"const":0,"type":"Count"}],"op":"test"}],"op":"test"}],"op":"test"}`
+- Cite: [f1040] Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial"; Filing Status (2025; created 2025-09-05; sha256 3d31c226)
+
+## (gate) — `household.roster_bad`
+
+- **Authored helper label:** The people entered do not match the filing status
+- **Encoded (Bool):** helper "One entry for you, and one for your spouse exactly when filing jointly" = false
+- Expr: `{"eq":["household.roster_ok",{"const":false}],"op":"test"}`
+- Cite: [f1040] Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial"; Filing Status (2025; created 2025-09-05; sha256 3d31c226)
+
+## (helper) — `household.hsa_people`
+
+- **Authored helper label:** Number of people on the return with a Form 8889
+- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Number of Forms 8889 entered for this person" > 0 (a count), within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"gt":["person.hsa_forms",{"const":0,"type":"Count"}],"op":"test"}}`
+- Cite: [i8889] p. 4, Name and social security number (SSN), "If married filing jointly and both you and your spouse have HSAs, complete a separate Form 8889 for each of you" (2025; sha256 da6f2f58)
+
+## (helper) — `household.hsa_both`
+
+- **Authored helper label:** You and your spouse each have a Form 8889
+- **Encoded (Bool):** helper "Number of people on the return with a Form 8889" = 2 (a count)
+- Expr: `{"eq":["household.hsa_people",{"const":2,"type":"Count"}],"op":"test"}`
+- Cite: [i8889] p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3 (2025; sha256 da6f2f58)
+
+## (helper) — `household.hsa_split_count`
+
+- **Authored helper label:** Number of Forms 8889 using the spouse rule of line 6
+- **Encoded (Count):** Add person.hsa_split over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.hsa_split","op":"sum_over"}`
+- Cite: [i8889] p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3 (2025; sha256 da6f2f58)
+
+## (helper) — `household.hsa_agreed_count`
+
+- **Authored helper label:** Number of Forms 8889 using an agreed allocation
+- **Encoded (Count):** Add person.hsa_agreed over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.hsa_agreed","op":"sum_over"}`
+- Cite: [i8889] p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3 (2025; sha256 da6f2f58)
+
+## (helper) — `household.hsa_step1_sum`
+
+- **Authored helper label:** Both spouses Step 1 limits added together
+- **Encoded (NonNegDollars):** Add person.hsa_step1 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.hsa_step1","op":"sum_over"}`
+- Cite: [i8889] p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3 (2025; sha256 da6f2f58)
+
+## (helper) — `household.hsa_share_sum`
+
+- **Authored helper label:** Both spouses parts of the Step 1 limit added together
+- **Encoded (NonNegDollars):** Add person.hsa_share over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.hsa_share","op":"sum_over"}`
+- Cite: [i8889] p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3 (2025; sha256 da6f2f58)
+
+## (helper) — `household.work_ssn_count`
+
+- **Authored helper label:** Number of people on the return with an SSN valid for employment
+- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Do you have an SSN valid for employment issued before the due date of your return?" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"eq":["person.work_ssn",{"const":true}],"op":"test"}}`
+- Cite: [i1040gi] p. 17, Before you begin, and p. 40, Step 1, question 2 (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `household.any_work_ssn`
+
+- **Authored helper label:** You, or your spouse if filing jointly, have an SSN valid for employment
+- **Encoded (Bool):** helper "Number of people on the return with an SSN valid for employment" > 0 (a count)
+- Expr: `{"gt":["household.work_ssn_count",{"const":0,"type":"Count"}],"op":"test"}`
+- Cite: [i1040gi] p. 17, Before you begin, "If you are filing a joint return, only one spouse is required to have a valid SSN to be eligible for the CTC and ACTC" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `household.all_work_ssn`
+
+- **Authored helper label:** You, and your spouse if filing jointly, have SSNs valid for employment
+- **Encoded (Bool):** helper "Number of people on the return with an SSN valid for employment" = helper "Number of people on the return (you, and your spouse if filing jointly)"
+- Expr: `{"eq":["household.work_ssn_count","household.persons"],"op":"test"}`
+- Cite: [i1040gi] p. 40, Step 1, question 2, "Do you, and your spouse if filing a joint return, have a social security number ... that allows you to work and is valid for EIC purposes" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `household.tin_count`
+
+- **Authored helper label:** Number of people on the return with an SSN or ITIN
+- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Do you have an SSN or ITIN issued on or before the due date of your return, or have you applied for an ITIN by then?" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"eq":["person.tin",{"const":true}],"op":"test"}}`
+- Cite: [i1040gi] p. 17, Before you begin, "If you want to claim the credit for other dependents, you, and your spouse if filing jointly, must have either an SSN or ITIN" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `household.all_tin`
+
+- **Authored helper label:** You, and your spouse if filing jointly, have an SSN or ITIN
+- **Encoded (Bool):** helper "Number of people on the return with an SSN or ITIN" = helper "Number of people on the return (you, and your spouse if filing jointly)"
+- Expr: `{"eq":["household.tin_count","household.persons"],"op":"test"}`
+- Cite: [i1040gi] p. 17, Before you begin, "If you want to claim the credit for other dependents, you, and your spouse if filing jointly, must have either an SSN or ITIN" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `household.id_count`
+
+- **Authored helper label:** Number of people on the return with an SSN valid for employment or an SSN or ITIN
+- **Encoded (Count):** Add person.one over every confirmed person entry for which (helper "Do you have an SSN valid for employment issued before the due date of your return?" = true or helper "Do you have an SSN or ITIN issued on or before the due date of your return, or have you applied for an ITIN by then?" = true), within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"any":[{"eq":["person.work_ssn",{"const":true}],"op":"test"},{"eq":["person.tin",{"const":true}],"op":"test"}],"op":"test"}}`
+- Cite: [i1040gi] p. 17, Before you begin, "The other spouse must have either an SSN or ITIN" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `household.ctc_ssn`
+
+- **Authored helper label:** Child tax credit identification: you, or your spouse if filing jointly, have an SSN valid for employment, and each other person on the return has an SSN or ITIN
+- **Encoded (Bool):** helper "You, or your spouse if filing jointly, have an SSN valid for employment" = true and helper "Number of people on the return with an SSN valid for employment or an SSN or ITIN" = helper "Number of people on the return (you, and your spouse if filing jointly)"
+- Expr: `{"all":[{"eq":["household.any_work_ssn",{"const":true}],"op":"test"},{"eq":["household.id_count","household.persons"],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 17, Before you begin, "If you are filing a joint return, only one spouse is required to have a valid SSN to be eligible for the CTC and ACTC. The other spouse must have either an SSN or ITIN" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `household.taxpayer_work_ssn_count`
 

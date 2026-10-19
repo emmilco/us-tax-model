@@ -83,10 +83,11 @@ form:
           cite:
             doc: f1040
             locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
-        - when: s3.married
-          form: Schedule 3 line 11 (per-spouse computation)
-          remedy: The interview currently represents one person. Married filing statuses are unsupported for
-            this per-spouse rule.
+        - when: s3.mfs
+          form: Married filing separately
+          remedy: The rules for a married filing separately return (among them a spouse who itemizes, the Social
+            Security base for spouses who lived together and the credits a separate return cannot take) are outside
+            this tool. Married filing jointly is supported.
           cite:
             doc: i1040gi
-            locator: p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld
+            locator: p. 14, Married Filing Separately

@@ -637,7 +637,7 @@ form:
               - const: true
           - op: test
             eq:
-              - household.taxpayer_work_ssn
+              - household.ctc_ssn
               - const: true
       cite:
         doc: i1040gi
@@ -667,7 +667,7 @@ form:
               - const: false
           - op: test
             eq:
-              - household.taxpayer_tin
+              - household.all_tin
               - const: true
       cite:
         doc: i1040gi

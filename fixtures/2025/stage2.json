@@ -718,11 +718,12 @@
         "f1040.line31"
       ],
       "evidence": "synthetic-regression",
-      "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
+      "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values. Stage 13: married filing jointly is computed; neither spouse has a Form W-2, so no excess Social Security credit: Schedule 3 lines 11 and 15 and Form 1040 line 31 are $0 (predicted by hand before recording).",
       "inputs": {
         "f1040.status": "mfj",
         "$person": [
-          "taxpayer"
+          "taxpayer",
+          "spouse"
         ],
         "person[taxpayer].role": "taxpayer",
         "$f8889@person[taxpayer]": [],
@@ -736,47 +737,25 @@
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "person[spouse].role": "spouse",
+        "person[spouse].rrta": false,
+        "person[spouse].educator_expenses": 0,
+        "$w2@person[spouse]": [],
+        "$f8889@person[spouse]": []
       },
       "expect": {
         "s3.line11": {
-          "kind": "refusal",
-          "gate": "s3.married",
-          "form": "Schedule 3 line 11 (per-spouse computation)",
-          "remedy": "The interview currently represents one person. Married filing statuses are unsupported for this per-spouse rule.",
-          "cite": {
-            "doc": "i1040gi",
-            "tax_year": 2025,
-            "revision": "2025; printed date 2026-02-25",
-            "locator": "p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a"
-          }
+          "kind": "money",
+          "cents": 0
         },
         "s3.line15": {
-          "kind": "refusal",
-          "gate": "s3.married",
-          "form": "Schedule 3 line 11 (per-spouse computation)",
-          "remedy": "The interview currently represents one person. Married filing statuses are unsupported for this per-spouse rule.",
-          "cite": {
-            "doc": "i1040gi",
-            "tax_year": 2025,
-            "revision": "2025; printed date 2026-02-25",
-            "locator": "p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a"
-          }
+          "kind": "money",
+          "cents": 0
         },
         "f1040.line31": {
-          "kind": "refusal",
-          "gate": "s3.married",
-          "form": "Schedule 3 line 11 (per-spouse computation)",
-          "remedy": "The interview currently represents one person. Married filing statuses are unsupported for this per-spouse rule.",
-          "cite": {
-            "doc": "i1040gi",
-            "tax_year": 2025,
-            "revision": "2025; printed date 2026-02-25",
-            "locator": "p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a"
-          }
+          "kind": "money",
+          "cents": 0
         }
       }
     },
@@ -788,7 +767,7 @@
         "f1040.line31"
       ],
       "evidence": "synthetic-regression",
-      "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values.",
+      "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values. Stage 13: married filing separately stays refused, now through s3.mfs.",
       "inputs": {
         "f1040.status": "mfs",
         "$person": [
@@ -811,41 +790,41 @@
       "expect": {
         "s3.line11": {
           "kind": "refusal",
-          "gate": "s3.married",
-          "form": "Schedule 3 line 11 (per-spouse computation)",
-          "remedy": "The interview currently represents one person. Married filing statuses are unsupported for this per-spouse rule.",
+          "gate": "s3.mfs",
+          "form": "Married filing separately",
+          "remedy": "The rules for a married filing separately return (among them a spouse who itemizes, the Social Security base for spouses who lived together and the credits a separate return cannot take) are outside this tool. Married filing jointly is supported.",
           "cite": {
             "doc": "i1040gi",
-            "tax_year": 2025,
+            "locator": "p. 14, Married Filing Separately",
             "revision": "2025; printed date 2026-02-25",
-            "locator": "p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a"
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
           }
         },
         "s3.line15": {
           "kind": "refusal",
-          "gate": "s3.married",
-          "form": "Schedule 3 line 11 (per-spouse computation)",
-          "remedy": "The interview currently represents one person. Married filing statuses are unsupported for this per-spouse rule.",
+          "gate": "s3.mfs",
+          "form": "Married filing separately",
+          "remedy": "The rules for a married filing separately return (among them a spouse who itemizes, the Social Security base for spouses who lived together and the credits a separate return cannot take) are outside this tool. Married filing jointly is supported.",
           "cite": {
             "doc": "i1040gi",
-            "tax_year": 2025,
+            "locator": "p. 14, Married Filing Separately",
             "revision": "2025; printed date 2026-02-25",
-            "locator": "p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a"
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
           }
         },
         "f1040.line31": {
           "kind": "refusal",
-          "gate": "s3.married",
-          "form": "Schedule 3 line 11 (per-spouse computation)",
-          "remedy": "The interview currently represents one person. Married filing statuses are unsupported for this per-spouse rule.",
+          "gate": "s3.mfs",
+          "form": "Married filing separately",
+          "remedy": "The rules for a married filing separately return (among them a spouse who itemizes, the Social Security base for spouses who lived together and the credits a separate return cannot take) are outside this tool. Married filing jointly is supported.",
           "cite": {
             "doc": "i1040gi",
-            "tax_year": 2025,
+            "locator": "p. 14, Married Filing Separately",
             "revision": "2025; printed date 2026-02-25",
-            "locator": "p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a"
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
           }
         }
       }

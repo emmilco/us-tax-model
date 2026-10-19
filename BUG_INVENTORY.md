@@ -514,3 +514,36 @@ later grouping.
 - **Root cause:** the zero relied on refusals on other lines; the line's own data did not name them. A first fix keyed line 36b to `s3.married` and refused every married return, including isolated worksheet fixtures; it was caught by the fixture run and keyed to `sa.spouse_extra` instead.
 - **Fix:** each line carries its refusal (`s2.other`, `scope.schedule1`, `sa.spouse_extra`); `stage12.refuse.*` fixtures. Stage 12 commit.
 - **Tags:** implicit-refusal; caught-by-render-comparison
+
+---
+
+## BUG-0044 — A values sheet left out the lines of an entry that no total needed
+
+- **Date:** 2026-10-19
+- **Caught by:** the class M fixtures of `f8889` ("line3: not evaluated") after Form 8889 became an entry of each person in Stage 13.
+- **Symptom:** `eval` without `--target`, `evaluateAll`, mutation testing and the coverage report evaluated only top-level lines, so a line of a collection entry appeared only when a top-level line demanded it. With no HSA contributions, Form 8889 line 13 takes zero and lines 3 to 12 were never figured or shown; the same held for any unused line of a dependent, a W-2 or a sale.
+- **Root cause:** the default target list was built from forms without a `collection` key.
+- **Fix:** `allTargets` adds every line of every confirmed entry (whose parent entries are confirmed); `evaluate` accepts an entry line such as `person[taxpayer].f8889[hsa].line3` as a target. Stage 13 part 1 commit.
+- **Tags:** incomplete-values-sheet; caught-by-class-m-fixtures
+
+---
+
+## BUG-0045 — A first joint-return SSN rule changed an unmarried filer's Schedule 1-A Part II
+
+- **Date:** 2026-10-19
+- **Caught by:** the fixture run (`classm.s1a.1`: lines 8 to 10 became $0).
+- **Symptom:** Part II (and Part III) applied only if a person with a valid SSN had a tip (or overtime) employer entered, so an unmarried filer who claimed tips with no employer entered no longer had the modified AGI lines filled in.
+- **Root cause:** the joint-return condition ("the spouse who received the qualified tips must have a valid SSN") was applied to every filing status, though the instructions say "You have a valid SSN" first and add the spouse condition only for a joint return.
+- **Fix:** `s1a.tip_ssn` and `s1a.ot_ssn` read the taxpayer's SSN unless filing jointly, and a receiving spouse's SSN on a joint return. Stage 13 commit.
+- **Tags:** status-scoped-condition; caught-by-fixtures
+
+---
+
+## BUG-0046 — A spouse's decedent refusal made every return ask the decedent question
+
+- **Date:** 2026-10-19
+- **Caught by:** the build's interview checks ("missing or repeated question person[taxpayer].died_before_65").
+- **Symptom:** placing the refusal for a spouse who died before reaching 65 on Schedule 1-A line 36b, which every return computes, made the decedent question reachable on every return, and it counted both spouses for the taxpayer's line 36a.
+- **Root cause:** a refusal's condition is evaluated whenever its line is; line 36a carries its refusal on a helper reached only for a filer born before January 2, 1961.
+- **Fix:** each spouse has a decedent gate; the spouse's refusal is on `s1a.line36b_senior`, reached only for a spouse who qualifies. Stage 13 commit.
+- **Tags:** refusal-reachability; caught-by-interview-check

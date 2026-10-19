@@ -1,7 +1,7 @@
 # Schedule 1-A (Form 1040) — Additional Deductions
 
 - Document: `s1a` (form, tax year 2025)
-- Note: For an unmarried filer (married filing statuses are refused through s3.married). Tips and overtime as an employee only, by the methods the instructions give for 2025; tips or overtime in a trade or business, Form 4137, and excluded Puerto Rico income or Forms 2555 and 4563 are refused. Lines 11, 19 and 28 (a whole number of $1,000 units) are kept as that many thousands of dollars; lines 12, 20 and 29 multiply them by $100 or $200 per thousand.
+- Note: For a single, head of household, qualifying surviving spouse or married filing jointly return (married filing separately is refused through s3.mfs). Tips and overtime as an employee only, by the methods the instructions give for 2025; tips or overtime in a trade or business, Form 4137, and excluded Puerto Rico income or Forms 2555 and 4563 are refused. Lines 11, 19 and 28 (a whole number of $1,000 units) are kept as that many thousands of dollars; lines 12, 20 and 29 multiply them by $100 or $200 per thousand.
 
 ## (helper) — `s1a.zero`
 
@@ -70,22 +70,22 @@
 ## (helper) — `s1a.tip_employers`
 
 - **Authored helper label:** Number of employers on the Qualified Tips From More Than One Employer Worksheet
-- **Encoded (Count):** Add person.tip_employers over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.
-- Expr: `{"collection":"person","field":"person.tip_employers","op":"sum_over"}`
+- **Encoded (Count):** Add person.tip_employers over every confirmed person entry for which helper "Do you have an SSN valid for employment issued before the due date of your return?" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.tip_employers","op":"sum_over","where":{"eq":["person.work_ssn",{"const":true}],"op":"test"}}`
 - Cite: [i1040gi] p. 104, Schedule 1-A, line 4c (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.tip_total`
 
 - **Authored helper label:** Worksheet line 2. Add lines 1A through 1E, column (d)
-- **Encoded (NonNegDollars):** Add person.tip_total over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.
-- Expr: `{"collection":"person","field":"person.tip_total","op":"sum_over"}`
+- **Encoded (NonNegDollars):** Add person.tip_total over every confirmed person entry for which helper "Do you have an SSN valid for employment issued before the due date of your return?" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.tip_total","op":"sum_over","where":{"eq":["person.work_ssn",{"const":true}],"op":"test"}}`
 - Cite: [i1040gi] p. 104, Qualified Tips From More Than One Employer Worksheet, line 2 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.tip_reported`
 
 - **Authored helper label:** Worksheet column (b) total: qualified tips reported on Form W-2 or on Forms 4070
-- **Encoded (NonNegDollars):** Add person.tip_reported over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.
-- Expr: `{"collection":"person","field":"person.tip_reported","op":"sum_over"}`
+- **Encoded (NonNegDollars):** Add person.tip_reported over every confirmed person entry for which helper "Do you have an SSN valid for employment issued before the due date of your return?" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.tip_reported","op":"sum_over","where":{"eq":["person.work_ssn",{"const":true}],"op":"test"}}`
 - Cite: [i1040gi] p. 104, Qualified Tips From More Than One Employer Worksheet, column (b); p. 103, methods 1 to 3, "Enter this amount on line 4a" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.tip_multi`
@@ -95,11 +95,25 @@
 - Expr: `{"gt":["s1a.tip_employers",{"param":"ss.one"}],"op":"test"}`
 - Cite: [i1040gi] p. 104, Schedule 1-A, line 4a, "If you received qualified tips as an employee with respect to employment with more than one employer, enter -0- on line 4a" (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `s1a.tip_ssn_count`
+
+- **Authored helper label:** Number of people with a valid SSN who received qualified tips
+- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Do you have an SSN valid for employment issued before the due date of your return?" = true and helper "Number of employers that paid this person qualified tips" > 0 (a count), within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"all":[{"eq":["person.work_ssn",{"const":true}],"op":"test"},{"gt":["person.tip_employers",{"const":0,"type":"Count"}],"op":"test"}],"op":"test"}}`
+- Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if" and "If you are married filing a joint return, the spouse who received the qualified tips must have a valid SSN" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `s1a.tip_ssn`
+
+- **Authored helper label:** You have a valid SSN or, if married filing jointly, a spouse who received them has a valid SSN
+- **Encoded (Bool):** (f1040 line Filing Status ≠ 'mfj' and household helper "Do you have an SSN valid for employment issued before the due date of your return?" = true or f1040 line Filing Status = 'mfj' and helper "Number of people with a valid SSN who received qualified tips" > 0 (a count))
+- Expr: `{"any":[{"all":[{"ne":["f1040.status",{"const":"mfj"}],"op":"test"},{"eq":["household.taxpayer_work_ssn",{"const":true}],"op":"test"}],"op":"test"},{"all":[{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},{"gt":["s1a.tip_ssn_count",{"const":0,"type":"Count"}],"op":"test"}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if" and "If you are married filing a joint return, the spouse who received the qualified tips must have a valid SSN" (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (helper) — `s1a.part2`
 
-- **Authored helper label:** Part II applies: qualified tips claimed, not married filing separately, a valid SSN
-- **Encoded (Bool):** helper "Did you receive qualified tips as an employee in 2025 that you want to deduct?" = true and f1040 line Filing Status ≠ 'mfs' and household helper "Do you have an SSN valid for employment issued before the due date of your return?" = true
-- Expr: `{"all":[{"eq":["s1a.tips",{"const":true}],"op":"test"},{"ne":["f1040.status",{"const":"mfs"}],"op":"test"},{"eq":["household.taxpayer_work_ssn",{"const":true}],"op":"test"}],"op":"test"}`
+- **Authored helper label:** Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN
+- **Encoded (Bool):** helper "Did you receive qualified tips as an employee in 2025 that you want to deduct?" = true and f1040 line Filing Status ≠ 'mfs' and helper "You have a valid SSN or, if married filing jointly, a spouse who received them has a valid SSN" = true
+- Expr: `{"all":[{"eq":["s1a.tips",{"const":true}],"op":"test"},{"ne":["f1040.status",{"const":"mfs"}],"op":"test"},{"eq":["s1a.tip_ssn",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you must file jointly" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.line4a_calc`
@@ -112,7 +126,7 @@
 ## 4a — `s1a.line4a`
 
 - **IRS:** Enter qualified tips included on Form W-2, box 7, but see the instructions if Form W-2, box 5 is more than $176,100 or you received tips that are not subject to social security and Medicare taxes
-- **Encoded (NonNegDollars):** Choose — [helper "Part II applies: qualified tips claimed, not married filing separately, a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part II applies: qualified tips claimed, not married filing separately, a valid SSN" = true → helper "Figured: Enter qualified tips included on Form W-2, box 7, but see the instructions if Form W-2, box 5 is more than $176,100 or you received tips that are not subject to social security and Medicare taxes"]
+- **Encoded (NonNegDollars):** Choose — [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = true → helper "Figured: Enter qualified tips included on Form W-2, box 7, but see the instructions if Form W-2, box 5 is more than $176,100 or you received tips that are not subject to social security and Medicare taxes"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part2",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part2",{"const":true}],"op":"test"},"then":"s1a.line4a_calc"}],"op":"choose"}`
 - Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you must file jointly" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -127,7 +141,7 @@
 ## 4b — `s1a.line4b`
 
 - **IRS:** Qualified tips included on Form 4137, line 1, row A, column (c). If Form 4137 is not filed, enter -0-
-- **Encoded (NonNegDollars):** Choose — [helper "Part II applies: qualified tips claimed, not married filing separately, a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part II applies: qualified tips claimed, not married filing separately, a valid SSN" = true → helper "Figured: Qualified tips included on Form 4137, line 1, row A, column (c). If Form 4137 is not filed, enter -0-"]
+- **Encoded (NonNegDollars):** Choose — [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = true → helper "Figured: Qualified tips included on Form 4137, line 1, row A, column (c). If Form 4137 is not filed, enter -0-"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part2",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part2",{"const":true}],"op":"test"},"then":"s1a.line4b_calc"}],"op":"choose"}`
 - Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you must file jointly" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -148,7 +162,7 @@
 ## 4c — `s1a.line4c`
 
 - **IRS:** If you only received qualified tips as an employee with respect to employment with one employer, enter the larger of line 4a or line 4b. Otherwise, see the instructions to determine the amount to enter on line 4c
-- **Encoded (NonNegDollars):** Choose — [helper "Part II applies: qualified tips claimed, not married filing separately, a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part II applies: qualified tips claimed, not married filing separately, a valid SSN" = true → helper "Figured: If you only received qualified tips as an employee with respect to employment with one employer, enter the larger of line 4a or line 4b. Otherwise, see the instructions to determine the amount to enter on line 4c"]
+- **Encoded (NonNegDollars):** Choose — [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = true → helper "Figured: If you only received qualified tips as an employee with respect to employment with one employer, enter the larger of line 4a or line 4b. Otherwise, see the instructions to determine the amount to enter on line 4c"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part2",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part2",{"const":true}],"op":"test"},"then":"s1a.line4c_calc"}],"op":"choose"}`
 - Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you must file jointly" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -163,7 +177,7 @@
 ## 5 — `s1a.line5`
 
 - **IRS:** Qualified tips received in the course of a trade or business
-- **Encoded (NonNegDollars):** Choose — [helper "Part II applies: qualified tips claimed, not married filing separately, a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part II applies: qualified tips claimed, not married filing separately, a valid SSN" = true → helper "Figured: Qualified tips received in the course of a trade or business"]
+- **Encoded (NonNegDollars):** Choose — [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = true → helper "Figured: Qualified tips received in the course of a trade or business"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part2",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part2",{"const":true}],"op":"test"},"then":"s1a.line5_calc"}],"op":"choose"}`
 - Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you must file jointly" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -177,7 +191,7 @@
 ## 6 — `s1a.line6`
 
 - **IRS:** Add lines 4c and 5
-- **Encoded (NonNegDollars):** Choose — [helper "Part II applies: qualified tips claimed, not married filing separately, a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part II applies: qualified tips claimed, not married filing separately, a valid SSN" = true → helper "Figured: Add lines 4c and 5"]
+- **Encoded (NonNegDollars):** Choose — [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = true → helper "Figured: Add lines 4c and 5"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part2",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part2",{"const":true}],"op":"test"},"then":"s1a.line6_calc"}],"op":"choose"}`
 - Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you must file jointly" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -191,7 +205,7 @@
 ## 7 — `s1a.line7`
 
 - **IRS:** Enter the smaller of the amount on line 6 or $25,000
-- **Encoded (NonNegDollars):** Choose — [helper "Part II applies: qualified tips claimed, not married filing separately, a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part II applies: qualified tips claimed, not married filing separately, a valid SSN" = true → helper "Figured: Enter the smaller of the amount on line 6 or $25,000"]
+- **Encoded (NonNegDollars):** Choose — [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = true → helper "Figured: Enter the smaller of the amount on line 6 or $25,000"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part2",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part2",{"const":true}],"op":"test"},"then":"s1a.line7_calc"}],"op":"choose"}`
 - Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you must file jointly" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -226,7 +240,7 @@
 ## 8 — `s1a.line8`
 
 - **IRS:** Enter the amount from line 3
-- **Encoded (Dollars):** Choose — [helper "Part II applies: qualified tips claimed, not married filing separately, a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part II applies: qualified tips claimed, not married filing separately, a valid SSN" = true → helper "Figured: Enter the amount from line 3"]
+- **Encoded (Dollars):** Choose — [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = true → helper "Figured: Enter the amount from line 3"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part2",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part2",{"const":true}],"op":"test"},"then":"s1a.line8_calc"}],"op":"choose"}`
 - Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you must file jointly" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -240,7 +254,7 @@
 ## 9 — `s1a.line9`
 
 - **IRS:** Enter $150,000 ($300,000 if married filing jointly)
-- **Encoded (NonNegDollars):** Choose — [helper "Part II applies: qualified tips claimed, not married filing separately, a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part II applies: qualified tips claimed, not married filing separately, a valid SSN" = true → helper "Figured: Enter $150,000 ($300,000 if married filing jointly)"]
+- **Encoded (NonNegDollars):** Choose — [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = true → helper "Figured: Enter $150,000 ($300,000 if married filing jointly)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part2",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part2",{"const":true}],"op":"test"},"then":"s1a.line9_calc"}],"op":"choose"}`
 - Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you must file jointly" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -254,7 +268,7 @@
 ## 10 — `s1a.line10`
 
 - **IRS:** Subtract line 9 from line 8. If zero or less, enter the amount from line 7 on line 13
-- **Encoded (Dollars):** Choose — [helper "Part II applies: qualified tips claimed, not married filing separately, a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part II applies: qualified tips claimed, not married filing separately, a valid SSN" = true → helper "Figured: Subtract line 9 from line 8. If zero or less, enter the amount from line 7 on line 13"]
+- **Encoded (Dollars):** Choose — [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = true → helper "Figured: Subtract line 9 from line 8. If zero or less, enter the amount from line 7 on line 13"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part2",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part2",{"const":true}],"op":"test"},"then":"s1a.line10_calc"}],"op":"choose"}`
 - Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you must file jointly" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -289,7 +303,7 @@
 ## 12 — `s1a.line12`
 
 - **IRS:** Multiply line 11 by $100
-- **Encoded (NonNegDollars):** Choose — [helper "Part II applies: qualified tips claimed, not married filing separately, a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part II applies: qualified tips claimed, not married filing separately, a valid SSN" = true → helper "Figured: Multiply line 11 by $100"]
+- **Encoded (NonNegDollars):** Choose — [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN" = true → helper "Figured: Multiply line 11 by $100"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part2",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part2",{"const":true}],"op":"test"},"then":"s1a.line12_calc"}],"op":"choose"}`
 - Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you must file jointly" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -309,15 +323,15 @@
 
 ## (helper) — `s1a.line13_ssn`
 
-- **Authored helper label:** Line 13 with qualified tips: zero without a valid SSN
-- **Encoded (NonNegDollars):** Choose — [household helper "Do you have an SSN valid for employment issued before the due date of your return?" = false → helper "Year parameter sales.zero"] [household helper "Do you have an SSN valid for employment issued before the due date of your return?" = true → helper "Line 13 when Part II applies"]
-- Expr: `{"alternatives":[{"guard":{"eq":["household.taxpayer_work_ssn",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["household.taxpayer_work_ssn",{"const":true}],"op":"test"},"then":"s1a.line13_amount"}],"op":"choose"}`
+- **Authored helper label:** Line 13 with qualified tips: zero unless a person who received them has a valid SSN
+- **Encoded (NonNegDollars):** Choose — [helper "You have a valid SSN or, if married filing jointly, a spouse who received them has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "You have a valid SSN or, if married filing jointly, a spouse who received them has a valid SSN" = true → helper "Line 13 when Part II applies"]
+- Expr: `{"alternatives":[{"guard":{"eq":["s1a.tip_ssn",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.tip_ssn",{"const":true}],"op":"test"},"then":"s1a.line13_amount"}],"op":"choose"}`
 - Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if: ... You have a valid social security number (SSN)" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.line13_claim`
 
 - **Authored helper label:** Line 13 with qualified tips: zero for married filing separately
-- **Encoded (NonNegDollars):** Choose — [f1040 line Filing Status = 'single' → helper "Line 13 with qualified tips: zero without a valid SSN"] [f1040 line Filing Status = 'mfj' → helper "Line 13 with qualified tips: zero without a valid SSN"] [f1040 line Filing Status = 'mfs' → helper "Year parameter sales.zero"] [f1040 line Filing Status = 'hoh' → helper "Line 13 with qualified tips: zero without a valid SSN"] [f1040 line Filing Status = 'qss' → helper "Line 13 with qualified tips: zero without a valid SSN"]
+- **Encoded (NonNegDollars):** Choose — [f1040 line Filing Status = 'single' → helper "Line 13 with qualified tips: zero unless a person who received them has a valid SSN"] [f1040 line Filing Status = 'mfj' → helper "Line 13 with qualified tips: zero unless a person who received them has a valid SSN"] [f1040 line Filing Status = 'mfs' → helper "Year parameter sales.zero"] [f1040 line Filing Status = 'hoh' → helper "Line 13 with qualified tips: zero unless a person who received them has a valid SSN"] [f1040 line Filing Status = 'qss' → helper "Line 13 with qualified tips: zero unless a person who received them has a valid SSN"]
 - Expr: `{"alternatives":[{"guard":{"eq":["f1040.status",{"const":"single"}],"op":"test"},"then":"s1a.line13_ssn"},{"guard":{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},"then":"s1a.line13_ssn"},{"guard":{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["f1040.status",{"const":"hoh"}],"op":"test"},"then":"s1a.line13_ssn"},{"guard":{"eq":["f1040.status",{"const":"qss"}],"op":"test"},"then":"s1a.line13_ssn"}],"op":"choose"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), Part II caution, "If married, you must file jointly to claim this deduction" (2025; created 2025-11-04; sha256 64f97b38)
 
@@ -335,24 +349,38 @@
 - Expr: `{"op":"input","source":"Did you receive overtime pay as an employee in 2025 that you want to deduct on Schedule 1-A, Part III (the FLSA Overtime Premium, generally the \"half\" of time-and-a-half)? (Overtime reported to you on Form 1099-NEC or 1099-MISC is asked about with Schedule C.)"}`
 - Cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if" (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `s1a.ot_ssn_count`
+
+- **Authored helper label:** Number of people with a valid SSN who received qualified overtime compensation
+- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Do you have an SSN valid for employment issued before the due date of your return?" = true and helper "Number of employers that paid this person qualified overtime compensation" > 0 (a count), within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"all":[{"eq":["person.work_ssn",{"const":true}],"op":"test"},{"gt":["person.ot_employers",{"const":0,"type":"Count"}],"op":"test"}],"op":"test"}}`
+- Cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if" and "If you are married filing jointly, the spouse who received the qualified overtime compensation must have a valid SSN" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `s1a.ot_ssn`
+
+- **Authored helper label:** You have a valid SSN or, if married filing jointly, a spouse who received it has a valid SSN
+- **Encoded (Bool):** (f1040 line Filing Status ≠ 'mfj' and household helper "Do you have an SSN valid for employment issued before the due date of your return?" = true or f1040 line Filing Status = 'mfj' and helper "Number of people with a valid SSN who received qualified overtime compensation" > 0 (a count))
+- Expr: `{"any":[{"all":[{"ne":["f1040.status",{"const":"mfj"}],"op":"test"},{"eq":["household.taxpayer_work_ssn",{"const":true}],"op":"test"}],"op":"test"},{"all":[{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},{"gt":["s1a.ot_ssn_count",{"const":0,"type":"Count"}],"op":"test"}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if" and "If you are married filing jointly, the spouse who received the qualified overtime compensation must have a valid SSN" (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (helper) — `s1a.part3`
 
-- **Authored helper label:** Part III applies: qualified overtime claimed, not married filing separately, a valid SSN
-- **Encoded (Bool):** helper "Did you receive qualified overtime compensation in 2025 that you want to deduct?" = true and f1040 line Filing Status ≠ 'mfs' and household helper "Do you have an SSN valid for employment issued before the due date of your return?" = true
-- Expr: `{"all":[{"eq":["s1a.overtime",{"const":true}],"op":"test"},{"ne":["f1040.status",{"const":"mfs"}],"op":"test"},{"eq":["household.taxpayer_work_ssn",{"const":true}],"op":"test"}],"op":"test"}`
+- **Authored helper label:** Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN
+- **Encoded (Bool):** helper "Did you receive qualified overtime compensation in 2025 that you want to deduct?" = true and f1040 line Filing Status ≠ 'mfs' and helper "You have a valid SSN or, if married filing jointly, a spouse who received it has a valid SSN" = true
+- Expr: `{"all":[{"eq":["s1a.overtime",{"const":true}],"op":"test"},{"ne":["f1040.status",{"const":"mfs"}],"op":"test"},{"eq":["s1a.ot_ssn",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; Part III caution (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.line14a_calc`
 
 - **Authored helper label:** Figured: Qualified overtime compensation included in Form W-2, box 1. If you received qualified overtime compensation not reported on Form W-2, box 1, see instructions
-- **Encoded (NonNegDollars):** Add person.ot_total over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.
-- Expr: `{"collection":"person","field":"person.ot_total","op":"sum_over"}`
+- **Encoded (NonNegDollars):** Add person.ot_total over every confirmed person entry for which helper "Do you have an SSN valid for employment issued before the due date of your return?" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.ot_total","op":"sum_over","where":{"eq":["person.work_ssn",{"const":true}],"op":"test"}}`
 - Cite: [i1040gi] p. 108, Schedule 1-A, line 14a, and the Qualified Overtime Compensation From More Than One Employer Worksheet, line 2 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 14a — `s1a.line14a`
 
 - **IRS:** Qualified overtime compensation included in Form W-2, box 1. If you received qualified overtime compensation not reported on Form W-2, box 1, see instructions
-- **Encoded (NonNegDollars):** Choose — [helper "Part III applies: qualified overtime claimed, not married filing separately, a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part III applies: qualified overtime claimed, not married filing separately, a valid SSN" = true → helper "Figured: Qualified overtime compensation included in Form W-2, box 1. If you received qualified overtime compensation not reported on Form W-2, box 1, see instructions"]
+- **Encoded (NonNegDollars):** Choose — [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = true → helper "Figured: Qualified overtime compensation included in Form W-2, box 1. If you received qualified overtime compensation not reported on Form W-2, box 1, see instructions"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part3",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part3",{"const":true}],"op":"test"},"then":"s1a.line14a_calc"}],"op":"choose"}`
 - Cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; Part III caution (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -367,7 +395,7 @@
 ## 14b — `s1a.line14b`
 
 - **IRS:** Qualified overtime compensation included in Form 1099-NEC, box 1, or Form 1099-MISC, box 3
-- **Encoded (NonNegDollars):** Choose — [helper "Part III applies: qualified overtime claimed, not married filing separately, a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part III applies: qualified overtime claimed, not married filing separately, a valid SSN" = true → helper "Figured: Qualified overtime compensation included in Form 1099-NEC, box 1, or Form 1099-MISC, box 3"]
+- **Encoded (NonNegDollars):** Choose — [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = true → helper "Figured: Qualified overtime compensation included in Form 1099-NEC, box 1, or Form 1099-MISC, box 3"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part3",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part3",{"const":true}],"op":"test"},"then":"s1a.line14b_calc"}],"op":"choose"}`
 - Cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; Part III caution (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -381,7 +409,7 @@
 ## 14c — `s1a.line14c`
 
 - **IRS:** Add lines 14a and 14b
-- **Encoded (NonNegDollars):** Choose — [helper "Part III applies: qualified overtime claimed, not married filing separately, a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part III applies: qualified overtime claimed, not married filing separately, a valid SSN" = true → helper "Figured: Add lines 14a and 14b"]
+- **Encoded (NonNegDollars):** Choose — [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = true → helper "Figured: Add lines 14a and 14b"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part3",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part3",{"const":true}],"op":"test"},"then":"s1a.line14c_calc"}],"op":"choose"}`
 - Cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; Part III caution (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -416,7 +444,7 @@
 ## 15 — `s1a.line15`
 
 - **IRS:** Enter the smaller of the amount on line 14c or $12,500 ($25,000 if married filing jointly)
-- **Encoded (NonNegDollars):** Choose — [helper "Part III applies: qualified overtime claimed, not married filing separately, a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part III applies: qualified overtime claimed, not married filing separately, a valid SSN" = true → helper "Figured: Enter the smaller of the amount on line 14c or $12,500 ($25,000 if married filing jointly)"]
+- **Encoded (NonNegDollars):** Choose — [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = true → helper "Figured: Enter the smaller of the amount on line 14c or $12,500 ($25,000 if married filing jointly)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part3",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part3",{"const":true}],"op":"test"},"then":"s1a.line15_calc"}],"op":"choose"}`
 - Cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; Part III caution (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -430,7 +458,7 @@
 ## 16 — `s1a.line16`
 
 - **IRS:** Enter the amount from line 3
-- **Encoded (Dollars):** Choose — [helper "Part III applies: qualified overtime claimed, not married filing separately, a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part III applies: qualified overtime claimed, not married filing separately, a valid SSN" = true → helper "Figured: Enter the amount from line 3"]
+- **Encoded (Dollars):** Choose — [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = true → helper "Figured: Enter the amount from line 3"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part3",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part3",{"const":true}],"op":"test"},"then":"s1a.line16_calc"}],"op":"choose"}`
 - Cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; Part III caution (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -444,7 +472,7 @@
 ## 17 — `s1a.line17`
 
 - **IRS:** Enter $150,000 ($300,000 if married filing jointly)
-- **Encoded (NonNegDollars):** Choose — [helper "Part III applies: qualified overtime claimed, not married filing separately, a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part III applies: qualified overtime claimed, not married filing separately, a valid SSN" = true → helper "Figured: Enter $150,000 ($300,000 if married filing jointly)"]
+- **Encoded (NonNegDollars):** Choose — [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = true → helper "Figured: Enter $150,000 ($300,000 if married filing jointly)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part3",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part3",{"const":true}],"op":"test"},"then":"s1a.line17_calc"}],"op":"choose"}`
 - Cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; Part III caution (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -458,7 +486,7 @@
 ## 18 — `s1a.line18`
 
 - **IRS:** Subtract line 17 from line 16. If zero or less, enter the amount from line 15 on line 21
-- **Encoded (Dollars):** Choose — [helper "Part III applies: qualified overtime claimed, not married filing separately, a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part III applies: qualified overtime claimed, not married filing separately, a valid SSN" = true → helper "Figured: Subtract line 17 from line 16. If zero or less, enter the amount from line 15 on line 21"]
+- **Encoded (Dollars):** Choose — [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = true → helper "Figured: Subtract line 17 from line 16. If zero or less, enter the amount from line 15 on line 21"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part3",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part3",{"const":true}],"op":"test"},"then":"s1a.line18_calc"}],"op":"choose"}`
 - Cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; Part III caution (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -493,7 +521,7 @@
 ## 20 — `s1a.line20`
 
 - **IRS:** Multiply line 19 by $100
-- **Encoded (NonNegDollars):** Choose — [helper "Part III applies: qualified overtime claimed, not married filing separately, a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part III applies: qualified overtime claimed, not married filing separately, a valid SSN" = true → helper "Figured: Multiply line 19 by $100"]
+- **Encoded (NonNegDollars):** Choose — [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN" = true → helper "Figured: Multiply line 19 by $100"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part3",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part3",{"const":true}],"op":"test"},"then":"s1a.line20_calc"}],"op":"choose"}`
 - Cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; Part III caution (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -513,15 +541,15 @@
 
 ## (helper) — `s1a.line21_ssn`
 
-- **Authored helper label:** Line 21 with qualified overtime: zero without a valid SSN
-- **Encoded (NonNegDollars):** Choose — [household helper "Do you have an SSN valid for employment issued before the due date of your return?" = false → helper "Year parameter sales.zero"] [household helper "Do you have an SSN valid for employment issued before the due date of your return?" = true → helper "Line 21 when Part III applies"]
-- Expr: `{"alternatives":[{"guard":{"eq":["household.taxpayer_work_ssn",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["household.taxpayer_work_ssn",{"const":true}],"op":"test"},"then":"s1a.line21_amount"}],"op":"choose"}`
+- **Authored helper label:** Line 21 with qualified overtime: zero unless a person who received it has a valid SSN
+- **Encoded (NonNegDollars):** Choose — [helper "You have a valid SSN or, if married filing jointly, a spouse who received it has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "You have a valid SSN or, if married filing jointly, a spouse who received it has a valid SSN" = true → helper "Line 21 when Part III applies"]
+- Expr: `{"alternatives":[{"guard":{"eq":["s1a.ot_ssn",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.ot_ssn",{"const":true}],"op":"test"},"then":"s1a.line21_amount"}],"op":"choose"}`
 - Cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if: ... You have a valid social security number (SSN)" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.line21_claim`
 
 - **Authored helper label:** Line 21 with qualified overtime: zero for married filing separately
-- **Encoded (NonNegDollars):** Choose — [f1040 line Filing Status = 'single' → helper "Line 21 with qualified overtime: zero without a valid SSN"] [f1040 line Filing Status = 'mfj' → helper "Line 21 with qualified overtime: zero without a valid SSN"] [f1040 line Filing Status = 'mfs' → helper "Year parameter sales.zero"] [f1040 line Filing Status = 'hoh' → helper "Line 21 with qualified overtime: zero without a valid SSN"] [f1040 line Filing Status = 'qss' → helper "Line 21 with qualified overtime: zero without a valid SSN"]
+- **Encoded (NonNegDollars):** Choose — [f1040 line Filing Status = 'single' → helper "Line 21 with qualified overtime: zero unless a person who received it has a valid SSN"] [f1040 line Filing Status = 'mfj' → helper "Line 21 with qualified overtime: zero unless a person who received it has a valid SSN"] [f1040 line Filing Status = 'mfs' → helper "Year parameter sales.zero"] [f1040 line Filing Status = 'hoh' → helper "Line 21 with qualified overtime: zero unless a person who received it has a valid SSN"] [f1040 line Filing Status = 'qss' → helper "Line 21 with qualified overtime: zero unless a person who received it has a valid SSN"]
 - Expr: `{"alternatives":[{"guard":{"eq":["f1040.status",{"const":"single"}],"op":"test"},"then":"s1a.line21_ssn"},{"guard":{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},"then":"s1a.line21_ssn"},{"guard":{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["f1040.status",{"const":"hoh"}],"op":"test"},"then":"s1a.line21_ssn"},{"guard":{"eq":["f1040.status",{"const":"qss"}],"op":"test"},"then":"s1a.line21_ssn"}],"op":"choose"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), Part III caution, "If married, you must file jointly to claim this deduction" (2025; created 2025-11-04; sha256 64f97b38)
 
@@ -693,11 +721,25 @@
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.carloan",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.carloan",{"const":true}],"op":"test"},"then":"s1a.line30_amount"}],"op":"choose"}`
 - Cite: [i1040gi] p. 109, Schedule 1-A, Part IV, "Fill out Schedule 1-A, Part IV, only if you paid or accrued QPVLI in 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `s1a.senior_count`
+
+- **Authored helper label:** Number of people born before January 2, 1961, with a valid SSN
+- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Were you born before January 2, 1961?" = true and helper "Do you have an SSN valid for employment issued before the due date of your return?" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"all":[{"eq":["person.age65",{"const":true}],"op":"test"},{"eq":["person.work_ssn",{"const":true}],"op":"test"}],"op":"test"}}`
+- Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if" and "If you are married filing jointly, the spouse who is claiming the enhanced deduction for seniors must have a valid SSN" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `s1a.senior_any`
+
+- **Authored helper label:** You (and/or your spouse if filing jointly) were born before January 2, 1961, and have a valid SSN
+- **Encoded (Bool):** helper "Number of people born before January 2, 1961, with a valid SSN" > 0 (a count)
+- Expr: `{"gt":["s1a.senior_count",{"const":0,"type":"Count"}],"op":"test"}`
+- Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if" and "If you are married filing jointly, the spouse who is claiming the enhanced deduction for seniors must have a valid SSN" (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (helper) — `s1a.part5`
 
-- **Authored helper label:** Part V applies: born before January 2, 1961, not married filing separately, a valid SSN
-- **Encoded (Bool):** sa helper "Were you born before January 2, 1961?" = true and f1040 line Filing Status ≠ 'mfs' and household helper "Do you have an SSN valid for employment issued before the due date of your return?" = true
-- Expr: `{"all":[{"eq":["sa.age65",{"const":true}],"op":"test"},{"ne":["f1040.status",{"const":"mfs"}],"op":"test"},{"eq":["household.taxpayer_work_ssn",{"const":true}],"op":"test"}],"op":"test"}`
+- **Authored helper label:** Part V applies: you (and/or your spouse if filing jointly) were born before January 2, 1961, and have a valid SSN, not married filing separately
+- **Encoded (Bool):** helper "You (and/or your spouse if filing jointly) were born before January 2, 1961, and have a valid SSN" = true and f1040 line Filing Status ≠ 'mfs'
+- Expr: `{"all":[{"eq":["s1a.senior_any",{"const":true}],"op":"test"},{"ne":["f1040.status",{"const":"mfs"}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; Part V caution (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.line31_calc`
@@ -710,7 +752,7 @@
 ## 31 — `s1a.line31`
 
 - **IRS:** Enter the amount from line 3
-- **Encoded (Dollars):** Choose — [helper "Part V applies: born before January 2, 1961, not married filing separately, a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part V applies: born before January 2, 1961, not married filing separately, a valid SSN" = true → helper "Figured: Enter the amount from line 3"]
+- **Encoded (Dollars):** Choose — [helper "Part V applies: you (and/or your spouse if filing jointly) were born before January 2, 1961, and have a valid SSN, not married filing separately" = false → helper "Year parameter sales.zero"] [helper "Part V applies: you (and/or your spouse if filing jointly) were born before January 2, 1961, and have a valid SSN, not married filing separately" = true → helper "Figured: Enter the amount from line 3"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part5",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part5",{"const":true}],"op":"test"},"then":"s1a.line31_calc"}],"op":"choose"}`
 - Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; Part V caution (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -738,7 +780,7 @@
 ## 32 — `s1a.line32`
 
 - **IRS:** Enter $75,000 ($150,000 if married filing jointly)
-- **Encoded (NonNegDollars):** Choose — [helper "Part V applies: born before January 2, 1961, not married filing separately, a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part V applies: born before January 2, 1961, not married filing separately, a valid SSN" = true → helper "Figured: Enter $75,000 ($150,000 if married filing jointly)"]
+- **Encoded (NonNegDollars):** Choose — [helper "Part V applies: you (and/or your spouse if filing jointly) were born before January 2, 1961, and have a valid SSN, not married filing separately" = false → helper "Year parameter sales.zero"] [helper "Part V applies: you (and/or your spouse if filing jointly) were born before January 2, 1961, and have a valid SSN, not married filing separately" = true → helper "Figured: Enter $75,000 ($150,000 if married filing jointly)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part5",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part5",{"const":true}],"op":"test"},"then":"s1a.line32_calc"}],"op":"choose"}`
 - Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; Part V caution (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -752,7 +794,7 @@
 ## 33 — `s1a.line33`
 
 - **IRS:** Subtract line 32 from line 31. If zero or less, enter $6,000 on line 35
-- **Encoded (Dollars):** Choose — [helper "Part V applies: born before January 2, 1961, not married filing separately, a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part V applies: born before January 2, 1961, not married filing separately, a valid SSN" = true → helper "Figured: Subtract line 32 from line 31. If zero or less, enter $6,000 on line 35"]
+- **Encoded (Dollars):** Choose — [helper "Part V applies: you (and/or your spouse if filing jointly) were born before January 2, 1961, and have a valid SSN, not married filing separately" = false → helper "Year parameter sales.zero"] [helper "Part V applies: you (and/or your spouse if filing jointly) were born before January 2, 1961, and have a valid SSN, not married filing separately" = true → helper "Figured: Subtract line 32 from line 31. If zero or less, enter $6,000 on line 35"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part5",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part5",{"const":true}],"op":"test"},"then":"s1a.line33_calc"}],"op":"choose"}`
 - Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; Part V caution (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -780,7 +822,7 @@
 ## 34 — `s1a.line34`
 
 - **IRS:** Multiply line 33 by 6% (0.06)
-- **Encoded (NonNegDollars):** Choose — [helper "Part V applies: born before January 2, 1961, not married filing separately, a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part V applies: born before January 2, 1961, not married filing separately, a valid SSN" = true → helper "Figured: Multiply line 33 by 6% (0.06)"]
+- **Encoded (NonNegDollars):** Choose — [helper "Part V applies: you (and/or your spouse if filing jointly) were born before January 2, 1961, and have a valid SSN, not married filing separately" = false → helper "Year parameter sales.zero"] [helper "Part V applies: you (and/or your spouse if filing jointly) were born before January 2, 1961, and have a valid SSN, not married filing separately" = true → helper "Figured: Multiply line 33 by 6% (0.06)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part5",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part5",{"const":true}],"op":"test"},"then":"s1a.line34_calc"}],"op":"choose"}`
 - Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; Part V caution (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -808,28 +850,28 @@
 ## 35 — `s1a.line35`
 
 - **IRS:** Subtract line 34 from $6,000. If zero or less, enter -0-
-- **Encoded (NonNegDollars):** Choose — [helper "Part V applies: born before January 2, 1961, not married filing separately, a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Part V applies: born before January 2, 1961, not married filing separately, a valid SSN" = true → helper "Figured: Subtract line 34 from $6,000. If zero or less, enter -0-"]
+- **Encoded (NonNegDollars):** Choose — [helper "Part V applies: you (and/or your spouse if filing jointly) were born before January 2, 1961, and have a valid SSN, not married filing separately" = false → helper "Year parameter sales.zero"] [helper "Part V applies: you (and/or your spouse if filing jointly) were born before January 2, 1961, and have a valid SSN, not married filing separately" = true → helper "Figured: Subtract line 34 from $6,000. If zero or less, enter -0-"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part5",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part5",{"const":true}],"op":"test"},"then":"s1a.line35_calc"}],"op":"choose"}`
 - Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; Part V caution (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.died_before_65_count`
 
-- **Authored helper label:** Your entry, if the answer is yes
+- **Authored helper label:** Your entry, if you were born between January 2, 1960, and January 1, 1961, and died in 2025 before reaching age 65
 - **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Whose entry is this, yours or your spouse's?" = 'taxpayer' and helper "Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before reaching age 65?" = true, within the current person when parent-bound. An unanswered roster is unknown.
 - Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"all":[{"eq":["person.role",{"const":"taxpayer"}],"op":"test"},{"eq":["person.died_before_65",{"const":true}],"op":"test"}],"op":"test"}}`
 - Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.died_before_65`
 
-- **Authored helper label:** Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before reaching age 65?
-- **Encoded (Bool):** helper "Your entry, if the answer is yes" > 0 (a count)
+- **Authored helper label:** You were born between January 2, 1960, and January 1, 1961, and died in 2025 before reaching age 65
+- **Encoded (Bool):** helper "Your entry, if you were born between January 2, 1960, and January 1, 1961, and died in 2025 before reaching age 65" > 0 (a count)
 - Expr: `{"gt":["s1a.died_before_65_count",{"const":0,"type":"Count"}],"op":"test"}`
 - Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (gate) — `s1a.senior_decedent`
 
 - **Authored helper label:** A filer who died in 2025 before reaching age 65
-- **Encoded (Bool):** helper "Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before reaching age 65?" = true
+- **Encoded (Bool):** helper "You were born between January 2, 1960, and January 1, 1961, and died in 2025 before reaching age 65" = true
 - Expr: `{"eq":["s1a.died_before_65",{"const":true}],"op":"test"}`
 - Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -855,13 +897,55 @@
 - Expr: `{"alternatives":[{"guard":{"eq":["sa.age65",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["sa.age65",{"const":true}],"op":"test"},"then":"s1a.line36a_claim"}],"op":"choose"}`
 - Cite: [f1040s1a] Schedule 1-A (2025), line 36a (2025; created 2025-11-04; sha256 64f97b38)
 
+## (helper) — `s1a.spouse_senior_count`
+
+- **Authored helper label:** Your spouse, if born before January 2, 1961, with a valid SSN
+- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Whose entry is this, yours or your spouse's?" = 'spouse' and helper "Were you born before January 2, 1961?" = true and helper "Do you have an SSN valid for employment issued before the due date of your return?" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"all":[{"eq":["person.role",{"const":"spouse"}],"op":"test"},{"eq":["person.age65",{"const":true}],"op":"test"},{"eq":["person.work_ssn",{"const":true}],"op":"test"}],"op":"test"}}`
+- Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if" and "If you are married filing jointly, the spouse who is claiming the enhanced deduction for seniors must have a valid SSN" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `s1a.spouse_senior`
+
+- **Authored helper label:** Your spouse was born before January 2, 1961, and has a valid SSN
+- **Encoded (Bool):** helper "Your spouse, if born before January 2, 1961, with a valid SSN" > 0 (a count)
+- Expr: `{"gt":["s1a.spouse_senior_count",{"const":0,"type":"Count"}],"op":"test"}`
+- Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if" and "If you are married filing jointly, the spouse who is claiming the enhanced deduction for seniors must have a valid SSN" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `s1a.spouse_died_before_65_count`
+
+- **Authored helper label:** Your spouse's entry, if your spouse was born between January 2, 1960, and January 1, 1961, and died in 2025 before reaching age 65
+- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Whose entry is this, yours or your spouse's?" = 'spouse' and helper "Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before reaching age 65?" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"all":[{"eq":["person.role",{"const":"spouse"}],"op":"test"},{"eq":["person.died_before_65",{"const":true}],"op":"test"}],"op":"test"}}`
+- Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `s1a.spouse_died_before_65`
+
+- **Authored helper label:** Your spouse was born between January 2, 1960, and January 1, 1961, and died in 2025 before reaching age 65
+- **Encoded (Bool):** helper "Your spouse's entry, if your spouse was born between January 2, 1960, and January 1, 1961, and died in 2025 before reaching age 65" > 0 (a count)
+- Expr: `{"gt":["s1a.spouse_died_before_65_count",{"const":0,"type":"Count"}],"op":"test"}`
+- Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `s1a.spouse_senior_decedent`
+
+- **Authored helper label:** A spouse who died in 2025 before reaching age 65
+- **Encoded (Bool):** helper "Your spouse was born between January 2, 1960, and January 1, 1961, and died in 2025 before reaching age 65" = true
+- Expr: `{"eq":["s1a.spouse_died_before_65",{"const":true}],"op":"test"}`
+- Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `s1a.line36b_senior`
+
+- **Authored helper label:** Line 36b for a spouse born before January 2, 1961, with a valid SSN
+- **Encoded (NonNegDollars):** Enter the amount from line 35.
+- **Refusal:** when s1a.spouse_senior_decedent is true, cannot complete Enhanced deduction for seniors on the final return of a person who died in 2025 before reaching age 65. A person born before January 2, 1961, who died in 2025 before reaching age 65 does not qualify; this case is outside this tool. Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
+- Expr: `{"from":"s1a.line35","op":"copy"}`
+- Cite: [f1040s1a] Schedule 1-A (2025), line 36b (2025; created 2025-11-04; sha256 64f97b38)
+
 ## 36b — `s1a.line36b`
 
 - **IRS:** If you are married filing jointly, your spouse has a valid social security number (see instructions), and your spouse was born before January 2, 1961, enter the amount from line 35
-- **Encoded (NonNegDollars):** Enter $0 (sales.zero).
-- **Refusal:** when sa.spouse_extra is true, cannot complete Schedule 1-A, line 36b (a spouse born before January 2, 1961, on a joint return). A spouse's age and blindness boxes, and the spouse's enhanced deduction for seniors, are outside this tool. Cite: [f1040s1a] Schedule 1-A (2025), line 36b (2025; created 2025-11-04; sha256 64f97b38)
-- Expr: `{"op":"param","ref":"sales.zero"}`
-- Cite: [f1040s1a] Schedule 1-A (2025), line 36b (2025; created 2025-11-04; sha256 64f97b38)
+- **Encoded (NonNegDollars):** Choose — [helper "Your spouse was born before January 2, 1961, and has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Your spouse was born before January 2, 1961, and has a valid SSN" = true → helper "Line 36b for a spouse born before January 2, 1961, with a valid SSN"]
+- Expr: `{"alternatives":[{"guard":{"eq":["s1a.spouse_senior",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.spouse_senior",{"const":true}],"op":"test"},"then":"s1a.line36b_senior"}],"op":"choose"}`
+- Cite: [f1040s1a] Schedule 1-A (2025), line 36b; i1040gi p. 110, "The maximum amount of the enhanced deduction for seniors is $6,000 per person" (2025; created 2025-11-04; sha256 64f97b38)
 
 ## 37 — `s1a.line37`
 

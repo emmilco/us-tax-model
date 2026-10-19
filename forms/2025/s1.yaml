@@ -145,139 +145,18 @@ form:
       doc: f1040s1
       locator: Schedule 1 (2025), line 10 (lines 1 to 6, 8a to 8z and 9 are outside this tool and refused at Form 1040 line
         8 by scope.schedule1)
-  - id: s1.educator_expenses
-    printed: (helper)
-    label: Qualified educator expenses you paid in 2025
-    type: NonNegDollars
-    expr:
-      op: sum_over
-      collection: person
-      field: person.educator_expenses
-      where:
-        op: test
-        eq:
-        - person.role
-        - const: taxpayer
-    cite:
-      doc: i1040gi
-      locator: p. 93, Schedule 1, line 11, Qualified expenses and 'You must reduce your qualified expenses by the following
-        amounts'
-  - id: s1.has_educator_expenses
-    printed: (helper)
-    label: Any qualified educator expenses
-    type: Bool
-    expr:
-      op: test
-      gt:
-      - s1.educator_expenses
-      - param: sales.zero
-    cite:
-      doc: i1040gi
-      locator: p. 93, Schedule 1, line 11
-  - id: s1.eligible_educator_count
-    printed: (helper)
-    label: Your entry, if the answer is yes
-    type: Count
-    expr:
-      op: sum_over
-      collection: person
-      field: person.one
-      where:
-        op: test
-        all:
-        - op: test
-          eq:
-          - person.role
-          - const: taxpayer
-        - op: test
-          eq:
-          - person.eligible_educator
-          - const: true
-    cite:
-      doc: i1040gi
-      locator: p. 93, Schedule 1, line 11, 'An eligible educator is a kindergarten through grade 12 teacher, instructor, counselor,
-        principal, or aide who worked in a school for at least 900 hours during a school year'
-  - id: s1.eligible_educator
-    printed: (helper)
-    label: Were you an eligible educator in 2025 (a kindergarten through grade 12 teacher, instructor, counselor, principal,
-      or aide who worked in a school for at least 900 hours during a school year)?
-    type: Bool
-    expr:
-      op: test
-      gt:
-      - s1.eligible_educator_count
-      - const: 0
-        type: Count
-    cite:
-      doc: i1040gi
-      locator: p. 93, Schedule 1, line 11, 'An eligible educator is a kindergarten through grade 12 teacher, instructor, counselor,
-        principal, or aide who worked in a school for at least 900 hours during a school year'
-  - id: s1.educator_max
-    printed: (helper)
-    label: Year parameter s1.educator_max ($300)
-    type: NonNegDollars
-    expr:
-      op: param
-      ref: s1.educator_max
-    cite:
-      doc: i1040gi
-      locator: p. 93, Schedule 1, line 11, 'up to $300'
-  - id: s1.educator_limited
-    printed: (helper)
-    label: Qualified educator expenses, up to $300
-    type: NonNegDollars
-    expr:
-      op: smaller_of
-      of:
-      - s1.educator_expenses
-      - s1.educator_max
-    cite:
-      doc: i1040gi
-      locator: p. 93, Schedule 1, line 11, 'you can deduct on line 11 up to $300 of qualified expenses you paid in 2025'
-  - id: s1.educator_deduction
-    printed: (helper)
-    label: Educator expense deduction for an eligible educator
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-      - guard:
-          op: test
-          eq:
-          - s1.eligible_educator
-          - const: true
-        then: s1.educator_limited
-      - guard:
-          op: test
-          eq:
-          - s1.eligible_educator
-          - const: false
-        then: s1.zero
-    cite:
-      doc: i1040gi
-      locator: p. 93, Schedule 1, line 11, 'If you were an eligible educator in 2025'
   - id: s1.line11
     printed: '11'
     label: Educator expenses
     type: NonNegDollars
     expr:
-      op: choose
-      alternatives:
-      - guard:
-          op: test
-          eq:
-          - s1.has_educator_expenses
-          - const: true
-        then: s1.educator_deduction
-      - guard:
-          op: test
-          eq:
-          - s1.has_educator_expenses
-          - const: false
-        then: s1.zero
+      op: sum_over
+      collection: person
+      field: person.educator_deduction
     cite:
       doc: f1040s1
-      locator: Schedule 1 (2025), line 11
+      locator: Schedule 1 (2025), line 11; i1040gi p. 93, "If you and your spouse are filing jointly and both of you were eligible
+        educators, the maximum deduction is $600. However, neither spouse can deduct more than $300 of their qualified expenses"
   - id: s1.line13
     printed: '13'
     label: Health savings account deduction. Attach Form 8889

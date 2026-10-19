@@ -163,6 +163,8 @@ function mutations(data: CanonicalData): Mutation[] {
 // Survivors that are provably equivalent mutants, with the reason. The score
 // is reported raw and adjusted (equivalents excluded from the denominator).
 const EQUIVALENT: Record<string, string> = {
+  "operand.f8889.f8889.family_year.family_under55": "f8889.family_year is read only under the last-month rule with family coverage on December 1, where the filer is married with family coverage, so line 3 is the family amount without the additional contribution amount (f8889.age55_line3 is false), line 4 is zero (Archer MSAs are refused) and line 5 equals f8889.family_under55.",
+  "operand.f8889.f8889.self_year.self_amount": "f8889.self_year is read only under the last-month rule, by f8889.self_all and, with family coverage on December 1, by f8889.self_dec_year; the only reader of both is Step 4 (f8889.step4_total = self_all - self_in_family), where the two copies cancel, and with self-only coverage on December 1 the spouse rule does not apply, so Step 4 is not read.",
   "operand.qdcg.qdcg.line8.line7":
     "Provably equivalent: line 8 is min(line 5, line 7) and line 7 is min(line 1, line 6) with line 5 ≤ line 1; " +
     "min(line 5, min(line 1, line 6)) = min(line 5, line 6), so substituting line 6 for line 7 cannot change any value.",
@@ -295,6 +297,8 @@ const EQUIVALENT_IF: Record<string, { reason: string; holds: (data: CanonicalDat
       return whens.every((w) => carriers.some((l) => (l?.refuses ?? []).some((r) => r.when === w)));
     },
   },
+  "filter.person.person.hsa_step1": hsaSplitSum("person.hsa_step1", "household.hsa_step1_sum"),
+  "filter.person.person.hsa_share": hsaSplitSum("person.hsa_share", "household.hsa_share_sum"),
   "refusal.retirement.retirement.amount_a.0": firstReadCarries("retirement.amount_a", 0, ["retirement.show_a", "retirement.has_rollover", "retirement.rolled"]),
   "refusal.retirement.retirement.amount_a.1": firstReadCarries("retirement.amount_a", 1, ["retirement.show_a", "retirement.has_rollover", "retirement.rolled"]),
   "refusal.ssb.ssb.line6.0": firstReadCarries("ssb.line6", 0, ["ssb.line5", "ssb.line3", "f1040.line8"], "ssb.line7"),
@@ -405,6 +409,20 @@ function s1aFigure(d: CanonicalData, id: string): Line | undefined {
 // They differ only when the part does not apply; then every reader of the part's chain is a
 // printed line of the part (itself $0) or the part's result line (13, 21, 30, 36a), which is $0
 // under the same conditions before it reads the chain.
+function hsaSplitSum(perPerson: string, total: string) {
+  return {
+    reason: `${perPerson} keeps only a Form 8889 that uses the spouse rule of line 6. Its total ${total} is read only by f8889.allocation_bad, which is reached only on a form that uses the rule and which already holds when exactly one form uses it (household.hsa_split_count is 1); when both forms use it the filter keeps every form. So dropping the filter changes no value that is read.`,
+    holds: (d: CanonicalData): boolean => {
+      const bad = findLine(d, "f8889.allocation_bad");
+      const share = findLine(d, "f8889.share");
+      return readersOf(d, total).join() === "f8889.allocation_bad" && readersOf(d, perPerson).join() === total
+        && !!bad && JSON.stringify(bad.expr).includes('"household.hsa_split_count",{"const":1')
+        && !!share && (share.refuses ?? []).some((r) => r.when === "f8889.allocation_bad")
+        && readersOf(d, "f8889.share").join() === "f8889.line6_split";
+    },
+  };
+}
+
 function s1aPartGate(gated: string, flag: string, figure = gated + "_calc") {
   return {
     reason: `${gated} is ${figure} when ${flag} holds and $0 otherwise; the chain that reads it is reached only through the part's result line, which is $0 when the part does not apply, so reading ${figure} instead changes no value.`,

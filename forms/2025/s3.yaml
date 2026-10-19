@@ -43,24 +43,18 @@ form:
           cite:
             doc: f1040
             locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
-    - id: s3.married
+    - id: s3.mfs
       printed: (gate)
-      label: Married filing status requires unsupported per-spouse interview
+      label: Married filing separately
       type: Bool
       expr:
         op: test
-        any:
-          - op: test
-            eq:
-              - f1040.status
-              - const: mfj
-          - op: test
-            eq:
-              - f1040.status
-              - const: mfs
+        eq:
+          - f1040.status
+          - const: mfs
       cite:
         doc: i1040gi
-        locator: p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld
+        locator: p. 14, Married Filing Separately
     - id: s3.line9
       printed: "9"
       label: Net premium tax credit. Attach Form 8962
@@ -94,13 +88,14 @@ form:
         doc: f1040s3
         locator: Schedule 3 (2025), line 11
       refuses:
-        - when: s3.married
-          form: Schedule 3 line 11 (per-spouse computation)
-          remedy: The interview currently represents one person. Married filing statuses are unsupported for
-            this per-spouse rule.
+        - when: s3.mfs
+          form: Married filing separately
+          remedy: The rules for a married filing separately return (among them a spouse who itemizes, the Social
+            Security base for spouses who lived together and the credits a separate return cannot take) are outside
+            this tool. Married filing jointly is supported.
           cite:
             doc: i1040gi
-            locator: p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld
+            locator: p. 14, Married Filing Separately
     - id: s3.line12
       printed: "12"
       label: Credit for federal tax on fuels. Attach Form 4136

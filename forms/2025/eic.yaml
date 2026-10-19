@@ -23,10 +23,10 @@ form:
       cite:
         doc: i1040gi
         locator: p. 41, Step 3, question 6, and p. 42, Step 4, question 5
-    - id: eic.born_before_2001_count
+    - id: eic.age_range_count
       printed: (helper)
-      label: Your entry, if the answer is yes
       type: Count
+      label: Number of people on the return born after December 31, 1960, and before January 2, 2001
       expr:
         op: sum_over
         collection: person
@@ -34,69 +34,33 @@ form:
         where:
           op: test
           all:
-          - op: test
-            eq:
-            - person.role
-            - const: taxpayer
           - op: test
             eq:
             - person.born_before_2001
             - const: true
-      cite:
-        doc: i1040gi
-        locator: p. 41, Step 4, question 2, "Check 'Yes' if you ... were born after December 31, 1960, and before January 2,
-          2001"
-    - id: eic.born_before_2001
-      printed: (helper)
-      label: Were you born before January 2, 2001?
-      type: Bool
-      expr:
-        op: test
-        gt:
-        - eic.born_before_2001_count
-        - const: 0
-          type: Count
-      cite:
-        doc: i1040gi
-        locator: p. 41, Step 4, question 2, "Check 'Yes' if you ... were born after December 31, 1960, and before January 2,
-          2001"
-    - id: eic.born_after_1960_count
-      printed: (helper)
-      label: Your entry, if the answer is yes
-      type: Count
-      expr:
-        op: sum_over
-        collection: person
-        field: person.one
-        where:
-          op: test
-          all:
-          - op: test
-            eq:
-            - person.role
-            - const: taxpayer
           - op: test
             eq:
             - person.born_after_1960
             - const: true
       cite:
         doc: i1040gi
-        locator: p. 41, Step 4, question 2, "Check 'Yes' if you ... were born after December 31, 1960, and before January 2,
-          2001"
-    - id: eic.born_after_1960
+        locator: p. 41, Step 4, question 2, "Were you, or your spouse if filing a joint return, at least age 25 but under
+          age 65 at the end of 2025? (Check 'Yes' if you, or your spouse if filing a joint return, were born after December
+          31, 1960, and before January 2, 2001.)"
+    - id: eic.age_range
       printed: (helper)
-      label: Were you born after December 31, 1960?
       type: Bool
+      label: You, or your spouse if filing a joint return, were at least age 25 but under age 65 at the end of 2025
       expr:
         op: test
         gt:
-        - eic.born_after_1960_count
+        - eic.age_range_count
         - const: 0
           type: Count
       cite:
         doc: i1040gi
-        locator: p. 41, Step 4, question 2, "Check 'Yes' if you ... were born after December 31, 1960, and before January 2,
-          2001"
+        locator: p. 41, Step 4, question 2, "Were you, or your spouse if filing a joint return, at least age 25 but under
+          age 65 at the end of 2025?"
     - id: eic.us_home
       printed: (helper)
       type: Bool
@@ -514,7 +478,7 @@ form:
       expr:
         op: test
         eq:
-          - household.taxpayer_work_ssn
+          - household.all_work_ssn
           - const: true
       cite:
         doc: i1040gi
@@ -710,11 +674,7 @@ form:
               - const: false
           - op: test
             eq:
-              - eic.born_before_2001
-              - const: true
-          - op: test
-            eq:
-              - eic.born_after_1960
+              - eic.age_range
               - const: true
           - op: test
             eq:
@@ -1524,11 +1484,7 @@ form:
                   - const: false
               - op: test
                 eq:
-                  - eic.born_before_2001
-                  - const: true
-              - op: test
-                eq:
-                  - eic.born_after_1960
+                  - eic.age_range
                   - const: true
               - op: test
                 eq:
@@ -1550,11 +1506,7 @@ form:
                   - const: false
               - op: test
                 eq:
-                  - eic.born_before_2001
-                  - const: true
-              - op: test
-                eq:
-                  - eic.born_after_1960
+                  - eic.age_range
                   - const: true
               - op: test
                 eq:

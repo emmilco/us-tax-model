@@ -3,45 +3,290 @@ form:
   kind: form
   title: Household facts for dependents and head of household
   tax_year: 2025
-  note: Facts about the filer that the dependent tests and the head of household status read. Married
-    filing statuses remain refused elsewhere; "unmarried" here is the instructions' unmarried or
-    considered unmarried at the end of 2025.
+  note: Facts about the people on the return that the dependent tests, the credits and the head of
+    household status read; "unmarried" here is the instructions' unmarried or considered unmarried
+    at the end of 2025.
   lines:
-    - id: household.taxpayer_tin_count
+    - id: household.persons
       printed: (helper)
-      label: Your entry, if the answer is yes
       type: Count
+      label: 'Number of people on the return (you, and your spouse if filing jointly)'
+      expr:
+        op: sum_over
+        collection: person
+        field: person.one
+      cite:
+        doc: f1040
+        locator: 'Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial"; Filing Status'
+    - id: household.taxpayers
+      printed: (helper)
+      type: Count
+      label: 'Number of entries for you'
       expr:
         op: sum_over
         collection: person
         field: person.one
         where:
           op: test
+          eq:
+          - person.role
+          - const: taxpayer
+      cite:
+        doc: f1040
+        locator: 'Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial"; Filing Status'
+    - id: household.spouses
+      printed: (helper)
+      type: Count
+      label: 'Number of entries for your spouse'
+      expr:
+        op: sum_over
+        collection: person
+        field: person.one
+        where:
+          op: test
+          eq:
+          - person.role
+          - const: spouse
+      cite:
+        doc: f1040
+        locator: 'Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial"; Filing Status'
+    - id: household.roster_ok
+      printed: (helper)
+      type: Bool
+      label: 'One entry for you, and one for your spouse exactly when filing jointly'
+      expr:
+        op: test
+        any:
+        - op: test
           all:
           - op: test
             eq:
-            - person.role
-            - const: taxpayer
+            - f1040.status
+            - const: mfj
+          - op: test
+            eq:
+            - household.taxpayers
+            - const: 1
+              type: Count
+          - op: test
+            eq:
+            - household.spouses
+            - const: 1
+              type: Count
+        - op: test
+          all:
+          - op: test
+            ne:
+            - f1040.status
+            - const: mfj
+          - op: test
+            eq:
+            - household.taxpayers
+            - const: 1
+              type: Count
+          - op: test
+            eq:
+            - household.spouses
+            - const: 0
+              type: Count
+      cite:
+        doc: f1040
+        locator: 'Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial"; Filing Status'
+    - id: household.roster_bad
+      printed: (gate)
+      type: Bool
+      label: 'The people entered do not match the filing status'
+      expr:
+        op: test
+        eq:
+        - household.roster_ok
+        - const: false
+      cite:
+        doc: f1040
+        locator: 'Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial"; Filing Status'
+    - id: household.hsa_people
+      printed: (helper)
+      type: Count
+      label: Number of people on the return with a Form 8889
+      expr:
+        op: sum_over
+        collection: person
+        field: person.one
+        where:
+          op: test
+          gt:
+          - person.hsa_forms
+          - const: 0
+            type: Count
+      cite:
+        doc: i8889
+        locator: 'p. 4, Name and social security number (SSN), "If married filing jointly and both you and your spouse have HSAs, complete a separate Form 8889 for each of you"'
+    - id: household.hsa_both
+      printed: (helper)
+      type: Bool
+      label: You and your spouse each have a Form 8889
+      expr:
+        op: test
+        eq:
+        - household.hsa_people
+        - const: 2
+          type: Count
+      cite:
+        doc: i8889
+        locator: 'p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3'
+    - id: household.hsa_split_count
+      printed: (helper)
+      type: Count
+      label: 'Number of Forms 8889 using the spouse rule of line 6'
+      expr:
+        op: sum_over
+        collection: person
+        field: person.hsa_split
+      cite:
+        doc: i8889
+        locator: 'p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3'
+    - id: household.hsa_agreed_count
+      printed: (helper)
+      type: Count
+      label: 'Number of Forms 8889 using an agreed allocation'
+      expr:
+        op: sum_over
+        collection: person
+        field: person.hsa_agreed
+      cite:
+        doc: i8889
+        locator: 'p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3'
+    - id: household.hsa_step1_sum
+      printed: (helper)
+      type: NonNegDollars
+      label: 'Both spouses Step 1 limits added together'
+      expr:
+        op: sum_over
+        collection: person
+        field: person.hsa_step1
+      cite:
+        doc: i8889
+        locator: 'p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3'
+    - id: household.hsa_share_sum
+      printed: (helper)
+      type: NonNegDollars
+      label: 'Both spouses parts of the Step 1 limit added together'
+      expr:
+        op: sum_over
+        collection: person
+        field: person.hsa_share
+      cite:
+        doc: i8889
+        locator: 'p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3'
+    - id: household.work_ssn_count
+      printed: (helper)
+      type: Count
+      label: 'Number of people on the return with an SSN valid for employment'
+      expr:
+        op: sum_over
+        collection: person
+        field: person.one
+        where:
+          op: test
+          eq:
+          - person.work_ssn
+          - const: true
+      cite:
+        doc: i1040gi
+        locator: 'p. 17, Before you begin, and p. 40, Step 1, question 2'
+    - id: household.any_work_ssn
+      printed: (helper)
+      type: Bool
+      label: 'You, or your spouse if filing jointly, have an SSN valid for employment'
+      expr:
+        op: test
+        gt:
+        - household.work_ssn_count
+        - const: 0
+          type: Count
+      cite:
+        doc: i1040gi
+        locator: 'p. 17, Before you begin, "If you are filing a joint return, only one spouse is required to have a valid SSN to be eligible for the CTC and ACTC"'
+    - id: household.all_work_ssn
+      printed: (helper)
+      type: Bool
+      label: 'You, and your spouse if filing jointly, have SSNs valid for employment'
+      expr:
+        op: test
+        eq:
+        - household.work_ssn_count
+        - household.persons
+      cite:
+        doc: i1040gi
+        locator: 'p. 40, Step 1, question 2, "Do you, and your spouse if filing a joint return, have a social security number ... that allows you to work and is valid for EIC purposes"'
+    - id: household.tin_count
+      printed: (helper)
+      type: Count
+      label: 'Number of people on the return with an SSN or ITIN'
+      expr:
+        op: sum_over
+        collection: person
+        field: person.one
+        where:
+          op: test
+          eq:
+          - person.tin
+          - const: true
+      cite:
+        doc: i1040gi
+        locator: 'p. 17, Before you begin, "If you want to claim the credit for other dependents, you, and your spouse if filing jointly, must have either an SSN or ITIN"'
+    - id: household.all_tin
+      printed: (helper)
+      type: Bool
+      label: 'You, and your spouse if filing jointly, have an SSN or ITIN'
+      expr:
+        op: test
+        eq:
+        - household.tin_count
+        - household.persons
+      cite:
+        doc: i1040gi
+        locator: 'p. 17, Before you begin, "If you want to claim the credit for other dependents, you, and your spouse if filing jointly, must have either an SSN or ITIN"'
+    - id: household.id_count
+      printed: (helper)
+      type: Count
+      label: 'Number of people on the return with an SSN valid for employment or an SSN or ITIN'
+      expr:
+        op: sum_over
+        collection: person
+        field: person.one
+        where:
+          op: test
+          any:
+          - op: test
+            eq:
+            - person.work_ssn
+            - const: true
           - op: test
             eq:
             - person.tin
             - const: true
       cite:
         doc: i1040gi
-        locator: p. 19, Step 5, question 1
-    - id: household.taxpayer_tin
+        locator: 'p. 17, Before you begin, "The other spouse must have either an SSN or ITIN"'
+    - id: household.ctc_ssn
       printed: (helper)
-      label: Do you have an SSN or ITIN issued on or before the due date of your return, or have you applied for an ITIN by then?
       type: Bool
+      label: 'Child tax credit identification: you, or your spouse if filing jointly, have an SSN valid for employment, and each other person on the return has an SSN or ITIN'
       expr:
         op: test
-        gt:
-        - household.taxpayer_tin_count
-        - const: 0
-          type: Count
+        all:
+        - op: test
+          eq:
+          - household.any_work_ssn
+          - const: true
+        - op: test
+          eq:
+          - household.id_count
+          - household.persons
       cite:
         doc: i1040gi
-        locator: p. 19, Step 5, question 1
+        locator: 'p. 17, Before you begin, "If you are filing a joint return, only one spouse is required to have a valid SSN to be eligible for the CTC and ACTC. The other spouse must have either an SSN or ITIN"'
     - id: household.taxpayer_work_ssn_count
       printed: (helper)
       label: Your entry, if the answer is yes

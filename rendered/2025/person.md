@@ -81,6 +81,41 @@
 - Expr: `{"op":"input","source":"Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)"}`
 - Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `person.educator_max`
+
+- **Authored helper label:** Year parameter s1.educator_max ($300)
+- **Encoded (NonNegDollars):** Enter $300 (s1.educator_max).
+- Expr: `{"op":"param","ref":"s1.educator_max"}`
+- Cite: [i1040gi] p. 93, Schedule 1, line 11, "If you and your spouse are filing jointly and both of you were eligible educators, the maximum deduction is $600. However, neither spouse can deduct more than $300 of their qualified expenses" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.has_educator_expenses`
+
+- **Authored helper label:** Any qualified educator expenses for this person
+- **Encoded (Bool):** helper "Qualified educator expenses you paid in 2025" > $0 (sales.zero)
+- Expr: `{"gt":["person.educator_expenses",{"param":"sales.zero"}],"op":"test"}`
+- Cite: [i1040gi] p. 93, Schedule 1, line 11 (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.educator_limited`
+
+- **Authored helper label:** This person's qualified educator expenses, up to $300
+- **Encoded (NonNegDollars):** Enter the smaller of helper "Qualified educator expenses you paid in 2025" or helper "Year parameter s1.educator_max ($300)".
+- Expr: `{"of":["person.educator_expenses","person.educator_max"],"op":"smaller_of"}`
+- Cite: [i1040gi] p. 93, Schedule 1, line 11, "If you and your spouse are filing jointly and both of you were eligible educators, the maximum deduction is $600. However, neither spouse can deduct more than $300 of their qualified expenses" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.educator_eligible_amount`
+
+- **Authored helper label:** This person's qualified educator expenses up to $300 if an eligible educator, else zero
+- **Encoded (NonNegDollars):** Choose — [helper "Were you an eligible educator in 2025 (a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year)?" = true → helper "This person's qualified educator expenses, up to $300"] [helper "Were you an eligible educator in 2025 (a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year)?" = false → line zero]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.eligible_educator",{"const":true}],"op":"test"},"then":"person.educator_limited"},{"guard":{"eq":["person.eligible_educator",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
+- Cite: [i1040gi] p. 93, Schedule 1, line 11, "If you were an eligible educator in 2025, you can deduct on line 11 up to $300 of qualified expenses you paid in 2025"; "If you and your spouse are filing jointly and both of you were eligible educators, the maximum deduction is $600. However, neither spouse can deduct more than $300 of their qualified expenses" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.educator_deduction`
+
+- **Authored helper label:** This person's educator expense deduction
+- **Encoded (NonNegDollars):** Choose — [helper "Any qualified educator expenses for this person" = true → helper "This person's qualified educator expenses up to $300 if an eligible educator, else zero"] [helper "Any qualified educator expenses for this person" = false → line zero]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.has_educator_expenses",{"const":true}],"op":"test"},"then":"person.educator_eligible_amount"},{"guard":{"eq":["person.has_educator_expenses",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
+- Cite: [i1040gi] p. 93, Schedule 1, line 11, "If you were an eligible educator in 2025, you can deduct on line 11 up to $300 of qualified expenses you paid in 2025"; "If you and your spouse are filing jointly and both of you were eligible educators, the maximum deduction is $600. However, neither spouse can deduct more than $300 of their qualified expenses" (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (helper) — `person.hsa_forms`
 
 - **Authored helper label:** Number of Forms 8889 entered for this person
@@ -94,6 +129,34 @@
 - **Encoded (Bool):** helper "Number of Forms 8889 entered for this person" > 1 (a count)
 - Expr: `{"gt":["person.hsa_forms",{"const":1,"type":"Count"}],"op":"test"}`
 - Cite: [i8889] p. 4, Name and social security number (SSN), "complete a separate Form 8889 for each of you" (2025; sha256 da6f2f58)
+
+## (helper) — `person.hsa_split`
+
+- **Authored helper label:** This persons Form 8889 uses the spouse rule of line 6
+- **Encoded (Count):** Add f8889.one over every confirmed f8889 entry for which helper "Spouses with separate HSAs, treated as having family coverage at any time during 2025" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"f8889","field":"f8889.one","op":"sum_over","where":{"eq":["f8889.split",{"const":true}],"op":"test"}}`
+- Cite: [i8889] p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3 (2025; sha256 da6f2f58)
+
+## (helper) — `person.hsa_agreed`
+
+- **Authored helper label:** This persons Form 8889 uses an agreed allocation under the spouse rule of line 6
+- **Encoded (Count):** Add f8889.one over every confirmed f8889 entry for which helper "Spouses with separate HSAs, treated as having family coverage at any time during 2025" = true and helper "Do you and your spouse divide the family contribution limit equally, or by a different allocation you both agree on?" = 'agreed', within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"f8889","field":"f8889.one","op":"sum_over","where":{"all":[{"eq":["f8889.split",{"const":true}],"op":"test"},{"eq":["f8889.allocation",{"const":"agreed"}],"op":"test"}],"op":"test"}}`
+- Cite: [i8889] p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3 (2025; sha256 da6f2f58)
+
+## (helper) — `person.hsa_step1`
+
+- **Authored helper label:** This persons Step 1 limit under the spouse rule of line 6
+- **Encoded (NonNegDollars):** Add f8889.step1 over every confirmed f8889 entry for which helper "Spouses with separate HSAs, treated as having family coverage at any time during 2025" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"f8889","field":"f8889.step1","op":"sum_over","where":{"eq":["f8889.split",{"const":true}],"op":"test"}}`
+- Cite: [i8889] p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3 (2025; sha256 da6f2f58)
+
+## (helper) — `person.hsa_share`
+
+- **Authored helper label:** This persons part of the Step 1 limit under the spouse rule of line 6
+- **Encoded (NonNegDollars):** Add f8889.share_raw over every confirmed f8889 entry for which helper "Spouses with separate HSAs, treated as having family coverage at any time during 2025" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"f8889","field":"f8889.share_raw","op":"sum_over","where":{"eq":["f8889.split",{"const":true}],"op":"test"}}`
+- Cite: [i8889] p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3 (2025; sha256 da6f2f58)
 
 ## (helper) — `person.hsa_deduction`
 
@@ -123,6 +186,13 @@
 - **Encoded (NonNegDollars):** Add tipjob.amount over every confirmed tipjob entry, within the current person when parent-bound. An unanswered roster is unknown.
 - Expr: `{"collection":"tipjob","field":"tipjob.amount","op":"sum_over"}`
 - Cite: [i1040gi] p. 104, Qualified Tips From More Than One Employer Worksheet, column (b) (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.ot_employers`
+
+- **Authored helper label:** Number of employers that paid this person qualified overtime compensation
+- **Encoded (Count):** Add otjob.one over every confirmed otjob entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"otjob","field":"otjob.one","op":"sum_over"}`
+- Cite: [i1040gi] p. 108, Schedule 1-A, line 14a, and the Qualified Overtime Compensation From More Than One Employer Worksheet (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `person.ot_total`
 

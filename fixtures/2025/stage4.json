@@ -1648,7 +1648,8 @@
         "$interest": [],
         "$gift": [],
         "$person": [
-          "taxpayer"
+          "taxpayer",
+          "spouse"
         ],
         "person[taxpayer].role": "taxpayer",
         "$f8889@person[taxpayer]": [],
@@ -1673,7 +1674,16 @@
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "person[spouse].role": "spouse",
+        "person[spouse].rrta": false,
+        "person[spouse].age65": false,
+        "person[spouse].blind": false,
+        "person[spouse].tin": true,
+        "person[spouse].work_ssn": true,
+        "person[spouse].educator_expenses": 0,
+        "$w2@person[spouse]": [],
+        "$f8889@person[spouse]": []
       },
       "expect": {
         "f8959.line6": {
@@ -1760,7 +1770,8 @@
         "$interest": [],
         "$gift": [],
         "$person": [
-          "taxpayer"
+          "taxpayer",
+          "spouse"
         ],
         "person[taxpayer].role": "taxpayer",
         "$f8889@person[taxpayer]": [],
@@ -1785,7 +1796,16 @@
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "person[spouse].role": "spouse",
+        "person[spouse].rrta": false,
+        "person[spouse].age65": false,
+        "person[spouse].blind": false,
+        "person[spouse].tin": true,
+        "person[spouse].work_ssn": true,
+        "person[spouse].educator_expenses": 0,
+        "$w2@person[spouse]": [],
+        "$f8889@person[spouse]": []
       },
       "expect": {
         "f8959.line6": {
@@ -1872,7 +1892,8 @@
         "$interest": [],
         "$gift": [],
         "$person": [
-          "taxpayer"
+          "taxpayer",
+          "spouse"
         ],
         "person[taxpayer].role": "taxpayer",
         "$f8889@person[taxpayer]": [],
@@ -1897,7 +1918,16 @@
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "person[spouse].role": "spouse",
+        "person[spouse].rrta": false,
+        "person[spouse].age65": false,
+        "person[spouse].blind": false,
+        "person[spouse].tin": true,
+        "person[spouse].work_ssn": true,
+        "person[spouse].educator_expenses": 0,
+        "$w2@person[spouse]": [],
+        "$f8889@person[spouse]": []
       },
       "expect": {
         "f8959.line6": {
@@ -3767,7 +3797,8 @@
         "$interest": [],
         "$gift": [],
         "$person": [
-          "taxpayer"
+          "taxpayer",
+          "spouse"
         ],
         "person[taxpayer].role": "taxpayer",
         "$f8889@person[taxpayer]": [],
@@ -3792,7 +3823,16 @@
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "person[spouse].role": "spouse",
+        "person[spouse].rrta": false,
+        "person[spouse].age65": false,
+        "person[spouse].blind": false,
+        "person[spouse].tin": true,
+        "person[spouse].work_ssn": true,
+        "person[spouse].educator_expenses": 0,
+        "$w2@person[spouse]": [],
+        "$f8889@person[spouse]": []
       },
       "expect": {
         "sa.standard": {
@@ -5536,7 +5576,8 @@
         "$interest": [],
         "$gift": [],
         "$person": [
-          "taxpayer"
+          "taxpayer",
+          "spouse"
         ],
         "person[taxpayer].role": "taxpayer",
         "$f8889@person[taxpayer]": [],
@@ -5561,7 +5602,16 @@
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "person[spouse].role": "spouse",
+        "person[spouse].rrta": false,
+        "person[spouse].age65": false,
+        "person[spouse].blind": false,
+        "person[spouse].tin": true,
+        "person[spouse].work_ssn": true,
+        "person[spouse].educator_expenses": 0,
+        "$w2@person[spouse]": [],
+        "$f8889@person[spouse]": []
       },
       "expect": {
         "f8960.line17": {
@@ -5644,7 +5694,8 @@
         "$interest": [],
         "$gift": [],
         "$person": [
-          "taxpayer"
+          "taxpayer",
+          "spouse"
         ],
         "person[taxpayer].role": "taxpayer",
         "$f8889@person[taxpayer]": [],
@@ -5669,7 +5720,16 @@
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "person[spouse].role": "spouse",
+        "person[spouse].rrta": false,
+        "person[spouse].age65": false,
+        "person[spouse].blind": false,
+        "person[spouse].tin": true,
+        "person[spouse].work_ssn": true,
+        "person[spouse].educator_expenses": 0,
+        "$w2@person[spouse]": [],
+        "$f8889@person[spouse]": []
       },
       "expect": {
         "f8960.line17": {
@@ -10601,7 +10661,7 @@
         "div.box10": 0,
         "div.box13": 0,
         "div.basis_reconciled": true,
-        "f1040.status": "single",
+        "f1040.status": "mfs",
         "f1040.line3a": 0,
         "f4952.line1": 0,
         "f4952.carryover": false,
@@ -10690,18 +10750,19 @@
       "expect": {
         "sa.standard": {
           "kind": "refusal",
-          "gate": "sa.spouse_extra",
-          "form": "Standard Deduction Chart spouse boxes",
-          "remedy": "Spouse age/blindness claims require the unsupported per-spouse interview.",
+          "gate": "sa.mfs_spouse_extra",
+          "form": "Standard Deduction Chart spouse boxes on a separate return",
+          "remedy": "Checking age or blindness boxes for your spouse on a married filing separately return is outside this tool.",
           "cite": {
             "doc": "i1040gi",
-            "tax_year": 2025,
-            "revision": "2025; printed date 2026-02-25",
             "locator": "pp. 34–35, line 12e and Standard Deduction Chart",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a"
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
           }
         }
-      }
+      },
+      "evidence_note": " Stage 13: a spouse's boxes are refused only on a separate return; the status is now married filing separately."
     },
     {
       "id": "stage4.refuse.sb.unsupported",
@@ -13761,7 +13822,8 @@
         "$interest": [],
         "$gift": [],
         "$person": [
-          "taxpayer"
+          "taxpayer",
+          "spouse"
         ],
         "person[taxpayer].role": "taxpayer",
         "$f8889@person[taxpayer]": [],
@@ -13786,7 +13848,16 @@
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "person[spouse].role": "spouse",
+        "person[spouse].rrta": false,
+        "person[spouse].age65": false,
+        "person[spouse].blind": false,
+        "person[spouse].tin": true,
+        "person[spouse].work_ssn": true,
+        "person[spouse].educator_expenses": 0,
+        "$w2@person[spouse]": [],
+        "$f8889@person[spouse]": []
       },
       "expect": {
         "f8959.line6": {
@@ -15800,7 +15871,7 @@
         "cross-form refusal"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
+      "evidence_note": "Synthetic explicitly calculated regression; independent human review pending. Stage 13: the status is married filing separately, the refusal that remains for married filers.",
       "inputs": {
         "div.box2b": 0,
         "div.box2c": 0,
@@ -15812,7 +15883,7 @@
         "div.box10": 0,
         "div.box13": 0,
         "div.basis_reconciled": true,
-        "f1040.status": "mfj",
+        "f1040.status": "mfs",
         "f1040.line3a": 0,
         "f4952.line1": 0,
         "f4952.carryover": false,
@@ -15898,15 +15969,15 @@
       "expect": {
         "scope.ready": {
           "kind": "refusal",
-          "gate": "s3.married",
-          "form": "Schedule 3 line 11 (per-spouse computation)",
-          "remedy": "The interview currently represents one person. Married filing statuses are unsupported for this per-spouse rule.",
+          "gate": "s3.mfs",
+          "form": "Married filing separately",
+          "remedy": "The rules for a married filing separately return (among them a spouse who itemizes, the Social Security base for spouses who lived together and the credits a separate return cannot take) are outside this tool. Married filing jointly is supported.",
           "cite": {
             "doc": "i1040gi",
-            "tax_year": 2025,
+            "locator": "p. 14, Married Filing Separately",
             "revision": "2025; printed date 2026-02-25",
-            "locator": "p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a"
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
           }
         }
       }

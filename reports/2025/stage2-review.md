@@ -32,8 +32,8 @@ Use integer cents below. Work each case independently on the archived instructio
 | ss.multi.over | single | person[taxpayer].w2[a]: 17610000; 0; 1091821 / person[taxpayer].w2[b]: 5000000; 0; 310000 | refusal: Form 843 |
 | ss.tips | single | person[taxpayer].w2[a]: 9000000; 1000000; 620000 / person[taxpayer].w2[b]: 7610001; 0; 471821 | 1 |
 | ss.none | single | none | 0 |
-| ss.mfj | mfj | none | refusal: Schedule 3 line 11 (per-spouse computation) |
-| ss.mfs | mfs | none | refusal: Schedule 3 line 11 (per-spouse computation) |
+| ss.mfj | mfj | none | 0 |
+| ss.mfs | mfs | none | refusal: Married filing separately |
 | ss.rrta | single | none | refusal: Schedule 3 line 11 (RRTA path) |
 | ss.hoh | hoh | person[taxpayer].w2[a]: 10000000; 0; 620000 / person[taxpayer].w2[b]: 10000000; 0; 620000 | 148180 |
 | ss.qss | qss | person[taxpayer].w2[a]: 10000000; 0; 620000 / person[taxpayer].w2[b]: 10000000; 0; 620000 | 148180 |

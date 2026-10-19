@@ -1,6 +1,6 @@
 # Engine differential — generated returns vs independent engines
 
-Cases: 1000 generated single-filer returns (tools/engines/generate_cases.py). Engines run locally under .engines/venv (tools/engines/setup.sh); versions: PolicyEngine-US 2.49.4, Tax-Calculator 6.8.5.
+Cases: 1400 generated returns, single, head of household and married filing jointly (tools/engines/generate_cases.py). Engines run locally under .engines/venv (tools/engines/setup.sh); versions: PolicyEngine-US 2.49.4, Tax-Calculator 6.8.5.
 
 `table-adjusted` means the engine equals the project's tax lines recomputed with every Tax Table lookup replaced by the rate schedule (engines compute from the schedule where the form prescribes the table), keeping the worksheet path and re-taking its smaller-of; an identified cause, not a tolerance. For Form 1040 line 27a, `table-adjusted` means the engine is within $1 of the project's Worksheet A path recomputed with each EIC Table lookup replaced by the credit at the exact amount (the engines compute from the formula where the instructions prescribe the table built at each $50 band's midpoint); the $1 allows for the engines' statutory percentages, which the archive does not hold, against the rates the Rev. Proc. 2024-40 amounts imply (at most about $0.20 apart over the table's range). `float` means the difference is within two units in the last place of the engine's floating-point representation (PolicyEngine-US computes in float32, Tax-Calculator in float64), a bound derived from the engine's precision. `excluded` lines carry the engine limitation stated below. Every other difference must be explained in fixtures/2025/differential/engine_investigations.json or the run fails.
 
@@ -8,22 +8,22 @@ Cases: 1000 generated single-filer returns (tools/engines/generate_cases.py). En
 
 | line | exact | table-adjusted | float | excluded | explained | UNEXPLAINED | not computed |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| f1040.line10 | 984 | 0 | 0 | 16 | 0 | 0 | 0 |
-| f1040.line11b | 727 | 0 | 257 | 16 | 0 | 0 | 0 |
-| f1040.line13a | 984 | 0 | 0 | 16 | 0 | 0 | 0 |
-| f1040.line13b | 922 | 0 | 1 | 77 | 0 | 0 | 0 |
-| f1040.line15 | 619 | 0 | 240 | 138 | 3 | 0 | 0 |
-| f1040.line16 | 259 | 521 | 71 | 149 | 0 | 0 | 0 |
-| f1040.line19 | 534 | 86 | 0 | 380 | 0 | 0 | 0 |
-| f1040.line27a | 813 | 171 | 0 | 16 | 0 | 0 | 0 |
-| f1040.line28 | 569 | 51 | 0 | 380 | 0 | 0 | 0 |
-| f1040.line6b | 962 | 0 | 22 | 16 | 0 | 0 | 0 |
-| f1040.tax_before_credits | 239 | 505 | 78 | 178 | 0 | 0 | 0 |
-| f8959.tax | 984 | 0 | 0 | 16 | 0 | 0 | 0 |
-| f8960.tax | 886 | 0 | 2 | 112 | 0 | 0 | 0 |
-| sa.deduction | 911 | 0 | 1 | 88 | 0 | 0 | 0 |
-| sa.line17 | 910 | 0 | 2 | 88 | 0 | 0 | 0 |
-| sa.standard | 984 | 0 | 0 | 16 | 0 | 0 | 0 |
+| f1040.line10 | 1381 | 0 | 0 | 19 | 0 | 0 | 0 |
+| f1040.line11b | 971 | 0 | 410 | 19 | 0 | 0 | 0 |
+| f1040.line13a | 1381 | 0 | 0 | 19 | 0 | 0 | 0 |
+| f1040.line13b | 1293 | 0 | 1 | 106 | 0 | 0 | 0 |
+| f1040.line15 | 828 | 0 | 379 | 190 | 3 | 0 | 0 |
+| f1040.line16 | 397 | 670 | 122 | 211 | 0 | 0 | 0 |
+| f1040.line19 | 753 | 113 | 0 | 534 | 0 | 0 | 0 |
+| f1040.line27a | 1175 | 206 | 0 | 19 | 0 | 0 | 0 |
+| f1040.line28 | 793 | 72 | 1 | 534 | 0 | 0 | 0 |
+| f1040.line6b | 1354 | 0 | 27 | 19 | 0 | 0 | 0 |
+| f1040.tax_before_credits | 365 | 654 | 138 | 243 | 0 | 0 | 0 |
+| f8959.tax | 1380 | 0 | 1 | 19 | 0 | 0 | 0 |
+| f8960.tax | 1256 | 0 | 2 | 142 | 0 | 0 | 0 |
+| sa.deduction | 1283 | 0 | 3 | 114 | 0 | 0 | 0 |
+| sa.line17 | 1282 | 0 | 4 | 114 | 0 | 0 | 0 |
+| sa.standard | 1381 | 0 | 0 | 19 | 0 | 0 | 0 |
 
 Exclusions:
 
@@ -39,23 +39,23 @@ Exclusions:
 
 | line | exact | table-adjusted | float | excluded | explained | UNEXPLAINED | not computed |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| f1040.line10 | 854 | 0 | 0 | 146 | 0 | 0 | 0 |
-| f1040.line11b | 835 | 0 | 19 | 146 | 0 | 0 | 0 |
-| f1040.line13a | 730 | 0 | 0 | 270 | 0 | 0 | 0 |
-| f1040.line13b | 853 | 0 | 1 | 146 | 0 | 0 | 0 |
-| f1040.line15 | 568 | 0 | 16 | 416 | 0 | 0 | 0 |
-| f1040.line16 | 220 | 346 | 36 | 398 | 0 | 0 | 0 |
-| f1040.line19 | 429 | 74 | 0 | 497 | 0 | 0 | 0 |
-| f1040.line20 | 599 | 3 | 0 | 398 | 0 | 0 | 0 |
-| f1040.line24 | 280 | 258 | 44 | 418 | 0 | 0 | 0 |
-| f1040.line27a | 707 | 147 | 0 | 146 | 0 | 0 | 0 |
-| f1040.line28 | 458 | 45 | 0 | 497 | 0 | 0 | 0 |
-| f1040.line6b | 838 | 0 | 16 | 146 | 0 | 0 | 0 |
-| f1040.tax_before_credits | 204 | 334 | 44 | 418 | 0 | 0 | 0 |
-| f8959.tax | 853 | 0 | 1 | 146 | 0 | 0 | 0 |
-| f8960.tax | 808 | 0 | 0 | 192 | 0 | 0 | 0 |
-| sa.deduction | 584 | 0 | 0 | 416 | 0 | 0 | 0 |
-| sa.line17 | 741 | 0 | 1 | 258 | 0 | 0 | 0 |
+| f1040.line10 | 1194 | 0 | 0 | 206 | 0 | 0 | 0 |
+| f1040.line11b | 1167 | 0 | 27 | 206 | 0 | 0 | 0 |
+| f1040.line13a | 1004 | 0 | 0 | 396 | 0 | 0 | 0 |
+| f1040.line13b | 1192 | 0 | 2 | 206 | 0 | 0 | 0 |
+| f1040.line15 | 785 | 0 | 26 | 589 | 0 | 0 | 0 |
+| f1040.line16 | 335 | 430 | 51 | 584 | 0 | 0 | 0 |
+| f1040.line19 | 603 | 85 | 0 | 712 | 0 | 0 | 0 |
+| f1040.line20 | 813 | 3 | 0 | 584 | 0 | 0 | 0 |
+| f1040.line24 | 393 | 331 | 69 | 607 | 0 | 0 | 0 |
+| f1040.line27a | 1020 | 174 | 0 | 206 | 0 | 0 | 0 |
+| f1040.line28 | 636 | 52 | 0 | 712 | 0 | 0 | 0 |
+| f1040.line6b | 1170 | 0 | 24 | 206 | 0 | 0 | 0 |
+| f1040.tax_before_credits | 306 | 418 | 69 | 607 | 0 | 0 | 0 |
+| f8959.tax | 1193 | 0 | 1 | 206 | 0 | 0 | 0 |
+| f8960.tax | 1143 | 0 | 0 | 257 | 0 | 0 | 0 |
+| sa.deduction | 810 | 0 | 1 | 589 | 0 | 0 | 0 |
+| sa.line17 | 1040 | 0 | 2 | 358 | 0 | 0 | 0 |
 
 Exclusions:
 

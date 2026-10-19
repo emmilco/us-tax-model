@@ -52,6 +52,13 @@ params:
       cite:
         doc: f1040
         locator: Form 1040, Filing Status (checkboxes)
+    hsa_allocation:
+      values:
+        - equal
+        - agreed
+      cite:
+        doc: i8889
+        locator: 'p. 7, Line 6, "divide the amount on line 5 equally between you and your spouse, unless you both agree on a different allocation (such as allocating nothing to one spouse)"'
     hsa_coverage:
       values:
         - none
@@ -1189,6 +1196,38 @@ params:
       cite:
         doc: i8889
         locator: 'p. 6, Line 3 Limitation Chart, family coverage, "If, at the end of 2025, you were unmarried and age 55 or older, enter $9,550 for the month"'
+    hsa.year_months:
+      type: Count
+      value: 12
+      cite:
+        doc: i8889
+        locator: 'p. 4, Line 3, rule 2, "If the last-month rule ... applies, you are considered an eligible individual for the entire year. You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month of your tax year"'
+    hsa.no_months:
+      type: Count
+      value: 0
+      cite:
+        doc: i8889
+        locator: 'p. 4, Line 3, rule 2, "You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month of your tax year"'
+    hsa.two:
+      type: Count
+      value: 2
+      cite:
+        doc: i8889
+        locator: 'p. 7, Line 6, "Spouses who have separate HSAs" (two Forms 8889, one for each spouse)'
+    hsa.half:
+      type: Rate
+      value:
+        num: 1
+        den: 2
+      cite:
+        doc: i8889
+        locator: 'p. 7, Line 6, "divide the amount on line 5 equally between you and your spouse"; Step 2, "Divide the refigured contribution limit from Step 1 equally between you and your spouse"'
+    hsa.additional:
+      type: NonNegDollars
+      value: 100000
+      cite:
+        doc: i8889
+        locator: 'p. 7, Additional Contribution Amount Worksheet, line 1, "$1,000 × number of months eligible"'
     hsa.twelfth:
       type: Rate
       value:

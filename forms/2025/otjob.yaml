@@ -9,6 +9,17 @@ form:
     call for a reasonable estimate, overtime at a rate other than one and one-half or two times the regular rate, and
     special FLSA overtime rules are refused.
   lines:
+  - id: otjob.one
+    printed: (helper)
+    label: One employer entry
+    type: Count
+    expr:
+      op: param
+      ref: person.one
+    cite:
+      doc: i1040gi
+      locator: p. 108, Schedule 1-A, line 14a, and the Qualified Overtime Compensation From More Than One Employer Worksheet
+        (one row per employer)
   - id: otjob.zero
     printed: (helper)
     label: Year parameter sales.zero

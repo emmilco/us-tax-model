@@ -33,10 +33,17 @@
 
 ## (helper) — `sa.spouse_extra`
 
-- **Authored helper label:** Claiming any age/blindness standard-deduction boxes for a spouse?
-- **Encoded (Bool):** Input — Claiming any age/blindness standard-deduction boxes for a spouse?
-- Expr: `{"op":"input","source":"Claiming any age/blindness standard-deduction boxes for a spouse?"}`
+- **Authored helper label:** Married filing separately and claiming age or blindness boxes for your spouse (who had no income, isn't filing a return and can't be claimed as a dependent)?
+- **Encoded (Bool):** Input — Married filing separately and claiming age or blindness boxes for your spouse (who had no income, isn't filing a return and can't be claimed as a dependent)?
+- Expr: `{"op":"input","source":"Married filing separately and claiming age or blindness boxes for your spouse (who had no income, isn't filing a return and can't be claimed as a dependent)?"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+
+## (gate) — `sa.mfs_spouse_extra`
+
+- **Authored helper label:** Married filing separately and claiming age or blindness boxes for your spouse
+- **Encoded (Bool):** f1040 line Filing Status = 'mfs' and helper "Married filing separately and claiming age or blindness boxes for your spouse (who had no income, isn't filing a return and can't be claimed as a dependent)?" = true
+- Expr: `{"all":[{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},{"eq":["sa.spouse_extra",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 33, Line 12d, "If your filing status is married filing separately and your spouse was born before January 2, 1961, or was blind at the end of 2025, you can check the appropriate box(es) on line 12d if your spouse had no income, isn't filing a return, and can't be claimed as a dependent on another person's return" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `sa.age65_count`
 
@@ -50,20 +57,6 @@
 - **Authored helper label:** Were you born before January 2, 1961?
 - **Encoded (Bool):** helper "Your entry, if the answer is yes" > 0 (a count)
 - Expr: `{"gt":["sa.age65_count",{"const":0,"type":"Count"}],"op":"test"}`
-- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
-
-## (helper) — `sa.blind_count`
-
-- **Authored helper label:** Your entry, if the answer is yes
-- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Whose entry is this, yours or your spouse's?" = 'taxpayer' and helper "Are you blind under the standard-deduction instructions?" = true, within the current person when parent-bound. An unanswered roster is unknown.
-- Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"all":[{"eq":["person.role",{"const":"taxpayer"}],"op":"test"},{"eq":["person.blind",{"const":true}],"op":"test"}],"op":"test"}}`
-- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
-
-## (helper) — `sa.blind`
-
-- **Authored helper label:** Are you blind under the standard-deduction instructions?
-- **Encoded (Bool):** helper "Your entry, if the answer is yes" > 0 (a count)
-- Expr: `{"gt":["sa.blind_count",{"const":0,"type":"Count"}],"op":"test"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 
 ## (helper) — `sa.spouse_itemizes`
@@ -380,24 +373,38 @@
 - Expr: `{"op":"param","ref":"sa.standard_extra"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 
+## (helper) — `sa.boxes_age65`
+
+- **Authored helper label:** Number of boxes checked for born before January 2, 1961 (you, and your spouse if filing jointly)
+- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Were you born before January 2, 1961?" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"eq":["person.age65",{"const":true}],"op":"test"}}`
+- Cite: [i1040gi] p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; pp. 34–35, Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were Blind (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (helper) — `sa.extra_age65`
 
-- **Authored helper label:** Additional standard deduction for age65
-- **Encoded (NonNegDollars):** Choose — [helper "Were you born before January 2, 1961?" = true → helper "Year parameter sa.standard_extra"] [helper "Were you born before January 2, 1961?" = false → helper "Year parameter sales.zero"]
-- Expr: `{"alternatives":[{"guard":{"eq":["sa.age65",{"const":true}],"op":"test"},"then":"sa.extra"},{"guard":{"eq":["sa.age65",{"const":false}],"op":"test"},"then":"sa.zero"}],"op":"choose"}`
-- Cite: [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Authored helper label:** Additional standard deduction for each box checked for age
+- **Encoded (NonNegDollars):** Multiply helper "Year parameter sa.standard_extra" by the number on helper "Number of boxes checked for born before January 2, 1961 (you, and your spouse if filing jointly)".
+- Expr: `{"amount":"sa.extra","count":"sa.boxes_age65","op":"multiply_count"}`
+- Cite: [i1040gi] p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; pp. 34–35, Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were Blind (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `sa.boxes_blind`
+
+- **Authored helper label:** Number of boxes checked for blindness (you, and your spouse if filing jointly)
+- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Are you blind under the standard-deduction instructions?" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"eq":["person.blind",{"const":true}],"op":"test"}}`
+- Cite: [i1040gi] p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; pp. 34–35, Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were Blind (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `sa.extra_blind`
 
-- **Authored helper label:** Additional standard deduction for blind
-- **Encoded (NonNegDollars):** Choose — [helper "Are you blind under the standard-deduction instructions?" = true → helper "Year parameter sa.standard_extra"] [helper "Are you blind under the standard-deduction instructions?" = false → helper "Year parameter sales.zero"]
-- Expr: `{"alternatives":[{"guard":{"eq":["sa.blind",{"const":true}],"op":"test"},"then":"sa.extra"},{"guard":{"eq":["sa.blind",{"const":false}],"op":"test"},"then":"sa.zero"}],"op":"choose"}`
-- Cite: [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Authored helper label:** Additional standard deduction for each box checked for blindness
+- **Encoded (NonNegDollars):** Multiply helper "Year parameter sa.standard_extra" by the number on helper "Number of boxes checked for blindness (you, and your spouse if filing jointly)".
+- Expr: `{"amount":"sa.extra","count":"sa.boxes_blind","op":"multiply_count"}`
+- Cite: [i1040gi] p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; pp. 34–35, Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were Blind (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `sa.standardraw`
 
 - **Authored helper label:** Add sa.standardbase, sa.extra_age65, sa.extra_blind
-- **Encoded (NonNegDollars):** Add helper "Year parameter sa.standard_base", helper "Additional standard deduction for age65", and helper "Additional standard deduction for blind".
+- **Encoded (NonNegDollars):** Add helper "Year parameter sa.standard_base", helper "Additional standard deduction for each box checked for age", and helper "Additional standard deduction for each box checked for blindness".
 - Expr: `{"of":["sa.standardbase","sa.extra_age65","sa.extra_blind"],"op":"sum"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 
@@ -406,7 +413,7 @@
 - **Authored helper label:** Standard deduction, zero when MFS spouse itemizes
 - **Encoded (NonNegDollars):** Choose — [helper "MFS with spouse itemizing" = true → helper "Year parameter sales.zero"] [helper "MFS with spouse itemizing" = false → helper "Add sa.standardbase, sa.extra_age65, sa.extra_blind"]
 - **Refusal:** when sa.dependent is true, cannot complete Standard Deduction Worksheet for Dependents / dual-status rules. Dependent and dual-status standard deductions are outside this resident nondependent slice. Cite: [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart (2025; printed date 2026-02-25; sha256 482e9c48)
-- **Refusal:** when sa.spouse_extra is true, cannot complete Standard Deduction Chart spouse boxes. Spouse age/blindness claims require the unsupported per-spouse interview. Cite: [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Refusal:** when sa.mfs_spouse_extra is true, cannot complete Standard Deduction Chart spouse boxes on a separate return. Checking age or blindness boxes for your spouse on a married filing separately return is outside this tool. Cite: [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"alternatives":[{"guard":{"eq":["sa.mfs_spouse_itemizes",{"const":true}],"op":"test"},"then":"sa.zero"},{"guard":{"eq":["sa.mfs_spouse_itemizes",{"const":false}],"op":"test"},"then":"sa.standardraw"}],"op":"choose"}`
 - Cite: [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart (2025; printed date 2026-02-25; sha256 482e9c48)
 

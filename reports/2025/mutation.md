@@ -7,12 +7,12 @@ the fixture test compares).
 
 | Metric | Value |
 | --- | --- |
-| Mutants | 1134 |
-| Killed by the checker | 75 |
-| Killed by fixtures | 929 |
-| Surviving | 130 (94 provably equivalent) |
-| Mutation score (raw) | 88.5% |
-| Mutation score (equivalent mutants excluded) | 96.5% |
+| Mutants | 1184 |
+| Killed by the checker | 87 |
+| Killed by fixtures | 966 |
+| Surviving | 131 (97 provably equivalent) |
+| Mutation score (raw) | 88.9% |
+| Mutation score (equivalent mutants excluded) | 96.9% |
 
 ## Surviving — classified equivalent
 
@@ -22,7 +22,8 @@ the fixture test compares).
 - `refusal.eic.eic.step5_line1.0` (remove refusal, eic.eic.step5_line1): The gate scope.schedule1 also refuses a line that Form 1040 line 11b reads, and eic.eligible tests eic.below_top (which reads line 11b) first, so the return's EIC refuses through line 11b whenever scope.schedule1 is true; the copy of the gate on eic.step5_line1 adds nothing to any Form 1040 line. (structural conditions re-checked this run.)
 - `refusal.eic.eic.step5_line2.0` (remove refusal, eic.eic.step5_line2): The gate scope.other_income also refuses a line that Form 1040 line 11b reads, and eic.eligible tests eic.below_top (which reads line 11b) first, so the return's EIC refuses through line 11b whenever scope.other_income is true; the copy of the gate on eic.step5_line2 adds nothing to any Form 1040 line. (structural conditions re-checked this run.)
 - `operand.eic.eic.step5_line4.zero` (replace an operand, eic.eic.step5_line4): Step 5 line 4 keeps its own combat-pay refusal whatever it reads; the substituted line 2 is the same zero (a copy of eic.zero) carrying only the gate scope.other_income, and earned income adds line 3 (line 1 less line 2) before line 4, so when that gate is true line 3 has already refused with the same refusal. No value can change. (structural conditions re-checked this run.)
-- `operand.f8889.f8889.line8.line6` (replace an operand, f8889.f8889.line8): Copy-chain identity: f8889.line6 and f8889.line5 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
+- `operand.f8889.f8889.family_year.family_under55` (replace an operand, f8889.f8889.family_year): f8889.family_year is read only under the last-month rule with family coverage on December 1, where the filer is married with family coverage, so line 3 is the family amount without the additional contribution amount (f8889.age55_line3 is false), line 4 is zero (Archer MSAs are refused) and line 5 equals f8889.family_under55.
+- `operand.f8889.f8889.self_year.self_amount` (replace an operand, f8889.f8889.self_year): f8889.self_year is read only under the last-month rule, by f8889.self_all and, with family coverage on December 1, by f8889.self_dec_year; the only reader of both is Step 4 (f8889.step4_total = self_all - self_in_family), where the two copies cancel, and with self-only coverage on December 1 the spouse rule does not apply, so Step 4 is not read.
 - `operand.f8959.f8959.line3.zero` (replace an operand, f8959.f8959.line3): Copy-chain identity: f8959.zero and f8959.line2 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f8959.f8959.line8.zero` (replace an operand, f8959.f8959.line8): Copy-chain identity: f8959.zero and f8959.line3 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f8959.f8959.line14.zero` (replace an operand, f8959.f8959.line14): Copy-chain identity: f8959.zero and f8959.line8 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
@@ -41,6 +42,8 @@ the fixture test compares).
 - `operand.f8960.f8960.line4c.line4b` (replace an operand, f8960.f8960.line4c): Copy-chain identity: f8960.line4b and f8960.line10 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f8995.f8995.line9.line8` (replace an operand, f8995.f8995.line9): Copy-chain identity: f8995.line8 and f8995.line6 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f8995a.f8995a.line31.line30` (replace an operand, f8995a.f8995a.line31): Copy-chain identity: f8995a.line30 and f8995a.line28 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
+- `filter.person.person.hsa_step1` (remove collection filter, person.person.hsa_step1): person.hsa_step1 keeps only a Form 8889 that uses the spouse rule of line 6. Its total household.hsa_step1_sum is read only by f8889.allocation_bad, which is reached only on a form that uses the rule and which already holds when exactly one form uses it (household.hsa_split_count is 1); when both forms use it the filter keeps every form. So dropping the filter changes no value that is read. (structural conditions re-checked this run.)
+- `filter.person.person.hsa_share` (remove collection filter, person.person.hsa_share): person.hsa_share keeps only a Form 8889 that uses the spouse rule of line 6. Its total household.hsa_share_sum is read only by f8889.allocation_bad, which is reached only on a form that uses the rule and which already holds when exactly one form uses it (household.hsa_split_count is 1); when both forms use it the filter keeps every form. So dropping the filter changes no value that is read. (structural conditions re-checked this run.)
 - `operand.qdcg.qdcg.line8.line7` (replace an operand, qdcg.qdcg.line8): Provably equivalent: line 8 is min(line 5, line 7) and line 7 is min(line 1, line 6) with line 5 ≤ line 1; min(line 5, min(line 1, line 6)) = min(line 5, line 6), so substituting line 6 for line 7 cannot change any value.
 - `operand.qdcg.qdcg.line12.line11` (replace an operand, qdcg.qdcg.line12): Copy-chain identity: qdcg.line11 and qdcg.line9 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `refusal.retirement.retirement.amount_a.0` (remove refusal, retirement.retirement.amount_a): retirement.amount_a reads retirement.show_a -> retirement.has_rollover -> retirement.rolled first, and retirement.rolled carries the identical refusal entry, so without the entry on retirement.amount_a the same refusal arrives through the chain. (structural conditions re-checked this run.)
@@ -130,10 +133,8 @@ the fixture test compares).
 | operand.f8960.f8960.line8.line5d | replace an operand | f8960.f8960.line8 | f8960.line5d -> f8960.line5a (Dollars) |
 | operand.f8960.f8960.line9d.line9c | replace an operand | f8960.f8960.line9d | f8960.line9c -> f8960.line4c (NonNegDollars) |
 | operand.f8960.f8960.line12.line11 | replace an operand | f8960.f8960.line12 | f8960.line11 -> f8960.line9d (NonNegDollars) |
-| refusal.person.person.hsa_deduction.0 | remove refusal | person.person.hsa_deduction |  |
 | refusal.person.person.medicare5.0 | remove refusal | person.person.medicare5 |  |
 | refusal.person.person.medicare6.0 | remove refusal | person.person.medicare6 |  |
-| filter.s1.s1.educator_expenses | remove collection filter | s1.s1.educator_expenses |  |
 | refusal.s3.s3.line8.0 | remove refusal | s3.s3.line8 |  |
 | refusal.sa.sa.line17.1 | remove refusal | sa.sa.line17 |  |
 | refusal.sa.sa.line17.2 | remove refusal | sa.sa.line17 |  |

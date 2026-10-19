@@ -116,7 +116,8 @@
     "ssb.terror_disability": false,
     "ssb.lived_apart": false,
     "$person": [
-     "taxpayer"
+     "taxpayer",
+     "spouse"
     ],
     "person[taxpayer].role": "taxpayer",
     "$f8889@person[taxpayer]": [
@@ -193,7 +194,19 @@
     "carloan[vin_2].nonqualifying": 151800,
     "carloan[vin_2].down": 0,
     "carloan[vin_2].refi_balance": 4875300,
-    "carloan[vin_2].refi_whole": true
+    "carloan[vin_2].refi_whole": true,
+    "person[spouse].role": "spouse",
+    "person[spouse].rrta": false,
+    "person[spouse].age65": false,
+    "person[spouse].blind": false,
+    "person[spouse].died_before_65": false,
+    "person[spouse].tin": true,
+    "person[spouse].work_ssn": true,
+    "person[spouse].born_before_2001": true,
+    "person[spouse].born_after_1960": true,
+    "person[spouse].educator_expenses": 0,
+    "$w2@person[spouse]": [],
+    "$f8889@person[spouse]": []
    },
    "expect": {
     "carloan[vin_1].eligible": {
@@ -4546,7 +4559,8 @@
     "ssb.lump_sum": false,
     "ssb.lived_apart": false,
     "$person": [
-     "taxpayer"
+     "taxpayer",
+     "spouse"
     ],
     "person[taxpayer].role": "taxpayer",
     "$f8889@person[taxpayer]": [],
@@ -4582,7 +4596,18 @@
     "div.box12": 0,
     "s1.uc_paid": 0,
     "person[taxpayer].educator_expenses": 0,
-    "sli.interest": 0
+    "sli.interest": 0,
+    "person[spouse].role": "spouse",
+    "person[spouse].rrta": false,
+    "person[spouse].age65": false,
+    "person[spouse].blind": false,
+    "person[spouse].tin": true,
+    "person[spouse].work_ssn": false,
+    "person[spouse].born_before_2001": true,
+    "person[spouse].born_after_1960": true,
+    "person[spouse].educator_expenses": 0,
+    "$w2@person[spouse]": [],
+    "$f8889@person[spouse]": []
    },
    "expect": {
     "eic.line2": {
@@ -8533,7 +8558,8 @@
     "ssb.terror_disability": false,
     "ssb.lived_apart": false,
     "$person": [
-     "taxpayer"
+     "taxpayer",
+     "spouse"
     ],
     "person[taxpayer].role": "taxpayer",
     "$f8889@person[taxpayer]": [
@@ -8657,7 +8683,18 @@
     "retirement[r2].age": 53,
     "retirement[r2].combined_age": 122,
     "retirement[r2].months": 12,
-    "retirement[r2].recovered": 1251700
+    "retirement[r2].recovered": 1251700,
+    "person[spouse].role": "spouse",
+    "person[spouse].rrta": false,
+    "person[spouse].age65": false,
+    "person[spouse].blind": false,
+    "person[spouse].tin": true,
+    "person[spouse].work_ssn": true,
+    "person[spouse].born_before_2001": true,
+    "person[spouse].born_after_1960": true,
+    "person[spouse].educator_expenses": 0,
+    "$w2@person[spouse]": [],
+    "$f8889@person[spouse]": []
    },
    "expect": {
     "person[taxpayer].f8889[hsa].line3": {
@@ -9545,7 +9582,8 @@
     "sd.carryover": false,
     "sd.distributions": 0,
     "$person": [
-     "taxpayer"
+     "taxpayer",
+     "spouse"
     ],
     "person[taxpayer].role": "taxpayer",
     "$f8889@person[taxpayer]": [],
@@ -9595,7 +9633,16 @@
     "ssb.benefits": 0,
     "s1.uc_paid": 0,
     "person[taxpayer].educator_expenses": 0,
-    "sli.interest": 0
+    "sli.interest": 0,
+    "person[spouse].role": "spouse",
+    "person[spouse].rrta": false,
+    "person[spouse].age65": false,
+    "person[spouse].blind": false,
+    "person[spouse].tin": true,
+    "person[spouse].work_ssn": true,
+    "person[spouse].educator_expenses": 0,
+    "$w2@person[spouse]": [],
+    "$f8889@person[spouse]": []
    },
    "expect": {
     "f8960.line1": {
@@ -15264,7 +15311,8 @@
     "ssb.terror_disability": false,
     "ssb.lived_apart": false,
     "$person": [
-     "taxpayer"
+     "taxpayer",
+     "spouse"
     ],
     "person[taxpayer].role": "taxpayer",
     "$f8889@person[taxpayer]": [],
@@ -15439,7 +15487,18 @@
     "div.box12": 0,
     "s1.uc_paid": 0,
     "person[taxpayer].educator_expenses": 0,
-    "sli.interest": 0
+    "sli.interest": 0,
+    "person[spouse].role": "spouse",
+    "person[spouse].rrta": false,
+    "person[spouse].age65": false,
+    "person[spouse].blind": false,
+    "person[spouse].tin": true,
+    "person[spouse].work_ssn": true,
+    "person[spouse].born_before_2001": true,
+    "person[spouse].born_after_1960": true,
+    "person[spouse].educator_expenses": 0,
+    "$w2@person[spouse]": [],
+    "$f8889@person[spouse]": []
    },
    "expect": {
     "retirement[r1].is_ira": {
@@ -18873,7 +18932,8 @@
     "ssb.terror_disability": false,
     "ssb.lived_apart": false,
     "$person": [
-     "taxpayer"
+     "taxpayer",
+     "spouse"
     ],
     "person[taxpayer].role": "taxpayer",
     "$f8889@person[taxpayer]": [
@@ -18934,7 +18994,21 @@
     "person[taxpayer].otjob[ot_2].flsa": true,
     "person[taxpayer].otjob[ot_2].special_rule": false,
     "person[taxpayer].otjob[ot_2].method": "premium",
-    "person[taxpayer].otjob[ot_2].statement": 3104500
+    "person[taxpayer].otjob[ot_2].statement": 3104500,
+    "person[spouse].role": "spouse",
+    "person[spouse].rrta": false,
+    "person[spouse].age65": false,
+    "person[spouse].blind": false,
+    "person[spouse].died_before_65": false,
+    "person[spouse].tin": true,
+    "person[spouse].work_ssn": true,
+    "person[spouse].born_before_2001": true,
+    "person[spouse].born_after_1960": true,
+    "person[spouse].educator_expenses": 0,
+    "$w2@person[spouse]": [],
+    "$tipjob@person[spouse]": [],
+    "$otjob@person[spouse]": [],
+    "$f8889@person[spouse]": []
    },
    "expect": {
     "s1a.line1": {
@@ -20678,7 +20752,7 @@
     "s1a"
    ],
    "evidence": "M",
-   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 2db7b46834d8a53064a08be31998129987c6a13836a4c13c400b173abccd1ab7; pages f1040s1a 1,2 (9212bddf5265); i1040gi 101,102,103,104,105,106,108,109,110 (6024dc94dd1f); branches s1a.tips:false, s1a.part2:false, s1a.line4a#0, s1a.line4b#0, s1a.line4c_one:left, s1a.line4c#0, s1a.line5#0, s1a.line6#0, s1a.line7_calc:left, s1a.line7#0, s1a.line8#0, s1a.line9_calc#1, s1a.line9#0, s1a.line10#0, s1a.line10_over:false, s1a.line10_pos:floor, s1a.line12#0, s1a.line13_figured:floor, s1a.line13_amount#0, s1a.line13_ssn#1, s1a.line13_claim#1, s1a.line13#0, s1a.overtime:true, s1a.part3:true, s1a.line14a#1, s1a.line14b#1, s1a.line14c#1, s1a.ot_max#1, s1a.line15_calc:left, s1a.line15#1, s1a.line16#1, s1a.line17_calc#1, s1a.line17#1, s1a.line18#1, s1a.line18_over:false, s1a.line18_pos:floor, s1a.line20#1, s1a.line21_figured:floor, s1a.line21_amount#0, s1a.line21_ssn#1, s1a.line21_claim#1, s1a.line21#1, s1a.carloan:true, s1a.line23#1, s1a.part4:true, s1a.line24_calc:left, s1a.line24#1, s1a.line25#1, s1a.line26_calc#1, s1a.line26#1, s1a.line27#1, s1a.line27_over:false, s1a.line27_pos:floor, s1a.line29#1, s1a.line30_figured:positive, s1a.line30_amount#0, s1a.line30#1, s1a.part5:false, s1a.line31#0, s1a.line32_calc#1, s1a.line32#0, s1a.line33#0, s1a.line33_over:false, s1a.line33_pos:floor, s1a.line34#0, s1a.line35_figured:positive, s1a.line35_calc#0, s1a.line35#0, s1a.died_before_65:false, s1a.senior_decedent:false, s1a.line36a_senior#1, s1a.line36a_claim#1, s1a.line36a#0",
+   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 2db7b46834d8a53064a08be31998129987c6a13836a4c13c400b173abccd1ab7; pages f1040s1a 1,2 (9212bddf5265); i1040gi 101,102,103,104,105,106,108,109,110 (6024dc94dd1f); branches s1a.tips:false, s1a.part2:false, s1a.line4a#0, s1a.line4b#0, s1a.line4c_one:left, s1a.line4c#0, s1a.line5#0, s1a.line6#0, s1a.line7_calc:left, s1a.line7#0, s1a.line8#0, s1a.line9_calc#1, s1a.line9#0, s1a.line10#0, s1a.line10_over:false, s1a.line10_pos:floor, s1a.line12#0, s1a.line13_figured:floor, s1a.line13_amount#0, s1a.line13_ssn#1, s1a.line13_claim#1, s1a.line13#0, s1a.overtime:true, s1a.part3:true, s1a.line14a#1, s1a.line14b#1, s1a.line14c#1, s1a.ot_max#1, s1a.line15_calc:left, s1a.line15#1, s1a.line16#1, s1a.line17_calc#1, s1a.line17#1, s1a.line18#1, s1a.line18_over:false, s1a.line18_pos:floor, s1a.line20#1, s1a.line21_figured:floor, s1a.line21_amount#0, s1a.line21_ssn#1, s1a.line21_claim#1, s1a.line21#1, s1a.carloan:true, s1a.line23#1, s1a.part4:true, s1a.line24_calc:left, s1a.line24#1, s1a.line25#1, s1a.line26_calc#1, s1a.line26#1, s1a.line27#1, s1a.line27_over:false, s1a.line27_pos:floor, s1a.line29#1, s1a.line30_figured:positive, s1a.line30_amount#0, s1a.line30#1, s1a.part5:false, s1a.line31#0, s1a.line32_calc#1, s1a.line32#0, s1a.line33#0, s1a.line33_over:false, s1a.line33_pos:floor, s1a.line34#0, s1a.line35_figured:positive, s1a.line35_calc#0, s1a.line35#0, s1a.died_before_65:false, s1a.senior_decedent:false, s1a.line36a_senior#1, s1a.line36a_claim#1, s1a.line36a#0 Stage 13: on a joint return Part III applies only if a spouse who received qualified overtime has a valid SSN (i1040gi p. 106); this case claims overtime with no employer entered, so no one received it and lines 16-18 are $0 (they were the MAGI lines when the one person entered stood for the filer). Line 21 is $0 either way. Changed by the agent, not re-reviewed by class M.",
    "inputs": {
     "div.box2b": 0,
     "div.box2c": 0,
@@ -20787,7 +20861,8 @@
     "ssb.terror_disability": false,
     "ssb.lived_apart": false,
     "$person": [
-     "taxpayer"
+     "taxpayer",
+     "spouse"
     ],
     "person[taxpayer].role": "taxpayer",
     "$f8889@person[taxpayer]": [
@@ -20841,7 +20916,20 @@
     "carloan[vin_1].nonqualifying": 0,
     "carloan[vin_1].down": 939400,
     "carloan[vin_1].refi_balance": 4001900,
-    "carloan[vin_1].refi_whole": true
+    "carloan[vin_1].refi_whole": true,
+    "person[spouse].role": "spouse",
+    "person[spouse].rrta": false,
+    "person[spouse].age65": false,
+    "person[spouse].blind": false,
+    "person[spouse].died_before_65": false,
+    "person[spouse].tin": true,
+    "person[spouse].work_ssn": true,
+    "person[spouse].born_before_2001": true,
+    "person[spouse].born_after_1960": true,
+    "person[spouse].educator_expenses": 0,
+    "$w2@person[spouse]": [],
+    "$otjob@person[spouse]": [],
+    "$f8889@person[spouse]": []
    },
    "expect": {
     "s1a.line1": {
@@ -20934,15 +21022,15 @@
     },
     "s1a.line16": {
      "kind": "money",
-     "cents": 11076000
+     "cents": 0
     },
     "s1a.line17": {
      "kind": "money",
-     "cents": 30000000
+     "cents": 0
     },
     "s1a.line18": {
      "kind": "money",
-     "cents": -18924000
+     "cents": 0
     },
     "s1a.line20": {
      "kind": "money",
@@ -22817,7 +22905,8 @@
     "sd.carryover": false,
     "sd.distributions": 0,
     "$person": [
-     "taxpayer"
+     "taxpayer",
+     "spouse"
     ],
     "person[taxpayer].role": "taxpayer",
     "$f8889@person[taxpayer]": [],
@@ -22892,7 +22981,16 @@
     "ssb.benefits": 0,
     "s1.uc_paid": 0,
     "person[taxpayer].educator_expenses": 0,
-    "sli.interest": 0
+    "sli.interest": 0,
+    "person[spouse].role": "spouse",
+    "person[spouse].rrta": false,
+    "person[spouse].age65": false,
+    "person[spouse].blind": false,
+    "person[spouse].tin": true,
+    "person[spouse].work_ssn": false,
+    "person[spouse].educator_expenses": 0,
+    "$w2@person[spouse]": [],
+    "$f8889@person[spouse]": []
    },
    "expect": {
     "sa.line2": {
@@ -23313,7 +23411,8 @@
     "sd.carryover": false,
     "sd.distributions": 0,
     "$person": [
-     "taxpayer"
+     "taxpayer",
+     "spouse"
     ],
     "person[taxpayer].role": "taxpayer",
     "$f8889@person[taxpayer]": [],
@@ -23363,7 +23462,16 @@
     "ssb.benefits": 0,
     "s1.uc_paid": 0,
     "person[taxpayer].educator_expenses": 0,
-    "sli.interest": 0
+    "sli.interest": 0,
+    "person[spouse].role": "spouse",
+    "person[spouse].rrta": false,
+    "person[spouse].age65": false,
+    "person[spouse].blind": false,
+    "person[spouse].tin": true,
+    "person[spouse].work_ssn": true,
+    "person[spouse].educator_expenses": 0,
+    "$w2@person[spouse]": [],
+    "$f8889@person[spouse]": []
    },
    "expect": {
     "sa.line2": {
@@ -27562,7 +27670,8 @@
     "ssb.terror_disability": false,
     "ssb.lived_apart": false,
     "$person": [
-     "taxpayer"
+     "taxpayer",
+     "spouse"
     ],
     "person[taxpayer].role": "taxpayer",
     "$f8889@person[taxpayer]": [
@@ -27599,7 +27708,18 @@
     "gift[item_a].public_securities": true,
     "gift[item_a].special": false,
     "$dependent": [],
-    "$retirement": []
+    "$retirement": [],
+    "person[spouse].role": "spouse",
+    "person[spouse].rrta": false,
+    "person[spouse].age65": false,
+    "person[spouse].blind": false,
+    "person[spouse].tin": true,
+    "person[spouse].work_ssn": true,
+    "person[spouse].born_before_2001": true,
+    "person[spouse].born_after_1960": true,
+    "person[spouse].educator_expenses": 0,
+    "$w2@person[spouse]": [],
+    "$f8889@person[spouse]": []
    },
    "expect": {
     "sli.line1": {
@@ -28530,7 +28650,8 @@
     "ssb.terror_disability": false,
     "ssb.lived_apart": false,
     "$person": [
-     "taxpayer"
+     "taxpayer",
+     "spouse"
     ],
     "person[taxpayer].role": "taxpayer",
     "$f8889@person[taxpayer]": [
@@ -28567,7 +28688,18 @@
     "gift[item_a].public_securities": true,
     "gift[item_a].special": false,
     "$dependent": [],
-    "$retirement": []
+    "$retirement": [],
+    "person[spouse].role": "spouse",
+    "person[spouse].rrta": false,
+    "person[spouse].age65": false,
+    "person[spouse].blind": false,
+    "person[spouse].tin": true,
+    "person[spouse].work_ssn": true,
+    "person[spouse].born_before_2001": true,
+    "person[spouse].born_after_1960": true,
+    "person[spouse].educator_expenses": 0,
+    "$w2@person[spouse]": [],
+    "$f8889@person[spouse]": []
    },
    "expect": {
     "ssb.line1": {
@@ -30432,7 +30564,8 @@
     "sd.carryover": false,
     "sd.distributions": 0,
     "$person": [
-     "taxpayer"
+     "taxpayer",
+     "spouse"
     ],
     "person[taxpayer].role": "taxpayer",
     "$f8889@person[taxpayer]": [],
@@ -30480,7 +30613,16 @@
     "sli.interest": 0,
     "s1a.tips": false,
     "s1a.overtime": false,
-    "s1a.carloan": false
+    "s1a.carloan": false,
+    "person[spouse].role": "spouse",
+    "person[spouse].rrta": false,
+    "person[spouse].age65": false,
+    "person[spouse].blind": false,
+    "person[spouse].tin": true,
+    "person[spouse].work_ssn": true,
+    "person[spouse].educator_expenses": 0,
+    "$w2@person[spouse]": [],
+    "$f8889@person[spouse]": []
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"f1040.line15\",\"status\":\"f1040.status\"}|inst:tcw#{\"amount\":\"amount\",\"status\":\"status\"}.tax": {
@@ -31234,7 +31376,8 @@
     "sd.carryover": false,
     "sd.distributions": 0,
     "$person": [
-     "taxpayer"
+     "taxpayer",
+     "spouse"
     ],
     "person[taxpayer].role": "taxpayer",
     "$f8889@person[taxpayer]": [],
@@ -31334,7 +31477,16 @@
     "sli.interest": 0,
     "s1a.tips": false,
     "s1a.overtime": false,
-    "s1a.carloan": false
+    "s1a.carloan": false,
+    "person[spouse].role": "spouse",
+    "person[spouse].rrta": false,
+    "person[spouse].age65": false,
+    "person[spouse].blind": false,
+    "person[spouse].tin": true,
+    "person[spouse].work_ssn": true,
+    "person[spouse].educator_expenses": 0,
+    "$w2@person[spouse]": [],
+    "$f8889@person[spouse]": []
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"qdcg.line5\",\"status\":\"f1040.status\"}|inst:tcw#{\"amount\":\"amount\",\"status\":\"status\"}.tax": {

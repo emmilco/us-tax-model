@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Generate random single-filer returns inside the proof-of-concept scope.
+"""Generate random returns inside the supported scope: single and head of household returns, then
+married filing jointly returns built on the same draws with a spouse added.
 
 Deterministic for a given seed. Every amount is integer cents. The economic
 facts an external engine needs (net gains, totals) are derived here from the
@@ -247,14 +248,53 @@ def gen_case(rng, i):
     return {"id": f"gen-{i:05d}", "inputs": inputs, "facts": facts, "features": sorted(features)}
 
 
+SPOUSE = "person[spouse]"
+
+
+def make_joint(case, j):
+    """A married filing jointly return: the generated return, with a spouse who may have wages
+    (one or two employers) and may be 66 or older. A separate generator keeps every single-filer
+    case unchanged."""
+    r = random.Random(f"mfj:{j}")
+    inputs, facts, features = case["inputs"], case["facts"], set(case["features"]) - {"head_of_household"}
+    inputs["f1040.status"] = "mfj"; inputs["$person"] = ["taxpayer", "spouse"]
+    inputs["household.unmarried"] = False
+    age = r.randint(66, 85) if r.random() < 0.15 else r.randint(25, 64)
+    inputs.update({f"{SPOUSE}.role": "spouse", f"{SPOUSE}.rrta": False, f"{SPOUSE}.tin": True, f"{SPOUSE}.work_ssn": True,
+                   f"{SPOUSE}.age65": age >= 66, f"{SPOUSE}.blind": False, f"{SPOUSE}.born_before_2001": True,
+                   f"{SPOUSE}.born_after_1960": age < 66, f"{SPOUSE}.educator_expenses": 0,
+                   f"$tipjob@{SPOUSE}": [], f"$otjob@{SPOUSE}": [], f"$f8889@{SPOUSE}": []})
+    if age >= 66:
+        inputs[f"{SPOUSE}.died_before_65"] = False; features.add("spouse_senior")
+    n_emp = 0 if r.random() < 0.3 else (1 if r.random() < 0.6 else 2)
+    keys = [f"emp_{chr(97 + k)}" for k in range(n_emp)]
+    inputs[f"$w2@{SPOUSE}"] = keys
+    wages = medicare = withheld = 0; box3s = []
+    for k in keys:
+        w = log_uniform(r, 500_000, 25_000_000)
+        box3 = min(w, WAGE_BASE)
+        e = {"box1": w, "box2": rate(w, (r.randint(8, 25), 100)), "box3": box3, "box4": rate(box3, SS_RATE), "box5": w,
+             "box6": rate(w, MEDICARE_RATE) + (rate(w - ADDL_MEDICARE_START, ADDL_MEDICARE_RATE) if w > ADDL_MEDICARE_START else 0), "box7": 0}
+        for box, v in e.items(): inputs[f"{SPOUSE}.w2[{k}].{box}"] = v
+        wages += w; medicare += w; withheld += e["box2"]; box3s.append(box3)
+    if n_emp == 2 and sum(box3s) > WAGE_BASE:
+        features.add("excess_social_security")
+    facts.update(joint=True, hoh=False, spouse_age=age, spouse_wages=wages, withheld=facts["withheld"] + withheld,
+                 medicare_wages=facts["medicare_wages"] + medicare)
+    features.add("joint")
+    return {"id": f"mfj-{j:05d}", "inputs": inputs, "facts": facts, "features": sorted(features)}
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--count", type=int, default=1000)
+    ap.add_argument("--joint", type=int, default=400)
     ap.add_argument("--seed", type=int, default=20260101)
     ap.add_argument("--out", required=True)
     a = ap.parse_args()
     rng = random.Random(a.seed)
     cases = [gen_case(rng, i) for i in range(a.count)]
+    cases += [make_joint(gen_case(random.Random(f"mfj-base:{a.seed}:{j}"), 100_000 + j), j) for j in range(a.joint)]
     with open(a.out, "w") as f:
         json.dump(cases, f)
     print(f"generated {len(cases)} cases (seed {a.seed}) -> {a.out}")

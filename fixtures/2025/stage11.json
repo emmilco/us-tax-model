@@ -3688,7 +3688,7 @@
         "f1040.lines8-10"
       ],
       "evidence": "synthetic refusal regression",
-      "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Married filing separately with HSA contributions: the spouses' rules (Form 8889 lines 6 and 7) are outside this tool, refused.",
+      "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Married filing separately with HSA contributions: the spouses' rules (Form 8889 lines 6 and 7) are outside this tool, refused. Stage 13: Form 8889 on a married filing separately return stays refused (f8889.mfs); joint returns use the spouse rules.",
       "inputs": {
         "f1040.status": "mfs",
         "$person": [
@@ -3809,14 +3809,14 @@
       "expect": {
         "f1040.line10": {
           "kind": "refusal",
-          "gate": "person[taxpayer].f8889[hsa].married",
-          "form": "Form 8889 for a married filer",
-          "remedy": "The HSA rules for spouses (Form 8889 lines 6 and 7) are outside this tool.",
+          "gate": "person[taxpayer].f8889[hsa].mfs",
+          "form": "Form 8889 on a married filing separately return",
+          "remedy": "Married filing separately is outside this tool; the HSA rules for spouses are supported on a joint return.",
           "cite": {
-            "doc": "f8889",
-            "locator": "Form 8889 (2025), lines 6 and 7",
-            "revision": "2025; created 2025-03-28",
-            "snapshot": "15ed4587f75bec57b0b343dfd001b4016f09698af970afee633ca1a364d5f49f",
+            "doc": "i1040gi",
+            "locator": "p. 14, Married Filing Separately",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
             "tax_year": 2025
           }
         }
@@ -3968,7 +3968,8 @@
       "inputs": {
         "f1040.status": "mfj",
         "$person": [
-          "taxpayer"
+          "taxpayer",
+          "spouse"
         ],
         "person[taxpayer].role": "taxpayer",
         "$f8889@person[taxpayer]": [],
@@ -4071,7 +4072,18 @@
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 250000,
-        "sli.claimed": false
+        "sli.claimed": false,
+        "person[spouse].role": "spouse",
+        "person[spouse].rrta": false,
+        "person[spouse].age65": false,
+        "person[spouse].blind": false,
+        "person[spouse].tin": true,
+        "person[spouse].work_ssn": true,
+        "person[spouse].born_before_2001": true,
+        "person[spouse].born_after_1960": true,
+        "person[spouse].educator_expenses": 0,
+        "$w2@person[spouse]": [],
+        "$f8889@person[spouse]": []
       },
       "expect": {
         "sli.line5": {

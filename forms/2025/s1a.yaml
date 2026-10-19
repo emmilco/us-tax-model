@@ -3,7 +3,7 @@ form:
   kind: form
   title: Schedule 1-A (Form 1040) — Additional Deductions
   tax_year: 2025
-  note: For an unmarried filer (married filing statuses are refused through s3.married). Tips and overtime as an employee
+  note: For a single, head of household, qualifying surviving spouse or married filing jointly return (married filing separately is refused through s3.mfs). Tips and overtime as an employee
     only, by the methods the instructions give for 2025; tips or overtime in a trade or business, Form 4137, and excluded
     Puerto Rico income or Forms 2555 and 4563 are refused. Lines 11, 19 and 28 (a whole number of $1,000 units) are kept as
     that many thousands of dollars; lines 12, 20 and 29 multiply them by $100 or $200 per thousand.
@@ -122,6 +122,11 @@ form:
       op: sum_over
       collection: person
       field: person.tip_employers
+      where:
+        op: test
+        eq:
+        - person.work_ssn
+        - const: true
     cite:
       doc: i1040gi
       locator: p. 104, Schedule 1-A, line 4c
@@ -133,6 +138,11 @@ form:
       op: sum_over
       collection: person
       field: person.tip_total
+      where:
+        op: test
+        eq:
+        - person.work_ssn
+        - const: true
     cite:
       doc: i1040gi
       locator: p. 104, Qualified Tips From More Than One Employer Worksheet, line 2
@@ -144,6 +154,11 @@ form:
       op: sum_over
       collection: person
       field: person.tip_reported
+      where:
+        op: test
+        eq:
+        - person.work_ssn
+        - const: true
     cite:
       doc: i1040gi
       locator: p. 104, Qualified Tips From More Than One Employer Worksheet, column (b); p. 103, methods 1 to 3, "Enter this
@@ -161,9 +176,63 @@ form:
       doc: i1040gi
       locator: p. 104, Schedule 1-A, line 4a, "If you received qualified tips as an employee with respect to employment with
         more than one employer, enter -0- on line 4a"
+  - id: s1a.tip_ssn_count
+    printed: (helper)
+    label: 'Number of people with a valid SSN who received qualified tips'
+    type: Count
+    expr:
+      op: sum_over
+      collection: person
+      field: person.one
+      where:
+        op: test
+        all:
+        - op: test
+          eq:
+          - person.work_ssn
+          - const: true
+        - op: test
+          gt:
+          - person.tip_employers
+          - const: 0
+            type: Count
+    cite:
+      doc: i1040gi
+      locator: 'p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if" and "If you are married filing a joint return, the spouse who received the qualified tips must have a valid SSN"'
+  - id: s1a.tip_ssn
+    printed: (helper)
+    label: 'You have a valid SSN or, if married filing jointly, a spouse who received them has a valid SSN'
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        all:
+        - op: test
+          ne:
+          - f1040.status
+          - const: mfj
+        - op: test
+          eq:
+          - household.taxpayer_work_ssn
+          - const: true
+      - op: test
+        all:
+        - op: test
+          eq:
+          - f1040.status
+          - const: mfj
+        - op: test
+          gt:
+          - s1a.tip_ssn_count
+          - const: 0
+            type: Count
+    cite:
+      doc: i1040gi
+      locator: 'p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if" and "If you are married filing a joint return, the spouse who received the qualified tips must have a valid SSN"'
   - id: s1a.part2
     printed: (helper)
-    label: 'Part II applies: qualified tips claimed, not married filing separately, a valid SSN'
+    label: 'Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN'
     type: Bool
     expr:
       op: test
@@ -178,7 +247,7 @@ form:
         - const: mfs
       - op: test
         eq:
-        - household.taxpayer_work_ssn
+        - s1a.tip_ssn
         - const: true
     cite:
       doc: i1040gi
@@ -708,7 +777,7 @@ form:
         the amount from Schedule 1-A, line 7, on Schedule 1-A, line 13"
   - id: s1a.line13_ssn
     printed: (helper)
-    label: 'Line 13 with qualified tips: zero without a valid SSN'
+    label: 'Line 13 with qualified tips: zero unless a person who received them has a valid SSN'
     type: NonNegDollars
     expr:
       op: choose
@@ -716,13 +785,13 @@ form:
       - guard:
           op: test
           eq:
-          - household.taxpayer_work_ssn
+          - s1a.tip_ssn
           - const: false
         then: s1a.zero
       - guard:
           op: test
           eq:
-          - household.taxpayer_work_ssn
+          - s1a.tip_ssn
           - const: true
         then: s1a.line13_amount
     cite:
@@ -803,9 +872,63 @@ form:
     cite:
       doc: i1040gi
       locator: p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"
+  - id: s1a.ot_ssn_count
+    printed: (helper)
+    label: 'Number of people with a valid SSN who received qualified overtime compensation'
+    type: Count
+    expr:
+      op: sum_over
+      collection: person
+      field: person.one
+      where:
+        op: test
+        all:
+        - op: test
+          eq:
+          - person.work_ssn
+          - const: true
+        - op: test
+          gt:
+          - person.ot_employers
+          - const: 0
+            type: Count
+    cite:
+      doc: i1040gi
+      locator: 'p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if" and "If you are married filing jointly, the spouse who received the qualified overtime compensation must have a valid SSN"'
+  - id: s1a.ot_ssn
+    printed: (helper)
+    label: 'You have a valid SSN or, if married filing jointly, a spouse who received it has a valid SSN'
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        all:
+        - op: test
+          ne:
+          - f1040.status
+          - const: mfj
+        - op: test
+          eq:
+          - household.taxpayer_work_ssn
+          - const: true
+      - op: test
+        all:
+        - op: test
+          eq:
+          - f1040.status
+          - const: mfj
+        - op: test
+          gt:
+          - s1a.ot_ssn_count
+          - const: 0
+            type: Count
+    cite:
+      doc: i1040gi
+      locator: 'p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if" and "If you are married filing jointly, the spouse who received the qualified overtime compensation must have a valid SSN"'
   - id: s1a.part3
     printed: (helper)
-    label: 'Part III applies: qualified overtime claimed, not married filing separately, a valid SSN'
+    label: 'Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN'
     type: Bool
     expr:
       op: test
@@ -820,7 +943,7 @@ form:
         - const: mfs
       - op: test
         eq:
-        - household.taxpayer_work_ssn
+        - s1a.ot_ssn
         - const: true
     cite:
       doc: i1040gi
@@ -834,6 +957,11 @@ form:
       op: sum_over
       collection: person
       field: person.ot_total
+      where:
+        op: test
+        eq:
+        - person.work_ssn
+        - const: true
     cite:
       doc: i1040gi
       locator: p. 108, Schedule 1-A, line 14a, and the Qualified Overtime Compensation From More Than One Employer Worksheet,
@@ -1261,7 +1389,7 @@ form:
         the amount from Schedule 1-A, line 15, on Schedule 1-A, line 21"
   - id: s1a.line21_ssn
     printed: (helper)
-    label: 'Line 21 with qualified overtime: zero without a valid SSN'
+    label: 'Line 21 with qualified overtime: zero unless a person who received it has a valid SSN'
     type: NonNegDollars
     expr:
       op: choose
@@ -1269,13 +1397,13 @@ form:
       - guard:
           op: test
           eq:
-          - household.taxpayer_work_ssn
+          - s1a.ot_ssn
           - const: false
         then: s1a.zero
       - guard:
           op: test
           eq:
-          - household.taxpayer_work_ssn
+          - s1a.ot_ssn
           - const: true
         then: s1a.line21_amount
     cite:
@@ -1717,25 +1845,56 @@ form:
     cite:
       doc: i1040gi
       locator: p. 109, Schedule 1-A, Part IV, "Fill out Schedule 1-A, Part IV, only if you paid or accrued QPVLI in 2025"
+  - id: s1a.senior_count
+    printed: (helper)
+    label: 'Number of people born before January 2, 1961, with a valid SSN'
+    type: Count
+    expr:
+      op: sum_over
+      collection: person
+      field: person.one
+      where:
+        op: test
+        all:
+        - op: test
+          eq:
+          - person.age65
+          - const: true
+        - op: test
+          eq:
+          - person.work_ssn
+          - const: true
+    cite:
+      doc: i1040gi
+      locator: 'p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if" and "If you are married filing jointly, the spouse who is claiming the enhanced deduction for seniors must have a valid SSN"'
+  - id: s1a.senior_any
+    printed: (helper)
+    label: 'You (and/or your spouse if filing jointly) were born before January 2, 1961, and have a valid SSN'
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - s1a.senior_count
+      - const: 0
+        type: Count
+    cite:
+      doc: i1040gi
+      locator: 'p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if" and "If you are married filing jointly, the spouse who is claiming the enhanced deduction for seniors must have a valid SSN"'
   - id: s1a.part5
     printed: (helper)
-    label: 'Part V applies: born before January 2, 1961, not married filing separately, a valid SSN'
+    label: 'Part V applies: you (and/or your spouse if filing jointly) were born before January 2, 1961, and have a valid SSN, not married filing separately'
     type: Bool
     expr:
       op: test
       all:
       - op: test
         eq:
-        - sa.age65
+        - s1a.senior_any
         - const: true
       - op: test
         ne:
         - f1040.status
         - const: mfs
-      - op: test
-        eq:
-        - household.taxpayer_work_ssn
-        - const: true
     cite:
       doc: i1040gi
       locator: p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; Part V caution
@@ -2010,7 +2169,7 @@ form:
       locator: p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; Part V caution
   - id: s1a.died_before_65_count
     printed: (helper)
-    label: Your entry, if the answer is yes
+    label: Your entry, if you were born between January 2, 1960, and January 1, 1961, and died in 2025 before reaching age 65
     type: Count
     expr:
       op: sum_over
@@ -2032,8 +2191,7 @@ form:
       locator: p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025"
   - id: s1a.died_before_65
     printed: (helper)
-    label: Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before
-      reaching age 65?
+    label: 'You were born between January 2, 1960, and January 1, 1961, and died in 2025 before reaching age 65'
     type: Bool
     expr:
       op: test
@@ -2149,24 +2307,134 @@ form:
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 36a
+  - id: s1a.spouse_senior_count
+    printed: (helper)
+    label: 'Your spouse, if born before January 2, 1961, with a valid SSN'
+    type: Count
+    expr:
+      op: sum_over
+      collection: person
+      field: person.one
+      where:
+        op: test
+        all:
+        - op: test
+          eq:
+          - person.role
+          - const: spouse
+        - op: test
+          eq:
+          - person.age65
+          - const: true
+        - op: test
+          eq:
+          - person.work_ssn
+          - const: true
+    cite:
+      doc: i1040gi
+      locator: 'p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if" and "If you are married filing jointly, the spouse who is claiming the enhanced deduction for seniors must have a valid SSN"'
+  - id: s1a.spouse_senior
+    printed: (helper)
+    label: 'Your spouse was born before January 2, 1961, and has a valid SSN'
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - s1a.spouse_senior_count
+      - const: 0
+        type: Count
+    cite:
+      doc: i1040gi
+      locator: 'p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if" and "If you are married filing jointly, the spouse who is claiming the enhanced deduction for seniors must have a valid SSN"'
+  - id: s1a.spouse_died_before_65_count
+    printed: (helper)
+    label: 'Your spouse''s entry, if your spouse was born between January 2, 1960, and January 1, 1961, and died in 2025 before reaching age 65'
+    type: Count
+    expr:
+      op: sum_over
+      collection: person
+      field: person.one
+      where:
+        op: test
+        all:
+        - op: test
+          eq:
+          - person.role
+          - const: spouse
+        - op: test
+          eq:
+          - person.died_before_65
+          - const: true
+    cite:
+      doc: i1040gi
+      locator: p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025"
+  - id: s1a.spouse_died_before_65
+    printed: (helper)
+    label: 'Your spouse was born between January 2, 1960, and January 1, 1961, and died in 2025 before reaching age 65'
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - s1a.spouse_died_before_65_count
+      - const: 0
+        type: Count
+    cite:
+      doc: i1040gi
+      locator: p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025"
+  - id: s1a.spouse_senior_decedent
+    printed: (gate)
+    label: A spouse who died in 2025 before reaching age 65
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - s1a.spouse_died_before_65
+      - const: true
+    cite:
+      doc: i1040gi
+      locator: p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025"
+  - id: s1a.line36b_senior
+    printed: (helper)
+    label: Line 36b for a spouse born before January 2, 1961, with a valid SSN
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: s1a.line35
+    cite:
+      doc: f1040s1a
+      locator: Schedule 1-A (2025), line 36b
+    refuses:
+    - when: s1a.spouse_senior_decedent
+      form: Enhanced deduction for seniors on the final return of a person who died in 2025 before reaching age 65
+      remedy: A person born before January 2, 1961, who died in 2025 before reaching age 65 does not qualify; this case is
+        outside this tool.
+      cite:
+        doc: i1040gi
+        locator: p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025"
   - id: s1a.line36b
     printed: 36b
     label: If you are married filing jointly, your spouse has a valid social security number (see instructions), and your
       spouse was born before January 2, 1961, enter the amount from line 35
     type: NonNegDollars
     expr:
-      op: param
-      ref: sales.zero
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - s1a.spouse_senior
+          - const: false
+        then: s1a.zero
+      - guard:
+          op: test
+          eq:
+          - s1a.spouse_senior
+          - const: true
+        then: s1a.line36b_senior
     cite:
       doc: f1040s1a
-      locator: Schedule 1-A (2025), line 36b
-    refuses:
-    - when: sa.spouse_extra
-      form: Schedule 1-A, line 36b (a spouse born before January 2, 1961, on a joint return)
-      remedy: A spouse's age and blindness boxes, and the spouse's enhanced deduction for seniors, are outside this tool.
-      cite:
-        doc: f1040s1a
-        locator: Schedule 1-A (2025), line 36b
+      locator: Schedule 1-A (2025), line 36b; i1040gi p. 110, "The maximum amount of the enhanced deduction for seniors
+        is $6,000 per person"
   - id: s1a.line37
     printed: '37'
     label: Enhanced deduction for seniors. Add lines 36a and 36b

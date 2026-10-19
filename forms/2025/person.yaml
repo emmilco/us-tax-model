@@ -126,6 +126,84 @@ form:
       cite:
         doc: i1040gi
         locator: p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025"
+    - id: person.educator_max
+      printed: (helper)
+      type: NonNegDollars
+      label: Year parameter s1.educator_max ($300)
+      expr:
+        op: param
+        ref: s1.educator_max
+      cite:
+        doc: i1040gi
+        locator: 'p. 93, Schedule 1, line 11, "If you and your spouse are filing jointly and both of you were eligible educators, the maximum deduction is $600. However, neither spouse can deduct more than $300 of their qualified expenses"'
+    - id: person.has_educator_expenses
+      printed: (helper)
+      type: Bool
+      label: Any qualified educator expenses for this person
+      expr:
+        op: test
+        gt:
+        - person.educator_expenses
+        - param: sales.zero
+      cite:
+        doc: i1040gi
+        locator: 'p. 93, Schedule 1, line 11'
+    - id: person.educator_limited
+      printed: (helper)
+      type: NonNegDollars
+      label: This person's qualified educator expenses, up to $300
+      expr:
+        op: smaller_of
+        of:
+        - person.educator_expenses
+        - person.educator_max
+      cite:
+        doc: i1040gi
+        locator: 'p. 93, Schedule 1, line 11, "If you and your spouse are filing jointly and both of you were eligible educators, the maximum deduction is $600. However, neither spouse can deduct more than $300 of their qualified expenses"'
+    - id: person.educator_eligible_amount
+      printed: (helper)
+      type: NonNegDollars
+      label: This person's qualified educator expenses up to $300 if an eligible educator, else zero
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.eligible_educator
+            - const: true
+          then: person.educator_limited
+        - guard:
+            op: test
+            eq:
+            - person.eligible_educator
+            - const: false
+          then: person.zero
+      cite:
+        doc: i1040gi
+        locator: 'p. 93, Schedule 1, line 11, "If you were an eligible educator in 2025, you can deduct on line 11 up to $300 of qualified expenses you paid in 2025"; "If you and your spouse are filing jointly and both of you were eligible educators, the maximum deduction is $600. However, neither spouse can deduct more than $300 of their qualified expenses"'
+    - id: person.educator_deduction
+      printed: (helper)
+      type: NonNegDollars
+      label: This person's educator expense deduction
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.has_educator_expenses
+            - const: true
+          then: person.educator_eligible_amount
+        - guard:
+            op: test
+            eq:
+            - person.has_educator_expenses
+            - const: false
+          then: person.zero
+      cite:
+        doc: i1040gi
+        locator: 'p. 93, Schedule 1, line 11, "If you were an eligible educator in 2025, you can deduct on line 11 up to $300 of qualified expenses you paid in 2025"; "If you and your spouse are filing jointly and both of you were eligible educators, the maximum deduction is $600. However, neither spouse can deduct more than $300 of their qualified expenses"'
     - id: person.hsa_forms
       printed: (helper)
       type: Count
@@ -150,6 +228,76 @@ form:
       cite:
         doc: i8889
         locator: 'p. 4, Name and social security number (SSN), "complete a separate Form 8889 for each of you"'
+    - id: person.hsa_split
+      printed: (helper)
+      type: Count
+      label: 'This persons Form 8889 uses the spouse rule of line 6'
+      expr:
+        op: sum_over
+        collection: f8889
+        field: f8889.one
+        where:
+          op: test
+          eq:
+          - f8889.split
+          - const: true
+      cite:
+        doc: i8889
+        locator: 'p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3'
+    - id: person.hsa_agreed
+      printed: (helper)
+      type: Count
+      label: 'This persons Form 8889 uses an agreed allocation under the spouse rule of line 6'
+      expr:
+        op: sum_over
+        collection: f8889
+        field: f8889.one
+        where:
+          op: test
+          all:
+          - op: test
+            eq:
+            - f8889.split
+            - const: true
+          - op: test
+            eq:
+            - f8889.allocation
+            - const: agreed
+      cite:
+        doc: i8889
+        locator: 'p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3'
+    - id: person.hsa_step1
+      printed: (helper)
+      type: NonNegDollars
+      label: 'This persons Step 1 limit under the spouse rule of line 6'
+      expr:
+        op: sum_over
+        collection: f8889
+        field: f8889.step1
+        where:
+          op: test
+          eq:
+          - f8889.split
+          - const: true
+      cite:
+        doc: i8889
+        locator: 'p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3'
+    - id: person.hsa_share
+      printed: (helper)
+      type: NonNegDollars
+      label: 'This persons part of the Step 1 limit under the spouse rule of line 6'
+      expr:
+        op: sum_over
+        collection: f8889
+        field: f8889.share_raw
+        where:
+          op: test
+          eq:
+          - f8889.split
+          - const: true
+      cite:
+        doc: i8889
+        locator: 'p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3'
     - id: person.hsa_deduction
       printed: (helper)
       type: NonNegDollars
@@ -204,6 +352,17 @@ form:
       cite:
         doc: i1040gi
         locator: p. 104, Qualified Tips From More Than One Employer Worksheet, column (b)
+    - id: person.ot_employers
+      printed: (helper)
+      type: Count
+      label: Number of employers that paid this person qualified overtime compensation
+      expr:
+        op: sum_over
+        collection: otjob
+        field: otjob.one
+      cite:
+        doc: i1040gi
+        locator: p. 108, Schedule 1-A, line 14a, and the Qualified Overtime Compensation From More Than One Employer Worksheet
     - id: person.ot_total
       printed: (helper)
       type: NonNegDollars

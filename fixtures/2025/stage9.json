@@ -3556,7 +3556,8 @@
       "inputs": {
         "f1040.status": "mfj",
         "$person": [
-          "taxpayer"
+          "taxpayer",
+          "spouse"
         ],
         "person[taxpayer].role": "taxpayer",
         "$f8889@person[taxpayer]": [],
@@ -3658,7 +3659,18 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "person[spouse].role": "spouse",
+        "person[spouse].rrta": false,
+        "person[spouse].age65": false,
+        "person[spouse].blind": false,
+        "person[spouse].tin": true,
+        "person[spouse].work_ssn": true,
+        "person[spouse].born_before_2001": true,
+        "person[spouse].born_after_1960": true,
+        "person[spouse].educator_expenses": 0,
+        "$w2@person[spouse]": [],
+        "$f8889@person[spouse]": []
       },
       "expect": {
         "f1040.line27a": {
@@ -3682,7 +3694,8 @@
       "inputs": {
         "f1040.status": "mfj",
         "$person": [
-          "taxpayer"
+          "taxpayer",
+          "spouse"
         ],
         "person[taxpayer].role": "taxpayer",
         "$f8889@person[taxpayer]": [],
@@ -3807,7 +3820,18 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "person[spouse].role": "spouse",
+        "person[spouse].rrta": false,
+        "person[spouse].age65": false,
+        "person[spouse].blind": false,
+        "person[spouse].tin": true,
+        "person[spouse].work_ssn": true,
+        "person[spouse].born_before_2001": true,
+        "person[spouse].born_after_1960": true,
+        "person[spouse].educator_expenses": 0,
+        "$w2@person[spouse]": [],
+        "$f8889@person[spouse]": []
       },
       "expect": {
         "f1040.line27a": {
@@ -3831,7 +3855,8 @@
       "inputs": {
         "f1040.status": "mfj",
         "$person": [
-          "taxpayer"
+          "taxpayer",
+          "spouse"
         ],
         "person[taxpayer].role": "taxpayer",
         "$f8889@person[taxpayer]": [],
@@ -3978,7 +4003,18 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "person[spouse].role": "spouse",
+        "person[spouse].rrta": false,
+        "person[spouse].age65": false,
+        "person[spouse].blind": false,
+        "person[spouse].tin": true,
+        "person[spouse].work_ssn": true,
+        "person[spouse].born_before_2001": true,
+        "person[spouse].born_after_1960": true,
+        "person[spouse].educator_expenses": 0,
+        "$w2@person[spouse]": [],
+        "$f8889@person[spouse]": []
       },
       "expect": {
         "f1040.line27a": {
@@ -4002,7 +4038,8 @@
       "inputs": {
         "f1040.status": "mfj",
         "$person": [
-          "taxpayer"
+          "taxpayer",
+          "spouse"
         ],
         "person[taxpayer].role": "taxpayer",
         "$f8889@person[taxpayer]": [],
@@ -4171,7 +4208,18 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "person[spouse].role": "spouse",
+        "person[spouse].rrta": false,
+        "person[spouse].age65": false,
+        "person[spouse].blind": false,
+        "person[spouse].tin": true,
+        "person[spouse].work_ssn": true,
+        "person[spouse].born_before_2001": true,
+        "person[spouse].born_after_1960": true,
+        "person[spouse].educator_expenses": 0,
+        "$w2@person[spouse]": [],
+        "$f8889@person[spouse]": []
       },
       "expect": {
         "f1040.line27a": {
@@ -4195,7 +4243,8 @@
       "inputs": {
         "f1040.status": "mfj",
         "$person": [
-          "taxpayer"
+          "taxpayer",
+          "spouse"
         ],
         "person[taxpayer].role": "taxpayer",
         "$f8889@person[taxpayer]": [],
@@ -4297,7 +4346,18 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "person[spouse].role": "spouse",
+        "person[spouse].rrta": false,
+        "person[spouse].age65": false,
+        "person[spouse].blind": false,
+        "person[spouse].tin": true,
+        "person[spouse].work_ssn": true,
+        "person[spouse].born_before_2001": true,
+        "person[spouse].born_after_1960": true,
+        "person[spouse].educator_expenses": 0,
+        "$w2@person[spouse]": [],
+        "$f8889@person[spouse]": []
       },
       "expect": {
         "f1040.line27a": {

@@ -3,7 +3,7 @@ form:
   kind: form
   title: Form 8889 — HSA contributions and deduction (Part I)
   tax_year: 2025
-  note: Part I for an unmarried filer, with the Line 3 Limitation Chart and Worksheet and the last-month rule. Parts II and
+  note: Part I for one person, with the spouse rules of lines 6 and 7 on a joint return, with the Line 3 Limitation Chart and Worksheet and the last-month rule. Parts II and
     III, Archer MSAs, qualified HSA funding distributions and excess contributions are refused.
   lines:
   - id: f8889.one
@@ -88,24 +88,18 @@ form:
       doc: i8889
       locator: Parts II and III, line 4 (Archer MSAs), line 10 (qualified HSA funding distributions), line 13 (Prior Year
         Excess Contributions), and Death of HSA Account Beneficiary
-  - id: f8889.married
-    printed: (helper)
-    label: Married filing jointly or separately (spouses' HSA rules)
+  - id: f8889.mfs
+    printed: (gate)
+    label: 'Married filing separately'
     type: Bool
     expr:
       op: test
-      any:
-      - op: test
-        eq:
-        - f1040.status
-        - const: mfj
-      - op: test
-        eq:
-        - f1040.status
-        - const: mfs
+      eq:
+      - f1040.status
+      - const: mfs
     cite:
-      doc: f8889
-      locator: Form 8889 (2025), lines 6 and 7 (spouses with separate HSAs, family coverage, additional contribution amount)
+      doc: i1040gi
+      locator: 'p. 14, Married Filing Separately'
   - id: f8889.months_eligible
     printed: (helper)
     label: Number of months of 2025 on the first day of which you were an eligible individual
@@ -160,6 +154,71 @@ form:
     cite:
       doc: i8889
       locator: p. 4, Line 3, rule 6, and p. 6, Line 3 Limitation Chart
+  - id: f8889.twelve
+    printed: (helper)
+    label: 'Twelve months'
+    type: Count
+    expr:
+      op: param
+      ref: hsa.year_months
+    cite:
+      doc: i8889
+      locator: 'p. 4, Line 3, rule 2'
+  - id: f8889.married_family
+    printed: (helper)
+    label: 'Married filing jointly and treated as having family coverage at any time during 2025'
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f1040.status
+        - const: mfj
+      - op: test
+        any:
+        - op: test
+          all:
+          - op: test
+            eq:
+            - f8889.use_last_month
+            - const: true
+          - op: test
+            eq:
+            - f8889.dec_coverage
+            - const: family
+        - op: test
+          all:
+          - op: test
+            eq:
+            - f8889.use_last_month
+            - const: false
+          - op: test
+            gt:
+            - f8889.months_family
+            - const: 0
+              type: Count
+    cite:
+      doc: i8889
+      locator: 'p. 5, Line 3, "Note. If you are married and had family coverage at any time during the year, the additional contribution amount is figured on line 7 and is not included on line 3"; p. 4, Line 3, rule 2, "If the last-month rule ... applies, you are considered an eligible individual for the entire year. You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month of your tax year"'
+  - id: f8889.age55_line3
+    printed: (helper)
+    label: 'Age 55 or older and the additional contribution amount is included on line 3 (unmarried, or married without family coverage)'
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8889.age55
+        - const: true
+      - op: test
+        eq:
+        - f8889.married_family
+        - const: false
+    cite:
+      doc: i8889
+      locator: 'p. 4, Line 3, rule 6, "If, at the end of 2025, you were age 55 or older and unmarried or married with self-only HDHP coverage for the entire year, you can increase the amount determined in (3) or (4) by $1,000"; p. 5, Line 3, "Note. If you are married and had family coverage at any time during the year, the additional contribution amount is figured on line 7 and is not included on line 3"'
   - id: f8889.self_amount
     printed: (helper)
     label: Line 3 chart amount for a month of self-only coverage ($4,300; $5,300 if age 55 or older at the end of 2025)
@@ -170,13 +229,13 @@ form:
       - guard:
           op: test
           eq:
-          - f8889.age55
+          - f8889.age55_line3
           - const: true
         then: f8889.self_55
       - guard:
           op: test
           eq:
-          - f8889.age55
+          - f8889.age55_line3
           - const: false
         then: f8889.self_under55
     cite:
@@ -214,13 +273,13 @@ form:
       - guard:
           op: test
           eq:
-          - f8889.age55
+          - f8889.age55_line3
           - const: true
         then: f8889.family_55
       - guard:
           op: test
           eq:
-          - f8889.age55
+          - f8889.age55_line3
           - const: false
         then: f8889.family_under55
     cite:
@@ -536,25 +595,518 @@ form:
     cite:
       doc: f8889
       locator: Form 8889 (2025), line 5
+  - id: f8889.family_year
+    printed: (helper)
+    label: 'The family amount for all twelve months'
+    type: NonNegDollars
+    expr:
+      op: multiply_count
+      amount: f8889.family_under55
+      count: f8889.twelve
+    cite:
+      doc: i8889
+      locator: 'p. 7, Line 6, Step 1, "Refigure the contribution limit that would have been entered on line 5 if you had entered on line 3 the total of the worksheet amounts only for the months you were treated as having family coverage"; p. 4, Line 3, rule 2, "If the last-month rule ... applies, you are considered an eligible individual for the entire year. You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month of your tax year"'
+  - id: f8889.family_dec_year
+    printed: (helper)
+    label: 'Under the last-month rule: the family amount for all twelve months if family coverage on December 1, else zero'
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8889.dec_coverage
+          - const: family
+        then: f8889.family_year
+      - guard:
+          op: test
+          eq:
+          - f8889.dec_coverage
+          - const: self_only
+        then: f8889.zero
+      - guard:
+          op: test
+          eq:
+          - f8889.dec_coverage
+          - const: none
+        then: f8889.zero
+    cite:
+      doc: i8889
+      locator: 'p. 4, Line 3, rule 2, "If the last-month rule ... applies, you are considered an eligible individual for the entire year. You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month of your tax year"'
+  - id: f8889.family_counted
+    printed: (helper)
+    label: 'The family amount for each month of family coverage'
+    type: NonNegDollars
+    expr:
+      op: multiply_count
+      amount: f8889.family_under55
+      count: f8889.months_family
+    cite:
+      doc: i8889
+      locator: 'p. 7, Line 6, Step 1, "Refigure the contribution limit that would have been entered on line 5 if you had entered on line 3 the total of the worksheet amounts only for the months you were treated as having family coverage"'
+  - id: f8889.step1_total
+    printed: (helper)
+    label: 'Step 1: the family amount for each month treated as having family coverage'
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8889.use_last_month
+          - const: true
+        then: f8889.family_dec_year
+      - guard:
+          op: test
+          eq:
+          - f8889.use_last_month
+          - const: false
+        then: f8889.family_counted
+    cite:
+      doc: i8889
+      locator: 'p. 7, Line 6, Step 1, "Refigure the contribution limit that would have been entered on line 5 if you had entered on line 3 the total of the worksheet amounts only for the months you were treated as having family coverage"; p. 4, Line 3, rule 2, "If the last-month rule ... applies, you are considered an eligible individual for the entire year. You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month of your tax year"'
+  - id: f8889.step1_line3
+    printed: (helper)
+    label: 'Step 1: refigured line 3 (the total divided by 12)'
+    type: Dollars
+    expr:
+      op: multiply_rate
+      amount: f8889.step1_total
+      rate:
+        param: hsa.twelfth
+    cite:
+      doc: i8889
+      locator: 'p. 7, Line 6, Step 1, "Refigure the contribution limit that would have been entered on line 5 if you had entered on line 3 the total of the worksheet amounts only for the months you were treated as having family coverage. When refiguring line 5, use the same amount you previously entered on line 4"'
+  - id: f8889.step1
+    printed: (helper)
+    label: 'Step 1: refigured line 5 (refigured line 3 less line 4)'
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f8889.step1_line3
+      take: f8889.line4
+    cite:
+      doc: i8889
+      locator: 'p. 7, Line 6, Step 1, "Refigure the contribution limit that would have been entered on line 5 if you had entered on line 3 the total of the worksheet amounts only for the months you were treated as having family coverage. When refiguring line 5, use the same amount you previously entered on line 4"'
+  - id: f8889.step1_x2
+    printed: (helper)
+    label: 'Twice the Step 1 limit'
+    type: NonNegDollars
+    expr:
+      op: multiply_count
+      amount: f8889.step1
+      count: f8889.two
+    cite:
+      doc: i8889
+      locator: 'p. 7, Line 6, Step 2, "Divide the refigured contribution limit from Step 1 equally between you and your spouse, unless you both agree on a different allocation (such as allocating nothing to one spouse)"'
+  - id: f8889.two
+    printed: (helper)
+    label: 'Two spouses'
+    type: Count
+    expr:
+      op: param
+      ref: hsa.two
+    cite:
+      doc: i8889
+      locator: 'p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025'
+  - id: f8889.share_equal
+    printed: (helper)
+    label: 'Step 2: half of the Step 1 limit'
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: f8889.step1
+      rate:
+        param: hsa.half
+    cite:
+      doc: i8889
+      locator: 'p. 7, Line 6, Step 2, "Divide the refigured contribution limit from Step 1 equally between you and your spouse, unless you both agree on a different allocation (such as allocating nothing to one spouse)"'
+  - id: f8889.allocation
+    printed: (helper)
+    label: 'Do you and your spouse divide the family contribution limit equally, or by a different allocation you both agree on?'
+    type: Enum(hsa_allocation)
+    expr:
+      op: input
+      source: Do you and your spouse divide the family contribution limit equally (equal), or by a different allocation you both agree on, such as allocating nothing to one spouse (agreed)?
+    cite:
+      doc: i8889
+      locator: 'p. 7, Line 6, Step 2, "Divide the refigured contribution limit from Step 1 equally between you and your spouse, unless you both agree on a different allocation (such as allocating nothing to one spouse)"'
+  - id: f8889.allocated
+    printed: (helper)
+    label: 'The part of the Step 1 family contribution limit allocated to you under the allocation you and your spouse agreed on'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The part of the family contribution limit (Step 1) allocated to you under the allocation you and your spouse agreed on; your spouse's part is the rest
+    cite:
+      doc: i8889
+      locator: 'p. 7, Line 6, Step 2, "Divide the refigured contribution limit from Step 1 equally between you and your spouse, unless you both agree on a different allocation (such as allocating nothing to one spouse)"; p. 7, Line 6, Step 3, "Subtract the part of the contribution limit allocated to your spouse in Step 2 from the amount determined in Step 1"'
+  - id: f8889.share_raw
+    printed: (helper)
+    label: 'Steps 2 and 3: your part of the Step 1 limit (Step 1 less the part allocated to your spouse)'
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8889.allocation
+          - const: equal
+        then: f8889.share_equal
+      - guard:
+          op: test
+          eq:
+          - f8889.allocation
+          - const: agreed
+        then: f8889.allocated
+    cite:
+      doc: i8889
+      locator: 'p. 7, Line 6, Step 2, "Divide the refigured contribution limit from Step 1 equally between you and your spouse, unless you both agree on a different allocation (such as allocating nothing to one spouse)"; p. 7, Line 6, Step 3, "Subtract the part of the contribution limit allocated to your spouse in Step 2 from the amount determined in Step 1"'
+  - id: f8889.allocation_bad
+    printed: (gate)
+    label: 'The spouses allocation cannot be checked or does not hold: only one spouse treated as having family coverage, only one using an agreed allocation, or an agreed allocation with different Step 1 limits or with more than the Step 1 limit allocated in total'
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        eq:
+        - household.hsa_split_count
+        - const: 1
+          type: Count
+      - op: test
+        eq:
+        - household.hsa_agreed_count
+        - const: 1
+          type: Count
+      - op: test
+        all:
+        - op: test
+          eq:
+          - f8889.allocation
+          - const: agreed
+        - op: test
+          any:
+          - op: test
+            ne:
+            - f8889.step1_x2
+            - household.hsa_step1_sum
+          - op: test
+            gt:
+            - household.hsa_share_sum
+            - f8889.step1
+    cite:
+      doc: i8889
+      locator: 'p. 4, Line 3, rule 1, "Use the family coverage amount if you or your spouse had an HDHP with family coverage"; "if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage, you both are treated as having only the family coverage plan"; p. 7, Line 6, Step 2, "Divide the refigured contribution limit from Step 1 equally between you and your spouse, unless you both agree on a different allocation (such as allocating nothing to one spouse)"'
+  - id: f8889.share
+    printed: (helper)
+    label: 'Steps 2 and 3: your part of the Step 1 limit'
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f8889.share_raw
+    cite:
+      doc: i8889
+      locator: 'p. 7, Line 6, Step 3, "Subtract the part of the contribution limit allocated to your spouse in Step 2 from the amount determined in Step 1"'
+    refuses:
+    - when: f8889.allocation_bad
+      form: Form 8889 line 6 for spouses with separate HSAs
+      remedy: Count the months treated as family coverage the same way for both spouses (if either had family coverage while
+        both were eligible, both are treated as having it), use the same allocation method on both Forms 8889, and allocate
+        no more than the Step 1 limit between you. An agreed allocation between spouses whose Step 1 limits differ is
+        outside this tool.
+      cite:
+        doc: i8889
+        locator: 'p. 4, Line 3, rule 1; p. 7, Line 6, Steps 1 to 3'
+  - id: f8889.self_year
+    printed: (helper)
+    label: 'The self-only monthly amount for all twelve months'
+    type: NonNegDollars
+    expr:
+      op: multiply_count
+      amount: f8889.self_amount
+      count: f8889.twelve
+    cite:
+      doc: i8889
+      locator: 'p. 7, Line 6, Step 4, "Determine any other contribution limits that apply for the tax year and add that amount to the result in Step 3"; p. 4, Line 3, rule 2, "If the last-month rule ... applies, you are considered an eligible individual for the entire year. You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month of your tax year"'
+  - id: f8889.self_counted
+    printed: (helper)
+    label: 'The self-only monthly amount for each eligible month'
+    type: NonNegDollars
+    expr:
+      op: multiply_count
+      amount: f8889.self_amount
+      count: f8889.months_eligible
+    cite:
+      doc: i8889
+      locator: 'p. 7, Line 6, Step 4, "Determine any other contribution limits that apply for the tax year and add that amount to the result in Step 3"'
+  - id: f8889.self_all
+    printed: (helper)
+    label: 'The self-only monthly amount for each month treated as eligible'
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8889.use_last_month
+          - const: true
+        then: f8889.self_year
+      - guard:
+          op: test
+          eq:
+          - f8889.use_last_month
+          - const: false
+        then: f8889.self_counted
+    cite:
+      doc: i8889
+      locator: 'p. 7, Line 6, Step 4, "Determine any other contribution limits that apply for the tax year and add that amount to the result in Step 3"; p. 4, Line 3, rule 2, "If the last-month rule ... applies, you are considered an eligible individual for the entire year. You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month of your tax year"'
+  - id: f8889.self_family_months
+    printed: (helper)
+    label: 'The self-only monthly amount for each month of family coverage'
+    type: NonNegDollars
+    expr:
+      op: multiply_count
+      amount: f8889.self_amount
+      count: f8889.months_family
+    cite:
+      doc: i8889
+      locator: 'p. 7, Line 6, Step 4, "Determine any other contribution limits that apply for the tax year and add that amount to the result in Step 3"'
+  - id: f8889.self_dec_year
+    printed: (helper)
+    label: 'Under the last-month rule: the self-only monthly amount for all twelve months if family coverage on December 1, else zero'
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8889.dec_coverage
+          - const: family
+        then: f8889.self_year
+      - guard:
+          op: test
+          eq:
+          - f8889.dec_coverage
+          - const: self_only
+        then: f8889.zero
+      - guard:
+          op: test
+          eq:
+          - f8889.dec_coverage
+          - const: none
+        then: f8889.zero
+    cite:
+      doc: i8889
+      locator: 'p. 4, Line 3, rule 2, "If the last-month rule ... applies, you are considered an eligible individual for the entire year. You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month of your tax year"'
+  - id: f8889.self_in_family
+    printed: (helper)
+    label: 'The self-only monthly amount for each month treated as having family coverage'
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8889.use_last_month
+          - const: true
+        then: f8889.self_dec_year
+      - guard:
+          op: test
+          eq:
+          - f8889.use_last_month
+          - const: false
+        then: f8889.self_family_months
+    cite:
+      doc: i8889
+      locator: 'p. 7, Line 6, Step 4, "Determine any other contribution limits that apply for the tax year and add that amount to the result in Step 3"; p. 4, Line 3, rule 2, "If the last-month rule ... applies, you are considered an eligible individual for the entire year. You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month of your tax year"'
+  - id: f8889.step4_total
+    printed: (helper)
+    label: 'Step 4: the self-only monthly amount for each eligible month without family coverage'
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f8889.self_all
+      take: f8889.self_in_family
+    cite:
+      doc: i8889
+      locator: 'p. 7, Line 6, Step 4, "Determine any other contribution limits that apply for the tax year and add that amount to the result in Step 3. Enter the total on line 6"'
+  - id: f8889.step4
+    printed: (helper)
+    label: 'Step 4: other contribution limits (the total divided by 12)'
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: f8889.step4_total
+      rate:
+        param: hsa.twelfth
+    cite:
+      doc: i8889
+      locator: 'p. 7, Line 6, Step 4, "Determine any other contribution limits that apply for the tax year and add that amount to the result in Step 3. Enter the total on line 6"'
+  - id: f8889.line6_split
+    printed: (helper)
+    label: 'Line 6 for spouses with separate HSAs: Step 3 plus Step 4'
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f8889.share
+      - f8889.step4
+    cite:
+      doc: i8889
+      locator: 'p. 7, Line 6, Step 4, "Determine any other contribution limits that apply for the tax year and add that amount to the result in Step 3. Enter the total on line 6"'
+  - id: f8889.split
+    printed: (helper)
+    label: 'Spouses with separate HSAs, treated as having family coverage at any time during 2025'
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8889.married_family
+        - const: true
+      - op: test
+        eq:
+        - household.hsa_both
+        - const: true
+    cite:
+      doc: i8889
+      locator: 'p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025'
   - id: f8889.line6
     printed: '6'
     label: Enter the amount from line 5. But if you and your spouse each have separate HSAs and had family coverage under
       an HDHP at any time during 2025, see the instructions for the amount to enter
     type: NonNegDollars
     expr:
-      op: copy
-      from: f8889.line5
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8889.split
+          - const: true
+        then: f8889.line6_split
+      - guard:
+          op: test
+          eq:
+          - f8889.split
+          - const: false
+        then: f8889.line5
     cite:
       doc: f8889
       locator: Form 8889 (2025), line 6 (married filers are refused by f8889.married)
+  - id: f8889.additional
+    printed: (helper)
+    label: 'Year parameter hsa.additional ($1,000)'
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: hsa.additional
+    cite:
+      doc: i8889
+      locator: 'p. 7, Line 7 Additional Contribution Amount and the Additional Contribution Amount Worksheet, "1. $1,000 × number of months eligible. 2. Divide line 1 by 12"'
+  - id: f8889.line7_year
+    printed: (helper)
+    label: '$1,000 for all twelve months'
+    type: NonNegDollars
+    expr:
+      op: multiply_count
+      amount: f8889.additional
+      count: f8889.twelve
+    cite:
+      doc: i8889
+      locator: 'p. 7, Line 7 Additional Contribution Amount and the Additional Contribution Amount Worksheet, "1. $1,000 × number of months eligible. 2. Divide line 1 by 12"; p. 4, Line 3, rule 2, "If the last-month rule ... applies, you are considered an eligible individual for the entire year. You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month of your tax year"'
+  - id: f8889.line7_counted
+    printed: (helper)
+    label: '$1,000 for each eligible month'
+    type: NonNegDollars
+    expr:
+      op: multiply_count
+      amount: f8889.additional
+      count: f8889.months_eligible
+    cite:
+      doc: i8889
+      locator: 'p. 7, Line 7 Additional Contribution Amount and the Additional Contribution Amount Worksheet, "1. $1,000 × number of months eligible. 2. Divide line 1 by 12"'
+  - id: f8889.line7_total
+    printed: (helper)
+    label: 'Additional Contribution Amount Worksheet, line 1: $1,000 × number of months eligible'
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8889.use_last_month
+          - const: true
+        then: f8889.line7_year
+      - guard:
+          op: test
+          eq:
+          - f8889.use_last_month
+          - const: false
+        then: f8889.line7_counted
+    cite:
+      doc: i8889
+      locator: 'p. 7, Line 7 Additional Contribution Amount and the Additional Contribution Amount Worksheet, "1. $1,000 × number of months eligible. 2. Divide line 1 by 12"'
+    ambiguity: amb.2025.hsa_line7_months
+  - id: f8889.line7_worksheet
+    printed: (helper)
+    label: 'Additional Contribution Amount Worksheet, line 2: divide line 1 by 12'
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: f8889.line7_total
+      rate:
+        param: hsa.twelfth
+    cite:
+      doc: i8889
+      locator: 'p. 7, Line 7 Additional Contribution Amount and the Additional Contribution Amount Worksheet, "1. $1,000 × number of months eligible. 2. Divide line 1 by 12"'
+  - id: f8889.line7_applies
+    printed: (helper)
+    label: 'Age 55 or older at the end of 2025, married, and treated as having family coverage at any time during 2025'
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8889.age55
+        - const: true
+      - op: test
+        eq:
+        - f8889.married_family
+        - const: true
+    cite:
+      doc: i8889
+      locator: 'p. 7, Line 7, "If, at the end of 2025, you were age 55 or older and married, use the Additional Contribution Amount Worksheet"; p. 5, Line 3, "Note. If you are married and had family coverage at any time during the year, the additional contribution amount is figured on line 7 and is not included on line 3"'
   - id: f8889.line7
     printed: '7'
     label: If you were age 55 or older at the end of 2025, married, and you or your spouse had family coverage under an HDHP
       at any time during 2025, enter your additional contribution amount
     type: NonNegDollars
     expr:
-      op: copy
-      from: f8889.zero
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8889.line7_applies
+          - const: true
+        then: f8889.line7_worksheet
+      - guard:
+          op: test
+          eq:
+          - f8889.line7_applies
+          - const: false
+        then: f8889.zero
     cite:
       doc: f8889
       locator: Form 8889 (2025), line 7 (married filers are refused by f8889.married; an unmarried filer's $1,000 is in line
@@ -643,12 +1195,12 @@ form:
       cite:
         doc: i8889
         locator: Parts II and III; lines 4, 10 and 13
-    - when: f8889.married
-      form: Form 8889 for a married filer
-      remedy: The HSA rules for spouses (Form 8889 lines 6 and 7) are outside this tool.
+    - when: f8889.mfs
+      form: Form 8889 on a married filing separately return
+      remedy: Married filing separately is outside this tool; the HSA rules for spouses are supported on a joint return.
       cite:
-        doc: f8889
-        locator: Form 8889 (2025), lines 6 and 7
+        doc: i1040gi
+        locator: p. 14, Married Filing Separately
     - when: f8889.bad_months
       form: Form 8889 line 3 month counts
       remedy: The number of eligible months must be at most 12 and the number of family months at most the eligible months.

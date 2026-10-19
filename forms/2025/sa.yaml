@@ -52,13 +52,33 @@ form:
     - id: sa.spouse_extra
       printed: (helper)
       type: Bool
-      label: Claiming any age/blindness standard-deduction boxes for a spouse?
+      label: Married filing separately and claiming age or blindness boxes for your spouse (who had no income, isn't filing a return and can't be claimed as a dependent)?
       expr:
         op: input
-        source: Claiming any age/blindness standard-deduction boxes for a spouse?
+        source: Married filing separately and claiming age or blindness boxes for your spouse (who had no income, isn't filing a return and can't be claimed as a dependent)?
       cite:
         doc: f1040sa
         locator: Schedule A (2025), lines 1–18
+    - id: sa.mfs_spouse_extra
+      printed: (gate)
+      type: Bool
+      label: Married filing separately and claiming age or blindness boxes for your spouse
+      expr:
+        op: test
+        all:
+        - op: test
+          eq:
+          - f1040.status
+          - const: mfs
+        - op: test
+          eq:
+          - sa.spouse_extra
+          - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 33, Line 12d, "If your filing status is married filing separately and your spouse was born before
+          January 2, 1961, or was blind at the end of 2025, you can check the appropriate box(es) on line 12d if your
+          spouse had no income, isn't filing a return, and can't be claimed as a dependent on another person's return"
     - id: sa.age65_count
       printed: (helper)
       label: Your entry, if the answer is yes
@@ -89,41 +109,6 @@ form:
         op: test
         gt:
         - sa.age65_count
-        - const: 0
-          type: Count
-      cite:
-        doc: f1040sa
-        locator: Schedule A (2025), lines 1–18
-    - id: sa.blind_count
-      printed: (helper)
-      label: Your entry, if the answer is yes
-      type: Count
-      expr:
-        op: sum_over
-        collection: person
-        field: person.one
-        where:
-          op: test
-          all:
-          - op: test
-            eq:
-            - person.role
-            - const: taxpayer
-          - op: test
-            eq:
-            - person.blind
-            - const: true
-      cite:
-        doc: f1040sa
-        locator: Schedule A (2025), lines 1–18
-    - id: sa.blind
-      printed: (helper)
-      label: Are you blind under the standard-deduction instructions?
-      type: Bool
-      expr:
-        op: test
-        gt:
-        - sa.blind_count
         - const: 0
           type: Count
       cite:
@@ -756,50 +741,68 @@ form:
       cite:
         doc: f1040sa
         locator: Schedule A (2025), lines 1–18
+    - id: sa.boxes_age65
+      printed: (helper)
+      type: Count
+      label: Number of boxes checked for born before January 2, 1961 (you, and your spouse if filing jointly)
+      expr:
+        op: sum_over
+        collection: person
+        field: person.one
+        where:
+          op: test
+          eq:
+          - person.age65
+          - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before
+          January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; pp. 34–35, Standard Deduction
+          Chart for People Who Were Born Before January 2, 1961, or Were Blind
     - id: sa.extra_age65
       printed: (helper)
       type: NonNegDollars
-      label: Additional standard deduction for age65
+      label: Additional standard deduction for each box checked for age
       expr:
-        op: choose
-        alternatives:
-          - guard:
-              op: test
-              eq:
-                - sa.age65
-                - const: true
-            then: sa.extra
-          - guard:
-              op: test
-              eq:
-                - sa.age65
-                - const: false
-            then: sa.zero
+        op: multiply_count
+        amount: sa.extra
+        count: sa.boxes_age65
       cite:
         doc: i1040gi
-        locator: pp. 34–35, line 12e and Standard Deduction Chart
+        locator: p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before
+          January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; pp. 34–35, Standard Deduction
+          Chart for People Who Were Born Before January 2, 1961, or Were Blind
+    - id: sa.boxes_blind
+      printed: (helper)
+      type: Count
+      label: Number of boxes checked for blindness (you, and your spouse if filing jointly)
+      expr:
+        op: sum_over
+        collection: person
+        field: person.one
+        where:
+          op: test
+          eq:
+          - person.blind
+          - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before
+          January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; pp. 34–35, Standard Deduction
+          Chart for People Who Were Born Before January 2, 1961, or Were Blind
     - id: sa.extra_blind
       printed: (helper)
       type: NonNegDollars
-      label: Additional standard deduction for blind
+      label: Additional standard deduction for each box checked for blindness
       expr:
-        op: choose
-        alternatives:
-          - guard:
-              op: test
-              eq:
-                - sa.blind
-                - const: true
-            then: sa.extra
-          - guard:
-              op: test
-              eq:
-                - sa.blind
-                - const: false
-            then: sa.zero
+        op: multiply_count
+        amount: sa.extra
+        count: sa.boxes_blind
       cite:
         doc: i1040gi
-        locator: pp. 34–35, line 12e and Standard Deduction Chart
+        locator: p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before
+          January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; pp. 34–35, Standard Deduction
+          Chart for People Who Were Born Before January 2, 1961, or Were Blind
     - id: sa.standardraw
       printed: (helper)
       type: NonNegDollars
@@ -842,9 +845,10 @@ form:
           cite:
             doc: i1040gi
             locator: pp. 34–35, line 12e and Standard Deduction Chart
-        - when: sa.spouse_extra
-          form: Standard Deduction Chart spouse boxes
-          remedy: Spouse age/blindness claims require the unsupported per-spouse interview.
+        - when: sa.mfs_spouse_extra
+          form: Standard Deduction Chart spouse boxes on a separate return
+          remedy: Checking age or blindness boxes for your spouse on a married filing separately return is outside
+            this tool.
           cite:
             doc: i1040gi
             locator: pp. 34–35, line 12e and Standard Deduction Chart

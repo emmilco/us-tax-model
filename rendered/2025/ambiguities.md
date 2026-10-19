@@ -105,3 +105,13 @@
 
 - Status: Owner ruling, Stage 12.
 - Cite: [fr-2025-24154] pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(A) and (d)(4) (Federal Register Vol. 91, No. 1 (2026-01-02), proposed rules REG-113515-25 (Car Loan Interest Deduction), FR Doc. 2025-24154; sha256 4d243f55)
+
+## amb.2025.hsa_line7_months
+
+- Text at issue: The Additional Contribution Amount Worksheet for Form 8889 line 7 says "$1,000 × number of months eligible", for a married filer age 55 or older when "You or your spouse had family coverage under an HDHP and were, or were considered to be, an eligible individual on the first day of the month" and "You were not enrolled in Medicare for the month". It does not say whether a month of self-only coverage, in a year with family coverage in other months, counts.
+- Candidate readings: Count every month you were, or were considered to be, an eligible individual (an eligible individual is never enrolled in Medicare). | Count only the months treated as having family coverage.
+- **Chosen:** Count every month treated as eligible (f8889.elig_months, all twelve under the last-month rule).
+- Reason: Line 3 leaves out the additional contribution amount for every month once a married filer had family coverage at any time (p. 5, Note), so counting only family months would drop it for the self-only months altogether, which nothing in the instructions says. The worksheet's own words are "number of months eligible", and "If items (1) and (2) apply to all months during 2025, enter $1,000". Both readings agree when every eligible month has family coverage.
+
+- Status: Agent reading, Stage 13, for the owner's review.
+- Cite: [i8889] p. 5, Line 3, Note; p. 7, Line 7 Additional Contribution Amount and the worksheet (2025; sha256 da6f2f58)

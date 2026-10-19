@@ -265,15 +265,15 @@
 ## (helper) — `dependent.ctc_child`
 
 - **Authored helper label:** Qualifying child for the child tax credit (Step 3)
-- **Encoded (Bool):** helper "Qualifying child who is your dependent (Step 2)" = true and helper "SSN, ITIN or ATIN issued on or before the due date of your return?" = true and helper "U.S. citizen, U.S. national or U.S. resident alien?" = true and helper "Under age 17 at the end of 2025" = true and helper "SSN valid for employment issued before the due date of your return?" = true and household helper "Do you have an SSN valid for employment issued before the due date of your return?" = true
-- Expr: `{"all":[{"eq":["dependent.qc_dependent",{"const":true}],"op":"test"},{"eq":["dependent.tin",{"const":true}],"op":"test"},{"eq":["dependent.citizen",{"const":true}],"op":"test"},{"eq":["dependent.under_ctc_age",{"const":true}],"op":"test"},{"eq":["dependent.work_ssn",{"const":true}],"op":"test"},{"eq":["household.taxpayer_work_ssn",{"const":true}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** helper "Qualifying child who is your dependent (Step 2)" = true and helper "SSN, ITIN or ATIN issued on or before the due date of your return?" = true and helper "U.S. citizen, U.S. national or U.S. resident alien?" = true and helper "Under age 17 at the end of 2025" = true and helper "SSN valid for employment issued before the due date of your return?" = true and household helper "Child tax credit identification: you, or your spouse if filing jointly, have an SSN valid for employment, and each other person on the return has an SSN or ITIN" = true
+- Expr: `{"all":[{"eq":["dependent.qc_dependent",{"const":true}],"op":"test"},{"eq":["dependent.tin",{"const":true}],"op":"test"},{"eq":["dependent.citizen",{"const":true}],"op":"test"},{"eq":["dependent.under_ctc_age",{"const":true}],"op":"test"},{"eq":["dependent.work_ssn",{"const":true}],"op":"test"},{"eq":["household.ctc_ssn",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 18, Step 3, questions 1–4 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `dependent.odc_person`
 
 - **Authored helper label:** Dependent for the credit for other dependents (Steps 3 and 5)
-- **Encoded (Bool):** helper "Your dependent" = true and helper "SSN, ITIN or ATIN issued on or before the due date of your return?" = true and helper "U.S. citizen, U.S. national or U.S. resident alien?" = true and helper "Qualifying child for the child tax credit (Step 3)" = false and household helper "Do you have an SSN or ITIN issued on or before the due date of your return, or have you applied for an ITIN by then?" = true
-- Expr: `{"all":[{"eq":["dependent.claimed",{"const":true}],"op":"test"},{"eq":["dependent.tin",{"const":true}],"op":"test"},{"eq":["dependent.citizen",{"const":true}],"op":"test"},{"eq":["dependent.ctc_child",{"const":false}],"op":"test"},{"eq":["household.taxpayer_tin",{"const":true}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** helper "Your dependent" = true and helper "SSN, ITIN or ATIN issued on or before the due date of your return?" = true and helper "U.S. citizen, U.S. national or U.S. resident alien?" = true and helper "Qualifying child for the child tax credit (Step 3)" = false and household helper "You, and your spouse if filing jointly, have an SSN or ITIN" = true
+- Expr: `{"all":[{"eq":["dependent.claimed",{"const":true}],"op":"test"},{"eq":["dependent.tin",{"const":true}],"op":"test"},{"eq":["dependent.citizen",{"const":true}],"op":"test"},{"eq":["dependent.ctc_child",{"const":false}],"op":"test"},{"eq":["household.all_tin",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 18, Step 3, question 3, and p. 19, Step 5 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `dependent.ctc_per_child`

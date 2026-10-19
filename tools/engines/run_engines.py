@@ -176,13 +176,18 @@ def run_policyengine(cases):
             "tax_unit_role_input": y("HEAD"),
         }
         members = [pid]
+        if f.get("joint"):
+            sid = f"{pid}_s"
+            people[sid] = {"age": y(f["spouse_age"]), "medicare_enrolled": y(False),
+                           "employment_income": y(dollars(f["spouse_wages"])), "tax_unit_role_input": y("SPOUSE")}
+            members.append(sid)
         for k, age in enumerate(f.get("children", [])):
             cid = f"{pid}_c{k + 1}"
             # Children 17 and over are full-time students in the generated cases.
             people[cid] = {"age": y(age), "is_full_time_student": y(age >= 17), "tax_unit_role_input": y("DEPENDENT")}
             members.append(cid)
         units[pid] = {"members": members,
-                      "filing_status": y("HEAD_OF_HOUSEHOLD" if f.get("hoh") else "SINGLE"),
+                      "filing_status": y("JOINT" if f.get("joint") else "HEAD_OF_HOUSEHOLD" if f.get("hoh") else "SINGLE"),
                       "state_and_local_sales_or_income_tax": y(dollars(f["salt_income_tax"])),
                       "unrecaptured_section_1250_gain": y(dollars(f["unrecaptured_1250"])),
                       "foreign_tax_credit": y(dollars(f["foreign_tax"])),
@@ -213,10 +218,11 @@ def run_taxcalc(cases):
         f = c["facts"]
         ages = f.get("children", [])
         rows.append(dict(
-            RECID=i + 1, MARS=4 if f.get("hoh") else 1, age_head=f.get("age", 40), FLPDYR=YEAR,
-            XTOT=1 + len(ages), n24=sum(1 for a in ages if a < 17), nu18=sum(1 for a in ages if a < 18),
+            RECID=i + 1, MARS=2 if f.get("joint") else 4 if f.get("hoh") else 1, age_head=f.get("age", 40),
+            age_spouse=f.get("spouse_age", 0), FLPDYR=YEAR,
+            XTOT=(2 if f.get("joint") else 1) + len(ages), n24=sum(1 for a in ages if a < 17), nu18=sum(1 for a in ages if a < 18),
             n1820=sum(1 for a in ages if 18 <= a <= 20), n21=sum(1 for a in ages if a >= 21), EIC=f.get("eic_children", 0),
-            e00200=dollars(f["wages"]), e00200p=dollars(f["wages"]), e02400=dollars(f.get("ss_benefits", 0)),
+            e00200=dollars(f["wages"] + f.get("spouse_wages", 0)), e00200p=dollars(f["wages"]), e00200s=dollars(f.get("spouse_wages", 0)), e02400=dollars(f.get("ss_benefits", 0)),
             e00300=dollars(f["interest"]), e00600=dollars(f["ordinary_dividends"]), e00650=dollars(f["qualified_dividends"]),
             # Distributions enter Schedule D line 13 and net against sales; Tax-Calculator's
             # e01100 is the no-Schedule-D path, so they go into net long-term gain instead.

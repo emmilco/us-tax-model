@@ -6,14 +6,42 @@ interview:
     - f1040.line33
     - f1040.line34
     - f1040.line37
-  initial:
-    $person:
-      - taxpayer
-    person[taxpayer].role: taxpayer
+  initial: {}
   cite:
     doc: f1040
     locator: Form 1040 (2025), related form references
   questions:
+    - input: $person
+      prompt: 'Who is on this return? Enter ["taxpayer"], or ["taxpayer","spouse"] if you are married filing jointly.'
+      help: One entry for you and, on a joint return, one for your spouse. Amounts that are not asked person by person
+        (interest, dividends, sales, pensions and annuities, social security benefits, deductions, payments) are entered
+        once, for you and your spouse combined.
+      order: 0
+      cite:
+        doc: f1040
+        locator: 'Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial"'
+    - input: person.role
+      prompt: 'Whose entry is this? taxpayer for you, spouse for your spouse.'
+      help: Answer taxpayer for the entry keyed taxpayer and spouse for the entry keyed spouse.
+      order: 0
+      cite:
+        doc: f1040
+        locator: 'Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial"'
+    - input: f8889.allocation
+      prompt: 'For this person (you, or your spouse on a joint return) — you and your spouse each have an HSA and family coverage. Do you divide the family contribution limit equally (equal), or by a different allocation you both agree on, such as allocating nothing to one spouse (agreed)? Use the same answer on both Forms 8889.'
+      help: The family limit is figured on each Form 8889 for the months treated as having family coverage (Step 1 of the
+        line 6 instructions).
+      order: 10
+      cite:
+        doc: i8889
+        locator: 'p. 7, Line 6, Steps 1 and 2'
+    - input: f8889.allocated
+      prompt: 'For this person (you, or your spouse on a joint return) — the part of the family contribution limit (Step 1) allocated to this person under the allocation you agreed on. The two parts together may not be more than the limit.'
+      help: Money is integer cents. Your spouse's part is the rest of the limit.
+      order: 10
+      cite:
+        doc: i8889
+        locator: 'p. 7, Line 6, Steps 2 and 3'
     - input: div.box2b
       prompt: Unrecaptured section 1250 gain, box 2b
       help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown
@@ -152,7 +180,7 @@ interview:
     - input: f8959.unsupported
       prompt: 'Any self-employment income (including church employee income), RRTA compensation, tips not reported to your employer or allocated tips in Form W-2 box 8 (Form 4137), Form 8919 wages, uncollected Medicare tax in Form W-2 box 12 (codes B or N), or Medicare wages on a wage statement from a U.S. territory (such as Form 499R-2/W-2PR)?'
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f8959
@@ -160,7 +188,7 @@ interview:
     - input: f8960.unsupported
       prompt: 'Any annuity, rental, royalty, business or pass-through income; a CFC or PFIC holding; a section 911 exclusion; a disposition adjustment; a section 1411 net operating loss; excluded savings bond interest (Form 8815); a deductible investment expense other than investment interest or state and local tax; or another net investment income adjustment?'
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f8960
@@ -168,7 +196,7 @@ interview:
     - input: f8960.refund
       prompt: 'Any recovery or refund in 2025 of an amount deducted on an earlier Form 8960 (for example a state or local income tax refund, or a refund of foreign income tax), even if none of it is taxable on Form 1040?'
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f8960
@@ -177,7 +205,7 @@ interview:
       prompt: Deductible state/local income and property taxes reasonably allocated to net investment
         income; exclude foreign taxes for which a credit is claimed
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f8960
@@ -186,7 +214,7 @@ interview:
       prompt: Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and
         Form 1099-DIV box 7
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: i1116
@@ -196,7 +224,7 @@ interview:
       prompt: Was all foreign-source gross income passive category income under the small-tax election
         rules?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: i1116
@@ -205,7 +233,7 @@ interview:
     - input: ftc.statements
       prompt: Were all foreign income and taxes reported on qualified payee statements?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: i1116
@@ -215,7 +243,7 @@ interview:
       prompt: Have creditability, holding-period, related-payment and required foreign-tax reduction rules
         been satisfied?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: i1116
@@ -224,7 +252,7 @@ interview:
     - input: ftc.elect
       prompt: Elect the credit without Form 1116, with no carryover to or from this election year?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: i1116
@@ -242,7 +270,7 @@ interview:
       prompt: Deduction before income limits for this item or group of similar items across all donees,
         after required valuation/basis reductions
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: i8283
@@ -250,7 +278,7 @@ interview:
     - input: gift.public_securities
       prompt: Is this group publicly traded securities?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: i8283
@@ -258,7 +286,7 @@ interview:
     - input: gift.special
       prompt: 'Does this group need an appraisal or other special treatment: a deduction over $5,000 (before any income limit), or property worth more than $5,000, for one item or for similar items given to all donees together (other than publicly traded securities), a noncash contribution reaching you through a Schedule K-1, vehicles, pass-through entity interests, intellectual property, inventory, conservation or partial interests, property with restrictions on its use, or a clothing or household item over $500 not in good used condition?'
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: i8283
@@ -280,8 +308,7 @@ interview:
     - input: f1040.tax_exempt_interest
       prompt: 'Total tax-exempt interest and tax-exempt OID for 2025 (Form 1099-INT box 8; Form 1099-OID boxes 2 and 11), net of amortized bond premium and acquisition premium; do not include exempt-interest dividends (Form 1099-DIV box 12) or interest earned in an IRA, HSA, Archer or Medicare Advantage MSA, or Coverdell education savings account'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 30
       cite:
         doc: i1040gi
@@ -289,16 +316,15 @@ interview:
     - input: div.box12
       prompt: Exempt-interest dividends, Form 1099-DIV box 12 (total of all your Forms 1099-DIV; box 13 amounts are already included)
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 30
       cite:
         doc: f1099div
         locator: Instructions for Recipient, Box 12 and Box 13
     - input: person.rrta
-      prompt: 'Do any wage statements report railroad retirement compensation or taxes (W-2 box 14), or did you file Form CT-2 as an employee representative?'
+      prompt: 'For this person (you, or your spouse on a joint return) — Do any wage statements report railroad retirement compensation or taxes (W-2 box 14), or did you file Form CT-2 as an employee representative?'
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: iw2w3
@@ -308,7 +334,7 @@ interview:
       prompt: Qualified section 199A dividends from Form 1099-DIV box 5 after confirming holding-period
         and related-payment requirements
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f8995
@@ -316,7 +342,7 @@ interview:
     - input: qbi.unsupported
       prompt: 'Do you have any of these: qualified business income or loss, or PTP income or loss, other than section 199A dividends; a prior-year qualified business, REIT or PTP loss carryforward (including suspended losses allowed this year); or are you a patron of any agricultural or horticultural cooperative, specified or not (including any qualified payments from one on Form 1099-PATR)?'
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f8995
@@ -324,7 +350,7 @@ interview:
     - input: s2.amt
       prompt: Are you required to file Form 6251 or do you have an AMT adjustment requiring its review?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040s2
@@ -332,7 +358,7 @@ interview:
     - input: s2.other
       prompt: 'Any amount on Schedule 2 other than Additional Medicare Tax or Net Investment Income Tax, for example the alternative minimum tax, repayment of excess advance premium tax credit or of a clean vehicle credit, self-employment tax, household employment taxes, the additional tax on early retirement or HSA distributions (often called a penalty), uncollected social security or Medicare tax on tips or group-term life insurance (W-2 box 12 codes A, B, M or N), tax on unreported tips (Form 4137), or interest on deferred tax?'
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040s2
@@ -340,7 +366,7 @@ interview:
     - input: s3.line9
       prompt: Net premium tax credit from Form 8962 (supplied subtotal; preparation outside Stage 2)
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040s3
@@ -348,7 +374,7 @@ interview:
     - input: s3.line10
       prompt: Amount paid with request for extension to file
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040s3
@@ -357,7 +383,7 @@ interview:
       prompt: Credit for federal tax on fuels from Form 4136 (supplied subtotal; preparation outside Stage
         2)
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040s3
@@ -365,7 +391,7 @@ interview:
     - input: s3.line14
       prompt: Total other payments or refundable credits (supplied subtotal; preparation outside Stage 2)
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040s3
@@ -373,7 +399,7 @@ interview:
     - input: sa.unsupported
       prompt: 'Any casualty or theft loss (including a disaster loss added to the standard deduction); a deduction from the Schedule A line 16 list; a foreign tax or generation-skipping tax deduction; mortgage interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds not all used to buy, build or improve the home, or debt over the limit); or the sales-tax election?'
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040sa
@@ -382,7 +408,7 @@ interview:
       prompt: Are any charitable deductions reduced by income limits, or carried over from a prior year?
         Determine under Publication 526 before answering.
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040sa
@@ -390,7 +416,7 @@ interview:
     - input: sa.excluded_income
       prompt: 'Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico?'
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040sa
@@ -398,7 +424,7 @@ interview:
     - input: sa.dependent
       prompt: 'Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)'
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040sa
@@ -406,23 +432,23 @@ interview:
     - input: sa.spouse_extra
       prompt: Claiming any age/blindness standard-deduction boxes for a spouse?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040sa
         locator: Schedule A (2025), lines 1–18
     - input: person.age65
-      prompt: Were you born before January 2, 1961?
+      prompt: For this person (you, or your spouse on a joint return) — Were you born before January 2, 1961?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040sa
         locator: Schedule A (2025), lines 1–18
     - input: person.blind
-      prompt: Are you blind under the standard-deduction instructions?
+      prompt: For this person (you, or your spouse on a joint return) — Are you blind under the standard-deduction instructions?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040sa
@@ -430,7 +456,7 @@ interview:
     - input: sa.spouse_itemizes
       prompt: Married filing separately with a spouse who itemizes?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040sa
@@ -438,7 +464,7 @@ interview:
     - input: sa.elect_itemize
       prompt: Elect to itemize even if the standard deduction is larger?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040sa
@@ -446,7 +472,7 @@ interview:
     - input: sa.line1
       prompt: Unreimbursed eligible medical and dental expenses
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040sa
@@ -454,7 +480,7 @@ interview:
     - input: sa.line5a
       prompt: State/local income taxes paid, including withholding; no sales-tax election
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040sa
@@ -462,7 +488,7 @@ interview:
     - input: sa.line5b
       prompt: Deductible state/local real estate taxes
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040sa
@@ -470,7 +496,7 @@ interview:
     - input: sa.line5c
       prompt: Deductible state/local personal property taxes
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040sa
@@ -479,7 +505,7 @@ interview:
       prompt: Eligible home mortgage interest and points on Form 1098, after confirming the debt/use
         limits do not apply
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040sa
@@ -488,7 +514,7 @@ interview:
       prompt: Deductible cash/check charitable gifts before income limits, after benefits received and
         required substantiation
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f1040sa
@@ -624,7 +650,7 @@ interview:
     - input: scope.schedule1
       prompt: 'Any income or adjustment requiring Schedule 1 other than unemployment compensation, educator expenses, the HSA deduction and student loan interest, including a taxable state or local tax refund; alimony; an IRA deduction; being self-employed or filing Schedule C (income or loss, including statutory-employee wages) or Schedule SE (including clergy, and church employee income: wages from a church that elected exemption from social security and Medicare taxes); rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1); rental of personal property; farm income (Schedule F); gambling winnings, prizes or other income for Schedule 1 line 8; or an exclusion of Medicaid waiver payments (Schedule 1 line 8s)? (Schedule 1-A deductions are asked separately.)'
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 0
       cite:
         doc: f1040
@@ -632,7 +658,7 @@ interview:
     - input: scope.credits
       prompt: 'Do you want to claim any credit other than the foreign tax credit claimed without Form 1116, the excess social security credit, the child tax credit, the credit for other dependents, the additional child tax credit and the earned income credit, or do you have any other amount for Schedule 3 Part I (for example a Form 8978 adjustment)?'
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 0
       cite:
         doc: f1040
@@ -640,7 +666,7 @@ interview:
     - input: scope.other_income
       prompt: 'Any nonresident alien status (you or your spouse, for any part of 2025) or other income or return treatment outside wages, interest, dividends, supported securities sales, Form 1099-R distributions and social security benefits, including wages or tips not on a Form W-2, Medicaid waiver payments (whether or not in Form W-2 box 1), dependent care or adoption benefits, other earned income (Form 1040 lines 1b-1h), or income or loss from a passive activity (including gain on selling an interest in one)?'
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 0
       cite:
         doc: f1040
@@ -648,7 +674,7 @@ interview:
     - input: scope.other_line16
       prompt: 'Any additional Form 1040 line 16 tax or filing, including filing Form 8814 (even with no tax), Form 4972, Form 8615, a section 962 election, Form 8621, a Form 8978 amount, or recapture of an education credit?'
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 0
       cite:
         doc: f1040
@@ -678,7 +704,7 @@ interview:
         doc: i1040sd
         locator: p. 11, line 13
     - input: $w2
-      prompt: List stable keys for Form W-2 — Social Security boxes by employer.
+      prompt: For this person (you, or your spouse on a joint return) — List stable keys for Form W-2 — Social Security boxes by employer.
       help: Enter a JSON array of distinct keys. Empty [] means none. For gifts, group similar items
         across all donees.
       order: 5
@@ -688,7 +714,7 @@ interview:
     - input: w2.box1
       prompt: Wages, tips, other compensation
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 3
       cite:
         doc: iw2w3
@@ -696,7 +722,7 @@ interview:
     - input: w2.box3
       prompt: Social security wages
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 4
       cite:
         doc: iw2w3
@@ -704,7 +730,7 @@ interview:
     - input: w2.box7
       prompt: Social security tips
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 4
       cite:
         doc: iw2w3
@@ -712,7 +738,7 @@ interview:
     - input: w2.box4
       prompt: Social security tax withheld
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 3
       cite:
         doc: iw2w3
@@ -720,7 +746,7 @@ interview:
     - input: w2.box5
       prompt: Form W-2 box 5
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 4
       cite:
         doc: f8959
@@ -728,7 +754,7 @@ interview:
     - input: w2.box6
       prompt: Form W-2 box 6
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
+        guess. Married filing separately and unsupported items are refused with citations.
       order: 4
       cite:
         doc: f8959
@@ -792,8 +818,7 @@ interview:
     - input: dependent.relationship
       prompt: 'Relationship to you: child (son, daughter, stepchild, foster child or their descendant), sibling (brother, sister, half brother, half sister, stepbrother or stepsister, or a son or daughter of a brother, sister, half brother or half sister), sibling_descendant (any other descendant of a sibling, such as a grandniece or a stepsibling''s child), parent (father or mother), parent_relative (a grandparent, aunt or uncle: an ancestor or sibling of a parent), in_law (step-parent or in-law), household_member (any other person who lived with you all year), or other'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
@@ -802,8 +827,7 @@ interview:
     - input: dependent.age
       prompt: Age at the end of 2025 (whole years)
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
@@ -811,8 +835,7 @@ interview:
     - input: dependent.younger
       prompt: Was this person younger than you?
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
@@ -820,8 +843,7 @@ interview:
     - input: dependent.student
       prompt: Was this person a full-time student in 2025?
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
@@ -829,8 +851,7 @@ interview:
     - input: dependent.disabled
       prompt: Was this person permanently and totally disabled at any time in 2025?
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
@@ -838,8 +859,7 @@ interview:
     - input: dependent.months
       prompt: 'Months this person lived with you in 2025, counting temporary absences for school, vacation, business, medical care, military service or detention in a juvenile facility as time lived with you (0–12); enter 7 if the person lived with you for more than half of 2025 but fewer than 7 full months. For a person born, died, adopted or placed with you in 2025 who meets the other conditions to be your qualifying child, enter 12 if your home was their home for more than half the time they were alive or with you, and 0 otherwise; for any other person born or who died in 2025, or adopted, lawfully placed with you for legal adoption, or placed with you as an eligible foster child in 2025, enter 12 only if your home was their home for the entire time they were alive or since the adoption or placement, and 0 otherwise'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
@@ -848,8 +868,7 @@ interview:
     - input: dependent.us_half
       prompt: 'Did this person live with you in the United States (the 50 states and the District of Columbia) for more than half of 2025? If you were on extended active military duty outside the United States, your main home is considered to be in the United States during that duty. Temporary absences for school, vacation, business, medical care, military service or juvenile detention count as time lived with you. A child born or who died in 2025 counts if your home was the child''s home for more than half the time the child was alive, and a child you adopted, who was lawfully placed with you for legal adoption, or who was placed with you as an eligible foster child in 2025 counts if your main home was the child''s main home for more than half the time since the adoption or placement.'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 30
       cite:
         doc: i1040gi
@@ -857,8 +876,7 @@ interview:
     - input: dependent.eic_ssn
       prompt: 'Did this person have a social security number issued on or before the due date of your 2025 return (including extensions) that is valid for the EIC? Any number issued by the Social Security Administration is valid unless the card says "Not Valid for Employment" and the number was issued solely to apply for or receive a federally funded benefit; a card that says "Valid for Work Only With DHS Authorization" is valid only while the authorization is valid.'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 30
       cite:
         doc: i1040gi
@@ -866,8 +884,7 @@ interview:
     - input: dependent.self_support
       prompt: Did this person provide over half of their own support for 2025?
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
@@ -876,8 +893,7 @@ interview:
       prompt: Is this person filing a joint return for 2025, other than only to claim a refund of withheld
         or estimated tax?
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
@@ -886,8 +902,7 @@ interview:
     - input: dependent.citizen
       prompt: Was this person a U.S. citizen, U.S. national or U.S. resident alien?
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
@@ -895,8 +910,7 @@ interview:
     - input: dependent.canada_mexico
       prompt: If not a U.S. citizen, national or resident alien, was this person a resident of Canada or Mexico?
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
@@ -904,8 +918,7 @@ interview:
     - input: dependent.married
       prompt: 'Was this person married at the end of 2025 (a person legally separated under a decree of divorce or separate maintenance is not married), or is this person filing a joint return for 2025 (for example with a spouse who died during 2025)?'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
@@ -914,8 +927,7 @@ interview:
       prompt: Did this person have an SSN, ITIN or ATIN issued on or before the due date of your 2025 return
         (including extensions), or have you applied for one by then?
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
@@ -924,8 +936,7 @@ interview:
       prompt: Did this person have an SSN valid for employment, issued before the due date of your 2025 return
         (including extensions)?
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
@@ -933,8 +944,7 @@ interview:
     - input: dependent.gross_income
       prompt: This person's gross income for 2025
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
@@ -942,8 +952,7 @@ interview:
     - input: dependent.supported
       prompt: Did you provide over half of this person's support in 2025?
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
@@ -951,8 +960,7 @@ interview:
     - input: dependent.other_claimant
       prompt: 'Does this person meet the conditions to be the qualifying child of any other person for 2025, under the dependent rules or under the EIC rules (which have no support test)?'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
@@ -961,8 +969,7 @@ interview:
     - input: dependent.divorced_rule
       prompt: 'Does the special rule for children of divorced or separated parents, or parents who lived apart (including parents who never married), apply to this person, for example because a Form 8332 release or a decree lets the noncustodial parent claim the child?'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
@@ -970,8 +977,7 @@ interview:
     - input: dependent.multiple_support
       prompt: 'Did you and others together provide over half of this person''s support for 2025, with no one person providing over half (a multiple support situation), whether you or another contributor claims the person?'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
@@ -980,27 +986,24 @@ interview:
       prompt: If this person is your parent, did you pay over half the cost of keeping up a home that was
         their main home for all of 2025?
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
         locator: p. 14, Head of Household, Test 1
     - input: person.tin
-      prompt: Do you have an SSN or ITIN issued on or before the due date of your 2025 return (including extensions), or have you applied for an ITIN by then?
+      prompt: For this person (you, or your spouse on a joint return) — Do you have an SSN or ITIN issued on or before the due date of your 2025 return (including extensions), or have you applied for an ITIN by then?
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
         locator: p. 19, Step 5, question 1
     - input: person.work_ssn
-      prompt: Do you have an SSN valid for employment, issued before the due date of your 2025 return (including
+      prompt: For this person (you, or your spouse on a joint return) — Do you have an SSN valid for employment, issued before the due date of your 2025 return (including
         extensions)?
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
@@ -1008,8 +1011,7 @@ interview:
     - input: household.home_cost
       prompt: Did you pay over half the cost of keeping up your home for 2025?
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
@@ -1017,26 +1019,23 @@ interview:
     - input: eic.qc_of_another
       prompt: Could you be a qualifying child of another person for 2025? Answer false if that person isn't required to file, and isn't filing, a 2025 return or files only to claim a refund of withheld or estimated tax.
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 30
       cite:
         doc: i1040gi
         locator: p. 41, Step 3, question 6; p. 42, Step 4, question 5
     - input: person.born_before_2001
-      prompt: Were you born before January 2, 2001?
+      prompt: For this person (you, or your spouse on a joint return) — Were you born before January 2, 2001?
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 30
       cite:
         doc: i1040gi
         locator: p. 41, Step 4, question 2
     - input: person.born_after_1960
-      prompt: Were you born after December 31, 1960?
+      prompt: For this person (you, or your spouse on a joint return) — Were you born after December 31, 1960?
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 30
       cite:
         doc: i1040gi
@@ -1044,8 +1043,7 @@ interview:
     - input: eic.us_home
       prompt: Was your main home in the United States (the 50 states and the District of Columbia) for more than half of 2025? Time on extended active military duty outside the United States counts as a main home in the United States.
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 30
       cite:
         doc: i1040gi
@@ -1053,8 +1051,7 @@ interview:
     - input: eic.married
       prompt: Were you married at the end of 2025 (including married but considered unmarried for head of household status)?
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 30
       cite:
         doc: i1040gi
@@ -1062,8 +1059,7 @@ interview:
     - input: eic.same_home
       prompt: 'Did you and your spouse have the same principal residence for the last 6 months of 2025?'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 30
       cite:
         doc: i1040gi
@@ -1071,8 +1067,7 @@ interview:
     - input: eic.legally_separated
       prompt: 'Are you legally separated according to your state law under a written separation agreement or a decree of separate maintenance, and did you live apart from your spouse at the end of 2025?'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 30
       cite:
         doc: i1040gi
@@ -1081,8 +1076,7 @@ interview:
       prompt: Were you unmarried, or considered unmarried under the head of household rules, at the end of
         2025?
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
@@ -1091,8 +1085,7 @@ interview:
     - input: s8812.combat_pay
       prompt: 'Did you receive any nontaxable combat pay in 2025 (it is generally shown in Form W-2, box 12, code Q)?'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 20
       cite:
         doc: i1040s8812
@@ -1100,8 +1093,7 @@ interview:
     - input: s8812.puerto_rico
       prompt: Were you a bona fide resident of Puerto Rico in 2025?
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 20
       cite:
         doc: f1040s8812
@@ -1110,8 +1102,7 @@ interview:
     - input: $retirement
       prompt: 'List stable keys for each Form 1099-R you received (one key per form, for example payer names). Use [] if you received none.'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 1
       cite:
         doc: i1040gi
@@ -1119,8 +1110,7 @@ interview:
     - input: retirement.account
       prompt: 'Kind of account: traditional_ira (the IRA/SEP/SIMPLE box on Form 1099-R is checked; includes SEP and traditional SIMPLE IRAs), roth_ira (a Roth IRA or Roth SIMPLE IRA), or plan (a pension, annuity, 401(k), 403(b) or governmental 457(b) plan)'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: f1099r
@@ -1128,8 +1118,7 @@ interview:
     - input: retirement.code
       prompt: 'Distribution code in box 7: normal_7, death_4, early_exception_2, direct_rollover_G, qualified_roth_Q, or other (any other code, or two codes)'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: f1099r
@@ -1137,8 +1126,7 @@ interview:
     - input: retirement.box1
       prompt: 'Gross distribution, Form 1099-R box 1'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: f1099r
@@ -1146,8 +1134,7 @@ interview:
     - input: retirement.box5
       prompt: 'Employee contributions, designated Roth contributions or insurance premiums, Form 1099-R box 5 (a pension or annuity; zero for an IRA)'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: f1099r
@@ -1155,8 +1142,7 @@ interview:
     - input: retirement.rollover
       prompt: 'Amount of this distribution you rolled over within 60 days to a qualified plan or an IRA other than a Roth IRA (for a direct rollover, code G, the whole distribution is treated as rolled over)'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
@@ -1164,8 +1150,7 @@ interview:
     - input: retirement.special
       prompt: 'Does this distribution involve any of these: an early distribution with no known exception (code 1, J or S); a disability pension received before minimum retirement age, or a pension partly excludable because you were disabled as a result of a terrorist attack; a corrective distribution of excess deferrals or contributions; a qualified charitable distribution or HSA funding distribution; nondeductible contributions to any traditional IRA; a conversion or recharacterization (Form 8606); a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025; a rollover to a Roth IRA or designated Roth account; a lump-sum distribution you may report on Form 4972; a nonqualified annuity; the retired public safety officer premium exclusion; a death benefit exclusion; a plan loan offset; a Form RRB-1099-R; U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721); or a pension or annuity in which you have after-tax cost whose annuity starting date was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)?'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
@@ -1173,8 +1158,7 @@ interview:
     - input: retirement.annuity
       prompt: 'Is this a pension or annuity from a qualified plan, section 403(b) plan or tax-sheltered annuity, paid in periodic payments in which you have after-tax cost (box 9b or your records), with an annuity starting date after November 18, 1996, and on that date you were under age 75 or had fewer than 5 years of guaranteed payments? (This is when the Simplified Method applies.)'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
@@ -1182,8 +1166,7 @@ interview:
     - input: retirement.cost
       prompt: 'Your cost (net investment, after-tax contributions) in the plan at the annuity starting date; it may be shown in Form 1099-R box 9b'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
@@ -1191,8 +1174,7 @@ interview:
     - input: retirement.used_last_year
       prompt: 'Did you complete the Simplified Method Worksheet for this annuity last year?'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
@@ -1200,8 +1182,7 @@ interview:
     - input: retirement.last_line4
       prompt: 'The amount on line 4 of last year''s Simplified Method Worksheet for this annuity'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
@@ -1209,8 +1190,7 @@ interview:
     - input: retirement.joint_life
       prompt: 'Was the annuity starting date after 1997, with payments for your life and that of your beneficiary (Table 2)?'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
@@ -1218,8 +1198,7 @@ interview:
     - input: retirement.age
       prompt: 'Your age at the annuity starting date (if you are the survivor of a retiree, the retiree''s age on their annuity starting date)'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
@@ -1227,8 +1206,7 @@ interview:
     - input: retirement.combined_age
       prompt: 'Your combined ages (yours and your beneficiary''s) at the annuity starting date'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
@@ -1236,8 +1214,7 @@ interview:
     - input: retirement.months
       prompt: 'Number of months in 2025 for which payments were made'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
@@ -1245,8 +1222,7 @@ interview:
     - input: retirement.recovered
       prompt: 'Amount, if any, recovered tax free in years after 1986 (if you completed this worksheet last year, line 10 of last year''s worksheet)'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
@@ -1254,8 +1230,7 @@ interview:
     - input: ssb.benefits
       prompt: 'Total of box 5 (net benefits) of all your Forms SSA-1099 and RRB-1099 for 2025'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: i1040gi
@@ -1263,8 +1238,7 @@ interview:
     - input: ssb.pub915
       prompt: 'Does any of these apply: you made contributions to a traditional IRA for 2025 and you or your spouse were covered by a retirement plan at work or through self-employment; your social security repayments in 2025 (box 4) were more than your benefits (box 3); you file Form 2555, 4563 or 8815; or you exclude employer-provided adoption benefits or income from sources within Puerto Rico?'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: i1040gi
@@ -1272,8 +1246,7 @@ interview:
     - input: ssb.lump_sum
       prompt: 'Do you elect to use the lump-sum election method for a social security benefit payment that was for an earlier year?'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: i1040gi
@@ -1281,8 +1254,7 @@ interview:
     - input: ssb.terror_disability
       prompt: 'Are any of the social security or railroad retirement benefits on your Forms SSA-1099 or RRB-1099 disability payments for injuries incurred as a direct result of a terrorist attack directed against the United States or its allies (including injuries covered by the September 11 Victim Compensation Fund)?'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: i1040gi
@@ -1290,8 +1262,7 @@ interview:
     - input: ssb.lived_apart
       prompt: 'If you are married filing separately: did you live apart from your spouse for all of 2025?'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 30
       cite:
         doc: i1040gi
@@ -1299,8 +1270,7 @@ interview:
     - input: s1.uc_paid
       prompt: "Unemployment compensation paid to you in 2025: the total of box 1 of your Forms 1099-G (if box 1 is wrong, the amount actually paid to you)"
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: i1040gi
@@ -1308,8 +1278,7 @@ interview:
     - input: s1.uc_repaid
       prompt: "Amount you repaid in 2025 of an overpayment of unemployment compensation you received in 2025 (zero if none)"
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: i1040gi
@@ -1317,32 +1286,29 @@ interview:
     - input: s1.uc_unsupported
       prompt: "Did you make contributions to a governmental unemployment compensation program (not counting paid family leave or disability insurance contributions), or repay in 2025 any unemployment compensation you included in income in an earlier year?"
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: i1040gi
         locator: "p. 89, Schedule 1, line 7, contributions to a governmental unemployment compensation program and repayments of more than $3,000 included in income in an earlier year (Pub. 525)"
     - input: person.educator_expenses
-      prompt: "Qualified educator expenses you paid in 2025 (professional development courses, and books, supplies, equipment and other materials used in the classroom), reduced by excludable savings bond interest (Form 8815), nontaxable qualified tuition program or Coverdell earnings or distributions, and reimbursements not reported in box 1 of your Form W-2; zero if none"
+      prompt: "For this person (you, or your spouse on a joint return) — Qualified educator expenses you paid in 2025 (professional development courses, and books, supplies, equipment and other materials used in the classroom), reduced by excludable savings bond interest (Form 8815), nontaxable qualified tuition program or Coverdell earnings or distributions, and reimbursements not reported in box 1 of your Form W-2; zero if none"
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: i1040gi
         locator: "p. 93, Schedule 1, line 11, Qualified expenses and 'You must reduce your qualified expenses by the following amounts'"
     - input: person.eligible_educator
-      prompt: "Were you an eligible educator in 2025 (a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year)?"
+      prompt: "For this person (you, or your spouse on a joint return) — Were you an eligible educator in 2025 (a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year)?"
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: i1040gi
         locator: "p. 93, Schedule 1, line 11, 'An eligible educator is a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year'"
     - input: $f8889
-      prompt: 'Did you, or your employer, contribute to a health savings account (HSA) for you for 2025? Enter ["hsa"] for
+      prompt: 'For this person (you, or your spouse on a joint return) — Did you, or your employer, contribute to a health savings account (HSA) for you for 2025? Enter ["hsa"] for
         one Form 8889 covering all of your own HSAs, or [] if there were no HSA contributions for you.'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
         be null; do not guess. One Form 8889 per person.
@@ -1351,73 +1317,65 @@ interview:
         doc: i8889
         locator: 'pp. 1-2, Who Must File; p. 4, Name and social security number (SSN), "complete a separate Form 8889 for each of you"'
     - input: f8889.line2
-      prompt: "HSA contributions you made for 2025 (or those made on your behalf), including those made by April 15, 2026 that were for 2025; do not include employer contributions, payroll contributions through a cafeteria plan, rollovers, or qualified HSA funding distributions; zero if none"
+      prompt: "For this person (you, or your spouse on a joint return) — HSA contributions you made for 2025 (or those made on your behalf), including those made by April 15, 2026 that were for 2025; do not include employer contributions, payroll contributions through a cafeteria plan, rollovers, or qualified HSA funding distributions; zero if none"
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: f8889
         locator: "Form 8889 (2025), line 2; i8889 p. 4, Line 2"
     - input: f8889.line9
-      prompt: "Employer contributions to your HSAs for 2025, including payroll contributions through a cafeteria plan (Form W-2 box 12, code W, less employer contributions for 2024 included there, plus employer contributions for 2025 made in 2026); zero if none"
+      prompt: "For this person (you, or your spouse on a joint return) — Employer contributions to your HSAs for 2025, including payroll contributions through a cafeteria plan (Form W-2 box 12, code W, less employer contributions for 2024 included there, plus employer contributions for 2025 made in 2026); zero if none"
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: i8889
         locator: "p. 6, Line 9 Employer Contributions and the Employer Contribution Worksheet"
     - input: f8889.unsupported
-      prompt: "Any of these: HSA distributions in 2025 that were not all used for qualified medical expenses or rolled over to another HSA; a qualified HSA funding distribution from an IRA in 2025; contributions by you or your employer to an Archer MSA for 2025 (Form 8853); excess HSA contributions from an earlier year that remain in your HSA; failing to remain an eligible individual during a testing period that began in an earlier year (last-month rule or qualified HSA funding distribution); or an HSA you acquired because of the account beneficiary's death?"
+      prompt: "For this person (you, or your spouse on a joint return) — Any of these: HSA distributions in 2025 that were not all used for qualified medical expenses or rolled over to another HSA; a qualified HSA funding distribution from an IRA in 2025; contributions by you or your employer to an Archer MSA for 2025 (Form 8853); excess HSA contributions from an earlier year that remain in your HSA; failing to remain an eligible individual during a testing period that began in an earlier year (last-month rule or qualified HSA funding distribution); or an HSA you acquired because of the account beneficiary's death?"
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: i8889
         locator: "Parts II and III, line 4 (Archer MSAs), line 10 (qualified HSA funding distributions), line 13 (Prior Year Excess Contributions), and Death of HSA Account Beneficiary"
     - input: f8889.months_eligible
-      prompt: "Number of months of 2025 on the first day of which you were an eligible individual (covered by a high-deductible health plan, with no other disqualifying health coverage, not enrolled in Medicare, and not able to be claimed as a dependent on someone else's 2025 return); 0 to 12"
+      prompt: "For this person (you, or your spouse on a joint return) — Number of months of 2025 on the first day of which you were an eligible individual (covered by a high-deductible health plan, with no other disqualifying health coverage, not enrolled in Medicare, and not able to be claimed as a dependent on someone else's 2025 return); 0 to 12"
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: i8889
         locator: "pp. 2 and 6, Eligible Individual and the Line 3 Limitation Chart and Worksheet ('Were you an eligible individual ... on the first day of the month?')"
     - input: f8889.months_family
-      prompt: "Of those months, the number in which your high-deductible health plan provided family coverage on the first day of the month; 0 to the number of eligible months"
+      prompt: "For this person (you, or your spouse on a joint return) — Of those months, the number in which your high-deductible health plan provided family coverage on the first day of the month (on a joint return, also count a month in which your spouse had family coverage while you were both eligible individuals: you are then both treated as having family coverage); 0 to the number of eligible months"
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: i8889
         locator: "p. 6, Line 3 Limitation Chart and Worksheet, 'What type of coverage did your HDHP provide on the first day of the month?'"
     - input: f8889.age55
-      prompt: "Were you age 55 or older at the end of 2025?"
+      prompt: "For this person (you, or your spouse on a joint return) — Were you age 55 or older at the end of 2025?"
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: i8889
         locator: "p. 4, Line 3, rule 6, and p. 6, Line 3 Limitation Chart"
     - input: f8889.dec_coverage
-      prompt: "Your high-deductible health plan coverage on December 1, 2025, if you were an eligible individual that day: none (not an eligible individual on December 1), self_only, or family"
+      prompt: "For this person (you, or your spouse on a joint return) — Your high-deductible health plan coverage on December 1, 2025, if you were an eligible individual that day: none (not an eligible individual on December 1), self_only, or family"
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: i8889
         locator: "p. 4, Line 3, rules 2 and 4(b), 'the type of HDHP coverage you had on the first day of the last month of your tax year'"
     - input: f8889.last_month
-      prompt: "Do you use the last-month rule: treat yourself as an eligible individual for all of 2025 with the coverage you had on December 1, 2025, which requires you to remain an eligible individual from December 1, 2025 through December 31, 2026 (the testing period)?"
+      prompt: "For this person (you, or your spouse on a joint return) — Do you use the last-month rule: treat yourself as an eligible individual for all of 2025 with the coverage you had on December 1, 2025, which requires you to remain an eligible individual from December 1, 2025 through December 31, 2026 (the testing period)?"
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: i8889
@@ -1425,8 +1383,7 @@ interview:
     - input: sli.interest
       prompt: "Total interest you paid in 2025 on qualified student loans (generally Form 1098-E box 1), not counting any amount paid from tax-free qualified tuition program earnings; zero if none"
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: i1040gi
@@ -1434,8 +1391,7 @@ interview:
     - input: sli.claimed
       prompt: "Are you claimed as a dependent on someone else's (such as your parent's) 2025 tax return?"
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: i1040gi
@@ -1443,8 +1399,7 @@ interview:
     - input: s1a.tips
       prompt: 'Did you receive tips as an employee in 2025, in an occupation on the IRS list of occupations that customarily and regularly received tips (IRS.gov/TippedOccupations), that you want to deduct on Schedule 1-A, Part II? (Tips received in your own trade or business are asked about with Schedule C.)'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: i1040gi
@@ -1452,8 +1407,7 @@ interview:
     - input: s1a.overtime
       prompt: 'Did you receive overtime pay as an employee in 2025 that you want to deduct on Schedule 1-A, Part III (the FLSA Overtime Premium, generally the "half" of time-and-a-half)? (Overtime reported on Form 1099-NEC or 1099-MISC is asked about with Schedule C.)'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: i1040gi
@@ -1461,26 +1415,23 @@ interview:
     - input: s1a.carloan
       prompt: 'Did you pay or accrue interest in 2025 on a loan taken out after 2024 to buy a new car, minivan, van, SUV, pickup truck or motorcycle for personal use that you want to deduct on Schedule 1-A, Part IV?'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: i1040gi
         locator: 'p. 109, Schedule 1-A, Part IV'
     - input: person.died_before_65
-      prompt: 'Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)'
+      prompt: 'For this person (you, or your spouse on a joint return) — Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 10
       cite:
         doc: i1040gi
         locator: 'p. 110, Schedule 1-A, Part V, Death of a taxpayer in 2025'
     - input: $tipjob
-      prompt: 'List stable keys for each employer from which you received tips you are deducting (one key per employer, for example employer names). Use [] if none.'
+      prompt: 'For this person (you, or your spouse on a joint return) — List stable keys for each employer from which you received tips you are deducting (one key per employer, for example employer names). Use [] if none.'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 1
       cite:
         doc: i1040gi
@@ -1488,8 +1439,7 @@ interview:
     - input: tipjob.qualified
       prompt: 'Were all the tips you are counting from this employer received in an occupation on the IRS list of occupations that customarily and regularly received tips on or before December 31, 2024 (IRS.gov/TippedOccupations), paid in cash (including by check, card or app), voluntarily, without negotiation and in an amount the customer decided, and not for a service that is a crime under applicable law?'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
@@ -1497,17 +1447,15 @@ interview:
     - input: tipjob.amount
       prompt: 'Qualified tips from this employer, taken from one of these (your choice): Form W-2 box 7 (social security tips); the total of the tips you reported to this employer on Forms 4070 or a similar monthly report (which may be more accurate if Form W-2 box 1 or box 5 is more than $176,100); or an amount of tips your employer reported in Form W-2 box 14 or on a separate statement'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
         locator: 'pp. 103-104, methods 1 to 3; worksheet column (b)'
     - input: $otjob
-      prompt: 'List stable keys for each employer that paid you overtime you are deducting (one key per employer). Use [] if none.'
+      prompt: 'For this person (you, or your spouse on a joint return) — List stable keys for each employer that paid you overtime you are deducting (one key per employer). Use [] if none.'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 1
       cite:
         doc: i1040gi
@@ -1515,8 +1463,7 @@ interview:
     - input: otjob.flsa
       prompt: 'Were you an FLSA-eligible employee of this employer (covered by and not exempt from the Fair Labor Standards Act, so that this employer was required to pay you overtime under section 7 of the FLSA)? You can ask your employer.'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
@@ -1524,8 +1471,7 @@ interview:
     - input: otjob.special_rule
       prompt: 'Is this employer covered by an FLSA overtime rule other than the general rule in section 7(a) (for example section 7(k) for fire protection and law enforcement, 7(o) compensatory time off, or 7(j) hospitals and residential care facilities)?'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: n-25-69
@@ -1533,8 +1479,7 @@ interview:
     - input: otjob.method
       prompt: 'How you figured it: employer_reported (an amount of qualified overtime compensation your employer reported in Form W-2 box 14 or gave you on request); premium (a statement shows the "half" portion of time-and-a-half, the FLSA Overtime Premium); total_time_and_half (a statement shows the total pay for overtime hours paid at time-and-a-half); premium_double (overtime paid at double time, and a statement shows the pay above your regular rate for those hours); total_double (overtime paid at double time, and a statement shows the total pay for those hours); other (any other method, rate or adjustment)'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
@@ -1542,8 +1487,7 @@ interview:
     - input: otjob.statement
       prompt: 'The full-year amount for the method you chose (the amount your employer reported; the overtime premium; the total pay for overtime hours; or the pay above your regular rate for overtime hours), from this employer, including overtime pay that is not in Form W-2 box 1 (for example overtime deferred under a qualified retirement plan)'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
@@ -1551,8 +1495,7 @@ interview:
     - input: $carloan
       prompt: 'List stable keys for each loan whose interest you are deducting (one key per loan; use the vehicle VIN, adding a suffix if a vehicle had a loan refinanced during 2025). Use [] if none.'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 1
       cite:
         doc: i1040gi
@@ -1560,8 +1503,7 @@ interview:
     - input: carloan.kind
       prompt: 'How you came to owe this loan: original (you took out this loan after December 31, 2024, to buy the vehicle); refinanced (this loan refinanced such a loan and is secured by a first lien on the same vehicle); death (you became the borrower because a previous borrower died, for example by inheriting the vehicle or as its surviving joint owner, and the loan met the requirements when it was taken out)'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: fr-2025-24154
@@ -1569,8 +1511,7 @@ interview:
     - input: carloan.requirements
       prompt: 'Does this loan meet all of these: it was originated after December 31, 2024 (for a refinancing, the loan it refinanced was); it was used to buy the vehicle (lease payments do not qualify); it is secured by a first lien on the vehicle; it is not owed to a person related to you (Internal Revenue Code section 267(b) or 707(b)(1)); and when the loan was taken out you expected the vehicle to be used more than 50% of the time for personal use (not in a trade or business other than as an employee, and not to produce income) by you or certain relatives or members of your household?'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
@@ -1578,8 +1519,7 @@ interview:
     - input: carloan.vehicle
       prompt: 'Is the vehicle all of these: new, with its original use starting with you (a used vehicle does not qualify; the loan documents treat it as new); made primarily for use on public streets, roads and highways (not only on rails); with at least 2 wheels; a car, minivan, van, SUV, pickup truck or motorcycle; with a gross vehicle weight rating under 14,000 pounds; and finally assembled in the United States (shown on the vehicle information label, or by the plant of manufacture in the VIN)?'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
@@ -1587,8 +1527,7 @@ interview:
     - input: carloan.interest
       prompt: 'Total interest you paid or accrued on this loan in 2025 (generally from the lender''s statement), none of it deducted elsewhere on your return'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: i1040gi
@@ -1596,8 +1535,7 @@ interview:
     - input: carloan.mixed
       prompt: 'Did this loan also finance anything other than the vehicle and items customarily financed with it and directly related to it (such as a service plan, extended warranty, sales tax and vehicle fees)? For example negative equity on a vehicle traded in, collision or liability insurance, a trailer or other unrelated property, or cash paid to you.'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: fr-2025-24154
@@ -1605,8 +1543,7 @@ interview:
     - input: carloan.financed
       prompt: 'The total amount financed by this loan when it was taken out (the indebtedness incurred, after any down payment)'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: fr-2025-24154
@@ -1614,8 +1551,7 @@ interview:
     - input: carloan.nonqualifying
       prompt: 'The total of the amounts in the purchase that do not qualify (negative equity, insurance, unrelated property, cash paid to you), before applying any down payment'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: fr-2025-24154
@@ -1623,8 +1559,7 @@ interview:
     - input: carloan.down
       prompt: 'Any down payment or other consideration you provided when you bought the vehicle (zero if none)'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: fr-2025-24154
@@ -1632,8 +1567,7 @@ interview:
     - input: carloan.refi_balance
       prompt: 'The outstanding balance of the loan this loan refinanced, on the date of the refinancing'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: fr-2025-24154
@@ -1641,8 +1575,7 @@ interview:
     - input: carloan.refi_whole
       prompt: 'Was all of the loan this loan refinanced a qualifying vehicle loan (it financed only the vehicle and items customarily financed with it, and was not itself a refinancing for more than the balance it replaced)?'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
+        be null; do not guess. Married filing separately and unsupported items are refused with citations.
       order: 2
       cite:
         doc: fr-2025-24154

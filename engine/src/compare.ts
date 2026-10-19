@@ -59,6 +59,13 @@ function generatedCases(n: number): Case[] {
     inputs["sa.unsupported"] = false; inputs["sa.charity_limited"] = false; inputs["sa.excluded_income"] = false;
     inputs["sa.dependent"] = false; inputs["sa.spouse_extra"] = false; inputs["person[taxpayer].age65"] = false; inputs["person[taxpayer].blind"] = false;
     inputs["sa.spouse_itemizes"] = false; inputs["sa.elect_itemize"] = false;
+    // A joint return has an entry for each spouse; the generated spouse has no income.
+    if (status === "mfj") {
+      inputs["$person"] = ["taxpayer", "spouse"];
+      inputs["person[spouse].role"] = "spouse";
+      inputs["$w2@person[spouse]"] = [];
+      inputs["person[spouse].age65"] = false; inputs["person[spouse].blind"] = false;
+    }
     inputs["sa.line1"] = 0; inputs["sa.line5a"] = 0; inputs["sa.line5b"] = 0; inputs["sa.line5c"] = 0; inputs["sa.line8a"] = 0; inputs["sa.line11"] = 0;
     inputs["$gift"] = [];
     inputs["qbi.unsupported"] = false;
@@ -67,7 +74,7 @@ function generatedCases(n: number): Case[] {
       Object.assign(inputs, Object.fromEntries(Object.entries({box:"D", route:"detail", code:"none", special:false,
         proceeds:Math.floor(rnd()*5000000), reported_basis:Math.floor(rnd()*5000000)}).map(([k,v])=>[`sales[generated].${k}`,v])));
     }
-    const stage2: Inputs = { ...inputs, "$person": ["taxpayer"], "person[taxpayer].rrta": false,
+    const stage2: Inputs = { ...inputs, "person[taxpayer].rrta": false, ...(status === "mfj" ? { "person[spouse].rrta": false } : {}),
       "$w2@person[taxpayer]": ["a", "b"], "s3.line9": 0, "s3.line10": 0, "s3.line12": 0, "s3.line14": 0 };
     for (const employer of ["a", "b"]) {
       stage2[`person[taxpayer].w2[${employer}].box3`] = Math.floor(rnd() * 17610001);
