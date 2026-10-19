@@ -113,5 +113,5 @@
 - **Chosen:** Count every month treated as eligible (f8889.elig_months, all twelve under the last-month rule).
 - Reason: Line 3 leaves out the additional contribution amount for every month once a married filer had family coverage at any time (p. 5, Note), so counting only family months would drop it for the self-only months altogether, which nothing in the instructions says. The worksheet's own words are "number of months eligible", and "If items (1) and (2) apply to all months during 2025, enter $1,000". Both readings agree when every eligible month has family coverage.
 
-- Status: Agent reading, Stage 13, for the owner's review.
+- Status: Owner accepted, after Stage 13.
 - Cite: [i8889] p. 5, Line 3, Note; p. 7, Line 7 Additional Contribution Amount and the worksheet (2025; sha256 da6f2f58)

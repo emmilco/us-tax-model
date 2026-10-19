@@ -94,3 +94,25 @@ agreed allocation (owner).
   are carried as money amounts (`f8889.family_year`, `self_year`, `line7_year`).
 - The class M job builder and the property tests draw a random spouse on joint
   returns (`engine/src/generate.ts`).
+
+## Next: Stage 14, self-employment (readback confirmed by the owner; not started)
+
+The owner confirmed the intent readback and these choices; nothing has been built,
+fetched or archived for it yet (TASKS.md T-039).
+
+- **Slice:** Schedule C (one or more businesses per person), Schedule SE, Schedule 1
+  lines 3 and 15, Schedule 2 line 4, and Form 8995 below the threshold; Form 8995-A,
+  specified service trades or businesses and the W-2 wage and property limits stay
+  refused. Earned-income readers (EIC, the refundable child tax credit, Form 8959's
+  self-employment part) see self-employment earnings; each spouse has their own
+  Schedule C and SE.
+- **Schedule C depth (d):** the Part II expense lines, Part III cost of goods sold, the
+  simplified home-office method, the standard mileage rate, and depreciation on
+  Form 4562.
+- **Adjustments:** self-employed health insurance (Schedule 1 line 17) and SEP/SIMPLE
+  contributions (line 16) come in too.
+- **Measure first:** the owner approved fetching and archiving the IRS
+  sole-proprietorship statistics through `fetch_sources.py` to measure which Schedule C
+  features are common, before the slice is fixed in detail.
+- Still owed before building: the source archive (Schedule C, SE, Forms 4562, 8829 if
+  needed, 8995 instructions are archived) and a premise check against it.
