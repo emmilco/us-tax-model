@@ -1,7 +1,7 @@
 # Qualified Tips From More Than One Employer Worksheet (Schedule 1-A, line 4c) — one row per employer
 
 - Document: `tipjob` (form, tax year 2025)
-- Collection: keyed entries; [i1040gi] p. 104, Schedule 1-A, line 4c, and the Qualified Tips From More Than One Employer Worksheet (one row per employer) (2025; printed date 2026-02-25; sha256 482e9c48)
+- Collection: keyed entries within person; [i1040gi] p. 104, Schedule 1-A, line 4c, and the Qualified Tips From More Than One Employer Worksheet (one row per employer) (2025; printed date 2026-02-25; sha256 482e9c48)
 - Note: One entry per employer from which you received tips as an employee that you are deducting. Tips reported on Form 4137 (column (c)) are refused with Form 4137, so column (d) is the column (b) amount.
 
 ## (helper) — `tipjob.one`

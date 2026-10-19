@@ -3,18 +3,32 @@
 - Document: `household` (form, tax year 2025)
 - Note: Facts about the filer that the dependent tests and the head of household status read. Married filing statuses remain refused elsewhere; "unmarried" here is the instructions' unmarried or considered unmarried at the end of 2025.
 
+## (helper) — `household.taxpayer_tin_count`
+
+- **Authored helper label:** Your entry, if the answer is yes
+- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Whose entry is this, yours or your spouse's?" = 'taxpayer' and helper "Do you have an SSN or ITIN issued on or before the due date of your return, or have you applied for an ITIN by then?" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"all":[{"eq":["person.role",{"const":"taxpayer"}],"op":"test"},{"eq":["person.tin",{"const":true}],"op":"test"}],"op":"test"}}`
+- Cite: [i1040gi] p. 19, Step 5, question 1 (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (helper) — `household.taxpayer_tin`
 
 - **Authored helper label:** Do you have an SSN or ITIN issued on or before the due date of your return, or have you applied for an ITIN by then?
-- **Encoded (Bool):** Input — Do you have an SSN or ITIN issued on or before the due date of your 2025 return (including extensions), or have you applied for an ITIN by then?
-- Expr: `{"op":"input","source":"Do you have an SSN or ITIN issued on or before the due date of your 2025 return (including extensions), or have you applied for an ITIN by then?"}`
+- **Encoded (Bool):** helper "Your entry, if the answer is yes" > 0 (a count)
+- Expr: `{"gt":["household.taxpayer_tin_count",{"const":0,"type":"Count"}],"op":"test"}`
 - Cite: [i1040gi] p. 19, Step 5, question 1 (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `household.taxpayer_work_ssn_count`
+
+- **Authored helper label:** Your entry, if the answer is yes
+- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Whose entry is this, yours or your spouse's?" = 'taxpayer' and helper "Do you have an SSN valid for employment issued before the due date of your return?" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"all":[{"eq":["person.role",{"const":"taxpayer"}],"op":"test"},{"eq":["person.work_ssn",{"const":true}],"op":"test"}],"op":"test"}}`
+- Cite: [i1040gi] p. 18, Step 3, question 4 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `household.taxpayer_work_ssn`
 
 - **Authored helper label:** Do you have an SSN valid for employment issued before the due date of your return?
-- **Encoded (Bool):** Input — Do you have an SSN valid for employment, issued before the due date of your 2025 return (including extensions)?
-- Expr: `{"op":"input","source":"Do you have an SSN valid for employment, issued before the due date of your 2025 return (including extensions)?"}`
+- **Encoded (Bool):** helper "Your entry, if the answer is yes" > 0 (a count)
+- Expr: `{"gt":["household.taxpayer_work_ssn_count",{"const":0,"type":"Count"}],"op":"test"}`
 - Cite: [i1040gi] p. 18, Step 3, question 4 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `household.home_cost`

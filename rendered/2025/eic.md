@@ -10,18 +10,32 @@
 - Expr: `{"op":"input","source":"Could you be a qualifying child of another person for 2025? Answer no if the other person isn't required to file, and isn't filing, a 2025 tax return or is filing a 2025 return only to claim a refund of withheld income tax or estimated tax paid."}`
 - Cite: [i1040gi] p. 41, Step 3, question 6, and p. 42, Step 4, question 5 (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `eic.born_before_2001_count`
+
+- **Authored helper label:** Your entry, if the answer is yes
+- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Whose entry is this, yours or your spouse's?" = 'taxpayer' and helper "Were you born before January 2, 2001?" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"all":[{"eq":["person.role",{"const":"taxpayer"}],"op":"test"},{"eq":["person.born_before_2001",{"const":true}],"op":"test"}],"op":"test"}}`
+- Cite: [i1040gi] p. 41, Step 4, question 2, "Check 'Yes' if you ... were born after December 31, 1960, and before January 2, 2001" (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (helper) — `eic.born_before_2001`
 
 - **Authored helper label:** Were you born before January 2, 2001?
-- **Encoded (Bool):** Input — Were you born before January 2, 2001?
-- Expr: `{"op":"input","source":"Were you born before January 2, 2001?"}`
+- **Encoded (Bool):** helper "Your entry, if the answer is yes" > 0 (a count)
+- Expr: `{"gt":["eic.born_before_2001_count",{"const":0,"type":"Count"}],"op":"test"}`
+- Cite: [i1040gi] p. 41, Step 4, question 2, "Check 'Yes' if you ... were born after December 31, 1960, and before January 2, 2001" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `eic.born_after_1960_count`
+
+- **Authored helper label:** Your entry, if the answer is yes
+- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Whose entry is this, yours or your spouse's?" = 'taxpayer' and helper "Were you born after December 31, 1960?" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"all":[{"eq":["person.role",{"const":"taxpayer"}],"op":"test"},{"eq":["person.born_after_1960",{"const":true}],"op":"test"}],"op":"test"}}`
 - Cite: [i1040gi] p. 41, Step 4, question 2, "Check 'Yes' if you ... were born after December 31, 1960, and before January 2, 2001" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `eic.born_after_1960`
 
 - **Authored helper label:** Were you born after December 31, 1960?
-- **Encoded (Bool):** Input — Were you born after December 31, 1960?
-- Expr: `{"op":"input","source":"Were you born after December 31, 1960?"}`
+- **Encoded (Bool):** helper "Your entry, if the answer is yes" > 0 (a count)
+- Expr: `{"gt":["eic.born_after_1960_count",{"const":0,"type":"Count"}],"op":"test"}`
 - Cite: [i1040gi] p. 41, Step 4, question 2, "Check 'Yes' if you ... were born after December 31, 1960, and before January 2, 2001" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `eic.us_home`

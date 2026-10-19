@@ -35,6 +35,13 @@ params:
       cite:
         doc: i8949
         locator: pp. 7–11, columns (e) through (h), codes B and W
+    person_role:
+      values:
+        - taxpayer
+        - spouse
+      cite:
+        doc: f1040
+        locator: "Form 1040 (2025), page 1, \"Your first name and middle initial\" and \"If joint return, spouse’s first name and middle initial\""
     filing_status:
       values:
         - single
@@ -892,6 +899,12 @@ params:
       cite:
         doc: f1040s8812
         locator: Schedule 8812 (2025), lines 4 and 6, "Number of qualifying children" and "Number of other dependents"
+    person.one:
+      type: Count
+      value: 1
+      cite:
+        doc: f1040
+        locator: "Form 1040 (2025), page 1, one entry for you and, if joint return, one for your spouse"
     ss.one:
       type: Count
       value: 1

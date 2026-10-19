@@ -4,6 +4,133 @@
 - Collection: keyed entries; [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; sha256 482e9c48)
 - Note: Helper worksheet. Wages means boxes 3 plus 7 under approved interpretation amb.2025.ss_wages. Independent lines may compute while credit and dependent totals are refused.
 
+## (helper) — `person.role`
+
+- **Authored helper label:** Whose entry is this, yours or your spouse's?
+- **Encoded (Enum(person_role)):** Input — Whose entry is this, yours (the taxpayer) or your spouse's?
+- Expr: `{"op":"input","source":"Whose entry is this, yours (the taxpayer) or your spouse's?"}`
+- Cite: [f1040] Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial" (2025; created 2025-09-05; sha256 3d31c226)
+
+## (helper) — `person.one`
+
+- **Authored helper label:** One entry for this person
+- **Encoded (Count):** Enter 1 (person.one).
+- Expr: `{"op":"param","ref":"person.one"}`
+- Cite: [f1040] Form 1040 (2025), page 1, one entry for you and, if joint return, one for your spouse (2025; created 2025-09-05; sha256 3d31c226)
+
+## (helper) — `person.age65`
+
+- **Authored helper label:** Were you born before January 2, 1961?
+- **Encoded (Bool):** Input — Were you born before January 2, 1961?
+- Expr: `{"op":"input","source":"Were you born before January 2, 1961?"}`
+- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+
+## (helper) — `person.blind`
+
+- **Authored helper label:** Are you blind under the standard-deduction instructions?
+- **Encoded (Bool):** Input — Are you blind under the standard-deduction instructions?
+- Expr: `{"op":"input","source":"Are you blind under the standard-deduction instructions?"}`
+- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+
+## (helper) — `person.tin`
+
+- **Authored helper label:** Do you have an SSN or ITIN issued on or before the due date of your return, or have you applied for an ITIN by then?
+- **Encoded (Bool):** Input — Do you have an SSN or ITIN issued on or before the due date of your 2025 return (including extensions), or have you applied for an ITIN by then?
+- Expr: `{"op":"input","source":"Do you have an SSN or ITIN issued on or before the due date of your 2025 return (including extensions), or have you applied for an ITIN by then?"}`
+- Cite: [i1040gi] p. 19, Step 5, question 1 (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.work_ssn`
+
+- **Authored helper label:** Do you have an SSN valid for employment issued before the due date of your return?
+- **Encoded (Bool):** Input — Do you have an SSN valid for employment, issued before the due date of your 2025 return (including extensions)?
+- Expr: `{"op":"input","source":"Do you have an SSN valid for employment, issued before the due date of your 2025 return (including extensions)?"}`
+- Cite: [i1040gi] p. 18, Step 3, question 4 (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.educator_expenses`
+
+- **Authored helper label:** Qualified educator expenses you paid in 2025
+- **Encoded (NonNegDollars):** Input — Qualified educator expenses you paid in 2025 (professional development courses, and books, supplies, equipment and other materials used in the classroom), reduced by excludable savings bond interest (Form 8815), nontaxable qualified tuition program or Coverdell earnings or distributions, and reimbursements not reported in box 1 of your Form W-2; zero if none
+- Expr: `{"op":"input","source":"Qualified educator expenses you paid in 2025 (professional development courses, and books, supplies, equipment and other materials used in the classroom), reduced by excludable savings bond interest (Form 8815), nontaxable qualified tuition program or Coverdell earnings or distributions, and reimbursements not reported in box 1 of your Form W-2; zero if none"}`
+- Cite: [i1040gi] p. 93, Schedule 1, line 11, Qualified expenses and 'You must reduce your qualified expenses by the following amounts' (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.eligible_educator`
+
+- **Authored helper label:** Were you an eligible educator in 2025 (a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year)?
+- **Encoded (Bool):** Input — Were you an eligible educator in 2025 (a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year)?
+- Expr: `{"op":"input","source":"Were you an eligible educator in 2025 (a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year)?"}`
+- Cite: [i1040gi] p. 93, Schedule 1, line 11, 'An eligible educator is a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year' (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.born_before_2001`
+
+- **Authored helper label:** Were you born before January 2, 2001?
+- **Encoded (Bool):** Input — Were you born before January 2, 2001?
+- Expr: `{"op":"input","source":"Were you born before January 2, 2001?"}`
+- Cite: [i1040gi] p. 41, Step 4, question 2, "Check 'Yes' if you ... were born after December 31, 1960, and before January 2, 2001" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.born_after_1960`
+
+- **Authored helper label:** Were you born after December 31, 1960?
+- **Encoded (Bool):** Input — Were you born after December 31, 1960?
+- Expr: `{"op":"input","source":"Were you born after December 31, 1960?"}`
+- Cite: [i1040gi] p. 41, Step 4, question 2, "Check 'Yes' if you ... were born after December 31, 1960, and before January 2, 2001" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.died_before_65`
+
+- **Authored helper label:** Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before reaching age 65?
+- **Encoded (Bool):** Input — Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)
+- Expr: `{"op":"input","source":"Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)"}`
+- Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.hsa_forms`
+
+- **Authored helper label:** Number of Forms 8889 entered for this person
+- **Encoded (Count):** Add f8889.one over every confirmed f8889 entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"f8889","field":"f8889.one","op":"sum_over"}`
+- Cite: [i8889] p. 4, Name and social security number (SSN), "complete a separate Form 8889 for each of you" (2025; sha256 da6f2f58)
+
+## (gate) — `person.hsa_repeated`
+
+- **Authored helper label:** More than one Form 8889 entered for this person
+- **Encoded (Bool):** helper "Number of Forms 8889 entered for this person" > 1 (a count)
+- Expr: `{"gt":["person.hsa_forms",{"const":1,"type":"Count"}],"op":"test"}`
+- Cite: [i8889] p. 4, Name and social security number (SSN), "complete a separate Form 8889 for each of you" (2025; sha256 da6f2f58)
+
+## (helper) — `person.hsa_deduction`
+
+- **Authored helper label:** Form 8889 line 13 for this person
+- **Encoded (NonNegDollars):** Add f8889.line13 over every confirmed f8889 entry, within the current person when parent-bound. An unanswered roster is unknown.
+- **Refusal:** when person.hsa_repeated is true, cannot complete More than one Form 8889 for one person. Enter one Form 8889 per person, combining all of that person's own HSAs on it. A separate Form 8889 for each HSA (with a controlling Form 8889) is required only for an inherited HSA, which is outside this tool. Cite: [i8889] p. 3, "If, during the tax year, you are the beneficiary of two or more HSAs or you are a beneficiary of an HSA and you have your own HSA, you must complete a separate Form 8889 for each HSA" (2025; sha256 da6f2f58)
+- Expr: `{"collection":"f8889","field":"f8889.line13","op":"sum_over"}`
+- Cite: [i8889] p. 4, "Combine the amounts on line 13 of both Forms 8889 and enter this amount on Schedule 1 (Form 1040), line 13" (2025; sha256 da6f2f58)
+
+## (helper) — `person.tip_employers`
+
+- **Authored helper label:** Number of employers that paid this person qualified tips
+- **Encoded (Count):** Add tipjob.one over every confirmed tipjob entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"tipjob","field":"tipjob.one","op":"sum_over"}`
+- Cite: [i1040gi] p. 104, Schedule 1-A, line 4c (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.tip_total`
+
+- **Authored helper label:** This person's worksheet column (d) total
+- **Encoded (NonNegDollars):** Add tipjob.col_d over every confirmed tipjob entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"tipjob","field":"tipjob.col_d","op":"sum_over"}`
+- Cite: [i1040gi] p. 104, Qualified Tips From More Than One Employer Worksheet, line 2 (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.tip_reported`
+
+- **Authored helper label:** This person's worksheet column (b) total
+- **Encoded (NonNegDollars):** Add tipjob.amount over every confirmed tipjob entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"tipjob","field":"tipjob.amount","op":"sum_over"}`
+- Cite: [i1040gi] p. 104, Qualified Tips From More Than One Employer Worksheet, column (b) (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.ot_total`
+
+- **Authored helper label:** This person's overtime worksheet column (b) total
+- **Encoded (NonNegDollars):** Add otjob.col_b over every confirmed otjob entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"otjob","field":"otjob.col_b","op":"sum_over"}`
+- Cite: [i1040gi] p. 108, Schedule 1-A, line 14a, and the Qualified Overtime Compensation From More Than One Employer Worksheet, line 2 (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## rrta — `person.rrta`
 
 - **Authored helper label:** Do any wage statements report railroad retirement compensation or taxes (W-2 box 14), or did you file Form CT-2 as an employee representative?

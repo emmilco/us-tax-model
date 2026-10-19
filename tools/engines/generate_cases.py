@@ -12,6 +12,9 @@ project's interview input map, `facts` the engine-facing economic summary and
 """
 import argparse, json, random
 
+TAXPAYER = "person[taxpayer]"
+HSA = f"{TAXPAYER}.f8889[hsa]"
+
 WAGE_BASE = 17_610_000        # 2025 Social Security wage base, cents
 SS_RATE = (62, 1000)
 MEDICARE_RATE = (145, 10000)
@@ -34,7 +37,7 @@ def log_uniform(rng, lo, hi):
 
 def gen_case(rng, i):
     inputs = {
-        "f1040.status": "single", "$person": ["taxpayer"], "person[taxpayer].rrta": False,
+        "f1040.status": "single", "$person": ["taxpayer"], "person[taxpayer].role": "taxpayer", "person[taxpayer].rrta": False,
         "sb.unsupported": False, "sb.line7a": False, "sb.fbar_required": False, "sb.form8938": False, "sb.line8": False,
         "div.box2c": 0, "div.box2e": 0, "div.box2f": 0, "div.box3": 0,
         "div.box9": 0, "div.box10": 0, "div.box13": 0, "div.basis_reconciled": True,
@@ -45,14 +48,14 @@ def gen_case(rng, i):
         "ftc.all_passive": True, "ftc.statements": True, "ftc.eligible": True, "ftc.elect": True,
         "s3.line9": 0, "s3.line10": 0, "s3.line12": 0, "s3.line14": 0,
         "sa.unsupported": False, "sa.charity_limited": False, "sa.excluded_income": False, "sa.dependent": False,
-        "sa.spouse_extra": False, "sa.age65": False, "sa.blind": False, "sa.spouse_itemizes": False, "sa.elect_itemize": False,
+        "sa.spouse_extra": False, "person[taxpayer].age65": False, "person[taxpayer].blind": False, "sa.spouse_itemizes": False, "sa.elect_itemize": False,
         "sa.line5c": 0,
         "scope.schedule1": False, "scope.credits": False, "scope.other_income": False,
         "scope.other_line16": False, "s2.amt": False, "s2.other": False,
         "f1040.line25b": 0, "f1040.line25c": 0, "f1040.line26": 0, "f1040.line35a": 0, "f1040.line36": 0,
         # Earned income credit questions: an adult aged 25 to 64 living in the United States who is
         # nobody's qualifying child, with no tax-exempt interest.
-        "f1040.tax_exempt_interest": 0, "div.box12": 0, "eic.qc_of_another": False, "eic.born_before_2001": True, "eic.born_after_1960": True, "eic.us_home": True, "eic.married": False,
+        "f1040.tax_exempt_interest": 0, "div.box12": 0, "eic.qc_of_another": False, "person[taxpayer].born_before_2001": True, "person[taxpayer].born_after_1960": True, "eic.us_home": True, "eic.married": False,
         "$retirement": [],
     }
     facts = {}
@@ -163,7 +166,7 @@ def gen_case(rng, i):
                        f"{key}.us_half": True, f"{key}.eic_ssn": True})
     hoh = n_children > 0 and rng.random() < 0.5
     inputs["f1040.status"] = "hoh" if hoh else "single"
-    inputs.update({"household.taxpayer_tin": True, "household.taxpayer_work_ssn": True,
+    inputs.update({"person[taxpayer].tin": True, "person[taxpayer].work_ssn": True,
                    "household.home_cost": True, "household.unmarried": True, "s8812.combat_pay": False, "s8812.puerto_rico": False})
     # Every generated child is a qualifying child for the EIC (under 19, or a full-time student under 24,
     # living with the filer in the United States all year, with an SSN).
@@ -192,7 +195,7 @@ def gen_case(rng, i):
     inputs.update({"s1.uc_paid": uc, "s1.uc_repaid": 0, "s1.uc_unsupported": False}); facts["unemployment"] = uc
     if uc: features.add("unemployment")
     edu = rng.randint(1_000, 60_000) if rng.random() < 0.1 else 0
-    inputs.update({"s1.educator_expenses": edu, "s1.eligible_educator": True})
+    inputs.update({"person[taxpayer].educator_expenses": edu, "person[taxpayer].eligible_educator": True})
     facts.update(educator_expenses=edu, educator_deduction=min(edu, 30_000))
     if edu: features.add("educator_expenses")
     contrib = employer = hsa_deduction = 0
@@ -202,10 +205,10 @@ def gen_case(rng, i):
         employer = rng.randint(0, limit // 2) if rng.random() < 0.5 else 0
         contrib = rng.randint(0, limit - employer)
         hsa_deduction = min(contrib, limit - employer)
-        inputs.update({"f8889.months_eligible": 12, "f8889.months_family": 12 if family else 0, "f8889.age55": age55,
-                       "f8889.dec_coverage": "family" if family else "self_only", "f8889.last_month": False, "f8889.unsupported": False})
+        inputs.update({f"{HSA}.months_eligible": 12, f"{HSA}.months_family": 12 if family else 0, f"{HSA}.age55": age55,
+                       f"{HSA}.dec_coverage": "family" if family else "self_only", f"{HSA}.last_month": False, f"{HSA}.unsupported": False})
         features.add("hsa")
-    inputs.update({"f8889.line2": contrib, "f8889.line9": employer}); facts["hsa_deduction"] = hsa_deduction
+    inputs.update({f"$f8889@{TAXPAYER}": ["hsa"], f"{HSA}.line2": contrib, f"{HSA}.line9": employer}); facts["hsa_deduction"] = hsa_deduction
     sli = rng.randint(1_000, 300_000) if rng.random() < 0.15 else 0
     inputs.update({"sli.interest": sli, "sli.claimed": False}); facts["student_loan_interest"] = sli
     if sli: features.add("student_loan_interest")
@@ -224,16 +227,16 @@ def gen_case(rng, i):
     age = 40
     if r.random() < 0.15:
         age = r.randint(66, 85)
-        inputs.update({"sa.age65": True, "s1a.died_before_65": False, "eic.born_after_1960": False})
+        inputs.update({"person[taxpayer].age65": True, "person[taxpayer].died_before_65": False, "person[taxpayer].born_after_1960": False})
         features.add("senior")
     tips = r.randint(10_000, min(4_000_000, wages)) if r.random() < 0.12 else 0
     if tips:
-        inputs.update({"s1a.tips": True, "$tipjob": ["t"], "tipjob[t].qualified": True, "tipjob[t].amount": tips})
+        inputs.update({"s1a.tips": True, "$tipjob@person[taxpayer]": ["t"], "person[taxpayer].tipjob[t].qualified": True, "person[taxpayer].tipjob[t].amount": tips})
         features.add("tips")
     overtime = r.randint(10_000, min(2_000_000, wages // 3)) if r.random() < 0.12 and wages >= 30_000 else 0
     if overtime:
-        inputs.update({"s1a.overtime": True, "$otjob": ["o"], "otjob[o].flsa": True, "otjob[o].special_rule": False,
-                       "otjob[o].method": "premium", "otjob[o].statement": overtime})
+        inputs.update({"s1a.overtime": True, "$otjob@person[taxpayer]": ["o"], "person[taxpayer].otjob[o].flsa": True, "person[taxpayer].otjob[o].special_rule": False,
+                       "person[taxpayer].otjob[o].method": "premium", "person[taxpayer].otjob[o].statement": overtime})
         features.add("overtime")
     car = r.randint(5_000, 1_500_000) if r.random() < 0.1 else 0
     if car:

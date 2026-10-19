@@ -198,24 +198,6 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       = true
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
 
-== Form 8889 — HSA contributions and deduction (Part I) ==
-  (helper) Year parameter sales.zero
-      = $0
-      cite: [f8889] Form 8889 (2025), lines 4, 7 and 10 (2025; created 2025-03-28; 15ed4587)
-  2   HSA contributions you made for 2025 (or those made on your behalf), including those made by the unextended due date of your tax return that were for 2025. Do not include employer contributions, contributions through a cafeteria plan, or rollovers
-      = $0
-      cite: [f8889] Form 8889 (2025), line 2; i8889 p. 4, Line 2 (2025; created 2025-03-28; 15ed4587)
-  9   Employer contributions made to your HSAs for 2025
-      = $0
-      cite: [i8889] p. 6, Line 9 Employer Contributions and the Employer Contribution Worksheet (2025; da6f2f58)
-  (helper) Any HSA contributions for 2025 (yours or your employer's)
-      = false
-      cite: [i8889] pp. 1-2, Who Must File (you or your employer made contributions to your HSA for 2025) (2025; da6f2f58)
-  13  HSA deduction (see instructions)
-      = $0
-      cite: [f8889] Form 8889 (2025), line 13 (2025; created 2025-03-28; 15ed4587)
-      note: taken: {"eq":["f8889.any",{"const":false}],"op":"test"}
-
 == Form 8995 — dividend-only simplified computation ==
   5   Amount from qbi.zero
       = $0
@@ -338,6 +320,7 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
   (helper) Qualified educator expenses you paid in 2025
       = $0
       cite: [i1040gi] p. 93, Schedule 1, line 11, Qualified expenses and 'You must reduce your qualified expenses by the following amounts' (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
   (helper) Any qualified educator expenses
       = false
       cite: [i1040gi] p. 93, Schedule 1, line 11 (2025; printed date 2026-02-25; 482e9c48)
@@ -347,7 +330,8 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       note: taken: {"eq":["s1.has_educator_expenses",{"const":false}],"op":"test"}
   13  Health savings account deduction. Attach Form 8889
       = $0
-      cite: [f1040s1] Schedule 1 (2025), line 13 (2025; created 2025-07-25; 8dafec71)
+      cite: [f1040s1] Schedule 1 (2025), line 13; i8889 p. 4, "Combine the amounts on line 13 of both Forms 8889 and enter this amount on Schedule 1 (Form 1040), line 13" (2025; created 2025-07-25; 8dafec71)
+      note: confirmed roster $person: taxpayer
   21  Student loan interest deduction
       = $0
       cite: [f1040s1] Schedule 1 (2025), line 21 (2025; created 2025-07-25; 8dafec71)
@@ -410,9 +394,17 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
   (helper) Claiming any age/blindness standard-deduction boxes for a spouse?
       = false
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Your entry, if the answer is yes
+      = 0
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+      note: confirmed roster $person: taxpayer
   (helper) Were you born before January 2, 1961?
       = false
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Your entry, if the answer is yes
+      = 0
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+      note: confirmed roster $person: taxpayer
   (helper) Are you blind under the standard-deduction instructions?
       = false
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
@@ -1022,10 +1014,6 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   s1.line11: chose $0 (guard 1)
       not taken: guard 0 = false
-  f8889.line13: chose $0 (guard 1)
-      not taken: guard 0 = false
-  s1.f8889.line13: chose $0 (guard 1)
-      not taken: guard 0 = false
   sli.deduction: chose $0 (guard 1)
       not taken: guard 0 = false
   s1.sli.deduction: chose $0 (guard 1)
@@ -1122,6 +1110,20 @@ Collection entries and derivations:
     cite: iw2w3, p. 17, box 1 (2025; printed date 2025-02-19; bfecbc99)
   person[taxpayer].box1 = $61,750
     cite: f1040, Form 1040 (2025), line 1a (2025; created 2025-09-05; 3d31c226)
+  person[taxpayer].role = taxpayer
+    cite: f1040, Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial" (2025; created 2025-09-05; 3d31c226)
+  person[taxpayer].educator_expenses = $0
+    cite: i1040gi, p. 93, Schedule 1, line 11, Qualified expenses and 'You must reduce your qualified expenses by the following amounts' (2025; printed date 2026-02-25; 482e9c48)
+  person[taxpayer].hsa_forms = 0
+    cite: i8889, p. 4, Name and social security number (SSN), "complete a separate Form 8889 for each of you" (2025; da6f2f58)
+  person[taxpayer].hsa_repeated = false
+    cite: i8889, p. 4, Name and social security number (SSN), "complete a separate Form 8889 for each of you" (2025; da6f2f58)
+  person[taxpayer].hsa_deduction = $0
+    cite: i8889, p. 4, "Combine the amounts on line 13 of both Forms 8889 and enter this amount on Schedule 1 (Form 1040), line 13" (2025; da6f2f58)
+  person[taxpayer].age65 = false
+    cite: f1040sa, Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  person[taxpayer].blind = false
+    cite: f1040sa, Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
   sales[a].digital: test(sales[a].box = D; "G" = G; sales[a].box = D; "H" = H; sales[a].box = D; "I" = I; sales[a].box = D; "J" = J; sales[a].box = D; "K" = K; sales[a].box = D; "L" = L)
   sales[a].has_b: test(sales[a].code = none; "B" = B; sales[a].code = none; "BW" = BW)
   sales[a].bad_code: test(sales[a].code = none; "other" = other; sales[a].has_b = false; true = true)
@@ -1195,13 +1197,12 @@ Collection entries and derivations:
   f1040.s1.line10: copy(s1.line7 = $0)
   f1040.line8: copy(scope.schedule1 = false; scope.other_income = false; s1.line10 = $0)
   f1040.line9: sum(f1040.line1z = $61,750; f1040.line2b = $0; f1040.line3b = $0; f1040.line4b = $0; f1040.line5b = $0; f1040.line6b = $0; f1040.line7a = $4,000; f1040.line8 = $0)
+  s1.educator_expenses: sum_over(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].educator_expenses = $0)
   s1.has_educator_expenses: test(s1.educator_expenses = $0; #sales.zero = $0)
   s1.line11: choose(s1.has_educator_expenses = false; true = true; s1.has_educator_expenses = false; false = false; s1.zero = $0)
-  f8889.any: test(f8889.line2 = $0; #sales.zero = $0; f8889.line9 = $0; #sales.zero = $0)
-  f8889.zero: param(#sales.zero = $0)
-  f8889.line13: choose(f8889.any = false; true = true; f8889.any = false; false = false; f8889.zero = $0)
-  s1.f8889.line13: choose(f8889.any = false; true = true; f8889.any = false; false = false; f8889.zero = $0)
-  s1.line13: copy(f8889.line13 = $0)
+  person[taxpayer].hsa_repeated: test(person[taxpayer].hsa_forms = 0; 1 = 1)
+  person[taxpayer].hsa_deduction: sum_over(person[taxpayer].hsa_repeated = false)
+  s1.line13: sum_over(person[taxpayer].hsa_deduction = $0)
   sli.has: test(sli.interest = $0; #sales.zero = $0)
   sli.zero: param(#sales.zero = $0)
   sli.deduction: choose(sli.has = false; true = true; sli.has = false; false = false; sli.zero = $0)
@@ -1270,7 +1271,11 @@ Collection entries and derivations:
   sa.line16: copy(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.zero = $0)
   sa.line17: sum(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.line4 = $0; sa.line7 = $0; sa.line10 = $0; sa.line14 = $0; sa.line15 = $0; sa.line16 = $0)
   sa.standardbase: param(#sa.standard_base = $15,750)
+  sa.age65_count: sum_over(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].age65 = false; true = true)
+  sa.age65: test(sa.age65_count = 0; 0 = 0)
   sa.extra_age65: choose(sa.age65 = false; true = true; sa.age65 = false; false = false; sa.zero = $0)
+  sa.blind_count: sum_over(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].blind = false; true = true)
+  sa.blind: test(sa.blind_count = 0; 0 = 0)
   sa.extra_blind: choose(sa.blind = false; true = true; sa.blind = false; false = false; sa.zero = $0)
   sa.standardraw: sum(sa.standardbase = $15,750; sa.extra_age65 = $0; sa.extra_blind = $0)
   sa.standard: choose(sa.dependent = false; sa.spouse_extra = false; sa.mfs_spouse_itemizes = false; true = true; sa.mfs_spouse_itemizes = false; false = false; sa.standardraw = $15,750)
@@ -1284,6 +1289,7 @@ Collection entries and derivations:
   s1a.line13: choose(s1a.tips = false; false = false; s1a.zero = $0)
   s1a.line21: choose(s1a.overtime = false; false = false; s1a.zero = $0)
   s1a.line30: choose(s1a.carloan = false; false = false; s1a.zero = $0)
+  s1a.sa.age65: test(sa.age65_count = 0; 0 = 0)
   s1a.line36a: choose(sa.age65 = false; false = false; s1a.zero = $0)
   s1a.line36b: param(sa.spouse_extra = false; #sales.zero = $0)
   s1a.line37: sum(s1a.line36a = $0; s1a.line36b = $0)

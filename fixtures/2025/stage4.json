@@ -48,8 +48,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -77,6 +77,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -88,8 +90,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -97,9 +99,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -187,8 +187,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -216,6 +216,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -227,8 +229,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -236,9 +238,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -302,8 +302,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -331,6 +331,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -342,8 +344,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -351,9 +353,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -417,8 +417,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -446,6 +446,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -457,8 +459,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -466,9 +468,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -532,8 +532,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -561,6 +561,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -592,8 +594,8 @@
         "dependent[child].divorced_rule": false,
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": true,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -602,9 +604,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -668,8 +668,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -697,6 +697,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -728,8 +730,8 @@
         "dependent[child].divorced_rule": false,
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": true,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -738,9 +740,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -804,8 +804,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -833,6 +833,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -864,8 +866,8 @@
         "dependent[child].divorced_rule": false,
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": true,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -874,9 +876,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -940,8 +940,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -969,6 +969,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -980,8 +982,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -989,9 +991,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -1055,8 +1055,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -1084,6 +1084,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -1095,8 +1097,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -1104,9 +1106,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -1170,8 +1170,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -1199,6 +1199,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -1210,8 +1212,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -1219,9 +1221,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -1285,8 +1285,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -1314,6 +1314,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -1325,8 +1327,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -1334,9 +1336,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0
       },
       "expect": {
@@ -1397,8 +1397,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -1426,6 +1426,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -1437,8 +1439,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -1446,9 +1448,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0
       },
       "expect": {
@@ -1509,8 +1509,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -1538,6 +1538,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -1549,8 +1551,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -1558,9 +1560,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0
       },
       "expect": {
@@ -1621,8 +1621,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -1650,6 +1650,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -1661,8 +1663,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -1670,9 +1672,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0
       },
       "expect": {
@@ -1733,8 +1733,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -1762,6 +1762,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -1773,8 +1775,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -1782,9 +1784,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0
       },
       "expect": {
@@ -1845,8 +1845,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -1874,6 +1874,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -1885,8 +1887,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -1894,9 +1896,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0
       },
       "expect": {
@@ -1957,8 +1957,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -1986,6 +1986,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -1997,8 +1999,8 @@
         "person[taxpayer].w2[a].box6": 407500,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -2006,9 +2008,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -2160,8 +2160,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -2189,6 +2189,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -2200,8 +2202,8 @@
         "person[taxpayer].w2[a].box6": 280000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -2209,9 +2211,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -2271,8 +2271,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -2300,6 +2300,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -2311,8 +2313,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 49999999,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -2320,9 +2322,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -2382,8 +2382,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -2411,6 +2411,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -2422,8 +2424,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 50000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -2431,9 +2433,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -2493,8 +2493,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -2522,6 +2522,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -2533,8 +2535,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 55000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -2542,9 +2544,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -2604,8 +2604,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -2633,6 +2633,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -2644,8 +2646,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 60000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -2653,9 +2655,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -2715,8 +2715,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -2744,6 +2744,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -2755,8 +2757,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 70000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -2764,9 +2766,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -2826,8 +2826,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -2855,6 +2855,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -2866,8 +2868,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 30000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -2875,9 +2877,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0
       },
       "expect": {
@@ -2934,8 +2934,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -2963,6 +2963,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -2974,8 +2976,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 35000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -2983,9 +2985,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0
       },
       "expect": {
@@ -3046,8 +3046,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -3075,6 +3075,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -3086,8 +3088,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 70000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -3095,9 +3097,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -3157,8 +3157,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 749999,
@@ -3186,6 +3186,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -3197,8 +3199,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -3206,9 +3208,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -3272,8 +3272,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 1000000,
@@ -3301,6 +3301,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -3312,8 +3314,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -3321,9 +3323,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -3383,8 +3383,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": true,
-        "sa.blind": true,
+        "person[taxpayer].age65": true,
+        "person[taxpayer].blind": true,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -3412,6 +3412,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -3423,8 +3425,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -3432,14 +3434,12 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
         "s1a.carloan": false,
-        "s1a.died_before_65": false
+        "person[taxpayer].died_before_65": false
       },
       "expect": {
         "sa.standard": {
@@ -3495,8 +3495,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": true,
-        "sa.blind": true,
+        "person[taxpayer].age65": true,
+        "person[taxpayer].blind": true,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -3524,6 +3524,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -3555,8 +3557,8 @@
         "dependent[child].divorced_rule": false,
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": true,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -3565,14 +3567,12 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
         "s1a.carloan": false,
-        "s1a.died_before_65": false
+        "person[taxpayer].died_before_65": false
       },
       "expect": {
         "sa.standard": {
@@ -3628,8 +3628,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": true,
-        "sa.blind": true,
+        "person[taxpayer].age65": true,
+        "person[taxpayer].blind": true,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -3657,6 +3657,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -3668,8 +3670,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -3677,14 +3679,12 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
         "s1a.carloan": false,
-        "s1a.died_before_65": false
+        "person[taxpayer].died_before_65": false
       },
       "expect": {
         "sa.standard": {
@@ -3740,8 +3740,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": true,
-        "sa.blind": true,
+        "person[taxpayer].age65": true,
+        "person[taxpayer].blind": true,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -3769,6 +3769,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -3780,8 +3782,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -3789,9 +3791,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0
       },
       "expect": {
@@ -3848,8 +3848,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": true,
-        "sa.blind": true,
+        "person[taxpayer].age65": true,
+        "person[taxpayer].blind": true,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -3877,6 +3877,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -3888,8 +3890,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -3897,9 +3899,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0
       },
       "expect": {
@@ -3956,8 +3956,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": true,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -3985,6 +3985,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -3996,8 +3998,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -4005,9 +4007,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0
       },
       "expect": {
@@ -4068,8 +4068,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -4097,6 +4097,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -4108,8 +4110,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -4117,9 +4119,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -4183,8 +4183,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": true,
         "sa.line1": 0,
@@ -4212,6 +4212,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -4223,8 +4225,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -4232,9 +4234,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -4298,8 +4298,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -4327,6 +4327,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -4338,8 +4340,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 9940000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -4347,9 +4349,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -4417,8 +4417,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -4446,6 +4446,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -4457,8 +4459,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 9800000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -4466,9 +4468,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -4536,8 +4536,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -4565,6 +4565,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -4576,8 +4578,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 9800000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -4585,9 +4587,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -4663,8 +4663,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": true,
         "sa.line1": 0,
@@ -4696,6 +4696,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -4714,8 +4716,8 @@
         "interest[bank].amount": 300000,
         "person[taxpayer].w2[a].box1": 28000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -4723,9 +4725,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -4801,8 +4801,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -4830,6 +4830,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -4841,8 +4843,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 19800000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -4850,9 +4852,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -4912,8 +4912,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -4941,6 +4941,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -4952,8 +4954,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 19900000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -4961,9 +4963,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -5023,8 +5023,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -5052,6 +5052,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -5083,8 +5085,8 @@
         "dependent[child].divorced_rule": false,
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": true,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -5093,9 +5095,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -5155,8 +5155,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -5184,6 +5184,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -5215,8 +5217,8 @@
         "dependent[child].divorced_rule": false,
         "dependent[child].multiple_support": false,
         "dependent[child].parent_home_paid": false,
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": true,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -5225,9 +5227,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -5287,8 +5287,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -5316,6 +5316,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -5327,8 +5329,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 24800000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -5336,9 +5338,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -5398,8 +5398,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -5427,6 +5427,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -5438,8 +5440,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 24900000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -5447,9 +5449,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -5509,8 +5509,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -5538,6 +5538,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -5549,8 +5551,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 24800000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -5558,9 +5560,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0
       },
       "expect": {
@@ -5617,8 +5617,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -5646,6 +5646,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -5657,8 +5659,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 24900000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -5666,9 +5668,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0
       },
       "expect": {
@@ -5725,8 +5725,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -5754,6 +5754,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -5765,8 +5767,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 12300000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -5774,9 +5776,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0
       },
       "expect": {
@@ -5833,8 +5833,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -5862,6 +5862,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -5873,8 +5875,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 12400000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -5882,9 +5884,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0
       },
       "expect": {
@@ -5941,8 +5941,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -5970,6 +5970,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -5981,8 +5983,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 29800000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -5990,9 +5992,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -6060,8 +6060,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -6089,6 +6089,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -6100,8 +6102,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 21204999,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -6109,9 +6111,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -6183,8 +6183,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -6212,6 +6212,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -6223,8 +6225,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 21205000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -6232,9 +6234,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -6306,8 +6306,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -6335,6 +6335,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -6346,8 +6348,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 21205001,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -6355,9 +6357,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -6429,8 +6429,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -6458,6 +6458,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -6469,8 +6471,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 675000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -6478,9 +6480,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -6552,8 +6552,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -6581,6 +6581,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -6592,8 +6594,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 575000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -6601,9 +6603,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -6671,8 +6671,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -6700,6 +6700,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -6711,8 +6713,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -6720,9 +6722,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -6782,8 +6782,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -6811,6 +6811,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -6822,8 +6824,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -6831,9 +6833,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -6893,8 +6893,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -6922,6 +6922,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -6933,8 +6935,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 1575000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -6942,9 +6944,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -7004,8 +7004,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -7033,6 +7033,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -7044,8 +7046,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 21575000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -7053,9 +7055,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -7315,8 +7315,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": true,
         "sa.line1": 0,
@@ -7344,6 +7344,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -7355,8 +7357,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 0,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -7364,9 +7366,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -7458,8 +7458,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -7487,6 +7487,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -7498,8 +7500,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 1575000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -7507,9 +7509,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -7577,8 +7577,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -7608,6 +7608,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -7625,8 +7627,8 @@
         "sales[s].reported_basis": 300000,
         "person[taxpayer].w2[a].box1": 9300000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -7634,9 +7636,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -7704,8 +7704,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -7735,6 +7735,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -7749,8 +7751,8 @@
         "gift[books].special": false,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -7758,9 +7760,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -7824,8 +7824,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -7855,6 +7855,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -7869,8 +7871,8 @@
         "gift[books].special": false,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -7878,9 +7880,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -7944,8 +7944,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -7975,6 +7975,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -7989,8 +7991,8 @@
         "gift[books].special": false,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -7998,9 +8000,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -8063,8 +8063,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -8092,6 +8092,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -8103,8 +8105,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 0,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -8112,9 +8114,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0
       },
       "expect": {
@@ -8179,8 +8179,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -8208,6 +8208,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -8219,8 +8221,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -8228,9 +8230,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0
       },
       "expect": {
@@ -8295,8 +8295,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -8324,6 +8324,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -8335,8 +8337,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 0,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -8344,9 +8346,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0
       },
       "expect": {
@@ -8411,8 +8411,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -8440,6 +8440,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -8451,8 +8453,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -8460,9 +8462,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0
       },
       "expect": {
@@ -8527,8 +8527,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -8556,6 +8556,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -8567,8 +8569,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -8576,9 +8578,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0
       },
       "expect": {
@@ -8695,8 +8695,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -8724,6 +8724,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -8735,8 +8737,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -8744,9 +8746,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0
       },
       "expect": {
@@ -8863,8 +8863,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -8892,6 +8892,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -8903,8 +8905,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -8912,9 +8914,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0
       },
       "expect": {
@@ -9031,8 +9031,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -9060,6 +9060,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -9071,8 +9073,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -9080,9 +9082,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -9150,8 +9150,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -9179,6 +9179,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -9190,8 +9192,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -9199,9 +9201,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0
       },
       "expect": {
@@ -9357,8 +9357,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -9386,6 +9386,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -9397,8 +9399,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -9406,9 +9408,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -9619,8 +9619,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -9648,6 +9648,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -9659,8 +9661,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -9668,9 +9670,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -9881,8 +9881,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -9910,6 +9910,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -9921,8 +9923,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -9930,9 +9932,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -10091,8 +10091,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -10120,6 +10120,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -10131,8 +10133,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -10140,9 +10142,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -10301,8 +10301,8 @@
         "sa.excluded_income": true,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -10330,6 +10330,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -10341,8 +10343,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -10350,9 +10352,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -10511,8 +10511,8 @@
         "sa.excluded_income": false,
         "sa.dependent": true,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -10540,6 +10540,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -10551,8 +10553,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -10560,9 +10562,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -10630,8 +10630,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": true,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -10659,6 +10659,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -10670,8 +10672,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -10679,9 +10681,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -10749,8 +10749,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -10778,6 +10778,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -10789,8 +10791,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 0,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -10798,9 +10800,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -10907,8 +10907,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -10936,6 +10936,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -10947,8 +10949,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 0,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -10956,9 +10958,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -11065,8 +11065,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -11094,6 +11094,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -11105,8 +11107,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 0,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -11114,9 +11116,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -11223,8 +11223,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -11252,6 +11252,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -11263,8 +11265,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 0,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -11272,9 +11274,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -11381,8 +11381,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -11410,6 +11410,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -11421,8 +11423,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -11430,9 +11432,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -11500,8 +11500,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -11529,6 +11529,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -11540,8 +11542,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -11549,9 +11551,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0
       },
       "expect": {
@@ -11616,8 +11616,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -11645,6 +11645,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -11656,8 +11658,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -11665,9 +11667,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0
       },
       "expect": {
@@ -11732,8 +11732,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -11761,6 +11761,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -11772,8 +11774,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -11781,9 +11783,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0
       },
       "expect": {
@@ -11848,8 +11848,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -11877,6 +11877,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -11888,8 +11890,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -11897,9 +11899,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0
       },
       "expect": {
@@ -11964,8 +11964,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -11993,6 +11993,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -12004,8 +12006,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -12013,9 +12015,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0
       },
       "expect": {
@@ -12080,8 +12080,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -12109,6 +12109,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -12120,8 +12122,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -12129,9 +12131,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -12225,8 +12225,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -12254,6 +12254,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -12265,8 +12267,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -12274,9 +12276,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -12370,8 +12370,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -12401,6 +12401,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -12415,8 +12417,8 @@
         "gift[books].special": false,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -12424,9 +12426,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -12495,8 +12495,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -12526,6 +12526,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -12540,8 +12542,8 @@
         "gift[books].special": true,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -12549,9 +12551,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -12619,8 +12619,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -12648,6 +12648,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -12659,8 +12661,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 0,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -12668,9 +12670,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0
       },
       "expect": {
@@ -12735,8 +12735,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -12764,6 +12764,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -12775,8 +12777,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 0,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -12784,9 +12786,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0
       },
       "expect": {
@@ -12851,8 +12851,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -12880,6 +12880,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -12891,8 +12893,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 0,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -12900,9 +12902,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0
       },
       "expect": {
@@ -12967,8 +12967,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -12996,6 +12996,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -13007,8 +13009,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 0,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -13016,9 +13018,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -13087,8 +13087,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -13116,6 +13116,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -13127,8 +13129,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 51575000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -13136,9 +13138,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -13234,8 +13234,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -13263,6 +13263,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -13274,8 +13276,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 9575000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -13283,9 +13285,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -13369,8 +13369,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -13398,6 +13398,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -13409,8 +13411,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 0,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -13418,9 +13420,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -13492,8 +13492,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -13521,6 +13521,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -13532,8 +13534,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -13541,9 +13543,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -13607,8 +13607,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -13638,6 +13638,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -13655,8 +13657,8 @@
         "sales[s].reported_basis": 700000,
         "person[taxpayer].w2[a].box1": 30300000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -13664,9 +13666,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -13734,8 +13734,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -13763,6 +13763,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -13774,8 +13776,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -13783,9 +13785,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0
       },
       "expect": {
@@ -13841,8 +13841,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -13870,6 +13870,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -13881,8 +13883,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 0,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -13890,9 +13892,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -13960,8 +13960,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -13989,6 +13989,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -14000,8 +14002,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 0,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -14009,9 +14011,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -14079,8 +14079,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -14108,6 +14108,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -14119,8 +14121,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 0,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -14128,9 +14130,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -14198,8 +14198,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -14227,6 +14227,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -14238,8 +14240,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 0,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -14247,9 +14249,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0
       },
       "expect": {
@@ -14314,8 +14314,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": true,
         "sa.line1": 0,
@@ -14343,6 +14343,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -14354,8 +14356,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -14363,9 +14365,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -14433,8 +14433,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -14462,6 +14462,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -14473,8 +14475,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -14482,9 +14484,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0
       },
       "expect": {
@@ -14601,8 +14601,8 @@
         "sa.excluded_income": true,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -14630,6 +14630,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -14641,8 +14643,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -14650,9 +14652,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -14811,8 +14811,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -14840,6 +14840,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -14851,8 +14853,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -14860,9 +14862,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -15073,8 +15073,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -15102,6 +15102,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -15113,8 +15115,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 0,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -15122,9 +15124,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -15231,8 +15231,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -15260,6 +15260,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -15271,8 +15273,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -15280,9 +15282,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -15377,8 +15377,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -15408,6 +15408,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -15425,8 +15427,8 @@
         "sales[s].reported_basis": 0,
         "person[taxpayer].w2[a].box1": 9000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -15434,9 +15436,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -15508,8 +15508,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 1000000,
@@ -15541,6 +15541,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -15556,8 +15558,8 @@
         "interest[bank].amount": 200000,
         "person[taxpayer].w2[a].box1": 9800000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -15565,9 +15567,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -15679,8 +15679,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": true,
         "sa.line1": 0,
@@ -15712,6 +15712,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -15730,8 +15732,8 @@
         "interest[bank].amount": 300000,
         "person[taxpayer].w2[a].box1": 28000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -15739,9 +15741,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
@@ -15841,8 +15841,8 @@
         "sa.excluded_income": false,
         "sa.dependent": false,
         "sa.spouse_extra": false,
-        "sa.age65": false,
-        "sa.blind": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
         "sa.spouse_itemizes": false,
         "sa.elect_itemize": false,
         "sa.line1": 0,
@@ -15870,6 +15870,8 @@
         "$person": [
           "taxpayer"
         ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
         "person[taxpayer].rrta": false,
         "$w2@person[taxpayer]": [
           "a"
@@ -15881,8 +15883,8 @@
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
-        "household.taxpayer_tin": true,
-        "household.taxpayer_work_ssn": true,
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
         "household.home_cost": false,
         "household.unmarried": true,
         "s8812.combat_pay": false,
@@ -15890,9 +15892,7 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
-        "s1.educator_expenses": 0,
-        "f8889.line2": 0,
-        "f8889.line9": 0,
+        "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0
       },
       "expect": {

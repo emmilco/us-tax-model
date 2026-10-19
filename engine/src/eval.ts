@@ -63,6 +63,19 @@ export function evaluate(
   };
   const rootFrames = new Map<string, Frame>();
   for (const target of targets) {
+    // An entry's line, such as person[taxpayer].f8889[hsa].line3, is evaluated in that entry's frame.
+    const entry = /^(.*\[[^\]]*\])\.([^.\[\]]+)$/.exec(target);
+    if (entry) {
+      const instKey = entry[1]!;
+      const docId = /([^.\[\]]+)\[[^\]]*\]$/.exec(instKey)![1]!;
+      const doc = ctx.byId.get(docId);
+      if (!doc?.collection) {
+        ctx.errors.push(`target '${target}': unknown collection '${docId}'`);
+        continue;
+      }
+      evalLine(ctx, { doc, instKey, bind: null, caller: null }, `${docId}.${entry[2]}`);
+      continue;
+    }
     const dot = target.indexOf(".");
     const fileId = target.slice(0, dot);
     const doc = ctx.byId.get(fileId);
@@ -81,12 +94,35 @@ export function evaluate(
 
 /** Evaluate every line of the given documents (used by compare/fixtures). */
 export function evaluateAll(data: CanonicalData, inputs: Inputs): EvalResult {
+  return evaluate(data, inputs, allTargets(data, inputs));
+}
+
+// Every line of every top-level form, then every line of every confirmed collection
+// entry whose parent entries are themselves confirmed.
+export function allTargets(data: CanonicalData, inputs: Inputs): string[] {
   const targets: string[] = [];
   for (const doc of [...data.forms, ...data.defs]) {
     if (doc.kind === "def" || doc.collection) continue;
     for (const line of doc.lines) targets.push(line.id);
   }
-  return evaluate(data, inputs, targets);
+  const byId = new Map(data.forms.map((d) => [d.id, d]));
+  const entries = (doc: FormDoc, parent: string | null): string[] => {
+    const roster = inputs[`$${doc.id}${parent ? "@" + parent : ""}`];
+    return Array.isArray(roster) ? [...roster].sort().map((k) => `${parent ? parent + "." : ""}${doc.id}[${k}]`) : [];
+  };
+  const instances = (doc: FormDoc): string[] => {
+    const parentId = doc.collection?.parent;
+    if (!parentId) return entries(doc, null);
+    const parentDoc = byId.get(parentId);
+    return parentDoc ? instances(parentDoc).flatMap((p) => entries(doc, p)) : [];
+  };
+  for (const doc of data.forms) {
+    if (!doc.collection) continue;
+    for (const inst of instances(doc)) {
+      for (const line of doc.lines) targets.push(`${inst}.${line.id.slice(doc.id.length + 1)}`);
+    }
+  }
+  return targets;
 }
 
 function errValue(ctx: Ctx, frame: Frame, lineId: string, reason: string): Derivation {

@@ -1,7 +1,7 @@
 # Qualified Overtime Compensation From More Than One Employer Worksheet (Schedule 1-A, line 14a) — one row per employer
 
 - Document: `otjob` (form, tax year 2025)
-- Collection: keyed entries; [i1040gi] p. 108, Schedule 1-A, line 14a, and the Qualified Overtime Compensation From More Than One Employer Worksheet (one row per employer); n-25-69 Section III.B.2, "Individuals who had multiple employers during 2025 may use different methods for each employer" (2025; printed date 2026-02-25; sha256 482e9c48)
+- Collection: keyed entries within person; [i1040gi] p. 108, Schedule 1-A, line 14a, and the Qualified Overtime Compensation From More Than One Employer Worksheet (one row per employer); n-25-69 Section III.B.2, "Individuals who had multiple employers during 2025 may use different methods for each employer" (2025; printed date 2026-02-25; sha256 482e9c48)
 - Note: One entry per employer that paid you overtime. Qualified overtime is the FLSA Overtime Premium (the "half" of time-and-a-half), figured by one of the methods the instructions and Notice 2025-69 give for 2025. Methods that call for a reasonable estimate, overtime at a rate other than one and one-half or two times the regular rate, and special FLSA overtime rules are refused.
 
 ## (helper) — `otjob.zero`

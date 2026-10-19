@@ -224,6 +224,7 @@ form:
         14a, including qualified overtime not included in box 1 (for example overtime deferred under a qualified retirement
         plan)
   collection:
+    parent: person
     cite:
       doc: i1040gi
       locator: p. 108, Schedule 1-A, line 14a, and the Qualified Overtime Compensation From More Than One Employer Worksheet

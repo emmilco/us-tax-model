@@ -4,8 +4,8 @@ Offline checks that the archived IRS text is a faithful reading of the archived 
 
 | check | documents | failing |
 | --- | --- | --- |
-| layout vs reading order | 48 | 0 |
-| PDFKit against poppler | 48 | 0 |
+| layout vs reading order | 49 | 0 |
+| PDFKit against poppler | 49 | 0 |
 | PDF vs HTML snapshot | 10 | 0 |
 
 ## Per document
@@ -113,6 +113,8 @@ Offline checks that the archived IRS text is a faithful reading of the archived 
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
 - **n-25-69** layout vs reading order: 30 pages, identical characters
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (4 such occurrences; 8 words poppler reads that PDFKit skips)
+- **p501** layout vs reading order: 31 pages, identical characters (2 page(s) differ only in word spacing)
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (1 such occurrences; 28 words poppler reads that PDFKit skips)
 - **p505-2026** layout vs reading order: 48 pages, identical characters (8 page(s) differ only in word spacing)
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 437 words poppler reads that PDFKit skips)
 - **p526** layout vs reading order: 40 pages, identical characters (2 page(s) differ only in word spacing)

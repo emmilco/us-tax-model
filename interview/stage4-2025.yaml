@@ -13,6 +13,7 @@ interview:
   initial:
     $person:
       - taxpayer
+    person[taxpayer].role: taxpayer
   cite:
     doc: f1040
     locator: Form 1040 (2025), related form references
@@ -396,7 +397,7 @@ interview:
       cite:
         doc: f1040sa
         locator: Schedule A (2025), lines 1–18
-    - input: sa.age65
+    - input: person.age65
       prompt: Were you born before January 2, 1961?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
         guess. This computes a form slice, not a complete filed return.
@@ -404,7 +405,7 @@ interview:
       cite:
         doc: f1040sa
         locator: Schedule A (2025), lines 1–18
-    - input: sa.blind
+    - input: person.blind
       prompt: Are you blind under the standard-deduction instructions?
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
         guess. This computes a form slice, not a complete filed return.
@@ -905,7 +906,7 @@ interview:
       cite:
         doc: i1040gi
         locator: p. 14, Head of Household, Test 1
-    - input: household.taxpayer_tin
+    - input: person.tin
       prompt: Do you have an SSN or ITIN issued on or before the due date of your 2025 return (including extensions), or have you applied for an ITIN by then?
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
         be null; do not guess. This computes the single-person return; joint returns and unsupported items
@@ -914,7 +915,7 @@ interview:
       cite:
         doc: i1040gi
         locator: p. 19, Step 5, question 1
-    - input: household.taxpayer_work_ssn
+    - input: person.work_ssn
       prompt: Do you have an SSN valid for employment, issued before the due date of your 2025 return (including
         extensions)?
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
@@ -1179,7 +1180,7 @@ interview:
       cite:
         doc: i1040gi
         locator: "p. 89, Schedule 1, line 7, contributions to a governmental unemployment compensation program and repayments of more than $3,000 included in income in an earlier year (Pub. 525)"
-    - input: s1.educator_expenses
+    - input: person.educator_expenses
       prompt: "Qualified educator expenses you paid in 2025 (professional development courses, and books, supplies, equipment and other materials used in the classroom), reduced by excludable savings bond interest (Form 8815), nontaxable qualified tuition program or Coverdell earnings or distributions, and reimbursements not reported in box 1 of your Form W-2; zero if none"
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
         be null; do not guess. This computes the single-person return; joint returns and unsupported items
@@ -1188,7 +1189,7 @@ interview:
       cite:
         doc: i1040gi
         locator: "p. 93, Schedule 1, line 11, Qualified expenses and 'You must reduce your qualified expenses by the following amounts'"
-    - input: s1.eligible_educator
+    - input: person.eligible_educator
       prompt: "Were you an eligible educator in 2025 (a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year)?"
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
         be null; do not guess. This computes the single-person return; joint returns and unsupported items
@@ -1197,6 +1198,15 @@ interview:
       cite:
         doc: i1040gi
         locator: "p. 93, Schedule 1, line 11, 'An eligible educator is a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year'"
+    - input: $f8889
+      prompt: 'Did you, or your employer, contribute to a health savings account (HSA) for you for 2025? Enter ["hsa"] for
+        one Form 8889 covering all of your own HSAs, or [] if there were no HSA contributions for you.'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. One Form 8889 per person.
+      order: 10
+      cite:
+        doc: i8889
+        locator: 'pp. 1-2, Who Must File; p. 4, Name and social security number (SSN), "complete a separate Form 8889 for each of you"'
     - input: f8889.line2
       prompt: "HSA contributions you made for 2025 (or those made on your behalf), including those made by April 15, 2026 that were for 2025; do not include employer contributions, payroll contributions through a cafeteria plan, rollovers, or qualified HSA funding distributions; zero if none"
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
@@ -1314,7 +1324,7 @@ interview:
       cite:
         doc: i1040gi
         locator: 'p. 109, Schedule 1-A, Part IV'
-    - input: s1a.died_before_65
+    - input: person.died_before_65
       prompt: 'Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
         be null; do not guess. This computes the single-person return; joint returns and unsupported items

@@ -4,6 +4,217 @@ form:
   title: Excess Social Security credit — separately per person
   tax_year: 2025
   lines:
+    - id: person.role
+      printed: (helper)
+      type: Enum(person_role)
+      label: Whose entry is this, yours or your spouse's?
+      expr:
+        op: input
+        source: Whose entry is this, yours (the taxpayer) or your spouse's?
+      cite:
+        doc: f1040
+        locator: "Form 1040 (2025), page 1, \"Your first name and middle initial\" and \"If joint return, spouse’s first name and middle initial\""
+    - id: person.one
+      printed: (helper)
+      type: Count
+      label: One entry for this person
+      expr:
+        op: param
+        ref: person.one
+      cite:
+        doc: f1040
+        locator: "Form 1040 (2025), page 1, one entry for you and, if joint return, one for your spouse"
+    - id: person.age65
+      printed: (helper)
+      type: Bool
+      label: Were you born before January 2, 1961?
+      expr:
+        op: input
+        source: Were you born before January 2, 1961?
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: person.blind
+      printed: (helper)
+      type: Bool
+      label: Are you blind under the standard-deduction instructions?
+      expr:
+        op: input
+        source: Are you blind under the standard-deduction instructions?
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: person.tin
+      printed: (helper)
+      type: Bool
+      label: Do you have an SSN or ITIN issued on or before the due date of your return, or have you applied for an ITIN by then?
+      expr:
+        op: input
+        source: Do you have an SSN or ITIN issued on or before the due date of your 2025 return (including extensions), or
+          have you applied for an ITIN by then?
+      cite:
+        doc: i1040gi
+        locator: p. 19, Step 5, question 1
+    - id: person.work_ssn
+      printed: (helper)
+      type: Bool
+      label: Do you have an SSN valid for employment issued before the due date of your return?
+      expr:
+        op: input
+        source: Do you have an SSN valid for employment, issued before the due date of your 2025 return (including extensions)?
+      cite:
+        doc: i1040gi
+        locator: p. 18, Step 3, question 4
+    - id: person.educator_expenses
+      printed: (helper)
+      label: Qualified educator expenses you paid in 2025
+      type: NonNegDollars
+      expr:
+        op: input
+        source: Qualified educator expenses you paid in 2025 (professional development courses, and books, supplies, equipment
+          and other materials used in the classroom), reduced by excludable savings bond interest (Form 8815), nontaxable qualified
+          tuition program or Coverdell earnings or distributions, and reimbursements not reported in box 1 of your Form W-2;
+          zero if none
+      cite:
+        doc: i1040gi
+        locator: p. 93, Schedule 1, line 11, Qualified expenses and 'You must reduce your qualified expenses by the following
+          amounts'
+    - id: person.eligible_educator
+      printed: (helper)
+      label: Were you an eligible educator in 2025 (a kindergarten through grade 12 teacher, instructor, counselor, principal,
+        or aide who worked in a school for at least 900 hours during a school year)?
+      type: Bool
+      expr:
+        op: input
+        source: Were you an eligible educator in 2025 (a kindergarten through grade 12 teacher, instructor, counselor, principal,
+          or aide who worked in a school for at least 900 hours during a school year)?
+      cite:
+        doc: i1040gi
+        locator: p. 93, Schedule 1, line 11, 'An eligible educator is a kindergarten through grade 12 teacher, instructor, counselor,
+          principal, or aide who worked in a school for at least 900 hours during a school year'
+    - id: person.born_before_2001
+      printed: (helper)
+      type: Bool
+      label: Were you born before January 2, 2001?
+      expr:
+        op: input
+        source: Were you born before January 2, 2001?
+      cite:
+        doc: i1040gi
+        locator: p. 41, Step 4, question 2, "Check 'Yes' if you ... were born after December 31, 1960, and before January 2,
+          2001"
+    - id: person.born_after_1960
+      printed: (helper)
+      type: Bool
+      label: Were you born after December 31, 1960?
+      expr:
+        op: input
+        source: Were you born after December 31, 1960?
+      cite:
+        doc: i1040gi
+        locator: p. 41, Step 4, question 2, "Check 'Yes' if you ... were born after December 31, 1960, and before January 2,
+          2001"
+    - id: person.died_before_65
+      printed: (helper)
+      label: Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before
+        reaching age 65?
+      type: Bool
+      expr:
+        op: input
+        source: Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before
+          reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)
+      cite:
+        doc: i1040gi
+        locator: p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025"
+    - id: person.hsa_forms
+      printed: (helper)
+      type: Count
+      label: Number of Forms 8889 entered for this person
+      expr:
+        op: sum_over
+        collection: f8889
+        field: f8889.one
+      cite:
+        doc: i8889
+        locator: 'p. 4, Name and social security number (SSN), "complete a separate Form 8889 for each of you"'
+    - id: person.hsa_repeated
+      printed: (gate)
+      type: Bool
+      label: More than one Form 8889 entered for this person
+      expr:
+        op: test
+        gt:
+        - person.hsa_forms
+        - const: 1
+          type: Count
+      cite:
+        doc: i8889
+        locator: 'p. 4, Name and social security number (SSN), "complete a separate Form 8889 for each of you"'
+    - id: person.hsa_deduction
+      printed: (helper)
+      type: NonNegDollars
+      label: Form 8889 line 13 for this person
+      expr:
+        op: sum_over
+        collection: f8889
+        field: f8889.line13
+      cite:
+        doc: i8889
+        locator: 'p. 4, "Combine the amounts on line 13 of both Forms 8889 and enter this amount on Schedule 1 (Form 1040),
+          line 13"'
+      refuses:
+        - when: person.hsa_repeated
+          form: More than one Form 8889 for one person
+          remedy: Enter one Form 8889 per person, combining all of that person's own HSAs on it. A separate Form 8889 for
+            each HSA (with a controlling Form 8889) is required only for an inherited HSA, which is outside this tool.
+          cite:
+            doc: i8889
+            locator: p. 3, "If, during the tax year, you are the beneficiary of two or more HSAs or you are a beneficiary of
+              an HSA and you have your own HSA, you must complete a separate Form 8889 for each HSA"
+    - id: person.tip_employers
+      printed: (helper)
+      type: Count
+      label: Number of employers that paid this person qualified tips
+      expr:
+        op: sum_over
+        collection: tipjob
+        field: tipjob.one
+      cite:
+        doc: i1040gi
+        locator: p. 104, Schedule 1-A, line 4c
+    - id: person.tip_total
+      printed: (helper)
+      type: NonNegDollars
+      label: This person's worksheet column (d) total
+      expr:
+        op: sum_over
+        collection: tipjob
+        field: tipjob.col_d
+      cite:
+        doc: i1040gi
+        locator: p. 104, Qualified Tips From More Than One Employer Worksheet, line 2
+    - id: person.tip_reported
+      printed: (helper)
+      type: NonNegDollars
+      label: This person's worksheet column (b) total
+      expr:
+        op: sum_over
+        collection: tipjob
+        field: tipjob.amount
+      cite:
+        doc: i1040gi
+        locator: p. 104, Qualified Tips From More Than One Employer Worksheet, column (b)
+    - id: person.ot_total
+      printed: (helper)
+      type: NonNegDollars
+      label: This person's overtime worksheet column (b) total
+      expr:
+        op: sum_over
+        collection: otjob
+        field: otjob.col_b
+      cite:
+        doc: i1040gi
+        locator: p. 108, Schedule 1-A, line 14a, and the Qualified Overtime Compensation From More Than One Employer Worksheet, line 2
     - id: person.rrta
       printed: rrta
       label: 'Do any wage statements report railroad retirement compensation or taxes (W-2 box 14), or did you file Form CT-2 as an employee representative?'

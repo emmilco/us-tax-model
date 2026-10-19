@@ -12,7 +12,7 @@ import { join, resolve } from "node:path";
 import { spawnSync } from "node:child_process";
 import { loadCanonical } from "./canonical.js";
 import { branchKeys, templateKey } from "./branches.js";
-import { evaluate } from "./eval.js";
+import { allTargets, evaluate } from "./eval.js";
 import { differentialClassC } from "./differential.js";
 import type { Inputs } from "./types.js";
 import type { Value } from "./eval.js";
@@ -206,7 +206,6 @@ export function evidenceReport(): void {
 export function coverageReport(): void {
   const data = loadCanonical();
   const file = loadCases();
-  const targets = data.forms.filter(d => !d.collection).flatMap((doc) => doc.lines.map((l) => l.id));
   // (lineKey, guardIndex) -> case ids
   const taken = new Map<string, string[]>();
   const branches = new Map<string, Set<string>>();
@@ -214,7 +213,7 @@ export function coverageReport(): void {
   const mark = (key: string, c: FixtureCase) => { const set=branches.get(key)??new Set();set.add(c.id);branches.set(key,set); };
 
   for (const c of file.cases) {
-    const result = evaluate(data, c.inputs, targets);
+    const result = evaluate(data, c.inputs, allTargets(data, c.inputs));
     for (const der of result.derivations.values()) {
       const id=templateKey(der.line);
       if (der.value.kind !== "unknown" && c.expect && der.line in c.expect) { const set=evidence.get(id)??new Set();set.add(c.evidence);evidence.set(id,set); }

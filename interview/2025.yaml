@@ -5,6 +5,7 @@ interview:
   initial:
     $person:
       - taxpayer
+    person[taxpayer].role: taxpayer
   cite: &a1
     doc: i1040gi
     locator: p. 117, Schedule 3 line 11
@@ -281,7 +282,7 @@ interview:
       cite:
         doc: i1040gi
         locator: p. 14, Head of Household, Test 1
-    - input: household.taxpayer_tin
+    - input: person.tin
       prompt: Do you have an SSN or ITIN issued on or before the due date of your 2025 return (including extensions), or have you applied for an ITIN by then?
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
         be null; do not guess. This computes the single-person return; joint returns and unsupported items
@@ -290,7 +291,7 @@ interview:
       cite:
         doc: i1040gi
         locator: p. 19, Step 5, question 1
-    - input: household.taxpayer_work_ssn
+    - input: person.work_ssn
       prompt: Do you have an SSN valid for employment, issued before the due date of your 2025 return (including
         extensions)?
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may

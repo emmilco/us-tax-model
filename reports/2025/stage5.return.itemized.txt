@@ -73,11 +73,19 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
   (helper) Could you be a qualifying child of another person for 2025?
       = UNKNOWN (no input supplied for eic.qc_of_another)
       cite: [i1040gi] p. 41, Step 3, question 6, and p. 42, Step 4, question 5 (2025; printed date 2026-02-25; 482e9c48)
-  (helper) Were you born before January 2, 2001?
-      = UNKNOWN (no input supplied for eic.born_before_2001)
+  (helper) Your entry, if the answer is yes
+      = UNKNOWN (no input supplied for person[taxpayer].born_before_2001)
       cite: [i1040gi] p. 41, Step 4, question 2, "Check 'Yes' if you ... were born after December 31, 1960, and before January 2, 2001" (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
+  (helper) Were you born before January 2, 2001?
+      = UNKNOWN (no input supplied for person[taxpayer].born_before_2001)
+      cite: [i1040gi] p. 41, Step 4, question 2, "Check 'Yes' if you ... were born after December 31, 1960, and before January 2, 2001" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Your entry, if the answer is yes
+      = UNKNOWN (no input supplied for person[taxpayer].born_after_1960)
+      cite: [i1040gi] p. 41, Step 4, question 2, "Check 'Yes' if you ... were born after December 31, 1960, and before January 2, 2001" (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
   (helper) Were you born after December 31, 1960?
-      = UNKNOWN (no input supplied for eic.born_after_1960)
+      = UNKNOWN (no input supplied for person[taxpayer].born_after_1960)
       cite: [i1040gi] p. 41, Step 4, question 2, "Check 'Yes' if you ... were born after December 31, 1960, and before January 2, 2001" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Was your main home in the United States for more than half of 2025?
       = UNKNOWN (no input supplied for eic.us_home)
@@ -587,146 +595,6 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       = false
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
 
-== Form 8889 — HSA contributions and deduction (Part I) ==
-  (helper) Year parameter sales.zero
-      = $0
-      cite: [f8889] Form 8889 (2025), lines 4, 7 and 10 (2025; created 2025-03-28; 15ed4587)
-  2   HSA contributions you made for 2025 (or those made on your behalf), including those made by the unextended due date of your tax return that were for 2025. Do not include employer contributions, contributions through a cafeteria plan, or rollovers
-      = $0
-      cite: [f8889] Form 8889 (2025), line 2; i8889 p. 4, Line 2 (2025; created 2025-03-28; 15ed4587)
-  9   Employer contributions made to your HSAs for 2025
-      = $0
-      cite: [i8889] p. 6, Line 9 Employer Contributions and the Employer Contribution Worksheet (2025; da6f2f58)
-  (helper) Any HSA contributions for 2025 (yours or your employer's)
-      = false
-      cite: [i8889] pp. 1-2, Who Must File (you or your employer made contributions to your HSA for 2025) (2025; da6f2f58)
-  (helper) Any of these: HSA distributions in 2025 that were not all used for qualified medical expenses or rolled over; a qualified HSA funding distribution from an IRA in 2025; contributions to an Archer MSA for 2025 (Form 8853); excess HSA contributions from an earlier year that remain in your HSA; failing to remain an eligible individual during a testing period that began in an earlier year; or an HSA you acquired because of the account beneficiary's death?
-      = UNKNOWN (no input supplied for f8889.unsupported)
-      cite: [i8889] Parts II and III, line 4 (Archer MSAs), line 10 (qualified HSA funding distributions), line 13 (Prior Year Excess Contributions), and Death of HSA Account Beneficiary (2025; da6f2f58)
-  (helper) Married filing jointly or separately (spouses' HSA rules)
-      = false
-      cite: [f8889] Form 8889 (2025), lines 6 and 7 (spouses with separate HSAs, family coverage, additional contribution amount) (2025; created 2025-03-28; 15ed4587)
-  (helper) Number of months of 2025 on the first day of which you were an eligible individual
-      = UNKNOWN (no input supplied for f8889.months_eligible)
-      cite: [i8889] pp. 2 and 6, Eligible Individual and the Line 3 Limitation Chart and Worksheet ('Were you an eligible individual ... on the first day of the month?') (2025; da6f2f58)
-  (helper) Of those months, the number in which your HDHP provided family coverage on the first day of the month
-      = UNKNOWN (no input supplied for f8889.months_family)
-      cite: [i8889] p. 6, Line 3 Limitation Chart and Worksheet, 'What type of coverage did your HDHP provide on the first day of the month?' (2025; da6f2f58)
-  (helper) The month counts are impossible (more than 12 eligible months, or more family months than eligible months)
-      = UNKNOWN (no input supplied for f8889.months_family)
-      cite: [i8889] p. 6, Line 3 Limitation Chart and Worksheet (twelve months of 2025) (2025; da6f2f58)
-  (helper) Were you age 55 or older at the end of 2025?
-      = UNKNOWN (no input supplied for f8889.age55)
-      cite: [i8889] p. 4, Line 3, rule 6, and p. 6, Line 3 Limitation Chart (2025; da6f2f58)
-  (helper) Line 3 chart amount for a month of self-only coverage ($4,300; $5,300 if age 55 or older at the end of 2025)
-      = UNKNOWN (no input supplied for f8889.age55)
-      cite: [i8889] p. 6, Line 3 Limitation Chart, 'Enter $4,300 on the line below for the month. If you were age 55 or older at the end of 2025, enter $5,300 for the month' (2025; da6f2f58)
-      note: guard incomplete
-  (helper) Year parameter hsa.self_only ($4,300)
-      = $4,300
-      cite: [i8889] p. 6, Line 3 Limitation Chart, $4,300 (2025; da6f2f58)
-  (helper) Year parameter hsa.self_only_55 ($5,300)
-      = $5,300
-      cite: [i8889] p. 6, Line 3 Limitation Chart, $5,300 (2025; da6f2f58)
-  (helper) Line 3 chart amount for a month of family coverage ($8,550; $9,550 if unmarried and age 55 or older at the end of 2025)
-      = UNKNOWN (no input supplied for f8889.age55)
-      cite: [i8889] p. 6, Line 3 Limitation Chart, 'Enter $8,550 on the line below for the month. If, at the end of 2025, you were unmarried and age 55 or older, enter $9,550 for the month' (2025; da6f2f58)
-      note: guard incomplete
-  (helper) Year parameter hsa.family ($8,550)
-      = $8,550
-      cite: [i8889] p. 6, Line 3 Limitation Chart, $8,550 (2025; da6f2f58)
-  (helper) Year parameter hsa.family_55 ($9,550)
-      = $9,550
-      cite: [i8889] p. 6, Line 3 Limitation Chart, $9,550 (2025; da6f2f58)
-  (helper) Family monthly amount less the self-only monthly amount
-      = UNKNOWN (no input supplied for f8889.age55)
-      cite: [i8889] p. 6, Line 3 Limitation Chart and Worksheet (each family month enters the family amount: the self-only amount plus this difference) (2025; da6f2f58)
-  (helper) The self-only monthly amount for every eligible month
-      = UNKNOWN (no input supplied for f8889.age55)
-      cite: [i8889] p. 6, Line 3 Limitation Chart and Worksheet, the monthly amounts (2025; da6f2f58)
-  (helper) The family difference for every month of family coverage
-      = UNKNOWN (no input supplied for f8889.age55)
-      cite: [i8889] p. 6, Line 3 Limitation Chart and Worksheet, the monthly amounts (2025; da6f2f58)
-  (helper) Total for all months (Line 3 Limitation Chart and Worksheet)
-      = UNKNOWN (no input supplied for f8889.age55)
-      cite: [i8889] p. 6, Line 3 Limitation Chart and Worksheet, 'Total for all months' (2025; da6f2f58)
-  (helper) Limitation. Divide the total by 12
-      = UNKNOWN (no input supplied for f8889.age55)
-      cite: [i8889] p. 6, Line 3 Limitation Chart and Worksheet, 'Limitation. Divide the total by 12. Enter here and on line 3' (2025; da6f2f58)
-  (helper) Eligible individual on the first day of every month of 2025
-      = UNKNOWN (no input supplied for f8889.months_eligible)
-      cite: [i8889] p. 4, Line 3, rules 3 and 4 (2025; da6f2f58)
-  (helper) Coverage type changed during the year (family coverage in some eligible months, self-only in others)
-      = UNKNOWN (no input supplied for f8889.months_family)
-      cite: [i8889] p. 4, Line 3, rule 4, 'you changed your type of coverage during the year' (2025; da6f2f58)
-  (helper) Your HDHP coverage on December 1, 2025, as an eligible individual: none, self_only or family
-      = UNKNOWN (no input supplied for f8889.dec_coverage)
-      cite: [i8889] p. 4, Line 3, rules 2 and 4(b), 'the type of HDHP coverage you had on the first day of the last month of your tax year' (2025; da6f2f58)
-  (helper) The maximum amount for the HDHP coverage you had on December 1 (the full-year amount of that coverage type)
-      = UNKNOWN (no input supplied for f8889.dec_coverage)
-      cite: [i8889] p. 4, Line 3, rules 2, 3 and 4(b) (2025; da6f2f58)
-      note: guard incomplete
-  (helper) Do you use the last-month rule (treating yourself as an eligible individual for all of 2025 with your December 1 coverage, subject to the testing period through December 31, 2026)?
-      = UNKNOWN (no input supplied for f8889.last_month)
-      cite: [i8889] p. 2, Last-month rule and Testing period; p. 4, Line 3, rule 2 (2025; da6f2f58)
-  (helper) The last-month rule applies (an eligible individual on December 1 who uses it)
-      = UNKNOWN (no input supplied for f8889.last_month)
-      cite: [i8889] p. 2, Last-month rule; p. 4, Line 3, rule 2 (2025; da6f2f58)
-  (helper) The greater of the Line 3 Limitation Chart and Worksheet and the maximum for your December 1 coverage
-      = UNKNOWN (no input supplied for f8889.age55)
-      cite: [i8889] p. 4, Line 3, rule 4, 'enter on line 3 ... the greater of: a. The limitation shown on the last line of the Line 3 Limitation Chart and Worksheet ... or b. The maximum amount that can be contributed based on the type of HDHP coverage you had on the first day of the last month' (2025; da6f2f58)
-  (helper) Line 3 for an eligible individual all year
-      = UNKNOWN (no input supplied for f8889.months_family)
-      cite: [i8889] p. 4, Line 3, rules 3 and 4 (for a year with one coverage type the chart gives $4,300 or $8,550, plus $1,000 if age 55 or older) (2025; da6f2f58)
-      note: guard incomplete
-  (helper) Line 3 under the last-month rule (considered an eligible individual all year)
-      = UNKNOWN (no input supplied for f8889.months_family)
-      cite: [i8889] p. 4, Line 3, rules 2, 3 and 4 (rule 4 covers a filer who 'were, or were considered, an eligible individual for the entire year' and changed type; amb.2025.hsa_last_month_change) (2025; da6f2f58)
-      note: guard incomplete; Interpretation amb.2025.hsa_last_month_change: The greater of the chart and the December 1 maximum when the coverage type changed among the eligible months; the December 1 maximum otherwise (f8889.line3_last_month). Rule 4 names the filer considered eligible all year, which is the last-month rule's filer, so it reads as the stricter fit to the text; the result is never less than rule 2's amount. Found by the Stage 11 class M hand-work (the model applied rule 4; the second transcription read rule 2); the owner chose rule 4.
- (i8889, p. 4, Line 3, rules 2, 3 and 4)
-  (helper) Line 3 when not an eligible individual every month
-      = UNKNOWN (no input supplied for f8889.last_month)
-      cite: [i8889] p. 4, Line 3, rules 2 and 5 (2025; da6f2f58)
-      note: guard incomplete
-  3   If you were under age 55 at the end of 2025 and, on the first day of every month during 2025, you were, or were considered, an eligible individual with the same coverage, enter $4,300 ($8,550 for family coverage). All others, see the instructions for the amount to enter
-      = UNKNOWN (no input supplied for f8889.months_eligible)
-      cite: [f8889] Form 8889 (2025), line 3; i8889 pp. 4-6, Line 3 (2025; created 2025-03-28; 15ed4587)
-      note: guard incomplete
-  4   Enter the amount you and your employer contributed to your Archer MSAs for 2025 from Form 8853, lines 1 and 2
-      = $0
-      cite: [f8889] Form 8889 (2025), line 4 (Archer MSA contributions are refused by f8889.unsupported) (2025; created 2025-03-28; 15ed4587)
-  5   Subtract line 4 from line 3. If zero or less, enter -0-
-      = UNKNOWN (no input supplied for f8889.months_eligible)
-      cite: [f8889] Form 8889 (2025), line 5 (2025; created 2025-03-28; 15ed4587)
-  6   Enter the amount from line 5. But if you and your spouse each have separate HSAs and had family coverage under an HDHP at any time during 2025, see the instructions for the amount to enter
-      = UNKNOWN (no input supplied for f8889.months_eligible)
-      cite: [f8889] Form 8889 (2025), line 6 (married filers are refused by f8889.married) (2025; created 2025-03-28; 15ed4587)
-  7   If you were age 55 or older at the end of 2025, married, and you or your spouse had family coverage under an HDHP at any time during 2025, enter your additional contribution amount
-      = $0
-      cite: [f8889] Form 8889 (2025), line 7 (married filers are refused by f8889.married; an unmarried filer's $1,000 is in line 3) (2025; created 2025-03-28; 15ed4587)
-  8   Add lines 6 and 7
-      = UNKNOWN (no input supplied for f8889.months_eligible)
-      cite: [f8889] Form 8889 (2025), line 8 (2025; created 2025-03-28; 15ed4587)
-  10  Qualified HSA funding distributions
-      = $0
-      cite: [f8889] Form 8889 (2025), line 10 (qualified HSA funding distributions are refused by f8889.unsupported) (2025; created 2025-03-28; 15ed4587)
-  11  Add lines 9 and 10
-      = $0
-      cite: [f8889] Form 8889 (2025), line 11 (2025; created 2025-03-28; 15ed4587)
-  12  Subtract line 11 from line 8. If zero or less, enter -0-
-      = UNKNOWN (no input supplied for f8889.months_eligible)
-      cite: [f8889] Form 8889 (2025), line 12 (2025; created 2025-03-28; 15ed4587)
-  (helper) Contributions exceed the limit (line 2 more than line 12, or employer contributions more than line 8)
-      = UNKNOWN (no input supplied for f8889.months_eligible)
-      cite: [i8889] p. 7, Line 13, Excess Contributions You Make and Excess Employer Contributions (2025; da6f2f58)
-  (helper) Generally, enter the smaller of line 2 or line 12
-      = UNKNOWN (no input supplied for f8889.unsupported)
-      cite: [i8889] p. 7, Line 13, 'Generally, enter the smaller of line 2 or line 12 on line 13 and on Schedule 1 (Form 1040), Part II, line 13' (2025; da6f2f58)
-  13  HSA deduction (see instructions)
-      = $0
-      cite: [f8889] Form 8889 (2025), line 13 (2025; created 2025-03-28; 15ed4587)
-      note: taken: {"eq":["f8889.any",{"const":false}],"op":"test"}
-
 == Form 8959 — wage-only Additional Medicare Tax ==
   (helper) Any self-employment income (including church employee income), RRTA compensation, tips not reported to your employer or allocated tips in Form W-2 box 8 (Form 4137), Form 8919 wages, uncollected Medicare tax in Form W-2 box 12 (codes B or N), or Medicare wages on a wage statement from a U.S. territory (such as Form 499R-2/W-2PR)?
       = false
@@ -1078,9 +946,17 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       cite: [i1040sd] p. 11, 28% Rate Gain Worksheet, lines 1–7 (2025; printed date 2025-12-11; 650643a6)
 
 == Household facts for dependents and head of household ==
+  (helper) Your entry, if the answer is yes
+      = 1
+      cite: [i1040gi] p. 19, Step 5, question 1 (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
   (helper) Do you have an SSN or ITIN issued on or before the due date of your return, or have you applied for an ITIN by then?
       = true
       cite: [i1040gi] p. 19, Step 5, question 1 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Your entry, if the answer is yes
+      = 1
+      cite: [i1040gi] p. 18, Step 3, question 4 (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
   (helper) Do you have an SSN valid for employment issued before the due date of your return?
       = true
       cite: [i1040gi] p. 18, Step 3, question 4 (2025; printed date 2026-02-25; 482e9c48)
@@ -1269,11 +1145,16 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
   (helper) Qualified educator expenses you paid in 2025
       = $0
       cite: [i1040gi] p. 93, Schedule 1, line 11, Qualified expenses and 'You must reduce your qualified expenses by the following amounts' (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
   (helper) Any qualified educator expenses
       = false
       cite: [i1040gi] p. 93, Schedule 1, line 11 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Your entry, if the answer is yes
+      = UNKNOWN (no input supplied for person[taxpayer].eligible_educator)
+      cite: [i1040gi] p. 93, Schedule 1, line 11, 'An eligible educator is a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year' (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
   (helper) Were you an eligible educator in 2025 (a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year)?
-      = UNKNOWN (no input supplied for s1.eligible_educator)
+      = UNKNOWN (no input supplied for person[taxpayer].eligible_educator)
       cite: [i1040gi] p. 93, Schedule 1, line 11, 'An eligible educator is a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year' (2025; printed date 2026-02-25; 482e9c48)
   (helper) Year parameter s1.educator_max ($300)
       = $300
@@ -1282,7 +1163,7 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       = $0
       cite: [i1040gi] p. 93, Schedule 1, line 11, 'you can deduct on line 11 up to $300 of qualified expenses you paid in 2025' (2025; printed date 2026-02-25; 482e9c48)
   (helper) Educator expense deduction for an eligible educator
-      = UNKNOWN (no input supplied for s1.eligible_educator)
+      = UNKNOWN (no input supplied for person[taxpayer].eligible_educator)
       cite: [i1040gi] p. 93, Schedule 1, line 11, 'If you were an eligible educator in 2025' (2025; printed date 2026-02-25; 482e9c48)
       note: guard incomplete
   11  Educator expenses
@@ -1291,7 +1172,8 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       note: taken: {"eq":["s1.has_educator_expenses",{"const":false}],"op":"test"}
   13  Health savings account deduction. Attach Form 8889
       = $0
-      cite: [f1040s1] Schedule 1 (2025), line 13 (2025; created 2025-07-25; 8dafec71)
+      cite: [f1040s1] Schedule 1 (2025), line 13; i8889 p. 4, "Combine the amounts on line 13 of both Forms 8889 and enter this amount on Schedule 1 (Form 1040), line 13" (2025; created 2025-07-25; 8dafec71)
+      note: confirmed roster $person: taxpayer
   21  Student loan interest deduction
       = $0
       cite: [f1040s1] Schedule 1 (2025), line 21 (2025; created 2025-07-25; 8dafec71)
@@ -1330,12 +1212,15 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
   (helper) Number of employers on the Qualified Tips From More Than One Employer Worksheet
       = UNKNOWN (collection roster not confirmed)
       cite: [i1040gi] p. 104, Schedule 1-A, line 4c (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
   (helper) Worksheet line 2. Add lines 1A through 1E, column (d)
       = UNKNOWN (collection roster not confirmed)
       cite: [i1040gi] p. 104, Qualified Tips From More Than One Employer Worksheet, line 2 (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
   (helper) Worksheet column (b) total: qualified tips reported on Form W-2 or on Forms 4070
       = UNKNOWN (collection roster not confirmed)
       cite: [i1040gi] p. 104, Qualified Tips From More Than One Employer Worksheet, column (b); p. 103, methods 1 to 3, "Enter this amount on line 4a" (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
   (helper) Tips from more than one employer
       = UNKNOWN (collection roster not confirmed)
       cite: [i1040gi] p. 104, Schedule 1-A, line 4a, "If you received qualified tips as an employee with respect to employment with more than one employer, enter -0- on line 4a" (2025; printed date 2026-02-25; 482e9c48)
@@ -1466,6 +1351,7 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
   (helper) Figured: Qualified overtime compensation included in Form W-2, box 1. If you received qualified overtime compensation not reported on Form W-2, box 1, see instructions
       = UNKNOWN (collection roster not confirmed)
       cite: [i1040gi] p. 108, Schedule 1-A, line 14a, and the Qualified Overtime Compensation From More Than One Employer Worksheet, line 2 (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
   14a Qualified overtime compensation included in Form W-2, box 1. If you received qualified overtime compensation not reported on Form W-2, box 1, see instructions
       = $0
       cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; Part III caution (2025; printed date 2026-02-25; 482e9c48)
@@ -1699,17 +1585,21 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       = $0
       cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; Part V caution (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["s1a.part5",{"const":false}],"op":"test"}
+  (helper) Your entry, if the answer is yes
+      = UNKNOWN (no input supplied for person[taxpayer].died_before_65)
+      cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025" (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
   (helper) Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before reaching age 65?
-      = UNKNOWN (no input supplied for s1a.died_before_65)
+      = UNKNOWN (no input supplied for person[taxpayer].died_before_65)
       cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025" (2025; printed date 2026-02-25; 482e9c48)
   (gate) A filer who died in 2025 before reaching age 65
-      = UNKNOWN (no input supplied for s1a.died_before_65)
+      = UNKNOWN (no input supplied for person[taxpayer].died_before_65)
       cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Line 36a for a filer born before January 2, 1961
-      = UNKNOWN (no input supplied for s1a.died_before_65)
+      = UNKNOWN (no input supplied for person[taxpayer].died_before_65)
       cite: [f1040s1a] Schedule 1-A (2025), line 36a (2025; created 2025-11-04; 64f97b38)
   (helper) Line 36a for a filer born before January 2, 1961: zero for married filing separately
-      = UNKNOWN (no input supplied for s1a.died_before_65)
+      = UNKNOWN (no input supplied for person[taxpayer].died_before_65)
       cite: [f1040s1a] Schedule 1-A (2025), Part V caution, "If married, you must file jointly to claim this deduction" (2025; created 2025-11-04; 64f97b38)
       note: taken: {"eq":["f1040.status",{"const":"single"}],"op":"test"}
   36a If you have a valid social security number (see instructions) and were born before January 2, 1961, enter the amount from line 35
@@ -1981,9 +1871,17 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
   (helper) Claiming any age/blindness standard-deduction boxes for a spouse?
       = false
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Your entry, if the answer is yes
+      = 0
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+      note: confirmed roster $person: taxpayer
   (helper) Were you born before January 2, 1961?
       = false
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Your entry, if the answer is yes
+      = 0
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+      note: confirmed roster $person: taxpayer
   (helper) Are you blind under the standard-deduction instructions?
       = false
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
@@ -2951,10 +2849,6 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   s1.line11: chose $0 (guard 1)
       not taken: guard 0 = false
-  f8889.line13: chose $0 (guard 1)
-      not taken: guard 0 = false
-  s1.f8889.line13: chose $0 (guard 1)
-      not taken: guard 0 = false
   sli.deduction: chose $0 (guard 1)
       not taken: guard 0 = false
   s1.sli.deduction: chose $0 (guard 1)
@@ -3013,14 +2907,7 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   f1040.s8812.line27: chose $0 (guard 0)
   person[taxpayer].credit: chose $0 (guard 1)
       not taken: guard 0 = false
-  f8889.self_amount: chose UNKNOWN (no input supplied for f8889.age55)
-  f8889.family_amount: chose UNKNOWN (no input supplied for f8889.age55)
-  f8889.dec_amount: chose UNKNOWN (no input supplied for f8889.dec_coverage)
-  f8889.line3_all_year: chose UNKNOWN (no input supplied for f8889.months_family)
-  f8889.line3_last_month: chose UNKNOWN (no input supplied for f8889.months_family)
-  f8889.line3_part_year: chose UNKNOWN (no input supplied for f8889.last_month)
-  f8889.line3: chose UNKNOWN (no input supplied for f8889.months_eligible)
-  s1.educator_deduction: chose UNKNOWN (no input supplied for s1.eligible_educator)
+  s1.educator_deduction: chose UNKNOWN (no input supplied for person[taxpayer].eligible_educator)
   s1a.line4a_calc: chose UNKNOWN (collection roster not confirmed)
   s1a.line4a: chose $0 (guard 0)
   s1a.line4b: chose $0 (guard 0)
@@ -3067,7 +2954,7 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   s1a.line34: chose $0 (guard 0)
   s1a.line35_calc: chose $6,000 (guard 0)
   s1a.line35: chose $0 (guard 0)
-  s1a.line36a_claim: chose UNKNOWN (no input supplied for s1a.died_before_65) (guard 0)
+  s1a.line36a_claim: chose UNKNOWN (no input supplied for person[taxpayer].died_before_65) (guard 0)
   s8812.part_iib_result: chose $0 (guard 0)
   sd.line21: chose $0 (guard 1)
       not taken: guard 0 = false
@@ -3116,6 +3003,12 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
 
 Collection entries and derivations:
+  person[taxpayer].role = taxpayer
+    cite: f1040, Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial" (2025; created 2025-09-05; 3d31c226)
+  person[taxpayer].born_before_2001 = UNKNOWN (no input supplied for person[taxpayer].born_before_2001)
+    cite: i1040gi, p. 41, Step 4, question 2, "Check 'Yes' if you ... were born after December 31, 1960, and before January 2, 2001" (2025; printed date 2026-02-25; 482e9c48)
+  person[taxpayer].born_after_1960 = UNKNOWN (no input supplied for person[taxpayer].born_after_1960)
+    cite: i1040gi, p. 41, Step 4, question 2, "Check 'Yes' if you ... were born after December 31, 1960, and before January 2, 2001" (2025; printed date 2026-02-25; 482e9c48)
   person[taxpayer].w2[emp_a].box1 = $90,000
     cite: iw2w3, p. 17, box 1 (2025; printed date 2025-02-19; bfecbc99)
   person[taxpayer].box1 = $90,000
@@ -3164,6 +3057,18 @@ Collection entries and derivations:
     cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
   sales[s1].h = $6,000
     cite: i8949, p. 11, column (h) (2025; printed date 2026-01-20; f077991c)
+  person[taxpayer].educator_expenses = $0
+    cite: i1040gi, p. 93, Schedule 1, line 11, Qualified expenses and 'You must reduce your qualified expenses by the following amounts' (2025; printed date 2026-02-25; 482e9c48)
+  person[taxpayer].hsa_forms = 0
+    cite: i8889, p. 4, Name and social security number (SSN), "complete a separate Form 8889 for each of you" (2025; da6f2f58)
+  person[taxpayer].hsa_repeated = false
+    cite: i8889, p. 4, Name and social security number (SSN), "complete a separate Form 8889 for each of you" (2025; da6f2f58)
+  person[taxpayer].hsa_deduction = $0
+    cite: i8889, p. 4, "Combine the amounts on line 13 of both Forms 8889 and enter this amount on Schedule 1 (Form 1040), line 13" (2025; da6f2f58)
+  person[taxpayer].work_ssn = true
+    cite: i1040gi, p. 18, Step 3, question 4 (2025; printed date 2026-02-25; 482e9c48)
+  person[taxpayer].one = 1
+    cite: f1040, Form 1040 (2025), page 1, one entry for you and, if joint return, one for your spouse (2025; created 2025-09-05; 3d31c226)
   gift[books].special = false
     cite: i8283, pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A (December 2025; printed date 2026-01-30; 2de015f7)
   gift[books].public_securities = false
@@ -3174,6 +3079,10 @@ Collection entries and derivations:
     cite: i8283, pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A (December 2025; printed date 2026-01-30; 2de015f7)
   gift[books].allowed = $800
     cite: i8283, pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A (December 2025; printed date 2026-01-30; 2de015f7)
+  person[taxpayer].age65 = false
+    cite: f1040sa, Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  person[taxpayer].blind = false
+    cite: f1040sa, Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
   person[taxpayer].rrta = false
     cite: iw2w3, pp. 12–13, Railroad employers: RRTA compensation and taxes in box 14; boxes 3–7 are not used for RRTA (2025; printed date 2025-02-19; bfecbc99)
   person[taxpayer].w2[emp_a].box5 = $90,000
@@ -3206,8 +3115,40 @@ Collection entries and derivations:
     cite: f8959, Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; 13e64004)
   person[taxpayer].medicare6 = $1,305
     cite: f8959, Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; 13e64004)
+  person[taxpayer].tin = true
+    cite: i1040gi, p. 19, Step 5, question 1 (2025; printed date 2026-02-25; 482e9c48)
+  person[taxpayer].eligible_educator = UNKNOWN (no input supplied for person[taxpayer].eligible_educator)
+    cite: i1040gi, p. 93, Schedule 1, line 11, 'An eligible educator is a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year' (2025; printed date 2026-02-25; 482e9c48)
+  person[taxpayer].tip_employers = UNKNOWN (collection roster not confirmed)
+    cite: i1040gi, p. 104, Schedule 1-A, line 4c (2025; printed date 2026-02-25; 482e9c48)
+  person[taxpayer].tip_total = UNKNOWN (collection roster not confirmed)
+    cite: i1040gi, p. 104, Qualified Tips From More Than One Employer Worksheet, line 2 (2025; printed date 2026-02-25; 482e9c48)
+  person[taxpayer].tip_reported = UNKNOWN (collection roster not confirmed)
+    cite: i1040gi, p. 104, Qualified Tips From More Than One Employer Worksheet, column (b) (2025; printed date 2026-02-25; 482e9c48)
+  person[taxpayer].ot_total = UNKNOWN (collection roster not confirmed)
+    cite: i1040gi, p. 108, Schedule 1-A, line 14a, and the Qualified Overtime Compensation From More Than One Employer Worksheet, line 2 (2025; printed date 2026-02-25; 482e9c48)
+  person[taxpayer].died_before_65 = UNKNOWN (no input supplied for person[taxpayer].died_before_65)
+    cite: i1040gi, p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025" (2025; printed date 2026-02-25; 482e9c48)
   person[taxpayer].withheld = $5,580
     cite: i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+  person[taxpayer].w2[emp_a].box3 = $90,000
+    cite: iw2w3, p. 18, boxes 3, 4 and 7 (2025; printed date 2025-02-19; bfecbc99)
+  person[taxpayer].w2[emp_a].box7 = $0
+    cite: iw2w3, p. 18, boxes 3, 4 and 7 (2025; printed date 2025-02-19; bfecbc99)
+  person[taxpayer].w2[emp_a].wages = $90,000
+    cite: iw2w3, p. 18, boxes 3, 4 and 7 (2025; printed date 2025-02-19; bfecbc99)
+  person[taxpayer].wages = $90,000
+    cite: i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+  person[taxpayer].excess = $0
+    cite: i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+  sales[s1].aggregate_eligible = UNKNOWN (no input supplied for sales[s1].aggregate_eligible)
+    cite: i1040sd, p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
+  sales[s1].correct_basis = UNKNOWN (no input supplied for sales[s1].correct_basis)
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  sales[s1].wash_loss = UNKNOWN (no input supplied for sales[s1].wash_loss)
+    cite: i8949, p. 10, code W; a lower corrected loss requires an explanation statement (2025; printed date 2026-01-20; f077991c)
+  sales[s1].b_difference = UNKNOWN (no input supplied for sales[s1].correct_basis)
+    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
   div.box1a: copy(sb.ordinary_dividends = $4,000)
   div.box1b: copy(f1040.line3a = $2,000)
   div.box2a: copy(sd.distributions = $1,500)
@@ -3219,6 +3160,10 @@ Collection entries and derivations:
   div.bad_special: test(div.box2b = $0; sd.distributions = $1,500; div.box2c = $0; sd.distributions = $1,500; div.box2d = $0; sd.distributions = $1,500; div.special_total = $0; sd.distributions = $1,500)
   div.bad_components: test(f1040.line3a = $2,000; sb.ordinary_dividends = $4,000; qbi.dividends = $300; sb.ordinary_dividends = $4,000)
   div.screen: param(div.section1202 = false; div.amt = false; div.unsupported = false; div.bad_special = false; div.bad_components = false; #sales.zero = $0)
+  eic.born_before_2001_count: sum_over(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].born_before_2001 = UNKNOWN (no input supplied for person[taxpayer].born_before_2001); true = true)
+  eic.born_before_2001: test(eic.born_before_2001_count = UNKNOWN (no input supplied for person[taxpayer].born_before_2001); 0 = 0)
+  eic.born_after_1960_count: sum_over(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].born_after_1960 = UNKNOWN (no input supplied for person[taxpayer].born_after_1960); true = true)
+  eic.born_after_1960: test(eic.born_after_1960_count = UNKNOWN (no input supplied for person[taxpayer].born_after_1960); 0 = 0)
   eic.zero: param(#sales.zero = $0)
   eic.has_qc: test(eic.qc_count = 0; 0 = 0)
   eic.married_rules: test(f1040.status = single; "mfs" = mfs; f1040.status = single; "hoh" = hoh)
@@ -3290,13 +3235,12 @@ Collection entries and derivations:
   f1040.s1.line10: copy(s1.line7 = $0)
   f1040.line8: copy(scope.schedule1 = false; scope.other_income = false; s1.line10 = $0)
   f1040.line9: sum(f1040.line1z = $90,000; f1040.line2b = $1,000; f1040.line3b = $4,000; f1040.line4b = $0; f1040.line5b = $0; f1040.line6b = $0; f1040.line7a = $7,500; f1040.line8 = $0)
+  s1.educator_expenses: sum_over(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].educator_expenses = $0)
   s1.has_educator_expenses: test(s1.educator_expenses = $0; #sales.zero = $0)
   s1.line11: choose(s1.has_educator_expenses = false; true = true; s1.has_educator_expenses = false; false = false; s1.zero = $0)
-  f8889.any: test(f8889.line2 = $0; #sales.zero = $0; f8889.line9 = $0; #sales.zero = $0)
-  f8889.zero: param(#sales.zero = $0)
-  f8889.line13: choose(f8889.any = false; true = true; f8889.any = false; false = false; f8889.zero = $0)
-  s1.f8889.line13: choose(f8889.any = false; true = true; f8889.any = false; false = false; f8889.zero = $0)
-  s1.line13: copy(f8889.line13 = $0)
+  person[taxpayer].hsa_repeated: test(person[taxpayer].hsa_forms = 0; 1 = 1)
+  person[taxpayer].hsa_deduction: sum_over(person[taxpayer].hsa_repeated = false)
+  s1.line13: sum_over(person[taxpayer].hsa_deduction = $0)
   sli.has: test(sli.interest = $0; #sales.zero = $0)
   sli.zero: param(#sales.zero = $0)
   sli.deduction: choose(sli.has = false; true = true; sli.has = false; false = false; sli.zero = $0)
@@ -3320,6 +3264,10 @@ Collection entries and derivations:
   eic.limit_joint: choose(eic.ssn_count = 0; 0 = 0; eic.ssn_count = 0; 1 = 1; eic.limit0_joint = $26,214)
   eic.limit: choose(f1040.status = single; "single" = single; eic.limit_other = $19,104)
   eic.step1_income: test(f1040.line11b = $102,500; eic.limit = $19,104)
+  person[taxpayer].one: param(#person.one = 1)
+  household.taxpayer_work_ssn_count: sum_over(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].work_ssn = true; true = true; person[taxpayer].one = 1)
+  household.taxpayer_work_ssn: test(household.taxpayer_work_ssn_count = 1; 0 = 0)
+  eic.household.taxpayer_work_ssn: test(household.taxpayer_work_ssn_count = 1; 0 = 0)
   eic.step1_ssn: test(household.taxpayer_work_ssn = true; true = true)
   eic.step1_foreign: test(sa.excluded_income = false; sa.excluded_income = false; false = false)
   eic.step1_resident: test(scope.other_income = false; scope.other_income = false; false = false)
@@ -3334,7 +3282,7 @@ Collection entries and derivations:
   eic.step2_other: test(scope.schedule1 = false; scope.other_line16 = false; scope.schedule1 = false; false = false; scope.other_line16 = false; false = false)
   eic.step3_married: test(eic.married_rules = false; false = false)
   eic.step3: test(f1040.status = single; "mfj" = mfj; eic.step3_married = true; true = true; eic.qc_of_another = UNKNOWN (no input supplied for eic.qc_of_another); false = false)
-  eic.step4: test(sa.dependent = false; eic.married_rules = false; false = false; eic.born_before_2001 = UNKNOWN (no input supplied for eic.born_before_2001); true = true; eic.born_after_1960 = UNKNOWN (no input supplied for eic.born_after_1960); true = true; eic.us_home = UNKNOWN (no input supplied for eic.us_home); true = true; f1040.status = single; "mfj" = mfj; eic.qc_of_another = UNKNOWN (no input supplied for eic.qc_of_another); false = false; sa.dependent = false; false = false)
+  eic.step4: test(sa.dependent = false; eic.married_rules = false; false = false; eic.born_before_2001 = UNKNOWN (no input supplied for person[taxpayer].born_before_2001); true = true; eic.born_after_1960 = UNKNOWN (no input supplied for person[taxpayer].born_after_1960); true = true; eic.us_home = UNKNOWN (no input supplied for eic.us_home); true = true; f1040.status = single; "mfj" = mfj; eic.qc_of_another = UNKNOWN (no input supplied for eic.qc_of_another); false = false; sa.dependent = false; false = false)
   eic.step34: test(eic.has_qc = false; true = true; eic.has_qc = false; false = false; eic.step4 = UNKNOWN (no input supplied for eic.qc_of_another); true = true)
   eic.f1040.line1z: copy(f1040.line1a = $90,000)
   eic.step5_line1: copy(scope.schedule1 = false; f1040.line1z = $90,000)
@@ -3442,7 +3390,11 @@ Collection entries and derivations:
   sa.line16: copy(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.zero = $0)
   sa.line17: sum(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.line4 = $0; sa.line7 = $10,000; sa.line10 = $11,500; sa.line14 = $5,800; sa.line15 = $0; sa.line16 = $0)
   sa.standardbase: param(#sa.standard_base = $15,750)
+  sa.age65_count: sum_over(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].age65 = false; true = true)
+  sa.age65: test(sa.age65_count = 0; 0 = 0)
   sa.extra_age65: choose(sa.age65 = false; true = true; sa.age65 = false; false = false; sa.zero = $0)
+  sa.blind_count: sum_over(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].blind = false; true = true)
+  sa.blind: test(sa.blind_count = 0; 0 = 0)
   sa.extra_blind: choose(sa.blind = false; true = true; sa.blind = false; false = false; sa.zero = $0)
   sa.standardraw: sum(sa.standardbase = $15,750; sa.extra_age65 = $0; sa.extra_blind = $0)
   sa.standard: choose(sa.dependent = false; sa.spouse_extra = false; sa.mfs_spouse_itemizes = false; true = true; sa.mfs_spouse_itemizes = false; false = false; sa.standardraw = $15,750)
@@ -3456,6 +3408,7 @@ Collection entries and derivations:
   s1a.line13: choose(s1a.tips = false; false = false; s1a.zero = $0)
   s1a.line21: choose(s1a.overtime = false; false = false; s1a.zero = $0)
   s1a.line30: choose(s1a.carloan = false; false = false; s1a.zero = $0)
+  s1a.sa.age65: test(sa.age65_count = 0; 0 = 0)
   s1a.line36a: choose(sa.age65 = false; false = false; s1a.zero = $0)
   s1a.line36b: param(sa.spouse_extra = false; #sales.zero = $0)
   s1a.line37: sum(s1a.line36a = $0; s1a.line36b = $0)
@@ -3736,38 +3689,6 @@ Collection entries and derivations:
   f1040.line34: subtract_floor0(f1040.line33 = $10,000; f1040.line24 = $10,657)
   f1040.line37: subtract_floor0(f1040.line24 = $10,657; f1040.line33 = $10,000)
   f4952.line7: subtract_floor0(f4952.line3 = $1,500; f4952.line6 = $3,000)
-  f8889.married: test(f1040.status = single; "mfj" = mfj; f1040.status = single; "mfs" = mfs)
-  f8889.bad_months: test(f8889.months_eligible = UNKNOWN (no input supplied for f8889.months_eligible); 12 = 12; f8889.months_family = UNKNOWN (no input supplied for f8889.months_family); f8889.months_eligible = UNKNOWN (no input supplied for f8889.months_eligible))
-  f8889.self_amount: choose(f8889.age55 = UNKNOWN (no input supplied for f8889.age55); true = true)
-  f8889.self_under55: param(#hsa.self_only = $4,300)
-  f8889.self_55: param(#hsa.self_only_55 = $5,300)
-  f8889.family_amount: choose(f8889.age55 = UNKNOWN (no input supplied for f8889.age55); true = true)
-  f8889.family_under55: param(#hsa.family = $8,550)
-  f8889.family_55: param(#hsa.family_55 = $9,550)
-  f8889.family_extra: subtract(f8889.family_amount = UNKNOWN (no input supplied for f8889.age55); f8889.self_amount = UNKNOWN (no input supplied for f8889.age55))
-  f8889.chart_self: multiply_count(f8889.self_amount = UNKNOWN (no input supplied for f8889.age55); f8889.months_eligible = UNKNOWN (no input supplied for f8889.months_eligible))
-  f8889.chart_family: multiply_count(f8889.family_extra = UNKNOWN (no input supplied for f8889.age55); f8889.months_family = UNKNOWN (no input supplied for f8889.months_family))
-  f8889.chart_total: sum(f8889.chart_self = UNKNOWN (no input supplied for f8889.age55); f8889.chart_family = UNKNOWN (no input supplied for f8889.age55))
-  f8889.chart_limit: multiply_rate(f8889.chart_total = UNKNOWN (no input supplied for f8889.age55); #hsa.twelfth = 1/12)
-  f8889.all_year: test(f8889.months_eligible = UNKNOWN (no input supplied for f8889.months_eligible); 12 = 12)
-  f8889.changed: test(f8889.months_family = UNKNOWN (no input supplied for f8889.months_family); 0 = 0; f8889.months_family = UNKNOWN (no input supplied for f8889.months_family); f8889.months_eligible = UNKNOWN (no input supplied for f8889.months_eligible))
-  f8889.dec_amount: choose(f8889.dec_coverage = UNKNOWN (no input supplied for f8889.dec_coverage); "self_only" = self_only)
-  f8889.use_last_month: test(f8889.dec_coverage = UNKNOWN (no input supplied for f8889.dec_coverage); "none" = none; f8889.last_month = UNKNOWN (no input supplied for f8889.last_month); true = true)
-  f8889.line3_changed: larger_of(f8889.chart_limit = UNKNOWN (no input supplied for f8889.age55))
-  f8889.line3_all_year: choose(f8889.changed = UNKNOWN (no input supplied for f8889.months_family); true = true)
-  f8889.line3_last_month: choose(f8889.changed = UNKNOWN (no input supplied for f8889.months_family); true = true)
-  f8889.line3_part_year: choose(f8889.use_last_month = UNKNOWN (no input supplied for f8889.last_month); true = true)
-  f8889.line3: choose(f8889.all_year = UNKNOWN (no input supplied for f8889.months_eligible); true = true)
-  f8889.line4: copy(f8889.zero = $0)
-  f8889.line5: subtract_floor0(f8889.line3 = UNKNOWN (no input supplied for f8889.months_eligible); f8889.line4 = $0)
-  f8889.line6: copy(f8889.line5 = UNKNOWN (no input supplied for f8889.months_eligible))
-  f8889.line7: copy(f8889.zero = $0)
-  f8889.line8: sum(f8889.line6 = UNKNOWN (no input supplied for f8889.months_eligible); f8889.line7 = $0)
-  f8889.line10: copy(f8889.zero = $0)
-  f8889.line11: sum(f8889.line9 = $0; f8889.line10 = $0)
-  f8889.line12: subtract_floor0(f8889.line8 = UNKNOWN (no input supplied for f8889.months_eligible); f8889.line11 = $0)
-  f8889.excess: test(f8889.line2 = $0; f8889.line12 = UNKNOWN (no input supplied for f8889.months_eligible); f8889.line11 = $0; f8889.line8 = UNKNOWN (no input supplied for f8889.months_eligible))
-  f8889.line13_figured: gate(f8889.unsupported = UNKNOWN (no input supplied for f8889.unsupported))
   f8959.line23: copy(f8959.unsupported = false; f8959.zero = $0)
   person[taxpayer].medicare6: sum_over(person[taxpayer].rrta = false; person[taxpayer].w2[emp_a].box6 = $1,305)
   f8959.line19: sum_over(f8959.unsupported = false; person[taxpayer].medicare6 = $1,305)
@@ -3800,15 +3721,19 @@ Collection entries and derivations:
   f8995a.line37: smaller_of(f8995a.line32 = $60; f8995a.line36 = $13,140)
   f8995a.line39: sum(f8995a.line37 = $60; f8995a.line38 = $0)
   ftc.zero: param(#sales.zero = $0)
+  household.taxpayer_tin_count: sum_over(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].tin = true; true = true; person[taxpayer].one = 1)
+  household.taxpayer_tin: test(household.taxpayer_tin_count = 1; 0 = 0)
   household.test1_met: test(household.test1_persons = 0; 0 = 0)
   household.test2_met: test(household.home_cost = false; true = true)
   household.hoh_eligible: test(household.unmarried = true; true = true; household.test1_met = false; true = true; household.test2_met = false; true = true)
   s1.line7_figured: gate(s1.uc_unsupported = UNKNOWN (no input supplied for s1.uc_unsupported))
   s1.line7_box: test(s1.uc_repaid = UNKNOWN (no input supplied for s1.uc_repaid); #sales.zero = $0)
   s1.line7_repaid: copy(s1.uc_repaid = UNKNOWN (no input supplied for s1.uc_repaid))
+  s1.eligible_educator_count: sum_over(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].eligible_educator = UNKNOWN (no input supplied for person[taxpayer].eligible_educator); true = true)
+  s1.eligible_educator: test(s1.eligible_educator_count = UNKNOWN (no input supplied for person[taxpayer].eligible_educator); 0 = 0)
   s1.educator_max: param(#s1.educator_max = $300)
   s1.educator_limited: smaller_of(s1.educator_expenses = $0; s1.educator_max = $300)
-  s1.educator_deduction: choose(s1.eligible_educator = UNKNOWN (no input supplied for s1.eligible_educator); true = true)
+  s1.educator_deduction: choose(s1.eligible_educator = UNKNOWN (no input supplied for person[taxpayer].eligible_educator); true = true)
   s1a.f1040.line11b: copy(f1040.line11a = $102,500)
   s1a.line1: copy(f1040.line11b = $102,500)
   s1a.line2a: param(sa.excluded_income = false; #sales.zero = $0)
@@ -3817,6 +3742,9 @@ Collection entries and derivations:
   s1a.line2d: param(#sales.zero = $0)
   s1a.line2e: sum(s1a.line2a = $0; s1a.line2b = $0; s1a.line2c = $0; s1a.line2d = $0)
   s1a.line3: sum(s1a.line1 = $102,500; s1a.line2e = $0)
+  s1a.tip_employers: sum_over(person[taxpayer].tip_employers = UNKNOWN (collection roster not confirmed))
+  s1a.tip_total: sum_over(person[taxpayer].tip_total = UNKNOWN (collection roster not confirmed))
+  s1a.tip_reported: sum_over(person[taxpayer].tip_reported = UNKNOWN (collection roster not confirmed))
   s1a.tip_multi: test(s1a.tip_employers = UNKNOWN (collection roster not confirmed); #ss.one = 1)
   s1a.part2: test(s1a.tips = false; true = true)
   s1a.line4a_calc: choose(s1a.tip_multi = UNKNOWN (collection roster not confirmed); true = true)
@@ -3848,9 +3776,11 @@ Collection entries and derivations:
   s1a.line12: choose(s1a.part2 = false; false = false; s1a.zero = $0)
   s1a.line13_figured: subtract_floor0(s1a.line7 = $0; s1a.line12 = $0)
   s1a.line13_amount: choose(s1a.line10_over = false; false = false; s1a.line7 = $0)
+  s1a.household.taxpayer_work_ssn: test(household.taxpayer_work_ssn_count = 1; 0 = 0)
   s1a.line13_ssn: choose(household.taxpayer_work_ssn = true; false = false; household.taxpayer_work_ssn = true; true = true; s1a.line13_amount = $0)
   s1a.line13_claim: choose(f1040.status = single; "single" = single; s1a.line13_ssn = $0)
   s1a.part3: test(s1a.overtime = false; true = true)
+  s1a.line14a_calc: sum_over(person[taxpayer].ot_total = UNKNOWN (collection roster not confirmed))
   s1a.line14a: choose(s1a.part3 = false; false = false; s1a.zero = $0)
   s1a.line14b_calc: param(scope.schedule1 = false; #sales.zero = $0)
   s1a.line14b: choose(s1a.part3 = false; false = false; s1a.zero = $0)
@@ -3913,9 +3843,11 @@ Collection entries and derivations:
   s1a.line35_figured: subtract_floor0(s1a.senior_amount = $6,000; s1a.line34 = $0)
   s1a.line35_calc: choose(s1a.line33_over = false; false = false; s1a.senior_amount = $6,000)
   s1a.line35: choose(s1a.part5 = false; false = false; s1a.zero = $0)
-  s1a.senior_decedent: test(s1a.died_before_65 = UNKNOWN (no input supplied for s1a.died_before_65); true = true)
-  s1a.line36a_senior: gate(s1a.senior_decedent = UNKNOWN (no input supplied for s1a.died_before_65))
-  s1a.line36a_claim: choose(f1040.status = single; "single" = single; s1a.line36a_senior = UNKNOWN (no input supplied for s1a.died_before_65))
+  s1a.died_before_65_count: sum_over(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].died_before_65 = UNKNOWN (no input supplied for person[taxpayer].died_before_65); true = true)
+  s1a.died_before_65: test(s1a.died_before_65_count = UNKNOWN (no input supplied for person[taxpayer].died_before_65); 0 = 0)
+  s1a.senior_decedent: test(s1a.died_before_65 = UNKNOWN (no input supplied for person[taxpayer].died_before_65); true = true)
+  s1a.line36a_senior: gate(s1a.senior_decedent = UNKNOWN (no input supplied for person[taxpayer].died_before_65))
+  s1a.line36a_claim: choose(f1040.status = single; "single" = single; s1a.line36a_senior = UNKNOWN (no input supplied for person[taxpayer].died_before_65))
   s2.line2: copy(s2.amt = false; s2.other = false; s2.zero = $0)
   s8812.line18b: copy(s8812.eiw_1b = $0)
   person[taxpayer].withheld: sum_over(person[taxpayer].w2[emp_a].box4 = $5,580)
@@ -4067,7 +3999,7 @@ Collection entries and derivations:
   sli.f1040.line9: sum(f1040.line1z = $90,000; f1040.line2b = $1,000; f1040.line3b = $4,000; f1040.line4b = $0; f1040.line5b = $0; f1040.line6b = $0; f1040.line7a = $7,500; f1040.line8 = $0)
   sli.line2: copy(f1040.line9 = $102,500)
   sli.s1.line11: choose(s1.has_educator_expenses = false; true = true; s1.has_educator_expenses = false; false = false; s1.zero = $0)
-  sli.s1.line13: copy(f8889.line13 = $0)
+  sli.s1.line13: sum_over(person[taxpayer].hsa_deduction = $0)
   sli.line3: sum(s1.line11 = $0; s1.line13 = $0)
   sli.line4: subtract(sli.line2 = $102,500; sli.line3 = $0)
   sli.base_other: param(#sli.base_other = $85,000)
@@ -4094,7 +4026,7 @@ Collection entries and derivations:
   ssb.line4: copy(f1040.line2a = UNKNOWN (no input supplied for div.box12))
   ssb.line5: sum(ssb.line2 = UNKNOWN (no input supplied for ssb.pub915); ssb.line3 = $102,500; ssb.line4 = UNKNOWN (no input supplied for div.box12))
   ssb.s1.line11: choose(s1.has_educator_expenses = false; true = true; s1.has_educator_expenses = false; false = false; s1.zero = $0)
-  ssb.s1.line13: copy(f8889.line13 = $0)
+  ssb.s1.line13: sum_over(person[taxpayer].hsa_deduction = $0)
   ssb.line6: sum(scope.schedule1 = false; s1.line11 = $0; s1.line13 = $0)
   ssb.line7: subtract_floor0(ssb.line5 = UNKNOWN (no input supplied for div.box12); ssb.line6 = $0)
   ssb.base_single: param(#ssb.base_single = $25,000)
@@ -4125,6 +4057,10 @@ Collection entries and derivations:
   u1250.line6: copy(div.screen = $0)
   u1250.line7: copy(div.screen = $0)
   u1250.line8: copy(div.screen = $0)
+  person[taxpayer].w2[emp_a].wages: sum(person[taxpayer].w2[emp_a].box3 = $90,000; person[taxpayer].w2[emp_a].box7 = $0)
+  person[taxpayer].wages: sum_over(person[taxpayer].w2[emp_a].wages = $90,000)
+  person[taxpayer].excess: subtract_floor0(person[taxpayer].withheld = $5,580; #ss.limit = $10,918.20)
+  sales[s1].b_difference: subtract(sales[s1].reported_basis = $10,000; sales[s1].correct_basis = UNKNOWN (no input supplied for sales[s1].correct_basis))
 Interpretation amb.2025.box2c_scope: Refuse nonzero box 2c; no exclusion or AMT amount is silently omitted. Archived Schedule D instructions require the exclusion on Form 8949 code Q and describe an AMT adjustment for 50/60/75-percent exclusions. The existing explicit exclusions are retained; the owner was notified and asked, then said continue without selecting an expansion. (i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
 Interpretation amb.2025.sales_rounding: Preserve exact cents throughout Stage 3; whole-dollar mode remains deferred. Avoid choosing a reconciliation policy without explicit support; cents are expressly permitted. (i8949, p. 3, Rounding Off to Whole Dollars; compare i1040gi p. 23)
 Interpretation amb.2025.multiplication_subcent: Round the product half-up to the nearest cent at the multiplication. Matches the half-up convention of the printed whole-dollar rounding rules. The whole-dollar default is unaffected: whole-dollar amounts multiplied by these rates produce exact cents, so the reading only matters when cents are turned on.
@@ -4132,10 +4068,9 @@ Interpretation amb.2025.multiplication_subcent: Round the product half-up to the
 Interpretation amb.2025.qbi_cooperative_patron: Refuse any patron of an agricultural or horticultural cooperative, specified or not (qbi.unsupported). The owner asked for the strictly accurate reading. Refusing every patron satisfies both texts: a filer the form excludes is never computed on it, and a filer the instructions exclude is a patron the form also excludes. The cost is a refusal for a patron of a cooperative that is not specified, which the instructions would allow.
  (f8995, Form 8995 (2025), note above line 1; i8995, Who Can Use Form 8995; i1040gi line 13a)
 Interpretation amb.2025.sd4952_selection: Use the detailed worksheet conditions, including line 4g and exceptions. The worksheet explicitly limits its own use and the Form 1040 line 16 instructions repeat the line 4g condition. (i1040sd, p. 15, Schedule D Tax Worksheet applicability; compare f1040sd line 20 and i1040gi p. 36)
-Interpretation amb.2025.hsa_last_month_change: The greater of the chart and the December 1 maximum when the coverage type changed among the eligible months; the December 1 maximum otherwise (f8889.line3_last_month). Rule 4 names the filer considered eligible all year, which is the last-month rule's filer, so it reads as the stricter fit to the text; the result is never less than rule 2's amount. Found by the Stage 11 class M hand-work (the model applied rule 4; the second transcription read rule 2); the owner chose rule 4.
- (i8889, p. 4, Line 3, rules 2, 3 and 4)
 Interpretation amb.2025.sli_ratio_places: Round the ratio half-up to three decimal places (the prorate atom with places 3 on sli.line8_figured). The owner's ruling. Three places is the least precision the text allows and the usual hand computation; the readings differ by at most a few cents of deduction (for example $167.50 against $166.67 on line 8 when line 6 is $1,000 and line 1 is $2,500).
  (i1040gi, p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 7)
+Interpretation amb.2025.ss_wages: Use boxes 3 plus 7, summed across employers separately per person. Owner approved the Stage 2 proposal. iw2w3 p. 18 defines these boxes and their combined wage base; box 1 can exclude deferrals subject to Social Security. (iw2w3, p. 18, boxes 3 and 7; compare i1040gi p. 117, Schedule 3 line 11)
 Scope: single-person return (Form 1040 lines 1a–37 with the in-scope schedules and refusal screens). Unsupported paths are refused with citations. No filing or transmission.
 Rounding: amounts are exact cents; the return-wide whole-dollar rounding setting is deferred (see ambiguities/2025.yaml).
 Estimated tax penalty: not computed; the IRS will figure it (see i1040gi, line 38).

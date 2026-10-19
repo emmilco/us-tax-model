@@ -120,8 +120,8 @@ form:
     type: Count
     expr:
       op: sum_over
-      collection: tipjob
-      field: tipjob.one
+      collection: person
+      field: person.tip_employers
     cite:
       doc: i1040gi
       locator: p. 104, Schedule 1-A, line 4c
@@ -131,8 +131,8 @@ form:
     type: NonNegDollars
     expr:
       op: sum_over
-      collection: tipjob
-      field: tipjob.col_d
+      collection: person
+      field: person.tip_total
     cite:
       doc: i1040gi
       locator: p. 104, Qualified Tips From More Than One Employer Worksheet, line 2
@@ -142,8 +142,8 @@ form:
     type: NonNegDollars
     expr:
       op: sum_over
-      collection: tipjob
-      field: tipjob.amount
+      collection: person
+      field: person.tip_reported
     cite:
       doc: i1040gi
       locator: p. 104, Qualified Tips From More Than One Employer Worksheet, column (b); p. 103, methods 1 to 3, "Enter this
@@ -832,8 +832,8 @@ form:
     type: NonNegDollars
     expr:
       op: sum_over
-      collection: otjob
-      field: otjob.col_b
+      collection: person
+      field: person.ot_total
     cite:
       doc: i1040gi
       locator: p. 108, Schedule 1-A, line 14a, and the Qualified Overtime Compensation From More Than One Employer Worksheet,
@@ -2008,15 +2008,39 @@ form:
     cite:
       doc: i1040gi
       locator: p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; Part V caution
+  - id: s1a.died_before_65_count
+    printed: (helper)
+    label: Your entry, if the answer is yes
+    type: Count
+    expr:
+      op: sum_over
+      collection: person
+      field: person.one
+      where:
+        op: test
+        all:
+        - op: test
+          eq:
+          - person.role
+          - const: taxpayer
+        - op: test
+          eq:
+          - person.died_before_65
+          - const: true
+    cite:
+      doc: i1040gi
+      locator: p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025"
   - id: s1a.died_before_65
     printed: (helper)
     label: Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before
       reaching age 65?
     type: Bool
     expr:
-      op: input
-      source: Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before
-        reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)
+      op: test
+      gt:
+      - s1a.died_before_65_count
+      - const: 0
+        type: Count
     cite:
       doc: i1040gi
       locator: p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025"

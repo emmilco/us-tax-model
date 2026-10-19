@@ -13,7 +13,7 @@ import { readFileSync } from "node:fs";
 import { runBuild } from "./build.js";
 import { renderAll } from "./render.js";
 import { loadCanonical } from "./canonical.js";
-import { evaluate } from "./eval.js";
+import { allTargets, evaluate } from "./eval.js";
 import { renderValuesSheet, renderValuesHtml, resultToJson } from "./output.js";
 import { runConjecture, runEicConjecture } from "./conjecture.js";
 import { coverageReport, evidenceReport, recordFixtures, testFixtures, reviewStage2, reviewStage3, reviewStage4, reviewStage5 } from "./fixtures.js";
@@ -80,13 +80,11 @@ if (command === "review-stage5") {
     // Batch mode: a JSON array of { id, inputs }; emits { cases: { id: <eval json> } }.
     const data = loadCanonical();
     const cases = JSON.parse(readFileSync(batchPath, "utf-8")) as { id: string; inputs: Record<string, number | boolean | string> }[];
-    const targets =
-      targetsOverride ?? [...data.forms].filter(d => !d.collection).flatMap((doc) => doc.lines.map((l) => l.id));
     // Written one case at a time: the whole document is larger than the longest string V8
     // allows. Written without process.exit so a large payload is not truncated on a pipe.
     process.stdout.write('{"cases":{');
     cases.forEach((c, i) => {
-      process.stdout.write(`${i ? "," : ""}${JSON.stringify(c.id)}:${resultToJson(evaluate(data, c.inputs, targets))}`);
+      process.stdout.write(`${i ? "," : ""}${JSON.stringify(c.id)}:${resultToJson(evaluate(data, c.inputs, targetsOverride ?? allTargets(data, c.inputs)))}`);
     });
     process.stdout.write("}}\n");
   } else {
@@ -96,10 +94,7 @@ if (command === "review-stage5") {
   }
   const data = loadCanonical();
   const inputs = JSON.parse(readFileSync(inputsPath, "utf-8")) as Record<string, number | boolean | string>;
-  const targets =
-    targetsOverride ??
-    [...data.forms].filter(d => !d.collection).flatMap((doc) => doc.lines.map((l) => l.id));
-  const result = evaluate(data, inputs, targets);
+  const result = evaluate(data, inputs, targetsOverride ?? allTargets(data, inputs));
   if (json) {
     console.log(resultToJson(result));
   } else if (html) {

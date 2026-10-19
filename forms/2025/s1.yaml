@@ -150,11 +150,14 @@ form:
     label: Qualified educator expenses you paid in 2025
     type: NonNegDollars
     expr:
-      op: input
-      source: Qualified educator expenses you paid in 2025 (professional development courses, and books, supplies, equipment
-        and other materials used in the classroom), reduced by excludable savings bond interest (Form 8815), nontaxable qualified
-        tuition program or Coverdell earnings or distributions, and reimbursements not reported in box 1 of your Form W-2;
-        zero if none
+      op: sum_over
+      collection: person
+      field: person.educator_expenses
+      where:
+        op: test
+        eq:
+        - person.role
+        - const: taxpayer
     cite:
       doc: i1040gi
       locator: p. 93, Schedule 1, line 11, Qualified expenses and 'You must reduce your qualified expenses by the following
@@ -171,15 +174,40 @@ form:
     cite:
       doc: i1040gi
       locator: p. 93, Schedule 1, line 11
+  - id: s1.eligible_educator_count
+    printed: (helper)
+    label: Your entry, if the answer is yes
+    type: Count
+    expr:
+      op: sum_over
+      collection: person
+      field: person.one
+      where:
+        op: test
+        all:
+        - op: test
+          eq:
+          - person.role
+          - const: taxpayer
+        - op: test
+          eq:
+          - person.eligible_educator
+          - const: true
+    cite:
+      doc: i1040gi
+      locator: p. 93, Schedule 1, line 11, 'An eligible educator is a kindergarten through grade 12 teacher, instructor, counselor,
+        principal, or aide who worked in a school for at least 900 hours during a school year'
   - id: s1.eligible_educator
     printed: (helper)
     label: Were you an eligible educator in 2025 (a kindergarten through grade 12 teacher, instructor, counselor, principal,
       or aide who worked in a school for at least 900 hours during a school year)?
     type: Bool
     expr:
-      op: input
-      source: Were you an eligible educator in 2025 (a kindergarten through grade 12 teacher, instructor, counselor, principal,
-        or aide who worked in a school for at least 900 hours during a school year)?
+      op: test
+      gt:
+      - s1.eligible_educator_count
+      - const: 0
+        type: Count
     cite:
       doc: i1040gi
       locator: p. 93, Schedule 1, line 11, 'An eligible educator is a kindergarten through grade 12 teacher, instructor, counselor,
@@ -255,11 +283,13 @@ form:
     label: Health savings account deduction. Attach Form 8889
     type: NonNegDollars
     expr:
-      op: copy
-      from: f8889.line13
+      op: sum_over
+      collection: person
+      field: person.hsa_deduction
     cite:
       doc: f1040s1
-      locator: Schedule 1 (2025), line 13
+      locator: Schedule 1 (2025), line 13; i8889 p. 4, "Combine the amounts on line 13 of both Forms 8889 and enter this
+        amount on Schedule 1 (Form 1040), line 13"
   - id: s1.line21
     printed: '21'
     label: Student loan interest deduction

@@ -51,12 +51,13 @@ function generatedCases(n: number): Case[] {
       "f4952.carryover": false, "f4952.unsupported": false, "f4952.alternative_allocation": false, "$interest": [], "sb.ordinary_dividends": line3a, "sb.unsupported": false, "sb.line7a": false, "sb.fbar_required": false, "sb.form8938": false, "sb.line8": false,
     };
     inputs["$person"] = ["taxpayer"];
+    inputs["person[taxpayer].role"] = "taxpayer";
     inputs["$w2@person[taxpayer]"] = ["a"];
     inputs["person[taxpayer].w2[a].box1"] = Math.max(0, line15 + standard[status]! - 2 * line3a);
     inputs["scope.schedule1"] = false;
     inputs["scope.other_income"] = false;
     inputs["sa.unsupported"] = false; inputs["sa.charity_limited"] = false; inputs["sa.excluded_income"] = false;
-    inputs["sa.dependent"] = false; inputs["sa.spouse_extra"] = false; inputs["sa.age65"] = false; inputs["sa.blind"] = false;
+    inputs["sa.dependent"] = false; inputs["sa.spouse_extra"] = false; inputs["person[taxpayer].age65"] = false; inputs["person[taxpayer].blind"] = false;
     inputs["sa.spouse_itemizes"] = false; inputs["sa.elect_itemize"] = false;
     inputs["sa.line1"] = 0; inputs["sa.line5a"] = 0; inputs["sa.line5b"] = 0; inputs["sa.line5c"] = 0; inputs["sa.line8a"] = 0; inputs["sa.line11"] = 0;
     inputs["$gift"] = [];

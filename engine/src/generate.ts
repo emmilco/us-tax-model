@@ -16,12 +16,24 @@ function halfUp(n: number, d: number): number { return Math.floor((2 * n + d) / 
 function rate(amount: number, num: number, den: number): number { return halfUp(amount * num, den); }
 
 /** Root (non-collection) input lines keyed by input key, and the collection documents. */
+const HSA = "person[taxpayer].f8889[hsa]";
+
 export function declaredInputs(data: CanonicalData): { roots: Map<string, Line>; collections: FormDoc[] } {
   const roots = new Map<string, Line>();
   const collections: FormDoc[] = [];
   for (const doc of data.forms) {
     if (doc.collection) { collections.push(doc); continue; }
     for (const line of doc.lines) if (line.expr.op === "input") roots.set(line.id, line);
+  }
+  // The taxpayer's own person record is generated like a root form: one entry, keyed taxpayer.
+  const person = data.forms.find((doc) => doc.id === "person");
+  for (const line of person?.lines ?? []) {
+    if (line.expr.op === "input") roots.set(`person[taxpayer].${line.id.slice("person.".length)}`, line);
+  }
+  // Every generated taxpayer has one Form 8889; with no contributions it computes zero.
+  const hsa = data.forms.find((doc) => doc.id === "f8889");
+  for (const line of hsa?.lines ?? []) {
+    if (line.expr.op === "input") roots.set(`${HSA}.${line.id.slice("f8889.".length)}`, line);
   }
   return { roots, collections };
 }
@@ -52,8 +64,8 @@ const BOOL_TRUE_PERCENT: Record<string, number> = {
   "div.basis_reconciled": 95,
   "ftc.all_passive": 90, "ftc.statements": 90, "ftc.eligible": 90, "ftc.elect": 90,
   "sa.elect_itemize": 10,
-  "eic.born_before_2001": 85, "eic.us_home": 95,
-  "s1a.tips": 20, "s1a.overtime": 20, "s1a.carloan": 15, "s1a.died_before_65": 2,
+  "person[taxpayer].born_before_2001": 85, "eic.us_home": 95,
+  "s1a.tips": 20, "s1a.overtime": 20, "s1a.carloan": 15, "person[taxpayer].died_before_65": 2,
 };
 const DEFAULT_TRUE_PERCENT = 10;
 
@@ -62,7 +74,7 @@ const DEFAULT_TRUE_PERCENT = 10;
 const MODELLED = new Set([
   "f1040.line3a", "sb.ordinary_dividends", "qbi.dividends", "sd.distributions", "div.box2b", "div.box2d",
   "sa.line1", "sa.line5a", "sa.line5b", "sa.line8a", "sa.line11", "f4952.line1", "f4952.line4g", "ftc.taxes",
-  "s1.uc_paid", "s1.uc_repaid", "s1.educator_expenses", "f8889.line2", "f8889.line9", "f8889.months_eligible", "f8889.months_family", "sli.interest",
+  "s1.uc_paid", "s1.uc_repaid", "person[taxpayer].educator_expenses", `${HSA}.line2`, `${HSA}.line9`, `${HSA}.months_eligible`, `${HSA}.months_family`, "sli.interest",
 ]);
 
 interface Employer { box1: number; box2pct: number; box7: number; over: number }
@@ -210,7 +222,7 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   for (const [key, v] of Object.entries(s.flags)) inputs[key] = s.clean ? (BOOL_TRUE_PERCENT[key] ?? 0) >= 50 : v;
   for (const [key, v] of Object.entries(s.extras)) inputs[key] = s.clean ? 0 : v;
   // The EIC's birth-date question agrees with the age-65 answer: no generated filer is born on January 1, 1961.
-  inputs["eic.born_after_1960"] = inputs["sa.age65"] !== true;
+  inputs["person[taxpayer].born_after_1960"] = inputs["person[taxpayer].age65"] !== true;
   inputs["f1040.status"] = s.status;
   // An investor has no wages and only qualified dividends and gains, which is
   // the only way the worksheets' upper skip rules and ceilings are reached. A
@@ -220,6 +232,8 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   const low = s.profile === "low";
 
   inputs["$person"] = ["taxpayer"];
+  inputs["person[taxpayer].role"] = "taxpayer";
+  inputs["$f8889@person[taxpayer]"] = ["hsa"];
   inputs["person[taxpayer].rrta"] = s.rrta;
   const employers = s.employers.map((_, i) => `emp_${String.fromCharCode(97 + i)}`);
   inputs["$w2@person[taxpayer]"] = employers;
@@ -273,7 +287,8 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   s.gifts.forEach((g, i) => { for (const [k, v] of Object.entries(g)) inputs[`gift[item_${String.fromCharCode(97 + i)}].${k}`] = v; });
   inputs["$dependent"] = s.dependents.map((_, i) => `dep_${String.fromCharCode(97 + i)}`);
   s.dependents.forEach((d, i) => { for (const [k, v] of Object.entries(d)) inputs[`dependent[dep_${String.fromCharCode(97 + i)}].${k}`] = v; });
-  for (const [k, v] of Object.entries(s.household)) inputs[`household.${k}`] = v;
+  const HOUSEHOLD_KEYS: Record<string, string> = { taxpayer_tin: "person[taxpayer].tin", taxpayer_work_ssn: "person[taxpayer].work_ssn" };
+  for (const [k, v] of Object.entries(s.household)) inputs[HOUSEHOLD_KEYS[k] ?? `household.${k}`] = v;
   // A retiree has Form 1099-R distributions and social security benefits; the other
   // profiles have neither. A Roth IRA is given code Q and a code that the
   // account does not allow is kept only on unclean returns, so the gates are exercised too.
@@ -292,27 +307,27 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   // eligible months, December coverage present when eligible all year); the screens are flags.
   inputs["s1.uc_paid"] = s.adj.uc;
   inputs["s1.uc_repaid"] = Math.floor((s.adj.uc * s.adj.ucRepaidPct) / 100);
-  inputs["s1.educator_expenses"] = s.adj.educator;
+  inputs["person[taxpayer].educator_expenses"] = s.adj.educator;
   inputs["sli.interest"] = s.adj.sli;
   if (s.adj.hsa) {
     const months = s.adj.months, family = Math.min(s.adj.familyMonths, months);
-    inputs["f8889.months_eligible"] = months;
-    inputs["f8889.months_family"] = family;
-    inputs["f8889.dec_coverage"] = months === 0 ? "none" : family === months ? "family" : family === 0 ? "self_only" : s.adj.decFamily ? "family" : "self_only";
-    inputs["f8889.line2"] = s.adj.contrib;
-    inputs["f8889.line9"] = s.adj.employer;
+    inputs[`${HSA}.months_eligible`] = months;
+    inputs[`${HSA}.months_family`] = family;
+    inputs[`${HSA}.dec_coverage`] = months === 0 ? "none" : family === months ? "family" : family === 0 ? "self_only" : s.adj.decFamily ? "family" : "self_only";
+    inputs[`${HSA}.line2`] = s.adj.contrib;
+    inputs[`${HSA}.line9`] = s.adj.employer;
   }
   inputs["f4952.line1"] = s.invInterest;
   inputs["f4952.line4g"] = s.election;
   inputs["ftc.taxes"] = s.ftcTaxes;
   if (inputs["s1a.tips"] === true) {
-    inputs["$tipjob"] = s.s1a.tips.map((_, i) => `tip_${i + 1}`);
-    s.s1a.tips.forEach((t, i) => { inputs[`tipjob[tip_${i + 1}].qualified`] = t.qualified; inputs[`tipjob[tip_${i + 1}].amount`] = t.amount; });
+    inputs["$tipjob@person[taxpayer]"] = s.s1a.tips.map((_, i) => `tip_${i + 1}`);
+    s.s1a.tips.forEach((t, i) => { inputs[`person[taxpayer].tipjob[tip_${i + 1}].qualified`] = t.qualified; inputs[`person[taxpayer].tipjob[tip_${i + 1}].amount`] = t.amount; });
   }
   if (inputs["s1a.overtime"] === true) {
-    inputs["$otjob"] = s.s1a.overtime.map((_, i) => `ot_${i + 1}`);
+    inputs["$otjob@person[taxpayer]"] = s.s1a.overtime.map((_, i) => `ot_${i + 1}`);
     s.s1a.overtime.forEach((o, i) => {
-      const k = `otjob[ot_${i + 1}]`;
+      const k = `person[taxpayer].otjob[ot_${i + 1}]`;
       inputs[`${k}.flsa`] = o.flsa; inputs[`${k}.special_rule`] = o.special; inputs[`${k}.method`] = o.method; inputs[`${k}.statement`] = o.statement;
     });
   }

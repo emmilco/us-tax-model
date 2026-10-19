@@ -6,7 +6,7 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { stableStringify } from "./util.js";
 import { loadCanonical } from "./canonical.js";
-import { evaluate } from "./eval.js";
+import { allTargets, evaluate } from "./eval.js";
 import { loadCases } from "./fixtures.js";
 import { runChecks } from "./check.js";
 import type { CanonicalData, Expr, FormDoc, Line } from "./types.js";
@@ -515,14 +515,13 @@ function thresholdAtPlateau(param: string, tables: string[], col: number) {
 export function runMutation(): number {
   const baseline = loadCanonical();
   const fixtureFile = loadCases();
-  const targets = baseline.forms.filter(d => !d.collection).flatMap((doc) => doc.lines.map((l) => l.id));
 
   const normal = (v: { kind: string; cents?: number; value?: unknown }): string =>
     v.kind === "refusal" ? stableStringify(v) : v.kind === "unknown" ? "unknown" : v.kind === "money" ? `money:${v.cents}` : `${v.kind}:${JSON.stringify(v.value)}`;
 
   // A mismatching baseline must never make every mutant look killed.
   for (const c of fixtureFile.cases) {
-    const result=evaluate(baseline,c.inputs,targets);
+    const result=evaluate(baseline,c.inputs,allTargets(baseline,c.inputs));
     for (const [key,expected] of Object.entries(c.expect ?? {})) {
       const actual=result.derivations.get(key)?.value;
       if (!actual || normal(actual)!==normal(expected)) throw new Error(`mutation baseline mismatch: ${c.id} ${key}`);
@@ -543,7 +542,7 @@ export function runMutation(): number {
     }
     let killed = false;
     for (const c of fixtureFile.cases) {
-      const result = evaluate(data, c.inputs, targets);
+      const result = evaluate(data, c.inputs, allTargets(data, c.inputs));
       for (const [key, expected] of Object.entries(c.expect ?? {})) {
         const der = result.derivations.get(key);
         if (!der || normal(der.value) !== normal(expected)) {

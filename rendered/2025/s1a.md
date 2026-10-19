@@ -70,22 +70,22 @@
 ## (helper) — `s1a.tip_employers`
 
 - **Authored helper label:** Number of employers on the Qualified Tips From More Than One Employer Worksheet
-- **Encoded (Count):** Add tipjob.one over every confirmed tipjob entry, within the current person when parent-bound. An unanswered roster is unknown.
-- Expr: `{"collection":"tipjob","field":"tipjob.one","op":"sum_over"}`
+- **Encoded (Count):** Add person.tip_employers over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.tip_employers","op":"sum_over"}`
 - Cite: [i1040gi] p. 104, Schedule 1-A, line 4c (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.tip_total`
 
 - **Authored helper label:** Worksheet line 2. Add lines 1A through 1E, column (d)
-- **Encoded (NonNegDollars):** Add tipjob.col_d over every confirmed tipjob entry, within the current person when parent-bound. An unanswered roster is unknown.
-- Expr: `{"collection":"tipjob","field":"tipjob.col_d","op":"sum_over"}`
+- **Encoded (NonNegDollars):** Add person.tip_total over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.tip_total","op":"sum_over"}`
 - Cite: [i1040gi] p. 104, Qualified Tips From More Than One Employer Worksheet, line 2 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.tip_reported`
 
 - **Authored helper label:** Worksheet column (b) total: qualified tips reported on Form W-2 or on Forms 4070
-- **Encoded (NonNegDollars):** Add tipjob.amount over every confirmed tipjob entry, within the current person when parent-bound. An unanswered roster is unknown.
-- Expr: `{"collection":"tipjob","field":"tipjob.amount","op":"sum_over"}`
+- **Encoded (NonNegDollars):** Add person.tip_reported over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.tip_reported","op":"sum_over"}`
 - Cite: [i1040gi] p. 104, Qualified Tips From More Than One Employer Worksheet, column (b); p. 103, methods 1 to 3, "Enter this amount on line 4a" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.tip_multi`
@@ -345,8 +345,8 @@
 ## (helper) — `s1a.line14a_calc`
 
 - **Authored helper label:** Figured: Qualified overtime compensation included in Form W-2, box 1. If you received qualified overtime compensation not reported on Form W-2, box 1, see instructions
-- **Encoded (NonNegDollars):** Add otjob.col_b over every confirmed otjob entry, within the current person when parent-bound. An unanswered roster is unknown.
-- Expr: `{"collection":"otjob","field":"otjob.col_b","op":"sum_over"}`
+- **Encoded (NonNegDollars):** Add person.ot_total over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.ot_total","op":"sum_over"}`
 - Cite: [i1040gi] p. 108, Schedule 1-A, line 14a, and the Qualified Overtime Compensation From More Than One Employer Worksheet, line 2 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 14a — `s1a.line14a`
@@ -812,11 +812,18 @@
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part5",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part5",{"const":true}],"op":"test"},"then":"s1a.line35_calc"}],"op":"choose"}`
 - Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; Part V caution (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `s1a.died_before_65_count`
+
+- **Authored helper label:** Your entry, if the answer is yes
+- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Whose entry is this, yours or your spouse's?" = 'taxpayer' and helper "Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before reaching age 65?" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"all":[{"eq":["person.role",{"const":"taxpayer"}],"op":"test"},{"eq":["person.died_before_65",{"const":true}],"op":"test"}],"op":"test"}}`
+- Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (helper) — `s1a.died_before_65`
 
 - **Authored helper label:** Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before reaching age 65?
-- **Encoded (Bool):** Input — Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)
-- Expr: `{"op":"input","source":"Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)"}`
+- **Encoded (Bool):** helper "Your entry, if the answer is yes" > 0 (a count)
+- Expr: `{"gt":["s1a.died_before_65_count",{"const":0,"type":"Count"}],"op":"test"}`
 - Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (gate) — `s1a.senior_decedent`

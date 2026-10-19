@@ -7,12 +7,12 @@ the fixture test compares).
 
 | Metric | Value |
 | --- | --- |
-| Mutants | 1115 |
+| Mutants | 1134 |
 | Killed by the checker | 75 |
-| Killed by fixtures | 912 |
-| Surviving | 128 (94 provably equivalent) |
+| Killed by fixtures | 929 |
+| Surviving | 130 (94 provably equivalent) |
 | Mutation score (raw) | 88.5% |
-| Mutation score (equivalent mutants excluded) | 96.7% |
+| Mutation score (equivalent mutants excluded) | 96.5% |
 
 ## Surviving — classified equivalent
 
@@ -130,8 +130,10 @@ the fixture test compares).
 | operand.f8960.f8960.line8.line5d | replace an operand | f8960.f8960.line8 | f8960.line5d -> f8960.line5a (Dollars) |
 | operand.f8960.f8960.line9d.line9c | replace an operand | f8960.f8960.line9d | f8960.line9c -> f8960.line4c (NonNegDollars) |
 | operand.f8960.f8960.line12.line11 | replace an operand | f8960.f8960.line12 | f8960.line11 -> f8960.line9d (NonNegDollars) |
+| refusal.person.person.hsa_deduction.0 | remove refusal | person.person.hsa_deduction |  |
 | refusal.person.person.medicare5.0 | remove refusal | person.person.medicare5 |  |
 | refusal.person.person.medicare6.0 | remove refusal | person.person.medicare6 |  |
+| filter.s1.s1.educator_expenses | remove collection filter | s1.s1.educator_expenses |  |
 | refusal.s3.s3.line8.0 | remove refusal | s3.s3.line8 |  |
 | refusal.sa.sa.line17.1 | remove refusal | sa.sa.line17 |  |
 | refusal.sa.sa.line17.2 | remove refusal | sa.sa.line17 |  |

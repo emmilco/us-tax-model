@@ -6,6 +6,16 @@ form:
   note: Part I for an unmarried filer, with the Line 3 Limitation Chart and Worksheet and the last-month rule. Parts II and
     III, Archer MSAs, qualified HSA funding distributions and excess contributions are refused.
   lines:
+  - id: f8889.one
+    printed: (helper)
+    label: One Form 8889
+    type: Count
+    expr:
+      op: param
+      ref: person.one
+    cite:
+      doc: i8889
+      locator: 'p. 4, Name and social security number (SSN), "complete a separate Form 8889 for each of you"'
   - id: f8889.zero
     printed: (helper)
     label: Year parameter sales.zero
@@ -674,3 +684,9 @@ form:
     cite:
       doc: f8889
       locator: Form 8889 (2025), line 13
+  collection:
+    parent: person
+    cite:
+      doc: i8889
+      locator: 'p. 4, Name and social security number (SSN), "If married filing jointly and both you and your spouse have
+        HSAs, complete a separate Form 8889 for each of you"'

@@ -7,24 +7,73 @@ form:
     filing statuses remain refused elsewhere; "unmarried" here is the instructions' unmarried or
     considered unmarried at the end of 2025.
   lines:
-    - id: household.taxpayer_tin
+    - id: household.taxpayer_tin_count
       printed: (helper)
-      type: Bool
-      label: Do you have an SSN or ITIN issued on or before the due date of your return, or have you applied for an ITIN by then?
+      label: Your entry, if the answer is yes
+      type: Count
       expr:
-        op: input
-        source: Do you have an SSN or ITIN issued on or before the due date of your 2025 return (including extensions), or
-          have you applied for an ITIN by then?
+        op: sum_over
+        collection: person
+        field: person.one
+        where:
+          op: test
+          all:
+          - op: test
+            eq:
+            - person.role
+            - const: taxpayer
+          - op: test
+            eq:
+            - person.tin
+            - const: true
       cite:
         doc: i1040gi
         locator: p. 19, Step 5, question 1
+    - id: household.taxpayer_tin
+      printed: (helper)
+      label: Do you have an SSN or ITIN issued on or before the due date of your return, or have you applied for an ITIN by then?
+      type: Bool
+      expr:
+        op: test
+        gt:
+        - household.taxpayer_tin_count
+        - const: 0
+          type: Count
+      cite:
+        doc: i1040gi
+        locator: p. 19, Step 5, question 1
+    - id: household.taxpayer_work_ssn_count
+      printed: (helper)
+      label: Your entry, if the answer is yes
+      type: Count
+      expr:
+        op: sum_over
+        collection: person
+        field: person.one
+        where:
+          op: test
+          all:
+          - op: test
+            eq:
+            - person.role
+            - const: taxpayer
+          - op: test
+            eq:
+            - person.work_ssn
+            - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 18, Step 3, question 4
     - id: household.taxpayer_work_ssn
       printed: (helper)
-      type: Bool
       label: Do you have an SSN valid for employment issued before the due date of your return?
+      type: Bool
       expr:
-        op: input
-        source: Do you have an SSN valid for employment, issued before the due date of your 2025 return (including extensions)?
+        op: test
+        gt:
+        - household.taxpayer_work_ssn_count
+        - const: 0
+          type: Count
       cite:
         doc: i1040gi
         locator: p. 18, Step 3, question 4

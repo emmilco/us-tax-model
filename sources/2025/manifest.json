@@ -979,6 +979,24 @@
       "text_sha256": "e7c0b48bca47d0f07eb14cabf18eca432b74fe6d3e6c56f2b3d5247e1b849703"
     },
     {
+      "id": "p501",
+      "url": "https://www.irs.gov/pub/irs-pdf/p501.pdf",
+      "resolved_url": "https://www.irs.gov/pub/irs-pdf/p501.pdf",
+      "fetched_at": "2026-10-19T05:13:30.902098+00:00",
+      "file": "p501.pdf",
+      "sha256": "288b62a4917f3bc3df0bade7a22c23a8ae648ba9eb5086df5b8b50e881148ff6",
+      "revision": "2025 returns; PDF created 2026-02-04",
+      "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
+      "text_file": "p501.txt",
+      "text_sha256": "6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b",
+      "cols_file": "p501.cols.txt",
+      "cols_sha256": "2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671",
+      "pages_file": "p501.pages.json",
+      "pages_sha256": "f804177ba2aebc7b7bf50fd7f4acf24c392215257b4bcb9a8e64e968e592446f",
+      "extract_tool_version": "0.10",
+      "revision_locator": "PDF page 1, printed heading; PDF metadata CreationDate"
+    },
+    {
       "id": "p505-2026",
       "url": "https://www.irs.gov/pub/irs-pdf/p505.pdf",
       "document_tax_year": 2026,
@@ -1065,7 +1083,7 @@
       "text_sha256": "7520978136b2105fe174efb571e59e32d91f854238549872a5a9ada3d01fe2d9",
       "revision": "Rev. Proc. 2024-40; 2025 adjusted items; released 2024-10",
       "revision_status": "Printed identification inspected in extracted text; archived for the Stage 1 rate schedule (Tax Table midpoint conjecture) and parameter cross-check; content review tracked in the form and parameter citations",
-      "revision_locator": "PDF page 1 (heading); \u00a73.01 Tax Rate Tables",
+      "revision_locator": "PDF page 1 (heading); §3.01 Tax Rate Tables",
       "cols_file": "rp-2024-40.cols.txt",
       "cols_sha256": "fc1ad85af631cb8c6e628604590c2edf4794db9fe94244682737ff577799298e",
       "pages_file": "rp-2024-40.pages.json",

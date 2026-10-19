@@ -59,23 +59,73 @@ form:
       cite:
         doc: f1040sa
         locator: Schedule A (2025), lines 1–18
+    - id: sa.age65_count
+      printed: (helper)
+      label: Your entry, if the answer is yes
+      type: Count
+      expr:
+        op: sum_over
+        collection: person
+        field: person.one
+        where:
+          op: test
+          all:
+          - op: test
+            eq:
+            - person.role
+            - const: taxpayer
+          - op: test
+            eq:
+            - person.age65
+            - const: true
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
     - id: sa.age65
       printed: (helper)
-      type: Bool
       label: Were you born before January 2, 1961?
+      type: Bool
       expr:
-        op: input
-        source: Were you born before January 2, 1961?
+        op: test
+        gt:
+        - sa.age65_count
+        - const: 0
+          type: Count
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.blind_count
+      printed: (helper)
+      label: Your entry, if the answer is yes
+      type: Count
+      expr:
+        op: sum_over
+        collection: person
+        field: person.one
+        where:
+          op: test
+          all:
+          - op: test
+            eq:
+            - person.role
+            - const: taxpayer
+          - op: test
+            eq:
+            - person.blind
+            - const: true
       cite:
         doc: f1040sa
         locator: Schedule A (2025), lines 1–18
     - id: sa.blind
       printed: (helper)
-      type: Bool
       label: Are you blind under the standard-deduction instructions?
+      type: Bool
       expr:
-        op: input
-        source: Are you blind under the standard-deduction instructions?
+        op: test
+        gt:
+        - sa.blind_count
+        - const: 0
+          type: Count
       cite:
         doc: f1040sa
         locator: Schedule A (2025), lines 1–18

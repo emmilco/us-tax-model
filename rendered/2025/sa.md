@@ -38,18 +38,32 @@
 - Expr: `{"op":"input","source":"Claiming any age/blindness standard-deduction boxes for a spouse?"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 
+## (helper) — `sa.age65_count`
+
+- **Authored helper label:** Your entry, if the answer is yes
+- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Whose entry is this, yours or your spouse's?" = 'taxpayer' and helper "Were you born before January 2, 1961?" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"all":[{"eq":["person.role",{"const":"taxpayer"}],"op":"test"},{"eq":["person.age65",{"const":true}],"op":"test"}],"op":"test"}}`
+- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+
 ## (helper) — `sa.age65`
 
 - **Authored helper label:** Were you born before January 2, 1961?
-- **Encoded (Bool):** Input — Were you born before January 2, 1961?
-- Expr: `{"op":"input","source":"Were you born before January 2, 1961?"}`
+- **Encoded (Bool):** helper "Your entry, if the answer is yes" > 0 (a count)
+- Expr: `{"gt":["sa.age65_count",{"const":0,"type":"Count"}],"op":"test"}`
+- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+
+## (helper) — `sa.blind_count`
+
+- **Authored helper label:** Your entry, if the answer is yes
+- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Whose entry is this, yours or your spouse's?" = 'taxpayer' and helper "Are you blind under the standard-deduction instructions?" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"all":[{"eq":["person.role",{"const":"taxpayer"}],"op":"test"},{"eq":["person.blind",{"const":true}],"op":"test"}],"op":"test"}}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 
 ## (helper) — `sa.blind`
 
 - **Authored helper label:** Are you blind under the standard-deduction instructions?
-- **Encoded (Bool):** Input — Are you blind under the standard-deduction instructions?
-- Expr: `{"op":"input","source":"Are you blind under the standard-deduction instructions?"}`
+- **Encoded (Bool):** helper "Your entry, if the answer is yes" > 0 (a count)
+- Expr: `{"gt":["sa.blind_count",{"const":0,"type":"Count"}],"op":"test"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 
 ## (helper) — `sa.spouse_itemizes`
