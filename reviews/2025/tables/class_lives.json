@@ -1,0 +1,2283 @@
+{
+ "job": "class_lives",
+ "table": "tables/2025/class_lives.yaml",
+ "table_sha256": "1cc06993930dd7bb864c7c9114643cebc52377e01024a596ab0ea1b1a7d98ee2",
+ "source": {
+  "doc": "p946",
+  "pages": [
+   99,
+   100,
+   101,
+   102,
+   103,
+   104,
+   105,
+   106,
+   107,
+   108
+  ],
+  "sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2"
+ },
+ "model": "claude-opus-5-5",
+ "model_reported": [
+  "claude-opus-5-5"
+ ],
+ "cost_usd": 0.372956,
+ "system_prompt": "You transcribe tables from IRS publications from the text given to you. You have no tools and no other sources. Output only the YAML requested.",
+ "prompt_sha256": "e94a71c1457c7f97adbe4f62c18146ecce5494e0211bd7fc4c8a152e96297e5d",
+ "date": "2026-10-19",
+ "results": [
+  {
+   "key": "00.11",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "10",
+    "gds": "7",
+    "ads": "10",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 10,
+    "gds": 7,
+    "ads": 10,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "00.12",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "6",
+    "gds": "5",
+    "ads": "5",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 6,
+    "gds": 5,
+    "ads": 5,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "00.13",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "6",
+    "gds": "5",
+    "ads": "6",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 6,
+    "gds": 5,
+    "ads": 6,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "00.21",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "6",
+    "gds": "5",
+    "ads": "6",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 6,
+    "gds": 5,
+    "ads": 6,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "00.22",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "3",
+    "gds": "5",
+    "ads": "5",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 3,
+    "gds": 5,
+    "ads": 5,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "00.23",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "9",
+    "gds": "5",
+    "ads": "9",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 9,
+    "gds": 5,
+    "ads": 9,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "00.241",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "4",
+    "gds": "5",
+    "ads": "5",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 4,
+    "gds": 5,
+    "ads": 5,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "00.242",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "6",
+    "gds": "5",
+    "ads": "6",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 6,
+    "gds": 5,
+    "ads": 6,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "00.25",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "15",
+    "gds": "7",
+    "ads": "15",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 15,
+    "gds": 7,
+    "ads": 15,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "00.26",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "4",
+    "gds": "3",
+    "ads": "4",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 4,
+    "gds": 3,
+    "ads": 4,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "00.27",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "6",
+    "gds": "5",
+    "ads": "6",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 6,
+    "gds": 5,
+    "ads": 6,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "00.28",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "18",
+    "gds": "10",
+    "ads": "18",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 18,
+    "gds": 10,
+    "ads": 18,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "00.3",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "20",
+    "gds": "15",
+    "ads": "20",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 20,
+    "gds": 15,
+    "ads": 20,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "00.4",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "22",
+    "gds": "15",
+    "ads": "22",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 22,
+    "gds": 15,
+    "ads": 22,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "01.1",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "10",
+    "gds": "7",
+    "ads": "10",
+    "footnoted": [
+     "gds"
+    ]
+   },
+   "theirs": {
+    "class_life": 10,
+    "gds": 7,
+    "ads": 10,
+    "footnotes": [
+     {
+      "number": 4,
+      "column": "gds"
+     }
+    ]
+   }
+  },
+  {
+   "key": "01.11",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "12",
+    "gds": "7",
+    "ads": "12",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 12,
+    "gds": 7,
+    "ads": 12,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "01.21",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "7",
+    "gds": "5",
+    "ads": "7",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 7,
+    "gds": 5,
+    "ads": 7,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "01.221",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "10",
+    "gds": "7",
+    "ads": "10",
+    "footnoted": [
+     "description"
+    ]
+   },
+   "theirs": {
+    "class_life": 10,
+    "gds": 7,
+    "ads": 10,
+    "footnotes": [
+     {
+      "number": 2,
+      "column": "description"
+     }
+    ]
+   }
+  },
+  {
+   "key": "01.222",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "10",
+    "gds": "3",
+    "ads": "10",
+    "footnoted": [
+     "description"
+    ]
+   },
+   "theirs": {
+    "class_life": 10,
+    "gds": 3,
+    "ads": 10,
+    "footnotes": [
+     {
+      "number": 2,
+      "column": "description"
+     }
+    ]
+   }
+  },
+  {
+   "key": "01.223",
+   "status": "AGREE",
+   "ours": {
+    "class_life": null,
+    "gds": "3",
+    "ads": "12",
+    "footnoted": [
+     "class",
+     "description"
+    ]
+   },
+   "theirs": {
+    "class_life": null,
+    "gds": 3,
+    "ads": 12,
+    "footnotes": [
+     {
+      "number": 2,
+      "column": "description"
+     },
+     {
+      "number": 1,
+      "column": "class_life"
+     }
+    ]
+   }
+  },
+  {
+   "key": "01.224",
+   "status": "AGREE",
+   "ours": {
+    "class_life": null,
+    "gds": "3",
+    "ads": "12",
+    "footnoted": [
+     "class"
+    ]
+   },
+   "theirs": {
+    "class_life": null,
+    "gds": 3,
+    "ads": 12,
+    "footnotes": [
+     {
+      "number": 2,
+      "column": "description"
+     },
+     {
+      "number": 1,
+      "column": "class_life"
+     }
+    ]
+   }
+  },
+  {
+   "key": "01.225",
+   "status": "AGREE",
+   "ours": {
+    "class_life": null,
+    "gds": "7",
+    "ads": "12",
+    "footnoted": [
+     "class"
+    ]
+   },
+   "theirs": {
+    "class_life": null,
+    "gds": 7,
+    "ads": 12,
+    "footnotes": [
+     {
+      "number": 1,
+      "column": "class_life"
+     }
+    ]
+   }
+  },
+  {
+   "key": "01.23",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "3",
+    "gds": "3",
+    "ads": "3",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 3,
+    "gds": 3,
+    "ads": 3,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "01.24",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "5",
+    "gds": "5",
+    "ads": "5",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 5,
+    "gds": 5,
+    "ads": 5,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "01.3",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "25",
+    "gds": "20",
+    "ads": "25",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 25,
+    "gds": 20,
+    "ads": 25,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "01.4",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "15",
+    "gds": "10",
+    "ads": "15",
+    "footnoted": [
+     "gds"
+    ]
+   },
+   "theirs": {
+    "class_life": 15,
+    "gds": 10,
+    "ads": 15,
+    "footnotes": [
+     {
+      "number": 3,
+      "column": "gds"
+     }
+    ]
+   }
+  },
+  {
+   "key": "10.0",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "10",
+    "gds": "7",
+    "ads": "10",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 10,
+    "gds": 7,
+    "ads": 10,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "13.0",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "7.5",
+    "gds": "5",
+    "ads": "7.5",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 7.5,
+    "gds": 5,
+    "ads": 7.5,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "13.1",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "6",
+    "gds": "5",
+    "ads": "6",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 6,
+    "gds": 5,
+    "ads": 6,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "13.2",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "14",
+    "gds": "7",
+    "ads": "14",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 14,
+    "gds": 7,
+    "ads": 14,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "13.3",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "16",
+    "gds": "10",
+    "ads": "16",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 16,
+    "gds": 10,
+    "ads": 16,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "15.0",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "6",
+    "gds": "5",
+    "ads": "6",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 6,
+    "gds": 5,
+    "ads": 6,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "20.1",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "17",
+    "gds": "10",
+    "ads": "17",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 17,
+    "gds": 10,
+    "ads": 17,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "20.2",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "18",
+    "gds": "10",
+    "ads": "18",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 18,
+    "gds": 10,
+    "ads": 18,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "20.3",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "18",
+    "gds": "10",
+    "ads": "18",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 18,
+    "gds": 10,
+    "ads": 18,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "20.4",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "12",
+    "gds": "7",
+    "ads": "12",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 12,
+    "gds": 7,
+    "ads": 12,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "20.5",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "4",
+    "gds": "3",
+    "ads": "4",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 4,
+    "gds": 3,
+    "ads": 4,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "21.0",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "15",
+    "gds": "7",
+    "ads": "15",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 15,
+    "gds": 7,
+    "ads": 15,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "22.1",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "7.5",
+    "gds": "5",
+    "ads": "7.5",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 7.5,
+    "gds": 5,
+    "ads": 7.5,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "22.2",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "11",
+    "gds": "7",
+    "ads": "11",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 11,
+    "gds": 7,
+    "ads": 11,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "22.3",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "9",
+    "gds": "5",
+    "ads": "9",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 9,
+    "gds": 5,
+    "ads": 9,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "22.4",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "8",
+    "gds": "5",
+    "ads": "8",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 8,
+    "gds": 5,
+    "ads": 8,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "22.5",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "10",
+    "gds": "7",
+    "ads": "10",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 10,
+    "gds": 7,
+    "ads": 10,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "23.0",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "9",
+    "gds": "5",
+    "ads": "9",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 9,
+    "gds": 5,
+    "ads": 9,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "24.1",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "6",
+    "gds": "5",
+    "ads": "6",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 6,
+    "gds": 5,
+    "ads": 6,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "24.2",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "10",
+    "gds": "7",
+    "ads": "10",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 10,
+    "gds": 7,
+    "ads": 10,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "24.3",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "6",
+    "gds": "5",
+    "ads": "6",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 6,
+    "gds": 5,
+    "ads": 6,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "24.4",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "10",
+    "gds": "7",
+    "ads": "10",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 10,
+    "gds": 7,
+    "ads": 10,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "26.1",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "13",
+    "gds": "7",
+    "ads": "13",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 13,
+    "gds": 7,
+    "ads": 13,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "26.2",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "10",
+    "gds": "7",
+    "ads": "10",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 10,
+    "gds": 7,
+    "ads": 10,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "27.0",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "11",
+    "gds": "7",
+    "ads": "11",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 11,
+    "gds": 7,
+    "ads": 11,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "28.0",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "9.5",
+    "gds": "5",
+    "ads": "9.5",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 9.5,
+    "gds": 5,
+    "ads": 9.5,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "30.1",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "14",
+    "gds": "7",
+    "ads": "14",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 14,
+    "gds": 7,
+    "ads": 14,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "30.11",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "4",
+    "gds": "3",
+    "ads": "4",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 4,
+    "gds": 3,
+    "ads": 4,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "30.2",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "11",
+    "gds": "7",
+    "ads": "11",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 11,
+    "gds": 7,
+    "ads": 11,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "30.21",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "3.5",
+    "gds": "3",
+    "ads": "3.5",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 3.5,
+    "gds": 3,
+    "ads": 3.5,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "31.0",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "11",
+    "gds": "7",
+    "ads": "11",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 11,
+    "gds": 7,
+    "ads": 11,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "32.1",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "14",
+    "gds": "7",
+    "ads": "14",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 14,
+    "gds": 7,
+    "ads": 14,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "32.11",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "2.5",
+    "gds": "3",
+    "ads": "2.5",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 2.5,
+    "gds": 3,
+    "ads": 2.5,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "32.2",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "20",
+    "gds": "15",
+    "ads": "20",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 20,
+    "gds": 15,
+    "ads": 20,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "32.3",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "15",
+    "gds": "7",
+    "ads": "15",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 15,
+    "gds": 7,
+    "ads": 15,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "33.2",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "14",
+    "gds": "7",
+    "ads": "14",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 14,
+    "gds": 7,
+    "ads": 14,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "33.21",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "6.5",
+    "gds": "5",
+    "ads": "6.5",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 6.5,
+    "gds": 5,
+    "ads": 6.5,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "33.3",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "14",
+    "gds": "7",
+    "ads": "14",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 14,
+    "gds": 7,
+    "ads": 14,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "33.4",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "15",
+    "gds": "7",
+    "ads": "15",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 15,
+    "gds": 7,
+    "ads": 15,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "34.0",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "12",
+    "gds": "7",
+    "ads": "12",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 12,
+    "gds": 7,
+    "ads": 12,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "34.01",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "3",
+    "gds": "3",
+    "ads": "3",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 3,
+    "gds": 3,
+    "ads": 3,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "35.0",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "10",
+    "gds": "7",
+    "ads": "10",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 10,
+    "gds": 7,
+    "ads": 10,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "36.0",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "6",
+    "gds": "5",
+    "ads": "6",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 6,
+    "gds": 5,
+    "ads": 6,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "36.1",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "5",
+    "gds": "5",
+    "ads": "5",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 5,
+    "gds": 5,
+    "ads": 5,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "37.11",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "12",
+    "gds": "7",
+    "ads": "12",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 12,
+    "gds": 7,
+    "ads": 12,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "37.12",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "3",
+    "gds": "3",
+    "ads": "3",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 3,
+    "gds": 3,
+    "ads": 3,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "37.2",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "10",
+    "gds": "7",
+    "ads": "10",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 10,
+    "gds": 7,
+    "ads": 10,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "37.31",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "12",
+    "gds": "7",
+    "ads": "12",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 12,
+    "gds": 7,
+    "ads": 12,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "37.32",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "16",
+    "gds": "10",
+    "ads": "16",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 16,
+    "gds": 10,
+    "ads": 16,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "37.33",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "6.5",
+    "gds": "5",
+    "ads": "6.5",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 6.5,
+    "gds": 5,
+    "ads": 6.5,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "37.41",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "11.5",
+    "gds": "7",
+    "ads": "11.5",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 11.5,
+    "gds": 7,
+    "ads": 11.5,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "37.42",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "12",
+    "gds": "7",
+    "ads": "12",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 12,
+    "gds": 7,
+    "ads": 12,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "39.0",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "12",
+    "gds": "7",
+    "ads": "12",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 12,
+    "gds": 7,
+    "ads": 12,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "40.1",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "14",
+    "gds": "7",
+    "ads": "14",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 14,
+    "gds": 7,
+    "ads": 14,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "40.2",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "30",
+    "gds": "20",
+    "ads": "30",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 30,
+    "gds": 20,
+    "ads": 30,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "40.3",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "20",
+    "gds": "15",
+    "ads": "20",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 20,
+    "gds": 15,
+    "ads": 20,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "40.4",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "10",
+    "gds": "7",
+    "ads": "10",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 10,
+    "gds": 7,
+    "ads": 10,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "40.51",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "50",
+    "gds": "20",
+    "ads": "50",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 50,
+    "gds": 20,
+    "ads": 50,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "40.52",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "20",
+    "gds": "15",
+    "ads": "20",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 20,
+    "gds": 15,
+    "ads": 20,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "40.53",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "28",
+    "gds": "20",
+    "ads": "28",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 28,
+    "gds": 20,
+    "ads": 28,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "40.54",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "28",
+    "gds": "20",
+    "ads": "28",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 28,
+    "gds": 20,
+    "ads": 28,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "41.0",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "8",
+    "gds": "5",
+    "ads": "8",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 8,
+    "gds": 5,
+    "ads": 8,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "42.0",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "8",
+    "gds": "5",
+    "ads": "8",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 8,
+    "gds": 5,
+    "ads": 8,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "44.0",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "20",
+    "gds": "15",
+    "ads": "20",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 20,
+    "gds": 15,
+    "ads": 20,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "45.0",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "12",
+    "gds": "7",
+    "ads": "12",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 12,
+    "gds": 7,
+    "ads": 12,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "45.1",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "6",
+    "gds": "5",
+    "ads": "6",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 6,
+    "gds": 5,
+    "ads": 6,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "46.0",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "22",
+    "gds": "15",
+    "ads": "22",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 22,
+    "gds": 15,
+    "ads": 22,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "48.11",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "45",
+    "gds": "20",
+    "ads": "45",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 45,
+    "gds": 20,
+    "ads": 45,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "48.12",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "18",
+    "gds": "10",
+    "ads": "18",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 18,
+    "gds": 10,
+    "ads": 18,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "48.121",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "9.5",
+    "gds": "5",
+    "ads": "9.5",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 9.5,
+    "gds": 5,
+    "ads": 9.5,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "48.13",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "10",
+    "gds": "7",
+    "ads": "10",
+    "footnoted": [
+     "ads",
+     "gds"
+    ]
+   },
+   "theirs": {
+    "class_life": 10,
+    "gds": 7,
+    "ads": 10,
+    "footnotes": [
+     {
+      "number": 1,
+      "column": "gds"
+     },
+     {
+      "number": 1,
+      "column": "ads"
+     }
+    ]
+   }
+  },
+  {
+   "key": "48.14",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "24",
+    "gds": "15",
+    "ads": "24",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 24,
+    "gds": 15,
+    "ads": 24,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "48.2",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "6",
+    "gds": "5",
+    "ads": "6",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 6,
+    "gds": 5,
+    "ads": 6,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "48.31",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "19",
+    "gds": "10",
+    "ads": "19",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 19,
+    "gds": 10,
+    "ads": 19,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "48.32",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "13",
+    "gds": "7",
+    "ads": "13",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 13,
+    "gds": 7,
+    "ads": 13,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "48.33",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "26.5",
+    "gds": "20",
+    "ads": "26.5",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 26.5,
+    "gds": 20,
+    "ads": 26.5,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "48.34",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "16.5",
+    "gds": "10",
+    "ads": "16.5",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 16.5,
+    "gds": 10,
+    "ads": 16.5,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "48.35",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "10.5",
+    "gds": "7",
+    "ads": "10.5",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 10.5,
+    "gds": 7,
+    "ads": 10.5,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "48.36",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "10",
+    "gds": "7",
+    "ads": "10",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 10,
+    "gds": 7,
+    "ads": 10,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "48.37",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "8",
+    "gds": "5",
+    "ads": "8",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 8,
+    "gds": 5,
+    "ads": 8,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "48.38",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "10",
+    "gds": "7",
+    "ads": "10",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 10,
+    "gds": 7,
+    "ads": 10,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "48.39",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "13.5",
+    "gds": "7",
+    "ads": "13.5",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 13.5,
+    "gds": 7,
+    "ads": 13.5,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "48.41",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "11",
+    "gds": "7",
+    "ads": "11",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 11,
+    "gds": 7,
+    "ads": 11,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "48.42",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "10",
+    "gds": "7",
+    "ads": "10",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 10,
+    "gds": 7,
+    "ads": 10,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "48.43",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "9",
+    "gds": "5",
+    "ads": "9",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 9,
+    "gds": 5,
+    "ads": 9,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "48.44",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "8.5",
+    "gds": "5",
+    "ads": "8.5",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 8.5,
+    "gds": 5,
+    "ads": 8.5,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "48.45",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "9.5",
+    "gds": "5",
+    "ads": "9.5",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 9.5,
+    "gds": 5,
+    "ads": 9.5,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "49.11",
+   "status": "DISAGREE",
+   "ours": {
+    "class_life": null,
+    "gds": null,
+    "ads": null,
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 50,
+    "gds": 20,
+    "ads": 50,
+    "footnotes": []
+   },
+   "ruling": "Ruling (genuine ambiguity; project refuses the class): in the archived layout text (p946.txt p. 107) the values 50, 20 and 50 are printed on the line of the unnumbered heading \"Electric, Gas, Water, and Steam Utility Services: Includes assets used in the production, transmission, and distribution of electricity, gas, steam, or water for sale including related land improvements\", and no values are printed on the lines of 49.11 \"Electric Utility Hydraulic Production Plant\". The second transcription gave the heading's values to 49.11. Which class the printed values belong to cannot be settled from the page, so 49.11 is given the period outside and refused; utility production plant is not property of a Schedule C business in this tool's scope."
+  },
+  {
+   "key": "49.12",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "20",
+    "gds": "15",
+    "ads": "20",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 20,
+    "gds": 15,
+    "ads": 20,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "49.121",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "5",
+    "gds": "5",
+    "ads": "5",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 5,
+    "gds": 5,
+    "ads": 5,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "49.13",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "28",
+    "gds": "20",
+    "ads": "28",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 28,
+    "gds": 20,
+    "ads": 28,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "49.14",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "30",
+    "gds": "20",
+    "ads": "30",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 30,
+    "gds": 20,
+    "ads": 30,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "49.15",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "20",
+    "gds": "15",
+    "ads": "20",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 20,
+    "gds": 15,
+    "ads": 20,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "49.21",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "35",
+    "gds": "20",
+    "ads": "35",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 35,
+    "gds": 20,
+    "ads": 35,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "49.221",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "30",
+    "gds": "20",
+    "ads": "30",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 30,
+    "gds": 20,
+    "ads": 30,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "49.222",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "14",
+    "gds": "7",
+    "ads": "14",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 14,
+    "gds": 7,
+    "ads": 14,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "49.223",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "18",
+    "gds": "10",
+    "ads": "18",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 18,
+    "gds": 10,
+    "ads": 18,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "49.23",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "14",
+    "gds": "7",
+    "ads": "14",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 14,
+    "gds": 7,
+    "ads": 14,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "49.24",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "22",
+    "gds": "15",
+    "ads": "22",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 22,
+    "gds": 15,
+    "ads": 22,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "49.25",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "22",
+    "gds": "15",
+    "ads": "22",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 22,
+    "gds": 15,
+    "ads": 22,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "49.3",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "50",
+    "gds": "20",
+    "ads": "50",
+    "footnoted": [
+     "gds"
+    ]
+   },
+   "theirs": {
+    "class_life": 50,
+    "gds": 20,
+    "ads": 50,
+    "footnotes": [
+     {
+      "number": 3,
+      "column": "gds"
+     }
+    ]
+   }
+  },
+  {
+   "key": "49.4",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "28",
+    "gds": "20",
+    "ads": "28",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 28,
+    "gds": 20,
+    "ads": 28,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "49.5",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "10",
+    "gds": "7",
+    "ads": "10",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 10,
+    "gds": 7,
+    "ads": 10,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "50.0",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "24",
+    "gds": "15",
+    "ads": "24",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 24,
+    "gds": 15,
+    "ads": 24,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "51.0",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "50",
+    "gds": "20",
+    "ads": "50",
+    "footnoted": [
+     "gds"
+    ]
+   },
+   "theirs": {
+    "class_life": 50,
+    "gds": 20,
+    "ads": 50,
+    "footnotes": [
+     {
+      "number": 3,
+      "column": "gds"
+     }
+    ]
+   }
+  },
+  {
+   "key": "57.0",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "9",
+    "gds": "5",
+    "ads": "9",
+    "footnoted": [
+     "ads"
+    ]
+   },
+   "theirs": {
+    "class_life": 9,
+    "gds": 5,
+    "ads": 9,
+    "footnotes": [
+     {
+      "number": 1,
+      "column": "ads"
+     }
+    ]
+   }
+  },
+  {
+   "key": "57.1",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "20",
+    "gds": "15",
+    "ads": "20",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 20,
+    "gds": 15,
+    "ads": 20,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "79.0",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "10",
+    "gds": "7",
+    "ads": "10",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 10,
+    "gds": 7,
+    "ads": 10,
+    "footnotes": []
+   }
+  },
+  {
+   "key": "80.0",
+   "status": "AGREE",
+   "ours": {
+    "class_life": "12.5",
+    "gds": "7",
+    "ads": "12.5",
+    "footnoted": []
+   },
+   "theirs": {
+    "class_life": 12.5,
+    "gds": 7,
+    "ads": 12.5,
+    "footnotes": []
+   }
+  }
+ ]
+}

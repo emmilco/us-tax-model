@@ -1,0 +1,18 @@
+# The first-year limit for a passenger automobile placed in service in 2025, and in 2019 (for its unrecovered basis),
+# when no special depreciation allowance is claimed (the footnotes of the table in Pub. 946); no 2025 computation uses
+# another year's first-year limit. Written by hand; checked by tools/check_auto_limits.py.
+table:
+  id: auto_limit_first_nobonus
+  kind: keyed
+  title: "First-year limit for passenger automobiles without the special depreciation allowance (Pub. 946, footnotes 1 to 6)"
+  tax_year: 2025
+  cite:
+    doc: p946
+    locator: "p. 59, footnotes 1 to 6 of the table of Maximum Depreciation Deduction for Passenger Automobiles"
+    quote: "If you elected not to claim any special depreciation allowance or the vehicle is not qualified property, the maximum depreciation deduction is $12,200."
+  keys:
+    - { name: placed, type: Enum(placed_year) }
+  cell: NonNegDollars
+  rows:
+    - { keys: [y2025], value: 1220000 }
+    - { keys: [y2019], value: 1010000 }

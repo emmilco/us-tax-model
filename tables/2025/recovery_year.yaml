@@ -1,0 +1,36 @@
+# The 2025 year of recovery of property placed in service in each earlier calendar year, for a calendar-year filer
+# (year 1 is the year placed in service). Written by hand; each row is 2025 less the year placed in service, plus 1.
+table:
+  id: recovery_year
+  kind: keyed
+  title: "Year of recovery in 2025, by year placed in service"
+  tax_year: 2025
+  cite:
+    doc: p946-html
+    locator: "Chapter 4, Using the MACRS Percentage Tables; the example of residential rental property placed in service on July 2, 2023, sold March 2, 2025"
+    quote: "This is $100,000 multiplied by 0.03636 (the percentage for the seventh month of the third recovery year) from Table A-6."
+  keys:
+    - { name: placed, type: Enum(placed_year) }
+  cell: Count
+  rows:
+    - { keys: [y2025], value: 1 }
+    - { keys: [y2024], value: 2 }
+    - { keys: [y2023], value: 3 }
+    - { keys: [y2022], value: 4 }
+    - { keys: [y2021], value: 5 }
+    - { keys: [y2020], value: 6 }
+    - { keys: [y2019], value: 7 }
+    - { keys: [y2018], value: 8 }
+    - { keys: [y2017], value: 9 }
+    - { keys: [y2016], value: 10 }
+    - { keys: [y2015], value: 11 }
+    - { keys: [y2014], value: 12 }
+    - { keys: [y2013], value: 13 }
+    - { keys: [y2012], value: 14 }
+    - { keys: [y2011], value: 15 }
+    - { keys: [y2010], value: 16 }
+    - { keys: [y2009], value: 17 }
+    - { keys: [y2008], value: 18 }
+    - { keys: [y2007], value: 19 }
+    - { keys: [y2006], value: 20 }
+    - { keys: [y2005], value: 21 }

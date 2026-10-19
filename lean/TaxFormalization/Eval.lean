@@ -135,6 +135,17 @@ def keyedRows (table : Json) : List (List String × Json) :=
       (ks, keyedCell cell (objGetD r "value" Json.null)))
   | _ => []
 
+/-- The key of the enclosing entry of collection `docId` within an instance key
+(segments `doc[key]` joined by dots), or none when `docId` does not enclose it. -/
+def enclosingKey (instKey : Option String) (docId : String) : Option String :=
+  match instKey with
+  | none => none
+  | some k =>
+    let segs := k.splitOn "."
+    match segs.findIdx? (fun seg => seg.startsWith (docId ++ "[")) with
+    | some i => some (".".intercalate (segs.take (i + 1)))
+    | none => none
+
 def inputValue (v : Json) : Json :=
   match v with
   | .num n => mkMoney n.mantissa
@@ -297,7 +308,9 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
       match ctx.forms.get? formId with
       | some doc =>
         if (findLine doc lineId).isSome then
-          eval ctx fuel { docId := formId, doc := doc, instKey := none, bind := Json.null, caller := none } (.line lineId)
+          -- a line of an enclosing collection entry is read in that entry
+          let enclosing := if (objGet doc "collection").isSome then enclosingKey frame.instKey formId else none
+          eval ctx fuel { docId := formId, doc := doc, instKey := enclosing, bind := Json.null, caller := none } (.line lineId)
         else pure (unknown s!"unresolved reference {lineId}")
       | none => pure (unknown s!"unresolved reference {lineId}")
 

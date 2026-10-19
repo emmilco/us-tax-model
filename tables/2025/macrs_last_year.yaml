@@ -1,0 +1,23 @@
+# The last year of recovery under GDS for each recovery period: the recovery period plus one, the number of
+# years each column of Pub. 946 Tables A-1 to A-5 and A-8 to A-12 runs (checked against tables/2025/macrs_gds.yaml
+# by tools/check_macrs_tables.py).
+table:
+  id: macrs_last_year
+  kind: keyed
+  title: "Last year of recovery of each GDS recovery period (Pub. 946, Tables A-1 to A-5 and A-8 to A-12)"
+  tax_year: 2025
+  cite:
+    doc: p946
+    locator: "Appendix A, Tables A-1 to A-5 (3- to 20-year property, years 1 to 21) and A-8 to A-12"
+    quote: "Depreciation rate for recovery period"
+  keys:
+    - { name: period, type: Enum(macrs_period) }
+  cell: Count
+  rows:
+    - { keys: [y3], value: 4 }
+    - { keys: [y5], value: 6 }
+    - { keys: [y7], value: 8 }
+    - { keys: [y10], value: 11 }
+    - { keys: [y15], value: 16 }
+    - { keys: [y20], value: 21 }
+    - { keys: [y15sl], value: 16 }

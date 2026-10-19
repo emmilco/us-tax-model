@@ -143,6 +143,15 @@ function canonicalKey(frame: Frame, lineId: string): string {
   return `${frame.instKey ?? frame.doc.id}.${local}`;
 }
 
+/** The key of the enclosing entry of collection `docId` within instance key `instKey`
+ * (segments `doc[key]` joined by dots), or null when `docId` does not enclose it. */
+export function enclosingKey(instKey: string | null, docId: string): string | null {
+  if (!instKey) return null;
+  const segs = instKey.split(".");
+  const at = segs.findIndex((seg) => seg.startsWith(`${docId}[`));
+  return at < 0 ? null : segs.slice(0, at + 1).join(".");
+}
+
 function evalLine(ctx: Ctx, frame: Frame, lineId: string): Derivation {
   const key = canonicalKey(frame, lineId);
   const memo = ctx.memo.get(key);
@@ -162,7 +171,9 @@ function evalLine(ctx: Ctx, frame: Frame, lineId: string): Derivation {
     const target = dot > 0 ? ctx.byId.get(lineId.slice(0, dot)) : undefined;
     const targetLine = target?.lines.find((l) => l.id === lineId);
     if (target && targetLine) {
-      result = evalLine(ctx, { doc: target, instKey: null, bind: null, caller: null }, lineId);
+      // A line of an enclosing collection entry is read in that entry; any other document at top level.
+      const enclosing = target.collection ? enclosingKey(frame.instKey, target.id) : null;
+      result = evalLine(ctx, { doc: target, instKey: enclosing, bind: null, caller: null }, lineId);
       ctx.memo.set(key, result);
       ctx.inProgress.delete(key);
       return result;

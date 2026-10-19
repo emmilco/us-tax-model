@@ -7,11 +7,11 @@ the fixture test compares).
 
 | Metric | Value |
 | --- | --- |
-| Mutants | 1184 |
+| Mutants | 1187 |
 | Killed by the checker | 87 |
 | Killed by fixtures | 968 |
-| Surviving | 129 (95 provably equivalent) |
-| Mutation score (raw) | 89.1% |
+| Surviving | 132 (98 provably equivalent) |
+| Mutation score (raw) | 88.9% |
 | Mutation score (equivalent mutants excluded) | 96.9% |
 
 ## Surviving — classified equivalent
@@ -111,6 +111,9 @@ the fixture test compares).
 - `param.eic.ws_threshold0.joint.$1` (shift a money parameter (+$1), eic.ws_threshold0.joint): Line 5 amount eic.ws_threshold0.joint: in eic_0 the bands covering [eic.ws_threshold0.joint, eic.ws_threshold0.joint + $1) print each table's maximum in the column used, so shifting the amount by $1 can only turn a lookup equal to the maximum into a blank line 5; line 6 is line 2 either way. (structural conditions re-checked this run.)
 - `param.eic.ws_threshold0.other.$1` (shift a money parameter (+$1), eic.ws_threshold0.other): Line 5 amount eic.ws_threshold0.other: in eic_0 the bands covering [eic.ws_threshold0.other, eic.ws_threshold0.other + $1) print each table's maximum in the column used, so shifting the amount by $1 can only turn a lookup equal to the maximum into a blank line 5; line 6 is line 2 either way. (structural conditions re-checked this run.)
 - `param.eic.ws_threshold1.joint.$1` (shift a money parameter (+$1), eic.ws_threshold1.joint): Line 5 amount eic.ws_threshold1.joint: in eic_1, eic_2, eic_3 the bands covering [eic.ws_threshold1.joint, eic.ws_threshold1.joint + $1) print each table's maximum in the column used, so shifting the amount by $1 can only turn a lookup equal to the maximum into a blank line 5; line 6 is line 2 either way. (structural conditions re-checked this run.)
+- `param.sc.ho_rate.$1` (shift a money parameter (+$1), sc.ho_rate): Unread parameter: no line of any form or definition reads sc.ho_rate; it serves a cross-check outside the computation, so shifting it cannot change any value.
+- `param.sc.meals_rate.+1pt` (shift a rate parameter (+1 point), sc.meals_rate): Unread parameter: no line of any form or definition reads sc.meals_rate; it serves a cross-check outside the computation, so shifting it cannot change any value.
+- `param.sc.meals_rate_dot.+1pt` (shift a rate parameter (+1 point), sc.meals_rate_dot): Unread parameter: no line of any form or definition reads sc.meals_rate_dot; it serves a cross-check outside the computation, so shifting it cannot change any value.
 
 ## Surviving — not yet explained
 

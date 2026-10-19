@@ -1184,10 +1184,11 @@
       "fetched_at": "2026-10-19T17:17:19.574595+00:00",
       "file": "p463-html.html",
       "sha256": "2027786a2817e369c6b1c4904c337faeb535c25bf2eb75864aacad664a031352",
-      "revision": null,
-      "revision_status": "Pending inspection of archived document; not cleared for encoding",
+      "revision": "2025",
+      "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
       "text_file": "p463-html.txt",
-      "text_sha256": "b10158354ffbce8c7ddabbfee1bc4b98f08c56f61e825acd83487808b9710253"
+      "text_sha256": "b10158354ffbce8c7ddabbfee1bc4b98f08c56f61e825acd83487808b9710253",
+      "revision_locator": "Page title, \"Publication 463 (2025), Travel, Gift, and Car Expenses\""
     },
     {
       "id": "p501",
@@ -1343,10 +1344,11 @@
       "fetched_at": "2026-10-19T17:17:18.498206+00:00",
       "file": "p946-html.html",
       "sha256": "b5ac23e5cbf6cdfb516cdbb1bef4a0bdf54875855359b01e5d9adb4fbce941ec",
-      "revision": null,
-      "revision_status": "Pending inspection of archived document; not cleared for encoding",
+      "revision": "2025",
+      "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
       "text_file": "p946-html.txt",
-      "text_sha256": "4a7262659b02732b0051f03745d3f96d7d4fdfe1d6632a39482aed0c0e05926f"
+      "text_sha256": "4a7262659b02732b0051f03745d3f96d7d4fdfe1d6632a39482aed0c0e05926f",
+      "revision_locator": "Page title, \"Publication 946 (2025), How To Depreciate Property\""
     },
     {
       "id": "rp-2024-40",

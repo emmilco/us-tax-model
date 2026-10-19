@@ -179,6 +179,8 @@ A form definition is a list of lines in printed order, plus the form's identity,
 
 Forms that occur in multiples (Form W-2, Form 1099-INT, Form 1099-DIV, Form 8949 rows) are keyed collections. Aggregation across them is always an explicit `sum_over`. Pagination is a presentation matter and is not modelled.
 
+A collection may sit within another (a Schedule C within a person, a Form 4562 within a Schedule C). A line of an entry may read a line of the entry that encloses it, which is evaluated in that enclosing entry; no other reference into a collection is allowed. A Form 4562 reads its business's totals this way (Stage 14, owner's choice).
+
 A form evaluated more than once under different inputs is a parameterized instance, not a cycle.
 
 ### 4.5 Parameters and tables

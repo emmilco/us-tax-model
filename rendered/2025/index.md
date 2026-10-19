@@ -43,11 +43,17 @@ Review these renderings line by line against the archived IRS sources in `source
 | tipjob.md | form | 6 |
 | u1250.md | form | 19 |
 | w2.md | form | 10 |
+| auto_limit.md | keyed | 0 rows |
+| auto_limit_first_nobonus.md | keyed | 0 rows |
+| class_lives.md | keyed | 0 rows |
 | eic_0.md | tax_table | 1376 rows |
 | eic_1.md | tax_table | 1376 rows |
 | eic_2.md | tax_table | 1376 rows |
 | eic_3.md | tax_table | 1376 rows |
+| macrs_gds.md | keyed | 0 rows |
+| macrs_last_year.md | keyed | 0 rows |
 | rate_schedule.md | bracket_schedule | 4 rows |
+| recovery_year.md | keyed | 0 rows |
 | tax_table.md | tax_table | 2062 rows |
 | params.md | parameters | |
 | ambiguities.md | register | |

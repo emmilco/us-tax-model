@@ -1,0 +1,160 @@
+# Pub. 946 (2025) Appendix B, Tables B-1 and B-2, Table of Class Lives and Recovery Periods: the GDS recovery
+# period of each asset class, or `outside` for a farming class, a class with a footnote, or a GDS period this tool
+# does not depreciate.
+# Source: sources/2025/p946.pdf sha256 07fadfb2a6ee34767d77b9a2d3a28413c4afa2d0bd2f0488fd6a4b1b9b5904c4
+# Extractor: tools/extract_class_lives.py v0.1
+# Regenerate with: python3 tools/extract_class_lives.py
+table:
+  id: class_lives
+  kind: keyed
+  title: "GDS recovery period by asset class (Pub. 946, Appendix B, Tables B-1 and B-2)"
+  tax_year: 2025
+  cite:
+    doc: p946
+    locator: "Appendix B, Tables B-1 and B-2, Table of Class Lives and Recovery Periods, pp. 98-108"
+    quote: "Generally, if the property is listed in Table B-1, you use the recovery period shown in that table. However, if the property is specifically listed in Table B-2 under the type of activity in which it is used, you use the recovery period listed under the activity in that table."
+  keys:
+    - { name: asset_class, type: Enum(asset_class) }
+  cell: Enum(macrs_period)
+  rows:
+    - { keys: [c00_11], value: y7 }
+    - { keys: [c00_12], value: y5 }
+    - { keys: [c00_13], value: y5 }
+    - { keys: [c00_21], value: y5 }
+    - { keys: [c00_22], value: y5 }
+    - { keys: [c00_23], value: y5 }
+    - { keys: [c00_241], value: y5 }
+    - { keys: [c00_242], value: y5 }
+    - { keys: [c00_25], value: y7 }
+    - { keys: [c00_26], value: y3 }
+    - { keys: [c00_27], value: y5 }
+    - { keys: [c00_28], value: y10 }
+    - { keys: [c00_3], value: y15 }
+    - { keys: [c00_4], value: y15 }
+    - { keys: [c01_1], value: outside }
+    - { keys: [c01_11], value: outside }
+    - { keys: [c01_21], value: outside }
+    - { keys: [c01_221], value: outside }
+    - { keys: [c01_222], value: outside }
+    - { keys: [c01_223], value: outside }
+    - { keys: [c01_224], value: outside }
+    - { keys: [c01_225], value: outside }
+    - { keys: [c01_23], value: outside }
+    - { keys: [c01_24], value: outside }
+    - { keys: [c01_3], value: outside }
+    - { keys: [c01_4], value: outside }
+    - { keys: [c10_0], value: y7 }
+    - { keys: [c13_0], value: y5 }
+    - { keys: [c13_1], value: y5 }
+    - { keys: [c13_2], value: y7 }
+    - { keys: [c13_3], value: y10 }
+    - { keys: [c15_0], value: y5 }
+    - { keys: [c20_1], value: y10 }
+    - { keys: [c20_2], value: y10 }
+    - { keys: [c20_3], value: y10 }
+    - { keys: [c20_4], value: y7 }
+    - { keys: [c20_5], value: y3 }
+    - { keys: [c21_0], value: y7 }
+    - { keys: [c22_1], value: y5 }
+    - { keys: [c22_2], value: y7 }
+    - { keys: [c22_3], value: y5 }
+    - { keys: [c22_4], value: y5 }
+    - { keys: [c22_5], value: y7 }
+    - { keys: [c23_0], value: y5 }
+    - { keys: [c24_1], value: y5 }
+    - { keys: [c24_2], value: y7 }
+    - { keys: [c24_3], value: y5 }
+    - { keys: [c24_4], value: y7 }
+    - { keys: [c26_1], value: y7 }
+    - { keys: [c26_2], value: y7 }
+    - { keys: [c27_0], value: y7 }
+    - { keys: [c28_0], value: y5 }
+    - { keys: [c30_1], value: y7 }
+    - { keys: [c30_11], value: y3 }
+    - { keys: [c30_2], value: y7 }
+    - { keys: [c30_21], value: y3 }
+    - { keys: [c31_0], value: y7 }
+    - { keys: [c32_1], value: y7 }
+    - { keys: [c32_11], value: y3 }
+    - { keys: [c32_2], value: y15 }
+    - { keys: [c32_3], value: y7 }
+    - { keys: [c33_2], value: y7 }
+    - { keys: [c33_21], value: y5 }
+    - { keys: [c33_3], value: y7 }
+    - { keys: [c33_4], value: y7 }
+    - { keys: [c34_0], value: y7 }
+    - { keys: [c34_01], value: y3 }
+    - { keys: [c35_0], value: y7 }
+    - { keys: [c36_0], value: y5 }
+    - { keys: [c36_1], value: y5 }
+    - { keys: [c37_11], value: y7 }
+    - { keys: [c37_12], value: y3 }
+    - { keys: [c37_2], value: y7 }
+    - { keys: [c37_31], value: y7 }
+    - { keys: [c37_32], value: y10 }
+    - { keys: [c37_33], value: y5 }
+    - { keys: [c37_41], value: y7 }
+    - { keys: [c37_42], value: y7 }
+    - { keys: [c39_0], value: y7 }
+    - { keys: [c40_1], value: y7 }
+    - { keys: [c40_2], value: y20 }
+    - { keys: [c40_3], value: y15 }
+    - { keys: [c40_4], value: y7 }
+    - { keys: [c40_51], value: y20 }
+    - { keys: [c40_52], value: y15 }
+    - { keys: [c40_53], value: y20 }
+    - { keys: [c40_54], value: y20 }
+    - { keys: [c41_0], value: y5 }
+    - { keys: [c42_0], value: y5 }
+    - { keys: [c44_0], value: y15 }
+    - { keys: [c45_0], value: y7 }
+    - { keys: [c45_1], value: y5 }
+    - { keys: [c46_0], value: y15 }
+    - { keys: [c48_11], value: y20 }
+    - { keys: [c48_12], value: y10 }
+    - { keys: [c48_121], value: y5 }
+    - { keys: [c48_13], value: outside }
+    - { keys: [c48_14], value: y15 }
+    - { keys: [c48_2], value: y5 }
+    - { keys: [c48_31], value: y10 }
+    - { keys: [c48_32], value: y7 }
+    - { keys: [c48_33], value: y20 }
+    - { keys: [c48_34], value: y10 }
+    - { keys: [c48_35], value: y7 }
+    - { keys: [c48_36], value: y7 }
+    - { keys: [c48_37], value: y5 }
+    - { keys: [c48_38], value: y7 }
+    - { keys: [c48_39], value: y7 }
+    - { keys: [c48_41], value: y7 }
+    - { keys: [c48_42], value: y7 }
+    - { keys: [c48_43], value: y5 }
+    - { keys: [c48_44], value: y5 }
+    - { keys: [c48_45], value: y5 }
+    - { keys: [c49_11], value: outside }
+    - { keys: [c49_12], value: y15 }
+    - { keys: [c49_121], value: y5 }
+    - { keys: [c49_13], value: y20 }
+    - { keys: [c49_14], value: y20 }
+    - { keys: [c49_15], value: y15 }
+    - { keys: [c49_21], value: y20 }
+    - { keys: [c49_221], value: y20 }
+    - { keys: [c49_222], value: y7 }
+    - { keys: [c49_223], value: y10 }
+    - { keys: [c49_23], value: y7 }
+    - { keys: [c49_24], value: y15 }
+    - { keys: [c49_25], value: y15 }
+    - { keys: [c49_3], value: outside }
+    - { keys: [c49_4], value: y20 }
+    - { keys: [c49_5], value: y7 }
+    - { keys: [c50_0], value: y15 }
+    - { keys: [c51_0], value: outside }
+    - { keys: [c57_0], value: y5 }
+    - { keys: [c57_1], value: y15 }
+    - { keys: [c79_0], value: y7 }
+    - { keys: [c80_0], value: y7 }
+    - { keys: [cA_personal], value: y7 }   # Table B-2, Certain Property for Which Recovery Periods Assigned, A. Personal Property With No Class Life
+    - { keys: [cA_1245real], value: outside }   # Table B-2, A. Section 1245 Real Property With No Class Life
+    - { keys: [cB_qte], value: y5 }   # Table B-2, B. Qualified Technological Equipment, as defined in section 168(i)(2)
+    - { keys: [cC_research], value: y5 }   # Table B-2, C. Property Used in Connection with Research and Experimentation referred to in section 168(e)(3)(B)
+    - { keys: [cDEF_energy], value: outside }   # Table B-2, D, E and F (alternative energy, biomass and energy property)
+    - { keys: [cqip], value: y15sl }   # Qualified improvement property placed in service after 2017 (i4562 p. 10; Pub. 946 Table 4-1)

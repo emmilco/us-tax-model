@@ -1,0 +1,198 @@
+{
+ "job": "macrs_mq",
+ "table": "tables/2025/macrs_gds.yaml",
+ "table_sha256": "f277d58dbb3bcd44efc6f15bc6008995d4fd60535caf19c72ce0942eef4b1704",
+ "source": {
+  "doc": "p946",
+  "pages": [
+   71,
+   72,
+   73
+  ],
+  "sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2"
+ },
+ "model": "claude-opus-5-5",
+ "model_reported": [
+  "claude-opus-5-5"
+ ],
+ "cost_usd": 0.051772,
+ "system_prompt": "You transcribe tables from IRS publications from the text given to you. You have no tools and no other sources. Output only the YAML requested.",
+ "prompt_sha256": "137fdd732b8de97f355ef2bbd82e26a948cee3fce054a8e2b4c70e4163aa1a37",
+ "date": "2026-10-19",
+ "results": [
+  {
+   "key": "a2_20year/1",
+   "status": "AGREE",
+   "ours": "6.563",
+   "theirs": "6.563"
+  },
+  {
+   "key": "a2_20year/10",
+   "status": "AGREE",
+   "ours": "4.459",
+   "theirs": "4.459"
+  },
+  {
+   "key": "a2_20year/11",
+   "status": "AGREE",
+   "ours": "4.459",
+   "theirs": "4.459"
+  },
+  {
+   "key": "a2_20year/12",
+   "status": "AGREE",
+   "ours": "4.46",
+   "theirs": "4.460"
+  },
+  {
+   "key": "a2_20year/13",
+   "status": "AGREE",
+   "ours": "4.459",
+   "theirs": "4.459"
+  },
+  {
+   "key": "a2_20year/14",
+   "status": "AGREE",
+   "ours": "4.46",
+   "theirs": "4.460"
+  },
+  {
+   "key": "a2_20year/15",
+   "status": "AGREE",
+   "ours": "4.459",
+   "theirs": "4.459"
+  },
+  {
+   "key": "a2_20year/16",
+   "status": "AGREE",
+   "ours": "4.46",
+   "theirs": "4.460"
+  },
+  {
+   "key": "a2_20year/17",
+   "status": "AGREE",
+   "ours": "4.459",
+   "theirs": "4.459"
+  },
+  {
+   "key": "a2_20year/18",
+   "status": "AGREE",
+   "ours": "4.46",
+   "theirs": "4.460"
+  },
+  {
+   "key": "a2_20year/19",
+   "status": "AGREE",
+   "ours": "4.459",
+   "theirs": "4.459"
+  },
+  {
+   "key": "a2_20year/2",
+   "status": "AGREE",
+   "ours": "7",
+   "theirs": "7.000"
+  },
+  {
+   "key": "a2_20year/20",
+   "status": "AGREE",
+   "ours": "4.46",
+   "theirs": "4.460"
+  },
+  {
+   "key": "a2_20year/21",
+   "status": "AGREE",
+   "ours": "0.565",
+   "theirs": "0.565"
+  },
+  {
+   "key": "a2_20year/3",
+   "status": "AGREE",
+   "ours": "6.482",
+   "theirs": "6.482"
+  },
+  {
+   "key": "a2_20year/4",
+   "status": "AGREE",
+   "ours": "5.996",
+   "theirs": "5.996"
+  },
+  {
+   "key": "a2_20year/5",
+   "status": "AGREE",
+   "ours": "5.546",
+   "theirs": "5.546"
+  },
+  {
+   "key": "a2_20year/6",
+   "status": "AGREE",
+   "ours": "5.13",
+   "theirs": "5.130"
+  },
+  {
+   "key": "a2_20year/7",
+   "status": "AGREE",
+   "ours": "4.746",
+   "theirs": "4.746"
+  },
+  {
+   "key": "a2_20year/8",
+   "status": "AGREE",
+   "ours": "4.459",
+   "theirs": "4.459"
+  },
+  {
+   "key": "a2_20year/9",
+   "status": "AGREE",
+   "ours": "4.459",
+   "theirs": "4.459"
+  },
+  {
+   "key": "a3_7year/1",
+   "status": "AGREE",
+   "ours": "17.85",
+   "theirs": "17.85"
+  },
+  {
+   "key": "a3_7year/2",
+   "status": "AGREE",
+   "ours": "23.47",
+   "theirs": "23.47"
+  },
+  {
+   "key": "a3_7year/3",
+   "status": "AGREE",
+   "ours": "16.76",
+   "theirs": "16.76"
+  },
+  {
+   "key": "a3_7year/4",
+   "status": "AGREE",
+   "ours": "11.97",
+   "theirs": "11.97"
+  },
+  {
+   "key": "a3_7year/5",
+   "status": "AGREE",
+   "ours": "8.87",
+   "theirs": "8.87"
+  },
+  {
+   "key": "a3_7year/6",
+   "status": "AGREE",
+   "ours": "8.87",
+   "theirs": "8.87"
+  },
+  {
+   "key": "a3_7year/7",
+   "status": "AGREE",
+   "ours": "8.87",
+   "theirs": "8.87"
+  },
+  {
+   "key": "a3_7year/8",
+   "status": "AGREE",
+   "ours": "3.34",
+   "theirs": "3.34"
+  }
+ ]
+}

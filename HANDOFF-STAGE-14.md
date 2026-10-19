@@ -98,6 +98,18 @@ for 2020 and 2023; the 2025 shares are assumed similar.
   ignores numbers, so the numeric tables get their second check elsewhere: MACRS
   rates against rates derived from the method and convention, the car limits
   between `i4562` and `p463`, Appendix B by the second transcription.
+- **Vehicle depreciation reach (owner):** passenger automobiles (including trucks
+  and vans) on actual expenses placed in service 2019 to 2025: the recovery-period
+  years and a 2019 vehicle's first year after its recovery period, all derived from
+  the vehicle's own facts. Vehicles placed in service in 2018 or earlier are refused
+  (their deduction needs each earlier post-recovery year's business use, or `i4562`
+  Tables 1, 3 and 4).
+- **Form 4562 per business (owner):** `f4562` is a one-per-business entry under
+  `sc` and reads its business's totals through the new enclosing-entry reference
+  (spec 4.4); vehicles (`scveh`) and other property (`asset`) are entries under `sc`.
+  Section 179 Part I is figured once per return; when the allowed deduction differs
+  from the amounts elected for 2025, it goes to the only Schedule C on the return,
+  and more than one Schedule C is refused in that case.
 - **Settled by the text and earlier rulings:** line 16 covers SEP (Pub. 560, Deduction
   Worksheet for Self-Employed) and SIMPLE (Pub. 560 chapter 3); qualified plans with
   elective deferrals are refused. A vehicle switched from the standard mileage rate to
@@ -153,3 +165,22 @@ spouse with self-employment income files their own Schedule SE; the combined tax
 goes on Schedule 2 line 4. Line 8 coordinates with each person's W-2 social
 security wages (and tips) toward the wage base; the 0.9% Additional Medicare Tax
 on self-employment income is figured on Form 8959 Part II.
+
+## Findings during the build
+
+- **MACRS percentage tables** (`tables/2025/macrs_gds.yaml`, 410 rates, extracted by
+  `tools/extract_macrs_tables.py`): every column totals 100%; 388 rates equal the rate
+  derived from the method and convention (each year on 1 less the printed earlier
+  rates, half-up to the printed precision); two official columns depart from that rule,
+  7-year mid-quarter Q2 (truncated, not rounded) and 20-year mid-quarter Q1 (year 2
+  printed 7.000 where 7.008 is derived); the 66 half-year rates also printed in `i4562`
+  Tables A and B agree (`tools/check_macrs_tables.py`, `reports/2025/macrs_tables.md`).
+  The two departing columns are to be included in the second transcription.
+- **Passenger automobile limits** (`tables/2025/auto_limit.yaml`,
+  `auto_limit_first_nobonus.yaml`): every cell agrees with Pub. 946 (PDF and HTML) and
+  Pub. 463 (`tools/check_auto_limits.py`). The two publications disagree on the
+  first-year limit without the special allowance for a vehicle placed in service in
+  2020 (Pub. 946 footnote 5, $10,200; Pub. 463 groups 2019-2020 under footnote 6,
+  $10,100). No 2025 computation reaches that limit (only 2025 vehicles' first year
+  and a 2019 vehicle's unrecovered basis use a first-year limit, and both publications
+  agree on those), so the table holds only those two rows.

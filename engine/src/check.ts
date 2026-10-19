@@ -206,9 +206,21 @@ function resolveRef(ctx: Ctx, from: FormDoc, ref: string): { doc: FormDoc; line:
   return null;
 }
 
+/** Whether collection `docId` encloses `from` (is its parent, or a parent's parent, ...). */
+function encloses(ctx: Ctx, docId: string, from: FormDoc): boolean {
+  let parent = from.collection?.parent;
+  const seen = new Set<string>();
+  while (parent && !seen.has(parent)) {
+    if (parent === docId) return true;
+    seen.add(parent);
+    parent = ctx.byId.get(parent)?.collection?.parent;
+  }
+  return false;
+}
+
 function requireRef(ctx: Ctx, from: FormDoc, ref: string, where: string): { doc: FormDoc; line: Line; index: number } | null {
   const hit = resolveRef(ctx, from, ref);
-  if (hit?.doc.collection && hit.doc.id !== from.id) {
+  if (hit?.doc.collection && hit.doc.id !== from.id && !encloses(ctx, hit.doc.id, from)) {
     ctx.errors.push(`${where}: collection reference requires sum_over`);
     return null;
   }

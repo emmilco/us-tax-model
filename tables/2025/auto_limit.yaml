@@ -1,0 +1,47 @@
+# Limits on depreciation and the section 179 deduction for passenger automobiles (including trucks and vans) acquired
+# after September 27, 2017, placed in service 2019 to 2025, by year of the recovery period ("4th & later" repeated for
+# each later year a 2025 return can reach). Year 1 is the limit with the special depreciation allowance; the limit
+# without it is in auto_limit_first_nobonus. Written by hand; checked cell by cell against Pub. 946 (PDF and HTML)
+# and Pub. 463 by tools/check_auto_limits.py.
+table:
+  id: auto_limit
+  kind: keyed
+  title: "Maximum depreciation deduction for passenger automobiles placed in service 2019 to 2025 (Pub. 946)"
+  tax_year: 2025
+  cite:
+    doc: p946
+    locator: "p. 59, Maximum Depreciation Deduction for Passenger Automobiles (Including Trucks and Vans) Acquired After September 27, 2017, and Placed in Service Before 2026"
+    quote: "The passenger automobile limits are the maximum depreciation amounts you can deduct for a passenger automobile. They are based on the date you placed the automobile in service."
+  keys:
+    - { name: placed, type: Enum(placed_year) }
+    - { name: year, type: Count }
+  cell: NonNegDollars
+  rows:
+    - { keys: [y2025, 1], value: 2020000 }
+    - { keys: [y2024, 1], value: 2040000 }
+    - { keys: [y2024, 2], value: 1980000 }
+    - { keys: [y2023, 1], value: 2020000 }
+    - { keys: [y2023, 2], value: 1950000 }
+    - { keys: [y2023, 3], value: 1170000 }
+    - { keys: [y2022, 1], value: 1920000 }
+    - { keys: [y2022, 2], value: 1800000 }
+    - { keys: [y2022, 3], value: 1080000 }
+    - { keys: [y2022, 4], value: 646000 }
+    - { keys: [y2021, 1], value: 1820000 }
+    - { keys: [y2021, 2], value: 1640000 }
+    - { keys: [y2021, 3], value: 980000 }
+    - { keys: [y2021, 4], value: 586000 }
+    - { keys: [y2021, 5], value: 586000 }
+    - { keys: [y2020, 1], value: 1810000 }
+    - { keys: [y2020, 2], value: 1610000 }
+    - { keys: [y2020, 3], value: 970000 }
+    - { keys: [y2020, 4], value: 576000 }
+    - { keys: [y2020, 5], value: 576000 }
+    - { keys: [y2020, 6], value: 576000 }
+    - { keys: [y2019, 1], value: 1810000 }
+    - { keys: [y2019, 2], value: 1610000 }
+    - { keys: [y2019, 3], value: 970000 }
+    - { keys: [y2019, 4], value: 576000 }
+    - { keys: [y2019, 5], value: 576000 }
+    - { keys: [y2019, 6], value: 576000 }
+    - { keys: [y2019, 7], value: 576000 }
