@@ -7,7 +7,7 @@ Second transcription of `Proof-of-concept scope screening` by an isolated model 
 | date | 2026-10-18 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 25d54556cefa0e95844690a549a6763e4480b7154d2af8de4937db91b0d137bc |
+| prompt sha256 | c2a50bdaac4966a4f5c0092f18508841721817031a7349835fd0f4404f3ff9c3 |
 | printed lines compared | 0 |
 | agree / disagree / missing | 0 / 0 / 0 |
 | extra printed lines in second | none |
@@ -25,10 +25,6 @@ Second transcription of `Proof-of-concept scope screening` by an isolated model 
 
 ```yaml
 ```yaml
-# The printed-line list for this worksheet was empty and no intermediate helper values were requested.
-# The screening inputs (scope.schedule1, scope.schedule1a, scope.credits, scope.other_income,
-# scope.other_line16) already exist and must not be redefined. The IRS text supplied names no
-# printed "scope" lines, so no line records are produced.
 lines: []
 ```
 ```

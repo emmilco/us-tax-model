@@ -1,0 +1,231 @@
+form:
+  id: otjob
+  kind: form
+  title: Qualified Overtime Compensation From More Than One Employer Worksheet (Schedule 1-A, line 14a) — one row per
+    employer
+  tax_year: 2025
+  note: One entry per employer that paid you overtime. Qualified overtime is the FLSA Overtime Premium (the "half" of
+    time-and-a-half), figured by one of the methods the instructions and Notice 2025-69 give for 2025. Methods that
+    call for a reasonable estimate, overtime at a rate other than one and one-half or two times the regular rate, and
+    special FLSA overtime rules are refused.
+  lines:
+  - id: otjob.zero
+    printed: (helper)
+    label: Year parameter sales.zero
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: sales.zero
+    cite:
+      doc: i1040gi
+      locator: p. 108, Qualified Overtime Compensation From More Than One Employer Worksheet
+  - id: otjob.flsa
+    printed: (helper)
+    label: Were you an FLSA-eligible employee of this employer (covered by and not exempt from the Fair Labor Standards
+      Act, so that this employer was required to pay you overtime under section 7 of the FLSA)?
+    type: Bool
+    expr:
+      op: input
+      source: Were you an FLSA-eligible employee of this employer (covered by and not exempt from the Fair Labor Standards
+        Act, so that this employer was required to pay you overtime under section 7 of the FLSA)? You can ask your employer.
+    cite:
+      doc: i1040gi
+      locator: p. 106, Schedule 1-A, Qualified overtime compensation, "you must (among other requirements) be covered
+        by and not exempt from the FLSA (an FLSA-eligible employee)" and "Ask your employer or other service recipients
+        whether you are an FLSA-eligible employee"
+  - id: otjob.special_rule
+    printed: (helper)
+    label: Is this employer covered by an FLSA overtime rule other than the general rule in section 7(a) (for example
+      section 7(k) for fire protection and law enforcement, 7(o) compensatory time, or 7(j) hospitals and residential
+      care facilities)?
+    type: Bool
+    expr:
+      op: input
+      source: Is this employer covered by an FLSA overtime rule other than the general rule in section 7(a) (for example
+        section 7(k) for fire protection and law enforcement, 7(o) compensatory time off, or 7(j) hospitals and residential
+        care facilities)?
+    cite:
+      doc: n-25-69
+      locator: pp. 22–25, Section III.B.2, method (G)
+  - id: otjob.method
+    printed: (helper)
+    label: How you figured the qualified overtime compensation from this employer
+    type: Enum(overtime_method)
+    expr:
+      op: input
+      source: 'How you figured it: employer_reported (an amount of qualified overtime compensation your employer reported
+        in Form W-2 box 14 or gave you on request); premium (a statement shows the "half" portion of time-and-a-half,
+        the FLSA Overtime Premium); total_time_and_half (a statement shows the total pay for overtime hours paid at
+        time-and-a-half); premium_double (overtime paid at double time, and a statement shows the pay above your regular
+        rate for those hours); total_double (overtime paid at double time, and a statement shows the total pay for
+        those hours); other (any other method, rate or adjustment)'
+    cite:
+      doc: i1040gi
+      locator: pp. 106-107, Schedule 1-A, "Determining the amount of qualified overtime compensation for 2025," the
+        employer's separate accounting and methods 1 to 5; n-25-69 Section III.B.2, methods (A) to (G)
+  - id: otjob.statement
+    printed: (helper)
+    label: The amount shown for the method you chose
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The full-year amount for the method you chose (the amount your employer reported; the overtime premium;
+        the total pay for overtime hours; or the pay above your regular rate for overtime hours), from this employer,
+        including overtime pay that is not in Form W-2 box 1 (for example overtime deferred under a qualified retirement
+        plan)
+    cite:
+      doc: i1040gi
+      locator: pp. 106-107, Schedule 1-A, methods 1 to 4; n-25-69 Section III.B.2, methods (A) to (D), "receives a statement
+        covering the entire 2025 tax year"
+  - id: otjob.refused
+    printed: (gate)
+    label: Overtime figured by a method, rate or rule outside this tool
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - otjob.flsa
+        - const: true
+      - op: test
+        any:
+        - op: test
+          eq:
+          - otjob.special_rule
+          - const: true
+        - op: test
+          eq:
+          - otjob.method
+          - const: other
+    cite:
+      doc: i1040gi
+      locator: p. 107, Schedule 1-A, method 5 ("you can use a reasonable method"), the adjustment for underestimating,
+        and other overtime rules in section 7 of the FLSA
+  - id: otjob.figured
+    printed: (helper)
+    label: FLSA Overtime Premium from this employer, by the method chosen
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - otjob.method
+          - const: employer_reported
+        then: otjob.statement
+      - guard:
+          op: test
+          eq:
+          - otjob.method
+          - const: premium
+        then: otjob.statement
+      - guard:
+          op: test
+          eq:
+          - otjob.method
+          - const: total_time_and_half
+        then: otjob.by_third
+      - guard:
+          op: test
+          eq:
+          - otjob.method
+          - const: premium_double
+        then: otjob.by_half
+      - guard:
+          op: test
+          eq:
+          - otjob.method
+          - const: total_double
+        then: otjob.by_quarter
+      - guard:
+          op: test
+          eq:
+          - otjob.method
+          - const: other
+        then: otjob.zero
+    cite:
+      doc: i1040gi
+      locator: pp. 106-107, Schedule 1-A, methods 1 to 4
+    ambiguity: amb.2025.multiplication_subcent
+    refuses:
+    - when: otjob.refused
+      form: Qualified overtime compensation by a reasonable-method estimate, at an overtime rate other than one and one-half
+        or two times the regular rate, or under a special FLSA overtime rule
+      remedy: Figure the amount by the method that applies to you; this tool covers the employer-reported amount and
+        methods 1 to 4 at time-and-a-half or double time.
+      cite:
+        doc: n-25-69
+        locator: pp. 22–25, Section III.B.2, methods (E), (F) and (G)
+  - id: otjob.by_third
+    printed: (helper)
+    label: Method 2. Divide the total pay for overtime hours by three (3)
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: otjob.statement
+      rate:
+        param: s1a.ot_third
+    cite:
+      doc: i1040gi
+      locator: p. 106, Schedule 1-A, method 2, "you can divide the total amount by three (3)"
+    ambiguity: amb.2025.multiplication_subcent
+  - id: otjob.by_half
+    printed: (helper)
+    label: Method 3 at double time. Multiply the pay above the regular rate for overtime hours by one-half
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: otjob.statement
+      rate:
+        param: s1a.ot_half
+    cite:
+      doc: i1040gi
+      locator: pp. 106-107, Schedule 1-A, method 3 and Example 2; n-25-69 Section III.B.2, method (C), "the appropriate
+        fraction is one-half"
+    ambiguity: amb.2025.multiplication_subcent
+  - id: otjob.by_quarter
+    printed: (helper)
+    label: Method 4 at double time. Multiply the total pay for overtime hours by one-fourth
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: otjob.statement
+      rate:
+        param: s1a.ot_quarter
+    cite:
+      doc: i1040gi
+      locator: p. 107, Schedule 1-A, method 4 and Example 3; n-25-69 Section III.B.2, method (D), "the appropriate fraction
+        is one-fourth"
+    ambiguity: amb.2025.multiplication_subcent
+  - id: otjob.col_b
+    printed: 1(b)
+    label: Qualified overtime reported on Form W-2, box 1
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - otjob.flsa
+          - const: false
+        then: otjob.zero
+      - guard:
+          op: test
+          eq:
+          - otjob.flsa
+          - const: true
+        then: otjob.figured
+    cite:
+      doc: i1040gi
+      locator: p. 108, Qualified Overtime Compensation From More Than One Employer Worksheet, column (b); p. 108, line
+        14a, including qualified overtime not included in box 1 (for example overtime deferred under a qualified retirement
+        plan)
+  collection:
+    cite:
+      doc: i1040gi
+      locator: p. 108, Schedule 1-A, line 14a, and the Qualified Overtime Compensation From More Than One Employer Worksheet
+        (one row per employer); n-25-69 Section III.B.2, "Individuals who had multiple employers during 2025 may use
+        different methods for each employer"

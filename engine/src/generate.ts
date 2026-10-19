@@ -53,6 +53,7 @@ const BOOL_TRUE_PERCENT: Record<string, number> = {
   "ftc.all_passive": 90, "ftc.statements": 90, "ftc.eligible": 90, "ftc.elect": 90,
   "sa.elect_itemize": 10,
   "eic.born_before_2001": 85, "eic.us_home": 95,
+  "s1a.tips": 20, "s1a.overtime": 20, "s1a.carloan": 15, "s1a.died_before_65": 2,
 };
 const DEFAULT_TRUE_PERCENT = 10;
 
@@ -70,6 +71,11 @@ interface Gift { deduction: number; public_securities: boolean; special: boolean
 interface Dependent { relationship: string; age: number; younger: boolean; student: boolean; disabled: boolean; months: number; self_support: boolean; joint_return: boolean; citizen: boolean; canada_mexico: boolean; married: boolean; tin: boolean; work_ssn: boolean; gross_income: number; supported: boolean; other_claimant: boolean; divorced_rule: boolean; multiple_support: boolean; parent_home_paid: boolean; us_half: boolean; eic_ssn: boolean }
 interface Household { taxpayer_tin: boolean; taxpayer_work_ssn: boolean; home_cost: boolean; unmarried: boolean }
 interface Distribution { account: string; code: string; box1: number; box5: number; rollover: number; special: boolean; annuity: boolean; cost: number; used_last_year: boolean; last_line4: number; joint_life: boolean; age: number; combined_age: number; months: number; recovered: number }
+
+interface TipJob { qualified: boolean; amount: number }
+interface OvertimeJob { flsa: boolean; special: boolean; method: string; statement: number }
+interface CarLoan { kind: string; requirements: boolean; vehicle: boolean; interest: number; mixed: boolean; financed: number; nonqualifying: number; down: number; refiBalance: number; refiWhole: boolean }
+interface ScheduleOneA { tips: TipJob[]; overtime: OvertimeJob[]; loans: CarLoan[] }
 
 interface Adjustments {
   uc: number; ucRepaidPct: number; educator: number; sli: number;
@@ -94,6 +100,7 @@ interface Spec {
   pensions: Distribution[];
   benefits: number;
   adj: Adjustments;
+  s1a: ScheduleOneA;
   flags: Record<string, boolean>;
   extras: Record<string, number>;
 }
@@ -171,6 +178,22 @@ export function returnArbitrary(data: CanonicalData): fc.Arbitrary<Inputs> {
       uc: rareMoney(2_500_000, 15), ucRepaidPct: rareMoney(100, 20), educator: rareMoney(60_000, 10), sli: rareMoney(300_000, 20),
       hsa: rareTrue(15), months: fc.oneof({ weight: 1, arbitrary: fc.constant(12) }, { weight: 1, arbitrary: fc.integer({ min: 0, max: 12 }) }),
       familyMonths: fc.integer({ min: 0, max: 12 }), decFamily: fc.boolean(), contrib: money(1_000_000), employer: rareMoney(300_000, 30),
+    }),
+    // Schedule 1-A collections, read only when their part is claimed: employers with tips, employers
+    // with overtime (every method, rarely a refused one) and car loans of each kind, sometimes mixed.
+    s1a: fc.record<ScheduleOneA>({
+      tips: fc.array(fc.record<TipJob>({ qualified: fc.oneof({ weight: 19, arbitrary: fc.constant(true) }, { weight: 1, arbitrary: fc.constant(false) }), amount: money(3_000_000) }), { maxLength: 3 }),
+      overtime: fc.array(fc.record<OvertimeJob>({
+        flsa: fc.oneof({ weight: 9, arbitrary: fc.constant(true) }, { weight: 1, arbitrary: fc.constant(false) }), special: rareTrue(5),
+        method: fc.constantFrom("employer_reported", "premium", "total_time_and_half", "premium_double", "total_double", "employer_reported", "premium", "other"),
+        statement: money(4_000_000) }), { maxLength: 2 }),
+      loans: fc.array(fc.record<CarLoan>({
+        kind: fc.constantFrom("original", "original", "original", "refinanced", "death"),
+        requirements: fc.oneof({ weight: 9, arbitrary: fc.constant(true) }, { weight: 1, arbitrary: fc.constant(false) }),
+        vehicle: fc.oneof({ weight: 9, arbitrary: fc.constant(true) }, { weight: 1, arbitrary: fc.constant(false) }),
+        interest: money(1_500_000), mixed: rareTrue(25), financed: fc.integer({ min: 1, max: 8_000_000 }),
+        nonqualifying: money(1_000_000), down: money(1_000_000), refiBalance: money(8_000_000),
+        refiWhole: fc.oneof({ weight: 19, arbitrary: fc.constant(true) }, { weight: 1, arbitrary: fc.constant(false) }) }), { maxLength: 2 }),
     }),
     flags: fc.record(Object.fromEntries(boolKeys.map((k) => [k, rareTrue(BOOL_TRUE_PERCENT[k] ?? DEFAULT_TRUE_PERCENT)]))),
     extras: fc.record(Object.fromEntries(extraKeys.map((k) => [k, rareMoney(500_000, 2)]))),
@@ -282,6 +305,27 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   inputs["f4952.line1"] = s.invInterest;
   inputs["f4952.line4g"] = s.election;
   inputs["ftc.taxes"] = s.ftcTaxes;
+  if (inputs["s1a.tips"] === true) {
+    inputs["$tipjob"] = s.s1a.tips.map((_, i) => `tip_${i + 1}`);
+    s.s1a.tips.forEach((t, i) => { inputs[`tipjob[tip_${i + 1}].qualified`] = t.qualified; inputs[`tipjob[tip_${i + 1}].amount`] = t.amount; });
+  }
+  if (inputs["s1a.overtime"] === true) {
+    inputs["$otjob"] = s.s1a.overtime.map((_, i) => `ot_${i + 1}`);
+    s.s1a.overtime.forEach((o, i) => {
+      const k = `otjob[ot_${i + 1}]`;
+      inputs[`${k}.flsa`] = o.flsa; inputs[`${k}.special_rule`] = o.special; inputs[`${k}.method`] = o.method; inputs[`${k}.statement`] = o.statement;
+    });
+  }
+  if (inputs["s1a.carloan"] === true) {
+    inputs["$carloan"] = s.s1a.loans.map((_, i) => `vin_${i + 1}`);
+    s.s1a.loans.forEach((l, i) => {
+      const k = `carloan[vin_${i + 1}]`;
+      inputs[`${k}.kind`] = l.kind; inputs[`${k}.requirements`] = l.requirements; inputs[`${k}.vehicle`] = l.vehicle;
+      inputs[`${k}.interest`] = l.interest; inputs[`${k}.mixed`] = l.mixed; inputs[`${k}.financed`] = l.financed;
+      inputs[`${k}.nonqualifying`] = l.nonqualifying; inputs[`${k}.down`] = l.down;
+      inputs[`${k}.refi_balance`] = l.refiBalance; inputs[`${k}.refi_whole`] = l.refiWhole;
+    });
+  }
   return inputs;
 }
 

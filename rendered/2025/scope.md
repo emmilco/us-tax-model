@@ -10,13 +10,6 @@
 - Expr: `{"op":"input","source":"Any income or adjustment requiring Schedule 1 other than unemployment compensation, educator expenses, the HSA deduction and student loan interest, including a taxable state or local tax refund; alimony; an IRA deduction; being self-employed or filing Schedule C (income or loss, including statutory-employee wages) or Schedule SE (including clergy, and church employee income: wages from a church that elected exemption from social security and Medicare taxes); rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1); rental of personal property; farm income (Schedule F); gambling winnings, prizes or other income for Schedule 1 line 8; or an exclusion of Medicaid waiver payments (Schedule 1 line 8s)? (Schedule 1-A deductions are asked separately.)"}`
 - Cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; sha256 3d31c226)
 
-## (helper) — `scope.schedule1a`
-
-- **Authored helper label:** Do you qualify for any Schedule 1-A deduction (qualified tips, qualified overtime compensation, qualified passenger vehicle loan interest, or the enhanced deduction for a filer born before January 2, 1961), whether or not you planned to claim it?
-- **Encoded (Bool):** Input — Do you qualify for any Schedule 1-A deduction (qualified tips, qualified overtime compensation, qualified passenger vehicle loan interest, or the enhanced deduction for a filer born before January 2, 1961), whether or not you planned to claim it?
-- Expr: `{"op":"input","source":"Do you qualify for any Schedule 1-A deduction (qualified tips, qualified overtime compensation, qualified passenger vehicle loan interest, or the enhanced deduction for a filer born before January 2, 1961), whether or not you planned to claim it?"}`
-- Cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; sha256 3d31c226)
-
 ## (helper) — `scope.credits`
 
 - **Authored helper label:** Do you want to claim any credit other than the foreign tax credit claimed without Form 1116, the excess social security credit, the child tax credit, the credit for other dependents, the additional child tax credit and the earned income credit, or do you have any other amount for Schedule 3 Part I (for example a Form 8978 adjustment)?
@@ -43,7 +36,6 @@
 - **Authored helper label:** All declared scope screens passed
 - **Encoded (Bool):** true = true
 - **Refusal:** when scope.schedule1 is true, cannot complete Schedule 1. Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool. Cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; sha256 3d31c226)
-- **Refusal:** when scope.schedule1a is true, cannot complete Schedule 1-A. Schedule 1-A deductions are outside this proof of concept. Cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; sha256 3d31c226)
 - **Refusal:** when scope.credits is true, cannot complete Other credit forms (Schedule 3 lines 2 to 4, 5b, 6d, 6f, 6l and 6m; Form 1040 lines 29 to 31). Credits other than the foreign tax credit by election, the excess social security credit, the Schedule 8812 credits and the earned income credit require forms outside this proof of concept. Cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; sha256 3d31c226)
 - **Refusal:** when scope.other_income is true, cannot complete Form 1040 additional income/return forms. Prepare the required unsupported income or return treatment. Cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; sha256 3d31c226)
 - **Refusal:** when scope.other_line16 is true, cannot complete Form 1040 line 16 additional tax forms. Prepare the applicable additional tax or alternative worksheet. Cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; sha256 3d31c226)

@@ -46,7 +46,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -84,7 +83,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -198,7 +200,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -236,7 +237,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -349,7 +353,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -387,7 +390,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -500,7 +506,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -538,7 +543,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -651,7 +659,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -689,7 +696,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -802,7 +812,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -840,7 +849,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -953,7 +965,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -991,7 +1002,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1104,7 +1118,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -1142,7 +1155,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1255,7 +1271,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -1293,7 +1308,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1406,7 +1424,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -1444,7 +1461,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1557,7 +1577,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -1595,7 +1614,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1708,7 +1730,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -1746,7 +1767,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1859,7 +1883,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -1897,7 +1920,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2010,7 +2036,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -2048,7 +2073,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2161,7 +2189,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -2199,7 +2226,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2312,7 +2342,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -2350,7 +2379,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2463,7 +2495,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -2501,7 +2532,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2614,7 +2648,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -2652,7 +2685,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2766,7 +2802,6 @@
         "sa.spouse_itemizes": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -2804,7 +2839,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2918,7 +2956,6 @@
         "sa.spouse_itemizes": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -2956,7 +2993,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -3070,7 +3110,6 @@
         "sa.spouse_itemizes": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -3108,7 +3147,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -3222,7 +3264,6 @@
         "sa.spouse_itemizes": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -3260,7 +3301,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -3374,7 +3418,6 @@
         "sa.spouse_itemizes": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -3412,7 +3455,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -3525,7 +3571,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -3584,7 +3629,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -3697,7 +3745,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -3756,7 +3803,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -3869,7 +3919,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -3928,7 +3977,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4041,7 +4093,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -4100,7 +4151,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4213,7 +4267,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -4272,7 +4325,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4385,7 +4441,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -4423,7 +4478,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4536,7 +4594,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -4574,7 +4631,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4687,7 +4747,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -4725,7 +4784,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4839,7 +4901,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -4877,7 +4938,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -5074,7 +5138,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -5112,7 +5175,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -5320,7 +5386,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -5358,7 +5423,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -5555,7 +5623,6 @@
         "sa.elect_itemize": true,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -5593,7 +5660,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -5790,7 +5860,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -5828,7 +5897,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -6026,7 +6098,6 @@
         "sa.elect_itemize": true,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -6064,7 +6135,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -6261,7 +6335,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -6299,7 +6372,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -6496,7 +6572,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -6534,7 +6609,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -6732,7 +6810,6 @@
         "sa.spouse_itemizes": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -6770,7 +6847,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -6967,7 +7047,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -7026,7 +7105,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -7223,7 +7305,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -7261,7 +7342,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -7458,7 +7542,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -7496,7 +7579,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -7693,7 +7779,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -7731,7 +7816,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -7844,7 +7932,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -7882,7 +7969,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -7995,7 +8085,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -8033,7 +8122,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -8146,7 +8238,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -8184,7 +8275,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -8297,7 +8391,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -8335,7 +8428,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -8448,7 +8544,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -8486,7 +8581,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -8599,7 +8697,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -8637,7 +8734,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -8750,7 +8850,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -8788,7 +8887,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -8902,7 +9004,6 @@
         "sa.spouse_itemizes": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -8940,7 +9041,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -9054,7 +9158,6 @@
         "sa.spouse_itemizes": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -9092,7 +9195,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -9206,7 +9312,6 @@
         "sa.spouse_itemizes": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -9244,7 +9349,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -9358,7 +9466,6 @@
         "sa.spouse_itemizes": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -9396,7 +9503,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -9509,7 +9619,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -9568,7 +9677,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -9681,7 +9793,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -9740,7 +9851,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -9853,7 +9967,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -9912,7 +10025,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -10025,7 +10141,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -10084,7 +10199,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -10197,7 +10315,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "s3.line9": 0,
         "s3.line10": 0,
         "s3.line12": 0,
@@ -10240,7 +10357,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "qdcg.line22": {

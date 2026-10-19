@@ -2,6 +2,961 @@
  "tax_year": 2025,
  "cases": [
   {
+   "id": "classm.carloan.1",
+   "covers": [
+    "carloan"
+   ],
+   "evidence": "M",
+   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 4cf7fc00792d6d7efc3ddf98a38dfae169a37d159d9bf688470929af482a6545; pages i1040gi 109,110 (6024dc94dd1f); fr-2025-24154 20,21,22 (eccaf8550a66); branches carloan.requirements:true, carloan.vehicle:true, carloan.eligible:true, carloan.mixed:true, carloan.nonqualifying_debt:positive, carloan.mixed_qualifying:positive, carloan.refi_whole:true, carloan.refi_qualifying:left, carloan.refi_nested:false, carloan.allocated#0, carloan.allocated#1, carloan.mixed_interest#1, carloan.col_iii#1",
+   "inputs": {
+    "div.box2b": 52600,
+    "div.box2c": 0,
+    "div.box2d": 0,
+    "div.box2e": 0,
+    "div.box2f": 0,
+    "div.box3": 0,
+    "div.box9": 0,
+    "div.box10": 0,
+    "div.box12": 0,
+    "div.box13": 0,
+    "div.basis_reconciled": true,
+    "eic.qc_of_another": false,
+    "eic.born_before_2001": true,
+    "eic.born_after_1960": true,
+    "eic.us_home": true,
+    "eic.married": false,
+    "eic.same_home": false,
+    "eic.legally_separated": false,
+    "f1040.status": "mfj",
+    "f1040.tax_exempt_interest": 0,
+    "f1040.line3a": 4067700,
+    "f1040.line25b": 0,
+    "f1040.line25c": 0,
+    "f1040.line26": 0,
+    "f1040.line35a": 0,
+    "f1040.line36": 0,
+    "f4952.line1": 0,
+    "f4952.carryover": false,
+    "f4952.unsupported": true,
+    "f4952.alternative_allocation": false,
+    "f4952.line4g": 0,
+    "f8889.line2": 0,
+    "f8889.line9": 0,
+    "f8889.unsupported": false,
+    "f8889.months_eligible": 0,
+    "f8889.months_family": 0,
+    "f8889.age55": false,
+    "f8889.dec_coverage": "none",
+    "f8889.last_month": true,
+    "f8959.unsupported": false,
+    "f8960.unsupported": false,
+    "f8960.refund": false,
+    "f8960.allocated_taxes": 0,
+    "ftc.taxes": 0,
+    "ftc.all_passive": true,
+    "ftc.statements": true,
+    "ftc.eligible": true,
+    "ftc.elect": true,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": false,
+    "household.unmarried": true,
+    "qbi.dividends": 656100,
+    "qbi.unsupported": false,
+    "s1.uc_paid": 0,
+    "s1.uc_repaid": 0,
+    "s1.uc_unsupported": false,
+    "s1.educator_expenses": 0,
+    "s1.eligible_educator": false,
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": true,
+    "s1a.died_before_65": false,
+    "s2.amt": true,
+    "s2.other": false,
+    "s3.line9": 0,
+    "s3.line10": 0,
+    "s3.line12": 0,
+    "s3.line14": 0,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false,
+    "sa.unsupported": true,
+    "sa.charity_limited": false,
+    "sa.excluded_income": false,
+    "sa.dependent": false,
+    "sa.spouse_extra": false,
+    "sa.age65": false,
+    "sa.blind": false,
+    "sa.spouse_itemizes": false,
+    "sa.elect_itemize": false,
+    "sa.line1": 0,
+    "sa.line5a": 4255600,
+    "sa.line5b": 0,
+    "sa.line5c": 0,
+    "sa.line8a": 0,
+    "sa.line11": 65300,
+    "sb.unsupported": true,
+    "sb.ordinary_dividends": 4373900,
+    "sb.line7a": false,
+    "sb.fbar_required": false,
+    "sb.form8938": false,
+    "sb.line8": false,
+    "scope.schedule1": false,
+    "scope.credits": false,
+    "scope.other_income": true,
+    "scope.other_line16": false,
+    "sd.other_forms": false,
+    "sd.carryover": false,
+    "sd.distributions": 584100,
+    "sli.interest": 0,
+    "sli.claimed": false,
+    "ssb.benefits": 0,
+    "ssb.pub915": false,
+    "ssb.lump_sum": false,
+    "ssb.terror_disability": false,
+    "ssb.lived_apart": false,
+    "$person": [
+     "taxpayer"
+    ],
+    "person[taxpayer].rrta": false,
+    "$w2@person[taxpayer]": [
+     "emp_a"
+    ],
+    "person[taxpayer].w2[emp_a].box1": 22923800,
+    "person[taxpayer].w2[emp_a].box2": 917000,
+    "person[taxpayer].w2[emp_a].box3": 17610000,
+    "person[taxpayer].w2[emp_a].box7": 0,
+    "person[taxpayer].w2[emp_a].box4": 1091800,
+    "person[taxpayer].w2[emp_a].box5": 22923800,
+    "person[taxpayer].w2[emp_a].box6": 358700,
+    "$interest": [],
+    "$sales": [],
+    "$gift": [
+     "item_a",
+     "item_b"
+    ],
+    "gift[item_a].deduction": 976700,
+    "gift[item_a].public_securities": false,
+    "gift[item_a].special": true,
+    "gift[item_b].deduction": 189900,
+    "gift[item_b].public_securities": false,
+    "gift[item_b].special": false,
+    "$dependent": [
+     "dep_a"
+    ],
+    "dependent[dep_a].relationship": "in_law",
+    "dependent[dep_a].age": 11,
+    "dependent[dep_a].younger": true,
+    "dependent[dep_a].student": false,
+    "dependent[dep_a].disabled": false,
+    "dependent[dep_a].months": 12,
+    "dependent[dep_a].self_support": true,
+    "dependent[dep_a].joint_return": false,
+    "dependent[dep_a].citizen": true,
+    "dependent[dep_a].canada_mexico": false,
+    "dependent[dep_a].married": false,
+    "dependent[dep_a].tin": true,
+    "dependent[dep_a].work_ssn": false,
+    "dependent[dep_a].gross_income": 0,
+    "dependent[dep_a].supported": true,
+    "dependent[dep_a].other_claimant": false,
+    "dependent[dep_a].divorced_rule": false,
+    "dependent[dep_a].multiple_support": false,
+    "dependent[dep_a].parent_home_paid": false,
+    "dependent[dep_a].us_half": true,
+    "dependent[dep_a].eic_ssn": true,
+    "$retirement": [],
+    "$carloan": [
+     "vin_1",
+     "vin_2"
+    ],
+    "carloan[vin_1].kind": "refinanced",
+    "carloan[vin_1].requirements": true,
+    "carloan[vin_1].vehicle": true,
+    "carloan[vin_1].interest": 0,
+    "carloan[vin_1].mixed": false,
+    "carloan[vin_1].financed": 5996900,
+    "carloan[vin_1].nonqualifying": 234200,
+    "carloan[vin_1].down": 895500,
+    "carloan[vin_1].refi_balance": 2403300,
+    "carloan[vin_1].refi_whole": true,
+    "carloan[vin_2].kind": "original",
+    "carloan[vin_2].requirements": true,
+    "carloan[vin_2].vehicle": true,
+    "carloan[vin_2].interest": 0,
+    "carloan[vin_2].mixed": true,
+    "carloan[vin_2].financed": 5418800,
+    "carloan[vin_2].nonqualifying": 151800,
+    "carloan[vin_2].down": 0,
+    "carloan[vin_2].refi_balance": 4875300,
+    "carloan[vin_2].refi_whole": true
+   },
+   "expect": {
+    "carloan[vin_1].eligible": {
+     "kind": "bool",
+     "value": true
+    },
+    "carloan[vin_1].refi_qualifying": {
+     "kind": "money",
+     "cents": 2403300
+    },
+    "carloan[vin_1].refi_nested": {
+     "kind": "bool",
+     "value": false
+    },
+    "carloan[vin_1].allocated": {
+     "kind": "money",
+     "cents": 0
+    },
+    "carloan[vin_1].refi_interest": {
+     "kind": "money",
+     "cents": 0
+    },
+    "carloan[vin_1].col_iii": {
+     "kind": "money",
+     "cents": 0
+    },
+    "carloan[vin_2].eligible": {
+     "kind": "bool",
+     "value": true
+    },
+    "carloan[vin_2].nonqualifying_debt": {
+     "kind": "money",
+     "cents": 151800
+    },
+    "carloan[vin_2].mixed_qualifying": {
+     "kind": "money",
+     "cents": 5267000
+    },
+    "carloan[vin_2].allocated": {
+     "kind": "money",
+     "cents": 0
+    },
+    "carloan[vin_2].mixed_interest": {
+     "kind": "money",
+     "cents": 0
+    },
+    "carloan[vin_2].mixed_prorated": {
+     "kind": "money",
+     "cents": 0
+    },
+    "carloan[vin_2].col_iii": {
+     "kind": "money",
+     "cents": 0
+    }
+   }
+  },
+  {
+   "id": "classm.carloan.2",
+   "covers": [
+    "carloan"
+   ],
+   "evidence": "M",
+   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 2f73f2171a37d3b1a3d346a19313a4727bd64af5ec1cf0f1dff048702a28542d; pages i1040gi 109,110 (6024dc94dd1f); fr-2025-24154 20,21,22 (eccaf8550a66); branches carloan.requirements:false, carloan.requirements:true, carloan.vehicle:true, carloan.eligible:false, carloan.eligible:true, carloan.mixed:false, carloan.allocated#2, carloan.mixed_interest#0, carloan.col_iii#0, carloan.col_iii#1",
+   "inputs": {
+    "div.box2b": 0,
+    "div.box2c": 0,
+    "div.box2d": 0,
+    "div.box2e": 0,
+    "div.box2f": 0,
+    "div.box3": 0,
+    "div.box9": 0,
+    "div.box10": 0,
+    "div.box12": 0,
+    "div.box13": 0,
+    "div.basis_reconciled": true,
+    "eic.qc_of_another": false,
+    "eic.born_before_2001": false,
+    "eic.born_after_1960": true,
+    "eic.us_home": true,
+    "eic.married": false,
+    "eic.same_home": false,
+    "eic.legally_separated": false,
+    "f1040.status": "single",
+    "f1040.tax_exempt_interest": 0,
+    "f1040.line3a": 0,
+    "f1040.line25b": 0,
+    "f1040.line25c": 0,
+    "f1040.line26": 0,
+    "f1040.line35a": 0,
+    "f1040.line36": 0,
+    "f4952.line1": 247600,
+    "f4952.carryover": false,
+    "f4952.unsupported": false,
+    "f4952.alternative_allocation": false,
+    "f4952.line4g": 424500,
+    "f8889.line2": 0,
+    "f8889.line9": 0,
+    "f8889.unsupported": false,
+    "f8889.months_eligible": 0,
+    "f8889.months_family": 0,
+    "f8889.age55": false,
+    "f8889.dec_coverage": "none",
+    "f8889.last_month": false,
+    "f8959.unsupported": false,
+    "f8960.unsupported": false,
+    "f8960.refund": false,
+    "f8960.allocated_taxes": 0,
+    "ftc.taxes": 0,
+    "ftc.all_passive": true,
+    "ftc.statements": true,
+    "ftc.eligible": false,
+    "ftc.elect": true,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": false,
+    "household.unmarried": true,
+    "qbi.dividends": 0,
+    "qbi.unsupported": false,
+    "s1.uc_paid": 0,
+    "s1.uc_repaid": 0,
+    "s1.uc_unsupported": true,
+    "s1.educator_expenses": 0,
+    "s1.eligible_educator": false,
+    "s1a.tips": false,
+    "s1a.overtime": true,
+    "s1a.carloan": true,
+    "s1a.died_before_65": false,
+    "s2.amt": false,
+    "s2.other": false,
+    "s3.line9": 0,
+    "s3.line10": 0,
+    "s3.line12": 0,
+    "s3.line14": 0,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false,
+    "sa.unsupported": false,
+    "sa.charity_limited": false,
+    "sa.excluded_income": false,
+    "sa.dependent": false,
+    "sa.spouse_extra": false,
+    "sa.age65": false,
+    "sa.blind": false,
+    "sa.spouse_itemizes": false,
+    "sa.elect_itemize": false,
+    "sa.line1": 2624000,
+    "sa.line5a": 0,
+    "sa.line5b": 691800,
+    "sa.line5c": 0,
+    "sa.line8a": 2772600,
+    "sa.line11": 1595300,
+    "sb.unsupported": false,
+    "sb.ordinary_dividends": 0,
+    "sb.line7a": false,
+    "sb.fbar_required": true,
+    "sb.form8938": false,
+    "sb.line8": false,
+    "scope.schedule1": false,
+    "scope.credits": false,
+    "scope.other_income": false,
+    "scope.other_line16": true,
+    "sd.other_forms": false,
+    "sd.carryover": false,
+    "sd.distributions": 0,
+    "sli.interest": 0,
+    "sli.claimed": false,
+    "ssb.benefits": 0,
+    "ssb.pub915": false,
+    "ssb.lump_sum": false,
+    "ssb.terror_disability": false,
+    "ssb.lived_apart": false,
+    "$person": [
+     "taxpayer"
+    ],
+    "person[taxpayer].rrta": false,
+    "$w2@person[taxpayer]": [
+     "emp_a"
+    ],
+    "person[taxpayer].w2[emp_a].box1": 4468500,
+    "person[taxpayer].w2[emp_a].box2": 1206500,
+    "person[taxpayer].w2[emp_a].box3": 4468500,
+    "person[taxpayer].w2[emp_a].box7": 0,
+    "person[taxpayer].w2[emp_a].box4": 277000,
+    "person[taxpayer].w2[emp_a].box5": 4468500,
+    "person[taxpayer].w2[emp_a].box6": 64800,
+    "$interest": [
+     "bank_a"
+    ],
+    "interest[bank_a].amount": 19300,
+    "$sales": [],
+    "$gift": [
+     "item_a"
+    ],
+    "gift[item_a].deduction": 0,
+    "gift[item_a].public_securities": true,
+    "gift[item_a].special": false,
+    "$dependent": [
+     "dep_a",
+     "dep_b"
+    ],
+    "dependent[dep_a].relationship": "child",
+    "dependent[dep_a].age": 6,
+    "dependent[dep_a].younger": true,
+    "dependent[dep_a].student": true,
+    "dependent[dep_a].disabled": false,
+    "dependent[dep_a].months": 12,
+    "dependent[dep_a].self_support": false,
+    "dependent[dep_a].joint_return": false,
+    "dependent[dep_a].citizen": true,
+    "dependent[dep_a].canada_mexico": false,
+    "dependent[dep_a].married": false,
+    "dependent[dep_a].tin": true,
+    "dependent[dep_a].work_ssn": true,
+    "dependent[dep_a].gross_income": 0,
+    "dependent[dep_a].supported": true,
+    "dependent[dep_a].other_claimant": false,
+    "dependent[dep_a].divorced_rule": false,
+    "dependent[dep_a].multiple_support": false,
+    "dependent[dep_a].parent_home_paid": false,
+    "dependent[dep_a].us_half": true,
+    "dependent[dep_a].eic_ssn": true,
+    "dependent[dep_b].relationship": "sibling",
+    "dependent[dep_b].age": 14,
+    "dependent[dep_b].younger": true,
+    "dependent[dep_b].student": false,
+    "dependent[dep_b].disabled": false,
+    "dependent[dep_b].months": 4,
+    "dependent[dep_b].self_support": false,
+    "dependent[dep_b].joint_return": false,
+    "dependent[dep_b].citizen": true,
+    "dependent[dep_b].canada_mexico": false,
+    "dependent[dep_b].married": false,
+    "dependent[dep_b].tin": true,
+    "dependent[dep_b].work_ssn": false,
+    "dependent[dep_b].gross_income": 0,
+    "dependent[dep_b].supported": true,
+    "dependent[dep_b].other_claimant": false,
+    "dependent[dep_b].divorced_rule": false,
+    "dependent[dep_b].multiple_support": false,
+    "dependent[dep_b].parent_home_paid": false,
+    "dependent[dep_b].us_half": false,
+    "dependent[dep_b].eic_ssn": true,
+    "$retirement": [],
+    "$otjob": [],
+    "$carloan": [
+     "vin_1",
+     "vin_2"
+    ],
+    "carloan[vin_1].kind": "death",
+    "carloan[vin_1].requirements": true,
+    "carloan[vin_1].vehicle": true,
+    "carloan[vin_1].interest": 606600,
+    "carloan[vin_1].mixed": false,
+    "carloan[vin_1].financed": 566400,
+    "carloan[vin_1].nonqualifying": 875200,
+    "carloan[vin_1].down": 0,
+    "carloan[vin_1].refi_balance": 4666400,
+    "carloan[vin_1].refi_whole": true,
+    "carloan[vin_2].kind": "original",
+    "carloan[vin_2].requirements": false,
+    "carloan[vin_2].vehicle": true,
+    "carloan[vin_2].interest": 191300,
+    "carloan[vin_2].mixed": false,
+    "carloan[vin_2].financed": 424500,
+    "carloan[vin_2].nonqualifying": 336700,
+    "carloan[vin_2].down": 476000,
+    "carloan[vin_2].refi_balance": 1570100,
+    "carloan[vin_2].refi_whole": true
+   },
+   "expect": {
+    "carloan[vin_1].eligible": {
+     "kind": "bool",
+     "value": true
+    },
+    "carloan[vin_1].allocated": {
+     "kind": "money",
+     "cents": 606600
+    },
+    "carloan[vin_1].mixed_interest": {
+     "kind": "money",
+     "cents": 606600
+    },
+    "carloan[vin_1].col_iii": {
+     "kind": "money",
+     "cents": 606600
+    },
+    "carloan[vin_2].eligible": {
+     "kind": "bool",
+     "value": false
+    },
+    "carloan[vin_2].col_iii": {
+     "kind": "money",
+     "cents": 0
+    }
+   }
+  },
+  {
+   "id": "classm.carloan.3",
+   "covers": [
+    "carloan"
+   ],
+   "evidence": "M",
+   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 a2ac6aed94cc716dc5e81f6b54c951d13f0c66a29394e3341422a857df5fe605; pages i1040gi 109,110 (6024dc94dd1f); fr-2025-24154 20,21,22 (eccaf8550a66); branches carloan.requirements:true, carloan.vehicle:false, carloan.vehicle:true, carloan.eligible:false, carloan.eligible:true, carloan.refi_whole:true, carloan.refi_qualifying:right, carloan.refi_nested:false, carloan.allocated#1, carloan.col_iii#0, carloan.col_iii#1",
+   "inputs": {
+    "div.box2b": 0,
+    "div.box2c": 0,
+    "div.box2d": 0,
+    "div.box2e": 0,
+    "div.box2f": 0,
+    "div.box3": 0,
+    "div.box9": 0,
+    "div.box10": 500000,
+    "div.box12": 0,
+    "div.box13": 0,
+    "div.basis_reconciled": true,
+    "eic.qc_of_another": false,
+    "eic.born_before_2001": true,
+    "eic.born_after_1960": true,
+    "eic.us_home": true,
+    "eic.married": false,
+    "eic.same_home": false,
+    "eic.legally_separated": false,
+    "f1040.status": "single",
+    "f1040.tax_exempt_interest": 0,
+    "f1040.line3a": 6320000,
+    "f1040.line25b": 0,
+    "f1040.line25c": 0,
+    "f1040.line26": 0,
+    "f1040.line35a": 0,
+    "f1040.line36": 0,
+    "f4952.line1": 0,
+    "f4952.carryover": false,
+    "f4952.unsupported": false,
+    "f4952.alternative_allocation": false,
+    "f4952.line4g": 0,
+    "f8889.line2": 0,
+    "f8889.line9": 0,
+    "f8889.unsupported": false,
+    "f8889.months_eligible": 0,
+    "f8889.months_family": 0,
+    "f8889.age55": true,
+    "f8889.dec_coverage": "none",
+    "f8889.last_month": false,
+    "f8959.unsupported": false,
+    "f8960.unsupported": false,
+    "f8960.refund": false,
+    "f8960.allocated_taxes": 0,
+    "ftc.taxes": 2100,
+    "ftc.all_passive": true,
+    "ftc.statements": true,
+    "ftc.eligible": true,
+    "ftc.elect": true,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": true,
+    "household.unmarried": true,
+    "qbi.dividends": 320000,
+    "qbi.unsupported": false,
+    "s1.uc_paid": 0,
+    "s1.uc_repaid": 0,
+    "s1.uc_unsupported": false,
+    "s1.educator_expenses": 0,
+    "s1.eligible_educator": false,
+    "s1a.tips": true,
+    "s1a.overtime": false,
+    "s1a.carloan": true,
+    "s1a.died_before_65": true,
+    "s2.amt": false,
+    "s2.other": false,
+    "s3.line9": 0,
+    "s3.line10": 0,
+    "s3.line12": 0,
+    "s3.line14": 0,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false,
+    "sa.unsupported": true,
+    "sa.charity_limited": false,
+    "sa.excluded_income": false,
+    "sa.dependent": false,
+    "sa.spouse_extra": false,
+    "sa.age65": false,
+    "sa.blind": false,
+    "sa.spouse_itemizes": false,
+    "sa.elect_itemize": false,
+    "sa.line1": 2158500,
+    "sa.line5a": 0,
+    "sa.line5b": 0,
+    "sa.line5c": 0,
+    "sa.line8a": 1733000,
+    "sa.line11": 350700,
+    "sb.unsupported": false,
+    "sb.ordinary_dividends": 8000000,
+    "sb.line7a": false,
+    "sb.fbar_required": false,
+    "sb.form8938": false,
+    "sb.line8": false,
+    "scope.schedule1": false,
+    "scope.credits": false,
+    "scope.other_income": false,
+    "scope.other_line16": false,
+    "sd.other_forms": false,
+    "sd.carryover": false,
+    "sd.distributions": 1055400,
+    "sli.interest": 0,
+    "sli.claimed": false,
+    "ssb.benefits": 0,
+    "ssb.pub915": false,
+    "ssb.lump_sum": false,
+    "ssb.terror_disability": false,
+    "ssb.lived_apart": false,
+    "$person": [
+     "taxpayer"
+    ],
+    "person[taxpayer].rrta": false,
+    "$w2@person[taxpayer]": [
+     "emp_a",
+     "emp_b"
+    ],
+    "person[taxpayer].w2[emp_a].box1": 323000,
+    "person[taxpayer].w2[emp_a].box2": 84000,
+    "person[taxpayer].w2[emp_a].box3": 323000,
+    "person[taxpayer].w2[emp_a].box7": 0,
+    "person[taxpayer].w2[emp_a].box4": 20000,
+    "person[taxpayer].w2[emp_a].box5": 323000,
+    "person[taxpayer].w2[emp_a].box6": 4700,
+    "person[taxpayer].w2[emp_b].box1": 1135700,
+    "person[taxpayer].w2[emp_b].box2": 227100,
+    "person[taxpayer].w2[emp_b].box3": 1135700,
+    "person[taxpayer].w2[emp_b].box7": 0,
+    "person[taxpayer].w2[emp_b].box4": 70400,
+    "person[taxpayer].w2[emp_b].box5": 1135700,
+    "person[taxpayer].w2[emp_b].box6": 16500,
+    "$interest": [
+     "bank_a",
+     "bank_b"
+    ],
+    "interest[bank_a].amount": 3801700,
+    "interest[bank_b].amount": 0,
+    "$sales": [
+     "s1",
+     "s2",
+     "s3"
+    ],
+    "sales[s1].box": "A",
+    "sales[s1].route": "detail",
+    "sales[s1].code": "none",
+    "sales[s1].special": false,
+    "sales[s1].aggregate_eligible": true,
+    "sales[s1].proceeds": 7574900,
+    "sales[s1].reported_basis": 603200,
+    "sales[s1].correct_basis": 0,
+    "sales[s1].wash_loss": 0,
+    "sales[s2].box": "E",
+    "sales[s2].route": "detail",
+    "sales[s2].code": "none",
+    "sales[s2].special": false,
+    "sales[s2].aggregate_eligible": false,
+    "sales[s2].proceeds": 0,
+    "sales[s2].reported_basis": 0,
+    "sales[s2].correct_basis": 948200,
+    "sales[s2].wash_loss": 0,
+    "sales[s3].box": "D",
+    "sales[s3].route": "aggregate",
+    "sales[s3].code": "none",
+    "sales[s3].special": false,
+    "sales[s3].aggregate_eligible": true,
+    "sales[s3].proceeds": 0,
+    "sales[s3].reported_basis": 8456000,
+    "sales[s3].correct_basis": 3403400,
+    "sales[s3].wash_loss": 0,
+    "$gift": [
+     "item_a",
+     "item_b"
+    ],
+    "gift[item_a].deduction": 0,
+    "gift[item_a].public_securities": false,
+    "gift[item_a].special": false,
+    "gift[item_b].deduction": 278900,
+    "gift[item_b].public_securities": true,
+    "gift[item_b].special": false,
+    "$dependent": [],
+    "$retirement": [],
+    "$tipjob": [
+     "tip_1",
+     "tip_2"
+    ],
+    "tipjob[tip_1].qualified": true,
+    "tipjob[tip_1].amount": 0,
+    "tipjob[tip_2].qualified": true,
+    "tipjob[tip_2].amount": 0,
+    "$carloan": [
+     "vin_1",
+     "vin_2"
+    ],
+    "carloan[vin_1].kind": "refinanced",
+    "carloan[vin_1].requirements": true,
+    "carloan[vin_1].vehicle": true,
+    "carloan[vin_1].interest": 0,
+    "carloan[vin_1].mixed": false,
+    "carloan[vin_1].financed": 135100,
+    "carloan[vin_1].nonqualifying": 0,
+    "carloan[vin_1].down": 460600,
+    "carloan[vin_1].refi_balance": 3208100,
+    "carloan[vin_1].refi_whole": true,
+    "carloan[vin_2].kind": "original",
+    "carloan[vin_2].requirements": true,
+    "carloan[vin_2].vehicle": false,
+    "carloan[vin_2].interest": 226700,
+    "carloan[vin_2].mixed": false,
+    "carloan[vin_2].financed": 7841700,
+    "carloan[vin_2].nonqualifying": 186400,
+    "carloan[vin_2].down": 0,
+    "carloan[vin_2].refi_balance": 3596700,
+    "carloan[vin_2].refi_whole": true
+   },
+   "expect": {
+    "carloan[vin_1].eligible": {
+     "kind": "bool",
+     "value": true
+    },
+    "carloan[vin_1].refi_qualifying": {
+     "kind": "money",
+     "cents": 135100
+    },
+    "carloan[vin_1].refi_nested": {
+     "kind": "bool",
+     "value": false
+    },
+    "carloan[vin_1].allocated": {
+     "kind": "money",
+     "cents": 0
+    },
+    "carloan[vin_1].refi_interest": {
+     "kind": "money",
+     "cents": 0
+    },
+    "carloan[vin_1].col_iii": {
+     "kind": "money",
+     "cents": 0
+    },
+    "carloan[vin_2].eligible": {
+     "kind": "bool",
+     "value": false
+    },
+    "carloan[vin_2].col_iii": {
+     "kind": "money",
+     "cents": 0
+    }
+   }
+  },
+  {
+   "id": "classm.carloan.4",
+   "covers": [
+    "carloan"
+   ],
+   "evidence": "M",
+   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 b6558465ac07416e215065dbcaa502303115f4591fb408307a79dcd971c6c3bb; pages i1040gi 109,110 (6024dc94dd1f); fr-2025-24154 20,21,22 (eccaf8550a66); branches carloan.requirements:true, carloan.vehicle:true, carloan.eligible:true, carloan.mixed:true, carloan.nonqualifying_debt:floor, carloan.mixed_qualifying:positive, carloan.allocated#0, carloan.mixed_interest#1, carloan.col_iii#1",
+   "inputs": {
+    "div.box2b": 0,
+    "div.box2c": 0,
+    "div.box2d": 0,
+    "div.box2e": 0,
+    "div.box2f": 234800,
+    "div.box3": 0,
+    "div.box9": 0,
+    "div.box10": 0,
+    "div.box12": 0,
+    "div.box13": 0,
+    "div.basis_reconciled": true,
+    "eic.qc_of_another": false,
+    "eic.born_before_2001": false,
+    "eic.born_after_1960": false,
+    "eic.us_home": true,
+    "eic.married": false,
+    "eic.same_home": false,
+    "eic.legally_separated": false,
+    "f1040.status": "mfs",
+    "f1040.tax_exempt_interest": 0,
+    "f1040.line3a": 0,
+    "f1040.line25b": 0,
+    "f1040.line25c": 0,
+    "f1040.line26": 0,
+    "f1040.line35a": 0,
+    "f1040.line36": 0,
+    "f4952.line1": 0,
+    "f4952.carryover": true,
+    "f4952.unsupported": false,
+    "f4952.alternative_allocation": false,
+    "f4952.line4g": 0,
+    "f8889.line2": 0,
+    "f8889.line9": 0,
+    "f8889.unsupported": false,
+    "f8889.months_eligible": 0,
+    "f8889.months_family": 0,
+    "f8889.age55": false,
+    "f8889.dec_coverage": "none",
+    "f8889.last_month": false,
+    "f8959.unsupported": false,
+    "f8960.unsupported": false,
+    "f8960.refund": false,
+    "f8960.allocated_taxes": 0,
+    "ftc.taxes": 38200,
+    "ftc.all_passive": true,
+    "ftc.statements": true,
+    "ftc.eligible": true,
+    "ftc.elect": true,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": false,
+    "household.home_cost": true,
+    "household.unmarried": false,
+    "qbi.dividends": 0,
+    "qbi.unsupported": true,
+    "s1.uc_paid": 0,
+    "s1.uc_repaid": 0,
+    "s1.uc_unsupported": false,
+    "s1.educator_expenses": 0,
+    "s1.eligible_educator": false,
+    "s1a.tips": true,
+    "s1a.overtime": true,
+    "s1a.carloan": true,
+    "s1a.died_before_65": false,
+    "s2.amt": false,
+    "s2.other": false,
+    "s3.line9": 0,
+    "s3.line10": 0,
+    "s3.line12": 0,
+    "s3.line14": 0,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false,
+    "sa.unsupported": false,
+    "sa.charity_limited": false,
+    "sa.excluded_income": false,
+    "sa.dependent": false,
+    "sa.spouse_extra": false,
+    "sa.age65": true,
+    "sa.blind": false,
+    "sa.spouse_itemizes": false,
+    "sa.elect_itemize": false,
+    "sa.line1": 3000000,
+    "sa.line5a": 848800,
+    "sa.line5b": 1716600,
+    "sa.line5c": 0,
+    "sa.line8a": 0,
+    "sa.line11": 0,
+    "sb.unsupported": false,
+    "sb.ordinary_dividends": 0,
+    "sb.line7a": false,
+    "sb.fbar_required": false,
+    "sb.form8938": false,
+    "sb.line8": true,
+    "scope.schedule1": true,
+    "scope.credits": false,
+    "scope.other_income": false,
+    "scope.other_line16": true,
+    "sd.other_forms": false,
+    "sd.carryover": false,
+    "sd.distributions": 0,
+    "sli.interest": 0,
+    "sli.claimed": false,
+    "ssb.benefits": 0,
+    "ssb.pub915": false,
+    "ssb.lump_sum": false,
+    "ssb.terror_disability": true,
+    "ssb.lived_apart": false,
+    "$person": [
+     "taxpayer"
+    ],
+    "person[taxpayer].rrta": false,
+    "$w2@person[taxpayer]": [
+     "emp_a"
+    ],
+    "person[taxpayer].w2[emp_a].box1": 0,
+    "person[taxpayer].w2[emp_a].box2": 0,
+    "person[taxpayer].w2[emp_a].box3": 0,
+    "person[taxpayer].w2[emp_a].box7": 0,
+    "person[taxpayer].w2[emp_a].box4": 0,
+    "person[taxpayer].w2[emp_a].box5": 0,
+    "person[taxpayer].w2[emp_a].box6": 0,
+    "$interest": [],
+    "$sales": [
+     "s1",
+     "s2",
+     "s3"
+    ],
+    "sales[s1].box": "C",
+    "sales[s1].route": "detail",
+    "sales[s1].code": "none",
+    "sales[s1].special": false,
+    "sales[s1].aggregate_eligible": true,
+    "sales[s1].proceeds": 1413700,
+    "sales[s1].reported_basis": 7856000,
+    "sales[s1].correct_basis": 5022700,
+    "sales[s1].wash_loss": 0,
+    "sales[s2].box": "C",
+    "sales[s2].route": "detail",
+    "sales[s2].code": "none",
+    "sales[s2].special": false,
+    "sales[s2].aggregate_eligible": true,
+    "sales[s2].proceeds": 0,
+    "sales[s2].reported_basis": 8099400,
+    "sales[s2].correct_basis": 1070100,
+    "sales[s2].wash_loss": 0,
+    "sales[s3].box": "B",
+    "sales[s3].route": "detail",
+    "sales[s3].code": "W",
+    "sales[s3].special": false,
+    "sales[s3].aggregate_eligible": true,
+    "sales[s3].proceeds": 710300,
+    "sales[s3].reported_basis": 2048000,
+    "sales[s3].correct_basis": 3890700,
+    "sales[s3].wash_loss": 0,
+    "$gift": [],
+    "$dependent": [],
+    "$retirement": [],
+    "$tipjob": [],
+    "$otjob": [
+     "ot_1"
+    ],
+    "otjob[ot_1].flsa": true,
+    "otjob[ot_1].special_rule": true,
+    "otjob[ot_1].method": "premium",
+    "otjob[ot_1].statement": 328100,
+    "$carloan": [
+     "vin_1"
+    ],
+    "carloan[vin_1].kind": "original",
+    "carloan[vin_1].requirements": true,
+    "carloan[vin_1].vehicle": true,
+    "carloan[vin_1].interest": 0,
+    "carloan[vin_1].mixed": true,
+    "carloan[vin_1].financed": 8000000,
+    "carloan[vin_1].nonqualifying": 990200,
+    "carloan[vin_1].down": 1000000,
+    "carloan[vin_1].refi_balance": 0,
+    "carloan[vin_1].refi_whole": true
+   },
+   "expect": {
+    "carloan[vin_1].eligible": {
+     "kind": "bool",
+     "value": true
+    },
+    "carloan[vin_1].nonqualifying_debt": {
+     "kind": "money",
+     "cents": 0
+    },
+    "carloan[vin_1].mixed_qualifying": {
+     "kind": "money",
+     "cents": 8000000
+    },
+    "carloan[vin_1].allocated": {
+     "kind": "money",
+     "cents": 0
+    },
+    "carloan[vin_1].mixed_interest": {
+     "kind": "money",
+     "cents": 0
+    },
+    "carloan[vin_1].mixed_prorated": {
+     "kind": "money",
+     "cents": 0
+    },
+    "carloan[vin_1].col_iii": {
+     "kind": "money",
+     "cents": 0
+    }
+   }
+  },
+  {
    "id": "classm.dependent.1",
    "covers": [
     "dependent"
@@ -82,7 +1037,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -528,7 +1482,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -952,7 +1905,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -1307,7 +2259,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -1735,7 +2686,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -2158,7 +3108,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -2567,7 +3516,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -2778,7 +3726,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": true,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -2951,7 +3898,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -3157,7 +4103,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -3372,7 +4317,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -3575,7 +4519,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -3726,7 +4669,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": true,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -3892,7 +4834,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -4115,7 +5056,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -4357,7 +5297,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -4591,7 +5530,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -4690,7 +5628,10 @@
     "dependent[dep_c].parent_home_paid": false,
     "dependent[dep_c].us_half": true,
     "dependent[dep_c].eic_ssn": true,
-    "$retirement": []
+    "$retirement": [],
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": false
    },
    "expect": {
     "f1040.line1a": {
@@ -4988,7 +5929,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -5127,7 +6067,10 @@
     "retirement[r2].age": 64,
     "retirement[r2].combined_age": 107,
     "retirement[r2].months": 12,
-    "retirement[r2].recovered": 4274100
+    "retirement[r2].recovered": 4274100,
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": false
    },
    "expect": {
     "f1040.line1a": {
@@ -5425,7 +6368,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -5581,7 +6523,10 @@
     "retirement[r2].age": 80,
     "retirement[r2].combined_age": 137,
     "retirement[r2].months": 12,
-    "retirement[r2].recovered": 0
+    "retirement[r2].recovered": 0,
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": false
    },
    "expect": {
     "f1040.line1a": {
@@ -5879,7 +6824,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -5969,7 +6913,10 @@
     "dependent[dep_b].parent_home_paid": false,
     "dependent[dep_b].us_half": true,
     "dependent[dep_b].eic_ssn": true,
-    "$retirement": []
+    "$retirement": [],
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": false
    },
    "expect": {
     "f1040.line1a": {
@@ -6245,7 +7192,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -6480,7 +7426,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -6718,7 +7663,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": true,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -6934,7 +7878,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": true,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -7136,7 +8079,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -7326,7 +8268,6 @@
     "sb.form8938": true,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -7534,7 +8475,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": true,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -7789,7 +8729,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": true,
     "scope.other_line16": false,
@@ -7991,7 +8930,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -8270,7 +9208,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -8553,7 +9490,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -8791,7 +9727,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": true,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -9033,7 +9968,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -9136,7 +10070,10 @@
     "s1.educator_expenses": 0,
     "f8889.line2": 0,
     "f8889.line9": 0,
-    "sli.interest": 0
+    "sli.interest": 0,
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": false
    },
    "expect": {
     "f8995.line2": {
@@ -9280,7 +10217,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -9388,7 +10324,10 @@
     "s1.educator_expenses": 0,
     "f8889.line2": 0,
     "f8889.line9": 0,
-    "sli.interest": 0
+    "sli.interest": 0,
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": false
    },
    "expect": {
     "f8995.line2": {
@@ -9532,7 +10471,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -9635,7 +10573,10 @@
     "s1.educator_expenses": 0,
     "f8889.line2": 0,
     "f8889.line9": 0,
-    "sli.interest": 0
+    "sli.interest": 0,
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": false
    },
    "expect": {
     "f8995a.line27": {
@@ -9771,7 +10712,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -9879,7 +10819,10 @@
     "s1.educator_expenses": 0,
     "f8889.line2": 0,
     "f8889.line9": 0,
-    "sli.interest": 0
+    "sli.interest": 0,
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": false
    },
    "expect": {
     "f8995a.line27": {
@@ -10015,7 +10958,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -10226,7 +11168,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -10422,7 +11363,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -10561,6 +11501,672 @@
    }
   },
   {
+   "id": "classm.otjob.1",
+   "covers": [
+    "otjob"
+   ],
+   "evidence": "M",
+   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 0ca5fd773e809c572c5ec2500013bcec6a3bbb3c667f985941401aa7443c7156; pages i1040gi 106,107,108 (6024dc94dd1f); n-25-69 22,23,24,25 (db4956dc478d); branches otjob.flsa:false, otjob.flsa:true, otjob.special_rule:false, otjob.refused:false, otjob.figured#1, otjob.col_b#0, otjob.col_b#1",
+   "inputs": {
+    "div.box2b": 0,
+    "div.box2c": 0,
+    "div.box2d": 0,
+    "div.box2e": 0,
+    "div.box2f": 0,
+    "div.box3": 0,
+    "div.box9": 0,
+    "div.box10": 0,
+    "div.box12": 0,
+    "div.box13": 0,
+    "div.basis_reconciled": true,
+    "eic.qc_of_another": false,
+    "eic.born_before_2001": true,
+    "eic.born_after_1960": true,
+    "eic.us_home": true,
+    "eic.married": false,
+    "eic.same_home": false,
+    "eic.legally_separated": false,
+    "f1040.status": "qss",
+    "f1040.tax_exempt_interest": 0,
+    "f1040.line3a": 0,
+    "f1040.line25b": 0,
+    "f1040.line25c": 0,
+    "f1040.line26": 0,
+    "f1040.line35a": 0,
+    "f1040.line36": 0,
+    "f4952.line1": 218500,
+    "f4952.carryover": false,
+    "f4952.unsupported": true,
+    "f4952.alternative_allocation": false,
+    "f4952.line4g": 0,
+    "f8889.line2": 0,
+    "f8889.line9": 0,
+    "f8889.unsupported": false,
+    "f8889.months_eligible": 0,
+    "f8889.months_family": 0,
+    "f8889.age55": false,
+    "f8889.dec_coverage": "none",
+    "f8889.last_month": true,
+    "f8959.unsupported": false,
+    "f8960.unsupported": false,
+    "f8960.refund": false,
+    "f8960.allocated_taxes": 0,
+    "ftc.taxes": 0,
+    "ftc.all_passive": true,
+    "ftc.statements": true,
+    "ftc.eligible": true,
+    "ftc.elect": true,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": false,
+    "household.unmarried": true,
+    "qbi.dividends": 0,
+    "qbi.unsupported": false,
+    "s1.uc_paid": 0,
+    "s1.uc_repaid": 0,
+    "s1.uc_unsupported": false,
+    "s1.educator_expenses": 0,
+    "s1.eligible_educator": false,
+    "s1a.tips": false,
+    "s1a.overtime": true,
+    "s1a.carloan": false,
+    "s1a.died_before_65": false,
+    "s2.amt": false,
+    "s2.other": false,
+    "s3.line9": 0,
+    "s3.line10": 0,
+    "s3.line12": 0,
+    "s3.line14": 0,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false,
+    "sa.unsupported": false,
+    "sa.charity_limited": false,
+    "sa.excluded_income": false,
+    "sa.dependent": false,
+    "sa.spouse_extra": false,
+    "sa.age65": false,
+    "sa.blind": false,
+    "sa.spouse_itemizes": false,
+    "sa.elect_itemize": false,
+    "sa.line1": 0,
+    "sa.line5a": 0,
+    "sa.line5b": 1740200,
+    "sa.line5c": 0,
+    "sa.line8a": 3512000,
+    "sa.line11": 0,
+    "sb.unsupported": false,
+    "sb.ordinary_dividends": 0,
+    "sb.line7a": false,
+    "sb.fbar_required": false,
+    "sb.form8938": false,
+    "sb.line8": false,
+    "scope.schedule1": false,
+    "scope.credits": false,
+    "scope.other_income": false,
+    "scope.other_line16": false,
+    "sd.other_forms": true,
+    "sd.carryover": false,
+    "sd.distributions": 0,
+    "sli.interest": 0,
+    "sli.claimed": false,
+    "ssb.benefits": 0,
+    "ssb.pub915": false,
+    "ssb.lump_sum": false,
+    "ssb.terror_disability": true,
+    "ssb.lived_apart": false,
+    "$person": [
+     "taxpayer"
+    ],
+    "person[taxpayer].rrta": false,
+    "$w2@person[taxpayer]": [
+     "emp_a",
+     "emp_b"
+    ],
+    "person[taxpayer].w2[emp_a].box1": 5689700,
+    "person[taxpayer].w2[emp_a].box2": 967300,
+    "person[taxpayer].w2[emp_a].box3": 5689700,
+    "person[taxpayer].w2[emp_a].box7": 0,
+    "person[taxpayer].w2[emp_a].box4": 352800,
+    "person[taxpayer].w2[emp_a].box5": 5689700,
+    "person[taxpayer].w2[emp_a].box6": 82500,
+    "person[taxpayer].w2[emp_b].box1": 531100,
+    "person[taxpayer].w2[emp_b].box2": 122200,
+    "person[taxpayer].w2[emp_b].box3": 531100,
+    "person[taxpayer].w2[emp_b].box7": 0,
+    "person[taxpayer].w2[emp_b].box4": 32900,
+    "person[taxpayer].w2[emp_b].box5": 531100,
+    "person[taxpayer].w2[emp_b].box6": 7700,
+    "$interest": [],
+    "$sales": [],
+    "$gift": [
+     "item_a"
+    ],
+    "gift[item_a].deduction": 59300,
+    "gift[item_a].public_securities": true,
+    "gift[item_a].special": false,
+    "$dependent": [],
+    "$retirement": [],
+    "$otjob": [
+     "ot_1",
+     "ot_2"
+    ],
+    "otjob[ot_1].flsa": true,
+    "otjob[ot_1].special_rule": false,
+    "otjob[ot_1].method": "premium",
+    "otjob[ot_1].statement": 530100,
+    "otjob[ot_2].flsa": false,
+    "otjob[ot_2].special_rule": false,
+    "otjob[ot_2].method": "total_time_and_half",
+    "otjob[ot_2].statement": 0
+   },
+   "expect": {
+    "otjob[ot_1].refused": {
+     "kind": "bool",
+     "value": false
+    },
+    "otjob[ot_1].figured": {
+     "kind": "money",
+     "cents": 530100
+    },
+    "otjob[ot_1].col_b": {
+     "kind": "money",
+     "cents": 530100
+    },
+    "otjob[ot_2].col_b": {
+     "kind": "money",
+     "cents": 0
+    }
+   }
+  },
+  {
+   "id": "classm.otjob.2",
+   "covers": [
+    "otjob"
+   ],
+   "evidence": "M",
+   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 22bf53c71137d87c3295c8421c3f28426c0b272e28096cce2a1675bf354db8dc; pages i1040gi 106,107,108 (6024dc94dd1f); n-25-69 22,23,24,25 (db4956dc478d); branches otjob.flsa:true, otjob.special_rule:false, otjob.refused:false, otjob.figured#0, otjob.figured#2, otjob.col_b#1",
+   "inputs": {
+    "div.box2b": 0,
+    "div.box2c": 0,
+    "div.box2d": 0,
+    "div.box2e": 0,
+    "div.box2f": 0,
+    "div.box3": 0,
+    "div.box9": 0,
+    "div.box10": 0,
+    "div.box12": 0,
+    "div.box13": 0,
+    "div.basis_reconciled": true,
+    "eic.qc_of_another": false,
+    "eic.born_before_2001": true,
+    "eic.born_after_1960": true,
+    "eic.us_home": true,
+    "eic.married": false,
+    "eic.same_home": false,
+    "eic.legally_separated": false,
+    "f1040.status": "single",
+    "f1040.tax_exempt_interest": 0,
+    "f1040.line3a": 197300,
+    "f1040.line25b": 0,
+    "f1040.line25c": 0,
+    "f1040.line26": 0,
+    "f1040.line35a": 0,
+    "f1040.line36": 0,
+    "f4952.line1": 697500,
+    "f4952.carryover": false,
+    "f4952.unsupported": false,
+    "f4952.alternative_allocation": false,
+    "f4952.line4g": 0,
+    "f8889.line2": 0,
+    "f8889.line9": 0,
+    "f8889.unsupported": true,
+    "f8889.months_eligible": 0,
+    "f8889.months_family": 0,
+    "f8889.age55": true,
+    "f8889.dec_coverage": "none",
+    "f8889.last_month": false,
+    "f8959.unsupported": false,
+    "f8960.unsupported": false,
+    "f8960.refund": false,
+    "f8960.allocated_taxes": 0,
+    "ftc.taxes": 45000,
+    "ftc.all_passive": true,
+    "ftc.statements": true,
+    "ftc.eligible": true,
+    "ftc.elect": true,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": false,
+    "household.unmarried": true,
+    "qbi.dividends": 7900,
+    "qbi.unsupported": false,
+    "s1.uc_paid": 0,
+    "s1.uc_repaid": 0,
+    "s1.uc_unsupported": false,
+    "s1.educator_expenses": 0,
+    "s1.eligible_educator": true,
+    "s1a.tips": true,
+    "s1a.overtime": true,
+    "s1a.carloan": false,
+    "s1a.died_before_65": false,
+    "s2.amt": false,
+    "s2.other": false,
+    "s3.line9": 0,
+    "s3.line10": 0,
+    "s3.line12": 0,
+    "s3.line14": 0,
+    "s8812.combat_pay": true,
+    "s8812.puerto_rico": false,
+    "sa.unsupported": false,
+    "sa.charity_limited": false,
+    "sa.excluded_income": false,
+    "sa.dependent": false,
+    "sa.spouse_extra": true,
+    "sa.age65": false,
+    "sa.blind": false,
+    "sa.spouse_itemizes": false,
+    "sa.elect_itemize": false,
+    "sa.line1": 0,
+    "sa.line5a": 0,
+    "sa.line5b": 339300,
+    "sa.line5c": 0,
+    "sa.line8a": 2221900,
+    "sa.line11": 0,
+    "sb.unsupported": false,
+    "sb.ordinary_dividends": 197300,
+    "sb.line7a": false,
+    "sb.fbar_required": false,
+    "sb.form8938": false,
+    "sb.line8": false,
+    "scope.schedule1": true,
+    "scope.credits": false,
+    "scope.other_income": false,
+    "scope.other_line16": false,
+    "sd.other_forms": false,
+    "sd.carryover": true,
+    "sd.distributions": 448300,
+    "sli.interest": 0,
+    "sli.claimed": false,
+    "ssb.benefits": 0,
+    "ssb.pub915": false,
+    "ssb.lump_sum": false,
+    "ssb.terror_disability": false,
+    "ssb.lived_apart": false,
+    "$person": [
+     "taxpayer"
+    ],
+    "person[taxpayer].rrta": false,
+    "$w2@person[taxpayer]": [
+     "emp_a",
+     "emp_b"
+    ],
+    "person[taxpayer].w2[emp_a].box1": 38304900,
+    "person[taxpayer].w2[emp_a].box2": 8427100,
+    "person[taxpayer].w2[emp_a].box3": 17610000,
+    "person[taxpayer].w2[emp_a].box7": 0,
+    "person[taxpayer].w2[emp_a].box4": 1091800,
+    "person[taxpayer].w2[emp_a].box5": 38304900,
+    "person[taxpayer].w2[emp_a].box6": 720200,
+    "person[taxpayer].w2[emp_b].box1": 3985700,
+    "person[taxpayer].w2[emp_b].box2": 1076200,
+    "person[taxpayer].w2[emp_b].box3": 3985700,
+    "person[taxpayer].w2[emp_b].box7": 0,
+    "person[taxpayer].w2[emp_b].box4": 247100,
+    "person[taxpayer].w2[emp_b].box5": 3985700,
+    "person[taxpayer].w2[emp_b].box6": 57800,
+    "$interest": [
+     "bank_a"
+    ],
+    "interest[bank_a].amount": 3907000,
+    "$sales": [
+     "s1"
+    ],
+    "sales[s1].box": "E",
+    "sales[s1].route": "detail",
+    "sales[s1].code": "none",
+    "sales[s1].special": false,
+    "sales[s1].aggregate_eligible": true,
+    "sales[s1].proceeds": 0,
+    "sales[s1].reported_basis": 8636600,
+    "sales[s1].correct_basis": 9393600,
+    "sales[s1].wash_loss": 0,
+    "$gift": [
+     "item_a"
+    ],
+    "gift[item_a].deduction": 326600,
+    "gift[item_a].public_securities": true,
+    "gift[item_a].special": false,
+    "$dependent": [
+     "dep_a",
+     "dep_b",
+     "dep_c"
+    ],
+    "dependent[dep_a].relationship": "other",
+    "dependent[dep_a].age": 2,
+    "dependent[dep_a].younger": true,
+    "dependent[dep_a].student": false,
+    "dependent[dep_a].disabled": false,
+    "dependent[dep_a].months": 12,
+    "dependent[dep_a].self_support": false,
+    "dependent[dep_a].joint_return": false,
+    "dependent[dep_a].citizen": true,
+    "dependent[dep_a].canada_mexico": false,
+    "dependent[dep_a].married": false,
+    "dependent[dep_a].tin": true,
+    "dependent[dep_a].work_ssn": true,
+    "dependent[dep_a].gross_income": 0,
+    "dependent[dep_a].supported": true,
+    "dependent[dep_a].other_claimant": false,
+    "dependent[dep_a].divorced_rule": false,
+    "dependent[dep_a].multiple_support": false,
+    "dependent[dep_a].parent_home_paid": false,
+    "dependent[dep_a].us_half": true,
+    "dependent[dep_a].eic_ssn": true,
+    "dependent[dep_b].relationship": "child",
+    "dependent[dep_b].age": 32,
+    "dependent[dep_b].younger": true,
+    "dependent[dep_b].student": true,
+    "dependent[dep_b].disabled": false,
+    "dependent[dep_b].months": 12,
+    "dependent[dep_b].self_support": false,
+    "dependent[dep_b].joint_return": true,
+    "dependent[dep_b].citizen": false,
+    "dependent[dep_b].canada_mexico": true,
+    "dependent[dep_b].married": false,
+    "dependent[dep_b].tin": true,
+    "dependent[dep_b].work_ssn": false,
+    "dependent[dep_b].gross_income": 661500,
+    "dependent[dep_b].supported": true,
+    "dependent[dep_b].other_claimant": false,
+    "dependent[dep_b].divorced_rule": false,
+    "dependent[dep_b].multiple_support": false,
+    "dependent[dep_b].parent_home_paid": false,
+    "dependent[dep_b].us_half": false,
+    "dependent[dep_b].eic_ssn": true,
+    "dependent[dep_c].relationship": "in_law",
+    "dependent[dep_c].age": 18,
+    "dependent[dep_c].younger": false,
+    "dependent[dep_c].student": false,
+    "dependent[dep_c].disabled": false,
+    "dependent[dep_c].months": 12,
+    "dependent[dep_c].self_support": false,
+    "dependent[dep_c].joint_return": false,
+    "dependent[dep_c].citizen": true,
+    "dependent[dep_c].canada_mexico": true,
+    "dependent[dep_c].married": false,
+    "dependent[dep_c].tin": true,
+    "dependent[dep_c].work_ssn": true,
+    "dependent[dep_c].gross_income": 624100,
+    "dependent[dep_c].supported": true,
+    "dependent[dep_c].other_claimant": false,
+    "dependent[dep_c].divorced_rule": false,
+    "dependent[dep_c].multiple_support": false,
+    "dependent[dep_c].parent_home_paid": false,
+    "dependent[dep_c].us_half": true,
+    "dependent[dep_c].eic_ssn": true,
+    "$retirement": [],
+    "$tipjob": [
+     "tip_1"
+    ],
+    "tipjob[tip_1].qualified": true,
+    "tipjob[tip_1].amount": 884700,
+    "$otjob": [
+     "ot_1",
+     "ot_2"
+    ],
+    "otjob[ot_1].flsa": true,
+    "otjob[ot_1].special_rule": false,
+    "otjob[ot_1].method": "employer_reported",
+    "otjob[ot_1].statement": 0,
+    "otjob[ot_2].flsa": true,
+    "otjob[ot_2].special_rule": false,
+    "otjob[ot_2].method": "total_time_and_half",
+    "otjob[ot_2].statement": 2564400
+   },
+   "expect": {
+    "otjob[ot_1].refused": {
+     "kind": "bool",
+     "value": false
+    },
+    "otjob[ot_1].figured": {
+     "kind": "money",
+     "cents": 0
+    },
+    "otjob[ot_1].col_b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "otjob[ot_2].refused": {
+     "kind": "bool",
+     "value": false
+    },
+    "otjob[ot_2].figured": {
+     "kind": "money",
+     "cents": 854800
+    },
+    "otjob[ot_2].by_third": {
+     "kind": "money",
+     "cents": 854800
+    },
+    "otjob[ot_2].col_b": {
+     "kind": "money",
+     "cents": 854800
+    }
+   }
+  },
+  {
+   "id": "classm.otjob.3",
+   "covers": [
+    "otjob"
+   ],
+   "evidence": "M",
+   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 22f707d783f69572853d834044cdd158b01ac09616944708254bbf8d238ff740; pages i1040gi 106,107,108 (6024dc94dd1f); n-25-69 22,23,24,25 (db4956dc478d); branches otjob.flsa:true, otjob.special_rule:false, otjob.refused:false, otjob.figured#3, otjob.figured#4, otjob.col_b#1",
+   "inputs": {
+    "div.box2b": 0,
+    "div.box2c": 0,
+    "div.box2d": 0,
+    "div.box2e": 0,
+    "div.box2f": 0,
+    "div.box3": 0,
+    "div.box9": 0,
+    "div.box10": 0,
+    "div.box12": 0,
+    "div.box13": 0,
+    "div.basis_reconciled": true,
+    "eic.qc_of_another": false,
+    "eic.born_before_2001": true,
+    "eic.born_after_1960": true,
+    "eic.us_home": true,
+    "eic.married": false,
+    "eic.same_home": false,
+    "eic.legally_separated": true,
+    "f1040.status": "mfs",
+    "f1040.tax_exempt_interest": 0,
+    "f1040.line3a": 0,
+    "f1040.line25b": 290100,
+    "f1040.line25c": 0,
+    "f1040.line26": 0,
+    "f1040.line35a": 0,
+    "f1040.line36": 0,
+    "f4952.line1": 0,
+    "f4952.carryover": false,
+    "f4952.unsupported": false,
+    "f4952.alternative_allocation": false,
+    "f4952.line4g": 0,
+    "f8889.line2": 0,
+    "f8889.line9": 0,
+    "f8889.unsupported": false,
+    "f8889.months_eligible": 0,
+    "f8889.months_family": 0,
+    "f8889.age55": false,
+    "f8889.dec_coverage": "none",
+    "f8889.last_month": false,
+    "f8959.unsupported": false,
+    "f8960.unsupported": false,
+    "f8960.refund": false,
+    "f8960.allocated_taxes": 0,
+    "ftc.taxes": 0,
+    "ftc.all_passive": true,
+    "ftc.statements": true,
+    "ftc.eligible": true,
+    "ftc.elect": true,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": true,
+    "household.unmarried": true,
+    "qbi.dividends": 0,
+    "qbi.unsupported": false,
+    "s1.uc_paid": 0,
+    "s1.uc_repaid": 0,
+    "s1.uc_unsupported": false,
+    "s1.educator_expenses": 0,
+    "s1.eligible_educator": false,
+    "s1a.tips": false,
+    "s1a.overtime": true,
+    "s1a.carloan": true,
+    "s1a.died_before_65": false,
+    "s2.amt": false,
+    "s2.other": false,
+    "s3.line9": 0,
+    "s3.line10": 0,
+    "s3.line12": 0,
+    "s3.line14": 0,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false,
+    "sa.unsupported": false,
+    "sa.charity_limited": false,
+    "sa.excluded_income": false,
+    "sa.dependent": false,
+    "sa.spouse_extra": false,
+    "sa.age65": false,
+    "sa.blind": false,
+    "sa.spouse_itemizes": false,
+    "sa.elect_itemize": false,
+    "sa.line1": 1308900,
+    "sa.line5a": 2782600,
+    "sa.line5b": 1983200,
+    "sa.line5c": 0,
+    "sa.line8a": 0,
+    "sa.line11": 0,
+    "sb.unsupported": false,
+    "sb.ordinary_dividends": 0,
+    "sb.line7a": false,
+    "sb.fbar_required": false,
+    "sb.form8938": false,
+    "sb.line8": false,
+    "scope.schedule1": false,
+    "scope.credits": false,
+    "scope.other_income": false,
+    "scope.other_line16": false,
+    "sd.other_forms": false,
+    "sd.carryover": true,
+    "sd.distributions": 0,
+    "sli.interest": 0,
+    "sli.claimed": false,
+    "ssb.benefits": 0,
+    "ssb.pub915": false,
+    "ssb.lump_sum": false,
+    "ssb.terror_disability": true,
+    "ssb.lived_apart": false,
+    "$person": [
+     "taxpayer"
+    ],
+    "person[taxpayer].rrta": false,
+    "$w2@person[taxpayer]": [
+     "emp_a"
+    ],
+    "person[taxpayer].w2[emp_a].box1": 0,
+    "person[taxpayer].w2[emp_a].box2": 0,
+    "person[taxpayer].w2[emp_a].box3": 0,
+    "person[taxpayer].w2[emp_a].box7": 0,
+    "person[taxpayer].w2[emp_a].box4": 0,
+    "person[taxpayer].w2[emp_a].box5": 0,
+    "person[taxpayer].w2[emp_a].box6": 0,
+    "$interest": [],
+    "$sales": [
+     "s1",
+     "s2"
+    ],
+    "sales[s1].box": "A",
+    "sales[s1].route": "detail",
+    "sales[s1].code": "none",
+    "sales[s1].special": false,
+    "sales[s1].aggregate_eligible": false,
+    "sales[s1].proceeds": 3678400,
+    "sales[s1].reported_basis": 0,
+    "sales[s1].correct_basis": 3828000,
+    "sales[s1].wash_loss": 0,
+    "sales[s2].box": "F",
+    "sales[s2].route": "detail",
+    "sales[s2].code": "W",
+    "sales[s2].special": false,
+    "sales[s2].aggregate_eligible": false,
+    "sales[s2].proceeds": 241000,
+    "sales[s2].reported_basis": 0,
+    "sales[s2].correct_basis": 2795500,
+    "sales[s2].wash_loss": 0,
+    "$gift": [
+     "item_a",
+     "item_b"
+    ],
+    "gift[item_a].deduction": 426300,
+    "gift[item_a].public_securities": true,
+    "gift[item_a].special": false,
+    "gift[item_b].deduction": 588400,
+    "gift[item_b].public_securities": false,
+    "gift[item_b].special": false,
+    "$dependent": [],
+    "$retirement": [],
+    "$otjob": [
+     "ot_1",
+     "ot_2"
+    ],
+    "otjob[ot_1].flsa": true,
+    "otjob[ot_1].special_rule": false,
+    "otjob[ot_1].method": "total_double",
+    "otjob[ot_1].statement": 0,
+    "otjob[ot_2].flsa": true,
+    "otjob[ot_2].special_rule": false,
+    "otjob[ot_2].method": "premium_double",
+    "otjob[ot_2].statement": 82200,
+    "$carloan": []
+   },
+   "expect": {
+    "otjob[ot_1].refused": {
+     "kind": "bool",
+     "value": false
+    },
+    "otjob[ot_1].figured": {
+     "kind": "money",
+     "cents": 0
+    },
+    "otjob[ot_1].by_quarter": {
+     "kind": "money",
+     "cents": 0
+    },
+    "otjob[ot_1].col_b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "otjob[ot_2].refused": {
+     "kind": "bool",
+     "value": false
+    },
+    "otjob[ot_2].figured": {
+     "kind": "money",
+     "cents": 41100
+    },
+    "otjob[ot_2].by_half": {
+     "kind": "money",
+     "cents": 41100
+    },
+    "otjob[ot_2].col_b": {
+     "kind": "money",
+     "cents": 41100
+    }
+   }
+  },
+  {
    "id": "classm.person.1",
    "covers": [
     "person"
@@ -10635,7 +12241,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -10826,7 +12431,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": true,
     "scope.other_line16": false,
@@ -10988,7 +12592,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -11091,7 +12694,10 @@
     "s1.educator_expenses": 0,
     "f8889.line2": 0,
     "f8889.line9": 0,
-    "sli.interest": 0
+    "sli.interest": 0,
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": false
    },
    "expect": {
     "qdcg.line1": {
@@ -11263,7 +12869,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -11371,7 +12976,10 @@
     "s1.educator_expenses": 0,
     "f8889.line2": 0,
     "f8889.line9": 0,
-    "sli.interest": 0
+    "sli.interest": 0,
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": false
    },
    "expect": {
     "qdcg.line1": {
@@ -11543,7 +13151,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -11631,7 +13238,10 @@
     "s1.educator_expenses": 0,
     "f8889.line2": 0,
     "f8889.line9": 0,
-    "sli.interest": 0
+    "sli.interest": 0,
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": false
    },
    "expect": {
     "qdcg.line1": {
@@ -11810,7 +13420,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -12201,7 +13810,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -12608,7 +14216,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -12918,7 +14525,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -13278,7 +14884,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -13587,7 +15192,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -13978,7 +15582,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -14328,7 +15931,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -14757,7 +16359,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -15054,7 +16655,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -15388,7 +16988,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -15810,7 +17409,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": true,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -16004,7 +17602,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -16216,7 +17813,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": true,
     "scope.other_income": true,
     "scope.other_line16": false,
@@ -16380,6 +17976,2945 @@
    }
   },
   {
+   "id": "classm.s1a.1",
+   "covers": [
+    "s1a"
+   ],
+   "evidence": "M",
+   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 a110900d2d4fd8d3ffee8bd12a3a65ac009bde86a81ad9cb61dfb5ebc226a4b8; pages f1040s1a 1,2 (9212bddf5265); i1040gi 101,102,103,104,105,106,108,109,110 (6024dc94dd1f); branches s1a.tips:true, s1a.tip_multi:false, s1a.part2:true, s1a.line4a_calc#1, s1a.line4a#1, s1a.line4b#1, s1a.line4c_one:left, s1a.line4c_calc#1, s1a.line4c#1, s1a.line5#1, s1a.line6#1, s1a.line7_calc:left, s1a.line7#1, s1a.line8#1, s1a.line9_calc#0, s1a.line9#1, s1a.line10#1, s1a.line10_over:false, s1a.line10_pos:floor, s1a.line12#1, s1a.line13_figured:floor, s1a.line13_amount#0, s1a.line13_ssn#1, s1a.line13_claim#0, s1a.line13#1, s1a.overtime:false, s1a.part3:false, s1a.line14a#0, s1a.line14b#0, s1a.line14c#0, s1a.ot_max#0, s1a.line15_calc:left, s1a.line15#0, s1a.line16#0, s1a.line17_calc#0, s1a.line17#0, s1a.line18#0, s1a.line18_over:false, s1a.line18_pos:floor, s1a.line20#0, s1a.line21_figured:floor, s1a.line21_amount#0, s1a.line21_ssn#1, s1a.line21_claim#0, s1a.line21#0, s1a.carloan:false, s1a.line23#0, s1a.part4:false, s1a.line24_calc:left, s1a.line24#0, s1a.line25#0, s1a.line26_calc#0, s1a.line26#0, s1a.line27#0, s1a.line27_over:false, s1a.line27_pos:floor, s1a.line29#0, s1a.line30_figured:floor, s1a.line30_amount#0, s1a.line30#0, s1a.part5:false, s1a.line31#0, s1a.line32_calc#0, s1a.line32#0, s1a.line33#0, s1a.line33_over:false, s1a.line33_pos:floor, s1a.line34#0, s1a.line35_figured:positive, s1a.line35_calc#0, s1a.line35#0, s1a.died_before_65:false, s1a.senior_decedent:false, s1a.line36a_senior#1, s1a.line36a_claim#0, s1a.line36a#0",
+   "inputs": {
+    "div.box2b": 0,
+    "div.box2c": 0,
+    "div.box2d": 0,
+    "div.box2e": 0,
+    "div.box2f": 0,
+    "div.box3": 0,
+    "div.box9": 0,
+    "div.box10": 0,
+    "div.box12": 0,
+    "div.box13": 0,
+    "div.basis_reconciled": true,
+    "eic.qc_of_another": false,
+    "eic.born_before_2001": true,
+    "eic.born_after_1960": true,
+    "eic.us_home": true,
+    "eic.married": false,
+    "eic.same_home": false,
+    "eic.legally_separated": false,
+    "f1040.status": "single",
+    "f1040.tax_exempt_interest": 329500,
+    "f1040.line3a": 0,
+    "f1040.line25b": 0,
+    "f1040.line25c": 0,
+    "f1040.line26": 0,
+    "f1040.line35a": 0,
+    "f1040.line36": 0,
+    "f4952.line1": 692000,
+    "f4952.carryover": false,
+    "f4952.unsupported": false,
+    "f4952.alternative_allocation": false,
+    "f4952.line4g": 302400,
+    "f8889.line2": 0,
+    "f8889.line9": 0,
+    "f8889.unsupported": false,
+    "f8889.months_eligible": 0,
+    "f8889.months_family": 0,
+    "f8889.age55": false,
+    "f8889.dec_coverage": "none",
+    "f8889.last_month": true,
+    "f8959.unsupported": false,
+    "f8960.unsupported": false,
+    "f8960.refund": false,
+    "f8960.allocated_taxes": 0,
+    "ftc.taxes": 0,
+    "ftc.all_passive": true,
+    "ftc.statements": true,
+    "ftc.eligible": true,
+    "ftc.elect": true,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": false,
+    "household.unmarried": true,
+    "qbi.dividends": 0,
+    "qbi.unsupported": false,
+    "s1.uc_paid": 0,
+    "s1.uc_repaid": 0,
+    "s1.uc_unsupported": false,
+    "s1.educator_expenses": 0,
+    "s1.eligible_educator": false,
+    "s1a.tips": true,
+    "s1a.overtime": false,
+    "s1a.carloan": false,
+    "s1a.died_before_65": false,
+    "s2.amt": false,
+    "s2.other": false,
+    "s3.line9": 0,
+    "s3.line10": 0,
+    "s3.line12": 0,
+    "s3.line14": 0,
+    "s8812.combat_pay": true,
+    "s8812.puerto_rico": false,
+    "sa.unsupported": false,
+    "sa.charity_limited": false,
+    "sa.excluded_income": false,
+    "sa.dependent": false,
+    "sa.spouse_extra": false,
+    "sa.age65": false,
+    "sa.blind": false,
+    "sa.spouse_itemizes": false,
+    "sa.elect_itemize": false,
+    "sa.line1": 132300,
+    "sa.line5a": 0,
+    "sa.line5b": 0,
+    "sa.line5c": 0,
+    "sa.line8a": 1528100,
+    "sa.line11": 111400,
+    "sb.unsupported": false,
+    "sb.ordinary_dividends": 0,
+    "sb.line7a": false,
+    "sb.fbar_required": false,
+    "sb.form8938": false,
+    "sb.line8": false,
+    "scope.schedule1": false,
+    "scope.credits": false,
+    "scope.other_income": false,
+    "scope.other_line16": false,
+    "sd.other_forms": false,
+    "sd.carryover": false,
+    "sd.distributions": 0,
+    "sli.interest": 0,
+    "sli.claimed": false,
+    "ssb.benefits": 0,
+    "ssb.pub915": false,
+    "ssb.lump_sum": false,
+    "ssb.terror_disability": false,
+    "ssb.lived_apart": true,
+    "$person": [
+     "taxpayer"
+    ],
+    "person[taxpayer].rrta": false,
+    "$w2@person[taxpayer]": [
+     "emp_a"
+    ],
+    "person[taxpayer].w2[emp_a].box1": 2298600,
+    "person[taxpayer].w2[emp_a].box2": 459700,
+    "person[taxpayer].w2[emp_a].box3": 2298600,
+    "person[taxpayer].w2[emp_a].box7": 0,
+    "person[taxpayer].w2[emp_a].box4": 322400,
+    "person[taxpayer].w2[emp_a].box5": 2298600,
+    "person[taxpayer].w2[emp_a].box6": 33300,
+    "$interest": [
+     "bank_a"
+    ],
+    "interest[bank_a].amount": 18300,
+    "$sales": [],
+    "$gift": [],
+    "$dependent": [
+     "dep_a"
+    ],
+    "dependent[dep_a].relationship": "other",
+    "dependent[dep_a].age": 12,
+    "dependent[dep_a].younger": true,
+    "dependent[dep_a].student": false,
+    "dependent[dep_a].disabled": false,
+    "dependent[dep_a].months": 12,
+    "dependent[dep_a].self_support": false,
+    "dependent[dep_a].joint_return": false,
+    "dependent[dep_a].citizen": true,
+    "dependent[dep_a].canada_mexico": false,
+    "dependent[dep_a].married": false,
+    "dependent[dep_a].tin": true,
+    "dependent[dep_a].work_ssn": true,
+    "dependent[dep_a].gross_income": 0,
+    "dependent[dep_a].supported": true,
+    "dependent[dep_a].other_claimant": true,
+    "dependent[dep_a].divorced_rule": false,
+    "dependent[dep_a].multiple_support": false,
+    "dependent[dep_a].parent_home_paid": false,
+    "dependent[dep_a].us_half": true,
+    "dependent[dep_a].eic_ssn": true,
+    "$retirement": [],
+    "$tipjob": []
+   },
+   "expect": {
+    "s1a.line1": {
+     "kind": "money",
+     "cents": 2316900
+    },
+    "s1a.line2a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line2b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line2c": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line2d": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line2e": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line3": {
+     "kind": "money",
+     "cents": 2316900
+    },
+    "s1a.line4a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line4b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line4c": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line5": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line6": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line7": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line8": {
+     "kind": "money",
+     "cents": 2316900
+    },
+    "s1a.line9": {
+     "kind": "money",
+     "cents": 15000000
+    },
+    "s1a.line10": {
+     "kind": "money",
+     "cents": -12683100
+    },
+    "s1a.line12": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line13": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line14a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line14b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line14c": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line15": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line16": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line17": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line18": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line20": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line21": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line23": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line24": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line25": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line26": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line27": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line29": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line30": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line31": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line32": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line33": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line34": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line35": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line36a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line36b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line37": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line38": {
+     "kind": "money",
+     "cents": 0
+    }
+   }
+  },
+  {
+   "id": "classm.s1a.2",
+   "covers": [
+    "s1a"
+   ],
+   "evidence": "M",
+   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 5496cc335147d444af5a512f321189f72b906bd414b8a0767a50d2432e8a2d2f; pages f1040s1a 1,2 (9212bddf5265); i1040gi 101,102,103,104,105,106,108,109,110 (6024dc94dd1f); branches s1a.tips:false, s1a.part2:false, s1a.line4a#0, s1a.line4b#0, s1a.line4c_one:left, s1a.line4c#0, s1a.line5#0, s1a.line6#0, s1a.line7_calc:left, s1a.line7#0, s1a.line8#0, s1a.line9_calc#3, s1a.line9#0, s1a.line10#0, s1a.line10_over:false, s1a.line10_pos:floor, s1a.line12#0, s1a.line13_figured:floor, s1a.line13_amount#0, s1a.line13_ssn#1, s1a.line13_claim#3, s1a.line13#0, s1a.overtime:false, s1a.part3:false, s1a.line14a#0, s1a.line14b#0, s1a.line14c#0, s1a.ot_max#3, s1a.line15_calc:left, s1a.line15#0, s1a.line16#0, s1a.line17_calc#3, s1a.line17#0, s1a.line18#0, s1a.line18_over:false, s1a.line18_pos:floor, s1a.line20#0, s1a.line21_figured:floor, s1a.line21_amount#0, s1a.line21_ssn#1, s1a.line21_claim#3, s1a.line21#0, s1a.carloan:true, s1a.line23#1, s1a.part4:true, s1a.line24_calc:right, s1a.line24#1, s1a.line25#1, s1a.line26_calc#3, s1a.line26#1, s1a.line27#1, s1a.line27_over:true, s1a.line27_pos:positive, s1a.line29#1, s1a.line30_figured:floor, s1a.line30_amount#1, s1a.line30#1, s1a.part5:true, s1a.line31#1, s1a.line32_calc#3, s1a.line32#1, s1a.line33#1, s1a.line33_over:true, s1a.line33_pos:positive, s1a.line34#1, s1a.line35_figured:floor, s1a.line35_calc#1, s1a.line35#1, s1a.died_before_65:false, s1a.senior_decedent:false, s1a.line36a_senior#1, s1a.line36a_claim#3, s1a.line36a#1",
+   "inputs": {
+    "div.box2b": 16100,
+    "div.box2c": 0,
+    "div.box2d": 0,
+    "div.box2e": 0,
+    "div.box2f": 0,
+    "div.box3": 0,
+    "div.box9": 0,
+    "div.box10": 0,
+    "div.box12": 0,
+    "div.box13": 0,
+    "div.basis_reconciled": true,
+    "eic.qc_of_another": false,
+    "eic.born_before_2001": false,
+    "eic.born_after_1960": false,
+    "eic.us_home": true,
+    "eic.married": false,
+    "eic.same_home": false,
+    "eic.legally_separated": false,
+    "f1040.status": "hoh",
+    "f1040.tax_exempt_interest": 0,
+    "f1040.line3a": 790900,
+    "f1040.line25b": 0,
+    "f1040.line25c": 0,
+    "f1040.line26": 0,
+    "f1040.line35a": 0,
+    "f1040.line36": 0,
+    "f4952.line1": 0,
+    "f4952.carryover": false,
+    "f4952.unsupported": false,
+    "f4952.alternative_allocation": false,
+    "f4952.line4g": 75900,
+    "f8889.line2": 0,
+    "f8889.line9": 0,
+    "f8889.unsupported": false,
+    "f8889.months_eligible": 0,
+    "f8889.months_family": 0,
+    "f8889.age55": false,
+    "f8889.dec_coverage": "none",
+    "f8889.last_month": false,
+    "f8959.unsupported": false,
+    "f8960.unsupported": false,
+    "f8960.refund": false,
+    "f8960.allocated_taxes": 0,
+    "ftc.taxes": 900,
+    "ftc.all_passive": true,
+    "ftc.statements": true,
+    "ftc.eligible": true,
+    "ftc.elect": true,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": true,
+    "household.unmarried": true,
+    "qbi.dividends": 677900,
+    "qbi.unsupported": false,
+    "s1.uc_paid": 0,
+    "s1.uc_repaid": 0,
+    "s1.uc_unsupported": false,
+    "s1.educator_expenses": 37300,
+    "s1.eligible_educator": false,
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": true,
+    "s1a.died_before_65": false,
+    "s2.amt": false,
+    "s2.other": false,
+    "s3.line9": 0,
+    "s3.line10": 0,
+    "s3.line12": 0,
+    "s3.line14": 0,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false,
+    "sa.unsupported": false,
+    "sa.charity_limited": false,
+    "sa.excluded_income": false,
+    "sa.dependent": false,
+    "sa.spouse_extra": false,
+    "sa.age65": true,
+    "sa.blind": false,
+    "sa.spouse_itemizes": false,
+    "sa.elect_itemize": false,
+    "sa.line1": 0,
+    "sa.line5a": 0,
+    "sa.line5b": 34700,
+    "sa.line5c": 0,
+    "sa.line8a": 2238300,
+    "sa.line11": 789700,
+    "sb.unsupported": false,
+    "sb.ordinary_dividends": 3766300,
+    "sb.line7a": true,
+    "sb.fbar_required": false,
+    "sb.form8938": false,
+    "sb.line8": false,
+    "scope.schedule1": false,
+    "scope.credits": false,
+    "scope.other_income": false,
+    "scope.other_line16": false,
+    "sd.other_forms": false,
+    "sd.carryover": false,
+    "sd.distributions": 803400,
+    "sli.interest": 0,
+    "sli.claimed": false,
+    "ssb.benefits": 0,
+    "ssb.pub915": true,
+    "ssb.lump_sum": false,
+    "ssb.terror_disability": false,
+    "ssb.lived_apart": false,
+    "$person": [
+     "taxpayer"
+    ],
+    "person[taxpayer].rrta": false,
+    "$w2@person[taxpayer]": [
+     "emp_a"
+    ],
+    "person[taxpayer].w2[emp_a].box1": 35878000,
+    "person[taxpayer].w2[emp_a].box2": 2511500,
+    "person[taxpayer].w2[emp_a].box3": 17610000,
+    "person[taxpayer].w2[emp_a].box7": 0,
+    "person[taxpayer].w2[emp_a].box4": 1091800,
+    "person[taxpayer].w2[emp_a].box5": 35878000,
+    "person[taxpayer].w2[emp_a].box6": 663100,
+    "$interest": [
+     "bank_a",
+     "bank_b"
+    ],
+    "interest[bank_a].amount": 403000,
+    "interest[bank_b].amount": 4505500,
+    "$sales": [
+     "s1",
+     "s2",
+     "s3"
+    ],
+    "sales[s1].box": "D",
+    "sales[s1].route": "detail",
+    "sales[s1].code": "BW",
+    "sales[s1].special": false,
+    "sales[s1].aggregate_eligible": true,
+    "sales[s1].proceeds": 0,
+    "sales[s1].reported_basis": 146000,
+    "sales[s1].correct_basis": 3325300,
+    "sales[s1].wash_loss": 0,
+    "sales[s2].box": "F",
+    "sales[s2].route": "detail",
+    "sales[s2].code": "W",
+    "sales[s2].special": false,
+    "sales[s2].aggregate_eligible": false,
+    "sales[s2].proceeds": 2351500,
+    "sales[s2].reported_basis": 1396600,
+    "sales[s2].correct_basis": 7821900,
+    "sales[s2].wash_loss": 0,
+    "sales[s3].box": "A",
+    "sales[s3].route": "aggregate",
+    "sales[s3].code": "none",
+    "sales[s3].special": false,
+    "sales[s3].aggregate_eligible": true,
+    "sales[s3].proceeds": 1500500,
+    "sales[s3].reported_basis": 3357200,
+    "sales[s3].correct_basis": 0,
+    "sales[s3].wash_loss": 0,
+    "$gift": [
+     "item_a",
+     "item_b"
+    ],
+    "gift[item_a].deduction": 198800,
+    "gift[item_a].public_securities": true,
+    "gift[item_a].special": false,
+    "gift[item_b].deduction": 190200,
+    "gift[item_b].public_securities": true,
+    "gift[item_b].special": false,
+    "$dependent": [],
+    "$retirement": [],
+    "$carloan": [
+     "vin_1"
+    ],
+    "carloan[vin_1].kind": "death",
+    "carloan[vin_1].requirements": true,
+    "carloan[vin_1].vehicle": true,
+    "carloan[vin_1].interest": 1433400,
+    "carloan[vin_1].mixed": false,
+    "carloan[vin_1].financed": 868200,
+    "carloan[vin_1].nonqualifying": 28300,
+    "carloan[vin_1].down": 0,
+    "carloan[vin_1].refi_balance": 483500,
+    "carloan[vin_1].refi_whole": true
+   },
+   "expect": {
+    "s1a.line1": {
+     "kind": "money",
+     "cents": 44252800
+    },
+    "s1a.line2a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line2b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line2c": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line2d": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line2e": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line3": {
+     "kind": "money",
+     "cents": 44252800
+    },
+    "s1a.line4a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line4b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line4c": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line5": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line6": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line7": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line8": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line9": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line10": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line12": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line13": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line14a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line14b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line14c": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line15": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line16": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line17": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line18": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line20": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line21": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line23": {
+     "kind": "money",
+     "cents": 1433400
+    },
+    "s1a.line24": {
+     "kind": "money",
+     "cents": 1000000
+    },
+    "s1a.line25": {
+     "kind": "money",
+     "cents": 44252800
+    },
+    "s1a.line26": {
+     "kind": "money",
+     "cents": 10000000
+    },
+    "s1a.line27": {
+     "kind": "money",
+     "cents": 34252800
+    },
+    "s1a.line29": {
+     "kind": "money",
+     "cents": 6860000
+    },
+    "s1a.line30": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line31": {
+     "kind": "money",
+     "cents": 44252800
+    },
+    "s1a.line32": {
+     "kind": "money",
+     "cents": 7500000
+    },
+    "s1a.line33": {
+     "kind": "money",
+     "cents": 36752800
+    },
+    "s1a.line34": {
+     "kind": "money",
+     "cents": 2205168
+    },
+    "s1a.line35": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line36a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line36b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line37": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line38": {
+     "kind": "money",
+     "cents": 0
+    }
+   }
+  },
+  {
+   "id": "classm.s1a.3",
+   "covers": [
+    "s1a"
+   ],
+   "evidence": "M",
+   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 3a72f185d0afe84cbcfde0ff4a1544cc46eabe5a76c537c7987dae19e5ea555f; pages f1040s1a 1,2 (9212bddf5265); i1040gi 101,102,103,104,105,106,108,109,110 (6024dc94dd1f); branches s1a.tips:true, s1a.tip_multi:true, s1a.part2:true, s1a.line4a_calc#0, s1a.line4a#1, s1a.line4b#1, s1a.line4c_one:left, s1a.line4c_calc#0, s1a.line4c#1, s1a.line5#1, s1a.line6#1, s1a.line7_calc:left, s1a.line7#1, s1a.line8#1, s1a.line9_calc#1, s1a.line9#1, s1a.line10#1, s1a.line10_over:false, s1a.line10_pos:floor, s1a.line12#1, s1a.line13_figured:positive, s1a.line13_amount#0, s1a.line13_ssn#1, s1a.line13_claim#1, s1a.line13#1, s1a.overtime:true, s1a.part3:true, s1a.line14a#1, s1a.line14b#1, s1a.line14c#1, s1a.ot_max#1, s1a.line15_calc:right, s1a.line15#1, s1a.line16#1, s1a.line17_calc#1, s1a.line17#1, s1a.line18#1, s1a.line18_over:false, s1a.line18_pos:floor, s1a.line20#1, s1a.line21_figured:positive, s1a.line21_amount#0, s1a.line21_ssn#1, s1a.line21_claim#1, s1a.line21#1, s1a.carloan:false, s1a.line23#0, s1a.part4:false, s1a.line24_calc:left, s1a.line24#0, s1a.line25#0, s1a.line26_calc#1, s1a.line26#0, s1a.line27#0, s1a.line27_over:false, s1a.line27_pos:floor, s1a.line29#0, s1a.line30_figured:floor, s1a.line30_amount#0, s1a.line30#0, s1a.part5:false, s1a.line31#0, s1a.line32_calc#1, s1a.line32#0, s1a.line33#0, s1a.line33_over:false, s1a.line33_pos:floor, s1a.line34#0, s1a.line35_figured:positive, s1a.line35_calc#0, s1a.line35#0, s1a.died_before_65:false, s1a.senior_decedent:false, s1a.line36a_senior#1, s1a.line36a_claim#1, s1a.line36a#0",
+   "inputs": {
+    "div.box2b": 0,
+    "div.box2c": 0,
+    "div.box2d": 0,
+    "div.box2e": 0,
+    "div.box2f": 0,
+    "div.box3": 0,
+    "div.box9": 0,
+    "div.box10": 0,
+    "div.box12": 0,
+    "div.box13": 0,
+    "div.basis_reconciled": true,
+    "eic.qc_of_another": false,
+    "eic.born_before_2001": true,
+    "eic.born_after_1960": true,
+    "eic.us_home": true,
+    "eic.married": false,
+    "eic.same_home": false,
+    "eic.legally_separated": false,
+    "f1040.status": "mfj",
+    "f1040.tax_exempt_interest": 0,
+    "f1040.line3a": 0,
+    "f1040.line25b": 394300,
+    "f1040.line25c": 0,
+    "f1040.line26": 0,
+    "f1040.line35a": 0,
+    "f1040.line36": 0,
+    "f4952.line1": 352700,
+    "f4952.carryover": true,
+    "f4952.unsupported": false,
+    "f4952.alternative_allocation": false,
+    "f4952.line4g": 0,
+    "f8889.line2": 0,
+    "f8889.line9": 0,
+    "f8889.unsupported": false,
+    "f8889.months_eligible": 0,
+    "f8889.months_family": 0,
+    "f8889.age55": false,
+    "f8889.dec_coverage": "none",
+    "f8889.last_month": false,
+    "f8959.unsupported": false,
+    "f8960.unsupported": false,
+    "f8960.refund": false,
+    "f8960.allocated_taxes": 0,
+    "ftc.taxes": 0,
+    "ftc.all_passive": true,
+    "ftc.statements": true,
+    "ftc.eligible": true,
+    "ftc.elect": false,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": true,
+    "household.unmarried": true,
+    "qbi.dividends": 0,
+    "qbi.unsupported": true,
+    "s1.uc_paid": 1313600,
+    "s1.uc_repaid": 0,
+    "s1.uc_unsupported": false,
+    "s1.educator_expenses": 0,
+    "s1.eligible_educator": false,
+    "s1a.tips": true,
+    "s1a.overtime": true,
+    "s1a.carloan": false,
+    "s1a.died_before_65": false,
+    "s2.amt": false,
+    "s2.other": false,
+    "s3.line9": 0,
+    "s3.line10": 0,
+    "s3.line12": 0,
+    "s3.line14": 0,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false,
+    "sa.unsupported": true,
+    "sa.charity_limited": true,
+    "sa.excluded_income": false,
+    "sa.dependent": false,
+    "sa.spouse_extra": false,
+    "sa.age65": false,
+    "sa.blind": false,
+    "sa.spouse_itemizes": true,
+    "sa.elect_itemize": false,
+    "sa.line1": 3000000,
+    "sa.line5a": 1974700,
+    "sa.line5b": 0,
+    "sa.line5c": 0,
+    "sa.line8a": 3144900,
+    "sa.line11": 577600,
+    "sb.unsupported": false,
+    "sb.ordinary_dividends": 0,
+    "sb.line7a": false,
+    "sb.fbar_required": false,
+    "sb.form8938": false,
+    "sb.line8": false,
+    "scope.schedule1": false,
+    "scope.credits": false,
+    "scope.other_income": false,
+    "scope.other_line16": false,
+    "sd.other_forms": false,
+    "sd.carryover": false,
+    "sd.distributions": 0,
+    "sli.interest": 0,
+    "sli.claimed": false,
+    "ssb.benefits": 0,
+    "ssb.pub915": false,
+    "ssb.lump_sum": false,
+    "ssb.terror_disability": false,
+    "ssb.lived_apart": false,
+    "$person": [
+     "taxpayer"
+    ],
+    "person[taxpayer].rrta": false,
+    "$w2@person[taxpayer]": [
+     "emp_a",
+     "emp_b"
+    ],
+    "person[taxpayer].w2[emp_a].box1": 1093700,
+    "person[taxpayer].w2[emp_a].box2": 32800,
+    "person[taxpayer].w2[emp_a].box3": 1093700,
+    "person[taxpayer].w2[emp_a].box7": 0,
+    "person[taxpayer].w2[emp_a].box4": 67800,
+    "person[taxpayer].w2[emp_a].box5": 1093700,
+    "person[taxpayer].w2[emp_a].box6": 15900,
+    "person[taxpayer].w2[emp_b].box1": 4799100,
+    "person[taxpayer].w2[emp_b].box2": 240000,
+    "person[taxpayer].w2[emp_b].box3": 4799100,
+    "person[taxpayer].w2[emp_b].box7": 0,
+    "person[taxpayer].w2[emp_b].box4": 297500,
+    "person[taxpayer].w2[emp_b].box5": 4799100,
+    "person[taxpayer].w2[emp_b].box6": 69600,
+    "$interest": [],
+    "$sales": [],
+    "$gift": [
+     "item_a",
+     "item_b"
+    ],
+    "gift[item_a].deduction": 335600,
+    "gift[item_a].public_securities": false,
+    "gift[item_a].special": false,
+    "gift[item_b].deduction": 0,
+    "gift[item_b].public_securities": false,
+    "gift[item_b].special": false,
+    "$dependent": [],
+    "$retirement": [],
+    "$tipjob": [
+     "tip_1",
+     "tip_2",
+     "tip_3"
+    ],
+    "tipjob[tip_1].qualified": true,
+    "tipjob[tip_1].amount": 1378400,
+    "tipjob[tip_2].qualified": true,
+    "tipjob[tip_2].amount": 255300,
+    "tipjob[tip_3].qualified": true,
+    "tipjob[tip_3].amount": 0,
+    "$otjob": [
+     "ot_1",
+     "ot_2"
+    ],
+    "otjob[ot_1].flsa": true,
+    "otjob[ot_1].special_rule": false,
+    "otjob[ot_1].method": "employer_reported",
+    "otjob[ot_1].statement": 0,
+    "otjob[ot_2].flsa": true,
+    "otjob[ot_2].special_rule": false,
+    "otjob[ot_2].method": "premium",
+    "otjob[ot_2].statement": 3104500
+   },
+   "expect": {
+    "s1a.line1": {
+     "kind": "money",
+     "cents": 7206400
+    },
+    "s1a.line2a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line2b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line2c": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line2d": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line2e": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line3": {
+     "kind": "money",
+     "cents": 7206400
+    },
+    "s1a.line4a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line4b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line4c": {
+     "kind": "money",
+     "cents": 1633700
+    },
+    "s1a.line5": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line6": {
+     "kind": "money",
+     "cents": 1633700
+    },
+    "s1a.line7": {
+     "kind": "money",
+     "cents": 1633700
+    },
+    "s1a.line8": {
+     "kind": "money",
+     "cents": 7206400
+    },
+    "s1a.line9": {
+     "kind": "money",
+     "cents": 30000000
+    },
+    "s1a.line10": {
+     "kind": "money",
+     "cents": -22793600
+    },
+    "s1a.line12": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line13": {
+     "kind": "money",
+     "cents": 1633700
+    },
+    "s1a.line14a": {
+     "kind": "money",
+     "cents": 3104500
+    },
+    "s1a.line14b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line14c": {
+     "kind": "money",
+     "cents": 3104500
+    },
+    "s1a.line15": {
+     "kind": "money",
+     "cents": 2500000
+    },
+    "s1a.line16": {
+     "kind": "money",
+     "cents": 7206400
+    },
+    "s1a.line17": {
+     "kind": "money",
+     "cents": 30000000
+    },
+    "s1a.line18": {
+     "kind": "money",
+     "cents": -22793600
+    },
+    "s1a.line20": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line21": {
+     "kind": "money",
+     "cents": 2500000
+    },
+    "s1a.line23": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line24": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line25": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line26": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line27": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line29": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line30": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line31": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line32": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line33": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line34": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line35": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line36a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line36b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line37": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line38": {
+     "kind": "money",
+     "cents": 4133700
+    }
+   }
+  },
+  {
+   "id": "classm.s1a.4",
+   "covers": [
+    "s1a"
+   ],
+   "evidence": "M",
+   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 a12d75cd0270cde4183f89af159a826173e6178beba03066e3cb83812882a151; pages f1040s1a 1,2 (9212bddf5265); i1040gi 101,102,103,104,105,106,108,109,110 (6024dc94dd1f); branches s1a.tips:true, s1a.tip_multi:true, s1a.part2:true, s1a.line4a_calc#0, s1a.line4a#1, s1a.line4b#1, s1a.line4c_one:left, s1a.line4c_calc#0, s1a.line4c#1, s1a.line5#1, s1a.line6#1, s1a.line7_calc:right, s1a.line7#1, s1a.line8#1, s1a.line9_calc#4, s1a.line9#1, s1a.line10#1, s1a.line10_over:true, s1a.line10_pos:positive, s1a.line12#1, s1a.line13_figured:floor, s1a.line13_amount#1, s1a.line13_ssn#1, s1a.line13_claim#4, s1a.line13#1, s1a.overtime:false, s1a.part3:false, s1a.line14a#0, s1a.line14b#0, s1a.line14c#0, s1a.ot_max#4, s1a.line15_calc:left, s1a.line15#0, s1a.line16#0, s1a.line17_calc#4, s1a.line17#0, s1a.line18#0, s1a.line18_over:false, s1a.line18_pos:floor, s1a.line20#0, s1a.line21_figured:floor, s1a.line21_amount#0, s1a.line21_ssn#1, s1a.line21_claim#4, s1a.line21#0, s1a.carloan:false, s1a.line23#0, s1a.part4:false, s1a.line24_calc:left, s1a.line24#0, s1a.line25#0, s1a.line26_calc#4, s1a.line26#0, s1a.line27#0, s1a.line27_over:false, s1a.line27_pos:floor, s1a.line29#0, s1a.line30_figured:floor, s1a.line30_amount#0, s1a.line30#0, s1a.part5:false, s1a.line31#0, s1a.line32_calc#4, s1a.line32#0, s1a.line33#0, s1a.line33_over:false, s1a.line33_pos:floor, s1a.line34#0, s1a.line35_figured:positive, s1a.line35_calc#0, s1a.line35#0, s1a.died_before_65:false, s1a.senior_decedent:false, s1a.line36a_senior#1, s1a.line36a_claim#4, s1a.line36a#0",
+   "inputs": {
+    "div.box2b": 0,
+    "div.box2c": 0,
+    "div.box2d": 0,
+    "div.box2e": 0,
+    "div.box2f": 0,
+    "div.box3": 0,
+    "div.box9": 0,
+    "div.box10": 0,
+    "div.box12": 0,
+    "div.box13": 0,
+    "div.basis_reconciled": true,
+    "eic.qc_of_another": false,
+    "eic.born_before_2001": true,
+    "eic.born_after_1960": true,
+    "eic.us_home": true,
+    "eic.married": false,
+    "eic.same_home": false,
+    "eic.legally_separated": false,
+    "f1040.status": "qss",
+    "f1040.tax_exempt_interest": 0,
+    "f1040.line3a": 2244300,
+    "f1040.line25b": 0,
+    "f1040.line25c": 0,
+    "f1040.line26": 0,
+    "f1040.line35a": 0,
+    "f1040.line36": 0,
+    "f4952.line1": 535300,
+    "f4952.carryover": false,
+    "f4952.unsupported": false,
+    "f4952.alternative_allocation": false,
+    "f4952.line4g": 0,
+    "f8889.line2": 0,
+    "f8889.line9": 0,
+    "f8889.unsupported": false,
+    "f8889.months_eligible": 0,
+    "f8889.months_family": 0,
+    "f8889.age55": false,
+    "f8889.dec_coverage": "none",
+    "f8889.last_month": false,
+    "f8959.unsupported": false,
+    "f8960.unsupported": false,
+    "f8960.refund": false,
+    "f8960.allocated_taxes": 0,
+    "ftc.taxes": 30100,
+    "ftc.all_passive": true,
+    "ftc.statements": true,
+    "ftc.eligible": true,
+    "ftc.elect": true,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": true,
+    "household.unmarried": true,
+    "qbi.dividends": 552500,
+    "qbi.unsupported": false,
+    "s1.uc_paid": 757100,
+    "s1.uc_repaid": 0,
+    "s1.uc_unsupported": false,
+    "s1.educator_expenses": 0,
+    "s1.eligible_educator": false,
+    "s1a.tips": true,
+    "s1a.overtime": false,
+    "s1a.carloan": false,
+    "s1a.died_before_65": false,
+    "s2.amt": false,
+    "s2.other": false,
+    "s3.line9": 0,
+    "s3.line10": 0,
+    "s3.line12": 121500,
+    "s3.line14": 0,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false,
+    "sa.unsupported": false,
+    "sa.charity_limited": false,
+    "sa.excluded_income": false,
+    "sa.dependent": false,
+    "sa.spouse_extra": false,
+    "sa.age65": false,
+    "sa.blind": false,
+    "sa.spouse_itemizes": false,
+    "sa.elect_itemize": false,
+    "sa.line1": 877300,
+    "sa.line5a": 0,
+    "sa.line5b": 2000000,
+    "sa.line5c": 0,
+    "sa.line8a": 308500,
+    "sa.line11": 907800,
+    "sb.unsupported": false,
+    "sb.ordinary_dividends": 3452800,
+    "sb.line7a": false,
+    "sb.fbar_required": false,
+    "sb.form8938": false,
+    "sb.line8": false,
+    "scope.schedule1": false,
+    "scope.credits": false,
+    "scope.other_income": false,
+    "scope.other_line16": false,
+    "sd.other_forms": false,
+    "sd.carryover": false,
+    "sd.distributions": 309700,
+    "sli.interest": 109000,
+    "sli.claimed": false,
+    "ssb.benefits": 446800,
+    "ssb.pub915": false,
+    "ssb.lump_sum": false,
+    "ssb.terror_disability": false,
+    "ssb.lived_apart": false,
+    "$person": [
+     "taxpayer"
+    ],
+    "person[taxpayer].rrta": false,
+    "$w2@person[taxpayer]": [
+     "emp_a"
+    ],
+    "person[taxpayer].w2[emp_a].box1": 39147600,
+    "person[taxpayer].w2[emp_a].box2": 11352800,
+    "person[taxpayer].w2[emp_a].box3": 17610000,
+    "person[taxpayer].w2[emp_a].box7": 0,
+    "person[taxpayer].w2[emp_a].box4": 1091800,
+    "person[taxpayer].w2[emp_a].box5": 39147600,
+    "person[taxpayer].w2[emp_a].box6": 740000,
+    "$interest": [],
+    "$sales": [
+     "s1",
+     "s2"
+    ],
+    "sales[s1].box": "E",
+    "sales[s1].route": "detail",
+    "sales[s1].code": "none",
+    "sales[s1].special": false,
+    "sales[s1].aggregate_eligible": false,
+    "sales[s1].proceeds": 7846000,
+    "sales[s1].reported_basis": 396200,
+    "sales[s1].correct_basis": 1146100,
+    "sales[s1].wash_loss": 0,
+    "sales[s2].box": "A",
+    "sales[s2].route": "detail",
+    "sales[s2].code": "none",
+    "sales[s2].special": false,
+    "sales[s2].aggregate_eligible": false,
+    "sales[s2].proceeds": 4515500,
+    "sales[s2].reported_basis": 20500,
+    "sales[s2].correct_basis": 1232300,
+    "sales[s2].wash_loss": 0,
+    "$gift": [
+     "item_a"
+    ],
+    "gift[item_a].deduction": 0,
+    "gift[item_a].public_securities": true,
+    "gift[item_a].special": false,
+    "$dependent": [],
+    "$retirement": [
+     "r1"
+    ],
+    "retirement[r1].account": "plan",
+    "retirement[r1].code": "early_exception_2",
+    "retirement[r1].box1": 2275100,
+    "retirement[r1].box5": 455800,
+    "retirement[r1].rollover": 0,
+    "retirement[r1].special": false,
+    "retirement[r1].annuity": true,
+    "retirement[r1].cost": 2281000,
+    "retirement[r1].used_last_year": true,
+    "retirement[r1].last_line4": 0,
+    "retirement[r1].joint_life": false,
+    "retirement[r1].age": 61,
+    "retirement[r1].combined_age": 110,
+    "retirement[r1].months": 12,
+    "retirement[r1].recovered": 0,
+    "$tipjob": [
+     "tip_1",
+     "tip_2"
+    ],
+    "tipjob[tip_1].qualified": true,
+    "tipjob[tip_1].amount": 2363700,
+    "tipjob[tip_2].qualified": true,
+    "tipjob[tip_2].amount": 309900
+   },
+   "expect": {
+    "s1a.line1": {
+     "kind": "money",
+     "cents": 57516980
+    },
+    "s1a.line2a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line2b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line2c": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line2d": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line2e": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line3": {
+     "kind": "money",
+     "cents": 57516980
+    },
+    "s1a.line4a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line4b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line4c": {
+     "kind": "money",
+     "cents": 2673600
+    },
+    "s1a.line5": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line6": {
+     "kind": "money",
+     "cents": 2673600
+    },
+    "s1a.line7": {
+     "kind": "money",
+     "cents": 2500000
+    },
+    "s1a.line8": {
+     "kind": "money",
+     "cents": 57516980
+    },
+    "s1a.line9": {
+     "kind": "money",
+     "cents": 15000000
+    },
+    "s1a.line10": {
+     "kind": "money",
+     "cents": 42516980
+    },
+    "s1a.line12": {
+     "kind": "money",
+     "cents": 4250000
+    },
+    "s1a.line13": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line14a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line14b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line14c": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line15": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line16": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line17": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line18": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line20": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line21": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line23": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line24": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line25": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line26": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line27": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line29": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line30": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line31": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line32": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line33": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line34": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line35": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line36a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line36b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line37": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line38": {
+     "kind": "money",
+     "cents": 0
+    }
+   }
+  },
+  {
+   "id": "classm.s1a.5",
+   "covers": [
+    "s1a"
+   ],
+   "evidence": "M",
+   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 d87d108c30234fe0f442f0198b0c514e9cd2038ac8996d177b6a113a8cb7786c; pages f1040s1a 1,2 (9212bddf5265); i1040gi 101,102,103,104,105,106,108,109,110 (6024dc94dd1f); branches s1a.tips:false, s1a.part2:false, s1a.line4a#0, s1a.line4b#0, s1a.line4c_one:left, s1a.line4c#0, s1a.line5#0, s1a.line6#0, s1a.line7_calc:left, s1a.line7#0, s1a.line8#0, s1a.line9_calc#2, s1a.line9#0, s1a.line10#0, s1a.line10_over:false, s1a.line10_pos:floor, s1a.line12#0, s1a.line13_figured:floor, s1a.line13_amount#0, s1a.line13_ssn#0, s1a.line13_claim#2, s1a.line13#0, s1a.overtime:false, s1a.part3:false, s1a.line14a#0, s1a.line14b#0, s1a.line14c#0, s1a.ot_max#2, s1a.line15_calc:left, s1a.line15#0, s1a.line16#0, s1a.line17_calc#2, s1a.line17#0, s1a.line18#0, s1a.line18_over:false, s1a.line18_pos:floor, s1a.line20#0, s1a.line21_figured:floor, s1a.line21_amount#0, s1a.line21_ssn#0, s1a.line21_claim#2, s1a.line21#0, s1a.carloan:false, s1a.line23#0, s1a.part4:false, s1a.line24_calc:left, s1a.line24#0, s1a.line25#0, s1a.line26_calc#2, s1a.line26#0, s1a.line27#0, s1a.line27_over:false, s1a.line27_pos:floor, s1a.line29#0, s1a.line30_figured:floor, s1a.line30_amount#0, s1a.line30#0, s1a.part5:false, s1a.line31#0, s1a.line32_calc#2, s1a.line32#0, s1a.line33#0, s1a.line33_over:false, s1a.line33_pos:floor, s1a.line34#0, s1a.line35_figured:positive, s1a.line35_calc#0, s1a.line35#0, s1a.died_before_65:false, s1a.senior_decedent:false, s1a.line36a_senior#0, s1a.line36a_claim#2, s1a.line36a#0",
+   "inputs": {
+    "div.box2b": 0,
+    "div.box2c": 0,
+    "div.box2d": 0,
+    "div.box2e": 0,
+    "div.box2f": 0,
+    "div.box3": 0,
+    "div.box9": 0,
+    "div.box10": 0,
+    "div.box12": 0,
+    "div.box13": 0,
+    "div.basis_reconciled": true,
+    "eic.qc_of_another": false,
+    "eic.born_before_2001": true,
+    "eic.born_after_1960": true,
+    "eic.us_home": true,
+    "eic.married": true,
+    "eic.same_home": true,
+    "eic.legally_separated": false,
+    "f1040.status": "mfs",
+    "f1040.tax_exempt_interest": 0,
+    "f1040.line3a": 0,
+    "f1040.line25b": 0,
+    "f1040.line25c": 0,
+    "f1040.line26": 0,
+    "f1040.line35a": 0,
+    "f1040.line36": 0,
+    "f4952.line1": 0,
+    "f4952.carryover": false,
+    "f4952.unsupported": false,
+    "f4952.alternative_allocation": false,
+    "f4952.line4g": 0,
+    "f8889.line2": 0,
+    "f8889.line9": 0,
+    "f8889.unsupported": false,
+    "f8889.months_eligible": 0,
+    "f8889.months_family": 0,
+    "f8889.age55": false,
+    "f8889.dec_coverage": "none",
+    "f8889.last_month": true,
+    "f8959.unsupported": false,
+    "f8960.unsupported": false,
+    "f8960.refund": false,
+    "f8960.allocated_taxes": 0,
+    "ftc.taxes": 27800,
+    "ftc.all_passive": false,
+    "ftc.statements": true,
+    "ftc.eligible": true,
+    "ftc.elect": true,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": false,
+    "household.home_cost": true,
+    "household.unmarried": false,
+    "qbi.dividends": 0,
+    "qbi.unsupported": false,
+    "s1.uc_paid": 0,
+    "s1.uc_repaid": 0,
+    "s1.uc_unsupported": false,
+    "s1.educator_expenses": 0,
+    "s1.eligible_educator": false,
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": false,
+    "s1a.died_before_65": false,
+    "s2.amt": false,
+    "s2.other": false,
+    "s3.line9": 0,
+    "s3.line10": 0,
+    "s3.line12": 0,
+    "s3.line14": 0,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false,
+    "sa.unsupported": true,
+    "sa.charity_limited": true,
+    "sa.excluded_income": false,
+    "sa.dependent": true,
+    "sa.spouse_extra": false,
+    "sa.age65": false,
+    "sa.blind": false,
+    "sa.spouse_itemizes": false,
+    "sa.elect_itemize": false,
+    "sa.line1": 3000000,
+    "sa.line5a": 0,
+    "sa.line5b": 0,
+    "sa.line5c": 0,
+    "sa.line8a": 1235900,
+    "sa.line11": 0,
+    "sb.unsupported": false,
+    "sb.ordinary_dividends": 0,
+    "sb.line7a": false,
+    "sb.fbar_required": false,
+    "sb.form8938": false,
+    "sb.line8": false,
+    "scope.schedule1": false,
+    "scope.credits": false,
+    "scope.other_income": false,
+    "scope.other_line16": true,
+    "sd.other_forms": false,
+    "sd.carryover": false,
+    "sd.distributions": 316800,
+    "sli.interest": 0,
+    "sli.claimed": false,
+    "ssb.benefits": 3240300,
+    "ssb.pub915": false,
+    "ssb.lump_sum": false,
+    "ssb.terror_disability": false,
+    "ssb.lived_apart": false,
+    "$person": [
+     "taxpayer"
+    ],
+    "person[taxpayer].rrta": false,
+    "$w2@person[taxpayer]": [
+     "emp_a",
+     "emp_b"
+    ],
+    "person[taxpayer].w2[emp_a].box1": 39939500,
+    "person[taxpayer].w2[emp_a].box2": 6789700,
+    "person[taxpayer].w2[emp_a].box3": 17610000,
+    "person[taxpayer].w2[emp_a].box7": 0,
+    "person[taxpayer].w2[emp_a].box4": 1091800,
+    "person[taxpayer].w2[emp_a].box5": 39939500,
+    "person[taxpayer].w2[emp_a].box6": 758600,
+    "person[taxpayer].w2[emp_b].box1": 0,
+    "person[taxpayer].w2[emp_b].box2": 0,
+    "person[taxpayer].w2[emp_b].box3": 0,
+    "person[taxpayer].w2[emp_b].box7": 0,
+    "person[taxpayer].w2[emp_b].box4": 0,
+    "person[taxpayer].w2[emp_b].box5": 0,
+    "person[taxpayer].w2[emp_b].box6": 0,
+    "$interest": [],
+    "$sales": [],
+    "$gift": [
+     "item_a"
+    ],
+    "gift[item_a].deduction": 1781200,
+    "gift[item_a].public_securities": false,
+    "gift[item_a].special": false,
+    "$dependent": [],
+    "$retirement": [
+     "r1",
+     "r2"
+    ],
+    "retirement[r1].account": "traditional_ira",
+    "retirement[r1].code": "normal_7",
+    "retirement[r1].box1": 0,
+    "retirement[r1].box5": 0,
+    "retirement[r1].rollover": 0,
+    "retirement[r1].special": false,
+    "retirement[r1].annuity": false,
+    "retirement[r1].cost": 3807700,
+    "retirement[r1].used_last_year": false,
+    "retirement[r1].last_line4": 27500,
+    "retirement[r1].joint_life": true,
+    "retirement[r1].age": 65,
+    "retirement[r1].combined_age": 103,
+    "retirement[r1].months": 12,
+    "retirement[r1].recovered": 399900,
+    "retirement[r2].account": "traditional_ira",
+    "retirement[r2].code": "normal_7",
+    "retirement[r2].box1": 1860700,
+    "retirement[r2].box5": 0,
+    "retirement[r2].rollover": 0,
+    "retirement[r2].special": false,
+    "retirement[r2].annuity": false,
+    "retirement[r2].cost": 2204300,
+    "retirement[r2].used_last_year": false,
+    "retirement[r2].last_line4": 53000,
+    "retirement[r2].joint_life": false,
+    "retirement[r2].age": 78,
+    "retirement[r2].combined_age": 138,
+    "retirement[r2].months": 12,
+    "retirement[r2].recovered": 2478300
+   },
+   "expect": {
+    "s1a.line1": {
+     "kind": "money",
+     "cents": 44871255
+    },
+    "s1a.line2a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line2b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line2c": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line2d": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line2e": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line3": {
+     "kind": "money",
+     "cents": 44871255
+    },
+    "s1a.line4a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line4b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line4c": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line5": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line6": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line7": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line8": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line9": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line10": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line12": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line13": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line14a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line14b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line14c": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line15": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line16": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line17": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line18": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line20": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line21": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line23": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line24": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line25": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line26": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line27": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line29": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line30": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line31": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line32": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line33": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line34": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line35": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line36a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line36b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line37": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line38": {
+     "kind": "money",
+     "cents": 0
+    }
+   }
+  },
+  {
+   "id": "classm.s1a.6",
+   "covers": [
+    "s1a"
+   ],
+   "evidence": "M",
+   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 bcc51d9ac698f85107e3ab174661e0f15557a594d77b292ec748105420eceafa; pages f1040s1a 1,2 (9212bddf5265); i1040gi 101,102,103,104,105,106,108,109,110 (6024dc94dd1f); branches s1a.tips:false, s1a.part2:false, s1a.line4a#0, s1a.line4b#0, s1a.line4c_one:left, s1a.line4c#0, s1a.line5#0, s1a.line6#0, s1a.line7_calc:left, s1a.line7#0, s1a.line8#0, s1a.line9_calc#0, s1a.line9#0, s1a.line10#0, s1a.line10_over:false, s1a.line10_pos:floor, s1a.line12#0, s1a.line13_figured:floor, s1a.line13_amount#0, s1a.line13_ssn#1, s1a.line13_claim#0, s1a.line13#0, s1a.overtime:true, s1a.part3:true, s1a.line14a#1, s1a.line14b#1, s1a.line14c#1, s1a.ot_max#0, s1a.line15_calc:right, s1a.line15#1, s1a.line16#1, s1a.line17_calc#0, s1a.line17#1, s1a.line18#1, s1a.line18_over:true, s1a.line18_pos:positive, s1a.line20#1, s1a.line21_figured:floor, s1a.line21_amount#1, s1a.line21_ssn#1, s1a.line21_claim#0, s1a.line21#1, s1a.carloan:false, s1a.line23#0, s1a.part4:false, s1a.line24_calc:left, s1a.line24#0, s1a.line25#0, s1a.line26_calc#0, s1a.line26#0, s1a.line27#0, s1a.line27_over:false, s1a.line27_pos:floor, s1a.line29#0, s1a.line30_figured:floor, s1a.line30_amount#0, s1a.line30#0, s1a.part5:true, s1a.line31#1, s1a.line32_calc#0, s1a.line32#1, s1a.line33#1, s1a.line33_over:true, s1a.line33_pos:positive, s1a.line34#1, s1a.line35_figured:floor, s1a.line35_calc#1, s1a.line35#1, s1a.died_before_65:false, s1a.senior_decedent:false, s1a.line36a_senior#1, s1a.line36a_claim#0, s1a.line36a#1",
+   "inputs": {
+    "div.box2b": 124300,
+    "div.box2c": 0,
+    "div.box2d": 0,
+    "div.box2e": 0,
+    "div.box2f": 0,
+    "div.box3": 0,
+    "div.box9": 0,
+    "div.box10": 0,
+    "div.box12": 0,
+    "div.box13": 0,
+    "div.basis_reconciled": true,
+    "eic.qc_of_another": false,
+    "eic.born_before_2001": true,
+    "eic.born_after_1960": false,
+    "eic.us_home": true,
+    "eic.married": false,
+    "eic.same_home": false,
+    "eic.legally_separated": false,
+    "f1040.status": "single",
+    "f1040.tax_exempt_interest": 0,
+    "f1040.line3a": 0,
+    "f1040.line25b": 0,
+    "f1040.line25c": 0,
+    "f1040.line26": 0,
+    "f1040.line35a": 0,
+    "f1040.line36": 0,
+    "f4952.line1": 312100,
+    "f4952.carryover": false,
+    "f4952.unsupported": false,
+    "f4952.alternative_allocation": false,
+    "f4952.line4g": 0,
+    "f8889.line2": 0,
+    "f8889.line9": 0,
+    "f8889.unsupported": true,
+    "f8889.months_eligible": 0,
+    "f8889.months_family": 0,
+    "f8889.age55": false,
+    "f8889.dec_coverage": "none",
+    "f8889.last_month": false,
+    "f8959.unsupported": false,
+    "f8960.unsupported": false,
+    "f8960.refund": false,
+    "f8960.allocated_taxes": 0,
+    "ftc.taxes": 0,
+    "ftc.all_passive": true,
+    "ftc.statements": true,
+    "ftc.eligible": true,
+    "ftc.elect": true,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": true,
+    "household.unmarried": true,
+    "qbi.dividends": 0,
+    "qbi.unsupported": false,
+    "s1.uc_paid": 0,
+    "s1.uc_repaid": 0,
+    "s1.uc_unsupported": false,
+    "s1.educator_expenses": 0,
+    "s1.eligible_educator": false,
+    "s1a.tips": false,
+    "s1a.overtime": true,
+    "s1a.carloan": false,
+    "s1a.died_before_65": false,
+    "s2.amt": true,
+    "s2.other": true,
+    "s3.line9": 0,
+    "s3.line10": 0,
+    "s3.line12": 0,
+    "s3.line14": 0,
+    "s8812.combat_pay": true,
+    "s8812.puerto_rico": true,
+    "sa.unsupported": false,
+    "sa.charity_limited": false,
+    "sa.excluded_income": false,
+    "sa.dependent": false,
+    "sa.spouse_extra": false,
+    "sa.age65": true,
+    "sa.blind": false,
+    "sa.spouse_itemizes": false,
+    "sa.elect_itemize": true,
+    "sa.line1": 2608200,
+    "sa.line5a": 3469100,
+    "sa.line5b": 595400,
+    "sa.line5c": 0,
+    "sa.line8a": 950600,
+    "sa.line11": 377300,
+    "sb.unsupported": false,
+    "sb.ordinary_dividends": 0,
+    "sb.line7a": false,
+    "sb.fbar_required": false,
+    "sb.form8938": false,
+    "sb.line8": false,
+    "scope.schedule1": false,
+    "scope.credits": false,
+    "scope.other_income": false,
+    "scope.other_line16": false,
+    "sd.other_forms": false,
+    "sd.carryover": false,
+    "sd.distributions": 230200,
+    "sli.interest": 0,
+    "sli.claimed": false,
+    "ssb.benefits": 2234500,
+    "ssb.pub915": false,
+    "ssb.lump_sum": false,
+    "ssb.terror_disability": false,
+    "ssb.lived_apart": false,
+    "$person": [
+     "taxpayer"
+    ],
+    "person[taxpayer].rrta": true,
+    "$w2@person[taxpayer]": [
+     "emp_a"
+    ],
+    "person[taxpayer].w2[emp_a].box1": 22282600,
+    "person[taxpayer].w2[emp_a].box2": 0,
+    "person[taxpayer].w2[emp_a].box3": 17610000,
+    "person[taxpayer].w2[emp_a].box7": 0,
+    "person[taxpayer].w2[emp_a].box4": 1113600,
+    "person[taxpayer].w2[emp_a].box5": 22282600,
+    "person[taxpayer].w2[emp_a].box6": 343600,
+    "$interest": [
+     "bank_a",
+     "bank_b"
+    ],
+    "interest[bank_a].amount": 0,
+    "interest[bank_b].amount": 3318200,
+    "$sales": [
+     "s1",
+     "s2"
+    ],
+    "sales[s1].box": "E",
+    "sales[s1].route": "detail",
+    "sales[s1].code": "none",
+    "sales[s1].special": false,
+    "sales[s1].aggregate_eligible": true,
+    "sales[s1].proceeds": 2050500,
+    "sales[s1].reported_basis": 0,
+    "sales[s1].correct_basis": 6930600,
+    "sales[s1].wash_loss": 0,
+    "sales[s2].box": "E",
+    "sales[s2].route": "detail",
+    "sales[s2].code": "none",
+    "sales[s2].special": false,
+    "sales[s2].aggregate_eligible": false,
+    "sales[s2].proceeds": 0,
+    "sales[s2].reported_basis": 457400,
+    "sales[s2].correct_basis": 1124500,
+    "sales[s2].wash_loss": 0,
+    "$gift": [],
+    "$dependent": [
+     "dep_a",
+     "dep_b",
+     "dep_c"
+    ],
+    "dependent[dep_a].relationship": "child",
+    "dependent[dep_a].age": 6,
+    "dependent[dep_a].younger": true,
+    "dependent[dep_a].student": false,
+    "dependent[dep_a].disabled": false,
+    "dependent[dep_a].months": 7,
+    "dependent[dep_a].self_support": false,
+    "dependent[dep_a].joint_return": false,
+    "dependent[dep_a].citizen": true,
+    "dependent[dep_a].canada_mexico": false,
+    "dependent[dep_a].married": false,
+    "dependent[dep_a].tin": true,
+    "dependent[dep_a].work_ssn": true,
+    "dependent[dep_a].gross_income": 0,
+    "dependent[dep_a].supported": true,
+    "dependent[dep_a].other_claimant": false,
+    "dependent[dep_a].divorced_rule": false,
+    "dependent[dep_a].multiple_support": false,
+    "dependent[dep_a].parent_home_paid": false,
+    "dependent[dep_a].us_half": true,
+    "dependent[dep_a].eic_ssn": true,
+    "dependent[dep_b].relationship": "other",
+    "dependent[dep_b].age": 12,
+    "dependent[dep_b].younger": true,
+    "dependent[dep_b].student": false,
+    "dependent[dep_b].disabled": false,
+    "dependent[dep_b].months": 8,
+    "dependent[dep_b].self_support": false,
+    "dependent[dep_b].joint_return": false,
+    "dependent[dep_b].citizen": true,
+    "dependent[dep_b].canada_mexico": false,
+    "dependent[dep_b].married": false,
+    "dependent[dep_b].tin": true,
+    "dependent[dep_b].work_ssn": true,
+    "dependent[dep_b].gross_income": 0,
+    "dependent[dep_b].supported": true,
+    "dependent[dep_b].other_claimant": false,
+    "dependent[dep_b].divorced_rule": false,
+    "dependent[dep_b].multiple_support": false,
+    "dependent[dep_b].parent_home_paid": false,
+    "dependent[dep_b].us_half": true,
+    "dependent[dep_b].eic_ssn": true,
+    "dependent[dep_c].relationship": "child",
+    "dependent[dep_c].age": 43,
+    "dependent[dep_c].younger": true,
+    "dependent[dep_c].student": false,
+    "dependent[dep_c].disabled": false,
+    "dependent[dep_c].months": 12,
+    "dependent[dep_c].self_support": true,
+    "dependent[dep_c].joint_return": false,
+    "dependent[dep_c].citizen": true,
+    "dependent[dep_c].canada_mexico": false,
+    "dependent[dep_c].married": false,
+    "dependent[dep_c].tin": true,
+    "dependent[dep_c].work_ssn": true,
+    "dependent[dep_c].gross_income": 0,
+    "dependent[dep_c].supported": true,
+    "dependent[dep_c].other_claimant": false,
+    "dependent[dep_c].divorced_rule": false,
+    "dependent[dep_c].multiple_support": false,
+    "dependent[dep_c].parent_home_paid": true,
+    "dependent[dep_c].us_half": true,
+    "dependent[dep_c].eic_ssn": true,
+    "$retirement": [
+     "r1"
+    ],
+    "retirement[r1].account": "traditional_ira",
+    "retirement[r1].code": "normal_7",
+    "retirement[r1].box1": 5000000,
+    "retirement[r1].box5": 0,
+    "retirement[r1].rollover": 0,
+    "retirement[r1].special": false,
+    "retirement[r1].annuity": false,
+    "retirement[r1].cost": 402300,
+    "retirement[r1].used_last_year": false,
+    "retirement[r1].last_line4": 194000,
+    "retirement[r1].joint_life": false,
+    "retirement[r1].age": 52,
+    "retirement[r1].combined_age": 137,
+    "retirement[r1].months": 12,
+    "retirement[r1].recovered": 4785900,
+    "$otjob": [
+     "ot_1"
+    ],
+    "otjob[ot_1].flsa": true,
+    "otjob[ot_1].special_rule": false,
+    "otjob[ot_1].method": "premium",
+    "otjob[ot_1].statement": 1473300
+   },
+   "expect": {
+    "s1a.line1": {
+     "kind": "money",
+     "cents": 32200125
+    },
+    "s1a.line2a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line2b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line2c": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line2d": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line2e": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line3": {
+     "kind": "money",
+     "cents": 32200125
+    },
+    "s1a.line4a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line4b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line4c": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line5": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line6": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line7": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line8": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line9": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line10": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line12": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line13": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line14a": {
+     "kind": "money",
+     "cents": 1473300
+    },
+    "s1a.line14b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line14c": {
+     "kind": "money",
+     "cents": 1473300
+    },
+    "s1a.line15": {
+     "kind": "money",
+     "cents": 1250000
+    },
+    "s1a.line16": {
+     "kind": "money",
+     "cents": 32200125
+    },
+    "s1a.line17": {
+     "kind": "money",
+     "cents": 15000000
+    },
+    "s1a.line18": {
+     "kind": "money",
+     "cents": 17200125
+    },
+    "s1a.line20": {
+     "kind": "money",
+     "cents": 1720000
+    },
+    "s1a.line21": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line23": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line24": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line25": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line26": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line27": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line29": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line30": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line31": {
+     "kind": "money",
+     "cents": 32200125
+    },
+    "s1a.line32": {
+     "kind": "money",
+     "cents": 7500000
+    },
+    "s1a.line33": {
+     "kind": "money",
+     "cents": 24700125
+    },
+    "s1a.line34": {
+     "kind": "money",
+     "cents": 1482008
+    },
+    "s1a.line35": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line36a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line36b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line37": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line38": {
+     "kind": "money",
+     "cents": 0
+    }
+   }
+  },
+  {
+   "id": "classm.s1a.7",
+   "covers": [
+    "s1a"
+   ],
+   "evidence": "M",
+   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 64daff29277ee275fb24b1334cde0299bde838db2cf03c2335697fa445e6e37a; pages f1040s1a 1,2 (9212bddf5265); i1040gi 101,102,103,104,105,106,108,109,110 (6024dc94dd1f); branches s1a.tips:false, s1a.part2:false, s1a.line4a#0, s1a.line4b#0, s1a.line4c_one:left, s1a.line4c#0, s1a.line5#0, s1a.line6#0, s1a.line7_calc:left, s1a.line7#0, s1a.line8#0, s1a.line9_calc#0, s1a.line9#0, s1a.line10#0, s1a.line10_over:false, s1a.line10_pos:floor, s1a.line12#0, s1a.line13_figured:floor, s1a.line13_amount#0, s1a.line13_ssn#1, s1a.line13_claim#0, s1a.line13#0, s1a.overtime:false, s1a.part3:false, s1a.line14a#0, s1a.line14b#0, s1a.line14c#0, s1a.ot_max#0, s1a.line15_calc:left, s1a.line15#0, s1a.line16#0, s1a.line17_calc#0, s1a.line17#0, s1a.line18#0, s1a.line18_over:false, s1a.line18_pos:floor, s1a.line20#0, s1a.line21_figured:floor, s1a.line21_amount#0, s1a.line21_ssn#1, s1a.line21_claim#0, s1a.line21#0, s1a.carloan:false, s1a.line23#0, s1a.part4:false, s1a.line24_calc:left, s1a.line24#0, s1a.line25#0, s1a.line26_calc#0, s1a.line26#0, s1a.line27#0, s1a.line27_over:false, s1a.line27_pos:floor, s1a.line29#0, s1a.line30_figured:floor, s1a.line30_amount#0, s1a.line30#0, s1a.part5:false, s1a.line31#0, s1a.line32_calc#0, s1a.line32#0, s1a.line33#0, s1a.line33_over:false, s1a.line33_pos:floor, s1a.line34#0, s1a.line35_figured:positive, s1a.line35_calc#0, s1a.line35#0, s1a.died_before_65:true, s1a.senior_decedent:true, s1a.line36a_claim#0, s1a.line36a#0",
+   "inputs": {
+    "div.box2b": 1599200,
+    "div.box2c": 0,
+    "div.box2d": 356400,
+    "div.box2e": 0,
+    "div.box2f": 0,
+    "div.box3": 0,
+    "div.box9": 0,
+    "div.box10": 0,
+    "div.box12": 0,
+    "div.box13": 0,
+    "div.basis_reconciled": false,
+    "eic.qc_of_another": false,
+    "eic.born_before_2001": false,
+    "eic.born_after_1960": true,
+    "eic.us_home": true,
+    "eic.married": false,
+    "eic.same_home": false,
+    "eic.legally_separated": false,
+    "f1040.status": "single",
+    "f1040.tax_exempt_interest": 0,
+    "f1040.line3a": 719800,
+    "f1040.line25b": 0,
+    "f1040.line25c": 0,
+    "f1040.line26": 0,
+    "f1040.line35a": 0,
+    "f1040.line36": 0,
+    "f4952.line1": 0,
+    "f4952.carryover": false,
+    "f4952.unsupported": false,
+    "f4952.alternative_allocation": false,
+    "f4952.line4g": 0,
+    "f8889.line2": 0,
+    "f8889.line9": 0,
+    "f8889.unsupported": false,
+    "f8889.months_eligible": 0,
+    "f8889.months_family": 0,
+    "f8889.age55": false,
+    "f8889.dec_coverage": "none",
+    "f8889.last_month": false,
+    "f8959.unsupported": true,
+    "f8960.unsupported": false,
+    "f8960.refund": false,
+    "f8960.allocated_taxes": 0,
+    "ftc.taxes": 0,
+    "ftc.all_passive": true,
+    "ftc.statements": true,
+    "ftc.eligible": true,
+    "ftc.elect": true,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": false,
+    "household.unmarried": true,
+    "qbi.dividends": 20000,
+    "qbi.unsupported": false,
+    "s1.uc_paid": 0,
+    "s1.uc_repaid": 0,
+    "s1.uc_unsupported": false,
+    "s1.educator_expenses": 0,
+    "s1.eligible_educator": false,
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": false,
+    "s1a.died_before_65": true,
+    "s2.amt": false,
+    "s2.other": false,
+    "s3.line9": 0,
+    "s3.line10": 0,
+    "s3.line12": 0,
+    "s3.line14": 0,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false,
+    "sa.unsupported": false,
+    "sa.charity_limited": false,
+    "sa.excluded_income": false,
+    "sa.dependent": false,
+    "sa.spouse_extra": false,
+    "sa.age65": false,
+    "sa.blind": false,
+    "sa.spouse_itemizes": false,
+    "sa.elect_itemize": false,
+    "sa.line1": 631000,
+    "sa.line5a": 579100,
+    "sa.line5b": 183900,
+    "sa.line5c": 0,
+    "sa.line8a": 1573200,
+    "sa.line11": 0,
+    "sb.unsupported": false,
+    "sb.ordinary_dividends": 1999300,
+    "sb.line7a": false,
+    "sb.fbar_required": false,
+    "sb.form8938": false,
+    "sb.line8": false,
+    "scope.schedule1": false,
+    "scope.credits": false,
+    "scope.other_income": false,
+    "scope.other_line16": false,
+    "sd.other_forms": false,
+    "sd.carryover": false,
+    "sd.distributions": 1974400,
+    "sli.interest": 0,
+    "sli.claimed": false,
+    "ssb.benefits": 0,
+    "ssb.pub915": false,
+    "ssb.lump_sum": false,
+    "ssb.terror_disability": false,
+    "ssb.lived_apart": false,
+    "$person": [
+     "taxpayer"
+    ],
+    "person[taxpayer].rrta": false,
+    "$w2@person[taxpayer]": [
+     "emp_a",
+     "emp_b"
+    ],
+    "person[taxpayer].w2[emp_a].box1": 2010100,
+    "person[taxpayer].w2[emp_a].box2": 402000,
+    "person[taxpayer].w2[emp_a].box3": 2010100,
+    "person[taxpayer].w2[emp_a].box7": 0,
+    "person[taxpayer].w2[emp_a].box4": 124600,
+    "person[taxpayer].w2[emp_a].box5": 2010100,
+    "person[taxpayer].w2[emp_a].box6": 29100,
+    "person[taxpayer].w2[emp_b].box1": 1213600,
+    "person[taxpayer].w2[emp_b].box2": 230600,
+    "person[taxpayer].w2[emp_b].box3": 1213600,
+    "person[taxpayer].w2[emp_b].box7": 0,
+    "person[taxpayer].w2[emp_b].box4": 75200,
+    "person[taxpayer].w2[emp_b].box5": 1213600,
+    "person[taxpayer].w2[emp_b].box6": 17600,
+    "$interest": [],
+    "$sales": [],
+    "$gift": [
+     "item_a",
+     "item_b"
+    ],
+    "gift[item_a].deduction": 1179800,
+    "gift[item_a].public_securities": true,
+    "gift[item_a].special": false,
+    "gift[item_b].deduction": 21300,
+    "gift[item_b].public_securities": false,
+    "gift[item_b].special": false,
+    "$dependent": [
+     "dep_a",
+     "dep_b"
+    ],
+    "dependent[dep_a].relationship": "child",
+    "dependent[dep_a].age": 6,
+    "dependent[dep_a].younger": true,
+    "dependent[dep_a].student": false,
+    "dependent[dep_a].disabled": false,
+    "dependent[dep_a].months": 12,
+    "dependent[dep_a].self_support": false,
+    "dependent[dep_a].joint_return": false,
+    "dependent[dep_a].citizen": true,
+    "dependent[dep_a].canada_mexico": false,
+    "dependent[dep_a].married": false,
+    "dependent[dep_a].tin": true,
+    "dependent[dep_a].work_ssn": true,
+    "dependent[dep_a].gross_income": 0,
+    "dependent[dep_a].supported": true,
+    "dependent[dep_a].other_claimant": false,
+    "dependent[dep_a].divorced_rule": false,
+    "dependent[dep_a].multiple_support": false,
+    "dependent[dep_a].parent_home_paid": true,
+    "dependent[dep_a].us_half": true,
+    "dependent[dep_a].eic_ssn": false,
+    "dependent[dep_b].relationship": "other",
+    "dependent[dep_b].age": 21,
+    "dependent[dep_b].younger": true,
+    "dependent[dep_b].student": false,
+    "dependent[dep_b].disabled": false,
+    "dependent[dep_b].months": 12,
+    "dependent[dep_b].self_support": false,
+    "dependent[dep_b].joint_return": false,
+    "dependent[dep_b].citizen": true,
+    "dependent[dep_b].canada_mexico": false,
+    "dependent[dep_b].married": false,
+    "dependent[dep_b].tin": true,
+    "dependent[dep_b].work_ssn": true,
+    "dependent[dep_b].gross_income": 0,
+    "dependent[dep_b].supported": true,
+    "dependent[dep_b].other_claimant": false,
+    "dependent[dep_b].divorced_rule": false,
+    "dependent[dep_b].multiple_support": false,
+    "dependent[dep_b].parent_home_paid": false,
+    "dependent[dep_b].us_half": true,
+    "dependent[dep_b].eic_ssn": true,
+    "$retirement": [
+     "r1",
+     "r2"
+    ],
+    "retirement[r1].account": "traditional_ira",
+    "retirement[r1].code": "normal_7",
+    "retirement[r1].box1": 0,
+    "retirement[r1].box5": 0,
+    "retirement[r1].rollover": 0,
+    "retirement[r1].special": false,
+    "retirement[r1].annuity": false,
+    "retirement[r1].cost": 17348000,
+    "retirement[r1].used_last_year": false,
+    "retirement[r1].last_line4": 144000,
+    "retirement[r1].joint_life": false,
+    "retirement[r1].age": 56,
+    "retirement[r1].combined_age": 112,
+    "retirement[r1].months": 12,
+    "retirement[r1].recovered": 2420300,
+    "retirement[r2].account": "traditional_ira",
+    "retirement[r2].code": "normal_7",
+    "retirement[r2].box1": 0,
+    "retirement[r2].box5": 0,
+    "retirement[r2].rollover": 0,
+    "retirement[r2].special": false,
+    "retirement[r2].annuity": false,
+    "retirement[r2].cost": 1492000,
+    "retirement[r2].used_last_year": true,
+    "retirement[r2].last_line4": 69200,
+    "retirement[r2].joint_life": false,
+    "retirement[r2].age": 60,
+    "retirement[r2].combined_age": 142,
+    "retirement[r2].months": 12,
+    "retirement[r2].recovered": 0
+   },
+   "expect": {
+    "s1a.line1": {
+     "kind": "money",
+     "cents": 7197400
+    },
+    "s1a.line2a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line2b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line2c": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line2d": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line2e": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line3": {
+     "kind": "money",
+     "cents": 7197400
+    },
+    "s1a.line4a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line4b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line4c": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line5": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line6": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line7": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line8": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line9": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line10": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line12": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line13": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line14a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line14b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line14c": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line15": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line16": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line17": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line18": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line20": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line21": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line23": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line24": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line25": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line26": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line27": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line29": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line30": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line31": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line32": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line33": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line34": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line35": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line36a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line36b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line37": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line38": {
+     "kind": "money",
+     "cents": 0
+    }
+   }
+  },
+  {
+   "id": "classm.s1a.8",
+   "covers": [
+    "s1a"
+   ],
+   "evidence": "M",
+   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 2db7b46834d8a53064a08be31998129987c6a13836a4c13c400b173abccd1ab7; pages f1040s1a 1,2 (9212bddf5265); i1040gi 101,102,103,104,105,106,108,109,110 (6024dc94dd1f); branches s1a.tips:false, s1a.part2:false, s1a.line4a#0, s1a.line4b#0, s1a.line4c_one:left, s1a.line4c#0, s1a.line5#0, s1a.line6#0, s1a.line7_calc:left, s1a.line7#0, s1a.line8#0, s1a.line9_calc#1, s1a.line9#0, s1a.line10#0, s1a.line10_over:false, s1a.line10_pos:floor, s1a.line12#0, s1a.line13_figured:floor, s1a.line13_amount#0, s1a.line13_ssn#1, s1a.line13_claim#1, s1a.line13#0, s1a.overtime:true, s1a.part3:true, s1a.line14a#1, s1a.line14b#1, s1a.line14c#1, s1a.ot_max#1, s1a.line15_calc:left, s1a.line15#1, s1a.line16#1, s1a.line17_calc#1, s1a.line17#1, s1a.line18#1, s1a.line18_over:false, s1a.line18_pos:floor, s1a.line20#1, s1a.line21_figured:floor, s1a.line21_amount#0, s1a.line21_ssn#1, s1a.line21_claim#1, s1a.line21#1, s1a.carloan:true, s1a.line23#1, s1a.part4:true, s1a.line24_calc:left, s1a.line24#1, s1a.line25#1, s1a.line26_calc#1, s1a.line26#1, s1a.line27#1, s1a.line27_over:false, s1a.line27_pos:floor, s1a.line29#1, s1a.line30_figured:positive, s1a.line30_amount#0, s1a.line30#1, s1a.part5:false, s1a.line31#0, s1a.line32_calc#1, s1a.line32#0, s1a.line33#0, s1a.line33_over:false, s1a.line33_pos:floor, s1a.line34#0, s1a.line35_figured:positive, s1a.line35_calc#0, s1a.line35#0, s1a.died_before_65:false, s1a.senior_decedent:false, s1a.line36a_senior#1, s1a.line36a_claim#1, s1a.line36a#0",
+   "inputs": {
+    "div.box2b": 0,
+    "div.box2c": 0,
+    "div.box2d": 0,
+    "div.box2e": 0,
+    "div.box2f": 0,
+    "div.box3": 0,
+    "div.box9": 0,
+    "div.box10": 0,
+    "div.box12": 0,
+    "div.box13": 0,
+    "div.basis_reconciled": true,
+    "eic.qc_of_another": false,
+    "eic.born_before_2001": true,
+    "eic.born_after_1960": true,
+    "eic.us_home": true,
+    "eic.married": false,
+    "eic.same_home": false,
+    "eic.legally_separated": true,
+    "f1040.status": "mfj",
+    "f1040.tax_exempt_interest": 0,
+    "f1040.line3a": 7836100,
+    "f1040.line25b": 445000,
+    "f1040.line25c": 0,
+    "f1040.line26": 0,
+    "f1040.line35a": 0,
+    "f1040.line36": 0,
+    "f4952.line1": 0,
+    "f4952.carryover": false,
+    "f4952.unsupported": false,
+    "f4952.alternative_allocation": true,
+    "f4952.line4g": 0,
+    "f8889.line2": 0,
+    "f8889.line9": 0,
+    "f8889.unsupported": false,
+    "f8889.months_eligible": 0,
+    "f8889.months_family": 0,
+    "f8889.age55": false,
+    "f8889.dec_coverage": "none",
+    "f8889.last_month": false,
+    "f8959.unsupported": true,
+    "f8960.unsupported": true,
+    "f8960.refund": false,
+    "f8960.allocated_taxes": 0,
+    "ftc.taxes": 0,
+    "ftc.all_passive": true,
+    "ftc.statements": true,
+    "ftc.eligible": true,
+    "ftc.elect": true,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": true,
+    "household.unmarried": true,
+    "qbi.dividends": 470200,
+    "qbi.unsupported": false,
+    "s1.uc_paid": 0,
+    "s1.uc_repaid": 0,
+    "s1.uc_unsupported": false,
+    "s1.educator_expenses": 0,
+    "s1.eligible_educator": false,
+    "s1a.tips": false,
+    "s1a.overtime": true,
+    "s1a.carloan": true,
+    "s1a.died_before_65": false,
+    "s2.amt": false,
+    "s2.other": false,
+    "s3.line9": 0,
+    "s3.line10": 0,
+    "s3.line12": 0,
+    "s3.line14": 0,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": false,
+    "sa.unsupported": false,
+    "sa.charity_limited": false,
+    "sa.excluded_income": false,
+    "sa.dependent": true,
+    "sa.spouse_extra": false,
+    "sa.age65": false,
+    "sa.blind": false,
+    "sa.spouse_itemizes": false,
+    "sa.elect_itemize": false,
+    "sa.line1": 679800,
+    "sa.line5a": 134800,
+    "sa.line5b": 1655800,
+    "sa.line5c": 0,
+    "sa.line8a": 2811500,
+    "sa.line11": 0,
+    "sb.unsupported": false,
+    "sb.ordinary_dividends": 7836100,
+    "sb.line7a": false,
+    "sb.fbar_required": false,
+    "sb.form8938": false,
+    "sb.line8": false,
+    "scope.schedule1": false,
+    "scope.credits": true,
+    "scope.other_income": false,
+    "scope.other_line16": false,
+    "sd.other_forms": false,
+    "sd.carryover": false,
+    "sd.distributions": 0,
+    "sli.interest": 0,
+    "sli.claimed": false,
+    "ssb.benefits": 0,
+    "ssb.pub915": false,
+    "ssb.lump_sum": true,
+    "ssb.terror_disability": false,
+    "ssb.lived_apart": false,
+    "$person": [
+     "taxpayer"
+    ],
+    "person[taxpayer].rrta": false,
+    "$w2@person[taxpayer]": [
+     "emp_a",
+     "emp_b"
+    ],
+    "person[taxpayer].w2[emp_a].box1": 0,
+    "person[taxpayer].w2[emp_a].box2": 0,
+    "person[taxpayer].w2[emp_a].box3": 0,
+    "person[taxpayer].w2[emp_a].box7": 0,
+    "person[taxpayer].w2[emp_a].box4": 0,
+    "person[taxpayer].w2[emp_a].box5": 0,
+    "person[taxpayer].w2[emp_a].box6": 0,
+    "person[taxpayer].w2[emp_b].box1": 0,
+    "person[taxpayer].w2[emp_b].box2": 0,
+    "person[taxpayer].w2[emp_b].box3": 0,
+    "person[taxpayer].w2[emp_b].box7": 0,
+    "person[taxpayer].w2[emp_b].box4": 0,
+    "person[taxpayer].w2[emp_b].box5": 0,
+    "person[taxpayer].w2[emp_b].box6": 0,
+    "$interest": [],
+    "$sales": [
+     "s1"
+    ],
+    "sales[s1].box": "F",
+    "sales[s1].route": "detail",
+    "sales[s1].code": "none",
+    "sales[s1].special": false,
+    "sales[s1].aggregate_eligible": true,
+    "sales[s1].proceeds": 3239900,
+    "sales[s1].reported_basis": 463100,
+    "sales[s1].correct_basis": 0,
+    "sales[s1].wash_loss": 0,
+    "$gift": [],
+    "$dependent": [],
+    "$retirement": [],
+    "$otjob": [],
+    "$carloan": [
+     "vin_1"
+    ],
+    "carloan[vin_1].kind": "original",
+    "carloan[vin_1].requirements": true,
+    "carloan[vin_1].vehicle": true,
+    "carloan[vin_1].interest": 406000,
+    "carloan[vin_1].mixed": false,
+    "carloan[vin_1].financed": 3068300,
+    "carloan[vin_1].nonqualifying": 0,
+    "carloan[vin_1].down": 939400,
+    "carloan[vin_1].refi_balance": 4001900,
+    "carloan[vin_1].refi_whole": true
+   },
+   "expect": {
+    "s1a.line1": {
+     "kind": "money",
+     "cents": 11076000
+    },
+    "s1a.line2a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line2b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line2c": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line2d": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line2e": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line3": {
+     "kind": "money",
+     "cents": 11076000
+    },
+    "s1a.line4a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line4b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line4c": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line5": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line6": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line7": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line8": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line9": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line10": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line12": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line13": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line14a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line14b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line14c": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line15": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line16": {
+     "kind": "money",
+     "cents": 11076000
+    },
+    "s1a.line17": {
+     "kind": "money",
+     "cents": 30000000
+    },
+    "s1a.line18": {
+     "kind": "money",
+     "cents": -18924000
+    },
+    "s1a.line20": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line21": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line23": {
+     "kind": "money",
+     "cents": 406000
+    },
+    "s1a.line24": {
+     "kind": "money",
+     "cents": 406000
+    },
+    "s1a.line25": {
+     "kind": "money",
+     "cents": 11076000
+    },
+    "s1a.line26": {
+     "kind": "money",
+     "cents": 20000000
+    },
+    "s1a.line27": {
+     "kind": "money",
+     "cents": -8924000
+    },
+    "s1a.line29": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line30": {
+     "kind": "money",
+     "cents": 406000
+    },
+    "s1a.line31": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line32": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line33": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line34": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line35": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line36a": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line36b": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line37": {
+     "kind": "money",
+     "cents": 0
+    },
+    "s1a.line38": {
+     "kind": "money",
+     "cents": 406000
+    }
+   }
+  },
+  {
    "id": "classm.s2.1",
    "covers": [
     "s2"
@@ -16454,7 +20989,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -16657,7 +21191,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": true,
     "scope.other_line16": false,
@@ -16801,7 +21334,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -16902,7 +21434,10 @@
     "s1.educator_expenses": 0,
     "f8889.line2": 0,
     "f8889.line9": 0,
-    "sli.interest": 0
+    "sli.interest": 0,
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": false
    },
    "expect": {
     "s8812.line1": {
@@ -17092,7 +21627,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -17178,7 +21712,10 @@
     "s1.educator_expenses": 0,
     "f8889.line2": 0,
     "f8889.line9": 0,
-    "sli.interest": 0
+    "sli.interest": 0,
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": false
    },
    "expect": {
     "s8812.line1": {
@@ -17380,7 +21917,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -17491,7 +22027,10 @@
     "s1.educator_expenses": 0,
     "f8889.line2": 0,
     "f8889.line9": 0,
-    "sli.interest": 0
+    "sli.interest": 0,
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": false
    },
    "expect": {
     "s8812.line1": {
@@ -17679,7 +22218,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -17934,7 +22472,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -18169,7 +22706,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": true,
@@ -18404,7 +22940,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -18667,7 +23202,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -18877,7 +23411,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -19208,7 +23741,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -19407,7 +23939,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": true,
     "scope.credits": true,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -19609,7 +24140,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -19976,7 +24506,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -20342,7 +24871,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -20665,7 +25193,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -20768,7 +25295,10 @@
     "s1.educator_expenses": 0,
     "f8889.line2": 0,
     "f8889.line9": 0,
-    "sli.interest": 0
+    "sli.interest": 0,
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": false
    },
    "expect": {
     "sdtw.line1": {
@@ -21024,7 +25554,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -21115,7 +25644,10 @@
     "s1.educator_expenses": 0,
     "f8889.line2": 0,
     "f8889.line9": 0,
-    "sli.interest": 0
+    "sli.interest": 0,
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": false
    },
    "expect": {
     "sdtw.line1": {
@@ -21375,7 +25907,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -21463,7 +25994,10 @@
     "s1.educator_expenses": 0,
     "f8889.line2": 0,
     "f8889.line9": 0,
-    "sli.interest": 0
+    "sli.interest": 0,
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": false
    },
    "expect": {
     "sdtw.line1": {
@@ -21723,7 +26257,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -21777,7 +26310,10 @@
     "s1.educator_expenses": 0,
     "f8889.line2": 0,
     "f8889.line9": 0,
-    "sli.interest": 0
+    "sli.interest": 0,
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": false
    },
    "expect": {
     "sdtw.line1": {
@@ -22059,7 +26595,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -22288,7 +26823,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -22525,7 +27059,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -22700,7 +27233,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -22896,7 +27428,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -23074,7 +27605,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -23347,7 +27877,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -23575,7 +28104,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -23852,7 +28380,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -24070,7 +28597,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -24310,7 +28836,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -24413,7 +28938,10 @@
     "s1.educator_expenses": 0,
     "f8889.line2": 0,
     "f8889.line9": 0,
-    "sli.interest": 0
+    "sli.interest": 0,
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": false
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"qdcg.line5\",\"status\":\"f1040.status\"}.below_boundary": {
@@ -24501,7 +29029,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": true,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -24563,7 +29090,10 @@
     "s1.educator_expenses": 0,
     "f8889.line2": 0,
     "f8889.line9": 0,
-    "sli.interest": 0
+    "sli.interest": 0,
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": false
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"f1040.line15\",\"status\":\"f1040.status\"}.below_boundary": {
@@ -24651,7 +29181,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -24754,7 +29283,10 @@
     "s1.educator_expenses": 0,
     "f8889.line2": 0,
     "f8889.line9": 0,
-    "sli.interest": 0
+    "sli.interest": 0,
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": false
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"qdcg.line5\",\"status\":\"f1040.status\"}|inst:tcw#{\"amount\":\"amount\",\"status\":\"status\"}.tax": {
@@ -24838,7 +29370,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -24892,7 +29423,10 @@
     "s1.educator_expenses": 0,
     "f8889.line2": 0,
     "f8889.line9": 0,
-    "sli.interest": 0
+    "sli.interest": 0,
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": false
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"qdcg.line5\",\"status\":\"f1040.status\"}|inst:tcw#{\"amount\":\"amount\",\"status\":\"status\"}.tax": {
@@ -24976,7 +29510,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -25084,7 +29617,10 @@
     "s1.educator_expenses": 0,
     "f8889.line2": 0,
     "f8889.line9": 0,
-    "sli.interest": 0
+    "sli.interest": 0,
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": false
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"qdcg.line5\",\"status\":\"f1040.status\"}|inst:tcw#{\"amount\":\"amount\",\"status\":\"status\"}.tax": {
@@ -25168,7 +29704,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -25291,7 +29826,10 @@
     "s1.educator_expenses": 0,
     "f8889.line2": 0,
     "f8889.line9": 0,
-    "sli.interest": 0
+    "sli.interest": 0,
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": false
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"qdcg.line1\",\"status\":\"f1040.status\"}|inst:tcw#{\"amount\":\"amount\",\"status\":\"status\"}.tax": {
@@ -25375,7 +29913,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -25475,7 +30012,10 @@
     "s1.educator_expenses": 0,
     "f8889.line2": 0,
     "f8889.line9": 0,
-    "sli.interest": 0
+    "sli.interest": 0,
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": false
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"qdcg.line5\",\"status\":\"f1040.status\"}|inst:tcw#{\"amount\":\"amount\",\"status\":\"status\"}.tax": {
@@ -25559,7 +30099,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -25655,7 +30194,10 @@
     "s1.educator_expenses": 0,
     "f8889.line2": 0,
     "f8889.line9": 0,
-    "sli.interest": 0
+    "sli.interest": 0,
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": false
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"qdcg.line1\",\"status\":\"f1040.status\"}|inst:tcw#{\"amount\":\"amount\",\"status\":\"status\"}.tax": {
@@ -25739,7 +30281,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -25792,7 +30333,10 @@
     "s1.educator_expenses": 0,
     "f8889.line2": 0,
     "f8889.line9": 0,
-    "sli.interest": 0
+    "sli.interest": 0,
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": false
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"f1040.line15\",\"status\":\"f1040.status\"}|inst:tcw#{\"amount\":\"amount\",\"status\":\"status\"}.tax": {
@@ -25876,7 +30420,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -25976,7 +30519,10 @@
     "s1.educator_expenses": 0,
     "f8889.line2": 0,
     "f8889.line9": 0,
-    "sli.interest": 0
+    "sli.interest": 0,
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": false
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"qdcg.line1\",\"status\":\"f1040.status\"}|inst:tcw#{\"amount\":\"amount\",\"status\":\"status\"}.tax": {
@@ -26060,7 +30606,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -26128,7 +30673,10 @@
     "s1.educator_expenses": 0,
     "f8889.line2": 0,
     "f8889.line9": 0,
-    "sli.interest": 0
+    "sli.interest": 0,
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": false
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"qdcg.line1\",\"status\":\"f1040.status\"}|inst:tcw#{\"amount\":\"amount\",\"status\":\"status\"}.tax": {
@@ -26212,7 +30760,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -26275,7 +30822,10 @@
     "s1.educator_expenses": 0,
     "f8889.line2": 0,
     "f8889.line9": 0,
-    "sli.interest": 0
+    "sli.interest": 0,
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": false
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"f1040.line15\",\"status\":\"f1040.status\"}|inst:tcw#{\"amount\":\"amount\",\"status\":\"status\"}.tax": {
@@ -26359,7 +30909,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -26447,7 +30996,10 @@
     "s1.educator_expenses": 0,
     "f8889.line2": 0,
     "f8889.line9": 0,
-    "sli.interest": 0
+    "sli.interest": 0,
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": false
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"qdcg.line1\",\"status\":\"f1040.status\"}|inst:tcw#{\"amount\":\"amount\",\"status\":\"status\"}.tax": {
@@ -26531,7 +31083,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -26636,7 +31187,10 @@
     "s1.educator_expenses": 0,
     "f8889.line2": 0,
     "f8889.line9": 0,
-    "sli.interest": 0
+    "sli.interest": 0,
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": false
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"qdcg.line5\",\"status\":\"f1040.status\"}|inst:tcw#{\"amount\":\"amount\",\"status\":\"status\"}.tax": {
@@ -26720,7 +31274,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -26784,7 +31337,10 @@
     "s1.educator_expenses": 0,
     "f8889.line2": 0,
     "f8889.line9": 0,
-    "sli.interest": 0
+    "sli.interest": 0,
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": false
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"f1040.line15\",\"status\":\"f1040.status\"}|inst:tcw#{\"amount\":\"amount\",\"status\":\"status\"}.tax": {
@@ -26868,7 +31424,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -26995,7 +31550,10 @@
     "s1.educator_expenses": 0,
     "f8889.line2": 0,
     "f8889.line9": 0,
-    "sli.interest": 0
+    "sli.interest": 0,
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": false
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"f1040.line15\",\"status\":\"f1040.status\"}|inst:tcw#{\"amount\":\"amount\",\"status\":\"status\"}.tax": {
@@ -27079,7 +31637,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -27207,7 +31764,10 @@
     "s1.educator_expenses": 0,
     "f8889.line2": 0,
     "f8889.line9": 0,
-    "sli.interest": 0
+    "sli.interest": 0,
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": false
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"qdcg.line1\",\"status\":\"f1040.status\"}|inst:tcw#{\"amount\":\"amount\",\"status\":\"status\"}.tax": {
@@ -27291,7 +31851,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -27346,7 +31905,10 @@
     "s1.educator_expenses": 0,
     "f8889.line2": 0,
     "f8889.line9": 0,
-    "sli.interest": 0
+    "sli.interest": 0,
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": false
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"qdcg.line5\",\"status\":\"f1040.status\"}|inst:tcw#{\"amount\":\"amount\",\"status\":\"status\"}.tax": {
@@ -27430,7 +31992,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -27536,12 +32097,233 @@
     "s1.educator_expenses": 0,
     "f8889.line2": 0,
     "f8889.line9": 0,
-    "sli.interest": 0
+    "sli.interest": 0,
+    "s1a.tips": false,
+    "s1a.overtime": false,
+    "s1a.carloan": false
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"qdcg.line5\",\"status\":\"f1040.status\"}|inst:tcw#{\"amount\":\"amount\",\"status\":\"status\"}.tax": {
      "kind": "money",
      "cents": 5262364
+    }
+   }
+  },
+  {
+   "id": "classm.tipjob.1",
+   "covers": [
+    "tipjob"
+   ],
+   "evidence": "M",
+   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 091dca640be4c09d58b7eea8a4e5dc54f7b479eef1197ddd433a7863c4a44ffd; pages i1040gi 101,102,103,104 (6024dc94dd1f); branches tipjob.qualified:true, tipjob.mixed:false, tipjob.col_d:left",
+   "inputs": {
+    "div.box2b": 0,
+    "div.box2c": 0,
+    "div.box2d": 0,
+    "div.box2e": 0,
+    "div.box2f": 0,
+    "div.box3": 0,
+    "div.box9": 0,
+    "div.box10": 0,
+    "div.box12": 0,
+    "div.box13": 0,
+    "div.basis_reconciled": true,
+    "eic.qc_of_another": true,
+    "eic.born_before_2001": false,
+    "eic.born_after_1960": true,
+    "eic.us_home": true,
+    "eic.married": true,
+    "eic.same_home": false,
+    "eic.legally_separated": false,
+    "f1040.status": "single",
+    "f1040.tax_exempt_interest": 0,
+    "f1040.line3a": 0,
+    "f1040.line25b": 0,
+    "f1040.line25c": 0,
+    "f1040.line26": 0,
+    "f1040.line35a": 0,
+    "f1040.line36": 0,
+    "f4952.line1": 0,
+    "f4952.carryover": false,
+    "f4952.unsupported": false,
+    "f4952.alternative_allocation": true,
+    "f4952.line4g": 0,
+    "f8889.line2": 0,
+    "f8889.line9": 0,
+    "f8889.unsupported": false,
+    "f8889.months_eligible": 12,
+    "f8889.months_family": 1,
+    "f8889.age55": false,
+    "f8889.dec_coverage": "self_only",
+    "f8889.last_month": false,
+    "f8959.unsupported": false,
+    "f8960.unsupported": false,
+    "f8960.refund": false,
+    "f8960.allocated_taxes": 0,
+    "ftc.taxes": 0,
+    "ftc.all_passive": true,
+    "ftc.statements": true,
+    "ftc.eligible": true,
+    "ftc.elect": true,
+    "household.taxpayer_tin": true,
+    "household.taxpayer_work_ssn": true,
+    "household.home_cost": true,
+    "household.unmarried": true,
+    "qbi.dividends": 0,
+    "qbi.unsupported": false,
+    "s1.uc_paid": 0,
+    "s1.uc_repaid": 0,
+    "s1.uc_unsupported": false,
+    "s1.educator_expenses": 0,
+    "s1.eligible_educator": false,
+    "s1a.tips": true,
+    "s1a.overtime": false,
+    "s1a.carloan": false,
+    "s1a.died_before_65": false,
+    "s2.amt": false,
+    "s2.other": false,
+    "s3.line9": 0,
+    "s3.line10": 0,
+    "s3.line12": 0,
+    "s3.line14": 0,
+    "s8812.combat_pay": false,
+    "s8812.puerto_rico": true,
+    "sa.unsupported": false,
+    "sa.charity_limited": false,
+    "sa.excluded_income": false,
+    "sa.dependent": false,
+    "sa.spouse_extra": false,
+    "sa.age65": false,
+    "sa.blind": false,
+    "sa.spouse_itemizes": false,
+    "sa.elect_itemize": false,
+    "sa.line1": 0,
+    "sa.line5a": 0,
+    "sa.line5b": 0,
+    "sa.line5c": 0,
+    "sa.line8a": 0,
+    "sa.line11": 0,
+    "sb.unsupported": false,
+    "sb.ordinary_dividends": 0,
+    "sb.line7a": true,
+    "sb.fbar_required": false,
+    "sb.form8938": false,
+    "sb.line8": true,
+    "scope.schedule1": false,
+    "scope.credits": false,
+    "scope.other_income": false,
+    "scope.other_line16": false,
+    "sd.other_forms": false,
+    "sd.carryover": false,
+    "sd.distributions": 0,
+    "sli.interest": 0,
+    "sli.claimed": false,
+    "ssb.benefits": 0,
+    "ssb.pub915": false,
+    "ssb.lump_sum": false,
+    "ssb.terror_disability": false,
+    "ssb.lived_apart": false,
+    "$person": [
+     "taxpayer"
+    ],
+    "person[taxpayer].rrta": false,
+    "$w2@person[taxpayer]": [
+     "emp_a",
+     "emp_b"
+    ],
+    "person[taxpayer].w2[emp_a].box1": 4125600,
+    "person[taxpayer].w2[emp_a].box2": 288800,
+    "person[taxpayer].w2[emp_a].box3": 4125600,
+    "person[taxpayer].w2[emp_a].box7": 0,
+    "person[taxpayer].w2[emp_a].box4": 255800,
+    "person[taxpayer].w2[emp_a].box5": 4125600,
+    "person[taxpayer].w2[emp_a].box6": 59800,
+    "person[taxpayer].w2[emp_b].box1": 0,
+    "person[taxpayer].w2[emp_b].box2": 0,
+    "person[taxpayer].w2[emp_b].box3": 0,
+    "person[taxpayer].w2[emp_b].box7": 0,
+    "person[taxpayer].w2[emp_b].box4": 0,
+    "person[taxpayer].w2[emp_b].box5": 0,
+    "person[taxpayer].w2[emp_b].box6": 0,
+    "$interest": [],
+    "$sales": [
+     "s1",
+     "s2"
+    ],
+    "sales[s1].box": "E",
+    "sales[s1].route": "detail",
+    "sales[s1].code": "none",
+    "sales[s1].special": false,
+    "sales[s1].aggregate_eligible": false,
+    "sales[s1].proceeds": 0,
+    "sales[s1].reported_basis": 3201200,
+    "sales[s1].correct_basis": 0,
+    "sales[s1].wash_loss": 0,
+    "sales[s2].box": "B",
+    "sales[s2].route": "detail",
+    "sales[s2].code": "W",
+    "sales[s2].special": false,
+    "sales[s2].aggregate_eligible": true,
+    "sales[s2].proceeds": 539200,
+    "sales[s2].reported_basis": 0,
+    "sales[s2].correct_basis": 945200,
+    "sales[s2].wash_loss": 0,
+    "$gift": [
+     "item_a"
+    ],
+    "gift[item_a].deduction": 185500,
+    "gift[item_a].public_securities": false,
+    "gift[item_a].special": false,
+    "$dependent": [
+     "dep_a"
+    ],
+    "dependent[dep_a].relationship": "child",
+    "dependent[dep_a].age": 75,
+    "dependent[dep_a].younger": true,
+    "dependent[dep_a].student": false,
+    "dependent[dep_a].disabled": false,
+    "dependent[dep_a].months": 12,
+    "dependent[dep_a].self_support": false,
+    "dependent[dep_a].joint_return": false,
+    "dependent[dep_a].citizen": true,
+    "dependent[dep_a].canada_mexico": false,
+    "dependent[dep_a].married": false,
+    "dependent[dep_a].tin": true,
+    "dependent[dep_a].work_ssn": true,
+    "dependent[dep_a].gross_income": 976200,
+    "dependent[dep_a].supported": true,
+    "dependent[dep_a].other_claimant": false,
+    "dependent[dep_a].divorced_rule": false,
+    "dependent[dep_a].multiple_support": false,
+    "dependent[dep_a].parent_home_paid": false,
+    "dependent[dep_a].us_half": true,
+    "dependent[dep_a].eic_ssn": true,
+    "$retirement": [],
+    "$tipjob": [
+     "tip_1",
+     "tip_2"
+    ],
+    "tipjob[tip_1].qualified": true,
+    "tipjob[tip_1].amount": 3000000,
+    "tipjob[tip_2].qualified": true,
+    "tipjob[tip_2].amount": 0
+   },
+   "expect": {
+    "tipjob[tip_1].mixed": {
+     "kind": "bool",
+     "value": false
+    },
+    "tipjob[tip_1].col_d": {
+     "kind": "money",
+     "cents": 3000000
+    },
+    "tipjob[tip_2].mixed": {
+     "kind": "bool",
+     "value": false
+    },
+    "tipjob[tip_2].col_d": {
+     "kind": "money",
+     "cents": 0
     }
    }
   },
@@ -27620,7 +32402,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -27875,7 +32656,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,
@@ -28136,7 +32916,6 @@
     "sb.form8938": false,
     "sb.line8": false,
     "scope.schedule1": false,
-    "scope.schedule1a": false,
     "scope.credits": false,
     "scope.other_income": false,
     "scope.other_line16": false,

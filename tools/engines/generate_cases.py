@@ -47,7 +47,7 @@ def gen_case(rng, i):
         "sa.unsupported": False, "sa.charity_limited": False, "sa.excluded_income": False, "sa.dependent": False,
         "sa.spouse_extra": False, "sa.age65": False, "sa.blind": False, "sa.spouse_itemizes": False, "sa.elect_itemize": False,
         "sa.line5c": 0,
-        "scope.schedule1": False, "scope.schedule1a": False, "scope.credits": False, "scope.other_income": False,
+        "scope.schedule1": False, "scope.credits": False, "scope.other_income": False,
         "scope.other_line16": False, "s2.amt": False, "s2.other": False,
         "f1040.line25b": 0, "f1040.line25c": 0, "f1040.line26": 0, "f1040.line35a": 0, "f1040.line36": 0,
         # Earned income credit questions: an adult aged 25 to 64 living in the United States who is
@@ -215,6 +215,32 @@ def gen_case(rng, i):
     inputs["ftc.taxes"] = ftc; facts["foreign_tax"] = ftc
     if ftc: features.add("foreign_tax")
 
+    # Schedule 1-A. A separate generator per case leaves every earlier draw, and so the case ids
+    # recorded in engine_investigations.json, unchanged. Seniors are 66 or older (born before
+    # January 2, 1961, with no question about a final return); tips, the FLSA overtime premium and
+    # car loan interest come from one employer or one new qualifying loan, below the wages.
+    r = random.Random(f"s1a:{i}")
+    inputs.update({"s1a.tips": False, "s1a.overtime": False, "s1a.carloan": False})
+    age = 40
+    if r.random() < 0.15:
+        age = r.randint(66, 85)
+        inputs.update({"sa.age65": True, "s1a.died_before_65": False, "eic.born_after_1960": False})
+        features.add("senior")
+    tips = r.randint(10_000, min(4_000_000, wages)) if r.random() < 0.12 else 0
+    if tips:
+        inputs.update({"s1a.tips": True, "$tipjob": ["t"], "tipjob[t].qualified": True, "tipjob[t].amount": tips})
+        features.add("tips")
+    overtime = r.randint(10_000, min(2_000_000, wages // 3)) if r.random() < 0.12 and wages >= 30_000 else 0
+    if overtime:
+        inputs.update({"s1a.overtime": True, "$otjob": ["o"], "otjob[o].flsa": True, "otjob[o].special_rule": False,
+                       "otjob[o].method": "premium", "otjob[o].statement": overtime})
+        features.add("overtime")
+    car = r.randint(5_000, 1_500_000) if r.random() < 0.1 else 0
+    if car:
+        inputs.update({"s1a.carloan": True, "$carloan": ["v"], "carloan[v].kind": "original", "carloan[v].requirements": True,
+                       "carloan[v].vehicle": True, "carloan[v].mixed": False, "carloan[v].interest": car})
+        features.add("car_loan_interest")
+    facts.update(age=age, tips=tips, overtime=overtime, car_loan_interest=car)
     return {"id": f"gen-{i:05d}", "inputs": inputs, "facts": facts, "features": sorted(features)}
 
 

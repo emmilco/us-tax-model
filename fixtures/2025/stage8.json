@@ -76,7 +76,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -131,7 +130,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -520,7 +522,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -584,7 +585,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -1001,7 +1005,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -1109,7 +1112,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "dependent[a].actc_amount": {
@@ -1652,7 +1658,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -1760,7 +1765,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "dependent[a].actc_amount": {
@@ -2304,7 +2312,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -2359,7 +2366,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -2747,7 +2757,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -2802,7 +2811,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "dependent[parent].actc_amount": {
@@ -3198,7 +3210,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -3810,7 +3821,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -3925,7 +3935,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "dependent[age19].actc_amount": {
@@ -4528,7 +4541,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -4623,7 +4635,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "dependent[age17].actc_amount": {
@@ -5151,7 +5166,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -5266,7 +5280,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "dependent[all_year].actc_amount": {
@@ -5844,7 +5861,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -6449,7 +6465,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -6504,7 +6519,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -6889,7 +6907,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -6944,7 +6961,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -7329,7 +7349,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -7384,7 +7403,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -8015,7 +8037,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -8070,7 +8091,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -8701,7 +8725,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -8756,7 +8779,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -9387,7 +9413,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -9442,7 +9467,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "dependent[parent].actc_amount": {
@@ -10058,7 +10086,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -10113,7 +10140,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "dependent[parent].actc_amount": {
@@ -10739,7 +10769,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -11414,7 +11443,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": true,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -11469,7 +11497,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -12007,7 +12038,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -12071,7 +12101,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -12621,7 +12654,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": true,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -13394,7 +13426,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -14023,7 +14054,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -14087,7 +14117,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "dependent[child].actc_amount": {

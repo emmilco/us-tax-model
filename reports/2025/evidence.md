@@ -2,6 +2,34 @@
 
 Fixtures that assert each line, by evidence class. A — official IRS example. B — human hand-work (pending; marked where recorded). C — recorded value also confirmed by the independently written Lean reference evaluator (running evaluator agreement, reports/2025/evaluator_agreement.md); the external-calculator comparison is the Stage 5 differential and remains pending. M — an isolated model worked the document by hand from its archived pages and the amounts flowing into it (reviews/2025/classm/). R — recorded synthetic regression, no class claimed, human review pending.
 
+## Qualified passenger vehicle loan interest (Schedule 1-A, line 22) — one entry per loan
+
+| line | A | B | C | R |
+| --- | --- | --- | --- | --- |
+| carloan.zero | — | — | — | — |
+| carloan.kind | — | — | — | — |
+| carloan.requirements | — | — | — | — |
+| carloan.vehicle | — | — | — | — |
+| carloan.eligible | — | — | — | 4 |
+| carloan.interest | — | — | — | — |
+| carloan.mixed | — | — | — | — |
+| carloan.financed | — | — | — | — |
+| carloan.nonqualifying | — | — | — | — |
+| carloan.down | — | — | — | — |
+| carloan.nonqualifying_debt | — | — | — | 2 (classm.carloan.1, classm.carloan.4) |
+| carloan.mixed_qualifying | — | — | — | 2 (classm.carloan.1, classm.carloan.4) |
+| carloan.refi_balance | — | — | — | — |
+| carloan.refi_whole | — | — | — | — |
+| carloan.refi_qualifying | — | — | — | 2 (classm.carloan.1, classm.carloan.3) |
+| carloan.refi_nested | — | — | — | 2 (classm.carloan.1, classm.carloan.3) |
+| carloan.allocated | — | — | — | 4 |
+| carloan.refi_interest | — | — | — | 2 (classm.carloan.1, classm.carloan.3) |
+| carloan.mixed_interest | — | — | — | 3 |
+| carloan.mixed_prorated | — | — | — | 2 (classm.carloan.1, classm.carloan.4) |
+| carloan.col_iii | — | — | — | 4 |
+
+Unasserted lines: carloan.zero
+
 ## Dependents — qualifying child and qualifying relative tests, per person listed
 
 | line | A | B | C | R |
@@ -200,9 +228,9 @@ Unasserted lines: eic.zero, eic.qc_count, eic.married_rules, eic.top_limit, eic.
 | f1040.line11b | — | — | — | 22 |
 | f1040.line12e | — | — | — | 31 |
 | f1040.line13a | — | — | — | 7 |
-| f1040.line13b | — | — | — | 8 |
-| f1040.line14 | — | — | — | 8 |
-| f1040.line15 | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 10 |
+| f1040.line13b | — | — | — | 14 |
+| f1040.line14 | — | — | — | 11 |
+| f1040.line15 | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 13 |
 | f1040.gate.qdcg_applies | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 7 |
 | f1040.gate.sdtw | — | — | — | 5 |
 | f1040.non_sdtw_tax | — | — | — | 2 (stage4.sdtw.special_rates, stage4.sdtw.skip22) |
@@ -493,6 +521,24 @@ Unasserted lines: g28.combined
 | --- | --- | --- | --- | --- |
 | interest.amount | — | — | — | — |
 
+## Qualified Overtime Compensation From More Than One Employer Worksheet (Schedule 1-A, line 14a) — one row per employer
+
+| line | A | B | C | R |
+| --- | --- | --- | --- | --- |
+| otjob.zero | — | — | — | — |
+| otjob.flsa | — | — | — | — |
+| otjob.special_rule | — | — | — | — |
+| otjob.method | — | — | — | — |
+| otjob.statement | — | — | — | — |
+| otjob.refused | — | — | — | 3 |
+| otjob.figured | — | — | — | 3 |
+| otjob.by_third | — | — | — | 1 (classm.otjob.2) |
+| otjob.by_half | — | — | — | 1 (classm.otjob.3) |
+| otjob.by_quarter | — | — | — | 1 (classm.otjob.3) |
+| otjob.col_b | — | — | — | 3 |
+
+Unasserted lines: otjob.zero
+
 ## Excess Social Security credit — separately per person
 
 | line | A | B | C | R |
@@ -652,6 +698,136 @@ Unasserted lines: retirement.zero, retirement.one, retirement.smw4_t2_360
 | s1.line26 | — | — | — | 4 |
 
 Unasserted lines: s1.zero, s1.has_uc, s1.line7_figured, s1.has_educator_expenses, s1.educator_max, s1.educator_limited, s1.educator_deduction
+
+## Schedule 1-A (Form 1040) — Additional Deductions
+
+| line | A | B | C | R |
+| --- | --- | --- | --- | --- |
+| s1a.zero | — | — | — | — |
+| s1a.line1 | — | — | — | 8 |
+| s1a.line2a | — | — | — | 8 |
+| s1a.line2b | — | — | — | 8 |
+| s1a.line2c | — | — | — | 8 |
+| s1a.line2d | — | — | — | 8 |
+| s1a.line2e | — | — | — | 8 |
+| s1a.line3 | — | — | — | 9 |
+| s1a.tips | — | — | — | — |
+| s1a.tip_employers | — | — | — | — |
+| s1a.tip_total | — | — | — | — |
+| s1a.tip_reported | — | — | — | — |
+| s1a.tip_multi | — | — | — | — |
+| s1a.part2 | — | — | — | — |
+| s1a.line4a_calc | — | — | — | — |
+| s1a.line4a | — | — | — | 10 |
+| s1a.line4b_calc | — | — | — | — |
+| s1a.line4b | — | — | — | 9 |
+| s1a.line4c_one | — | — | — | — |
+| s1a.line4c_calc | — | — | — | — |
+| s1a.line4c | — | — | — | 12 |
+| s1a.line5_calc | — | — | — | — |
+| s1a.line5 | — | — | — | 8 |
+| s1a.line6_calc | — | — | — | — |
+| s1a.line6 | — | — | — | 10 |
+| s1a.line7_calc | — | — | — | — |
+| s1a.line7 | — | — | — | 11 |
+| s1a.tips_max | — | — | — | — |
+| s1a.base_other | — | — | — | — |
+| s1a.base_joint | — | — | — | — |
+| s1a.line8_calc | — | — | — | — |
+| s1a.line8 | — | — | — | 8 |
+| s1a.line9_calc | — | — | — | — |
+| s1a.line9 | — | — | — | 9 |
+| s1a.line10_calc | — | — | — | — |
+| s1a.line10 | — | — | — | 11 |
+| s1a.line10_over | — | — | — | — |
+| s1a.line10_pos | — | — | — | — |
+| s1a.line11_thousands | — | — | — | — |
+| s1a.line12_calc | — | — | — | — |
+| s1a.line12 | — | — | — | 13 |
+| s1a.line13_figured | — | — | — | — |
+| s1a.line13_amount | — | — | — | — |
+| s1a.line13_ssn | — | — | — | — |
+| s1a.line13_claim | — | — | — | — |
+| s1a.line13 | — | — | — | 23 |
+| s1a.overtime | — | — | — | — |
+| s1a.part3 | — | — | — | — |
+| s1a.line14a_calc | — | — | — | — |
+| s1a.line14a | — | — | — | 17 |
+| s1a.line14b_calc | — | — | — | — |
+| s1a.line14b | — | — | — | 8 |
+| s1a.line14c_calc | — | — | — | — |
+| s1a.line14c | — | — | — | 10 |
+| s1a.ot_max_other | — | — | — | — |
+| s1a.ot_max_joint | — | — | — | — |
+| s1a.ot_max | — | — | — | — |
+| s1a.line15_calc | — | — | — | — |
+| s1a.line15 | — | — | — | 11 |
+| s1a.line16_calc | — | — | — | — |
+| s1a.line16 | — | — | — | 8 |
+| s1a.line17_calc | — | — | — | — |
+| s1a.line17 | — | — | — | 8 |
+| s1a.line18_calc | — | — | — | — |
+| s1a.line18 | — | — | — | 9 |
+| s1a.line18_over | — | — | — | — |
+| s1a.line18_pos | — | — | — | — |
+| s1a.line19_thousands | — | — | — | — |
+| s1a.line20_calc | — | — | — | — |
+| s1a.line20 | — | — | — | 10 |
+| s1a.line21_figured | — | — | — | — |
+| s1a.line21_amount | — | — | — | — |
+| s1a.line21_ssn | — | — | — | — |
+| s1a.line21_claim | — | — | — | — |
+| s1a.line21 | — | — | — | 22 |
+| s1a.carloan | — | — | — | — |
+| s1a.line23_total | — | — | — | — |
+| s1a.line23 | — | — | — | 14 |
+| s1a.car_max | — | — | — | — |
+| s1a.part4 | — | — | — | — |
+| s1a.line24_calc | — | — | — | — |
+| s1a.line24 | — | — | — | 11 |
+| s1a.car_base_other | — | — | — | — |
+| s1a.car_base_joint | — | — | — | — |
+| s1a.line25_calc | — | — | — | — |
+| s1a.line25 | — | — | — | 8 |
+| s1a.line26_calc | — | — | — | — |
+| s1a.line26 | — | — | — | 9 |
+| s1a.line27_calc | — | — | — | — |
+| s1a.line27 | — | — | — | 10 |
+| s1a.line27_over | — | — | — | — |
+| s1a.line27_pos | — | — | — | — |
+| s1a.line28_thousands | — | — | — | — |
+| s1a.line29_calc | — | — | — | — |
+| s1a.line29 | — | — | — | 12 |
+| s1a.line30_figured | — | — | — | — |
+| s1a.line30_amount | — | — | — | — |
+| s1a.line30 | — | — | — | 23 |
+| s1a.part5 | — | — | — | — |
+| s1a.line31_calc | — | — | — | — |
+| s1a.line31 | — | — | — | 8 |
+| s1a.senior_base_other | — | — | — | — |
+| s1a.senior_base_joint | — | — | — | — |
+| s1a.line32_calc | — | — | — | — |
+| s1a.line32 | — | — | — | 9 |
+| s1a.line33_calc | — | — | — | — |
+| s1a.line33 | — | — | — | 10 |
+| s1a.line33_over | — | — | — | — |
+| s1a.line33_pos | — | — | — | — |
+| s1a.line34_calc | — | — | — | — |
+| s1a.line34 | — | — | — | 11 |
+| s1a.senior_amount | — | — | — | — |
+| s1a.line35_figured | — | — | — | — |
+| s1a.line35_calc | — | — | — | — |
+| s1a.line35 | — | — | — | 14 |
+| s1a.died_before_65 | — | — | — | — |
+| s1a.senior_decedent | — | — | — | — |
+| s1a.line36a_senior | — | — | — | — |
+| s1a.line36a_claim | — | — | — | — |
+| s1a.line36a | — | — | — | 12 |
+| s1a.line36b | — | — | — | 8 |
+| s1a.line37 | — | — | — | 17 |
+| s1a.line38 | — | — | — | 15 |
+
+Unasserted lines: s1a.zero, s1a.tip_employers, s1a.tip_total, s1a.tip_reported, s1a.tip_multi, s1a.part2, s1a.line4a_calc, s1a.line4b_calc, s1a.line4c_one, s1a.line4c_calc, s1a.line5_calc, s1a.line6_calc, s1a.line7_calc, s1a.tips_max, s1a.base_other, s1a.base_joint, s1a.line8_calc, s1a.line9_calc, s1a.line10_calc, s1a.line10_over, s1a.line10_pos, s1a.line11_thousands, s1a.line12_calc, s1a.line13_figured, s1a.line13_amount, s1a.line13_ssn, s1a.line13_claim, s1a.part3, s1a.line14a_calc, s1a.line14b_calc, s1a.line14c_calc, s1a.ot_max_other, s1a.ot_max_joint, s1a.ot_max, s1a.line15_calc, s1a.line16_calc, s1a.line17_calc, s1a.line18_calc, s1a.line18_over, s1a.line18_pos, s1a.line19_thousands, s1a.line20_calc, s1a.line21_figured, s1a.line21_amount, s1a.line21_ssn, s1a.line21_claim, s1a.line23_total, s1a.car_max, s1a.part4, s1a.line24_calc, s1a.car_base_other, s1a.car_base_joint, s1a.line25_calc, s1a.line26_calc, s1a.line27_calc, s1a.line27_over, s1a.line27_pos, s1a.line28_thousands, s1a.line29_calc, s1a.line30_figured, s1a.line30_amount, s1a.part5, s1a.line31_calc, s1a.senior_base_other, s1a.senior_base_joint, s1a.line32_calc, s1a.line33_calc, s1a.line33_over, s1a.line33_pos, s1a.line34_calc, s1a.senior_amount, s1a.line35_figured, s1a.line35_calc, s1a.senior_decedent, s1a.line36a_senior, s1a.line36a_claim
 
 ## Schedule 2 — supported Additional Medicare Tax and NIIT
 
@@ -865,11 +1041,10 @@ Unasserted lines: sb.zero
 | line | A | B | C | R |
 | --- | --- | --- | --- | --- |
 | scope.schedule1 | — | — | — | — |
-| scope.schedule1a | — | — | — | — |
 | scope.credits | — | — | — | — |
 | scope.other_income | — | — | — | — |
 | scope.other_line16 | — | — | — | — |
-| scope.ready | — | — | — | 6 |
+| scope.ready | — | — | — | 5 |
 
 ## Schedule D — securities sales and supplied distribution subtotals
 
@@ -1094,6 +1269,19 @@ Unasserted lines: sli.zero, sli.has, sli.max, sli.base_other, sli.base_joint, sl
 
 Unasserted lines: ssb.has_benefits, ssb.base_single, ssb.base_joint, ssb.zero, ssb.mfs_base, ssb.adjust_single, ssb.adjust_joint, ssb.mfs_adjust, ssb.mfs_together, ssb.line16_sum, ssb.line16_together, ssb.line18_figured
 
+## Qualified Tips From More Than One Employer Worksheet (Schedule 1-A, line 4c) — one row per employer
+
+| line | A | B | C | R |
+| --- | --- | --- | --- | --- |
+| tipjob.one | — | — | — | — |
+| tipjob.qualified | — | — | — | — |
+| tipjob.amount | — | — | — | — |
+| tipjob.mixed | — | — | — | 1 (classm.tipjob.1) |
+| tipjob.col_c | — | — | — | — |
+| tipjob.col_d | — | — | — | 1 (classm.tipjob.1) |
+
+Unasserted lines: tipjob.one, tipjob.col_c
+
 ## Unrecaptured Section 1250 Gain Worksheet — distribution-only path
 
 | line | A | B | C | R |
@@ -1204,5 +1392,5 @@ Unasserted lines: below_boundary, table_tax, worksheet_tax, tax
 
 Unasserted lines: single.row1.product, single.row1.tax, single.row2.product, single.row2.tax, single.row3.product, single.row3.tax, single.row4.product, single.row4.tax, single.row5.product, single.row5.tax, single.result, mfj.row1.product, mfj.row1.tax, mfj.row2.product, mfj.row2.tax, mfj.row3.product, mfj.row3.tax, mfj.row4.product, mfj.row4.tax, mfj.row5.product, mfj.row5.tax, mfj.result, mfs.row1.product, mfs.row1.tax, mfs.row2.product, mfs.row2.tax, mfs.row3.product, mfs.row3.tax, mfs.row4.product, mfs.row4.tax, mfs.row5.product, mfs.row5.tax, mfs.result, hoh.row1.product, hoh.row1.tax, hoh.row2.product, hoh.row2.tax, hoh.row3.product, hoh.row3.tax, hoh.row4.product, hoh.row4.tax, hoh.row5.product, hoh.row5.tax, hoh.result, tax
 
-Unasserted computed lines across all documents: 261. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
+Unasserted computed lines across all documents: 341. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
 Asserted keys not matching a line id: root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.below_boundary, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.tax, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.below_boundary, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.tax, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, root|inst:tax_on_amount#{"amount":"qdcg.line1","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, qdcg.f1040.line15, qdcg.f1040.line3a, qdcg.f1040.status, f1040.qdcg.line25, qdcg.sd.distributions

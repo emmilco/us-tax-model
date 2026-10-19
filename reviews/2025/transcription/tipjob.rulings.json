@@ -1,0 +1,18 @@
+{
+ "kind": "transcription",
+ "form": "tipjob",
+ "rulings": [
+  {
+   "printed": "1(c)",
+   "project": "{\"const\": 0}",
+   "second": "{\"input\": \"Form 4137, column 1(c), the qualified tips included for this\"}",
+   "ruling": "Ruling: scope; project retained, with the refusal now on the line. Form 4137 is outside this tool (s2.other, which names Form 4137), so column (c) is zero within scope; the line now carries that refusal."
+  },
+  {
+   "printed": "1(d)",
+   "project": "{\"of\": [{\"line\": \"1(b)\"}, {\"line\": \"1(c)\"}], \"op\": \"larger_of\"}",
+   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"tipjob.qualified\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"tipjob.qualified\"}], \"test\": \"eq\"}, \"then\": {\"of\": [{\"line\": \"1(b)\"}, {\"line\": \"1(c)\"}], \"op\": \"larger_of\"}}], \"op\": \"choose\"}",
+   "ruling": "Ruling: owner's ruling; project retained. An employer whose counted tips are not all qualified tips is refused (tipjob.mixed, on column (b)): the owner chose refusal over dropping the employer or splitting its tips. The second reads such a row as contributing zero. Both keep nonqualified tips off line 4c; the project does not silently drop the employer's qualified tips."
+  }
+ ]
+}

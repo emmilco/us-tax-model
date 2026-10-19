@@ -37,6 +37,7 @@ PE_MAP = {
     "f1040.line10": ["above_the_line_deductions", "-loss_ald"],
     "f1040.line11b": ["adjusted_gross_income"],
     "f1040.line13a": ["qualified_business_income_deduction"],
+    "f1040.line13b": ["tip_income_deduction", "overtime_income_deduction", "auto_loan_interest_deduction", "additional_senior_deduction"],
     "f1040.line15": ["taxable_income"],
     "f1040.line16": ["regular_tax_before_credits"],
     # The engine's non_refundable_ctc is the credit left after the refundable part, not the
@@ -48,7 +49,9 @@ PE_MAP = {
     "f1040.line6b": ["tax_unit_taxable_social_security"],
     "sa.line17": ["itemized_taxable_income_deductions"],
     "sa.standard": ["standard_deduction"],
-    "sa.deduction": ["taxable_income_deductions", "-qualified_business_income_deduction"],
+    # The engine's total also holds the Schedule 1-A deductions, which Form 1040 takes on line 13b.
+    "sa.deduction": ["taxable_income_deductions", "-qualified_business_income_deduction", "-tip_income_deduction",
+                     "-overtime_income_deduction", "-auto_loan_interest_deduction", "-additional_senior_deduction"],
     "f8959.tax": ["additional_medicare_tax"],
     "f8960.tax": ["net_investment_income_tax"],
     # The engine's foreign tax credit is the supplied amount, not limited to the tax, so
@@ -57,7 +60,9 @@ PE_MAP = {
 }
 PE_PRECISION = "float32"
 PE_LIMITATIONS = [
-    {"feature": "sli_phaseout", "lines": ['f1040.line10', 'f1040.line11b', 'f1040.line13a', 'f1040.line15', 'f1040.line16', 'f1040.line19', 'f1040.line28', 'f1040.line27a', 'f1040.line6b', 'sa.line17', 'sa.standard', 'sa.deduction', 'f8959.tax', 'f8960.tax', 'f1040.tax_before_credits'],
+    {"feature": "schedule1a_stepped_phaseout", "lines": ['f1040.line13b', 'f1040.line15', 'f1040.line16', 'f1040.tax_before_credits', 'f1040.line19', 'f1040.line28'],
+     "reason": "PolicyEngine-US reduces the tips, overtime and car loan interest deductions by the rate times the exact excess of modified AGI over the threshold; Schedule 1-A lines 11, 19 and 28 count whole $1,000 steps (rounded down, down and up) first"},
+    {"feature": "sli_phaseout", "lines": ['f1040.line10', 'f1040.line11b', 'f1040.line13a', 'f1040.line13b', 'f1040.line15', 'f1040.line16', 'f1040.line19', 'f1040.line28', 'f1040.line27a', 'f1040.line6b', 'sa.line17', 'sa.standard', 'sa.deduction', 'f8959.tax', 'f8960.tax', 'f1040.tax_before_credits'],
      "reason": "PolicyEngine-US phases the student loan interest deduction out with the exact ratio; the worksheet's line 7 ratio is rounded to three places in the project (amb.2025.sli_ratio_places), which moves the deduction by up to a few dollars"},
     {"feature": "excess_social_security", "lines": ['s3.line11'],
      "reason": "PolicyEngine-US takes excess payroll tax withheld as an input and does not compute it from per-employer withholding"},
@@ -79,6 +84,7 @@ TC_MAP = {
     "f1040.line10": ["c02900"],
     "f1040.line11b": ["c00100"],
     "f1040.line13a": ["qbided"],
+    "f1040.line13b": ["tip_income_deduction", "overtime_income_deduction", "auto_loan_interest_deduction", "senior_deduction"],
     "f1040.line15": ["c04800"],
     "f1040.line16": ["taxbc"],
     "f1040.line19": ["c07220", "odc"],
@@ -95,10 +101,10 @@ TC_MAP = {
 }
 TC_PRECISION = "float64"
 TC_LIMITATIONS = [
-    {"feature": "student_loan_interest", "lines": ['f1040.line10', 'f1040.line11b', 'f1040.line13a', 'f1040.line15', 'f1040.line16', 'f1040.line19', 'f1040.line28', 'f1040.line27a', 'f1040.line6b', 'f1040.line20', 'sa.line17', 'sa.deduction', 'f8959.tax', 'f8960.tax', 'f1040.line24', 'f1040.tax_before_credits'],
+    {"feature": "schedule1a_zero_tax", "lines": ['sa.line17'],
+     "reason": "Tax-Calculator takes the standard deduction whenever the tax is the same either way; when the Schedule 1-A deductions leave no tax even with the standard deduction zeroed, its forced pass also takes the standard deduction, so the itemized total is not compared"},
+    {"feature": "student_loan_interest", "lines": ['f1040.line10', 'f1040.line11b', 'f1040.line13a', 'f1040.line13b', 'f1040.line15', 'f1040.line16', 'f1040.line19', 'f1040.line28', 'f1040.line27a', 'f1040.line6b', 'f1040.line20', 'sa.line17', 'sa.deduction', 'f8959.tax', 'f8960.tax', 'f1040.line24', 'f1040.tax_before_credits'],
      "reason": "Tax-Calculator takes the student loan interest deduction as a supplied amount (e03210) rather than computing the worksheet's phase-out, so returns with student loan interest are not compared"},
-    {"feature": "ctc_phaseout", "lines": ["f1040.line19", "f1040.line24", "f1040.line28"],
-     "reason": "Tax-Calculator phases the child tax credit out by 5% of the exact excess of income over the threshold; Schedule 8812 line 10 rounds the excess up to the next multiple of $1,000 first"},
     {"feature": "excess_social_security", "lines": ['s3.line11'],
      "reason": "Tax-Calculator does not compute the excess Social Security withholding credit"},
     {"feature": "qbi_dividends", "lines": ['f1040.line13a', 'sa.deduction', 'f1040.line15', 'f1040.line16', 'f1040.line20', 'f1040.line24', 'f1040.tax_before_credits', 'f1040.line19', 'f1040.line28'],
@@ -134,7 +140,15 @@ def run_policyengine(cases):
         f = c["facts"]; pid = c["id"]
         y = lambda v: {str(YEAR): v}
         people[pid] = {
-            "age": y(40),
+            "age": y(f.get("age", 40)),
+            # Medical expenses are all supplied; without this the engine adds modeled Medicare
+            # Part B premiums for a filer 65 or older.
+            "medicare_enrolled": y(False),
+            # Tips and the FLSA overtime premium are already in wages; these flag the qualified
+            # parts. Generated tips are in an occupation on the Treasury list (wait staff, 102).
+            "tip_income": y(dollars(f.get("tips", 0))),
+            "treasury_tipped_occupation_code": y(102 if f.get("tips") else 0),
+            "fsla_overtime_premium": y(dollars(f.get("overtime", 0))),
             "employment_income": y(dollars(f["wages"])),
             "social_security_retirement": y(dollars(f.get("ss_benefits", 0))),
             "taxable_interest_income": y(dollars(f["interest"])),
@@ -174,7 +188,8 @@ def run_policyengine(cases):
                       "foreign_tax_credit": y(dollars(f["foreign_tax"])),
                       "health_savings_account_ald": y(dollars(f.get("hsa_deduction", 0)))}
         fams[pid] = {"members": members}; spms[pid] = {"members": members}
-        hhs[pid] = {"members": members, "state_code": y("TX")}
+        hhs[pid] = {"members": members, "state_code": y("TX"),
+                    "qualified_passenger_vehicle_loan_interest": y(dollars(f.get("car_loan_interest", 0)))}
     sim = Simulation(situation={"people": people, "tax_units": units, "families": fams, "spm_units": spms, "households": hhs})
     # Tax-unit ids come back in situation order.
     order = list(units.keys())
@@ -198,7 +213,7 @@ def run_taxcalc(cases):
         f = c["facts"]
         ages = f.get("children", [])
         rows.append(dict(
-            RECID=i + 1, MARS=4 if f.get("hoh") else 1, age_head=40, FLPDYR=YEAR,
+            RECID=i + 1, MARS=4 if f.get("hoh") else 1, age_head=f.get("age", 40), FLPDYR=YEAR,
             XTOT=1 + len(ages), n24=sum(1 for a in ages if a < 17), nu18=sum(1 for a in ages if a < 18),
             n1820=sum(1 for a in ages if 18 <= a <= 20), n21=sum(1 for a in ages if a >= 21), EIC=f.get("eic_children", 0),
             e00200=dollars(f["wages"]), e00200p=dollars(f["wages"]), e02400=dollars(f.get("ss_benefits", 0)),
@@ -210,12 +225,16 @@ def run_taxcalc(cases):
             e19200=dollars(f["mortgage_interest"] + f["investment_interest"]),
             e19800=dollars(f["cash_gifts"]), e20100=dollars(f["noncash_gifts"]), e07300=dollars(f["foreign_tax"]),
             e02300=dollars(f.get("unemployment", 0)), e03220=dollars(f.get("educator_deduction", 0)), e03290=dollars(f.get("hsa_deduction", 0)),
+            tip_income=dollars(f.get("tips", 0)), overtime_income=dollars(f.get("overtime", 0)), auto_loan_interest=dollars(f.get("car_loan_interest", 0)),
         ))
     df = pd.DataFrame(rows).astype(float)
     for col in ("RECID", "MARS", "FLPDYR", "XTOT", "n24", "nu18", "n1820", "n21", "EIC"):
         df[col] = df[col].astype(int)
     def run(reform):
-        recs = tc.Records(data=df.copy(), start_year=YEAR, gfactors=None, weights=None, adjust_ratios=None)
+        # Exact calculations follow the printed phase-out steps (Schedule 1-A lines 11, 19 and 28,
+        # and the other $1,000-step phase-outs) rather than Tax-Calculator's smoothed default.
+        recs = tc.Records(data=df.copy(), start_year=YEAR, gfactors=None, weights=None, adjust_ratios=None,
+                          exact_calculations=True)
         pol = tc.Policy()
         # Tax-Calculator zeroes the additional child tax credit and the earned income credit by
         # random take-up draws that are not on the form; the documented scale of 9e99 means the
@@ -227,8 +246,9 @@ def run_taxcalc(cases):
     calc = run(None)
     # Tax-Calculator reports itemized deductions only for units it treats as itemizing
     # (it takes the standard deduction when tax is zero either way). A second pass with
-    # the standard deduction zeroed exposes its Schedule A total on every return.
-    forced = run({"STD": {YEAR: [0, 0, 0, 0, 0]}})
+    # the standard deduction (and its addition for age) zeroed exposes its Schedule A total on
+    # every return.
+    forced = run({"STD": {YEAR: [0, 0, 0, 0, 0]}, "STD_Aged": {YEAR: [0, 0, 0, 0, 0]}})
     lines = {}
     for i, c in enumerate(cases):
         lines[c["id"]] = {line: cents(combine(lambda n: float(calc.array(n)[i]), spec)) for line, spec in TC_MAP.items()}

@@ -74,7 +74,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -115,7 +114,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line27a": {
@@ -237,7 +239,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -278,7 +279,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line27a": {
@@ -384,7 +388,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -425,7 +428,11 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false,
+        "s1a.died_before_65": false
       },
       "expect": {
         "f1040.line27a": {
@@ -535,7 +542,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -662,7 +668,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -703,7 +708,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line27a": {
@@ -805,7 +813,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -846,7 +853,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line27a": {
@@ -952,7 +962,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -993,7 +1002,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line27a": {
@@ -1101,7 +1113,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -1166,7 +1177,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line27a": {
@@ -1280,7 +1294,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -1366,7 +1379,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line27a": {
@@ -1472,7 +1488,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -1580,7 +1595,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line27a": {
@@ -1688,7 +1706,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -1753,7 +1770,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line27a": {
@@ -1859,7 +1879,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -1921,7 +1940,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line27a": {
@@ -2029,7 +2051,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -2071,7 +2092,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line27a": {
@@ -2177,7 +2201,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -2218,7 +2241,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line27a": {
@@ -2328,7 +2354,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -2369,7 +2394,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line27a": {
@@ -2471,7 +2499,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -2535,7 +2562,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line27a": {
@@ -2639,7 +2669,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -2790,7 +2819,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -2919,7 +2947,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -3078,7 +3105,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -3228,7 +3254,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -3400,7 +3425,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -3594,7 +3618,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -3721,7 +3744,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -3871,7 +3893,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -4043,7 +4064,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -4237,7 +4257,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -4366,7 +4385,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -4523,7 +4541,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -4678,7 +4695,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -4828,7 +4844,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -4960,7 +4975,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": true,
@@ -5092,7 +5106,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -5237,7 +5250,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -5392,7 +5404,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -5547,7 +5558,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -5715,7 +5725,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -5878,7 +5887,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -5986,7 +5994,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line27a": {
@@ -6080,7 +6091,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -6239,7 +6249,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -6391,7 +6400,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -6555,7 +6563,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -6710,7 +6717,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": true,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,

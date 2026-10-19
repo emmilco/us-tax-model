@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
-"""Deliberately archive public IRS sources; never accepts return data.
+"""Deliberately archive public IRS sources, and Treasury regulations as printed in
+the Federal Register (GovInfo, the Government Publishing Office edition); never
+accepts return data.
 
 Spreadsheets (`"format": "xls"`, the IRS Statistics of Income tables) are archived
 as published, with their hash and no derived text.
@@ -28,6 +30,7 @@ EXTRACT = ROOT / "tools" / "extract_text.py"
 DERIVED = [("file", "sha256"), ("text_file", "text_sha256"), ("cols_file", "cols_sha256"), ("pages_file", "pages_sha256")]
 ARCHIVE = ROOT / "sources" / "2025"
 CATALOG = Path(__file__).with_name("sources-2025.json")
+HOSTS = ("www.irs.gov", "www.govinfo.gov")
 
 
 class ReadableHTML(HTMLParser):
@@ -136,8 +139,8 @@ def main():
             print(f"Preserved {item['id']}", flush=True)
             continue
         url = item["url"]
-        if urlparse(url).scheme != "https" or urlparse(url).hostname != "www.irs.gov":
-            raise ValueError("catalog must use HTTPS www.irs.gov addresses")
+        if urlparse(url).scheme != "https" or urlparse(url).hostname not in HOSTS:
+            raise ValueError("catalog must use HTTPS addresses on " + " or ".join(HOSTS))
         kind = item.get("format", "pdf")
         if kind not in ("pdf", "html", "xls"):
             raise ValueError("unsupported source format")
@@ -149,7 +152,7 @@ def main():
                 "--connect-timeout", "20", "--max-time", "120", "--output", str(source),
                 "--write-out", "%{url_effective}", url,
             ], stdout=subprocess.PIPE, text=True, check=True)
-            if urlparse(result.stdout).hostname != "www.irs.gov":
+            if urlparse(result.stdout).hostname not in HOSTS:
                 raise ValueError("unexpected redirect host")
             txt = Path(temp) / "source.txt"
             if kind == "xls":

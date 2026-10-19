@@ -161,6 +161,13 @@ def derived_features(case, values):
         feats.add("sli_phaseout")
     if (m("f1040.line16") or 0) == 0:
         feats.add("no_tax_either_way")
+        if (m("f1040.line13b") or 0) > 0:
+            feats.add("schedule1a_zero_tax")
+    # A part's phase-out lines are figured from modified AGI whether or not the part is claimed;
+    # the step matters only where the part has an amount to reduce.
+    if any((m(cut) or 0) > 0 and (m(amount) or 0) > 0
+           for cut, amount in (("s1a.line12", "s1a.line7"), ("s1a.line20", "s1a.line15"), ("s1a.line29", "s1a.line24"))):
+        feats.add("schedule1a_stepped_phaseout")
     return feats
 
 

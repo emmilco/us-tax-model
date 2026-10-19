@@ -16,16 +16,6 @@ form:
       cite:
         doc: f1040
         locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
-    - id: scope.schedule1a
-      printed: (helper)
-      type: Bool
-      label: 'Do you qualify for any Schedule 1-A deduction (qualified tips, qualified overtime compensation, qualified passenger vehicle loan interest, or the enhanced deduction for a filer born before January 2, 1961), whether or not you planned to claim it?'
-      expr:
-        op: input
-        source: 'Do you qualify for any Schedule 1-A deduction (qualified tips, qualified overtime compensation, qualified passenger vehicle loan interest, or the enhanced deduction for a filer born before January 2, 1961), whether or not you planned to claim it?'
-      cite:
-        doc: f1040
-        locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
     - id: scope.credits
       printed: (helper)
       type: Bool
@@ -72,12 +62,6 @@ form:
         - when: scope.schedule1
           form: Schedule 1
           remedy: Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.
-          cite:
-            doc: f1040
-            locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
-        - when: scope.schedule1a
-          form: Schedule 1-A
-          remedy: Schedule 1-A deductions are outside this proof of concept.
           cite:
             doc: f1040
             locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31

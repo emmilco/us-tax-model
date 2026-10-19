@@ -54,7 +54,6 @@ function generatedCases(n: number): Case[] {
     inputs["$w2@person[taxpayer]"] = ["a"];
     inputs["person[taxpayer].w2[a].box1"] = Math.max(0, line15 + standard[status]! - 2 * line3a);
     inputs["scope.schedule1"] = false;
-    inputs["scope.schedule1a"] = false;
     inputs["scope.other_income"] = false;
     inputs["sa.unsupported"] = false; inputs["sa.charity_limited"] = false; inputs["sa.excluded_income"] = false;
     inputs["sa.dependent"] = false; inputs["sa.spouse_extra"] = false; inputs["sa.age65"] = false; inputs["sa.blind"] = false;

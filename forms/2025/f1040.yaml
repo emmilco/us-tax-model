@@ -406,18 +406,11 @@ form:
       label: Additional deductions from Schedule 1-A, line 38
       type: NonNegDollars
       expr:
-        op: param
-        ref: sales.zero
+        op: copy
+        from: s1a.line38
       cite:
         doc: f1040
-        locator: Form 1040 (2025), line 13b
-      refuses:
-        - when: scope.schedule1a
-          form: Schedule 1-A
-          remedy: Schedule 1-A deductions are outside this proof of concept.
-          cite:
-            doc: f1040
-            locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
+        locator: Form 1040 (2025), line 13b; i1040gi p. 34, Line 13b, "enter on line 13b the amount, if any, from Schedule 1-A, line 38"
     - id: f1040.line14
       printed: "14"
       label: Add lines 12e, 13a, and 13b

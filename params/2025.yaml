@@ -93,6 +93,25 @@ params:
           mother; parent_relative is an ancestor or sibling of a parent (a Step 4 relative, but not the parent of
           Head of Household Test 1); in_law is a step-parent or an in-law; household_member is any other person
           who lived with you all year"
+    overtime_method:
+      values:
+        - employer_reported
+        - premium
+        - total_time_and_half
+        - premium_double
+        - total_double
+        - other
+      cite:
+        doc: i1040gi
+        locator: 'pp. 106-107, Schedule 1-A, "Determining the amount of qualified overtime compensation for 2025": an amount the employer provides (Form W-2 box 14 or on request), methods 1 to 4; method 5, adjustments and other overtime rates are refused'
+    carloan_kind:
+      values:
+        - original
+        - refinanced
+        - death
+      cite:
+        doc: fr-2025-24154
+        locator: 'pp. 20–22, Proposed § 1.163-16(d)(4) (refinancing of an SPVL) and (d)(5) (whether the SPVL was incurred by the taxpayer; change in obligor by reason of death)'
   values:
     ordinary.table_boundary:
       type: Dollars
@@ -1165,3 +1184,117 @@ params:
       cite:
         doc: i8889
         locator: 'p. 6, Line 3 Limitation Chart and Worksheet, "Limitation. Divide the total by 12"'
+    s1a.tips_max:
+      type: NonNegDollars
+      value: 2500000
+      cite:
+        doc: f1040s1a
+        locator: 'Schedule 1-A (2025), line 7, "Enter the smaller of the amount on line 6 or $25,000"'
+    s1a.base_other:
+      type: NonNegDollars
+      value: 15000000
+      cite:
+        doc: f1040s1a
+        locator: 'Schedule 1-A (2025), lines 9 and 17, "Enter $150,000 ($300,000 if married filing jointly)"'
+    s1a.base_joint:
+      type: NonNegDollars
+      value: 30000000
+      cite:
+        doc: f1040s1a
+        locator: 'Schedule 1-A (2025), lines 9 and 17, "Enter $150,000 ($300,000 if married filing jointly)"'
+    s1a.hundred_per_thousand:
+      type: Rate
+      value:
+        num: 1
+        den: 10
+      cite:
+        doc: f1040s1a
+        locator: 'Schedule 1-A (2025), lines 11-12 and 19-20: the whole number of $1,000 units times $100'
+    s1a.ot_max_other:
+      type: NonNegDollars
+      value: 1250000
+      cite:
+        doc: f1040s1a
+        locator: 'Schedule 1-A (2025), line 15, "Enter the smaller of the amount on line 14c or $12,500 ($25,000 if married filing jointly)"'
+    s1a.ot_max_joint:
+      type: NonNegDollars
+      value: 2500000
+      cite:
+        doc: f1040s1a
+        locator: 'Schedule 1-A (2025), line 15, "Enter the smaller of the amount on line 14c or $12,500 ($25,000 if married filing jointly)"'
+    s1a.ot_third:
+      type: Rate
+      value:
+        num: 1
+        den: 3
+      cite:
+        doc: i1040gi
+        locator: 'p. 106, Schedule 1-A, method 2, "you can divide the total amount by three (3)"'
+    s1a.ot_half:
+      type: Rate
+      value:
+        num: 1
+        den: 2
+      cite:
+        doc: n-25-69
+        locator: 'pp. 22–25, Section III.B.2, method (C), "if overtime is paid at a rate of two times the regular rate, the appropriate fraction is one-half"'
+    s1a.ot_quarter:
+      type: Rate
+      value:
+        num: 1
+        den: 4
+      cite:
+        doc: n-25-69
+        locator: 'pp. 22–25, Section III.B.2, method (D), "if overtime is paid at a rate of two times the regular rate, the appropriate fraction is one-fourth"'
+    s1a.car_max:
+      type: NonNegDollars
+      value: 1000000
+      cite:
+        doc: f1040s1a
+        locator: 'Schedule 1-A (2025), line 24, "Enter the smaller of the amount on line 23 or $10,000"'
+    s1a.car_base_other:
+      type: NonNegDollars
+      value: 10000000
+      cite:
+        doc: f1040s1a
+        locator: 'Schedule 1-A (2025), line 26, "Enter $100,000 ($200,000 if married filing jointly)"'
+    s1a.car_base_joint:
+      type: NonNegDollars
+      value: 20000000
+      cite:
+        doc: f1040s1a
+        locator: 'Schedule 1-A (2025), line 26, "Enter $100,000 ($200,000 if married filing jointly)"'
+    s1a.two_hundred_per_thousand:
+      type: Rate
+      value:
+        num: 1
+        den: 5
+      cite:
+        doc: f1040s1a
+        locator: 'Schedule 1-A (2025), lines 28-29: the whole number of $1,000 units, rounded up, times $200'
+    s1a.senior_amount:
+      type: NonNegDollars
+      value: 600000
+      cite:
+        doc: f1040s1a
+        locator: 'Schedule 1-A (2025), lines 33 and 35, "enter $6,000 on line 35" and "Subtract line 34 from $6,000"'
+    s1a.senior_base_other:
+      type: NonNegDollars
+      value: 7500000
+      cite:
+        doc: f1040s1a
+        locator: 'Schedule 1-A (2025), line 32, "Enter $75,000 ($150,000 if married filing jointly)"'
+    s1a.senior_base_joint:
+      type: NonNegDollars
+      value: 15000000
+      cite:
+        doc: f1040s1a
+        locator: 'Schedule 1-A (2025), line 32, "Enter $75,000 ($150,000 if married filing jointly)"'
+    s1a.senior_rate:
+      type: Rate
+      value:
+        num: 6
+        den: 100
+      cite:
+        doc: f1040s1a
+        locator: 'Schedule 1-A (2025), line 34, "Multiply line 33 by 6% (0.06)"'

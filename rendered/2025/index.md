@@ -4,6 +4,7 @@ Review these renderings line by line against the archived IRS sources in `source
 
 | File | Kind | Lines |
 | --- | --- | --- |
+| carloan.md | form | 21 |
 | dependent.md | worksheet | 48 |
 | div.md | form | 22 |
 | eic.md | worksheet | 75 |
@@ -19,24 +20,27 @@ Review these renderings line by line against the archived IRS sources in `source
 | gift.md | form | 5 |
 | household.md | form | 10 |
 | interest.md | form | 1 |
+| otjob.md | form | 11 |
 | person.md | worksheet | 14 |
 | qbi.md | form | 10 |
 | qdcg.md | worksheet | 27 |
 | retirement.md | form | 56 |
 | s1.md | form | 20 |
+| s1a.md | form | 123 |
 | s2.md | form | 8 |
 | s3.md | form | 10 |
 | s8812.md | form | 55 |
 | sa.md | form | 55 |
 | sales.md | form | 25 |
 | sb.md | form | 12 |
-| scope.md | form | 6 |
+| scope.md | form | 5 |
 | sd.md | form | 63 |
 | sdtw.md | worksheet | 74 |
 | sli.md | form | 23 |
 | ssb.md | worksheet | 35 |
 | tax_on_amount.md | def | 6 |
 | tcw.md | def | 47 |
+| tipjob.md | form | 6 |
 | u1250.md | form | 19 |
 | w2.md | form | 10 |
 | eic_0.md | tax_table | 1376 rows |

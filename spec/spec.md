@@ -82,20 +82,20 @@ Growth proceeds in order of the coverage each addition gains under that estimate
 - Dependents and the rules that attach to them: the qualifying-child and qualifying-relative tests, head of household, the child tax credit and its refundable part, the credit for other dependents, and the earned income credit. These came first, ahead of their share, because they were the architecture's first test of household predicates.
 - Retirement income: Form 1099-R and the Social Security benefits worksheet.
 - Unemployment compensation and the common Schedule 1 adjustments (educator expenses, student loan interest, HSA).
+- The Schedule 1-A deductions: the enhanced deduction for seniors, qualified overtime compensation, qualified tips and qualified passenger vehicle loan interest, for unmarried filers.
 
 Remaining, in the order of the estimate when this section was last revised:
 
-1. The Schedule 1-A deductions: the enhanced deduction for seniors, qualified overtime compensation, qualified tips and qualified passenger vehicle loan interest.
-2. Married filing jointly as a two-person data change, then married filing separately.
-3. Self-employment: Schedule C with Schedule SE and the qualified business income deduction beyond section 199A dividends.
-4. Other credits: child and dependent care, the saver's credit, the residential energy credits.
-5. The remaining Schedule 1 income and adjustments, among them a taxable state refund, other income, gambling winnings and the IRA deduction.
-6. Schedule E: rental and royalty income, partnerships, S corporations, estates and trusts.
-7. The premium tax credit.
-8. The education credits.
-9. The capital loss carryover.
-10. The additional tax on qualified retirement plans (Form 5329).
-11. Form 1116 and the remaining deferrals of 2.2, and the smaller situations the report lists.
+1. Married filing jointly as a two-person data change, then married filing separately.
+2. Self-employment: Schedule C with Schedule SE and the qualified business income deduction beyond section 199A dividends.
+3. Other credits: child and dependent care, the saver's credit, the residential energy credits.
+4. The remaining Schedule 1 income and adjustments, among them a taxable state refund, other income, gambling winnings and the IRA deduction.
+5. Schedule E: rental and royalty income, partnerships, S corporations, estates and trusts.
+6. The premium tax credit.
+7. The education credits.
+8. The capital loss carryover.
+9. The additional tax on qualified retirement plans (Form 5329).
+10. Form 1116 and the remaining deferrals of 2.2, and the smaller situations the report lists.
 
 State returns are outside the federal goal. A state return after it is a separate decision with its own sources, and nothing in the federal encoding assumes one.
 

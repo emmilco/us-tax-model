@@ -82,10 +82,13 @@ if (command === "review-stage5") {
     const cases = JSON.parse(readFileSync(batchPath, "utf-8")) as { id: string; inputs: Record<string, number | boolean | string> }[];
     const targets =
       targetsOverride ?? [...data.forms].filter(d => !d.collection).flatMap((doc) => doc.lines.map((l) => l.id));
-    const out: Record<string, unknown> = {};
-    for (const c of cases) out[c.id] = JSON.parse(resultToJson(evaluate(data, c.inputs, targets)));
-    // Written without process.exit so a large payload is not truncated on a pipe.
-    process.stdout.write(JSON.stringify({ cases: out }) + "\n");
+    // Written one case at a time: the whole document is larger than the longest string V8
+    // allows. Written without process.exit so a large payload is not truncated on a pipe.
+    process.stdout.write('{"cases":{');
+    cases.forEach((c, i) => {
+      process.stdout.write(`${i ? "," : ""}${JSON.stringify(c.id)}:${resultToJson(evaluate(data, c.inputs, targets))}`);
+    });
+    process.stdout.write("}}\n");
   } else {
   if (!inputsPath) {
     console.error("eval: --inputs <file.json> is required");

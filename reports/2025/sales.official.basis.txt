@@ -108,7 +108,7 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       cite: [f1040] Form 1040 (2025), line 13a (2025; created 2025-09-05; 3d31c226)
   13b Additional deductions from Schedule 1-A, line 38
       = $0
-      cite: [f1040] Form 1040 (2025), line 13b (2025; created 2025-09-05; 3d31c226)
+      cite: [f1040] Form 1040 (2025), line 13b; i1040gi p. 34, Line 13b, "enter on line 13b the amount, if any, from Schedule 1-A, line 38" (2025; created 2025-09-05; 3d31c226)
   14  Add lines 12e, 13a, and 13b
       = $15,750
       cite: [f1040] Form 1040 (2025), line 14 (2025; created 2025-09-05; 3d31c226)
@@ -330,6 +330,45 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       = $0
       cite: [f1040s1] Schedule 1 (2025), line 26 (lines 12, 14 to 20, 23 and 25 are outside this tool and refused at Form 1040 line 10 by scope.schedule1) (2025; created 2025-07-25; 8dafec71)
 
+== Schedule 1-A (Form 1040) — Additional Deductions ==
+  (helper) Year parameter sales.zero
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025) (2025; created 2025-11-04; 64f97b38)
+  (helper) Did you receive qualified tips as an employee in 2025 that you want to deduct?
+      = false
+      cite: [i1040gi] pp. 101-103, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if" (2025; printed date 2026-02-25; 482e9c48)
+  13  Qualified tips deduction. Subtract line 12 from line 7. If zero or less, enter -0-
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), line 13; i1040gi p. 101, "Fill out Schedule 1-A, Part II, only if" (2025; created 2025-11-04; 64f97b38)
+      note: taken: {"eq":["s1a.tips",{"const":false}],"op":"test"}
+  (helper) Did you receive qualified overtime compensation in 2025 that you want to deduct?
+      = false
+      cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if" (2025; printed date 2026-02-25; 482e9c48)
+  21  Qualified overtime compensation deduction. Subtract line 20 from line 15. If zero or less, enter -0-
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), line 21; i1040gi p. 106, "Fill out Schedule 1-A, Part III, only if" (2025; created 2025-11-04; 64f97b38)
+      note: taken: {"eq":["s1a.overtime",{"const":false}],"op":"test"}
+  (helper) Did you pay or accrue interest in 2025 on a loan to buy a new passenger vehicle that you want to deduct?
+      = false
+      cite: [i1040gi] p. 109, Schedule 1-A, Part IV, "Fill out Schedule 1-A, Part IV, only if you paid or accrued QPVLI in 2025" (2025; printed date 2026-02-25; 482e9c48)
+  30  Qualified passenger vehicle loan interest deduction. Subtract line 29 from line 24. If zero or less, enter -0-
+      = $0
+      cite: [i1040gi] p. 109, Schedule 1-A, Part IV, "Fill out Schedule 1-A, Part IV, only if you paid or accrued QPVLI in 2025" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s1a.carloan",{"const":false}],"op":"test"}
+  36a If you have a valid social security number (see instructions) and were born before January 2, 1961, enter the amount from line 35
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), line 36a (2025; created 2025-11-04; 64f97b38)
+      note: taken: {"eq":["sa.age65",{"const":false}],"op":"test"}
+  36b If you are married filing jointly, your spouse has a valid social security number (see instructions), and your spouse was born before January 2, 1961, enter the amount from line 35
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), line 36b (2025; created 2025-11-04; 64f97b38)
+  37  Enhanced deduction for seniors. Add lines 36a and 36b
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), line 37 (2025; created 2025-11-04; 64f97b38)
+  38  Add lines 13, 21, 30, and 37. Enter here and on Form 1040 or 1040-SR, line 13b, or on Form 1040-NR, line 13c
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), line 38 (2025; created 2025-11-04; 64f97b38)
+
 == Schedule A — supported itemized deductions and standard comparison ==
   (helper) Any casualty or theft loss (including a disaster loss added to the standard deduction); a deduction from the Schedule A line 16 list; a foreign tax or generation-skipping tax deduction; mortgage interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds not all used to buy, build or improve the home, or debt over the limit); or the sales-tax election?
       = false
@@ -532,9 +571,6 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
   (helper) Any income or adjustment requiring Schedule 1 other than unemployment compensation, educator expenses, the HSA deduction and student loan interest, including a taxable state or local tax refund; alimony; an IRA deduction; being self-employed or filing Schedule C (income or loss, including statutory-employee wages) or Schedule SE (including clergy, and church employee income: wages from a church that elected exemption from social security and Medicare taxes); rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1); rental of personal property; farm income (Schedule F); gambling winnings, prizes or other income for Schedule 1 line 8; or an exclusion of Medicaid waiver payments (Schedule 1 line 8s)? (Schedule 1-A deductions are asked separately.)
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
-  (helper) Do you qualify for any Schedule 1-A deduction (qualified tips, qualified overtime compensation, qualified passenger vehicle loan interest, or the enhanced deduction for a filer born before January 2, 1961), whether or not you planned to claim it?
-      = false
-      cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
   (helper) Any nonresident alien status (you or your spouse, for any part of 2025) or other income or return treatment outside wages, interest, dividends, supported securities sales, Form 1099-R distributions and social security benefits, including wages or tips not on a Form W-2, Medicaid waiver payments (whether or not in Form W-2 box 1), dependent care or adoption benefits, other earned income (Form 1040 lines 1b-1h), or income or loss from a passive activity (including gain on selling an interest in one)?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
@@ -710,6 +746,10 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   qbi.sa.deduction: chose $15,750 (guard 1)
       not taken: guard 0 = false
+  s1a.line13: chose $0 (guard 0)
+  s1a.line21: chose $0 (guard 0)
+  s1a.line30: chose $0 (guard 0)
+  s1a.line36a: chose $0 (guard 0)
   qbi.deduction: chose $0 (guard 1)
       not taken: guard 0 = false
   f1040.qbi.deduction: chose $0 (guard 1)
@@ -927,8 +967,17 @@ Collection entries and derivations:
   f1040.line12e: copy(household.hoh_fails = false; sa.deduction = $15,750)
   qbi.sa.agi: copy(f1040.line11b = $900)
   qbi.sa.deduction: choose(sa.itemizes = false; true = true; sa.itemizes = false; false = false; sa.standard = $15,750)
-  f1040.line13b: param(scope.schedule1a = false; #sales.zero = $0)
-  qbi.f1040.line13b: param(scope.schedule1a = false; #sales.zero = $0)
+  s1a.zero: param(#sales.zero = $0)
+  s1a.line13: choose(s1a.tips = false; false = false; s1a.zero = $0)
+  s1a.line21: choose(s1a.overtime = false; false = false; s1a.zero = $0)
+  s1a.line30: choose(s1a.carloan = false; false = false; s1a.zero = $0)
+  s1a.line36a: choose(sa.age65 = false; false = false; s1a.zero = $0)
+  s1a.line36b: param(sa.spouse_extra = false; #sales.zero = $0)
+  s1a.line37: sum(s1a.line36a = $0; s1a.line36b = $0)
+  s1a.line38: sum(s1a.line13 = $0; s1a.line21 = $0; s1a.line30 = $0; s1a.line37 = $0)
+  f1040.s1a.line38: sum(s1a.line13 = $0; s1a.line21 = $0; s1a.line30 = $0; s1a.line37 = $0)
+  f1040.line13b: copy(s1a.line38 = $0)
+  qbi.f1040.line13b: copy(s1a.line38 = $0)
   qbi.deductions_before: sum(sa.deduction = $15,750; f1040.line13b = $0)
   qbi.taxable_before: subtract_floor0(sa.agi = $900; qbi.deductions_before = $15,750)
   qbi.threshold: param(#qbi.threshold = $197,300)

@@ -75,7 +75,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -118,7 +117,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line1a": {
@@ -375,7 +377,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -409,7 +410,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line1a": {
@@ -672,7 +676,6 @@
         "sa.line8a": 1000000,
         "sa.line11": 500000,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -716,7 +719,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line1a": {
@@ -973,7 +979,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": true,
-        "scope.schedule1a": true,
         "scope.credits": true,
         "scope.other_income": false,
         "scope.other_line16": false,
@@ -998,7 +1003,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line8": {
@@ -1054,17 +1062,8 @@
           }
         },
         "f1040.line13b": {
-          "kind": "refusal",
-          "gate": "scope.schedule1a",
-          "form": "Schedule 1-A",
-          "remedy": "Schedule 1-A deductions are outside this proof of concept.",
-          "cite": {
-            "doc": "f1040",
-            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
-            "revision": "2025; created 2025-09-05",
-            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
-            "tax_year": 2025
-          }
+          "kind": "money",
+          "cents": 0
         },
         "f1040.line15": {
           "kind": "refusal",
@@ -1270,7 +1269,6 @@
         "sa.line8a": 0,
         "sa.line11": 0,
         "scope.schedule1": false,
-        "scope.schedule1a": false,
         "scope.credits": false,
         "scope.other_income": true,
         "scope.other_line16": false,

@@ -29,9 +29,10 @@ DONE = [
     ("Stage 9", "Earned income credit", "EIC worksheets and table"),
     ("Stage 10", "Retirement income", "Form 1099-R and Social Security benefits"),
     ("Stage 11", "Unemployment and Schedule 1", "Educator expenses, HSA, student loan interest"),
+    ("Stage 12", "Schedule 1-A deductions", "Tips, overtime, car loan interest, the enhanced deduction for seniors"),
 ]
 WAITING = [("Stage 6", "Tax year 2026", "Refetch, year diff, rerun every check; waits on the IRS final 2026 documents (T-011)")]
-FIRST_LADDER_STAGE = 12
+FIRST_LADDER_STAGE = 13
 SHORT = {
     "schedule1a": "Schedule 1-A deductions", "married": "Married filers", "self_employment": "Self-employment",
     "other_credits": "Other credits", "schedule1_misc": "Other Schedule 1 items", "schedule_e": "Schedule E and K-1s",
@@ -144,7 +145,7 @@ th,td{{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vert
 <p class="note">Each stage is the group of refused situations that gains the most coverage once the stages above it are done.</p>
 <div class="legend"><span><i class="sw" style="background:var(--before)"></i>Covered before the stage</span><span><i class="sw" style="background:var(--gain)"></i>Gained by the stage</span><span>▶ Next stage</span><span><i class="sw" style="background:var(--band);border:1px solid var(--line)"></i>90–95% goal</span></div>
 {ladder_svg(cov, steps)}
-<p class="note">Limits: IRS counts are for tax year 2023. The Schedule 1-A shares rest on a microdata model with no IRS count yet; its car-loan figure looks too high, but the order holds without it. {unmeasured} refusal gates are not yet measured, so 100% here means 100% of the measured situations. Details: <code>reports/2025/filer_coverage.md</code>, task T-034.</p>
+<p class="note">Limits: IRS counts are for tax year 2023. {unmeasured} refusal gates are not yet measured, so 100% here means 100% of the measured situations. Details: <code>reports/2025/filer_coverage.md</code>, task T-034.</p>
 
 <h2>Done</h2>
 <div class="track">{done}{waiting}</div>

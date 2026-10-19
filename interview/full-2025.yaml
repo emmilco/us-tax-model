@@ -628,14 +628,6 @@ interview:
       cite:
         doc: f1040
         locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
-    - input: scope.schedule1a
-      prompt: 'Do you qualify for any Schedule 1-A deduction (qualified tips, qualified overtime compensation, qualified passenger vehicle loan interest, or the enhanced deduction for a filer born before January 2, 1961), whether or not you planned to claim it?'
-      help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
-        guess. This computes the single-person return; joint returns and unsupported items are refused with citations.
-      order: 0
-      cite:
-        doc: f1040
-        locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
     - input: scope.credits
       prompt: 'Do you want to claim any credit other than the foreign tax credit claimed without Form 1116, the excess social security credit, the child tax credit, the credit for other dependents, the additional child tax credit and the earned income credit, or do you have any other amount for Schedule 3 Part I (for example a Form 8978 adjustment)?'
       help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not
@@ -1438,3 +1430,210 @@ interview:
       cite:
         doc: i1040gi
         locator: "p. 98, Schedule 1, line 21, 'You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return'"
+    - input: s1a.tips
+      prompt: 'Did you receive tips as an employee in 2025, in an occupation on the IRS list of occupations that customarily and regularly received tips (IRS.gov/TippedOccupations), that you want to deduct on Schedule 1-A, Part II? (Tips received in your own trade or business are asked about with Schedule C.)'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 10
+      cite:
+        doc: i1040gi
+        locator: 'pp. 101-103, Schedule 1-A, Part II, Fill out Part II only if'
+    - input: s1a.overtime
+      prompt: 'Did you receive overtime pay as an employee in 2025 that you want to deduct on Schedule 1-A, Part III (the FLSA Overtime Premium, generally the "half" of time-and-a-half)? (Overtime reported on Form 1099-NEC or 1099-MISC is asked about with Schedule C.)'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 10
+      cite:
+        doc: i1040gi
+        locator: 'p. 106, Schedule 1-A, Part III, Fill out Part III only if'
+    - input: s1a.carloan
+      prompt: 'Did you pay or accrue interest in 2025 on a loan taken out after 2024 to buy a new car, minivan, van, SUV, pickup truck or motorcycle for personal use that you want to deduct on Schedule 1-A, Part IV?'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 10
+      cite:
+        doc: i1040gi
+        locator: 'p. 109, Schedule 1-A, Part IV'
+    - input: s1a.died_before_65
+      prompt: 'Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 10
+      cite:
+        doc: i1040gi
+        locator: 'p. 110, Schedule 1-A, Part V, Death of a taxpayer in 2025'
+    - input: $tipjob
+      prompt: 'List stable keys for each employer from which you received tips you are deducting (one key per employer, for example employer names). Use [] if none.'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 1
+      cite:
+        doc: i1040gi
+        locator: 'p. 104, Qualified Tips From More Than One Employer Worksheet'
+    - input: tipjob.qualified
+      prompt: 'Were all the tips you are counting from this employer received in an occupation on the IRS list of occupations that customarily and regularly received tips on or before December 31, 2024 (IRS.gov/TippedOccupations), paid in cash (including by check, card or app), voluntarily, without negotiation and in an amount the customer decided, and not for a service that is a crime under applicable law?'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: 'pp. 101-103, Schedule 1-A, Qualified Tips'
+    - input: tipjob.amount
+      prompt: 'Qualified tips from this employer, taken from one of these (your choice): Form W-2 box 7 (social security tips); the total of the tips you reported to this employer on Forms 4070 or a similar monthly report (which may be more accurate if Form W-2 box 1 or box 5 is more than $176,100); or an amount of tips your employer reported in Form W-2 box 14 or on a separate statement'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: 'pp. 103-104, methods 1 to 3; worksheet column (b)'
+    - input: $otjob
+      prompt: 'List stable keys for each employer that paid you overtime you are deducting (one key per employer). Use [] if none.'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 1
+      cite:
+        doc: i1040gi
+        locator: 'p. 108, Qualified Overtime Compensation From More Than One Employer Worksheet'
+    - input: otjob.flsa
+      prompt: 'Were you an FLSA-eligible employee of this employer (covered by and not exempt from the Fair Labor Standards Act, so that this employer was required to pay you overtime under section 7 of the FLSA)? You can ask your employer.'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: 'p. 106, Schedule 1-A, Qualified overtime compensation'
+    - input: otjob.special_rule
+      prompt: 'Is this employer covered by an FLSA overtime rule other than the general rule in section 7(a) (for example section 7(k) for fire protection and law enforcement, 7(o) compensatory time off, or 7(j) hospitals and residential care facilities)?'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: n-25-69
+        locator: 'pp. 22–25, Section III.B.2, method (G)'
+    - input: otjob.method
+      prompt: 'How you figured it: employer_reported (an amount of qualified overtime compensation your employer reported in Form W-2 box 14 or gave you on request); premium (a statement shows the "half" portion of time-and-a-half, the FLSA Overtime Premium); total_time_and_half (a statement shows the total pay for overtime hours paid at time-and-a-half); premium_double (overtime paid at double time, and a statement shows the pay above your regular rate for those hours); total_double (overtime paid at double time, and a statement shows the total pay for those hours); other (any other method, rate or adjustment)'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: 'pp. 106-107, Schedule 1-A, Determining the amount of qualified overtime compensation for 2025'
+    - input: otjob.statement
+      prompt: 'The full-year amount for the method you chose (the amount your employer reported; the overtime premium; the total pay for overtime hours; or the pay above your regular rate for overtime hours), from this employer, including overtime pay that is not in Form W-2 box 1 (for example overtime deferred under a qualified retirement plan)'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: 'pp. 106-107, Schedule 1-A, methods 1 to 4'
+    - input: $carloan
+      prompt: 'List stable keys for each loan whose interest you are deducting (one key per loan; use the vehicle VIN, adding a suffix if a vehicle had a loan refinanced during 2025). Use [] if none.'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 1
+      cite:
+        doc: i1040gi
+        locator: 'p. 110, Schedule 1-A, line 22'
+    - input: carloan.kind
+      prompt: 'How you came to owe this loan: original (you took out this loan after December 31, 2024, to buy the vehicle); refinanced (this loan refinanced such a loan and is secured by a first lien on the same vehicle); death (you became the borrower because a previous borrower died, for example by inheriting the vehicle or as its surviving joint owner, and the loan met the requirements when it was taken out)'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: fr-2025-24154
+        locator: 'pp. 20–22, Proposed § 1.163-16(d)(4) and (d)(5)'
+    - input: carloan.requirements
+      prompt: 'Does this loan meet all of these: it was originated after December 31, 2024 (for a refinancing, the loan it refinanced was); it was used to buy the vehicle (lease payments do not qualify); it is secured by a first lien on the vehicle; it is not owed to a person related to you (Internal Revenue Code section 267(b) or 707(b)(1)); and when the loan was taken out you expected the vehicle to be used more than 50% of the time for personal use (not in a trade or business other than as an employee, and not to produce income) by you or certain relatives or members of your household?'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: 'p. 109, Schedule 1-A, Qualified passenger vehicle loan interest, requirements 1 to 5'
+    - input: carloan.vehicle
+      prompt: 'Is the vehicle all of these: new, with its original use starting with you (a used vehicle does not qualify; the loan documents treat it as new); made primarily for use on public streets, roads and highways (not only on rails); with at least 2 wheels; a car, minivan, van, SUV, pickup truck or motorcycle; with a gross vehicle weight rating under 14,000 pounds; and finally assembled in the United States (shown on the vehicle information label, or by the plant of manufacture in the VIN)?'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: 'p. 109, Schedule 1-A, Applicable passenger vehicle'
+    - input: carloan.interest
+      prompt: 'Total interest you paid or accrued on this loan in 2025 (generally from the lender''s statement), none of it deducted elsewhere on your return'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: i1040gi
+        locator: 'p. 110, Schedule 1-A, line 22, column (iii)'
+    - input: carloan.mixed
+      prompt: 'Did this loan also finance anything other than the vehicle and items customarily financed with it and directly related to it (such as a service plan, extended warranty, sales tax and vehicle fees)? For example negative equity on a vehicle traded in, collision or liability insurance, a trailer or other unrelated property, or cash paid to you.'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: fr-2025-24154
+        locator: 'pp. 20–22, Proposed § 1.163-16(d)(2)'
+    - input: carloan.financed
+      prompt: 'The total amount financed by this loan when it was taken out (the indebtedness incurred, after any down payment)'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: fr-2025-24154
+        locator: 'pp. 20–22, Proposed § 1.163-16(d)(2)(iii) and (d)(4)'
+    - input: carloan.nonqualifying
+      prompt: 'The total of the amounts in the purchase that do not qualify (negative equity, insurance, unrelated property, cash paid to you), before applying any down payment'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: fr-2025-24154
+        locator: 'pp. 20–22, Proposed § 1.163-16(d)(2)(ii) and (d)(6) Example 4'
+    - input: carloan.down
+      prompt: 'Any down payment or other consideration you provided when you bought the vehicle (zero if none)'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: fr-2025-24154
+        locator: 'pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(B)'
+    - input: carloan.refi_balance
+      prompt: 'The outstanding balance of the loan this loan refinanced, on the date of the refinancing'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: fr-2025-24154
+        locator: 'pp. 20–22, Proposed § 1.163-16(d)(4)'
+    - input: carloan.refi_whole
+      prompt: 'Was all of the loan this loan refinanced a qualifying vehicle loan (it financed only the vehicle and items customarily financed with it, and was not itself a refinancing for more than the balance it replaced)?'
+      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
+        be null; do not guess. This computes the single-person return; joint returns and unsupported items
+        are refused with citations.
+      order: 2
+      cite:
+        doc: fr-2025-24154
+        locator: 'pp. 20–22, Proposed § 1.163-16(d)(4)'

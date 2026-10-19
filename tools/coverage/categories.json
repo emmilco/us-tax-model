@@ -7,7 +7,6 @@
  },
  "groups": {
   "married": "Married filing jointly and separately",
-  "schedule1a": "Schedule 1-A deductions (new for 2025)",
   "self_employment": "Self-employment (Schedule C and SE)",
   "premium_tax_credit": "Premium tax credit (Form 8962)",
   "education": "Education credits (Form 8863)",
@@ -77,58 +76,6 @@
       "column": 25,
       "header": "married persons filing separately"
      }
-    ]
-   }
-  },
-  {
-   "id": "senior",
-   "group": "schedule1a",
-   "gates": [
-    "scope.schedule1a"
-   ],
-   "label": "Enhanced deduction for seniors",
-   "micro": {
-    "positive": [
-     "additional_senior_deduction"
-    ]
-   }
-  },
-  {
-   "id": "tips",
-   "group": "schedule1a",
-   "gates": [
-    "scope.schedule1a"
-   ],
-   "label": "Qualified tips deduction",
-   "micro": {
-    "positive": [
-     "tip_income_deduction"
-    ]
-   }
-  },
-  {
-   "id": "overtime",
-   "group": "schedule1a",
-   "gates": [
-    "scope.schedule1a"
-   ],
-   "label": "Qualified overtime deduction",
-   "micro": {
-    "positive": [
-     "overtime_income_deduction"
-    ]
-   }
-  },
-  {
-   "id": "car_loan",
-   "group": "schedule1a",
-   "gates": [
-    "scope.schedule1a"
-   ],
-   "label": "Car loan interest deduction",
-   "micro": {
-    "positive": [
-     "auto_loan_interest_deduction"
     ]
    }
   },

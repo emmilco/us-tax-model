@@ -298,6 +298,28 @@ const EQUIVALENT_IF: Record<string, { reason: string; holds: (data: CanonicalDat
   "refusal.retirement.retirement.amount_a.0": firstReadCarries("retirement.amount_a", 0, ["retirement.show_a", "retirement.has_rollover", "retirement.rolled"]),
   "refusal.retirement.retirement.amount_a.1": firstReadCarries("retirement.amount_a", 1, ["retirement.show_a", "retirement.has_rollover", "retirement.rolled"]),
   "refusal.ssb.ssb.line6.0": firstReadCarries("ssb.line6", 0, ["ssb.line5", "ssb.line3", "f1040.line8"], "ssb.line7"),
+  "boundary.s1a.s1a.line10_over": s1aStepSkip("s1a.line10_over", "s1a.line8", "s1a.line9", "s1a.line10_pos", "s1a.line12", "s1a.line13_figured", "s1a.line7", "s1a.line13_amount"),
+  "boundary.s1a.s1a.line18_over": s1aStepSkip("s1a.line18_over", "s1a.line16", "s1a.line17", "s1a.line18_pos", "s1a.line20", "s1a.line21_figured", "s1a.line15", "s1a.line21_amount"),
+  "boundary.s1a.s1a.line27_over": s1aStepSkip("s1a.line27_over", "s1a.line25", "s1a.line26", "s1a.line27_pos", "s1a.line29", "s1a.line30_figured", "s1a.line24", "s1a.line30_amount"),
+  "boundary.s1a.s1a.line33_over": s1aStepSkip("s1a.line33_over", "s1a.line31", "s1a.line32", "s1a.line33_pos", "s1a.line34", "s1a.line35_figured", "s1a.senior_amount", "s1a.line35_calc"),
+  "operand.s1a.s1a.line6_calc.line5": s1aPartGate("s1a.line5", "s1a.part2"),
+  "operand.s1a.s1a.line7_calc.line6": s1aPartGate("s1a.line6", "s1a.part2"),
+  "operand.s1a.s1a.line10_calc.line8": s1aPartGate("s1a.line8", "s1a.part2"),
+  "operand.s1a.s1a.line10_pos.line9": s1aPartGate("s1a.line9", "s1a.part2"),
+  "operand.s1a.s1a.line13_figured.line12": s1aPartGate("s1a.line12", "s1a.part2"),
+  "operand.s1a.s1a.line14c_calc.line14b": s1aPartGate("s1a.line14b", "s1a.part3"),
+  "operand.s1a.s1a.line18_calc.line16": s1aPartGate("s1a.line16", "s1a.part3"),
+  "operand.s1a.s1a.line18_pos.line17": s1aPartGate("s1a.line17", "s1a.part3"),
+  "operand.s1a.s1a.line21_figured.line20": s1aPartGate("s1a.line20", "s1a.part3"),
+  "operand.s1a.s1a.line27_calc.line25": s1aPartGate("s1a.line25", "s1a.part4"),
+  "operand.s1a.s1a.line27_pos.line26": s1aPartGate("s1a.line26", "s1a.part4"),
+  "operand.s1a.s1a.line30_figured.line29": s1aPartGate("s1a.line29", "s1a.part4"),
+  "operand.s1a.s1a.line33_calc.line31": s1aPartGate("s1a.line31", "s1a.part5"),
+  "operand.s1a.s1a.line33_pos.line32": s1aPartGate("s1a.line32", "s1a.part5"),
+  "operand.s1a.s1a.line35_figured.line34": s1aPartGate("s1a.line34", "s1a.part5"),
+  "operand.s1a.s1a.line24_calc.line23": s1aPartGate("s1a.line23", "s1a.part4", "s1a.line23_total"),
+  "operand.s1a.s1a.line4c_one.line4a": s1aOneEmployer("line 4a, read by the one-employer step, is itself the column (b) total there"),
+  "operand.s1a.s1a.line4c_one.line4b": s1aOneEmployer("line 4b is zero (Form 4137 is refused), so the larger of line 4a and the column (b) total is the column (b) total, which line 4a is"),
   "boundary.sli.sli.over": prorateSkip("The test 'line 4 more than line 5' made inclusive adds only the case line 4 = line 5"),
   "operand.sli.sli.line9.line8": prorateSkip("Reading the prorated line directly instead of line 8 differs only when line 4 is not more than line 5"),
   "refusal.dependent.dependent.qualifying_relative.2": {
@@ -370,6 +392,75 @@ function firstReadCarries(line: string, index: number, chain: string[], reader?:
 // not more than line 5. The prorated line's part is line 6 = line 4 - line 5, which is then zero or
 // negative, and `prorate` keeps its ratio at 0 or more, so the prorated line is zero there too: the
 // skip and the formula agree, and a mutant that crosses between them changes no value.
+// A Schedule 1-A printed line inside a part is a gate: $0 when the part does not apply, otherwise
+// its "_calc" helper. Equivalences about the figure look through the gate.
+function s1aFigure(d: CanonicalData, id: string): Line | undefined {
+  const l = findLine(d, id);
+  if (l?.expr.op !== "choose") return l;
+  const thens = l.expr.alternatives.map((a) => a.then);
+  return thens.length === 2 && thens.includes("s1a.zero") && thens.includes(id + "_calc") ? findLine(d, id + "_calc") : l;
+}
+
+// Inside a Schedule 1-A part, a helper reads a gated printed line or the figure behind the gate.
+// They differ only when the part does not apply; then every reader of the part's chain is a
+// printed line of the part (itself $0) or the part's result line (13, 21, 30, 36a), which is $0
+// under the same conditions before it reads the chain.
+function s1aPartGate(gated: string, flag: string, figure = gated + "_calc") {
+  return {
+    reason: `${gated} is ${figure} when ${flag} holds and $0 otherwise; the chain that reads it is reached only through the part's result line, which is $0 when the part does not apply, so reading ${figure} instead changes no value.`,
+    holds: (d: CanonicalData): boolean => {
+      const g = findLine(d, gated), f = findLine(d, flag);
+      if (!g || !f || g.expr.op !== "choose" || f.expr.op !== "test") return false;
+      const thens = g.expr.alternatives.map((a) => a.then);
+      const viaFlag = g.expr.alternatives.every((a) => stableStringify(a.guard).includes(`"${flag}"`));
+      const direct = thens.length === 2 && thens.includes("s1a.zero") && thens.includes(figure) && viaFlag;
+      // line 23 is gated by the car loan question itself, which Part IV's flag is.
+      const byClaim = thens.length === 2 && thens.includes("s1a.zero") && thens.includes(figure) && stableStringify(f.expr) === stableStringify({ op: "test", eq: ["s1a.carloan", { const: true }] })
+        && g.expr.alternatives.every((a) => stableStringify(a.guard).includes('"s1a.carloan"'));
+      return direct || byClaim;
+    },
+  };
+}
+
+// Schedule 1-A phase-outs: 'line A more than line B' chooses between the capped amount and the
+// figured amount (the cap less a reduction of the excess). Made inclusive, the test adds only
+// A = B, where the excess is zero, so the reduction and the figured amount's subtraction are zero.
+function s1aStepSkip(over: string, magi: string, base: string, pos: string, cut: string, figured: string, cap: string, chooser: string) {
+  return {
+    reason: `The test '${magi} more than ${base}' made inclusive adds only ${magi} = ${base}; there ${pos} is zero, the reduction ${cut} is zero (zero in whole $1,000 steps, or 6% of zero), and ${figured} (${cap} less ${cut}) equals ${cap}, the value the other branch gives.`,
+    holds: (d: CanonicalData): boolean => {
+      const o = findLine(d, over), p = findLine(d, pos), c = s1aFigure(d, cut), f = findLine(d, figured), ch = findLine(d, chooser);
+      if (!o || !p || !c || !f || !ch) return false;
+      if (o.expr.op !== "test" || !("gt" in o.expr) || stableStringify(o.expr.gt) !== stableStringify([magi, base])) return false;
+      if (p.expr.op !== "subtract_floor0" || p.expr.from !== magi || p.expr.take !== base) return false;
+      if (c.expr.op !== "multiply_rate") return false;
+      const amt = typeof c.expr.amount === "string" ? findLine(d, c.expr.amount) : undefined;
+      const fromPos = c.expr.amount === pos || (amt?.expr.op === "round" && amt.expr.of === pos);
+      if (!fromPos || f.expr.op !== "subtract_floor0" || f.expr.from !== cap || f.expr.take !== cut) return false;
+      if (ch.expr.op !== "choose") return false;
+      const thens = ch.expr.alternatives.map((a) => a.then);
+      return thens.length === 2 && thens.includes(cap) && thens.includes(figured);
+    },
+  };
+}
+
+// Schedule 1-A line 4c with one employer is the larger of lines 4a and 4b, where line 4a is the
+// worksheet column (b) total and line 4b is zero.
+function s1aOneEmployer(what: string) {
+  return {
+    reason: `Read only when there is one employer (line 4c's choice): ${what}. No value can change.`,
+    holds: (d: CanonicalData): boolean => {
+      const one = findLine(d, "s1a.line4c_one"), a = s1aFigure(d, "s1a.line4a"), b = s1aFigure(d, "s1a.line4b"), c = s1aFigure(d, "s1a.line4c");
+      if (!one || !a || !b || !c || one.expr.op !== "larger_of" || stableStringify(one.expr.of) !== stableStringify(["s1a.line4a", "s1a.line4b"])) return false;
+      if (b.expr.op !== "param" || d.params.values[b.expr.ref]?.value !== 0) return false;
+      if (a.expr.op !== "choose" || c.expr.op !== "choose") return false;
+      const aOne = a.expr.alternatives.find((x) => stableStringify(x.guard).includes('"s1a.tip_multi"') && stableStringify(x.guard).includes("false"));
+      const cOne = c.expr.alternatives.find((x) => x.then === "s1a.line4c_one");
+      return aOne?.then === "s1a.tip_reported" && !!cOne && stableStringify(cOne.guard) === stableStringify(aOne.guard);
+    },
+  };
+}
+
 function prorateSkip(what: string) {
   return {
     reason: `${what}; there line 6 (line 4 less line 5) is zero or negative, the prorate ratio is kept at 0, and the prorated amount equals the skip branch's zero.`,

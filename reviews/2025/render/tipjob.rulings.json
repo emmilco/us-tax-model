@@ -1,0 +1,12 @@
+{
+ "kind": "render",
+ "form": "tipjob",
+ "rulings": [
+  {
+   "printed": "1(c)",
+   "restated": "Enter $0 (sales.zero).",
+   "model": "The worksheet column (c) is 'Qualified tips reported on Form 4137, column 1(c), for this employer', and method 4 says to 'use the amount of qualified tips included for the employer in column 1(c) of Form 4137'. Always entering $0 drops this amount, and no refusal excludes filers who submit Form 4137.",
+   "ruling": "Ruling: adopted. Column (c) now carries the refusal of Form 4137 (s2.other); within scope it is zero."
+  }
+ ]
+}

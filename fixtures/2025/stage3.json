@@ -56,7 +56,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -86,7 +85,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sales[a].h": {
@@ -154,7 +156,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -184,7 +185,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sales[a].h": {
@@ -252,7 +256,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -282,7 +285,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sales[a].h": {
@@ -350,7 +356,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -380,7 +385,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sales[a].h": {
@@ -448,7 +456,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -478,7 +485,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sd.line8a.d": {
@@ -560,7 +570,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -590,7 +599,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sd.line8a.d": {
@@ -662,7 +674,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -692,7 +703,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sd.line1b.h": {
@@ -768,7 +782,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -798,7 +811,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sd.line2.h": {
@@ -874,7 +890,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -904,7 +919,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sd.line3.h": {
@@ -980,7 +998,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -1010,7 +1027,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sd.line8b.h": {
@@ -1086,7 +1106,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -1116,7 +1135,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sd.line9.h": {
@@ -1192,7 +1214,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -1222,7 +1243,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sd.line10.h": {
@@ -1298,7 +1322,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -1328,7 +1351,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sales[a].g": {
@@ -1404,7 +1430,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -1434,7 +1459,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sales[a].g": {
@@ -1510,7 +1538,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -1540,7 +1567,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sales[a].g": {
@@ -1616,7 +1646,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -1646,7 +1675,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sales[a].g": {
@@ -1722,7 +1754,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -1752,7 +1783,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sales[a].g": {
@@ -1828,7 +1862,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -1858,7 +1891,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sales[a].g": {
@@ -1934,7 +1970,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -1964,7 +1999,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sales[a].g": {
@@ -2040,7 +2078,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -2070,7 +2107,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sales[a].g": {
@@ -2146,7 +2186,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -2176,7 +2215,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sales[a].g": {
@@ -2252,7 +2294,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -2282,7 +2323,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sales[a].g": {
@@ -2358,7 +2402,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -2388,7 +2431,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sales[a].g": {
@@ -2464,7 +2510,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -2494,7 +2539,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sales[a].g": {
@@ -2570,7 +2618,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -2600,7 +2647,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sd.line16": {
@@ -2677,7 +2727,6 @@
         "sa.spouse_itemizes": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -2707,7 +2756,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sd.line16": {
@@ -2783,7 +2835,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -2813,7 +2864,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sd.line16": {
@@ -2890,7 +2944,6 @@
         "sa.spouse_itemizes": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -2920,7 +2973,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sd.line16": {
@@ -2996,7 +3052,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -3026,7 +3081,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sd.line16": {
@@ -3103,7 +3161,6 @@
         "sa.spouse_itemizes": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -3133,7 +3190,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sd.line16": {
@@ -3209,7 +3269,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -3239,7 +3298,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sd.line16": {
@@ -3316,7 +3378,6 @@
         "sa.spouse_itemizes": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -3346,7 +3407,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sd.line16": {
@@ -3422,7 +3486,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -3452,7 +3515,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sd.line16": {
@@ -3529,7 +3595,6 @@
         "sa.spouse_itemizes": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -3559,7 +3624,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sd.line16": {
@@ -3635,7 +3703,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -3665,7 +3732,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sd.line16": {
@@ -3742,7 +3812,6 @@
         "sa.spouse_itemizes": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -3772,7 +3841,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sd.line16": {
@@ -3848,7 +3920,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -3878,7 +3949,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sd.line16": {
@@ -3955,7 +4029,6 @@
         "sa.spouse_itemizes": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -3985,7 +4058,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sd.line16": {
@@ -4061,7 +4137,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -4091,7 +4166,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sd.line16": {
@@ -4168,7 +4246,6 @@
         "sa.spouse_itemizes": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -4198,7 +4275,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sd.line16": {
@@ -4274,7 +4354,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -4304,7 +4383,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sd.line16": {
@@ -4385,7 +4467,6 @@
         "sa.spouse_itemizes": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -4415,7 +4496,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sd.line16": {
@@ -4501,7 +4585,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [],
         "scope.other_income": false,
         "sa.charity_limited": false,
@@ -4531,7 +4614,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sd.line1b.h": {
@@ -4592,7 +4678,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -4630,7 +4715,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sd.filed": {
@@ -4699,7 +4787,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -4737,7 +4824,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sd.filed": {
@@ -4827,7 +4917,6 @@
         "sa.line5b": 0,
         "sa.line5c": 0,
         "sa.line8a": 0,
-        "scope.schedule1a": false,
         "scope.other_income": false,
         "$gift": [],
         "sa.line11": 0,
@@ -4845,7 +4934,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line7a": {
@@ -5370,7 +5462,6 @@
         "sa.line5b": 0,
         "sa.line5c": 0,
         "sa.line8a": 0,
-        "scope.schedule1a": false,
         "scope.other_income": false,
         "$gift": [],
         "sa.line11": 0,
@@ -5388,7 +5479,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line7a": {
@@ -5913,7 +6007,6 @@
         "sa.line5b": 0,
         "sa.line5c": 0,
         "sa.line8a": 0,
-        "scope.schedule1a": false,
         "scope.other_income": false,
         "$gift": [],
         "sa.line11": 0,
@@ -5931,7 +6024,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line7a": {
@@ -6456,7 +6552,6 @@
         "sa.line5b": 0,
         "sa.line5c": 0,
         "sa.line8a": 0,
-        "scope.schedule1a": false,
         "scope.other_income": false,
         "$gift": [],
         "sa.line11": 0,
@@ -6474,7 +6569,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line7a": {
@@ -6999,7 +7097,6 @@
         "sa.line5b": 0,
         "sa.line5c": 0,
         "sa.line8a": 0,
-        "scope.schedule1a": false,
         "scope.other_income": false,
         "$gift": [],
         "sa.line11": 0,
@@ -7017,7 +7114,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line7a": {
@@ -7542,7 +7642,6 @@
         "sa.line5b": 0,
         "sa.line5c": 0,
         "sa.line8a": 0,
-        "scope.schedule1a": false,
         "scope.other_income": false,
         "$gift": [],
         "sa.line11": 0,
@@ -7560,7 +7659,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line7a": {
@@ -8085,7 +8187,6 @@
         "sa.line5b": 0,
         "sa.line5c": 0,
         "sa.line8a": 0,
-        "scope.schedule1a": false,
         "scope.other_income": false,
         "$gift": [],
         "sa.line11": 0,
@@ -8103,7 +8204,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line7a": {
@@ -8628,7 +8732,6 @@
         "sa.line5b": 0,
         "sa.line5c": 0,
         "sa.line8a": 0,
-        "scope.schedule1a": false,
         "scope.other_income": false,
         "$gift": [],
         "sa.line11": 0,
@@ -8646,7 +8749,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line7a": {
@@ -9172,7 +9278,6 @@
         "sa.line5c": 0,
         "sa.line8a": 0,
         "scope.other_income": false,
-        "scope.schedule1a": false,
         "$gift": [],
         "sa.line11": 0,
         "scope.other_line16": false,
@@ -9189,7 +9294,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line7a": {
@@ -9715,7 +9823,6 @@
         "sa.line5c": 0,
         "sa.line8a": 0,
         "scope.other_income": false,
-        "scope.schedule1a": false,
         "$gift": [],
         "sa.line11": 0,
         "scope.other_line16": false,
@@ -9732,7 +9839,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line7a": {
@@ -10258,7 +10368,6 @@
         "sa.line5c": 0,
         "sa.line8a": 0,
         "scope.other_income": false,
-        "scope.schedule1a": false,
         "$gift": [],
         "sa.line11": 0,
         "scope.other_line16": false,
@@ -10275,7 +10384,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line7a": {
@@ -10801,7 +10913,6 @@
         "sa.line5c": 0,
         "sa.line8a": 0,
         "scope.other_income": false,
-        "scope.schedule1a": false,
         "$gift": [],
         "sa.line11": 0,
         "scope.other_line16": false,
@@ -10818,7 +10929,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line7a": {
@@ -11344,7 +11458,6 @@
         "sa.line5c": 0,
         "sa.line8a": 0,
         "scope.other_income": false,
-        "scope.schedule1a": false,
         "$gift": [],
         "sa.line11": 0,
         "scope.other_line16": false,
@@ -11361,7 +11474,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line7a": {
@@ -11965,7 +12081,6 @@
         "sa.line5c": 0,
         "sa.line8a": 0,
         "scope.other_income": false,
-        "scope.schedule1a": false,
         "$gift": [],
         "sa.line11": 0,
         "scope.other_line16": false,
@@ -11982,7 +12097,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line7a": {
@@ -12574,7 +12692,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -12612,7 +12729,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line16": {
@@ -12680,7 +12800,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -12718,7 +12837,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line16": {
@@ -12786,7 +12908,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -12824,7 +12945,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line16": {
@@ -12892,7 +13016,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -12930,7 +13053,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.sdtw": {
@@ -13001,7 +13127,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -13039,7 +13164,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.sdtw": {
@@ -13110,7 +13238,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -13148,7 +13275,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.sdtw": {
@@ -13219,7 +13349,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -13257,7 +13386,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.sdtw": {
@@ -13328,7 +13460,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -13366,7 +13497,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.gate.sdtw": {
@@ -13447,7 +13581,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -13485,7 +13618,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sd.line7": {
@@ -13636,7 +13772,6 @@
         "sa.elect_itemize": false,
         "sa.unsupported": false,
         "sa.dependent": false,
-        "scope.schedule1a": false,
         "$w2@person[taxpayer]": [
           "migrated"
         ],
@@ -13674,7 +13809,10 @@
         "s1.educator_expenses": 0,
         "f8889.line2": 0,
         "f8889.line9": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "sd.line1a.d": {

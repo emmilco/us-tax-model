@@ -95,3 +95,13 @@
 
 - Status: Owner ruling, Stage 9 follow-up.
 - Cite: [i1040gi] pp. 44-45, Social security number (SSN) (EIC); p. 18, Step 3, question 4 (child tax credit) (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## amb.2025.carloan_ratio_places
+
+- Text at issue: Proposed § 1.163-16(d)(2)(iii)(A) and (d)(4) allocate a loan's interest "on a pro rata basis" between the part that is a specified passenger vehicle loan and the rest, without saying how the ratio is figured or rounded.
+- Candidate readings: Round the ratio (qualifying debt divided by the loan) half-up to six decimal places, then the interest to the cent. | Keep the ratio exact and round only the allocated interest to the cent. | Round the ratio to three places, as the Student Loan Interest Deduction Worksheet does.
+- **Chosen:** Round the ratio half-up to six decimal places (the prorate atom with places 6 on carloan.mixed_prorated and carloan.refi_interest), the product half-up to the cent.
+- Reason: The owner's ruling. Six places keeps the existing prorate atom unchanged; at the $10,000 cap on line 24 the result differs from an exact ratio by less than one cent, while three places could differ by about $5.
+
+- Status: Owner ruling, Stage 12.
+- Cite: [fr-2025-24154] pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(A) and (d)(4) (Federal Register Vol. 91, No. 1 (2026-01-02), proposed rules REG-113515-25 (Car Loan Interest Deduction), FR Doc. 2025-24154; sha256 4d243f55)

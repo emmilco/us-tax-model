@@ -405,7 +405,7 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       cite: [f1040] Form 1040 (2025), line 13a (2025; created 2025-09-05; 3d31c226)
   13b Additional deductions from Schedule 1-A, line 38
       = $0
-      cite: [f1040] Form 1040 (2025), line 13b (2025; created 2025-09-05; 3d31c226)
+      cite: [f1040] Form 1040 (2025), line 13b; i1040gi p. 34, Line 13b, "enter on line 13b the amount, if any, from Schedule 1-A, line 38" (2025; created 2025-09-05; 3d31c226)
   14  Add lines 12e, 13a, and 13b
       = $15,750
       cite: [f1040] Form 1040 (2025), line 14 (2025; created 2025-09-05; 3d31c226)
@@ -1299,6 +1299,433 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       = $0
       cite: [f1040s1] Schedule 1 (2025), line 26 (lines 12, 14 to 20, 23 and 25 are outside this tool and refused at Form 1040 line 10 by scope.schedule1) (2025; created 2025-07-25; 8dafec71)
 
+== Schedule 1-A (Form 1040) — Additional Deductions ==
+  (helper) Year parameter sales.zero
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025) (2025; created 2025-11-04; 64f97b38)
+  1   Enter the amount from Form 1040, 1040-SR, or 1040-NR, line 11b
+      = $130,000
+      cite: [f1040s1a] Schedule 1-A (2025), line 1 (2025; created 2025-11-04; 64f97b38)
+  2a  Enter any income from Puerto Rico that you excluded
+      = $0
+      cite: [i1040gi] p. 101, Schedule 1-A, Part I; Schedule 1-A (2025), line 2a (zero unless refused through sa.excluded_income) (2025; printed date 2026-02-25; 482e9c48)
+  2b  Enter the amount from Form 2555, line 45
+      = $0
+      cite: [i1040gi] p. 101, Schedule 1-A, Part I; Schedule 1-A (2025), line 2b (zero unless refused through sa.excluded_income) (2025; printed date 2026-02-25; 482e9c48)
+  2c  Enter the amount from Form 2555, line 50
+      = $0
+      cite: [i1040gi] p. 101, Schedule 1-A, Part I; Schedule 1-A (2025), line 2c (zero unless refused through sa.excluded_income) (2025; printed date 2026-02-25; 482e9c48)
+  2d  Enter the amount from Form 4563, line 15
+      = $0
+      cite: [i1040gi] p. 101, Schedule 1-A, Part I; Schedule 1-A (2025), line 2d (zero unless refused through sa.excluded_income) (2025; printed date 2026-02-25; 482e9c48)
+  2e  Add lines 2a, 2b, 2c, and 2d
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), line 2e (2025; created 2025-11-04; 64f97b38)
+  3   Add lines 1 and 2e
+      = $130,000
+      cite: [f1040s1a] Schedule 1-A (2025), line 3 (2025; created 2025-11-04; 64f97b38)
+  (helper) Did you receive qualified tips as an employee in 2025 that you want to deduct?
+      = false
+      cite: [i1040gi] pp. 101-103, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Number of employers on the Qualified Tips From More Than One Employer Worksheet
+      = UNKNOWN (collection roster not confirmed)
+      cite: [i1040gi] p. 104, Schedule 1-A, line 4c (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Worksheet line 2. Add lines 1A through 1E, column (d)
+      = UNKNOWN (collection roster not confirmed)
+      cite: [i1040gi] p. 104, Qualified Tips From More Than One Employer Worksheet, line 2 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Worksheet column (b) total: qualified tips reported on Form W-2 or on Forms 4070
+      = UNKNOWN (collection roster not confirmed)
+      cite: [i1040gi] p. 104, Qualified Tips From More Than One Employer Worksheet, column (b); p. 103, methods 1 to 3, "Enter this amount on line 4a" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Tips from more than one employer
+      = UNKNOWN (collection roster not confirmed)
+      cite: [i1040gi] p. 104, Schedule 1-A, line 4a, "If you received qualified tips as an employee with respect to employment with more than one employer, enter -0- on line 4a" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Part II applies: qualified tips claimed, not married filing separately, a valid SSN
+      = false
+      cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you must file jointly" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Figured: Enter qualified tips included on Form W-2, box 7, but see the instructions if Form W-2, box 5 is more than $176,100 or you received tips that are not subject to social security and Medicare taxes
+      = UNKNOWN (collection roster not confirmed)
+      cite: [i1040gi] p. 104, Schedule 1-A, line 4a; pp. 103-104, methods 1 to 3 (2025; printed date 2026-02-25; 482e9c48)
+      note: guard incomplete
+  4a  Enter qualified tips included on Form W-2, box 7, but see the instructions if Form W-2, box 5 is more than $176,100 or you received tips that are not subject to social security and Medicare taxes
+      = $0
+      cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you must file jointly" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s1a.part2",{"const":false}],"op":"test"}
+  (helper) Figured: Qualified tips included on Form 4137, line 1, row A, column (c). If Form 4137 is not filed, enter -0-
+      = $0
+      cite: [i1040gi] p. 104, Schedule 1-A, line 4b (2025; printed date 2026-02-25; 482e9c48)
+  4b  Qualified tips included on Form 4137, line 1, row A, column (c). If Form 4137 is not filed, enter -0-
+      = $0
+      cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you must file jointly" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s1a.part2",{"const":false}],"op":"test"}
+  (helper) Line 4c with one employer: the larger of line 4a or line 4b
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), line 4c (2025; created 2025-11-04; 64f97b38)
+  (helper) Figured: If you only received qualified tips as an employee with respect to employment with one employer, enter the larger of line 4a or line 4b. Otherwise, see the instructions to determine the amount to enter on line 4c
+      = UNKNOWN (collection roster not confirmed)
+      cite: [i1040gi] p. 104, Schedule 1-A, line 4c, and the Qualified Tips From More Than One Employer Worksheet (2025; printed date 2026-02-25; 482e9c48)
+      note: guard incomplete
+  4c  If you only received qualified tips as an employee with respect to employment with one employer, enter the larger of line 4a or line 4b. Otherwise, see the instructions to determine the amount to enter on line 4c
+      = $0
+      cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you must file jointly" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s1a.part2",{"const":false}],"op":"test"}
+  (helper) Figured: Qualified tips received in the course of a trade or business
+      = $0
+      cite: [i1040gi] p. 104, Schedule 1-A, line 5 (2025; printed date 2026-02-25; 482e9c48)
+  5   Qualified tips received in the course of a trade or business
+      = $0
+      cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you must file jointly" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s1a.part2",{"const":false}],"op":"test"}
+  (helper) Figured: Add lines 4c and 5
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), line 6 (2025; created 2025-11-04; 64f97b38)
+  6   Add lines 4c and 5
+      = $0
+      cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you must file jointly" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s1a.part2",{"const":false}],"op":"test"}
+  (helper) Figured: Enter the smaller of the amount on line 6 or $25,000
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), line 7 (2025; created 2025-11-04; 64f97b38)
+  7   Enter the smaller of the amount on line 6 or $25,000
+      = $0
+      cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you must file jointly" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s1a.part2",{"const":false}],"op":"test"}
+  (helper) Year parameter s1a.tips_max ($25,000)
+      = $25,000
+      cite: [f1040s1a] Schedule 1-A (2025), line 7, $25,000 (2025; created 2025-11-04; 64f97b38)
+  (helper) Year parameter s1a.base_other ($150,000)
+      = $150,000
+      cite: [f1040s1a] Schedule 1-A (2025), lines 9 and 17, $150,000 (2025; created 2025-11-04; 64f97b38)
+  (helper) Year parameter s1a.base_joint ($300,000)
+      = $300,000
+      cite: [f1040s1a] Schedule 1-A (2025), lines 9 and 17, $300,000 (2025; created 2025-11-04; 64f97b38)
+  (helper) Figured: Enter the amount from line 3
+      = $130,000
+      cite: [f1040s1a] Schedule 1-A (2025), line 8 (2025; created 2025-11-04; 64f97b38)
+  8   Enter the amount from line 3
+      = $0
+      cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you must file jointly" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s1a.part2",{"const":false}],"op":"test"}
+  (helper) Figured: Enter $150,000 ($300,000 if married filing jointly)
+      = $150,000
+      cite: [f1040s1a] Schedule 1-A (2025), line 9 (2025; created 2025-11-04; 64f97b38)
+      note: taken: {"eq":["f1040.status",{"const":"single"}],"op":"test"}
+  9   Enter $150,000 ($300,000 if married filing jointly)
+      = $0
+      cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you must file jointly" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s1a.part2",{"const":false}],"op":"test"}
+  (helper) Figured: Subtract line 9 from line 8. If zero or less, enter the amount from line 7 on line 13
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), line 10 (2025; created 2025-11-04; 64f97b38)
+  10  Subtract line 9 from line 8. If zero or less, enter the amount from line 7 on line 13
+      = $0
+      cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you must file jointly" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s1a.part2",{"const":false}],"op":"test"}
+  (helper) Is the amount on line 8 more than the amount on line 9?
+      = false
+      cite: [f1040s1a] Schedule 1-A (2025), line 10, "If zero or less" (2025; created 2025-11-04; 64f97b38)
+  (helper) Line 10 if more than zero, otherwise zero
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), line 10 (2025; created 2025-11-04; 64f97b38)
+  (helper) Line 11. Divide line 10 by $1,000, decreasing the result to the next lower whole number (kept as that many thousands of dollars)
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), line 11 (the whole number of $1,000 units, kept as that many thousands of dollars) (2025; created 2025-11-04; 64f97b38)
+      note: down to a multiple of 100000 cents
+  (helper) Figured: Multiply line 11 by $100
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), lines 11 and 12 (2025; created 2025-11-04; 64f97b38)
+      note: half-up to the cent per the ambiguity register
+  12  Multiply line 11 by $100
+      = $0
+      cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you must file jointly" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s1a.part2",{"const":false}],"op":"test"}
+  (helper) Subtract line 12 from line 7. If zero or less, enter -0-
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), line 13 (2025; created 2025-11-04; 64f97b38)
+  (helper) Line 13 when Part II applies
+      = $0
+      cite: [i1040gi] p. 105, Schedule 1-A, line 10, "If the amount on line 10 is zero or less ... Skip lines 11 and 12 and enter the amount from Schedule 1-A, line 7, on Schedule 1-A, line 13" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s1a.line10_over",{"const":false}],"op":"test"}
+  (helper) Line 13 with qualified tips: zero without a valid SSN
+      = $0
+      cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if: ... You have a valid social security number (SSN)" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["household.taxpayer_work_ssn",{"const":true}],"op":"test"}
+  (helper) Line 13 with qualified tips: zero for married filing separately
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), Part II caution, "If married, you must file jointly to claim this deduction" (2025; created 2025-11-04; 64f97b38)
+      note: taken: {"eq":["f1040.status",{"const":"single"}],"op":"test"}
+  13  Qualified tips deduction. Subtract line 12 from line 7. If zero or less, enter -0-
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), line 13; i1040gi p. 101, "Fill out Schedule 1-A, Part II, only if" (2025; created 2025-11-04; 64f97b38)
+      note: taken: {"eq":["s1a.tips",{"const":false}],"op":"test"}
+  (helper) Did you receive qualified overtime compensation in 2025 that you want to deduct?
+      = false
+      cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Part III applies: qualified overtime claimed, not married filing separately, a valid SSN
+      = false
+      cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; Part III caution (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Figured: Qualified overtime compensation included in Form W-2, box 1. If you received qualified overtime compensation not reported on Form W-2, box 1, see instructions
+      = UNKNOWN (collection roster not confirmed)
+      cite: [i1040gi] p. 108, Schedule 1-A, line 14a, and the Qualified Overtime Compensation From More Than One Employer Worksheet, line 2 (2025; printed date 2026-02-25; 482e9c48)
+  14a Qualified overtime compensation included in Form W-2, box 1. If you received qualified overtime compensation not reported on Form W-2, box 1, see instructions
+      = $0
+      cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; Part III caution (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s1a.part3",{"const":false}],"op":"test"}
+  (helper) Figured: Qualified overtime compensation included in Form 1099-NEC, box 1, or Form 1099-MISC, box 3
+      = $0
+      cite: [i1040gi] p. 108, Schedule 1-A, line 14b (2025; printed date 2026-02-25; 482e9c48)
+  14b Qualified overtime compensation included in Form 1099-NEC, box 1, or Form 1099-MISC, box 3
+      = $0
+      cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; Part III caution (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s1a.part3",{"const":false}],"op":"test"}
+  (helper) Figured: Add lines 14a and 14b
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), line 14c (2025; created 2025-11-04; 64f97b38)
+  14c Add lines 14a and 14b
+      = $0
+      cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; Part III caution (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s1a.part3",{"const":false}],"op":"test"}
+  (helper) Year parameter s1a.ot_max_other ($12,500)
+      = $12,500
+      cite: [f1040s1a] Schedule 1-A (2025), line 15, $12,500 (2025; created 2025-11-04; 64f97b38)
+  (helper) Year parameter s1a.ot_max_joint ($25,000)
+      = $25,000
+      cite: [f1040s1a] Schedule 1-A (2025), line 15, $25,000 (2025; created 2025-11-04; 64f97b38)
+  (helper) $12,500 ($25,000 if married filing jointly)
+      = $12,500
+      cite: [f1040s1a] Schedule 1-A (2025), line 15 (2025; created 2025-11-04; 64f97b38)
+      note: taken: {"eq":["f1040.status",{"const":"single"}],"op":"test"}
+  (helper) Figured: Enter the smaller of the amount on line 14c or $12,500 ($25,000 if married filing jointly)
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), line 15 (2025; created 2025-11-04; 64f97b38)
+  15  Enter the smaller of the amount on line 14c or $12,500 ($25,000 if married filing jointly)
+      = $0
+      cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; Part III caution (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s1a.part3",{"const":false}],"op":"test"}
+  (helper) Figured: Enter the amount from line 3
+      = $130,000
+      cite: [f1040s1a] Schedule 1-A (2025), line 16 (2025; created 2025-11-04; 64f97b38)
+  16  Enter the amount from line 3
+      = $0
+      cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; Part III caution (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s1a.part3",{"const":false}],"op":"test"}
+  (helper) Figured: Enter $150,000 ($300,000 if married filing jointly)
+      = $150,000
+      cite: [f1040s1a] Schedule 1-A (2025), line 17 (2025; created 2025-11-04; 64f97b38)
+      note: taken: {"eq":["f1040.status",{"const":"single"}],"op":"test"}
+  17  Enter $150,000 ($300,000 if married filing jointly)
+      = $0
+      cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; Part III caution (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s1a.part3",{"const":false}],"op":"test"}
+  (helper) Figured: Subtract line 17 from line 16. If zero or less, enter the amount from line 15 on line 21
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), line 18 (2025; created 2025-11-04; 64f97b38)
+  18  Subtract line 17 from line 16. If zero or less, enter the amount from line 15 on line 21
+      = $0
+      cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; Part III caution (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s1a.part3",{"const":false}],"op":"test"}
+  (helper) Is the amount on line 16 more than the amount on line 17?
+      = false
+      cite: [f1040s1a] Schedule 1-A (2025), line 18, "If zero or less" (2025; created 2025-11-04; 64f97b38)
+  (helper) Line 18 if more than zero, otherwise zero
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), line 18 (2025; created 2025-11-04; 64f97b38)
+  (helper) Line 19. Divide line 18 by $1,000, decreasing the result to the next lower whole number (kept as that many thousands of dollars)
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), line 19 (the whole number of $1,000 units, kept as that many thousands of dollars) (2025; created 2025-11-04; 64f97b38)
+      note: down to a multiple of 100000 cents
+  (helper) Figured: Multiply line 19 by $100
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), lines 19 and 20 (2025; created 2025-11-04; 64f97b38)
+      note: half-up to the cent per the ambiguity register
+  20  Multiply line 19 by $100
+      = $0
+      cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; Part III caution (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s1a.part3",{"const":false}],"op":"test"}
+  (helper) Subtract line 20 from line 15. If zero or less, enter -0-
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), line 21 (2025; created 2025-11-04; 64f97b38)
+  (helper) Line 21 when Part III applies
+      = $0
+      cite: [i1040gi] p. 108, Schedule 1-A, line 18, "If the amount on line 18 is zero or less ... Skip lines 19 and 20 and enter the amount from Schedule 1-A, line 15, on Schedule 1-A, line 21" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s1a.line18_over",{"const":false}],"op":"test"}
+  (helper) Line 21 with qualified overtime: zero without a valid SSN
+      = $0
+      cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if: ... You have a valid social security number (SSN)" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["household.taxpayer_work_ssn",{"const":true}],"op":"test"}
+  (helper) Line 21 with qualified overtime: zero for married filing separately
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), Part III caution, "If married, you must file jointly to claim this deduction" (2025; created 2025-11-04; 64f97b38)
+      note: taken: {"eq":["f1040.status",{"const":"single"}],"op":"test"}
+  21  Qualified overtime compensation deduction. Subtract line 20 from line 15. If zero or less, enter -0-
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), line 21; i1040gi p. 106, "Fill out Schedule 1-A, Part III, only if" (2025; created 2025-11-04; 64f97b38)
+      note: taken: {"eq":["s1a.overtime",{"const":false}],"op":"test"}
+  (helper) Did you pay or accrue interest in 2025 on a loan to buy a new passenger vehicle that you want to deduct?
+      = false
+      cite: [i1040gi] p. 109, Schedule 1-A, Part IV, "Fill out Schedule 1-A, Part IV, only if you paid or accrued QPVLI in 2025" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Add lines 22a and 22b, column (iii), and any further loans on the attached statement
+      = UNKNOWN (collection roster not confirmed)
+      cite: [i1040gi] p. 110, Schedule 1-A, line 22, "If you need to report more than two VINs, attach a statement" (2025; printed date 2026-02-25; 482e9c48)
+  23  Add lines 22a and 22b, column (iii)
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), line 23 (2025; created 2025-11-04; 64f97b38)
+      note: taken: {"eq":["s1a.carloan",{"const":false}],"op":"test"}
+  (helper) Year parameter s1a.car_max ($10,000)
+      = $10,000
+      cite: [f1040s1a] Schedule 1-A (2025), line 24, $10,000 (2025; created 2025-11-04; 64f97b38)
+  (helper) Part IV applies: qualified passenger vehicle loan interest claimed
+      = false
+      cite: [i1040gi] p. 109, Schedule 1-A, Part IV, "Fill out Schedule 1-A, Part IV, only if you paid or accrued QPVLI in 2025" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Figured: Enter the smaller of the amount on line 23 or $10,000
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), line 24 (2025; created 2025-11-04; 64f97b38)
+  24  Enter the smaller of the amount on line 23 or $10,000
+      = $0
+      cite: [i1040gi] p. 109, Schedule 1-A, Part IV, "Fill out Schedule 1-A, Part IV, only if you paid or accrued QPVLI in 2025" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s1a.part4",{"const":false}],"op":"test"}
+  (helper) Year parameter s1a.car_base_other ($100,000)
+      = $100,000
+      cite: [f1040s1a] Schedule 1-A (2025), line 26, $100,000 (2025; created 2025-11-04; 64f97b38)
+  (helper) Year parameter s1a.car_base_joint ($200,000)
+      = $200,000
+      cite: [f1040s1a] Schedule 1-A (2025), line 26, $200,000 (2025; created 2025-11-04; 64f97b38)
+  (helper) Figured: Enter the amount from line 3
+      = $130,000
+      cite: [f1040s1a] Schedule 1-A (2025), line 25 (2025; created 2025-11-04; 64f97b38)
+  25  Enter the amount from line 3
+      = $0
+      cite: [i1040gi] p. 109, Schedule 1-A, Part IV, "Fill out Schedule 1-A, Part IV, only if you paid or accrued QPVLI in 2025" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s1a.part4",{"const":false}],"op":"test"}
+  (helper) Figured: Enter $100,000 ($200,000 if married filing jointly)
+      = $100,000
+      cite: [f1040s1a] Schedule 1-A (2025), line 26 (2025; created 2025-11-04; 64f97b38)
+      note: taken: {"eq":["f1040.status",{"const":"single"}],"op":"test"}
+  26  Enter $100,000 ($200,000 if married filing jointly)
+      = $0
+      cite: [i1040gi] p. 109, Schedule 1-A, Part IV, "Fill out Schedule 1-A, Part IV, only if you paid or accrued QPVLI in 2025" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s1a.part4",{"const":false}],"op":"test"}
+  (helper) Figured: Subtract line 26 from line 25. If zero or less, enter the amount from line 24 on line 30
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), line 27 (2025; created 2025-11-04; 64f97b38)
+  27  Subtract line 26 from line 25. If zero or less, enter the amount from line 24 on line 30
+      = $0
+      cite: [i1040gi] p. 109, Schedule 1-A, Part IV, "Fill out Schedule 1-A, Part IV, only if you paid or accrued QPVLI in 2025" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s1a.part4",{"const":false}],"op":"test"}
+  (helper) Is the amount on line 25 more than the amount on line 26?
+      = false
+      cite: [f1040s1a] Schedule 1-A (2025), line 27, "If zero or less" (2025; created 2025-11-04; 64f97b38)
+  (helper) Line 27 if more than zero, otherwise zero
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), line 27 (2025; created 2025-11-04; 64f97b38)
+  (helper) Line 28. Divide line 27 by $1,000, increasing the result to the next higher whole number (kept as that many thousands of dollars)
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), line 28 (the whole number of $1,000 units, kept as that many thousands of dollars) (2025; created 2025-11-04; 64f97b38)
+      note: up to a multiple of 100000 cents
+  (helper) Figured: Multiply line 28 by $200
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), lines 28 and 29 (2025; created 2025-11-04; 64f97b38)
+      note: half-up to the cent per the ambiguity register
+  29  Multiply line 28 by $200
+      = $0
+      cite: [i1040gi] p. 109, Schedule 1-A, Part IV, "Fill out Schedule 1-A, Part IV, only if you paid or accrued QPVLI in 2025" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s1a.part4",{"const":false}],"op":"test"}
+  (helper) Subtract line 29 from line 24. If zero or less, enter -0-
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), line 30 (2025; created 2025-11-04; 64f97b38)
+  (helper) Line 30 when Part IV applies
+      = $0
+      cite: [i1040gi] p. 110, Schedule 1-A, line 27, "If the amount on line 27 is zero or less ... Skip lines 28 and 29 and enter the amount from Schedule 1-A, line 24, on Schedule 1-A, line 30" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s1a.line27_over",{"const":false}],"op":"test"}
+  30  Qualified passenger vehicle loan interest deduction. Subtract line 29 from line 24. If zero or less, enter -0-
+      = $0
+      cite: [i1040gi] p. 109, Schedule 1-A, Part IV, "Fill out Schedule 1-A, Part IV, only if you paid or accrued QPVLI in 2025" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s1a.carloan",{"const":false}],"op":"test"}
+  (helper) Part V applies: born before January 2, 1961, not married filing separately, a valid SSN
+      = false
+      cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; Part V caution (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Figured: Enter the amount from line 3
+      = $130,000
+      cite: [f1040s1a] Schedule 1-A (2025), line 31 (2025; created 2025-11-04; 64f97b38)
+  31  Enter the amount from line 3
+      = $0
+      cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; Part V caution (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s1a.part5",{"const":false}],"op":"test"}
+  (helper) Year parameter s1a.senior_base_other ($75,000)
+      = $75,000
+      cite: [f1040s1a] Schedule 1-A (2025), line 32, $75,000 (2025; created 2025-11-04; 64f97b38)
+  (helper) Year parameter s1a.senior_base_joint ($150,000)
+      = $150,000
+      cite: [f1040s1a] Schedule 1-A (2025), line 32, $150,000 (2025; created 2025-11-04; 64f97b38)
+  (helper) Figured: Enter $75,000 ($150,000 if married filing jointly)
+      = $75,000
+      cite: [f1040s1a] Schedule 1-A (2025), line 32 (2025; created 2025-11-04; 64f97b38)
+      note: taken: {"eq":["f1040.status",{"const":"single"}],"op":"test"}
+  32  Enter $75,000 ($150,000 if married filing jointly)
+      = $0
+      cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; Part V caution (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s1a.part5",{"const":false}],"op":"test"}
+  (helper) Figured: Subtract line 32 from line 31. If zero or less, enter $6,000 on line 35
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), line 33 (2025; created 2025-11-04; 64f97b38)
+  33  Subtract line 32 from line 31. If zero or less, enter $6,000 on line 35
+      = $0
+      cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; Part V caution (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s1a.part5",{"const":false}],"op":"test"}
+  (helper) Is the amount on line 31 more than the amount on line 32?
+      = false
+      cite: [f1040s1a] Schedule 1-A (2025), line 33, "If zero or less, enter $6,000 on line 35" (2025; created 2025-11-04; 64f97b38)
+  (helper) Line 33 if more than zero, otherwise zero
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), line 33 (2025; created 2025-11-04; 64f97b38)
+  (helper) Figured: Multiply line 33 by 6% (0.06)
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), line 34 (2025; created 2025-11-04; 64f97b38)
+      note: half-up to the cent per the ambiguity register
+  34  Multiply line 33 by 6% (0.06)
+      = $0
+      cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; Part V caution (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s1a.part5",{"const":false}],"op":"test"}
+  (helper) Year parameter s1a.senior_amount ($6,000)
+      = $6,000
+      cite: [f1040s1a] Schedule 1-A (2025), lines 33 and 35, $6,000 (2025; created 2025-11-04; 64f97b38)
+  (helper) Subtract line 34 from $6,000. If zero or less, enter -0-
+      = $6,000
+      cite: [f1040s1a] Schedule 1-A (2025), line 35 (2025; created 2025-11-04; 64f97b38)
+  (helper) Figured: Subtract line 34 from $6,000. If zero or less, enter -0-
+      = $6,000
+      cite: [f1040s1a] Schedule 1-A (2025), lines 33 and 35 (2025; created 2025-11-04; 64f97b38)
+      note: taken: {"eq":["s1a.line33_over",{"const":false}],"op":"test"}
+  35  Subtract line 34 from $6,000. If zero or less, enter -0-
+      = $0
+      cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if"; Part V caution (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s1a.part5",{"const":false}],"op":"test"}
+  (helper) Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before reaching age 65?
+      = UNKNOWN (no input supplied for s1a.died_before_65)
+      cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025" (2025; printed date 2026-02-25; 482e9c48)
+  (gate) A filer who died in 2025 before reaching age 65
+      = UNKNOWN (no input supplied for s1a.died_before_65)
+      cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Line 36a for a filer born before January 2, 1961
+      = UNKNOWN (no input supplied for s1a.died_before_65)
+      cite: [f1040s1a] Schedule 1-A (2025), line 36a (2025; created 2025-11-04; 64f97b38)
+  (helper) Line 36a for a filer born before January 2, 1961: zero for married filing separately
+      = UNKNOWN (no input supplied for s1a.died_before_65)
+      cite: [f1040s1a] Schedule 1-A (2025), Part V caution, "If married, you must file jointly to claim this deduction" (2025; created 2025-11-04; 64f97b38)
+      note: taken: {"eq":["f1040.status",{"const":"single"}],"op":"test"}
+  36a If you have a valid social security number (see instructions) and were born before January 2, 1961, enter the amount from line 35
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), line 36a (2025; created 2025-11-04; 64f97b38)
+      note: taken: {"eq":["sa.age65",{"const":false}],"op":"test"}
+  36b If you are married filing jointly, your spouse has a valid social security number (see instructions), and your spouse was born before January 2, 1961, enter the amount from line 35
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), line 36b (2025; created 2025-11-04; 64f97b38)
+  37  Enhanced deduction for seniors. Add lines 36a and 36b
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), line 37 (2025; created 2025-11-04; 64f97b38)
+  38  Add lines 13, 21, 30, and 37. Enter here and on Form 1040 or 1040-SR, line 13b, or on Form 1040-NR, line 13c
+      = $0
+      cite: [f1040s1a] Schedule 1-A (2025), line 38 (2025; created 2025-11-04; 64f97b38)
+
 == Schedule 2 — supported Additional Medicare Tax and NIIT ==
   (helper) Are you required to file Form 6251 or do you have an AMT adjustment requiring its review?
       = false
@@ -1758,9 +2185,6 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
 
 == Proof-of-concept scope screening ==
   (helper) Any income or adjustment requiring Schedule 1 other than unemployment compensation, educator expenses, the HSA deduction and student loan interest, including a taxable state or local tax refund; alimony; an IRA deduction; being self-employed or filing Schedule C (income or loss, including statutory-employee wages) or Schedule SE (including clergy, and church employee income: wages from a church that elected exemption from social security and Medicare taxes); rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1); rental of personal property; farm income (Schedule F); gambling winnings, prizes or other income for Schedule 1 line 8; or an exclusion of Medicaid waiver payments (Schedule 1 line 8s)? (Schedule 1-A deductions are asked separately.)
-      = false
-      cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
-  (helper) Do you qualify for any Schedule 1-A deduction (qualified tips, qualified overtime compensation, qualified passenger vehicle loan interest, or the enhanced deduction for a filer born before January 2, 1961), whether or not you planned to claim it?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
   (helper) Do you want to claim any credit other than the foreign tax credit claimed without Form 1116, the excess social security credit, the child tax credit, the credit for other dependents, the additional child tax credit and the earned income credit, or do you have any other amount for Schedule 3 Part I (for example a Form 8978 adjustment)?
@@ -2558,6 +2982,10 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   qbi.sa.deduction: chose $15,750 (guard 1)
       not taken: guard 0 = false
+  s1a.line13: chose $0 (guard 0)
+  s1a.line21: chose $0 (guard 0)
+  s1a.line30: chose $0 (guard 0)
+  s1a.line36a: chose $0 (guard 0)
   qbi.deduction: chose $0 (guard 1)
       not taken: guard 0 = false
   f1040.qbi.deduction: chose $0 (guard 1)
@@ -2609,6 +3037,53 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   root|inst:tax_on_amount#{"amount":"qdcg.line1","status":"f1040.status"}.tax: chose $20,267 (guard 1)
       not taken: guard 0 = false
   s1.educator_deduction: chose UNKNOWN (no input supplied for s1.eligible_educator)
+  s1a.line4a_calc: chose UNKNOWN (collection roster not confirmed)
+  s1a.line4a: chose $0 (guard 0)
+  s1a.line4b: chose $0 (guard 0)
+  s1a.line4c_calc: chose UNKNOWN (collection roster not confirmed)
+  s1a.line4c: chose $0 (guard 0)
+  s1a.line5: chose $0 (guard 0)
+  s1a.line6: chose $0 (guard 0)
+  s1a.line7: chose $0 (guard 0)
+  s1a.line8: chose $0 (guard 0)
+  s1a.line9_calc: chose $150,000 (guard 0)
+  s1a.line9: chose $0 (guard 0)
+  s1a.line10: chose $0 (guard 0)
+  s1a.line12: chose $0 (guard 0)
+  s1a.line13_amount: chose $0 (guard 0)
+  s1a.line13_ssn: chose $0 (guard 1)
+      not taken: guard 0 = false
+  s1a.line13_claim: chose $0 (guard 0)
+  s1a.line14a: chose $0 (guard 0)
+  s1a.line14b: chose $0 (guard 0)
+  s1a.line14c: chose $0 (guard 0)
+  s1a.ot_max: chose $12,500 (guard 0)
+  s1a.line15: chose $0 (guard 0)
+  s1a.line16: chose $0 (guard 0)
+  s1a.line17_calc: chose $150,000 (guard 0)
+  s1a.line17: chose $0 (guard 0)
+  s1a.line18: chose $0 (guard 0)
+  s1a.line20: chose $0 (guard 0)
+  s1a.line21_amount: chose $0 (guard 0)
+  s1a.line21_ssn: chose $0 (guard 1)
+      not taken: guard 0 = false
+  s1a.line21_claim: chose $0 (guard 0)
+  s1a.line23: chose $0 (guard 0)
+  s1a.line24: chose $0 (guard 0)
+  s1a.line25: chose $0 (guard 0)
+  s1a.line26_calc: chose $100,000 (guard 0)
+  s1a.line26: chose $0 (guard 0)
+  s1a.line27: chose $0 (guard 0)
+  s1a.line29: chose $0 (guard 0)
+  s1a.line30_amount: chose $0 (guard 0)
+  s1a.line31: chose $0 (guard 0)
+  s1a.line32_calc: chose $75,000 (guard 0)
+  s1a.line32: chose $0 (guard 0)
+  s1a.line33: chose $0 (guard 0)
+  s1a.line34: chose $0 (guard 0)
+  s1a.line35_calc: chose $6,000 (guard 0)
+  s1a.line35: chose $0 (guard 0)
+  s1a.line36a_claim: chose UNKNOWN (no input supplied for s1a.died_before_65) (guard 0)
   s8812.part_iib_result: chose $0 (guard 0)
   sd.line21: chose $0 (guard 1)
       not taken: guard 0 = false
@@ -2930,8 +3405,17 @@ Collection entries and derivations:
   f1040.line12e: copy(household.hoh_fails = false; sa.deduction = $15,750)
   qbi.sa.agi: copy(f1040.line11b = $130,000)
   qbi.sa.deduction: choose(sa.itemizes = false; true = true; sa.itemizes = false; false = false; sa.standard = $15,750)
-  f1040.line13b: param(scope.schedule1a = false; #sales.zero = $0)
-  qbi.f1040.line13b: param(scope.schedule1a = false; #sales.zero = $0)
+  s1a.zero: param(#sales.zero = $0)
+  s1a.line13: choose(s1a.tips = false; false = false; s1a.zero = $0)
+  s1a.line21: choose(s1a.overtime = false; false = false; s1a.zero = $0)
+  s1a.line30: choose(s1a.carloan = false; false = false; s1a.zero = $0)
+  s1a.line36a: choose(sa.age65 = false; false = false; s1a.zero = $0)
+  s1a.line36b: param(sa.spouse_extra = false; #sales.zero = $0)
+  s1a.line37: sum(s1a.line36a = $0; s1a.line36b = $0)
+  s1a.line38: sum(s1a.line13 = $0; s1a.line21 = $0; s1a.line30 = $0; s1a.line37 = $0)
+  f1040.s1a.line38: sum(s1a.line13 = $0; s1a.line21 = $0; s1a.line30 = $0; s1a.line37 = $0)
+  f1040.line13b: copy(s1a.line38 = $0)
+  qbi.f1040.line13b: copy(s1a.line38 = $0)
   qbi.deductions_before: sum(sa.deduction = $15,750; f1040.line13b = $0)
   qbi.taxable_before: subtract_floor0(sa.agi = $130,000; qbi.deductions_before = $15,750)
   qbi.threshold: param(#qbi.threshold = $197,300)
@@ -3294,6 +3778,113 @@ Collection entries and derivations:
   s1.educator_max: param(#s1.educator_max = $300)
   s1.educator_limited: smaller_of(s1.educator_expenses = $0; s1.educator_max = $300)
   s1.educator_deduction: choose(s1.eligible_educator = UNKNOWN (no input supplied for s1.eligible_educator); true = true)
+  s1a.f1040.line11b: copy(f1040.line11a = $130,000)
+  s1a.line1: copy(f1040.line11b = $130,000)
+  s1a.line2a: param(sa.excluded_income = false; #sales.zero = $0)
+  s1a.line2b: param(#sales.zero = $0)
+  s1a.line2c: param(#sales.zero = $0)
+  s1a.line2d: param(#sales.zero = $0)
+  s1a.line2e: sum(s1a.line2a = $0; s1a.line2b = $0; s1a.line2c = $0; s1a.line2d = $0)
+  s1a.line3: sum(s1a.line1 = $130,000; s1a.line2e = $0)
+  s1a.tip_multi: test(s1a.tip_employers = UNKNOWN (collection roster not confirmed); #ss.one = 1)
+  s1a.part2: test(s1a.tips = false; true = true)
+  s1a.line4a_calc: choose(s1a.tip_multi = UNKNOWN (collection roster not confirmed); true = true)
+  s1a.line4a: choose(s1a.part2 = false; false = false; s1a.zero = $0)
+  s1a.line4b_calc: param(s2.other = false; #sales.zero = $0)
+  s1a.line4b: choose(s1a.part2 = false; false = false; s1a.zero = $0)
+  s1a.line4c_one: larger_of(s1a.line4a = $0; s1a.line4b = $0)
+  s1a.line4c_calc: choose(s1a.tip_multi = UNKNOWN (collection roster not confirmed); true = true)
+  s1a.line4c: choose(s1a.part2 = false; false = false; s1a.zero = $0)
+  s1a.line5_calc: param(scope.schedule1 = false; #sales.zero = $0)
+  s1a.line5: choose(s1a.part2 = false; false = false; s1a.zero = $0)
+  s1a.line6_calc: sum(s1a.line4c = $0; s1a.line5 = $0)
+  s1a.line6: choose(s1a.part2 = false; false = false; s1a.zero = $0)
+  s1a.tips_max: param(#s1a.tips_max = $25,000)
+  s1a.line7_calc: smaller_of(s1a.line6 = $0; s1a.tips_max = $25,000)
+  s1a.line7: choose(s1a.part2 = false; false = false; s1a.zero = $0)
+  s1a.base_other: param(#s1a.base_other = $150,000)
+  s1a.base_joint: param(#s1a.base_joint = $300,000)
+  s1a.line8_calc: copy(s1a.line3 = $130,000)
+  s1a.line8: choose(s1a.part2 = false; false = false; s1a.zero = $0)
+  s1a.line9_calc: choose(f1040.status = single; "single" = single; s1a.base_other = $150,000)
+  s1a.line9: choose(s1a.part2 = false; false = false; s1a.zero = $0)
+  s1a.line10_calc: subtract(s1a.line8 = $0; s1a.line9 = $0)
+  s1a.line10: choose(s1a.part2 = false; false = false; s1a.zero = $0)
+  s1a.line10_over: test(s1a.line8 = $0; s1a.line9 = $0)
+  s1a.line10_pos: subtract_floor0(s1a.line8 = $0; s1a.line9 = $0)
+  s1a.line11_thousands: round(s1a.line10_pos = $0)
+  s1a.line12_calc: multiply_rate(s1a.line11_thousands = $0; #s1a.hundred_per_thousand = 1/10)
+  s1a.line12: choose(s1a.part2 = false; false = false; s1a.zero = $0)
+  s1a.line13_figured: subtract_floor0(s1a.line7 = $0; s1a.line12 = $0)
+  s1a.line13_amount: choose(s1a.line10_over = false; false = false; s1a.line7 = $0)
+  s1a.line13_ssn: choose(household.taxpayer_work_ssn = true; false = false; household.taxpayer_work_ssn = true; true = true; s1a.line13_amount = $0)
+  s1a.line13_claim: choose(f1040.status = single; "single" = single; s1a.line13_ssn = $0)
+  s1a.part3: test(s1a.overtime = false; true = true)
+  s1a.line14a: choose(s1a.part3 = false; false = false; s1a.zero = $0)
+  s1a.line14b_calc: param(scope.schedule1 = false; #sales.zero = $0)
+  s1a.line14b: choose(s1a.part3 = false; false = false; s1a.zero = $0)
+  s1a.line14c_calc: sum(s1a.line14a = $0; s1a.line14b = $0)
+  s1a.line14c: choose(s1a.part3 = false; false = false; s1a.zero = $0)
+  s1a.ot_max_other: param(#s1a.ot_max_other = $12,500)
+  s1a.ot_max_joint: param(#s1a.ot_max_joint = $25,000)
+  s1a.ot_max: choose(f1040.status = single; "single" = single; s1a.ot_max_other = $12,500)
+  s1a.line15_calc: smaller_of(s1a.line14c = $0; s1a.ot_max = $12,500)
+  s1a.line15: choose(s1a.part3 = false; false = false; s1a.zero = $0)
+  s1a.line16_calc: copy(s1a.line3 = $130,000)
+  s1a.line16: choose(s1a.part3 = false; false = false; s1a.zero = $0)
+  s1a.line17_calc: choose(f1040.status = single; "single" = single; s1a.base_other = $150,000)
+  s1a.line17: choose(s1a.part3 = false; false = false; s1a.zero = $0)
+  s1a.line18_calc: subtract(s1a.line16 = $0; s1a.line17 = $0)
+  s1a.line18: choose(s1a.part3 = false; false = false; s1a.zero = $0)
+  s1a.line18_over: test(s1a.line16 = $0; s1a.line17 = $0)
+  s1a.line18_pos: subtract_floor0(s1a.line16 = $0; s1a.line17 = $0)
+  s1a.line19_thousands: round(s1a.line18_pos = $0)
+  s1a.line20_calc: multiply_rate(s1a.line19_thousands = $0; #s1a.hundred_per_thousand = 1/10)
+  s1a.line20: choose(s1a.part3 = false; false = false; s1a.zero = $0)
+  s1a.line21_figured: subtract_floor0(s1a.line15 = $0; s1a.line20 = $0)
+  s1a.line21_amount: choose(s1a.line18_over = false; false = false; s1a.line15 = $0)
+  s1a.line21_ssn: choose(household.taxpayer_work_ssn = true; false = false; household.taxpayer_work_ssn = true; true = true; s1a.line21_amount = $0)
+  s1a.line21_claim: choose(f1040.status = single; "single" = single; s1a.line21_ssn = $0)
+  s1a.line23: choose(s1a.carloan = false; false = false; s1a.zero = $0)
+  s1a.car_max: param(#s1a.car_max = $10,000)
+  s1a.part4: test(s1a.carloan = false; true = true)
+  s1a.line24_calc: smaller_of(s1a.line23 = $0; s1a.car_max = $10,000)
+  s1a.line24: choose(s1a.part4 = false; false = false; s1a.zero = $0)
+  s1a.car_base_other: param(#s1a.car_base_other = $100,000)
+  s1a.car_base_joint: param(#s1a.car_base_joint = $200,000)
+  s1a.line25_calc: copy(s1a.line3 = $130,000)
+  s1a.line25: choose(s1a.part4 = false; false = false; s1a.zero = $0)
+  s1a.line26_calc: choose(f1040.status = single; "single" = single; s1a.car_base_other = $100,000)
+  s1a.line26: choose(s1a.part4 = false; false = false; s1a.zero = $0)
+  s1a.line27_calc: subtract(s1a.line25 = $0; s1a.line26 = $0)
+  s1a.line27: choose(s1a.part4 = false; false = false; s1a.zero = $0)
+  s1a.line27_over: test(s1a.line25 = $0; s1a.line26 = $0)
+  s1a.line27_pos: subtract_floor0(s1a.line25 = $0; s1a.line26 = $0)
+  s1a.line28_thousands: round(s1a.line27_pos = $0)
+  s1a.line29_calc: multiply_rate(s1a.line28_thousands = $0; #s1a.two_hundred_per_thousand = 1/5)
+  s1a.line29: choose(s1a.part4 = false; false = false; s1a.zero = $0)
+  s1a.line30_figured: subtract_floor0(s1a.line24 = $0; s1a.line29 = $0)
+  s1a.line30_amount: choose(s1a.line27_over = false; false = false; s1a.line24 = $0)
+  s1a.part5: test(sa.age65 = false; true = true)
+  s1a.line31_calc: copy(s1a.line3 = $130,000)
+  s1a.line31: choose(s1a.part5 = false; false = false; s1a.zero = $0)
+  s1a.senior_base_other: param(#s1a.senior_base_other = $75,000)
+  s1a.senior_base_joint: param(#s1a.senior_base_joint = $150,000)
+  s1a.line32_calc: choose(f1040.status = single; "single" = single; s1a.senior_base_other = $75,000)
+  s1a.line32: choose(s1a.part5 = false; false = false; s1a.zero = $0)
+  s1a.line33_calc: subtract(s1a.line31 = $0; s1a.line32 = $0)
+  s1a.line33: choose(s1a.part5 = false; false = false; s1a.zero = $0)
+  s1a.line33_over: test(s1a.line31 = $0; s1a.line32 = $0)
+  s1a.line33_pos: subtract_floor0(s1a.line31 = $0; s1a.line32 = $0)
+  s1a.line34_calc: multiply_rate(s1a.line33_pos = $0; #s1a.senior_rate = 6/100)
+  s1a.line34: choose(s1a.part5 = false; false = false; s1a.zero = $0)
+  s1a.senior_amount: param(#s1a.senior_amount = $6,000)
+  s1a.line35_figured: subtract_floor0(s1a.senior_amount = $6,000; s1a.line34 = $0)
+  s1a.line35_calc: choose(s1a.line33_over = false; false = false; s1a.senior_amount = $6,000)
+  s1a.line35: choose(s1a.part5 = false; false = false; s1a.zero = $0)
+  s1a.senior_decedent: test(s1a.died_before_65 = UNKNOWN (no input supplied for s1a.died_before_65); true = true)
+  s1a.line36a_senior: gate(s1a.senior_decedent = UNKNOWN (no input supplied for s1a.died_before_65))
+  s1a.line36a_claim: choose(f1040.status = single; "single" = single; s1a.line36a_senior = UNKNOWN (no input supplied for s1a.died_before_65))
   s2.line2: copy(s2.amt = false; s2.other = false; s2.zero = $0)
   s8812.line18b: copy(s8812.eiw_1b = $0)
   person[taxpayer].withheld: sum_over(person[taxpayer].w2[emp_a].box4 = $8,060)
@@ -3317,7 +3908,7 @@ Collection entries and derivations:
   sa.extra: param(#sa.standard_extra = $2,000)
   sb.partIII: test(sb.line4 = $0; 150000 = $1,500; sb.line6 = $0; 150000 = $1,500; sb.line7a = false; true = true; sb.line8 = false; true = true)
   scope.s3.married: test(f1040.status = single; "mfj" = mfj; f1040.status = single; "mfs" = mfs)
-  scope.ready: test(scope.schedule1 = false; scope.schedule1a = false; scope.credits = false; scope.other_income = false; scope.other_line16 = false; s3.married = false; true = true; true = true)
+  scope.ready: test(scope.schedule1 = false; scope.credits = false; scope.other_income = false; scope.other_line16 = false; s3.married = false; true = true; true = true)
   sd.f4952.required: test(f4952.carryover = false; f4952.unsupported = false; f4952.alternative_allocation = false; f4952.election = $0; 0 = $0; f4952.line1 = $0; 0 = $0)
   sd.filing4952: copy(f4952.required = false)
   sd.f4952.election: copy(f4952.carryover = false; f4952.unsupported = false; f4952.alternative_allocation = false; f4952.bad_election = false; f4952.line4g = $0)

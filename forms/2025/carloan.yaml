@@ -1,0 +1,329 @@
+form:
+  id: carloan
+  kind: form
+  title: Qualified passenger vehicle loan interest (Schedule 1-A, line 22) — one entry per loan
+  tax_year: 2025
+  note: One entry per loan; name each entry by the vehicle's VIN (a vehicle with a loan refinanced during 2025 has one
+    entry for each loan). Interest deducted on Schedule C, E or F (column (ii)) is outside this tool, which refuses
+    those schedules, so column (iii) is the qualified interest on the loan. Where a loan also financed amounts that do
+    not qualify, or refinanced a qualifying loan for more than its balance, the interest is allocated pro rata under
+    proposed § 1.163-16(d)(2)(iii) and (d)(4); the ratio is rounded to six places (amb.2025.carloan_ratio_places).
+  lines:
+  - id: carloan.zero
+    printed: (helper)
+    label: Year parameter sales.zero
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: sales.zero
+    cite:
+      doc: i1040gi
+      locator: p. 110, Schedule 1-A, line 22
+  - id: carloan.kind
+    printed: (helper)
+    label: How you came to owe this loan
+    type: Enum(carloan_kind)
+    expr:
+      op: input
+      source: 'How you came to owe this loan: original (you took out this loan after December 31, 2024, to buy the vehicle);
+        refinanced (this loan refinanced such a loan and is secured by a first lien on the same vehicle); death (you
+        became the borrower because a previous borrower died, for example by inheriting the vehicle or as its surviving
+        joint owner, and the loan met the requirements when it was taken out)'
+    cite:
+      doc: fr-2025-24154
+      locator: pp. 20–22, Proposed § 1.163-16(d)(4) and (d)(5); i1040gi p. 109, Schedule 1-A, "Change in obligor by reason of previous
+        obligor's death" and "Refinanced loan"
+  - id: carloan.requirements
+    printed: (helper)
+    label: Does this loan meet the loan requirements?
+    type: Bool
+    expr:
+      op: input
+      source: 'Does this loan meet all of these: it was originated after December 31, 2024 (for a refinancing, the loan
+        it refinanced was); it was used to buy the vehicle (lease payments do not qualify); it is secured by a first lien
+        on the vehicle; it is not owed to a person related to you (Internal Revenue Code section 267(b) or 707(b)(1));
+        and when the loan was taken out you expected the vehicle to be used more than 50% of the time for personal use
+        (not in a trade or business other than as an employee, and not to produce income) by you or certain relatives
+        or members of your household?'
+    cite:
+      doc: i1040gi
+      locator: p. 109, Schedule 1-A, Qualified passenger vehicle loan interest, requirements 1 to 5, and Personal use;
+        fr-2025-24154 proposed § 1.163-16(d)(3) (related party indebtedness)
+  - id: carloan.vehicle
+    printed: (helper)
+    label: Is the vehicle an applicable passenger vehicle?
+    type: Bool
+    expr:
+      op: input
+      source: 'Is the vehicle all of these: new, with its original use starting with you (a used vehicle does not qualify;
+        the loan documents treat it as new); made primarily for use on public streets, roads and highways (not only on
+        rails); with at least 2 wheels; a car, minivan, van, SUV, pickup truck or motorcycle; with a gross vehicle weight
+        rating under 14,000 pounds; and finally assembled in the United States (shown on the vehicle information label,
+        or by the plant of manufacture in the VIN)?'
+    cite:
+      doc: i1040gi
+      locator: p. 109, Schedule 1-A, Applicable passenger vehicle and Final assembly in the United States; fr-2025-24154
+        proposed § 1.163-16(e)(1)
+  - id: carloan.eligible
+    printed: (helper)
+    label: The loan and the vehicle qualify
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - carloan.requirements
+        - const: true
+      - op: test
+        eq:
+        - carloan.vehicle
+        - const: true
+    cite:
+      doc: i1040gi
+      locator: p. 109, Schedule 1-A, Qualified passenger vehicle loan interest and Applicable passenger vehicle
+  - id: carloan.interest
+    printed: (helper)
+    label: Interest you paid or accrued on this loan in 2025
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Total interest you paid or accrued on this loan in 2025 (generally from the lender's statement), none of
+        it deducted elsewhere on your return
+    cite:
+      doc: i1040gi
+      locator: p. 110, Schedule 1-A, line 22, column (iii), "the total amount of the QPVLI paid or accrued on the loan
+        during the taxable year minus the amount on line 22, column (ii)"
+  - id: carloan.mixed
+    printed: (helper)
+    label: Did this loan also finance amounts that do not qualify?
+    type: Bool
+    expr:
+      op: input
+      source: Did this loan also finance anything other than the vehicle and items customarily financed with it and directly
+        related to it (such as a service plan, extended warranty, sales tax and vehicle fees)? For example negative equity
+        on a vehicle traded in, collision or liability insurance, a trailer or other unrelated property, or cash paid
+        to you.
+    cite:
+      doc: fr-2025-24154
+      locator: pp. 20–22, Proposed § 1.163-16(d)(2)(i) and (ii); i1040gi p. 109, Schedule 1-A, Loan amount
+  - id: carloan.financed
+    printed: (helper)
+    label: Total amount of this loan when it was taken out
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The total amount financed by this loan when it was taken out (the indebtedness incurred, after any down
+        payment)
+    cite:
+      doc: fr-2025-24154
+      locator: pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(A) and (d)(4); (d)(6) Examples 3 and 4
+  - id: carloan.nonqualifying
+    printed: (helper)
+    label: Amounts in the purchase that do not qualify
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The total of the amounts in the purchase that do not qualify (negative equity, insurance, unrelated property,
+        cash paid to you), before applying any down payment
+    cite:
+      doc: fr-2025-24154
+      locator: pp. 20–22, Proposed § 1.163-16(d)(2)(ii) and (d)(6) Example 4
+  - id: carloan.down
+    printed: (helper)
+    label: Down payment
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Any down payment or other consideration you provided when you bought the vehicle (zero if none)
+    cite:
+      doc: fr-2025-24154
+      locator: pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(B), "any down payment ... is applied first against any negative equity and
+        any other amounts that are not incurred for the purchase of the APV"
+  - id: carloan.nonqualifying_debt
+    printed: (helper)
+    label: Nonqualifying amounts less the down payment applied first against them
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: carloan.nonqualifying
+      take: carloan.down
+    cite:
+      doc: fr-2025-24154
+      locator: pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(B) and (d)(6) Example 4
+  - id: carloan.mixed_qualifying
+    printed: (helper)
+    label: Part of the loan that is a specified passenger vehicle loan
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: carloan.financed
+      take: carloan.nonqualifying_debt
+    cite:
+      doc: fr-2025-24154
+      locator: pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(A), "Only the portion of the indebtedness allocated to the indebtedness
+        described in paragraph (d)(2)(i) of this section is an SPVL"; (d)(6) Example 4
+  - id: carloan.refi_balance
+    printed: (helper)
+    label: Outstanding balance of the refinanced loan when it was refinanced
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The outstanding balance of the loan this loan refinanced, on the date of the refinancing
+    cite:
+      doc: fr-2025-24154
+      locator: pp. 20–22, Proposed § 1.163-16(d)(4), "The amount of the new loan that is an SPVL is limited to the outstanding balance
+        of the refinanced loan as of the date of the refinancing"
+  - id: carloan.refi_whole
+    printed: (helper)
+    label: Was all of the refinanced loan a specified passenger vehicle loan?
+    type: Bool
+    expr:
+      op: input
+      source: Was all of the loan this loan refinanced a qualifying vehicle loan (it financed only the vehicle and items
+        customarily financed with it, and was not itself a refinancing for more than the balance it replaced)?
+    cite:
+      doc: fr-2025-24154
+      locator: pp. 20–22, Proposed § 1.163-16(d)(4), "If a taxpayer refinances an SPVL"
+  - id: carloan.refi_qualifying
+    printed: (helper)
+    label: Part of the new loan that is a specified passenger vehicle loan
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - carloan.refi_balance
+      - carloan.financed
+    cite:
+      doc: fr-2025-24154
+      locator: pp. 20–22, Proposed § 1.163-16(d)(4) and (d)(6) Example 3
+    refuses:
+    - when: carloan.refi_nested
+      form: Refinancing of a loan that was itself only partly a qualifying vehicle loan
+      remedy: Allocating a refinancing of a partly qualifying loan is outside this tool.
+      cite:
+        doc: fr-2025-24154
+        locator: pp. 20–22, Proposed § 1.163-16(d)(2)(iii) and (d)(4)
+  - id: carloan.refi_nested
+    printed: (gate)
+    label: The refinanced loan was itself only partly a qualifying loan
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - carloan.refi_whole
+      - const: false
+    cite:
+      doc: fr-2025-24154
+      locator: pp. 20–22, Proposed § 1.163-16(d)(4)
+  - id: carloan.allocated
+    printed: (helper)
+    label: Interest allocated pro rata to the qualifying part of the loan
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - carloan.kind
+          - const: original
+        then: carloan.mixed_interest
+      - guard:
+          op: test
+          eq:
+          - carloan.kind
+          - const: refinanced
+        then: carloan.refi_interest
+      - guard:
+          op: test
+          eq:
+          - carloan.kind
+          - const: death
+        then: carloan.mixed_interest
+    cite:
+      doc: fr-2025-24154
+      locator: pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(A) and (d)(4), "payments of interest and principal are allocated ... on
+        a pro rata basis"
+  - id: carloan.refi_interest
+    printed: (helper)
+    label: Interest times the qualifying part of the new loan divided by the new loan, the ratio rounded to six places
+    type: NonNegDollars
+    expr:
+      op: prorate
+      amount: carloan.interest
+      part: carloan.refi_qualifying
+      whole: carloan.financed
+      places: 6
+    cite:
+      doc: fr-2025-24154
+      locator: pp. 20–22, Proposed § 1.163-16(d)(4), "A taxpayer allocates principal and interest between the amount of the new
+        loan that is an SPVL and the remaining portion of the indebtedness on a pro rata basis"
+    ambiguity: amb.2025.carloan_ratio_places
+  - id: carloan.mixed_interest
+    printed: (helper)
+    label: Interest times the qualifying part of the loan divided by the loan, the ratio rounded to six places
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - carloan.mixed
+          - const: false
+        then: carloan.interest
+      - guard:
+          op: test
+          eq:
+          - carloan.mixed
+          - const: true
+        then: carloan.mixed_prorated
+    cite:
+      doc: fr-2025-24154
+      locator: pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(A) and (d)(6) Examples 1, 2 and 4
+  - id: carloan.mixed_prorated
+    printed: (helper)
+    label: Interest times the qualifying part of the loan divided by the loan, the ratio rounded to six places
+    type: NonNegDollars
+    expr:
+      op: prorate
+      amount: carloan.interest
+      part: carloan.mixed_qualifying
+      whole: carloan.financed
+      places: 6
+    cite:
+      doc: fr-2025-24154
+      locator: pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(A), "payments of interest and principal are allocated to the portion of
+        the indebtedness described in paragraph (d)(2)(i) ... and the portion ... described in paragraph (d)(2)(ii) ...
+        on a pro rata basis"
+    ambiguity: amb.2025.carloan_ratio_places
+  - id: carloan.col_iii
+    printed: 22(iii)
+    label: Interest for this loan, Schedule 1-A
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - carloan.eligible
+          - const: false
+        then: carloan.zero
+      - guard:
+          op: test
+          eq:
+          - carloan.eligible
+          - const: true
+        then: carloan.allocated
+    cite:
+      doc: i1040gi
+      locator: p. 110, Schedule 1-A, line 22, column (iii); column (ii), interest deducted on Schedule C, E or F, is outside
+        this tool (scope.schedule1)
+  collection:
+    cite:
+      doc: i1040gi
+      locator: p. 110, Schedule 1-A, line 22, "If you need to report more than two VINs, attach a statement to your return
+        showing the information required on line 22"; "for each entered VIN, enter the QPVLI paid or accrued on the loan
+        originated for the purchase of that APV"

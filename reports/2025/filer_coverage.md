@@ -7,25 +7,17 @@ Shares are of the 160,602,107 individual returns the IRS counted for tax year 20
 (Statistics of Income, Publication 1304, archived under `sources/2025/soi-*`). Overlaps between situations
 come from PolicyEngine-US microdata simulated for 2025, raked to every IRS count it can place.
 
-**Estimated coverage: 17.9%** of returns. If the IRS-only categories overlapped the rest
-completely the figure would be 22.1%; if they overlapped nothing, 1.1%.
+**Estimated coverage: 33.9%** of returns. If the IRS-only categories overlapped the rest
+completely the figure would be 41.9%; if they overlapped nothing, 20.9%.
 
 Limits of this estimate:
 
-- IRS counts are for 2023; the 2025 shares are assumed similar. The Schedule 1-A deductions are new for 2025
-  and have no IRS count yet; their shares are the microdata model's alone.
+- IRS counts are for 2023; the 2025 shares are assumed similar.
 - Where the IRS gives only parts of a situation with unknown overlap, the largest part is used, a lower bound.
-- 51 of the 63 refusal gates in the forms are not measured (no IRS count or
+- 55 of the 66 refusal gates in the forms are not measured (no IRS count or
   microdata variable), so the true coverage is lower by their share. Gates measured only in part (for example
   `scope.credits`, `scope.other_line16`) also refuse situations not counted here. Unmeasured:
-  `dependent.divorced_rule`, `dependent.income_exception`, `dependent.married`, `dependent.multiple_support`, `dependent.other_claimant`, `div.amt`, `div.bad_components`, `div.bad_special`, `div.section1202`, `div.unsupported`, `f4952.alternative_allocation`, `f4952.bad_dividends`, `f4952.bad_election`, `f4952.carryover`, `f4952.unsupported`, `f8889.bad_months`, `f8889.excess`, `f8889.married`, `f8959.unsupported`, `f8960.bad_allocation`, `f8960.refund`, `f8960.unsupported`, `ftc.needs1116`, `gift.section_b`, `gift.special`, `household.hoh_fails`, `person.over`, `person.rrta`, `retirement.annuity_rollover`, `retirement.bad_code`, `s1.uc_unsupported`, `s8812.combat_pay`, `s8812.puerto_rico`, `sa.charity_limited`, `sa.dependent`, `sa.spouse_extra`, `sa.unsupported`, `sales.bad_aggregate`, `sales.bad_code`, `sales.digital`, `sales.special`, `sb.fbar_required`, `sb.form8938`, `sb.line8`, `sb.unsupported`, `scope.other_line16`, `sd.other_forms`, `sd.screen`, `ssb.lump_sum`, `ssb.pub915`, `ssb.terror_disability`.
-
-Categories without an IRS count rest on the microdata model alone. Present coverage if each were set aside:
-
-- senior: 21.2%
-- tips: 18.2%
-- overtime: 20.5%
-- car_loan: 25.4%
+  `carloan.refi_nested`, `dependent.divorced_rule`, `dependent.income_exception`, `dependent.married`, `dependent.multiple_support`, `dependent.other_claimant`, `div.amt`, `div.bad_components`, `div.bad_special`, `div.section1202`, `div.unsupported`, `f4952.alternative_allocation`, `f4952.bad_dividends`, `f4952.bad_election`, `f4952.carryover`, `f4952.unsupported`, `f8889.bad_months`, `f8889.excess`, `f8889.married`, `f8959.unsupported`, `f8960.bad_allocation`, `f8960.refund`, `f8960.unsupported`, `ftc.needs1116`, `gift.section_b`, `gift.special`, `household.hoh_fails`, `otjob.refused`, `person.over`, `person.rrta`, `retirement.annuity_rollover`, `retirement.bad_code`, `s1.uc_unsupported`, `s1a.senior_decedent`, `s8812.combat_pay`, `s8812.puerto_rico`, `sa.charity_limited`, `sa.dependent`, `sa.spouse_extra`, `sa.unsupported`, `sales.bad_aggregate`, `sales.bad_code`, `sales.digital`, `sales.special`, `sb.fbar_required`, `sb.form8938`, `sb.line8`, `sb.unsupported`, `scope.other_line16`, `sd.other_forms`, `sd.screen`, `ssb.lump_sum`, `ssb.pub915`, `ssb.terror_disability`, `tipjob.mixed`.
 
 ## Coverage gained by each group, in the order that gains most
 
@@ -33,29 +25,25 @@ Coverage here is of the measured situations only; 100% would still leave the unm
 
 | Step | Group | Coverage after | Gain if covered alone now |
 |---|---|---|---|
-| 1 | Schedule 1-A deductions (new for 2025) | 33.9% (+16.0) | +16.0 |
-| 2 | Married filing jointly and separately | 49.2% (+15.3) | +5.5 |
-| 3 | Self-employment (Schedule C and SE) | 59.8% (+10.6) | +3.6 |
-| 4 | Other credits (dependent care, saver's, energy, others) | 67.3% (+7.5) | +2.1 |
-| 5 | Other Schedule 1 income and adjustments | 75.3% (+8.0) | +1.6 |
-| 6 | Rental, royalty, partnership, S corporation, estate (Schedule E) | 82.2% (+7.0) | +0.9 |
-| 7 | Premium tax credit (Form 8962) | 87.1% (+4.9) | +0.9 |
-| 8 | Education credits (Form 8863) | 91.3% (+4.1) | +0.7 |
-| 9 | Capital loss carryover | 94.6% (+3.3) | +0.6 |
-| 10 | Additional tax on retirement plans (Form 5329) | 97.7% (+3.1) | +0.6 |
-| 11 | Farm income (Schedule F) | 98.8% (+1.1) | +0.2 |
-| 12 | Wages not on Form W-2 and other earned income | 99.5% (+0.8) | +0.1 |
-| 13 | Other Schedule 2 taxes (AMT and others) | 100.0% (+0.5) | +0.1 |
+| 1 | Married filing jointly and separately | 49.2% (+15.3) | +15.3 |
+| 2 | Self-employment (Schedule C and SE) | 59.8% (+10.6) | +6.7 |
+| 3 | Other credits (dependent care, saver's, energy, others) | 67.3% (+7.5) | +4.0 |
+| 4 | Other Schedule 1 income and adjustments | 75.3% (+8.0) | +3.0 |
+| 5 | Rental, royalty, partnership, S corporation, estate (Schedule E) | 82.2% (+7.0) | +1.7 |
+| 6 | Premium tax credit (Form 8962) | 87.1% (+4.9) | +1.5 |
+| 7 | Education credits (Form 8863) | 91.3% (+4.1) | +1.5 |
+| 8 | Capital loss carryover | 94.6% (+3.3) | +1.2 |
+| 9 | Additional tax on retirement plans (Form 5329) | 97.7% (+3.1) | +1.1 |
+| 10 | Farm income (Schedule F) | 98.8% (+1.1) | +0.2 |
+| 11 | Wages not on Form W-2 and other earned income | 99.5% (+0.8) | +0.3 |
+| 12 | Other Schedule 2 taxes (AMT and others) | 100.0% (+0.5) | +0.2 |
 
 ## Refused situations
 
 | Situation | Group | Share of returns | IRS returns (2023) | Microdata before raking | Basis |
 |---|---|---|---|---|---|
 | Married filing jointly | Married filing jointly and separately | 33.6% | — | 50.7% | IRS count with qualifying surviving spouses (joint_or_qss), overlap from microdata |
-| Car loan interest deduction | Schedule 1-A deductions (new for 2025) | 26.9% | — | 26.8% | microdata model only (no IRS count; new for 2025) |
 | Schedule C income or loss | Self-employment (Schedule C and SE) | 19.0% | 30,478,887 | 18.7% | IRS count, overlap from microdata |
-| Enhanced deduction for seniors | Schedule 1-A deductions (new for 2025) | 18.3% | — | 19.7% | microdata model only (no IRS count; new for 2025) |
-| Qualified overtime deduction | Schedule 1-A deductions (new for 2025) | 13.1% | — | 14.8% | microdata model only (no IRS count; new for 2025) |
 | Saver's credit | Other credits (dependent care, saver's, energy, others) | 6.1% | 9,831,548 | — | IRS count only (independence assumed) |
 | Premium tax credit or advance payments (Form 8962 is not prepared; line 9 is a supplied subtotal) | Premium tax credit (Form 8962) | 6.0% | 9,604,913 | 5.0% | IRS count, overlap from microdata |
 | Rental and royalty income or loss | Rental, royalty, partnership, S corporation, estate (Schedule E) | 5.9% | 9,542,639 | 8.6% | IRS count, overlap from microdata |
@@ -70,7 +58,6 @@ Coverage here is of the measured situations only; 100% would still leave the unm
 | Residential energy credits | Other credits (dependent care, saver's, energy, others) | 1.6% | 2,570,561 | — | IRS count only (independence assumed) |
 | IRA deduction | Other Schedule 1 income and adjustments | 1.6% | 2,503,934 | 16.9% | IRS count, overlap from microdata |
 | Gambling winnings | Other Schedule 1 income and adjustments | 1.4% | 2,304,901 | — | IRS count only (independence assumed) |
-| Qualified tips deduction | Schedule 1-A deductions (new for 2025) | 1.1% | — | 1.0% | microdata model only (no IRS count; new for 2025) |
 | Farm income or loss | Farm income (Schedule F) | 1.1% | 1,743,031 | 0.1% | IRS count, overlap from microdata |
 | Sales of business property (Form 4797) | Other Schedule 1 income and adjustments | 1.1% | 1,720,509 | — | IRS count only (independence assumed) |
 | Other nonrefundable credits (general business, adoption, clean vehicle and others) | Other credits (dependent care, saver's, energy, others) | 0.9% | 1,467,567 | — | IRS count only (independence assumed) |

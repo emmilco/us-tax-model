@@ -414,3 +414,103 @@ later grouping.
 - **Why it survived:** the Stage 9 fixtures and generated returns never put a filer on that date, and the earlier render comparison of the line did not compare the two boundaries.
 - **Fix:** the EIC asks its own question in the instructions' words (`eic.born_after_1960`, the owner's ruling); `stage9.eic.no_child.born_jan1_1961` asserts the credit for that birth date.
 - **Tags:** boundary-off-by-one; reused-input-different-rule; caught-by-render-comparison
+
+---
+
+## BUG-0035 — Schedule 1-A gave married filing separately the tips, overtime and senior deductions
+
+- **Date:** 2026-10-18
+- **Caught by:** the Stage 12 transcription agreement and render comparison of `s1a` (lines 13, 21 and 36a): "If married, you must file jointly to claim this deduction" (Schedule 1-A Parts II, III and V cautions).
+- **Symptom:** a married-filing-separately return would have received the three deductions at the single-filer amounts.
+- **Root cause:** the encoding chose amounts by filing status (lines 9, 15, 17, 32) but carried no must-file-jointly condition; the cautions sit above each part, not on a numbered line.
+- **Why it survived:** married statuses are refused for whole returns (`s3.married`), so no fixture or generated return reached the lines with that status.
+- **Fix:** lines 13, 21 and 36a are zero for married filing separately (`s1a.line13_claim`, `line21_claim`, `line36a_claim`); fixture `stage12.mfs.bar`. Stage 12 commit.
+- **Tags:** caution-not-on-a-line; unreachable-status; caught-by-transcription; caught-by-render-comparison
+
+---
+
+## BUG-0036 — The overtime question never asked for overtime outside Form W-2 box 1
+
+- **Date:** 2026-10-18
+- **Caught by:** the Stage 12 transcription agreement of `s1a` line 14a: the second transcription noted "No input covers this" for qualified overtime not included in box 1 (i1040gi p. 108, line 14a).
+- **Symptom:** the owner had approved accepting deferred overtime, but `otjob.statement` asked only for statement amounts, so a filer would not enter it.
+- **Root cause:** the decision was taken into the arithmetic (no cap at box 1) but not into the question wording.
+- **Fix:** the question (form source and the three interviews) now says to include overtime not in box 1. Stage 12 commit.
+- **Tags:** decision-not-in-question; caught-by-transcription
+
+---
+
+## BUG-0037 — Schedule 1-A refused every Form 2555 filer, claimed or not
+
+- **Date:** 2026-10-18
+- **Caught by:** predicting the Stage 12 fixtures by hand: a Form 2555 filer claiming nothing on Schedule 1-A should not need its Part I.
+- **Symptom:** `f1040.line13b` refused through `sa.excluded_income` on every such return.
+- **Root cause:** line 30 chose between its branches by line 27, which reads modified AGI (line 3, and so the refused lines 2a to 2d), even when no car loan interest was claimed.
+- **Fix:** line 30 is zero when no car loan interest is claimed; `stage12.excluded_income_no_claim` and `stage12.refuse.excluded_income`. Stage 12 commit.
+- **Tags:** unguarded-read; refusal-too-broad; caught-by-fixture-prediction
+
+---
+
+## BUG-0038 — Batch evaluation failed on a large corpus
+
+- **Date:** 2026-10-18
+- **Caught by:** the engine differential run (`tools/engines/run.sh`) after Schedule 1-A entered the generated cases: `RangeError: Invalid string length` in `engine/src/main.ts`.
+- **Symptom:** `eval --batch` built the whole `{ cases }` document as one string, longer than V8 allows (the output is about 940 MB).
+- **Root cause:** the document grows with lines and derivations per case; Schedule 1-A's lines pushed it past the limit.
+- **Fix:** batch mode writes the same document one case at a time. Stage 12 commit.
+- **Tags:** tool-scaling; caught-by-engine-differential
+
+---
+
+## BUG-0039 — Engine adapters compared less than they could, and one adapter fed an imputation
+
+- **Date:** 2026-10-18
+- **Caught by:** investigating the Schedule 1-A differences in the engine differential.
+- **Symptom:** (1) PolicyEngine-US added modeled Medicare Part B premiums ($2,220) to the medical expenses of every filer 65 or older; (2) Tax-Calculator ran in its smoothed mode, so its phase-outs (and the child tax credit's) differed from the printed $1,000 steps and the `ctc_phaseout` exclusion hid comparisons that exact mode passes; (3) Tax-Calculator's forced itemizing pass zeroed the standard deduction but not its addition for age.
+- **Root cause:** adapter defaults: `medicare_enrolled` not supplied; `Records(exact_calculations=False)`; `STD_Aged` not zeroed. Before Stage 12 every generated filer was 40, which hid (1) and (3).
+- **Fix:** the adapters supply `medicare_enrolled: false`, run Tax-Calculator with `exact_calculations=True` (the `ctc_phaseout` exclusion is removed) and zero `STD_Aged` in the forced pass. Stage 12 commit.
+- **Tags:** adapter-default; comparison-weaker-than-possible; fixed-age-blind-spot; caught-by-engine-differential
+
+---
+
+## BUG-0040 — An engine-limitation flag fired on returns it did not concern
+
+- **Date:** 2026-10-18
+- **Caught by:** an engine investigation entry (gen-00053, a float32 difference) that stopped being used although its difference remained.
+- **Symptom:** `schedule1a_stepped_phaseout` excluded PolicyEngine-US's taxable income and tax on every return above the Schedule 1-A thresholds, including returns that claim nothing on Schedule 1-A.
+- **Root cause:** Schedule 1-A's phase-out lines are figured from modified AGI whether or not their part is claimed; the flag tested the reduction alone.
+- **Fix:** the flag also requires the part's capped amount (line 7, 15 or 24) to be positive. Stage 12 commit.
+- **Tags:** exclusion-too-broad; hidden-comparison; caught-by-stale-investigation
+
+---
+
+## BUG-0041 — Citations by section gave the reviewers no source text
+
+- **Date:** 2026-10-18
+- **Caught by:** the dry run of the Stage 12 transcription prompts: `n-25-69 pages []` and `fr-2025-24154 pages []`.
+- **Symptom:** the isolated reviewers of `otjob` and `carloan` would have checked those lines without Notice 2025-69 or proposed § 1.163-16 in front of them.
+- **Root cause:** the review tools take a document's pages from `p.`/`pp.` in the locator; the Stage 12 locators named sections only.
+- **Fix:** every locator citing the two documents names its pages (Notice 2025-69 pp. 22-25; the regulation pp. 20-22). Stage 12 commit.
+- **Tags:** citation-without-page; review-input-gap; caught-by-dry-run
+
+---
+
+## BUG-0042 — Schedule 1-A filled out parts that did not apply, and left line 4a at column (d)
+
+- **Date:** 2026-10-18
+- **Caught by:** class M of `s1a` (44 lines: "Part IV not filled", "Part V not filled") and the render comparison of line 4a.
+- **Symptom:** the values sheet showed modified AGI, thresholds and phase-out amounts in parts the filer must not fill out (the deductions were unaffected); line 4a showed the worksheet's column (d), not column (b), the Form W-2 or Forms 4070 figure the line asks for.
+- **Root cause:** the "Fill out Part N only if" conditions were applied only to each part's result line.
+- **Fix:** each printed line of Parts II to V is $0 unless its part applies (the owner's choice of the strictly accurate reading); line 4a enters column (b). Stage 12 commit.
+- **Tags:** caution-not-on-a-line; presentation-fidelity; caught-by-class-m; caught-by-render-comparison
+
+---
+
+## BUG-0043 — Lines that are zero within scope did not say why
+
+- **Date:** 2026-10-18
+- **Caught by:** the Stage 12 render comparison of `s1a` lines 4b, 5, 14b and 36b and `tipjob` column (c): "Always enters $0 and has no refusal".
+- **Symptom:** the encoding entered zero on lines whose amounts come from refused forms (Form 4137, a trade or business, a spouse), with the refusal carried only elsewhere.
+- **Root cause:** the zero relied on refusals on other lines; the line's own data did not name them. A first fix keyed line 36b to `s3.married` and refused every married return, including isolated worksheet fixtures; it was caught by the fixture run and keyed to `sa.spouse_extra` instead.
+- **Fix:** each line carries its refusal (`s2.other`, `scope.schedule1`, `sa.spouse_extra`); `stage12.refuse.*` fixtures. Stage 12 commit.
+- **Tags:** implicit-refusal; caught-by-render-comparison

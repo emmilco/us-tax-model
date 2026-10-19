@@ -1,14 +1,20 @@
 [
-  {
-    "engine": "PolicyEngine-US",
-    "line": "f1040.line15",
-    "case": "gen-00053",
-    "cause": "Carried float32 error: PolicyEngine-US computes in float32. Its AGI (line 11b, $141,711.62) is 3 cents below the project's $141,711.65, within two units in the last place at that size (about 3.1 cents); line 10 and the standard deduction agree exactly, so line 15 (AGI less the deduction) carries the same 3 cents, which is more than two units in the last place at line 15's smaller size. Investigated 2026-10-18 when Schedule 1 items entered the generated cases."
-  },
-  {
-    "engine": "PolicyEngine-US",
-    "line": "f1040.line15",
-    "case": "gen-00314",
-    "cause": "Carried float32 error: PolicyEngine-US's AGI is 1 cent above the project's (within float32 precision at $79,136.84), line 10, the standard deduction and the QBI deduction agree exactly, and the float32 subtractions to line 15 add one more cent, for 2 cents. Investigated 2026-10-18 when Schedule 1 items entered the generated cases."
-  }
+ {
+  "engine": "PolicyEngine-US",
+  "line": "f1040.line15",
+  "case": "gen-00053",
+  "cause": "Carried float32 error: PolicyEngine-US computes in float32. Its AGI (line 11b, $141,711.62) is 3 cents below the project's $141,711.65, within two units in the last place at that size (about 3.1 cents); line 10 and the standard deduction agree exactly, so line 15 (AGI less the deduction) carries the same 3 cents, which is more than two units in the last place at line 15's smaller size. Investigated 2026-10-18 when Schedule 1 items entered the generated cases."
+ },
+ {
+  "engine": "PolicyEngine-US",
+  "line": "f1040.line15",
+  "case": "gen-00314",
+  "cause": "Carried float32 error: PolicyEngine-US's AGI is 1 cent above the project's (within float32 precision at $79,136.84), line 10, the standard deduction and the QBI deduction agree exactly, and the float32 subtractions to line 15 add one more cent, for 2 cents. Investigated 2026-10-18 when Schedule 1 items entered the generated cases."
+ },
+ {
+  "engine": "PolicyEngine-US",
+  "line": "f1040.line15",
+  "case": "gen-00919",
+  "cause": "Carried float32 error: PolicyEngine-US's AGI is 1 cent above the project's ($87,942.70 against $87,942.69, within float32 precision at that size); the deduction (sa.deduction) and the Schedule 1-A deduction on line 13b (the enhanced deduction for seniors, $5,223.44) agree exactly, and the float32 subtractions to line 15 add one more cent, for 2 cents. Investigated 2026-10-18 when Schedule 1-A entered the generated cases."
+ }
 ]
