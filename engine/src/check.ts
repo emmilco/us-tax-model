@@ -393,6 +393,30 @@ function checkLine(ctx: Ctx, doc: FormDoc, line: Line): void {
       compatible(ctx, declared, tyMoney(nonneg), where);
       break;
     }
+    case "keyed_lookup": {
+      const table = ctx.tables.get(expr.table);
+      if (!table) { ctx.errors.push(`${where}: table '${expr.table}' does not exist`); break; }
+      if (table.kind !== "keyed") { ctx.errors.push(`${where}: '${expr.table}' is not a keyed table`); break; }
+      const keys = table.keys ?? [];
+      if (expr.keys.length !== keys.length) ctx.errors.push(`${where}: table '${expr.table}' has ${keys.length} keys, the lookup gives ${expr.keys.length}`);
+      expr.keys.forEach((ref, i) => {
+        const hit = requireRef(ctx, doc, ref, where);
+        const want = keys[i];
+        if (!hit || !want) return;
+        const got = declaredTyOf(ctx, hit.doc, hit.line);
+        const exp = parseTy(ctx, want.type, `table ${table.id} key ${want.name}`);
+        if (got.kind !== exp.kind || (got.kind === "enum" && exp.kind === "enum" && got.name !== exp.name)) {
+          ctx.errors.push(`${where}: key '${ref}' is ${got.kind === "enum" ? `Enum(${got.name})` : got.kind}, table key '${want.name}' is ${want.type}`);
+        }
+      });
+      const cell = parseTy(ctx, table.cell ?? "", `table ${table.id} cell`);
+      if (cell.kind === "enum" || cell.kind === "count" || cell.kind === "rate") {
+        if (declared.kind !== cell.kind || (declared.kind === "enum" && cell.kind === "enum" && declared.name !== cell.name)) {
+          ctx.errors.push(`${where}: declared type does not match the table's cell type ${table.cell}`);
+        }
+      } else compatible(ctx, declared, cell, where);
+      break;
+    }
     case "table_lookup": {
       const table = ctx.tables.get(expr.table);
       if (!table) ctx.errors.push(`${where}: table '${expr.table}' does not exist`);
@@ -581,6 +605,9 @@ function checkCycles(ctx: Ctx, data: CanonicalData): void {
         break;
       case "table_lookup":
         refs.push(expr.key, expr.status);
+        break;
+      case "keyed_lookup":
+        refs.push(...expr.keys);
         break;
       case "copy":
         if (typeof expr.from === "string") refs.push(expr.from);
@@ -970,6 +997,33 @@ function checkTable(ctx: Ctx, table: TableDoc): void {
         ctx.errors.push(`table ${table.id}: last band ends at ${last.less_than} but ordinary.table_boundary is ${boundary}`);
       }
     }
+  }
+  if (table.kind === "keyed") {
+    const keys = table.keys ?? [];
+    const cell = parseTy(ctx, table.cell ?? "", `table ${table.id} cell`);
+    const keyTys = keys.map((k) => parseTy(ctx, k.type, `table ${table.id} key ${k.name}`));
+    const seen = new Set<string>();
+    (table.rows ?? []).forEach((row, i) => {
+      const at = `table ${table.id} row ${i}`;
+      if (row.keys.length !== keys.length) { ctx.errors.push(`${at}: ${row.keys.length} keys for ${keys.length}`); return; }
+      row.keys.forEach((k, j) => {
+        const ty = keyTys[j]!;
+        if (ty.kind === "count" && !(Number.isSafeInteger(k) && (k as number) >= 0)) ctx.errors.push(`${at}: key ${keys[j]!.name} is not a count`);
+        if (ty.kind === "enum" && !(typeof k === "string" && (ctx.enumValues.get(ty.name) ?? []).includes(k))) ctx.errors.push(`${at}: key ${keys[j]!.name} '${k}' is not a value of ${ty.name}`);
+      });
+      const id = JSON.stringify(row.keys);
+      if (seen.has(id)) ctx.errors.push(`${at}: duplicate keys ${id}`);
+      seen.add(id);
+      const v = row.value;
+      if (cell.kind === "rate") {
+        const r = v as { num?: number; den?: number };
+        if (typeof v !== "object" || !Number.isSafeInteger(r.num) || !Number.isSafeInteger(r.den) || r.den! <= 0 || r.num! < 0 || r.num! > r.den!) ctx.errors.push(`${at}: rate is not between 0 and 1`);
+      } else if (cell.kind === "money" || cell.kind === "count") {
+        if (!Number.isSafeInteger(v) || ((cell.kind === "count" || cell.nonneg) && (v as number) < 0)) ctx.errors.push(`${at}: value is not a ${table.cell}`);
+      } else if (cell.kind === "enum") {
+        if (!(typeof v === "string" && (ctx.enumValues.get(cell.name) ?? []).includes(v))) ctx.errors.push(`${at}: value '${String(v)}' is not a value of ${cell.name}`);
+      } else ctx.errors.push(`${at}: unsupported cell type ${table.cell}`);
+    });
   }
   if (table.kind === "bracket_schedule") {
     const schedules = table.schedules ?? {};

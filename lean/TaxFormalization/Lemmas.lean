@@ -340,4 +340,51 @@ theorem multiplyCount_succ (a n : Int) : multiplyCount a (n + 1) = multiplyCount
 theorem multiplyCount_zero (a : Int) : multiplyCount a 0 = 0 := by
   unfold multiplyCount; exact Int.mul_zero a
 
+
+/-! ### keyed_lookup -/
+
+/-- A found entry is the entry of a row of the table with exactly those keys. -/
+theorem keyedLookup_mem {V : Type} {rows : List (List String × V)} {keys : List String} {v : V}
+    (h : keyedLookup rows keys = some v) : (keys, v) ∈ rows := by
+  unfold keyedLookup at h
+  cases hf : rows.find? (fun r => r.1 == keys) with
+  | none => simp [hf] at h
+  | some r =>
+    simp [hf] at h
+    have hmem := List.mem_of_find?_eq_some hf
+    have hk : r.1 = keys := by
+      have := List.find?_some hf
+      simpa using this
+    subst h
+    have : r = (keys, r.2) := by cases r; simp_all
+    rw [this] at hmem
+    exact hmem
+
+/-- No entry exactly when no row has those keys. -/
+theorem keyedLookup_none {V : Type} {rows : List (List String × V)} {keys : List String} :
+    keyedLookup rows keys = none ↔ ∀ r ∈ rows, r.1 ≠ keys := by
+  unfold keyedLookup
+  simp [List.find?_eq_none]
+
+/-- With distinct key tuples, a row's entry is what the lookup of its keys returns. -/
+theorem keyedLookup_of_mem {V : Type} {rows : List (List String × V)} {keys : List String} {v : V}
+    (hd : (rows.map Prod.fst).Nodup) (hm : (keys, v) ∈ rows) : keyedLookup rows keys = some v := by
+  induction rows with
+  | nil => simp at hm
+  | cons r rs ih =>
+    simp only [List.map_cons, List.nodup_cons] at hd
+    rcases List.mem_cons.mp hm with h | h
+    · subst h; simp [keyedLookup]
+    · have hne : r.1 ≠ keys := by
+        intro he; apply hd.1; rw [he]; exact List.mem_map.mpr ⟨_, h, rfl⟩
+      have hrest := ih hd.2 h
+      unfold keyedLookup at hrest ⊢
+      simp [hne, hrest]
+
+/-- A table of rates between 0 and 1 yields a rate between 0 and 1. -/
+theorem keyedLookup_rate_bounded {rows : List (List String × (Int × Int))} {keys : List String}
+    {n d : Int} (hb : ∀ r ∈ rows, 0 ≤ r.2.1 ∧ r.2.1 ≤ r.2.2)
+    (h : keyedLookup rows keys = some (n, d)) : 0 ≤ n ∧ n ≤ d :=
+  hb _ (keyedLookup_mem h)
+
 end TaxFormalization

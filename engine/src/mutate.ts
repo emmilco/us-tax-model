@@ -98,6 +98,7 @@ function mutations(data: CanonicalData): Mutation[] {
       if (expr.op === "round") refs.push(expr.of);
       if (expr.op === "multiply_count") refs.push(expr.amount, expr.count);
       if (expr.op === "prorate") refs.push(expr.amount, expr.part);
+      if (expr.op === "keyed_lookup") refs.push(...expr.keys);
       if (expr.op === "copy" && typeof expr.from === "string") refs.push(expr.from);
       for (const ref of refs) {
         if (!ref.startsWith(doc.id + ".")) continue; // same-document only

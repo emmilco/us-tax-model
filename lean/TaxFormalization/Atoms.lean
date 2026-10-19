@@ -48,6 +48,12 @@ def prorateRatio (part whole s : Int) : Int := max 0 (min s (multiplyRateHalfUp 
 def prorate (a part whole : Int) (places : Nat) : Int :=
   multiplyRateHalfUp a (prorateRatio part whole ((10 : Int) ^ places)) ((10 : Int) ^ places)
 
+/-- The `keyed_lookup` atom: the entry of the first row whose key tuple equals
+`keys`, or none when no row has it. Keys are normalized strings (an enum value or a
+count); the build-time checker requires a table's key tuples to be distinct. -/
+def keyedLookup {V : Type} (rows : List (List String × V)) (keys : List String) : Option V :=
+  (rows.find? (fun r => r.1 == keys)).map Prod.snd
+
 /-- Round to the nearest unit, half-up (the printed whole-dollar rule with
     unit = 100). -/
 def roundHalfUpToUnit (x unit : Int) : Int := ((2 * x + unit) / (2 * unit)) * unit

@@ -109,6 +109,32 @@ def bandTax (table : Json) (col : Nat) (cents : Int) : Option (Int × Int) :=
       | _, _, _ => none)
   | _ => none
 
+/-- A keyed table's key as a normalized string: an enum value or a count. -/
+def keyedKey (k : Json) : String :=
+  match k with
+  | .str s => "e:" ++ s
+  | .num n => "c:" ++ toString n.mantissa
+  | _ => ""
+
+/-- A keyed table's entry as an evaluator value of the table's cell type. -/
+def keyedCell (cell : String) (v : Json) : Json :=
+  if cell == "Rate" then mkRate ((numGet v "num").getD 0) ((numGet v "den").getD 1)
+  else if cell == "Count" then mkCount ((v.getInt?).toOption.getD 0)
+  else if cell == "Dollars" || cell == "NonNegDollars" then mkMoney ((v.getInt?).toOption.getD 0)
+  else mkEnum ((v.getStr?).toOption.getD "")
+
+/-- The rows of a keyed table: normalized key tuple and entry. -/
+def keyedRows (table : Json) : List (List String × Json) :=
+  let cell := (strGet table "cell").getD ""
+  match objGet table "rows" with
+  | some (.arr rows) =>
+    rows.toList.map (fun r =>
+      let ks := match objGet r "keys" with
+        | some (.arr ks) => ks.toList.map keyedKey
+        | _ => []
+      (ks, keyedCell cell (objGetD r "value" Json.null)))
+  | _ => []
+
 def inputValue (v : Json) : Json :=
   match v with
   | .num n => mkMoney n.mantissa
@@ -450,6 +476,27 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
             match bandTax table col ((moneyOf keyV).getD 0) with
             | some (_, c) => pure (mkMoney c)
             | none => pure (unknown s!"no band for {moneyOf keyV}")
+    | "keyed_lookup" =>
+      let tableId := (strGet expr "table").getD ""
+      match ctx.tables.get? tableId with
+      | none => pure (unknown s!"table {tableId} missing")
+      | some table =>
+        match objGet expr "keys" with
+        | some (.arr refs) =>
+          let mut keys : List String := []
+          for r in refs do
+            match r.getStr? with
+            | .ok ref => do
+              let v ← eval ctx fuel frame (.line ref)
+              if isUnknown v then return v
+              if isEnum v then keys := keys ++ ["e:" ++ (strGet v "value").getD ""]
+              else if kindOf v == some "count" then keys := keys ++ ["c:" ++ toString ((numGet v "value").getD 0)]
+              else return unknown "keyed_lookup key is not an enum or count"
+            | .error _ => return unknown "keyed_lookup key not a reference"
+          match keyedLookup (keyedRows table) keys with
+          | some v => pure v
+          | none => pure (unknown s!"no row of {tableId}")
+        | _ => pure (unknown "keyed_lookup has no keys")
     | "choose" =>
       match objGet expr "alternatives" with
       | some (.arr alts) =>

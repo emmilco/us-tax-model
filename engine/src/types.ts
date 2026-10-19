@@ -42,6 +42,7 @@ export type Expr =
   | { op: "prorate"; amount: string; part: string; whole: Operand; places: number }
   | { op: "bracket_schedule"; table: string; key: string; status: string }
   | { op: "sum_over"; collection: string; field: string; where?: TestExpr }
+  | { op: "keyed_lookup"; table: string; keys: string[] }
   | { op: "opaque"; name: string };
 
 export type ValueType =
@@ -106,7 +107,7 @@ export interface ParamsDoc {
 
 export interface TableDoc {
   id: string;
-  kind: "tax_table" | "bracket_schedule";
+  kind: "tax_table" | "bracket_schedule" | "keyed";
   title: string;
   tax_year: number;
   cite: CiteFilled;
@@ -118,6 +119,10 @@ export interface TableDoc {
   // bracket_schedule
   status_alias?: Record<string, string>;
   schedules?: Record<string, { upper: Money | null; base: Money; rate: Rate; over: Money }[]>;
+  // keyed: one row per key tuple; a cell's type is `cell` (Rate, Count, Dollars, NonNegDollars or Enum(name))
+  keys?: { name: string; type: string }[];
+  cell?: string;
+  rows?: { keys: (string | number)[]; value: number | string | Rate }[];
 }
 
 export interface RegisterEntry {

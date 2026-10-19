@@ -705,6 +705,30 @@
               "maximum": 9
             }
           }
+        },
+        {
+          "type": "object",
+          "required": [
+            "op",
+            "table",
+            "keys"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "op": {
+              "const": "keyed_lookup"
+            },
+            "table": {
+              "type": "string"
+            },
+            "keys": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
         }
       ]
     },
@@ -1193,6 +1217,9 @@
             },
             {
               "$ref": "#/$defs/bracketSchedule"
+            },
+            {
+              "$ref": "#/$defs/keyedTable"
             }
           ]
         }
@@ -1262,6 +1289,103 @@
               "type": "array",
               "items": {
                 "$ref": "#/$defs/registerEntry"
+              }
+            }
+          }
+        }
+      }
+    },
+    "keyedTable": {
+      "type": "object",
+      "required": [
+        "id",
+        "kind",
+        "title",
+        "tax_year",
+        "cite",
+        "keys",
+        "cell",
+        "rows"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "kind": {
+          "const": "keyed"
+        },
+        "title": {
+          "type": "string"
+        },
+        "tax_year": {
+          "type": "integer"
+        },
+        "cite": {
+          "$ref": "#/$defs/cite"
+        },
+        "note": {
+          "type": "string"
+        },
+        "keys": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "name",
+              "type"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              "type": {
+                "type": "string",
+                "pattern": "^(Count|Enum\\([a-z_]+\\))$"
+              }
+            }
+          }
+        },
+        "cell": {
+          "type": "string",
+          "pattern": "^(Count|Dollars|NonNegDollars|Rate|Enum\\([a-z_]+\\))$"
+        },
+        "rows": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "keys",
+              "value"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "keys": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": [
+                    "string",
+                    "integer"
+                  ]
+                }
+              },
+              "value": {
+                "oneOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "$ref": "#/$defs/rate"
+                  }
+                ]
               }
             }
           }

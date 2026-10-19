@@ -147,6 +147,11 @@ function exprText(expr: Expr, doc: FormDoc, ctx: RenderCtx): string {
       return `Multiply ${refText(doc, expr.amount, ctx)} by ${operandText(expr.rate, doc, ctx)}.`;
     case "multiply_count":
       return `Multiply ${refText(doc, expr.amount, ctx)} by the number on ${refText(doc, expr.count, ctx)}.`;
+    case "keyed_lookup": {
+      const t = ctx.tables.find((x) => x.id === expr.table);
+      const names = t?.keys?.map((k) => k.name) ?? [];
+      return `Find the entry in ${t ? t.title : expr.table} for ${expr.keys.map((k, i) => `${names[i] ?? "key"} ${refText(doc, k, ctx)}`).join(" and ")}.`;
+    }
     case "prorate":
       return `Divide ${refText(doc, expr.part, ctx)} by ${operandText(expr.whole, doc, ctx)}, rounded to ${expr.places} decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply ${refText(doc, expr.amount, ctx)} by the result.`;
     case "round": {
@@ -252,6 +257,19 @@ function renderTable(table: CanonicalData["tables"][number], ctx: RenderCtx): st
         `| ${fmtMoney(band.at_least)} | ${fmtMoney(band.less_than)} | ${band.tax.map((t) => fmtMoney(t)).join(" | ")} |`,
       );
     }
+    out.push("");
+  }
+  if (table.kind === "keyed" && table.keys && table.rows) {
+    const cellText = (v: number | string | { num: number; den: number }): string =>
+      table.cell === "Rate" ? fmtRate(v as { num: number; den: number })
+        : table.cell === "Dollars" || table.cell === "NonNegDollars" ? fmtMoney(v as number)
+        : String(v);
+    out.push("");
+    out.push(`Rows: ${table.rows.length}; keys: ${table.keys.map((k) => `${k.name} (${k.type})`).join(", ")}; entry: ${table.cell}`);
+    out.push("");
+    out.push(`| ${table.keys.map((k) => k.name).join(" | ")} | Entry |`);
+    out.push(`|${table.keys.map(() => " --- |").join("")} --- |`);
+    for (const row of table.rows) out.push(`| ${row.keys.join(" | ")} | ${cellText(row.value)} |`);
     out.push("");
   }
   if (table.kind === "bracket_schedule" && table.schedules) {

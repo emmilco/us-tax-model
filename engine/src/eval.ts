@@ -432,6 +432,29 @@ function evalExpr(ctx: Ctx, frame: Frame, lineId: string, expr: Expr, cite: Cite
       if (cents === null) return d({ kind: "unknown", reason: `round rule ${expr.rule} unknown` }, "round", ops);
       return d({ kind: "money", cents }, "round", ops, [], [`${expr.rule} to a multiple of ${expr.unit} cents`]);
     }
+    case "keyed_lookup": {
+      const table = ctx.data.tables.find((t) => t.id === expr.table);
+      if (!table || table.kind !== "keyed") return d({ kind: "unknown", reason: `table ${expr.table} missing` }, "keyed_lookup", ops);
+      const keyVals: (string | number)[] = [];
+      for (const ref of expr.keys) {
+        const v = evalOperand(ctx, frame, ref, ops);
+        if (v.kind === "unknown" || v.kind === "refusal") return d(v, "keyed_lookup", ops);
+        if (v.kind === "enum") keyVals.push(v.value);
+        else if (v.kind === "count") keyVals.push(v.value);
+        else return d({ kind: "unknown", reason: "keyed_lookup key is not an enum or count" }, "keyed_lookup", ops);
+      }
+      const row = (table.rows ?? []).find((r) => r.keys.length === keyVals.length && r.keys.every((k, i) => k === keyVals[i]));
+      if (!row) return d({ kind: "unknown", reason: `no row of ${expr.table} for ${JSON.stringify(keyVals)}` }, "keyed_lookup", ops);
+      const cell = table.cell ?? "";
+      const note = [`row ${JSON.stringify(keyVals)} of ${expr.table}`];
+      if (cell === "Rate") {
+        const r = row.value as { num: number; den: number };
+        return d({ kind: "rate", num: r.num, den: r.den }, "keyed_lookup", ops, [], note);
+      }
+      if (cell === "Count") return d({ kind: "count", value: row.value as number }, "keyed_lookup", ops, [], note);
+      if (cell === "Dollars" || cell === "NonNegDollars") return d({ kind: "money", cents: row.value as number }, "keyed_lookup", ops, [], note);
+      return d({ kind: "enum", value: row.value as string }, "keyed_lookup", ops, [], note);
+    }
     case "table_lookup": {
       const key = evalOperand(ctx, frame, expr.key, ops);
       const status = evalOperand(ctx, frame, expr.status, ops);
