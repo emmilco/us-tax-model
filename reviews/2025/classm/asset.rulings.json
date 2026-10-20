@@ -1,0 +1,438 @@
+{
+ "kind": "classm",
+ "form": "asset",
+ "rulings": [
+  {
+   "case": "classm.asset.1",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].macrs_prior",
+   "project": "$591.86",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.1",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].pct_c",
+   "project": "$0.40",
+   "model": "$40.00",
+   "ruling": "Ruling: representation; project retained. The business-use percentage is carried as one cent per percentage point (multiply_count by one cent) so it can be divided like an amount; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.1",
+   "printed": "person[taxpayer].sc[biz_b].asset[item_1].dep_listed",
+   "project": "$901.50",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.1",
+   "printed": "person[taxpayer].sc[biz_b].asset[item_1].macrs2025",
+   "project": "$902.10",
+   "model": "$758.33",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.1",
+   "printed": "person[taxpayer].sc[biz_b].asset[item_1].macrs_hy",
+   "project": "$902.10",
+   "model": "$758.33",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.1",
+   "printed": "person[taxpayer].sc[biz_b].asset[item_1].macrs_mq",
+   "project": "$901.50",
+   "model": "$189.68",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.1",
+   "printed": "person[taxpayer].sc[biz_b].asset[item_1].pct_c",
+   "project": "$1.00",
+   "model": "$100.00",
+   "ruling": "Ruling: representation; project retained. The business-use percentage is carried as one cent per percentage point (multiply_count by one cent) so it can be divided like an amount; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.1",
+   "printed": "person[taxpayer].sc[biz_b].asset[item_1].rate_hy",
+   "project": "4.461%",
+   "model": "3.75%",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.1",
+   "printed": "person[taxpayer].sc[biz_b].asset[item_1].rate_mq",
+   "project": "4.458%",
+   "model": "0.938%",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.2",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].dep_2025",
+   "project": "$4,762.09",
+   "model": "$1,667.40",
+   "ruling": "Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.2",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].dep_listed",
+   "project": "$4,762.09",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.2",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].last",
+   "project": "8",
+   "model": "16",
+   "ruling": "Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.2",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].macrs2025",
+   "project": "$4,762.09",
+   "model": "$1,667.40",
+   "ruling": "Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.2",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].macrs_hy",
+   "project": "$3,812.34",
+   "model": "$1,333.92",
+   "ruling": "Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.2",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].macrs_mq",
+   "project": "$4,762.09",
+   "model": "$1,667.40",
+   "ruling": "Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.2",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].macrs_prior",
+   "project": "$1,587.36",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.2",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].macrs_prior_live",
+   "project": "$1,587.36",
+   "model": "$555.80",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.2",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].pct_c",
+   "project": "$1.00",
+   "model": "$100.00",
+   "ruling": "Ruling: representation; project retained. The business-use percentage is carried as one cent per percentage point (multiply_count by one cent) so it can be divided like an amount; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.2",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].period",
+   "project": "y7",
+   "model": "y15",
+   "ruling": "Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.2",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].rate_hy",
+   "project": "14.29%",
+   "model": "5%",
+   "ruling": "Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.2",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].rate_mq",
+   "project": "17.85%",
+   "model": "6.25%",
+   "ruling": "Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.2",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].rate_prior",
+   "project": "3.57%",
+   "model": "1.25%",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.2",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_2].bonus_2025",
+   "project": "$17,550.00",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.2",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_2].dep_2025",
+   "project": "$1,316.25",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.2",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_2].macrs_prior",
+   "project": "$8,775.00",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.2",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_2].pct_c",
+   "project": "$1.00",
+   "model": "$100.00",
+   "ruling": "Ruling: representation; project retained. The business-use percentage is carried as one cent per percentage point (multiply_count by one cent) so it can be divided like an amount; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.3",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].dep_listed",
+   "project": "$989.35",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.3",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].macrs_prior",
+   "project": "$2,059.69",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.3",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].pct_c",
+   "project": "$0.30",
+   "model": "$30.00",
+   "ruling": "Ruling: representation; project retained. The business-use percentage is carried as one cent per percentage point (multiply_count by one cent) so it can be divided like an amount; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.3",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_2].last",
+   "project": "6",
+   "model": "8",
+   "ruling": "Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.3",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_2].macrs_prior",
+   "project": "$1,531.50",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.3",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_2].macrs_prior_live",
+   "project": "$1,531.50",
+   "model": "$1,093.49",
+   "ruling": "Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.3",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_2].pct_c",
+   "project": "$1.00",
+   "model": "$100.00",
+   "ruling": "Ruling: representation; project retained. The business-use percentage is carried as one cent per percentage point (multiply_count by one cent) so it can be divided like an amount; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.3",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_2].period",
+   "project": "y5",
+   "model": "y7",
+   "ruling": "Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.3",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_2].rate_hy",
+   "project": "20%",
+   "model": "14.29%",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.3",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_2].rate_mq",
+   "project": "15%",
+   "model": "10.71%",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.3",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_2].rate_prior",
+   "project": "25%",
+   "model": "17.85%",
+   "ruling": "Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.4",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].dep_listed",
+   "project": "$2,501.67",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.4",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].macrs_prior",
+   "project": "$2,501.67",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.4",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].pct_c",
+   "project": "$0.38",
+   "model": "$38.00",
+   "ruling": "Ruling: representation; project retained. The business-use percentage is carried as one cent per percentage point (multiply_count by one cent) so it can be divided like an amount; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.4",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_2].after179",
+   "project": "$2,167.80",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.4",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_2].bonus_forty",
+   "project": "$867.12",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.4",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_2].bonus_full",
+   "project": "$2,167.80",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.4",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_2].bonus_fullcase",
+   "project": "$2,167.80",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.4",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_2].macrs2025",
+   "project": "$270.76",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.4",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_2].macrs_hy",
+   "project": "$270.76",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.4",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_2].macrs_mq",
+   "project": "$304.79",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.4",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_2].mq_q4_2025",
+   "project": "$2,167.80",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.4",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_2].mqbase",
+   "project": "$2,167.80",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.4",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_2].pct_c",
+   "project": "$0.20",
+   "model": "$20.00",
+   "ruling": "Ruling: representation; project retained. The business-use percentage is carried as one cent per percentage point (multiply_count by one cent) so it can be divided like an amount; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.4",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_2].rate_hy",
+   "project": "12.49%",
+   "model": "14.29%",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.4",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_2].rate_mq",
+   "project": "14.06%",
+   "model": "3.57%",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.4",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_2].s179_bad",
+   "project": "no",
+   "model": "yes",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.4",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_2].ub",
+   "project": "$2,167.80",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  }
+ ]
+}

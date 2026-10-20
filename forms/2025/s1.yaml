@@ -133,17 +133,140 @@ form:
     cite:
       doc: f1040s1
       locator: Schedule 1 (2025), line 7, 'enter amount repaid'
+  - id: s1.ebl_loss
+    printed: (helper)
+    label: The net loss of all Schedules C (as a positive amount)
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: s1.zero_ebl
+      take: s1.ebl_total
+    cite:
+      doc: f1040s1
+      locator: Schedule 1 (2025), line 3; i1040sc p. 1, Excess business loss limitation
+  - id: s1.ebl_total
+    printed: (helper)
+    label: Net profit or loss of all Schedules C
+    type: Dollars
+    expr:
+      op: sum_over
+      collection: person
+      field: person.sc_total
+    cite:
+      doc: i1040sc
+      locator: p. 1, Reminders, Excess business loss limitation
+  - id: s1.zero_ebl
+    printed: (helper)
+    label: Zero
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: sales.zero
+    cite:
+      doc: i1040sc
+      locator: p. 1, Reminders, Excess business loss limitation
+  - id: s1.ebl_threshold
+    printed: (helper)
+    label: Threshold for excess business loss
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: s1.ebl_threshold
+    cite:
+      doc: rp-2024-40
+      locator: p. 17, section 3.32, Threshold for Excess Business Loss, "$313,000 ($626,000 for joint returns)"
+  - id: s1.ebl
+    printed: (gate)
+    label: The Schedule C losses are more than the excess business loss threshold
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - s1.ebl_loss
+      - s1.ebl_threshold
+    cite:
+      doc: i1040sc
+      locator: p. 1, Reminders, "If you report a loss on line 31 ... you may be subject to a business loss limitation ... use
+        Form 461"
+  - id: s1.sc_count
+    printed: (helper)
+    label: Number of Schedules C on the return
+    type: Count
+    expr:
+      op: sum_over
+      collection: person
+      field: person.sc_count
+    cite:
+      doc: f1040s1
+      locator: Schedule 1 (2025), line 3
+  - id: s1.has_sc
+    printed: (helper)
+    label: The return has a Schedule C
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - s1.sc_count
+      - const: 0
+        type: Count
+    cite:
+      doc: f1040s1
+      locator: Schedule 1 (2025), line 3
+  - id: s1.sc_1a_count
+    printed: (helper)
+    label: Number of Schedules C with tips or overtime for Schedule 1-A
+    type: Count
+    expr:
+      op: sum_over
+      collection: person
+      field: person.sc_1a
+    cite:
+      doc: i1040gi
+      locator: p. 104, Schedule 1-A, line 5; p. 108, line 14b
+  - id: s1.sc_1a
+    printed: (gate)
+    label: A business received tips or overtime to be deducted on Schedule 1-A
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - s1.sc_1a_count
+      - const: 0
+        type: Count
+    cite:
+      doc: i1040gi
+      locator: p. 104, Schedule 1-A, line 5, and the Multiple Trades or Businesses Worksheet; p. 108, line 14b
+  - id: s1.line3
+    printed: '3'
+    label: Business income or (loss). Attach Schedule C
+    type: Dollars
+    expr:
+      op: sum_over
+      collection: person
+      field: person.sc_total
+    cite:
+      doc: f1040s1
+      locator: Schedule 1 (2025), line 3; i1040sc p. 14, Line 31, "include it on Schedule 1 (Form 1040), line 3"
+    refuses:
+      - when: s1.ebl
+        form: Form 461 (Limitation on Business Losses)
+        remedy: A Schedule C loss above the excess business loss threshold is outside this tool.
+        cite:
+          doc: i1040sc
+          locator: p. 1, Reminders, Excess business loss limitation; rp-2024-40 section 3.32
   - id: s1.line10
     printed: '10'
     label: Combine lines 1 through 7 and 9. This is your additional income. Enter here and on Form 1040, 1040-SR, or 1040-NR,
       line 8
-    type: NonNegDollars
+    type: Dollars
     expr:
-      op: copy
-      from: s1.line7
+      op: sum
+      of:
+      - s1.line3
+      - s1.line7
     cite:
       doc: f1040s1
-      locator: Schedule 1 (2025), line 10 (lines 1 to 6, 8a to 8z and 9 are outside this tool and refused at Form 1040 line
+      locator: Schedule 1 (2025), line 10 (lines 1, 2, 4 to 6, 8a to 8z and 9 are outside this tool and refused at Form 1040 line
         8 by scope.schedule1)
   - id: s1.line11
     printed: '11'
@@ -169,6 +292,39 @@ form:
       doc: f1040s1
       locator: Schedule 1 (2025), line 13; i8889 p. 4, "Combine the amounts on line 13 of both Forms 8889 and enter this
         amount on Schedule 1 (Form 1040), line 13"
+  - id: s1.line15
+    printed: '15'
+    label: Deductible part of self-employment tax. Attach Schedule SE
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: person
+      field: person.se_line13
+    cite:
+      doc: i1040gi
+      locator: p. 93, Schedule 1, line 15, "The deductible part of your self-employment tax is on line 13 of Schedule SE"
+  - id: s1.line16
+    printed: '16'
+    label: Self-employed SEP, SIMPLE, and qualified plans
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: person
+      field: person.s16
+    cite:
+      doc: i1040gi
+      locator: p. 93, Schedule 1, line 16; p560 chapter 3, Where To Deduct Contributions, and chapter 5
+  - id: s1.line17
+    printed: '17'
+    label: Self-employed health insurance deduction
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: person
+      field: person.sehi
+    cite:
+      doc: i1040gi
+      locator: pp. 94–95, Schedule 1, line 17, Self-Employed Health Insurance Deduction; Form 7206 (2025), line 14
   - id: s1.line21
     printed: '21'
     label: Student loan interest deduction
@@ -189,8 +345,11 @@ form:
       of:
       - s1.line11
       - s1.line13
+      - s1.line15
+      - s1.line16
+      - s1.line17
       - s1.line21
     cite:
       doc: f1040s1
-      locator: Schedule 1 (2025), line 26 (lines 12, 14 to 20, 23 and 25 are outside this tool and refused at Form 1040 line
+      locator: Schedule 1 (2025), line 26 (lines 12, 14, 18 to 20, 23 and 25 are outside this tool and refused at Form 1040 line
         10 by scope.schedule1)

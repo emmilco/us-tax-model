@@ -13,6 +13,18 @@
    "restated": "Enter the amount from qbi helper \"Add sd.net_gain, f1040.line3a\".",
    "model": "The instructions say 'If you're not required to file Schedule D (Form 1040), your net capital gain is the amount reported on Form 1040... line 7a.' The restatement always uses Schedule D lines 15/16 and has no line 7a path or refusal for that case. The Schedule D branch itself matches ('smaller of... line 15 or 16, unless line 15 or 16 is zero or less').",
    "ruling": "Ruling: representation; project retained. For a Schedule D filer the helper is the smaller of Schedule D lines 15 and 16, floored at zero, plus Form 1040 line 3a, as the instructions say. When Schedule D is not required (i8995 p. 4: \"your net capital gain is the amount reported on Form 1040, 1040-SR, or 1040-NR, line 7a\") the Schedule D lines are still computed from line 13 alone, so lines 15 and 16 both equal the box 2a total that line 7a carries, and the helper gives the same amount. No change to the data."
+  },
+  {
+   "printed": "12",
+   "restated": "Enter the amount from qbi helper \"Add sd.net_gain, f1040.line3a\".",
+   "model": "The restatement always takes net capital gain as the smaller of Schedule D lines 15 and 16 (floored at zero). The instructions also say 'If you're not required to file Schedule D (Form 1040), your net capital gain is the amount reported on Form 1040, 1040-SR, or 1040-NR, line 7a', and the restatement has no line 7a branch.",
+   "ruling": "Ruling: representation; project retained. For a Schedule D filer the helper is the smaller of Schedule D lines 15 and 16, floored at zero, plus Form 1040 line 3a, as the instructions say. When Schedule D is not required (i8995 p. 4: \"your net capital gain is the amount reported on Form 1040, 1040-SR, or 1040-NR, line 7a\") the Schedule D lines are still computed from line 13 alone, so lines 15 and 16 both equal the box 2a total that line 7a carries, and the helper gives the same amount. No change to the data."
+  },
+  {
+   "printed": "2",
+   "restated": "Add person.qbi over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The IRS line says 'Combine lines 1i through 1v, column (c)', which is one entry per trade, business or aggregation. The restatement adds person.qbi for each person, and person.qbi is not defined anywhere in the text, so I can't tell whether it equals the total of the line 1(c) business amounts.",
+   "ruling": "Ruling: representation; restatement accepted. person.qbi is the sum over the person's businesses of sc.qbi, Form 8995 line 1 column (c) for each business (sc.yaml, cited to i8995 pp. 2, 4); line 2 adds them over the persons on the return, which is lines 1i to 1v column (c) with one row per Schedule C. Other trades or businesses are refused through qbi.unsupported."
   }
  ]
 }

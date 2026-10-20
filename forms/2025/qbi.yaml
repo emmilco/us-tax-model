@@ -3,7 +3,7 @@ form:
   kind: form
   title: Section 199A dividend-only deduction and form selection
   tax_year: 2025
-  note: Only qualified REIT/RIC section 199A dividends, not trade/business or PTP amounts. Taxable
+  note: Section 199A dividends and the qualified business income of the Schedule C businesses (with a prior-year qualified business loss carryforward), not PTP amounts. Taxable
     income before QBI is AGI less the selected deduction; Schedule 1-A is outside scope. The Jan.
     27, 2026 Form 8995 instruction correction is followed.
   lines:
@@ -22,10 +22,10 @@ form:
     - id: qbi.unsupported
       printed: (helper)
       type: Bool
-      label: 'Do you have any of these: qualified business income or loss, or PTP income or loss, other than section 199A dividends; a prior-year qualified business, REIT or PTP loss carryforward (including suspended losses allowed this year); or are you a patron of any agricultural or horticultural cooperative, specified or not (including any qualified payments from one on Form 1099-PATR)?'
+      label: 'Do you have any of these: qualified business income or loss, or PTP income or loss, other than section 199A dividends and the Schedule C businesses entered in this tool; a prior-year REIT or PTP loss carryforward, or losses or deductions suspended in an earlier year by another provision and allowed this year; or are you a patron of any agricultural or horticultural cooperative, specified or not (including any qualified payments from one on Form 1099-PATR)?'
       expr:
         op: input
-        source: 'Do you have any of these: qualified business income or loss, or PTP income or loss, other than section 199A dividends; a prior-year qualified business, REIT or PTP loss carryforward (including suspended losses allowed this year); or are you a patron of any agricultural or horticultural cooperative, specified or not (including any qualified payments from one on Form 1099-PATR)?'
+        source: 'Do you have any of these: qualified business income or loss, or PTP income or loss, other than section 199A dividends and the Schedule C businesses entered in this tool; a prior-year REIT or PTP loss carryforward, or losses or deductions suspended in an earlier year by another provision and allowed this year; or are you a patron of any agricultural or horticultural cooperative, specified or not (including any qualified payments from one on Form 1099-PATR)?'
       cite:
         doc: f8995
         locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
@@ -57,6 +57,52 @@ form:
           cite:
             doc: f8995
             locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+    - id: qbi.carryforward
+      printed: '3'
+      label: Qualified business net (loss) carryforward from the prior year (as a positive amount)
+      type: NonNegDollars
+      expr:
+        op: input
+        source: The qualified business loss carryforward from line 16 of your 2024 Form 8995 (or the corresponding line of your
+          2024 Form 8995-A), entered as a positive amount (zero if none)
+      cite:
+        doc: i8995
+        locator: 'Line 3, "enter the amount from line 16 of your 2024 Form 8995" (owner: the printed amount)'
+    - id: qbi.business_any
+      printed: (gate)
+      label: Business income or a carryforward with taxable income above the Form 8995 threshold
+      type: Bool
+      expr:
+        op: test
+        any:
+        - op: test
+          ne:
+          - f8995.line2
+          - param: sales.zero
+        - op: test
+          gt:
+          - qbi.carryforward
+          - param: sales.zero
+      cite:
+        doc: i8995
+        locator: 'p. 1, Who Can Use Form 8995 (owner: Form 8995-A with business income refused)'
+    - id: qbi.via_8995a
+      printed: (helper)
+      label: Form 8995-A (section 199A dividends only)
+      type: NonNegDollars
+      expr:
+        op: copy
+        from: f8995a.line39
+      cite:
+        doc: f8995a
+        locator: Form 8995-A (2025), line 39
+      refuses:
+      - when: qbi.business_any
+        form: Form 8995-A with qualified business income (taxable income above the threshold)
+        remedy: The qualified business income deduction above the Form 8995 threshold is outside this tool.
+        cite:
+          doc: i8995a
+          locator: p. 1, Who Can Use Form 8995-A
     - id: qbi.deductions_before
       printed: (helper)
       type: NonNegDollars
@@ -128,7 +174,7 @@ form:
               eq:
                 - qbi.use_8995a
                 - const: true
-            then: f8995a.line39
+            then: qbi.via_8995a
           - guard:
               op: test
               eq:

@@ -102,10 +102,12 @@ function mutations(data: CanonicalData): Mutation[] {
       if (expr.op === "copy" && typeof expr.from === "string") refs.push(expr.from);
       for (const ref of refs) {
         if (!ref.startsWith(doc.id + ".")) continue; // same-document only
+        // A lookup key is replaced by a line of the key's own type (an enum or a count), not the result's.
+        const wantType = expr.op === "keyed_lookup" ? doc.lines.find((l) => l.id === ref)?.type : line.type;
         const candidate = [...doc.lines]
           .slice(0, idx)
           .reverse()
-          .find((l) => l.type === line.type && l.id !== ref && !refs.includes(l.id) && l.expr.op !== "input");
+          .find((l) => l.type === wantType && l.id !== ref && !refs.includes(l.id) && l.expr.op !== "input");
         if (!candidate) continue;
         out.push({
           id: `operand.${where}.${ref.split(".").pop()}`,
@@ -122,6 +124,8 @@ function mutations(data: CanonicalData): Mutation[] {
             if (e.amount === ref) e.amount = candidate.id;
             if (e.count === ref) e.count = candidate.id;
             if (e.part === ref) e.part = candidate.id;
+            const k = e as { keys?: string[] };
+            if (Array.isArray(k.keys)) k.keys = k.keys.map((r) => (r === ref ? candidate.id : r));
           },
         });
       }
@@ -164,6 +168,23 @@ function mutations(data: CanonicalData): Mutation[] {
 // Survivors that are provably equivalent mutants, with the reason. The score
 // is reported raw and adjusted (equivalents excluded from the denominator).
 const EQUIVALENT: Record<string, string> = {
+  "boundary.eic.eic.self_employed": "With no Schedule C (the only case the boundary changes, a count of zero), Worksheet B's line 4b is the Step 5 earned income plus zero, and line 6 is that amount floored at zero; the Step 5 earned income is line 1z of Form 1040 (Step 5 lines 2 and 4 are zero in this tool) and is never negative, so eic.line1, eic.earned_for_limit and the Schedule 8812 chart amount take the same value on either route.",
+  "boundary.person.person.files_se": "The boundary changes only the case where Schedule SE line 4c is zero; then lines 6, 12 and 13 are zero, so Part 1 of Worksheet B (person.sc_total less person.se_line13) equals Part 2 (person.sc_total).",
+  "boundary.sc.sc.ho_over": "At exactly 300 square feet both branches give the same amount: $5 times the square feet used and $5 times 300.",
+  "boundary.se.positive": "The boundary changes only the case where line 3 is zero, where 92.35% of line 3 and line 3 itself are both zero.",
+  "operand.eic.eic.wsb_4b.earned_income": "eic.earned_income is Step 5 line 3 plus line 4, and line 4 (nontaxable combat pay) is zero in this tool (eic.zero, refused otherwise), so the two operands are equal at every input.",
+  "operand.eic.eic.wsb_6.zero": "Both operands are the zero line: Step 5 line 4 copies eic.zero (combat pay is refused).",
+  "operand.person.person.sep_s1.sc_total": "person.se_line2 copies person.sc_total, adding only the Schedule SE refusal; step 1 is read only by step 3, which also reads step 2 (person.se_line13), and step 2 refuses exactly when person.se_line2 does, so step 3 and everything after it are the same.",
+  "operand.person.person.simple_catchup.simple_regular": "person.simple_regular is the smaller of the deferral and the $16,500 limit, so the deferral less it, floored at zero, equals the deferral less $16,500 floored at zero at every input.",
+  "operand.s179.s179.line13.line12": "Line 12 is the smaller of lines 9 + 10 and line 11, so (lines 9 + 10) less line 12, floored at zero, equals (lines 9 + 10) less line 11, floored at zero, at every input.",
+  "operand.s8812.s8812.eiw_3.zero": "Both operands are zero: Earned Income Worksheet line 1b (nontaxable combat pay) copies the zero line in this tool, refused otherwise.",
+  "operand.sc.sc.ho_both.zero": "sc.ho_both is reached only when sc.ho_both_limits holds, and then it is a refusal whatever its expression: its value is never read.",
+  "operand.sc.sc.ho_limited.ho_line4": "sc.ho_limited is reached only with no section 179 election and line 4 more than line 29 before section 179 (sc.ho_unlimited false); then the floored line 29 is below line 4, which is at most $1,500 (sc.ho_line4_cap), so the smaller of the floored line 29 and either amount is the floored line 29.",
+  "operand.scveh.scveh.d5.l5": "For a 2019 vehicle (the only one whose year-5 deduction is read) the year-4 and year-5 limits are both $5,760 (tables/2025/auto_limit.yaml), and every 5-year column of the GDS tables has a year-4 rate at least its year-5 rate (hy, mq1, mq2 equal; mq3 12.24 and 11.30; mq4 13.68 and 10.94), so min(min(l4, t4), t5) = min(l5, t5).",
+  "operand.scveh.scveh.d6.l6": "For a 2019 vehicle the year-5 and year-6 limits are both $5,760, and every 5-year column has a year-5 rate at least its year-6 rate, so min(min(l5, t5), t6) = min(l6, t6).",
+  "operand.scveh.scveh.l5.k5": "The 2019 rows for years 4 and 5 of tables/2025/auto_limit.yaml hold the same limit, $5,760, and only a 2019 vehicle's year-5 limit is read.",
+  "operand.scveh.scveh.l6.k6": "The 2019 rows for years 5 and 6 of tables/2025/auto_limit.yaml hold the same limit, $5,760, and only a 2019 vehicle's year-6 limit is read.",
+  "operand.scveh.scveh.line17.line16": "scveh.bonus_allowed is the smaller of line 16 and line 11, so line 11 less it, floored at zero, equals line 11 less line 16, floored at zero, at every input.",
   "operand.f8889.f8889.family_year.family_under55": "f8889.family_year is read only under the last-month rule with family coverage on December 1, where the filer is married with family coverage, so line 3 is the family amount without the additional contribution amount (f8889.age55_line3 is false), line 4 is zero (Archer MSAs are refused) and line 5 equals f8889.family_under55.",
   "operand.f8889.f8889.self_year.self_amount": "f8889.self_year is read only under the last-month rule, by f8889.self_all and, with family coverage on December 1, by f8889.self_dec_year; the only reader of both is Step 4 (f8889.step4_total = self_all - self_in_family), where the two copies cancel, and with self-only coverage on December 1 the spouse rule does not apply, so Step 4 is not read.",
   "operand.qdcg.qdcg.line8.line7":
@@ -296,6 +317,23 @@ const EQUIVALENT_IF: Record<string, { reason: string; holds: (data: CanonicalDat
       if (whens.length === 0 || zero.parameter !== 0) return false;
       const carriers = [a3, findLine(d, a3.expr.from), typeof a3.expr.take === "string" ? findLine(d, a3.expr.take) : undefined];
       return whens.every((w) => carriers.some((l) => (l?.refuses ?? []).some((r) => r.when === w)));
+    },
+  },
+  "boundary.eic.eic.wsb_4b_positive": {
+    reason: "The inclusive test differs only at Worksheet B line 4b = 0. wsb_4b_positive is read only by the line 5 stop, an all-test that requires self-employment before it and, after it, Step 5 question 3 to be No; for a self-employed filer question 3 compares line 4b with the EIC limit, so at line 4b = 0 it asks whether 0 < limit, which holds for every limit (all are positive). The stop is therefore false on both routes, and question 3 reads only lines the stop has already evaluated without refusal, so no refusal is newly reached.",
+    holds: (d) => {
+      const limits = Object.entries(d.params.values).filter(([k]) => /^eic\.limit\d\./.test(k));
+      if (limits.length < 8 || !limits.every(([, p]) => typeof p.value === "number" && p.value > 0)) return false;
+      if (stableStringify(readersOf(d, "eic.wsb_4b_positive")) !== stableStringify(["eic.wsb_line5_stop"])) return false;
+      const s5 = findLine(d, "eic.step5_income"); const efl = findLine(d, "eic.earned_for_limit"); const stop = findLine(d, "eic.wsb_line5_stop");
+      if (!s5 || !efl || !stop || s5.expr.op !== "test" || !("lt" in s5.expr)) return false;
+      if (stableStringify((s5.expr as { lt: unknown }).lt) !== stableStringify(["eic.earned_for_limit", "eic.limit"])) return false;
+      if (efl.expr.op !== "choose") return false;
+      const se = (efl.expr.alternatives as { guard: unknown; then: string }[]).find((a) => stableStringify(a.guard).includes("\"eic.self_employed\"") && stableStringify(a.guard).includes("true"));
+      if (!se || se.then !== "eic.wsb_4b") return false;
+      const refs = operandRefs(d, stop.expr);
+      const i = refs.indexOf("eic.self_employed"), j = refs.indexOf("eic.wsb_4b_positive"), k = refs.indexOf("eic.step5_income");
+      return stop.expr.op === "test" && "all" in stop.expr && i >= 0 && i < j && j < k;
     },
   },
   "filter.person.person.hsa_step1": hsaSplitSum("person.hsa_step1", "household.hsa_step1_sum"),

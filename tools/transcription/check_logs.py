@@ -16,6 +16,13 @@ docs = {d["id"]: d for d in (m["documents"] if isinstance(m, dict) else m)}
 forms = sorted(f[:-5] for f in os.listdir(FORMS) if f.endswith(".yaml"))
 
 
+# Documents class M cannot work because no return has an entry of them, with the reason; each is
+# printed on every run so the gap stays visible.
+CLASSM_NO_ENTRIES = {
+    "f4562": "no return creates an f4562 entry (TASKS.md T-030: its lines are to print in the Schedule C entry's section)",
+}
+
+
 def classm_forms():
     """Documents class M covers (as `classm-jobs` builds them): a form with a printed computed
     line; a keyed collection with a computed line other than a year constant (worked per entry);
@@ -34,6 +41,10 @@ def classm_forms():
                 out.append(fid)
         elif any(not str(l["printed"]).startswith("(") and l["expr"].get("op") != "input" for l in d["lines"]):
             out.append(fid)
+    for fid, why in CLASSM_NO_ENTRIES.items():
+        if fid in out:
+            out.remove(fid)
+            print(f"classm: {fid} not expected: {why}")
     return out
 
 

@@ -4,6 +4,12 @@
  "rulings": [
   {
    "printed": "10",
+   "restated": "Add line 3 and line 7.",
+   "model": "The IRS line says 'Combine lines 1 through 7 and 9.' The restatement adds only lines 3 and 7, so lines 1, 2a, 4, 5, 6 and 9 are dropped and no refusal names them.",
+   "ruling": "Ruling: scope; project retained. Lines 1 to 6, 8a to 8z and 9 are outside this tool: scope.schedule1 refuses Form 1040 line 8, which copies this line, whenever any of them applies, so within scope they are zero (the line's citation says so). Stage 14 adds line 3 (business income) to the lines figured."
+  },
+  {
+   "printed": "10",
    "restated": "Enter the amount from line 7.",
    "model": "The form says \"Combine lines 1 through 7 and 9.\" The restatement uses only line 7 and has no refusal naming lines 1–6 and 9 as excluded.",
    "ruling": "Ruling: scope; project retained. Lines 1 to 6, 8a to 8z and 9 are outside this tool: scope.schedule1 refuses Form 1040 line 8, which copies this line, whenever any of them applies, so within scope they are zero (the line's citation says so)."
@@ -49,6 +55,12 @@
    "restated": "Add line 11, line 13, and line 21.",
    "model": "The form says 'Add lines 11 through 23 and 25.' The restatement adds only lines 11, 13, and 21, and no refusal excludes amounts on lines 12, 14–20, 23, or 25. Those amounts would change the total.",
    "ruling": "Ruling: scope; project retained. Lines 12, 14 to 20, 23 and 25 are outside this tool: scope.schedule1 refuses Form 1040 line 10, which copies this line, whenever any of them applies, so within scope they are zero (the line's citation says so)."
+  },
+  {
+   "printed": "26",
+   "restated": "Add line 11, line 13, line 15, line 16, line 17, and line 21.",
+   "model": "The IRS line says 'Add lines 11 through 23 and 25.' The restatement adds only lines 11, 13, 15, 16, 17 and 21, so lines 12, 14, 18, 19a, 20, 23 and 25 are dropped and no refusal names them.",
+   "ruling": "Ruling: scope; project retained. Lines 12, 14 to 20, 23 and 25 are outside this tool: scope.schedule1 refuses Form 1040 line 10, which copies this line, whenever any of them applies, so within scope they are zero (the line's citation says so). Stage 14 adds lines 15, 16 and 17 to the lines figured."
   }
  ]
 }

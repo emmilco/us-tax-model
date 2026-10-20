@@ -168,13 +168,16 @@ form:
       of:
       - s1.line11
       - s1.line13
+      - s1.line15
+      - s1.line16
+      - s1.line17
     cite:
       doc: i1040gi
       locator: p. 32, Social Security Benefits Worksheet, line 6
     refuses:
     - when: scope.schedule1
       form: Schedule 1 adjustments (Social Security Benefits Worksheet, line 6)
-      remedy: Schedule 1 adjustments other than educator expenses and the HSA deduction (lines 12 and 14 to 20, 23 and 25) are outside this tool.
+      remedy: Schedule 1 adjustments other than educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions and the self-employed health insurance deduction (lines 12, 14, 18 to 20, 23 and 25) are outside this tool.
       cite:
         doc: i1040gi
         locator: p. 32, Social Security Benefits Worksheet, line 6

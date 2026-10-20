@@ -166,6 +166,7 @@ def evalParam (ctx : Ctx) (name : String) : Json :=
     match objGet e "value" with
     | some (.num n) => (if strGet e "type" == some "Count" then mkCount n.mantissa else mkMoney n.mantissa)
     | some (.bool b) => (mkBool b)
+    | some (.str s) => (mkEnum s)
     | some v@(.obj _) =>
       match numGet v "num", numGet v "den" with
       | some n, some d => (mkRate n d)
@@ -327,6 +328,10 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
         | some doc =>
           let parent := frame.instKey.getD "root"
           let key := parent ++ "|inst:" ++ defId ++ "#" ++ bind.compress
+          -- Binding operands are evaluated in the caller frame for the record, as the TypeScript evaluator does.
+          match bind with
+          | .obj kvs => for (_, op) in kvs.toArray do let _ ← eval ctx fuel frame (.operand op)
+          | _ => pure ()
           eval ctx fuel { docId := defId, doc, instKey := some key, bind, caller := some frame } (.line ln)
         | none => pure (unknown s!"def {defId} missing")
       | _ => pure (unknown "copy has no source")
@@ -528,6 +533,10 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
               | some doc =>
                 let parent := frame.instKey.getD "root"
                 let key := parent ++ "|inst:" ++ defId ++ "#" ++ bind.compress
+                -- Binding operands are evaluated in the caller frame for the record, as the TypeScript evaluator does.
+                match bind with
+                | .obj kvs => for (_, op) in kvs.toArray do let _ ← eval ctx fuel frame (.operand op)
+                | _ => pure ()
                 return (← eval ctx fuel { docId := defId, doc, instKey := some key, bind, caller := some frame } (.line ln))
               | none => return unknown s!"def {defId} missing"
             | _ => return unknown "choose branch missing"

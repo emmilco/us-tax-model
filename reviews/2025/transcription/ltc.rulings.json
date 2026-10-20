@@ -1,0 +1,12 @@
+{
+ "kind": "transcription",
+ "form": "ltc",
+ "rulings": [
+  {
+   "printed": "2(b)",
+   "project": "{\"keys\": [{\"input\": \"ltc.age\"}], \"op\": \"keyed_lookup\", \"table\": \"ltc_limit\"}",
+   "second": "{\"keys\": [{\"input\": \"ltc.age\"}], \"op\": \"keyed_lookup\", \"table\": \"ltc.age_limit\"}",
+   "ruling": "Ruling: representation; project retained. The same lookup of the age-band amount by ltc.age; the second names its own table (ltc.age_limit) and lists its rows ($480, $900, $1,800, $4,810, $6,020), which are the project's ltc_limit rows (f7206 line 2(b); i7206 pp. 1–2)."
+  }
+ ]
+}

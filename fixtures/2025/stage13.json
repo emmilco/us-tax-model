@@ -144,7 +144,10 @@
         "person[spouse].w2[e0].box7": 0,
         "$tipjob@person[spouse]": [],
         "$otjob@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line1a": {
@@ -336,7 +339,10 @@
         "person[spouse].w2[e1].box7": 0,
         "$tipjob@person[spouse]": [],
         "$otjob@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s3.line11": {
@@ -504,7 +510,10 @@
         "person[spouse].w2[e1].box7": 0,
         "$tipjob@person[spouse]": [],
         "$otjob@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s3.line11": {
@@ -659,7 +668,10 @@
         "person[spouse].w2[e0].box7": 0,
         "$tipjob@person[spouse]": [],
         "$otjob@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f8959.line1": {
@@ -828,7 +840,10 @@
         "person[spouse].w2[e0].box7": 0,
         "$tipjob@person[spouse]": [],
         "$otjob@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sa.standard": {
@@ -998,7 +1013,10 @@
         "person[spouse].w2[e0].box7": 0,
         "$tipjob@person[spouse]": [],
         "$otjob@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sa.standard": {
@@ -1167,7 +1185,10 @@
         "person[spouse].w2[e0].box7": 0,
         "$tipjob@person[spouse]": [],
         "$otjob@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line33": {
@@ -1340,7 +1361,10 @@
         "person[spouse].w2[e0].box7": 0,
         "$tipjob@person[spouse]": [],
         "$otjob@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line36a": {
@@ -1501,7 +1525,10 @@
         "person[spouse].w2[e0].box7": 0,
         "$tipjob@person[spouse]": [],
         "$otjob@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line36a": {
@@ -1665,7 +1692,10 @@
         "person[spouse].w2[e0].box7": 0,
         "$tipjob@person[spouse]": [],
         "$otjob@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line36a": {
@@ -1845,7 +1875,10 @@
         "person[spouse].w2[e0].box7": 0,
         "$tipjob@person[spouse]": [],
         "$otjob@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1.line11": {
@@ -2007,7 +2040,10 @@
         "person[spouse].w2[e0].box7": 0,
         "$tipjob@person[spouse]": [],
         "$otjob@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1.line11": {
@@ -2167,7 +2203,10 @@
         "person[taxpayer].tipjob[job].qualified": true,
         "person[taxpayer].tipjob[job].amount": 1500000,
         "person[spouse].tipjob[job].qualified": true,
-        "person[spouse].tipjob[job].amount": 1400000
+        "person[spouse].tipjob[job].amount": 1400000,
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line4a": {
@@ -2338,7 +2377,10 @@
         "person[taxpayer].tipjob[job].qualified": true,
         "person[taxpayer].tipjob[job].amount": 1500000,
         "person[spouse].tipjob[job].qualified": true,
-        "person[spouse].tipjob[job].amount": 1400000
+        "person[spouse].tipjob[job].amount": 1400000,
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line4a": {
@@ -2510,7 +2552,10 @@
         "person[spouse].otjob[job].flsa": true,
         "person[spouse].otjob[job].special_rule": false,
         "person[spouse].otjob[job].method": "premium",
-        "person[spouse].otjob[job].statement": 1300000
+        "person[spouse].otjob[job].statement": 1300000,
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line14a": {
@@ -2691,7 +2736,10 @@
         "person[spouse].f8889[hsa].age55": false,
         "person[spouse].f8889[hsa].dec_coverage": "family",
         "person[spouse].f8889[hsa].last_month": false,
-        "person[spouse].f8889[hsa].allocation": "equal"
+        "person[spouse].f8889[hsa].allocation": "equal",
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "person[taxpayer].f8889[hsa].line3": {
@@ -2886,7 +2934,10 @@
         "person[spouse].f8889[hsa].dec_coverage": "family",
         "person[spouse].f8889[hsa].last_month": false,
         "person[spouse].f8889[hsa].allocation": "agreed",
-        "person[spouse].f8889[hsa].allocated": 0
+        "person[spouse].f8889[hsa].allocated": 0,
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "person[taxpayer].f8889[hsa].line6": {
@@ -3073,7 +3124,10 @@
         "person[spouse].f8889[hsa].dec_coverage": "family",
         "person[spouse].f8889[hsa].last_month": false,
         "person[spouse].f8889[hsa].allocation": "agreed",
-        "person[spouse].f8889[hsa].allocated": 100000
+        "person[spouse].f8889[hsa].allocated": 100000,
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1.line13": {
@@ -3254,7 +3308,10 @@
         "person[spouse].f8889[hsa].months_family": 0,
         "person[spouse].f8889[hsa].age55": false,
         "person[spouse].f8889[hsa].dec_coverage": "self_only",
-        "person[spouse].f8889[hsa].last_month": false
+        "person[spouse].f8889[hsa].last_month": false,
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "person[spouse].f8889[hsa].line6": {
@@ -3440,7 +3497,10 @@
         "person[spouse].f8889[hsa].age55": false,
         "person[spouse].f8889[hsa].dec_coverage": "family",
         "person[spouse].f8889[hsa].last_month": false,
-        "person[spouse].f8889[hsa].allocation": "equal"
+        "person[spouse].f8889[hsa].allocation": "equal",
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "person[taxpayer].f8889[hsa].step1": {
@@ -3633,7 +3693,10 @@
         "person[spouse].f8889[hsa].age55": false,
         "person[spouse].f8889[hsa].dec_coverage": "family",
         "person[spouse].f8889[hsa].last_month": false,
-        "person[spouse].f8889[hsa].allocation": "equal"
+        "person[spouse].f8889[hsa].allocation": "equal",
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "person[taxpayer].f8889[hsa].line3": {
@@ -3814,7 +3877,10 @@
         "person[taxpayer].f8889[hsa].months_family": 12,
         "person[taxpayer].f8889[hsa].age55": false,
         "person[taxpayer].f8889[hsa].dec_coverage": "family",
-        "person[taxpayer].f8889[hsa].last_month": false
+        "person[taxpayer].f8889[hsa].last_month": false,
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "person[taxpayer].f8889[hsa].line6": {
@@ -3979,7 +4045,10 @@
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": true,
         "person[taxpayer].f8889[hsa].dec_coverage": "self_only",
-        "person[taxpayer].f8889[hsa].last_month": false
+        "person[taxpayer].f8889[hsa].last_month": false,
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "person[taxpayer].f8889[hsa].line3": {
@@ -4158,7 +4227,10 @@
         "person[taxpayer].f8889[inherited].months_family": 12,
         "person[taxpayer].f8889[inherited].age55": false,
         "person[taxpayer].f8889[inherited].dec_coverage": "family",
-        "person[taxpayer].f8889[inherited].last_month": false
+        "person[taxpayer].f8889[inherited].last_month": false,
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1.line13": {
@@ -4318,7 +4390,10 @@
         "person[spouse].w2[e0].box7": 0,
         "$tipjob@person[spouse]": [],
         "$otjob@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "eic.age_range": {
@@ -4474,7 +4549,10 @@
         "person[spouse].w2[e0].box7": 0,
         "$tipjob@person[spouse]": [],
         "$otjob@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -4626,7 +4704,10 @@
         "person[spouse].born_after_1960": true,
         "person[spouse].educator_expenses": 0,
         "$w2@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s8812.line4": {
@@ -4787,7 +4868,10 @@
         "person[spouse].educator_expenses": 0,
         "person[spouse].itin_applied": false,
         "$w2@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s8812.line4": {
@@ -4941,7 +5025,10 @@
         "ssb.pub915": false,
         "ssb.lump_sum": false,
         "ssb.terror_disability": false,
-        "ssb.lived_apart": false
+        "ssb.lived_apart": false,
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "ssb.line8": {
@@ -5101,7 +5188,10 @@
         "$tipjob@person[spouse]": [],
         "$otjob@person[spouse]": [],
         "$f8889@person[spouse]": [],
-        "sli.claimed": false
+        "sli.claimed": false,
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sli.deduction": {
@@ -5234,7 +5324,9 @@
         "person[taxpayer].w2[e0].box7": 0,
         "$tipjob@person[taxpayer]": [],
         "$otjob@person[taxpayer]": [],
-        "$f8889@person[taxpayer]": []
+        "$f8889@person[taxpayer]": [],
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line1a": {
@@ -5395,7 +5487,10 @@
         "person[spouse].w2[e0].box7": 0,
         "$tipjob@person[spouse]": [],
         "$otjob@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line1a": {
@@ -5577,7 +5672,10 @@
         "person[spouse].f8889[hsa].age55": false,
         "person[spouse].f8889[hsa].dec_coverage": "family",
         "person[spouse].f8889[hsa].last_month": true,
-        "person[spouse].f8889[hsa].allocation": "equal"
+        "person[spouse].f8889[hsa].allocation": "equal",
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "person[taxpayer].f8889[hsa].step1": {
@@ -5782,7 +5880,10 @@
         "person[spouse].f8889[hsa].age55": false,
         "person[spouse].f8889[hsa].dec_coverage": "family",
         "person[spouse].f8889[hsa].last_month": false,
-        "person[spouse].f8889[hsa].allocation": "equal"
+        "person[spouse].f8889[hsa].allocation": "equal",
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "person[taxpayer].f8889[hsa].step1": {
@@ -5968,7 +6069,10 @@
         "person[spouse].f8889[hsa].dec_coverage": "family",
         "person[spouse].f8889[hsa].last_month": false,
         "person[spouse].f8889[hsa].allocation": "agreed",
-        "person[spouse].f8889[hsa].allocated": 427500
+        "person[spouse].f8889[hsa].allocated": 427500,
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1.line13": {
@@ -6129,7 +6233,10 @@
         "person[spouse].educator_expenses": 0,
         "person[spouse].itin_applied": false,
         "$w2@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s8812.line4": {
@@ -6290,7 +6397,10 @@
         "person[spouse].w2[e0].box7": 0,
         "$tipjob@person[spouse]": [],
         "$otjob@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line36a": {
@@ -6460,7 +6570,10 @@
         "person[taxpayer].tipjob[b].qualified": true,
         "person[taxpayer].tipjob[b].amount": 600000,
         "person[spouse].tipjob[job].qualified": true,
-        "person[spouse].tipjob[job].amount": 400000
+        "person[spouse].tipjob[job].amount": 400000,
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line4a": {
@@ -6623,7 +6736,10 @@
         "$otjob@person[spouse]": [],
         "$f8889@person[spouse]": [],
         "person[spouse].tipjob[job].qualified": true,
-        "person[spouse].tipjob[job].amount": 500000
+        "person[spouse].tipjob[job].amount": 500000,
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line8": {
@@ -6790,7 +6906,10 @@
         "person[spouse].otjob[job].flsa": true,
         "person[spouse].otjob[job].special_rule": false,
         "person[spouse].otjob[job].method": "premium",
-        "person[spouse].otjob[job].statement": 500000
+        "person[spouse].otjob[job].statement": 500000,
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line14a": {
@@ -6945,7 +7064,10 @@
         "person[spouse].w2[e0].box7": 0,
         "$tipjob@person[spouse]": [],
         "$otjob@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line31": {
@@ -7110,7 +7232,10 @@
         "person[spouse].otjob[job].flsa": true,
         "person[spouse].otjob[job].special_rule": false,
         "person[spouse].otjob[job].method": "premium",
-        "person[spouse].otjob[job].statement": 500000
+        "person[spouse].otjob[job].statement": 500000,
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line16": {
@@ -7242,7 +7367,9 @@
         "person[taxpayer].w2[e0].box7": 0,
         "$tipjob@person[taxpayer]": [],
         "$otjob@person[taxpayer]": [],
-        "$f8889@person[taxpayer]": []
+        "$f8889@person[taxpayer]": [],
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sa.line5d": {
@@ -7374,7 +7501,9 @@
         "person[taxpayer].w2[e0].box7": 0,
         "$tipjob@person[taxpayer]": [],
         "$otjob@person[taxpayer]": [],
-        "$f8889@person[taxpayer]": []
+        "$f8889@person[taxpayer]": [],
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sa.line5e": {

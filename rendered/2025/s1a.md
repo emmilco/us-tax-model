@@ -171,6 +171,7 @@
 - **Authored helper label:** Figured: Qualified tips received in the course of a trade or business
 - **Encoded (NonNegDollars):** Enter $0 (sales.zero).
 - **Refusal:** when scope.schedule1 is true, cannot complete Schedule 1-A, line 5 (qualified tips in a trade or business, with Schedule C, E or F). Income from a trade or business is outside this tool. Cite: [i1040gi] p. 104, Schedule 1-A, line 5, and the Multiple Trades or Businesses Worksheet (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Refusal:** when s1.sc_1a is true, cannot complete Schedule 1-A, line 5 (qualified tips in a trade or business, with Schedule C). Qualified tips received in a trade or business are outside this tool. Cite: [i1040gi] p. 104, Schedule 1-A, line 5, and the Multiple Trades or Businesses Worksheet (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"op":"param","ref":"sales.zero"}`
 - Cite: [i1040gi] p. 104, Schedule 1-A, line 5 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -389,6 +390,7 @@
 - **Authored helper label:** Figured: Qualified overtime compensation included in Form 1099-NEC, box 1, or Form 1099-MISC, box 3
 - **Encoded (NonNegDollars):** Enter $0 (sales.zero).
 - **Refusal:** when scope.schedule1 is true, cannot complete Schedule 1-A, line 14b (qualified overtime reported on Form 1099-NEC or 1099-MISC, with Schedule C). Nonemployee compensation is outside this tool. Cite: [i1040gi] p. 108, Schedule 1-A, line 14b, and the Qualified Overtime Compensation From More Than One Payor Worksheet (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Refusal:** when s1.sc_1a is true, cannot complete Schedule 1-A, line 14b (qualified overtime reported on Form 1099-NEC or 1099-MISC). Qualified overtime compensation reported on Form 1099-NEC or 1099-MISC is outside this tool. Cite: [i1040gi] p. 108, Schedule 1-A, line 14b (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"op":"param","ref":"sales.zero"}`
 - Cite: [i1040gi] p. 108, Schedule 1-A, line 14b (2025; printed date 2026-02-25; sha256 482e9c48)
 

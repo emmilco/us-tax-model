@@ -26,6 +26,16 @@ WHOLE_DOC_MAX_PAGES = 6
 HELPER_PRINTED = {"(helper)", "(gate)", "(computed helper)"}
 
 
+def marker_keys(lines):
+    """Each line's comparison key: its printed marker, qualified by the line id when several
+    lines of the document share the marker (a form that carries more than one IRS worksheet)."""
+    counts = {}
+    for l in lines:
+        counts[str(l["printed"])] = counts.get(str(l["printed"]), 0) + 1
+    plain = lambda m: counts[m] == 1 or m in HELPER_PRINTED or m == "(screen)"
+    return {l["id"]: str(l["printed"]) if plain(str(l["printed"])) else f'{l["printed"]} ({l["id"]})' for l in lines}
+
+
 # ---------- sources ----------
 
 def manifest():
@@ -325,14 +335,23 @@ def enum_notes():
     return "\n".join(f"  - Enum({name}): " + ", ".join(f'"{v}"' for v in e["values"]) for name, e in enums.items())
 
 
+SHARED_NOTE = """A marker shown with a line id in parentheses is printed on more than one of the worksheets in this
+document. For such a line write `printed` exactly as shown, marker and id together, give the line that id, and
+reference it from other lines by that id.
+"""
+
+
 def build_prompt(form_doc, excerpt, params, other_lines):
     lines = form_doc["lines"]
     inputs = [l for l in lines if l["expr"].get("op") == "input"]
     targets = [l for l in lines if l["printed"] not in HELPER_PRINTED and l["expr"].get("op") != "input"]
-    tgt = "\n".join(f"  - printed {l['printed']!r}: {l['label']}" for l in targets)
+    keys = marker_keys(lines)
+    shared = any(keys[l["id"]] != str(l["printed"]) for l in lines)
+    tgt = "\n".join(f"  - printed {keys[l['id']]!r}: {l['label']}" if keys[l["id"]] == str(l["printed"])
+                    else f"  - printed {keys[l['id']]!r} (id {l['id']}): {l['label']}" for l in targets)
     exported = exported_lines(form_doc)
     exp = "\n".join(f"  - id {l['id']} ({l['type']}): {l['label']}" for l in exported)
-    inp = "\n".join(f"  - {l['id']} (printed {l['printed']!r}, type {l['type']}): {l['expr'].get('source','')[:160]}" for l in inputs)
+    inp = "\n".join(f"  - {l['id']} (printed {keys[l['id']]!r}, type {l['type']}): {l['expr'].get('source','')[:160]}" for l in inputs)
     prm = "\n".join(f"  - {k}: {v}" for k, v in params.items())
     oth = "\n".join(f"  - {k}: {v}" for k, v in other_lines.items())
     spec = open(os.path.join(ROOT, "spec", "spec.md"), encoding="utf-8").read()
@@ -356,7 +375,7 @@ Tax year: {form_doc['tax_year']}
 Transcribe these printed lines, each as one line record with id "{form_doc['id']}.line<printed>"
 (for example {form_doc['id']}.line{targets[0]['printed'] if targets else '1'}), in this order:
 {tgt}
-
+{SHARED_NOTE if shared else ''}
 Also produce these intermediate values, which other forms depend on, each as a line with EXACTLY
 this id (printed "(helper)"); they may reference the printed lines above and the inputs below:
 {exp if exp else '  (none)'}
@@ -449,8 +468,9 @@ class Expander:
     Shared parameterised definitions are inlined with their bindings substituted,
     and Boolean guards are normalised (eq-to-true, not-of-comparison)."""
 
-    def __init__(self, form_id, lines, defs=None, bound=None, foreign=False, inputs=None, params=None):
+    def __init__(self, form_id, lines, defs=None, bound=None, foreign=False, inputs=None, params=None, keys=None):
         self.form_id = form_id
+        self.keys = keys or marker_keys(lines)   # line id -> the marker a reference to a printed line compares as
         self.by_id = {l["id"]: l for l in lines}
         self.printed = {l["id"]: l["printed"] for l in lines}
         self.defs = defs if defs is not None else load_defs()
@@ -487,18 +507,18 @@ class Expander:
             if r in self.inputs and r not in self.by_id:
                 line = self.inputs[r]
                 if line["printed"] not in HELPER_PRINTED and self.form_id not in self.defs:
-                    return {"line": line["printed"]}
+                    return {"line": self.keys.get(r, line["printed"])}
                 return {"input": r}
             if r in self.by_id:
                 line = self.by_id[r]
                 if line["expr"].get("op") == "input" or depth > 40:
                     if line["printed"] not in HELPER_PRINTED and self.form_id not in self.defs:
-                        return {"ref": r} if self.foreign else {"line": line["printed"]}
+                        return {"ref": r} if self.foreign else {"line": self.keys.get(r, line["printed"])}
                     return {"input": r}
                 # A printed line of this form is referenced by its number; helpers and
                 # definition-internal lines are expanded in place.
                 if line["printed"] not in HELPER_PRINTED and self.form_id not in self.defs:
-                    return {"ref": r} if self.foreign else {"line": line["printed"]}
+                    return {"ref": r} if self.foreign else {"line": self.keys.get(r, line["printed"])}
                 return self.expr(line["expr"], depth + 1)
             if r.startswith(self.form_id + ".line"):
                 return {"line": r[len(self.form_id) + 5:]}
@@ -559,10 +579,10 @@ class Expander:
                 return ALL_LINES[tree["ref"]][1]["type"] in ("Count", "NonNegDollars")
             if "line" in tree:
                 for l in self.by_id.values():
-                    if l["printed"] == tree["line"]:
+                    if self.keys.get(l["id"], l["printed"]) == tree["line"]:
                         return l["type"] in ("Count", "NonNegDollars")
                 for l in self.inputs.values():
-                    if l["printed"] == tree["line"]:
+                    if self.keys.get(l["id"], l["printed"]) == tree["line"]:
                         return l["type"] in ("Count", "NonNegDollars")
             if tree.get("op") == "sum_over":
                 return True
@@ -663,8 +683,10 @@ def compare(form_id, project_lines, second_lines):
     params_doc = yaml.safe_load(open(os.path.join(ROOT, "params", "2025.yaml"), encoding="utf-8"))
     pvals = {k: v["value"] for k, v in (params_doc.get("params") or params_doc)["values"].items()}
     inputs = {l["id"]: l for l in project_lines if l["expr"].get("op") == "input"}
-    a = Expander(form_id, project_lines, defs, inputs=inputs, params=pvals)
-    b = Expander(form_id, second_lines, defs, inputs=inputs, params=pvals)
+    pkeys = marker_keys(project_lines)
+    skeys = {**{i: pkeys[i] for i in inputs}, **marker_keys(second_lines)}
+    a = Expander(form_id, project_lines, defs, inputs=inputs, params=pvals, keys=pkeys)
+    b = Expander(form_id, second_lines, defs, inputs=inputs, params=pvals, keys=skeys)
     results = []
     second_by_id = {l["id"]: l for l in second_lines}
     for l in exported_lines({"id": form_id, "lines": project_lines}):
@@ -679,23 +701,23 @@ def compare(form_id, project_lines, second_lines):
             sb = f"<unparseable: {ex}>"
         results.append(gate_check({"printed": l["id"], "label": l["label"], "status": "AGREE" if pa == sb else "DISAGREE",
                         "project": pa, "second": sb, "note": s.get("note")}, l["id"], s, second_by_id))
-    second_by_printed = {l["printed"]: l for l in second_lines if l["printed"] not in HELPER_PRINTED}
+    second_by_printed = {skeys[l["id"]]: l for l in second_lines if l["printed"] not in HELPER_PRINTED}
     is_def = form_id in defs
     for l in project_lines:
         if l["printed"] in HELPER_PRINTED or l["expr"].get("op") == "input" or is_def:
             continue
-        s = second_by_printed.get(l["printed"])
+        s = second_by_printed.get(pkeys[l["id"]])
         pa = canonical(a.expr(l["expr"]))
         if s is None:
-            results.append({"printed": l["printed"], "label": l["label"], "status": "MISSING", "project": pa, "second": None, "note": None})
+            results.append({"printed": pkeys[l["id"]], "label": l["label"], "status": "MISSING", "project": pa, "second": None, "note": None})
             continue
         try:
             sb = canonical(b.expr(s["expr"]))
         except Exception as ex:  # malformed second transcription
             sb = f"<unparseable: {ex}>"
-        results.append(gate_check({"printed": l["printed"], "label": l["label"], "status": "AGREE" if pa == sb else "DISAGREE",
+        results.append(gate_check({"printed": pkeys[l["id"]], "label": l["label"], "status": "AGREE" if pa == sb else "DISAGREE",
                         "project": pa, "second": sb, "note": s.get("note")}, l["id"], s, second_by_id))
-    extra = [p for p in second_by_printed if p not in {l["printed"] for l in project_lines}]
+    extra = [p for p in second_by_printed if p not in set(pkeys.values())]
     return results, extra
 
 

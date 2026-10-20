@@ -139,13 +139,48 @@ params:
     placed_year:
       values: [y2005, y2006, y2007, y2008, y2009, y2010, y2011, y2012, y2013, y2014, y2015, y2016, y2017, y2018, y2019, y2020, y2021, y2022, y2023, y2024, y2025]
       cite:
-        doc: p946-html
-        locator: 'Chapter 4, Using the MACRS Percentage Tables; the example of property placed in service on July 2, 2023, for which 2025 is "the third recovery year"'
+        doc: p946
+        locator: 'p. 39, Using the MACRS Percentage Tables; the example of property placed in service on July 2, 2023, for which 2025 is "the third recovery year"'
     asset_class:
       values: [c00_11, c00_12, c00_13, c00_21, c00_22, c00_23, c00_241, c00_242, c00_25, c00_26, c00_27, c00_28, c00_3, c00_4, c01_1, c01_11, c01_21, c01_221, c01_222, c01_223, c01_224, c01_225, c01_23, c01_24, c01_3, c01_4, c10_0, c13_0, c13_1, c13_2, c13_3, c15_0, c20_1, c20_2, c20_3, c20_4, c20_5, c21_0, c22_1, c22_2, c22_3, c22_4, c22_5, c23_0, c24_1, c24_2, c24_3, c24_4, c26_1, c26_2, c27_0, c28_0, c30_1, c30_11, c30_2, c30_21, c31_0, c32_1, c32_11, c32_2, c32_3, c33_2, c33_21, c33_3, c33_4, c34_0, c34_01, c35_0, c36_0, c36_1, c37_11, c37_12, c37_2, c37_31, c37_32, c37_33, c37_41, c37_42, c39_0, c40_1, c40_2, c40_3, c40_4, c40_51, c40_52, c40_53, c40_54, c41_0, c42_0, c44_0, c45_0, c45_1, c46_0, c48_11, c48_12, c48_121, c48_13, c48_14, c48_2, c48_31, c48_32, c48_33, c48_34, c48_35, c48_36, c48_37, c48_38, c48_39, c48_41, c48_42, c48_43, c48_44, c48_45, c49_11, c49_12, c49_121, c49_13, c49_14, c49_15, c49_21, c49_221, c49_222, c49_223, c49_23, c49_24, c49_25, c49_3, c49_4, c49_5, c50_0, c51_0, c57_0, c57_1, c79_0, c80_0, cA_personal, cA_1245real, cB_qte, cC_research, cDEF_energy, cqip]
       cite:
         doc: p946
         locator: 'Appendix B, Tables B-1 and B-2 (the asset classes, pp. 99-108), the lettered paragraphs of Certain Property for Which Recovery Periods Assigned (p. 108), and qualified improvement property (Table 4-1); the description of each value is in tables/2025/class_lives.enum.json'
+    quarter:
+      values: [q1, q2, q3, q4]
+      cite:
+        doc: p946
+        locator: 'p. 41, Using the Applicable Convention, Mid-quarter convention, "A calendar year is divided into the following quarters" (January to March, April to June, July to September, October to December)'
+    bonus_choice:
+      values: [full, forty, none]
+      cite:
+        doc: i4562
+        locator: 'p. 5, Line 14, the 100% special depreciation allowance and the election "to take a 40% special depreciation allowance"; p. 7, Election out'
+    vehicle_method:
+      values: [standard, actual]
+      cite:
+        doc: i1040sc
+        locator: 'p. 6, Line 9, "You can deduct the actual expenses of operating your car or truck or take the standard mileage rate"'
+    retire_plan:
+      values: [none, sep, simple]
+      cite:
+        doc: p560
+        locator: 'chapter 2, Simplified Employee Pension (SEP); chapter 3, SIMPLE IRA Plan'
+    catchup_age:
+      values: [under50, age50, age60_63]
+      cite:
+        doc: p560
+        locator: 'chapter 3, Catch-up contributions, "age 50 or over at the end of the calendar year" and "in a tax year in which they attain age 60, 61, 62, or 63"'
+    simple_formula:
+      values: [match, nonelective]
+      cite:
+        doc: p560
+        locator: 'chapter 3, Employer matching contributions and Nonelective contributions'
+    ltc_age:
+      values: [to40, to50, to60, to70, over70]
+      cite:
+        doc: f7206
+        locator: 'Form 7206 (2025), line 2(b), the ages 40 or younger, 41 to 50, 51 to 60, 61 to 70, and 71 or older'
   values:
     ordinary.table_boundary:
       type: Dollars
@@ -1404,3 +1439,202 @@ params:
       cite:
         doc: i1040sc
         locator: 'p. 11, Simplified Method Worksheet, line 2, "Don''t enter more than 300 square feet"'
+    sc.one_cent:
+      type: NonNegDollars
+      value: 1
+      cite:
+        doc: i4562
+        locator: 'p. 11, Column (c), the percentage of business/investment use (a percentage carried as cents of 100)'
+    sc.hundred_cents:
+      type: NonNegDollars
+      value: 100
+      cite:
+        doc: i4562
+        locator: 'p. 11, Column (c), the percentage of business/investment use (100%)'
+    sc.fifty_cents:
+      type: NonNegDollars
+      value: 50
+      cite:
+        doc: i4562
+        locator: 'p. 13, Lines 26 and 27, "more than 50% in a qualified business use"'
+    sc.bonus_rate_40:
+      type: Rate
+      value:
+        num: 40
+        den: 100
+      cite:
+        doc: i4562
+        locator: 'p. 5, Line 14, "is limited to a special depreciation allowance of 40% of the depreciable basis"'
+    sc.conv_hy:
+      type: Enum(macrs_convention)
+      value: hy
+      cite:
+        doc: i4562
+        locator: 'p. 11, Column (e)—Convention, Half-year convention'
+    sc.period_y5:
+      type: Enum(macrs_period)
+      value: y5
+      cite:
+        doc: i4562
+        locator: 'p. 9, Lines 19a Through 19j, Column (a), "5-year property includes the following. Automobiles. Light general purpose trucks"'
+    sc.mileage_rate:
+      type: NonNegDollars
+      value: 70
+      cite:
+        doc: n-25-05
+        locator: 'Section 3, "The standard mileage rate for transportation or travel expenses for 2025 is 70 cents per mile for all miles of business use"'
+    sc.count5:
+      type: Count
+      value: 5
+      cite:
+        doc: p946
+        locator: 'p. 34, Which Convention Applies?, Mid-quarter convention, "more than 40%" (compared as five times the fourth-quarter bases against two times all bases)'
+    sc.count2:
+      type: Count
+      value: 2
+      cite:
+        doc: p946
+        locator: 'p. 34, Which Convention Applies?, Mid-quarter convention, "more than 40%"'
+    sc.year1:
+      type: Count
+      value: 1
+      cite:
+        doc: p946
+        locator: 'p. 61, Deductions After the Recovery Period (the years of a 5-year recovery period)'
+    sc.year2:
+      type: Count
+      value: 2
+      cite:
+        doc: p946
+        locator: 'p. 61, Deductions After the Recovery Period (the years of a 5-year recovery period)'
+    sc.year3:
+      type: Count
+      value: 3
+      cite:
+        doc: p946
+        locator: 'p. 61, Deductions After the Recovery Period (the years of a 5-year recovery period)'
+    sc.year4:
+      type: Count
+      value: 4
+      cite:
+        doc: p946
+        locator: 'p. 61, Deductions After the Recovery Period (the years of a 5-year recovery period)'
+    sc.year5:
+      type: Count
+      value: 5
+      cite:
+        doc: p946
+        locator: 'p. 61, Deductions After the Recovery Period (the years of a 5-year recovery period)'
+    sc.year6:
+      type: Count
+      value: 6
+      cite:
+        doc: p946
+        locator: 'p. 61, Deductions After the Recovery Period (the years of a 5-year recovery period)'
+    s179.max:
+      type: NonNegDollars
+      value: 250000000
+      cite:
+        doc: i4562
+        locator: 'p. 3, Worksheet 1, line 2, "The maximum section 179 deduction limitation for 2025 ... $2,500,000"'
+    s179.threshold:
+      type: NonNegDollars
+      value: 400000000
+      cite:
+        doc: i4562
+        locator: 'p. 3, Worksheet 1, line 6, "$4,000,000"'
+    s179.suv_limit:
+      type: NonNegDollars
+      value: 3130000
+      cite:
+        doc: i4562
+        locator: 'p. 15, Column (i), "You cannot elect to expense more than $31,300 of the cost of any SUVs and certain other vehicles"'
+    se.rate_9235:
+      type: Rate
+      value:
+        num: 9235
+        den: 10000
+      cite:
+        doc: f1040sse
+        locator: 'Schedule SE (2025), line 4a, "multiply line 3 by 92.35% (0.9235)"'
+    se.floor:
+      type: NonNegDollars
+      value: 40000
+      cite:
+        doc: f1040sse
+        locator: 'Schedule SE (2025), line 4c, "If less than $400, stop"'
+    se.wage_base:
+      type: NonNegDollars
+      value: 17610000
+      cite:
+        doc: f1040sse
+        locator: 'Schedule SE (2025), line 7, "$176,100"'
+    se.rate_124:
+      type: Rate
+      value:
+        num: 124
+        den: 1000
+      cite:
+        doc: f1040sse
+        locator: 'Schedule SE (2025), line 10, "12.4% (0.124)"'
+    se.rate_029:
+      type: Rate
+      value:
+        num: 29
+        den: 1000
+      cite:
+        doc: f1040sse
+        locator: 'Schedule SE (2025), line 11, "2.9% (0.029)"'
+    se.rate_50:
+      type: Rate
+      value:
+        num: 50
+        den: 100
+      cite:
+        doc: f1040sse
+        locator: 'Schedule SE (2025), line 13, "Multiply line 12 by 50% (0.50)"'
+    ret.comp_limit:
+      type: NonNegDollars
+      value: 35000000
+      cite:
+        doc: p560
+        locator: 'chapter 5, Deduction Worksheet for Self-Employed, Step 6, "Multiply $350,000"; chapter 3, "Only $350,000 of the employee''s compensation can be taken into account"'
+    ret.sep_dollar_limit:
+      type: NonNegDollars
+      value: 7000000
+      cite:
+        doc: p560
+        locator: 'chapter 5, Deduction Worksheet for Self-Employed, Step 8, "Contribution dollar limit $70,000"'
+    ret.simple_limit:
+      type: NonNegDollars
+      value: 1650000
+      cite:
+        doc: p560
+        locator: 'chapter 3, Salary reduction contributions, "can''t be more than $16,500 for 2025"'
+    ret.match_rate:
+      type: Rate
+      value:
+        num: 3
+        den: 100
+      cite:
+        doc: p560
+        locator: 'chapter 3, Employer matching contributions, "up to 3% of the employee''s compensation"'
+    ret.nonelective_rate:
+      type: Rate
+      value:
+        num: 2
+        den: 100
+      cite:
+        doc: p560
+        locator: 'chapter 3, Nonelective contributions, "nonelective contributions of 2% of compensation"'
+    s1.ebl_threshold:
+      type: NonNegDollars
+      value:
+        single: 31300000
+        mfj: 62600000
+        mfs: 31300000
+        hoh: 31300000
+        qss: 31300000
+      cite:
+        doc: rp-2024-40
+        locator: 'section 3.32, Threshold for Excess Business Loss, "the amount under § 461(l)(3)(A)(ii)(II) is $313,000 ($626,000 for joint returns)"'

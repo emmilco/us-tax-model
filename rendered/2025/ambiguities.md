@@ -115,3 +115,93 @@
 
 - Status: Owner accepted, after Stage 13.
 - Cite: [i8889] p. 5, Line 3, Note; p. 7, Line 7 Additional Contribution Amount and the worksheet (2025; sha256 da6f2f58)
+
+## amb.2025.auto_later_year_basis
+
+- Text at issue: Pub. 946 chapter 5, Depreciation Worksheet for Passenger Automobiles, line 16 says of the special depreciation allowance "Enter -0- if this is not the year you placed the car in service", so for a later year line 18 (the basis for depreciation) is the business cost less the section 179 deduction only. Chapter 4, Figuring the Unadjusted Basis of Your Property, says the table rates apply to unadjusted basis, which reduces the original basis by "Any special depreciation allowance taken on the property".
+- Candidate readings: Later years apply the table rate to the business cost less the section 179 deduction (the worksheet as printed). | Later years apply the table rate to the basis reduced by the special allowance taken in the first year (the general rule).
+- **Chosen:** Neither is computed: a vehicle placed in service 2019 to 2024 that took a special allowance in its first year is refused (scveh.screen).
+- Reason: The owner's ruling. The two passages give different amounts for the common case of a vehicle that took the 100% allowance, and the publication does not say which governs; vehicles that took no special allowance, or only section 179, are computed the same under both.
+- Status: Owner ruling, Stage 14.
+- Cite: [p946-html] Chapter 5, Depreciation Worksheet for Passenger Automobiles, line 16; chapter 4, Figuring the Unadjusted Basis of Your Property (2025; sha256 b5ac23e5)
+
+## amb.2025.auto_unrecovered_basis
+
+- Text at issue: Pub. 946 chapter 5, Deductions After the Recovery Period: "Unrecovered basis is the cost or other basis of the passenger automobile reduced by any ... depreciation, and section 179 deductions that would have been allowable if you had used the car 100% for business and investment use and the passenger automobile limits had not applied." Its example reduces the basis by the amounts allowed under the limits ($31,500 less $16,935), and in its last year allows $1,875 where the table amount is $1,814.
+- Candidate readings: Reduce the basis by the deductions allowable at 100% business use under the limits, each the lesser of the table amount and the limit (the example's method). | Reduce the basis by the deductions allowable at 100% business use without the limits (the definition's last clause), which leaves no unrecovered basis. | As the first reading, but allow the limit in a year where it exceeds the table amount (the example's last row).
+- **Chosen:** The first reading: each year's deduction at 100% business use is the lesser of the table amount (with the section 179 deduction in year 1) and that year's limit (scveh.d1 to scveh.d6).
+- Reason: The second reading would make the section meaningless, since the limits are what create unrecovered basis; the example computes it with the limits ("At the end of 2024, you had an unrecovered basis of $14,565 ($31,500 − $16,935)") and its 60% variation confirms business use is taken as 100%. The example's last row ($1,875 allowed against $1,814) is taken as an error: the lesser of the two is the rule of every other row. The difference arises only when the unrecovered basis is below the year's limit.
+- Status: Agent reading, Stage 14, for the owner's review.
+- Cite: [p946-html] Chapter 5, Deductions After the Recovery Period, and its example (2025; sha256 b5ac23e5)
+
+## amb.2025.mq_joint
+
+- Text at issue: Pub. 946 chapter 4, Which Convention Applies?: the mid-quarter convention applies if "the total depreciable bases of MACRS property you placed in service during the last 3 months of the tax year ... are more than 40% of the total depreciable bases of all MACRS property you placed in service during the entire year." It does not say whether spouses filing a joint return are one taxpayer for the test.
+- Candidate readings: Both spouses' property together, as one return. | Each spouse's property separately.
+- **Chosen:** Both spouses' property together (mq.q4 and mq.total sum over every person on the return).
+- Reason: The owner's ruling; section 179's limits are already figured once for a joint return (i4562 line 11, "combine the total taxable incomes for you and your spouse").
+- Status: Owner ruling, Stage 14.
+- Cite: [p946-html] Chapter 4, Which Convention Applies?, Mid-quarter convention (2025; sha256 b5ac23e5)
+
+## amb.2025.vehicle_business_pct
+
+- Text at issue: Form 4562 instructions, Column (c): "For automobiles and other vehicles, determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles the vehicle is driven for all purposes." No precision is given.
+- Candidate readings: Six decimal places, half-up. | Hundredths of a percent. | Whole percent.
+- **Chosen:** Business miles over total miles to six decimal places, half-up (the prorate atom with places 6 wherever the percentage is applied).
+- Reason: The owner's ruling.
+- Status: Owner ruling, Stage 14.
+- Cite: [i4562] p. 14, Column (c)—Business/investment use percentage (2025; sha256 5c1c95b7)
+
+## amb.2025.sep_rate_places
+
+- Text at issue: Pub. 560 chapter 5, Rate Worksheet for Self-Employed, line 3: "Self-employed rate as a decimal rounded to at least 3 decimal places (line 1 ÷ line 2)"; the Rate Table for Self-Employed gives six (10% is 0.090909).
+- Candidate readings: Six decimal places (the Rate Table). | Three decimal places (the least the worksheet allows).
+- **Chosen:** Six decimal places, half-up (person.sep_s5); only whole-percent plan rates are accepted, which the Rate Table covers.
+- Reason: For whole-percent plan rates the Rate Table applies, and it prints six places; "at least 3" permits six.
+- Status: Agent reading, Stage 14, for the owner's review.
+- Cite: [p560] chapter 5, Rate Table for Self-Employed and Rate Worksheet for Self-Employed (For use in preparing 2025 returns; sha256 1f1f7abe)
+
+## amb.2025.f7206_line15_person
+
+- Text at issue: Form 7206 line 7: "Multiply Schedule 1 (Form 1040), line 15, deductible part of self-employment tax, by the percentage on line 6"; the Schedule 1 line 17 worksheet, line 2, subtracts "any deductions on Schedule 1, lines 15 and 16". On a joint return Schedule 1 lines 15 and 16 combine both spouses.
+- Candidate readings: Use the amounts of the spouse whose business establishes the plan (their own Schedule SE line 13 and SEP or SIMPLE deduction). | Use the whole of Schedule 1, lines 15 and 16.
+- **Chosen:** The first: sc.f7206_line7 uses person.se_line13 and sc.f7206_line9 uses person.s16 of the business's owner.
+- Reason: Line 5 of Form 7206 and its line 9 ("attributable to the same trade or business") look only at the businesses of the person whose insurance it is; the other spouse's self-employment tax is not attributable to this business. The readings agree when only one spouse is self-employed.
+- Status: Agent reading, Stage 14, for the owner's review.
+- Cite: [f7206] Form 7206 (2025), lines 5 to 9; i1040gi Schedule 1 line 17 worksheet, line 2 (2025; created 2025-10-02; sha256 822203c9)
+
+## amb.2025.f7206_ratio_places
+
+- Text at issue: Form 7206 line 6: "Divide line 4 by line 5". No precision is given.
+- Candidate readings: Six decimal places, half-up. | Exact.
+- **Chosen:** Six decimal places, half-up (prorate with places 6 on sc.f7206_line7_pos and sc.f7206_line9_pos).
+- Reason: Six places is the precision of the other ratios in this tool; with one business the ratio is exactly 1.
+- Status: Agent reading, Stage 14, for the owner's review.
+- Cite: [f7206] Form 7206 (2025), line 6 (2025; created 2025-10-02; sha256 822203c9)
+
+## amb.2025.f7206_plan_attribution
+
+- Text at issue: Form 7206 line 9: "Enter the amount, if any, from Schedule 1 (Form 1040), line 16, ... attributable to the same trade or business in which the insurance plan is established." The instructions do not say how a contribution figured on all of a person's businesses is attributed to one.
+- Candidate readings: In proportion to the business's share of the person's net profits (line 4 over line 5, as line 7 does for self-employment tax). | Wholly to the business under which the plan is established.
+- **Chosen:** In proportion to the business's net profit over the total of the person's net profits (sc.f7206_line9).
+- Reason: The SEP and SIMPLE limits are figured on the person's net earnings from all businesses; line 7 apportions self-employment tax in the same way. With one business both readings give the whole amount.
+- Status: Agent reading, Stage 14, for the owner's review.
+- Cite: [f7206] Form 7206 (2025), lines 6, 7 and 9 (2025; created 2025-10-02; sha256 822203c9)
+
+## amb.2025.qbi_attribution
+
+- Text at issue: Form 8995 instructions, Line 1: "To figure the total amount of QBI, you must consider all items that are attributable to the trade or business. This includes, but isn't limited to, ... deductible part of self-employment tax, self-employment health insurance deduction, and contributions to qualified retirement plans." No method is given for a person with more than one business.
+- Candidate readings: Self-employment tax and retirement contributions in proportion to each business's net profit; the health insurance deduction to the business of its Form 7206. | Each item in proportion to net profit.
+- **Chosen:** The first (sc.qbi_se, sc.qbi_plan, sc.qbi_ded). Line 2 of Form 8995, the total, does not depend on the method.
+- Reason: Form 7206 is figured for the business under which the plan is established, so its deduction is attributable to that business; the other two are figured on all businesses together, as on Form 7206 line 7.
+- Status: Agent reading, Stage 14, for the owner's review.
+- Cite: [i8995] Line 1, Determining your qualified business income (2025; printed date 2026-01-26; sha256 875843ba)
+
+## amb.2025.s179_carryover_no_property
+
+- Text at issue: Form 4562 instructions, Worksheet 1: "1. Enter total cost of section 179 property ... placed in service during the tax year beginning in 2025 ... 3. Enter the smaller of line 1 or line 2 here ... 4. Enter the amount from line 3 here and on Form 4562, line 1"; Line 5: "If line 5 is zero, you cannot elect to expense any section 179 property. In this case, skip lines 6 through 11, enter zero on line 12, and enter the carryover of any disallowed deduction from 2024 ... on line 13."
+- Candidate readings: As printed: with no section 179 property placed in service in 2025, line 1 and line 5 are zero and a 2024 carryover is carried again, not deducted. | Line 1 is the $2,500,000 limit whether or not property was placed in service, so a carryover can be deducted up to the income limit.
+- **Chosen:** As printed (s179.line1 is the smaller of line 2 and $2,500,000).
+- Reason: The worksheet and the line 5 instruction say so in terms. The agent recalls that the deduction of a carryover is not conditioned on placing new property in service, but has not verified that recollection against any archived source, so the printed instructions are followed and the question is put to the owner.
+- Status: Agent reading, Stage 14, for the owner's review.
+- Cite: [i4562] p. 3, Worksheet 1; p. 4, Line 5 (2025; sha256 5c1c95b7)

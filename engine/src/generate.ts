@@ -94,6 +94,19 @@ interface Spouse {
   educator: number; eligible: boolean; tips: TipJob[]; overtime: OvertimeJob[]; hsa: SpouseHsa;
 }
 
+interface Vehicle {
+  standard: boolean; owned: boolean; year: number; business: number; commuting: number; other: number; parking: number;
+  operating: number; lease: number; cost: number; passenger: boolean; s179: number; afterJan19: boolean; bonus: string;
+  prior179: number; quarter: string; priorConv: string;
+}
+interface Asset { cls: number; year: number; cost: number; pct: number; listed: boolean; quarter: string; s179: number; afterJan19: boolean; bonus: string; priorConv: string; prior179: number; priorBonus: number }
+interface Business {
+  receipts: number; returns: number; other: number; expenses: number[]; inventory: boolean; purchases: number; endInv: number;
+  home: boolean; sqft: number; homeSqft: number; health: boolean; premiums: number; ltc: { payments: number; age: string }[];
+  vehicles: Vehicle[]; assets: Asset[];
+}
+interface Plan { kind: string; sepRate: number; sepContrib: number; deferral: number; age: string; formula: string; employer: number }
+
 interface Adjustments {
   uc: number; ucRepaidPct: number; educator: number; sli: number;
   hsa: boolean; months: number; familyMonths: number; decFamily: boolean; contrib: number; employer: number;
@@ -121,6 +134,107 @@ interface Spec {
   s1a: ScheduleOneA;
   flags: Record<string, boolean>;
   extras: Record<string, number>;
+  businesses: Business[]; plan: Plan; spouseBusinesses: Business[]; spousePlan: Plan;
+}
+
+// The Schedule C expense lines the generator fills (Part II), each usually zero.
+const SC_EXPENSES = ["line8", "line10", "line11", "line14", "line15", "line16a", "line16b", "line17", "line18", "line19",
+  "rent_equipment", "line20b", "line21", "line22", "line23", "line24a", "meals_50", "meals_80", "line25", "line26", "line48"];
+
+function businessArbitrary(): fc.Arbitrary<Business> {
+  const vehicle = fc.record<Vehicle>({
+    standard: fc.boolean(), owned: rareTrue(85), year: fc.integer({ min: 2019, max: 2025 }),
+    business: fc.integer({ min: 1_000, max: 30_000 }), commuting: rareMoney(5_000, 30), other: fc.oneof({ weight: 4, arbitrary: fc.integer({ min: 0, max: 4_000 }) }, { weight: 1, arbitrary: fc.integer({ min: 0, max: 30_000 }) }),
+    parking: rareMoney(100_000, 30), operating: money(1_000_000), lease: money(800_000), cost: fc.integer({ min: 500_000, max: 8_000_000 }),
+    passenger: rareTrue(85), s179: rareMoney(3_000_000, 15), afterJan19: rareTrue(80), bonus: fc.constantFrom("none", "none", "full", "forty"),
+    prior179: rareMoney(1_000_000, 15), quarter: fc.constantFrom("q1", "q2", "q3", "q4"), priorConv: fc.constantFrom("hy", "hy", "hy", "mq1", "mq2", "mq3", "mq4"),
+  });
+  const asset = fc.record<Asset>({
+    cls: fc.nat(), year: fc.oneof({ weight: 3, arbitrary: fc.constant(2025) }, { weight: 2, arbitrary: fc.integer({ min: 2005, max: 2024 }) }),
+    cost: fc.integer({ min: 10_000, max: 5_000_000 }), pct: fc.oneof({ weight: 4, arbitrary: fc.constant(100) }, { weight: 1, arbitrary: fc.integer({ min: 1, max: 100 }) }),
+    listed: rareTrue(10), quarter: fc.constantFrom("q1", "q2", "q3", "q4", "q4"), s179: rareMoney(2_000_000, 25), afterJan19: rareTrue(80),
+    bonus: fc.constantFrom("none", "none", "full", "forty"), priorConv: fc.constantFrom("hy", "hy", "hy", "mq1", "mq2", "mq3", "mq4"),
+    prior179: rareMoney(1_000_000, 10), priorBonus: rareMoney(1_000_000, 10),
+  });
+  return fc.record<Business>({
+    receipts: money(25_000_000), returns: rareMoney(500_000, 10), other: rareMoney(500_000, 10),
+    expenses: fc.array(rareMoney(3_000_000, 25), { minLength: SC_EXPENSES.length, maxLength: SC_EXPENSES.length }),
+    inventory: rareTrue(20), purchases: money(5_000_000), endInv: money(2_000_000),
+    home: rareTrue(20), sqft: fc.integer({ min: 20, max: 450 }), homeSqft: fc.integer({ min: 500, max: 3_000 }),
+    health: rareTrue(15), premiums: money(2_000_000),
+    ltc: fc.array(fc.record({ payments: money(800_000), age: fc.constantFrom("to40", "to50", "to60", "to70", "over70") }), { maxLength: 1 }),
+    vehicles: fc.array(vehicle, { maxLength: 2 }), assets: fc.array(asset, { maxLength: 2 }),
+  });
+}
+
+const planArbitrary = fc.record<Plan>({
+  kind: fc.constantFrom("none", "none", "none", "none", "none", "none", "sep", "simple"), sepRate: fc.integer({ min: 1, max: 25 }),
+  sepContrib: fc.oneof({ weight: 9, arbitrary: money(300_000) }, { weight: 1, arbitrary: money(7_000_000) }), deferral: fc.oneof({ weight: 9, arbitrary: money(1_000_000) }, { weight: 1, arbitrary: money(2_000_000) }), age: fc.constantFrom("under50", "under50", "age50", "age60_63"),
+  formula: fc.constantFrom("match", "nonelective"), employer: fc.oneof({ weight: 9, arbitrary: money(60_000) }, { weight: 1, arbitrary: money(600_000) }),
+});
+
+/** One person's businesses: each Schedule C with its vehicles, other property and long-term care entries, and the
+ * person's SEP or SIMPLE plan. Facts outside the tool's scope are given their supported answer; the screens that refuse
+ * them are root inputs, varied with the other flags. */
+function putBusinesses(data: CanonicalData, inputs: Inputs, P: string, list: Business[], plan: Plan): void {
+  const classes = (data.tables.find((t) => t.id === "class_lives")?.rows ?? []).filter((r) => r.value !== "outside").map((r) => String(r.keys[0]));
+  const keys = list.map((_, i) => `biz_${String.fromCharCode(97 + i)}`);
+  inputs[`$sc@${P}`] = keys;
+  list.forEach((b, i) => {
+    const E = `${P}.sc[${keys[i]}]`;
+    Object.assign(inputs, {
+      [`${E}.statutory`]: false, [`${E}.passive`]: true, [`${E}.spouse_owned`]: false, [`${E}.method_other`]: false, [`${E}.special`]: false,
+      [`${E}.at_risk`]: true, [`${E}.inventory_other`]: false, [`${E}.tips_ot`]: false,
+      [`${E}.line1`]: b.receipts, [`${E}.line2`]: Math.min(b.returns, b.receipts), [`${E}.line6`]: b.other,
+      [`${E}.line35`]: 0, [`${E}.line36`]: b.inventory ? b.purchases : 0, [`${E}.line37`]: 0, [`${E}.line38`]: 0, [`${E}.line39`]: 0,
+      [`${E}.line41`]: b.inventory ? Math.min(b.endInv, b.purchases) : 0,
+      [`${E}.ho_uses`]: b.home, [`${E}.hi_uses`]: b.health,
+    });
+    SC_EXPENSES.forEach((k, j) => { inputs[`${E}.${k}`] = b.expenses[j]!; });
+    // Every field of the entry gets a value, as every root input does; the home office and health insurance
+    // answers are read only when their question is answered yes.
+    Object.assign(inputs, { [`${E}.ho_other`]: false, [`${E}.ho_sqft`]: b.home ? b.sqft : 0, [`${E}.ho_home_sqft`]: b.home ? Math.max(b.homeSqft, b.sqft) : 0,
+      [`${E}.hi_screen`]: false, [`${E}.f7206_line1`]: b.health ? b.premiums : 0 });
+    const ltc = b.health ? b.ltc : [];
+    inputs[`$ltc@${E}`] = ltc.map((_, k) => (k === 0 ? "self" : `p${k}`));
+    ltc.forEach((l, k) => { const L = `${E}.ltc[${k === 0 ? "self" : `p${k}`}]`; inputs[`${L}.payments`] = l.payments; inputs[`${L}.age`] = l.age; });
+    inputs[`$scveh@${E}`] = b.vehicles.map((_, k) => `car_${k + 1}`);
+    b.vehicles.forEach((v, k) => {
+      const V = `${E}.scveh[car_${k + 1}]`;
+      // The standard mileage rate only from the first year (owned) or for a whole lease; actual expenses otherwise.
+      const method = v.standard ? "standard" : "actual";
+      const s179 = method === "actual" && v.owned && v.year === 2025 ? Math.min(v.s179, v.cost) : 0;
+      Object.assign(inputs, {
+        [`${V}.method`]: method, [`${V}.owned`]: v.owned, [`${V}.placed_date`]: v.year, [`${V}.miles_business`]: v.business,
+        [`${V}.miles_commuting`]: v.commuting, [`${V}.miles_other`]: v.other, [`${V}.parking`]: v.parking, [`${V}.smr_ok`]: true,
+        [`${V}.operating`]: v.operating, [`${V}.lease`]: v.lease, [`${V}.placed`]: `y${v.year}`, [`${V}.screen`]: false,
+        [`${V}.cost`]: v.cost, [`${V}.passenger`]: v.passenger, [`${V}.suv`]: false, [`${V}.s179_elect`]: s179,
+        [`${V}.after_jan19`]: v.afterJan19, [`${V}.bonus_choice`]: v.year === 2025 ? v.bonus : "none", [`${V}.bonus_same`]: true,
+        [`${V}.prior_179`]: v.year === 2025 ? 0 : Math.min(v.prior179, v.cost), [`${V}.quarter`]: v.quarter, [`${V}.prior_conv`]: v.priorConv,
+      });
+    });
+    inputs[`$asset@${E}`] = b.assets.map((_, k) => `item_${k + 1}`);
+    b.assets.forEach((a, k) => {
+      const A = `${E}.asset[item_${k + 1}]`;
+      const now = a.year === 2025;
+      const businessCost = Math.floor((a.cost * a.pct) / 100);
+      Object.assign(inputs, {
+        [`${A}.class`]: classes[a.cls % Math.max(1, classes.length)], [`${A}.screen`]: false, [`${A}.placed`]: `y${a.year}`,
+        [`${A}.cost`]: a.cost, [`${A}.pct`]: a.listed ? Math.max(a.pct, 51) : a.pct, [`${A}.listed`]: a.listed, [`${A}.quarter`]: a.quarter,
+        [`${A}.s179`]: now && a.pct > 50 ? Math.min(a.s179, businessCost) : 0, [`${A}.after_jan19`]: a.afterJan19,
+        [`${A}.bonus_choice`]: a.bonus, [`${A}.bonus_same`]: true, [`${A}.prior_conv`]: a.priorConv,
+        [`${A}.prior_179`]: now ? 0 : Math.min(a.prior179, businessCost), [`${A}.prior_bonus`]: now ? 0 : Math.min(a.priorBonus, Math.max(0, businessCost - Math.min(a.prior179, businessCost))),
+      });
+    });
+  });
+  {
+    // The taxpayer's screens are root inputs, already varied with the other flags; the spouse's are set here.
+    inputs[`${P}.se_screen`] ??= false;
+    inputs[`${P}.plan`] = plan.kind;
+    inputs[`${P}.plan_screen`] ??= false;
+    Object.assign(inputs, { [`${P}.sep_rate`]: plan.sepRate, [`${P}.sep_contrib`]: plan.sepContrib, [`${P}.simple_deferral`]: plan.deferral,
+      [`${P}.simple_age`]: plan.age, [`${P}.simple_kind`]: plan.formula, [`${P}.simple_employer`]: plan.employer });
+  }
 }
 
 export function returnArbitrary(data: CanonicalData): fc.Arbitrary<Inputs> {
@@ -224,6 +338,12 @@ export function returnArbitrary(data: CanonicalData): fc.Arbitrary<Inputs> {
     }),
     flags: fc.record(Object.fromEntries(boolKeys.map((k) => [k, rareTrue(BOOL_TRUE_PERCENT[k] ?? DEFAULT_TRUE_PERCENT)]))),
     extras: fc.record(Object.fromEntries(extraKeys.map((k) => [k, rareMoney(500_000, 2)]))),
+    // About a third of returns have a business; a joint return's spouse sometimes has one as well.
+    businesses: fc.oneof({ weight: 6, arbitrary: fc.constant<Business[]>([]) }, { weight: 3, arbitrary: fc.array(businessArbitrary(), { minLength: 1, maxLength: 1 }) },
+      { weight: 1, arbitrary: fc.array(businessArbitrary(), { minLength: 2, maxLength: 2 }) }),
+    plan: planArbitrary,
+    spouseBusinesses: fc.oneof({ weight: 4, arbitrary: fc.constant<Business[]>([]) }, { weight: 1, arbitrary: fc.array(businessArbitrary(), { minLength: 1, maxLength: 1 }) }),
+    spousePlan: planArbitrary,
   });
   return spec.map((s) => buildInputs(data, s));
 }
@@ -249,6 +369,8 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   inputs["$person"] = ["taxpayer"];
   inputs["person[taxpayer].role"] = "taxpayer";
   inputs["$f8889@person[taxpayer]"] = ["hsa"];
+  inputs["qbi.carryforward"] = 0;
+  putBusinesses(data, inputs, "person[taxpayer]", s.profile === "investor" || s.profile === "retiree" ? [] : s.businesses, s.plan);
   inputs["person[taxpayer].rrta"] = s.rrta;
   const employers = s.employers.map((_, i) => `emp_${String.fromCharCode(97 + i)}`);
   inputs["$w2@person[taxpayer]"] = employers;
@@ -355,6 +477,8 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
       inputs[`${k}.interest`] = l.interest; inputs[`${k}.mixed`] = l.mixed; inputs[`${k}.financed`] = l.financed;
       inputs[`${k}.nonqualifying`] = l.nonqualifying; inputs[`${k}.down`] = l.down;
       inputs[`${k}.refi_balance`] = l.refiBalance; inputs[`${k}.refi_whole`] = l.refiWhole;
+      // Column (ii): part of the interest deducted on a Schedule C, when the return has one.
+      inputs[`${k}.col_ii_input`] = s.businesses.length > 0 || s.spouseBusinesses.length > 0 ? Math.floor(l.interest / 4) : 0;
     });
   }
   // A joint return has an entry for your spouse, with its own facts, wages and entries.
@@ -384,6 +508,7 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
     });
     const h = sp.hsa;
     inputs[`$f8889@${P}`] = h.has ? ["hsa"] : [];
+    putBusinesses(data, inputs, P, s.spouseBusinesses, s.spousePlan);
     if (h.has) {
       const family = Math.min(h.familyMonths, h.months);
       Object.assign(inputs, { [`${H}.line2`]: h.contrib, [`${H}.line9`]: 0, [`${H}.unsupported`]: false, [`${H}.months_eligible`]: h.months,

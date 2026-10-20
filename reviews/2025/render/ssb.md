@@ -4,10 +4,10 @@ The rendered English of every printed line of `Social Security Benefits Workshee
 
 | field | value |
 | --- | --- |
-| date | 2026-10-18 |
+| date | 2026-10-19 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 2cda1e8fa8da9fad8e87a25a87a1db4de3c3b4e31464fbd23a32f91712ed5ba6 |
+| prompt sha256 | 74b96d2b6c0024ca6216e915dc9f48245f9360d636ac0c3d8de90c6f9e7e727b |
 | lines judged | 18 |
 | match / mismatch / unclear / missing | 18 / 0 / 0 / 0 |
 | verdicts for lines not in the form | none |
@@ -23,149 +23,151 @@ The rendered English of every printed line of `Social Security Benefits Workshee
 ### 1 — Enter the total amount from box 5 of all your Forms SSA-1099 and RRB-1099
 Status: **MATCH**
 
-Model: The IRS line says 'Enter the total amount from box 5 of all your Forms SSA-1099 and RRB-1099', and the restatement enters that same input.
+Model: The IRS line says to enter the total from box 5 of all Forms SSA-1099 and RRB-1099. The helper is exactly that input.
 
 ### 2 — Multiply line 1 by 50% (0.50)
 Status: **MATCH**
 
-Model: 'Multiply line 1 by 50% (0.50)' is the same as multiplying by 1/2. The three refusals cover cases the instructions send to Pub. 590-A/915 ('Exception'), to the Lump-Sum Election in Pub. 915, and to the terrorist-attack disability exclusion (Pub. 3920), and each names what is excluded.
+Model: 1/2 equals the IRS's '50% (0.50)'. The refusals name the cases the IRS text excludes or sends elsewhere: the Exception list (Pub. 590-A/Pub. 915), the terrorist-attack disability exclusion (Pub. 3920) and the lump-sum election (Pub. 915).
 
 ### 3 — Combine the amounts from Form 1040 or 1040-SR, lines 1z, 2b, 3b, 4b, 5b, 7a, and 8
 Status: **MATCH**
 
-Model: The IRS line says 'Combine the amounts from Form 1040 or 1040-SR, lines 1z, 2b, 3b, 4b, 5b, 7a, and 8'. The restatement adds the same lines, and its signed Dollars type lets a capital loss on line 7a reduce the total.
+Model: The IRS says 'Combine the amounts from Form 1040 or 1040-SR, lines 1z, 2b, 3b, 4b, 5b, 7a, and 8'. The restatement adds the same lines as signed Dollars, so a loss on 7a is allowed for.
 
 ### 4 — Enter the amount, if any, from Form 1040 or 1040-SR, line 2a
 Status: **MATCH**
 
-Model: Both enter the amount, if any, from Form 1040 line 2a.
+Model: The IRS says 'Enter the amount, if any, from Form 1040 or 1040-SR, line 2a'. The restatement does the same.
 
 ### 5 — Combine lines 2, 3, and 4
 Status: **MATCH**
 
-Model: 'Combine lines 2, 3, and 4' is the same as adding lines 2, 3 and 4 with signed amounts.
+Model: The IRS says 'Combine lines 2, 3, and 4'. The restatement adds the same three lines.
 
 ### 6 — Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 25
 Status: **MATCH**
 
-Model: The IRS line adds 'Schedule 1, lines 11 through 20, and 23 and 25'. The restatement adds only lines 11 and 13, but the scope.schedule1 refusal blocks every other Schedule 1 adjustment and names lines 12, 14 to 20, 23 and 25 as excluded. So within the supported cases the two totals are the same.
+Model: The IRS says 'Schedule 1, lines 11 through 20, and 23 and 25'. The restatement keeps lines 11, 13, 15, 16 and 17, and the scope.schedule1 refusal names lines 12, 14, 18 to 20, 23 and 25 as outside the tool.
 
 ### 7 — Is the amount on line 6 less than the amount on line 5? If yes, subtract line 6 from line 
 Status: **MATCH**
 
-Model: The IRS line stops with taxable benefits of -0- when line 6 is not less than line 5, and otherwise subtracts line 6 from line 5. Entering -0- when the result is zero or less sends zero through lines 9 to 18, so line 18 is also -0-.
+Model: The IRS says to stop and enter -0- on line 6b if line 6 is not less than line 5, otherwise to subtract line 6 from line 5. Flooring line 7 at zero carries through to a line 18 of zero, so the result is the same.
 
 ### 8 — $32,000 if married filing jointly; $25,000 if single, head of household, qualifying surviv
 Status: **MATCH**
 
-Model: The IRS amounts are $32,000 for married filing jointly and $25,000 for single, head of household, qualifying surviving spouse, or married filing separately and lived apart all year. For married filing separately and lived together it says 'skip lines 8 through 15', and the restatement enters $0 there and handles that case on line 16.
+Model: The thresholds match the IRS text: $32,000 for married filing jointly; $25,000 for single, HOH, QSS, or MFS who lived apart all year. For MFS who lived with the spouse, the IRS says to skip lines 8 through 15, and those lines do not reach line 16 in that case.
 
 ### 9 — Is the amount on line 8 less than the amount on line 7? If yes, subtract line 8 from line 
 Status: **MATCH**
 
-Model: The IRS line stops with -0- taxable when line 8 is not less than line 7, and otherwise subtracts line 8 from line 7. Using the floored subtraction gives the same final result.
+Model: The IRS says to stop with -0- if line 8 is not less than line 7, otherwise to subtract line 8 from line 7. Flooring at zero makes lines 11 through 16, and so line 18, zero, which is the same result.
 
 ### 10 — Enter $12,000 if married filing jointly; $9,000 if single, head of household, qualifying s
 Status: **MATCH**
 
-Model: The IRS line says 'Enter $12,000 if married filing jointly; $9,000 if single, head of household, qualifying surviving spouse, or married filing separately and you lived apart', and the restatement uses those amounts. Married filing separately while living together is skipped under line 8, and that case is overridden on line 16.
+Model: The amounts match the IRS text: '$12,000 if married filing jointly; $9,000 if single, head of household, qualifying surviving spouse, or married filing separately and you lived apart'. The MFS lived-together case skips this line.
 
 ### 11 — Subtract line 10 from line 9. If zero or less, enter -0-
 Status: **MATCH**
 
-Model: Both say: subtract line 10 from line 9, and if zero or less, enter -0-.
+Model: The IRS says 'Subtract line 10 from line 9. If zero or less, enter -0-'. The restatement is the same.
 
 ### 12 — Enter the smaller of line 9 or line 10
 Status: **MATCH**
 
-Model: Both say: enter the smaller of line 9 or line 10.
+Model: The IRS says 'Enter the smaller of line 9 or line 10'. The restatement is the same.
 
 ### 13 — Enter one-half of line 12
 Status: **MATCH**
 
-Model: 'Enter one-half of line 12' is the same as multiplying line 12 by 1/2.
+Model: The IRS says 'Enter one-half of line 12'. The restatement multiplies line 12 by 1/2, which is the same.
 
 ### 14 — Enter the smaller of line 2 or line 13
 Status: **MATCH**
 
-Model: Both say: enter the smaller of line 2 or line 13.
+Model: The IRS says 'Enter the smaller of line 2 or line 13'. The restatement is the same.
 
 ### 15 — Multiply line 11 by 85% (0.85). If line 11 is zero, enter -0-
 Status: **MATCH**
 
-Model: Both multiply line 11 by 85% (0.85), and a zero line 11 gives -0-.
+Model: The IRS says 'Multiply line 11 by 85% (0.85)'. The restatement uses the same operand and rate.
 
 ### 16 — Add lines 14 and 15
 Status: **MATCH**
 
-Model: The IRS line says 'Add lines 14 and 15'. For married filing separately and lived with your spouse at any time in 2025, line 8 says to 'multiply line 7 by 85% (0.85) and enter the result on line 16', and the restatement follows both rules.
+Model: The IRS says 'Add lines 14 and 15', and for married filing separately living with the spouse at any time in 2025: 'multiply line 7 by 85% (0.85) and enter the result on line 16'. The restatement follows both branches.
 
 ### 17 — Multiply line 1 by 85% (0.85)
 Status: **MATCH**
 
-Model: Both multiply line 1 by 85% (0.85).
+Model: The IRS says 'Multiply line 1 by 85% (0.85)'. The restatement is the same.
 
 ### 18 — Taxable social security benefits. Enter the smaller of line 16 or line 17
 Status: **MATCH**
 
-Model: The IRS line says 'Enter the smaller of line 16 or line 17'. When line 1 is zero, line 17 is zero, so entering $0 when there are no benefits gives the same value.
+Model: The IRS says 'Enter the smaller of line 16 or line 17'. The restatement uses $0 when line 1 is zero, and in that case line 17 is zero anyway, so the value is the same.
 
 ## Raw response
 
 ```yaml
+```yaml
 lines:
   - key: "1"
     status: MATCH
-    reason: "The IRS line says 'Enter the total amount from box 5 of all your Forms SSA-1099 and RRB-1099', and the restatement enters that same input."
+    reason: "The IRS line says to enter the total from box 5 of all Forms SSA-1099 and RRB-1099. The helper is exactly that input."
   - key: "2"
     status: MATCH
-    reason: "'Multiply line 1 by 50% (0.50)' is the same as multiplying by 1/2. The three refusals cover cases the instructions send to Pub. 590-A/915 ('Exception'), to the Lump-Sum Election in Pub. 915, and to the terrorist-attack disability exclusion (Pub. 3920), and each names what is excluded."
+    reason: "1/2 equals the IRS's '50% (0.50)'. The refusals name the cases the IRS text excludes or sends elsewhere: the Exception list (Pub. 590-A/Pub. 915), the terrorist-attack disability exclusion (Pub. 3920) and the lump-sum election (Pub. 915)."
   - key: "3"
     status: MATCH
-    reason: "The IRS line says 'Combine the amounts from Form 1040 or 1040-SR, lines 1z, 2b, 3b, 4b, 5b, 7a, and 8'. The restatement adds the same lines, and its signed Dollars type lets a capital loss on line 7a reduce the total."
+    reason: "The IRS says 'Combine the amounts from Form 1040 or 1040-SR, lines 1z, 2b, 3b, 4b, 5b, 7a, and 8'. The restatement adds the same lines as signed Dollars, so a loss on 7a is allowed for."
   - key: "4"
     status: MATCH
-    reason: "Both enter the amount, if any, from Form 1040 line 2a."
+    reason: "The IRS says 'Enter the amount, if any, from Form 1040 or 1040-SR, line 2a'. The restatement does the same."
   - key: "5"
     status: MATCH
-    reason: "'Combine lines 2, 3, and 4' is the same as adding lines 2, 3 and 4 with signed amounts."
+    reason: "The IRS says 'Combine lines 2, 3, and 4'. The restatement adds the same three lines."
   - key: "6"
     status: MATCH
-    reason: "The IRS line adds 'Schedule 1, lines 11 through 20, and 23 and 25'. The restatement adds only lines 11 and 13, but the scope.schedule1 refusal blocks every other Schedule 1 adjustment and names lines 12, 14 to 20, 23 and 25 as excluded. So within the supported cases the two totals are the same."
+    reason: "The IRS says 'Schedule 1, lines 11 through 20, and 23 and 25'. The restatement keeps lines 11, 13, 15, 16 and 17, and the scope.schedule1 refusal names lines 12, 14, 18 to 20, 23 and 25 as outside the tool."
   - key: "7"
     status: MATCH
-    reason: "The IRS line stops with taxable benefits of -0- when line 6 is not less than line 5, and otherwise subtracts line 6 from line 5. Entering -0- when the result is zero or less sends zero through lines 9 to 18, so line 18 is also -0-."
+    reason: "The IRS says to stop and enter -0- on line 6b if line 6 is not less than line 5, otherwise to subtract line 6 from line 5. Flooring line 7 at zero carries through to a line 18 of zero, so the result is the same."
   - key: "8"
     status: MATCH
-    reason: "The IRS amounts are $32,000 for married filing jointly and $25,000 for single, head of household, qualifying surviving spouse, or married filing separately and lived apart all year. For married filing separately and lived together it says 'skip lines 8 through 15', and the restatement enters $0 there and handles that case on line 16."
+    reason: "The thresholds match the IRS text: $32,000 for married filing jointly; $25,000 for single, HOH, QSS, or MFS who lived apart all year. For MFS who lived with the spouse, the IRS says to skip lines 8 through 15, and those lines do not reach line 16 in that case."
   - key: "9"
     status: MATCH
-    reason: "The IRS line stops with -0- taxable when line 8 is not less than line 7, and otherwise subtracts line 8 from line 7. Using the floored subtraction gives the same final result."
+    reason: "The IRS says to stop with -0- if line 8 is not less than line 7, otherwise to subtract line 8 from line 7. Flooring at zero makes lines 11 through 16, and so line 18, zero, which is the same result."
   - key: "10"
     status: MATCH
-    reason: "The IRS line says 'Enter $12,000 if married filing jointly; $9,000 if single, head of household, qualifying surviving spouse, or married filing separately and you lived apart', and the restatement uses those amounts. Married filing separately while living together is skipped under line 8, and that case is overridden on line 16."
+    reason: "The amounts match the IRS text: '$12,000 if married filing jointly; $9,000 if single, head of household, qualifying surviving spouse, or married filing separately and you lived apart'. The MFS lived-together case skips this line."
   - key: "11"
     status: MATCH
-    reason: "Both say: subtract line 10 from line 9, and if zero or less, enter -0-."
+    reason: "The IRS says 'Subtract line 10 from line 9. If zero or less, enter -0-'. The restatement is the same."
   - key: "12"
     status: MATCH
-    reason: "Both say: enter the smaller of line 9 or line 10."
+    reason: "The IRS says 'Enter the smaller of line 9 or line 10'. The restatement is the same."
   - key: "13"
     status: MATCH
-    reason: "'Enter one-half of line 12' is the same as multiplying line 12 by 1/2."
+    reason: "The IRS says 'Enter one-half of line 12'. The restatement multiplies line 12 by 1/2, which is the same."
   - key: "14"
     status: MATCH
-    reason: "Both say: enter the smaller of line 2 or line 13."
+    reason: "The IRS says 'Enter the smaller of line 2 or line 13'. The restatement is the same."
   - key: "15"
     status: MATCH
-    reason: "Both multiply line 11 by 85% (0.85), and a zero line 11 gives -0-."
+    reason: "The IRS says 'Multiply line 11 by 85% (0.85)'. The restatement uses the same operand and rate."
   - key: "16"
     status: MATCH
-    reason: "The IRS line says 'Add lines 14 and 15'. For married filing separately and lived with your spouse at any time in 2025, line 8 says to 'multiply line 7 by 85% (0.85) and enter the result on line 16', and the restatement follows both rules."
+    reason: "The IRS says 'Add lines 14 and 15', and for married filing separately living with the spouse at any time in 2025: 'multiply line 7 by 85% (0.85) and enter the result on line 16'. The restatement follows both branches."
   - key: "17"
     status: MATCH
-    reason: "Both multiply line 1 by 85% (0.85)."
+    reason: "The IRS says 'Multiply line 1 by 85% (0.85)'. The restatement is the same."
   - key: "18"
     status: MATCH
-    reason: "The IRS line says 'Enter the smaller of line 16 or line 17'. When line 1 is zero, line 17 is zero, so entering $0 when there are no benefits gives the same value."
+    reason: "The IRS says 'Enter the smaller of line 16 or line 17'. The restatement uses $0 when line 1 is zero, and in that case line 17 is zero anyway, so the value is the same."
+```
 ```

@@ -1,0 +1,180 @@
+form:
+  id: f4562
+  kind: form
+  title: Form 4562 — Depreciation and Amortization, one per business
+  tax_year: 2025
+  note: The lines of one business's Form 4562, read from its Schedule C's totals over its vehicles and other property (enclosing-entry
+    references, spec 4.4); Part I is figured once for the return (s179). Parts II lines 15 and 16, Part III Section C (ADS),
+    Part V line 27 and Part VI are refused through the screens of the property.
+  lines:
+  - id: f4562.line12
+    printed: '12'
+    label: Section 179 expense deduction
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: sc.s179_allowed
+    cite:
+      doc: i4562
+      locator: p. 5, Line 12, "On line 12 of the Form 4562 you prepare for each separate business or activity, enter the amount
+        allocated to the business or activity from the Summary"
+  - id: f4562.line14
+    printed: '14'
+    label: Special depreciation allowance for qualified property (other than listed property) placed in service during the
+      tax year
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: sc.f14
+    cite:
+      doc: i4562
+      locator: p. 5, Line 14
+  - id: f4562.line17
+    printed: '17'
+    label: MACRS deductions for assets placed in service in tax years beginning before 2025
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: sc.f17
+    cite:
+      doc: i4562
+      locator: p. 9, Line 17
+  - id: f4562.line19a
+    printed: 19a(g)
+    label: 3-year property
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: sc.f19_y3
+    cite:
+      doc: i4562
+      locator: p. 9, Lines 19a Through 19j, Column (g)
+  - id: f4562.line19b
+    printed: 19b(g)
+    label: 5-year property
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: sc.f19_y5
+    cite:
+      doc: i4562
+      locator: p. 9, Lines 19a Through 19j, Column (g)
+  - id: f4562.line19c
+    printed: 19c(g)
+    label: 7-year property
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: sc.f19_y7
+    cite:
+      doc: i4562
+      locator: p. 9, Lines 19a Through 19j, Column (g)
+  - id: f4562.line19d
+    printed: 19d(g)
+    label: 10-year property
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: sc.f19_y10
+    cite:
+      doc: i4562
+      locator: p. 9, Lines 19a Through 19j, Column (g)
+  - id: f4562.line19f
+    printed: 19f(g)
+    label: 20-year property
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: sc.f19_y20
+    cite:
+      doc: i4562
+      locator: p. 9, Lines 19a Through 19j, Column (g)
+  - id: f4562.line19e
+    printed: 19e(g)
+    label: 15-year property (including qualified improvement property)
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - sc.f19_y15
+      - sc.f19_y15sl
+    cite:
+      doc: i4562
+      locator: p. 10, 15-year property, "Qualified improvement property ... placed in service by you after December 31, 2017";
+        Column (g)
+  - id: f4562.line21
+    printed: '21'
+    label: Listed property. Enter amount from line 28
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: sc.f28
+    cite:
+      doc: f4562
+      locator: Form 4562 (2025), line 21
+  - id: f4562.line22
+    printed: '22'
+    label: Total. Add amounts from line 12, lines 14 through 17, lines 19 and 20 in column (g), and line 21
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f4562.line12
+      - f4562.line14
+      - f4562.line17
+      - f4562.line19a
+      - f4562.line19b
+      - f4562.line19c
+      - f4562.line19d
+      - f4562.line19e
+      - f4562.line19f
+      - f4562.line21
+    cite:
+      doc: f4562
+      locator: Form 4562 (2025), line 22, "Enter here and on the appropriate lines of your return"
+  - id: f4562.line25
+    printed: '25'
+    label: Special depreciation allowance for qualified listed property
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: sc.f25
+    cite:
+      doc: i4562
+      locator: p. 13, Line 25
+  - id: f4562.line26h
+    printed: 26(h)
+    label: Depreciation of listed property used more than 50% in a qualified business use (column (h), all rows)
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: sc.f26h
+    cite:
+      doc: i4562
+      locator: p. 15, Column (h)
+  - id: f4562.line28
+    printed: '28'
+    label: Add amounts in column (h), lines 25 through 27
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: sc.f28
+    cite:
+      doc: f4562
+      locator: Form 4562 (2025), line 28
+  - id: f4562.line29
+    printed: '29'
+    label: Add amounts in column (i), line 26
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: sc.f29
+    cite:
+      doc: f4562
+      locator: Form 4562 (2025), line 29
+  collection:
+    parent: sc
+    cite:
+      doc: i4562
+      locator: p. 1, Who Must File, "File a separate Form 4562 for each business or activity on your return for which Form
+        4562 is required"

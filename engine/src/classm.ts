@@ -78,7 +78,7 @@ function isCount(key: string, data: CanonicalData): boolean {
   return false;
 }
 
-function computed(v: Value | undefined): boolean { return !!v && (v.kind === "money" || v.kind === "bool" || v.kind === "count" || v.kind === "enum"); }
+function computed(v: Value | undefined): boolean { return !!v && (v.kind === "money" || v.kind === "bool" || v.kind === "count" || v.kind === "enum" || v.kind === "rate"); }
 
 function docKeys(doc: FormDoc): string[] {
   const keys: string[] = [];
@@ -160,6 +160,11 @@ function entriesOf(id: string, r: EvalResult): Map<string, Map<string, string>> 
   return out;
 }
 
+/** A helper of an entry that is unknown because a printed table has no row for this entry's facts (the
+ * 2019-only automobile limits for a later vehicle, say): the case does not use it, as a STOP leaves later
+ * lines underived. A printed line that depended on it would be unknown too, and its case is not chosen. */
+function unusedHelper(l: Line, v: Value): boolean { return isHelper(l) && v.kind === "unknown" && /^no row of /.test((v as { reason?: string }).reason ?? ""); }
+
 /** Lines of a collection worked by hand: every computed line except year constants. */
 function collectionFill(doc: FormDoc): Line[] { return doc.lines.filter((l) => l.expr.op !== "input" && l.expr.op !== "param"); }
 
@@ -182,6 +187,7 @@ function buildCollectionJob(data: CanonicalData, doc: FormDoc, inputs: Inputs, r
     for (const l of collectionFill(doc)) {
       const key = fields.get(l.id); const v = key ? r.derivations.get(key)?.value : undefined;
       if (!key || !v) continue;
+      if (unusedHelper(l, v)) continue;
       if (!computed(v)) return null;
       fill.push({ id: key, printed: key, type: l.type, label: l.label, entry });
       project[key] = v;
@@ -192,7 +198,10 @@ function buildCollectionJob(data: CanonicalData, doc: FormDoc, inputs: Inputs, r
 }
 
 /** Gate tests and the result of a shared definition: the lines a hand calculation decides. */
-function defFill(def: FormDoc): Line[] { return def.lines.filter((l, i) => l.expr.op !== "input" && (l.type === "Bool" || i === def.lines.length - 1)); }
+function defFill(def: FormDoc): Line[] { return def.lines.filter((l, i) => l.expr.op !== "input" && (l.type === "Bool" || i === def.lines.length - 1 || /^\d+[a-z]?$/.test(l.printed))); }
+
+/** A definition's parameters (its input lines): an amount and a filing status, or the lines a form binds. */
+function defParams(def: FormDoc): Line[] { return def.lines.filter((l) => l.expr.op === "input"); }
 
 interface DefInstance { prefix: string; caseIndex: number; keys: Set<string> }
 
@@ -215,8 +224,10 @@ function instancesOf(def: FormDoc, r: EvalResult): Map<string, Map<string, strin
 
 function buildDefJob(def: FormDoc, inputs: Inputs, r: EvalResult, inst: DefInstance, n: number, branches: string[]): Job | null {
   const lines = instancesOf(def, r).get(inst.prefix)!;
-  const amount = r.derivations.get(lines.get("amount")!)?.value, status = r.derivations.get(lines.get("status")!)?.value;
-  if (!computed(amount) || !computed(status)) return null;
+  const params = defParams(def).map((l) => ({ line: l, value: r.derivations.get(lines.get(l.id) ?? "")?.value }));
+  if (params.some((p) => !computed(p.value))) return null;
+  const statusParam = params.find((p) => p.line.id === "status");
+  const status = statusParam ? statusParam.value : { kind: "enum", value: String(inputs["f1040.status"]) } as Value;
   const fill: Job["fill"] = []; const project: Record<string, Value> = {};
   for (const l of defFill(def)) {
     const key = lines.get(l.id); const v = key ? r.derivations.get(key)?.value : undefined;
@@ -224,7 +235,7 @@ function buildDefJob(def: FormDoc, inputs: Inputs, r: EvalResult, inst: DefInsta
     fill.push({ id: key, printed: l.id, type: l.type, label: l.label });
     project[key] = v!;
   }
-  const given: Given[] = [{ ref: "amount", doc: def.id, printed: "(a)", label: def.lines.find((l) => l.id === "amount")!.label, value: amount! }];
+  const given: Given[] = params.filter((p) => p.line.id !== "status").map((p) => ({ ref: p.line.id, doc: def.id, printed: p.line.id === "amount" ? "(a)" : p.line.printed, label: p.line.label, value: p.value! }));
   return { id: `classm.${def.id}.${n}`, doc: def.id, kind: "def", inputs, status: (status as { value: string }).value, given, own_inputs: [], collections: {}, fill, project, branches };
 }
 
@@ -256,7 +267,7 @@ export function classmJobs(args: string[]): void {
       const r = results[i]!;
       return entries.size > 0 && [...entries.values()].every((f) =>
         [...f.values()].every((key) => r.derivations.get(key)?.value.kind !== "refusal") &&
-        collectionFill(doc).every((l) => { const v = r.derivations.get(f.get(l.id) ?? "")?.value; return !v || computed(v); }));
+        collectionFill(doc).every((l) => { const v = r.derivations.get(f.get(l.id) ?? "")?.value; return !v || computed(v) || unusedHelper(l, v); }));
     });
     const reachable = new Set(keys.filter((k) => candidates.some((i) => keysPerCase[i]!.has(k))));
     const covered = new Set<string>(); const chosen: number[] = [];
@@ -266,6 +277,8 @@ export function classmJobs(args: string[]): void {
       if (best < 0) break;
       chosen.push(best); for (const k of keysPerCase[best]!) if (reachable.has(k)) covered.add(k);
     }
+    // A document with no branch of its own (copies and sums) is still worked once.
+    if (keys.length === 0 && candidates.length > 0) chosen.push(candidates[0]!);
     let n = 0;
     for (const i of chosen) {
       const branches = keys.filter((k) => keysPerCase[i]!.has(k));
@@ -282,9 +295,9 @@ export function classmJobs(args: string[]): void {
     const instances: DefInstance[] = []; const seen = new Set<string>();
     results.forEach((r, caseIndex) => {
       for (const [prefix, lines] of instancesOf(def, r)) {
-        const amount = r.derivations.get(lines.get("amount") ?? "")?.value, status = r.derivations.get(lines.get("status") ?? "")?.value;
-        const sig = JSON.stringify([amount, status]);
-        if (!computed(amount) || seen.has(sig)) continue;
+        const params = defParams(def).map((l) => r.derivations.get(lines.get(l.id) ?? "")?.value);
+        const sig = JSON.stringify(params);
+        if (params.some((v) => !computed(v)) || seen.has(sig)) continue;
         seen.add(sig);
         const ks = new Set<string>();
         for (const [local, key] of lines) {

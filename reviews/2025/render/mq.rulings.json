@@ -1,0 +1,18 @@
+{
+ "kind": "render",
+ "form": "mq",
+ "rulings": [
+  {
+   "printed": "q4",
+   "restated": "Add person.mq_q4 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Pub 946 counts only 'MACRS property you placed in service during the last 3 months of the tax year (excluding nonresidential real property, residential rental property, any railroad grading or tunnel bore, property placed in service and disposed of in the same year, and property that is being depreciated under a method other than MACRS)'. The label covers all property placed in service October to December 2025 and states none of these exclusions. It also fixes the period to calendar months instead of the last 3 months of the tax year.",
+   "ruling": "Ruling: representation; restatement accepted. The line sums the per-person amounts, each the sum of the property's own mid-quarter basis (asset.mq_q4, scveh.mq_q4), where the Pub. 946 rules are applied (p. 41: the section 179 and personal-use reductions, not the special allowance); property outside MACRS (real property, ADS, other methods, property disposed of in 2025) is refused by asset.screen and the recovery-class lookup, so every entry counted is MACRS property. Calendar quarters are the last three months of the tax year for the calendar-year returns this tool prepares (spec 2.1)."
+  },
+  {
+   "printed": "total",
+   "restated": "Add person.mq_total over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The text compares against 'the total depreciable bases of all MACRS property you placed in service during the entire year', but the label says 'all property', not MACRS property only. The restatement also never mentions the Caution basis rules: the section 179 and personal-use reductions are included, and special depreciation allowance reductions are not.",
+   "ruling": "Ruling: representation; restatement accepted. As q4: the per-property amounts (asset.mq_total, scveh.mq_total) carry the Pub. 946 basis rules (p. 41, Caution), and property other than MACRS property is refused on the asset."
+  }
+ ]
+}

@@ -1,0 +1,59 @@
+form:
+  id: ltc
+  kind: form
+  title: Form 7206, line 2 — qualified long-term care insurance, one per person covered
+  tax_year: 2025
+  note: One entry per person covered by qualified long-term care insurance established under the business.
+  lines:
+  - id: ltc.payments
+    printed: 2(a)
+    label: Total payments made for that person during the year
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The qualified long-term care insurance premiums paid in 2025 for this person under a policy established under
+        this business (not for any month the person was eligible for a long-term care plan subsidized by an employer)
+    cite:
+      doc: f7206
+      locator: Form 7206 (2025), line 2(a)
+  - id: ltc.age
+    printed: (helper)
+    label: That person's age at the end of 2025
+    type: Enum(ltc_age)
+    expr:
+      op: input
+      source: 'This person''s age at the end of 2025: 40 or younger (to40), 41 to 50 (to50), 51 to 60 (to60), 61 to 70 (to70),
+        or 71 or older (over70)'
+    cite:
+      doc: f7206
+      locator: Form 7206 (2025), line 2(b), "Use the person's age at the end of the tax year"
+  - id: ltc.limit
+    printed: 2(b)
+    label: The amount for that person's age
+    type: NonNegDollars
+    expr:
+      op: keyed_lookup
+      table: ltc_limit
+      keys:
+      - ltc.age
+    cite:
+      doc: f7206
+      locator: Form 7206 (2025), line 2(b)
+  - id: ltc.amount
+    printed: (helper)
+    label: The smaller of (a) or (b)
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - ltc.payments
+      - ltc.limit
+    cite:
+      doc: f7206
+      locator: Form 7206 (2025), line 2; i7206 pp. 1–2, "enter for each person covered the smaller of (a) or (b)"
+  collection:
+    parent: sc
+    cite:
+      doc: f7206
+      locator: Form 7206 (2025), line 2; i7206 pp. 1–2, "If more than one person is covered, figure separately the amount to enter for each
+        person"

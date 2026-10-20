@@ -56,7 +56,10 @@ PE_MAP = {
     "f8960.tax": ["net_investment_income_tax"],
     # The engine's foreign tax credit is the supplied amount, not limited to the tax, so
     # the comparison is made before credits: project line 18 + line 23.
-    "f1040.tax_before_credits": ["income_tax_before_credits", "net_investment_income_tax", "additional_medicare_tax"],
+    # Line 23 includes the self-employment tax of Schedule 2 line 4, which the engine books separately.
+    "f1040.tax_before_credits": ["income_tax_before_credits", "net_investment_income_tax", "additional_medicare_tax", "self_employment_tax"],
+    "s2.line4": ["self_employment_tax"],
+    "s1.line15": ["self_employment_tax_ald"],
 }
 PE_PRECISION = "float32"
 PE_LIMITATIONS = [
@@ -66,7 +69,7 @@ PE_LIMITATIONS = [
      "reason": "PolicyEngine-US phases the student loan interest deduction out with the exact ratio; the worksheet's line 7 ratio is rounded to three places in the project (amb.2025.sli_ratio_places), which moves the deduction by up to a few dollars"},
     {"feature": "excess_social_security", "lines": ['s3.line11'],
      "reason": "PolicyEngine-US takes excess payroll tax withheld as an input and does not compute it from per-employer withholding"},
-    {"feature": "investment_interest_limited", "lines": ['sa.line17', 'sa.deduction', 'f1040.line15', 'f1040.line16', 'f1040.tax_before_credits', 'f8960.tax', 'f1040.line19', 'f1040.line28'],
+    {"feature": "investment_interest_limited", "lines": ['sa.line17', 'sa.deduction', 'f1040.line13a', 'f1040.line15', 'f1040.line16', 'f1040.tax_before_credits', 'f8960.tax', 'f1040.line19', 'f1040.line28'],
      "reason": "PolicyEngine-US deducts investment interest expense in full; it does not apply the Form 4952 net-investment-income limit"},
     {"feature": "foreign_tax", "lines": ['f1040.line20', 'f1040.line24', 'f1040.line19', 'f1040.line28'],
      "reason": "PolicyEngine-US takes the foreign tax credit as a supplied amount with a Form 1116-style limit on foreign-source income; the simple no-Form-1116 path is compared before credits instead"},
@@ -97,7 +100,9 @@ TC_MAP = {
     "f8959.tax": ["ptax_amc"],
     "f8960.tax": ["niit"],
     "f1040.line24": ["c09200"],
-    "f1040.tax_before_credits": ["c05800", "niit", "ptax_amc"],
+    "f1040.tax_before_credits": ["c05800", "niit", "ptax_amc", "setax"],
+    "s2.line4": ["setax"],
+    "s1.line15": ["c03260"],
 }
 TC_PRECISION = "float64"
 TC_LIMITATIONS = [
@@ -111,7 +116,7 @@ TC_LIMITATIONS = [
      "reason": "Tax-Calculator has no input for section 199A dividends (Form 1099-DIV box 5), so its QBI deduction is zero"},
     {"feature": "special_gains", "lines": ['f1040.line16', 'f1040.line20', 'f1040.line24', 'f1040.tax_before_credits', 'f1040.line19', 'f1040.line28'],
      "reason": "Tax-Calculator has no inputs for unrecaptured section 1250 gain or 28% rate gain (Form 1099-DIV boxes 2b, 2d)"},
-    {"feature": "investment_interest_limited", "lines": ['sa.line17', 'sa.deduction', 'f1040.line15', 'f1040.line16', 'f1040.line20', 'f1040.line24', 'f1040.tax_before_credits', 'f1040.line19', 'f1040.line28'],
+    {"feature": "investment_interest_limited", "lines": ['sa.line17', 'sa.deduction', 'f1040.line13a', 'f1040.line15', 'f1040.line16', 'f1040.line20', 'f1040.line24', 'f1040.tax_before_credits', 'f1040.line19', 'f1040.line28'],
      "reason": "Tax-Calculator deducts investment interest in full within itemizable interest paid; it does not apply the Form 4952 net-investment-income limit"},
     {"feature": "no_tax_either_way", "lines": ['sa.deduction', 'f1040.line15', 'f1040.line19', 'f1040.line28'],
      "reason": "Tax-Calculator treats a unit owing no tax under either deduction as taking the standard deduction; the project itemizes whenever itemized deductions exceed the standard deduction. The itemized total itself is compared on every return through a forced-itemize pass"},
@@ -150,6 +155,7 @@ def run_policyengine(cases):
             "treasury_tipped_occupation_code": y(102 if f.get("tips") else 0),
             "fsla_overtime_premium": y(dollars(f.get("overtime", 0))),
             "employment_income": y(dollars(f["wages"])),
+            "self_employment_income": y(dollars(f.get("self_employment_income", 0))),
             "social_security_retirement": y(dollars(f.get("ss_benefits", 0))),
             "taxable_interest_income": y(dollars(f["interest"])),
             "qualified_dividend_income": y(dollars(f["qualified_dividends"])),
@@ -201,7 +207,10 @@ def run_policyengine(cases):
     cache = {}
     def var(name):
         if name not in cache:
-            cache[name] = sim.calculate(name, YEAR)
+            # A person-level variable (such as self_employment_tax) is summed into its tax unit,
+            # so that it is indexed like the tax-unit variables.
+            entity = sim.tax_benefit_system.variables[name].entity.key
+            cache[name] = sim.calculate(name, YEAR, map_to="tax_unit") if entity == "person" else sim.calculate(name, YEAR)
         return cache[name]
     lines = {pid: {} for pid in order}
     for line, spec in PE_MAP.items():
@@ -222,6 +231,7 @@ def run_taxcalc(cases):
             age_spouse=f.get("spouse_age", 0), FLPDYR=YEAR,
             XTOT=(2 if f.get("joint") else 1) + len(ages), n24=sum(1 for a in ages if a < 17), nu18=sum(1 for a in ages if a < 18),
             n1820=sum(1 for a in ages if 18 <= a <= 20), n21=sum(1 for a in ages if a >= 21), EIC=f.get("eic_children", 0),
+            e00900=dollars(f.get("self_employment_income", 0)), e00900p=dollars(f.get("self_employment_income", 0)),
             e00200=dollars(f["wages"] + f.get("spouse_wages", 0)), e00200p=dollars(f["wages"]), e00200s=dollars(f.get("spouse_wages", 0)), e02400=dollars(f.get("ss_benefits", 0)),
             e00300=dollars(f["interest"]), e00600=dollars(f["ordinary_dividends"]), e00650=dollars(f["qualified_dividends"]),
             # Distributions enter Schedule D line 13 and net against sales; Tax-Calculator's

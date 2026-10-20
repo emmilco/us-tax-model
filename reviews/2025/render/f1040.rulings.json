@@ -3,6 +3,12 @@
  "form": "f1040",
  "rulings": [
   {
+   "printed": "13a",
+   "restated": "Enter the amount from qbi helper \"Select Form 8995 or dividend-only Form 8995-A\".",
+   "model": "Form 8995 is chosen only by comparing taxable income before the QBI deduction with the threshold. The IRS also requires 'You aren't a patron in a specified agricultural or horticultural cooperative' before Form 8995 can be used, and the program has no test or refusal for patrons.",
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. A patron of an agricultural or horticultural cooperative, specified or not, is refused through qbi.unsupported ('are you a patron of any agricultural or horticultural cooperative, specified or not', amb.2025.qbi_cooperative_patron), so the threshold test alone chooses Form 8995."
+  },
+  {
    "printed": "16",
    "restated": "Choose — [helper \"Schedule D Tax Worksheet required after its exceptions\" = true → sdtw line 47] [helper \"Schedule D Tax Worksheet required after its exceptions\" = false → helper \"Tax when Schedule D Tax Worksheet does not apply\"]",
    "model": "Several required texts are missing. The line 16 instructions say \"Figure the tax using one of the methods described later\", but the pages describing how to choose the method are not provided. The Tax Table and Tax Computation Worksheet texts are also absent, so the brackets and subtraction amounts cannot be checked.",
@@ -21,6 +27,12 @@
    "ruling": "Ruling: genuine ambiguity (amb.2025.eic_valid_ssn); project retained pending the owner. Steps 1 to 5, the limits and Worksheet A line 6 follow the flow chart, with the joint-return tests (both spouses' SSNs; you or your spouse 25 to 64). The filer's and spouse's SSN question uses the wording of the child tax credit and Schedule 1-A ('valid for employment, issued before the due date'); the EIC's Step 1, question 2 says 'issued on or before the due date ... valid for EIC purposes' (i1040gi p. 40). The two differ only for a number issued on the due date itself or a card marked 'Not Valid for Employment' for a reason other than a federally funded benefit; this is the question of amb.2025.eic_valid_ssn for the filer and spouse, put to the owner in TASKS.md T-038."
   },
   {
+   "printed": "27a",
+   "restated": "Enter the amount from eic helper \"Earned income credit for Form 1040, line 27a (Worksheet A, line 6 when Steps 1 to 5 are passed; zero otherwise)\".",
+   "model": "The credit is always Worksheet A line 6, but the program lets self-employed filers (Schedule C) pass Step 5 using Worksheet B line 4b. Worksheet A says 'Use this worksheet only if you answered \"No\" to Step 5, question 2. Otherwise, use Worksheet B,' and those filers' credit is 'Worksheet B... line 11,' based on total earned income including self-employment.",
+   "ruling": "Ruling: representation; restatement accepted. For a filer with a Schedule C the project follows Worksheet B, whose lines 7 to 11 repeat Worksheet A lines 2 to 6 with Worksheet B line 6 in place of line 1 (i1040gi p. 47): eic.line1 is Worksheet B line 6 and lines 2 to 6 serve as Worksheet B lines 7 to 11, so the helper is Worksheet B line 11 for those filers. genuine ambiguity (amb.2025.eic_valid_ssn); project retained pending the owner. Steps 1 to 5, the limits and Worksheet A line 6 follow the flow chart, with the joint-return tests (both spouses' SSNs; you or your spouse 25 to 64). The filer's and spouse's SSN question uses the wording of the child tax credit and Schedule 1-A ('valid for employment, issued before the due date'); the EIC's Step 1, question 2 says 'issued on or before the due date ... valid for EIC purposes' (i1040gi p. 40). The two differ only for a number issued on the due date itself or a card marked 'Not Valid for Employment' for a reason other than a federally funded benefit; this is the question of amb.2025.eic_valid_ssn for the filer and spouse, put to the owner in TASKS.md T-038."
+  },
+  {
    "printed": "27c",
    "restated": "Enter the amount from eic helper \"The instructions say to check the box on line 27c (a STOP that says so, or Worksheet A line 2 is zero); the filer's own choice not to claim the EIC is not asked\".",
    "model": "The STOP conditions inherit the filer-only tests. The IRS says to check line 27c when the joint-return spouse lacks a valid SSN (\"Do you, and your spouse if filing a joint return, have a social security number ... No. STOP ... Check the box on line 27c\"). It also says to check the box when the main home fails after a spouse alone meets \"Were you, or your spouse if filing a joint return, at least age 25\". The program misses both cases.",
@@ -31,6 +43,12 @@
    "restated": "Enter the amount from eic helper \"The instructions say to check the box on line 27c (a STOP that says so, or Worksheet A line 2 is zero); the filer's own choice not to claim the EIC is not asked\".",
    "model": "The STOP conditions that say to check line 27c are reproduced. However, the IRS also says 'Check the box on line 27c if you do not want to claim the earned income credit', and that choice is neither asked nor refused. The Step 1 SSN test also inherits the 'before' versus 'on or before ... (including extensions)' wording difference.",
    "ruling": "Ruling: scope; project retained. The STOPs that say to check line 27c follow the flow chart; the filer's own choice not to claim the EIC is not asked (TASKS.md T-027). The filer's and spouse's SSN question uses the wording of the child tax credit and Schedule 1-A ('valid for employment, issued before the due date'); the EIC's Step 1, question 2 says 'issued on or before the due date ... valid for EIC purposes' (i1040gi p. 40). The two differ only for a number issued on the due date itself or a card marked 'Not Valid for Employment' for a reason other than a federally funded benefit; this is the question of amb.2025.eic_valid_ssn for the filer and spouse, put to the owner in TASKS.md T-038."
+  },
+  {
+   "printed": "27c",
+   "restated": "Enter the amount from eic helper \"The instructions say to check the box on line 27c (a STOP that says so, or Worksheet A line 2 is zero); the filer's own choice not to claim the EIC is not asked\".",
+   "model": "The program covers the Step 1, Step 3, Step 4 and Worksheet A line 2 triggers. It misses the Worksheet B triggers: 'If line 4b is zero or less... Check the box on Form 1040 or 1040-SR, line 27c', the line 5 'No... Check the box on... line 27c', and 'If line 7 is zero... Check the box.' The filer's own choice not to claim the EIC ('if you do not want to claim the earned income credit') is also not asked.",
+   "ruling": "Ruling: fixed (BUG-0057), then scope; project retained. The Worksheet B STOPs: line 4b zero or less reaches the box through Worksheet B line 6 zero and Worksheet A line 2 zero (stage14.eic.wsb_stop_27c); line 5 'No' is now a term of eic.check_27c (eic.wsb_line5_stop; stage14.eic.wsb_line5_stop_27c); line 7 zero is the shared line 2 zero. scope; project retained. The STOPs that say to check line 27c follow the flow chart; the filer's own choice not to claim the EIC is not asked (TASKS.md T-027). The filer's and spouse's SSN question uses the wording of the child tax credit and Schedule 1-A ('valid for employment, issued before the due date'); the EIC's Step 1, question 2 says 'issued on or before the due date ... valid for EIC purposes' (i1040gi p. 40). The two differ only for a number issued on the due date itself or a card marked 'Not Valid for Employment' for a reason other than a federally funded benefit; this is the question of amb.2025.eic_valid_ssn for the filer and spouse, put to the owner in TASKS.md T-038."
   },
   {
    "printed": "2b",

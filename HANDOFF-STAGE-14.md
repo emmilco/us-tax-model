@@ -1,4 +1,4 @@
-# Handoff: Stage 14 (self-employment), in progress
+# Handoff: Stage 14 (self-employment), complete
 
 Read `HANDOFF.md` first, then `TASKS.md`, then this file. `HANDOFF-STAGE-13.md`
 describes the stage before and holds the owner-confirmed Stage 14 scope (its
@@ -110,6 +110,15 @@ for 2020 and 2023; the 2025 shares are assumed similar.
   Section 179 Part I is figured once per return; when the allowed deduction differs
   from the amounts elected for 2025, it goes to the only Schedule C on the return,
   and more than one Schedule C is refused in that case.
+- **Earlier vehicles with a special allowance (owner):** a vehicle placed in service
+  2019 to 2024 that took a special depreciation allowance in its first year is refused;
+  Pub. 946's automobile worksheet (later years, line 16 "Enter -0-") and its general rule
+  (unadjusted basis "reduced by ... Any special depreciation allowance taken") conflict
+  (ambiguity register).
+- **Mid-quarter test on a joint return (owner):** both spouses' property placed in
+  service in 2025 is compared together, as one return (ambiguity register).
+- **Business-use percentage (owner):** business miles over total miles to six decimal
+  places, half-up (the `prorate` atom; ambiguity register).
 - **Settled by the text and earlier rulings:** line 16 covers SEP (Pub. 560, Deduction
   Worksheet for Self-Employed) and SIMPLE (Pub. 560 chapter 3); qualified plans with
   elective deferrals are refused. A vehicle switched from the standard mileage rate to
@@ -117,9 +126,9 @@ for 2020 and 2023; the 2025 shares are assumed similar.
 - **Build order (owner):** straight through, as in Stage 13: the whole premise check,
   Form 4562 included, then the build, then the reviews.
 
-## Premise check against the archived text (in progress)
+## Premise check against the archived text
 
-Each item was read in the archived 2025 text named; nothing is encoded yet.
+Each item was read in the archived 2025 text named, before the build.
 
 **Confirmed amounts.** Schedule SE: 92.35%, the $400 filing floor, the $176,100
 wage base (f1040sse lines 4a, 4c, 7). Standard mileage rate 70 cents (n-25-05 sec. 3;
@@ -184,3 +193,88 @@ on self-employment income is figured on Form 8959 Part II.
   $10,100). No 2025 computation reaches that limit (only 2025 vehicles' first year
   and a 2019 vehicle's unrecovered basis use a first-year limit, and both publications
   agree on those), so the table holds only those two rows.
+
+## What changed
+
+- **Forms** (`forms/2025/`): `sc` (Schedule C, one entry per business under each person:
+  Parts I to III, the simplified home office, Form 7206, the business's Form 4562 totals and its
+  QBI), `scveh` (vehicles: standard mileage, actual expenses, leases, the Pub. 946 automobile
+  worksheet and a 2019 vehicle's first year after recovery), `asset` (other property: class
+  from Pub. 946 Appendix B, section 179, the special allowance, MACRS by the tables, earlier
+  property and listed property), `ltc` (Form 7206 line 2), `s179` (Form 4562 Part I once per
+  return), `mq` (the mid-quarter test), `f4562` (per business; see T-030), and the `se`
+  definition (Schedule SE, bound per person). `person` gains Schedule SE, SEP and SIMPLE (Pub.
+  560), Form 7206 per person and EIC Worksheet B; Schedule 1 lines 3, 15, 16, 17; Schedule 2
+  line 4; Form 8959 Part II; Form 8995 business income and the loss carryforward; EIC Worksheet B
+  and Schedule 8812's earned income readers.
+- **Atom and engine:** `keyed_lookup` (owner), enclosing-entry references, enum parameters,
+  definitions bound per instance; Lean evaluates them alike.
+- **Tables:** `tables/2025/` MACRS rates, recovery years, passenger automobile limits, class
+  lives, quarter conventions, SIMPLE catch-up and long-term care limits, each with its own check.
+- **Review tools:** the transcription comparison qualifies a printed number several worksheets
+  of one form share (BUG-0054); the return generator draws businesses and class M works
+  collection entries with rates and definitions bound to several lines (BUG-0061).
+
+## Fixed by this stage's reviews
+
+BUG-0053 (Schedule 8812 line 21, one-half of the Additional Medicare Tax on self-employment
+income), BUG-0055 (line 18a below zero at the Earned Income Worksheet stop), BUG-0056 (citations
+without pages, so the reviews saw no Pub. 560, i8995, i1040gi Schedule 1 lines 15 to 17 or i7206
+text), BUG-0057 (line 27c at the Worksheet B line 5 STOP), BUG-0058 (car loan interest on Schedule
+C subtracted twice), BUG-0059 (worksheet line 19 unknown for a 2019 vehicle), BUG-0060 (the home
+office deduction above line 29 with a section 179 carryover), BUG-0062 (section 179 on a separate
+return, refused, owner), BUG-0063 (the long-term care limit across businesses, screened, owner),
+BUG-0064 (the material participation question left out line G's oil and gas exception), BUG-0065
+(sixty i4562 citations and four i1040sc citations named the wrong page; the transcription and
+render reviews of the four affected forms were rerun). Review tooling: BUG-0054 (the transcription
+comparison paired lines that share a printed number) and BUG-0061 (class M could not choose a case
+for the Stage 14 documents).
+
+## Evidence
+
+- `fixtures/2025/stage14.json`: 130 cases, each predicted by hand from the archived text
+  before recording (the derivation is in its evidence note), all matching; 770 fixtures in all,
+  with 668 command-line integration runs.
+- Engine differential: 1,700 generated returns (from 1,400; the generator now draws
+  businesses), 62,900 line comparisons, 0 unexplained, 4 explained.
+- Lean and TypeScript agree on all 1,370 compare cases (1,416,654 line values), business
+  returns included.
+- Properties: 6 of 6 hold over 400 generated returns, businesses included.
+- Mutation: 1,664 mutants, adjusted 98.0% (raw 91.5%); no new unexplained survivor, and three
+  earlier Form 8959 survivors are now killed. Of the three this stage's lines first left, two
+  are killed by fixtures (`stage14.s8812.eiw_zero_with_se_tax`, Earned Income Worksheet line 3
+  exactly zero with self-employment tax; Schedule 8812 lines 22 and 23 added to
+  `stage14.f8959.se_above_threshold`) and one is a reasoned equivalence
+  (`boundary.eic.eic.wsb_4b_positive` in `engine/src/mutate.ts`: at Worksheet B line 4b = 0,
+  Step 5 question 3 holds because every EIC limit is positive).
+- Reviews (paid `claude -p`, fixed prompt): transcription and render of the 22 new and
+  changed forms, class M of `asset`, `ltc`, `s179`, `sc`, `scveh` and `se` (`f4562` exempt
+  until T-030, printed by `check_logs.py`); 750 rulings in the logs, every one in a sidecar.
+  Cost about $70 (the session's running tally, including the BUG-0056 and BUG-0065 reruns).
+- Coverage estimate: 58.0% of returns (range 50.8% to 71.9%), from 47.8%.
+
+## Open for the owner
+
+- **T-030, next before any new stage (owner):** the values sheet prints no collection entry, so a
+  filer with a business gets the Form 1040, Schedule 1, Schedule 2, Schedule SE and Form 8995
+  amounts but not the Schedule C, Form 7206, vehicle worksheet or Form 4562 line values. The
+  owner chose that each per-asset printed line then carries the form's value for that asset and
+  that the Form 4562 lines print in the Schedule C entry's section.
+- **T-041:** the seven Stage 14 agent readings in the ambiguity register.
+- **T-042:** fully deductible meals (treated as wages, or reported on Form 1099-NEC; i1040sc
+  p. 10) have no input: a 100% input or a screen that refuses them. As built, a filer who enters
+  them at 50% understates the deduction, never overstates it.
+- T-040: reading-order text of Pub. 946 pp. 98, 109 and 110.
+
+## Facts a fresh session needs
+
+- Entries: `person[p].sc[k]`, `person[p].sc[k].scveh[v]`, `...sc[k].asset[a]`, `...sc[k].ltc[l]`;
+  rosters `$sc@person[p]`, `$scveh@person[p].sc[k]` and so on. Section 179 Part I is the root
+  form `s179`; a business reads it and the return reads the businesses.
+- Collection entry lines are evaluated but not printed, and `display` is refused on them (T-030).
+- `choose` selects money only; a sign test on a signed line goes through a Bool helper (interval
+  guards must start at a finite bound).
+- A printed number shared by two worksheets of one form is compared as `"<number> (<line id>)"`
+  in the transcription and render logs.
+- The fixture builders used this stage live in `/tmp/s14/fx` (`lib.py`, `groupA.py` ...); if
+  /tmp is gone, edit `fixtures/2025/stage14.json` directly.

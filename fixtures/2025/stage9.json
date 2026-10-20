@@ -117,7 +117,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -282,7 +284,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -432,7 +436,9 @@
         "s1a.tips": false,
         "s1a.overtime": false,
         "s1a.carloan": false,
-        "person[taxpayer].died_before_65": false
+        "person[taxpayer].died_before_65": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -582,7 +588,9 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -711,7 +719,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -856,7 +866,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -1005,7 +1017,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -1180,7 +1194,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -1382,7 +1398,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -1598,7 +1616,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -1773,7 +1793,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -1943,7 +1965,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -2095,7 +2119,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -2244,7 +2270,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -2397,7 +2425,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -2565,7 +2595,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -2733,7 +2765,9 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -2859,7 +2893,9 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -3011,7 +3047,9 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -3168,7 +3206,9 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -3339,7 +3379,9 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -3532,7 +3574,9 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -3670,7 +3714,10 @@
         "person[spouse].born_after_1960": true,
         "person[spouse].educator_expenses": 0,
         "$w2@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -3831,7 +3878,10 @@
         "person[spouse].born_after_1960": true,
         "person[spouse].educator_expenses": 0,
         "$w2@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -4014,7 +4064,10 @@
         "person[spouse].born_after_1960": true,
         "person[spouse].educator_expenses": 0,
         "$w2@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -4219,7 +4272,10 @@
         "person[spouse].born_after_1960": true,
         "person[spouse].educator_expenses": 0,
         "$w2@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -4357,7 +4413,10 @@
         "person[spouse].born_after_1960": true,
         "person[spouse].educator_expenses": 0,
         "$w2@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -4509,7 +4568,9 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -4665,7 +4726,9 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -4818,7 +4881,9 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -4944,7 +5009,9 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -5075,7 +5142,9 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -5206,7 +5275,9 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -5373,7 +5444,9 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -5527,7 +5600,9 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -5681,7 +5756,9 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -5848,7 +5925,9 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -6057,7 +6136,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -6215,7 +6296,9 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -6374,7 +6457,9 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -6525,7 +6610,9 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -6687,7 +6774,9 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27a": {
@@ -6817,7 +6906,9 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line27b": {

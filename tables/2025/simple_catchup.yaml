@@ -1,0 +1,17 @@
+# The SIMPLE IRA catch-up contribution limit for 2025 by age at the end of the year. Written by hand.
+table:
+  id: simple_catchup
+  kind: keyed
+  title: "SIMPLE IRA catch-up contribution limit, 2025 (Pub. 560, chapter 3)"
+  tax_year: 2025
+  cite:
+    doc: p560
+    locator: "chapter 3, Catch-up contributions"
+    quote: "The catch-up contribution limit for SIMPLE IRA plans is generally $3,500 for 2025 ... For 2025 and 2026, the higher limit on catch-up contributions to SIMPLE plans for such participants is $5,250."
+  keys:
+    - { name: age, type: Enum(catchup_age) }
+  cell: NonNegDollars
+  rows:
+    - { keys: [under50], value: 0 }
+    - { keys: [age50], value: 350000 }
+    - { keys: [age60_63], value: 525000 }

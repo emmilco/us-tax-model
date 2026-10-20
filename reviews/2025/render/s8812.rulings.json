@@ -5,8 +5,26 @@
   {
    "printed": "16b",
    "restated": "Add dependent.actc_amount over every confirmed dependent entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The IRS line is \"Number of qualifying children under age 17 with the required social security number: x $1,700\". The restatement sums dependent.actc_amount, which is not defined, and does not restrict the sum to line-4 children.",
+   "ruling": "Ruling: representation; project retained. The count and the dollar lines are sums over the listed persons of a per-person amount ($2,200, $500 or $1,700 for a person who qualifies, else zero), defined on the dependent worksheet, which has its own transcription, render and class M logs; the per-person predicates are Steps 3 and 5 of the Form 1040 instructions. The count times the dollar figure and the sum of the per-person figures are the same number. No change to the data."
+  },
+  {
+   "printed": "16b",
+   "restated": "Add dependent.actc_amount over every confirmed dependent entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The IRS text says \"Number of qualifying children under age 17 with the required social security number: x $1,700\". The restatement adds up dependent.actc_amount, which is not defined, so it cannot be confirmed as $1,700 for each line-4 child.",
    "ruling": "Ruling: representation; project retained. The count and the dollar lines are sums over the listed persons of a per-person amount ($2,200, $500 or $1,700 for a person who qualifies, else zero), defined on the dependent worksheet, which has its own transcription, render and class M logs; the per-person predicates are Steps 3 and 5 of the Form 1040 instructions. The count times the dollar figure and the sum of the per-person figures are the same number. No change to the data."
+  },
+  {
+   "printed": "18a",
+   "restated": "Choose — [helper \"Taking the EIC on Form 1040, line 27a\" = true → helper \"Earned Income Chart, taking the EIC: Worksheet B, line 4b, or the earned income from Step 5\"] [helper \"Taking the EIC on Form 1040, line 27a\" = false → helper \"Earned Income Worksheet, line 7, the amount for line 18a of Schedule 8812 (zero when line 3 is zero or less)\"]",
+   "model": "For filers taking the EIC, the restatement always uses EIC Worksheet B line 4b or the Step 5 earned income. The Earned Income Chart instead says that filers who \"use either optional method to figure those net earnings\" enter \"the amount figured using the Earned Income Worksheet next (even if you are also taking the EIC)\", and no refusal covers that case. The EIC branch also omits the chart's clergy subtractions, which are not refused on that path.",
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. The optional methods are refused through person.se_screen ('electing an optional method (Schedule SE Part II)'), so the Earned Income Chart's optional-method row never applies; the clergy subtractions apply to a member of the clergy, refused through scope.schedule1 and person.se_screen ('being a minister ...'). Otherwise the restatement is the chart (i1040s8812 p. 7), with the Earned Income Worksheet's stop at line 3 since BUG-0055."
+  },
+  {
+   "printed": "21",
+   "restated": "Add helper \"Additional Medicare Tax and RRTA Tax Worksheet, line 6. Subtract line 5 (the Additional Medicare Tax withheld, Form 8959, line 22) from line 4\" and helper \"Additional Medicare Tax and RRTA Tax Worksheet, line 7. One-half of the Additional Medicare Tax on self-employment income (one-half of Form 8959, line 13)\".",
+   "model": "The restatement adds only worksheet lines 6 and 7. The worksheet's line 16 says \"Add lines 6, 7, 11, and 15\", so the Tier 1 RRTA amounts on lines 11 and 15 are left out, and no refusal excludes RRTA filers.",
+   "ruling": "Ruling: scope; project retained. The Tier 1 RRTA amounts on lines 11 and 15 of the Additional Medicare Tax and RRTA Tax Worksheet are outside the slice: `person.rrta` refuses the per-person Medicare totals that Form 8959 line 19 sums, and this line reads that total, so a return with RRTA compensation refuses here. No change to the data. Line 7 of the worksheet (one-half of Form 8959 line 13) is included since BUG-0053."
   },
   {
    "printed": "21",
@@ -17,7 +35,19 @@
   {
    "printed": "5",
    "restated": "Add dependent.ctc_amount over every confirmed dependent entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The IRS line is \"Multiply line 4 by $2,200\". The restatement sums dependent.ctc_amount over all dependents, but that field is not defined. The text does not show it to be $2,200 for each line-4 child and zero for everyone else.",
+   "ruling": "Ruling: representation; project retained. The count and the dollar lines are sums over the listed persons of a per-person amount ($2,200, $500 or $1,700 for a person who qualifies, else zero), defined on the dependent worksheet, which has its own transcription, render and class M logs; the per-person predicates are Steps 3 and 5 of the Form 1040 instructions. The count times the dollar figure and the sum of the per-person figures are the same number. No change to the data."
+  },
+  {
+   "printed": "5",
+   "restated": "Add dependent.ctc_amount over every confirmed dependent entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The IRS text says \"Multiply line 4 by $2,200\". The restatement adds up dependent.ctc_amount, which is not defined in the glossary, so it cannot be confirmed as $2,200 for each child counted on line 4.",
+   "ruling": "Ruling: representation; project retained. The count and the dollar lines are sums over the listed persons of a per-person amount ($2,200, $500 or $1,700 for a person who qualifies, else zero), defined on the dependent worksheet, which has its own transcription, render and class M logs; the per-person predicates are Steps 3 and 5 of the Form 1040 instructions. The count times the dollar figure and the sum of the per-person figures are the same number. No change to the data."
+  },
+  {
+   "printed": "7",
+   "restated": "Add dependent.odc_amount over every confirmed dependent entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The IRS line is \"Multiply line 6 by $500\". The restatement sums dependent.odc_amount, which is not defined. The text does not show it to be $500 for each line-6 dependent and zero for everyone else.",
    "ruling": "Ruling: representation; project retained. The count and the dollar lines are sums over the listed persons of a per-person amount ($2,200, $500 or $1,700 for a person who qualifies, else zero), defined on the dependent worksheet, which has its own transcription, render and class M logs; the per-person predicates are Steps 3 and 5 of the Form 1040 instructions. The count times the dollar figure and the sum of the per-person figures are the same number. No change to the data."
   },
   {

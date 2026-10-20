@@ -16,5 +16,11 @@
   "line": "f1040.line15",
   "case": "gen-00919",
   "cause": "Carried float32 error: PolicyEngine-US's AGI is 1 cent above the project's ($87,942.70 against $87,942.69, within float32 precision at that size); the deduction (sa.deduction) and the Schedule 1-A deduction on line 13b (the enhanced deduction for seniors, $5,223.44) agree exactly, and the float32 subtractions to line 15 add one more cent, for 2 cents. Investigated 2026-10-18 when Schedule 1-A entered the generated cases."
+ },
+ {
+  "engine": "Tax-Calculator",
+  "line": "f1040.line15",
+  "case": "se-00075",
+  "cause": "Rounding of the half of self-employment tax: Schedule SE line 12 is $822.51 in all three, and line 13, half of it, is $411.255; the project rounds half-up to $411.26 (amb.2025.multiplication_subcent), both engines take $411.25, so AGI is 1 cent apart; Schedule A, the QBI deduction and line 13b agree exactly, and Tax-Calculator's own float64 subtractions to taxable income give one more cent. Investigated 2026-10-19 when self-employment entered the generated cases."
  }
 ]

@@ -7,7 +7,7 @@ The rendered English of every printed line of `Schedule 1-A (Form 1040) — Addi
 | date | 2026-10-19 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 3769f8941598415b9e3ea877475d1778bc8f1f279824e8556b5227916707c779 |
+| prompt sha256 | 3c9f3cdae2200e783e78eb7d7875c7bebecc572ef32efdd4b4492eb9ad20fc0f |
 | lines judged | 43 |
 | match / mismatch / unclear / missing | 42 / 1 / 0 / 0 |
 | verdicts for lines not in the form | none |
@@ -24,221 +24,221 @@ The rendered English of every printed line of `Schedule 1-A (Form 1040) — Addi
 ### 1 — Enter the amount from Form 1040, 1040-SR, or 1040-NR, line 11b
 Status: **MATCH**
 
-Model: The form says to enter the amount from Form 1040, line 11b. The restatement does exactly that.
+Model: Takes the amount from Form 1040, line 11b, as the form says.
 
 ### 2a — Enter any income from Puerto Rico that you excluded
 Status: **MATCH**
 
-Model: The program enters $0 and refuses whenever there is excluded Puerto Rico income or a Form 2555 or 4563. The instructions say lines 2a–2e are completed only in those cases.
+Model: Entered as $0. The refusal excludes filers with Puerto Rico excluded income or Form 2555/4563, which are the only cases where lines 2a–2d would be filled in.
 
 ### 2b — Enter the amount from Form 2555, line 45
 Status: **MATCH**
 
-Model: The program enters $0. The Form 2555 case is covered by the line 2a refusal, so $0 is right for the cases it supports.
+Model: $0 is correct because the line 2a refusal excludes Form 2555 filers.
 
 ### 2c — Enter the amount from Form 2555, line 50
 Status: **MATCH**
 
-Model: The program enters $0. The Form 2555 case is covered by the line 2a refusal.
+Model: $0 is correct because the line 2a refusal excludes Form 2555 filers.
 
 ### 2d — Enter the amount from Form 4563, line 15
 Status: **MATCH**
 
-Model: The program enters $0. The Form 4563 case is covered by the line 2a refusal.
+Model: $0 is correct because the line 2a refusal excludes Form 4563 filers.
 
 ### 2e — Add lines 2a, 2b, 2c, and 2d
 Status: **MATCH**
 
-Model: The form says to add lines 2a, 2b, 2c and 2d. The restatement does the same.
+Model: Adds lines 2a through 2d, as the form says.
 
 ### 3 — Add lines 1 and 2e
 Status: **MATCH**
 
-Model: The form says to add lines 1 and 2e. The restatement does the same.
+Model: Adds lines 1 and 2e, as the form says.
 
 ### 4a — Enter qualified tips included on Form W-2, box 7, but see the instructions if Form W-2, bo
 Status: **MATCH**
 
-Model: With more than one employer the program enters $0, as the form says ('enter -0- on lines 4a and 4b'). Otherwise it uses tips from Form W-2 box 7 or from Forms 4070, which the instructions list as allowed methods. Part II is gated on qualified tips, a valid SSN and not married filing separately, as the caution requires.
+Model: With more than one employer it enters $0, matching 'enter -0- on lines 4a and 4b'. Otherwise it uses the W-2 box 7 or Forms 4070 tip total, which the instructions allow as methods 1 and 2.
 
 ### 4b — Qualified tips included on Form 4137, line 1, row A, column (c). If Form 4137 is not filed
 Status: **MATCH**
 
-Model: The program enters $0 and refuses any return with Form 4137 tips, which falls under its Schedule 2 refusal. The form says 'If Form 4137 is not filed, enter -0-', so $0 is right in the supported cases.
+Model: $0 is correct as 'If Form 4137 is not filed, enter -0-'. The refusal names Form 4137 as the excluded case.
 
 ### 4c — If you only received qualified tips as an employee with respect to employment with one emp
 Status: **MATCH**
 
-Model: With one employer the program enters the larger of line 4a or 4b, as the form says. With more than one employer it uses worksheet line 2 (the sum of column (d)), as the instructions say.
+Model: With one employer it takes the larger of lines 4a and 4b. With more than one, it uses worksheet line 2 (sum of column (d)), as the line 4c instructions direct.
 
 ### 5 — Qualified tips received in the course of a trade or business
 Status: **MATCH**
 
-Model: The program enters $0 and refuses trade-or-business income through its Schedule 1 refusal, which covers the Schedule C, E and F cases this line needs.
+Model: Entered as $0. The refusals exclude qualified tips received in a trade or business (Schedule C, E or F).
 
 ### 6 — Add lines 4c and 5
 Status: **MATCH**
 
-Model: The form says to add lines 4c and 5. The restatement does the same.
+Model: Adds lines 4c and 5.
 
 ### 7 — Enter the smaller of the amount on line 6 or $25,000
 Status: **MATCH**
 
-Model: The form says to enter the smaller of line 6 or $25,000. The restatement does the same.
+Model: Takes the smaller of line 6 or $25,000.
 
 ### 8 — Enter the amount from line 3
 Status: **MATCH**
 
-Model: The form says to enter the amount from line 3. The restatement does the same.
+Model: Takes the amount from line 3.
 
 ### 9 — Enter $150,000 ($300,000 if married filing jointly)
 Status: **MATCH**
 
-Model: The program uses $300,000 for married filing jointly and $150,000 otherwise, as the form says.
+Model: $300,000 for married filing jointly and $150,000 otherwise. Married filing separately is already gated out of Part II.
 
 ### 10 — Subtract line 9 from line 8. If zero or less, enter the amount from line 7 on line 13
 Status: **MATCH**
 
-Model: The form says to subtract line 9 from line 8. When the result is zero or less, line 13 takes line 7, which the line 13 logic handles.
+Model: Subtracts line 9 from line 8. The 'zero or less' case is handled at line 13 by entering line 7.
 
 ### 12 — Multiply line 11 by $100
 Status: **MATCH**
 
-Model: Line 11 drops any part of line 10 below a whole $1,000, and line 12 multiplies by $100 per $1,000. This matches 'decrease the result to the next lower whole number' and 'Multiply line 11 by $100'.
+Model: Line 11 is line 10 rounded down to whole thousands, and multiplying by 1/10 gives $100 per thousand, the same as 'Multiply line 11 by $100'.
 
 ### 13 — Qualified tips deduction. Subtract line 12 from line 7. If zero or less, enter -0-
 Status: **MATCH**
 
-Model: The program enters $0 for married filing separately or with no valid SSN. It enters line 7 when line 10 is zero or less, and otherwise line 7 minus line 12, but not below zero. This matches the form and the line 10 instruction.
+Model: Zero for married filing separately or without a valid SSN. Otherwise it is line 7 when line 8 does not exceed line 9, else line 7 minus line 12 floored at zero.
 
 ### 14a — Qualified overtime compensation included in Form W-2, box 1. If you received qualified ove
 Status: **MATCH**
 
-Model: The program adds the qualified overtime of each person with a valid SSN. This matches the line and its multi-employer worksheet.
+Model: Adds the qualified overtime of the people who received it and have a valid SSN, consistent with line 14a and the more-than-one-employer worksheet.
 
 ### 14b — Qualified overtime compensation included in Form 1099-NEC, box 1, or Form 1099-MISC, box 3
 Status: **MATCH**
 
-Model: The program enters $0 and refuses overtime reported on Form 1099-NEC or 1099-MISC (nonemployee compensation, which means filing Schedule C).
+Model: Entered as $0. The refusals exclude overtime reported on Form 1099-NEC or 1099-MISC.
 
 ### 14c — Add lines 14a and 14b
 Status: **MATCH**
 
-Model: The form says to add lines 14a and 14b. The restatement does the same.
+Model: Adds lines 14a and 14b.
 
 ### 15 — Enter the smaller of the amount on line 14c or $12,500 ($25,000 if married filing jointly)
 Status: **MATCH**
 
-Model: The program enters the smaller of line 14c or $12,500 ($25,000 if married filing jointly), as the form says.
+Model: Takes the smaller of line 14c or $12,500 ($25,000 if married filing jointly).
 
 ### 16 — Enter the amount from line 3
 Status: **MATCH**
 
-Model: The form says to enter the amount from line 3. The restatement does the same.
+Model: Takes the amount from line 3.
 
 ### 17 — Enter $150,000 ($300,000 if married filing jointly)
 Status: **MATCH**
 
-Model: The program uses $300,000 for married filing jointly and $150,000 otherwise, as the form says.
+Model: $150,000, or $300,000 if married filing jointly.
 
 ### 18 — Subtract line 17 from line 16. If zero or less, enter the amount from line 15 on line 21
 Status: **MATCH**
 
-Model: The form says to subtract line 17 from line 16. When the result is zero or less, line 21 takes line 15.
+Model: Subtracts line 17 from line 16. The 'zero or less' case is handled at line 21 by entering line 15.
 
 ### 20 — Multiply line 19 by $100
 Status: **MATCH**
 
-Model: Line 19 drops any part of line 18 below a whole $1,000, and line 20 multiplies by $100 per $1,000, as the form says.
+Model: Line 19 is line 18 rounded down to whole thousands, and 1/10 of that equals 'Multiply line 19 by $100'.
 
 ### 21 — Qualified overtime compensation deduction. Subtract line 20 from line 15. If zero or less,
 Status: **MATCH**
 
-Model: The program enters $0 for married filing separately or with no valid SSN. It enters line 15 when line 18 is zero or less, and otherwise line 15 minus line 20, but not below zero.
+Model: Zero for married filing separately or without a valid SSN. Otherwise it is line 15 when line 16 does not exceed line 17, else line 15 minus line 20 floored at zero.
 
 ### 23 — Add lines 22a and 22b, column (iii)
 Status: **MATCH**
 
-Model: The program adds column (iii) for every loan, including loans on an attached statement. The instructions allow such a statement when there are more than two VINs.
+Model: Adds column (iii) for every loan, including any listed on the attached statement for more than two VINs, as the line 22 instructions describe.
 
 ### 24 — Enter the smaller of the amount on line 23 or $10,000
 Status: **MATCH**
 
-Model: The form says to enter the smaller of line 23 or $10,000. The restatement does the same.
+Model: Takes the smaller of line 23 or $10,000.
 
 ### 25 — Enter the amount from line 3
 Status: **MATCH**
 
-Model: The form says to enter the amount from line 3. The restatement does the same.
+Model: Takes the amount from line 3.
 
 ### 26 — Enter $100,000 ($200,000 if married filing jointly)
 Status: **MATCH**
 
-Model: The program uses $200,000 for married filing jointly and $100,000 otherwise, as the form and instructions say.
+Model: $100,000, or $200,000 if married filing jointly.
 
 ### 27 — Subtract line 26 from line 25. If zero or less, enter the amount from line 24 on line 30
 Status: **MATCH**
 
-Model: The form says to subtract line 26 from line 25. When the result is zero or less, line 30 takes line 24.
+Model: Subtracts line 26 from line 25. The 'zero or less' case is handled at line 30 by entering line 24.
 
 ### 29 — Multiply line 28 by $200
 Status: **MATCH**
 
-Model: Line 28 rounds line 27 up to the next whole $1,000, and line 29 multiplies by $200 per $1,000. This matches 'increase the result to the next higher whole number' and 'Multiply line 28 by $200'.
+Model: Line 28 is line 27 rounded up to whole thousands, which matches 'increase the result to the next higher whole number' if an exact multiple is left unchanged. 1/5 of that equals 'Multiply line 28 by $200'.
 
 ### 30 — Qualified passenger vehicle loan interest deduction. Subtract line 29 from line 24. If zer
 Status: **MATCH**
 
-Model: The program enters line 24 when line 27 is zero or less, and otherwise line 24 minus line 29, but not below zero, as the form and instructions say.
+Model: Line 24 when line 25 does not exceed line 26, else line 24 minus line 29 floored at zero.
 
 ### 31 — Enter the amount from line 3
 Status: **MATCH**
 
-Model: The form says to enter the amount from line 3. Part V is gated on birth before January 2, 1961, a valid SSN and not married filing separately, as the caution requires.
+Model: Takes the amount from line 3.
 
 ### 32 — Enter $75,000 ($150,000 if married filing jointly)
 Status: **MATCH**
 
-Model: The program uses $150,000 for married filing jointly and $75,000 otherwise, as the form says.
+Model: $75,000, or $150,000 if married filing jointly.
 
 ### 33 — Subtract line 32 from line 31. If zero or less, enter $6,000 on line 35
 Status: **MATCH**
 
-Model: The form says to subtract line 32 from line 31. When the result is zero or less, line 35 takes $6,000.
+Model: Subtracts line 32 from line 31. The 'zero or less' case is handled at line 35 by entering $6,000.
 
 ### 34 — Multiply line 33 by 6% (0.06)
 Status: **MATCH**
 
-Model: The program multiplies line 33 (zero if negative) by 6%, as the form says.
+Model: Multiplies line 33, floored at zero, by 6%.
 
 ### 35 — Subtract line 34 from $6,000. If zero or less, enter -0-
 Status: **MATCH**
 
-Model: The program enters $6,000 when line 33 is zero or less, and otherwise $6,000 minus line 34, but not below zero.
+Model: $6,000 when line 31 does not exceed line 32; otherwise $6,000 minus line 34, floored at zero.
 
 ### 36a — If you have a valid social security number (see instructions) and were born before January
 Status: **MATCH**
 
-Model: The program enters line 35 when the filer was born before January 2, 1961 and has a valid SSN, and $0 for married filing separately. It refuses a filer who died in 2025 before reaching 65, as the instructions require.
+Model: Enters line 35 when the filer was born before January 2, 1961, and has a valid SSN; zero for married filing separately. The refusal covers a decedent who died before reaching age 65.
 
 ### 36b — If you are married filing jointly, your spouse has a valid social security number (see ins
 Status: **MISMATCH**
 
 Restated: Choose — [helper "Your spouse was born before January 2, 1961, and has a valid SSN" = false → helper "Year parameter sales.zero"] [helper "Your spouse was born before January 2, 1961, and has a valid SSN" = true → helper "Line 36b for a spouse born before January 2, 1961, with a valid SSN"]
 
-Model: The form says 'If you are married filing jointly, your spouse has a valid social security number..., and your spouse was born before January 2, 1961'. The restatement checks only the spouse's birth date and SSN, not that the return is filed jointly. A spouse entry on a head of household or qualifying surviving spouse return could therefore get line 35.
+Model: The IRS line requires 'If you are married filing jointly, your spouse has a valid social security number..., and your spouse was born before January 2, 1961'. The restatement checks only the spouse's birth date and SSN, not the joint filing status. Married filing separately happens to yield zero through line 35, but other filing statuses with a spouse entry are not excluded.
 
 Ruling: scope; project retained. A spouse entry exists only on a joint return: any other roster is refused at Form 1040 line 1a (household.roster_bad; Form 1040 page 1, 'If joint return, spouse's first name'), so whenever the spouse's birth date and SSN can be tested the return is filed jointly (Schedule 1-A line 36b; i1040gi p. 110).
 
 ### 37 — Enhanced deduction for seniors. Add lines 36a and 36b
 Status: **MATCH**
 
-Model: The form says to add lines 36a and 36b. The restatement does the same.
+Model: Adds lines 36a and 36b.
 
 ### 38 — Add lines 13, 21, 30, and 37. Enter here and on Form 1040 or 1040-SR, line 13b, or on Form
 Status: **MATCH**
 
-Model: The form says to add lines 13, 21, 30 and 37. The restatement does the same.
+Model: Adds lines 13, 21, 30 and 37.
 
 ## Raw response
 
@@ -247,132 +247,132 @@ Model: The form says to add lines 13, 21, 30 and 37. The restatement does the sa
 lines:
   - key: "1"
     status: MATCH
-    reason: "The form says to enter the amount from Form 1040, line 11b. The restatement does exactly that."
+    reason: "Takes the amount from Form 1040, line 11b, as the form says."
   - key: "2a"
     status: MATCH
-    reason: "The program enters $0 and refuses whenever there is excluded Puerto Rico income or a Form 2555 or 4563. The instructions say lines 2a–2e are completed only in those cases."
+    reason: "Entered as $0. The refusal excludes filers with Puerto Rico excluded income or Form 2555/4563, which are the only cases where lines 2a–2d would be filled in."
   - key: "2b"
     status: MATCH
-    reason: "The program enters $0. The Form 2555 case is covered by the line 2a refusal, so $0 is right for the cases it supports."
+    reason: "$0 is correct because the line 2a refusal excludes Form 2555 filers."
   - key: "2c"
     status: MATCH
-    reason: "The program enters $0. The Form 2555 case is covered by the line 2a refusal."
+    reason: "$0 is correct because the line 2a refusal excludes Form 2555 filers."
   - key: "2d"
     status: MATCH
-    reason: "The program enters $0. The Form 4563 case is covered by the line 2a refusal."
+    reason: "$0 is correct because the line 2a refusal excludes Form 4563 filers."
   - key: "2e"
     status: MATCH
-    reason: "The form says to add lines 2a, 2b, 2c and 2d. The restatement does the same."
+    reason: "Adds lines 2a through 2d, as the form says."
   - key: "3"
     status: MATCH
-    reason: "The form says to add lines 1 and 2e. The restatement does the same."
+    reason: "Adds lines 1 and 2e, as the form says."
   - key: "4a"
     status: MATCH
-    reason: "With more than one employer the program enters $0, as the form says ('enter -0- on lines 4a and 4b'). Otherwise it uses tips from Form W-2 box 7 or from Forms 4070, which the instructions list as allowed methods. Part II is gated on qualified tips, a valid SSN and not married filing separately, as the caution requires."
+    reason: "With more than one employer it enters $0, matching 'enter -0- on lines 4a and 4b'. Otherwise it uses the W-2 box 7 or Forms 4070 tip total, which the instructions allow as methods 1 and 2."
   - key: "4b"
     status: MATCH
-    reason: "The program enters $0 and refuses any return with Form 4137 tips, which falls under its Schedule 2 refusal. The form says 'If Form 4137 is not filed, enter -0-', so $0 is right in the supported cases."
+    reason: "$0 is correct as 'If Form 4137 is not filed, enter -0-'. The refusal names Form 4137 as the excluded case."
   - key: "4c"
     status: MATCH
-    reason: "With one employer the program enters the larger of line 4a or 4b, as the form says. With more than one employer it uses worksheet line 2 (the sum of column (d)), as the instructions say."
+    reason: "With one employer it takes the larger of lines 4a and 4b. With more than one, it uses worksheet line 2 (sum of column (d)), as the line 4c instructions direct."
   - key: "5"
     status: MATCH
-    reason: "The program enters $0 and refuses trade-or-business income through its Schedule 1 refusal, which covers the Schedule C, E and F cases this line needs."
+    reason: "Entered as $0. The refusals exclude qualified tips received in a trade or business (Schedule C, E or F)."
   - key: "6"
     status: MATCH
-    reason: "The form says to add lines 4c and 5. The restatement does the same."
+    reason: "Adds lines 4c and 5."
   - key: "7"
     status: MATCH
-    reason: "The form says to enter the smaller of line 6 or $25,000. The restatement does the same."
+    reason: "Takes the smaller of line 6 or $25,000."
   - key: "8"
     status: MATCH
-    reason: "The form says to enter the amount from line 3. The restatement does the same."
+    reason: "Takes the amount from line 3."
   - key: "9"
     status: MATCH
-    reason: "The program uses $300,000 for married filing jointly and $150,000 otherwise, as the form says."
+    reason: "$300,000 for married filing jointly and $150,000 otherwise. Married filing separately is already gated out of Part II."
   - key: "10"
     status: MATCH
-    reason: "The form says to subtract line 9 from line 8. When the result is zero or less, line 13 takes line 7, which the line 13 logic handles."
+    reason: "Subtracts line 9 from line 8. The 'zero or less' case is handled at line 13 by entering line 7."
   - key: "12"
     status: MATCH
-    reason: "Line 11 drops any part of line 10 below a whole $1,000, and line 12 multiplies by $100 per $1,000. This matches 'decrease the result to the next lower whole number' and 'Multiply line 11 by $100'."
+    reason: "Line 11 is line 10 rounded down to whole thousands, and multiplying by 1/10 gives $100 per thousand, the same as 'Multiply line 11 by $100'."
   - key: "13"
     status: MATCH
-    reason: "The program enters $0 for married filing separately or with no valid SSN. It enters line 7 when line 10 is zero or less, and otherwise line 7 minus line 12, but not below zero. This matches the form and the line 10 instruction."
+    reason: "Zero for married filing separately or without a valid SSN. Otherwise it is line 7 when line 8 does not exceed line 9, else line 7 minus line 12 floored at zero."
   - key: "14a"
     status: MATCH
-    reason: "The program adds the qualified overtime of each person with a valid SSN. This matches the line and its multi-employer worksheet."
+    reason: "Adds the qualified overtime of the people who received it and have a valid SSN, consistent with line 14a and the more-than-one-employer worksheet."
   - key: "14b"
     status: MATCH
-    reason: "The program enters $0 and refuses overtime reported on Form 1099-NEC or 1099-MISC (nonemployee compensation, which means filing Schedule C)."
+    reason: "Entered as $0. The refusals exclude overtime reported on Form 1099-NEC or 1099-MISC."
   - key: "14c"
     status: MATCH
-    reason: "The form says to add lines 14a and 14b. The restatement does the same."
+    reason: "Adds lines 14a and 14b."
   - key: "15"
     status: MATCH
-    reason: "The program enters the smaller of line 14c or $12,500 ($25,000 if married filing jointly), as the form says."
+    reason: "Takes the smaller of line 14c or $12,500 ($25,000 if married filing jointly)."
   - key: "16"
     status: MATCH
-    reason: "The form says to enter the amount from line 3. The restatement does the same."
+    reason: "Takes the amount from line 3."
   - key: "17"
     status: MATCH
-    reason: "The program uses $300,000 for married filing jointly and $150,000 otherwise, as the form says."
+    reason: "$150,000, or $300,000 if married filing jointly."
   - key: "18"
     status: MATCH
-    reason: "The form says to subtract line 17 from line 16. When the result is zero or less, line 21 takes line 15."
+    reason: "Subtracts line 17 from line 16. The 'zero or less' case is handled at line 21 by entering line 15."
   - key: "20"
     status: MATCH
-    reason: "Line 19 drops any part of line 18 below a whole $1,000, and line 20 multiplies by $100 per $1,000, as the form says."
+    reason: "Line 19 is line 18 rounded down to whole thousands, and 1/10 of that equals 'Multiply line 19 by $100'."
   - key: "21"
     status: MATCH
-    reason: "The program enters $0 for married filing separately or with no valid SSN. It enters line 15 when line 18 is zero or less, and otherwise line 15 minus line 20, but not below zero."
+    reason: "Zero for married filing separately or without a valid SSN. Otherwise it is line 15 when line 16 does not exceed line 17, else line 15 minus line 20 floored at zero."
   - key: "23"
     status: MATCH
-    reason: "The program adds column (iii) for every loan, including loans on an attached statement. The instructions allow such a statement when there are more than two VINs."
+    reason: "Adds column (iii) for every loan, including any listed on the attached statement for more than two VINs, as the line 22 instructions describe."
   - key: "24"
     status: MATCH
-    reason: "The form says to enter the smaller of line 23 or $10,000. The restatement does the same."
+    reason: "Takes the smaller of line 23 or $10,000."
   - key: "25"
     status: MATCH
-    reason: "The form says to enter the amount from line 3. The restatement does the same."
+    reason: "Takes the amount from line 3."
   - key: "26"
     status: MATCH
-    reason: "The program uses $200,000 for married filing jointly and $100,000 otherwise, as the form and instructions say."
+    reason: "$100,000, or $200,000 if married filing jointly."
   - key: "27"
     status: MATCH
-    reason: "The form says to subtract line 26 from line 25. When the result is zero or less, line 30 takes line 24."
+    reason: "Subtracts line 26 from line 25. The 'zero or less' case is handled at line 30 by entering line 24."
   - key: "29"
     status: MATCH
-    reason: "Line 28 rounds line 27 up to the next whole $1,000, and line 29 multiplies by $200 per $1,000. This matches 'increase the result to the next higher whole number' and 'Multiply line 28 by $200'."
+    reason: "Line 28 is line 27 rounded up to whole thousands, which matches 'increase the result to the next higher whole number' if an exact multiple is left unchanged. 1/5 of that equals 'Multiply line 28 by $200'."
   - key: "30"
     status: MATCH
-    reason: "The program enters line 24 when line 27 is zero or less, and otherwise line 24 minus line 29, but not below zero, as the form and instructions say."
+    reason: "Line 24 when line 25 does not exceed line 26, else line 24 minus line 29 floored at zero."
   - key: "31"
     status: MATCH
-    reason: "The form says to enter the amount from line 3. Part V is gated on birth before January 2, 1961, a valid SSN and not married filing separately, as the caution requires."
+    reason: "Takes the amount from line 3."
   - key: "32"
     status: MATCH
-    reason: "The program uses $150,000 for married filing jointly and $75,000 otherwise, as the form says."
+    reason: "$75,000, or $150,000 if married filing jointly."
   - key: "33"
     status: MATCH
-    reason: "The form says to subtract line 32 from line 31. When the result is zero or less, line 35 takes $6,000."
+    reason: "Subtracts line 32 from line 31. The 'zero or less' case is handled at line 35 by entering $6,000."
   - key: "34"
     status: MATCH
-    reason: "The program multiplies line 33 (zero if negative) by 6%, as the form says."
+    reason: "Multiplies line 33, floored at zero, by 6%."
   - key: "35"
     status: MATCH
-    reason: "The program enters $6,000 when line 33 is zero or less, and otherwise $6,000 minus line 34, but not below zero."
+    reason: "$6,000 when line 31 does not exceed line 32; otherwise $6,000 minus line 34, floored at zero."
   - key: "36a"
     status: MATCH
-    reason: "The program enters line 35 when the filer was born before January 2, 1961 and has a valid SSN, and $0 for married filing separately. It refuses a filer who died in 2025 before reaching 65, as the instructions require."
+    reason: "Enters line 35 when the filer was born before January 2, 1961, and has a valid SSN; zero for married filing separately. The refusal covers a decedent who died before reaching age 65."
   - key: "36b"
     status: MISMATCH
-    reason: "The form says 'If you are married filing jointly, your spouse has a valid social security number..., and your spouse was born before January 2, 1961'. The restatement checks only the spouse's birth date and SSN, not that the return is filed jointly. A spouse entry on a head of household or qualifying surviving spouse return could therefore get line 35."
+    reason: "The IRS line requires 'If you are married filing jointly, your spouse has a valid social security number..., and your spouse was born before January 2, 1961'. The restatement checks only the spouse's birth date and SSN, not the joint filing status. Married filing separately happens to yield zero through line 35, but other filing statuses with a spouse entry are not excluded."
   - key: "37"
     status: MATCH
-    reason: "The form says to add lines 36a and 36b. The restatement does the same."
+    reason: "Adds lines 36a and 36b."
   - key: "38"
     status: MATCH
-    reason: "The form says to add lines 13, 21, 30 and 37. The restatement does the same."
+    reason: "Adds lines 13, 21, 30 and 37."
 ```
 ```

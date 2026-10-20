@@ -5,10 +5,10 @@
  "microdata_filing_units_unweighted_total": 157629339.546014,
  "raking_max_share_error": 7.132191345032847e-07,
  "coverage": {
-  "central": 0.4779202570137164,
-  "low": 0.3814616305725472,
-  "high": 0.5919842359826991,
-  "microdata_part": 0.5919842359826991,
+  "central": 0.5801386940055673,
+  "low": 0.5080762748315577,
+  "high": 0.7185988802417096,
+  "microdata_part": 0.7185988802417096,
   "irs_only_independent_factor": 0.8073192290675857,
   "irs_only_share_sum": 0.21052260541015194
  },
@@ -23,19 +23,6 @@
    "irs_returns": 4139858.0,
    "microdata_share_before_raking": 0.01213388637242343,
    "share": 0.02577710728090902,
-   "basis": "IRS count, overlap from microdata"
-  },
-  {
-   "id": "schedule_c",
-   "group": "self_employment",
-   "label": "Schedule C income or loss",
-   "gates": [
-    "scope.schedule1",
-    "qbi.unsupported"
-   ],
-   "irs_returns": 30478887.0,
-   "microdata_share_before_raking": 0.1872266734913825,
-   "share": 0.1897788504155207,
    "basis": "IRS count, overlap from microdata"
   },
   {
@@ -366,11 +353,6 @@
  ],
  "greedy_order": [
   {
-   "group": "self_employment",
-   "label": "Self-employment (Schedule C and SE)",
-   "coverage_after": 0.5801386940055673
-  },
-  {
    "group": "other_credits",
    "label": "Other credits (dependent care, saver's, energy, others)",
    "coverage_after": 0.6532176303949329
@@ -428,22 +410,20 @@
  ],
  "coverage_without_model_only_category": {},
  "gain_if_covered_alone": {
-  "married": 0.013886440369874242,
-  "self_employment": 0.1022184369918509,
-  "premium_tax_credit": 0.027836291064167018,
-  "education": 0.021542456808171517,
-  "other_credits": 0.060419539871222894,
-  "schedule_e": 0.034564444554697704,
-  "capital_loss_carryover": 0.01733980484326436,
-  "retirement_penalty": 0.01565212110309716,
-  "schedule1_misc": 0.047128674272944926,
-  "schedule2_misc": 0.002163688795017882,
-  "other_earned_income": 0.0038022010760180303,
-  "farm": 0.0023106824252625557
+  "married": 0.018037778871924925,
+  "premium_tax_credit": 0.035474510695365,
+  "education": 0.02656112298790203,
+  "other_credits": 0.07307893638936558,
+  "schedule_e": 0.043126843743715004,
+  "capital_loss_carryover": 0.021048473230533382,
+  "retirement_penalty": 0.018999824681855237,
+  "schedule1_misc": 0.06709586057276962,
+  "schedule2_misc": 0.002626462413666153,
+  "other_earned_income": 0.004615422623788001,
+  "farm": 0.002683635815075469
  },
  "gates_mapped": [
   "f8889.unsupported",
-  "qbi.unsupported",
   "retirement.special",
   "s2.amt",
   "s2.other",
@@ -455,6 +435,10 @@
   "sd.carryover"
  ],
  "gates_unmeasured": [
+  "asset.bonus_mixed",
+  "asset.listed_low",
+  "asset.s179_bad",
+  "asset.screened",
   "carloan.refi_nested",
   "dependent.divorced_rule",
   "dependent.income_exception",
@@ -487,10 +471,20 @@
   "otjob.refused",
   "person.hsa_repeated",
   "person.over",
+  "person.plan_screened",
   "person.rrta",
+  "person.se_screened",
+  "person.sep_excess",
+  "person.simple_excess",
+  "qbi.business_any",
+  "qbi.unsupported",
   "retirement.annuity_rollover",
   "retirement.bad_code",
+  "s1.ebl",
+  "s1.sc_1a",
   "s1.uc_unsupported",
+  "s179.multi",
+  "s179.orphan",
   "s1a.senior_decedent",
   "s1a.spouse_senior_decedent",
   "s8812.combat_pay",
@@ -507,7 +501,19 @@
   "sb.form8938",
   "sb.line8",
   "sb.unsupported",
+  "sc.hi_screened",
+  "sc.ho_both_limits",
+  "sc.ho_screened",
+  "sc.inventory_other",
+  "sc.not_at_risk",
+  "sc.screened",
   "scope.other_line16",
+  "scveh.bonus_mixed",
+  "scveh.low_use",
+  "scveh.s179_bad",
+  "scveh.screened",
+  "scveh.smr_bad",
+  "scveh.too_old",
   "sd.other_forms",
   "sd.screen",
   "ssb.lump_sum",

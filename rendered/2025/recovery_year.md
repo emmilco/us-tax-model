@@ -1,7 +1,7 @@
 # Year of recovery in 2025, by year placed in service
 
 - Table: `recovery_year` (keyed)
-- Cite: [p946-html] Chapter 4, Using the MACRS Percentage Tables; the example of residential rental property placed in service on July 2, 2023, sold March 2, 2025 (2025; sha256 b5ac23e5)
+- Cite: [p946] p. 39, Using the MACRS Percentage Tables; the example of residential rental property placed in service on July 2, 2023, sold March 2, 2025 (For use in preparing 2025 returns; sha256 07fadfb2)
 
 Rows: 21; keys: placed (Enum(placed_year)); entry: Count
 

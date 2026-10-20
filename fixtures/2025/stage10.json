@@ -124,7 +124,9 @@
         "retirement[a].annuity": false,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line4a": {
@@ -268,7 +270,9 @@
         "retirement[a].annuity": false,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line4a": {
@@ -408,7 +412,9 @@
         "retirement[r].annuity": false,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line4a": {
@@ -544,7 +550,9 @@
         "retirement[r].annuity": false,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line4b": {
@@ -685,7 +693,9 @@
         "retirement[a].annuity": false,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line4b": {
@@ -839,7 +849,9 @@
         "retirement[a].annuity": false,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line4b": {
@@ -993,7 +1005,9 @@
         "retirement[p].annuity": false,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line5a": {
@@ -1133,7 +1147,9 @@
         "retirement[p].annuity": false,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line5a": {
@@ -1279,7 +1295,9 @@
         "retirement[p].age": 62,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line5a": {
@@ -1428,7 +1446,9 @@
         "retirement[p].last_line4": 10000,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line5b": {
@@ -1570,7 +1590,9 @@
         "retirement[p].combined_age": 125,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line5b": {
@@ -1716,7 +1738,9 @@
         "retirement[p].age": 72,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line5b": {
@@ -1846,7 +1870,9 @@
         "ssb.terror_disability": false,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line6a": {
@@ -1980,7 +2006,9 @@
         "ssb.terror_disability": false,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line6b": {
@@ -2110,7 +2138,9 @@
         "ssb.terror_disability": false,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line6b": {
@@ -2253,7 +2283,9 @@
         "ssb.terror_disability": false,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line6b": {
@@ -2395,7 +2427,10 @@
         "person[spouse].born_after_1960": true,
         "person[spouse].educator_expenses": 0,
         "$w2@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line6b": {
@@ -2522,7 +2557,9 @@
         "ssb.lived_apart": false,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line6b": {
@@ -2653,7 +2690,9 @@
         "ssb.lived_apart": true,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line6b": {
@@ -2783,7 +2822,9 @@
         "ssb.terror_disability": false,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line6b": {
@@ -2918,7 +2959,9 @@
         "ssb.terror_disability": false,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line6b": {
@@ -3071,7 +3114,9 @@
         "retirement[p].annuity": false,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line4a": {
@@ -3227,7 +3272,9 @@
         "retirement[p].annuity": false,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line5a": {
@@ -3371,7 +3418,9 @@
         "retirement[r].annuity": false,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line4b": {
@@ -3560,7 +3609,9 @@
         "retirement[k4].age": 71,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line5a": {
@@ -3760,7 +3811,9 @@
         "retirement[j4].combined_age": 150,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line5b": {
@@ -3902,7 +3955,9 @@
         "ssb.terror_disability": false,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line6b": {
@@ -4032,7 +4087,9 @@
         "ssb.terror_disability": false,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line6b": {
@@ -4178,7 +4235,9 @@
         "retirement[p].age": 62,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line5a": {
@@ -4320,7 +4379,9 @@
         "retirement[p].age": 62,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line5a": {
@@ -4462,7 +4523,9 @@
         "retirement[p].age": 62,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line5a": {
@@ -4610,7 +4673,9 @@
         "ssb.terror_disability": true,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line6b": {
@@ -4751,7 +4816,9 @@
         "retirement[p].annuity": false,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line5a": {
@@ -4897,7 +4964,9 @@
         "retirement[p].age": 62,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line5a": {
@@ -5027,7 +5096,9 @@
         "ssb.terror_disability": false,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line2a": {

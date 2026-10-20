@@ -98,6 +98,9 @@ def schedule_mode_expectations(values, case, t):
         v = values.get(line, {}).get("value", {})
         return v.get("value") if v.get("kind") == "bool" else None
     d = lambda line: table_minus_schedule(t, status, m(line))
+    if m("f1040.line15") is None or m("f1040.line16") is None:
+        # A return the project refuses or leaves incomplete has no schedule-mode expectations.
+        return {line: None for line in TAX_LINES}
     if b("f1040.gate.sdtw"):
         tax16 = min(m("sdtw.line45") - d("sdtw.line21"), m("sdtw.line46") - d("sdtw.line1"))
     elif b("f1040.gate.qdcg_applies"):

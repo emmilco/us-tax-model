@@ -1,0 +1,12 @@
+{
+ "kind": "render",
+ "form": "s179",
+ "rulings": [
+  {
+   "printed": "11",
+   "restated": "Enter the smaller of helper \"That income, if zero or less zero\" or line 5.",
+   "model": "The IRS text uses 'the total taxable income from any trade or business you actively conducted, computed without regard to any section 179 expense deduction, the deduction for one-half of self-employment taxes ... or any net operating loss deduction,' plus wages. The restatement counts only Schedule C net profit plus Form 1040 line 1a. It has no refusal for other actively conducted businesses (for example partnership or S corporation business income, which line 6 contemplates for K-1 section 179 amounts) or for Schedule C activities that are not actively conducted, so those cases would change the value.",
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. The only trades or businesses on a return in scope are the Schedule C businesses (partnerships, S corporations, Schedule E and farm income are refused through scope.schedule1 and qbi.unsupported), each materially participated in (sc.passive; a passive activity is refused), which is active conduct; wages are Form 1040 line 1a (i4562 p. 5, Line 11, 'include all wages, salaries, tips, and other compensation you earned as an employee'). So the income the instruction names is the Schedule C net profit before the section 179 deduction plus line 1a."
+  }
+ ]
+}

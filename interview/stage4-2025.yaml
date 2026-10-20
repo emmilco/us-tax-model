@@ -1449,7 +1449,7 @@ interview:
         doc: i1040gi
         locator: 'p. 109, Schedule 1-A, Applicable passenger vehicle'
     - input: carloan.interest
-      prompt: 'Total interest you paid or accrued on this loan in 2025 (generally from the lender''s statement), none of it deducted elsewhere on your return'
+      prompt: 'Total interest you paid or accrued on this loan in 2025 (generally from the lender''s statement), including any part you deduct on Schedule C (that part is entered separately)'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
         be null; do not guess. This computes the single-person return; joint returns and unsupported items
         are refused with citations.
@@ -1511,3 +1511,858 @@ interview:
       cite:
         doc: fr-2025-24154
         locator: 'pp. 20–22, Proposed § 1.163-16(d)(4)'
+    - input: $asset
+      prompt: For this business — List one stable key for each item of property other than a vehicle that you depreciate or expense
+        under section 179 for 2025 (placed in service from 2005 to 2025), or [] if none. Items with a cost you deduct in full
+        as supplies or under a de minimis rule are not listed here.
+      help: Enter a JSON array of distinct keys. Empty [] means none.
+      order: 11
+      cite:
+        doc: i4562
+        locator: p. 1, Who Must File; p. 9, Lines 17 and 19
+    - input: $scveh
+      prompt: For this business — List one stable key for each car, truck or van you used in the business in 2025 and claim expenses
+        for (standard mileage or actual expenses), or [] if none.
+      help: Enter a JSON array of distinct keys. Empty [] means none.
+      order: 11
+      cite:
+        doc: i1040sc
+        locator: p. 6, Line 9, Information on your vehicle
+    - input: $sc
+      prompt: For this person (you, or your spouse on a joint return) — Did you operate a business or practice a profession as
+        a sole proprietor in 2025 (income reported to you on Forms 1099-NEC, 1099-K or 1099-MISC for your own work is usually
+        such a business)? Enter a JSON array with one stable key per business, or [] if none.
+      help: Enter a JSON array of distinct keys. Empty [] means none.
+      order: 11
+      cite:
+        doc: i1040sc
+        locator: p. 2, General Instructions, "Use Schedule C ... to report income or (loss) from a business you operated or a
+          profession you practiced as a sole proprietor"; p. 3, Line A
+    - input: sc.statutory
+      prompt: For this business — Is this business income you received as a statutory employee (the "Statutory employee" box in
+        box 13 of your Form W-2 was checked), or fees you received as a notary public?
+      help: Answer true or false.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 5, Line 1, Statutory employees; p. 14, Line 31, Statutory employees and Notary public
+    - input: sc.passive
+      prompt: For this business — Did you "materially participate" in the operation of this business during 2025 (for example,
+        you worked in it more than 500 hours, or your work was substantially all the work done in it, or more than 100 hours and
+        at least as much as anyone else; see the seven tests in the instructions for line G), and is the business something other
+        than a rental activity?
+      help: Answer true or false.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 4, Line G, Material participation (the seven tests) and Rental of personal property
+    - input: sc.spouse_owned
+      prompt: For this business — Do you own this business together with your spouse (as a qualified joint venture, as community
+        property, or as partners)?
+      help: Answer true or false.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 2, Business Owned and Operated by Spouses, Qualified Joint Venture and Community Income
+    - input: sc.method_other
+      prompt: For this business — Do you use an accounting method other than cash or accrual, or did you change your accounting
+        method for 2025 (Form 3115 or a section 481(a) adjustment), or must you capitalize costs under the uniform capitalization
+        rules (section 263A) because your average annual gross receipts for the 3 prior years were more than $31 million?
+      help: Answer true or false.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 4, Line F; p. 6, Part II, Capitalizing costs; p. 15, Part III, Small business taxpayer
+    - input: sc.special
+      prompt: 'For this business — For this business, do you have any of these: depletion (line 12); the energy efficient commercial
+        buildings deduction (Form 7205); wages or benefits reduced by an employment credit (Forms 5884, 8844, 8846, 8932, 8941
+        or 8994); business interest limited by Form 8990; recapture of depreciation or section 179 on listed property, or an inclusion
+        amount for leased property; a chapter 11 bankruptcy case; extraterritorial income (Form 8873); installment sales of timeshares
+        or residential lots; nontaxable Medicaid waiver payments (Notice 2014-7); research or experimental expenditures you elect
+        to capitalize; or a capital construction fund?'
+      help: Answer true or false.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 1, What's New (research and experimental expenditures); p. 3, Capital Construction Fund; p. 5, Part I, Medicaid
+          waiver payments and Installment sales; p. 6, Line 6; p. 7, Lines 12, 14, 16a and 16b; p. 8, Line 23; p. 9, Lines 26
+          and 27a
+    - input: sc.line1
+      prompt: For this business — Gross receipts or sales of this business for 2025, including all amounts reported to you on
+        Forms 1099-NEC, 1099-MISC and 1099-K for this business (zero if none)
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 5, Line 1, "Enter gross receipts from your trade or business. Be sure to check any Forms 1099 you received"
+    - input: sc.line2
+      prompt: For this business — Returns and allowances (refunds and price reductions you gave customers), as a positive number;
+        zero if none
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 6, Line 2
+    - input: sc.line6
+      prompt: For this business — Other business income not in gross receipts, such as scrap sales, bad debts you recovered, interest
+        on accounts receivable, state gasoline or fuel tax refunds, prizes and awards related to the business, and Form 1099-PATR
+        amounts; zero if none
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 6, Line 6
+    - input: sc.line8
+      prompt: For this business — Advertising expenses of this business; zero if none
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 6, Part II, Expenses; Schedule C (2025), line 8
+    - input: sc.line10
+      prompt: For this business — Commissions and fees you paid (not capitalized and not deducted elsewhere); zero if none
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 7, Line 10
+    - input: sc.line11
+      prompt: For this business — Payments to independent contractors and others you do not treat as employees (not included on
+        lines 17, 21, 26 or 37); zero if none
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 7, Line 11
+    - input: sc.line14
+      prompt: For this business — Contributions to employee benefit programs for your employees, such as accident and health plans,
+        group-term life insurance and dependent care assistance (not for yourself, and not pension or profit-sharing plans); zero
+        if none
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: pp. 7-8, Line 14
+    - input: sc.line15
+      prompt: For this business — Premiums for business insurance (not health insurance for yourself, not a reserve for self-insurance,
+        not lost-earnings insurance); zero if none
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 8, Line 15
+    - input: sc.line16a
+      prompt: For this business — Interest you paid for 2025 on a mortgage on real property used in the business, to banks or
+        other financial institutions for which you received a Form 1098 (only the business part; not interest that must be capitalized);
+        zero if none
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 8, Lines 16a and 16b, How to report
+    - input: sc.line16b
+      prompt: For this business — Other interest on business debt (including mortgage interest not reported on a Form 1098 to
+        you); for a vehicle used for business and personal purposes, only the business part, and none of the interest you deduct
+        on Schedule 1-A; zero if none
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 8, Lines 16a and 16b
+    - input: sc.line17
+      prompt: For this business — Fees of accountants and attorneys directly related to operating the business, including tax
+        advice and preparation of the business tax forms; zero if none
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 8, Line 17
+    - input: sc.line18
+      prompt: For this business — Office supplies and postage; zero if none
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 8, Line 18
+    - input: sc.line19
+      prompt: For this business — Contributions you made for your employees to a pension, profit-sharing or annuity plan, including
+        SEP, SIMPLE and SARSEP plans (not contributions for yourself, which go on Schedule 1, line 16); zero if none
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 8, Line 19
+    - input: sc.line20b
+      prompt: For this business — Rent for other business property, such as office space; zero if none
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 8, Lines 20a and 20b
+    - input: sc.line21
+      prompt: For this business — Incidental repairs and maintenance that do not add to the property's value or appreciably prolong
+        its life (not your own labor, and not restorations or replacements, which are capitalized); zero if none
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 8, Line 21
+    - input: sc.line22
+      prompt: For this business — Materials and supplies actually consumed and used in the business during 2025 (or incidental
+        supplies purchased during 2025 if you keep no inventory or records of use); zero if none
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 8, Line 22
+    - input: sc.line23
+      prompt: 'For this business — Business taxes and licenses: sales tax imposed on you as the seller, real estate and personal
+        property taxes on business assets, licenses and regulatory fees, the employer share of social security and Medicare taxes,
+        federal unemployment tax, federal highway use tax, state unemployment contributions (not income or self-employment tax,
+        and not taxes on property you bought); zero if none'
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 8, Line 23
+    - input: sc.line24a
+      prompt: For this business — Lodging and transportation for overnight business travel away from your tax home (not meals
+        and not entertainment); zero if none
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 9, Line 24a
+    - input: sc.meals_50
+      prompt: For this business — The full cost of business meals (actual cost or the standard meal allowance) subject to the
+        50% limit, before applying the percentage; zero if none
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 9, Line 24b, Business meal expenses, Standard meal allowance and Amount of deduction
+    - input: sc.meals_80
+      prompt: For this business — The full cost of business meals consumed during or incident to a period of duty for which you
+        were subject to the Department of Transportation hours of service limits (certain air transportation workers, interstate
+        truck operators, certain merchant mariners), before applying the percentage; zero if none
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 9, Line 24b, Amount of deduction, "the percentage is increased to 80%"
+    - input: sc.line25
+      prompt: For this business — Utility expenses of the business only (for a home phone, not the base rate of the first line
+        into your residence); zero if none
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 9, Line 25
+    - input: sc.line26
+      prompt: For this business — Salaries and wages you paid your employees in 2025 (not amounts paid to yourself, and not wages
+        deducted elsewhere); zero if none
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 9, Line 26
+    - input: sc.line48
+      prompt: For this business — The total of the other business expenses you list in Part V, not included on lines 8 to 27a
+        or line 30; zero if none
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: f1040sc
+        locator: Schedule C (2025), Part V, line 48
+    - input: sc.ho_uses
+      prompt: For this business — Do you claim a deduction for the business use of your home for this business (a part of your
+        home used regularly and exclusively for the business, or regularly for storing inventory or product samples)?
+      help: Answer true or false.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 10, Line 30, Business use of your home; Pub. 587 referenced
+    - input: sc.ho_other
+      prompt: 'For this business — Does any of these apply: you figure the deduction with actual expenses on Form 8829 instead
+        of the simplified method; you used more than one home for this business; the home is used for daycare; you share the business
+        area with someone else''s business; you used the area for only part of 2025 or it changed during the year; some of this
+        business''s gross income is from a place of business other than your home; or you have a gain or loss on Form 8949 or
+        Form 4797 related to this business?'
+      help: Answer true or false.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 10, Line 30; pp. 10-13, Instructions for the Simplified Method Worksheet, Daycare Facility Worksheet, Business
+          use of more than one home, Shared use and Part-year use or area changes
+    - input: sc.ho_sqft
+      prompt: For this business — The square feet of your home used regularly and exclusively for this business (or regularly
+        for storing inventory or product samples) throughout 2025
+      help: A whole number.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 11, Simplified Method Worksheet, line 2, and line 30 entry spaces; p. 10, Simplified method
+    - input: sc.ho_home_sqft
+      prompt: For this business — The total square footage of your home
+      help: A whole number.
+      order: 12
+      cite:
+        doc: f1040sc
+        locator: 'Schedule C (2025), line 30, "Simplified method filers only: Enter the total square footage of (a) your home"'
+    - input: sc.at_risk
+      prompt: 'For this business — All your investment in this business is at risk: you have no nonrecourse loans not secured
+        by your own property, no amounts protected against loss by a guarantee or stop-loss agreement, and no amounts borrowed
+        from someone with an interest in the business (box 32a)'
+      help: Answer true or false.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: pp. 14-15, Line 32, At-risk rules and Figuring your loss
+    - input: sc.inventory_other
+      prompt: For this business — Do you value closing inventory by a method other than cost or lower of cost or market, or was
+        there any change in determining quantities, costs or valuations between opening and closing inventory (line 34)? Answer
+        No if you have no inventory
+      help: Answer true or false.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 15, Part III, Line 33; Schedule C (2025), lines 33 and 34
+    - input: sc.line35
+      prompt: For this business — Inventory at the beginning of 2025 (the same as your closing inventory for 2024); zero if none
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 15, Line 35
+    - input: sc.line36
+      prompt: For this business — Purchases of merchandise or materials for sale, less the cost of items you withdrew for personal
+        use; zero if none
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: f1040sc
+        locator: Schedule C (2025), line 36
+    - input: sc.line37
+      prompt: For this business — Cost of labor for producing goods for sale (not amounts paid to yourself); zero if none
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: f1040sc
+        locator: Schedule C (2025), line 37
+    - input: sc.line38
+      prompt: For this business — Materials and supplies used in producing goods for sale; zero if none
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: f1040sc
+        locator: Schedule C (2025), line 38
+    - input: sc.line39
+      prompt: For this business — Other costs of goods sold; zero if none
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: f1040sc
+        locator: Schedule C (2025), line 39
+    - input: sc.line41
+      prompt: For this business — Inventory at the end of 2025; zero if none
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: f1040sc
+        locator: Schedule C (2025), line 41
+    - input: sc.rent_equipment
+      prompt: For this business — The business part of rent for machinery and equipment (and for any vehicle you rented for a
+        term of less than 30 days and do not enter as a vehicle); zero if none
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 8, Lines 20a and 20b
+    - input: scveh.method
+      prompt: For this vehicle — For this vehicle, do you take the standard mileage rate (standard) or deduct actual expenses
+        (actual)?
+      help: One of the values of vehicle_method.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 6, Line 9, "You can deduct the actual expenses of operating your car or truck or take the standard mileage
+          rate"
+    - input: scveh.owned
+      prompt: For this vehicle — Do you own this vehicle (answer No if you lease it)?
+      help: Answer true or false.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 6, Line 9, "Owned the vehicle ... or Leased the vehicle"
+    - input: scveh.placed_date
+      prompt: For this vehicle — The year you first placed this vehicle in service for business purposes (for example 2023)
+      help: A whole number.
+      order: 12
+      cite:
+        doc: f1040sc
+        locator: Schedule C (2025), line 43
+    - input: scveh.miles_business
+      prompt: For this vehicle — The miles you drove this vehicle in 2025 for this business (not commuting)
+      help: A whole number.
+      order: 12
+      cite:
+        doc: f1040sc
+        locator: Schedule C (2025), line 44a; i1040sc p. 15, Line 44b
+    - input: scveh.miles_commuting
+      prompt: For this vehicle — The commuting miles you drove this vehicle in 2025 (travel between your home and a work location,
+        as defined in the instructions for line 44b)
+      help: A whole number.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 15, Line 44b
+    - input: scveh.miles_other
+      prompt: For this vehicle — The other (personal) miles you drove this vehicle in 2025
+      help: A whole number.
+      order: 12
+      cite:
+        doc: f1040sc
+        locator: Schedule C (2025), line 44c
+    - input: scveh.parking
+      prompt: For this vehicle — Parking fees and tolls for this vehicle's business use in 2025 (zero if none)
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 6, Line 9, "Add to this amount your parking fees and tolls"
+    - input: scveh.smr_ok
+      prompt: 'For this vehicle — If you own this vehicle: did you use the standard mileage rate for it in the first year you
+        used it for business? If you lease it: are you using the standard mileage rate for the entire lease period? (Answer No
+        if this is one of five or more vehicles you used in the business at the same time.)'
+      help: Answer true or false.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 6, Line 9, "You must use actual expenses if you used five or more vehicles simultaneously" and "You can take
+          the standard mileage rate for 2025 only if you"
+    - input: scveh.operating
+      prompt: 'For this vehicle — The total 2025 operating expenses of this vehicle: gasoline, oil, repairs, insurance, license
+        plates and similar (not depreciation, not lease or rent payments, not interest, not parking and tolls)'
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 7, Line 9, If you deduct actual expenses, "Include on line 9 the business portion of expenses for gasoline,
+          oil, repairs, insurance, license plates, etc."
+    - input: scveh.lease
+      prompt: For this vehicle — Your 2025 lease payments for this vehicle
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 8, Lines 20a and 20b, "enter on line 20a the business portion of your rental cost"
+    - input: scveh.placed
+      prompt: For this vehicle — The year you placed this vehicle in service in the business (2019 to 2025; a vehicle placed in
+        service earlier is outside this tool)
+      help: One of the values of placed_year.
+      order: 12
+      cite:
+        doc: i4562
+        locator: p. 14, Column (b)—Date placed in service
+    - input: scveh.screen
+      prompt: 'For this vehicle — Does any of these apply to this vehicle: you placed it in service before 2019; you claimed a
+        special depreciation allowance for it in an earlier year; you used the standard mileage rate for it in an earlier year;
+        you disposed of it in 2025; you acquired it in a trade-in or from a related person; its business use was 50% or less in
+        any earlier year; it is an electric vehicle placed in service before 2007; you reduced its basis by a clean-fuel deduction
+        or a vehicle credit; or you use it in your business of transporting persons or property for hire, or it is an ambulance
+        or hearse?'
+      help: Answer true or false.
+      order: 12
+      cite:
+        doc: i4562
+        locator: pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles; p946-html chapter 5, Deductions for
+          Passenger Automobiles Acquired in a Trade-In
+    - input: scveh.cost
+      prompt: For this vehicle — The vehicle's cost (including sales tax) or other basis, not reduced by any section 179 deduction
+        or depreciation
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: i4562
+        locator: p. 14, Column (d)—Cost or other basis
+    - input: scveh.passenger
+      prompt: 'For this vehicle — Is this a passenger automobile subject to the depreciation limits: a 4-wheeled vehicle made
+        mainly for public roads rated at 6,000 pounds unloaded gross vehicle weight or less (for a truck or van, 6,000 pounds
+        gross vehicle weight or less), and not a truck or van specially modified as a qualified nonpersonal use vehicle?'
+      help: Answer true or false.
+      order: 12
+      cite:
+        doc: i4562
+        locator: p. 14, Limits for passenger automobiles, "Passenger automobiles are 4-wheeled vehicles ..." and Exception
+    - input: scveh.suv
+      prompt: 'For this vehicle — If it is not subject to those limits: is it a 4-wheeled vehicle mainly designed or used to carry
+        passengers over public roads, rated at more than 6,000 and not more than 14,000 pounds gross vehicle weight, other than
+        one seating more than nine behind the driver, one with a cargo area of at least 6 feet not readily accessible from the
+        passenger compartment, or one with no seating behind the driver and no body section more than 30 inches ahead of the windshield?'
+      help: Answer true or false.
+      order: 12
+      cite:
+        doc: i4562
+        locator: p. 15, Column (i)—Elected section 179 cost, "You cannot elect to expense more than $31,300 of the cost of any
+          SUVs and certain other vehicles"
+    - input: scveh.s179_elect
+      prompt: For this vehicle — The amount of this vehicle's cost you elect to expense under section 179 (zero if none)
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: i4562
+        locator: p. 15, Column (i)—Elected section 179 cost
+    - input: scveh.after_jan19
+      prompt: For this vehicle — Did you acquire this vehicle after January 19, 2025?
+      help: Answer true or false.
+      order: 12
+      cite:
+        doc: i4562
+        locator: p. 13, Line 25, "certain qualified property acquired after January 19, 2025"
+    - input: scveh.bonus_choice
+      prompt: For this vehicle — For 5-year property placed in service in 2025, did you claim the special depreciation allowance
+        (full), elect the 40% allowance instead of 100% for property acquired after January 19, 2025 (forty), or elect not to
+        claim any special allowance (none)?
+      help: One of the values of bonus_choice.
+      order: 12
+      cite:
+        doc: i4562
+        locator: p. 13, Line 25; p. 7, Election out
+    - input: scveh.bonus_same
+      prompt: For this vehicle — Is that choice the same for all 5-year property (vehicles, computers and other 5-year property)
+        that you (and your spouse, on a joint return) placed in service in 2025?
+      help: Answer true or false.
+      order: 12
+      cite:
+        doc: i4562
+        locator: p. 7, Election out
+    - input: scveh.prior_179
+      prompt: For this vehicle — The section 179 deduction you claimed for this vehicle in the year you placed it in service (zero
+        if none)
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: p946-html
+        locator: Chapter 5, Depreciation Worksheet for Passenger Automobiles, line 14
+    - input: scveh.quarter
+      prompt: 'For this vehicle — The quarter of 2025 in which you placed this vehicle in service: January to March, April to
+        June, July to September, or October to December'
+      help: One of the values of quarter.
+      order: 12
+      cite:
+        doc: p946-html
+        locator: Chapter 4, Using the Applicable Convention, Mid-quarter convention
+    - input: scveh.prior_conv
+      prompt: 'For this vehicle — The convention used for this vehicle in the year you placed it in service: half-year, or mid-quarter
+        with the quarter placed in service'
+      help: One of the values of macrs_convention.
+      order: 12
+      cite:
+        doc: i4562
+        locator: p. 14, Column (g)—Method/convention
+    - input: asset.class
+      prompt: 'For this property — The asset class of this property: find the property in Pub. 946 Appendix B, Table B-1, and
+        the activity it is used in in Table B-2 (use the Table B-2 class when the property is specifically listed there under
+        your activity); or choose A (personal property with no class life), B (qualified technological equipment), C (property
+        used in research and experimentation), or qualified improvement property'
+      help: One of the values of asset_class.
+      order: 12
+      cite:
+        doc: p946-html
+        locator: Appendix B, How To Use the Tables; i4562 p. 10, Determining the classification
+    - input: asset.screen
+      prompt: 'For this property — Does any of these apply to this property: you disposed of it or converted it to personal use
+        in 2025; you acquired it in a like-kind exchange or an involuntary conversion, from a related person, or by gift or inheritance;
+        it is real property (a building or a structural component, other than qualified improvement property) or land; it is a
+        car, truck or other vehicle (enter vehicles separately); you depreciate it under ADS, under an elected straight line or
+        150% declining balance method, or by a method other than the MACRS percentage tables; its basis was adjusted for anything
+        other than depreciation (for example a casualty loss); it is in a general asset account; you amortize it; it is used predominantly
+        outside the United States, or is tax-exempt use or tax-exempt bond financed property; it was placed in service before
+        2005; its business use percentage has changed since you placed it in service; or it is property with a long production
+        period, an aircraft, or qualified production property?'
+      help: Answer true or false.
+      order: 12
+      cite:
+        doc: i4562
+        locator: pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p946-html chapter 4, Rules Covering the Use of the Tables
+    - input: asset.placed
+      prompt: For this property — The year you placed this property in service in the business (2005 to 2025)
+      help: One of the values of placed_year.
+      order: 12
+      cite:
+        doc: i4562
+        locator: p. 11, Column (b)—Month and year placed in service; p946-html chapter 4, the example of the third recovery year
+    - input: asset.cost
+      prompt: For this property — The cost or other basis of the property (what you paid, including sales tax, delivery and installation;
+        for property converted from personal use, the smaller of its adjusted basis or its fair market value on the date of conversion)
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: i4562
+        locator: p. 11, Column (c)—Basis for depreciation; p. 14, Column (d)—Cost or other basis
+    - input: asset.pct
+      prompt: For this property — The percentage of this property's use that is for this business (a whole number from 1 to 100)
+      help: A whole number.
+      order: 12
+      cite:
+        doc: i4562
+        locator: p. 11, Column (c)—Basis for depreciation, "multiply the cost or other basis of the property by the percentage
+          of business/investment use"
+    - input: asset.listed
+      prompt: 'For this property — Is this listed property: property used for entertainment or recreation (such as photographic,
+        phonographic, communication or video recording equipment) that is not used exclusively in your business or at your regular
+        business establishment, or a computer placed in service before 2018 that is not used exclusively at your regular business
+        establishment?'
+      help: Answer true or false.
+      order: 12
+      cite:
+        doc: i4562
+        locator: p. 2, Listed Property and its Exceptions; p. 13, Part V
+    - input: asset.quarter
+      prompt: 'For this property — The quarter of 2025 in which you placed this property in service: January to March, April to
+        June, July to September, or October to December'
+      help: One of the values of quarter.
+      order: 12
+      cite:
+        doc: p946-html
+        locator: Chapter 4, Using the Applicable Convention, Mid-quarter convention, "A calendar year is divided into the following
+          quarters"
+    - input: asset.s179
+      prompt: For this property — The amount of this property's cost you elect to expense under section 179 (zero if none; not
+        more than its business cost)
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: i4562
+        locator: p. 4, Line 6, Column (c)—Elected cost
+    - input: asset.after_jan19
+      prompt: For this property — Did you acquire this property after January 19, 2025?
+      help: Answer true or false.
+      order: 12
+      cite:
+        doc: i4562
+        locator: p. 5, Line 14, Certain qualified property acquired after January 19, 2025, and Certain qualified property acquired
+          after September 27, 2017, and before January 20, 2025
+    - input: asset.bonus_choice
+      prompt: For this property — For the class of property this belongs to (its recovery period), did you claim the special depreciation
+        allowance (full), elect the 40% allowance instead of 100% for property acquired after January 19, 2025 (forty), or elect
+        not to claim any special allowance (none)?
+      help: One of the values of bonus_choice.
+      order: 12
+      cite:
+        doc: i4562
+        locator: p. 5, Line 14, "you can elect to take a 40% special depreciation allowance"; p. 7, Election out, "for any class
+          of property"
+    - input: asset.bonus_same
+      prompt: For this property — Is that choice the same for all property in the same recovery period class that you (and your
+        spouse, on a joint return) placed in service in 2025?
+      help: Answer true or false.
+      order: 12
+      cite:
+        doc: i4562
+        locator: p. 7, Election out, "for any class of property, to not deduct any special depreciation allowance for all such
+          property in such class placed in service during the tax year"
+    - input: asset.prior_conv
+      prompt: 'For this property — The convention used for this property in the year you placed it in service: half-year, or mid-quarter
+        with the quarter placed in service'
+      help: One of the values of macrs_convention.
+      order: 12
+      cite:
+        doc: i4562
+        locator: p. 11, Column (e)—Convention; Line 17, "see the instructions for line 19, column (g)"
+    - input: asset.prior_179
+      prompt: For this property — The section 179 amount you elected for this property in the year you placed it in service (zero
+        if none)
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: p946-html
+        locator: Chapter 4, Figuring the Unadjusted Basis of Your Property, "you do reduce your original basis by ... Any section
+          179 deduction claimed"
+    - input: asset.prior_bonus
+      prompt: For this property — The special depreciation allowance claimed for this property in the year you placed it in service
+        (zero if none)
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: p946-html
+        locator: Chapter 4, Figuring the Unadjusted Basis of Your Property, "Any special depreciation allowance taken on the property"
+    - input: s179.line10
+      prompt: The carryover of disallowed section 179 deduction from line 13 of your (and, on a joint return, your spouse's) 2024
+        Form 4562 (zero if none)
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: i4562
+        locator: 'p. 4, Line 10, "If you filed Form 4562 for 2024, enter the amount from line 13 of your 2024 Form 4562" (owner:
+          the printed amount)'
+    - input: person.se_screen
+      prompt: 'For this person (you, or your spouse on a joint return) — Does any of these apply to this person: church employee
+        income (wages from a church that elected exemption from social security and Medicare taxes); being a minister, a member
+        of a religious order or a Christian Science practitioner, or having an approved Form 4361 or Form 4029; net earnings from
+        self-employment from a partnership (Schedule K-1, box 14, code A) or other self-employment income not on a Schedule C
+        (such as director''s fees, fiduciary fees, or fees as a fee-basis state or local government employee); farm income (Schedule
+        F) or Conservation Reserve Program payments; electing an optional method (Schedule SE Part II); a chapter 11 bankruptcy
+        case; community income on a separate return; self-employment income exempt under an international social security agreement
+        or earned as a U.S. citizen employed by a foreign government; or tips reported on Form 4137 or wages on Form 8919?'
+      help: Answer true or false.
+      order: 12
+      cite:
+        doc: i1040sse
+        locator: pp. 1-5, Who Must Pay Self-Employment (SE) Tax, Net Earnings From Self-Employment, Instructions for Part II;
+          f1040sse lines 1a, 1b, 5a, 8b and 8c
+    - input: $ltc
+      prompt: For this business — List one stable key for each person (you, your spouse, a dependent, or your child under age
+        27) covered by qualified long-term care insurance established under this business, or [] if none.
+      help: Enter a JSON array of distinct keys. Empty [] means none.
+      order: 12
+      cite:
+        doc: f7206
+        locator: Form 7206 (2025), line 2
+    - input: person.plan
+      prompt: For this person (you, or your spouse on a joint return) — Did you (this person) contribute for yourself, as a self-employed
+        person, to a SEP IRA (sep) or a SIMPLE IRA (simple) for 2025, or to neither (none)?
+      help: One of the values of retire_plan.
+      order: 12
+      cite:
+        doc: p560
+        locator: chapter 2, Simplified Employee Pension (SEP); chapter 3, SIMPLE IRA Plan; i1040gi Schedule 1, line 16
+    - input: person.plan_screen
+      prompt: 'For this person (you, or your spouse on a joint return) — Does any of these apply: a SARSEP; a SEP plan whose contribution
+        rate is not a whole percentage or is more than 25%; a SIMPLE IRA plan of an employer that allows the higher contribution
+        limits of section 117 of the SECURE 2.0 Act; contributions for yourself to more than one plan, or to a qualified plan
+        (such as a solo 401(k)); salary reduction contributions or elective deferrals to any other plan in 2025 (such as a 401(k)
+        or 403(b) through an employer); Roth SEP or Roth SIMPLE contributions; or contributions that are more than the maximum
+        deductible amount?'
+      help: Answer true or false.
+      order: 12
+      cite:
+        doc: p560
+        locator: chapter 2, Salary Reduction Simplified Employee Pension (SARSEP); chapter 3, Salary reduction contributions;
+          chapter 5, Caution, "apply only to self-employed individuals who have only one defined contribution plan"
+    - input: person.sep_rate
+      prompt: For this person (you, or your spouse on a joint return) — The contribution rate stated in your SEP plan, as a whole
+        percent (for example 10)
+      help: A whole number.
+      order: 12
+      cite:
+        doc: p560
+        locator: chapter 5, Rate Table for Self-Employed, "find your plan contribution rate (the contribution rate stated in your
+          plan)"
+    - input: person.sep_contrib
+      prompt: For this person (you, or your spouse on a joint return) — The contributions you made for yourself to your SEP IRA
+        for 2025 (by the due date of the return, including extensions)
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: p560
+        locator: 'chapter 2, Deduction Limit for Self-Employed Individuals; chapter 5, Deduction Worksheet for Self-Employed,
+          "Next: Enter your actual contribution"'
+    - input: person.simple_deferral
+      prompt: For this person (you, or your spouse on a joint return) — The salary reduction contributions you made for yourself
+        to your SIMPLE IRA for 2025, including any catch-up contributions
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: p560
+        locator: chapter 3, Salary reduction contributions and Catch-up contributions
+    - input: person.simple_age
+      prompt: 'For this person (you, or your spouse on a joint return) — Your age at the end of 2025 for SIMPLE catch-up contributions:
+        under 50 (under50), 50 to 59 or 64 and over (age50), or 60, 61, 62 or 63 (age60_63)'
+      help: One of the values of catchup_age.
+      order: 12
+      cite:
+        doc: p560
+        locator: chapter 3, Catch-up contributions, "age 50 or over at the end of the calendar year" and "in a tax year in which
+          they attain age 60, 61, 62, or 63"
+    - input: person.simple_kind
+      prompt: 'For this person (you, or your spouse on a joint return) — The employer contribution formula of your SIMPLE IRA
+        plan for 2025: matching contributions (match) or 2% nonelective contributions (nonelective)'
+      help: One of the values of simple_formula.
+      order: 12
+      cite:
+        doc: p560
+        locator: chapter 3, Employer matching contributions and Nonelective contributions
+    - input: person.simple_employer
+      prompt: For this person (you, or your spouse on a joint return) — The employer matching or nonelective contributions you
+        made for yourself to your SIMPLE IRA for 2025
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: p560
+        locator: chapter 3, Employer matching contributions and Nonelective contributions
+    - input: sc.hi_uses
+      prompt: 'For this business — Did you pay for health insurance for 2025 (for you, your spouse, your dependents, or your child
+        under age 27 at the end of 2025) that is established under this business: a policy in the name of the business or in your
+        own name?'
+      help: Answer true or false.
+      order: 12
+      cite:
+        doc: i1040gi
+        locator: Schedule 1, line 17, "The insurance plan must be established under your business ... the policy can be either
+          in your name or in the name of the business"
+    - input: sc.hi_screen
+      prompt: 'For this business — Does any of these apply: the insurance was obtained through the Marketplace and advance payments
+        of the premium tax credit were made or you are claiming the premium tax credit; you file Form 2555; you were a more-than-2%
+        shareholder of an S corporation; you used an optional method for net earnings from self-employment; or you are a retired
+        public safety officer who paid premiums from retirement plan distributions?'
+      help: Answer true or false.
+      order: 12
+      cite:
+        doc: i1040gi
+        locator: Schedule 1, line 17, Exceptions, "Use Pub. 974 instead of the worksheet ... if the insurance plan ... was obtained
+          through the Marketplace, and advance payments of the premium tax credit were made or you are claiming the premium tax
+          credit"; i7206
+    - input: sc.f7206_line1
+      prompt: For this business — The total you paid in 2025 for health insurance coverage (medical, dental and vision; including
+        Medicare premiums you paid voluntarily) established under this business for you, your spouse and your dependents, and
+        your child under age 27 at the end of 2025; but not amounts for any month you were eligible to participate in a health
+        plan subsidized by your employer or your spouse's employer (or the employer of your dependent or of your child under age
+        27), and not long-term care insurance
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: f7206
+        locator: Form 7206 (2025), line 1
+    - input: ltc.payments
+      prompt: For this person covered by long-term care insurance — The qualified long-term care insurance premiums paid in 2025
+        for this person under a policy established under this business (not for any month the person was eligible for a long-term
+        care plan subsidized by an employer)
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: f7206
+        locator: Form 7206 (2025), line 2(a)
+    - input: ltc.age
+      prompt: 'For this person covered by long-term care insurance — This person''s age at the end of 2025: 40 or younger (to40),
+        41 to 50 (to50), 51 to 60 (to60), 61 to 70 (to70), or 71 or older (over70)'
+      help: One of the values of ltc_age.
+      order: 12
+      cite:
+        doc: f7206
+        locator: Form 7206 (2025), line 2(b), "Use the person's age at the end of the tax year"
+    - input: qbi.carryforward
+      prompt: The qualified business loss carryforward from line 16 of your 2024 Form 8995 (or the corresponding line of your
+        2024 Form 8995-A), entered as a positive amount (zero if none)
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: i8995
+        locator: 'Line 3, "enter the amount from line 16 of your 2024 Form 8995" (owner: the printed amount)'
+    - input: sc.tips_ot
+      prompt: For this business — Does this business's income include qualified tips you received in the course of this business,
+        or qualified overtime compensation reported to you on Form 1099-NEC or 1099-MISC, that you would deduct on Schedule 1-A?
+      help: Answer true or false.
+      order: 12
+      cite:
+        doc: i1040gi
+        locator: p. 104, Schedule 1-A, line 5, "qualified tips received in the course of a trade or business"; p. 108, line 14b
+    - input: carloan.col_ii_input
+      prompt: For this vehicle loan — The part of this loan's 2025 interest you deduct on Schedule C (the business use of the
+        vehicle; zero if none)
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: i1040gi
+        locator: p. 110, Schedule 1-A, line 22, column (ii), "Enter the amount of the QPVLI ... that you deducted on Schedule
+          C, E, or F"; i1040sc p. 6, Line 9 caution

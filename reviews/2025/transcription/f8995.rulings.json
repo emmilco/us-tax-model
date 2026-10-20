@@ -1,0 +1,12 @@
+{
+ "kind": "transcription",
+ "form": "f8995",
+ "rulings": [
+  {
+   "printed": "16",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": 0}, {\"of\": [{\"line\": \"2\"}, {\"line\": \"3\"}], \"op\": \"sum\"}], \"test\": \"le\"}, \"then\": {\"param\": \"sales.zero\"}}, {\"guard\": {\"args\": [{\"of\": [{\"line\": \"2\"}, {\"line\": \"3\"}], \"op\": \"sum\"}, {\"const\": 0}], \"test\": \"lt\"}, \"then\": {\"of\": [{\"line\": \"2\"}, {\"line\": \"3\"}], \"op\": \"sum\"}}], \"op\": \"choose\"}",
+   "second": "{\"of\": [{\"of\": [{\"line\": \"2\"}, {\"line\": \"3\"}], \"op\": \"sum\"}, {\"param\": \"sales.zero\"}], \"op\": \"smaller_of\"}",
+   "ruling": "Ruling: equivalent; project retained. Both enter the combination of lines 2 and 3 when it is less than zero and zero otherwise ('If greater than zero, enter -0-', f8995 line 16): the project as a choose on the sign, the second as the smaller of the sum and zero."
+  }
+ ]
+}

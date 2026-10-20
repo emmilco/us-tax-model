@@ -7,9 +7,9 @@ Second transcription of `Schedule 1-A (Form 1040) — Additional Deductions` by 
 | date | 2026-10-19 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 1b20984030f18e3f7769d72cf668a4f55dd93fa551d55cd9306ff446351c7e8a |
+| prompt sha256 | eb98091d1d930b295524d13c99e284a0b02586640b44c8ce59e9ef766a891e1a |
 | printed lines compared | 43 |
-| agree / disagree / missing | 9 / 34 / 0 |
+| agree / disagree / missing | 10 / 33 / 0 |
 | extra printed lines in second | none |
 
 ## Source pages given to the model
@@ -54,12 +54,12 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"collection": "person", "field": "person.tip_employers", "op": "sum_over", "where": null}, {"const": 1}], "test": "le"}, "then": {"collection": "person", "field": "person.tip_reported", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 1}, {"collection": "person", "field": "person.tip_employers", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "s1a.tips"}], "test": "eq"}, {"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}, {"args": [{"const": 1}, {"collection": "person", "field": "person.tip_employers", "op": "sum_over", "where": null}], "test": "eq"}, {"args": [{"const": 1}, {"collection": "person", "field": "person.tip_employers", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.work_ssn"}], "test": "eq"}}], "test": "eq"}], "test": "all"}, "then": {"collection": "person", "field": "person.tip_reported", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.work_ssn"}], "test": "eq"}}}, {"guard": {"args": [{"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "s1a.tips"}], "test": "ne"}], "test": "any"}, {"args": [{"const": 1}, {"collection": "person", "field": "person.tip_employers", "op": "sum_over", "where": null}], "test": "ne"}, {"args": [{"const": 1}, {"collection": "person", "field": "person.tip_employers", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.work_ssn"}], "test": "eq"}}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Second transcription's note: The form says to enter -0- on lines 4a and 4b when there is more than one employer. The employer count is taken across you and your spouse, following the line 4c instructions. The amount uses the per-employer column (b) amount, which covers the W-2 box 7 or Form 4070 methods in the instructions.
+Second transcription's note: Open: how the one-employer case is detected with two people on the return. Chosen: the one-employer route applies only when exactly one employer paid tips to anyone on the return and that recipient has a valid SSN. Otherwise line 4a is -0- and line 4c comes from the More Than One Employer Worksheet, as the form directs for multiple employers. Both routes give the same line 4c.
 
-Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading in Stage 12); the second figures the line whether or not the part applies. The Stage 13 conditions are those of the instructions: Part II and Part III need 'a valid social security number (SSN). If you are married filing a joint return, the spouse who received the qualified tips [overtime] must have a valid SSN' (i1040gi p. 101; p. 106), Part V 'the spouse who is claiming the enhanced deduction for seniors' (p. 110). The project also counts only the tips or overtime of a person with a valid SSN ('the spouse who received ... must have a valid SSN'); the second sums every person's.
+Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading in Stage 12); the second figures the line whether or not the part applies. The Stage 13 conditions are those of the instructions (i1040gi p. 101; p. 106; p. 110). Stage 14 adds no condition here; Schedule C tips and overtime are refused through s1.sc_1a. The project also counts only the tips of a person with a valid SSN ('the spouse who received ... must have a valid SSN'); the second sums every person's.
 
 ### 4b — Qualified tips included on Form 4137, line 1, row A, column (c). If Form 4137 is not filed
 Status: **DISAGREE**
@@ -73,10 +73,10 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"collection": "person", "field": "person.tip_employers", "op": "sum_over", "where": null}, {"const": 1}], "test": "le"}, "then": {"collection": "tipjob", "field": "tipjob.col_c", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 1}, {"collection": "person", "field": "person.tip_employers", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "s1a.tips"}], "test": "eq"}, {"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}, {"args": [{"const": 1}, {"collection": "person", "field": "person.tip_employers", "op": "sum_over", "where": null}], "test": "eq"}, {"args": [{"const": 1}, {"collection": "person", "field": "person.tip_employers", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.work_ssn"}], "test": "eq"}}], "test": "eq"}], "test": "all"}, "then": {"collection": "tipjob", "field": "tipjob.col_c", "op": "sum_over", "where": null}}, {"guard": {"args": [{"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "s1a.tips"}], "test": "ne"}], "test": "any"}, {"args": [{"const": 1}, {"collection": "person", "field": "person.tip_employers", "op": "sum_over", "where": null}], "test": "ne"}, {"args": [{"const": 1}, {"collection": "person", "field": "person.tip_employers", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.work_ssn"}], "test": "eq"}}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Ruling: refusal representation; project retained. The line is $0 within scope and carries its own refusal for the forms it would come from (Form 4137 through s2.other; a trade or business, Forms 1099-NEC, 1099-MISC or 1099-K, through scope.schedule1), as ruled in Stage 12 (BUG-0043); the second figures the refused amount, or zero without the refusal.
+Ruling: refusal representation; project retained. The line is $0 within scope and carries its own refusal for the form it would come from (Form 4137, through s2.other), as ruled in Stage 12 (BUG-0043); tips earned in a trade or business are refused on line 5 (scope.schedule1 and, from Stage 14, s1.sc_1a for a Schedule C). The second figures the refused amount, or zero without the refusal.
 
 ### 4c — If you only received qualified tips as an employee with respect to employment with one emp
 Status: **DISAGREE**
@@ -90,12 +90,12 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"collection": "person", "field": "person.tip_employers", "op": "sum_over", "where": null}, {"const": 1}], "test": "le"}, "then": {"of": [{"line": "4a"}, {"line": "4b"}], "op": "larger_of"}}, {"guard": {"args": [{"const": 1}, {"collection": "person", "field": "person.tip_employers", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"collection": "person", "field": "person.tip_total", "op": "sum_over", "where": null}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "s1a.tips"}], "test": "eq"}, {"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "s1a.tips"}], "test": "ne"}], "test": "any"}, {"args": [{"const": 1}, {"collection": "person", "field": "person.tip_employers", "op": "sum_over", "where": null}], "test": "ne"}, {"args": [{"const": 1}, {"collection": "person", "field": "person.tip_employers", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.work_ssn"}], "test": "eq"}}], "test": "ne"}], "test": "any"}], "test": "all"}, "then": {"collection": "person", "field": "person.tip_total", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.work_ssn"}], "test": "eq"}}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "s1a.tips"}], "test": "eq"}, {"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}, {"args": [{"const": 1}, {"collection": "person", "field": "person.tip_employers", "op": "sum_over", "where": null}], "test": "eq"}, {"args": [{"const": 1}, {"collection": "person", "field": "person.tip_employers", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.work_ssn"}], "test": "eq"}}], "test": "eq"}], "test": "all"}, "then": {"of": [{"line": "4a"}, {"line": "4b"}], "op": "larger_of"}}, {"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "s1a.tips"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Second transcription's note: The instructions for tips received in more than one occupation are not encoded. Only tips from listed occupations are expected in the tipjob entries.
+Second transcription's note: Tips of a person without a valid SSN (valid for employment, issued before the due date) are excluded. The text says the spouse who received the tips must have one. Married filing separately gives zero, since married filers must file jointly to claim this deduction.
 
-Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading in Stage 12); the second figures the line whether or not the part applies. The Stage 13 conditions are those of the instructions: Part II and Part III need 'a valid social security number (SSN). If you are married filing a joint return, the spouse who received the qualified tips [overtime] must have a valid SSN' (i1040gi p. 101; p. 106), Part V 'the spouse who is claiming the enhanced deduction for seniors' (p. 110). The project also counts only the tips or overtime of a person with a valid SSN ('the spouse who received ... must have a valid SSN'); the second sums every person's.
+Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading in Stage 12); the second figures the line whether or not the part applies. The Stage 13 conditions are those of the instructions (i1040gi p. 101; p. 106; p. 110). Stage 14 adds no condition here; Schedule C tips and overtime are refused through s1.sc_1a.
 
 ### 5 — Qualified tips received in the course of a trade or business
 Status: **DISAGREE**
@@ -111,8 +111,6 @@ Second:
 ```json
 {"const": 0}
 ```
-
-Second transcription's note: Tips from a trade or business (Forms 1099-NEC, 1099-MISC, 1099-K, with the net income limitation) are outside the supported income scope. The tool computes only the case with none and refuses otherwise.
 
 Ruling: refusal representation; project retained. The line is $0 within scope and carries its own refusal for the forms it would come from (Form 4137 through s2.other; a trade or business, Forms 1099-NEC, 1099-MISC or 1099-K, through scope.schedule1), as ruled in Stage 12 (BUG-0043); the second figures the refused amount, or zero without the refusal.
 
@@ -213,10 +211,10 @@ Project:
 Second:
 
 ```json
-{"amount": {"of": {"line": "10"}, "op": "round", "rule": "down", "unit": 100000}, "op": "multiply_rate", "rate": {"param": "s1a.hundred_per_thousand"}}
+{"amount": {"of": {"from": {"line": "8"}, "op": "subtract_floor0", "take": {"line": "9"}}, "op": "round", "rule": "down", "unit": 100000}, "op": "multiply_rate", "rate": {"param": "s1a.hundred_per_thousand"}}
 ```
 
-Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading in Stage 12); the second figures the line whether or not the part applies. The Stage 13 conditions are those of the instructions: Part II and Part III need 'a valid social security number (SSN). If you are married filing a joint return, the spouse who received the qualified tips [overtime] must have a valid SSN' (i1040gi p. 101; p. 106), Part V 'the spouse who is claiming the enhanced deduction for seniors' (p. 110).
+Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading in Stage 12); the second figures the line whether or not the part applies. The Stage 13 conditions are those of the instructions (i1040gi p. 101; p. 106; p. 110). Stage 14 adds no condition here; Schedule C tips and overtime are refused through s1.sc_1a.
 
 ### 13 — Qualified tips deduction. Subtract line 12 from line 7. If zero or less, enter -0-
 Status: **DISAGREE**
@@ -230,10 +228,12 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "s1a.tips"}], "test": "eq"}, {"args": [{"const": 0}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.work_ssn"}], "test": "eq"}}], "test": "lt"}, {"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}, {"args": [{"line": "10"}, {"const": 0}], "test": "le"}], "test": "all"}, "then": {"line": "7"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "s1a.tips"}], "test": "eq"}, {"args": [{"const": 0}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.work_ssn"}], "test": "eq"}}], "test": "lt"}, {"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}, {"args": [{"const": 0}, {"line": "10"}], "test": "lt"}], "test": "all"}, "then": {"from": {"line": "7"}, "op": "subtract_floor0", "take": {"line": "12"}}}, {"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.work_ssn"}], "test": "eq"}}, {"const": 0}], "test": "le"}, {"args": [{"const": true}, {"input": "s1a.tips"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
+{"from": {"line": "7"}, "op": "subtract_floor0", "take": {"line": "12"}}
 ```
 
-Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading in Stage 12); the second figures the line whether or not the part applies. The Stage 13 conditions are those of the instructions: Part II and Part III need 'a valid social security number (SSN). If you are married filing a joint return, the spouse who received the qualified tips [overtime] must have a valid SSN' (i1040gi p. 101; p. 106), Part V 'the spouse who is claiming the enhanced deduction for seniors' (p. 110).
+Second transcription's note: When line 10 is zero or less, lines 11 and 12 are zero here, so this gives line 7, as the line 10 instruction directs.
+
+Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading in Stage 12); the second figures the line whether or not the part applies. The Stage 13 conditions are those of the instructions (i1040gi p. 101; p. 106; p. 110). Stage 14 adds no condition here; Schedule C tips and overtime are refused through s1.sc_1a.
 
 ### 14a — Qualified overtime compensation included in Form W-2, box 1. If you received qualified ove
 Status: **DISAGREE**
@@ -247,12 +247,12 @@ Project:
 Second:
 
 ```json
-{"collection": "person", "field": "person.ot_total", "op": "sum_over", "where": null}
+{"alternatives": [{"guard": {"args": [{"args": [{"const": true}, {"input": "s1a.overtime"}], "test": "eq"}, {"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}, "then": {"collection": "person", "field": "person.ot_total", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.work_ssn"}], "test": "eq"}}}, {"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "s1a.overtime"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Second transcription's note: Uses the More Than One Employer Worksheet column (b) total for every case. With one employer this is that employer's amount. Qualified overtime not reported in W-2 box 1 (for example, deferred amounts) has no supported input and is not encoded.
+Second transcription's note: Open: qualified overtime not included in Form W-2, box 1 (for example, deferred amounts). No input or screen for it is provided, so only the worksheet column (b) amounts are entered.
 
-Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading in Stage 12); the second figures the line whether or not the part applies. The Stage 13 conditions are those of the instructions: Part II and Part III need 'a valid social security number (SSN). If you are married filing a joint return, the spouse who received the qualified tips [overtime] must have a valid SSN' (i1040gi p. 101; p. 106), Part V 'the spouse who is claiming the enhanced deduction for seniors' (p. 110). The project also counts only the tips or overtime of a person with a valid SSN ('the spouse who received ... must have a valid SSN'); the second sums every person's.
+Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading in Stage 12); the second figures the line whether or not the part applies. The Stage 13 conditions are those of the instructions (i1040gi p. 101; p. 106; p. 110). Stage 14 adds no condition here; Schedule C tips and overtime are refused through s1.sc_1a.
 
 ### 14b — Qualified overtime compensation included in Form 1099-NEC, box 1, or Form 1099-MISC, box 3
 Status: **DISAGREE**
@@ -368,10 +368,10 @@ Project:
 Second:
 
 ```json
-{"amount": {"of": {"line": "18"}, "op": "round", "rule": "down", "unit": 100000}, "op": "multiply_rate", "rate": {"param": "s1a.hundred_per_thousand"}}
+{"amount": {"of": {"from": {"line": "16"}, "op": "subtract_floor0", "take": {"line": "17"}}, "op": "round", "rule": "down", "unit": 100000}, "op": "multiply_rate", "rate": {"param": "s1a.hundred_per_thousand"}}
 ```
 
-Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading in Stage 12); the second figures the line whether or not the part applies. The Stage 13 conditions are those of the instructions: Part II and Part III need 'a valid social security number (SSN). If you are married filing a joint return, the spouse who received the qualified tips [overtime] must have a valid SSN' (i1040gi p. 101; p. 106), Part V 'the spouse who is claiming the enhanced deduction for seniors' (p. 110).
+Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading in Stage 12); the second figures the line whether or not the part applies. The Stage 13 conditions are those of the instructions (i1040gi p. 101; p. 106; p. 110). Stage 14 adds no condition here; Schedule C tips and overtime are refused through s1.sc_1a.
 
 ### 21 — Qualified overtime compensation deduction. Subtract line 20 from line 15. If zero or less,
 Status: **DISAGREE**
@@ -385,29 +385,13 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "s1a.overtime"}], "test": "eq"}, {"args": [{"const": 0}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.work_ssn"}], "test": "eq"}}], "test": "lt"}, {"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}, {"args": [{"line": "18"}, {"const": 0}], "test": "le"}], "test": "all"}, "then": {"line": "15"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "s1a.overtime"}], "test": "eq"}, {"args": [{"const": 0}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.work_ssn"}], "test": "eq"}}], "test": "lt"}, {"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}, {"args": [{"const": 0}, {"line": "18"}], "test": "lt"}], "test": "all"}, "then": {"from": {"line": "15"}, "op": "subtract_floor0", "take": {"line": "20"}}}, {"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.work_ssn"}], "test": "eq"}}, {"const": 0}], "test": "le"}, {"args": [{"const": true}, {"input": "s1a.overtime"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
+{"from": {"line": "15"}, "op": "subtract_floor0", "take": {"line": "20"}}
 ```
 
-Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading in Stage 12); the second figures the line whether or not the part applies. The Stage 13 conditions are those of the instructions: Part II and Part III need 'a valid social security number (SSN). If you are married filing a joint return, the spouse who received the qualified tips [overtime] must have a valid SSN' (i1040gi p. 101; p. 106), Part V 'the spouse who is claiming the enhanced deduction for seniors' (p. 110).
+Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading in Stage 12); the second figures the line whether or not the part applies. The Stage 13 conditions are those of the instructions (i1040gi p. 101; p. 106; p. 110). Stage 14 adds no condition here; Schedule C tips and overtime are refused through s1.sc_1a.
 
 ### 23 — Add lines 22a and 22b, column (iii)
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"alternatives": [{"guard": {"args": [{"const": false}, {"input": "s1a.carloan"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"input": "s1a.carloan"}], "test": "eq"}, "then": {"collection": "carloan", "field": "carloan.col_iii", "op": "sum_over", "where": null}}], "op": "choose"}
-```
-
-Second:
-
-```json
-{"collection": "carloan", "field": "carloan.col_iii", "op": "sum_over", "where": null}
-```
-
-Second transcription's note: Column (iii) is summed over all loan entries, which also covers more than two VINs reported on an attached statement. Column (ii), interest deducted on Schedule C, E or F, is outside the supported scope.
-
-Ruling: owner's ruling; project retained. Part IV's printed lines are $0 unless qualified passenger vehicle loan interest was paid or accrued (s1a.carloan; Schedule 1-A, 'Fill out Part IV only if', i1040gi p. 109); the second figures them whether or not Part IV applies. Part IV has no joint-filing or SSN condition in either.
+Status: **AGREE**
 
 ### 24 — Enter the smaller of the amount on line 23 or $10,000
 Status: **DISAGREE**
@@ -489,10 +473,10 @@ Project:
 Second:
 
 ```json
-{"amount": {"of": {"line": "27"}, "op": "round", "rule": "up", "unit": 100000}, "op": "multiply_rate", "rate": {"param": "s1a.two_hundred_per_thousand"}}
+{"amount": {"of": {"from": {"line": "25"}, "op": "subtract_floor0", "take": {"line": "26"}}, "op": "round", "rule": "up", "unit": 100000}, "op": "multiply_rate", "rate": {"param": "s1a.two_hundred_per_thousand"}}
 ```
 
-Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line whether or not the part applies. Where the part applies the two agree: class M agreed on all 344 values of 8 cases on this encoding.
+Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading in Stage 12); the second figures the line whether or not the part applies. The Stage 13 conditions are those of the instructions (i1040gi p. 101; p. 106; p. 110). Stage 14 adds no condition here; Schedule C tips and overtime are refused through s1.sc_1a.
 
 ### 30 — Qualified passenger vehicle loan interest deduction. Subtract line 29 from line 24. If zer
 Status: **DISAGREE**
@@ -506,12 +490,12 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"const": true}, {"input": "s1a.carloan"}], "test": "eq"}, {"args": [{"line": "27"}, {"const": 0}], "test": "le"}], "test": "all"}, "then": {"line": "24"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "s1a.carloan"}], "test": "eq"}, {"args": [{"const": 0}, {"line": "27"}], "test": "lt"}], "test": "all"}, "then": {"from": {"line": "24"}, "op": "subtract_floor0", "take": {"line": "29"}}}, {"guard": {"args": [{"const": false}, {"input": "s1a.carloan"}], "test": "eq"}, "then": {"const": 0}}], "op": "choose"}
+{"from": {"line": "24"}, "op": "subtract_floor0", "take": {"line": "29"}}
 ```
 
-Second transcription's note: The text for Part IV states no joint-filing or SSN requirement, so none is encoded. Part IV is filled out only if QPVLI was paid or accrued (s1a.carloan).
+Second transcription's note: When line 27 is zero or less, lines 28 and 29 are zero, so this gives line 24, as the line 27 instruction directs.
 
-Ruling: owner's ruling; project retained. Part IV's printed lines are $0 unless qualified passenger vehicle loan interest was paid or accrued (s1a.carloan; Schedule 1-A, 'Fill out Part IV only if', i1040gi p. 109); the second figures them whether or not Part IV applies. Part IV has no joint-filing or SSN condition in either.
+Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading in Stage 12); the second figures the line whether or not the part applies. The Stage 13 conditions are those of the instructions (i1040gi p. 101; p. 106; p. 110). Stage 14 adds no condition here; Schedule C tips and overtime are refused through s1.sc_1a. Part IV has no joint-filing or SSN condition in either.
 
 ### 31 — Enter the amount from line 3
 Status: **DISAGREE**
@@ -576,10 +560,10 @@ Project:
 Second:
 
 ```json
-{"amount": {"line": "33"}, "op": "multiply_rate", "rate": {"param": "s1a.senior_rate"}}
+{"amount": {"from": {"line": "31"}, "op": "subtract_floor0", "take": {"line": "32"}}, "op": "multiply_rate", "rate": {"param": "s1a.senior_rate"}}
 ```
 
-Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading in Stage 12); the second figures the line whether or not the part applies. The Stage 13 conditions are those of the instructions: Part II and Part III need 'a valid social security number (SSN). If you are married filing a joint return, the spouse who received the qualified tips [overtime] must have a valid SSN' (i1040gi p. 101; p. 106), Part V 'the spouse who is claiming the enhanced deduction for seniors' (p. 110).
+Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading in Stage 12); the second figures the line whether or not the part applies. The Stage 13 conditions are those of the instructions (i1040gi p. 101; p. 106; p. 110). Stage 14 adds no condition here; Schedule C tips and overtime are refused through s1.sc_1a.
 
 ### 35 — Subtract line 34 from $6,000. If zero or less, enter -0-
 Status: **DISAGREE**
@@ -593,10 +577,12 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"line": "33"}, {"const": 0}], "test": "le"}, "then": {"param": "s1a.senior_amount"}}, {"guard": {"args": [{"const": 0}, {"line": "33"}], "test": "lt"}, "then": {"from": {"param": "s1a.senior_amount"}, "op": "subtract_floor0", "take": {"line": "34"}}}], "op": "choose"}
+{"from": {"param": "s1a.senior_amount"}, "op": "subtract_floor0", "take": {"line": "34"}}
 ```
 
-Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading in Stage 12); the second figures the line whether or not the part applies. The Stage 13 conditions are those of the instructions: Part II and Part III need 'a valid social security number (SSN). If you are married filing a joint return, the spouse who received the qualified tips [overtime] must have a valid SSN' (i1040gi p. 101; p. 106), Part V 'the spouse who is claiming the enhanced deduction for seniors' (p. 110).
+Second transcription's note: When line 33 is zero or less, line 34 is zero, so line 35 is $6,000, as the line 33 instruction directs.
+
+Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading in Stage 12); the second figures the line whether or not the part applies. The Stage 13 conditions are those of the instructions (i1040gi p. 101; p. 106; p. 110). Stage 14 adds no condition here; Schedule C tips and overtime are refused through s1.sc_1a.
 
 ### 36a — If you have a valid social security number (see instructions) and were born before January
 Status: **DISAGREE**
@@ -613,7 +599,7 @@ Second:
 {"alternatives": [{"guard": {"args": [{"args": [{"const": 1}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": "taxpayer"}, {"ref": "person.role"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "person.died_before_65"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.age65"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.work_ssn"}], "test": "eq"}], "test": "all"}}], "test": "le"}, {"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}, "then": {"line": "35"}}, {"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": "taxpayer"}, {"ref": "person.role"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "person.died_before_65"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.age65"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.work_ssn"}], "test": "eq"}], "test": "all"}}, {"const": 1}], "test": "lt"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Second transcription's note: The Part V caution says 'If married, you must file jointly to claim this deduction.' This is encoded as no amount for married filing separately.
+Second transcription's note: Valid SSN is read as person.work_ssn (valid for employment, issued before the due date). Married filing separately gives zero, since married filers must file jointly. A taxpayer born before January 2, 1961 who died in 2025 before reaching age 65 does not qualify.
 
 Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading in Stage 12); the second figures the line whether or not the part applies. The Stage 13 conditions are those of the instructions: Part II and Part III need 'a valid social security number (SSN). If you are married filing a joint return, the spouse who received the qualified tips [overtime] must have a valid SSN' (i1040gi p. 101; p. 106), Part V 'the spouse who is claiming the enhanced deduction for seniors' (p. 110). The second gives $0 for a person born before January 2, 1961, who died in 2025 before reaching age 65; the project refuses that case (owner's ruling, Stage 12; i1040gi p. 110, Death of a taxpayer in 2025), for each spouse separately.
 
@@ -652,21 +638,20 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 | 2d | sa.excluded_income | sa.excluded_income |
 | 2e | sa.excluded_income | - |
 | 3 | sa.excluded_income | - |
-| 5 | scope.other_income | scope.other_income |
-| 6 | scope.other_income | scope.other_income |
-| 7 | scope.other_income | scope.other_income |
+| 5 | s1.sc_1a | - |
+| 6 | s1.sc_1a | - |
+| 7 | s1.sc_1a | - |
 | 8 | sa.excluded_income | - |
 | 10 | sa.excluded_income | - |
-| 13 | sa.excluded_income, scope.other_income | - |
-| 14b | scope.other_income | scope.other_income |
-| 14c | scope.other_income | scope.other_income |
-| 15 | scope.other_income | scope.other_income |
+| 13 | s1.sc_1a | - |
+| 14b | s1.sc_1a | - |
+| 14c | s1.sc_1a | - |
+| 15 | s1.sc_1a | - |
 | 16 | sa.excluded_income | - |
 | 18 | sa.excluded_income | - |
-| 21 | sa.excluded_income, scope.other_income | - |
+| 21 | s1.sc_1a | - |
 | 25 | sa.excluded_income | - |
 | 27 | sa.excluded_income | - |
-| 30 | sa.excluded_income | - |
 | 31 | sa.excluded_income | - |
 | 33 | sa.excluded_income | - |
 | 34 | sa.excluded_income | - |
@@ -674,7 +659,7 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 | 36a | sa.excluded_income | - |
 | 36b | sa.excluded_income | - |
 | 37 | sa.excluded_income | - |
-| 38 | sa.excluded_income, scope.other_income | - |
+| 38 | s1.sc_1a, sa.excluded_income | - |
 
 ## Raw second transcription
 
@@ -683,7 +668,7 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 lines:
   - id: s1a.h_zero
     printed: "(helper)"
-    label: "Zero amount (year parameter sales.zero)"
+    label: "Zero"
     type: NonNegDollars
     expr: {op: param, ref: sales.zero}
 
@@ -733,30 +718,69 @@ lines:
     type: Dollars
     expr: {op: sum, of: [s1a.line1, s1a.line2e]}
 
-  - id: s1a.h_tip_employers
+  # ---- Part II helpers ----
+  - id: s1a.h_tip_ok
     printed: "(helper)"
-    label: "Number of employers that paid you (and your spouse) qualified tips as employees"
+    label: "Received qualified tips and not married filing separately (if married, you must file jointly to claim this deduction)"
+    type: Bool
+    expr:
+      op: test
+      all:
+        - {op: test, eq: [s1a.tips, {const: true}]}
+        - {op: test, ne: [f1040.status, {const: "mfs"}]}
+
+  - id: s1a.h_tip_emp_valid
+    printed: "(helper)"
+    label: "Number of employers paying qualified tips to persons with a valid SSN"
+    type: Count
+    expr:
+      op: sum_over
+      collection: person
+      field: person.tip_employers
+      where: {op: test, eq: [person.work_ssn, {const: true}]}
+
+  - id: s1a.h_tip_emp_all
+    printed: "(helper)"
+    label: "Number of employers paying qualified tips to anyone on the return"
     type: Count
     expr: {op: sum_over, collection: person, field: person.tip_employers}
 
-  - id: s1a.h_tip_reported
+  - id: s1a.h_tip_single
     printed: "(helper)"
-    label: "Qualified tips reported on Form W-2 box 7 (or Forms 4070), worksheet column (b) total"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: person, field: person.tip_reported}
+    label: "Qualified tips as an employee from only one employer (and the recipient has a valid SSN)"
+    type: Bool
+    expr:
+      op: test
+      all:
+        - {op: test, eq: [s1a.h_tip_ok, {const: true}]}
+        - {op: test, eq: [s1a.h_tip_emp_valid, {param: person.one}]}
+        - {op: test, eq: [s1a.h_tip_emp_all, {param: person.one}]}
 
-  - id: s1a.h_tip_col_c
+  - id: s1a.h_tip_multi
     printed: "(helper)"
-    label: "Qualified tips included on Form 4137, line 1, column (c), all employers"
+    label: "Qualified tips claimed, but not the one-employer case (worksheet applies)"
+    type: Bool
+    expr:
+      op: test
+      all:
+        - {op: test, eq: [s1a.h_tip_ok, {const: true}]}
+        - {op: test, eq: [s1a.h_tip_single, {const: false}]}
+
+  - id: s1a.h_tip_4a_amt
+    printed: "(helper)"
+    label: "Qualified tips reported by the one employer (Form W-2, box 7, or Forms 4070)"
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: person
+      field: person.tip_reported
+      where: {op: test, eq: [person.work_ssn, {const: true}]}
+
+  - id: s1a.h_tip_4b_amt
+    printed: "(helper)"
+    label: "Qualified tips on Form 4137, column 1(c), for the one employer"
     type: NonNegDollars
     expr: {op: sum_over, collection: tipjob, field: tipjob.col_c}
-    note: "No person-level column (c) total exists, so the nested tipjob collection is summed across all person entries directly. Used only when there is at most one employer."
-
-  - id: s1a.h_tip_worksheet
-    printed: "(helper)"
-    label: "Qualified Tips From More Than One Employer Worksheet, line 2 (column (d) total)"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: person, field: person.tip_total}
 
   - id: s1a.line4a
     printed: "4a"
@@ -765,11 +789,9 @@ lines:
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, le: [s1a.h_tip_employers, {param: person.one}]}
-          then: s1a.h_tip_reported
-        - guard: {op: test, gt: [s1a.h_tip_employers, {param: person.one}]}
-          then: s1a.h_zero
-    note: "The form says to enter -0- on lines 4a and 4b when there is more than one employer. The employer count is taken across you and your spouse, following the line 4c instructions. The amount uses the per-employer column (b) amount, which covers the W-2 box 7 or Form 4070 methods in the instructions."
+        - {guard: {op: test, eq: [s1a.h_tip_single, {const: true}]}, then: s1a.h_tip_4a_amt}
+        - {guard: {op: test, eq: [s1a.h_tip_single, {const: false}]}, then: s1a.h_zero}
+    note: "Open: how the one-employer case is detected with two people on the return. Chosen: the one-employer route applies only when exactly one employer paid tips to anyone on the return and that recipient has a valid SSN. Otherwise line 4a is -0- and line 4c comes from the More Than One Employer Worksheet, as the form directs for multiple employers. Both routes give the same line 4c."
 
   - id: s1a.line4b
     printed: "4b"
@@ -778,16 +800,24 @@ lines:
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, le: [s1a.h_tip_employers, {param: person.one}]}
-          then: s1a.h_tip_col_c
-        - guard: {op: test, gt: [s1a.h_tip_employers, {param: person.one}]}
-          then: s1a.h_zero
+        - {guard: {op: test, eq: [s1a.h_tip_single, {const: true}]}, then: s1a.h_tip_4b_amt}
+        - {guard: {op: test, eq: [s1a.h_tip_single, {const: false}]}, then: s1a.h_zero}
 
   - id: s1a.h_tip_larger
     printed: "(helper)"
     label: "The larger of line 4a or line 4b"
     type: NonNegDollars
     expr: {op: larger_of, of: [s1a.line4a, s1a.line4b]}
+
+  - id: s1a.h_tip_ws_total
+    printed: "(helper)"
+    label: "Qualified Tips From More Than One Employer Worksheet, line 2 (column (d) total) for persons with a valid SSN"
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: person
+      field: person.tip_total
+      where: {op: test, eq: [person.work_ssn, {const: true}]}
 
   - id: s1a.line4c
     printed: "4c"
@@ -796,19 +826,17 @@ lines:
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, le: [s1a.h_tip_employers, {param: person.one}]}
-          then: s1a.h_tip_larger
-        - guard: {op: test, gt: [s1a.h_tip_employers, {param: person.one}]}
-          then: s1a.h_tip_worksheet
-    note: "The instructions for tips received in more than one occupation are not encoded. Only tips from listed occupations are expected in the tipjob entries."
+        - {guard: {op: test, eq: [s1a.h_tip_single, {const: true}]}, then: s1a.h_tip_larger}
+        - {guard: {op: test, eq: [s1a.h_tip_multi, {const: true}]}, then: s1a.h_tip_ws_total}
+        - {guard: {op: test, eq: [s1a.h_tip_ok, {const: false}]}, then: s1a.h_zero}
+    note: "Tips of a person without a valid SSN (valid for employment, issued before the due date) are excluded. The text says the spouse who received the tips must have one. Married filing separately gives zero, since married filers must file jointly to claim this deduction."
 
   - id: s1a.line5
     printed: "5"
     label: "Qualified tips received in the course of a trade or business"
     type: NonNegDollars
     expr: {op: copy, from: s1a.h_zero}
-    refuses: [scope.other_income]
-    note: "Tips from a trade or business (Forms 1099-NEC, 1099-MISC, 1099-K, with the net income limitation) are outside the supported income scope. The tool computes only the case with none and refuses otherwise."
+    refuses: [s1.sc_1a]
 
   - id: s1a.line6
     printed: "6"
@@ -853,10 +881,8 @@ lines:
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, eq: [f1040.status, {const: "mfj"}]}
-          then: s1a.h_base_joint
-        - guard: {op: test, ne: [f1040.status, {const: "mfj"}]}
-          then: s1a.h_base_other
+        - {guard: {op: test, eq: [f1040.status, {const: "mfj"}]}, then: s1a.h_base_joint}
+        - {guard: {op: test, ne: [f1040.status, {const: "mfj"}]}, then: s1a.h_base_other}
 
   - id: s1a.line10
     printed: "10"
@@ -864,72 +890,70 @@ lines:
     type: Dollars
     expr: {op: subtract, from: s1a.line8, take: s1a.line9}
 
+  - id: s1a.h_l10_pos
+    printed: "(helper)"
+    label: "Line 10 if more than zero, otherwise zero"
+    type: NonNegDollars
+    expr: {op: subtract_floor0, from: s1a.line8, take: s1a.line9}
+
   - id: s1a.h_line11
     printed: "(helper)"
-    label: "Divide line 10 by $1,000. If the resulting number isn't a whole number, decrease the result to the next lower whole number"
-    type: Dollars
-    expr: {op: round, of: s1a.line10, unit: 100000, rule: down}
-    note: "Printed line 11 is held as line 10 rounded down to a whole $1,000, so line 12 is that amount times 1/10. This equals the whole number of thousands times $100. It is used only when line 10 is more than zero."
+    label: "Line 11 times $1,000: line 10 divided by $1,000, decreased to the next lower whole number"
+    type: NonNegDollars
+    expr: {op: round, of: s1a.h_l10_pos, unit: 100000, rule: down}
+    note: "Line 11 is held as $1,000 times the whole number, because there is no division atom. Line 12 multiplies it by 1/10, which gives $100 times line 11 exactly."
 
   - id: s1a.line12
     printed: "12"
     label: "Multiply line 11 by $100"
-    type: Dollars
-    expr: {op: multiply_rate, amount: s1a.h_line11, rate: {param: s1a.hundred_per_thousand}}
-
-  - id: s1a.h_line13_reduced
-    printed: "(helper)"
-    label: "Subtract line 12 from line 7. If zero or less, enter -0-"
     type: NonNegDollars
-    expr: {op: subtract_floor0, from: s1a.line7, take: s1a.line12}
-
-  - id: s1a.h_tips_ok
-    printed: "(helper)"
-    label: "Part II applies: qualified tips received, not married filing separately, and a valid SSN"
-    type: Bool
-    expr:
-      op: test
-      all:
-        - {op: test, eq: [s1a.tips, {const: true}]}
-        - {op: test, ne: [f1040.status, {const: "mfs"}]}
-        - {op: test, eq: [household.any_work_ssn, {const: true}]}
-    note: "The instructions require the spouse who received the tips to have a valid SSN. Only a household-level check (you or your spouse has a work-valid SSN) is encoded here. The per-recipient requirement is assumed to be met by the tip amounts entered."
+    expr: {op: multiply_rate, amount: s1a.h_line11, rate: {param: s1a.hundred_per_thousand}}
 
   - id: s1a.line13
     printed: "13"
     label: "Qualified tips deduction. Subtract line 12 from line 7. If zero or less, enter -0-"
     type: NonNegDollars
+    expr: {op: subtract_floor0, from: s1a.line7, take: s1a.line12}
+    note: "When line 10 is zero or less, lines 11 and 12 are zero here, so this gives line 7, as the line 10 instruction directs."
+
+  # ---- Part III ----
+  - id: s1a.h_ot_ok
+    printed: "(helper)"
+    label: "Received qualified overtime compensation and not married filing separately"
+    type: Bool
     expr:
-      op: choose
-      alternatives:
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [s1a.h_tips_ok, {const: true}]}
-              - {op: test, le: [s1a.line10, {const: 0}]}
-          then: s1a.line7
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [s1a.h_tips_ok, {const: true}]}
-              - {op: test, gt: [s1a.line10, {const: 0}]}
-          then: s1a.h_line13_reduced
-        - guard: {op: test, eq: [s1a.h_tips_ok, {const: false}]}
-          then: s1a.h_zero
+      op: test
+      all:
+        - {op: test, eq: [s1a.overtime, {const: true}]}
+        - {op: test, ne: [f1040.status, {const: "mfs"}]}
+
+  - id: s1a.h_ot_total
+    printed: "(helper)"
+    label: "Qualified overtime reported on Form W-2, box 1 (worksheet column (b) total), for persons with a valid SSN"
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: person
+      field: person.ot_total
+      where: {op: test, eq: [person.work_ssn, {const: true}]}
 
   - id: s1a.line14a
     printed: "14a"
     label: "Qualified overtime compensation included in Form W-2, box 1. If you received qualified overtime compensation not reported on Form W-2, box 1, see instructions"
     type: NonNegDollars
-    expr: {op: sum_over, collection: person, field: person.ot_total}
-    note: "Uses the More Than One Employer Worksheet column (b) total for every case. With one employer this is that employer's amount. Qualified overtime not reported in W-2 box 1 (for example, deferred amounts) has no supported input and is not encoded."
+    expr:
+      op: choose
+      alternatives:
+        - {guard: {op: test, eq: [s1a.h_ot_ok, {const: true}]}, then: s1a.h_ot_total}
+        - {guard: {op: test, eq: [s1a.h_ot_ok, {const: false}]}, then: s1a.h_zero}
+    note: "Open: qualified overtime not included in Form W-2, box 1 (for example, deferred amounts). No input or screen for it is provided, so only the worksheet column (b) amounts are entered."
 
   - id: s1a.line14b
     printed: "14b"
     label: "Qualified overtime compensation included in Form 1099-NEC, box 1, or Form 1099-MISC, box 3"
     type: NonNegDollars
     expr: {op: copy, from: s1a.h_zero}
-    refuses: [scope.other_income]
+    refuses: [s1.sc_1a]
 
   - id: s1a.line14c
     printed: "14c"
@@ -956,10 +980,8 @@ lines:
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, eq: [f1040.status, {const: "mfj"}]}
-          then: s1a.h_ot_max_joint
-        - guard: {op: test, ne: [f1040.status, {const: "mfj"}]}
-          then: s1a.h_ot_max_other
+        - {guard: {op: test, eq: [f1040.status, {const: "mfj"}]}, then: s1a.h_ot_max_joint}
+        - {guard: {op: test, ne: [f1040.status, {const: "mfj"}]}, then: s1a.h_ot_max_other}
 
   - id: s1a.line15
     printed: "15"
@@ -980,10 +1002,8 @@ lines:
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, eq: [f1040.status, {const: "mfj"}]}
-          then: s1a.h_base_joint
-        - guard: {op: test, ne: [f1040.status, {const: "mfj"}]}
-          then: s1a.h_base_other
+        - {guard: {op: test, eq: [f1040.status, {const: "mfj"}]}, then: s1a.h_base_joint}
+        - {guard: {op: test, ne: [f1040.status, {const: "mfj"}]}, then: s1a.h_base_other}
 
   - id: s1a.line18
     printed: "18"
@@ -991,65 +1011,47 @@ lines:
     type: Dollars
     expr: {op: subtract, from: s1a.line16, take: s1a.line17}
 
+  - id: s1a.h_l18_pos
+    printed: "(helper)"
+    label: "Line 18 if more than zero, otherwise zero"
+    type: NonNegDollars
+    expr: {op: subtract_floor0, from: s1a.line16, take: s1a.line17}
+
   - id: s1a.h_line19
     printed: "(helper)"
-    label: "Divide line 18 by $1,000. If the resulting number isn't a whole number, decrease the result to the next lower whole number"
-    type: Dollars
-    expr: {op: round, of: s1a.line18, unit: 100000, rule: down}
-    note: "Printed line 19 is held as line 18 rounded down to a whole $1,000. Line 20 is that amount times 1/10. It is used only when line 18 is more than zero."
+    label: "Line 19 times $1,000: line 18 divided by $1,000, decreased to the next lower whole number"
+    type: NonNegDollars
+    expr: {op: round, of: s1a.h_l18_pos, unit: 100000, rule: down}
 
   - id: s1a.line20
     printed: "20"
     label: "Multiply line 19 by $100"
-    type: Dollars
-    expr: {op: multiply_rate, amount: s1a.h_line19, rate: {param: s1a.hundred_per_thousand}}
-
-  - id: s1a.h_line21_reduced
-    printed: "(helper)"
-    label: "Subtract line 20 from line 15. If zero or less, enter -0-"
     type: NonNegDollars
-    expr: {op: subtract_floor0, from: s1a.line15, take: s1a.line20}
-
-  - id: s1a.h_ot_ok
-    printed: "(helper)"
-    label: "Part III applies: qualified overtime received, not married filing separately, and a valid SSN"
-    type: Bool
-    expr:
-      op: test
-      all:
-        - {op: test, eq: [s1a.overtime, {const: true}]}
-        - {op: test, ne: [f1040.status, {const: "mfs"}]}
-        - {op: test, eq: [household.any_work_ssn, {const: true}]}
-    note: "The per-recipient SSN requirement is reduced to a household-level check, as for tips."
+    expr: {op: multiply_rate, amount: s1a.h_line19, rate: {param: s1a.hundred_per_thousand}}
 
   - id: s1a.line21
     printed: "21"
     label: "Qualified overtime compensation deduction. Subtract line 20 from line 15. If zero or less, enter -0-"
     type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [s1a.h_ot_ok, {const: true}]}
-              - {op: test, le: [s1a.line18, {const: 0}]}
-          then: s1a.line15
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [s1a.h_ot_ok, {const: true}]}
-              - {op: test, gt: [s1a.line18, {const: 0}]}
-          then: s1a.h_line21_reduced
-        - guard: {op: test, eq: [s1a.h_ot_ok, {const: false}]}
-          then: s1a.h_zero
+    expr: {op: subtract_floor0, from: s1a.line15, take: s1a.line20}
+
+  # ---- Part IV ----
+  - id: s1a.h_car_total
+    printed: "(helper)"
+    label: "Total of line 22, column (iii), for all vehicles"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: carloan, field: carloan.col_iii}
 
   - id: s1a.line23
     printed: "23"
     label: "Add lines 22a and 22b, column (iii)"
     type: NonNegDollars
-    expr: {op: sum_over, collection: carloan, field: carloan.col_iii}
-    note: "Column (iii) is summed over all loan entries, which also covers more than two VINs reported on an attached statement. Column (ii), interest deducted on Schedule C, E or F, is outside the supported scope."
+    expr:
+      op: choose
+      alternatives:
+        - {guard: {op: test, eq: [s1a.carloan, {const: true}]}, then: s1a.h_car_total}
+        - {guard: {op: test, eq: [s1a.carloan, {const: false}]}, then: s1a.h_zero}
+    note: "More than two VINs are included through the attached statement, so all loan entries are summed."
 
   - id: s1a.h_car_max
     printed: "(helper)"
@@ -1088,10 +1090,8 @@ lines:
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, eq: [f1040.status, {const: "mfj"}]}
-          then: s1a.h_car_base_joint
-        - guard: {op: test, ne: [f1040.status, {const: "mfj"}]}
-          then: s1a.h_car_base_other
+        - {guard: {op: test, eq: [f1040.status, {const: "mfj"}]}, then: s1a.h_car_base_joint}
+        - {guard: {op: test, ne: [f1040.status, {const: "mfj"}]}, then: s1a.h_car_base_other}
 
   - id: s1a.line27
     printed: "27"
@@ -1099,48 +1099,32 @@ lines:
     type: Dollars
     expr: {op: subtract, from: s1a.line25, take: s1a.line26}
 
+  - id: s1a.h_l27_pos
+    printed: "(helper)"
+    label: "Line 27 if more than zero, otherwise zero"
+    type: NonNegDollars
+    expr: {op: subtract_floor0, from: s1a.line25, take: s1a.line26}
+
   - id: s1a.h_line28
     printed: "(helper)"
-    label: "Divide line 27 by $1,000. If the resulting number isn't a whole number, increase the result to the next higher whole number"
-    type: Dollars
-    expr: {op: round, of: s1a.line27, unit: 100000, rule: up}
-    note: "Printed line 28 is held as line 27 rounded up to a whole $1,000. Line 29 is that amount times 1/5, which equals the whole number of thousands times $200. It is used only when line 27 is more than zero."
+    label: "Line 28 times $1,000: line 27 divided by $1,000, increased to the next higher whole number"
+    type: NonNegDollars
+    expr: {op: round, of: s1a.h_l27_pos, unit: 100000, rule: up}
 
   - id: s1a.line29
     printed: "29"
     label: "Multiply line 28 by $200"
-    type: Dollars
-    expr: {op: multiply_rate, amount: s1a.h_line28, rate: {param: s1a.two_hundred_per_thousand}}
-
-  - id: s1a.h_line30_reduced
-    printed: "(helper)"
-    label: "Subtract line 29 from line 24. If zero or less, enter -0-"
     type: NonNegDollars
-    expr: {op: subtract_floor0, from: s1a.line24, take: s1a.line29}
+    expr: {op: multiply_rate, amount: s1a.h_line28, rate: {param: s1a.two_hundred_per_thousand}}
 
   - id: s1a.line30
     printed: "30"
     label: "Qualified passenger vehicle loan interest deduction. Subtract line 29 from line 24. If zero or less, enter -0-"
     type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [s1a.carloan, {const: true}]}
-              - {op: test, le: [s1a.line27, {const: 0}]}
-          then: s1a.line24
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [s1a.carloan, {const: true}]}
-              - {op: test, gt: [s1a.line27, {const: 0}]}
-          then: s1a.h_line30_reduced
-        - guard: {op: test, eq: [s1a.carloan, {const: false}]}
-          then: s1a.h_zero
-    note: "The text for Part IV states no joint-filing or SSN requirement, so none is encoded. Part IV is filled out only if QPVLI was paid or accrued (s1a.carloan)."
+    expr: {op: subtract_floor0, from: s1a.line24, take: s1a.line29}
+    note: "When line 27 is zero or less, lines 28 and 29 are zero, so this gives line 24, as the line 27 instruction directs."
 
+  # ---- Part V ----
   - id: s1a.line31
     printed: "31"
     label: "Enter the amount from line 3"
@@ -1166,10 +1150,8 @@ lines:
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, eq: [f1040.status, {const: "mfj"}]}
-          then: s1a.h_senior_base_joint
-        - guard: {op: test, ne: [f1040.status, {const: "mfj"}]}
-          then: s1a.h_senior_base_other
+        - {guard: {op: test, eq: [f1040.status, {const: "mfj"}]}, then: s1a.h_senior_base_joint}
+        - {guard: {op: test, ne: [f1040.status, {const: "mfj"}]}, then: s1a.h_senior_base_other}
 
   - id: s1a.line33
     printed: "33"
@@ -1177,11 +1159,17 @@ lines:
     type: Dollars
     expr: {op: subtract, from: s1a.line31, take: s1a.line32}
 
+  - id: s1a.h_l33_pos
+    printed: "(helper)"
+    label: "Line 33 if more than zero, otherwise zero"
+    type: NonNegDollars
+    expr: {op: subtract_floor0, from: s1a.line31, take: s1a.line32}
+
   - id: s1a.line34
     printed: "34"
     label: "Multiply line 33 by 6% (0.06)"
-    type: Dollars
-    expr: {op: multiply_rate, amount: s1a.line33, rate: {param: s1a.senior_rate}}
+    type: NonNegDollars
+    expr: {op: multiply_rate, amount: s1a.h_l33_pos, rate: {param: s1a.senior_rate}}
 
   - id: s1a.h_senior_amount
     printed: "(helper)"
@@ -1189,27 +1177,16 @@ lines:
     type: NonNegDollars
     expr: {op: param, ref: s1a.senior_amount}
 
-  - id: s1a.h_line35_reduced
-    printed: "(helper)"
-    label: "Subtract line 34 from $6,000. If zero or less, enter -0-"
-    type: NonNegDollars
-    expr: {op: subtract_floor0, from: s1a.h_senior_amount, take: s1a.line34}
-
   - id: s1a.line35
     printed: "35"
     label: "Subtract line 34 from $6,000. If zero or less, enter -0-"
     type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, le: [s1a.line33, {const: 0}]}
-          then: s1a.h_senior_amount
-        - guard: {op: test, gt: [s1a.line33, {const: 0}]}
-          then: s1a.h_line35_reduced
+    expr: {op: subtract_floor0, from: s1a.h_senior_amount, take: s1a.line34}
+    note: "When line 33 is zero or less, line 34 is zero, so line 35 is $6,000, as the line 33 instruction directs."
 
-  - id: s1a.h_senior_taxpayer
+  - id: s1a.h_tp_senior
     printed: "(helper)"
-    label: "Your entry, if you have a valid SSN and were born before January 2, 1961 (and did not die in 2025 before reaching age 65)"
+    label: "Your entry, if you have a valid SSN, were born before January 2, 1961, and did not die in 2025 before reaching age 65"
     type: Count
     expr:
       op: sum_over
@@ -1222,11 +1199,10 @@ lines:
           - {op: test, eq: [person.age65, {const: true}]}
           - {op: test, eq: [person.work_ssn, {const: true}]}
           - {op: test, eq: [person.died_before_65, {const: false}]}
-    note: "The instructions define a valid SSN as one valid for employment and issued before the due date, so person.work_ssn is used. The instructions also exclude a person born before January 2, 1961 who died in 2025 before reaching age 65, so person.died_before_65 is used."
 
-  - id: s1a.h_senior_spouse
+  - id: s1a.h_sp_senior
     printed: "(helper)"
-    label: "Your spouse's entry, if your spouse has a valid SSN and was born before January 2, 1961 (and did not die in 2025 before reaching age 65)"
+    label: "Your spouse's entry, if your spouse has a valid SSN, was born before January 2, 1961, and did not die in 2025 before reaching age 65"
     type: Count
     expr:
       op: sum_over
@@ -1240,6 +1216,16 @@ lines:
           - {op: test, eq: [person.work_ssn, {const: true}]}
           - {op: test, eq: [person.died_before_65, {const: false}]}
 
+  - id: s1a.h_36a_ok
+    printed: "(helper)"
+    label: "You qualify for line 36a (and are not married filing separately)"
+    type: Bool
+    expr:
+      op: test
+      all:
+        - {op: test, ge: [s1a.h_tp_senior, {param: person.one}]}
+        - {op: test, ne: [f1040.status, {const: "mfs"}]}
+
   - id: s1a.line36a
     printed: "36a"
     label: "If you have a valid social security number (see instructions) and were born before January 2, 1961, enter the amount from line 35"
@@ -1247,21 +1233,19 @@ lines:
     expr:
       op: choose
       alternatives:
-        - guard:
-            op: test
-            all:
-              - {op: test, ne: [f1040.status, {const: "mfs"}]}
-              - {op: test, ge: [s1a.h_senior_taxpayer, {param: person.one}]}
-          then: s1a.line35
-        - guard:
-            op: test
-            not:
-              op: test
-              all:
-                - {op: test, ne: [f1040.status, {const: "mfs"}]}
-                - {op: test, ge: [s1a.h_senior_taxpayer, {param: person.one}]}
-          then: s1a.h_zero
-    note: "The Part V caution says 'If married, you must file jointly to claim this deduction.' This is encoded as no amount for married filing separately."
+        - {guard: {op: test, eq: [s1a.h_36a_ok, {const: true}]}, then: s1a.line35}
+        - {guard: {op: test, eq: [s1a.h_36a_ok, {const: false}]}, then: s1a.h_zero}
+    note: "Valid SSN is read as person.work_ssn (valid for employment, issued before the due date). Married filing separately gives zero, since married filers must file jointly. A taxpayer born before January 2, 1961 who died in 2025 before reaching age 65 does not qualify."
+
+  - id: s1a.h_36b_ok
+    printed: "(helper)"
+    label: "Married filing jointly and your spouse qualifies for line 36b"
+    type: Bool
+    expr:
+      op: test
+      all:
+        - {op: test, ge: [s1a.h_sp_senior, {param: person.one}]}
+        - {op: test, eq: [f1040.status, {const: "mfj"}]}
 
   - id: s1a.line36b
     printed: "36b"
@@ -1270,20 +1254,8 @@ lines:
     expr:
       op: choose
       alternatives:
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [f1040.status, {const: "mfj"}]}
-              - {op: test, ge: [s1a.h_senior_spouse, {param: person.one}]}
-          then: s1a.line35
-        - guard:
-            op: test
-            not:
-              op: test
-              all:
-                - {op: test, eq: [f1040.status, {const: "mfj"}]}
-                - {op: test, ge: [s1a.h_senior_spouse, {param: person.one}]}
-          then: s1a.h_zero
+        - {guard: {op: test, eq: [s1a.h_36b_ok, {const: true}]}, then: s1a.line35}
+        - {guard: {op: test, eq: [s1a.h_36b_ok, {const: false}]}, then: s1a.h_zero}
 
   - id: s1a.line37
     printed: "37"

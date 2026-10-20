@@ -95,7 +95,7 @@ export interface FormDoc {
 
 export interface ParamEntry {
   type: ValueType;
-  value: number | Rate | boolean | Record<string, number>;
+  value: number | Rate | boolean | string | Record<string, number>;
   cite: CiteFilled;
 }
 

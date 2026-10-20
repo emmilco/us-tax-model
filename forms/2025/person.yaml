@@ -597,6 +597,951 @@ form:
           cite:
             doc: f8959
             locator: Form 8959 (2025), lines 1–24; i8959 pp. 1–3
+    - id: person.sc_count
+      printed: (helper)
+      label: Number of Schedules C for this person
+      type: Count
+      expr:
+        op: sum_over
+        collection: sc
+        field: sc.one
+      cite:
+        doc: i1040sc
+        locator: p. 14, Line 31; i4562 p. 4, Part I
+    - id: person.mq_q4
+      printed: (helper)
+      label: Mid-quarter test basis, fourth quarter, this person
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: sc
+        field: sc.mq_q4
+      cite:
+        doc: i1040sc
+        locator: p. 14, Line 31; i4562 p. 4, Part I
+    - id: person.mq_total
+      printed: (helper)
+      label: Mid-quarter test basis, 2025, this person
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: sc
+        field: sc.mq_total
+      cite:
+        doc: i1040sc
+        locator: p. 14, Line 31; i4562 p. 4, Part I
+    - id: person.cost179
+      printed: (helper)
+      label: Cost of section 179 property, this person
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: sc
+        field: sc.cost179
+      cite:
+        doc: i1040sc
+        locator: p. 14, Line 31; i4562 p. 4, Part I
+    - id: person.s179_nonlisted
+      printed: (helper)
+      label: Section 179 elected, other than listed property, this person
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: sc
+        field: sc.f6
+      cite:
+        doc: i1040sc
+        locator: p. 14, Line 31; i4562 p. 4, Part I
+    - id: person.s179_listed
+      printed: (helper)
+      label: Section 179 elected on listed property, this person
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: sc
+        field: sc.f29
+      cite:
+        doc: i1040sc
+        locator: p. 14, Line 31; i4562 p. 4, Part I
+    - id: person.income179
+      printed: (helper)
+      label: Business net profit or loss without section 179, this person
+      type: Dollars
+      expr:
+        op: sum_over
+        collection: sc
+        field: sc.line31_pre179
+      cite:
+        doc: i1040sc
+        locator: p. 14, Line 31; i4562 p. 4, Part I
+    - id: person.has_sc
+      printed: (helper)
+      label: This person has at least one Schedule C
+      type: Bool
+      expr:
+        op: test
+        gt:
+        - person.sc_count
+        - const: 0
+          type: Count
+      cite:
+        doc: i1040sse
+        locator: p. 1, Who Must File Schedule SE; p. 2, Joint Returns, "If both spouses have self-employment income, each must
+          file a separate Schedule SE"
+    - id: person.sc_total
+      printed: (helper)
+      label: This person's Schedule C net profit or loss (all businesses)
+      type: Dollars
+      expr:
+        op: sum_over
+        collection: sc
+        field: sc.result
+      cite:
+        doc: i1040sse
+        locator: p. 2, More Than One Business, "Figure the combined SE tax on one Schedule SE"
+    - id: person.se_screen
+      printed: (screen)
+      label: Does any of these apply to this person's self-employment?
+      type: Bool
+      expr:
+        op: input
+        source: 'Does any of these apply to this person: church employee income (wages from a church that elected exemption from
+          social security and Medicare taxes); being a minister, a member of a religious order or a Christian Science practitioner,
+          or having an approved Form 4361 or Form 4029; net earnings from self-employment from a partnership (Schedule K-1, box
+          14, code A) or other self-employment income not on a Schedule C (such as director''s fees, fiduciary fees, or fees as
+          a fee-basis state or local government employee); farm income (Schedule F) or Conservation Reserve Program payments;
+          electing an optional method (Schedule SE Part II); a chapter 11 bankruptcy case; community income on a separate return;
+          self-employment income exempt under an international social security agreement or earned as a U.S. citizen employed
+          by a foreign government; or tips reported on Form 4137 or wages on Form 8919?'
+      cite:
+        doc: i1040sse
+        locator: pp. 1-5, Who Must Pay Self-Employment (SE) Tax, Net Earnings From Self-Employment, Instructions for Part II;
+          f1040sse lines 1a, 1b, 5a, 8b and 8c
+    - id: person.se_screened
+      printed: (gate)
+      label: This person's self-employment tax is outside this tool
+      type: Bool
+      expr:
+        op: test
+        eq:
+        - person.se_screen
+        - const: true
+      cite:
+        doc: i1040sse
+        locator: pp. 1-5
+    - id: person.se_line2
+      printed: (helper)
+      label: Schedule SE line 2 for this person
+      type: Dollars
+      expr:
+        op: copy
+        from: person.sc_total
+      cite:
+        doc: f1040sse
+        locator: Schedule SE (2025), line 2, "Net profit or (loss) from Schedule C, line 31"
+      refuses:
+      - when: person.se_screened
+        form: Schedule SE items outside this tool (church employee income, clergy, Forms 4361 and 4029, partnership and other
+          self-employment income, farm income, optional methods, chapter 11, community income, exempt income, Forms 4137 and 8919)
+        remedy: These self-employment tax items are outside this tool.
+        cite:
+          doc: i1040sse
+          locator: pp. 1-5
+    - id: person.se_line6
+      printed: (helper)
+      label: Schedule SE line 6 for this person
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.has_sc
+            - const: true
+          then:
+            def: se
+            bind:
+              line2: person.se_line2
+              line8a: person.wages
+            line: line6
+        - guard:
+            op: test
+            eq:
+            - person.has_sc
+            - const: false
+          then: person.zero
+      cite:
+        doc: f1040sse
+        locator: Schedule SE (2025), line 6; i8959 Line 8, "Schedule SE, line 6"
+    - id: person.se_line12
+      printed: (helper)
+      label: Schedule SE line 12 (self-employment tax) for this person
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.has_sc
+            - const: true
+          then:
+            def: se
+            bind:
+              line2: person.se_line2
+              line8a: person.wages
+            line: line12
+        - guard:
+            op: test
+            eq:
+            - person.has_sc
+            - const: false
+          then: person.zero
+      cite:
+        doc: f1040sse
+        locator: Schedule SE (2025), line 12, "Enter here and on Schedule 2 (Form 1040), line 4"
+    - id: person.se_line13
+      printed: (helper)
+      label: Schedule SE line 13 (deduction for one-half of self-employment tax) for this person
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.has_sc
+            - const: true
+          then:
+            def: se
+            bind:
+              line2: person.se_line2
+              line8a: person.wages
+            line: line13
+        - guard:
+            op: test
+            eq:
+            - person.has_sc
+            - const: false
+          then: person.zero
+      cite:
+        doc: f1040sse
+        locator: Schedule SE (2025), line 13, "Enter here and on Schedule 1 (Form 1040), line 15"
+    - id: person.se_line4c
+      printed: (helper)
+      label: Schedule SE line 4c for this person
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.has_sc
+            - const: true
+          then:
+            def: se
+            bind:
+              line2: person.se_line2
+              line8a: person.wages
+            line: line4c
+        - guard:
+            op: test
+            eq:
+            - person.has_sc
+            - const: false
+          then: person.zero
+      cite:
+        doc: f1040sse
+        locator: Schedule SE (2025), line 4c
+    - id: person.plan
+      printed: (helper)
+      label: Retirement plan of this self-employed person
+      type: Enum(retire_plan)
+      expr:
+        op: input
+        source: Did you (this person) contribute for yourself, as a self-employed person, to a SEP IRA (sep) or a SIMPLE IRA (simple)
+          for 2025, or to neither (none)?
+      cite:
+        doc: p560
+        locator: pp. 8–11, 14–17, chapter 2, Simplified Employee Pension (SEP); chapter 3, SIMPLE IRA Plan; i1040gi Schedule 1, line 16
+    - id: person.plan_screen
+      printed: (screen)
+      label: Does any of these apply to this person's retirement contributions?
+      type: Bool
+      expr:
+        op: input
+        source: 'Does any of these apply: a SARSEP; a SEP plan whose contribution rate is not a whole percentage or is more than
+          25%; a SIMPLE IRA plan of an employer that allows the higher contribution limits of section 117 of the SECURE 2.0 Act;
+          contributions for yourself to more than one plan, or to a qualified plan (such as a solo 401(k)); salary reduction contributions
+          or elective deferrals to any other plan in 2025 (such as a 401(k) or 403(b) through an employer); Roth SEP or Roth SIMPLE
+          contributions; or contributions that are more than the maximum deductible amount?'
+      cite:
+        doc: p560
+        locator: pp. 11, 16, 38, chapter 2, Salary Reduction Simplified Employee Pension (SARSEP); chapter 3, Salary reduction contributions;
+          chapter 5, Caution, "apply only to self-employed individuals who have only one defined contribution plan"
+    - id: person.plan_screened
+      printed: (gate)
+      label: This person's retirement contributions are outside this tool
+      type: Bool
+      expr:
+        op: test
+        eq:
+        - person.plan_screen
+        - const: true
+      cite:
+        doc: p560
+        locator: pp. 8–11, 14–17, 38–40, chapters 2, 3 and 5
+    - id: person.cent
+      printed: (helper)
+      label: One cent
+      type: NonNegDollars
+      expr:
+        op: param
+        ref: sc.one_cent
+      cite:
+        doc: p560
+        locator: pp. 38–40, chapter 5, Rate Table for Self-Employed
+    - id: person.hundred
+      printed: (helper)
+      label: 100%, as cents
+      type: NonNegDollars
+      expr:
+        op: param
+        ref: sc.hundred_cents
+      cite:
+        doc: p560
+        locator: pp. 38–40, chapter 5, Rate Worksheet for Self-Employed, "Rate in line 1 plus 1"
+    - id: person.sep_rate
+      printed: (helper)
+      label: Plan contribution rate (whole percent)
+      type: Count
+      expr:
+        op: input
+        source: The contribution rate stated in your SEP plan, as a whole percent (for example 10)
+      cite:
+        doc: p560
+        locator: pp. 38–40, chapter 5, Rate Table for Self-Employed, "find your plan contribution rate (the contribution rate stated in your
+          plan)"
+    - id: person.sep_contrib
+      printed: (helper)
+      label: Contributions to your own SEP IRA for 2025
+      type: NonNegDollars
+      expr:
+        op: input
+        source: The contributions you made for yourself to your SEP IRA for 2025 (by the due date of the return, including extensions)
+      cite:
+        doc: p560
+        locator: 'pp. 11, 39, chapter 2, Deduction Limit for Self-Employed Individuals; chapter 5, Deduction Worksheet for Self-Employed,
+          "Next: Enter your actual contribution"'
+      refuses:
+      - when: person.plan_screened
+        form: Retirement plan contributions outside this tool (SARSEP, other plan rates, higher SIMPLE limits, more than one plan,
+          other elective deferrals, Roth contributions, excess contributions)
+        remedy: These retirement contributions are outside this tool.
+        cite:
+          doc: p560
+          locator: pp. 8–11, 14–17, 38–40, chapters 2, 3 and 5
+    - id: person.sep_rate_c
+      printed: (helper)
+      label: The plan rate, as cents
+      type: NonNegDollars
+      expr:
+        op: multiply_count
+        amount: person.cent
+        count: person.sep_rate
+      cite:
+        doc: p560
+        locator: pp. 38–40, chapter 5, Rate Worksheet for Self-Employed, line 1
+    - id: person.sep_rate_plus
+      printed: (helper)
+      label: The plan rate plus 100%, as cents
+      type: NonNegDollars
+      expr:
+        op: sum
+        of:
+        - person.sep_rate_c
+        - person.hundred
+      cite:
+        doc: p560
+        locator: pp. 38–40, chapter 5, Rate Worksheet for Self-Employed, line 2, "Rate in line 1 plus 1"
+    - id: person.sep_s1
+      printed: Step 1
+      label: Net profit from Schedule C, line 31
+      type: Dollars
+      expr:
+        op: copy
+        from: person.sc_total
+      cite:
+        doc: p560
+        locator: p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 1
+    - id: person.sep_s2
+      printed: Step 2
+      label: Deduction for self-employment tax from Schedule 1, line 15
+      type: NonNegDollars
+      expr:
+        op: copy
+        from: person.se_line13
+      cite:
+        doc: p560
+        locator: p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 2 (this person's own Schedule SE, line 13)
+    - id: person.sep_s3
+      printed: Step 3
+      label: Net earnings from self-employment. Subtract step 2 from step 1
+      type: NonNegDollars
+      expr:
+        op: subtract_floor0
+        from: person.sep_s1
+        take: person.sep_s2
+      cite:
+        doc: p560
+        locator: p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 3
+    - id: person.sep_s5
+      printed: Step 5
+      label: Multiply step 3 by step 4 (the plan rate divided by the plan rate plus 1, to six decimal places)
+      type: NonNegDollars
+      expr:
+        op: prorate
+        amount: person.sep_s3
+        part: person.sep_rate_c
+        whole: person.sep_rate_plus
+        places: 6
+      cite:
+        doc: p560
+        locator: pp. 39–40, chapter 5, Deduction Worksheet for Self-Employed, Steps 4 and 5; Rate Table for Self-Employed (for example 10%
+          gives 0.090909) (amb.2025.sep_rate_places)
+    - id: person.comp_limit
+      printed: (helper)
+      label: $350,000
+      type: NonNegDollars
+      expr:
+        op: param
+        ref: ret.comp_limit
+      cite:
+        doc: p560
+        locator: p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 6, "Multiply $350,000"
+    - id: person.sep_s6
+      printed: Step 6
+      label: Multiply $350,000 by your plan contribution rate (not the reduced rate)
+      type: NonNegDollars
+      expr:
+        op: prorate
+        amount: person.comp_limit
+        part: person.sep_rate_c
+        whole: person.hundred
+        places: 6
+      cite:
+        doc: p560
+        locator: p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 6
+    - id: person.sep_s7
+      printed: Step 7
+      label: Enter the smaller of step 5 or step 6
+      type: NonNegDollars
+      expr:
+        op: smaller_of
+        of:
+        - person.sep_s5
+        - person.sep_s6
+      cite:
+        doc: p560
+        locator: p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 7
+    - id: person.sep_s8
+      printed: Step 8
+      label: Contribution dollar limit
+      type: NonNegDollars
+      expr:
+        op: param
+        ref: ret.sep_dollar_limit
+      cite:
+        doc: p560
+        locator: p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 8, "$70,000"
+    - id: person.sep_s21
+      printed: Step 21
+      label: Maximum deductible contribution (the smaller of step 7 or step 8; no elective deferrals)
+      type: NonNegDollars
+      expr:
+        op: smaller_of
+        of:
+        - person.sep_s7
+        - person.sep_s8
+      cite:
+        doc: p560
+        locator: p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 8 note, "Otherwise, skip steps 9 through 20 and enter
+          the smaller of step 7 or step 8 on step 21"
+    - id: person.sep_excess
+      printed: (gate)
+      label: The SEP contributions are more than the maximum deductible contribution
+      type: Bool
+      expr:
+        op: test
+        gt:
+        - person.sep_contrib
+        - person.sep_s21
+      cite:
+        doc: p560
+        locator: p. 39, chapter 5, "Enter your actual contribution, not to exceed your maximum deductible contribution"; chapter 2, Excess
+          contributions
+    - id: person.sep_deduction
+      printed: (helper)
+      label: SEP deduction for yourself
+      type: NonNegDollars
+      expr:
+        op: copy
+        from: person.sep_contrib
+      cite:
+        doc: p560
+        locator: p. 39, chapter 5, "Enter your actual contribution, not to exceed your maximum deductible contribution, on Schedule 1
+          (Form 1040), line 16"
+      refuses:
+      - when: person.sep_excess
+        form: SEP contributions above the maximum deductible contribution
+        remedy: Excess SEP contributions are outside this tool.
+        cite:
+          doc: p560
+          locator: pp. 11, 39, chapter 2, Excess contributions; chapter 5
+    - id: person.simple_deferral
+      printed: (helper)
+      label: Salary reduction contributions for yourself to your SIMPLE IRA (including catch-up)
+      type: NonNegDollars
+      expr:
+        op: input
+        source: The salary reduction contributions you made for yourself to your SIMPLE IRA for 2025, including any catch-up contributions
+      cite:
+        doc: p560
+        locator: p. 16, chapter 3, Salary reduction contributions and Catch-up contributions
+      refuses:
+      - when: person.plan_screened
+        form: Retirement plan contributions outside this tool
+        remedy: These retirement contributions are outside this tool.
+        cite:
+          doc: p560
+          locator: pp. 8–11, 14–17, 38–40, chapters 2, 3 and 5
+    - id: person.simple_age
+      printed: (helper)
+      label: Catch-up eligibility
+      type: Enum(catchup_age)
+      expr:
+        op: input
+        source: 'Your age at the end of 2025 for SIMPLE catch-up contributions: under 50 (under50), 50 to 59 or 64 and over (age50),
+          or 60, 61, 62 or 63 (age60_63)'
+      cite:
+        doc: p560
+        locator: p. 16, chapter 3, Catch-up contributions, "age 50 or over at the end of the calendar year" and "in a tax year in which
+          they attain age 60, 61, 62, or 63"
+    - id: person.simple_kind
+      printed: (helper)
+      label: Employer contribution formula of your SIMPLE IRA plan
+      type: Enum(simple_formula)
+      expr:
+        op: input
+        source: 'The employer contribution formula of your SIMPLE IRA plan for 2025: matching contributions (match) or 2% nonelective
+          contributions (nonelective)'
+      cite:
+        doc: p560
+        locator: pp. 16–17, chapter 3, Employer matching contributions and Nonelective contributions
+    - id: person.simple_employer
+      printed: (helper)
+      label: Employer contributions for yourself to your SIMPLE IRA
+      type: NonNegDollars
+      expr:
+        op: input
+        source: The employer matching or nonelective contributions you made for yourself to your SIMPLE IRA for 2025
+      cite:
+        doc: p560
+        locator: pp. 16–17, chapter 3, Employer matching contributions and Nonelective contributions
+    - id: person.simple_comp
+      printed: (helper)
+      label: 'Compensation: net earnings from self-employment (Schedule SE, line 4)'
+      type: NonNegDollars
+      expr:
+        op: copy
+        from: person.se_line4c
+      cite:
+        doc: p560
+        locator: p. 15, chapter 3, Compensation, "If you are self-employed, compensation is your net earnings from self-employment (line
+          4 of Schedule SE (Form 1040)) before subtracting any contributions made to the SIMPLE IRA plan for yourself"
+    - id: person.simple_cap
+      printed: (helper)
+      label: Salary reduction limit
+      type: NonNegDollars
+      expr:
+        op: param
+        ref: ret.simple_limit
+      cite:
+        doc: p560
+        locator: p. 16, chapter 3, Salary reduction contributions, "can't be more than $16,500 for 2025"
+    - id: person.simple_regular
+      printed: (helper)
+      label: Salary reduction contributions that are not catch-up contributions
+      type: NonNegDollars
+      expr:
+        op: smaller_of
+        of:
+        - person.simple_deferral
+        - person.simple_cap
+      cite:
+        doc: p560
+        locator: p. 16, chapter 3, Catch-up contributions, "Salary reduction contributions aren't treated as catch-up contributions until
+          they exceed $16,500 for 2025"
+    - id: person.simple_catchup
+      printed: (helper)
+      label: Catch-up contributions
+      type: NonNegDollars
+      expr:
+        op: subtract_floor0
+        from: person.simple_deferral
+        take: person.simple_regular
+      cite:
+        doc: p560
+        locator: p. 16, chapter 3, Catch-up contributions
+    - id: person.catchup_limit
+      printed: (helper)
+      label: Catch-up contribution limit
+      type: NonNegDollars
+      expr:
+        op: keyed_lookup
+        table: simple_catchup
+        keys:
+        - person.simple_age
+      cite:
+        doc: p560
+        locator: p. 16, chapter 3, Catch-up contributions, "generally $3,500 for 2025" and "the higher limit on catch-up contributions
+          ... is $5,250"
+    - id: person.comp_after_regular
+      printed: (helper)
+      label: Compensation less the salary reduction contributions that are not catch-up contributions
+      type: NonNegDollars
+      expr:
+        op: subtract_floor0
+        from: person.simple_comp
+        take: person.simple_regular
+      cite:
+        doc: p560
+        locator: p. 16, chapter 3, Catch-up contributions, "The excess of the participant's compensation over the salary reduction contributions
+          that aren't catch-up contributions"
+    - id: person.catchup_max
+      printed: (helper)
+      label: Maximum catch-up contribution
+      type: NonNegDollars
+      expr:
+        op: smaller_of
+        of:
+        - person.catchup_limit
+        - person.comp_after_regular
+      cite:
+        doc: p560
+        locator: p. 16, chapter 3, Catch-up contributions, "can't exceed the lesser of the following amounts"
+    - id: person.rate3
+      printed: (helper)
+      label: 3%
+      type: Rate
+      expr:
+        op: param
+        ref: ret.match_rate
+      cite:
+        doc: p560
+        locator: p. 16, chapter 3, Employer matching contributions, "up to 3% of the employee's compensation"
+    - id: person.rate2
+      printed: (helper)
+      label: 2%
+      type: Rate
+      expr:
+        op: param
+        ref: ret.nonelective_rate
+      cite:
+        doc: p560
+        locator: p. 17, chapter 3, Nonelective contributions, "nonelective contributions of 2% of compensation"
+    - id: person.match_3pct
+      printed: (helper)
+      label: 3% of compensation
+      type: NonNegDollars
+      expr:
+        op: multiply_rate
+        amount: person.simple_comp
+        rate: person.rate3
+      cite:
+        doc: p560
+        locator: p. 16, chapter 3, Employer matching contributions
+    - id: person.deferrals_total
+      printed: (helper)
+      label: Salary reduction contributions (allowed)
+      type: NonNegDollars
+      expr:
+        op: sum
+        of:
+        - person.simple_regular
+        - person.simple_catchup
+      cite:
+        doc: p560
+        locator: p. 16, chapter 3, Employer matching contributions, "match each employee's salary reduction contribution(s) on a dollar-for-dollar
+          basis"
+    - id: person.match_max
+      printed: (helper)
+      label: Maximum matching contribution
+      type: NonNegDollars
+      expr:
+        op: smaller_of
+        of:
+        - person.deferrals_total
+        - person.match_3pct
+      cite:
+        doc: p560
+        locator: p. 16, chapter 3, Employer matching contributions
+    - id: person.ne_comp
+      printed: (helper)
+      label: Compensation taken into account (not more than $350,000)
+      type: NonNegDollars
+      expr:
+        op: smaller_of
+        of:
+        - person.simple_comp
+        - person.comp_limit
+      cite:
+        doc: p560
+        locator: p. 17, chapter 3, Nonelective contributions, "Only $350,000 of the employee's compensation can be taken into account"
+    - id: person.ne_max
+      printed: (helper)
+      label: Maximum nonelective contribution
+      type: NonNegDollars
+      expr:
+        op: multiply_rate
+        amount: person.ne_comp
+        rate: person.rate2
+      cite:
+        doc: p560
+        locator: p. 17, chapter 3, Nonelective contributions
+    - id: person.employer_max
+      printed: (helper)
+      label: Maximum employer contribution for the plan's formula
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.simple_kind
+            - const: match
+          then: person.match_max
+        - guard:
+            op: test
+            eq:
+            - person.simple_kind
+            - const: nonelective
+          then: person.ne_max
+      cite:
+        doc: p560
+        locator: pp. 16–17, chapter 3, Employer matching contributions and Nonelective contributions
+    - id: person.simple_excess
+      printed: (gate)
+      label: Contributions above the SIMPLE limits
+      type: Bool
+      expr:
+        op: test
+        any:
+        - op: test
+          gt:
+          - person.simple_catchup
+          - person.catchup_max
+        - op: test
+          gt:
+          - person.simple_employer
+          - person.employer_max
+        - op: test
+          gt:
+          - person.simple_regular
+          - person.simple_comp
+      cite:
+        doc: p560
+        locator: p. 16, chapter 3, Salary reduction contributions, Catch-up contributions and Employer matching contributions
+    - id: person.simple_deduction
+      printed: (helper)
+      label: SIMPLE deduction for yourself
+      type: NonNegDollars
+      expr:
+        op: sum
+        of:
+        - person.deferrals_total
+        - person.simple_employer
+      cite:
+        doc: p560
+        locator: p. 17, chapter 3, Where To Deduct Contributions, "Sole proprietors and partners deduct contributions for themselves
+          on line 16 of Schedule 1"
+      refuses:
+      - when: person.simple_excess
+        form: SIMPLE contributions above the limits
+        remedy: Excess SIMPLE contributions are outside this tool.
+        cite:
+          doc: p560
+          locator: pp. 14–17, chapter 3
+    - id: person.plan_deduction
+      printed: (helper)
+      label: Self-employed SEP or SIMPLE deduction for this person
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.plan
+            - const: none
+          then: person.zero
+        - guard:
+            op: test
+            eq:
+            - person.plan
+            - const: sep
+          then: person.sep_deduction
+        - guard:
+            op: test
+            eq:
+            - person.plan
+            - const: simple
+          then: person.simple_deduction
+      cite:
+        doc: i1040gi
+        locator: p. 93, Schedule 1, line 16, Self-Employed SEP, SIMPLE, and Qualified Plans; p560 chapter 5
+    - id: person.s16
+      printed: (helper)
+      label: Schedule 1 line 16 for this person
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.has_sc
+            - const: true
+          then: person.plan_deduction
+        - guard:
+            op: test
+            eq:
+            - person.has_sc
+            - const: false
+          then: person.zero
+      cite:
+        doc: i1040gi
+        locator: p. 93, Schedule 1, line 16, "If you were self-employed or a partner, you may be able to take this deduction"
+    - id: person.positive_profits
+      printed: (helper)
+      label: Total of all net profits of this person's businesses (losses not included)
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: sc
+        field: sc.profit_pos
+      cite:
+        doc: i7206
+        locator: Line 5, Form 7206 (2025), "Don't include any net losses"
+    - id: person.sehi
+      printed: (helper)
+      label: Self-employed health insurance deduction, this person
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: sc
+        field: sc.f7206_line14
+      cite:
+        doc: f7206
+        locator: Form 7206 (2025), line 14
+    - id: person.qbi
+      printed: (helper)
+      label: Qualified business income or loss of this person's businesses
+      type: Dollars
+      expr:
+        op: sum_over
+        collection: sc
+        field: sc.qbi
+      cite:
+        doc: i8995
+        locator: pp. 2, 4, Determining Your Qualified Business Income; Line 1
+    - id: person.eic_part1
+      printed: (helper)
+      label: 'Worksheet B, Part 1 for this person: Schedule SE line 3 less line 13'
+      type: Dollars
+      expr:
+        op: subtract
+        from: person.sc_total
+        take: person.se_line13
+      cite:
+        doc: i1040gi
+        locator: 'p. 47, Worksheet B, Part 1, lines 1a to 1e (line 1b is zero: the optional methods and church employee income
+          are refused)'
+    - id: person.files_se
+      printed: (helper)
+      label: This person files Schedule SE (line 4c is $400 or more)
+      type: Bool
+      expr:
+        op: test
+        gt:
+        - person.se_line4c
+        - param: sales.zero
+      cite:
+        doc: i1040gi
+        locator: p. 47, Worksheet B, Part 1 and Part 2, "Self-Employed NOT Required To File Schedule SE"
+    - id: person.eic_se_has
+      printed: (helper)
+      label: This person's self-employment earned income for Worksheet B
+      type: Dollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.files_se
+            - const: true
+          then: person.eic_part1
+        - guard:
+            op: test
+            eq:
+            - person.files_se
+            - const: false
+          then: person.sc_total
+      cite:
+        doc: i1040gi
+        locator: p. 47, Worksheet B, Part 1, line 1e, and Part 2, line 2b
+    - id: person.eic_se
+      printed: (helper)
+      label: Worksheet B, Parts 1 and 2, for this person
+      type: Dollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.has_sc
+            - const: true
+          then: person.eic_se_has
+        - guard:
+            op: test
+            eq:
+            - person.has_sc
+            - const: false
+          then: person.zero
+      cite:
+        doc: i1040gi
+        locator: p. 47, Worksheet B, "If you are married filing a joint return, include your spouse's amounts, if any, with yours"
+    - id: person.sc_1a
+      printed: (helper)
+      label: This person's Schedules C with Schedule 1-A tips or overtime
+      type: Count
+      expr:
+        op: sum_over
+        collection: sc
+        field: sc.one
+        where:
+          op: test
+          eq:
+          - sc.tips_ot
+          - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 104, Schedule 1-A, line 5
   collection:
     cite:
       doc: i1040gi

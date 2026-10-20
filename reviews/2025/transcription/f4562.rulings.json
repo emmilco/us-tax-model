@@ -1,0 +1,18 @@
+{
+ "kind": "transcription",
+ "form": "f4562",
+ "rulings": [
+  {
+   "printed": "21",
+   "project": "{\"of\": [{\"of\": [{\"collection\": \"asset\", \"field\": \"asset.bonus_2025\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"asset.listed\"}], \"test\": \"eq\"}}, {\"collection\": \"scveh\", \"field\": \"scveh.bonus\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}, {\"of\": [{\"collection\": \"asset\", \"field\": \"asset.dep_listed\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"asset.listed\"}], \"test\": \"eq\"}}, {\"collection\": \"scveh\", \"field\": \"scveh.macrs\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}], \"op\": \"sum\"}",
+   "second": "{\"line\": \"28\"}",
+   "ruling": "Ruling: equivalent; project retained. Line 21 is line 28 on both sides; the project copies sc.f28, which is sc.f25 plus sc.f26h, and the comparison expands that helper but keeps the second's line 28 as a reference."
+  },
+  {
+   "printed": "28",
+   "project": "{\"of\": [{\"of\": [{\"collection\": \"asset\", \"field\": \"asset.bonus_2025\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"asset.listed\"}], \"test\": \"eq\"}}, {\"collection\": \"scveh\", \"field\": \"scveh.bonus\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}, {\"of\": [{\"collection\": \"asset\", \"field\": \"asset.dep_listed\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"asset.listed\"}], \"test\": \"eq\"}}, {\"collection\": \"scveh\", \"field\": \"scveh.macrs\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}], \"op\": \"sum\"}",
+   "second": "{\"of\": [{\"line\": \"25\"}, {\"line\": \"26(h)\"}], \"op\": \"sum\"}",
+   "ruling": "Ruling: equivalent; project retained. The project copies sc.f28 (sc.f25 + sc.f26h, the business's line 25 and column (h) of line 26); the second adds its own lines 25 and 26(h), which copy the same two helpers. Line 27 is refused on both sides."
+  }
+ ]
+}

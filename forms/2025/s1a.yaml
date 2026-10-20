@@ -417,6 +417,12 @@ form:
       cite:
         doc: i1040gi
         locator: p. 104, Schedule 1-A, line 5, and the Multiple Trades or Businesses Worksheet
+    - when: s1.sc_1a
+      form: Schedule 1-A, line 5 (qualified tips in a trade or business, with Schedule C)
+      remedy: Qualified tips received in a trade or business are outside this tool.
+      cite:
+        doc: i1040gi
+        locator: p. 104, Schedule 1-A, line 5, and the Multiple Trades or Businesses Worksheet
   - id: s1a.line5
     printed: '5'
     label: Qualified tips received in the course of a trade or business
@@ -1006,6 +1012,12 @@ form:
       cite:
         doc: i1040gi
         locator: p. 108, Schedule 1-A, line 14b, and the Qualified Overtime Compensation From More Than One Payor Worksheet
+    - when: s1.sc_1a
+      form: Schedule 1-A, line 14b (qualified overtime reported on Form 1099-NEC or 1099-MISC)
+      remedy: Qualified overtime compensation reported on Form 1099-NEC or 1099-MISC is outside this tool.
+      cite:
+        doc: i1040gi
+        locator: p. 108, Schedule 1-A, line 14b
   - id: s1a.line14b
     printed: 14b
     label: Qualified overtime compensation included in Form 1099-NEC, box 1, or Form 1099-MISC, box 3

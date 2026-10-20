@@ -1,0 +1,18 @@
+# The mid-quarter convention for each quarter of 2025 in which property is placed in service. Written by hand.
+table:
+  id: quarter_convention
+  kind: keyed
+  title: "Mid-quarter convention by quarter placed in service"
+  tax_year: 2025
+  cite:
+    doc: i4562
+    locator: "p. 11, Column (e)—Convention, Mid-quarter convention; p. 12, the placed-in-service fractions by quarter"
+    quote: "The mid-quarter convention treats all property placed in service (or disposed of) during any quarter as placed in service (or disposed of) on the midpoint of that quarter."
+  keys:
+    - { name: quarter, type: Enum(quarter) }
+  cell: Enum(macrs_convention)
+  rows:
+    - { keys: [q1], value: mq1 }
+    - { keys: [q2], value: mq2 }
+    - { keys: [q3], value: mq3 }
+    - { keys: [q4], value: mq4 }

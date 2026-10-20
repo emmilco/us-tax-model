@@ -14,6 +14,7 @@ Logs go to reviews/2025/classm/<doc>.md. Rulings persist in <doc>.rulings.json b
 arithmetic error is not evidence) by giving {"ruling": "...", "drop": true}.
 """
 import argparse, datetime, hashlib, json, os, re, sys
+from fractions import Fraction
 import yaml
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -30,6 +31,10 @@ STATUS_WORDS = {"single": "Single", "mfj": "Married filing jointly", "mfs": "Mar
                 "hoh": "Head of household", "qss": "Qualifying surviving spouse"}
 
 
+RATE_ENUM_NOTE = """ A Rate line takes a percentage exactly as the table prints it (for example 17.49%); an
+Enum(name) line takes one of that enumeration's values, written as the value itself (for example y5 or hy)."""
+
+
 def dollars(v):
     k = v.get("kind")
     if k == "money":
@@ -40,7 +45,18 @@ def dollars(v):
         return str(v["value"])
     if k == "enum":
         return STATUS_WORDS.get(v["value"], v["value"])
+    if k == "rate":
+        return _pct(v)
     return str(v)
+
+
+def _pct(v):
+    """A rate as an exact percentage: 0.1749 is 17.49%."""
+    from decimal import Decimal, getcontext
+    getcontext().prec = 40
+    d = Decimal(v["num"]) * 100 / Decimal(v["den"])
+    t = format(d.normalize(), "f")
+    return t + "%"
 
 
 _titles = {}
@@ -150,7 +166,9 @@ def build_entry_prompt(form_doc, excerpt, job):
     fill = "\n".join(f'- "{l["printed"]}" ({l["type"]}): {l["label"]}' for l in job["fill"])
     if job.get("kind") == "def":
         what = ("This is a shared computation the forms invoke on an amount: work it for the one amount and "
-                "filing status given.")
+                "filing status given.") if len(job["given"]) <= 1 else (
+                "This is a shared computation a form invokes for one person: work it for the amounts and filing "
+                "status given.")
     else:
         what = ("This document is filled in once per entry (one row or one record per person, employer, sale "
                 "or gift). Each entry below is named by its key; work every listed line for every entry.")
@@ -180,7 +198,7 @@ Use them as they are; they are already correct. Amounts are dollars and cents.
 
 Each line is named by a quoted handle, with its value type and what it asks: a money line takes a
 dollar amount; a Bool line takes yes or no (the answer to the question or test as stated); a Count
-line takes a whole number.
+line takes a whole number.{RATE_ENUM_NOTE if any(l["type"] == "Rate" or l["type"].startswith("Enum(") for l in job["fill"]) else ""}
 
 {fill}
 
@@ -203,6 +221,13 @@ No prose before or after the YAML.
 
 def parse_value(raw, vtype):
     s = str(raw).strip().strip("$").replace(",", "").lower()
+    if vtype.startswith("Enum("):
+        return {"kind": "enum", "value": s}
+    if vtype == "Rate":
+        if s in ("", "blank", "-0-", "none", "n/a"):
+            return {"kind": "rate", "num": 0, "den": 1}
+        f = Fraction(s.rstrip("%")) / (100 if s.endswith("%") else 1)
+        return {"kind": "rate", "num": f.numerator, "den": f.denominator}
     if s in ("", "blank", "-0-", "skip", "skipped", "none", "n/a"):
         return {"kind": "money", "cents": 0} if vtype not in ("Bool", "Count") else ({"kind": "bool", "value": False} if vtype == "Bool" else {"kind": "count", "value": 0})
     if vtype == "Bool":
@@ -227,6 +252,8 @@ def extract(text):
 
 
 def same(a, b):
+    if a.get("kind") == "rate" and b.get("kind") == "rate":
+        return a["num"] * b["den"] == b["num"] * a["den"]
     return a.get("kind") == b.get("kind") and (a.get("cents") == b.get("cents") if a.get("kind") == "money" else a.get("value") == b.get("value"))
 
 

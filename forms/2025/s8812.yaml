@@ -399,25 +399,47 @@ form:
           cite:
             doc: i1040s8812
             locator: p. 8, Earned Income Worksheet, line 1b
-    - id: s8812.eiw_3
+    - id: s8812.eiw_2b
       printed: (helper)
-      type: NonNegDollars
-      label: Earned Income Worksheet, line 3. Combine lines 1a, 1b, 2a, 2b and 2e; lines 2a–2e are skipped without Schedule C, F, SE or a partnership K-1
+      label: Earned Income Worksheet, line 2b. Net profit or (loss) from Schedule C, line 31
+      type: Dollars
+      expr:
+        op: copy
+        from: s1.line3
+      cite:
+        doc: i1040s8812
+        locator: p. 8, Earned Income Worksheet, line 2b (lines 2a and 2c to 2e, statutory employees and farming, are refused)
+    - id: s8812.eiw_3sum
+      printed: (helper)
+      label: 'Earned Income Worksheet, line 3 before the stop: combine lines 1a, 1b, 2a, 2b and 2e'
+      type: Dollars
       expr:
         op: sum
         of:
-          - s8812.eiw_1a
-          - s8812.eiw_1b
+        - s8812.eiw_1a
+        - s8812.eiw_1b
+        - s8812.eiw_2b
       cite:
         doc: i1040s8812
-        locator: p. 8, Earned Income Worksheet, line 3, and "if you are filing Schedule C, F, or SE, or you received a Schedule K-1 (Form 1065), go to line 2a. Otherwise, skip lines 2a through 2e"
+        locator: p. 8, Earned Income Worksheet, line 3
+    - id: s8812.eiw_3
+      printed: (helper)
+      label: Earned Income Worksheet, line 3. Combine lines 1a, 1b, 2a, 2b, and 2e. If zero or less, enter -0-
+      type: NonNegDollars
+      expr:
+        op: subtract_floor0
+        from: s8812.eiw_3sum
+        take: s8812.zero
+      cite:
+        doc: i1040s8812
+        locator: p. 8, Earned Income Worksheet, line 3, "If zero or less, stop ... enter -0-"
       refuses:
-        - when: scope.schedule1
-          form: Earned Income Worksheet, lines 2a–2e (Schedule C, F, SE or K-1 income)
-          remedy: Self-employment and partnership income are outside this tool.
-          cite:
-            doc: i1040s8812
-            locator: p. 8, Earned Income Worksheet, lines 2a–2e
+      - when: scope.schedule1
+        form: Earned Income Worksheet, lines 2a–2e (statutory employee, farm or partnership income)
+        remedy: Statutory employee, farm and partnership income are outside this tool.
+        cite:
+          doc: i1040s8812
+          locator: p. 8, Earned Income Worksheet, lines 2a–2e
     - id: s8812.eiw_4
       printed: (helper)
       type: NonNegDollars
@@ -437,21 +459,14 @@ form:
             locator: p. 8, Earned Income Worksheet, line 4
     - id: s8812.eiw_5
       printed: (helper)
+      label: Earned Income Worksheet, line 5. Enter the amount from Schedule 1, line 15
       type: NonNegDollars
-      label: Earned Income Worksheet, line 5. Enter the amount from Schedule 1, line 15; zero in this slice
       expr:
         op: copy
-        from: s8812.zero
+        from: s1.line15
       cite:
         doc: i1040s8812
         locator: p. 8, Earned Income Worksheet, line 5
-      refuses:
-        - when: scope.schedule1
-          form: Earned Income Worksheet, line 5 (Schedule 1, line 15)
-          remedy: Schedule 1 amounts are outside this tool.
-          cite:
-            doc: i1040s8812
-            locator: p. 8, Earned Income Worksheet, line 5
     - id: s8812.eiw_6
       printed: (helper)
       type: NonNegDollars
@@ -464,10 +479,10 @@ form:
       cite:
         doc: i1040s8812
         locator: p. 8, Earned Income Worksheet, line 6
-    - id: s8812.eiw_7
+    - id: s8812.eiw_7_figured
       printed: (helper)
       type: Dollars
-      label: Earned Income Worksheet, line 7. Subtract line 6 from line 3. Enter this amount on line 18a of Schedule 8812
+      label: Earned Income Worksheet, line 7 when line 3 is more than zero. Subtract line 6 from line 3
       expr:
         op: subtract
         from: s8812.eiw_3
@@ -475,6 +490,40 @@ form:
       cite:
         doc: i1040s8812
         locator: p. 8, Earned Income Worksheet, line 7
+    - id: s8812.eiw_3_positive
+      printed: (helper)
+      type: Bool
+      label: Earned Income Worksheet, line 3 is more than zero
+      expr:
+        op: test
+        gt:
+          - s8812.eiw_3sum
+          - param: sales.zero
+      cite:
+        doc: i1040s8812
+        locator: p. 8, Earned Income Worksheet, line 3, "If zero or less, stop"
+    - id: s8812.eiw_7
+      printed: (helper)
+      type: Dollars
+      label: Earned Income Worksheet, line 7, the amount for line 18a of Schedule 8812 (zero when line 3 is zero or less)
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - s8812.eiw_3_positive
+                - const: false
+            then: s8812.zero
+          - guard:
+              op: test
+              eq:
+                - s8812.eiw_3_positive
+                - const: true
+            then: s8812.eiw_7_figured
+      cite:
+        doc: i1040s8812
+        locator: p. 8, Earned Income Worksheet, line 3, "If zero or less, stop. Do not complete the rest of this worksheet. Instead, enter -0- on ... line 18a of Schedule 8812", and line 7
     - id: s8812.taking_eic
       printed: (helper)
       type: Bool
@@ -487,6 +536,29 @@ form:
       cite:
         doc: i1040s8812
         locator: p. 7, Earned Income Chart—Line 18a, "are taking the EIC on Form 1040 or 1040-SR, line 27a"
+    - id: s8812.chart_eic
+      printed: (helper)
+      label: 'Earned Income Chart, taking the EIC: Worksheet B, line 4b, or the earned income from Step 5'
+      type: Dollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - eic.self_employed
+            - const: true
+          then: eic.wsb_4b
+        - guard:
+            op: test
+            eq:
+            - eic.self_employed
+            - const: false
+          then: eic.earned_income
+      cite:
+        doc: i1040s8812
+        locator: p. 7, Earned Income Chart—Line 18a, "completed Worksheet B ... your earned income from Worksheet B ..., line
+          4b" and "did not complete Worksheet B ... your earned income from Step 5"
     - id: s8812.line18a
       printed: 18a
       type: Dollars
@@ -499,7 +571,7 @@ form:
               eq:
                 - s8812.taking_eic
                 - const: true
-            then: eic.earned_income
+            then: s8812.chart_eic
           - guard:
               op: test
               eq:
@@ -570,10 +642,10 @@ form:
       cite:
         doc: i1040s8812
         locator: p. 9, Additional Medicare Tax and RRTA Tax Worksheet, lines 1–4
-    - id: s8812.line21
-      printed: "21"
+    - id: s8812.amt_ws6
+      printed: (helper)
       type: Dollars
-      label: Withheld social security, Medicare, and Additional Medicare taxes from Form(s) W-2, boxes 4 and 6; with Additional Medicare Tax, the worksheet amount (line 4 less the Additional Medicare Tax withheld, Form 8959 line 22)
+      label: Additional Medicare Tax and RRTA Tax Worksheet, line 6. Subtract line 5 (the Additional Medicare Tax withheld, Form 8959, line 22) from line 4
       expr:
         op: subtract
         from: s8812.amt_ws4
@@ -581,29 +653,48 @@ form:
       cite:
         doc: i1040s8812
         locator: p. 9, Additional Medicare Tax and RRTA Tax Worksheet, lines 5 and 6, "Subtract line 5 from line 4"
-    - id: s8812.line22
-      printed: "22"
+    - id: s8812.amt_ws7
+      printed: (helper)
       type: NonNegDollars
-      label: Enter the total of the amounts from Schedule 1, line 15; Schedule 2, line 5; Schedule 2, line 6; and Schedule 2, line 13; zero in this slice
+      label: Additional Medicare Tax and RRTA Tax Worksheet, line 7. One-half of the Additional Medicare Tax on self-employment income (one-half of Form 8959, line 13)
+      expr:
+        op: multiply_rate
+        amount: f8959.line13
+        rate:
+          param: se.rate_50
+      cite:
+        doc: i1040s8812
+        locator: p. 9, Additional Medicare Tax and RRTA Tax Worksheet, line 7, "Enter one-half of the Additional Medicare Tax, if any, on self-employment income (one-half of Form 8959, line 13)"
+    - id: s8812.line21
+      printed: "21"
+      type: Dollars
+      label: Withheld social security, Medicare, and Additional Medicare taxes from Form(s) W-2, boxes 4 and 6; with Additional Medicare Tax, the worksheet amount (lines 6 and 7 of the Additional Medicare Tax and RRTA Tax Worksheet)
+      expr:
+        op: sum
+        of:
+          - s8812.amt_ws6
+          - s8812.amt_ws7
+      cite:
+        doc: i1040s8812
+        locator: p. 9, Additional Medicare Tax and RRTA Tax Worksheet, line 16, "Add lines 6, 7, 11, and 15. Enter here and on line 21 of Schedule 8812" (lines 11 and 15, Tier 1 RRTA taxes, are refused)
+    - id: s8812.line22
+      printed: '22'
+      label: Enter the total of the amounts from Schedule 1, line 15; Schedule 2, line 5; Schedule 2, line 6; and Schedule 2,
+        line 13
+      type: NonNegDollars
       expr:
         op: copy
-        from: s8812.zero
+        from: s1.line15
       cite:
         doc: f1040s8812
-        locator: Schedule 8812 (2025), line 22
+        locator: Schedule 8812 (2025), line 22 (Schedule 2 lines 5, 6 and 13 are refused by s2.other)
       refuses:
-        - when: scope.schedule1
-          form: Schedule 8812 line 22 (Schedule 1, line 15)
-          remedy: Self-employment tax and its deduction are outside this tool.
-          cite:
-            doc: f1040s8812
-            locator: Schedule 8812 (2025), line 22
-        - when: s2.other
-          form: Schedule 8812 line 22 (Schedule 2, lines 5, 6 and 13)
-          remedy: Other Schedule 2 taxes are outside this tool.
-          cite:
-            doc: f1040s8812
-            locator: Schedule 8812 (2025), line 22
+      - when: s2.other
+        form: Schedule 8812 line 22 (Schedule 2, lines 5, 6 and 13)
+        remedy: Other Schedule 2 taxes are outside this tool.
+        cite:
+          doc: f1040s8812
+          locator: Schedule 8812 (2025), line 22
     - id: s8812.line23
       printed: "23"
       type: Dollars

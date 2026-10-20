@@ -88,7 +88,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sales[a].h": {
@@ -188,7 +190,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sales[a].h": {
@@ -288,7 +292,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sales[a].h": {
@@ -388,7 +394,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sales[a].h": {
@@ -488,7 +496,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sd.line8a.d": {
@@ -602,7 +612,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sd.line8a.d": {
@@ -706,7 +718,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sd.line1b.h": {
@@ -814,7 +828,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sd.line2.h": {
@@ -922,7 +938,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sd.line3.h": {
@@ -1030,7 +1048,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sd.line8b.h": {
@@ -1138,7 +1158,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sd.line9.h": {
@@ -1246,7 +1268,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sd.line10.h": {
@@ -1354,7 +1378,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sales[a].g": {
@@ -1462,7 +1488,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sales[a].g": {
@@ -1570,7 +1598,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sales[a].g": {
@@ -1678,7 +1708,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sales[a].g": {
@@ -1786,7 +1818,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sales[a].g": {
@@ -1894,7 +1928,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sales[a].g": {
@@ -2002,7 +2038,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sales[a].g": {
@@ -2110,7 +2148,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sales[a].g": {
@@ -2218,7 +2258,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sales[a].g": {
@@ -2326,7 +2368,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sales[a].g": {
@@ -2434,7 +2478,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sales[a].g": {
@@ -2542,7 +2588,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sales[a].g": {
@@ -2650,7 +2698,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sd.line16": {
@@ -2759,7 +2809,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sd.line16": {
@@ -2867,7 +2919,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sd.line16": {
@@ -2976,7 +3030,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sd.line16": {
@@ -3084,7 +3140,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sd.line16": {
@@ -3193,7 +3251,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sd.line16": {
@@ -3301,7 +3361,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sd.line16": {
@@ -3410,7 +3472,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sd.line16": {
@@ -3518,7 +3582,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sd.line16": {
@@ -3627,7 +3693,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sd.line16": {
@@ -3735,7 +3803,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sd.line16": {
@@ -3844,7 +3914,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sd.line16": {
@@ -3952,7 +4024,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sd.line16": {
@@ -4061,7 +4135,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sd.line16": {
@@ -4169,7 +4245,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sd.line16": {
@@ -4278,7 +4356,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sd.line16": {
@@ -4386,7 +4466,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sd.line16": {
@@ -4499,7 +4581,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sd.line16": {
@@ -4617,7 +4701,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sd.line1b.h": {
@@ -4718,7 +4804,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sd.filed": {
@@ -4827,7 +4915,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sd.filed": {
@@ -4937,7 +5027,8 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": []
       },
       "expect": {
         "f1040.line7a": {
@@ -5482,7 +5573,8 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": []
       },
       "expect": {
         "f1040.line7a": {
@@ -6027,7 +6119,8 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": []
       },
       "expect": {
         "f1040.line7a": {
@@ -6572,7 +6665,8 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": []
       },
       "expect": {
         "f1040.line7a": {
@@ -7117,7 +7211,8 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": []
       },
       "expect": {
         "f1040.line7a": {
@@ -7662,7 +7757,8 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": []
       },
       "expect": {
         "f1040.line7a": {
@@ -8207,7 +8303,8 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": []
       },
       "expect": {
         "f1040.line7a": {
@@ -8752,7 +8849,8 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": []
       },
       "expect": {
         "f1040.line7a": {
@@ -9297,7 +9395,8 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": []
       },
       "expect": {
         "f1040.line7a": {
@@ -9842,7 +9941,8 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": []
       },
       "expect": {
         "f1040.line7a": {
@@ -10387,7 +10487,8 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": []
       },
       "expect": {
         "f1040.line7a": {
@@ -10932,7 +11033,8 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": []
       },
       "expect": {
         "f1040.line7a": {
@@ -11477,7 +11579,8 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": []
       },
       "expect": {
         "f1040.line7a": {
@@ -12100,7 +12203,8 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": []
       },
       "expect": {
         "f1040.line7a": {
@@ -12732,7 +12836,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line16": {
@@ -12840,7 +12946,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line16": {
@@ -12948,7 +13056,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line16": {
@@ -13056,7 +13166,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.sdtw": {
@@ -13167,7 +13279,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.sdtw": {
@@ -13278,7 +13392,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.sdtw": {
@@ -13389,7 +13505,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.sdtw": {
@@ -13500,7 +13618,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.sdtw": {
@@ -13621,7 +13741,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sd.line7": {
@@ -13812,7 +13934,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sd.line1a.d": {

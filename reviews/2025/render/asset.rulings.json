@@ -1,0 +1,72 @@
+{
+ "kind": "render",
+ "form": "asset",
+ "rulings": [
+  {
+   "printed": "(c)",
+   "restated": "Divide helper \"The business use percentage, as cents\" by helper \"One hundred cents (100%)\", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply helper \"Cost or other basis\" by the result.",
+   "model": "The program stops after multiplying cost by business-use percentage. The IRS says: \"multiply the cost or other basis of the property by the percentage of business/investment use. From that result, subtract any credits and deductions allocable to the property,\" including \"Section 179 expense deduction\" and \"Any special depreciation allowance included on line 14.\"",
+   "ruling": "Ruling: deferred to T-030 (owner); values unaffected. The line is the business-use basis before the section 179 deduction and the special allowance; the form's column (c) subtracts them, which the project does on asset.ub, the basis every MACRS amount uses. Entry lines are not printed on the values sheet (TASKS.md T-030), and the Form 4562 totals take the asset's amounts only where they belong (the sc sums select 2025 property, earlier property and listed property: sc.f14, sc.f17, sc.f19_*, sc.f25, sc.f26h). The owner chose that, when entry lines are printed, each per-asset printed line will carry the form's value for that asset (T-030)."
+  },
+  {
+   "printed": "(c)",
+   "restated": "Divide helper \"The business use percentage, as cents\" by helper \"One hundred cents (100%)\", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply helper \"Cost or other basis\" by the result.",
+   "model": "The restatement stops at cost times the business-use percentage. Line 19 column (c) says 'multiply the cost or other basis of the property by the percentage of business/investment use. From that result, subtract any credits and deductions allocable to the property', including the 'Section 179 expense deduction' and 'Any special depreciation allowance included on line 14'.",
+   "ruling": "Ruling: deferred to T-030 (owner); values unaffected. The line is the business-use basis before the section 179 deduction and the special allowance; the form's column (c) subtracts them, which the project does on asset.ub, the basis every MACRS amount uses. Entry lines are not printed on the values sheet (TASKS.md T-030), and the Form 4562 totals take the asset's amounts only where they belong (the sc sums select 2025 property, earlier property and listed property: sc.f14, sc.f17, sc.f19_*, sc.f25, sc.f26h). The owner chose that, when entry lines are printed, each per-asset printed line will carry the form's value for that asset (T-030)."
+  },
+  {
+   "printed": "14",
+   "restated": "Choose — [helper \"Special depreciation allowance for this class of property\" = 'full' → helper \"The allowance when it is claimed: 100% if acquired after January 19, 2025, otherwise 40%\"] [helper \"Special depreciation allowance for this class of property\" = 'forty' → helper \"40% special allowance\"] [helper \"Special depreciation allowance for this class of property\" = 'none' → helper \"Zero\"]",
+   "model": "The 100%/40% amounts on the basis less section 179 follow the text, but line 14 is not limited to property placed in service in 2025. A pre-2025 asset with choice 'full' gets a line 14 amount. The IRS says the allowance is for \"qualified property ... placed in service during the tax year\" and \"applies only for the first year the property is placed in service.\"",
+   "ruling": "Ruling: deferred to T-030 (owner); values unaffected. The allowance is figured for every asset; Form 4562 line 14 adds it only for 2025 property that is not listed (asset.bonus_2025 with the listed filter) and line 25 for listed property, so an earlier asset's figure reaches no line. Entry lines are not printed on the values sheet (TASKS.md T-030), and the Form 4562 totals take the asset's amounts only where they belong (the sc sums select 2025 property, earlier property and listed property: sc.f14, sc.f17, sc.f19_*, sc.f25, sc.f26h). The owner chose that, when entry lines are printed, each per-asset printed line will carry the form's value for that asset (T-030)."
+  },
+  {
+   "printed": "14",
+   "restated": "Choose — [helper \"Special depreciation allowance for this class of property\" = 'full' → helper \"The allowance when it is claimed: 100% if acquired after January 19, 2025, otherwise 40%\"] [helper \"Special depreciation allowance for this class of property\" = 'forty' → helper \"40% special allowance\"] [helper \"Special depreciation allowance for this class of property\" = 'none' → helper \"Zero\"]",
+   "model": "The text says the allowance is 'For qualified property ... placed in service during the tax year' and 'applies only for the first year the property is placed in service'. The restatement does not depend on placement in 2025, so property placed in service in an earlier year would still produce a line 14 amount.",
+   "ruling": "Ruling: deferred to T-030 (owner); values unaffected. The allowance is figured for every asset; Form 4562 line 14 adds it only for 2025 property that is not listed (asset.bonus_2025 with the listed filter) and line 25 for listed property, so an earlier asset's figure reaches no line. Entry lines are not printed on the values sheet (TASKS.md T-030), and the Form 4562 totals take the asset's amounts only where they belong (the sc sums select 2025 property, earlier property and listed property: sc.f14, sc.f17, sc.f19_*, sc.f25, sc.f26h). The owner chose that, when entry lines are printed, each per-asset printed line will carry the form's value for that asset (T-030)."
+  },
+  {
+   "printed": "17",
+   "restated": "Choose — [helper \"The recovery period ended before 2025\" = false → helper \"MACRS depreciation for 2025\"] [helper \"The recovery period ended before 2025\" = true → helper \"Zero\"]",
+   "model": "Line 17 is 'For tangible property placed in service in tax years beginning before 2025', and Part V covers depreciation on listed property 'regardless of the tax year the property was placed in service'. The restatement does not depend on placement before 2025 or on listed status, so 2025 property or listed property would also produce a line 17 amount.",
+   "ruling": "Ruling: deferred to T-030 (owner); values unaffected. MACRS on earlier property is figured for every asset; line 17 adds it only for property placed in service before 2025 that is not listed (asset.dep_prior with the listed filter). Entry lines are not printed on the values sheet (TASKS.md T-030), and the Form 4562 totals take the asset's amounts only where they belong (the sc sums select 2025 property, earlier property and listed property: sc.f14, sc.f17, sc.f19_*, sc.f25, sc.f26h). The owner chose that, when entry lines are printed, each per-asset printed line will carry the form's value for that asset (T-030)."
+  },
+  {
+   "printed": "17",
+   "restated": "Choose — [helper \"The recovery period ended before 2025\" = false → helper \"MACRS depreciation for 2025\"] [helper \"The recovery period ended before 2025\" = true → helper \"Zero\"]",
+   "model": "Unadjusted basis times the table rate, and zero after the recovery period ends, follow Pub. 946. But line 17 is not limited to property placed in service before 2025 and not excluding listed property. The IRS says line 17 is \"For tangible property placed in service in tax years beginning before 2025 and depreciated under MACRS,\" and listed property goes in Part V.",
+   "ruling": "Ruling: deferred to T-030 (owner); values unaffected. MACRS on earlier property is figured for every asset; line 17 adds it only for property placed in service before 2025 that is not listed (asset.dep_prior with the listed filter). Entry lines are not printed on the values sheet (TASKS.md T-030), and the Form 4562 totals take the asset's amounts only where they belong (the sc sums select 2025 property, earlier property and listed property: sc.f14, sc.f17, sc.f19_*, sc.f25, sc.f26h). The owner chose that, when entry lines are printed, each per-asset printed line will carry the form's value for that asset (T-030)."
+  },
+  {
+   "printed": "19(g)",
+   "restated": "Choose — [mq helper \"The mid-quarter convention applies: the October to December bases are more than 40% of all 2025 bases\" = false → helper \"MACRS depreciation, half-year convention\"] [mq helper \"The mid-quarter convention applies: the October to December bases are more than 40% of all 2025 bases\" = true → helper \"MACRS depreciation, mid-quarter convention\"]",
+   "model": "The 40% mid-quarter test and basis-times-table-rate method match, but the value is not limited to 2025 non-listed property. The IRS says: \"Use lines 19a through 19j only for assets placed in service during the tax year beginning in 2025 and depreciated under GDS, except for automobiles and other listed property (which are reported in Part V).\"",
+   "ruling": "Ruling: deferred to T-030 (owner); values unaffected. MACRS on 2025 property is figured for every asset; lines 19a to 19j add it only for 2025 property that is not listed (asset.dep_2025 by period, with the listed filter). Entry lines are not printed on the values sheet (TASKS.md T-030), and the Form 4562 totals take the asset's amounts only where they belong (the sc sums select 2025 property, earlier property and listed property: sc.f14, sc.f17, sc.f19_*, sc.f25, sc.f26h). The owner chose that, when entry lines are printed, each per-asset printed line will carry the form's value for that asset (T-030)."
+  },
+  {
+   "printed": "19(g)",
+   "restated": "Choose — [mq helper \"The mid-quarter convention applies: the October to December bases are more than 40% of all 2025 bases\" = false → helper \"MACRS depreciation, half-year convention\"] [mq helper \"The mid-quarter convention applies: the October to December bases are more than 40% of all 2025 bases\" = true → helper \"MACRS depreciation, mid-quarter convention\"]",
+   "model": "The basis after section 179 and the special allowance, times the table rate, under the convention set by a test that is true when fourth-quarter bases 'exceed 40%' of all 2025 bases, is correct for non-listed property. However, the text says 'Use lines 19a through 19j only for assets placed in service during the tax year ... except for automobiles and other listed property (which are reported in Part V)', and the restatement does not exclude listed property used more than 50%.",
+   "ruling": "Ruling: deferred to T-030 (owner); values unaffected. MACRS on 2025 property is figured for every asset; lines 19a to 19j add it only for 2025 property that is not listed (asset.dep_2025 by period, with the listed filter). Entry lines are not printed on the values sheet (TASKS.md T-030), and the Form 4562 totals take the asset's amounts only where they belong (the sc sums select 2025 property, earlier property and listed property: sc.f14, sc.f17, sc.f19_*, sc.f25, sc.f26h). The owner chose that, when entry lines are printed, each per-asset printed line will carry the form's value for that asset (T-030)."
+  },
+  {
+   "printed": "26(h)",
+   "restated": "Add helper \"MACRS on 2025 property\" and helper \"MACRS on property placed in service before 2025\".",
+   "model": "Line 26 is Part V listed property: \"Use line 26 to figure depreciation for property used more than 50% in a qualified business use.\" The program instead adds the line 17/19(g) MACRS amounts for any property, including non-listed property that belongs only in Part III.",
+   "ruling": "Ruling: deferred to T-030 (owner); values unaffected. The sum is figured for every asset; line 26 column (h) adds it only for listed property (sc.f26_assets, where listed). Entry lines are not printed on the values sheet (TASKS.md T-030), and the Form 4562 totals take the asset's amounts only where they belong (the sc sums select 2025 property, earlier property and listed property: sc.f14, sc.f17, sc.f19_*, sc.f25, sc.f26h). The owner chose that, when entry lines are printed, each per-asset printed line will carry the form's value for that asset (T-030)."
+  },
+  {
+   "printed": "26(h)",
+   "restated": "Add helper \"MACRS on 2025 property\" and helper \"MACRS on property placed in service before 2025\".",
+   "model": "Line 26 is for listed property: 'Use line 26 to figure depreciation for property used more than 50% in a qualified business use', within Part V, Listed Property. The restatement adds line 19(g) and line 17 MACRS for every item, including non-listed property that belongs only on lines 17 and 19.",
+   "ruling": "Ruling: deferred to T-030 (owner); values unaffected. The sum is figured for every asset; line 26 column (h) adds it only for listed property (sc.f26_assets, where listed). Entry lines are not printed on the values sheet (TASKS.md T-030), and the Form 4562 totals take the asset's amounts only where they belong (the sc sums select 2025 property, earlier property and listed property: sc.f14, sc.f17, sc.f19_*, sc.f25, sc.f26h). The owner chose that, when entry lines are printed, each per-asset printed line will carry the form's value for that asset (T-030)."
+  },
+  {
+   "printed": "6(c)",
+   "restated": "Input — The amount of this property's cost you elect to expense under section 179 (zero if none; not more than its business cost)",
+   "model": "The elected-cost input and its more-than-50% limit are right, but listed property used more than 50% is not kept off this line. The IRS says: \"Do not include any listed property on line 6. Enter the elected section 179 cost of listed property in column (i) of line 26.\"",
+   "ruling": "Ruling: deferred to T-030 (owner); values unaffected. The election is one input per asset; Form 4562 line 6 sums it only for property that is not listed (person.s179_nonlisted) and line 7, from line 29, for listed property (person.s179_listed), as the instruction says. Entry lines are not printed on the values sheet (TASKS.md T-030), and the Form 4562 totals take the asset's amounts only where they belong (the sc sums select 2025 property, earlier property and listed property: sc.f14, sc.f17, sc.f19_*, sc.f25, sc.f26h). The owner chose that, when entry lines are printed, each per-asset printed line will carry the form's value for that asset (T-030)."
+  }
+ ]
+}

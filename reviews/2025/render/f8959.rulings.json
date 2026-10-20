@@ -1,0 +1,12 @@
+{
+ "kind": "render",
+ "form": "f8959",
+ "rulings": [
+  {
+   "printed": "8",
+   "restated": "Add person.se_line6 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The form says \"Self-employment income from Schedule SE (Form 1040), Part I, line 6. If you had a loss, enter -0-\", and the instructions say negative amounts shouldn't be considered. The restatement sums person.se_line6 with no per-person floor at zero, and the text given does not show whether se_line6 is already nonnegative, so a loss on one spouse's Schedule SE could offset the other's income.",
+   "ruling": "Ruling: representation; restatement accepted. person.se_line6 is a non-negative line (Schedule SE line 6 is zero when line 4c is less than $400, and lines 4a and 4c are zero or more for a profit; a loss enters zero), so a loss on one spouse's Schedule SE enters zero and cannot offset the other's; the sum is the per-person line 6 with negative amounts not considered, as the instructions say."
+  }
+ ]
+}

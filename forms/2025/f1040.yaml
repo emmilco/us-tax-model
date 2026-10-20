@@ -307,7 +307,7 @@ form:
     - id: f1040.line8
       printed: "8"
       label: Additional income from Schedule 1, line 10
-      type: NonNegDollars
+      type: Dollars
       expr:
         op: copy
         from: s1.line10

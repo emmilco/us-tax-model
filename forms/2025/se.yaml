@@ -1,0 +1,338 @@
+# Schedule SE, Part I, for one person: instanced from that person's lines (person.se_*) with their Schedule C
+# results and their Forms W-2 social security wages and tips. Each spouse with self-employment income files their own
+# (i1040sse p. 2, Joint Returns).
+
+def:
+  id: se
+  kind: def
+  title: Schedule SE (Form 1040) — Self-Employment Tax, one per person
+  tax_year: 2025
+  parameters:
+  - line2
+  - line8a
+  lines:
+  - id: line2
+    printed: '2'
+    label: Net profit or (loss) from Schedule C, line 31
+    type: Dollars
+    expr:
+      op: input
+      source: Bound by the calling line (this person's Schedule C results).
+    cite:
+      doc: f1040sse
+      locator: Schedule SE (2025), line 2; i1040sse p. 2, More Than One Business, "your net earnings from self-employment
+        are the combined net earnings from all of your businesses"
+  - id: line8a
+    printed: 8a
+    label: Total social security wages and tips (total of boxes 3 and 7 on Form(s) W-2)
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Bound by the calling line (this person's Forms W-2, boxes 3 and 7).
+    cite:
+      doc: f1040sse
+      locator: Schedule SE (2025), line 8a
+  - id: zero
+    printed: (helper)
+    label: Zero
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: sales.zero
+    cite:
+      doc: f1040sse
+      locator: Schedule SE (2025), lines 1a, 1b, 4b, 5a, 8b and 8c (zero under the screen of this person)
+  - id: line3
+    printed: '3'
+    label: Combine lines 1a, 1b, and 2
+    type: Dollars
+    expr:
+      op: copy
+      from: line2
+    cite:
+      doc: f1040sse
+      locator: 'Schedule SE (2025), line 3 (lines 1a and 1b are zero: farm income and Conservation Reserve Program payments
+        are refused)'
+  - id: positive
+    printed: (helper)
+    label: Line 3 is more than zero
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - line3
+      - param: sales.zero
+    cite:
+      doc: f1040sse
+      locator: Schedule SE (2025), line 4a
+  - id: rate9235
+    printed: (helper)
+    label: 92.35%
+    type: Rate
+    expr:
+      op: param
+      ref: se.rate_9235
+    cite:
+      doc: f1040sse
+      locator: Schedule SE (2025), line 4a, "multiply line 3 by 92.35% (0.9235)"
+  - id: line3pos
+    printed: (helper)
+    label: Line 3 when more than zero
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: line3
+      take: zero
+    cite:
+      doc: f1040sse
+      locator: Schedule SE (2025), line 4a
+  - id: line4a_pos
+    printed: (helper)
+    label: Line 3 times 92.35%
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: line3pos
+      rate: rate9235
+    cite:
+      doc: f1040sse
+      locator: Schedule SE (2025), line 4a
+  - id: line4a
+    printed: 4a
+    label: If line 3 is more than zero, multiply line 3 by 92.35% (0.9235). Otherwise, enter amount from line 3
+    type: Dollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - positive
+          - const: true
+        then: line4a_pos
+      - guard:
+          op: test
+          eq:
+          - positive
+          - const: false
+        then: line3
+    cite:
+      doc: f1040sse
+      locator: Schedule SE (2025), line 4a
+  - id: line4b
+    printed: 4b
+    label: If you elect one or both of the optional methods, enter the total of lines 15 and 17
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: zero
+    cite:
+      doc: f1040sse
+      locator: Schedule SE (2025), line 4b (the optional methods are refused)
+  - id: line4c_sum
+    printed: (helper)
+    label: Combine lines 4a and 4b
+    type: Dollars
+    expr:
+      op: sum
+      of:
+      - line4a
+      - line4b
+    cite:
+      doc: f1040sse
+      locator: Schedule SE (2025), line 4c
+  - id: floor
+    printed: (helper)
+    label: $400
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: se.floor
+    cite:
+      doc: f1040sse
+      locator: Schedule SE (2025), line 4c, "If less than $400, stop; you don't owe self-employment tax"
+  - id: owes
+    printed: (helper)
+    label: Line 4c is $400 or more
+    type: Bool
+    expr:
+      op: test
+      ge:
+      - line4c_sum
+      - floor
+    cite:
+      doc: f1040sse
+      locator: Schedule SE (2025), line 4c
+  - id: line4c_owes
+    printed: (helper)
+    label: Line 4c when $400 or more
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: line4c_sum
+      take: zero
+    cite:
+      doc: f1040sse
+      locator: Schedule SE (2025), line 4c
+  - id: line4c
+    printed: 4c
+    label: Combine lines 4a and 4b. If less than $400, stop; you don't owe self-employment tax
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - owes
+          - const: true
+        then: line4c_owes
+      - guard:
+          op: test
+          eq:
+          - owes
+          - const: false
+        then: zero
+    cite:
+      doc: f1040sse
+      locator: Schedule SE (2025), line 4c (church employee income is refused, so the exception does not arise)
+  - id: line5b
+    printed: 5b
+    label: Multiply line 5a by 92.35% (0.9235)
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: zero
+    cite:
+      doc: f1040sse
+      locator: Schedule SE (2025), lines 5a and 5b (church employee income is refused)
+  - id: line6
+    printed: '6'
+    label: Add lines 4c and 5b
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - line4c
+      - line5b
+    cite:
+      doc: f1040sse
+      locator: Schedule SE (2025), line 6
+  - id: line7
+    printed: '7'
+    label: Maximum amount of combined wages and self-employment earnings subject to social security tax for 2025
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: se.wage_base
+    cite:
+      doc: f1040sse
+      locator: Schedule SE (2025), line 7, "$176,100"
+  - id: line8d
+    printed: 8d
+    label: Add lines 8a, 8b, and 8c
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: line8a
+    cite:
+      doc: f1040sse
+      locator: Schedule SE (2025), line 8d (lines 8b and 8c, Forms 4137 and 8919, are refused)
+  - id: line9
+    printed: '9'
+    label: Subtract line 8d from line 7. If zero or less, enter -0-
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: line7
+      take: line8d
+    cite:
+      doc: f1040sse
+      locator: Schedule SE (2025), line 9
+  - id: ss_base
+    printed: (helper)
+    label: The smaller of line 6 or line 9
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - line6
+      - line9
+    cite:
+      doc: f1040sse
+      locator: Schedule SE (2025), line 10
+  - id: rate124
+    printed: (helper)
+    label: 12.4%
+    type: Rate
+    expr:
+      op: param
+      ref: se.rate_124
+    cite:
+      doc: f1040sse
+      locator: Schedule SE (2025), line 10, "by 12.4% (0.124)"
+  - id: line10
+    printed: '10'
+    label: Multiply the smaller of line 6 or line 9 by 12.4% (0.124)
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: ss_base
+      rate: rate124
+    cite:
+      doc: f1040sse
+      locator: Schedule SE (2025), line 10
+  - id: rate029
+    printed: (helper)
+    label: 2.9%
+    type: Rate
+    expr:
+      op: param
+      ref: se.rate_029
+    cite:
+      doc: f1040sse
+      locator: Schedule SE (2025), line 11, "by 2.9% (0.029)"
+  - id: line11
+    printed: '11'
+    label: Multiply line 6 by 2.9% (0.029)
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: line6
+      rate: rate029
+    cite:
+      doc: f1040sse
+      locator: Schedule SE (2025), line 11
+  - id: line12
+    printed: '12'
+    label: Self-employment tax. Add lines 10 and 11
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - line10
+      - line11
+    cite:
+      doc: f1040sse
+      locator: Schedule SE (2025), line 12, "Enter here and on Schedule 2 (Form 1040), line 4"
+  - id: rate50
+    printed: (helper)
+    label: 50%
+    type: Rate
+    expr:
+      op: param
+      ref: se.rate_50
+    cite:
+      doc: f1040sse
+      locator: Schedule SE (2025), line 13, "Multiply line 12 by 50% (0.50)"
+  - id: line13
+    printed: '13'
+    label: Deduction for one-half of self-employment tax. Multiply line 12 by 50% (0.50)
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: line12
+      rate: rate50
+    cite:
+      doc: f1040sse
+      locator: Schedule SE (2025), line 13, "Enter here and on Schedule 1 (Form 1040), line 15"

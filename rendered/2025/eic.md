@@ -218,7 +218,7 @@
 ## (helper) — `eic.step2_other`
 
 - **Authored helper label:** Step 2, question 4. No Schedule E, rental of personal property, Form 8814 or passive activity
-- **Encoded (Bool):** scope helper "Any income or adjustment requiring Schedule 1 other than unemployment compensation, educator expenses, the HSA deduction and student loan interest, including a taxable state or local tax refund; alimony; an IRA deduction; being self-employed or filing Schedule C (income or loss, including statutory-employee wages) or Schedule SE (including clergy, and church employee income: wages from a church that elected exemption from social security and Medicare taxes); rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1); rental of personal property; farm income (Schedule F); gambling winnings, prizes or other income for Schedule 1 line 8; or an exclusion of Medicaid waiver payments (Schedule 1 line 8s)? (Schedule 1-A deductions are asked separately.)" = false and scope helper "Any additional Form 1040 line 16 tax or filing, including filing Form 8814 (even with no tax), Form 4972, Form 8615, a section 962 election, Form 8621, a Form 8978 amount, or recapture of an education credit?" = false
+- **Encoded (Bool):** scope helper "Any income or adjustment requiring Schedule 1 other than business income or loss from Schedule C, unemployment compensation, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction and student loan interest, including a taxable state or local tax refund; alimony; an IRA deduction; statutory-employee wages or clergy income; church employee income (wages from a church that elected exemption from social security and Medicare taxes); other qualified retirement plans for the self-employed (such as a solo 401(k) or other Keogh plan); rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1); rental of personal property; farm income (Schedule F); gambling winnings, prizes or other income for Schedule 1 line 8; or an exclusion of Medicaid waiver payments (Schedule 1 line 8s)? (Schedule 1-A deductions are asked separately.)" = false and scope helper "Any additional Form 1040 line 16 tax or filing, including filing Form 8814 (even with no tax), Form 4972, Form 8615, a section 962 election, Form 8621, a Form 8978 amount, or recapture of an education credit?" = false
 - **Refusal:** when scope.schedule1 is true, cannot complete Pub. 596, Worksheet 1 (EIC, Step 2, question 4). Schedule E, rental of personal property and passive activity income are outside this tool. Cite: [i1040gi] p. 40, Step 2, question 4, "Yes. Use Worksheet 1 in Pub. 596" (2025; printed date 2026-02-25; sha256 482e9c48)
 - **Refusal:** when scope.other_line16 is true, cannot complete Form 8814 (EIC, Step 2, question 4). Reporting a child's interest and dividends on Form 8814 is outside this tool. Cite: [i1040gi] p. 40, Step 2, question 4 (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"all":[{"eq":["scope.schedule1",{"const":false}],"op":"test"},{"eq":["scope.other_line16",{"const":false}],"op":"test"}],"op":"test"}`
@@ -271,7 +271,7 @@
 
 - **Authored helper label:** Enter the amount from Form 1040 or 1040-SR, line 1z
 - **Encoded (NonNegDollars):** Enter the amount from f1040 line 1z.
-- **Refusal:** when scope.schedule1 is true, cannot complete Clergy, church employees, self-employment and statutory employees (EIC, Step 5, questions 1 and 2; Worksheet B). Schedule SE, Schedule C and Worksheet B are outside this tool. Cite: [i1040gi] p. 42, Step 5, questions 1 and 2; p. 43, Clergy and Church employees; p. 47, Worksheet B (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Refusal:** when scope.schedule1 is true, cannot complete Clergy, church employees and statutory employees (EIC, Step 5, questions 1 and 2; Worksheet B). Clergy, church employee and statutory employee income are outside this tool. Cite: [i1040gi] p. 42, Step 5, questions 1 and 2; p. 43, Clergy and Church employees; p. 47, Worksheet B (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"from":"f1040.line1z","op":"copy"}`
 - Cite: [i1040gi] p. 42, Step 5, worksheet line 1 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -305,11 +305,53 @@
 - Expr: `{"of":["eic.step5_line3","eic.step5_line4"],"op":"sum"}`
 - Cite: [i1040gi] p. 42, Step 5, worksheet line 5 (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `eic.sc_count`
+
+- **Authored helper label:** Number of Schedules C on the return
+- **Encoded (Count):** Add person.sc_count over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.sc_count","op":"sum_over"}`
+- Cite: [i1040gi] p. 42, Step 5, question 2, "Were you self-employed at any time in 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `eic.self_employed`
+
+- **Authored helper label:** Step 5, question 2: self-employed (Worksheet B)
+- **Encoded (Bool):** helper "Number of Schedules C on the return" > 0 (a count)
+- Expr: `{"gt":["eic.sc_count",{"const":0,"type":"Count"}],"op":"test"}`
+- Cite: [i1040gi] p. 42, Step 5, question 2, "Yes. Skip question 3 and Step 6; go to Worksheet B" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `eic.wsb_se`
+
+- **Authored helper label:** Worksheet B, lines 1e and 2c (both spouses on a joint return)
+- **Encoded (Dollars):** Add person.eic_se over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.eic_se","op":"sum_over"}`
+- Cite: [i1040gi] p. 47, Worksheet B, Parts 1 and 2 (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## 4b — `eic.wsb_4b`
+
+- **IRS:** Worksheet B, line 4b. Combine lines 1e, 2c, 3, and 4a. This is your total earned income
+- **Encoded (Dollars):** Add column (Step 5, 5) and helper "Worksheet B, lines 1e and 2c (both spouses on a joint return)".
+- Expr: `{"of":["eic.earned_income","eic.wsb_se"],"op":"sum"}`
+- Cite: [i1040gi] p. 47, Worksheet B, Part 4, line 4b (line 4a is your earned income from Step 5; line 3, statutory employees, is refused) (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## 6 — `eic.wsb_6`
+
+- **IRS:** Worksheet B, line 6. Enter your total earned income from Part 4, line 4b (zero if line 4b is zero or less)
+- **Encoded (NonNegDollars):** Subtract helper "No amount" from line 4b. If zero or less, enter -0-.
+- Expr: `{"from":"eic.wsb_4b","op":"subtract_floor0","take":"eic.zero"}`
+- Cite: [i1040gi] p. 47, Worksheet B, Part 4, "If line 4b is zero or less, STOP You can't take the credit", and Part 5, line 6 (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `eic.earned_for_limit`
+
+- **Authored helper label:** Earned income compared with the limit (Step 5, question 3, or Worksheet B, line 5)
+- **Encoded (Dollars):** Choose — [helper "Step 5, question 2: self-employed (Worksheet B)" = false → column (Step 5, 5)] [helper "Step 5, question 2: self-employed (Worksheet B)" = true → line 4b]
+- Expr: `{"alternatives":[{"guard":{"eq":["eic.self_employed",{"const":false}],"op":"test"},"then":"eic.earned_income"},{"guard":{"eq":["eic.self_employed",{"const":true}],"op":"test"},"then":"eic.wsb_4b"}],"op":"choose"}`
+- Cite: [i1040gi] p. 42, Step 5, question 3; p. 47, Worksheet B, Part 4, line 5 (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (helper) — `eic.step5_income`
 
 - **Authored helper label:** Step 5, question 3. Is your earned income less than the limit for the number of qualifying children with valid SSNs?
-- **Encoded (Bool):** column (Step 5, 5) < helper "Step 1 and Step 5 limit for the filing status and the number of qualifying children with valid SSNs"
-- Expr: `{"lt":["eic.earned_income","eic.limit"],"op":"test"}`
+- **Encoded (Bool):** helper "Earned income compared with the limit (Step 5, question 3, or Worksheet B, line 5)" < helper "Step 1 and Step 5 limit for the filing status and the number of qualifying children with valid SSNs"
+- Expr: `{"lt":["eic.earned_for_limit","eic.limit"],"op":"test"}`
 - Cite: [i1040gi] p. 42, Step 5, question 3 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `eic.eligible`
@@ -321,10 +363,10 @@
 
 ## 1 — `eic.line1`
 
-- **IRS:** Enter your earned income from Step 5
-- **Encoded (Dollars):** Enter the amount from column (Step 5, 5).
-- Expr: `{"from":"eic.earned_income","op":"copy"}`
-- Cite: [i1040gi] p. 46, Worksheet A, line 1 (2025; printed date 2026-02-25; sha256 482e9c48)
+- **IRS:** Enter your earned income from Step 5 (Worksheet A, line 1), or Worksheet B, line 6
+- **Encoded (Dollars):** Choose — [helper "Step 5, question 2: self-employed (Worksheet B)" = false → column (Step 5, 5)] [helper "Step 5, question 2: self-employed (Worksheet B)" = true → line 6 (eic.wsb_6)]
+- Expr: `{"alternatives":[{"guard":{"eq":["eic.self_employed",{"const":false}],"op":"test"},"then":"eic.earned_income"},{"guard":{"eq":["eic.self_employed",{"const":true}],"op":"test"},"then":"eic.wsb_6"}],"op":"choose"}`
+- Cite: [i1040gi] p. 46, Worksheet A, line 1; p. 48, Worksheet B, Part 5, line 6 (Worksheet A lines 2 to 6 are Worksheet B lines 7 to 11) (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `eic.line1_in_table`
 
@@ -504,7 +546,7 @@
 ## (helper) — `eic.credit`
 
 - **Authored helper label:** Earned income credit for Form 1040, line 27a (Worksheet A, line 6 when Steps 1 to 5 are passed; zero otherwise)
-- **Encoded (NonNegDollars):** Choose — [helper "Steps 1 to 5 passed in order (Step 6, figure the credit on Worksheet A)" = true → line 6] [helper "Steps 1 to 5 passed in order (Step 6, figure the credit on Worksheet A)" = false → helper "No amount"]
+- **Encoded (NonNegDollars):** Choose — [helper "Steps 1 to 5 passed in order (Step 6, figure the credit on Worksheet A)" = true → line 6 (eic.line6)] [helper "Steps 1 to 5 passed in order (Step 6, figure the credit on Worksheet A)" = false → helper "No amount"]
 - Expr: `{"alternatives":[{"guard":{"eq":["eic.eligible",{"const":true}],"op":"test"},"then":"eic.line6"},{"guard":{"eq":["eic.eligible",{"const":false}],"op":"test"},"then":"eic.zero"}],"op":"choose"}`
 - Cite: [i1040gi] pp. 40–46, each "STOP. You can't take the credit"; Worksheet A, line 6, "Enter this amount on Form 1040 or 1040-SR, line 27a" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -518,9 +560,23 @@
 ## (helper) — `eic.check_27c`
 
 - **Authored helper label:** The instructions say to check the box on line 27c (a STOP that says so, or Worksheet A line 2 is zero); the filer's own choice not to claim the EIC is not asked
-- **Encoded (Bool):** (helper "Adjusted gross income below the largest Step 1 limit (otherwise question 1 is "No" for any number of children)" = true and helper "Step 1, question 1. Is the amount on Form 1040, line 11b, less than the limit for the number of children who have valid SSNs?" = true and helper "Step 1, question 2. Do you have a social security number issued on or before the due date of your return that allows you to work and is valid for EIC purposes?" = false or helper "Steps 1 and 2 passed, so Step 3 or Step 4 is asked" = true and helper "At least one qualifying child for the EIC" = true and helper "Step 3, questions 3 to 5: not a married filer filing separately or as head of household, or one who lived apart from the spouse for the last 6 months of 2025 or is legally separated and lived apart at the end of 2025" = true and f1040 line Filing Status ≠ 'mfj' and helper "Could you be a qualifying child of another person for 2025?" = true or helper "Steps 1 and 2 passed, so Step 3 or Step 4 is asked" = true and helper "At least one qualifying child for the EIC" = false and helper "A married filer whose filing status is married filing separately or head of household" = false and helper "You, or your spouse if filing a joint return, were at least age 25 but under age 65 at the end of 2025" = true and helper "Was your main home in the United States for more than half of 2025?" = false or helper "Steps 1 and 2 passed, so Step 3 or Step 4 is asked" = true and helper "At least one qualifying child for the EIC" = false and helper "A married filer whose filing status is married filing separately or head of household" = false and helper "You, or your spouse if filing a joint return, were at least age 25 but under age 65 at the end of 2025" = true and helper "Was your main home in the United States for more than half of 2025?" = true and f1040 line Filing Status ≠ 'mfj' and helper "Could you be a qualifying child of another person for 2025?" = true or helper "Steps 1 to 5 passed in order (Step 6, figure the credit on Worksheet A)" = true and line 2 = $0 (sales.zero))
-- Expr: `{"any":[{"all":[{"eq":["eic.below_top",{"const":true}],"op":"test"},{"eq":["eic.step1_income",{"const":true}],"op":"test"},{"eq":["eic.step1_ssn",{"const":false}],"op":"test"}],"op":"test"},{"all":[{"eq":["eic.reached_step3",{"const":true}],"op":"test"},{"eq":["eic.has_qc",{"const":true}],"op":"test"},{"eq":["eic.step3_married",{"const":true}],"op":"test"},{"ne":["f1040.status",{"const":"mfj"}],"op":"test"},{"eq":["eic.qc_of_another",{"const":true}],"op":"test"}],"op":"test"},{"all":[{"eq":["eic.reached_step3",{"const":true}],"op":"test"},{"eq":["eic.has_qc",{"const":false}],"op":"test"},{"eq":["eic.married_rules",{"const":false}],"op":"test"},{"eq":["eic.age_range",{"const":true}],"op":"test"},{"eq":["eic.us_home",{"const":false}],"op":"test"}],"op":"test"},{"all":[{"eq":["eic.reached_step3",{"const":true}],"op":"test"},{"eq":["eic.has_qc",{"const":false}],"op":"test"},{"eq":["eic.married_rules",{"const":false}],"op":"test"},{"eq":["eic.age_range",{"const":true}],"op":"test"},{"eq":["eic.us_home",{"const":true}],"op":"test"},{"ne":["f1040.status",{"const":"mfj"}],"op":"test"},{"eq":["eic.qc_of_another",{"const":true}],"op":"test"}],"op":"test"},{"all":[{"eq":["eic.eligible",{"const":true}],"op":"test"},{"eq":["eic.line2",{"param":"sales.zero"}],"op":"test"}],"op":"test"}],"op":"test"}`
-- Cite: [i1040gi] p. 40, Step 1, question 2; p. 41, Step 3, question 6; p. 42, Step 4, questions 3 and 5; p. 43, Line 27c; p. 46, Worksheet A, line 2 ("Check the box on Form 1040 or 1040-SR, line 27c") (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Encoded (Bool):** (helper "Adjusted gross income below the largest Step 1 limit (otherwise question 1 is "No" for any number of children)" = true and helper "Step 1, question 1. Is the amount on Form 1040, line 11b, less than the limit for the number of children who have valid SSNs?" = true and helper "Step 1, question 2. Do you have a social security number issued on or before the due date of your return that allows you to work and is valid for EIC purposes?" = false or helper "Steps 1 and 2 passed, so Step 3 or Step 4 is asked" = true and helper "At least one qualifying child for the EIC" = true and helper "Step 3, questions 3 to 5: not a married filer filing separately or as head of household, or one who lived apart from the spouse for the last 6 months of 2025 or is legally separated and lived apart at the end of 2025" = true and f1040 line Filing Status ≠ 'mfj' and helper "Could you be a qualifying child of another person for 2025?" = true or helper "Steps 1 and 2 passed, so Step 3 or Step 4 is asked" = true and helper "At least one qualifying child for the EIC" = false and helper "A married filer whose filing status is married filing separately or head of household" = false and helper "You, or your spouse if filing a joint return, were at least age 25 but under age 65 at the end of 2025" = true and helper "Was your main home in the United States for more than half of 2025?" = false or helper "Steps 1 and 2 passed, so Step 3 or Step 4 is asked" = true and helper "At least one qualifying child for the EIC" = false and helper "A married filer whose filing status is married filing separately or head of household" = false and helper "You, or your spouse if filing a joint return, were at least age 25 but under age 65 at the end of 2025" = true and helper "Was your main home in the United States for more than half of 2025?" = true and f1040 line Filing Status ≠ 'mfj' and helper "Could you be a qualifying child of another person for 2025?" = true or helper "Steps 1 to 5 passed in order (Step 6, figure the credit on Worksheet A)" = true and line 2 = $0 (sales.zero) or helper "Worksheet B, line 5 is No (line 4b is not less than the limit), a STOP that says to check line 27c" = true)
+- Expr: `{"any":[{"all":[{"eq":["eic.below_top",{"const":true}],"op":"test"},{"eq":["eic.step1_income",{"const":true}],"op":"test"},{"eq":["eic.step1_ssn",{"const":false}],"op":"test"}],"op":"test"},{"all":[{"eq":["eic.reached_step3",{"const":true}],"op":"test"},{"eq":["eic.has_qc",{"const":true}],"op":"test"},{"eq":["eic.step3_married",{"const":true}],"op":"test"},{"ne":["f1040.status",{"const":"mfj"}],"op":"test"},{"eq":["eic.qc_of_another",{"const":true}],"op":"test"}],"op":"test"},{"all":[{"eq":["eic.reached_step3",{"const":true}],"op":"test"},{"eq":["eic.has_qc",{"const":false}],"op":"test"},{"eq":["eic.married_rules",{"const":false}],"op":"test"},{"eq":["eic.age_range",{"const":true}],"op":"test"},{"eq":["eic.us_home",{"const":false}],"op":"test"}],"op":"test"},{"all":[{"eq":["eic.reached_step3",{"const":true}],"op":"test"},{"eq":["eic.has_qc",{"const":false}],"op":"test"},{"eq":["eic.married_rules",{"const":false}],"op":"test"},{"eq":["eic.age_range",{"const":true}],"op":"test"},{"eq":["eic.us_home",{"const":true}],"op":"test"},{"ne":["f1040.status",{"const":"mfj"}],"op":"test"},{"eq":["eic.qc_of_another",{"const":true}],"op":"test"}],"op":"test"},{"all":[{"eq":["eic.eligible",{"const":true}],"op":"test"},{"eq":["eic.line2",{"param":"sales.zero"}],"op":"test"}],"op":"test"},{"eq":["eic.wsb_line5_stop",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 40, Step 1, question 2; p. 41, Step 3, question 6; p. 42, Step 4, questions 3 and 5; p. 43, Line 27c; p. 46, Worksheet A, line 2 ("Check the box on Form 1040 or 1040-SR, line 27c"); p. 47, Worksheet B, line 5 (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `eic.wsb_4b_positive`
+
+- **Authored helper label:** Worksheet B, line 4b is more than zero (the worksheet continues to line 5)
+- **Encoded (Bool):** line 4b > $0 (sales.zero)
+- Expr: `{"gt":["eic.wsb_4b",{"param":"sales.zero"}],"op":"test"}`
+- Cite: [i1040gi] p. 47, Worksheet B, Part 4, "If line 4b is zero or less, STOP" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `eic.wsb_line5_stop`
+
+- **Authored helper label:** Worksheet B, line 5 is No (line 4b is not less than the limit), a STOP that says to check line 27c
+- **Encoded (Bool):** helper "Adjusted gross income below the largest Step 1 limit (otherwise question 1 is "No" for any number of children)" = true and helper "Step 1, question 1. Is the amount on Form 1040, line 11b, less than the limit for the number of children who have valid SSNs?" = true and helper "Step 1, question 2. Do you have a social security number issued on or before the due date of your return that allows you to work and is valid for EIC purposes?" = true and helper "Step 1, question 3. Not filing Form 2555 (foreign earned income)" = true and helper "Step 1, question 4. Not a nonresident alien for any part of 2025" = true and helper "Step 2, question 2. Investment income not more than $11,950 (more than $11,950 stops at question 3 without Form 4797)" = true and helper "Step 2, question 4. No Schedule E, rental of personal property, Form 8814 or passive activity" = true and helper "Step 3 for a filer with a qualifying child, Step 4 otherwise" = true and helper "Step 5, question 2: self-employed (Worksheet B)" = true and helper "Worksheet B, line 4b is more than zero (the worksheet continues to line 5)" = true and helper "Step 5, question 3. Is your earned income less than the limit for the number of qualifying children with valid SSNs?" = false
+- Expr: `{"all":[{"eq":["eic.below_top",{"const":true}],"op":"test"},{"eq":["eic.step1_income",{"const":true}],"op":"test"},{"eq":["eic.step1_ssn",{"const":true}],"op":"test"},{"eq":["eic.step1_foreign",{"const":true}],"op":"test"},{"eq":["eic.step1_resident",{"const":true}],"op":"test"},{"eq":["eic.step2_income",{"const":true}],"op":"test"},{"eq":["eic.step2_other",{"const":true}],"op":"test"},{"eq":["eic.step34",{"const":true}],"op":"test"},{"eq":["eic.self_employed",{"const":true}],"op":"test"},{"eq":["eic.wsb_4b_positive",{"const":true}],"op":"test"},{"eq":["eic.step5_income",{"const":false}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 47, Worksheet B, line 5, "No. STOP You can't take the credit. Check the box on Form 1040 or 1040-SR, line 27c" (reached after Steps 1 to 4 and Step 5, question 2, Yes; Step 5, question 3, has no such instruction, p. 42) (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `eic.separated_box`
 
@@ -532,7 +588,7 @@
 ## (helper) — `eic.clergy`
 
 - **Authored helper label:** A member of the clergy filing Schedule SE with an amount also on Form 1040, line 1z (refused; Schedule SE is outside the tool)
-- **Encoded (Bool):** scope helper "Any income or adjustment requiring Schedule 1 other than unemployment compensation, educator expenses, the HSA deduction and student loan interest, including a taxable state or local tax refund; alimony; an IRA deduction; being self-employed or filing Schedule C (income or loss, including statutory-employee wages) or Schedule SE (including clergy, and church employee income: wages from a church that elected exemption from social security and Medicare taxes); rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1); rental of personal property; farm income (Schedule F); gambling winnings, prizes or other income for Schedule 1 line 8; or an exclusion of Medicaid waiver payments (Schedule 1 line 8s)? (Schedule 1-A deductions are asked separately.)" = true
+- **Encoded (Bool):** scope helper "Any income or adjustment requiring Schedule 1 other than business income or loss from Schedule C, unemployment compensation, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction and student loan interest, including a taxable state or local tax refund; alimony; an IRA deduction; statutory-employee wages or clergy income; church employee income (wages from a church that elected exemption from social security and Medicare taxes); other qualified retirement plans for the self-employed (such as a solo 401(k) or other Keogh plan); rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1); rental of personal property; farm income (Schedule F); gambling winnings, prizes or other income for Schedule 1 line 8; or an exclusion of Medicaid waiver payments (Schedule 1 line 8s)? (Schedule 1-A deductions are asked separately.)" = true
 - **Refusal:** when scope.schedule1 is true, cannot complete Clergy filing Schedule SE (Form 1040, line 27b). Schedule SE is outside this tool. Cite: [i1040gi] p. 43, Line 27b, and Clergy (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"eq":["scope.schedule1",{"const":true}],"op":"test"}`
 - Cite: [i1040gi] p. 43, Line 27b (2025; printed date 2026-02-25; sha256 482e9c48)

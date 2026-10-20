@@ -4,8 +4,8 @@ form:
   title: Qualified passenger vehicle loan interest (Schedule 1-A, line 22) — one entry per loan
   tax_year: 2025
   note: One entry per loan; name each entry by the vehicle's VIN (a vehicle with a loan refinanced during 2025 has one
-    entry for each loan). Interest deducted on Schedule C, E or F (column (ii)) is outside this tool, which refuses
-    those schedules, so column (iii) is the qualified interest on the loan. Where a loan also financed amounts that do
+    entry for each loan). Interest deducted on Schedule C (column (ii)) is asked when the return has a Schedule C; Schedules E
+    and F are refused. Where a loan also financed amounts that do
     not qualify, or refinanced a qualifying loan for more than its balance, the interest is allocated pro rata under
     proposed § 1.163-16(d)(2)(iii) and (d)(4); the ratio is rounded to six places (amb.2025.carloan_ratio_places).
   lines:
@@ -88,8 +88,8 @@ form:
     type: NonNegDollars
     expr:
       op: input
-      source: Total interest you paid or accrued on this loan in 2025 (generally from the lender's statement), none of
-        it deducted elsewhere on your return
+      source: Total interest you paid or accrued on this loan in 2025 (generally from the lender's statement), including any
+        part you deduct on Schedule C (that part is entered separately)
     cite:
       doc: i1040gi
       locator: p. 110, Schedule 1-A, line 22, column (iii), "the total amount of the QPVLI paid or accrued on the loan
@@ -298,8 +298,8 @@ form:
         the indebtedness described in paragraph (d)(2)(i) ... and the portion ... described in paragraph (d)(2)(ii) ...
         on a pro rata basis"
     ambiguity: amb.2025.carloan_ratio_places
-  - id: carloan.col_iii
-    printed: 22(iii)
+  - id: carloan.qpvli
+    printed: (helper)
     label: Interest for this loan, Schedule 1-A
     type: NonNegDollars
     expr:
@@ -321,6 +321,51 @@ form:
       doc: i1040gi
       locator: p. 110, Schedule 1-A, line 22, column (iii); column (ii), interest deducted on Schedule C, E or F, is outside
         this tool (scope.schedule1)
+  - id: carloan.col_ii_input
+    printed: 22(ii)
+    label: Interest on this loan deducted on Schedule C
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The part of this loan's 2025 interest you deduct on Schedule C (the business use of the vehicle; zero if none)
+    cite:
+      doc: i1040gi
+      locator: p. 110, Schedule 1-A, line 22, column (ii), "Enter the amount of the QPVLI ... that you deducted on Schedule
+        C, E, or F"; i1040sc p. 6, Line 9 caution
+  - id: carloan.col_ii
+    printed: (helper)
+    label: Interest deducted on Schedule C (zero without a Schedule C)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - s1.has_sc
+          - const: true
+        then: carloan.col_ii_input
+      - guard:
+          op: test
+          eq:
+          - s1.has_sc
+          - const: false
+        then: carloan.zero
+    cite:
+      doc: i1040gi
+      locator: p. 110, Schedule 1-A, line 22, column (ii)
+  - id: carloan.col_iii
+    printed: 22(iii)
+    label: Qualified passenger vehicle loan interest less the amount in column (ii)
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: carloan.qpvli
+      take: carloan.col_ii
+    cite:
+      doc: i1040gi
+      locator: p. 110, Schedule 1-A, line 22, column (iii), "the total amount of the QPVLI paid or accrued on the loan during
+        the taxable year minus the amount on line 22, column (ii)"
   collection:
     cite:
       doc: i1040gi

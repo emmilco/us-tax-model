@@ -1,0 +1,150 @@
+{
+ "kind": "classm",
+ "form": "sc",
+ "rulings": [
+  {
+   "case": "classm.sc.1",
+   "printed": "person[taxpayer].sc[biz_a].s179_return",
+   "project": "$10,804.00",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the Form 7206 lines for a business without a health plan, the loss lines for a profit, the single-Schedule-C section 179 line on a return with two, the home office line for the limit that does not bind); each is read only in its own case, and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.sc.1",
+   "printed": "person[taxpayer].sc[biz_b].f7206_has",
+   "project": "yes",
+   "model": "no",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the Form 7206 lines for a business without a health plan, the loss lines for a profit, the single-Schedule-C section 179 line on a return with two, the home office line for the limit that does not bind); each is read only in its own case, and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.sc.1",
+   "printed": "person[taxpayer].sc[biz_b].f7206_line10",
+   "project": "$54,609.17",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the Form 7206 lines for a business without a health plan, the loss lines for a profit, the single-Schedule-C section 179 line on a return with two, the home office line for the limit that does not bind); each is read only in its own case, and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.sc.1",
+   "printed": "person[taxpayer].sc[biz_b].f7206_line13",
+   "project": "$54,609.17",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the Form 7206 lines for a business without a health plan, the loss lines for a profit, the single-Schedule-C section 179 line on a return with two, the home office line for the limit that does not bind); each is read only in its own case, and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.sc.1",
+   "printed": "person[taxpayer].sc[biz_b].f7206_line4",
+   "project": "$56,997.40",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the Form 7206 lines for a business without a health plan, the loss lines for a profit, the single-Schedule-C section 179 line on a return with two, the home office line for the limit that does not bind); each is read only in its own case, and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.sc.1",
+   "printed": "person[taxpayer].sc[biz_b].f7206_line7",
+   "project": "$2,388.23",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the Form 7206 lines for a business without a health plan, the loss lines for a profit, the single-Schedule-C section 179 line on a return with two, the home office line for the limit that does not bind); each is read only in its own case, and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.sc.1",
+   "printed": "person[taxpayer].sc[biz_b].f7206_line7_pos",
+   "project": "$2,388.23",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the Form 7206 lines for a business without a health plan, the loss lines for a profit, the single-Schedule-C section 179 line on a return with two, the home office line for the limit that does not bind); each is read only in its own case, and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.sc.1",
+   "printed": "person[taxpayer].sc[biz_b].f7206_line8",
+   "project": "$54,609.17",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the Form 7206 lines for a business without a health plan, the loss lines for a profit, the single-Schedule-C section 179 line on a return with two, the home office line for the limit that does not bind); each is read only in its own case, and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.sc.1",
+   "printed": "person[taxpayer].sc[biz_b].ho_both",
+   "project": "$0.00",
+   "model": "$1,500.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the Form 7206 lines for a business without a health plan, the loss lines for a profit, the single-Schedule-C section 179 line on a return with two, the home office line for the limit that does not bind); each is read only in its own case, and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.sc.1",
+   "printed": "person[taxpayer].sc[biz_b].ho_line5_lim",
+   "project": "$0.00",
+   "model": "$1,500.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the Form 7206 lines for a business without a health plan, the loss lines for a profit, the single-Schedule-C section 179 line on a return with two, the home office line for the limit that does not bind); each is read only in its own case, and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.sc.1",
+   "printed": "person[taxpayer].sc[biz_b].loss_allowed",
+   "project": "$56,997.40",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the Form 7206 lines for a business without a health plan, the loss lines for a profit, the single-Schedule-C section 179 line on a return with two, the home office line for the limit that does not bind); each is read only in its own case, and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.sc.1",
+   "printed": "person[taxpayer].sc[biz_b].qbi",
+   "project": "$54,609.17",
+   "model": "$54,609.18",
+   "ruling": "Ruling: model arithmetic; project retained. The model multiplied net earnings by 15.3% at once; Schedule SE figures line 10 (12.4%) and line 11 (2.9%) separately, each rounded to the cent, and line 13 is half their sum (f1040sse lines 10 to 13), which gives the project's amount one cent higher. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.sc.1",
+   "printed": "person[taxpayer].sc[biz_b].qbi_ded",
+   "project": "$2,388.23",
+   "model": "$2,388.22",
+   "ruling": "Ruling: model arithmetic; project retained. The model multiplied net earnings by 15.3% at once; Schedule SE figures line 10 (12.4%) and line 11 (2.9%) separately, each rounded to the cent, and line 13 is half their sum (f1040sse lines 10 to 13), which gives the project's amount one cent higher. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.sc.1",
+   "printed": "person[taxpayer].sc[biz_b].qbi_se",
+   "project": "$2,388.23",
+   "model": "$2,388.22",
+   "ruling": "Ruling: model arithmetic; project retained. The model multiplied net earnings by 15.3% at once; Schedule SE figures line 10 (12.4%) and line 11 (2.9%) separately, each rounded to the cent, and line 13 is half their sum (f1040sse lines 10 to 13), which gives the project's amount one cent higher. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.sc.1",
+   "printed": "person[taxpayer].sc[biz_b].qbi_se_pos",
+   "project": "$2,388.23",
+   "model": "$2,388.22",
+   "ruling": "Ruling: model arithmetic; project retained. The model multiplied net earnings by 15.3% at once; Schedule SE figures line 10 (12.4%) and line 11 (2.9%) separately, each rounded to the cent, and line 13 is half their sum (f1040sse lines 10 to 13), which gives the project's amount one cent higher. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.sc.1",
+   "printed": "person[taxpayer].sc[biz_b].s179_return",
+   "project": "$10,804.00",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the Form 7206 lines for a business without a health plan, the loss lines for a profit, the single-Schedule-C section 179 line on a return with two, the home office line for the limit that does not bind); each is read only in its own case, and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.sc.2",
+   "printed": "person[taxpayer].sc[biz_b].loss_allowed",
+   "project": "$24,376.22",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the Form 7206 lines for a business without a health plan, the loss lines for a profit, the single-Schedule-C section 179 line on a return with two, the home office line for the limit that does not bind); each is read only in its own case, and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.sc.3",
+   "printed": "person[taxpayer].sc[biz_a].loss_allowed",
+   "project": "$231.42",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the Form 7206 lines for a business without a health plan, the loss lines for a profit, the single-Schedule-C section 179 line on a return with two, the home office line for the limit that does not bind); each is read only in its own case, and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  }
+ ]
+}

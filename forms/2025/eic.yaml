@@ -749,8 +749,8 @@ form:
         locator: p. 42, Step 5, worksheet line 1
       refuses:
         - when: scope.schedule1
-          form: Clergy, church employees, self-employment and statutory employees (EIC, Step 5, questions 1 and 2; Worksheet B)
-          remedy: Schedule SE, Schedule C and Worksheet B are outside this tool.
+          form: Clergy, church employees and statutory employees (EIC, Step 5, questions 1 and 2; Worksheet B)
+          remedy: Clergy, church employee and statutory employee income are outside this tool.
           cite:
             doc: i1040gi
             locator: p. 42, Step 5, questions 1 and 2; p. 43, Clergy and Church employees; p. 47, Worksheet B
@@ -811,6 +811,87 @@ form:
       cite:
         doc: i1040gi
         locator: p. 42, Step 5, worksheet line 5
+    - id: eic.sc_count
+      printed: (helper)
+      label: Number of Schedules C on the return
+      type: Count
+      expr:
+        op: sum_over
+        collection: person
+        field: person.sc_count
+      cite:
+        doc: i1040gi
+        locator: p. 42, Step 5, question 2, "Were you self-employed at any time in 2025"
+    - id: eic.self_employed
+      printed: (helper)
+      label: 'Step 5, question 2: self-employed (Worksheet B)'
+      type: Bool
+      expr:
+        op: test
+        gt:
+        - eic.sc_count
+        - const: 0
+          type: Count
+      cite:
+        doc: i1040gi
+        locator: p. 42, Step 5, question 2, "Yes. Skip question 3 and Step 6; go to Worksheet B"
+    - id: eic.wsb_se
+      printed: (helper)
+      label: Worksheet B, lines 1e and 2c (both spouses on a joint return)
+      type: Dollars
+      expr:
+        op: sum_over
+        collection: person
+        field: person.eic_se
+      cite:
+        doc: i1040gi
+        locator: p. 47, Worksheet B, Parts 1 and 2
+    - id: eic.wsb_4b
+      printed: 4b
+      label: Worksheet B, line 4b. Combine lines 1e, 2c, 3, and 4a. This is your total earned income
+      type: Dollars
+      expr:
+        op: sum
+        of:
+        - eic.earned_income
+        - eic.wsb_se
+      cite:
+        doc: i1040gi
+        locator: p. 47, Worksheet B, Part 4, line 4b (line 4a is your earned income from Step 5; line 3, statutory employees,
+          is refused)
+    - id: eic.wsb_6
+      printed: '6'
+      label: Worksheet B, line 6. Enter your total earned income from Part 4, line 4b (zero if line 4b is zero or less)
+      type: NonNegDollars
+      expr:
+        op: subtract_floor0
+        from: eic.wsb_4b
+        take: eic.zero
+      cite:
+        doc: i1040gi
+        locator: p. 47, Worksheet B, Part 4, "If line 4b is zero or less, STOP You can't take the credit", and Part 5, line 6
+    - id: eic.earned_for_limit
+      printed: (helper)
+      label: Earned income compared with the limit (Step 5, question 3, or Worksheet B, line 5)
+      type: Dollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - eic.self_employed
+            - const: false
+          then: eic.earned_income
+        - guard:
+            op: test
+            eq:
+            - eic.self_employed
+            - const: true
+          then: eic.wsb_4b
+      cite:
+        doc: i1040gi
+        locator: p. 42, Step 5, question 3; p. 47, Worksheet B, Part 4, line 5
     - id: eic.step5_income
       printed: (helper)
       type: Bool
@@ -818,7 +899,7 @@ form:
       expr:
         op: test
         lt:
-          - eic.earned_income
+          - eic.earned_for_limit
           - eic.limit
       cite:
         doc: i1040gi
@@ -873,15 +954,28 @@ form:
 
     # Worksheet A.
     - id: eic.line1
-      printed: "1"
+      printed: '1'
+      label: Enter your earned income from Step 5 (Worksheet A, line 1), or Worksheet B, line 6
       type: Dollars
-      label: Enter your earned income from Step 5
       expr:
-        op: copy
-        from: eic.earned_income
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - eic.self_employed
+            - const: false
+          then: eic.earned_income
+        - guard:
+            op: test
+            eq:
+            - eic.self_employed
+            - const: true
+          then: eic.wsb_6
       cite:
         doc: i1040gi
-        locator: p. 46, Worksheet A, line 1
+        locator: p. 46, Worksheet A, line 1; p. 48, Worksheet B, Part 5, line 6 (Worksheet A lines 2 to 6 are Worksheet B lines
+          7 to 11)
     - id: eic.line1_in_table
       printed: (helper)
       type: Bool
@@ -1530,10 +1624,81 @@ form:
                 eq:
                   - eic.line2
                   - param: sales.zero
+          - op: test
+            eq:
+              - eic.wsb_line5_stop
+              - const: true
       cite:
         doc: i1040gi
         locator: p. 40, Step 1, question 2; p. 41, Step 3, question 6; p. 42, Step 4, questions 3 and 5; p. 43, Line 27c; p.
-          46, Worksheet A, line 2 ("Check the box on Form 1040 or 1040-SR, line 27c")
+          46, Worksheet A, line 2 ("Check the box on Form 1040 or 1040-SR, line 27c"); p. 47, Worksheet B, line 5
+    - id: eic.wsb_4b_positive
+      printed: (helper)
+      type: Bool
+      label: Worksheet B, line 4b is more than zero (the worksheet continues to line 5)
+      expr:
+        op: test
+        gt:
+          - eic.wsb_4b
+          - param: sales.zero
+      cite:
+        doc: i1040gi
+        locator: p. 47, Worksheet B, Part 4, "If line 4b is zero or less, STOP"
+    - id: eic.wsb_line5_stop
+      printed: (helper)
+      type: Bool
+      label: Worksheet B, line 5 is No (line 4b is not less than the limit), a STOP that says to check line 27c
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - eic.below_top
+              - const: true
+          - op: test
+            eq:
+              - eic.step1_income
+              - const: true
+          - op: test
+            eq:
+              - eic.step1_ssn
+              - const: true
+          - op: test
+            eq:
+              - eic.step1_foreign
+              - const: true
+          - op: test
+            eq:
+              - eic.step1_resident
+              - const: true
+          - op: test
+            eq:
+              - eic.step2_income
+              - const: true
+          - op: test
+            eq:
+              - eic.step2_other
+              - const: true
+          - op: test
+            eq:
+              - eic.step34
+              - const: true
+          - op: test
+            eq:
+              - eic.self_employed
+              - const: true
+          - op: test
+            eq:
+              - eic.wsb_4b_positive
+              - const: true
+          - op: test
+            eq:
+              - eic.step5_income
+              - const: false
+      cite:
+        doc: i1040gi
+        locator: p. 47, Worksheet B, line 5, "No. STOP You can't take the credit. Check the box on Form 1040 or 1040-SR, line
+          27c" (reached after Steps 1 to 4 and Step 5, question 2, Yes; Step 5, question 3, has no such instruction, p. 42)
     - id: eic.separated_box
       printed: (helper)
       type: Bool

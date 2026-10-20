@@ -1,0 +1,1878 @@
+{
+ "kind": "classm",
+ "form": "scveh",
+ "rulings": [
+  {
+   "case": "classm.scveh.1",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].bm_c",
+   "project": "$299.91",
+   "model": "$29,991.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.1",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].bonus_o",
+   "project": "$18,228.32",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.1",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].cm_c",
+   "project": "$32.37",
+   "model": "$3,237.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.1",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].cost179_o",
+   "project": "$49,166.83",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.1",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].mq_total_o",
+   "project": "$49,166.83",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.1",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].nonbusiness_c",
+   "project": "$32.44",
+   "model": "$3,244.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.1",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].om_c",
+   "project": "$0.07",
+   "model": "$7.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.1",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].rate_mq",
+   "project": "25%",
+   "model": "15%",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.1",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].total_c",
+   "project": "$332.35",
+   "model": "$33,235.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.1",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_2].bm_c",
+   "project": "$299.90",
+   "model": "$29,990.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.1",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_2].cost179_a2",
+   "project": "$4,413.02",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.1",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_2].lim_2025",
+   "project": "$10,100.00",
+   "model": "$12,200.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.1",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_2].lim_first_bonus",
+   "project": "$5,760.00",
+   "model": "$20,200.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.1",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_2].lim_first_none",
+   "project": "$10,100.00",
+   "model": "$12,200.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.1",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_2].mq_total_a2",
+   "project": "$4,413.02",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.1",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_2].nonbusiness_c",
+   "project": "$39.89",
+   "model": "$3,989.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.1",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_2].om_c",
+   "project": "$39.89",
+   "model": "$3,989.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.1",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_2].total_c",
+   "project": "$339.79",
+   "model": "$33,979.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].bm_c",
+   "project": "$242.89",
+   "model": "$24,289.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].bonus_full",
+   "project": "$23,668.25",
+   "model": "$23,668.26",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].bonus_fullcase",
+   "project": "$23,668.25",
+   "model": "$23,668.26",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].bus_cost",
+   "project": "$23,668.25",
+   "model": "$23,668.26",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].cost179_a2",
+   "project": "$23,668.25",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].lim_first_bonus",
+   "project": "$6,460.00",
+   "model": "$20,200.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line15",
+   "project": "$23,668.25",
+   "model": "$23,668.26",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line18",
+   "project": "$23,668.25",
+   "model": "$23,668.26",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line19_2025",
+   "project": "$3,237.82",
+   "model": "$1,183.41",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line19_hy",
+   "project": "$2,726.58",
+   "model": "$4,733.65",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line19_mq",
+   "project": "$3,237.82",
+   "model": "$1,183.41",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line9",
+   "project": "$4,585.08",
+   "model": "$4,585.09",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line9_actual",
+   "project": "$4,585.08",
+   "model": "$4,585.09",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].mq_q4_a2",
+   "project": "$23,668.25",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].mq_total_a2",
+   "project": "$23,668.25",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].nonbusiness_c",
+   "project": "$39.62",
+   "model": "$3,962.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].om_c",
+   "project": "$39.62",
+   "model": "$3,962.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].operating_business",
+   "project": "$4,585.08",
+   "model": "$4,585.09",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].q4_basis",
+   "project": "$23,668.25",
+   "model": "$23,668.26",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].rate_hy",
+   "project": "11.52%",
+   "model": "20%",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].rate_mq",
+   "project": "13.68%",
+   "model": "5%",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].total_c",
+   "project": "$282.51",
+   "model": "$28,251.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].bm_c",
+   "project": "$90.83",
+   "model": "$9,083.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].bonus_forty",
+   "project": "$17,537.64",
+   "model": "$17,537.65",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].bonus_full",
+   "project": "$43,844.09",
+   "model": "$43,844.12",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].bonus_fullcase",
+   "project": "$17,537.64",
+   "model": "$17,537.65",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].bus_cost",
+   "project": "$43,844.09",
+   "model": "$43,844.12",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].cost179_a2",
+   "project": "$43,844.09",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].lim_2025",
+   "project": "$10,100.00",
+   "model": "$12,200.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].lim_first_bonus",
+   "project": "$5,760.00",
+   "model": "$20,200.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].lim_first_none",
+   "project": "$10,100.00",
+   "model": "$12,200.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line11",
+   "project": "$4,048.44",
+   "model": "$4,048.45",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line15",
+   "project": "$43,844.09",
+   "model": "$43,844.12",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line17",
+   "project": "$4,048.44",
+   "model": "$4,048.45",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line18",
+   "project": "$43,844.09",
+   "model": "$43,844.12",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line9w",
+   "project": "$4,048.44",
+   "model": "$4,048.45",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].macrs_o",
+   "project": "$4,048.44",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].macrs_pass",
+   "project": "$4,048.44",
+   "model": "$4,048.45",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].macrs_v",
+   "project": "$4,048.44",
+   "model": "$4,048.45",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].mq_total_a2",
+   "project": "$43,844.09",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].nonbusiness_c",
+   "project": "$38.40",
+   "model": "$3,840.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].om_c",
+   "project": "$38.40",
+   "model": "$3,840.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].post",
+   "project": "$4,048.44",
+   "model": "$4,048.45",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].total_c",
+   "project": "$129.23",
+   "model": "$12,923.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].bm_c",
+   "project": "$31.35",
+   "model": "$3,135.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].cost179_o",
+   "project": "$12,031.07",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].line11",
+   "project": "$10,798.13",
+   "model": "$10,798.14",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].line17",
+   "project": "$10,798.13",
+   "model": "$10,798.14",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].line9w",
+   "project": "$10,798.13",
+   "model": "$10,798.14",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].macrs_o",
+   "project": "$4,210.87",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].mq_total_o",
+   "project": "$12,031.07",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].nonbusiness_c",
+   "project": "$4.07",
+   "model": "$407.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].om_c",
+   "project": "$4.07",
+   "model": "$407.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].total_c",
+   "project": "$35.42",
+   "model": "$3,542.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_2].bm_c",
+   "project": "$38.30",
+   "model": "$3,830.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_2].cost179_o",
+   "project": "$76,802.87",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_2].macrs_o",
+   "project": "$11,520.43",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_2].mq_total_o",
+   "project": "$76,802.87",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_2].nonbusiness_c",
+   "project": "$0.78",
+   "model": "$78.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_2].om_c",
+   "project": "$0.78",
+   "model": "$78.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_2].total_c",
+   "project": "$39.08",
+   "model": "$3,908.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].bm_c",
+   "project": "$144.64",
+   "model": "$14,464.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].bus_cost",
+   "project": "$3,493.05",
+   "model": "$3,493.04",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].cm_c",
+   "project": "$31.65",
+   "model": "$3,165.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].cost179_a2",
+   "project": "$3,493.05",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].lim_first_bonus",
+   "project": "$5,860.00",
+   "model": "$20,200.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].nonbusiness_c",
+   "project": "$62.40",
+   "model": "$6,240.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].om_c",
+   "project": "$30.75",
+   "model": "$3,075.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].rate_hy",
+   "project": "11.52%",
+   "model": "20%",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].rate_mq",
+   "project": "11.3%",
+   "model": "15%",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].total_c",
+   "project": "$207.04",
+   "model": "$20,704.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].bm_c",
+   "project": "$160.03",
+   "model": "$16,003.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].bonus_forty",
+   "project": "$13,015.52",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].bonus_full",
+   "project": "$32,538.81",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].bonus_fullcase",
+   "project": "$32,538.81",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].bus_cost",
+   "project": "$34,906.81",
+   "model": "$34,906.79",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].cm_c",
+   "project": "$29.10",
+   "model": "$2,910.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].cost179_a2",
+   "project": "$34,906.81",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].lim_first_bonus",
+   "project": "$6,460.00",
+   "model": "$20,200.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line11",
+   "project": "$5,464.90",
+   "model": "$5,464.89",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line15",
+   "project": "$32,538.81",
+   "model": "$32,538.79",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line17",
+   "project": "$5,464.90",
+   "model": "$5,464.89",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line18",
+   "project": "$32,538.81",
+   "model": "$32,538.79",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line19_2025",
+   "project": "$3,748.47",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line19_hy",
+   "project": "$3,748.47",
+   "model": "$6,507.76",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line19_mq",
+   "project": "$3,982.75",
+   "model": "$4,880.82",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line9w",
+   "project": "$5,464.90",
+   "model": "$5,464.89",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].macrs_o",
+   "project": "$3,748.47",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].mq_total_a2",
+   "project": "$32,538.81",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].nonbusiness_c",
+   "project": "$29.14",
+   "model": "$2,914.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].om_c",
+   "project": "$0.04",
+   "model": "$4.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].rate_hy",
+   "project": "11.52%",
+   "model": "20%",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].rate_mq",
+   "project": "12.24%",
+   "model": "15%",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].total_c",
+   "project": "$189.17",
+   "model": "$18,917.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].b100",
+   "project": "$24,880.00",
+   "model": "$13,956.53",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].bm_c",
+   "project": "$271.86",
+   "model": "$27,186.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].d1",
+   "project": "$4,976.00",
+   "model": "$12,200.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].lim_prior",
+   "project": "$20,200.00",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line19_earlier",
+   "project": "$2,270.65",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].nonbusiness_c",
+   "project": "$31.77",
+   "model": "$3,177.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].om_c",
+   "project": "$31.77",
+   "model": "$3,177.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].t1",
+   "project": "$4,976.00",
+   "model": "$2,791.31",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].t1s",
+   "project": "$4,976.00",
+   "model": "$13,714.78",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].t2",
+   "project": "$7,961.60",
+   "model": "$4,466.09",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].t3",
+   "project": "$4,776.96",
+   "model": "$2,679.65",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].t4",
+   "project": "$2,866.18",
+   "model": "$1,607.79",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].t5",
+   "project": "$2,866.18",
+   "model": "$1,607.79",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].t6",
+   "project": "$1,433.09",
+   "model": "$803.90",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].total_c",
+   "project": "$303.63",
+   "model": "$30,363.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].bm_c",
+   "project": "$297.02",
+   "model": "$29,702.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].bonus_full",
+   "project": "$55,566.49",
+   "model": "$55,566.50",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].bonus_fullcase",
+   "project": "$55,566.49",
+   "model": "$55,566.50",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].bus_cost",
+   "project": "$55,566.49",
+   "model": "$55,566.50",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].cost179_a2",
+   "project": "$55,566.49",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].lim_first_bonus",
+   "project": "$5,760.00",
+   "model": "$18,100.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line15",
+   "project": "$55,566.49",
+   "model": "$55,566.50",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line18",
+   "project": "$55,566.49",
+   "model": "$55,566.50",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line19_2025",
+   "project": "$766.82",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line19_hy",
+   "project": "$3,200.63",
+   "model": "$11,113.30",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line19_mq",
+   "project": "$766.82",
+   "model": "$19,448.28",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].mq_total_a2",
+   "project": "$55,566.49",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].nonbusiness_c",
+   "project": "$31.85",
+   "model": "$3,185.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].om_c",
+   "project": "$31.85",
+   "model": "$3,185.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].rate_hy",
+   "project": "5.76%",
+   "model": "20%",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].rate_mq",
+   "project": "1.38%",
+   "model": "35%",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].total_c",
+   "project": "$328.87",
+   "model": "$32,887.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].bm_c",
+   "project": "$216.32",
+   "model": "$21,632.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].bonus_full",
+   "project": "$58,785.33",
+   "model": "$58,785.32",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].bonus_fullcase",
+   "project": "$58,785.33",
+   "model": "$58,785.32",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].bus_cost",
+   "project": "$58,785.33",
+   "model": "$58,785.32",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].cost179",
+   "project": "$58,785.33",
+   "model": "$58,785.32",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].cost179_a2",
+   "project": "$58,785.33",
+   "model": "$58,785.32",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].cost179_o",
+   "project": "$58,785.33",
+   "model": "$58,785.32",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].d1",
+   "project": "$9,552.75",
+   "model": "$12,200.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].lim_prior",
+   "project": "$20,200.00",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].line15",
+   "project": "$58,785.33",
+   "model": "$58,785.32",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].line18",
+   "project": "$35,271.20",
+   "model": "$35,271.19",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].line19_earlier",
+   "project": "$5,290.68",
+   "model": "$7,054.24",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].line19_prior",
+   "project": "$5,290.68",
+   "model": "$7,054.24",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].mq_total",
+   "project": "$58,785.33",
+   "model": "$58,785.32",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].mq_total_a2",
+   "project": "$58,785.33",
+   "model": "$58,785.32",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].mq_total_o",
+   "project": "$58,785.33",
+   "model": "$58,785.32",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].nonbusiness_c",
+   "project": "$18.03",
+   "model": "$1,803.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].om_c",
+   "project": "$18.03",
+   "model": "$1,803.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].q4_basis",
+   "project": "$0.00",
+   "model": "$58,785.32",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].r1",
+   "project": "15%",
+   "model": "20%",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].r2",
+   "project": "34%",
+   "model": "32%",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].r3",
+   "project": "20.4%",
+   "model": "19.2%",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].r4",
+   "project": "12.24%",
+   "model": "11.52%",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].r5",
+   "project": "11.3%",
+   "model": "11.52%",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].r6",
+   "project": "7.06%",
+   "model": "5.76%",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].rate_prior",
+   "project": "15%",
+   "model": "20%",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].t1",
+   "project": "$9,552.75",
+   "model": "$12,737.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].t1s",
+   "project": "$9,552.75",
+   "model": "$12,737.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].t2",
+   "project": "$21,652.90",
+   "model": "$20,379.20",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].t3",
+   "project": "$12,991.74",
+   "model": "$12,227.52",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].t4",
+   "project": "$7,795.04",
+   "model": "$7,336.51",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].t5",
+   "project": "$7,196.41",
+   "model": "$7,336.51",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].t6",
+   "project": "$4,496.16",
+   "model": "$3,668.26",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].total_c",
+   "project": "$234.35",
+   "model": "$23,435.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_2].bm_c",
+   "project": "$159.02",
+   "model": "$15,902.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_2].bonus_full",
+   "project": "$32,395.56",
+   "model": "$32,395.55",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_2].bonus_fullcase",
+   "project": "$32,395.56",
+   "model": "$32,395.55",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_2].bus_cost",
+   "project": "$32,395.56",
+   "model": "$32,395.55",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_2].cost179_a2",
+   "project": "$32,395.56",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_2].lim_first_bonus",
+   "project": "$5,760.00",
+   "model": "$20,200.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_2].line15",
+   "project": "$32,395.56",
+   "model": "$32,395.55",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_2].line18",
+   "project": "$32,395.56",
+   "model": "$32,395.55",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_2].line19_2025",
+   "project": "$1,865.98",
+   "model": "$6,479.11",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_2].line19_hy",
+   "project": "$1,865.98",
+   "model": "$6,479.11",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_2].line19_mq",
+   "project": "$447.06",
+   "model": "$11,338.44",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_2].macrs_o",
+   "project": "$1,380.05",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_2].mq_total_a2",
+   "project": "$32,395.56",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_2].nonbusiness_c",
+   "project": "$0.12",
+   "model": "$12.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_2].om_c",
+   "project": "$0.12",
+   "model": "$12.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_2].q4_basis",
+   "project": "$0.00",
+   "model": "$32,395.55",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_2].rate_hy",
+   "project": "5.76%",
+   "model": "20%",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_2].rate_mq",
+   "project": "1.38%",
+   "model": "35%",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.5",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_2].total_c",
+   "project": "$159.14",
+   "model": "$15,914.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.6",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].bm_c",
+   "project": "$197.88",
+   "model": "$19,788.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.6",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].bonus_full",
+   "project": "$28,954.40",
+   "model": "$28,954.39",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.6",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].bonus_fullcase",
+   "project": "$28,954.40",
+   "model": "$28,954.39",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.6",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].bus_cost",
+   "project": "$28,954.40",
+   "model": "$28,954.39",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.6",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].cm_c",
+   "project": "$18.42",
+   "model": "$1,842.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.6",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].cost179_a2",
+   "project": "$28,954.40",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.6",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].lim_first_bonus",
+   "project": "$19,800.00",
+   "model": "$20,200.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.6",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line11",
+   "project": "$16,408.52",
+   "model": "$16,408.51",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.6",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line15",
+   "project": "$28,954.40",
+   "model": "$28,954.39",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.6",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line17",
+   "project": "$16,408.52",
+   "model": "$16,408.51",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.6",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line18",
+   "project": "$28,954.40",
+   "model": "$28,954.39",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.6",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line19_2025",
+   "project": "$9,844.50",
+   "model": "$4,343.16",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.6",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line19_hy",
+   "project": "$9,265.41",
+   "model": "$5,790.88",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.6",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line19_mq",
+   "project": "$9,844.50",
+   "model": "$4,343.16",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.6",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line9w",
+   "project": "$16,408.52",
+   "model": "$16,408.51",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.6",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].macrs_o",
+   "project": "$7,528.14",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.6",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].mq_total_a2",
+   "project": "$28,954.40",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.6",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].nonbusiness_c",
+   "project": "$40.90",
+   "model": "$4,090.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.6",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].om_c",
+   "project": "$22.48",
+   "model": "$2,248.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.6",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].rate_hy",
+   "project": "32%",
+   "model": "20%",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.6",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].rate_mq",
+   "project": "34%",
+   "model": "15%",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.6",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].total_c",
+   "project": "$238.78",
+   "model": "$23,878.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.6",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].bm_c",
+   "project": "$234.84",
+   "model": "$23,484.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.6",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].bonus_forty",
+   "project": "$28,165.24",
+   "model": "$28,165.25",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.6",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].bonus_full",
+   "project": "$70,413.10",
+   "model": "$70,413.13",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.6",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].bonus_fullcase",
+   "project": "$28,165.24",
+   "model": "$28,165.25",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.6",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].bus_cost",
+   "project": "$70,413.10",
+   "model": "$70,413.13",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.6",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].cost179_a2",
+   "project": "$70,413.10",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.6",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].lim_2025",
+   "project": "$10,100.00",
+   "model": "$12,200.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.6",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].lim_first_bonus",
+   "project": "$5,760.00",
+   "model": "$18,100.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.6",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line15",
+   "project": "$70,413.10",
+   "model": "$70,413.13",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.6",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line18",
+   "project": "$70,413.10",
+   "model": "$70,413.13",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.6",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].macrs_o",
+   "project": "$5,330.12",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.6",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].mq_total_a2",
+   "project": "$70,413.10",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.6",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].nonbusiness_c",
+   "project": "$18.94",
+   "model": "$1,894.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.6",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].om_c",
+   "project": "$18.94",
+   "model": "$1,894.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.scveh.6",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].total_c",
+   "project": "$253.78",
+   "model": "$25,378.00",
+   "ruling": "Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  }
+ ]
+}

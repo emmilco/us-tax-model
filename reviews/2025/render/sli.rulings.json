@@ -9,9 +9,21 @@
    "ruling": "Ruling: scope; project retained. Schedule 1 lines 12, 14 to 20, 23 and 25 are outside this tool: scope.schedule1 refuses Form 1040 lines 8 and 10, and worksheet line 2 reads Form 1040 line 9, so the worksheet refuses whenever any of them applies; within scope they are zero."
   },
   {
+   "printed": "3",
+   "restated": "Add s1 line 11, s1 line 13, s1 line 15, s1 line 16, and s1 line 17.",
+   "model": "The IRS line says \"Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 25\". The restatement adds only lines 11, 13, 15, 16 and 17, so it leaves out lines 12, 14, 18, 19a, 20, 23 and 25.",
+   "ruling": "Ruling: scope; project retained. Schedule 1 lines 12, 14 to 20, 23 and 25 are outside this tool: scope.schedule1 refuses Form 1040 lines 8 and 10, and worksheet line 2 reads Form 1040 line 9, so the worksheet refuses whenever any of them applies; within scope they are zero."
+  },
+  {
    "printed": "5",
    "restated": "Choose — [f1040 line Filing Status = 'single' → helper \"Year parameter sli.base_other ($85,000)\"] [f1040 line Filing Status = 'mfj' → helper \"Year parameter sli.base_joint ($170,000)\"] [f1040 line Filing Status = 'mfs' → helper \"Year parameter sales.zero\"] [f1040 line Filing Status = 'hoh' → helper \"Year parameter sli.base_other ($85,000)\"] [f1040 line Filing Status = 'qss' → helper \"Year parameter sli.base_other ($85,000)\"]",
    "model": "The IRS amounts are 'Single, head of household, or qualifying surviving spouse—$85,000' and 'Married filing jointly—$170,000', and the instructions say the deduction applies only if 'Your filing status is any status except married filing separately.' The restatement instead assigns $0 to married filing separately and goes on to compute a deduction, with no refusal for that status.",
+   "ruling": "Ruling: representation; project retained. A married filer filing separately cannot take the deduction, and the project gives zero for that status on Schedule 1 line 21 (sli.eligible tests the filing status and sli.deduction is zero), so the zero on line 5 for that status changes nothing; the line itself is shown only because the project figures every line."
+  },
+  {
+   "printed": "5",
+   "restated": "Choose — [f1040 line Filing Status = 'single' → helper \"Year parameter sli.base_other ($85,000)\"] [f1040 line Filing Status = 'mfj' → helper \"Year parameter sli.base_joint ($170,000)\"] [f1040 line Filing Status = 'mfs' → helper \"Year parameter sales.zero\"] [f1040 line Filing Status = 'hoh' → helper \"Year parameter sli.base_other ($85,000)\"] [f1040 line Filing Status = 'qss' → helper \"Year parameter sli.base_other ($85,000)\"]",
+   "model": "The worksheet lists amounts only for \"Single, head of household, or qualifying surviving spouse—$85,000\" and \"Married filing jointly—$170,000\", and the instructions say the deduction is allowed only if \"Your filing status is any status except married filing separately.\" The restatement instead gives married filing separately a $0 base and has no refusal, so an MFS filer can still get a nonzero deduction.",
    "ruling": "Ruling: representation; project retained. A married filer filing separately cannot take the deduction, and the project gives zero for that status on Schedule 1 line 21 (sli.eligible tests the filing status and sli.deduction is zero), so the zero on line 5 for that status changes nothing; the line itself is shown only because the project figures every line."
   }
  ]

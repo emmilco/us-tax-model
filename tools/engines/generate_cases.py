@@ -44,6 +44,8 @@ def gen_case(rng, i):
         "div.box9": 0, "div.box10": 0, "div.box13": 0, "div.basis_reconciled": True,
         "sd.other_forms": False, "sd.carryover": False,
         "qbi.unsupported": False,
+        "qbi.carryforward": 0,
+        "$sc@person[taxpayer]": [],
         "f4952.line4g": 0, "f4952.carryover": False, "f4952.unsupported": False, "f4952.alternative_allocation": False,
         "f8959.unsupported": False, "f8960.unsupported": False, "f8960.refund": False, "f8960.allocated_taxes": 0,
         "ftc.all_passive": True, "ftc.statements": True, "ftc.eligible": True, "ftc.elect": True,
@@ -263,7 +265,7 @@ def make_joint(case, j):
     inputs.update({f"{SPOUSE}.role": "spouse", f"{SPOUSE}.rrta": False, f"{SPOUSE}.tin": True, f"{SPOUSE}.work_ssn": True,
                    f"{SPOUSE}.age65": age >= 66, f"{SPOUSE}.blind": False, f"{SPOUSE}.born_before_2001": True,
                    f"{SPOUSE}.born_after_1960": age < 66, f"{SPOUSE}.educator_expenses": 0,
-                   f"$tipjob@{SPOUSE}": [], f"$otjob@{SPOUSE}": [], f"$f8889@{SPOUSE}": []})
+                   f"$tipjob@{SPOUSE}": [], f"$otjob@{SPOUSE}": [], f"$f8889@{SPOUSE}": [], f"$sc@{SPOUSE}": []})
     if age >= 66:
         inputs[f"{SPOUSE}.died_before_65"] = False; features.add("spouse_senior")
     n_emp = 0 if r.random() < 0.3 else (1 if r.random() < 0.6 else 2)
@@ -285,16 +287,47 @@ def make_joint(case, j):
     return {"id": f"mfj-{j:05d}", "inputs": inputs, "facts": facts, "features": sorted(features)}
 
 
+SC_ZERO = ["line2", "line6", "line8", "line10", "line11", "line14", "line15", "line16a", "line16b", "line17", "line18", "line19",
+           "rent_equipment", "line20b", "line21", "line22", "line23", "line24a", "meals_50", "meals_80", "line25", "line26", "line48",
+           "line35", "line36", "line37", "line38", "line39", "line41"]
+
+
+def make_se(case, j):
+    """A return with one Schedule C business for you: gross receipts and one total of expenses (office
+    expense), no vehicles, property, home office or retirement plan; sometimes a loss. A separate
+    generator keeps every other case unchanged."""
+    r = random.Random(f"se:{j}")
+    inputs, facts, features = case["inputs"], case["facts"], set(case["features"])
+    receipts = log_uniform(r, 100_000, 30_000_000)
+    expenses = receipts * r.randint(5, 115) // 100
+    pre = "person[taxpayer].sc[biz]"
+    inputs["$sc@person[taxpayer]"] = ["biz"]
+    for k in SC_ZERO:
+        inputs[f"{pre}.{k}"] = 0
+    inputs.update({f"{pre}.statutory": False, f"{pre}.passive": True, f"{pre}.spouse_owned": False, f"{pre}.method_other": False,
+                   f"{pre}.special": False, f"{pre}.ho_uses": False, f"{pre}.at_risk": True, f"{pre}.inventory_other": False,
+                   f"{pre}.hi_uses": False, f"{pre}.tips_ot": False, f"{pre}.line1": receipts, f"{pre}.line18": expenses,
+                   f"$scveh@{pre}": [], f"$asset@{pre}": [], f"$ltc@{pre}": [],
+                   "person[taxpayer].se_screen": False, "person[taxpayer].plan": "none", "s179.line10": 0})
+    for loan in inputs.get("$carloan", []):
+        inputs[f"carloan[{loan}].col_ii_input"] = 0
+    facts["self_employment_income"] = receipts - expenses
+    features.add("self_employed")
+    return {"id": f"se-{j:05d}", "inputs": inputs, "facts": facts, "features": sorted(features)}
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--count", type=int, default=1000)
     ap.add_argument("--joint", type=int, default=400)
+    ap.add_argument("--se", type=int, default=300)
     ap.add_argument("--seed", type=int, default=20260101)
     ap.add_argument("--out", required=True)
     a = ap.parse_args()
     rng = random.Random(a.seed)
     cases = [gen_case(rng, i) for i in range(a.count)]
     cases += [make_joint(gen_case(random.Random(f"mfj-base:{a.seed}:{j}"), 100_000 + j), j) for j in range(a.joint)]
+    cases += [make_se(gen_case(random.Random(f"se-base:{a.seed}:{j}"), 200_000 + j), j) for j in range(a.se)]
     with open(a.out, "w") as f:
         json.dump(cases, f)
     print(f"generated {len(cases)} cases (seed {a.seed}) -> {a.out}")

@@ -6,8 +6,8 @@ table:
   title: "Year of recovery in 2025, by year placed in service"
   tax_year: 2025
   cite:
-    doc: p946-html
-    locator: "Chapter 4, Using the MACRS Percentage Tables; the example of residential rental property placed in service on July 2, 2023, sold March 2, 2025"
+    doc: p946
+    locator: "p. 39, Using the MACRS Percentage Tables; the example of residential rental property placed in service on July 2, 2023, sold March 2, 2025"
     quote: "This is $100,000 multiplied by 0.03636 (the percentage for the seventh month of the third recovery year) from Table A-6."
   keys:
     - { name: placed, type: Enum(placed_year) }

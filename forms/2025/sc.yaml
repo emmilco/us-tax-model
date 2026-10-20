@@ -1,0 +1,2060 @@
+form:
+  id: sc
+  kind: form
+  title: Schedule C (Form 1040) — Profit or Loss From Business, one per business
+  tax_year: 2025
+  note: One entry per business a person operated as a sole proprietor (i1040sc p. 3, Line A, "If you owned more than one business,
+    complete a separate Schedule C for each business"). The screens refuse statutory employee income, notary fees, passive
+    and rental activities, businesses owned with a spouse, accounting method changes and the special items of the instructions;
+    Form 8829, Form 6198 and Form 461 are refused where they apply.
+  lines:
+  - id: sc.one
+    printed: (helper)
+    label: One business
+    type: Count
+    expr:
+      op: param
+      ref: sc.one
+    cite:
+      doc: i1040sc
+      locator: p. 3, Line A, "complete a separate Schedule C for each business"
+  - id: sc.zero
+    printed: (helper)
+    label: Zero
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: sales.zero
+    cite:
+      doc: f1040sc
+      locator: Schedule C (2025), Part II
+  - id: sc.statutory
+    printed: (screen)
+    label: Is this business income you received as a statutory employee (the "Statutory employee" box in box 13 of your Form
+      W-2 was checked), or fees you received as a notary public?
+    type: Bool
+    expr:
+      op: input
+      source: Is this business income you received as a statutory employee (the "Statutory employee" box in box 13 of your
+        Form W-2 was checked), or fees you received as a notary public?
+    cite:
+      doc: i1040sc
+      locator: p. 5, Line 1, Statutory employees; p. 14, Line 31, Statutory employees and Notary public
+  - id: sc.passive
+    printed: G
+    label: Did you "materially participate" in the operation of this business during 2025, and is the business something other
+      than a rental activity?
+    type: Bool
+    expr:
+      op: input
+      source: Did you "materially participate" in the operation of this business during 2025 (for example, you worked in it
+        more than 500 hours, or your work was substantially all the work done in it, or more than 100 hours and at least as
+        much as anyone else; see the seven tests in the instructions for line G), or is it a working interest in an oil or
+        gas well you own directly or through an entity that does not limit your liability (the exception for oil and gas),
+        and is the business something other than a rental activity?
+    cite:
+      doc: i1040sc
+      locator: p. 4, Line G, Material participation (the seven tests) and Rental of personal property
+  - id: sc.spouse_owned
+    printed: (screen)
+    label: Do you own this business together with your spouse (as a qualified joint venture, as community property, or as
+      partners)?
+    type: Bool
+    expr:
+      op: input
+      source: Do you own this business together with your spouse (as a qualified joint venture, as community property, or
+        as partners)?
+    cite:
+      doc: i1040sc
+      locator: p. 2, Business Owned and Operated by Spouses, Qualified Joint Venture and Community Income
+  - id: sc.method_other
+    printed: F
+    label: Do you use an accounting method other than cash or accrual, or did you change your accounting method for 2025 (Form
+      3115 or a section 481(a) adjustment), or must you capitalize costs under the uniform capitalization rules (section 263A)
+      because you are not a small business taxpayer?
+    type: Bool
+    expr:
+      op: input
+      source: Do you use an accounting method other than cash or accrual, or did you change your accounting method for 2025
+        (Form 3115 or a section 481(a) adjustment), or must you capitalize costs under the uniform capitalization rules (section
+        263A) because your average annual gross receipts for the 3 prior years were more than $31 million?
+    cite:
+      doc: i1040sc
+      locator: p. 4, Line F; p. 6, Part II, Capitalizing costs; p. 15, Part III, Small business taxpayer
+  - id: sc.special
+    printed: (screen)
+    label: 'For this business, do you have any of these: depletion (line 12); the energy efficient commercial buildings deduction
+      (Form 7205); wages or benefits reduced by an employment credit (Forms 5884, 8844, 8846, 8932, 8941 or 8994); business
+      interest limited by Form 8990; recapture of depreciation or section 179 on listed property, or an inclusion amount for
+      leased property; a chapter 11 bankruptcy case; extraterritorial income (Form 8873); installment sales of timeshares
+      or residential lots; nontaxable Medicaid waiver payments (Notice 2014-7); research or experimental expenditures you
+      elect to capitalize; or a capital construction fund?'
+    type: Bool
+    expr:
+      op: input
+      source: 'For this business, do you have any of these: depletion (line 12); the energy efficient commercial buildings
+        deduction (Form 7205); wages or benefits reduced by an employment credit (Forms 5884, 8844, 8846, 8932, 8941 or 8994);
+        business interest limited by Form 8990; recapture of depreciation or section 179 on listed property, or an inclusion
+        amount for leased property; a chapter 11 bankruptcy case; extraterritorial income (Form 8873); installment sales of
+        timeshares or residential lots; nontaxable Medicaid waiver payments (Notice 2014-7); research or experimental expenditures
+        you elect to capitalize; or a capital construction fund?'
+    cite:
+      doc: i1040sc
+      locator: p. 1, What's New (research and experimental expenditures); p. 3, Capital Construction Fund; p. 5, Part I, Medicaid
+        waiver payments and Installment sales; p. 6, Line 6; p. 7, Lines 12, 14, 16a and 16b; p. 8, Line 23; p. 9, Lines 26
+        and 27a
+  - id: sc.screened
+    printed: (gate)
+    label: Something on this Schedule C is outside this tool
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        eq:
+        - sc.statutory
+        - const: true
+      - op: test
+        eq:
+        - sc.passive
+        - const: false
+      - op: test
+        eq:
+        - sc.spouse_owned
+        - const: true
+      - op: test
+        eq:
+        - sc.method_other
+        - const: true
+      - op: test
+        eq:
+        - sc.special
+        - const: true
+    cite:
+      doc: i1040sc
+      locator: pp. 2-15, the items named in the screens of this Schedule C
+  - id: sc.line1
+    printed: '1'
+    label: Gross receipts or sales
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Gross receipts or sales of this business for 2025, including all amounts reported to you on Forms 1099-NEC,
+        1099-MISC and 1099-K for this business (zero if none)
+    cite:
+      doc: i1040sc
+      locator: p. 5, Line 1, "Enter gross receipts from your trade or business. Be sure to check any Forms 1099 you received"
+    refuses:
+    - when: sc.screened
+      form: Schedule C items outside this tool
+      remedy: Statutory employee and notary income, passive and rental activities, businesses owned with your spouse, accounting
+        method changes and the special items in the screen are outside this tool.
+      cite:
+        doc: i1040sc
+        locator: pp. 2-15, the items named in the screens of this Schedule C
+  - id: sc.line2
+    printed: '2'
+    label: Returns and allowances
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Returns and allowances (refunds and price reductions you gave customers), as a positive number; zero if none
+    cite:
+      doc: i1040sc
+      locator: p. 6, Line 2
+  - id: sc.line3
+    printed: '3'
+    label: Subtract line 2 from line 1
+    type: Dollars
+    expr:
+      op: subtract
+      from: sc.line1
+      take: sc.line2
+    cite:
+      doc: f1040sc
+      locator: Schedule C (2025), line 3
+  - id: sc.line4
+    printed: '4'
+    label: Cost of goods sold (from line 42)
+    type: Dollars
+    expr:
+      op: copy
+      from: sc.line42
+    cite:
+      doc: f1040sc
+      locator: Schedule C (2025), line 4
+  - id: sc.line5
+    printed: '5'
+    label: Gross profit. Subtract line 4 from line 3
+    type: Dollars
+    expr:
+      op: subtract
+      from: sc.line3
+      take: sc.line4
+    cite:
+      doc: f1040sc
+      locator: Schedule C (2025), line 5
+  - id: sc.line6
+    printed: '6'
+    label: Other income, including federal and state gasoline or fuel tax credit or refund
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Other business income not in gross receipts, such as scrap sales, bad debts you recovered, interest on accounts
+        receivable, state gasoline or fuel tax refunds, prizes and awards related to the business, and Form 1099-PATR amounts;
+        zero if none
+    cite:
+      doc: i1040sc
+      locator: p. 6, Line 6
+  - id: sc.line7
+    printed: '7'
+    label: Gross income. Add lines 5 and 6
+    type: Dollars
+    expr:
+      op: sum
+      of:
+      - sc.line5
+      - sc.line6
+    cite:
+      doc: f1040sc
+      locator: Schedule C (2025), line 7
+  - id: sc.line8
+    printed: '8'
+    label: Advertising
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Advertising expenses of this business; zero if none
+    cite:
+      doc: i1040sc
+      locator: p. 6, Part II, Expenses; Schedule C (2025), line 8
+  - id: sc.line9
+    printed: '9'
+    label: Car and truck expenses
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: scveh
+      field: scveh.line9
+    cite:
+      doc: i1040sc
+      locator: p. 6, Line 9, standard mileage rate or actual expenses, for each vehicle
+  - id: sc.line10
+    printed: '10'
+    label: Commissions and fees
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Commissions and fees you paid (not capitalized and not deducted elsewhere); zero if none
+    cite:
+      doc: i1040sc
+      locator: p. 7, Line 10
+  - id: sc.line11
+    printed: '11'
+    label: Contract labor
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Payments to independent contractors and others you do not treat as employees (not included on lines 17, 21,
+        26 or 37); zero if none
+    cite:
+      doc: i1040sc
+      locator: p. 7, Line 11
+  - id: sc.line12
+    printed: '12'
+    label: Depletion
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: sc.zero
+    cite:
+      doc: i1040sc
+      locator: p. 7, Line 12 (depletion is refused by the screen of this Schedule C)
+  - id: sc.line13
+    printed: '13'
+    label: Depreciation and section 179 expense deduction (not included in Part III)
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - sc.dep_other
+      - sc.s179_allowed
+    cite:
+      doc: i1040sc
+      locator: p. 7, Line 13, "See the Instructions for Form 4562 and Pub. 946 to figure the amount to enter on line 13";
+        i4562 p. 13, Part IV, line 22
+  - id: sc.line14
+    printed: '14'
+    label: Employee benefit programs (other than on line 19)
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Contributions to employee benefit programs for your employees, such as accident and health plans, group-term
+        life insurance and dependent care assistance (not for yourself, and not pension or profit-sharing plans); zero if
+        none
+    cite:
+      doc: i1040sc
+      locator: pp. 7-8, Line 14
+  - id: sc.line15
+    printed: '15'
+    label: Insurance (other than health)
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Premiums for business insurance (not health insurance for yourself, not a reserve for self-insurance, not lost-earnings
+        insurance); zero if none
+    cite:
+      doc: i1040sc
+      locator: p. 8, Line 15
+  - id: sc.line16a
+    printed: 16a
+    label: 'Interest: mortgage (paid to banks, etc.)'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Interest you paid for 2025 on a mortgage on real property used in the business, to banks or other financial
+        institutions for which you received a Form 1098 (only the business part; not interest that must be capitalized); zero
+        if none
+    cite:
+      doc: i1040sc
+      locator: p. 8, Lines 16a and 16b, How to report
+  - id: sc.line16b
+    printed: 16b
+    label: 'Interest: other'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Other interest on business debt (including mortgage interest not reported on a Form 1098 to you); for a vehicle
+        used for business and personal purposes, only the business part, and none of the interest you deduct on Schedule 1-A;
+        zero if none
+    cite:
+      doc: i1040sc
+      locator: p. 8, Lines 16a and 16b
+  - id: sc.line17
+    printed: '17'
+    label: Legal and professional services
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Fees of accountants and attorneys directly related to operating the business, including tax advice and preparation
+        of the business tax forms; zero if none
+    cite:
+      doc: i1040sc
+      locator: p. 8, Line 17
+  - id: sc.line18
+    printed: '18'
+    label: Office expense
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Office supplies and postage; zero if none
+    cite:
+      doc: i1040sc
+      locator: p. 8, Line 18
+  - id: sc.line19
+    printed: '19'
+    label: Pension and profit-sharing plans
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Contributions you made for your employees to a pension, profit-sharing or annuity plan, including SEP, SIMPLE
+        and SARSEP plans (not contributions for yourself, which go on Schedule 1, line 16); zero if none
+    cite:
+      doc: i1040sc
+      locator: p. 8, Line 19
+  - id: sc.line20a
+    printed: 20a
+    label: 'Rent or lease: vehicles, machinery, and equipment'
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - sc.rent_equipment
+      - sc.veh_lease
+    cite:
+      doc: i1040sc
+      locator: p. 8, Lines 20a and 20b, "If you rented or leased vehicles, machinery, or equipment, enter on line 20a the
+        business portion of your rental cost"
+  - id: sc.line20b
+    printed: 20b
+    label: 'Rent or lease: other business property'
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Rent for other business property, such as office space; zero if none
+    cite:
+      doc: i1040sc
+      locator: p. 8, Lines 20a and 20b
+  - id: sc.line21
+    printed: '21'
+    label: Repairs and maintenance
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Incidental repairs and maintenance that do not add to the property's value or appreciably prolong its life (not
+        your own labor, and not restorations or replacements, which are capitalized); zero if none
+    cite:
+      doc: i1040sc
+      locator: p. 8, Line 21
+  - id: sc.line22
+    printed: '22'
+    label: Supplies (not included in Part III)
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Materials and supplies actually consumed and used in the business during 2025 (or incidental supplies purchased
+        during 2025 if you keep no inventory or records of use); zero if none
+    cite:
+      doc: i1040sc
+      locator: p. 8, Line 22
+  - id: sc.line23
+    printed: '23'
+    label: Taxes and licenses
+    type: NonNegDollars
+    expr:
+      op: input
+      source: 'Business taxes and licenses: sales tax imposed on you as the seller, real estate and personal property taxes
+        on business assets, licenses and regulatory fees, the employer share of social security and Medicare taxes, federal
+        unemployment tax, federal highway use tax, state unemployment contributions (not income or self-employment tax, and
+        not taxes on property you bought); zero if none'
+    cite:
+      doc: i1040sc
+      locator: p. 9, Line 23
+  - id: sc.line24a
+    printed: 24a
+    label: Travel
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Lodging and transportation for overnight business travel away from your tax home (not meals and not entertainment);
+        zero if none
+    cite:
+      doc: i1040sc
+      locator: p. 9, Line 24a
+  - id: sc.meals_50
+    printed: (helper)
+    label: Business meals subject to the 50% limit, at their full cost
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The full cost of business meals (actual cost or the standard meal allowance) subject to the 50% limit, before
+        applying the percentage; zero if none
+    cite:
+      doc: i1040sc
+      locator: p. 9, Line 24b, Business meal expenses, Standard meal allowance and Amount of deduction
+  - id: sc.meals_80
+    printed: (helper)
+    label: Business meals during or incident to a period of duty under the Department of Transportation hours of service limits,
+      at their full cost
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The full cost of business meals consumed during or incident to a period of duty for which you were subject to
+        the Department of Transportation hours of service limits (certain air transportation workers, interstate truck operators,
+        certain merchant mariners), before applying the percentage; zero if none
+    cite:
+      doc: i1040sc
+      locator: p. 9, Line 24b, Amount of deduction, "the percentage is increased to 80%"
+  - id: sc.meals_50_ded
+    printed: (helper)
+    label: 50% of the meals subject to the 50% limit
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: sc.meals_50
+      rate:
+        param: sc.meals_rate
+    cite:
+      doc: i1040sc
+      locator: p. 9, Line 24b, Amount of deduction, "you can deduct only 50% of your business meal expenses"
+  - id: sc.meals_80_ded
+    printed: (helper)
+    label: 80% of the meals under the hours of service limits
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: sc.meals_80
+      rate:
+        param: sc.meals_rate_dot
+    cite:
+      doc: i1040sc
+      locator: p. 9, Line 24b, Amount of deduction
+  - id: sc.line24b
+    printed: 24b
+    label: Deductible meals
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - sc.meals_50_ded
+      - sc.meals_80_ded
+    cite:
+      doc: i1040sc
+      locator: p. 9, Line 24b, "Enter your deductible business meal expenses"
+  - id: sc.line25
+    printed: '25'
+    label: Utilities
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Utility expenses of the business only (for a home phone, not the base rate of the first line into your residence);
+        zero if none
+    cite:
+      doc: i1040sc
+      locator: p. 10, Line 25
+  - id: sc.line26
+    printed: '26'
+    label: Wages (less employment credits)
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Salaries and wages you paid your employees in 2025 (not amounts paid to yourself, and not wages deducted elsewhere);
+        zero if none
+    cite:
+      doc: i1040sc
+      locator: p. 10, Line 26
+  - id: sc.line27a
+    printed: 27a
+    label: Energy efficient commercial buildings deduction (attach Form 7205)
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: sc.zero
+    cite:
+      doc: i1040sc
+      locator: p. 10, Line 27a (Form 7205 is refused by the screen of this Schedule C)
+  - id: sc.line48
+    printed: '48'
+    label: Total other expenses
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The total of the other business expenses you list in Part V, not included on lines 8 to 27a or line 30; zero
+        if none
+    cite:
+      doc: f1040sc
+      locator: Schedule C (2025), Part V, line 48
+  - id: sc.line27b
+    printed: 27b
+    label: Other expenses (from line 48)
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: sc.line48
+    cite:
+      doc: f1040sc
+      locator: Schedule C (2025), line 27b
+  - id: sc.line28
+    printed: '28'
+    label: Total expenses before expenses for business use of home. Add lines 8 through 27b
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - sc.line8
+      - sc.line9
+      - sc.line10
+      - sc.line11
+      - sc.line12
+      - sc.line13
+      - sc.line14
+      - sc.line15
+      - sc.line16a
+      - sc.line16b
+      - sc.line17
+      - sc.line18
+      - sc.line19
+      - sc.line20a
+      - sc.line20b
+      - sc.line21
+      - sc.line22
+      - sc.line23
+      - sc.line24a
+      - sc.line24b
+      - sc.line25
+      - sc.line26
+      - sc.line27a
+      - sc.line27b
+    cite:
+      doc: f1040sc
+      locator: Schedule C (2025), line 28
+  - id: sc.line29
+    printed: '29'
+    label: Tentative profit or (loss). Subtract line 28 from line 7
+    type: Dollars
+    expr:
+      op: subtract
+      from: sc.line7
+      take: sc.line28
+    cite:
+      doc: f1040sc
+      locator: Schedule C (2025), line 29
+  - id: sc.line28_pre179
+    printed: (helper)
+    label: Line 28 without the section 179 expense deduction
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - sc.line8
+      - sc.line9
+      - sc.line10
+      - sc.line11
+      - sc.line12
+      - sc.line14
+      - sc.line15
+      - sc.line16a
+      - sc.line16b
+      - sc.line17
+      - sc.line18
+      - sc.line19
+      - sc.line20a
+      - sc.line20b
+      - sc.line21
+      - sc.line22
+      - sc.line23
+      - sc.line24a
+      - sc.line24b
+      - sc.line25
+      - sc.line26
+      - sc.line27a
+      - sc.line27b
+      - sc.dep_other
+    cite:
+      doc: p946
+      locator: pp. 17-19, Business Income Limit, Taxable income, "figure taxable income without regard to ... The section
+        179 deduction"
+  - id: sc.line29_pre179
+    printed: (helper)
+    label: Line 29 without the section 179 expense deduction
+    type: Dollars
+    expr:
+      op: subtract
+      from: sc.line7
+      take: sc.line28_pre179
+    cite:
+      doc: p946
+      locator: pp. 17-19, Business Income Limit, Taxable income
+  - id: sc.ho_uses
+    printed: (screen)
+    label: Do you claim a deduction for business use of your home for this business?
+    type: Bool
+    expr:
+      op: input
+      source: Do you claim a deduction for the business use of your home for this business (a part of your home used regularly
+        and exclusively for the business, or regularly for storing inventory or product samples)?
+    cite:
+      doc: i1040sc
+      locator: p. 10, Line 30, Business use of your home; Pub. 587 referenced
+  - id: sc.ho_other
+    printed: (screen)
+    label: Does any of these apply to your business use of your home for this business?
+    type: Bool
+    expr:
+      op: input
+      source: 'Does any of these apply: you figure the deduction with actual expenses on Form 8829 instead of the simplified
+        method; you used more than one home for this business; the home is used for daycare; you share the business area with
+        someone else''s business; you used the area for only part of 2025 or it changed during the year; some of this business''s
+        gross income is from a place of business other than your home; or you have a gain or loss on Form 8949 or Form 4797
+        related to this business?'
+    cite:
+      doc: i1040sc
+      locator: p. 10, Line 30; pp. 10-13, Instructions for the Simplified Method Worksheet, Daycare Facility Worksheet, Business
+        use of more than one home, Shared use and Part-year use or area changes
+  - id: sc.ho_screened
+    printed: (gate)
+    label: The home office deduction is outside the simplified method this tool covers
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - sc.ho_uses
+        - const: true
+      - op: test
+        eq:
+        - sc.ho_other
+        - const: true
+    cite:
+      doc: i1040sc
+      locator: pp. 10-13, Line 30 and the Simplified Method Worksheet
+  - id: sc.ho_sqft
+    printed: 30(b)
+    label: The part of your home used for business (square feet)
+    type: Count
+    expr:
+      op: input
+      source: The square feet of your home used regularly and exclusively for this business (or regularly for storing inventory
+        or product samples) throughout 2025
+    cite:
+      doc: i1040sc
+      locator: p. 11, Simplified Method Worksheet, line 2, and line 30 entry spaces; p. 10, Simplified method
+    refuses:
+    - when: sc.ho_screened
+      form: Form 8829, or the simplified method with daycare, shared, part-year or multiple homes
+      remedy: The actual-expense method (Form 8829) and the special simplified-method cases are outside this tool.
+      cite:
+        doc: i1040sc
+        locator: pp. 10-13, Line 30, the Simplified Method Worksheet and its instructions
+  - id: sc.ho_home_sqft
+    printed: 30(a)
+    label: Total square footage of your home
+    type: Count
+    expr:
+      op: input
+      source: The total square footage of your home
+    cite:
+      doc: f1040sc
+      locator: 'Schedule C (2025), line 30, "Simplified method filers only: Enter the total square footage of (a) your home"'
+  - id: sc.ho_rate
+    printed: 3a
+    label: Maximum allowable amount (per square foot)
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: sc.ho_rate
+    cite:
+      doc: i1040sc
+      locator: p. 11, Simplified Method Worksheet, line 3a, "$5"
+  - id: sc.ho_cap_sqft
+    printed: (helper)
+    label: Square feet not to be exceeded on line 2
+    type: Count
+    expr:
+      op: param
+      ref: sc.ho_max_sqft
+    cite:
+      doc: i1040sc
+      locator: p. 11, Simplified Method Worksheet, line 2, "Don't enter more than 300 square feet"
+  - id: sc.ho_over
+    printed: (helper)
+    label: More than 300 square feet
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - sc.ho_sqft
+      - sc.ho_cap_sqft
+    cite:
+      doc: i1040sc
+      locator: p. 11, Simplified Method Worksheet, line 2
+  - id: sc.ho_line4_actual
+    printed: (helper)
+    label: Line 2 (the square feet used) times line 3c
+    type: NonNegDollars
+    expr:
+      op: multiply_count
+      amount: sc.ho_rate
+      count: sc.ho_sqft
+    cite:
+      doc: i1040sc
+      locator: p. 11, Simplified Method Worksheet, lines 3c and 4 (line 3b is 1.0 without daycare)
+  - id: sc.ho_line4_cap
+    printed: (helper)
+    label: 300 square feet times line 3c
+    type: NonNegDollars
+    expr:
+      op: multiply_count
+      amount: sc.ho_rate
+      count: sc.ho_cap_sqft
+    cite:
+      doc: i1040sc
+      locator: p. 11, Simplified Method Worksheet, lines 2 to 4
+  - id: sc.ho_line4
+    printed: '4'
+    label: Multiply line 2 by line 3c
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - sc.ho_over
+          - const: false
+        then: sc.ho_line4_actual
+      - guard:
+          op: test
+          eq:
+          - sc.ho_over
+          - const: true
+        then: sc.ho_line4_cap
+    cite:
+      doc: i1040sc
+      locator: p. 11, Simplified Method Worksheet, line 4, with line 2 not more than 300 square feet
+  - id: sc.ho_line1
+    printed: '1'
+    label: Gross income limitation (Schedule C, line 29)
+    type: Dollars
+    expr:
+      op: copy
+      from: sc.line29
+    cite:
+      doc: i1040sc
+      locator: p. 10, Instructions for the Simplified Method Worksheet, Line 1, A to E ("Enter the amount from Schedule C,
+        line 29"; lines B and D are zero under the screen)
+  - id: sc.ho_room
+    printed: (helper)
+    label: Line 29 without the section 179 deduction, less the most section 179 deduction the business could take
+    type: Dollars
+    expr:
+      op: subtract
+      from: sc.line29_pre179
+      take: sc.ho_s179_max
+    cite:
+      doc: p946
+      locator: p. 19, Business Income Limit, Two different taxable income limits
+  - id: sc.ho_unlimited
+    printed: (helper)
+    label: Line 4 is not more than the smallest line 29 any section 179 allocation could give
+    type: Bool
+    expr:
+      op: test
+      le:
+      - sc.ho_line4
+      - sc.ho_room
+    cite:
+      doc: p946
+      locator: p. 19, Business Income Limit, Two different taxable income limits
+  - id: sc.ho_s179_max
+    printed: (helper)
+    label: The most section 179 deduction this business could take, its 2025 elections plus the carryover from 2024 (Form 4562
+      line 10)
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - sc.s179_elected
+      - s179.line10
+    cite:
+      doc: f4562
+      locator: Form 4562 (2025), line 12, "Add lines 9 and 10, but don’t enter more than line 11"
+  - id: sc.ho_no179
+    printed: (helper)
+    label: No section 179 deduction is possible for this business (no 2025 election and no carryover)
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - sc.ho_s179_max
+      - const: 0
+    cite:
+      doc: p946
+      locator: p. 19, Business Income Limit, Two different taxable income limits
+  - id: sc.ho_limited
+    printed: (helper)
+    label: The smaller of line 1 or line 4, with no section 179 election (line 1 is line 29 without the section 179 deduction)
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - sc.ho_line4
+      - sc.ho_pre179_floor
+    cite:
+      doc: i1040sc
+      locator: p. 11, Simplified Method Worksheet, line 5, "Enter the smaller of line 1 or line 4 ... If zero or less, enter
+        -0-"
+  - id: sc.ho_pre179_floor
+    printed: (helper)
+    label: Line 29 without the section 179 deduction, if zero or less zero
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: sc.line29_pre179
+      take: sc.zero
+    cite:
+      doc: i1040sc
+      locator: p. 11, Simplified Method Worksheet, line 5, "If zero or less, enter -0-"
+  - id: sc.ho_both_limits
+    printed: (gate)
+    label: The gross income limitation could bind together with the section 179 business income limit
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - sc.ho_unlimited
+        - const: false
+      - op: test
+        eq:
+        - sc.ho_no179
+        - const: false
+    cite:
+      doc: p946
+      locator: p. 19, Business Income Limit, Two different taxable income limits, Steps 1 to 8
+  - id: sc.ho_both
+    printed: (helper)
+    label: Line 5 when both income limits could bind
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: sc.zero
+    cite:
+      doc: p946
+      locator: p. 19, Business Income Limit, Two different taxable income limits
+    refuses:
+    - when: sc.ho_both_limits
+      form: Section 179 deduction with a home office deduction limited by gross income (Pub. 946, two different taxable income
+        limits)
+      remedy: Figuring two income-based limits in the order of Pub. 946 is outside this tool.
+      cite:
+        doc: p946
+        locator: p. 19, Business Income Limit, Two different taxable income limits, Steps 1 to 8
+  - id: sc.ho_line5_lim
+    printed: (helper)
+    label: Line 5 when line 4 is more than the room left by the section 179 elections
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - sc.ho_no179
+          - const: true
+        then: sc.ho_limited
+      - guard:
+          op: test
+          eq:
+          - sc.ho_no179
+          - const: false
+        then: sc.ho_both
+    cite:
+      doc: i1040sc
+      locator: p. 11, Simplified Method Worksheet, line 5; p946 p. 19, Business Income Limit, Two different taxable income
+        limits
+  - id: sc.ho_line5
+    printed: '5'
+    label: Allowable expenses using the simplified method. Enter the smaller of line 1 or line 4
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - sc.ho_unlimited
+          - const: true
+        then: sc.ho_line4
+      - guard:
+          op: test
+          eq:
+          - sc.ho_unlimited
+          - const: false
+        then: sc.ho_line5_lim
+    cite:
+      doc: i1040sc
+      locator: p. 11, Simplified Method Worksheet, line 5
+  - id: sc.line30
+    printed: '30'
+    label: Expenses for business use of your home
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - sc.ho_uses
+          - const: true
+        then: sc.ho_line5
+      - guard:
+          op: test
+          eq:
+          - sc.ho_uses
+          - const: false
+        then: sc.zero
+    cite:
+      doc: i1040sc
+      locator: p. 13, Reporting your expenses for business use of the home, "Include the amount from line 5 of the Simplified
+        Method Worksheet on line 30"
+  - id: sc.line31
+    printed: '31'
+    label: Net profit or (loss). Subtract line 30 from line 29
+    type: Dollars
+    expr:
+      op: subtract
+      from: sc.line29
+      take: sc.line30
+    cite:
+      doc: f1040sc
+      locator: Schedule C (2025), line 31
+  - id: sc.line31_pre179
+    printed: (helper)
+    label: Line 31 without the section 179 expense deduction
+    type: Dollars
+    expr:
+      op: subtract
+      from: sc.line29_pre179
+      take: sc.line30
+    cite:
+      doc: p946
+      locator: pp. 17-19, Business Income Limit, Taxable income
+  - id: sc.loss
+    printed: (helper)
+    label: Line 31 is a loss
+    type: Bool
+    expr:
+      op: test
+      lt:
+      - sc.line31
+      - sc.zero
+    cite:
+      doc: i1040sc
+      locator: p. 14, Line 31, "If your expenses ... are more than your gross income"; Line 32
+  - id: sc.at_risk
+    printed: '32'
+    label: If you have a loss, is all your investment in this business at risk (box 32a)?
+    type: Bool
+    expr:
+      op: input
+      source: 'All your investment in this business is at risk: you have no nonrecourse loans not secured by your own property,
+        no amounts protected against loss by a guarantee or stop-loss agreement, and no amounts borrowed from someone with
+        an interest in the business (box 32a)'
+    cite:
+      doc: i1040sc
+      locator: pp. 14-15, Line 32, At-risk rules and Figuring your loss
+  - id: sc.not_at_risk
+    printed: (gate)
+    label: Some investment is not at risk (box 32b)
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - sc.at_risk
+      - const: false
+    cite:
+      doc: i1040sc
+      locator: p. 15, Line 32, Some investment is not at risk
+  - id: sc.loss_allowed
+    printed: (helper)
+    label: The loss on line 31 when all investment is at risk
+    type: Dollars
+    expr:
+      op: copy
+      from: sc.line31
+    cite:
+      doc: i1040sc
+      locator: p. 15, Line 32, All investment is at risk, "your loss will not be reduced by the at-risk rules or the passive
+        activity loss rules"
+    refuses:
+    - when: sc.not_at_risk
+      form: Form 6198 (At-Risk Limitations)
+      remedy: A loss with amounts not at risk is outside this tool.
+      cite:
+        doc: i1040sc
+        locator: p. 15, Line 32, Some investment is not at risk, "Be sure to attach Form 6198"
+  - id: sc.result
+    printed: (helper)
+    label: The amount for Schedule 1, line 3 and Schedule SE, line 2
+    type: Dollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - sc.loss
+          - const: false
+        then: sc.line31
+      - guard:
+          op: test
+          eq:
+          - sc.loss
+          - const: true
+        then: sc.loss_allowed
+    cite:
+      doc: i1040sc
+      locator: p. 14, Line 31, Individuals, "Enter your net profit or loss on line 31 and include it on Schedule 1 (Form 1040),
+        line 3. Also, include your net profit or loss on Schedule SE (Form 1040), line 2"
+  - id: sc.inventory_other
+    printed: '33'
+    label: 'Method used to value closing inventory: other than cost or lower of cost or market, or a change between opening
+      and closing inventory (line 34)?'
+    type: Bool
+    expr:
+      op: input
+      source: Do you value closing inventory by a method other than cost or lower of cost or market, or was there any change
+        in determining quantities, costs or valuations between opening and closing inventory (line 34)? Answer No if you have
+        no inventory
+    cite:
+      doc: i1040sc
+      locator: p. 15, Part III, Line 33; Schedule C (2025), lines 33 and 34
+  - id: sc.line35
+    printed: '35'
+    label: Inventory at beginning of year
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Inventory at the beginning of 2025 (the same as your closing inventory for 2024); zero if none
+    cite:
+      doc: i1040sc
+      locator: p. 15, Line 35
+    refuses:
+    - when: sc.inventory_other
+      form: Schedule C, Part III, other inventory methods or a change in valuation
+      remedy: Inventory valued other than at cost or lower of cost or market, or changed between opening and closing, is outside
+        this tool.
+      cite:
+        doc: i1040sc
+        locator: p. 15, Lines 33 and 35
+  - id: sc.line36
+    printed: '36'
+    label: Purchases less cost of items withdrawn for personal use
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Purchases of merchandise or materials for sale, less the cost of items you withdrew for personal use; zero if
+        none
+    cite:
+      doc: f1040sc
+      locator: Schedule C (2025), line 36
+  - id: sc.line37
+    printed: '37'
+    label: Cost of labor
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Cost of labor for producing goods for sale (not amounts paid to yourself); zero if none
+    cite:
+      doc: f1040sc
+      locator: Schedule C (2025), line 37
+  - id: sc.line38
+    printed: '38'
+    label: Materials and supplies
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Materials and supplies used in producing goods for sale; zero if none
+    cite:
+      doc: f1040sc
+      locator: Schedule C (2025), line 38
+  - id: sc.line39
+    printed: '39'
+    label: Other costs
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Other costs of goods sold; zero if none
+    cite:
+      doc: f1040sc
+      locator: Schedule C (2025), line 39
+  - id: sc.line40
+    printed: '40'
+    label: Add lines 35 through 39
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - sc.line35
+      - sc.line36
+      - sc.line37
+      - sc.line38
+      - sc.line39
+    cite:
+      doc: f1040sc
+      locator: Schedule C (2025), line 40
+  - id: sc.line41
+    printed: '41'
+    label: Inventory at end of year
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Inventory at the end of 2025; zero if none
+    cite:
+      doc: f1040sc
+      locator: Schedule C (2025), line 41
+  - id: sc.line42
+    printed: '42'
+    label: Cost of goods sold. Subtract line 41 from line 40
+    type: Dollars
+    expr:
+      op: subtract
+      from: sc.line40
+      take: sc.line41
+    cite:
+      doc: f1040sc
+      locator: Schedule C (2025), line 42
+  - id: sc.f6
+    printed: (helper)
+    label: Section 179 elected on property other than listed property
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.s179_2025
+      where: &id001
+        op: test
+        eq:
+        - asset.listed
+        - const: false
+    cite:
+      doc: i4562
+      locator: p. 5, Line 6
+  - id: sc.f14
+    printed: (helper)
+    label: Special allowance on property other than listed property
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.bonus_2025
+      where: *id001
+    cite:
+      doc: i4562
+      locator: p. 5, Line 14
+  - id: sc.f17
+    printed: (helper)
+    label: MACRS on earlier property other than listed property
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.dep_prior
+      where: *id001
+    cite:
+      doc: i4562
+      locator: p. 9, Line 17
+  - id: sc.f19_y3
+    printed: (helper)
+    label: MACRS on 2025 property of period y3 other than listed property
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.dep_2025
+      where:
+        op: test
+        all:
+        - *id001
+        - op: test
+          eq:
+          - asset.period
+          - const: y3
+    cite:
+      doc: i4562
+      locator: pp. 9-10, Lines 19a Through 19j, Column (a)—Classification of property
+  - id: sc.f19_y5
+    printed: (helper)
+    label: MACRS on 2025 property of period y5 other than listed property
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.dep_2025
+      where:
+        op: test
+        all:
+        - *id001
+        - op: test
+          eq:
+          - asset.period
+          - const: y5
+    cite:
+      doc: i4562
+      locator: pp. 9-10, Lines 19a Through 19j, Column (a)—Classification of property
+  - id: sc.f19_y7
+    printed: (helper)
+    label: MACRS on 2025 property of period y7 other than listed property
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.dep_2025
+      where:
+        op: test
+        all:
+        - *id001
+        - op: test
+          eq:
+          - asset.period
+          - const: y7
+    cite:
+      doc: i4562
+      locator: pp. 9-10, Lines 19a Through 19j, Column (a)—Classification of property
+  - id: sc.f19_y10
+    printed: (helper)
+    label: MACRS on 2025 property of period y10 other than listed property
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.dep_2025
+      where:
+        op: test
+        all:
+        - *id001
+        - op: test
+          eq:
+          - asset.period
+          - const: y10
+    cite:
+      doc: i4562
+      locator: pp. 9-10, Lines 19a Through 19j, Column (a)—Classification of property
+  - id: sc.f19_y15
+    printed: (helper)
+    label: MACRS on 2025 property of period y15 other than listed property
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.dep_2025
+      where:
+        op: test
+        all:
+        - *id001
+        - op: test
+          eq:
+          - asset.period
+          - const: y15
+    cite:
+      doc: i4562
+      locator: pp. 9-10, Lines 19a Through 19j, Column (a)—Classification of property
+  - id: sc.f19_y20
+    printed: (helper)
+    label: MACRS on 2025 property of period y20 other than listed property
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.dep_2025
+      where:
+        op: test
+        all:
+        - *id001
+        - op: test
+          eq:
+          - asset.period
+          - const: y20
+    cite:
+      doc: i4562
+      locator: pp. 9-10, Lines 19a Through 19j, Column (a)—Classification of property
+  - id: sc.f19_y15sl
+    printed: (helper)
+    label: MACRS on 2025 property of period y15sl other than listed property
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.dep_2025
+      where:
+        op: test
+        all:
+        - *id001
+        - op: test
+          eq:
+          - asset.period
+          - const: y15sl
+    cite:
+      doc: i4562
+      locator: pp. 9-10, Lines 19a Through 19j, Column (a)—Classification of property
+  - id: sc.f25_assets
+    printed: (helper)
+    label: Special allowance on listed property other than vehicles
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.bonus_2025
+      where: &id002
+        op: test
+        eq:
+        - asset.listed
+        - const: true
+    cite:
+      doc: i4562
+      locator: p. 13, Line 25
+  - id: sc.f25_veh
+    printed: (helper)
+    label: Special allowance on vehicles
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: scveh
+      field: scveh.bonus
+    cite:
+      doc: i4562
+      locator: p. 13, Line 25
+  - id: sc.f25
+    printed: (helper)
+    label: Line 25 for this business
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - sc.f25_assets
+      - sc.f25_veh
+    cite:
+      doc: i4562
+      locator: p. 13, Line 25
+  - id: sc.f26_assets
+    printed: (helper)
+    label: Column (h) of listed property other than vehicles
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.dep_listed
+      where: *id002
+    cite:
+      doc: i4562
+      locator: p. 15, Column (h)
+  - id: sc.f26_veh
+    printed: (helper)
+    label: Column (h) of vehicles
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: scveh
+      field: scveh.macrs
+    cite:
+      doc: i4562
+      locator: p. 15, Column (h)
+  - id: sc.f26h
+    printed: (helper)
+    label: Column (h), line 26, for this business
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - sc.f26_assets
+      - sc.f26_veh
+    cite:
+      doc: i4562
+      locator: p. 15, Column (h)
+  - id: sc.f28
+    printed: (helper)
+    label: Line 28 for this business
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - sc.f25
+      - sc.f26h
+    cite:
+      doc: f4562
+      locator: Form 4562 (2025), line 28
+  - id: sc.f29_assets
+    printed: (helper)
+    label: Section 179 elected on listed property other than vehicles
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.s179_2025
+      where: *id002
+    cite:
+      doc: i4562
+      locator: p. 16, Column (i)
+  - id: sc.f29_veh
+    printed: (helper)
+    label: Section 179 on vehicles
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: scveh
+      field: scveh.s179_2025
+    cite:
+      doc: i4562
+      locator: p. 16, Column (i)
+  - id: sc.f29
+    printed: (helper)
+    label: Line 29 for this business
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - sc.f29_assets
+      - sc.f29_veh
+    cite:
+      doc: f4562
+      locator: Form 4562 (2025), line 29
+  - id: sc.s179_elected
+    printed: (helper)
+    label: Section 179 elected for this business's 2025 property
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - sc.f6
+      - sc.f29
+    cite:
+      doc: i4562
+      locator: p. 5, Lines 6 to 8
+  - id: sc.dep_other
+    printed: (helper)
+    label: Depreciation other than the section 179 deduction (Form 4562 lines 14, 17, 19 and 21)
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - sc.f14
+      - sc.f17
+      - sc.f19_y3
+      - sc.f19_y5
+      - sc.f19_y7
+      - sc.f19_y10
+      - sc.f19_y15
+      - sc.f19_y20
+      - sc.f19_y15sl
+      - sc.f28
+    cite:
+      doc: f4562
+      locator: Form 4562 (2025), line 22
+  - id: sc.s179_return
+    printed: (helper)
+    label: The return's section 179 deduction, for its only Schedule C
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: s179.line12
+    cite:
+      doc: i4562
+      locator: p. 5, Line 12
+    refuses:
+    - when: s179.multi
+      form: Section 179 deduction to allocate among more than one business
+      remedy: Allocating a limited or carried-over section 179 deduction among businesses is outside this tool.
+      cite:
+        doc: i4562
+        locator: p. 5, Line 12
+  - id: sc.s179_allowed
+    printed: '12'
+    label: Section 179 expense deduction for this business
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - s179.differs
+          - const: false
+        then: sc.s179_elected
+      - guard:
+          op: test
+          eq:
+          - s179.differs
+          - const: true
+        then: sc.s179_return
+    cite:
+      doc: i4562
+      locator: p. 5, Line 12
+  - id: sc.mq_q4_a
+    printed: (helper)
+    label: mq_q4 of this business's property
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.mq_q4
+    cite:
+      doc: p946
+      locator: p. 34, Which Convention Applies?; i4562 p. 4, Line 2
+  - id: sc.mq_q4_v
+    printed: (helper)
+    label: mq_q4 of this business's vehicles
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: scveh
+      field: scveh.mq_q4
+    cite:
+      doc: p946
+      locator: p. 34, Which Convention Applies?; i4562 p. 4, Line 2
+  - id: sc.mq_q4
+    printed: (helper)
+    label: mq_q4 of this business
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - sc.mq_q4_a
+      - sc.mq_q4_v
+    cite:
+      doc: p946
+      locator: p. 34, Which Convention Applies?; i4562 p. 4, Line 2
+  - id: sc.mq_total_a
+    printed: (helper)
+    label: mq_total of this business's property
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.mq_total
+    cite:
+      doc: p946
+      locator: p. 34, Which Convention Applies?; i4562 p. 4, Line 2
+  - id: sc.mq_total_v
+    printed: (helper)
+    label: mq_total of this business's vehicles
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: scveh
+      field: scveh.mq_total
+    cite:
+      doc: p946
+      locator: p. 34, Which Convention Applies?; i4562 p. 4, Line 2
+  - id: sc.mq_total
+    printed: (helper)
+    label: mq_total of this business
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - sc.mq_total_a
+      - sc.mq_total_v
+    cite:
+      doc: p946
+      locator: p. 34, Which Convention Applies?; i4562 p. 4, Line 2
+  - id: sc.cost179_a
+    printed: (helper)
+    label: cost179 of this business's property
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.cost179
+    cite:
+      doc: p946
+      locator: p. 34, Which Convention Applies?; i4562 p. 4, Line 2
+  - id: sc.cost179_v
+    printed: (helper)
+    label: cost179 of this business's vehicles
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: scveh
+      field: scveh.cost179
+    cite:
+      doc: p946
+      locator: p. 34, Which Convention Applies?; i4562 p. 4, Line 2
+  - id: sc.cost179
+    printed: (helper)
+    label: cost179 of this business
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - sc.cost179_a
+      - sc.cost179_v
+    cite:
+      doc: p946
+      locator: p. 34, Which Convention Applies?; i4562 p. 4, Line 2
+  - id: sc.rent_equipment
+    printed: (helper)
+    label: Rent or lease of machinery and equipment, and of vehicles not entered as vehicles
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The business part of rent for machinery and equipment (and for any vehicle you rented for a term of less than
+        30 days and do not enter as a vehicle); zero if none
+    cite:
+      doc: i1040sc
+      locator: p. 8, Lines 20a and 20b
+  - id: sc.veh_lease
+    printed: (helper)
+    label: Business part of vehicle lease payments
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: scveh
+      field: scveh.line20a
+    cite:
+      doc: i1040sc
+      locator: p. 8, Lines 20a and 20b
+  - id: sc.profit_pos
+    printed: (helper)
+    label: Net profit of this business (zero for a loss)
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: sc.result
+      take: sc.zero
+    cite:
+      doc: f7206
+      locator: Form 7206 (2025), lines 4 and 5
+  - id: sc.hi_uses
+    printed: (screen)
+    label: Health insurance established under this business
+    type: Bool
+    expr:
+      op: input
+      source: 'Did you pay for health insurance for 2025 (for you, your spouse, your dependents, or your child under age 27
+        at the end of 2025) that is established under this business: a policy in the name of the business or in your own name?'
+    cite:
+      doc: i1040gi
+      locator: pp. 94–95, Schedule 1, line 17, "The insurance plan must be established under your business ... the policy can be either
+        in your name or in the name of the business"
+  - id: sc.hi_screen
+    printed: (screen)
+    label: Does any of these apply to this health insurance?
+    type: Bool
+    expr:
+      op: input
+      source: 'Does any of these apply: the insurance was obtained through the Marketplace and advance payments of the premium
+        tax credit were made or you are claiming the premium tax credit; you file Form 2555; you were a more-than-2% shareholder
+        of an S corporation; you used an optional method for net earnings from self-employment; you are a retired public
+        safety officer who paid premiums from retirement plan distributions; or anyone is covered by qualified long-term care
+        insurance entered for more than one business on this return (yours or your spouse''s)?'
+    cite:
+      doc: i1040gi
+      locator: p. 95, Schedule 1, line 17, Exceptions, "Use Pub. 974 instead of the worksheet ... if the insurance plan ... was obtained
+        through the Marketplace, and advance payments of the premium tax credit were made or you are claiming the premium
+        tax credit"; i7206 pp. 1–2, "the total of the amounts entered for each person on line 2 of all Form(s) 7206 can’t
+        be more than the appropriate limit shown on line 2 for that person" (refused, owner ruling)
+  - id: sc.hi_screened
+    printed: (gate)
+    label: This health insurance deduction is outside this tool
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - sc.hi_screen
+      - const: true
+    cite:
+      doc: i1040gi
+      locator: p. 95, Schedule 1, line 17, Exceptions
+  - id: sc.f7206_line1
+    printed: '1'
+    label: Health insurance payments (other than long-term care)
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The total you paid in 2025 for health insurance coverage (medical, dental and vision; including Medicare premiums
+        you paid voluntarily) established under this business for you, your spouse and your dependents, and your child under
+        age 27 at the end of 2025; but not amounts for any month you were eligible to participate in a health plan subsidized
+        by your employer or your spouse's employer (or the employer of your dependent or of your child under age 27), and
+        not long-term care insurance
+    cite:
+      doc: f7206
+      locator: Form 7206 (2025), line 1; i7206 pp. 1–2
+    refuses:
+    - when: sc.hi_screened
+      form: Self-employed health insurance with the premium tax credit (Pub. 974), Form 2555, an S corporation, an optional
+        method or retirement plan payments
+      remedy: This health insurance deduction is outside this tool.
+      cite:
+        doc: i1040gi
+        locator: p. 95, Schedule 1, line 17, Exceptions; i7206 pp. 1–2
+  - id: sc.f7206_line2
+    printed: '2'
+    label: Qualified long-term care insurance (the smaller of payments or the age limit, for each person covered)
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: ltc
+      field: ltc.amount
+    cite:
+      doc: f7206
+      locator: Form 7206 (2025), line 2; i7206 pp. 1–2
+  - id: sc.f7206_line3
+    printed: '3'
+    label: Add lines 1 and 2
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - sc.f7206_line1
+      - sc.f7206_line2
+    cite:
+      doc: f7206
+      locator: Form 7206 (2025), line 3
+  - id: sc.f7206_line4
+    printed: '4'
+    label: Net profit from the trade or business under which the insurance plan is established
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: sc.profit_pos
+    cite:
+      doc: f7206
+      locator: 'Form 7206 (2025), line 4 (no other earned income from the business: Schedule C income only)'
+  - id: sc.f7206_line5
+    printed: '5'
+    label: Total of all net profits from Schedule C, line 31
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: person.positive_profits
+    cite:
+      doc: f7206
+      locator: Form 7206 (2025), line 5
+  - id: sc.f7206_has
+    printed: (helper)
+    label: Line 4 is more than zero
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - sc.f7206_line4
+      - sc.zero
+    cite:
+      doc: f7206
+      locator: Form 7206 (2025), line 6
+  - id: sc.f7206_line7_pos
+    printed: (helper)
+    label: Schedule 1, line 15 (this person's), times line 4 divided by line 5
+    type: NonNegDollars
+    expr:
+      op: prorate
+      amount: person.se_line13
+      part: sc.f7206_line4
+      whole: sc.f7206_line5
+      places: 6
+    cite:
+      doc: f7206
+      locator: Form 7206 (2025), lines 6 and 7 (amb.2025.f7206_line15_person; amb.2025.f7206_ratio_places)
+  - id: sc.f7206_line7
+    printed: '7'
+    label: Multiply Schedule 1 (Form 1040), line 15, deductible part of self-employment tax, by the percentage on line 6
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - sc.f7206_has
+          - const: true
+        then: sc.f7206_line7_pos
+      - guard:
+          op: test
+          eq:
+          - sc.f7206_has
+          - const: false
+        then: sc.zero
+    cite:
+      doc: f7206
+      locator: Form 7206 (2025), line 7
+  - id: sc.f7206_line8
+    printed: '8'
+    label: Subtract line 7 from line 4
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: sc.f7206_line4
+      take: sc.f7206_line7
+    cite:
+      doc: f7206
+      locator: Form 7206 (2025), line 8
+  - id: sc.f7206_line9_pos
+    printed: (helper)
+    label: This person's SEP or SIMPLE deduction times line 4 divided by line 5
+    type: NonNegDollars
+    expr:
+      op: prorate
+      amount: person.s16
+      part: sc.f7206_line4
+      whole: sc.f7206_line5
+      places: 6
+    cite:
+      doc: f7206
+      locator: Form 7206 (2025), line 9 (amb.2025.f7206_plan_attribution)
+  - id: sc.f7206_line9
+    printed: '9'
+    label: Schedule 1, line 16, attributable to the same trade or business
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - sc.f7206_has
+          - const: true
+        then: sc.f7206_line9_pos
+      - guard:
+          op: test
+          eq:
+          - sc.f7206_has
+          - const: false
+        then: sc.zero
+    cite:
+      doc: f7206
+      locator: Form 7206 (2025), line 9
+  - id: sc.f7206_line10
+    printed: '10'
+    label: Subtract line 9 from line 8
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: sc.f7206_line8
+      take: sc.f7206_line9
+    cite:
+      doc: f7206
+      locator: Form 7206 (2025), line 10
+  - id: sc.f7206_line13
+    printed: '13'
+    label: Subtract line 12 from line 10
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: sc.f7206_line10
+    cite:
+      doc: f7206
+      locator: Form 7206 (2025), lines 11 to 13 (lines 11 and 12, an S corporation and Form 2555, are refused)
+  - id: sc.f7206_min
+    printed: (helper)
+    label: The smaller of line 3 or line 13
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - sc.f7206_line3
+      - sc.f7206_line13
+    cite:
+      doc: f7206
+      locator: Form 7206 (2025), line 14
+  - id: sc.f7206_line14
+    printed: '14'
+    label: Self-employed health insurance deduction
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - sc.hi_uses
+          - const: true
+        then: sc.f7206_min
+      - guard:
+          op: test
+          eq:
+          - sc.hi_uses
+          - const: false
+        then: sc.zero
+    cite:
+      doc: f7206
+      locator: Form 7206 (2025), line 14, "Enter the smaller of line 3 or line 13 here and on Schedule 1 (Form 1040), line
+        17"
+  - id: sc.qbi_has
+    printed: (helper)
+    label: This business has a net profit
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - sc.profit_pos
+      - sc.zero
+    cite:
+      doc: i8995
+      locator: p. 2, Determining Your Qualified Business Income
+  - id: sc.qbi_se_pos
+    printed: (helper)
+    label: This person's deductible part of self-employment tax attributable to this business (by share of net profits)
+    type: NonNegDollars
+    expr:
+      op: prorate
+      amount: person.se_line13
+      part: sc.profit_pos
+      whole: person.positive_profits
+      places: 6
+    cite:
+      doc: i8995
+      locator: p. 2, Determining Your Qualified Business Income, "To figure the total amount of QBI, you must consider all items that are attributable to the trade
+        or business. This includes ... deductible part of self-employment tax ... and contributions to qualified retirement
+        plans" (amb.2025.qbi_attribution)
+  - id: sc.qbi_se
+    printed: (helper)
+    label: Deductible part of self-employment tax attributable to this business
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - sc.qbi_has
+          - const: true
+        then: sc.qbi_se_pos
+      - guard:
+          op: test
+          eq:
+          - sc.qbi_has
+          - const: false
+        then: sc.zero
+    cite:
+      doc: i8995
+      locator: p. 2, Determining Your Qualified Business Income (amb.2025.qbi_attribution)
+  - id: sc.qbi_plan_pos
+    printed: (helper)
+    label: This person's SEP or SIMPLE deduction attributable to this business (by share of net profits)
+    type: NonNegDollars
+    expr:
+      op: prorate
+      amount: person.s16
+      part: sc.profit_pos
+      whole: person.positive_profits
+      places: 6
+    cite:
+      doc: i8995
+      locator: p. 2, Determining Your Qualified Business Income (amb.2025.qbi_attribution)
+  - id: sc.qbi_plan
+    printed: (helper)
+    label: SEP or SIMPLE deduction attributable to this business
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - sc.qbi_has
+          - const: true
+        then: sc.qbi_plan_pos
+      - guard:
+          op: test
+          eq:
+          - sc.qbi_has
+          - const: false
+        then: sc.zero
+    cite:
+      doc: i8995
+      locator: p. 2, Determining Your Qualified Business Income (amb.2025.qbi_attribution)
+  - id: sc.qbi_ded
+    printed: (helper)
+    label: 'Deductions attributable to this business: self-employment tax, retirement plan and health insurance (Form 7206
+      for this business)'
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - sc.qbi_se
+      - sc.qbi_plan
+      - sc.f7206_line14
+    cite:
+      doc: i8995
+      locator: pp. 2, 6, Determining Your Qualified Business Income and Figure 1, QBI Flow Chart, "self-employment health insurance deduction"
+  - id: sc.qbi
+    printed: 1(c)
+    label: Qualified business income or (loss) of this business
+    type: Dollars
+    expr:
+      op: subtract
+      from: sc.result
+      take: sc.qbi_ded
+    cite:
+      doc: i8995
+      locator: p. 4, Line 1, column (c); Form 8995 (2025), line 1(c)
+  - id: sc.tips_ot
+    printed: (screen)
+    label: Tips or overtime in this business to be deducted on Schedule 1-A
+    type: Bool
+    expr:
+      op: input
+      source: Does this business's income include qualified tips you received in the course of this business, or qualified
+        overtime compensation reported to you on Form 1099-NEC or 1099-MISC, that you would deduct on Schedule 1-A?
+    cite:
+      doc: i1040gi
+      locator: p. 104, Schedule 1-A, line 5, "qualified tips received in the course of a trade or business"; p. 108, line
+        14b
+  collection:
+    parent: person
+    cite:
+      doc: i1040sc
+      locator: p. 3, Line A, "If you owned more than one business, complete a separate Schedule C for each business"

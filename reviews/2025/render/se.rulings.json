@@ -1,0 +1,42 @@
+{
+ "kind": "render",
+ "form": "se",
+ "rulings": [
+  {
+   "printed": "2",
+   "restated": "Input — Bound by the calling line (this person's Schedule C results).",
+   "model": "The IRS line is \"Net profit or (loss) from Schedule C, line 31; and Schedule K-1 (Form 1065), box 14, code A (other than farming)\". The restatement takes only Schedule C results and has no refusal naming the excluded partnership income.",
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. This is a line of the Schedule SE definition, bound per person; the cases the IRS line adds are refused before the definition is used, by person.se_screen ('Does any of these apply to this person', i1040sse pp. 1-5), which names net earnings from a partnership (Schedule K-1, box 14, code A) and other self-employment income not on a Schedule C."
+  },
+  {
+   "printed": "3",
+   "restated": "Enter the amount from line 2.",
+   "model": "The IRS line says \"Combine lines 1a, 1b, and 2\". The restatement uses line 2 only, dropping the farm profit (1a) and the CRP payment line (1b), with no refusal.",
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. This is a line of the Schedule SE definition, bound per person; the cases the IRS line adds are refused before the definition is used, by person.se_screen ('Does any of these apply to this person', i1040sse pp. 1-5), which names farm income (Schedule F) and Conservation Reserve Program payments, the sources of lines 1a and 1b."
+  },
+  {
+   "printed": "4b",
+   "restated": "Enter the amount from helper \"Zero\".",
+   "model": "The IRS line says \"If you elect one or both of the optional methods, enter the total of lines 15 and 17 here\". The restatement always enters $0 and has no refusal for filers who elect an optional method.",
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. This is a line of the Schedule SE definition, bound per person; the cases the IRS line adds are refused before the definition is used, by person.se_screen ('Does any of these apply to this person', i1040sse pp. 1-5), which names electing an optional method (Schedule SE Part II)."
+  },
+  {
+   "printed": "5b",
+   "restated": "Enter the amount from helper \"Zero\".",
+   "model": "The IRS line says \"Multiply line 5a by 92.35% (0.9235). If less than $100, enter -0-\". The restatement always enters $0, ignoring church employee income, with no refusal.",
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. This is a line of the Schedule SE definition, bound per person; the cases the IRS line adds are refused before the definition is used, by person.se_screen ('Does any of these apply to this person', i1040sse pp. 1-5), which names church employee income, the source of line 5a."
+  },
+  {
+   "printed": "8a",
+   "restated": "Input — Bound by the calling line (this person's Forms W-2, boxes 3 and 7).",
+   "model": "The IRS line is \"Total social security wages and tips (total of boxes 3 and 7 on Form(s) W-2) and railroad retirement (tier 1) compensation\". The restatement leaves out railroad retirement (tier 1) compensation and has no refusal.",
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. Railroad retirement (tier 1) compensation is refused for the whole return through person.rrta (the wage statements' RRTA question), which stops Schedule 3 line 11 (person.credit) and Form 8959 line 1 (person.medicare5); with it refused, line 8a is the Form W-2 boxes 3 and 7 total."
+  },
+  {
+   "printed": "8d",
+   "restated": "Enter the amount from line 8a.",
+   "model": "The IRS line says \"Add lines 8a, 8b, and 8c\". The restatement uses line 8a only, omitting unreported tips (Form 4137) and Form 8919 wages, with no refusal.",
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. This is a line of the Schedule SE definition, bound per person; the cases the IRS line adds are refused before the definition is used, by person.se_screen ('Does any of these apply to this person', i1040sse pp. 1-5), which names tips reported on Form 4137 and wages on Form 8919, the sources of lines 8b and 8c."
+  }
+ ]
+}

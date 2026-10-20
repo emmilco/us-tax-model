@@ -3,48 +3,65 @@ form:
   kind: form
   title: Form 8995 — dividend-only simplified computation
   tax_year: 2025
-  note: Business and prior-year-loss lines are zero only on the separately screened dividend-only path.
+  note: Line 2 is the qualified business income of the Schedule C businesses (sc.qbi); line 3 the prior-year carryforward as printed on the 2024 return; PTP lines 6 to 9 are section 199A dividends only.
   lines:
     - id: f8995.line2
-      printed: "2"
-      type: NonNegDollars
-      label: Amount from qbi.zero
+      printed: '2'
+      label: Total qualified business income or (loss). Combine lines 1i through 1v, column (c)
+      type: Dollars
       expr:
-        op: copy
-        from: qbi.zero
+        op: sum_over
+        collection: person
+        field: person.qbi
       cite:
         doc: f8995
-        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+        locator: Form 8995 (2025), line 2; i8995 Line 1, the trades or businesses of the Schedule C entries
     - id: f8995.line3
-      printed: "3"
-      type: NonNegDollars
-      label: Amount from qbi.zero
+      printed: '3'
+      label: Qualified business net (loss) carryforward from the prior year
+      type: Dollars
       expr:
-        op: copy
+        op: subtract
         from: qbi.zero
+        take: qbi.carryforward
       cite:
         doc: f8995
-        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+        locator: Form 8995 (2025), line 3
+    - id: f8995.line4_sum
+      printed: (helper)
+      type: Dollars
+      label: Combine lines 2 and 3
+      expr:
+        op: sum
+        of:
+          - f8995.line2
+          - f8995.line3
+      cite:
+        doc: f8995
+        locator: Form 8995 (2025), lines 4 and 16
     - id: f8995.line4
-      printed: "4"
+      printed: '4'
+      label: Total qualified business income. Combine lines 2 and 3. If zero or less, enter -0-
       type: NonNegDollars
-      label: Amount from qbi.zero
       expr:
-        op: copy
-        from: qbi.zero
+        op: subtract_floor0
+        from: f8995.line4_sum
+        take: qbi.zero
       cite:
         doc: f8995
-        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+        locator: Form 8995 (2025), line 4
     - id: f8995.line5
-      printed: "5"
+      printed: '5'
+      label: Qualified business income component. Multiply line 4 by 20% (0.20)
       type: NonNegDollars
-      label: Amount from qbi.zero
       expr:
-        op: copy
-        from: qbi.zero
+        op: multiply_rate
+        amount: f8995.line4
+        rate:
+          param: qbi.rate
       cite:
         doc: f8995
-        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+        locator: Form 8995 (2025), line 5
     - id: f8995.line7
       printed: "7"
       type: NonNegDollars
@@ -55,16 +72,40 @@ form:
       cite:
         doc: f8995
         locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
-    - id: f8995.line16
-      printed: "16"
-      type: NonNegDollars
-      label: Amount from qbi.zero
+    - id: f8995.loss
+      printed: (helper)
+      type: Bool
+      label: Lines 2 and 3 combine to less than zero
       expr:
-        op: copy
-        from: qbi.zero
+        op: test
+        lt:
+          - f8995.line4_sum
+          - param: sales.zero
       cite:
         doc: f8995
-        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+        locator: Form 8995 (2025), line 16
+    - id: f8995.line16
+      printed: '16'
+      label: Total qualified business (loss) carryforward. Combine lines 2 and 3. If greater than zero, enter -0-
+      type: Dollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - f8995.loss
+            - const: true
+          then: f8995.line4_sum
+        - guard:
+            op: test
+            eq:
+            - f8995.loss
+            - const: false
+          then: qbi.zero
+      cite:
+        doc: f8995
+        locator: Form 8995 (2025), line 16
     - id: f8995.line17
       printed: "17"
       type: NonNegDollars

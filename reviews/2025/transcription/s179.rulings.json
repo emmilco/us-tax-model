@@ -1,0 +1,24 @@
+{
+ "kind": "transcription",
+ "form": "s179",
+ "rulings": [
+  {
+   "printed": "13",
+   "project": "{\"from\": {\"of\": [{\"line\": \"10\"}, {\"line\": \"9\"}], \"op\": \"sum\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"12\"}}",
+   "second": "{\"from\": {\"of\": [{\"line\": \"10\"}, {\"line\": \"9\"}], \"op\": \"sum\"}, \"op\": \"subtract\", \"take\": {\"line\": \"12\"}}",
+   "ruling": "Ruling: equivalent; project retained. Line 12 is never more than lines 9 and 10 ('Add lines 9 and 10, but don't enter more than line 11'), so lines 9 + 10 - 12 is never negative and the project's floor at zero changes nothing."
+  },
+  {
+   "printed": "2",
+   "project": "{\"collection\": \"person\", \"field\": \"person.cost179\", \"op\": \"sum_over\", \"where\": null}",
+   "second": "{\"of\": [{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"s179.h_spouse_cost_input\"}}, {\"guard\": {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}, \"then\": {\"from\": {\"input\": \"s179.h_spouse_cost_input\"}, \"op\": \"subtract_floor0\", \"take\": {\"input\": \"s179.h_spouse_cost_input\"}}}], \"op\": \"choose\"}, {\"collection\": \"person\", \"field\": \"person.cost179\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}",
+   "ruling": "Ruling: second transcription right in substance, resolved by refusal (owner, BUG-0062). On a separate return line 2 includes the spouse's section 179 property (i4562 p. 4, Line 2) and the line 5 limitation is shared (p. 5); the project now refuses a section 179 election or carryover on a separate return (s179.mfs, on line 5). On every other return line 2 is the same sum on both sides."
+  },
+  {
+   "printed": "5",
+   "project": "{\"from\": {\"line\": \"1\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"4\"}}",
+   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, \"then\": {\"amount\": {\"from\": {\"line\": \"1\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"4\"}}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"sa.half\"}}}, {\"guard\": {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}, \"then\": {\"from\": {\"line\": \"1\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"4\"}}}], \"op\": \"choose\"}",
+   "ruling": "Ruling: second transcription right in substance, resolved by refusal (owner, BUG-0062). The second halves line 5 on a separate return and refuses an unequal allocation (i4562 p. 5, Line 5); the project refuses any section 179 election or carryover on a separate return (s179.mfs). Otherwise both subtract line 4 from line 1, floored at zero."
+  }
+ ]
+}

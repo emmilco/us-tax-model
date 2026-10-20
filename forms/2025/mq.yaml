@@ -1,0 +1,86 @@
+form:
+  id: mq
+  kind: worksheet
+  title: Mid-quarter convention test for property placed in service in 2025
+  tax_year: 2025
+  note: The 40% test of Pub. 946, figured once for the return (both spouses together on a joint return, amb.2025.mq_joint)
+    over the business-use bases after section 179 and before the special allowance; compared exactly as 5 × fourth-quarter
+    bases against 2 × all bases.
+  lines:
+  - id: mq.q4
+    printed: (helper)
+    label: Depreciable bases of property placed in service October to December 2025
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: person
+      field: person.mq_q4
+    cite:
+      doc: p946
+      locator: 'p. 34, Which Convention Applies?, Mid-quarter convention (amb.2025.mq_joint: both spouses together)'
+  - id: mq.total
+    printed: (helper)
+    label: Depreciable bases of all property placed in service in 2025
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: person
+      field: person.mq_total
+    cite:
+      doc: p946
+      locator: p. 34, Which Convention Applies?, Mid-quarter convention
+  - id: mq.five
+    printed: (helper)
+    label: Five
+    type: Count
+    expr:
+      op: param
+      ref: sc.count5
+    cite:
+      doc: p946
+      locator: p. 34, Which Convention Applies?, "are more than 40% of the total" (40% = 2/5)
+  - id: mq.two
+    printed: (helper)
+    label: Two
+    type: Count
+    expr:
+      op: param
+      ref: sc.count2
+    cite:
+      doc: p946
+      locator: p. 34, Which Convention Applies?
+  - id: mq.q4x5
+    printed: (helper)
+    label: Five times the October to December bases
+    type: NonNegDollars
+    expr:
+      op: multiply_count
+      amount: mq.q4
+      count: mq.five
+    cite:
+      doc: p946
+      locator: p. 34, Which Convention Applies?
+  - id: mq.totalx2
+    printed: (helper)
+    label: Two times all 2025 bases
+    type: NonNegDollars
+    expr:
+      op: multiply_count
+      amount: mq.total
+      count: mq.two
+    cite:
+      doc: p946
+      locator: p. 34, Which Convention Applies?
+  - id: mq.applies
+    printed: (helper)
+    label: 'The mid-quarter convention applies: the October to December bases are more than 40% of all 2025 bases'
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - mq.q4x5
+      - mq.totalx2
+    cite:
+      doc: p946
+      locator: p. 34, Which Convention Applies?, Mid-quarter convention, "are more than 40% of the total depreciable bases
+        of all MACRS property you placed in service during the entire year"

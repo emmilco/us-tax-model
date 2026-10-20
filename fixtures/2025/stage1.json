@@ -86,7 +86,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -240,7 +242,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -393,7 +397,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -546,7 +552,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -699,7 +707,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -852,7 +862,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1005,7 +1017,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1158,7 +1172,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1311,7 +1327,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1464,7 +1482,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1617,7 +1637,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1770,7 +1792,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1923,7 +1947,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2085,7 +2111,10 @@
         "person[spouse].work_ssn": true,
         "person[spouse].educator_expenses": 0,
         "$w2@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2247,7 +2276,10 @@
         "person[spouse].work_ssn": true,
         "person[spouse].educator_expenses": 0,
         "$w2@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2409,7 +2441,10 @@
         "person[spouse].work_ssn": true,
         "person[spouse].educator_expenses": 0,
         "$w2@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2571,7 +2606,10 @@
         "person[spouse].work_ssn": true,
         "person[spouse].educator_expenses": 0,
         "$w2@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2733,7 +2771,10 @@
         "person[spouse].work_ssn": true,
         "person[spouse].educator_expenses": 0,
         "$w2@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -2887,7 +2928,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -3041,7 +3084,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -3195,7 +3240,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -3349,7 +3396,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -3503,7 +3552,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -3677,7 +3728,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -3851,7 +3904,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4025,7 +4080,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4199,7 +4256,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4373,7 +4432,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4526,7 +4587,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4679,7 +4742,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4841,7 +4906,10 @@
         "person[spouse].work_ssn": true,
         "person[spouse].educator_expenses": 0,
         "$w2@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4995,7 +5063,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -5232,7 +5302,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -5480,7 +5552,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -5717,7 +5791,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -5954,7 +6030,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -6192,7 +6270,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -6429,7 +6509,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -6675,7 +6757,10 @@
         "person[spouse].work_ssn": true,
         "person[spouse].educator_expenses": 0,
         "$w2@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -6913,7 +6998,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -7171,7 +7258,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -7408,7 +7497,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -7645,7 +7736,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -7882,7 +7975,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -8035,7 +8130,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -8188,7 +8285,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -8341,7 +8440,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -8503,7 +8604,10 @@
         "person[spouse].work_ssn": true,
         "person[spouse].educator_expenses": 0,
         "$w2@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -8665,7 +8769,10 @@
         "person[spouse].work_ssn": true,
         "person[spouse].educator_expenses": 0,
         "$w2@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -8827,7 +8934,10 @@
         "person[spouse].work_ssn": true,
         "person[spouse].educator_expenses": 0,
         "$w2@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -8989,7 +9099,10 @@
         "person[spouse].work_ssn": true,
         "person[spouse].educator_expenses": 0,
         "$w2@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -9143,7 +9256,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -9297,7 +9412,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -9451,7 +9568,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -9605,7 +9724,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -9779,7 +9900,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -9953,7 +10076,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -10127,7 +10252,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -10301,7 +10428,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -10459,7 +10588,9 @@
         "sli.interest": 0,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "qdcg.line22": {

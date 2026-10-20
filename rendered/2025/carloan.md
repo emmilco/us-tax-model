@@ -2,7 +2,7 @@
 
 - Document: `carloan` (form, tax year 2025)
 - Collection: keyed entries; [i1040gi] p. 110, Schedule 1-A, line 22, "If you need to report more than two VINs, attach a statement to your return showing the information required on line 22"; "for each entered VIN, enter the QPVLI paid or accrued on the loan originated for the purchase of that APV" (2025; printed date 2026-02-25; sha256 482e9c48)
-- Note: One entry per loan; name each entry by the vehicle's VIN (a vehicle with a loan refinanced during 2025 has one entry for each loan). Interest deducted on Schedule C, E or F (column (ii)) is outside this tool, which refuses those schedules, so column (iii) is the qualified interest on the loan. Where a loan also financed amounts that do not qualify, or refinanced a qualifying loan for more than its balance, the interest is allocated pro rata under proposed § 1.163-16(d)(2)(iii) and (d)(4); the ratio is rounded to six places (amb.2025.carloan_ratio_places).
+- Note: One entry per loan; name each entry by the vehicle's VIN (a vehicle with a loan refinanced during 2025 has one entry for each loan). Interest deducted on Schedule C (column (ii)) is asked when the return has a Schedule C; Schedules E and F are refused. Where a loan also financed amounts that do not qualify, or refinanced a qualifying loan for more than its balance, the interest is allocated pro rata under proposed § 1.163-16(d)(2)(iii) and (d)(4); the ratio is rounded to six places (amb.2025.carloan_ratio_places).
 
 ## (helper) — `carloan.zero`
 
@@ -42,8 +42,8 @@
 ## (helper) — `carloan.interest`
 
 - **Authored helper label:** Interest you paid or accrued on this loan in 2025
-- **Encoded (NonNegDollars):** Input — Total interest you paid or accrued on this loan in 2025 (generally from the lender's statement), none of it deducted elsewhere on your return
-- Expr: `{"op":"input","source":"Total interest you paid or accrued on this loan in 2025 (generally from the lender's statement), none of it deducted elsewhere on your return"}`
+- **Encoded (NonNegDollars):** Input — Total interest you paid or accrued on this loan in 2025 (generally from the lender's statement), including any part you deduct on Schedule C (that part is entered separately)
+- Expr: `{"op":"input","source":"Total interest you paid or accrued on this loan in 2025 (generally from the lender's statement), including any part you deduct on Schedule C (that part is entered separately)"}`
 - Cite: [i1040gi] p. 110, Schedule 1-A, line 22, column (iii), "the total amount of the QPVLI paid or accrued on the loan during the taxable year minus the amount on line 22, column (ii)" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `carloan.mixed`
@@ -147,9 +147,30 @@
 - Expr: `{"amount":"carloan.interest","op":"prorate","part":"carloan.mixed_qualifying","places":6,"whole":"carloan.financed"}`
 - Cite: [fr-2025-24154] pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(A), "payments of interest and principal are allocated to the portion of the indebtedness described in paragraph (d)(2)(i) ... and the portion ... described in paragraph (d)(2)(ii) ... on a pro rata basis" (Federal Register Vol. 91, No. 1 (2026-01-02), proposed rules REG-113515-25 (Car Loan Interest Deduction), FR Doc. 2025-24154; sha256 4d243f55)
 
-## 22(iii) — `carloan.col_iii`
+## (helper) — `carloan.qpvli`
 
-- **IRS:** Interest for this loan, Schedule 1-A
+- **Authored helper label:** Interest for this loan, Schedule 1-A
 - **Encoded (NonNegDollars):** Choose — [helper "The loan and the vehicle qualify" = false → helper "Year parameter sales.zero"] [helper "The loan and the vehicle qualify" = true → helper "Interest allocated pro rata to the qualifying part of the loan"]
 - Expr: `{"alternatives":[{"guard":{"eq":["carloan.eligible",{"const":false}],"op":"test"},"then":"carloan.zero"},{"guard":{"eq":["carloan.eligible",{"const":true}],"op":"test"},"then":"carloan.allocated"}],"op":"choose"}`
 - Cite: [i1040gi] p. 110, Schedule 1-A, line 22, column (iii); column (ii), interest deducted on Schedule C, E or F, is outside this tool (scope.schedule1) (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## 22(ii) — `carloan.col_ii_input`
+
+- **IRS:** Interest on this loan deducted on Schedule C
+- **Encoded (NonNegDollars):** Input — The part of this loan's 2025 interest you deduct on Schedule C (the business use of the vehicle; zero if none)
+- Expr: `{"op":"input","source":"The part of this loan's 2025 interest you deduct on Schedule C (the business use of the vehicle; zero if none)"}`
+- Cite: [i1040gi] p. 110, Schedule 1-A, line 22, column (ii), "Enter the amount of the QPVLI ... that you deducted on Schedule C, E, or F"; i1040sc p. 6, Line 9 caution (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `carloan.col_ii`
+
+- **Authored helper label:** Interest deducted on Schedule C (zero without a Schedule C)
+- **Encoded (NonNegDollars):** Choose — [s1 helper "The return has a Schedule C" = true → line 22(ii)] [s1 helper "The return has a Schedule C" = false → helper "Year parameter sales.zero"]
+- Expr: `{"alternatives":[{"guard":{"eq":["s1.has_sc",{"const":true}],"op":"test"},"then":"carloan.col_ii_input"},{"guard":{"eq":["s1.has_sc",{"const":false}],"op":"test"},"then":"carloan.zero"}],"op":"choose"}`
+- Cite: [i1040gi] p. 110, Schedule 1-A, line 22, column (ii) (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## 22(iii) — `carloan.col_iii`
+
+- **IRS:** Qualified passenger vehicle loan interest less the amount in column (ii)
+- **Encoded (NonNegDollars):** Subtract helper "Interest deducted on Schedule C (zero without a Schedule C)" from helper "Interest for this loan, Schedule 1-A". If zero or less, enter -0-.
+- Expr: `{"from":"carloan.qpvli","op":"subtract_floor0","take":"carloan.col_ii"}`
+- Cite: [i1040gi] p. 110, Schedule 1-A, line 22, column (iii), "the total amount of the QPVLI paid or accrued on the loan during the taxable year minus the amount on line 22, column (ii)" (2025; printed date 2026-02-25; sha256 482e9c48)

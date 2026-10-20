@@ -199,8 +199,8 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       = $1,000
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
 
-== Form 8959 — wage-only Additional Medicare Tax ==
-  (helper) Any self-employment income (including church employee income), RRTA compensation, tips not reported to your employer or allocated tips in Form W-2 box 8 (Form 4137), Form 8919 wages, uncollected Medicare tax in Form W-2 box 12 (codes B or N), or Medicare wages on a wage statement from a U.S. territory (such as Form 499R-2/W-2PR)?
+== Form 8959 — Additional Medicare Tax on wages and self-employment income ==
+  (helper) Any church employee income or other self-employment income outside Schedule SE as this tool prepares it, RRTA compensation, tips not reported to your employer or allocated tips in Form W-2 box 8 (Form 4137), Form 8919 wages, uncollected Medicare tax in Form W-2 box 12 (codes B or N), or Medicare wages on a wage statement from a U.S. territory (such as Form 499R-2/W-2PR)?
       = false
       cite: [f8959] Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; 13e64004)
   (helper) Year parameter sales.zero
@@ -216,9 +216,10 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
   3   Amount from f8959.zero
       = $0
       cite: [f8959] Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; 13e64004)
-  8   Amount from f8959.zero
+  8   Self-employment income from Schedule SE (Form 1040), Part I, line 6. If you had a loss, enter -0-
       = $0
-      cite: [f8959] Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; 13e64004)
+      cite: [f8959] Form 8959 (2025), line 8 (on a joint return, the combined amounts of both spouses' Schedules SE, line 6) (2025; created 2025-04-30; 13e64004)
+      note: confirmed roster $person: taxpayer
   14  Amount from f8959.zero
       = $0
       cite: [f8959] Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; 13e64004)
@@ -386,9 +387,23 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       cite: [i8960] pp. 17–18, allowable taxes allocable to net investment income (2025; printed date 2026-02-04; b10fbb23)
 
 == Form 8995 — dividend-only simplified computation ==
-  5   Amount from qbi.zero
+  2   Total qualified business income or (loss). Combine lines 1i through 1v, column (c)
       = $0
-      cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
+      cite: [f8995] Form 8995 (2025), line 2; i8995 Line 1, the trades or businesses of the Schedule C entries (2025; created 2025-09-12; 55380ad2)
+      note: confirmed roster $person: taxpayer
+  3   Qualified business net (loss) carryforward from the prior year
+      = $0
+      cite: [f8995] Form 8995 (2025), line 3 (2025; created 2025-09-12; 55380ad2)
+  (helper) Combine lines 2 and 3
+      = $0
+      cite: [f8995] Form 8995 (2025), lines 4 and 16 (2025; created 2025-09-12; 55380ad2)
+  4   Total qualified business income. Combine lines 2 and 3. If zero or less, enter -0-
+      = $0
+      cite: [f8995] Form 8995 (2025), line 4 (2025; created 2025-09-12; 55380ad2)
+  5   Qualified business income component. Multiply line 4 by 20% (0.20)
+      = $0
+      cite: [f8995] Form 8995 (2025), line 5 (2025; created 2025-09-12; 55380ad2)
+      note: half-up to the cent per the ambiguity register
   6   Amount from qbi.eligible
       = $0
       cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
@@ -488,7 +503,7 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
   (helper) Qualified section 199A dividends from Form 1099-DIV box 5 after confirming holding-period and related-payment requirements
       = $0
       cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
-  (helper) Do you have any of these: qualified business income or loss, or PTP income or loss, other than section 199A dividends; a prior-year qualified business, REIT or PTP loss carryforward (including suspended losses allowed this year); or are you a patron of any agricultural or horticultural cooperative, specified or not (including any qualified payments from one on Form 1099-PATR)?
+  (helper) Do you have any of these: qualified business income or loss, or PTP income or loss, other than section 199A dividends and the Schedule C businesses entered in this tool; a prior-year REIT or PTP loss carryforward, or losses or deductions suspended in an earlier year by another provision and allowed this year; or are you a patron of any agricultural or horticultural cooperative, specified or not (including any qualified payments from one on Form 1099-PATR)?
       = false
       cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
       note: Interpretation amb.2025.qbi_cooperative_patron: Refuse any patron of an agricultural or horticultural cooperative, specified or not (qbi.unsupported). The owner asked for the strictly accurate reading. Refusing every patron satisfies both texts: a filer the form excludes is never computed on it, and a filer the instructions exclude is a patron the form also excludes. The cost is a refusal for a patron of a cooperative that is not specified, which the instructions would allow.
@@ -499,6 +514,9 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
   (helper) Amount from qbi.dividends
       = $0
       cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
+  3   Qualified business net (loss) carryforward from the prior year (as a positive amount)
+      = $0
+      cite: [i8995] Line 3, "enter the amount from line 16 of your 2024 Form 8995" (owner: the printed amount) (2025; printed date 2026-01-26; 875843ba)
   (helper) Form 1040 lines 12e and 13b, the deductions taken before the QBI deduction
       = $27,700
       cite: [i8995-correction] Correction to 2025 Form 8995 instructions, line 11: Form 1040 line 11a minus lines 12e and 13b (Post-release correction to the 2025 Instructions for Form 8995 (published 2026-02-13); page last reviewed 2026-06-28; 926735a0)
@@ -533,9 +551,29 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       = $0
       cite: [f1040s1] Schedule 1 (2025), line 7 (2025; created 2025-07-25; 8dafec71)
       note: taken: {"eq":["s1.has_uc",{"const":false}],"op":"test"}
+  (helper) The net loss of all Schedules C (as a positive amount)
+      = $0
+      cite: [f1040s1] Schedule 1 (2025), line 3; i1040sc p. 1, Excess business loss limitation (2025; created 2025-07-25; 8dafec71)
+  (helper) Net profit or loss of all Schedules C
+      = $0
+      cite: [i1040sc] p. 1, Reminders, Excess business loss limitation (2025; b5536db9)
+      note: confirmed roster $person: taxpayer
+  (helper) Zero
+      = $0
+      cite: [i1040sc] p. 1, Reminders, Excess business loss limitation (2025; b5536db9)
+  (helper) Threshold for excess business loss
+      = $313,000
+      cite: [rp-2024-40] p. 17, section 3.32, Threshold for Excess Business Loss, "$313,000 ($626,000 for joint returns)" (Rev. Proc. 2024-40; 2025 adjusted items; released 2024-10; 4de9db6b)
+  (gate) The Schedule C losses are more than the excess business loss threshold
+      = false
+      cite: [i1040sc] p. 1, Reminders, "If you report a loss on line 31 ... you may be subject to a business loss limitation ... use Form 461" (2025; b5536db9)
+  3   Business income or (loss). Attach Schedule C
+      = $0
+      cite: [f1040s1] Schedule 1 (2025), line 3; i1040sc p. 14, Line 31, "include it on Schedule 1 (Form 1040), line 3" (2025; created 2025-07-25; 8dafec71)
+      note: confirmed roster $person: taxpayer
   10  Combine lines 1 through 7 and 9. This is your additional income. Enter here and on Form 1040, 1040-SR, or 1040-NR, line 8
       = $0
-      cite: [f1040s1] Schedule 1 (2025), line 10 (lines 1 to 6, 8a to 8z and 9 are outside this tool and refused at Form 1040 line 8 by scope.schedule1) (2025; created 2025-07-25; 8dafec71)
+      cite: [f1040s1] Schedule 1 (2025), line 10 (lines 1, 2, 4 to 6, 8a to 8z and 9 are outside this tool and refused at Form 1040 line 8 by scope.schedule1) (2025; created 2025-07-25; 8dafec71)
   11  Educator expenses
       = $0
       cite: [f1040s1] Schedule 1 (2025), line 11; i1040gi p. 93, "If you and your spouse are filing jointly and both of you were eligible educators, the maximum deduction is $600. However, neither spouse can deduct more than $300 of their qualified expenses" (2025; created 2025-07-25; 8dafec71)
@@ -544,12 +582,24 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       = $0
       cite: [f1040s1] Schedule 1 (2025), line 13; i8889 p. 4, "Combine the amounts on line 13 of both Forms 8889 and enter this amount on Schedule 1 (Form 1040), line 13" (2025; created 2025-07-25; 8dafec71)
       note: confirmed roster $person: taxpayer
+  15  Deductible part of self-employment tax. Attach Schedule SE
+      = $0
+      cite: [i1040gi] p. 93, Schedule 1, line 15, "The deductible part of your self-employment tax is on line 13 of Schedule SE" (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
+  16  Self-employed SEP, SIMPLE, and qualified plans
+      = $0
+      cite: [i1040gi] p. 93, Schedule 1, line 16; p560 chapter 3, Where To Deduct Contributions, and chapter 5 (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
+  17  Self-employed health insurance deduction
+      = $0
+      cite: [i1040gi] pp. 94–95, Schedule 1, line 17, Self-Employed Health Insurance Deduction; Form 7206 (2025), line 14 (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
   21  Student loan interest deduction
       = $0
       cite: [f1040s1] Schedule 1 (2025), line 21 (2025; created 2025-07-25; 8dafec71)
   26  Add lines 11 through 23 and 25. These are your adjustments to income. Enter here and on Form 1040, 1040-SR, or 1040-NR, line 10
       = $0
-      cite: [f1040s1] Schedule 1 (2025), line 26 (lines 12, 14 to 20, 23 and 25 are outside this tool and refused at Form 1040 line 10 by scope.schedule1) (2025; created 2025-07-25; 8dafec71)
+      cite: [f1040s1] Schedule 1 (2025), line 26 (lines 12, 14, 18 to 20, 23 and 25 are outside this tool and refused at Form 1040 line 10 by scope.schedule1) (2025; created 2025-07-25; 8dafec71)
 
 == Schedule 1-A (Form 1040) — Additional Deductions ==
   (helper) Year parameter sales.zero
@@ -602,18 +652,22 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
   (helper) Are you required to file Form 6251 or do you have an AMT adjustment requiring its review?
       = false
       cite: [f1040s2] Schedule 2 (2025), lines 2, 3, 11, 12 and 21 (2025; created 2025-05-08; 64d867b6)
-  (helper) Any amount on Schedule 2 other than Additional Medicare Tax or Net Investment Income Tax, for example the alternative minimum tax, repayment of excess advance premium tax credit or of a clean vehicle credit, self-employment tax, household employment taxes, the additional tax on early retirement or HSA distributions (often called a penalty), uncollected social security or Medicare tax on tips or group-term life insurance (W-2 box 12 codes A, B, M or N), tax on unreported tips (Form 4137), or interest on deferred tax?
+  (helper) Any amount on Schedule 2 other than self-employment tax from Schedule SE, Additional Medicare Tax or Net Investment Income Tax, for example the alternative minimum tax, repayment of excess advance premium tax credit or of a clean vehicle credit, household employment taxes, the additional tax on early retirement or HSA distributions (often called a penalty), uncollected social security or Medicare tax on tips or group-term life insurance (W-2 box 12 codes A, B, M or N), tax on unreported tips (Form 4137), or interest on deferred tax?
       = false
       cite: [f1040s2] Schedule 2 (2025), lines 2, 3, 11, 12 and 21 (2025; created 2025-05-08; 64d867b6)
+  4   Self-employment tax. Attach Schedule SE
+      = $0
+      cite: [f1040s2] Schedule 2 (2025), line 4; i1040sse p. 2, Joint Returns, "Enter the combined SE tax on Schedule 2 (Form 1040), line 4" (2025; created 2025-05-08; 64d867b6)
+      note: confirmed roster $person: taxpayer
   11  Amount from f8959.line18
       = $0
       cite: [f1040s2] Schedule 2 (2025), lines 2, 3, 11, 12 and 21 (2025; created 2025-05-08; 64d867b6)
   12  Amount from f8960.line17
       = $0
       cite: [f1040s2] Schedule 2 (2025), lines 2, 3, 11, 12 and 21 (2025; created 2025-05-08; 64d867b6)
-  21  Add s2.line11, s2.line12
+  21  Add s2.line4, s2.line11, s2.line12
       = $0
-      cite: [f1040s2] Schedule 2 (2025), lines 2, 3, 11, 12 and 21 (2025; created 2025-05-08; 64d867b6)
+      cite: [f1040s2] Schedule 2 (2025), lines 2, 3, 4, 11, 12 and 21 (2025; created 2025-05-08; 64d867b6)
 
 == Schedule 3 — selected lines ==
   1   Foreign tax credit
@@ -832,7 +886,7 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
 
 == Proof-of-concept scope screening ==
-  (helper) Any income or adjustment requiring Schedule 1 other than unemployment compensation, educator expenses, the HSA deduction and student loan interest, including a taxable state or local tax refund; alimony; an IRA deduction; being self-employed or filing Schedule C (income or loss, including statutory-employee wages) or Schedule SE (including clergy, and church employee income: wages from a church that elected exemption from social security and Medicare taxes); rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1); rental of personal property; farm income (Schedule F); gambling winnings, prizes or other income for Schedule 1 line 8; or an exclusion of Medicaid waiver payments (Schedule 1 line 8s)? (Schedule 1-A deductions are asked separately.)
+  (helper) Any income or adjustment requiring Schedule 1 other than business income or loss from Schedule C, unemployment compensation, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction and student loan interest, including a taxable state or local tax refund; alimony; an IRA deduction; statutory-employee wages or clergy income; church employee income (wages from a church that elected exemption from social security and Medicare taxes); other qualified retirement plans for the self-employed (such as a solo 401(k) or other Keogh plan); rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1); rental of personal property; farm income (Schedule F); gambling winnings, prizes or other income for Schedule 1 line 8; or an exclusion of Medicaid waiver payments (Schedule 1 line 8s)? (Schedule 1-A deductions are asked separately.)
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
   (helper) Do you want to claim any credit other than the foreign tax credit claimed without Form 1116, the excess social security credit, the child tax credit, the credit for other dependents, the additional child tax credit and the earned income credit, or do you have any other amount for Schedule 3 Part I (for example a Form 8978 adjustment)?
@@ -1037,6 +1091,10 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   person[taxpayer].educator_deduction: chose $0 (guard 1)
       not taken: guard 0 = false
+  person[taxpayer].se_line13: chose $0 (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].s16: chose $0 (guard 1)
+      not taken: guard 0 = false
   sli.deduction: chose $0 (guard 1)
       not taken: guard 0 = false
   s1.sli.deduction: chose $0 (guard 1)
@@ -1062,6 +1120,10 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   f1040.line16: chose $10,826 (guard 1)
       not taken: guard 0 = false
+  person[taxpayer].se_line12: chose $0 (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].se_line6: chose $0 (guard 1)
+      not taken: guard 0 = false
   f8960.line9a: chose $1,000 (guard 0)
   f8960.line9b: chose $0 (guard 0)
   ftc.credit: chose $0 (guard 1)
@@ -1080,6 +1142,8 @@ Collection entries and derivations:
     cite: f1040, Form 1040 (2025), line 1a (2025; created 2025-09-05; 3d31c226)
   interest[bank].amount = $2,000
     cite: i1040sb, pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
+  person[taxpayer].sc_total = $0
+    cite: i1040sse, p. 2, More Than One Business, "Figure the combined SE tax on one Schedule SE" (2025; ea9e3120)
   person[taxpayer].educator_expenses = $0
     cite: i1040gi, p. 93, Schedule 1, line 11, Qualified expenses and 'You must reduce your qualified expenses by the following amounts' (2025; printed date 2026-02-25; 482e9c48)
   person[taxpayer].has_educator_expenses = false
@@ -1094,6 +1158,16 @@ Collection entries and derivations:
     cite: i8889, p. 4, Name and social security number (SSN), "complete a separate Form 8889 for each of you" (2025; da6f2f58)
   person[taxpayer].hsa_deduction = $0
     cite: i8889, p. 4, "Combine the amounts on line 13 of both Forms 8889 and enter this amount on Schedule 1 (Form 1040), line 13" (2025; da6f2f58)
+  person[taxpayer].sc_count = 0
+    cite: i1040sc, p. 14, Line 31; i4562 p. 4, Part I (2025; b5536db9)
+  person[taxpayer].has_sc = false
+    cite: i1040sse, p. 1, Who Must File Schedule SE; p. 2, Joint Returns, "If both spouses have self-employment income, each must file a separate Schedule SE" (2025; ea9e3120)
+  person[taxpayer].se_line13 = $0
+    cite: f1040sse, Schedule SE (2025), line 13, "Enter here and on Schedule 1 (Form 1040), line 15" (2025; created 2025-05-07; 05bc2b3e)
+  person[taxpayer].s16 = $0
+    cite: i1040gi, p. 93, Schedule 1, line 16, "If you were self-employed or a partner, you may be able to take this deduction" (2025; printed date 2026-02-25; 482e9c48)
+  person[taxpayer].sehi = $0
+    cite: f7206, Form 7206 (2025), line 14 (2025; created 2025-10-02; 822203c9)
   gift[books].special = false
     cite: i8283, pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A (December 2025; printed date 2026-01-30; 2de015f7)
   gift[books].public_securities = false
@@ -1108,12 +1182,18 @@ Collection entries and derivations:
     cite: f1040sa, Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
   person[taxpayer].blind = false
     cite: f1040sa, Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  person[taxpayer].qbi = $0
+    cite: i8995, pp. 2, 4, Determining Your Qualified Business Income; Line 1 (2025; printed date 2026-01-26; 875843ba)
+  person[taxpayer].se_line12 = $0
+    cite: f1040sse, Schedule SE (2025), line 12, "Enter here and on Schedule 2 (Form 1040), line 4" (2025; created 2025-05-07; 05bc2b3e)
   person[taxpayer].rrta = false
     cite: iw2w3, pp. 12–13, Railroad employers: RRTA compensation and taxes in box 14; boxes 3–7 are not used for RRTA (2025; printed date 2025-02-19; bfecbc99)
   person[taxpayer].w2[a].box5 = $200,000
     cite: f8959, Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; 13e64004)
   person[taxpayer].medicare5 = $200,000
     cite: f8959, Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; 13e64004)
+  person[taxpayer].se_line6 = $0
+    cite: f1040sse, Schedule SE (2025), line 6; i8959 Line 8, "Schedule SE, line 6" (2025; created 2025-05-07; 05bc2b3e)
   person[taxpayer].w2[a].box6 = $2,900
     cite: f8959, Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; 13e64004)
   person[taxpayer].medicare6 = $2,900
@@ -1178,11 +1258,17 @@ Collection entries and derivations:
   ssb.line18: choose(ssb.has_benefits = false; true = true; ssb.has_benefits = false; false = false; ssb.zero = $0)
   f1040.ssb.line18: choose(ssb.has_benefits = false; true = true; ssb.has_benefits = false; false = false; ssb.zero = $0)
   f1040.line6b: copy(ssb.line18 = $0)
+  s1.zero_ebl: param(#sales.zero = $0)
+  s1.ebl_total: sum_over(person[taxpayer].sc_total = $0)
+  s1.ebl_loss: subtract_floor0(s1.zero_ebl = $0; s1.ebl_total = $0)
+  s1.ebl_threshold: param(#s1.ebl_threshold = $313,000)
+  s1.ebl: test(s1.ebl_loss = $0; s1.ebl_threshold = $313,000)
+  s1.line3: sum_over(s1.ebl = false; person[taxpayer].sc_total = $0)
   s1.has_uc: test(s1.uc_paid = $0; #sales.zero = $0)
   s1.zero: param(#sales.zero = $0)
   s1.line7: choose(s1.has_uc = false; true = true; s1.has_uc = false; false = false; s1.zero = $0)
-  s1.line10: copy(s1.line7 = $0)
-  f1040.s1.line10: copy(s1.line7 = $0)
+  s1.line10: sum(s1.line3 = $0; s1.line7 = $0)
+  f1040.s1.line10: sum(s1.line3 = $0; s1.line7 = $0)
   f1040.line8: copy(scope.schedule1 = false; scope.other_income = false; s1.line10 = $0)
   f1040.line9: sum(f1040.line1z = $98,000; f1040.line2b = $2,000; f1040.line3b = $0; f1040.line4b = $0; f1040.line5b = $0; f1040.line6b = $0; f1040.line7a = $0; f1040.line8 = $0)
   person[taxpayer].has_educator_expenses: test(person[taxpayer].educator_expenses = $0; #sales.zero = $0)
@@ -1192,13 +1278,19 @@ Collection entries and derivations:
   person[taxpayer].hsa_repeated: test(person[taxpayer].hsa_forms = 0; 1 = 1)
   person[taxpayer].hsa_deduction: sum_over(person[taxpayer].hsa_repeated = false)
   s1.line13: sum_over(person[taxpayer].hsa_deduction = $0)
+  person[taxpayer].has_sc: test(person[taxpayer].sc_count = 0; 0 = 0)
+  person[taxpayer].se_line13: choose(person[taxpayer].has_sc = false; true = true; person[taxpayer].has_sc = false; false = false; person[taxpayer].zero = $0)
+  s1.line15: sum_over(person[taxpayer].se_line13 = $0)
+  person[taxpayer].s16: choose(person[taxpayer].has_sc = false; true = true; person[taxpayer].has_sc = false; false = false; person[taxpayer].zero = $0)
+  s1.line16: sum_over(person[taxpayer].s16 = $0)
+  s1.line17: sum_over(person[taxpayer].sehi = $0)
   sli.has: test(sli.interest = $0; #sales.zero = $0)
   sli.zero: param(#sales.zero = $0)
   sli.deduction: choose(sli.has = false; true = true; sli.has = false; false = false; sli.zero = $0)
   s1.sli.deduction: choose(sli.has = false; true = true; sli.has = false; false = false; sli.zero = $0)
   s1.line21: copy(sli.deduction = $0)
-  s1.line26: sum(s1.line11 = $0; s1.line13 = $0; s1.line21 = $0)
-  f1040.s1.line26: sum(s1.line11 = $0; s1.line13 = $0; s1.line21 = $0)
+  s1.line26: sum(s1.line11 = $0; s1.line13 = $0; s1.line15 = $0; s1.line16 = $0; s1.line17 = $0; s1.line21 = $0)
+  f1040.s1.line26: sum(s1.line11 = $0; s1.line13 = $0; s1.line15 = $0; s1.line16 = $0; s1.line17 = $0; s1.line21 = $0)
   f1040.line10: copy(scope.schedule1 = false; s1.line26 = $0)
   f1040.line11a: subtract(f1040.line9 = $100,000; f1040.line10 = $0)
   f1040.line11b: copy(f1040.line11a = $100,000)
@@ -1296,9 +1388,13 @@ Collection entries and derivations:
   qbi.taxable_before: subtract_floor0(sa.agi = $100,000; qbi.deductions_before = $27,700)
   qbi.threshold: param(#qbi.threshold = $197,300)
   qbi.use_8995a: test(qbi.taxable_before = $72,300; qbi.threshold = $197,300)
+  f8995.line2: sum_over(person[taxpayer].qbi = $0)
   qbi.zero: param(#sales.zero = $0)
   f8995.qbi.zero: param(#sales.zero = $0)
-  f8995.line5: copy(qbi.zero = $0)
+  f8995.line3: subtract(qbi.zero = $0; qbi.carryforward = $0)
+  f8995.line4_sum: sum(f8995.line2 = $0; f8995.line3 = $0)
+  f8995.line4: subtract_floor0(f8995.line4_sum = $0; qbi.zero = $0)
+  f8995.line5: multiply_rate(f8995.line4 = $0; #qbi.rate = 1/5)
   qbi.eligible: copy(qbi.unsupported = false; qbi.dividends = $0)
   f8995.qbi.eligible: copy(qbi.unsupported = false; qbi.dividends = $0)
   f8995.line6: copy(qbi.eligible = $0)
@@ -1366,6 +1462,8 @@ Collection entries and derivations:
   root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.tax: choose(root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.below_boundary = true; true = true; root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.table_tax = $10,826)
   f1040.non_sdtw_tax: choose(f1040.gate.qdcg_applies = false; true = true; f1040.gate.qdcg_applies = false; false = false; bind amount = f1040.line15 = $72,300; bind status = f1040.status = single)
   f1040.line16: choose(scope.other_line16 = false; f1040.gate.sdtw = false; true = true; f1040.gate.sdtw = false; false = false; f1040.non_sdtw_tax = $10,826)
+  person[taxpayer].se_line12: choose(person[taxpayer].has_sc = false; true = true; person[taxpayer].has_sc = false; false = false; person[taxpayer].zero = $0)
+  s2.line4: sum_over(person[taxpayer].se_line12 = $0)
   person[taxpayer].medicare5: sum_over(person[taxpayer].rrta = false; person[taxpayer].w2[a].box5 = $200,000)
   f8959.line1: sum_over(f8959.unsupported = false; person[taxpayer].medicare5 = $200,000)
   f8959.zero: param(#sales.zero = $0)
@@ -1375,7 +1473,8 @@ Collection entries and derivations:
   f8959.line5: param(#medicare.threshold = $200,000)
   f8959.line6: subtract_floor0(f8959.line4 = $200,000; f8959.line5 = $200,000)
   f8959.line7: multiply_rate(f8959.line6 = $0; #medicare.additional_rate = 9/1000)
-  f8959.line8: copy(f8959.unsupported = false; f8959.zero = $0)
+  person[taxpayer].se_line6: choose(person[taxpayer].has_sc = false; true = true; person[taxpayer].has_sc = false; false = false; person[taxpayer].zero = $0)
+  f8959.line8: sum_over(f8959.unsupported = false; person[taxpayer].se_line6 = $0)
   f8959.line9: copy(f8959.line5 = $200,000)
   f8959.line10: copy(f8959.line4 = $200,000)
   f8959.line11: subtract_floor0(f8959.line9 = $200,000; f8959.line10 = $200,000)
@@ -1424,7 +1523,7 @@ Collection entries and derivations:
   f8960.line17: multiply_rate(f8960.line16 = $0; #niit.rate = 38/1000)
   s2.f8960.line17: multiply_rate(f8960.line16 = $0; #niit.rate = 38/1000)
   s2.line12: copy(f8960.line17 = $0)
-  s2.line21: sum(s2.amt = false; s2.other = false; s2.line11 = $0; s2.line12 = $0)
+  s2.line21: sum(s2.amt = false; s2.other = false; s2.line4 = $0; s2.line11 = $0; s2.line12 = $0)
   person[taxpayer].medicare6: sum_over(person[taxpayer].rrta = false; person[taxpayer].w2[a].box6 = $2,900)
   f8959.line19: sum_over(f8959.unsupported = false; person[taxpayer].medicare6 = $2,900)
   f8959.line20: copy(f8959.line1 = $200,000)

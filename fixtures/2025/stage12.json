@@ -123,7 +123,9 @@
           "emp0"
         ],
         "person[taxpayer].tipjob[emp0].qualified": true,
-        "person[taxpayer].tipjob[emp0].amount": 800000
+        "person[taxpayer].tipjob[emp0].amount": 800000,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line3": {
@@ -293,7 +295,9 @@
         "person[taxpayer].tipjob[emp0].qualified": true,
         "person[taxpayer].tipjob[emp0].amount": 900000,
         "person[taxpayer].tipjob[emp1].qualified": true,
-        "person[taxpayer].tipjob[emp1].amount": 450000
+        "person[taxpayer].tipjob[emp1].amount": 450000,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line4a": {
@@ -440,7 +444,9 @@
           "emp0"
         ],
         "person[taxpayer].tipjob[emp0].qualified": true,
-        "person[taxpayer].tipjob[emp0].amount": 3000000
+        "person[taxpayer].tipjob[emp0].amount": 3000000,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line6": {
@@ -579,7 +585,9 @@
           "emp0"
         ],
         "person[taxpayer].tipjob[emp0].qualified": true,
-        "person[taxpayer].tipjob[emp0].amount": 2000000
+        "person[taxpayer].tipjob[emp0].amount": 2000000,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line10": {
@@ -718,7 +726,9 @@
           "emp0"
         ],
         "person[taxpayer].tipjob[emp0].qualified": true,
-        "person[taxpayer].tipjob[emp0].amount": 200000
+        "person[taxpayer].tipjob[emp0].amount": 200000,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line12": {
@@ -857,7 +867,9 @@
           "emp0"
         ],
         "person[taxpayer].tipjob[emp0].qualified": true,
-        "person[taxpayer].tipjob[emp0].amount": 500000
+        "person[taxpayer].tipjob[emp0].amount": 500000,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line10": {
@@ -996,7 +1008,9 @@
           "emp0"
         ],
         "person[taxpayer].tipjob[emp0].qualified": true,
-        "person[taxpayer].tipjob[emp0].amount": 500000
+        "person[taxpayer].tipjob[emp0].amount": 500000,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line10": {
@@ -1135,7 +1149,9 @@
           "emp0"
         ],
         "person[taxpayer].tipjob[emp0].qualified": true,
-        "person[taxpayer].tipjob[emp0].amount": 800000
+        "person[taxpayer].tipjob[emp0].amount": 800000,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line13": {
@@ -1274,7 +1290,9 @@
           "emp0"
         ],
         "person[taxpayer].tipjob[emp0].qualified": false,
-        "person[taxpayer].tipjob[emp0].amount": 800000
+        "person[taxpayer].tipjob[emp0].amount": 800000,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line13": {
@@ -1416,7 +1434,9 @@
         "person[taxpayer].otjob[ot0].flsa": true,
         "person[taxpayer].otjob[ot0].special_rule": false,
         "person[taxpayer].otjob[ot0].method": "premium",
-        "person[taxpayer].otjob[ot0].statement": 600000
+        "person[taxpayer].otjob[ot0].statement": 600000,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line14a": {
@@ -1565,7 +1585,9 @@
         "person[taxpayer].otjob[ot0].flsa": true,
         "person[taxpayer].otjob[ot0].special_rule": false,
         "person[taxpayer].otjob[ot0].method": "total_time_and_half",
-        "person[taxpayer].otjob[ot0].statement": 1500000
+        "person[taxpayer].otjob[ot0].statement": 1500000,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line14a": {
@@ -1702,7 +1724,9 @@
         "person[taxpayer].otjob[ot0].flsa": true,
         "person[taxpayer].otjob[ot0].special_rule": false,
         "person[taxpayer].otjob[ot0].method": "premium_double",
-        "person[taxpayer].otjob[ot0].statement": 1000000
+        "person[taxpayer].otjob[ot0].statement": 1000000,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line14a": {
@@ -1839,7 +1863,9 @@
         "person[taxpayer].otjob[ot0].flsa": true,
         "person[taxpayer].otjob[ot0].special_rule": false,
         "person[taxpayer].otjob[ot0].method": "total_double",
-        "person[taxpayer].otjob[ot0].statement": 2000000
+        "person[taxpayer].otjob[ot0].statement": 2000000,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line14a": {
@@ -1976,7 +2002,9 @@
         "person[taxpayer].otjob[ot0].flsa": true,
         "person[taxpayer].otjob[ot0].special_rule": false,
         "person[taxpayer].otjob[ot0].method": "total_time_and_half",
-        "person[taxpayer].otjob[ot0].statement": 100000
+        "person[taxpayer].otjob[ot0].statement": 100000,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line14a": {
@@ -2113,7 +2141,9 @@
         "person[taxpayer].otjob[ot0].flsa": true,
         "person[taxpayer].otjob[ot0].special_rule": false,
         "person[taxpayer].otjob[ot0].method": "total_time_and_half",
-        "person[taxpayer].otjob[ot0].statement": 100001
+        "person[taxpayer].otjob[ot0].statement": 100001,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line14a": {
@@ -2255,7 +2285,9 @@
         "person[taxpayer].otjob[ot1].flsa": true,
         "person[taxpayer].otjob[ot1].special_rule": false,
         "person[taxpayer].otjob[ot1].method": "total_time_and_half",
-        "person[taxpayer].otjob[ot1].statement": 1200000
+        "person[taxpayer].otjob[ot1].statement": 1200000,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line14a": {
@@ -2396,7 +2428,9 @@
         "person[taxpayer].otjob[ot0].flsa": true,
         "person[taxpayer].otjob[ot0].special_rule": false,
         "person[taxpayer].otjob[ot0].method": "premium",
-        "person[taxpayer].otjob[ot0].statement": 1000000
+        "person[taxpayer].otjob[ot0].statement": 1000000,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line18": {
@@ -2534,7 +2568,9 @@
         "$otjob@person[taxpayer]": [
           "ot0"
         ],
-        "person[taxpayer].otjob[ot0].flsa": false
+        "person[taxpayer].otjob[ot0].flsa": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line14a": {
@@ -2670,7 +2706,9 @@
         ],
         "person[taxpayer].otjob[ot0].flsa": true,
         "person[taxpayer].otjob[ot0].special_rule": false,
-        "person[taxpayer].otjob[ot0].method": "other"
+        "person[taxpayer].otjob[ot0].method": "other",
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line21": {
@@ -2811,7 +2849,9 @@
         ],
         "person[taxpayer].otjob[ot0].flsa": true,
         "person[taxpayer].otjob[ot0].special_rule": true,
-        "person[taxpayer].otjob[ot0].method": "premium"
+        "person[taxpayer].otjob[ot0].method": "premium",
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line21": {
@@ -2954,7 +2994,9 @@
         "carloan[VIN0].requirements": true,
         "carloan[VIN0].vehicle": true,
         "carloan[VIN0].interest": 320000,
-        "carloan[VIN0].mixed": false
+        "carloan[VIN0].mixed": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line23": {
@@ -3100,7 +3142,9 @@
         "carloan[VIN0].requirements": true,
         "carloan[VIN0].vehicle": true,
         "carloan[VIN0].interest": 500000,
-        "carloan[VIN0].mixed": false
+        "carloan[VIN0].mixed": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line27": {
@@ -3242,7 +3286,9 @@
         "carloan[VIN0].requirements": true,
         "carloan[VIN0].vehicle": true,
         "carloan[VIN0].interest": 500000,
-        "carloan[VIN0].mixed": false
+        "carloan[VIN0].mixed": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line27": {
@@ -3390,7 +3436,9 @@
         "carloan[VIN1].requirements": true,
         "carloan[VIN1].vehicle": true,
         "carloan[VIN1].interest": 600000,
-        "carloan[VIN1].mixed": false
+        "carloan[VIN1].mixed": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line23": {
@@ -3531,7 +3579,9 @@
         "carloan[VIN0].kind": "original",
         "carloan[VIN0].requirements": true,
         "carloan[VIN0].vehicle": false,
-        "carloan[VIN0].interest": 300000
+        "carloan[VIN0].interest": 300000,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line23": {
@@ -3672,7 +3722,9 @@
         "carloan[VIN0].mixed": true,
         "carloan[VIN0].financed": 4200000,
         "carloan[VIN0].nonqualifying": 600000,
-        "carloan[VIN0].down": 400000
+        "carloan[VIN0].down": 400000,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line23": {
@@ -3812,7 +3864,9 @@
         "carloan[VIN0].interest": 190000,
         "carloan[VIN0].refi_whole": true,
         "carloan[VIN0].refi_balance": 3000000,
-        "carloan[VIN0].financed": 3800000
+        "carloan[VIN0].financed": 3800000,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line23": {
@@ -3952,7 +4006,9 @@
         "carloan[VIN0].interest": 120000,
         "carloan[VIN0].refi_whole": true,
         "carloan[VIN0].refi_balance": 2500000,
-        "carloan[VIN0].financed": 2000000
+        "carloan[VIN0].financed": 2000000,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line30": {
@@ -4086,7 +4142,9 @@
         "carloan[VIN0].requirements": true,
         "carloan[VIN0].vehicle": true,
         "carloan[VIN0].interest": 250000,
-        "carloan[VIN0].mixed": false
+        "carloan[VIN0].mixed": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line30": {
@@ -4223,7 +4281,9 @@
         "carloan[VIN0].mixed": true,
         "carloan[VIN0].financed": 3000000,
         "carloan[VIN0].nonqualifying": 1000000,
-        "carloan[VIN0].down": 0
+        "carloan[VIN0].down": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line30": {
@@ -4359,7 +4419,9 @@
         "carloan[VIN0].interest": 150000,
         "carloan[VIN0].refi_whole": false,
         "carloan[VIN0].refi_balance": 2000000,
-        "carloan[VIN0].financed": 2000000
+        "carloan[VIN0].financed": 2000000,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line30": {
@@ -4495,7 +4557,9 @@
         "s1a.tips": false,
         "s1a.overtime": false,
         "s1a.carloan": false,
-        "person[taxpayer].died_before_65": false
+        "person[taxpayer].died_before_65": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line35": {
@@ -4642,7 +4706,9 @@
         "s1a.tips": false,
         "s1a.overtime": false,
         "s1a.carloan": false,
-        "person[taxpayer].died_before_65": false
+        "person[taxpayer].died_before_65": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line33": {
@@ -4781,7 +4847,9 @@
         "s1a.tips": false,
         "s1a.overtime": false,
         "s1a.carloan": false,
-        "person[taxpayer].died_before_65": false
+        "person[taxpayer].died_before_65": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line34": {
@@ -4916,7 +4984,9 @@
         "s1a.tips": false,
         "s1a.overtime": false,
         "s1a.carloan": false,
-        "person[taxpayer].died_before_65": false
+        "person[taxpayer].died_before_65": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line33": {
@@ -5055,7 +5125,9 @@
         "s1a.tips": false,
         "s1a.overtime": false,
         "s1a.carloan": false,
-        "person[taxpayer].died_before_65": false
+        "person[taxpayer].died_before_65": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line36a": {
@@ -5186,7 +5258,9 @@
         "s1a.tips": false,
         "s1a.overtime": false,
         "s1a.carloan": false,
-        "person[taxpayer].died_before_65": true
+        "person[taxpayer].died_before_65": true,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line37": {
@@ -5342,7 +5416,9 @@
         "carloan[VIN0].requirements": true,
         "carloan[VIN0].vehicle": true,
         "carloan[VIN0].interest": 300000,
-        "carloan[VIN0].mixed": false
+        "carloan[VIN0].mixed": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line13": {
@@ -5501,7 +5577,9 @@
         "s1a.tips": false,
         "s1a.overtime": false,
         "s1a.carloan": false,
-        "person[taxpayer].died_before_65": false
+        "person[taxpayer].died_before_65": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line38": {
@@ -5636,7 +5714,9 @@
         "s1.uc_unsupported": false,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line38": {
@@ -5783,7 +5863,9 @@
         "carloan[VIN0].requirements": true,
         "carloan[VIN0].vehicle": true,
         "carloan[VIN0].interest": 300000,
-        "carloan[VIN0].mixed": false
+        "carloan[VIN0].mixed": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line13": {
@@ -5947,7 +6029,10 @@
         "$w2@person[spouse]": [],
         "$tipjob@person[spouse]": [],
         "$otjob@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line9": {
@@ -6113,7 +6198,10 @@
         "person[spouse].born_after_1960": true,
         "person[spouse].educator_expenses": 0,
         "$w2@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line26": {
@@ -6261,7 +6349,10 @@
         "person[spouse].born_after_1960": true,
         "person[spouse].educator_expenses": 0,
         "$w2@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line32": {
@@ -6399,7 +6490,9 @@
         "s1.uc_unsupported": false,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line23": {
@@ -6538,7 +6631,9 @@
           "emp0"
         ],
         "person[taxpayer].tipjob[emp0].qualified": true,
-        "person[taxpayer].tipjob[emp0].amount": 800000
+        "person[taxpayer].tipjob[emp0].amount": 800000,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line13": {
@@ -6681,7 +6776,9 @@
         "person[taxpayer].tipjob[emp0].qualified": true,
         "person[taxpayer].tipjob[emp0].amount": 500000,
         "person[taxpayer].tipjob[emp1].qualified": true,
-        "person[taxpayer].tipjob[emp1].amount": 300000
+        "person[taxpayer].tipjob[emp1].amount": 300000,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line4c": {
@@ -6830,7 +6927,9 @@
         "s1a.tips": false,
         "s1a.overtime": false,
         "s1a.carloan": false,
-        "person[taxpayer].died_before_65": false
+        "person[taxpayer].died_before_65": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line36a": {
@@ -6969,7 +7068,9 @@
           "emp0"
         ],
         "person[taxpayer].tipjob[emp0].qualified": true,
-        "person[taxpayer].tipjob[emp0].amount": 800000
+        "person[taxpayer].tipjob[emp0].amount": 800000,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line4c": {
@@ -7115,7 +7216,9 @@
         "person[taxpayer].otjob[ot0].flsa": true,
         "person[taxpayer].otjob[ot0].special_rule": false,
         "person[taxpayer].otjob[ot0].method": "premium",
-        "person[taxpayer].otjob[ot0].statement": 300000
+        "person[taxpayer].otjob[ot0].statement": 300000,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line14a": {
@@ -7259,7 +7362,9 @@
           "emp0"
         ],
         "person[taxpayer].tipjob[emp0].qualified": true,
-        "person[taxpayer].tipjob[emp0].amount": 800000
+        "person[taxpayer].tipjob[emp0].amount": 800000,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1a.line13": {

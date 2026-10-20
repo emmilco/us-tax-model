@@ -1,0 +1,18 @@
+{
+ "kind": "render",
+ "form": "carloan",
+ "rulings": [
+  {
+   "printed": "22(ii)",
+   "restated": "Input — The part of this loan's 2025 interest you deduct on Schedule C (the business use of the vehicle; zero if none)",
+   "model": "The instructions say to enter \"the amount of the QPVLI, if any, that was deducted elsewhere on your return (for example, on Schedule C, Schedule E, or Schedule F)\". The restatement takes only interest deducted on Schedule C, so it leaves out Schedule E and Schedule F amounts and has no refusal for them. It also asks for any part of the loan's interest rather than only the QPVLI part.",
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. Schedules E and F are outside the tool (scope.schedule1 refuses Form 1040 lines 8 and 10 whenever either applies), so the only place on the return QPVLI can be deducted is Schedule C; the question asks for the part of this loan's interest deducted there, which is QPVLI deducted elsewhere when the loan qualifies."
+  },
+  {
+   "printed": "22(iii)",
+   "restated": "Subtract helper \"Interest deducted on Schedule C (zero without a Schedule C)\" from helper \"Interest for this loan, Schedule 1-A\". If zero or less, enter -0-.",
+   "model": "Column (iii) is \"the total amount of the QPVLI paid or accrued on the loan during the taxable year minus the amount on line 22, column (ii)\". The QPVLI side matches, but the amount subtracted is only Schedule C interest, and it is zero when there is no Schedule C. QPVLI deducted on Schedule E or F is therefore not subtracted, and the same interest could be deducted twice.",
+   "ruling": "Ruling: fixed (BUG-0058), then refusal located elsewhere; restatement accepted. The interest input now asks for the total interest, including any part deducted on Schedule C, so the subtraction of column (ii) removes it once. Schedules E and F are refused through scope.schedule1, so no other amount is deducted elsewhere."
+  }
+ ]
+}

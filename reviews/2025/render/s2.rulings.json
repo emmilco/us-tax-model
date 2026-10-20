@@ -13,6 +13,12 @@
    "restated": "Enter the amount from f8960 line 17.",
    "model": "Schedule 2 says only 'Net investment income tax. Attach Form 8960' and does not name which Form 8960 line to carry over. The Form 8960 page or instructions identifying line 17 as the net investment income tax are not in the text given.",
    "ruling": "Ruling: representation; project retained. Form 8960 line 17 reads 'Net investment income tax for individuals. Multiply line 16 by 3.8% (0.038). Enter here and include on your tax return' (f8960); Schedule 2 line 12 is where it is included."
+  },
+  {
+   "printed": "4",
+   "restated": "Add person.se_line12 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The Schedule SE instructions say to \"Enter the combined SE tax on Schedule 2 (Form 1040), line 4\" and support summing over spouses. However, the Schedule SE form itself is not provided, so nothing confirms that Schedule SE line 12 is the self-employment tax amount.",
+   "ruling": "Ruling: representation; restatement accepted. Schedule SE line 12 is 'Self-employment tax. Add lines 10 and 11. Enter here and on Schedule 2 (Form 1040), line 4' (f1040sse, line 12); on a joint return each spouse's line 12 is summed (i1040sse, 'enter the combined SE tax on Schedule 2 (Form 1040), line 4')."
   }
  ]
 }

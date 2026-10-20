@@ -592,3 +592,183 @@ later grouping.
 - **Where:** `tools/check_extraction.py`, `check_pdfkit`, whose same-text rules covered only a line label read as one token or two ("14a", "14 a").
 - **Fix:** a second same-text rule: a PDFKit word that is a poppler-only number followed by a poppler-only digit is the same text. The extraction report changed only for `p463`, `p560` (one occurrence under the tolerance) and `p946`.
 - **Tags:** checker-false-positive; reader-tokenization; caught-by-check-all
+
+---
+
+## BUG-0051 — Two worksheets left out Schedule 1 lines 15 to 17
+
+- **Date:** 2026-10-19
+- **Caught by:** the engine differential with self-employment returns (PolicyEngine-US and Tax-Calculator agreed on taxable social security benefits, Form 1040 line 6b, below the project's on se-00011, se-00075 and se-00163).
+- **Symptom:** taxable social security benefits, and with them AGI and taxable income, too high on returns with social security benefits and a Schedule C, since the deductible part of self-employment tax was not subtracted; the student loan interest deduction would have been figured on too high a modified AGI.
+- **Root cause:** Stage 14 added Schedule 1 lines 15, 16 and 17 but did not extend the two worksheets that list the Schedule 1 adjustments line by line: the Social Security Benefits Worksheet, line 6, and the Student Loan Interest Deduction Worksheet, line 3, both "Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 25", summed only lines 11 and 13.
+- **Where:** `forms/2025/ssb.yaml` (`ssb.line6`) and `forms/2025/sli.yaml` (`sli.line3`).
+- **Fix:** both sum lines 11, 13, 15, 16 and 17; the refusal remedy of `ssb.line6` names the lines still outside the tool.
+- **Tags:** new-line-missed-by-reader; transcription/operand-list; caught-by-external-engine
+
+---
+
+## BUG-0052 — Mutation operand replacement did not change keyed lookup keys
+
+- **Date:** 2026-10-19
+- **Caught by:** review of the Stage 14 mutation survivors (dozens of `operand.*` survivors on `keyed_lookup` lines, each replacing a key with a line of the lookup's result type).
+- **Symptom:** every operand mutant of a `keyed_lookup` key survived, inflating the unexplained survivors and leaving the keys of the depreciation tables untested by mutation.
+- **Root cause:** `engine/src/mutate.ts` listed the keys as operands (added with the atom) but chose the replacement by the type of the mutated line (a Rate for a rate lookup) rather than of the key, and its `apply` did not rewrite `keys`, so the mutant was the original expression.
+- **Where:** `engine/src/mutate.ts`, operand replacement.
+- **Fix:** a key is replaced by an earlier same-document line of the key's own type, and `apply` rewrites `keys`; the other atoms are unchanged, so earlier mutant ids and outcomes stand.
+- **Tags:** tool-defect; mutation-blind-spot; new-atom-integration; caught-by-review
+
+---
+
+## BUG-0053 — Schedule 8812 line 21 left out one-half of the Additional Medicare Tax on self-employment income
+
+- **Date:** 2026-10-19
+- **Caught by:** the Stage 14 transcription agreement for `s8812` (the second transcription added worksheet line 7; the disagreement was ruled against the archived page).
+- **Symptom:** on a return with Additional Medicare Tax on self-employment income (Form 8959 line 13 above zero), Schedule 8812 line 21 was low by one-half of that tax; line 25, and with it the additional child tax credit for three or more children, could be too low.
+- **Root cause:** the Additional Medicare Tax and RRTA Tax Worksheet (i1040s8812 p. 9) was encoded through line 6 only, when no return in scope had self-employment income. Line 7, "Enter one-half of the Additional Medicare Tax, if any, on self-employment income (one-half of Form 8959, line 13)", and line 16, "Add lines 6, 7, 11, and 15", were not extended when Stage 14 made Form 8959 line 13 reachable.
+- **Where:** `forms/2025/s8812.yaml` (`s8812.line21`).
+- **Fix:** helpers `s8812.amt_ws6` (line 6) and `s8812.amt_ws7` (line 7, at the 50% parameter), and line 21 is their sum (line 16; lines 11 and 15, Tier 1 RRTA, are refused through the Form 8959 screen); `stage14.f8959.se_above_threshold` now expects line 21.
+- **Tags:** new-line-missed-by-reader; transcription/operand-list; caught-by-transcription-agreement
+
+---
+
+## BUG-0054 — The transcription comparison paired lines that share a printed number
+
+- **Date:** 2026-10-19
+- **Caught by:** ruling the Stage 14 transcription log for `sc` (Schedule C line 3 was compared with the second transcription's Form 7206 line 3, and so on).
+- **Symptom:** on a form that carries more than one IRS worksheet with the same line numbers (Schedule C with the simplified home office worksheet and Form 7206; the vehicle record; the EIC with Worksheet B), most printed lines were reported as disagreements between unrelated lines, and an agreement could have been reported between unrelated lines.
+- **Root cause:** `tools/transcription/transcribe.py` keyed both transcriptions by printed number (the second's by a dictionary, so the last of several lines won) and expanded a reference to a printed line as that number, so lines sharing a number were indistinguishable. Every form before Stage 14 had unique printed numbers. The render comparison already qualified a shared marker by the line id.
+- **Where:** `tools/transcription/transcribe.py` (`build_prompt`, `Expander.ref`, `compare`).
+- **Fix:** `marker_keys` qualifies a printed number that several lines of the form share by the line id, as the render comparison does, in the prompt, in references and in the matching; markers such as `(gate)` and `(screen)` are left as they were, so the prompt of every form without shared numbers is unchanged (checked against the logged prompt hashes). `sc`, `scveh` and `eic` were transcribed again.
+- **Tags:** tool-defect; comparison-blind-spot; caught-by-review
+
+---
+
+## BUG-0055 — Schedule 8812 line 18a was negative where the Earned Income Worksheet says to stop
+
+- **Date:** 2026-10-19
+- **Caught by:** the Stage 14 transcription agreement for `s8812` (the second transcription encoded the stop at worksheet line 3; ruled against the archived page).
+- **Symptom:** on a return not taking the EIC whose Earned Income Worksheet line 3 is zero or less while Schedule 1 line 15 is above zero (a joint return where one spouse's Schedule C profit carries self-employment tax and the other's loss is larger), line 18a showed minus the deductible part of self-employment tax instead of zero. Line 19 floors at zero, so the credit was unchanged.
+- **Root cause:** worksheet line 3, "If zero or less, stop. Do not complete the rest of this worksheet. Instead, enter -0- on ... line 18a of Schedule 8812" (i1040s8812 p. 8), was encoded as a floor at zero on line 3 with line 7 still subtracting line 6. Before Stage 14 line 6 was always zero, so the two readings agreed.
+- **Where:** `forms/2025/s8812.yaml` (`s8812.eiw_7`).
+- **Fix:** `s8812.eiw_7` is zero when line 3 before the stop is zero or less (`s8812.eiw_3_positive`) and line 3 less line 6 otherwise (`s8812.eiw_7_figured`); new hand-predicted case `stage14.s8812.eiw_stop_with_se_tax`.
+- **Tags:** stop-instruction-as-floor; latent-until-new-input; caught-by-transcription-agreement
+
+---
+
+## BUG-0056 — The Pub. 560 citations named no page, so the reviews saw none of Pub. 560
+
+- **Date:** 2026-10-19
+- **Caught by:** ruling the Stage 14 transcription log for `person` (the second transcription refused SIMPLE plans because "No SIMPLE IRA deduction text is provided"; the log's source table showed Pub. 560 with no pages).
+- **Symptom:** the second transcription of the SEP and SIMPLE lines of `person` (Schedule 1 line 16) was made without the Pub. 560 text the lines cite, so its agreements and disagreements on those lines were not evidence about the text. The excess business loss threshold behind the Schedule 1 line 3 refusal (Rev. Proc. 2024-40) was likewise cited without a page in `s1`.
+- **Root cause:** the 45 Pub. 560 locators in `forms/2025/person.yaml` named chapters and headings ("chapter 3, Catch-up contributions") and no page, and the excerpt selection takes pages from page numbers or from a heading that starts a line; Pub. 560's two-column layout puts no heading at a line start. `s1.ebl_threshold` cited "section 3.32" alone.
+- **Where:** `forms/2025/person.yaml` (every `doc: p560` citation), `forms/2025/s1.yaml` (`s1.ebl_threshold`).
+- **Fix:** each locator now begins with its pages, read in the archived text (chapter 2 pp. 8–11, chapter 3 pp. 14–17, chapter 5 pp. 38–40); the threshold cites p. 17. `person` and `s1` were transcribed again with those pages; seven refusal expectations that carry the citation were updated.
+- **Tags:** citation-without-locator; review-input-gap; caught-by-review
+
+---
+
+## BUG-0057 — Line 27c was not checked at the Worksheet B line 5 STOP
+
+- **Date:** 2026-10-20
+- **Caught by:** the Stage 14 render comparison of `f1040` (line 27c: "It misses the Worksheet B triggers"), checked against i1040gi p. 47.
+- **Symptom:** a self-employed filer who passes Steps 1 to 4 but whose Worksheet B line 4b is not less than the earned income limit got no EIC (correct) but no line 27c check, though Worksheet B line 5 says "No. STOP You can't take the credit. Check the box on Form 1040 or 1040-SR, line 27c".
+- **Root cause:** `eic.check_27c` was written in Stage 9 from the Worksheet A path, where the matching test (Step 5, question 3, p. 42) has no line 27c instruction. Stage 14 routed self-employed filers through Worksheet B but did not add its line 5 STOP. The line 4b STOP was already covered, since Worksheet B line 6 is then zero and Worksheet A line 2 is zero.
+- **Where:** `forms/2025/eic.yaml` (`eic.check_27c`).
+- **Fix:** `eic.wsb_line5_stop` (Steps 1 to 4 passed, self-employed, line 4b above zero, earned income not below the limit) is a further term of `eic.check_27c`; hand-predicted cases `stage14.eic.wsb_line5_stop_27c` and `stage14.eic.wsb_stop_27c`.
+- **Tags:** stop-instruction-missed; new-path-old-predicate; caught-by-render-comparison
+
+---
+
+## BUG-0058 — Car loan interest on Schedule C could be subtracted twice
+
+- **Date:** 2026-10-20
+- **Caught by:** the Stage 14 render comparison of `carloan` (column (iii): "the interest input asks for interest with 'none of it deducted elsewhere on your return,' not the total, so Schedule C interest could be subtracted twice").
+- **Symptom:** a filer who answered the interest question as worded (excluding the part deducted on Schedule C) and then entered that part in column (ii) had it subtracted again; Schedule 1-A line 23 and the deduction were too low.
+- **Root cause:** before Stage 14 column (ii) was always zero, so the question excluded interest deducted elsewhere instead. Stage 14 added the column (ii) question for a return with a Schedule C but left the interest question's wording, so the two together removed the business part twice. Column (iii) is "the total amount of the QPVLI paid or accrued on the loan during the taxable year minus the amount on line 22, column (ii)" (i1040gi p. 110).
+- **Where:** `forms/2025/carloan.yaml` (`carloan.interest`) and the three interview profiles.
+- **Fix:** the question asks for the total interest, "including any part you deduct on Schedule C (that part is entered separately)". Schedules E and F remain refused.
+- **Tags:** question-wording; new-input-overlaps-old; caught-by-render-comparison
+
+---
+
+## BUG-0059 — Worksheet line 19 was unknown for a vehicle past its recovery period
+
+- **Date:** 2026-10-20
+- **Caught by:** the Stage 14 render comparison of `scveh` (line 19: "For a vehicle placed in service in 2019, 2025 is year 7 ... there is no table rate").
+- **Symptom:** for a 2019 vehicle, the automobile worksheet's line 19 showed as unknown ("no row of macrs_gds for y5, mq3, 7") on the values sheet; the vehicle's depreciation (`scveh.macrs`, from the unrecovered basis) was right.
+- **Root cause:** line 19 multiplied line 18 by the table rate for the 2025 recovery year for every vehicle placed before 2025; the tables have no seventh-year row for 5-year property, and the worksheet is not used after the recovery period (Pub. 946 p. 61, Deductions After the Recovery Period).
+- **Where:** `forms/2025/scveh.yaml` (`scveh.line19`).
+- **Fix:** `scveh.line19_earlier` is zero for a 2019 vehicle and line 18 times the rate otherwise; `stage14.veh.2019_cheap_mq3` expects line 19 zero.
+- **Tags:** not-applicable-line-unknown; table-domain; caught-by-render-comparison
+
+---
+
+## BUG-0060 — The simplified home office deduction could exceed Schedule C line 29 with a section 179 carryover
+
+- **Date:** 2026-10-20
+- **Caught by:** the Stage 14 render comparison of `sc` (line 5 of the Simplified Method Worksheet: "a carryover (line 10) can make the deduction larger than the elections, and line 5 could then exceed line 1"), confirmed on a constructed return.
+- **Symptom:** with wages, a 2025 section 179 election smaller than the property's cost and a carryover from 2024, Form 4562 line 12 (lines 9 and 10, up to line 11, which includes wages, i4562 p. 5) exceeded the business's own elections; Schedule C line 29 fell to $28.40 while line 30 stayed $1,500, giving a $1,471.60 loss made of the home office deduction, which the worksheet's line 5 ("Enter the smaller of line 1 or line 4") does not allow.
+- **Root cause:** the test that the gross income limitation cannot bind (`sc.ho_unlimited`) and the no-section-179 branch (`sc.ho_no179`) used the business's 2025 elections as the most section 179 deduction it could take, leaving out the carryover on Form 4562 line 10.
+- **Where:** `forms/2025/sc.yaml` (`sc.ho_room`, `sc.ho_no179`).
+- **Fix:** `sc.ho_s179_max` (the elections plus Form 4562 line 10) replaces the elections in both, so a return whose line 4 could exceed line 1 under the deduction it may take goes to the existing refusal for the two interacting limits (Pub. 946 p. 19); case `stage14.ho.refuse_carryover_two_limits`.
+- **Tags:** bound-omits-term; interacting-limits; caught-by-render-comparison
+
+---
+
+## BUG-0061 — Class M could not choose a case for the Stage 14 documents
+
+- **Date:** 2026-10-20
+- **Caught by:** running `classm-jobs` for `se`, `scveh` and `f4562` (0 cases, every branch "not reachable by a computed case").
+- **Symptom:** no class M hand-work was possible for Schedule C, its vehicles, other property, Form 4562 or Schedule SE; the job builder reported nothing wrong beyond zero cases.
+- **Root cause:** four gaps, each silent: the return generator (`engine/src/generate.ts`) gave every person an empty Schedule C list, so the corpus had no business; the job builder's `computed()` did not count a Rate value, so an entry with any table rate was never a candidate; every line of every entry is evaluated, and a helper whose printed table has no row for the entry's facts (the 2019-only automobile limits for a later vehicle) is unknown, which also excluded the entry; and a definition was assumed to take exactly an amount and a filing status, so Schedule SE (bound to lines 2 and 8a) had no instances.
+- **Where:** `engine/src/generate.ts`, `engine/src/classm.ts`, `tools/transcription/classm.py`.
+- **Fix:** the generator draws businesses (receipts, expenses, inventory, home office, health insurance with long-term care, vehicles, other property, SEP or SIMPLE plans) for the taxpayer and, on a joint return, sometimes the spouse, every entry field given a value; `computed()` accepts rates; an unknown helper with a missing table row is left out of the hand-work (a printed line that needed it would be unknown and the case not chosen); a definition's parameters are its input lines; a document with no branch of its own is worked once; `classm.py` reads and compares Rate and Enum lines, with the extra instruction only in prompts that have them. The property tests now cover business returns (all six hold).
+- **Tags:** tool-defect; evidence-blind-spot; caught-by-review
+
+---
+
+## BUG-0062 — Section 179 on a separate return used the full dollar limitation
+
+- **Date:** 2026-10-20
+- **Caught by:** the Stage 14 transcription agreement for `s179` (the second transcription halved line 5 for married filing separately and added the spouse's property to line 2).
+- **Symptom:** a married filer filing separately with a section 179 election got the full $2,500,000 limitation and counted only their own property, where the spouses must allocate the limitation (i4562 p. 5, Line 5, "multiply the total limitation ... by 50% (0.50), unless you both elect a different allocation") and line 2 includes "Any property placed in service by your spouse, even if you are filing a separate return" (p. 4).
+- **Root cause:** Part I was encoded for one return's property, with the joint return combining both spouses (owner ruling on the mid-quarter test); the separate-return rules of lines 2 and 5 were not read.
+- **Where:** `forms/2025/s179.yaml` (`s179.line5`).
+- **Fix (owner):** a section 179 election or carryover on a separate return is refused (`s179.mfs`, on line 5); cases `stage14.s179.refuse_mfs` and `stage14.s179.mfs_no_election`.
+- **Tags:** filing-status-rule-missed; caught-by-transcription-agreement
+
+---
+
+## BUG-0063 — The long-term care limit was applied per business, not per person across Forms 7206
+
+- **Date:** 2026-10-20
+- **Caught by:** the Stage 14 render comparison of `sc` (Form 7206 line 2: "that limit applies across all Forms 7206"), checked against i7206.
+- **Symptom:** a person covered by qualified long-term care insurance under more than one business on the return could have up to the age limit entered on each business's Form 7206, where i7206 (pp. 1–2) says "the total of the amounts entered for each person on line 2 of all Form(s) 7206 can't be more than the appropriate limit shown on line 2 for that person".
+- **Root cause:** `ltc` entries are kept per business and capped at the age limit within the entry; nothing related a person's entries under different businesses.
+- **Where:** `forms/2025/sc.yaml` (`sc.hi_screen`) and the full interview.
+- **Fix (owner):** the health insurance screen also asks whether anyone is covered by qualified long-term care insurance entered for more than one business on the return (yours or your spouse's), and refuses when yes.
+- **Tags:** cross-entry-limit; caught-by-render-comparison
+
+---
+
+## BUG-0064 — The material participation question left out the oil and gas exception
+
+- **Date:** 2026-10-20
+- **Caught by:** the Stage 14 render comparison of `sc` (line G).
+- **Symptom:** a filer reporting a working interest in an oil or gas well, who checks "Yes" on line G under the exception, would have answered the tool's question No and been refused as a passive activity.
+- **Root cause:** the question restated the material participation tests and not the exception the line G instruction names: "If your business activity is not a rental activity and you meet any of the material participation tests, explained next, or the exception for oil and gas applies, check the 'Yes' box" (i1040sc p. 4; the exception, p. 5).
+- **Where:** `forms/2025/sc.yaml` (`sc.passive`) and the full interview.
+- **Fix:** the question includes the exception for a working interest held directly or through an entity that does not limit liability. Depletion, which such a business would usually claim, remains refused through `sc.special`.
+- **Tags:** question-wording; exception-missed; caught-by-render-comparison
+
+---
+
+## BUG-0065 — Sixty i4562 citations named the wrong page
+
+- **Date:** 2026-10-20
+- **Caught by:** checking the line 11 citation of `s179` while ruling its render log ("p. 4, Line 11", where the archived page 4 has no line 11 instruction), then a check of every i4562 page citation in the Stage 14 forms against the archived text.
+- **Symptom:** the excerpts given to the transcription and render reviews of `sc`, `scveh`, `asset` and `f4562` left out pages the lines rest on (i4562 p. 10, column (a) of lines 19a to 19j; p. 15, columns (f) to (h) of line 26; p. 16, column (i)), so those reviews judged some lines without their text; a filer following a citation would turn to the wrong page.
+- **Root cause:** the citations were written one page early for the instructions that begin a page later than the topic before them: lines 6, 7 and 10 to 12 (p. 5), lines 26 and 27 (p. 14), columns (f), (g) and (h) of line 26 (p. 15), column (i) (p. 16), column (g) of line 19 (p. 12), and column (a) of lines 19a to 19j (pp. 9–10). The archive's page numbers are the printed ones, so no offset explains it.
+- **Where:** 60 locators in `forms/2025/sc.yaml`, `scveh.yaml`, `asset.yaml`, `s179.yaml` and `f4562.yaml`; 11 refusal expectations in `fixtures/2025/stage14.json` that carry the citation. The same check over the other documents' citations in the Stage 14 forms found four more in `sc.yaml`, i1040sc lines 23, 25, 26 and 27a one page early (those reviews had the whole of i1040sc).
+- **Fix:** each corrected to the page where its heading is printed; the four reviews whose excerpts changed were run again.
+- **Tags:** citation-page-wrong; review-input-gap; caught-by-review

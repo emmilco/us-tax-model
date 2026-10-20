@@ -3,6 +3,12 @@
  "form": "qbi",
  "rulings": [
   {
+   "printed": "3",
+   "restated": "Input — The qualified business loss carryforward from line 16 of your 2024 Form 8995 (or the corresponding line of your 2024 Form 8995-A), entered as a positive amount (zero if none)",
+   "model": "The restatement takes only the 2024 Form 8995 line 16 (or Form 8995-A) carryforward. The IRS text also puts previously suspended losses on line 3: 'When losses or deductions previously suspended by other Code provisions are allowed in calculating taxable income, the qualified portion... is treated as a qualified net loss carryforward... See Line 3', and line 3 says 'Include here the qualified portion of trade or business (loss) carryforward allowed in calculating taxable income in the current year'. No refusal excludes that case.",
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. Losses or deductions suspended in an earlier year by another provision and allowed this year are refused through qbi.unsupported ('losses or deductions suspended in an earlier year by another provision and allowed this year'), so line 3 is the 2024 Form 8995 line 16 carryforward, taken as printed (owner ruling 1a)."
+  },
+  {
    "printed": "deduction",
    "restated": "Choose — [helper \"Taxable income before QBI exceeds the Form 8995 threshold\" = true → f8995a line 39] [helper \"Taxable income before QBI exceeds the Form 8995 threshold\" = false → f8995 line 15]",
    "model": "The Form 8995 branch matches: line 15 is the 'Qualified business income deduction. Enter the smaller of line 10 or line 14.' But none of the Form 8995-A form or instruction text is provided. Without it, I can't confirm that line 39 ('Add f8995a.line37, f8995a.line38') is the final QBI deduction for a filer with only dividends above the threshold.",

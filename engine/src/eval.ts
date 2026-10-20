@@ -252,6 +252,8 @@ function evalOperand(ctx: Ctx, frame: Frame, op: Operand, operandsOut?: { ref: s
       value = entry.type === "Count" ? { kind: "count", value: entry.value } : { kind: "money", cents: entry.value };
     } else if (typeof entry.value === "boolean") {
       value = { kind: "bool", value: entry.value };
+    } else if (typeof entry.value === "string") {
+      value = { kind: "enum", value: entry.value };
     } else if ("num" in entry.value) {
       value = { kind: "rate", num: entry.value.num, den: entry.value.den };
     } else {

@@ -3,6 +3,18 @@
  "form": "person",
  "rulings": [
   {
+   "printed": "Step 2",
+   "restated": "Enter the amount from helper \"Schedule SE line 13 (deduction for one-half of self-employment tax) for this person\".",
+   "model": "The Schedule SE that feeds this line takes line 2 from all of the person's Schedule C results with no exclusion. The SE instructions say \"If you were a statutory employee, don't include the net profit or (loss) from Schedule C, line 31, on Schedule SE, line 2\", and notary profit is likewise excluded. Neither case is screened or refused.",
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. Statutory employee income and notary fees are refused on each Schedule C (the sc screens: 'statutory employee (box 13 of Form W-2 was checked), or fees you received as a notary public'; i1040sse p. 4), so every Schedule C result that reaches Schedule SE line 2 belongs there; church employee income and the other exclusions are refused through person.se_screen."
+  },
+  {
+   "printed": "employers",
+   "restated": "Add w2.one over every confirmed w2 entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The IRS condition is \"had more than one employer for 2025\", but the restatement counts confirmed W-2 entries. One employer can issue several Forms W-2, which would wrongly count as more than one employer.",
+   "ruling": "Ruling: representation; project retained. The W-2 collection is keyed by employer, and repeated forms from one employer are consolidated into one entry (\"Keyed by employer within person; consolidate repeated forms for the same employer explicitly\", forms/2025/w2.yaml collection note), so the count of entries is the count of employers that \"had more than one employer for 2025\" (i1040gi p. 117) asks for. No change to the data."
+  },
+  {
    "printed": "employers",
    "restated": "Add w2.one over every confirmed w2 entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The IRS condition is \"had more than one employer for 2025\", but the restatement counts confirmed W-2 entries. The text given does not say each W-2 entry is a distinct employer, so it cannot be confirmed that the count equals the number of employers.",

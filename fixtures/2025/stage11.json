@@ -118,7 +118,9 @@
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
-        "s1.uc_unsupported": false
+        "s1.uc_unsupported": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1.line7": {
@@ -256,7 +258,9 @@
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1.uc_repaid": 100000,
-        "s1.uc_unsupported": false
+        "s1.uc_unsupported": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1.line7": {
@@ -394,7 +398,9 @@
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
-        "s1.uc_unsupported": true
+        "s1.uc_unsupported": true,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line8": {
@@ -531,7 +537,9 @@
         "person[taxpayer].eligible_educator": true,
         "s1a.tips": false,
         "s1a.overtime": false,
-        "s1a.carloan": false
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1.line11": {
@@ -672,7 +680,9 @@
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 20000,
         "sli.interest": 0,
-        "person[taxpayer].eligible_educator": true
+        "person[taxpayer].eligible_educator": true,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1.line11": {
@@ -797,7 +807,9 @@
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 45000,
         "sli.interest": 0,
-        "person[taxpayer].eligible_educator": false
+        "person[taxpayer].eligible_educator": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1.line11": {
@@ -935,7 +947,9 @@
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
         "person[taxpayer].f8889[hsa].dec_coverage": "self_only",
-        "person[taxpayer].f8889[hsa].last_month": false
+        "person[taxpayer].f8889[hsa].last_month": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "person[taxpayer].f8889[hsa].line3": {
@@ -1085,7 +1099,9 @@
         "person[taxpayer].f8889[hsa].months_family": 12,
         "person[taxpayer].f8889[hsa].age55": true,
         "person[taxpayer].f8889[hsa].dec_coverage": "family",
-        "person[taxpayer].f8889[hsa].last_month": false
+        "person[taxpayer].f8889[hsa].last_month": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "person[taxpayer].f8889[hsa].line3": {
@@ -1223,7 +1239,9 @@
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
         "person[taxpayer].f8889[hsa].dec_coverage": "self_only",
-        "person[taxpayer].f8889[hsa].last_month": false
+        "person[taxpayer].f8889[hsa].last_month": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "person[taxpayer].f8889[hsa].line12": {
@@ -1361,7 +1379,9 @@
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
         "person[taxpayer].f8889[hsa].dec_coverage": "none",
-        "person[taxpayer].f8889[hsa].last_month": false
+        "person[taxpayer].f8889[hsa].last_month": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "person[taxpayer].f8889[hsa].line3": {
@@ -1499,7 +1519,9 @@
         "person[taxpayer].f8889[hsa].months_family": 4,
         "person[taxpayer].f8889[hsa].age55": false,
         "person[taxpayer].f8889[hsa].dec_coverage": "self_only",
-        "person[taxpayer].f8889[hsa].last_month": false
+        "person[taxpayer].f8889[hsa].last_month": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "person[taxpayer].f8889[hsa].line3": {
@@ -1637,7 +1659,9 @@
         "person[taxpayer].f8889[hsa].months_family": 3,
         "person[taxpayer].f8889[hsa].age55": false,
         "person[taxpayer].f8889[hsa].dec_coverage": "family",
-        "person[taxpayer].f8889[hsa].last_month": true
+        "person[taxpayer].f8889[hsa].last_month": true,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "person[taxpayer].f8889[hsa].line3": {
@@ -1775,7 +1799,9 @@
         "person[taxpayer].f8889[hsa].months_family": 3,
         "person[taxpayer].f8889[hsa].age55": false,
         "person[taxpayer].f8889[hsa].dec_coverage": "family",
-        "person[taxpayer].f8889[hsa].last_month": false
+        "person[taxpayer].f8889[hsa].last_month": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "person[taxpayer].f8889[hsa].line3": {
@@ -1913,7 +1939,9 @@
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
         "person[taxpayer].f8889[hsa].dec_coverage": "self_only",
-        "person[taxpayer].f8889[hsa].last_month": false
+        "person[taxpayer].f8889[hsa].last_month": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line10": {
@@ -2056,7 +2084,9 @@
         "person[taxpayer].f8889[hsa].months_family": 5,
         "person[taxpayer].f8889[hsa].age55": false,
         "person[taxpayer].f8889[hsa].dec_coverage": "family",
-        "person[taxpayer].f8889[hsa].last_month": false
+        "person[taxpayer].f8889[hsa].last_month": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line10": {
@@ -2199,7 +2229,9 @@
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
         "person[taxpayer].f8889[hsa].dec_coverage": "self_only",
-        "person[taxpayer].f8889[hsa].last_month": false
+        "person[taxpayer].f8889[hsa].last_month": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line10": {
@@ -2333,7 +2365,9 @@
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 120000,
-        "sli.claimed": false
+        "sli.claimed": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sli.deduction": {
@@ -2466,7 +2500,9 @@
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 300000,
-        "sli.claimed": false
+        "sli.claimed": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sli.line1": {
@@ -2595,7 +2631,9 @@
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 200000,
-        "sli.claimed": false
+        "sli.claimed": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sli.line6": {
@@ -2728,7 +2766,9 @@
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 250000,
-        "sli.claimed": false
+        "sli.claimed": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sli.line8": {
@@ -2857,7 +2897,9 @@
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 250000,
-        "sli.claimed": false
+        "sli.claimed": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sli.line8": {
@@ -2986,7 +3028,9 @@
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 250000,
-        "sli.claimed": false
+        "sli.claimed": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sli.line8": {
@@ -3115,7 +3159,9 @@
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 120000,
-        "sli.claimed": true
+        "sli.claimed": true,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sli.deduction": {
@@ -3240,7 +3286,9 @@
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 120000,
-        "sli.claimed": false
+        "sli.claimed": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "s1.line21": {
@@ -3385,7 +3433,9 @@
         "person[taxpayer].f8889[hsa].age55": false,
         "person[taxpayer].f8889[hsa].dec_coverage": "self_only",
         "person[taxpayer].f8889[hsa].last_month": false,
-        "sli.claimed": false
+        "sli.claimed": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sli.line3": {
@@ -3529,7 +3579,9 @@
         "person[taxpayer].eligible_educator": true,
         "ssb.pub915": false,
         "ssb.lump_sum": false,
-        "ssb.terror_disability": false
+        "ssb.terror_disability": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "ssb.line6": {
@@ -3666,7 +3718,9 @@
         "s1.uc_unsupported": false,
         "ssb.pub915": false,
         "ssb.lump_sum": false,
-        "ssb.terror_disability": false
+        "ssb.terror_disability": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "ssb.line3": {
@@ -3804,7 +3858,9 @@
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
         "person[taxpayer].f8889[hsa].dec_coverage": "self_only",
-        "person[taxpayer].f8889[hsa].last_month": false
+        "person[taxpayer].f8889[hsa].last_month": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "f1040.line10": {
@@ -3938,7 +3994,9 @@
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 250000,
-        "sli.claimed": false
+        "sli.claimed": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sli.line6": {
@@ -4083,7 +4141,10 @@
         "person[spouse].born_after_1960": true,
         "person[spouse].educator_expenses": 0,
         "$w2@person[spouse]": [],
-        "$f8889@person[spouse]": []
+        "$f8889@person[spouse]": [],
+        "$sc@person[taxpayer]": [],
+        "$sc@person[spouse]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "sli.line5": {
@@ -4229,7 +4290,9 @@
         "person[taxpayer].f8889[hsa].months_family": 4,
         "person[taxpayer].f8889[hsa].age55": false,
         "person[taxpayer].f8889[hsa].dec_coverage": "self_only",
-        "person[taxpayer].f8889[hsa].last_month": true
+        "person[taxpayer].f8889[hsa].last_month": true,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
       },
       "expect": {
         "person[taxpayer].f8889[hsa].line3": {

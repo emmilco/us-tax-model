@@ -1,0 +1,321 @@
+form:
+  id: s179
+  kind: form
+  title: Form 4562, Part I — Election To Expense Certain Property Under Section 179 (Summary for the return)
+  tax_year: 2025
+  note: Part I figured once for the return, both spouses together on a joint return (lines 2 and 11). When line 12 equals
+    the amounts elected for 2025 each business deducts its own elections; otherwise the whole of line 12 goes to the return's
+    only Schedule C, and more than one Schedule C is refused.
+  lines:
+  - id: s179.line2
+    printed: '2'
+    label: Total cost of section 179 property placed in service
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: person
+      field: person.cost179
+    cite:
+      doc: i4562
+      locator: p. 4, Line 2, including "Any property placed in service by your spouse"
+  - id: s179.max
+    printed: (helper)
+    label: The maximum section 179 deduction limitation for 2025
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: s179.max
+    cite:
+      doc: i4562
+      locator: p. 3, Worksheet 1, line 2, "$2,500,000"
+  - id: s179.line1
+    printed: '1'
+    label: Maximum amount
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - s179.line2
+      - s179.max
+    cite:
+      doc: i4562
+      locator: p. 3, Worksheet 1, lines 1 to 4
+  - id: s179.line3
+    printed: '3'
+    label: Threshold cost of section 179 property before reduction in limitation
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: s179.threshold
+    cite:
+      doc: i4562
+      locator: p. 3, Worksheet 1, line 6, "$4,000,000"
+  - id: s179.line4
+    printed: '4'
+    label: Reduction in limitation. Subtract line 3 from line 2. If zero or less, enter -0-
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: s179.line2
+      take: s179.line3
+    cite:
+      doc: f4562
+      locator: Form 4562 (2025), line 4
+  - id: s179.line5
+    printed: '5'
+    label: Dollar limitation for tax year. Subtract line 4 from line 1. If zero or less, enter -0-
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: s179.line1
+      take: s179.line4
+    cite:
+      doc: f4562
+      locator: Form 4562 (2025), line 5
+    refuses:
+    - when: s179.mfs
+      form: Section 179 deduction on a separate return (the spouses' property and the allocation of the dollar limitation)
+      remedy: On a separate return the dollar limitation is shared with your spouse and figured with your spouse's property;
+        that is outside this tool.
+      cite:
+        doc: i4562
+        locator: p. 5, Line 5, "If you are married filing separately, you and your spouse must allocate the dollar limitation
+          for the tax year"; p. 4, Line 2, "Any property placed in service by your spouse, even if you are filing a separate
+          return"
+  - id: s179.mfs
+    printed: (gate)
+    label: A section 179 election or carryover on a separate return
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f1040.status
+        - const: mfs
+      - op: test
+        any:
+        - op: test
+          gt:
+          - s179.line8
+          - const: 0
+        - op: test
+          gt:
+          - s179.line10
+          - const: 0
+    cite:
+      doc: i4562
+      locator: 'p. 5, Line 5; p. 4, Line 2 (owner: refused)'
+  - id: s179.line6
+    printed: 6(c)
+    label: Elected cost of section 179 property (other than listed property)
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: person
+      field: person.s179_nonlisted
+    cite:
+      doc: i4562
+      locator: p. 5, Line 6, Column (c)
+  - id: s179.line7
+    printed: '7'
+    label: Listed property. Enter the amount from line 29
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: person
+      field: person.s179_listed
+    cite:
+      doc: i4562
+      locator: p. 5, Line 7
+  - id: s179.line8
+    printed: '8'
+    label: Total elected cost of section 179 property. Add amounts in column (c), lines 6 and 7
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - s179.line6
+      - s179.line7
+    cite:
+      doc: f4562
+      locator: Form 4562 (2025), line 8
+  - id: s179.line9
+    printed: '9'
+    label: Tentative deduction. Enter the smaller of line 5 or line 8
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - s179.line5
+      - s179.line8
+    cite:
+      doc: f4562
+      locator: Form 4562 (2025), line 9
+  - id: s179.line10
+    printed: '10'
+    label: Carryover of disallowed deduction from line 13 of your 2024 Form 4562
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The carryover of disallowed section 179 deduction from line 13 of your (and, on a joint return, your spouse's)
+        2024 Form 4562 (zero if none)
+    cite:
+      doc: i4562
+      locator: 'p. 5, Line 10, "If you filed Form 4562 for 2024, enter the amount from line 13 of your 2024 Form 4562" (owner:
+        the printed amount)'
+  - id: s179.income_sc
+    printed: (helper)
+    label: Net profit or loss of the businesses, figured without the section 179 deduction
+    type: Dollars
+    expr:
+      op: sum_over
+      collection: person
+      field: person.income179
+    cite:
+      doc: i4562
+      locator: p. 5, Line 11, Individuals, "the total taxable income from any trade or business you actively conducted, computed
+        without regard to any section 179 expense deduction, the deduction for one-half of self-employment taxes"
+  - id: s179.income
+    printed: (helper)
+    label: Business income including wages (Form 1040, line 1a)
+    type: Dollars
+    expr:
+      op: sum
+      of:
+      - s179.income_sc
+      - f1040.line1a
+    cite:
+      doc: i4562
+      locator: p. 5, Line 11, "Also, include all wages, salaries, tips, and other compensation you earned as an employee (from
+        Form 1040, line 1a) ... If you are married filing a joint return, combine the total taxable incomes for you and your
+        spouse"
+  - id: s179.income0
+    printed: (helper)
+    label: That income, if zero or less zero
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: s179.income
+      take:
+        param: sales.zero
+    cite:
+      doc: p946
+      locator: pp. 17-19, Business Income Limit
+  - id: s179.line11
+    printed: '11'
+    label: Business income limitation. Enter the smaller of business income (not less than zero) or line 5
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - s179.income0
+      - s179.line5
+    cite:
+      doc: i4562
+      locator: p. 5, Line 11
+  - id: s179.line9_10
+    printed: (helper)
+    label: Add lines 9 and 10
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - s179.line9
+      - s179.line10
+    cite:
+      doc: f4562
+      locator: Form 4562 (2025), line 12
+  - id: s179.line12
+    printed: '12'
+    label: Section 179 expense deduction. Add lines 9 and 10, but don't enter more than line 11
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - s179.line9_10
+      - s179.line11
+    cite:
+      doc: f4562
+      locator: Form 4562 (2025), line 12
+  - id: s179.sc_count
+    printed: (helper)
+    label: Number of Schedules C on the return
+    type: Count
+    expr:
+      op: sum_over
+      collection: person
+      field: person.sc_count
+    cite:
+      doc: i4562
+      locator: p. 5, Line 12, "if you have more than one business or activity, you may allocate your allowable section 179
+        expense deduction among them"
+  - id: s179.orphan
+    printed: (gate)
+    label: A carryover with no Schedule C on the return
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        gt:
+        - s179.line10
+        - param: sales.zero
+      - op: test
+        eq:
+        - s179.sc_count
+        - const: 0
+          type: Count
+    cite:
+      doc: i4562
+      locator: p. 5, Line 12
+  - id: s179.line13
+    printed: '13'
+    label: Carryover of disallowed deduction to 2026. Add lines 9 and 10, less line 12
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: s179.line9_10
+      take: s179.line12
+    cite:
+      doc: f4562
+      locator: Form 4562 (2025), line 13
+    refuses:
+    - when: s179.orphan
+      form: A section 179 carryover from 2024 with no business on the return
+      remedy: Deducting a section 179 carryover without a Schedule C business is outside this tool.
+      cite:
+        doc: i4562
+        locator: p. 5, Lines 10 to 12
+  - id: s179.differs
+    printed: (helper)
+    label: The deduction differs from the amounts elected for 2025
+    type: Bool
+    expr:
+      op: test
+      ne:
+      - s179.line12
+      - s179.line8
+    cite:
+      doc: i4562
+      locator: p. 5, Line 12
+  - id: s179.multi
+    printed: (gate)
+    label: The deduction must be allocated among more than one business
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - s179.differs
+        - const: true
+      - op: test
+        gt:
+        - s179.sc_count
+        - const: 1
+          type: Count
+    cite:
+      doc: i4562
+      locator: 'p. 5, Line 12, "you may allocate your allowable section 179 expense deduction among them" (owner: refused
+        with more than one Schedule C)'

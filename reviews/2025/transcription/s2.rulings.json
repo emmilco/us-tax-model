@@ -1,0 +1,18 @@
+{
+ "kind": "transcription",
+ "form": "s2",
+ "rulings": [
+  {
+   "printed": "2",
+   "project": "{\"const\": 0}",
+   "second": "{\"param\": \"sales.zero\"}",
+   "ruling": "Ruling: equivalent; project retained. Both are zero within scope (the alternative minimum tax is refused through s2.amt); the second copies the zero parameter sales.zero where the project writes the constant 0."
+  },
+  {
+   "printed": "3",
+   "project": "{\"const\": 0}",
+   "second": "{\"param\": \"sales.zero\"}",
+   "ruling": "Ruling: equivalent; project retained. Lines 1z and 2 are both zero within scope (s2.other and s2.amt refuse them); the second copies the zero parameter where the project writes the constant 0."
+  }
+ ]
+}

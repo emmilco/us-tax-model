@@ -80,11 +80,8 @@
   {
    "id": "schedule_c",
    "group": "self_employment",
-   "gates": [
-    "scope.schedule1",
-    "qbi.unsupported"
-   ],
-   "label": "Schedule C income or loss",
+   "gates": [],
+   "label": "Schedule C income or loss (supported since Stage 14; its remaining refusals are unmeasured gates)",
    "micro": {
     "nonzero": [
      "self_employment_income"
@@ -104,7 +101,8 @@
       "header": "Business or profession / Net loss"
      }
     ]
-   }
+   },
+   "refused": false
   },
   {
    "id": "ptc",

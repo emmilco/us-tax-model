@@ -5,6 +5,12 @@
   {
    "printed": "36b",
    "restated": "Choose — [helper \"Your spouse was born before January 2, 1961, and has a valid SSN\" = false → helper \"Year parameter sales.zero\"] [helper \"Your spouse was born before January 2, 1961, and has a valid SSN\" = true → helper \"Line 36b for a spouse born before January 2, 1961, with a valid SSN\"]",
+   "model": "The IRS line requires 'If you are married filing jointly, your spouse has a valid social security number..., and your spouse was born before January 2, 1961'. The restatement checks only the spouse's birth date and SSN, not the joint filing status. Married filing separately happens to yield zero through line 35, but other filing statuses with a spouse entry are not excluded.",
+   "ruling": "Ruling: scope; project retained. A spouse entry exists only on a joint return: any other roster is refused at Form 1040 line 1a (household.roster_bad; Form 1040 page 1, 'If joint return, spouse's first name'), so whenever the spouse's birth date and SSN can be tested the return is filed jointly (Schedule 1-A line 36b; i1040gi p. 110)."
+  },
+  {
+   "printed": "36b",
+   "restated": "Choose — [helper \"Your spouse was born before January 2, 1961, and has a valid SSN\" = false → helper \"Year parameter sales.zero\"] [helper \"Your spouse was born before January 2, 1961, and has a valid SSN\" = true → helper \"Line 36b for a spouse born before January 2, 1961, with a valid SSN\"]",
    "model": "The form says 'If you are married filing jointly, your spouse has a valid social security number..., and your spouse was born before January 2, 1961'. The restatement checks only the spouse's birth date and SSN, not that the return is filed jointly. A spouse entry on a head of household or qualifying surviving spouse return could therefore get line 35.",
    "ruling": "Ruling: scope; project retained. A spouse entry exists only on a joint return: any other roster is refused at Form 1040 line 1a (household.roster_bad; Form 1040 page 1, 'If joint return, spouse's first name'), so whenever the spouse's birth date and SSN can be tested the return is filed jointly (Schedule 1-A line 36b; i1040gi p. 110)."
   }

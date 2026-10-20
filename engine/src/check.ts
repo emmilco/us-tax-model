@@ -469,7 +469,8 @@ function checkLine(ctx: Ctx, doc: FormDoc, line: Line): void {
         } else {
           const ty = checkInstance(ctx, doc, alt.then, where);
           if (ty && ty.kind !== "money") ctx.errors.push(`${where}: choose branch is not money`);
-          allNonneg = false;
+          // An instance's result has its def line's declared type, which the def's own check proves.
+          allNonneg = allNonneg && ty !== null && ty.kind === "money" && ty.nonneg;
         }
       }
       compatible(ctx, declared, tyMoney(allNonneg), where);
