@@ -1,7 +1,7 @@
 # Schedule C line 9 and Part IV, and Form 4562 Part V — one vehicle used in a business
 
 - Document: `scveh` (form, tax year 2025)
-- Collection: keyed entries within sc; [i1040sc] p. 6, Line 9, Information on your vehicle, "If you used more than one vehicle during the year, attach a statement with the information requested in Schedule C, Part IV, for each additional vehicle" (2025; sha256 b5536db9)
+- Collection: keyed entries within sc; [i1040sc] p. 6, Line 9; p. 7, Information on your vehicle, "If you used more than one vehicle during the year, attach a statement with the information requested in Schedule C, Part IV, for each additional vehicle" (2025; sha256 b5536db9)
 - Note: One entry per car, truck or van used in the business: the standard mileage rate or actual expenses (Schedule C line 9 and, for a lease, line 20a), and for an owned vehicle on actual expenses its depreciation by Pub. 946's Depreciation Worksheet for Passenger Automobiles (Form 4562 Part V): placed in service 2019 to 2025, a 2019 vehicle's first year after its recovery period from its unrecovered basis. Refused: earlier special allowances, earlier standard mileage, business use of 50% or less, dispositions, trade-ins and the other items of the screen.
 
 ## (helper) — `scveh.zero`
@@ -471,7 +471,7 @@
 - **Encoded (NonNegDollars):** Multiply line 15 by helper "40% special allowance".
 - **Refusal:** when scveh.bonus_mixed is true, cannot complete Different special allowance elections within the 5-year class. An election that is not the same for the whole class is outside this tool. Cite: [i4562] p. 7, Election out (2025; sha256 5c1c95b7)
 - Expr: `{"amount":"scveh.line15","op":"multiply_rate","rate":"scveh.rate40"}`
-- Cite: [i4562] p. 6, How to figure the allowance (2025; sha256 5c1c95b7)
+- Cite: [i4562] p. 7, How to figure the allowance (2025; sha256 5c1c95b7)
 
 ## (helper) — `scveh.bonus_fullcase`
 

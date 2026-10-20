@@ -318,6 +318,13 @@
 - Expr: `{"collection":"sc","field":"sc.one","op":"sum_over"}`
 - Cite: [i1040sc] p. 14, Line 31; i4562 p. 4, Part I (2025; sha256 b5536db9)
 
+## (helper) — `person.ho_count`
+
+- **Authored helper label:** Number of this person's Schedules C that claim the business use of the home
+- **Encoded (Count):** Add sc.one over every confirmed sc entry for which column (screen) (sc.ho_uses) = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"sc","field":"sc.one","op":"sum_over","where":{"eq":["sc.ho_uses",{"const":true}],"op":"test"}}`
+- Cite: [i1040sc] p. 10, Simplified method, "You are limited to a maximum of 300 square feet for all of the businesses you conduct in your home that qualify for this deduction" (2025; sha256 b5536db9)
+
 ## (helper) — `person.mq_q4`
 
 - **Authored helper label:** Mid-quarter test basis, fourth quarter, this person

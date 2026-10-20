@@ -260,11 +260,34 @@ for the Stage 14 documents).
   amounts but not the Schedule C, Form 7206, vehicle worksheet or Form 4562 line values. The
   owner chose that each per-asset printed line then carries the form's value for that asset and
   that the Form 4562 lines print in the Schedule C entry's section.
-- **T-041:** the seven Stage 14 agent readings in the ambiguity register.
-- **T-042:** fully deductible meals (treated as wages, or reported on Form 1099-NEC; i1040sc
-  p. 10) have no input: a 100% input or a screen that refuses them. As built, a filer who enters
-  them at 50% understates the deduction, never overstates it.
+- **T-044:** a citation-page check in `check-all`, and review logs that notice a changed form.
 - T-040: reading-order text of Pub. 946 pp. 98, 109 and 110.
+
+## After the close (owner decisions on T-041 to T-043)
+
+- **T-041:** the owner accepted six Stage 14 readings; the seventh became T-043.
+- **T-043, the section 179 carryover (owner adopted):** researched from the archived statute,
+  regulations and P.L. 119-21 (`ambiguities/research/amb.2025.s179_carryover_no_property.md`).
+  Form 4562 line 1 is the $2,500,000 the line 1 instruction states, not the optional Worksheet
+  1's smaller of that and the cost of 2025 property. A carryover is then deducted up to the
+  unused dollar limitation and the business income limit, as 26 U.S.C. 179(b)(3)(B) provides.
+  On a separate return line 5 is 50% of the limitation.
+- **T-042, fully deductible meals (owner: the most rigorous and accurate option):** a third meals
+  input on each Schedule C, deducted in full on line 24b. It covers the two cases the instruction
+  names and the other exceptions Pub. 463 lists (`amb.2025.meals_full_exceptions`).
+- **BUG-0066:** i4562 and i1040sc citations one page early, for headings BUG-0065's check did not
+  match; all corrected after a page-by-page check against the PDFs.
+- New sources: `usc-26-179`, `cfr-26-1-179-2`, `cfr-26-1-179-3`, `plaw-119-21`, `i4562-2024`
+  and `p15` (the 2025 edition).
+- **Found by the `sc` and `s179` review reruns, fixed:**
+  - BUG-0067: the line 1 question asked for every Form 1099-MISC amount.
+  - BUG-0068: class M jobs did not give a business its person's Schedule SE line 13.
+  - BUG-0069 (owner: refused): the 300 square feet of the simplified method applied per business,
+    not per person.
+  - BUG-0070 (owner: refused through the Schedule C screen): the filer's own dependent care
+    assistance contributions, deductible after Form 2441.
+- Run `node engine/dist/main.js classm-jobs --docs <doc>` before `classm.py` after any data
+  change; the jobs file is not checked for age (T-044).
 
 ## Facts a fresh session needs
 

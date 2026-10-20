@@ -175,12 +175,32 @@ function buildCollectionJob(data: CanonicalData, doc: FormDoc, inputs: Inputs, r
   const entries: Record<string, EntryField[]> = {};
   const fill: Job["fill"] = []; const project: Record<string, Value> = {};
   const inputLines = doc.lines.filter((l) => l.expr.op === "input");
+  // Fields of an enclosing entry the document reads (a business reading its person's Schedule SE, say):
+  // given with the entry, since the entry-level hand-work cannot see the enclosing document.
+  const enclosingRefs = new Set<string>();
+  for (const line of doc.lines) {
+    const out = { refs: new Set<string>(), defs: false, sums: [] as { collection: string; field: string; where: Set<string> }[] };
+    walk(line.expr as Expr, out);
+    for (const ref of out.refs) {
+      const owner = data.forms.find((d) => d.collection && d.id !== doc.id && d.lines.some((x) => x.id === ref));
+      if (owner) enclosingRefs.add(ref);
+    }
+  }
   for (const [entry, fields] of entriesOf(doc.id, r)) {
     entries[entry] = [];
     for (const l of inputLines) {
       const key = fields.get(l.id); const v = key ? r.derivations.get(key)?.value : undefined;
       if (!computed(v)) continue; // an input the entry does not carry
       entries[entry]!.push({ field: l.id, label: l.label, value: v! });
+    }
+    for (const ref of [...enclosingRefs].sort()) {
+      const [collection, field] = ref.split(".") as [string, string];
+      const m = entry.match(new RegExp(`^(.*?${collection}\\[[^\\]]+\\])`));
+      if (!m) continue;
+      const v = r.derivations.get(`${m[1]}.${field}`)?.value;
+      if (!computed(v)) continue;
+      const label = data.forms.find((d) => d.id === collection)!.lines.find((x) => x.id === ref)!.label;
+      entries[entry]!.push({ field: ref, label: `${label} (of the enclosing ${collection} entry, given)`, value: v! });
     }
     // The lines the evaluation reached for this entry: a test settled early leaves the rest
     // underived, as a STOP in the printed flow chart ends the hand-work.

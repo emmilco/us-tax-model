@@ -7,9 +7,9 @@ Second transcription of `Schedule C (Form 1040) — Profit or Loss From Business
 | date | 2026-10-20 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 1201f32e305b70cd729a23069c7d3c01941b47404f888dd8a2abe40ebbe2f690 |
+| prompt sha256 | 13f2cd73378cdede5138b8478776296f3340d3d91a1e6251e0eaef05ff4940ea |
 | printed lines compared | 54 |
-| agree / disagree / missing | 43 / 11 / 0 |
+| agree / disagree / missing | 40 / 14 / 0 |
 | extra printed lines in second | none |
 
 ## Source pages given to the model
@@ -43,10 +43,10 @@ Project:
 Second:
 
 ```json
-{"from": {"from": {"line": "7 (sc.line7)"}, "op": "subtract", "take": {"of": [{"line": "10 (sc.line10)"}, {"line": "11"}, {"line": "12 (sc.line12)"}, {"line": "14 (sc.line14)"}, {"line": "15"}, {"line": "16a"}, {"line": "16b"}, {"line": "17"}, {"line": "18"}, {"line": "19"}, {"line": "20a"}, {"line": "20b"}, {"line": "21"}, {"line": "22"}, {"line": "23"}, {"line": "24a"}, {"line": "24b"}, {"line": "25"}, {"line": "26"}, {"line": "27a"}, {"line": "27b"}, {"line": "8 (sc.line8)"}, {"line": "9 (sc.line9)"}, {"of": [{"of": [{"of": [{"collection": "asset", "field": "asset.bonus_2025", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "asset.listed"}], "test": "eq"}}, {"collection": "scveh", "field": "scveh.bonus", "op": "sum_over", "where": null}], "op": "sum"}, {"of": [{"collection": "asset", "field": "asset.dep_listed", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "asset.listed"}], "test": "eq"}}, {"collection": "scveh", "field": "scveh.macrs", "op": "sum_over", "where": null}], "op": "sum"}], "op": "sum"}, {"collection": "asset", "field": "asset.bonus_2025", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y10"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y15"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y15sl"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y20"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y3"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y5"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y7"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_prior", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}}], "op": "sum"}], "op": "sum"}}, "op": "subtract", "take": {"of": [{"alternatives": [{"guard": {"args": [{"const": false}, {"line": "(screen)"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"line": "(screen)"}], "test": "eq"}, "then": {"line": "4 (sc.ho_line4)"}}], "op": "choose"}, {"from": {"from": {"line": "7 (sc.line7)"}, "op": "subtract", "take": {"of": [{"line": "10 (sc.line10)"}, {"line": "11"}, {"line": "12 (sc.line12)"}, {"line": "14 (sc.line14)"}, {"line": "15"}, {"line": "16a"}, {"line": "16b"}, {"line": "17"}, {"line": "18"}, {"line": "19"}, {"line": "20a"}, {"line": "20b"}, {"line": "21"}, {"line": "22"}, {"line": "23"}, {"line": "24a"}, {"line": "24b"}, {"line": "25"}, {"line": "26"}, {"line": "27a"}, {"line": "27b"}, {"line": "8 (sc.line8)"}, {"line": "9 (sc.line9)"}, {"of": [{"of": [{"of": [{"collection": "asset", "field": "asset.bonus_2025", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "asset.listed"}], "test": "eq"}}, {"collection": "scveh", "field": "scveh.bonus", "op": "sum_over", "where": null}], "op": "sum"}, {"of": [{"collection": "asset", "field": "asset.dep_listed", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "asset.listed"}], "test": "eq"}}, {"collection": "scveh", "field": "scveh.macrs", "op": "sum_over", "where": null}], "op": "sum"}], "op": "sum"}, {"collection": "asset", "field": "asset.bonus_2025", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y10"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y15"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y15sl"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y20"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y3"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y5"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y7"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_prior", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}}], "op": "sum"}], "op": "sum"}}, "op": "subtract_floor0", "take": {"of": [{"of": [{"collection": "asset", "field": "asset.s179_2025", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "asset.listed"}], "test": "eq"}}, {"collection": "scveh", "field": "scveh.s179_2025", "op": "sum_over", "where": null}], "op": "sum"}, {"collection": "asset", "field": "asset.s179_2025", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}}], "op": "sum"}}], "op": "smaller_of"}}
+{"from": {"from": {"line": "7 (sc.line7)"}, "op": "subtract", "take": {"of": [{"line": "10 (sc.line10)"}, {"line": "11"}, {"line": "12 (sc.line12)"}, {"line": "14 (sc.line14)"}, {"line": "15"}, {"line": "16a"}, {"line": "16b"}, {"line": "17"}, {"line": "18"}, {"line": "19"}, {"line": "20a"}, {"line": "20b"}, {"line": "21"}, {"line": "22"}, {"line": "23"}, {"line": "24a"}, {"line": "24b"}, {"line": "25"}, {"line": "26"}, {"line": "27a"}, {"line": "27b"}, {"line": "8 (sc.line8)"}, {"line": "9 (sc.line9)"}, {"of": [{"of": [{"of": [{"collection": "asset", "field": "asset.bonus_2025", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "asset.listed"}], "test": "eq"}}, {"collection": "scveh", "field": "scveh.bonus", "op": "sum_over", "where": null}], "op": "sum"}, {"of": [{"collection": "asset", "field": "asset.dep_listed", "op": "sum_over", "where": {"args": [{"args": [{"const": true}, {"ref": "asset.listed"}], "test": "eq"}, {"args": [{"amount": {"param": "sc.one_cent"}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, {"param": "sc.fifty_cents"}], "test": "le"}], "test": "all"}}, {"collection": "scveh", "field": "scveh.macrs", "op": "sum_over", "where": {"args": [{"amount": {"param": "sc.one_cent"}, "count": {"ref": "scveh.miles_business"}, "op": "multiply_count"}, {"of": [{"amount": {"param": "sc.one_cent"}, "count": {"ref": "scveh.miles_commuting"}, "op": "multiply_count"}, {"amount": {"param": "sc.one_cent"}, "count": {"ref": "scveh.miles_other"}, "op": "multiply_count"}], "op": "sum"}], "test": "le"}}], "op": "sum"}, {"of": [{"collection": "asset", "field": "asset.dep_listed", "op": "sum_over", "where": {"args": [{"args": [{"const": true}, {"ref": "asset.listed"}], "test": "eq"}, {"args": [{"param": "sc.fifty_cents"}, {"amount": {"param": "sc.one_cent"}, "count": {"input": "asset.pct"}, "op": "multiply_count"}], "test": "lt"}], "test": "all"}}, {"collection": "scveh", "field": "scveh.macrs", "op": "sum_over", "where": {"args": [{"of": [{"amount": {"param": "sc.one_cent"}, "count": {"ref": "scveh.miles_commuting"}, "op": "multiply_count"}, {"amount": {"param": "sc.one_cent"}, "count": {"ref": "scveh.miles_other"}, "op": "multiply_count"}], "op": "sum"}, {"amount": {"param": "sc.one_cent"}, "count": {"ref": "scveh.miles_business"}, "op": "multiply_count"}], "test": "lt"}}], "op": "sum"}], "op": "sum"}, {"collection": "asset", "field": "asset.bonus_2025", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y10"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y15"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y15sl"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y20"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y3"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y5"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y7"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_prior", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}}], "op": "sum"}], "op": "sum"}}, "op": "subtract", "take": {"alternatives": [{"guard": {"args": [{"const": false}, {"line": "(screen)"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"line": "(screen)"}], "test": "eq"}, "then": {"of": [{"line": "4 (sc.ho_line4)"}, {"from": {"from": {"line": "7 (sc.line7)"}, "op": "subtract", "take": {"of": [{"line": "10 (sc.line10)"}, {"line": "11"}, {"line": "12 (sc.line12)"}, {"line": "14 (sc.line14)"}, {"line": "15"}, {"line": "16a"}, {"line": "16b"}, {"line": "17"}, {"line": "18"}, {"line": "19"}, {"line": "20a"}, {"line": "20b"}, {"line": "21"}, {"line": "22"}, {"line": "23"}, {"line": "24a"}, {"line": "24b"}, {"line": "25"}, {"line": "26"}, {"line": "27a"}, {"line": "27b"}, {"line": "8 (sc.line8)"}, {"line": "9 (sc.line9)"}, {"of": [{"of": [{"of": [{"collection": "asset", "field": "asset.bonus_2025", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "asset.listed"}], "test": "eq"}}, {"collection": "scveh", "field": "scveh.bonus", "op": "sum_over", "where": null}], "op": "sum"}, {"of": [{"collection": "asset", "field": "asset.dep_listed", "op": "sum_over", "where": {"args": [{"args": [{"const": true}, {"ref": "asset.listed"}], "test": "eq"}, {"args": [{"amount": {"param": "sc.one_cent"}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, {"param": "sc.fifty_cents"}], "test": "le"}], "test": "all"}}, {"collection": "scveh", "field": "scveh.macrs", "op": "sum_over", "where": {"args": [{"amount": {"param": "sc.one_cent"}, "count": {"ref": "scveh.miles_business"}, "op": "multiply_count"}, {"of": [{"amount": {"param": "sc.one_cent"}, "count": {"ref": "scveh.miles_commuting"}, "op": "multiply_count"}, {"amount": {"param": "sc.one_cent"}, "count": {"ref": "scveh.miles_other"}, "op": "multiply_count"}], "op": "sum"}], "test": "le"}}], "op": "sum"}, {"of": [{"collection": "asset", "field": "asset.dep_listed", "op": "sum_over", "where": {"args": [{"args": [{"const": true}, {"ref": "asset.listed"}], "test": "eq"}, {"args": [{"param": "sc.fifty_cents"}, {"amount": {"param": "sc.one_cent"}, "count": {"input": "asset.pct"}, "op": "multiply_count"}], "test": "lt"}], "test": "all"}}, {"collection": "scveh", "field": "scveh.macrs", "op": "sum_over", "where": {"args": [{"of": [{"amount": {"param": "sc.one_cent"}, "count": {"ref": "scveh.miles_commuting"}, "op": "multiply_count"}, {"amount": {"param": "sc.one_cent"}, "count": {"ref": "scveh.miles_other"}, "op": "multiply_count"}], "op": "sum"}, {"amount": {"param": "sc.one_cent"}, "count": {"ref": "scveh.miles_business"}, "op": "multiply_count"}], "test": "lt"}}], "op": "sum"}], "op": "sum"}, {"collection": "asset", "field": "asset.bonus_2025", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y10"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y15"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y15sl"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y20"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y3"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y5"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y7"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_prior", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}}], "op": "sum"}], "op": "sum"}}, "op": "subtract_floor0", "take": {"const": 0}}], "op": "smaller_of"}}], "op": "choose"}}
 ```
 
-Second transcription's note: Pub. 946 'Two different taxable income limits', Steps 1-5. Step 1 is line 29 without section 179 and without the home office deduction. Step 2's hypothetical section 179 is taken as this business's elected cost (when income is lower, the room is floored at zero either way). Step 4's hypothetical home office deduction is the smaller of worksheet line 4 or the remaining room. Step 5 is the result. Carryover from 2024 and wages are not used in this per-business step.
+Second transcription's note: Equals line 31 plus the section 179 deduction in every case not refused at line 30. Either no section 179 deduction is taken, or line 4 is not limited by line 29.
 
 Ruling: representation; project retained. Both figure line 31 before the section 179 deduction for Pub. 946's two income limits (pp. 17–19, Steps 1 to 5); the project subtracts the home office deduction of line 30 as figured, the second refigures it inside this line from the worksheet. The line-30 value is the same; the difference also includes the more-than-50% filter on listed property (Listed property used 50% or less (Form 4562 line 27) is refused on both the asset and the vehicle (asset.yaml, scveh.yaml)).
 
@@ -64,6 +64,8 @@ Second:
 ```json
 {"line": "31"}
 ```
+
+Second transcription's note: A statutory employee's line 31 goes to Schedule 1 but not to Schedule SE, so one amount cannot serve both. That case is refused. A loss with box 32b is refused for Form 6198.
 
 Ruling: equivalent; project retained. The project's choose has one alternative whose guard (line 31 at least zero, or less than zero) always holds; it is line 31 on both sides. The choose carries the refusals that reach this line (statutory employee income, box 32b, and the others on sc.result).
 
@@ -101,10 +103,38 @@ Status: **AGREE**
 Status: **AGREE**
 
 ### sc.f26h — Column (h), line 26, for this business
-Status: **AGREE**
+Status: **DISAGREE**
+
+Project:
+
+```json
+{"of": [{"collection": "asset", "field": "asset.dep_listed", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "asset.listed"}], "test": "eq"}}, {"collection": "scveh", "field": "scveh.macrs", "op": "sum_over", "where": null}], "op": "sum"}
+```
+
+Second:
+
+```json
+{"of": [{"collection": "asset", "field": "asset.dep_listed", "op": "sum_over", "where": {"args": [{"args": [{"const": true}, {"ref": "asset.listed"}], "test": "eq"}, {"args": [{"param": "sc.fifty_cents"}, {"amount": {"param": "sc.one_cent"}, "count": {"input": "asset.pct"}, "op": "multiply_count"}], "test": "lt"}], "test": "all"}}, {"collection": "scveh", "field": "scveh.macrs", "op": "sum_over", "where": {"args": [{"of": [{"amount": {"param": "sc.one_cent"}, "count": {"ref": "scveh.miles_commuting"}, "op": "multiply_count"}, {"amount": {"param": "sc.one_cent"}, "count": {"ref": "scveh.miles_other"}, "op": "multiply_count"}], "op": "sum"}, {"amount": {"param": "sc.one_cent"}, "count": {"ref": "scveh.miles_business"}, "op": "multiply_count"}], "test": "lt"}}], "op": "sum"}
+```
+
+Ruling: equivalent within scope; project retained. Column (h) of line 26 summed over the business's listed assets and vehicles on both sides. Listed property used 50% or less (Form 4562 line 27) is refused on both the asset and the vehicle (asset.yaml, scveh.yaml), so the second's filter for more than 50% business use selects the same entries within scope.
 
 ### sc.f28 — Line 28 for this business
-Status: **AGREE**
+Status: **DISAGREE**
+
+Project:
+
+```json
+{"of": [{"of": [{"collection": "asset", "field": "asset.bonus_2025", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "asset.listed"}], "test": "eq"}}, {"collection": "scveh", "field": "scveh.bonus", "op": "sum_over", "where": null}], "op": "sum"}, {"of": [{"collection": "asset", "field": "asset.dep_listed", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "asset.listed"}], "test": "eq"}}, {"collection": "scveh", "field": "scveh.macrs", "op": "sum_over", "where": null}], "op": "sum"}], "op": "sum"}
+```
+
+Second:
+
+```json
+{"of": [{"of": [{"collection": "asset", "field": "asset.bonus_2025", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "asset.listed"}], "test": "eq"}}, {"collection": "scveh", "field": "scveh.bonus", "op": "sum_over", "where": null}], "op": "sum"}, {"of": [{"collection": "asset", "field": "asset.dep_listed", "op": "sum_over", "where": {"args": [{"args": [{"const": true}, {"ref": "asset.listed"}], "test": "eq"}, {"args": [{"amount": {"param": "sc.one_cent"}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, {"param": "sc.fifty_cents"}], "test": "le"}], "test": "all"}}, {"collection": "scveh", "field": "scveh.macrs", "op": "sum_over", "where": {"args": [{"amount": {"param": "sc.one_cent"}, "count": {"ref": "scveh.miles_business"}, "op": "multiply_count"}, {"of": [{"amount": {"param": "sc.one_cent"}, "count": {"ref": "scveh.miles_commuting"}, "op": "multiply_count"}, {"amount": {"param": "sc.one_cent"}, "count": {"ref": "scveh.miles_other"}, "op": "multiply_count"}], "op": "sum"}], "test": "le"}}], "op": "sum"}, {"of": [{"collection": "asset", "field": "asset.dep_listed", "op": "sum_over", "where": {"args": [{"args": [{"const": true}, {"ref": "asset.listed"}], "test": "eq"}, {"args": [{"param": "sc.fifty_cents"}, {"amount": {"param": "sc.one_cent"}, "count": {"input": "asset.pct"}, "op": "multiply_count"}], "test": "lt"}], "test": "all"}}, {"collection": "scveh", "field": "scveh.macrs", "op": "sum_over", "where": {"args": [{"of": [{"amount": {"param": "sc.one_cent"}, "count": {"ref": "scveh.miles_commuting"}, "op": "multiply_count"}, {"amount": {"param": "sc.one_cent"}, "count": {"ref": "scveh.miles_other"}, "op": "multiply_count"}], "op": "sum"}, {"amount": {"param": "sc.one_cent"}, "count": {"ref": "scveh.miles_business"}, "op": "multiply_count"}], "test": "lt"}}], "op": "sum"}], "op": "sum"}
+```
+
+Ruling: equivalent within scope; project retained. Lines 25 and 26 column (h) on both sides; the difference is the second's more-than-50% filter on line 26. Listed property used 50% or less (Form 4562 line 27) is refused on both the asset and the vehicle (asset.yaml, scveh.yaml), so the second's filter for more than 50% business use selects the same entries within scope.
 
 ### sc.f29 — Line 29 for this business
 Status: **AGREE**
@@ -130,10 +160,10 @@ Project:
 Second:
 
 ```json
-{"from": {"line": "31"}, "op": "subtract_floor0", "take": {"const": 0}}
+{"of": [{"const": 0}, {"line": "31"}], "op": "larger_of"}
 ```
 
-Ruling: equivalent; project retained. The project's choose has one alternative whose guard (line 31 at least zero, or less than zero) always holds; it is line 31 on both sides. The choose carries the refusals that reach this line (statutory employee income, box 32b, and the others on sc.result). Both then floor at zero.
+Ruling: equivalent; project retained. The project selects line 31 under a guard that holds for every value (line 31 at least zero, or less than zero) and floors it at zero; the second takes the larger of zero and line 31. Both are line 31 when it is positive and zero otherwise.
 
 ### 3 (sc.line3) — Subtract line 2 from line 1
 Status: **AGREE**
@@ -154,7 +184,21 @@ Status: **AGREE**
 Status: **AGREE**
 
 ### 13 (sc.line13) — Depreciation and section 179 expense deduction (not included in Part III)
-Status: **AGREE**
+Status: **DISAGREE**
+
+Project:
+
+```json
+{"of": [{"line": "12 (sc.s179_allowed)"}, {"of": [{"of": [{"of": [{"collection": "asset", "field": "asset.bonus_2025", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "asset.listed"}], "test": "eq"}}, {"collection": "scveh", "field": "scveh.bonus", "op": "sum_over", "where": null}], "op": "sum"}, {"of": [{"collection": "asset", "field": "asset.dep_listed", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "asset.listed"}], "test": "eq"}}, {"collection": "scveh", "field": "scveh.macrs", "op": "sum_over", "where": null}], "op": "sum"}], "op": "sum"}, {"collection": "asset", "field": "asset.bonus_2025", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y10"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y15"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y15sl"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y20"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y3"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y5"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y7"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_prior", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}}], "op": "sum"}], "op": "sum"}
+```
+
+Second:
+
+```json
+{"of": [{"line": "12 (sc.s179_allowed)"}, {"of": [{"of": [{"of": [{"collection": "asset", "field": "asset.bonus_2025", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "asset.listed"}], "test": "eq"}}, {"collection": "scveh", "field": "scveh.bonus", "op": "sum_over", "where": null}], "op": "sum"}, {"of": [{"collection": "asset", "field": "asset.dep_listed", "op": "sum_over", "where": {"args": [{"args": [{"const": true}, {"ref": "asset.listed"}], "test": "eq"}, {"args": [{"amount": {"param": "sc.one_cent"}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, {"param": "sc.fifty_cents"}], "test": "le"}], "test": "all"}}, {"collection": "scveh", "field": "scveh.macrs", "op": "sum_over", "where": {"args": [{"amount": {"param": "sc.one_cent"}, "count": {"ref": "scveh.miles_business"}, "op": "multiply_count"}, {"of": [{"amount": {"param": "sc.one_cent"}, "count": {"ref": "scveh.miles_commuting"}, "op": "multiply_count"}, {"amount": {"param": "sc.one_cent"}, "count": {"ref": "scveh.miles_other"}, "op": "multiply_count"}], "op": "sum"}], "test": "le"}}], "op": "sum"}, {"of": [{"collection": "asset", "field": "asset.dep_listed", "op": "sum_over", "where": {"args": [{"args": [{"const": true}, {"ref": "asset.listed"}], "test": "eq"}, {"args": [{"param": "sc.fifty_cents"}, {"amount": {"param": "sc.one_cent"}, "count": {"input": "asset.pct"}, "op": "multiply_count"}], "test": "lt"}], "test": "all"}}, {"collection": "scveh", "field": "scveh.macrs", "op": "sum_over", "where": {"args": [{"of": [{"amount": {"param": "sc.one_cent"}, "count": {"ref": "scveh.miles_commuting"}, "op": "multiply_count"}, {"amount": {"param": "sc.one_cent"}, "count": {"ref": "scveh.miles_other"}, "op": "multiply_count"}], "op": "sum"}, {"amount": {"param": "sc.one_cent"}, "count": {"ref": "scveh.miles_business"}, "op": "multiply_count"}], "test": "lt"}}], "op": "sum"}], "op": "sum"}, {"collection": "asset", "field": "asset.bonus_2025", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y10"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y15"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y15sl"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y20"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y3"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y5"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y7"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.dep_prior", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}}], "op": "sum"}], "op": "sum"}
+```
+
+Ruling: equivalent within scope; project retained. Form 4562 line 22 for the business (line 12, lines 14 to 17, line 19 column (g), line 21) on both sides; the difference is the second's more-than-50% filter inside line 21. Listed property used 50% or less (Form 4562 line 27) is refused on both the asset and the vehicle (asset.yaml, scveh.yaml), so the second's filter for more than 50% business use selects the same entries within scope.
 
 ### 20a — Rent or lease: vehicles, machinery, and equipment
 Status: **AGREE**
@@ -209,10 +253,8 @@ Project:
 Second:
 
 ```json
-{"of": [{"line": "4 (sc.ho_line4)"}, {"from": {"line": "1 (sc.ho_line1)"}, "op": "subtract_floor0", "take": {"const": 0}}], "op": "smaller_of"}
+{"from": {"of": [{"line": "1 (sc.ho_line1)"}, {"line": "4 (sc.ho_line4)"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"const": 0}}
 ```
-
-Second transcription's note: 'If zero or less, enter -0-' is applied by flooring line 1 at zero before taking the smaller. Line 4 is never negative, so the result is the same.
 
 Ruling: equivalent where computed; project retained. The smaller of worksheet lines 1 and 4 on both sides. The project tests whether line 4 can exceed line 1 under the most section 179 deduction the business could take (its 2025 elections plus the carryover, since BUG-0060) and refuses where the two limits of Pub. 946 (p. 19) interact (sc.ho_both); the second takes the smaller of the two lines directly. Equal on every return the project computes.
 
@@ -229,7 +271,23 @@ Status: **AGREE**
 Status: **AGREE**
 
 ### 12 (sc.s179_allowed) — Section 179 expense deduction for this business
-Status: **AGREE**
+Status: **DISAGREE**
+
+Project:
+
+```json
+{"alternatives": [{"guard": {"args": [{"ref": "s179.line12"}, {"ref": "s179.line8"}], "test": "eq"}, "then": {"of": [{"of": [{"collection": "asset", "field": "asset.s179_2025", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "asset.listed"}], "test": "eq"}}, {"collection": "scveh", "field": "scveh.s179_2025", "op": "sum_over", "where": null}], "op": "sum"}, {"collection": "asset", "field": "asset.s179_2025", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}}], "op": "sum"}}, {"guard": {"args": [{"ref": "s179.line12"}, {"ref": "s179.line8"}], "test": "ne"}, "then": {"ref": "s179.line12"}}], "op": "choose"}
+```
+
+Second:
+
+```json
+{"ref": "s179.line12"}
+```
+
+Second transcription's note: i4562 line 12 allows the taxpayer-level deduction to be allocated among businesses in any manner. I encode only the case with one business taking the whole deduction, and refuse when an allocation among more than one business is needed.
+
+Ruling: owner's ruling; project retained. With one Schedule C both take the return's line 12. With more than one, the owner ruled that each business deducts its own 2025 elections when line 12 equals them (no allocation needed) and more than one Schedule C is refused otherwise; the second gives each business the whole line 12 and relies on s179.multi.
 
 ### 2 (sc.f7206_line2) — Qualified long-term care insurance (the smaller of payments or the age limit, for each per
 Status: **AGREE**
@@ -249,12 +307,10 @@ Project:
 Second:
 
 ```json
-{"from": {"line": "31"}, "op": "subtract_floor0", "take": {"const": 0}}
+{"of": [{"const": 0}, {"line": "31"}], "op": "larger_of"}
 ```
 
-Second transcription's note: 'Net profit' is read as zero for a loss. Other earned income and the optional-method amount are outside the tool.
-
-Ruling: equivalent; project retained. The project's choose has one alternative whose guard (line 31 at least zero, or less than zero) always holds; it is line 31 on both sides. The choose carries the refusals that reach this line (statutory employee income, box 32b, and the others on sc.result). Both then floor at zero (Form 7206 line 4, net profit).
+Ruling: equivalent; project retained. The project selects line 31 under a guard that holds for every value (line 31 at least zero, or less than zero) and floors it at zero; the second takes the larger of zero and line 31. Both are line 31 when it is positive and zero otherwise.
 
 ### 5 (sc.f7206_line5) — Total of all net profits from Schedule C, line 31
 Status: **AGREE**
@@ -274,26 +330,10 @@ Second:
 {"alternatives": [{"guard": {"args": [{"line": "4 (sc.f7206_line4)"}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"line": "4 (sc.f7206_line4)"}], "test": "lt"}, "then": {"amount": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"ref": "person.zero"}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"of": [{"amount": {"of": [{"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"ref": "person.wages"}}, {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"of": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"param": "sales.zero"}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"param": "sales.zero"}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"param": "sales.zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "sales.zero"}], "op": "sum"}], "test": "le"}, "then": {"from": {"of": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"param": "sales.zero"}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"param": "sales.zero"}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"param": "sales.zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "sales.zero"}], "op": "sum"}, "op": "subtract_floor0", "take": {"param": "sales.zero"}}}, {"guard": {"args": [{"of": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"param": "sales.zero"}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"param": "sales.zero"}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"param": "sales.zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "sales.zero"}], "op": "sum"}, {"param": "se.floor"}], "test": "lt"}, "then": {"param": "sales.zero"}}], "op": "choose"}, {"param": "sales.zero"}], "op": "sum"}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"of": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"param": "sales.zero"}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"param": "sales.zero"}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"param": "sales.zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "sales.zero"}], "op": "sum"}], "test": "le"}, "then": {"from": {"of": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"param": "sales.zero"}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"param": "sales.zero"}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"param": "sales.zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "sales.zero"}], "op": "sum"}, "op": "subtract_floor0", "take": {"param": "sales.zero"}}}, {"guard": {"args": [{"of": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"param": "sales.zero"}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"param": "sales.zero"}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"param": "sales.zero"}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "sales.zero"}], "op": "sum"}, {"param": "se.floor"}], "test": "lt"}, "then": {"param": "sales.zero"}}], "op": "choose"}, {"param": "sales.zero"}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}}], "op": "choose"}, "op": "prorate", "part": {"line": "4 (sc.f7206_line4)"}, "places": 4, "whole": {"line": "5 (sc.f7206_line5)"}}}], "op": "choose"}
 ```
 
-Second transcription's note: Line 6 (line 4 divided by line 5) is merged into the prorate on the helper line. When line 4 is zero, line 6 is zero, and line 5 may be zero, so the division is skipped.
-
 Ruling: owner-review reading; project retained. Schedule 1 line 15 times line 4 over line 5 on both sides. The project rounds the ratio to six places (amb.2025.f7206_ratio_places, an agent reading for owner review in TASKS.md); the second to four.
 
 ### 8 (sc.f7206_line8) — Subtract line 7 from line 4
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"from": {"line": "4 (sc.f7206_line4)"}, "op": "subtract_floor0", "take": {"line": "7 (sc.f7206_line7)"}}
-```
-
-Second:
-
-```json
-{"from": {"line": "4 (sc.f7206_line4)"}, "op": "subtract", "take": {"line": "7 (sc.f7206_line7)"}}
-```
-
-Ruling: equivalent; project retained. Line 7 is this business's share of the deductible part of self-employment tax, which is less than its net profit on line 4, so line 4 less line 7 is never negative and the project's floor at zero changes nothing.
+Status: **AGREE**
 
 ### 9 (sc.f7206_line9) — Schedule 1, line 16, attributable to the same trade or business
 Status: **DISAGREE**
@@ -309,8 +349,6 @@ Second:
 ```json
 {"alternatives": [{"guard": {"args": [{"line": "4 (sc.f7206_line4)"}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"line": "4 (sc.f7206_line4)"}], "test": "lt"}, "then": {"amount": {"alternatives": [{"guard": {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, "then": {"ref": "person.zero"}}, {"guard": {"args": [{"const": "sep"}, {"input": "person.plan"}], "test": "eq"}, "then": {"input": "person.sep_contrib"}}, {"guard": {"args": [{"const": "simple"}, {"input": "person.plan"}], "test": "eq"}, "then": {"of": [{"input": "person.simple_employer"}, {"of": [{"of": [{"input": "person.simple_deferral"}, {"param": "ret.simple_limit"}], "op": "smaller_of"}, {"from": {"input": "person.simple_deferral"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.simple_deferral"}, {"param": "ret.simple_limit"}], "op": "smaller_of"}}], "op": "sum"}], "op": "sum"}}], "op": "choose"}, "op": "prorate", "part": {"line": "4 (sc.f7206_line4)"}, "places": 4, "whole": {"line": "5 (sc.f7206_line5)"}}}], "op": "choose"}
 ```
-
-Second transcription's note: The form does not say how to attribute line 16 to a business. Reading chosen: the person's SEP or SIMPLE deduction times this business's share of the person's net profits (line 4 divided by line 5), the same allocation line 7 uses.
 
 Ruling: owner-review reading; project retained. Schedule 1 line 16 times line 4 over line 5 on both sides (amb.2025.f7206_plan_attribution); the project also enters zero for a person with no Schedule C, which cannot occur within this collection. The project rounds the ratio to six places (amb.2025.f7206_ratio_places, an agent reading for owner review in TASKS.md); the second to four.
 
@@ -332,7 +370,7 @@ Second:
 {"from": {"line": "10 (sc.f7206_line10)"}, "op": "subtract", "take": {"const": 0}}
 ```
 
-Second transcription's note: Line 12 (Form 2555 amount) is zero in this tool's scope, and line 11 (S corporation) does not apply.
+Second transcription's note: Line 12 (Form 2555, line 45) is computed only in the case with no Form 2555. Line 11 (S corporation wages) does not apply to a Schedule C business.
 
 Ruling: equivalent; project retained. Line 12 (Form 2555) is refused and line 11 (S corporation) does not apply, so line 13 is line 10 on both sides.
 
@@ -354,8 +392,6 @@ Second:
 {"from": {"line": "31"}, "op": "subtract", "take": {"of": [{"line": "14 (sc.f7206_line14)"}, {"line": "7 (sc.f7206_line7)"}, {"line": "9 (sc.f7206_line9)"}], "op": "sum"}}
 ```
 
-Second transcription's note: i8995: QBI accounts for the deductible part of self-employment tax, the self-employed health insurance deduction and qualified retirement plan contributions attributable to the business. The SE tax and plan deductions are attributed by profit share (Form 7206 lines 7 and 9). The health insurance deduction is this business's Form 7206 line 14.
-
 Ruling: equivalent; project retained. Both subtract from line 31 the deductible part of self-employment tax, the SEP or SIMPLE deduction and the health insurance deduction attributable to the business (i8995 p. 2; amb.2025.qbi_attribution). The second uses Form 7206 lines 7, 9 and 14 for the first two; the project's sc.qbi_se and sc.qbi_plan prorate the same amounts by the same ratio (net profit over person.positive_profits, which is Form 7206 line 5), so the comparison sees references on one side and their expansion on the other.
 
 ## Refusal gates listed by the second transcription
@@ -364,44 +400,57 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 
 | line | gates listed | not read by the project's line |
 | --- | --- | --- |
-| sc.line31_pre179 | sc.h_screened, sc.inventory_other, sc.special | sc.h_screened, sc.special |
-| sc.result | s179.multi, sc.h_atrisk_bad, sc.h_ho_screened, sc.h_screened, sc.inventory_other, sc.special | sc.h_atrisk_bad, sc.h_ho_screened, sc.h_screened, sc.special |
-| sc.profit_pos | s179.multi, sc.h_ho_screened, sc.h_screened, sc.inventory_other, sc.special | sc.h_ho_screened, sc.h_screened, sc.special |
-| 3 (sc.line3) | sc.h_screened | sc.h_screened |
+| sc.line31_pre179 | sc.inventory_other, sc.method_other, sc.special, sc.spouse_owned | sc.method_other, sc.special, sc.spouse_owned |
+| sc.result | s179.multi, sc.h_ho_interact, sc.h_ho_multi, sc.h_not_at_risk, sc.h_passive_activity, sc.ho_other, sc.inventory_other, sc.method_other, sc.special, sc.spouse_owned, sc.statutory | sc.h_ho_interact, sc.h_ho_multi, sc.h_not_at_risk, sc.h_passive_activity, sc.ho_other, sc.method_other, sc.special, sc.spouse_owned, sc.statutory |
+| sc.profit_pos | s179.multi, sc.h_ho_interact, sc.h_ho_multi, sc.h_passive_activity, sc.ho_other, sc.inventory_other, sc.method_other, sc.special, sc.spouse_owned | sc.h_ho_interact, sc.h_ho_multi, sc.h_passive_activity, sc.ho_other, sc.method_other, sc.special, sc.spouse_owned |
+| 3 (sc.line3) | sc.method_other, sc.spouse_owned | sc.method_other, sc.spouse_owned |
 | 4 (sc.line4) | sc.inventory_other | - |
-| 5 (sc.line5) | sc.h_screened, sc.inventory_other | sc.h_screened |
-| 7 (sc.line7) | sc.h_screened, sc.inventory_other | sc.h_screened |
+| 5 (sc.line5) | sc.inventory_other, sc.method_other, sc.spouse_owned | sc.method_other, sc.spouse_owned |
+| 7 (sc.line7) | sc.inventory_other, sc.method_other, sc.spouse_owned | sc.method_other, sc.spouse_owned |
 | 12 (sc.line12) | sc.special | sc.special |
 | 13 (sc.line13) | s179.multi | - |
 | 27a | sc.special | sc.special |
 | 28 | s179.multi, sc.special | sc.special |
-| 29 | s179.multi, sc.h_screened, sc.inventory_other, sc.special | sc.h_screened, sc.special |
-| 1 (sc.ho_line1) | s179.multi, sc.h_screened, sc.inventory_other, sc.special | sc.h_screened, sc.special |
-| 5 (sc.ho_line5) | s179.multi, sc.h_screened, sc.inventory_other, sc.special | s179.multi, sc.h_screened, sc.special |
-| 30 | s179.multi, sc.h_ho_screened, sc.h_screened, sc.inventory_other, sc.special | s179.multi, sc.h_ho_screened, sc.h_screened, sc.special |
-| 31 | s179.multi, sc.h_ho_screened, sc.h_screened, sc.inventory_other, sc.special | sc.h_ho_screened, sc.h_screened, sc.special |
+| 29 | s179.multi, sc.inventory_other, sc.method_other, sc.special, sc.spouse_owned | sc.method_other, sc.special, sc.spouse_owned |
+| 1 (sc.ho_line1) | s179.multi, sc.inventory_other, sc.method_other, sc.special, sc.spouse_owned | sc.method_other, sc.special, sc.spouse_owned |
+| 5 (sc.ho_line5) | s179.multi, sc.inventory_other, sc.method_other, sc.special, sc.spouse_owned | s179.multi, sc.method_other, sc.special, sc.spouse_owned |
+| 30 | s179.multi, sc.h_ho_interact, sc.h_ho_multi, sc.ho_other, sc.inventory_other, sc.method_other, sc.special, sc.spouse_owned | s179.multi, sc.h_ho_interact, sc.h_ho_multi, sc.ho_other, sc.method_other, sc.special, sc.spouse_owned |
+| 31 | s179.multi, sc.h_ho_interact, sc.h_ho_multi, sc.h_passive_activity, sc.ho_other, sc.inventory_other, sc.method_other, sc.special, sc.spouse_owned | sc.h_ho_interact, sc.h_ho_multi, sc.h_passive_activity, sc.ho_other, sc.method_other, sc.special, sc.spouse_owned |
 | 42 | sc.inventory_other | - |
 | 12 (sc.s179_allowed) | s179.multi | - |
-| 4 (sc.f7206_line4) | s179.multi, sc.h_ho_screened, sc.h_screened, sc.inventory_other, sc.special | sc.h_ho_screened, sc.h_screened, sc.special |
-| 7 (sc.f7206_line7) | s179.multi, sc.h_ho_screened, sc.h_screened, sc.inventory_other, sc.special | sc.h_ho_screened, sc.h_screened, sc.special |
-| 8 (sc.f7206_line8) | s179.multi, sc.h_ho_screened, sc.h_screened, sc.inventory_other, sc.special | sc.h_ho_screened, sc.h_screened, sc.special |
-| 9 (sc.f7206_line9) | s179.multi, sc.h_ho_screened, sc.h_screened, sc.inventory_other, sc.special | sc.h_ho_screened, sc.h_screened, sc.special |
-| 10 (sc.f7206_line10) | s179.multi, sc.h_ho_screened, sc.h_screened, sc.inventory_other, sc.special | sc.h_ho_screened, sc.h_screened, sc.special |
-| 13 (sc.f7206_line13) | s179.multi, sc.h_ho_screened, sc.h_screened, sc.inventory_other, sc.special | sc.h_ho_screened, sc.h_screened, sc.special |
-| 14 (sc.f7206_line14) | s179.multi, sc.h_hi_screened, sc.h_ho_screened, sc.h_screened, sc.inventory_other, sc.special | sc.h_hi_screened, sc.h_ho_screened, sc.h_screened, sc.special |
-| 1(c) | s179.multi, sc.h_hi_screened, sc.h_ho_screened, sc.h_screened, sc.inventory_other, sc.special | sc.h_hi_screened, sc.h_ho_screened, sc.h_screened, sc.special |
+| 4 (sc.f7206_line4) | s179.multi, sc.h_ho_interact, sc.h_ho_multi, sc.h_passive_activity, sc.ho_other, sc.inventory_other, sc.method_other, sc.special, sc.spouse_owned | sc.h_ho_interact, sc.h_ho_multi, sc.h_passive_activity, sc.ho_other, sc.method_other, sc.special, sc.spouse_owned |
+| 7 (sc.f7206_line7) | s179.multi, sc.h_ho_interact, sc.h_ho_multi, sc.h_passive_activity, sc.ho_other, sc.inventory_other, sc.method_other, sc.special, sc.spouse_owned | sc.h_ho_interact, sc.h_ho_multi, sc.h_passive_activity, sc.ho_other, sc.method_other, sc.special, sc.spouse_owned |
+| 8 (sc.f7206_line8) | s179.multi, sc.h_ho_interact, sc.h_ho_multi, sc.h_passive_activity, sc.ho_other, sc.inventory_other, sc.method_other, sc.special, sc.spouse_owned | sc.h_ho_interact, sc.h_ho_multi, sc.h_passive_activity, sc.ho_other, sc.method_other, sc.special, sc.spouse_owned |
+| 9 (sc.f7206_line9) | s179.multi, sc.h_ho_interact, sc.h_ho_multi, sc.h_passive_activity, sc.ho_other, sc.inventory_other, sc.method_other, sc.special, sc.spouse_owned | sc.h_ho_interact, sc.h_ho_multi, sc.h_passive_activity, sc.ho_other, sc.method_other, sc.special, sc.spouse_owned |
+| 10 (sc.f7206_line10) | s179.multi, sc.h_ho_interact, sc.h_ho_multi, sc.h_passive_activity, sc.ho_other, sc.inventory_other, sc.method_other, sc.special, sc.spouse_owned | sc.h_ho_interact, sc.h_ho_multi, sc.h_passive_activity, sc.ho_other, sc.method_other, sc.special, sc.spouse_owned |
+| 13 (sc.f7206_line13) | s179.multi, sa.excluded_income, sc.h_ho_interact, sc.h_ho_multi, sc.h_passive_activity, sc.ho_other, sc.inventory_other, sc.method_other, sc.special, sc.spouse_owned | sa.excluded_income, sc.h_ho_interact, sc.h_ho_multi, sc.h_passive_activity, sc.ho_other, sc.method_other, sc.special, sc.spouse_owned |
+| 14 (sc.f7206_line14) | s179.multi, sa.excluded_income, sc.h_ho_interact, sc.h_ho_multi, sc.h_passive_activity, sc.hi_screen, sc.ho_other, sc.inventory_other, sc.method_other, sc.special, sc.spouse_owned | sa.excluded_income, sc.h_ho_interact, sc.h_ho_multi, sc.h_passive_activity, sc.hi_screen, sc.ho_other, sc.method_other, sc.special, sc.spouse_owned |
+| 1(c) | s179.multi, sa.excluded_income, sc.h_ho_interact, sc.h_ho_multi, sc.h_not_at_risk, sc.h_passive_activity, sc.hi_screen, sc.ho_other, sc.inventory_other, sc.method_other, sc.special, sc.spouse_owned, sc.statutory | sa.excluded_income, sc.h_ho_interact, sc.h_ho_multi, sc.h_not_at_risk, sc.h_passive_activity, sc.hi_screen, sc.ho_other, sc.method_other, sc.special, sc.spouse_owned, sc.statutory |
 
 ## Raw second transcription
 
 ```yaml
 ```yaml
 lines:
+  - id: sc.h_zero
+    printed: "(helper)"
+    label: "Zero"
+    type: NonNegDollars
+    expr: {op: param, ref: sales.zero}
+
+  - id: sc.one
+    printed: "(helper)"
+    label: "One business"
+    type: Count
+    expr: {op: param, ref: sc.one}
+
   - id: sc.line3
     printed: "3 (sc.line3)"
     label: "Subtract line 2 from line 1"
     type: Dollars
     expr: {op: subtract, from: sc.line1, take: sc.line2}
-    refuses: [sc.h_screened]
+    refuses: [sc.method_other, sc.spouse_owned]
+    note: "The screens for accounting method (line F) and spouse ownership do not belong to any one printed amount line. I attached them to line 3, the first computed line of Part I."
 
   - id: sc.line4
     printed: "4 (sc.line4)"
@@ -434,12 +483,289 @@ lines:
     expr: {op: copy, from: sc.h_zero}
     refuses: [sc.special]
 
+  # ---- Form 4562 amounts for this business ----
+  - id: sc.f6
+    printed: "(helper)"
+    label: "Section 179 elected on property other than listed property"
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.s179_2025
+      where: {op: test, eq: [asset.listed, {const: false}]}
+
+  - id: sc.f14
+    printed: "(helper)"
+    label: "Special allowance on property other than listed property"
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.bonus_2025
+      where: {op: test, eq: [asset.listed, {const: false}]}
+
+  - id: sc.f17
+    printed: "(helper)"
+    label: "MACRS on earlier property other than listed property"
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.dep_prior
+      where: {op: test, eq: [asset.listed, {const: false}]}
+
+  - id: sc.f19_y3
+    printed: "(helper)"
+    label: "MACRS on 2025 property of period y3 other than listed property"
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.dep_2025
+      where: {op: test, all: [{op: test, eq: [asset.period, {const: "y3"}]}, {op: test, eq: [asset.listed, {const: false}]}]}
+
+  - id: sc.f19_y5
+    printed: "(helper)"
+    label: "MACRS on 2025 property of period y5 other than listed property"
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.dep_2025
+      where: {op: test, all: [{op: test, eq: [asset.period, {const: "y5"}]}, {op: test, eq: [asset.listed, {const: false}]}]}
+
+  - id: sc.f19_y7
+    printed: "(helper)"
+    label: "MACRS on 2025 property of period y7 other than listed property"
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.dep_2025
+      where: {op: test, all: [{op: test, eq: [asset.period, {const: "y7"}]}, {op: test, eq: [asset.listed, {const: false}]}]}
+
+  - id: sc.f19_y10
+    printed: "(helper)"
+    label: "MACRS on 2025 property of period y10 other than listed property"
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.dep_2025
+      where: {op: test, all: [{op: test, eq: [asset.period, {const: "y10"}]}, {op: test, eq: [asset.listed, {const: false}]}]}
+
+  - id: sc.f19_y15
+    printed: "(helper)"
+    label: "MACRS on 2025 property of period y15 other than listed property"
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.dep_2025
+      where: {op: test, all: [{op: test, eq: [asset.period, {const: "y15"}]}, {op: test, eq: [asset.listed, {const: false}]}]}
+
+  - id: sc.f19_y20
+    printed: "(helper)"
+    label: "MACRS on 2025 property of period y20 other than listed property"
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.dep_2025
+      where: {op: test, all: [{op: test, eq: [asset.period, {const: "y20"}]}, {op: test, eq: [asset.listed, {const: false}]}]}
+
+  - id: sc.f19_y15sl
+    printed: "(helper)"
+    label: "MACRS on 2025 property of period y15sl other than listed property"
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.dep_2025
+      where: {op: test, all: [{op: test, eq: [asset.period, {const: "y15sl"}]}, {op: test, eq: [asset.listed, {const: false}]}]}
+
+  - id: sc.h_f25_assets
+    printed: "(helper)"
+    label: "Special allowance on listed property other than vehicles"
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.bonus_2025
+      where: {op: test, eq: [asset.listed, {const: true}]}
+
+  - id: sc.h_f25_veh
+    printed: "(helper)"
+    label: "Special allowance on vehicles"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: scveh, field: scveh.bonus}
+
+  - id: sc.f25
+    printed: "(helper)"
+    label: "Line 25 for this business"
+    type: NonNegDollars
+    expr: {op: sum, of: [sc.h_f25_assets, sc.h_f25_veh]}
+
+  - id: sc.h_f26_assets
+    printed: "(helper)"
+    label: "Column (h) of listed property other than vehicles used more than 50% in a qualified business use"
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.dep_listed
+      where: {op: test, all: [{op: test, eq: [asset.listed, {const: true}]}, {op: test, eq: [asset.over_half, {const: true}]}]}
+
+  - id: sc.h_f26_veh
+    printed: "(helper)"
+    label: "Column (h) of vehicles used more than 50% in a qualified business use"
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: scveh
+      field: scveh.macrs
+      where: {op: test, eq: [scveh.low_use, {const: false}]}
+
+  - id: sc.f26h
+    printed: "(helper)"
+    label: "Column (h), line 26, for this business"
+    type: NonNegDollars
+    expr: {op: sum, of: [sc.h_f26_assets, sc.h_f26_veh]}
+
+  - id: sc.h_f27_assets
+    printed: "(helper)"
+    label: "Column (h) of listed property other than vehicles used 50% or less in a qualified business use"
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.dep_listed
+      where: {op: test, all: [{op: test, eq: [asset.listed, {const: true}]}, {op: test, eq: [asset.over_half, {const: false}]}]}
+
+  - id: sc.h_f27_veh
+    printed: "(helper)"
+    label: "Column (h) of vehicles used 50% or less in a qualified business use"
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: scveh
+      field: scveh.macrs
+      where: {op: test, eq: [scveh.low_use, {const: true}]}
+
+  - id: sc.h_f27
+    printed: "(helper)"
+    label: "Column (h), line 27, for this business"
+    type: NonNegDollars
+    expr: {op: sum, of: [sc.h_f27_assets, sc.h_f27_veh]}
+
+  - id: sc.f28
+    printed: "(helper)"
+    label: "Line 28 for this business: add amounts in column (h), lines 25 through 27"
+    type: NonNegDollars
+    expr: {op: sum, of: [sc.f25, sc.f26h, sc.h_f27]}
+
+  - id: sc.h_f29_assets
+    printed: "(helper)"
+    label: "Section 179 elected on listed property other than vehicles"
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.s179_2025
+      where: {op: test, eq: [asset.listed, {const: true}]}
+
+  - id: sc.h_f29_veh
+    printed: "(helper)"
+    label: "Section 179 elected on vehicles"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: scveh, field: scveh.s179_2025}
+
+  - id: sc.f29
+    printed: "(helper)"
+    label: "Line 29 for this business: add amounts in column (i), line 26"
+    type: NonNegDollars
+    expr: {op: sum, of: [sc.h_f29_assets, sc.h_f29_veh]}
+
+  - id: sc.h_mq_q4_a
+    printed: "(helper)"
+    label: "mq_q4 of this business's property"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: asset, field: asset.mq_q4}
+
+  - id: sc.h_mq_q4_v
+    printed: "(helper)"
+    label: "mq_q4 of this business's vehicles"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: scveh, field: scveh.mq_q4}
+
+  - id: sc.mq_q4
+    printed: "(helper)"
+    label: "mq_q4 of this business"
+    type: NonNegDollars
+    expr: {op: sum, of: [sc.h_mq_q4_a, sc.h_mq_q4_v]}
+
+  - id: sc.h_mq_total_a
+    printed: "(helper)"
+    label: "mq_total of this business's property"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: asset, field: asset.mq_total}
+
+  - id: sc.h_mq_total_v
+    printed: "(helper)"
+    label: "mq_total of this business's vehicles"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: scveh, field: scveh.mq_total}
+
+  - id: sc.mq_total
+    printed: "(helper)"
+    label: "mq_total of this business"
+    type: NonNegDollars
+    expr: {op: sum, of: [sc.h_mq_total_a, sc.h_mq_total_v]}
+
+  - id: sc.h_cost179_a
+    printed: "(helper)"
+    label: "cost179 of this business's property"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: asset, field: asset.cost179}
+
+  - id: sc.h_cost179_v
+    printed: "(helper)"
+    label: "cost179 of this business's vehicles"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: scveh, field: scveh.cost179}
+
+  - id: sc.cost179
+    printed: "(helper)"
+    label: "cost179 of this business"
+    type: NonNegDollars
+    expr: {op: sum, of: [sc.h_cost179_a, sc.h_cost179_v]}
+
+  - id: sc.h_dep_other
+    printed: "(helper)"
+    label: "Depreciation other than the section 179 expense deduction (Form 4562, line 22 without line 12)"
+    type: NonNegDollars
+    expr: {op: sum, of: [sc.f14, sc.f17, sc.f19_y3, sc.f19_y5, sc.f19_y7, sc.f19_y10, sc.f19_y15, sc.f19_y20, sc.f19_y15sl, sc.f28]}
+    note: "Form 4562, line 22 adds line 12, lines 14 through 17, lines 19 and 20, and line 21 (= line 28). Lines 15, 16 and 20 are outside the computed scope, so they are not included here. Line 12 is added on Schedule C line 13 as sc.s179_allowed."
+
+  - id: sc.s179_allowed
+    printed: "12 (sc.s179_allowed)"
+    label: "Section 179 expense deduction for this business"
+    type: NonNegDollars
+    expr: {op: copy, from: s179.line12}
+    refuses: [s179.multi]
+    note: "i4562 line 12 allows the taxpayer-level deduction to be allocated among businesses in any manner. I encode only the case with one business taking the whole deduction, and refuse when an allocation among more than one business is needed."
+
   - id: sc.line13
     printed: "13 (sc.line13)"
     label: "Depreciation and section 179 expense deduction (not included in Part III)"
     type: NonNegDollars
-    expr: {op: sum, of: [sc.s179_allowed, sc.h_line13_pre179]}
-    note: "Form 4562 line 22 adds line 12, lines 14 through 17, lines 19 and 20 column (g), and line 21. The tool computes lines 12, 14, 17, 19a-19f and 21 (= line 28). Lines 15, 16 and 20 are outside the asset model and are not added. The section 179 part (line 12) is kept separate, so line 28 can be figured without it."
+    expr: {op: sum, of: [sc.h_dep_other, sc.s179_allowed]}
+
+  - id: sc.h_veh_lease
+    printed: "(helper)"
+    label: "Business part of vehicle lease payments"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: scveh, field: scveh.line20a}
 
   - id: sc.line20a
     printed: "20a"
@@ -447,11 +773,23 @@ lines:
     type: NonNegDollars
     expr: {op: sum, of: [sc.rent_equipment, sc.h_veh_lease]}
 
+  - id: sc.h_meals_50_ded
+    printed: "(helper)"
+    label: "50% of the meals subject to the 50% limit"
+    type: NonNegDollars
+    expr: {op: multiply_rate, amount: sc.meals_50, rate: {param: sc.meals_rate}}
+
+  - id: sc.h_meals_80_ded
+    printed: "(helper)"
+    label: "80% of the meals under the DOT hours of service limits"
+    type: NonNegDollars
+    expr: {op: multiply_rate, amount: sc.meals_80, rate: {param: sc.meals_rate_dot}}
+
   - id: sc.line24b
     printed: "24b"
     label: "Deductible meals"
     type: NonNegDollars
-    expr: {op: sum, of: [sc.h_meals50_ded, sc.h_meals80_ded]}
+    expr: {op: sum, of: [sc.h_meals_50_ded, sc.h_meals_80_ded, sc.meals_100]}
 
   - id: sc.line27a
     printed: "27a"
@@ -478,12 +816,37 @@ lines:
     type: Dollars
     expr: {op: subtract, from: sc.line7, take: sc.line28}
 
+  - id: sc.h_line28_pre179
+    printed: "(helper)"
+    label: "Line 28 without the section 179 expense deduction"
+    type: NonNegDollars
+    expr: {op: sum, of: [sc.line8, sc.line9, sc.line10, sc.line11, sc.line12, sc.h_dep_other, sc.line14, sc.line15, sc.line16a, sc.line16b, sc.line17, sc.line18, sc.line19, sc.line20a, sc.line20b, sc.line21, sc.line22, sc.line23, sc.line24a, sc.line24b, sc.line25, sc.line26, sc.line27a, sc.line27b]}
+
+  - id: sc.h_line29_pre179
+    printed: "(helper)"
+    label: "Line 29 without the section 179 expense deduction"
+    type: Dollars
+    expr: {op: subtract, from: sc.line7, take: sc.h_line28_pre179}
+
+  # ---- Simplified Method Worksheet ----
   - id: sc.line3a
     printed: "3a"
     label: "Maximum allowable amount (per square foot)"
     type: NonNegDollars
     expr: {op: param, ref: sc.ho_rate}
-    note: "The Simplified Method Worksheet has line 3b (1.0 unless a daycare facility is not used exclusively) and line 3c (3a times 3b). The tool covers only the exclusive-use case, so 3b = 1.0 and 3c equals 3a. Line 4 therefore multiplies line 2 by line 3a. A daycare facility used non-exclusively is left to the sc.ho_other screen."
+
+  - id: sc.h_ho_cap
+    printed: "(helper)"
+    label: "300 square feet"
+    type: Count
+    expr: {op: param, ref: sc.ho_max_sqft}
+
+  - id: sc.h_ho_line2
+    printed: "(helper)"
+    label: "Allowable square footage for the qualified business use. Don't enter more than 300 square feet (worksheet line 2)"
+    type: Count
+    expr: {op: smaller_of, of: [sc.ho_sqft, sc.h_ho_cap]}
+    note: "Line 2 is the smaller of the square feet actually used or 300 when the same area was used all year. Part-year use, shared space and daycare (line 3b other than 1.0) are taken as covered by the sc.ho_other screen. Line 3c is therefore line 3a times 1.0, which is line 3a."
 
   - id: sc.ho_line4
     printed: "4 (sc.ho_line4)"
@@ -496,14 +859,35 @@ lines:
     label: "Gross income limitation (Schedule C, line 29)"
     type: Dollars
     expr: {op: copy, from: sc.line29}
-    note: "Instructions lines A-E: line A is Schedule C line 29. Lines B and D (gains and losses on Form 8949/Schedule D or Form 4797 tied to the business or the home) are taken as zero. Income from a place of business other than the home is left to the sc.ho_other screen."
+    note: "Lines A to E of the instructions also add home-use gains (Form 8949, Form 4797) and subtract unrelated losses. They also require an allocation when part of the income comes from elsewhere. Those cases are taken as covered by the sc.ho_other screen, so line E equals line A (Schedule C, line 29)."
+
+  - id: sc.h_ho_min
+    printed: "(helper)"
+    label: "The smaller of line 1 or line 4"
+    type: Dollars
+    expr: {op: smaller_of, of: [sc.ho_line1, sc.ho_line4]}
 
   - id: sc.ho_line5
     printed: "5 (sc.ho_line5)"
-    label: "Allowable expenses using the simplified method. Enter the smaller of line 1 or line 4"
+    label: "Allowable expenses using the simplified method. Enter the smaller of line 1 or line 4. If zero or less, enter -0-"
     type: NonNegDollars
-    expr: {op: smaller_of, of: [sc.h_ho_line1_pos, sc.ho_line4]}
-    note: "'If zero or less, enter -0-' is applied by flooring line 1 at zero before taking the smaller. Line 4 is never negative, so the result is the same."
+    expr: {op: subtract_floor0, from: sc.h_ho_min, take: {const: 0}}
+
+  - id: sc.h_ho_multi
+    printed: "(helper)"
+    label: "This person claims the business use of the home for more than one Schedule C (300 square feet shared among businesses)"
+    type: Bool
+    expr: {op: test, gt: [person.ho_count, {param: sc.one}]}
+
+  - id: sc.h_ho_interact
+    printed: "(helper)"
+    label: "The gross income limitation reduces the home deduction while a section 179 deduction is taken (Pub. 946, two different taxable income limits)"
+    type: Bool
+    expr:
+      op: test
+      all:
+        - {op: test, lt: [sc.line29, sc.ho_line4]}
+        - {op: test, gt: [sc.s179_allowed, {const: 0}]}
 
   - id: sc.line30
     printed: "30"
@@ -514,15 +898,83 @@ lines:
       alternatives:
         - {guard: {op: test, eq: [sc.ho_uses, {const: true}]}, then: sc.ho_line5}
         - {guard: {op: test, eq: [sc.ho_uses, {const: false}]}, then: sc.h_zero}
-    refuses: [sc.h_ho_screened]
+    refuses: [sc.ho_other, sc.h_ho_multi, sc.h_ho_interact]
+    note: "The home-office gross income limit depends on line 29, which includes the section 179 deduction. The section 179 business income limit depends on net profit after the home-office deduction. Pub. 946 resolves this with an eight-step procedure. I compute only the cases where the two limits cannot interact, and refuse otherwise (sc.h_ho_interact)."
 
   - id: sc.line31
     printed: "31"
     label: "Net profit or (loss). Subtract line 30 from line 29"
     type: Dollars
     expr: {op: subtract, from: sc.line29, take: sc.line30}
-    refuses: [sc.h_screened]
+    refuses: [sc.h_passive_activity]
 
+  - id: sc.h_passive_activity
+    printed: "(helper)"
+    label: "Line G answered No (did not materially participate); the passive activity rules (Form 8582) apply"
+    type: Bool
+    expr: {op: test, eq: [sc.passive, {const: false}]}
+    note: "It is open whether sc.passive holds the answer to line G. I read it as true = Yes, materially participated. A No answer sends the filer to Form 8582 even with a profit, so it is refused."
+
+  - id: sc.h_ho_pre_floor
+    printed: "(helper)"
+    label: "Line 29 without the section 179 deduction; if zero or less, zero"
+    type: NonNegDollars
+    expr: {op: subtract_floor0, from: sc.h_line29_pre179, take: {const: 0}}
+
+  - id: sc.h_ho_pre_min
+    printed: "(helper)"
+    label: "Simplified method amount figured with line 29 without the section 179 deduction"
+    type: NonNegDollars
+    expr: {op: smaller_of, of: [sc.ho_line4, sc.h_ho_pre_floor]}
+
+  - id: sc.h_ho_pre
+    printed: "(helper)"
+    label: "Line 30 figured without the section 179 deduction"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - {guard: {op: test, eq: [sc.ho_uses, {const: true}]}, then: sc.h_ho_pre_min}
+        - {guard: {op: test, eq: [sc.ho_uses, {const: false}]}, then: sc.h_zero}
+
+  - id: sc.line31_pre179
+    printed: "(helper)"
+    label: "Line 31 without the section 179 expense deduction"
+    type: Dollars
+    expr: {op: subtract, from: sc.h_line29_pre179, take: sc.h_ho_pre}
+    note: "Equals line 31 plus the section 179 deduction in every case not refused at line 30. Either no section 179 deduction is taken, or line 4 is not limited by line 29."
+
+  - id: sc.h_loss
+    printed: "(helper)"
+    label: "Line 31 is a loss"
+    type: Bool
+    expr: {op: test, lt: [sc.line31, {const: 0}]}
+
+  - id: sc.h_not_at_risk
+    printed: "(helper)"
+    label: "A loss and some investment is not at risk (box 32b); Form 6198 required"
+    type: Bool
+    expr:
+      op: test
+      all:
+        - {op: test, eq: [sc.h_loss, {const: true}]}
+        - {op: test, eq: [sc.at_risk, {const: false}]}
+
+  - id: sc.result
+    printed: "(helper)"
+    label: "The amount for Schedule 1, line 3 and Schedule SE, line 2"
+    type: Dollars
+    expr: {op: copy, from: sc.line31}
+    refuses: [sc.statutory, sc.h_not_at_risk]
+    note: "A statutory employee's line 31 goes to Schedule 1 but not to Schedule SE, so one amount cannot serve both. That case is refused. A loss with box 32b is refused for Form 6198."
+
+  - id: sc.profit_pos
+    printed: "(helper)"
+    label: "Net profit of this business (zero for a loss)"
+    type: NonNegDollars
+    expr: {op: larger_of, of: [sc.line31, sc.h_zero]}
+
+  # ---- Part III ----
   - id: sc.line40
     printed: "40"
     label: "Add lines 35 through 39"
@@ -536,18 +988,7 @@ lines:
     expr: {op: subtract, from: sc.line40, take: sc.line41}
     refuses: [sc.inventory_other]
 
-  - id: sc.s179_allowed
-    printed: "12 (sc.s179_allowed)"
-    label: "Section 179 expense deduction for this business"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - {guard: {op: test, eq: [s179.differs, {const: false}]}, then: sc.h_s179_elected}
-        - {guard: {op: test, eq: [s179.differs, {const: true}]}, then: s179.line12}
-    refuses: [s179.multi]
-    note: "Form 4562 instructions, line 12: the limits apply to the taxpayer, and a deduction may be allocated among businesses. Reading chosen: if the return's line 12 equals the amounts elected, each business gets its own elected cost (Form 4562 line 6 plus line 29). If it differs, the return's line 12 is used, which is valid only for a single business. Allocation among several businesses is refused through s179.multi."
-
+  # ---- Form 7206 ----
   - id: sc.f7206_line2
     printed: "2 (sc.f7206_line2)"
     label: "Qualified long-term care insurance (the smaller of payments or the age limit, for each person covered)"
@@ -565,14 +1006,25 @@ lines:
     label: "Net profit from the trade or business under which the insurance plan is established"
     type: NonNegDollars
     expr: {op: copy, from: sc.profit_pos}
-    note: "'Net profit' is read as zero for a loss. Other earned income and the optional-method amount are outside the tool."
 
   - id: sc.f7206_line5
     printed: "5 (sc.f7206_line5)"
     label: "Total of all net profits from Schedule C, line 31"
     type: NonNegDollars
     expr: {op: copy, from: person.positive_profits}
-    note: "Uses this person's total of positive Schedule C profits ('Don't include any net losses'). Schedule F and K-1 amounts are outside the tool."
+
+  - id: sc.h_f7206_has
+    printed: "(helper)"
+    label: "Line 4 is more than zero"
+    type: Bool
+    expr: {op: test, gt: [sc.f7206_line4, {const: 0}]}
+
+  - id: sc.h_f7206_line7_pos
+    printed: "(helper)"
+    label: "Schedule 1, line 15, times line 6 (line 4 divided by line 5)"
+    type: NonNegDollars
+    expr: {op: prorate, amount: person.se_line13, part: sc.f7206_line4, whole: sc.f7206_line5, places: 4}
+    note: "Line 6 (divide line 4 by line 5) states no rounding; I chose four decimal places. Schedule 1, line 15 is read as this person's deduction (Schedule SE, line 13), since the form is one person's."
 
   - id: sc.f7206_line7
     printed: "7 (sc.f7206_line7)"
@@ -583,13 +1035,20 @@ lines:
       alternatives:
         - {guard: {op: test, eq: [sc.h_f7206_has, {const: true}]}, then: sc.h_f7206_line7_pos}
         - {guard: {op: test, eq: [sc.h_f7206_has, {const: false}]}, then: sc.h_zero}
-    note: "Line 6 (line 4 divided by line 5) is merged into the prorate on the helper line. When line 4 is zero, line 6 is zero, and line 5 may be zero, so the division is skipped."
 
   - id: sc.f7206_line8
     printed: "8 (sc.f7206_line8)"
     label: "Subtract line 7 from line 4"
     type: NonNegDollars
-    expr: {op: subtract, from: sc.f7206_line4, take: sc.f7206_line7}
+    expr: {op: subtract_floor0, from: sc.f7206_line4, take: sc.f7206_line7}
+    note: "The form gives no zero floor, but line 7 is a fraction of the self-employment tax deduction and cannot exceed line 4. The floor only keeps the type non-negative."
+
+  - id: sc.h_f7206_line9_pos
+    printed: "(helper)"
+    label: "This person's SEP or SIMPLE deduction times line 4 divided by line 5"
+    type: NonNegDollars
+    expr: {op: prorate, amount: person.plan_deduction, part: sc.f7206_line4, whole: sc.f7206_line5, places: 4}
+    note: "The form does not say how to find the part of Schedule 1, line 16 attributable to this business. I allocate this person's plan deduction in proportion to net profit, as line 7 does."
 
   - id: sc.f7206_line9
     printed: "9 (sc.f7206_line9)"
@@ -600,21 +1059,27 @@ lines:
       alternatives:
         - {guard: {op: test, eq: [sc.h_f7206_has, {const: true}]}, then: sc.h_f7206_line9_pos}
         - {guard: {op: test, eq: [sc.h_f7206_has, {const: false}]}, then: sc.h_zero}
-    note: "The form does not say how to attribute line 16 to a business. Reading chosen: the person's SEP or SIMPLE deduction times this business's share of the person's net profits (line 4 divided by line 5), the same allocation line 7 uses."
 
   - id: sc.f7206_line10
     printed: "10 (sc.f7206_line10)"
     label: "Subtract line 9 from line 8"
     type: NonNegDollars
     expr: {op: subtract_floor0, from: sc.f7206_line8, take: sc.f7206_line9}
-    note: "The printed line is a plain subtraction. It is floored at zero because a negative result would make line 14 a negative deduction."
+    note: "The form gives no zero floor. I floor at zero so the line stays non-negative; the deduction on line 14 cannot be less than zero."
 
   - id: sc.f7206_line13
     printed: "13 (sc.f7206_line13)"
     label: "Subtract line 12 from line 10"
     type: NonNegDollars
     expr: {op: subtract, from: sc.f7206_line10, take: {const: 0}}
-    note: "Line 12 (Form 2555 amount) is zero in this tool's scope, and line 11 (S corporation) does not apply."
+    refuses: [sa.excluded_income]
+    note: "Line 12 (Form 2555, line 45) is computed only in the case with no Form 2555. Line 11 (S corporation wages) does not apply to a Schedule C business."
+
+  - id: sc.h_f7206_min
+    printed: "(helper)"
+    label: "The smaller of line 3 or line 13"
+    type: NonNegDollars
+    expr: {op: smaller_of, of: [sc.f7206_line3, sc.f7206_line13]}
 
   - id: sc.f7206_line14
     printed: "14 (sc.f7206_line14)"
@@ -625,373 +1090,20 @@ lines:
       alternatives:
         - {guard: {op: test, eq: [sc.hi_uses, {const: true}]}, then: sc.h_f7206_min}
         - {guard: {op: test, eq: [sc.hi_uses, {const: false}]}, then: sc.h_zero}
-    refuses: [sc.h_hi_screened]
+    refuses: [sc.hi_screen]
+
+  # ---- Form 8995 line 1(c) ----
+  - id: sc.h_qbi_ded
+    printed: "(helper)"
+    label: "Deductions attributable to this business: deductible part of self-employment tax, self-employed retirement plan contributions and self-employed health insurance deduction"
+    type: NonNegDollars
+    expr: {op: sum, of: [sc.f7206_line7, sc.f7206_line9, sc.f7206_line14]}
+    note: "i8995 says QBI accounts for the deductible part of self-employment tax, self-employed health insurance and retirement contributions attributable to the business, but gives no allocation rule. I use the profit-share allocations of Form 7206, lines 7 and 9, which give zero for a business with a loss."
 
   - id: sc.line1(c)
     printed: "1(c)"
     label: "Qualified business income or (loss) of this business"
     type: Dollars
-    expr: {op: subtract, from: sc.line31, take: sc.h_qbi_ded}
-    note: "i8995: QBI accounts for the deductible part of self-employment tax, the self-employed health insurance deduction and qualified retirement plan contributions attributable to the business. The SE tax and plan deductions are attributed by profit share (Form 7206 lines 7 and 9). The health insurance deduction is this business's Form 7206 line 14."
-
-  # ---- required intermediate values ----
-  - id: sc.one
-    printed: "(helper)"
-    label: "One business"
-    type: Count
-    expr: {op: param, ref: sc.one}
-
-  - id: sc.line31_pre179
-    printed: "(helper)"
-    label: "Line 31 without the section 179 expense deduction"
-    type: Dollars
-    expr: {op: subtract, from: sc.h_line29_pre179, take: sc.h_ho_hyp}
-    note: "Pub. 946 'Two different taxable income limits', Steps 1-5. Step 1 is line 29 without section 179 and without the home office deduction. Step 2's hypothetical section 179 is taken as this business's elected cost (when income is lower, the room is floored at zero either way). Step 4's hypothetical home office deduction is the smaller of worksheet line 4 or the remaining room. Step 5 is the result. Carryover from 2024 and wages are not used in this per-business step."
-
-  - id: sc.result
-    printed: "(helper)"
-    label: "The amount for Schedule 1, line 3 and Schedule SE, line 2"
-    type: Dollars
-    expr: {op: copy, from: sc.line31}
-    refuses: [sc.h_screened, sc.h_atrisk_bad]
-
-  - id: sc.f6
-    printed: "(helper)"
-    label: "Section 179 elected on property other than listed property"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: asset, field: asset.s179_2025, where: {op: test, eq: [asset.listed, {const: false}]}}
-
-  - id: sc.f14
-    printed: "(helper)"
-    label: "Special allowance on property other than listed property"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: asset, field: asset.bonus_2025, where: {op: test, eq: [asset.listed, {const: false}]}}
-
-  - id: sc.f17
-    printed: "(helper)"
-    label: "MACRS on earlier property other than listed property"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: asset, field: asset.dep_prior, where: {op: test, eq: [asset.listed, {const: false}]}}
-
-  - id: sc.f19_y3
-    printed: "(helper)"
-    label: "MACRS on 2025 property of period y3 other than listed property"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: asset, field: asset.dep_2025, where: {op: test, all: [{op: test, eq: [asset.listed, {const: false}]}, {op: test, eq: [asset.period, {const: "y3"}]}]}}
-
-  - id: sc.f19_y5
-    printed: "(helper)"
-    label: "MACRS on 2025 property of period y5 other than listed property"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: asset, field: asset.dep_2025, where: {op: test, all: [{op: test, eq: [asset.listed, {const: false}]}, {op: test, eq: [asset.period, {const: "y5"}]}]}}
-
-  - id: sc.f19_y7
-    printed: "(helper)"
-    label: "MACRS on 2025 property of period y7 other than listed property"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: asset, field: asset.dep_2025, where: {op: test, all: [{op: test, eq: [asset.listed, {const: false}]}, {op: test, eq: [asset.period, {const: "y7"}]}]}}
-
-  - id: sc.f19_y10
-    printed: "(helper)"
-    label: "MACRS on 2025 property of period y10 other than listed property"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: asset, field: asset.dep_2025, where: {op: test, all: [{op: test, eq: [asset.listed, {const: false}]}, {op: test, eq: [asset.period, {const: "y10"}]}]}}
-
-  - id: sc.f19_y15
-    printed: "(helper)"
-    label: "MACRS on 2025 property of period y15 other than listed property"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: asset, field: asset.dep_2025, where: {op: test, all: [{op: test, eq: [asset.listed, {const: false}]}, {op: test, eq: [asset.period, {const: "y15"}]}]}}
-
-  - id: sc.f19_y20
-    printed: "(helper)"
-    label: "MACRS on 2025 property of period y20 other than listed property"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: asset, field: asset.dep_2025, where: {op: test, all: [{op: test, eq: [asset.listed, {const: false}]}, {op: test, eq: [asset.period, {const: "y20"}]}]}}
-
-  - id: sc.f19_y15sl
-    printed: "(helper)"
-    label: "MACRS on 2025 property of period y15sl other than listed property"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: asset, field: asset.dep_2025, where: {op: test, all: [{op: test, eq: [asset.listed, {const: false}]}, {op: test, eq: [asset.period, {const: "y15sl"}]}]}}
-
-  - id: sc.f25
-    printed: "(helper)"
-    label: "Line 25 for this business"
-    type: NonNegDollars
-    expr: {op: sum, of: [sc.h_f25_assets, sc.h_f25_veh]}
-
-  - id: sc.f26h
-    printed: "(helper)"
-    label: "Column (h), line 26, for this business"
-    type: NonNegDollars
-    expr: {op: sum, of: [sc.h_f26_assets, sc.h_f26_veh]}
-    note: "The per-entry column (h) amounts (asset.dep_listed, scveh.macrs) are those the entries compute. Listed property used 50% or less (line 27) is included in the same per-entry column (h) amount, so lines 26 and 27 are carried together here."
-
-  - id: sc.f28
-    printed: "(helper)"
-    label: "Line 28 for this business"
-    type: NonNegDollars
-    expr: {op: sum, of: [sc.f25, sc.f26h]}
-
-  - id: sc.f29
-    printed: "(helper)"
-    label: "Line 29 for this business"
-    type: NonNegDollars
-    expr: {op: sum, of: [sc.h_f29_assets, sc.h_f29_veh]}
-
-  - id: sc.mq_q4
-    printed: "(helper)"
-    label: "mq_q4 of this business"
-    type: NonNegDollars
-    expr: {op: sum, of: [sc.h_mq_q4_a, sc.h_mq_q4_v]}
-
-  - id: sc.mq_total
-    printed: "(helper)"
-    label: "mq_total of this business"
-    type: NonNegDollars
-    expr: {op: sum, of: [sc.h_mq_total_a, sc.h_mq_total_v]}
-
-  - id: sc.cost179
-    printed: "(helper)"
-    label: "cost179 of this business"
-    type: NonNegDollars
-    expr: {op: sum, of: [sc.h_cost179_a, sc.h_cost179_v]}
-
-  - id: sc.profit_pos
-    printed: "(helper)"
-    label: "Net profit of this business (zero for a loss)"
-    type: NonNegDollars
-    expr: {op: subtract_floor0, from: sc.line31, take: {const: 0}}
-
-  # ---- other helpers ----
-  - id: sc.h_zero
-    printed: "(helper)"
-    label: "Zero"
-    type: NonNegDollars
-    expr: {op: param, ref: sales.zero}
-
-  - id: sc.h_not_material
-    printed: "(helper)"
-    label: "Line G answered No: you did not materially participate (passive activity)"
-    type: Bool
-    expr: {op: test, eq: [sc.passive, {const: false}]}
-    note: "sc.passive holds the line G answer ('Did you materially participate'). True means Yes. A No answer makes the activity passive (Form 8582), which the tool refuses."
-
-  - id: sc.h_screened
-    printed: "(helper)"
-    label: "Something on this Schedule C is outside this tool"
-    type: Bool
-    expr: {op: test, any: [{op: test, eq: [sc.statutory, {const: true}]}, {op: test, eq: [sc.h_not_material, {const: true}]}, {op: test, eq: [sc.spouse_owned, {const: true}]}, {op: test, eq: [sc.method_other, {const: true}]}, {op: test, eq: [sc.special, {const: true}]}]}
-
-  - id: sc.h_loss
-    printed: "(helper)"
-    label: "Line 31 is a loss"
-    type: Bool
-    expr: {op: test, lt: [sc.line31, {const: 0}]}
-
-  - id: sc.h_atrisk_bad
-    printed: "(helper)"
-    label: "A loss with some investment not at risk (box 32b; Form 6198 required)"
-    type: Bool
-    expr: {op: test, all: [{op: test, eq: [sc.h_loss, {const: true}]}, {op: test, eq: [sc.at_risk, {const: false}]}]}
-
-  - id: sc.h_veh_lease
-    printed: "(helper)"
-    label: "Business part of vehicle lease payments"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: scveh, field: scveh.line20a}
-
-  - id: sc.h_meals50_ded
-    printed: "(helper)"
-    label: "50% of the meals subject to the 50% limit"
-    type: NonNegDollars
-    expr: {op: multiply_rate, amount: sc.meals_50, rate: {param: sc.meals_rate}}
-
-  - id: sc.h_meals80_ded
-    printed: "(helper)"
-    label: "80% of the meals under the DOT hours of service limits"
-    type: NonNegDollars
-    expr: {op: multiply_rate, amount: sc.meals_80, rate: {param: sc.meals_rate_dot}}
-
-  - id: sc.h_line13_pre179
-    printed: "(helper)"
-    label: "Line 13 without the section 179 expense deduction (Form 4562 lines 14, 17, 19 and 21)"
-    type: NonNegDollars
-    expr: {op: sum, of: [sc.f14, sc.f17, sc.f19_y3, sc.f19_y5, sc.f19_y7, sc.f19_y10, sc.f19_y15, sc.f19_y20, sc.f19_y15sl, sc.f28]}
-
-  - id: sc.h_s179_elected
-    printed: "(helper)"
-    label: "Section 179 elected for this business's 2025 property (Form 4562 lines 6 and 7, column (c))"
-    type: NonNegDollars
-    expr: {op: sum, of: [sc.f6, sc.f29]}
-
-  - id: sc.h_line28_pre179
-    printed: "(helper)"
-    label: "Line 28 without the section 179 expense deduction"
-    type: NonNegDollars
-    expr: {op: sum, of: [sc.line8, sc.line9, sc.line10, sc.line11, sc.line12, sc.h_line13_pre179, sc.line14, sc.line15, sc.line16a, sc.line16b, sc.line17, sc.line18, sc.line19, sc.line20a, sc.line20b, sc.line21, sc.line22, sc.line23, sc.line24a, sc.line24b, sc.line25, sc.line26, sc.line27a, sc.line27b]}
-
-  - id: sc.h_line29_pre179
-    printed: "(helper)"
-    label: "Line 29 without the section 179 expense deduction"
-    type: Dollars
-    expr: {op: subtract, from: sc.line7, take: sc.h_line28_pre179}
-
-  - id: sc.h_ho_room
-    printed: "(helper)"
-    label: "Pub. 946 Step 3: line 29 without section 179 less the hypothetical section 179 deduction; if zero or less, zero"
-    type: NonNegDollars
-    expr: {op: subtract_floor0, from: sc.h_line29_pre179, take: sc.h_s179_elected}
-
-  - id: sc.h_ho_line4_used
-    printed: "(helper)"
-    label: "Simplified method line 4 when the home office deduction is claimed, otherwise zero"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - {guard: {op: test, eq: [sc.ho_uses, {const: true}]}, then: sc.ho_line4}
-        - {guard: {op: test, eq: [sc.ho_uses, {const: false}]}, then: sc.h_zero}
-
-  - id: sc.h_ho_hyp
-    printed: "(helper)"
-    label: "Pub. 946 Step 4: hypothetical home office deduction"
-    type: NonNegDollars
-    expr: {op: smaller_of, of: [sc.h_ho_line4_used, sc.h_ho_room]}
-
-  - id: sc.h_ho_max_sqft
-    printed: "(helper)"
-    label: "300 square feet"
-    type: Count
-    expr: {op: param, ref: sc.ho_max_sqft}
-
-  - id: sc.h_ho_line2
-    printed: "(helper)"
-    label: "Simplified method line 2: the smaller of the square feet actually used or 300"
-    type: Count
-    expr: {op: smaller_of, of: [sc.ho_sqft, sc.h_ho_max_sqft]}
-    note: "Line 2 instructions cover use of the same area for the entire year. Part-year use, area changes, shared space and qualified joint ventures are left to the sc.ho_other screen."
-
-  - id: sc.h_ho_line1_pos
-    printed: "(helper)"
-    label: "Simplified method line 1; if zero or less, zero"
-    type: NonNegDollars
-    expr: {op: subtract_floor0, from: sc.ho_line1, take: {const: 0}}
-
-  - id: sc.h_ho_screened
-    printed: "(helper)"
-    label: "The home office deduction is outside the simplified method this tool computes"
-    type: Bool
-    expr: {op: test, all: [{op: test, eq: [sc.ho_uses, {const: true}]}, {op: test, eq: [sc.ho_other, {const: true}]}]}
-
-  - id: sc.h_f25_assets
-    printed: "(helper)"
-    label: "Special allowance on listed property other than vehicles"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: asset, field: asset.bonus_2025, where: {op: test, eq: [asset.listed, {const: true}]}}
-
-  - id: sc.h_f25_veh
-    printed: "(helper)"
-    label: "Special allowance on vehicles"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: scveh, field: scveh.bonus}
-
-  - id: sc.h_f26_assets
-    printed: "(helper)"
-    label: "Column (h) of listed property other than vehicles"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: asset, field: asset.dep_listed, where: {op: test, eq: [asset.listed, {const: true}]}}
-
-  - id: sc.h_f26_veh
-    printed: "(helper)"
-    label: "Column (h) of vehicles"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: scveh, field: scveh.macrs}
-
-  - id: sc.h_f29_assets
-    printed: "(helper)"
-    label: "Section 179 elected on listed property other than vehicles"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: asset, field: asset.s179_2025, where: {op: test, eq: [asset.listed, {const: true}]}}
-
-  - id: sc.h_f29_veh
-    printed: "(helper)"
-    label: "Section 179 elected on vehicles"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: scveh, field: scveh.s179_2025}
-
-  - id: sc.h_mq_q4_a
-    printed: "(helper)"
-    label: "mq_q4 of this business's property"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: asset, field: asset.mq_q4}
-
-  - id: sc.h_mq_q4_v
-    printed: "(helper)"
-    label: "mq_q4 of this business's vehicles"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: scveh, field: scveh.mq_q4}
-
-  - id: sc.h_mq_total_a
-    printed: "(helper)"
-    label: "mq_total of this business's property"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: asset, field: asset.mq_total}
-
-  - id: sc.h_mq_total_v
-    printed: "(helper)"
-    label: "mq_total of this business's vehicles"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: scveh, field: scveh.mq_total}
-
-  - id: sc.h_cost179_a
-    printed: "(helper)"
-    label: "cost179 of this business's property"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: asset, field: asset.cost179}
-
-  - id: sc.h_cost179_v
-    printed: "(helper)"
-    label: "cost179 of this business's vehicles"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: scveh, field: scveh.cost179}
-
-  - id: sc.h_f7206_has
-    printed: "(helper)"
-    label: "Form 7206 line 4 is more than zero"
-    type: Bool
-    expr: {op: test, gt: [sc.f7206_line4, {const: 0}]}
-
-  - id: sc.h_f7206_line7_pos
-    printed: "(helper)"
-    label: "This person's Schedule 1 line 15 times line 4 divided by line 5 (lines 6 and 7)"
-    type: NonNegDollars
-    expr: {op: prorate, amount: person.se_line13, part: sc.f7206_line4, whole: sc.f7206_line5, places: 4}
-    note: "Line 6 'Divide line 4 by line 5' states no rounding. Four decimal places (a percentage to two decimals) is chosen. The person's own Schedule SE line 13 is used as their part of Schedule 1 line 15."
-
-  - id: sc.h_f7206_line9_pos
-    printed: "(helper)"
-    label: "This person's SEP or SIMPLE deduction times line 4 divided by line 5"
-    type: NonNegDollars
-    expr: {op: prorate, amount: person.plan_deduction, part: sc.f7206_line4, whole: sc.f7206_line5, places: 4}
-
-  - id: sc.h_f7206_min
-    printed: "(helper)"
-    label: "The smaller of line 3 or line 13"
-    type: NonNegDollars
-    expr: {op: smaller_of, of: [sc.f7206_line3, sc.f7206_line13]}
-
-  - id: sc.h_hi_screened
-    printed: "(helper)"
-    label: "This health insurance deduction is outside this tool"
-    type: Bool
-    expr: {op: test, all: [{op: test, eq: [sc.hi_uses, {const: true}]}, {op: test, eq: [sc.hi_screen, {const: true}]}]}
-
-  - id: sc.h_qbi_ded
-    printed: "(helper)"
-    label: "Deductions attributable to this business: deductible part of self-employment tax, SEP/SIMPLE contributions and self-employed health insurance"
-    type: NonNegDollars
-    expr: {op: sum, of: [sc.f7206_line7, sc.f7206_line9, sc.f7206_line14]}
+    expr: {op: subtract, from: sc.result, take: sc.h_qbi_ded}
 ```
 ```

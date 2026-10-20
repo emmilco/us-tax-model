@@ -1,7 +1,7 @@
 # Form 4562 — one item of depreciable property (other than a vehicle) of a business
 
 - Document: `asset` (form, tax year 2025)
-- Collection: keyed entries within sc; [i4562] p. 9, Lines 19a Through 19j, and p. 1, Who Must File, "File a separate Form 4562 for each business or activity" (2025; sha256 5c1c95b7)
+- Collection: keyed entries within sc; [i4562] p. 9, Lines 19a Through 19j, and p. 2, Who Must File, "File a separate Form 4562 for each business or activity" (2025; sha256 5c1c95b7)
 - Note: One entry per item of property other than a vehicle (vehicles are scveh entries), placed in service 2005 to 2025 and depreciated by the GDS percentage tables; its lines feed Form 4562 lines 6, 14, 17, 19 and, for listed property, lines 25, 26 and 29 of its business. Refused: the classes outside this tool, dispositions, exchanges, real property, ADS and other methods, basis adjustments, amortization, listed property used 50% or less for business, and the other items of the screen.
 
 ## (helper) — `asset.zero`
@@ -101,7 +101,7 @@
 - **Authored helper label:** Is this listed property?
 - **Encoded (Bool):** Input — Is this listed property: property used for entertainment or recreation (such as photographic, phonographic, communication or video recording equipment) that is not used exclusively in your business or at your regular business establishment, or a computer placed in service before 2018 that is not used exclusively at your regular business establishment?
 - Expr: `{"op":"input","source":"Is this listed property: property used for entertainment or recreation (such as photographic, phonographic, communication or video recording equipment) that is not used exclusively in your business or at your regular business establishment, or a computer placed in service before 2018 that is not used exclusively at your regular business establishment?"}`
-- Cite: [i4562] p. 2, Listed Property and its Exceptions; p. 13, Part V (2025; sha256 5c1c95b7)
+- Cite: [i4562] p. 3, Listed Property and its Exceptions; p. 13, Part V (2025; sha256 5c1c95b7)
 
 ## (helper) — `asset.half`
 
@@ -194,7 +194,7 @@
 - **Encoded (NonNegDollars):** Subtract line 6(c) from column (c). If zero or less, enter -0-.
 - **Refusal:** when asset.s179_bad is true, cannot complete Section 179 election above the business cost, or on property used 50% or less in the business. A section 179 election must not exceed the business cost and needs more than 50% business use. Cite: [i4562] p. 3, Part I; p. 5, Line 6, Column (c) (2025; sha256 5c1c95b7)
 - Expr: `{"from":"asset.basis","op":"subtract_floor0","take":"asset.s179"}`
-- Cite: [i4562] p. 6, How to figure the allowance, "subtract from the business/investment portion of the cost or other basis of the property any credits and deductions allocable to the property ... Section 179 expense deduction" (2025; sha256 5c1c95b7)
+- Cite: [i4562] p. 7, How to figure the allowance, "subtract from the business/investment portion of the cost or other basis of the property any credits and deductions allocable to the property ... Section 179 expense deduction" (2025; sha256 5c1c95b7)
 
 ## (helper) — `asset.after_jan19`
 
@@ -245,7 +245,7 @@
 - **Encoded (NonNegDollars):** Multiply helper "Basis less the section 179 election" by helper "40% special allowance".
 - **Refusal:** when asset.bonus_mixed is true, cannot complete Different special allowance elections within one class of property. An election that is not the same for the whole class is outside this tool. Cite: [i4562] p. 7, Election out (2025; sha256 5c1c95b7)
 - Expr: `{"amount":"asset.after179","op":"multiply_rate","rate":"asset.rate40"}`
-- Cite: [i4562] p. 6, How to figure the allowance, "multiplying the depreciable basis of the property by the applicable percentage" (2025; sha256 5c1c95b7)
+- Cite: [i4562] p. 7, How to figure the allowance, "multiplying the depreciable basis of the property by the applicable percentage" (2025; sha256 5c1c95b7)
 
 ## (helper) — `asset.bonus_fullcase`
 

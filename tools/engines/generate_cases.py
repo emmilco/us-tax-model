@@ -288,7 +288,7 @@ def make_joint(case, j):
 
 
 SC_ZERO = ["line2", "line6", "line8", "line10", "line11", "line14", "line15", "line16a", "line16b", "line17", "line18", "line19",
-           "rent_equipment", "line20b", "line21", "line22", "line23", "line24a", "meals_50", "meals_80", "line25", "line26", "line48",
+           "rent_equipment", "line20b", "line21", "line22", "line23", "line24a", "meals_50", "meals_80", "meals_100", "line25", "line26", "line48",
            "line35", "line36", "line37", "line38", "line39", "line41"]
 
 

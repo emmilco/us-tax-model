@@ -131,7 +131,7 @@
 - Candidate readings: Reduce the basis by the deductions allowable at 100% business use under the limits, each the lesser of the table amount and the limit (the example's method). | Reduce the basis by the deductions allowable at 100% business use without the limits (the definition's last clause), which leaves no unrecovered basis. | As the first reading, but allow the limit in a year where it exceeds the table amount (the example's last row).
 - **Chosen:** The first reading: each year's deduction at 100% business use is the lesser of the table amount (with the section 179 deduction in year 1) and that year's limit (scveh.d1 to scveh.d6).
 - Reason: The second reading would make the section meaningless, since the limits are what create unrecovered basis; the example computes it with the limits ("At the end of 2024, you had an unrecovered basis of $14,565 ($31,500 − $16,935)") and its 60% variation confirms business use is taken as 100%. The example's last row ($1,875 allowed against $1,814) is taken as an error: the lesser of the two is the rule of every other row. The difference arises only when the unrecovered basis is below the year's limit.
-- Status: Agent reading, Stage 14, for the owner's review.
+- Status: Owner accepted, after Stage 14.
 - Cite: [p946-html] Chapter 5, Deductions After the Recovery Period, and its example (2025; sha256 b5ac23e5)
 
 ## amb.2025.mq_joint
@@ -158,7 +158,7 @@
 - Candidate readings: Six decimal places (the Rate Table). | Three decimal places (the least the worksheet allows).
 - **Chosen:** Six decimal places, half-up (person.sep_s5); only whole-percent plan rates are accepted, which the Rate Table covers.
 - Reason: For whole-percent plan rates the Rate Table applies, and it prints six places; "at least 3" permits six.
-- Status: Agent reading, Stage 14, for the owner's review.
+- Status: Owner accepted, after Stage 14.
 - Cite: [p560] chapter 5, Rate Table for Self-Employed and Rate Worksheet for Self-Employed (For use in preparing 2025 returns; sha256 1f1f7abe)
 
 ## amb.2025.f7206_line15_person
@@ -167,7 +167,7 @@
 - Candidate readings: Use the amounts of the spouse whose business establishes the plan (their own Schedule SE line 13 and SEP or SIMPLE deduction). | Use the whole of Schedule 1, lines 15 and 16.
 - **Chosen:** The first: sc.f7206_line7 uses person.se_line13 and sc.f7206_line9 uses person.s16 of the business's owner.
 - Reason: Line 5 of Form 7206 and its line 9 ("attributable to the same trade or business") look only at the businesses of the person whose insurance it is; the other spouse's self-employment tax is not attributable to this business. The readings agree when only one spouse is self-employed.
-- Status: Agent reading, Stage 14, for the owner's review.
+- Status: Owner accepted, after Stage 14.
 - Cite: [f7206] Form 7206 (2025), lines 5 to 9; i1040gi Schedule 1 line 17 worksheet, line 2 (2025; created 2025-10-02; sha256 822203c9)
 
 ## amb.2025.f7206_ratio_places
@@ -176,7 +176,7 @@
 - Candidate readings: Six decimal places, half-up. | Exact.
 - **Chosen:** Six decimal places, half-up (prorate with places 6 on sc.f7206_line7_pos and sc.f7206_line9_pos).
 - Reason: Six places is the precision of the other ratios in this tool; with one business the ratio is exactly 1.
-- Status: Agent reading, Stage 14, for the owner's review.
+- Status: Owner accepted, after Stage 14.
 - Cite: [f7206] Form 7206 (2025), line 6 (2025; created 2025-10-02; sha256 822203c9)
 
 ## amb.2025.f7206_plan_attribution
@@ -185,7 +185,7 @@
 - Candidate readings: In proportion to the business's share of the person's net profits (line 4 over line 5, as line 7 does for self-employment tax). | Wholly to the business under which the plan is established.
 - **Chosen:** In proportion to the business's net profit over the total of the person's net profits (sc.f7206_line9).
 - Reason: The SEP and SIMPLE limits are figured on the person's net earnings from all businesses; line 7 apportions self-employment tax in the same way. With one business both readings give the whole amount.
-- Status: Agent reading, Stage 14, for the owner's review.
+- Status: Owner accepted, after Stage 14.
 - Cite: [f7206] Form 7206 (2025), lines 6, 7 and 9 (2025; created 2025-10-02; sha256 822203c9)
 
 ## amb.2025.qbi_attribution
@@ -194,14 +194,23 @@
 - Candidate readings: Self-employment tax and retirement contributions in proportion to each business's net profit; the health insurance deduction to the business of its Form 7206. | Each item in proportion to net profit.
 - **Chosen:** The first (sc.qbi_se, sc.qbi_plan, sc.qbi_ded). Line 2 of Form 8995, the total, does not depend on the method.
 - Reason: Form 7206 is figured for the business under which the plan is established, so its deduction is attributable to that business; the other two are figured on all businesses together, as on Form 7206 line 7.
-- Status: Agent reading, Stage 14, for the owner's review.
+- Status: Owner accepted, after Stage 14.
 - Cite: [i8995] Line 1, Determining your qualified business income (2025; printed date 2026-01-26; sha256 875843ba)
 
 ## amb.2025.s179_carryover_no_property
 
 - Text at issue: Form 4562 instructions, Worksheet 1: "1. Enter total cost of section 179 property ... placed in service during the tax year beginning in 2025 ... 3. Enter the smaller of line 1 or line 2 here ... 4. Enter the amount from line 3 here and on Form 4562, line 1"; Line 5: "If line 5 is zero, you cannot elect to expense any section 179 property. In this case, skip lines 6 through 11, enter zero on line 12, and enter the carryover of any disallowed deduction from 2024 ... on line 13."
 - Candidate readings: As printed: with no section 179 property placed in service in 2025, line 1 and line 5 are zero and a 2024 carryover is carried again, not deducted. | Line 1 is the $2,500,000 limit whether or not property was placed in service, so a carryover can be deducted up to the income limit.
-- **Chosen:** As printed (s179.line1 is the smaller of line 2 and $2,500,000).
-- Reason: The worksheet and the line 5 instruction say so in terms. The agent recalls that the deduction of a carryover is not conditioned on placing new property in service, but has not verified that recollection against any archived source, so the printed instructions are followed and the question is put to the owner.
-- Status: Agent reading, Stage 14, for the owner's review.
-- Cite: [i4562] p. 3, Worksheet 1; p. 4, Line 5 (2025; sha256 5c1c95b7)
+- **Chosen:** The second. s179.line1 is the $2,500,000 the line 1 instruction states, so line 5 is the dollar limitation and a carryover is deducted up to the dollar limitation less the 2025 election and up to the business income limit (line 11). On a separate return line 5 is 50% of the limitation, the instruction's allocation when the spouses elect no other.
+- Reason: Research for the owner (ambiguities/research/amb.2025.s179_carryover_no_property.md) quotes the archived 26 U.S.C. 179(b)(3)(B), Treas. Reg. 1.179-2(b) and 1.179-3(b) to (d), and P.L. 119-21 sec. 70306. The carryover's room is "the limitation of paragraphs (1) and (2)", the dollar amount, which the cost of 2025 property reduces only above $4,000,000. Form 4562 computes exactly that when line 1 is the $2,500,000 the line 1 instruction states (p. 4). The optional Worksheet 1 instead takes the smaller of that and the cost of 2025 property, a cap that changes no return without a carryover and departs from the statute on a return with one.
+- Status: Owner ruling after Stage 14 (T-043), on the research memo.
+- Cite: [i4562] p. 4, Line 1 and Worksheet 1; p. 5, Line 5 (2025; sha256 5c1c95b7)
+
+## amb.2025.meals_full_exceptions
+
+- Text at issue: Schedule C instructions, Line 24b, Amount of deduction: "However, you can fully deduct meals and incidentals furnished or reimbursed to an employee if you properly treat the expense as wages subject to withholding. You can also fully deduct meals and incidentals provided to a nonemployee to the extent the expenses are includible in the gross income of that person and reported on Form 1099-NEC. See chapter 5 of Pub. 15, Employer's Tax Guide, for details and other exceptions. See also chapter 8 of Pub. 334."
+- Candidate readings: Only the two cases the instruction names are deducted in full. | The two named cases and the other exceptions to the 50% limit, as Pub. 463 lists them (Exception to the 50% Limit for Meals, p. 16), each deducted in full.
+- **Chosen:** The second (sc.meals_100). Of Pub. 463's six exceptions, exception 2 (an employee reimbursed under an accountable plan) concerns employees and is not a Schedule C expense; exception 1 is the instruction's first case; exceptions 3 to 6 are the client-reimbursed independent contractor, recreation for employees, food for the general public, and meals sold to the public. The question asks for none of the amounts entered elsewhere on Schedule C, such as cost of goods sold.
+- Reason: The instruction says other exceptions exist and points to Pub. 15 chapter 5 and Pub. 334 chapter 8. Pub. 15 (2025) chapter 5 covers whether meals are wages and lists no exceptions to the limit; Pub. 334 (2025), Travel and Meals, repeats the 50% rule and refers to Pub. 463, which lists the exceptions. Asking for the named cases only would leave a filer whose meals fall under another exception with no correct entry.
+- Status: Owner ruling after Stage 14 (T-042).
+- Cite: [p463] p. 16, Exception to the 50% Limit for Meals, exceptions 1 to 6 (For use in preparing 2025 returns; sha256 ddc3bb15)

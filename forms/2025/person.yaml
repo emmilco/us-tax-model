@@ -608,6 +608,23 @@ form:
       cite:
         doc: i1040sc
         locator: p. 14, Line 31; i4562 p. 4, Part I
+    - id: person.ho_count
+      printed: (helper)
+      label: Number of this person's Schedules C that claim the business use of the home
+      type: Count
+      expr:
+        op: sum_over
+        collection: sc
+        field: sc.one
+        where:
+          op: test
+          eq:
+          - sc.ho_uses
+          - const: true
+      cite:
+        doc: i1040sc
+        locator: p. 10, Simplified method, "You are limited to a maximum of 300 square feet for all of the businesses you conduct
+          in your home that qualify for this deduction"
     - id: person.mq_q4
       printed: (helper)
       label: Mid-quarter test basis, fourth quarter, this person

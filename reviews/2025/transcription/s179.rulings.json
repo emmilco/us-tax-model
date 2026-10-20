@@ -3,6 +3,12 @@
  "form": "s179",
  "rulings": [
   {
+   "printed": "1",
+   "project": "{\"param\": \"s179.max\"}",
+   "second": "{\"of\": [{\"line\": \"2\"}, {\"param\": \"s179.max\"}], \"op\": \"smaller_of\"}",
+   "ruling": "Ruling: project retained (owner, T-043; amb.2025.s179_carryover_no_property). The second follows Worksheet 1 (i4562 p. 4), whose line 3 takes the smaller of the cost of 2025 property and $2,500,000. The project follows the line 1 instruction on the same page ('Generally, the maximum section 179 expense deduction is $2,500,000'), for which the worksheet is offered as an optional aid ('You can use Worksheet 1'). Research from the archived 26 U.S.C. 179(b)(3)(B) and Treas. Reg. 1.179-3(b)-(c) (ambiguities/research/amb.2025.s179_carryover_no_property.md) shows the two agree on every return without a carryover, because an election never exceeds the cost, and that on a return with one the worksheet's cap departs from the statute, which measures a carryover against the dollar limitation."
+  },
+  {
    "printed": "13",
    "project": "{\"from\": {\"of\": [{\"line\": \"10\"}, {\"line\": \"9\"}], \"op\": \"sum\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"12\"}}",
    "second": "{\"from\": {\"of\": [{\"line\": \"10\"}, {\"line\": \"9\"}], \"op\": \"sum\"}, \"op\": \"subtract\", \"take\": {\"line\": \"12\"}}",
@@ -13,6 +19,12 @@
    "project": "{\"collection\": \"person\", \"field\": \"person.cost179\", \"op\": \"sum_over\", \"where\": null}",
    "second": "{\"of\": [{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"s179.h_spouse_cost_input\"}}, {\"guard\": {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}, \"then\": {\"from\": {\"input\": \"s179.h_spouse_cost_input\"}, \"op\": \"subtract_floor0\", \"take\": {\"input\": \"s179.h_spouse_cost_input\"}}}], \"op\": \"choose\"}, {\"collection\": \"person\", \"field\": \"person.cost179\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}",
    "ruling": "Ruling: second transcription right in substance, resolved by refusal (owner, BUG-0062). On a separate return line 2 includes the spouse's section 179 property (i4562 p. 4, Line 2) and the line 5 limitation is shared (p. 5); the project now refuses a section 179 election or carryover on a separate return (s179.mfs, on line 5). On every other return line 2 is the same sum on both sides."
+  },
+  {
+   "printed": "2",
+   "project": "{\"collection\": \"person\", \"field\": \"person.cost179\", \"op\": \"sum_over\", \"where\": null}",
+   "second": "{\"of\": [{\"input\": \"s179.h_spouse_cost\"}, {\"collection\": \"person\", \"field\": \"person.cost179\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}",
+   "ruling": "Ruling: second transcription right in substance, resolved by refusal (owner, BUG-0062). On a separate return line 2 includes the spouse's section 179 property (i4562 p. 4, Line 2) and the line 5 limitation is shared (p. 5); the project refuses a section 179 election or carryover on a separate return (s179.mfs, on line 5), so no deduction can differ. On a separate return with neither, line 2 omits the spouse's property; lines 4 and 5 then print differently only if the couple's 2025 section 179 property costs more than $4,000,000, and line 12 is zero either way. On every other return line 2 is the same sum on both sides."
   },
   {
    "printed": "5",

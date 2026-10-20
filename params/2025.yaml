@@ -1418,7 +1418,7 @@ params:
         den: 100
       cite:
         doc: i1040sc
-        locator: 'p. 9, Line 24b, Amount of deduction, "In most cases, you can deduct only 50% of your business meal expenses"'
+        locator: 'p. 10, Line 24b, Amount of deduction, "In most cases, you can deduct only 50% of your business meal expenses"'
     sc.meals_rate_dot:
       type: Rate
       value:
@@ -1426,19 +1426,19 @@ params:
         den: 100
       cite:
         doc: i1040sc
-        locator: 'p. 9, Line 24b, Amount of deduction, "for individuals subject to the Department of Transportation (DOT) hours of service limits, the percentage is increased to 80%"'
+        locator: 'p. 10, Line 24b, Amount of deduction, "for individuals subject to the Department of Transportation (DOT) hours of service limits, the percentage is increased to 80%"'
     sc.ho_rate:
       type: NonNegDollars
       value: 500
       cite:
         doc: i1040sc
-        locator: 'p. 11, Simplified Method Worksheet, line 3a, Maximum allowable amount, "$5"'
+        locator: 'p. 12, Simplified Method Worksheet, line 3a, Maximum allowable amount, "$5"'
     sc.ho_max_sqft:
       type: Count
       value: 300
       cite:
         doc: i1040sc
-        locator: 'p. 11, Simplified Method Worksheet, line 2, "Don''t enter more than 300 square feet"'
+        locator: 'p. 12, Simplified Method Worksheet, line 2, "Don''t enter more than 300 square feet"'
     sc.one_cent:
       type: NonNegDollars
       value: 1
@@ -1536,13 +1536,21 @@ params:
       value: 250000000
       cite:
         doc: i4562
-        locator: 'p. 3, Worksheet 1, line 2, "The maximum section 179 deduction limitation for 2025 ... $2,500,000"'
+        locator: 'p. 4, Worksheet 1, line 2, "The maximum section 179 deduction limitation for 2025 ... $2,500,000"'
+    s179.mfs_share:
+      type: Rate
+      value:
+        num: 50
+        den: 100
+      cite:
+        doc: i4562
+        locator: 'p. 5, Line 5, "multiply the total limitation that you would otherwise enter on line 5 by 50% (0.50)"'
     s179.threshold:
       type: NonNegDollars
       value: 400000000
       cite:
         doc: i4562
-        locator: 'p. 3, Worksheet 1, line 6, "$4,000,000"'
+        locator: 'p. 4, Worksheet 1, line 6, "$4,000,000"'
     s179.suv_limit:
       type: NonNegDollars
       value: 3130000

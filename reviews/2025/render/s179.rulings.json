@@ -3,6 +3,12 @@
  "form": "s179",
  "rulings": [
   {
+   "printed": "1",
+   "restated": "Enter the amount from helper \"The maximum section 179 deduction limitation for 2025\".",
+   "model": "The restatement always enters $2,500,000. Worksheet 1 says 'Enter the smaller of line 1 [total cost of section 179 property] or line 2 [$2,500,000] here' and 'Enter the amount from line 3 here and on Form 4562, line 1'. When total cost is under $2,500,000, line 1 should be that cost, which also changes lines 5 and 11.",
+   "ruling": "Ruling: project retained (owner, T-043; amb.2025.s179_carryover_no_property). The model reads Worksheet 1 (i4562 p. 4) as fixing line 1 at the smaller of the cost and $2,500,000. The line 1 instruction on the same page states the maximum as $2,500,000 and offers the worksheet as an optional aid. With line 1 at $2,500,000, lines 5, 9, 11 and 12 compute 26 U.S.C. 179(b)(3)(B) exactly; the worksheet's cap changes no return without a carryover and wrongly withholds a carryover on one (ambiguities/research/amb.2025.s179_carryover_no_property.md). Lines 5 and 11 change as the model says, by design."
+  },
+  {
    "printed": "11",
    "restated": "Enter the smaller of helper \"That income, if zero or less zero\" or line 5.",
    "model": "The IRS text uses 'the total taxable income from any trade or business you actively conducted, computed without regard to any section 179 expense deduction, the deduction for one-half of self-employment taxes ... or any net operating loss deduction,' plus wages. The restatement counts only Schedule C net profit plus Form 1040 line 1a. It has no refusal for other actively conducted businesses (for example partnership or S corporation business income, which line 6 contemplates for K-1 section 179 amounts) or for Schedule C activities that are not actively conducted, so those cases would change the value.",

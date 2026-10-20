@@ -27,19 +27,19 @@ form:
       ref: s179.max
     cite:
       doc: i4562
-      locator: p. 3, Worksheet 1, line 2, "$2,500,000"
+      locator: p. 4, Worksheet 1, line 2, "$2,500,000"
   - id: s179.line1
     printed: '1'
     label: Maximum amount
     type: NonNegDollars
     expr:
-      op: smaller_of
-      of:
-      - s179.line2
-      - s179.max
+      op: copy
+      from: s179.max
     cite:
       doc: i4562
-      locator: p. 3, Worksheet 1, lines 1 to 4
+      locator: p. 4, Line 1, "Generally, the maximum section 179 expense deduction is $2,500,000 for section 179 property
+        ... placed in service during the tax year beginning in 2025"
+    ambiguity: amb.2025.s179_carryover_no_property
   - id: s179.line3
     printed: '3'
     label: Threshold cost of section 179 property before reduction in limitation
@@ -49,7 +49,7 @@ form:
       ref: s179.threshold
     cite:
       doc: i4562
-      locator: p. 3, Worksheet 1, line 6, "$4,000,000"
+      locator: p. 4, Worksheet 1, line 6, "$4,000,000"
   - id: s179.line4
     printed: '4'
     label: Reduction in limitation. Subtract line 3 from line 2. If zero or less, enter -0-
@@ -61,9 +61,9 @@ form:
     cite:
       doc: f4562
       locator: Form 4562 (2025), line 4
-  - id: s179.line5
-    printed: '5'
-    label: Dollar limitation for tax year. Subtract line 4 from line 1. If zero or less, enter -0-
+  - id: s179.line5_full
+    printed: (helper)
+    label: Subtract line 4 from line 1. If zero or less, enter -0-
     type: NonNegDollars
     expr:
       op: subtract_floor0
@@ -72,6 +72,55 @@ form:
     cite:
       doc: f4562
       locator: Form 4562 (2025), line 5
+  - id: s179.separate
+    printed: (helper)
+    label: Married filing separately
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - f1040.status
+      - const: mfs
+    cite:
+      doc: i4562
+      locator: p. 5, Line 5, "If you are married filing separately"
+  - id: s179.line5_mfs
+    printed: (helper)
+    label: On a separate return, that limitation multiplied by 50%
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: s179.line5_full
+      rate:
+        param: s179.mfs_share
+    cite:
+      doc: i4562
+      locator: p. 5, Line 5, "multiply the total limitation that you would otherwise enter on line 5 by 50% (0.50), unless
+        you both elect a different allocation"
+  - id: s179.line5
+    printed: '5'
+    label: Dollar limitation for tax year. Subtract line 4 from line 1. If zero or less, enter -0- (if married filing separately,
+      your 50% share)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - s179.separate
+          - const: false
+        then: s179.line5_full
+      - guard:
+          op: test
+          eq:
+          - s179.separate
+          - const: true
+        then: s179.line5_mfs
+    cite:
+      doc: f4562
+      locator: Form 4562 (2025), line 5; i4562 p. 5, Line 5 (a different allocation between spouses needs an election, and an
+        election on a separate return is refused)
     refuses:
     - when: s179.mfs
       form: Section 179 deduction on a separate return (the spouses' property and the allocation of the dollar limitation)

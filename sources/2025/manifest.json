@@ -16,6 +16,40 @@
       "revision_locator": "Extracted text, line 1 title and 'Page Last Reviewed' footer line"
     },
     {
+      "id": "cfr-26-1-179-2",
+      "url": "https://www.govinfo.gov/link/cfr/26/1?sectionnum=179-2&year=mostrecent&link-type=pdf",
+      "resolved_url": "https://www.govinfo.gov/content/pkg/CFR-2025-title26-vol4/pdf/CFR-2025-title26-vol4-sec1-179-2.pdf",
+      "fetched_at": "2026-10-20T19:22:13.000544+00:00",
+      "file": "cfr-26-1-179-2.pdf",
+      "sha256": "659014e6b58e8c2d93e1f46aa6bd43a4af61e2ca1688a72525582e17e6885f78",
+      "revision": "26 CFR Ch. I (4-1-25 Edition), section 1.179-2 (GovInfo, GPO)",
+      "revision_status": "Edition inspected in the extracted page header ('26 CFR Ch. I (4-1-25 Edition)'); resolved by the GovInfo link service to CFR-2025-title26-vol4",
+      "text_file": "cfr-26-1-179-2.txt",
+      "text_sha256": "8c39fa194646071a3dba64f548f6e41fe94e4f5ee6e3e721bd2a3d9fb4d6a7e1",
+      "cols_file": "cfr-26-1-179-2.cols.txt",
+      "cols_sha256": "06ff2c3dbcb535e254d8709f29e7999642749aa778997f17b2da6a019f6c3558",
+      "pages_file": "cfr-26-1-179-2.pages.json",
+      "pages_sha256": "046819b04e90e39f718bd52f15bc42465197e380031f0f9acf224dbe64a3023d",
+      "extract_tool_version": "0.10"
+    },
+    {
+      "id": "cfr-26-1-179-3",
+      "url": "https://www.govinfo.gov/link/cfr/26/1?sectionnum=179-3&year=mostrecent&link-type=pdf",
+      "resolved_url": "https://www.govinfo.gov/content/pkg/CFR-2025-title26-vol4/pdf/CFR-2025-title26-vol4-sec1-179-3.pdf",
+      "fetched_at": "2026-10-20T19:22:13.489907+00:00",
+      "file": "cfr-26-1-179-3.pdf",
+      "sha256": "eaf3341fabf7eaea9740583ca857a501e29266e315da6060e16cdcaa19aad8c7",
+      "revision": "26 CFR Ch. I (4-1-25 Edition), section 1.179-3 (GovInfo, GPO)",
+      "revision_status": "Edition inspected in the extracted page header ('26 CFR Ch. I (4-1-25 Edition)'); resolved by the GovInfo link service to CFR-2025-title26-vol4; the section's source note ends with T.D. 9209 (2005)",
+      "text_file": "cfr-26-1-179-3.txt",
+      "text_sha256": "6d680d3036c9a1399cecee88a53e63750bef7a16a7b5df2e6ff3498c85de0ad6",
+      "cols_file": "cfr-26-1-179-3.cols.txt",
+      "cols_sha256": "80ebc8a0ed76e269501e20ab12841ab9403e768c5d5e15f15f5b9e172291e607",
+      "pages_file": "cfr-26-1-179-3.pages.json",
+      "pages_sha256": "6c8e66cc9b87e58586e4dd7548ca800f90424075609bcd07f55680d9402ae176",
+      "extract_tool_version": "0.10"
+    },
+    {
       "id": "f1040",
       "url": "https://www.irs.gov/pub/irs-pdf/f1040.pdf",
       "resolved_url": "https://www.irs.gov/pub/irs-pdf/f1040.pdf",
@@ -772,6 +806,23 @@
       "revision_locator": "PDF page 1 title, \"2025 Instructions for Form 4562\""
     },
     {
+      "id": "i4562-2024",
+      "url": "https://www.irs.gov/pub/irs-prior/i4562--2024.pdf",
+      "resolved_url": "https://www.irs.gov/pub/irs-prior/i4562--2024.pdf",
+      "fetched_at": "2026-10-20T19:23:37.344806+00:00",
+      "file": "i4562-2024.pdf",
+      "sha256": "481c54f34347261dc50346c53cb0a6638344743f1c89bfd2d9212b30e9045529",
+      "revision": "Instructions for Form 4562 (2024), Catalog Number 12907Y, Dec 16, 2024",
+      "revision_status": "Prior-year instructions, inspected in the extracted text; archived only to show that Worksheet 1 for line 1 predates 2025, not cited for 2025 amounts",
+      "text_file": "i4562-2024.txt",
+      "text_sha256": "45a022cb6570d9c5b553205262e18ba4e8595bcb76380ba2fd817b8fbd1968a6",
+      "cols_file": "i4562-2024.cols.txt",
+      "cols_sha256": "efa10cef5459e286e2edf775be8f10f74b88bff4ebf1de3952d58b2a7684f554",
+      "pages_file": "i4562-2024.pages.json",
+      "pages_sha256": "1f3df1b7e29fd3899bce964025342938c9f3db7699d11d9874231d0e8b978c8f",
+      "extract_tool_version": "0.10"
+    },
+    {
       "id": "i7206",
       "url": "https://www.irs.gov/pub/irs-pdf/i7206.pdf",
       "resolved_url": "https://www.irs.gov/pub/irs-pdf/i7206.pdf",
@@ -1141,6 +1192,23 @@
       "text_sha256": "e7c0b48bca47d0f07eb14cabf18eca432b74fe6d3e6c56f2b3d5247e1b849703"
     },
     {
+      "id": "p15",
+      "url": "https://www.irs.gov/pub/irs-prior/p15--2025.pdf",
+      "resolved_url": "https://www.irs.gov/pub/irs-prior/p15--2025.pdf",
+      "fetched_at": "2026-10-20T19:31:43.203655+00:00",
+      "file": "p15.pdf",
+      "sha256": "168837bd5f666d8c0a7cd59a1309512c0429974b5b7b982ae781a3b9f925b7a0",
+      "revision": "Publication 15 (2025), Catalog Number 10000W, for use in 2025",
+      "revision_status": "Edition inspected in the extracted text (cover 'For use in 2025'; footer 'Publication 15 (2025)'); the prior-year file, since irs.gov/pub/irs-pdf/p15.pdf is now the 2026 edition; archived because i1040sc line 24b cites its chapter 5",
+      "text_file": "p15.txt",
+      "text_sha256": "7edc00fd5e9ee0507b05331c387af49e56bb233afb7da88b35257aac1411cf0e",
+      "cols_file": "p15.cols.txt",
+      "cols_sha256": "c61812ab1d41bbe0e8dda37a895a3d519c268d6ffa1aaa72b254a723110508e2",
+      "pages_file": "p15.pages.json",
+      "pages_sha256": "d13ae29f20708be0867993e356bf9ec0d8fb86b17fb2817ef336d6f933533def",
+      "extract_tool_version": "0.10"
+    },
+    {
       "id": "p334",
       "url": "https://www.irs.gov/pub/irs-pdf/p334.pdf",
       "resolved_url": "https://www.irs.gov/pub/irs-pdf/p334.pdf",
@@ -1351,6 +1419,23 @@
       "revision_locator": "Page title, \"Publication 946 (2025), How To Depreciate Property\""
     },
     {
+      "id": "plaw-119-21",
+      "url": "https://www.govinfo.gov/content/pkg/PLAW-119publ21/pdf/PLAW-119publ21.pdf",
+      "resolved_url": "https://www.govinfo.gov/content/pkg/PLAW-119publ21/pdf/PLAW-119publ21.pdf",
+      "fetched_at": "2026-10-20T19:22:55.805226+00:00",
+      "file": "plaw-119-21.pdf",
+      "sha256": "42f86c3d408bccb1a663c11a51a90d207b3dbc25e689240da51726154be51c8b",
+      "revision": "Public Law 119-21, July 4, 2025, 139 Stat. 72 (GovInfo, GPO)",
+      "revision_status": "Public law number, date and Statutes at Large page inspected in the extracted text",
+      "text_file": "plaw-119-21.txt",
+      "text_sha256": "12905a39411cf5d5a7a4e17bf332ec33359f0c350a857f149e2a95cb58d29dd8",
+      "cols_file": "plaw-119-21.cols.txt",
+      "cols_sha256": "e6dc90d2ecda991f7c395e23a9c1709e98cbc22cb9f614d97e7bef1fb42b92ed",
+      "pages_file": "plaw-119-21.pages.json",
+      "pages_sha256": "b02f9188ebc9e847100a1ae6c67bc9293b497871a7bb58dd0e79f107232e1041",
+      "extract_tool_version": "0.10"
+    },
+    {
       "id": "rp-2024-40",
       "url": "https://www.irs.gov/pub/irs-drop/rp-24-40.pdf",
       "document_tax_year": 2025,
@@ -1549,6 +1634,23 @@
       "revision_status": "Pending inspection of archived document; not cleared for encoding",
       "text_file": "tips-deduction.txt",
       "text_sha256": "7094221b0ef0f34deeaa016371cd1acb2f4b388648a466d531493c8d26982c75"
+    },
+    {
+      "id": "usc-26-179",
+      "url": "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/pdf/USCODE-2024-title26-subtitleA-chap1-subchapB-partVI-sec179.pdf",
+      "resolved_url": "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/pdf/USCODE-2024-title26-subtitleA-chap1-subchapB-partVI-sec179.pdf",
+      "fetched_at": "2026-10-20T19:21:48.533787+00:00",
+      "file": "usc-26-179.pdf",
+      "sha256": "91bb8683855a44783133329d7769a0dcd9236797e61610fee50b0cf03cd76a77",
+      "revision": "United States Code, 2024 Edition, Title 26, section 179 (GovInfo, GPO), before P.L. 119-21",
+      "revision_status": "Edition from the GovInfo package USCODE-2024-title26 and the text inspected: paragraphs (b)(1) and (b)(2) still read $1,000,000 and $2,500,000, so this edition predates P.L. 119-21 (archived as plaw-119-21, whose section 70306 amends only those amounts and paragraph (b)(6)); paragraph (b)(3) is cited from it",
+      "text_file": "usc-26-179.txt",
+      "text_sha256": "612084cc0e31092f7776c9648d37609cd3cf5432d71d59e34fa3517df5a7c350",
+      "cols_file": "usc-26-179.cols.txt",
+      "cols_sha256": "d3132c3232c0ac98facedd3d129246f9627b89906d23aaeb5a7c0d7ce1b2db35",
+      "pages_file": "usc-26-179.pages.json",
+      "pages_sha256": "046819b04e90e39f718bd52f15bc42465197e380031f0f9acf224dbe64a3023d",
+      "extract_tool_version": "0.10"
     },
     {
       "id": "wftc-notices",

@@ -916,7 +916,7 @@ form:
       rate: scveh.rate40
     cite:
       doc: i4562
-      locator: p. 6, How to figure the allowance
+      locator: p. 7, How to figure the allowance
     refuses:
     - when: scveh.bonus_mixed
       form: Different special allowance elections within the 5-year class
@@ -2065,5 +2065,5 @@ form:
     parent: sc
     cite:
       doc: i1040sc
-      locator: p. 6, Line 9, Information on your vehicle, "If you used more than one vehicle during the year, attach a statement
+      locator: p. 6, Line 9; p. 7, Information on your vehicle, "If you used more than one vehicle during the year, attach a statement
         with the information requested in Schedule C, Part IV, for each additional vehicle"

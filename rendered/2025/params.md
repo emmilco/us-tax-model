@@ -96,9 +96,10 @@
 | `ret.simple_limit` | NonNegDollars | $16,500 | [p560] chapter 3, Salary reduction contributions, "can't be more than $16,500 for 2025" (For use in preparing 2025 returns; sha256 1f1f7abe) |
 | `s1.ebl_threshold` | NonNegDollars | single $313,000; mfj $626,000; mfs $313,000; hoh $313,000; qss $313,000 | [rp-2024-40] section 3.32, Threshold for Excess Business Loss, "the amount under § 461(l)(3)(A)(ii)(II) is $313,000 ($626,000 for joint returns)" (Rev. Proc. 2024-40; 2025 adjusted items; released 2024-10; sha256 4de9db6b) |
 | `s1.educator_max` | NonNegDollars | $300 | [i1040gi] p. 93, Schedule 1, line 11, "up to $300 of qualified expenses" (2025; printed date 2026-02-25; sha256 482e9c48) |
-| `s179.max` | NonNegDollars | $2,500,000 | [i4562] p. 3, Worksheet 1, line 2, "The maximum section 179 deduction limitation for 2025 ... $2,500,000" (2025; sha256 5c1c95b7) |
+| `s179.max` | NonNegDollars | $2,500,000 | [i4562] p. 4, Worksheet 1, line 2, "The maximum section 179 deduction limitation for 2025 ... $2,500,000" (2025; sha256 5c1c95b7) |
+| `s179.mfs_share` | Rate | 50% (0.50) | [i4562] p. 5, Line 5, "multiply the total limitation that you would otherwise enter on line 5 by 50% (0.50)" (2025; sha256 5c1c95b7) |
 | `s179.suv_limit` | NonNegDollars | $31,300 | [i4562] p. 15, Column (i), "You cannot elect to expense more than $31,300 of the cost of any SUVs and certain other vehicles" (2025; sha256 5c1c95b7) |
-| `s179.threshold` | NonNegDollars | $4,000,000 | [i4562] p. 3, Worksheet 1, line 6, "$4,000,000" (2025; sha256 5c1c95b7) |
+| `s179.threshold` | NonNegDollars | $4,000,000 | [i4562] p. 4, Worksheet 1, line 6, "$4,000,000" (2025; sha256 5c1c95b7) |
 | `s1a.base_joint` | NonNegDollars | $300,000 | [f1040s1a] Schedule 1-A (2025), lines 9 and 17, "Enter $150,000 ($300,000 if married filing jointly)" (2025; created 2025-11-04; sha256 64f97b38) |
 | `s1a.base_other` | NonNegDollars | $150,000 | [f1040s1a] Schedule 1-A (2025), lines 9 and 17, "Enter $150,000 ($300,000 if married filing jointly)" (2025; created 2025-11-04; sha256 64f97b38) |
 | `s1a.car_base_joint` | NonNegDollars | $200,000 | [f1040s1a] Schedule 1-A (2025), line 26, "Enter $100,000 ($200,000 if married filing jointly)" (2025; created 2025-11-04; sha256 64f97b38) |
@@ -131,11 +132,11 @@
 | `sc.count2` | Count | 2 | [p946] p. 34, Which Convention Applies?, Mid-quarter convention, "more than 40%" (For use in preparing 2025 returns; sha256 07fadfb2) |
 | `sc.count5` | Count | 5 | [p946] p. 34, Which Convention Applies?, Mid-quarter convention, "more than 40%" (compared as five times the fourth-quarter bases against two times all bases) (For use in preparing 2025 returns; sha256 07fadfb2) |
 | `sc.fifty_cents` | NonNegDollars | $0.50 | [i4562] p. 13, Lines 26 and 27, "more than 50% in a qualified business use" (2025; sha256 5c1c95b7) |
-| `sc.ho_max_sqft` | Count | 300 | [i1040sc] p. 11, Simplified Method Worksheet, line 2, "Don't enter more than 300 square feet" (2025; sha256 b5536db9) |
-| `sc.ho_rate` | NonNegDollars | $5 | [i1040sc] p. 11, Simplified Method Worksheet, line 3a, Maximum allowable amount, "$5" (2025; sha256 b5536db9) |
+| `sc.ho_max_sqft` | Count | 300 | [i1040sc] p. 12, Simplified Method Worksheet, line 2, "Don't enter more than 300 square feet" (2025; sha256 b5536db9) |
+| `sc.ho_rate` | NonNegDollars | $5 | [i1040sc] p. 12, Simplified Method Worksheet, line 3a, Maximum allowable amount, "$5" (2025; sha256 b5536db9) |
 | `sc.hundred_cents` | NonNegDollars | $1 | [i4562] p. 11, Column (c), the percentage of business/investment use (100%) (2025; sha256 5c1c95b7) |
-| `sc.meals_rate` | Rate | 50% (0.50) | [i1040sc] p. 9, Line 24b, Amount of deduction, "In most cases, you can deduct only 50% of your business meal expenses" (2025; sha256 b5536db9) |
-| `sc.meals_rate_dot` | Rate | 80% (0.80) | [i1040sc] p. 9, Line 24b, Amount of deduction, "for individuals subject to the Department of Transportation (DOT) hours of service limits, the percentage is increased to 80%" (2025; sha256 b5536db9) |
+| `sc.meals_rate` | Rate | 50% (0.50) | [i1040sc] p. 10, Line 24b, Amount of deduction, "In most cases, you can deduct only 50% of your business meal expenses" (2025; sha256 b5536db9) |
+| `sc.meals_rate_dot` | Rate | 80% (0.80) | [i1040sc] p. 10, Line 24b, Amount of deduction, "for individuals subject to the Department of Transportation (DOT) hours of service limits, the percentage is increased to 80%" (2025; sha256 b5536db9) |
 | `sc.mileage_rate` | NonNegDollars | $0.70 | [n-25-05] Section 3, "The standard mileage rate for transportation or travel expenses for 2025 is 70 cents per mile for all miles of business use" (Notice 2025-5; sha256 aac49246) |
 | `sc.one` | Count | 1 | [i1040sc] p. 3, Line A, "complete a separate Schedule C for each business" (2025; sha256 b5536db9) |
 | `sc.one_cent` | NonNegDollars | $0.01 | [i4562] p. 11, Column (c), the percentage of business/investment use (a percentage carried as cents of 100) (2025; sha256 5c1c95b7) |

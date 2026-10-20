@@ -189,7 +189,7 @@ form:
         establishment, or a computer placed in service before 2018 that is not used exclusively at your regular business establishment?'
     cite:
       doc: i4562
-      locator: p. 2, Listed Property and its Exceptions; p. 13, Part V
+      locator: p. 3, Listed Property and its Exceptions; p. 13, Part V
   - id: asset.half
     printed: (helper)
     label: Fifty percent, as cents
@@ -376,7 +376,7 @@ form:
       take: asset.s179
     cite:
       doc: i4562
-      locator: p. 6, How to figure the allowance, "subtract from the business/investment portion of the cost or other basis
+      locator: p. 7, How to figure the allowance, "subtract from the business/investment portion of the cost or other basis
         of the property any credits and deductions allocable to the property ... Section 179 expense deduction"
     refuses:
     - when: asset.s179_bad
@@ -471,7 +471,7 @@ form:
       rate: asset.rate40
     cite:
       doc: i4562
-      locator: p. 6, How to figure the allowance, "multiplying the depreciable basis of the property by the applicable percentage"
+      locator: p. 7, How to figure the allowance, "multiplying the depreciable basis of the property by the applicable percentage"
     refuses:
     - when: asset.bonus_mixed
       form: Different special allowance elections within one class of property
@@ -971,4 +971,4 @@ form:
     parent: sc
     cite:
       doc: i4562
-      locator: p. 9, Lines 19a Through 19j, and p. 1, Who Must File, "File a separate Form 4562 for each business or activity"
+      locator: p. 9, Lines 19a Through 19j, and p. 2, Who Must File, "File a separate Form 4562 for each business or activity"

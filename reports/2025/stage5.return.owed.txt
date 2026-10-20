@@ -1333,19 +1333,31 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       note: confirmed roster $person: taxpayer
   (helper) The maximum section 179 deduction limitation for 2025
       = $2,500,000
-      cite: [i4562] p. 3, Worksheet 1, line 2, "$2,500,000" (2025; 5c1c95b7)
+      cite: [i4562] p. 4, Worksheet 1, line 2, "$2,500,000" (2025; 5c1c95b7)
   1   Maximum amount
-      = $0
-      cite: [i4562] p. 3, Worksheet 1, lines 1 to 4 (2025; 5c1c95b7)
+      = $2,500,000
+      cite: [i4562] p. 4, Line 1, "Generally, the maximum section 179 expense deduction is $2,500,000 for section 179 property ... placed in service during the tax year beginning in 2025" (2025; 5c1c95b7)
+      note: Interpretation amb.2025.s179_carryover_no_property: The second. s179.line1 is the $2,500,000 the line 1 instruction states, so line 5 is the dollar limitation and a carryover is deducted up to the dollar limitation less the 2025 election and up to the business income limit (line 11). On a separate return line 5 is 50% of the limitation, the instruction's allocation when the spouses elect no other. Research for the owner (ambiguities/research/amb.2025.s179_carryover_no_property.md) quotes the archived 26 U.S.C. 179(b)(3)(B), Treas. Reg. 1.179-2(b) and 1.179-3(b) to (d), and P.L. 119-21 sec. 70306. The carryover's room is "the limitation of paragraphs (1) and (2)", the dollar amount, which the cost of 2025 property reduces only above $4,000,000. Form 4562 computes exactly that when line 1 is the $2,500,000 the line 1 instruction states (p. 4). The optional Worksheet 1 instead takes the smaller of that and the cost of 2025 property, a cap that changes no return without a carryover and departs from the statute on a return with one. (i4562, p. 4, Line 1 and Worksheet 1; p. 5, Line 5)
   3   Threshold cost of section 179 property before reduction in limitation
       = $4,000,000
-      cite: [i4562] p. 3, Worksheet 1, line 6, "$4,000,000" (2025; 5c1c95b7)
+      cite: [i4562] p. 4, Worksheet 1, line 6, "$4,000,000" (2025; 5c1c95b7)
   4   Reduction in limitation. Subtract line 3 from line 2. If zero or less, enter -0-
       = $0
       cite: [f4562] Form 4562 (2025), line 4 (2025; created 2025-10-09; c05f9d1f)
-  5   Dollar limitation for tax year. Subtract line 4 from line 1. If zero or less, enter -0-
-      = $0
+  (helper) Subtract line 4 from line 1. If zero or less, enter -0-
+      = $2,500,000
       cite: [f4562] Form 4562 (2025), line 5 (2025; created 2025-10-09; c05f9d1f)
+  (helper) Married filing separately
+      = false
+      cite: [i4562] p. 5, Line 5, "If you are married filing separately" (2025; 5c1c95b7)
+  (helper) On a separate return, that limitation multiplied by 50%
+      = $1,250,000
+      cite: [i4562] p. 5, Line 5, "multiply the total limitation that you would otherwise enter on line 5 by 50% (0.50), unless you both elect a different allocation" (2025; 5c1c95b7)
+      note: half-up to the cent per the ambiguity register
+  5   Dollar limitation for tax year. Subtract line 4 from line 1. If zero or less, enter -0- (if married filing separately, your 50% share)
+      = $2,500,000
+      cite: [f4562] Form 4562 (2025), line 5; i4562 p. 5, Line 5 (a different allocation between spouses needs an election, and an election on a separate return is refused) (2025; created 2025-10-09; c05f9d1f)
+      note: taken: {"eq":["s179.separate",{"const":false}],"op":"test"}
   (gate) A section 179 election or carryover on a separate return
       = false
       cite: [i4562] p. 5, Line 5; p. 4, Line 2 (owner: refused) (2025; 5c1c95b7)
@@ -1377,7 +1389,7 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       = $120,000
       cite: [p946] pp. 17-19, Business Income Limit (For use in preparing 2025 returns; 07fadfb2)
   11  Business income limitation. Enter the smaller of business income (not less than zero) or line 5
-      = $0
+      = $120,000
       cite: [i4562] p. 5, Line 11 (2025; 5c1c95b7)
   (helper) Add lines 9 and 10
       = UNKNOWN (no input supplied for s179.line10)
@@ -3224,6 +3236,7 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   ftc.f1040.line16: chose $18,500 (guard 1)
       not taken: guard 0 = false
+  s179.line5: chose $2,500,000 (guard 0)
   s1a.line4a_calc: chose UNKNOWN (collection roster not confirmed)
   s1a.line4a: chose $0 (guard 0)
   s1a.line4b: chose $0 (guard 0)
@@ -3494,6 +3507,8 @@ Collection entries and derivations:
     cite: i1040gi, p. 93, Schedule 1, line 11, "If you were an eligible educator in 2025, you can deduct on line 11 up to $300 of qualified expenses you paid in 2025"; "If you and your spouse are filing jointly and both of you were eligible educators, the maximum deduction is $600. However, neither spouse can deduct more than $300 of their qualified expenses" (2025; printed date 2026-02-25; 482e9c48)
   person[taxpayer].excess = $0
     cite: i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+  person[taxpayer].ho_count = 0
+    cite: i1040sc, p. 10, Simplified method, "You are limited to a maximum of 300 square feet for all of the businesses you conduct in your home that qualify for this deduction" (2025; b5536db9)
   person[taxpayer].se_screen = UNKNOWN (no input supplied for person[taxpayer].se_screen)
     cite: i1040sse, pp. 1-5, Who Must Pay Self-Employment (SE) Tax, Net Earnings From Self-Employment, Instructions for Part II; f1040sse lines 1a, 1b, 5a, 8b and 8c (2025; ea9e3120)
   person[taxpayer].se_screened = UNKNOWN (no input supplied for person[taxpayer].se_screen)
@@ -4238,20 +4253,23 @@ Collection entries and derivations:
   s1.sc_1a: test(s1.sc_1a_count = 0; 0 = 0)
   s179.line2: sum_over(person[taxpayer].cost179 = $0)
   s179.max: param(#s179.max = $2,500,000)
-  s179.line1: smaller_of(s179.line2 = $0; s179.max = $2,500,000)
+  s179.line1: copy(s179.max = $2,500,000)
   s179.line3: param(#s179.threshold = $4,000,000)
   s179.line4: subtract_floor0(s179.line2 = $0; s179.line3 = $4,000,000)
+  s179.line5_full: subtract_floor0(s179.line1 = $2,500,000; s179.line4 = $0)
+  s179.separate: test(f1040.status = single; "mfs" = mfs)
+  s179.line5_mfs: multiply_rate(s179.line5_full = $2,500,000; #s179.mfs_share = 50/100)
   s179.mfs: test(f1040.status = single; "mfs" = mfs)
-  s179.line5: subtract_floor0(s179.mfs = false; s179.line1 = $0; s179.line4 = $0)
+  s179.line5: choose(s179.mfs = false; s179.separate = false; false = false; s179.line5_full = $2,500,000)
   s179.line6: sum_over(person[taxpayer].s179_nonlisted = $0)
   s179.line7: sum_over(person[taxpayer].s179_listed = $0)
   s179.line8: sum(s179.line6 = $0; s179.line7 = $0)
-  s179.line9: smaller_of(s179.line5 = $0; s179.line8 = $0)
+  s179.line9: smaller_of(s179.line5 = $2,500,000; s179.line8 = $0)
   s179.income_sc: sum_over(person[taxpayer].income179 = $0)
   s179.f1040.line1a: sum_over(household.roster_bad = false; person[taxpayer].box1 = $120,000)
   s179.income: sum(s179.income_sc = $0; f1040.line1a = $120,000)
   s179.income0: subtract_floor0(s179.income = $120,000; #sales.zero = $0)
-  s179.line11: smaller_of(s179.income0 = $120,000; s179.line5 = $0)
+  s179.line11: smaller_of(s179.income0 = $120,000; s179.line5 = $2,500,000)
   s179.line9_10: sum(s179.line9 = $0; s179.line10 = UNKNOWN (no input supplied for s179.line10))
   s179.line12: smaller_of(s179.line9_10 = UNKNOWN (no input supplied for s179.line10))
   s179.sc_count: sum_over(person[taxpayer].sc_count = 0)
@@ -4669,6 +4687,7 @@ Interpretation amb.2025.qbi_cooperative_patron: Refuse any patron of an agricult
  (f8995, Form 8995 (2025), note above line 1; i8995, Who Can Use Form 8995; i1040gi line 13a)
 Interpretation amb.2025.sd4952_selection: Use the detailed worksheet conditions, including line 4g and exceptions. The worksheet explicitly limits its own use and the Form 1040 line 16 instructions repeat the line 4g condition. (i1040sd, p. 15, Schedule D Tax Worksheet applicability; compare f1040sd line 20 and i1040gi p. 36)
 Interpretation amb.2025.ss_wages: Use boxes 3 plus 7, summed across employers separately per person. Owner approved the Stage 2 proposal. iw2w3 p. 18 defines these boxes and their combined wage base; box 1 can exclude deferrals subject to Social Security. (iw2w3, p. 18, boxes 3 and 7; compare i1040gi p. 117, Schedule 3 line 11)
+Interpretation amb.2025.s179_carryover_no_property: The second. s179.line1 is the $2,500,000 the line 1 instruction states, so line 5 is the dollar limitation and a carryover is deducted up to the dollar limitation less the 2025 election and up to the business income limit (line 11). On a separate return line 5 is 50% of the limitation, the instruction's allocation when the spouses elect no other. Research for the owner (ambiguities/research/amb.2025.s179_carryover_no_property.md) quotes the archived 26 U.S.C. 179(b)(3)(B), Treas. Reg. 1.179-2(b) and 1.179-3(b) to (d), and P.L. 119-21 sec. 70306. The carryover's room is "the limitation of paragraphs (1) and (2)", the dollar amount, which the cost of 2025 property reduces only above $4,000,000. Form 4562 computes exactly that when line 1 is the $2,500,000 the line 1 instruction states (p. 4). The optional Worksheet 1 instead takes the smaller of that and the cost of 2025 property, a cap that changes no return without a carryover and departs from the statute on a return with one. (i4562, p. 4, Line 1 and Worksheet 1; p. 5, Line 5)
 Interpretation amb.2025.sli_ratio_places: Round the ratio half-up to three decimal places (the prorate atom with places 3 on sli.line8_figured). The owner's ruling. Three places is the least precision the text allows and the usual hand computation; the readings differ by at most a few cents of deduction (for example $167.50 against $166.67 on line 8 when line 6 is $1,000 and line 1 is $2,500).
  (i1040gi, p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 7)
 Scope: single-person return (Form 1040 lines 1a–37 with the in-scope schedules and refusal screens). Unsupported paths are refused with citations. No filing or transmission.

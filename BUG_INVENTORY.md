@@ -772,3 +772,61 @@ later grouping.
 - **Where:** 60 locators in `forms/2025/sc.yaml`, `scveh.yaml`, `asset.yaml`, `s179.yaml` and `f4562.yaml`; 11 refusal expectations in `fixtures/2025/stage14.json` that carry the citation. The same check over the other documents' citations in the Stage 14 forms found four more in `sc.yaml`, i1040sc lines 23, 25, 26 and 27a one page early (those reviews had the whole of i1040sc).
 - **Fix:** each corrected to the page where its heading is printed; the four reviews whose excerpts changed were run again.
 - **Tags:** citation-page-wrong; review-input-gap; caught-by-review
+
+## BUG-0066 — i4562 and i1040sc citations named the wrong page for headings BUG-0065's check missed
+
+- **Date:** 2026-10-20
+- **Caught by:** researching `amb.2025.s179_carryover_no_property` for the owner: reading Worksheet 1 page by page in the PDF (`pdftotext -f N -l N`) put it on p. 4, where the register and `s179` cited p. 3. A check of every i4562 and i1040sc page reference in the forms, parameters, register and interviews against the PDF page that prints its heading then found the rest.
+- **Symptom:** a reader following the citation turns to a page without the text. The reviews were not affected: the `s179`, `asset`, `scveh` and `f4562` reviews were given the cited pages and their neighbours (for `s179`, pp. 3 to 5), and the `sc` reviews the whole of i1040sc.
+- **Root cause:** BUG-0065's check matched only "Line N" headings in the forms, so headings of other shapes kept the one-page-early error, and the interview files kept their own copies of locators BUG-0065 corrected in the forms.
+- **Where:**
+  - i4562 (12 locators): Worksheet 1 (p. 4, cited p. 3) in `forms/2025/s179.yaml` (3) and `params/2025.yaml` (2); the register's Worksheet 1 and Line 5 (pp. 4 and 5, cited pp. 3 and 4); How to figure the allowance (p. 7, cited p. 6) in `asset.yaml` (2) and `scveh.yaml` (1); Who Must File (p. 2, cited p. 1) in `asset.yaml` and `f4562.yaml`; Listed Property and its Exceptions (p. 3, cited p. 2) in `asset.yaml`.
+  - i1040sc, in `sc.yaml`, `scveh.yaml`, `params/2025.yaml` and the three interview files:
+    - the Simplified Method Worksheet lines (p. 12, cited p. 11) and its instructions (p. 11, cited p. 10);
+    - Reporting your expenses for business use of the home (p. 14, cited p. 13);
+    - line 24b's Amount of deduction (p. 10, cited p. 9);
+    - in `sc.special`: Medicaid waiver payments and Installment sales (p. 6, cited p. 5), Lines 16a and 16b (p. 8, cited p. 7), Line 23 (p. 9, cited p. 8), Lines 26 and 27a (p. 10, cited p. 9);
+    - Information on your vehicle (p. 7, cited p. 6);
+    - in the interviews only, Lines 23, 25 and 26 (pp. 9 and 10, cited a page early; the forms were corrected under BUG-0065).
+- **Fix:** each corrected to the page where its heading is printed, checked page by page against the PDFs. A check in `check-all` is TASKS.md T-044.
+- **Tags:** citation-page-wrong; check-too-narrow; caught-by-research
+
+## BUG-0067 — The gross receipts question asked for every Form 1099-MISC amount
+
+- **Date:** 2026-10-20
+- **Caught by:** the render review of `sc`, rerun for T-042: "Line 6 separately takes 'Prizes and awards related to your trade or business' and similar items that can appear on Form 1099-MISC, so 'all amounts reported ... on Forms 1099-MISC' can put line 6 income on line 1."
+- **Symptom:** the line 1 question asked for gross receipts "including all amounts reported to you on Forms 1099-NEC, 1099-MISC and 1099-K", while the line 6 question asks for prizes, awards and other business income. A filer could enter a Form 1099-MISC prize on both lines, overstating gross income.
+- **Root cause:** the question paraphrased "Be sure to check any Forms 1099 you received for business income that must be reported on this line" (i1040sc p. 5, Line 1) as "all amounts" on those forms.
+- **Where:** the `sc.line1` source in `forms/2025/sc.yaml` and the same prompt in the three interview files.
+- **Fix:** the question now asks for gross receipts "including amounts properly shown on Forms 1099-NEC and any other gross receipts of this business reported to you on a Form 1099 (such as Form 1099-K); not the other business income asked about separately, such as prizes and awards". The rerun render review matches the new wording.
+- **Tags:** render-wording; double-count-risk; caught-by-review
+
+## BUG-0068 — Class M jobs did not give a collection entry the fields of its enclosing entry
+
+- **Date:** 2026-10-20
+- **Caught by:** the class M rerun of `sc` for T-042: on returns with Form W-2 wages the model's Form 7206 line 7 and QBI self-employment tax share differed from the project ("Assumes no W-2 wages (Schedule 1 line 15 not given)"). Worked by hand, the project was right: for `classm.sc.3`, $176,100 of W-2 social security wages leave only the 2.9% part, $53,769.20 x 92.35% x 2.9% = $1,440.02, one-half $720.01.
+- **Symptom:** the model refigured the person's Schedule SE line 13 without the W-2 wages it never saw, so every line built on it disagreed; on returns without W-2 wages the refigured amount happened to agree, which hid the gap in earlier runs.
+- **Root cause:** `buildJob` in `engine/src/classm.ts` skips references into collection documents ("collection fields are given per entry below"), but only the collections a document sums over were given below; a reference to the enclosing entry (`person.se_line13`, `person.s16`, `person.positive_profits` read by `sc`) was given nowhere.
+- **Where:** `engine/src/classm.ts`, `buildCollectionJob`.
+- **Fix:** each entry is now given the fields of its enclosing entries that the document reads, labelled as given. The `sc` jobs were rebuilt and its class M rerun. `asset`, `scveh` and `ltc` ran under the gap and their logs agree or are ruled; their next class M run will see the givens.
+- **Tags:** review-input-gap; classm-tooling; caught-by-review
+
+## BUG-0069 — The 300 square feet of the simplified method applied to each business, not to all of them
+
+- **Date:** 2026-10-20
+- **Caught by:** the render review of `sc`, rerun for T-042: "The 300 square foot cap is applied to each Schedule C separately. The text says 'You are limited to a maximum of 300 square feet for all of the businesses you conduct in your home', and no screen or refusal covers more than one business in the same home."
+- **Symptom:** a person with two businesses using the home could claim up to 300 square feet for each, overstating the home office deduction.
+- **Root cause:** the simplified method worksheet was encoded per Schedule C, as the worksheet is printed, without the paragraph that makes the 300 square feet a limit across a person's businesses (i1040sc p. 10, Simplified method).
+- **Where:** `forms/2025/sc.yaml` (`sc.ho_sqft`), `forms/2025/person.yaml`.
+- **Fix (owner):** a person with more than one Schedule C claiming the business use of the home is refused (`person.ho_count`, `sc.ho_multi` on `sc.ho_sqft`); fixtures `stage14.ho.refuse_two_businesses` and `stage14.ho.second_business_no_ho`.
+- **Tags:** cross-entry-limit; overstatement; caught-by-review
+
+## BUG-0070 — The employee benefit question excluded the filer's own deductible dependent care contributions
+
+- **Date:** 2026-10-20
+- **Caught by:** the render review of `sc`, rerun for T-042: "The instructions allow your own dependent care contributions: 'If you made contributions on your behalf as a self-employed person to a dependent care assistance program, complete Form 2441, Parts I and III, to figure your deductible contributions.'"
+- **Symptom:** the line 14 question said "not for yourself", so a self-employed filer's own contributions to a dependent care assistance program, deductible on line 14 after Form 2441, were left out with no refusal (an understatement).
+- **Root cause:** "not for yourself" was written from the line 14 rules for accident and health plans and group-term life insurance, which do exclude the filer's own contributions, and applied to dependent care, which does not.
+- **Where:** `forms/2025/sc.yaml` (`sc.line14`, `sc.special`) and the three interview files.
+- **Fix (owner):** Form 2441 is not built, so the Schedule C screen `sc.special` now names these contributions and refuses the return.
+- **Tags:** render-wording; understatement; caught-by-review

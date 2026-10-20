@@ -236,7 +236,7 @@ register:
       cite:
         doc: p946-html
         locator: Chapter 5, Deductions After the Recovery Period, and its example
-      status: Agent reading, Stage 14, for the owner's review.
+      status: Owner accepted, after Stage 14.
     - id: amb.2025.mq_joint
       text_at_issue: 'Pub. 946 chapter 4, Which Convention Applies?: the mid-quarter convention applies if "the total depreciable
         bases of MACRS property you placed in service during the last 3 months of the tax year ... are more than 40% of the total
@@ -278,7 +278,7 @@ register:
       cite:
         doc: p560
         locator: chapter 5, Rate Table for Self-Employed and Rate Worksheet for Self-Employed
-      status: Agent reading, Stage 14, for the owner's review.
+      status: Owner accepted, after Stage 14.
     - id: amb.2025.f7206_line15_person
       text_at_issue: 'Form 7206 line 7: "Multiply Schedule 1 (Form 1040), line 15, deductible part of self-employment tax, by
         the percentage on line 6"; the Schedule 1 line 17 worksheet, line 2, subtracts "any deductions on Schedule 1, lines 15
@@ -293,7 +293,7 @@ register:
       cite:
         doc: f7206
         locator: Form 7206 (2025), lines 5 to 9; i1040gi Schedule 1 line 17 worksheet, line 2
-      status: Agent reading, Stage 14, for the owner's review.
+      status: Owner accepted, after Stage 14.
     - id: amb.2025.f7206_ratio_places
       text_at_issue: 'Form 7206 line 6: "Divide line 4 by line 5". No precision is given.'
       readings:
@@ -304,7 +304,7 @@ register:
       cite:
         doc: f7206
         locator: Form 7206 (2025), line 6
-      status: Agent reading, Stage 14, for the owner's review.
+      status: Owner accepted, after Stage 14.
     - id: amb.2025.f7206_plan_attribution
       text_at_issue: 'Form 7206 line 9: "Enter the amount, if any, from Schedule 1 (Form 1040), line 16, ... attributable to the
         same trade or business in which the insurance plan is established." The instructions do not say how a contribution figured
@@ -319,7 +319,7 @@ register:
       cite:
         doc: f7206
         locator: Form 7206 (2025), lines 6, 7 and 9
-      status: Agent reading, Stage 14, for the owner's review.
+      status: Owner accepted, after Stage 14.
     - id: amb.2025.qbi_attribution
       text_at_issue: 'Form 8995 instructions, Line 1: "To figure the total amount of QBI, you must consider all items that are
         attributable to the trade or business. This includes, but isn''t limited to, ... deductible part of self-employment tax,
@@ -335,7 +335,7 @@ register:
       cite:
         doc: i8995
         locator: Line 1, Determining your qualified business income
-      status: Agent reading, Stage 14, for the owner's review.
+      status: Owner accepted, after Stage 14.
     - id: amb.2025.s179_carryover_no_property
       text_at_issue: 'Form 4562 instructions, Worksheet 1: "1. Enter total cost of section 179 property ... placed in service
         during the tax year beginning in 2025 ... 3. Enter the smaller of line 1 or line 2 here ... 4. Enter the amount from line
@@ -347,11 +347,38 @@ register:
         carried again, not deducted.'
       - Line 1 is the $2,500,000 limit whether or not property was placed in service, so a carryover can be deducted up to the
         income limit.
-      chosen: As printed (s179.line1 is the smaller of line 2 and $2,500,000).
-      reason: The worksheet and the line 5 instruction say so in terms. The agent recalls that the deduction of a carryover is
-        not conditioned on placing new property in service, but has not verified that recollection against any archived source,
-        so the printed instructions are followed and the question is put to the owner.
+      chosen: The second. s179.line1 is the $2,500,000 the line 1 instruction states, so line 5 is the dollar limitation and a
+        carryover is deducted up to the dollar limitation less the 2025 election and up to the business income limit (line 11).
+        On a separate return line 5 is 50% of the limitation, the instruction's allocation when the spouses elect no other.
+      reason: Research for the owner (ambiguities/research/amb.2025.s179_carryover_no_property.md) quotes the archived 26 U.S.C.
+        179(b)(3)(B), Treas. Reg. 1.179-2(b) and 1.179-3(b) to (d), and P.L. 119-21 sec. 70306. The carryover's room is "the
+        limitation of paragraphs (1) and (2)", the dollar amount, which the cost of 2025 property reduces only above $4,000,000.
+        Form 4562 computes exactly that when line 1 is the $2,500,000 the line 1 instruction states (p. 4). The optional
+        Worksheet 1 instead takes the smaller of that and the cost of 2025 property, a cap that changes no return without a
+        carryover and departs from the statute on a return with one.
       cite:
         doc: i4562
-        locator: p. 3, Worksheet 1; p. 4, Line 5
-      status: Agent reading, Stage 14, for the owner's review.
+        locator: p. 4, Line 1 and Worksheet 1; p. 5, Line 5
+      status: Owner ruling after Stage 14 (T-043), on the research memo.
+    - id: amb.2025.meals_full_exceptions
+      text_at_issue: 'Schedule C instructions, Line 24b, Amount of deduction: "However, you can fully deduct meals and incidentals
+        furnished or reimbursed to an employee if you properly treat the expense as wages subject to withholding. You can also
+        fully deduct meals and incidentals provided to a nonemployee to the extent the expenses are includible in the gross income
+        of that person and reported on Form 1099-NEC. See chapter 5 of Pub. 15, Employer''s Tax Guide, for details and other
+        exceptions. See also chapter 8 of Pub. 334."'
+      readings:
+      - Only the two cases the instruction names are deducted in full.
+      - The two named cases and the other exceptions to the 50% limit, as Pub. 463 lists them (Exception to the 50% Limit for
+        Meals, p. 16), each deducted in full.
+      chosen: The second (sc.meals_100). Of Pub. 463's six exceptions, exception 2 (an employee reimbursed under an accountable
+        plan) concerns employees and is not a Schedule C expense; exception 1 is the instruction's first case; exceptions 3 to
+        6 are the client-reimbursed independent contractor, recreation for employees, food for the general public, and meals sold
+        to the public. The question asks for none of the amounts entered elsewhere on Schedule C, such as cost of goods sold.
+      reason: The instruction says other exceptions exist and points to Pub. 15 chapter 5 and Pub. 334 chapter 8. Pub. 15 (2025)
+        chapter 5 covers whether meals are wages and lists no exceptions to the limit; Pub. 334 (2025), Travel and Meals, repeats
+        the 50% rule and refers to Pub. 463, which lists the exceptions. Asking for the named cases only would leave a filer
+        whose meals fall under another exception with no correct entry.
+      cite:
+        doc: p463
+        locator: p. 16, Exception to the 50% Limit for Meals, exceptions 1 to 6
+      status: Owner ruling after Stage 14 (T-042).

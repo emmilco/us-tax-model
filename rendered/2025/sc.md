@@ -48,10 +48,10 @@
 
 ## (screen) — `sc.special`
 
-- **Authored helper label:** For this business, do you have any of these: depletion (line 12); the energy efficient commercial buildings deduction (Form 7205); wages or benefits reduced by an employment credit (Forms 5884, 8844, 8846, 8932, 8941 or 8994); business interest limited by Form 8990; recapture of depreciation or section 179 on listed property, or an inclusion amount for leased property; a chapter 11 bankruptcy case; extraterritorial income (Form 8873); installment sales of timeshares or residential lots; nontaxable Medicaid waiver payments (Notice 2014-7); research or experimental expenditures you elect to capitalize; or a capital construction fund?
-- **Encoded (Bool):** Input — For this business, do you have any of these: depletion (line 12); the energy efficient commercial buildings deduction (Form 7205); wages or benefits reduced by an employment credit (Forms 5884, 8844, 8846, 8932, 8941 or 8994); business interest limited by Form 8990; recapture of depreciation or section 179 on listed property, or an inclusion amount for leased property; a chapter 11 bankruptcy case; extraterritorial income (Form 8873); installment sales of timeshares or residential lots; nontaxable Medicaid waiver payments (Notice 2014-7); research or experimental expenditures you elect to capitalize; or a capital construction fund?
-- Expr: `{"op":"input","source":"For this business, do you have any of these: depletion (line 12); the energy efficient commercial buildings deduction (Form 7205); wages or benefits reduced by an employment credit (Forms 5884, 8844, 8846, 8932, 8941 or 8994); business interest limited by Form 8990; recapture of depreciation or section 179 on listed property, or an inclusion amount for leased property; a chapter 11 bankruptcy case; extraterritorial income (Form 8873); installment sales of timeshares or residential lots; nontaxable Medicaid waiver payments (Notice 2014-7); research or experimental expenditures you elect to capitalize; or a capital construction fund?"}`
-- Cite: [i1040sc] p. 1, What's New (research and experimental expenditures); p. 3, Capital Construction Fund; p. 5, Part I, Medicaid waiver payments and Installment sales; p. 6, Line 6; p. 7, Lines 12, 14, 16a and 16b; p. 8, Line 23; p. 9, Lines 26 and 27a (2025; sha256 b5536db9)
+- **Authored helper label:** For this business, do you have any of these: depletion (line 12); the energy efficient commercial buildings deduction (Form 7205); wages or benefits reduced by an employment credit (Forms 5884, 8844, 8846, 8932, 8941 or 8994); business interest limited by Form 8990; recapture of depreciation or section 179 on listed property, or an inclusion amount for leased property; a chapter 11 bankruptcy case; extraterritorial income (Form 8873); installment sales of timeshares or residential lots; nontaxable Medicaid waiver payments (Notice 2014-7); research or experimental expenditures you elect to capitalize; a capital construction fund; or contributions you made on your own behalf, as a self-employed person, to a dependent care assistance program (Form 2441, Parts I and III)?
+- **Encoded (Bool):** Input — For this business, do you have any of these: depletion (line 12); the energy efficient commercial buildings deduction (Form 7205); wages or benefits reduced by an employment credit (Forms 5884, 8844, 8846, 8932, 8941 or 8994); business interest limited by Form 8990; recapture of depreciation or section 179 on listed property, or an inclusion amount for leased property; a chapter 11 bankruptcy case; extraterritorial income (Form 8873); installment sales of timeshares or residential lots; nontaxable Medicaid waiver payments (Notice 2014-7); research or experimental expenditures you elect to capitalize; a capital construction fund; or contributions you made on your own behalf, as a self-employed person, to a dependent care assistance program (Form 2441, Parts I and III)?
+- Expr: `{"op":"input","source":"For this business, do you have any of these: depletion (line 12); the energy efficient commercial buildings deduction (Form 7205); wages or benefits reduced by an employment credit (Forms 5884, 8844, 8846, 8932, 8941 or 8994); business interest limited by Form 8990; recapture of depreciation or section 179 on listed property, or an inclusion amount for leased property; a chapter 11 bankruptcy case; extraterritorial income (Form 8873); installment sales of timeshares or residential lots; nontaxable Medicaid waiver payments (Notice 2014-7); research or experimental expenditures you elect to capitalize; a capital construction fund; or contributions you made on your own behalf, as a self-employed person, to a dependent care assistance program (Form 2441, Parts I and III)?"}`
+- Cite: [i1040sc] p. 1, What's New (research and experimental expenditures); p. 3, Capital Construction Fund; p. 5, Part I; p. 6, Medicaid waiver payments and Installment sales; p. 6, Line 6; p. 7, Lines 12 and 14 (including 'If you made contributions on your behalf as a self-employed person to a dependent care assistance program, complete Form 2441, Parts I and III'); p. 8, Lines 16a and 16b; p. 9, Line 23; p. 10, Lines 26 and 27a (2025; sha256 b5536db9)
 
 ## (gate) — `sc.screened`
 
@@ -63,9 +63,9 @@
 ## 1 — `sc.line1`
 
 - **IRS:** Gross receipts or sales
-- **Encoded (NonNegDollars):** Input — Gross receipts or sales of this business for 2025, including all amounts reported to you on Forms 1099-NEC, 1099-MISC and 1099-K for this business (zero if none)
+- **Encoded (NonNegDollars):** Input — Gross receipts or sales of this business for 2025, including amounts properly shown on Forms 1099-NEC and any other gross receipts of this business reported to you on a Form 1099 (such as Form 1099-K); not the other business income asked about separately, such as prizes and awards (zero if none)
 - **Refusal:** when sc.screened is true, cannot complete Schedule C items outside this tool. Statutory employee and notary income, passive and rental activities, businesses owned with your spouse, accounting method changes and the special items in the screen are outside this tool. Cite: [i1040sc] pp. 2-15, the items named in the screens of this Schedule C (2025; sha256 b5536db9)
-- Expr: `{"op":"input","source":"Gross receipts or sales of this business for 2025, including all amounts reported to you on Forms 1099-NEC, 1099-MISC and 1099-K for this business (zero if none)"}`
+- Expr: `{"op":"input","source":"Gross receipts or sales of this business for 2025, including amounts properly shown on Forms 1099-NEC and any other gross receipts of this business reported to you on a Form 1099 (such as Form 1099-K); not the other business income asked about separately, such as prizes and awards (zero if none)"}`
 - Cite: [i1040sc] p. 5, Line 1, "Enter gross receipts from your trade or business. Be sure to check any Forms 1099 you received" (2025; sha256 b5536db9)
 
 ## 2 — `sc.line2`
@@ -248,34 +248,42 @@
 - **Authored helper label:** Business meals subject to the 50% limit, at their full cost
 - **Encoded (NonNegDollars):** Input — The full cost of business meals (actual cost or the standard meal allowance) subject to the 50% limit, before applying the percentage; zero if none
 - Expr: `{"op":"input","source":"The full cost of business meals (actual cost or the standard meal allowance) subject to the 50% limit, before applying the percentage; zero if none"}`
-- Cite: [i1040sc] p. 9, Line 24b, Business meal expenses, Standard meal allowance and Amount of deduction (2025; sha256 b5536db9)
+- Cite: [i1040sc] pp. 9–10, Line 24b, Business meal expenses, Standard meal allowance and Amount of deduction (2025; sha256 b5536db9)
 
 ## (helper) — `sc.meals_80`
 
 - **Authored helper label:** Business meals during or incident to a period of duty under the Department of Transportation hours of service limits, at their full cost
 - **Encoded (NonNegDollars):** Input — The full cost of business meals consumed during or incident to a period of duty for which you were subject to the Department of Transportation hours of service limits (certain air transportation workers, interstate truck operators, certain merchant mariners), before applying the percentage; zero if none
 - Expr: `{"op":"input","source":"The full cost of business meals consumed during or incident to a period of duty for which you were subject to the Department of Transportation hours of service limits (certain air transportation workers, interstate truck operators, certain merchant mariners), before applying the percentage; zero if none"}`
-- Cite: [i1040sc] p. 9, Line 24b, Amount of deduction, "the percentage is increased to 80%" (2025; sha256 b5536db9)
+- Cite: [i1040sc] p. 10, Line 24b, Amount of deduction, "the percentage is increased to 80%" (2025; sha256 b5536db9)
+
+## (helper) — `sc.meals_100`
+
+- **Authored helper label:** Meals and incidentals not subject to the 50% limit, deducted in full
+- **Encoded (NonNegDollars):** Input — The cost of meals and incidentals not subject to the 50% limit, deducted in full: meals furnished or reimbursed to an employee and treated as wages subject to withholding; meals provided to a nonemployee, to the extent includible in their income and reported on Form 1099-NEC; meals a customer or client reimbursed you for, as an independent contractor, after you gave them adequate records; recreational, social or similar activities for your employees (such as a holiday party or a summer picnic); food and beverages provided to the general public as advertising or to promote goodwill; and meals you sell to the public. Don't include anything entered elsewhere on this Schedule C (for example, in cost of goods sold); zero if none
+- Interpretation: amb.2025.meals_full_exceptions
+- Expr: `{"op":"input","source":"The cost of meals and incidentals not subject to the 50% limit, deducted in full: meals furnished or reimbursed to an employee and treated as wages subject to withholding; meals provided to a nonemployee, to the extent includible in their income and reported on Form 1099-NEC; meals a customer or client reimbursed you for, as an independent contractor, after you gave them adequate records; recreational, social or similar activities for your employees (such as a holiday party or a summer picnic); food and beverages provided to the general public as advertising or to promote goodwill; and meals you sell to the public. Don't include anything entered elsewhere on this Schedule C (for example, in cost of goods sold); zero if none"}`
+- Cite: [i1040sc] p. 10, Line 24b, Amount of deduction, "However, you can fully deduct meals and incidentals furnished or reimbursed to an employee if you properly treat the expense as wages subject to withholding. You can also fully deduct meals and incidentals provided to a nonemployee to the extent the expenses are includible in the gross income of that person and reported on Form 1099-NEC" (2025; sha256 b5536db9)
 
 ## (helper) — `sc.meals_50_ded`
 
 - **Authored helper label:** 50% of the meals subject to the 50% limit
 - **Encoded (NonNegDollars):** Multiply helper "Business meals subject to the 50% limit, at their full cost" by 50% (0.50) (sc.meals_rate).
 - Expr: `{"amount":"sc.meals_50","op":"multiply_rate","rate":{"param":"sc.meals_rate"}}`
-- Cite: [i1040sc] p. 9, Line 24b, Amount of deduction, "you can deduct only 50% of your business meal expenses" (2025; sha256 b5536db9)
+- Cite: [i1040sc] p. 10, Line 24b, Amount of deduction, "you can deduct only 50% of your business meal expenses" (2025; sha256 b5536db9)
 
 ## (helper) — `sc.meals_80_ded`
 
 - **Authored helper label:** 80% of the meals under the hours of service limits
 - **Encoded (NonNegDollars):** Multiply helper "Business meals during or incident to a period of duty under the Department of Transportation hours of service limits, at their full cost" by 80% (0.80) (sc.meals_rate_dot).
 - Expr: `{"amount":"sc.meals_80","op":"multiply_rate","rate":{"param":"sc.meals_rate_dot"}}`
-- Cite: [i1040sc] p. 9, Line 24b, Amount of deduction (2025; sha256 b5536db9)
+- Cite: [i1040sc] p. 10, Line 24b, Amount of deduction (2025; sha256 b5536db9)
 
 ## 24b — `sc.line24b`
 
 - **IRS:** Deductible meals
-- **Encoded (NonNegDollars):** Add helper "50% of the meals subject to the 50% limit" and helper "80% of the meals under the hours of service limits".
-- Expr: `{"of":["sc.meals_50_ded","sc.meals_80_ded"],"op":"sum"}`
+- **Encoded (NonNegDollars):** Add helper "50% of the meals subject to the 50% limit", helper "80% of the meals under the hours of service limits", and helper "Meals and incidentals not subject to the 50% limit, deducted in full".
+- Expr: `{"of":["sc.meals_50_ded","sc.meals_80_ded","sc.meals_100"],"op":"sum"}`
 - Cite: [i1040sc] p. 9, Line 24b, "Enter your deductible business meal expenses" (2025; sha256 b5536db9)
 
 ## 25 — `sc.line25`
@@ -362,13 +370,21 @@
 - Expr: `{"all":[{"eq":["sc.ho_uses",{"const":true}],"op":"test"},{"eq":["sc.ho_other",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040sc] pp. 10-13, Line 30 and the Simplified Method Worksheet (2025; sha256 b5536db9)
 
+## (gate) — `sc.ho_multi`
+
+- **Authored helper label:** This person claims the business use of the home for more than one business
+- **Encoded (Bool):** column (screen) (sc.ho_uses) = true and person helper "Number of this person's Schedules C that claim the business use of the home" > 1 (a count)
+- Expr: `{"all":[{"eq":["sc.ho_uses",{"const":true}],"op":"test"},{"gt":["person.ho_count",{"const":1,"type":"Count"}],"op":"test"}],"op":"test"}`
+- Cite: [i1040sc] p. 10, Simplified method, "If you conduct more than one business that qualifies for this deduction in your home, your election to use the simplified method applies to all your qualified business uses of your home. You are limited to a maximum of 300 square feet for all of the businesses you conduct in your home" (owner: refused) (2025; sha256 b5536db9)
+
 ## 30(b) — `sc.ho_sqft`
 
 - **IRS:** The part of your home used for business (square feet)
 - **Encoded (Count):** Input — The square feet of your home used regularly and exclusively for this business (or regularly for storing inventory or product samples) throughout 2025
+- **Refusal:** when sc.ho_multi is true, cannot complete The simplified method for more than one of your businesses in your home (300 square feet allocated among them). The 300 square feet apply to all the businesses you conduct in your home together and must be allocated among them; that is outside this tool. Cite: [i1040sc] p. 10, Simplified method, "You are limited to a maximum of 300 square feet for all of the businesses you conduct in your home ... Allocate the actual square footage used (up to the maximum 300 square feet) among your qualified business uses" (2025; sha256 b5536db9)
 - **Refusal:** when sc.ho_screened is true, cannot complete Form 8829, or the simplified method with daycare, shared, part-year or multiple homes. The actual-expense method (Form 8829) and the special simplified-method cases are outside this tool. Cite: [i1040sc] pp. 10-13, Line 30, the Simplified Method Worksheet and its instructions (2025; sha256 b5536db9)
 - Expr: `{"op":"input","source":"The square feet of your home used regularly and exclusively for this business (or regularly for storing inventory or product samples) throughout 2025"}`
-- Cite: [i1040sc] p. 11, Simplified Method Worksheet, line 2, and line 30 entry spaces; p. 10, Simplified method (2025; sha256 b5536db9)
+- Cite: [i1040sc] p. 12, Simplified Method Worksheet, line 2, and line 30 entry spaces; p. 10, Simplified method (2025; sha256 b5536db9)
 
 ## 30(a) — `sc.ho_home_sqft`
 
@@ -382,49 +398,49 @@
 - **IRS:** Maximum allowable amount (per square foot)
 - **Encoded (NonNegDollars):** Enter $5 (sc.ho_rate).
 - Expr: `{"op":"param","ref":"sc.ho_rate"}`
-- Cite: [i1040sc] p. 11, Simplified Method Worksheet, line 3a, "$5" (2025; sha256 b5536db9)
+- Cite: [i1040sc] p. 12, Simplified Method Worksheet, line 3a, "$5" (2025; sha256 b5536db9)
 
 ## (helper) — `sc.ho_cap_sqft`
 
 - **Authored helper label:** Square feet not to be exceeded on line 2
 - **Encoded (Count):** Enter 300 (sc.ho_max_sqft).
 - Expr: `{"op":"param","ref":"sc.ho_max_sqft"}`
-- Cite: [i1040sc] p. 11, Simplified Method Worksheet, line 2, "Don't enter more than 300 square feet" (2025; sha256 b5536db9)
+- Cite: [i1040sc] p. 12, Simplified Method Worksheet, line 2, "Don't enter more than 300 square feet" (2025; sha256 b5536db9)
 
 ## (helper) — `sc.ho_over`
 
 - **Authored helper label:** More than 300 square feet
 - **Encoded (Bool):** line 30(b) > helper "Square feet not to be exceeded on line 2"
 - Expr: `{"gt":["sc.ho_sqft","sc.ho_cap_sqft"],"op":"test"}`
-- Cite: [i1040sc] p. 11, Simplified Method Worksheet, line 2 (2025; sha256 b5536db9)
+- Cite: [i1040sc] p. 12, Simplified Method Worksheet, line 2 (2025; sha256 b5536db9)
 
 ## (helper) — `sc.ho_line4_actual`
 
 - **Authored helper label:** Line 2 (the square feet used) times line 3c
 - **Encoded (NonNegDollars):** Multiply line 3a by the number on line 30(b).
 - Expr: `{"amount":"sc.ho_rate","count":"sc.ho_sqft","op":"multiply_count"}`
-- Cite: [i1040sc] p. 11, Simplified Method Worksheet, lines 3c and 4 (line 3b is 1.0 without daycare) (2025; sha256 b5536db9)
+- Cite: [i1040sc] p. 12, Simplified Method Worksheet, lines 3c and 4 (line 3b is 1.0 without daycare) (2025; sha256 b5536db9)
 
 ## (helper) — `sc.ho_line4_cap`
 
 - **Authored helper label:** 300 square feet times line 3c
 - **Encoded (NonNegDollars):** Multiply line 3a by the number on helper "Square feet not to be exceeded on line 2".
 - Expr: `{"amount":"sc.ho_rate","count":"sc.ho_cap_sqft","op":"multiply_count"}`
-- Cite: [i1040sc] p. 11, Simplified Method Worksheet, lines 2 to 4 (2025; sha256 b5536db9)
+- Cite: [i1040sc] p. 12, Simplified Method Worksheet, lines 2 to 4 (2025; sha256 b5536db9)
 
 ## 4 — `sc.ho_line4`
 
 - **IRS:** Multiply line 2 by line 3c
 - **Encoded (NonNegDollars):** Choose — [helper "More than 300 square feet" = false → helper "Line 2 (the square feet used) times line 3c"] [helper "More than 300 square feet" = true → helper "300 square feet times line 3c"]
 - Expr: `{"alternatives":[{"guard":{"eq":["sc.ho_over",{"const":false}],"op":"test"},"then":"sc.ho_line4_actual"},{"guard":{"eq":["sc.ho_over",{"const":true}],"op":"test"},"then":"sc.ho_line4_cap"}],"op":"choose"}`
-- Cite: [i1040sc] p. 11, Simplified Method Worksheet, line 4, with line 2 not more than 300 square feet (2025; sha256 b5536db9)
+- Cite: [i1040sc] p. 12, Simplified Method Worksheet, line 4, with line 2 not more than 300 square feet (2025; sha256 b5536db9)
 
 ## 1 — `sc.ho_line1`
 
 - **IRS:** Gross income limitation (Schedule C, line 29)
 - **Encoded (Dollars):** Enter the amount from line 29.
 - Expr: `{"from":"sc.line29","op":"copy"}`
-- Cite: [i1040sc] p. 10, Instructions for the Simplified Method Worksheet, Line 1, A to E ("Enter the amount from Schedule C, line 29"; lines B and D are zero under the screen) (2025; sha256 b5536db9)
+- Cite: [i1040sc] p. 11, Instructions for the Simplified Method Worksheet, Line 1, A to E ("Enter the amount from Schedule C, line 29"; lines B and D are zero under the screen) (2025; sha256 b5536db9)
 
 ## (helper) — `sc.ho_room`
 
@@ -459,14 +475,14 @@
 - **Authored helper label:** The smaller of line 1 or line 4, with no section 179 election (line 1 is line 29 without the section 179 deduction)
 - **Encoded (NonNegDollars):** Enter the smaller of line 4 (sc.ho_line4) or helper "Line 29 without the section 179 deduction, if zero or less zero".
 - Expr: `{"of":["sc.ho_line4","sc.ho_pre179_floor"],"op":"smaller_of"}`
-- Cite: [i1040sc] p. 11, Simplified Method Worksheet, line 5, "Enter the smaller of line 1 or line 4 ... If zero or less, enter -0-" (2025; sha256 b5536db9)
+- Cite: [i1040sc] p. 12, Simplified Method Worksheet, line 5, "Enter the smaller of line 1 or line 4 ... If zero or less, enter -0-" (2025; sha256 b5536db9)
 
 ## (helper) — `sc.ho_pre179_floor`
 
 - **Authored helper label:** Line 29 without the section 179 deduction, if zero or less zero
 - **Encoded (NonNegDollars):** Subtract helper "Zero" from helper "Line 29 without the section 179 expense deduction". If zero or less, enter -0-.
 - Expr: `{"from":"sc.line29_pre179","op":"subtract_floor0","take":"sc.zero"}`
-- Cite: [i1040sc] p. 11, Simplified Method Worksheet, line 5, "If zero or less, enter -0-" (2025; sha256 b5536db9)
+- Cite: [i1040sc] p. 12, Simplified Method Worksheet, line 5, "If zero or less, enter -0-" (2025; sha256 b5536db9)
 
 ## (gate) — `sc.ho_both_limits`
 
@@ -488,21 +504,21 @@
 - **Authored helper label:** Line 5 when line 4 is more than the room left by the section 179 elections
 - **Encoded (NonNegDollars):** Choose — [helper "No section 179 deduction is possible for this business (no 2025 election and no carryover)" = true → helper "The smaller of line 1 or line 4, with no section 179 election (line 1 is line 29 without the section 179 deduction)"] [helper "No section 179 deduction is possible for this business (no 2025 election and no carryover)" = false → helper "Line 5 when both income limits could bind"]
 - Expr: `{"alternatives":[{"guard":{"eq":["sc.ho_no179",{"const":true}],"op":"test"},"then":"sc.ho_limited"},{"guard":{"eq":["sc.ho_no179",{"const":false}],"op":"test"},"then":"sc.ho_both"}],"op":"choose"}`
-- Cite: [i1040sc] p. 11, Simplified Method Worksheet, line 5; p946 p. 19, Business Income Limit, Two different taxable income limits (2025; sha256 b5536db9)
+- Cite: [i1040sc] p. 12, Simplified Method Worksheet, line 5; p946 p. 19, Business Income Limit, Two different taxable income limits (2025; sha256 b5536db9)
 
 ## 5 — `sc.ho_line5`
 
 - **IRS:** Allowable expenses using the simplified method. Enter the smaller of line 1 or line 4
 - **Encoded (NonNegDollars):** Choose — [helper "Line 4 is not more than the smallest line 29 any section 179 allocation could give" = true → line 4 (sc.ho_line4)] [helper "Line 4 is not more than the smallest line 29 any section 179 allocation could give" = false → helper "Line 5 when line 4 is more than the room left by the section 179 elections"]
 - Expr: `{"alternatives":[{"guard":{"eq":["sc.ho_unlimited",{"const":true}],"op":"test"},"then":"sc.ho_line4"},{"guard":{"eq":["sc.ho_unlimited",{"const":false}],"op":"test"},"then":"sc.ho_line5_lim"}],"op":"choose"}`
-- Cite: [i1040sc] p. 11, Simplified Method Worksheet, line 5 (2025; sha256 b5536db9)
+- Cite: [i1040sc] p. 12, Simplified Method Worksheet, line 5 (2025; sha256 b5536db9)
 
 ## 30 — `sc.line30`
 
 - **IRS:** Expenses for business use of your home
 - **Encoded (NonNegDollars):** Choose — [column (screen) (sc.ho_uses) = true → line 5 (sc.ho_line5)] [column (screen) (sc.ho_uses) = false → helper "Zero"]
 - Expr: `{"alternatives":[{"guard":{"eq":["sc.ho_uses",{"const":true}],"op":"test"},"then":"sc.ho_line5"},{"guard":{"eq":["sc.ho_uses",{"const":false}],"op":"test"},"then":"sc.zero"}],"op":"choose"}`
-- Cite: [i1040sc] p. 13, Reporting your expenses for business use of the home, "Include the amount from line 5 of the Simplified Method Worksheet on line 30" (2025; sha256 b5536db9)
+- Cite: [i1040sc] p. 14, Reporting your expenses for business use of the home, "Include the amount from line 5 of the Simplified Method Worksheet on line 30" (2025; sha256 b5536db9)
 
 ## 31 — `sc.line31`
 

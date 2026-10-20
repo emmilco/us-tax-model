@@ -1527,7 +1527,7 @@ interview:
       order: 11
       cite:
         doc: i1040sc
-        locator: p. 6, Line 9, Information on your vehicle
+        locator: p. 6, Line 9; p. 7, Information on your vehicle
     - input: $sc
       prompt: For this person (you, or your spouse on a joint return) — Did you operate a business or practice a profession as
         a sole proprietor in 2025 (income reported to you on Forms 1099-NEC, 1099-K or 1099-MISC for your own work is usually
@@ -1579,17 +1579,18 @@ interview:
         or 8994); business interest limited by Form 8990; recapture of depreciation or section 179 on listed property, or an inclusion
         amount for leased property; a chapter 11 bankruptcy case; extraterritorial income (Form 8873); installment sales of timeshares
         or residential lots; nontaxable Medicaid waiver payments (Notice 2014-7); research or experimental expenditures you elect
-        to capitalize; or a capital construction fund?'
+        to capitalize; a capital construction fund; or contributions you made on your own behalf, as a self-employed person, to a dependent care assistance program (Form 2441, Parts I and III)?'
       help: Answer true or false.
       order: 12
       cite:
         doc: i1040sc
-        locator: p. 1, What's New (research and experimental expenditures); p. 3, Capital Construction Fund; p. 5, Part I, Medicaid
-          waiver payments and Installment sales; p. 6, Line 6; p. 7, Lines 12, 14, 16a and 16b; p. 8, Line 23; p. 9, Lines 26
-          and 27a
+        locator: p. 1, What's New (research and experimental expenditures); p. 3, Capital Construction Fund; p. 5, Part I; p.
+          6, Medicaid waiver payments and Installment sales; p. 6, Line 6; p. 7, Lines 12 and 14; p. 8, Lines 16a and 16b; p. 9, Line 23;
+          p. 10, Lines 26 and 27a
     - input: sc.line1
-      prompt: For this business — Gross receipts or sales of this business for 2025, including all amounts reported to you on
-        Forms 1099-NEC, 1099-MISC and 1099-K for this business (zero if none)
+      prompt: For this business — Gross receipts or sales of this business for 2025, including amounts properly shown on Forms
+        1099-NEC and any other gross receipts of this business reported to you on a Form 1099 (such as Form 1099-K); not the
+        other business income asked about separately, such as prizes and awards (zero if none)
       help: Money is integer cents.
       order: 12
       cite:
@@ -1724,7 +1725,7 @@ interview:
       order: 12
       cite:
         doc: i1040sc
-        locator: p. 8, Line 23
+        locator: p. 9, Line 23
     - input: sc.line24a
       prompt: For this business — Lodging and transportation for overnight business travel away from your tax home (not meals
         and not entertainment); zero if none
@@ -1740,7 +1741,7 @@ interview:
       order: 12
       cite:
         doc: i1040sc
-        locator: p. 9, Line 24b, Business meal expenses, Standard meal allowance and Amount of deduction
+        locator: pp. 9–10, Line 24b, Business meal expenses, Standard meal allowance and Amount of deduction
     - input: sc.meals_80
       prompt: For this business — The full cost of business meals consumed during or incident to a period of duty for which you
         were subject to the Department of Transportation hours of service limits (certain air transportation workers, interstate
@@ -1749,7 +1750,21 @@ interview:
       order: 12
       cite:
         doc: i1040sc
-        locator: p. 9, Line 24b, Amount of deduction, "the percentage is increased to 80%"
+        locator: p. 10, Line 24b, Amount of deduction, "the percentage is increased to 80%"
+    - input: sc.meals_100
+      prompt: 'For this business — The cost of meals and incidentals not subject to the 50% limit, deducted in full: meals
+        furnished or reimbursed to an employee and treated as wages subject to withholding; meals provided to a nonemployee, to
+        the extent includible in their income and reported on Form 1099-NEC; meals a customer or client reimbursed you for, as
+        an independent contractor, after you gave them adequate records; recreational, social or similar activities for your
+        employees (such as a holiday party or a summer picnic); food and beverages provided to the general public as
+        advertising or to promote goodwill; and meals you sell to the public. Don''t include anything entered elsewhere on this
+        Schedule C (for example, in cost of goods sold); zero if none'
+      help: Money is integer cents.
+      order: 12
+      cite:
+        doc: i1040sc
+        locator: p. 10, Line 24b, Amount of deduction, "However, you can fully deduct meals and incidentals"; for the other exceptions
+          see Pub. 463 (2025) p. 16, Exception to the 50% Limit for Meals
     - input: sc.line25
       prompt: For this business — Utility expenses of the business only (for a home phone, not the base rate of the first line
         into your residence); zero if none
@@ -1757,7 +1772,7 @@ interview:
       order: 12
       cite:
         doc: i1040sc
-        locator: p. 9, Line 25
+        locator: p. 10, Line 25
     - input: sc.line26
       prompt: For this business — Salaries and wages you paid your employees in 2025 (not amounts paid to yourself, and not wages
         deducted elsewhere); zero if none
@@ -1765,7 +1780,7 @@ interview:
       order: 12
       cite:
         doc: i1040sc
-        locator: p. 9, Line 26
+        locator: p. 10, Line 26
     - input: sc.line48
       prompt: For this business — The total of the other business expenses you list in Part V, not included on lines 8 to 27a
         or line 30; zero if none
@@ -1801,7 +1816,7 @@ interview:
       order: 12
       cite:
         doc: i1040sc
-        locator: p. 11, Simplified Method Worksheet, line 2, and line 30 entry spaces; p. 10, Simplified method
+        locator: p. 12, Simplified Method Worksheet, line 2, and line 30 entry spaces; p. 10, Simplified method
     - input: sc.ho_home_sqft
       prompt: For this business — The total square footage of your home
       help: A whole number.

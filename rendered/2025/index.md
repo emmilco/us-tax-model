@@ -25,12 +25,12 @@ Review these renderings line by line against the archived IRS sources in `source
 | ltc.md | form | 4 |
 | mq.md | worksheet | 7 |
 | otjob.md | form | 12 |
-| person.md | worksheet | 110 |
+| person.md | worksheet | 111 |
 | qbi.md | form | 13 |
 | qdcg.md | worksheet | 27 |
 | retirement.md | form | 56 |
 | s1.md | form | 27 |
-| s179.md | form | 23 |
+| s179.md | form | 26 |
 | s1a.md | form | 136 |
 | s2.md | form | 9 |
 | s3.md | form | 10 |
@@ -38,7 +38,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | sa.md | form | 58 |
 | sales.md | form | 25 |
 | sb.md | form | 12 |
-| sc.md | form | 149 |
+| sc.md | form | 151 |
 | scope.md | form | 5 |
 | scveh.md | form | 143 |
 | sd.md | form | 63 |

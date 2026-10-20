@@ -88,7 +88,7 @@ form:
       interest limited by Form 8990; recapture of depreciation or section 179 on listed property, or an inclusion amount for
       leased property; a chapter 11 bankruptcy case; extraterritorial income (Form 8873); installment sales of timeshares
       or residential lots; nontaxable Medicaid waiver payments (Notice 2014-7); research or experimental expenditures you
-      elect to capitalize; or a capital construction fund?'
+      elect to capitalize; a capital construction fund; or contributions you made on your own behalf, as a self-employed person, to a dependent care assistance program (Form 2441, Parts I and III)?'
     type: Bool
     expr:
       op: input
@@ -97,12 +97,12 @@ form:
         business interest limited by Form 8990; recapture of depreciation or section 179 on listed property, or an inclusion
         amount for leased property; a chapter 11 bankruptcy case; extraterritorial income (Form 8873); installment sales of
         timeshares or residential lots; nontaxable Medicaid waiver payments (Notice 2014-7); research or experimental expenditures
-        you elect to capitalize; or a capital construction fund?'
+        you elect to capitalize; a capital construction fund; or contributions you made on your own behalf, as a self-employed person, to a dependent care assistance program (Form 2441, Parts I and III)?'
     cite:
       doc: i1040sc
-      locator: p. 1, What's New (research and experimental expenditures); p. 3, Capital Construction Fund; p. 5, Part I, Medicaid
-        waiver payments and Installment sales; p. 6, Line 6; p. 7, Lines 12, 14, 16a and 16b; p. 8, Line 23; p. 9, Lines 26
-        and 27a
+      locator: p. 1, What's New (research and experimental expenditures); p. 3, Capital Construction Fund; p. 5, Part I; p.
+        6, Medicaid waiver payments and Installment sales; p. 6, Line 6; p. 7, Lines 12 and 14 (including 'If you made contributions on your behalf as a self-employed person to a dependent care assistance program, complete Form 2441, Parts I and III'); p. 8, Lines 16a and 16b; p. 9, Line 23;
+        p. 10, Lines 26 and 27a
   - id: sc.screened
     printed: (gate)
     label: Something on this Schedule C is outside this tool
@@ -139,8 +139,9 @@ form:
     type: NonNegDollars
     expr:
       op: input
-      source: Gross receipts or sales of this business for 2025, including all amounts reported to you on Forms 1099-NEC,
-        1099-MISC and 1099-K for this business (zero if none)
+      source: Gross receipts or sales of this business for 2025, including amounts properly shown on Forms 1099-NEC and any
+        other gross receipts of this business reported to you on a Form 1099 (such as Form 1099-K); not the other business
+        income asked about separately, such as prizes and awards (zero if none)
     cite:
       doc: i1040sc
       locator: p. 5, Line 1, "Enter gross receipts from your trade or business. Be sure to check any Forms 1099 you received"
@@ -441,7 +442,7 @@ form:
         applying the percentage; zero if none
     cite:
       doc: i1040sc
-      locator: p. 9, Line 24b, Business meal expenses, Standard meal allowance and Amount of deduction
+      locator: pp. 9–10, Line 24b, Business meal expenses, Standard meal allowance and Amount of deduction
   - id: sc.meals_80
     printed: (helper)
     label: Business meals during or incident to a period of duty under the Department of Transportation hours of service limits,
@@ -454,7 +455,27 @@ form:
         certain merchant mariners), before applying the percentage; zero if none
     cite:
       doc: i1040sc
-      locator: p. 9, Line 24b, Amount of deduction, "the percentage is increased to 80%"
+      locator: p. 10, Line 24b, Amount of deduction, "the percentage is increased to 80%"
+  - id: sc.meals_100
+    printed: (helper)
+    label: Meals and incidentals not subject to the 50% limit, deducted in full
+    type: NonNegDollars
+    expr:
+      op: input
+      source: 'The cost of meals and incidentals not subject to the 50% limit, deducted in full: meals furnished or reimbursed
+        to an employee and treated as wages subject to withholding; meals provided to a nonemployee, to the extent includible
+        in their income and reported on Form 1099-NEC; meals a customer or client reimbursed you for, as an independent
+        contractor, after you gave them adequate records; recreational, social or similar activities for your employees (such
+        as a holiday party or a summer picnic); food and beverages provided to the general public as advertising or to promote
+        goodwill; and meals you sell to the public. Don''t include anything entered elsewhere on this Schedule C (for example,
+        in cost of goods sold); zero if none'
+    cite:
+      doc: i1040sc
+      locator: p. 10, Line 24b, Amount of deduction, "However, you can fully deduct meals and incidentals furnished or reimbursed
+        to an employee if you properly treat the expense as wages subject to withholding. You can also fully deduct meals and
+        incidentals provided to a nonemployee to the extent the expenses are includible in the gross income of that person and
+        reported on Form 1099-NEC"
+    ambiguity: amb.2025.meals_full_exceptions
   - id: sc.meals_50_ded
     printed: (helper)
     label: 50% of the meals subject to the 50% limit
@@ -466,7 +487,7 @@ form:
         param: sc.meals_rate
     cite:
       doc: i1040sc
-      locator: p. 9, Line 24b, Amount of deduction, "you can deduct only 50% of your business meal expenses"
+      locator: p. 10, Line 24b, Amount of deduction, "you can deduct only 50% of your business meal expenses"
   - id: sc.meals_80_ded
     printed: (helper)
     label: 80% of the meals under the hours of service limits
@@ -478,7 +499,7 @@ form:
         param: sc.meals_rate_dot
     cite:
       doc: i1040sc
-      locator: p. 9, Line 24b, Amount of deduction
+      locator: p. 10, Line 24b, Amount of deduction
   - id: sc.line24b
     printed: 24b
     label: Deductible meals
@@ -488,6 +509,7 @@ form:
       of:
       - sc.meals_50_ded
       - sc.meals_80_ded
+      - sc.meals_100
     cite:
       doc: i1040sc
       locator: p. 9, Line 24b, "Enter your deductible business meal expenses"
@@ -679,6 +701,27 @@ form:
     cite:
       doc: i1040sc
       locator: pp. 10-13, Line 30 and the Simplified Method Worksheet
+  - id: sc.ho_multi
+    printed: (gate)
+    label: This person claims the business use of the home for more than one business
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - sc.ho_uses
+        - const: true
+      - op: test
+        gt:
+        - person.ho_count
+        - const: 1
+          type: Count
+    cite:
+      doc: i1040sc
+      locator: 'p. 10, Simplified method, "If you conduct more than one business that qualifies for this deduction in your home,
+        your election to use the simplified method applies to all your qualified business uses of your home. You are limited
+        to a maximum of 300 square feet for all of the businesses you conduct in your home" (owner: refused)'
   - id: sc.ho_sqft
     printed: 30(b)
     label: The part of your home used for business (square feet)
@@ -689,8 +732,17 @@ form:
         or product samples) throughout 2025
     cite:
       doc: i1040sc
-      locator: p. 11, Simplified Method Worksheet, line 2, and line 30 entry spaces; p. 10, Simplified method
+      locator: p. 12, Simplified Method Worksheet, line 2, and line 30 entry spaces; p. 10, Simplified method
     refuses:
+    - when: sc.ho_multi
+      form: The simplified method for more than one of your businesses in your home (300 square feet allocated among them)
+      remedy: The 300 square feet apply to all the businesses you conduct in your home together and must be allocated among
+        them; that is outside this tool.
+      cite:
+        doc: i1040sc
+        locator: p. 10, Simplified method, "You are limited to a maximum of 300 square feet for all of the businesses you
+          conduct in your home ... Allocate the actual square footage used (up to the maximum 300 square feet) among your
+          qualified business uses"
     - when: sc.ho_screened
       form: Form 8829, or the simplified method with daycare, shared, part-year or multiple homes
       remedy: The actual-expense method (Form 8829) and the special simplified-method cases are outside this tool.
@@ -716,7 +768,7 @@ form:
       ref: sc.ho_rate
     cite:
       doc: i1040sc
-      locator: p. 11, Simplified Method Worksheet, line 3a, "$5"
+      locator: p. 12, Simplified Method Worksheet, line 3a, "$5"
   - id: sc.ho_cap_sqft
     printed: (helper)
     label: Square feet not to be exceeded on line 2
@@ -726,7 +778,7 @@ form:
       ref: sc.ho_max_sqft
     cite:
       doc: i1040sc
-      locator: p. 11, Simplified Method Worksheet, line 2, "Don't enter more than 300 square feet"
+      locator: p. 12, Simplified Method Worksheet, line 2, "Don't enter more than 300 square feet"
   - id: sc.ho_over
     printed: (helper)
     label: More than 300 square feet
@@ -738,7 +790,7 @@ form:
       - sc.ho_cap_sqft
     cite:
       doc: i1040sc
-      locator: p. 11, Simplified Method Worksheet, line 2
+      locator: p. 12, Simplified Method Worksheet, line 2
   - id: sc.ho_line4_actual
     printed: (helper)
     label: Line 2 (the square feet used) times line 3c
@@ -749,7 +801,7 @@ form:
       count: sc.ho_sqft
     cite:
       doc: i1040sc
-      locator: p. 11, Simplified Method Worksheet, lines 3c and 4 (line 3b is 1.0 without daycare)
+      locator: p. 12, Simplified Method Worksheet, lines 3c and 4 (line 3b is 1.0 without daycare)
   - id: sc.ho_line4_cap
     printed: (helper)
     label: 300 square feet times line 3c
@@ -760,7 +812,7 @@ form:
       count: sc.ho_cap_sqft
     cite:
       doc: i1040sc
-      locator: p. 11, Simplified Method Worksheet, lines 2 to 4
+      locator: p. 12, Simplified Method Worksheet, lines 2 to 4
   - id: sc.ho_line4
     printed: '4'
     label: Multiply line 2 by line 3c
@@ -782,7 +834,7 @@ form:
         then: sc.ho_line4_cap
     cite:
       doc: i1040sc
-      locator: p. 11, Simplified Method Worksheet, line 4, with line 2 not more than 300 square feet
+      locator: p. 12, Simplified Method Worksheet, line 4, with line 2 not more than 300 square feet
   - id: sc.ho_line1
     printed: '1'
     label: Gross income limitation (Schedule C, line 29)
@@ -792,7 +844,7 @@ form:
       from: sc.line29
     cite:
       doc: i1040sc
-      locator: p. 10, Instructions for the Simplified Method Worksheet, Line 1, A to E ("Enter the amount from Schedule C,
+      locator: p. 11, Instructions for the Simplified Method Worksheet, Line 1, A to E ("Enter the amount from Schedule C,
         line 29"; lines B and D are zero under the screen)
   - id: sc.ho_room
     printed: (helper)
@@ -853,7 +905,7 @@ form:
       - sc.ho_pre179_floor
     cite:
       doc: i1040sc
-      locator: p. 11, Simplified Method Worksheet, line 5, "Enter the smaller of line 1 or line 4 ... If zero or less, enter
+      locator: p. 12, Simplified Method Worksheet, line 5, "Enter the smaller of line 1 or line 4 ... If zero or less, enter
         -0-"
   - id: sc.ho_pre179_floor
     printed: (helper)
@@ -865,7 +917,7 @@ form:
       take: sc.zero
     cite:
       doc: i1040sc
-      locator: p. 11, Simplified Method Worksheet, line 5, "If zero or less, enter -0-"
+      locator: p. 12, Simplified Method Worksheet, line 5, "If zero or less, enter -0-"
   - id: sc.ho_both_limits
     printed: (gate)
     label: The gross income limitation could bind together with the section 179 business income limit
@@ -923,7 +975,7 @@ form:
         then: sc.ho_both
     cite:
       doc: i1040sc
-      locator: p. 11, Simplified Method Worksheet, line 5; p946 p. 19, Business Income Limit, Two different taxable income
+      locator: p. 12, Simplified Method Worksheet, line 5; p946 p. 19, Business Income Limit, Two different taxable income
         limits
   - id: sc.ho_line5
     printed: '5'
@@ -946,7 +998,7 @@ form:
         then: sc.ho_line5_lim
     cite:
       doc: i1040sc
-      locator: p. 11, Simplified Method Worksheet, line 5
+      locator: p. 12, Simplified Method Worksheet, line 5
   - id: sc.line30
     printed: '30'
     label: Expenses for business use of your home
@@ -968,7 +1020,7 @@ form:
         then: sc.zero
     cite:
       doc: i1040sc
-      locator: p. 13, Reporting your expenses for business use of the home, "Include the amount from line 5 of the Simplified
+      locator: p. 14, Reporting your expenses for business use of the home, "Include the amount from line 5 of the Simplified
         Method Worksheet on line 30"
   - id: sc.line31
     printed: '31'
