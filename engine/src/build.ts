@@ -2,7 +2,7 @@
 // manifest, write canonical JSON, validate against the schema, and run the
 // static checks. Fails with a non-zero exit on any error.
 
-import { mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { parse as parseYaml } from "yaml";
 import { Ajv2020 } from "ajv/dist/2020.js";
@@ -247,7 +247,10 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
       if (!unread && l.display) errors.push(`${d.id}.${l.id}: marked display but read by another line or an interview target`);
     }
   }
-  if (errors.length === 0) errors.push(...checkInterview(data, interview), ...checkSalesInterview(data, salesInterview), ...checkSalesInterview(data, stage4Interview, "stage4"), ...checkSalesInterview(data, fullInterview, "stage5"));
+  // The interview path checks walk the year's fixtures; a year being adopted has none until
+  // tools/fixtures_year.py carries them over, which needs this build.
+  if (!existsSync(yearPath("fixtures"))) stats.push(`interview path checks skipped: no fixtures/${YEAR}/ yet`);
+  else if (errors.length === 0) errors.push(...checkInterview(data, interview), ...checkSalesInterview(data, salesInterview), ...checkSalesInterview(data, stage4Interview, "stage4"), ...checkSalesInterview(data, fullInterview, "stage5"));
   stats.push("interview: Stage 2 finite domains checked; Stage 3 fixture paths checked for reachability, termination and answer-order invariance (not exhaustive)");
 
   // Write canonical output.

@@ -2242,11 +2242,20 @@
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
-        "person[taxpayer].w2[emp_a].box1": 1910300,
+        "person[taxpayer].w2[emp_a].box1": {
+          "param": "eic.limit0.other",
+          "offset": -100
+        },
         "person[taxpayer].w2[emp_a].box2": 0,
-        "person[taxpayer].w2[emp_a].box3": 1910300,
+        "person[taxpayer].w2[emp_a].box3": {
+          "param": "eic.limit0.other",
+          "offset": -100
+        },
         "person[taxpayer].w2[emp_a].box4": 118439,
-        "person[taxpayer].w2[emp_a].box5": 1910300,
+        "person[taxpayer].w2[emp_a].box5": {
+          "param": "eic.limit0.other",
+          "offset": -100
+        },
         "person[taxpayer].w2[emp_a].box6": 27699,
         "person[taxpayer].w2[emp_a].box7": 0,
         "$dependent": [],
@@ -2397,11 +2406,20 @@
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
-        "person[taxpayer].w2[emp_a].box1": 1910400,
+        "person[taxpayer].w2[emp_a].box1": {
+          "param": "eic.limit0.other",
+          "offset": 0
+        },
         "person[taxpayer].w2[emp_a].box2": 0,
-        "person[taxpayer].w2[emp_a].box3": 1910400,
+        "person[taxpayer].w2[emp_a].box3": {
+          "param": "eic.limit0.other",
+          "offset": 0
+        },
         "person[taxpayer].w2[emp_a].box4": 118445,
-        "person[taxpayer].w2[emp_a].box5": 1910400,
+        "person[taxpayer].w2[emp_a].box5": {
+          "param": "eic.limit0.other",
+          "offset": 0
+        },
         "person[taxpayer].w2[emp_a].box6": 27701,
         "person[taxpayer].w2[emp_a].box7": 0,
         "$dependent": [],
@@ -2756,7 +2774,10 @@
         "eic.us_home": true,
         "eic.married": false,
         "dependent[child].us_half": true,
-        "interest[bank_a].amount": 1195100,
+        "interest[bank_a].amount": {
+          "param": "eic.investment_limit",
+          "offset": 100
+        },
         "dependent[child].eic_ssn": true,
         "$retirement": [],
         "ssb.benefits": 0,
@@ -3158,11 +3179,20 @@
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
-        "person[taxpayer].w2[emp_a].box1": 5043400,
+        "person[taxpayer].w2[emp_a].box1": {
+          "param": "eic.limit1.other",
+          "offset": 0
+        },
         "person[taxpayer].w2[emp_a].box2": 0,
-        "person[taxpayer].w2[emp_a].box3": 5043400,
+        "person[taxpayer].w2[emp_a].box3": {
+          "param": "eic.limit1.other",
+          "offset": 0
+        },
         "person[taxpayer].w2[emp_a].box4": 312691,
-        "person[taxpayer].w2[emp_a].box5": 5043400,
+        "person[taxpayer].w2[emp_a].box5": {
+          "param": "eic.limit1.other",
+          "offset": 0
+        },
         "person[taxpayer].w2[emp_a].box6": 73129,
         "person[taxpayer].w2[emp_a].box7": 0,
         "$dependent": [
@@ -3309,11 +3339,20 @@
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
-        "person[taxpayer].w2[emp_a].box1": 5731000,
+        "person[taxpayer].w2[emp_a].box1": {
+          "param": "eic.limit2.other",
+          "offset": 0
+        },
         "person[taxpayer].w2[emp_a].box2": 0,
-        "person[taxpayer].w2[emp_a].box3": 5731000,
+        "person[taxpayer].w2[emp_a].box3": {
+          "param": "eic.limit2.other",
+          "offset": 0
+        },
         "person[taxpayer].w2[emp_a].box4": 355322,
-        "person[taxpayer].w2[emp_a].box5": 5731000,
+        "person[taxpayer].w2[emp_a].box5": {
+          "param": "eic.limit2.other",
+          "offset": 0
+        },
         "person[taxpayer].w2[emp_a].box6": 83100,
         "person[taxpayer].w2[emp_a].box7": 0,
         "$dependent": [
@@ -3482,11 +3521,20 @@
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
-        "person[taxpayer].w2[emp_a].box1": 6155500,
+        "person[taxpayer].w2[emp_a].box1": {
+          "param": "eic.limit3.other",
+          "offset": 0
+        },
         "person[taxpayer].w2[emp_a].box2": 0,
-        "person[taxpayer].w2[emp_a].box3": 6155500,
+        "person[taxpayer].w2[emp_a].box3": {
+          "param": "eic.limit3.other",
+          "offset": 0
+        },
         "person[taxpayer].w2[emp_a].box4": 381641,
-        "person[taxpayer].w2[emp_a].box5": 6155500,
+        "person[taxpayer].w2[emp_a].box5": {
+          "param": "eic.limit3.other",
+          "offset": 0
+        },
         "person[taxpayer].w2[emp_a].box6": 89255,
         "person[taxpayer].w2[emp_a].box7": 0,
         "$dependent": [
@@ -3678,11 +3726,20 @@
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
-        "person[taxpayer].w2[emp_a].box1": 2621400,
+        "person[taxpayer].w2[emp_a].box1": {
+          "param": "eic.limit0.joint",
+          "offset": 0
+        },
         "person[taxpayer].w2[emp_a].box2": 0,
-        "person[taxpayer].w2[emp_a].box3": 2621400,
+        "person[taxpayer].w2[emp_a].box3": {
+          "param": "eic.limit0.joint",
+          "offset": 0
+        },
         "person[taxpayer].w2[emp_a].box4": 162527,
-        "person[taxpayer].w2[emp_a].box5": 2621400,
+        "person[taxpayer].w2[emp_a].box5": {
+          "param": "eic.limit0.joint",
+          "offset": 0
+        },
         "person[taxpayer].w2[emp_a].box6": 38010,
         "person[taxpayer].w2[emp_a].box7": 0,
         "$dependent": [],
@@ -3819,11 +3876,20 @@
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
-        "person[taxpayer].w2[emp_a].box1": 5755400,
+        "person[taxpayer].w2[emp_a].box1": {
+          "param": "eic.limit1.joint",
+          "offset": 0
+        },
         "person[taxpayer].w2[emp_a].box2": 0,
-        "person[taxpayer].w2[emp_a].box3": 5755400,
+        "person[taxpayer].w2[emp_a].box3": {
+          "param": "eic.limit1.joint",
+          "offset": 0
+        },
         "person[taxpayer].w2[emp_a].box4": 356835,
-        "person[taxpayer].w2[emp_a].box5": 5755400,
+        "person[taxpayer].w2[emp_a].box5": {
+          "param": "eic.limit1.joint",
+          "offset": 0
+        },
         "person[taxpayer].w2[emp_a].box6": 83453,
         "person[taxpayer].w2[emp_a].box7": 0,
         "$dependent": [
@@ -3983,11 +4049,20 @@
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
-        "person[taxpayer].w2[emp_a].box1": 6443000,
+        "person[taxpayer].w2[emp_a].box1": {
+          "param": "eic.limit2.joint",
+          "offset": 0
+        },
         "person[taxpayer].w2[emp_a].box2": 0,
-        "person[taxpayer].w2[emp_a].box3": 6443000,
+        "person[taxpayer].w2[emp_a].box3": {
+          "param": "eic.limit2.joint",
+          "offset": 0
+        },
         "person[taxpayer].w2[emp_a].box4": 399466,
-        "person[taxpayer].w2[emp_a].box5": 6443000,
+        "person[taxpayer].w2[emp_a].box5": {
+          "param": "eic.limit2.joint",
+          "offset": 0
+        },
         "person[taxpayer].w2[emp_a].box6": 93424,
         "person[taxpayer].w2[emp_a].box7": 0,
         "$dependent": [
@@ -4169,11 +4244,20 @@
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
-        "person[taxpayer].w2[emp_a].box1": 6867500,
+        "person[taxpayer].w2[emp_a].box1": {
+          "param": "eic.limit3.joint",
+          "offset": 0
+        },
         "person[taxpayer].w2[emp_a].box2": 0,
-        "person[taxpayer].w2[emp_a].box3": 6867500,
+        "person[taxpayer].w2[emp_a].box3": {
+          "param": "eic.limit3.joint",
+          "offset": 0
+        },
         "person[taxpayer].w2[emp_a].box4": 425785,
-        "person[taxpayer].w2[emp_a].box5": 6867500,
+        "person[taxpayer].w2[emp_a].box5": {
+          "param": "eic.limit3.joint",
+          "offset": 0
+        },
         "person[taxpayer].w2[emp_a].box6": 99579,
         "person[taxpayer].w2[emp_a].box7": 0,
         "$dependent": [

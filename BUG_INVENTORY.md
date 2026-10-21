@@ -873,3 +873,13 @@ later grouping.
 - **Where:** `interview/2025.yaml`, `sales-2025.yaml`, `stage4-2025.yaml`, `full-2025.yaml`: in `full`, 15 prompts and 65 citations.
 - **Fix:** one question bank, `interview/questions-2025.yaml`, from which every profile takes its questions; a prompt is the collection's frame followed by the form line's question text and a citation the line's (a roster question's, its collection's), filled at build, and the build fails if the bank repeats either. Four Stage 4 refusal fixtures answer the three Schedule 1-A questions now asked before their refusal.
 - **Tags:** copy-drift; stale-wording; wrong-refusal; caught-by-review
+
+## BUG-0075 — The data schema pinned the interview's tax year to 2025
+
+- **Date:** 2026-10-21
+- **Caught by:** the T-045 part 5 test, which adopted the 2025 definitions into a made-up 2026 (in a copy of the tree) and built it: "interview: schema validation failed: data/tax_year must be equal to constant".
+- **Symptom:** no year other than 2025 could build, though T-045 part 1 had made the year a setting everywhere else.
+- **Root cause:** `schema/data.schema.json` gave the interview's `tax_year` as `"const": 2025`; part 1's search for the year covered the engine, the tools and the Lean evaluator, not the schema, and a build of another year had never been run.
+- **Where:** `schema/data.schema.json`.
+- **Fix:** the schema requires an integer; the build already requires every document under a year's directories to state that year.
+- **Tags:** year-pinned; missed-by-search; caught-by-test

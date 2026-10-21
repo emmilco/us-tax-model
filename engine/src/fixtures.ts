@@ -17,6 +17,7 @@ import { differentialClassC } from "./differential.js";
 import type { Inputs } from "./types.js";
 import type { Value } from "./eval.js";
 import { YEAR, YEAR_ARGS, yearPath } from "./year.js";
+import { resolveInputs } from "./fixture-inputs.js";
 
 const ROOT = resolve(import.meta.dirname, "../..");
 const CASES_PATH = yearPath("fixtures", "stage1.json");
@@ -36,9 +37,12 @@ export interface FixtureFile {
   cases: FixtureCase[];
 }
 
+// Every fixture of the year, its inputs resolved (parameter-relative ones: fixture-inputs.ts).
 export function loadCases(): FixtureFile {
   const dir = yearPath("fixtures");
-  return { tax_year: YEAR, cases: readdirSync(dir).filter(f => /^(stage[0-9]+|classm)\.json$/.test(f)).sort().flatMap(f => (JSON.parse(readFileSync(join(dir,f),"utf8")) as FixtureFile).cases) };
+  const params = loadCanonical().params;
+  const cases = readdirSync(dir).filter(f => /^(stage[0-9]+|classm)\.json$/.test(f)).sort().flatMap(f => (JSON.parse(readFileSync(join(dir,f),"utf8")) as FixtureFile).cases);
+  return { tax_year: YEAR, cases: cases.map(c => ({ ...c, inputs: resolveInputs(c.inputs, params, c.id) })) };
 }
 
 function saveCases(file: FixtureFile): void {

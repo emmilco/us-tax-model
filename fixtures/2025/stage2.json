@@ -445,9 +445,15 @@
         "s3.line10": 0,
         "s3.line12": 0,
         "s3.line14": 0,
-        "person[taxpayer].w2[a].box3": 17609999,
+        "person[taxpayer].w2[a].box3": {
+          "param": "ss.base",
+          "offset": -1
+        },
         "person[taxpayer].w2[a].box7": 0,
-        "person[taxpayer].w2[a].box4": 1091819,
+        "person[taxpayer].w2[a].box4": {
+          "param": "ss.limit",
+          "offset": -1
+        },
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
@@ -496,7 +502,10 @@
         "s3.line14": 0,
         "person[taxpayer].w2[a].box3": 17610000,
         "person[taxpayer].w2[a].box7": 0,
-        "person[taxpayer].w2[a].box4": 1091821,
+        "person[taxpayer].w2[a].box4": {
+          "param": "ss.limit",
+          "offset": 1
+        },
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
@@ -573,7 +582,10 @@
         "s3.line14": 0,
         "person[taxpayer].w2[a].box3": 17610000,
         "person[taxpayer].w2[a].box7": 0,
-        "person[taxpayer].w2[a].box4": 1091821,
+        "person[taxpayer].w2[a].box4": {
+          "param": "ss.limit",
+          "offset": 1
+        },
         "person[taxpayer].w2[b].box3": 5000000,
         "person[taxpayer].w2[b].box7": 0,
         "person[taxpayer].w2[b].box4": 310000,
@@ -1159,7 +1171,10 @@
         "s3.line12": 0,
         "s3.line14": 0,
         "person[taxpayer].w2[a].box7": 0,
-        "person[taxpayer].w2[a].box4": 1091821,
+        "person[taxpayer].w2[a].box4": {
+          "param": "ss.limit",
+          "offset": 1
+        },
         "person[taxpayer].w2[b].box3": 5000000,
         "person[taxpayer].w2[b].box7": 0,
         "person[taxpayer].w2[b].box4": 0,

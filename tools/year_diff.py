@@ -30,7 +30,9 @@ value is printed in a changed sentence near its citation is flagged as a probabl
 value change. Tables are reported by their pages; their cells need re-extraction.
 Nothing is changed: the report points, a person decides.
 
---adopt copies the from-year's definitions (forms, tables, parameters, register,
+--adopt lists every line of the copied definitions that still names the from-year
+outside a citation (a year constant such as "y2025") on the worklist, and copies
+the from-year's definitions (forms, tables, parameters, register,
 interview, and the citation rulings, marked "carried" for review) to the to-year
 with tax_year and the year in file names and in
 "(<year>)" form citations replaced, relocates their page numbers against the
@@ -363,6 +365,11 @@ def write_report(r):
     lines += [f"| {STRENGTH[ORDER[k]]} | {v} |" for k, v in sorted(by_strength.items())]
     lines += ["", "| Kind (worklist) | Items |", "| --- | --- |"] + [f"| {k} | {v} |" for k, v in kinds.most_common()]
     lines += ["", "## Documents", ""] + [f"- `{d}`: {s}" for d, s in sorted(r["docs"].items())] + ["", "## Worklist", ""]
+    literals_file = ROOT / "reports" / str(r["to"]) / f"year_literals_from_{r['from']}.json"
+    if r["data"] == r["to"] and literals_file.exists():
+        literals = json.loads(literals_file.read_text())
+        lines += [f"### Definitions that still name {r['from']} ({len(literals)})", ""]
+        lines += [f"- `{p}:{n}`: {text[:160]}" for p, n, text in literals] + [""]
     for e in work:
         lines.append(f"### {e['kind']} `{e['id']}` ({e['file']})")
         lines.append("")
@@ -455,6 +462,16 @@ def adopt(from_year, to_year):
             r["status"] = f"carried from {f}"
         (ROOT / "reviews" / t).mkdir(parents=True, exist_ok=True)
         (ROOT / "reviews" / t / "citations.json").write_text(json.dumps(data, indent=1, ensure_ascii=False) + "\n")
+    literals = []
+    for _, dst in pairs:
+        for p in (sorted(dst.glob("*.yaml")) if dst.is_dir() else [dst]):
+            for n, line in enumerate(p.read_text(encoding="utf-8").split("\n"), 1):
+                if re.search(rf"(?<!\d){f}(?!\d)", line) and not re.search(r"\b(locator|quote):", line):
+                    literals.append((str(p.relative_to(ROOT)), n, line.strip()))
+    (ROOT / "reports" / t).mkdir(parents=True, exist_ok=True)
+    (ROOT / "reports" / t / f"year_literals_from_{f}.json").write_text(json.dumps(literals, indent=1) + "\n")
+    print(f"adopt: {len(literals)} line(s) of the {t} definitions still name {f} outside citations "
+          f"(reports/{t}/year_literals_from_{f}.json); each is on the worklist")
     print(f"adopt: copied the {f} definitions (and citation rulings, to be reviewed again) to {t}; "
           f"relocating page numbers against the {t} archive")
     subprocess.run([sys.executable, str(ROOT / "tools" / "citations.py"), "--relocate", "--year", t], check=True)

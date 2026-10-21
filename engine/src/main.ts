@@ -79,14 +79,18 @@ if (command === "review-stage5") {
   }
   if (json && html) throw new Error("select either --json or --html");
   if (batchPath) {
-    // Batch mode: a JSON array of { id, inputs }; emits { cases: { id: <eval json> } }.
+    // Batch mode: a JSON array of { id, inputs }; emits { cases: { id: <eval json> } }, or
+    // { error } for a case whose inputs the data rejects (the others are still evaluated).
     const data = loadCanonical();
     const cases = JSON.parse(readFileSync(batchPath, "utf-8")) as { id: string; inputs: Record<string, number | boolean | string> }[];
     // Written one case at a time: the whole document is larger than the longest string V8
     // allows. Written without process.exit so a large payload is not truncated on a pipe.
     process.stdout.write('{"cases":{');
     cases.forEach((c, i) => {
-      process.stdout.write(`${i ? "," : ""}${JSON.stringify(c.id)}:${resultToJson(evaluate(data, c.inputs, targetsOverride ?? allTargets(data, c.inputs)))}`);
+      let out: string;
+      try { out = resultToJson(evaluate(data, c.inputs, targetsOverride ?? allTargets(data, c.inputs))); }
+      catch (e) { out = JSON.stringify({ error: (e as Error).message }); }
+      process.stdout.write(`${i ? "," : ""}${JSON.stringify(c.id)}:${out}`);
     });
     process.stdout.write("}}\n");
   } else {

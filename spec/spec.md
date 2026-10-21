@@ -293,6 +293,17 @@ The shared blind spot of every model-driven check is that it reads the same Engl
 
 Every defect caught, by any check or reading, is recorded in `BUG_INVENTORY.md` at the repository root before or with its fix. The file is append-only: entries are never edited or removed, and a correction is a new entry citing the old one. Each entry records how the defect was caught, its symptom, its root cause, where it lived, why the existing checks did not catch it, the fix and its commit, and pattern tags. `check-all` fails if the committed prefix of the file changes or the ids are not sequential. The purpose is to make defect patterns visible, so that a recurring pattern becomes a new check rather than a recurring fix.
 
+### 6.7 Fixtures across years
+
+Adopting a tax year re-derives the previous year's fixtures instead of redoing them, and spends hand-work only where the year changed (`tools/fixtures_year.py`, run once the new year's definitions build):
+
+- A boundary case states its input relative to the parameter it straddles (`{"param": ..., "status": ..., "offset": ...}`), so it stays on its boundary when the amount is indexed. An input that is a year (a year placed in service) moves with the year.
+- Every case is evaluated on the new year's data. A case keeps its evidence class when no expected value changed and nothing a value rests on (the lines and parameters of its derivation) is on the year-diff worklist (section 7); otherwise its values are re-recorded and labelled as such, its earlier evidence kept in the note. The independent evaluator and the engine differential cover every re-recorded value.
+- An official IRS example (class A) proves nothing about another year: it is dropped and the new year's example is sought.
+- Class M hand-work runs for the documents with a line on the worklist.
+
+Expected values are never written as formulas of the parameters: an expectation computed by the project's own logic is no evidence for it.
+
 ## 7. Versioning
 
 - One definition file per form per revision; one parameter file per tax year.

@@ -3248,11 +3248,20 @@
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
-        "person[taxpayer].w2[emp_a].box1": 10000001,
+        "person[taxpayer].w2[emp_a].box1": {
+          "param": "s1a.car_base_other",
+          "offset": 1
+        },
         "person[taxpayer].w2[emp_a].box2": 0,
-        "person[taxpayer].w2[emp_a].box3": 10000001,
+        "person[taxpayer].w2[emp_a].box3": {
+          "param": "s1a.car_base_other",
+          "offset": 1
+        },
         "person[taxpayer].w2[emp_a].box4": 620000,
-        "person[taxpayer].w2[emp_a].box5": 10000001,
+        "person[taxpayer].w2[emp_a].box5": {
+          "param": "s1a.car_base_other",
+          "offset": 1
+        },
         "person[taxpayer].w2[emp_a].box6": 145000,
         "person[taxpayer].w2[emp_a].box7": 0,
         "$dependent": [],

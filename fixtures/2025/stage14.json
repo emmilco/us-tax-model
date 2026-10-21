@@ -18059,7 +18059,11 @@
         "person[taxpayer].sc[b].line16a": 0,
         "person[taxpayer].sc[b].line16b": 0,
         "person[taxpayer].sc[b].line17": 0,
-        "person[taxpayer].sc[b].line18": 31300000,
+        "person[taxpayer].sc[b].line18": {
+          "param": "s1.ebl_threshold",
+          "status": "single",
+          "offset": 0
+        },
         "person[taxpayer].sc[b].line19": 0,
         "person[taxpayer].sc[b].rent_equipment": 0,
         "person[taxpayer].sc[b].line20b": 0,
@@ -18941,7 +18945,10 @@
         "person[taxpayer].sc[d].asset[press].class": "c00_11",
         "person[taxpayer].sc[d].asset[press].screen": false,
         "person[taxpayer].sc[d].asset[press].placed": "y2025",
-        "person[taxpayer].sc[d].asset[press].cost": 400000100,
+        "person[taxpayer].sc[d].asset[press].cost": {
+          "param": "s179.threshold",
+          "offset": 100
+        },
         "person[taxpayer].sc[d].asset[press].pct": 100,
         "person[taxpayer].sc[d].asset[press].listed": false,
         "person[taxpayer].sc[d].asset[press].quarter": "q1",
@@ -19693,7 +19700,10 @@
         "person[taxpayer].sc[h].scveh[suv].screen": false,
         "person[taxpayer].sc[h].scveh[suv].passenger": false,
         "person[taxpayer].sc[h].scveh[suv].suv": true,
-        "person[taxpayer].sc[h].scveh[suv].s179_elect": 3130100,
+        "person[taxpayer].sc[h].scveh[suv].s179_elect": {
+          "param": "s179.suv_limit",
+          "offset": 100
+        },
         "person[taxpayer].sc[h].scveh[suv].after_jan19": true,
         "person[taxpayer].sc[h].scveh[suv].bonus_choice": "full",
         "person[taxpayer].sc[h].scveh[suv].bonus_same": true,
@@ -19872,7 +19882,10 @@
         "s179.line10": 0,
         "person[taxpayer].plan_screen": false,
         "person[taxpayer].sep_rate": 25,
-        "person[taxpayer].sep_contrib": 7000000
+        "person[taxpayer].sep_contrib": {
+          "param": "ret.sep_dollar_limit",
+          "offset": 0
+        }
       },
       "expect": {
         "person[taxpayer].sep_s21": {
@@ -20041,7 +20054,10 @@
         "person[taxpayer].plan": "simple",
         "s179.line10": 0,
         "person[taxpayer].plan_screen": false,
-        "person[taxpayer].simple_deferral": 1650000,
+        "person[taxpayer].simple_deferral": {
+          "param": "ret.simple_limit",
+          "offset": 0
+        },
         "person[taxpayer].simple_age": "under50",
         "person[taxpayer].simple_kind": "match",
         "person[taxpayer].simple_employer": 0
@@ -23255,7 +23271,10 @@
         "person[taxpayer].plan": "simple",
         "s179.line10": 0,
         "person[taxpayer].plan_screen": false,
-        "person[taxpayer].simple_deferral": 1650100,
+        "person[taxpayer].simple_deferral": {
+          "param": "ret.simple_limit",
+          "offset": 100
+        },
         "person[taxpayer].simple_age": "under50",
         "person[taxpayer].simple_kind": "match",
         "person[taxpayer].simple_employer": 0
@@ -23405,7 +23424,11 @@
         "person[taxpayer].sc[b].line16a": 0,
         "person[taxpayer].sc[b].line16b": 0,
         "person[taxpayer].sc[b].line17": 0,
-        "person[taxpayer].sc[b].line18": 31300001,
+        "person[taxpayer].sc[b].line18": {
+          "param": "s1.ebl_threshold",
+          "status": "single",
+          "offset": 1
+        },
         "person[taxpayer].sc[b].line19": 0,
         "person[taxpayer].sc[b].rent_equipment": 0,
         "person[taxpayer].sc[b].line20b": 0,

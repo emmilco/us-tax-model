@@ -16,7 +16,7 @@
       "additionalProperties": false,
       "properties": {
         "tax_year": {
-          "const": 2025
+          "type": "integer"
         },
         "targets": {
           "type": "array",

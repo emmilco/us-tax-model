@@ -8,6 +8,7 @@ import { loadCanonical } from "./canonical.js";
 import { loadCases } from "./fixtures.js";
 import type { CanonicalData, Inputs } from "./types.js";
 import { YEAR_ARGS, yearPath } from "./year.js";
+import { resolveInputs } from "./fixture-inputs.js";
 
 export function integrationChecks(): void {
   const dir=mkdtempSync(join(tmpdir(),"stage2-integration-"));
@@ -65,6 +66,7 @@ export function integrationChecks(): void {
     {
       const fx=JSON.parse(readFileSync(yearPath("fixtures", "stage14.json"),"utf-8")) as {cases:{id:string;inputs:Record<string,unknown>}[]};
       const assetCase=fx.cases.find(c=>c.id==="stage14.asset.listed_and_not")!;
+      assetCase.inputs=resolveInputs(assetCase.inputs,loadCanonical().params,assetCase.id);
       const sheetPath=join(dir,"sheet-input.json");writeFileSync(sheetPath,JSON.stringify(assetCase.inputs));
       const sheet=spawnSync(process.execPath,[resolve(import.meta.dirname,"main.js"),...YEAR_ARGS,"eval","--inputs",sheetPath],{ encoding: "utf-8", maxBuffer: 256 * 1024 * 1024 });
       assert.equal(sheet.status,0);

@@ -9,10 +9,11 @@ import { isDeepStrictEqual } from "node:util";
 import { interviewState, replay, type InterviewData } from "./interview.js";
 import type { CanonicalData, Inputs } from "./types.js";
 import { yearPath } from "./year.js";
+import { resolveInputs } from "./fixture-inputs.js";
 
 export function checkInterview(data: CanonicalData, config: InterviewData, paths?: string[]): string[] {
   const errors: string[] = [];
-  const fixtures = (JSON.parse(readFileSync(yearPath("fixtures", "stage2.json"),"utf8")) as {cases:{id:string;inputs:Inputs}[]}).cases;
+  const fixtures = (JSON.parse(readFileSync(yearPath("fixtures", "stage2.json"),"utf8")) as {cases:{id:string;inputs:Inputs}[]}).cases.map(c=>({...c,inputs:resolveInputs(c.inputs,data.params,c.id)}));
   const domain = (key: string): unknown[] | undefined => {
     const template = key.replace(/(?:[a-zA-Z0-9_]+\[[^\]]+\]\.)+/g, m => m.split(".").filter(Boolean).at(-1)!.split("[")[0]+".");
     const line = data.forms.flatMap(d=>d.lines).find(l=>l.id===template);
@@ -52,6 +53,7 @@ export function checkInterview(data: CanonicalData, config: InterviewData, paths
 export function checkSalesInterview(data: CanonicalData, config: InterviewData, stage = "stage3"): string[] {
   const errors: string[]=[];
   const fixtures=JSON.parse(readFileSync(yearPath("fixtures", `${stage}.json`),"utf8")) as {cases:{id:string;inputs:Inputs}[]};
+  fixtures.cases=fixtures.cases.map(c=>({...c,inputs:resolveInputs(c.inputs,data.params,c.id)}));
   for (const fixture of fixtures.cases) {
     try {
       let current: Inputs=structuredClone(config.initial);

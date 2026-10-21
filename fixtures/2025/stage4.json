@@ -227,7 +227,11 @@
         "person[taxpayer].w2[a].box3": 0,
         "person[taxpayer].w2[a].box4": 0,
         "person[taxpayer].w2[a].box7": 0,
-        "person[taxpayer].w2[a].box5": 19999999,
+        "person[taxpayer].w2[a].box5": {
+          "param": "medicare.threshold",
+          "status": "single",
+          "offset": -1
+        },
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
@@ -344,7 +348,11 @@
         "person[taxpayer].w2[a].box3": 0,
         "person[taxpayer].w2[a].box4": 0,
         "person[taxpayer].w2[a].box7": 0,
-        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box5": {
+          "param": "medicare.threshold",
+          "status": "single",
+          "offset": 0
+        },
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
@@ -578,7 +586,11 @@
         "person[taxpayer].w2[a].box3": 0,
         "person[taxpayer].w2[a].box4": 0,
         "person[taxpayer].w2[a].box7": 0,
-        "person[taxpayer].w2[a].box5": 19999999,
+        "person[taxpayer].w2[a].box5": {
+          "param": "medicare.threshold",
+          "status": "hoh",
+          "offset": -1
+        },
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [
@@ -716,7 +728,11 @@
         "person[taxpayer].w2[a].box3": 0,
         "person[taxpayer].w2[a].box4": 0,
         "person[taxpayer].w2[a].box7": 0,
-        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box5": {
+          "param": "medicare.threshold",
+          "status": "hoh",
+          "offset": 0
+        },
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [
@@ -992,7 +1008,11 @@
         "person[taxpayer].w2[a].box3": 0,
         "person[taxpayer].w2[a].box4": 0,
         "person[taxpayer].w2[a].box7": 0,
-        "person[taxpayer].w2[a].box5": 19999999,
+        "person[taxpayer].w2[a].box5": {
+          "param": "medicare.threshold",
+          "status": "qss",
+          "offset": -1
+        },
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
@@ -1109,7 +1129,11 @@
         "person[taxpayer].w2[a].box3": 0,
         "person[taxpayer].w2[a].box4": 0,
         "person[taxpayer].w2[a].box7": 0,
-        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box5": {
+          "param": "medicare.threshold",
+          "status": "qss",
+          "offset": 0
+        },
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
@@ -1343,7 +1367,11 @@
         "person[taxpayer].w2[a].box3": 0,
         "person[taxpayer].w2[a].box4": 0,
         "person[taxpayer].w2[a].box7": 0,
-        "person[taxpayer].w2[a].box5": 12499999,
+        "person[taxpayer].w2[a].box5": {
+          "param": "medicare.threshold",
+          "status": "mfs",
+          "offset": -1
+        },
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
@@ -1457,7 +1485,11 @@
         "person[taxpayer].w2[a].box3": 0,
         "person[taxpayer].w2[a].box4": 0,
         "person[taxpayer].w2[a].box7": 0,
-        "person[taxpayer].w2[a].box5": 12500000,
+        "person[taxpayer].w2[a].box5": {
+          "param": "medicare.threshold",
+          "status": "mfs",
+          "offset": 0
+        },
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
@@ -1686,7 +1718,11 @@
         "person[taxpayer].w2[a].box3": 0,
         "person[taxpayer].w2[a].box4": 0,
         "person[taxpayer].w2[a].box7": 0,
-        "person[taxpayer].w2[a].box5": 24999999,
+        "person[taxpayer].w2[a].box5": {
+          "param": "medicare.threshold",
+          "status": "mfj",
+          "offset": -1
+        },
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
@@ -1811,7 +1847,11 @@
         "person[taxpayer].w2[a].box3": 0,
         "person[taxpayer].w2[a].box4": 0,
         "person[taxpayer].w2[a].box7": 0,
-        "person[taxpayer].w2[a].box5": 25000000,
+        "person[taxpayer].w2[a].box5": {
+          "param": "medicare.threshold",
+          "status": "mfj",
+          "offset": 0
+        },
         "person[taxpayer].w2[a].box6": 290000,
         "person[taxpayer].w2[a].box1": 10000000,
         "$dependent": [],
@@ -2380,7 +2420,11 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 49999999,
+        "person[taxpayer].w2[a].box1": {
+          "param": "sa.salt_threshold",
+          "status": "single",
+          "offset": -1
+        },
         "$dependent": [],
         "person[taxpayer].tin": true,
         "person[taxpayer].work_ssn": true,
@@ -6831,7 +6875,11 @@
         "f8960.unsupported": false,
         "f8960.refund": false,
         "f8960.allocated_taxes": 0,
-        "ftc.taxes": 29999,
+        "ftc.taxes": {
+          "param": "ftc.limit",
+          "status": "single",
+          "offset": -1
+        },
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
@@ -7057,7 +7105,11 @@
         "f8960.unsupported": false,
         "f8960.refund": false,
         "f8960.allocated_taxes": 0,
-        "ftc.taxes": 30000,
+        "ftc.taxes": {
+          "param": "ftc.limit",
+          "status": "single",
+          "offset": 0
+        },
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
@@ -11723,7 +11775,11 @@
         "f8960.unsupported": false,
         "f8960.refund": false,
         "f8960.allocated_taxes": 0,
-        "ftc.taxes": 30001,
+        "ftc.taxes": {
+          "param": "ftc.limit",
+          "status": "single",
+          "offset": 1
+        },
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,

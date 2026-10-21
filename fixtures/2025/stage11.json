@@ -3993,7 +3993,10 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 250000,
+        "sli.interest": {
+          "param": "sli.max",
+          "offset": 0
+        },
         "sli.claimed": false,
         "$sc@person[taxpayer]": [],
         "qbi.carryforward": 0
@@ -4129,7 +4132,10 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 250000,
+        "sli.interest": {
+          "param": "sli.max",
+          "offset": 0
+        },
         "sli.claimed": false,
         "person[spouse].role": "spouse",
         "person[spouse].rrta": false,
