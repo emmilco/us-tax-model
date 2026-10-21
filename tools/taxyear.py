@@ -1,5 +1,7 @@
 """The tax year a tool works on: `--year N` anywhere on the command line, or else
-the newest year listed as adopted in years.json.
+the newest year listed as adopted in years.json. A year qualifies if it has
+definitions (forms/<year>/) or a source catalog (tools/sources-<year>.json): an
+earlier year may be archived only to compare with (tools/year_diff.py).
 
 The flag is removed from sys.argv when this module is imported, so a tool's own
 argument parser never sees it; import this module before parsing arguments.
@@ -28,8 +30,8 @@ def _resolve():
             continue
         if not re.fullmatch(r"\d{4}", value):
             sys.exit(f"--year: expected a four-digit year, got '{value}'")
-        if not (ROOT / "forms" / value).is_dir():
-            sys.exit(f"--year {value}: no data for that year (forms/{value}/ does not exist)")
+        if not (ROOT / "forms" / value).is_dir() and not (ROOT / "tools" / f"sources-{value}.json").exists():
+            sys.exit(f"--year {value}: no data for that year (neither forms/{value}/ nor tools/sources-{value}.json exists)")
         return int(value)
     adopted = json.loads((ROOT / "years.json").read_text())["adopted"]
     if not adopted:

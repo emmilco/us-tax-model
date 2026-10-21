@@ -1,0 +1,1454 @@
+2024
+Instructions for Form 8960
+Net Investment Income Tax—Individuals, Estates, and Trusts
+Section references are to the Internal Revenue Code unless            Regulations section 1.1411-10. See Regulations section
+otherwise noted.                                                      1.965-1(d).
+                                                                      Excluded income. Excluded income means:
+Future Developments                                                   • Income excluded from gross income in chapter 1 of the
+                                                                      Internal Revenue Code;
+For the latest information about developments related to Form         • Income not included in net investment income; and
+8960 and its instructions, such as legislation enacted after they     • Gross income and net gain specifically excluded by section
+were published, go to IRS.gov/Form8960.                               1411, related regulations, or other guidance published in the
+                                                                      Internal Revenue Bulletin.
+General Instructions                                                     Examples of excluded items are:
+                                                                      • Wages,
+Reminders                                                             • Unemployment compensation,
+                                                                      • Alaska Permanent Fund Dividends,
+Digital assets. Income derived from transactions involving            • Alimony,
+digital assets may be subject to the tax imposed on net               • Social security benefits,
+investment income under section 1411(a), which applies in             • Tax-exempt interest income,
+addition to other income taxes imposed under Subtitle A of the        • Income from certain qualified retirement plan distributions,
+code.                                                                 and
+Charitable contribution deduction for electing small busi-            • Income subject to self-employment taxes.
+ness trusts (ESBTs). Line 18b of Form 8960 was updated to             Net investment income. Generally, net investment income
+reflect changes outlined in P. L. 115-97, section 13542, that         includes gross income from interest, dividends, annuities,
+amended the way the S portion of an ESBT accounts for                 royalties, and rents, unless they’re derived from the ordinary
+charitable contribution deductions under section 170(b) instead       course of a trade or business that isn’t (a) a passive activity, or
+of section 641(c), effective January 1, 2018. See Line 18b            (b) a trade or business of trading in financial instruments or
+Deductions for Distributions of Net Investment Income and             commodities. In addition, net investment income includes other
+Charitable Deductions.                                                gross income derived from a trade or business that’s (a) a
+Trade or business income subject to net investment in-                passive activity, or (b) a trade or business of trading in financial
+come tax (NIIT). Line 4a of Form 8960 was amended to bring            instruments or commodities. Additionally, net investment income
+attention to certain income reported on Schedule C (Form 1040)        includes net gain (to the extent taken into account in computing
+and Schedule E (Form 1040) that is subject to NIIT. This change       taxable income) attributable to the disposition of property other
+was made to the instructions for Form 8960 in tax year 2022 to        than property held in a trade or business that’s not (a) a passive
+better reflect section 1411(c)(2).                                    activity, or (b) a trade or business of trading in financial
+   These instructions are based mostly on Regulations sections        instruments or commodities. To arrive at net investment income,
+1.1411-1 through 1.1411-10.                                           the above items are reduced by deductions allowed against the
+                                                                      income tax that are properly allocable to those items of gross
+Who Must File                                                         income or net gain. See section 1411(c) and Regulations
+                                                                      sections 1.1411-4 and 1.1411-10(c).
+Attach Form 8960 to your return if your modified adjusted gross
+income (MAGI) is greater than the applicable threshold amount.        Passive foreign investment company (PFIC). Generally, a
+                                                                      PFIC is any foreign corporation if at least 75% of its gross
+Purpose of Form                                                       income is passive income or an average of at least 50% of its
+Use Form 8960 to figure the amount of your Net Investment             assets produce passive income or are held for the production of
+Income Tax (NIIT).                                                    passive income. See section 1297(a).
+                                                                      Qualified electing fund (QEF). Generally, a QEF is a PFIC for
+Definitions                                                           which the taxpayer has made an election under section 1295(b)
+Controlled foreign corporation (CFC). Generally, a CFC is             and the PFIC complies with IRS requirements for determining
+any foreign corporation if more than 50% of its voting power or       ordinary earnings and net capital gain. See section 1295(a).
+stock value is owned or considered owned by U.S. shareholders         Section 1.1411-10(g) election. An election made under
+(as defined in section 951(b)) on any day during the tax year.        Regulations section 1.1411-10(g) (section 1.1411-10(g)
+Certain foreign insurance companies are considered CFCs if            election). See Regulations Section 1.1411-10(g) Election, later.
+more than 25% of their voting power or stock value is owned or
+considered owned by U.S. shareholders (as defined in section          Section 1411 trade or business. Generally, a trade or
+951(b)) on any day during the tax year. See section 957(a) and        business that’s either a passive activity for the taxpayer or is a
+(b). Additionally, certain foreign insurance companies with           trade or business of trading in financial instruments or
+related person insurance income may be CFCs. See section              commodities. See section 1411(c)(2) and Regulations section
+953(c). A specified foreign corporation described in section          1.1411-5(a).
+965(e)(1)(B) and Regulations section 1.965-1(f)(45)(i)(B) that is
+not otherwise a CFC is treated as a CFC for purposes of
+
+
+                                        Instructions for Form 8960 (2024) Catalog Number 53783S
+Nov 18, 2024                         Department of the Treasury Internal Revenue Service www.irs.gov
+Recordkeeping                                                          you can also elect to apply the joint return election for NIIT
+                                                                       purposes. If you made a section 6013(g) or 6013(h) election, but
+For the NIIT, certain items of investment income and investment        don’t elect to apply the joint return election for NIIT purposes,
+expense receive different treatment than for the regular income        then, for NIIT purposes, you’ll file as married filing separately.
+tax. Therefore, you need to keep all records and worksheets for
+the items you need to include on Form 8960. Keep all records for            To make either election for NIIT purposes, use your combined
+the entire life of the investment to show how you calculated           items of income, gain, loss, and deduction from your joint return
+basis. You’ll need to know what you did in prior years if the          to figure your net investment income and MAGI; use the married
+investment was part of a carryback or carryforward.                    filing jointly return applicable threshold amount ($250,000); and
+                                                                       check the appropriate checkbox near the top of Form 8960, Part
+Application to Individuals                                             I.
+U.S. citizens and residents. Individuals who have for the tax             Once you make either election, its duration and termination
+year (a) MAGI that’s over an applicable threshold amount, and          are governed by sections 6013(g) and 6013(h), respectively, and
+(b) net investment income, must pay 3.8% of the smaller of (a) or      related regulations.
+(b) as their NIIT.
+   The applicable threshold amount is based on your filing                You can make either election on an amended return only if the
+status.                                                                tax year for which you’re making the election, and all tax years
+• Married Filing Jointly or Qualifying Surviving Spouse is             affected by the election, aren’t closed by the period of limitations
+$250,000.                                                              on assessment under section 6501.
+• Married Filing Separately is $125,000.                                  If you elect to apply a section 6013(g) election for NIIT
+• Single or Head of Household is $200,000.                             purposes and later determine that you didn’t meet the criteria for
+Nonresidents. The NIIT doesn’t apply to nonresident alien              doing so in that tax year, your election for NIIT purposes will have
+(NRA) individuals. If you’re a U.S. citizen or resident married to     no effect that year and for all future years. However, if, in a later
+an NRA, your filing status will be married filing separately for       year, you meet the criteria to elect to apply your section 6013(g)
+purposes of determining your MAGI, net investment income, and          election for NIIT purposes, you’ll be treated as though you did
+whether you’re subject to the NIIT. However, see information,          elect to apply your section 6013(g) election in that later year
+later, about certain elections to file jointly with NRA spouses.       unless you file (or amend) your return for that later year to report
+                                                                       your NIIT without the election for NIIT purposes.
+Dual-resident individual. If you’re a dual-resident individual,
+within the meaning of Regulations section 301.7701(b)-7(a)(1),
+you’ll generally be treated as a U.S. resident for purposes of the
+                                                                       Application to Estates and Trusts
+NIIT. However, you’ll be treated as an NRA for purposes of the         Domestic estates and trusts. The NIIT applies to estates and
+NIIT if:                                                               trusts that have undistributed net investment income and
+• You determine you would be treated as a resident of a foreign        adjusted gross income (AGI) in excess of the threshold amount.
+country for purposes of an income tax treaty between the United        The NIIT is 3.8% of the lesser of:
+States and that foreign country;                                       • The undistributed net investment income for the tax year; or
+• You elect to be treated as a resident of the foreign country for     • The excess, if any, of AGI (as defined in section 67(e)) over
+purposes of computing your U.S. income tax liability; and              the applicable threshold amount.
+• You file Form 1040-NR, U.S. Nonresident Alien Income Tax                The applicable threshold amount is the dollar amount at
+Return, and Form 8833, Treaty-Based Return Position                    which the highest tax bracket in section 1(e) begins for the tax
+Disclosure Under Section 6114 or 7701(b), as provided in               year. See the instructions for Form 1041, Schedule G, line 1a,
+Regulations section 301.7701(b)-7(b).                                  and the instructions for Form 1041-QFT, line 12, for the dollar
+Dual-status individual. If you were a dual-status                      amount at which the highest tax bracket begins for the tax year.
+individual—that is, an individual who was a resident of the United     Exception for certain domestic trusts. The following trusts
+States for part of the year and an NRA for the other part of the       aren’t subject to the NIIT.
+year—you’re subject to the NIIT only for the portion of the year        • Trusts that are exempt from income taxes imposed by subtitle
+you were a U.S. resident. The relevant threshold amount isn’t          A of the Internal Revenue Code.
+reduced or prorated for a dual-status individual.
+                                                                           1. Charitable trusts and qualified retirement plan trusts
+   If you were a U.S. resident on the last day of the tax year, file   exempt from tax under section 501.
+Form 1040 or 1040-SR and attach a statement showing your
+income for the part of the year you were a nonresident. You can            2. Charitable Remainder Trusts exempt from tax under
+use Form 1040-NR as the statement.                                     section 664.
+                                                                        • A trust or decedent's estate in which all of the unexpired
+   If you were a nonresident on the last day of the tax year, file     interests are devoted to one or more of the purposes described
+Form 1040-NR and attach a statement showing your income for            in section 170(c)(2)(B).
+the part of the year you were a U.S. resident. You can use Form         • Trusts that are classified as “grantor trusts” under sections
+1040 or 1040-SR as the statement.                                      671–679.
+   For more information, see the Instructions for Form 1040-NR          • Electing Alaska Native Settlement Funds (described in
+and Pub. 519, U.S. Tax Guide for Aliens.                               section 646).
+                                                                        • Perpetual Care (Cemetery) Trusts (described in section
+Election To File Jointly With Nonresident                              642(i)).
+Spouse—Section 6013(g) or 6013(h)                                       • Trusts that aren’t classified as “trusts” for federal income tax
+                                                                       purposes. For example:
+If you and your spouse elect to file a joint return under section:
+• 6013(g) (where an NRA is married to a U.S. citizen or resident           1. Real estate investment trusts, and
+at the end of the tax year); or                                            2. Common trust funds.
+• 6013(h) (where at least one spouse was an NRA at the
+beginning of the tax year, but is a U.S. citizen or resident married   Special computational rules for qualified funeral trusts
+to a U.S. citizen or resident at the end of the tax year),             (QFTs). The NIIT applies to the QFT (as defined in section 685)
+                                                                       by treating each beneficiary's interest in that beneficiary's
+
+2                                                                                                    Instructions for Form 8960 (2024)
+contract as a separate trust. Complete one consolidated Form          Distributions from foreign estates and foreign trusts. If
+8960 for all beneficiary contracts subject to NIIT.                   you’re a U.S. person who receives a distribution of income from a
+   If a QFT has one or more beneficiary contracts that have net       foreign estate or foreign trust, you must generally include the
+investment income in excess of the threshold amount:                  distribution in your net investment income calculation to the
+ • Complete Form 8960, lines 1–12, using only the sum of the          extent that the income is included in your AGI for regular income
+net investment income of the beneficiary contracts that have net      tax purposes. However, you don’t need to include any
+investment income in excess of the threshold amount; and              distributions of accumulated income that you receive from a
+ • On line 19b:                                                       foreign trust.
+   1. Insert the number of beneficiary contracts that have net
+investment income in excess of the threshold amount next to the       Note. The NIIT doesn’t apply directly to foreign estates or
+entry on the line, and                                                foreign trusts.
+   2. Multiply the number of beneficiary contracts that have net      Passive Activity
+investment income in excess of the threshold amount by the
+threshold amount for the year and enter that amount on line 19b.      General Rules
+    Example. For 2024, a QFT has a beneficiary contract with          Net investment income generally includes income and gain from
+$16,000 of interest income and another beneficiary contract with      passive activities. A passive activity for purposes of net
+$21,000 of dividend income. Neither contract has any properly         investment income has the same meaning as under section 469.
+allocable deductions. The threshold amount for the 2024 tax           A passive activity includes any trade or business in which you
+year is $15,200. Therefore, the QFT has two beneficiary               don’t materially participate. A passive activity also includes any
+contracts with net investment income in excess of the threshold       rental activity, regardless of whether you materially participate.
+amount for the year.                                                  There are limited exceptions for rentals. See the discussion on
+    The QFT will report $16,000 on line 1 (interest) and $21,000      rentals, later. For more details on passive activities, see the
+on line 2 (dividends). Lines 12, 18a, and 19 would each be            Instructions for Form 8582, Passive Activity Loss Limitations, and
+$37,000 ($16,000 plus $21,000). Enter “2” on the dotted line at       Pub. 925, Passive Activity and At-Risk Rules.
+the end of line 19b and enter $30,400 ($15,200 × 2) on the entry
+line for 19b. Lines 19c and 20 will be $6,600 ($37,000 less           Trade or Business Activities
+$30,400). On line 21, enter the NIIT liability of $250.80 ($6,600 ×   The definition of trade or business for NIIT purposes is limited to
+3.8% (0.038)).                                                        a trade or business within the meaning of section 162. This is
+Special computational rules for electing small business               more restrictive than the definition of a trade or business activity
+trusts (ESBTs). The NIIT has special computational rules for          for purposes of the passive activity loss rules. For example,
+ESBTs. In general, ESBTs compute their NIIT in 3 steps.               under the passive activity loss rules, a trade or business includes
+                                                                      any activity conducted in anticipation of the commencement of a
+    1. The ESBT separately calculates the undistributed net           trade or business and any activity involving research or
+investment income of the S portion and non-S portion according        experimentation. In some cases, income from activities that
+to the general rules for trusts under chapter 1 of the Code, and      aren’t passive activities under section 469 will be included in net
+then combines the undistributed net investment income of the S        investment income because the activity doesn’t rise to the level
+portion and the non-S portion. In the case of an ESBT that has        of a trade or business within the meaning of section 162. The
+an S portion and a non-S portion, complete lines 1–11 of Form         activity must be a trade or business within the meaning of
+8960 using the items from the non-S portion, and add                  section 162 and be nonpassive for purposes of section 469
+undistributed net investment income of the S portion to net           before the income is excluded from the NIIT. If you own an
+investment income on line 7.                                          interest in a pass-through entity, the determination of whether
+    2. The ESBT determines its AGI, solely for purposes of NIIT,      that’s a trade or business is made at that entity's level.
+by adding the net income or net loss from the S portion to the
+AGI of the non-S portion as a single item of income or loss. See      Real Estate Professionals
+the instructions for Line 19a for more information.                   If you’re a real estate professional for purposes of section 469(c)
+    3. To determine whether the ESBT is subject to NIIT, the          (7), your rental income or loss won’t be passive if you materially
+ESBT compares the combined undistributed net investment               participated in the rental real estate activity with certain
+income with the excess of its AGI over the section 1(e) threshold.    restrictions. See Safe Harbor for Real Estate Professionals.
+        For an ESBT with only S corporation income (no non-S             However, your rental income is included in net investment
+ TIP portion), complete Form 8960 using the items from the S          income if the income isn’t derived in the ordinary course of a
+         portion. For ESBTs with an S portion and a non-S             trade or business. Qualifying as a real estate professional
+portion, use Form 8960 as a worksheet for calculating the             doesn’t necessarily mean you’re engaged in a trade or business
+amounts to enter on line 7 and line 19a. On the S portion's Form      with respect to the rental real estate activities. If your rental real
+8960 worksheet, enter the S portion's net investment income on        estate activity isn’t a section 162 trade or business or you don’t
+line 7 of the trust's Form 8960 and combine line 19a of the Form      materially participate in the rental real estate activities, the rental
+8960 worksheet with the non-S portion's AGI to arrive at the          income will be included in NIIT.
+amount on line 19a.                                                      For additional information on real estate professionals, see
+   See Regulations section 1.1411-3(c) for more details and           section 469(c)(7) and Pub. 925.
+examples.
+                                                                      Safe Harbor for Real Estate Professionals
+Special computational rules for bankruptcy estates of an              You qualify for the safe harbor if you’re a real estate professional
+individual. A bankruptcy estate of an individual debtor is            for purposes of section 469 and you:
+treated as an individual for purposes of the NIIT. Regardless of      • Participate in each rental real estate activity for more than 500
+the actual marital status of the debtor, the applicable threshold     hours during the tax year, or
+for purposes of determining the NIIT is the amount applicable for     • Participated in a rental real estate activity for more than 500
+a married person filing separately.                                   hours in any 5 tax years (whether or not consecutive) during the
+                                                                      10 tax years immediately prior to this tax year.
+
+Instructions for Form 8960 (2024)                                                                                                           3
+   If you qualify, your gross rental income from your rental real         Note. If you dispose of an activity that’s always been a passive
+estate activity is treated as though derived in the ordinary course       activity, the suspended passive losses from that activity are
+of a trade or business and isn’t included in your net investment          allowed in full as a properly allocable deduction.
+income. If you qualify in the year you dispose of the property
+used in the rental real estate activity, the amount of gain or loss       Note. If you dispose of an activity that’s a former passive
+from the disposition is also deemed to be derived from property           activity, any suspended passive losses allowed in the year of
+used in the ordinary course of a trade or business and isn’t              disposition by reason of section 469(f)(1)(A) are included as
+included in your net investment income.                                   properly allocable deductions, but only to the extent the gain on
+                                                                          the disposition of the activity is included in net investment
+Note. For real estate professionals with a Regulations section            income (before taking into account any suspended losses). Any
+1.469-9(g) election in effect, all of your rental real estate             suspended passive losses that are allowed by reason of section
+activities constitute a single activity for purposes of applying the      469(g) are allowed as additional properly allocable deductions.
+500-hour test described in Safe Harbor for Real Estate
+Professionals above.                                                      Economic Grouping
+                                                                          You can treat one or more trade or business activities, or rental
+Note. If you're a real estate professional under section 469(c)           activities, as a single activity if those activities form an
+(7), but you’re unable to satisfy the qualifications for the safe         appropriate economic unit for measuring gain or loss under the
+harbor, you’re not precluded from establishing that the gross             passive activity loss rules. For additional information on passive
+income and gain or loss from the disposition of property                  activity grouping rules, see Pub. 925.
+associated with your rental real estate activity isn’t included in
+net investment income.                                                    Regrouping rules. The passive activity grouping rules
+                                                                          determine the scope of your trade or business and whether that
+Special Rules for Certain Rental Income                                   trade or business is a passive activity for purposes of the NIIT.
+For income tax purposes, Regulations section 1.469-2(f)(6)                The proper grouping of a rental activity with a trade or business
+generally recharacterizes what would otherwise be passive                 activity won’t generally convert any gross income from rents into
+rental income from a taxpayer's property as nonpassive where              gross income derived from a trade or business.
+the taxpayer rents the property for use in a trade or business in             Generally, you may not regroup activities unless your
+which the taxpayer materially participates. Similarly, for income         grouping was clearly inappropriate when originally made, or has
+tax purposes, a rental activity that’s properly grouped with a            become clearly inappropriate because of changed facts and
+trade or business activity in which the taxpayer materially               circumstances.
+participates under Regulations section 1.469-4(d)(1) is a                     However, under the NIIT “fresh start” election, you may
+nonpassive activity. For purposes of calculating your net                 regroup for the first tax year you’re subject to the NIIT (without
+investment income, the gross rental income in both of these               the effect of the regrouping). You may regroup only once under
+situations is treated as though it’s derived in the ordinary course       this election and that regrouping will apply to the tax year for
+of a trade or business. Further, upon the disposition of the assets       which you regroup and all future tax years. If you’re subject to the
+associated with the rental activity, any gain or loss is also treated     NIIT for 2013 and you don’t regroup, you may make the election
+as gain or loss attributable to the disposition of property held in a     for the first tax year beginning after 2013 that you’re subject to
+nonpassive trade or business and not included in your net                 the NIIT.
+investment income. For these purposes, the nonpassive trade or
+                                                                              You may regroup on an amended return, but only if you
+business can’t be a business trading in financial instruments or
+                                                                          weren’t subject to the NIIT on your original return (or previously
+commodities.
+                                                                          amended return), and if, because of a change to the original
+                                                                          return, you owe NIIT for the year. For additional rules regarding
+Treatment of Former Passive Activities                                    regrouping on amended returns, see Regulations section
+A former passive activity is any activity that was a passive activity     1.469-11(b)(3)(iv)(C).
+in a prior tax year but isn’t a passive activity in the current year. A
+prior tax year's unallowed loss from a former passive activity is         Disclosure requirements. Regroupings under the NIIT “fresh
+allowed to the extent of current-year income from the activity            start” are subject to the disclosure requirements of Rev. Proc.
+under section 469(f)(1)(A). For purposes of determining your net          2010-13.
+investment income, suspended losses from former passive
+activities are allowed as a properly allocable deduction, but only        Disposition of Partnership Interest or
+to the extent the net income or net gain from the former passive          S Corporation Stock
+activity is included in your net investment income. Any remaining
+                                                                          In general, an interest in a partnership or S corporation isn’t
+suspended losses from the former passive activity are allowed
+                                                                          property held for use in a trade or business and, therefore, gain
+as a properly allocable deduction, but only to the extent the net
+                                                                          or loss from the sale of a partnership interest or S corporation
+income or net gain from other passive activities is included in
+                                                                          stock is included in your net investment income.
+your net investment income. For more information, see
+Regulations section 1.1411-4(g)(8) and examples.
+                                                                          Adjustment
+Disposition of Entire Interest                                            The amount of the gain or loss from the disposition for regular
+                                                                          income tax purposes is included on Form 8960, line 5a, as a
+If you disposed of your entire interest in a passive activity or a
+                                                                          gain or loss. If you materially participated (as defined under the
+former passive activity to an unrelated person in a fully taxable
+                                                                          passive activity loss rules) in a trade or business activity of the
+transaction, your losses allocable to the activity for that year
+                                                                          partnership or S corporation (or one of its subsidiaries) and that
+aren’t limited by the passive activity loss rules for income tax
+                                                                          trade or business activity isn’t the trade or business of trading in
+purposes. A fully taxable transaction is a transaction in which
+                                                                          financial instruments or commodities, then you must calculate
+you recognize all realized gain or loss. For purposes of
+                                                                          the adjustment to report on line 5c. The adjustment described
+calculating your net investment income, these losses may be
+                                                                          below only applies to dispositions of equity interests in
+properly allocable deductions, depending on the underlying
+                                                                          partnerships and stock in S corporations and doesn’t apply to
+character and origin of the losses.
+                                                                          gain or loss recognized on, for example, indebtedness owed to
+                                                                          the taxpayer by a partnership or S corporation.
+
+4                                                                                                       Instructions for Form 8960 (2024)
+   For more information on how to calculate the adjustment to          are subject to NIIT or would be subject to NIIT if you made the
+report on line 5c, see Proposed Regulations section 1.1411-7.          election for the stock of the CFC or QEF. The election may be
+                                                                       made for a tax year beginning before 2014. The election can be
+Note. If the tax basis of the interest in the partnership or S         made on an original or an amended return, provided that the tax
+corporation for NIIT purposes is different than for regular income     year for which the election is made, and all tax years affected by
+tax purposes due to certain adjustments associated with income         the election, aren’t closed by the period of limitations on
+from CFCs or QEFs, the amount of gain or loss may exceed the           assessment under section 6501. For more information, see
+amount reported for regular income tax purposes.                       Regulations section 1.1411-10(g).
+Required statements. Attach a statement to your return for the            Example. If, in 2024, a single individual acquires stock in a
+year of disposition. Your statement must include:                      QEF, has a QEF inclusion of $5,000, and has MAGI of $150,000,
+ • The name and taxpayer identification number of the                  the individual wouldn’t have to make a section 1.1411-10(g)
+partnership or S corporation of which the interest was                 election for 2024 because section 1411 isn’t applicable. If, in
+transferred,                                                           2025, the individual has MAGI in excess of $200,000, and the
+ • The amount of the transferor's gain or loss on the disposition      individual would like to take QEF inclusions into account for
+of the interest for regular income tax purposes included on            purposes of section 1411 in the same manner and in the same
+line 5a,                                                               tax year as those amounts are taken into account for Code
+ • The information provided by the partnership or S corporation        chapter 1 purposes, the individual must make the section
+to the transferor relating to the disposition (if any), and            1.1411-10(g) election for 2025 in the time and manner described
+ • The amount of adjustment to gain or loss due to basis               in Regulations section 1.1411-10(g).
+adjustments attributable to ownership in certain CFCs and
+                                                                       Content requirements of election. If you’re making or made
+QEFs.
+                                                                       the election in a prior year, you must check the checkbox for
+Deferred recognition sales (installment sales and private              “Regulations section 1.1411-10(g) election” on the Form 8960
+annuities). If you disposed of a partnership interest or S             filed with your original or amended return. In addition, you must
+corporation stock in an installment sale transaction to which          attach a statement to your return, which includes the following.
+section 453 applies, you need to calculate your adjustment to net       • Your name and social security number (individuals) or
+gain in the year of the disposition, even if the disposition           employer identification number (EIN) (estates and trusts).
+occurred prior to 2013. The difference between the amount               • The following information for each CFC or QEF for which an
+reported for regular income tax and NIIT will be taken into            election is made.
+account when each payment is received. You must attach the                 1. The name of the CFC or QEF.
+statement described above to your return in the first year you’re
+subject to NIIT. In subsequent years, attach a statement to your           2. Either the EIN of the CFC or QEF, or, if the CFC or QEF
+return that provides “Adjustment relates to a deferred recognition     doesn’t have an EIN, the reference ID number of the CFC or
+sale first reported on line 5c of the (enter year) return.”            QEF.
+                                                                       In addition, list separately each CFC or QEF for which an
+Regulations Section 1.1411-10(g)                                       election is being made for the first time with this return and
+                                                                       include on the statement a declaration that you elect under
+Election                                                               Regulations section 1.1411-10(g) to apply the rules in section
+In general, you may make the election provided in Regulations          1.1411-10(g).
+section 1.1411-10(g) if you own stock of a CFC or QEF. If a
+section 1.1411-10(g) election is in effect for stock of a CFC or       Special Rule for Traders in Financial
+QEF, generally, the amounts you include in income for regular          Instruments or Commodities
+income tax purposes under sections 951, 951A, and 1293 from
+the stock of the CFC or QEF are included in net investment             Gains and losses from your trade or business of trading in
+income, and distributions from the stock of the CFC or QEF,            financial instruments or commodities aren’t subject to
+described in section 959(d) or 1293(c), are excluded from net          self-employment taxes. However, interest expense and other
+investment income.                                                     investment expenses are deducted by a trader on Schedule C
+                                                                       (Form 1040), Profit or Loss From Business, if the expenses are
+   Your election applies only to the specific stock of the CFC or      from the trading business. A special rule may apply to a trader in
+QEF for which it’s made and stock of the CFC or QEF that you           financial instruments or commodities to reduce net investment
+subsequently acquire. If you own a CFC or QEF through certain          income. The trader's interest and other investment expenses, to
+domestic pass-through entities, such as a domestic partnership,        the extent the expenses aren’t used to reduce the trader's
+the entity may make the election for the stock of the CFC or QEF       self-employment income, may be deductible for NIIT.
+and you’ll be considered as having made the election with
+respect to the stock of the CFC or QEF owned or subsequently
+acquired by the pass-through entity. The election by the
+                                                                       Specific Instructions
+pass-through entity applies only to stock of the CFC or QEF held
+or subsequently acquired directly or indirectly by the                 Part I—Investment Income
+pass-through entity. The pass-through entity's election doesn’t
+apply to any stock of the CFC or QEF that you personally hold or       Elections for Investment Income
+subsequently acquire. If the entity doesn’t make the election, you     If you’re making the section 6013(g) or 6013(h) election (see
+may make the election for the stock of the CFC or QEF owned            Election To File Jointly With Nonresident Spouse—Section
+through the entity.                                                    6013(g) or 6013(h), earlier), check the corresponding checkbox.
+Timing of election. Your election applies to the tax year for             If you’re making or have made a section 1.1411-10(g) election
+which it’s made and later tax years, and applies to all interests in   (see Regulations Section 1.1411-10(g) Election, earlier), check
+the CFC or QEF that you later acquire. You can’t revoke the            the corresponding checkbox and attach a statement to your
+election. In general, the election must be made no later than the      return, as described earlier under Content requirements of
+first tax year beginning after 2013, in which you include an           election.
+amount in income for regular income tax purposes under section
+951(a), 951A, or 1293(a) for the stock of the CFC or QEF, and
+
+Instructions for Form 8960 (2024)                                                                                                          5
+Line 1—Taxable Interest                                              payments from retirement plans that are exempt from NIIT.
+                                                                     Amounts subject to NIIT should be identified with code “D” in
+Enter the amount of taxable interest received. Include the           box 7. If code “D” is shown in box 7 of Form 1099-R, include on
+following amount from your return.                                   Form 8960, line 3, the taxable amount reported in box 2a of Form
+• Form 1040 or 1040-SR, line 2b.                                     1099-R. However, if the payor checks box 2b indicating the
+• Form 1041, line 1.                                                 taxable amount can’t be determined, you may need to calculate
+• Form 1041-QFT, line 1a.                                            the taxable portion of your distribution. See Pub. 939, General
+• Form 1040-NR, taxable interest received for period of U.S.         Rule for Pensions and Annuities, and Pub. 575, Pension and
+residency shown on attached statement.                               Annuity Income, for details.
+
+  See Special computational rules for qualified funeral trusts       Line 4a—Income From Trades/Businesses, Rental
+(QFTs) and Dual-status individual, earlier.                          Real Estate, Royalties, Partnerships, S
+Adjustments to interest. Interest income earned in the               Corporations, and Trusts
+ordinary course of your non-section 1411 trade or business is
+excluded from net investment income. If this type of interest        Enter the following amount from your properly completed return.
+income is included on line 1, use line 7 to adjust your net           • Schedule 1 (Form 1040), line 3.
+investment income.                                                    • Schedule 1 (Form 1040), line 5.
+   If line 1 includes self-charged interest income received from a    • Form 1041, line 3.
+partnership or S corporation that’s a nonpassive activity (other      • Form 1041, line 5.
+than a trade or business of trading in financial instruments or       • Form 1041-QFT, the portion of line 4 that’s income and loss
+commodities), see Line 7—Other Modifications to Investment           that properly would be reported by a trust filing Form 1041 on
+Income, later, for a possible adjustment to net investment           Form 1041, line 5.
+income.                                                               • Form 1040-NR, the amount properly reported on the
+                                                                     attachment to your Form 1040-NR representing the amount that
+                                                                     you would properly include on Schedule 1 (Form 1040), line 5, if
+Line 2—Ordinary Dividends                                            you were filing Form 1040 or 1040-SR and including income and
+                                                                     loss only for your period of U.S. residency.
+Enter the amount of ordinary dividends received. Include the
+following amount from your return.                                     See Special computational rules for qualified funeral trusts
+• Form 1040 or 1040-SR, line 3b.                                     (QFTs) and Dual-status individual, earlier.
+• Form 1041, line 2a.
+• Form 1041-QFT, line 2a.                                            Note. Income reported on Schedule 1 (Form 1040), line 3, and
+• Form 1040-NR, ordinary dividends received for period of U.S.       Schedule 1 (Form 1040), line 5, include both passive and
+residency shown on attached statement.                               nonpassive income, and are added to line 4a of Form 8960.
+                                                                     Nonpassive income included on Schedule C (Form 1040) and
+  See Special computational rules for qualified funeral trusts       Schedule E (Form 1040), Supplemental Income and Loss, is
+(QFTs) and Dual-status individual, earlier.                          removed (as a negative) on line 4b, so that only passive income
+                                                                     from Schedule C (Form 1040) and Schedule E (Form 1040)
+Adjustments to dividends. If line 2 includes dividends from
+                                                                     remain on line 4c.
+employer securities held in an employee stock ownership plan
+(ESOP) that are deductible under section 404(k) or Alaska
+Permanent Fund Dividends, include those amounts as negative          Line 4b—Adjustment for Net Income or Loss
+modifications on line 7. See Line 7—Other Modifications to           Derived in the Ordinary Course of a Non-Section
+Investment Income, later.                                            1411 Trade or Business
+Line 3—Annuities                                                     Use line 4b to adjust the amounts included on line 4a, for gains
+                                                                     and losses that are excluded from the calculation of net
+Enter the gross income from all annuities, except annuities paid     investment income. Enter the amount of gains (as a negative
+from the following.                                                  number) and losses (as a positive number). Enter the net
+ • Section 401—Qualified pension, profit-sharing, and stock          positive or net negative amount for the following items included
+bonus plans.                                                         on line 4a that aren’t included in determining net investment
+ • Section 403(a)—Qualified annuity plans purchased by an            income.
+employer for an employee.                                             • Net income or loss from a section 162 trade or business that’s
+ • Section 403(b)—Annuities purchased by public schools or           not a passive activity and isn’t engaged in a trade or business of
+section 501(c)(3) tax-exempt organizations.                          trading financial instruments or commodities.
+ • Section 408—Individual retirement accounts (IRAs) or               • Net income or loss from a section 1411 trade or business
+annuities.                                                           that’s taken into account in determining self-employment
+ • Section 408A—Roth IRAs.                                           income.
+ • Section 457(b)—Deferred compensation plans of a state and          • Royalties derived in the ordinary course of a section 162 trade
+local government and tax-exempt organization.                        or business that’s not a passive activity.
+ • Amounts paid in consideration for services (for example,           • Passive losses of a former passive activity that are allowed as
+distributions from a foreign retirement plan that are paid in the    a deduction in the current year under section 469(f)(1)(A).
+form of an annuity and include investment income that was
+earned by the retirement plan).                                         In addition, use line 4b to adjust for certain types of
+                                                                     nonpassive rental income or loss derived in the ordinary course
+How your annuities are reported to you. Net investment               of a section 162 trade or business. For example, line 4b includes
+income from annuities is reported to a recipient on Form 1099-R,     the following items.
+Distributions From Pensions, Annuities, Retirement or
+Profit-Sharing Plans, IRAs, Insurance Contracts, etc. However,
+the amount reported on Form 1099-R may also include annuity
+
+6                                                                                                Instructions for Form 8960 (2024)
+ • Nonpassive net rental income or loss of a real estate                See Special computational rules for qualified funeral trusts
+professional where the rental activity rises to a section 162 trade   (QFTs) and Dual-status individual, earlier.
+or business.
+ • Net rental income or loss that’s a nonpassive activity because     Note. If you incur gain or loss from a disposition that isn’t
+it was grouped with a trade or business under Regulations             reported as described in the previous paragraph, report it on
+section 1.469-4(d)(1). See Special Rules for Certain Rental           line 7. See Line 7—Other Modifications to Investment Income,
+Income, earlier.                                                      later.
+ • Other rental income or loss from a section 162 trade or
+business reported on Schedule K-1 (Form 1065), Partner's              Line 5b—Net Gain or Loss From Disposition of
+Share of Income, Deductions, Credits, etc., line 3, from a
+partnership, or Schedule K-1 (Form 1120-S), Shareholder's
+                                                                      Property That Isn’t Subject to Net Investment
+Share of Income, Deductions, Credits, etc., line 3, from an S         Income Tax
+corporation, where the activity isn’t a passive activity.
+ • Net income that’s been recharacterized as not from a passive       Use line 5b to adjust the amounts included on line 5a for gains
+activity under the section 469 passive loss rules and is derived in   and losses that are excluded from the calculation of net
+the ordinary course of a section 162 trade or business. For           investment income. Enter the amount of gains (as a negative
+example:                                                              number) and losses (as a positive number) included on line 5a
+    1. Net rental income or loss from a rental that meets an          that are excluded from net investment income. For example,
+exception under Regulations section 1.469-1T(e)(3)(ii), the           line 5b will include amounts such as the following.
+activity rises to a section 162 trade or business, and you             • Gain or loss from the sale of property held in a non-section
+materially participated in the activity; or                           1411 trade or business.
+    2. Net income from property rented to a nonpassive activity.          1. However, if the losses are attributable to formerly
+See Special Rules for Certain Rental Income, earlier.                 suspended passive losses of the non-section 1411 trade or
+                                                                      business, such gains and losses are excluded from net
+Note. Any income from an estate or trust reported on Part III of      investment income to the extent the nonpassive income from the
+Schedule E (Form 1040) that excluded net investment income is         non-section 1411 trade or business is excluded from net
+taken into account on line 7. Don’t report those adjustments on       investment income. See Regulations section 1.1411-4(g)(8) for
+line 4b.                                                              more information and examples.
+                                                                          2. Gain or loss from the sale of property held in a
+        For line 4b adjustments, enter net positive amounts as a
+                                                                      non-section 1411 trade or business doesn’t include substantially
+  !     negative adjustment and enter net negative amounts as
+CAUTION a positive adjustment.
+                                                                      appreciated property that’s recharacterized as portfolio income.
+                                                                      See Substantially appreciated property, later.
+                                                                       • Gain attributable to net unrealized appreciation (NUA) in
+Lines 5a–5d—Gains and Losses on the                                   employer securities held by a qualified plan. See Net gain
+Dispositions of Property                                              attributable to Net Unrealized Appreciation (NUA) in employer
+                                                                      securities held by a qualified plan, later.
+Generally, net gain from the disposition of property not used in a
+trade or business and net gain or loss from the disposition of         • Adjustments to your capital loss carryforwards for items of
+                                                                      excluded loss. See Adjustments to your capital loss
+property held in a section 1411 trade or business is included in
+                                                                      carryforwards, later.
+net investment income if included in taxable income.
+                                                                      Substantially appreciated property. If an interest in property
+   Gains and losses that aren’t taken into account in computing       is substantially appreciated at the time of disposition (fair market
+taxable income aren’t taken into account in computing net             value exceeds 120% of the adjusted basis), any gain from the
+investment income. For example, gain that isn’t taxable by            disposition is treated as nonpassive, unless the interest in
+reason of section 121 (sale of a principal residence) or section      property was used in a passive activity for either:
+1031 (like-kind exchanges) isn’t included in net investment
+income.                                                                   1. 20% of the total period during which you held the interest
+                                                                      in property; or
+   See Lines 5a–5d—Net Gains and Losses Worksheet, in                     2. The entire 2-year period ending on the date of the
+these instructions, for assistance in calculating net gain or loss    disposition.
+includible in net investment income.
+                                                                         See Regulations section 1.469-2(c)(2). The recharacterized
+                                                                      gain may be taken into account under section 1411(c)(1)(A)(iii) if
+                                                                      the gain is attributable to the disposition of property and
+Line 5a—Net Gain or Loss From Disposition of                          recharacterized as portfolio income.
+Property
+                                                                      Net gain attributable to Net Unrealized Appreciation (NUA)
+                                                                      in employer securities held by a qualified plan. Any gain
+Calculate and enter the amount of net gain or loss from the
+                                                                      attributable to NUA (within the meaning of section 402(e)(4)) that
+disposition of property by combining the following amounts from
+                                                                      you realize on a disposition of employer securities held by a
+your properly completed return.
+                                                                      qualified plan is a distribution within the meaning of section
+ • Form 1040 or 1040-SR, line 7, and Schedule 1 (Form 1040),          1411(c)(5) and isn’t included in net investment income. However,
+line 4.
+                                                                      any gain realized on a disposition of employer securities
+ • Form 1041, lines 4 and 7.                                          attributable to appreciation in the value of your employer
+ • Form 1041-QFT, line 3, and the portion of line 4 attributed to     securities after the distribution from a qualified plan isn’t a
+ordinary gain/(loss).
+                                                                      distribution within the meaning of section 1411(c)(5) and is
+ • Form 1040-NR, the amounts properly reported on the                 included in net investment income.
+attachment to your Form 1040-NR representing the amounts that
+you would enter on Form 1040 or 1040-SR, line 7, and Schedule         Shareholders of CFCs and QEFs without a section
+1 (Form 1040), line 4, if you were filing Form 1040 or 1040-SR        1.1411-10(g) election. In the case of a QEF (other than a QEF
+and including net gain or loss only for your period of U.S.           held in a section 1411 trade or business) for which a section
+residency.                                                            1.1411-10(g) election isn’t in effect, enter the amount treated as
+
+Instructions for Form 8960 (2024)                                                                                                        7
+Lines 5a–5d—Net Gains and Losses Worksheet                                                                                              Keep for Your Records
+                                                                                                       (A)                          (B)            Total of columns (A)+(B)
+                                                                                           Capital gains/(losses):            Ordinary gains/
+                                                                                          Form 1040 or 1040-SR,           (losses): Schedule 1
+                                                                                              line 7; Form 1041,           (Form 1040), line 4;
+                                                                                          line 4; Form 1041-QFT,            Form 1041, line 7;
+                                                                                           line 3; Form 1040-NR,             Form 1041-QFT,
+                                                                                             statement reflecting            portion of line 4
+                                                                                           U.S. residency portion         attributed to ordinary
+                                                                                                of Form 1040 or             gain/(loss); Form
+                                                                                                1040-SR, line 7           1040-NR, statement
+                                                                                                                              reflecting U.S.
+                                                                                                                          residency portion of
+                                                                                                                            Schedule 1 (Form
+                                                                                                                                1040), line 4
+                                                                                                                                                       Enter
+1.        Beginning net gains and losses                                                                                                                 this
+                                                                                                                                                    amount
+                                                                                                                                                   on line 5a
+2.        Gains and losses excluded from net investment income. Use current-year amounts for lines 2a–2g and 2i.
+     (a) Enter net gains from the disposition of property used in a
+         non-section 1411 trade or business (enter as negative
+         amounts):
+         Name of Trade or Business                     Amount         (                                              )(                        )
+                                                 (                  )
+                                                 (                  )
+     (b) Enter net losses from the disposition of property used in
+         a non-section 1411 trade or business (enter as positive
+         amounts):
+         Name of Trade or Business                     Amount
+
+
+
+
+     (c) Enter net losses from a former passive activity allowed
+          by reason of section 469(f)(1)(A) . . . . . . . . . . . . . . . .
+     (d) Gains recognized in the current year for payments
+          received on an installment sale obligation or private
+          annuity for the disposition of property used in a
+          non-section 1411 trade or business . . . . . . . . . . . . . .              (                              )
+     (e) Enter the net gain attributable to the net unrealized
+          appreciation (NUA) in employer securities . . . . . . . . . .               (                              )
+      (f) In the case of a QEF (other than a QEF held in a section
+          1411 trade or business) for which a section 1.1411-10(g)
+          election isn’t in effect, enter the amount treated as
+          long-term capital gain for regular income tax purposes
+          under section 1293(a)(1)(B) . . . . . . . . . . . . . . . . . . . .         (                              )
+     (g) Enter any other gains and losses included in net
+          investment income that aren’t otherwise reported on
+          Form 8960 and any other gains and losses excluded
+          from net investment income reported on line 5a. (Enter
+          excluded gains as a negative number and excluded
+          losses as a positive number.) . . . . . . . . . . . . . . . . . . .
+     (h) Enter the amount reported on line 2(i) of this worksheet
+          from your prior tax year return calculations. Enter as a
+          positive number . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+      (i) If you don’t have a capital loss carryover to next year,
+          then skip this line and go to line 2(j). Otherwise, enter the
+          lesser of (i)(1) or (i)(2) as a negative amount . . . . . . . .             (                              )
+          (i)(1) If the sum of the amounts
+          entered on lines 2(a)–2(h) and
+          line 3(d), column (A), is greater than
+          zero, enter that amount here.
+          Otherwise, enter -0- on line 2(i) and
+          go to line 2(j) . . . . . . . . . . . . . . . . .
+                               OR
+          (i)(2) The amount of capital loss
+          carried over to next year (Schedule D
+          (Form 1040), line 16, less the amount
+          allowed as a current deduction on
+          Schedule D (Form 1040), line 21)
+          entered as a positive
+          number . . . . . . . . . . . . . . . . . . . .
+                                                                                                                                                       Enter
+      (j) Sum of lines 2(a) through 2(i)                                                                                                                 this
+                                                                                                                                                    amount
+                                                                                                                                                   on line 5b
+
+
+
+
+8                                                                                                                                    Instructions for Form 8960 (2024)
+Lines 5a–5d—Net Gains and Losses Worksheet—continued                                                                                           Keep for Your Records
+                                                                                                               (A)                        (B)             Total of columns (A)+(B)
+                                                                                                     Capital gains/(losses):        Ordinary gains/
+                                                                                                    Form 1040 or 1040-SR,       (losses): Schedule 1
+                                                                                                   line 7; Form 1041, line 4;    (Form 1040), line 4;
+                                                                                                     Form 1041-QFT, line 3;       Form 1041, line 7;
+                                                                                                  Form 1040-NR, statement          Form 1041-QFT,
+                                                                                                   reflecting U.S. residency       portion of line 4
+                                                                                                    portion of Form 1040 or     attributed to ordinary
+                                                                                                         1040-SR, line 7          gain/(loss); Form
+                                                                                                                                1040-NR, statement
+                                                                                                                                    reflecting U.S.
+                                                                                                                                residency portion of
+                                                                                                                                  Schedule 1 (Form
+                                                                                                                                      1040), line 4
+3.            Adjustment for gains and losses attributable to the disposition of interests in partnerships and S corporations
+      (a)        (i) Enter the amount of net gain from the disposition of a
+      Net            partnership or S corporation included on line 5a to which
+     Gains           section 1411(c)(4)(A) applies . . . . . . . . . . . . . . . . .
+                (ii) Enter the amount of net gain included in net investment
+                     income after the application of Regulations section
+                     1.1411-7. (The sum of columns A and B of line 3(a)(ii)
+                     must be less than, or equal to, the sum of columns A and
+                     B of line 3(a)(i).) . . . . . . . . . . . . . . . . . . . . . . . . . .
+               (iii) Enter the difference between line 3(a)(i) and line 3(a)
+                     (ii) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    (b)          (i) Enter the amount of net loss from the disposition of an
+   Net               interest in a partnership or S corporation included on
+  Losses             line 5a to which section 1411(c)(4)(B) applies . . . . . .
+                (ii) Enter the amount of net loss included in net investment
+                     income after the application of Regulations section
+                     1.1411-7. (The sum of columns A and B of line 3(b)(ii)
+                     must be less than, or equal to, the sum of columns A and
+                     B of line 3(b)(i).) . . . . . . . . . . . . . . . . . . . . . . . . . .
+               (iii) Enter the difference between line 3(b)(i) and line 3(b)
+                     (ii) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+   (c)           (i) Enter the amount of gain recognized in the current year
+ Deferred            attributable to payments received on an installment sale
+  Sales              obligation or private annuity that was attributable to the
+                     disposition of an interest in a partnership or an S
+                     corporation in a year preceding the current year. Also
+                     report any gain or loss associated with section 736(b)
+                     payments on this line . . . . . . . . . . . . . . . . . . . . . .
+                (ii) Enter the amount of adjustment attributable to such
+                     gain . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+               (iii) Subtract line 3(c)(ii) from line 3(c)(i) . . . . . . . . . . . . .
+      (d)     Combine the amounts on lines 3(a)(iii), 3(b)(iii), and 3(c)                                                                                Enter this
+              (iii) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                                                            amount
+                                                                                                                                                         on line 5c
+4.            Sum of items reported on lines 5a–5c
+                                                                                                                                                         Enter this
+Add lines 1, 2(j), and 3(d) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                                                                    amount
+                                                                                                                                                         on line 5d
+
+
+              If the amount of gain for NIIT purposes is less than the amount of gain for regular income tax purposes, the entry on line 3(a)(iii), 3(b)(iii),
+ TIP          or 3(c)(iii) should be a negative number.
+              If the amount of loss for NIIT purposes is less than the amount of loss for regular income tax purposes, the entry on line 3(a)(iii), 3(b)(iii), or
+              3(c)(iii) should be a positive number.
+
+
+
+
+Instructions for Form 8960 (2024)                                                                                                                                                    9
+long-term capital gain for regular income tax purposes under           1.1411-10(g) election in effect for the CFC or QEF. For more
+section 1293(a)(1)(B).                                                 information about determining the amount to report on line 6, see
+   Also, in the case of a disposition of a CFC or QEF (other than      Regulations section 1.1411-10.
+a CFC or QEF held in a section 1411 trade or business) for             Section 1296 mark-to-market PFICs. Generally, if you’re
+which a section 1.1411-10(g) election isn’t in effect, enter the       subject to the section 1296 mark-to-market rules for a PFIC,
+increase or decrease in the amount of gain or loss for NIIT            you’ll include in net investment income any amounts included in
+purposes over the amount of gain or loss for regular income tax        income for regular income tax purposes under section 1296(a)
+purposes. However, if the gain is higher (or the loss larger) for      (1) and deduct from net investment income any amounts
+NIIT purposes compared to regular income tax purposes, in              deducted from income for regular income tax purposes under
+which case there’s no impact to the adjustment for capital loss        section 1296(a)(2). Use line 6 to make increases or decreases to
+carryforwards for NIIT purposes, enter the difference on line 6.       net investment income as a result of this rule (for items that
+Adjustments to your capital loss carryforwards. Starting in            aren’t otherwise reflected on Form 8960).
+2014, capital loss carryforwards must be adjusted if any sum of        Section 1291 funds. If you’re subject to the section 1291 rules
+all capital gain or loss amounts excluded from net investment          for a PFIC, you’ll include in net investment income any “excess
+income on lines 5b and 5c was a net loss (the sum of all               distributions that are dividends for NIIT purposes as well as any
+excluded capital losses was greater than the sum of all excluded       gains that are treated as excess distributions for regular income
+capital gains). Generally, the annual adjustment to your capital       tax purposes.” Use line 6 to make the increases to net
+losses carryforward is the lesser of:                                  investment income as a result of the application of this rule (for
+ • The amount of your capital loss carryforward from the               items that aren’t otherwise reflected on Form 8960).
+previous year (the sum of carryforward amounts reflected on
+Schedule D (Form 1040), Capital Gains and Losses, lines 6 and          CFCs and QEFs with a section 1.1411-10(g) election in ef-
+14); or                                                                fect. If you have a section 1.1411-10(g) election in effect for a
+ • The amount of excluded capital losses in excess of excluded         CFC or QEF, you’ll include in net investment income any
+capital gain in the previous year.                                     inclusions under section 951(a), 951A, or 1293(a) derived from
+                                                                       the CFC or QEF. Inclusions under section 1293(a)(1)(B) may be
+    See Lines 5a–5d—Net Gains and Losses Worksheet, in                 reported elsewhere on Form 8960, such as on line 5a. Use line 6
+these instructions, for assistance with the calculation of capital     to make the increases to net investment income as a result of the
+loss carryforwards. In addition, see Proposed Regulations              application of this rule (for items that aren’t otherwise reflected
+section 1.1411-4(d)(4)(iii) for more information and a                 on Form 8960).
+comprehensive example of the application of this rule.
+Pass-through entities. If you hold an interest in a pass-through       Note. If you included in income an amount under section 951(a)
+entity, the determination of whether a trade or business exists is     or section 1293(a) for a CFC or QEF in 2013 and made an
+made at that entity's level.                                           election under Regulations section 1.1411-10(g) after 2013 for
+                                                                       that CFC or QEF, special rules may apply to certain distributions
+                                                                       of previously taxed income from the CFC or QEF that aren’t
+Line 5c—Adjustment From Disposition of                                 subject to regular income tax. For more information, see
+Partnership Interest or S Corporation Stock                            Regulations section 1.1411-10.
+                                                                       CFCs and QEFs without a section 1.1411-10(g) election in
+Enter the amount from the worksheet for lines 5a–5d, line 3d.
+                                                                       effect. If you don’t have a section 1.1411-10(g) election in effect
+Attach a statement as described in Required statements, earlier,
+                                                                       for a CFC or QEF, you’ll generally include in net investment
+to your return for the year of the disposition.
+                                                                       income certain distributions of previously taxed income from the
+                                                                       CFC or QEF that aren’t subject to regular income tax. In addition,
+Line 6—Adjustments to Investment Income for                            other special rules may apply, including rules that provide, as
+Certain CFCs and PFICs                                                 applicable, alternative basis calculations for your basis in the
+                                                                       CFC or QEF, or your basis in a domestic partnership or S
+If you own stock, directly or indirectly, in a CFC or a PFIC (other    corporation that owns the interest in the CFC or QEF. Also, the
+than certain CFCs and PFICs held in a section 1411 trade or            amount of investment interest expense you take into account for
+business or PFICs marked to market under a provision of Code           NIIT purposes may be increased or decreased from the amount
+chapter 1 other than section 1296), use line 6 for adjustments         taken into account for regular income tax purposes. (For
+necessary to calculate your net investment income.                     additional information on all of these rules, see Regulations
+                                                                       section 1.1411-10.) As a result of these rules, you may need to
+   Income from investments in CFCs and PFICs is generally              include amounts in net investment income that aren't otherwise
+included in the calculation of net investment income and, in           reported on Form 8960 or make adjustments to amounts
+many cases, will be included (in whole or in part) on other lines      reported elsewhere on Form 8960. For example, you may need
+of Form 8960. Generally, dividends from a CFC or a PFIC that           to include distributions from a CFC or a QEF in net investment
+are included in your regular income tax base are included on           income. Use line 6 to make increases or decreases to net
+Form 8960, line 2, and gains and losses derived from the stock         investment income as a result of the application of this rule (for
+of a CFC or a PFIC that are included in your regular income tax        items that aren’t otherwise reflected on Form 8960).
+base are generally included on Form 8960, line 5. Also, income
+derived from CFCs and certain PFICs you hold in a section 1411         Note. Use line 5b to deduct inclusions under section 1293(a)(1)
+trade or business is generally reported on Form 8960, line 4a.         (B) that are allowed on line 5a, or to adjust the amount of gain or
+                                                                       loss derived from the disposition of shares of a CFC or QEF.
+    Line 6 is used for adjustments that are the result of additional   However, if the gain included in net investment income is higher
+rules. These additional rules may apply when you own an                than the amount reported for regular income tax (or the loss is
+interest in a CFC or PFIC and may require you to subtract or add       greater), report the adjustment on line 6.
+amounts not otherwise included on Form 8960. These additional
+                                                                       Note. Even if you don’t have a section 1.1411-10(g) election in
+rules vary depending on the set of anti-deferral rules that apply
+                                                                       place for a CFC or QEF, there are certain instances in which
+to you for regular income tax purposes, and for CFCs and QEFs,
+                                                                       distributions to you from the CFC or QEF may not be subject to
+and depending on whether you have a Regulations section
+
+10                                                                                                  Instructions for Form 8960 (2024)
+NIIT. For example, if a prior holder of the CFC or QEF had made       Note. Expenses associated with the trade or business of trading
+a section 1.1411-10(g) election for that CFC or QEF and you           in financial instruments or commodities that are reported on your
+receive a distribution of earnings and profits that were previously   Schedule C (Form 1040) are reported on Form 8960, line 10.
+included in the net investment income of the prior holder, you        See Special rule for traders in financial instruments or
+may not be subject to NIIT on that distribution. For more             commodities, later.
+information, see Regulations section 1.1411-10.
+                                                                      Note. Early withdrawal penalty (Schedule 1 (Form 1040),
+                                                                      line 18) is reported on Form 8960, line 10.
+Line 7—Other Modifications to Investment Income
+                                                                      Form 8814 election. Parents electing to include their child's
+Use line 7 to report additional net investment income                 dividends and capital gain distributions in their income by filing
+modifications to net investment income that aren’t otherwise          Form 8814 include on Form 8960, line 7, the amount on Form
+specified on lines 1–6. For example, use line 7 to report additions   8814, line 12, excluding Alaska Permanent Fund Dividends.
+and modifications to net investment income, such as the
+                                                                      Distributions from estates and trusts. Enter the amount from
+following.
+                                                                      box 14, code H, of Schedule K-1 (Form 1041), Beneficiary's
+ • Section 1411 net operating loss (NOL) (enter as a negative         Share of Income, Deductions, Credits, etc.
+amount). See Section 1411 NOL, later.
+ • Any deductions described in section 62(a)(1) that are properly     Note. If the amount reported in box 14, code H, of Schedule K-1
+allocable to a passive activity or trading business, but aren’t       (Form 1041) is a positive number, enter it on Form 8960, line 7,
+taken into account on line 4a or 5a (enter as a negative amount).     and increase your MAGI on Form 8960, line 13 (or Form 8960,
+See Other section 62(a)(1) deductions, later.                         line 19a) by the same amount.
+ • Adjustments for distributions from estates and trusts. See
+Distributions from estates and trusts, later.                             If the amount reported in box 14, code H, of Schedule K-1
+ • Section 404(k) dividends reported on line 2 (enter as a            (Form 1041) is a negative number, and the trust has indicated
+negative amount). See Line 2—Ordinary Dividends, earlier.             some (or all) of the adjustment also requires a MAGI adjustment,
+ • Interest income reported on line 1 received from certain           enter it on Form 8960, line 7, and make the applicable increase
+nonpassive activities (entered as a negative amount). See             or decrease to your MAGI on Form 8960, line 13 (or Form 8960,
+Self-charged interest, later.                                         line 19a) as necessary.
+ • Recoveries of deductions taken on a prior year's Form 8960.        Section 1411 NOL. If you are allowed an NOL deduction under
+See Deduction recoveries, later.                                      section 172 for purposes of determining your regular income tax,
+ • Other items of net investment income (or properly allocable        you may also be allowed some, or all, of the NOL deduction in
+deductions) not otherwise included on Form 8960 reported on           computing net investment income. Because NOLs are computed
+Schedule 1 (Form 1040), line 8z; Form 1041, line 8; Form              and carried over year by year, you must determine for each NOL
+1041-QFT, lines 4 and 9; Form 1040-NR, amount on statement            year what portion of the NOL is attributable to net investment
+reporting tax items for your period of U.S. residency                 income. To determine how much of the accumulated NOL you
+corresponding to Schedule 1 (Form 1040), line 8z. For example,        can use in the current tax year as a deduction against your net
+these items could include the following.                              investment income, you must first calculate your applicable
+    1. Amounts reported on Form 8814, Parents' Election To            portion of the NOL for each loss year. For more information and
+Report Child's Interest and Dividends, line 12. See Form 8814         examples on the calculation of a section 1411 NOL and its use,
+election, later.                                                      see Regulations section 1.1411-4(h).
+    2. Substitute interest and dividend payments (generally
+                                                                      Note. No portion of an NOL incurred in a tax year beginning
+reported on Form 1099-MISC, Miscellaneous Information).
+                                                                      before 2013 is permitted to reduce net investment income.
+    3. Net positive periodic payments received from a notional           Calculating your section 1411 NOL. In any tax year in
+principal contract (NPC) that’s referenced to property (including     which a taxpayer incurs an NOL, the section 1411 NOL is the
+an index) that produces (or would produce, if the property were       lesser of:
+to produce income) interest, dividends, royalties, or rents. For       • The amount of the NOL for the loss year the taxpayer would
+example, an interest rate swap, cap, or floor and an equity swap      incur if only items of gross income that are used to determine net
+would be treated as an NPC that produces net investment               investment income and only properly allocable deductions (other
+income.                                                               than a section 1411 NOL) are taken into account in determining
+ • Gains and losses from the disposition of property not included     the NOL under section 172, or
+on line 5a that are taken into account in computing taxable            • The amount of the taxpayer's NOL for the loss year.
+income. For example:
+                                                                              For purposes of calculating the section 1411 NOL,
+    1. Gain or loss from the disposition of an annuity or life
+insurance contract (see Line 3—Annuities, earlier); and
+                                                                       TIP compute your NOL using Form 172, Net Operating
+                                                                               Losses (NOLs), with only items of income, gain, loss,
+    2. Casualty and theft losses reported on Schedule A (Form         and deduction on Form 8960 for that year. If this amount is less
+1040), Itemized Deductions, line 15 (enter as a negative              than your NOL computed for regular income tax purposes, then
+amount).                                                              this amount is the applicable portion of your NOL. If this amount
+However, gains and losses attributable to assets held in a            is equal to, or greater than, your NOL computed for regular
+non-section 1411 trade or business aren’t included in net             income tax purposes, then your applicable portion is 100% of the
+investment income. For more information, see Line 5b—Net              regular income tax NOL (which means the entire NOL will be
+Gain or Loss From Disposition of Property That Isn’t Subject to       deductible in computing net investment income when the NOL is
+Net Investment Income Tax, earlier.                                   used for regular income tax purposes).
+Other section 62(a)(1) deductions. Use line 7 to report                 Using your section 1411 NOL. When you deduct an NOL
+additional deductions attributable to a section 1411 trade or         that originated in a previous year against the current-year
+business that aren’t included on lines 4–6. Generally, these          income, a portion of the NOL may be deductible in computing
+deductions are above-the-line deductions reported on Schedule         net investment income for the current year, regardless of whether
+1 (Form 1040), lines 11–25.                                           you’re subject to the NIIT in the current year without the NOL
+                                                                      deduction. The amount of the regular income tax NOL used in
+
+Instructions for Form 8960 (2024)                                                                                                      11
+Example: Calculation of Section 1411 NOL for NIIT
+Assume an unmarried individual incurs the following NOLs and has waived any potential carryback for each passing year under
+section 172(b)(3), and assume that carryforwards are not limited:
+
+                                                                                                               (C) Applicable Portion of NOL
+          NOL Origination Year           (A) Regular Income Tax NOL             (B) Section 1411 NOL
+                                                                                                              [column B divided by column A]
+           2019 Calendar Year                     $150,000                              None                              0.00%
+           2020 Calendar Year                     $100,000                             $30,000                            30.0%
+           2021 Calendar Year                      $40,000                             $40,000                            100%
+           2022 Calendar Year                     $120,000                             $60,000                            50.0%
+
+
+
+     Beginning in 2023, the unmarried individual begins to use the NOLs to offset income:
+
+           Tax Year               NOL Origination Year             Regular Income              Applicable Portion      Section 1411 NOL
+         2023 Tax Year                                                  $300,000
+                                        2019 NOL                        ($150,000)                   0.00%                    None
+                                        2020 NOL                        ($100,000)                   30.0%                  ($30,000)
+                                        2021 NOL                        ($40,000)                   100.0%                  ($40,000)
+                                        2022 NOL                        ($10,000)                    50.0%                  ($5,000)
+ Total section 1411 NOL allowed as deduction against 2023 net investment income . . . . . . . . . . . . . .                 ($75,000)
+ In 2023, the regular income tax NOLs from 2019–2022 have caused the taxpayer’s AGI ($0) to fall below the statutory threshold; therefore,
+ the individual isn’t subject to the NIIT.
+
+
+
+           Tax Year               NOL Origination Year             Regular Income              Applicable Portion      Section 1411 NOL
+         2024 Tax Year                                                  $600,000
+                                        2022 NOL                        ($110,000)                   50.0%                  ($55,000)
+ Total section 1411 NOL allowed as deduction against 2024 net investment income . . . . . . . . . . . . . .                 ($55,000)
+ In 2024, the regular income tax NOL remaining from 2022 has reduced the taxpayer’s income for regular income tax to $490,000. The
+ individual is entitled to reduce net investment income by $55,000 (entered as a negative amount on Form 8960, line 7).
+
+
+
+calculating net investment income is called the “applicable                 received any tax benefit under chapter 1 of the Code, and
+portion.” The applicable portion is the percentage of the regular           therefore section 111 may exclude some or all of the refund from
+income tax NOL that’s a section 1411 NOL. Because NOLs are                  gross income. However, the deductibility of state income taxes
+calculated on a year-by-year basis, the applicable portion of               for NIIT is independent of the taxes for alternative minimum tax
+each NOL that’s used in the current year may be different.                  purposes. Therefore, the applicability of the recovery rule is
+                                                                            determined without regard to whether the recovered amount was
+Note. If you incurred an NOL after 2012 and carried back that               excluded from gross income by reason of section 111.
+NOL to offset income in years preceding the imposition of the                   There are two exceptions to including recovered amounts in
+NIIT (for example, a carryback to calendar year 2011 and/or                 net investment income. The two exceptions apply the tax benefit
+2012), the amount of section 1411 NOL that was included in the              rule of section 111 within the NIIT system, and therefore operate
+NOL carryback would’ve been used (as an applicable portion)                 independently of the application of section 111 for Code
+even though the NIIT wasn’t in effect.                                      chapter 1 purposes. First, properly allocable deductions aren’t
+   See Example: Calculation of Section 1411 NOL for NIIT, in                reduced in the year of the recovery if the amount deducted in the
+these instructions, for an illustration of the calculation and use of       prior year didn’t reduce the amount of section 1411 liability.
+a section 1411 NOL for NIIT purposes.                                       Second, properly allocable deductions aren’t reduced in the year
+                                                                            of the recovery if the amount deducted in the prior year is
+Deduction recoveries. A recovery or refund of a previously
+                                                                            included in net investment income.
+deducted item increases net investment income in the year of
+the recovery. There are two exceptions to this general rule.                Note. The total amount of recovery reported on Form 8960,
+   Generally, for purposes of determining the gross amount of               line 7, can’t exceed the total amount of properly allocable
+the recovery, include the recovery of any amount that was                   deductions for the year.
+deducted in a prior year, regardless of the application of the tax
+benefit rule (see section 111). For example, if a taxpayer
+receives a refund of state income taxes from a prior year, such a
+refund would be included in the taxpayer's gross income.
+However, if the taxpayer was subject to the alternative minimum
+tax in the year of the payment, the taxpayer may not have
+
+12                                                                                                       Instructions for Form 8960 (2024)
+        If the recovered amount relates to a deduction taken in a                                           If the recovered amount is included in net investment
+ TIP tax year beginning before 2013, none of the recovery is                                      TIP income on lines 1–6, none of the recovery is included in
+        included in net investment income in the year of                                                    net investment income on line 7.
+recovery.
+                                                                                                   See Regulations section 1.1411-4(g)(2) for more information
+        If the recovered amount relates to a deduction taken in a                               and examples. See Line 7—Deduction Recoveries Worksheet, in
+  TIP tax year beginning after 2012 and you weren’t subject to                                  these instructions, to determine the amount of any recovery to
+        the NIIT because your MAGI (see Line 13—Modified                                        include on line 7.
+Adjusted Gross Income (MAGI), later, was below the applicable                                               In the case of multiple recoveries in a single year,
+threshold on line 14, then none of the recovery is included in net                                TIP complete this worksheet for each recovery. If multiple
+investment income in the year of recovery. However, this rule                                           recoveries relate to a single deduction year, the amount
+doesn’t apply if you incurred an NOL in the year of the deduction,                              reported on lines 8 and 9 of the first recovery worksheet will
+and a portion of your NOL is a section 1411 NOL.                                                become lines 7 and 10, respectively, on the second recovery
+                                                                                                worksheet.
+
+
+
+
+Line 7—Deduction Recoveries Worksheet                                                                                                        Keep for Your Records
+        1. Enter total amount of recovery included in gross income . . . . . . . . . . . . . . .                                    1.
+           • Don’t include recoveries of items that are included in net investment
+           income in the year of recovery (included on lines 1–6).
+           • Don’t include recoveries of items if the amount relates to a deduction
+           taken in a tax year beginning before 2013.
+           • Don’t include recoveries of items if the amount relates to a deduction
+           taken in a tax year beginning after 2012, and you weren’t subject to the
+           NIIT solely because your MAGI was below the applicable threshold.
+                        This rule doesn’t apply if you incurred an NOL in such year, and a portion
+                !       of such NOL constitutes a section 1411 NOL.
+             CAUTION
+
+        2. Amount of the recovery that would’ve been included in gross income,
+           except for the application of the tax benefit rule under section 111 . . . . . . 2.
+        3. Total amount of recovery (add lines 1 and 2) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                    3.
+        4. Enter the percentage of the deduction allocated to net investment income
+           in the prior year. (If the deduction wasn’t allocated between investment
+           income and noninvestment income, enter 100%.) . . . . . . . . . . . . . . . . . . . . . 4.
+        5. Enter the lesser of (a) line 3 multiplied by line 4, or (b) the total amount deducted
+           on the prior year Form 8960 attributable to items recovered (after any deduction
+           limitations imposed by section 67 or 68) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                5.
+ Calculation of recoveries when the deduction isn’t taken into account in computing your section 1411 NOL
+       6. Multiply line 5 by 3.8% (0.038) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6.
+       7. Enter the amount of net investment income in the year of the deduction
+          (previous year’s Form 8960, line 12, unless line 12 is zero, then previous
+          year's Form 8960, line 8 minus line 11) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7.
+       8. Add the amount on line 5 to line 7 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8.
+       9. Using the previous year's Form 8960, recalculate the NIIT for the year of
+          the deduction by replacing the amount reported on line 12 with the
+          amount reported on line 8 of this worksheet (don’t use the net investment
+          income reported on that year's Form 8960, line 12). Enter your
+          recalculated NIIT here . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9.
+      10. Enter the NIIT reported for the year of the deduction . . . . . . . . . . . . . . . . . . . 10.
+      11. Subtract line 10 from line 9 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11.
+      12. Enter the smaller of line 6 or line 11 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12.
+      13. Divide line 12 by 3.8% (0.038). Enter the result here and include on
+          Form 8960, line 7 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13.
+ Calculation of recoveries when the deduction is taken into account in computing your section 1411 NOL
+      14. Enter the amount of the section 1411 NOL in the year of the deduction
+          (entered as a positive number) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14.
+      15. Enter the amount of the section 1411 NOL in the year of the deduction
+          recomputed without the amount on line 5 (entered as a positive number,
+          but not less than zero) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15.
+      16. Subtract line 15 from line 14. Enter the result here and include on
+          Form 8960, line 7 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16.
+
+
+Instructions for Form 8960 (2024)                                                                                                                                         13
+Self-charged interest. The self-charged interest rules under                If you have more than one of the deductions described above,
+section 469 (passive activity loss limitation) apply to lending         you may use a different method of allocation for each one. The
+transactions between a taxpayer and a pass-through entity in            reasonable method of allocation may differ from year to year.
+which the taxpayer owns a direct or indirect interest, or between           Examples of reasonable methods of allocation include, but
+certain pass-through entities. The section 469 self-charged             aren’t limited to, an allocation of the deduction based on the ratio
+interest rules apply only to items of interest income and interest      of the amount of a taxpayer's gross investment income (Form
+expense that are recognized in the same tax year. The                   8960, line 8) to the amount of the taxpayer's AGI. In the case of
+self-charged interest rules:                                            an estate or trust, an allocation of a deduction under Regulations
+ • Treat certain interest income resulting from these lending           section 1.652(b)-3(b), and in the case of an ESBT, Regulations
+transactions as passive activity income,                                section 1.641(c)-1(h), is also a reasonable method.
+ • Treat certain deductions for interest expense that are properly
+allocable to the interest income as passive activity deductions,        Note. If an estate or trust allocates expenses for regular income
+and                                                                     tax purposes under Regulations section 1.652(b)-3(b) or
+ • Allocate the passive activity gross income and passive activity      1.641(c)-1(h), any deviation from that allocation may not be a
+deductions resulting from this treatment among the taxpayer's           reasonable allocation method for NIIT purposes.
+activities.                                                             Items not deductible in calculating net investment income.
+    The rules for computing net investment income adopt a               Unless a deduction is specifically identified as properly allocable
+similar rule for self-charged interest. See Regulations section         to net investment income in the section 1411 regulations, or in
+1.1411-4(g)(5). Include on line 7 (as a negative amount) the            supplemental guidance issued by the IRS in the Internal
+amount of interest income you received that’s equal to the              Revenue Bulletin, the deduction isn’t permitted.
+amount of interest income that would’ve been considered
+passive income under the self-charged interest rules                    Line 9a—Investment Interest Expense
+(Regulations section 1.469-7) had the nonpassive activity been
+considered a passive activity.
+                                                                        Enter on Form 8960, line 9a, interest expense you paid or
+Note. This rule doesn’t apply to interest received on loans made        accrued during the tax year deducted on Schedule A (Form
+to a trade or business engaged in the trading of financial              1040), line 9. Estates and trusts enter the amount from Form
+instruments or commodities.                                             4952, line 8 (if not required to file Form 4952, use the form as a
+                                                                        worksheet). For individuals filing a Form 1040-NR, include only
+Note. Don’t include any adjustment for interest income on line 7        the amount of investment interest expense deduction for your
+(as a negative amount) if the corresponding interest deduction is       U.S. residency period.
+also taken into account in determining your self-employment
+income that’s subject to tax under section 1401(b).                     Note. If Form 4952 includes investment interest expense that’s
+                                                                        deducted on Schedule E (Form 1040) and already taken into
+Part II—Investment Expenses                                             account on line 4a, don’t include the same amount on line 9a.
+
+Allocable to Investment Income and                                      Note. If you own a CFC or QEF for which a section 1.1411-10(g)
+                                                                        election isn’t in effect, you may calculate your section 163(d)
+Modifications                                                           investment expense deduction for NIIT purposes differently than
+                                                                        for regular income tax purposes. See Regulations section
+Investment Expenses                                                     1.1411-10(c)(5) for additional guidance. Any modification to your
+Part II of Form 8960 includes deductions and modifications to           section 163(d) investment expense deduction for NIIT purposes
+net investment income that aren’t otherwise included in Part I.         is taken into account on line 6.
+Generally, expenses associated with a passive activity trade or
+business, or the trade or business of trading in financial              Line 9b—State, Local, and Foreign Income Tax
+instruments or commodities conducted through a pass-through
+entity are already included on line 4a or on line 5a. Part II is used   Include state, local, and foreign income taxes you paid for the tax
+to report deductions that are, predominately, itemized                  year that are attributable to net investment income. Form
+deductions. For more information on what constitutes properly           1040-NR filers include only taxes paid for the U.S. residency
+allocable deductions, see Regulations sections 1.1411-4(f)–(g).         period of the tax year. Sales taxes aren’t deductible in computing
+Reasonable method allocations. To the extent that you have              net investment income. You may not take a deduction for any
+a properly allocable deduction that’s allocable to both net             foreign income taxes paid for the tax year if you took a credit for
+investment income and excluded income, you may use any                  any portion of them. See section 275(a)(4).
+reasonable method to determine that portion of the deduction
+that’s properly allocable to net investment income. The three              You can determine the portion of your state, local, and foreign
+items that may be allocated between net investment income and           income taxes allocable to net investment income using any
+excluded income are the following.                                      reasonable method. See Reasonable method allocations,
+ • State, local, and foreign income taxes if properly deducted on       earlier, and Deductions subject to AGI limitations under section
+your return when calculating your U.S. regular income tax.              67 or section 68, later.
+ • All ordinary and necessary expenses paid or incurred during                  Miscellaneous itemized deductions are suspended for
+the tax year to determine, collect, or obtain a refund of any tax               tax years 2018 through 2025. Miscellaneous itemized
+owed if properly deducted on your return when calculating your            !
+                                                                        CAUTION deductions under section 67 aren’t allowed for tax years
+U.S. regular income tax.                                                beginning after 2017 and before 2026. See section 67(g).
+ • Amounts paid or incurred by the fiduciary of an estate or trust
+on account of administration expenses, including fiduciaries'
+fees and expenses of litigation, which are ordinary and                     The overall limitation on itemized deductions is also
+necessary in connection with the performance of the duties of           suspended for tax years 2018 through 2025. The overall
+administration if properly deducted on your return when                 limitation on itemized deductions under section 68 doesn’t apply
+calculating your U.S. regular income tax.                               for tax years beginning after 2017 and before 2026. See section
+                                                                        68(f).
+
+14                                                                                                   Instructions for Form 8960 (2024)
+   We continue to discuss miscellaneous itemized deductions          instruments or commodities, you may use the net loss amount
+under section 67 (and the 2%-of-AGI limitation) and the overall      on your Schedule C (Form 1040) as a deduction on line 10, and
+limitation on itemized deductions under section 68; however,         you don’t need to complete Schedule SE (Form 1040),
+they are suspended for tax years 2018 through 2025.                  Self-Employment Tax.
+                                                                        If you have more than one trade or business, you must
+Note. Enter the amount of state, local, or foreign income taxes      complete Schedule SE (Form 1040) to determine whether you
+on Form 8960, line 9b, net of any deduction limitations imposed      can include some or all of the trading business Schedule C
+by section 68. See Lines 9 and 10—Application of Itemized            (Form 1040) expenses as a deduction on line 10. Complete the
+Deduction Limitations on Deductions Properly Allocable to            Line 10 Worksheet for Traders in Financial Instruments That
+Investment Income Worksheet in these instructions for                Maintain More Than One Trade or Business.
+assistance in figuring the amount to report on line 9b.
+                                                                     Note. See the Instructions for Schedule SE (Form 1040) for who
+Line 9c—Miscellaneous Investment Expenses                            must file a Schedule SE (Form 1040). Retain a copy of the
+                                                                     Schedule SE (Form 1040) and the worksheet used to determine
+Investment expenses you incur that are directly connected to the     the expenses included as a modification on line 10 with your
+production of investment income are deductible expenses in           records. Don’t file the worksheet with Form 1040 or 1040-SR.
+determining your net investment income. Generally, these
+amounts are reported on Form 4952, line 5. See Form 4952 for
+the instructions for line 5 for more information. The amounts
+reported on line 9c are the amounts allowable after the
+application of the deduction limitations imposed by sections 67
+and 68.
+
+   See Deductions subject to AGI limitations under section 67 or
+section 68, later.
+Note. Enter the amount of miscellaneous investment expenses
+on Form 8960, line 9c, net of any deduction limitations imposed
+by section 67 or section 68. See Lines 9 and 10—Application of
+Itemized Deduction Limitations on Deductions Properly
+Allocable to Investment Income Worksheet in these instructions
+for assistance in figuring the amount to report on line 9c.
+    See Caution regarding miscellaneous itemized deductions,
+earlier.
+        Don’t include expenses that have been deducted on
+ TIP other lines of the Form 8960, such as depletion or
+        depreciation reported on Schedule E (Form 1040) and
+included on Form 8960, line 4a.
+   Dual-status individuals include only tax items related to their
+period of U.S. residency. See Dual-status individual, earlier.
+        DO NOT use the following worksheet to calculate
+  !     limitations for tax years beginning after 2017 and before
+CAUTION 2026.
+
+
+
+
+   See Caution regarding miscellaneous itemized deductions,
+earlier.
+
+Line 10—Additional Modifications
+
+Use line 10 to report additional deductions and modifications to
+net investment income that aren’t otherwise reflected on lines 1–
+9. Enter amounts on line 10 as positive numbers.
+
+Note. Enter the amount on line 10 after the application of
+section 67 or 68. See Lines 9 and 10—Application of Itemized
+Deduction Limitations on Deductions Properly Allocable to
+Investment Income Worksheet in these instructions for
+assistance in figuring the amount to report on line 10.
+
+   See Caution regarding miscellaneous itemized deductions,
+earlier.
+
+   You may use line 10 to report properly allocable deductions.
+See Regulations sections 1.1411-4(f) and 1.1411-4(g) for
+details.
+Special rule for traders in financial instruments or com-
+modities. If your only business is trading in financial
+
+Instructions for Form 8960 (2024)                                                                                               15
+Lines 9 and 10—Application of Itemized Deduction Limitations
+on Deductions Properly Allocable to Investment Income
+Worksheet                                                                                                                         Keep for Your Records
+Part I—Application of Section 67 to Deductions Properly Allocable to Investment Income
+     1. Enter the amount of Miscellaneous Itemized Deductions properly allocable to
+        investment income before any itemized deduction limitations (description and
+        Form 8960 line number where they’ll be reported):
+                                Description                      Line         Amount
+           (a)
+          (b)
+     2. Enter the total of all items listed in line 1      ...............................                       2.
+     3. Enter the amount of Miscellaneous Itemized Deductions shown on your current
+        return after the application of the section 67 2%-of-AGI limitation . . . . . . . . . . . .              3.
+     4. Enter the lesser of the total reported on line 2 or line 3 . . . . . . . . . . . . . . . . . . . .                                          4.
+Part II—Application of Section 67 Limitation to Specific Deductions
+                                                                                                                                 (B)
+                                                                                                                       IF line 3 is less than
+                                                                                                                       line 2, THEN divide
+                                                                                                                       line 3 by line 2 AND
+                                                                                                                       enter the amount in                      (C)
+                                                                                                                             column (B).                  Multiply the
+                                                                                                                      IF amounts reported                   individual
+                                                                                                                      on Part I, lines 2 and               amounts in
+                                                                                                                       4, are equal, THEN                column (A) by
+                                                    (A)                                                               enter 1.00 in column               the amount in
+                           Re-enter the amounts and descriptions from Part I, line 1.                                            (B).                      column (B).
+                                      Description                             Line           Amount
+           (a)                                                                                               x                                  =
+           (b)                                                                                               x                                  =
+                 Individuals—Use the amounts in column (C) on Part III, line 1, to determine the amount of these deductions that are allowable
+                 after the application of the section 68 limitation.
+     TIP
+                 Estates or trusts—Enter the amounts in column (C) in the appropriate location on lines 9 and 10. Don’t complete Part III or IV
+                 of this worksheet.
+
+
+
+
+16                                                                                                                            Instructions for Form 8960 (2024)
+Lines 9 and 10—Application of Itemized Deduction Limitations
+on Deductions Properly Allocable to Investment Income
+Worksheet—continued                                                                                                                                 Keep for Your Records
+Part III—Application of Section 68 to Deductions Properly Allocable to Investment Income (Individuals Only)
+ 1. Enter the amount of Miscellaneous Itemized Deductions properly allocable to
+    investment income from column (C) of Part II:
+                           Description                   Line         Amount
+        (a)
+       (b)
+ 2. Enter the amount of state, local, and foreign income taxes that are properly
+    allocable to investment income . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                 2.
+ 3. Enter the amounts of other Itemized Deductions subject to the section 68
+    limitation and properly allocable to investment income before any itemized
+    deduction limitations (description and Form 8960 line number where they’ll be
+    reported):
+                             Description                               Line               Amount
+        (a)
+      (b)
+ 4. Enter the total deductions properly allocable to investment income subject to the section 68 limitation. Enter
+    the sum of lines 1 through 3 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   4.
+ 5. Enter the amount of total itemized deductions reported on Form 1040 or
+    1040-SR . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5.
+ 6. Enter all other itemized deductions allowed but not subject to the section 68
+    deduction limitation:
+        (a) Investment Interest Expense . . . . . . . . . . . . . . . . . . . . .
+        (b) Casualty Losses (other than losses described in section
+            165(c)(1)) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        (c) Medical Expenses . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        (d) Gambling Losses . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+      (e) Total of lines 6(a) through 6(d) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .             6(e).
+ 7. Subtract line 6(e) from line 5 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   7.
+ 8. Enter the lesser of line 7 or line 4 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   8.
+
+
+      This is the amount of itemized deductions that are properly allocable to investment income after the application of the sections 67
+  TIP and 68 deduction limitations. Use Part IV of this worksheet to reconcile this amount to the individual deduction amounts reported
+              on Form 8960, lines 9 and 10.
+
+
+
+
+Instructions for Form 8960 (2024)                                                                                                                                           17
+Lines 9 and 10—Application of Itemized Deduction Limitations
+on Deductions Properly Allocable to Investment Income
+Worksheet—continued                                                                              Keep for Your Records
+Part IV—Reconciliation of Schedule A Deductions to Form 8960, Lines 9 and 10 (Individuals Only)
+                                                                                           (B)
+                                                                                 IF Part III, line 8, is
+                                                                                   less than Part III,                (C)
+                                                                                line 4, THEN divide               Multiply the
+                                                                                     line 8 by line 4              individual
+                                                                                    AND enter the                 amounts in
+                                                                                  amount in column             column (A) by the
+                                                                                           (B).                amount in column
+                                                                                    IF the amounts              (B). Enter these
+                                                                                reported on Part III,            amounts in the
+                                      (A)                                         lines 4 and 8, are              appropriate
+            Re-enter the amounts and descriptions from Part III, lines 1–        equal, THEN enter             locations on lines
+                                       3.                                        1.00 in column (B).               9 and 10.
+Miscellaneous Itemized Deductions properly
+allocable to investment income:
+                     Description                        Line     Amount
+ 1.   (a)                                                                   ×                              =
+      (b)                                                                   ×                              =
+ 2. State, local, and foreign income taxes . . . . . . . . . .              ×                              =
+Itemized Deductions Subject to Section 68
+Included on Line 3 of Part III:
+ 3.   (a)                                                                   ×                              =
+      (b)                                                                   ×                              =
+
+
+
+
+18                                                                                            Instructions for Form 8960 (2024)
+   The amounts reported on line 10 are the amounts allowable                                        See Caution regarding miscellaneous itemized deductions,
+after the application of the deduction limitations imposed by                                    earlier.
+sections 67 and 68, as applicable. See Deductions subject to
+AGI limitations under section 67 or section 68 next.                                             Part III—Tax Computation
+Deductions subject to AGI limitations under section 67 or
+section 68. Any deduction allowed against net investment
+                                                                                                 Individuals
+income that, for purposes of computing your regular income tax,                                  Individuals complete lines 13–17.
+is subject to either the 2% floor on miscellaneous itemized
+deductions (section 67) or the overall limitation on itemized                                    Line 13—Modified Adjusted Gross Income (MAGI)
+deductions (section 68) is allowed in determining net investment
+income, but only to the extent the items are deductible after                                    If you didn’t exclude any amounts from your gross income under
+application of both limitations.                                                                 section 911 and you don’t own a CFC or PFIC, your MAGI is your
+    See Caution regarding miscellaneous itemized deductions,                                     AGI as reported on Form 1040 or 1040-SR. If you exclude
+earlier.                                                                                         amounts under section 911 or own certain CFCs or PFICs, your
+   Miscellaneous itemized deductions. The amount of your                                         MAGI is your AGI as modified by certain rules described in
+miscellaneous itemized deductions, after application of the 2%                                   Regulations section 1.1411-10(e)(1).
+floor but before application of the overall limitation, used in                                  Section 911. If you exclude amounts from income under
+determining your net investment income is the lesser of:                                         section 911, to calculate your MAGI, you must increase your AGI
+ • That portion of your miscellaneous itemized deductions                                        by the excess of the amount excluded from income under
+before the application of the 2% floor that’s properly allocable to                              section 911(a)(1) over the amount of any deductions (taken into
+net investment income, or                                                                        account in computing AGI) or exclusions disallowed under
+ • Your total miscellaneous itemized deductions allowed after the                                section 911(d)(6) for the amount excluded from income under
+application of the 2% floor but before the application of the                                    section 911(a)(1). Use Line 13—MAGI Worksheet in these
+overall limitation on itemized deductions.                                                       instructions to compute your MAGI.
+    See Caution regarding miscellaneous itemized deductions,
+                                                                                                 CFCs and PFICs. If you own, directly or indirectly, stock in a
+earlier.
+                                                                                                 CFC or PFIC other than certain CFCs and PFICs held in a
+   Itemized deductions. The amount of your itemized                                              section 1411 trade or business or PFICs marked to market under
+deductions allowed in determining your net investment income                                     section 1296 or any other provision, to calculate your MAGI, you
+after applying both the 2% floor and the overall limitation is the                               may need to make certain adjustments to your AGI, as provided
+lesser of:                                                                                       in Regulations section 1.1411-10(e)(1). Generally, these
+ • The sum of :                                                                                  adjustments include the following.
+    1. The amount of your miscellaneous itemized deductions                                       • 1291 funds.
+allowed as a deduction against your net investment income                                           1. Increase AGI by the amount of any excess distributions
+(before application of the overall limitation), and                                              derived from a PFIC that are dividends included in MAGI but not
+    2. The total amount of your itemized deductions that aren’t                                  included in gross income for regular income tax purposes, and
+subject to the 2% floor and are properly allocable to items of                                      2. Increase AGI by the amount of any gain treated as an
+income or net gain for purposes of determining your net                                          excess distribution under section 1291 included in MAGI but not
+investment income; or                                                                            included in gross income for regular income tax purposes.
+ • The total amount of your itemized deductions allowed after the                                 • CFCs and QEFs without a section 1.1411-10(g) election in
+application of both the 2% floor and the overall limitation on                                   effect.
+itemized deductions.
+                                                                                                    1. Decrease AGI by the amount of any section 951(a), 951A,
+    For more information and examples, see Regulations section                                   or 1293(a) inclusions;
+1.1411-4(f)(7).
+
+
+Line 10—Worksheet for Traders in Financial Instruments That
+Maintain More Than One Trade or Business                                                                                                     Keep for Your Records
+Use this worksheet to determine the amount on line 10.
+
+ 1. Enter the total amount from Schedule SE (Form 1040), line 3 . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1.
+ 2. (a) If the amount on Schedule SE (Form 1040), line 3, is zero or greater, you can’t use the
+        expenses from your trade or business to reduce your investment income. Stop here.
+    (b) If the amount on Schedule SE (Form 1040), line 3, is a negative amount, enter your
+        expenses from your trade or business of trading in financial instruments or commodities
+        (entered as a positive amount) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2(b).
+ 3. Add line 1 to line 2(b) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3.
+     (a) If the amount on line 3 of this worksheet is zero or less, include the trade or business
+         expenses (line 2(b) of the worksheet) on Form 8960, line 10.
+     (b) If the amount on line 3 of this worksheet is a positive number, convert the amount from
+         Schedule SE (Form 1040), line 3 (line 1 of this worksheet) into a positive number and
+         include it on Form 8960, line 10.
+
+
+
+Instructions for Form 8960 (2024)                                                                                                                                    19
+Line 13—MAGI Worksheet                                                                                                                                      Keep for Your Records
+ 1. Enter your Adjusted Gross Income . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                                1.
+ 2. Foreign Earned Income Exclusion:
+    (a) Enter your Foreign Earned Income Exclusion (from
+        line 42 of Form 2555) . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    (b) Enter the deductions reported on line 44 of Form
+        2555 allocable to your Foreign Earned Income
+        Exclusion . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . (                                                       )
+     (c) Combine lines 2(a) and 2(b) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                      2.
+ 3. Adjustments for certain CFCs and certain PFICs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                                            3.
+ 4. Enter the sum of line 1, line 2(c), and line 3. (Enter this amount on Form 8960,
+    line 13.) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   4.
+
+
+    2. Increase AGI by the amount of any distributions described                                           NRA spouse. Note that if you made a section 6013(g) or 6013(h)
+in section 959(d) or 1293(c) included in your net investment                                               election to file jointly with your NRA spouse, but don’t also elect
+income as a dividend;                                                                                      to apply the joint return election for NIIT purposes, then, for NIIT
+    3. Increase or decrease AGI (as appropriate) by the amount                                             purposes, you’ll file as married filing separately and need to use
+of any adjustment to gain or loss on the disposition of the CFC or                                         the applicable threshold amount.
+QEF that results in an adjustment to your MAGI;
+    4. Increase or decrease AGI (as appropriate) by the amount                                             Line 17—Net Investment Income Tax for
+of any adjustment to gain or loss on the disposition of an interest                                        Individuals
+in a domestic partnership or S corporation that holds a CFC or
+QEF that results in an adjustment to your MAGI;                                                            • Form 1040 or 1040-SR filers: Include this amount on
+    5. Increase or decrease AGI (as appropriate) by the amount                                             Schedule 2 (Form 1040), line 12, and see the instructions there.
+of any adjustment to investment interest expense under                                                     • Form 1040-NR filers: Include this amount on the line of your
+Regulations section 1.1411-10(c)(5) that’s taken into account in                                           U.S. residency statement corresponding to Schedule 2 (Form
+computing MAGI; and                                                                                        1040), line 12, and see the Instructions for Form 1040-NR for the
+                                                                                                           amount to report on your tax return.
+    6. Increase or decrease AGI (as appropriate) by the amount
+reported to you in box 14, code H, of Schedule K-1 (Form 1041)
+                                                                                                                See Dual-status individual, earlier.
+that requires a MAGI adjustment.
+ • CFCs and QEFs held in a section 1411 trade or business or                                               Estates and Trusts
+with a section 1.1411-10(g) election in effect.
+                                                                                                           Estates and trusts complete lines 18–21.
+    Increase AGI by the amount of any distributions described in
+section 959(d) or 1293(c) included in your net investment
+income as a dividend (not applicable to tax years beginning                                                Line 18b—Deductions for Distributions of Net
+before 2014).                                                                                              Investment Income and Charitable Deductions
+           If you don’t own (directly or indirectly) any interests in
+ TIP CFCs or PFICs, and don’t exclude any foreign earned                                                   The undistributed net investment income of an estate or trust
+       income on Form 2555, Foreign Earned Income, enter                                                   (reported on line 18c) equals its net investment income (reported
+your AGI from Form 1040 or 1040-SR on line 13.                                                             on line 18a) reduced by the net investment income included in
+                                                                                                           the distributions to beneficiaries deductible by the estate or trust
+                                                                                                           under section 651 or 661, and by the net investment income for
+Line 14—Threshold Based on Filing Status                                                                   which the estate or trust was entitled to a section 642(c)
+                                                                                                           deduction, in each case as calculated under Regulations section
+The threshold amount is based on your filing status.                                                       1.642(c)-2 and the allocation and ordering rules under
+                                                                                                           Regulations section 1.662(b)-2. In the case of the S portion of an
+ Filing Status                                    Threshold Amount
+                                                                                                           Electing Small Business Trust, as defined by section 1361(e),
+                                                                                                           net investment income is further reduced by the net investment
+ Married Filing Jointly                                             $250,000                               income for which the trust was entitled to a section 170
+ Qualifying Surviving Spouse                                        $250,000                               deduction. See Section 641(c)(2)(E).
+ Married Filing Separately                                          $125,000
+                                                                                                               Regulations section 1.1411-3(e) applies the class system of
+ Single or Head of Household                                        $200,000                               income categorization, generally embodied in sections 651
+                                                                                                           through 663 and related regulations, to arrive at the trust's net
+                                                                                                           investment income reduction in the case of distributions that are
+                                                                                                           comprised of both net investment income and net excluded
+   A bankruptcy estate of an individual enters $125,000 and                                                income items. See Regulations section 1.1411-3(e) for more
+uses Form 8960, lines 13–17, to compute the tax.                                                           information and examples on the calculation of undistributed net
+                                                                                                           investment income.
+     If you’re a U.S. citizen or resident married to an NRA, your
+filing status is married filing separately unless you made an                                              Charitable deduction. Report the amount of net investment
+election under section 6013(g) or 6013(h) to file jointly with your                                        income distributed to beneficiaries of the estate or trust and the
+
+20                                                                                                                                                     Instructions for Form 8960 (2024)
+amount of net investment income allocated to distributions to           which the highest tax bracket begins for the tax year and enter
+charity pursuant to section 642(c). The amount of the deduction         that amount here.
+for net investment income distributed to charities under section
+642(c) is the amount of the net investment income allocated to              In the case of a QFT, see Special computational rules for
+the charity in accordance with Regulations section 1.642(c)-2(b)        qualified funeral trusts (QFTs), earlier, to determine the amount
+and the allocation and ordering rules under Regulations section         to report on Form 8960, line 19b.
+1.662(b)-2. In the case of the S portion of an Electing Small
+Business Trust, as defined by section 1361(e), report the amount
+of net investment income distributed to beneficiaries of the
+                                                                        Line 21—Net Investment Income Tax for Estates
+estate or trust and the amount of net investment income                 and Trusts
+allocated to distributions to charity pursuant to section 170. See
+Section 641(c)(2)(E).                                                   • Form 1041 filers: Include this amount on Form 1041,
+         Form 1041, Schedule A, can be used as a worksheet to           Schedule G, line 5, and see the instructions there.
+  TIP calculate the amounts of net investment income                    • Form 1041-QFT filers: Include this amount on Form
+         allocable to charitable distributions by including on line 2   1041-QFT, line 15, and see the instructions there.
+both tax-exempt income and the difference between adjusted
+total income and the trust's net investment income (Form 8960,          Paperwork Reduction Act Notice. We ask for the information
+line 18a).                                                              on this form to carry out the Internal Revenue laws of the United
+                                                                        States. You are required to give us the information. We need it to
+        The amount of the deduction for net investment income           ensure that you are complying with these laws and to allow us to
+ TIP distributed to beneficiaries should equal the sum of net           figure and collect the right amount of tax.
+        investment income reported to the beneficiaries on their
+                                                                            You are not required to provide the information requested on
+respective Schedules K-1 (Form 1041).
+                                                                        a form that is subject to the Paperwork Reduction Act unless the
+                                                                        form displays a valid OMB control number. Books or records
+Note. In general, the deduction for distributions of net                relating to a form or its instructions must be retained as long as
+investment income may not exceed the taxable income                     their contents may become material in the administration of any
+distributed to the beneficiary for regular income tax purposes.         Internal Revenue law. Generally, tax returns and return
+However, in the case of an estate or trust that owns an interest in     information are confidential, as required by section 6103.
+certain CFCs or PFICs, the distribution of net investment income
+can exceed the distribution of taxable income when the amount              The time needed to complete and file this form will vary
+of distributions exceeds distributable net income for regular           depending on individual circumstances. The estimated average
+income tax purposes.                                                    time is:
+        Form 1041, Schedule B, can be used as a worksheet to
+ TIP calculate the income distribution deduction for NIIT                Recordkeeping . . . . . . . . . . . . . .          1 hr., 01 min.
+         purposes by replacing line 1 with the trust's net               Learning about
+investment income (Form 8960, line 18a) and including on line 2          the law or the form . . . . . . . . . . .          6 hr., 04 min.
+both adjusted tax-exempt interest and the difference between
+line 1 and the trust's net investment income (Form 8960,                 Preparing the form . . . . . . . . . . .           1 hr., 47 min.
+line 18a).                                                               Copying, assembling,
+                                                                         and sending the form
+                                                                         to the IRS . . . . . . . . . . . . . . . . . .           20 min.
+Line 18c—Undistributed Net Investment Income
+Don’t enter a negative number. If negative, enter zero.
+                                                                          Comments and suggestions. We welcome your comments
+Line 19a—Adjusted Gross Income (AGI)                                    about this publication and your suggestions for future editions.
+
+                                                                           You can send us comments through IRS.gov/
+If the estate or trust doesn’t own a CFC or PFIC, enter its AGI for
+                                                                        FormComments. Or, you can write to: Internal Revenue Service,
+regular income tax purposes.
+                                                                        Tax Forms and Publications, 1111 Constitution Ave. NW,
+   If the estate or trust owns a CFC or PFIC, it may need to make       IR-6526, Washington, DC 20224. DO NOT SEND THE FORM
+adjustments. See Line 13—Modified Adjusted Gross Income                 TO THIS ADDRESS.
+(MAGI), earlier.
+                                                                           Although we can't respond individually to each comment
+                                                                        received, we do appreciate your feedback and will consider your
+Line 19b—Highest Tax Bracket for Estates and                            comments as we revise our tax forms, instructions, and
+Trusts                                                                  publications. We can't answer tax questions sent to the above
+                                                                        address.
+See the instructions for Form 1041, Schedule G, line 1a, and the
+instructions for Form 1041-QFT, line 12, for the dollar amount at
+
+
+
+
+Instructions for Form 8960 (2024)                                                                                                         21
+Index
+
+
+D                                        I                                   P
+Deduction recoveries 12                  Income Threshold, Estates and       Passive Activity 3
+Definitions 1                               Trusts 20
+Disposition of Interest 4                Income Thresholds, Individuals 20   R
+Disposition of Property, gains and       Index 22                            Recordkeeping 2
+  losses 7                               Individuals, application of Net
+                                            Investment tax 2
+                                                                             S
+E                                        Instruments or Commodities 5
+                                                                             Section 1291 10
+Economic Grouping 4
+Election for Reg 1.1411–10(g) 5
+                                         J                                   Section 1411 Net Operating Loss 11
+                                                                             Self-charged Interest 14
+Election, Form 8814 11                   Joint-filed returns 2
+Elections for Investment Income 5                                            T
+Estates and Trusts, application of Net   M
+   Investment tax 2                                                          Tax Computation 19
+                                         Mark-to-market, Passive Foreign
+Expenses of Investments 14                 Investment Company 10
+
+
+
+
+           22
+

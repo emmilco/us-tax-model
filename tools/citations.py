@@ -52,7 +52,6 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 from taxyear import Y  # noqa: E402
 
-SOURCES = ROOT / "sources" / Y
 RULINGS = ROOT / "reviews" / Y / "citations.json"
 REPORT = ROOT / "reports" / Y / "citations.md"
 RULINGS_PAGE = ROOT / "reports" / Y / "citations.html"
@@ -82,8 +81,9 @@ def parts_of(quote):
 
 
 class Archive:
-    def __init__(self):
-        docs = json.loads((SOURCES / "manifest.json").read_text())["documents"]
+    def __init__(self, year=Y, sources=None):
+        self.sources = Path(sources) if sources else ROOT / "sources" / str(year)
+        docs = json.loads((self.sources / "manifest.json").read_text())["documents"]
         self.docs = {d["id"]: d for d in docs}
         self.cache = {}
 
@@ -95,7 +95,7 @@ class Archive:
             if d and d["file"].endswith(".pdf"):
                 for key in ("cols_file", "text_file"):
                     if key in d:
-                        pages = (SOURCES / d[key]).read_text(encoding="utf-8").split("\f")
+                        pages = (self.sources / d[key]).read_text(encoding="utf-8").split("\f")
                         layers.append([norm(p) for p in pages])
             self.cache[doc] = layers or None
         return self.cache[doc]
@@ -103,7 +103,7 @@ class Archive:
     def raw_page(self, doc, page):
         """One page of a PDF's reading-order text, as extracted."""
         d = self.docs[doc]
-        pages = (SOURCES / d.get("cols_file", d["text_file"])).read_text(encoding="utf-8").split("\f")
+        pages = (self.sources / d.get("cols_file", d["text_file"])).read_text(encoding="utf-8").split("\f")
         return pages[page - 1] if 0 < page <= len(pages) else ""
 
 
@@ -257,10 +257,11 @@ def _segment_end(text, start):
 
 # ---------- data ----------
 
-def data_files():
-    files = sorted(glob.glob(str(ROOT / "forms" / Y / "*.yaml"))) + sorted(glob.glob(str(ROOT / "tables" / Y / "*.yaml")))
-    files += [str(ROOT / "params" / f"{Y}.yaml"), str(ROOT / "ambiguities" / f"{Y}.yaml")]
-    files += sorted(f for f in glob.glob(str(ROOT / "interview" / "*.yaml")) if re.search(rf"(^|-){Y}\.yaml$", os.path.basename(f)))
+def data_files(year=Y):
+    y = str(year)
+    files = sorted(glob.glob(str(ROOT / "forms" / y / "*.yaml"))) + sorted(glob.glob(str(ROOT / "tables" / y / "*.yaml")))
+    files += [str(ROOT / "params" / f"{y}.yaml"), str(ROOT / "ambiguities" / f"{y}.yaml")]
+    files += sorted(f for f in glob.glob(str(ROOT / "interview" / "*.yaml")) if re.search(rf"(^|-){y}\.yaml$", os.path.basename(f)))
     return files
 
 
