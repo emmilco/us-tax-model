@@ -31,6 +31,10 @@ const PARAMS_PATH = join(ROOT, "params", `${YEAR}.yaml`);
 const REGISTER_PATH = join(ROOT, "ambiguities", `${YEAR}.yaml`);
 const OUT_DIR = yearPath("canonical");
 
+interface BankQuestion { input: string; order: number; help: string; prompt?: string; cite?: CiteAuthored }
+interface QuestionBank { tax_year: number; frames: Record<string, string>; questions: BankQuestion[] }
+interface InterviewProfile { tax_year: number; targets: string[]; initial: InterviewData["initial"]; cite: CiteAuthored; questions: string[] | "all" }
+
 interface ManifestEntry {
   id: string;
   file: string;
@@ -126,43 +130,57 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
     entry.cite = fillCite(entry.cite as unknown as CiteAuthored, register.tax_year, `register ${entry.id}`);
   }
 
-  const interview = (parseYaml(readFileSync(join(ROOT, "interview", `${YEAR}.yaml`), "utf8")) as {interview: InterviewData}).interview;
-  interview.cite = fillCite(interview.cite, interview.tax_year, "interview");
-  for (const q of interview.questions) {
-    q.cite = fillCite(q.cite, interview.tax_year, `question ${q.input}`);
-    if (!q.prompt || !q.help || !Number.isSafeInteger(q.order)) errors.push(`invalid question ${q.input}`);
-    const declared = q.input.startsWith("$") ? forms.some(d => d.collection && "$" + d.id === q.input) : forms.some(d => d.lines.some(l => l.id === q.input && l.expr.op === "input"));
-    if (!declared) errors.push(`question ${q.input}: undeclared input`);
-  }
-  if (new Set(interview.questions.map(q => q.input)).size !== interview.questions.length) errors.push("duplicate questions");
-  const salesInterview = (parseYaml(readFileSync(join(ROOT, "interview", `sales-${YEAR}.yaml`), "utf8")) as {interview: InterviewData}).interview;
-  salesInterview.cite = fillCite(salesInterview.cite, YEAR, "sales interview");
-  for (const q of salesInterview.questions) {
-    q.cite = fillCite(q.cite, YEAR, `sales question ${q.input}`);
-    const declared = q.input.startsWith("$") ? forms.some(d => d.collection && "$" + d.id === q.input) : forms.some(d => d.lines.some(l => l.id === q.input && l.expr.op === "input"));
-    if (!declared || !q.prompt || !q.help) errors.push(`invalid sales question ${q.input}`);
-  }
-  if (new Set(salesInterview.questions.map(q=>q.input)).size !== salesInterview.questions.length) errors.push("duplicate sales questions");
-  const stage4Interview = (parseYaml(readFileSync(join(ROOT, "interview", `stage4-${YEAR}.yaml`), "utf8")) as {interview: InterviewData}).interview;
-  stage4Interview.cite = fillCite(stage4Interview.cite, YEAR, "Stage 4 interview");
-  for (const q of stage4Interview.questions) {
-    q.cite = fillCite(q.cite, YEAR, `Stage 4 question ${q.input}`);
-    const declared = q.input.startsWith("$") ? forms.some(d => d.collection && "$" + d.id === q.input) : forms.some(d => d.lines.some(l => l.id === q.input && l.expr.op === "input"));
-    if (!declared) errors.push(`invalid Stage 4 question ${q.input}`);
-  }
-  const fullInterview = (parseYaml(readFileSync(join(ROOT, "interview", `full-${YEAR}.yaml`), "utf8")) as {interview: InterviewData}).interview;
-  fullInterview.cite = fillCite(fullInterview.cite, YEAR, "full interview");
-  for (const q of fullInterview.questions) {
-    q.cite = fillCite(q.cite, YEAR, `full-interview question ${q.input}`);
-    const declared = q.input.startsWith("$") ? forms.some(d => d.collection && "$" + d.id === q.input) : forms.some(d => d.lines.some(l => l.id === q.input && l.expr.op === "input"));
-    if (!declared) errors.push(`invalid full-interview question ${q.input}`);
-  }
-  if (new Set(fullInterview.questions.map(q=>q.input)).size !== fullInterview.questions.length) errors.push("duplicate full-interview questions");
+  // Interview: one question bank for the year, and profiles that name the inputs they ask.
+  // A question's prompt is its collection's frame followed by the form line's question text
+  // (`source`), and its citation the line's (a roster question's, its collection's), unless the
+  // bank states its own; stating one equal to the derived value is an error, so copies of form
+  // data do not creep back into the interview.
+  const bank = (parseYaml(readFileSync(join(ROOT, "interview", `questions-${YEAR}.yaml`), "utf8")) as { bank: QuestionBank }).bank;
+  const bankByInput = new Map(bank.questions.map((q) => [q.input, q]));
+  if (bankByInput.size !== bank.questions.length) errors.push("question bank: duplicate inputs");
+  const resolveQuestion = (q: BankQuestion): InterviewData["questions"][number] | null => {
+    const where = `question ${q.input}`;
+    let derivedPrompt: string | undefined;
+    let derivedCite: CiteFilled | undefined;
+    if (q.input.startsWith("$")) {
+      const doc = forms.find((d) => d.collection && "$" + d.id === q.input);
+      if (!doc) { errors.push(`${where}: undeclared collection`); return null; }
+      derivedCite = doc.collection!.cite;
+    } else {
+      const doc = forms.find((d) => d.lines.some((l) => l.id === q.input && l.expr.op === "input"));
+      const line = doc?.lines.find((l) => l.id === q.input);
+      if (!doc || !line) { errors.push(`${where}: undeclared input`); return null; }
+      derivedPrompt = (bank.frames[doc.id] ?? "") + (line.expr as { source: string }).source;
+      derivedCite = line.cite;
+    }
+    if (q.prompt !== undefined && q.prompt === derivedPrompt) errors.push(`${where}: prompt repeats the form line's; remove it from the bank`);
+    const cite = q.cite === undefined ? derivedCite : fillCite(q.cite, YEAR, where);
+    if (q.cite !== undefined && stableStringify(cite) === stableStringify(derivedCite)) errors.push(`${where}: cite repeats the form line's; remove it from the bank`);
+    const prompt = q.prompt ?? derivedPrompt;
+    if (!prompt || !q.help || !Number.isSafeInteger(q.order)) { errors.push(`invalid ${where}`); return null; }
+    return { input: q.input, prompt, help: q.help, order: q.order, cite: cite! };
+  };
+  const resolved = new Map(bank.questions.flatMap((q) => { const r = resolveQuestion(q); return r ? [[q.input, r] as const] : []; }));
+  const loadProfile = (file: string, name: string): InterviewData => {
+    const profile = (parseYaml(readFileSync(join(ROOT, "interview", file), "utf8")) as { interview: InterviewProfile }).interview;
+    const inputs = profile.questions === "all" ? bank.questions.map((q) => q.input) : profile.questions;
+    if (new Set(inputs).size !== inputs.length) errors.push(`${name}: duplicate questions`);
+    for (const input of inputs) if (!bankByInput.has(input)) errors.push(`${name}: question ${input} is not in the question bank`);
+    return {
+      tax_year: profile.tax_year, targets: profile.targets, initial: profile.initial,
+      cite: fillCite(profile.cite, YEAR, name),
+      questions: inputs.flatMap((input) => resolved.get(input) ?? []),
+    };
+  };
+  const interview = loadProfile(`${YEAR}.yaml`, "interview");
+  const salesInterview = loadProfile(`sales-${YEAR}.yaml`, "sales interview");
+  const stage4Interview = loadProfile(`stage4-${YEAR}.yaml`, "Stage 4 interview");
+  const fullInterview = loadProfile(`full-${YEAR}.yaml`, "full interview");
   // Every document under the year's directories must state that year.
   const stated: [string, number][] = [
     ["sources manifest", (JSON.parse(readFileSync(MANIFEST_PATH, "utf-8")) as { tax_year: number }).tax_year],
     ["params", params.tax_year], ["ambiguity register", register.tax_year],
-    ["interview", interview.tax_year], ["sales interview", salesInterview.tax_year],
+    ["question bank", bank.tax_year], ["interview", interview.tax_year], ["sales interview", salesInterview.tax_year],
     ["Stage 4 interview", stage4Interview.tax_year], ["full interview", fullInterview.tax_year],
     ...[...forms, ...defs].map((d): [string, number] => [d.id, d.tax_year]),
     ...tables.map((t): [string, number] => [`table ${t.id}`, t.tax_year]),

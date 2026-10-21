@@ -1,0 +1,1113 @@
+# The interview's question bank for tax year 2025. Each question names its input and gives
+# its order and help; its prompt is its collection's frame followed by the form line's
+# question text, and its citation the line's (a roster question's, its collection's), filled
+# at build. A prompt or cite here is interview wording the form line does not carry.
+# The profiles (2025, sales, stage4, full) list the inputs they ask.
+bank:
+  tax_year: 2025
+  frames:
+    person: 'For this person (you, or your spouse on a joint return) — '
+    f8889: 'For this person (you, or your spouse on a joint return) — '
+    sc: 'For this business — '
+    scveh: 'For this vehicle — '
+    asset: 'For this property — '
+    ltc: 'For this person covered by long-term care insurance — '
+  questions:
+  - input: $person
+    order: 0
+    help: One entry for you and, on a joint return, one for your spouse. Amounts that are not asked person by person
+      (interest, dividends, sales, pensions and annuities, social security benefits, deductions, payments) are entered
+      once, for you and your spouse combined.
+    prompt: Who is on this return? Enter ["taxpayer"], or ["taxpayer","spouse"] if you are married filing jointly.
+  - input: person.role
+    order: 0
+    help: Answer taxpayer for the entry keyed taxpayer and spouse for the entry keyed spouse.
+    prompt: Whose entry is this? taxpayer for you, spouse for your spouse.
+  - input: f8889.allocation
+    order: 10
+    help: The family limit is figured on each Form 8889 for the months treated as having family coverage (Step 1
+      of the line 6 instructions).
+    prompt: For this person (you, or your spouse on a joint return) — you and your spouse each have an HSA and family
+      coverage. Do you divide the family contribution limit equally (equal), or by a different allocation you both
+      agree on, such as allocating nothing to one spouse (agreed)? Use the same answer on both Forms 8889.
+  - input: f8889.allocated
+    order: 10
+    help: Money is integer cents. Your spouse's part is the rest of the limit.
+    prompt: For this person (you, or your spouse on a joint return) — the part of the family contribution limit
+      (Step 1) allocated to this person under the allocation you agreed on. The two parts together may not be more
+      than the limit.
+  - input: div.box2b
+    order: 15
+    help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown may be null.
+  - input: div.box2c
+    order: 15
+    help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown may be null.
+  - input: div.box2d
+    order: 15
+    help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown may be null.
+  - input: div.box2e
+    order: 15
+    help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown may be null.
+  - input: div.box2f
+    order: 15
+    help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown may be null.
+  - input: div.box3
+    order: 15
+    help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown may be null.
+  - input: div.box9
+    order: 15
+    help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown may be null.
+  - input: div.box10
+    order: 15
+    help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown may be null.
+  - input: div.box13
+    order: 15
+    help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown may be null.
+  - input: div.basis_reconciled
+    order: 15
+    help: Enter combined 1099-DIV box amounts in integer cents. Use true/false for questions. Unknown may be null.
+  - input: f1040.status
+    order: 0
+    help: Money is integer cents; enter true/false for questions and one of the stated values for classifications.
+      Unknown answers may be null; they never become zero.
+  - input: f1040.line3a
+    order: 10
+    help: Money is integer cents; enter true/false for questions and one of the stated values for classifications.
+      Unknown answers may be null; they never become zero.
+  - input: f4952.line1
+    order: 10
+    help: Money is integer cents; answer true/false for screening questions. Unknown may be null.
+  - input: f4952.carryover
+    order: 10
+    help: Money is integer cents; answer true/false for screening questions. Unknown may be null.
+  - input: f4952.unsupported
+    order: 10
+    help: Money is integer cents; answer true/false for screening questions. Unknown may be null.
+  - input: f4952.alternative_allocation
+    order: 10
+    help: Money is integer cents; answer true/false for screening questions. Unknown may be null.
+  - input: f4952.line4g
+    order: 10
+    help: Enter integer cents. Elected income loses preferential rates. Once made, the election can be revoked only
+      with IRS consent; this tool does not make it automatically.
+  - input: f8959.unsupported
+    order: 10
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: f8960.unsupported
+    order: 10
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: f8960.refund
+    order: 10
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: f8960.allocated_taxes
+    order: 10
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: ftc.taxes
+    order: 10
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: ftc.all_passive
+    order: 10
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: ftc.statements
+    order: 10
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: ftc.eligible
+    order: 10
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: ftc.elect
+    order: 10
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: $gift
+    order: 5
+    help: Enter a JSON array of distinct keys. Empty [] means none. For gifts, group similar items across all donees.
+    prompt: List stable keys for Form 8283 — groups of similar noncash property.
+  - input: gift.deduction
+    order: 10
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: gift.public_securities
+    order: 10
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: gift.special
+    order: 10
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: $interest
+    order: 8
+    help: Enter a JSON array of distinct keys. Include all taxable interest payers.
+    prompt: List stable keys for taxable interest payers. Use [] when there are none.
+  - input: interest.amount
+    order: 10
+    help: Money is integer cents. Answer true/false to screening questions. Unknown may be null.
+  - input: f1040.tax_exempt_interest
+    order: 30
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: div.box12
+    order: 30
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: person.rrta
+    order: 10
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: qbi.dividends
+    order: 10
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: qbi.unsupported
+    order: 10
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: s2.amt
+    order: 10
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: s2.other
+    order: 10
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: s3.line9
+    order: 10
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: s3.line10
+    order: 10
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: s3.line12
+    order: 10
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: s3.line14
+    order: 10
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: sa.unsupported
+    order: 10
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: sa.charity_limited
+    order: 10
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: sa.excluded_income
+    order: 10
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: sa.dependent
+    order: 10
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: sa.spouse_extra
+    order: 10
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: person.age65
+    order: 10
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: person.blind
+    order: 10
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: sa.spouse_itemizes
+    order: 10
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: sa.elect_itemize
+    order: 10
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: sa.line1
+    order: 10
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: sa.line5a
+    order: 10
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: sa.line5b
+    order: 10
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: sa.line5c
+    order: 10
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: sa.line8a
+    order: 10
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: sa.line11
+    order: 10
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: $sales
+    order: 1
+    help: Enter a JSON array of distinct keys. Enter each transaction once; the route selects Form 8949 or Schedule
+      D aggregate reporting.
+    prompt: List stable transaction keys for all sales, including transactions intended for aggregate reporting.
+      Use [] only if there are no sales.
+  - input: sales.box
+    order: 2
+    help: 'Use records and the broker report: A/D basis reported, B/E basis not reported, C/F no 1099-B. A–C short-term,
+      D–F long-term. Generally more than one year is long-term; inherited property has special rules. Holding periods
+      are not calculated here.'
+  - input: sales.route
+    order: 5
+    help: Money is integer cents; enter true/false for questions and one of the stated values for classifications.
+      Unknown answers may be null; they never become zero.
+  - input: sales.code
+    order: 4
+    help: Money is integer cents; enter true/false for questions and one of the stated values for classifications.
+      Unknown answers may be null; they never become zero.
+  - input: sales.special
+    order: 3
+    help: Money is integer cents; enter true/false for questions and one of the stated values for classifications.
+      Unknown answers may be null; they never become zero.
+  - input: sales.aggregate_eligible
+    order: 10
+    help: Money is integer cents; enter true/false for questions and one of the stated values for classifications.
+      Unknown answers may be null; they never become zero.
+  - input: sales.proceeds
+    order: 10
+    help: Money is integer cents; enter true/false for questions and one of the stated values for classifications.
+      Unknown answers may be null; they never become zero.
+  - input: sales.reported_basis
+    order: 10
+    help: Money is integer cents; enter true/false for questions and one of the stated values for classifications.
+      Unknown answers may be null; they never become zero.
+  - input: sales.correct_basis
+    order: 10
+    help: Money is integer cents; enter true/false for questions and one of the stated values for classifications.
+      Unknown answers may be null; they never become zero.
+  - input: sales.wash_loss
+    order: 10
+    help: Enter correct disallowed loss in integer cents. Wash sales are not detected automatically. If correcting
+      a broker amount downward, attach the explanation required by code W.
+  - input: sb.unsupported
+    order: 10
+    help: Money is integer cents. Answer true/false to screening questions. Unknown may be null.
+  - input: sb.ordinary_dividends
+    order: 10
+    help: Money is integer cents. Answer true/false to screening questions. Unknown may be null.
+  - input: sb.line7a
+    order: 10
+    help: Money is integer cents. Answer true/false to screening questions. Unknown may be null.
+  - input: sb.fbar_required
+    order: 10
+    help: Money is integer cents. Answer true/false to screening questions. Unknown may be null.
+  - input: sb.form8938
+    order: 10
+    help: Money is integer cents. Answer true/false to screening questions. Unknown may be null.
+  - input: sb.line8
+    order: 10
+    help: Money is integer cents. Answer true/false to screening questions. Unknown may be null.
+  - input: scope.schedule1
+    order: 0
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: scope.credits
+    order: 0
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: scope.other_income
+    order: 0
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: scope.other_line16
+    order: 0
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: sd.other_forms
+    order: 10
+    help: Money is integer cents; enter true/false for questions and one of the stated values for classifications.
+      Unknown answers may be null; they never become zero.
+  - input: sd.carryover
+    order: 10
+    help: Money is integer cents; enter true/false for questions and one of the stated values for classifications.
+      Unknown answers may be null; they never become zero.
+  - input: sd.distributions
+    order: 10
+    help: Money is integer cents; enter true/false for questions and one of the stated values for classifications.
+      Unknown answers may be null; they never become zero.
+  - input: $w2
+    order: 5
+    help: Enter a JSON array of distinct keys. Empty [] means none. For gifts, group similar items across all donees.
+    prompt: For this person (you, or your spouse on a joint return) — List stable keys for Form W-2 — Social Security
+      boxes by employer.
+  - input: w2.box1
+    order: 3
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: w2.box3
+    order: 4
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: w2.box7
+    order: 4
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: w2.box4
+    order: 3
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: w2.box5
+    order: 4
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: w2.box6
+    order: 4
+    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
+      Married filing separately and unsupported items are refused with citations.
+  - input: w2.box2
+    order: 3
+    help: Read iw2w3, p. 17, box 2. Enter cents for money. Enter null if you do not know; it never becomes zero.
+  - input: f1040.line25b
+    order: 10
+    help: Total box 4 withholding shown on your 1099s. Enter cents for money. Enter null if you do not know; it
+      never becomes zero.
+  - input: f1040.line25c
+    order: 10
+    help: See the line 25c instructions if any other form reports income tax withheld. Enter cents for money; enter
+      zero if none. Unknown may be null; it never becomes zero.
+  - input: f1040.line26
+    order: 10
+    help: Include quarterly payments and any 2024 overpayment you asked to be applied. Enter cents for money; enter
+      zero if none. Unknown may be null; it never becomes zero.
+  - input: f1040.line35a
+    order: 20
+    help: Enter cents for money; the rest can be applied on line 36. Enter zero to apply the whole overpayment to
+      2026. Unknown may be null; it never becomes zero.
+  - input: f1040.line36
+    order: 20
+    help: Enter cents for money; the rest is refunded per line 35a. Enter zero if none. Unknown may be null; it
+      never becomes zero.
+  - input: $dependent
+    order: 2
+    help: Use stable local labels. One entry per person; the questions that follow are asked per entry.
+    prompt: List a stable key for each person you list as a dependent or who qualifies you for head of household
+      (for example child_a). [] confirms none.
+  - input: dependent.relationship
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.age
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.younger
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.student
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.disabled
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.months
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.us_half
+    order: 30
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.eic_ssn
+    order: 30
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.self_support
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.joint_return
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.citizen
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.canada_mexico
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.married
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.tin
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.work_ssn
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.gross_income
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.supported
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.other_claimant
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.divorced_rule
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.multiple_support
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.parent_home_paid
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: person.tin
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: person.itin_applied
+    order: 2
+    help: Answer true or false. An application by the due date counts for the credit for other dependents only.
+  - input: person.work_ssn
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: household.home_cost
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: eic.qc_of_another
+    order: 30
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: person.born_before_2001
+    order: 30
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: person.born_after_1960
+    order: 30
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: eic.us_home
+    order: 30
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: eic.married
+    order: 30
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: eic.same_home
+    order: 30
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: eic.legally_separated
+    order: 30
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: household.unmarried
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: s8812.combat_pay
+    order: 20
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: s8812.puerto_rico
+    order: 20
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: $retirement
+    order: 1
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+    prompt: List stable keys for each Form 1099-R you received (one key per form, for example payer names). Use
+      [] if you received none.
+  - input: retirement.account
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: retirement.code
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: retirement.box1
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: retirement.box5
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: retirement.rollover
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: retirement.special
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: retirement.annuity
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: retirement.cost
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: retirement.used_last_year
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: retirement.last_line4
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: retirement.joint_life
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: retirement.age
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: retirement.combined_age
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: retirement.months
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: retirement.recovered
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: ssb.benefits
+    order: 10
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: ssb.pub915
+    order: 10
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: ssb.lump_sum
+    order: 10
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: ssb.terror_disability
+    order: 10
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: ssb.lived_apart
+    order: 30
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: s1.uc_paid
+    order: 10
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: s1.uc_repaid
+    order: 10
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: s1.uc_unsupported
+    order: 10
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: person.educator_expenses
+    order: 10
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: person.eligible_educator
+    order: 10
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: $f8889
+    order: 10
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. One Form 8889 per person.
+    prompt: For this person (you, or your spouse on a joint return) — Did you, or your employer, contribute to a
+      health savings account (HSA) for you for 2025? Enter ["hsa"] for one Form 8889 covering all of your own HSAs,
+      or [] if there were no HSA contributions for you.
+    cite:
+      doc: i8889
+      locator: pp. 1-2, Who Must File; p. 4, Name and social security number (SSN), "complete a separate Form 8889
+        for each of you"
+  - input: f8889.line2
+    order: 10
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f8889.line9
+    order: 10
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f8889.unsupported
+    order: 10
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f8889.months_eligible
+    order: 10
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f8889.months_family
+    order: 10
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+    prompt: 'For this person (you, or your spouse on a joint return) — Of those months, the number in which your
+      high-deductible health plan provided family coverage on the first day of the month (on a joint return, also
+      count a month in which your spouse had family coverage while you were both eligible individuals: you are then
+      both treated as having family coverage); 0 to the number of eligible months'
+  - input: f8889.age55
+    order: 10
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f8889.dec_coverage
+    order: 10
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f8889.last_month
+    order: 10
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: sli.interest
+    order: 10
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: sli.claimed
+    order: 10
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: s1a.tips
+    order: 10
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: s1a.overtime
+    order: 10
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: s1a.carloan
+    order: 10
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: person.died_before_65
+    order: 10
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: $tipjob
+    order: 1
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+    prompt: For this person (you, or your spouse on a joint return) — List stable keys for each employer from which
+      you received tips you are deducting (one key per employer, for example employer names). Use [] if none.
+  - input: tipjob.qualified
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: tipjob.amount
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: $otjob
+    order: 1
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+    prompt: For this person (you, or your spouse on a joint return) — List stable keys for each employer that paid
+      you overtime you are deducting (one key per employer). Use [] if none.
+  - input: otjob.flsa
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: otjob.special_rule
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: otjob.method
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: otjob.statement
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: $carloan
+    order: 1
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+    prompt: List stable keys for each loan whose interest you are deducting (one key per loan; use the vehicle VIN,
+      adding a suffix if a vehicle had a loan refinanced during 2025). Use [] if none.
+  - input: carloan.kind
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: carloan.requirements
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: carloan.vehicle
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: carloan.interest
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: carloan.mixed
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: carloan.financed
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: carloan.nonqualifying
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: carloan.down
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: carloan.refi_balance
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: carloan.refi_whole
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: $asset
+    order: 11
+    help: Enter a JSON array of distinct keys. Empty [] means none.
+    prompt: For this business — List one stable key for each item of property other than a vehicle that you depreciate
+      or expense under section 179 for 2025 (placed in service from 2005 to 2025), or [] if none. Items with a cost
+      you deduct in full as supplies or under a de minimis rule are not listed here.
+  - input: $scveh
+    order: 11
+    help: Enter a JSON array of distinct keys. Empty [] means none.
+    prompt: For this business — List one stable key for each car, truck or van you used in the business in 2025
+      and claim expenses for (standard mileage or actual expenses), or [] if none.
+  - input: $sc
+    order: 11
+    help: Enter a JSON array of distinct keys. Empty [] means none.
+    prompt: For this person (you, or your spouse on a joint return) — Did you operate a business or practice a profession
+      as a sole proprietor in 2025 (income reported to you on Forms 1099-NEC, 1099-K or 1099-MISC for your own work
+      is usually such a business)? Enter a JSON array with one stable key per business, or [] if none.
+    cite:
+      doc: i1040sc
+      locator: p. 2, General Instructions, "Use Schedule C ... to report income or (loss) from a business you operated
+        or a profession you practiced as a sole proprietor"; p. 3, Line A
+  - input: sc.statutory
+    order: 12
+    help: Answer true or false.
+  - input: sc.passive
+    order: 12
+    help: Answer true or false.
+  - input: sc.spouse_owned
+    order: 12
+    help: Answer true or false.
+  - input: sc.method_other
+    order: 12
+    help: Answer true or false.
+  - input: sc.special
+    order: 12
+    help: Answer true or false.
+  - input: sc.line1
+    order: 12
+    help: Money is integer cents.
+  - input: sc.line2
+    order: 12
+    help: Money is integer cents.
+  - input: sc.line6
+    order: 12
+    help: Money is integer cents.
+  - input: sc.line8
+    order: 12
+    help: Money is integer cents.
+  - input: sc.line10
+    order: 12
+    help: Money is integer cents.
+  - input: sc.line11
+    order: 12
+    help: Money is integer cents.
+  - input: sc.line14
+    order: 12
+    help: Money is integer cents.
+  - input: sc.line15
+    order: 12
+    help: Money is integer cents.
+  - input: sc.line16a
+    order: 12
+    help: Money is integer cents.
+  - input: sc.line16b
+    order: 12
+    help: Money is integer cents.
+  - input: sc.line17
+    order: 12
+    help: Money is integer cents.
+  - input: sc.line18
+    order: 12
+    help: Money is integer cents.
+  - input: sc.line19
+    order: 12
+    help: Money is integer cents.
+  - input: sc.line20b
+    order: 12
+    help: Money is integer cents.
+  - input: sc.line21
+    order: 12
+    help: Money is integer cents.
+  - input: sc.line22
+    order: 12
+    help: Money is integer cents.
+  - input: sc.line23
+    order: 12
+    help: Money is integer cents.
+  - input: sc.line24a
+    order: 12
+    help: Money is integer cents.
+  - input: sc.meals_50
+    order: 12
+    help: Money is integer cents.
+  - input: sc.meals_80
+    order: 12
+    help: Money is integer cents.
+  - input: sc.meals_100
+    order: 12
+    help: Money is integer cents.
+  - input: sc.line25
+    order: 12
+    help: Money is integer cents.
+  - input: sc.line26
+    order: 12
+    help: Money is integer cents.
+  - input: sc.line48
+    order: 12
+    help: Money is integer cents.
+  - input: sc.ho_uses
+    order: 12
+    help: Answer true or false.
+  - input: sc.ho_other
+    order: 12
+    help: Answer true or false.
+  - input: sc.ho_sqft
+    order: 12
+    help: A whole number.
+  - input: sc.ho_home_sqft
+    order: 12
+    help: A whole number.
+  - input: sc.at_risk
+    order: 12
+    help: Answer true or false.
+  - input: sc.inventory_other
+    order: 12
+    help: Answer true or false.
+  - input: sc.line35
+    order: 12
+    help: Money is integer cents.
+  - input: sc.line36
+    order: 12
+    help: Money is integer cents.
+  - input: sc.line37
+    order: 12
+    help: Money is integer cents.
+  - input: sc.line38
+    order: 12
+    help: Money is integer cents.
+  - input: sc.line39
+    order: 12
+    help: Money is integer cents.
+  - input: sc.line41
+    order: 12
+    help: Money is integer cents.
+  - input: sc.rent_equipment
+    order: 12
+    help: Money is integer cents.
+  - input: scveh.method
+    order: 12
+    help: One of the values of vehicle_method.
+  - input: scveh.owned
+    order: 12
+    help: Answer true or false.
+  - input: scveh.placed_date
+    order: 12
+    help: A whole number.
+  - input: scveh.miles_business
+    order: 12
+    help: A whole number.
+  - input: scveh.miles_commuting
+    order: 12
+    help: A whole number.
+  - input: scveh.miles_other
+    order: 12
+    help: A whole number.
+  - input: scveh.parking
+    order: 12
+    help: Money is integer cents.
+  - input: scveh.smr_ok
+    order: 12
+    help: Answer true or false.
+  - input: scveh.operating
+    order: 12
+    help: Money is integer cents.
+  - input: scveh.lease
+    order: 12
+    help: Money is integer cents.
+  - input: scveh.placed
+    order: 12
+    help: One of the values of placed_year.
+  - input: scveh.screen
+    order: 12
+    help: Answer true or false.
+  - input: scveh.cost
+    order: 12
+    help: Money is integer cents.
+  - input: scveh.passenger
+    order: 12
+    help: Answer true or false.
+  - input: scveh.suv
+    order: 12
+    help: Answer true or false.
+  - input: scveh.s179_elect
+    order: 12
+    help: Money is integer cents.
+  - input: scveh.after_jan19
+    order: 12
+    help: Answer true or false.
+  - input: scveh.bonus_choice
+    order: 12
+    help: One of the values of bonus_choice.
+  - input: scveh.bonus_same
+    order: 12
+    help: Answer true or false.
+  - input: scveh.prior_179
+    order: 12
+    help: Money is integer cents.
+  - input: scveh.quarter
+    order: 12
+    help: One of the values of quarter.
+  - input: scveh.prior_conv
+    order: 12
+    help: One of the values of macrs_convention.
+  - input: asset.class
+    order: 12
+    help: One of the values of asset_class.
+  - input: asset.screen
+    order: 12
+    help: Answer true or false.
+  - input: asset.placed
+    order: 12
+    help: One of the values of placed_year.
+  - input: asset.cost
+    order: 12
+    help: Money is integer cents.
+  - input: asset.pct
+    order: 12
+    help: A whole number.
+  - input: asset.listed
+    order: 12
+    help: Answer true or false.
+  - input: asset.quarter
+    order: 12
+    help: One of the values of quarter.
+  - input: asset.s179
+    order: 12
+    help: Money is integer cents.
+  - input: asset.after_jan19
+    order: 12
+    help: Answer true or false.
+  - input: asset.bonus_choice
+    order: 12
+    help: One of the values of bonus_choice.
+  - input: asset.bonus_same
+    order: 12
+    help: Answer true or false.
+  - input: asset.prior_conv
+    order: 12
+    help: One of the values of macrs_convention.
+  - input: asset.prior_179
+    order: 12
+    help: Money is integer cents.
+  - input: asset.prior_bonus
+    order: 12
+    help: Money is integer cents.
+  - input: s179.line10
+    order: 12
+    help: Money is integer cents.
+  - input: person.se_screen
+    order: 12
+    help: Answer true or false.
+  - input: $ltc
+    order: 12
+    help: Enter a JSON array of distinct keys. Empty [] means none.
+    prompt: For this business — List one stable key for each person (you, your spouse, a dependent, or your child
+      under age 27) covered by qualified long-term care insurance established under this business, or [] if none.
+  - input: person.plan
+    order: 12
+    help: One of the values of retire_plan.
+  - input: person.plan_screen
+    order: 12
+    help: Answer true or false.
+  - input: person.sep_rate
+    order: 12
+    help: A whole number.
+  - input: person.sep_contrib
+    order: 12
+    help: Money is integer cents.
+  - input: person.simple_deferral
+    order: 12
+    help: Money is integer cents.
+  - input: person.simple_age
+    order: 12
+    help: One of the values of catchup_age.
+  - input: person.simple_kind
+    order: 12
+    help: One of the values of simple_formula.
+  - input: person.simple_employer
+    order: 12
+    help: Money is integer cents.
+  - input: sc.hi_uses
+    order: 12
+    help: Answer true or false.
+  - input: sc.hi_screen
+    order: 12
+    help: Answer true or false.
+  - input: sc.f7206_line1
+    order: 12
+    help: Money is integer cents.
+  - input: ltc.payments
+    order: 12
+    help: Money is integer cents.
+  - input: ltc.age
+    order: 12
+    help: One of the values of ltc_age.
+  - input: qbi.carryforward
+    order: 12
+    help: Money is integer cents.
+  - input: sc.tips_ot
+    order: 12
+    help: Answer true or false.
+  - input: carloan.col_ii_input
+    order: 12
+    help: Money is integer cents.

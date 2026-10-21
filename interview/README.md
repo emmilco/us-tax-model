@@ -130,3 +130,14 @@ output states that the IRS will figure it. Withholding totals on lines 25b and
 are supplied amounts read from the filer's records. The three synthetic
 whole-return fixtures (`fixtures/2025/stage5.json`) walk this profile at build
 time.
+
+## Question data
+
+Every profile asks its questions from one bank, `questions-2025.yaml`: each
+entry gives an input's order and help. Its prompt is filled at build from the
+form line's question text (`source`), after its collection's frame (for
+example "For this business — "), and its citation from the line (a roster
+question's from its collection). An entry states a prompt or cite only for
+interview wording the line does not carry; the build fails if it repeats the
+line's. A profile file lists its targets, initial answers and the inputs it
+asks (`full` asks them all).

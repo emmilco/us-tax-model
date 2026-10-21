@@ -863,3 +863,13 @@ later grouping.
   - headings not printed: "Who Can Use Form 8995(-A)" (printed "Who Can Take the Deduction"), "methods 1 to 3" (printed as paragraphs 1 through 4), and descriptions in place of a heading (now the printed heading followed by the description).
 - **Fix:** each locator corrected to the printed page, heading and wording; quotes that join separated text mark the gap with "...". Eleven anchors and quotes that are correct but cannot be matched as printed text (a section number such as "Section III.B.2", a quote the extraction reads out of order) are ruled in `reviews/2025/citations.json`.
 - **Tags:** citation-page-wrong; quote-not-verbatim; review-input-gap; caught-by-check
+
+## BUG-0074 — The interviews asked stale copies of form-line questions and citations
+
+- **Date:** 2026-10-21
+- **Caught by:** T-045 part 3, comparing each interview question with the form line it asks for before deriving prompts and citations from the lines.
+- **Symptom:** the whole-return interview (`full`) still asked `scope.schedule1` and `s2.other` in their pre-Stage 14 wording, which listed being self-employed or filing Schedule C or SE, and self-employment tax, among the things outside this tool; a self-employed filer answering as asked would have been refused, though Stage 14 prepares Schedule C and SE. Its citations repeated pages since corrected in the forms (BUG-0065, BUG-0066, BUG-0073; for example `scveh.prior_conv` still cited i4562 p. 14, `asset.listed` p. 2) and the Pub. 946 web edition the forms had left. The stage profiles (`sales`, `stage4`, `2025`) asked 111 of the same inputs differently again (help, prompt, order or citation).
+- **Root cause:** each interview file carried its own copy of each question's prompt and citation; a change to a form line, or to one profile, reached the others only by hand. The fixtures supply answers directly, so a stale prompt changes no computed value and no fixture noticed.
+- **Where:** `interview/2025.yaml`, `sales-2025.yaml`, `stage4-2025.yaml`, `full-2025.yaml`: in `full`, 15 prompts and 65 citations.
+- **Fix:** one question bank, `interview/questions-2025.yaml`, from which every profile takes its questions; a prompt is the collection's frame followed by the form line's question text and a citation the line's (a roster question's, its collection's), filled at build, and the build fails if the bank repeats either. Four Stage 4 refusal fixtures answer the three Schedule 1-A questions now asked before their refusal.
+- **Tags:** copy-drift; stale-wording; wrong-refusal; caught-by-review

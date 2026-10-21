@@ -1,349 +1,49 @@
 interview:
   tax_year: 2025
   targets:
-    - f1040.line31
+  - f1040.line31
   initial:
     $person:
-      - taxpayer
+    - taxpayer
     person[taxpayer].role: taxpayer
-  cite: &a1
+  cite:
     doc: i1040gi
     locator: p. 117, Schedule 3 line 11
   questions:
-    - input: f1040.status
-      prompt: Form 1040, Filing Status checkboxes
-      help: Read f1040, Form 1040, Filing Status. Enter cents for money. Enter null if
-        you do not know; it never becomes zero.
-      order: 0
-      cite:
-        doc: f1040
-        locator: Form 1040, Filing Status
-    - input: person.rrta
-      prompt: 'Do any wage statements report railroad retirement compensation or taxes (W-2 box 14), or did you file Form CT-2 as an employee representative?'
-      help: "Read iw2w3, pp. 12–13, Railroad employers: RRTA compensation and taxes in
-        box 14; boxes 3–7 are not used for RRTA. Enter cents for money. Enter
-        null if you do not know; it never becomes zero."
-      order: 1
-      cite:
-        doc: iw2w3
-        locator: "pp. 12–13, Railroad employers: RRTA compensation and taxes in box 14;
-          boxes 3–7 are not used for RRTA"
-    - input: w2.box3
-      prompt: Social security wages
-      help: Read iw2w3, p. 18, boxes 3, 4 and 7. Enter cents for money. Enter null if
-        you do not know; it never becomes zero.
-      order: 4
-      cite:
-        doc: iw2w3
-        locator: p. 18, boxes 3, 4 and 7
-    - input: w2.box7
-      prompt: Social security tips
-      help: Read iw2w3, p. 18, boxes 3, 4 and 7. Enter cents for money. Enter null if
-        you do not know; it never becomes zero.
-      order: 4
-      cite:
-        doc: iw2w3
-        locator: p. 18, boxes 3, 4 and 7
-    - input: w2.box4
-      prompt: Social security tax withheld
-      help: Read iw2w3, p. 18, boxes 3, 4 and 7. Enter cents for money. Enter null if
-        you do not know; it never becomes zero.
-      order: 3
-      cite:
-        doc: iw2w3
-        locator: p. 18, boxes 3, 4 and 7
-    - input: s3.line9
-      prompt: Net premium tax credit from Form 8962 (supplied subtotal; preparation
-        outside Stage 2)
-      help: Read f1040s3, Schedule 3 (2025), line 9. Enter cents for money. Enter null
-        if you do not know; it never becomes zero.
-      order: 10
-      cite:
-        doc: f1040s3
-        locator: Schedule 3 (2025), line 9
-    - input: s3.line10
-      prompt: Amount paid with request for extension to file
-      help: Read f1040s3, Schedule 3 (2025), line 10. Enter cents for money. Enter
-        null if you do not know; it never becomes zero.
-      order: 10
-      cite:
-        doc: f1040s3
-        locator: Schedule 3 (2025), line 10
-    - input: s3.line12
-      prompt: Credit for federal tax on fuels from Form 4136 (supplied subtotal;
-        preparation outside Stage 2)
-      help: Read f1040s3, Schedule 3 (2025), line 12. Enter cents for money. Enter
-        null if you do not know; it never becomes zero.
-      order: 10
-      cite:
-        doc: f1040s3
-        locator: Schedule 3 (2025), line 12
-    - input: s3.line14
-      prompt: Total other payments or refundable credits (supplied subtotal;
-        preparation outside Stage 2)
-      help: Read f1040s3, Schedule 3 (2025), line 14. Enter cents for money. Enter
-        null if you do not know; it never becomes zero.
-      order: 10
-      cite:
-        doc: f1040s3
-        locator: Schedule 3 (2025), line 14
-    - input: $w2
-      prompt: List distinct employer keys for this person after checking all W-2s. Use
-        one entry per actual employer, consolidating repeated forms explicitly.
-        [] confirms none.
-      help: Use stable local labels such as employer_a. This is a complete roster, not
-        a count of W-2 sheets. Check employer identity in W-2 boxes b and c.
-      order: 2
-      cite: *a1
-    - input: $dependent
-      prompt: List a stable key for each person you list as a dependent or who qualifies you for head of household
-        (for example child_a). [] confirms none.
-      help: Use stable local labels. One entry per person; the questions that follow are asked per entry.
-      order: 2
-      cite:
-        doc: f1040
-        locator: Form 1040 (2025), Dependents, rows (1)–(7)
-    - input: dependent.relationship
-      prompt: 'Relationship to you: child (son, daughter, stepchild, foster child or their descendant), sibling (brother, sister, half brother, half sister, stepbrother or stepsister, or a son or daughter of a brother, sister, half brother or half sister), sibling_descendant (any other descendant of a sibling, such as a grandniece or a stepsibling''s child), parent (father or mother), parent_relative (a grandparent, aunt or uncle: an ancestor or sibling of a parent), in_law (step-parent or in-law), household_member (any other person who lived with you all year), or other'
-      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
-      order: 2
-      cite:
-        doc: i1040gi
-        locator: pp. 17 and 19, Steps 1 and 4, "A qualifying child is your..." and "A qualifying relative
-          is your..."
-    - input: dependent.age
-      prompt: Age at the end of 2025 (whole years)
-      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
-      order: 2
-      cite:
-        doc: i1040gi
-        locator: p. 17, Step 1, "Under age 19 at the end of 2025"
-    - input: dependent.younger
-      prompt: Was this person younger than you (or, if you file jointly, younger than you or your spouse)?
-      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
-      order: 2
-      cite:
-        doc: i1040gi
-        locator: p. 17, Step 1, "and younger than you (or your spouse if filing jointly)"
-    - input: dependent.student
-      prompt: Was this person a full-time student in 2025?
-      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
-      order: 2
-      cite:
-        doc: i1040gi
-        locator: p. 17, Step 1, "Under age 24 at the end of 2025, a full-time student (defined later)"
-    - input: dependent.disabled
-      prompt: Was this person permanently and totally disabled at any time in 2025?
-      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
-      order: 2
-      cite:
-        doc: i1040gi
-        locator: p. 17, Step 1, "Any age and permanently and totally disabled (defined later)"
-    - input: dependent.months
-      prompt: 'Months this person lived with you in 2025, counting temporary absences for school, vacation, business, medical care, military service or detention in a juvenile facility as time lived with you (0–12); enter 7 if the person lived with you for more than half of 2025 but fewer than 7 full months. For a person born, died, adopted or placed with you in 2025 who meets the other conditions to be your qualifying child, enter 12 if your home was their home for more than half the time they were alive or with you, and 0 otherwise; for any other person born or who died in 2025, or adopted, lawfully placed with you for legal adoption, or placed with you as an eligible foster child in 2025, enter 12 only if your home was their home for the entire time they were alive or since the adoption or placement, and 0 otherwise'
-      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
-      order: 2
-      cite:
-        doc: i1040gi
-        locator: p. 17, Step 1, "Who lived with you for more than half of 2025", and p. 14, Exception to time
-          lived with you
-    - input: dependent.self_support
-      prompt: Did this person provide over half of their own support for 2025?
-      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
-      order: 2
-      cite:
-        doc: i1040gi
-        locator: p. 17, Step 1, "Who didn't provide over half of their own support for 2025"
-    - input: dependent.joint_return
-      prompt: Is this person filing a joint return for 2025, other than only to claim a refund of withheld
-        or estimated tax?
-      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
-      order: 2
-      cite:
-        doc: i1040gi
-        locator: p. 17, Step 1, "Who isn't filing a joint return for 2025 or is filing a joint return for
-          2025 only to claim a refund"
-    - input: dependent.citizen
-      prompt: Was this person a U.S. citizen, U.S. national or U.S. resident alien?
-      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
-      order: 2
-      cite:
-        doc: i1040gi
-        locator: p. 18, Step 2, question 1, and Step 3, question 2
-    - input: dependent.canada_mexico
-      prompt: If not a U.S. citizen, national or resident alien, was this person a resident of Canada or Mexico?
-      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
-      order: 2
-      cite:
-        doc: i1040gi
-        locator: p. 18, Step 2, question 1, "or a resident of Canada or Mexico"
-    - input: dependent.married
-      prompt: 'Was this person married at the end of 2025 (a person legally separated under a decree of divorce or separate maintenance is not married), or is this person filing a joint return for 2025 (for example with a spouse who died during 2025)?'
-      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
-      order: 2
-      cite:
-        doc: i1040gi
-        locator: p. 18, Step 2, question 2, "Was the child married? Yes. See Married person, later"
-    - input: dependent.tin
-      prompt: Did this person have an SSN, ITIN or ATIN issued on or before the due date of your 2025 return
-        (including extensions), or have you applied for one by then?
-      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
-      order: 2
-      cite:
-        doc: i1040gi
-        locator: p. 18, Step 3, question 1, and p. 19, Step 5, question 2
-    - input: dependent.work_ssn
-      prompt: Did this person have an SSN valid for employment, issued before the due date of your 2025 return
-        (including extensions)?
-      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
-      order: 2
-      cite:
-        doc: i1040gi
-        locator: p. 18, Step 3, question 4
-    - input: dependent.gross_income
-      prompt: This person's gross income for 2025
-      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
-      order: 2
-      cite:
-        doc: i1040gi
-        locator: p. 19, Step 4, "Who had gross income of less than $5,200 in 2025"
-    - input: dependent.supported
-      prompt: Did you provide over half of this person's support in 2025?
-      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
-      order: 2
-      cite:
-        doc: i1040gi
-        locator: p. 19, Step 4, "For whom you provided over half of the person's support in 2025"
-    - input: dependent.other_claimant
-      prompt: 'Does this person meet the conditions to be the qualifying child of any other person for 2025, under the dependent rules or under the EIC rules (which have no support test)?'
-      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
-      order: 2
-      cite:
-        doc: i1040gi
-        locator: p. 17, Step 1, "If the child meets the conditions to be a qualifying child of any other person
-          ... see Qualifying child of more than one person"
-    - input: dependent.divorced_rule
-      prompt: 'Does the special rule for children of divorced or separated parents, or parents who lived apart (including parents who never married), apply to this person, for example because a Form 8332 release or a decree lets the noncustodial parent claim the child?'
-      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
-      order: 2
-      cite:
-        doc: i1040gi
-        locator: p. 19, Step 4, "But see Children of divorced or separated parents"
-    - input: dependent.multiple_support
-      prompt: 'Did you and others together provide over half of this person''s support for 2025, with no one person providing over half (a multiple support situation), whether you or another contributor claims the person?'
-      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
-      order: 2
-      cite:
-        doc: i1040gi
-        locator: p. 19, Step 4, "Multiple support agreements"
-    - input: dependent.parent_home_paid
-      prompt: If this person is your parent, did you pay over half the cost of keeping up a home that was
-        their main home for all of 2025?
-      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
-      order: 2
-      cite:
-        doc: i1040gi
-        locator: p. 14, Head of Household, Test 1
-    - input: person.tin
-      prompt: Do you have an SSN or ITIN issued on or before the due date of your 2025 return (including extensions)?
-      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
-      order: 2
-      cite:
-        doc: i1040gi
-        locator: p. 19, Step 5, question 1
-    - input: person.itin_applied
-      prompt: If you have neither, have you applied for an ITIN on or before the due date of your 2025 return (including extensions)?
-      help: Answer true or false. An application by the due date counts for the credit for other dependents only.
-      order: 2
-      cite:
-        doc: i1040gi
-        locator: "p. 19, Step 5, question 1, (Answer 'Yes' if you are applying for an ITIN on or before the return due date (including extensions).)"
-    - input: person.work_ssn
-      prompt: Do you have an SSN valid for employment, issued before the due date of your 2025 return (including
-        extensions)?
-      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
-      order: 2
-      cite:
-        doc: i1040gi
-        locator: p. 18, Step 3, question 4
-    - input: household.home_cost
-      prompt: Did you pay over half the cost of keeping up your home for 2025?
-      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
-      order: 2
-      cite:
-        doc: i1040gi
-        locator: p. 14, Head of Household, Test 2
-    - input: household.unmarried
-      prompt: Were you unmarried, or considered unmarried under the head of household rules, at the end of
-        2025?
-      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
-      order: 2
-      cite:
-        doc: i1040gi
-        locator: p. 14, Head of Household, "You are considered unmarried for this purpose if any of the following
-          applies"
-    - input: s8812.combat_pay
-      prompt: 'Did you receive any nontaxable combat pay in 2025 (it is generally shown in Form W-2, box 12, code Q)?'
-      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
-      order: 20
-      cite:
-        doc: i1040s8812
-        locator: p. 8, Earned Income Worksheet, line 1b
-    - input: s8812.puerto_rico
-      prompt: Were you a bona fide resident of Puerto Rico in 2025?
-      help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
-        be null; do not guess. This computes the single-person return; joint returns and unsupported items
-        are refused with citations.
-      order: 20
-      cite:
-        doc: f1040s8812
-        locator: Schedule 8812 (2025), after line 20, "If you are a bona fide resident of Puerto Rico, go
-          to line 21"
+  - f1040.status
+  - person.rrta
+  - w2.box3
+  - w2.box7
+  - w2.box4
+  - s3.line9
+  - s3.line10
+  - s3.line12
+  - s3.line14
+  - $w2
+  - $dependent
+  - dependent.relationship
+  - dependent.age
+  - dependent.younger
+  - dependent.student
+  - dependent.disabled
+  - dependent.months
+  - dependent.self_support
+  - dependent.joint_return
+  - dependent.citizen
+  - dependent.canada_mexico
+  - dependent.married
+  - dependent.tin
+  - dependent.work_ssn
+  - dependent.gross_income
+  - dependent.supported
+  - dependent.other_claimant
+  - dependent.divorced_rule
+  - dependent.multiple_support
+  - dependent.parent_home_paid
+  - person.tin
+  - person.itin_applied
+  - person.work_ssn
+  - household.home_cost
+  - household.unmarried
+  - s8812.combat_pay
+  - s8812.puerto_rico

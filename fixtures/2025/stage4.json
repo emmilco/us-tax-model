@@ -12932,7 +12932,10 @@
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line7a": {
@@ -13050,7 +13053,10 @@
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line7a": {
@@ -13168,7 +13174,10 @@
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line7a": {
@@ -14548,7 +14557,10 @@
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0
+        "qbi.carryforward": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false
       },
       "expect": {
         "f1040.line7a": {

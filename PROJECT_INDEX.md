@@ -31,7 +31,7 @@ see `HANDOFF-STAGE-14.md` to continue. The order of later stages follows the cov
 | `HANDOFF-STAGE-2.md` | Stage 2 handoff and acceptance checklist (historical) |
 | `spec/stage2-proposal.md` | Owner-approved modeling choices and concrete collection binding |
 | `reviews/2025/stage2.md` | Preserved owner approval and hand-work record (not generated) |
-| `interview/` | Cited 2025 question data and CLI/collection documentation; `full-2025.yaml` is the whole-return profile |
+| `interview/` | `questions-2025.yaml`, the question bank: each input's order and help, its prompt and citation filled at build from the form line (a collection's frame first) unless the bank gives interview wording of its own; the profiles `2025.yaml`, `sales-2025.yaml`, `stage4-2025.yaml` and `full-2025.yaml` (the whole return) give targets, initial answers and the inputs they ask; CLI and collection documentation |
 | `HANDOFF.md` | Prompt for starting the build in a fresh session: reading order, settled decisions, constraints, and the first stage |
 | `spec/` | `spec.md` (scope, non-goals, data model, provenance, tests, versioning, explanation model) and `design.md` (architecture, components, build order). The agreed contract for the build |
 | `research/` | Research pass outputs. `report.md` is the cross-workstream synthesis with the committed recommendation; one detailed findings file per workstream sits beside it |
