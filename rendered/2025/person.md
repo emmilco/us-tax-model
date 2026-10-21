@@ -734,7 +734,7 @@
 - **Authored helper label:** Schedule 1 line 16 for this person
 - **Encoded (NonNegDollars):** Choose — [helper "This person has at least one Schedule C" = true → helper "Self-employed SEP or SIMPLE deduction for this person"] [helper "This person has at least one Schedule C" = false → line zero]
 - Expr: `{"alternatives":[{"guard":{"eq":["person.has_sc",{"const":true}],"op":"test"},"then":"person.plan_deduction"},{"guard":{"eq":["person.has_sc",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
-- Cite: [i1040gi] p. 93, Schedule 1, line 16, "If you were self-employed or a partner, you may be able to take this deduction" (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 93, Schedule 1, line 16, "If you were self-employed or a partner, you may be able to take this" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `person.positive_profits`
 

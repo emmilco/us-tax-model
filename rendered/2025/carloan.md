@@ -159,7 +159,7 @@
 - **IRS:** Interest on this loan deducted on Schedule C
 - **Encoded (NonNegDollars):** Input — The part of this loan's 2025 interest you deduct on Schedule C (the business use of the vehicle; zero if none)
 - Expr: `{"op":"input","source":"The part of this loan's 2025 interest you deduct on Schedule C (the business use of the vehicle; zero if none)"}`
-- Cite: [i1040gi] p. 110, Schedule 1-A, line 22, column (ii), "Enter the amount of the QPVLI ... that you deducted on Schedule C, E, or F"; i1040sc p. 6, Line 9 caution (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 110, Schedule 1-A, line 22, column (ii), "enter the amount of the QPVLI, if any, that was deducted elsewhere on your return (for example, on Schedule C, Schedule E, or Schedule F)"; i1040sc p. 6, Line 9, Caution (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `carloan.col_ii`
 

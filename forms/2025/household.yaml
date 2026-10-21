@@ -435,7 +435,7 @@ form:
                   - const: true
       cite:
         doc: i1040gi
-        locator: p. 14, Head of Household, "Check the box only if you are unmarried (or considered unmarried) and either Test 1 or Test 2 applies"
+        locator: p. 14, Head of Household, "Check the 'Head of household' box only if you are unmarried (or considered unmarried) and either Test 1 or Test 2 applies"
     - id: household.hoh_fails
       printed: (gate)
       type: Bool

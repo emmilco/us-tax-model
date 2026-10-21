@@ -86,7 +86,7 @@
 - **Authored helper label:** Worksheet column (b) total: qualified tips reported on Form W-2 or on Forms 4070
 - **Encoded (NonNegDollars):** Add person.tip_reported over every confirmed person entry for which helper "Do you have an SSN valid for employment issued before the due date of your return?" = true, within the current person when parent-bound. An unanswered roster is unknown.
 - Expr: `{"collection":"person","field":"person.tip_reported","op":"sum_over","where":{"eq":["person.work_ssn",{"const":true}],"op":"test"}}`
-- Cite: [i1040gi] p. 104, Qualified Tips From More Than One Employer Worksheet, column (b); p. 103, methods 1 to 3, "Enter this amount on line 4a" (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 104, Qualified Tips From More Than One Employer Worksheet, column (b); p. 103, paragraphs 1 through 3, "Enter this amount on line 4a" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `s1a.tip_multi`
 
@@ -121,7 +121,7 @@
 - **Authored helper label:** Figured: Enter qualified tips included on Form W-2, box 7, but see the instructions if Form W-2, box 5 is more than $176,100 or you received tips that are not subject to social security and Medicare taxes
 - **Encoded (NonNegDollars):** Choose — [helper "Tips from more than one employer" = true → helper "Year parameter sales.zero"] [helper "Tips from more than one employer" = false → helper "Worksheet column (b) total: qualified tips reported on Form W-2 or on Forms 4070"]
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.tip_multi",{"const":true}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.tip_multi",{"const":false}],"op":"test"},"then":"s1a.tip_reported"}],"op":"choose"}`
-- Cite: [i1040gi] p. 104, Schedule 1-A, line 4a; pp. 103-104, methods 1 to 3 (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 104, Schedule 1-A, line 4a; pp. 103-104, paragraphs 1 through 3 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 4a — `s1a.line4a`
 

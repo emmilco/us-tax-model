@@ -3,7 +3,7 @@
 ## Enums
 
 - `asset_class`: c00_11, c00_12, c00_13, c00_21, c00_22, c00_23, c00_241, c00_242, c00_25, c00_26, c00_27, c00_28, c00_3, c00_4, c01_1, c01_11, c01_21, c01_221, c01_222, c01_223, c01_224, c01_225, c01_23, c01_24, c01_3, c01_4, c10_0, c13_0, c13_1, c13_2, c13_3, c15_0, c20_1, c20_2, c20_3, c20_4, c20_5, c21_0, c22_1, c22_2, c22_3, c22_4, c22_5, c23_0, c24_1, c24_2, c24_3, c24_4, c26_1, c26_2, c27_0, c28_0, c30_1, c30_11, c30_2, c30_21, c31_0, c32_1, c32_11, c32_2, c32_3, c33_2, c33_21, c33_3, c33_4, c34_0, c34_01, c35_0, c36_0, c36_1, c37_11, c37_12, c37_2, c37_31, c37_32, c37_33, c37_41, c37_42, c39_0, c40_1, c40_2, c40_3, c40_4, c40_51, c40_52, c40_53, c40_54, c41_0, c42_0, c44_0, c45_0, c45_1, c46_0, c48_11, c48_12, c48_121, c48_13, c48_14, c48_2, c48_31, c48_32, c48_33, c48_34, c48_35, c48_36, c48_37, c48_38, c48_39, c48_41, c48_42, c48_43, c48_44, c48_45, c49_11, c49_12, c49_121, c49_13, c49_14, c49_15, c49_21, c49_221, c49_222, c49_223, c49_23, c49_24, c49_25, c49_3, c49_4, c49_5, c50_0, c51_0, c57_0, c57_1, c79_0, c80_0, cA_personal, cA_1245real, cB_qte, cC_research, cDEF_energy, cqip — [p946] Appendix B, Tables B-1 and B-2 (the asset classes, pp. 99-108), the lettered paragraphs of Certain Property for Which Recovery Periods Assigned (p. 108), and qualified improvement property (Table 4-1); the description of each value is in tables/2025/class_lives.enum.json (For use in preparing 2025 returns; sha256 07fadfb2)
-- `bonus_choice`: full, forty, none — [i4562] p. 5, Line 14, the 100% special depreciation allowance and the election "to take a 40% special depreciation allowance"; p. 7, Election out (2025; sha256 5c1c95b7)
+- `bonus_choice`: full, forty, none — [i4562] pp. 5–6, Line 14, the 100% special depreciation allowance and the election "to take a 40% special depreciation allowance"; p. 7, Election out (2025; sha256 5c1c95b7)
 - `carloan_kind`: original, refinanced, death — [fr-2025-24154] pp. 20–22, Proposed § 1.163-16(d)(4) (refinancing of an SPVL) and (d)(5) (whether the SPVL was incurred by the taxpayer; change in obligor by reason of death) (Federal Register Vol. 91, No. 1 (2026-01-02), proposed rules REG-113515-25 (Car Loan Interest Deduction), FR Doc. 2025-24154; sha256 4d243f55)
 - `catchup_age`: under50, age50, age60_63 — [p560] chapter 3, Catch-up contributions, "age 50 or over at the end of the calendar year" and "in a tax year in which they attain age 60, 61, 62, or 63" (For use in preparing 2025 returns; sha256 1f1f7abe)
 - `dependent_relationship`: child, sibling, sibling_descendant, parent, parent_relative, in_law, household_member, other — [i1040gi] pp. 17 and 19, Who Qualifies as Your Dependent, Steps 1 and 4: child is a son, daughter, stepchild, foster child or a descendant of any of them; sibling is a brother, sister, stepbrother, stepsister, half brother or half sister, or a son or daughter of a brother, sister, half brother or half sister (Step 4 lists step siblings but not their children); sibling_descendant is any other descendant of a sibling, including a step sibling's child (a qualifying child relationship under Step 1, and a Step 4 relative only as a household member who lived with you all year); parent is a father or mother; parent_relative is an ancestor or sibling of a parent (a Step 4 relative, but not the parent of Head of Household Test 1); in_law is a step-parent or an in-law; household_member is any other person who lived with you all year (2025; printed date 2026-02-25; sha256 482e9c48)
@@ -75,8 +75,8 @@
 | `medicare.additional_rate` | Rate | 9/1000 | [f8959] Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; sha256 13e64004) |
 | `medicare.regular_rate` | Rate | 145/10000 | [f8959] Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; sha256 13e64004) |
 | `medicare.threshold` | NonNegDollars | single $200,000; mfj $250,000; mfs $125,000; hoh $200,000; qss $200,000 | [f8959] Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; sha256 13e64004) |
-| `niit.rate` | Rate | 38/1000 | [i8960] p. 2 thresholds; Form 8960 line 17 (2025; printed date 2026-02-04; sha256 b10fbb23) |
-| `niit.threshold` | NonNegDollars | single $200,000; mfj $250,000; mfs $125,000; hoh $200,000; qss $250,000 | [i8960] p. 2 thresholds; Form 8960 line 17 (2025; printed date 2026-02-04; sha256 b10fbb23) |
+| `niit.rate` | Rate | 38/1000 | [i8960] p. 2, Application to Individuals, the applicable threshold amounts; Form 8960 line 17 (2025; printed date 2026-02-04; sha256 b10fbb23) |
+| `niit.threshold` | NonNegDollars | single $200,000; mfj $250,000; mfs $125,000; hoh $200,000; qss $250,000 | [i8960] p. 2, Application to Individuals, the applicable threshold amounts; Form 8960 line 17 (2025; printed date 2026-02-04; sha256 b10fbb23) |
 | `odc.per_dependent` | NonNegDollars | $500 | [f1040s8812] Schedule 8812 (2025), line 7, "Multiply line 6 by $500" (2025; created 2025-07-30; sha256 6936462d) |
 | `ordinary.table_boundary` | Dollars | $100,000 | [i1040gi] Instructions for Form 1040, line 16 (Tax Table or Tax Computation Worksheet) (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `person.one` | Count | 1 | [f1040] Form 1040 (2025), page 1, one entry for you and, if joint return, one for your spouse (2025; created 2025-09-05; sha256 3d31c226) |
@@ -98,7 +98,7 @@
 | `s1.educator_max` | NonNegDollars | $300 | [i1040gi] p. 93, Schedule 1, line 11, "up to $300 of qualified expenses" (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `s179.max` | NonNegDollars | $2,500,000 | [i4562] p. 4, Worksheet 1, line 2, "The maximum section 179 deduction limitation for 2025 ... $2,500,000" (2025; sha256 5c1c95b7) |
 | `s179.mfs_share` | Rate | 50% (0.50) | [i4562] p. 5, Line 5, "multiply the total limitation that you would otherwise enter on line 5 by 50% (0.50)" (2025; sha256 5c1c95b7) |
-| `s179.suv_limit` | NonNegDollars | $31,300 | [i4562] p. 15, Column (i), "You cannot elect to expense more than $31,300 of the cost of any SUVs and certain other vehicles" (2025; sha256 5c1c95b7) |
+| `s179.suv_limit` | NonNegDollars | $31,300 | [i4562] p. 16, Column (i), "You cannot elect to expense more than $31,300 of the cost of any SUVs and certain other vehicles" (2025; sha256 5c1c95b7) |
 | `s179.threshold` | NonNegDollars | $4,000,000 | [i4562] p. 4, Worksheet 1, line 6, "$4,000,000" (2025; sha256 5c1c95b7) |
 | `s1a.base_joint` | NonNegDollars | $300,000 | [f1040s1a] Schedule 1-A (2025), lines 9 and 17, "Enter $150,000 ($300,000 if married filing jointly)" (2025; created 2025-11-04; sha256 64f97b38) |
 | `s1a.base_other` | NonNegDollars | $150,000 | [f1040s1a] Schedule 1-A (2025), lines 9 and 17, "Enter $150,000 ($300,000 if married filing jointly)" (2025; created 2025-11-04; sha256 64f97b38) |
@@ -110,7 +110,7 @@
 | `s1a.ot_max_joint` | NonNegDollars | $25,000 | [f1040s1a] Schedule 1-A (2025), line 15, "Enter the smaller of the amount on line 14c or $12,500 ($25,000 if married filing jointly)" (2025; created 2025-11-04; sha256 64f97b38) |
 | `s1a.ot_max_other` | NonNegDollars | $12,500 | [f1040s1a] Schedule 1-A (2025), line 15, "Enter the smaller of the amount on line 14c or $12,500 ($25,000 if married filing jointly)" (2025; created 2025-11-04; sha256 64f97b38) |
 | `s1a.ot_quarter` | Rate | 1/4 | [n-25-69] pp. 22–25, Section III.B.2, method (D), "if overtime is paid at a rate of two times the regular rate, the appropriate fraction is one-fourth" (Notice 2025-69 (no issue date printed; listed on the IRS Working Families Tax Cuts notices page); sha256 e405c12d) |
-| `s1a.ot_third` | Rate | 1/3 | [i1040gi] p. 106, Schedule 1-A, method 2, "you can divide the total amount by three (3)" (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `s1a.ot_third` | Rate | 1/3 | [i1040gi] pp. 106–107, Schedule 1-A, method 2, "you can divide the total amount by three (3)" (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `s1a.senior_amount` | NonNegDollars | $6,000 | [f1040s1a] Schedule 1-A (2025), lines 33 and 35, "enter $6,000 on line 35" and "Subtract line 34 from $6,000" (2025; created 2025-11-04; sha256 64f97b38) |
 | `s1a.senior_base_joint` | NonNegDollars | $150,000 | [f1040s1a] Schedule 1-A (2025), line 32, "Enter $75,000 ($150,000 if married filing jointly)" (2025; created 2025-11-04; sha256 64f97b38) |
 | `s1a.senior_base_other` | NonNegDollars | $75,000 | [f1040s1a] Schedule 1-A (2025), line 32, "Enter $75,000 ($150,000 if married filing jointly)" (2025; created 2025-11-04; sha256 64f97b38) |
@@ -127,11 +127,11 @@
 | `sa.standard_extra` | NonNegDollars | single $2,000; mfj $1,600; mfs $1,600; hoh $2,000; qss $1,600 | [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `sales.one` | Count | 1 | [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; sha256 f077991c) |
 | `sales.zero` | NonNegDollars | $0 | [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; sha256 f077991c) |
-| `sc.bonus_rate_40` | Rate | 40% (0.40) | [i4562] p. 5, Line 14, "is limited to a special depreciation allowance of 40% of the depreciable basis" (2025; sha256 5c1c95b7) |
+| `sc.bonus_rate_40` | Rate | 40% (0.40) | [i4562] pp. 5–6, Line 14, "is limited to a special depreciation allowance of 40% of the depreciable basis" (2025; sha256 5c1c95b7) |
 | `sc.conv_hy` | Enum(macrs_convention) | hy | [i4562] p. 11, Column (e)—Convention, Half-year convention (2025; sha256 5c1c95b7) |
 | `sc.count2` | Count | 2 | [p946] p. 34, Which Convention Applies?, Mid-quarter convention, "more than 40%" (For use in preparing 2025 returns; sha256 07fadfb2) |
 | `sc.count5` | Count | 5 | [p946] p. 34, Which Convention Applies?, Mid-quarter convention, "more than 40%" (compared as five times the fourth-quarter bases against two times all bases) (For use in preparing 2025 returns; sha256 07fadfb2) |
-| `sc.fifty_cents` | NonNegDollars | $0.50 | [i4562] p. 13, Lines 26 and 27, "more than 50% in a qualified business use" (2025; sha256 5c1c95b7) |
+| `sc.fifty_cents` | NonNegDollars | $0.50 | [i4562] pp. 13–14, Lines 26 and 27, "more than 50% in a qualified business use" (2025; sha256 5c1c95b7) |
 | `sc.ho_max_sqft` | Count | 300 | [i1040sc] p. 12, Simplified Method Worksheet, line 2, "Don't enter more than 300 square feet" (2025; sha256 b5536db9) |
 | `sc.ho_rate` | NonNegDollars | $5 | [i1040sc] p. 12, Simplified Method Worksheet, line 3a, Maximum allowable amount, "$5" (2025; sha256 b5536db9) |
 | `sc.hundred_cents` | NonNegDollars | $1 | [i4562] p. 11, Column (c), the percentage of business/investment use (100%) (2025; sha256 5c1c95b7) |
@@ -140,7 +140,7 @@
 | `sc.mileage_rate` | NonNegDollars | $0.70 | [n-25-05] Section 3, "The standard mileage rate for transportation or travel expenses for 2025 is 70 cents per mile for all miles of business use" (Notice 2025-5; sha256 aac49246) |
 | `sc.one` | Count | 1 | [i1040sc] p. 3, Line A, "complete a separate Schedule C for each business" (2025; sha256 b5536db9) |
 | `sc.one_cent` | NonNegDollars | $0.01 | [i4562] p. 11, Column (c), the percentage of business/investment use (a percentage carried as cents of 100) (2025; sha256 5c1c95b7) |
-| `sc.period_y5` | Enum(macrs_period) | y5 | [i4562] p. 9, Lines 19a Through 19j, Column (a), "5-year property includes the following. Automobiles. Light general purpose trucks" (2025; sha256 5c1c95b7) |
+| `sc.period_y5` | Enum(macrs_period) | y5 | [i4562] pp. 9–10, Lines 19a Through 19j, Column (a), "5-year property includes the following. Automobiles. Light general purpose trucks" (2025; sha256 5c1c95b7) |
 | `sc.year1` | Count | 1 | [p946] p. 61, Deductions After the Recovery Period (the years of a 5-year recovery period) (For use in preparing 2025 returns; sha256 07fadfb2) |
 | `sc.year2` | Count | 2 | [p946] p. 61, Deductions After the Recovery Period (the years of a 5-year recovery period) (For use in preparing 2025 returns; sha256 07fadfb2) |
 | `sc.year3` | Count | 3 | [p946] p. 61, Deductions After the Recovery Period (the years of a 5-year recovery period) (For use in preparing 2025 returns; sha256 07fadfb2) |

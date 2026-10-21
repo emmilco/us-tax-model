@@ -182,7 +182,7 @@
 
 - **Authored helper label:** Step 1, question 3. Not filing Form 2555 (foreign earned income)
 - **Encoded (Bool):** sa helper "Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico?" = false
-- **Refusal:** when sa.excluded_income is true, cannot complete Form 2555 (EIC, Step 1, question 3). A filer excluding foreign earned income can't take the EIC; Form 2555 and excluded income are outside this tool. Cite: [i1040gi] p. 40, Step 1, question 3, "Are you filing Form 2555 (relating to foreign earned income)? Yes. STOP" (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Refusal:** when sa.excluded_income is true, cannot complete Form 2555 (EIC, Step 1, question 3). A filer excluding foreign earned income can't take the EIC; Form 2555 and excluded income are outside this tool. Cite: [i1040gi] p. 40, Step 1, question 3, "Are you filing Form 2555 (relating to foreign earned income)? ... Yes. STOP" (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"eq":["sa.excluded_income",{"const":false}],"op":"test"}`
 - Cite: [i1040gi] p. 40, Step 1, question 3 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -206,7 +206,7 @@
 - **Authored helper label:** Step 2, question 1. Investment income: Form 1040, lines 2a, 2b, 3b and 7a
 - **Encoded (Dollars):** Add f1040 line 2a, f1040 line 2b, f1040 line 3b, and helper "Form 1040, line 7a; if line 7a is a loss, enter -0-".
 - Expr: `{"of":["f1040.line2a","f1040.line2b","f1040.line3b","eic.gain_7a"],"op":"sum"}`
-- Cite: [i1040gi] p. 40, Step 2, question 1, "Add the amounts from Form 1040 or 1040-SR: Line 2a + Line 2b + Line 3b + Line 7a*" (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 40, Step 2, question 1, "Add the amounts from Form 1040 or 1040-SR: Line 2a ... Line 2b + Line 3b + Line 7a*" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `eic.step2_income`
 
@@ -219,7 +219,7 @@
 
 - **Authored helper label:** Step 2, question 4. No Schedule E, rental of personal property, Form 8814 or passive activity
 - **Encoded (Bool):** scope helper "Any income or adjustment requiring Schedule 1 other than business income or loss from Schedule C, unemployment compensation, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction and student loan interest, including a taxable state or local tax refund; alimony; an IRA deduction; statutory-employee wages or clergy income; church employee income (wages from a church that elected exemption from social security and Medicare taxes); other qualified retirement plans for the self-employed (such as a solo 401(k) or other Keogh plan); rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1); rental of personal property; farm income (Schedule F); gambling winnings, prizes or other income for Schedule 1 line 8; or an exclusion of Medicaid waiver payments (Schedule 1 line 8s)? (Schedule 1-A deductions are asked separately.)" = false and scope helper "Any additional Form 1040 line 16 tax or filing, including filing Form 8814 (even with no tax), Form 4972, Form 8615, a section 962 election, Form 8621, a Form 8978 amount, or recapture of an education credit?" = false
-- **Refusal:** when scope.schedule1 is true, cannot complete Pub. 596, Worksheet 1 (EIC, Step 2, question 4). Schedule E, rental of personal property and passive activity income are outside this tool. Cite: [i1040gi] p. 40, Step 2, question 4, "Yes. Use Worksheet 1 in Pub. 596" (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Refusal:** when scope.schedule1 is true, cannot complete Pub. 596, Worksheet 1 (EIC, Step 2, question 4). Schedule E, rental of personal property and passive activity income are outside this tool. Cite: [i1040gi] p. 40, Step 2, question 4, "Yes. Use Worksheet 1 ... in Pub. 596" (2025; printed date 2026-02-25; sha256 482e9c48)
 - **Refusal:** when scope.other_line16 is true, cannot complete Form 8814 (EIC, Step 2, question 4). Reporting a child's interest and dividends on Form 8814 is outside this tool. Cite: [i1040gi] p. 40, Step 2, question 4 (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"all":[{"eq":["scope.schedule1",{"const":false}],"op":"test"},{"eq":["scope.other_line16",{"const":false}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 40, Step 2, question 4 (2025; printed date 2026-02-25; sha256 482e9c48)
@@ -317,7 +317,7 @@
 - **Authored helper label:** Step 5, question 2: self-employed (Worksheet B)
 - **Encoded (Bool):** helper "Number of Schedules C on the return" > 0 (a count)
 - Expr: `{"gt":["eic.sc_count",{"const":0,"type":"Count"}],"op":"test"}`
-- Cite: [i1040gi] p. 42, Step 5, question 2, "Yes. Skip question 3 and Step 6; go to Worksheet B" (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 42, Step 5, question 2, "Yes. Skip question 3 ... and Step 6; go to Worksheet B" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `eic.wsb_se`
 
@@ -338,7 +338,7 @@
 - **IRS:** Worksheet B, line 6. Enter your total earned income from Part 4, line 4b (zero if line 4b is zero or less)
 - **Encoded (NonNegDollars):** Subtract helper "No amount" from line 4b. If zero or less, enter -0-.
 - Expr: `{"from":"eic.wsb_4b","op":"subtract_floor0","take":"eic.zero"}`
-- Cite: [i1040gi] p. 47, Worksheet B, Part 4, "If line 4b is zero or less, STOP You can't take the credit", and Part 5, line 6 (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 47, Worksheet B, Part 4, "STOP If line 4b is zero or less, you can't take the credit", and Part 5, line 6 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `eic.earned_for_limit`
 
@@ -359,7 +359,7 @@
 - **Authored helper label:** Steps 1 to 5 passed in order (Step 6, figure the credit on Worksheet A)
 - **Encoded (Bool):** helper "Adjusted gross income below the largest Step 1 limit (otherwise question 1 is "No" for any number of children)" = true and helper "Step 1, question 1. Is the amount on Form 1040, line 11b, less than the limit for the number of children who have valid SSNs?" = true and helper "Step 1, question 2. Do you have a social security number issued on or before the due date of your return that allows you to work and is valid for EIC purposes?" = true and helper "Step 1, question 3. Not filing Form 2555 (foreign earned income)" = true and helper "Step 1, question 4. Not a nonresident alien for any part of 2025" = true and helper "Step 2, question 2. Investment income not more than $11,950 (more than $11,950 stops at question 3 without Form 4797)" = true and helper "Step 2, question 4. No Schedule E, rental of personal property, Form 8814 or passive activity" = true and helper "Step 3 for a filer with a qualifying child, Step 4 otherwise" = true and helper "Step 5, question 3. Is your earned income less than the limit for the number of qualifying children with valid SSNs?" = true
 - Expr: `{"all":[{"eq":["eic.below_top",{"const":true}],"op":"test"},{"eq":["eic.step1_income",{"const":true}],"op":"test"},{"eq":["eic.step1_ssn",{"const":true}],"op":"test"},{"eq":["eic.step1_foreign",{"const":true}],"op":"test"},{"eq":["eic.step1_resident",{"const":true}],"op":"test"},{"eq":["eic.step2_income",{"const":true}],"op":"test"},{"eq":["eic.step2_other",{"const":true}],"op":"test"},{"eq":["eic.step34",{"const":true}],"op":"test"},{"eq":["eic.step5_income",{"const":true}],"op":"test"}],"op":"test"}`
-- Cite: [i1040gi] pp. 40–43, Steps 1 to 6 (each "No. STOP. You can't take the credit" ends the flow chart; Step 6, question 1, "No. Go to Worksheet A") (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] pp. 40–43, Steps 1 to 6 (each "No. STOP You can't take the credit" ends the flow chart; Step 6, question 1, "No. Go to Worksheet A") (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 1 — `eic.line1`
 
@@ -548,7 +548,7 @@
 - **Authored helper label:** Earned income credit for Form 1040, line 27a (Worksheet A, line 6 when Steps 1 to 5 are passed; zero otherwise)
 - **Encoded (NonNegDollars):** Choose — [helper "Steps 1 to 5 passed in order (Step 6, figure the credit on Worksheet A)" = true → line 6 (eic.line6)] [helper "Steps 1 to 5 passed in order (Step 6, figure the credit on Worksheet A)" = false → helper "No amount"]
 - Expr: `{"alternatives":[{"guard":{"eq":["eic.eligible",{"const":true}],"op":"test"},"then":"eic.line6"},{"guard":{"eq":["eic.eligible",{"const":false}],"op":"test"},"then":"eic.zero"}],"op":"choose"}`
-- Cite: [i1040gi] pp. 40–46, each "STOP. You can't take the credit"; Worksheet A, line 6, "Enter this amount on Form 1040 or 1040-SR, line 27a" (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] pp. 40–46, each "STOP You can't take the credit"; Worksheet A, line 6, "Enter this amount on Form 1040 or 1040-SR, line 27a" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `eic.reached_step3`
 
@@ -569,14 +569,14 @@
 - **Authored helper label:** Worksheet B, line 4b is more than zero (the worksheet continues to line 5)
 - **Encoded (Bool):** line 4b > $0 (sales.zero)
 - Expr: `{"gt":["eic.wsb_4b",{"param":"sales.zero"}],"op":"test"}`
-- Cite: [i1040gi] p. 47, Worksheet B, Part 4, "If line 4b is zero or less, STOP" (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 47, Worksheet B, Part 4, "STOP If line 4b is zero or less" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `eic.wsb_line5_stop`
 
 - **Authored helper label:** Worksheet B, line 5 is No (line 4b is not less than the limit), a STOP that says to check line 27c
 - **Encoded (Bool):** helper "Adjusted gross income below the largest Step 1 limit (otherwise question 1 is "No" for any number of children)" = true and helper "Step 1, question 1. Is the amount on Form 1040, line 11b, less than the limit for the number of children who have valid SSNs?" = true and helper "Step 1, question 2. Do you have a social security number issued on or before the due date of your return that allows you to work and is valid for EIC purposes?" = true and helper "Step 1, question 3. Not filing Form 2555 (foreign earned income)" = true and helper "Step 1, question 4. Not a nonresident alien for any part of 2025" = true and helper "Step 2, question 2. Investment income not more than $11,950 (more than $11,950 stops at question 3 without Form 4797)" = true and helper "Step 2, question 4. No Schedule E, rental of personal property, Form 8814 or passive activity" = true and helper "Step 3 for a filer with a qualifying child, Step 4 otherwise" = true and helper "Step 5, question 2: self-employed (Worksheet B)" = true and helper "Worksheet B, line 4b is more than zero (the worksheet continues to line 5)" = true and helper "Step 5, question 3. Is your earned income less than the limit for the number of qualifying children with valid SSNs?" = false
 - Expr: `{"all":[{"eq":["eic.below_top",{"const":true}],"op":"test"},{"eq":["eic.step1_income",{"const":true}],"op":"test"},{"eq":["eic.step1_ssn",{"const":true}],"op":"test"},{"eq":["eic.step1_foreign",{"const":true}],"op":"test"},{"eq":["eic.step1_resident",{"const":true}],"op":"test"},{"eq":["eic.step2_income",{"const":true}],"op":"test"},{"eq":["eic.step2_other",{"const":true}],"op":"test"},{"eq":["eic.step34",{"const":true}],"op":"test"},{"eq":["eic.self_employed",{"const":true}],"op":"test"},{"eq":["eic.wsb_4b_positive",{"const":true}],"op":"test"},{"eq":["eic.step5_income",{"const":false}],"op":"test"}],"op":"test"}`
-- Cite: [i1040gi] p. 47, Worksheet B, line 5, "No. STOP You can't take the credit. Check the box on Form 1040 or 1040-SR, line 27c" (reached after Steps 1 to 4 and Step 5, question 2, Yes; Step 5, question 3, has no such instruction, p. 42) (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 47, Worksheet B, line 5, "STOP No. You can't take the credit. Check the box on Form 1040 or 1040-SR, line 27c" (reached after Steps 1 to 4 and Step 5, question 2, Yes; Step 5, question 3, has no such instruction, p. 42) (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `eic.separated_box`
 

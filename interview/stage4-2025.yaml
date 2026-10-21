@@ -1141,7 +1141,7 @@ interview:
       order: 10
       cite:
         doc: i1040gi
-        locator: 'p. 31, Line 6c; p. 32, worksheet TIP'
+        locator: 'p. 31, Line 6c; p. 32, Social Security Benefits Worksheet, TIP'
     - input: ssb.terror_disability
       prompt: 'Are any of the social security or railroad retirement benefits on your Forms SSA-1099 or RRB-1099 disability payments for injuries incurred as a direct result of a terrorist attack directed against the United States or its allies (including injuries covered by the September 11 Victim Compensation Fund)?'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
@@ -1231,7 +1231,7 @@ interview:
       order: 10
       cite:
         doc: i8889
-        locator: "p. 6, Line 9 Employer Contributions and the Employer Contribution Worksheet"
+        locator: "p. 7, Line 9 Employer Contributions and the Employer Contribution Worksheet"
     - input: f8889.unsupported
       prompt: "Any of these: HSA distributions in 2025 that were not all used for qualified medical expenses or rolled over to another HSA; a qualified HSA funding distribution from an IRA in 2025; contributions by you or your employer to an Archer MSA for 2025 (Form 8853), or, if you or your spouse had family coverage under an HDHP at any time during 2025, to your spouse's Archer MSA; excess HSA contributions from an earlier year that remain in your HSA; failing to remain an eligible individual during a testing period that began in an earlier year (last-month rule or qualified HSA funding distribution); or an HSA you acquired because of the account beneficiary's death?"
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
@@ -1366,7 +1366,7 @@ interview:
       order: 2
       cite:
         doc: i1040gi
-        locator: 'pp. 103-104, methods 1 to 3; worksheet column (b)'
+        locator: 'pp. 103-104, paragraphs 1 through 3; worksheet column (b)'
     - input: $otjob
       prompt: 'List stable keys for each employer that paid you overtime you are deducting (one key per employer). Use [] if none.'
       help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may
@@ -1519,7 +1519,7 @@ interview:
       order: 11
       cite:
         doc: i4562
-        locator: p. 1, Who Must File; p. 9, Lines 17 and 19
+        locator: p. 2, Who Must File; p. 9, Lines 17 and 19
     - input: $scveh
       prompt: For this business — List one stable key for each car, truck or van you used in the business in 2025 and claim expenses
         for (standard mileage or actual expenses), or [] if none.
@@ -2007,7 +2007,7 @@ interview:
       order: 12
       cite:
         doc: i4562
-        locator: p. 14, Limits for passenger automobiles, "Passenger automobiles are 4-wheeled vehicles ..." and Exception
+        locator: pp. 14–15, Limits for passenger automobiles, "Passenger automobiles are 4-wheeled vehicles ..." and Exception
     - input: scveh.suv
       prompt: 'For this vehicle — If it is not subject to those limits: is it a 4-wheeled vehicle mainly designed or used to carry
         passengers over public roads, rated at more than 6,000 and not more than 14,000 pounds gross vehicle weight, other than
@@ -2017,7 +2017,7 @@ interview:
       order: 12
       cite:
         doc: i4562
-        locator: p. 15, Column (i)—Elected section 179 cost, "You cannot elect to expense more than $31,300 of the cost of any
+        locator: p. 16, Column (i)—Elected section 179 cost, "You cannot elect to expense more than $31,300 of the cost of any
           SUVs and certain other vehicles"
     - input: scveh.s179_elect
       prompt: For this vehicle — The amount of this vehicle's cost you elect to expense under section 179 (zero if none)
@@ -2025,7 +2025,7 @@ interview:
       order: 12
       cite:
         doc: i4562
-        locator: p. 15, Column (i)—Elected section 179 cost
+        locator: p. 16, Column (i)—Elected section 179 cost
     - input: scveh.after_jan19
       prompt: For this vehicle — Did you acquire this vehicle after January 19, 2025?
       help: Answer true or false.
@@ -2148,7 +2148,7 @@ interview:
       order: 12
       cite:
         doc: i4562
-        locator: p. 4, Line 6, Column (c)—Elected cost
+        locator: p. 5, Line 6, Column (c)—Elected cost
     - input: asset.after_jan19
       prompt: For this property — Did you acquire this property after January 19, 2025?
       help: Answer true or false.
@@ -2165,7 +2165,7 @@ interview:
       order: 12
       cite:
         doc: i4562
-        locator: p. 5, Line 14, "you can elect to take a 40% special depreciation allowance"; p. 7, Election out, "for any class
+        locator: pp. 5–6, Line 14, "you can elect to take a 40% special depreciation allowance"; p. 7, Election out, "for any class
           of property"
     - input: asset.bonus_same
       prompt: For this property — Is that choice the same for all property in the same recovery period class that you (and your
@@ -2208,7 +2208,7 @@ interview:
       order: 12
       cite:
         doc: i4562
-        locator: 'p. 4, Line 10, "If you filed Form 4562 for 2024, enter the amount from line 13 of your 2024 Form 4562" (owner:
+        locator: 'p. 5, Line 10, "If you filed Form 4562 for 2024, enter the amount from line 13 of your 2024 Form 4562" (owner:
           the printed amount)'
     - input: person.se_screen
       prompt: 'For this person (you, or your spouse on a joint return) — Does any of these apply to this person: church employee
@@ -2370,7 +2370,7 @@ interview:
       order: 12
       cite:
         doc: i1040gi
-        locator: p. 104, Schedule 1-A, line 5, "qualified tips received in the course of a trade or business"; p. 108, line 14b
+        locator: p. 104, Schedule 1-A, line 5, "the qualified tips you and/or your spouse received in the course of a trade or business"; p. 108, line 14b
     - input: carloan.col_ii_input
       prompt: For this vehicle loan — The part of this loan's 2025 interest you deduct on Schedule C (the business use of the
         vehicle; zero if none)
@@ -2378,5 +2378,4 @@ interview:
       order: 12
       cite:
         doc: i1040gi
-        locator: p. 110, Schedule 1-A, line 22, column (ii), "Enter the amount of the QPVLI ... that you deducted on Schedule
-          C, E, or F"; i1040sc p. 6, Line 9 caution
+        locator: p. 110, Schedule 1-A, line 22, column (ii), "enter the amount of the QPVLI, if any, that was deducted elsewhere on your return (for example, on Schedule C, Schedule E, or Schedule F)"; i1040sc p. 6, Line 9, Caution

@@ -102,8 +102,7 @@ form:
       source: The year you placed this property in service in the business (2005 to 2025)
     cite:
       doc: i4562
-      locator: p. 11, Column (b)—Month and year placed in service; p946 p. 39, the example of the third recovery
-        year
+      locator: p. 11, Column (b)—Month and year placed in service; p946 p. 39, Using the MACRS Percentage Tables, the example of the third recovery year
   - id: asset.cost
     printed: (helper)
     label: Cost or other basis
@@ -463,7 +462,7 @@ form:
         to claim any special allowance (none)?
     cite:
       doc: i4562
-      locator: p. 5, Line 14, "you can elect to take a 40% special depreciation allowance"; p. 7, Election out, "for any class
+      locator: pp. 5–6, Line 14, "you can elect to take a 40% special depreciation allowance"; p. 7, Election out, "for any class
         of property"
   - id: asset.bonus_same
     printed: (screen)
@@ -498,7 +497,7 @@ form:
       ref: sc.bonus_rate_40
     cite:
       doc: i4562
-      locator: p. 5, Line 14, "is limited to a special depreciation allowance of 40% of the depreciable basis"
+      locator: pp. 5–6, Line 14, "is limited to a special depreciation allowance of 40% of the depreciable basis"
   - id: asset.bonus_full
     printed: (helper)
     label: 100% special allowance
@@ -508,7 +507,7 @@ form:
       from: asset.after179
     cite:
       doc: i4562
-      locator: p. 5, Line 14, Certain qualified property acquired after January 19, 2025, "is eligible for a 100% special
+      locator: pp. 5–6, Line 14, Certain qualified property acquired after January 19, 2025, "is eligible for a 100% special
         depreciation allowance"
     refuses:
     - when: asset.bonus_mixed
@@ -867,7 +866,7 @@ form:
         then: asset.zero
     cite:
       doc: i4562
-      locator: p. 9, Line 17; i4562 p. 8, "Prior years' depreciation, plus current year's depreciation, can never exceed the
+      locator: p. 9, Line 17; i4562 p. 9, "Prior years' depreciation, plus current year's depreciation, can never exceed the
         depreciable basis"
   - id: asset.dep_2025
     printed: (helper)
@@ -1065,4 +1064,4 @@ form:
     parent: sc
     cite:
       doc: i4562
-      locator: p. 9, Lines 19a Through 19j, and p. 2, Who Must File, "File a separate Form 4562 for each business or activity"
+      locator: p. 9, Lines 19a Through 19j; p. 2, Who Must File, "File a separate Form 4562 for each business or activity"

@@ -13,6 +13,8 @@ python3 tools/check_auto_limits.py "$@"
 python3 tools/check_bug_inventory.py
 python3 tools/transcription/check_logs.py "$@"
 python3 tools/transcription/check_table_logs.py "$@"
+python3 tools/citations.py "$@"
+python3 tools/citations.py --self-test "$@"
 npm run compile --silent
 "${node[@]}" build "$@"
 "${node[@]}" render "$@"

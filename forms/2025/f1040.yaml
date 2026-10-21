@@ -519,7 +519,7 @@ form:
                       - const: 0
       cite:
         doc: i1040sd
-        locator: p. 15, Schedule D Tax Worksheet applicability and exceptions
+        locator: p. 15, Schedule D Tax Worksheet, applicability and exceptions
       ambiguity: amb.2025.sd4952_selection
     - id: f1040.non_sdtw_tax
       printed: (helper)

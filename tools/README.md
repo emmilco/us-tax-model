@@ -38,6 +38,9 @@ No project toolchain is pinned yet; engine/proof configuration belongs to Stage 
 working tree to `.git/check-all-green`. The run counts as green only if nothing
 outside the suite's own outputs (`reports/`, `rendered/`) changed while it ran.
 
+A run for a year other than the default passes or fails as usual but writes no
+marker.
+
 `tools/hooks/pre-commit` refuses any commit whose tree is not exactly the
 tested tree: no green run, a tree changed since the run, or a partial stage.
 Enable it once per clone:

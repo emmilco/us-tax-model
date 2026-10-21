@@ -45,13 +45,13 @@
 - **Authored helper label:** Business income or a carryforward with taxable income above the Form 8995 threshold
 - **Encoded (Bool):** (f8995 line 2 ≠ $0 (sales.zero) or line 3 > $0 (sales.zero))
 - Expr: `{"any":[{"ne":["f8995.line2",{"param":"sales.zero"}],"op":"test"},{"gt":["qbi.carryforward",{"param":"sales.zero"}],"op":"test"}],"op":"test"}`
-- Cite: [i8995] p. 1, Who Can Use Form 8995 (owner: Form 8995-A with business income refused) (2025; printed date 2026-01-26; sha256 875843ba)
+- Cite: [i8995] p. 1, Who Can Take the Deduction (owner: Form 8995-A with business income refused) (2025; printed date 2026-01-26; sha256 875843ba)
 
 ## (helper) — `qbi.via_8995a`
 
 - **Authored helper label:** Form 8995-A (section 199A dividends only)
 - **Encoded (NonNegDollars):** Enter the amount from f8995a line 39.
-- **Refusal:** when qbi.business_any is true, cannot complete Form 8995-A with qualified business income (taxable income above the threshold). The qualified business income deduction above the Form 8995 threshold is outside this tool. Cite: [i8995a] p. 1, Who Can Use Form 8995-A (2025; printed date 2026-01-26; sha256 6df1301c)
+- **Refusal:** when qbi.business_any is true, cannot complete Form 8995-A with qualified business income (taxable income above the threshold). The qualified business income deduction above the Form 8995 threshold is outside this tool. Cite: [i8995a] p. 1, Who Can Take the Deduction (2025; printed date 2026-01-26; sha256 6df1301c)
 - Expr: `{"from":"f8995a.line39","op":"copy"}`
 - Cite: [f8995a] Form 8995-A (2025), line 39 (2025; created 2025-09-12; sha256 3362db81)
 

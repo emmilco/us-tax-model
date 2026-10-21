@@ -436,4 +436,4 @@
 - **Authored helper label:** MFS with spouse itemizing
 - **Encoded (Bool):** helper "Married filing separately" = true and helper "Married filing separately with a spouse who itemizes?" = true
 - Expr: `{"all":[{"eq":["sa.mfs",{"const":true}],"op":"test"},{"eq":["sa.spouse_itemizes",{"const":true}],"op":"test"}],"op":"test"}`
-- Cite: [i1040gi] p. 34, line 12e exception 2 (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 34, Line 12e, Exception 2 (2025; printed date 2026-02-25; sha256 482e9c48)

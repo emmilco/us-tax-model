@@ -1,7 +1,7 @@
 # Form 1099-R distributions (IRAs, pensions and annuities)
 
 - Document: `retirement` (form, tax year 2025)
-- Collection: keyed entries; [i1040gi] pp. 26-30, lines 4a-5b ('If you received more than one distribution, figure the taxable amount of each distribution') (2025; printed date 2026-02-25; sha256 482e9c48)
+- Collection: keyed entries; [i1040gi] pp. 26-30, lines 4a-5b ('If you ... received more than one distribution, figure the taxable amount of each distribution') (2025; printed date 2026-02-25; sha256 482e9c48)
 - Note: One entry per Form 1099-R. IRA distributions go to Form 1040 lines 4a and 4b, pensions and annuities to lines 5a and 5b. The Simplified Method Worksheet is figured for each annuity with after-tax cost.
 
 ## (helper) — `retirement.account`

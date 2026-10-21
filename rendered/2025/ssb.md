@@ -22,7 +22,7 @@
 - **Authored helper label:** Do you elect to use the lump-sum election method for a social security benefit payment that was for an earlier year?
 - **Encoded (Bool):** Input — Do you elect to use the lump-sum election method for a social security benefit payment that was for an earlier year?
 - Expr: `{"op":"input","source":"Do you elect to use the lump-sum election method for a social security benefit payment that was for an earlier year?"}`
-- Cite: [i1040gi] p. 31, Line 6c; p. 32, worksheet TIP (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 31, Line 6c; p. 32, Social Security Benefits Worksheet, TIP (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `ssb.terror_disability`
 
@@ -194,14 +194,14 @@
 - **IRS:** Enter the smaller of line 2 or line 13
 - **Encoded (NonNegDollars):** Enter the smaller of line 2 or line 13.
 - Expr: `{"of":["ssb.line2","ssb.line13"],"op":"smaller_of"}`
-- Cite: [i1040gi] p. 32, line 14 (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 14 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 15 — `ssb.line15`
 
 - **IRS:** Multiply line 11 by 85% (0.85). If line 11 is zero, enter -0-
 - **Encoded (NonNegDollars):** Multiply line 11 by 85% (0.85) (ssb.rate85).
 - Expr: `{"amount":"ssb.line11","op":"multiply_rate","rate":{"param":"ssb.rate85"}}`
-- Cite: [i1040gi] p. 32, line 15 (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 15 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `ssb.mfs_together`
 
@@ -243,11 +243,11 @@
 - **Authored helper label:** The smaller of line 16 or line 17
 - **Encoded (NonNegDollars):** Enter the smaller of line 16 or line 17.
 - Expr: `{"of":["ssb.line16","ssb.line17"],"op":"smaller_of"}`
-- Cite: [i1040gi] p. 32, line 18 (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 18 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 18 — `ssb.line18`
 
 - **IRS:** Taxable social security benefits. Enter the smaller of line 16 or line 17
 - **Encoded (NonNegDollars):** Choose — [helper "Any social security benefits (otherwise the worksheet is not needed)" = true → helper "The smaller of line 16 or line 17"] [helper "Any social security benefits (otherwise the worksheet is not needed)" = false → helper "No amount"]
 - Expr: `{"alternatives":[{"guard":{"eq":["ssb.has_benefits",{"const":true}],"op":"test"},"then":"ssb.line18_figured"},{"guard":{"eq":["ssb.has_benefits",{"const":false}],"op":"test"},"then":"ssb.zero"}],"op":"choose"}`
-- Cite: [i1040gi] p. 32, line 18 (with no benefits, none are taxable) (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 18 (with no benefits, none are taxable) (2025; printed date 2026-02-25; sha256 482e9c48)

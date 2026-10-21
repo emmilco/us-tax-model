@@ -15,7 +15,7 @@ form:
         from: qbi.zero
       cite:
         doc: f8995a
-        locator: p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income
+        locator: p. 2, Part IV, lines 27–40; i8995a p. 6, Part I, "If you don't have QBI, and only have REIT or PTP, skip Parts I through III and complete Part IV"
     - id: f8995a.line29
       printed: "29"
       type: NonNegDollars
@@ -25,7 +25,7 @@ form:
         from: qbi.zero
       cite:
         doc: f8995a
-        locator: p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income
+        locator: p. 2, Part IV, lines 27–40; i8995a p. 6, Part I, "If you don't have QBI, and only have REIT or PTP, skip Parts I through III and complete Part IV"
     - id: f8995a.line38
       printed: "38"
       type: NonNegDollars
@@ -35,7 +35,7 @@ form:
         from: qbi.zero
       cite:
         doc: f8995a
-        locator: p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income
+        locator: p. 2, Part IV, lines 27–40; i8995a p. 6, Part I, "If you don't have QBI, and only have REIT or PTP, skip Parts I through III and complete Part IV"
     - id: f8995a.line40
       printed: "40"
       type: NonNegDollars
@@ -45,7 +45,7 @@ form:
         from: qbi.zero
       cite:
         doc: f8995a
-        locator: p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income
+        locator: p. 2, Part IV, lines 27–40; i8995a p. 6, Part I, "If you don't have QBI, and only have REIT or PTP, skip Parts I through III and complete Part IV"
     - id: f8995a.line28
       printed: "28"
       type: NonNegDollars
@@ -55,7 +55,7 @@ form:
         from: qbi.eligible
       cite:
         doc: f8995a
-        locator: p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income
+        locator: p. 2, Part IV, lines 27–40; i8995a p. 6, Part I, "If you don't have QBI, and only have REIT or PTP, skip Parts I through III and complete Part IV"
     - id: f8995a.line30
       printed: "30"
       type: NonNegDollars
@@ -65,7 +65,7 @@ form:
         from: f8995a.line28
       cite:
         doc: f8995a
-        locator: p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income
+        locator: p. 2, Part IV, lines 27–40; i8995a p. 6, Part I, "If you don't have QBI, and only have REIT or PTP, skip Parts I through III and complete Part IV"
     - id: f8995a.line31
       printed: "31"
       type: NonNegDollars
@@ -77,7 +77,7 @@ form:
           param: qbi.rate
       cite:
         doc: f8995a
-        locator: p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income
+        locator: p. 2, Part IV, lines 27–40; i8995a p. 6, Part I, "If you don't have QBI, and only have REIT or PTP, skip Parts I through III and complete Part IV"
       ambiguity: amb.2025.multiplication_subcent
     - id: f8995a.line32
       printed: "32"
@@ -90,7 +90,7 @@ form:
           - f8995a.line31
       cite:
         doc: f8995a
-        locator: p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income
+        locator: p. 2, Part IV, lines 27–40; i8995a p. 6, Part I, "If you don't have QBI, and only have REIT or PTP, skip Parts I through III and complete Part IV"
     - id: f8995a.line33
       printed: "33"
       type: NonNegDollars
@@ -100,7 +100,7 @@ form:
         from: qbi.taxable_before
       cite:
         doc: f8995a
-        locator: p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income
+        locator: p. 2, Part IV, lines 27–40; i8995a p. 6, Part I, "If you don't have QBI, and only have REIT or PTP, skip Parts I through III and complete Part IV"
     - id: f8995a.line34
       printed: "34"
       type: NonNegDollars
@@ -110,7 +110,7 @@ form:
         from: qbi.net_capital_gain
       cite:
         doc: f8995a
-        locator: p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income
+        locator: p. 2, Part IV, lines 27–40; i8995a p. 6, Part I, "If you don't have QBI, and only have REIT or PTP, skip Parts I through III and complete Part IV"
     - id: f8995a.line35
       printed: "35"
       type: NonNegDollars
@@ -121,7 +121,7 @@ form:
         take: f8995a.line34
       cite:
         doc: f8995a
-        locator: p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income
+        locator: p. 2, Part IV, lines 27–40; i8995a p. 6, Part I, "If you don't have QBI, and only have REIT or PTP, skip Parts I through III and complete Part IV"
     - id: f8995a.line36
       printed: "36"
       type: NonNegDollars
@@ -133,7 +133,7 @@ form:
           param: qbi.rate
       cite:
         doc: f8995a
-        locator: p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income
+        locator: p. 2, Part IV, lines 27–40; i8995a p. 6, Part I, "If you don't have QBI, and only have REIT or PTP, skip Parts I through III and complete Part IV"
       ambiguity: amb.2025.multiplication_subcent
     - id: f8995a.line37
       printed: "37"
@@ -146,7 +146,7 @@ form:
           - f8995a.line36
       cite:
         doc: f8995a
-        locator: p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income
+        locator: p. 2, Part IV, lines 27–40; i8995a p. 6, Part I, "If you don't have QBI, and only have REIT or PTP, skip Parts I through III and complete Part IV"
     - id: f8995a.line39
       printed: "39"
       type: NonNegDollars
@@ -158,4 +158,4 @@ form:
           - f8995a.line38
       cite:
         doc: f8995a
-        locator: p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income
+        locator: p. 2, Part IV, lines 27–40; i8995a p. 6, Part I, "If you don't have QBI, and only have REIT or PTP, skip Parts I through III and complete Part IV"

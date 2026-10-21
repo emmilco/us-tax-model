@@ -163,7 +163,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040gi] p. 40, Step 2, question 1, "*If line 7a is a loss, enter -0-." (2025; printed date 2026-02-25; 482e9c48)
   (helper) Step 2, question 1. Investment income: Form 1040, lines 2a, 2b, 3b and 7a
       = UNKNOWN (no input supplied for div.box12)
-      cite: [i1040gi] p. 40, Step 2, question 1, "Add the amounts from Form 1040 or 1040-SR: Line 2a + Line 2b + Line 3b + Line 7a*" (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 40, Step 2, question 1, "Add the amounts from Form 1040 or 1040-SR: Line 2a ... Line 2b + Line 3b + Line 7a*" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Step 2, question 2. Investment income not more than $11,950 (more than $11,950 stops at question 3 without Form 4797)
       = UNKNOWN (no input supplied for div.box12)
       cite: [i1040gi] p. 40, Step 2, questions 2 and 3 (Form 4797 is refused before this question, so question 3 is "No. STOP") (2025; printed date 2026-02-25; 482e9c48)
@@ -209,7 +209,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: confirmed roster $person: taxpayer
   (helper) Step 5, question 2: self-employed (Worksheet B)
       = false
-      cite: [i1040gi] p. 42, Step 5, question 2, "Yes. Skip question 3 and Step 6; go to Worksheet B" (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 42, Step 5, question 2, "Yes. Skip question 3 ... and Step 6; go to Worksheet B" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Worksheet B, lines 1e and 2c (both spouses on a joint return)
       = $0
       cite: [i1040gi] p. 47, Worksheet B, Parts 1 and 2 (2025; printed date 2026-02-25; 482e9c48)
@@ -219,7 +219,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040gi] p. 47, Worksheet B, Part 4, line 4b (line 4a is your earned income from Step 5; line 3, statutory employees, is refused) (2025; printed date 2026-02-25; 482e9c48)
   6   Worksheet B, line 6. Enter your total earned income from Part 4, line 4b (zero if line 4b is zero or less)
       = $130,000
-      cite: [i1040gi] p. 47, Worksheet B, Part 4, "If line 4b is zero or less, STOP You can't take the credit", and Part 5, line 6 (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 47, Worksheet B, Part 4, "STOP If line 4b is zero or less, you can't take the credit", and Part 5, line 6 (2025; printed date 2026-02-25; 482e9c48)
   (helper) Earned income compared with the limit (Step 5, question 3, or Worksheet B, line 5)
       = $130,000
       cite: [i1040gi] p. 42, Step 5, question 3; p. 47, Worksheet B, Part 4, line 5 (2025; printed date 2026-02-25; 482e9c48)
@@ -229,7 +229,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040gi] p. 42, Step 5, question 3 (2025; printed date 2026-02-25; 482e9c48)
   (helper) Steps 1 to 5 passed in order (Step 6, figure the credit on Worksheet A)
       = false
-      cite: [i1040gi] pp. 40–43, Steps 1 to 6 (each "No. STOP. You can't take the credit" ends the flow chart; Step 6, question 1, "No. Go to Worksheet A") (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] pp. 40–43, Steps 1 to 6 (each "No. STOP You can't take the credit" ends the flow chart; Step 6, question 1, "No. Go to Worksheet A") (2025; printed date 2026-02-25; 482e9c48)
   1   Enter your earned income from Step 5 (Worksheet A, line 1), or Worksheet B, line 6
       = $130,000
       cite: [i1040gi] p. 46, Worksheet A, line 1; p. 48, Worksheet B, Part 5, line 6 (Worksheet A lines 2 to 6 are Worksheet B lines 7 to 11) (2025; printed date 2026-02-25; 482e9c48)
@@ -319,7 +319,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: taken: {"eq":["eic.line4",{"const":true}],"op":"test"}
   (helper) Earned income credit for Form 1040, line 27a (Worksheet A, line 6 when Steps 1 to 5 are passed; zero otherwise)
       = $0
-      cite: [i1040gi] pp. 40–46, each "STOP. You can't take the credit"; Worksheet A, line 6, "Enter this amount on Form 1040 or 1040-SR, line 27a" (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] pp. 40–46, each "STOP You can't take the credit"; Worksheet A, line 6, "Enter this amount on Form 1040 or 1040-SR, line 27a" (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["eic.eligible",{"const":false}],"op":"test"}
   (helper) Steps 1 and 2 passed, so Step 3 or Step 4 is asked
       = false
@@ -329,10 +329,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040gi] p. 40, Step 1, question 2; p. 41, Step 3, question 6; p. 42, Step 4, questions 3 and 5; p. 43, Line 27c; p. 46, Worksheet A, line 2 ("Check the box on Form 1040 or 1040-SR, line 27c"); p. 47, Worksheet B, line 5 (2025; printed date 2026-02-25; 482e9c48)
   (helper) Worksheet B, line 4b is more than zero (the worksheet continues to line 5)
       = true
-      cite: [i1040gi] p. 47, Worksheet B, Part 4, "If line 4b is zero or less, STOP" (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 47, Worksheet B, Part 4, "STOP If line 4b is zero or less" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Worksheet B, line 5 is No (line 4b is not less than the limit), a STOP that says to check line 27c
       = false
-      cite: [i1040gi] p. 47, Worksheet B, line 5, "No. STOP You can't take the credit. Check the box on Form 1040 or 1040-SR, line 27c" (reached after Steps 1 to 4 and Step 5, question 2, Yes; Step 5, question 3, has no such instruction, p. 42) (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 47, Worksheet B, line 5, "STOP No. You can't take the credit. Check the box on Form 1040 or 1040-SR, line 27c" (reached after Steps 1 to 4 and Step 5, question 2, Yes; Step 5, question 3, has no such instruction, p. 42) (2025; printed date 2026-02-25; 482e9c48)
   (helper) A married filer filing separately or as head of household who passes Step 3, questions 4 and 5, and answers No to question 6 (the special rule for separated spouses)
       = false
       cite: [i1040gi] p. 41, Step 3, question 6, "No. Check the box in the Dependents section that discusses the special rule for separated spouses"; p. 44, Special rule for separated spouses (2025; printed date 2026-02-25; 482e9c48)
@@ -446,8 +446,8 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040gi] Instructions for Form 1040, line 16 (Qualified Dividends and Capital Gain Tax Worksheet) (2025; printed date 2026-02-25; 482e9c48)
   (gate) Schedule D Tax Worksheet required after its exceptions
       = false
-      cite: [i1040sd] p. 15, Schedule D Tax Worksheet applicability and exceptions (2025; printed date 2025-12-11; 650643a6)
-      note: Interpretation amb.2025.sd4952_selection: Use the detailed worksheet conditions, including line 4g and exceptions. The worksheet explicitly limits its own use and the Form 1040 line 16 instructions repeat the line 4g condition. (i1040sd, p. 15, Schedule D Tax Worksheet applicability; compare f1040sd line 20 and i1040gi p. 36)
+      cite: [i1040sd] p. 15, Schedule D Tax Worksheet, applicability and exceptions (2025; printed date 2025-12-11; 650643a6)
+      note: Interpretation amb.2025.sd4952_selection: Use the detailed worksheet conditions, including line 4g and exceptions. The worksheet explicitly limits its own use and the Form 1040 line 16 instructions repeat the line 4g condition. (i1040sd, p. 15, Schedule D Tax Worksheet, applicability; compare f1040sd line 20 and i1040gi p. 36)
   (helper) Tax when Schedule D Tax Worksheet does not apply
       = $20,267
       cite: [i1040gi] Instructions for Form 1040, line 16 (2025; printed date 2026-02-25; 482e9c48)
@@ -801,7 +801,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
  (i1040gi, QDCGT worksheet, lines 18 and 21; Rounding Off to Whole Dollars, p. 23)
   (gate) Claimed NIIT tax allocation exceeds the Schedule A tax deduction
       = false
-      cite: [i8960] pp. 17–18, allowable taxes allocable to net investment income (2025; printed date 2026-02-04; b10fbb23)
+      cite: [i8960] pp. 17–18, Line 9b, the allowable taxes allocable to net investment income (2025; printed date 2026-02-04; b10fbb23)
 
 == Form 8995 — Qualified Business Income Deduction Simplified Computation ==
   2   Total qualified business income or (loss). Combine lines 1i through 1v, column (c)
@@ -869,50 +869,50 @@ Values sheet — tax year 2025 (not a complete return for all filers)
 == Form 8995-A — Part IV dividend-only computation ==
   27  Amount from qbi.zero
       = $0
-      cite: [f8995a] p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income (2025; created 2025-09-12; 3362db81)
+      cite: [f8995a] p. 2, Part IV, lines 27–40; i8995a p. 6, Part I, "If you don't have QBI, and only have REIT or PTP, skip Parts I through III and complete Part IV" (2025; created 2025-09-12; 3362db81)
   29  Amount from qbi.zero
       = $0
-      cite: [f8995a] p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income (2025; created 2025-09-12; 3362db81)
+      cite: [f8995a] p. 2, Part IV, lines 27–40; i8995a p. 6, Part I, "If you don't have QBI, and only have REIT or PTP, skip Parts I through III and complete Part IV" (2025; created 2025-09-12; 3362db81)
   38  Amount from qbi.zero
       = $0
-      cite: [f8995a] p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income (2025; created 2025-09-12; 3362db81)
+      cite: [f8995a] p. 2, Part IV, lines 27–40; i8995a p. 6, Part I, "If you don't have QBI, and only have REIT or PTP, skip Parts I through III and complete Part IV" (2025; created 2025-09-12; 3362db81)
   40  Amount from qbi.zero
       = $0
-      cite: [f8995a] p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income (2025; created 2025-09-12; 3362db81)
+      cite: [f8995a] p. 2, Part IV, lines 27–40; i8995a p. 6, Part I, "If you don't have QBI, and only have REIT or PTP, skip Parts I through III and complete Part IV" (2025; created 2025-09-12; 3362db81)
   28  Amount from qbi.eligible
       = $0
-      cite: [f8995a] p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income (2025; created 2025-09-12; 3362db81)
+      cite: [f8995a] p. 2, Part IV, lines 27–40; i8995a p. 6, Part I, "If you don't have QBI, and only have REIT or PTP, skip Parts I through III and complete Part IV" (2025; created 2025-09-12; 3362db81)
   30  Amount from f8995a.line28
       = $0
-      cite: [f8995a] p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income (2025; created 2025-09-12; 3362db81)
+      cite: [f8995a] p. 2, Part IV, lines 27–40; i8995a p. 6, Part I, "If you don't have QBI, and only have REIT or PTP, skip Parts I through III and complete Part IV" (2025; created 2025-09-12; 3362db81)
   31  Multiply f8995a.line30 by qbi.rate
       = $0
-      cite: [f8995a] p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income (2025; created 2025-09-12; 3362db81)
+      cite: [f8995a] p. 2, Part IV, lines 27–40; i8995a p. 6, Part I, "If you don't have QBI, and only have REIT or PTP, skip Parts I through III and complete Part IV" (2025; created 2025-09-12; 3362db81)
       note: half-up to the cent per the ambiguity register; Interpretation amb.2025.multiplication_subcent: Round the product half-up to the nearest cent at the multiplication. Matches the half-up convention of the printed whole-dollar rounding rules. The whole-dollar default is unaffected: whole-dollar amounts multiplied by these rates produce exact cents, so the reading only matters when cents are turned on.
  (i1040gi, QDCGT worksheet, lines 18 and 21; Rounding Off to Whole Dollars, p. 23)
   32  Add f8995a.line27, f8995a.line31
       = $0
-      cite: [f8995a] p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income (2025; created 2025-09-12; 3362db81)
+      cite: [f8995a] p. 2, Part IV, lines 27–40; i8995a p. 6, Part I, "If you don't have QBI, and only have REIT or PTP, skip Parts I through III and complete Part IV" (2025; created 2025-09-12; 3362db81)
   33  Amount from qbi.taxable_before
       = $114,250
-      cite: [f8995a] p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income (2025; created 2025-09-12; 3362db81)
+      cite: [f8995a] p. 2, Part IV, lines 27–40; i8995a p. 6, Part I, "If you don't have QBI, and only have REIT or PTP, skip Parts I through III and complete Part IV" (2025; created 2025-09-12; 3362db81)
   34  Amount from qbi.net_capital_gain
       = $0
-      cite: [f8995a] p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income (2025; created 2025-09-12; 3362db81)
+      cite: [f8995a] p. 2, Part IV, lines 27–40; i8995a p. 6, Part I, "If you don't have QBI, and only have REIT or PTP, skip Parts I through III and complete Part IV" (2025; created 2025-09-12; 3362db81)
   35  Subtract f8995a.line34 from f8995a.line33; if zero or less, enter zero
       = $114,250
-      cite: [f8995a] p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income (2025; created 2025-09-12; 3362db81)
+      cite: [f8995a] p. 2, Part IV, lines 27–40; i8995a p. 6, Part I, "If you don't have QBI, and only have REIT or PTP, skip Parts I through III and complete Part IV" (2025; created 2025-09-12; 3362db81)
   36  Multiply f8995a.line35 by qbi.rate
       = $22,850
-      cite: [f8995a] p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income (2025; created 2025-09-12; 3362db81)
+      cite: [f8995a] p. 2, Part IV, lines 27–40; i8995a p. 6, Part I, "If you don't have QBI, and only have REIT or PTP, skip Parts I through III and complete Part IV" (2025; created 2025-09-12; 3362db81)
       note: half-up to the cent per the ambiguity register; Interpretation amb.2025.multiplication_subcent: Round the product half-up to the nearest cent at the multiplication. Matches the half-up convention of the printed whole-dollar rounding rules. The whole-dollar default is unaffected: whole-dollar amounts multiplied by these rates produce exact cents, so the reading only matters when cents are turned on.
  (i1040gi, QDCGT worksheet, lines 18 and 21; Rounding Off to Whole Dollars, p. 23)
   37  Smaller of f8995a.line32, f8995a.line36
       = $0
-      cite: [f8995a] p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income (2025; created 2025-09-12; 3362db81)
+      cite: [f8995a] p. 2, Part IV, lines 27–40; i8995a p. 6, Part I, "If you don't have QBI, and only have REIT or PTP, skip Parts I through III and complete Part IV" (2025; created 2025-09-12; 3362db81)
   39  Add f8995a.line37, f8995a.line38
       = $0
-      cite: [f8995a] p. 2, Part IV lines 27–40; i8995a p. 6, skip Parts I–III when only REIT/PTP income (2025; created 2025-09-12; 3362db81)
+      cite: [f8995a] p. 2, Part IV, lines 27–40; i8995a p. 6, Part I, "If you don't have QBI, and only have REIT or PTP, skip Parts I through III and complete Part IV" (2025; created 2025-09-12; 3362db81)
 
 == Foreign tax credit — election without Form 1116 ==
   (helper) Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and Form 1099-DIV box 7
@@ -1071,7 +1071,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040gi] p. 14, Head of Household, Test 2, "You paid over half the cost of keeping up a home in which you lived and in which one of the following also lived for more than half of the year" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Unmarried or considered unmarried, and Test 1 or Test 2 applies
       = false
-      cite: [i1040gi] p. 14, Head of Household, "Check the box only if you are unmarried (or considered unmarried) and either Test 1 or Test 2 applies" (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 14, Head of Household, "Check the 'Head of household' box only if you are unmarried (or considered unmarried) and either Test 1 or Test 2 applies" (2025; printed date 2026-02-25; 482e9c48)
   (gate) Head of household checked without meeting its tests
       = false
       cite: [i1040gi] p. 14, Head of Household (2025; printed date 2026-02-25; 482e9c48)
@@ -1444,7 +1444,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: guard incomplete
   (helper) Schedule 1 line 16 for this person
       = $0
-      cite: [i1040gi] p. 93, Schedule 1, line 16, "If you were self-employed or a partner, you may be able to take this deduction" (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 93, Schedule 1, line 16, "If you were self-employed or a partner, you may be able to take this" (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["person.has_sc",{"const":false}],"op":"test"}
   (helper) Total of all net profits of this person's businesses (losses not included)
       = $0
@@ -1529,7 +1529,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i8995] Line 3, "enter the amount from line 16 of your 2024 Form 8995" (owner: the printed amount) (2025; printed date 2026-01-26; 875843ba)
   (gate) Business income or a carryforward with taxable income above the Form 8995 threshold
       = false
-      cite: [i8995] p. 1, Who Can Use Form 8995 (owner: Form 8995-A with business income refused) (2025; printed date 2026-01-26; 875843ba)
+      cite: [i8995] p. 1, Who Can Take the Deduction (owner: Form 8995-A with business income refused) (2025; printed date 2026-01-26; 875843ba)
   (helper) Form 8995-A (section 199A dividends only)
       = $0
       cite: [f8995a] Form 8995-A (2025), line 39 (2025; created 2025-09-12; 3362db81)
@@ -1860,7 +1860,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: confirmed roster $person: taxpayer
   (helper) Worksheet column (b) total: qualified tips reported on Form W-2 or on Forms 4070
       = UNKNOWN (collection roster not confirmed)
-      cite: [i1040gi] p. 104, Qualified Tips From More Than One Employer Worksheet, column (b); p. 103, methods 1 to 3, "Enter this amount on line 4a" (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 104, Qualified Tips From More Than One Employer Worksheet, column (b); p. 103, paragraphs 1 through 3, "Enter this amount on line 4a" (2025; printed date 2026-02-25; 482e9c48)
       note: confirmed roster $person: taxpayer
   (helper) Tips from more than one employer
       = UNKNOWN (collection roster not confirmed)
@@ -1877,7 +1877,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; Part II caution, "If married, you must file jointly" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Figured: Enter qualified tips included on Form W-2, box 7, but see the instructions if Form W-2, box 5 is more than $176,100 or you received tips that are not subject to social security and Medicare taxes
       = UNKNOWN (collection roster not confirmed)
-      cite: [i1040gi] p. 104, Schedule 1-A, line 4a; pp. 103-104, methods 1 to 3 (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 104, Schedule 1-A, line 4a; pp. 103-104, paragraphs 1 through 3 (2025; printed date 2026-02-25; 482e9c48)
       note: guard incomplete
   4a  Enter qualified tips included on Form W-2, box 7, but see the instructions if Form W-2, box 5 is more than $176,100 or you received tips that are not subject to social security and Medicare taxes
       = $0
@@ -2753,7 +2753,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: taken: {"eq":["sa.itemizes",{"const":false}],"op":"test"}
   (helper) MFS with spouse itemizing
       = false
-      cite: [i1040gi] p. 34, line 12e exception 2 (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 34, Line 12e, Exception 2 (2025; printed date 2026-02-25; 482e9c48)
 
 == Schedule B — supported interest and ordinary dividends ==
   (helper) Any nominee income, original issue discount reported in an amount other than on Form 1099-OID, accrued interest paid on a bond purchase, bond premium adjustment, accrued market discount, a contingent payment debt instrument, seller-financed mortgage interest, a savings bond interest exclusion, foreign corporation reporting, or other special treatment?
@@ -2832,7 +2832,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
   (helper) Form 4952 line 4g (supplied subtotal; Form 4952 deferred to Stage 4)
       = $0
-      cite: [i1040sd] p. 15, Schedule D Tax Worksheet applicability (2025; printed date 2025-12-11; 650643a6)
+      cite: [i1040sd] p. 15, Schedule D Tax Worksheet, applicability (2025; printed date 2025-12-11; 650643a6)
   (helper) Count screened transactions
       = 0
       cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
@@ -3379,7 +3379,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040gi] p. 31, Lines 6a and 6b, Exception (2025; printed date 2026-02-25; 482e9c48)
   (helper) Do you elect to use the lump-sum election method for a social security benefit payment that was for an earlier year?
       = UNKNOWN (no input supplied for ssb.lump_sum)
-      cite: [i1040gi] p. 31, Line 6c; p. 32, worksheet TIP (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 31, Line 6c; p. 32, Social Security Benefits Worksheet, TIP (2025; printed date 2026-02-25; 482e9c48)
   (helper) Are any of the social security or railroad retirement benefits on your Forms SSA-1099 or RRB-1099 disability payments for injuries incurred as a direct result of a terrorist attack directed against the United States or its allies (including injuries covered by the September 11 Victim Compensation Fund)?
       = UNKNOWN (no input supplied for ssb.terror_disability)
       cite: [i1040gi] p. 31, Lines 6a and 6b, Disability payments (2025; printed date 2026-02-25; 482e9c48)
@@ -3455,10 +3455,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040gi] p. 32, line 13 (2025; printed date 2026-02-25; 482e9c48)
   14  Enter the smaller of line 2 or line 13
       = UNKNOWN (no input supplied for ssb.pub915)
-      cite: [i1040gi] p. 32, line 14 (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 14 (2025; printed date 2026-02-25; 482e9c48)
   15  Multiply line 11 by 85% (0.85). If line 11 is zero, enter -0-
       = UNKNOWN (no input supplied for div.box12)
-      cite: [i1040gi] p. 32, line 15 (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 15 (2025; printed date 2026-02-25; 482e9c48)
   (helper) Married filing separately and lived with your spouse at any time in 2025
       = false
       cite: [i1040gi] p. 32, line 8, third bullet (2025; printed date 2026-02-25; 482e9c48)
@@ -3478,10 +3478,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: half-up to the cent per the ambiguity register
   (helper) The smaller of line 16 or line 17
       = UNKNOWN (no input supplied for div.box12)
-      cite: [i1040gi] p. 32, line 18 (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 18 (2025; printed date 2026-02-25; 482e9c48)
   18  Taxable social security benefits. Enter the smaller of line 16 or line 17
       = $0
-      cite: [i1040gi] p. 32, line 18 (with no benefits, none are taxable) (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 18 (with no benefits, none are taxable) (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["ssb.has_benefits",{"const":false}],"op":"test"}
 
 == Unrecaptured Section 1250 Gain Worksheet — distribution-only path ==
@@ -4841,7 +4841,7 @@ Interpretation amb.2025.multiplication_subcent: Round the product half-up to the
  (i1040gi, QDCGT worksheet, lines 18 and 21; Rounding Off to Whole Dollars, p. 23)
 Interpretation amb.2025.qbi_cooperative_patron: Refuse any patron of an agricultural or horticultural cooperative, specified or not (qbi.unsupported). The owner asked for the strictly accurate reading. Refusing every patron satisfies both texts: a filer the form excludes is never computed on it, and a filer the instructions exclude is a patron the form also excludes. The cost is a refusal for a patron of a cooperative that is not specified, which the instructions would allow.
  (f8995, Form 8995 (2025), note above line 1; i8995, Who Can Use Form 8995; i1040gi line 13a)
-Interpretation amb.2025.sd4952_selection: Use the detailed worksheet conditions, including line 4g and exceptions. The worksheet explicitly limits its own use and the Form 1040 line 16 instructions repeat the line 4g condition. (i1040sd, p. 15, Schedule D Tax Worksheet applicability; compare f1040sd line 20 and i1040gi p. 36)
+Interpretation amb.2025.sd4952_selection: Use the detailed worksheet conditions, including line 4g and exceptions. The worksheet explicitly limits its own use and the Form 1040 line 16 instructions repeat the line 4g condition. (i1040sd, p. 15, Schedule D Tax Worksheet, applicability; compare f1040sd line 20 and i1040gi p. 36)
 Interpretation amb.2025.s179_carryover_no_property: The second. s179.line1 is the $2,500,000 the line 1 instruction states, so line 5 is the dollar limitation and a carryover is deducted up to the dollar limitation less the 2025 election and up to the business income limit (line 11). On a separate return line 5 is 50% of the limitation, the instruction's allocation when the spouses elect no other. Research for the owner (ambiguities/research/amb.2025.s179_carryover_no_property.md) quotes the archived 26 U.S.C. 179(b)(3)(B), Treas. Reg. 1.179-2(b) and 1.179-3(b) to (d), and P.L. 119-21 sec. 70306. The carryover's room is "the limitation of paragraphs (1) and (2)", the dollar amount, which the cost of 2025 property reduces only above $4,000,000. Form 4562 computes exactly that when line 1 is the $2,500,000 the line 1 instruction states (p. 4). The optional Worksheet 1 instead takes the smaller of that and the cost of 2025 property, a cap that changes no return without a carryover and departs from the statute on a return with one. (i4562, p. 4, Line 1 and Worksheet 1; p. 5, Line 5)
 Interpretation amb.2025.sli_ratio_places: Round the ratio half-up to three decimal places (the prorate atom with places 3 on sli.line8_figured). The owner's ruling. Three places is the least precision the text allows and the usual hand computation; the readings differ by at most a few cents of deduction (for example $167.50 against $166.67 on line 8 when line 6 is $1,000 and line 1 is $2,500).
  (i1040gi, p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 7)

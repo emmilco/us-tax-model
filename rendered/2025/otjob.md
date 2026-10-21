@@ -68,7 +68,7 @@
 - **Encoded (NonNegDollars):** Multiply helper "The amount shown for the method you chose" by 1/3 (s1a.ot_third).
 - Interpretation: amb.2025.multiplication_subcent
 - Expr: `{"amount":"otjob.statement","op":"multiply_rate","rate":{"param":"s1a.ot_third"}}`
-- Cite: [i1040gi] p. 106, Schedule 1-A, method 2, "you can divide the total amount by three (3)" (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] pp. 106–107, Schedule 1-A, method 2, "you can divide the total amount by three (3)" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `otjob.by_half`
 

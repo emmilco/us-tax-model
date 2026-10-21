@@ -473,7 +473,7 @@ form:
         weight or less), and not a truck or van specially modified as a qualified nonpersonal use vehicle?'
     cite:
       doc: i4562
-      locator: p. 14, Limits for passenger automobiles, "Passenger automobiles are 4-wheeled vehicles ..." and Exception
+      locator: pp. 14–15, Limits for passenger automobiles, "Passenger automobiles are 4-wheeled vehicles ..." and Exception
   - id: scveh.suv
     printed: (helper)
     label: An SUV or similar vehicle rated 6,000 to 14,000 pounds
@@ -759,7 +759,7 @@ form:
       places: 6
     cite:
       doc: p946
-      locator: pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 9; i4562 p. 14, "you must reduce the applicable
+      locator: pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 9; i4562 p. 15, "you must reduce the applicable
         limit to an amount equal to the limit multiplied by that percentage"
   - id: scveh.s179_2025_ok
     printed: (helper)
@@ -800,7 +800,7 @@ form:
     cite:
       doc: p946
       locator: pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 10, "Enter -0- if this is not the year you
-        placed the car in service"; i4562 p. 15, Column (i)
+        placed the car in service"; i4562 p. 16, Column (i)
     ambiguity: amb.2025.vehicle_s179_claimed
   - id: scveh.line10_2025
     printed: (helper)
@@ -1242,7 +1242,7 @@ form:
       take: scveh.prior_179
     cite:
       doc: p946
-      locator: p. 61, Deductions After the Recovery Period, "as if the business use had been 100%"
+      locator: pp. 61–63, Deductions After the Recovery Period, "as if the business use had been 100%"
   - id: scveh.k1
     printed: (helper)
     label: Year 1 of the recovery period
@@ -1627,7 +1627,7 @@ form:
       - scveh.d6
     cite:
       doc: p946
-      locator: p. 61, Deductions After the Recovery Period, "you would still reduce your basis by the maximum amount allowable
+      locator: pp. 61–63, Deductions After the Recovery Period, "you would still reduce your basis by the maximum amount allowable
         as if the business use had been 100%"
   - id: scveh.unrecovered
     printed: (helper)
@@ -1639,7 +1639,7 @@ form:
       take: scveh.d_total
     cite:
       doc: p946
-      locator: p. 61, Deductions After the Recovery Period, "At the end of 2024, you had an unrecovered basis of $14,565 ($31,500
+      locator: pp. 61–63, Deductions After the Recovery Period, "At the end of 2024, you had an unrecovered basis of $14,565 ($31,500
         − $16,935)" (amb.2025.auto_unrecovered_basis)
   - id: scveh.post_amount
     printed: (helper)
@@ -1652,7 +1652,7 @@ form:
       - scveh.unrecovered
     cite:
       doc: p946
-      locator: p. 61, Deductions After the Recovery Period, "you can deduct each year the lesser of $1,875 or your remaining
+      locator: pp. 61–63, Deductions After the Recovery Period, "you can deduct each year the lesser of $1,875 or your remaining
         unrecovered basis"
   - id: scveh.post
     printed: (helper)
@@ -1666,7 +1666,7 @@ form:
       places: 6
     cite:
       doc: p946
-      locator: p. 61, Deductions After the Recovery Period, "$8,739 ($14,565 × 60% (0.60))"
+      locator: pp. 61–63, Deductions After the Recovery Period, "$8,739 ($14,565 × 60% (0.60))"
   - id: scveh.too_old
     printed: (gate)
     label: Placed in service before 2019

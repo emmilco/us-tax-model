@@ -161,7 +161,7 @@ form:
         - const: true
     cite:
       doc: i1040gi
-      locator: p. 104, Qualified Tips From More Than One Employer Worksheet, column (b); p. 103, methods 1 to 3, "Enter this
+      locator: p. 104, Qualified Tips From More Than One Employer Worksheet, column (b); p. 103, paragraphs 1 through 3, "Enter this
         amount on line 4a"
   - id: s1a.tip_multi
     printed: (helper)
@@ -275,7 +275,7 @@ form:
         then: s1a.tip_reported
     cite:
       doc: i1040gi
-      locator: p. 104, Schedule 1-A, line 4a; pp. 103-104, methods 1 to 3
+      locator: p. 104, Schedule 1-A, line 4a; pp. 103-104, paragraphs 1 through 3
   - id: s1a.line4a
     printed: 4a
     label: Enter qualified tips included on Form W-2, box 7, but see the instructions if Form W-2, box 5 is more than $176,100

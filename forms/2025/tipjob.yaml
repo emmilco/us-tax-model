@@ -48,7 +48,7 @@ form:
         in Form W-2 box 14 or on a separate statement'
     cite:
       doc: i1040gi
-      locator: p. 104, Qualified Tips From More Than One Employer Worksheet, column (b); pp. 103-104, methods 1 to 3
+      locator: p. 104, Qualified Tips From More Than One Employer Worksheet, column (b); pp. 103-104, paragraphs 1 through 3
     refuses:
     - when: tipjob.mixed
       form: Qualified tips from an employer where some tips were not qualified tips

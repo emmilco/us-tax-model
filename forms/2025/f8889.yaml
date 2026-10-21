@@ -51,7 +51,7 @@ form:
         in 2026); zero if none
     cite:
       doc: i8889
-      locator: p. 6, Line 9 Employer Contributions and the Employer Contribution Worksheet
+      locator: p. 7, Line 9 Employer Contributions and the Employer Contribution Worksheet
   - id: f8889.any
     printed: (helper)
     label: Any HSA contributions for 2025 (yours or your employer's)
@@ -1030,7 +1030,7 @@ form:
       ref: hsa.additional
     cite:
       doc: i8889
-      locator: 'p. 7, Line 7 Additional Contribution Amount and the Additional Contribution Amount Worksheet, "1. $1,000 × number of months eligible. 2. Divide line 1 by 12"'
+      locator: 'p. 7, Line 7 Additional Contribution Amount and the Additional Contribution Amount Worksheet, "1. $1,000 × number of months eligible ... 2. Divide line 1 by 12"'
   - id: f8889.line7_year
     printed: (helper)
     label: '$1,000 for all twelve months'
@@ -1041,7 +1041,7 @@ form:
       count: f8889.twelve
     cite:
       doc: i8889
-      locator: 'p. 7, Line 7 Additional Contribution Amount and the Additional Contribution Amount Worksheet, "1. $1,000 × number of months eligible. 2. Divide line 1 by 12"; p. 4, Line 3, rule 2, "If the last-month rule ... applies, you are considered an eligible individual for the entire year. You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month of your tax year"'
+      locator: 'p. 7, Line 7 Additional Contribution Amount and the Additional Contribution Amount Worksheet, "1. $1,000 × number of months eligible ... 2. Divide line 1 by 12"; p. 4, Line 3, rule 2, "If the last-month rule ... applies, you are considered an eligible individual for the entire year. You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month of your tax year"'
   - id: f8889.line7_counted
     printed: (helper)
     label: '$1,000 for each eligible month'
@@ -1052,7 +1052,7 @@ form:
       count: f8889.months_eligible
     cite:
       doc: i8889
-      locator: 'p. 7, Line 7 Additional Contribution Amount and the Additional Contribution Amount Worksheet, "1. $1,000 × number of months eligible. 2. Divide line 1 by 12"'
+      locator: 'p. 7, Line 7 Additional Contribution Amount and the Additional Contribution Amount Worksheet, "1. $1,000 × number of months eligible ... 2. Divide line 1 by 12"'
   - id: f8889.line7_total
     printed: (helper)
     label: 'Additional Contribution Amount Worksheet, line 1: $1,000 × number of months eligible'
@@ -1074,7 +1074,7 @@ form:
         then: f8889.line7_counted
     cite:
       doc: i8889
-      locator: 'p. 7, Line 7 Additional Contribution Amount and the Additional Contribution Amount Worksheet, "1. $1,000 × number of months eligible. 2. Divide line 1 by 12"'
+      locator: 'p. 7, Line 7 Additional Contribution Amount and the Additional Contribution Amount Worksheet, "1. $1,000 × number of months eligible ... 2. Divide line 1 by 12"'
     ambiguity: amb.2025.hsa_line7_months
   - id: f8889.line7_worksheet
     printed: (helper)
@@ -1087,7 +1087,7 @@ form:
         param: hsa.twelfth
     cite:
       doc: i8889
-      locator: 'p. 7, Line 7 Additional Contribution Amount and the Additional Contribution Amount Worksheet, "1. $1,000 × number of months eligible. 2. Divide line 1 by 12"'
+      locator: 'p. 7, Line 7 Additional Contribution Amount and the Additional Contribution Amount Worksheet, "1. $1,000 × number of months eligible ... 2. Divide line 1 by 12"'
   - id: f8889.line7_applies
     printed: (helper)
     label: 'Age 55 or older at the end of 2025, married, and treated as having family coverage at any time during 2025'
@@ -1204,7 +1204,7 @@ form:
       - f8889.line12
     cite:
       doc: i8889
-      locator: p. 7, Line 13, 'Generally, enter the smaller of line 2 or line 12 on line 13 and on Schedule 1 (Form 1040),
+      locator: p. 8, Line 13, 'Generally, enter the smaller of line 2 or line 12 on line 13 and on Schedule 1 (Form 1040),
         Part II, line 13'
     refuses:
     - when: f8889.unsupported

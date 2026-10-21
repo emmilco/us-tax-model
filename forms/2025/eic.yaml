@@ -501,7 +501,7 @@ form:
           remedy: A filer excluding foreign earned income can't take the EIC; Form 2555 and excluded income are outside this tool.
           cite:
             doc: i1040gi
-            locator: p. 40, Step 1, question 3, "Are you filing Form 2555 (relating to foreign earned income)? Yes. STOP"
+            locator: p. 40, Step 1, question 3, "Are you filing Form 2555 (relating to foreign earned income)? ... Yes. STOP"
     - id: eic.step1_resident
       printed: (helper)
       type: Bool
@@ -547,7 +547,7 @@ form:
           - eic.gain_7a
       cite:
         doc: i1040gi
-        locator: 'p. 40, Step 2, question 1, "Add the amounts from Form 1040 or 1040-SR: Line 2a + Line 2b + Line 3b + Line 7a*"'
+        locator: 'p. 40, Step 2, question 1, "Add the amounts from Form 1040 or 1040-SR: Line 2a ... Line 2b + Line 3b + Line 7a*"'
     - id: eic.step2_income
       printed: (helper)
       type: Bool
@@ -584,7 +584,7 @@ form:
           remedy: Schedule E, rental of personal property and passive activity income are outside this tool.
           cite:
             doc: i1040gi
-            locator: p. 40, Step 2, question 4, "Yes. Use Worksheet 1 in Pub. 596"
+            locator: p. 40, Step 2, question 4, "Yes. Use Worksheet 1 ... in Pub. 596"
         - when: scope.other_line16
           form: Form 8814 (EIC, Step 2, question 4)
           remedy: Reporting a child's interest and dividends on Form 8814 is outside this tool.
@@ -834,7 +834,7 @@ form:
           type: Count
       cite:
         doc: i1040gi
-        locator: p. 42, Step 5, question 2, "Yes. Skip question 3 and Step 6; go to Worksheet B"
+        locator: p. 42, Step 5, question 2, "Yes. Skip question 3 ... and Step 6; go to Worksheet B"
     - id: eic.wsb_se
       printed: (helper)
       label: Worksheet B, lines 1e and 2c (both spouses on a joint return)
@@ -869,7 +869,7 @@ form:
         take: eic.zero
       cite:
         doc: i1040gi
-        locator: p. 47, Worksheet B, Part 4, "If line 4b is zero or less, STOP You can't take the credit", and Part 5, line 6
+        locator: p. 47, Worksheet B, Part 4, "STOP If line 4b is zero or less, you can't take the credit", and Part 5, line 6
     - id: eic.earned_for_limit
       printed: (helper)
       label: Earned income compared with the limit (Step 5, question 3, or Worksheet B, line 5)
@@ -949,7 +949,7 @@ form:
               - const: true
       cite:
         doc: i1040gi
-        locator: pp. 40–43, Steps 1 to 6 (each "No. STOP. You can't take the credit" ends the flow chart; Step 6, question 1,
+        locator: pp. 40–43, Steps 1 to 6 (each "No. STOP You can't take the credit" ends the flow chart; Step 6, question 1,
           "No. Go to Worksheet A")
 
     # Worksheet A.
@@ -1477,7 +1477,7 @@ form:
             then: eic.zero
       cite:
         doc: i1040gi
-        locator: pp. 40–46, each "STOP. You can't take the credit"; Worksheet A, line 6, "Enter this amount on Form 1040 or
+        locator: pp. 40–46, each "STOP You can't take the credit"; Worksheet A, line 6, "Enter this amount on Form 1040 or
           1040-SR, line 27a"
 
     # Boxes the instructions tell the filer to check (Form 1040 lines 27b and 27c, the Dependents section box).
@@ -1643,7 +1643,7 @@ form:
           - param: sales.zero
       cite:
         doc: i1040gi
-        locator: p. 47, Worksheet B, Part 4, "If line 4b is zero or less, STOP"
+        locator: p. 47, Worksheet B, Part 4, "STOP If line 4b is zero or less"
     - id: eic.wsb_line5_stop
       printed: (helper)
       type: Bool
@@ -1697,8 +1697,7 @@ form:
               - const: false
       cite:
         doc: i1040gi
-        locator: p. 47, Worksheet B, line 5, "No. STOP You can't take the credit. Check the box on Form 1040 or 1040-SR, line
-          27c" (reached after Steps 1 to 4 and Step 5, question 2, Yes; Step 5, question 3, has no such instruction, p. 42)
+        locator: p. 47, Worksheet B, line 5, "STOP No. You can't take the credit. Check the box on Form 1040 or 1040-SR, line 27c" (reached after Steps 1 to 4 and Step 5, question 2, Yes; Step 5, question 3, has no such instruction, p. 42)
     - id: eic.separated_box
       printed: (helper)
       type: Bool

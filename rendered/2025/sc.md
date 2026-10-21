@@ -1068,4 +1068,4 @@
 - **Authored helper label:** Tips or overtime in this business to be deducted on Schedule 1-A
 - **Encoded (Bool):** Input — Does this business's income include qualified tips you received in the course of this business, or qualified overtime compensation reported to you on Form 1099-NEC or 1099-MISC, that you would deduct on Schedule 1-A?
 - Expr: `{"op":"input","source":"Does this business's income include qualified tips you received in the course of this business, or qualified overtime compensation reported to you on Form 1099-NEC or 1099-MISC, that you would deduct on Schedule 1-A?"}`
-- Cite: [i1040gi] p. 104, Schedule 1-A, line 5, "qualified tips received in the course of a trade or business"; p. 108, line 14b (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 104, Schedule 1-A, line 5, "the qualified tips you and/or your spouse received in the course of a trade or business"; p. 108, line 14b (2025; printed date 2026-02-25; sha256 482e9c48)

@@ -251,7 +251,7 @@
 - **Authored helper label:** Subject to the limits for passenger automobiles
 - **Encoded (Bool):** Input — Is this a passenger automobile subject to the depreciation limits: a 4-wheeled vehicle made mainly for public roads rated at 6,000 pounds unloaded gross vehicle weight or less (for a truck or van, 6,000 pounds gross vehicle weight or less), and not a truck or van specially modified as a qualified nonpersonal use vehicle?
 - Expr: `{"op":"input","source":"Is this a passenger automobile subject to the depreciation limits: a 4-wheeled vehicle made mainly for public roads rated at 6,000 pounds unloaded gross vehicle weight or less (for a truck or van, 6,000 pounds gross vehicle weight or less), and not a truck or van specially modified as a qualified nonpersonal use vehicle?"}`
-- Cite: [i4562] p. 14, Limits for passenger automobiles, "Passenger automobiles are 4-wheeled vehicles ..." and Exception (2025; sha256 5c1c95b7)
+- Cite: [i4562] pp. 14–15, Limits for passenger automobiles, "Passenger automobiles are 4-wheeled vehicles ..." and Exception (2025; sha256 5c1c95b7)
 
 ## (helper) — `scveh.suv`
 
@@ -398,7 +398,7 @@
 - **IRS:** Adjusted maximum depreciation deduction (line 7 times the business/investment-use percentage)
 - **Encoded (NonNegDollars):** Divide helper "Business miles, as cents" by helper "Total miles, as cents", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply line 7 by the result.
 - Expr: `{"amount":"scveh.line7","op":"prorate","part":"scveh.bm_c","places":6,"whole":"scveh.total_c"}`
-- Cite: [p946] pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 9; i4562 p. 14, "you must reduce the applicable limit to an amount equal to the limit multiplied by that percentage" (For use in preparing 2025 returns; sha256 07fadfb2)
+- Cite: [p946] pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 9; i4562 p. 15, "you must reduce the applicable limit to an amount equal to the limit multiplied by that percentage" (For use in preparing 2025 returns; sha256 07fadfb2)
 
 ## (helper) — `scveh.s179_2025_ok`
 
@@ -414,7 +414,7 @@
 - **Encoded (NonNegDollars):** Choose — [helper "Placed in service in 2025" = true → helper "Section 179 for a 2025 vehicle: not more than line 9 for a passenger automobile"] [helper "Placed in service in 2025" = false → helper "Zero"]
 - Interpretation: amb.2025.vehicle_s179_claimed
 - Expr: `{"alternatives":[{"guard":{"eq":["scveh.is2025",{"const":true}],"op":"test"},"then":"scveh.line10_2025"},{"guard":{"eq":["scveh.is2025",{"const":false}],"op":"test"},"then":"scveh.zero"}],"op":"choose"}`
-- Cite: [p946] pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 10, "Enter -0- if this is not the year you placed the car in service"; i4562 p. 15, Column (i) (For use in preparing 2025 returns; sha256 07fadfb2)
+- Cite: [p946] pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 10, "Enter -0- if this is not the year you placed the car in service"; i4562 p. 16, Column (i) (For use in preparing 2025 returns; sha256 07fadfb2)
 
 ## (helper) — `scveh.line10_2025`
 
@@ -619,7 +619,7 @@
 - **Authored helper label:** Cost less the section 179 deduction (as if used 100% for business)
 - **Encoded (NonNegDollars):** Subtract helper "Section 179 deduction claimed for this vehicle in the year placed in service" from column (d). If zero or less, enter -0-.
 - Expr: `{"from":"scveh.cost","op":"subtract_floor0","take":"scveh.prior_179"}`
-- Cite: [p946] p. 61, Deductions After the Recovery Period, "as if the business use had been 100%" (For use in preparing 2025 returns; sha256 07fadfb2)
+- Cite: [p946] pp. 61–63, Deductions After the Recovery Period, "as if the business use had been 100%" (For use in preparing 2025 returns; sha256 07fadfb2)
 
 ## (helper) — `scveh.k1`
 
@@ -843,28 +843,28 @@
 - **Authored helper label:** Deductions allowable during the recovery period at 100% business use
 - **Encoded (NonNegDollars):** Add helper "Year 1 deduction allowable at 100% business use (the lesser of the limit or the amount)", helper "Year 2 deduction allowable at 100% business use", helper "Year 3 deduction allowable at 100% business use", helper "Year 4 deduction allowable at 100% business use", helper "Year 5 deduction allowable at 100% business use", and helper "Year 6 deduction allowable at 100% business use".
 - Expr: `{"of":["scveh.d1","scveh.d2","scveh.d3","scveh.d4","scveh.d5","scveh.d6"],"op":"sum"}`
-- Cite: [p946] p. 61, Deductions After the Recovery Period, "you would still reduce your basis by the maximum amount allowable as if the business use had been 100%" (For use in preparing 2025 returns; sha256 07fadfb2)
+- Cite: [p946] pp. 61–63, Deductions After the Recovery Period, "you would still reduce your basis by the maximum amount allowable as if the business use had been 100%" (For use in preparing 2025 returns; sha256 07fadfb2)
 
 ## (helper) — `scveh.unrecovered`
 
 - **Authored helper label:** Unrecovered basis at the end of the recovery period
 - **Encoded (NonNegDollars):** Subtract helper "Deductions allowable during the recovery period at 100% business use" from column (d). If zero or less, enter -0-.
 - Expr: `{"from":"scveh.cost","op":"subtract_floor0","take":"scveh.d_total"}`
-- Cite: [p946] p. 61, Deductions After the Recovery Period, "At the end of 2024, you had an unrecovered basis of $14,565 ($31,500 − $16,935)" (amb.2025.auto_unrecovered_basis) (For use in preparing 2025 returns; sha256 07fadfb2)
+- Cite: [p946] pp. 61–63, Deductions After the Recovery Period, "At the end of 2024, you had an unrecovered basis of $14,565 ($31,500 − $16,935)" (amb.2025.auto_unrecovered_basis) (For use in preparing 2025 returns; sha256 07fadfb2)
 
 ## (helper) — `scveh.post_amount`
 
 - **Authored helper label:** The lesser of the limit or the unrecovered basis
 - **Encoded (NonNegDollars):** Enter the smaller of helper "Limit for the vehicle's 2025 year of recovery" or helper "Unrecovered basis at the end of the recovery period".
 - Expr: `{"of":["scveh.lim_prior","scveh.unrecovered"],"op":"smaller_of"}`
-- Cite: [p946] p. 61, Deductions After the Recovery Period, "you can deduct each year the lesser of $1,875 or your remaining unrecovered basis" (For use in preparing 2025 returns; sha256 07fadfb2)
+- Cite: [p946] pp. 61–63, Deductions After the Recovery Period, "you can deduct each year the lesser of $1,875 or your remaining unrecovered basis" (For use in preparing 2025 returns; sha256 07fadfb2)
 
 ## (helper) — `scveh.post`
 
 - **Authored helper label:** 2025 deduction after the recovery period (times the business use percentage)
 - **Encoded (NonNegDollars):** Divide helper "Business miles, as cents" by helper "Total miles, as cents", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply helper "The lesser of the limit or the unrecovered basis" by the result.
 - Expr: `{"amount":"scveh.post_amount","op":"prorate","part":"scveh.bm_c","places":6,"whole":"scveh.total_c"}`
-- Cite: [p946] p. 61, Deductions After the Recovery Period, "$8,739 ($14,565 × 60% (0.60))" (For use in preparing 2025 returns; sha256 07fadfb2)
+- Cite: [p946] pp. 61–63, Deductions After the Recovery Period, "$8,739 ($14,565 × 60% (0.60))" (For use in preparing 2025 returns; sha256 07fadfb2)
 
 ## (gate) — `scveh.too_old`
 

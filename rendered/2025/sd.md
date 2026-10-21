@@ -50,7 +50,7 @@
 - **Authored helper label:** Form 4952 line 4g (supplied subtotal; Form 4952 deferred to Stage 4)
 - **Encoded (NonNegDollars):** Enter the amount from f4952 helper "Validated default-allocation election".
 - Expr: `{"from":"f4952.election","op":"copy"}`
-- Cite: [i1040sd] p. 15, Schedule D Tax Worksheet applicability (2025; printed date 2025-12-11; sha256 650643a6)
+- Cite: [i1040sd] p. 15, Schedule D Tax Worksheet, applicability (2025; printed date 2025-12-11; sha256 650643a6)
 
 ## (helper) — `sd.count`
 

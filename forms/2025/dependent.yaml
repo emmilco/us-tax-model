@@ -72,7 +72,7 @@ form:
           the adoption or placement, and 0 otherwise
       cite:
         doc: i1040gi
-        locator: p. 17, Step 1, "Who lived with you for more than half of 2025", and p. 21, Exception to time lived with you ("the child ... for more than half the part of the year the child was alive"; "Any other person is considered to have lived with you for all of 2025 if the person was born or died in 2025 and your home was this person's home for the entire time the person was alive in 2025")
+        locator: p. 17, Step 1, "Who lived with you for more than half of 2025"; p. 21, Exception to time lived with you ("the person is considered to have lived with you for more than half of 2025 if your home was this person's home for more than half the time the person was alive in 2025"; "Any other person is considered to have lived with you for all of 2025 if the person was born or died in 2025 and your home was this person's home for the entire time the person was alive in 2025")
     - id: dependent.self_support
       printed: (helper)
       type: Bool
@@ -258,7 +258,7 @@ form:
         source: Was this person younger than you (or, if you file jointly, younger than you or your spouse; the person need not be younger than both of you)?
       cite:
         doc: i1040gi
-        locator: p. 17, Step 1, "and younger than you (or your spouse if filing jointly)"; p501 p. 13, "if you are married filing jointly, the child must be younger than you or your spouse but doesnt have to be younger than both of you"
+        locator: p. 17, Step 1, "and younger than you (or your spouse if filing jointly)"; p501 p. 13, "if you are married filing jointly, the child must be younger than you or your spouse but doesn't have to be younger than both of you"
     - id: dependent.us_half
       printed: (helper)
       type: Bool

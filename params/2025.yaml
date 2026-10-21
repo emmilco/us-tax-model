@@ -155,7 +155,7 @@ params:
       values: [full, forty, none]
       cite:
         doc: i4562
-        locator: 'p. 5, Line 14, the 100% special depreciation allowance and the election "to take a 40% special depreciation allowance"; p. 7, Election out'
+        locator: 'pp. 5–6, Line 14, the 100% special depreciation allowance and the election "to take a 40% special depreciation allowance"; p. 7, Election out'
     vehicle_method:
       values: [standard, actual]
       cite:
@@ -1151,7 +1151,7 @@ params:
         qss: 25000000
       cite:
         doc: i8960
-        locator: p. 2 thresholds; Form 8960 line 17
+        locator: p. 2, Application to Individuals, the applicable threshold amounts; Form 8960 line 17
     niit.rate:
       type: Rate
       value:
@@ -1159,7 +1159,7 @@ params:
         den: 1000
       cite:
         doc: i8960
-        locator: p. 2 thresholds; Form 8960 line 17
+        locator: p. 2, Application to Individuals, the applicable threshold amounts; Form 8960 line 17
     qbi.threshold:
       type: NonNegDollars
       value:
@@ -1336,7 +1336,7 @@ params:
         den: 3
       cite:
         doc: i1040gi
-        locator: 'p. 106, Schedule 1-A, method 2, "you can divide the total amount by three (3)"'
+        locator: 'pp. 106–107, Schedule 1-A, method 2, "you can divide the total amount by three (3)"'
     s1a.ot_half:
       type: Rate
       value:
@@ -1456,7 +1456,7 @@ params:
       value: 50
       cite:
         doc: i4562
-        locator: 'p. 13, Lines 26 and 27, "more than 50% in a qualified business use"'
+        locator: 'pp. 13–14, Lines 26 and 27, "more than 50% in a qualified business use"'
     sc.bonus_rate_40:
       type: Rate
       value:
@@ -1464,7 +1464,7 @@ params:
         den: 100
       cite:
         doc: i4562
-        locator: 'p. 5, Line 14, "is limited to a special depreciation allowance of 40% of the depreciable basis"'
+        locator: 'pp. 5–6, Line 14, "is limited to a special depreciation allowance of 40% of the depreciable basis"'
     sc.conv_hy:
       type: Enum(macrs_convention)
       value: hy
@@ -1476,7 +1476,7 @@ params:
       value: y5
       cite:
         doc: i4562
-        locator: 'p. 9, Lines 19a Through 19j, Column (a), "5-year property includes the following. Automobiles. Light general purpose trucks"'
+        locator: 'pp. 9–10, Lines 19a Through 19j, Column (a), "5-year property includes the following. Automobiles. Light general purpose trucks"'
     sc.mileage_rate:
       type: NonNegDollars
       value: 70
@@ -1556,7 +1556,7 @@ params:
       value: 3130000
       cite:
         doc: i4562
-        locator: 'p. 15, Column (i), "You cannot elect to expense more than $31,300 of the cost of any SUVs and certain other vehicles"'
+        locator: 'p. 16, Column (i), "You cannot elect to expense more than $31,300 of the cost of any SUVs and certain other vehicles"'
     se.rate_9235:
       type: Rate
       value:

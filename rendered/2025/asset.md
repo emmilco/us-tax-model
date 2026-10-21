@@ -1,7 +1,7 @@
 # Form 4562 — one item of depreciable property (other than a vehicle) of a business
 
 - Document: `asset` (form, tax year 2025)
-- Collection: keyed entries within sc; [i4562] p. 9, Lines 19a Through 19j, and p. 2, Who Must File, "File a separate Form 4562 for each business or activity" (2025; sha256 5c1c95b7)
+- Collection: keyed entries within sc; [i4562] p. 9, Lines 19a Through 19j; p. 2, Who Must File, "File a separate Form 4562 for each business or activity" (2025; sha256 5c1c95b7)
 - Note: One entry per item of property other than a vehicle (vehicles are scveh entries), placed in service 2005 to 2025 and depreciated by the GDS percentage tables; its lines feed Form 4562 lines 6, 14, 17, 19 and, for listed property, lines 25, 26 and 29 of its business. Refused: the classes outside this tool, dispositions, exchanges, real property, ADS and other methods, basis adjustments, amortization, listed property used 50% or less for business, and the other items of the screen.
 
 ## (helper) — `asset.zero`
@@ -51,7 +51,7 @@
 - **Authored helper label:** Year placed in service
 - **Encoded (Enum(placed_year)):** Input — The year you placed this property in service in the business (2005 to 2025)
 - Expr: `{"op":"input","source":"The year you placed this property in service in the business (2005 to 2025)"}`
-- Cite: [i4562] p. 11, Column (b)—Month and year placed in service; p946 p. 39, the example of the third recovery year (2025; sha256 5c1c95b7)
+- Cite: [i4562] p. 11, Column (b)—Month and year placed in service; p946 p. 39, Using the MACRS Percentage Tables, the example of the third recovery year (2025; sha256 5c1c95b7)
 
 ## (helper) — `asset.cost`
 
@@ -230,7 +230,7 @@
 - **Authored helper label:** Special depreciation allowance for this class of property
 - **Encoded (Enum(bonus_choice)):** Input — For the class of property this belongs to (its recovery period), did you claim the special depreciation allowance (full), elect the 40% allowance instead of 100% for property acquired after January 19, 2025 (forty), or elect not to claim any special allowance (none)?
 - Expr: `{"op":"input","source":"For the class of property this belongs to (its recovery period), did you claim the special depreciation allowance (full), elect the 40% allowance instead of 100% for property acquired after January 19, 2025 (forty), or elect not to claim any special allowance (none)?"}`
-- Cite: [i4562] p. 5, Line 14, "you can elect to take a 40% special depreciation allowance"; p. 7, Election out, "for any class of property" (2025; sha256 5c1c95b7)
+- Cite: [i4562] pp. 5–6, Line 14, "you can elect to take a 40% special depreciation allowance"; p. 7, Election out, "for any class of property" (2025; sha256 5c1c95b7)
 
 ## (screen) — `asset.bonus_same`
 
@@ -251,7 +251,7 @@
 - **Authored helper label:** 40% special allowance
 - **Encoded (Rate):** Enter 40% (0.40) (sc.bonus_rate_40).
 - Expr: `{"op":"param","ref":"sc.bonus_rate_40"}`
-- Cite: [i4562] p. 5, Line 14, "is limited to a special depreciation allowance of 40% of the depreciable basis" (2025; sha256 5c1c95b7)
+- Cite: [i4562] pp. 5–6, Line 14, "is limited to a special depreciation allowance of 40% of the depreciable basis" (2025; sha256 5c1c95b7)
 
 ## (helper) — `asset.bonus_full`
 
@@ -259,7 +259,7 @@
 - **Encoded (NonNegDollars):** Enter the amount from helper "Basis less the section 179 election".
 - **Refusal:** when asset.bonus_mixed is true, cannot complete Different special allowance elections within one class of property. An election that is not the same for the whole class is outside this tool. Cite: [i4562] p. 7, Election out (2025; sha256 5c1c95b7)
 - Expr: `{"from":"asset.after179","op":"copy"}`
-- Cite: [i4562] p. 5, Line 14, Certain qualified property acquired after January 19, 2025, "is eligible for a 100% special depreciation allowance" (2025; sha256 5c1c95b7)
+- Cite: [i4562] pp. 5–6, Line 14, Certain qualified property acquired after January 19, 2025, "is eligible for a 100% special depreciation allowance" (2025; sha256 5c1c95b7)
 
 ## (helper) — `asset.bonus_forty`
 
@@ -427,7 +427,7 @@
 - **Encoded (NonNegDollars):** Choose — [helper "The recovery period ended before 2025" = false → helper "MACRS depreciation for 2025"] [helper "The recovery period ended before 2025" = true → helper "Zero"]
 - **Shown on the values sheet only when:** Reported on line 17 (property placed in service before 2025 that is not listed property) (`asset.on_17`)
 - Expr: `{"alternatives":[{"guard":{"eq":["asset.done",{"const":false}],"op":"test"},"then":"asset.macrs_prior_live"},{"guard":{"eq":["asset.done",{"const":true}],"op":"test"},"then":"asset.zero"}],"op":"choose"}`
-- Cite: [i4562] p. 9, Line 17; i4562 p. 8, "Prior years' depreciation, plus current year's depreciation, can never exceed the depreciable basis" (2025; sha256 5c1c95b7)
+- Cite: [i4562] p. 9, Line 17; i4562 p. 9, "Prior years' depreciation, plus current year's depreciation, can never exceed the depreciable basis" (2025; sha256 5c1c95b7)
 
 ## (helper) — `asset.dep_2025`
 

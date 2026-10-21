@@ -850,3 +850,16 @@ later grouping.
 - **Where:** `forms/2025/scveh.yaml` (`scveh.screen`) and the three interview files.
 - **Fix (owner):** the vehicle screen now names a conversion from personal use during 2025, which is refused; a conversion in an earlier year needs no proration in 2025.
 - **Tags:** scope-gap; no-refusal; caught-by-review
+
+## BUG-0073 — Citations named pages, headings and quotes the cited page does not print
+
+- **Date:** 2026-10-20
+- **Caught by:** `tools/citations.py`, the citation-page check added to check-all for T-045 part 2 (and T-044 part 1): every quote in a page locator must be printed on the cited pages and the locator's first phrase (its heading) on them or up to two pages before, against both archived text layers.
+- **Symptom:** before the corrections the check found 98 distinct problems (344 locators counting the interview files' copies): quotes printed on another page, quotes not printed verbatim anywhere, and headings not printed on the cited page. A reader following such a citation turns to a page without the text, and the transcription and render reviews, which are given the pages a locator names, may have been given the wrong page.
+- **Root cause:** citations were written and checked by hand. BUG-0065 and BUG-0066 corrected the pages of "Line N" and other headings in the i4562 and i1040sc citations with one-off scripts that checked headings only. Quotes were never compared with the archived text, so a quote could carry the heading's page when it was printed on the next one, be paraphrased ("doesnt", an added "or", a dropped word), or come from another document (the Form 7206 line 2 text cited to i7206).
+- **Where:** 28 files: `forms/2025/` (asset, carloan, dependent, eic, f1040, f4562, f8889, f8960, f8995a, household, ltc, otjob, person, qbi, retirement, s1, s1a, s8812, sa, sc, scveh, sd, ssb, tipjob), `params/2025.yaml`, `tables/2025/auto_limit_first_nobonus.yaml`, and the three interview files. Among them:
+  - quotes cited a page early: i4562 Line 14 (the special allowance, pp. 5–6), Line 10 (p. 5), Line 13 of i8889 (p. 8), Column (i) (p. 16), Limits for passenger automobiles (pp. 14–15), Lines 26 and 27 (pp. 13–14), the line 17 caution (p. 9); Pub. 946's Deductions After the Recovery Period example (pp. 61–63); i1040gi Schedule 1-A method 2 (pp. 106–107);
+  - quotes not printed as written: p501's "doesn't", the i1040gi QPVLI, qualified tips, head of household and lines 4a–5b quotes, the i8889 worksheet quote, the dependent "time lived with you" exception (quoted from p. 15's wording while citing p. 21), and the EIC flow-chart quotes that ran a question into its answer box;
+  - headings not printed: "Who Can Use Form 8995(-A)" (printed "Who Can Take the Deduction"), "methods 1 to 3" (printed as paragraphs 1 through 4), and descriptions in place of a heading (now the printed heading followed by the description).
+- **Fix:** each locator corrected to the printed page, heading and wording; quotes that join separated text mark the gap with "...". Eleven anchors and quotes that are correct but cannot be matched as printed text (a section number such as "Section III.B.2", a quote the extraction reads out of order) are ruled in `reviews/2025/citations.json`.
+- **Tags:** citation-page-wrong; quote-not-verbatim; review-input-gap; caught-by-check

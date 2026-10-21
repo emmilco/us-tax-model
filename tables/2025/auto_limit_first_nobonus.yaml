@@ -8,7 +8,7 @@ table:
   tax_year: 2025
   cite:
     doc: p946
-    locator: "p. 59, footnotes 1 to 6 of the table of Maximum Depreciation Deduction for Passenger Automobiles"
+    locator: "p. 59, Maximum Depreciation Deduction for Passenger Automobiles, footnotes 1 to 6"
     quote: "If you elected not to claim any special depreciation allowance or the vehicle is not qualified property, the maximum depreciation deduction is $12,200."
   keys:
     - { name: placed, type: Enum(placed_year) }

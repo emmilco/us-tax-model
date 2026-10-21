@@ -120,8 +120,8 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040gi] Instructions for Form 1040, line 16 (Qualified Dividends and Capital Gain Tax Worksheet) (2025; printed date 2026-02-25; 482e9c48)
   (gate) Schedule D Tax Worksheet required after its exceptions
       = false
-      cite: [i1040sd] p. 15, Schedule D Tax Worksheet applicability and exceptions (2025; printed date 2025-12-11; 650643a6)
-      note: Interpretation amb.2025.sd4952_selection: Use the detailed worksheet conditions, including line 4g and exceptions. The worksheet explicitly limits its own use and the Form 1040 line 16 instructions repeat the line 4g condition. (i1040sd, p. 15, Schedule D Tax Worksheet applicability; compare f1040sd line 20 and i1040gi p. 36)
+      cite: [i1040sd] p. 15, Schedule D Tax Worksheet, applicability and exceptions (2025; printed date 2025-12-11; 650643a6)
+      note: Interpretation amb.2025.sd4952_selection: Use the detailed worksheet conditions, including line 4g and exceptions. The worksheet explicitly limits its own use and the Form 1040 line 16 instructions repeat the line 4g condition. (i1040sd, p. 15, Schedule D Tax Worksheet, applicability; compare f1040sd line 20 and i1040gi p. 36)
   (helper) Tax when Schedule D Tax Worksheet does not apply
       = $5,861.50
       cite: [i1040gi] Instructions for Form 1040, line 16 (2025; printed date 2026-02-25; 482e9c48)
@@ -355,7 +355,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: taken: {"eq":["person.has_sc",{"const":false}],"op":"test"}
   (helper) Schedule 1 line 16 for this person
       = $0
-      cite: [i1040gi] p. 93, Schedule 1, line 16, "If you were self-employed or a partner, you may be able to take this deduction" (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 93, Schedule 1, line 16, "If you were self-employed or a partner, you may be able to take this" (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["person.has_sc",{"const":false}],"op":"test"}
   (helper) Self-employed health insurance deduction, this person
       = $0
@@ -781,7 +781,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: taken: {"eq":["sa.itemizes",{"const":false}],"op":"test"}
   (helper) MFS with spouse itemizing
       = false
-      cite: [i1040gi] p. 34, line 12e exception 2 (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 34, Line 12e, Exception 2 (2025; printed date 2026-02-25; 482e9c48)
 
 == Form 8949 and Schedule D — manually classified securities transactions — sales[10] ==
   (helper) Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets
@@ -1544,7 +1544,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040gi] p. 32, line 8 (married filing separately and living with the spouse skips lines 8 to 15) (2025; printed date 2026-02-25; 482e9c48)
   18  Taxable social security benefits. Enter the smaller of line 16 or line 17
       = $0
-      cite: [i1040gi] p. 32, line 18 (with no benefits, none are taxable) (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 18 (with no benefits, none are taxable) (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["ssb.has_benefits",{"const":false}],"op":"test"}
 
 == Unrecaptured Section 1250 Gain Worksheet — distribution-only path ==
@@ -2097,7 +2097,7 @@ Interpretation amb.2025.multiplication_subcent: Round the product half-up to the
  (i1040gi, QDCGT worksheet, lines 18 and 21; Rounding Off to Whole Dollars, p. 23)
 Interpretation amb.2025.qbi_cooperative_patron: Refuse any patron of an agricultural or horticultural cooperative, specified or not (qbi.unsupported). The owner asked for the strictly accurate reading. Refusing every patron satisfies both texts: a filer the form excludes is never computed on it, and a filer the instructions exclude is a patron the form also excludes. The cost is a refusal for a patron of a cooperative that is not specified, which the instructions would allow.
  (f8995, Form 8995 (2025), note above line 1; i8995, Who Can Use Form 8995; i1040gi line 13a)
-Interpretation amb.2025.sd4952_selection: Use the detailed worksheet conditions, including line 4g and exceptions. The worksheet explicitly limits its own use and the Form 1040 line 16 instructions repeat the line 4g condition. (i1040sd, p. 15, Schedule D Tax Worksheet applicability; compare f1040sd line 20 and i1040gi p. 36)
+Interpretation amb.2025.sd4952_selection: Use the detailed worksheet conditions, including line 4g and exceptions. The worksheet explicitly limits its own use and the Form 1040 line 16 instructions repeat the line 4g condition. (i1040sd, p. 15, Schedule D Tax Worksheet, applicability; compare f1040sd line 20 and i1040gi p. 36)
 Scope: Form 1040 lines 1a–37 with the schedules and forms this tool implements and their refusal screens. Unsupported paths are refused with citations. No filing or transmission.
 Rounding: amounts are exact cents; the return-wide whole-dollar rounding setting is deferred (see ambiguities/2025.yaml).
 Estimated tax penalty: not computed; the IRS will figure it (see i1040gi, line 38).

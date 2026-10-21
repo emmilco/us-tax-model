@@ -43,7 +43,7 @@ form:
         an earlier year?
     cite:
       doc: i1040gi
-      locator: p. 31, Line 6c; p. 32, worksheet TIP
+      locator: p. 31, Line 6c; p. 32, Social Security Benefits Worksheet, TIP
   - id: ssb.terror_disability
     printed: (helper)
     label: 'Are any of the social security or railroad retirement benefits on your Forms SSA-1099 or RRB-1099 disability payments for injuries incurred as a direct result of a terrorist attack directed against the United States or its allies (including injuries covered by the September 11 Victim Compensation Fund)?'
@@ -428,7 +428,7 @@ form:
       - ssb.line13
     cite:
       doc: i1040gi
-      locator: p. 32, line 14
+      locator: p. 32, Social Security Benefits Worksheet, line 14
   - id: ssb.line15
     printed: '15'
     label: Multiply line 11 by 85% (0.85). If line 11 is zero, enter -0-
@@ -440,7 +440,7 @@ form:
         param: ssb.rate85
     cite:
       doc: i1040gi
-      locator: p. 32, line 15
+      locator: p. 32, Social Security Benefits Worksheet, line 15
   - id: ssb.mfs_together
     printed: (helper)
     label: Married filing separately and lived with your spouse at any time in 2025
@@ -528,7 +528,7 @@ form:
       - ssb.line17
     cite:
       doc: i1040gi
-      locator: p. 32, line 18
+      locator: p. 32, Social Security Benefits Worksheet, line 18
   - id: ssb.line18
     printed: '18'
     label: Taxable social security benefits. Enter the smaller of line 16 or line 17
@@ -550,4 +550,4 @@ form:
         then: ssb.zero
     cite:
       doc: i1040gi
-      locator: p. 32, line 18 (with no benefits, none are taxable)
+      locator: p. 32, Social Security Benefits Worksheet, line 18 (with no benefits, none are taxable)

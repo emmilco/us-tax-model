@@ -1441,7 +1441,7 @@ form:
           then: person.zero
       cite:
         doc: i1040gi
-        locator: p. 93, Schedule 1, line 16, "If you were self-employed or a partner, you may be able to take this deduction"
+        locator: p. 93, Schedule 1, line 16, "If you were self-employed or a partner, you may be able to take this"
     - id: person.positive_profits
       printed: (helper)
       label: Total of all net profits of this person's businesses (losses not included)

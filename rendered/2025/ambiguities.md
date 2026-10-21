@@ -35,7 +35,7 @@
 - **Chosen:** Use the detailed worksheet conditions, including line 4g and exceptions.
 - Reason: The worksheet explicitly limits its own use and the Form 1040 line 16 instructions repeat the line 4g condition.
 - Status: Explicit Stage 3 source interpretation for review.
-- Cite: [i1040sd] p. 15, Schedule D Tax Worksheet applicability; compare f1040sd line 20 and i1040gi p. 36 (2025; printed date 2025-12-11; sha256 650643a6)
+- Cite: [i1040sd] p. 15, Schedule D Tax Worksheet, applicability; compare f1040sd line 20 and i1040gi p. 36 (2025; printed date 2025-12-11; sha256 650643a6)
 
 ## amb.2025.box2c_scope
 
