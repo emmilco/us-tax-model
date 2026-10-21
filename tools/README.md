@@ -41,6 +41,11 @@ outside the suite's own outputs (`reports/`, `rendered/`) changed while it ran.
 A run for a year other than the default passes or fails as usual but writes no
 marker.
 
+The steps run in three waves of side-by-side steps (see the head of
+`tools/check_all_steps.sh`); a step's output is printed when its wave ends, and
+each step's wall time is in `.git/check-all-times`. Mutation spreads its mutants
+over worker threads; `MUTATE_WORKERS=1` runs it on one.
+
 `tools/hooks/pre-commit` refuses any commit whose tree is not exactly the
 tested tree: no green run, a tree changed since the run, or a partial stage.
 Enable it once per clone:

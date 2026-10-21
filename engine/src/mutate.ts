@@ -3,7 +3,10 @@
 // mutation score with the surviving mutations listed.
 
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { availableParallelism } from "node:os";
 import { join, resolve } from "node:path";
+import { Worker } from "node:worker_threads";
+import { createHash } from "node:crypto";
 import { stableStringify } from "./util.js";
 import { loadCanonical } from "./canonical.js";
 import { allTargets, evaluate } from "./eval.js";
@@ -570,12 +573,70 @@ function thresholdAtPlateau(param: string, tables: string[], col: number) {
   };
 }
 
-export function runMutation(): number {
+const normal = (v: { kind: string; cents?: number; value?: unknown }): string =>
+  v.kind === "refusal" ? stableStringify(v) : v.kind === "unknown" ? "unknown" : v.kind === "money" ? `money:${v.cents}` : `${v.kind}:${JSON.stringify(v.value)}`;
+
+type Outcome = "check" | "fixtures" | "survives";
+
+// What happens to one mutant: the checker rejects it, a fixture value changes, or it survives.
+function outcome(baseline: CanonicalData, cases: ReturnType<typeof loadCases>["cases"], m: Mutation): Outcome {
+  const data = cloneData(baseline);
+  m.apply(data);
+  if (runChecks(data).errors.length > 0) return "check";
+  for (const c of cases) {
+    const result = evaluate(data, c.inputs, allTargets(data, c.inputs));
+    for (const [key, expected] of Object.entries(c.expect ?? {})) {
+      const der = result.derivations.get(key);
+      if (!der || normal(der.value) !== normal(expected)) return "fixtures";
+    }
+  }
+  return "survives";
+}
+
+function mutantsDigest(muts: Mutation[]): string {
+  return createHash("sha256").update(muts.map((m) => m.id).join("\n")).digest("hex");
+}
+
+// One worker's share: every `count`-th mutant from `index`, with a digest of the whole
+// mutant list so the main thread can confirm every worker split the same list.
+export function mutantShare(index: number, count: number): { digest: string; outcomes: [number, Outcome][] } {
+  const baseline = loadCanonical();
+  const cases = loadCases().cases;
+  const muts = mutations(baseline);
+  const outcomes: [number, Outcome][] = [];
+  for (let i = index; i < muts.length; i += count) outcomes.push([i, outcome(baseline, cases, muts[i]!)]);
+  return { digest: mutantsDigest(muts), outcomes };
+}
+
+// Workers: MUTATE_WORKERS, or the core count less six (left for the steps check-all runs
+// beside this one); one means no workers.
+function workerCount(): number {
+  const set = Number(process.env.MUTATE_WORKERS);
+  return Number.isInteger(set) && set > 0 ? set : Math.max(1, availableParallelism() - 6);
+}
+
+async function outcomesOf(baseline: CanonicalData, cases: ReturnType<typeof loadCases>["cases"], muts: Mutation[]): Promise<Outcome[]> {
+  const count = workerCount();
+  if (count === 1) return muts.map((m) => outcome(baseline, cases, m));
+  const digest = mutantsDigest(muts);
+  const shares = await Promise.all(Array.from({ length: count }, (_, index) => new Promise<ReturnType<typeof mutantShare>>((done, fail) => {
+    const w = new Worker(new URL("./mutate-worker.js", import.meta.url), { workerData: { year: YEAR, index, count } });
+    w.once("message", done);
+    w.once("error", fail);
+    w.once("exit", (code) => { if (code !== 0) fail(new Error(`mutation worker ${index} exited with ${code}`)); });
+  })));
+  const all: Outcome[] = new Array(muts.length);
+  for (const share of shares) {
+    if (share.digest !== digest) throw new Error("mutation worker built a different mutant list");
+    for (const [i, o] of share.outcomes) all[i] = o;
+  }
+  if (all.some((o) => o === undefined)) throw new Error("mutation workers left mutants unevaluated");
+  return all;
+}
+
+export async function runMutation(): Promise<number> {
   const baseline = loadCanonical();
   const fixtureFile = loadCases();
-
-  const normal = (v: { kind: string; cents?: number; value?: unknown }): string =>
-    v.kind === "refusal" ? stableStringify(v) : v.kind === "unknown" ? "unknown" : v.kind === "money" ? `money:${v.cents}` : `${v.kind}:${JSON.stringify(v.value)}`;
 
   // A mismatching baseline must never make every mutant look killed.
   for (const c of fixtureFile.cases) {
@@ -590,29 +651,12 @@ export function runMutation(): number {
   let killedByCheck = 0;
   let killedByFixtures = 0;
 
-  for (const m of muts) {
-    const data = cloneData(baseline);
-    m.apply(data);
-    const check = runChecks(data);
-    if (check.errors.length > 0) {
-      killedByCheck++;
-      continue;
-    }
-    let killed = false;
-    for (const c of fixtureFile.cases) {
-      const result = evaluate(data, c.inputs, allTargets(data, c.inputs));
-      for (const [key, expected] of Object.entries(c.expect ?? {})) {
-        const der = result.derivations.get(key);
-        if (!der || normal(der.value) !== normal(expected)) {
-          killed = true;
-          break;
-        }
-      }
-      if (killed) break;
-    }
-    if (killed) killedByFixtures++;
+  const outcomes = await outcomesOf(baseline, fixtureFile.cases, muts);
+  muts.forEach((m, i) => {
+    if (outcomes[i] === "check") killedByCheck++;
+    else if (outcomes[i] === "fixtures") killedByFixtures++;
     else survivors.push(m);
-  }
+  });
 
   const total = muts.length;
   const killed = killedByCheck + killedByFixtures;
