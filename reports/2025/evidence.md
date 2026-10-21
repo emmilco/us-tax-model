@@ -25,6 +25,9 @@ Fixtures that assert each line, by evidence class. A — official IRS example. B
 | asset.listed_low | — | — | — | 4 |
 | asset.basis | — | — | — | 7 |
 | asset.is2025 | — | — | — | 4 |
+| asset.on_19 | — | — | — | 4 |
+| asset.on_17 | — | — | — | 4 |
+| asset.on_26_2025 | — | — | — | 4 |
 | asset.year | — | — | — | 4 |
 | asset.last | — | — | — | 4 |
 | asset.done | — | — | — | 4 |
@@ -38,36 +41,39 @@ Fixtures that assert each line, by evidence class. A — official IRS example. B
 | asset.bonus_same | — | — | — | — |
 | asset.bonus_mixed | — | — | — | 4 |
 | asset.rate40 | — | — | — | — |
-| asset.bonus_full | — | — | — | 5 |
-| asset.bonus_forty | — | — | — | 5 |
-| asset.bonus_fullcase | — | — | — | 4 |
-| asset.bonus | — | — | — | 8 |
+| asset.bonus_full | — | — | — | 4 |
+| asset.bonus_forty | — | — | — | 4 |
+| asset.bonus_fullcase | — | — | — | 3 |
+| asset.bonus | — | — | — | 7 |
+| asset.f25 | — | — | — | 3 |
+| asset.f26i | — | — | — | 2 (classm.asset.2, stage14.asset.listed_and_not) |
 | asset.ub | — | — | — | 4 |
+| asset.col19c | — | — | — | 4 |
 | asset.hy | — | — | — | — |
-| asset.rate_hy | — | — | — | 4 |
-| asset.rate_mq | — | — | — | 4 |
-| asset.macrs_hy | — | — | — | 4 |
-| asset.macrs_mq | — | — | — | 4 |
-| asset.macrs2025 | — | — | — | 17 |
+| asset.rate_hy | — | — | — | 3 |
+| asset.rate_mq | — | — | — | 3 |
+| asset.macrs_hy | — | — | — | 3 |
+| asset.macrs_mq | — | — | — | 3 |
+| asset.macrs2025 | — | — | — | 16 |
 | asset.mqbase | — | — | — | 4 |
 | asset.mq_q4_2025 | — | — | — | 4 |
 | asset.prior_conv | — | — | — | — |
 | asset.prior_179 | — | — | — | — |
 | asset.prior_bonus | — | — | — | — |
-| asset.ub_prior_a | — | — | — | 4 |
+| asset.ub_prior_a | — | — | — | 5 |
 | asset.ub_prior | — | — | — | 5 |
 | asset.rate_prior | — | — | — | 4 |
 | asset.macrs_prior_live | — | — | — | 4 |
-| asset.macrs_prior | — | — | — | 8 |
-| asset.dep_2025 | — | — | — | 3 |
+| asset.macrs_prior | — | — | — | 9 |
+| asset.dep_2025 | — | — | — | 4 |
 | asset.bonus_2025 | — | — | — | 4 |
 | asset.s179_2025 | — | — | — | 4 |
 | asset.mq_q4 | — | — | — | 4 |
 | asset.mq_total | — | — | — | 4 |
 | asset.cost179 | — | — | — | 4 |
-| asset.cost179_2025 | — | — | — | 4 |
+| asset.cost179_2025 | — | — | — | 3 |
 | asset.dep_prior | — | — | — | 4 |
-| asset.dep_listed | — | — | — | 5 |
+| asset.dep_listed | — | — | — | 3 |
 
 Unasserted lines: asset.zero, asset.cent, asset.hundred, asset.pct_c, asset.half, asset.rate40, asset.hy
 
@@ -276,7 +282,7 @@ Unasserted lines: div.box1a, div.box1b, div.box2a, div.box5, div.section1202, di
 
 Unasserted lines: eic.age_range_count, eic.zero, eic.qc_count, eic.married_rules, eic.top_limit, eic.below_top, eic.limit0_other, eic.limit1_other, eic.limit2_other, eic.limit3_other, eic.limit0_joint, eic.limit1_joint, eic.limit2_joint, eic.limit3_joint, eic.limit_other, eic.limit_joint, eic.limit, eic.step1_income, eic.step1_ssn, eic.step1_foreign, eic.step1_resident, eic.investment_income, eic.step2_other, eic.step3, eic.step34, eic.step5_line1, eic.step5_line2, eic.step5_line3, eic.step5_line4, eic.earned_income, eic.sc_count, eic.self_employed, eic.wsb_se, eic.earned_for_limit, eic.step5_income, eic.line1_in_table, eic.line1_table0, eic.line1_table1, eic.line1_table2, eic.line1_table3, eic.line1_table, eic.threshold_other, eic.threshold_joint, eic.line5_threshold, eic.threshold0_other, eic.threshold1_other, eic.threshold0_joint, eic.threshold1_joint, eic.line3_table0, eic.line3_table1, eic.line3_table2, eic.line3_table3, eic.smaller, eic.after_line4, eic.credit, eic.reached_step3, eic.wsb_4b_positive, eic.separated_box, eic.clergy
 
-## Form 1040 — selected lines (Stages 1–4)
+## Form 1040 — U.S. Individual Income Tax Return (the lines this tool computes)
 
 | line | A | B | C | R |
 | --- | --- | --- | --- | --- |
@@ -349,23 +355,21 @@ Unasserted lines: f1040.ira_rollovers, f1040.plan_rollovers
 
 | line | A | B | C | R |
 | --- | --- | --- | --- | --- |
-| f4562.line12 | — | — | — | — |
-| f4562.line14 | — | — | — | — |
-| f4562.line17 | — | — | — | — |
-| f4562.line19a | — | — | — | — |
-| f4562.line19b | — | — | — | — |
-| f4562.line19c | — | — | — | — |
-| f4562.line19d | — | — | — | — |
-| f4562.line19f | — | — | — | — |
-| f4562.line19e | — | — | — | — |
-| f4562.line21 | — | — | — | — |
-| f4562.line22 | — | — | — | — |
-| f4562.line25 | — | — | — | — |
-| f4562.line26h | — | — | — | — |
-| f4562.line28 | — | — | — | — |
-| f4562.line29 | — | — | — | — |
-
-Unasserted lines: f4562.line12, f4562.line14, f4562.line17, f4562.line19a, f4562.line19b, f4562.line19c, f4562.line19d, f4562.line19f, f4562.line19e, f4562.line21, f4562.line22, f4562.line25, f4562.line26h, f4562.line28, f4562.line29
+| f4562.line12 | — | — | — | 1 (classm.f4562.1) |
+| f4562.line14 | — | — | — | 1 (classm.f4562.1) |
+| f4562.line17 | — | — | — | 1 (classm.f4562.1) |
+| f4562.line19a | — | — | — | 1 (classm.f4562.1) |
+| f4562.line19b | — | — | — | 1 (classm.f4562.1) |
+| f4562.line19c | — | — | — | 1 (classm.f4562.1) |
+| f4562.line19d | — | — | — | 1 (classm.f4562.1) |
+| f4562.line19f | — | — | — | 1 (classm.f4562.1) |
+| f4562.line19e | — | — | — | 1 (classm.f4562.1) |
+| f4562.line21 | — | — | — | 1 (classm.f4562.1) |
+| f4562.line22 | — | — | — | 1 (classm.f4562.1) |
+| f4562.line25 | — | — | — | 1 (classm.f4562.1) |
+| f4562.line26h | — | — | — | 1 (classm.f4562.1) |
+| f4562.line28 | — | — | — | 1 (classm.f4562.1) |
+| f4562.line29 | — | — | — | 1 (classm.f4562.1) |
 
 ## Form 4952 — supported investment-interest deduction and election
 
@@ -554,7 +558,7 @@ Unasserted lines: f8959.zero
 
 Unasserted lines: f8960.zero, f8960.bad_allocation
 
-## Form 8995 — dividend-only simplified computation
+## Form 8995 — Qualified Business Income Deduction Simplified Computation
 
 | line | A | B | C | R |
 | --- | --- | --- | --- | --- |
@@ -724,7 +728,7 @@ Unasserted lines: mq.q4, mq.total, mq.five, mq.two, mq.q4x5, mq.totalx2
 
 Unasserted lines: otjob.one, otjob.zero
 
-## Excess Social Security credit — separately per person
+## Each person on the return — per-person facts and totals (excess Social Security tax, Schedule SE, SEP and SIMPLE plans, health insurance and others)
 
 | line | A | B | C | R |
 | --- | --- | --- | --- | --- |
@@ -842,7 +846,7 @@ Unasserted lines: otjob.one, otjob.zero
 
 Unasserted lines: person.one, person.educator_max, person.zero, person.sc_count, person.ho_count, person.mq_q4, person.mq_total, person.cost179, person.s179_nonlisted, person.s179_listed, person.income179, person.has_sc, person.sc_total, person.se_screened, person.se_line13, person.se_line4c, person.plan_screened, person.cent, person.hundred, person.sep_rate_c, person.sep_rate_plus, person.sep_s1, person.sep_s2, person.sep_s3, person.comp_limit, person.sep_s8, person.sep_excess, person.simple_cap, person.simple_regular, person.simple_catchup, person.catchup_limit, person.comp_after_regular, person.rate3, person.rate2, person.match_3pct, person.deferrals_total, person.ne_comp, person.employer_max, person.simple_excess, person.plan_deduction, person.s16, person.positive_profits, person.sehi, person.qbi, person.eic_part1, person.files_se, person.eic_se_has, person.eic_se, person.sc_1a
 
-## Section 199A dividend-only deduction and form selection
+## Qualified business income and section 199A dividends — amounts and the choice of Form 8995
 
 | line | A | B | C | R |
 | --- | --- | --- | --- | --- |
@@ -915,49 +919,51 @@ Unasserted lines: qbi.zero, qbi.eligible, qbi.business_any, qbi.deductions_befor
 | retirement.recovered | — | — | — | — |
 | retirement.zero | — | — | — | — |
 | retirement.one | — | — | — | — |
-| retirement.is_ira | — | — | — | 11 |
-| retirement.roth | — | — | — | 11 |
-| retirement.direct | — | — | — | 11 |
-| retirement.bad_code | — | — | — | 11 |
-| retirement.rolled | — | — | — | 11 |
-| retirement.has_rollover | — | — | — | 11 |
-| retirement.smw1 | — | — | — | 10 |
-| retirement.smw2 | — | — | — | 11 |
-| retirement.smw4_t1_360 | — | — | — | 1 (classm.retirement.11) |
-| retirement.smw4_t1_310 | — | — | — | 1 (classm.retirement.9) |
-| retirement.smw4_t1_260 | — | — | — | 1 (classm.retirement.6) |
-| retirement.smw4_t1_210 | — | — | — | 1 (classm.retirement.3) |
-| retirement.smw4_t1_160 | — | — | — | 1 (classm.retirement.6) |
-| retirement.smw4_t2_410 | — | — | — | 1 (classm.retirement.7) |
-| retirement.smw4_t2_360 | — | — | — | — |
-| retirement.smw4_t2_310 | — | — | — | 1 (classm.retirement.1) |
-| retirement.smw4_t2_260 | — | — | — | 1 (classm.retirement.8) |
-| retirement.smw4_t2_210 | — | — | — | 1 (classm.retirement.5) |
-| retirement.smw4_table1 | — | — | — | 4 |
-| retirement.smw4_table2 | — | — | — | 4 |
-| retirement.smw4_new | — | — | — | 8 |
-| retirement.smw4 | — | — | — | 14 |
-| retirement.smw5 | — | — | — | 13 |
-| retirement.smw6 | — | — | — | 11 |
-| retirement.smw7 | — | — | — | 11 |
-| retirement.smw8 | — | — | — | 11 |
-| retirement.smw9 | — | — | — | 10 |
-| retirement.cost_left | — | — | — | 11 |
-| retirement.annuity_with_cost | — | — | — | 11 |
-| retirement.annuity_rollover | — | — | — | 11 |
-| retirement.annuity_taxable | — | — | — | 11 |
+| retirement.is_ira | — | — | — | 3 |
+| retirement.roth | — | — | — | 3 |
+| retirement.direct | — | — | — | 3 |
+| retirement.bad_code | — | — | — | 3 |
+| retirement.rolled | — | — | — | 3 |
+| retirement.has_rollover | — | — | — | 3 |
+| retirement.smw1 | — | — | — | 3 |
+| retirement.smw2 | — | — | — | 3 |
+| retirement.smw4_t1_360 | — | — | — | 3 |
+| retirement.smw4_t1_310 | — | — | — | 3 |
+| retirement.smw4_t1_260 | — | — | — | 3 |
+| retirement.smw4_t1_210 | — | — | — | 3 |
+| retirement.smw4_t1_160 | — | — | — | 3 |
+| retirement.smw4_t2_410 | — | — | — | 3 |
+| retirement.smw4_t2_360 | — | — | — | 3 |
+| retirement.smw4_t2_310 | — | — | — | 3 |
+| retirement.smw4_t2_260 | — | — | — | 3 |
+| retirement.smw4_t2_210 | — | — | — | 3 |
+| retirement.smw4_table1 | — | — | — | 3 |
+| retirement.smw4_table2 | — | — | — | 3 |
+| retirement.smw4_new | — | — | — | 3 |
+| retirement.smw4 | — | — | — | 7 |
+| retirement.smw5 | — | — | — | 6 |
+| retirement.smw6 | — | — | — | 3 |
+| retirement.smw7 | — | — | — | 3 |
+| retirement.smw8 | — | — | — | 4 |
+| retirement.smw9 | — | — | — | 3 |
+| retirement.smw10 | — | — | — | 7 |
+| retirement.smw11 | — | — | — | 7 |
+| retirement.cost_left | — | — | — | 3 |
+| retirement.annuity_with_cost | — | — | — | 3 |
+| retirement.annuity_rollover | — | — | — | 3 |
+| retirement.annuity_taxable | — | — | — | 3 |
 | retirement.ira_taxable | — | — | — | 3 |
-| retirement.ira_not_rolled | — | — | — | 2 (classm.retirement.1, classm.retirement.4) |
-| retirement.plan_excluded | — | — | — | 4 |
-| retirement.plan_simple | — | — | — | 4 |
-| retirement.plan_taxable | — | — | — | 11 |
-| retirement.taxable | — | — | — | 11 |
-| retirement.show_a | — | — | — | 11 |
-| retirement.amount_a | — | — | — | 11 |
+| retirement.ira_not_rolled | — | — | — | 3 |
+| retirement.plan_excluded | — | — | — | 3 |
+| retirement.plan_simple | — | — | — | 3 |
+| retirement.plan_taxable | — | — | — | 3 |
+| retirement.taxable | — | — | — | 3 |
+| retirement.show_a | — | — | — | 3 |
+| retirement.amount_a | — | — | — | 3 |
 
-Unasserted lines: retirement.zero, retirement.one, retirement.smw4_t2_360
+Unasserted lines: retirement.zero, retirement.one
 
-## Schedule 1 — selected lines (unemployment compensation, educator expenses, HSA deduction, student loan interest)
+## Schedule 1 — Additional Income and Adjustments to Income (the lines this tool computes)
 
 | line | A | B | C | R |
 | --- | --- | --- | --- | --- |
@@ -1167,7 +1173,7 @@ Unasserted lines: s179.max, s179.line5_full, s179.separate, s179.line5_mfs, s179
 
 Unasserted lines: s1a.zero, s1a.tip_employers, s1a.tip_total, s1a.tip_reported, s1a.tip_multi, s1a.tip_ssn_count, s1a.tip_ssn, s1a.part2, s1a.line4a_calc, s1a.line4b_calc, s1a.line4c_one, s1a.line4c_calc, s1a.line6_calc, s1a.line7_calc, s1a.tips_max, s1a.base_other, s1a.base_joint, s1a.line8_calc, s1a.line9_calc, s1a.line10_calc, s1a.line10_over, s1a.line10_pos, s1a.line11_thousands, s1a.line12_calc, s1a.line13_figured, s1a.line13_amount, s1a.line13_ssn, s1a.line13_claim, s1a.ot_ssn_count, s1a.ot_ssn, s1a.part3, s1a.line14a_calc, s1a.line14c_calc, s1a.ot_max_other, s1a.ot_max_joint, s1a.ot_max, s1a.line15_calc, s1a.line16_calc, s1a.line17_calc, s1a.line18_calc, s1a.line18_over, s1a.line18_pos, s1a.line19_thousands, s1a.line20_calc, s1a.line21_figured, s1a.line21_amount, s1a.line21_ssn, s1a.line21_claim, s1a.line23_total, s1a.car_max, s1a.part4, s1a.line24_calc, s1a.car_base_other, s1a.car_base_joint, s1a.line25_calc, s1a.line26_calc, s1a.line27_calc, s1a.line27_over, s1a.line27_pos, s1a.line28_thousands, s1a.line29_calc, s1a.line30_figured, s1a.line30_amount, s1a.senior_count, s1a.senior_any, s1a.part5, s1a.line31_calc, s1a.senior_base_other, s1a.senior_base_joint, s1a.line32_calc, s1a.line33_calc, s1a.line33_over, s1a.line33_pos, s1a.line34_calc, s1a.senior_amount, s1a.line35_figured, s1a.line35_calc, s1a.died_before_65_count, s1a.died_before_65, s1a.senior_decedent, s1a.line36a_senior, s1a.line36a_claim, s1a.spouse_senior_count, s1a.spouse_senior, s1a.spouse_died_before_65_count, s1a.spouse_died_before_65, s1a.spouse_senior_decedent, s1a.line36b_senior
 
-## Schedule 2 — supported Additional Medicare Tax and NIIT
+## Schedule 2 — Additional Taxes (the lines this tool computes)
 
 | line | A | B | C | R |
 | --- | --- | --- | --- | --- |
@@ -1409,7 +1415,7 @@ Unasserted lines: sb.zero
 | sc.line10 | — | — | — | — |
 | sc.line11 | — | — | — | — |
 | sc.line12 | — | — | — | 4 |
-| sc.line13 | — | — | — | 19 |
+| sc.line13 | — | — | — | 21 |
 | sc.line14 | — | — | — | — |
 | sc.line15 | — | — | — | — |
 | sc.line16a | — | — | — | — |
@@ -1480,7 +1486,7 @@ Unasserted lines: sb.zero
 | sc.line42 | — | — | — | 4 |
 | sc.f6 | — | — | — | 5 |
 | sc.f14 | — | — | — | 6 |
-| sc.f17 | — | — | — | 6 |
+| sc.f17 | — | — | — | 7 |
 | sc.f19_y3 | — | — | — | 4 |
 | sc.f19_y5 | — | — | — | 5 |
 | sc.f19_y7 | — | — | — | 4 |
@@ -1490,11 +1496,11 @@ Unasserted lines: sb.zero
 | sc.f19_y15sl | — | — | — | 5 |
 | sc.f25_assets | — | — | — | 4 |
 | sc.f25_veh | — | — | — | 4 |
-| sc.f25 | — | — | — | 5 |
+| sc.f25 | — | — | — | 6 |
 | sc.f26_assets | — | — | — | 4 |
 | sc.f26_veh | — | — | — | 4 |
-| sc.f26h | — | — | — | 6 |
-| sc.f28 | — | — | — | 4 |
+| sc.f26h | — | — | — | 7 |
+| sc.f28 | — | — | — | 5 |
 | sc.f29_assets | — | — | — | 4 |
 | sc.f29_veh | — | — | — | 4 |
 | sc.f29 | — | — | — | 5 |
@@ -2084,5 +2090,5 @@ Unasserted lines: below_boundary, table_tax, worksheet_tax, tax
 
 Unasserted lines: single.row1.product, single.row1.tax, single.row2.product, single.row2.tax, single.row3.product, single.row3.tax, single.row4.product, single.row4.tax, single.row5.product, single.row5.tax, single.result, mfj.row1.product, mfj.row1.tax, mfj.row2.product, mfj.row2.tax, mfj.row3.product, mfj.row3.tax, mfj.row4.product, mfj.row4.tax, mfj.row5.product, mfj.row5.tax, mfj.result, mfs.row1.product, mfs.row1.tax, mfs.row2.product, mfs.row2.tax, mfs.row3.product, mfs.row3.tax, mfs.row4.product, mfs.row4.tax, mfs.row5.product, mfs.row5.tax, mfs.result, hoh.row1.product, hoh.row1.tax, hoh.row2.product, hoh.row2.tax, hoh.row3.product, hoh.row3.tax, hoh.row4.product, hoh.row4.tax, hoh.row5.product, hoh.row5.tax, hoh.result, tax
 
-Unasserted computed lines across all documents: 520. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
+Unasserted computed lines across all documents: 504. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
 Asserted keys not matching a line id: person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line3, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.positive, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line4a, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line4b, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.owes, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line4c, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line5b, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line6, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line7, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line8d, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line9, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line10, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line11, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line12, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line13, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.below_boundary, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.tax, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.below_boundary, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.tax, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, root|inst:tax_on_amount#{"amount":"qdcg.line1","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, qdcg.f1040.line15, qdcg.f1040.line3a, qdcg.f1040.status, f1040.qdcg.line25, qdcg.sd.distributions

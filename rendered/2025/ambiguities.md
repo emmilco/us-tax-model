@@ -214,3 +214,12 @@
 - Reason: The instruction says other exceptions exist and points to Pub. 15 chapter 5 and Pub. 334 chapter 8. Pub. 15 (2025) chapter 5 covers whether meals are wages and lists no exceptions to the limit; Pub. 334 (2025), Travel and Meals, repeats the 50% rule and refers to Pub. 463, which lists the exceptions. Asking for the named cases only would leave a filer whose meals fall under another exception with no correct entry.
 - Status: Owner ruling after Stage 14 (T-042).
 - Cite: [p463] p. 16, Exception to the 50% Limit for Meals, exceptions 1 to 6 (For use in preparing 2025 returns; sha256 ddc3bb15)
+
+## amb.2025.vehicle_s179_claimed
+
+- Text at issue: Pub. 946, Depreciation Worksheet for Passenger Automobiles, line 10: "Section 179 deduction claimed this year (not more than line 9)"; Form 4562 line 11: "The total cost you can deduct is limited to your taxable income from the active conduct of a trade or business."
+- Candidate readings: The section 179 cost elected for the vehicle this year (Form 4562 column (i)), not more than line 9. | The part of that election deducted this year after the business income limit of Form 4562 line 11, the rest being carried over.
+- **Chosen:** The first (scveh.line10 through scveh.s179_line10).
+- Reason: The two differ only when the business income limit cuts the year's section 179 deduction and the vehicle carries part of it. The basis is reduced by the whole amount elected, the carryover included, since Pub. 946 says that on a disposition before the carryover is used "you must add it back to the property's basis" (p. 20); the worksheet then limits the year's depreciation by the same amount. The second reading would let the year's depreciation room grow by an amount that is still deductible later.
+- Status: Agent reading, after Stage 14 (scveh render review), for the owner's review (TASKS.md T-046).
+- Cite: [p946] p. 62, Depreciation Worksheet for Passenger Automobiles, line 10; p. 20, Carryover of disallowed deduction (For use in preparing 2025 returns; sha256 07fadfb2)

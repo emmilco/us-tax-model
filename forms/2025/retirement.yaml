@@ -717,6 +717,34 @@ form:
     cite:
       doc: i1040gi
       locator: p. 29, Simplified Method Worksheet, line 9
+  - id: retirement.smw10
+    printed: (SMW 10)
+    label: Add lines 6 and 8. This is the amount you have recovered tax free through 2025
+    type: Dollars
+    expr:
+      op: sum
+      of:
+      - retirement.smw6
+      - retirement.smw8
+    cite:
+      doc: i1040gi
+      locator: 'p. 29, Simplified Method Worksheet, line 10, "No. Add lines 6 and 8. This is the amount you have recovered tax
+        free through 2025" (the worksheet is used here only for an annuity starting date after November 18, 1996, so line
+        10''s question, "Was your annuity starting date before 1987?", is answered No)'
+  - id: retirement.smw11
+    printed: (SMW 11)
+    label: Balance of cost to be recovered. Subtract line 10 from line 2
+    display: 'Shown on the values sheet so the filer knows whether next year''s payments are fully taxable: "If zero, you won''t have to complete this worksheet next year."'
+    type: Dollars
+    expr:
+      op: subtract
+      from: retirement.smw2
+      take: retirement.smw10
+    cite:
+      doc: i1040gi
+      locator: 'p. 29, Simplified Method Worksheet, line 11, "Balance of cost to be recovered. Subtract line 10 from line 2. If
+        zero, you won''t have to complete this worksheet next year. The payments you receive next year will generally be fully
+        taxable"'
   - id: retirement.cost_left
     printed: (helper)
     label: Some cost is left to recover (line 7 of the Simplified Method Worksheet is more than zero)

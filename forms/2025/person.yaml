@@ -1,7 +1,7 @@
 form:
   id: person
   kind: worksheet
-  title: Excess Social Security credit — separately per person
+  title: Each person on the return — per-person facts and totals (excess Social Security tax, Schedule SE, SEP and SIMPLE plans, health insurance and others)
   tax_year: 2025
   lines:
     - id: person.role

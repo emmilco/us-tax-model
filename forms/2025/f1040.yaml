@@ -1,7 +1,7 @@
 form:
   id: f1040
   kind: form
-  title: Form 1040 — selected lines (Stages 1–4)
+  title: Form 1040 — U.S. Individual Income Tax Return (the lines this tool computes)
   tax_year: 2025
   lines:
     - id: f1040.status

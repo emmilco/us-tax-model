@@ -1,4 +1,4 @@
-Values sheet — tax year 2025 (single-person slice; not a complete return for all filers)
+Values sheet — tax year 2025 (not a complete return for all filers)
 
 == Form 1099-DIV — distribution components and scope screening ==
   (helper) Unrecaptured section 1250 gain, box 2b
@@ -51,7 +51,7 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       = $0
       cite: [f1099div] Instructions for Recipient, capital gain components in boxes 2b–2d (January 2024 (continuous-use form); 4ea1de80)
 
-== Form 1040 — selected lines (Stages 1–4) ==
+== Form 1040 — U.S. Individual Income Tax Return (the lines this tool computes) ==
   Filing Status Single. Married filing jointly (even if only one had income). Married filing separately. Head of household (HOH). Qualifying surviving spouse (QSS).
       = single
       cite: [f1040] Form 1040, Filing Status (2025; created 2025-09-05; 3d31c226)
@@ -202,7 +202,7 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       = false
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
 
-== Form 8995 — dividend-only simplified computation ==
+== Form 8995 — Qualified Business Income Deduction Simplified Computation ==
   2   Total qualified business income or (loss). Combine lines 1i through 1v, column (c)
       = $0
       cite: [f8995] Form 8995 (2025), line 2; i8995 Line 1, the trades or businesses of the Schedule C entries (2025; created 2025-09-12; 55380ad2)
@@ -297,7 +297,81 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       = false
       cite: [i1040gi] p. 14, Head of Household (2025; printed date 2026-02-25; 482e9c48)
 
-== Section 199A dividend-only deduction and form selection ==
+== Each person on the return — per-person facts and totals (excess Social Security tax, Schedule SE, SEP and SIMPLE plans, health insurance and others) — person[taxpayer] ==
+  (helper) Whose entry is this, yours or your spouse's?
+      = taxpayer
+      cite: [f1040] Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial" (2025; created 2025-09-05; 3d31c226)
+  (helper) One entry for this person
+      = 1
+      cite: [f1040] Form 1040 (2025), page 1, one entry for you and, if joint return, one for your spouse (2025; created 2025-09-05; 3d31c226)
+  (helper) Were you born before January 2, 1961?
+      = false
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Are you blind under the standard-deduction instructions?
+      = false
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Qualified educator expenses you paid in 2025
+      = $0
+      cite: [i1040gi] p. 93, Schedule 1, line 11, Qualified expenses and 'You must reduce your qualified expenses by the following amounts' (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Any qualified educator expenses for this person
+      = false
+      cite: [i1040gi] p. 93, Schedule 1, line 11 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) This person's educator expense deduction
+      = $0
+      cite: [i1040gi] p. 93, Schedule 1, line 11, "If you were an eligible educator in 2025, you can deduct on line 11 up to $300 of qualified expenses you paid in 2025"; "If you and your spouse are filing jointly and both of you were eligible educators, the maximum deduction is $600. However, neither spouse can deduct more than $300 of their qualified expenses" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["person.has_educator_expenses",{"const":false}],"op":"test"}
+  (helper) Number of Forms 8889 entered for this person
+      = 0
+      cite: [i8889] p. 4, Name and social security number (SSN), "complete a separate Form 8889 for each of you" (2025; da6f2f58)
+      note: confirmed roster $f8889@person[taxpayer]:
+  (gate) More than one Form 8889 entered for this person
+      = false
+      cite: [i8889] p. 4, Name and social security number (SSN), "complete a separate Form 8889 for each of you" (2025; da6f2f58)
+  (helper) Form 8889 line 13 for this person
+      = $0
+      cite: [i8889] p. 4, "Combine the amounts on line 13 of both Forms 8889 and enter this amount on Schedule 1 (Form 1040), line 13" (2025; da6f2f58)
+      note: confirmed roster $f8889@person[taxpayer]:
+  (helper) Total W-2 box 1 for this person
+      = $64,520
+      cite: [f1040] Form 1040 (2025), line 1a (2025; created 2025-09-05; 3d31c226)
+      note: confirmed roster $w2@person[taxpayer]: migrated
+  zero No excess credit
+      = $0
+      cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Number of Schedules C for this person
+      = 0
+      cite: [i1040sc] p. 14, Line 31; i4562 p. 4, Part I (2025; b5536db9)
+      note: confirmed roster $sc@person[taxpayer]:
+  (helper) This person has at least one Schedule C
+      = false
+      cite: [i1040sse] p. 1, Who Must File Schedule SE; p. 2, Joint Returns, "If both spouses have self-employment income, each must file a separate Schedule SE" (2025; ea9e3120)
+  (helper) This person's Schedule C net profit or loss (all businesses)
+      = $0
+      cite: [i1040sse] p. 2, More Than One Business, "Figure the combined SE tax on one Schedule SE" (2025; ea9e3120)
+      note: confirmed roster $sc@person[taxpayer]:
+  (helper) Schedule SE line 13 (deduction for one-half of self-employment tax) for this person
+      = $0
+      cite: [f1040sse] Schedule SE (2025), line 13, "Enter here and on Schedule 1 (Form 1040), line 15" (2025; created 2025-05-07; 05bc2b3e)
+      note: taken: {"eq":["person.has_sc",{"const":false}],"op":"test"}
+  (helper) Schedule 1 line 16 for this person
+      = $0
+      cite: [i1040gi] p. 93, Schedule 1, line 16, "If you were self-employed or a partner, you may be able to take this deduction" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["person.has_sc",{"const":false}],"op":"test"}
+  (helper) Self-employed health insurance deduction, this person
+      = $0
+      cite: [f7206] Form 7206 (2025), line 14 (2025; created 2025-10-02; 822203c9)
+      note: confirmed roster $sc@person[taxpayer]:
+  (helper) Qualified business income or loss of this person's businesses
+      = $0
+      cite: [i8995] pp. 2, 4, Determining Your Qualified Business Income; Line 1 (2025; printed date 2026-01-26; 875843ba)
+      note: confirmed roster $sc@person[taxpayer]:
+
+== Form W-2 — wage, withholding and Social Security boxes by employer — person[taxpayer].w2[migrated] ==
+  1   Wages, tips, other compensation
+      = $64,520
+      cite: [iw2w3] p. 17, box 1 (2025; printed date 2025-02-19; bfecbc99)
+
+== Qualified business income and section 199A dividends — amounts and the choice of Form 8995 ==
   (helper) Qualified section 199A dividends from Form 1099-DIV box 5 after confirming holding-period and related-payment requirements
       = $0
       cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
@@ -423,7 +497,7 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       = $5,861.50
       cite: [i1040gi] QDCGT worksheet, line 25 (2025; printed date 2026-02-25; 482e9c48)
 
-== Schedule 1 — selected lines (unemployment compensation, educator expenses, HSA deduction, student loan interest) ==
+== Schedule 1 — Additional Income and Adjustments to Income (the lines this tool computes) ==
   (helper) Year parameter sales.zero
       = $0
       cite: [f1040s1] Schedule 1 (2025), lines 7, 11, 21 (2025; created 2025-07-25; 8dafec71)
@@ -708,6 +782,582 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
   (helper) MFS with spouse itemizing
       = false
       cite: [i1040gi] p. 34, line 12e exception 2 (2025; printed date 2026-02-25; 482e9c48)
+
+== Form 8949 and Schedule D — manually classified securities transactions — sales[10] ==
+  (helper) Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets
+      = F
+      cite: [i8949] pp. 2–5, holding period and checkbox classifications (2025; printed date 2026-01-20; f077991c)
+  (helper) Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals
+      = detail
+      cite: [i1040sd] p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
+  (helper) Adjustment codes: none, B, W, BW; choose other for any additional code
+      = W
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust holding such property?
+      = false
+      cite: [i1040sd] pp. 11–12, lines 18 and 19 (2025; printed date 2025-12-11; 650643a6)
+  (helper) Column (d): proceeds per broker report, or net proceeds if no report
+      = $800
+      cite: [i8949] p. 6, column (d) (2025; printed date 2026-01-20; f077991c)
+  (helper) Correct adjusted basis from records
+      = $1,000
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Correct nondeductible wash-sale loss; positive cents, including losses not reported by broker
+      = $40
+      cite: [i8949] p. 10, code W; a lower corrected loss requires an explanation statement (2025; printed date 2026-01-20; f077991c)
+  (helper) Basis reported to IRS
+      = false
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Digital asset box G–L
+      = false
+      cite: [f8949] Parts I and II, boxes G–L (2025; created 2025-05-05; 27451389)
+  (helper) Basis correction code B applies
+      = false
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Wash-sale code W applies
+      = true
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Unsupported adjustment or code B without a broker basis report
+      = false
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Aggregate route fails its eligibility conditions
+      = false
+      cite: [i1040sd] p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
+  (helper) Screen this transaction before any aggregation
+      = 1
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) No adjustment
+      = $0
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (e) Column (e): reported basis if covered; correct basis otherwise
+      = $1,000
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+      note: taken: {"eq":["sales.covered",{"const":false}],"op":"test"}
+  (helper) Correct reported basis in column (g)
+      = false
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Basis correction in column (g)
+      = $0
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+      note: taken: {"eq":["sales.adjust_b",{"const":false}],"op":"test"}
+  (helper) Wash-sale adjustment in column (g)
+      = $40
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+      note: taken: {"eq":["sales.has_w",{"const":true}],"op":"test"}
+  (g) Column (g): net adjustments
+      = $40
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Proceeds less column (e)
+      = -$200
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (h) Column (h): proceeds less basis plus adjustments
+      = -$160
+      cite: [i8949] p. 11, column (h) (2025; printed date 2026-01-20; f077991c)
+      note: Interpretation amb.2025.sales_rounding: Preserve exact cents throughout Stage 3; whole-dollar mode remains deferred. Avoid choosing a reconciliation policy without explicit support; cents are expressly permitted. (i8949, p. 3, Rounding Off to Whole Dollars; compare i1040gi p. 23)
+
+== Form 8949 and Schedule D — manually classified securities transactions — sales[1a] ==
+  (helper) Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets
+      = A
+      cite: [i8949] pp. 2–5, holding period and checkbox classifications (2025; printed date 2026-01-20; f077991c)
+  (helper) Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals
+      = aggregate
+      cite: [i1040sd] p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
+  (helper) Adjustment codes: none, B, W, BW; choose other for any additional code
+      = none
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust holding such property?
+      = false
+      cite: [i1040sd] pp. 11–12, lines 18 and 19 (2025; printed date 2025-12-11; 650643a6)
+  (helper) Confirm all aggregate conditions: basis reported, no broker adjustments, no Ordinary box, no QOF disposition/deferral, no corrections, no collectibles
+      = true
+      cite: [i1040sd] p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
+  (helper) Column (d): proceeds per broker report, or net proceeds if no report
+      = $100
+      cite: [i8949] p. 6, column (d) (2025; printed date 2026-01-20; f077991c)
+  (helper) Basis shown on broker report
+      = $10
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Basis reported to IRS
+      = true
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Digital asset box G–L
+      = false
+      cite: [f8949] Parts I and II, boxes G–L (2025; created 2025-05-05; 27451389)
+  (helper) Basis correction code B applies
+      = false
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Wash-sale code W applies
+      = false
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Unsupported adjustment or code B without a broker basis report
+      = false
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Aggregate route fails its eligibility conditions
+      = false
+      cite: [i1040sd] p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
+  (helper) Screen this transaction before any aggregation
+      = 1
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) No adjustment
+      = $0
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (e) Column (e): reported basis if covered; correct basis otherwise
+      = $10
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+      note: taken: {"eq":["sales.covered",{"const":true}],"op":"test"}
+  (helper) Correct reported basis in column (g)
+      = false
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Basis correction in column (g)
+      = $0
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+      note: taken: {"eq":["sales.adjust_b",{"const":false}],"op":"test"}
+  (helper) Wash-sale adjustment in column (g)
+      = $0
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+      note: taken: {"eq":["sales.has_w",{"const":false}],"op":"test"}
+  (g) Column (g): net adjustments
+      = $0
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Proceeds less column (e)
+      = $90
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (h) Column (h): proceeds less basis plus adjustments
+      = $90
+      cite: [i8949] p. 11, column (h) (2025; printed date 2026-01-20; f077991c)
+      note: Interpretation amb.2025.sales_rounding: Preserve exact cents throughout Stage 3; whole-dollar mode remains deferred. Avoid choosing a reconciliation policy without explicit support; cents are expressly permitted. (i8949, p. 3, Rounding Off to Whole Dollars; compare i1040gi p. 23)
+
+== Form 8949 and Schedule D — manually classified securities transactions — sales[1b] ==
+  (helper) Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets
+      = A
+      cite: [i8949] pp. 2–5, holding period and checkbox classifications (2025; printed date 2026-01-20; f077991c)
+  (helper) Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals
+      = detail
+      cite: [i1040sd] p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
+  (helper) Adjustment codes: none, B, W, BW; choose other for any additional code
+      = B
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust holding such property?
+      = false
+      cite: [i1040sd] pp. 11–12, lines 18 and 19 (2025; printed date 2025-12-11; 650643a6)
+  (helper) Column (d): proceeds per broker report, or net proceeds if no report
+      = $200
+      cite: [i8949] p. 6, column (d) (2025; printed date 2026-01-20; f077991c)
+  (helper) Basis shown on broker report
+      = $20
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Correct adjusted basis from records
+      = $30
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Basis reported to IRS
+      = true
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Digital asset box G–L
+      = false
+      cite: [f8949] Parts I and II, boxes G–L (2025; created 2025-05-05; 27451389)
+  (helper) Basis correction code B applies
+      = true
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Wash-sale code W applies
+      = false
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Unsupported adjustment or code B without a broker basis report
+      = false
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Aggregate route fails its eligibility conditions
+      = false
+      cite: [i1040sd] p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
+  (helper) Screen this transaction before any aggregation
+      = 1
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) No adjustment
+      = $0
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (e) Column (e): reported basis if covered; correct basis otherwise
+      = $20
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+      note: taken: {"eq":["sales.covered",{"const":true}],"op":"test"}
+  (helper) Reported basis minus correct basis
+      = -$10
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Correct reported basis in column (g)
+      = true
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Basis correction in column (g)
+      = -$10
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+      note: taken: {"eq":["sales.adjust_b",{"const":true}],"op":"test"}
+  (helper) Wash-sale adjustment in column (g)
+      = $0
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+      note: taken: {"eq":["sales.has_w",{"const":false}],"op":"test"}
+  (g) Column (g): net adjustments
+      = -$10
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Proceeds less column (e)
+      = $180
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (h) Column (h): proceeds less basis plus adjustments
+      = $170
+      cite: [i8949] p. 11, column (h) (2025; printed date 2026-01-20; f077991c)
+      note: Interpretation amb.2025.sales_rounding: Preserve exact cents throughout Stage 3; whole-dollar mode remains deferred. Avoid choosing a reconciliation policy without explicit support; cents are expressly permitted. (i8949, p. 3, Rounding Off to Whole Dollars; compare i1040gi p. 23)
+
+== Form 8949 and Schedule D — manually classified securities transactions — sales[2] ==
+  (helper) Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets
+      = B
+      cite: [i8949] pp. 2–5, holding period and checkbox classifications (2025; printed date 2026-01-20; f077991c)
+  (helper) Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals
+      = detail
+      cite: [i1040sd] p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
+  (helper) Adjustment codes: none, B, W, BW; choose other for any additional code
+      = W
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust holding such property?
+      = false
+      cite: [i1040sd] pp. 11–12, lines 18 and 19 (2025; printed date 2025-12-11; 650643a6)
+  (helper) Column (d): proceeds per broker report, or net proceeds if no report
+      = $300
+      cite: [i8949] p. 6, column (d) (2025; printed date 2026-01-20; f077991c)
+  (helper) Correct adjusted basis from records
+      = $400
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Correct nondeductible wash-sale loss; positive cents, including losses not reported by broker
+      = $20
+      cite: [i8949] p. 10, code W; a lower corrected loss requires an explanation statement (2025; printed date 2026-01-20; f077991c)
+  (helper) Basis reported to IRS
+      = false
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Digital asset box G–L
+      = false
+      cite: [f8949] Parts I and II, boxes G–L (2025; created 2025-05-05; 27451389)
+  (helper) Basis correction code B applies
+      = false
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Wash-sale code W applies
+      = true
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Unsupported adjustment or code B without a broker basis report
+      = false
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Aggregate route fails its eligibility conditions
+      = false
+      cite: [i1040sd] p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
+  (helper) Screen this transaction before any aggregation
+      = 1
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) No adjustment
+      = $0
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (e) Column (e): reported basis if covered; correct basis otherwise
+      = $400
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+      note: taken: {"eq":["sales.covered",{"const":false}],"op":"test"}
+  (helper) Correct reported basis in column (g)
+      = false
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Basis correction in column (g)
+      = $0
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+      note: taken: {"eq":["sales.adjust_b",{"const":false}],"op":"test"}
+  (helper) Wash-sale adjustment in column (g)
+      = $20
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+      note: taken: {"eq":["sales.has_w",{"const":true}],"op":"test"}
+  (g) Column (g): net adjustments
+      = $20
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Proceeds less column (e)
+      = -$100
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (h) Column (h): proceeds less basis plus adjustments
+      = -$80
+      cite: [i8949] p. 11, column (h) (2025; printed date 2026-01-20; f077991c)
+      note: Interpretation amb.2025.sales_rounding: Preserve exact cents throughout Stage 3; whole-dollar mode remains deferred. Avoid choosing a reconciliation policy without explicit support; cents are expressly permitted. (i8949, p. 3, Rounding Off to Whole Dollars; compare i1040gi p. 23)
+
+== Form 8949 and Schedule D — manually classified securities transactions — sales[3] ==
+  (helper) Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets
+      = C
+      cite: [i8949] pp. 2–5, holding period and checkbox classifications (2025; printed date 2026-01-20; f077991c)
+  (helper) Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals
+      = detail
+      cite: [i1040sd] p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
+  (helper) Adjustment codes: none, B, W, BW; choose other for any additional code
+      = none
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust holding such property?
+      = false
+      cite: [i1040sd] pp. 11–12, lines 18 and 19 (2025; printed date 2025-12-11; 650643a6)
+  (helper) Column (d): proceeds per broker report, or net proceeds if no report
+      = $400
+      cite: [i8949] p. 6, column (d) (2025; printed date 2026-01-20; f077991c)
+  (helper) Correct adjusted basis from records
+      = $60
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Basis reported to IRS
+      = false
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Digital asset box G–L
+      = false
+      cite: [f8949] Parts I and II, boxes G–L (2025; created 2025-05-05; 27451389)
+  (helper) Basis correction code B applies
+      = false
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Wash-sale code W applies
+      = false
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Unsupported adjustment or code B without a broker basis report
+      = false
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Aggregate route fails its eligibility conditions
+      = false
+      cite: [i1040sd] p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
+  (helper) Screen this transaction before any aggregation
+      = 1
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) No adjustment
+      = $0
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (e) Column (e): reported basis if covered; correct basis otherwise
+      = $60
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+      note: taken: {"eq":["sales.covered",{"const":false}],"op":"test"}
+  (helper) Correct reported basis in column (g)
+      = false
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Basis correction in column (g)
+      = $0
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+      note: taken: {"eq":["sales.adjust_b",{"const":false}],"op":"test"}
+  (helper) Wash-sale adjustment in column (g)
+      = $0
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+      note: taken: {"eq":["sales.has_w",{"const":false}],"op":"test"}
+  (g) Column (g): net adjustments
+      = $0
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Proceeds less column (e)
+      = $340
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (h) Column (h): proceeds less basis plus adjustments
+      = $340
+      cite: [i8949] p. 11, column (h) (2025; printed date 2026-01-20; f077991c)
+      note: Interpretation amb.2025.sales_rounding: Preserve exact cents throughout Stage 3; whole-dollar mode remains deferred. Avoid choosing a reconciliation policy without explicit support; cents are expressly permitted. (i8949, p. 3, Rounding Off to Whole Dollars; compare i1040gi p. 23)
+
+== Form 8949 and Schedule D — manually classified securities transactions — sales[8a] ==
+  (helper) Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets
+      = D
+      cite: [i8949] pp. 2–5, holding period and checkbox classifications (2025; printed date 2026-01-20; f077991c)
+  (helper) Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals
+      = aggregate
+      cite: [i1040sd] p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
+  (helper) Adjustment codes: none, B, W, BW; choose other for any additional code
+      = none
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust holding such property?
+      = false
+      cite: [i1040sd] pp. 11–12, lines 18 and 19 (2025; printed date 2025-12-11; 650643a6)
+  (helper) Confirm all aggregate conditions: basis reported, no broker adjustments, no Ordinary box, no QOF disposition/deferral, no corrections, no collectibles
+      = true
+      cite: [i1040sd] p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
+  (helper) Column (d): proceeds per broker report, or net proceeds if no report
+      = $500
+      cite: [i8949] p. 6, column (d) (2025; printed date 2026-01-20; f077991c)
+  (helper) Basis shown on broker report
+      = $70
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Basis reported to IRS
+      = true
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Digital asset box G–L
+      = false
+      cite: [f8949] Parts I and II, boxes G–L (2025; created 2025-05-05; 27451389)
+  (helper) Basis correction code B applies
+      = false
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Wash-sale code W applies
+      = false
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Unsupported adjustment or code B without a broker basis report
+      = false
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Aggregate route fails its eligibility conditions
+      = false
+      cite: [i1040sd] p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
+  (helper) Screen this transaction before any aggregation
+      = 1
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) No adjustment
+      = $0
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (e) Column (e): reported basis if covered; correct basis otherwise
+      = $70
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+      note: taken: {"eq":["sales.covered",{"const":true}],"op":"test"}
+  (helper) Correct reported basis in column (g)
+      = false
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Basis correction in column (g)
+      = $0
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+      note: taken: {"eq":["sales.adjust_b",{"const":false}],"op":"test"}
+  (helper) Wash-sale adjustment in column (g)
+      = $0
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+      note: taken: {"eq":["sales.has_w",{"const":false}],"op":"test"}
+  (g) Column (g): net adjustments
+      = $0
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Proceeds less column (e)
+      = $430
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (h) Column (h): proceeds less basis plus adjustments
+      = $430
+      cite: [i8949] p. 11, column (h) (2025; printed date 2026-01-20; f077991c)
+      note: Interpretation amb.2025.sales_rounding: Preserve exact cents throughout Stage 3; whole-dollar mode remains deferred. Avoid choosing a reconciliation policy without explicit support; cents are expressly permitted. (i8949, p. 3, Rounding Off to Whole Dollars; compare i1040gi p. 23)
+
+== Form 8949 and Schedule D — manually classified securities transactions — sales[8b] ==
+  (helper) Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets
+      = D
+      cite: [i8949] pp. 2–5, holding period and checkbox classifications (2025; printed date 2026-01-20; f077991c)
+  (helper) Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals
+      = detail
+      cite: [i1040sd] p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
+  (helper) Adjustment codes: none, B, W, BW; choose other for any additional code
+      = BW
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust holding such property?
+      = false
+      cite: [i1040sd] pp. 11–12, lines 18 and 19 (2025; printed date 2025-12-11; 650643a6)
+  (helper) Column (d): proceeds per broker report, or net proceeds if no report
+      = $600
+      cite: [i8949] p. 6, column (d) (2025; printed date 2026-01-20; f077991c)
+  (helper) Basis shown on broker report
+      = $700
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Correct adjusted basis from records
+      = $800
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Correct nondeductible wash-sale loss; positive cents, including losses not reported by broker
+      = $30
+      cite: [i8949] p. 10, code W; a lower corrected loss requires an explanation statement (2025; printed date 2026-01-20; f077991c)
+  (helper) Basis reported to IRS
+      = true
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Digital asset box G–L
+      = false
+      cite: [f8949] Parts I and II, boxes G–L (2025; created 2025-05-05; 27451389)
+  (helper) Basis correction code B applies
+      = true
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Wash-sale code W applies
+      = true
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Unsupported adjustment or code B without a broker basis report
+      = false
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Aggregate route fails its eligibility conditions
+      = false
+      cite: [i1040sd] p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
+  (helper) Screen this transaction before any aggregation
+      = 1
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (e) Column (e): reported basis if covered; correct basis otherwise
+      = $700
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+      note: taken: {"eq":["sales.covered",{"const":true}],"op":"test"}
+  (helper) Reported basis minus correct basis
+      = -$100
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Correct reported basis in column (g)
+      = true
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Basis correction in column (g)
+      = -$100
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+      note: taken: {"eq":["sales.adjust_b",{"const":true}],"op":"test"}
+  (helper) Wash-sale adjustment in column (g)
+      = $30
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+      note: taken: {"eq":["sales.has_w",{"const":true}],"op":"test"}
+  (g) Column (g): net adjustments
+      = -$70
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Proceeds less column (e)
+      = -$100
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (h) Column (h): proceeds less basis plus adjustments
+      = -$170
+      cite: [i8949] p. 11, column (h) (2025; printed date 2026-01-20; f077991c)
+      note: Interpretation amb.2025.sales_rounding: Preserve exact cents throughout Stage 3; whole-dollar mode remains deferred. Avoid choosing a reconciliation policy without explicit support; cents are expressly permitted. (i8949, p. 3, Rounding Off to Whole Dollars; compare i1040gi p. 23)
+
+== Form 8949 and Schedule D — manually classified securities transactions — sales[9] ==
+  (helper) Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets
+      = E
+      cite: [i8949] pp. 2–5, holding period and checkbox classifications (2025; printed date 2026-01-20; f077991c)
+  (helper) Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals
+      = detail
+      cite: [i1040sd] p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
+  (helper) Adjustment codes: none, B, W, BW; choose other for any additional code
+      = B
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust holding such property?
+      = false
+      cite: [i1040sd] pp. 11–12, lines 18 and 19 (2025; printed date 2025-12-11; 650643a6)
+  (helper) Column (d): proceeds per broker report, or net proceeds if no report
+      = $700
+      cite: [i8949] p. 6, column (d) (2025; printed date 2026-01-20; f077991c)
+  (helper) Correct adjusted basis from records
+      = $90
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Basis reported to IRS
+      = false
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Digital asset box G–L
+      = false
+      cite: [f8949] Parts I and II, boxes G–L (2025; created 2025-05-05; 27451389)
+  (helper) Basis correction code B applies
+      = true
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Wash-sale code W applies
+      = false
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Unsupported adjustment or code B without a broker basis report
+      = false
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Aggregate route fails its eligibility conditions
+      = false
+      cite: [i1040sd] p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
+  (helper) Screen this transaction before any aggregation
+      = 1
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) No adjustment
+      = $0
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (e) Column (e): reported basis if covered; correct basis otherwise
+      = $90
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+      note: taken: {"eq":["sales.covered",{"const":false}],"op":"test"}
+  (helper) Correct reported basis in column (g)
+      = false
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Basis correction in column (g)
+      = $0
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+      note: taken: {"eq":["sales.adjust_b",{"const":false}],"op":"test"}
+  (helper) Wash-sale adjustment in column (g)
+      = $0
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+      note: taken: {"eq":["sales.has_w",{"const":false}],"op":"test"}
+  (g) Column (g): net adjustments
+      = $0
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (helper) Proceeds less column (e)
+      = $610
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+  (h) Column (h): proceeds less basis plus adjustments
+      = $610
+      cite: [i8949] p. 11, column (h) (2025; printed date 2026-01-20; f077991c)
+      note: Interpretation amb.2025.sales_rounding: Preserve exact cents throughout Stage 3; whole-dollar mode remains deferred. Avoid choosing a reconciliation policy without explicit support; cents are expressly permitted. (i8949, p. 3, Rounding Off to Whole Dollars; compare i1040gi p. 23)
 
 == Schedule B — supported interest and ordinary dividends ==
   (helper) Any nominee income, original issue discount reported in an amount other than on Form 1099-OID, accrued interest paid on a bond purchase, bond premium adjustment, accrued market discount, a contingent payment debt instrument, seller-financed mortgage interest, a savings bond interest exclusion, foreign corporation reporting, or other special treatment?
@@ -1018,399 +1668,7 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   f1040.line16: chose $5,861.50 (guard 1)
       not taken: guard 0 = false
 
-Collection entries and derivations:
-  sales[10].box = F
-    cite: i8949, pp. 2–5, holding period and checkbox classifications (2025; printed date 2026-01-20; f077991c)
-  sales[10].digital = false
-    cite: f8949, Parts I and II, boxes G–L (2025; created 2025-05-05; 27451389)
-  sales[10].special = false
-    cite: i1040sd, pp. 11–12, lines 18 and 19 (2025; printed date 2025-12-11; 650643a6)
-  sales[10].code = W
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[10].has_b = false
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[10].bad_code = false
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[10].route = detail
-    cite: i1040sd, p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
-  sales[10].bad_aggregate = false
-    cite: i1040sd, p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
-  sales[10].one = 1
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[1a].box = A
-    cite: i8949, pp. 2–5, holding period and checkbox classifications (2025; printed date 2026-01-20; f077991c)
-  sales[1a].digital = false
-    cite: f8949, Parts I and II, boxes G–L (2025; created 2025-05-05; 27451389)
-  sales[1a].special = false
-    cite: i1040sd, pp. 11–12, lines 18 and 19 (2025; printed date 2025-12-11; 650643a6)
-  sales[1a].code = none
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[1a].has_b = false
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[1a].bad_code = false
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[1a].route = aggregate
-    cite: i1040sd, p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
-  sales[1a].covered = true
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[1a].aggregate_eligible = true
-    cite: i1040sd, p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
-  sales[1a].bad_aggregate = false
-    cite: i1040sd, p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
-  sales[1a].one = 1
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[1b].box = A
-    cite: i8949, pp. 2–5, holding period and checkbox classifications (2025; printed date 2026-01-20; f077991c)
-  sales[1b].digital = false
-    cite: f8949, Parts I and II, boxes G–L (2025; created 2025-05-05; 27451389)
-  sales[1b].special = false
-    cite: i1040sd, pp. 11–12, lines 18 and 19 (2025; printed date 2025-12-11; 650643a6)
-  sales[1b].code = B
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[1b].has_b = true
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[1b].bad_code = false
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[1b].route = detail
-    cite: i1040sd, p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
-  sales[1b].bad_aggregate = false
-    cite: i1040sd, p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
-  sales[1b].one = 1
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[2].box = B
-    cite: i8949, pp. 2–5, holding period and checkbox classifications (2025; printed date 2026-01-20; f077991c)
-  sales[2].digital = false
-    cite: f8949, Parts I and II, boxes G–L (2025; created 2025-05-05; 27451389)
-  sales[2].special = false
-    cite: i1040sd, pp. 11–12, lines 18 and 19 (2025; printed date 2025-12-11; 650643a6)
-  sales[2].code = W
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[2].has_b = false
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[2].bad_code = false
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[2].route = detail
-    cite: i1040sd, p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
-  sales[2].bad_aggregate = false
-    cite: i1040sd, p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
-  sales[2].one = 1
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[3].box = C
-    cite: i8949, pp. 2–5, holding period and checkbox classifications (2025; printed date 2026-01-20; f077991c)
-  sales[3].digital = false
-    cite: f8949, Parts I and II, boxes G–L (2025; created 2025-05-05; 27451389)
-  sales[3].special = false
-    cite: i1040sd, pp. 11–12, lines 18 and 19 (2025; printed date 2025-12-11; 650643a6)
-  sales[3].code = none
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[3].has_b = false
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[3].bad_code = false
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[3].route = detail
-    cite: i1040sd, p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
-  sales[3].bad_aggregate = false
-    cite: i1040sd, p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
-  sales[3].one = 1
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[8a].box = D
-    cite: i8949, pp. 2–5, holding period and checkbox classifications (2025; printed date 2026-01-20; f077991c)
-  sales[8a].digital = false
-    cite: f8949, Parts I and II, boxes G–L (2025; created 2025-05-05; 27451389)
-  sales[8a].special = false
-    cite: i1040sd, pp. 11–12, lines 18 and 19 (2025; printed date 2025-12-11; 650643a6)
-  sales[8a].code = none
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[8a].has_b = false
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[8a].bad_code = false
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[8a].route = aggregate
-    cite: i1040sd, p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
-  sales[8a].covered = true
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[8a].aggregate_eligible = true
-    cite: i1040sd, p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
-  sales[8a].bad_aggregate = false
-    cite: i1040sd, p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
-  sales[8a].one = 1
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[8b].box = D
-    cite: i8949, pp. 2–5, holding period and checkbox classifications (2025; printed date 2026-01-20; f077991c)
-  sales[8b].digital = false
-    cite: f8949, Parts I and II, boxes G–L (2025; created 2025-05-05; 27451389)
-  sales[8b].special = false
-    cite: i1040sd, pp. 11–12, lines 18 and 19 (2025; printed date 2025-12-11; 650643a6)
-  sales[8b].code = BW
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[8b].has_b = true
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[8b].bad_code = false
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[8b].route = detail
-    cite: i1040sd, p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
-  sales[8b].bad_aggregate = false
-    cite: i1040sd, p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
-  sales[8b].one = 1
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[9].box = E
-    cite: i8949, pp. 2–5, holding period and checkbox classifications (2025; printed date 2026-01-20; f077991c)
-  sales[9].digital = false
-    cite: f8949, Parts I and II, boxes G–L (2025; created 2025-05-05; 27451389)
-  sales[9].special = false
-    cite: i1040sd, pp. 11–12, lines 18 and 19 (2025; printed date 2025-12-11; 650643a6)
-  sales[9].code = B
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[9].has_b = true
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[9].bad_code = false
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[9].route = detail
-    cite: i1040sd, p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
-  sales[9].bad_aggregate = false
-    cite: i1040sd, p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
-  sales[9].one = 1
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[1a].proceeds = $100
-    cite: i8949, p. 6, column (d) (2025; printed date 2026-01-20; f077991c)
-  sales[1a].reported_basis = $10
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[1a].e = $10
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[1a].before_adjustment = $90
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[1a].adjust_b = false
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[1a].zero = $0
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[1a].b = $0
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[1a].has_w = false
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[1a].w = $0
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[1a].g = $0
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[1a].h = $90
-    cite: i8949, p. 11, column (h) (2025; printed date 2026-01-20; f077991c)
-  sales[1b].proceeds = $200
-    cite: i8949, p. 6, column (d) (2025; printed date 2026-01-20; f077991c)
-  sales[1b].covered = true
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[1b].reported_basis = $20
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[1b].e = $20
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[1b].before_adjustment = $180
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[1b].adjust_b = true
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[1b].correct_basis = $30
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[1b].b_difference = -$10
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[1b].b = -$10
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[1b].has_w = false
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[1b].zero = $0
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[1b].w = $0
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[1b].g = -$10
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[1b].h = $170
-    cite: i8949, p. 11, column (h) (2025; printed date 2026-01-20; f077991c)
-  sales[2].proceeds = $300
-    cite: i8949, p. 6, column (d) (2025; printed date 2026-01-20; f077991c)
-  sales[2].covered = false
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[2].correct_basis = $400
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[2].e = $400
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[2].before_adjustment = -$100
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[2].adjust_b = false
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[2].zero = $0
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[2].b = $0
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[2].has_w = true
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[2].wash_loss = $20
-    cite: i8949, p. 10, code W; a lower corrected loss requires an explanation statement (2025; printed date 2026-01-20; f077991c)
-  sales[2].w = $20
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[2].g = $20
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[2].h = -$80
-    cite: i8949, p. 11, column (h) (2025; printed date 2026-01-20; f077991c)
-  sales[3].proceeds = $400
-    cite: i8949, p. 6, column (d) (2025; printed date 2026-01-20; f077991c)
-  sales[3].covered = false
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[3].correct_basis = $60
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[3].e = $60
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[3].before_adjustment = $340
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[3].adjust_b = false
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[3].zero = $0
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[3].b = $0
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[3].has_w = false
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[3].w = $0
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[3].g = $0
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[3].h = $340
-    cite: i8949, p. 11, column (h) (2025; printed date 2026-01-20; f077991c)
-  sales[8a].proceeds = $500
-    cite: i8949, p. 6, column (d) (2025; printed date 2026-01-20; f077991c)
-  sales[8a].reported_basis = $70
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[8a].e = $70
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[8a].before_adjustment = $430
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[8a].adjust_b = false
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[8a].zero = $0
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[8a].b = $0
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[8a].has_w = false
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[8a].w = $0
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[8a].g = $0
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[8a].h = $430
-    cite: i8949, p. 11, column (h) (2025; printed date 2026-01-20; f077991c)
-  sales[8b].proceeds = $600
-    cite: i8949, p. 6, column (d) (2025; printed date 2026-01-20; f077991c)
-  sales[8b].covered = true
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[8b].reported_basis = $700
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[8b].e = $700
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[8b].before_adjustment = -$100
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[8b].adjust_b = true
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[8b].correct_basis = $800
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[8b].b_difference = -$100
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[8b].b = -$100
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[8b].has_w = true
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[8b].wash_loss = $30
-    cite: i8949, p. 10, code W; a lower corrected loss requires an explanation statement (2025; printed date 2026-01-20; f077991c)
-  sales[8b].w = $30
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[8b].g = -$70
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[8b].h = -$170
-    cite: i8949, p. 11, column (h) (2025; printed date 2026-01-20; f077991c)
-  sales[9].proceeds = $700
-    cite: i8949, p. 6, column (d) (2025; printed date 2026-01-20; f077991c)
-  sales[9].covered = false
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[9].correct_basis = $90
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[9].e = $90
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[9].before_adjustment = $610
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[9].adjust_b = false
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[9].zero = $0
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[9].b = $0
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[9].has_w = false
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[9].w = $0
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[9].g = $0
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[9].h = $610
-    cite: i8949, p. 11, column (h) (2025; printed date 2026-01-20; f077991c)
-  sales[10].proceeds = $800
-    cite: i8949, p. 6, column (d) (2025; printed date 2026-01-20; f077991c)
-  sales[10].covered = false
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[10].correct_basis = $1,000
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[10].e = $1,000
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[10].before_adjustment = -$200
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[10].adjust_b = false
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[10].zero = $0
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[10].b = $0
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[10].has_w = true
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[10].wash_loss = $40
-    cite: i8949, p. 10, code W; a lower corrected loss requires an explanation statement (2025; printed date 2026-01-20; f077991c)
-  sales[10].w = $40
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[10].g = $40
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  sales[10].h = -$160
-    cite: i8949, p. 11, column (h) (2025; printed date 2026-01-20; f077991c)
-  person[taxpayer].role = taxpayer
-    cite: f1040, Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial" (2025; created 2025-09-05; 3d31c226)
-  person[taxpayer].one = 1
-    cite: f1040, Form 1040 (2025), page 1, one entry for you and, if joint return, one for your spouse (2025; created 2025-09-05; 3d31c226)
-  person[taxpayer].w2[migrated].box1 = $64,520
-    cite: iw2w3, p. 17, box 1 (2025; printed date 2025-02-19; bfecbc99)
-  person[taxpayer].box1 = $64,520
-    cite: f1040, Form 1040 (2025), line 1a (2025; created 2025-09-05; 3d31c226)
-  person[taxpayer].sc_total = $0
-    cite: i1040sse, p. 2, More Than One Business, "Figure the combined SE tax on one Schedule SE" (2025; ea9e3120)
-  person[taxpayer].educator_expenses = $0
-    cite: i1040gi, p. 93, Schedule 1, line 11, Qualified expenses and 'You must reduce your qualified expenses by the following amounts' (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].has_educator_expenses = false
-    cite: i1040gi, p. 93, Schedule 1, line 11 (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].zero = $0
-    cite: i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].educator_deduction = $0
-    cite: i1040gi, p. 93, Schedule 1, line 11, "If you were an eligible educator in 2025, you can deduct on line 11 up to $300 of qualified expenses you paid in 2025"; "If you and your spouse are filing jointly and both of you were eligible educators, the maximum deduction is $600. However, neither spouse can deduct more than $300 of their qualified expenses" (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].hsa_forms = 0
-    cite: i8889, p. 4, Name and social security number (SSN), "complete a separate Form 8889 for each of you" (2025; da6f2f58)
-  person[taxpayer].hsa_repeated = false
-    cite: i8889, p. 4, Name and social security number (SSN), "complete a separate Form 8889 for each of you" (2025; da6f2f58)
-  person[taxpayer].hsa_deduction = $0
-    cite: i8889, p. 4, "Combine the amounts on line 13 of both Forms 8889 and enter this amount on Schedule 1 (Form 1040), line 13" (2025; da6f2f58)
-  person[taxpayer].sc_count = 0
-    cite: i1040sc, p. 14, Line 31; i4562 p. 4, Part I (2025; b5536db9)
-  person[taxpayer].has_sc = false
-    cite: i1040sse, p. 1, Who Must File Schedule SE; p. 2, Joint Returns, "If both spouses have self-employment income, each must file a separate Schedule SE" (2025; ea9e3120)
-  person[taxpayer].se_line13 = $0
-    cite: f1040sse, Schedule SE (2025), line 13, "Enter here and on Schedule 1 (Form 1040), line 15" (2025; created 2025-05-07; 05bc2b3e)
-  person[taxpayer].s16 = $0
-    cite: i1040gi, p. 93, Schedule 1, line 16, "If you were self-employed or a partner, you may be able to take this deduction" (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].sehi = $0
-    cite: f7206, Form 7206 (2025), line 14 (2025; created 2025-10-02; 822203c9)
-  person[taxpayer].age65 = false
-    cite: f1040sa, Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  person[taxpayer].blind = false
-    cite: f1040sa, Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  person[taxpayer].qbi = $0
-    cite: i8995, pp. 2, 4, Determining Your Qualified Business Income; Line 1 (2025; printed date 2026-01-26; 875843ba)
+Derivations:
   sales[10].digital: test(sales[10].box = F; "G" = G; sales[10].box = F; "H" = H; sales[10].box = F; "I" = I; sales[10].box = F; "J" = J; sales[10].box = F; "K" = K; sales[10].box = F; "L" = L)
   sales[10].has_b: test(sales[10].code = W; "B" = B; sales[10].code = W; "BW" = BW)
   sales[10].bad_code: test(sales[10].code = W; "other" = other; sales[10].has_b = false; true = true)
@@ -1840,7 +2098,7 @@ Interpretation amb.2025.multiplication_subcent: Round the product half-up to the
 Interpretation amb.2025.qbi_cooperative_patron: Refuse any patron of an agricultural or horticultural cooperative, specified or not (qbi.unsupported). The owner asked for the strictly accurate reading. Refusing every patron satisfies both texts: a filer the form excludes is never computed on it, and a filer the instructions exclude is a patron the form also excludes. The cost is a refusal for a patron of a cooperative that is not specified, which the instructions would allow.
  (f8995, Form 8995 (2025), note above line 1; i8995, Who Can Use Form 8995; i1040gi line 13a)
 Interpretation amb.2025.sd4952_selection: Use the detailed worksheet conditions, including line 4g and exceptions. The worksheet explicitly limits its own use and the Form 1040 line 16 instructions repeat the line 4g condition. (i1040sd, p. 15, Schedule D Tax Worksheet applicability; compare f1040sd line 20 and i1040gi p. 36)
-Scope: single-person return (Form 1040 lines 1a–37 with the in-scope schedules and refusal screens). Unsupported paths are refused with citations. No filing or transmission.
+Scope: Form 1040 lines 1a–37 with the schedules and forms this tool implements and their refusal screens. Unsupported paths are refused with citations. No filing or transmission.
 Rounding: amounts are exact cents; the return-wide whole-dollar rounding setting is deferred (see ambiguities/2025.yaml).
 Estimated tax penalty: not computed; the IRS will figure it (see i1040gi, line 38).
 This is a computation of published IRS forms and instructions; it is not tax or legal advice. Published instructions are not the law itself.

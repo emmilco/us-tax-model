@@ -18,9 +18,7 @@ forms = sorted(f[:-5] for f in os.listdir(FORMS) if f.endswith(".yaml"))
 
 # Documents class M cannot work because no return has an entry of them, with the reason; each is
 # printed on every run so the gap stays visible.
-CLASSM_NO_ENTRIES = {
-    "f4562": "no return creates an f4562 entry (TASKS.md T-030: its lines are to print in the Schedule C entry's section)",
-}
+CLASSM_NO_ENTRIES: dict[str, str] = {}
 
 
 def classm_forms():

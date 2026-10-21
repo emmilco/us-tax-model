@@ -1,6 +1,6 @@
-Values sheet — tax year 2025 (single-person slice; not a complete return for all filers)
+Values sheet — tax year 2025 (not a complete return for all filers)
 
-== Form 1040 — selected lines (Stages 1–4) ==
+== Form 1040 — U.S. Individual Income Tax Return (the lines this tool computes) ==
   Filing Status Single. Married filing jointly (even if only one had income). Married filing separately. Head of household (HOH). Qualifying surviving spouse (QSS).
       = single
       cite: [f1040] Form 1040, Filing Status (2025; created 2025-09-05; 3d31c226)
@@ -83,7 +83,68 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       = false
       cite: [i1040gi] p. 14, Head of Household (2025; printed date 2026-02-25; 482e9c48)
 
-== Schedule 1 — selected lines (unemployment compensation, educator expenses, HSA deduction, student loan interest) ==
+== Each person on the return — per-person facts and totals (excess Social Security tax, Schedule SE, SEP and SIMPLE plans, health insurance and others) — person[taxpayer] ==
+  (helper) Whose entry is this, yours or your spouse's?
+      = taxpayer
+      cite: [f1040] Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial" (2025; created 2025-09-05; 3d31c226)
+  (helper) One entry for this person
+      = 1
+      cite: [f1040] Form 1040 (2025), page 1, one entry for you and, if joint return, one for your spouse (2025; created 2025-09-05; 3d31c226)
+  (helper) Were you born before January 2, 1961?
+      = false
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Are you blind under the standard-deduction instructions?
+      = false
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Qualified educator expenses you paid in 2025
+      = $0
+      cite: [i1040gi] p. 93, Schedule 1, line 11, Qualified expenses and 'You must reduce your qualified expenses by the following amounts' (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Any qualified educator expenses for this person
+      = false
+      cite: [i1040gi] p. 93, Schedule 1, line 11 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) This person's educator expense deduction
+      = $0
+      cite: [i1040gi] p. 93, Schedule 1, line 11, "If you were an eligible educator in 2025, you can deduct on line 11 up to $300 of qualified expenses you paid in 2025"; "If you and your spouse are filing jointly and both of you were eligible educators, the maximum deduction is $600. However, neither spouse can deduct more than $300 of their qualified expenses" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["person.has_educator_expenses",{"const":false}],"op":"test"}
+  (helper) Number of Forms 8889 entered for this person
+      = 0
+      cite: [i8889] p. 4, Name and social security number (SSN), "complete a separate Form 8889 for each of you" (2025; da6f2f58)
+      note: confirmed roster $f8889@person[taxpayer]:
+  (gate) More than one Form 8889 entered for this person
+      = false
+      cite: [i8889] p. 4, Name and social security number (SSN), "complete a separate Form 8889 for each of you" (2025; da6f2f58)
+  (helper) Form 8889 line 13 for this person
+      = $0
+      cite: [i8889] p. 4, "Combine the amounts on line 13 of both Forms 8889 and enter this amount on Schedule 1 (Form 1040), line 13" (2025; da6f2f58)
+      note: confirmed roster $f8889@person[taxpayer]:
+  (helper) Total W-2 box 1 for this person
+      = $0
+      cite: [f1040] Form 1040 (2025), line 1a (2025; created 2025-09-05; 3d31c226)
+      note: confirmed roster $w2@person[taxpayer]:
+  zero No excess credit
+      = $0
+      cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Number of Schedules C for this person
+      = 0
+      cite: [i1040sc] p. 14, Line 31; i4562 p. 4, Part I (2025; b5536db9)
+      note: confirmed roster $sc@person[taxpayer]:
+  (helper) This person has at least one Schedule C
+      = false
+      cite: [i1040sse] p. 1, Who Must File Schedule SE; p. 2, Joint Returns, "If both spouses have self-employment income, each must file a separate Schedule SE" (2025; ea9e3120)
+  (helper) Schedule SE line 13 (deduction for one-half of self-employment tax) for this person
+      = $0
+      cite: [f1040sse] Schedule SE (2025), line 13, "Enter here and on Schedule 1 (Form 1040), line 15" (2025; created 2025-05-07; 05bc2b3e)
+      note: taken: {"eq":["person.has_sc",{"const":false}],"op":"test"}
+  (helper) Schedule 1 line 16 for this person
+      = $0
+      cite: [i1040gi] p. 93, Schedule 1, line 16, "If you were self-employed or a partner, you may be able to take this deduction" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["person.has_sc",{"const":false}],"op":"test"}
+  (helper) Self-employed health insurance deduction, this person
+      = $0
+      cite: [f7206] Form 7206 (2025), line 14 (2025; created 2025-10-02; 822203c9)
+      note: confirmed roster $sc@person[taxpayer]:
+
+== Schedule 1 — Additional Income and Adjustments to Income (the lines this tool computes) ==
   11  Educator expenses
       = $0
       cite: [f1040s1] Schedule 1 (2025), line 11; i1040gi p. 93, "If you and your spouse are filing jointly and both of you were eligible educators, the maximum deduction is $600. However, neither spouse can deduct more than $300 of their qualified expenses" (2025; created 2025-07-25; 8dafec71)
@@ -190,6 +251,17 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
   (helper) MFS with spouse itemizing
       = false
       cite: [i1040gi] p. 34, line 12e exception 2 (2025; printed date 2026-02-25; 482e9c48)
+
+== Form 8949 and Schedule D — manually classified securities transactions — sales[a] ==
+  (helper) Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets
+      = G
+      cite: [i8949] pp. 2–5, holding period and checkbox classifications (2025; printed date 2026-01-20; f077991c)
+  (helper) Digital asset box G–L
+      = true
+      cite: [f8949] Parts I and II, boxes G–L (2025; created 2025-05-05; 27451389)
+  (helper) Screen this transaction before any aggregation
+      = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
 
 == Schedule B — supported interest and ordinary dividends ==
   (helper) Any nominee income, original issue discount reported in an amount other than on Form 1099-OID, accrued interest paid on a bond purchase, bond premium adjustment, accrued market discount, a contingent payment debt instrument, seller-financed mortgage interest, a savings bond interest exclusion, foreign corporation reporting, or other special treatment?
@@ -318,47 +390,7 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   f1040.sa.deduction: chose REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
   f1040.line16: chose REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
 
-Collection entries and derivations:
-  sales[a].box = G
-    cite: i8949, pp. 2–5, holding period and checkbox classifications (2025; printed date 2026-01-20; f077991c)
-  sales[a].digital = true
-    cite: f8949, Parts I and II, boxes G–L (2025; created 2025-05-05; 27451389)
-  sales[a].one = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
-    cite: i8949, pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  person[taxpayer].role = taxpayer
-    cite: f1040, Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial" (2025; created 2025-09-05; 3d31c226)
-  person[taxpayer].one = 1
-    cite: f1040, Form 1040 (2025), page 1, one entry for you and, if joint return, one for your spouse (2025; created 2025-09-05; 3d31c226)
-  person[taxpayer].box1 = $0
-    cite: f1040, Form 1040 (2025), line 1a (2025; created 2025-09-05; 3d31c226)
-  person[taxpayer].educator_expenses = $0
-    cite: i1040gi, p. 93, Schedule 1, line 11, Qualified expenses and 'You must reduce your qualified expenses by the following amounts' (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].has_educator_expenses = false
-    cite: i1040gi, p. 93, Schedule 1, line 11 (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].zero = $0
-    cite: i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].educator_deduction = $0
-    cite: i1040gi, p. 93, Schedule 1, line 11, "If you were an eligible educator in 2025, you can deduct on line 11 up to $300 of qualified expenses you paid in 2025"; "If you and your spouse are filing jointly and both of you were eligible educators, the maximum deduction is $600. However, neither spouse can deduct more than $300 of their qualified expenses" (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].hsa_forms = 0
-    cite: i8889, p. 4, Name and social security number (SSN), "complete a separate Form 8889 for each of you" (2025; da6f2f58)
-  person[taxpayer].hsa_repeated = false
-    cite: i8889, p. 4, Name and social security number (SSN), "complete a separate Form 8889 for each of you" (2025; da6f2f58)
-  person[taxpayer].hsa_deduction = $0
-    cite: i8889, p. 4, "Combine the amounts on line 13 of both Forms 8889 and enter this amount on Schedule 1 (Form 1040), line 13" (2025; da6f2f58)
-  person[taxpayer].sc_count = 0
-    cite: i1040sc, p. 14, Line 31; i4562 p. 4, Part I (2025; b5536db9)
-  person[taxpayer].has_sc = false
-    cite: i1040sse, p. 1, Who Must File Schedule SE; p. 2, Joint Returns, "If both spouses have self-employment income, each must file a separate Schedule SE" (2025; ea9e3120)
-  person[taxpayer].se_line13 = $0
-    cite: f1040sse, Schedule SE (2025), line 13, "Enter here and on Schedule 1 (Form 1040), line 15" (2025; created 2025-05-07; 05bc2b3e)
-  person[taxpayer].s16 = $0
-    cite: i1040gi, p. 93, Schedule 1, line 16, "If you were self-employed or a partner, you may be able to take this deduction" (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].sehi = $0
-    cite: f7206, Form 7206 (2025), line 14 (2025; created 2025-10-02; 822203c9)
-  person[taxpayer].age65 = false
-    cite: f1040sa, Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  person[taxpayer].blind = false
-    cite: f1040sa, Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+Derivations:
   sales[a].digital: test(sales[a].box = G; "G" = G)
   sales[a].one: gate(sales[a].digital = true)
   sd.count: sum_over(sd.other_forms = false; sd.carryover = false; sales[a].one = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
@@ -448,7 +480,7 @@ Collection entries and derivations:
 Interpretation amb.2025.multiplication_subcent: Round the product half-up to the nearest cent at the multiplication. Matches the half-up convention of the printed whole-dollar rounding rules. The whole-dollar default is unaffected: whole-dollar amounts multiplied by these rates produce exact cents, so the reading only matters when cents are turned on.
  (i1040gi, QDCGT worksheet, lines 18 and 21; Rounding Off to Whole Dollars, p. 23)
 Interpretation amb.2025.sd4952_selection: Use the detailed worksheet conditions, including line 4g and exceptions. The worksheet explicitly limits its own use and the Form 1040 line 16 instructions repeat the line 4g condition. (i1040sd, p. 15, Schedule D Tax Worksheet applicability; compare f1040sd line 20 and i1040gi p. 36)
-Scope: single-person return (Form 1040 lines 1a–37 with the in-scope schedules and refusal screens). Unsupported paths are refused with citations. No filing or transmission.
+Scope: Form 1040 lines 1a–37 with the schedules and forms this tool implements and their refusal screens. Unsupported paths are refused with citations. No filing or transmission.
 Rounding: amounts are exact cents; the return-wide whole-dollar rounding setting is deferred (see ambiguities/2025.yaml).
 Estimated tax penalty: not computed; the IRS will figure it (see i1040gi, line 38).
 This is a computation of published IRS forms and instructions; it is not tax or legal advice. Published instructions are not the law itself.

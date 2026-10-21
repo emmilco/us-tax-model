@@ -86,6 +86,7 @@ function refText(doc: FormDoc, ref: string, ctx: RenderCtx): string {
 }
 
 function paramValueText(value: unknown): string {
+  if (typeof value === "string") return value; // an Enum parameter names its value
   if (typeof value === "number") return fmtMoney(value);
   if (typeof value === "boolean") return String(value);
   if (typeof value === "object" && value !== null && "num" in value && "den" in value) {
@@ -200,7 +201,7 @@ function renderDoc(doc: FormDoc, ctx: RenderCtx): string {
   out.push(`# ${doc.title}`);
   out.push("");
   out.push(`- Document: \`${doc.id}\` (${doc.kind}, tax year ${doc.tax_year})`);
-  if (doc.collection) out.push(`- Collection: keyed entries${doc.collection.parent ? ` within ${doc.collection.parent}` : ""}; ${citeLine(doc.collection.cite)}`);
+  if (doc.collection) out.push(`- Collection: keyed entries${doc.collection.parent ? ` within ${doc.collection.parent}` : ""}${doc.collection.implicit ? `, one per ${doc.collection.parent} entry without being asked (\`${doc.collection.implicit}\`)` : ""}; ${citeLine(doc.collection.cite)}`);
   if (doc.parameters?.length) out.push(`- Parameters: ${doc.parameters.join(", ")}`);
   if (doc.note) out.push(`- Note: ${doc.note}`);
   out.push("");
@@ -210,6 +211,7 @@ function renderDoc(doc: FormDoc, ctx: RenderCtx): string {
     out.push(`- **${doc.collection && doc.kind === "worksheet" || line.printed.startsWith("(") ? "Authored helper label" : "IRS"}:** ${line.label}`);
     out.push(`- **Encoded (${line.type}):** ${exprText(line.expr as Expr, doc, ctx)}`);
     for (const r of line.refuses ?? []) out.push(`- **Refusal:** when ${r.when} is true, cannot complete ${r.form}. ${r.remedy} Cite: ${citeLine(r.cite)}`);
+    if (line.shown_when) out.push(`- **Shown on the values sheet only when:** ${doc.lines.find((l) => l.id === line.shown_when)?.label ?? line.shown_when} (\`${line.shown_when}\`)`);
     if (line.ambiguity) out.push(`- Interpretation: ${line.ambiguity}`);
     if (line.note) out.push(`- Note: ${line.note}`);
     out.push(`- Expr: \`${JSON.stringify(line.expr)}\``);

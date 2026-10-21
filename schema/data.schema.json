@@ -834,6 +834,11 @@
             }
           }
         },
+        "shown_when": {
+          "type": "string",
+          "minLength": 1,
+          "description": "A Bool line of the same document: the values sheet shows this printed line only when it is true (a per-entry line the form reports for some entries only)."
+        },
         "display": {
           "type": "string",
           "minLength": 1,
@@ -888,6 +893,10 @@
           "properties": {
             "parent": {
               "type": "string"
+            },
+            "implicit": {
+              "type": "string",
+              "pattern": "^[a-z0-9_]+$"
             },
             "cite": {
               "$ref": "#/$defs/cite"

@@ -139,6 +139,27 @@
 - Expr: `{"eq":["asset.placed",{"const":"y2025"}],"op":"test"}`
 - Cite: [i4562] p. 9, Lines 19a Through 19j, "Use lines 19a through 19j only for assets placed in service during the tax year beginning in 2025"; Line 17 (2025; sha256 5c1c95b7)
 
+## (helper) — `asset.on_19`
+
+- **Authored helper label:** Reported on lines 6, 14 and 19 (property placed in service in 2025 that is not listed property)
+- **Encoded (Bool):** helper "Placed in service in 2025" = true and helper "Is this listed property?" = false
+- Expr: `{"all":[{"eq":["asset.is2025",{"const":true}],"op":"test"},{"eq":["asset.listed",{"const":false}],"op":"test"}],"op":"test"}`
+- Cite: [i4562] p. 5, Line 6, "Do not include any listed property on line 6"; p. 9, Lines 19a Through 19j, "Use lines 19a through 19j only for assets placed in service during the tax year beginning in 2025" (2025; sha256 5c1c95b7)
+
+## (helper) — `asset.on_17`
+
+- **Authored helper label:** Reported on line 17 (property placed in service before 2025 that is not listed property)
+- **Encoded (Bool):** helper "Placed in service in 2025" = false and helper "Is this listed property?" = false
+- Expr: `{"all":[{"eq":["asset.is2025",{"const":false}],"op":"test"},{"eq":["asset.listed",{"const":false}],"op":"test"}],"op":"test"}`
+- Cite: [i4562] p. 9, Line 17 (2025; sha256 5c1c95b7)
+
+## (helper) — `asset.on_26_2025`
+
+- **Authored helper label:** Reported on lines 25 and 26 column (i) (listed property placed in service in 2025)
+- **Encoded (Bool):** helper "Placed in service in 2025" = true and helper "Is this listed property?" = true
+- Expr: `{"all":[{"eq":["asset.is2025",{"const":true}],"op":"test"},{"eq":["asset.listed",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i4562] p. 13, Part V and Line 25 (2025; sha256 5c1c95b7)
+
 ## (helper) — `asset.year`
 
 - **Authored helper label:** Year of recovery in 2025
@@ -178,6 +199,7 @@
 
 - **IRS:** Section 179 elected cost
 - **Encoded (NonNegDollars):** Input — The amount of this property's cost you elect to expense under section 179 (zero if none; not more than its business cost)
+- **Shown on the values sheet only when:** Reported on lines 6, 14 and 19 (property placed in service in 2025 that is not listed property) (`asset.on_19`)
 - Expr: `{"op":"input","source":"The amount of this property's cost you elect to expense under section 179 (zero if none; not more than its business cost)"}`
 - Cite: [i4562] p. 5, Line 6, Column (c)—Elected cost (2025; sha256 5c1c95b7)
 
@@ -258,8 +280,25 @@
 
 - **IRS:** Special depreciation allowance for this property
 - **Encoded (NonNegDollars):** Choose — [helper "Special depreciation allowance for this class of property" = 'full' → helper "The allowance when it is claimed: 100% if acquired after January 19, 2025, otherwise 40%"] [helper "Special depreciation allowance for this class of property" = 'forty' → helper "40% special allowance"] [helper "Special depreciation allowance for this class of property" = 'none' → helper "Zero"]
+- **Shown on the values sheet only when:** Reported on lines 6, 14 and 19 (property placed in service in 2025 that is not listed property) (`asset.on_19`)
 - Expr: `{"alternatives":[{"guard":{"eq":["asset.bonus_choice",{"const":"full"}],"op":"test"},"then":"asset.bonus_fullcase"},{"guard":{"eq":["asset.bonus_choice",{"const":"forty"}],"op":"test"},"then":"asset.bonus_forty"},{"guard":{"eq":["asset.bonus_choice",{"const":"none"}],"op":"test"},"then":"asset.zero"}],"op":"choose"}`
 - Cite: [i4562] pp. 5-7, Line 14, Qualified property and Election out (2025; sha256 5c1c95b7)
+
+## 25 — `asset.f25`
+
+- **IRS:** Special depreciation allowance for this listed property (line 25)
+- **Encoded (NonNegDollars):** Enter the amount from line 14.
+- **Shown on the values sheet only when:** Reported on lines 25 and 26 column (i) (listed property placed in service in 2025) (`asset.on_26_2025`)
+- Expr: `{"from":"asset.bonus","op":"copy"}`
+- Cite: [i4562] p. 13, Line 25 (2025; sha256 5c1c95b7)
+
+## 26(i) — `asset.f26i`
+
+- **IRS:** Elected section 179 cost of this listed property (column (i))
+- **Encoded (NonNegDollars):** Enter the amount from line 6(c).
+- **Shown on the values sheet only when:** Reported on lines 25 and 26 column (i) (listed property placed in service in 2025) (`asset.on_26_2025`)
+- Expr: `{"from":"asset.s179","op":"copy"}`
+- Cite: [i4562] p. 16, Column (i)—Elected section 179 cost (2025; sha256 5c1c95b7)
 
 ## (helper) — `asset.ub`
 
@@ -268,10 +307,18 @@
 - Expr: `{"from":"asset.after179","op":"subtract_floor0","take":"asset.bonus"}`
 - Cite: [i4562] p. 11, Column (c), "From that result, subtract ... Section 179 expense deduction ... Any special depreciation allowance included on line 14" (2025; sha256 5c1c95b7)
 
+## 19(c) — `asset.col19c`
+
+- **IRS:** Basis for depreciation (business/investment use only), column (c), after the section 179 deduction and the special allowance
+- **Encoded (NonNegDollars):** Enter the amount from helper "Basis for MACRS depreciation (after section 179 and the special allowance)".
+- **Shown on the values sheet only when:** Reported on lines 6, 14 and 19 (property placed in service in 2025 that is not listed property) (`asset.on_19`)
+- Expr: `{"from":"asset.ub","op":"copy"}`
+- Cite: [i4562] p. 11, Column (c), "From that result, subtract ... Section 179 expense deduction ... Any special depreciation allowance included on line 14" (2025; sha256 5c1c95b7)
+
 ## (helper) — `asset.hy`
 
 - **Authored helper label:** Half-year convention
-- **Encoded (Enum(macrs_convention)):** Enter 0 $NaN.NaN; 1 $NaN.NaN (sc.conv_hy).
+- **Encoded (Enum(macrs_convention)):** Enter hy (sc.conv_hy).
 - Expr: `{"op":"param","ref":"sc.conv_hy"}`
 - Cite: [i4562] p. 11, Column (e)—Convention, Half-year convention (2025; sha256 5c1c95b7)
 
@@ -307,6 +354,7 @@
 
 - **IRS:** MACRS depreciation for 2025 property
 - **Encoded (NonNegDollars):** Choose — [mq helper "The mid-quarter convention applies: the October to December bases are more than 40% of all 2025 bases" = false → helper "MACRS depreciation, half-year convention"] [mq helper "The mid-quarter convention applies: the October to December bases are more than 40% of all 2025 bases" = true → helper "MACRS depreciation, mid-quarter convention"]
+- **Shown on the values sheet only when:** Reported on lines 6, 14 and 19 (property placed in service in 2025 that is not listed property) (`asset.on_19`)
 - Expr: `{"alternatives":[{"guard":{"eq":["mq.applies",{"const":false}],"op":"test"},"then":"asset.macrs_hy"},{"guard":{"eq":["mq.applies",{"const":true}],"op":"test"},"then":"asset.macrs_mq"}],"op":"choose"}`
 - Cite: [i4562] p. 11, Column (e), "Half-year convention. This convention applies to all property reported on lines 19a through 19h, unless the mid-quarter convention applies" (2025; sha256 5c1c95b7)
 
@@ -377,6 +425,7 @@
 
 - **IRS:** MACRS deduction for 2025 on property placed in service before 2025
 - **Encoded (NonNegDollars):** Choose — [helper "The recovery period ended before 2025" = false → helper "MACRS depreciation for 2025"] [helper "The recovery period ended before 2025" = true → helper "Zero"]
+- **Shown on the values sheet only when:** Reported on line 17 (property placed in service before 2025 that is not listed property) (`asset.on_17`)
 - Expr: `{"alternatives":[{"guard":{"eq":["asset.done",{"const":false}],"op":"test"},"then":"asset.macrs_prior_live"},{"guard":{"eq":["asset.done",{"const":true}],"op":"test"},"then":"asset.zero"}],"op":"choose"}`
 - Cite: [i4562] p. 9, Line 17; i4562 p. 8, "Prior years' depreciation, plus current year's depreciation, can never exceed the depreciable basis" (2025; sha256 5c1c95b7)
 
@@ -440,5 +489,6 @@
 
 - **IRS:** Depreciation of this listed property (column (h))
 - **Encoded (NonNegDollars):** Add helper "MACRS on 2025 property" and helper "MACRS on property placed in service before 2025".
+- **Shown on the values sheet only when:** Is this listed property? (`asset.listed`)
 - Expr: `{"of":["asset.dep_2025","asset.dep_prior"],"op":"sum"}`
 - Cite: [i4562] p. 15, Column (h)—Depreciation deduction, "For property used more than 50% in a qualified business use (line 26) ... figure column (h) by following the instructions for line 19, column (g)" (2025; sha256 5c1c95b7)

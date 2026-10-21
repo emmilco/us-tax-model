@@ -7,16 +7,17 @@ the fixture test compares).
 
 | Metric | Value |
 | --- | --- |
-| Mutants | 1669 |
+| Mutants | 1676 |
 | Killed by the checker | 178 |
-| Killed by fixtures | 1349 |
-| Surviving | 142 (111 provably equivalent) |
+| Killed by fixtures | 1355 |
+| Surviving | 143 (112 provably equivalent) |
 | Mutation score (raw) | 91.5% |
 | Mutation score (equivalent mutants excluded) | 98.0% |
 
 ## Surviving — classified equivalent
 
 - `operand.asset.asset.bonus_forty.after179` (replace an operand, asset.asset.bonus_forty): Copy-chain identity: asset.after179 and asset.bonus_full expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
+- `operand.asset.asset.macrs_hy.ub` (replace an operand, asset.asset.macrs_hy): Copy-chain identity: asset.ub and asset.col19c expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `refusal.dependent.dependent.qualifying_relative.2` (remove refusal, dependent.dependent.qualifying_relative): The married gate on the qualifying-relative test duplicates, word for word, the married gate on the qualifying-child test. The qualifying-relative test is read only by qr_dependent, which is read only by claimed, whose any-test evaluates qc_dependent, and so qualifying_child, before qr_dependent; for a married person qualifying_child refuses first with the same refusal, so this gate never fires. (structural conditions re-checked this run.)
 - `refusal.eic.eic.step1_resident.0` (remove refusal, eic.eic.step1_resident): The gate scope.other_income also refuses a line that Form 1040 line 11b reads, and eic.eligible tests eic.below_top (which reads line 11b) first, so the return's EIC refuses through line 11b whenever scope.other_income is true; the copy of the gate on eic.step1_resident adds nothing to any Form 1040 line. (structural conditions re-checked this run.)
 - `refusal.eic.eic.step2_other.0` (remove refusal, eic.eic.step2_other): The gate scope.schedule1 also refuses a line that Form 1040 line 11b reads, and eic.eligible tests eic.below_top (which reads line 11b) first, so the return's EIC refuses through line 11b whenever scope.schedule1 is true; the copy of the gate on eic.step2_other adds nothing to any Form 1040 line. (structural conditions re-checked this run.)

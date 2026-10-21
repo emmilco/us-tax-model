@@ -382,3 +382,19 @@ register:
         doc: p463
         locator: p. 16, Exception to the 50% Limit for Meals, exceptions 1 to 6
       status: Owner ruling after Stage 14 (T-042).
+    - id: amb.2025.vehicle_s179_claimed
+      text_at_issue: 'Pub. 946, Depreciation Worksheet for Passenger Automobiles, line 10: "Section 179 deduction claimed this year (not more
+        than line 9)"; Form 4562 line 11: "The total cost you can deduct is limited to your taxable income from the active conduct of a trade
+        or business."'
+      readings:
+      - The section 179 cost elected for the vehicle this year (Form 4562 column (i)), not more than line 9.
+      - The part of that election deducted this year after the business income limit of Form 4562 line 11, the rest being carried over.
+      chosen: The first (scveh.line10 through scveh.s179_line10).
+      reason: The two differ only when the business income limit cuts the year's section 179 deduction and the vehicle carries part of it.
+        The basis is reduced by the whole amount elected, the carryover included, since Pub. 946 says that on a disposition before the
+        carryover is used "you must add it back to the property's basis" (p. 20); the worksheet then limits the year's depreciation by
+        the same amount. The second reading would let the year's depreciation room grow by an amount that is still deductible later.
+      cite:
+        doc: p946
+        locator: p. 62, Depreciation Worksheet for Passenger Automobiles, line 10; p. 20, Carryover of disallowed deduction
+      status: Agent reading, after Stage 14 (scveh render review), for the owner's review (TASKS.md T-046).

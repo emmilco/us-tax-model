@@ -2,7 +2,8 @@
 Reference evaluator entry point:
   lake exe taxeval -- --canonical <dir> --inputs <file.json> --out <file.json> [--budget N]
 
-Evaluates every line of f1040 and qdcg from the canonical JSON and writes
+Evaluates every line of every form, and every line of every confirmed collection
+entry (the TypeScript evaluator's `allTargets`), from the canonical JSON and writes
 { "lineId": value, ... } for comparison with the TypeScript evaluator.
 -/
 
@@ -40,6 +41,31 @@ def readDocs (dir : System.FilePath) : IO (Std.HashMap String Json) := do
         | none => pure ()
       | .error _ => pure ()
   return map
+
+/-- The confirmed entries of collection `docId`: `<collection>[<key>]` for a top-level
+collection, nested under each confirmed entry of the parent collection otherwise; a roster
+not given confirms no entry, except that an implicit collection then has its one implicit entry. -/
+partial def instancesOf (forms : Std.HashMap String Json) (inputs : Json) (docId : String) : List String :=
+  match forms.get? docId with
+  | none => []
+  | some doc =>
+    let coll := (doc.getObjVal? "collection").toOption.getD Json.null
+    let parentId := ((coll.getObjVal? "parent").toOption.bind (fun v => v.getStr?.toOption))
+    let entriesUnder (parent : Option String) : List String :=
+      let rosterKey := "$" ++ docId ++ (match parent with | some p => "@" ++ p | none => "")
+      let implicitKey := (coll.getObjVal? "implicit").toOption.bind (fun v => v.getStr?.toOption)
+      let roster : Option Json := match (inputs.getObjVal? rosterKey).toOption, implicitKey with
+        | some r, _ => some r
+        | none, some k => some (Json.arr #[Json.str k])
+        | none, none => none
+      match roster with
+      | some (.arr keys) =>
+        let names := (keys.toList.filterMap (fun k => k.getStr?.toOption)).toArray.qsort (· < ·)
+        names.toList.map (fun k => (match parent with | some p => p ++ "." | none => "") ++ docId ++ "[" ++ k ++ "]")
+      | _ => []
+    match parentId with
+    | none => entriesUnder none
+    | some pid => (instancesOf forms inputs pid).flatMap (fun p => entriesUnder (some p))
 
 end TaxFormalization
 
@@ -98,6 +124,20 @@ def main (args : List String) : IO UInt32 := do
                 pairs := (id, v) :: pairs
                 count := count + 1
               | none => pure ()
+            | none => pure ()
+        | _ => pure ()
+    -- Every line of every confirmed collection entry, as the TypeScript evaluator's allTargets.
+    for (docId, doc) in forms.toList do
+      if !(doc.getObjVal? "collection").isOk then continue
+      for inst in instancesOf forms inputs docId do
+        match doc.getObjVal? "lines" with
+        | .ok (.arr lines) =>
+          for l in lines do
+            match ((l.getObjVal? "id").toOption.bind (fun v => v.getStr?.toOption)) with
+            | some id =>
+              let (_, st') := (eval ctx budget { docId, doc, instKey := some inst, bind := Json.null, caller := none } (.line id)).run st
+              st := st'
+              count := count + 1
             | none => pure ()
         | _ => pure ()
     for (key, value) in st.memo.toList do

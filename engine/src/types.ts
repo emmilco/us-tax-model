@@ -79,6 +79,8 @@ export interface Line {
   ambiguity?: string;
   /** Why an unread line is kept: shown on the values sheet. */
   display?: string;
+  /** A Bool line of the same document; the values sheet shows this line only when it is true. */
+  shown_when?: string;
   refuses?: { when: string; form: string; remedy: string; cite: CiteFilled }[];
 }
 
@@ -88,7 +90,8 @@ export interface FormDoc {
   title: string;
   tax_year: number;
   parameters?: string[];
-  collection?: { parent?: string; cite: CiteFilled };
+  /** `implicit`: the key of the one entry each parent entry has when no roster is given (never asked). */
+  collection?: { parent?: string; implicit?: string; cite: CiteFilled };
   note?: string;
   lines: Line[];
 }

@@ -4,6 +4,46 @@
  "rulings": [
   {
    "case": "classm.asset.1",
+   "printed": "person[spouse].sc[biz_a].asset[item_1].pct_c",
+   "project": "$1.00",
+   "model": "$100.00",
+   "ruling": "Ruling: representation; project retained. pct_c carries the business-use percentage as one cent per percentage point (100% is $1.00) so that the percentage can be the part of a money ratio (prorate); the model wrote it as dollars. The basis it feeds agrees. Dropped from the fixture as not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.1",
+   "printed": "person[spouse].sc[biz_a].asset[item_2].pct_c",
+   "project": "$0.01",
+   "model": "$1.00",
+   "ruling": "Ruling: representation; project retained. pct_c carries the business-use percentage as one cent per percentage point (100% is $1.00) so that the percentage can be the part of a money ratio (prorate); the model wrote it as dollars. The basis it feeds agrees. Dropped from the fixture as not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.1",
+   "printed": "person[spouse].sc[biz_a].asset[item_2].s179_bad",
+   "project": "no",
+   "model": "yes",
+   "ruling": "Ruling: model error; project retained. asset.s179_bad first requires a section 179 election greater than zero; this property's election is zero, so the gate is false whatever its business use. Dropped from the fixture as not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.1",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].macrs_hy",
+   "project": "$368.06",
+   "model": "$613.44",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The 2025-property route (basis after a 2025 allowance, the half-year and mid-quarter amounts, the 2025 section 179 cost) is figured for property placed in service before 2025 but read by no line it reaches, and the allowance alternatives are figured for property that claims none; the printed lines of the route the entry takes agree (for earlier property, the unadjusted basis, the 2025 rate and line 17). Dropped from the fixture as not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.1",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].macrs_mq",
+   "project": "$363.27",
+   "model": "$605.45",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The 2025-property route (basis after a 2025 allowance, the half-year and mid-quarter amounts, the 2025 section 179 cost) is figured for property placed in service before 2025 but read by no line it reaches, and the allowance alternatives are figured for property that claims none; the printed lines of the route the entry takes agree (for earlier property, the unadjusted basis, the 2025 rate and line 17). Dropped from the fixture as not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.1",
    "printed": "person[taxpayer].sc[biz_a].asset[item_1].macrs_prior",
    "project": "$591.86",
    "model": "$0.00",
@@ -16,6 +56,22 @@
    "project": "$0.40",
    "model": "$40.00",
    "ruling": "Ruling: representation; project retained. The business-use percentage is carried as one cent per percentage point (multiply_count by one cent) so it can be divided like an amount; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.1",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].pct_c",
+   "project": "$1.00",
+   "model": "$100.00",
+   "ruling": "Ruling: representation; project retained. pct_c carries the business-use percentage as one cent per percentage point (100% is $1.00) so that the percentage can be the part of a money ratio (prorate); the model wrote it as dollars. The basis it feeds agrees. Dropped from the fixture as not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.1",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].ub",
+   "project": "$3,195.00",
+   "model": "$5,325.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The 2025-property route (basis after a 2025 allowance, the half-year and mid-quarter amounts, the 2025 section 179 cost) is figured for property placed in service before 2025 but read by no line it reaches, and the allowance alternatives are figured for property that claims none; the printed lines of the route the entry takes agree (for earlier property, the unadjusted basis, the 2025 rate and line 17). Dropped from the fixture as not evidence.",
    "drop": true
   },
   {
@@ -94,6 +150,14 @@
    "case": "classm.asset.2",
    "printed": "person[taxpayer].sc[biz_a].asset[item_1].last",
    "project": "8",
+   "model": "11",
+   "ruling": "Ruling: model error; project retained. The model recalled asset class 48.32 as having an 18-year class life ('from memory'); the archived Pub. 946 (2025) Appendix B, Table B-2, gives class 48.32 a class life of 13 years and a GDS recovery period of 7 years (tables/2025/class_lives.yaml, checked by its second transcription). The period, last year, rates and depreciation that follow from it differ for that reason. Dropped from the fixture as not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.2",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].last",
+   "project": "8",
    "model": "16",
    "ruling": "Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence.",
    "drop": true
@@ -140,10 +204,26 @@
   },
   {
    "case": "classm.asset.2",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].macrs_prior_live",
+   "project": "$3,447.73",
+   "model": "$2,414.38",
+   "ruling": "Ruling: model error; project retained. The model recalled asset class 48.32 as having an 18-year class life ('from memory'); the archived Pub. 946 (2025) Appendix B, Table B-2, gives class 48.32 a class life of 13 years and a GDS recovery period of 7 years (tables/2025/class_lives.yaml, checked by its second transcription). The period, last year, rates and depreciation that follow from it differ for that reason. Dropped from the fixture as not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.2",
    "printed": "person[taxpayer].sc[biz_a].asset[item_1].pct_c",
    "project": "$1.00",
    "model": "$100.00",
    "ruling": "Ruling: representation; project retained. The business-use percentage is carried as one cent per percentage point (multiply_count by one cent) so it can be divided like an amount; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.2",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].period",
+   "project": "y7",
+   "model": "y10",
+   "ruling": "Ruling: model error; project retained. The model recalled asset class 48.32 as having an 18-year class life ('from memory'); the archived Pub. 946 (2025) Appendix B, Table B-2, gives class 48.32 a class life of 13 years and a GDS recovery period of 7 years (tables/2025/class_lives.yaml, checked by its second transcription). The period, last year, rates and depreciation that follow from it differ for that reason. Dropped from the fixture as not evidence.",
    "drop": true
   },
   {
@@ -158,8 +238,24 @@
    "case": "classm.asset.2",
    "printed": "person[taxpayer].sc[biz_a].asset[item_1].rate_hy",
    "project": "14.29%",
+   "model": "10%",
+   "ruling": "Ruling: model error; project retained. The model recalled asset class 48.32 as having an 18-year class life ('from memory'); the archived Pub. 946 (2025) Appendix B, Table B-2, gives class 48.32 a class life of 13 years and a GDS recovery period of 7 years (tables/2025/class_lives.yaml, checked by its second transcription). The period, last year, rates and depreciation that follow from it differ for that reason. Dropped from the fixture as not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.2",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].rate_hy",
+   "project": "14.29%",
    "model": "5%",
    "ruling": "Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.2",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].rate_mq",
+   "project": "10.71%",
+   "model": "7.5%",
+   "ruling": "Ruling: model error; project retained. The model recalled asset class 48.32 as having an 18-year class life ('from memory'); the archived Pub. 946 (2025) Appendix B, Table B-2, gives class 48.32 a class life of 13 years and a GDS recovery period of 7 years (tables/2025/class_lives.yaml, checked by its second transcription). The period, last year, rates and depreciation that follow from it differ for that reason. Dropped from the fixture as not evidence.",
    "drop": true
   },
   {
@@ -168,6 +264,14 @@
    "project": "17.85%",
    "model": "6.25%",
    "ruling": "Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.2",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].rate_prior",
+   "project": "17.85%",
+   "model": "12.5%",
+   "ruling": "Ruling: model error; project retained. The model recalled asset class 48.32 as having an 18-year class life ('from memory'); the archived Pub. 946 (2025) Appendix B, Table B-2, gives class 48.32 a class life of 13 years and a GDS recovery period of 7 years (tables/2025/class_lives.yaml, checked by its second transcription). The period, last year, rates and depreciation that follow from it differ for that reason. Dropped from the fixture as not evidence.",
    "drop": true
   },
   {
@@ -211,6 +315,14 @@
    "drop": true
   },
   {
+   "case": "classm.asset.2",
+   "printed": "person[taxpayer].sc[biz_b].asset[item_1].pct_c",
+   "project": "$1.00",
+   "model": "$100.00",
+   "ruling": "Ruling: representation; project retained. pct_c carries the business-use percentage as one cent per percentage point (100% is $1.00) so that the percentage can be the part of a money ratio (prorate); the model wrote it as dollars. The basis it feeds agrees. Dropped from the fixture as not evidence.",
+   "drop": true
+  },
+  {
    "case": "classm.asset.3",
    "printed": "person[taxpayer].sc[biz_a].asset[item_1].dep_listed",
    "project": "$989.35",
@@ -232,6 +344,14 @@
    "project": "$0.30",
    "model": "$30.00",
    "ruling": "Ruling: representation; project retained. The business-use percentage is carried as one cent per percentage point (multiply_count by one cent) so it can be divided like an amount; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.3",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].pct_c",
+   "project": "$1.00",
+   "model": "$100.00",
+   "ruling": "Ruling: representation; project retained. pct_c carries the business-use percentage as one cent per percentage point (100% is $1.00) so that the percentage can be the part of a money ratio (prorate); the model wrote it as dollars. The basis it feeds agrees. Dropped from the fixture as not evidence.",
    "drop": true
   },
   {
@@ -300,10 +420,58 @@
   },
   {
    "case": "classm.asset.4",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].bonus_forty",
+   "project": "$40.00",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The 2025-property route (basis after a 2025 allowance, the half-year and mid-quarter amounts, the 2025 section 179 cost) is figured for property placed in service before 2025 but read by no line it reaches, and the allowance alternatives are figured for property that claims none; the printed lines of the route the entry takes agree (for earlier property, the unadjusted basis, the 2025 rate and line 17). Dropped from the fixture as not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.4",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].bonus_full",
+   "project": "$100.00",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The 2025-property route (basis after a 2025 allowance, the half-year and mid-quarter amounts, the 2025 section 179 cost) is figured for property placed in service before 2025 but read by no line it reaches, and the allowance alternatives are figured for property that claims none; the printed lines of the route the entry takes agree (for earlier property, the unadjusted basis, the 2025 rate and line 17). Dropped from the fixture as not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.4",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].bonus_fullcase",
+   "project": "$100.00",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The 2025-property route (basis after a 2025 allowance, the half-year and mid-quarter amounts, the 2025 section 179 cost) is figured for property placed in service before 2025 but read by no line it reaches, and the allowance alternatives are figured for property that claims none; the printed lines of the route the entry takes agree (for earlier property, the unadjusted basis, the 2025 rate and line 17). Dropped from the fixture as not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.4",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].cost179_2025",
+   "project": "$100.00",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The 2025-property route (basis after a 2025 allowance, the half-year and mid-quarter amounts, the 2025 section 179 cost) is figured for property placed in service before 2025 but read by no line it reaches, and the allowance alternatives are figured for property that claims none; the printed lines of the route the entry takes agree (for earlier property, the unadjusted basis, the 2025 rate and line 17). Dropped from the fixture as not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.4",
    "printed": "person[taxpayer].sc[biz_a].asset[item_1].dep_listed",
    "project": "$2,501.67",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.4",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].macrs_hy",
+   "project": "$5.90",
+   "model": "$5.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The 2025-property route (basis after a 2025 allowance, the half-year and mid-quarter amounts, the 2025 section 179 cost) is figured for property placed in service before 2025 but read by no line it reaches, and the allowance alternatives are figured for property that claims none; the printed lines of the route the entry takes agree (for earlier property, the unadjusted basis, the 2025 rate and line 17). Dropped from the fixture as not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.4",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].macrs_mq",
+   "project": "$5.90",
+   "model": "$3.75",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The 2025-property route (basis after a 2025 allowance, the half-year and mid-quarter amounts, the 2025 section 179 cost) is figured for property placed in service before 2025 but read by no line it reaches, and the allowance alternatives are figured for property that claims none; the printed lines of the route the entry takes agree (for earlier property, the unadjusted basis, the 2025 rate and line 17). Dropped from the fixture as not evidence.",
    "drop": true
   },
   {
@@ -320,6 +488,30 @@
    "project": "$0.38",
    "model": "$38.00",
    "ruling": "Ruling: representation; project retained. The business-use percentage is carried as one cent per percentage point (multiply_count by one cent) so it can be divided like an amount; the model read the cents as dollars. Not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.4",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].pct_c",
+   "project": "$1.00",
+   "model": "$100.00",
+   "ruling": "Ruling: representation; project retained. pct_c carries the business-use percentage as one cent per percentage point (100% is $1.00) so that the percentage can be the part of a money ratio (prorate); the model wrote it as dollars. The basis it feeds agrees. Dropped from the fixture as not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.4",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].rate_hy",
+   "project": "5.9%",
+   "model": "5%",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The 2025-property route (basis after a 2025 allowance, the half-year and mid-quarter amounts, the 2025 section 179 cost) is figured for property placed in service before 2025 but read by no line it reaches, and the allowance alternatives are figured for property that claims none; the printed lines of the route the entry takes agree (for earlier property, the unadjusted basis, the 2025 rate and line 17). Dropped from the fixture as not evidence.",
+   "drop": true
+  },
+  {
+   "case": "classm.asset.4",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].rate_mq",
+   "project": "5.9%",
+   "model": "3.75%",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The 2025-property route (basis after a 2025 allowance, the half-year and mid-quarter amounts, the 2025 section 179 cost) is figured for property placed in service before 2025 but read by no line it reaches, and the allowance alternatives are figured for property that claims none; the printed lines of the route the entry takes agree (for earlier property, the unadjusted basis, the 2025 rate and line 17). Dropped from the fixture as not evidence.",
    "drop": true
   },
   {

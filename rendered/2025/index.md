@@ -4,7 +4,7 @@ Review these renderings line by line against the archived IRS sources in `source
 
 | File | Kind | Lines |
 | --- | --- | --- |
-| asset.md | form | 62 |
+| asset.md | form | 68 |
 | carloan.md | form | 24 |
 | dependent.md | worksheet | 48 |
 | div.md | form | 22 |
@@ -28,7 +28,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | person.md | worksheet | 111 |
 | qbi.md | form | 13 |
 | qdcg.md | worksheet | 27 |
-| retirement.md | form | 56 |
+| retirement.md | form | 58 |
 | s1.md | form | 27 |
 | s179.md | form | 26 |
 | s1a.md | form | 136 |

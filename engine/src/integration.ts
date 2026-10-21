@@ -59,12 +59,31 @@ export function integrationChecks(): void {
     const htmlPath=join(dir,"html-input.json");writeFileSync(htmlPath,JSON.stringify(inputs));
     const html=spawnSync(process.execPath,[resolve(import.meta.dirname,"main.js"),"eval","--inputs",htmlPath,"--target","f1040.line31","--html"],{ encoding: "utf-8", maxBuffer: 256 * 1024 * 1024 });
     assert.equal(html.status,0);assert.match(html.stdout,/<!doctype html>/);assert.match(html.stdout,/\$1,481\.80/);checks++;
+    // Entry sections: a business, its implicit Form 4562 after it, and each asset with only the
+    // lines Form 4562 reports it on (a listed asset on 25 and 26, the other on 14 and 19).
+    {
+      const fx=JSON.parse(readFileSync(resolve(import.meta.dirname,"../../fixtures/2025/stage14.json"),"utf-8")) as {cases:{id:string;inputs:Record<string,unknown>}[]};
+      const assetCase=fx.cases.find(c=>c.id==="stage14.asset.listed_and_not")!;
+      const sheetPath=join(dir,"sheet-input.json");writeFileSync(sheetPath,JSON.stringify(assetCase.inputs));
+      const sheet=spawnSync(process.execPath,[resolve(import.meta.dirname,"main.js"),"eval","--inputs",sheetPath],{ encoding: "utf-8", maxBuffer: 256 * 1024 * 1024 });
+      assert.equal(sheet.status,0);
+      const section=(entry:string)=>{const parts=sheet.stdout.split(/\n(?=== )/);const s=parts.find(p=>p.split("\n")[0]!.endsWith(`— ${entry} ==`));assert.ok(s,`no section for ${entry}`);return s!;};
+      const order=sheet.stdout.indexOf("— person[taxpayer].sc[d] =="), f4562=sheet.stdout.indexOf("— person[taxpayer].sc[d].f4562[form] ==");
+      assert.ok(order>=0&&f4562>order,"the Form 4562 section follows its Schedule C");checks++;
+      const printed=(s:string)=>s.split("\n").slice(1).filter(l=>/^ {2}\S/.test(l)).map(l=>l.trim().split(/\s+/)[0]);
+      const cam=printed(section("person[taxpayer].sc[d].asset[cam]")), pc=printed(section("person[taxpayer].sc[d].asset[pc]"));
+      assert.ok(cam.includes("25")&&cam.includes("26(h)")&&!cam.includes("14")&&!cam.includes("19(g)"),`listed asset lines: ${cam.join(",")}`);checks++;
+      assert.ok(pc.includes("14")&&pc.includes("19(g)")&&!pc.includes("25")&&!pc.includes("26(h)"),`other asset lines: ${pc.join(",")}`);checks++;
+    }
     const checksData=loadCanonical();
     const badData=(change:(d:CanonicalData)=>void)=>{
       const d=structuredClone(checksData);change(d);const path=join(dir,"bad.json");writeFileSync(path,JSON.stringify(d));cli(["check",path],false);
     };
     const line=(d:CanonicalData,id:string)=>d.forms.flatMap(f=>f.lines).find(l=>l.id===id)!;
     badData(d=>{line(d,"person.over").expr={op:"test",eq:["person.over",{const:true}]};});
+    // shown_when must name a Bool line of the same document; an implicit collection needs a parent.
+    badData(d=>{line(d,"asset.bonus").shown_when="asset.cost";});
+    badData(d=>{const f=d.forms.find(x=>x.id==="f4562")!;f.collection={implicit:"form",cite:f.collection!.cite};});
     badData(d=>{line(d,"person.credit").expr={op:"choose",alternatives:[{guard:{op:"test",eq:["person.credit",{const:0}]},then:"person.zero"}]};});
     badData(d=>{line(d,"person.withheld").expr={op:"sum_over",collection:"w2",field:"w2.over"};});
     badData(d=>{line(d,"person.withheld").expr={op:"sum_over",collection:"w2",field:"f1040.line15"};});

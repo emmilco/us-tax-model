@@ -38,8 +38,10 @@ def parse_rendered(form_id):
         enc = re.search(r"(?m)^- \*\*Encoded \((.+?)\):\*\* (.*)$", body)
         label = re.search(r"(?m)^- \*\*(?:IRS|Authored helper label):\*\* (.*)$", body)
         refusals = re.findall(r"(?m)^- \*\*Refusal:\*\* (.*?) Cite: ", body)
+        shown_when = re.search(r"(?m)^- \*\*Shown on the values sheet only when:\*\* (.*?) \(`[^`]+`\)$", body)
         entries[m.group(2)] = {"printed": m.group(1), "id": m.group(2), "type": enc.group(1), "encoded": enc.group(2),
-                               "label": label.group(1) if label else "", "refusals": refusals}
+                               "label": label.group(1) if label else "", "refusals": refusals,
+                               "shown_when": shown_when.group(1) if shown_when else None}
     return entries
 
 
@@ -168,6 +170,8 @@ def build_prompt(form_doc, excerpt):
     rows = []
     for e in printed:
         rows.append(f'- {e["shown"]} ({e["type"]}): {e["encoded"]}')
+        if e.get("shown_when"):
+            rows.append(f"    reported on this line only for an entry where: {e['shown_when']} (otherwise the line is left out for that entry)")
         for r in e["refusals"]:
             rows.append(f"    refusal: {r}")
     gl = []

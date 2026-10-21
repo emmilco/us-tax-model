@@ -1,12 +1,86 @@
-Values sheet — tax year 2025 (single-person slice; not a complete return for all filers)
+Values sheet — tax year 2025 (not a complete return for all filers)
 
-== Form 1040 — selected lines (Stages 1–4) ==
+== Form 1040 — U.S. Individual Income Tax Return (the lines this tool computes) ==
   Filing Status Single. Married filing jointly (even if only one had income). Married filing separately. Head of household (HOH). Qualifying surviving spouse (QSS).
       = single
       cite: [f1040] Form 1040, Filing Status (2025; created 2025-09-05; 3d31c226)
   31  Amount from Schedule 3, line 15
       = $1,481.80
       cite: [f1040] Form 1040 (2025), line 31 (2025; created 2025-09-05; 3d31c226)
+
+== Each person on the return — per-person facts and totals (excess Social Security tax, Schedule SE, SEP and SIMPLE plans, health insurance and others) — person[taxpayer] ==
+  rrta Do any wage statements report railroad retirement compensation or taxes (W-2 box 14), or did you file Form CT-2 as an employee representative?
+      = false
+      cite: [iw2w3] pp. 12–13, Railroad employers: RRTA compensation and taxes in box 14; boxes 3–7 are not used for RRTA (2025; printed date 2025-02-19; bfecbc99)
+  employers Total w2.one for this person
+      = 2
+      cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $w2@person[taxpayer]: a, b
+  overcount Number of employers that withheld more than the limit
+      = 0
+      cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $w2@person[taxpayer]: a, b
+  over Any employer withheld more than the limit
+      = false
+      cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+  wages Total w2.wages for this person
+      = $200,000
+      cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $w2@person[taxpayer]: a, b; Interpretation amb.2025.ss_wages: Use boxes 3 plus 7, summed across employers separately per person. Owner approved the Stage 2 proposal. iw2w3 p. 18 defines these boxes and their combined wage base; box 1 can exclude deferrals subject to Social Security. (iw2w3, p. 18, boxes 3 and 7; compare i1040gi p. 117, Schedule 3 line 11)
+  withheld Total w2.box4 for this person
+      = $12,400
+      cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $w2@person[taxpayer]: a, b
+  eligible More than one employer and total social security wages over $176,100
+      = true
+      cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+  excess Withholding above $10,918.20, if any
+      = $1,481.80
+      cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+  credit Excess social security tax withheld, figured separately for this person
+      = $1,481.80
+      cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["person.eligible",{"const":true}],"op":"test"}
+
+== Form W-2 — wage, withholding and Social Security boxes by employer — person[taxpayer].w2[a] ==
+  3   Social security wages
+      = $100,000
+      cite: [iw2w3] p. 18, boxes 3, 4 and 7 (2025; printed date 2025-02-19; bfecbc99)
+  7   Social security tips
+      = $0
+      cite: [iw2w3] p. 18, boxes 3, 4 and 7 (2025; printed date 2025-02-19; bfecbc99)
+  4   Social security tax withheld
+      = $6,200
+      cite: [iw2w3] p. 18, boxes 3, 4 and 7 (2025; printed date 2025-02-19; bfecbc99)
+  (helper) Add social security wages and social security tips
+      = $100,000
+      cite: [iw2w3] p. 18, boxes 3, 4 and 7 (2025; printed date 2025-02-19; bfecbc99)
+  (helper) One employer entry
+      = 1
+      cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Did this employer withhold more than $10,918.20?
+      = false
+      cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+
+== Form W-2 — wage, withholding and Social Security boxes by employer — person[taxpayer].w2[b] ==
+  3   Social security wages
+      = $100,000
+      cite: [iw2w3] p. 18, boxes 3, 4 and 7 (2025; printed date 2025-02-19; bfecbc99)
+  7   Social security tips
+      = $0
+      cite: [iw2w3] p. 18, boxes 3, 4 and 7 (2025; printed date 2025-02-19; bfecbc99)
+  4   Social security tax withheld
+      = $6,200
+      cite: [iw2w3] p. 18, boxes 3, 4 and 7 (2025; printed date 2025-02-19; bfecbc99)
+  (helper) Add social security wages and social security tips
+      = $100,000
+      cite: [iw2w3] p. 18, boxes 3, 4 and 7 (2025; printed date 2025-02-19; bfecbc99)
+  (helper) One employer entry
+      = 1
+      cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Did this employer withhold more than $10,918.20?
+      = false
+      cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
 
 == Schedule 3 — selected lines ==
   (gate) Married filing separately
@@ -35,49 +109,7 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
 Path choices (guard wording per the rendered worksheets in rendered/2025/):
   person[taxpayer].credit: chose $1,481.80 (guard 0)
 
-Collection entries and derivations:
-  person[taxpayer].rrta = false
-    cite: iw2w3, pp. 12–13, Railroad employers: RRTA compensation and taxes in box 14; boxes 3–7 are not used for RRTA (2025; printed date 2025-02-19; bfecbc99)
-  person[taxpayer].w2[a].box4 = $6,200
-    cite: iw2w3, p. 18, boxes 3, 4 and 7 (2025; printed date 2025-02-19; bfecbc99)
-  person[taxpayer].w2[a].over = false
-    cite: i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].w2[b].box4 = $6,200
-    cite: iw2w3, p. 18, boxes 3, 4 and 7 (2025; printed date 2025-02-19; bfecbc99)
-  person[taxpayer].w2[b].over = false
-    cite: i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].overcount = 0
-    cite: i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].over = false
-    cite: i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].w2[a].one = 1
-    cite: i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].w2[b].one = 1
-    cite: i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].employers = 2
-    cite: i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].w2[a].box3 = $100,000
-    cite: iw2w3, p. 18, boxes 3, 4 and 7 (2025; printed date 2025-02-19; bfecbc99)
-  person[taxpayer].w2[a].box7 = $0
-    cite: iw2w3, p. 18, boxes 3, 4 and 7 (2025; printed date 2025-02-19; bfecbc99)
-  person[taxpayer].w2[a].wages = $100,000
-    cite: iw2w3, p. 18, boxes 3, 4 and 7 (2025; printed date 2025-02-19; bfecbc99)
-  person[taxpayer].w2[b].box3 = $100,000
-    cite: iw2w3, p. 18, boxes 3, 4 and 7 (2025; printed date 2025-02-19; bfecbc99)
-  person[taxpayer].w2[b].box7 = $0
-    cite: iw2w3, p. 18, boxes 3, 4 and 7 (2025; printed date 2025-02-19; bfecbc99)
-  person[taxpayer].w2[b].wages = $100,000
-    cite: iw2w3, p. 18, boxes 3, 4 and 7 (2025; printed date 2025-02-19; bfecbc99)
-  person[taxpayer].wages = $200,000
-    cite: i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].eligible = true
-    cite: i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].withheld = $12,400
-    cite: i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].excess = $1,481.80
-    cite: i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].credit = $1,481.80
-    cite: i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+Derivations:
   s3.mfs: test(f1040.status = single; "mfs" = mfs)
   person[taxpayer].w2[a].over: test(person[taxpayer].w2[a].box4 = $6,200; #ss.limit = $10,918.20)
   person[taxpayer].w2[b].over: test(person[taxpayer].w2[b].box4 = $6,200; #ss.limit = $10,918.20)
@@ -98,7 +130,7 @@ Collection entries and derivations:
   f1040.s3.line15: sum(s3.line9 = $0; s3.line10 = $0; s3.line11 = $1,481.80; s3.line12 = $0; s3.line14 = $0)
   f1040.line31: copy(s3.line15 = $1,481.80)
 Interpretation amb.2025.ss_wages: Use boxes 3 plus 7, summed across employers separately per person. Owner approved the Stage 2 proposal. iw2w3 p. 18 defines these boxes and their combined wage base; box 1 can exclude deferrals subject to Social Security. (iw2w3, p. 18, boxes 3 and 7; compare i1040gi p. 117, Schedule 3 line 11)
-Scope: single-person return (Form 1040 lines 1a–37 with the in-scope schedules and refusal screens). Unsupported paths are refused with citations. No filing or transmission.
+Scope: Form 1040 lines 1a–37 with the schedules and forms this tool implements and their refusal screens. Unsupported paths are refused with citations. No filing or transmission.
 Rounding: amounts are exact cents; the return-wide whole-dollar rounding setting is deferred (see ambiguities/2025.yaml).
 Estimated tax penalty: not computed; the IRS will figure it (see i1040gi, line 38).
 This is a computation of published IRS forms and instructions; it is not tax or legal advice. Published instructions are not the law itself.

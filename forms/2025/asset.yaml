@@ -270,6 +270,61 @@ form:
       doc: i4562
       locator: p. 9, Lines 19a Through 19j, "Use lines 19a through 19j only for assets placed in service during the tax year
         beginning in 2025"; Line 17
+  - id: asset.on_19
+    printed: (helper)
+    label: Reported on lines 6, 14 and 19 (property placed in service in 2025 that is not listed property)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - asset.is2025
+        - const: true
+      - op: test
+        eq:
+        - asset.listed
+        - const: false
+    cite:
+      doc: i4562
+      locator: p. 5, Line 6, "Do not include any listed property on line 6"; p. 9, Lines 19a Through 19j, "Use lines 19a through 19j
+        only for assets placed in service during the tax year beginning in 2025"
+  - id: asset.on_17
+    printed: (helper)
+    label: Reported on line 17 (property placed in service before 2025 that is not listed property)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - asset.is2025
+        - const: false
+      - op: test
+        eq:
+        - asset.listed
+        - const: false
+    cite:
+      doc: i4562
+      locator: p. 9, Line 17
+  - id: asset.on_26_2025
+    printed: (helper)
+    label: Reported on lines 25 and 26 column (i) (listed property placed in service in 2025)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - asset.is2025
+        - const: true
+      - op: test
+        eq:
+        - asset.listed
+        - const: true
+    cite:
+      doc: i4562
+      locator: p. 13, Part V and Line 25
   - id: asset.year
     printed: (helper)
     label: Year of recovery in 2025
@@ -333,6 +388,7 @@ form:
   - id: asset.s179
     printed: 6(c)
     label: Section 179 elected cost
+    shown_when: asset.on_19
     type: NonNegDollars
     expr:
       op: input
@@ -505,6 +561,7 @@ form:
   - id: asset.bonus
     printed: '14'
     label: Special depreciation allowance for this property
+    shown_when: asset.on_19
     type: NonNegDollars
     expr:
       op: choose
@@ -530,6 +587,28 @@ form:
     cite:
       doc: i4562
       locator: pp. 5-7, Line 14, Qualified property and Election out
+  - id: asset.f25
+    printed: '25'
+    label: Special depreciation allowance for this listed property (line 25)
+    shown_when: asset.on_26_2025
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: asset.bonus
+    cite:
+      doc: i4562
+      locator: p. 13, Line 25
+  - id: asset.f26i
+    printed: 26(i)
+    label: Elected section 179 cost of this listed property (column (i))
+    shown_when: asset.on_26_2025
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: asset.s179
+    cite:
+      doc: i4562
+      locator: p. 16, Column (i)—Elected section 179 cost
   - id: asset.ub
     printed: (helper)
     label: Basis for MACRS depreciation (after section 179 and the special allowance)
@@ -542,6 +621,18 @@ form:
       doc: i4562
       locator: p. 11, Column (c), "From that result, subtract ... Section 179 expense deduction ... Any special depreciation
         allowance included on line 14"
+  - id: asset.col19c
+    printed: 19(c)
+    label: Basis for depreciation (business/investment use only), column (c), after the section 179 deduction and the special allowance
+    shown_when: asset.on_19
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: asset.ub
+    cite:
+      doc: i4562
+      locator: p. 11, Column (c), "From that result, subtract ... Section 179 expense deduction ... Any special depreciation allowance
+        included on line 14"
   - id: asset.hy
     printed: (helper)
     label: Half-year convention
@@ -606,6 +697,7 @@ form:
   - id: asset.macrs2025
     printed: 19(g)
     label: MACRS depreciation for 2025 property
+    shown_when: asset.on_19
     type: NonNegDollars
     expr:
       op: choose
@@ -756,6 +848,7 @@ form:
   - id: asset.macrs_prior
     printed: '17'
     label: MACRS deduction for 2025 on property placed in service before 2025
+    shown_when: asset.on_17
     type: NonNegDollars
     expr:
       op: choose
@@ -957,6 +1050,7 @@ form:
   - id: asset.dep_listed
     printed: 26(h)
     label: Depreciation of this listed property (column (h))
+    shown_when: asset.listed
     type: NonNegDollars
     expr:
       op: sum

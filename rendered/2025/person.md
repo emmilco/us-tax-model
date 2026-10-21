@@ -1,4 +1,4 @@
-# Excess Social Security credit — separately per person
+# Each person on the return — per-person facts and totals (excess Social Security tax, Schedule SE, SEP and SIMPLE plans, health insurance and others)
 
 - Document: `person` (worksheet, tax year 2025)
 - Collection: keyed entries; [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; sha256 482e9c48)

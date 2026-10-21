@@ -1,7 +1,7 @@
 form:
   id: s1
   kind: form
-  title: Schedule 1 — selected lines (unemployment compensation, educator expenses, HSA deduction, student loan interest)
+  title: Schedule 1 — Additional Income and Adjustments to Income (the lines this tool computes)
   tax_year: 2025
   note: Lines 7, 10, 11, 13, 21 and 26. Every other Schedule 1 item is refused by scope.schedule1 at Form 1040 lines 8 and
     10.

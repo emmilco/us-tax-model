@@ -172,6 +172,8 @@ Each line of a form or worksheet is one record:
 | `expr` | One atom application |
 | `cite` | Citation (section 5) |
 | `ambiguity` | Optional reference into the ambiguity register |
+| `display` | Optional: why a line no other line reads is kept (it is shown on the values sheet) |
+| `shown_when` | Optional, on a printed line: a `Bool` line of the same document; the values sheet shows the line only when it is true, for a per-entry line the form reports for some entries only (a Form 4562 asset's line 14 only for 2025 property that is not listed). The value is computed either way. |
 
 A form definition is a list of lines in printed order, plus the form's identity, tax year and revision.
 
@@ -180,6 +182,10 @@ A form definition is a list of lines in printed order, plus the form's identity,
 Forms that occur in multiples (Form W-2, Form 1099-INT, Form 1099-DIV, Form 8949 rows) are keyed collections. Aggregation across them is always an explicit `sum_over`. Pagination is a presentation matter and is not modelled.
 
 A collection may sit within another (a Schedule C within a person, a Form 4562 within a Schedule C). A line of an entry may read a line of the entry that encloses it, which is evaluated in that enclosing entry; no other reference into a collection is allowed. A Form 4562 reads its business's totals this way (Stage 14, owner's choice).
+
+A collection may be implicit: each entry of its parent has exactly one entry of it, under a fixed key, without being asked (each Schedule C has one Form 4562, owner's choice). Both evaluators create the entry when no roster is given; no interview asks for it.
+
+Every line of every entry is evaluated, by both evaluators, and the values sheet gives each entry its own section, with the entries nested under it after it.
 
 A form evaluated more than once under different inputs is a parameterized instance, not a cycle.
 

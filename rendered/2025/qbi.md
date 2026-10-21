@@ -1,4 +1,4 @@
-# Section 199A dividend-only deduction and form selection
+# Qualified business income and section 199A dividends — amounts and the choice of Form 8995
 
 - Document: `qbi` (form, tax year 2025)
 - Note: Section 199A dividends and the qualified business income of the Schedule C businesses (with a prior-year qualified business loss carryforward), not PTP amounts. Taxable income before QBI is AGI less the selected deduction; Schedule 1-A is outside scope. The Jan. 27, 2026 Form 8995 instruction correction is followed.

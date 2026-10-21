@@ -195,9 +195,9 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
   stats.push(...checkResult.stats);
 
   // A line no other line reads must be an interview target or say why it is shown (display);
-  // a line marked display must not be read. Unread helpers are how dead logic hides. A line of
-  // a collection form is evaluated only when a reader reaches it and the values sheet prints no
-  // entry lines, so display cannot be claimed there.
+  // a line marked display must not be read. Unread helpers are how dead logic hides. Every line
+  // of every confirmed collection entry is evaluated and printed in the entry's section of the
+  // values sheet, so display holds there as on any other form.
   {
     const docs = [...data.forms, ...data.defs];
     const ids = new Set(docs.flatMap((d) => d.lines.map((l) => l.id)));
@@ -207,10 +207,11 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
       if (Array.isArray(n)) { n.forEach(walk); return; }
       if (n && typeof n === "object") for (const [k, v] of Object.entries(n)) if (!["cite", "source", "label", "op", "ref"].includes(k)) walk(v);
     };
-    for (const d of docs) for (const l of d.lines) { walk(l.expr); for (const r of l.refuses ?? []) read.add(r.when); }
+    for (const d of docs) for (const l of d.lines) { walk(l.expr); for (const r of l.refuses ?? []) read.add(r.when); if (l.shown_when) read.add(l.shown_when); }
     const targets = new Set([interview, salesInterview, stage4Interview, fullInterview].flatMap((i) => i.targets));
+    const asked = new Set([interview, salesInterview, stage4Interview, fullInterview].flatMap((i) => i.questions.map((q) => q.input)));
+    for (const d of data.forms) if (d.collection?.implicit && asked.has(`$${d.id}`)) errors.push(`${d.id}: an implicit collection's entry is never asked, but an interview asks $${d.id}`);
     for (const d of data.forms) for (const l of d.lines) {
-      if (d.collection && l.display) errors.push(`${d.id}.${l.id}: marked display in a collection form, whose entry lines are neither evaluated unless read nor shown on the values sheet`);
       if (String(l.printed).startsWith("(") === false) continue; // printed lines are the form's own lines
       const unread = !read.has(l.id) && !targets.has(l.id);
       if (unread && !l.display) errors.push(`${d.id}.${l.id}: no line reads this ${l.expr.op} line and it is not an interview target; remove it or say why it is shown (display)`);

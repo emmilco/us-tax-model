@@ -226,9 +226,9 @@
 ## (screen) — `scveh.screen`
 
 - **Authored helper label:** Does any of these apply to this vehicle?
-- **Encoded (Bool):** Input — Does any of these apply to this vehicle: you placed it in service before 2019; you claimed a special depreciation allowance for it in an earlier year; you used the standard mileage rate for it in an earlier year; you disposed of it in 2025; you acquired it in a trade-in or from a related person; its business use was 50% or less in any earlier year; it is an electric vehicle placed in service before 2007; you reduced its basis by a clean-fuel deduction or a vehicle credit; or you use it in your business of transporting persons or property for hire, or it is an ambulance or hearse?
-- Expr: `{"op":"input","source":"Does any of these apply to this vehicle: you placed it in service before 2019; you claimed a special depreciation allowance for it in an earlier year; you used the standard mileage rate for it in an earlier year; you disposed of it in 2025; you acquired it in a trade-in or from a related person; its business use was 50% or less in any earlier year; it is an electric vehicle placed in service before 2007; you reduced its basis by a clean-fuel deduction or a vehicle credit; or you use it in your business of transporting persons or property for hire, or it is an ambulance or hearse?"}`
-- Cite: [i4562] pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles; p946 p. 63, Deductions for Passenger Automobiles Acquired in a Trade-In (2025; sha256 5c1c95b7)
+- **Encoded (Bool):** Input — Does any of these apply to this vehicle: you placed it in service before 2019; you claimed a special depreciation allowance for it in an earlier year; you used the standard mileage rate for it in an earlier year; you disposed of it in 2025; you acquired it in a trade-in or from a related person; its business use was 50% or less in any earlier year; it is an electric vehicle placed in service before 2007; you reduced its basis by a clean-fuel deduction or a vehicle credit; you converted it from personal use to business use during 2025; or you use it in your business of transporting persons or property for hire, or it is an ambulance or hearse?
+- Expr: `{"op":"input","source":"Does any of these apply to this vehicle: you placed it in service before 2019; you claimed a special depreciation allowance for it in an earlier year; you used the standard mileage rate for it in an earlier year; you disposed of it in 2025; you acquired it in a trade-in or from a related person; its business use was 50% or less in any earlier year; it is an electric vehicle placed in service before 2007; you reduced its basis by a clean-fuel deduction or a vehicle credit; you converted it from personal use to business use during 2025; or you use it in your business of transporting persons or property for hire, or it is an ambulance or hearse?"}`
+- Cite: [i4562] pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles (p. 14, "If during the tax year you convert property used solely for personal purposes to business/investment use"); p946 p. 63, Deductions for Passenger Automobiles Acquired in a Trade-In (2025; sha256 5c1c95b7)
 
 ## (gate) — `scveh.screened`
 
@@ -284,7 +284,7 @@
 ## (helper) — `scveh.y5`
 
 - **Authored helper label:** Five-year property
-- **Encoded (Enum(macrs_period)):** Enter 0 $NaN.NaN; 1 $0.05 (sc.period_y5).
+- **Encoded (Enum(macrs_period)):** Enter y5 (sc.period_y5).
 - Expr: `{"op":"param","ref":"sc.period_y5"}`
 - Cite: [i4562] pp. 9-10, Lines 19a Through 19j, Column (a), "5-year property includes the following. Automobiles. Light general purpose trucks" (2025; sha256 5c1c95b7)
 
@@ -412,6 +412,7 @@
 
 - **IRS:** Section 179 deduction claimed this year (not more than line 9 for a passenger automobile)
 - **Encoded (NonNegDollars):** Choose — [helper "Placed in service in 2025" = true → helper "Section 179 for a 2025 vehicle: not more than line 9 for a passenger automobile"] [helper "Placed in service in 2025" = false → helper "Zero"]
+- Interpretation: amb.2025.vehicle_s179_claimed
 - Expr: `{"alternatives":[{"guard":{"eq":["scveh.is2025",{"const":true}],"op":"test"},"then":"scveh.line10_2025"},{"guard":{"eq":["scveh.is2025",{"const":false}],"op":"test"},"then":"scveh.zero"}],"op":"choose"}`
 - Cite: [p946] pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 10, "Enter -0- if this is not the year you placed the car in service"; i4562 p. 15, Column (i) (For use in preparing 2025 returns; sha256 07fadfb2)
 
@@ -532,7 +533,7 @@
 ## (helper) — `scveh.hy`
 
 - **Authored helper label:** Half-year convention
-- **Encoded (Enum(macrs_convention)):** Enter 0 $NaN.NaN; 1 $NaN.NaN (sc.conv_hy).
+- **Encoded (Enum(macrs_convention)):** Enter hy (sc.conv_hy).
 - Expr: `{"op":"param","ref":"sc.conv_hy"}`
 - Cite: [i4562] p. 11, Column (e)—Convention (2025; sha256 5c1c95b7)
 

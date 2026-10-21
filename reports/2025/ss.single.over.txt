@@ -1,12 +1,38 @@
-Values sheet — tax year 2025 (single-person slice; not a complete return for all filers)
+Values sheet — tax year 2025 (not a complete return for all filers)
 
-== Form 1040 — selected lines (Stages 1–4) ==
+== Form 1040 — U.S. Individual Income Tax Return (the lines this tool computes) ==
   Filing Status Single. Married filing jointly (even if only one had income). Married filing separately. Head of household (HOH). Qualifying surviving spouse (QSS).
       = single
       cite: [f1040] Form 1040, Filing Status (2025; created 2025-09-05; 3d31c226)
   31  Amount from Schedule 3, line 15
       = REFUSED: Form 843. An employer withheld more than $10,918.20. Ask that employer to adjust the tax. If the employer does not adjust the overcollection, you can file a refund claim using Form 843. This tool cannot complete the credit until the overcollection is resolved. (trigger: person[taxpayer].over; i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld)
       cite: [f1040] Form 1040 (2025), line 31 (2025; created 2025-09-05; 3d31c226)
+
+== Each person on the return — per-person facts and totals (excess Social Security tax, Schedule SE, SEP and SIMPLE plans, health insurance and others) — person[taxpayer] ==
+  rrta Do any wage statements report railroad retirement compensation or taxes (W-2 box 14), or did you file Form CT-2 as an employee representative?
+      = false
+      cite: [iw2w3] pp. 12–13, Railroad employers: RRTA compensation and taxes in box 14; boxes 3–7 are not used for RRTA (2025; printed date 2025-02-19; bfecbc99)
+  overcount Number of employers that withheld more than the limit
+      = 1
+      cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $w2@person[taxpayer]: a
+  over Any employer withheld more than the limit
+      = true
+      cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+  credit Excess social security tax withheld, figured separately for this person
+      = REFUSED: Form 843. An employer withheld more than $10,918.20. Ask that employer to adjust the tax. If the employer does not adjust the overcollection, you can file a refund claim using Form 843. This tool cannot complete the credit until the overcollection is resolved. (trigger: person[taxpayer].over; i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld)
+      cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+
+== Form W-2 — wage, withholding and Social Security boxes by employer — person[taxpayer].w2[a] ==
+  4   Social security tax withheld
+      = $10,918.21
+      cite: [iw2w3] p. 18, boxes 3, 4 and 7 (2025; printed date 2025-02-19; bfecbc99)
+  (helper) One employer entry
+      = 1
+      cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Did this employer withhold more than $10,918.20?
+      = true
+      cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
 
 == Schedule 3 — selected lines ==
   (gate) Married filing separately
@@ -25,21 +51,7 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       = REFUSED: Form 843. An employer withheld more than $10,918.20. Ask that employer to adjust the tax. If the employer does not adjust the overcollection, you can file a refund claim using Form 843. This tool cannot complete the credit until the overcollection is resolved. (trigger: person[taxpayer].over; i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld)
       cite: [f1040s3] Schedule 3 (2025), line 15 (2025; created 2025-11-17; 008cfd3f)
 
-Collection entries and derivations:
-  person[taxpayer].rrta = false
-    cite: iw2w3, pp. 12–13, Railroad employers: RRTA compensation and taxes in box 14; boxes 3–7 are not used for RRTA (2025; printed date 2025-02-19; bfecbc99)
-  person[taxpayer].w2[a].box4 = $10,918.21
-    cite: iw2w3, p. 18, boxes 3, 4 and 7 (2025; printed date 2025-02-19; bfecbc99)
-  person[taxpayer].w2[a].over = true
-    cite: i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].w2[a].one = 1
-    cite: i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].overcount = 1
-    cite: i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].over = true
-    cite: i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].credit = REFUSED: Form 843. An employer withheld more than $10,918.20. Ask that employer to adjust the tax. If the employer does not adjust the overcollection, you can file a refund claim using Form 843. This tool cannot complete the credit until the overcollection is resolved. (trigger: person[taxpayer].over; i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld)
-    cite: i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+Derivations:
   s3.mfs: test(f1040.status = single; "mfs" = mfs)
   person[taxpayer].w2[a].over: test(person[taxpayer].w2[a].box4 = $10,918.21; #ss.limit = $10,918.20)
   person[taxpayer].w2[a].one: param(#ss.one = 1)
@@ -50,7 +62,7 @@ Collection entries and derivations:
   s3.line15: sum(s3.line9 = $0; s3.line10 = $0; s3.line11 = REFUSED: Form 843. An employer withheld more than $10,918.20. Ask that employer to adjust the tax. If the employer does not adjust the overcollection, you can file a refund claim using Form 843. This tool cannot complete the credit until the overcollection is resolved. (trigger: person[taxpayer].over; i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld))
   f1040.s3.line15: sum(s3.line9 = $0; s3.line10 = $0; s3.line11 = REFUSED: Form 843. An employer withheld more than $10,918.20. Ask that employer to adjust the tax. If the employer does not adjust the overcollection, you can file a refund claim using Form 843. This tool cannot complete the credit until the overcollection is resolved. (trigger: person[taxpayer].over; i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld))
   f1040.line31: copy(s3.line15 = REFUSED: Form 843. An employer withheld more than $10,918.20. Ask that employer to adjust the tax. If the employer does not adjust the overcollection, you can file a refund claim using Form 843. This tool cannot complete the credit until the overcollection is resolved. (trigger: person[taxpayer].over; i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld))
-Scope: single-person return (Form 1040 lines 1a–37 with the in-scope schedules and refusal screens). Unsupported paths are refused with citations. No filing or transmission.
+Scope: Form 1040 lines 1a–37 with the schedules and forms this tool implements and their refusal screens. Unsupported paths are refused with citations. No filing or transmission.
 Rounding: amounts are exact cents; the return-wide whole-dollar rounding setting is deferred (see ambiguities/2025.yaml).
 Estimated tax penalty: not computed; the IRS will figure it (see i1040gi, line 38).
 This is a computation of published IRS forms and instructions; it is not tax or legal advice. Published instructions are not the law itself.

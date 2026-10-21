@@ -3,6 +3,14 @@
  "form": "retirement",
  "rulings": [
   {
+   "case": "classm.retirement.3",
+   "printed": "retirement[r2].annuity_taxable",
+   "project": "$25,133.56",
+   "model": "$27,508.00",
+   "ruling": "Ruling: helper of a branch this entry does not take; project retained. The entry is a traditional IRA distribution (retirement.annuity is false), whose taxable amount is the IRA route's figure, $27,508.00 (retirement.taxable, which agrees); the Simplified Method helper is figured for every entry but read only for an annuity with cost. Dropped from the fixture as not evidence.",
+   "drop": true
+  },
+  {
    "case": "classm.retirement.9",
    "printed": "retirement[r2].show_a",
    "project": "yes",

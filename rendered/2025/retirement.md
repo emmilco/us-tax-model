@@ -314,6 +314,20 @@
 - Expr: `{"from":"retirement.smw1","op":"subtract_floor0","take":"retirement.smw8"}`
 - Cite: [i1040gi] p. 29, Simplified Method Worksheet, line 9 (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (SMW 10) — `retirement.smw10`
+
+- **Authored helper label:** Add lines 6 and 8. This is the amount you have recovered tax free through 2025
+- **Encoded (Dollars):** Add column (SMW 6) and column (SMW 8).
+- Expr: `{"of":["retirement.smw6","retirement.smw8"],"op":"sum"}`
+- Cite: [i1040gi] p. 29, Simplified Method Worksheet, line 10, "No. Add lines 6 and 8. This is the amount you have recovered tax free through 2025" (the worksheet is used here only for an annuity starting date after November 18, 1996, so line 10's question, "Was your annuity starting date before 1987?", is answered No) (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (SMW 11) — `retirement.smw11`
+
+- **Authored helper label:** Balance of cost to be recovered. Subtract line 10 from line 2
+- **Encoded (Dollars):** Subtract column (SMW 10) from column (SMW 2).
+- Expr: `{"from":"retirement.smw2","op":"subtract","take":"retirement.smw10"}`
+- Cite: [i1040gi] p. 29, Simplified Method Worksheet, line 11, "Balance of cost to be recovered. Subtract line 10 from line 2. If zero, you won't have to complete this worksheet next year. The payments you receive next year will generally be fully taxable" (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (helper) — `retirement.cost_left`
 
 - **Authored helper label:** Some cost is left to recover (line 7 of the Simplified Method Worksheet is more than zero)

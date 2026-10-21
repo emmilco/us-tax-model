@@ -99,6 +99,15 @@ export function evaluateAll(data: CanonicalData, inputs: Inputs): EvalResult {
 
 // Every line of every top-level form, then every line of every confirmed collection
 // entry whose parent entries are themselves confirmed.
+/** The confirmed entry keys of a collection under one parent entry: the roster given, or, for an
+ * implicit collection with no roster given, its one implicit entry; null when unconfirmed. */
+export function rosterOf(doc: FormDoc, rosterKey: string, inputs: Inputs): string[] | null {
+  const roster = inputs[rosterKey];
+  if (Array.isArray(roster)) return roster as string[];
+  if (roster === undefined && doc.collection?.implicit) return [doc.collection.implicit];
+  return null;
+}
+
 export function allTargets(data: CanonicalData, inputs: Inputs): string[] {
   const targets: string[] = [];
   for (const doc of [...data.forms, ...data.defs]) {
@@ -107,8 +116,8 @@ export function allTargets(data: CanonicalData, inputs: Inputs): string[] {
   }
   const byId = new Map(data.forms.map((d) => [d.id, d]));
   const entries = (doc: FormDoc, parent: string | null): string[] => {
-    const roster = inputs[`$${doc.id}${parent ? "@" + parent : ""}`];
-    return Array.isArray(roster) ? [...roster].sort().map((k) => `${parent ? parent + "." : ""}${doc.id}[${k}]`) : [];
+    const roster = rosterOf(doc, `$${doc.id}${parent ? "@" + parent : ""}`, inputs);
+    return roster ? [...roster].sort().map((k) => `${parent ? parent + "." : ""}${doc.id}[${k}]`) : [];
   };
   const instances = (doc: FormDoc): string[] => {
     const parentId = doc.collection?.parent;
@@ -342,8 +351,8 @@ function evalExpr(ctx: Ctx, frame: Frame, lineId: string, expr: Expr, cite: Cite
       const entry = ctx.byId.get(expr.collection)!;
       const parent = entry.collection?.parent ? frame.instKey : null;
       const rosterKey = `$${entry.id}${parent ? "@" + parent : ""}`;
-      const roster = ctx.inputs[rosterKey];
-      if (!Array.isArray(roster)) return d({ kind: "unknown", reason: "collection roster not confirmed", input: rosterKey }, "sum_over", ops);
+      const roster = rosterOf(entry, rosterKey, ctx.inputs);
+      if (!roster) return d({ kind: "unknown", reason: "collection roster not confirmed", input: rosterKey }, "sum_over", ops);
       let total = 0n;
       let missing: Value | null = null;
       const fieldType = entry.lines.find(l => l.id === expr.field)!.type;

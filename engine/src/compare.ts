@@ -7,7 +7,7 @@ import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { spawnSync } from "node:child_process";
 import { loadCanonical } from "./canonical.js";
-import { evaluate } from "./eval.js";
+import { allTargets, evaluate } from "./eval.js";
 import { loadCases } from "./fixtures.js";
 import type { Inputs } from "./types.js";
 import type { Value } from "./eval.js";
@@ -135,10 +135,10 @@ export function compareEvaluators(): number {
         continue;
       }
       const leanValues = JSON.parse(readFileSync(outPath, "utf-8")) as Record<string, Record<string, unknown>>;
-      const ts = evaluate(data, c.inputs, targets);
-      // Compare the authored target lines of f1040 and qdcg (the same set the
-      // Lean evaluator emits); internal aliases for cross-form references are
-      // not part of the compared surface.
+      const ts = evaluate(data, c.inputs, allTargets(data, c.inputs));
+      // Compare every line of every form and every line of every confirmed
+      // collection entry (the same set the Lean evaluator emits); internal
+      // aliases for cross-form references are not part of the compared surface.
       const tsValues: Record<string, Value> = {};
       for (const target of targets) {
         const der = ts.derivations.get(target);

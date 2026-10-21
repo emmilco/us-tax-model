@@ -1,4 +1,4 @@
-Values sheet — tax year 2025 (single-person slice; not a complete return for all filers)
+Values sheet — tax year 2025 (not a complete return for all filers)
 
 == Form 1099-DIV — distribution components and scope screening ==
   (helper) Unrecaptured section 1250 gain, box 2b
@@ -340,7 +340,7 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       = false
       cite: [i1040gi] p. 43, Line 27b (2025; printed date 2026-02-25; 482e9c48)
 
-== Form 1040 — selected lines (Stages 1–4) ==
+== Form 1040 — U.S. Individual Income Tax Return (the lines this tool computes) ==
   Filing Status Single. Married filing jointly (even if only one had income). Married filing separately. Head of household (HOH). Qualifying surviving spouse (QSS).
       = single
       cite: [f1040] Form 1040, Filing Status (2025; created 2025-09-05; 3d31c226)
@@ -803,7 +803,7 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       = false
       cite: [i8960] pp. 17–18, allowable taxes allocable to net investment income (2025; printed date 2026-02-04; b10fbb23)
 
-== Form 8995 — dividend-only simplified computation ==
+== Form 8995 — Qualified Business Income Deduction Simplified Computation ==
   2   Total qualified business income or (loss). Combine lines 1i through 1v, column (c)
       = $0
       cite: [f8995] Form 8995 (2025), line 2; i8995 Line 1, the trades or businesses of the Schedule C entries (2025; created 2025-09-12; 55380ad2)
@@ -1076,6 +1076,11 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       = false
       cite: [i1040gi] p. 14, Head of Household (2025; printed date 2026-02-25; 482e9c48)
 
+== Schedule B — interest payer entries — interest[bank_a] ==
+  (helper) Taxable interest from this payer, including Treasury interest; exclude tax-exempt interest
+      = $1,200
+      cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
+
 == Mid-quarter convention test for property placed in service in 2025 ==
   (helper) Depreciable bases of property placed in service October to December 2025
       = $0
@@ -1101,7 +1106,447 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       = false
       cite: [p946] p. 34, Which Convention Applies?, Mid-quarter convention, "are more than 40% of the total depreciable bases of all MACRS property you placed in service during the entire year" (For use in preparing 2025 returns; 07fadfb2)
 
-== Section 199A dividend-only deduction and form selection ==
+== Each person on the return — per-person facts and totals (excess Social Security tax, Schedule SE, SEP and SIMPLE plans, health insurance and others) — person[taxpayer] ==
+  (helper) Whose entry is this, yours or your spouse's?
+      = taxpayer
+      cite: [f1040] Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial" (2025; created 2025-09-05; 3d31c226)
+  (helper) One entry for this person
+      = 1
+      cite: [f1040] Form 1040 (2025), page 1, one entry for you and, if joint return, one for your spouse (2025; created 2025-09-05; 3d31c226)
+  (helper) Were you born before January 2, 1961?
+      = false
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Are you blind under the standard-deduction instructions?
+      = false
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Do you have an SSN or ITIN issued on or before the due date of your return?
+      = true
+      cite: [i1040gi] p. 17, Before you begin, "The other spouse must have either an SSN or ITIN, and it must have been issued on or before the due date of the return (including extensions)"; p. 19, Step 5, question 1 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) If not, have you applied for an ITIN on or before the due date of your return?
+      = UNKNOWN (no input supplied for person[taxpayer].itin_applied)
+      cite: [i1040gi] p. 19, Step 5, question 1, "(Answer 'Yes' if you are applying for an ITIN on or before the return due date (including extensions).)" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Do you have an SSN valid for employment issued before the due date of your return?
+      = true
+      cite: [i1040gi] p. 18, Step 3, question 4 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Qualified educator expenses you paid in 2025
+      = $0
+      cite: [i1040gi] p. 93, Schedule 1, line 11, Qualified expenses and 'You must reduce your qualified expenses by the following amounts' (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Were you an eligible educator in 2025 (a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year)?
+      = UNKNOWN (no input supplied for person[taxpayer].eligible_educator)
+      cite: [i1040gi] p. 93, Schedule 1, line 11, 'An eligible educator is a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year' (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Were you born before January 2, 2001?
+      = UNKNOWN (no input supplied for person[taxpayer].born_before_2001)
+      cite: [i1040gi] p. 41, Step 4, question 2, "Check 'Yes' if you ... were born after December 31, 1960, and before January 2, 2001" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Were you born after December 31, 1960?
+      = UNKNOWN (no input supplied for person[taxpayer].born_after_1960)
+      cite: [i1040gi] p. 41, Step 4, question 2, "Check 'Yes' if you ... were born after December 31, 1960, and before January 2, 2001" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before reaching age 65?
+      = UNKNOWN (no input supplied for person[taxpayer].died_before_65)
+      cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Year parameter s1.educator_max ($300)
+      = $300
+      cite: [i1040gi] p. 93, Schedule 1, line 11, "If you and your spouse are filing jointly and both of you were eligible educators, the maximum deduction is $600. However, neither spouse can deduct more than $300 of their qualified expenses" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Any qualified educator expenses for this person
+      = false
+      cite: [i1040gi] p. 93, Schedule 1, line 11 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) This person's qualified educator expenses, up to $300
+      = $0
+      cite: [i1040gi] p. 93, Schedule 1, line 11, "If you and your spouse are filing jointly and both of you were eligible educators, the maximum deduction is $600. However, neither spouse can deduct more than $300 of their qualified expenses" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) This person's qualified educator expenses up to $300 if an eligible educator, else zero
+      = UNKNOWN (no input supplied for person[taxpayer].eligible_educator)
+      cite: [i1040gi] p. 93, Schedule 1, line 11, "If you were an eligible educator in 2025, you can deduct on line 11 up to $300 of qualified expenses you paid in 2025"; "If you and your spouse are filing jointly and both of you were eligible educators, the maximum deduction is $600. However, neither spouse can deduct more than $300 of their qualified expenses" (2025; printed date 2026-02-25; 482e9c48)
+      note: guard incomplete
+  (helper) This person's educator expense deduction
+      = $0
+      cite: [i1040gi] p. 93, Schedule 1, line 11, "If you were an eligible educator in 2025, you can deduct on line 11 up to $300 of qualified expenses you paid in 2025"; "If you and your spouse are filing jointly and both of you were eligible educators, the maximum deduction is $600. However, neither spouse can deduct more than $300 of their qualified expenses" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["person.has_educator_expenses",{"const":false}],"op":"test"}
+  (helper) Number of Forms 8889 entered for this person
+      = 0
+      cite: [i8889] p. 4, Name and social security number (SSN), "complete a separate Form 8889 for each of you" (2025; da6f2f58)
+      note: confirmed roster $f8889@person[taxpayer]:
+  (gate) More than one Form 8889 entered for this person
+      = false
+      cite: [i8889] p. 4, Name and social security number (SSN), "complete a separate Form 8889 for each of you" (2025; da6f2f58)
+  (helper) This persons Form 8889 uses the spouse rule of line 6
+      = 0
+      cite: [i8889] p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3 (2025; da6f2f58)
+      note: confirmed roster $f8889@person[taxpayer]:
+  (helper) This persons Form 8889 uses an agreed allocation under the spouse rule of line 6
+      = 0
+      cite: [i8889] p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3 (2025; da6f2f58)
+      note: confirmed roster $f8889@person[taxpayer]:
+  (helper) This persons Step 1 limit under the spouse rule of line 6
+      = $0
+      cite: [i8889] p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3 (2025; da6f2f58)
+      note: confirmed roster $f8889@person[taxpayer]:
+  (helper) This persons part of the Step 1 limit under the spouse rule of line 6
+      = $0
+      cite: [i8889] p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3 (2025; da6f2f58)
+      note: confirmed roster $f8889@person[taxpayer]:
+  (helper) Form 8889 line 13 for this person
+      = $0
+      cite: [i8889] p. 4, "Combine the amounts on line 13 of both Forms 8889 and enter this amount on Schedule 1 (Form 1040), line 13" (2025; da6f2f58)
+      note: confirmed roster $f8889@person[taxpayer]:
+  (helper) Number of employers that paid this person qualified tips
+      = UNKNOWN (collection roster not confirmed)
+      cite: [i1040gi] p. 104, Schedule 1-A, line 4c (2025; printed date 2026-02-25; 482e9c48)
+  (helper) This person's worksheet column (d) total
+      = UNKNOWN (collection roster not confirmed)
+      cite: [i1040gi] p. 104, Qualified Tips From More Than One Employer Worksheet, line 2 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) This person's worksheet column (b) total
+      = UNKNOWN (collection roster not confirmed)
+      cite: [i1040gi] p. 104, Qualified Tips From More Than One Employer Worksheet, column (b) (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Number of employers that paid this person qualified overtime compensation
+      = UNKNOWN (collection roster not confirmed)
+      cite: [i1040gi] p. 108, Schedule 1-A, line 14a, and the Qualified Overtime Compensation From More Than One Employer Worksheet (2025; printed date 2026-02-25; 482e9c48)
+  (helper) This person's overtime worksheet column (b) total
+      = UNKNOWN (collection roster not confirmed)
+      cite: [i1040gi] p. 108, Schedule 1-A, line 14a, and the Qualified Overtime Compensation From More Than One Employer Worksheet, line 2 (2025; printed date 2026-02-25; 482e9c48)
+  rrta Do any wage statements report railroad retirement compensation or taxes (W-2 box 14), or did you file Form CT-2 as an employee representative?
+      = false
+      cite: [iw2w3] pp. 12–13, Railroad employers: RRTA compensation and taxes in box 14; boxes 3–7 are not used for RRTA (2025; printed date 2025-02-19; bfecbc99)
+  employers Total w2.one for this person
+      = 2
+      cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $w2@person[taxpayer]: emp_a, emp_b
+  overcount Number of employers that withheld more than the limit
+      = 0
+      cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $w2@person[taxpayer]: emp_a, emp_b
+  over Any employer withheld more than the limit
+      = false
+      cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+  wages Total w2.wages for this person
+      = $120,000
+      cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $w2@person[taxpayer]: emp_a, emp_b; Interpretation amb.2025.ss_wages: Use boxes 3 plus 7, summed across employers separately per person. Owner approved the Stage 2 proposal. iw2w3 p. 18 defines these boxes and their combined wage base; box 1 can exclude deferrals subject to Social Security. (iw2w3, p. 18, boxes 3 and 7; compare i1040gi p. 117, Schedule 3 line 11)
+  withheld Total w2.box4 for this person
+      = $7,440
+      cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $w2@person[taxpayer]: emp_a, emp_b
+  (helper) Total W-2 box 1 for this person
+      = $120,000
+      cite: [f1040] Form 1040 (2025), line 1a (2025; created 2025-09-05; 3d31c226)
+      note: confirmed roster $w2@person[taxpayer]: emp_a, emp_b
+  (helper) Total W-2 box 2 for this person
+      = $17,000
+      cite: [f1040] Form 1040 (2025), line 25a (2025; created 2025-09-05; 3d31c226)
+      note: confirmed roster $w2@person[taxpayer]: emp_a, emp_b
+  eligible More than one employer and total social security wages over $176,100
+      = false
+      cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+  excess Withholding above $10,918.20, if any
+      = $0
+      cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+  zero No excess credit
+      = $0
+      cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+  credit Excess social security tax withheld, figured separately for this person
+      = $0
+      cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["person.eligible",{"const":false}],"op":"test"}
+  (helper) Total W-2 box 5 for this person
+      = $120,000
+      cite: [f8959] Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; 13e64004)
+      note: confirmed roster $w2@person[taxpayer]: emp_a, emp_b
+  (helper) Total W-2 box 6 for this person
+      = $1,740
+      cite: [f8959] Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; 13e64004)
+      note: confirmed roster $w2@person[taxpayer]: emp_a, emp_b
+  (helper) Number of Schedules C for this person
+      = 0
+      cite: [i1040sc] p. 14, Line 31; i4562 p. 4, Part I (2025; b5536db9)
+      note: confirmed roster $sc@person[taxpayer]:
+  (helper) Number of this person's Schedules C that claim the business use of the home
+      = 0
+      cite: [i1040sc] p. 10, Simplified method, "You are limited to a maximum of 300 square feet for all of the businesses you conduct in your home that qualify for this deduction" (2025; b5536db9)
+      note: confirmed roster $sc@person[taxpayer]:
+  (helper) Mid-quarter test basis, fourth quarter, this person
+      = $0
+      cite: [i1040sc] p. 14, Line 31; i4562 p. 4, Part I (2025; b5536db9)
+      note: confirmed roster $sc@person[taxpayer]:
+  (helper) Mid-quarter test basis, 2025, this person
+      = $0
+      cite: [i1040sc] p. 14, Line 31; i4562 p. 4, Part I (2025; b5536db9)
+      note: confirmed roster $sc@person[taxpayer]:
+  (helper) Cost of section 179 property, this person
+      = $0
+      cite: [i1040sc] p. 14, Line 31; i4562 p. 4, Part I (2025; b5536db9)
+      note: confirmed roster $sc@person[taxpayer]:
+  (helper) Section 179 elected, other than listed property, this person
+      = $0
+      cite: [i1040sc] p. 14, Line 31; i4562 p. 4, Part I (2025; b5536db9)
+      note: confirmed roster $sc@person[taxpayer]:
+  (helper) Section 179 elected on listed property, this person
+      = $0
+      cite: [i1040sc] p. 14, Line 31; i4562 p. 4, Part I (2025; b5536db9)
+      note: confirmed roster $sc@person[taxpayer]:
+  (helper) Business net profit or loss without section 179, this person
+      = $0
+      cite: [i1040sc] p. 14, Line 31; i4562 p. 4, Part I (2025; b5536db9)
+      note: confirmed roster $sc@person[taxpayer]:
+  (helper) This person has at least one Schedule C
+      = false
+      cite: [i1040sse] p. 1, Who Must File Schedule SE; p. 2, Joint Returns, "If both spouses have self-employment income, each must file a separate Schedule SE" (2025; ea9e3120)
+  (helper) This person's Schedule C net profit or loss (all businesses)
+      = $0
+      cite: [i1040sse] p. 2, More Than One Business, "Figure the combined SE tax on one Schedule SE" (2025; ea9e3120)
+      note: confirmed roster $sc@person[taxpayer]:
+  (screen) Does any of these apply to this person's self-employment?
+      = UNKNOWN (no input supplied for person[taxpayer].se_screen)
+      cite: [i1040sse] pp. 1-5, Who Must Pay Self-Employment (SE) Tax, Net Earnings From Self-Employment, Instructions for Part II; f1040sse lines 1a, 1b, 5a, 8b and 8c (2025; ea9e3120)
+  (gate) This person's self-employment tax is outside this tool
+      = UNKNOWN (no input supplied for person[taxpayer].se_screen)
+      cite: [i1040sse] pp. 1-5 (2025; ea9e3120)
+  (helper) Schedule SE line 2 for this person
+      = UNKNOWN (no input supplied for person[taxpayer].se_screen)
+      cite: [f1040sse] Schedule SE (2025), line 2, "Net profit or (loss) from Schedule C, line 31" (2025; created 2025-05-07; 05bc2b3e)
+  (helper) Schedule SE line 6 for this person
+      = $0
+      cite: [f1040sse] Schedule SE (2025), line 6; i8959 Line 8, "Schedule SE, line 6" (2025; created 2025-05-07; 05bc2b3e)
+      note: taken: {"eq":["person.has_sc",{"const":false}],"op":"test"}
+  (helper) Schedule SE line 12 (self-employment tax) for this person
+      = $0
+      cite: [f1040sse] Schedule SE (2025), line 12, "Enter here and on Schedule 2 (Form 1040), line 4" (2025; created 2025-05-07; 05bc2b3e)
+      note: taken: {"eq":["person.has_sc",{"const":false}],"op":"test"}
+  (helper) Schedule SE line 13 (deduction for one-half of self-employment tax) for this person
+      = $0
+      cite: [f1040sse] Schedule SE (2025), line 13, "Enter here and on Schedule 1 (Form 1040), line 15" (2025; created 2025-05-07; 05bc2b3e)
+      note: taken: {"eq":["person.has_sc",{"const":false}],"op":"test"}
+  (helper) Schedule SE line 4c for this person
+      = $0
+      cite: [f1040sse] Schedule SE (2025), line 4c (2025; created 2025-05-07; 05bc2b3e)
+      note: taken: {"eq":["person.has_sc",{"const":false}],"op":"test"}
+  (helper) Retirement plan of this self-employed person
+      = UNKNOWN (no input supplied for person[taxpayer].plan)
+      cite: [p560] pp. 8–11, 14–17, chapter 2, Simplified Employee Pension (SEP); chapter 3, SIMPLE IRA Plan; i1040gi Schedule 1, line 16 (For use in preparing 2025 returns; 1f1f7abe)
+  (screen) Does any of these apply to this person's retirement contributions?
+      = UNKNOWN (no input supplied for person[taxpayer].plan_screen)
+      cite: [p560] pp. 11, 16, 38, chapter 2, Salary Reduction Simplified Employee Pension (SARSEP); chapter 3, Salary reduction contributions; chapter 5, Caution, "apply only to self-employed individuals who have only one defined contribution plan" (For use in preparing 2025 returns; 1f1f7abe)
+  (gate) This person's retirement contributions are outside this tool
+      = UNKNOWN (no input supplied for person[taxpayer].plan_screen)
+      cite: [p560] pp. 8–11, 14–17, 38–40, chapters 2, 3 and 5 (For use in preparing 2025 returns; 1f1f7abe)
+  (helper) One cent
+      = $0.01
+      cite: [p560] pp. 38–40, chapter 5, Rate Table for Self-Employed (For use in preparing 2025 returns; 1f1f7abe)
+  (helper) 100%, as cents
+      = $1
+      cite: [p560] pp. 38–40, chapter 5, Rate Worksheet for Self-Employed, "Rate in line 1 plus 1" (For use in preparing 2025 returns; 1f1f7abe)
+  (helper) Plan contribution rate (whole percent)
+      = UNKNOWN (no input supplied for person[taxpayer].sep_rate)
+      cite: [p560] pp. 38–40, chapter 5, Rate Table for Self-Employed, "find your plan contribution rate (the contribution rate stated in your plan)" (For use in preparing 2025 returns; 1f1f7abe)
+  (helper) Contributions to your own SEP IRA for 2025
+      = UNKNOWN (no input supplied for person[taxpayer].plan_screen)
+      cite: [p560] pp. 11, 39, chapter 2, Deduction Limit for Self-Employed Individuals; chapter 5, Deduction Worksheet for Self-Employed, "Next: Enter your actual contribution" (For use in preparing 2025 returns; 1f1f7abe)
+  (helper) The plan rate, as cents
+      = UNKNOWN (no input supplied for person[taxpayer].sep_rate)
+      cite: [p560] pp. 38–40, chapter 5, Rate Worksheet for Self-Employed, line 1 (For use in preparing 2025 returns; 1f1f7abe)
+  (helper) The plan rate plus 100%, as cents
+      = UNKNOWN (no input supplied for person[taxpayer].sep_rate)
+      cite: [p560] pp. 38–40, chapter 5, Rate Worksheet for Self-Employed, line 2, "Rate in line 1 plus 1" (For use in preparing 2025 returns; 1f1f7abe)
+  Step 1 Net profit from Schedule C, line 31
+      = $0
+      cite: [p560] p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 1 (For use in preparing 2025 returns; 1f1f7abe)
+  Step 2 Deduction for self-employment tax from Schedule 1, line 15
+      = $0
+      cite: [p560] p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 2 (this person's own Schedule SE, line 13) (For use in preparing 2025 returns; 1f1f7abe)
+  Step 3 Net earnings from self-employment. Subtract step 2 from step 1
+      = $0
+      cite: [p560] p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 3 (For use in preparing 2025 returns; 1f1f7abe)
+  Step 5 Multiply step 3 by step 4 (the plan rate divided by the plan rate plus 1, to six decimal places)
+      = UNKNOWN (no input supplied for person[taxpayer].sep_rate)
+      cite: [p560] pp. 39–40, chapter 5, Deduction Worksheet for Self-Employed, Steps 4 and 5; Rate Table for Self-Employed (for example 10% gives 0.090909) (amb.2025.sep_rate_places) (For use in preparing 2025 returns; 1f1f7abe)
+  (helper) $350,000
+      = $350,000
+      cite: [p560] p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 6, "Multiply $350,000" (For use in preparing 2025 returns; 1f1f7abe)
+  Step 6 Multiply $350,000 by your plan contribution rate (not the reduced rate)
+      = UNKNOWN (no input supplied for person[taxpayer].sep_rate)
+      cite: [p560] p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 6 (For use in preparing 2025 returns; 1f1f7abe)
+  Step 7 Enter the smaller of step 5 or step 6
+      = UNKNOWN (no input supplied for person[taxpayer].sep_rate)
+      cite: [p560] p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 7 (For use in preparing 2025 returns; 1f1f7abe)
+  Step 8 Contribution dollar limit
+      = $70,000
+      cite: [p560] p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 8, "$70,000" (For use in preparing 2025 returns; 1f1f7abe)
+  Step 21 Maximum deductible contribution (the smaller of step 7 or step 8; no elective deferrals)
+      = UNKNOWN (no input supplied for person[taxpayer].sep_rate)
+      cite: [p560] p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 8 note, "Otherwise, skip steps 9 through 20 and enter the smaller of step 7 or step 8 on step 21" (For use in preparing 2025 returns; 1f1f7abe)
+  (gate) The SEP contributions are more than the maximum deductible contribution
+      = UNKNOWN (no input supplied for person[taxpayer].plan_screen)
+      cite: [p560] p. 39, chapter 5, "Enter your actual contribution, not to exceed your maximum deductible contribution"; chapter 2, Excess contributions (For use in preparing 2025 returns; 1f1f7abe)
+  (helper) SEP deduction for yourself
+      = UNKNOWN (no input supplied for person[taxpayer].plan_screen)
+      cite: [p560] p. 39, chapter 5, "Enter your actual contribution, not to exceed your maximum deductible contribution, on Schedule 1 (Form 1040), line 16" (For use in preparing 2025 returns; 1f1f7abe)
+  (helper) Salary reduction contributions for yourself to your SIMPLE IRA (including catch-up)
+      = UNKNOWN (no input supplied for person[taxpayer].plan_screen)
+      cite: [p560] p. 16, chapter 3, Salary reduction contributions and Catch-up contributions (For use in preparing 2025 returns; 1f1f7abe)
+  (helper) Catch-up eligibility
+      = UNKNOWN (no input supplied for person[taxpayer].simple_age)
+      cite: [p560] p. 16, chapter 3, Catch-up contributions, "age 50 or over at the end of the calendar year" and "in a tax year in which they attain age 60, 61, 62, or 63" (For use in preparing 2025 returns; 1f1f7abe)
+  (helper) Employer contribution formula of your SIMPLE IRA plan
+      = UNKNOWN (no input supplied for person[taxpayer].simple_kind)
+      cite: [p560] pp. 16–17, chapter 3, Employer matching contributions and Nonelective contributions (For use in preparing 2025 returns; 1f1f7abe)
+  (helper) Employer contributions for yourself to your SIMPLE IRA
+      = UNKNOWN (no input supplied for person[taxpayer].simple_employer)
+      cite: [p560] pp. 16–17, chapter 3, Employer matching contributions and Nonelective contributions (For use in preparing 2025 returns; 1f1f7abe)
+  (helper) Compensation: net earnings from self-employment (Schedule SE, line 4)
+      = $0
+      cite: [p560] p. 15, chapter 3, Compensation, "If you are self-employed, compensation is your net earnings from self-employment (line 4 of Schedule SE (Form 1040)) before subtracting any contributions made to the SIMPLE IRA plan for yourself" (For use in preparing 2025 returns; 1f1f7abe)
+  (helper) Salary reduction limit
+      = $16,500
+      cite: [p560] p. 16, chapter 3, Salary reduction contributions, "can't be more than $16,500 for 2025" (For use in preparing 2025 returns; 1f1f7abe)
+  (helper) Salary reduction contributions that are not catch-up contributions
+      = UNKNOWN (no input supplied for person[taxpayer].plan_screen)
+      cite: [p560] p. 16, chapter 3, Catch-up contributions, "Salary reduction contributions aren't treated as catch-up contributions until they exceed $16,500 for 2025" (For use in preparing 2025 returns; 1f1f7abe)
+  (helper) Catch-up contributions
+      = UNKNOWN (no input supplied for person[taxpayer].plan_screen)
+      cite: [p560] p. 16, chapter 3, Catch-up contributions (For use in preparing 2025 returns; 1f1f7abe)
+  (helper) Catch-up contribution limit
+      = UNKNOWN (no input supplied for person[taxpayer].simple_age)
+      cite: [p560] p. 16, chapter 3, Catch-up contributions, "generally $3,500 for 2025" and "the higher limit on catch-up contributions ... is $5,250" (For use in preparing 2025 returns; 1f1f7abe)
+  (helper) Compensation less the salary reduction contributions that are not catch-up contributions
+      = UNKNOWN (no input supplied for person[taxpayer].plan_screen)
+      cite: [p560] p. 16, chapter 3, Catch-up contributions, "The excess of the participant's compensation over the salary reduction contributions that aren't catch-up contributions" (For use in preparing 2025 returns; 1f1f7abe)
+  (helper) Maximum catch-up contribution
+      = UNKNOWN (no input supplied for person[taxpayer].simple_age)
+      cite: [p560] p. 16, chapter 3, Catch-up contributions, "can't exceed the lesser of the following amounts" (For use in preparing 2025 returns; 1f1f7abe)
+  (helper) 3%
+      = 3/100
+      cite: [p560] p. 16, chapter 3, Employer matching contributions, "up to 3% of the employee's compensation" (For use in preparing 2025 returns; 1f1f7abe)
+  (helper) 2%
+      = 2/100
+      cite: [p560] p. 17, chapter 3, Nonelective contributions, "nonelective contributions of 2% of compensation" (For use in preparing 2025 returns; 1f1f7abe)
+  (helper) 3% of compensation
+      = $0
+      cite: [p560] p. 16, chapter 3, Employer matching contributions (For use in preparing 2025 returns; 1f1f7abe)
+      note: half-up to the cent per the ambiguity register
+  (helper) Salary reduction contributions (allowed)
+      = UNKNOWN (no input supplied for person[taxpayer].plan_screen)
+      cite: [p560] p. 16, chapter 3, Employer matching contributions, "match each employee's salary reduction contribution(s) on a dollar-for-dollar basis" (For use in preparing 2025 returns; 1f1f7abe)
+  (helper) Maximum matching contribution
+      = UNKNOWN (no input supplied for person[taxpayer].plan_screen)
+      cite: [p560] p. 16, chapter 3, Employer matching contributions (For use in preparing 2025 returns; 1f1f7abe)
+  (helper) Compensation taken into account (not more than $350,000)
+      = $0
+      cite: [p560] p. 17, chapter 3, Nonelective contributions, "Only $350,000 of the employee's compensation can be taken into account" (For use in preparing 2025 returns; 1f1f7abe)
+  (helper) Maximum nonelective contribution
+      = $0
+      cite: [p560] p. 17, chapter 3, Nonelective contributions (For use in preparing 2025 returns; 1f1f7abe)
+      note: half-up to the cent per the ambiguity register
+  (helper) Maximum employer contribution for the plan's formula
+      = UNKNOWN (no input supplied for person[taxpayer].simple_kind)
+      cite: [p560] pp. 16–17, chapter 3, Employer matching contributions and Nonelective contributions (For use in preparing 2025 returns; 1f1f7abe)
+      note: guard incomplete
+  (gate) Contributions above the SIMPLE limits
+      = UNKNOWN (no input supplied for person[taxpayer].plan_screen)
+      cite: [p560] p. 16, chapter 3, Salary reduction contributions, Catch-up contributions and Employer matching contributions (For use in preparing 2025 returns; 1f1f7abe)
+  (helper) SIMPLE deduction for yourself
+      = UNKNOWN (no input supplied for person[taxpayer].plan_screen)
+      cite: [p560] p. 17, chapter 3, Where To Deduct Contributions, "Sole proprietors and partners deduct contributions for themselves on line 16 of Schedule 1" (For use in preparing 2025 returns; 1f1f7abe)
+  (helper) Self-employed SEP or SIMPLE deduction for this person
+      = UNKNOWN (no input supplied for person[taxpayer].plan)
+      cite: [i1040gi] p. 93, Schedule 1, line 16, Self-Employed SEP, SIMPLE, and Qualified Plans; p560 chapter 5 (2025; printed date 2026-02-25; 482e9c48)
+      note: guard incomplete
+  (helper) Schedule 1 line 16 for this person
+      = $0
+      cite: [i1040gi] p. 93, Schedule 1, line 16, "If you were self-employed or a partner, you may be able to take this deduction" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["person.has_sc",{"const":false}],"op":"test"}
+  (helper) Total of all net profits of this person's businesses (losses not included)
+      = $0
+      cite: [i7206] Line 5, Form 7206 (2025), "Don't include any net losses" (2025; 9cbf92b3)
+      note: confirmed roster $sc@person[taxpayer]:
+  (helper) Self-employed health insurance deduction, this person
+      = $0
+      cite: [f7206] Form 7206 (2025), line 14 (2025; created 2025-10-02; 822203c9)
+      note: confirmed roster $sc@person[taxpayer]:
+  (helper) Qualified business income or loss of this person's businesses
+      = $0
+      cite: [i8995] pp. 2, 4, Determining Your Qualified Business Income; Line 1 (2025; printed date 2026-01-26; 875843ba)
+      note: confirmed roster $sc@person[taxpayer]:
+  (helper) Worksheet B, Part 1 for this person: Schedule SE line 3 less line 13
+      = $0
+      cite: [i1040gi] p. 47, Worksheet B, Part 1, lines 1a to 1e (line 1b is zero: the optional methods and church employee income are refused) (2025; printed date 2026-02-25; 482e9c48)
+  (helper) This person files Schedule SE (line 4c is $400 or more)
+      = false
+      cite: [i1040gi] p. 47, Worksheet B, Part 1 and Part 2, "Self-Employed NOT Required To File Schedule SE" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) This person's self-employment earned income for Worksheet B
+      = $0
+      cite: [i1040gi] p. 47, Worksheet B, Part 1, line 1e, and Part 2, line 2b (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["person.files_se",{"const":false}],"op":"test"}
+  (helper) Worksheet B, Parts 1 and 2, for this person
+      = $0
+      cite: [i1040gi] p. 47, Worksheet B, "If you are married filing a joint return, include your spouse's amounts, if any, with yours" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["person.has_sc",{"const":false}],"op":"test"}
+  (helper) This person's Schedules C with Schedule 1-A tips or overtime
+      = 0
+      cite: [i1040gi] p. 104, Schedule 1-A, line 5 (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $sc@person[taxpayer]:
+
+== Form W-2 — wage, withholding and Social Security boxes by employer — person[taxpayer].w2[emp_a] ==
+  1   Wages, tips, other compensation
+      = $80,000
+      cite: [iw2w3] p. 17, box 1 (2025; printed date 2025-02-19; bfecbc99)
+  2   Federal income tax withheld
+      = $12,000
+      cite: [iw2w3] p. 17, box 2 (2025; printed date 2025-02-19; bfecbc99)
+  3   Social security wages
+      = $80,000
+      cite: [iw2w3] p. 18, boxes 3, 4 and 7 (2025; printed date 2025-02-19; bfecbc99)
+  7   Social security tips
+      = $0
+      cite: [iw2w3] p. 18, boxes 3, 4 and 7 (2025; printed date 2025-02-19; bfecbc99)
+  4   Social security tax withheld
+      = $4,960
+      cite: [iw2w3] p. 18, boxes 3, 4 and 7 (2025; printed date 2025-02-19; bfecbc99)
+  (helper) Add social security wages and social security tips
+      = $80,000
+      cite: [iw2w3] p. 18, boxes 3, 4 and 7 (2025; printed date 2025-02-19; bfecbc99)
+  (helper) One employer entry
+      = 1
+      cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Did this employer withhold more than $10,918.20?
+      = false
+      cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+  5   Medicare wages and tips
+      = $80,000
+      cite: [f8959] Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; 13e64004)
+  6   Medicare tax withheld
+      = $1,160
+      cite: [f8959] Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; 13e64004)
+
+== Form W-2 — wage, withholding and Social Security boxes by employer — person[taxpayer].w2[emp_b] ==
+  1   Wages, tips, other compensation
+      = $40,000
+      cite: [iw2w3] p. 17, box 1 (2025; printed date 2025-02-19; bfecbc99)
+  2   Federal income tax withheld
+      = $5,000
+      cite: [iw2w3] p. 17, box 2 (2025; printed date 2025-02-19; bfecbc99)
+  3   Social security wages
+      = $40,000
+      cite: [iw2w3] p. 18, boxes 3, 4 and 7 (2025; printed date 2025-02-19; bfecbc99)
+  7   Social security tips
+      = $0
+      cite: [iw2w3] p. 18, boxes 3, 4 and 7 (2025; printed date 2025-02-19; bfecbc99)
+  4   Social security tax withheld
+      = $2,480
+      cite: [iw2w3] p. 18, boxes 3, 4 and 7 (2025; printed date 2025-02-19; bfecbc99)
+  (helper) Add social security wages and social security tips
+      = $40,000
+      cite: [iw2w3] p. 18, boxes 3, 4 and 7 (2025; printed date 2025-02-19; bfecbc99)
+  (helper) One employer entry
+      = 1
+      cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Did this employer withhold more than $10,918.20?
+      = false
+      cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
+  5   Medicare wages and tips
+      = $40,000
+      cite: [f8959] Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; 13e64004)
+  6   Medicare tax withheld
+      = $580
+      cite: [f8959] Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; 13e64004)
+
+== Qualified business income and section 199A dividends — amounts and the choice of Form 8995 ==
   (helper) Qualified section 199A dividends from Form 1099-DIV box 5 after confirming holding-period and related-payment requirements
       = $0
       cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
@@ -1233,7 +1678,7 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       = $18,500
       cite: [i1040gi] QDCGT worksheet, line 25 (2025; printed date 2026-02-25; 482e9c48)
 
-== Schedule 1 — selected lines (unemployment compensation, educator expenses, HSA deduction, student loan interest) ==
+== Schedule 1 — Additional Income and Adjustments to Income (the lines this tool computes) ==
   (helper) Year parameter sales.zero
       = $0
       cite: [f1040s1] Schedule 1 (2025), lines 7, 11, 21 (2025; created 2025-07-25; 8dafec71)
@@ -1891,7 +2336,7 @@ Values sheet — tax year 2025 (single-person slice; not a complete return for a
       = $0
       cite: [f1040s1a] Schedule 1-A (2025), line 38 (2025; created 2025-11-04; 64f97b38)
 
-== Schedule 2 — supported Additional Medicare Tax and NIIT ==
+== Schedule 2 — Additional Taxes (the lines this tool computes) ==
   (helper) Are you required to file Form 6251 or do you have an AMT adjustment requiring its review?
       = false
       cite: [f1040s2] Schedule 2 (2025), lines 2, 3, 11, 12 and 21 (2025; created 2025-05-08; 64d867b6)
@@ -3344,271 +3789,7 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   person[taxpayer].eic_se_has: chose $0 (guard 1)
       not taken: guard 0 = false
 
-Collection entries and derivations:
-  person[taxpayer].born_before_2001 = UNKNOWN (no input supplied for person[taxpayer].born_before_2001)
-    cite: i1040gi, p. 41, Step 4, question 2, "Check 'Yes' if you ... were born after December 31, 1960, and before January 2, 2001" (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].born_after_1960 = UNKNOWN (no input supplied for person[taxpayer].born_after_1960)
-    cite: i1040gi, p. 41, Step 4, question 2, "Check 'Yes' if you ... were born after December 31, 1960, and before January 2, 2001" (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].role = taxpayer
-    cite: f1040, Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first name and middle initial" (2025; created 2025-09-05; 3d31c226)
-  person[taxpayer].one = 1
-    cite: f1040, Form 1040 (2025), page 1, one entry for you and, if joint return, one for your spouse (2025; created 2025-09-05; 3d31c226)
-  person[taxpayer].w2[emp_a].box1 = $80,000
-    cite: iw2w3, p. 17, box 1 (2025; printed date 2025-02-19; bfecbc99)
-  person[taxpayer].w2[emp_b].box1 = $40,000
-    cite: iw2w3, p. 17, box 1 (2025; printed date 2025-02-19; bfecbc99)
-  person[taxpayer].box1 = $120,000
-    cite: f1040, Form 1040 (2025), line 1a (2025; created 2025-09-05; 3d31c226)
-  interest[bank_a].amount = $1,200
-    cite: i1040sb, pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
-  person[taxpayer].sc_total = $0
-    cite: i1040sse, p. 2, More Than One Business, "Figure the combined SE tax on one Schedule SE" (2025; ea9e3120)
-  person[taxpayer].educator_expenses = $0
-    cite: i1040gi, p. 93, Schedule 1, line 11, Qualified expenses and 'You must reduce your qualified expenses by the following amounts' (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].has_educator_expenses = false
-    cite: i1040gi, p. 93, Schedule 1, line 11 (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].zero = $0
-    cite: i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].educator_deduction = $0
-    cite: i1040gi, p. 93, Schedule 1, line 11, "If you were an eligible educator in 2025, you can deduct on line 11 up to $300 of qualified expenses you paid in 2025"; "If you and your spouse are filing jointly and both of you were eligible educators, the maximum deduction is $600. However, neither spouse can deduct more than $300 of their qualified expenses" (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].hsa_forms = 0
-    cite: i8889, p. 4, Name and social security number (SSN), "complete a separate Form 8889 for each of you" (2025; da6f2f58)
-  person[taxpayer].hsa_repeated = false
-    cite: i8889, p. 4, Name and social security number (SSN), "complete a separate Form 8889 for each of you" (2025; da6f2f58)
-  person[taxpayer].hsa_deduction = $0
-    cite: i8889, p. 4, "Combine the amounts on line 13 of both Forms 8889 and enter this amount on Schedule 1 (Form 1040), line 13" (2025; da6f2f58)
-  person[taxpayer].sc_count = 0
-    cite: i1040sc, p. 14, Line 31; i4562 p. 4, Part I (2025; b5536db9)
-  person[taxpayer].has_sc = false
-    cite: i1040sse, p. 1, Who Must File Schedule SE; p. 2, Joint Returns, "If both spouses have self-employment income, each must file a separate Schedule SE" (2025; ea9e3120)
-  person[taxpayer].se_line13 = $0
-    cite: f1040sse, Schedule SE (2025), line 13, "Enter here and on Schedule 1 (Form 1040), line 15" (2025; created 2025-05-07; 05bc2b3e)
-  person[taxpayer].s16 = $0
-    cite: i1040gi, p. 93, Schedule 1, line 16, "If you were self-employed or a partner, you may be able to take this deduction" (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].sehi = $0
-    cite: f7206, Form 7206 (2025), line 14 (2025; created 2025-10-02; 822203c9)
-  person[taxpayer].work_ssn = true
-    cite: i1040gi, p. 18, Step 3, question 4 (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].eic_se = $0
-    cite: i1040gi, p. 47, Worksheet B, "If you are married filing a joint return, include your spouse's amounts, if any, with yours" (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].age65 = false
-    cite: f1040sa, Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  person[taxpayer].blind = false
-    cite: f1040sa, Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  person[taxpayer].qbi = $0
-    cite: i8995, pp. 2, 4, Determining Your Qualified Business Income; Line 1 (2025; printed date 2026-01-26; 875843ba)
-  person[taxpayer].se_line12 = $0
-    cite: f1040sse, Schedule SE (2025), line 12, "Enter here and on Schedule 2 (Form 1040), line 4" (2025; created 2025-05-07; 05bc2b3e)
-  person[taxpayer].rrta = false
-    cite: iw2w3, pp. 12–13, Railroad employers: RRTA compensation and taxes in box 14; boxes 3–7 are not used for RRTA (2025; printed date 2025-02-19; bfecbc99)
-  person[taxpayer].w2[emp_a].box5 = $80,000
-    cite: f8959, Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; 13e64004)
-  person[taxpayer].w2[emp_b].box5 = $40,000
-    cite: f8959, Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; 13e64004)
-  person[taxpayer].medicare5 = $120,000
-    cite: f8959, Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; 13e64004)
-  person[taxpayer].se_line6 = $0
-    cite: f1040sse, Schedule SE (2025), line 6; i8959 Line 8, "Schedule SE, line 6" (2025; created 2025-05-07; 05bc2b3e)
-  person[taxpayer].w2[emp_a].box2 = $12,000
-    cite: iw2w3, p. 17, box 2 (2025; printed date 2025-02-19; bfecbc99)
-  person[taxpayer].w2[emp_b].box2 = $5,000
-    cite: iw2w3, p. 17, box 2 (2025; printed date 2025-02-19; bfecbc99)
-  person[taxpayer].box2 = $17,000
-    cite: f1040, Form 1040 (2025), line 25a (2025; created 2025-09-05; 3d31c226)
-  person[taxpayer].w2[emp_a].box4 = $4,960
-    cite: iw2w3, p. 18, boxes 3, 4 and 7 (2025; printed date 2025-02-19; bfecbc99)
-  person[taxpayer].w2[emp_a].over = false
-    cite: i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].w2[emp_b].box4 = $2,480
-    cite: iw2w3, p. 18, boxes 3, 4 and 7 (2025; printed date 2025-02-19; bfecbc99)
-  person[taxpayer].w2[emp_b].over = false
-    cite: i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].overcount = 0
-    cite: i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].over = false
-    cite: i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].w2[emp_a].one = 1
-    cite: i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].w2[emp_b].one = 1
-    cite: i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].employers = 2
-    cite: i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].w2[emp_a].box3 = $80,000
-    cite: iw2w3, p. 18, boxes 3, 4 and 7 (2025; printed date 2025-02-19; bfecbc99)
-  person[taxpayer].w2[emp_a].box7 = $0
-    cite: iw2w3, p. 18, boxes 3, 4 and 7 (2025; printed date 2025-02-19; bfecbc99)
-  person[taxpayer].w2[emp_a].wages = $80,000
-    cite: iw2w3, p. 18, boxes 3, 4 and 7 (2025; printed date 2025-02-19; bfecbc99)
-  person[taxpayer].w2[emp_b].box3 = $40,000
-    cite: iw2w3, p. 18, boxes 3, 4 and 7 (2025; printed date 2025-02-19; bfecbc99)
-  person[taxpayer].w2[emp_b].box7 = $0
-    cite: iw2w3, p. 18, boxes 3, 4 and 7 (2025; printed date 2025-02-19; bfecbc99)
-  person[taxpayer].w2[emp_b].wages = $40,000
-    cite: iw2w3, p. 18, boxes 3, 4 and 7 (2025; printed date 2025-02-19; bfecbc99)
-  person[taxpayer].wages = $120,000
-    cite: i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].eligible = false
-    cite: i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].credit = $0
-    cite: i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].w2[emp_a].box6 = $1,160
-    cite: f8959, Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; 13e64004)
-  person[taxpayer].w2[emp_b].box6 = $580
-    cite: f8959, Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; 13e64004)
-  person[taxpayer].medicare6 = $1,740
-    cite: f8959, Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; 13e64004)
-  person[taxpayer].hsa_split = 0
-    cite: i8889, p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3 (2025; da6f2f58)
-  person[taxpayer].hsa_agreed = 0
-    cite: i8889, p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3 (2025; da6f2f58)
-  person[taxpayer].hsa_step1 = $0
-    cite: i8889, p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3 (2025; da6f2f58)
-  person[taxpayer].hsa_share = $0
-    cite: i8889, p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025; Steps 1 to 3 (2025; da6f2f58)
-  person[taxpayer].tin = true
-    cite: i1040gi, p. 17, Before you begin, "The other spouse must have either an SSN or ITIN, and it must have been issued on or before the due date of the return (including extensions)"; p. 19, Step 5, question 1 (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].mq_q4 = $0
-    cite: i1040sc, p. 14, Line 31; i4562 p. 4, Part I (2025; b5536db9)
-  person[taxpayer].mq_total = $0
-    cite: i1040sc, p. 14, Line 31; i4562 p. 4, Part I (2025; b5536db9)
-  person[taxpayer].sc_1a = 0
-    cite: i1040gi, p. 104, Schedule 1-A, line 5 (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].cost179 = $0
-    cite: i1040sc, p. 14, Line 31; i4562 p. 4, Part I (2025; b5536db9)
-  person[taxpayer].s179_nonlisted = $0
-    cite: i1040sc, p. 14, Line 31; i4562 p. 4, Part I (2025; b5536db9)
-  person[taxpayer].s179_listed = $0
-    cite: i1040sc, p. 14, Line 31; i4562 p. 4, Part I (2025; b5536db9)
-  person[taxpayer].income179 = $0
-    cite: i1040sc, p. 14, Line 31; i4562 p. 4, Part I (2025; b5536db9)
-  person[taxpayer].tip_employers = UNKNOWN (collection roster not confirmed)
-    cite: i1040gi, p. 104, Schedule 1-A, line 4c (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].tip_total = UNKNOWN (collection roster not confirmed)
-    cite: i1040gi, p. 104, Qualified Tips From More Than One Employer Worksheet, line 2 (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].tip_reported = UNKNOWN (collection roster not confirmed)
-    cite: i1040gi, p. 104, Qualified Tips From More Than One Employer Worksheet, column (b) (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].ot_employers = UNKNOWN (collection roster not confirmed)
-    cite: i1040gi, p. 108, Schedule 1-A, line 14a, and the Qualified Overtime Compensation From More Than One Employer Worksheet (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].ot_total = UNKNOWN (collection roster not confirmed)
-    cite: i1040gi, p. 108, Schedule 1-A, line 14a, and the Qualified Overtime Compensation From More Than One Employer Worksheet, line 2 (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].died_before_65 = UNKNOWN (no input supplied for person[taxpayer].died_before_65)
-    cite: i1040gi, p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025" (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].withheld = $7,440
-    cite: i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].itin_applied = UNKNOWN (no input supplied for person[taxpayer].itin_applied)
-    cite: i1040gi, p. 19, Step 5, question 1, "(Answer 'Yes' if you are applying for an ITIN on or before the return due date (including extensions).)" (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].eligible_educator = UNKNOWN (no input supplied for person[taxpayer].eligible_educator)
-    cite: i1040gi, p. 93, Schedule 1, line 11, 'An eligible educator is a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year' (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].educator_max = $300
-    cite: i1040gi, p. 93, Schedule 1, line 11, "If you and your spouse are filing jointly and both of you were eligible educators, the maximum deduction is $600. However, neither spouse can deduct more than $300 of their qualified expenses" (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].educator_limited = $0
-    cite: i1040gi, p. 93, Schedule 1, line 11, "If you and your spouse are filing jointly and both of you were eligible educators, the maximum deduction is $600. However, neither spouse can deduct more than $300 of their qualified expenses" (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].educator_eligible_amount = UNKNOWN (no input supplied for person[taxpayer].eligible_educator)
-    cite: i1040gi, p. 93, Schedule 1, line 11, "If you were an eligible educator in 2025, you can deduct on line 11 up to $300 of qualified expenses you paid in 2025"; "If you and your spouse are filing jointly and both of you were eligible educators, the maximum deduction is $600. However, neither spouse can deduct more than $300 of their qualified expenses" (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].excess = $0
-    cite: i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].ho_count = 0
-    cite: i1040sc, p. 10, Simplified method, "You are limited to a maximum of 300 square feet for all of the businesses you conduct in your home that qualify for this deduction" (2025; b5536db9)
-  person[taxpayer].se_screen = UNKNOWN (no input supplied for person[taxpayer].se_screen)
-    cite: i1040sse, pp. 1-5, Who Must Pay Self-Employment (SE) Tax, Net Earnings From Self-Employment, Instructions for Part II; f1040sse lines 1a, 1b, 5a, 8b and 8c (2025; ea9e3120)
-  person[taxpayer].se_screened = UNKNOWN (no input supplied for person[taxpayer].se_screen)
-    cite: i1040sse, pp. 1-5 (2025; ea9e3120)
-  person[taxpayer].se_line2 = UNKNOWN (no input supplied for person[taxpayer].se_screen)
-    cite: f1040sse, Schedule SE (2025), line 2, "Net profit or (loss) from Schedule C, line 31" (2025; created 2025-05-07; 05bc2b3e)
-  person[taxpayer].se_line4c = $0
-    cite: f1040sse, Schedule SE (2025), line 4c (2025; created 2025-05-07; 05bc2b3e)
-  person[taxpayer].plan = UNKNOWN (no input supplied for person[taxpayer].plan)
-    cite: p560, pp. 8–11, 14–17, chapter 2, Simplified Employee Pension (SEP); chapter 3, SIMPLE IRA Plan; i1040gi Schedule 1, line 16 (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].plan_screen = UNKNOWN (no input supplied for person[taxpayer].plan_screen)
-    cite: p560, pp. 11, 16, 38, chapter 2, Salary Reduction Simplified Employee Pension (SARSEP); chapter 3, Salary reduction contributions; chapter 5, Caution, "apply only to self-employed individuals who have only one defined contribution plan" (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].plan_screened = UNKNOWN (no input supplied for person[taxpayer].plan_screen)
-    cite: p560, pp. 8–11, 14–17, 38–40, chapters 2, 3 and 5 (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].cent = $0.01
-    cite: p560, pp. 38–40, chapter 5, Rate Table for Self-Employed (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].hundred = $1
-    cite: p560, pp. 38–40, chapter 5, Rate Worksheet for Self-Employed, "Rate in line 1 plus 1" (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].sep_rate = UNKNOWN (no input supplied for person[taxpayer].sep_rate)
-    cite: p560, pp. 38–40, chapter 5, Rate Table for Self-Employed, "find your plan contribution rate (the contribution rate stated in your plan)" (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].sep_contrib = UNKNOWN (no input supplied for person[taxpayer].plan_screen)
-    cite: p560, pp. 11, 39, chapter 2, Deduction Limit for Self-Employed Individuals; chapter 5, Deduction Worksheet for Self-Employed, "Next: Enter your actual contribution" (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].sep_rate_c = UNKNOWN (no input supplied for person[taxpayer].sep_rate)
-    cite: p560, pp. 38–40, chapter 5, Rate Worksheet for Self-Employed, line 1 (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].sep_rate_plus = UNKNOWN (no input supplied for person[taxpayer].sep_rate)
-    cite: p560, pp. 38–40, chapter 5, Rate Worksheet for Self-Employed, line 2, "Rate in line 1 plus 1" (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].sep_s1 = $0
-    cite: p560, p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 1 (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].sep_s2 = $0
-    cite: p560, p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 2 (this person's own Schedule SE, line 13) (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].sep_s3 = $0
-    cite: p560, p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 3 (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].sep_s5 = UNKNOWN (no input supplied for person[taxpayer].sep_rate)
-    cite: p560, pp. 39–40, chapter 5, Deduction Worksheet for Self-Employed, Steps 4 and 5; Rate Table for Self-Employed (for example 10% gives 0.090909) (amb.2025.sep_rate_places) (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].comp_limit = $350,000
-    cite: p560, p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 6, "Multiply $350,000" (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].sep_s6 = UNKNOWN (no input supplied for person[taxpayer].sep_rate)
-    cite: p560, p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 6 (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].sep_s7 = UNKNOWN (no input supplied for person[taxpayer].sep_rate)
-    cite: p560, p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 7 (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].sep_s8 = $70,000
-    cite: p560, p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 8, "$70,000" (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].sep_s21 = UNKNOWN (no input supplied for person[taxpayer].sep_rate)
-    cite: p560, p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 8 note, "Otherwise, skip steps 9 through 20 and enter the smaller of step 7 or step 8 on step 21" (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].sep_excess = UNKNOWN (no input supplied for person[taxpayer].plan_screen)
-    cite: p560, p. 39, chapter 5, "Enter your actual contribution, not to exceed your maximum deductible contribution"; chapter 2, Excess contributions (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].sep_deduction = UNKNOWN (no input supplied for person[taxpayer].plan_screen)
-    cite: p560, p. 39, chapter 5, "Enter your actual contribution, not to exceed your maximum deductible contribution, on Schedule 1 (Form 1040), line 16" (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].simple_deferral = UNKNOWN (no input supplied for person[taxpayer].plan_screen)
-    cite: p560, p. 16, chapter 3, Salary reduction contributions and Catch-up contributions (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].simple_age = UNKNOWN (no input supplied for person[taxpayer].simple_age)
-    cite: p560, p. 16, chapter 3, Catch-up contributions, "age 50 or over at the end of the calendar year" and "in a tax year in which they attain age 60, 61, 62, or 63" (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].simple_kind = UNKNOWN (no input supplied for person[taxpayer].simple_kind)
-    cite: p560, pp. 16–17, chapter 3, Employer matching contributions and Nonelective contributions (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].simple_employer = UNKNOWN (no input supplied for person[taxpayer].simple_employer)
-    cite: p560, pp. 16–17, chapter 3, Employer matching contributions and Nonelective contributions (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].simple_comp = $0
-    cite: p560, p. 15, chapter 3, Compensation, "If you are self-employed, compensation is your net earnings from self-employment (line 4 of Schedule SE (Form 1040)) before subtracting any contributions made to the SIMPLE IRA plan for yourself" (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].simple_cap = $16,500
-    cite: p560, p. 16, chapter 3, Salary reduction contributions, "can't be more than $16,500 for 2025" (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].simple_regular = UNKNOWN (no input supplied for person[taxpayer].plan_screen)
-    cite: p560, p. 16, chapter 3, Catch-up contributions, "Salary reduction contributions aren't treated as catch-up contributions until they exceed $16,500 for 2025" (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].simple_catchup = UNKNOWN (no input supplied for person[taxpayer].plan_screen)
-    cite: p560, p. 16, chapter 3, Catch-up contributions (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].catchup_limit = UNKNOWN (no input supplied for person[taxpayer].simple_age)
-    cite: p560, p. 16, chapter 3, Catch-up contributions, "generally $3,500 for 2025" and "the higher limit on catch-up contributions ... is $5,250" (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].comp_after_regular = UNKNOWN (no input supplied for person[taxpayer].plan_screen)
-    cite: p560, p. 16, chapter 3, Catch-up contributions, "The excess of the participant's compensation over the salary reduction contributions that aren't catch-up contributions" (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].catchup_max = UNKNOWN (no input supplied for person[taxpayer].simple_age)
-    cite: p560, p. 16, chapter 3, Catch-up contributions, "can't exceed the lesser of the following amounts" (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].rate3 = 3/100
-    cite: p560, p. 16, chapter 3, Employer matching contributions, "up to 3% of the employee's compensation" (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].rate2 = 2/100
-    cite: p560, p. 17, chapter 3, Nonelective contributions, "nonelective contributions of 2% of compensation" (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].match_3pct = $0
-    cite: p560, p. 16, chapter 3, Employer matching contributions (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].deferrals_total = UNKNOWN (no input supplied for person[taxpayer].plan_screen)
-    cite: p560, p. 16, chapter 3, Employer matching contributions, "match each employee's salary reduction contribution(s) on a dollar-for-dollar basis" (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].match_max = UNKNOWN (no input supplied for person[taxpayer].plan_screen)
-    cite: p560, p. 16, chapter 3, Employer matching contributions (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].ne_comp = $0
-    cite: p560, p. 17, chapter 3, Nonelective contributions, "Only $350,000 of the employee's compensation can be taken into account" (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].ne_max = $0
-    cite: p560, p. 17, chapter 3, Nonelective contributions (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].employer_max = UNKNOWN (no input supplied for person[taxpayer].simple_kind)
-    cite: p560, pp. 16–17, chapter 3, Employer matching contributions and Nonelective contributions (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].simple_excess = UNKNOWN (no input supplied for person[taxpayer].plan_screen)
-    cite: p560, p. 16, chapter 3, Salary reduction contributions, Catch-up contributions and Employer matching contributions (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].simple_deduction = UNKNOWN (no input supplied for person[taxpayer].plan_screen)
-    cite: p560, p. 17, chapter 3, Where To Deduct Contributions, "Sole proprietors and partners deduct contributions for themselves on line 16 of Schedule 1" (For use in preparing 2025 returns; 1f1f7abe)
-  person[taxpayer].plan_deduction = UNKNOWN (no input supplied for person[taxpayer].plan)
-    cite: i1040gi, p. 93, Schedule 1, line 16, Self-Employed SEP, SIMPLE, and Qualified Plans; p560 chapter 5 (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].positive_profits = $0
-    cite: i7206, Line 5, Form 7206 (2025), "Don't include any net losses" (2025; 9cbf92b3)
-  person[taxpayer].eic_part1 = $0
-    cite: i1040gi, p. 47, Worksheet B, Part 1, lines 1a to 1e (line 1b is zero: the optional methods and church employee income are refused) (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].files_se = false
-    cite: i1040gi, p. 47, Worksheet B, Part 1 and Part 2, "Self-Employed NOT Required To File Schedule SE" (2025; printed date 2026-02-25; 482e9c48)
-  person[taxpayer].eic_se_has = $0
-    cite: i1040gi, p. 47, Worksheet B, Part 1, line 1e, and Part 2, line 2b (2025; printed date 2026-02-25; 482e9c48)
+Derivations:
   div.box1a: copy(sb.ordinary_dividends = $2,000)
   div.box1b: copy(f1040.line3a = $1,500)
   div.box2a: copy(sd.distributions = $0)
@@ -4690,7 +4871,7 @@ Interpretation amb.2025.ss_wages: Use boxes 3 plus 7, summed across employers se
 Interpretation amb.2025.s179_carryover_no_property: The second. s179.line1 is the $2,500,000 the line 1 instruction states, so line 5 is the dollar limitation and a carryover is deducted up to the dollar limitation less the 2025 election and up to the business income limit (line 11). On a separate return line 5 is 50% of the limitation, the instruction's allocation when the spouses elect no other. Research for the owner (ambiguities/research/amb.2025.s179_carryover_no_property.md) quotes the archived 26 U.S.C. 179(b)(3)(B), Treas. Reg. 1.179-2(b) and 1.179-3(b) to (d), and P.L. 119-21 sec. 70306. The carryover's room is "the limitation of paragraphs (1) and (2)", the dollar amount, which the cost of 2025 property reduces only above $4,000,000. Form 4562 computes exactly that when line 1 is the $2,500,000 the line 1 instruction states (p. 4). The optional Worksheet 1 instead takes the smaller of that and the cost of 2025 property, a cap that changes no return without a carryover and departs from the statute on a return with one. (i4562, p. 4, Line 1 and Worksheet 1; p. 5, Line 5)
 Interpretation amb.2025.sli_ratio_places: Round the ratio half-up to three decimal places (the prorate atom with places 3 on sli.line8_figured). The owner's ruling. Three places is the least precision the text allows and the usual hand computation; the readings differ by at most a few cents of deduction (for example $167.50 against $166.67 on line 8 when line 6 is $1,000 and line 1 is $2,500).
  (i1040gi, p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 7)
-Scope: single-person return (Form 1040 lines 1a–37 with the in-scope schedules and refusal screens). Unsupported paths are refused with citations. No filing or transmission.
+Scope: Form 1040 lines 1a–37 with the schedules and forms this tool implements and their refusal screens. Unsupported paths are refused with citations. No filing or transmission.
 Rounding: amounts are exact cents; the return-wide whole-dollar rounding setting is deferred (see ambiguities/2025.yaml).
 Estimated tax penalty: not computed; the IRS will figure it (see i1040gi, line 38).
 This is a computation of published IRS forms and instructions; it is not tax or legal advice. Published instructions are not the law itself.

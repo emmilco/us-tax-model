@@ -830,3 +830,23 @@ later grouping.
 - **Where:** `forms/2025/sc.yaml` (`sc.line14`, `sc.special`) and the three interview files.
 - **Fix (owner):** Form 2441 is not built, so the Schedule C screen `sc.special` now names these contributions and refuses the return.
 - **Tags:** render-wording; understatement; caught-by-review
+
+## BUG-0071 — The renderer printed an Enum parameter's value as money
+
+- **Date:** 2026-10-20
+- **Caught by:** the render review of `asset`, rerun for T-030: "the half-year convention helper (asset.hy) is garbled ('Enter 0 $NaN.NaN; 1 $NaN.NaN')".
+- **Symptom:** a line that enters an Enum parameter (the MACRS convention `sc.conv_hy`, the recovery period `sc.period_y5`) rendered as "Enter 0 $NaN.NaN; 1 $NaN.NaN", in `rendered/2025/asset.md`, `scveh.md` and `params.md`; the Stage 14 render reviews of `asset` and `scveh` saw that text. Values were unaffected.
+- **Root cause:** `paramValueText` in `engine/src/render.ts` handled numbers, booleans and rates, and treated anything else as a per-filing-status table; a string value was taken apart character by character and each character formatted as money.
+- **Where:** `engine/src/render.ts`.
+- **Fix:** a string value (an Enum parameter) renders as itself ("Enter hy (sc.conv_hy)"); the `asset` and `scveh` render reviews were rerun on the corrected text.
+- **Tags:** renderer-bug; review-input-gap; caught-by-review
+
+## BUG-0072 — A vehicle converted from personal use during 2025 got an unprorated business-use percentage
+
+- **Date:** 2026-10-20
+- **Caught by:** the render review of `scveh`, rerun for BUG-0071: "It omits the conversion rule: 'If during the tax year you convert property used solely for personal purposes to business/investment use ... Multiply that percentage by the number of months you use the property in your business ... and divide the result by 12.'"
+- **Symptom:** the cost question admits a vehicle converted from personal use (giving the basis rule for it), but in the year of conversion the business-use percentage was business miles over the year's total miles, without the months-over-12 proration i4562 requires (p. 14); nothing refused the case, so its depreciation could be over- or understated.
+- **Root cause:** the basis rule for converted property was added to the cost question in Stage 14 without the conversion-year percentage rule that goes with it.
+- **Where:** `forms/2025/scveh.yaml` (`scveh.screen`) and the three interview files.
+- **Fix (owner):** the vehicle screen now names a conversion from personal use during 2025, which is refused; a conversion in an earlier year needs no proration in 2025.
+- **Tags:** scope-gap; no-refusal; caught-by-review

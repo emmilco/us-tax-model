@@ -347,7 +347,13 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
         let nested := (objGet (objGetD doc "collection" Json.null) "parent").isSome
         let parent := if nested then frame.instKey.getD "" else ""
         let rosterKey := "$" ++ col ++ (if parent == "" then "" else "@" ++ parent)
-        match objGet ctx.inputs rosterKey with
+        -- an implicit collection with no roster given has its one implicit entry
+        let implicitKey := strGet (objGetD doc "collection" Json.null) "implicit"
+        let roster : Option Json := match objGet ctx.inputs rosterKey, implicitKey with
+          | some r, _ => some r
+          | none, some k => some (Json.arr #[Json.str k])
+          | none, none => none
+        match roster with
         | some (.arr entries) =>
           let field := (strGet expr "field").getD ""
           let isCount := strGet ((findLine doc field).getD Json.null) "type" == some "Count"

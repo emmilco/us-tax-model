@@ -416,13 +416,13 @@ form:
       source: 'Does any of these apply to this vehicle: you placed it in service before 2019; you claimed a special depreciation
         allowance for it in an earlier year; you used the standard mileage rate for it in an earlier year; you disposed of
         it in 2025; you acquired it in a trade-in or from a related person; its business use was 50% or less in any earlier
-        year; it is an electric vehicle placed in service before 2007; you reduced its basis by a clean-fuel deduction or
-        a vehicle credit; or you use it in your business of transporting persons or property for hire, or it is an ambulance
+        year; it is an electric vehicle placed in service before 2007; you reduced its basis by a clean-fuel deduction or a vehicle credit; you converted it from personal use to business use during 2025; or you use it in your business of transporting persons or property for hire, or it is an ambulance
         or hearse?'
     cite:
       doc: i4562
-      locator: pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles; p946 p. 63, Deductions for Passenger
-        Automobiles Acquired in a Trade-In
+      locator: pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles (p. 14, "If during the tax year you convert
+        property used solely for personal purposes to business/investment use"); p946 p. 63, Deductions for Passenger Automobiles
+        Acquired in a Trade-In
   - id: scveh.screened
     printed: (gate)
     label: This vehicle's depreciation is outside this tool
@@ -801,6 +801,7 @@ form:
       doc: p946
       locator: pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 10, "Enter -0- if this is not the year you
         placed the car in service"; i4562 p. 15, Column (i)
+    ambiguity: amb.2025.vehicle_s179_claimed
   - id: scveh.line10_2025
     printed: (helper)
     label: 'Section 179 for a 2025 vehicle: not more than line 9 for a passenger automobile'

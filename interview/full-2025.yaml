@@ -2059,8 +2059,7 @@ interview:
       prompt: 'For this vehicle — Does any of these apply to this vehicle: you placed it in service before 2019; you claimed a
         special depreciation allowance for it in an earlier year; you used the standard mileage rate for it in an earlier year;
         you disposed of it in 2025; you acquired it in a trade-in or from a related person; its business use was 50% or less in
-        any earlier year; it is an electric vehicle placed in service before 2007; you reduced its basis by a clean-fuel deduction
-        or a vehicle credit; or you use it in your business of transporting persons or property for hire, or it is an ambulance
+        any earlier year; it is an electric vehicle placed in service before 2007; you reduced its basis by a clean-fuel deduction or a vehicle credit; you converted it from personal use to business use during 2025; or you use it in your business of transporting persons or property for hire, or it is an ambulance
         or hearse?'
       help: Answer true or false.
       order: 12

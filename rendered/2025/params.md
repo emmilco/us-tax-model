@@ -128,7 +128,7 @@
 | `sales.one` | Count | 1 | [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; sha256 f077991c) |
 | `sales.zero` | NonNegDollars | $0 | [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; sha256 f077991c) |
 | `sc.bonus_rate_40` | Rate | 40% (0.40) | [i4562] p. 5, Line 14, "is limited to a special depreciation allowance of 40% of the depreciable basis" (2025; sha256 5c1c95b7) |
-| `sc.conv_hy` | Enum(macrs_convention) | 0 $NaN.NaN; 1 $NaN.NaN | [i4562] p. 11, Column (e)—Convention, Half-year convention (2025; sha256 5c1c95b7) |
+| `sc.conv_hy` | Enum(macrs_convention) | hy | [i4562] p. 11, Column (e)—Convention, Half-year convention (2025; sha256 5c1c95b7) |
 | `sc.count2` | Count | 2 | [p946] p. 34, Which Convention Applies?, Mid-quarter convention, "more than 40%" (For use in preparing 2025 returns; sha256 07fadfb2) |
 | `sc.count5` | Count | 5 | [p946] p. 34, Which Convention Applies?, Mid-quarter convention, "more than 40%" (compared as five times the fourth-quarter bases against two times all bases) (For use in preparing 2025 returns; sha256 07fadfb2) |
 | `sc.fifty_cents` | NonNegDollars | $0.50 | [i4562] p. 13, Lines 26 and 27, "more than 50% in a qualified business use" (2025; sha256 5c1c95b7) |
@@ -140,7 +140,7 @@
 | `sc.mileage_rate` | NonNegDollars | $0.70 | [n-25-05] Section 3, "The standard mileage rate for transportation or travel expenses for 2025 is 70 cents per mile for all miles of business use" (Notice 2025-5; sha256 aac49246) |
 | `sc.one` | Count | 1 | [i1040sc] p. 3, Line A, "complete a separate Schedule C for each business" (2025; sha256 b5536db9) |
 | `sc.one_cent` | NonNegDollars | $0.01 | [i4562] p. 11, Column (c), the percentage of business/investment use (a percentage carried as cents of 100) (2025; sha256 5c1c95b7) |
-| `sc.period_y5` | Enum(macrs_period) | 0 $NaN.NaN; 1 $0.05 | [i4562] p. 9, Lines 19a Through 19j, Column (a), "5-year property includes the following. Automobiles. Light general purpose trucks" (2025; sha256 5c1c95b7) |
+| `sc.period_y5` | Enum(macrs_period) | y5 | [i4562] p. 9, Lines 19a Through 19j, Column (a), "5-year property includes the following. Automobiles. Light general purpose trucks" (2025; sha256 5c1c95b7) |
 | `sc.year1` | Count | 1 | [p946] p. 61, Deductions After the Recovery Period (the years of a 5-year recovery period) (For use in preparing 2025 returns; sha256 07fadfb2) |
 | `sc.year2` | Count | 2 | [p946] p. 61, Deductions After the Recovery Period (the years of a 5-year recovery period) (For use in preparing 2025 returns; sha256 07fadfb2) |
 | `sc.year3` | Count | 3 | [p946] p. 61, Deductions After the Recovery Period (the years of a 5-year recovery period) (For use in preparing 2025 returns; sha256 07fadfb2) |

@@ -57,8 +57,15 @@ export function runChecks(data: CanonicalData): { errors: string[]; stats: strin
   }
 
   for (const doc of [...data.forms, ...data.defs]) {
+    for (const line of doc.lines) {
+      if (!line.shown_when) continue;
+      const cond = doc.lines.find((l) => l.id === line.shown_when);
+      if (!cond || cond.type !== "Bool") ctx.errors.push(`${line.id}: shown_when ${line.shown_when} is not a Bool line of ${doc.id}`);
+      if (line.printed.startsWith("(")) ctx.errors.push(`${line.id}: shown_when on a helper; only a printed line is shown or left out`);
+    }
     if (doc.collection) {
       checkCite(ctx, doc.collection.cite, `${doc.id} collection`);
+      if (doc.collection.implicit && !doc.collection.parent) ctx.errors.push(`${doc.id}: an implicit collection needs a parent (one entry per parent entry)`);
       if (doc.kind === "def") ctx.errors.push(`${doc.id}: def cannot be a collection`);
       const seen = new Set([doc.id]);
       let parent = doc.collection.parent;

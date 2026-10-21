@@ -255,11 +255,9 @@ for the Stage 14 documents).
 
 ## Open for the owner
 
-- **T-030, next before any new stage (owner):** the values sheet prints no collection entry, so a
-  filer with a business gets the Form 1040, Schedule 1, Schedule 2, Schedule SE and Form 8995
-  amounts but not the Schedule C, Form 7206, vehicle worksheet or Form 4562 line values. The
-  owner chose that each per-asset printed line then carries the form's value for that asset and
-  that the Form 4562 lines print in the Schedule C entry's section.
+- **T-046:** the agent reading `amb.2025.vehicle_s179_claimed`.
+- **T-045, next (owner): year-readiness**, so that adopting TY2026 and later years is a reviewed
+  worklist of what changed (TASKS.md). The roadmap pauses until it is done.
 - **T-044:** a citation-page check in `check-all`, and review logs that notice a changed form.
 - T-040: reading-order text of Pub. 946 pp. 98, 109 and 110.
 
@@ -286,6 +284,19 @@ for the Stage 14 documents).
     not per person.
   - BUG-0070 (owner: refused through the Schedule C screen): the filer's own dependent care
     assistance contributions, deductible after Form 2441.
+- **T-030, entry lines on the values sheet (owner's choices):** each collection entry has its own
+  section, nested under its parent; the Lean evaluator evaluates every entry line and the compare
+  harness compares all of them; `display` is allowed on collection lines again, and Simplified
+  Method Worksheet lines 10 and 11 are back. Each Schedule C has one implicit Form 4562 (spec 4.4),
+  printed after it even with no property; an asset shows only the lines Form 4562 reports it on:
+  6(c), 14, 19(c) and 19(g) for 2025 property that is not listed, 17 for earlier property, 25, 26(h)
+  and 26(i) for listed property (`shown_when`, spec 4.3). `eval --json` still carries every
+  computed value. Six document titles that no longer described their documents were corrected.
+- **Found by the T-030 review reruns, fixed:** BUG-0071 (the renderer printed an Enum parameter as
+  money, which the Stage 14 `asset` and `scveh` render reviews saw) and BUG-0072 (owner: a vehicle
+  converted from personal use during 2025 is refused). Class M jobs now leave out an entry's lines
+  that `shown_when` hides, and a document without branches is worked on a case with nonzero
+  amounts; Form 4562 has its first class M log. T-046: an agent reading for the owner.
 - Run `node engine/dist/main.js classm-jobs --docs <doc>` before `classm.py` after any data
   change; the jobs file is not checked for age (T-044).
 
@@ -294,7 +305,9 @@ for the Stage 14 documents).
 - Entries: `person[p].sc[k]`, `person[p].sc[k].scveh[v]`, `...sc[k].asset[a]`, `...sc[k].ltc[l]`;
   rosters `$sc@person[p]`, `$scveh@person[p].sc[k]` and so on. Section 179 Part I is the root
   form `s179`; a business reads it and the return reads the businesses.
-- Collection entry lines are evaluated but not printed, and `display` is refused on them (T-030).
+- Every line of every collection entry is evaluated by both evaluators and printed in the entry's
+  own section of the values sheet; a Form 4562 is an implicit entry of each Schedule C, and an
+  asset's printed lines are shown only where Form 4562 reports that asset (`shown_when`).
 - `choose` selects money only; a sign test on a signed line goes through a Bool helper (interval
   guards must start at a finite bound).
 - A printed number shared by two worksheets of one form is compared as `"<number> (<line id>)"`

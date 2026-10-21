@@ -13,17 +13,469 @@
 
 | document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
 | --- | --- | --- | --- | --- | --- | --- |
-| i4562 | 2025 | 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 | cited pages | cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2 | 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 | 9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0 |
+| i4562 | 2025 | 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 | cited pages | cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2 | 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 | 9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0 |
 | p946 | For use in preparing 2025 returns | 34, 37, 39, 41, 98 | cited pages | 18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2 | 34, 37, 39, 41 | da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7 |
 
 ## Lines
 
-### case classm.asset.1 — prompt sha256 8beadbee4694b2360127d72f4de608349b091d114bdc5bf19204c19d8951256a; branches: asset.outside:false, asset.screen:false, asset.screened:false, asset.pct_bad:false, asset.listed:false, asset.over_half:false, asset.over_half:true, asset.listed_low:false, asset.is2025:false, asset.is2025:true, asset.done:false, asset.s179_bad:false, asset.after179:positive, asset.after_jan19:false, asset.after_jan19:true, asset.bonus_same:true, asset.bonus_mixed:false, asset.bonus_fullcase#0, asset.bonus_fullcase#1, asset.bonus#0, asset.bonus#2, asset.ub:floor, asset.ub:positive, asset.macrs2025#0, asset.mq_q4_2025#0, asset.mq_q4_2025#3, asset.ub_prior_a:positive, asset.ub_prior:positive, asset.macrs_prior#0, asset.dep_2025#0, asset.dep_2025#1, asset.bonus_2025#0, asset.bonus_2025#1, asset.s179_2025#0, asset.s179_2025#1, asset.mq_q4#0, asset.mq_q4#1, asset.mq_total#0, asset.mq_total#1, asset.cost179#0, asset.cost179#1, asset.cost179_2025#0, asset.cost179_2025#1, asset.dep_prior#0, asset.dep_prior#1
+### case classm.asset.1 — prompt sha256 14a49449c7ca2f3ba7cf60890987b801fa69f767f5c79d30aa2e9b69c3cd384f; branches: asset.outside:false, asset.screen:false, asset.screened:false, asset.pct_bad:false, asset.listed:false, asset.over_half:false, asset.over_half:true, asset.listed_low:false, asset.is2025:false, asset.is2025:true, asset.on_19:false, asset.on_19:true, asset.on_17:false, asset.on_17:true, asset.on_26_2025:false, asset.done:false, asset.s179_bad:false, asset.after179:positive, asset.after_jan19:false, asset.after_jan19:true, asset.bonus_same:true, asset.bonus_mixed:false, asset.bonus_fullcase#0, asset.bonus_fullcase#1, asset.bonus#1, asset.bonus#2, asset.ub:positive, asset.macrs2025#1, asset.mq_q4_2025#1, asset.mq_q4_2025#3, asset.ub_prior_a:positive, asset.ub_prior:positive, asset.macrs_prior#0, asset.dep_2025#0, asset.dep_2025#1, asset.bonus_2025#0, asset.bonus_2025#1, asset.s179_2025#0, asset.s179_2025#1, asset.mq_q4#0, asset.mq_q4#1, asset.mq_total#0, asset.mq_total#1, asset.cost179#0, asset.cost179#1, asset.cost179_2025#0, asset.cost179_2025#1, asset.dep_prior#0, asset.dep_prior#1
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].period — Recovery period under GDS for the asset class
+Status: **AGREE**
+
+Value: y7
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].outside — The asset class is outside this tool
+Status: **AGREE**
+
+Value: no
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].screened — This property is outside this tool
+Status: **AGREE**
+
+Value: no
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].pct_c — The business use percentage, as cents
+Status: **DISAGREE**
+
+Project: $1.00
+Model: $100.00
+Work: 100% business use
+
+Ruling: representation; project retained. pct_c carries the business-use percentage as one cent per percentage point (100% is $1.00) so that the percentage can be the part of a money ratio (prorate); the model wrote it as dollars. The basis it feeds agrees. Dropped from the fixture as not evidence. [dropped]
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].pct_bad — The business use percentage is more than 100
+Status: **AGREE**
+
+Value: no
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].over_half — Business use is more than 50%
+Status: **AGREE**
+
+Value: yes
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].listed_low — Listed property used 50% or less for business, or a percentage over 100
+Status: **AGREE**
+
+Value: no
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].basis — Basis for depreciation (business/investment use only), before section 179 and th
+Status: **AGREE**
+
+Value: $37,768.00
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].is2025 — Placed in service in 2025
+Status: **AGREE**
+
+Value: yes
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].on_19 — Reported on lines 6, 14 and 19 (property placed in service in 2025 that is not l
+Status: **AGREE**
+
+Value: yes
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].on_17 — Reported on line 17 (property placed in service before 2025 that is not listed p
+Status: **AGREE**
+
+Value: no
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].on_26_2025 — Reported on lines 25 and 26 column (i) (listed property placed in service in 202
+Status: **AGREE**
+
+Value: no
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].year — Year of recovery in 2025
+Status: **AGREE**
+
+Value: 1
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].last — Last year of recovery for the recovery period
+Status: **AGREE**
+
+Value: 8
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].done — The recovery period ended before 2025
+Status: **AGREE**
+
+Value: no
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].qconv — Mid-quarter convention for that quarter
+Status: **AGREE**
+
+Value: mq4
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].s179_bad — The section 179 election is more than the business cost, or the property is not 
+Status: **AGREE**
+
+Value: no
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].after179 — Basis less the section 179 election
+Status: **AGREE**
+
+Value: $37,768.00
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].bonus_mixed — The special allowance choice differs within a class
+Status: **AGREE**
+
+Value: no
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].bonus_full — 100% special allowance
+Status: **AGREE**
+
+Value: $37,768.00
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].bonus_forty — 40% special allowance
+Status: **AGREE**
+
+Value: $15,107.20
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].bonus_fullcase — The allowance when it is claimed: 100% if acquired after January 19, 2025, other
+Status: **AGREE**
+
+Value: $15,107.20
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].bonus — Special depreciation allowance for this property
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].ub — Basis for MACRS depreciation (after section 179 and the special allowance)
+Status: **AGREE**
+
+Value: $37,768.00
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].col19c — Basis for depreciation (business/investment use only), column (c), after the sec
+Status: **AGREE**
+
+Value: $37,768.00
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].rate_hy — MACRS rate, half-year convention
+Status: **AGREE**
+
+Value: 14.29%
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].rate_mq — MACRS rate, mid-quarter convention
+Status: **AGREE**
+
+Value: 3.57%
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].macrs_hy — MACRS depreciation, half-year convention
+Status: **AGREE**
+
+Value: $5,397.05
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].macrs_mq — MACRS depreciation, mid-quarter convention
+Status: **AGREE**
+
+Value: $1,348.32
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].macrs2025 — MACRS depreciation for 2025 property
+Status: **AGREE**
+
+Value: $1,348.32
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].mqbase — Depreciable basis for the mid-quarter test (after section 179, before the specia
+Status: **AGREE**
+
+Value: $37,768.00
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].mq_q4_2025 — That basis when placed in service October to December
+Status: **AGREE**
+
+Value: $37,768.00
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].ub_prior_a — Business basis less the section 179 deduction
+Status: **AGREE**
+
+Value: $37,768.00
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].ub_prior — Unadjusted basis
+Status: **AGREE**
+
+Value: $37,768.00
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].rate_prior — MACRS rate for the 2025 year of recovery
+Status: **AGREE**
+
+Value: 14.29%
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].macrs_prior_live — MACRS depreciation for 2025
+Status: **AGREE**
+
+Value: $5,397.05
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].dep_2025 — MACRS on 2025 property
+Status: **AGREE**
+
+Value: $1,348.32
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].bonus_2025 — Special allowance on 2025 property
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].s179_2025 — Section 179 elected on 2025 property
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].mq_q4 — Mid-quarter test basis, fourth quarter
+Status: **AGREE**
+
+Value: $37,768.00
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].mq_total — Mid-quarter test basis, all of 2025
+Status: **AGREE**
+
+Value: $37,768.00
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].cost179 — Cost of section 179 property placed in service in 2025
+Status: **AGREE**
+
+Value: $37,768.00
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].cost179_2025 — The business cost when used more than 50% in the business
+Status: **AGREE**
+
+Value: $37,768.00
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_1].dep_prior — MACRS on property placed in service before 2025
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].period — Recovery period under GDS for the asset class
+Status: **AGREE**
+
+Value: y20
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].outside — The asset class is outside this tool
+Status: **AGREE**
+
+Value: no
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].screened — This property is outside this tool
+Status: **AGREE**
+
+Value: no
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].pct_c — The business use percentage, as cents
+Status: **DISAGREE**
+
+Project: $0.01
+Model: $1.00
+Work: 1% business use
+
+Ruling: representation; project retained. pct_c carries the business-use percentage as one cent per percentage point (100% is $1.00) so that the percentage can be the part of a money ratio (prorate); the model wrote it as dollars. The basis it feeds agrees. Dropped from the fixture as not evidence. [dropped]
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].pct_bad — The business use percentage is more than 100
+Status: **AGREE**
+
+Value: no
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].over_half — Business use is more than 50%
+Status: **AGREE**
+
+Value: no
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].listed_low — Listed property used 50% or less for business, or a percentage over 100
+Status: **AGREE**
+
+Value: no
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].basis — Basis for depreciation (business/investment use only), before section 179 and th
+Status: **AGREE**
+
+Value: $56.07
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].is2025 — Placed in service in 2025
+Status: **AGREE**
+
+Value: yes
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].on_19 — Reported on lines 6, 14 and 19 (property placed in service in 2025 that is not l
+Status: **AGREE**
+
+Value: yes
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].on_17 — Reported on line 17 (property placed in service before 2025 that is not listed p
+Status: **AGREE**
+
+Value: no
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].on_26_2025 — Reported on lines 25 and 26 column (i) (listed property placed in service in 202
+Status: **AGREE**
+
+Value: no
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].year — Year of recovery in 2025
+Status: **AGREE**
+
+Value: 1
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].last — Last year of recovery for the recovery period
+Status: **AGREE**
+
+Value: 21
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].done — The recovery period ended before 2025
+Status: **AGREE**
+
+Value: no
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].qconv — Mid-quarter convention for that quarter
+Status: **AGREE**
+
+Value: mq2
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].s179_bad — The section 179 election is more than the business cost, or the property is not 
+Status: **DISAGREE**
+
+Project: no
+Model: yes
+Work: Not used more than 50% in business
+
+Ruling: model error; project retained. asset.s179_bad first requires a section 179 election greater than zero; this property's election is zero, so the gate is false whatever its business use. Dropped from the fixture as not evidence. [dropped]
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].after179 — Basis less the section 179 election
+Status: **AGREE**
+
+Value: $56.07
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].bonus_mixed — The special allowance choice differs within a class
+Status: **AGREE**
+
+Value: no
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].bonus_full — 100% special allowance
+Status: **AGREE**
+
+Value: $56.07
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].bonus_forty — 40% special allowance
+Status: **AGREE**
+
+Value: $22.43
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].bonus_fullcase — The allowance when it is claimed: 100% if acquired after January 19, 2025, other
+Status: **AGREE**
+
+Value: $22.43
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].bonus — Special depreciation allowance for this property
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].ub — Basis for MACRS depreciation (after section 179 and the special allowance)
+Status: **AGREE**
+
+Value: $56.07
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].col19c — Basis for depreciation (business/investment use only), column (c), after the sec
+Status: **AGREE**
+
+Value: $56.07
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].rate_hy — MACRS rate, half-year convention
+Status: **AGREE**
+
+Value: 3.75%
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].rate_mq — MACRS rate, mid-quarter convention
+Status: **AGREE**
+
+Value: 4.688%
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].macrs_hy — MACRS depreciation, half-year convention
+Status: **AGREE**
+
+Value: $2.10
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].macrs_mq — MACRS depreciation, mid-quarter convention
+Status: **AGREE**
+
+Value: $2.63
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].macrs2025 — MACRS depreciation for 2025 property
+Status: **AGREE**
+
+Value: $2.63
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].mqbase — Depreciable basis for the mid-quarter test (after section 179, before the specia
+Status: **AGREE**
+
+Value: $56.07
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].mq_q4_2025 — That basis when placed in service October to December
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].ub_prior_a — Business basis less the section 179 deduction
+Status: **AGREE**
+
+Value: $56.07
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].ub_prior — Unadjusted basis
+Status: **AGREE**
+
+Value: $56.07
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].rate_prior — MACRS rate for the 2025 year of recovery
+Status: **AGREE**
+
+Value: 6.563%
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].macrs_prior_live — MACRS depreciation for 2025
+Status: **AGREE**
+
+Value: $3.68
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].dep_2025 — MACRS on 2025 property
+Status: **AGREE**
+
+Value: $2.63
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].bonus_2025 — Special allowance on 2025 property
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].s179_2025 — Section 179 elected on 2025 property
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].mq_q4 — Mid-quarter test basis, fourth quarter
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].mq_total — Mid-quarter test basis, all of 2025
+Status: **AGREE**
+
+Value: $56.07
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].cost179 — Cost of section 179 property placed in service in 2025
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].cost179_2025 — The business cost when used more than 50% in the business
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.asset.1 — person[spouse].sc[biz_a].asset[item_2].dep_prior — MACRS on property placed in service before 2025
+Status: **AGREE**
+
+Value: $0.00
 
 ### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].period — Recovery period under GDS for the asset class
 Status: **AGREE**
 
-Value: y7
+Value: y5
 
 ### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].outside — The asset class is outside this tool
 Status: **AGREE**
@@ -38,11 +490,11 @@ Value: no
 ### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].pct_c — The business use percentage, as cents
 Status: **DISAGREE**
 
-Project: $0.40
-Model: $40.00
-Work: 40% business use
+Project: $1.00
+Model: $100.00
+Work: 100% business use
 
-Ruling: representation; project retained. The business-use percentage is carried as one cent per percentage point (multiply_count by one cent) so it can be divided like an amount; the model read the cents as dollars. Not evidence. [dropped]
+Ruling: representation; project retained. pct_c carries the business-use percentage as one cent per percentage point (100% is $1.00) so that the percentage can be the part of a money ratio (prorate); the model wrote it as dollars. The basis it feeds agrees. Dropped from the fixture as not evidence. [dropped]
 
 ### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].pct_bad — The business use percentage is more than 100
 Status: **AGREE**
@@ -52,7 +504,7 @@ Value: no
 ### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].over_half — Business use is more than 50%
 Status: **AGREE**
 
-Value: no
+Value: yes
 
 ### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].listed_low — Listed property used 50% or less for business, or a percentage over 100
 Status: **AGREE**
@@ -62,22 +514,37 @@ Value: no
 ### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].basis — Basis for depreciation (business/investment use only), before section 179 and th
 Status: **AGREE**
 
-Value: $16,578.80
+Value: $5,325.00
 
 ### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].is2025 — Placed in service in 2025
 Status: **AGREE**
 
+Value: no
+
+### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].on_19 — Reported on lines 6, 14 and 19 (property placed in service in 2025 that is not l
+Status: **AGREE**
+
+Value: no
+
+### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].on_17 — Reported on line 17 (property placed in service before 2025 that is not listed p
+Status: **AGREE**
+
 Value: yes
+
+### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].on_26_2025 — Reported on lines 25 and 26 column (i) (listed property placed in service in 202
+Status: **AGREE**
+
+Value: no
 
 ### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].year — Year of recovery in 2025
 Status: **AGREE**
 
-Value: 1
+Value: 4
 
 ### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].last — Last year of recovery for the recovery period
 Status: **AGREE**
 
-Value: 8
+Value: 6
 
 ### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].done — The recovery period ended before 2025
 Status: **AGREE**
@@ -87,7 +554,7 @@ Value: no
 ### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].qconv — Mid-quarter convention for that quarter
 Status: **AGREE**
 
-Value: mq1
+Value: mq2
 
 ### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].s179_bad — The section 179 election is more than the business cost, or the property is not 
 Status: **AGREE**
@@ -97,7 +564,7 @@ Value: no
 ### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].after179 — Basis less the section 179 election
 Status: **AGREE**
 
-Value: $16,578.80
+Value: $5,325.00
 
 ### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].bonus_mixed — The special allowance choice differs within a class
 Status: **AGREE**
@@ -107,57 +574,59 @@ Value: no
 ### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].bonus_full — 100% special allowance
 Status: **AGREE**
 
-Value: $16,578.80
+Value: $5,325.00
 
 ### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].bonus_forty — 40% special allowance
 Status: **AGREE**
 
-Value: $6,631.52
+Value: $2,130.00
 
 ### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].bonus_fullcase — The allowance when it is claimed: 100% if acquired after January 19, 2025, other
 Status: **AGREE**
 
-Value: $16,578.80
-
-### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].bonus — Special depreciation allowance for this property
-Status: **AGREE**
-
-Value: $16,578.80
+Value: $5,325.00
 
 ### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].ub — Basis for MACRS depreciation (after section 179 and the special allowance)
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $0.00
+Project: $3,195.00
+Model: $5,325.00
+Work: No 2025 allowance on pre-2025 property
+
+Ruling: helper of a branch this entry does not take; project retained. The 2025-property route (basis after a 2025 allowance, the half-year and mid-quarter amounts, the 2025 section 179 cost) is figured for property placed in service before 2025 but read by no line it reaches, and the allowance alternatives are figured for property that claims none; the printed lines of the route the entry takes agree (for earlier property, the unadjusted basis, the 2025 rate and line 17). Dropped from the fixture as not evidence. [dropped]
 
 ### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].rate_hy — MACRS rate, half-year convention
 Status: **AGREE**
 
-Value: 14.29%
+Value: 11.52%
 
 ### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].rate_mq — MACRS rate, mid-quarter convention
 Status: **AGREE**
 
-Value: 25%
+Value: 11.37%
 
 ### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].macrs_hy — MACRS depreciation, half-year convention
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $0.00
+Project: $368.06
+Model: $613.44
+Work: 5,325 x 11.52%
+
+Ruling: helper of a branch this entry does not take; project retained. The 2025-property route (basis after a 2025 allowance, the half-year and mid-quarter amounts, the 2025 section 179 cost) is figured for property placed in service before 2025 but read by no line it reaches, and the allowance alternatives are figured for property that claims none; the printed lines of the route the entry takes agree (for earlier property, the unadjusted basis, the 2025 rate and line 17). Dropped from the fixture as not evidence. [dropped]
 
 ### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].macrs_mq — MACRS depreciation, mid-quarter convention
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $0.00
+Project: $363.27
+Model: $605.45
+Work: 5,325 x 11.37%
 
-### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].macrs2025 — MACRS depreciation for 2025 property
-Status: **AGREE**
-
-Value: $0.00
+Ruling: helper of a branch this entry does not take; project retained. The 2025-property route (basis after a 2025 allowance, the half-year and mid-quarter amounts, the 2025 section 179 cost) is figured for property placed in service before 2025 but read by no line it reaches, and the allowance alternatives are figured for property that claims none; the printed lines of the route the entry takes agree (for earlier property, the unadjusted basis, the 2025 rate and line 17). Dropped from the fixture as not evidence. [dropped]
 
 ### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].mqbase — Depreciable basis for the mid-quarter test (after section 179, before the specia
 Status: **AGREE**
 
-Value: $16,578.80
+Value: $5,325.00
 
 ### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].mq_q4_2025 — That basis when placed in service October to December
 Status: **AGREE**
@@ -167,31 +636,27 @@ Value: $0.00
 ### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].ub_prior_a — Business basis less the section 179 deduction
 Status: **AGREE**
 
-Value: $16,578.80
+Value: $5,325.00
 
 ### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].ub_prior — Unadjusted basis
 Status: **AGREE**
 
-Value: $16,578.80
+Value: $5,325.00
 
 ### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].rate_prior — MACRS rate for the 2025 year of recovery
 Status: **AGREE**
 
-Value: 3.57%
+Value: 11.01%
 
 ### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].macrs_prior_live — MACRS depreciation for 2025
 Status: **AGREE**
 
-Value: $591.86
+Value: $586.28
 
 ### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].macrs_prior — MACRS deduction for 2025 on property placed in service before 2025
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $591.86
-Model: $0.00
-Work: Placed in service in 2025, not before
-
-Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Value: $586.28
 
 ### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].dep_2025 — MACRS on 2025 property
 Status: **AGREE**
@@ -201,7 +666,7 @@ Value: $0.00
 ### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].bonus_2025 — Special allowance on 2025 property
 Status: **AGREE**
 
-Value: $16,578.80
+Value: $0.00
 
 ### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].s179_2025 — Section 179 elected on 2025 property
 Status: **AGREE**
@@ -216,7 +681,7 @@ Value: $0.00
 ### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].mq_total — Mid-quarter test basis, all of 2025
 Status: **AGREE**
 
-Value: $16,578.80
+Value: $0.00
 
 ### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].cost179 — Cost of section 179 property placed in service in 2025
 Status: **AGREE**
@@ -226,266 +691,23 @@ Value: $0.00
 ### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].cost179_2025 — The business cost when used more than 50% in the business
 Status: **AGREE**
 
-Value: $0.00
+Value: $5,325.00
 
 ### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].dep_prior — MACRS on property placed in service before 2025
 Status: **AGREE**
 
-Value: $0.00
+Value: $586.28
 
-### classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].dep_listed — Depreciation of this listed property (column (h))
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].period — Recovery period under GDS for the asset class
-Status: **AGREE**
-
-Value: y20
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].outside — The asset class is outside this tool
-Status: **AGREE**
-
-Value: no
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].screened — This property is outside this tool
-Status: **AGREE**
-
-Value: no
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].pct_c — The business use percentage, as cents
-Status: **DISAGREE**
-
-Project: $1.00
-Model: $100.00
-Work: 100% business use
-
-Ruling: representation; project retained. The business-use percentage is carried as one cent per percentage point (multiply_count by one cent) so it can be divided like an amount; the model read the cents as dollars. Not evidence. [dropped]
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].pct_bad — The business use percentage is more than 100
-Status: **AGREE**
-
-Value: no
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].over_half — Business use is more than 50%
-Status: **AGREE**
-
-Value: yes
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].listed_low — Listed property used 50% or less for business, or a percentage over 100
-Status: **AGREE**
-
-Value: no
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].basis — Basis for depreciation (business/investment use only), before section 179 and th
-Status: **AGREE**
-
-Value: $20,222.00
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].is2025 — Placed in service in 2025
-Status: **AGREE**
-
-Value: no
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].year — Year of recovery in 2025
-Status: **AGREE**
-
-Value: 16
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].last — Last year of recovery for the recovery period
-Status: **AGREE**
-
-Value: 21
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].done — The recovery period ended before 2025
-Status: **AGREE**
-
-Value: no
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].qconv — Mid-quarter convention for that quarter
-Status: **AGREE**
-
-Value: mq4
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].s179_bad — The section 179 election is more than the business cost, or the property is not 
-Status: **AGREE**
-
-Value: no
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].after179 — Basis less the section 179 election
-Status: **AGREE**
-
-Value: $20,222.00
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].bonus_mixed — The special allowance choice differs within a class
-Status: **AGREE**
-
-Value: no
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].bonus_full — 100% special allowance
-Status: **AGREE**
-
-Value: $20,222.00
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].bonus_forty — 40% special allowance
-Status: **AGREE**
-
-Value: $8,088.80
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].bonus_fullcase — The allowance when it is claimed: 100% if acquired after January 19, 2025, other
-Status: **AGREE**
-
-Value: $8,088.80
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].bonus — Special depreciation allowance for this property
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].ub — Basis for MACRS depreciation (after section 179 and the special allowance)
-Status: **AGREE**
-
-Value: $20,222.00
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].rate_hy — MACRS rate, half-year convention
-Status: **DISAGREE**
-
-Project: 4.461%
-Model: 3.75%
-Work: 20-yr 150DB, HY, year 1
-
-Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].rate_mq — MACRS rate, mid-quarter convention
-Status: **DISAGREE**
-
-Project: 4.458%
-Model: 0.938%
-Work: 20-yr, MQ fourth quarter, year 1 (7.5% x 0.125)
-
-Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].macrs_hy — MACRS depreciation, half-year convention
-Status: **DISAGREE**
-
-Project: $902.10
-Model: $758.33
-Work: 20,222.00 x 3.750%
-
-Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].macrs_mq — MACRS depreciation, mid-quarter convention
-Status: **DISAGREE**
-
-Project: $901.50
-Model: $189.68
-Work: 20,222.00 x 0.938%
-
-Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].macrs2025 — MACRS depreciation for 2025 property
-Status: **DISAGREE**
-
-Project: $902.10
-Model: $758.33
-Work: Mid-quarter test is no, so use HY amount
-
-Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].mqbase — Depreciable basis for the mid-quarter test (after section 179, before the specia
-Status: **AGREE**
-
-Value: $20,222.00
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].mq_q4_2025 — That basis when placed in service October to December
-Status: **AGREE**
-
-Value: $20,222.00
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].ub_prior_a — Business basis less the section 179 deduction
-Status: **AGREE**
-
-Value: $20,222.00
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].ub_prior — Unadjusted basis
-Status: **AGREE**
-
-Value: $20,222.00
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].rate_prior — MACRS rate for the 2025 year of recovery
-Status: **AGREE**
-
-Value: 4.458%
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].macrs_prior_live — MACRS depreciation for 2025
-Status: **AGREE**
-
-Value: $901.50
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].macrs_prior — MACRS deduction for 2025 on property placed in service before 2025
-Status: **AGREE**
-
-Value: $901.50
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].dep_2025 — MACRS on 2025 property
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].bonus_2025 — Special allowance on 2025 property
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].s179_2025 — Section 179 elected on 2025 property
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].mq_q4 — Mid-quarter test basis, fourth quarter
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].mq_total — Mid-quarter test basis, all of 2025
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].cost179 — Cost of section 179 property placed in service in 2025
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].cost179_2025 — The business cost when used more than 50% in the business
-Status: **AGREE**
-
-Value: $20,222.00
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].dep_prior — MACRS on property placed in service before 2025
-Status: **AGREE**
-
-Value: $901.50
-
-### classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].dep_listed — Depreciation of this listed property (column (h))
-Status: **DISAGREE**
-
-Project: $901.50
-Model: $0.00
-Work: Not listed property
-
-Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### case classm.asset.2 — prompt sha256 be8a5de7e3d33c6a7cfc2322b720bc807bb3cf8fae484eaf69a1c58d51ca9a97; branches: asset.outside:false, asset.screen:false, asset.screened:false, asset.pct_bad:false, asset.listed:false, asset.listed:true, asset.over_half:true, asset.listed_low:false, asset.is2025:true, asset.done:false, asset.s179_bad:false, asset.after179:positive, asset.after_jan19:true, asset.bonus_same:true, asset.bonus_mixed:false, asset.bonus_fullcase#0, asset.bonus#1, asset.ub:positive, asset.macrs2025#1, asset.mq_q4_2025#1, asset.mq_q4_2025#3, asset.ub_prior_a:positive, asset.ub_prior:positive, asset.macrs_prior#0, asset.dep_2025#0, asset.bonus_2025#0, asset.s179_2025#0, asset.mq_q4#0, asset.mq_total#0, asset.cost179#0, asset.cost179_2025#0, asset.dep_prior#1
+### case classm.asset.2 — prompt sha256 23361aa2a65953aa89556614eba8991857ee83af351e26adfb9922b5e02c44dd; branches: asset.outside:false, asset.screen:false, asset.screened:false, asset.pct_bad:false, asset.listed:false, asset.listed:true, asset.over_half:true, asset.listed_low:false, asset.is2025:true, asset.on_19:false, asset.on_19:true, asset.on_17:false, asset.on_26_2025:false, asset.on_26_2025:true, asset.done:false, asset.s179_bad:false, asset.after179:positive, asset.after_jan19:false, asset.after_jan19:true, asset.bonus_same:true, asset.bonus_mixed:false, asset.bonus_fullcase#0, asset.bonus_fullcase#1, asset.bonus#0, asset.bonus#2, asset.ub:floor, asset.ub:positive, asset.macrs2025#0, asset.mq_q4_2025#1, asset.mq_q4_2025#2, asset.ub_prior_a:positive, asset.ub_prior:positive, asset.macrs_prior#0, asset.dep_2025#0, asset.bonus_2025#0, asset.s179_2025#0, asset.mq_q4#0, asset.mq_total#0, asset.cost179#0, asset.cost179_2025#0, asset.dep_prior#1
 
 ### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].period — Recovery period under GDS for the asset class
 Status: **DISAGREE**
 
 Project: y7
-Model: y15
-Work: Pub. 946 Table B-2, class 48.41 telephone distribution plant: GDS recovery period 15 years
+Model: y10
+Work: Asset class 48.32 (Telephone Central Office Equipment), class life 18 years; 16 or more but less than 20 is 10-year property. Class life is from Pub. 946 Table B-2, which is not in the text provided.
 
-Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence. [dropped]
+Ruling: model error; project retained. The model recalled asset class 48.32 as having an 18-year class life ('from memory'); the archived Pub. 946 (2025) Appendix B, Table B-2, gives class 48.32 a class life of 13 years and a GDS recovery period of 7 years (tables/2025/class_lives.yaml, checked by its second transcription). The period, last year, rates and depreciation that follow from it differ for that reason. Dropped from the fixture as not evidence. [dropped]
 
 ### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].outside — The asset class is outside this tool
 Status: **AGREE**
@@ -502,7 +724,7 @@ Status: **DISAGREE**
 
 Project: $1.00
 Model: $100.00
-Work: 100% business use
+Work: 100 percent expressed as cents.
 
 Ruling: representation; project retained. The business-use percentage is carried as one cent per percentage point (multiply_count by one cent) so it can be divided like an amount; the model read the cents as dollars. Not evidence. [dropped]
 
@@ -524,9 +746,24 @@ Value: no
 ### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].basis — Basis for depreciation (business/investment use only), before section 179 and th
 Status: **AGREE**
 
-Value: $44,464.00
+Value: $19,315.00
 
 ### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].is2025 — Placed in service in 2025
+Status: **AGREE**
+
+Value: yes
+
+### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].on_19 — Reported on lines 6, 14 and 19 (property placed in service in 2025 that is not l
+Status: **AGREE**
+
+Value: no
+
+### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].on_17 — Reported on line 17 (property placed in service before 2025 that is not listed p
+Status: **AGREE**
+
+Value: no
+
+### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].on_26_2025 — Reported on lines 25 and 26 column (i) (listed property placed in service in 202
 Status: **AGREE**
 
 Value: yes
@@ -540,10 +777,10 @@ Value: 1
 Status: **DISAGREE**
 
 Project: 8
-Model: 16
-Work: 15-year property; the convention adds one more year: 15 + 1
+Model: 11
+Work: 10-year recovery period plus the partial final year.
 
-Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence. [dropped]
+Ruling: model error; project retained. The model recalled asset class 48.32 as having an 18-year class life ('from memory'); the archived Pub. 946 (2025) Appendix B, Table B-2, gives class 48.32 a class life of 13 years and a GDS recovery period of 7 years (tables/2025/class_lives.yaml, checked by its second transcription). The period, last year, rates and depreciation that follow from it differ for that reason. Dropped from the fixture as not evidence. [dropped]
 
 ### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].done — The recovery period ended before 2025
 Status: **AGREE**
@@ -553,7 +790,7 @@ Value: no
 ### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].qconv — Mid-quarter convention for that quarter
 Status: **AGREE**
 
-Value: mq2
+Value: mq3
 
 ### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].s179_bad — The section 179 election is more than the business cost, or the property is not 
 Status: **AGREE**
@@ -563,7 +800,7 @@ Value: no
 ### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].after179 — Basis less the section 179 election
 Status: **AGREE**
 
-Value: $44,464.00
+Value: $19,315.00
 
 ### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].bonus_mixed — The special allowance choice differs within a class
 Status: **AGREE**
@@ -573,77 +810,65 @@ Value: no
 ### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].bonus_full — 100% special allowance
 Status: **AGREE**
 
-Value: $44,464.00
+Value: $19,315.00
 
 ### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].bonus_forty — 40% special allowance
 Status: **AGREE**
 
-Value: $17,785.60
+Value: $7,726.00
 
 ### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].bonus_fullcase — The allowance when it is claimed: 100% if acquired after January 19, 2025, other
 Status: **AGREE**
 
-Value: $44,464.00
+Value: $19,315.00
 
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].bonus — Special depreciation allowance for this property
+### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].f25 — Special depreciation allowance for this listed property (line 25)
 Status: **AGREE**
 
-Value: $17,785.60
+Value: $19,315.00
+
+### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].f26i — Elected section 179 cost of this listed property (column (i))
+Status: **AGREE**
+
+Value: $0.00
 
 ### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].ub — Basis for MACRS depreciation (after section 179 and the special allowance)
 Status: **AGREE**
 
-Value: $26,678.40
+Value: $0.00
 
 ### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].rate_hy — MACRS rate, half-year convention
 Status: **DISAGREE**
 
 Project: 14.29%
-Model: 5%
-Work: 150DB: 1.5/15 = 10%, x 0.5 for half-year
+Model: 10%
+Work: 2.00 / 10 = 20%, x 0.5.
 
-Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence. [dropped]
+Ruling: model error; project retained. The model recalled asset class 48.32 as having an 18-year class life ('from memory'); the archived Pub. 946 (2025) Appendix B, Table B-2, gives class 48.32 a class life of 13 years and a GDS recovery period of 7 years (tables/2025/class_lives.yaml, checked by its second transcription). The period, last year, rates and depreciation that follow from it differ for that reason. Dropped from the fixture as not evidence. [dropped]
 
 ### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].rate_mq — MACRS rate, mid-quarter convention
 Status: **DISAGREE**
 
-Project: 17.85%
-Model: 6.25%
-Work: 10% x 0.625 for quarter 2
+Project: 10.71%
+Model: 7.5%
+Work: 20% x 0.375 (third quarter).
 
-Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence. [dropped]
+Ruling: model error; project retained. The model recalled asset class 48.32 as having an 18-year class life ('from memory'); the archived Pub. 946 (2025) Appendix B, Table B-2, gives class 48.32 a class life of 13 years and a GDS recovery period of 7 years (tables/2025/class_lives.yaml, checked by its second transcription). The period, last year, rates and depreciation that follow from it differ for that reason. Dropped from the fixture as not evidence. [dropped]
 
 ### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].macrs_hy — MACRS depreciation, half-year convention
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $3,812.34
-Model: $1,333.92
-Work: 26,678.40 x 5.00%
-
-Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence. [dropped]
+Value: $0.00
 
 ### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].macrs_mq — MACRS depreciation, mid-quarter convention
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $4,762.09
-Model: $1,667.40
-Work: 26,678.40 x 6.25%
-
-Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence. [dropped]
-
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].macrs2025 — MACRS depreciation for 2025 property
-Status: **DISAGREE**
-
-Project: $4,762.09
-Model: $1,667.40
-Work: Mid-quarter convention applies (test = yes)
-
-Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence. [dropped]
+Value: $0.00
 
 ### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].mqbase — Depreciable basis for the mid-quarter test (after section 179, before the specia
 Status: **AGREE**
 
-Value: $44,464.00
+Value: $19,315.00
 
 ### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].mq_q4_2025 — That basis when placed in service October to December
 Status: **AGREE**
@@ -653,53 +878,40 @@ Value: $0.00
 ### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].ub_prior_a — Business basis less the section 179 deduction
 Status: **AGREE**
 
-Value: $44,464.00
+Value: $19,315.00
 
 ### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].ub_prior — Unadjusted basis
 Status: **AGREE**
 
-Value: $44,464.00
+Value: $19,315.00
 
 ### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].rate_prior — MACRS rate for the 2025 year of recovery
 Status: **DISAGREE**
 
-Project: 3.57%
-Model: 1.25%
-Work: 15-year property, mq4 convention, year 1: 10% x 0.125
+Project: 17.85%
+Model: 12.5%
+Work: Year 1, 10-year, mq2: 20% x 0.625.
 
-Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: model error; project retained. The model recalled asset class 48.32 as having an 18-year class life ('from memory'); the archived Pub. 946 (2025) Appendix B, Table B-2, gives class 48.32 a class life of 13 years and a GDS recovery period of 7 years (tables/2025/class_lives.yaml, checked by its second transcription). The period, last year, rates and depreciation that follow from it differ for that reason. Dropped from the fixture as not evidence. [dropped]
 
 ### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].macrs_prior_live — MACRS depreciation for 2025
 Status: **DISAGREE**
 
-Project: $1,587.36
-Model: $555.80
-Work: 44,464.00 x 1.25%
+Project: $3,447.73
+Model: $2,414.38
+Work: 19,315 x 12.50%.
 
-Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].macrs_prior — MACRS deduction for 2025 on property placed in service before 2025
-Status: **DISAGREE**
-
-Project: $1,587.36
-Model: $0.00
-Work: Placed in service in 2025, not before 2025
-
-Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: model error; project retained. The model recalled asset class 48.32 as having an 18-year class life ('from memory'); the archived Pub. 946 (2025) Appendix B, Table B-2, gives class 48.32 a class life of 13 years and a GDS recovery period of 7 years (tables/2025/class_lives.yaml, checked by its second transcription). The period, last year, rates and depreciation that follow from it differ for that reason. Dropped from the fixture as not evidence. [dropped]
 
 ### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].dep_2025 — MACRS on 2025 property
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $4,762.09
-Model: $1,667.40
-Work: Line 19 MACRS on 2025 property that is not listed
-
-Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence. [dropped]
+Value: $0.00
 
 ### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].bonus_2025 — Special allowance on 2025 property
 Status: **AGREE**
 
-Value: $17,785.60
+Value: $19,315.00
 
 ### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].s179_2025 — Section 179 elected on 2025 property
 Status: **AGREE**
@@ -714,17 +926,17 @@ Value: $0.00
 ### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].mq_total — Mid-quarter test basis, all of 2025
 Status: **AGREE**
 
-Value: $44,464.00
+Value: $19,315.00
 
 ### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].cost179 — Cost of section 179 property placed in service in 2025
 Status: **AGREE**
 
-Value: $44,464.00
+Value: $19,315.00
 
 ### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].cost179_2025 — The business cost when used more than 50% in the business
 Status: **AGREE**
 
-Value: $44,464.00
+Value: $19,315.00
 
 ### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].dep_prior — MACRS on property placed in service before 2025
 Status: **AGREE**
@@ -732,241 +944,235 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_1].dep_listed — Depreciation of this listed property (column (h))
-Status: **DISAGREE**
-
-Project: $4,762.09
-Model: $0.00
-Work: Not listed property
-
-Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].period — Recovery period under GDS for the asset class
 Status: **AGREE**
 
-Value: y5
+Value: $0.00
 
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].outside — The asset class is outside this tool
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].period — Recovery period under GDS for the asset class
+Status: **AGREE**
+
+Value: y15
+
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].outside — The asset class is outside this tool
 Status: **AGREE**
 
 Value: no
 
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].screened — This property is outside this tool
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].screened — This property is outside this tool
 Status: **AGREE**
 
 Value: no
 
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].pct_c — The business use percentage, as cents
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].pct_c — The business use percentage, as cents
 Status: **DISAGREE**
 
 Project: $1.00
 Model: $100.00
-Work: 100% business use
+Work: 100 percent expressed as cents.
 
-Ruling: representation; project retained. The business-use percentage is carried as one cent per percentage point (multiply_count by one cent) so it can be divided like an amount; the model read the cents as dollars. Not evidence. [dropped]
+Ruling: representation; project retained. pct_c carries the business-use percentage as one cent per percentage point (100% is $1.00) so that the percentage can be the part of a money ratio (prorate); the model wrote it as dollars. The basis it feeds agrees. Dropped from the fixture as not evidence. [dropped]
 
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].pct_bad — The business use percentage is more than 100
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].pct_bad — The business use percentage is more than 100
 Status: **AGREE**
 
 Value: no
 
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].over_half — Business use is more than 50%
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].over_half — Business use is more than 50%
 Status: **AGREE**
 
 Value: yes
 
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].listed_low — Listed property used 50% or less for business, or a percentage over 100
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].listed_low — Listed property used 50% or less for business, or a percentage over 100
 Status: **AGREE**
 
 Value: no
 
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].basis — Basis for depreciation (business/investment use only), before section 179 and th
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].basis — Basis for depreciation (business/investment use only), before section 179 and th
 Status: **AGREE**
 
-Value: $43,875.00
+Value: $36,124.00
 
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].is2025 — Placed in service in 2025
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].is2025 — Placed in service in 2025
 Status: **AGREE**
 
 Value: yes
 
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].year — Year of recovery in 2025
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].on_19 — Reported on lines 6, 14 and 19 (property placed in service in 2025 that is not l
+Status: **AGREE**
+
+Value: yes
+
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].on_17 — Reported on line 17 (property placed in service before 2025 that is not listed p
+Status: **AGREE**
+
+Value: no
+
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].on_26_2025 — Reported on lines 25 and 26 column (i) (listed property placed in service in 202
+Status: **AGREE**
+
+Value: no
+
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].year — Year of recovery in 2025
 Status: **AGREE**
 
 Value: 1
 
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].last — Last year of recovery for the recovery period
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].last — Last year of recovery for the recovery period
 Status: **AGREE**
 
-Value: 6
+Value: 16
 
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].done — The recovery period ended before 2025
-Status: **AGREE**
-
-Value: no
-
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].qconv — Mid-quarter convention for that quarter
-Status: **AGREE**
-
-Value: mq4
-
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].s179_bad — The section 179 election is more than the business cost, or the property is not 
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].done — The recovery period ended before 2025
 Status: **AGREE**
 
 Value: no
 
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].after179 — Basis less the section 179 election
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].qconv — Mid-quarter convention for that quarter
 Status: **AGREE**
 
-Value: $43,875.00
+Value: mq2
 
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].bonus_mixed — The special allowance choice differs within a class
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].s179_bad — The section 179 election is more than the business cost, or the property is not 
 Status: **AGREE**
 
 Value: no
 
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].bonus_full — 100% special allowance
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].after179 — Basis less the section 179 election
 Status: **AGREE**
 
-Value: $43,875.00
+Value: $32,935.00
 
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].bonus_forty — 40% special allowance
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].bonus_mixed — The special allowance choice differs within a class
 Status: **AGREE**
 
-Value: $17,550.00
+Value: no
 
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].bonus_fullcase — The allowance when it is claimed: 100% if acquired after January 19, 2025, other
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].bonus_full — 100% special allowance
 Status: **AGREE**
 
-Value: $43,875.00
+Value: $32,935.00
 
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].bonus — Special depreciation allowance for this property
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].bonus_forty — 40% special allowance
 Status: **AGREE**
 
-Value: $17,550.00
+Value: $13,174.00
 
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].ub — Basis for MACRS depreciation (after section 179 and the special allowance)
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].bonus_fullcase — The allowance when it is claimed: 100% if acquired after January 19, 2025, other
 Status: **AGREE**
 
-Value: $26,325.00
+Value: $13,174.00
 
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].rate_hy — MACRS rate, half-year convention
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].bonus — Special depreciation allowance for this property
 Status: **AGREE**
 
-Value: 20%
+Value: $0.00
 
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].rate_mq — MACRS rate, mid-quarter convention
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].ub — Basis for MACRS depreciation (after section 179 and the special allowance)
+Status: **AGREE**
+
+Value: $32,935.00
+
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].col19c — Basis for depreciation (business/investment use only), column (c), after the sec
+Status: **AGREE**
+
+Value: $32,935.00
+
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].rate_hy — MACRS rate, half-year convention
 Status: **AGREE**
 
 Value: 5%
 
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].macrs_hy — MACRS depreciation, half-year convention
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].rate_mq — MACRS rate, mid-quarter convention
 Status: **AGREE**
 
-Value: $5,265.00
+Value: 6.25%
 
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].macrs_mq — MACRS depreciation, mid-quarter convention
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].macrs_hy — MACRS depreciation, half-year convention
 Status: **AGREE**
 
-Value: $1,316.25
+Value: $1,646.75
 
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].macrs2025 — MACRS depreciation for 2025 property
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].macrs_mq — MACRS depreciation, mid-quarter convention
 Status: **AGREE**
 
-Value: $1,316.25
+Value: $2,058.44
 
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].mqbase — Depreciable basis for the mid-quarter test (after section 179, before the specia
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].macrs2025 — MACRS depreciation for 2025 property
 Status: **AGREE**
 
-Value: $43,875.00
+Value: $1,646.75
 
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].mq_q4_2025 — That basis when placed in service October to December
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].mqbase — Depreciable basis for the mid-quarter test (after section 179, before the specia
 Status: **AGREE**
 
-Value: $43,875.00
+Value: $32,935.00
 
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].ub_prior_a — Business basis less the section 179 deduction
-Status: **AGREE**
-
-Value: $43,875.00
-
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].ub_prior — Unadjusted basis
-Status: **AGREE**
-
-Value: $43,875.00
-
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].rate_prior — MACRS rate for the 2025 year of recovery
-Status: **AGREE**
-
-Value: 20%
-
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].macrs_prior_live — MACRS depreciation for 2025
-Status: **AGREE**
-
-Value: $8,775.00
-
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].macrs_prior — MACRS deduction for 2025 on property placed in service before 2025
-Status: **DISAGREE**
-
-Project: $8,775.00
-Model: $0.00
-Work: Placed in service in 2025, not before 2025
-
-Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].dep_2025 — MACRS on 2025 property
-Status: **DISAGREE**
-
-Project: $1,316.25
-Model: $0.00
-Work: Listed property is reported in Part V, not line 19
-
-Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].bonus_2025 — Special allowance on 2025 property
-Status: **DISAGREE**
-
-Project: $17,550.00
-Model: $0.00
-Work: Line 14 excludes listed property; its allowance goes on line 25
-
-Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].s179_2025 — Section 179 elected on 2025 property
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].mq_q4_2025 — That basis when placed in service October to December
 Status: **AGREE**
 
 Value: $0.00
 
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].mq_q4 — Mid-quarter test basis, fourth quarter
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].ub_prior_a — Business basis less the section 179 deduction
 Status: **AGREE**
 
-Value: $43,875.00
+Value: $36,124.00
 
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].mq_total — Mid-quarter test basis, all of 2025
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].ub_prior — Unadjusted basis
 Status: **AGREE**
 
-Value: $43,875.00
+Value: $36,124.00
 
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].cost179 — Cost of section 179 property placed in service in 2025
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].rate_prior — MACRS rate for the 2025 year of recovery
 Status: **AGREE**
 
-Value: $43,875.00
+Value: 8.75%
 
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].cost179_2025 — The business cost when used more than 50% in the business
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].macrs_prior_live — MACRS depreciation for 2025
 Status: **AGREE**
 
-Value: $43,875.00
+Value: $3,160.85
 
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].dep_prior — MACRS on property placed in service before 2025
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].dep_2025 — MACRS on 2025 property
+Status: **AGREE**
+
+Value: $1,646.75
+
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].bonus_2025 — Special allowance on 2025 property
 Status: **AGREE**
 
 Value: $0.00
 
-### classm.asset.2 — person[taxpayer].sc[biz_a].asset[item_2].dep_listed — Depreciation of this listed property (column (h))
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].s179_2025 — Section 179 elected on 2025 property
 Status: **AGREE**
 
-Value: $1,316.25
+Value: $3,189.00
 
-### case classm.asset.3 — prompt sha256 5c415bb9287290c4b8397c08ed29f4cc83ffb2e63eda24e3358a94c082ac83ad; branches: asset.outside:false, asset.screen:false, asset.screened:false, asset.pct_bad:false, asset.listed:false, asset.over_half:false, asset.over_half:true, asset.listed_low:false, asset.is2025:true, asset.done:false, asset.s179_bad:false, asset.after179:floor, asset.after179:positive, asset.after_jan19:false, asset.after_jan19:true, asset.bonus_same:true, asset.bonus_mixed:false, asset.bonus_fullcase#0, asset.bonus_fullcase#1, asset.bonus#0, asset.bonus#2, asset.ub:floor, asset.ub:positive, asset.macrs2025#0, asset.mq_q4_2025#0, asset.mq_q4_2025#2, asset.ub_prior_a:positive, asset.ub_prior:positive, asset.macrs_prior#0, asset.dep_2025#0, asset.bonus_2025#0, asset.s179_2025#0, asset.mq_q4#0, asset.mq_total#0, asset.cost179#0, asset.cost179_2025#0, asset.cost179_2025#1, asset.dep_prior#1
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].mq_q4 — Mid-quarter test basis, fourth quarter
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].mq_total — Mid-quarter test basis, all of 2025
+Status: **AGREE**
+
+Value: $32,935.00
+
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].cost179 — Cost of section 179 property placed in service in 2025
+Status: **AGREE**
+
+Value: $36,124.00
+
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].cost179_2025 — The business cost when used more than 50% in the business
+Status: **AGREE**
+
+Value: $36,124.00
+
+### classm.asset.2 — person[taxpayer].sc[biz_b].asset[item_1].dep_prior — MACRS on property placed in service before 2025
+Status: **AGREE**
+
+Value: $0.00
+
+### case classm.asset.3 — prompt sha256 8a73106a47419c393b4e19c67eee30ac906da054c36583520715b029d360b6f5; branches: asset.outside:false, asset.screen:false, asset.screened:false, asset.pct_bad:false, asset.listed:false, asset.over_half:true, asset.listed_low:false, asset.is2025:true, asset.on_19:true, asset.on_17:false, asset.on_26_2025:false, asset.done:false, asset.s179_bad:false, asset.after179:floor, asset.after179:positive, asset.after_jan19:true, asset.bonus_same:true, asset.bonus_mixed:false, asset.bonus_fullcase#0, asset.bonus#1, asset.bonus#2, asset.ub:floor, asset.ub:positive, asset.macrs2025#0, asset.mq_q4_2025#0, asset.mq_q4_2025#3, asset.ub_prior_a:positive, asset.ub_prior:positive, asset.macrs_prior#0, asset.dep_2025#0, asset.bonus_2025#0, asset.s179_2025#0, asset.mq_q4#0, asset.mq_total#0, asset.cost179#0, asset.cost179_2025#0, asset.dep_prior#1
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].period — Recovery period under GDS for the asset class
 Status: **AGREE**
@@ -986,11 +1192,11 @@ Value: no
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].pct_c — The business use percentage, as cents
 Status: **DISAGREE**
 
-Project: $0.30
-Model: $30.00
-Work: 30%
+Project: $1.00
+Model: $100.00
+Work: 100% business use
 
-Ruling: representation; project retained. The business-use percentage is carried as one cent per percentage point (multiply_count by one cent) so it can be divided like an amount; the model read the cents as dollars. Not evidence. [dropped]
+Ruling: representation; project retained. pct_c carries the business-use percentage as one cent per percentage point (100% is $1.00) so that the percentage can be the part of a money ratio (prorate); the model wrote it as dollars. The basis it feeds agrees. Dropped from the fixture as not evidence. [dropped]
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].pct_bad — The business use percentage is more than 100
 Status: **AGREE**
@@ -1000,7 +1206,7 @@ Value: no
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].over_half — Business use is more than 50%
 Status: **AGREE**
 
-Value: no
+Value: yes
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].listed_low — Listed property used 50% or less for business, or a percentage over 100
 Status: **AGREE**
@@ -1010,12 +1216,27 @@ Value: no
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].basis — Basis for depreciation (business/investment use only), before section 179 and th
 Status: **AGREE**
 
-Value: $11,538.90
+Value: $22,713.00
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].is2025 — Placed in service in 2025
 Status: **AGREE**
 
 Value: yes
+
+### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].on_19 — Reported on lines 6, 14 and 19 (property placed in service in 2025 that is not l
+Status: **AGREE**
+
+Value: yes
+
+### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].on_17 — Reported on line 17 (property placed in service before 2025 that is not listed p
+Status: **AGREE**
+
+Value: no
+
+### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].on_26_2025 — Reported on lines 25 and 26 column (i) (listed property placed in service in 202
+Status: **AGREE**
+
+Value: no
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].year — Year of recovery in 2025
 Status: **AGREE**
@@ -1045,7 +1266,7 @@ Value: no
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].after179 — Basis less the section 179 election
 Status: **AGREE**
 
-Value: $11,538.90
+Value: $14,788.00
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].bonus_mixed — The special allowance choice differs within a class
 Status: **AGREE**
@@ -1055,27 +1276,32 @@ Value: no
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].bonus_full — 100% special allowance
 Status: **AGREE**
 
-Value: $11,538.90
+Value: $14,788.00
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].bonus_forty — 40% special allowance
 Status: **AGREE**
 
-Value: $4,615.56
+Value: $5,915.20
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].bonus_fullcase — The allowance when it is claimed: 100% if acquired after January 19, 2025, other
 Status: **AGREE**
 
-Value: $4,615.56
+Value: $14,788.00
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].bonus — Special depreciation allowance for this property
 Status: **AGREE**
 
-Value: $4,615.56
+Value: $5,915.20
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].ub — Basis for MACRS depreciation (after section 179 and the special allowance)
 Status: **AGREE**
 
-Value: $6,923.34
+Value: $8,872.80
+
+### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].col19c — Basis for depreciation (business/investment use only), column (c), after the sec
+Status: **AGREE**
+
+Value: $8,872.80
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].rate_hy — MACRS rate, half-year convention
 Status: **AGREE**
@@ -1090,22 +1316,22 @@ Value: 25%
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].macrs_hy — MACRS depreciation, half-year convention
 Status: **AGREE**
 
-Value: $989.35
+Value: $1,267.92
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].macrs_mq — MACRS depreciation, mid-quarter convention
 Status: **AGREE**
 
-Value: $1,730.84
+Value: $2,218.20
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].macrs2025 — MACRS depreciation for 2025 property
 Status: **AGREE**
 
-Value: $989.35
+Value: $1,267.92
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].mqbase — Depreciable basis for the mid-quarter test (after section 179, before the specia
 Status: **AGREE**
 
-Value: $11,538.90
+Value: $14,788.00
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].mq_q4_2025 — That basis when placed in service October to December
 Status: **AGREE**
@@ -1115,46 +1341,37 @@ Value: $0.00
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].ub_prior_a — Business basis less the section 179 deduction
 Status: **AGREE**
 
-Value: $11,538.90
+Value: $22,713.00
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].ub_prior — Unadjusted basis
 Status: **AGREE**
 
-Value: $11,538.90
+Value: $22,713.00
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].rate_prior — MACRS rate for the 2025 year of recovery
 Status: **AGREE**
 
-Value: 17.85%
+Value: 14.29%
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].macrs_prior_live — MACRS depreciation for 2025
 Status: **AGREE**
 
-Value: $2,059.69
-
-### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].macrs_prior — MACRS deduction for 2025 on property placed in service before 2025
-Status: **DISAGREE**
-
-Project: $2,059.69
-Model: $0.00
-Work: Placed in service in 2025, not before 2025
-
-Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Value: $3,245.69
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].dep_2025 — MACRS on 2025 property
 Status: **AGREE**
 
-Value: $989.35
+Value: $1,267.92
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].bonus_2025 — Special allowance on 2025 property
 Status: **AGREE**
 
-Value: $4,615.56
+Value: $5,915.20
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].s179_2025 — Section 179 elected on 2025 property
 Status: **AGREE**
 
-Value: $0.00
+Value: $7,925.00
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].mq_q4 — Mid-quarter test basis, fourth quarter
 Status: **AGREE**
@@ -1164,40 +1381,27 @@ Value: $0.00
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].mq_total — Mid-quarter test basis, all of 2025
 Status: **AGREE**
 
-Value: $11,538.90
+Value: $14,788.00
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].cost179 — Cost of section 179 property placed in service in 2025
 Status: **AGREE**
 
-Value: $0.00
+Value: $22,713.00
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].cost179_2025 — The business cost when used more than 50% in the business
 Status: **AGREE**
 
-Value: $0.00
+Value: $22,713.00
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].dep_prior — MACRS on property placed in service before 2025
 Status: **AGREE**
 
 Value: $0.00
 
-### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_1].dep_listed — Depreciation of this listed property (column (h))
-Status: **DISAGREE**
-
-Project: $989.35
-Model: $0.00
-Work: Not listed property
-
-Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_2].period — Recovery period under GDS for the asset class
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: y5
-Model: y7
-Work: Pub. 946 asset class 48.44 (customer premises equipment): class life 10 years, GDS 7 years; recalled, the class table was not provided
-
-Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence. [dropped]
+Value: y5
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_2].outside — The asset class is outside this tool
 Status: **AGREE**
@@ -1214,7 +1418,7 @@ Status: **DISAGREE**
 
 Project: $1.00
 Model: $100.00
-Work: 100%
+Work: 100% business use
 
 Ruling: representation; project retained. The business-use percentage is carried as one cent per percentage point (multiply_count by one cent) so it can be divided like an amount; the model read the cents as dollars. Not evidence. [dropped]
 
@@ -1236,12 +1440,27 @@ Value: no
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_2].basis — Basis for depreciation (business/investment use only), before section 179 and th
 Status: **AGREE**
 
-Value: $6,126.00
+Value: $5,620.00
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_2].is2025 — Placed in service in 2025
 Status: **AGREE**
 
 Value: yes
+
+### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_2].on_19 — Reported on lines 6, 14 and 19 (property placed in service in 2025 that is not l
+Status: **AGREE**
+
+Value: yes
+
+### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_2].on_17 — Reported on line 17 (property placed in service before 2025 that is not listed p
+Status: **AGREE**
+
+Value: no
+
+### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_2].on_26_2025 — Reported on lines 25 and 26 column (i) (listed property placed in service in 202
+Status: **AGREE**
+
+Value: no
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_2].year — Year of recovery in 2025
 Status: **AGREE**
@@ -1249,13 +1468,9 @@ Status: **AGREE**
 Value: 1
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_2].last — Last year of recovery for the recovery period
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: 6
-Model: 8
-Work: 7-year property runs 8 tax years
-
-Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence. [dropped]
+Value: 6
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_2].done — The recovery period ended before 2025
 Status: **AGREE**
@@ -1265,7 +1480,7 @@ Value: no
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_2].qconv — Mid-quarter convention for that quarter
 Status: **AGREE**
 
-Value: mq3
+Value: mq4
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_2].s179_bad — The section 179 election is more than the business cost, or the property is not 
 Status: **AGREE**
@@ -1307,23 +1522,20 @@ Status: **AGREE**
 
 Value: $0.00
 
+### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_2].col19c — Basis for depreciation (business/investment use only), column (c), after the sec
+Status: **AGREE**
+
+Value: $0.00
+
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_2].rate_hy — MACRS rate, half-year convention
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: 20%
-Model: 14.29%
-Work: 7-year, half-year, year 1
-
-Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Value: 20%
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_2].rate_mq — MACRS rate, mid-quarter convention
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: 15%
-Model: 10.71%
-Work: 7-year, mid-quarter Q3, year 1
-
-Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Value: 5%
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_2].macrs_hy — MACRS depreciation, half-year convention
 Status: **AGREE**
@@ -1353,39 +1565,22 @@ Value: $0.00
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_2].ub_prior_a — Business basis less the section 179 deduction
 Status: **AGREE**
 
-Value: $6,126.00
+Value: $5,620.00
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_2].ub_prior — Unadjusted basis
 Status: **AGREE**
 
-Value: $6,126.00
+Value: $5,620.00
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_2].rate_prior — MACRS rate for the 2025 year of recovery
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: 25%
-Model: 17.85%
-Work: 7-year, mid-quarter Q2 (mq2), recovery year 1
-
-Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence. [dropped]
+Value: 15%
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_2].macrs_prior_live — MACRS depreciation for 2025
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $1,531.50
-Model: $1,093.49
-Work: 6,126.00 x 17.85%
-
-Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence. [dropped]
-
-### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_2].macrs_prior — MACRS deduction for 2025 on property placed in service before 2025
-Status: **DISAGREE**
-
-Project: $1,531.50
-Model: $0.00
-Work: Placed in service in 2025, not before 2025
-
-Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Value: $843.00
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_2].dep_2025 — MACRS on 2025 property
 Status: **AGREE**
@@ -1400,7 +1595,7 @@ Value: $0.00
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_2].s179_2025 — Section 179 elected on 2025 property
 Status: **AGREE**
 
-Value: $6,126.00
+Value: $5,620.00
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_2].mq_q4 — Mid-quarter test basis, fourth quarter
 Status: **AGREE**
@@ -1415,29 +1610,24 @@ Value: $0.00
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_2].cost179 — Cost of section 179 property placed in service in 2025
 Status: **AGREE**
 
-Value: $6,126.00
+Value: $5,620.00
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_2].cost179_2025 — The business cost when used more than 50% in the business
 Status: **AGREE**
 
-Value: $6,126.00
+Value: $5,620.00
 
 ### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_2].dep_prior — MACRS on property placed in service before 2025
 Status: **AGREE**
 
 Value: $0.00
 
-### classm.asset.3 — person[taxpayer].sc[biz_a].asset[item_2].dep_listed — Depreciation of this listed property (column (h))
-Status: **AGREE**
-
-Value: $0.00
-
-### case classm.asset.4 — prompt sha256 71b036d039c4bd773dc13121abda0fdec9b8edd8105ebc6fda4047a6792fd85a; branches: asset.outside:false, asset.screen:false, asset.screened:false, asset.pct_bad:false, asset.listed:false, asset.over_half:false, asset.listed_low:false, asset.is2025:false, asset.is2025:true, asset.done:false, asset.s179_bad:false, asset.after179:positive, asset.after_jan19:true, asset.bonus_same:true, asset.bonus_mixed:false, asset.bonus_fullcase#0, asset.bonus#2, asset.ub:positive, asset.macrs2025#0, asset.mq_q4_2025#0, asset.mq_q4_2025#3, asset.ub_prior_a:floor, asset.ub_prior_a:positive, asset.ub_prior:floor, asset.ub_prior:positive, asset.macrs_prior#0, asset.dep_2025#0, asset.dep_2025#1, asset.bonus_2025#0, asset.bonus_2025#1, asset.s179_2025#0, asset.s179_2025#1, asset.mq_q4#0, asset.mq_q4#1, asset.mq_total#0, asset.mq_total#1, asset.cost179#0, asset.cost179#1, asset.cost179_2025#1, asset.dep_prior#0, asset.dep_prior#1
+### case classm.asset.4 — prompt sha256 17a1b305abc1a7c7a768881d3991299fe022f4a8a46baba43b9d17f0e51ee88c; branches: asset.outside:false, asset.screen:false, asset.screened:false, asset.pct_bad:false, asset.listed:false, asset.over_half:true, asset.listed_low:false, asset.is2025:false, asset.on_19:false, asset.on_17:true, asset.on_26_2025:false, asset.done:false, asset.s179_bad:false, asset.after179:positive, asset.after_jan19:true, asset.bonus_same:true, asset.bonus_mixed:false, asset.bonus_fullcase#0, asset.bonus#2, asset.ub:positive, asset.macrs2025#0, asset.mq_q4_2025#2, asset.ub_prior_a:positive, asset.ub_prior:floor, asset.macrs_prior#0, asset.dep_2025#1, asset.bonus_2025#1, asset.s179_2025#1, asset.mq_q4#1, asset.mq_total#1, asset.cost179#1, asset.cost179_2025#0, asset.dep_prior#0
 
 ### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].period — Recovery period under GDS for the asset class
 Status: **AGREE**
 
-Value: y3
+Value: y15
 
 ### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].outside — The asset class is outside this tool
 Status: **AGREE**
@@ -1452,11 +1642,11 @@ Value: no
 ### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].pct_c — The business use percentage, as cents
 Status: **DISAGREE**
 
-Project: $0.38
-Model: $38.00
-Work: 38% business use
+Project: $1.00
+Model: $100.00
+Work: Business use 100%, recorded as 100.00
 
-Ruling: representation; project retained. The business-use percentage is carried as one cent per percentage point (multiply_count by one cent) so it can be divided like an amount; the model read the cents as dollars. Not evidence. [dropped]
+Ruling: representation; project retained. pct_c carries the business-use percentage as one cent per percentage point (100% is $1.00) so that the percentage can be the part of a money ratio (prorate); the model wrote it as dollars. The basis it feeds agrees. Dropped from the fixture as not evidence. [dropped]
 
 ### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].pct_bad — The business use percentage is more than 100
 Status: **AGREE**
@@ -1466,7 +1656,7 @@ Value: no
 ### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].over_half — Business use is more than 50%
 Status: **AGREE**
 
-Value: no
+Value: yes
 
 ### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].listed_low — Listed property used 50% or less for business, or a percentage over 100
 Status: **AGREE**
@@ -1476,22 +1666,37 @@ Value: no
 ### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].basis — Basis for depreciation (business/investment use only), before section 179 and th
 Status: **AGREE**
 
-Value: $7,505.76
+Value: $100.00
 
 ### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].is2025 — Placed in service in 2025
 Status: **AGREE**
 
+Value: no
+
+### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].on_19 — Reported on lines 6, 14 and 19 (property placed in service in 2025 that is not l
+Status: **AGREE**
+
+Value: no
+
+### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].on_17 — Reported on line 17 (property placed in service before 2025 that is not listed p
+Status: **AGREE**
+
 Value: yes
+
+### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].on_26_2025 — Reported on lines 25 and 26 column (i) (listed property placed in service in 202
+Status: **AGREE**
+
+Value: no
 
 ### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].year — Year of recovery in 2025
 Status: **AGREE**
 
-Value: 1
+Value: 7
 
 ### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].last — Last year of recovery for the recovery period
 Status: **AGREE**
 
-Value: 4
+Value: 16
 
 ### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].done — The recovery period ended before 2025
 Status: **AGREE**
@@ -1501,7 +1706,7 @@ Value: no
 ### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].qconv — Mid-quarter convention for that quarter
 Status: **AGREE**
 
-Value: mq1
+Value: mq3
 
 ### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].s179_bad — The section 179 election is more than the business cost, or the property is not 
 Status: **AGREE**
@@ -1511,7 +1716,7 @@ Value: no
 ### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].after179 — Basis less the section 179 election
 Status: **AGREE**
 
-Value: $7,505.76
+Value: $100.00
 
 ### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].bonus_mixed — The special allowance choice differs within a class
 Status: **AGREE**
@@ -1519,59 +1724,77 @@ Status: **AGREE**
 Value: no
 
 ### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].bonus_full — 100% special allowance
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $7,505.76
+Project: $100.00
+Model: $0.00
+Work: Special allowance for this class is none
+
+Ruling: helper of a branch this entry does not take; project retained. The 2025-property route (basis after a 2025 allowance, the half-year and mid-quarter amounts, the 2025 section 179 cost) is figured for property placed in service before 2025 but read by no line it reaches, and the allowance alternatives are figured for property that claims none; the printed lines of the route the entry takes agree (for earlier property, the unadjusted basis, the 2025 rate and line 17). Dropped from the fixture as not evidence. [dropped]
 
 ### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].bonus_forty — 40% special allowance
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $3,002.30
+Project: $40.00
+Model: $0.00
+Work: Special allowance for this class is none
+
+Ruling: helper of a branch this entry does not take; project retained. The 2025-property route (basis after a 2025 allowance, the half-year and mid-quarter amounts, the 2025 section 179 cost) is figured for property placed in service before 2025 but read by no line it reaches, and the allowance alternatives are figured for property that claims none; the printed lines of the route the entry takes agree (for earlier property, the unadjusted basis, the 2025 rate and line 17). Dropped from the fixture as not evidence. [dropped]
 
 ### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].bonus_fullcase — The allowance when it is claimed: 100% if acquired after January 19, 2025, other
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $7,505.76
+Project: $100.00
+Model: $0.00
+Work: No allowance claimed (none)
 
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].bonus — Special depreciation allowance for this property
-Status: **AGREE**
-
-Value: $0.00
+Ruling: helper of a branch this entry does not take; project retained. The 2025-property route (basis after a 2025 allowance, the half-year and mid-quarter amounts, the 2025 section 179 cost) is figured for property placed in service before 2025 but read by no line it reaches, and the allowance alternatives are figured for property that claims none; the printed lines of the route the entry takes agree (for earlier property, the unadjusted basis, the 2025 rate and line 17). Dropped from the fixture as not evidence. [dropped]
 
 ### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].ub — Basis for MACRS depreciation (after section 179 and the special allowance)
 Status: **AGREE**
 
-Value: $7,505.76
+Value: $100.00
 
 ### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].rate_hy — MACRS rate, half-year convention
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: 33.33%
+Project: 5.9%
+Model: 5%
+Work: 15-year 150DB HY, year 1: 10% x 0.5 = 5.00%
+
+Ruling: helper of a branch this entry does not take; project retained. The 2025-property route (basis after a 2025 allowance, the half-year and mid-quarter amounts, the 2025 section 179 cost) is figured for property placed in service before 2025 but read by no line it reaches, and the allowance alternatives are figured for property that claims none; the printed lines of the route the entry takes agree (for earlier property, the unadjusted basis, the 2025 rate and line 17). Dropped from the fixture as not evidence. [dropped]
 
 ### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].rate_mq — MACRS rate, mid-quarter convention
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: 58.33%
+Project: 5.9%
+Model: 3.75%
+Work: 15-year 150DB MQ, 3rd quarter, year 1: 10% x 0.375 = 3.75%
+
+Ruling: helper of a branch this entry does not take; project retained. The 2025-property route (basis after a 2025 allowance, the half-year and mid-quarter amounts, the 2025 section 179 cost) is figured for property placed in service before 2025 but read by no line it reaches, and the allowance alternatives are figured for property that claims none; the printed lines of the route the entry takes agree (for earlier property, the unadjusted basis, the 2025 rate and line 17). Dropped from the fixture as not evidence. [dropped]
 
 ### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].macrs_hy — MACRS depreciation, half-year convention
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $2,501.67
+Project: $5.90
+Model: $5.00
+Work: $100.00 x 5.00% = $5.00
+
+Ruling: helper of a branch this entry does not take; project retained. The 2025-property route (basis after a 2025 allowance, the half-year and mid-quarter amounts, the 2025 section 179 cost) is figured for property placed in service before 2025 but read by no line it reaches, and the allowance alternatives are figured for property that claims none; the printed lines of the route the entry takes agree (for earlier property, the unadjusted basis, the 2025 rate and line 17). Dropped from the fixture as not evidence. [dropped]
 
 ### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].macrs_mq — MACRS depreciation, mid-quarter convention
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $4,378.11
+Project: $5.90
+Model: $3.75
+Work: $100.00 x 3.75% = $3.75
 
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].macrs2025 — MACRS depreciation for 2025 property
-Status: **AGREE**
-
-Value: $2,501.67
+Ruling: helper of a branch this entry does not take; project retained. The 2025-property route (basis after a 2025 allowance, the half-year and mid-quarter amounts, the 2025 section 179 cost) is figured for property placed in service before 2025 but read by no line it reaches, and the allowance alternatives are figured for property that claims none; the printed lines of the route the entry takes agree (for earlier property, the unadjusted basis, the 2025 rate and line 17). Dropped from the fixture as not evidence. [dropped]
 
 ### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].mqbase — Depreciable basis for the mid-quarter test (after section 179, before the specia
 Status: **AGREE**
 
-Value: $7,505.76
+Value: $100.00
 
 ### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].mq_q4_2025 — That basis when placed in service October to December
 Status: **AGREE**
@@ -1581,36 +1804,32 @@ Value: $0.00
 ### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].ub_prior_a — Business basis less the section 179 deduction
 Status: **AGREE**
 
-Value: $7,505.76
+Value: $100.00
 
 ### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].ub_prior — Unadjusted basis
 Status: **AGREE**
 
-Value: $7,505.76
+Value: $0.00
 
 ### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].rate_prior — MACRS rate for the 2025 year of recovery
 Status: **AGREE**
 
-Value: 33.33%
+Value: 5.9%
 
 ### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].macrs_prior_live — MACRS depreciation for 2025
 Status: **AGREE**
 
-Value: $2,501.67
+Value: $0.00
 
 ### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].macrs_prior — MACRS deduction for 2025 on property placed in service before 2025
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $2,501.67
-Model: $0.00
-Work: Placed in service in 2025, so not prior-year property
-
-Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Value: $0.00
 
 ### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].dep_2025 — MACRS on 2025 property
 Status: **AGREE**
 
-Value: $2,501.67
+Value: $0.00
 
 ### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].bonus_2025 — Special allowance on 2025 property
 Status: **AGREE**
@@ -1630,7 +1849,7 @@ Value: $0.00
 ### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].mq_total — Mid-quarter test basis, all of 2025
 Status: **AGREE**
 
-Value: $7,505.76
+Value: $0.00
 
 ### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].cost179 — Cost of section 179 property placed in service in 2025
 Status: **AGREE**
@@ -1638,286 +1857,15 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].cost179_2025 — The business cost when used more than 50% in the business
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $0.00
+Project: $100.00
+Model: $0.00
+Work: Not placed in service in 2025
+
+Ruling: helper of a branch this entry does not take; project retained. The 2025-property route (basis after a 2025 allowance, the half-year and mid-quarter amounts, the 2025 section 179 cost) is figured for property placed in service before 2025 but read by no line it reaches, and the allowance alternatives are figured for property that claims none; the printed lines of the route the entry takes agree (for earlier property, the unadjusted basis, the 2025 rate and line 17). Dropped from the fixture as not evidence. [dropped]
 
 ### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].dep_prior — MACRS on property placed in service before 2025
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].dep_listed — Depreciation of this listed property (column (h))
-Status: **DISAGREE**
-
-Project: $2,501.67
-Model: $0.00
-Work: Not listed property
-
-Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].period — Recovery period under GDS for the asset class
-Status: **AGREE**
-
-Value: y7
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].outside — The asset class is outside this tool
-Status: **AGREE**
-
-Value: no
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].screened — This property is outside this tool
-Status: **AGREE**
-
-Value: no
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].pct_c — The business use percentage, as cents
-Status: **DISAGREE**
-
-Project: $0.20
-Model: $20.00
-Work: 20% business use
-
-Ruling: representation; project retained. The business-use percentage is carried as one cent per percentage point (multiply_count by one cent) so it can be divided like an amount; the model read the cents as dollars. Not evidence. [dropped]
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].pct_bad — The business use percentage is more than 100
-Status: **AGREE**
-
-Value: no
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].over_half — Business use is more than 50%
-Status: **AGREE**
-
-Value: no
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].listed_low — Listed property used 50% or less for business, or a percentage over 100
-Status: **AGREE**
-
-Value: no
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].basis — Basis for depreciation (business/investment use only), before section 179 and th
-Status: **AGREE**
-
-Value: $2,167.80
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].is2025 — Placed in service in 2025
-Status: **AGREE**
-
-Value: no
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].year — Year of recovery in 2025
-Status: **AGREE**
-
-Value: 4
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].last — Last year of recovery for the recovery period
-Status: **AGREE**
-
-Value: 8
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].done — The recovery period ended before 2025
-Status: **AGREE**
-
-Value: no
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].qconv — Mid-quarter convention for that quarter
-Status: **AGREE**
-
-Value: mq4
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].s179_bad — The section 179 election is more than the business cost, or the property is not 
-Status: **DISAGREE**
-
-Project: no
-Model: yes
-Work: Section 179 of 2,168.00 is more than the business cost of 2,167.80, and use is not more than 50%
-
-Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].after179 — Basis less the section 179 election
-Status: **DISAGREE**
-
-Project: $2,167.80
-Model: $0.00
-Work: 2,167.80 - 2,168.00 is less than zero, so 0
-
-Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].bonus_mixed — The special allowance choice differs within a class
-Status: **AGREE**
-
-Value: no
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].bonus_full — 100% special allowance
-Status: **DISAGREE**
-
-Project: $2,167.80
-Model: $0.00
-Work: 100% x 0
-
-Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].bonus_forty — 40% special allowance
-Status: **DISAGREE**
-
-Project: $867.12
-Model: $0.00
-Work: 40% x 0
-
-Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].bonus_fullcase — The allowance when it is claimed: 100% if acquired after January 19, 2025, other
-Status: **DISAGREE**
-
-Project: $2,167.80
-Model: $0.00
-Work: 100% x 0
-
-Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].bonus — Special depreciation allowance for this property
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].ub — Basis for MACRS depreciation (after section 179 and the special allowance)
-Status: **DISAGREE**
-
-Project: $2,167.80
-Model: $0.00
-Work: 0 - 0
-
-Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].rate_hy — MACRS rate, half-year convention
-Status: **DISAGREE**
-
-Project: 12.49%
-Model: 14.29%
-Work: 7-year, HY, year 1
-
-Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].rate_mq — MACRS rate, mid-quarter convention
-Status: **DISAGREE**
-
-Project: 14.06%
-Model: 3.57%
-Work: 7-year, MQ Q4, year 1
-
-Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].macrs_hy — MACRS depreciation, half-year convention
-Status: **DISAGREE**
-
-Project: $270.76
-Model: $0.00
-Work: 0 x 14.29%
-
-Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].macrs_mq — MACRS depreciation, mid-quarter convention
-Status: **DISAGREE**
-
-Project: $304.79
-Model: $0.00
-Work: 0 x 3.57%
-
-Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].macrs2025 — MACRS depreciation for 2025 property
-Status: **DISAGREE**
-
-Project: $270.76
-Model: $0.00
-Work: Not 2025 property, and basis is 0
-
-Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].mqbase — Depreciable basis for the mid-quarter test (after section 179, before the specia
-Status: **DISAGREE**
-
-Project: $2,167.80
-Model: $0.00
-Work: after179 = 0
-
-Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].mq_q4_2025 — That basis when placed in service October to December
-Status: **DISAGREE**
-
-Project: $2,167.80
-Model: $0.00
-Work: Basis is 0
-
-Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].ub_prior_a — Business basis less the section 179 deduction
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].ub_prior — Unadjusted basis
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].rate_prior — MACRS rate for the 2025 year of recovery
-Status: **AGREE**
-
-Value: 10.93%
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].macrs_prior_live — MACRS depreciation for 2025
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].macrs_prior — MACRS deduction for 2025 on property placed in service before 2025
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].dep_2025 — MACRS on 2025 property
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].bonus_2025 — Special allowance on 2025 property
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].s179_2025 — Section 179 elected on 2025 property
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].mq_q4 — Mid-quarter test basis, fourth quarter
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].mq_total — Mid-quarter test basis, all of 2025
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].cost179 — Cost of section 179 property placed in service in 2025
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].cost179_2025 — The business cost when used more than 50% in the business
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].dep_prior — MACRS on property placed in service before 2025
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_2].dep_listed — Depreciation of this listed property (column (h))
 Status: **AGREE**
 
 Value: $0.00
@@ -1929,517 +1877,669 @@ Value: $0.00
 ```yaml
 ```yaml
 lines:
-  - printed: "person[taxpayer].sc[biz_a].asset[item_1].period"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].period"
     value: "y7"
-    work: "Pub. 946 Table B-2 class 48.36 (TOCSC satellite ground segment): 10-yr class life, 7-yr GDS (from memory; not in the supplied text)"
+    work: "Pub. 946 App. B asset class 33.2: class life 14 years, so 7-year GDS (10 or more but less than 16)"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].outside"
+    value: "no"
+    work: "Class 33.2 is ordinary MACRS GDS property"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].screened"
+    value: "no"
+    work: "Filer answered no to the exclusions"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].pct_c"
+    value: "100.00"
+    work: "100% business use"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].pct_bad"
+    value: "no"
+    work: "100 is not more than 100"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].over_half"
+    value: "yes"
+    work: "100% > 50%"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].listed_low"
+    value: "no"
+    work: "Not listed property"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].basis"
+    value: "37768.00"
+    work: "37,768.00 x 100%"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].is2025"
+    value: "yes"
+    work: "Placed in service in 2025"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].on_19"
+    value: "yes"
+    work: "2025 property, not listed"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].on_17"
+    value: "no"
+    work: "Not placed in service before 2025"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].on_26_2025"
+    value: "no"
+    work: "Not listed property"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].year"
+    value: "1"
+    work: "2025 - 2025 + 1"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].last"
+    value: "8"
+    work: "7-year period + 1 for the convention"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].done"
+    value: "no"
+    work: "Year 1 is not more than 8"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].qconv"
+    value: "mq4"
+    work: "Placed in service in Q4"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].s179_bad"
+    value: "no"
+    work: "0 elected is not more than the cost; use is over 50%"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].after179"
+    value: "37768.00"
+    work: "37,768.00 - 0"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].bonus_mixed"
+    value: "no"
+    work: "Choice is the same for the class"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].bonus_full"
+    value: "37768.00"
+    work: "100% x 37,768.00"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].bonus_forty"
+    value: "15107.20"
+    work: "40% x 37,768.00"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].bonus_fullcase"
+    value: "15107.20"
+    work: "Not acquired after 1/19/2025, so 40%"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].bonus"
+    value: "0.00"
+    work: "Class choice is none"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].ub"
+    value: "37768.00"
+    work: "37,768.00 - 0 - 0"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].col19c"
+    value: "37768.00"
+    work: "Basis after section 179 and allowance"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].rate_hy"
+    value: "14.29%"
+    work: "7-yr 200DB: 2/7 x 0.5"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].rate_mq"
+    value: "3.57%"
+    work: "7-yr 200DB: 2/7 x 0.125 (Q4)"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].macrs_hy"
+    value: "5397.05"
+    work: "37,768 x 14.29%"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].macrs_mq"
+    value: "1348.32"
+    work: "37,768 x 3.57%"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].macrs2025"
+    value: "1348.32"
+    work: "Mid-quarter test is met, so MQ amount"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].mqbase"
+    value: "37768.00"
+    work: "Basis after section 179, before the allowance"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].mq_q4_2025"
+    value: "37768.00"
+    work: "Placed in service in Q4"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].ub_prior_a"
+    value: "37768.00"
+    work: "37,768.00 - 0"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].ub_prior"
+    value: "37768.00"
+    work: "Less special allowance claimed of 0"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].rate_prior"
+    value: "14.29%"
+    work: "Original convention hy, 7-yr, year 1"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].macrs_prior_live"
+    value: "5397.05"
+    work: "37,768 x 14.29%"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].dep_2025"
+    value: "1348.32"
+    work: "2025 property MACRS"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].bonus_2025"
+    value: "0.00"
+    work: "No allowance"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].s179_2025"
+    value: "0.00"
+    work: "None elected"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].mq_q4"
+    value: "37768.00"
+    work: "2025 property in Q4"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].mq_total"
+    value: "37768.00"
+    work: "2025 property"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].cost179"
+    value: "37768.00"
+    work: "2025 property used more than 50%"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].cost179_2025"
+    value: "37768.00"
+    work: "Business cost; use is over 50%"
+  - printed: "person[spouse].sc[biz_a].asset[item_1].dep_prior"
+    value: "0.00"
+    work: "Not prior-year property"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].period"
+    value: "y20"
+    work: "Asset class 49.4: class life 28 years, so 20-year GDS (25 or more)"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].outside"
+    value: "no"
+    work: "Ordinary MACRS GDS class"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].screened"
+    value: "no"
+    work: "Filer answered no to the exclusions"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].pct_c"
+    value: "1.00"
+    work: "1% business use"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].pct_bad"
+    value: "no"
+    work: "1 is not more than 100"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].over_half"
+    value: "no"
+    work: "1% is not more than 50%"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].listed_low"
+    value: "no"
+    work: "Not listed property"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].basis"
+    value: "56.07"
+    work: "5,607.00 x 1%"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].is2025"
+    value: "yes"
+    work: "Placed in service in 2025"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].on_19"
+    value: "yes"
+    work: "2025 property, not listed"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].on_17"
+    value: "no"
+    work: "Not prior-year property"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].on_26_2025"
+    value: "no"
+    work: "Not listed property"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].year"
+    value: "1"
+    work: "2025 - 2025 + 1"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].last"
+    value: "21"
+    work: "20-year period + 1"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].done"
+    value: "no"
+    work: "Year 1 is not more than 21"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].qconv"
+    value: "mq2"
+    work: "Placed in service in Q2"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].s179_bad"
+    value: "yes"
+    work: "Not used more than 50% in business"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].after179"
+    value: "56.07"
+    work: "56.07 - 0"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].bonus_mixed"
+    value: "no"
+    work: "Choice is the same for the class"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].bonus_full"
+    value: "56.07"
+    work: "100% x 56.07"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].bonus_forty"
+    value: "22.43"
+    work: "40% x 56.07"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].bonus_fullcase"
+    value: "22.43"
+    work: "Not acquired after 1/19/2025, so 40%"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].bonus"
+    value: "0.00"
+    work: "Class choice is none"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].ub"
+    value: "56.07"
+    work: "56.07 - 0 - 0"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].col19c"
+    value: "56.07"
+    work: "Basis after section 179 and allowance"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].rate_hy"
+    value: "3.750%"
+    work: "20-yr 150DB: 1.5/20 x 0.5"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].rate_mq"
+    value: "4.688%"
+    work: "1.5/20 x 0.625 (Q2)"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].macrs_hy"
+    value: "2.10"
+    work: "56.07 x 3.75%"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].macrs_mq"
+    value: "2.63"
+    work: "56.07 x 4.688%"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].macrs2025"
+    value: "2.63"
+    work: "Mid-quarter test is met"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].mqbase"
+    value: "56.07"
+    work: "Basis after section 179, before the allowance"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].mq_q4_2025"
+    value: "0.00"
+    work: "Placed in service in Q2, not Q4"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].ub_prior_a"
+    value: "56.07"
+    work: "56.07 - 0"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].ub_prior"
+    value: "56.07"
+    work: "Less special allowance claimed of 0"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].rate_prior"
+    value: "6.563%"
+    work: "Original convention mq1: 1.5/20 x 0.875"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].macrs_prior_live"
+    value: "3.68"
+    work: "56.07 x 6.563%"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].dep_2025"
+    value: "2.63"
+    work: "2025 property MACRS"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].bonus_2025"
+    value: "0.00"
+    work: "No allowance"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].s179_2025"
+    value: "0.00"
+    work: "None elected"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].mq_q4"
+    value: "0.00"
+    work: "Not Q4"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].mq_total"
+    value: "56.07"
+    work: "2025 property"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].cost179"
+    value: "0.00"
+    work: "Not used more than 50%"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].cost179_2025"
+    value: "0.00"
+    work: "Use is 50% or less"
+  - printed: "person[spouse].sc[biz_a].asset[item_2].dep_prior"
+    value: "0.00"
+    work: "Not prior-year property"
+  - printed: "person[taxpayer].sc[biz_a].asset[item_1].period"
+    value: "y5"
+    work: "Asset class 48.2: class life 6 years, so 5-year GDS (more than 4 but less than 10)"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].outside"
     value: "no"
-    work: "Class 48.36 has a GDS recovery period the tool handles"
+    work: "Ordinary MACRS GDS class"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].screened"
     value: "no"
-    work: "Filer answered no to the screening questions"
+    work: "Filer answered no to the exclusions"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].pct_c"
-    value: "40.00"
-    work: "40% business use"
+    value: "100.00"
+    work: "100% business use"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].pct_bad"
     value: "no"
-    work: "40 is not more than 100"
+    work: "100 is not more than 100"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].over_half"
-    value: "no"
-    work: "40% is not more than 50%"
+    value: "yes"
+    work: "100% > 50%"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].listed_low"
     value: "no"
     work: "Not listed property"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].basis"
-    value: "16578.80"
-    work: "41,447.00 x 40%"
+    value: "5325.00"
+    work: "5,325.00 x 100%"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].is2025"
+    value: "no"
+    work: "Placed in service in 2022"
+  - printed: "person[taxpayer].sc[biz_a].asset[item_1].on_19"
+    value: "no"
+    work: "Not 2025 property"
+  - printed: "person[taxpayer].sc[biz_a].asset[item_1].on_17"
     value: "yes"
-    work: "Placed in service in y2025"
+    work: "Pre-2025, not listed"
+  - printed: "person[taxpayer].sc[biz_a].asset[item_1].on_26_2025"
+    value: "no"
+    work: "Not listed property"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].year"
-    value: "1"
-    work: "2025 - 2025 + 1"
+    value: "4"
+    work: "2025 - 2022 + 1"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].last"
-    value: "8"
-    work: "7-year period + 1"
+    value: "6"
+    work: "5-year period + 1"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].done"
     value: "no"
-    work: "Year 1 is not more than 8"
+    work: "Year 4 is not more than 6"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].qconv"
-    value: "mq1"
-    work: "Placed in service in quarter q1"
+    value: "mq2"
+    work: "Quarter given is q2"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].s179_bad"
     value: "no"
-    work: "Elected 0.00 is not more than the allowable cost of 0.00"
+    work: "0 elected; use is over 50%"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].after179"
-    value: "16578.80"
-    work: "16,578.80 - 0.00"
+    value: "5325.00"
+    work: "5,325.00 - 0"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].bonus_mixed"
     value: "no"
-    work: "Same choice for the whole class"
+    work: "Choice is the same for the class"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].bonus_full"
-    value: "16578.80"
-    work: "100% x 16,578.80"
+    value: "5325.00"
+    work: "100% x 5,325.00"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].bonus_forty"
-    value: "6631.52"
-    work: "40% x 16,578.80"
+    value: "2130.00"
+    work: "40% x 5,325.00"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].bonus_fullcase"
-    value: "16578.80"
-    work: "Acquired after Jan 19, 2025, so 100%"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_1].bonus"
-    value: "16578.80"
-    work: "Full allowance claimed; 7-yr qualified property placed in service in 2025"
+    value: "5325.00"
+    work: "Acquired after 1/19/2025, so 100%"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].ub"
-    value: "0.00"
-    work: "16,578.80 - 16,578.80"
+    value: "5325.00"
+    work: "No 2025 allowance on pre-2025 property"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].rate_hy"
-    value: "14.29%"
-    work: "7-yr, HY, year 1"
+    value: "11.52%"
+    work: "5-yr 200DB HY, year 4"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].rate_mq"
-    value: "25.00%"
-    work: "7-yr, MQ first quarter, year 1 (Pub. 946 Table A-2 example)"
+    value: "11.37%"
+    work: "5-yr 200DB MQ Q2, year 4"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].macrs_hy"
-    value: "0.00"
-    work: "0.00 x 14.29%"
+    value: "613.44"
+    work: "5,325 x 11.52%"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].macrs_mq"
-    value: "0.00"
-    work: "0.00 x 25.00%"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_1].macrs2025"
-    value: "0.00"
-    work: "Mid-quarter test is no, so use HY amount"
+    value: "605.45"
+    work: "5,325 x 11.37%"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].mqbase"
-    value: "16578.80"
-    work: "Business basis after section 179, before special allowance"
+    value: "5325.00"
+    work: "Basis after section 179"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].mq_q4_2025"
     value: "0.00"
-    work: "Placed in service in q1, not Oct-Dec"
+    work: "Not Q4"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].ub_prior_a"
-    value: "16578.80"
-    work: "16,578.80 - 0.00 section 179"
+    value: "5325.00"
+    work: "5,325.00 - 0"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].ub_prior"
-    value: "16578.80"
-    work: "16,578.80 - 0.00 special allowance claimed"
+    value: "5325.00"
+    work: "Less special allowance claimed of 0"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].rate_prior"
-    value: "3.57%"
-    work: "7-yr, mq4 convention given, year 1"
+    value: "11.01%"
+    work: "mq1, year 4: SL 23.40/2.125 years exceeds DB"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].macrs_prior_live"
-    value: "591.86"
-    work: "16,578.80 x 3.57%"
+    value: "586.28"
+    work: "5,325 x 11.01%"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].macrs_prior"
-    value: "0.00"
-    work: "Placed in service in 2025, not before"
+    value: "586.28"
+    work: "Recovery period not ended"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].dep_2025"
     value: "0.00"
-    work: "MACRS 2025 amount 0.00"
+    work: "Not 2025 property"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].bonus_2025"
-    value: "16578.80"
-    work: "Special allowance on 2025 property"
+    value: "0.00"
+    work: "Not 2025 property"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].s179_2025"
     value: "0.00"
-    work: "No section 179 elected"
+    work: "Not 2025 property"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].mq_q4"
     value: "0.00"
-    work: "No fourth-quarter basis"
+    work: "Not 2025 property"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].mq_total"
-    value: "16578.80"
-    work: "2025 basis for the mid-quarter test"
+    value: "0.00"
+    work: "Not 2025 property"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].cost179"
     value: "0.00"
-    work: "Not used more than 50% in the business"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_1].cost179_2025"
-    value: "0.00"
-    work: "40% use is not more than 50%"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_1].dep_prior"
-    value: "0.00"
-    work: "Not prior-year property"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_1].dep_listed"
-    value: "0.00"
-    work: "Not listed property"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].period"
-    value: "y20"
-    work: "Pub. 946 Table B-2 class 49.4 (central steam production and distribution): 28-yr class life, 20-yr GDS (from memory; not in the supplied text)"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].outside"
-    value: "no"
-    work: "Class 49.4 has a GDS recovery period the tool handles"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].screened"
-    value: "no"
-    work: "Filer answered no to the screening questions"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].pct_c"
-    value: "100.00"
-    work: "100% business use"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].pct_bad"
-    value: "no"
-    work: "100 is not more than 100"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].over_half"
-    value: "yes"
-    work: "100% is more than 50%"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].listed_low"
-    value: "no"
-    work: "Not listed property"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].basis"
-    value: "20222.00"
-    work: "20,222.00 x 100%"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].is2025"
-    value: "no"
-    work: "Placed in service in y2010"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].year"
-    value: "16"
-    work: "2025 - 2010 + 1"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].last"
-    value: "21"
-    work: "20-year period + 1"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].done"
-    value: "no"
-    work: "Year 16 is not more than 21"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].qconv"
-    value: "mq4"
-    work: "Quarter given as q4"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].s179_bad"
-    value: "no"
-    work: "0.00 is not more than 20,222.00, and use is more than 50%"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].after179"
-    value: "20222.00"
-    work: "20,222.00 - 0.00"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].bonus_mixed"
-    value: "no"
-    work: "Same choice for the whole class"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].bonus_full"
-    value: "20222.00"
-    work: "100% x 20,222.00"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].bonus_forty"
-    value: "8088.80"
-    work: "40% x 20,222.00"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].bonus_fullcase"
-    value: "8088.80"
-    work: "Not acquired after Jan 19, 2025, so 40%"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].bonus"
-    value: "0.00"
-    work: "Allowance is none, and property is not placed in service in 2025"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].ub"
-    value: "20222.00"
-    work: "20,222.00 - 0.00 - 0.00"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].rate_hy"
-    value: "3.750%"
-    work: "20-yr 150DB, HY, year 1"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].rate_mq"
-    value: "0.938%"
-    work: "20-yr, MQ fourth quarter, year 1 (7.5% x 0.125)"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].macrs_hy"
-    value: "758.33"
-    work: "20,222.00 x 3.750%"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].macrs_mq"
-    value: "189.68"
-    work: "20,222.00 x 0.938%"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].macrs2025"
-    value: "758.33"
-    work: "Mid-quarter test is no, so use HY amount"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].mqbase"
-    value: "20222.00"
-    work: "Basis after section 179, before special allowance"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].mq_q4_2025"
-    value: "20222.00"
-    work: "Quarter given as q4"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].ub_prior_a"
-    value: "20222.00"
-    work: "20,222.00 - 0.00 section 179"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].ub_prior"
-    value: "20222.00"
-    work: "20,222.00 - 0.00 special allowance claimed"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].rate_prior"
-    value: "4.458%"
-    work: "20-yr, MQ fourth quarter, year 16 (straight-line phase, from memory of the table)"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].macrs_prior_live"
-    value: "901.50"
-    work: "20,222.00 x 4.458%"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].macrs_prior"
-    value: "901.50"
-    work: "Placed in service before 2025 and not done"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].dep_2025"
-    value: "0.00"
-    work: "Not 2025 property"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].bonus_2025"
-    value: "0.00"
-    work: "Not 2025 property"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].s179_2025"
-    value: "0.00"
-    work: "Not 2025 property"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].mq_q4"
-    value: "0.00"
-    work: "Not 2025 property"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].mq_total"
-    value: "0.00"
-    work: "Not 2025 property"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].cost179"
-    value: "0.00"
     work: "Not placed in service in 2025"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].cost179_2025"
-    value: "20222.00"
-    work: "Used more than 50%: business cost"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].dep_prior"
-    value: "901.50"
-    work: "Line 17 MACRS amount for prior-year property"
-  - printed: "person[taxpayer].sc[biz_b].asset[item_1].dep_listed"
-    value: "0.00"
-    work: "Not listed property"
+  - printed: "person[taxpayer].sc[biz_a].asset[item_1].cost179_2025"
+    value: "5325.00"
+    work: "Business cost; use is over 50%"
+  - printed: "person[taxpayer].sc[biz_a].asset[item_1].dep_prior"
+    value: "586.28"
+    work: "Line 17 amount"
 ```
 ```
 
 ### classm.asset.2
 
 ```yaml
+```yaml
 lines:
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].period"
-    value: "y15"
-    work: "Pub. 946 Table B-2, class 48.41 telephone distribution plant: GDS recovery period 15 years"
+    value: "y10"
+    work: "Asset class 48.32 (Telephone Central Office Equipment), class life 18 years; 16 or more but less than 20 is 10-year property. Class life is from Pub. 946 Table B-2, which is not in the text provided."
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].outside"
     value: "no"
-    work: "Class 48.41 is a standard MACRS GDS class"
+    work: "The asset class is a standard GDS class."
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].screened"
     value: "no"
-    work: "The filer answered no to the screening questions and the class is supported"
+    work: "Filer answered no to the screening question."
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].pct_c"
     value: "100.00"
-    work: "100% business use"
+    work: "100 percent expressed as cents."
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].pct_bad"
     value: "no"
-    work: "100 is not more than 100"
+    work: "100 is not more than 100."
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].over_half"
     value: "yes"
-    work: "100% > 50%"
+    work: "100% is more than 50%."
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].listed_low"
     value: "no"
-    work: "Not listed property"
+    work: "Listed property used 100% for business."
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].basis"
-    value: "44464.00"
-    work: "44,464.00 x 100%"
+    value: "19315.00"
+    work: "19,315 x 100%."
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].is2025"
     value: "yes"
-    work: "Placed in service in 2025"
+    work: "Placed in service in 2025."
+  - printed: "person[taxpayer].sc[biz_a].asset[item_1].on_19"
+    value: "no"
+    work: "Listed property is reported in Part V, not on line 19."
+  - printed: "person[taxpayer].sc[biz_a].asset[item_1].on_17"
+    value: "no"
+    work: "Placed in service in 2025, and it is listed property."
+  - printed: "person[taxpayer].sc[biz_a].asset[item_1].on_26_2025"
+    value: "yes"
+    work: "Listed property, used more than 50%, placed in service in 2025."
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].year"
     value: "1"
-    work: "2025 - 2025 + 1"
+    work: "2025 - 2025 + 1."
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].last"
-    value: "16"
-    work: "15-year property; the convention adds one more year: 15 + 1"
+    value: "11"
+    work: "10-year recovery period plus the partial final year."
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].done"
     value: "no"
-    work: "Year 1 is not after year 16"
+    work: "Year 1 is not past the last year (11)."
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].qconv"
-    value: "mq2"
-    work: "Placed in service in quarter 2"
+    value: "mq3"
+    work: "Placed in service in the third quarter."
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].s179_bad"
     value: "no"
-    work: "0 is not more than 44,464 and business use is over 50%"
+    work: "Election of 0 is not more than 19,315, and use is over 50%."
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].after179"
-    value: "44464.00"
-    work: "44,464.00 - 0"
+    value: "19315.00"
+    work: "19,315 - 0."
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].bonus_mixed"
     value: "no"
-    work: "The filer says the choice is the same for the whole class"
+    work: "Same choice for all property in the class."
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].bonus_full"
-    value: "44464.00"
-    work: "44,464.00 x 100%"
+    value: "19315.00"
+    work: "19,315 x 100%."
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].bonus_forty"
-    value: "17785.60"
-    work: "44,464.00 x 40%"
+    value: "7726.00"
+    work: "19,315 x 40%."
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].bonus_fullcase"
-    value: "44464.00"
-    work: "Acquired after Jan 19, 2025, so 100%"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_1].bonus"
-    value: "17785.60"
-    work: "40% elected; 15-year property qualifies (20 years or less)"
+    value: "19315.00"
+    work: "Acquired after January 19, 2025, so 100% applies."
+  - printed: "person[taxpayer].sc[biz_a].asset[item_1].f25"
+    value: "19315.00"
+    work: "Full special allowance claimed on qualified listed property."
+  - printed: "person[taxpayer].sc[biz_a].asset[item_1].f26i"
+    value: "0.00"
+    work: "No section 179 elected."
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].ub"
-    value: "26678.40"
-    work: "44,464.00 - 17,785.60"
+    value: "0.00"
+    work: "19,315 - 0 - 19,315."
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].rate_hy"
-    value: "5.00%"
-    work: "150DB: 1.5/15 = 10%, x 0.5 for half-year"
+    value: "10.00%"
+    work: "2.00 / 10 = 20%, x 0.5."
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].rate_mq"
-    value: "6.25%"
-    work: "10% x 0.625 for quarter 2"
+    value: "7.50%"
+    work: "20% x 0.375 (third quarter)."
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].macrs_hy"
-    value: "1333.92"
-    work: "26,678.40 x 5.00%"
+    value: "0.00"
+    work: "0 x 10.00%."
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].macrs_mq"
-    value: "1667.40"
-    work: "26,678.40 x 6.25%"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_1].macrs2025"
-    value: "1667.40"
-    work: "Mid-quarter convention applies (test = yes)"
+    value: "0.00"
+    work: "0 x 7.50%."
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].mqbase"
-    value: "44464.00"
-    work: "After section 179, before the special allowance"
+    value: "19315.00"
+    work: "After section 179, before the special allowance."
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].mq_q4_2025"
     value: "0.00"
-    work: "Placed in service in Q2, not Q4"
+    work: "Not placed in service in the fourth quarter."
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].ub_prior_a"
-    value: "44464.00"
-    work: "44,464.00 - prior section 179 of 0"
+    value: "19315.00"
+    work: "19,315 - 0 section 179."
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].ub_prior"
-    value: "44464.00"
-    work: "44,464.00 - special allowance claimed of 0"
+    value: "19315.00"
+    work: "19,315 - 0 special allowance claimed."
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].rate_prior"
-    value: "1.25%"
-    work: "15-year property, mq4 convention, year 1: 10% x 0.125"
+    value: "12.50%"
+    work: "Year 1, 10-year, mq2: 20% x 0.625."
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].macrs_prior_live"
-    value: "555.80"
-    work: "44,464.00 x 1.25%"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_1].macrs_prior"
-    value: "0.00"
-    work: "Placed in service in 2025, not before 2025"
+    value: "2414.38"
+    work: "19,315 x 12.50%."
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].dep_2025"
-    value: "1667.40"
-    work: "Line 19 MACRS on 2025 property that is not listed"
+    value: "0.00"
+    work: "Half-year MACRS on a basis of 0."
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].bonus_2025"
-    value: "17785.60"
-    work: "Line 14 special allowance"
+    value: "19315.00"
+    work: "Special allowance on 2025 property."
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].s179_2025"
     value: "0.00"
-    work: "No section 179 elected"
+    work: "No election."
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].mq_q4"
     value: "0.00"
-    work: "Not placed in service in Q4"
+    work: "Third-quarter property."
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].mq_total"
-    value: "44464.00"
-    work: "mqbase for 2025 property"
+    value: "19315.00"
+    work: "Equals mqbase."
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].cost179"
-    value: "44464.00"
-    work: "Business cost of tangible section 179 property placed in service in 2025"
+    value: "19315.00"
+    work: "Business cost; listed property is included on line 2."
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].cost179_2025"
-    value: "44464.00"
-    work: "Business use is over 50%"
+    value: "19315.00"
+    work: "Used more than 50% in the business."
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].dep_prior"
     value: "0.00"
-    work: "Not property placed in service before 2025"
+    work: "Not placed in service before 2025."
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].dep_listed"
     value: "0.00"
-    work: "Not listed property"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].period"
-    value: "y5"
-    work: "Pub. 946 class 00.241 light general purpose trucks: GDS 5 years"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].outside"
+    work: "Column (h) equals MACRS on a basis of 0."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].period"
+    value: "y15"
+    work: "Asset class 44.0 (Water Transportation), class life 20 years; 20 or more but less than 25 is 15-year property. Class life is from Pub. 946 Table B-2, which is not in the text provided."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].outside"
     value: "no"
-    work: "Class 00.241 is a standard MACRS GDS class"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].screened"
+    work: "The asset class is a standard GDS class."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].screened"
     value: "no"
-    work: "The filer answered no to the screening questions"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].pct_c"
+    work: "Filer answered no to the screening question."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].pct_c"
     value: "100.00"
-    work: "100% business use"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].pct_bad"
+    work: "100 percent expressed as cents."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].pct_bad"
     value: "no"
-    work: "100 is not more than 100"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].over_half"
+    work: "100 is not more than 100."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].over_half"
     value: "yes"
-    work: "100% > 50%"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].listed_low"
+    work: "100% is more than 50%."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].listed_low"
     value: "no"
-    work: "Listed property, but used more than 50%"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].basis"
-    value: "43875.00"
-    work: "43,875.00 x 100%"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].is2025"
+    work: "Not listed property."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].basis"
+    value: "36124.00"
+    work: "36,124 x 100%."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].is2025"
     value: "yes"
-    work: "Placed in service in 2025"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].year"
+    work: "Placed in service in 2025."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].on_19"
+    value: "yes"
+    work: "2025 property that is not listed property."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].on_17"
+    value: "no"
+    work: "Placed in service in 2025."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].on_26_2025"
+    value: "no"
+    work: "Not listed property."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].year"
     value: "1"
-    work: "2025 - 2025 + 1"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].last"
-    value: "6"
-    work: "5-year property; the convention adds one more year: 5 + 1"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].done"
+    work: "2025 - 2025 + 1."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].last"
+    value: "16"
+    work: "15-year recovery period plus the partial final year."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].done"
     value: "no"
-    work: "Year 1 is not after year 6"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].qconv"
-    value: "mq4"
-    work: "Placed in service in quarter 4"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].s179_bad"
+    work: "Year 1 is not past the last year (16)."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].qconv"
+    value: "mq2"
+    work: "Placed in service in the second quarter."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].s179_bad"
     value: "no"
-    work: "0 is not more than the cost and business use is over 50%"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].after179"
-    value: "43875.00"
-    work: "43,875.00 - 0"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].bonus_mixed"
+    work: "3,189 is not more than 36,124, and use is over 50%."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].after179"
+    value: "32935.00"
+    work: "36,124 - 3,189."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].bonus_mixed"
     value: "no"
-    work: "The filer says the choice is the same for the whole class"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].bonus_full"
-    value: "43875.00"
-    work: "43,875.00 x 100%"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].bonus_forty"
-    value: "17550.00"
-    work: "43,875.00 x 40%"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].bonus_fullcase"
-    value: "43875.00"
-    work: "Acquired after Jan 19, 2025, so 100%"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].bonus"
-    value: "17550.00"
-    work: "40% elected; listed property used over 50% qualifies"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].ub"
-    value: "26325.00"
-    work: "43,875.00 - 17,550.00"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].rate_hy"
-    value: "20.00%"
-    work: "200DB: 2/5 = 40%, x 0.5 for half-year"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].rate_mq"
+    work: "Same choice for all property in the class."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].bonus_full"
+    value: "32935.00"
+    work: "32,935 x 100%."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].bonus_forty"
+    value: "13174.00"
+    work: "32,935 x 40%."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].bonus_fullcase"
+    value: "13174.00"
+    work: "Not acquired after January 19, 2025, so 40% applies."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].bonus"
+    value: "0.00"
+    work: "Special allowance for the class is none (election out)."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].ub"
+    value: "32935.00"
+    work: "36,124 - 3,189 - 0."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].col19c"
+    value: "32935.00"
+    work: "Equals ub."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].rate_hy"
     value: "5.00%"
-    work: "40% x 0.125 for quarter 4"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].macrs_hy"
-    value: "5265.00"
-    work: "26,325.00 x 20%"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].macrs_mq"
-    value: "1316.25"
-    work: "26,325.00 x 5%"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].macrs2025"
-    value: "1316.25"
-    work: "Mid-quarter convention applies (test = yes)"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].mqbase"
-    value: "43875.00"
-    work: "After section 179, before the special allowance"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].mq_q4_2025"
-    value: "43875.00"
-    work: "Placed in service in Q4"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].ub_prior_a"
-    value: "43875.00"
-    work: "43,875.00 - prior section 179 of 0"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].ub_prior"
-    value: "43875.00"
-    work: "43,875.00 - special allowance claimed of 0"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].rate_prior"
-    value: "20.00%"
-    work: "5-year property, half-year convention, year 1"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].macrs_prior_live"
-    value: "8775.00"
-    work: "43,875.00 x 20%"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].macrs_prior"
+    work: "1.50 / 15 = 10%, x 0.5."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].rate_mq"
+    value: "6.25%"
+    work: "10% x 0.625 (second quarter)."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].macrs_hy"
+    value: "1646.75"
+    work: "32,935 x 5.00%."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].macrs_mq"
+    value: "2058.44"
+    work: "32,935 x 6.25%."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].macrs2025"
+    value: "1646.75"
+    work: "Mid-quarter does not apply, so the half-year amount is used."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].mqbase"
+    value: "32935.00"
+    work: "After section 179, before the special allowance."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].mq_q4_2025"
     value: "0.00"
-    work: "Placed in service in 2025, not before 2025"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].dep_2025"
+    work: "Second-quarter property."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].ub_prior_a"
+    value: "36124.00"
+    work: "36,124 - 0 prior section 179."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].ub_prior"
+    value: "36124.00"
+    work: "36,124 - 0 special allowance claimed."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].rate_prior"
+    value: "8.75%"
+    work: "Year 1, 15-year, mq1: 10% x 0.875."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].macrs_prior_live"
+    value: "3160.85"
+    work: "36,124 x 8.75%."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].dep_2025"
+    value: "1646.75"
+    work: "Equals macrs2025."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].bonus_2025"
     value: "0.00"
-    work: "Listed property is reported in Part V, not line 19"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].bonus_2025"
+    work: "No special allowance."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].s179_2025"
+    value: "3189.00"
+    work: "Elected section 179 cost."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].mq_q4"
     value: "0.00"
-    work: "Line 14 excludes listed property; its allowance goes on line 25"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].s179_2025"
+    work: "Second-quarter property."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].mq_total"
+    value: "32935.00"
+    work: "Equals mqbase."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].cost179"
+    value: "36124.00"
+    work: "Business cost of section 179 property."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].cost179_2025"
+    value: "36124.00"
+    work: "Used more than 50% in the business."
+  - printed: "person[taxpayer].sc[biz_b].asset[item_1].dep_prior"
     value: "0.00"
-    work: "No section 179 elected"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].mq_q4"
-    value: "43875.00"
-    work: "Q4 basis for the mid-quarter test"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].mq_total"
-    value: "43875.00"
-    work: "mqbase for 2025 property"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].cost179"
-    value: "43875.00"
-    work: "Line 2 includes listed property from Part V"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].cost179_2025"
-    value: "43875.00"
-    work: "Business use is over 50%"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].dep_prior"
-    value: "0.00"
-    work: "Not property placed in service before 2025"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].dep_listed"
-    value: "1316.25"
-    work: "Line 26 column (h) = MACRS 26,325.00 x 5%"
+    work: "Not placed in service before 2025."
+```
 ```
 
 ### classm.asset.3
@@ -2449,513 +2549,401 @@ lines:
 lines:
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].period"
     value: "y7"
-    work: "Pub. 946 Table B-2 asset class 49.5 (waste reduction and resource recovery plants): class life 10 years, GDS 7 years; recalled, the class table was not provided"
+    work: "Pub. 946 Table B-2 asset class 40.1 has a 14-year class life; 10 or more but less than 16 gives 7-year property"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].outside"
     value: "no"
-    work: "Class 49.5 is an ordinary 7-year GDS class"
+    work: "Class 40.1 is ordinary 7-year GDS property"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].screened"
     value: "no"
-    work: "The filer answered no to the screening question"
+    work: "No special situation applies and the class is in scope"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].pct_c"
-    value: "30.00"
-    work: "30%"
+    value: "100.00"
+    work: "100% business use"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].pct_bad"
     value: "no"
-    work: "30 is not more than 100"
+    work: "100 is not more than 100"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].over_half"
-    value: "no"
-    work: "30% is not more than 50%"
+    value: "yes"
+    work: "100% > 50%"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].listed_low"
     value: "no"
-    work: "The property is not listed property"
+    work: "Not listed property"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].basis"
-    value: "11538.90"
-    work: "38,463.00 x 30%"
+    value: "22713.00"
+    work: "22,713.00 x 100%"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].is2025"
     value: "yes"
-    work: "Placed in service in 2025 (y2025)"
+    work: "Placed in service y2025"
+  - printed: "person[taxpayer].sc[biz_a].asset[item_1].on_19"
+    value: "yes"
+    work: "2025 property that is not listed property"
+  - printed: "person[taxpayer].sc[biz_a].asset[item_1].on_17"
+    value: "no"
+    work: "Not placed in service before 2025"
+  - printed: "person[taxpayer].sc[biz_a].asset[item_1].on_26_2025"
+    value: "no"
+    work: "Not listed property"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].year"
     value: "1"
-    work: "2025 is the first year of recovery"
+    work: "2025 - 2025 + 1"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].last"
     value: "8"
-    work: "7-year property with a HY/MQ convention runs 8 tax years"
+    work: "7-year property recovers over 8 tax years"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].done"
     value: "no"
-    work: "Recovery year 1 is not after year 8"
+    work: "Year 1 is not after year 8"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].qconv"
     value: "mq1"
     work: "Placed in service in Q1"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].s179_bad"
     value: "no"
-    work: "No section 179 election ($0), so neither test is failed by an election"
+    work: "7,925 is not more than 22,713, and business use is over 50%"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].after179"
-    value: "11538.90"
-    work: "11,538.90 - 0"
+    value: "14788.00"
+    work: "22,713.00 - 7,925.00"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].bonus_mixed"
     value: "no"
-    work: "Same choice for the whole class = yes"
+    work: "The choice is the same for the whole class"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].bonus_full"
-    value: "11538.90"
-    work: "100% x 11,538.90"
+    value: "14788.00"
+    work: "14,788.00 x 100%"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].bonus_forty"
-    value: "4615.56"
-    work: "40% x 11,538.90"
+    value: "5915.20"
+    work: "14,788.00 x 40%"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].bonus_fullcase"
-    value: "4615.56"
-    work: "Not acquired after Jan 19, 2025, so 40%"
+    value: "14788.00"
+    work: "Acquired after Jan 19, 2025, so 100%"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].bonus"
-    value: "4615.56"
-    work: "Allowance claimed (full); not listed property, not ADS"
+    value: "5915.20"
+    work: "40% allowance elected for this class"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].ub"
-    value: "6923.34"
-    work: "11,538.90 - 4,615.56"
+    value: "8872.80"
+    work: "14,788.00 - 5,915.20"
+  - printed: "person[taxpayer].sc[biz_a].asset[item_1].col19c"
+    value: "8872.80"
+    work: "Basis after section 179 and the special allowance"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].rate_hy"
     value: "14.29%"
-    work: "7-year, half-year, year 1"
+    work: "7-year property, half-year convention, year 1"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].rate_mq"
     value: "25.00%"
-    work: "7-year, mid-quarter Q1, year 1"
+    work: "7-year property, mid-quarter Q1, year 1"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].macrs_hy"
-    value: "989.35"
-    work: "6,923.34 x 14.29%"
+    value: "1267.92"
+    work: "8,872.80 x 14.29%"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].macrs_mq"
-    value: "1730.84"
-    work: "6,923.34 x 25.00%"
+    value: "2218.20"
+    work: "8,872.80 x 25.00%"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].macrs2025"
-    value: "989.35"
-    work: "Mid-quarter test = no, so the half-year amount applies"
+    value: "1267.92"
+    work: "Mid-quarter test is no, so half-year convention applies"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].mqbase"
-    value: "11538.90"
-    work: "Business basis after section 179, before the special allowance"
+    value: "14788.00"
+    work: "After section 179, before the special allowance"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].mq_q4_2025"
     value: "0.00"
     work: "Placed in service in Q1, not Q4"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].ub_prior_a"
-    value: "11538.90"
-    work: "11,538.90 - prior section 179 of 0"
+    value: "22713.00"
+    work: "22,713.00 - 0.00 prior section 179"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].ub_prior"
-    value: "11538.90"
-    work: "11,538.90 - prior special allowance of 0"
+    value: "22713.00"
+    work: "22,713.00 - 0.00 special allowance"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].rate_prior"
-    value: "17.85%"
-    work: "7-year, mid-quarter Q2 (mq2), recovery year 1"
+    value: "14.29%"
+    work: "7-year property, half-year convention, year 1"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].macrs_prior_live"
-    value: "2059.69"
-    work: "11,538.90 x 17.85%"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_1].macrs_prior"
-    value: "0.00"
-    work: "Placed in service in 2025, not before 2025"
+    value: "3245.69"
+    work: "22,713.00 x 14.29%"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].dep_2025"
-    value: "989.35"
-    work: "From macrs2025"
+    value: "1267.92"
+    work: "On line 19"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].bonus_2025"
-    value: "4615.56"
-    work: "From bonus"
+    value: "5915.20"
+    work: "On line 14"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].s179_2025"
-    value: "0.00"
-    work: "No election"
+    value: "7925.00"
+    work: "On line 6, column (c)"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].mq_q4"
     value: "0.00"
-    work: "From mq_q4_2025"
+    work: "Not placed in service in Q4"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].mq_total"
-    value: "11538.90"
-    work: "From mqbase"
+    value: "14788.00"
+    work: "mqbase for 2025 property"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].cost179"
-    value: "0.00"
-    work: "Not used more than 50% in the business"
+    value: "22713.00"
+    work: "Business cost of 2025 property"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].cost179_2025"
-    value: "0.00"
-    work: "Business use is 30%, not more than 50%"
+    value: "22713.00"
+    work: "Business use is over 50%"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].dep_prior"
     value: "0.00"
-    work: "Not prior-year property"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_1].dep_listed"
-    value: "0.00"
-    work: "Not listed property"
+    work: "Not reported on line 17"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].period"
-    value: "y7"
-    work: "Pub. 946 asset class 48.44 (customer premises equipment): class life 10 years, GDS 7 years; recalled, the class table was not provided"
+    value: "y5"
+    work: "Pub. 946 asset class 36.0 has a 6-year class life; more than 4 but less than 10 gives 5-year property"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].outside"
     value: "no"
-    work: "Class 48.44 is an ordinary 7-year GDS class"
+    work: "Class 36.0 is ordinary 5-year GDS property"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].screened"
     value: "no"
-    work: "The filer answered no to the screening question"
+    work: "No special situation applies and the class is in scope"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].pct_c"
     value: "100.00"
-    work: "100%"
+    work: "100% business use"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].pct_bad"
     value: "no"
     work: "100 is not more than 100"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].over_half"
     value: "yes"
-    work: "100% is more than 50%"
+    work: "100% > 50%"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].listed_low"
     value: "no"
-    work: "The property is not listed property"
+    work: "Not listed property"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].basis"
-    value: "6126.00"
-    work: "6,126.00 x 100%"
+    value: "5620.00"
+    work: "5,620.00 x 100%"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].is2025"
     value: "yes"
-    work: "Placed in service in 2025 (y2025)"
+    work: "Placed in service y2025"
+  - printed: "person[taxpayer].sc[biz_a].asset[item_2].on_19"
+    value: "yes"
+    work: "2025 property that is not listed property"
+  - printed: "person[taxpayer].sc[biz_a].asset[item_2].on_17"
+    value: "no"
+    work: "Not placed in service before 2025"
+  - printed: "person[taxpayer].sc[biz_a].asset[item_2].on_26_2025"
+    value: "no"
+    work: "Not listed property"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].year"
     value: "1"
-    work: "2025 is the first year of recovery"
+    work: "2025 - 2025 + 1"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].last"
-    value: "8"
-    work: "7-year property runs 8 tax years"
+    value: "6"
+    work: "5-year property recovers over 6 tax years"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].done"
     value: "no"
-    work: "Recovery year 1 is not after year 8"
+    work: "Year 1 is not after year 6"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].qconv"
-    value: "mq3"
-    work: "Placed in service in Q3"
+    value: "mq4"
+    work: "Placed in service in Q4"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].s179_bad"
     value: "no"
-    work: "6,126.00 is not more than 6,126.00, and use is more than 50%"
+    work: "5,620 is not more than 5,620, and business use is over 50%"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].after179"
     value: "0.00"
-    work: "6,126.00 - 6,126.00"
+    work: "5,620.00 - 5,620.00"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].bonus_mixed"
     value: "no"
-    work: "Same choice for the whole class = yes"
+    work: "The choice is the same for the whole class"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].bonus_full"
     value: "0.00"
-    work: "100% x 0"
+    work: "0.00 x 100%"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].bonus_forty"
     value: "0.00"
-    work: "40% x 0"
+    work: "0.00 x 40%"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].bonus_fullcase"
     value: "0.00"
-    work: "Acquired after Jan 19, 2025, so 100% x 0"
+    work: "Acquired after Jan 19, 2025, so 100% of 0.00"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].bonus"
     value: "0.00"
-    work: "Elected out for the class (none)"
+    work: "Elected out (none) for this class"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].ub"
     value: "0.00"
-    work: "0 - 0"
+    work: "0.00 - 0.00"
+  - printed: "person[taxpayer].sc[biz_a].asset[item_2].col19c"
+    value: "0.00"
+    work: "Basis after section 179 and the special allowance"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].rate_hy"
-    value: "14.29%"
-    work: "7-year, half-year, year 1"
+    value: "20.00%"
+    work: "5-year property, half-year convention, year 1"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].rate_mq"
-    value: "10.71%"
-    work: "7-year, mid-quarter Q3, year 1"
+    value: "5.00%"
+    work: "5-year property, mid-quarter Q4, year 1"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].macrs_hy"
     value: "0.00"
-    work: "0 x 14.29%"
+    work: "0.00 x 20.00%"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].macrs_mq"
     value: "0.00"
-    work: "0 x 10.71%"
+    work: "0.00 x 5.00%"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].macrs2025"
     value: "0.00"
-    work: "Half-year convention applies; amount is 0"
+    work: "Mid-quarter test is no, so half-year convention applies"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].mqbase"
     value: "0.00"
-    work: "6,126.00 - section 179 of 6,126.00"
+    work: "5,620.00 - 5,620.00 section 179"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].mq_q4_2025"
     value: "0.00"
-    work: "Placed in service in Q3, not Q4"
+    work: "Q4 property with a basis of 0.00"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].ub_prior_a"
-    value: "6126.00"
-    work: "6,126.00 - prior section 179 of 0"
+    value: "5620.00"
+    work: "5,620.00 - 0.00 prior section 179"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].ub_prior"
-    value: "6126.00"
-    work: "6,126.00 - prior special allowance of 0"
+    value: "5620.00"
+    work: "5,620.00 - 0.00 special allowance"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].rate_prior"
-    value: "17.85%"
-    work: "7-year, mid-quarter Q2 (mq2), recovery year 1"
+    value: "15.00%"
+    work: "5-year property, mid-quarter Q3 (mq3), year 1"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].macrs_prior_live"
-    value: "1093.49"
-    work: "6,126.00 x 17.85%"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].macrs_prior"
-    value: "0.00"
-    work: "Placed in service in 2025, not before 2025"
+    value: "843.00"
+    work: "5,620.00 x 15.00%"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].dep_2025"
     value: "0.00"
-    work: "From macrs2025"
+    work: "On line 19"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].bonus_2025"
     value: "0.00"
-    work: "From bonus"
+    work: "No special allowance"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].s179_2025"
-    value: "6126.00"
-    work: "Elected section 179 cost"
+    value: "5620.00"
+    work: "On line 6, column (c)"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].mq_q4"
     value: "0.00"
-    work: "From mq_q4_2025"
+    work: "mq_q4_2025"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].mq_total"
     value: "0.00"
-    work: "From mqbase"
+    work: "mqbase"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].cost179"
-    value: "6126.00"
-    work: "Business cost; use is more than 50%"
+    value: "5620.00"
+    work: "Business cost of 2025 property"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].cost179_2025"
-    value: "6126.00"
-    work: "Business cost 6,126.00 with 100% use"
+    value: "5620.00"
+    work: "Business use is over 50%"
   - printed: "person[taxpayer].sc[biz_a].asset[item_2].dep_prior"
     value: "0.00"
-    work: "Not prior-year property"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].dep_listed"
-    value: "0.00"
-    work: "Not listed property"
+    work: "Not reported on line 17"
 ```
 ```
 
 ### classm.asset.4
 
 ```yaml
+```yaml
 lines:
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].period"
-    value: "y3"
-    work: "Pub. 946 App. B asset class 20.5 has a 3-year GDS recovery period (from the table, not printed in the text given)"
+    value: "y15"
+    work: "Asset class 00.4 has a class life of 22 years; 20 or more but less than 25 is 15-year property (class life recalled, not in the given text)"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].outside"
     value: "no"
-    work: "Class 20.5 maps to a standard GDS class"
+    work: "Class 00.4 is a GDS MACRS class handled by this computation"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].screened"
     value: "no"
-    work: "Filer answered no to the exceptions, and the property is not listed property"
+    work: "Filer answered no to the screening question"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].pct_c"
-    value: "38.00"
-    work: "38% business use"
+    value: "100.00"
+    work: "Business use 100%, recorded as 100.00"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].pct_bad"
     value: "no"
-    work: "38 is not more than 100"
+    work: "100 is not more than 100"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].over_half"
-    value: "no"
-    work: "38% is not more than 50%"
+    value: "yes"
+    work: "100% > 50%"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].listed_low"
     value: "no"
     work: "Not listed property, and the percentage is not over 100"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].basis"
-    value: "7505.76"
-    work: "19,752.00 x 38% = 7,505.76 (line 19 col (c))"
+    value: "100.00"
+    work: "$100.00 x 100% = $100.00"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].is2025"
+    value: "no"
+    work: "Placed in service in 2019"
+  - printed: "person[taxpayer].sc[biz_a].asset[item_1].on_19"
+    value: "no"
+    work: "Not placed in service in 2025"
+  - printed: "person[taxpayer].sc[biz_a].asset[item_1].on_17"
     value: "yes"
-    work: "Placed in service in y2025"
+    work: "Placed in service before 2025, not listed property: line 17"
+  - printed: "person[taxpayer].sc[biz_a].asset[item_1].on_26_2025"
+    value: "no"
+    work: "Not listed property"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].year"
-    value: "1"
-    work: "2025 - 2025 + 1 = 1"
+    value: "7"
+    work: "2025 - 2019 + 1 = 7"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].last"
-    value: "4"
-    work: "A 3-year recovery period plus the convention year = 4 tax years"
+    value: "16"
+    work: "15-year recovery period with a first-year convention spans 16 tax years"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].done"
     value: "no"
-    work: "Year 1 is not more than 4"
+    work: "Recovery year 7 is not past the last year, 16"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].qconv"
-    value: "mq1"
-    work: "Placed in service in Q1"
+    value: "mq3"
+    work: "Third quarter maps to mq3"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].s179_bad"
     value: "no"
-    work: "No section 179 elected ($0), so there is no election to fail the tests"
+    work: "Section 179 elected $0 is not more than cost; use is over 50%"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].after179"
-    value: "7505.76"
-    work: "7,505.76 - 0 = 7,505.76"
+    value: "100.00"
+    work: "$100.00 - $0.00 = $100.00"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].bonus_mixed"
     value: "no"
     work: "Filer says the choice is the same for the whole class"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].bonus_full"
-    value: "7505.76"
-    work: "100% x 7,505.76"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_1].bonus_forty"
-    value: "3002.30"
-    work: "40% x 7,505.76 = 3,002.304, rounded to 3,002.30"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_1].bonus_fullcase"
-    value: "7505.76"
-    work: "Acquired after Jan 19, 2025, so 100%"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_1].bonus"
     value: "0.00"
-    work: "Special allowance for this class = none"
+    work: "Special allowance for this class is none"
+  - printed: "person[taxpayer].sc[biz_a].asset[item_1].bonus_forty"
+    value: "0.00"
+    work: "Special allowance for this class is none"
+  - printed: "person[taxpayer].sc[biz_a].asset[item_1].bonus_fullcase"
+    value: "0.00"
+    work: "No allowance claimed (none)"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].ub"
-    value: "7505.76"
-    work: "7,505.76 - 0 - 0"
+    value: "100.00"
+    work: "$100.00 - $0.00 section 179 - $0.00 allowance = $100.00"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].rate_hy"
-    value: "33.33%"
-    work: "MACRS table: 3-year, HY, year 1"
+    value: "5.00%"
+    work: "15-year 150DB HY, year 1: 10% x 0.5 = 5.00%"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].rate_mq"
-    value: "58.33%"
-    work: "MACRS table: 3-year, MQ Q1, year 1"
+    value: "3.75%"
+    work: "15-year 150DB MQ, 3rd quarter, year 1: 10% x 0.375 = 3.75%"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].macrs_hy"
-    value: "2501.67"
-    work: "7,505.76 x 33.33% = 2,501.67"
+    value: "5.00"
+    work: "$100.00 x 5.00% = $5.00"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].macrs_mq"
-    value: "4378.11"
-    work: "7,505.76 x 58.33% = 4,378.11"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_1].macrs2025"
-    value: "2501.67"
-    work: "Mid-quarter test = no, so the half-year convention applies"
+    value: "3.75"
+    work: "$100.00 x 3.75% = $3.75"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].mqbase"
-    value: "7505.76"
-    work: "Business basis after section 179 ($0), before the special allowance"
+    value: "100.00"
+    work: "Basis after section 179, before the special allowance = $100.00"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].mq_q4_2025"
     value: "0.00"
-    work: "Placed in service in Q1, not Q4"
+    work: "Not placed in service in October to December 2025"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].ub_prior_a"
-    value: "7505.76"
-    work: "7,505.76 - 0"
+    value: "100.00"
+    work: "$100.00 - $0.00 section 179 = $100.00"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].ub_prior"
-    value: "7505.76"
-    work: "7,505.76 - special allowance claimed 0"
+    value: "0.00"
+    work: "$100.00 - $100.00 special allowance claimed = $0.00"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].rate_prior"
-    value: "33.33%"
-    work: "3-year, HY, year 1"
+    value: "5.90%"
+    work: "15-year MQ Q3, year 7: switch to straight line; unrecovered 56.83% / 9.625 years remaining = 5.90%"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].macrs_prior_live"
-    value: "2501.67"
-    work: "7,505.76 x 33.33%"
+    value: "0.00"
+    work: "$0.00 x 5.90% = $0.00"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].macrs_prior"
     value: "0.00"
-    work: "Placed in service in 2025, so not prior-year property"
+    work: "Recovery period not ended; use $0.00"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].dep_2025"
-    value: "2501.67"
-    work: "macrs2025"
+    value: "0.00"
+    work: "Not 2025 property"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].bonus_2025"
     value: "0.00"
-    work: "bonus = 0"
+    work: "Not 2025 property"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].s179_2025"
     value: "0.00"
-    work: "No section 179 elected"
+    work: "Not 2025 property"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].mq_q4"
     value: "0.00"
-    work: "Not placed in service in Q4"
+    work: "Not 2025 property"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].mq_total"
-    value: "7505.76"
-    work: "mqbase for 2025 property"
+    value: "0.00"
+    work: "Not 2025 property"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].cost179"
     value: "0.00"
-    work: "Not used more than 50% for business, so not section 179 property"
+    work: "Not placed in service in 2025"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].cost179_2025"
     value: "0.00"
-    work: "Business use is 50% or less"
+    work: "Not placed in service in 2025"
   - printed: "person[taxpayer].sc[biz_a].asset[item_1].dep_prior"
     value: "0.00"
-    work: "Placed in service in 2025"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_1].dep_listed"
-    value: "0.00"
-    work: "Not listed property"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].period"
-    value: "y7"
-    work: "Pub. 946 App. B asset class 10.0 has a 7-year GDS recovery period (from the table, not printed in the text given)"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].outside"
-    value: "no"
-    work: "Class 10.0 maps to a standard GDS class"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].screened"
-    value: "no"
-    work: "Filer answered no to the exceptions, and the property is not listed property"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].pct_c"
-    value: "20.00"
-    work: "20% business use"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].pct_bad"
-    value: "no"
-    work: "20 is not more than 100"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].over_half"
-    value: "no"
-    work: "20% is not more than 50%"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].listed_low"
-    value: "no"
-    work: "Not listed property"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].basis"
-    value: "2167.80"
-    work: "10,839.00 x 20% = 2,167.80"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].is2025"
-    value: "no"
-    work: "Placed in service in y2022"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].year"
-    value: "4"
-    work: "2025 - 2022 + 1 = 4"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].last"
-    value: "8"
-    work: "A 7-year recovery period plus 1 = 8 tax years"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].done"
-    value: "no"
-    work: "Year 4 is not more than 8"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].qconv"
-    value: "mq4"
-    work: "Quarter given = q4"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].s179_bad"
-    value: "yes"
-    work: "Section 179 of 2,168.00 is more than the business cost of 2,167.80, and use is not more than 50%"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].after179"
-    value: "0.00"
-    work: "2,167.80 - 2,168.00 is less than zero, so 0"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].bonus_mixed"
-    value: "no"
-    work: "Filer says the choice is the same for the whole class"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].bonus_full"
-    value: "0.00"
-    work: "100% x 0"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].bonus_forty"
-    value: "0.00"
-    work: "40% x 0"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].bonus_fullcase"
-    value: "0.00"
-    work: "100% x 0"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].bonus"
-    value: "0.00"
-    work: "Allowance = none; not 2025 property"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].ub"
-    value: "0.00"
-    work: "0 - 0"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].rate_hy"
-    value: "14.29%"
-    work: "7-year, HY, year 1"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].rate_mq"
-    value: "3.57%"
-    work: "7-year, MQ Q4, year 1"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].macrs_hy"
-    value: "0.00"
-    work: "0 x 14.29%"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].macrs_mq"
-    value: "0.00"
-    work: "0 x 3.57%"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].macrs2025"
-    value: "0.00"
-    work: "Not 2025 property, and basis is 0"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].mqbase"
-    value: "0.00"
-    work: "after179 = 0"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].mq_q4_2025"
-    value: "0.00"
-    work: "Basis is 0"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].ub_prior_a"
-    value: "0.00"
-    work: "2,167.80 - 2,168.00 is less than zero, so 0"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].ub_prior"
-    value: "0.00"
-    work: "0 - special allowance claimed 0"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].rate_prior"
-    value: "10.93%"
-    work: "Table A-2: 7-year, MQ Q1, year 4"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].macrs_prior_live"
-    value: "0.00"
-    work: "0 x 10.93%"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].macrs_prior"
-    value: "0.00"
-    work: "Pre-2025 property, recovery period not done: 0"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].dep_2025"
-    value: "0.00"
-    work: "Not 2025 property"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].bonus_2025"
-    value: "0.00"
-    work: "Not 2025 property"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].s179_2025"
-    value: "0.00"
-    work: "Not 2025 property"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].mq_q4"
-    value: "0.00"
-    work: "Not 2025 property"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].mq_total"
-    value: "0.00"
-    work: "Not 2025 property"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].cost179"
-    value: "0.00"
-    work: "Not placed in service in 2025"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].cost179_2025"
-    value: "0.00"
-    work: "Business use is 50% or less"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].dep_prior"
-    value: "0.00"
-    work: "macrs_prior = 0"
-  - printed: "person[taxpayer].sc[biz_a].asset[item_2].dep_listed"
-    value: "0.00"
-    work: "Not listed property"
+    work: "Line 17 amount = macrs_prior = $0.00"
+```
 ```

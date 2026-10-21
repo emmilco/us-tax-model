@@ -1174,7 +1174,7 @@
         "f1040.lines4-6"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Annuity $24,000 for 12 months, cost $31,000, age 62 at the annuity starting date (after November 18, 1996), first year: line 3 is 260 (Table 1, 61-65), line 4 $119.23 ($31,000 / 260, half-up to the cent), line 5 $1,430.76, line 7 $31,000, line 8 $1,430.76, line 9 (line 5b) $22,569.24, line 10 $1,430.76, line 11 $29,569.24 (p. 29).",
+      "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Annuity $24,000 for 12 months, cost $31,000, age 62 at the annuity starting date (after November 18, 1996), first year: line 3 is 260 (Table 1, 61-65), line 4 $119.23 ($31,000 / 260, half-up to the cent), line 5 $1,430.76, line 7 $31,000, line 8 $1,430.76, line 9 (line 5b) $22,569.24, line 10 $1,430.76, line 11 $29,569.24 (p. 29). Lines 10 and 11 (T-030; the annuity starting date is after November 18, 1996, so line 10's question is answered No), predicted by hand before recording: line 10 $0 + $1,430.76 = $1,430.76; line 11 $31,000 - $1,430.76 = $29,569.24.",
       "inputs": {
         "f1040.status": "single",
         "$person": [
@@ -1315,6 +1315,14 @@
         "retirement[p].smw5": {
           "kind": "money",
           "cents": 143076
+        },
+        "retirement[p].smw10": {
+          "kind": "money",
+          "cents": 143076
+        },
+        "retirement[p].smw11": {
+          "kind": "money",
+          "cents": 2956924
         }
       }
     },
@@ -1326,7 +1334,7 @@
         "f1040.lines4-6"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Annuity $24,000, cost $31,000, worksheet completed last year with line 4 $100.00 and $5,000 recovered tax free so far: line 4 $100.00, line 5 $1,200, line 7 $26,000, line 8 $1,200, line 9 $22,800 (p. 29, note under line 2, line 6).",
+      "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Annuity $24,000, cost $31,000, worksheet completed last year with line 4 $100.00 and $5,000 recovered tax free so far: line 4 $100.00, line 5 $1,200, line 7 $26,000, line 8 $1,200, line 9 $22,800 (p. 29, note under line 2, line 6). Lines 10 and 11 (T-030; the annuity starting date is after November 18, 1996, so line 10's question is answered No), predicted by hand before recording: line 10 $5,000 + $1,200 = $6,200; line 11 $31,000 - $6,200 = $24,800.",
       "inputs": {
         "f1040.status": "single",
         "$person": [
@@ -1458,6 +1466,14 @@
         "retirement[p].smw5": {
           "kind": "money",
           "cents": 120000
+        },
+        "retirement[p].smw10": {
+          "kind": "money",
+          "cents": 620000
+        },
+        "retirement[p].smw11": {
+          "kind": "money",
+          "cents": 2480000
         }
       }
     },
@@ -1469,7 +1485,7 @@
         "f1040.lines4-6"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Joint and survivor annuity starting after 1997, combined ages 125, payments for 6 months totalling $12,000, cost $31,000: line 3 is 310 (Table 2, 121-130), line 4 $100.00, line 5 $600, line 9 $11,400.",
+      "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Joint and survivor annuity starting after 1997, combined ages 125, payments for 6 months totalling $12,000, cost $31,000: line 3 is 310 (Table 2, 121-130), line 4 $100.00, line 5 $600, line 9 $11,400. Lines 10 and 11 (T-030; the annuity starting date is after November 18, 1996, so line 10's question is answered No), predicted by hand before recording: line 10 $0 + $600 = $600; line 11 $31,000 - $600 = $30,400.",
       "inputs": {
         "f1040.status": "single",
         "$person": [
@@ -1606,6 +1622,14 @@
         "retirement[p].smw5": {
           "kind": "money",
           "cents": 60000
+        },
+        "retirement[p].smw10": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "retirement[p].smw11": {
+          "kind": "money",
+          "cents": 3040000
         }
       }
     },
@@ -1617,7 +1641,7 @@
         "f1040.lines4-6"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Annuity $24,000, cost $31,000 of which $30,500 already recovered, age 72: line 4 $193.75 (Table 1, 160), line 5 $2,325, line 7 $500, line 8 $500 (the smaller), line 9 $23,500, line 11 $0.",
+      "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Annuity $24,000, cost $31,000 of which $30,500 already recovered, age 72: line 4 $193.75 (Table 1, 160), line 5 $2,325, line 7 $500, line 8 $500 (the smaller), line 9 $23,500, line 11 $0. Lines 10 and 11 (T-030; the annuity starting date is after November 18, 1996, so line 10's question is answered No), predicted by hand before recording: line 10 $30,500 + $500 = $31,000; line 11 $31,000 - $31,000 = $0.",
       "inputs": {
         "f1040.status": "single",
         "$person": [
@@ -1750,6 +1774,14 @@
         "retirement[p].smw8": {
           "kind": "money",
           "cents": 50000
+        },
+        "retirement[p].smw10": {
+          "kind": "money",
+          "cents": 3100000
+        },
+        "retirement[p].smw11": {
+          "kind": "money",
+          "cents": 0
         }
       }
     },

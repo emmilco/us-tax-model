@@ -208,6 +208,11 @@ function buildCollectionJob(data: CanonicalData, doc: FormDoc, inputs: Inputs, r
       const key = fields.get(l.id); const v = key ? r.derivations.get(key)?.value : undefined;
       if (!key || !v) continue;
       if (unusedHelper(l, v)) continue;
+      // A printed line the form does not report for this entry (its shown_when is false) is no form value.
+      if (l.shown_when) {
+        const condKey = fields.get(l.shown_when); const cond = condKey ? r.derivations.get(condKey)?.value : undefined;
+        if (cond?.kind === "bool" && !cond.value) continue;
+      }
       if (!computed(v)) return null;
       fill.push({ id: key, printed: key, type: l.type, label: l.label, entry });
       project[key] = v;
@@ -297,8 +302,20 @@ export function classmJobs(args: string[]): void {
       if (best < 0) break;
       chosen.push(best); for (const k of keysPerCase[best]!) if (reachable.has(k)) covered.add(k);
     }
-    // A document with no branch of its own (copies and sums) is still worked once.
-    if (keys.length === 0 && candidates.length > 0) chosen.push(candidates[0]!);
+    // A document with no branch of its own (copies and sums) is still worked once, on the case
+    // whose worked lines carry the most nonzero amounts (a case of zeros would test no arithmetic).
+    if (keys.length === 0 && candidates.length > 0) {
+      const nonzero = (i: number): number => {
+        const r = results[i]!; let count = 0;
+        const lines = isCollection ? collectionFill(doc) : doc.lines.filter((l) => !isHelper(l));
+        const keysOf = isCollection ? [...entriesOf(doc.id, r).values()].flatMap((f) => lines.map((l) => f.get(l.id) ?? "")) : lines.map((l) => l.id);
+        for (const key of keysOf) { const v = r.derivations.get(key)?.value; if (v?.kind === "money" && v.cents !== 0) count++; }
+        return count;
+      };
+      let best = candidates[0]!, bestCount = nonzero(best);
+      for (const i of candidates) { const c = nonzero(i); if (c > bestCount) { best = i; bestCount = c; } }
+      chosen.push(best);
+    }
     let n = 0;
     for (const i of chosen) {
       const branches = keys.filter((k) => keysPerCase[i]!.has(k));
