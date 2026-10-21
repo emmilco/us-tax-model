@@ -10,13 +10,16 @@ document; open index.html in a browser. Nothing here is committed; rerun to refr
     page_review.py [--docs id,id] [--dpi 110]
 """
 import argparse
+import sys
 import html
 import json
 import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-ARCHIVE = ROOT / "sources" / "2025"
+sys.path.insert(0, str(ROOT / "tools"))
+from taxyear import Y  # noqa: E402
+ARCHIVE = ROOT / "sources" / Y
 OUT = ROOT / ".extraction-review"
 
 STYLE = """

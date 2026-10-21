@@ -26,10 +26,12 @@ import tempfile
 from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "tools"))
+from taxyear import YEAR, Y  # noqa: E402
 EXTRACT = ROOT / "tools" / "extract_text.py"
 DERIVED = [("file", "sha256"), ("text_file", "text_sha256"), ("cols_file", "cols_sha256"), ("pages_file", "pages_sha256")]
-ARCHIVE = ROOT / "sources" / "2025"
-CATALOG = Path(__file__).with_name("sources-2025.json")
+ARCHIVE = ROOT / "sources" / Y
+CATALOG = Path(__file__).with_name(f"sources-{Y}.json")
 HOSTS = ("www.irs.gov", "www.govinfo.gov")
 
 
@@ -94,7 +96,7 @@ def main():
     args = parser.parse_args()
     catalog = json.loads(CATALOG.read_text())
     manifest_path = ARCHIVE / "manifest.json"
-    manifest = json.loads(manifest_path.read_text()) if manifest_path.exists() else {"tax_year": 2025, "documents": []}
+    manifest = json.loads(manifest_path.read_text()) if manifest_path.exists() else {"tax_year": YEAR, "documents": []}
     existing = {entry["id"]: entry for entry in manifest["documents"]}
     if args.only and set(args.only) - {item["id"] for item in catalog}:
         parser.error("unknown source ID")

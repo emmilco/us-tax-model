@@ -1,12 +1,13 @@
 // The Tax Table midpoint conjecture, tested against every cell:
 // for each band and each filing-status column, tax = round-half-up to whole
 // dollars of the rate-schedule tax at the band's midpoint. The result is
-// recorded in reports/2025/tax_table_conjecture.md either way.
+// recorded in reports/<year>/tax_table_conjecture.md either way.
 
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { loadCanonical } from "./canonical.js";
 import { exactBracketCents } from "./eval.js";
+import { YEAR, yearPath } from "./year.js";
 
 const ROOT = resolve(import.meta.dirname, "../..");
 
@@ -56,7 +57,7 @@ export function runConjecture(): void {
   }
 
   const report: string[] = [];
-  report.push("# Tax Table midpoint conjecture — result for 2025");
+  report.push(`# Tax Table midpoint conjecture — result for ${YEAR}`);
   report.push("");
   report.push("Method: for every band of `tax_table` and every filing-status column, compute the");
   report.push("exact rate-schedule tax (`rate_schedule`, Rev. Proc. 2024-40 section 3.01, with");
@@ -85,11 +86,11 @@ export function runConjecture(): void {
   }
   report.push("");
 
-  const outDir = join(ROOT, "reports", "2025");
+  const outDir = yearPath("reports");
   mkdirSync(outDir, { recursive: true });
   writeFileSync(join(outDir, "tax_table_conjecture.md"), report.join("\n"));
   console.log(`conjecture: ${cells} cells tested, ${mismatches.length} mismatches`);
-  console.log(`report: reports/2025/tax_table_conjecture.md`);
+  console.log(`report: reports/${YEAR}/tax_table_conjecture.md`);
 }
 
 // The EIC Table against Rev. Proc. 2024-40 section 3.06(1): for each child
@@ -155,7 +156,7 @@ export function runEicConjecture(): void {
     });
   }
   const report = [
-    "# EIC Table against Rev. Proc. 2024-40 — result for 2025",
+    `# EIC Table against Rev. Proc. 2024-40 — result for ${YEAR}`,
     "",
     "Method: for every band of `eic_0` to `eic_3` (extracted from i1040gi pp. 49-60 by `tools/extract_eic_table.py`)",
     "and both status columns, the credit at the band's midpoint is the smaller of the midpoint times (maximum",
@@ -177,8 +178,8 @@ export function runEicConjecture(): void {
     "",
     ...(worse.length ? ["Cells differing by more than $1:", "", ...worse.slice(0, 200), ""] : ["No cell differs by more than $1.", ""]),
   ];
-  writeFileSync(join(ROOT, "reports", "2025", "eic_table_conjecture.md"), report.join("\n"));
+  writeFileSync(yearPath("reports", "eic_table_conjecture.md"), report.join("\n"));
   console.log(`eic conjecture: ${cells} cells, ${exact} equal, ${off1} within $1, ${worse.length} worse`);
-  console.log("report: reports/2025/eic_table_conjecture.md");
+  console.log(`report: reports/${YEAR}/eic_table_conjecture.md`);
   if (worse.length) process.exitCode = 1;
 }

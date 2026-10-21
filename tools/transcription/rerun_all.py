@@ -14,17 +14,19 @@ from concurrent.futures import ThreadPoolExecutor
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+from taxyear import Y, YEAR_ARGS  # noqa: E402
 TOOLS = {"transcription": ("transcribe.py", "--form"), "render": ("render_compare.py", "--form"), "classm": ("classm.py", "--doc")}
 
 
 def forms_for(kind):
-    d = os.path.join(ROOT, "reviews", "2025", kind)
+    d = os.path.join(ROOT, "reviews", Y, kind)
     return sorted(f[:-3] for f in os.listdir(d) if f.endswith(".md"))
 
 
 def run(kind, form, model):
     script, flag = TOOLS[kind]
-    cmd = [sys.executable, os.path.join(HERE, script), flag, form] + (["--model", model] if model else [])
+    cmd = [sys.executable, os.path.join(HERE, script), flag, form, *YEAR_ARGS] + (["--model", model] if model else [])
     t0 = time.time()
     r = subprocess.run(cmd, capture_output=True, text=True, cwd=ROOT)
     last = (r.stdout.strip().splitlines() or [""])[-1]
@@ -46,7 +48,7 @@ def main():
                 continue
             jobs.append((kind, form))
     if "classm" in a.kinds.split(","):
-        subprocess.run(["node", os.path.join(ROOT, "engine", "dist", "main.js"), "classm-jobs"], check=True, cwd=ROOT, stdout=subprocess.DEVNULL)
+        subprocess.run(["node", os.path.join(ROOT, "engine", "dist", "main.js"), "classm-jobs", *YEAR_ARGS], check=True, cwd=ROOT, stdout=subprocess.DEVNULL)
     print(f"{len(jobs)} runs, {a.jobs} at a time", flush=True)
     results = []
     with ThreadPoolExecutor(max_workers=a.jobs) as ex:

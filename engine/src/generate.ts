@@ -8,6 +8,7 @@
 // data asked for something undeclared, not that the generator forgot a key.
 import fc from "fast-check";
 import type { CanonicalData, FormDoc, Inputs, Line } from "./types.js";
+import { YEAR } from "./year.js";
 
 const WAGE_BASE = 17_610_000; // Social Security wage base, cents
 const ADDL_MEDICARE_START = 20_000_000;
@@ -143,14 +144,14 @@ const SC_EXPENSES = ["line8", "line10", "line11", "line14", "line15", "line16a",
 
 function businessArbitrary(): fc.Arbitrary<Business> {
   const vehicle = fc.record<Vehicle>({
-    standard: fc.boolean(), owned: rareTrue(85), year: fc.integer({ min: 2019, max: 2025 }),
+    standard: fc.boolean(), owned: rareTrue(85), year: fc.integer({ min: YEAR - 6, max: YEAR }),
     business: fc.integer({ min: 1_000, max: 30_000 }), commuting: rareMoney(5_000, 30), other: fc.oneof({ weight: 4, arbitrary: fc.integer({ min: 0, max: 4_000 }) }, { weight: 1, arbitrary: fc.integer({ min: 0, max: 30_000 }) }),
     parking: rareMoney(100_000, 30), operating: money(1_000_000), lease: money(800_000), cost: fc.integer({ min: 500_000, max: 8_000_000 }),
     passenger: rareTrue(85), s179: rareMoney(3_000_000, 15), afterJan19: rareTrue(80), bonus: fc.constantFrom("none", "none", "full", "forty"),
     prior179: rareMoney(1_000_000, 15), quarter: fc.constantFrom("q1", "q2", "q3", "q4"), priorConv: fc.constantFrom("hy", "hy", "hy", "mq1", "mq2", "mq3", "mq4"),
   });
   const asset = fc.record<Asset>({
-    cls: fc.nat(), year: fc.oneof({ weight: 3, arbitrary: fc.constant(2025) }, { weight: 2, arbitrary: fc.integer({ min: 2005, max: 2024 }) }),
+    cls: fc.nat(), year: fc.oneof({ weight: 3, arbitrary: fc.constant(YEAR) }, { weight: 2, arbitrary: fc.integer({ min: YEAR - 20, max: YEAR - 1 }) }),
     cost: fc.integer({ min: 10_000, max: 5_000_000 }), pct: fc.oneof({ weight: 4, arbitrary: fc.constant(100) }, { weight: 1, arbitrary: fc.integer({ min: 1, max: 100 }) }),
     listed: rareTrue(10), quarter: fc.constantFrom("q1", "q2", "q3", "q4", "q4"), s179: rareMoney(2_000_000, 25), afterJan19: rareTrue(80),
     bonus: fc.constantFrom("none", "none", "full", "forty"), priorConv: fc.constantFrom("hy", "hy", "hy", "mq1", "mq2", "mq3", "mq4"),
@@ -203,20 +204,20 @@ function putBusinesses(data: CanonicalData, inputs: Inputs, P: string, list: Bus
       const V = `${E}.scveh[car_${k + 1}]`;
       // The standard mileage rate only from the first year (owned) or for a whole lease; actual expenses otherwise.
       const method = v.standard ? "standard" : "actual";
-      const s179 = method === "actual" && v.owned && v.year === 2025 ? Math.min(v.s179, v.cost) : 0;
+      const s179 = method === "actual" && v.owned && v.year === YEAR ? Math.min(v.s179, v.cost) : 0;
       Object.assign(inputs, {
         [`${V}.method`]: method, [`${V}.owned`]: v.owned, [`${V}.placed_date`]: v.year, [`${V}.miles_business`]: v.business,
         [`${V}.miles_commuting`]: v.commuting, [`${V}.miles_other`]: v.other, [`${V}.parking`]: v.parking, [`${V}.smr_ok`]: true,
         [`${V}.operating`]: v.operating, [`${V}.lease`]: v.lease, [`${V}.placed`]: `y${v.year}`, [`${V}.screen`]: false,
         [`${V}.cost`]: v.cost, [`${V}.passenger`]: v.passenger, [`${V}.suv`]: false, [`${V}.s179_elect`]: s179,
-        [`${V}.after_jan19`]: v.afterJan19, [`${V}.bonus_choice`]: v.year === 2025 ? v.bonus : "none", [`${V}.bonus_same`]: true,
-        [`${V}.prior_179`]: v.year === 2025 ? 0 : Math.min(v.prior179, v.cost), [`${V}.quarter`]: v.quarter, [`${V}.prior_conv`]: v.priorConv,
+        [`${V}.after_jan19`]: v.afterJan19, [`${V}.bonus_choice`]: v.year === YEAR ? v.bonus : "none", [`${V}.bonus_same`]: true,
+        [`${V}.prior_179`]: v.year === YEAR ? 0 : Math.min(v.prior179, v.cost), [`${V}.quarter`]: v.quarter, [`${V}.prior_conv`]: v.priorConv,
       });
     });
     inputs[`$asset@${E}`] = b.assets.map((_, k) => `item_${k + 1}`);
     b.assets.forEach((a, k) => {
       const A = `${E}.asset[item_${k + 1}]`;
-      const now = a.year === 2025;
+      const now = a.year === YEAR;
       const businessCost = Math.floor((a.cost * a.pct) / 100);
       Object.assign(inputs, {
         [`${A}.class`]: classes[a.cls % Math.max(1, classes.length)], [`${A}.screen`]: false, [`${A}.placed`]: `y${a.year}`,
@@ -440,7 +441,7 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
     for (const [k, v] of Object.entries(entry)) inputs[`retirement[r${i + 1}].${k}`] = v;
   });
   inputs["ssb.benefits"] = retiree ? s.benefits : 0;
-  // Schedule 1 items: unemployment (with part of a 2025 overpayment sometimes repaid), educator expenses,
+  // Schedule 1 items: unemployment (with part of a current-year overpayment sometimes repaid), educator expenses,
   // student loan interest, and an HSA whose month counts are always possible (family months at most the
   // eligible months, December coverage present when eligible all year); the screens are flags.
   inputs["s1.uc_paid"] = s.adj.uc;

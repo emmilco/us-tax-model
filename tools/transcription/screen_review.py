@@ -11,7 +11,7 @@ and the archived pages those lines cite, and asks for every case the wording mis
 
     screen_review.py [--screens a,b] [--dry-run] [--from-response] [--jobs 6] [--model M]
 
-One-time review, adjudicated in reviews/2025/screens/screen_review.md (rerun it when the
+One-time review, adjudicated in reviews/<year>/screens/screen_review.md (rerun it when the
 sources are refetched). Each call is one fixed-prompt `claude -p` with no tools (fixed-prompt, curated input, no action surface).
 """
 import argparse, datetime, glob, hashlib, json, os, re, sys
@@ -20,8 +20,9 @@ import yaml
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from transcribe import ROOT, manifest, excerpt_for, call_model  # noqa: E402
+from taxyear import Y  # noqa: E402
 
-OUT = os.path.join(ROOT, "reviews", "2025", "screens")
+OUT = os.path.join(ROOT, "reviews", Y, "screens")
 RAW = os.path.join(ROOT, ".transcription", "screens")
 SYSTEM = ("You review the questions a tax tool asks a filer against the IRS text the questions stand in "
           "for. You have no tools and no other sources. Output only the YAML requested.")
@@ -29,7 +30,7 @@ SYSTEM = ("You review the questions a tax tool asks a filer against the IRS text
 
 def load_lines():
     lines = {}
-    for path in sorted(glob.glob(os.path.join(ROOT, "forms", "2025", "*.yaml"))):
+    for path in sorted(glob.glob(os.path.join(ROOT, "forms", Y, "*.yaml"))):
         d = yaml.safe_load(open(path, encoding="utf-8"))
         doc = d.get("form") or d.get("def")
         for l in doc["lines"]:
@@ -38,7 +39,7 @@ def load_lines():
 
 
 def encoded_english(doc_id, line_id):
-    path = os.path.join(ROOT, "rendered", "2025", doc_id + ".md")
+    path = os.path.join(ROOT, "rendered", Y, doc_id + ".md")
     text = open(path, encoding="utf-8").read()
     m = re.search(r"^## [^\n]*`" + re.escape(line_id) + r"`\n(.*?)(?=^## |\Z)", text, re.S | re.M)
     if not m:

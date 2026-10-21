@@ -7,9 +7,10 @@ import { join, resolve } from "node:path";
 import { fmtMoney, fmtRate, shortHash } from "./util.js";
 import { loadCanonical } from "./canonical.js";
 import type { CanonicalData, CiteFilled, Expr, FormDoc, Line, Operand, TestExpr } from "./types.js";
+import { YEAR, yearPath } from "./year.js";
 
 const ROOT = resolve(import.meta.dirname, "../..");
-const OUT = join(ROOT, "rendered", "2025");
+const OUT = yearPath("rendered");
 
 interface RenderCtx {
   forms: Map<string, FormDoc>;
@@ -37,7 +38,7 @@ export function renderAll(): void {
   }
   writeFileSync(join(OUT, "ambiguities.md"), renderRegister(data.register));
   writeFileSync(join(OUT, "index.md"), renderIndex(data));
-  console.log(`rendered ${2 + 1 + 2 + 1 + data.forms.length + data.defs.length} files to rendered/2025/`);
+  console.log(`rendered ${2 + 1 + 2 + 1 + data.forms.length + data.defs.length} files to rendered/${YEAR}/`);
 }
 
 // ---------------------------------------------------------------------------
@@ -316,7 +317,7 @@ function renderIndex(data: CanonicalData): string {
   const out: string[] = [];
   out.push("# Rendered data — implemented stages");
   out.push("");
-  out.push("Review these renderings line by line against the archived IRS sources in `sources/2025/`.");
+  out.push(`Review these renderings line by line against the archived IRS sources in \`sources/${YEAR}/\`.`);
   out.push("");
   out.push("| File | Kind | Lines |");
   out.push("| --- | --- | --- |");

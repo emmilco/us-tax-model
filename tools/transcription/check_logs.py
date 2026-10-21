@@ -8,9 +8,11 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import rulings  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-FORMS = os.path.join(ROOT, "forms", "2025")
-LOGS = os.path.join(ROOT, "reviews", "2025", "transcription")
-m = json.load(open(os.path.join(ROOT, "sources", "2025", "manifest.json")))
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+from taxyear import Y  # noqa: E402
+FORMS = os.path.join(ROOT, "forms", Y)
+LOGS = os.path.join(ROOT, "reviews", Y, "transcription")
+m = json.load(open(os.path.join(ROOT, "sources", Y, "manifest.json")))
 docs = {d["id"]: d for d in (m["documents"] if isinstance(m, dict) else m)}
 
 forms = sorted(f[:-5] for f in os.listdir(FORMS) if f.endswith(".yaml"))
@@ -76,8 +78,8 @@ def check(kind, logs, optional_env, expected=None):
 
 
 failed = check("transcription", LOGS, "TRANSCRIPTION_LOGS_OPTIONAL")
-failed = check("render", os.path.join(ROOT, "reviews", "2025", "render"), "RENDER_LOGS_OPTIONAL") or failed
-failed = check("classm", os.path.join(ROOT, "reviews", "2025", "classm"), "CLASSM_LOGS_OPTIONAL", classm_forms()) or failed
+failed = check("render", os.path.join(ROOT, "reviews", Y, "render"), "RENDER_LOGS_OPTIONAL") or failed
+failed = check("classm", os.path.join(ROOT, "reviews", Y, "classm"), "CLASSM_LOGS_OPTIONAL", classm_forms()) or failed
 failed = bool(rulings.check()) or failed
 if failed:
     sys.exit(1)

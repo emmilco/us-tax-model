@@ -1,11 +1,11 @@
 // Loader for the canonical JSON written by the build.
 
 import { readFileSync, readdirSync } from "node:fs";
-import { join, resolve } from "node:path";
+import { join } from "node:path";
 import type { CanonicalData, FormDoc } from "./types.js";
+import { yearPath } from "./year.js";
 
-const ROOT = resolve(import.meta.dirname, "../..");
-export const CANON_DIR = join(ROOT, "canonical", "2025");
+export const CANON_DIR = yearPath("canonical");
 
 export function loadCanonical(dir: string = CANON_DIR): CanonicalData {
   const forms: FormDoc[] = [];

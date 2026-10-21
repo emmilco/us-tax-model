@@ -2,14 +2,14 @@
 """Class M hand-work (spec 6.1, 6.5): an isolated model works one document by hand from its
 archived pages and the values that flow into it, for a few generated returns that together
 take every reachable branch of the document. Its answers are compared with the project's
-and become class M fixtures (fixtures/2025/classm.json); every disagreement is logged with
+and become class M fixtures (fixtures/<year>/classm.json); every disagreement is logged with
 a ruling.
 
     node engine/dist/main.js classm-jobs                  # write .classm/jobs.json (offline)
     python3 tools/transcription/classm.py --doc qdcg [--model M] [--dry-run] [--from-response]
     python3 tools/transcription/rule.py --kind classm --doc qdcg --rulings r.json
 
-Logs go to reviews/2025/classm/<doc>.md. Rulings persist in <doc>.rulings.json beside the log
+Logs go to reviews/<year>/classm/<doc>.md. Rulings persist in <doc>.rulings.json beside the log
 (rulings.py) and are reapplied on rerun. A ruling may drop a line from the fixture (a model
 arithmetic error is not evidence) by giving {"ruling": "...", "drop": true}.
 """
@@ -19,12 +19,13 @@ import yaml
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from transcribe import ROOT, manifest, excerpt_for, call_model, load_form  # noqa: E402
+from taxyear import YEAR, Y  # noqa: E402
 import rulings  # noqa: E402
 
 JOBS = os.path.join(ROOT, ".classm", "jobs.json")
 RAW = os.path.join(ROOT, ".classm")
-LOGS = os.path.join(ROOT, "reviews", "2025", "classm")
-FIXTURE = os.path.join(ROOT, "fixtures", "2025", "classm.json")
+LOGS = os.path.join(ROOT, "reviews", Y, "classm")
+FIXTURE = os.path.join(ROOT, "fixtures", Y, "classm.json")
 SYSTEM = ("You work IRS forms and worksheets by hand from the text given to you and the amounts you are "
           "given. You have no tools and no other sources. Output only the YAML requested.")
 STATUS_WORDS = {"single": "Single", "mfj": "Married filing jointly", "mfs": "Married filing separately",
@@ -265,7 +266,7 @@ def write_outputs(form_doc, model, jobs, runs, meta_all):
     kept = rulings.kept("classm", fid)
     counts = {"AGREE": 0, "DISAGREE": 0, "MISSING": 0}
     out = [f"# Class M hand-work — {fid}", "",
-           f"`{form_doc['title']}` worked by hand by an isolated model from its archived pages and the amounts flowing into it, for generated returns that together take every reachable branch (spec 6.1, class M; spec 6.5). Agreements are class M fixtures in `fixtures/2025/classm.json`; each disagreement carries a ruling.", "",
+           f"`{form_doc['title']}` worked by hand by an isolated model from its archived pages and the amounts flowing into it, for generated returns that together take every reachable branch (spec 6.1, class M; spec 6.5). Agreements are class M fixtures in `fixtures/{Y}/classm.json`; each disagreement carries a ruling.", "",
            "| field | value |", "| --- | --- |",
            f"| date | {datetime.date.today().isoformat()} |",
            f"| model requested | {model} |",
@@ -316,7 +317,7 @@ def write_outputs(form_doc, model, jobs, runs, meta_all):
         out += [f"### {job['id']}", "", "```yaml", runs[job["id"]]["raw"].strip(), "```", ""]
     open(path, "w", encoding="utf-8").write("\n".join(out))
     # Merge this document's cases into the fixture file.
-    fx = json.load(open(FIXTURE)) if os.path.exists(FIXTURE) else {"tax_year": 2025, "cases": []}
+    fx = json.load(open(FIXTURE)) if os.path.exists(FIXTURE) else {"tax_year": YEAR, "cases": []}
     fx["cases"] = [c for c in fx["cases"] if not c["id"].startswith(f"classm.{fid}.")] + fixture_cases
     fx["cases"].sort(key=lambda c: c["id"])
     json.dump(fx, open(FIXTURE, "w"), indent=1)

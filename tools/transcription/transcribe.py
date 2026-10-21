@@ -18,9 +18,11 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import rulings  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-SOURCES = os.path.join(ROOT, "sources", "2025")
-FORMS = os.path.join(ROOT, "forms", "2025")
-LOGS = os.path.join(ROOT, "reviews", "2025", "transcription")
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+from taxyear import Y  # noqa: E402
+SOURCES = os.path.join(ROOT, "sources", Y)
+FORMS = os.path.join(ROOT, "forms", Y)
+LOGS = os.path.join(ROOT, "reviews", Y, "transcription")
 RAW = os.path.join(ROOT, ".transcription")
 WHOLE_DOC_MAX_PAGES = 6
 HELPER_PRINTED = {"(helper)", "(gate)", "(computed helper)"}
@@ -126,7 +128,7 @@ def param_cites(form_doc):
         names.update(re.findall(r'"param": "([a-z0-9_.]+)"', text))
         if line.get("expr", {}).get("op") == "param":
             names.add(line["expr"]["ref"])
-    params_doc = yaml.safe_load(open(os.path.join(ROOT, "params", "2025.yaml"), encoding="utf-8"))
+    params_doc = yaml.safe_load(open(os.path.join(ROOT, "params", f"{Y}.yaml"), encoding="utf-8"))
     values = (params_doc.get("params") or params_doc)["values"]
     # Structural constants (a zero amount, a count of one) cite the pages that
     # justify their use, not a figure to check; they are left out.
@@ -330,7 +332,7 @@ def second_gates(line, by_id, seen=None):
 
 
 def enum_notes():
-    params_doc = yaml.safe_load(open(os.path.join(ROOT, "params", "2025.yaml"), encoding="utf-8"))
+    params_doc = yaml.safe_load(open(os.path.join(ROOT, "params", f"{Y}.yaml"), encoding="utf-8"))
     enums = (params_doc.get("params") or params_doc).get("enums", {})
     return "\n".join(f"  - Enum({name}): " + ", ".join(f'"{v}"' for v in e["values"]) for name, e in enums.items())
 
@@ -680,7 +682,7 @@ def gate_check(result, project_id, second_line, second_by_id):
 
 def compare(form_id, project_lines, second_lines):
     defs = load_defs()
-    params_doc = yaml.safe_load(open(os.path.join(ROOT, "params", "2025.yaml"), encoding="utf-8"))
+    params_doc = yaml.safe_load(open(os.path.join(ROOT, "params", f"{Y}.yaml"), encoding="utf-8"))
     pvals = {k: v["value"] for k, v in (params_doc.get("params") or params_doc)["values"].items()}
     inputs = {l["id"]: l for l in project_lines if l["expr"].get("op") == "input"}
     pkeys = marker_keys(project_lines)
@@ -767,7 +769,7 @@ def write_log(form_doc, model, prompt, used, results, extra, raw_text, meta, dry
     kept = rulings.kept("transcription", fid)
     counts = {k: sum(1 for r in results if r["status"] == k) for k in ("AGREE", "DISAGREE", "MISSING")}
     out = [f"# Transcription agreement — {fid}", "",
-           f"Second transcription of `{form_doc['title']}` by an isolated model (spec 6.5), compared line by line with `forms/2025/{fid}.yaml`.", "",
+           f"Second transcription of `{form_doc['title']}` by an isolated model (spec 6.5), compared line by line with `forms/{Y}/{fid}.yaml`.", "",
            "| field | value |", "| --- | --- |",
            f"| date | {datetime.date.today().isoformat()} |",
            f"| model requested | {model} |",
@@ -816,7 +818,7 @@ def main():
     mani = manifest()
     form_doc = load_form(a.form)
     excerpt, used = excerpt_for(form_doc, mani)
-    params_doc = yaml.safe_load(open(os.path.join(ROOT, "params", "2025.yaml"), encoding="utf-8"))
+    params_doc = yaml.safe_load(open(os.path.join(ROOT, "params", f"{Y}.yaml"), encoding="utf-8"))
     values = (params_doc.get("params") or params_doc)["values"]
     params = {k: v["value"] for k, v in values.items()}
     other = {}

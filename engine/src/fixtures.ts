@@ -16,9 +16,10 @@ import { allTargets, evaluate } from "./eval.js";
 import { differentialClassC } from "./differential.js";
 import type { Inputs } from "./types.js";
 import type { Value } from "./eval.js";
+import { YEAR, YEAR_ARGS, yearPath } from "./year.js";
 
 const ROOT = resolve(import.meta.dirname, "../..");
-const CASES_PATH = join(ROOT, "fixtures", "2025", "stage1.json");
+const CASES_PATH = yearPath("fixtures", "stage1.json");
 const DIST_MAIN = join(ROOT, "engine", "dist", "main.js");
 
 export interface FixtureCase {
@@ -36,8 +37,8 @@ export interface FixtureFile {
 }
 
 export function loadCases(): FixtureFile {
-  const dir = join(ROOT, "fixtures", "2025");
-  return { tax_year: 2025, cases: readdirSync(dir).filter(f => /^(stage[0-9]+|classm)\.json$/.test(f)).sort().flatMap(f => (JSON.parse(readFileSync(join(dir,f),"utf8")) as FixtureFile).cases) };
+  const dir = yearPath("fixtures");
+  return { tax_year: YEAR, cases: readdirSync(dir).filter(f => /^(stage[0-9]+|classm)\.json$/.test(f)).sort().flatMap(f => (JSON.parse(readFileSync(join(dir,f),"utf8")) as FixtureFile).cases) };
 }
 
 function saveCases(file: FixtureFile): void {
@@ -66,7 +67,7 @@ export function recordFixtures(): void {
     c.expect = filtered;
   }
   saveCases(file);
-  console.log(`recorded expected values for ${file.cases.length} cases in fixtures/2025/stage1.json`);
+  console.log(`recorded expected values for ${file.cases.length} cases in fixtures/${YEAR}/stage1.json`);
 }
 
 export function testFixtures(): number {
@@ -79,7 +80,7 @@ export function testFixtures(): number {
       cases++;
       const inputsPath = join(tmp, `${c.id}.json`);
       writeFileSync(inputsPath, JSON.stringify(c.inputs));
-      const proc = spawnSync(process.execPath, [DIST_MAIN, "eval", "--inputs", inputsPath, "--json"], { encoding: "utf-8", maxBuffer: 256 * 1024 * 1024 });
+      const proc = spawnSync(process.execPath, [DIST_MAIN, ...YEAR_ARGS, "eval", "--inputs", inputsPath, "--json"], { encoding: "utf-8", maxBuffer: 256 * 1024 * 1024 });
       if (proc.status !== 0) {
         console.error(`FAIL ${c.id}: eval exited ${proc.status}\n${proc.stderr.slice(0, 400)}`);
         failures++;
@@ -111,7 +112,7 @@ export function testFixtures(): number {
 }
 
 export function reviewStage5(): void {
-  const dir=join(ROOT,"reports","2025");
+  const dir=yearPath("reports");
   const selected=["stage5.return.owed","stage5.return.refund","stage5.return.itemized"];
   const tmp=mkdtempSync(join(tmpdir(),"stage5-review-"));
   try {
@@ -119,7 +120,7 @@ export function reviewStage5(): void {
     for(const id of selected) {
       const fixture=loadCases().cases.find(c=>c.id===id)!;
       const input=join(tmp,"inputs.json");writeFileSync(input,JSON.stringify(fixture.inputs));
-      const proc=spawnSync(process.execPath,[DIST_MAIN,"eval","--inputs",input],{ encoding: "utf-8", maxBuffer: 256 * 1024 * 1024 });
+      const proc=spawnSync(process.execPath,[DIST_MAIN, ...YEAR_ARGS,"eval","--inputs",input],{ encoding: "utf-8", maxBuffer: 256 * 1024 * 1024 });
       if(proc.status!==0)throw new Error(proc.stderr);
       writeFileSync(join(dir,id+".txt"),proc.stdout);
     }
@@ -127,7 +128,7 @@ export function reviewStage5(): void {
       "# Stage 5 review packet", "",
       "Stage 5 completes the single-person return: Form 1040 lines 1a\u201337 computed end to end \u2014 income, AGI, the standard-or-itemized choice, QBI, taxable income, tax through the QDCG/SDTW/table paths, Schedule 2 and 3 integration, payments, and refund/amount owed. AGI and taxable income are no longer supplied. The full interview (`--profile full`) walks this return; the three synthetic cases below double as the calculator-entry cases for the whole-return differential.", "",
       "## Review against archived sources", "",
-      "Compare the three values sheets with the Form 1040 facsimile (sources/2025/f1040.txt, pages 1\u20132) for line labels and arithmetic, and with i1040gi for the instruction text: lines 1a\u201311b on pp. 23\u201334, the deduction lines on pp. 34\u201336, and the line 25\u201337 instructions. The QDCG and SDTW worksheets were reviewed at Stages 1 and 4; Stage 5 changes only what feeds them. Check that lines 13b, 19, 27a\u201330 refuse when their screens fire and that the scope screens propagate: a refused screen must refuse lines 8/10/13b/16/19 and everything downstream.", "",
+      `Compare the three values sheets with the Form 1040 facsimile (sources/${YEAR}/f1040.txt, pages 1\u20132) for line labels and arithmetic, and with i1040gi for the instruction text: lines 1a\u201311b on pp. 23\u201334, the deduction lines on pp. 34\u201336, and the line 25\u201337 instructions. The QDCG and SDTW worksheets were reviewed at Stages 1 and 4; Stage 5 changes only what feeds them. Check that lines 13b, 19, 27a\u201330 refuse when their screens fire and that the scope screens propagate: a refused screen must refuse lines 8/10/13b/16/19 and everything downstream.`, "",
       "## Concrete checks", "",
       "Case `stage5.return.owed` (two employers): wages 120,000.00 + interest 1,200.00 + ordinary dividends 2,000.00 (of which 1,500.00 qualified; line 3a is a component of line 3b, not an addend of line 9) = total income 123,200.00; standard deduction 15,750.00; taxable income 107,450.00; QDCG path with 1,500.00 preferential: tax on 105,950.00 at the 2025 single rates = 17,651.00 + 24% \u00d7 2,600.00 = 18,275.00, plus 15% \u00d7 1,500.00 = 225.00, total 18,500.00; withheld 17,000.00; amount owed 1,500.00. The sheet reports exactly these.", "",
       "Case `stage5.return.refund` (one employer): wages 130,000.00; taxable income 114,250.00; tax = 17,651.00 + 24% \u00d7 10,900.00 = 20,267.00; withheld 20,000.00 plus 2,000.00 estimated = 22,000.00; overpaid 1,733.00, refunded 1,733.00.", "",
@@ -136,10 +137,10 @@ export function reviewStage5(): void {
       "## Migration record", "",
       "Every fixture that supplied `f1040.line15` or `sa.agi` was migrated to real income inputs that reproduce the fixture\u2019s intended value: 178 cases reconstructed with an income entry (one W-2 employer), verified against the original anchors; 79 cases (refusals, the Stage 2 cohort) kept answers only; three cases fund their target through an offsetting cash-gift deduction instead of wages (qdcg.l5.floor0, qdcg.20pct, stage4.sdtw.skip22); one case needed a manual anchor correction (stage4.ftc.regular_limit, whose credit limit is tested against a zero tax). The `qdcg.table.minimum.regression` fixture moved from stage2.json to stage1.json because the Stage 2 finite-domain check enumerates every Boolean in each fixture and its chain now reaches the whole return. The sales interview profile gained the base-chain questions its targets now reach (22 blocks copied from the Stage 4 profile); the Stage 4 profile gained w2.box1. Interview walk caps in the integration checks were raised (50 \u2192 150 steps) to match the deeper chain.", "",
       "## Limits and evidence", "",
-      "Return-wide whole-dollar rounding remains deferred (standing ambiguity; exact cents throughout). Lines 25b, 25c, 26, 35a and 36 are supplied elections or totals read from the filer\u2019s records; nothing else on the return is supplied. The estimated tax penalty is not computed \u2014 the output states that the IRS will figure it. Joint and MFS returns are refused; Form 1116 and the other deferrals are unchanged from Stage 4. No human hand-work or source reading is claimed (spec 3, requirement 11); the independent constructions of spec 6.5 stand in for them. The whole-return differential (class C) is prepared \u2014 entry sheets at reports/2025/differential.<case>.md, records go to fixtures/2025/differential/. These two cases were corrected under BUG-0001 (BUG_INVENTORY.md), which an engine comparison caught. See evidence.md for per-line class coverage, and mutation.md, coverage.md, evaluator_agreement.md for the generated verification evidence.", ""
+      `Return-wide whole-dollar rounding remains deferred (standing ambiguity; exact cents throughout). Lines 25b, 25c, 26, 35a and 36 are supplied elections or totals read from the filer\u2019s records; nothing else on the return is supplied. The estimated tax penalty is not computed \u2014 the output states that the IRS will figure it. Joint and MFS returns are refused; Form 1116 and the other deferrals are unchanged from Stage 4. No human hand-work or source reading is claimed (spec 3, requirement 11); the independent constructions of spec 6.5 stand in for them. The whole-return differential (class C) is prepared \u2014 entry sheets at reports/${YEAR}/differential.<case>.md, records go to fixtures/${YEAR}/differential/. These two cases were corrected under BUG-0001 (BUG_INVENTORY.md), which an engine comparison caught. See evidence.md for per-line class coverage, and mutation.md, coverage.md, evaluator_agreement.md for the generated verification evidence.`, ""
     ].join("\n"));
   } finally {rmSync(tmp,{recursive:true,force:true});}
-  console.log("review: reports/2025/stage5-review.md and three whole-return values sheets");
+  console.log(`review: reports/${YEAR}/stage5-review.md and three whole-return values sheets`);
 }
 
 export function evidenceReport(): void {
@@ -176,7 +177,7 @@ export function evidenceReport(): void {
   }
   const out: string[] = [];
   out.push("# Evidence coverage per line", "");
-  out.push("Fixtures that assert each line, by evidence class. A — official IRS example. B — human hand-work (pending; marked where recorded). C — recorded value also confirmed by the independently written Lean reference evaluator (running evaluator agreement, reports/2025/evaluator_agreement.md); the external-calculator comparison is the Stage 5 differential and remains pending. M — an isolated model worked the document by hand from its archived pages and the amounts flowing into it (reviews/2025/classm/). R — recorded synthetic regression, no class claimed, human review pending.", "");
+  out.push(`Fixtures that assert each line, by evidence class. A — official IRS example. B — human hand-work (pending; marked where recorded). C — recorded value also confirmed by the independently written Lean reference evaluator (running evaluator agreement, reports/${YEAR}/evaluator_agreement.md); the external-calculator comparison is the Stage 5 differential and remains pending. M — an isolated model worked the document by hand from its archived pages and the amounts flowing into it (reviews/${YEAR}/classm/). R — recorded synthetic regression, no class claimed, human review pending.`, "");
   const fmt = (s: Set<string>) => s.size === 0 ? "—" : `${s.size}${s.size <= 2 ? " (" + [...s].join(", ") + ")" : ""}`;
   let totalGaps = 0; const allGaps: string[] = [];
   for (const doc of [...data.forms, ...data.defs]) {
@@ -195,12 +196,12 @@ export function evidenceReport(): void {
   }
   const formLineIds = new Set(data.forms.flatMap(d => d.lines.map(l => l.id)));
   const neverSupplied = [...isInput.entries()].filter(([id, isIn]) => isIn && formLineIds.has(id) && (supplied.get(id) ?? 0) === 0).map(([id]) => id);
-  out.push(`Unasserted computed lines across all documents: ${totalGaps}. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)`);
+  out.push(`Unasserted computed lines across all documents: ${totalGaps}. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/${YEAR}/mutation.md.)`);
   if (neverSupplied.length > 0) out.push("", `Input lines never supplied by any fixture: ${neverSupplied.join(", ")}.`);
   if (unknownKeys.size > 0) out.push(`Asserted keys not matching a line id: ${[...unknownKeys].slice(0, 40).join(", ")}${unknownKeys.size > 40 ? " …" : ""}`);
-  writeFileSync(join(ROOT, "reports", "2025", "evidence.md"), out.join("\n"));
+  writeFileSync(yearPath("reports", "evidence.md"), out.join("\n"));
   console.log(`evidence: per-line class coverage written; unasserted lines: ${totalGaps}`);
-  console.log("report: reports/2025/evidence.md");
+  console.log(`report: reports/${YEAR}/evidence.md`);
 }
 
 export function coverageReport(): void {
@@ -300,19 +301,19 @@ export function coverageReport(): void {
   const allLines = [...data.forms, ...data.defs].flatMap((d) => d.lines);
   const opaqueLines = allLines.filter((l) => l.expr.op === "opaque");
   out.push("", "## Opaque escapes", "", `${opaqueLines.length} of ${allLines.length} lines use \`opaque\` (share ${(opaqueLines.length / allLines.length).toFixed(4)}); the design's stop condition is one in eight.${opaqueLines.length ? " Lines: " + opaqueLines.map((l) => l.id).join(", ") : ""}`, "");
-  const outPath = join(ROOT, "reports", "2025", "coverage.md");
+  const outPath = yearPath("reports", "coverage.md");
   writeFileSync(outPath, out.join("\n"));
   console.log(`coverage: ${taken.size} guards observed; ${uncovered} guards unobserved`);
-  console.log(`report: reports/2025/coverage.md`);
+  console.log(`report: reports/${YEAR}/coverage.md`);
 }
 
 /** Review packet: fixture expectations remain candidate answers, not class B. */
 export function reviewStage2(): void {
   const cases=loadCases().cases.filter(c=>c.id.startsWith("ss."));
-  const out=["# Stage 2 review packet", "", "Status: owner approved proceeding after Stage 2; detailed reviewer annotations and independent hand-work were not supplied. See reviews/2025/stage2.md.", "",
-    "## Source transcription", "", "Read rendered/2025/w2.md, rendered/2025/person.md, rendered/2025/s3.md and the added Form 1040 line 31 against the archived sources below. Helper labels are authored explanations, not verbatim IRS lines.", "",
+  const out=["# Stage 2 review packet", "", `Status: owner approved proceeding after Stage 2; detailed reviewer annotations and independent hand-work were not supplied. See reviews/${YEAR}/stage2.md.`, "",
+    "## Source transcription", "", `Read rendered/${YEAR}/w2.md, rendered/${YEAR}/person.md, rendered/${YEAR}/s3.md and the added Form 1040 line 31 against the archived sources below. Helper labels are authored explanations, not verbatim IRS lines.`, "",
     "- i1040gi.pdf, printed p. 117, Schedule 3 line 11.", "- iw2w3.pdf, printed p. 18, boxes 3, 4 and 7; pp. 12–13 for the railroad exclusion.", "- fw2.pdf, employee and employer identity and boxes 3, 4 and 7.", "- f1040s3.pdf, lines 9–15; f1040.pdf, line 31.", "",
-    "Record reviewer, date, snapshot hashes and corrections in reviews/2025/stage2.md (preserved, not generated). Owner response is recorded in that file.", "",
+    `Record reviewer, date, snapshot hashes and corrections in reviews/${YEAR}/stage2.md (preserved, not generated). Owner response is recorded in that file.`, "",
     "## Candidate fixture answers — not class B", "",
     "Use integer cents below. Work each case independently on the archived instructions before comparing the candidate answer. Synthetic boundary inputs can deliberately contain unusual withholding; they test the encoded instructions, not payroll plausibility.", "",
     "| Case | Status | Per-employer (box 3; box 7; box 4), cents | Candidate line 11 |", "| --- | --- | --- | --- |"];
@@ -331,49 +332,49 @@ export function reviewStage2(): void {
     "- Build-time interview checks enumerate finite enum/Boolean answers over fixture amounts and roster sizes. They are not a proof for unbounded collections.",
     "- Lean proves the added aggregation non-negativity and fixed-filter monotonicity. Evaluator agreement is testing, not a proof of the TypeScript evaluator or of the IRS transcription.",
     "- Stage 1 human review remains outstanding. Stage 3 has not started.", "");
-  writeFileSync(join(ROOT,"reports","2025","stage2-review.md"),out.join("\n"));
+  writeFileSync(yearPath("reports", "stage2-review.md"),out.join("\n"));
   const tmp=mkdtempSync(join(tmpdir(),"review-"));
   try {
     for(const id of ["ss.multi","ss.single.over"]){
       const c=cases.find(c=>c.id===id)!;
       const path=join(tmp,"inputs.json");writeFileSync(path,JSON.stringify(c.inputs));
-      const proc=spawnSync(process.execPath,[DIST_MAIN,"eval","--inputs",path,"--target","f1040.line31"],{ encoding: "utf-8", maxBuffer: 256 * 1024 * 1024 });
+      const proc=spawnSync(process.execPath,[DIST_MAIN, ...YEAR_ARGS,"eval","--inputs",path,"--target","f1040.line31"],{ encoding: "utf-8", maxBuffer: 256 * 1024 * 1024 });
       if(proc.status!==0)throw new Error(proc.stderr);
-      writeFileSync(join(ROOT,"reports","2025",`${id}.txt`),proc.stdout);
+      writeFileSync(yearPath("reports", `${id}.txt`),proc.stdout);
     }
   } finally {rmSync(tmp,{recursive:true,force:true});}
-  console.log("review packet: reports/2025/stage2-review.md; synthetic values sheets: ss.multi.txt, ss.single.over.txt");
+  console.log(`review packet: reports/${YEAR}/stage2-review.md; synthetic values sheets: ss.multi.txt, ss.single.over.txt`);
 }
 
 export function reviewStage3(): void {
-  const dir=join(ROOT,"reports","2025");
+  const dir=yearPath("reports");
   const selected=["sales.official.basis","sales.mixed_columns","sales.refuse.digital.G","sales.select.sdtw.election"];
   const tmp=mkdtempSync(join(tmpdir(),"stage3-review-"));
   try {
     for(const id of selected) {
       const fixture=loadCases().cases.find(c=>c.id===id)!;
       const input=join(tmp,"inputs.json");writeFileSync(input,JSON.stringify(fixture.inputs));
-      const proc=spawnSync(process.execPath,[DIST_MAIN,"eval","--inputs",input,"--target","f1040.line7a,f1040.line16"],{ encoding: "utf-8", maxBuffer: 256 * 1024 * 1024 });
+      const proc=spawnSync(process.execPath,[DIST_MAIN, ...YEAR_ARGS,"eval","--inputs",input,"--target","f1040.line7a,f1040.line16"],{ encoding: "utf-8", maxBuffer: 256 * 1024 * 1024 });
       if(proc.status!==0)throw new Error(proc.stderr);
       writeFileSync(join(dir,id+".txt"),proc.stdout);
     }
     writeFileSync(join(dir,"stage3-review.md"),[
       "# Stage 3 review packet", "",
-      "Read rendered/2025/sales.md and sd.md alongside archived i8949 pp. 7–11, i1040sd pp. 10–11 and f1040sd. Check the Form 1040 selector against i1040sd p. 15 and i1040gi p. 36.", "",
+      `Read rendered/${YEAR}/sales.md and sd.md alongside archived i8949 pp. 7–11, i1040sd pp. 10–11 and f1040sd. Check the Form 1040 selector against i1040sd p. 15 and i1040gi p. 36.`, "",
       "Official arithmetic: i8949 p. 11 examples 1–4 and the repeated Schedule D column-(h) examples; i1040sd pp. 10–11 aggregate example and its two-transaction continuation. The adjustment example supplies no code: the fixture's B routing is synthetic scaffolding, not official evidence. Example 4 explicitly supplies code B. Official digital-asset examples 5–6 and the main-home EH example are outside scope; digital boxes and unsupported codes are refused, not claimed computed.", "",
-      "Review choices: exact cents (whole-dollar mode deferred); supplied A–F classification (holding periods, dates, descriptions and basis determination not computed); code W takes a supplied correct disallowed loss; corrected broker wash loss may require a statement. See ambiguities/2025.yaml for rounding and Form 4952 worksheet selection.", "",
+      `Review choices: exact cents (whole-dollar mode deferred); supplied A–F classification (holding periods, dates, descriptions and basis determination not computed); code W takes a supplied correct disallowed loss; corrected broker wash loss may require a statement. See ambiguities/${YEAR}.yaml for rounding and Form 4952 worksheet selection.`, "",
       "Stage 4 now computes Schedule D lines 18/19 from distribution feeders, Form 4952 amounts and the Schedule D Tax Worksheet; these regenerated examples reflect that extension. Capital-loss carryovers and additional source forms are refused. This is not a complete return.", "",
       "The synthetic cases are regressions, not class B. No independent human hand-work is claimed. Stage 3 interview build checks cover fixture paths and answer-order invariance; they are not exhaustive over all finite domains or roster sizes.", "",
       "Earlier fixture inputs were migrated from supplied Form 1040 line 7a/QDCG net-gain inputs to actual sales and distribution inputs. Existing tax expectations were retained. The Schedule-D fixture's line 7a now reflects its $3,000 computed gain; the old zero was an inconsistent placeholder. Obsolete trace aliases now point to the distribution input.", "",
       ...selected.map(id=>`- [${id}](${id}.txt)`), "",
-      "See coverage.md, mutation.md and evaluator_agreement.md for generated verification evidence. Record owner observations in reviews/2025/stage3.md.", ""
+      `See coverage.md, mutation.md and evaluator_agreement.md for generated verification evidence. Record owner observations in reviews/${YEAR}/stage3.md.`, ""
     ].join("\n"));
   } finally {rmSync(tmp,{recursive:true,force:true});}
-  console.log("review: reports/2025/stage3-review.md and four CLI values sheets");
+  console.log(`review: reports/${YEAR}/stage3-review.md and four CLI values sheets`);
 }
 
 export function reviewStage4(): void {
-  const dir=join(ROOT,"reports","2025");
+  const dir=yearPath("reports");
   const selected=["stage4.sdtw.special_rates","stage4.deductions.combined","stage4.additional_taxes.combined","stage4.refuse.div.section1202","stage4.refuse.ftc.limit"];
   const targets="scope.ready,f1040.line7a,f1040.line16,sa.deduction,f4952.line8,qbi.deduction,s2.line21,f8959.line24,s3.line1";
   const tmp=mkdtempSync(join(tmpdir(),"stage4-review-"));
@@ -382,7 +383,7 @@ export function reviewStage4(): void {
     for(const id of selected) {
       const fixture=loadCases().cases.find(c=>c.id===id)!;
       const input=join(tmp,"inputs.json");writeFileSync(input,JSON.stringify(fixture.inputs));
-      const proc=spawnSync(process.execPath,[DIST_MAIN,"eval","--inputs",input,"--target",targets],{ encoding: "utf-8", maxBuffer: 256 * 1024 * 1024 });
+      const proc=spawnSync(process.execPath,[DIST_MAIN, ...YEAR_ARGS,"eval","--inputs",input,"--target",targets],{ encoding: "utf-8", maxBuffer: 256 * 1024 * 1024 });
       if(proc.status!==0)throw new Error(proc.stderr);
       writeFileSync(join(dir,id+".txt"),proc.stdout);
     }
@@ -390,7 +391,7 @@ export function reviewStage4(): void {
       "# Stage 4 review packet", "",
       "Stage 4 implements additional form slices and their CLI interview. AGI and taxable income remain supplied subtotals; Stage 5 must connect a complete Form 1040. These sample values sheets are synthetic worksheet exercises, not complete returns.", "",
       "## Review against archived sources", "",
-      "Compare rendered/2025/sa.md with f1040sa and i1040sca p. 7 (SALT); f4952.md with f4952; gift.md with i8283 pp. 1–3. Check standard deduction amounts and exceptions against i1040gi pp. 34–35. Compare sb.md with f1040sb and i1040sb.", "",
+      `Compare rendered/${YEAR}/sa.md with f1040sa and i1040sca p. 7 (SALT); f4952.md with f4952; gift.md with i8283 pp. 1–3. Check standard deduction amounts and exceptions against i1040gi pp. 34–35. Compare sb.md with f1040sb and i1040sb.`, "",
       "Compare sdtw.md with i1040sd pp. 15–16, g28.md and u1250.md with pp. 11–14. The special-rates fixture asserts all 47 worksheet lines; independently hand-work those expectations, including the printed skip instructions.", "",
       "Compare f8959.md and f8960.md with their forms and instructions (NIIT deductions pp. 17–18 and MAGI p. 22). Compare qbi.md, f8995.md and f8995a.md with their forms, i8995-correction and i8995a. Compare ftc.md with i1116 pp. 1–2 and s2.md with f1040s2.", "",
       "## Concrete checks", "",
@@ -401,8 +402,8 @@ export function reviewStage4(): void {
       "Eligibility screens rely on explicit answers. Charity valuation, basis reductions and income-limit checks, mortgage eligibility, NIIT allocation, REIT-dividend eligibility and simple FTC eligibility are supplied determinations. Form 8283 support groups amounts and routes Section A/B; dates, descriptions and donee records are not prepared. Per-spouse interviews remain refused. Exact-cent calculations continue; return-wide whole-dollar rounding is deferred.", "",
       "Official evidence added: i8959 p. 2 example 5 supplies $75,000 wages subject to additional tax; its married inputs are arithmetic scaffolding, not support for a married interview. Other i8959 examples require self-employment/RRTA, which are screened out. i8283 p. 2 supplies the $5,400 grouped-books Section B example. The i8960 rental allocation example is outside scope and is not claimed computed. Synthetic expectations remain regressions, not independently human-verified class B.", "",
       "All spec 2.2 refusal categories have cited screens and fixtures: FTC (ftc), other QBI (qbi), carryover/digital/unsupported adjustments/direct special-property sales (sd/sales), AMT (s2/div), Schedule 1/1-A and other credits (scope), excluded itemized deductions (sa/gift/f4952), special interest treatment and foreign reporting (sb), married per-spouse treatment (s3/scope). Screening is a target of the Stage 4 interview; individual form evaluations are not a whole-return acceptance decision.", "",
-      "See coverage.md, mutation.md and evaluator_agreement.md for current counts and remaining gaps. Mutation survivors are published, including unresolved ones; coverage does not certify tax correctness. Interview fixture-path checks are representative, not exhaustive. Record source-review and hand-work observations in reviews/2025/stage4.md.", ""
+      `See coverage.md, mutation.md and evaluator_agreement.md for current counts and remaining gaps. Mutation survivors are published, including unresolved ones; coverage does not certify tax correctness. Interview fixture-path checks are representative, not exhaustive. Record source-review and hand-work observations in reviews/${YEAR}/stage4.md.`, ""
     ].join("\n"));
   } finally {rmSync(tmp,{recursive:true,force:true});}
-  console.log("review: reports/2025/stage4-review.md and five CLI values sheets");
+  console.log(`review: reports/${YEAR}/stage4-review.md and five CLI values sheets`);
 }

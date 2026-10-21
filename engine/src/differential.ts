@@ -11,9 +11,10 @@ import { loadCanonical } from "./canonical.js";
 import { evaluate } from "./eval.js";
 import type { Inputs } from "./types.js";
 import type { Value } from "./eval.js";
+import { YEAR, yearPath } from "./year.js";
 
 const ROOT = join(import.meta.dirname, "../..");
-const DIR = join(ROOT, "fixtures", "2025", "differential");
+const DIR = yearPath("fixtures", "differential");
 
 interface DifferentialRecord {
   calculator: string;
@@ -60,7 +61,7 @@ function dollars(cents: number): string { return (cents / 100).toFixed(2); }
 function entrySheet(data: ReturnType<typeof loadCanonical>, c: CaseFixture, expect: Record<string, Value>): string {
   const out: string[] = [];
   out.push(`# Calculator entry sheet — ${c.id}`, "");
-  out.push("Enter this case in FreeTaxUSA (2025) and OLT (2025), then read the lines below back into a record. Synthetic data only.", "");
+  out.push(`Enter this case in FreeTaxUSA (${YEAR}) and OLT (${YEAR}), then read the lines below back into a record. Synthetic data only.`, "");
   out.push("## Enter", "", "| field | value |", "| --- | --- |");
   for (const [key, value] of Object.entries(c.inputs)) {
     if (key.startsWith("$") || key === "f1040.status") continue;
@@ -88,21 +89,21 @@ function entrySheet(data: ReturnType<typeof loadCanonical>, c: CaseFixture, expe
     const line = byId.get(key);
     out.push(`| ${key} | ${line?.label ?? ""} |`);
   }
-  out.push("", "## Record format", "", "Save as `fixtures/2025/differential/<calculator>." + c.id + ".json`:", "", "```json",
-    JSON.stringify({ calculator: "FreeTaxUSA", version: "2025, accessed YYYY-MM-DD", case: c.id, values: { "f1040.line15": 0 }, investigations: {} }, null, 2), "```", "");
+  out.push("", "## Record format", "", `Save as \`fixtures/${YEAR}/differential/<calculator>.` + c.id + ".json`:", "", "```json",
+    JSON.stringify({ calculator: "FreeTaxUSA", version: `${YEAR}, accessed YYYY-MM-DD`, case: c.id, values: { "f1040.line15": 0 }, investigations: {} }, null, 2), "```", "");
   out.push("Only include lines the calculator actually shows; absent lines are simply not compared. Any difference from the computed value needs a cited cause in `investigations`.", "");
   return out.join("\n");
 }
 
 export function differential(): number {
   const data = loadCanonical();
-  const cases = (JSON.parse(readFileSync(join(ROOT, "fixtures", "2025", "stage5.json"), "utf8")) as { cases: CaseFixture[] }).cases;
-  mkdirSync(join(ROOT, "reports", "2025"), { recursive: true });
+  const cases = (JSON.parse(readFileSync(yearPath("fixtures", "stage5.json"), "utf8")) as { cases: CaseFixture[] }).cases;
+  mkdirSync(yearPath("reports"), { recursive: true });
   const returnCases = cases.filter((c) => c.id.startsWith("stage5.return."));
   for (const c of returnCases) {
-    writeFileSync(join(ROOT, "reports", "2025", `differential.${c.id}.md`), entrySheet(data, c, c.expect ?? {}));
+    writeFileSync(yearPath("reports", `differential.${c.id}.md`), entrySheet(data, c, c.expect ?? {}));
   }
-  console.log(`differential: entry sheets written for ${returnCases.length} whole-return cases (reports/2025/differential.<case>.md)`);
+  console.log(`differential: entry sheets written for ${returnCases.length} whole-return cases (reports/${YEAR}/differential.<case>.md)`);
   if (!existsSync(DIR)) { console.log("differential: no calculator records yet; comparison pending."); return 0; }
   // Calculator records are objects with a `calculator` field; the directory also holds
   // the engine differential's investigation log, which is a JSON array.
@@ -134,9 +135,9 @@ export function differential(): number {
     }
     lines.push("");
   }
-  writeFileSync(join(ROOT, "reports", "2025", "differential.md"), lines.join("\n"));
-  if (mismatches > 0) { console.log(`differential: ${mismatches} unexplained difference(s) — reports/2025/differential.md`); return mismatches; }
-  console.log("differential: all recorded calculator values agree; report: reports/2025/differential.md");
+  writeFileSync(yearPath("reports", "differential.md"), lines.join("\n"));
+  if (mismatches > 0) { console.log(`differential: ${mismatches} unexplained difference(s) — reports/${YEAR}/differential.md`); return mismatches; }
+  console.log(`differential: all recorded calculator values agree; report: reports/${YEAR}/differential.md`);
   return 0;
 }
 

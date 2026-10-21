@@ -11,12 +11,17 @@ Output: a JSON array of { id, inputs, facts, features } where `inputs` is the
 project's interview input map, `facts` the engine-facing economic summary and
 `features` the flags the comparison uses for exclusion rules.
 """
-import argparse, json, random
+import argparse, json, random, sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "tools"))
+from taxyear import Y  # noqa: E402
 
 TAXPAYER = "person[taxpayer]"
 HSA = f"{TAXPAYER}.f8889[hsa]"
 
-WAGE_BASE = 17_610_000        # 2025 Social Security wage base, cents
+WAGE_BASE = json.load(open(ROOT / "canonical" / Y / "params.json"))["params"]["values"]["ss.base"]["value"]  # Social Security wage base, cents
 SS_RATE = (62, 1000)
 MEDICARE_RATE = (145, 10000)
 ADDL_MEDICARE_RATE = (9, 1000)

@@ -11,11 +11,12 @@ import { allTargets, evaluate } from "./eval.js";
 import { loadCases } from "./fixtures.js";
 import type { Inputs } from "./types.js";
 import type { Value } from "./eval.js";
+import { YEAR, yearPath } from "./year.js";
 
 const ROOT = resolve(import.meta.dirname, "../..");
 const LEAN_BIN = join(ROOT, "lean", ".lake", "build", "bin", "taxeval");
-const CANON = join(ROOT, "canonical", "2025");
-const FIXTURES = join(ROOT, "fixtures", "2025", "stage1.json");
+const CANON = yearPath("canonical");
+const FIXTURES = yearPath("fixtures", "stage1.json");
 
 interface Case {
   id: string;
@@ -188,10 +189,10 @@ export function compareEvaluators(): number {
     for (const d of failureDetails.slice(0, 50)) report.push(`- ${d}`);
   }
   report.push("");
-  const outDir = join(ROOT, "reports", "2025");
+  const outDir = yearPath("reports");
   mkdirSync(outDir, { recursive: true });
   writeFileSync(join(outDir, "evaluator_agreement.md"), report.join("\n"));
   console.log(`compare: ${cases.length} cases, ${comparedLines} line values, ${failures} differing case(s)`);
-  console.log(`report: reports/2025/evaluator_agreement.md`);
+  console.log(`report: reports/${YEAR}/evaluator_agreement.md`);
   return failures === 0 ? 0 : 1;
 }

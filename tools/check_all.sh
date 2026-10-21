@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Runs the whole suite (npm run check-all-steps) and, when it passes, writes
+# Runs the whole suite (tools/check_all_steps.sh, passing on its arguments,
+# e.g. --year N) and, when it passes, writes
 # the tested tree's hash to .git/check-all-green for tools/hooks/pre-commit.
 # A run is green only if nothing outside the suite's own outputs (reports/,
 # rendered/) changed while it ran; an edit made mid-run gets no marker.
@@ -9,7 +10,7 @@ cd "$(git rev-parse --show-toplevel)"
 
 rm -f "$MARKER"
 before="$(worktree_tree)"
-npm run check-all-steps --silent
+tools/check_all_steps.sh "$@"
 after="$(worktree_tree)"
 
 outside="$(git diff-tree -r --name-only "$before" "$after" | grep -vE '^(reports|rendered)/' || true)"

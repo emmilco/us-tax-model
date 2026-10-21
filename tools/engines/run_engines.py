@@ -12,10 +12,16 @@ The comparison applies the limitations using the case's features, some of which
 are derived from the project's own values (for example whether Form 4952 limited
 the investment interest deduction).
 """
-import argparse, json, warnings
+import argparse, json, sys, warnings
+from pathlib import Path
+
+# tools/ comes off the path again once taxyear is loaded: its coverage/ directory would
+# otherwise be imported as the `coverage` module that numba (under Tax-Calculator) probes for.
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from taxyear import YEAR  # noqa: E402
+sys.path.pop(0)
 warnings.filterwarnings("ignore")
 
-YEAR = 2025
 
 
 def cents(x):

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
-"""In check-all: every second-transcription log of a pinned table (reviews/2025/tables/*.json, written by
+"""In check-all: every second-transcription log of a pinned table (reviews/<year>/tables/*.json, written by
 transcribe_tables.py) must be for the table as it is now (its hash) and have a ruling under every
 disagreement; and every table that has a job must have a log."""
 import hashlib
@@ -9,12 +9,14 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "tools"))
+from taxyear import Y  # noqa: E402
 sys.path.insert(0, str(ROOT / "tools" / "transcription"))
 from transcribe_tables import JOBS  # noqa: E402
 
 failures = []
 for name, job in sorted(JOBS.items()):
-    path = ROOT / "reviews" / "2025" / "tables" / f"{name}.json"
+    path = ROOT / "reviews" / Y / "tables" / f"{name}.json"
     if not path.exists():
         failures.append(f"{name}: no log")
         continue

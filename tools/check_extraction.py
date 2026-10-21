@@ -28,7 +28,7 @@ For every archived PDF, per page:
                                are listed with their reason in tools/extraction/exceptions.json;
                                the report prints them, and any other difference fails.
 
-Writes reports/2025/extraction.md and exits 1 on any failure.
+Writes reports/<year>/extraction.md and exits 1 on any failure.
 
     check_extraction.py [--no-pdfkit]
 """
@@ -41,8 +41,10 @@ from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-ARCHIVE = ROOT / "sources" / "2025"
-REPORT = ROOT / "reports" / "2025" / "extraction.md"
+sys.path.insert(0, str(ROOT / "tools"))
+from taxyear import Y  # noqa: E402
+ARCHIVE = ROOT / "sources" / Y
+REPORT = ROOT / "reports" / Y / "extraction.md"
 SWIFT = ROOT / "tools" / "extraction" / "pdfkit_text.swift"
 FURNITURE = ROOT / "tools" / "extraction" / "furniture.txt"
 EXCEPTIONS = ROOT / "tools" / "extraction" / "exceptions.json"  # {doc: {check: {page: reason}}}, each an accepted, explained difference

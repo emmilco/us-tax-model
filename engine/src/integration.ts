@@ -7,12 +7,13 @@ import { spawnSync } from "node:child_process";
 import { loadCanonical } from "./canonical.js";
 import { loadCases } from "./fixtures.js";
 import type { CanonicalData, Inputs } from "./types.js";
+import { YEAR_ARGS, yearPath } from "./year.js";
 
 export function integrationChecks(): void {
   const dir=mkdtempSync(join(tmpdir(),"stage2-integration-"));
   let checks=0;
   const cli=(args:string[],ok=true):any=>{
-    const p=spawnSync(process.execPath,[resolve(import.meta.dirname,"main.js"),...args],{ encoding: "utf-8", maxBuffer: 256 * 1024 * 1024 });
+    const p=spawnSync(process.execPath,[resolve(import.meta.dirname,"main.js"),...YEAR_ARGS,...args],{ encoding: "utf-8", maxBuffer: 256 * 1024 * 1024 });
     assert.equal(p.status===0,ok,`${args.join(" ")}: ${p.stderr || p.stdout}`);
     checks++;
     return ok ? JSON.parse(p.stdout) : null;
@@ -57,15 +58,15 @@ export function integrationChecks(): void {
     evaluate({...inputs,"person[taxpayer].w2[ghost].box4":1},false);
     evaluate({...inputs,"person[taxpayer].w2[a].box3":Number.MAX_SAFE_INTEGER,"person[taxpayer].w2[a].box7":1},false);
     const htmlPath=join(dir,"html-input.json");writeFileSync(htmlPath,JSON.stringify(inputs));
-    const html=spawnSync(process.execPath,[resolve(import.meta.dirname,"main.js"),"eval","--inputs",htmlPath,"--target","f1040.line31","--html"],{ encoding: "utf-8", maxBuffer: 256 * 1024 * 1024 });
+    const html=spawnSync(process.execPath,[resolve(import.meta.dirname,"main.js"),...YEAR_ARGS,"eval","--inputs",htmlPath,"--target","f1040.line31","--html"],{ encoding: "utf-8", maxBuffer: 256 * 1024 * 1024 });
     assert.equal(html.status,0);assert.match(html.stdout,/<!doctype html>/);assert.match(html.stdout,/\$1,481\.80/);checks++;
     // Entry sections: a business, its implicit Form 4562 after it, and each asset with only the
     // lines Form 4562 reports it on (a listed asset on 25 and 26, the other on 14 and 19).
     {
-      const fx=JSON.parse(readFileSync(resolve(import.meta.dirname,"../../fixtures/2025/stage14.json"),"utf-8")) as {cases:{id:string;inputs:Record<string,unknown>}[]};
+      const fx=JSON.parse(readFileSync(yearPath("fixtures", "stage14.json"),"utf-8")) as {cases:{id:string;inputs:Record<string,unknown>}[]};
       const assetCase=fx.cases.find(c=>c.id==="stage14.asset.listed_and_not")!;
       const sheetPath=join(dir,"sheet-input.json");writeFileSync(sheetPath,JSON.stringify(assetCase.inputs));
-      const sheet=spawnSync(process.execPath,[resolve(import.meta.dirname,"main.js"),"eval","--inputs",sheetPath],{ encoding: "utf-8", maxBuffer: 256 * 1024 * 1024 });
+      const sheet=spawnSync(process.execPath,[resolve(import.meta.dirname,"main.js"),...YEAR_ARGS,"eval","--inputs",sheetPath],{ encoding: "utf-8", maxBuffer: 256 * 1024 * 1024 });
       assert.equal(sheet.status,0);
       const section=(entry:string)=>{const parts=sheet.stdout.split(/\n(?=== )/);const s=parts.find(p=>p.split("\n")[0]!.endsWith(`— ${entry} ==`));assert.ok(s,`no section for ${entry}`);return s!;};
       const order=sheet.stdout.indexOf("— person[taxpayer].sc[d] =="), f4562=sheet.stdout.indexOf("— person[taxpayer].sc[d].f4562[form] ==");

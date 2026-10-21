@@ -8,10 +8,11 @@ import { resolve } from "node:path";
 import { isDeepStrictEqual } from "node:util";
 import { interviewState, replay, type InterviewData } from "./interview.js";
 import type { CanonicalData, Inputs } from "./types.js";
+import { yearPath } from "./year.js";
 
 export function checkInterview(data: CanonicalData, config: InterviewData, paths?: string[]): string[] {
   const errors: string[] = [];
-  const fixtures = (JSON.parse(readFileSync(resolve(import.meta.dirname,"../../fixtures/2025/stage2.json"),"utf8")) as {cases:{id:string;inputs:Inputs}[]}).cases;
+  const fixtures = (JSON.parse(readFileSync(yearPath("fixtures", "stage2.json"),"utf8")) as {cases:{id:string;inputs:Inputs}[]}).cases;
   const domain = (key: string): unknown[] | undefined => {
     const template = key.replace(/(?:[a-zA-Z0-9_]+\[[^\]]+\]\.)+/g, m => m.split(".").filter(Boolean).at(-1)!.split("[")[0]+".");
     const line = data.forms.flatMap(d=>d.lines).find(l=>l.id===template);
@@ -50,7 +51,7 @@ export function checkInterview(data: CanonicalData, config: InterviewData, paths
 // enumeration above, this is representative coverage, not a Cartesian proof.
 export function checkSalesInterview(data: CanonicalData, config: InterviewData, stage = "stage3"): string[] {
   const errors: string[]=[];
-  const fixtures=JSON.parse(readFileSync(resolve(import.meta.dirname,`../../fixtures/2025/${stage}.json`),"utf8")) as {cases:{id:string;inputs:Inputs}[]};
+  const fixtures=JSON.parse(readFileSync(yearPath("fixtures", `${stage}.json`),"utf8")) as {cases:{id:string;inputs:Inputs}[]};
   for (const fixture of fixtures.cases) {
     try {
       let current: Inputs=structuredClone(config.initial);
@@ -66,7 +67,7 @@ export function checkSalesInterview(data: CanonicalData, config: InterviewData, 
         current={...current,[key]:fixture.inputs[key]};
       }
       if(!ended) throw new Error("path did not terminate");
-      const reversed=replay(config,[{version:1,tax_year:2025},...events.toReversed()]);
+      const reversed=replay(config,[{version:1,tax_year:config.tax_year},...events.toReversed()]);
       const a=interviewState(data,config,current), b=interviewState(data,config,reversed);
       if(!isDeepStrictEqual(a.values,b.values)||a.status!==b.status)throw new Error("answer order changes result");
     } catch(e) {errors.push(`${fixture.id}: ${String(e)}`);}

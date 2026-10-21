@@ -14,7 +14,9 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import rulings as sidecar  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-REVIEWS = os.path.join(ROOT, "reviews", "2025")
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+from taxyear import Y  # noqa: E402
+REVIEWS = os.path.join(ROOT, "reviews", Y)
 
 
 def apply(form, rulings, kind="transcription"):
@@ -60,7 +62,7 @@ def apply(form, rulings, kind="transcription"):
 
 def drop_from_fixture(form, case_id, printed):
     """Remove one line's expectation from a class M fixture case."""
-    fx_path = os.path.join(ROOT, "fixtures", "2025", "classm.json")
+    fx_path = os.path.join(ROOT, "fixtures", Y, "classm.json")
     fx = json.load(open(fx_path))
     jobs = json.load(open(os.path.join(ROOT, ".classm", "jobs.json")))["jobs"]
     job = next(j for j in jobs if j["id"] == case_id)

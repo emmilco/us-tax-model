@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 """Second transcription of pinned tables: a model that sees only the archived layout text of the
 pages a table comes from transcribes it, and the transcription is compared cell by cell with the
-project's table. The committed artifact is reviews/2025/tables/<job>.json: the table's hash,
+project's table. The committed artifact is reviews/<year>/tables/<job>.json: the table's hash,
 every comparison, and a ruling under each disagreement (written with --rule).
 
 Isolation is that of tools/transcription (README): claude -p with no tools, no settings, no
@@ -28,22 +28,24 @@ from pathlib import Path
 import yaml
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "tools"))
+from taxyear import Y, YEAR_ARGS  # noqa: E402
 sys.path.insert(0, str(ROOT / "tools" / "transcription"))
 from transcribe import call_model  # noqa: E402
 
-ARCHIVE = ROOT / "sources" / "2025"
-LOGS = ROOT / "reviews" / "2025" / "tables"
+ARCHIVE = ROOT / "sources" / Y
+LOGS = ROOT / "reviews" / Y / "tables"
 WORK = ROOT / ".transcription" / "tables"
 SYSTEM = ("You transcribe tables from IRS publications from the text given to you. "
           "You have no tools and no other sources. Output only the YAML requested.")
 
 JOBS = {
     "class_lives": {
-        "table": "tables/2025/class_lives.yaml",
+        "table": f"tables/{Y}/class_lives.yaml",
         "doc": "p946",
         "pages": list(range(99, 109)),
         "ask": (
-            "Below is the layout text (pdftotext -layout) of pages 99 to 108 of IRS Publication 946 (2025), "
+            f"Below is the layout text (pdftotext -layout) of pages 99 to 108 of IRS Publication 946 ({Y}), "
             "Appendix B, Tables B-1 and B-2, Table of Class Lives and Recovery Periods. Transcribe every row that "
             "has an asset class number (such as 00.11 or 57.0). For each, give: asset_class (as printed), "
             "class_life (the number in the Class Life column, or null if none is printed for that class), "
@@ -56,11 +58,11 @@ JOBS = {
         ),
     },
     "macrs_mq": {
-        "table": "tables/2025/macrs_gds.yaml",
+        "table": f"tables/{Y}/macrs_gds.yaml",
         "doc": "p946",
         "pages": [71, 72, 73],
         "ask": (
-            "Below is the layout text of pages 71 to 73 of IRS Publication 946 (2025), Appendix A, Tables A-1 to A-5 "
+            f"Below is the layout text of pages 71 to 73 of IRS Publication 946 ({Y}), Appendix A, Tables A-1 to A-5 "
             "(MACRS, 3- to 20-year property). Transcribe two columns exactly as printed: the 7-year column of Table A-3 "
             "(mid-quarter convention, placed in service in second quarter) and the 20-year column of Table A-2 "
             "(mid-quarter convention, placed in service in first quarter). For each, list every year and its rate as "
@@ -88,7 +90,7 @@ def excerpt(job):
 
 def ours(name):
     if name == "class_lives":
-        rows = json.loads(subprocess.run([sys.executable, str(ROOT / "tools" / "extract_class_lives.py"), "--json"],
+        rows = json.loads(subprocess.run([sys.executable, str(ROOT / "tools" / "extract_class_lives.py"), "--json", *YEAR_ARGS],
                                          capture_output=True, text=True, check=True).stdout)
         out = {}
         for r in rows:
@@ -190,7 +192,7 @@ def main():
         if k and k["status"] == r["status"] and k.get("ours") == r.get("ours") and k.get("theirs") == r.get("theirs"):
             r["ruling"] = k["ruling"]
     log = {"job": a.job, "table": job["table"], "table_sha256": sha(job["table"]),
-           "source": {"doc": job["doc"], "pages": job["pages"], "sha256": sha(f"sources/2025/{job['doc']}.txt")},
+           "source": {"doc": job["doc"], "pages": job["pages"], "sha256": sha(f"sources/{Y}/{job['doc']}.txt")},
            "model": a.model, "model_reported": meta.get("model_reported"), "cost_usd": meta.get("cost_usd"),
            "system_prompt": SYSTEM, "prompt_sha256": hashlib.sha256(prompt.encode()).hexdigest(),
            "date": datetime.date.today().isoformat(), "results": results}

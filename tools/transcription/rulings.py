@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Rulings on review disagreements, kept as data beside each log.
 
-Each review log (`reviews/2025/<kind>/<form>.md`) is rendered by its tool; the
+Each review log (`reviews/<year>/<kind>/<form>.md`) is rendered by its tool; the
 rulings a person wrote on its disagreements live in `<form>.rulings.json` next
 to it, keyed by the disagreement they answer (the printed line and the two sides
 of the disagreement), so a rerun that reproduces the same disagreement keeps the
@@ -15,7 +15,9 @@ same ruling without parsing the prose log. `rule.py` writes both files;
 import argparse, json, os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-REVIEWS = os.path.join(ROOT, "reviews", "2025")
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+from taxyear import Y  # noqa: E402
+REVIEWS = os.path.join(ROOT, "reviews", Y)
 KINDS = {
     "transcription": ("printed", "project", "second"),
     "render": ("printed", "restated", "model"),

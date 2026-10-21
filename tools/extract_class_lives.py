@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
 """Extract Pub. 946 Appendix B (Tables B-1 and B-2, Table of Class Lives and Recovery Periods)
-from the archived layout text into tables/2025/class_lives.yaml and the asset_class enum file
-tables/2025/class_lives.enum.yaml.
+from the archived layout text into tables/<year>/class_lives.yaml and the asset_class enum file
+tables/<year>/class_lives.enum.yaml.
 
 Each asset class gives its class life, GDS (MACRS) recovery period and ADS recovery period. A
 footnote mark joined to a number (GDS "74" is 7 with footnote 4) or to a description is kept
@@ -20,8 +20,10 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-ARCHIVE = ROOT / "sources" / "2025"
-OUT = ROOT / "tables" / "2025" / "class_lives.yaml"
+sys.path.insert(0, str(ROOT / "tools"))
+from taxyear import Y  # noqa: E402
+ARCHIVE = ROOT / "sources" / Y
+OUT = ROOT / "tables" / Y / "class_lives.yaml"
 VERSION = "0.1"
 PAGES = range(99, 109)            # Tables B-1 and B-2
 GDS_OK = {"3": "y3", "5": "y5", "7": "y7", "10": "y10", "15": "y15", "20": "y20"}
@@ -139,17 +141,17 @@ def main():
     if len(codes) != len(set(codes)):
         raise SystemExit("duplicate asset classes")
     lines = [
-        "# Pub. 946 (2025) Appendix B, Tables B-1 and B-2, Table of Class Lives and Recovery Periods: the GDS recovery",
+        f"# Pub. 946 ({Y}) Appendix B, Tables B-1 and B-2, Table of Class Lives and Recovery Periods: the GDS recovery",
         "# period of each asset class, or `outside` for a farming class, a class with a footnote, or a GDS period this tool",
         "# does not depreciate.",
-        f"# Source: sources/2025/p946.pdf sha256 {entry['sha256']}",
+        f"# Source: sources/{Y}/p946.pdf sha256 {entry['sha256']}",
         f"# Extractor: tools/extract_class_lives.py v{VERSION}",
         "# Regenerate with: python3 tools/extract_class_lives.py",
         "table:",
         "  id: class_lives",
         "  kind: keyed",
         '  title: "GDS recovery period by asset class (Pub. 946, Appendix B, Tables B-1 and B-2)"',
-        "  tax_year: 2025",
+        f"  tax_year: {Y}",
         "  cite:",
         "    doc: p946",
         '    locator: "Appendix B, Tables B-1 and B-2, Table of Class Lives and Recovery Periods, pp. 98-108"',
@@ -165,7 +167,7 @@ def main():
         lines.append(f"    - {{ keys: [{key}], value: {value} }}   # {what}")
     OUT.write_text("\n".join(lines) + "\n", encoding="utf-8")
     enum = [f"c{c.replace('.', '_')}" for c in codes] + [k for k, _, _ in EXTRA]
-    (ROOT / "tables" / "2025" / "class_lives.enum.json").write_text(json.dumps({"values": enum, "descriptions": {**{f"c{r['code'].replace('.', '_')}": f"{r['code']} {r['description']}" for r in rows}, **{k: w for k, _, w in EXTRA}}}, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+    (ROOT / "tables" / Y / "class_lives.enum.json").write_text(json.dumps({"values": enum, "descriptions": {**{f"c{r['code'].replace('.', '_')}": f"{r['code']} {r['description']}" for r in rows}, **{k: w for k, _, w in EXTRA}}}, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
     counts = {}
     for r in rows:
         counts[period(r)] = counts.get(period(r), 0) + 1

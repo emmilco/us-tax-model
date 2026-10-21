@@ -2,7 +2,7 @@
 
 A return is covered only if no refused situation applies to it. The share of
 returns each situation affects comes from the archived IRS Statistics of Income
-tables (`categories.json`, `sources/2025/soi-*.xls`). The overlaps between
+tables (`categories.json`, `sources/<year>/soi-*.xls`). The overlaps between
 situations come from PolicyEngine-US household microdata, reweighted by raking
 (iterative proportional fitting) so that every category with an IRS count
 matches it. Categories the microdata cannot place are combined as independent
@@ -15,20 +15,21 @@ either is missing.
     .engines/venv/bin/python -I tools/coverage/estimate.py
 """
 import argparse
+import sys
 import hashlib
 import json
 from pathlib import Path
-import sys
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "tools"))
+from taxyear import YEAR, Y  # noqa: E402
 CATALOG = Path(__file__).with_name("categories.json")
-ARCHIVE = ROOT / "sources" / "2025"
+ARCHIVE = ROOT / "sources" / Y
 DATASET = ROOT / ".engines" / "data" / "populace_us_2024.h5"
 DATASET_SHA256 = "6496cc4393d4d3c6574f76eca231de5898c803b9067645591fd5c4d3e65aee84"
 CACHE = ROOT / ".engines" / "work" / "coverage_flags.npz"
-REPORT_MD = ROOT / "reports" / "2025" / "filer_coverage.md"
-REPORT_JSON = ROOT / "reports" / "2025" / "filer_coverage.json"
-YEAR = 2025
+REPORT_MD = ROOT / "reports" / Y / "filer_coverage.md"
+REPORT_JSON = ROOT / "reports" / Y / "filer_coverage.json"
 
 
 def sha256(path):
@@ -74,7 +75,7 @@ def form_gates():
         elif isinstance(x, list):
             for v in x:
                 walk(v)
-    for path in sorted((ROOT / "forms" / "2025").glob("*.yaml")):
+    for path in sorted((ROOT / "forms" / Y).glob("*.yaml")):
         walk(yaml.safe_load(path.read_text()))
     return gates
 
@@ -222,7 +223,7 @@ def render(r, groups):
         "",
         "A return counts as covered only if none of the refused situations below applies to it.",
         f"Shares are of the {r['irs_total_returns']:,.0f} individual returns the IRS counted for tax year 2023",
-        "(Statistics of Income, Publication 1304, archived under `sources/2025/soi-*`). Overlaps between situations",
+        f"(Statistics of Income, Publication 1304, archived under `sources/{Y}/soi-*`). Overlaps between situations",
         f"come from PolicyEngine-US microdata simulated for {r['simulated_year']}, raked to every IRS count it can place.",
         "",
         f"**Estimated coverage: {pct(cov['central'])}** of returns. If the IRS-only categories overlapped the rest",
@@ -230,7 +231,7 @@ def render(r, groups):
         "",
         "Limits of this estimate:",
         "",
-        "- IRS counts are for 2023; the 2025 shares are assumed similar.",
+        f"- IRS counts are for 2023; the {Y} shares are assumed similar.",
         "- Where the IRS gives only parts of a situation with unknown overlap, the largest part is used, a lower bound.",
         f"- {len(r['gates_unmeasured'])} of the {len(r['gates_unmeasured']) + len(r['gates_mapped'])} refusal gates in the forms are not measured (no IRS count or",
         "  microdata variable), so the true coverage is lower by their share. Gates measured only in part (for example",

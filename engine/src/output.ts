@@ -4,6 +4,7 @@
 import { fmtMoney, shortHash } from "./util.js";
 import type { CanonicalData, FormDoc } from "./types.js";
 import type { EvalResult, Value } from "./eval.js";
+import { YEAR } from "./year.js";
 
 export function fmtValue(v: Value): string {
   switch (v.kind) {
@@ -66,7 +67,7 @@ function pushEntry(lines: string[], data: CanonicalData, doc: FormDoc, entry: st
 
 export function renderValuesSheet(data: CanonicalData, result: EvalResult, targetDocs: string[]): string {
   const lines: string[] = [];
-  lines.push("Values sheet — tax year 2025 (not a complete return for all filers)");
+  lines.push(`Values sheet — tax year ${YEAR} (not a complete return for all filers)`);
   lines.push("");
   for (const docId of targetDocs) {
     const doc = [...data.forms].find((f) => f.id === docId);
@@ -77,7 +78,7 @@ export function renderValuesSheet(data: CanonicalData, result: EvalResult, targe
   }
   const choices = [...result.derivations.entries()].filter(([, d]) => d.op === "choose");
   if (choices.length > 0) {
-    lines.push("Path choices (guard wording per the rendered worksheets in rendered/2025/):");
+    lines.push(`Path choices (guard wording per the rendered worksheets in rendered/${YEAR}/):`);
     for (const [key, der] of choices) {
       lines.push(`  ${key}: chose ${fmtValue(der.value)}${der.takenGuardIndex !== undefined ? ` (guard ${der.takenGuardIndex})` : ""}`);
       for (let gi = 0; gi < der.guardsNotTaken.length; gi++) {
@@ -93,7 +94,7 @@ export function renderValuesSheet(data: CanonicalData, result: EvalResult, targe
   }
   for (const note of new Set([...result.derivations.values()].flatMap(d=>d.notes.filter(n=>n.startsWith("Interpretation "))))) lines.push(note);
   lines.push("Scope: Form 1040 lines 1a–37 with the schedules and forms this tool implements and their refusal screens. Unsupported paths are refused with citations. No filing or transmission.");
-  lines.push("Rounding: amounts are exact cents; the return-wide whole-dollar rounding setting is deferred (see ambiguities/2025.yaml).");
+  lines.push(`Rounding: amounts are exact cents; the return-wide whole-dollar rounding setting is deferred (see ambiguities/${YEAR}.yaml).`);
   lines.push("Estimated tax penalty: not computed; the IRS will figure it (see i1040gi, line 38).");
   lines.push("This is a computation of published IRS forms and instructions; it is not tax or legal advice. Published instructions are not the law itself.");
   lines.push("The user is responsible for the return. Not affiliated with or endorsed by the IRS.");
@@ -118,5 +119,5 @@ export function resultToJson(result: EvalResult): string {
 export function renderValuesHtml(data: CanonicalData, result: EvalResult, targetDocs: string[]): string {
   const escaped = renderValuesSheet(data, result, targetDocs).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
   return `<!doctype html>
-<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>2025 values sheet</title><body><pre style="white-space:pre-wrap">${escaped}</pre></body></html>`;
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>${YEAR} values sheet</title><body><pre style="white-space:pre-wrap">${escaped}</pre></body></html>`;
 }

@@ -10,9 +10,10 @@ import { allTargets, evaluate } from "./eval.js";
 import { loadCases } from "./fixtures.js";
 import { runChecks } from "./check.js";
 import type { CanonicalData, Expr, FormDoc, Line } from "./types.js";
+import { YEAR, yearPath } from "./year.js";
 
 const ROOT = resolve(import.meta.dirname, "../..");
-const FIXTURES = join(ROOT, "fixtures", "2025", "stage1.json");
+const FIXTURES = yearPath("fixtures", "stage1.json");
 
 interface Mutation {
   id: string;
@@ -661,10 +662,10 @@ export function runMutation(): number {
     }
     report.push("");
   }
-  const outDir = join(ROOT, "reports", "2025");
+  const outDir = yearPath("reports");
   mkdirSync(outDir, { recursive: true });
   writeFileSync(join(outDir, "mutation.md"), report.join("\n"));
   console.log(`mutation: ${total} mutants, killed by checker ${killedByCheck}, by fixtures ${killedByFixtures}, surviving ${survivors.length} (${equivalentSurvivors.length} equivalent; score ${(score * 100).toFixed(1)}%, adjusted ${(adjusted * 100).toFixed(1)}%)`);
-  console.log(`report: reports/2025/mutation.md`);
+  console.log(`report: reports/${YEAR}/mutation.md`);
   return unexplained.length === 0 ? 0 : 1;
 }

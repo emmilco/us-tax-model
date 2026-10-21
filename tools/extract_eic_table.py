@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
-"""Extract the 2025 Earned Income Credit (EIC) Table from the archived IRS PDF into pinned data.
+"""Extract the Earned Income Credit (EIC) Table from the archived IRS PDF into pinned data.
 
-Reads word boxes (pdftotext -bbox-layout) from `sources/2025/i1040gi.pdf`, pages 49-60, and
-writes one table per number of qualifying children: `tables/2025/eic_0.yaml` ... `eic_3.yaml`.
+Reads word boxes (pdftotext -bbox-layout) from `sources/<year>/i1040gi.pdf`, pages 49-60, and
+writes one table per number of qualifying children: `tables/<year>/eic_0.yaml` ... `eic_3.yaml`.
 Each table has two columns, as printed: "Single, head of household, or qualifying surviving
 spouse" (which the table's star note also gives to married filing separately) and "Married
 filing jointly".
@@ -32,8 +32,10 @@ import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-PDF = ROOT / "sources" / "2025" / "i1040gi.pdf"
-OUT_DIR = ROOT / "tables" / "2025"
+sys.path.insert(0, str(ROOT / "tools"))
+from taxyear import Y  # noqa: E402
+PDF = ROOT / "sources" / Y / "i1040gi.pdf"
+OUT_DIR = ROOT / "tables" / Y
 FIRST_PAGE, LAST_PAGE = 49, 60
 TOOL_VERSION = "0.1"
 # Right edges (points) of the twenty numeric columns, the same on every table page.
@@ -157,8 +159,8 @@ def main():
     for k in range(4):
         out = OUT_DIR / f"eic_{k}.yaml"
         lines = [
-            f"# 2025 Earned Income Credit (EIC) Table, {status_words[k]} who have valid SSNs, extracted from the archived IRS PDF.",
-            f"# Source: sources/2025/i1040gi.pdf sha256 {sha256(PDF)}",
+            f"# {Y} Earned Income Credit (EIC) Table, {status_words[k]} who have valid SSNs, extracted from the archived IRS PDF.",
+            f"# Source: sources/{Y}/i1040gi.pdf sha256 {sha256(PDF)}",
             f"# Extractor: tools/extract_eic_table.py v{TOOL_VERSION}, {datetime.date.today().isoformat()}",
             "# Regenerate with: python3 tools/extract_eic_table.py",
             "# Column order in each band's credit list: [single, head of household, qualifying surviving spouse or married",
@@ -166,11 +168,11 @@ def main():
             "table:",
             f"  id: eic_{k}",
             "  kind: tax_table",
-            f'  title: "2025 Earned Income Credit (EIC) Table — {status_words[k]}"',
-            "  tax_year: 2025",
+            f'  title: "{Y} Earned Income Credit (EIC) Table — {status_words[k]}"',
+            f"  tax_year: {Y}",
             "  cite:",
             "    doc: i1040gi",
-            '    locator: "2025 Earned Income Credit (EIC) Table, pp. 49-60"',
+            f'    locator: "{Y} Earned Income Credit (EIC) Table, pp. 49-60"',
             '    quote: "Then, go to the column that includes your filing status and the number of qualifying children you have who have valid SSNs as defined earlier."',
             f"  bounds: {{ at_least: {START * 100}, less_than: {END * 100} }}",
             "  columns:",

@@ -11,6 +11,7 @@ import { stableStringify } from "./util.js";
 import { type InterviewData } from "./interview.js";
 import { checkInterview, checkSalesInterview } from "./interview-check.js";
 import { runChecks } from "./check.js";
+import { YEAR, yearPath } from "./year.js";
 import type {
   CanonicalData,
   CiteAuthored,
@@ -22,13 +23,13 @@ import type {
 } from "./types.js";
 
 const ROOT = resolve(import.meta.dirname, "../..");
-const MANIFEST_PATH = join(ROOT, "sources", "2025", "manifest.json");
+const MANIFEST_PATH = yearPath("sources", "manifest.json");
 const SCHEMA_PATH = join(ROOT, "schema", "data.schema.json");
-const FORMS_DIR = join(ROOT, "forms", "2025");
-const TABLES_DIR = join(ROOT, "tables", "2025");
-const PARAMS_PATH = join(ROOT, "params", "2025.yaml");
-const REGISTER_PATH = join(ROOT, "ambiguities", "2025.yaml");
-const OUT_DIR = join(ROOT, "canonical", "2025");
+const FORMS_DIR = yearPath("forms");
+const TABLES_DIR = yearPath("tables");
+const PARAMS_PATH = join(ROOT, "params", `${YEAR}.yaml`);
+const REGISTER_PATH = join(ROOT, "ambiguities", `${YEAR}.yaml`);
+const OUT_DIR = yearPath("canonical");
 
 interface ManifestEntry {
   id: string;
@@ -55,7 +56,7 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
     }
     const source = manifest.get(cite.doc);
     if (!source) {
-      errors.push(`${where}: cite doc '${cite.doc}' not in sources/2025/manifest.json`);
+      errors.push(`${where}: cite doc '${cite.doc}' not in sources/${YEAR}/manifest.json`);
       return { ...fallback, doc: cite.doc, locator: cite.locator };
     }
     if (!source.revision) {
@@ -125,7 +126,7 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
     entry.cite = fillCite(entry.cite as unknown as CiteAuthored, register.tax_year, `register ${entry.id}`);
   }
 
-  const interview = (parseYaml(readFileSync(join(ROOT, "interview", "2025.yaml"), "utf8")) as {interview: InterviewData}).interview;
+  const interview = (parseYaml(readFileSync(join(ROOT, "interview", `${YEAR}.yaml`), "utf8")) as {interview: InterviewData}).interview;
   interview.cite = fillCite(interview.cite, interview.tax_year, "interview");
   for (const q of interview.questions) {
     q.cite = fillCite(q.cite, interview.tax_year, `question ${q.input}`);
@@ -134,29 +135,39 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
     if (!declared) errors.push(`question ${q.input}: undeclared input`);
   }
   if (new Set(interview.questions.map(q => q.input)).size !== interview.questions.length) errors.push("duplicate questions");
-  const salesInterview = (parseYaml(readFileSync(join(ROOT, "interview", "sales-2025.yaml"), "utf8")) as {interview: InterviewData}).interview;
-  salesInterview.cite = fillCite(salesInterview.cite, 2025, "sales interview");
+  const salesInterview = (parseYaml(readFileSync(join(ROOT, "interview", `sales-${YEAR}.yaml`), "utf8")) as {interview: InterviewData}).interview;
+  salesInterview.cite = fillCite(salesInterview.cite, YEAR, "sales interview");
   for (const q of salesInterview.questions) {
-    q.cite = fillCite(q.cite, 2025, `sales question ${q.input}`);
+    q.cite = fillCite(q.cite, YEAR, `sales question ${q.input}`);
     const declared = q.input.startsWith("$") ? forms.some(d => d.collection && "$" + d.id === q.input) : forms.some(d => d.lines.some(l => l.id === q.input && l.expr.op === "input"));
     if (!declared || !q.prompt || !q.help) errors.push(`invalid sales question ${q.input}`);
   }
   if (new Set(salesInterview.questions.map(q=>q.input)).size !== salesInterview.questions.length) errors.push("duplicate sales questions");
-  const stage4Interview = (parseYaml(readFileSync(join(ROOT, "interview", "stage4-2025.yaml"), "utf8")) as {interview: InterviewData}).interview;
-  stage4Interview.cite = fillCite(stage4Interview.cite, 2025, "Stage 4 interview");
+  const stage4Interview = (parseYaml(readFileSync(join(ROOT, "interview", `stage4-${YEAR}.yaml`), "utf8")) as {interview: InterviewData}).interview;
+  stage4Interview.cite = fillCite(stage4Interview.cite, YEAR, "Stage 4 interview");
   for (const q of stage4Interview.questions) {
-    q.cite = fillCite(q.cite, 2025, `Stage 4 question ${q.input}`);
+    q.cite = fillCite(q.cite, YEAR, `Stage 4 question ${q.input}`);
     const declared = q.input.startsWith("$") ? forms.some(d => d.collection && "$" + d.id === q.input) : forms.some(d => d.lines.some(l => l.id === q.input && l.expr.op === "input"));
     if (!declared) errors.push(`invalid Stage 4 question ${q.input}`);
   }
-  const fullInterview = (parseYaml(readFileSync(join(ROOT, "interview", "full-2025.yaml"), "utf8")) as {interview: InterviewData}).interview;
-  fullInterview.cite = fillCite(fullInterview.cite, 2025, "full interview");
+  const fullInterview = (parseYaml(readFileSync(join(ROOT, "interview", `full-${YEAR}.yaml`), "utf8")) as {interview: InterviewData}).interview;
+  fullInterview.cite = fillCite(fullInterview.cite, YEAR, "full interview");
   for (const q of fullInterview.questions) {
-    q.cite = fillCite(q.cite, 2025, `full-interview question ${q.input}`);
+    q.cite = fillCite(q.cite, YEAR, `full-interview question ${q.input}`);
     const declared = q.input.startsWith("$") ? forms.some(d => d.collection && "$" + d.id === q.input) : forms.some(d => d.lines.some(l => l.id === q.input && l.expr.op === "input"));
     if (!declared) errors.push(`invalid full-interview question ${q.input}`);
   }
   if (new Set(fullInterview.questions.map(q=>q.input)).size !== fullInterview.questions.length) errors.push("duplicate full-interview questions");
+  // Every document under the year's directories must state that year.
+  const stated: [string, number][] = [
+    ["sources manifest", (JSON.parse(readFileSync(MANIFEST_PATH, "utf-8")) as { tax_year: number }).tax_year],
+    ["params", params.tax_year], ["ambiguity register", register.tax_year],
+    ["interview", interview.tax_year], ["sales interview", salesInterview.tax_year],
+    ["Stage 4 interview", stage4Interview.tax_year], ["full interview", fullInterview.tax_year],
+    ...[...forms, ...defs].map((d): [string, number] => [d.id, d.tax_year]),
+    ...tables.map((t): [string, number] => [`table ${t.id}`, t.tax_year]),
+  ];
+  for (const [what, year] of stated) if (year !== YEAR) errors.push(`${what}: tax_year ${year}, but the build is for ${YEAR}`);
   const data: CanonicalData = { forms, defs, params, tables, register };
 
   // Schema validation on the canonical form.
@@ -240,7 +251,7 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
       writeFileSync(join(OUT_DIR, "tables", `${table.id}.json`), stableStringify({ table }));
     }
     writeFileSync(join(OUT_DIR, "register.json"), stableStringify({ register }));
-    stats.push(`canonical output written to canonical/2025/`);
+    stats.push(`canonical output written to canonical/${YEAR}/`);
   }
 
   return { data, errors, stats };

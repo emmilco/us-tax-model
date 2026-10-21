@@ -1,6 +1,9 @@
 /-
 Reference evaluator entry point:
-  lake exe taxeval -- --canonical <dir> --inputs <file.json> --out <file.json> [--budget N]
+  lake exe taxeval -- [--canonical <dir> | --year N] --inputs <file.json> --out <file.json> [--budget N]
+
+Without --canonical, reads ../canonical/<year>/, the year being --year or else the
+newest adopted year in ../years.json.
 
 Evaluates every line of every form, and every line of every confirmed collection
 entry (the TypeScript evaluator's `allTargets`), from the canonical JSON and writes
@@ -72,22 +75,36 @@ end TaxFormalization
 open TaxFormalization
 
 def main (args : List String) : IO UInt32 := do
-  let rec parseArgs : List String → Option String × Option String × String × Nat
+  let rec parseArgs : List String → Option String × Option String × Option String × Option String × Nat
     | "--inputs" :: v :: rest =>
-      let (_, o, c, b) := parseArgs rest
-      (some v, o, c, b)
+      let (_, o, c, y, b) := parseArgs rest
+      (some v, o, c, y, b)
     | "--out" :: v :: rest =>
-      let (i, _, c, b) := parseArgs rest
-      (i, some v, c, b)
+      let (i, _, c, y, b) := parseArgs rest
+      (i, some v, c, y, b)
     | "--canonical" :: v :: rest =>
-      let (i, o, _, b) := parseArgs rest
-      (i, o, v, b)
+      let (i, o, _, y, b) := parseArgs rest
+      (i, o, some v, y, b)
+    | "--year" :: v :: rest =>
+      let (i, o, c, _, b) := parseArgs rest
+      (i, o, c, some v, b)
     | "--budget" :: v :: rest =>
-      let (i, o, c, _) := parseArgs rest
-      (i, o, c, v.toNat?.getD stepBudget)
+      let (i, o, c, y, _) := parseArgs rest
+      (i, o, c, y, v.toNat?.getD stepBudget)
     | _ :: rest => parseArgs rest
-    | [] => (none, none, "../canonical/2025", stepBudget)
-  let (inputsPath, outPath, canonDir, budget) := parseArgs args
+    | [] => (none, none, none, none, stepBudget)
+  let (inputsPath, outPath, canonArg, yearArg, budget) := parseArgs args
+  let canonDir ← match canonArg, yearArg with
+    | some c, _ => pure c
+    | none, some y => pure s!"../canonical/{y}"
+    | none, none => do
+      let adopted := (Json.parse (← IO.FS.readFile "../years.json")).bind (·.getObjValAs? (Array Nat) "adopted")
+      match adopted with
+      | .ok years =>
+        match years.toList.max? with
+        | some y => pure s!"../canonical/{y}"
+        | none => throw (IO.userError "years.json lists no adopted year; pass --year")
+      | .error e => throw (IO.userError s!"years.json: {e}")
   match inputsPath, outPath with
   | some inp, some outp => do
     let canon : System.FilePath := canonDir

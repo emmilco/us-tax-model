@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
-"""Extract the 2025 Tax Table from the archived IRS PDF into pinned data.
+"""Extract the Tax Table from the archived IRS PDF into pinned data.
 
 Reads word bounding boxes (pdftotext -bbox-layout) from the archived
-`sources/2025/i1040gi.pdf`, pages 68-79, and emits `tables/2025/tax_table.yaml`.
+`sources/<year>/i1040gi.pdf`, pages 68-79, and emits `tables/<year>/tax_table.yaml`.
 
 The extraction is deterministic: the same PDF bytes and the same script
 version produce the same table. Structural claims are validated before
@@ -25,11 +25,13 @@ import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-PDF = ROOT / "sources" / "2025" / "i1040gi.pdf"
-MANIFEST = ROOT / "sources" / "2025" / "manifest.json"
-OUT = ROOT / "tables" / "2025" / "tax_table.yaml"
+sys.path.insert(0, str(ROOT / "tools"))
+from taxyear import Y  # noqa: E402
+PDF = ROOT / "sources" / Y / "i1040gi.pdf"
+MANIFEST = ROOT / "sources" / Y / "manifest.json"
+OUT = ROOT / "tables" / Y / "tax_table.yaml"
 
-FIRST_PAGE, LAST_PAGE = 68, 79  # PDF pages (1-based) of the 2025 Tax Table
+FIRST_PAGE, LAST_PAGE = 68, 79  # PDF pages (1-based) of the Tax Table in the 2025 i1040gi; unverified for other years
 TOOL_VERSION = "0.1"
 
 
@@ -190,19 +192,19 @@ def main():
     src = next(d for d in manifest["documents"] if d["id"] == "i1040gi")
 
     lines = []
-    lines.append("# 2025 Tax Table, extracted from the archived IRS PDF.")
-    lines.append(f"# Source: sources/2025/i1040gi.pdf sha256 {sha256(PDF)}")
+    lines.append(f"# {Y} Tax Table, extracted from the archived IRS PDF.")
+    lines.append(f"# Source: sources/{Y}/i1040gi.pdf sha256 {sha256(PDF)}")
     lines.append(f"# Extractor: tools/extract_tax_table.py v{TOOL_VERSION}, {datetime.date.today().isoformat()}")
     lines.append("# Regenerate with: python3 tools/extract_tax_table.py")
     lines.append("# Column order in each band's tax list: [single, joint, mfs, hoh].")
     lines.append("table:")
     lines.append("  id: tax_table")
     lines.append("  kind: tax_table")
-    lines.append('  title: "2025 Tax Table"')
-    lines.append("  tax_year: 2025")
+    lines.append(f'  title: "{Y} Tax Table"')
+    lines.append(f"  tax_year: {Y}")
     lines.append("  cite:")
     lines.append("    doc: i1040gi")
-    lines.append('    locator: "2025 Tax Table, pp. 68-79"')
+    lines.append(f'    locator: "{Y} Tax Table, pp. {FIRST_PAGE}-{LAST_PAGE}"')
     lines.append('    quote: "See the instructions for line 16 to see if you must use the Tax Table below to figure your tax."')
     lines.append("  columns:")
     lines.append("    - { key: single, statuses: [single] }")

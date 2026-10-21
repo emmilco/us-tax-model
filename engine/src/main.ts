@@ -1,4 +1,5 @@
-// Command-line entry: the backend of the system.
+// Command-line entry: the backend of the system. Every command takes
+// --year N (default: the newest adopted year in years.json; see year.ts).
 //
 //   node engine/dist/main.js build                 build + check the data
 //   node engine/dist/main.js render                render worksheets for review
@@ -10,6 +11,7 @@
 //   node engine/dist/main.js classm-jobs [--docs a,b] write the class M hand-work jobs (branch-covering cases)
 
 import { readFileSync } from "node:fs";
+import "./year.js";
 import { runBuild } from "./build.js";
 import { renderAll } from "./render.js";
 import { loadCanonical } from "./canonical.js";
@@ -126,7 +128,7 @@ if (command === "review-stage5") {
   classmJobs(process.argv.slice(3));
 } else {
   console.error(
-    "usage: main.js build | render | eval --inputs <file> [--json|--html] [--target <lines>] | eval --batch <file> | interview start|advance|answer --log <file> | conjecture | record-fixtures | test-fixtures | test-integration | coverage | properties | mutate | compare",
+    "usage: main.js [--year N] build | render | eval --inputs <file> [--json|--html] [--target <lines>] | eval --batch <file> | interview start|advance|answer --log <file> | conjecture | record-fixtures | test-fixtures | test-integration | coverage | properties | mutate | compare",
   );
   process.exit(2);
 }

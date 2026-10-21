@@ -8,9 +8,9 @@ page image instead, with Tesseract, and lists what the image reading finds that 
 text layer lacks (text drawn as graphics, a glyph mapped to the wrong character) and
 what the text layer has that the image reading lacks (hidden or duplicated text).
 OCR misreads digits and ornaments on its own, so the output is a list to adjudicate
-against the page once, not a gate: adjudications go in reviews/2025/extraction/.
+against the page once, not a gate: adjudications go in reviews/<year>/extraction/.
 
-    ocr_audit.py [--docs id,id] [--dpi 300] [--jobs 8] --out reviews/2025/extraction/ocr_audit.md
+    ocr_audit.py [--docs id,id] [--dpi 300] [--jobs 8] --out reviews/<year>/extraction/ocr_audit.md
 """
 import argparse
 import difflib
@@ -25,7 +25,9 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-ARCHIVE = ROOT / "sources" / "2025"
+sys.path.insert(0, str(ROOT / "tools"))
+from taxyear import Y  # noqa: E402
+ARCHIVE = ROOT / "sources" / Y
 WORD = re.compile(r"[a-z0-9]+(?:['’][a-z]+)?")
 MIN_LEN = 3            # shorter tokens are ornaments, line labels or OCR dust
 NEAR = 0.85            # similarity at which an OCR word is taken to be a text-layer word misread

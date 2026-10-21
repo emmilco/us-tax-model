@@ -12,6 +12,7 @@ import type { EvalResult, Value } from "./eval.js";
 import { returnArbitrary, sampleReturns } from "./generate.js";
 import { branchKeys } from "./branches.js";
 import type { CanonicalData, Expr, Inputs, TestExpr } from "./types.js";
+import { YEAR, yearPath } from "./year.js";
 
 const ROOT = resolve(import.meta.dirname, "../..");
 const SEED = 7;
@@ -289,12 +290,12 @@ export function runProperties(): number {
   out.push(`${total - unreached.length} of ${total} branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the ${corpus.length} generated returns. Unreached:`, "");
   for (const k of unreached) out.push(`- ${k}`);
   out.push("");
-  mkdirSync(join(ROOT, "reports", "2025"), { recursive: true });
-  writeFileSync(join(ROOT, "reports", "2025", "properties.md"), out.join("\n"));
+  mkdirSync(yearPath("reports"), { recursive: true });
+  writeFileSync(yearPath("reports", "properties.md"), out.join("\n"));
   const neverApplicable = results.filter((r) => r.applicable === 0 && !r.failure);
   console.log(`properties: ${results.length} properties over ${RUNS} generated returns; ${failures.length} failing, ${neverApplicable.length} never applicable; branches reached ${total - unreached.length}/${total}`);
   for (const r of failures) console.log(`  FAIL ${r.id}: ${r.failure!.detail}`);
   for (const r of neverApplicable) console.log(`  NEVER APPLICABLE ${r.id}`);
-  console.log("report: reports/2025/properties.md");
+  console.log(`report: reports/${YEAR}/properties.md`);
   return failures.length + neverApplicable.length === 0 ? 0 : 1;
 }

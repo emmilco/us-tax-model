@@ -2,12 +2,12 @@
 """Render comparison (spec 6.5): an isolated model reads the rendered English of every
 printed line of one form against the archived IRS pages the form cites, and reports each
 line whose restatement does not say what the text says. The model sees the rendering
-(`rendered/2025/<form>.md`, encoded English and refusal rules) and the IRS pages; never
+(`rendered/<year>/<form>.md`, encoded English and refusal rules) and the IRS pages; never
 the YAML or its expression trees.
 
     python3 tools/transcription/render_compare.py --form qdcg [--model M] [--dry-run] [--from-response]
 
-Logs go to reviews/2025/render/<form>.md; a MISMATCH or UNCLEAR line carries "Ruling:
+Logs go to reviews/<year>/render/<form>.md; a MISMATCH or UNCLEAR line carries "Ruling:
 open" until ruled with rule.py --kind render. Raw prompts and responses are kept under
 the git-ignored .transcription/ as <form>.render.*.
 """
@@ -16,10 +16,11 @@ import yaml
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from transcribe import ROOT, RAW, manifest, excerpt_for, call_model, load_form  # noqa: E402
+from taxyear import Y  # noqa: E402
 import rulings  # noqa: E402
 
-RENDERED = os.path.join(ROOT, "rendered", "2025")
-LOGS = os.path.join(ROOT, "reviews", "2025", "render")
+RENDERED = os.path.join(ROOT, "rendered", Y)
+LOGS = os.path.join(ROOT, "reviews", Y, "render")
 HELPER_MARKERS = {"(helper)", "(gate)", "(computed helper)", "(question)", "(status)"}
 SYSTEM = ("You check whether plain-English restatements of IRS form and worksheet lines say what the IRS text "
           "says. You have no tools and no other sources. Output only the YAML requested.")
@@ -73,7 +74,7 @@ def def_titles():
     """Shared definitions by title ({title: def id}); a restatement invokes one as
     '"<output>" of <title>'."""
     out = {}
-    forms_dir = os.path.join(ROOT, "forms", "2025")
+    forms_dir = os.path.join(ROOT, "forms", Y)
     for f in sorted(os.listdir(forms_dir)):
         if f.endswith(".yaml"):
             d = yaml.safe_load(open(os.path.join(forms_dir, f), encoding="utf-8"))
@@ -282,7 +283,7 @@ def write_log(form_doc, model, prompt, used, printed, verdicts, raw_text, meta):
     extra = sorted(set(verdicts) - {e["key"] for e in printed})
     counts = {k: sum(1 for r in results if r["status"] == k) for k in STATUSES + ("MISSING",)}
     out = [f"# Render comparison — {fid}", "",
-           f"The rendered English of every printed line of `{form_doc['title']}` (`rendered/2025/{fid}.md`) read against the archived IRS pages by an isolated model that saw the rendering and the pages, not the YAML (spec 6.5).", "",
+           f"The rendered English of every printed line of `{form_doc['title']}` (`rendered/{Y}/{fid}.md`) read against the archived IRS pages by an isolated model that saw the rendering and the pages, not the YAML (spec 6.5).", "",
            "| field | value |", "| --- | --- |",
            f"| date | {datetime.date.today().isoformat()} |",
            f"| model requested | {model} |",

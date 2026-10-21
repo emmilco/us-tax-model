@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
 """Extract the MACRS percentage tables this tool uses from the archived Pub. 946 into
-tables/2025/macrs_gds.yaml.
+tables/<year>/macrs_gds.yaml.
 
 Tables A-1 (half-year) and A-2 to A-5 (mid-quarter, by quarter placed in service) give
 the GDS rates for 3-, 5-, 7-, 10-, 15- and 20-year property (200% declining balance,
@@ -15,13 +15,16 @@ against the manifest; prints nothing but a summary.
     python3 tools/extract_macrs_tables.py
 """
 import hashlib
+import sys
 import json
 import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-ARCHIVE = ROOT / "sources" / "2025"
-OUT = ROOT / "tables" / "2025" / "macrs_gds.yaml"
+sys.path.insert(0, str(ROOT / "tools"))
+from taxyear import Y  # noqa: E402
+ARCHIVE = ROOT / "sources" / Y
+OUT = ROOT / "tables" / Y / "macrs_gds.yaml"
 VERSION = "0.1"
 
 DB = {"A-1": "hy", "A-2": "mq1", "A-3": "mq2", "A-4": "mq3", "A-5": "mq4"}
@@ -103,8 +106,8 @@ def main():
         seen[k] = r
     keys = sorted(seen, key=lambda k: (["y3", "y5", "y7", "y10", "y15", "y20", "y15sl"].index(k[0]), ["hy", "mq1", "mq2", "mq3", "mq4"].index(k[1]), k[2]))
     lines = [
-        "# MACRS percentage tables (GDS) from the archived Pub. 946 (2025), Appendix A.",
-        f"# Source: sources/2025/p946.pdf sha256 {entry['sha256']}",
+        f"# MACRS percentage tables (GDS) from the archived Pub. 946 ({Y}), Appendix A.",
+        f"# Source: sources/{Y}/p946.pdf sha256 {entry['sha256']}",
         f"# Extractor: tools/extract_macrs_tables.py v{VERSION}",
         "# Regenerate with: python3 tools/extract_macrs_tables.py",
         "# Tables A-1 to A-5 (declining balance; all six recovery periods) and the 15-year column of Tables A-8 to A-12",
@@ -113,7 +116,7 @@ def main():
         "  id: macrs_gds",
         "  kind: keyed",
         '  title: "MACRS percentage tables, General Depreciation System (Pub. 946, Tables A-1 to A-5 and A-8 to A-12)"',
-        "  tax_year: 2025",
+        f"  tax_year: {Y}",
         "  cite:",
         "    doc: p946",
         '    locator: "Appendix A, Tables A-1 to A-5 and A-8 to A-12, pp. 71-81"',

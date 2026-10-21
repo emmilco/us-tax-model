@@ -33,7 +33,8 @@ No project toolchain is pinned yet; engine/proof configuration belongs to Stage 
 ## Commit guard
 
 `npm run check-all` runs `tools/check_all.sh`, which runs the whole suite
-(`npm run check-all-steps`) and, when it passes, writes the hash of the tested
+(`tools/check_all_steps.sh`, for the default year or the one given with
+`npm run check-all -- --year N`) and, when it passes, writes the hash of the tested
 working tree to `.git/check-all-green`. The run counts as green only if nothing
 outside the suite's own outputs (`reports/`, `rendered/`) changed while it ran.
 

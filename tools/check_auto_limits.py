@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
-"""Check tables/2025/auto_limit.yaml and auto_limit_first_nobonus.yaml, offline, in check-all,
+"""Check tables/<year>/auto_limit.yaml and auto_limit_first_nobonus.yaml, offline, in check-all,
 against three printings of the limits for passenger automobiles acquired after September 27,
 2017: Pub. 946 (PDF layout text, p. 59), Pub. 946 (HTML edition) and Pub. 463 (PDF layout
 text, p. 28). Each printing gives, by year placed in service, the 1st-, 2nd-, 3rd- and
 4th-and-later-year limits, the first with a footnote mark joined to it, and the footnotes give
 the first-year limit without the special depreciation allowance. Every cell of the project's
-tables must equal every printing that shows it; writes reports/2025/auto_limits.md.
+tables must equal every printing that shows it; writes reports/<year>/auto_limits.md.
 """
 import re
 import sys
@@ -15,8 +15,10 @@ from pathlib import Path
 import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
-ARCHIVE = ROOT / "sources" / "2025"
-REPORT = ROOT / "reports" / "2025" / "auto_limits.md"
+sys.path.insert(0, str(ROOT / "tools"))
+from taxyear import Y  # noqa: E402
+ARCHIVE = ROOT / "sources" / Y
+REPORT = ROOT / "reports" / Y / "auto_limits.md"
 
 
 def cents(text):
@@ -48,8 +50,8 @@ def window(path, start, length=6000):
 
 
 def main():
-    limit = yaml.safe_load((ROOT / "tables/2025/auto_limit.yaml").read_text())["table"]["rows"]
-    first_nb = yaml.safe_load((ROOT / "tables/2025/auto_limit_first_nobonus.yaml").read_text())["table"]["rows"]
+    limit = yaml.safe_load((ROOT / "tables" / Y / "auto_limit.yaml").read_text())["table"]["rows"]
+    first_nb = yaml.safe_load((ROOT / "tables" / Y / "auto_limit_first_nobonus.yaml").read_text())["table"]["rows"]
     mine = {(int(r["keys"][0][1:]), r["keys"][1]): r["value"] for r in limit}
     mine_nb = {int(r["keys"][0][1:]): r["value"] for r in first_nb}
     prints = {
