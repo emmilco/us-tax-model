@@ -94,13 +94,21 @@ def gate_refs(refusals):
     return [m.group(1) for r in refusals for m in re.finditer(r"when ([a-z0-9_]+\.[a-z0-9_.]+) is true", r)]
 
 
+def field_refs(text):
+    """Ids of the per-entry fields a collection sum adds ("Add person.ira_line6 over every
+    confirmed person entry ...")."""
+    return re.findall(r"\bAdd ([a-z0-9_]+\.[a-z0-9_]+) over every confirmed ", text)
+
+
 def glossary(form_id, lines):
-    """Helper values the judged lines refer to (by label within their form) and the gate
-    lines their refusals name (by id), followed transitively, each with its restatement."""
+    """Helper values the judged lines refer to (by label within their form), the per-entry
+    fields their collection sums add and the gate lines their refusals name (by id), followed
+    transitively, each with its restatement."""
     seen, order, queue = set(), [], []
     def refs_of(text, refusals, fid):
         return ([("label", fid, lab) for fid, lab in helper_refs(text + " " + " ".join(refusals), fid)]
                 + [("id", gid.split(".")[0], gid) for gid in gate_refs(refusals)]
+                + [("id", f.split(".")[0], f) for f in field_refs(text)]
                 + [("def", did, did) for did in def_refs(text)])
     for l in lines:
         queue += refs_of(l["encoded"], l["refusals"], form_id)

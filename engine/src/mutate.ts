@@ -377,8 +377,6 @@ const EQUIVALENT_IF: Record<string, { reason: string; holds: (data: CanonicalDat
   },
   "filter.person.person.hsa_step1": hsaSplitSum("person.hsa_step1", "household.hsa_step1_sum"),
   "filter.person.person.hsa_share": hsaSplitSum("person.hsa_share", "household.hsa_share_sum"),
-  "refusal.retirement.retirement.amount_a.0": firstReadCarries("retirement.amount_a", 0, ["retirement.show_a", "retirement.has_rollover", "retirement.rolled"]),
-  "refusal.retirement.retirement.amount_a.1": firstReadCarries("retirement.amount_a", 1, ["retirement.show_a", "retirement.has_rollover", "retirement.rolled"]),
   "refusal.ssb.ssb.line6.0": firstReadCarries("ssb.line6", 0, ["ssb.line5", "ssb.line3", "f1040.line8"], "ssb.line7"),
   "boundary.s1a.s1a.line10_over": s1aStepSkip("s1a.line10_over", "s1a.line8", "s1a.line9", "s1a.line10_pos", "s1a.line12", "s1a.line13_figured", "s1a.line7", "s1a.line13_amount"),
   "boundary.s1a.s1a.line18_over": s1aStepSkip("s1a.line18_over", "s1a.line16", "s1a.line17", "s1a.line18_pos", "s1a.line20", "s1a.line21_figured", "s1a.line15", "s1a.line21_amount"),
@@ -418,7 +416,170 @@ const EQUIVALENT_IF: Record<string, { reason: string; holds: (data: CanonicalDat
       return operandRefs(d, claimed.expr)[0] === "dependent.qc_dependent" && operandRefs(d, qcd.expr)[0] === "dependent.qualifying_child";
     },
   },
+  "operand.sdtw.sdtw.raw27.line26": skipGated("sdtw.raw27", "sdtw.line26", "sdtw.raw26"),
+  "operand.sdtw.sdtw.raw28.line22": skipGated("sdtw.raw28", "sdtw.line22", "sdtw.line24"),
+  "operand.sdtw.sdtw.raw29.line27": skipGated("sdtw.raw29", "sdtw.line27", "sdtw.raw27"),
+  "operand.sdtw.sdtw.raw30.line29": skipGated("sdtw.raw30", "sdtw.line29", "sdtw.raw29"),
+  "operand.sdtw.sdtw.raw31.line30": skipGated("sdtw.raw31", "sdtw.line30", "sdtw.raw30"),
+  "operand.sdtw.sdtw.raw33.line32": skipGated("sdtw.raw33", "sdtw.line32", "sdtw.raw32"),
+  "operand.sdtw.sdtw.raw34.line33": skipGated("sdtw.raw34", "sdtw.line33", "sdtw.raw33"),
+  "operand.sdtw.sdtw.raw38.line37": skipGated("sdtw.raw38", "sdtw.line37", "sdtw.raw37"),
+  "operand.sdtw.sdtw.raw39.line38": skipGated("sdtw.raw39", "sdtw.line38", "sdtw.raw38"),
+  "operand.sdtw.sdtw.raw40.line39": skipGated("sdtw.raw40", "sdtw.line39", "sdtw.raw39"),
+  "operand.sdtw.sdtw.raw42.line41": skipGated("sdtw.raw42", "sdtw.line41", "sdtw.raw41"),
+  "operand.sdtw.sdtw.raw43.line42": skipGated("sdtw.raw43", "sdtw.line42", "sdtw.raw42"),
+  "operand.sdtw.sdtw.line45.line43": {
+    reason: "Line 43 is its helper (28% of line 42) when sdtw.use28 holds and $0 otherwise, and line 42 is $0 under the same gate; so when the gate is false the helper is 28% of $0, and when it is unknown or refused line 42 and line 43 return the gate's value, which the rate passes through. Line 45 reads the same value either way.",
+    holds: (d) => {
+      const g43 = gateOf(d, "sdtw.line43"), g42 = gateOf(d, "sdtw.line42"), raw = exprOf(d, "sdtw.raw43");
+      return !!g43 && !!g42 && g43.then === "sdtw.raw43" && g42.gate === g43.gate && raw?.op === "multiply_rate" && raw.amount === "sdtw.line42";
+    },
+  },
+  "operand.sdtw.sdtw.line17.line16": {
+    reason: "Line 17 is min(line 14, line 16) and line 16 is min(line 1, line 15). Line 13 is line 10 less min(line 9, line 11), and line 10 is line 6 plus line 9 with both floored at zero, so line 13 is not negative and line 14 (line 1 less line 13, floored) is at most line 1, which is not negative. Then min(line 14, min(line 1, line 15)) = min(line 14, line 15); and line 14 reads line 1 first, so a refusal or unknown in line 1 reaches line 17 through line 14 on both routes.",
+    holds: (d) => {
+      const e = (id: string) => exprOf(d, id);
+      const l17 = e("sdtw.line17"), l16 = e("sdtw.line16"), l14 = e("sdtw.line14"), l13 = e("sdtw.line13"), l12 = e("sdtw.line12"), l10 = e("sdtw.line10");
+      return l17?.op === "smaller_of" && stableStringify(l17.of) === stableStringify(["sdtw.line14", "sdtw.line16"])
+        && l16?.op === "smaller_of" && stableStringify(l16.of) === stableStringify(["sdtw.line1", "sdtw.line15"])
+        && l14?.op === "subtract_floor0" && l14.from === "sdtw.line1" && l14.take === "sdtw.line13"
+        && l13?.op === "subtract" && l13.from === "sdtw.line10" && l13.take === "sdtw.line12"
+        && l12?.op === "smaller_of" && (l12.of as string[])[0] === "sdtw.line9"
+        && l10?.op === "sum" && stableStringify(l10.of) === stableStringify(["sdtw.line6", "sdtw.line9"])
+        && e("sdtw.line6")?.op === "subtract_floor0" && e("sdtw.line9")?.op === "subtract_floor0"
+        && findLine(d, "sdtw.line1")?.type === "NonNegDollars";
+    },
+  },
+  "operand.f8959.f8959.line18.line17": {
+    reason: "Line 17 is 0.9% of line 16, and line 16 is line 14 less line 15 floored at zero, where line 14 is $0 behind its refusal gate and line 15 is not negative; so line 16 and line 17 are both $0, and when line 14 refuses or is unknown both carry its value (line 16 reads line 14 first, and the rate passes it through).",
+    holds: (d) => {
+      const l17 = exprOf(d, "f8959.line17"), l16 = exprOf(d, "f8959.line16"), l15 = findLine(d, "f8959.line15");
+      return l17?.op === "multiply_rate" && l17.amount === "f8959.line16" && l16?.op === "subtract_floor0" && l16.from === "f8959.line14" && l16.take === "f8959.line15"
+        && zeroBehindGates(d, "f8959.line14") && l15?.type === "NonNegDollars";
+    },
+  },
+  "operand.f8960.f8960.line8.line5d": {
+    reason: "Line 5d is line 5a plus lines 5b and 5c, which are $0 behind the refusal entries that line 1, the first operand of line 8, carries word for word. When an entry fires, line 1 refuses with it and line 8 returns that refusal on both routes; otherwise lines 5b and 5c are $0 and line 5d equals line 5a.",
+    holds: (d) => {
+      const l8 = exprOf(d, "f8960.line8"), l5d = exprOf(d, "f8960.line5d"), l1 = findLine(d, "f8960.line1");
+      if (l8?.op !== "sum" || (l8.of as string[])[0] !== "f8960.line1" || l5d?.op !== "sum" || stableStringify(l5d.of) !== stableStringify(["f8960.line5a", "f8960.line5b", "f8960.line5c"]) || !l1?.refuses?.length) return false;
+      return ["f8960.line5b", "f8960.line5c"].every((id) => zeroBehindGates(d, id) && stableStringify(findLine(d, id)?.refuses) === stableStringify(l1.refuses));
+    },
+  },
+  "operand.f8960.f8960.line9d.line9c": {
+    reason: "Line 9c and lines 4a and 4b (the operands of line 4c) are each $0 behind the same refusal entries, word for word; so line 4c, their sum, is $0 when no entry fires and otherwise carries the same refusal (or unknown) that line 9c does.",
+    holds: (d) => {
+      const l4c = exprOf(d, "f8960.line4c"); const n9c = stableStringify(normalizeChain(d, "f8960.line9c"));
+      return l4c?.op === "sum" && stableStringify(l4c.of) === stableStringify(["f8960.line4a", "f8960.line4b"]) && zeroBehindGates(d, "f8960.line9c")
+        && ["f8960.line4a", "f8960.line4b"].every((id) => stableStringify(normalizeChain(d, id)) === n9c);
+    },
+  },
+  "refusal.f4952.f4952.required.2": firstReadCarries("f4952.required", 2, ["f4952.election"]),
+  "operand.f2441.f2441.line25.line24": {
+    reason: "Line 22 is an ungated copy of the zero parameter, so line 24, min(line 24's first operand A, line 22), is $0 whenever A is known, and line 25 (A less line 24, floored) is A on both routes; when A refuses or is unknown, line 25 reads A first and returns it on both routes.",
+    holds: (d) => {
+      const l25 = exprOf(d, "f2441.line25"), l24 = exprOf(d, "f2441.line24"), l22 = findLine(d, "f2441.line22");
+      return l25?.op === "subtract_floor0" && l25.from === "f2441.line24_20_21" && l25.take === "f2441.line24"
+        && l24?.op === "smaller_of" && stableStringify(l24.of) === stableStringify(["f2441.line24_20_21", "f2441.line22"])
+        && !!l22 && !(l22.refuses ?? []).length && zeroBehindGates(d, "f2441.line22");
+    },
+  },
+  "refusal.retirement.retirement.amount_a.1": {
+    reason: "Without the bad-code entry, the next entry's gate (annuity_rollover: not an IRA, an annuity, and a rollover) is evaluated in its place. Its last conjunct reads has_rollover, whose first operand is retirement.rolled, which carries the special and bad-code entries word for word; so the gate either returns that same refusal (a refusal ends an all-test even after an unknown conjunct) or is false, and then line 1's expression reaches rolled through show_a and has_rollover and returns the same refusal.",
+    holds: (d) => {
+      const a = findLine(d, "retirement.amount_a"), rolled = findLine(d, "retirement.rolled");
+      const ar = exprOf(d, "retirement.annuity_rollover"), hr = exprOf(d, "retirement.has_rollover");
+      if (!a || !rolled || stableStringify((a.refuses ?? []).map((r) => r.when)) !== stableStringify(["retirement.special", "retirement.bad_code", "retirement.annuity_rollover"])) return false;
+      if (stableStringify(a.refuses!.slice(0, 2)) !== stableStringify(rolled.refuses)) return false;
+      const all = ar?.op === "test" ? (ar.all as unknown[] | undefined) : undefined;
+      if (!all || !stableStringify(all[all.length - 1]).includes('"retirement.has_rollover"')) return false;
+      if (hr?.op !== "test" || operandRefs(d, hr)[0] !== "retirement.rolled") return false;
+      const firstRead = (from: string, to: string) => operandRefs(d, findLine(d, from)?.expr)[0] === to;
+      return firstRead("retirement.amount_a", "retirement.show_a") && firstRead("retirement.show_a", "retirement.has_rollover") && firstRead("retirement.has_rollover", "retirement.rolled");
+    },
+  },
+  "operand.person.person.dc_earned.eic_se": {
+    reason: "person.eic_se is person.eic_se_has when the person has a Schedule C and $0 otherwise. With no Schedule C every sum over the person's Schedule C entries is $0, so the Schedule SE railroad gate is false, line 4c is $0, files_se is false and eic_se_has is the empty Schedule C total, $0; with the roster unanswered both routes are unknown. The replacement changes no value.",
+    holds: (d) => {
+      const se = gateOf(d, "person.eic_se"), has = exprOf(d, "person.has_sc"), seHas = exprOf(d, "person.eic_se_has"), files = exprOf(d, "person.files_se");
+      const l4c = findLine(d, "person.se_line4c"), rrta = exprOf(d, "person.se_rrta");
+      const overSc = (id: string) => { const e = exprOf(d, id); return e?.op === "sum_over" && e.collection === "sc"; };
+      if (!se || se.gate !== "person.has_sc" || se.then !== "person.eic_se_has" || has?.op !== "test" || stableStringify(has.gt) !== stableStringify(["person.sc_count", { const: 0, type: "Count" }]) || !overSc("person.sc_count")) return false;
+      const alts = (seHas?.op === "choose" ? seHas.alternatives : []) as { guard: unknown; then: unknown }[];
+      const onFalse = alts.find((a) => stableStringify(a.guard).includes('"person.files_se"') && stableStringify(a.guard).includes("false"));
+      if (alts.length !== 2 || onFalse?.then !== "person.sc_total" || !overSc("person.sc_total")) return false;
+      if (files?.op !== "test" || (files.gt as unknown[])?.[0] !== "person.se_line4c") return false;
+      const l4cAlts = (exprOf(d, "person.se_line4c")?.alternatives ?? []) as { guard: unknown; then: unknown }[];
+      const noSc = l4cAlts.find((a) => stableStringify(a.guard) === stableStringify({ op: "test", eq: ["person.has_sc", { const: false }] }));
+      return !!noSc && typeof noSc.then === "string" && zeroBehindGates(d, noSc.then)
+        && stableStringify((l4c?.refuses ?? []).map((r) => r.when)) === stableStringify(["person.se_rrta"])
+        && rrta?.op === "test" && (rrta.gt as unknown[])?.[0] === "person.sc_rrta_count" && overSc("person.sc_rrta_count");
+    },
+  },
+  "operand.f5695.f5695.line16.line15": {
+    reason: "Line 15 is min(line 13, line 14), so line 13 less line 15, floored at zero, equals line 13 less line 14, floored at zero, at every input; both routes read line 13 first and then line 14 (directly or through line 15), so the same refusal or unknown wins.",
+    holds: (d) => {
+      const l16 = exprOf(d, "f5695.line16"), l15 = exprOf(d, "f5695.line15");
+      return l16?.op === "subtract_floor0" && l16.from === "f5695.line13" && l16.take === "f5695.line15"
+        && l15?.op === "smaller_of" && stableStringify(l15.of) === stableStringify(["f5695.line13", "f5695.line14"]) && !(findLine(d, "f5695.line15")?.refuses ?? []).length;
+    },
+  },
 };
+
+function exprOf(d: CanonicalData, id: string): Record<string, unknown> | undefined {
+  return findLine(d, id)?.expr as unknown as Record<string, unknown> | undefined;
+}
+
+// A line that copies, through any refusal gates, the zero parameter.
+function zeroBehindGates(d: CanonicalData, id: string): boolean {
+  return (stripGuards(normalizeChain(d, id)) as { parameter?: unknown }).parameter === 0;
+}
+
+// A line of the form 'its helper when gate G holds, $0 when it does not' (two alternatives,
+// guards G == true and G == false), as the Schedule D Tax Worksheet encodes its skip rules.
+function gateOf(d: CanonicalData, id: string): { gate: string; then: string } | undefined {
+  const e = exprOf(d, id);
+  if (e?.op !== "choose") return undefined;
+  const alts = e.alternatives as { guard: unknown; then: unknown }[];
+  const on = (g: unknown, v: boolean): string | undefined => {
+    const eq = (g as { eq?: unknown[] }).eq;
+    return Array.isArray(eq) && typeof eq[0] === "string" && stableStringify(eq[1]) === stableStringify({ const: v }) ? eq[0] : undefined;
+  };
+  if (alts.length !== 2 || typeof alts[0]!.then !== "string" || typeof alts[1]!.then !== "string") return undefined;
+  const gate = on(alts[0]!.guard, true);
+  if (!gate || on(alts[1]!.guard, false) !== gate || !zeroBehindGates(d, alts[1]!.then as string)) return undefined;
+  return { gate, then: alts[0]!.then as string };
+}
+
+// Gate G implies gate H when they are the same line or G is an all-test whose first conjunct is H == true.
+function gateImplies(d: CanonicalData, g: string, h: string): boolean {
+  if (g === h) return true;
+  const all = (exprOf(d, g) as { all?: unknown[] } | undefined)?.all;
+  if (exprOf(d, g)?.op !== "test" || !Array.isArray(all)) return false;
+  const eq = (all[0] as { eq?: unknown[] }).eq;
+  return Array.isArray(eq) && eq[0] === h && stableStringify(eq[1]) === stableStringify({ const: true });
+}
+
+// A skip-rule helper read only by its gated line, whose operand is replaced by the figure that
+// operand wraps (or the reverse). `choose` evaluates only the branch it takes, so the helper is
+// read only when its gate holds; that gate implies the wrapped operand's gate, under which the
+// operand is its figure, so the two are the same value wherever the helper is read.
+function skipGated(raw: string, from: string, to: string) {
+  return {
+    reason: `${raw} is read only by the line that takes it when its skip gate holds (and is $0 otherwise); that gate implies the gate under which ${from} and ${to} are the same value, one being the other's figure behind the skip rule, so the replacement changes no value that is read.`,
+    holds: (d: CanonicalData): boolean => {
+      const readers = readersOf(d, raw);
+      if (readers.length !== 1) return false;
+      const outer = gateOf(d, readers[0]!);
+      if (!outer || outer.then !== raw) return false;
+      const wraps = (w: string, other: string): boolean => {
+        const inner = gateOf(d, w);
+        return !!inner && gateImplies(d, outer.gate, inner.gate) && stableStringify(normalizeChain(d, inner.then)) === stableStringify(normalizeChain(d, other));
+      };
+      return wraps(from, to) || wraps(to, from);
+    },
+  };
+}
 
 // A shifted parameter that no line of any form or definition reads cannot change a value;
 // such parameters serve the cross-checks (for example the Rev. Proc. amounts behind the EIC
@@ -449,7 +610,9 @@ function unreadTable(data: CanonicalData, mutation: Mutation): string | undefine
 // refuses first or identically. Without a reader: the line's expression reads chain[0] first
 // and each chain line reads the next first, and the last carries the identical entry (gate,
 // form, remedy and cite), so removing the entry turns the line's own refusal into the same
-// refusal arriving through the chain. With a reader: the line is read only by that reader,
+// refusal arriving through the chain; the entry must be the line's last, since removing an
+// earlier one lets a later entry's gate (unanswered, or true with another refusal) decide
+// first. With a reader: the line is read only by that reader,
 // the reader reads chain[0] first, chain[i] reads chain[i+1] (first operand, or any operand of
 // a sum, which evaluates every operand and returns a refusal ahead of an unknown), and the last
 // carries the same gate; the reader then returns that refusal before the line's own could reach it.
@@ -470,7 +633,7 @@ function firstReadCarries(line: string, index: number, chain: string[], reader?:
       };
       if (reader) {
         if (stableStringify(readersOf(d, line)) !== stableStringify([reader]) || !reads(reader, chain[0]!, false)) return false;
-      } else if (!reads(line, chain[0]!, false)) return false;
+      } else if (index !== l.refuses!.length - 1 || !reads(line, chain[0]!, false)) return false;
       for (let i = 0; i + 1 < chain.length; i++) if (!reads(chain[i]!, chain[i + 1]!, !!reader)) return false;
       return true;
     },

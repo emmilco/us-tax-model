@@ -402,6 +402,22 @@
    "model": "$8,550.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The spouse was an eligible individual for 3 months, all with family coverage, and does not use the last-month rule, so line 3 comes from the Line 3 Limitation Chart and Worksheet (i8889 p. 4, Line 3, rule 5; p. 6): $8,550 x 3 / 12 = $2,137.50, on which both agree (line 3 and step1_line3). line3_all_year is the helper for a filer eligible all year, which this return does not take; the model entered the full-year family amount under it, the project the chart amount. No change to the data.",
    "drop": true
+  },
+  {
+   "case": "classm.f8889.5",
+   "printed": "person[taxpayer].f8889[hsa].line7_total",
+   "project": "$12,000.00",
+   "model": "$9,000.00",
+   "ruling": "Ruling: owner ruling (register entry amb.2025.hsa_line7_months); project retained; model value dropped from the fixture. The worksheet counts every month treated as eligible, here 12 (i8889 p. 7, Additional Contribution Amount Worksheet, \"$1,000 × number of months eligible\"); the model counted only the 9 months of family coverage, the reading the owner did not choose (p. 5, Note: once a married filer had family coverage at any time the additional amount is left off line 3 for every month, so counting only family months would drop it for the self-only months). On this return the helper is not read: the taxpayer is under 55, so line 7 is $0 (f8889.line7_applies false).",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.5",
+   "printed": "person[taxpayer].f8889[hsa].line7_worksheet",
+   "project": "$1,000.00",
+   "model": "$750.00",
+   "ruling": "Ruling: owner ruling (register entry amb.2025.hsa_line7_months); project retained; model value dropped from the fixture. The worksheet counts every month treated as eligible, here 12 (i8889 p. 7, Additional Contribution Amount Worksheet, \"$1,000 × number of months eligible\"); the model counted only the 9 months of family coverage, the reading the owner did not choose (p. 5, Note: once a married filer had family coverage at any time the additional amount is left off line 3 for every month, so counting only family months would drop it for the self-only months). On this return the helper is not read: the taxpayer is under 55, so line 7 is $0 (f8889.line7_applies false).",
+   "drop": true
   }
  ]
 }

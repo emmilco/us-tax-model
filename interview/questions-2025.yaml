@@ -884,10 +884,12 @@ bank:
     order: 10
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
       do not guess. One Form 8889 per person.
-    prompt: For this person (you, or your spouse on a joint return) — Did you, or your employer, contribute to a
-      health savings account (HSA) for you for 2025, did you receive a distribution from your HSA in 2025 (Form 1099-SA),
-      or did you stop being an eligible individual during a testing period (Form 8889 Part III)? Enter ["hsa"] for one
-      Form 8889 covering all of your own HSAs, or [] if none of these applies to you.
+    prompt: For this person (you, or your spouse on a joint return) — Did you, your employer or someone else
+      contribute to a health savings account (HSA) for you for 2025 (including a qualified HSA funding distribution,
+      a direct transfer from your IRA to your HSA), did your HSA make a distribution in 2025 (Form 1099-SA), did you
+      stop being an eligible individual during a testing period (Form 8889 Part III), or did you acquire an interest
+      in an HSA because the account beneficiary died? Enter ["hsa"] for one Form 8889 covering all of your own HSAs,
+      or [] if none of these applies to you.
     cite:
       doc: i8889
       locator: pp. 1-2, Who Must File; p. 4, Name and social security number (SSN), "complete a separate Form 8889

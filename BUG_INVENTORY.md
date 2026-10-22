@@ -1058,3 +1058,25 @@ later grouping.
 - **Fix:** the screen also names "the HSA of a person who died in 2025 whose estate is the beneficiary"; a Yes refuses
   as before.
 - **Tags:** screen-missing; decedent; caught-by-review
+
+## BUG-0088 — The Form 8889 screen was not asked when a person had no 2025 contributions or distributions
+
+- **Date:** 2026-10-22
+- **Caught by:** the T-054 regression case. The task asked for the roster question to name the qualified HSA
+  funding distribution; driving the interview for a person whose only HSA item is one the tool does not support
+  showed that, with the roster answered, the screen is still never asked.
+- **Symptom:** `f8889.unsupported` refused only the figured branches of lines 13 and 16, which are reached only when
+  line 2 or line 9 (contributions) or line 14a (distributions) is more than zero. A person whose only HSA item was a
+  qualified HSA funding distribution from an IRA, a testing-period failure (Part III income and its 10% additional
+  tax), an inherited HSA or an Archer MSA answered three amounts with zero and got a computed return without the
+  item. The roster question also departed from i8889's Who Must File (p. 1): it named contributions by "you, or your
+  employer" (not "or someone else") and left out the HSA acquired on the account beneficiary's death.
+- **Root cause:** the screen's refusal entry sat on lines that only some paths reach, not on the printed lines every
+  Form 8889 entry reads; the roster question paraphrased Who Must File.
+- **Where:** `forms/2025/f8889.yaml` (`f8889.line13`, `f8889.line16` and their figured lines),
+  `interview/questions-2025.yaml` (`$f8889`).
+- **Fix:** the screen's entry moved from the figured lines to printed lines 13 and 16, so it is asked of every Form
+  8889 entry straight after the roster; the roster question follows Who Must File and names the funding
+  distribution. Regression `stage16.cleanup.refuse.f8889.screen_no_amounts`; four class M cases whose generated
+  returns answered the screen Yes with zero amounts were rebuilt.
+- **Tags:** screen-unreached; question-scope; caught-by-fixture

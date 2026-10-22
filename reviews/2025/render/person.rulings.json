@@ -51,6 +51,12 @@
    "ruling": "Ruling: defect, fixed (BUG-0078). Pub. 560 p. 7: 'If you have more than one business, but only one has a retirement plan, only the earned income from that business is considered for that plan.' Owner ruling: a SEP or SIMPLE plan with more than one Schedule C is refused (person.plan_screened), so step 1, the profit of all the person's businesses, is the profit of the one business that has the plan for every return the tool completes. This review saw the rendering before that refusal."
   },
   {
+   "printed": "Step 1",
+   "restated": "Enter the amount from helper \"This person's Schedule C net profit or loss (all businesses)\".",
+   "model": "This sums the Schedule C results across all of the person's businesses. Pub 560 says 'If you have more than one business, but only one has a retirement plan, only the earned income from that business is considered for that plan', and no screen or refusal excludes that case.",
+   "ruling": "Ruling: refusal located elsewhere; project retained (BUG-0078, as ruled before). Pub. 560 p. 7, Earned income, \"If you have more than one business, but only one has a retirement plan, only the earned income from that business is considered for that plan\": a SEP or SIMPLE plan with more than one Schedule C is refused (person.plan_screened: a plan and person.sc_count above 1), so step 1 is the profit of the business that has the plan on every return the tool completes."
+  },
+  {
    "printed": "Step 2",
    "restated": "Enter the amount from helper \"Schedule SE line 13 (deduction for one-half of self-employment tax) for this person\".",
    "model": "Step 2 uses this person's Schedule SE line 13, which matches 'deduction for self-employment tax from Schedule 1 (Form 1040), line 15.' However, Schedule SE line 8a is bound to the line wages, which sums w2.wages. Line 8a must be the 'total of boxes 3 and 7 on Form(s) W-2,' and the text given does not show whether w2.wages is boxes 3 plus 7.",

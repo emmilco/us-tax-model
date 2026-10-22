@@ -27,10 +27,22 @@
    "ruling": "Ruling: representation; project retained (model error). As line 12a, for the spouse entry: the smallest of line 7b, line 10 and line 11b (person.ira_line12), defined per person on the person worksheet and compared operand by operand in the transcription log for person, where it is ruled. i1040gi p. 98, line 12, \"On line 12b, enter the smallest of line 7b, 10, or 11b\"."
   },
   {
+   "printed": "1a",
+   "restated": "helper \"Anyone on the return made traditional IRA contributions for 2025\" = true and helper \"You were covered by a retirement plan (1 if Yes)\" > 0 (a count)",
+   "model": "Coverage comes only from the filer's own work plan or self-employed SEP/SIMPLE. The program has no rule or refusal for the married-filing-separately case, where the instructions say 'If you weren't covered by a retirement plan but your spouse was, you are considered covered by a plan unless you lived apart from your spouse for all of 2025.'",
+   "ruling": "Ruling: refusal located elsewhere; project retained. Married filing separately is refused for the whole return before the worksheet is reached: scope.ready refuses on s3.mfs (Form 1040 filing status married filing separately; i1040gi p. 14, Married Filing Separately), so the worksheet's married-filing-separately rule (i1040gi p. 97, \"If you weren't covered by a retirement plan but your spouse was, you are considered covered by a plan unless you lived apart from your spouse for all of 2025\") is never needed; on the statuses the tool completes, line 1a is the filer's own coverage, as the line asks."
+  },
+  {
    "printed": "1b",
    "restated": "helper \"Anyone on the return made traditional IRA contributions for 2025\" = true and helper \"Your spouse was covered by a retirement plan (1 if Yes)\" > 0 (a count)",
    "model": "The IRS line applies only \"If married filing jointly, was your spouse covered by a retirement plan?\" The restatement has no filing-status condition, so a spouse entry on a non-joint return could still mark 1b Yes.",
    "ruling": "Ruling: representation; project retained. The spouse's coverage is read only from the spouse entry, and the project has a spouse entry only on a joint return: household.roster_bad refuses any other roster (\"Enter one person with the role taxpayer, and, only when married filing jointly, one person with the role spouse\"), so line 1b cannot be Yes on a return that is not joint. i1040gi p. 97, line 1b, \"If married filing jointly, was your spouse covered by a retirement plan?\""
+  },
+  {
+   "printed": "2a",
+   "restated": "Choose — [helper \"Lines 2 through 6 are completed (traditional IRA contributions, and someone is covered by a retirement plan)\" = true → helper \"Line 2, your column\"] [helper \"Lines 2 through 6 are completed (traditional IRA contributions, and someone is covered by a retirement plan)\" = false → helper \"Zero\"]",
+   "model": "The line 2 table always gives MFS $10,000. The worksheet says 'married filing separately and you lived apart from your spouse for all of 2025, enter $89,000', and only 'Married filing separately and you lived with your spouse at any time in 2025, enter $10,000.' The other amounts ($89,000 single/HOH, $146,000 QSS/MFJ, $246,000 for the person not covered on a joint return) match.",
+   "ruling": "Ruling: refusal located elsewhere; project retained. Married filing separately is refused for the whole return before the worksheet is reached: scope.ready refuses on s3.mfs (Form 1040 filing status married filing separately; i1040gi p. 14, Married Filing Separately), so the $89,000 amount for a married filer who lived apart all year and the $10,000 amount (i1040gi p. 97, line 2) are never read; the single, head of household, qualifying surviving spouse and joint amounts agree, as the model says."
   },
   {
    "printed": "4",
@@ -43,6 +55,12 @@
    "restated": "Add s1 line 11, s1 line 13, s1 line 15, s1 line 16, s1 line 17, s1 line 18, s1 line 19a, and s1 line 25.",
    "model": "The IRS says \"Enter the total of the amounts from Schedule 1, lines 11 through 19a, plus 23 and 25.\" The restatement omits Schedule 1 lines 12, 14 and 23.",
    "ruling": "Ruling: refusal located elsewhere; project retained. Schedule 1 lines 12, 14 and 23 are outside this tool: scope.schedule1 asks about \"an adjustment on Schedule 1 line 12, 14 or 23\" and refuses Form 1040 lines 8 and 10, so worksheet line 3 (Form 1040 line 9) refuses whenever one applies and within scope they are zero, as the line's citation says. The lines in scope (11, 13, 15 to 19a and 25) are all added. i1040gi p. 97, line 4, \"Enter the total of the amounts from Schedule 1, lines 11 through 19a, plus 23 and 25\"."
+  },
+  {
+   "printed": "4",
+   "restated": "Add s1 line 11, s1 line 13, s1 line 15, s1 line 16, s1 line 17, s1 line 18, s1 line 19a, and s1 line 25.",
+   "model": "The worksheet says 'Enter the total of the amounts from Schedule 1, lines 11 through 19a, plus 23 and 25.' The restatement leaves out Schedule 1 lines 12, 14 and 23, and no refusal covers them.",
+   "ruling": "Ruling: refusal located elsewhere; project retained (as ruled before). Schedule 1 lines 12, 14 and 23 are outside this tool: scope.schedule1 asks about \"an adjustment on Schedule 1 line 12, 14 or 23\" and refuses Form 1040 lines 8 and 10, so worksheet line 3 (Form 1040 line 9) refuses whenever one applies and within scope they are zero, as the line's citation says. The lines in scope (11, 13, 15 to 19a and 25) are all added. i1040gi p. 97, line 4, \"Enter the total of the amounts from Schedule 1, lines 11 through 19a, plus 23 and 25\"."
   },
   {
    "printed": "6a",
@@ -109,6 +127,12 @@
    "restated": "Add person.ira_se over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The refusal properly excludes income where personal services are not \"a material income-producing factor.\" But person.ira_se is undefined, so it cannot be confirmed that it is net self-employment earnings \"minus any deductions on Schedule 1, lines 15 and 16\" with \"If zero or less, enter -0-.\"",
    "ruling": "Ruling: representation; project retained. person.ira_se is defined per person in forms/2025/person.yaml: the person's Schedule C net profit or loss (person.sc_total) less that person's deductions on Schedule 1 lines 15 and 16 (person.ira_se_take), floored at zero for each person (person.ira_se_figured, the owner's reading amb.2025.ira_se_floor), and zero without a Schedule C; that is i1040gi p. 98, IRA Deduction Worksheet line 9, \"Enter the earned income you (and your spouse if filing jointly) received as a self-employed individual or a partner, minus any deductions on Schedule 1, lines 15 and 16. If zero or less, enter -0-\". The transcription comparison of person compares these helpers operand by operand; the render glossary does not follow a collection field into its definition (TASKS.md T-055). The new refusal (ira.se_capital_gate) is as the model reads it (p590a pp. 6–7)."
+  },
+  {
+   "printed": "9",
+   "restated": "Add person.ira_se over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The worksheet says 'Enter the earned income you (and your spouse if filing jointly) received as a self-employed individual or a partner ... If zero or less, enter -0-', applying the floor to the combined amount. The program floors each spouse separately and counts only Schedule C income. The text does not settle whether one spouse's loss nets against the other's earnings, and partnership earned income has no refusal shown here.",
+   "ruling": "Ruling: owner ruling (register entry amb.2025.ira_se_floor); project retained. person.ira_se, now shown in the glossary, is each person's Schedule C profit or loss less that person's Schedule 1 lines 15 and 16 deductions, floored at zero per person (i1040gi p. 98, line 9, \"Enter the earned income you (and your spouse if filing jointly) received as a self-employed individual or a partner, minus any deductions on Schedule 1, lines 15 and 16. If zero or less, enter -0-\"); whether one spouse's loss nets against the other's earnings is the ambiguity the owner settled. Partnership earned income is refused before this line by the Schedule SE screen (person.se_screened, 'partnership and other self-employment income'), so only Schedule C earnings reach it."
   }
  ]
 }

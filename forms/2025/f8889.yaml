@@ -1259,13 +1259,6 @@ form:
       locator: p. 8, Line 13, 'Generally, enter the smaller of line 2 or line 12 on line 13 and on Schedule 1 (Form 1040),
         Part II, line 13'
     refuses:
-    - when: f8889.unsupported
-      form: Form 8889 Part III, Form 8853, or other HSA situations
-      remedy: Qualified HSA funding distributions, Archer MSAs, prior-year excess contributions, testing-period failures, inherited
-        HSAs, deemed distributions, withdrawals of excess contributions and repaid mistaken distributions are outside this tool.
-      cite:
-        doc: i8889
-        locator: Parts II and III; lines 4, 10 and 13
     - when: f8889.mfs
       form: Form 8889 on a married filing separately return
       remedy: Married filing separately is outside this tool; the HSA rules for spouses are supported on a joint return.
@@ -1308,6 +1301,14 @@ form:
     cite:
       doc: f8889
       locator: Form 8889 (2025), line 13
+    refuses:
+    - when: f8889.unsupported
+      form: Form 8889 Part III, Form 8853, or other HSA situations
+      remedy: Qualified HSA funding distributions, Archer MSAs, prior-year excess contributions, testing-period failures, inherited
+        HSAs, deemed distributions, withdrawals of excess contributions and repaid mistaken distributions are outside this tool.
+      cite:
+        doc: i8889
+        locator: Parts II and III; lines 4, 10 and 13
   - id: f8889.line14a
     printed: 14a
     label: Total distributions you received in 2025 from all HSAs (see instructions)
@@ -1446,14 +1447,6 @@ form:
     cite:
       doc: f8889
       locator: Form 8889 (2025), line 16, "Subtract line 15 from line 14c. If zero or less, enter -0-"
-    refuses:
-    - when: f8889.unsupported
-      form: Form 8889 Part III, Form 8853, or other HSA situations
-      remedy: Qualified HSA funding distributions, Archer MSAs, prior-year excess contributions, testing-period failures, inherited
-        HSAs, deemed distributions, withdrawals of excess contributions and repaid mistaken distributions are outside this tool.
-      cite:
-        doc: i8889
-        locator: Parts II and III; lines 4, 10 and 13
   - id: f8889.line16
     printed: '16'
     label: Taxable HSA distributions. Subtract line 15 from line 14c. If zero or less, enter -0-. Also, include this amount
@@ -1477,6 +1470,14 @@ form:
     cite:
       doc: f8889
       locator: Form 8889 (2025), line 16
+    refuses:
+    - when: f8889.unsupported
+      form: Form 8889 Part III, Form 8853, or other HSA situations
+      remedy: Qualified HSA funding distributions, Archer MSAs, prior-year excess contributions, testing-period failures, inherited
+        HSAs, deemed distributions, withdrawals of excess contributions and repaid mistaken distributions are outside this tool.
+      cite:
+        doc: i8889
+        locator: Parts II and III; lines 4, 10 and 13
   - id: f8889.has_taxable
     printed: (helper)
     label: Any taxable HSA distributions (line 16 more than zero)

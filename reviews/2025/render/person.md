@@ -7,7 +7,7 @@ The rendered English of every printed line of `Each person on the return — per
 | date | 2026-10-22 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | d3adb107c61039ee22c017c1eff0d3e1e84b632b4663dc50c3c58f1a393b80aa |
+| prompt sha256 | d83c50eb6eacba819dfe816b1ab6b29bb3f2fa9d0fde6d0099e94ffd209c8880 |
 | subject sha256 | 79df57f036cc647c91bbeb3c4d9f7e0d372d8b4874c4a2189557cd4e8c7a0330 |
 | lines judged | 23 |
 | match / mismatch / unclear / missing | 22 / 1 / 0 / 0 |
@@ -45,121 +45,121 @@ The rendered English of every printed line of `Each person on the return — per
 ### rrta — Do any wage statements report railroad retirement compensation or taxes (W-2 box 14), or d
 Status: **MATCH**
 
-Model: Railroad retirement compensation and taxes are reported in Form W-2 box 14. Form 8959 line 14 instructions also name employee representatives who file Form CT-2. Asking about both correctly identifies the RRTA case the credit line refuses.
+Model: Schedule 3 line 11 covers tier 1 RRTA tax, which is reported in W-2 box 14. The i8959 text names Form CT-2 for employee representatives, so the screen correctly flags the RRTA path.
 
 ### employers — Total w2.one for this person
 Status: **MATCH**
 
-Model: Schedule 3 line 11 applies if you 'had more than one employer for 2025'. Counting this person's W-2 entries counts employers, and the instruction says to 'Figure this amount separately for you and your spouse.'
+Model: The instruction asks whether the person 'had more than one employer for 2025'. Counting confirmed W-2 entries per person stands in for the number of employers, figured 'separately for you and your spouse'.
 
 ### overcount — Number of employers that withheld more than the limit
 Status: **MATCH**
 
-Model: This counts W-2s whose employer withheld more than $10,918.20. That matches the instruction's test: 'if any one employer withheld more than $10,918.20.'
+Model: This counts the W-2s on which one employer withheld more than $10,918.20. That is the condition in 'if any one employer withheld more than $10,918.20, you can't claim the excess on your return'.
 
 ### over — Any employer withheld more than the limit
 Status: **MATCH**
 
-Model: The line is true when at least one employer over-withheld. That is the condition under which 'you can't claim the excess on your return.'
+Model: This is true when at least one employer withheld more than $10,918.20, which is the condition that bars claiming the excess on the return.
 
 ### wages — Total w2.wages for this person
 Status: **MATCH**
 
-Model: The line totals this person's W-2 wages for the 'total wages of more than $176,100' test. The text gives no specific box, and the W-2 instructions tie the $176,100 base to boxes 3 and 7.
+Model: This totals W-2 boxes 3 and 7 per person. Those are the wages subject to social security tax, compared against 'total wages of more than $176,100'.
 
 ### withheld — Total w2.box4 for this person
 Status: **MATCH**
 
-Model: Box 4 is 'Social security tax withheld'. Totaling box 4 across this person's W-2s gives the amount compared with $10,918.20. Tier 1 RRTA tax is excluded by the rrta refusal.
+Model: This totals W-2 box 4 (social security tax withheld) per person. The credit is based on 'the amount withheld in excess of $10,918.20'.
 
 ### eligible — More than one employer and total social security wages over $176,100
 Status: **MATCH**
 
-Model: The line requires more than one employer and total wages over $176,100. That matches 'had more than one employer for 2025 and total wages of more than $176,100.'
+Model: This tests 'more than one employer for 2025 and total wages of more than $176,100', as the Schedule 3 line 11 instruction states.
 
 ### excess — Withholding above $10,918.20, if any
 Status: **MATCH**
 
-Model: The line subtracts $10,918.20 from total withholding and floors the result at zero. That is the 'amount withheld in excess of $10,918.20.'
+Model: This subtracts $10,918.20 from total withholding with a floor of zero. That gives 'the amount withheld in excess of $10,918.20'.
 
 ### zero — No excess credit
 Status: **MATCH**
 
-Model: This is the zero value used when the person is not eligible for the credit.
+Model: This is a constant zero used as the credit when the person does not qualify, which is consistent with the instruction.
 
 ### credit — Excess social security tax withheld, figured separately for this person
 Status: **MATCH**
 
-Model: The credit is the excess when eligible and zero otherwise, figured per person. The refusals name the excluded cases: a single employer over-withholding (Form 843) and RRTA/tier 2 tax ('use Form 843').
+Model: The credit is the excess when eligible and zero otherwise. The refusals correctly route the RRTA cases, 'excess tier 2 RRTA tax ... use Form 843', and any single employer's overcollection 'file a claim for refund using Form 843'.
 
 ### (screen) (person.se_screen) — Does any of these apply to this person's self-employment?
 Status: **MATCH**
 
-Model: The screen lists the Schedule SE items the instructions treat specially: church employee income, clergy and Forms 4361/4029, K-1 box 14 code A, other SE income, farm/CRP, optional methods, chapter 11, community income, exempt income, and Forms 4137/8919. It routes them to refusal.
+Model: The listed items track the Schedule SE and instruction special cases: church employee income, clergy and Forms 4361/4029, K-1 box 14 code A, fiduciary and director fees, farm and CRP payments, optional methods, chapter 11, community income, exempt income, and Forms 4137/8919.
 
 ### (screen) (person.plan_screen) — Does any of these apply to this person's retirement contributions?
 Status: **MATCH**
 
-Model: Pub 560 says the table and worksheets 'apply only to self-employed individuals who have only one defined contribution plan' and 'don't use this worksheet for SARSEPs'. It limits the Rate Table to whole percentages up to 25%. The screen excludes these cases plus elective deferrals and Roth amounts (steps 9–20).
+Model: Pub 560 says the worksheets 'apply only to self-employed individuals who have only one defined contribution plan' and 'don't use this worksheet for SARSEPs'. The rate table is limited to whole percentages up to 25%, and the section 117 higher SIMPLE limits differ, so these exclusions narrow the computation appropriately.
 
 ### Step 1 — Net profit from Schedule C, line 31
 Status: **MISMATCH**
 
 Restated: Enter the amount from helper "This person's Schedule C net profit or loss (all businesses)".
 
-Model: Step 1 adds Schedule C results across all of this person's businesses. Pub 560 says 'If you have more than one business, but only one has a retirement plan, only the earned income from that business is considered for that plan.' No refusal or screen excludes that case.
+Model: This sums the Schedule C results across all of the person's businesses. Pub 560 says 'If you have more than one business, but only one has a retirement plan, only the earned income from that business is considered for that plan', and no screen or refusal excludes that case.
 
-Ruling: refusal located elsewhere; project retained (BUG-0078, as the prior ruling). Pub. 560 p. 7, Earned income, "If you have more than one business, but only one has a retirement plan, only the earned income from that business is considered for that plan": a SEP or SIMPLE plan with more than one Schedule C is refused (person.plan_screened: a plan and person.sc_count above 1), so step 1 is the profit of the business that has the plan on every return the tool completes. Statutory employee income and notary fees are refused on each Schedule C (sc.statutory, "Is this business income you received as a statutory employee ... or fees you received as a notary public?"), so no such Schedule C reaches step 1.
+Ruling: refusal located elsewhere; project retained (BUG-0078, as ruled before). Pub. 560 p. 7, Earned income, "If you have more than one business, but only one has a retirement plan, only the earned income from that business is considered for that plan": a SEP or SIMPLE plan with more than one Schedule C is refused (person.plan_screened: a plan and person.sc_count above 1), so step 1 is the profit of the business that has the plan on every return the tool completes.
 
 ### Step 2 — Deduction for self-employment tax from Schedule 1, line 15
 Status: **MATCH**
 
-Model: Worksheet step 2 is the 'deduction for self-employment tax from Schedule 1 (Form 1040), line 15', which is Schedule SE line 13. The restated SE chain (lines 3, 4a–4c, 6–13) follows the schedule, and non-Schedule C items are refused.
+Model: Step 2 is 'your deduction for self-employment tax from Schedule 1 (Form 1040), line 15'. That equals Schedule SE line 13, computed here with line 8a taken from W-2 boxes 3 and 7.
 
 ### Step 3 — Net earnings from self-employment. Subtract step 2 from step 1
 Status: **MATCH**
 
-Model: The line is 'Subtract step 2 from step 1'. The zero floor cannot change the final deduction, because a negative step 3 would yield zero in steps 5 and 7.
+Model: This is 'Subtract step 2 from step 1'. The added zero floor does not change the maximum deductible contribution, which cannot be negative.
 
 ### Step 5 — Multiply step 3 by step 4 (the plan rate divided by the plan rate plus 1, to six decimal p
 Status: **MATCH**
 
-Model: Rate ÷ (rate + 1), rounded to 6 decimals, reproduces the Rate Table values (for example 10% → 0.090909, 25% → 0.200000). The line then does 'Multiply step 3 by step 4.'
+Model: The reduced rate is plan rate ÷ (1 + plan rate), matching the Rate Worksheet and the six-decimal Rate Table (for example, 10% gives 0.090909), and it is then multiplied by step 3. The plan screen limits rates to whole percentages up to 25%.
 
 ### Step 6 — Multiply $350,000 by your plan contribution rate (not the reduced rate)
 Status: **MATCH**
 
-Model: The line is 'Multiply $350,000 by your plan contribution rate (not the reduced rate)'. Rate cents ÷ 100 cents equals the plan rate.
+Model: This is 'Multiply $350,000 by your plan contribution rate (not the reduced rate)'.
 
 ### Step 7 — Enter the smaller of step 5 or step 6
 Status: **MATCH**
 
-Model: The line is 'Enter the smaller of step 5 or step 6.'
+Model: This is 'Enter the smaller of step 5 or step 6'.
 
 ### Step 8 — Contribution dollar limit
 Status: **MATCH**
 
-Model: The line is 'Contribution dollar limit . . . $70,000.'
+Model: This is 'Contribution dollar limit ... $70,000'.
 
 ### Step 21 — Maximum deductible contribution (the smaller of step 7 or step 8; no elective deferrals)
 Status: **MATCH**
 
-Model: With no elective deferrals (excluded by the plan screen), the worksheet says 'skip steps 9 through 20 and enter the smaller of step 7 or step 8 on step 21.'
+Model: With elective deferrals screened out, the worksheet says to 'skip steps 9 through 20 and enter the smaller of step 7 or step 8 on step 21'.
 
 ### (screen) (person.sav_able) — As the designated beneficiary of an ABLE account, did you contribute to it for 2025, or di
 Status: **MATCH**
 
-Model: This mirrors Form 8880 line 1 ('ABLE account contributions by the designated beneficiary for 2025'). It also mirrors line 4 (distributions from 'ABLE accounts' received 'after 2022 and before the due date of your 2025 return (including extensions)').
+Model: This tracks Form 8880 line 1, 'ABLE account contributions by the designated beneficiary for 2025', and line 4, distributions 'received after 2022 and before the due date (including extensions)'.
 
 ### (screen) (person.sav_excess) — Were your elective deferrals and designated Roth contributions for 2025 more than the limi
 Status: **MATCH**
 
-Model: The screen asks about W-2 box 12 elective deferrals and designated Roth contributions above the 2025 limit. That matches the W-2 instructions, which state 'the 2025 limit for elective deferrals and designated Roth contributions is $23,500.'
+Model: This asks whether box 12 elective deferrals and designated Roth contributions exceed the limit. That is consistent with the W-2 instructions: 'the 2025 limit for elective deferrals and designated Roth contributions is $23,500', plus catch-up contributions.
 
 ### (screen) (person.ira_excess) — Were your 2025 IRA contributions more than allowed, recharacterized, or is an earlier exce
 Status: **MATCH**
 
-Model: This tracks Pub 590-A's excess contribution definition ('more than the smaller of $7,000 ($8,000 if you are age 50 or older), or Your taxable compensation'). It includes the withdrawal-by-due-date rule, recharacterizations, and excess amounts that 'remain in your traditional IRA.'
+Model: This matches Pub 590-A and the i8606 text. Those define an excess as more than '$7,000 ($8,000 if you are age 50 or older), or your taxable compensation', subject to the 6% tax unless 'withdrawn by the date your return for the year is due (including extensions)'. Recharacterizations and Roth income limits are also covered.
 
 ## Raw response
 
@@ -168,72 +168,72 @@ Model: This tracks Pub 590-A's excess contribution definition ('more than the sm
 lines:
   - key: "rrta"
     status: MATCH
-    reason: "Railroad retirement compensation and taxes are reported in Form W-2 box 14. Form 8959 line 14 instructions also name employee representatives who file Form CT-2. Asking about both correctly identifies the RRTA case the credit line refuses."
+    reason: "Schedule 3 line 11 covers tier 1 RRTA tax, which is reported in W-2 box 14. The i8959 text names Form CT-2 for employee representatives, so the screen correctly flags the RRTA path."
   - key: "employers"
     status: MATCH
-    reason: "Schedule 3 line 11 applies if you 'had more than one employer for 2025'. Counting this person's W-2 entries counts employers, and the instruction says to 'Figure this amount separately for you and your spouse.'"
+    reason: "The instruction asks whether the person 'had more than one employer for 2025'. Counting confirmed W-2 entries per person stands in for the number of employers, figured 'separately for you and your spouse'."
   - key: "overcount"
     status: MATCH
-    reason: "This counts W-2s whose employer withheld more than $10,918.20. That matches the instruction's test: 'if any one employer withheld more than $10,918.20.'"
+    reason: "This counts the W-2s on which one employer withheld more than $10,918.20. That is the condition in 'if any one employer withheld more than $10,918.20, you can't claim the excess on your return'."
   - key: "over"
     status: MATCH
-    reason: "The line is true when at least one employer over-withheld. That is the condition under which 'you can't claim the excess on your return.'"
+    reason: "This is true when at least one employer withheld more than $10,918.20, which is the condition that bars claiming the excess on the return."
   - key: "wages"
     status: MATCH
-    reason: "The line totals this person's W-2 wages for the 'total wages of more than $176,100' test. The text gives no specific box, and the W-2 instructions tie the $176,100 base to boxes 3 and 7."
+    reason: "This totals W-2 boxes 3 and 7 per person. Those are the wages subject to social security tax, compared against 'total wages of more than $176,100'."
   - key: "withheld"
     status: MATCH
-    reason: "Box 4 is 'Social security tax withheld'. Totaling box 4 across this person's W-2s gives the amount compared with $10,918.20. Tier 1 RRTA tax is excluded by the rrta refusal."
+    reason: "This totals W-2 box 4 (social security tax withheld) per person. The credit is based on 'the amount withheld in excess of $10,918.20'."
   - key: "eligible"
     status: MATCH
-    reason: "The line requires more than one employer and total wages over $176,100. That matches 'had more than one employer for 2025 and total wages of more than $176,100.'"
+    reason: "This tests 'more than one employer for 2025 and total wages of more than $176,100', as the Schedule 3 line 11 instruction states."
   - key: "excess"
     status: MATCH
-    reason: "The line subtracts $10,918.20 from total withholding and floors the result at zero. That is the 'amount withheld in excess of $10,918.20.'"
+    reason: "This subtracts $10,918.20 from total withholding with a floor of zero. That gives 'the amount withheld in excess of $10,918.20'."
   - key: "zero"
     status: MATCH
-    reason: "This is the zero value used when the person is not eligible for the credit."
+    reason: "This is a constant zero used as the credit when the person does not qualify, which is consistent with the instruction."
   - key: "credit"
     status: MATCH
-    reason: "The credit is the excess when eligible and zero otherwise, figured per person. The refusals name the excluded cases: a single employer over-withholding (Form 843) and RRTA/tier 2 tax ('use Form 843')."
+    reason: "The credit is the excess when eligible and zero otherwise. The refusals correctly route the RRTA cases, 'excess tier 2 RRTA tax ... use Form 843', and any single employer's overcollection 'file a claim for refund using Form 843'."
   - key: "(screen) (person.se_screen)"
     status: MATCH
-    reason: "The screen lists the Schedule SE items the instructions treat specially: church employee income, clergy and Forms 4361/4029, K-1 box 14 code A, other SE income, farm/CRP, optional methods, chapter 11, community income, exempt income, and Forms 4137/8919. It routes them to refusal."
+    reason: "The listed items track the Schedule SE and instruction special cases: church employee income, clergy and Forms 4361/4029, K-1 box 14 code A, fiduciary and director fees, farm and CRP payments, optional methods, chapter 11, community income, exempt income, and Forms 4137/8919."
   - key: "(screen) (person.plan_screen)"
     status: MATCH
-    reason: "Pub 560 says the table and worksheets 'apply only to self-employed individuals who have only one defined contribution plan' and 'don't use this worksheet for SARSEPs'. It limits the Rate Table to whole percentages up to 25%. The screen excludes these cases plus elective deferrals and Roth amounts (steps 9–20)."
+    reason: "Pub 560 says the worksheets 'apply only to self-employed individuals who have only one defined contribution plan' and 'don't use this worksheet for SARSEPs'. The rate table is limited to whole percentages up to 25%, and the section 117 higher SIMPLE limits differ, so these exclusions narrow the computation appropriately."
   - key: "Step 1"
     status: MISMATCH
-    reason: "Step 1 adds Schedule C results across all of this person's businesses. Pub 560 says 'If you have more than one business, but only one has a retirement plan, only the earned income from that business is considered for that plan.' No refusal or screen excludes that case."
+    reason: "This sums the Schedule C results across all of the person's businesses. Pub 560 says 'If you have more than one business, but only one has a retirement plan, only the earned income from that business is considered for that plan', and no screen or refusal excludes that case."
   - key: "Step 2"
     status: MATCH
-    reason: "Worksheet step 2 is the 'deduction for self-employment tax from Schedule 1 (Form 1040), line 15', which is Schedule SE line 13. The restated SE chain (lines 3, 4a–4c, 6–13) follows the schedule, and non-Schedule C items are refused."
+    reason: "Step 2 is 'your deduction for self-employment tax from Schedule 1 (Form 1040), line 15'. That equals Schedule SE line 13, computed here with line 8a taken from W-2 boxes 3 and 7."
   - key: "Step 3"
     status: MATCH
-    reason: "The line is 'Subtract step 2 from step 1'. The zero floor cannot change the final deduction, because a negative step 3 would yield zero in steps 5 and 7."
+    reason: "This is 'Subtract step 2 from step 1'. The added zero floor does not change the maximum deductible contribution, which cannot be negative."
   - key: "Step 5"
     status: MATCH
-    reason: "Rate ÷ (rate + 1), rounded to 6 decimals, reproduces the Rate Table values (for example 10% → 0.090909, 25% → 0.200000). The line then does 'Multiply step 3 by step 4.'"
+    reason: "The reduced rate is plan rate ÷ (1 + plan rate), matching the Rate Worksheet and the six-decimal Rate Table (for example, 10% gives 0.090909), and it is then multiplied by step 3. The plan screen limits rates to whole percentages up to 25%."
   - key: "Step 6"
     status: MATCH
-    reason: "The line is 'Multiply $350,000 by your plan contribution rate (not the reduced rate)'. Rate cents ÷ 100 cents equals the plan rate."
+    reason: "This is 'Multiply $350,000 by your plan contribution rate (not the reduced rate)'."
   - key: "Step 7"
     status: MATCH
-    reason: "The line is 'Enter the smaller of step 5 or step 6.'"
+    reason: "This is 'Enter the smaller of step 5 or step 6'."
   - key: "Step 8"
     status: MATCH
-    reason: "The line is 'Contribution dollar limit . . . $70,000.'"
+    reason: "This is 'Contribution dollar limit ... $70,000'."
   - key: "Step 21"
     status: MATCH
-    reason: "With no elective deferrals (excluded by the plan screen), the worksheet says 'skip steps 9 through 20 and enter the smaller of step 7 or step 8 on step 21.'"
+    reason: "With elective deferrals screened out, the worksheet says to 'skip steps 9 through 20 and enter the smaller of step 7 or step 8 on step 21'."
   - key: "(screen) (person.sav_able)"
     status: MATCH
-    reason: "This mirrors Form 8880 line 1 ('ABLE account contributions by the designated beneficiary for 2025'). It also mirrors line 4 (distributions from 'ABLE accounts' received 'after 2022 and before the due date of your 2025 return (including extensions)')."
+    reason: "This tracks Form 8880 line 1, 'ABLE account contributions by the designated beneficiary for 2025', and line 4, distributions 'received after 2022 and before the due date (including extensions)'."
   - key: "(screen) (person.sav_excess)"
     status: MATCH
-    reason: "The screen asks about W-2 box 12 elective deferrals and designated Roth contributions above the 2025 limit. That matches the W-2 instructions, which state 'the 2025 limit for elective deferrals and designated Roth contributions is $23,500.'"
+    reason: "This asks whether box 12 elective deferrals and designated Roth contributions exceed the limit. That is consistent with the W-2 instructions: 'the 2025 limit for elective deferrals and designated Roth contributions is $23,500', plus catch-up contributions."
   - key: "(screen) (person.ira_excess)"
     status: MATCH
-    reason: "This tracks Pub 590-A's excess contribution definition ('more than the smaller of $7,000 ($8,000 if you are age 50 or older), or Your taxable compensation'). It includes the withdrawal-by-due-date rule, recharacterizations, and excess amounts that 'remain in your traditional IRA.'"
+    reason: "This matches Pub 590-A and the i8606 text. Those define an excess as more than '$7,000 ($8,000 if you are age 50 or older), or your taxable compensation', subject to the 6% tax unless 'withdrawn by the date your return for the year is due (including extensions)'. Recharacterizations and Roth income limits are also covered."
 ```
 ```
