@@ -8,6 +8,7 @@ Second transcription of `Qualified passenger vehicle loan interest (Schedule 1-A
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 5741a5e0508d52c071bac0e2154fcc5c153be0f16228474c9857a49dca119379 |
+| subject sha256 | 242f7244bf2433fd7b9d62a477efcd1831165cee975a648155aba2c673a2494a |
 | printed lines compared | 1 |
 | agree / disagree / missing | 0 / 1 / 0 |
 | extra printed lines in second | none |

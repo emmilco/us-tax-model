@@ -8,6 +8,7 @@ Second transcription of `Schedule A — supported itemized deductions and standa
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 209600f2e8adaf58d8675ff1301c8ba68017d819d4516801aab6b206d7d8bc8f |
+| subject sha256 | 52de22fc8dc74f1f688970f89b20607e2ca38d95e1222b4ffecf57aa0d5a29f1 |
 | printed lines compared | 22 |
 | agree / disagree / missing | 19 / 3 / 0 |
 | extra printed lines in second | none |

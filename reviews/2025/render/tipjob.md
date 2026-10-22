@@ -8,6 +8,7 @@ The rendered English of every printed line of `Qualified Tips From More Than One
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 91e4143328bcda598b3d2de95a9a55b02e2742e2e99743702cd9fda29d8c3d64 |
+| subject sha256 | dd1cd95f3a144f5a654662ca694fc405f1e99bd27873da582895e59c7d0153c4 |
 | lines judged | 3 |
 | match / mismatch / unclear / missing | 3 / 0 / 0 / 0 |
 | verdicts for lines not in the form | none |

@@ -7,6 +7,7 @@
 | date | 2026-10-19 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
+| subject sha256 | a4d74c530e209fd50bbdb22371e53f5d5d4ba6b339bab8cdd07ea1ce92cb7f0b |
 | cases | 3 |
 
 ## Source pages given to the model

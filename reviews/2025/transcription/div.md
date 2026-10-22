@@ -8,6 +8,7 @@ Second transcription of `Form 1099-DIV — distribution components and scope scr
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 5af084543fbe96e13bea5f4b81a8c545d4001fcf1d3c0cdd792330088007609d |
+| subject sha256 | 42b78e5376ee4a1dfb47c58ddb1d582b614f006924582ead17ed6327920c53fa |
 | printed lines compared | 1 |
 | agree / disagree / missing | 1 / 0 / 0 |
 | extra printed lines in second | none |

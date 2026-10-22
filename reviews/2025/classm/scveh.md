@@ -4,9 +4,10 @@
 
 | field | value |
 | --- | --- |
-| date | 2026-10-20 |
+| date | 2026-10-21 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
+| subject sha256 | 5b6187c11081f200dec0dba9db43047edab438841af52ee92553fb9ae48af033 |
 | cases | 6 |
 
 ## Source pages given to the model
@@ -15,58 +16,670 @@
 | --- | --- | --- | --- | --- | --- | --- |
 | i1040sc | 2025 | 6, 7, 8, 15 | cited pages | dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a | 6, 7, 8, 15 | 616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918 |
 | f1040sc | 2025; created 2025-04-03 | 1, 2 | whole document | ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022 | - | 44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376 |
-| i4562 | 2025 | 4, 5, 6, 7, 9, 11, 13, 14, 15 | cited pages | cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2 | 5, 6, 7, 9, 11, 13, 14, 15 | 9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0 |
+| i4562 | 2025 | 4, 5, 6, 7, 9, 10, 11, 13, 14, 15, 16 | cited pages | cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2 | 5, 6, 7, 9, 10, 11, 13, 14, 15 | 9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0 |
 | n-25-05 | Notice 2025-5 | 1, 2, 3, 4, 5 | whole document | 394f6b5ffb7c30e745322f0f20d9137608b1e2429fc4c76b06dedd690d4fb6e3 | - | 349e2797f87c588214722bcd22b7ec317c86c90a255ec8496941ac0c09909a8d |
 | p946 | For use in preparing 2025 returns | 34, 37, 41, 59, 61, 62, 63 | cited pages | 18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2 | 34, 37, 41, 63 | da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7 |
 
 ## Lines
 
-### case classm.scveh.1 — prompt sha256 dcbe84e0986070dd9d97508931bce122762a28534c661db41a6ad568574f80ab; branches: scveh.owned:false, scveh.owned:true, scveh.over_half:true, scveh.smr_ok:true, scveh.smr_bad:false, scveh.line9#1, scveh.is_actual_owned:false, scveh.is_actual_owned:true, scveh.is_actual_leased:false, scveh.is_actual_leased:true, scveh.line20a#0, scveh.line20a#1, scveh.low_use:false, scveh.screen:false, scveh.screened:false, scveh.passenger:false, scveh.passenger:true, scveh.suv:false, scveh.is2025:false, scveh.is2025:true, scveh.is2019:false, scveh.is2019:true, scveh.s179_bad:false, scveh.after_jan19:true, scveh.bonus_same:true, scveh.bonus_mixed:false, scveh.claims_bonus:false, scveh.claims_bonus:true, scveh.lim_2025#0, scveh.lim_2025#1, scveh.line7#0, scveh.line7#1, scveh.line10#0, scveh.line10#1, scveh.line10_2025#0, scveh.line10_2025#1, scveh.s179_line10:left, scveh.line11:positive, scveh.line14#0, scveh.line14#1, scveh.line15:positive, scveh.bonus_fullcase#0, scveh.bonus_2025#0, scveh.bonus_2025#2, scveh.line16#0, scveh.line16#1, scveh.bonus_allowed:left, scveh.bonus_allowed:right, scveh.line17:floor, scveh.line17:positive, scveh.line18:floor, scveh.line18:positive, scveh.line19#0, scveh.line19#1, scveh.line19_earlier#0, scveh.line19_earlier#1, scveh.line19_2025#0, scveh.line20:left, scveh.line20:right, scveh.b100:positive, scveh.d1:right, scveh.d2:right, scveh.d3:right, scveh.d4:right, scveh.d5:right, scveh.d6:right, scveh.unrecovered:floor, scveh.post_amount:right, scveh.too_old:false, scveh.bonus_v#0, scveh.bonus_v#1, scveh.macrs_pass#0, scveh.macrs_pass#1, scveh.macrs_heavy#0, scveh.macrs_heavy#1, scveh.macrs_v#0, scveh.macrs_v#1, scveh.bonus#0, scveh.bonus#1, scveh.macrs#0, scveh.macrs#1, scveh.s179_2025#0, scveh.s179_2025#1, scveh.mq_q4#0, scveh.mq_q4#1, scveh.mq_total#0, scveh.mq_total#1, scveh.cost179#0, scveh.cost179#1, scveh.q4_basis#1, scveh.q4_basis#2, scveh.mq_q4_o#0, scveh.mq_q4_o#1, scveh.mq_total_o#0, scveh.mq_total_o#1, scveh.cost179_o#0, scveh.cost179_o#1
+### case classm.scveh.1 — prompt sha256 53d4f1ee3e164993c8f06bd31e0be4c358604f76887c942bc85e0131dd6a2a31; branches: scveh.owned:false, scveh.owned:true, scveh.no_miles:false, scveh.over_half:true, scveh.smr_ok:true, scveh.smr_bad:false, scveh.line9#1, scveh.is_actual_owned:false, scveh.is_actual_owned:true, scveh.is_actual_leased:false, scveh.is_actual_leased:true, scveh.line20a#0, scveh.line20a#1, scveh.low_use:false, scveh.screen:false, scveh.screened:false, scveh.passenger:false, scveh.passenger:true, scveh.suv:false, scveh.is2025:false, scveh.is2025:true, scveh.is2019:false, scveh.is2019:true, scveh.s179_bad:false, scveh.after_jan19:false, scveh.after_jan19:true, scveh.bonus_same:true, scveh.bonus_mixed:false, scveh.claims_bonus:false, scveh.claims_bonus:true, scveh.lim_2025#0, scveh.lim_2025#1, scveh.line7#0, scveh.line7#1, scveh.line10#0, scveh.line10#1, scveh.line10_2025#0, scveh.line10_2025#1, scveh.s179_line10:left, scveh.line11:positive, scveh.line14#0, scveh.line14#1, scveh.line15:positive, scveh.bonus_fullcase#0, scveh.bonus_fullcase#1, scveh.bonus_2025#1, scveh.bonus_2025#2, scveh.line16#0, scveh.line16#1, scveh.bonus_allowed:left, scveh.line17:positive, scveh.line18:positive, scveh.line19#0, scveh.line19#1, scveh.line19_earlier#0, scveh.line19_earlier#1, scveh.line19_2025#1, scveh.line20:left, scveh.line20:right, scveh.b100:positive, scveh.d1:right, scveh.d2:left, scveh.d2:right, scveh.d3:left, scveh.d3:right, scveh.d4:left, scveh.d4:right, scveh.d5:left, scveh.d5:right, scveh.d6:right, scveh.unrecovered:positive, scveh.post_amount:right, scveh.too_old:false, scveh.bonus_v#0, scveh.bonus_v#1, scveh.macrs_pass#0, scveh.macrs_pass#1, scveh.macrs_heavy#0, scveh.macrs_heavy#1, scveh.macrs_v#0, scveh.macrs_v#1, scveh.bonus#0, scveh.bonus#1, scveh.macrs#0, scveh.macrs#1, scveh.s179_2025#0, scveh.s179_2025#1, scveh.mq_q4#0, scveh.mq_q4#1, scveh.mq_total#0, scveh.mq_total#1, scveh.cost179#0, scveh.cost179#1, scveh.q4_basis#0, scveh.q4_basis#3, scveh.mq_q4_o#0, scveh.mq_q4_o#1, scveh.mq_total_o#0, scveh.mq_total_o#1, scveh.cost179_o#0, scveh.cost179_o#1
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].bm_c — Business miles, as cents
+Status: **DISAGREE**
+
+Project: $233.98
+Model: $23,398.00
+Work: Business miles 23,398
+
+Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].cm_c — Commuting miles, as cents
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].om_c — Other miles, as cents
+Status: **DISAGREE**
+
+Project: $9.21
+Model: $921.00
+Work: Other miles 921
+
+Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].nonbusiness_c — Commuting and other miles, as cents
+Status: **DISAGREE**
+
+Project: $9.21
+Model: $921.00
+Work: 0 + 921
+
+Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].total_c — Total miles, as cents
+Status: **DISAGREE**
+
+Project: $243.19
+Model: $24,319.00
+Work: 23,398 + 921
+
+Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].no_miles — Actual expenses claimed for a vehicle with no miles
+Status: **AGREE**
+
+Value: no
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].over_half — Business use is more than 50%
+Status: **AGREE**
+
+Value: yes
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].smr_bad — The standard mileage rate is not available for this vehicle
+Status: **AGREE**
+
+Value: no
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].smr_amount — Business miles times the standard mileage rate
+Status: **AGREE**
+
+Value: $16,378.60
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].line9_standard — Standard mileage amount plus parking fees and tolls
+Status: **AGREE**
+
+Value: $16,378.60
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].operating_business — The business portion of the operating expenses
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].line9_actual — Business portion of the operating expenses plus parking fees and tolls
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].line9 — Car and truck expenses for this vehicle
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].is_actual_owned — Owned and on actual expenses
+Status: **AGREE**
+
+Value: yes
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].is_actual_leased — Leased and on actual expenses
+Status: **AGREE**
+
+Value: no
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].lease_business — The business portion of the lease payments
+Status: **AGREE**
+
+Value: $5,538.97
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].line20a — Rent or lease of this vehicle (business portion)
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].low_use — Business use is 50% or less
+Status: **AGREE**
+
+Value: no
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].screened — This vehicle's depreciation is outside this tool
+Status: **AGREE**
+
+Value: no
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].year — Year of recovery in 2025
+Status: **AGREE**
+
+Value: 1
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].is2025 — Placed in service in 2025
+Status: **AGREE**
+
+Value: yes
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].is2019 — Placed in service in 2019 (2025 is after the recovery period)
+Status: **AGREE**
+
+Value: no
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].bus_cost — Business/investment cost (cost times business use)
+Status: **DISAGREE**
+
+Project: $47,144.27
+Model: $47,144.29
+Work: 49,000 x 23,398 / 24,319 (line 13)
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].s179_bad — The section 179 election is more than the business cost, or than the SUV limit
+Status: **AGREE**
+
+Value: no
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].bonus_mixed — The special allowance choice differs within the 5-year class
+Status: **AGREE**
+
+Value: no
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].claims_bonus — A special allowance is claimed
+Status: **AGREE**
+
+Value: yes
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].lim_first_bonus — First-year limit with the special allowance
+Status: **AGREE**
+
+Value: $20,200.00
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].lim_first_none — First-year limit without the special allowance
+Status: **AGREE**
+
+Value: $12,200.00
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].lim_2025 — Limit for a 2025 vehicle
+Status: **AGREE**
+
+Value: $20,200.00
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].lim_prior — Limit for the vehicle's 2025 year of recovery
+Status: **DISAGREE**
+
+Project: $20,200.00
+Model: $12,200.00
+Work: Table 2 row for 2025, year 1 = $12,200
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. For a 2025 vehicle line 7 reads lim_2025 (agreeing), not lim_prior; lim_prior is the table's year-1 cell with the special allowance, $20,200 (Pub. 946 p. 59). Not evidence. [dropped]
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].line7 — Maximum depreciation deduction for this year from the appropriate table
+Status: **AGREE**
+
+Value: $20,200.00
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].line9w — Adjusted maximum depreciation deduction (line 7 times the business/investment-us
+Status: **AGREE**
+
+Value: $19,434.99
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].s179_2025_ok — Section 179 elected for a 2025 vehicle
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].line10 — Section 179 deduction claimed this year (not more than line 9 for a passenger au
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].line10_2025 — Section 179 for a 2025 vehicle: not more than line 9 for a passenger automobile
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].s179_line10 — The section 179 election, not more than line 9
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].line11 — Subtract line 10 from line 9
+Status: **AGREE**
+
+Value: $19,434.99
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].line14 — Section 179 deduction claimed in the year you placed the car in service
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].line15 — Tentative basis for depreciation (line 13 less line 14)
+Status: **DISAGREE**
+
+Project: $47,144.27
+Model: $47,144.29
+Work: 47,144.29 - 0
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].bonus_full — 100% special allowance
+Status: **DISAGREE**
+
+Project: $47,144.27
+Model: $47,144.29
+Work: 100% x 47,144.29
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].bonus_forty — 40% special allowance
+Status: **DISAGREE**
+
+Project: $18,857.71
+Model: $18,857.72
+Work: 40% x 47,144.29
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].bonus_fullcase — The allowance when it is claimed: 100% if acquired after January 19, 2025, other
+Status: **DISAGREE**
+
+Project: $47,144.27
+Model: $47,144.29
+Work: Acquired after Jan 19, 2025, so 100%
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].bonus_2025 — Special allowance for a 2025 vehicle
+Status: **DISAGREE**
+
+Project: $18,857.71
+Model: $18,857.72
+Work: Filer elected 40%
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].line16 — Special depreciation allowance
+Status: **DISAGREE**
+
+Project: $18,857.71
+Model: $18,857.72
+Work: Special allowance for a 2025 vehicle
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].bonus_allowed — Special depreciation allowance allowed (not more than line 11)
+Status: **DISAGREE**
+
+Project: $18,857.71
+Model: $18,857.72
+Work: Smaller of 18,857.72 or 19,434.99
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].line17 — Limit on the MACRS depreciation (line 11 less line 16)
+Status: **DISAGREE**
+
+Project: $577.28
+Model: $577.27
+Work: 19,434.99 - 18,857.72
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].line18 — Basis for depreciation (line 15 less line 16)
+Status: **DISAGREE**
+
+Project: $28,286.56
+Model: $28,286.57
+Work: 47,144.29 - 18,857.72
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].qconv — Mid-quarter convention for that quarter
+Status: **AGREE**
+
+Value: mq4
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].rate_hy — MACRS rate, half-year convention
+Status: **AGREE**
+
+Value: 20%
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].rate_mq — MACRS rate, mid-quarter convention
+Status: **AGREE**
+
+Value: 5%
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].rate_prior — MACRS rate for the 2025 year of recovery
+Status: **AGREE**
+
+Value: 5%
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].line19_hy — Line 18 times the half-year rate
+Status: **AGREE**
+
+Value: $5,657.31
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].line19_mq — Line 18 times the mid-quarter rate
+Status: **AGREE**
+
+Value: $1,414.33
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].line19_prior — Line 18 times the rate for the 2025 year of recovery
+Status: **AGREE**
+
+Value: $1,414.33
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].line19 — Tentative MACRS depreciation deduction (line 18 times line 6)
+Status: **AGREE**
+
+Value: $1,414.33
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].line19_earlier — Line 19 for a vehicle placed in service before 2025 (zero after the recovery per
+Status: **DISAGREE**
+
+Project: $1,414.33
+Model: $0.00
+Work: Not placed in service before 2025
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. For a 2025 vehicle line 19 is line19_2025 (agreeing). Not evidence. [dropped]
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].line19_2025 — Line 19 for a 2025 vehicle, half-year or mid-quarter
+Status: **AGREE**
+
+Value: $1,414.33
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].line20 — MACRS depreciation deduction (the lesser of line 17 or line 19)
+Status: **DISAGREE**
+
+Project: $577.28
+Model: $577.27
+Work: Lesser of 577.27 or 1,414.33
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].b100 — Cost less the section 179 deduction (as if used 100% for business)
+Status: **AGREE**
+
+Value: $49,000.00
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].r1 — MACRS rate for year 1
+Status: **AGREE**
+
+Value: 5%
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].t1 — Year 1 MACRS amount as if used 100% for business
+Status: **AGREE**
+
+Value: $2,450.00
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].l1 — Year 1 limit (no special allowance)
+Status: **AGREE**
+
+Value: $12,200.00
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].t1s — Year 1 section 179 deduction plus MACRS amount
+Status: **AGREE**
+
+Value: $2,450.00
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].d1 — Year 1 deduction allowable at 100% business use (the lesser of the limit or the 
+Status: **AGREE**
+
+Value: $2,450.00
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].r2 — MACRS rate for year 2
+Status: **AGREE**
+
+Value: 38%
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].t2 — Year 2 MACRS amount as if used 100% for business
+Status: **AGREE**
+
+Value: $18,620.00
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].r3 — MACRS rate for year 3
+Status: **AGREE**
+
+Value: 22.8%
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].t3 — Year 3 MACRS amount as if used 100% for business
+Status: **AGREE**
+
+Value: $11,172.00
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].r4 — MACRS rate for year 4
+Status: **AGREE**
+
+Value: 13.68%
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].t4 — Year 4 MACRS amount as if used 100% for business
+Status: **AGREE**
+
+Value: $6,703.20
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].r5 — MACRS rate for year 5
+Status: **AGREE**
+
+Value: 10.94%
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].t5 — Year 5 MACRS amount as if used 100% for business
+Status: **AGREE**
+
+Value: $5,360.60
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].r6 — MACRS rate for year 6
+Status: **AGREE**
+
+Value: 9.58%
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].t6 — Year 6 MACRS amount as if used 100% for business
+Status: **AGREE**
+
+Value: $4,694.20
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].too_old — Placed in service before 2019
+Status: **AGREE**
+
+Value: no
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].bonus_v — Special allowance for this vehicle (line 25)
+Status: **DISAGREE**
+
+Project: $18,857.71
+Model: $18,857.72
+Work: Allowed special allowance
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].macrs_pass — Column (h) for a passenger automobile
+Status: **DISAGREE**
+
+Project: $577.28
+Model: $577.27
+Work: Line 20
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].macrs_heavy — Column (h) for a vehicle not subject to the limits
+Status: **AGREE**
+
+Value: $1,414.33
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].macrs_v — Column (h)
+Status: **DISAGREE**
+
+Project: $577.28
+Model: $577.27
+Work: Subject to the passenger automobile limits
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].bonus — Line 25: special allowance of this vehicle
+Status: **DISAGREE**
+
+Project: $18,857.71
+Model: $18,857.72
+Work: Owned, actual expenses
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].macrs — Column (h): depreciation of this vehicle
+Status: **DISAGREE**
+
+Project: $577.28
+Model: $577.27
+Work: Owned, actual expenses
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].s179_2025 — Column (i): elected section 179 cost of this vehicle
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].mq_q4 — Mid-quarter test basis, fourth quarter of this vehicle
+Status: **DISAGREE**
+
+Project: $47,144.27
+Model: $47,144.29
+Work: Q4 2025 business basis less 0 section 179
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].mq_total — Mid-quarter test basis, 2025 of this vehicle
+Status: **DISAGREE**
+
+Project: $47,144.27
+Model: $47,144.29
+Work: 2025 business basis
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].cost179 — Cost of section 179 property placed in service in 2025 of this vehicle
+Status: **DISAGREE**
+
+Project: $47,144.27
+Model: $47,144.29
+Work: Business cost of listed property placed in service 2025
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].bonus_o — Special allowance (owned, actual expenses)
+Status: **DISAGREE**
+
+Project: $18,857.71
+Model: $18,857.72
+Work: Owned, actual expenses
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].macrs_o — Depreciation (owned, actual expenses)
+Status: **DISAGREE**
+
+Project: $577.28
+Model: $577.27
+Work: Owned, actual expenses
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].s179_2025_o — Section 179 (owned, actual expenses)
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].q4_basis — Basis for the mid-quarter test when placed in service October to December
+Status: **DISAGREE**
+
+Project: $47,144.27
+Model: $47,144.29
+Work: Placed in service in Q4
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].mq_q4_o — mq_q4 (owned, actual expenses)
+Status: **DISAGREE**
+
+Project: $47,144.27
+Model: $47,144.29
+Work: Owned, actual expenses
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].mq_q4_a2 — mq_q4 of a 2025 vehicle
+Status: **DISAGREE**
+
+Project: $47,144.27
+Model: $47,144.29
+Work: 2025 vehicle
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].mq_total_o — mq_total (owned, actual expenses)
+Status: **DISAGREE**
+
+Project: $47,144.27
+Model: $47,144.29
+Work: Owned, actual expenses
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].mq_total_a2 — mq_total of a 2025 vehicle
+Status: **DISAGREE**
+
+Project: $47,144.27
+Model: $47,144.29
+Work: 2025 vehicle
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].cost179_o — cost179 (owned, actual expenses)
+Status: **DISAGREE**
+
+Project: $47,144.27
+Model: $47,144.29
+Work: Owned, actual expenses
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.1 — person[taxpayer].sc[biz_a].scveh[car_1].cost179_a2 — cost179 of a 2025 vehicle
+Status: **DISAGREE**
+
+Project: $47,144.27
+Model: $47,144.29
+Work: 2025 vehicle
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].bm_c — Business miles, as cents
 Status: **DISAGREE**
 
-Project: $299.91
-Model: $29,991.00
-Work: 29,991 business miles
+Project: $123.06
+Model: $12,306.00
+Work: Business miles 12,306
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].cm_c — Commuting miles, as cents
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $32.37
-Model: $3,237.00
-Work: 3,237 commuting miles
-
-Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
+Value: $0.00
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].om_c — Other miles, as cents
 Status: **DISAGREE**
 
-Project: $0.07
-Model: $7.00
-Work: 7 other miles
+Project: $79.64
+Model: $7,964.00
+Work: Other miles 7,964
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].nonbusiness_c — Commuting and other miles, as cents
 Status: **DISAGREE**
 
-Project: $32.44
-Model: $3,244.00
-Work: 3,237 + 7
+Project: $79.64
+Model: $7,964.00
+Work: 0 + 7,964
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].total_c — Total miles, as cents
 Status: **DISAGREE**
 
-Project: $332.35
-Model: $33,235.00
-Work: 29,991 + 3,244
+Project: $202.70
+Model: $20,270.00
+Work: 12,306 + 7,964
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
+
+### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].no_miles — Actual expenses claimed for a vehicle with no miles
+Status: **AGREE**
+
+Value: no
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].over_half — Business use is more than 50%
 Status: **AGREE**
@@ -81,27 +694,27 @@ Value: no
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].smr_amount — Business miles times the standard mileage rate
 Status: **AGREE**
 
-Value: $20,993.70
+Value: $8,614.20
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].line9_standard — Standard mileage amount plus parking fees and tolls
 Status: **AGREE**
 
-Value: $21,993.70
+Value: $9,614.20
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].operating_business — The business portion of the operating expenses
 Status: **AGREE**
 
-Value: $7,531.36
+Value: $6,071.04
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].line9_actual — Business portion of the operating expenses plus parking fees and tolls
 Status: **AGREE**
 
-Value: $8,531.36
+Value: $7,071.04
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].line9 — Car and truck expenses for this vehicle
 Status: **AGREE**
 
-Value: $8,531.36
+Value: $7,071.04
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].is_actual_owned — Owned and on actual expenses
 Status: **AGREE**
@@ -116,12 +729,12 @@ Value: yes
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].lease_business — The business portion of the lease payments
 Status: **AGREE**
 
-Value: $6,508.95
+Value: $1,761.21
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].line20a — Rent or lease of this vehicle (business portion)
 Status: **AGREE**
 
-Value: $6,508.95
+Value: $1,761.21
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].low_use — Business use is 50% or less
 Status: **AGREE**
@@ -136,22 +749,26 @@ Value: no
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].year — Year of recovery in 2025
 Status: **AGREE**
 
-Value: 1
+Value: 7
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].is2025 — Placed in service in 2025
 Status: **AGREE**
 
-Value: yes
+Value: no
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].is2019 — Placed in service in 2019 (2025 is after the recovery period)
 Status: **AGREE**
 
-Value: no
+Value: yes
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].bus_cost — Business/investment cost (cost times business use)
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $49,166.83
+Project: $6,673.89
+Model: $6,673.90
+Work: 10,993 x 12,306 / 20,270
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].s179_bad — The section 179 election is more than the business cost, or than the SUV limit
 Status: **AGREE**
@@ -166,37 +783,49 @@ Value: no
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].claims_bonus — A special allowance is claimed
 Status: **AGREE**
 
-Value: yes
+Value: no
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].lim_first_bonus — First-year limit with the special allowance
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $20,200.00
+Project: $5,760.00
+Model: $20,200.00
+Work: Table 2 footnote
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Here the vehicle's key gives the project's value: line 7 reads lim_2025 only for a 2025 vehicle and lim_prior otherwise, and the project looks every limit up by the year actually placed in service and its year of recovery; the model read the 2025 column. Pub. 946 p. 59 table, checked: 1st year 2025 $20,200 (footnote 1: $12,200 without the special allowance), 2nd year 2024 $19,800, 4th and later year 2021 $5,860, 2020 and 2019 $5,760, footnote 6 (2019 without the special allowance) $10,100; the project's tables carry these values. Not evidence. [dropped]
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].lim_first_none — First-year limit without the special allowance
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $12,200.00
+Project: $10,100.00
+Model: $12,200.00
+Work: Table 2: 2025, year 1
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Here the vehicle's key gives the project's value: line 7 reads lim_2025 only for a 2025 vehicle and lim_prior otherwise, and the project looks every limit up by the year actually placed in service and its year of recovery; the model read the 2025 column. Pub. 946 p. 59 table, checked: 1st year 2025 $20,200 (footnote 1: $12,200 without the special allowance), 2nd year 2024 $19,800, 4th and later year 2021 $5,860, 2020 and 2019 $5,760, footnote 6 (2019 without the special allowance) $10,100; the project's tables carry these values. Not evidence. [dropped]
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].lim_2025 — Limit for a 2025 vehicle
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $20,200.00
+Project: $10,100.00
+Model: $12,200.00
+Work: No special allowance claimed
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Here the vehicle's key gives the project's value: line 7 reads lim_2025 only for a 2025 vehicle and lim_prior otherwise, and the project looks every limit up by the year actually placed in service and its year of recovery; the model read the 2025 column. Pub. 946 p. 59 table, checked: 1st year 2025 $20,200 (footnote 1: $12,200 without the special allowance), 2nd year 2024 $19,800, 4th and later year 2021 $5,860, 2020 and 2019 $5,760, footnote 6 (2019 without the special allowance) $10,100; the project's tables carry these values. Not evidence. [dropped]
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].lim_prior — Limit for the vehicle's 2025 year of recovery
 Status: **AGREE**
 
-Value: $20,200.00
+Value: $5,760.00
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].line7 — Maximum depreciation deduction for this year from the appropriate table
 Status: **AGREE**
 
-Value: $20,200.00
+Value: $5,760.00
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].line9w — Adjusted maximum depreciation deduction (line 7 times the business/investment-us
 Status: **AGREE**
 
-Value: $18,228.32
+Value: $3,496.92
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].s179_2025_ok — Section 179 elected for a 2025 vehicle
 Status: **AGREE**
@@ -221,7 +850,7 @@ Value: $0.00
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].line11 — Subtract line 10 from line 9
 Status: **AGREE**
 
-Value: $18,228.32
+Value: $3,496.92
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].line14 — Section 179 deduction claimed in the year you placed the car in service
 Status: **AGREE**
@@ -229,88 +858,74 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].line15 — Tentative basis for depreciation (line 13 less line 14)
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $49,166.83
+Project: $6,673.89
+Model: $6,673.90
+Work: 6,673.90 - 0
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].bonus_full — 100% special allowance
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $49,166.83
+Project: $6,673.89
+Model: $6,673.90
+Work: 100% x 6,673.90
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].bonus_forty — 40% special allowance
 Status: **AGREE**
 
-Value: $19,666.73
+Value: $2,669.56
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].bonus_fullcase — The allowance when it is claimed: 100% if acquired after January 19, 2025, other
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $49,166.83
+Project: $6,673.89
+Model: $6,673.90
+Work: Marked acquired after Jan 19, 2025
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].bonus_2025 — Special allowance for a 2025 vehicle
 Status: **AGREE**
 
-Value: $49,166.83
+Value: $0.00
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].line16 — Special depreciation allowance
 Status: **AGREE**
 
-Value: $49,166.83
+Value: $0.00
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].bonus_allowed — Special depreciation allowance allowed (not more than line 11)
 Status: **AGREE**
 
-Value: $18,228.32
+Value: $0.00
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].line17 — Limit on the MACRS depreciation (line 11 less line 16)
 Status: **AGREE**
 
-Value: $0.00
+Value: $3,496.92
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].line18 — Basis for depreciation (line 15 less line 16)
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].qconv — Mid-quarter convention for that quarter
-Status: **AGREE**
-
-Value: mq2
-
-### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].rate_hy — MACRS rate, half-year convention
-Status: **AGREE**
-
-Value: 20%
-
-### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].rate_mq — MACRS rate, mid-quarter convention
 Status: **DISAGREE**
 
-Project: 25%
-Model: 15%
-Work: 5-year 200DB MQ, 2nd quarter, year 1
+Project: $6,673.89
+Model: $6,673.90
+Work: 6,673.90 - 0
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
-### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].rate_prior — MACRS rate for the 2025 year of recovery
-Status: **AGREE**
+### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].qconv — Mid-quarter convention for that quarter
+Status: **DISAGREE**
 
-Value: 20%
+Project: mq1
+Model: mq4
+Work: Convention used is mq4
 
-### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].line19_hy — Line 18 times the half-year rate
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].line19_mq — Line 18 times the mid-quarter rate
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].line19_prior — Line 18 times the rate for the 2025 year of recovery
-Status: **AGREE**
-
-Value: $0.00
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The quarter given for this entry is January to March, so the table gives mq1; the model copied the prior-year convention (mq4). The vehicle was placed in service in 2019 and is leased, so no 2025 mid-quarter rate is read. Not evidence. [dropped]
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].line19 — Tentative MACRS depreciation deduction (line 18 times line 6)
 Status: **AGREE**
@@ -318,11 +933,6 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].line19_earlier — Line 19 for a vehicle placed in service before 2025 (zero after the recovery per
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].line19_2025 — Line 19 for a 2025 vehicle, half-year or mid-quarter
 Status: **AGREE**
 
 Value: $0.00
@@ -335,82 +945,152 @@ Value: $0.00
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].b100 — Cost less the section 179 deduction (as if used 100% for business)
 Status: **AGREE**
 
-Value: $54,485.00
+Value: $10,993.00
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].r1 — MACRS rate for year 1
 Status: **AGREE**
 
-Value: 20%
+Value: 5%
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].t1 — Year 1 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $10,897.00
+Value: $549.65
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].l1 — Year 1 limit (no special allowance)
 Status: **AGREE**
 
-Value: $12,200.00
+Value: $10,100.00
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].t1s — Year 1 section 179 deduction plus MACRS amount
 Status: **AGREE**
 
-Value: $10,897.00
+Value: $549.65
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].d1 — Year 1 deduction allowable at 100% business use (the lesser of the limit or the 
 Status: **AGREE**
 
-Value: $10,897.00
+Value: $549.65
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].r2 — MACRS rate for year 2
 Status: **AGREE**
 
-Value: 32%
+Value: 38%
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].t2 — Year 2 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $17,435.20
+Value: $4,177.34
+
+### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].l2 — Year 2 limit
+Status: **AGREE**
+
+Value: $16,100.00
+
+### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].d2 — Year 2 deduction allowable at 100% business use
+Status: **AGREE**
+
+Value: $4,177.34
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].r3 — MACRS rate for year 3
 Status: **AGREE**
 
-Value: 19.2%
+Value: 22.8%
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].t3 — Year 3 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $10,461.12
+Value: $2,506.40
+
+### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].l3 — Year 3 limit
+Status: **AGREE**
+
+Value: $9,700.00
+
+### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].d3 — Year 3 deduction allowable at 100% business use
+Status: **AGREE**
+
+Value: $2,506.40
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].r4 — MACRS rate for year 4
 Status: **AGREE**
 
-Value: 11.52%
+Value: 13.68%
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].t4 — Year 4 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $6,276.67
+Value: $1,503.84
+
+### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].l4 — Year 4 limit
+Status: **AGREE**
+
+Value: $5,760.00
+
+### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].d4 — Year 4 deduction allowable at 100% business use
+Status: **AGREE**
+
+Value: $1,503.84
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].r5 — MACRS rate for year 5
 Status: **AGREE**
 
-Value: 11.52%
+Value: 10.94%
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].t5 — Year 5 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $6,276.67
+Value: $1,202.63
+
+### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].l5 — Year 5 limit
+Status: **AGREE**
+
+Value: $5,760.00
+
+### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].d5 — Year 5 deduction allowable at 100% business use
+Status: **AGREE**
+
+Value: $1,202.63
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].r6 — MACRS rate for year 6
 Status: **AGREE**
 
-Value: 5.76%
+Value: 9.58%
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].t6 — Year 6 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $3,138.34
+Value: $1,053.13
+
+### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].l6 — Year 6 limit
+Status: **AGREE**
+
+Value: $5,760.00
+
+### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].d6 — Year 6 deduction allowable at 100% business use
+Status: **AGREE**
+
+Value: $1,053.13
+
+### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].d_total — Deductions allowable during the recovery period at 100% business use
+Status: **AGREE**
+
+Value: $10,992.99
+
+### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].unrecovered — Unrecovered basis at the end of the recovery period
+Status: **AGREE**
+
+Value: $0.01
+
+### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].post_amount — The lesser of the limit or the unrecovered basis
+Status: **AGREE**
+
+Value: $0.01
+
+### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].post — 2025 deduction after the recovery period (times the business use percentage)
+Status: **AGREE**
+
+Value: $0.01
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].too_old — Placed in service before 2019
 Status: **AGREE**
@@ -420,12 +1100,12 @@ Value: no
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].bonus_v — Special allowance for this vehicle (line 25)
 Status: **AGREE**
 
-Value: $18,228.32
+Value: $0.00
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].macrs_pass — Column (h) for a passenger automobile
 Status: **AGREE**
 
-Value: $0.00
+Value: $0.01
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].macrs_heavy — Column (h) for a vehicle not subject to the limits
 Status: **AGREE**
@@ -468,13 +1148,9 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].bonus_o — Special allowance (owned, actual expenses)
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $18,228.32
-Model: $0.00
-Work: Not owned
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Value: $0.00
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].macrs_o — Depreciation (owned, actual expenses)
 Status: **AGREE**
@@ -502,39 +1178,39 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].mq_total_o — mq_total (owned, actual expenses)
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $49,166.83
-Model: $0.00
-Work: Not owned
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Value: $0.00
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].mq_total_a2 — mq_total of a 2025 vehicle
-Status: **AGREE**
-
-Value: $49,166.83
-
-### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].cost179_o — cost179 (owned, actual expenses)
 Status: **DISAGREE**
 
-Project: $49,166.83
+Project: $6,673.89
 Model: $0.00
-Work: Not owned
+Work: Not a 2025 vehicle
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The _o line reads the _a2 copy only for a 2025 vehicle; for this earlier vehicle the _o line and the result are zero (agreeing). Not evidence. [dropped]
 
-### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].cost179_a2 — cost179 of a 2025 vehicle
+### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].cost179_o — cost179 (owned, actual expenses)
 Status: **AGREE**
 
-Value: $49,166.83
+Value: $0.00
+
+### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_1].cost179_a2 — cost179 of a 2025 vehicle
+Status: **DISAGREE**
+
+Project: $6,673.89
+Model: $0.00
+Work: Not a 2025 vehicle
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The _o line reads the _a2 copy only for a 2025 vehicle; for this earlier vehicle the _o line and the result are zero (agreeing). Not evidence. [dropped]
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].bm_c — Business miles, as cents
 Status: **DISAGREE**
 
-Project: $299.90
-Model: $29,990.00
-Work: 29,990 business miles
+Project: $299.99
+Model: $29,999.00
+Work: Business miles 29,999
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
 
@@ -546,29 +1222,34 @@ Value: $0.00
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].om_c — Other miles, as cents
 Status: **DISAGREE**
 
-Project: $39.89
-Model: $3,989.00
-Work: 3,989 other miles
+Project: $17.09
+Model: $1,709.00
+Work: Other miles 1,709
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].nonbusiness_c — Commuting and other miles, as cents
 Status: **DISAGREE**
 
-Project: $39.89
-Model: $3,989.00
-Work: 0 + 3,989
+Project: $17.09
+Model: $1,709.00
+Work: 0 + 1,709
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].total_c — Total miles, as cents
 Status: **DISAGREE**
 
-Project: $339.79
-Model: $33,979.00
-Work: 29,990 + 3,989
+Project: $317.08
+Model: $31,708.00
+Work: 29,999 + 1,709
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
+
+### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].no_miles — Actual expenses claimed for a vehicle with no miles
+Status: **AGREE**
+
+Value: no
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].over_half — Business use is more than 50%
 Status: **AGREE**
@@ -583,27 +1264,27 @@ Value: no
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].smr_amount — Business miles times the standard mileage rate
 Status: **AGREE**
 
-Value: $20,993.00
+Value: $20,999.30
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].line9_standard — Standard mileage amount plus parking fees and tolls
 Status: **AGREE**
 
-Value: $21,491.00
+Value: $20,999.30
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].operating_business — The business portion of the operating expenses
 Status: **AGREE**
 
-Value: $0.00
+Value: $673.62
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].line9_actual — Business portion of the operating expenses plus parking fees and tolls
 Status: **AGREE**
 
-Value: $498.00
+Value: $673.62
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].line9 — Car and truck expenses for this vehicle
 Status: **AGREE**
 
-Value: $498.00
+Value: $673.62
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].is_actual_owned — Owned and on actual expenses
 Status: **AGREE**
@@ -618,7 +1299,7 @@ Value: no
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].lease_business — The business portion of the lease payments
 Status: **AGREE**
 
-Value: $2,837.57
+Value: $6,957.63
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].line20a — Rent or lease of this vehicle (business portion)
 Status: **AGREE**
@@ -638,7 +1319,7 @@ Value: no
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].year — Year of recovery in 2025
 Status: **AGREE**
 
-Value: 7
+Value: 5
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].is2025 — Placed in service in 2025
 Status: **AGREE**
@@ -648,12 +1329,12 @@ Value: no
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].is2019 — Placed in service in 2019 (2025 is after the recovery period)
 Status: **AGREE**
 
-Value: yes
+Value: no
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].bus_cost — Business/investment cost (cost times business use)
 Status: **AGREE**
 
-Value: $4,413.02
+Value: $70,806.27
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].s179_bad — The section 179 election is more than the business cost, or than the SUV limit
 Status: **AGREE**
@@ -673,44 +1354,26 @@ Value: no
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].lim_first_bonus — First-year limit with the special allowance
 Status: **DISAGREE**
 
-Project: $5,760.00
+Project: $5,860.00
 Model: $20,200.00
-Work: 2025 table, 1st year
+Work: Table 2 footnote
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].lim_first_none — First-year limit without the special allowance
-Status: **DISAGREE**
-
-Project: $10,100.00
-Model: $12,200.00
-Work: Footnote 1
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].lim_2025 — Limit for a 2025 vehicle
-Status: **DISAGREE**
-
-Project: $10,100.00
-Model: $12,200.00
-Work: No special allowance claimed
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Here the vehicle's key gives the project's value: line 7 reads lim_2025 only for a 2025 vehicle and lim_prior otherwise, and the project looks every limit up by the year actually placed in service and its year of recovery; the model read the 2025 column. Pub. 946 p. 59 table, checked: 1st year 2025 $20,200 (footnote 1: $12,200 without the special allowance), 2nd year 2024 $19,800, 4th and later year 2021 $5,860, 2020 and 2019 $5,760, footnote 6 (2019 without the special allowance) $10,100; the project's tables carry these values. Not evidence. [dropped]
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].lim_prior — Limit for the vehicle's 2025 year of recovery
 Status: **AGREE**
 
-Value: $5,760.00
+Value: $5,860.00
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].line7 — Maximum depreciation deduction for this year from the appropriate table
 Status: **AGREE**
 
-Value: $5,760.00
+Value: $5,860.00
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].line9w — Adjusted maximum depreciation deduction (line 7 times the business/investment-us
 Status: **AGREE**
 
-Value: $5,083.80
+Value: $5,544.16
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].s179_2025_ok — Section 179 elected for a 2025 vehicle
 Status: **AGREE**
@@ -735,7 +1398,7 @@ Value: $0.00
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].line11 — Subtract line 10 from line 9
 Status: **AGREE**
 
-Value: $5,083.80
+Value: $5,544.16
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].line14 — Section 179 deduction claimed in the year you placed the car in service
 Status: **AGREE**
@@ -745,22 +1408,22 @@ Value: $0.00
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].line15 — Tentative basis for depreciation (line 13 less line 14)
 Status: **AGREE**
 
-Value: $4,413.02
+Value: $70,806.27
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].bonus_full — 100% special allowance
 Status: **AGREE**
 
-Value: $4,413.02
+Value: $70,806.27
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].bonus_forty — 40% special allowance
 Status: **AGREE**
 
-Value: $1,765.21
+Value: $28,322.51
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].bonus_fullcase — The allowance when it is claimed: 100% if acquired after January 19, 2025, other
 Status: **AGREE**
 
-Value: $4,413.02
+Value: $28,322.51
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].bonus_2025 — Special allowance for a 2025 vehicle
 Status: **AGREE**
@@ -780,182 +1443,177 @@ Value: $0.00
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].line17 — Limit on the MACRS depreciation (line 11 less line 16)
 Status: **AGREE**
 
-Value: $5,083.80
+Value: $5,544.16
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].line18 — Basis for depreciation (line 15 less line 16)
 Status: **AGREE**
 
-Value: $4,413.02
+Value: $70,806.27
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].qconv — Mid-quarter convention for that quarter
 Status: **AGREE**
 
-Value: mq3
+Value: mq4
+
+### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].rate_hy — MACRS rate, half-year convention
+Status: **AGREE**
+
+Value: 11.52%
+
+### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].rate_mq — MACRS rate, mid-quarter convention
+Status: **AGREE**
+
+Value: 10.94%
+
+### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].rate_prior — MACRS rate for the 2025 year of recovery
+Status: **AGREE**
+
+Value: 10.94%
+
+### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].line19_hy — Line 18 times the half-year rate
+Status: **AGREE**
+
+Value: $8,156.88
+
+### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].line19_mq — Line 18 times the mid-quarter rate
+Status: **AGREE**
+
+Value: $7,746.21
+
+### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].line19_prior — Line 18 times the rate for the 2025 year of recovery
+Status: **AGREE**
+
+Value: $7,746.21
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].line19 — Tentative MACRS depreciation deduction (line 18 times line 6)
 Status: **AGREE**
 
-Value: $0.00
+Value: $7,746.21
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].line19_earlier — Line 19 for a vehicle placed in service before 2025 (zero after the recovery per
 Status: **AGREE**
 
-Value: $0.00
+Value: $7,746.21
+
+### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].line19_2025 — Line 19 for a 2025 vehicle, half-year or mid-quarter
+Status: **AGREE**
+
+Value: $7,746.21
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].line20 — MACRS depreciation deduction (the lesser of line 17 or line 19)
 Status: **AGREE**
 
-Value: $0.00
+Value: $5,544.16
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].b100 — Cost less the section 179 deduction (as if used 100% for business)
 Status: **AGREE**
 
-Value: $5,000.00
+Value: $74,840.00
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].r1 — MACRS rate for year 1
 Status: **AGREE**
 
-Value: 35%
+Value: 5%
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].t1 — Year 1 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $1,750.00
-
-### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].l1 — Year 1 limit (no special allowance)
-Status: **AGREE**
-
-Value: $10,100.00
+Value: $3,742.00
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].t1s — Year 1 section 179 deduction plus MACRS amount
 Status: **AGREE**
 
-Value: $1,750.00
-
-### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].d1 — Year 1 deduction allowable at 100% business use (the lesser of the limit or the 
-Status: **AGREE**
-
-Value: $1,750.00
+Value: $3,742.00
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].r2 — MACRS rate for year 2
 Status: **AGREE**
 
-Value: 26%
+Value: 38%
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].t2 — Year 2 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $1,300.00
+Value: $28,439.20
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].l2 — Year 2 limit
 Status: **AGREE**
 
-Value: $16,100.00
+Value: $16,400.00
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].d2 — Year 2 deduction allowable at 100% business use
 Status: **AGREE**
 
-Value: $1,300.00
+Value: $16,400.00
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].r3 — MACRS rate for year 3
 Status: **AGREE**
 
-Value: 15.6%
+Value: 22.8%
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].t3 — Year 3 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $780.00
+Value: $17,063.52
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].l3 — Year 3 limit
 Status: **AGREE**
 
-Value: $9,700.00
+Value: $9,800.00
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].d3 — Year 3 deduction allowable at 100% business use
 Status: **AGREE**
 
-Value: $780.00
+Value: $9,800.00
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].r4 — MACRS rate for year 4
 Status: **AGREE**
 
-Value: 11.01%
+Value: 13.68%
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].t4 — Year 4 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $550.50
+Value: $10,238.11
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].l4 — Year 4 limit
 Status: **AGREE**
 
-Value: $5,760.00
+Value: $5,860.00
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].d4 — Year 4 deduction allowable at 100% business use
 Status: **AGREE**
 
-Value: $550.50
+Value: $5,860.00
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].r5 — MACRS rate for year 5
 Status: **AGREE**
 
-Value: 11.01%
+Value: 10.94%
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].t5 — Year 5 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $550.50
+Value: $8,187.50
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].l5 — Year 5 limit
 Status: **AGREE**
 
-Value: $5,760.00
+Value: $5,860.00
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].d5 — Year 5 deduction allowable at 100% business use
 Status: **AGREE**
 
-Value: $550.50
+Value: $5,860.00
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].r6 — MACRS rate for year 6
 Status: **AGREE**
 
-Value: 1.38%
+Value: 9.58%
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].t6 — Year 6 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $69.00
-
-### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].l6 — Year 6 limit
-Status: **AGREE**
-
-Value: $5,760.00
-
-### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].d6 — Year 6 deduction allowable at 100% business use
-Status: **AGREE**
-
-Value: $69.00
-
-### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].d_total — Deductions allowable during the recovery period at 100% business use
-Status: **AGREE**
-
-Value: $5,000.00
-
-### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].unrecovered — Unrecovered basis at the end of the recovery period
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].post_amount — The lesser of the limit or the unrecovered basis
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].post — 2025 deduction after the recovery period (times the business use percentage)
-Status: **AGREE**
-
-Value: $0.00
+Value: $7,169.67
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].too_old — Placed in service before 2019
 Status: **AGREE**
@@ -970,17 +1628,17 @@ Value: $0.00
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].macrs_pass — Column (h) for a passenger automobile
 Status: **AGREE**
 
-Value: $0.00
+Value: $5,544.16
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].macrs_heavy — Column (h) for a vehicle not subject to the limits
 Status: **AGREE**
 
-Value: $0.00
+Value: $7,746.21
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].macrs_v — Column (h)
 Status: **AGREE**
 
-Value: $0.00
+Value: $7,746.21
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].bonus — Line 25: special allowance of this vehicle
 Status: **AGREE**
@@ -990,7 +1648,7 @@ Value: $0.00
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].macrs — Column (h): depreciation of this vehicle
 Status: **AGREE**
 
-Value: $0.00
+Value: $7,746.21
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].s179_2025 — Column (i): elected section 179 cost of this vehicle
 Status: **AGREE**
@@ -1020,7 +1678,7 @@ Value: $0.00
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].macrs_o — Depreciation (owned, actual expenses)
 Status: **AGREE**
 
-Value: $0.00
+Value: $7,746.21
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].s179_2025_o — Section 179 (owned, actual expenses)
 Status: **AGREE**
@@ -1030,88 +1688,113 @@ Value: $0.00
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].q4_basis — Basis for the mid-quarter test when placed in service October to December
 Status: **AGREE**
 
-Value: $0.00
+Value: $70,806.27
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].mq_q4_o — mq_q4 (owned, actual expenses)
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $0.00
+Project: $0.00
+Model: $70,806.27
+Work: Owned, actual expenses
+
+Ruling: model error; project retained. For an owned vehicle on actual expenses placed in service in 2021, the mid-quarter test basis is zero: Pub. 946 p. 34, the mid-quarter convention compares 'the total depreciable bases of MACRS property you placed in service during the last 3 months of the tax year' with 'all MACRS property you placed in service during the entire year'; a 2021 vehicle is not property placed in service in 2025. The project's mq_q4_o chooses zero when is2025 is false; the model entered the vehicle's business cost $70,806.27. Not evidence. [dropped]
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].mq_q4_a2 — mq_q4 of a 2025 vehicle
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $0.00
+Project: $70,806.27
+Model: $0.00
+Work: Not a 2025 vehicle
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The _o line reads the _a2 copy only for a 2025 vehicle; for this earlier vehicle the _o line and the result are zero (agreeing). Not evidence. [dropped]
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].mq_total_o — mq_total (owned, actual expenses)
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $0.00
+Project: $0.00
+Model: $70,806.27
+Work: Owned, actual expenses
+
+Ruling: model error; project retained. The mid-quarter test's total basis counts only MACRS property placed in service during 2025 (Pub. 946 p. 34, 'all MACRS property you placed in service during the entire year'); this vehicle was placed in service in 2021, so its contribution is zero, as the project has. The model entered $70,806.27. Not evidence. [dropped]
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].mq_total_a2 — mq_total of a 2025 vehicle
 Status: **DISAGREE**
 
-Project: $4,413.02
+Project: $70,806.27
 Model: $0.00
 Work: Not a 2025 vehicle
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The _o line reads the _a2 copy only for a 2025 vehicle; for this earlier vehicle the _o line and the result are zero (agreeing). Not evidence. [dropped]
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].cost179_o — cost179 (owned, actual expenses)
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $0.00
+Project: $0.00
+Model: $70,806.27
+Work: Owned, actual expenses
+
+Ruling: model error; project retained. This line feeds Form 4562 line 2, 'the total cost of all section 179 property you placed in service during the tax year' (i4562 p. 4, Line 2, including listed property from Part V); a vehicle placed in service in 2021 contributes zero, as the project has. The model entered its business cost $70,806.27. Not evidence. [dropped]
 
 ### classm.scveh.1 — person[taxpayer].sc[biz_b].scveh[car_2].cost179_a2 — cost179 of a 2025 vehicle
 Status: **DISAGREE**
 
-Project: $4,413.02
+Project: $70,806.27
 Model: $0.00
 Work: Not a 2025 vehicle
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The _o line reads the _a2 copy only for a 2025 vehicle; for this earlier vehicle the _o line and the result are zero (agreeing). Not evidence. [dropped]
 
-### case classm.scveh.2 — prompt sha256 068c1de1c94af6e719a0f70b2787ef9e451790fb9c0e360101568b3935b14b4f; branches: scveh.owned:false, scveh.owned:true, scveh.over_half:true, scveh.smr_ok:true, scveh.smr_bad:false, scveh.line9#0, scveh.line9#1, scveh.is_actual_owned:false, scveh.is_actual_owned:true, scveh.is_actual_leased:false, scveh.is_actual_leased:true, scveh.line20a#0, scveh.line20a#1, scveh.low_use:false, scveh.screen:false, scveh.screened:false, scveh.passenger:true, scveh.suv:false, scveh.is2025:false, scveh.is2025:true, scveh.is2019:false, scveh.is2019:true, scveh.s179_bad:false, scveh.after_jan19:false, scveh.after_jan19:true, scveh.bonus_same:true, scveh.bonus_mixed:false, scveh.claims_bonus:false, scveh.lim_2025#1, scveh.line7#0, scveh.line7#1, scveh.line10#0, scveh.line10#1, scveh.line10_2025#0, scveh.s179_line10:left, scveh.line11:positive, scveh.line14#0, scveh.line14#1, scveh.line15:positive, scveh.bonus_fullcase#0, scveh.bonus_fullcase#1, scveh.bonus_2025#2, scveh.line16#0, scveh.line16#1, scveh.bonus_allowed:left, scveh.line17:positive, scveh.line18:positive, scveh.line19#0, scveh.line19#1, scveh.line19_earlier#0, scveh.line19_earlier#1, scveh.line19_2025#1, scveh.line20:right, scveh.b100:positive, scveh.d1:left, scveh.d1:right, scveh.d2:left, scveh.d2:right, scveh.d3:left, scveh.d3:right, scveh.d4:left, scveh.d4:right, scveh.d5:left, scveh.d6:right, scveh.unrecovered:positive, scveh.post_amount:left, scveh.too_old:false, scveh.bonus_v#0, scveh.macrs_pass#0, scveh.macrs_pass#1, scveh.macrs_heavy#0, scveh.macrs_heavy#1, scveh.macrs_v#0, scveh.bonus#0, scveh.bonus#1, scveh.macrs#0, scveh.macrs#1, scveh.s179_2025#0, scveh.s179_2025#1, scveh.mq_q4#0, scveh.mq_q4#1, scveh.mq_total#0, scveh.mq_total#1, scveh.cost179#0, scveh.cost179#1, scveh.q4_basis#0, scveh.q4_basis#2, scveh.q4_basis#3, scveh.mq_q4_o#0, scveh.mq_q4_o#1, scveh.mq_total_o#0, scveh.mq_total_o#1, scveh.cost179_o#0, scveh.cost179_o#1
+### case classm.scveh.2 — prompt sha256 7643574474f5500ccaacf9423d3e802fa4c01f495f450812897717d7dc40169b; branches: scveh.owned:true, scveh.no_miles:false, scveh.over_half:true, scveh.smr_ok:true, scveh.smr_bad:false, scveh.line9#1, scveh.is_actual_owned:true, scveh.is_actual_leased:false, scveh.line20a#1, scveh.low_use:false, scveh.screen:false, scveh.screened:false, scveh.passenger:true, scveh.suv:false, scveh.is2025:false, scveh.is2025:true, scveh.is2019:false, scveh.is2019:true, scveh.s179_bad:false, scveh.after_jan19:true, scveh.bonus_same:true, scveh.bonus_mixed:false, scveh.claims_bonus:false, scveh.claims_bonus:true, scveh.lim_2025#0, scveh.lim_2025#1, scveh.line7#0, scveh.line7#1, scveh.line10#0, scveh.line10#1, scveh.line10_2025#0, scveh.s179_line10:left, scveh.line11:positive, scveh.line14#0, scveh.line14#1, scveh.line15:positive, scveh.bonus_fullcase#0, scveh.bonus_2025#0, scveh.bonus_2025#2, scveh.line16#0, scveh.line16#1, scveh.bonus_allowed:left, scveh.bonus_allowed:right, scveh.line17:floor, scveh.line17:positive, scveh.line18:floor, scveh.line18:positive, scveh.line19#0, scveh.line19#1, scveh.line19_earlier#0, scveh.line19_earlier#1, scveh.line19_2025#0, scveh.line20:left, scveh.line20:right, scveh.b100:positive, scveh.d1:right, scveh.d2:right, scveh.d3:right, scveh.d4:right, scveh.d5:right, scveh.d6:right, scveh.unrecovered:floor, scveh.post_amount:right, scveh.too_old:false, scveh.bonus_v#0, scveh.macrs_pass#0, scveh.macrs_pass#1, scveh.macrs_heavy#0, scveh.macrs_heavy#1, scveh.macrs_v#0, scveh.bonus#0, scveh.macrs#0, scveh.s179_2025#0, scveh.mq_q4#0, scveh.mq_total#0, scveh.cost179#0, scveh.q4_basis#1, scveh.q4_basis#2, scveh.mq_q4_o#0, scveh.mq_q4_o#1, scveh.mq_total_o#0, scveh.mq_total_o#1, scveh.cost179_o#0, scveh.cost179_o#1
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].bm_c — Business miles, as cents
 Status: **DISAGREE**
 
-Project: $242.89
-Model: $24,289.00
-Work: Business miles 24,289
+Project: $259.42
+Model: $25,942.00
+Work: Business miles 25,942
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].cm_c — Commuting miles, as cents
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $0.00
+Project: $8.61
+Model: $861.00
+Work: Commuting miles 861
+
+Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].om_c — Other miles, as cents
 Status: **DISAGREE**
 
-Project: $39.62
-Model: $3,962.00
-Work: Other miles 3,962
+Project: $17.90
+Model: $1,790.00
+Work: Other miles 1,790
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].nonbusiness_c — Commuting and other miles, as cents
 Status: **DISAGREE**
 
-Project: $39.62
-Model: $3,962.00
-Work: 0 + 3,962
+Project: $26.51
+Model: $2,651.00
+Work: 861 + 1,790
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].total_c — Total miles, as cents
 Status: **DISAGREE**
 
-Project: $282.51
-Model: $28,251.00
-Work: 24,289 + 3,962
+Project: $285.93
+Model: $28,593.00
+Work: 25,942 + 2,651
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
+
+### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].no_miles — Actual expenses claimed for a vehicle with no miles
+Status: **AGREE**
+
+Value: no
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].over_half — Business use is more than 50%
 Status: **AGREE**
@@ -1126,39 +1809,27 @@ Value: no
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].smr_amount — Business miles times the standard mileage rate
 Status: **AGREE**
 
-Value: $17,002.30
+Value: $18,159.40
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].line9_standard — Standard mileage amount plus parking fees and tolls
 Status: **AGREE**
 
-Value: $17,002.30
+Value: $18,159.40
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].operating_business — The business portion of the operating expenses
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $4,585.08
-Model: $4,585.09
-Work: 5,333 x 24,289/28,251
-
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Value: $0.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].line9_actual — Business portion of the operating expenses plus parking fees and tolls
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $4,585.08
-Model: $4,585.09
-Work: 4,585.09 + 0
-
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Value: $0.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].line9 — Car and truck expenses for this vehicle
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $4,585.08
-Model: $4,585.09
-Work: Actual expenses chosen
-
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Value: $0.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].is_actual_owned — Owned and on actual expenses
 Status: **AGREE**
@@ -1193,7 +1864,7 @@ Value: no
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].year — Year of recovery in 2025
 Status: **AGREE**
 
-Value: 4
+Value: 7
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].is2025 — Placed in service in 2025
 Status: **AGREE**
@@ -1203,16 +1874,12 @@ Value: no
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].is2019 — Placed in service in 2019 (2025 is after the recovery period)
 Status: **AGREE**
 
-Value: no
+Value: yes
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].bus_cost — Business/investment cost (cost times business use)
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $23,668.25
-Model: $23,668.26
-Work: 27,529 x 24,289/28,251
-
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Value: $14,313.33
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].s179_bad — The section 179 election is more than the business cost, or than the SUV limit
 Status: **AGREE**
@@ -1232,26 +1899,44 @@ Value: no
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].lim_first_bonus — First-year limit with the special allowance
 Status: **DISAGREE**
 
-Project: $6,460.00
+Project: $5,760.00
 Model: $20,200.00
-Work: 2025 first-year limit with special allowance
+Work: Table 2 footnote: 2025 limit with special allowance
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Here the vehicle's key gives the project's value: line 7 reads lim_2025 only for a 2025 vehicle and lim_prior otherwise, and the project looks every limit up by the year actually placed in service and its year of recovery; the model read the 2025 column. Pub. 946 p. 59 table, checked: 1st year 2025 $20,200 (footnote 1: $12,200 without the special allowance), 2nd year 2024 $19,800, 4th and later year 2021 $5,860, 2020 and 2019 $5,760, footnote 6 (2019 without the special allowance) $10,100; the project's tables carry these values. Not evidence. [dropped]
+
+### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].lim_first_none — First-year limit without the special allowance
+Status: **DISAGREE**
+
+Project: $10,100.00
+Model: $12,200.00
+Work: Table 2: 2025 year 1 limit
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Here the vehicle's key gives the project's value: line 7 reads lim_2025 only for a 2025 vehicle and lim_prior otherwise, and the project looks every limit up by the year actually placed in service and its year of recovery; the model read the 2025 column. Pub. 946 p. 59 table, checked: 1st year 2025 $20,200 (footnote 1: $12,200 without the special allowance), 2nd year 2024 $19,800, 4th and later year 2021 $5,860, 2020 and 2019 $5,760, footnote 6 (2019 without the special allowance) $10,100; the project's tables carry these values. Not evidence. [dropped]
+
+### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].lim_2025 — Limit for a 2025 vehicle
+Status: **DISAGREE**
+
+Project: $10,100.00
+Model: $12,200.00
+Work: No special allowance claimed
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Here the vehicle's key gives the project's value: line 7 reads lim_2025 only for a 2025 vehicle and lim_prior otherwise, and the project looks every limit up by the year actually placed in service and its year of recovery; the model read the 2025 column. Pub. 946 p. 59 table, checked: 1st year 2025 $20,200 (footnote 1: $12,200 without the special allowance), 2nd year 2024 $19,800, 4th and later year 2021 $5,860, 2020 and 2019 $5,760, footnote 6 (2019 without the special allowance) $10,100; the project's tables carry these values. Not evidence. [dropped]
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].lim_prior — Limit for the vehicle's 2025 year of recovery
 Status: **AGREE**
 
-Value: $6,460.00
+Value: $5,760.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].line7 — Maximum depreciation deduction for this year from the appropriate table
 Status: **AGREE**
 
-Value: $6,460.00
+Value: $5,760.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].line9w — Adjusted maximum depreciation deduction (line 7 times the business/investment-us
 Status: **AGREE**
 
-Value: $5,554.03
+Value: $5,225.96
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].s179_2025_ok — Section 179 elected for a 2025 vehicle
 Status: **AGREE**
@@ -1276,7 +1961,7 @@ Value: $0.00
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].line11 — Subtract line 10 from line 9
 Status: **AGREE**
 
-Value: $5,554.03
+Value: $5,225.96
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].line14 — Section 179 deduction claimed in the year you placed the car in service
 Status: **AGREE**
@@ -1284,36 +1969,24 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].line15 — Tentative basis for depreciation (line 13 less line 14)
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $23,668.25
-Model: $23,668.26
-Work: 23,668.26 - 0
-
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Value: $14,313.33
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].bonus_full — 100% special allowance
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $23,668.25
-Model: $23,668.26
-Work: Line 15 x 100%
-
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Value: $14,313.33
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].bonus_forty — 40% special allowance
 Status: **AGREE**
 
-Value: $9,467.30
+Value: $5,725.33
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].bonus_fullcase — The allowance when it is claimed: 100% if acquired after January 19, 2025, other
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $23,668.25
-Model: $23,668.26
-Work: Acquired after 1/19/2025, so 100%
-
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Value: $14,313.33
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].bonus_2025 — Special allowance for a 2025 vehicle
 Status: **AGREE**
@@ -1333,191 +2006,182 @@ Value: $0.00
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].line17 — Limit on the MACRS depreciation (line 11 less line 16)
 Status: **AGREE**
 
-Value: $5,554.03
+Value: $5,225.96
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].line18 — Basis for depreciation (line 15 less line 16)
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $23,668.25
-Model: $23,668.26
-Work: 23,668.26 - 0
-
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Value: $14,313.33
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].qconv — Mid-quarter convention for that quarter
 Status: **AGREE**
 
-Value: mq4
-
-### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].rate_hy — MACRS rate, half-year convention
-Status: **DISAGREE**
-
-Project: 11.52%
-Model: 20%
-Work: 5-year 200DB half-year, year 1
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].rate_mq — MACRS rate, mid-quarter convention
-Status: **DISAGREE**
-
-Project: 13.68%
-Model: 5%
-Work: 5-year mid-quarter Q4, year 1
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].rate_prior — MACRS rate for the 2025 year of recovery
-Status: **AGREE**
-
-Value: 11.52%
-
-### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].line19_hy — Line 18 times the half-year rate
-Status: **DISAGREE**
-
-Project: $2,726.58
-Model: $4,733.65
-Work: 23,668.26 x 20%
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].line19_mq — Line 18 times the mid-quarter rate
-Status: **DISAGREE**
-
-Project: $3,237.82
-Model: $1,183.41
-Work: 23,668.26 x 5%
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].line19_prior — Line 18 times the rate for the 2025 year of recovery
-Status: **AGREE**
-
-Value: $2,726.58
+Value: mq3
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].line19 — Tentative MACRS depreciation deduction (line 18 times line 6)
 Status: **AGREE**
 
-Value: $2,726.58
+Value: $0.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].line19_earlier — Line 19 for a vehicle placed in service before 2025 (zero after the recovery per
 Status: **AGREE**
 
-Value: $2,726.58
-
-### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].line19_2025 — Line 19 for a 2025 vehicle, half-year or mid-quarter
-Status: **DISAGREE**
-
-Project: $3,237.82
-Model: $1,183.41
-Work: Mid-quarter test is yes, so the MQ amount is used
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Value: $0.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].line20 — MACRS depreciation deduction (the lesser of line 17 or line 19)
 Status: **AGREE**
 
-Value: $2,726.58
+Value: $0.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].b100 — Cost less the section 179 deduction (as if used 100% for business)
 Status: **AGREE**
 
-Value: $27,529.00
+Value: $15,776.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].r1 — MACRS rate for year 1
 Status: **AGREE**
 
-Value: 20%
+Value: 35%
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].t1 — Year 1 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $5,505.80
+Value: $5,521.60
+
+### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].l1 — Year 1 limit (no special allowance)
+Status: **AGREE**
+
+Value: $10,100.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].t1s — Year 1 section 179 deduction plus MACRS amount
 Status: **AGREE**
 
-Value: $5,505.80
+Value: $5,521.60
+
+### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].d1 — Year 1 deduction allowable at 100% business use (the lesser of the limit or the 
+Status: **AGREE**
+
+Value: $5,521.60
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].r2 — MACRS rate for year 2
 Status: **AGREE**
 
-Value: 32%
+Value: 26%
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].t2 — Year 2 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $8,809.28
+Value: $4,101.76
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].l2 — Year 2 limit
 Status: **AGREE**
 
-Value: $18,000.00
+Value: $16,100.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].d2 — Year 2 deduction allowable at 100% business use
 Status: **AGREE**
 
-Value: $8,809.28
+Value: $4,101.76
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].r3 — MACRS rate for year 3
 Status: **AGREE**
 
-Value: 19.2%
+Value: 15.6%
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].t3 — Year 3 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $5,285.57
+Value: $2,461.06
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].l3 — Year 3 limit
 Status: **AGREE**
 
-Value: $10,800.00
+Value: $9,700.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].d3 — Year 3 deduction allowable at 100% business use
 Status: **AGREE**
 
-Value: $5,285.57
+Value: $2,461.06
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].r4 — MACRS rate for year 4
 Status: **AGREE**
 
-Value: 11.52%
+Value: 11.01%
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].t4 — Year 4 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $3,171.34
+Value: $1,736.94
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].l4 — Year 4 limit
 Status: **AGREE**
 
-Value: $6,460.00
+Value: $5,760.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].d4 — Year 4 deduction allowable at 100% business use
 Status: **AGREE**
 
-Value: $3,171.34
+Value: $1,736.94
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].r5 — MACRS rate for year 5
 Status: **AGREE**
 
-Value: 11.52%
+Value: 11.01%
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].t5 — Year 5 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $3,171.34
+Value: $1,736.94
+
+### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].l5 — Year 5 limit
+Status: **AGREE**
+
+Value: $5,760.00
+
+### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].d5 — Year 5 deduction allowable at 100% business use
+Status: **AGREE**
+
+Value: $1,736.94
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].r6 — MACRS rate for year 6
 Status: **AGREE**
 
-Value: 5.76%
+Value: 1.38%
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].t6 — Year 6 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $1,585.67
+Value: $217.71
+
+### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].l6 — Year 6 limit
+Status: **AGREE**
+
+Value: $5,760.00
+
+### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].d6 — Year 6 deduction allowable at 100% business use
+Status: **AGREE**
+
+Value: $217.71
+
+### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].d_total — Deductions allowable during the recovery period at 100% business use
+Status: **AGREE**
+
+Value: $15,776.01
+
+### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].unrecovered — Unrecovered basis at the end of the recovery period
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].post_amount — The lesser of the limit or the unrecovered basis
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].post — 2025 deduction after the recovery period (times the business use percentage)
+Status: **AGREE**
+
+Value: $0.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].too_old — Placed in service before 2019
 Status: **AGREE**
@@ -1532,17 +2196,17 @@ Value: $0.00
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].macrs_pass — Column (h) for a passenger automobile
 Status: **AGREE**
 
-Value: $2,726.58
+Value: $0.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].macrs_heavy — Column (h) for a vehicle not subject to the limits
 Status: **AGREE**
 
-Value: $2,726.58
+Value: $0.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].macrs_v — Column (h)
 Status: **AGREE**
 
-Value: $2,726.58
+Value: $0.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].bonus — Line 25: special allowance of this vehicle
 Status: **AGREE**
@@ -1552,7 +2216,7 @@ Value: $0.00
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].macrs — Column (h): depreciation of this vehicle
 Status: **AGREE**
 
-Value: $2,726.58
+Value: $0.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].s179_2025 — Column (i): elected section 179 cost of this vehicle
 Status: **AGREE**
@@ -1582,7 +2246,7 @@ Value: $0.00
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].macrs_o — Depreciation (owned, actual expenses)
 Status: **AGREE**
 
-Value: $2,726.58
+Value: $0.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].s179_2025_o — Section 179 (owned, actual expenses)
 Status: **AGREE**
@@ -1590,13 +2254,9 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].q4_basis — Basis for the mid-quarter test when placed in service October to December
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $23,668.25
-Model: $23,668.26
-Work: Q4; business cost less 0 section 179
-
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Value: $0.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].mq_q4_o — mq_q4 (owned, actual expenses)
 Status: **AGREE**
@@ -1604,13 +2264,9 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].mq_q4_a2 — mq_q4 of a 2025 vehicle
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $23,668.25
-Model: $0.00
-Work: Not a 2025 vehicle
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Value: $0.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].mq_total_o — mq_total (owned, actual expenses)
 Status: **AGREE**
@@ -1618,13 +2274,9 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].mq_total_a2 — mq_total of a 2025 vehicle
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $23,668.25
-Model: $0.00
-Work: Not a 2025 vehicle
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Value: $14,313.33
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].cost179_o — cost179 (owned, actual expenses)
 Status: **AGREE**
@@ -1632,20 +2284,16 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_1].cost179_a2 — cost179 of a 2025 vehicle
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $23,668.25
-Model: $0.00
-Work: Not a 2025 vehicle
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Value: $14,313.33
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].bm_c — Business miles, as cents
 Status: **DISAGREE**
 
-Project: $90.83
-Model: $9,083.00
-Work: Business miles 9,083
+Project: $124.62
+Model: $12,462.00
+Work: Business miles 12,462
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
 
@@ -1657,29 +2305,34 @@ Value: $0.00
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].om_c — Other miles, as cents
 Status: **DISAGREE**
 
-Project: $38.40
-Model: $3,840.00
-Work: Other miles 3,840
+Project: $9.37
+Model: $937.00
+Work: Other miles 937
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].nonbusiness_c — Commuting and other miles, as cents
 Status: **DISAGREE**
 
-Project: $38.40
-Model: $3,840.00
-Work: 0 + 3,840
+Project: $9.37
+Model: $937.00
+Work: 0 + 937
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].total_c — Total miles, as cents
 Status: **DISAGREE**
 
-Project: $129.23
-Model: $12,923.00
-Work: 9,083 + 3,840
+Project: $133.99
+Model: $13,399.00
+Work: 12,462 + 937
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
+
+### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].no_miles — Actual expenses claimed for a vehicle with no miles
+Status: **AGREE**
+
+Value: no
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].over_half — Business use is more than 50%
 Status: **AGREE**
@@ -1694,32 +2347,32 @@ Value: no
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].smr_amount — Business miles times the standard mileage rate
 Status: **AGREE**
 
-Value: $6,358.10
+Value: $8,723.40
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].line9_standard — Standard mileage amount plus parking fees and tolls
 Status: **AGREE**
 
-Value: $6,358.10
+Value: $8,723.40
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].operating_business — The business portion of the operating expenses
 Status: **AGREE**
 
-Value: $1,797.90
+Value: $1,506.71
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].line9_actual — Business portion of the operating expenses plus parking fees and tolls
 Status: **AGREE**
 
-Value: $1,797.90
+Value: $1,506.71
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].line9 — Car and truck expenses for this vehicle
 Status: **AGREE**
 
-Value: $6,358.10
+Value: $1,506.71
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].is_actual_owned — Owned and on actual expenses
 Status: **AGREE**
 
-Value: no
+Value: yes
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].is_actual_leased — Leased and on actual expenses
 Status: **AGREE**
@@ -1729,7 +2382,7 @@ Value: no
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].lease_business — The business portion of the lease payments
 Status: **AGREE**
 
-Value: $616.40
+Value: $0.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].line20a — Rent or lease of this vehicle (business portion)
 Status: **AGREE**
@@ -1749,26 +2402,26 @@ Value: no
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].year — Year of recovery in 2025
 Status: **AGREE**
 
-Value: 7
+Value: 1
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].is2025 — Placed in service in 2025
 Status: **AGREE**
 
-Value: no
+Value: yes
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].is2019 — Placed in service in 2019 (2025 is after the recovery period)
 Status: **AGREE**
 
-Value: yes
+Value: no
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].bus_cost — Business/investment cost (cost times business use)
 Status: **DISAGREE**
 
-Project: $43,844.09
-Model: $43,844.12
-Work: 62,380 x 9,083/12,923
+Project: $47,544.20
+Model: $47,544.22
+Work: 51,119 x 12,462/13,399
 
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].s179_bad — The section 179 election is more than the business cost, or than the SUV limit
 Status: **AGREE**
@@ -1783,53 +2436,41 @@ Value: no
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].claims_bonus — A special allowance is claimed
 Status: **AGREE**
 
-Value: no
+Value: yes
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].lim_first_bonus — First-year limit with the special allowance
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $5,760.00
-Model: $20,200.00
-Work: 2025 table, year 1
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Value: $20,200.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].lim_first_none — First-year limit without the special allowance
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $10,100.00
-Model: $12,200.00
-Work: 2025 table footnote 1
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Value: $12,200.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].lim_2025 — Limit for a 2025 vehicle
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $10,100.00
-Model: $12,200.00
-Work: No special allowance claimed
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Value: $20,200.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].lim_prior — Limit for the vehicle's 2025 year of recovery
 Status: **AGREE**
 
-Value: $5,760.00
+Value: $20,200.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].line7 — Maximum depreciation deduction for this year from the appropriate table
 Status: **AGREE**
 
-Value: $5,760.00
+Value: $20,200.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].line9w — Adjusted maximum depreciation deduction (line 7 times the business/investment-us
 Status: **DISAGREE**
 
-Project: $4,048.44
-Model: $4,048.45
-Work: 5,760 x 9,083/12,923
+Project: $18,787.39
+Model: $18,787.40
+Work: 20,200 x 12,462/13,399
 
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].s179_2025_ok — Section 179 elected for a 2025 vehicle
 Status: **AGREE**
@@ -1854,11 +2495,11 @@ Value: $0.00
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].line11 — Subtract line 10 from line 9
 Status: **DISAGREE**
 
-Project: $4,048.44
-Model: $4,048.45
-Work: 4,048.45 - 0
+Project: $18,787.39
+Model: $18,787.40
+Work: 18,787.40 - 0
 
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].line14 — Section 179 deduction claimed in the year you placed the car in service
 Status: **AGREE**
@@ -1868,76 +2509,110 @@ Value: $0.00
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].line15 — Tentative basis for depreciation (line 13 less line 14)
 Status: **DISAGREE**
 
-Project: $43,844.09
-Model: $43,844.12
-Work: 43,844.12 - 0
+Project: $47,544.20
+Model: $47,544.22
+Work: 47,544.22 - 0
 
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].bonus_full — 100% special allowance
 Status: **DISAGREE**
 
-Project: $43,844.09
-Model: $43,844.12
-Work: Line 15 x 100%
+Project: $47,544.20
+Model: $47,544.22
+Work: 47,544.22 x 100%
 
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].bonus_forty — 40% special allowance
 Status: **DISAGREE**
 
-Project: $17,537.64
-Model: $17,537.65
-Work: Line 15 x 40%
+Project: $19,017.68
+Model: $19,017.69
+Work: 47,544.22 x 40%
 
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].bonus_fullcase — The allowance when it is claimed: 100% if acquired after January 19, 2025, other
 Status: **DISAGREE**
 
-Project: $17,537.64
-Model: $17,537.65
-Work: Not acquired after 1/19/2025, so 40%
+Project: $47,544.20
+Model: $47,544.22
+Work: Acquired after Jan 19, 2025, so 100%
 
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].bonus_2025 — Special allowance for a 2025 vehicle
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $0.00
+Project: $47,544.20
+Model: $47,544.22
+Work: Special allowance claimed (full)
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].line16 — Special depreciation allowance
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $0.00
+Project: $47,544.20
+Model: $47,544.22
+Work: Placed in service in 2025
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].bonus_allowed — Special depreciation allowance allowed (not more than line 11)
+Status: **DISAGREE**
+
+Project: $18,787.39
+Model: $18,787.40
+Work: Smaller of 47,544.22 or line 11 of 18,787.40
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].line17 — Limit on the MACRS depreciation (line 11 less line 16)
 Status: **AGREE**
 
 Value: $0.00
 
-### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].line17 — Limit on the MACRS depreciation (line 11 less line 16)
-Status: **DISAGREE**
-
-Project: $4,048.44
-Model: $4,048.45
-Work: 4,048.45 - 0
-
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
-
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].line18 — Basis for depreciation (line 15 less line 16)
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $43,844.09
-Model: $43,844.12
-Work: 43,844.12 - 0
-
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Value: $0.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].qconv — Mid-quarter convention for that quarter
 Status: **AGREE**
 
-Value: mq1
+Value: mq2
+
+### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].rate_hy — MACRS rate, half-year convention
+Status: **AGREE**
+
+Value: 20%
+
+### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].rate_mq — MACRS rate, mid-quarter convention
+Status: **AGREE**
+
+Value: 25%
+
+### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].rate_prior — MACRS rate for the 2025 year of recovery
+Status: **AGREE**
+
+Value: 5%
+
+### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].line19_hy — Line 18 times the half-year rate
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].line19_mq — Line 18 times the mid-quarter rate
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].line19_prior — Line 18 times the rate for the 2025 year of recovery
+Status: **AGREE**
+
+Value: $0.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].line19 — Tentative MACRS depreciation deduction (line 18 times line 6)
 Status: **AGREE**
@@ -1945,6 +2620,11 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].line19_earlier — Line 19 for a vehicle placed in service before 2025 (zero after the recovery per
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].line19_2025 — Line 19 for a 2025 vehicle, half-year or mid-quarter
 Status: **AGREE**
 
 Value: $0.00
@@ -1957,156 +2637,82 @@ Value: $0.00
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].b100 — Cost less the section 179 deduction (as if used 100% for business)
 Status: **AGREE**
 
-Value: $62,380.00
+Value: $51,119.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].r1 — MACRS rate for year 1
 Status: **AGREE**
 
-Value: 20%
+Value: 5%
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].t1 — Year 1 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $12,476.00
+Value: $2,555.95
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].l1 — Year 1 limit (no special allowance)
 Status: **AGREE**
 
-Value: $10,100.00
+Value: $12,200.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].t1s — Year 1 section 179 deduction plus MACRS amount
 Status: **AGREE**
 
-Value: $12,476.00
+Value: $2,555.95
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].d1 — Year 1 deduction allowable at 100% business use (the lesser of the limit or the 
 Status: **AGREE**
 
-Value: $10,100.00
+Value: $2,555.95
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].r2 — MACRS rate for year 2
 Status: **AGREE**
 
-Value: 32%
+Value: 38%
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].t2 — Year 2 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $19,961.60
-
-### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].l2 — Year 2 limit
-Status: **AGREE**
-
-Value: $16,100.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].d2 — Year 2 deduction allowable at 100% business use
-Status: **AGREE**
-
-Value: $16,100.00
+Value: $19,425.22
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].r3 — MACRS rate for year 3
 Status: **AGREE**
 
-Value: 19.2%
+Value: 22.8%
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].t3 — Year 3 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $11,976.96
-
-### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].l3 — Year 3 limit
-Status: **AGREE**
-
-Value: $9,700.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].d3 — Year 3 deduction allowable at 100% business use
-Status: **AGREE**
-
-Value: $9,700.00
+Value: $11,655.13
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].r4 — MACRS rate for year 4
 Status: **AGREE**
 
-Value: 11.52%
+Value: 13.68%
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].t4 — Year 4 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $7,186.18
-
-### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].l4 — Year 4 limit
-Status: **AGREE**
-
-Value: $5,760.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].d4 — Year 4 deduction allowable at 100% business use
-Status: **AGREE**
-
-Value: $5,760.00
+Value: $6,993.08
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].r5 — MACRS rate for year 5
 Status: **AGREE**
 
-Value: 11.52%
+Value: 10.94%
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].t5 — Year 5 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $7,186.18
-
-### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].l5 — Year 5 limit
-Status: **AGREE**
-
-Value: $5,760.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].d5 — Year 5 deduction allowable at 100% business use
-Status: **AGREE**
-
-Value: $5,760.00
+Value: $5,592.42
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].r6 — MACRS rate for year 6
 Status: **AGREE**
 
-Value: 5.76%
+Value: 9.58%
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].t6 — Year 6 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $3,593.09
-
-### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].l6 — Year 6 limit
-Status: **AGREE**
-
-Value: $5,760.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].d6 — Year 6 deduction allowable at 100% business use
-Status: **AGREE**
-
-Value: $3,593.09
-
-### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].d_total — Deductions allowable during the recovery period at 100% business use
-Status: **AGREE**
-
-Value: $51,013.09
-
-### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].unrecovered — Unrecovered basis at the end of the recovery period
-Status: **AGREE**
-
-Value: $11,366.91
-
-### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].post_amount — The lesser of the limit or the unrecovered basis
-Status: **AGREE**
-
-Value: $5,760.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].post — 2025 deduction after the recovery period (times the business use percentage)
-Status: **DISAGREE**
-
-Project: $4,048.44
-Model: $4,048.45
-Work: 5,760 x 9,083/12,923
-
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Value: $4,897.20
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].too_old — Placed in service before 2019
 Status: **AGREE**
@@ -2114,18 +2720,18 @@ Status: **AGREE**
 Value: no
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].bonus_v — Special allowance for this vehicle (line 25)
+Status: **DISAGREE**
+
+Project: $18,787.39
+Model: $18,787.40
+Work: bonus_allowed
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].macrs_pass — Column (h) for a passenger automobile
 Status: **AGREE**
 
 Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].macrs_pass — Column (h) for a passenger automobile
-Status: **DISAGREE**
-
-Project: $4,048.44
-Model: $4,048.45
-Work: 2019 vehicle: post-recovery amount
-
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].macrs_heavy — Column (h) for a vehicle not subject to the limits
 Status: **AGREE**
@@ -2133,18 +2739,18 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].macrs_v — Column (h)
-Status: **DISAGREE**
-
-Project: $4,048.44
-Model: $4,048.45
-Work: Subject to the passenger auto limits
-
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
-
-### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].bonus — Line 25: special allowance of this vehicle
 Status: **AGREE**
 
 Value: $0.00
+
+### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].bonus — Line 25: special allowance of this vehicle
+Status: **DISAGREE**
+
+Project: $18,787.39
+Model: $18,787.40
+Work: bonus_v
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].macrs — Column (h): depreciation of this vehicle
 Status: **AGREE**
@@ -2162,28 +2768,36 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].mq_total — Mid-quarter test basis, 2025 of this vehicle
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].cost179 — Cost of section 179 property placed in service in 2025 of this vehicle
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].bonus_o — Special allowance (owned, actual expenses)
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].macrs_o — Depreciation (owned, actual expenses)
 Status: **DISAGREE**
 
-Project: $4,048.44
-Model: $0.00
-Work: Not owned with actual expenses
+Project: $47,544.20
+Model: $47,544.22
+Work: Business cost - section 179 of 0
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].cost179 — Cost of section 179 property placed in service in 2025 of this vehicle
+Status: **DISAGREE**
+
+Project: $47,544.20
+Model: $47,544.22
+Work: Business cost of listed property
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].bonus_o — Special allowance (owned, actual expenses)
+Status: **DISAGREE**
+
+Project: $18,787.39
+Model: $18,787.40
+Work: Owned, actual expenses
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].macrs_o — Depreciation (owned, actual expenses)
+Status: **AGREE**
+
+Value: $0.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].s179_2025_o — Section 179 (owned, actual expenses)
 Status: **AGREE**
@@ -2206,1087 +2820,88 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].mq_total_o — mq_total (owned, actual expenses)
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $0.00
+Project: $47,544.20
+Model: $47,544.22
+Work: 2025 vehicle
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].mq_total_a2 — mq_total of a 2025 vehicle
 Status: **DISAGREE**
 
-Project: $43,844.09
-Model: $0.00
-Work: Not a 2025 vehicle
+Project: $47,544.20
+Model: $47,544.22
+Work: 47,544.22 - 0
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].cost179_o — cost179 (owned, actual expenses)
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $0.00
+Project: $47,544.20
+Model: $47,544.22
+Work: 2025 vehicle
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.2 — person[taxpayer].sc[biz_a].scveh[car_2].cost179_a2 — cost179 of a 2025 vehicle
 Status: **DISAGREE**
 
-Project: $43,844.09
-Model: $0.00
-Work: Not a 2025 vehicle
+Project: $47,544.20
+Model: $47,544.22
+Work: Business cost
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].bm_c — Business miles, as cents
-Status: **DISAGREE**
-
-Project: $31.35
-Model: $3,135.00
-Work: Business miles 3,135
-
-Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].cm_c — Commuting miles, as cents
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].om_c — Other miles, as cents
-Status: **DISAGREE**
-
-Project: $4.07
-Model: $407.00
-Work: Other miles 407
-
-Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].nonbusiness_c — Commuting and other miles, as cents
-Status: **DISAGREE**
-
-Project: $4.07
-Model: $407.00
-Work: 0 + 407
-
-Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].total_c — Total miles, as cents
-Status: **DISAGREE**
-
-Project: $35.42
-Model: $3,542.00
-Work: 3,135 + 407
-
-Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].over_half — Business use is more than 50%
-Status: **AGREE**
-
-Value: yes
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].smr_bad — The standard mileage rate is not available for this vehicle
-Status: **AGREE**
-
-Value: no
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].smr_amount — Business miles times the standard mileage rate
-Status: **AGREE**
-
-Value: $2,194.50
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].line9_standard — Standard mileage amount plus parking fees and tolls
-Status: **AGREE**
-
-Value: $2,194.50
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].operating_business — The business portion of the operating expenses
-Status: **AGREE**
-
-Value: $1,339.15
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].line9_actual — Business portion of the operating expenses plus parking fees and tolls
-Status: **AGREE**
-
-Value: $1,339.15
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].line9 — Car and truck expenses for this vehicle
-Status: **AGREE**
-
-Value: $2,194.50
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].is_actual_owned — Owned and on actual expenses
-Status: **AGREE**
-
-Value: no
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].is_actual_leased — Leased and on actual expenses
-Status: **AGREE**
-
-Value: no
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].lease_business — The business portion of the lease payments
-Status: **AGREE**
-
-Value: $2,418.96
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].line20a — Rent or lease of this vehicle (business portion)
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].low_use — Business use is 50% or less
-Status: **AGREE**
-
-Value: no
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].screened — This vehicle's depreciation is outside this tool
-Status: **AGREE**
-
-Value: no
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].year — Year of recovery in 2025
-Status: **AGREE**
-
-Value: 1
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].is2025 — Placed in service in 2025
-Status: **AGREE**
-
-Value: yes
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].is2019 — Placed in service in 2019 (2025 is after the recovery period)
-Status: **AGREE**
-
-Value: no
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].bus_cost — Business/investment cost (cost times business use)
-Status: **AGREE**
-
-Value: $12,031.07
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].s179_bad — The section 179 election is more than the business cost, or than the SUV limit
-Status: **AGREE**
-
-Value: no
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].bonus_mixed — The special allowance choice differs within the 5-year class
-Status: **AGREE**
-
-Value: no
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].claims_bonus — A special allowance is claimed
-Status: **AGREE**
-
-Value: no
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].lim_first_bonus — First-year limit with the special allowance
-Status: **AGREE**
-
-Value: $20,200.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].lim_first_none — First-year limit without the special allowance
-Status: **AGREE**
-
-Value: $12,200.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].lim_2025 — Limit for a 2025 vehicle
-Status: **AGREE**
-
-Value: $12,200.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].lim_prior — Limit for the vehicle's 2025 year of recovery
-Status: **AGREE**
-
-Value: $20,200.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].line7 — Maximum depreciation deduction for this year from the appropriate table
-Status: **AGREE**
-
-Value: $12,200.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].line9w — Adjusted maximum depreciation deduction (line 7 times the business/investment-us
-Status: **DISAGREE**
-
-Project: $10,798.13
-Model: $10,798.14
-Work: 12,200 x 3,135/3,542
-
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].s179_2025_ok — Section 179 elected for a 2025 vehicle
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].line10 — Section 179 deduction claimed this year (not more than line 9 for a passenger au
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].line10_2025 — Section 179 for a 2025 vehicle: not more than line 9 for a passenger automobile
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].s179_line10 — The section 179 election, not more than line 9
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].line11 — Subtract line 10 from line 9
-Status: **DISAGREE**
-
-Project: $10,798.13
-Model: $10,798.14
-Work: 10,798.14 - 0
-
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].line14 — Section 179 deduction claimed in the year you placed the car in service
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].line15 — Tentative basis for depreciation (line 13 less line 14)
-Status: **AGREE**
-
-Value: $12,031.07
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].bonus_full — 100% special allowance
-Status: **AGREE**
-
-Value: $12,031.07
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].bonus_forty — 40% special allowance
-Status: **AGREE**
-
-Value: $4,812.43
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].bonus_fullcase — The allowance when it is claimed: 100% if acquired after January 19, 2025, other
-Status: **AGREE**
-
-Value: $12,031.07
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].bonus_2025 — Special allowance for a 2025 vehicle
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].line16 — Special depreciation allowance
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].bonus_allowed — Special depreciation allowance allowed (not more than line 11)
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].line17 — Limit on the MACRS depreciation (line 11 less line 16)
-Status: **DISAGREE**
-
-Project: $10,798.13
-Model: $10,798.14
-Work: 10,798.14 - 0
-
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].line18 — Basis for depreciation (line 15 less line 16)
-Status: **AGREE**
-
-Value: $12,031.07
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].qconv — Mid-quarter convention for that quarter
-Status: **AGREE**
-
-Value: mq1
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].rate_hy — MACRS rate, half-year convention
-Status: **AGREE**
-
-Value: 20%
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].rate_mq — MACRS rate, mid-quarter convention
-Status: **AGREE**
-
-Value: 35%
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].rate_prior — MACRS rate for the 2025 year of recovery
-Status: **AGREE**
-
-Value: 5%
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].line19_hy — Line 18 times the half-year rate
-Status: **AGREE**
-
-Value: $2,406.21
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].line19_mq — Line 18 times the mid-quarter rate
-Status: **AGREE**
-
-Value: $4,210.87
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].line19_prior — Line 18 times the rate for the 2025 year of recovery
-Status: **AGREE**
-
-Value: $601.55
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].line19 — Tentative MACRS depreciation deduction (line 18 times line 6)
-Status: **AGREE**
-
-Value: $4,210.87
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].line19_earlier — Line 19 for a vehicle placed in service before 2025 (zero after the recovery per
-Status: **AGREE**
-
-Value: $601.55
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].line19_2025 — Line 19 for a 2025 vehicle, half-year or mid-quarter
-Status: **AGREE**
-
-Value: $4,210.87
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].line20 — MACRS depreciation deduction (the lesser of line 17 or line 19)
-Status: **AGREE**
-
-Value: $4,210.87
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].b100 — Cost less the section 179 deduction (as if used 100% for business)
-Status: **AGREE**
-
-Value: $13,593.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].r1 — MACRS rate for year 1
-Status: **AGREE**
-
-Value: 5%
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].t1 — Year 1 MACRS amount as if used 100% for business
-Status: **AGREE**
-
-Value: $679.65
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].l1 — Year 1 limit (no special allowance)
-Status: **AGREE**
-
-Value: $12,200.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].t1s — Year 1 section 179 deduction plus MACRS amount
-Status: **AGREE**
-
-Value: $679.65
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].d1 — Year 1 deduction allowable at 100% business use (the lesser of the limit or the 
-Status: **AGREE**
-
-Value: $679.65
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].r2 — MACRS rate for year 2
-Status: **AGREE**
-
-Value: 38%
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].t2 — Year 2 MACRS amount as if used 100% for business
-Status: **AGREE**
-
-Value: $5,165.34
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].r3 — MACRS rate for year 3
-Status: **AGREE**
-
-Value: 22.8%
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].t3 — Year 3 MACRS amount as if used 100% for business
-Status: **AGREE**
-
-Value: $3,099.20
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].r4 — MACRS rate for year 4
-Status: **AGREE**
-
-Value: 13.68%
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].t4 — Year 4 MACRS amount as if used 100% for business
-Status: **AGREE**
-
-Value: $1,859.52
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].r5 — MACRS rate for year 5
-Status: **AGREE**
-
-Value: 10.94%
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].t5 — Year 5 MACRS amount as if used 100% for business
-Status: **AGREE**
-
-Value: $1,487.07
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].r6 — MACRS rate for year 6
-Status: **AGREE**
-
-Value: 9.58%
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].t6 — Year 6 MACRS amount as if used 100% for business
-Status: **AGREE**
-
-Value: $1,302.21
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].too_old — Placed in service before 2019
-Status: **AGREE**
-
-Value: no
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].bonus_v — Special allowance for this vehicle (line 25)
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].macrs_pass — Column (h) for a passenger automobile
-Status: **AGREE**
-
-Value: $4,210.87
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].macrs_heavy — Column (h) for a vehicle not subject to the limits
-Status: **AGREE**
-
-Value: $4,210.87
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].macrs_v — Column (h)
-Status: **AGREE**
-
-Value: $4,210.87
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].bonus — Line 25: special allowance of this vehicle
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].macrs — Column (h): depreciation of this vehicle
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].s179_2025 — Column (i): elected section 179 cost of this vehicle
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].mq_q4 — Mid-quarter test basis, fourth quarter of this vehicle
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].mq_total — Mid-quarter test basis, 2025 of this vehicle
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].cost179 — Cost of section 179 property placed in service in 2025 of this vehicle
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].bonus_o — Special allowance (owned, actual expenses)
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].macrs_o — Depreciation (owned, actual expenses)
-Status: **DISAGREE**
-
-Project: $4,210.87
-Model: $0.00
-Work: Not owned with actual expenses
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].s179_2025_o — Section 179 (owned, actual expenses)
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].q4_basis — Basis for the mid-quarter test when placed in service October to December
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].mq_q4_o — mq_q4 (owned, actual expenses)
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].mq_q4_a2 — mq_q4 of a 2025 vehicle
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].mq_total_o — mq_total (owned, actual expenses)
-Status: **DISAGREE**
-
-Project: $12,031.07
-Model: $0.00
-Work: Not owned with actual expenses
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].mq_total_a2 — mq_total of a 2025 vehicle
-Status: **AGREE**
-
-Value: $12,031.07
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].cost179_o — cost179 (owned, actual expenses)
-Status: **DISAGREE**
-
-Project: $12,031.07
-Model: $0.00
-Work: Not owned with actual expenses
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_1].cost179_a2 — cost179 of a 2025 vehicle
-Status: **AGREE**
-
-Value: $12,031.07
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].bm_c — Business miles, as cents
-Status: **DISAGREE**
-
-Project: $38.30
-Model: $3,830.00
-Work: Business miles 3,830
-
-Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].cm_c — Commuting miles, as cents
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].om_c — Other miles, as cents
-Status: **DISAGREE**
-
-Project: $0.78
-Model: $78.00
-Work: Other miles 78
-
-Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].nonbusiness_c — Commuting and other miles, as cents
-Status: **DISAGREE**
-
-Project: $0.78
-Model: $78.00
-Work: 0 + 78
-
-Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].total_c — Total miles, as cents
-Status: **DISAGREE**
-
-Project: $39.08
-Model: $3,908.00
-Work: 3,830 + 78
-
-Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].over_half — Business use is more than 50%
-Status: **AGREE**
-
-Value: yes
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].smr_bad — The standard mileage rate is not available for this vehicle
-Status: **AGREE**
-
-Value: no
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].smr_amount — Business miles times the standard mileage rate
-Status: **AGREE**
-
-Value: $2,681.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].line9_standard — Standard mileage amount plus parking fees and tolls
-Status: **AGREE**
-
-Value: $2,681.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].operating_business — The business portion of the operating expenses
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].line9_actual — Business portion of the operating expenses plus parking fees and tolls
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].line9 — Car and truck expenses for this vehicle
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].is_actual_owned — Owned and on actual expenses
-Status: **AGREE**
-
-Value: no
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].is_actual_leased — Leased and on actual expenses
-Status: **AGREE**
-
-Value: yes
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].lease_business — The business portion of the lease payments
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].line20a — Rent or lease of this vehicle (business portion)
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].low_use — Business use is 50% or less
-Status: **AGREE**
-
-Value: no
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].screened — This vehicle's depreciation is outside this tool
-Status: **AGREE**
-
-Value: no
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].year — Year of recovery in 2025
-Status: **AGREE**
-
-Value: 1
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].is2025 — Placed in service in 2025
-Status: **AGREE**
-
-Value: yes
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].is2019 — Placed in service in 2019 (2025 is after the recovery period)
-Status: **AGREE**
-
-Value: no
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].bus_cost — Business/investment cost (cost times business use)
-Status: **AGREE**
-
-Value: $76,802.87
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].s179_bad — The section 179 election is more than the business cost, or than the SUV limit
-Status: **AGREE**
-
-Value: no
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].bonus_mixed — The special allowance choice differs within the 5-year class
-Status: **AGREE**
-
-Value: no
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].claims_bonus — A special allowance is claimed
-Status: **AGREE**
-
-Value: no
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].lim_first_bonus — First-year limit with the special allowance
-Status: **AGREE**
-
-Value: $20,200.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].lim_first_none — First-year limit without the special allowance
-Status: **AGREE**
-
-Value: $12,200.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].lim_2025 — Limit for a 2025 vehicle
-Status: **AGREE**
-
-Value: $12,200.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].lim_prior — Limit for the vehicle's 2025 year of recovery
-Status: **AGREE**
-
-Value: $20,200.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].line7 — Maximum depreciation deduction for this year from the appropriate table
-Status: **AGREE**
-
-Value: $12,200.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].line9w — Adjusted maximum depreciation deduction (line 7 times the business/investment-us
-Status: **AGREE**
-
-Value: $11,956.50
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].s179_2025_ok — Section 179 elected for a 2025 vehicle
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].line10 — Section 179 deduction claimed this year (not more than line 9 for a passenger au
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].line10_2025 — Section 179 for a 2025 vehicle: not more than line 9 for a passenger automobile
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].s179_line10 — The section 179 election, not more than line 9
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].line11 — Subtract line 10 from line 9
-Status: **AGREE**
-
-Value: $11,956.50
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].line14 — Section 179 deduction claimed in the year you placed the car in service
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].line15 — Tentative basis for depreciation (line 13 less line 14)
-Status: **AGREE**
-
-Value: $76,802.87
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].bonus_full — 100% special allowance
-Status: **AGREE**
-
-Value: $76,802.87
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].bonus_forty — 40% special allowance
-Status: **AGREE**
-
-Value: $30,721.15
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].bonus_fullcase — The allowance when it is claimed: 100% if acquired after January 19, 2025, other
-Status: **AGREE**
-
-Value: $76,802.87
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].bonus_2025 — Special allowance for a 2025 vehicle
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].line16 — Special depreciation allowance
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].bonus_allowed — Special depreciation allowance allowed (not more than line 11)
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].line17 — Limit on the MACRS depreciation (line 11 less line 16)
-Status: **AGREE**
-
-Value: $11,956.50
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].line18 — Basis for depreciation (line 15 less line 16)
-Status: **AGREE**
-
-Value: $76,802.87
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].qconv — Mid-quarter convention for that quarter
-Status: **AGREE**
-
-Value: mq3
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].rate_hy — MACRS rate, half-year convention
-Status: **AGREE**
-
-Value: 20%
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].rate_mq — MACRS rate, mid-quarter convention
-Status: **AGREE**
-
-Value: 15%
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].rate_prior — MACRS rate for the 2025 year of recovery
-Status: **AGREE**
-
-Value: 20%
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].line19_hy — Line 18 times the half-year rate
-Status: **AGREE**
-
-Value: $15,360.57
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].line19_mq — Line 18 times the mid-quarter rate
-Status: **AGREE**
-
-Value: $11,520.43
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].line19_prior — Line 18 times the rate for the 2025 year of recovery
-Status: **AGREE**
-
-Value: $15,360.57
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].line19 — Tentative MACRS depreciation deduction (line 18 times line 6)
-Status: **AGREE**
-
-Value: $11,520.43
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].line19_earlier — Line 19 for a vehicle placed in service before 2025 (zero after the recovery per
-Status: **AGREE**
-
-Value: $15,360.57
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].line19_2025 — Line 19 for a 2025 vehicle, half-year or mid-quarter
-Status: **AGREE**
-
-Value: $11,520.43
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].line20 — MACRS depreciation deduction (the lesser of line 17 or line 19)
-Status: **AGREE**
-
-Value: $11,520.43
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].b100 — Cost less the section 179 deduction (as if used 100% for business)
-Status: **AGREE**
-
-Value: $78,367.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].r1 — MACRS rate for year 1
-Status: **AGREE**
-
-Value: 20%
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].t1 — Year 1 MACRS amount as if used 100% for business
-Status: **AGREE**
-
-Value: $15,673.40
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].l1 — Year 1 limit (no special allowance)
-Status: **AGREE**
-
-Value: $12,200.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].t1s — Year 1 section 179 deduction plus MACRS amount
-Status: **AGREE**
-
-Value: $15,673.40
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].d1 — Year 1 deduction allowable at 100% business use (the lesser of the limit or the 
-Status: **AGREE**
-
-Value: $12,200.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].r2 — MACRS rate for year 2
-Status: **AGREE**
-
-Value: 32%
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].t2 — Year 2 MACRS amount as if used 100% for business
-Status: **AGREE**
-
-Value: $25,077.44
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].r3 — MACRS rate for year 3
-Status: **AGREE**
-
-Value: 19.2%
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].t3 — Year 3 MACRS amount as if used 100% for business
-Status: **AGREE**
-
-Value: $15,046.46
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].r4 — MACRS rate for year 4
-Status: **AGREE**
-
-Value: 11.52%
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].t4 — Year 4 MACRS amount as if used 100% for business
-Status: **AGREE**
-
-Value: $9,027.88
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].r5 — MACRS rate for year 5
-Status: **AGREE**
-
-Value: 11.52%
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].t5 — Year 5 MACRS amount as if used 100% for business
-Status: **AGREE**
-
-Value: $9,027.88
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].r6 — MACRS rate for year 6
-Status: **AGREE**
-
-Value: 5.76%
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].t6 — Year 6 MACRS amount as if used 100% for business
-Status: **AGREE**
-
-Value: $4,513.94
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].too_old — Placed in service before 2019
-Status: **AGREE**
-
-Value: no
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].bonus_v — Special allowance for this vehicle (line 25)
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].macrs_pass — Column (h) for a passenger automobile
-Status: **AGREE**
-
-Value: $11,520.43
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].macrs_heavy — Column (h) for a vehicle not subject to the limits
-Status: **AGREE**
-
-Value: $11,520.43
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].macrs_v — Column (h)
-Status: **AGREE**
-
-Value: $11,520.43
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].bonus — Line 25: special allowance of this vehicle
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].macrs — Column (h): depreciation of this vehicle
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].s179_2025 — Column (i): elected section 179 cost of this vehicle
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].mq_q4 — Mid-quarter test basis, fourth quarter of this vehicle
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].mq_total — Mid-quarter test basis, 2025 of this vehicle
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].cost179 — Cost of section 179 property placed in service in 2025 of this vehicle
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].bonus_o — Special allowance (owned, actual expenses)
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].macrs_o — Depreciation (owned, actual expenses)
-Status: **DISAGREE**
-
-Project: $11,520.43
-Model: $0.00
-Work: Not owned
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].s179_2025_o — Section 179 (owned, actual expenses)
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].q4_basis — Basis for the mid-quarter test when placed in service October to December
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].mq_q4_o — mq_q4 (owned, actual expenses)
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].mq_q4_a2 — mq_q4 of a 2025 vehicle
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].mq_total_o — mq_total (owned, actual expenses)
-Status: **DISAGREE**
-
-Project: $76,802.87
-Model: $0.00
-Work: Not owned
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].mq_total_a2 — mq_total of a 2025 vehicle
-Status: **AGREE**
-
-Value: $76,802.87
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].cost179_o — cost179 (owned, actual expenses)
-Status: **DISAGREE**
-
-Project: $76,802.87
-Model: $0.00
-Work: Not owned
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.scveh.2 — person[taxpayer].sc[biz_b].scveh[car_2].cost179_a2 — cost179 of a 2025 vehicle
-Status: **AGREE**
-
-Value: $76,802.87
-
-### case classm.scveh.3 — prompt sha256 27b1d718ea57cfaae00271e2788bfacb8aed5373f440000cafec34bf8b9a08bf; branches: scveh.owned:false, scveh.over_half:true, scveh.smr_ok:true, scveh.smr_bad:false, scveh.line9#0, scveh.line9#1, scveh.is_actual_owned:false, scveh.is_actual_leased:false, scveh.is_actual_leased:true, scveh.line20a#0, scveh.line20a#1, scveh.low_use:false, scveh.screen:false, scveh.screened:false, scveh.passenger:true, scveh.suv:false, scveh.is2025:false, scveh.is2019:false, scveh.s179_bad:false, scveh.after_jan19:true, scveh.bonus_same:true, scveh.bonus_mixed:false, scveh.claims_bonus:false, scveh.lim_2025#1, scveh.line7#1, scveh.line10#1, scveh.line10_2025#0, scveh.s179_line10:left, scveh.line11:positive, scveh.line14#1, scveh.line15:floor, scveh.line15:positive, scveh.bonus_fullcase#0, scveh.bonus_2025#2, scveh.line16#1, scveh.bonus_allowed:left, scveh.line17:positive, scveh.line18:floor, scveh.line18:positive, scveh.line19#1, scveh.line19_earlier#0, scveh.line19_2025#0, scveh.line20:right, scveh.b100:floor, scveh.b100:positive, scveh.d2:right, scveh.d3:right, scveh.d4:right, scveh.d5:right, scveh.too_old:false, scveh.bonus_v#0, scveh.macrs_pass#0, scveh.macrs_heavy#0, scveh.macrs_v#0, scveh.bonus#1, scveh.macrs#1, scveh.s179_2025#1, scveh.mq_q4#1, scveh.mq_total#1, scveh.cost179#1, scveh.q4_basis#2, scveh.mq_q4_o#1, scveh.mq_total_o#1, scveh.cost179_o#1
+### case classm.scveh.3 — prompt sha256 2d9e57d2b5f65560b5e7ce8a8874b6b64d04e5f443a314467bfbaf90f1ba01ae; branches: scveh.owned:true, scveh.no_miles:false, scveh.over_half:true, scveh.smr_ok:true, scveh.smr_bad:false, scveh.line9#0, scveh.is_actual_owned:false, scveh.is_actual_leased:false, scveh.line20a#1, scveh.low_use:false, scveh.screen:false, scveh.screened:false, scveh.passenger:true, scveh.suv:false, scveh.is2025:false, scveh.is2019:true, scveh.s179_bad:false, scveh.after_jan19:true, scveh.bonus_same:true, scveh.bonus_mixed:false, scveh.claims_bonus:false, scveh.lim_2025#1, scveh.line7#1, scveh.line10#1, scveh.line10_2025#0, scveh.s179_line10:left, scveh.line11:positive, scveh.line14#1, scveh.line15:positive, scveh.bonus_fullcase#0, scveh.bonus_2025#2, scveh.line16#1, scveh.bonus_allowed:left, scveh.line17:positive, scveh.line18:positive, scveh.line19#1, scveh.line19_earlier#1, scveh.line19_2025#0, scveh.line20:right, scveh.b100:positive, scveh.d1:left, scveh.d2:right, scveh.d3:right, scveh.d4:right, scveh.d5:right, scveh.d6:right, scveh.unrecovered:positive, scveh.post_amount:left, scveh.too_old:false, scveh.bonus_v#0, scveh.macrs_pass#1, scveh.macrs_heavy#1, scveh.macrs_v#0, scveh.bonus#1, scveh.macrs#1, scveh.s179_2025#1, scveh.mq_q4#1, scveh.mq_total#1, scveh.cost179#1, scveh.q4_basis#0, scveh.mq_q4_o#1, scveh.mq_total_o#1, scveh.cost179_o#1
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].bm_c — Business miles, as cents
 Status: **DISAGREE**
 
-Project: $144.64
-Model: $14,464.00
-Work: Business miles 14,464
+Project: $266.10
+Model: $26,610.00
+Work: Business miles 26,610
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].cm_c — Commuting miles, as cents
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $31.65
-Model: $3,165.00
-Work: Commuting miles 3,165
-
-Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
+Value: $0.00
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].om_c — Other miles, as cents
 Status: **DISAGREE**
 
-Project: $30.75
-Model: $3,075.00
-Work: Other miles 3,075
+Project: $33.36
+Model: $3,336.00
+Work: Other miles 3,336
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].nonbusiness_c — Commuting and other miles, as cents
 Status: **DISAGREE**
 
-Project: $62.40
-Model: $6,240.00
-Work: 3,165 + 3,075
+Project: $33.36
+Model: $3,336.00
+Work: 0 + 3,336
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].total_c — Total miles, as cents
 Status: **DISAGREE**
 
-Project: $207.04
-Model: $20,704.00
-Work: 14,464 + 6,240
+Project: $299.46
+Model: $29,946.00
+Work: 26,610 + 3,336
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
+
+### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].no_miles — Actual expenses claimed for a vehicle with no miles
+Status: **AGREE**
+
+Value: no
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].over_half — Business use is more than 50%
 Status: **AGREE**
@@ -3301,27 +2916,27 @@ Value: no
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].smr_amount — Business miles times the standard mileage rate
 Status: **AGREE**
 
-Value: $10,124.80
+Value: $18,627.00
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].line9_standard — Standard mileage amount plus parking fees and tolls
 Status: **AGREE**
 
-Value: $10,124.80
+Value: $18,627.00
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].operating_business — The business portion of the operating expenses
 Status: **AGREE**
 
-Value: $2,325.67
+Value: $7,129.23
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].line9_actual — Business portion of the operating expenses plus parking fees and tolls
 Status: **AGREE**
 
-Value: $2,325.67
+Value: $7,129.23
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].line9 — Car and truck expenses for this vehicle
 Status: **AGREE**
 
-Value: $2,325.67
+Value: $18,627.00
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].is_actual_owned — Owned and on actual expenses
 Status: **AGREE**
@@ -3331,17 +2946,21 @@ Value: no
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].is_actual_leased — Leased and on actual expenses
 Status: **AGREE**
 
-Value: yes
+Value: no
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].lease_business — The business portion of the lease payments
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $3,140.25
+Project: $5,243.62
+Model: $5,243.63
+Work: 5,901 x 26,610 / 29,946
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].line20a — Rent or lease of this vehicle (business portion)
 Status: **AGREE**
 
-Value: $3,140.25
+Value: $0.00
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].low_use — Business use is 50% or less
 Status: **AGREE**
@@ -3356,7 +2975,7 @@ Value: no
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].year — Year of recovery in 2025
 Status: **AGREE**
 
-Value: 5
+Value: 7
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].is2025 — Placed in service in 2025
 Status: **AGREE**
@@ -3366,16 +2985,16 @@ Value: no
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].is2019 — Placed in service in 2019 (2025 is after the recovery period)
 Status: **AGREE**
 
-Value: no
+Value: yes
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].bus_cost — Business/investment cost (cost times business use)
 Status: **DISAGREE**
 
-Project: $3,493.05
-Model: $3,493.04
-Work: 5,000 x 69.86%
+Project: $48,214.49
+Model: $48,214.52
+Work: Worksheet line 13: 54,259 x 26,610 / 29,946
 
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].s179_bad — The section 179 election is more than the business cost, or than the SUV limit
 Status: **AGREE**
@@ -3395,26 +3014,44 @@ Value: no
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].lim_first_bonus — First-year limit with the special allowance
 Status: **DISAGREE**
 
-Project: $5,860.00
+Project: $5,760.00
 Model: $20,200.00
-Work: 2025 first-year limit with the special allowance
+Work: Table 2 footnote: 2025 limit with the special allowance
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Here the vehicle's key gives the project's value: line 7 reads lim_2025 only for a 2025 vehicle and lim_prior otherwise, and the project looks every limit up by the year actually placed in service and its year of recovery; the model read the 2025 column. Pub. 946 p. 59 table, checked: 1st year 2025 $20,200 (footnote 1: $12,200 without the special allowance), 2nd year 2024 $19,800, 4th and later year 2021 $5,860, 2020 and 2019 $5,760, footnote 6 (2019 without the special allowance) $10,100; the project's tables carry these values. Not evidence. [dropped]
+
+### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].lim_first_none — First-year limit without the special allowance
+Status: **DISAGREE**
+
+Project: $10,100.00
+Model: $12,200.00
+Work: Table 2: 2025, year 1
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Here the vehicle's key gives the project's value: line 7 reads lim_2025 only for a 2025 vehicle and lim_prior otherwise, and the project looks every limit up by the year actually placed in service and its year of recovery; the model read the 2025 column. Pub. 946 p. 59 table, checked: 1st year 2025 $20,200 (footnote 1: $12,200 without the special allowance), 2nd year 2024 $19,800, 4th and later year 2021 $5,860, 2020 and 2019 $5,760, footnote 6 (2019 without the special allowance) $10,100; the project's tables carry these values. Not evidence. [dropped]
+
+### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].lim_2025 — Limit for a 2025 vehicle
+Status: **DISAGREE**
+
+Project: $10,100.00
+Model: $12,200.00
+Work: No special allowance claimed
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Here the vehicle's key gives the project's value: line 7 reads lim_2025 only for a 2025 vehicle and lim_prior otherwise, and the project looks every limit up by the year actually placed in service and its year of recovery; the model read the 2025 column. Pub. 946 p. 59 table, checked: 1st year 2025 $20,200 (footnote 1: $12,200 without the special allowance), 2nd year 2024 $19,800, 4th and later year 2021 $5,860, 2020 and 2019 $5,760, footnote 6 (2019 without the special allowance) $10,100; the project's tables carry these values. Not evidence. [dropped]
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].lim_prior — Limit for the vehicle's 2025 year of recovery
 Status: **AGREE**
 
-Value: $5,860.00
+Value: $5,760.00
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].line7 — Maximum depreciation deduction for this year from the appropriate table
 Status: **AGREE**
 
-Value: $5,860.00
+Value: $5,760.00
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].line9w — Adjusted maximum depreciation deduction (line 7 times the business/investment-us
 Status: **AGREE**
 
-Value: $4,093.85
+Value: $5,118.33
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].s179_2025_ok — Section 179 elected for a 2025 vehicle
 Status: **AGREE**
@@ -3439,32 +3076,48 @@ Value: $0.00
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].line11 — Subtract line 10 from line 9
 Status: **AGREE**
 
-Value: $4,093.85
+Value: $5,118.33
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].line14 — Section 179 deduction claimed in the year you placed the car in service
 Status: **AGREE**
 
-Value: $5,000.00
+Value: $9,850.00
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].line15 — Tentative basis for depreciation (line 13 less line 14)
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $0.00
+Project: $38,364.49
+Model: $38,364.52
+Work: 48,214.52 - 9,850
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].bonus_full — 100% special allowance
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $0.00
+Project: $38,364.49
+Model: $38,364.52
+Work: 38,364.52 x 100%
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].bonus_forty — 40% special allowance
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $0.00
+Project: $15,345.80
+Model: $15,345.81
+Work: 38,364.52 x 40%
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].bonus_fullcase — The allowance when it is claimed: 100% if acquired after January 19, 2025, other
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $0.00
+Project: $38,364.49
+Model: $38,364.52
+Work: Acquired after January 19, 2025 = yes, so 100%
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].bonus_2025 — Special allowance for a 2025 vehicle
 Status: **AGREE**
@@ -3484,55 +3137,21 @@ Value: $0.00
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].line17 — Limit on the MACRS depreciation (line 11 less line 16)
 Status: **AGREE**
 
-Value: $4,093.85
+Value: $5,118.33
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].line18 — Basis for depreciation (line 15 less line 16)
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $0.00
+Project: $38,364.49
+Model: $38,364.52
+Work: 38,364.52 - 0
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].qconv — Mid-quarter convention for that quarter
 Status: **AGREE**
 
-Value: mq3
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].rate_hy — MACRS rate, half-year convention
-Status: **DISAGREE**
-
-Project: 11.52%
-Model: 20%
-Work: 5-year, 200DB, half-year convention, year 1
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].rate_mq — MACRS rate, mid-quarter convention
-Status: **DISAGREE**
-
-Project: 11.3%
-Model: 15%
-Work: 5-year, mid-quarter Q3, year 1
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].rate_prior — MACRS rate for the 2025 year of recovery
-Status: **AGREE**
-
-Value: 10.94%
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].line19_hy — Line 18 times the half-year rate
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].line19_mq — Line 18 times the mid-quarter rate
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].line19_prior — Line 18 times the rate for the 2025 year of recovery
-Status: **AGREE**
-
-Value: $0.00
+Value: mq1
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].line19 — Tentative MACRS depreciation deduction (line 18 times line 6)
 Status: **AGREE**
@@ -3540,11 +3159,6 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].line19_earlier — Line 19 for a vehicle placed in service before 2025 (zero after the recovery per
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].line19_2025 — Line 19 for a 2025 vehicle, half-year or mid-quarter
 Status: **AGREE**
 
 Value: $0.00
@@ -3557,112 +3171,152 @@ Value: $0.00
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].b100 — Cost less the section 179 deduction (as if used 100% for business)
 Status: **AGREE**
 
-Value: $0.00
+Value: $44,409.00
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].r1 — MACRS rate for year 1
 Status: **AGREE**
 
-Value: 5%
+Value: 20%
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].t1 — Year 1 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $0.00
+Value: $8,881.80
+
+### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].l1 — Year 1 limit (no special allowance)
+Status: **AGREE**
+
+Value: $10,100.00
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].t1s — Year 1 section 179 deduction plus MACRS amount
 Status: **AGREE**
 
-Value: $5,000.00
+Value: $18,731.80
+
+### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].d1 — Year 1 deduction allowable at 100% business use (the lesser of the limit or the 
+Status: **AGREE**
+
+Value: $10,100.00
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].r2 — MACRS rate for year 2
 Status: **AGREE**
 
-Value: 38%
+Value: 32%
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].t2 — Year 2 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $0.00
+Value: $14,210.88
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].l2 — Year 2 limit
 Status: **AGREE**
 
-Value: $16,400.00
+Value: $16,100.00
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].d2 — Year 2 deduction allowable at 100% business use
 Status: **AGREE**
 
-Value: $0.00
+Value: $14,210.88
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].r3 — MACRS rate for year 3
 Status: **AGREE**
 
-Value: 22.8%
+Value: 19.2%
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].t3 — Year 3 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $0.00
+Value: $8,526.53
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].l3 — Year 3 limit
 Status: **AGREE**
 
-Value: $9,800.00
+Value: $9,700.00
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].d3 — Year 3 deduction allowable at 100% business use
 Status: **AGREE**
 
-Value: $0.00
+Value: $8,526.53
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].r4 — MACRS rate for year 4
 Status: **AGREE**
 
-Value: 13.68%
+Value: 11.52%
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].t4 — Year 4 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $0.00
+Value: $5,115.92
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].l4 — Year 4 limit
 Status: **AGREE**
 
-Value: $5,860.00
+Value: $5,760.00
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].d4 — Year 4 deduction allowable at 100% business use
 Status: **AGREE**
 
-Value: $0.00
+Value: $5,115.92
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].r5 — MACRS rate for year 5
 Status: **AGREE**
 
-Value: 10.94%
+Value: 11.52%
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].t5 — Year 5 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $0.00
+Value: $5,115.92
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].l5 — Year 5 limit
 Status: **AGREE**
 
-Value: $5,860.00
+Value: $5,760.00
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].d5 — Year 5 deduction allowable at 100% business use
 Status: **AGREE**
 
-Value: $0.00
+Value: $5,115.92
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].r6 — MACRS rate for year 6
 Status: **AGREE**
 
-Value: 9.58%
+Value: 5.76%
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].t6 — Year 6 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $0.00
+Value: $2,557.96
+
+### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].l6 — Year 6 limit
+Status: **AGREE**
+
+Value: $5,760.00
+
+### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].d6 — Year 6 deduction allowable at 100% business use
+Status: **AGREE**
+
+Value: $2,557.96
+
+### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].d_total — Deductions allowable during the recovery period at 100% business use
+Status: **AGREE**
+
+Value: $45,627.21
+
+### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].unrecovered — Unrecovered basis at the end of the recovery period
+Status: **AGREE**
+
+Value: $8,631.79
+
+### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].post_amount — The lesser of the limit or the unrecovered basis
+Status: **AGREE**
+
+Value: $5,760.00
+
+### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].post — 2025 deduction after the recovery period (times the business use percentage)
+Status: **AGREE**
+
+Value: $5,118.33
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].too_old — Placed in service before 2019
 Status: **AGREE**
@@ -3677,7 +3331,7 @@ Value: $0.00
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].macrs_pass — Column (h) for a passenger automobile
 Status: **AGREE**
 
-Value: $0.00
+Value: $5,118.33
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].macrs_heavy — Column (h) for a vehicle not subject to the limits
 Status: **AGREE**
@@ -3687,7 +3341,7 @@ Value: $0.00
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].macrs_v — Column (h)
 Status: **AGREE**
 
-Value: $0.00
+Value: $5,118.33
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].bonus — Line 25: special allowance of this vehicle
 Status: **AGREE**
@@ -3725,9 +3379,13 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].macrs_o — Depreciation (owned, actual expenses)
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $0.00
+Project: $5,118.33
+Model: $0.00
+Work: Not owned on actual expenses
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. macrs reads macrs_o only for an owned vehicle on actual expenses; this one is leased or on the standard mileage rate, so macrs is zero (agreeing). Not evidence. [dropped]
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].s179_2025_o — Section 179 (owned, actual expenses)
 Status: **AGREE**
@@ -3755,9 +3413,13 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].mq_total_a2 — mq_total of a 2025 vehicle
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $0.00
+Project: $38,364.49
+Model: $0.00
+Work: Not a 2025 vehicle
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The _o line reads the _a2 copy only for a 2025 vehicle; for this earlier vehicle the _o line and the result are zero (agreeing). Not evidence. [dropped]
 
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].cost179_o — cost179 (owned, actual expenses)
 Status: **AGREE**
@@ -3767,592 +3429,20 @@ Value: $0.00
 ### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_1].cost179_a2 — cost179 of a 2025 vehicle
 Status: **DISAGREE**
 
-Project: $3,493.05
+Project: $48,214.49
 Model: $0.00
 Work: Not a 2025 vehicle
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The _o line reads the _a2 copy only for a 2025 vehicle; for this earlier vehicle the _o line and the result are zero (agreeing). Not evidence. [dropped]
 
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].bm_c — Business miles, as cents
-Status: **DISAGREE**
-
-Project: $160.03
-Model: $16,003.00
-Work: Business miles 16,003
-
-Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].cm_c — Commuting miles, as cents
-Status: **DISAGREE**
-
-Project: $29.10
-Model: $2,910.00
-Work: Commuting miles 2,910
-
-Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].om_c — Other miles, as cents
-Status: **DISAGREE**
-
-Project: $0.04
-Model: $4.00
-Work: Other miles 4
-
-Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].nonbusiness_c — Commuting and other miles, as cents
-Status: **DISAGREE**
-
-Project: $29.14
-Model: $2,914.00
-Work: 2,910 + 4
-
-Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].total_c — Total miles, as cents
-Status: **DISAGREE**
-
-Project: $189.17
-Model: $18,917.00
-Work: 16,003 + 2,914
-
-Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].over_half — Business use is more than 50%
-Status: **AGREE**
-
-Value: yes
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].smr_bad — The standard mileage rate is not available for this vehicle
-Status: **AGREE**
-
-Value: no
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].smr_amount — Business miles times the standard mileage rate
-Status: **AGREE**
-
-Value: $11,202.10
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].line9_standard — Standard mileage amount plus parking fees and tolls
-Status: **AGREE**
-
-Value: $11,202.10
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].operating_business — The business portion of the operating expenses
-Status: **AGREE**
-
-Value: $3,438.82
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].line9_actual — Business portion of the operating expenses plus parking fees and tolls
-Status: **AGREE**
-
-Value: $3,438.82
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].line9 — Car and truck expenses for this vehicle
-Status: **AGREE**
-
-Value: $11,202.10
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].is_actual_owned — Owned and on actual expenses
-Status: **AGREE**
-
-Value: no
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].is_actual_leased — Leased and on actual expenses
-Status: **AGREE**
-
-Value: no
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].lease_business — The business portion of the lease payments
-Status: **AGREE**
-
-Value: $6,767.67
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].line20a — Rent or lease of this vehicle (business portion)
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].low_use — Business use is 50% or less
-Status: **AGREE**
-
-Value: no
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].screened — This vehicle's depreciation is outside this tool
-Status: **AGREE**
-
-Value: no
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].year — Year of recovery in 2025
-Status: **AGREE**
-
-Value: 4
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].is2025 — Placed in service in 2025
-Status: **AGREE**
-
-Value: no
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].is2019 — Placed in service in 2019 (2025 is after the recovery period)
-Status: **AGREE**
-
-Value: no
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].bus_cost — Business/investment cost (cost times business use)
-Status: **DISAGREE**
-
-Project: $34,906.81
-Model: $34,906.79
-Work: 41,263 x 16,003 / 18,917
-
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].s179_bad — The section 179 election is more than the business cost, or than the SUV limit
-Status: **AGREE**
-
-Value: no
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].bonus_mixed — The special allowance choice differs within the 5-year class
-Status: **AGREE**
-
-Value: no
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].claims_bonus — A special allowance is claimed
-Status: **AGREE**
-
-Value: no
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].lim_first_bonus — First-year limit with the special allowance
-Status: **DISAGREE**
-
-Project: $6,460.00
-Model: $20,200.00
-Work: 2025 first-year limit with the special allowance
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].lim_prior — Limit for the vehicle's 2025 year of recovery
-Status: **AGREE**
-
-Value: $6,460.00
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].line7 — Maximum depreciation deduction for this year from the appropriate table
-Status: **AGREE**
-
-Value: $6,460.00
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].line9w — Adjusted maximum depreciation deduction (line 7 times the business/investment-us
-Status: **DISAGREE**
-
-Project: $5,464.90
-Model: $5,464.89
-Work: 6,460 x 16,003 / 18,917
-
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].s179_2025_ok — Section 179 elected for a 2025 vehicle
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].line10 — Section 179 deduction claimed this year (not more than line 9 for a passenger au
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].line10_2025 — Section 179 for a 2025 vehicle: not more than line 9 for a passenger automobile
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].s179_line10 — The section 179 election, not more than line 9
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].line11 — Subtract line 10 from line 9
-Status: **DISAGREE**
-
-Project: $5,464.90
-Model: $5,464.89
-Work: 5,464.89 - 0
-
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].line14 — Section 179 deduction claimed in the year you placed the car in service
-Status: **AGREE**
-
-Value: $2,368.00
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].line15 — Tentative basis for depreciation (line 13 less line 14)
-Status: **DISAGREE**
-
-Project: $32,538.81
-Model: $32,538.79
-Work: 34,906.79 - 2,368
-
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].bonus_full — 100% special allowance
-Status: **DISAGREE**
-
-Project: $32,538.81
-Model: $0.00
-Work: No allowance claimed, so 0
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].bonus_forty — 40% special allowance
-Status: **DISAGREE**
-
-Project: $13,015.52
-Model: $0.00
-Work: No allowance claimed, so 0
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].bonus_fullcase — The allowance when it is claimed: 100% if acquired after January 19, 2025, other
-Status: **DISAGREE**
-
-Project: $32,538.81
-Model: $0.00
-Work: No allowance claimed, so 0
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].bonus_2025 — Special allowance for a 2025 vehicle
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].line16 — Special depreciation allowance
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].bonus_allowed — Special depreciation allowance allowed (not more than line 11)
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].line17 — Limit on the MACRS depreciation (line 11 less line 16)
-Status: **DISAGREE**
-
-Project: $5,464.90
-Model: $5,464.89
-Work: 5,464.89 - 0
-
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].line18 — Basis for depreciation (line 15 less line 16)
-Status: **DISAGREE**
-
-Project: $32,538.81
-Model: $32,538.79
-Work: 32,538.79 - 0
-
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].qconv — Mid-quarter convention for that quarter
-Status: **AGREE**
-
-Value: mq3
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].rate_hy — MACRS rate, half-year convention
-Status: **DISAGREE**
-
-Project: 11.52%
-Model: 20%
-Work: 5-year, half-year convention, year 1
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].rate_mq — MACRS rate, mid-quarter convention
-Status: **DISAGREE**
-
-Project: 12.24%
-Model: 15%
-Work: 5-year, mid-quarter Q3, year 1
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].rate_prior — MACRS rate for the 2025 year of recovery
-Status: **AGREE**
-
-Value: 11.52%
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].line19_hy — Line 18 times the half-year rate
-Status: **DISAGREE**
-
-Project: $3,748.47
-Model: $6,507.76
-Work: 32,538.79 x 20%
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].line19_mq — Line 18 times the mid-quarter rate
-Status: **DISAGREE**
-
-Project: $3,982.75
-Model: $4,880.82
-Work: 32,538.79 x 15%
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].line19_prior — Line 18 times the rate for the 2025 year of recovery
-Status: **AGREE**
-
-Value: $3,748.47
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].line19 — Tentative MACRS depreciation deduction (line 18 times line 6)
-Status: **AGREE**
-
-Value: $3,748.47
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].line19_earlier — Line 19 for a vehicle placed in service before 2025 (zero after the recovery per
-Status: **AGREE**
-
-Value: $3,748.47
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].line19_2025 — Line 19 for a 2025 vehicle, half-year or mid-quarter
-Status: **DISAGREE**
-
-Project: $3,748.47
-Model: $0.00
-Work: Not a 2025 vehicle
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].line20 — MACRS depreciation deduction (the lesser of line 17 or line 19)
-Status: **AGREE**
-
-Value: $3,748.47
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].b100 — Cost less the section 179 deduction (as if used 100% for business)
-Status: **AGREE**
-
-Value: $38,895.00
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].r1 — MACRS rate for year 1
-Status: **AGREE**
-
-Value: 20%
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].t1 — Year 1 MACRS amount as if used 100% for business
-Status: **AGREE**
-
-Value: $7,779.00
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].t1s — Year 1 section 179 deduction plus MACRS amount
-Status: **AGREE**
-
-Value: $10,147.00
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].r2 — MACRS rate for year 2
-Status: **AGREE**
-
-Value: 32%
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].t2 — Year 2 MACRS amount as if used 100% for business
-Status: **AGREE**
-
-Value: $12,446.40
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].l2 — Year 2 limit
-Status: **AGREE**
-
-Value: $18,000.00
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].d2 — Year 2 deduction allowable at 100% business use
-Status: **AGREE**
-
-Value: $12,446.40
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].r3 — MACRS rate for year 3
-Status: **AGREE**
-
-Value: 19.2%
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].t3 — Year 3 MACRS amount as if used 100% for business
-Status: **AGREE**
-
-Value: $7,467.84
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].l3 — Year 3 limit
-Status: **AGREE**
-
-Value: $10,800.00
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].d3 — Year 3 deduction allowable at 100% business use
-Status: **AGREE**
-
-Value: $7,467.84
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].r4 — MACRS rate for year 4
-Status: **AGREE**
-
-Value: 11.52%
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].t4 — Year 4 MACRS amount as if used 100% for business
-Status: **AGREE**
-
-Value: $4,480.70
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].l4 — Year 4 limit
-Status: **AGREE**
-
-Value: $6,460.00
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].d4 — Year 4 deduction allowable at 100% business use
-Status: **AGREE**
-
-Value: $4,480.70
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].r5 — MACRS rate for year 5
-Status: **AGREE**
-
-Value: 11.52%
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].t5 — Year 5 MACRS amount as if used 100% for business
-Status: **AGREE**
-
-Value: $4,480.70
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].r6 — MACRS rate for year 6
-Status: **AGREE**
-
-Value: 5.76%
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].t6 — Year 6 MACRS amount as if used 100% for business
-Status: **AGREE**
-
-Value: $2,240.35
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].too_old — Placed in service before 2019
-Status: **AGREE**
-
-Value: no
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].bonus_v — Special allowance for this vehicle (line 25)
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].macrs_pass — Column (h) for a passenger automobile
-Status: **AGREE**
-
-Value: $3,748.47
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].macrs_heavy — Column (h) for a vehicle not subject to the limits
-Status: **AGREE**
-
-Value: $3,748.47
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].macrs_v — Column (h)
-Status: **AGREE**
-
-Value: $3,748.47
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].bonus — Line 25: special allowance of this vehicle
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].macrs — Column (h): depreciation of this vehicle
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].s179_2025 — Column (i): elected section 179 cost of this vehicle
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].mq_q4 — Mid-quarter test basis, fourth quarter of this vehicle
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].mq_total — Mid-quarter test basis, 2025 of this vehicle
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].cost179 — Cost of section 179 property placed in service in 2025 of this vehicle
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].bonus_o — Special allowance (owned, actual expenses)
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].macrs_o — Depreciation (owned, actual expenses)
-Status: **DISAGREE**
-
-Project: $3,748.47
-Model: $0.00
-Work: Not owned on actual expenses
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].s179_2025_o — Section 179 (owned, actual expenses)
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].q4_basis — Basis for the mid-quarter test when placed in service October to December
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].mq_q4_o — mq_q4 (owned, actual expenses)
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].mq_q4_a2 — mq_q4 of a 2025 vehicle
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].mq_total_o — mq_total (owned, actual expenses)
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].mq_total_a2 — mq_total of a 2025 vehicle
-Status: **DISAGREE**
-
-Project: $32,538.81
-Model: $0.00
-Work: Not a 2025 vehicle
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].cost179_o — cost179 (owned, actual expenses)
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.3 — person[taxpayer].sc[biz_a].scveh[car_2].cost179_a2 — cost179 of a 2025 vehicle
-Status: **DISAGREE**
-
-Project: $34,906.81
-Model: $0.00
-Work: Not a 2025 vehicle
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### case classm.scveh.4 — prompt sha256 7ca3874591428429f226dc82727d57e2d11869302da17ac501fb704d73cb578d; branches: scveh.owned:true, scveh.over_half:true, scveh.smr_ok:true, scveh.smr_bad:false, scveh.line9#1, scveh.is_actual_owned:true, scveh.is_actual_leased:false, scveh.line20a#1, scveh.low_use:false, scveh.screen:false, scveh.screened:false, scveh.passenger:true, scveh.suv:false, scveh.is2025:false, scveh.is2025:true, scveh.is2019:false, scveh.s179_bad:false, scveh.after_jan19:true, scveh.bonus_same:true, scveh.bonus_mixed:false, scveh.claims_bonus:false, scveh.lim_2025#1, scveh.line7#0, scveh.line7#1, scveh.line10#0, scveh.line10#1, scveh.line10_2025#0, scveh.s179_line10:left, scveh.s179_line10:right, scveh.line11:floor, scveh.line11:positive, scveh.line14#0, scveh.line14#1, scveh.line15:positive, scveh.bonus_fullcase#0, scveh.bonus_2025#2, scveh.line16#0, scveh.line16#1, scveh.bonus_allowed:left, scveh.line17:floor, scveh.line17:positive, scveh.line18:positive, scveh.line19#0, scveh.line19#1, scveh.line19_earlier#0, scveh.line19_2025#1, scveh.line20:left, scveh.line20:right, scveh.b100:positive, scveh.d1:right, scveh.d2:left, scveh.d3:left, scveh.d4:left, scveh.d5:left, scveh.d6:right, scveh.too_old:false, scveh.bonus_v#0, scveh.macrs_pass#0, scveh.macrs_heavy#0, scveh.macrs_v#0, scveh.bonus#0, scveh.macrs#0, scveh.s179_2025#0, scveh.mq_q4#0, scveh.mq_total#0, scveh.cost179#0, scveh.q4_basis#0, scveh.q4_basis#3, scveh.mq_q4_o#0, scveh.mq_q4_o#1, scveh.mq_total_o#0, scveh.mq_total_o#1, scveh.cost179_o#0, scveh.cost179_o#1
+### case classm.scveh.4 — prompt sha256 8fd2ac6866e1bff68dc356bba8206e9049cd817bbc65095af50e22918dc0fa6d; branches: scveh.owned:true, scveh.no_miles:false, scveh.over_half:true, scveh.smr_ok:true, scveh.smr_bad:false, scveh.line9#1, scveh.is_actual_owned:true, scveh.is_actual_leased:false, scveh.line20a#1, scveh.low_use:false, scveh.screen:false, scveh.screened:false, scveh.passenger:true, scveh.suv:false, scveh.is2025:false, scveh.is2019:false, scveh.s179_bad:false, scveh.after_jan19:true, scveh.bonus_same:true, scveh.bonus_mixed:false, scveh.claims_bonus:false, scveh.lim_2025#1, scveh.line7#1, scveh.line10#1, scveh.line10_2025#0, scveh.s179_line10:left, scveh.line11:positive, scveh.line14#1, scveh.line15:floor, scveh.bonus_fullcase#0, scveh.bonus_2025#2, scveh.line16#1, scveh.bonus_allowed:left, scveh.line17:positive, scveh.line18:floor, scveh.line19#1, scveh.line19_earlier#0, scveh.line19_2025#1, scveh.line20:right, scveh.b100:floor, scveh.d2:right, scveh.too_old:false, scveh.bonus_v#0, scveh.macrs_pass#0, scveh.macrs_heavy#0, scveh.macrs_v#0, scveh.bonus#0, scveh.macrs#0, scveh.s179_2025#0, scveh.mq_q4#0, scveh.mq_total#0, scveh.cost179#0, scveh.q4_basis#3, scveh.mq_q4_o#1, scveh.mq_total_o#1, scveh.cost179_o#1
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].bm_c — Business miles, as cents
 Status: **DISAGREE**
 
-Project: $271.86
-Model: $27,186.00
-Work: Business miles 27,186
+Project: $298.86
+Model: $29,886.00
+Work: Business miles 29,886
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
 
@@ -4364,29 +3454,34 @@ Value: $0.00
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].om_c — Other miles, as cents
 Status: **DISAGREE**
 
-Project: $31.77
-Model: $3,177.00
-Work: Other miles 3,177
+Project: $3.91
+Model: $391.00
+Work: Other miles 391
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].nonbusiness_c — Commuting and other miles, as cents
 Status: **DISAGREE**
 
-Project: $31.77
-Model: $3,177.00
-Work: 0 + 3,177
+Project: $3.91
+Model: $391.00
+Work: 0 + 391
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].total_c — Total miles, as cents
 Status: **DISAGREE**
 
-Project: $303.63
-Model: $30,363.00
-Work: 27,186 + 3,177
+Project: $302.77
+Model: $30,277.00
+Work: 29,886 + 391
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
+
+### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].no_miles — Actual expenses claimed for a vehicle with no miles
+Status: **AGREE**
+
+Value: no
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].over_half — Business use is more than 50%
 Status: **AGREE**
@@ -4401,27 +3496,27 @@ Value: no
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].smr_amount — Business miles times the standard mileage rate
 Status: **AGREE**
 
-Value: $19,030.20
+Value: $20,920.20
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].line9_standard — Standard mileage amount plus parking fees and tolls
 Status: **AGREE**
 
-Value: $19,030.20
+Value: $20,920.20
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].operating_business — The business portion of the operating expenses
 Status: **AGREE**
 
-Value: $4,402.51
+Value: $9,706.02
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].line9_actual — Business portion of the operating expenses plus parking fees and tolls
 Status: **AGREE**
 
-Value: $4,402.51
+Value: $9,706.02
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].line9 — Car and truck expenses for this vehicle
 Status: **AGREE**
 
-Value: $4,402.51
+Value: $9,706.02
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].is_actual_owned — Owned and on actual expenses
 Status: **AGREE**
@@ -4436,7 +3531,7 @@ Value: no
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].lease_business — The business portion of the lease payments
 Status: **AGREE**
 
-Value: $0.00
+Value: $5,582.96
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].line20a — Rent or lease of this vehicle (business portion)
 Status: **AGREE**
@@ -4456,12 +3551,12 @@ Value: no
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].year — Year of recovery in 2025
 Status: **AGREE**
 
-Value: 1
+Value: 2
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].is2025 — Placed in service in 2025
 Status: **AGREE**
 
-Value: yes
+Value: no
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].is2019 — Placed in service in 2019 (2025 is after the recovery period)
 Status: **AGREE**
@@ -4471,7 +3566,7 @@ Value: no
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].bus_cost — Business/investment cost (cost times business use)
 Status: **AGREE**
 
-Value: $22,276.71
+Value: $7,658.80
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].s179_bad — The section 179 election is more than the business cost, or than the SUV limit
 Status: **AGREE**
@@ -4489,88 +3584,78 @@ Status: **AGREE**
 Value: no
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].lim_first_bonus — First-year limit with the special allowance
-Status: **AGREE**
-
-Value: $20,200.00
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].lim_first_none — First-year limit without the special allowance
-Status: **AGREE**
-
-Value: $12,200.00
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].lim_2025 — Limit for a 2025 vehicle
-Status: **AGREE**
-
-Value: $12,200.00
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].lim_prior — Limit for the vehicle's 2025 year of recovery
 Status: **DISAGREE**
 
-Project: $20,200.00
-Model: $0.00
-Work: Not a prior-year vehicle
+Project: $19,800.00
+Model: $20,200.00
+Work: Table 2 footnote: 2025 first-year limit with special allowance
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Here the vehicle's key gives the project's value: line 7 reads lim_2025 only for a 2025 vehicle and lim_prior otherwise, and the project looks every limit up by the year actually placed in service and its year of recovery; the model read the 2025 column. Pub. 946 p. 59 table, checked: 1st year 2025 $20,200 (footnote 1: $12,200 without the special allowance), 2nd year 2024 $19,800, 4th and later year 2021 $5,860, 2020 and 2019 $5,760, footnote 6 (2019 without the special allowance) $10,100; the project's tables carry these values. Not evidence. [dropped]
+
+### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].lim_prior — Limit for the vehicle's 2025 year of recovery
+Status: **AGREE**
+
+Value: $19,800.00
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].line7 — Maximum depreciation deduction for this year from the appropriate table
 Status: **AGREE**
 
-Value: $12,200.00
+Value: $19,800.00
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].line9w — Adjusted maximum depreciation deduction (line 7 times the business/investment-us
 Status: **AGREE**
 
-Value: $10,923.47
+Value: $19,544.30
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].s179_2025_ok — Section 179 elected for a 2025 vehicle
 Status: **AGREE**
 
-Value: $14,596.00
+Value: $0.00
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].line10 — Section 179 deduction claimed this year (not more than line 9 for a passenger au
 Status: **AGREE**
 
-Value: $10,923.47
+Value: $0.00
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].line10_2025 — Section 179 for a 2025 vehicle: not more than line 9 for a passenger automobile
 Status: **AGREE**
 
-Value: $10,923.47
+Value: $0.00
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].s179_line10 — The section 179 election, not more than line 9
 Status: **AGREE**
 
-Value: $10,923.47
+Value: $0.00
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].line11 — Subtract line 10 from line 9
 Status: **AGREE**
 
-Value: $0.00
+Value: $19,544.30
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].line14 — Section 179 deduction claimed in the year you placed the car in service
 Status: **AGREE**
 
-Value: $10,923.47
+Value: $7,759.00
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].line15 — Tentative basis for depreciation (line 13 less line 14)
 Status: **AGREE**
 
-Value: $11,353.24
+Value: $0.00
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].bonus_full — 100% special allowance
 Status: **AGREE**
 
-Value: $11,353.24
+Value: $0.00
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].bonus_forty — 40% special allowance
 Status: **AGREE**
 
-Value: $4,541.30
+Value: $0.00
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].bonus_fullcase — The allowance when it is claimed: 100% if acquired after January 19, 2025, other
 Status: **AGREE**
 
-Value: $11,353.24
+Value: $0.00
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].bonus_2025 — Special allowance for a 2025 vehicle
 Status: **AGREE**
@@ -4590,12 +3675,12 @@ Value: $0.00
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].line17 — Limit on the MACRS depreciation (line 11 less line 16)
 Status: **AGREE**
 
-Value: $0.00
+Value: $19,544.30
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].line18 — Basis for depreciation (line 15 less line 16)
 Status: **AGREE**
 
-Value: $11,353.24
+Value: $0.00
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].qconv — Mid-quarter convention for that quarter
 Status: **AGREE**
@@ -4603,53 +3688,57 @@ Status: **AGREE**
 Value: mq4
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].rate_hy — MACRS rate, half-year convention
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: 20%
+Project: 32%
+Model: 20%
+Work: 5-year 200DB half-year, year 1
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The project keys the rate on the vehicle's actual year of recovery (Pub. 946 Table A-1/A-5); the 2025-vehicle rate and line 19 for a 2025 vehicle are not read for a vehicle placed in service earlier, whose line 19 is line19_prior (agreeing or differing only in cents). Not evidence. [dropped]
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].rate_mq — MACRS rate, mid-quarter convention
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: 5%
+Project: 38%
+Model: 5%
+Work: 5-year 200DB mid-quarter Q4, year 1
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The project keys the rate on the vehicle's actual year of recovery (Pub. 946 Table A-1/A-5); the 2025-vehicle rate and line 19 for a 2025 vehicle are not read for a vehicle placed in service earlier, whose line 19 is line19_prior (agreeing or differing only in cents). Not evidence. [dropped]
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].rate_prior — MACRS rate for the 2025 year of recovery
 Status: **AGREE**
 
-Value: 20%
+Value: 32%
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].line19_hy — Line 18 times the half-year rate
 Status: **AGREE**
 
-Value: $2,270.65
+Value: $0.00
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].line19_mq — Line 18 times the mid-quarter rate
 Status: **AGREE**
 
-Value: $567.66
+Value: $0.00
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].line19_prior — Line 18 times the rate for the 2025 year of recovery
 Status: **AGREE**
 
-Value: $2,270.65
+Value: $0.00
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].line19 — Tentative MACRS depreciation deduction (line 18 times line 6)
 Status: **AGREE**
 
-Value: $567.66
+Value: $0.00
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].line19_earlier — Line 19 for a vehicle placed in service before 2025 (zero after the recovery per
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $2,270.65
-Model: $0.00
-Work: 2025 vehicle
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Value: $0.00
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].line19_2025 — Line 19 for a 2025 vehicle, half-year or mid-quarter
 Status: **AGREE**
 
-Value: $567.66
+Value: $0.00
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].line20 — MACRS depreciation deduction (the lesser of line 17 or line 19)
 Status: **AGREE**
@@ -4657,13 +3746,9 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].b100 — Cost less the section 179 deduction (as if used 100% for business)
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $24,880.00
-Model: $13,956.53
-Work: 24,880 - 10,923.47
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Value: $0.00
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].r1 — MACRS rate for year 1
 Status: **AGREE**
@@ -4671,36 +3756,14 @@ Status: **AGREE**
 Value: 20%
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].t1 — Year 1 MACRS amount as if used 100% for business
-Status: **DISAGREE**
-
-Project: $4,976.00
-Model: $2,791.31
-Work: 13,956.53 x 20%
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].l1 — Year 1 limit (no special allowance)
 Status: **AGREE**
 
-Value: $12,200.00
+Value: $0.00
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].t1s — Year 1 section 179 deduction plus MACRS amount
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $4,976.00
-Model: $13,714.78
-Work: 10,923.47 + 2,791.31
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].d1 — Year 1 deduction allowable at 100% business use (the lesser of the limit or the 
-Status: **DISAGREE**
-
-Project: $4,976.00
-Model: $12,200.00
-Work: Lesser of 12,200 or 13,714.78
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Value: $7,759.00
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].r2 — MACRS rate for year 2
 Status: **AGREE**
@@ -4708,13 +3771,19 @@ Status: **AGREE**
 Value: 32%
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].t2 — Year 2 MACRS amount as if used 100% for business
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $7,961.60
-Model: $4,466.09
-Work: 13,956.53 x 32%
+Value: $0.00
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].l2 — Year 2 limit
+Status: **AGREE**
+
+Value: $19,800.00
+
+### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].d2 — Year 2 deduction allowable at 100% business use
+Status: **AGREE**
+
+Value: $0.00
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].r3 — MACRS rate for year 3
 Status: **AGREE**
@@ -4722,13 +3791,9 @@ Status: **AGREE**
 Value: 19.2%
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].t3 — Year 3 MACRS amount as if used 100% for business
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $4,776.96
-Model: $2,679.65
-Work: 13,956.53 x 19.2%
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Value: $0.00
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].r4 — MACRS rate for year 4
 Status: **AGREE**
@@ -4736,13 +3801,9 @@ Status: **AGREE**
 Value: 11.52%
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].t4 — Year 4 MACRS amount as if used 100% for business
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $2,866.18
-Model: $1,607.79
-Work: 13,956.53 x 11.52%
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Value: $0.00
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].r5 — MACRS rate for year 5
 Status: **AGREE**
@@ -4750,13 +3811,9 @@ Status: **AGREE**
 Value: 11.52%
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].t5 — Year 5 MACRS amount as if used 100% for business
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $2,866.18
-Model: $1,607.79
-Work: 13,956.53 x 11.52%
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Value: $0.00
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].r6 — MACRS rate for year 6
 Status: **AGREE**
@@ -4764,13 +3821,9 @@ Status: **AGREE**
 Value: 5.76%
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].t6 — Year 6 MACRS amount as if used 100% for business
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $1,433.09
-Model: $803.90
-Work: 13,956.53 x 5.76%
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Value: $0.00
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].too_old — Placed in service before 2019
 Status: **AGREE**
@@ -4790,7 +3843,7 @@ Value: $0.00
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].macrs_heavy — Column (h) for a vehicle not subject to the limits
 Status: **AGREE**
 
-Value: $567.66
+Value: $0.00
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].macrs_v — Column (h)
 Status: **AGREE**
@@ -4810,22 +3863,22 @@ Value: $0.00
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].s179_2025 — Column (i): elected section 179 cost of this vehicle
 Status: **AGREE**
 
-Value: $10,923.47
+Value: $0.00
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].mq_q4 — Mid-quarter test basis, fourth quarter of this vehicle
 Status: **AGREE**
 
-Value: $11,353.24
+Value: $0.00
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].mq_total — Mid-quarter test basis, 2025 of this vehicle
 Status: **AGREE**
 
-Value: $11,353.24
+Value: $0.00
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].cost179 — Cost of section 179 property placed in service in 2025 of this vehicle
 Status: **AGREE**
 
-Value: $22,276.71
+Value: $0.00
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].bonus_o — Special allowance (owned, actual expenses)
 Status: **AGREE**
@@ -4840,653 +3893,1230 @@ Value: $0.00
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].s179_2025_o — Section 179 (owned, actual expenses)
 Status: **AGREE**
 
-Value: $10,923.47
+Value: $0.00
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].q4_basis — Basis for the mid-quarter test when placed in service October to December
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $11,353.24
+Project: $0.00
+Model: $7,658.80
+Work: Q4: business cost 7,658.80 - 2025 section 179 election 0
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. This 2024 vehicle's q4_basis is not read (mq_q4_o is zero for a vehicle not placed in service in 2025, agreeing). The model's working is also wrong: q4_basis is line 15, which here is zero because the prior section 179 deduction ($7,759) exceeds the business cost ($7,658.80); the model subtracted a 2025 election instead. Not evidence. [dropped]
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].mq_q4_o — mq_q4 (owned, actual expenses)
 Status: **AGREE**
 
-Value: $11,353.24
+Value: $0.00
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].mq_q4_a2 — mq_q4 of a 2025 vehicle
 Status: **AGREE**
 
-Value: $11,353.24
+Value: $0.00
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].mq_total_o — mq_total (owned, actual expenses)
 Status: **AGREE**
 
-Value: $11,353.24
+Value: $0.00
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].mq_total_a2 — mq_total of a 2025 vehicle
 Status: **AGREE**
 
-Value: $11,353.24
+Value: $0.00
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].cost179_o — cost179 (owned, actual expenses)
 Status: **AGREE**
 
-Value: $22,276.71
+Value: $0.00
 
 ### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_1].cost179_a2 — cost179 of a 2025 vehicle
+Status: **DISAGREE**
+
+Project: $7,658.80
+Model: $0.00
+Work: Not a 2025 vehicle
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The _o line reads the _a2 copy only for a 2025 vehicle; for this earlier vehicle the _o line and the result are zero (agreeing). Not evidence. [dropped]
+
+### case classm.scveh.5 — prompt sha256 83b6cfc02cfa956785b5c4e5c0ef7e23662691b6a693cd01a71caa5bed182fc9; branches: scveh.owned:false, scveh.owned:true, scveh.no_miles:false, scveh.over_half:true, scveh.smr_ok:true, scveh.smr_bad:false, scveh.line9#0, scveh.line9#1, scveh.is_actual_owned:false, scveh.is_actual_owned:true, scveh.is_actual_leased:false, scveh.is_actual_leased:true, scveh.line20a#0, scveh.line20a#1, scveh.low_use:false, scveh.screen:false, scveh.screened:false, scveh.passenger:true, scveh.suv:false, scveh.is2025:false, scveh.is2025:true, scveh.is2019:false, scveh.s179_bad:false, scveh.after_jan19:true, scveh.bonus_same:true, scveh.bonus_mixed:false, scveh.claims_bonus:false, scveh.lim_2025#1, scveh.line7#0, scveh.line7#1, scveh.line10#0, scveh.line10#1, scveh.line10_2025#0, scveh.s179_line10:left, scveh.s179_line10:right, scveh.line11:floor, scveh.line11:positive, scveh.line14#0, scveh.line14#1, scveh.line15:positive, scveh.bonus_fullcase#0, scveh.bonus_2025#2, scveh.line16#0, scveh.line16#1, scveh.bonus_allowed:left, scveh.line17:floor, scveh.line17:positive, scveh.line18:positive, scveh.line19#0, scveh.line19#1, scveh.line19_earlier#0, scveh.line19_2025#0, scveh.line20:left, scveh.line20:right, scveh.b100:positive, scveh.d1:right, scveh.d2:left, scveh.d2:right, scveh.d3:right, scveh.d4:right, scveh.d5:right, scveh.d6:right, scveh.too_old:false, scveh.bonus_v#0, scveh.macrs_pass#0, scveh.macrs_heavy#0, scveh.macrs_v#0, scveh.bonus#0, scveh.bonus#1, scveh.macrs#0, scveh.macrs#1, scveh.s179_2025#0, scveh.s179_2025#1, scveh.mq_q4#0, scveh.mq_q4#1, scveh.mq_total#0, scveh.mq_total#1, scveh.cost179#0, scveh.cost179#1, scveh.q4_basis#0, scveh.q4_basis#2, scveh.q4_basis#3, scveh.mq_q4_o#0, scveh.mq_q4_o#1, scveh.mq_total_o#0, scveh.mq_total_o#1, scveh.cost179_o#0, scveh.cost179_o#1
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].bm_c — Business miles, as cents
+Status: **DISAGREE**
+
+Project: $133.07
+Model: $13,307.00
+Work: Business miles 13,307
+
+Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].cm_c — Commuting miles, as cents
+Status: **DISAGREE**
+
+Project: $29.28
+Model: $2,928.00
+Work: Commuting miles 2,928
+
+Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].om_c — Other miles, as cents
+Status: **DISAGREE**
+
+Project: $28.24
+Model: $2,824.00
+Work: Other miles 2,824
+
+Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].nonbusiness_c — Commuting and other miles, as cents
+Status: **DISAGREE**
+
+Project: $57.52
+Model: $5,752.00
+Work: 2928 + 2824
+
+Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].total_c — Total miles, as cents
+Status: **DISAGREE**
+
+Project: $190.59
+Model: $19,059.00
+Work: 13307 + 5752
+
+Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].no_miles — Actual expenses claimed for a vehicle with no miles
 Status: **AGREE**
 
-Value: $22,276.71
+Value: no
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].bm_c — Business miles, as cents
-Status: **DISAGREE**
-
-Project: $297.02
-Model: $29,702.00
-Work: Business miles 29,702
-
-Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].cm_c — Commuting miles, as cents
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].om_c — Other miles, as cents
-Status: **DISAGREE**
-
-Project: $31.85
-Model: $3,185.00
-Work: Other miles 3,185
-
-Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].nonbusiness_c — Commuting and other miles, as cents
-Status: **DISAGREE**
-
-Project: $31.85
-Model: $3,185.00
-Work: 0 + 3,185
-
-Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].total_c — Total miles, as cents
-Status: **DISAGREE**
-
-Project: $328.87
-Model: $32,887.00
-Work: 29,702 + 3,185
-
-Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].over_half — Business use is more than 50%
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].over_half — Business use is more than 50%
 Status: **AGREE**
 
 Value: yes
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].smr_bad — The standard mileage rate is not available for this vehicle
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].smr_bad — The standard mileage rate is not available for this vehicle
 Status: **AGREE**
 
 Value: no
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].smr_amount — Business miles times the standard mileage rate
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].smr_amount — Business miles times the standard mileage rate
 Status: **AGREE**
 
-Value: $20,791.40
+Value: $9,314.90
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].line9_standard — Standard mileage amount plus parking fees and tolls
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].line9_standard — Standard mileage amount plus parking fees and tolls
 Status: **AGREE**
 
-Value: $20,791.40
+Value: $9,314.90
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].operating_business — The business portion of the operating expenses
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].operating_business — The business portion of the operating expenses
 Status: **AGREE**
 
-Value: $137.28
+Value: $0.00
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].line9_actual — Business portion of the operating expenses plus parking fees and tolls
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].line9_actual — Business portion of the operating expenses plus parking fees and tolls
 Status: **AGREE**
 
-Value: $137.28
+Value: $0.00
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].line9 — Car and truck expenses for this vehicle
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].line9 — Car and truck expenses for this vehicle
 Status: **AGREE**
 
-Value: $137.28
+Value: $0.00
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].is_actual_owned — Owned and on actual expenses
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].is_actual_owned — Owned and on actual expenses
+Status: **AGREE**
+
+Value: no
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].is_actual_leased — Leased and on actual expenses
 Status: **AGREE**
 
 Value: yes
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].is_actual_leased — Leased and on actual expenses
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].lease_business — The business portion of the lease payments
+Status: **AGREE**
+
+Value: $2,493.27
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].line20a — Rent or lease of this vehicle (business portion)
+Status: **AGREE**
+
+Value: $2,493.27
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].low_use — Business use is 50% or less
 Status: **AGREE**
 
 Value: no
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].lease_business — The business portion of the lease payments
-Status: **AGREE**
-
-Value: $3,096.01
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].line20a — Rent or lease of this vehicle (business portion)
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].low_use — Business use is 50% or less
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].screened — This vehicle's depreciation is outside this tool
 Status: **AGREE**
 
 Value: no
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].screened — This vehicle's depreciation is outside this tool
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].year — Year of recovery in 2025
+Status: **AGREE**
+
+Value: 2
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].is2025 — Placed in service in 2025
 Status: **AGREE**
 
 Value: no
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].year — Year of recovery in 2025
-Status: **AGREE**
-
-Value: 6
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].is2025 — Placed in service in 2025
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].is2019 — Placed in service in 2019 (2025 is after the recovery period)
 Status: **AGREE**
 
 Value: no
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].is2019 — Placed in service in 2019 (2025 is after the recovery period)
-Status: **AGREE**
-
-Value: no
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].bus_cost — Business/investment cost (cost times business use)
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].bus_cost — Business/investment cost (cost times business use)
 Status: **DISAGREE**
 
-Project: $55,566.49
-Model: $55,566.50
-Work: 61,525 x 29,702/32,887
+Project: $54,544.08
+Model: $54,544.11
+Work: 78121 x 13307/19059
 
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].s179_bad — The section 179 election is more than the business cost, or than the SUV limit
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].s179_bad — The section 179 election is more than the business cost, or than the SUV limit
 Status: **AGREE**
 
 Value: no
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].bonus_mixed — The special allowance choice differs within the 5-year class
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].bonus_mixed — The special allowance choice differs within the 5-year class
 Status: **AGREE**
 
 Value: no
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].claims_bonus — A special allowance is claimed
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].claims_bonus — A special allowance is claimed
 Status: **AGREE**
 
 Value: no
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].lim_first_bonus — First-year limit with the special allowance
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].lim_first_bonus — First-year limit with the special allowance
 Status: **DISAGREE**
 
-Project: $5,760.00
-Model: $18,100.00
-Work: Pub 946 table, 2020 1st year
+Project: $19,800.00
+Model: $20,200.00
+Work: Table 2 footnote, 2025 with special allowance
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Here the vehicle's key gives the project's value: line 7 reads lim_2025 only for a 2025 vehicle and lim_prior otherwise, and the project looks every limit up by the year actually placed in service and its year of recovery; the model read the 2025 column. Pub. 946 p. 59 table, checked: 1st year 2025 $20,200 (footnote 1: $12,200 without the special allowance), 2nd year 2024 $19,800, 4th and later year 2021 $5,860, 2020 and 2019 $5,760, footnote 6 (2019 without the special allowance) $10,100; the project's tables carry these values. Not evidence. [dropped]
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].lim_prior — Limit for the vehicle's 2025 year of recovery
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].lim_prior — Limit for the vehicle's 2025 year of recovery
 Status: **AGREE**
 
-Value: $5,760.00
+Value: $19,800.00
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].line7 — Maximum depreciation deduction for this year from the appropriate table
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].line7 — Maximum depreciation deduction for this year from the appropriate table
 Status: **AGREE**
 
-Value: $5,760.00
+Value: $19,800.00
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].line9w — Adjusted maximum depreciation deduction (line 7 times the business/investment-us
-Status: **AGREE**
-
-Value: $5,202.16
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].s179_2025_ok — Section 179 elected for a 2025 vehicle
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].line10 — Section 179 deduction claimed this year (not more than line 9 for a passenger au
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].line10_2025 — Section 179 for a 2025 vehicle: not more than line 9 for a passenger automobile
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].s179_line10 — The section 179 election, not more than line 9
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].line11 — Subtract line 10 from line 9
-Status: **AGREE**
-
-Value: $5,202.16
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].line14 — Section 179 deduction claimed in the year you placed the car in service
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].line15 — Tentative basis for depreciation (line 13 less line 14)
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].line9w — Adjusted maximum depreciation deduction (line 7 times the business/investment-us
 Status: **DISAGREE**
 
-Project: $55,566.49
-Model: $55,566.50
-Work: 55,566.50 - 0
+Project: $13,824.36
+Model: $13,824.37
+Work: 19800 x 13307/19059
 
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].bonus_full — 100% special allowance
-Status: **DISAGREE**
-
-Project: $55,566.49
-Model: $55,566.50
-Work: 55,566.50 x 100%
-
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].bonus_forty — 40% special allowance
-Status: **AGREE**
-
-Value: $22,226.60
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].bonus_fullcase — The allowance when it is claimed: 100% if acquired after January 19, 2025, other
-Status: **DISAGREE**
-
-Project: $55,566.49
-Model: $55,566.50
-Work: Acquired after Jan 19, 2025 = yes
-
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].bonus_2025 — Special allowance for a 2025 vehicle
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].s179_2025_ok — Section 179 elected for a 2025 vehicle
 Status: **AGREE**
 
 Value: $0.00
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].line16 — Special depreciation allowance
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].line10 — Section 179 deduction claimed this year (not more than line 9 for a passenger au
 Status: **AGREE**
 
 Value: $0.00
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].bonus_allowed — Special depreciation allowance allowed (not more than line 11)
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].line10_2025 — Section 179 for a 2025 vehicle: not more than line 9 for a passenger automobile
 Status: **AGREE**
 
 Value: $0.00
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].line17 — Limit on the MACRS depreciation (line 11 less line 16)
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].s179_line10 — The section 179 election, not more than line 9
 Status: **AGREE**
 
-Value: $5,202.16
+Value: $0.00
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].line18 — Basis for depreciation (line 15 less line 16)
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].line11 — Subtract line 10 from line 9
 Status: **DISAGREE**
 
-Project: $55,566.49
-Model: $55,566.50
-Work: 55,566.50 - 0
+Project: $13,824.36
+Model: $13,824.37
+Work: 13824.37 - 0
 
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].qconv — Mid-quarter convention for that quarter
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].line14 — Section 179 deduction claimed in the year you placed the car in service
 Status: **AGREE**
 
-Value: mq1
+Value: $0.00
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].rate_hy — MACRS rate, half-year convention
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].line15 — Tentative basis for depreciation (line 13 less line 14)
 Status: **DISAGREE**
 
-Project: 5.76%
+Project: $54,544.08
+Model: $54,544.11
+Work: 54544.11 - 0
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].bonus_full — 100% special allowance
+Status: **DISAGREE**
+
+Project: $54,544.08
+Model: $54,544.11
+Work: 54544.11 x 100%
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].bonus_forty — 40% special allowance
+Status: **DISAGREE**
+
+Project: $21,817.63
+Model: $21,817.64
+Work: 54544.11 x 40%
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].bonus_fullcase — The allowance when it is claimed: 100% if acquired after January 19, 2025, other
+Status: **DISAGREE**
+
+Project: $54,544.08
+Model: $54,544.11
+Work: Acquired after 1/19/2025, so 100%
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].bonus_2025 — Special allowance for a 2025 vehicle
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].line16 — Special depreciation allowance
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].bonus_allowed — Special depreciation allowance allowed (not more than line 11)
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].line17 — Limit on the MACRS depreciation (line 11 less line 16)
+Status: **DISAGREE**
+
+Project: $13,824.36
+Model: $13,824.37
+Work: 13824.37 - 0
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].line18 — Basis for depreciation (line 15 less line 16)
+Status: **DISAGREE**
+
+Project: $54,544.08
+Model: $54,544.11
+Work: 54544.11 - 0
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].qconv — Mid-quarter convention for that quarter
+Status: **AGREE**
+
+Value: mq4
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].rate_hy — MACRS rate, half-year convention
+Status: **DISAGREE**
+
+Project: 32%
 Model: 20%
-Work: 5-year HY, year 1
+Work: 5-yr 200DB HY, year 1
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The project keys the rate on the vehicle's actual year of recovery (Pub. 946 Table A-1/A-5); the 2025-vehicle rate and line 19 for a 2025 vehicle are not read for a vehicle placed in service earlier, whose line 19 is line19_prior (agreeing or differing only in cents). Not evidence. [dropped]
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].rate_mq — MACRS rate, mid-quarter convention
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].rate_mq — MACRS rate, mid-quarter convention
 Status: **DISAGREE**
 
-Project: 1.38%
-Model: 35%
-Work: 5-year MQ Q1, year 1
+Project: 38%
+Model: 5%
+Work: 5-yr 200DB MQ Q4, year 1
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The project keys the rate on the vehicle's actual year of recovery (Pub. 946 Table A-1/A-5); the 2025-vehicle rate and line 19 for a 2025 vehicle are not read for a vehicle placed in service earlier, whose line 19 is line19_prior (agreeing or differing only in cents). Not evidence. [dropped]
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].rate_prior — MACRS rate for the 2025 year of recovery
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].rate_prior — MACRS rate for the 2025 year of recovery
 Status: **AGREE**
 
-Value: 4.26%
+Value: 32%
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].line19_hy — Line 18 times the half-year rate
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].line19_hy — Line 18 times the half-year rate
 Status: **DISAGREE**
 
-Project: $3,200.63
-Model: $11,113.30
-Work: 55,566.50 x 20%
+Project: $17,454.11
+Model: $10,908.82
+Work: 54544.11 x 20%
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The project keys the rate on the vehicle's actual year of recovery (Pub. 946 Table A-1/A-5); the 2025-vehicle rate and line 19 for a 2025 vehicle are not read for a vehicle placed in service earlier, whose line 19 is line19_prior (agreeing or differing only in cents). Not evidence. [dropped]
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].line19_mq — Line 18 times the mid-quarter rate
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].line19_mq — Line 18 times the mid-quarter rate
 Status: **DISAGREE**
 
-Project: $766.82
-Model: $19,448.28
-Work: 55,566.50 x 35%
+Project: $20,726.75
+Model: $2,727.21
+Work: 54544.11 x 5%
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The project keys the rate on the vehicle's actual year of recovery (Pub. 946 Table A-1/A-5); the 2025-vehicle rate and line 19 for a 2025 vehicle are not read for a vehicle placed in service earlier, whose line 19 is line19_prior (agreeing or differing only in cents). Not evidence. [dropped]
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].line19_prior — Line 18 times the rate for the 2025 year of recovery
-Status: **AGREE**
-
-Value: $2,367.13
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].line19 — Tentative MACRS depreciation deduction (line 18 times line 6)
-Status: **AGREE**
-
-Value: $2,367.13
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].line19_earlier — Line 19 for a vehicle placed in service before 2025 (zero after the recovery per
-Status: **AGREE**
-
-Value: $2,367.13
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].line19_2025 — Line 19 for a 2025 vehicle, half-year or mid-quarter
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].line19_prior — Line 18 times the rate for the 2025 year of recovery
 Status: **DISAGREE**
 
-Project: $766.82
-Model: $0.00
-Work: Not a 2025 vehicle
+Project: $17,454.11
+Model: $17,454.12
+Work: 54544.11 x 32%
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].line20 — MACRS depreciation deduction (the lesser of line 17 or line 19)
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].line19 — Tentative MACRS depreciation deduction (line 18 times line 6)
+Status: **DISAGREE**
+
+Project: $17,454.11
+Model: $17,454.12
+Work: Placed in service before 2025, so the year-2 rate
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].line19_earlier — Line 19 for a vehicle placed in service before 2025 (zero after the recovery per
+Status: **DISAGREE**
+
+Project: $17,454.11
+Model: $17,454.12
+Work: line19_prior
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].line19_2025 — Line 19 for a 2025 vehicle, half-year or mid-quarter
+Status: **DISAGREE**
+
+Project: $17,454.11
+Model: $10,908.82
+Work: Mid-quarter test no, so HY
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The project keys the rate on the vehicle's actual year of recovery (Pub. 946 Table A-1/A-5); the 2025-vehicle rate and line 19 for a 2025 vehicle are not read for a vehicle placed in service earlier, whose line 19 is line19_prior (agreeing or differing only in cents). Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].line20 — MACRS depreciation deduction (the lesser of line 17 or line 19)
+Status: **DISAGREE**
+
+Project: $13,824.36
+Model: $13,824.37
+Work: lesser of 13824.37 or 17454.12
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].b100 — Cost less the section 179 deduction (as if used 100% for business)
 Status: **AGREE**
 
-Value: $2,367.13
+Value: $78,121.00
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].b100 — Cost less the section 179 deduction (as if used 100% for business)
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].r1 — MACRS rate for year 1
 Status: **AGREE**
 
-Value: $61,525.00
+Value: 20%
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].r1 — MACRS rate for year 1
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].t1 — Year 1 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: 25%
+Value: $15,624.20
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].t1 — Year 1 MACRS amount as if used 100% for business
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].t1s — Year 1 section 179 deduction plus MACRS amount
 Status: **AGREE**
 
-Value: $15,381.25
+Value: $15,624.20
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].t1s — Year 1 section 179 deduction plus MACRS amount
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].r2 — MACRS rate for year 2
 Status: **AGREE**
 
-Value: $15,381.25
+Value: 32%
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].r2 — MACRS rate for year 2
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].t2 — Year 2 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: 30%
+Value: $24,998.72
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].t2 — Year 2 MACRS amount as if used 100% for business
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].l2 — Year 2 limit
 Status: **AGREE**
 
-Value: $18,457.50
+Value: $19,800.00
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].l2 — Year 2 limit
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].d2 — Year 2 deduction allowable at 100% business use
 Status: **AGREE**
 
-Value: $16,100.00
+Value: $19,800.00
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].d2 — Year 2 deduction allowable at 100% business use
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].r3 — MACRS rate for year 3
 Status: **AGREE**
 
-Value: $16,100.00
+Value: 19.2%
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].r3 — MACRS rate for year 3
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].t3 — Year 3 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: 18%
+Value: $14,999.23
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].t3 — Year 3 MACRS amount as if used 100% for business
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].r4 — MACRS rate for year 4
 Status: **AGREE**
 
-Value: $11,074.50
+Value: 11.52%
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].l3 — Year 3 limit
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].t4 — Year 4 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $9,700.00
+Value: $8,999.54
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].d3 — Year 3 deduction allowable at 100% business use
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].r5 — MACRS rate for year 5
 Status: **AGREE**
 
-Value: $9,700.00
+Value: 11.52%
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].r4 — MACRS rate for year 4
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].t5 — Year 5 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: 11.37%
+Value: $8,999.54
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].t4 — Year 4 MACRS amount as if used 100% for business
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].r6 — MACRS rate for year 6
 Status: **AGREE**
 
-Value: $6,995.39
+Value: 5.76%
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].l4 — Year 4 limit
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].t6 — Year 6 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $5,760.00
+Value: $4,499.77
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].d4 — Year 4 deduction allowable at 100% business use
-Status: **AGREE**
-
-Value: $5,760.00
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].r5 — MACRS rate for year 5
-Status: **AGREE**
-
-Value: 11.37%
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].t5 — Year 5 MACRS amount as if used 100% for business
-Status: **AGREE**
-
-Value: $6,995.39
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].l5 — Year 5 limit
-Status: **AGREE**
-
-Value: $5,760.00
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].d5 — Year 5 deduction allowable at 100% business use
-Status: **AGREE**
-
-Value: $5,760.00
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].r6 — MACRS rate for year 6
-Status: **AGREE**
-
-Value: 4.26%
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].t6 — Year 6 MACRS amount as if used 100% for business
-Status: **AGREE**
-
-Value: $2,620.97
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].l6 — Year 6 limit
-Status: **AGREE**
-
-Value: $5,760.00
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].d6 — Year 6 deduction allowable at 100% business use
-Status: **AGREE**
-
-Value: $2,620.97
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].too_old — Placed in service before 2019
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].too_old — Placed in service before 2019
 Status: **AGREE**
 
 Value: no
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].bonus_v — Special allowance for this vehicle (line 25)
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].bonus_v — Special allowance for this vehicle (line 25)
 Status: **AGREE**
 
 Value: $0.00
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].macrs_pass — Column (h) for a passenger automobile
-Status: **AGREE**
-
-Value: $2,367.13
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].macrs_heavy — Column (h) for a vehicle not subject to the limits
-Status: **AGREE**
-
-Value: $2,367.13
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].macrs_v — Column (h)
-Status: **AGREE**
-
-Value: $2,367.13
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].bonus — Line 25: special allowance of this vehicle
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].macrs — Column (h): depreciation of this vehicle
-Status: **AGREE**
-
-Value: $2,367.13
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].s179_2025 — Column (i): elected section 179 cost of this vehicle
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].mq_q4 — Mid-quarter test basis, fourth quarter of this vehicle
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].mq_total — Mid-quarter test basis, 2025 of this vehicle
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].cost179 — Cost of section 179 property placed in service in 2025 of this vehicle
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].bonus_o — Special allowance (owned, actual expenses)
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].macrs_o — Depreciation (owned, actual expenses)
-Status: **AGREE**
-
-Value: $2,367.13
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].s179_2025_o — Section 179 (owned, actual expenses)
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].q4_basis — Basis for the mid-quarter test when placed in service October to December
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].mq_q4_o — mq_q4 (owned, actual expenses)
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].mq_q4_a2 — mq_q4 of a 2025 vehicle
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].mq_total_o — mq_total (owned, actual expenses)
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].mq_total_a2 — mq_total of a 2025 vehicle
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].macrs_pass — Column (h) for a passenger automobile
 Status: **DISAGREE**
 
-Project: $55,566.49
-Model: $0.00
-Work: Not a 2025 vehicle
+Project: $13,824.36
+Model: $13,824.37
+Work: line 20
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].cost179_o — cost179 (owned, actual expenses)
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].macrs_heavy — Column (h) for a vehicle not subject to the limits
+Status: **DISAGREE**
+
+Project: $17,454.11
+Model: $17,454.12
+Work: line 19
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].macrs_v — Column (h)
+Status: **DISAGREE**
+
+Project: $13,824.36
+Model: $13,824.37
+Work: Subject to the passenger automobile limits
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].bonus — Line 25: special allowance of this vehicle
 Status: **AGREE**
 
 Value: $0.00
 
-### classm.scveh.4 — person[taxpayer].sc[biz_a].scveh[car_2].cost179_a2 — cost179 of a 2025 vehicle
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].macrs — Column (h): depreciation of this vehicle
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].s179_2025 — Column (i): elected section 179 cost of this vehicle
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].mq_q4 — Mid-quarter test basis, fourth quarter of this vehicle
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].mq_total — Mid-quarter test basis, 2025 of this vehicle
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].cost179 — Cost of section 179 property placed in service in 2025 of this vehicle
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].bonus_o — Special allowance (owned, actual expenses)
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].macrs_o — Depreciation (owned, actual expenses)
 Status: **DISAGREE**
 
-Project: $55,566.49
+Project: $13,824.36
 Model: $0.00
-Work: Not a 2025 vehicle
+Work: Not owned
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. macrs reads macrs_o only for an owned vehicle on actual expenses; this one is leased or on the standard mileage rate, so macrs is zero (agreeing). Not evidence. [dropped]
 
-### case classm.scveh.5 — prompt sha256 f7ef2bf873b95ee30f121a5ff6106bf8eb0e769e18c275d60e0b7e188347d8d9; branches: scveh.owned:false, scveh.owned:true, scveh.over_half:true, scveh.smr_ok:true, scveh.smr_bad:false, scveh.line9#0, scveh.line9#1, scveh.is_actual_owned:false, scveh.is_actual_owned:true, scveh.is_actual_leased:false, scveh.line20a#1, scveh.low_use:false, scveh.screen:false, scveh.screened:false, scveh.passenger:true, scveh.suv:false, scveh.is2025:false, scveh.is2025:true, scveh.is2019:false, scveh.s179_bad:false, scveh.after_jan19:true, scveh.bonus_same:true, scveh.bonus_mixed:false, scveh.claims_bonus:false, scveh.claims_bonus:true, scveh.lim_2025#0, scveh.lim_2025#1, scveh.line7#0, scveh.line7#1, scveh.line10#0, scveh.line10#1, scveh.line10_2025#0, scveh.s179_line10:left, scveh.line11:positive, scveh.line14#0, scveh.line14#1, scveh.line15:positive, scveh.bonus_fullcase#0, scveh.bonus_2025#1, scveh.bonus_2025#2, scveh.line16#0, scveh.line16#1, scveh.bonus_allowed:left, scveh.bonus_allowed:right, scveh.line17:floor, scveh.line17:positive, scveh.line18:positive, scveh.line19#0, scveh.line19#1, scveh.line19_earlier#0, scveh.line19_2025#0, scveh.line20:left, scveh.line20:right, scveh.b100:positive, scveh.d1:right, scveh.d2:right, scveh.d3:right, scveh.d4:right, scveh.d5:right, scveh.d6:right, scveh.too_old:false, scveh.bonus_v#0, scveh.macrs_pass#0, scveh.macrs_heavy#0, scveh.macrs_v#0, scveh.bonus#0, scveh.bonus#1, scveh.macrs#0, scveh.macrs#1, scveh.s179_2025#0, scveh.s179_2025#1, scveh.mq_q4#0, scveh.mq_q4#1, scveh.mq_total#0, scveh.mq_total#1, scveh.cost179#0, scveh.cost179#1, scveh.q4_basis#0, scveh.q4_basis#2, scveh.mq_q4_o#0, scveh.mq_q4_o#1, scveh.mq_total_o#0, scveh.mq_total_o#1, scveh.cost179_o#0, scveh.cost179_o#1
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].s179_2025_o — Section 179 (owned, actual expenses)
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].q4_basis — Basis for the mid-quarter test when placed in service October to December
+Status: **DISAGREE**
+
+Project: $54,544.08
+Model: $54,544.11
+Work: Q4, so 54544.11 - 0
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].mq_q4_o — mq_q4 (owned, actual expenses)
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].mq_q4_a2 — mq_q4 of a 2025 vehicle
+Status: **DISAGREE**
+
+Project: $54,544.08
+Model: $0.00
+Work: Not 2025
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The _o line reads the _a2 copy only for a 2025 vehicle; for this earlier vehicle the _o line and the result are zero (agreeing). Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].mq_total_o — mq_total (owned, actual expenses)
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].mq_total_a2 — mq_total of a 2025 vehicle
+Status: **DISAGREE**
+
+Project: $54,544.08
+Model: $0.00
+Work: Not 2025
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The _o line reads the _a2 copy only for a 2025 vehicle; for this earlier vehicle the _o line and the result are zero (agreeing). Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].cost179_o — cost179 (owned, actual expenses)
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_1].cost179_a2 — cost179 of a 2025 vehicle
+Status: **DISAGREE**
+
+Project: $54,544.08
+Model: $0.00
+Work: Not 2025
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The _o line reads the _a2 copy only for a 2025 vehicle; for this earlier vehicle the _o line and the result are zero (agreeing). Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].bm_c — Business miles, as cents
+Status: **DISAGREE**
+
+Project: $292.52
+Model: $29,252.00
+Work: Business miles 29,252
+
+Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].cm_c — Commuting miles, as cents
+Status: **DISAGREE**
+
+Project: $7.26
+Model: $726.00
+Work: Commuting miles 726
+
+Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].om_c — Other miles, as cents
+Status: **DISAGREE**
+
+Project: $16.99
+Model: $1,699.00
+Work: Other miles 1,699
+
+Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].nonbusiness_c — Commuting and other miles, as cents
+Status: **DISAGREE**
+
+Project: $24.25
+Model: $2,425.00
+Work: 726 + 1699
+
+Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].total_c — Total miles, as cents
+Status: **DISAGREE**
+
+Project: $316.77
+Model: $31,677.00
+Work: 29252 + 2425
+
+Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].no_miles — Actual expenses claimed for a vehicle with no miles
+Status: **AGREE**
+
+Value: no
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].over_half — Business use is more than 50%
+Status: **AGREE**
+
+Value: yes
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].smr_bad — The standard mileage rate is not available for this vehicle
+Status: **AGREE**
+
+Value: no
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].smr_amount — Business miles times the standard mileage rate
+Status: **AGREE**
+
+Value: $20,476.40
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].line9_standard — Standard mileage amount plus parking fees and tolls
+Status: **AGREE**
+
+Value: $20,476.40
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].operating_business — The business portion of the operating expenses
+Status: **AGREE**
+
+Value: $2,650.29
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].line9_actual — Business portion of the operating expenses plus parking fees and tolls
+Status: **AGREE**
+
+Value: $2,650.29
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].line9 — Car and truck expenses for this vehicle
+Status: **AGREE**
+
+Value: $2,650.29
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].is_actual_owned — Owned and on actual expenses
+Status: **AGREE**
+
+Value: yes
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].is_actual_leased — Leased and on actual expenses
+Status: **AGREE**
+
+Value: no
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].lease_business — The business portion of the lease payments
+Status: **AGREE**
+
+Value: $961.31
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].line20a — Rent or lease of this vehicle (business portion)
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].low_use — Business use is 50% or less
+Status: **AGREE**
+
+Value: no
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].screened — This vehicle's depreciation is outside this tool
+Status: **AGREE**
+
+Value: no
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].year — Year of recovery in 2025
+Status: **AGREE**
+
+Value: 1
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].is2025 — Placed in service in 2025
+Status: **AGREE**
+
+Value: yes
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].is2019 — Placed in service in 2019 (2025 is after the recovery period)
+Status: **AGREE**
+
+Value: no
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].bus_cost — Business/investment cost (cost times business use)
+Status: **AGREE**
+
+Value: $41,575.39
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].s179_bad — The section 179 election is more than the business cost, or than the SUV limit
+Status: **AGREE**
+
+Value: no
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].bonus_mixed — The special allowance choice differs within the 5-year class
+Status: **AGREE**
+
+Value: no
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].claims_bonus — A special allowance is claimed
+Status: **AGREE**
+
+Value: no
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].lim_first_bonus — First-year limit with the special allowance
+Status: **AGREE**
+
+Value: $20,200.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].lim_first_none — First-year limit without the special allowance
+Status: **AGREE**
+
+Value: $12,200.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].lim_2025 — Limit for a 2025 vehicle
+Status: **AGREE**
+
+Value: $12,200.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].lim_prior — Limit for the vehicle's 2025 year of recovery
+Status: **DISAGREE**
+
+Project: $20,200.00
+Model: $12,200.00
+Work: Year 1 of a 2025 vehicle
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. For a 2025 vehicle line 7 reads lim_2025 (agreeing), not lim_prior; lim_prior is the table's year-1 cell with the special allowance, $20,200 (Pub. 946 p. 59). Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].line7 — Maximum depreciation deduction for this year from the appropriate table
+Status: **AGREE**
+
+Value: $12,200.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].line9w — Adjusted maximum depreciation deduction (line 7 times the business/investment-us
+Status: **AGREE**
+
+Value: $11,266.04
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].s179_2025_ok — Section 179 elected for a 2025 vehicle
+Status: **AGREE**
+
+Value: $14,878.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].line10 — Section 179 deduction claimed this year (not more than line 9 for a passenger au
+Status: **AGREE**
+
+Value: $11,266.04
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].line10_2025 — Section 179 for a 2025 vehicle: not more than line 9 for a passenger automobile
+Status: **AGREE**
+
+Value: $11,266.04
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].s179_line10 — The section 179 election, not more than line 9
+Status: **AGREE**
+
+Value: $11,266.04
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].line11 — Subtract line 10 from line 9
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].line14 — Section 179 deduction claimed in the year you placed the car in service
+Status: **AGREE**
+
+Value: $11,266.04
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].line15 — Tentative basis for depreciation (line 13 less line 14)
+Status: **AGREE**
+
+Value: $30,309.35
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].bonus_full — 100% special allowance
+Status: **AGREE**
+
+Value: $30,309.35
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].bonus_forty — 40% special allowance
+Status: **AGREE**
+
+Value: $12,123.74
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].bonus_fullcase — The allowance when it is claimed: 100% if acquired after January 19, 2025, other
+Status: **AGREE**
+
+Value: $30,309.35
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].bonus_2025 — Special allowance for a 2025 vehicle
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].line16 — Special depreciation allowance
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].bonus_allowed — Special depreciation allowance allowed (not more than line 11)
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].line17 — Limit on the MACRS depreciation (line 11 less line 16)
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].line18 — Basis for depreciation (line 15 less line 16)
+Status: **AGREE**
+
+Value: $30,309.35
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].qconv — Mid-quarter convention for that quarter
+Status: **AGREE**
+
+Value: mq3
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].rate_hy — MACRS rate, half-year convention
+Status: **AGREE**
+
+Value: 20%
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].rate_mq — MACRS rate, mid-quarter convention
+Status: **AGREE**
+
+Value: 15%
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].rate_prior — MACRS rate for the 2025 year of recovery
+Status: **AGREE**
+
+Value: 20%
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].line19_hy — Line 18 times the half-year rate
+Status: **AGREE**
+
+Value: $6,061.87
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].line19_mq — Line 18 times the mid-quarter rate
+Status: **AGREE**
+
+Value: $4,546.40
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].line19_prior — Line 18 times the rate for the 2025 year of recovery
+Status: **AGREE**
+
+Value: $6,061.87
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].line19 — Tentative MACRS depreciation deduction (line 18 times line 6)
+Status: **AGREE**
+
+Value: $6,061.87
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].line19_earlier — Line 19 for a vehicle placed in service before 2025 (zero after the recovery per
+Status: **AGREE**
+
+Value: $6,061.87
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].line19_2025 — Line 19 for a 2025 vehicle, half-year or mid-quarter
+Status: **AGREE**
+
+Value: $6,061.87
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].line20 — MACRS depreciation deduction (the lesser of line 17 or line 19)
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].b100 — Cost less the section 179 deduction (as if used 100% for business)
+Status: **DISAGREE**
+
+Project: $45,022.00
+Model: $33,755.96
+Work: 45022 - 11266.04
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The year 1 to 6 recovery chain (b100, t1 to t6, d1 to d6) feeds only the post-recovery amount of a 2019 vehicle; this vehicle was placed in service in 2025. The model also misread the chain: b100 is cost less the section 179 deduction claimed in the first year (prior_179, given as zero), not the 2025 line 10 amount ($11,266.04), and t1s adds prior_179, so d1 = lesser of $12,200 and $9,004.40 = $9,004.40. Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].r1 — MACRS rate for year 1
+Status: **AGREE**
+
+Value: 20%
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].t1 — Year 1 MACRS amount as if used 100% for business
+Status: **DISAGREE**
+
+Project: $9,004.40
+Model: $6,751.19
+Work: 33755.96 x 20%
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The year 1 to 6 recovery chain (b100, t1 to t6, d1 to d6) feeds only the post-recovery amount of a 2019 vehicle; this vehicle was placed in service in 2025. The model also misread the chain: b100 is cost less the section 179 deduction claimed in the first year (prior_179, given as zero), not the 2025 line 10 amount ($11,266.04), and t1s adds prior_179, so d1 = lesser of $12,200 and $9,004.40 = $9,004.40. Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].l1 — Year 1 limit (no special allowance)
+Status: **AGREE**
+
+Value: $12,200.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].t1s — Year 1 section 179 deduction plus MACRS amount
+Status: **DISAGREE**
+
+Project: $9,004.40
+Model: $18,017.23
+Work: 11266.04 + 6751.19
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The year 1 to 6 recovery chain (b100, t1 to t6, d1 to d6) feeds only the post-recovery amount of a 2019 vehicle; this vehicle was placed in service in 2025. The model also misread the chain: b100 is cost less the section 179 deduction claimed in the first year (prior_179, given as zero), not the 2025 line 10 amount ($11,266.04), and t1s adds prior_179, so d1 = lesser of $12,200 and $9,004.40 = $9,004.40. Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].d1 — Year 1 deduction allowable at 100% business use (the lesser of the limit or the 
+Status: **DISAGREE**
+
+Project: $9,004.40
+Model: $12,200.00
+Work: lesser of 12200 or 18017.23
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The year 1 to 6 recovery chain (b100, t1 to t6, d1 to d6) feeds only the post-recovery amount of a 2019 vehicle; this vehicle was placed in service in 2025. The model also misread the chain: b100 is cost less the section 179 deduction claimed in the first year (prior_179, given as zero), not the 2025 line 10 amount ($11,266.04), and t1s adds prior_179, so d1 = lesser of $12,200 and $9,004.40 = $9,004.40. Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].r2 — MACRS rate for year 2
+Status: **AGREE**
+
+Value: 32%
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].t2 — Year 2 MACRS amount as if used 100% for business
+Status: **DISAGREE**
+
+Project: $14,407.04
+Model: $10,801.91
+Work: 33755.96 x 32%
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The year 1 to 6 recovery chain (b100, t1 to t6, d1 to d6) feeds only the post-recovery amount of a 2019 vehicle; this vehicle was placed in service in 2025. The model also misread the chain: b100 is cost less the section 179 deduction claimed in the first year (prior_179, given as zero), not the 2025 line 10 amount ($11,266.04), and t1s adds prior_179, so d1 = lesser of $12,200 and $9,004.40 = $9,004.40. Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].r3 — MACRS rate for year 3
+Status: **AGREE**
+
+Value: 19.2%
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].t3 — Year 3 MACRS amount as if used 100% for business
+Status: **DISAGREE**
+
+Project: $8,644.22
+Model: $6,481.14
+Work: 33755.96 x 19.2%
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The year 1 to 6 recovery chain (b100, t1 to t6, d1 to d6) feeds only the post-recovery amount of a 2019 vehicle; this vehicle was placed in service in 2025. The model also misread the chain: b100 is cost less the section 179 deduction claimed in the first year (prior_179, given as zero), not the 2025 line 10 amount ($11,266.04), and t1s adds prior_179, so d1 = lesser of $12,200 and $9,004.40 = $9,004.40. Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].r4 — MACRS rate for year 4
+Status: **AGREE**
+
+Value: 11.52%
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].t4 — Year 4 MACRS amount as if used 100% for business
+Status: **DISAGREE**
+
+Project: $5,186.53
+Model: $3,888.69
+Work: 33755.96 x 11.52%
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The year 1 to 6 recovery chain (b100, t1 to t6, d1 to d6) feeds only the post-recovery amount of a 2019 vehicle; this vehicle was placed in service in 2025. The model also misread the chain: b100 is cost less the section 179 deduction claimed in the first year (prior_179, given as zero), not the 2025 line 10 amount ($11,266.04), and t1s adds prior_179, so d1 = lesser of $12,200 and $9,004.40 = $9,004.40. Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].r5 — MACRS rate for year 5
+Status: **AGREE**
+
+Value: 11.52%
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].t5 — Year 5 MACRS amount as if used 100% for business
+Status: **DISAGREE**
+
+Project: $5,186.53
+Model: $3,888.69
+Work: 33755.96 x 11.52%
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The year 1 to 6 recovery chain (b100, t1 to t6, d1 to d6) feeds only the post-recovery amount of a 2019 vehicle; this vehicle was placed in service in 2025. The model also misread the chain: b100 is cost less the section 179 deduction claimed in the first year (prior_179, given as zero), not the 2025 line 10 amount ($11,266.04), and t1s adds prior_179, so d1 = lesser of $12,200 and $9,004.40 = $9,004.40. Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].r6 — MACRS rate for year 6
+Status: **AGREE**
+
+Value: 5.76%
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].t6 — Year 6 MACRS amount as if used 100% for business
+Status: **DISAGREE**
+
+Project: $2,593.27
+Model: $1,944.34
+Work: 33755.96 x 5.76%
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The year 1 to 6 recovery chain (b100, t1 to t6, d1 to d6) feeds only the post-recovery amount of a 2019 vehicle; this vehicle was placed in service in 2025. The model also misread the chain: b100 is cost less the section 179 deduction claimed in the first year (prior_179, given as zero), not the 2025 line 10 amount ($11,266.04), and t1s adds prior_179, so d1 = lesser of $12,200 and $9,004.40 = $9,004.40. Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].too_old — Placed in service before 2019
+Status: **AGREE**
+
+Value: no
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].bonus_v — Special allowance for this vehicle (line 25)
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].macrs_pass — Column (h) for a passenger automobile
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].macrs_heavy — Column (h) for a vehicle not subject to the limits
+Status: **AGREE**
+
+Value: $6,061.87
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].macrs_v — Column (h)
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].bonus — Line 25: special allowance of this vehicle
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].macrs — Column (h): depreciation of this vehicle
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].s179_2025 — Column (i): elected section 179 cost of this vehicle
+Status: **AGREE**
+
+Value: $11,266.04
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].mq_q4 — Mid-quarter test basis, fourth quarter of this vehicle
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].mq_total — Mid-quarter test basis, 2025 of this vehicle
+Status: **AGREE**
+
+Value: $30,309.35
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].cost179 — Cost of section 179 property placed in service in 2025 of this vehicle
+Status: **AGREE**
+
+Value: $41,575.39
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].bonus_o — Special allowance (owned, actual expenses)
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].macrs_o — Depreciation (owned, actual expenses)
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].s179_2025_o — Section 179 (owned, actual expenses)
+Status: **AGREE**
+
+Value: $11,266.04
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].q4_basis — Basis for the mid-quarter test when placed in service October to December
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].mq_q4_o — mq_q4 (owned, actual expenses)
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].mq_q4_a2 — mq_q4 of a 2025 vehicle
+Status: **AGREE**
+
+Value: $0.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].mq_total_o — mq_total (owned, actual expenses)
+Status: **AGREE**
+
+Value: $30,309.35
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].mq_total_a2 — mq_total of a 2025 vehicle
+Status: **AGREE**
+
+Value: $30,309.35
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].cost179_o — cost179 (owned, actual expenses)
+Status: **AGREE**
+
+Value: $41,575.39
+
+### classm.scveh.5 — person[taxpayer].sc[biz_a].scveh[car_2].cost179_a2 — cost179 of a 2025 vehicle
+Status: **AGREE**
+
+Value: $41,575.39
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].bm_c — Business miles, as cents
 Status: **DISAGREE**
 
-Project: $216.32
-Model: $21,632.00
-Work: Business miles 21,632
+Project: $207.67
+Model: $20,767.00
+Work: Business miles 20,767
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].cm_c — Commuting miles, as cents
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $0.00
+Project: $32.86
+Model: $3,286.00
+Work: Commuting miles 3,286
+
+Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].om_c — Other miles, as cents
 Status: **DISAGREE**
 
-Project: $18.03
-Model: $1,803.00
-Work: Other miles 1,803
+Project: $30.77
+Model: $3,077.00
+Work: Other miles 3,077
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].nonbusiness_c — Commuting and other miles, as cents
 Status: **DISAGREE**
 
-Project: $18.03
-Model: $1,803.00
-Work: 0 + 1,803
+Project: $63.63
+Model: $6,363.00
+Work: 3286 + 3077
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].total_c — Total miles, as cents
 Status: **DISAGREE**
 
-Project: $234.35
-Model: $23,435.00
-Work: 21,632 + 1,803
+Project: $271.30
+Model: $27,130.00
+Work: 20767 + 6363
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].no_miles — Actual expenses claimed for a vehicle with no miles
+Status: **AGREE**
+
+Value: no
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].over_half — Business use is more than 50%
 Status: **AGREE**
@@ -5501,32 +5131,32 @@ Value: no
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].smr_amount — Business miles times the standard mileage rate
 Status: **AGREE**
 
-Value: $15,142.40
+Value: $14,536.90
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].line9_standard — Standard mileage amount plus parking fees and tolls
 Status: **AGREE**
 
-Value: $15,142.40
+Value: $14,536.90
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].operating_business — The business portion of the operating expenses
 Status: **AGREE**
 
-Value: $1,853.51
+Value: $0.00
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].line9_actual — Business portion of the operating expenses plus parking fees and tolls
 Status: **AGREE**
 
-Value: $1,853.51
+Value: $0.00
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].line9 — Car and truck expenses for this vehicle
 Status: **AGREE**
 
-Value: $1,853.51
+Value: $14,536.90
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].is_actual_owned — Owned and on actual expenses
 Status: **AGREE**
 
-Value: yes
+Value: no
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].is_actual_leased — Leased and on actual expenses
 Status: **AGREE**
@@ -5536,7 +5166,7 @@ Value: no
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].lease_business — The business portion of the lease payments
 Status: **AGREE**
 
-Value: $6,701.44
+Value: $0.00
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].line20a — Rent or lease of this vehicle (business portion)
 Status: **AGREE**
@@ -5556,12 +5186,12 @@ Value: no
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].year — Year of recovery in 2025
 Status: **AGREE**
 
-Value: 1
+Value: 6
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].is2025 — Placed in service in 2025
 Status: **AGREE**
 
-Value: yes
+Value: no
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].is2019 — Placed in service in 2019 (2025 is after the recovery period)
 Status: **AGREE**
@@ -5571,11 +5201,11 @@ Value: no
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].bus_cost — Business/investment cost (cost times business use)
 Status: **DISAGREE**
 
-Project: $58,785.33
-Model: $58,785.32
-Work: 63,685 x 21,632/23,435
+Project: $28,476.75
+Model: $28,476.74
+Work: 37202 x 20767/27130
 
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].s179_bad — The section 179 election is more than the business cost, or than the SUV limit
 Status: **AGREE**
@@ -5590,41 +5220,35 @@ Value: no
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].claims_bonus — A special allowance is claimed
 Status: **AGREE**
 
-Value: yes
+Value: no
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].lim_first_bonus — First-year limit with the special allowance
-Status: **AGREE**
-
-Value: $20,200.00
-
-### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].lim_first_none — First-year limit without the special allowance
-Status: **AGREE**
-
-Value: $12,200.00
-
-### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].lim_2025 — Limit for a 2025 vehicle
-Status: **AGREE**
-
-Value: $20,200.00
-
-### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].lim_prior — Limit for the vehicle's 2025 year of recovery
 Status: **DISAGREE**
 
-Project: $20,200.00
-Model: $0.00
-Work: Not a prior-year vehicle
+Project: $5,760.00
+Model: $20,200.00
+Work: Table 2 footnote
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Here the vehicle's key gives the project's value: line 7 reads lim_2025 only for a 2025 vehicle and lim_prior otherwise, and the project looks every limit up by the year actually placed in service and its year of recovery; the model read the 2025 column. Pub. 946 p. 59 table, checked: 1st year 2025 $20,200 (footnote 1: $12,200 without the special allowance), 2nd year 2024 $19,800, 4th and later year 2021 $5,860, 2020 and 2019 $5,760, footnote 6 (2019 without the special allowance) $10,100; the project's tables carry these values. Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].lim_prior — Limit for the vehicle's 2025 year of recovery
+Status: **AGREE**
+
+Value: $5,760.00
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].line7 — Maximum depreciation deduction for this year from the appropriate table
 Status: **AGREE**
 
-Value: $20,200.00
+Value: $5,760.00
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].line9w — Adjusted maximum depreciation deduction (line 7 times the business/investment-us
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $18,645.89
+Project: $4,409.07
+Model: $4,409.06
+Work: 5760 x 20767/27130
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].s179_2025_ok — Section 179 elected for a 2025 vehicle
 Status: **AGREE**
@@ -5647,9 +5271,13 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].line11 — Subtract line 10 from line 9
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $18,645.89
+Project: $4,409.07
+Model: $4,409.06
+Work: 4409.06 - 0
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].line14 — Section 179 deduction claimed in the year you placed the car in service
 Status: **AGREE**
@@ -5659,266 +5287,262 @@ Value: $0.00
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].line15 — Tentative basis for depreciation (line 13 less line 14)
 Status: **DISAGREE**
 
-Project: $58,785.33
-Model: $58,785.32
-Work: 58,785.32 - 0
+Project: $28,476.75
+Model: $28,476.74
+Work: 28476.74 - 0
 
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].bonus_full — 100% special allowance
 Status: **DISAGREE**
 
-Project: $58,785.33
-Model: $58,785.32
-Work: 100% x 58,785.32
+Project: $28,476.75
+Model: $28,476.74
+Work: x 100%
 
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].bonus_forty — 40% special allowance
 Status: **AGREE**
 
-Value: $23,514.13
+Value: $11,390.70
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].bonus_fullcase — The allowance when it is claimed: 100% if acquired after January 19, 2025, other
 Status: **DISAGREE**
 
-Project: $58,785.33
-Model: $58,785.32
-Work: Acquired after January 19, 2025, so 100%
+Project: $28,476.75
+Model: $28,476.74
+Work: Acquired after 1/19/2025
 
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].bonus_2025 — Special allowance for a 2025 vehicle
 Status: **AGREE**
 
-Value: $23,514.13
+Value: $0.00
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].line16 — Special depreciation allowance
 Status: **AGREE**
 
-Value: $23,514.13
+Value: $0.00
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].bonus_allowed — Special depreciation allowance allowed (not more than line 11)
 Status: **AGREE**
 
-Value: $18,645.89
+Value: $0.00
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].line17 — Limit on the MACRS depreciation (line 11 less line 16)
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $0.00
+Project: $4,409.07
+Model: $4,409.06
+Work: 4409.06 - 0
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].line18 — Basis for depreciation (line 15 less line 16)
 Status: **DISAGREE**
 
-Project: $35,271.20
-Model: $35,271.19
-Work: 58,785.32 - 23,514.13
+Project: $28,476.75
+Model: $28,476.74
+Work: 28476.74 - 0
 
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].qconv — Mid-quarter convention for that quarter
 Status: **AGREE**
 
-Value: mq3
+Value: mq4
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].rate_hy — MACRS rate, half-year convention
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: 20%
+Project: 5.76%
+Model: 20%
+Work: HY, year 1
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The project keys the rate on the vehicle's actual year of recovery (Pub. 946 Table A-1/A-5); the 2025-vehicle rate and line 19 for a 2025 vehicle are not read for a vehicle placed in service earlier, whose line 19 is line19_prior (agreeing or differing only in cents). Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].rate_mq — MACRS rate, mid-quarter convention
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: 15%
+Project: 9.58%
+Model: 5%
+Work: MQ Q4, year 1
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The project keys the rate on the vehicle's actual year of recovery (Pub. 946 Table A-1/A-5); the 2025-vehicle rate and line 19 for a 2025 vehicle are not read for a vehicle placed in service earlier, whose line 19 is line19_prior (agreeing or differing only in cents). Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].rate_prior — MACRS rate for the 2025 year of recovery
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: 15%
-Model: 20%
-Work: Year 1, HY applies (mid-quarter test is no)
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Value: 4.26%
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].line19_hy — Line 18 times the half-year rate
-Status: **AGREE**
-
-Value: $7,054.24
-
-### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].line19_mq — Line 18 times the mid-quarter rate
-Status: **AGREE**
-
-Value: $5,290.68
-
-### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].line19_prior — Line 18 times the rate for the 2025 year of recovery
 Status: **DISAGREE**
 
-Project: $5,290.68
-Model: $7,054.24
-Work: 35,271.19 x 20%
+Project: $1,640.26
+Model: $5,695.35
+Work: 28476.74 x 20%
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The project keys the rate on the vehicle's actual year of recovery (Pub. 946 Table A-1/A-5); the 2025-vehicle rate and line 19 for a 2025 vehicle are not read for a vehicle placed in service earlier, whose line 19 is line19_prior (agreeing or differing only in cents). Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].line19_mq — Line 18 times the mid-quarter rate
+Status: **DISAGREE**
+
+Project: $2,728.07
+Model: $1,423.84
+Work: 28476.74 x 5%
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The project keys the rate on the vehicle's actual year of recovery (Pub. 946 Table A-1/A-5); the 2025-vehicle rate and line 19 for a 2025 vehicle are not read for a vehicle placed in service earlier, whose line 19 is line19_prior (agreeing or differing only in cents). Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].line19_prior — Line 18 times the rate for the 2025 year of recovery
+Status: **AGREE**
+
+Value: $1,213.11
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].line19 — Tentative MACRS depreciation deduction (line 18 times line 6)
 Status: **AGREE**
 
-Value: $7,054.24
+Value: $1,213.11
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].line19_earlier — Line 19 for a vehicle placed in service before 2025 (zero after the recovery per
-Status: **DISAGREE**
-
-Project: $5,290.68
-Model: $7,054.24
-Work: line19_prior; not a 2019 vehicle
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].line19_2025 — Line 19 for a 2025 vehicle, half-year or mid-quarter
 Status: **AGREE**
 
-Value: $7,054.24
+Value: $1,213.11
+
+### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].line19_2025 — Line 19 for a 2025 vehicle, half-year or mid-quarter
+Status: **DISAGREE**
+
+Project: $1,640.26
+Model: $5,695.35
+Work: HY
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The project keys the rate on the vehicle's actual year of recovery (Pub. 946 Table A-1/A-5); the 2025-vehicle rate and line 19 for a 2025 vehicle are not read for a vehicle placed in service earlier, whose line 19 is line19_prior (agreeing or differing only in cents). Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].line20 — MACRS depreciation deduction (the lesser of line 17 or line 19)
 Status: **AGREE**
 
-Value: $0.00
+Value: $1,213.11
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].b100 — Cost less the section 179 deduction (as if used 100% for business)
 Status: **AGREE**
 
-Value: $63,685.00
+Value: $37,202.00
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].r1 — MACRS rate for year 1
-Status: **DISAGREE**
-
-Project: 15%
-Model: 20%
-Work: 5-yr HY, year 1
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].t1 — Year 1 MACRS amount as if used 100% for business
-Status: **DISAGREE**
-
-Project: $9,552.75
-Model: $12,737.00
-Work: 63,685 x 20%
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].l1 — Year 1 limit (no special allowance)
 Status: **AGREE**
 
-Value: $12,200.00
+Value: 25%
+
+### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].t1 — Year 1 MACRS amount as if used 100% for business
+Status: **AGREE**
+
+Value: $9,300.50
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].t1s — Year 1 section 179 deduction plus MACRS amount
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $9,552.75
-Model: $12,737.00
-Work: 0 + 12,737
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].d1 — Year 1 deduction allowable at 100% business use (the lesser of the limit or the 
-Status: **DISAGREE**
-
-Project: $9,552.75
-Model: $12,200.00
-Work: Lesser of 12,200 or 12,737
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Value: $9,300.50
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].r2 — MACRS rate for year 2
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: 34%
-Model: 32%
-Work: 5-yr HY, year 2
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Value: 30%
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].t2 — Year 2 MACRS amount as if used 100% for business
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $21,652.90
-Model: $20,379.20
-Work: 63,685 x 32%
+Value: $11,160.60
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].l2 — Year 2 limit
+Status: **AGREE**
+
+Value: $16,100.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].d2 — Year 2 deduction allowable at 100% business use
+Status: **AGREE**
+
+Value: $11,160.60
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].r3 — MACRS rate for year 3
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: 20.4%
-Model: 19.2%
-Work: 5-yr HY, year 3
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Value: 18%
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].t3 — Year 3 MACRS amount as if used 100% for business
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $12,991.74
-Model: $12,227.52
-Work: 63,685 x 19.2%
+Value: $6,696.36
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].l3 — Year 3 limit
+Status: **AGREE**
+
+Value: $9,700.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].d3 — Year 3 deduction allowable at 100% business use
+Status: **AGREE**
+
+Value: $6,696.36
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].r4 — MACRS rate for year 4
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: 12.24%
-Model: 11.52%
-Work: 5-yr HY, year 4
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Value: 11.37%
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].t4 — Year 4 MACRS amount as if used 100% for business
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $7,795.04
-Model: $7,336.51
-Work: 63,685 x 11.52%
+Value: $4,229.87
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].l4 — Year 4 limit
+Status: **AGREE**
+
+Value: $5,760.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].d4 — Year 4 deduction allowable at 100% business use
+Status: **AGREE**
+
+Value: $4,229.87
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].r5 — MACRS rate for year 5
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: 11.3%
-Model: 11.52%
-Work: 5-yr HY, year 5
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Value: 11.37%
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].t5 — Year 5 MACRS amount as if used 100% for business
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $7,196.41
-Model: $7,336.51
-Work: 63,685 x 11.52%
+Value: $4,229.87
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].l5 — Year 5 limit
+Status: **AGREE**
+
+Value: $5,760.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].d5 — Year 5 deduction allowable at 100% business use
+Status: **AGREE**
+
+Value: $4,229.87
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].r6 — MACRS rate for year 6
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: 7.06%
-Model: 5.76%
-Work: 5-yr HY, year 6
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Value: 4.26%
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].t6 — Year 6 MACRS amount as if used 100% for business
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $4,496.16
-Model: $3,668.26
-Work: 63,685 x 5.76%
+Value: $1,584.81
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].l6 — Year 6 limit
+Status: **AGREE**
+
+Value: $5,760.00
+
+### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].d6 — Year 6 deduction allowable at 100% business use
+Status: **AGREE**
+
+Value: $1,584.81
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].too_old — Placed in service before 2019
 Status: **AGREE**
@@ -5928,27 +5552,27 @@ Value: no
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].bonus_v — Special allowance for this vehicle (line 25)
 Status: **AGREE**
 
-Value: $18,645.89
+Value: $0.00
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].macrs_pass — Column (h) for a passenger automobile
 Status: **AGREE**
 
-Value: $0.00
+Value: $1,213.11
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].macrs_heavy — Column (h) for a vehicle not subject to the limits
 Status: **AGREE**
 
-Value: $7,054.24
+Value: $1,213.11
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].macrs_v — Column (h)
 Status: **AGREE**
 
-Value: $0.00
+Value: $1,213.11
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].bonus — Line 25: special allowance of this vehicle
 Status: **AGREE**
 
-Value: $18,645.89
+Value: $0.00
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].macrs — Column (h): depreciation of this vehicle
 Status: **AGREE**
@@ -5966,32 +5590,28 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].mq_total — Mid-quarter test basis, 2025 of this vehicle
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $58,785.33
-Model: $58,785.32
-Work: Business basis less section 179 of 0
-
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Value: $0.00
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].cost179 — Cost of section 179 property placed in service in 2025 of this vehicle
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $58,785.33
-Model: $58,785.32
-Work: Business-use cost
-
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Value: $0.00
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].bonus_o — Special allowance (owned, actual expenses)
 Status: **AGREE**
 
-Value: $18,645.89
+Value: $0.00
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].macrs_o — Depreciation (owned, actual expenses)
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $0.00
+Project: $1,213.11
+Model: $0.00
+Work: Not actual-owned
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. macrs reads macrs_o only for an owned vehicle on actual expenses; this one is leased or on the standard mileage rate, so macrs is zero (agreeing). Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].s179_2025_o — Section 179 (owned, actual expenses)
 Status: **AGREE**
@@ -6001,11 +5621,11 @@ Value: $0.00
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].q4_basis — Basis for the mid-quarter test when placed in service October to December
 Status: **DISAGREE**
 
-Project: $0.00
-Model: $58,785.32
-Work: 58,785.32 - 0
+Project: $28,476.75
+Model: $28,476.74
+Work: Q4, so 28476.74 - 0
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].mq_q4_o — mq_q4 (owned, actual expenses)
 Status: **AGREE**
@@ -6013,52 +5633,48 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].mq_q4_a2 — mq_q4 of a 2025 vehicle
+Status: **DISAGREE**
+
+Project: $28,476.75
+Model: $0.00
+Work: Not 2025
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The _o line reads the _a2 copy only for a 2025 vehicle; for this earlier vehicle the _o line and the result are zero (agreeing). Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].mq_total_o — mq_total (owned, actual expenses)
 Status: **AGREE**
 
 Value: $0.00
 
-### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].mq_total_o — mq_total (owned, actual expenses)
-Status: **DISAGREE**
-
-Project: $58,785.33
-Model: $58,785.32
-Work: Owned, actual expenses
-
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
-
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].mq_total_a2 — mq_total of a 2025 vehicle
 Status: **DISAGREE**
 
-Project: $58,785.33
-Model: $58,785.32
-Work: 2025 vehicle
+Project: $28,476.75
+Model: $0.00
+Work: Not 2025
 
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The _o line reads the _a2 copy only for a 2025 vehicle; for this earlier vehicle the _o line and the result are zero (agreeing). Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].cost179_o — cost179 (owned, actual expenses)
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $58,785.33
-Model: $58,785.32
-Work: Owned, actual expenses
-
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Value: $0.00
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_1].cost179_a2 — cost179 of a 2025 vehicle
 Status: **DISAGREE**
 
-Project: $58,785.33
-Model: $58,785.32
-Work: 2025 vehicle
+Project: $28,476.75
+Model: $0.00
+Work: Not 2025
 
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The _o line reads the _a2 copy only for a 2025 vehicle; for this earlier vehicle the _o line and the result are zero (agreeing). Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].bm_c — Business miles, as cents
 Status: **DISAGREE**
 
-Project: $159.02
-Model: $15,902.00
-Work: Business miles 15,902
+Project: $155.46
+Model: $15,546.00
+Work: Business miles 15,546
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
 
@@ -6070,29 +5686,34 @@ Value: $0.00
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].om_c — Other miles, as cents
 Status: **DISAGREE**
 
-Project: $0.12
-Model: $12.00
-Work: Other miles 12
+Project: $37.99
+Model: $3,799.00
+Work: Other miles 3,799
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].nonbusiness_c — Commuting and other miles, as cents
 Status: **DISAGREE**
 
-Project: $0.12
-Model: $12.00
-Work: 0 + 12
+Project: $37.99
+Model: $3,799.00
+Work: 0 + 3799
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].total_c — Total miles, as cents
 Status: **DISAGREE**
 
-Project: $159.14
-Model: $15,914.00
-Work: 15,902 + 12
+Project: $193.45
+Model: $19,345.00
+Work: 15546 + 3799
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
+
+### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].no_miles — Actual expenses claimed for a vehicle with no miles
+Status: **AGREE**
+
+Value: no
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].over_half — Business use is more than 50%
 Status: **AGREE**
@@ -6107,27 +5728,27 @@ Value: no
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].smr_amount — Business miles times the standard mileage rate
 Status: **AGREE**
 
-Value: $11,131.40
+Value: $10,882.20
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].line9_standard — Standard mileage amount plus parking fees and tolls
 Status: **AGREE**
 
-Value: $11,131.40
+Value: $10,882.20
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].operating_business — The business portion of the operating expenses
 Status: **AGREE**
 
-Value: $1,017.23
+Value: $1,342.04
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].line9_actual — Business portion of the operating expenses plus parking fees and tolls
 Status: **AGREE**
 
-Value: $1,017.23
+Value: $1,342.04
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].line9 — Car and truck expenses for this vehicle
 Status: **AGREE**
 
-Value: $11,131.40
+Value: $10,882.20
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].is_actual_owned — Owned and on actual expenses
 Status: **AGREE**
@@ -6142,7 +5763,7 @@ Value: no
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].lease_business — The business portion of the lease payments
 Status: **AGREE**
 
-Value: $3,068.68
+Value: $1,407.14
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].line20a — Rent or lease of this vehicle (business portion)
 Status: **AGREE**
@@ -6162,7 +5783,7 @@ Value: no
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].year — Year of recovery in 2025
 Status: **AGREE**
 
-Value: 6
+Value: 2
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].is2025 — Placed in service in 2025
 Status: **AGREE**
@@ -6177,11 +5798,11 @@ Value: no
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].bus_cost — Business/investment cost (cost times business use)
 Status: **DISAGREE**
 
-Project: $32,395.56
-Model: $32,395.55
-Work: 32,420 x 15,902/15,914
+Project: $56,442.18
+Model: $56,442.15
+Work: 70235 x 15546/19345
 
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].s179_bad — The section 179 election is more than the business cost, or than the SUV limit
 Status: **AGREE**
@@ -6201,26 +5822,30 @@ Value: no
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].lim_first_bonus — First-year limit with the special allowance
 Status: **DISAGREE**
 
-Project: $5,760.00
+Project: $19,800.00
 Model: $20,200.00
-Work: 2025 table, first year
+Work: Table 2 footnote
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Here the vehicle's key gives the project's value: line 7 reads lim_2025 only for a 2025 vehicle and lim_prior otherwise, and the project looks every limit up by the year actually placed in service and its year of recovery; the model read the 2025 column. Pub. 946 p. 59 table, checked: 1st year 2025 $20,200 (footnote 1: $12,200 without the special allowance), 2nd year 2024 $19,800, 4th and later year 2021 $5,860, 2020 and 2019 $5,760, footnote 6 (2019 without the special allowance) $10,100; the project's tables carry these values. Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].lim_prior — Limit for the vehicle's 2025 year of recovery
 Status: **AGREE**
 
-Value: $5,760.00
+Value: $19,800.00
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].line7 — Maximum depreciation deduction for this year from the appropriate table
 Status: **AGREE**
 
-Value: $5,760.00
+Value: $19,800.00
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].line9w — Adjusted maximum depreciation deduction (line 7 times the business/investment-us
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $5,755.66
+Project: $15,911.66
+Model: $15,911.65
+Work: 19800 x 15546/19345
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].s179_2025_ok — Section 179 elected for a 2025 vehicle
 Status: **AGREE**
@@ -6243,9 +5868,13 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].line11 — Subtract line 10 from line 9
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $5,755.66
+Project: $15,911.66
+Model: $15,911.65
+Work: 15911.65 - 0
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].line14 — Section 179 deduction claimed in the year you placed the car in service
 Status: **AGREE**
@@ -6255,34 +5884,38 @@ Value: $0.00
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].line15 — Tentative basis for depreciation (line 13 less line 14)
 Status: **DISAGREE**
 
-Project: $32,395.56
-Model: $32,395.55
-Work: 32,395.55 - 0
+Project: $56,442.18
+Model: $56,442.15
+Work: 56442.15 - 0
 
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].bonus_full — 100% special allowance
 Status: **DISAGREE**
 
-Project: $32,395.56
-Model: $32,395.55
-Work: 100% x 32,395.55
+Project: $56,442.18
+Model: $56,442.15
+Work: x 100%
 
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].bonus_forty — 40% special allowance
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $12,958.22
+Project: $22,576.87
+Model: $22,576.86
+Work: x 40%
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].bonus_fullcase — The allowance when it is claimed: 100% if acquired after January 19, 2025, other
 Status: **DISAGREE**
 
-Project: $32,395.56
-Model: $32,395.55
-Work: Acquired after January 19, 2025, so 100%
+Project: $56,442.18
+Model: $56,442.15
+Work: Acquired after 1/19/2025
 
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].bonus_2025 — Special allowance for a 2025 vehicle
 Status: **AGREE**
@@ -6300,18 +5933,22 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].line17 — Limit on the MACRS depreciation (line 11 less line 16)
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $5,755.66
+Project: $15,911.66
+Model: $15,911.65
+Work: 15911.65 - 0
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].line18 — Basis for depreciation (line 15 less line 16)
 Status: **DISAGREE**
 
-Project: $32,395.56
-Model: $32,395.55
-Work: 32,395.55 - 0
+Project: $56,442.18
+Model: $56,442.15
+Work: 56442.15 - 0
 
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].qconv — Mid-quarter convention for that quarter
 Status: **AGREE**
@@ -6321,192 +5958,168 @@ Value: mq1
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].rate_hy — MACRS rate, half-year convention
 Status: **DISAGREE**
 
-Project: 5.76%
+Project: 32%
 Model: 20%
-Work: 5-yr HY, year 1
+Work: HY, year 1
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The project keys the rate on the vehicle's actual year of recovery (Pub. 946 Table A-1/A-5); the 2025-vehicle rate and line 19 for a 2025 vehicle are not read for a vehicle placed in service earlier, whose line 19 is line19_prior (agreeing or differing only in cents). Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].rate_mq — MACRS rate, mid-quarter convention
 Status: **DISAGREE**
 
-Project: 1.38%
+Project: 26%
 Model: 35%
-Work: 5-yr MQ Q1, year 1
+Work: MQ Q1, year 1
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The project keys the rate on the vehicle's actual year of recovery (Pub. 946 Table A-1/A-5); the 2025-vehicle rate and line 19 for a 2025 vehicle are not read for a vehicle placed in service earlier, whose line 19 is line19_prior (agreeing or differing only in cents). Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].rate_prior — MACRS rate for the 2025 year of recovery
 Status: **AGREE**
 
-Value: 4.26%
+Value: 34%
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].line19_hy — Line 18 times the half-year rate
 Status: **DISAGREE**
 
-Project: $1,865.98
-Model: $6,479.11
-Work: 32,395.55 x 20%
+Project: $18,061.50
+Model: $11,288.43
+Work: 56442.15 x 20%
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The project keys the rate on the vehicle's actual year of recovery (Pub. 946 Table A-1/A-5); the 2025-vehicle rate and line 19 for a 2025 vehicle are not read for a vehicle placed in service earlier, whose line 19 is line19_prior (agreeing or differing only in cents). Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].line19_mq — Line 18 times the mid-quarter rate
 Status: **DISAGREE**
 
-Project: $447.06
-Model: $11,338.44
-Work: 32,395.55 x 35%
+Project: $14,674.97
+Model: $19,754.75
+Work: 56442.15 x 35%
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The project keys the rate on the vehicle's actual year of recovery (Pub. 946 Table A-1/A-5); the 2025-vehicle rate and line 19 for a 2025 vehicle are not read for a vehicle placed in service earlier, whose line 19 is line19_prior (agreeing or differing only in cents). Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].line19_prior — Line 18 times the rate for the 2025 year of recovery
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $1,380.05
+Project: $19,190.34
+Model: $19,190.33
+Work: 56442.15 x 34%
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].line19 — Tentative MACRS depreciation deduction (line 18 times line 6)
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $1,380.05
+Project: $19,190.34
+Model: $19,190.33
+Work: Placed in service before 2025
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].line19_earlier — Line 19 for a vehicle placed in service before 2025 (zero after the recovery per
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $1,380.05
+Project: $19,190.34
+Model: $19,190.33
+Work: line19_prior
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].line19_2025 — Line 19 for a 2025 vehicle, half-year or mid-quarter
 Status: **DISAGREE**
 
-Project: $1,865.98
-Model: $6,479.11
-Work: Half-year convention, because the mid-quarter test is no
+Project: $18,061.50
+Model: $11,288.43
+Work: HY
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The project keys the rate on the vehicle's actual year of recovery (Pub. 946 Table A-1/A-5); the 2025-vehicle rate and line 19 for a 2025 vehicle are not read for a vehicle placed in service earlier, whose line 19 is line19_prior (agreeing or differing only in cents). Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].line20 — MACRS depreciation deduction (the lesser of line 17 or line 19)
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $1,380.05
+Project: $15,911.66
+Model: $15,911.65
+Work: lesser of 15911.65 or 19190.33
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].b100 — Cost less the section 179 deduction (as if used 100% for business)
 Status: **AGREE**
 
-Value: $32,420.00
+Value: $70,235.00
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].r1 — MACRS rate for year 1
 Status: **AGREE**
 
-Value: 25%
+Value: 15%
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].t1 — Year 1 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $8,105.00
+Value: $10,535.25
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].t1s — Year 1 section 179 deduction plus MACRS amount
 Status: **AGREE**
 
-Value: $8,105.00
+Value: $10,535.25
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].r2 — MACRS rate for year 2
 Status: **AGREE**
 
-Value: 30%
+Value: 34%
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].t2 — Year 2 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $9,726.00
+Value: $23,879.90
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].l2 — Year 2 limit
 Status: **AGREE**
 
-Value: $16,100.00
+Value: $19,800.00
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].d2 — Year 2 deduction allowable at 100% business use
 Status: **AGREE**
 
-Value: $9,726.00
+Value: $19,800.00
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].r3 — MACRS rate for year 3
 Status: **AGREE**
 
-Value: 18%
+Value: 20.4%
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].t3 — Year 3 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $5,835.60
-
-### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].l3 — Year 3 limit
-Status: **AGREE**
-
-Value: $9,700.00
-
-### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].d3 — Year 3 deduction allowable at 100% business use
-Status: **AGREE**
-
-Value: $5,835.60
+Value: $14,327.94
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].r4 — MACRS rate for year 4
 Status: **AGREE**
 
-Value: 11.37%
+Value: 12.24%
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].t4 — Year 4 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $3,686.15
-
-### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].l4 — Year 4 limit
-Status: **AGREE**
-
-Value: $5,760.00
-
-### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].d4 — Year 4 deduction allowable at 100% business use
-Status: **AGREE**
-
-Value: $3,686.15
+Value: $8,596.76
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].r5 — MACRS rate for year 5
 Status: **AGREE**
 
-Value: 11.37%
+Value: 11.3%
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].t5 — Year 5 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $3,686.15
-
-### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].l5 — Year 5 limit
-Status: **AGREE**
-
-Value: $5,760.00
-
-### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].d5 — Year 5 deduction allowable at 100% business use
-Status: **AGREE**
-
-Value: $3,686.15
+Value: $7,936.56
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].r6 — MACRS rate for year 6
 Status: **AGREE**
 
-Value: 4.26%
+Value: 7.06%
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].t6 — Year 6 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $1,381.09
-
-### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].l6 — Year 6 limit
-Status: **AGREE**
-
-Value: $5,760.00
-
-### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].d6 — Year 6 deduction allowable at 100% business use
-Status: **AGREE**
-
-Value: $1,381.09
+Value: $4,958.59
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].too_old — Placed in service before 2019
 Status: **AGREE**
@@ -6519,19 +6132,31 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].macrs_pass — Column (h) for a passenger automobile
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $1,380.05
+Project: $15,911.66
+Model: $15,911.65
+Work: line 20
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].macrs_heavy — Column (h) for a vehicle not subject to the limits
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $1,380.05
+Project: $19,190.34
+Model: $19,190.33
+Work: line 19
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].macrs_v — Column (h)
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $1,380.05
+Project: $15,911.66
+Model: $15,911.65
+Work: Subject to the limits
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].bonus — Line 25: special allowance of this vehicle
 Status: **AGREE**
@@ -6571,11 +6196,11 @@ Value: $0.00
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].macrs_o — Depreciation (owned, actual expenses)
 Status: **DISAGREE**
 
-Project: $1,380.05
+Project: $15,911.66
 Model: $0.00
-Work: Not owned with actual expenses
+Work: Not actual-owned
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. macrs reads macrs_o only for an owned vehicle on actual expenses; this one is leased or on the standard mileage rate, so macrs is zero (agreeing). Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].s179_2025_o — Section 179 (owned, actual expenses)
 Status: **AGREE**
@@ -6583,13 +6208,9 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].q4_basis — Basis for the mid-quarter test when placed in service October to December
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $0.00
-Model: $32,395.55
-Work: 32,395.55 - 0
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Value: $0.00
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].mq_q4_o — mq_q4 (owned, actual expenses)
 Status: **AGREE**
@@ -6609,11 +6230,11 @@ Value: $0.00
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].mq_total_a2 — mq_total of a 2025 vehicle
 Status: **DISAGREE**
 
-Project: $32,395.56
+Project: $56,442.18
 Model: $0.00
-Work: Not a 2025 vehicle
+Work: Not 2025
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The _o line reads the _a2 copy only for a 2025 vehicle; for this earlier vehicle the _o line and the result are zero (agreeing). Not evidence. [dropped]
 
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].cost179_o — cost179 (owned, actual expenses)
 Status: **AGREE**
@@ -6623,58 +6244,59 @@ Value: $0.00
 ### classm.scveh.5 — person[taxpayer].sc[biz_b].scveh[car_2].cost179_a2 — cost179 of a 2025 vehicle
 Status: **DISAGREE**
 
-Project: $32,395.56
+Project: $56,442.18
 Model: $0.00
-Work: Not a 2025 vehicle
+Work: Not 2025
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The _o line reads the _a2 copy only for a 2025 vehicle; for this earlier vehicle the _o line and the result are zero (agreeing). Not evidence. [dropped]
 
-### case classm.scveh.6 — prompt sha256 7b51ac38b87881fd1d64090868e2cc3a528f54ce25eb19eb2dfe027545a4b59a; branches: scveh.owned:false, scveh.owned:true, scveh.over_half:true, scveh.smr_ok:true, scveh.smr_bad:false, scveh.line9#0, scveh.is_actual_owned:false, scveh.is_actual_leased:false, scveh.line20a#1, scveh.low_use:false, scveh.screen:false, scveh.screened:false, scveh.passenger:true, scveh.suv:false, scveh.is2025:false, scveh.is2019:false, scveh.is2019:true, scveh.s179_bad:false, scveh.after_jan19:false, scveh.after_jan19:true, scveh.bonus_same:true, scveh.bonus_mixed:false, scveh.claims_bonus:false, scveh.lim_2025#1, scveh.line7#1, scveh.line10#1, scveh.line10_2025#0, scveh.s179_line10:left, scveh.line11:positive, scveh.line14#1, scveh.line15:positive, scveh.bonus_fullcase#0, scveh.bonus_fullcase#1, scveh.bonus_2025#2, scveh.line16#1, scveh.bonus_allowed:left, scveh.line17:positive, scveh.line18:positive, scveh.line19#1, scveh.line19_earlier#0, scveh.line19_earlier#1, scveh.line19_2025#1, scveh.line20:right, scveh.b100:positive, scveh.d1:right, scveh.d2:left, scveh.d2:right, scveh.d3:left, scveh.d4:left, scveh.d5:left, scveh.d6:left, scveh.unrecovered:positive, scveh.post_amount:left, scveh.too_old:false, scveh.bonus_v#0, scveh.macrs_pass#0, scveh.macrs_pass#1, scveh.macrs_heavy#0, scveh.macrs_heavy#1, scveh.macrs_v#0, scveh.bonus#1, scveh.macrs#1, scveh.s179_2025#1, scveh.mq_q4#1, scveh.mq_total#1, scveh.cost179#1, scveh.q4_basis#1, scveh.q4_basis#2, scveh.mq_q4_o#1, scveh.mq_total_o#1, scveh.cost179_o#1
+### case classm.scveh.6 — prompt sha256 134a4c33a26ba19d9723069c6bb422218d928a38b97e3b80f59994cc5ee42ba7; branches: scveh.owned:true, scveh.no_miles:false, scveh.over_half:true, scveh.smr_ok:true, scveh.smr_bad:false, scveh.line9#0, scveh.line9#1, scveh.is_actual_owned:false, scveh.is_actual_owned:true, scveh.is_actual_leased:false, scveh.line20a#1, scveh.low_use:false, scveh.screen:false, scveh.screened:false, scveh.passenger:false, scveh.passenger:true, scveh.suv:false, scveh.is2025:false, scveh.is2019:false, scveh.is2019:true, scveh.s179_bad:false, scveh.after_jan19:true, scveh.bonus_same:true, scveh.bonus_mixed:false, scveh.claims_bonus:false, scveh.lim_2025#1, scveh.line7#1, scveh.line10#1, scveh.line10_2025#0, scveh.line10_2025#1, scveh.s179_line10:left, scveh.line11:positive, scveh.line14#1, scveh.line15:positive, scveh.bonus_fullcase#0, scveh.bonus_2025#2, scveh.line16#1, scveh.bonus_allowed:left, scveh.line17:positive, scveh.line18:positive, scveh.line19#1, scveh.line19_earlier#0, scveh.line19_earlier#1, scveh.line19_2025#1, scveh.line20:right, scveh.b100:positive, scveh.d1:right, scveh.d2:left, scveh.d2:right, scveh.d3:left, scveh.d3:right, scveh.d4:left, scveh.d4:right, scveh.d5:left, scveh.d5:right, scveh.d6:left, scveh.unrecovered:positive, scveh.post_amount:left, scveh.too_old:false, scveh.bonus_v#0, scveh.bonus_v#1, scveh.macrs_pass#0, scveh.macrs_pass#1, scveh.macrs_heavy#0, scveh.macrs_heavy#1, scveh.macrs_v#0, scveh.macrs_v#1, scveh.bonus#0, scveh.bonus#1, scveh.macrs#0, scveh.macrs#1, scveh.s179_2025#0, scveh.s179_2025#1, scveh.mq_q4#0, scveh.mq_q4#1, scveh.mq_total#0, scveh.mq_total#1, scveh.cost179#0, scveh.cost179#1, scveh.q4_basis#2, scveh.q4_basis#3, scveh.mq_q4_o#1, scveh.mq_total_o#1, scveh.cost179_o#1
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].bm_c — Business miles, as cents
 Status: **DISAGREE**
 
-Project: $197.88
-Model: $19,788.00
-Work: Business miles given: 19,788
+Project: $186.74
+Model: $18,674.00
+Work: Business miles 18,674
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].cm_c — Commuting miles, as cents
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $18.42
-Model: $1,842.00
-Work: Commuting miles given: 1,842
-
-Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
+Value: $0.00
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].om_c — Other miles, as cents
 Status: **DISAGREE**
 
-Project: $22.48
-Model: $2,248.00
-Work: Other miles given: 2,248
+Project: $31.32
+Model: $3,132.00
+Work: Other miles 3,132
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].nonbusiness_c — Commuting and other miles, as cents
 Status: **DISAGREE**
 
-Project: $40.90
-Model: $4,090.00
-Work: 1,842 + 2,248
+Project: $31.32
+Model: $3,132.00
+Work: 0 + 3,132
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].total_c — Total miles, as cents
 Status: **DISAGREE**
 
-Project: $238.78
-Model: $23,878.00
-Work: 19,788 + 4,090
+Project: $218.06
+Model: $21,806.00
+Work: 18,674 + 3,132
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
+
+### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].no_miles — Actual expenses claimed for a vehicle with no miles
+Status: **AGREE**
+
+Value: no
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].over_half — Business use is more than 50%
 Status: **AGREE**
@@ -6689,27 +6311,27 @@ Value: no
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].smr_amount — Business miles times the standard mileage rate
 Status: **AGREE**
 
-Value: $13,851.60
+Value: $13,071.80
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].line9_standard — Standard mileage amount plus parking fees and tolls
 Status: **AGREE**
 
-Value: $13,884.60
+Value: $13,071.80
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].operating_business — The business portion of the operating expenses
 Status: **AGREE**
 
-Value: $2,902.98
+Value: $8,563.70
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].line9_actual — Business portion of the operating expenses plus parking fees and tolls
 Status: **AGREE**
 
-Value: $2,935.98
+Value: $8,563.70
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].line9 — Car and truck expenses for this vehicle
 Status: **AGREE**
 
-Value: $13,884.60
+Value: $13,071.80
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].is_actual_owned — Owned and on actual expenses
 Status: **AGREE**
@@ -6724,7 +6346,7 @@ Value: no
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].lease_business — The business portion of the lease payments
 Status: **AGREE**
 
-Value: $1,775.93
+Value: $0.00
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].line20a — Rent or lease of this vehicle (business portion)
 Status: **AGREE**
@@ -6744,7 +6366,7 @@ Value: no
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].year — Year of recovery in 2025
 Status: **AGREE**
 
-Value: 2
+Value: 7
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].is2025 — Placed in service in 2025
 Status: **AGREE**
@@ -6754,16 +6376,16 @@ Value: no
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].is2019 — Placed in service in 2019 (2025 is after the recovery period)
 Status: **AGREE**
 
-Value: no
+Value: yes
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].bus_cost — Business/investment cost (cost times business use)
 Status: **DISAGREE**
 
-Project: $28,954.40
-Model: $28,954.39
-Work: 34,939 x 19,788 / 23,878
+Project: $56,076.82
+Model: $56,076.81
+Work: 65,482 x 18,674/21,806
 
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].s179_bad — The section 179 election is more than the business cost, or than the SUV limit
 Status: **AGREE**
@@ -6783,30 +6405,44 @@ Value: no
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].lim_first_bonus — First-year limit with the special allowance
 Status: **DISAGREE**
 
-Project: $19,800.00
+Project: $5,760.00
 Model: $20,200.00
-Work: Pub 946 table, 2025, 1st year: $20,200
+Work: Table 2 footnote: 2025 limit with special allowance
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Here the vehicle's key gives the project's value: line 7 reads lim_2025 only for a 2025 vehicle and lim_prior otherwise, and the project looks every limit up by the year actually placed in service and its year of recovery; the model read the 2025 column. Pub. 946 p. 59 table, checked: 1st year 2025 $20,200 (footnote 1: $12,200 without the special allowance), 2nd year 2024 $19,800, 4th and later year 2021 $5,860, 2020 and 2019 $5,760, footnote 6 (2019 without the special allowance) $10,100; the project's tables carry these values. Not evidence. [dropped]
+
+### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].lim_first_none — First-year limit without the special allowance
+Status: **DISAGREE**
+
+Project: $10,100.00
+Model: $12,200.00
+Work: Table 2: 2025 year 1 limit
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Here the vehicle's key gives the project's value: line 7 reads lim_2025 only for a 2025 vehicle and lim_prior otherwise, and the project looks every limit up by the year actually placed in service and its year of recovery; the model read the 2025 column. Pub. 946 p. 59 table, checked: 1st year 2025 $20,200 (footnote 1: $12,200 without the special allowance), 2nd year 2024 $19,800, 4th and later year 2021 $5,860, 2020 and 2019 $5,760, footnote 6 (2019 without the special allowance) $10,100; the project's tables carry these values. Not evidence. [dropped]
+
+### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].lim_2025 — Limit for a 2025 vehicle
+Status: **DISAGREE**
+
+Project: $10,100.00
+Model: $12,200.00
+Work: No special allowance claimed
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Here the vehicle's key gives the project's value: line 7 reads lim_2025 only for a 2025 vehicle and lim_prior otherwise, and the project looks every limit up by the year actually placed in service and its year of recovery; the model read the 2025 column. Pub. 946 p. 59 table, checked: 1st year 2025 $20,200 (footnote 1: $12,200 without the special allowance), 2nd year 2024 $19,800, 4th and later year 2021 $5,860, 2020 and 2019 $5,760, footnote 6 (2019 without the special allowance) $10,100; the project's tables carry these values. Not evidence. [dropped]
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].lim_prior — Limit for the vehicle's 2025 year of recovery
 Status: **AGREE**
 
-Value: $19,800.00
+Value: $5,760.00
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].line7 — Maximum depreciation deduction for this year from the appropriate table
 Status: **AGREE**
 
-Value: $19,800.00
+Value: $5,760.00
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].line9w — Adjusted maximum depreciation deduction (line 7 times the business/investment-us
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $16,408.52
-Model: $16,408.51
-Work: 19,800 x 19,788 / 23,878
-
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Value: $4,932.69
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].s179_2025_ok — Section 179 elected for a 2025 vehicle
 Status: **AGREE**
@@ -6829,50 +6465,50 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].line11 — Subtract line 10 from line 9
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $16,408.52
-Model: $16,408.51
-Work: 16,408.51 - 0
-
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Value: $4,932.69
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].line14 — Section 179 deduction claimed in the year you placed the car in service
 Status: **AGREE**
 
-Value: $0.00
+Value: $1,714.00
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].line15 — Tentative basis for depreciation (line 13 less line 14)
 Status: **DISAGREE**
 
-Project: $28,954.40
-Model: $28,954.39
-Work: 28,954.39 - 0
+Project: $54,362.82
+Model: $54,362.81
+Work: 56,076.81 - 1,714
 
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].bonus_full — 100% special allowance
 Status: **DISAGREE**
 
-Project: $28,954.40
-Model: $28,954.39
-Work: 28,954.39 x 100%
+Project: $54,362.82
+Model: $54,362.81
+Work: 54,362.81 x 100%
 
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].bonus_forty — 40% special allowance
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $11,581.76
+Project: $21,745.13
+Model: $21,745.12
+Work: 54,362.81 x 40%
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].bonus_fullcase — The allowance when it is claimed: 100% if acquired after January 19, 2025, other
 Status: **DISAGREE**
 
-Project: $28,954.40
-Model: $28,954.39
-Work: Acquired after January 19, 2025, so 100%
+Project: $54,362.82
+Model: $54,362.81
+Work: Acquired after Jan 19, 2025, so 100%
 
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].bonus_2025 — Special allowance for a 2025 vehicle
 Status: **AGREE**
@@ -6890,177 +6526,188 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].line17 — Limit on the MACRS depreciation (line 11 less line 16)
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $16,408.52
-Model: $16,408.51
-Work: 16,408.51 - 0
-
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Value: $4,932.69
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].line18 — Basis for depreciation (line 15 less line 16)
 Status: **DISAGREE**
 
-Project: $28,954.40
-Model: $28,954.39
-Work: 28,954.39 - 0
+Project: $54,362.82
+Model: $54,362.81
+Work: 54,362.81 - 0
 
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].qconv — Mid-quarter convention for that quarter
 Status: **AGREE**
 
-Value: mq3
-
-### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].rate_hy — MACRS rate, half-year convention
-Status: **DISAGREE**
-
-Project: 32%
-Model: 20%
-Work: 5-year 200DB half-year convention, year 1
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].rate_mq — MACRS rate, mid-quarter convention
-Status: **DISAGREE**
-
-Project: 34%
-Model: 15%
-Work: 5-year 200DB mid-quarter, 3rd quarter, year 1
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].rate_prior — MACRS rate for the 2025 year of recovery
-Status: **AGREE**
-
-Value: 26%
-
-### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].line19_hy — Line 18 times the half-year rate
-Status: **DISAGREE**
-
-Project: $9,265.41
-Model: $5,790.88
-Work: 28,954.39 x 20%
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].line19_mq — Line 18 times the mid-quarter rate
-Status: **DISAGREE**
-
-Project: $9,844.50
-Model: $4,343.16
-Work: 28,954.39 x 15%
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].line19_prior — Line 18 times the rate for the 2025 year of recovery
-Status: **AGREE**
-
-Value: $7,528.14
+Value: mq4
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].line19 — Tentative MACRS depreciation deduction (line 18 times line 6)
 Status: **AGREE**
 
-Value: $7,528.14
+Value: $0.00
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].line19_earlier — Line 19 for a vehicle placed in service before 2025 (zero after the recovery per
 Status: **AGREE**
 
-Value: $7,528.14
-
-### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].line19_2025 — Line 19 for a 2025 vehicle, half-year or mid-quarter
-Status: **DISAGREE**
-
-Project: $9,844.50
-Model: $4,343.16
-Work: Mid-quarter convention applies (given test is yes)
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Value: $0.00
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].line20 — MACRS depreciation deduction (the lesser of line 17 or line 19)
 Status: **AGREE**
 
-Value: $7,528.14
+Value: $0.00
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].b100 — Cost less the section 179 deduction (as if used 100% for business)
 Status: **AGREE**
 
-Value: $34,939.00
+Value: $63,768.00
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].r1 — MACRS rate for year 1
 Status: **AGREE**
 
-Value: 35%
+Value: 5%
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].t1 — Year 1 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $12,228.65
+Value: $3,188.40
+
+### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].l1 — Year 1 limit (no special allowance)
+Status: **AGREE**
+
+Value: $10,100.00
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].t1s — Year 1 section 179 deduction plus MACRS amount
 Status: **AGREE**
 
-Value: $12,228.65
+Value: $4,902.40
+
+### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].d1 — Year 1 deduction allowable at 100% business use (the lesser of the limit or the 
+Status: **AGREE**
+
+Value: $4,902.40
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].r2 — MACRS rate for year 2
 Status: **AGREE**
 
-Value: 26%
+Value: 38%
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].t2 — Year 2 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $9,084.14
+Value: $24,231.84
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].l2 — Year 2 limit
 Status: **AGREE**
 
-Value: $19,800.00
+Value: $16,100.00
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].d2 — Year 2 deduction allowable at 100% business use
 Status: **AGREE**
 
-Value: $9,084.14
+Value: $16,100.00
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].r3 — MACRS rate for year 3
 Status: **AGREE**
 
-Value: 15.6%
+Value: 22.8%
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].t3 — Year 3 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $5,450.48
+Value: $14,539.10
+
+### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].l3 — Year 3 limit
+Status: **AGREE**
+
+Value: $9,700.00
+
+### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].d3 — Year 3 deduction allowable at 100% business use
+Status: **AGREE**
+
+Value: $9,700.00
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].r4 — MACRS rate for year 4
 Status: **AGREE**
 
-Value: 11.01%
+Value: 13.68%
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].t4 — Year 4 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $3,846.78
+Value: $8,723.46
+
+### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].l4 — Year 4 limit
+Status: **AGREE**
+
+Value: $5,760.00
+
+### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].d4 — Year 4 deduction allowable at 100% business use
+Status: **AGREE**
+
+Value: $5,760.00
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].r5 — MACRS rate for year 5
 Status: **AGREE**
 
-Value: 11.01%
+Value: 10.94%
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].t5 — Year 5 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $3,846.78
+Value: $6,976.22
+
+### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].l5 — Year 5 limit
+Status: **AGREE**
+
+Value: $5,760.00
+
+### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].d5 — Year 5 deduction allowable at 100% business use
+Status: **AGREE**
+
+Value: $5,760.00
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].r6 — MACRS rate for year 6
 Status: **AGREE**
 
-Value: 1.38%
+Value: 9.58%
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].t6 — Year 6 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $482.16
+Value: $6,108.97
+
+### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].l6 — Year 6 limit
+Status: **AGREE**
+
+Value: $5,760.00
+
+### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].d6 — Year 6 deduction allowable at 100% business use
+Status: **AGREE**
+
+Value: $5,760.00
+
+### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].d_total — Deductions allowable during the recovery period at 100% business use
+Status: **AGREE**
+
+Value: $47,982.40
+
+### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].unrecovered — Unrecovered basis at the end of the recovery period
+Status: **AGREE**
+
+Value: $17,499.60
+
+### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].post_amount — The lesser of the limit or the unrecovered basis
+Status: **AGREE**
+
+Value: $5,760.00
+
+### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].post — 2025 deduction after the recovery period (times the business use percentage)
+Status: **AGREE**
+
+Value: $4,932.69
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].too_old — Placed in service before 2019
 Status: **AGREE**
@@ -7075,17 +6722,17 @@ Value: $0.00
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].macrs_pass — Column (h) for a passenger automobile
 Status: **AGREE**
 
-Value: $7,528.14
+Value: $4,932.69
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].macrs_heavy — Column (h) for a vehicle not subject to the limits
 Status: **AGREE**
 
-Value: $7,528.14
+Value: $0.00
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].macrs_v — Column (h)
 Status: **AGREE**
 
-Value: $7,528.14
+Value: $0.00
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].bonus — Line 25: special allowance of this vehicle
 Status: **AGREE**
@@ -7123,13 +6770,9 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].macrs_o — Depreciation (owned, actual expenses)
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $7,528.14
-Model: $0.00
-Work: Not owned on actual expenses
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Value: $0.00
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].s179_2025_o — Section 179 (owned, actual expenses)
 Status: **AGREE**
@@ -7137,9 +6780,13 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].q4_basis — Basis for the mid-quarter test when placed in service October to December
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $0.00
+Project: $54,362.82
+Model: $54,362.81
+Work: Q4: line 15 basis after section 179
+
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].mq_q4_o — mq_q4 (owned, actual expenses)
 Status: **AGREE**
@@ -7147,9 +6794,13 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].mq_q4_a2 — mq_q4 of a 2025 vehicle
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $0.00
+Project: $54,362.82
+Model: $0.00
+Work: Not a 2025 vehicle
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The _o line reads the _a2 copy only for a 2025 vehicle; for this earlier vehicle the _o line and the result are zero (agreeing). Not evidence. [dropped]
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].mq_total_o — mq_total (owned, actual expenses)
 Status: **AGREE**
@@ -7159,11 +6810,11 @@ Value: $0.00
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].mq_total_a2 — mq_total of a 2025 vehicle
 Status: **DISAGREE**
 
-Project: $28,954.40
+Project: $54,362.82
 Model: $0.00
 Work: Not a 2025 vehicle
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The _o line reads the _a2 copy only for a 2025 vehicle; for this earlier vehicle the _o line and the result are zero (agreeing). Not evidence. [dropped]
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].cost179_o — cost179 (owned, actual expenses)
 Status: **AGREE**
@@ -7173,18 +6824,18 @@ Value: $0.00
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_1].cost179_a2 — cost179 of a 2025 vehicle
 Status: **DISAGREE**
 
-Project: $28,954.40
+Project: $56,076.82
 Model: $0.00
 Work: Not a 2025 vehicle
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The _o line reads the _a2 copy only for a 2025 vehicle; for this earlier vehicle the _o line and the result are zero (agreeing). Not evidence. [dropped]
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].bm_c — Business miles, as cents
 Status: **DISAGREE**
 
-Project: $234.84
-Model: $23,484.00
-Work: Business miles given: 23,484
+Project: $225.72
+Model: $22,572.00
+Work: Business miles 22,572
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
 
@@ -7196,29 +6847,34 @@ Value: $0.00
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].om_c — Other miles, as cents
 Status: **DISAGREE**
 
-Project: $18.94
-Model: $1,894.00
-Work: Other miles given: 1,894
+Project: $27.34
+Model: $2,734.00
+Work: Other miles 2,734
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].nonbusiness_c — Commuting and other miles, as cents
 Status: **DISAGREE**
 
-Project: $18.94
-Model: $1,894.00
-Work: 0 + 1,894
+Project: $27.34
+Model: $2,734.00
+Work: 0 + 2,734
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].total_c — Total miles, as cents
 Status: **DISAGREE**
 
-Project: $253.78
-Model: $25,378.00
-Work: 23,484 + 1,894
+Project: $253.06
+Model: $25,306.00
+Work: 22,572 + 2,734
 
 Ruling: representation; project retained. A mile count is carried as one cent per mile (multiply_count by one cent) so that miles can be added and divided like amounts in the business-use ratio; the model read the cents as dollars. Not evidence. [dropped]
+
+### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].no_miles — Actual expenses claimed for a vehicle with no miles
+Status: **AGREE**
+
+Value: no
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].over_half — Business use is more than 50%
 Status: **AGREE**
@@ -7233,32 +6889,32 @@ Value: no
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].smr_amount — Business miles times the standard mileage rate
 Status: **AGREE**
 
-Value: $16,438.80
+Value: $15,800.40
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].line9_standard — Standard mileage amount plus parking fees and tolls
 Status: **AGREE**
 
-Value: $17,307.80
+Value: $15,800.40
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].operating_business — The business portion of the operating expenses
 Status: **AGREE**
 
-Value: $8,938.13
+Value: $0.00
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].line9_actual — Business portion of the operating expenses plus parking fees and tolls
 Status: **AGREE**
 
-Value: $9,807.13
+Value: $0.00
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].line9 — Car and truck expenses for this vehicle
 Status: **AGREE**
 
-Value: $17,307.80
+Value: $0.00
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].is_actual_owned — Owned and on actual expenses
 Status: **AGREE**
 
-Value: no
+Value: yes
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].is_actual_leased — Leased and on actual expenses
 Status: **AGREE**
@@ -7268,7 +6924,7 @@ Value: no
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].lease_business — The business portion of the lease payments
 Status: **AGREE**
 
-Value: $0.00
+Value: $7,012.61
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].line20a — Rent or lease of this vehicle (business portion)
 Status: **AGREE**
@@ -7288,7 +6944,7 @@ Value: no
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].year — Year of recovery in 2025
 Status: **AGREE**
 
-Value: 7
+Value: 5
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].is2025 — Placed in service in 2025
 Status: **AGREE**
@@ -7298,16 +6954,16 @@ Value: no
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].is2019 — Placed in service in 2019 (2025 is after the recovery period)
 Status: **AGREE**
 
-Value: yes
+Value: no
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].bus_cost — Business/investment cost (cost times business use)
 Status: **DISAGREE**
 
-Project: $70,413.10
-Model: $70,413.13
-Work: 76,092 x 23,484 / 25,378
+Project: $42,373.55
+Model: $42,373.56
+Work: 47,506 x 22,572/25,306
 
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].s179_bad — The section 179 election is more than the business cost, or than the SUV limit
 Status: **AGREE**
@@ -7327,40 +6983,26 @@ Value: no
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].lim_first_bonus — First-year limit with the special allowance
 Status: **DISAGREE**
 
-Project: $5,760.00
-Model: $18,100.00
-Work: Pub 946 table, 2019, 1st year: $18,100
+Project: $5,860.00
+Model: $20,200.00
+Work: Table 2 footnote: 2025 limit with special allowance
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
-
-### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].lim_first_none — First-year limit without the special allowance
-Status: **AGREE**
-
-Value: $10,100.00
-
-### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].lim_2025 — Limit for a 2025 vehicle
-Status: **DISAGREE**
-
-Project: $10,100.00
-Model: $12,200.00
-Work: 2025 with no special allowance: $12,200
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Here the vehicle's key gives the project's value: line 7 reads lim_2025 only for a 2025 vehicle and lim_prior otherwise, and the project looks every limit up by the year actually placed in service and its year of recovery; the model read the 2025 column. Pub. 946 p. 59 table, checked: 1st year 2025 $20,200 (footnote 1: $12,200 without the special allowance), 2nd year 2024 $19,800, 4th and later year 2021 $5,860, 2020 and 2019 $5,760, footnote 6 (2019 without the special allowance) $10,100; the project's tables carry these values. Not evidence. [dropped]
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].lim_prior — Limit for the vehicle's 2025 year of recovery
 Status: **AGREE**
 
-Value: $5,760.00
+Value: $5,860.00
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].line7 — Maximum depreciation deduction for this year from the appropriate table
 Status: **AGREE**
 
-Value: $5,760.00
+Value: $5,860.00
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].line9w — Adjusted maximum depreciation deduction (line 7 times the business/investment-us
 Status: **AGREE**
 
-Value: $5,330.12
+Value: $5,226.90
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].s179_2025_ok — Section 179 elected for a 2025 vehicle
 Status: **AGREE**
@@ -7385,7 +7027,7 @@ Value: $0.00
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].line11 — Subtract line 10 from line 9
 Status: **AGREE**
 
-Value: $5,330.12
+Value: $5,226.90
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].line14 — Section 179 deduction claimed in the year you placed the car in service
 Status: **AGREE**
@@ -7395,38 +7037,34 @@ Value: $0.00
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].line15 — Tentative basis for depreciation (line 13 less line 14)
 Status: **DISAGREE**
 
-Project: $70,413.10
-Model: $70,413.13
-Work: 70,413.13 - 0
+Project: $42,373.55
+Model: $42,373.56
+Work: 42,373.56 - 0
 
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].bonus_full — 100% special allowance
 Status: **DISAGREE**
 
-Project: $70,413.10
-Model: $70,413.13
-Work: 70,413.13 x 100%
+Project: $42,373.55
+Model: $42,373.56
+Work: 42,373.56 x 100%
 
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].bonus_forty — 40% special allowance
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $28,165.24
-Model: $28,165.25
-Work: 70,413.13 x 40%
-
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Value: $16,949.42
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].bonus_fullcase — The allowance when it is claimed: 100% if acquired after January 19, 2025, other
 Status: **DISAGREE**
 
-Project: $28,165.24
-Model: $28,165.25
-Work: Not acquired after January 19, 2025, so 40%
+Project: $42,373.55
+Model: $42,373.56
+Work: Acquired after Jan 19, 2025, so 100%
 
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].bonus_2025 — Special allowance for a 2025 vehicle
 Status: **AGREE**
@@ -7446,186 +7084,201 @@ Value: $0.00
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].line17 — Limit on the MACRS depreciation (line 11 less line 16)
 Status: **AGREE**
 
-Value: $5,330.12
+Value: $5,226.90
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].line18 — Basis for depreciation (line 15 less line 16)
 Status: **DISAGREE**
 
-Project: $70,413.10
-Model: $70,413.13
-Work: 70,413.13 - 0
+Project: $42,373.55
+Model: $42,373.56
+Work: 42,373.56 - 0
 
-Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents. [dropped]
+Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence. [dropped]
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].qconv — Mid-quarter convention for that quarter
 Status: **AGREE**
 
-Value: mq2
+Value: mq3
+
+### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].rate_hy — MACRS rate, half-year convention
+Status: **DISAGREE**
+
+Project: 11.52%
+Model: 20%
+Work: 5-year HY, year 1
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The project keys the rate on the vehicle's actual year of recovery (Pub. 946 Table A-1/A-5); the 2025-vehicle rate and line 19 for a 2025 vehicle are not read for a vehicle placed in service earlier, whose line 19 is line19_prior (agreeing or differing only in cents). Not evidence. [dropped]
+
+### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].rate_mq — MACRS rate, mid-quarter convention
+Status: **DISAGREE**
+
+Project: 11.3%
+Model: 15%
+Work: 5-year mid-quarter Q3, year 1
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The project keys the rate on the vehicle's actual year of recovery (Pub. 946 Table A-1/A-5); the 2025-vehicle rate and line 19 for a 2025 vehicle are not read for a vehicle placed in service earlier, whose line 19 is line19_prior (agreeing or differing only in cents). Not evidence. [dropped]
+
+### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].rate_prior — MACRS rate for the 2025 year of recovery
+Status: **AGREE**
+
+Value: 11.52%
+
+### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].line19_hy — Line 18 times the half-year rate
+Status: **DISAGREE**
+
+Project: $4,881.43
+Model: $8,474.71
+Work: 42,373.56 x 20%
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The project keys the rate on the vehicle's actual year of recovery (Pub. 946 Table A-1/A-5); the 2025-vehicle rate and line 19 for a 2025 vehicle are not read for a vehicle placed in service earlier, whose line 19 is line19_prior (agreeing or differing only in cents). Not evidence. [dropped]
+
+### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].line19_mq — Line 18 times the mid-quarter rate
+Status: **DISAGREE**
+
+Project: $4,788.21
+Model: $6,356.03
+Work: 42,373.56 x 15%
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The project keys the rate on the vehicle's actual year of recovery (Pub. 946 Table A-1/A-5); the 2025-vehicle rate and line 19 for a 2025 vehicle are not read for a vehicle placed in service earlier, whose line 19 is line19_prior (agreeing or differing only in cents). Not evidence. [dropped]
+
+### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].line19_prior — Line 18 times the rate for the 2025 year of recovery
+Status: **AGREE**
+
+Value: $4,881.43
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].line19 — Tentative MACRS depreciation deduction (line 18 times line 6)
 Status: **AGREE**
 
-Value: $0.00
+Value: $4,881.43
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].line19_earlier — Line 19 for a vehicle placed in service before 2025 (zero after the recovery per
 Status: **AGREE**
 
-Value: $0.00
+Value: $4,881.43
+
+### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].line19_2025 — Line 19 for a 2025 vehicle, half-year or mid-quarter
+Status: **DISAGREE**
+
+Project: $4,788.21
+Model: $6,356.03
+Work: Mid-quarter test is met, so the MQ amount
+
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The project keys the rate on the vehicle's actual year of recovery (Pub. 946 Table A-1/A-5); the 2025-vehicle rate and line 19 for a 2025 vehicle are not read for a vehicle placed in service earlier, whose line 19 is line19_prior (agreeing or differing only in cents). Not evidence. [dropped]
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].line20 — MACRS depreciation deduction (the lesser of line 17 or line 19)
 Status: **AGREE**
 
-Value: $0.00
+Value: $4,881.43
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].b100 — Cost less the section 179 deduction (as if used 100% for business)
 Status: **AGREE**
 
-Value: $76,092.00
+Value: $47,506.00
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].r1 — MACRS rate for year 1
 Status: **AGREE**
 
-Value: 5%
+Value: 20%
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].t1 — Year 1 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $3,804.60
-
-### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].l1 — Year 1 limit (no special allowance)
-Status: **AGREE**
-
-Value: $10,100.00
+Value: $9,501.20
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].t1s — Year 1 section 179 deduction plus MACRS amount
 Status: **AGREE**
 
-Value: $3,804.60
-
-### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].d1 — Year 1 deduction allowable at 100% business use (the lesser of the limit or the 
-Status: **AGREE**
-
-Value: $3,804.60
+Value: $9,501.20
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].r2 — MACRS rate for year 2
 Status: **AGREE**
 
-Value: 38%
+Value: 32%
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].t2 — Year 2 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $28,914.96
+Value: $15,201.92
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].l2 — Year 2 limit
 Status: **AGREE**
 
-Value: $16,100.00
+Value: $16,400.00
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].d2 — Year 2 deduction allowable at 100% business use
 Status: **AGREE**
 
-Value: $16,100.00
+Value: $15,201.92
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].r3 — MACRS rate for year 3
 Status: **AGREE**
 
-Value: 22.8%
+Value: 19.2%
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].t3 — Year 3 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $17,348.98
+Value: $9,121.15
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].l3 — Year 3 limit
 Status: **AGREE**
 
-Value: $9,700.00
+Value: $9,800.00
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].d3 — Year 3 deduction allowable at 100% business use
 Status: **AGREE**
 
-Value: $9,700.00
+Value: $9,121.15
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].r4 — MACRS rate for year 4
 Status: **AGREE**
 
-Value: 13.68%
+Value: 11.52%
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].t4 — Year 4 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $10,409.39
+Value: $5,472.69
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].l4 — Year 4 limit
 Status: **AGREE**
 
-Value: $5,760.00
+Value: $5,860.00
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].d4 — Year 4 deduction allowable at 100% business use
 Status: **AGREE**
 
-Value: $5,760.00
+Value: $5,472.69
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].r5 — MACRS rate for year 5
 Status: **AGREE**
 
-Value: 10.94%
+Value: 11.52%
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].t5 — Year 5 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $8,324.46
+Value: $5,472.69
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].l5 — Year 5 limit
 Status: **AGREE**
 
-Value: $5,760.00
+Value: $5,860.00
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].d5 — Year 5 deduction allowable at 100% business use
 Status: **AGREE**
 
-Value: $5,760.00
+Value: $5,472.69
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].r6 — MACRS rate for year 6
 Status: **AGREE**
 
-Value: 9.58%
+Value: 5.76%
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].t6 — Year 6 MACRS amount as if used 100% for business
 Status: **AGREE**
 
-Value: $7,289.61
-
-### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].l6 — Year 6 limit
-Status: **AGREE**
-
-Value: $5,760.00
-
-### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].d6 — Year 6 deduction allowable at 100% business use
-Status: **AGREE**
-
-Value: $5,760.00
-
-### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].d_total — Deductions allowable during the recovery period at 100% business use
-Status: **AGREE**
-
-Value: $46,884.60
-
-### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].unrecovered — Unrecovered basis at the end of the recovery period
-Status: **AGREE**
-
-Value: $29,207.40
-
-### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].post_amount — The lesser of the limit or the unrecovered basis
-Status: **AGREE**
-
-Value: $5,760.00
-
-### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].post — 2025 deduction after the recovery period (times the business use percentage)
-Status: **AGREE**
-
-Value: $5,330.12
+Value: $2,736.35
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].too_old — Placed in service before 2019
 Status: **AGREE**
@@ -7640,17 +7293,17 @@ Value: $0.00
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].macrs_pass — Column (h) for a passenger automobile
 Status: **AGREE**
 
-Value: $5,330.12
+Value: $4,881.43
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].macrs_heavy — Column (h) for a vehicle not subject to the limits
 Status: **AGREE**
 
-Value: $0.00
+Value: $4,881.43
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].macrs_v — Column (h)
 Status: **AGREE**
 
-Value: $5,330.12
+Value: $4,881.43
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].bonus — Line 25: special allowance of this vehicle
 Status: **AGREE**
@@ -7660,7 +7313,7 @@ Value: $0.00
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].macrs — Column (h): depreciation of this vehicle
 Status: **AGREE**
 
-Value: $0.00
+Value: $4,881.43
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].s179_2025 — Column (i): elected section 179 cost of this vehicle
 Status: **AGREE**
@@ -7688,13 +7341,9 @@ Status: **AGREE**
 Value: $0.00
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].macrs_o — Depreciation (owned, actual expenses)
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $5,330.12
-Model: $0.00
-Work: Not owned on actual expenses
-
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Value: $4,881.43
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].s179_2025_o — Section 179 (owned, actual expenses)
 Status: **AGREE**
@@ -7724,11 +7373,11 @@ Value: $0.00
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].mq_total_a2 — mq_total of a 2025 vehicle
 Status: **DISAGREE**
 
-Project: $70,413.10
+Project: $42,373.55
 Model: $0.00
 Work: Not a 2025 vehicle
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The _o line reads the _a2 copy only for a 2025 vehicle; for this earlier vehicle the _o line and the result are zero (agreeing). Not evidence. [dropped]
 
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].cost179_o — cost179 (owned, actual expenses)
 Status: **AGREE**
@@ -7738,11 +7387,11 @@ Value: $0.00
 ### classm.scveh.6 — person[taxpayer].sc[biz_a].scveh[car_2].cost179_a2 — cost179 of a 2025 vehicle
 Status: **DISAGREE**
 
-Project: $70,413.10
+Project: $42,373.55
 Model: $0.00
 Work: Not a 2025 vehicle
 
-Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence. [dropped]
+Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. The _o line reads the _a2 copy only for a 2025 vehicle; for this earlier vehicle the _o line and the result are zero (agreeing). Not evidence. [dropped]
 
 ## Raw responses
 
@@ -7751,258 +7400,567 @@ Ruling: helper of a branch this vehicle does not take; project retained. The pro
 ```yaml
 ```yaml
 lines:
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bm_c"
+    value: "23398.00"
+    work: "Business miles 23,398"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].cm_c"
+    value: "0.00"
+    work: "Commuting miles 0"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].om_c"
+    value: "921.00"
+    work: "Other miles 921"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].nonbusiness_c"
+    value: "921.00"
+    work: "0 + 921"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].total_c"
+    value: "24319.00"
+    work: "23,398 + 921"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].no_miles"
+    value: "no"
+    work: "Total miles are 24,319, not zero"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].over_half"
+    value: "yes"
+    work: "23,398 / 24,319 = 96.21%, more than 50%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].smr_bad"
+    value: "no"
+    work: "Filer answered that the standard mileage rate may be used"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].smr_amount"
+    value: "16378.60"
+    work: "23,398 x 0.70"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line9_standard"
+    value: "16378.60"
+    work: "16,378.60 + 0 parking and tolls"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].operating_business"
+    value: "0.00"
+    work: "0 x 96.21%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line9_actual"
+    value: "0.00"
+    work: "0 + 0"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line9"
+    value: "0.00"
+    work: "Actual expenses method, so the line 9 actual amount is used"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].is_actual_owned"
+    value: "yes"
+    work: "Owned, actual expenses"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].is_actual_leased"
+    value: "no"
+    work: "Vehicle is owned, not leased"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].lease_business"
+    value: "5538.97"
+    work: "5,757 x 23,398 / 24,319"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line20a"
+    value: "0.00"
+    work: "Not leased, so nothing goes on line 20a"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].low_use"
+    value: "no"
+    work: "Business use is 96.21%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].screened"
+    value: "no"
+    work: "None of the screens apply and business use is over 50%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].year"
+    value: "1"
+    work: "Placed in service 2025, so 2025 is year 1"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].is2025"
+    value: "yes"
+    work: "y2025"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].is2019"
+    value: "no"
+    work: "y2025"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bus_cost"
+    value: "47144.29"
+    work: "49,000 x 23,398 / 24,319 (line 13)"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].s179_bad"
+    value: "no"
+    work: "Section 179 elected is 0"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_mixed"
+    value: "no"
+    work: "Same choice applies to all 5-year property"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].claims_bonus"
+    value: "yes"
+    work: "Filer chose the 40% special allowance"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].lim_first_bonus"
+    value: "20200.00"
+    work: "Table 2 footnote: $20,200 for 2025 with special allowance"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].lim_first_none"
+    value: "12200.00"
+    work: "Table 2: 2025, year 1 = $12,200"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].lim_2025"
+    value: "20200.00"
+    work: "Special allowance claimed"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].lim_prior"
+    value: "12200.00"
+    work: "Table 2 row for 2025, year 1 = $12,200"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line7"
+    value: "20200.00"
+    work: "2025 vehicle, so the lim_2025 amount is used"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line9w"
+    value: "19434.99"
+    work: "20,200 x 23,398 / 24,319"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].s179_2025_ok"
+    value: "0.00"
+    work: "Elected 0"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line10"
+    value: "0.00"
+    work: "0"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line10_2025"
+    value: "0.00"
+    work: "Smaller of 0 or 19,434.99"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].s179_line10"
+    value: "0.00"
+    work: "Smaller of 0 or line 9"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line11"
+    value: "19434.99"
+    work: "19,434.99 - 0"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line14"
+    value: "0.00"
+    work: "No section 179 deduction claimed"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line15"
+    value: "47144.29"
+    work: "47,144.29 - 0"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_full"
+    value: "47144.29"
+    work: "100% x 47,144.29"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_forty"
+    value: "18857.72"
+    work: "40% x 47,144.29"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_fullcase"
+    value: "47144.29"
+    work: "Acquired after Jan 19, 2025, so 100%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_2025"
+    value: "18857.72"
+    work: "Filer elected 40%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line16"
+    value: "18857.72"
+    work: "Special allowance for a 2025 vehicle"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_allowed"
+    value: "18857.72"
+    work: "Smaller of 18,857.72 or 19,434.99"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line17"
+    value: "577.27"
+    work: "19,434.99 - 18,857.72"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line18"
+    value: "28286.57"
+    work: "47,144.29 - 18,857.72"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].qconv"
+    value: "mq4"
+    work: "Mid-quarter convention applies; placed in service in Q4"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].rate_hy"
+    value: "20.00%"
+    work: "5-yr 200DB HY, year 1"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].rate_mq"
+    value: "5.00%"
+    work: "40% x 12.5% (Q4), year 1"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].rate_prior"
+    value: "5.00%"
+    work: "mq4, year 1"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line19_hy"
+    value: "5657.31"
+    work: "28,286.57 x 20%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line19_mq"
+    value: "1414.33"
+    work: "28,286.57 x 5%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line19_prior"
+    value: "1414.33"
+    work: "28,286.57 x 5%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line19"
+    value: "1414.33"
+    work: "Mid-quarter convention applies"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line19_earlier"
+    value: "0.00"
+    work: "Not placed in service before 2025"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line19_2025"
+    value: "1414.33"
+    work: "MQ amount"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line20"
+    value: "577.27"
+    work: "Lesser of 577.27 or 1,414.33"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].b100"
+    value: "49000.00"
+    work: "49,000 - 0"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].r1"
+    value: "5.00%"
+    work: "mq4 year 1"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t1"
+    value: "2450.00"
+    work: "49,000 x 5%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].l1"
+    value: "12200.00"
+    work: "Table 2: 2025, year 1, no special allowance"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t1s"
+    value: "2450.00"
+    work: "0 + 2,450"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].d1"
+    value: "2450.00"
+    work: "Lesser of 12,200 or 2,450"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].r2"
+    value: "38.00%"
+    work: "mq4 year 2: 95% x 40%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t2"
+    value: "18620.00"
+    work: "49,000 x 38%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].r3"
+    value: "22.80%"
+    work: "mq4 year 3"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t3"
+    value: "11172.00"
+    work: "49,000 x 22.8%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].r4"
+    value: "13.68%"
+    work: "mq4 year 4"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t4"
+    value: "6703.20"
+    work: "49,000 x 13.68%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].r5"
+    value: "10.94%"
+    work: "mq4 year 5 (switch to SL)"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t5"
+    value: "5360.60"
+    work: "49,000 x 10.94%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].r6"
+    value: "9.58%"
+    work: "mq4 year 6"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t6"
+    value: "4694.20"
+    work: "49,000 x 9.58%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].too_old"
+    value: "no"
+    work: "Placed in service 2025"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_v"
+    value: "18857.72"
+    work: "Allowed special allowance"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].macrs_pass"
+    value: "577.27"
+    work: "Line 20"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].macrs_heavy"
+    value: "1414.33"
+    work: "Line 19"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].macrs_v"
+    value: "577.27"
+    work: "Subject to the passenger automobile limits"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus"
+    value: "18857.72"
+    work: "Owned, actual expenses"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].macrs"
+    value: "577.27"
+    work: "Owned, actual expenses"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].s179_2025"
+    value: "0.00"
+    work: "None elected"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].mq_q4"
+    value: "47144.29"
+    work: "Q4 2025 business basis less 0 section 179"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].mq_total"
+    value: "47144.29"
+    work: "2025 business basis"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].cost179"
+    value: "47144.29"
+    work: "Business cost of listed property placed in service 2025"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_o"
+    value: "18857.72"
+    work: "Owned, actual expenses"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].macrs_o"
+    value: "577.27"
+    work: "Owned, actual expenses"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].s179_2025_o"
+    value: "0.00"
+    work: "0"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].q4_basis"
+    value: "47144.29"
+    work: "Placed in service in Q4"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].mq_q4_o"
+    value: "47144.29"
+    work: "Owned, actual expenses"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].mq_q4_a2"
+    value: "47144.29"
+    work: "2025 vehicle"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].mq_total_o"
+    value: "47144.29"
+    work: "Owned, actual expenses"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].mq_total_a2"
+    value: "47144.29"
+    work: "2025 vehicle"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].cost179_o"
+    value: "47144.29"
+    work: "Owned, actual expenses"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].cost179_a2"
+    value: "47144.29"
+    work: "2025 vehicle"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bm_c"
-    value: "29991.00"
-    work: "29,991 business miles"
+    value: "12306.00"
+    work: "Business miles 12,306"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].cm_c"
-    value: "3237.00"
-    work: "3,237 commuting miles"
+    value: "0.00"
+    work: "Commuting miles 0"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].om_c"
-    value: "7.00"
-    work: "7 other miles"
+    value: "7964.00"
+    work: "Other miles 7,964"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].nonbusiness_c"
-    value: "3244.00"
-    work: "3,237 + 7"
+    value: "7964.00"
+    work: "0 + 7,964"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].total_c"
-    value: "33235.00"
-    work: "29,991 + 3,244"
+    value: "20270.00"
+    work: "12,306 + 7,964"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].no_miles"
+    value: "no"
+    work: "Total miles are 20,270, not zero"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].over_half"
     value: "yes"
-    work: "29,991 / 33,235 = 90.24%, more than 50%"
+    work: "12,306 / 20,270 = 60.71%"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].smr_bad"
     value: "no"
     work: "Filer answered that the standard mileage rate may be used"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].smr_amount"
-    value: "20993.70"
-    work: "29,991 x 0.70"
+    value: "8614.20"
+    work: "12,306 x 0.70"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line9_standard"
-    value: "21993.70"
-    work: "20,993.70 + 1,000.00"
+    value: "9614.20"
+    work: "8,614.20 + 1,000"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].operating_business"
-    value: "7531.36"
-    work: "8,346 x 29,991 / 33,235"
+    value: "6071.04"
+    work: "10,000 x 12,306 / 20,270"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line9_actual"
-    value: "8531.36"
-    work: "7,531.36 + 1,000.00"
+    value: "7071.04"
+    work: "6,071.04 + 1,000"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line9"
-    value: "8531.36"
-    work: "Actual expenses method chosen"
+    value: "7071.04"
+    work: "Actual expenses method"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].is_actual_owned"
     value: "no"
     work: "Vehicle is leased"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].is_actual_leased"
     value: "yes"
-    work: "Leased vehicle on actual expenses"
+    work: "Leased, actual expenses"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].lease_business"
-    value: "6508.95"
-    work: "7,213 x 29,991 / 33,235"
+    value: "1761.21"
+    work: "2,901 x 12,306 / 20,270"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line20a"
-    value: "6508.95"
-    work: "Leased on actual expenses: business portion of lease payments"
+    value: "1761.21"
+    work: "Leased, actual expenses"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].low_use"
     value: "no"
-    work: "Business use 90.24% is more than 50%"
+    work: "Business use is 60.71%"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].screened"
     value: "no"
-    work: "None of the screening conditions apply"
+    work: "No screen applies"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].year"
-    value: "1"
-    work: "Placed in service 2025, so 2025 is year 1"
+    value: "7"
+    work: "2025 - 2019 + 1"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].is2025"
-    value: "yes"
-    work: "Year placed in service is y2025"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].is2019"
     value: "no"
-    work: "Year placed in service is y2025"
+    work: "y2019"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].is2019"
+    value: "yes"
+    work: "y2019"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bus_cost"
-    value: "49166.83"
-    work: "54,485 x 29,991 / 33,235"
+    value: "6673.90"
+    work: "10,993 x 12,306 / 20,270"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].s179_bad"
     value: "no"
     work: "Section 179 elected is 0"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bonus_mixed"
     value: "no"
-    work: "Choice is the same for all 5-year property"
+    work: "Same choice applies to all 5-year property"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].claims_bonus"
-    value: "yes"
-    work: "Special allowance choice is full"
+    value: "no"
+    work: "Special allowance choice is none"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].lim_first_bonus"
     value: "20200.00"
-    work: "Pub 946 table, 2025, 1st year"
+    work: "Table 2 footnote"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].lim_first_none"
     value: "12200.00"
-    work: "Pub 946 footnote 1 (no special allowance)"
+    work: "Table 2: 2025, year 1"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].lim_2025"
-    value: "20200.00"
-    work: "Special allowance claimed"
+    value: "12200.00"
+    work: "No special allowance claimed"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].lim_prior"
-    value: "20200.00"
-    work: "2025 row, year 1, with special allowance"
+    value: "5760.00"
+    work: "Table 2: 2019, 4 or more years = $5,760"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line7"
-    value: "20200.00"
-    work: "2025 vehicle limit"
+    value: "5760.00"
+    work: "Prior-year vehicle"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line9w"
-    value: "18228.32"
-    work: "20,200 x 29,991 / 33,235"
+    value: "3496.92"
+    work: "5,760 x 12,306 / 20,270"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].s179_2025_ok"
     value: "0.00"
-    work: "Elected section 179 is 0"
+    work: "Not a 2025 vehicle"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line10"
     value: "0.00"
-    work: "No section 179"
+    work: "Not the year placed in service"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line10_2025"
     value: "0.00"
-    work: "smaller of 0 or line 9"
+    work: "0"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].s179_line10"
     value: "0.00"
-    work: "smaller of 0 or 18,228.32"
+    work: "0"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line11"
-    value: "18228.32"
-    work: "18,228.32 - 0"
+    value: "3496.92"
+    work: "3,496.92 - 0"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line14"
     value: "0.00"
-    work: "Section 179 claimed in year placed in service is 0"
+    work: "No section 179 deduction claimed"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line15"
-    value: "49166.83"
-    work: "49,166.83 - 0"
+    value: "6673.90"
+    work: "6,673.90 - 0"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bonus_full"
-    value: "49166.83"
-    work: "49,166.83 x 100%"
+    value: "6673.90"
+    work: "100% x 6,673.90"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bonus_forty"
-    value: "19666.73"
-    work: "49,166.83 x 40%"
+    value: "2669.56"
+    work: "40% x 6,673.90"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bonus_fullcase"
-    value: "49166.83"
-    work: "Acquired after Jan 19, 2025, so 100%"
+    value: "6673.90"
+    work: "Marked acquired after Jan 19, 2025"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bonus_2025"
-    value: "49166.83"
-    work: "Allowance claimed, full"
+    value: "0.00"
+    work: "None claimed; not a 2025 vehicle"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line16"
-    value: "49166.83"
-    work: "2025 vehicle with special allowance"
+    value: "0.00"
+    work: "Not the year placed in service"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bonus_allowed"
-    value: "18228.32"
-    work: "smaller of 49,166.83 or line 11 of 18,228.32"
+    value: "0.00"
+    work: "0"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line17"
-    value: "0.00"
-    work: "18,228.32 - 49,166.83 is less than zero, so 0"
+    value: "3496.92"
+    work: "3,496.92 - 0"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line18"
-    value: "0.00"
-    work: "49,166.83 - 49,166.83"
+    value: "6673.90"
+    work: "6,673.90 - 0"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].qconv"
-    value: "mq2"
-    work: "Placed in service in q2"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].rate_hy"
-    value: "20.00%"
-    work: "5-year 200DB HY, year 1"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].rate_mq"
-    value: "15.00%"
-    work: "5-year 200DB MQ, 2nd quarter, year 1"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].rate_prior"
-    value: "20.00%"
-    work: "HY convention, year 1"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line19_hy"
-    value: "0.00"
-    work: "0 x 20%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line19_mq"
-    value: "0.00"
-    work: "0 x 15%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line19_prior"
-    value: "0.00"
-    work: "0 x 20%"
+    value: "mq4"
+    work: "Convention used is mq4"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line19"
     value: "0.00"
-    work: "Line 18 is 0"
+    work: "Year 7 is after the 5-year recovery period"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line19_earlier"
     value: "0.00"
-    work: "Not placed in service before 2025"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line19_2025"
-    value: "0.00"
-    work: "HY convention: 0 x 20%"
+    work: "After the recovery period"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line20"
     value: "0.00"
-    work: "lesser of 0 or 0"
+    work: "Lesser of 3,496.92 or 0"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].b100"
-    value: "54485.00"
-    work: "54,485 - 0"
+    value: "10993.00"
+    work: "10,993 - 0"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].r1"
-    value: "20.00%"
-    work: "5-year HY, year 1"
+    value: "5.00%"
+    work: "mq4 year 1"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].t1"
-    value: "10897.00"
-    work: "54,485 x 20%"
+    value: "549.65"
+    work: "10,993 x 5%"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].l1"
-    value: "12200.00"
-    work: "2025 limit, no special allowance"
+    value: "10100.00"
+    work: "2019, year 1, no special allowance"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].t1s"
-    value: "10897.00"
-    work: "0 + 10,897.00"
+    value: "549.65"
+    work: "0 + 549.65"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].d1"
-    value: "10897.00"
-    work: "lesser of 12,200 or 10,897"
+    value: "549.65"
+    work: "Lesser of 10,100 or 549.65"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].r2"
-    value: "32.00%"
-    work: "5-year HY, year 2"
+    value: "38.00%"
+    work: "mq4 year 2"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].t2"
-    value: "17435.20"
-    work: "54,485 x 32%"
+    value: "4177.34"
+    work: "10,993 x 38%"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].l2"
+    value: "16100.00"
+    work: "2019, year 2"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].d2"
+    value: "4177.34"
+    work: "Lesser of 16,100 or 4,177.34"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].r3"
-    value: "19.20%"
-    work: "5-year HY, year 3"
+    value: "22.80%"
+    work: "mq4 year 3"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].t3"
-    value: "10461.12"
-    work: "54,485 x 19.20%"
+    value: "2506.40"
+    work: "10,993 x 22.8%"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].l3"
+    value: "9700.00"
+    work: "2019, year 3"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].d3"
+    value: "2506.40"
+    work: "Lesser of 9,700 or 2,506.40"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].r4"
-    value: "11.52%"
-    work: "5-year HY, year 4"
+    value: "13.68%"
+    work: "mq4 year 4"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].t4"
-    value: "6276.67"
-    work: "54,485 x 11.52%"
+    value: "1503.84"
+    work: "10,993 x 13.68%"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].l4"
+    value: "5760.00"
+    work: "2019, 4th year"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].d4"
+    value: "1503.84"
+    work: "Lesser of 5,760 or 1,503.84"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].r5"
-    value: "11.52%"
-    work: "5-year HY, year 5"
+    value: "10.94%"
+    work: "mq4 year 5"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].t5"
-    value: "6276.67"
-    work: "54,485 x 11.52%"
+    value: "1202.63"
+    work: "10,993 x 10.94%"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].l5"
+    value: "5760.00"
+    work: "2019, later year"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].d5"
+    value: "1202.63"
+    work: "Lesser of 5,760 or 1,202.63"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].r6"
-    value: "5.76%"
-    work: "5-year HY, year 6"
+    value: "9.58%"
+    work: "mq4 year 6"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].t6"
-    value: "3138.34"
-    work: "54,485 x 5.76%"
+    value: "1053.13"
+    work: "10,993 x 9.58%"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].l6"
+    value: "5760.00"
+    work: "2019, later year"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].d6"
+    value: "1053.13"
+    work: "Lesser of 5,760 or 1,053.13"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].d_total"
+    value: "10992.99"
+    work: "Sum of d1 through d6"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].unrecovered"
+    value: "0.01"
+    work: "10,993 - 10,992.99"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].post_amount"
+    value: "0.01"
+    work: "Lesser of 5,760 or 0.01"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].post"
+    value: "0.01"
+    work: "0.01 x 60.71%, rounded"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].too_old"
     value: "no"
-    work: "Placed in service 2025"
+    work: "2019 is not before 2019"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bonus_v"
-    value: "18228.32"
-    work: "Special allowance allowed, 2025 vehicle"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].macrs_pass"
     value: "0.00"
-    work: "Line 20"
+    work: "No special allowance"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].macrs_pass"
+    value: "0.01"
+    work: "Unrecovered-basis amount after the recovery period"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].macrs_heavy"
     value: "0.00"
-    work: "Basis is fully absorbed by the 100% allowance"
+    work: "No deduction after the recovery period for non-limited property"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].macrs_v"
     value: "0.00"
-    work: "Passenger automobile: macrs_pass"
+    work: "Not subject to the passenger automobile limits"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bonus"
     value: "0.00"
-    work: "Leased vehicle: no depreciation"
+    work: "Leased, so no depreciation"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].macrs"
     value: "0.00"
-    work: "Leased vehicle: no depreciation"
+    work: "Leased, so no depreciation"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].s179_2025"
     value: "0.00"
-    work: "Leased vehicle; no election"
+    work: "Leased"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].mq_q4"
     value: "0.00"
-    work: "Leased vehicle"
+    work: "Leased and not placed in service in 2025"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].mq_total"
     value: "0.00"
-    work: "Leased vehicle"
+    work: "Leased and not placed in service in 2025"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].cost179"
     value: "0.00"
-    work: "Leased vehicle"
+    work: "Leased and not placed in service in 2025"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bonus_o"
     value: "0.00"
     work: "Not owned"
@@ -8014,118 +7972,115 @@ lines:
     work: "Not owned"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].q4_basis"
     value: "0.00"
-    work: "Placed in service in q2, not October to December"
+    work: "Placed in service in Q1"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].mq_q4_o"
     value: "0.00"
     work: "Not owned"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].mq_q4_a2"
     value: "0.00"
-    work: "q4_basis is 0"
+    work: "Not a 2025 vehicle"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].mq_total_o"
     value: "0.00"
     work: "Not owned"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].mq_total_a2"
-    value: "49166.83"
-    work: "Business cost less section 179 of 0"
+    value: "0.00"
+    work: "Not a 2025 vehicle"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].cost179_o"
     value: "0.00"
     work: "Not owned"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].cost179_a2"
-    value: "49166.83"
-    work: "Business cost of a 2025 vehicle"
+    value: "0.00"
+    work: "Not a 2025 vehicle"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].bm_c"
-    value: "29990.00"
-    work: "29,990 business miles"
+    value: "29999.00"
+    work: "Business miles 29,999"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].cm_c"
     value: "0.00"
-    work: "0 commuting miles"
+    work: "Commuting miles 0"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].om_c"
-    value: "3989.00"
-    work: "3,989 other miles"
+    value: "1709.00"
+    work: "Other miles 1,709"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].nonbusiness_c"
-    value: "3989.00"
-    work: "0 + 3,989"
+    value: "1709.00"
+    work: "0 + 1,709"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].total_c"
-    value: "33979.00"
-    work: "29,990 + 3,989"
+    value: "31708.00"
+    work: "29,999 + 1,709"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].no_miles"
+    value: "no"
+    work: "Total miles are 31,708, not zero"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].over_half"
     value: "yes"
-    work: "29,990 / 33,979 = 88.26%"
+    work: "29,999 / 31,708 = 94.61%"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].smr_bad"
     value: "no"
     work: "Filer answered that the standard mileage rate may be used"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].smr_amount"
-    value: "20993.00"
-    work: "29,990 x 0.70"
+    value: "20999.30"
+    work: "29,999 x 0.70"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line9_standard"
-    value: "21491.00"
-    work: "20,993.00 + 498.00"
+    value: "20999.30"
+    work: "20,999.30 + 0"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].operating_business"
-    value: "0.00"
-    work: "0 x 88.26%"
+    value: "673.62"
+    work: "712 x 29,999 / 31,708"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line9_actual"
-    value: "498.00"
-    work: "0 + 498.00"
+    value: "673.62"
+    work: "673.62 + 0"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line9"
-    value: "498.00"
-    work: "Actual expenses method chosen"
+    value: "673.62"
+    work: "Actual expenses method"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].is_actual_owned"
     value: "yes"
-    work: "Owned vehicle on actual expenses"
+    work: "Owned, actual expenses"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].is_actual_leased"
     value: "no"
     work: "Vehicle is owned"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].lease_business"
-    value: "2837.57"
-    work: "3,215 x 29,990 / 33,979"
+    value: "6957.63"
+    work: "7,354 x 29,999 / 31,708"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line20a"
     value: "0.00"
     work: "Not leased"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].low_use"
     value: "no"
-    work: "Business use 88.26% is more than 50%"
+    work: "Business use is 94.61%"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].screened"
     value: "no"
-    work: "None of the screening conditions apply"
+    work: "No screen applies"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].year"
-    value: "7"
-    work: "2019 is year 1, so 2025 is year 7"
+    value: "5"
+    work: "2025 - 2021 + 1"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].is2025"
     value: "no"
-    work: "Placed in service 2019"
+    work: "y2021"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].is2019"
-    value: "yes"
-    work: "Year placed in service is y2019"
+    value: "no"
+    work: "y2021"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].bus_cost"
-    value: "4413.02"
-    work: "5,000 x 29,990 / 33,979"
+    value: "70806.27"
+    work: "74,840 x 29,999 / 31,708"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].s179_bad"
     value: "no"
     work: "Section 179 elected is 0"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].bonus_mixed"
     value: "no"
-    work: "Choice is the same within the class"
+    work: "Same choice applies to all 5-year property"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].claims_bonus"
     value: "no"
     work: "Special allowance choice is none"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].lim_first_bonus"
     value: "20200.00"
-    work: "2025 table, 1st year"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].lim_first_none"
-    value: "12200.00"
-    work: "Footnote 1"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].lim_2025"
-    value: "12200.00"
-    work: "No special allowance claimed"
+    work: "Table 2 footnote"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].lim_prior"
-    value: "5760.00"
-    work: "2019 row, 4th and later years"
+    value: "5860.00"
+    work: "Table 2: 2021, 4 or more years = $5,860"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line7"
-    value: "5760.00"
-    work: "Limit for a prior-year vehicle"
+    value: "5860.00"
+    work: "Prior-year vehicle"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line9w"
-    value: "5083.80"
-    work: "5,760 x 29,990 / 33,979"
+    value: "5544.16"
+    work: "5,860 x 29,999 / 31,708"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].s179_2025_ok"
     value: "0.00"
     work: "Not a 2025 vehicle"
@@ -8134,205 +8089,202 @@ lines:
     work: "Not the year placed in service"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line10_2025"
     value: "0.00"
-    work: "Section 179 is 0"
+    work: "0"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].s179_line10"
     value: "0.00"
-    work: "Section 179 is 0"
+    work: "0"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line11"
-    value: "5083.80"
-    work: "5,083.80 - 0"
+    value: "5544.16"
+    work: "5,544.16 - 0"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line14"
     value: "0.00"
-    work: "Section 179 claimed in year placed in service is 0"
+    work: "No section 179 deduction claimed"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line15"
-    value: "4413.02"
-    work: "4,413.02 - 0"
+    value: "70806.27"
+    work: "70,806.27 - 0"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].bonus_full"
-    value: "4413.02"
-    work: "4,413.02 x 100%"
+    value: "70806.27"
+    work: "100% x 70,806.27"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].bonus_forty"
-    value: "1765.21"
-    work: "4,413.02 x 40%"
+    value: "28322.51"
+    work: "40% x 70,806.27"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].bonus_fullcase"
-    value: "4413.02"
-    work: "Acquired after Jan 19, 2025, so 100%"
+    value: "28322.51"
+    work: "Not acquired after Jan 19, 2025, so 40%"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].bonus_2025"
     value: "0.00"
-    work: "No allowance claimed"
+    work: "Not a 2025 vehicle; none claimed"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line16"
     value: "0.00"
     work: "Not the year placed in service"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].bonus_allowed"
     value: "0.00"
-    work: "smaller of 0 or line 11"
+    work: "0"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line17"
-    value: "5083.80"
-    work: "5,083.80 - 0"
+    value: "5544.16"
+    work: "5,544.16 - 0"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line18"
-    value: "4413.02"
-    work: "4,413.02 - 0"
+    value: "70806.27"
+    work: "70,806.27 - 0"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].qconv"
-    value: "mq3"
-    work: "Quarter given is q3"
+    value: "mq4"
+    work: "Convention used is mq4"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].rate_hy"
+    value: "11.52%"
+    work: "5-yr HY, year 5"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].rate_mq"
+    value: "10.94%"
+    work: "5-yr mq4, year 5"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].rate_prior"
+    value: "10.94%"
+    work: "mq4, year 5"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line19_hy"
+    value: "8156.88"
+    work: "70,806.27 x 11.52%"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line19_mq"
+    value: "7746.21"
+    work: "70,806.27 x 10.94%"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line19_prior"
+    value: "7746.21"
+    work: "70,806.27 x 10.94%"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line19"
-    value: "0.00"
-    work: "Year 7 is past the 5-year table"
+    value: "7746.21"
+    work: "Prior-year rate"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line19_earlier"
-    value: "0.00"
-    work: "After the recovery period"
+    value: "7746.21"
+    work: "Within the recovery period"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line19_2025"
+    value: "7746.21"
+    work: "MQ amount"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line20"
-    value: "0.00"
-    work: "lesser of 5,083.80 or 0"
+    value: "5544.16"
+    work: "Lesser of 5,544.16 or 7,746.21"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].b100"
-    value: "5000.00"
-    work: "5,000 - 0"
+    value: "74840.00"
+    work: "74,840 - 0"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].r1"
-    value: "35.00%"
-    work: "5-year MQ, 1st quarter, year 1"
+    value: "5.00%"
+    work: "mq4 year 1"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].t1"
-    value: "1750.00"
-    work: "5,000 x 35%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].l1"
-    value: "10100.00"
-    work: "2019 limit, no special allowance (footnote 6)"
+    value: "3742.00"
+    work: "74,840 x 5%"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].t1s"
-    value: "1750.00"
-    work: "0 + 1,750"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].d1"
-    value: "1750.00"
-    work: "lesser of 10,100 or 1,750"
+    value: "3742.00"
+    work: "0 + 3,742"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].r2"
-    value: "26.00%"
-    work: "5-year MQ Q1, year 2"
+    value: "38.00%"
+    work: "mq4 year 2"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].t2"
-    value: "1300.00"
-    work: "5,000 x 26%"
+    value: "28439.20"
+    work: "74,840 x 38%"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].l2"
-    value: "16100.00"
-    work: "2019 row, 2nd year"
+    value: "16400.00"
+    work: "2021, year 2"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].d2"
-    value: "1300.00"
-    work: "lesser of 16,100 or 1,300"
+    value: "16400.00"
+    work: "Lesser of 16,400 or 28,439.20"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].r3"
-    value: "15.60%"
-    work: "5-year MQ Q1, year 3"
+    value: "22.80%"
+    work: "mq4 year 3"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].t3"
-    value: "780.00"
-    work: "5,000 x 15.60%"
+    value: "17063.52"
+    work: "74,840 x 22.8%"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].l3"
-    value: "9700.00"
-    work: "2019 row, 3rd year"
+    value: "9800.00"
+    work: "2021, year 3"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].d3"
-    value: "780.00"
-    work: "lesser of 9,700 or 780"
+    value: "9800.00"
+    work: "Lesser of 9,800 or 17,063.52"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].r4"
-    value: "11.01%"
-    work: "5-year MQ Q1, year 4"
+    value: "13.68%"
+    work: "mq4 year 4"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].t4"
-    value: "550.50"
-    work: "5,000 x 11.01%"
+    value: "10238.11"
+    work: "74,840 x 13.68%"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].l4"
-    value: "5760.00"
-    work: "2019 row, 4th and later years"
+    value: "5860.00"
+    work: "2021, 4th year"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].d4"
-    value: "550.50"
-    work: "lesser of 5,760 or 550.50"
+    value: "5860.00"
+    work: "Lesser of 5,860 or 10,238.11"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].r5"
-    value: "11.01%"
-    work: "5-year MQ Q1, year 5"
+    value: "10.94%"
+    work: "mq4 year 5"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].t5"
-    value: "550.50"
-    work: "5,000 x 11.01%"
+    value: "8187.50"
+    work: "74,840 x 10.94%"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].l5"
-    value: "5760.00"
-    work: "2019 row, 4th and later years"
+    value: "5860.00"
+    work: "2021, later year"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].d5"
-    value: "550.50"
-    work: "lesser of 5,760 or 550.50"
+    value: "5860.00"
+    work: "Lesser of 5,860 or 8,187.50"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].r6"
-    value: "1.38%"
-    work: "5-year MQ Q1, year 6"
+    value: "9.58%"
+    work: "mq4 year 6"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].t6"
-    value: "69.00"
-    work: "5,000 x 1.38%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].l6"
-    value: "5760.00"
-    work: "2019 row, 4th and later years"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].d6"
-    value: "69.00"
-    work: "lesser of 5,760 or 69"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].d_total"
-    value: "5000.00"
-    work: "1,750 + 1,300 + 780 + 550.50 + 550.50 + 69"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].unrecovered"
-    value: "0.00"
-    work: "5,000 - 5,000"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].post_amount"
-    value: "0.00"
-    work: "lesser of 5,760 or 0"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].post"
-    value: "0.00"
-    work: "0 x 88.26%"
+    value: "7169.67"
+    work: "74,840 x 9.58%"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].too_old"
     value: "no"
-    work: "Placed in service 2019"
+    work: "Placed in service 2021"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].bonus_v"
     value: "0.00"
-    work: "Not a 2025 vehicle"
+    work: "No special allowance"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].macrs_pass"
-    value: "0.00"
-    work: "Post-recovery amount is 0"
+    value: "5544.16"
+    work: "Line 20"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].macrs_heavy"
-    value: "0.00"
-    work: "No depreciation after the recovery period for non-passenger listed property"
+    value: "7746.21"
+    work: "Line 19"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].macrs_v"
-    value: "0.00"
-    work: "Not subject to the limits: macrs_heavy"
+    value: "7746.21"
+    work: "Not subject to the passenger automobile limits"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].bonus"
     value: "0.00"
-    work: "bonus_v"
+    work: "No special allowance"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].macrs"
-    value: "0.00"
-    work: "macrs_v"
+    value: "7746.21"
+    work: "Owned, actual expenses"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].s179_2025"
     value: "0.00"
-    work: "Not a 2025 vehicle"
+    work: "None elected"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].mq_q4"
     value: "0.00"
-    work: "Not a 2025 vehicle"
+    work: "Not placed in service in 2025"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].mq_total"
     value: "0.00"
-    work: "Not a 2025 vehicle"
+    work: "Not placed in service in 2025"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].cost179"
     value: "0.00"
-    work: "Not a 2025 vehicle"
+    work: "Not placed in service in 2025"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].bonus_o"
     value: "0.00"
-    work: "Owned actual: bonus_v of 0"
+    work: "0"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].macrs_o"
-    value: "0.00"
-    work: "Owned actual: macrs_v of 0"
+    value: "7746.21"
+    work: "Owned, actual expenses"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].s179_2025_o"
     value: "0.00"
-    work: "No section 179"
+    work: "0"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].q4_basis"
-    value: "0.00"
-    work: "q3, not October to December"
+    value: "70806.27"
+    work: "Quarter marked q4; business basis less 0 section 179"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].mq_q4_o"
-    value: "0.00"
-    work: "Not a 2025 vehicle"
+    value: "70806.27"
+    work: "Owned, actual expenses"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].mq_q4_a2"
     value: "0.00"
     work: "Not a 2025 vehicle"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].mq_total_o"
-    value: "0.00"
-    work: "Not a 2025 vehicle"
+    value: "70806.27"
+    work: "Owned, actual expenses"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].mq_total_a2"
     value: "0.00"
     work: "Not a 2025 vehicle"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].cost179_o"
-    value: "0.00"
-    work: "Not a 2025 vehicle"
+    value: "70806.27"
+    work: "Owned, actual expenses"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].cost179_a2"
     value: "0.00"
     work: "Not a 2025 vehicle"
@@ -8345,254 +8297,272 @@ lines:
 ```yaml
 lines:
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bm_c"
-    value: "24289.00"
-    work: "Business miles 24,289"
+    value: "25942.00"
+    work: "Business miles 25,942"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].cm_c"
-    value: "0.00"
-    work: "Commuting miles 0"
+    value: "861.00"
+    work: "Commuting miles 861"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].om_c"
-    value: "3962.00"
-    work: "Other miles 3,962"
+    value: "1790.00"
+    work: "Other miles 1,790"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].nonbusiness_c"
-    value: "3962.00"
-    work: "0 + 3,962"
+    value: "2651.00"
+    work: "861 + 1,790"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].total_c"
-    value: "28251.00"
-    work: "24,289 + 3,962"
+    value: "28593.00"
+    work: "25,942 + 2,651"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].no_miles"
+    value: "no"
+    work: "Total miles are more than 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].over_half"
     value: "yes"
-    work: "24,289/28,251 = 85.98% > 50%"
+    work: "25,942/28,593 = 90.73% > 50%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].smr_bad"
     value: "no"
-    work: "Filer answered that the standard mileage rate may be used"
+    work: "Filer says the standard mileage rate may be used"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].smr_amount"
-    value: "17002.30"
-    work: "24,289 x 0.70"
+    value: "18159.40"
+    work: "25,942 x 0.70"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line9_standard"
-    value: "17002.30"
-    work: "17,002.30 + 0 parking/tolls"
+    value: "18159.40"
+    work: "18,159.40 + 0 parking/tolls"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].operating_business"
-    value: "4585.09"
-    work: "5,333 x 24,289/28,251"
+    value: "0.00"
+    work: "0 x 90.73%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line9_actual"
-    value: "4585.09"
-    work: "4,585.09 + 0"
+    value: "0.00"
+    work: "0 + 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line9"
-    value: "4585.09"
-    work: "Actual expenses chosen"
+    value: "0.00"
+    work: "Actual expenses method"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].is_actual_owned"
     value: "yes"
-    work: "Owned and actual"
+    work: "Owned; actual expenses"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].is_actual_leased"
     value: "no"
-    work: "Not leased"
+    work: "Owned, not leased"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].lease_business"
     value: "0.00"
-    work: "Lease payments 0"
+    work: "No lease payments"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line20a"
     value: "0.00"
     work: "Not leased"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].low_use"
     value: "no"
-    work: "85.98% > 50%"
+    work: "Business use is 90.73%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].screened"
     value: "no"
-    work: "None of the screening conditions apply; use > 50%"
+    work: "No screening condition applies"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].year"
-    value: "4"
-    work: "Placed in service 2022; 2025 is year 4"
+    value: "7"
+    work: "2019 is year 1, so 2025 is year 7"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].is2025"
     value: "no"
-    work: "Placed in service 2022"
+    work: "Placed in service in 2019"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].is2019"
-    value: "no"
-    work: "Placed in service 2022"
+    value: "yes"
+    work: "Year placed in service is y2019"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bus_cost"
-    value: "23668.26"
-    work: "27,529 x 24,289/28,251"
+    value: "14313.33"
+    work: "15,776 x 25,942/28,593"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].s179_bad"
     value: "no"
-    work: "Section 179 election 0"
+    work: "Section 179 elected is 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_mixed"
     value: "no"
-    work: "Choice is the same for all 5-year property"
+    work: "Same choice for all 5-year property"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].claims_bonus"
     value: "no"
-    work: "Special allowance = none"
+    work: "Special allowance is none"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].lim_first_bonus"
     value: "20200.00"
-    work: "2025 first-year limit with special allowance"
+    work: "Table 2 footnote: 2025 limit with special allowance"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].lim_first_none"
+    value: "12200.00"
+    work: "Table 2: 2025 year 1 limit"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].lim_2025"
+    value: "12200.00"
+    work: "No special allowance claimed"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].lim_prior"
-    value: "6460.00"
-    work: "2022 vehicle, 4th & later year"
+    value: "5760.00"
+    work: "2019 vehicle, 4th and later year limit"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line7"
-    value: "6460.00"
-    work: "Table limit for year 4"
+    value: "5760.00"
+    work: "Limit for year 7 of a 2019 vehicle"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line9w"
-    value: "5554.03"
-    work: "6,460 x 24,289/28,251"
+    value: "5225.96"
+    work: "5,760 x 25,942/28,593"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].s179_2025_ok"
     value: "0.00"
-    work: "Not a 2025 vehicle; election 0"
+    work: "Not a 2025 vehicle"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line10"
     value: "0.00"
     work: "Not the year placed in service"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line10_2025"
     value: "0.00"
-    work: "Election 0"
+    work: "Section 179 elected is 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].s179_line10"
     value: "0.00"
-    work: "min(0, line 9)"
+    work: "Smaller of 0 or line 9"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line11"
-    value: "5554.03"
-    work: "5,554.03 - 0"
+    value: "5225.96"
+    work: "5,225.96 - 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line14"
     value: "0.00"
-    work: "Section 179 in the year placed in service = 0"
+    work: "No section 179 deduction in 2019"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line15"
-    value: "23668.26"
-    work: "23,668.26 - 0"
+    value: "14313.33"
+    work: "14,313.33 - 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_full"
-    value: "23668.26"
-    work: "Line 15 x 100%"
+    value: "14313.33"
+    work: "14,313.33 x 100%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_forty"
-    value: "9467.30"
-    work: "Line 15 x 40%"
+    value: "5725.33"
+    work: "14,313.33 x 40%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_fullcase"
-    value: "23668.26"
-    work: "Acquired after 1/19/2025, so 100%"
+    value: "14313.33"
+    work: "Acquired after Jan 19, 2025, so 100%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_2025"
     value: "0.00"
-    work: "Not claimed"
+    work: "Special allowance not claimed"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line16"
     value: "0.00"
     work: "Not the year placed in service"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_allowed"
     value: "0.00"
-    work: "min(0, line 11)"
+    work: "Smaller of 0 or line 11"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line17"
-    value: "5554.03"
-    work: "5,554.03 - 0"
+    value: "5225.96"
+    work: "5,225.96 - 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line18"
-    value: "23668.26"
-    work: "23,668.26 - 0"
+    value: "14313.33"
+    work: "14,313.33 - 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].qconv"
-    value: "mq4"
-    work: "Quarter q4"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].rate_hy"
-    value: "20.00%"
-    work: "5-year 200DB half-year, year 1"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].rate_mq"
-    value: "5.00%"
-    work: "5-year mid-quarter Q4, year 1"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].rate_prior"
-    value: "11.52%"
-    work: "Half-year convention, year 4"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line19_hy"
-    value: "4733.65"
-    work: "23,668.26 x 20%"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line19_mq"
-    value: "1183.41"
-    work: "23,668.26 x 5%"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line19_prior"
-    value: "2726.58"
-    work: "23,668.26 x 11.52%"
+    value: "mq3"
+    work: "Placed in service in quarter 3"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line19"
-    value: "2726.58"
-    work: "Prior-year vehicle rate applies"
+    value: "0.00"
+    work: "Year 7 is after the 5-year recovery period"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line19_earlier"
-    value: "2726.58"
-    work: "Within the recovery period"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line19_2025"
-    value: "1183.41"
-    work: "Mid-quarter test is yes, so the MQ amount is used"
+    value: "0.00"
+    work: "After the recovery period"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line20"
-    value: "2726.58"
-    work: "min(5,554.03, 2,726.58)"
+    value: "0.00"
+    work: "Lesser of 5,225.96 or 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].b100"
-    value: "27529.00"
-    work: "27,529 - 0"
+    value: "15776.00"
+    work: "15,776 - 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].r1"
-    value: "20.00%"
-    work: "HY year 1"
+    value: "35.00%"
+    work: "5-year 200DB, mid-quarter Q1, year 1"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t1"
-    value: "5505.80"
-    work: "27,529 x 20%"
+    value: "5521.60"
+    work: "15,776 x 35%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].l1"
+    value: "10100.00"
+    work: "2019 year 1 limit without special allowance"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t1s"
-    value: "5505.80"
-    work: "0 + 5,505.80"
+    value: "5521.60"
+    work: "0 + 5,521.60"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].d1"
+    value: "5521.60"
+    work: "Lesser of 10,100 or 5,521.60"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].r2"
-    value: "32.00%"
-    work: "HY year 2"
+    value: "26.00%"
+    work: "Mid-quarter Q1, year 2"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t2"
-    value: "8809.28"
-    work: "27,529 x 32%"
+    value: "4101.76"
+    work: "15,776 x 26%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].l2"
-    value: "18000.00"
-    work: "2022 vehicle, 2nd year"
+    value: "16100.00"
+    work: "2019 vehicle, year 2"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].d2"
-    value: "8809.28"
-    work: "min(18,000, 8,809.28)"
+    value: "4101.76"
+    work: "Lesser of the limit or the amount"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].r3"
-    value: "19.20%"
-    work: "HY year 3"
+    value: "15.60%"
+    work: "Mid-quarter Q1, year 3"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t3"
-    value: "5285.57"
-    work: "27,529 x 19.2%"
+    value: "2461.06"
+    work: "15,776 x 15.60%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].l3"
-    value: "10800.00"
-    work: "2022 vehicle, 3rd year"
+    value: "9700.00"
+    work: "2019 vehicle, year 3"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].d3"
-    value: "5285.57"
-    work: "min(10,800, 5,285.57)"
+    value: "2461.06"
+    work: "Lesser of the limit or the amount"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].r4"
-    value: "11.52%"
-    work: "HY year 4"
+    value: "11.01%"
+    work: "Mid-quarter Q1, year 4"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t4"
-    value: "3171.34"
-    work: "27,529 x 11.52%"
+    value: "1736.94"
+    work: "15,776 x 11.01%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].l4"
-    value: "6460.00"
-    work: "2022 vehicle, 4th year"
+    value: "5760.00"
+    work: "2019 vehicle, 4th and later years"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].d4"
-    value: "3171.34"
-    work: "min(6,460, 3,171.34)"
+    value: "1736.94"
+    work: "Lesser of the limit or the amount"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].r5"
-    value: "11.52%"
-    work: "HY year 5"
+    value: "11.01%"
+    work: "Mid-quarter Q1, year 5"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t5"
-    value: "3171.34"
-    work: "27,529 x 11.52%"
+    value: "1736.94"
+    work: "15,776 x 11.01%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].l5"
+    value: "5760.00"
+    work: "2019 vehicle, 4th and later years"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].d5"
+    value: "1736.94"
+    work: "Lesser of the limit or the amount"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].r6"
-    value: "5.76%"
-    work: "HY year 6"
+    value: "1.38%"
+    work: "Mid-quarter Q1, year 6"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t6"
-    value: "1585.67"
-    work: "27,529 x 5.76%"
+    value: "217.71"
+    work: "15,776 x 1.38%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].l6"
+    value: "5760.00"
+    work: "2019 vehicle, 4th and later years"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].d6"
+    value: "217.71"
+    work: "Lesser of the limit or the amount"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].d_total"
+    value: "15776.01"
+    work: "Sum of d1 through d6"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].unrecovered"
+    value: "0.00"
+    work: "15,776 - 15,776.01, which is less than zero, so 0"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].post_amount"
+    value: "0.00"
+    work: "Lesser of 5,760 or 0"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].post"
+    value: "0.00"
+    work: "0 x 90.73%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].too_old"
     value: "no"
-    work: "Placed in service 2022"
+    work: "Placed in service in 2019"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_v"
     value: "0.00"
-    work: "No special allowance"
+    work: "Not a 2025 vehicle"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].macrs_pass"
-    value: "2726.58"
-    work: "Line 20"
+    value: "0.00"
+    work: "Post-recovery amount is 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].macrs_heavy"
-    value: "2726.58"
-    work: "Line 19 without the limit"
+    value: "0.00"
+    work: "Recovery period has ended"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].macrs_v"
-    value: "2726.58"
-    work: "Subject to the passenger auto limits"
+    value: "0.00"
+    work: "Passenger automobile"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus"
     value: "0.00"
-    work: "bonus_o"
+    work: "bonus_v"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].macrs"
-    value: "2726.58"
-    work: "Owned, actual expenses"
+    value: "0.00"
+    work: "macrs_v"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].s179_2025"
     value: "0.00"
-    work: "None"
+    work: "No section 179 election"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].mq_q4"
     value: "0.00"
     work: "Not a 2025 vehicle"
@@ -8604,900 +8574,318 @@ lines:
     work: "Not a 2025 vehicle"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_o"
     value: "0.00"
-    work: "No special allowance"
+    work: "bonus"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].macrs_o"
-    value: "2726.58"
-    work: "macrs_v; owned, actual"
+    value: "0.00"
+    work: "macrs"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].s179_2025_o"
     value: "0.00"
-    work: "None"
+    work: "s179_2025"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].q4_basis"
-    value: "23668.26"
-    work: "Q4; business cost less 0 section 179"
+    value: "0.00"
+    work: "Placed in service in Q3, not Q4"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].mq_q4_o"
     value: "0.00"
     work: "Not a 2025 vehicle"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].mq_q4_a2"
     value: "0.00"
-    work: "Not a 2025 vehicle"
+    work: "q4_basis is 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].mq_total_o"
     value: "0.00"
     work: "Not a 2025 vehicle"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].mq_total_a2"
-    value: "0.00"
-    work: "Not a 2025 vehicle"
+    value: "14313.33"
+    work: "Business cost 14,313.33 - section 179 of 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].cost179_o"
     value: "0.00"
     work: "Not a 2025 vehicle"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].cost179_a2"
-    value: "0.00"
-    work: "Not a 2025 vehicle"
+    value: "14313.33"
+    work: "Business cost"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bm_c"
-    value: "9083.00"
-    work: "Business miles 9,083"
+    value: "12462.00"
+    work: "Business miles 12,462"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].cm_c"
     value: "0.00"
     work: "Commuting miles 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].om_c"
-    value: "3840.00"
-    work: "Other miles 3,840"
+    value: "937.00"
+    work: "Other miles 937"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].nonbusiness_c"
-    value: "3840.00"
-    work: "0 + 3,840"
+    value: "937.00"
+    work: "0 + 937"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].total_c"
-    value: "12923.00"
-    work: "9,083 + 3,840"
+    value: "13399.00"
+    work: "12,462 + 937"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].no_miles"
+    value: "no"
+    work: "Total miles are more than 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].over_half"
     value: "yes"
-    work: "9,083/12,923 = 70.29%"
+    work: "12,462/13,399 = 93.01% > 50%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].smr_bad"
     value: "no"
-    work: "Filer answered that the standard mileage rate may be used"
+    work: "Filer says the standard mileage rate may be used"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].smr_amount"
-    value: "6358.10"
-    work: "9,083 x 0.70"
+    value: "8723.40"
+    work: "12,462 x 0.70"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line9_standard"
-    value: "6358.10"
-    work: "6,358.10 + 0"
+    value: "8723.40"
+    work: "8,723.40 + 0 parking/tolls"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].operating_business"
-    value: "1797.90"
-    work: "2,558 x 9,083/12,923"
+    value: "1506.71"
+    work: "1,620 x 12,462/13,399"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line9_actual"
-    value: "1797.90"
-    work: "1,797.90 + 0"
+    value: "1506.71"
+    work: "1,506.71 + 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line9"
-    value: "6358.10"
-    work: "Standard mileage rate chosen"
+    value: "1506.71"
+    work: "Actual expenses method"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].is_actual_owned"
-    value: "no"
-    work: "Standard mileage rate"
+    value: "yes"
+    work: "Owned; actual expenses"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].is_actual_leased"
     value: "no"
-    work: "Owned; standard mileage rate"
+    work: "Owned, not leased"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].lease_business"
-    value: "616.40"
-    work: "877 x 9,083/12,923"
+    value: "0.00"
+    work: "No lease payments"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line20a"
     value: "0.00"
-    work: "Standard rate: no lease deduction"
+    work: "Not leased"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].low_use"
     value: "no"
-    work: "70.29% > 50%"
+    work: "Business use is 93.01%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].screened"
     value: "no"
     work: "No screening condition applies"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].year"
-    value: "7"
-    work: "Placed in service 2019; 2025 is year 7"
+    value: "1"
+    work: "Placed in service in 2025"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].is2025"
-    value: "no"
-    work: "Placed in service 2019"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].is2019"
     value: "yes"
-    work: "Placed in service 2019"
+    work: "Year placed in service is y2025"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].is2019"
+    value: "no"
+    work: "Placed in service in 2025"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bus_cost"
-    value: "43844.12"
-    work: "62,380 x 9,083/12,923"
+    value: "47544.22"
+    work: "51,119 x 12,462/13,399"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].s179_bad"
     value: "no"
-    work: "Election 0"
+    work: "Section 179 elected is 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_mixed"
     value: "no"
     work: "Same choice for all 5-year property"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].claims_bonus"
-    value: "no"
-    work: "Special allowance = none"
+    value: "yes"
+    work: "Special allowance is full"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].lim_first_bonus"
     value: "20200.00"
-    work: "2025 table, year 1"
+    work: "Table 2 footnote: 2025 limit with special allowance"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].lim_first_none"
     value: "12200.00"
-    work: "2025 table footnote 1"
+    work: "Table 2: 2025 year 1 limit"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].lim_2025"
-    value: "12200.00"
-    work: "No special allowance claimed"
+    value: "20200.00"
+    work: "Special allowance claimed"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].lim_prior"
-    value: "5760.00"
-    work: "2019 vehicle, 4th & later year"
+    value: "20200.00"
+    work: "Year 1 of a 2025 vehicle with special allowance"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line7"
-    value: "5760.00"
-    work: "Year 7 uses the 4th & later limit"
+    value: "20200.00"
+    work: "lim_2025"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line9w"
-    value: "4048.45"
-    work: "5,760 x 9,083/12,923"
+    value: "18787.40"
+    work: "20,200 x 12,462/13,399"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].s179_2025_ok"
     value: "0.00"
-    work: "Not a 2025 vehicle"
+    work: "Section 179 elected is 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line10"
     value: "0.00"
-    work: "Not the year placed in service"
+    work: "Smaller of 0 or line 9"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line10_2025"
     value: "0.00"
-    work: "Election 0"
+    work: "Smaller of 0 or line 9"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].s179_line10"
     value: "0.00"
-    work: "min(0, line 9)"
+    work: "Smaller of 0 or line 9"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line11"
-    value: "4048.45"
-    work: "4,048.45 - 0"
+    value: "18787.40"
+    work: "18,787.40 - 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line14"
     value: "0.00"
-    work: "Section 179 in the year placed in service = 0"
+    work: "No section 179 deduction"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line15"
-    value: "43844.12"
-    work: "43,844.12 - 0"
+    value: "47544.22"
+    work: "47,544.22 - 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_full"
-    value: "43844.12"
-    work: "Line 15 x 100%"
+    value: "47544.22"
+    work: "47,544.22 x 100%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_forty"
-    value: "17537.65"
-    work: "Line 15 x 40%"
+    value: "19017.69"
+    work: "47,544.22 x 40%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_fullcase"
-    value: "17537.65"
-    work: "Not acquired after 1/19/2025, so 40%"
+    value: "47544.22"
+    work: "Acquired after Jan 19, 2025, so 100%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_2025"
-    value: "0.00"
-    work: "Not claimed"
+    value: "47544.22"
+    work: "Special allowance claimed (full)"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line16"
-    value: "0.00"
-    work: "Not the year placed in service"
+    value: "47544.22"
+    work: "Placed in service in 2025"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_allowed"
-    value: "0.00"
-    work: "0"
+    value: "18787.40"
+    work: "Smaller of 47,544.22 or line 11 of 18,787.40"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line17"
-    value: "4048.45"
-    work: "4,048.45 - 0"
+    value: "0.00"
+    work: "18,787.40 - 47,544.22, which is less than zero, so 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line18"
-    value: "43844.12"
-    work: "43,844.12 - 0"
+    value: "0.00"
+    work: "47,544.22 - 47,544.22"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].qconv"
-    value: "mq1"
-    work: "Quarter q1"
+    value: "mq2"
+    work: "Placed in service in quarter 2"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].rate_hy"
+    value: "20.00%"
+    work: "5-year 200DB half-year, year 1"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].rate_mq"
+    value: "25.00%"
+    work: "5-year 200DB mid-quarter Q2, year 1"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].rate_prior"
+    value: "5.00%"
+    work: "Given convention mq4, year 1"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line19_hy"
+    value: "0.00"
+    work: "0 x 20%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line19_mq"
+    value: "0.00"
+    work: "0 x 25%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line19_prior"
+    value: "0.00"
+    work: "0 x 5%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line19"
     value: "0.00"
-    work: "After the 6-year recovery period; no table rate"
+    work: "Line 18 is 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line19_earlier"
     value: "0.00"
-    work: "Zero after the recovery period"
+    work: "Not placed in service before 2025"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line19_2025"
+    value: "0.00"
+    work: "Mid-quarter test is no, so half-year: 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line20"
     value: "0.00"
-    work: "min(4,048.45, 0)"
+    work: "Lesser of 0 or 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].b100"
-    value: "62380.00"
-    work: "62,380 - 0"
+    value: "51119.00"
+    work: "51,119 - 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].r1"
-    value: "20.00%"
-    work: "HY year 1"
+    value: "5.00%"
+    work: "Mid-quarter Q4 (given), year 1"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].t1"
-    value: "12476.00"
-    work: "62,380 x 20%"
+    value: "2555.95"
+    work: "51,119 x 5%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].l1"
-    value: "10100.00"
-    work: "2019 limit without special allowance (footnote 6)"
+    value: "12200.00"
+    work: "2025 year 1 limit without special allowance"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].t1s"
-    value: "12476.00"
-    work: "0 + 12,476"
+    value: "2555.95"
+    work: "0 + 2,555.95"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].d1"
-    value: "10100.00"
-    work: "min(10,100, 12,476)"
+    value: "2555.95"
+    work: "Lesser of 12,200 or 2,555.95"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].r2"
-    value: "32.00%"
-    work: "HY year 2"
+    value: "38.00%"
+    work: "Mid-quarter Q4, year 2"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].t2"
-    value: "19961.60"
-    work: "62,380 x 32%"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].l2"
-    value: "16100.00"
-    work: "2019 vehicle, 2nd year"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].d2"
-    value: "16100.00"
-    work: "min(16,100, 19,961.60)"
+    value: "19425.22"
+    work: "51,119 x 38%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].r3"
-    value: "19.20%"
-    work: "HY year 3"
+    value: "22.80%"
+    work: "Mid-quarter Q4, year 3"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].t3"
-    value: "11976.96"
-    work: "62,380 x 19.2%"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].l3"
-    value: "9700.00"
-    work: "2019 vehicle, 3rd year"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].d3"
-    value: "9700.00"
-    work: "min(9,700, 11,976.96)"
+    value: "11655.13"
+    work: "51,119 x 22.80%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].r4"
-    value: "11.52%"
-    work: "HY year 4"
+    value: "13.68%"
+    work: "Mid-quarter Q4, year 4"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].t4"
-    value: "7186.18"
-    work: "62,380 x 11.52%"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].l4"
-    value: "5760.00"
-    work: "2019 vehicle, 4th & later year"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].d4"
-    value: "5760.00"
-    work: "min(5,760, 7,186.18)"
+    value: "6993.08"
+    work: "51,119 x 13.68%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].r5"
-    value: "11.52%"
-    work: "HY year 5"
+    value: "10.94%"
+    work: "Mid-quarter Q4, year 5"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].t5"
-    value: "7186.18"
-    work: "62,380 x 11.52%"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].l5"
-    value: "5760.00"
-    work: "4th & later limit"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].d5"
-    value: "5760.00"
-    work: "min(5,760, 7,186.18)"
+    value: "5592.42"
+    work: "51,119 x 10.94%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].r6"
-    value: "5.76%"
-    work: "HY year 6"
+    value: "9.58%"
+    work: "Mid-quarter Q4, year 6"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].t6"
-    value: "3593.09"
-    work: "62,380 x 5.76%"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].l6"
-    value: "5760.00"
-    work: "4th & later limit"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].d6"
-    value: "3593.09"
-    work: "min(5,760, 3,593.09)"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].d_total"
-    value: "51013.09"
-    work: "10,100 + 16,100 + 9,700 + 5,760 + 5,760 + 3,593.09"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].unrecovered"
-    value: "11366.91"
-    work: "62,380 - 51,013.09"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].post_amount"
-    value: "5760.00"
-    work: "min(5,760, 11,366.91)"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].post"
-    value: "4048.45"
-    work: "5,760 x 9,083/12,923"
+    value: "4897.20"
+    work: "51,119 x 9.58%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].too_old"
     value: "no"
-    work: "Placed in service 2019"
+    work: "Placed in service in 2025"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_v"
-    value: "0.00"
-    work: "No special allowance"
+    value: "18787.40"
+    work: "bonus_allowed"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].macrs_pass"
-    value: "4048.45"
-    work: "2019 vehicle: post-recovery amount"
+    value: "0.00"
+    work: "Line 20"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].macrs_heavy"
     value: "0.00"
-    work: "No deduction after the recovery period for property not subject to the limits"
+    work: "line19_2025"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].macrs_v"
-    value: "4048.45"
-    work: "Subject to the passenger auto limits"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus"
     value: "0.00"
-    work: "Standard rate: no depreciation"
+    work: "Passenger automobile"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus"
+    value: "18787.40"
+    work: "bonus_v"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].macrs"
     value: "0.00"
-    work: "Standard rate: no depreciation"
+    work: "macrs_v"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].s179_2025"
     value: "0.00"
-    work: "None"
+    work: "No section 179 election"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].mq_q4"
     value: "0.00"
-    work: "Not a 2025 vehicle"
+    work: "Placed in service in Q2"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].mq_total"
-    value: "0.00"
-    work: "Not a 2025 vehicle"
+    value: "47544.22"
+    work: "Business cost - section 179 of 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].cost179"
-    value: "0.00"
-    work: "Not a 2025 vehicle"
+    value: "47544.22"
+    work: "Business cost of listed property"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_o"
-    value: "0.00"
-    work: "Not owned with actual expenses"
+    value: "18787.40"
+    work: "Owned, actual expenses"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].macrs_o"
     value: "0.00"
-    work: "Not owned with actual expenses"
+    work: "Owned, actual expenses"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].s179_2025_o"
     value: "0.00"
-    work: "Not owned with actual expenses"
+    work: "Owned, actual expenses"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].q4_basis"
     value: "0.00"
-    work: "Quarter q1"
+    work: "Placed in service in Q2, not Q4"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].mq_q4_o"
     value: "0.00"
-    work: "Not owned with actual expenses"
+    work: "q4_basis is 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].mq_q4_a2"
     value: "0.00"
-    work: "Not a 2025 vehicle"
+    work: "q4_basis is 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].mq_total_o"
-    value: "0.00"
-    work: "Not owned with actual expenses"
+    value: "47544.22"
+    work: "2025 vehicle"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].mq_total_a2"
-    value: "0.00"
-    work: "Not a 2025 vehicle"
+    value: "47544.22"
+    work: "47,544.22 - 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].cost179_o"
-    value: "0.00"
-    work: "Not owned with actual expenses"
+    value: "47544.22"
+    work: "2025 vehicle"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].cost179_a2"
-    value: "0.00"
-    work: "Not a 2025 vehicle"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bm_c"
-    value: "3135.00"
-    work: "Business miles 3,135"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].cm_c"
-    value: "0.00"
-    work: "Commuting miles 0"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].om_c"
-    value: "407.00"
-    work: "Other miles 407"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].nonbusiness_c"
-    value: "407.00"
-    work: "0 + 407"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].total_c"
-    value: "3542.00"
-    work: "3,135 + 407"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].over_half"
-    value: "yes"
-    work: "3,135/3,542 = 88.51%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].smr_bad"
-    value: "no"
-    work: "Filer answered that the standard mileage rate may be used"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].smr_amount"
-    value: "2194.50"
-    work: "3,135 x 0.70"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line9_standard"
-    value: "2194.50"
-    work: "2,194.50 + 0"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].operating_business"
-    value: "1339.15"
-    work: "1,513 x 3,135/3,542"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line9_actual"
-    value: "1339.15"
-    work: "1,339.15 + 0"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line9"
-    value: "2194.50"
-    work: "Standard mileage rate chosen"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].is_actual_owned"
-    value: "no"
-    work: "Leased; standard rate"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].is_actual_leased"
-    value: "no"
-    work: "Standard rate"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].lease_business"
-    value: "2418.96"
-    work: "2,733 x 3,135/3,542"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line20a"
-    value: "0.00"
-    work: "Standard rate: no lease payments deducted"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].low_use"
-    value: "no"
-    work: "88.51% > 50%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].screened"
-    value: "no"
-    work: "No screening condition applies"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].year"
-    value: "1"
-    work: "Placed in service 2025"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].is2025"
-    value: "yes"
-    work: "Placed in service 2025"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].is2019"
-    value: "no"
-    work: "Placed in service 2025"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bus_cost"
-    value: "12031.07"
-    work: "13,593 x 3,135/3,542"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].s179_bad"
-    value: "no"
-    work: "Election 0"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bonus_mixed"
-    value: "no"
-    work: "Same choice for all 5-year property"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].claims_bonus"
-    value: "no"
-    work: "Special allowance = none"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].lim_first_bonus"
-    value: "20200.00"
-    work: "2025 table, year 1"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].lim_first_none"
-    value: "12200.00"
-    work: "2025 table footnote 1"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].lim_2025"
-    value: "12200.00"
-    work: "No special allowance claimed"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].lim_prior"
-    value: "20200.00"
-    work: "2025 table, 1st year"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line7"
-    value: "12200.00"
-    work: "2025 vehicle with no special allowance"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line9w"
-    value: "10798.14"
-    work: "12,200 x 3,135/3,542"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].s179_2025_ok"
-    value: "0.00"
-    work: "Election 0"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line10"
-    value: "0.00"
-    work: "Election 0"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line10_2025"
-    value: "0.00"
-    work: "min(0, 10,798.14)"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].s179_line10"
-    value: "0.00"
-    work: "min(0, line 9)"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line11"
-    value: "10798.14"
-    work: "10,798.14 - 0"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line14"
-    value: "0.00"
-    work: "Section 179 = 0"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line15"
-    value: "12031.07"
-    work: "12,031.07 - 0"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bonus_full"
-    value: "12031.07"
-    work: "Line 15 x 100%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bonus_forty"
-    value: "4812.43"
-    work: "Line 15 x 40%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bonus_fullcase"
-    value: "12031.07"
-    work: "Acquired after 1/19/2025, so 100%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bonus_2025"
-    value: "0.00"
-    work: "Not claimed"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line16"
-    value: "0.00"
-    work: "Elected none"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bonus_allowed"
-    value: "0.00"
-    work: "0"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line17"
-    value: "10798.14"
-    work: "10,798.14 - 0"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line18"
-    value: "12031.07"
-    work: "12,031.07 - 0"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].qconv"
-    value: "mq1"
-    work: "Quarter q1"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].rate_hy"
-    value: "20.00%"
-    work: "HY year 1"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].rate_mq"
-    value: "35.00%"
-    work: "MQ Q1 year 1"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].rate_prior"
-    value: "5.00%"
-    work: "Convention mq4, year 1"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line19_hy"
-    value: "2406.21"
-    work: "12,031.07 x 20%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line19_mq"
-    value: "4210.87"
-    work: "12,031.07 x 35%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line19_prior"
-    value: "601.55"
-    work: "12,031.07 x 5%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line19"
-    value: "4210.87"
-    work: "2025 vehicle; mid-quarter test is yes"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line19_earlier"
-    value: "601.55"
-    work: "line19_prior"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line19_2025"
-    value: "4210.87"
-    work: "Mid-quarter Q1 amount"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line20"
-    value: "4210.87"
-    work: "min(10,798.14, 4,210.87)"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].b100"
-    value: "13593.00"
-    work: "13,593 - 0"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].r1"
-    value: "5.00%"
-    work: "Convention mq4, year 1"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].t1"
-    value: "679.65"
-    work: "13,593 x 5%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].l1"
-    value: "12200.00"
-    work: "2025 limit without special allowance"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].t1s"
-    value: "679.65"
-    work: "0 + 679.65"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].d1"
-    value: "679.65"
-    work: "min(12,200, 679.65)"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].r2"
-    value: "38.00%"
-    work: "MQ Q4 year 2"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].t2"
-    value: "5165.34"
-    work: "13,593 x 38%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].r3"
-    value: "22.80%"
-    work: "MQ Q4 year 3"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].t3"
-    value: "3099.20"
-    work: "13,593 x 22.8%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].r4"
-    value: "13.68%"
-    work: "MQ Q4 year 4"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].t4"
-    value: "1859.52"
-    work: "13,593 x 13.68%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].r5"
-    value: "10.94%"
-    work: "MQ Q4 year 5"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].t5"
-    value: "1487.07"
-    work: "13,593 x 10.94%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].r6"
-    value: "9.58%"
-    work: "MQ Q4 year 6"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].t6"
-    value: "1302.21"
-    work: "13,593 x 9.58%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].too_old"
-    value: "no"
-    work: "Placed in service 2025"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bonus_v"
-    value: "0.00"
-    work: "No special allowance"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].macrs_pass"
-    value: "4210.87"
-    work: "Line 20"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].macrs_heavy"
-    value: "4210.87"
-    work: "Line 19"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].macrs_v"
-    value: "4210.87"
-    work: "Subject to the passenger auto limits"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bonus"
-    value: "0.00"
-    work: "Leased, standard rate"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].macrs"
-    value: "0.00"
-    work: "Leased, standard rate"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].s179_2025"
-    value: "0.00"
-    work: "None"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].mq_q4"
-    value: "0.00"
-    work: "Not owned with actual expenses"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].mq_total"
-    value: "0.00"
-    work: "Not owned with actual expenses"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].cost179"
-    value: "0.00"
-    work: "Not owned with actual expenses"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bonus_o"
-    value: "0.00"
-    work: "Not owned with actual expenses"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].macrs_o"
-    value: "0.00"
-    work: "Not owned with actual expenses"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].s179_2025_o"
-    value: "0.00"
-    work: "Not owned with actual expenses"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].q4_basis"
-    value: "0.00"
-    work: "Quarter q1"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].mq_q4_o"
-    value: "0.00"
-    work: "Not owned with actual expenses"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].mq_q4_a2"
-    value: "0.00"
-    work: "q4_basis = 0"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].mq_total_o"
-    value: "0.00"
-    work: "Not owned with actual expenses"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].mq_total_a2"
-    value: "12031.07"
-    work: "Business cost less 0 section 179"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].cost179_o"
-    value: "0.00"
-    work: "Not owned with actual expenses"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].cost179_a2"
-    value: "12031.07"
-    work: "Business cost"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].bm_c"
-    value: "3830.00"
-    work: "Business miles 3,830"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].cm_c"
-    value: "0.00"
-    work: "Commuting miles 0"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].om_c"
-    value: "78.00"
-    work: "Other miles 78"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].nonbusiness_c"
-    value: "78.00"
-    work: "0 + 78"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].total_c"
-    value: "3908.00"
-    work: "3,830 + 78"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].over_half"
-    value: "yes"
-    work: "3,830/3,908 = 98.00%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].smr_bad"
-    value: "no"
-    work: "Filer answered that the standard mileage rate may be used"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].smr_amount"
-    value: "2681.00"
-    work: "3,830 x 0.70"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line9_standard"
-    value: "2681.00"
-    work: "2,681 + 0"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].operating_business"
-    value: "0.00"
-    work: "Operating expenses 0"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line9_actual"
-    value: "0.00"
-    work: "0 + 0"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line9"
-    value: "0.00"
-    work: "Actual expenses chosen"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].is_actual_owned"
-    value: "no"
-    work: "Leased"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].is_actual_leased"
-    value: "yes"
-    work: "Leased, actual expenses"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].lease_business"
-    value: "0.00"
-    work: "Lease payments 0"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line20a"
-    value: "0.00"
-    work: "Lease business portion 0"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].low_use"
-    value: "no"
-    work: "98.00% > 50%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].screened"
-    value: "no"
-    work: "No screening condition applies"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].year"
-    value: "1"
-    work: "Placed in service 2025"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].is2025"
-    value: "yes"
-    work: "Placed in service 2025"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].is2019"
-    value: "no"
-    work: "Placed in service 2025"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].bus_cost"
-    value: "76802.87"
-    work: "78,367 x 3,830/3,908"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].s179_bad"
-    value: "no"
-    work: "Election 0"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].bonus_mixed"
-    value: "no"
-    work: "Same choice for all 5-year property"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].claims_bonus"
-    value: "no"
-    work: "Special allowance = none"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].lim_first_bonus"
-    value: "20200.00"
-    work: "2025 table, year 1"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].lim_first_none"
-    value: "12200.00"
-    work: "2025 table footnote 1"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].lim_2025"
-    value: "12200.00"
-    work: "No special allowance claimed"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].lim_prior"
-    value: "20200.00"
-    work: "2025 table, 1st year"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line7"
-    value: "12200.00"
-    work: "2025 vehicle with no special allowance"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line9w"
-    value: "11956.50"
-    work: "12,200 x 3,830/3,908"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].s179_2025_ok"
-    value: "0.00"
-    work: "Election 0"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line10"
-    value: "0.00"
-    work: "Election 0"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line10_2025"
-    value: "0.00"
-    work: "min(0, 11,956.50)"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].s179_line10"
-    value: "0.00"
-    work: "min(0, line 9)"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line11"
-    value: "11956.50"
-    work: "11,956.50 - 0"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line14"
-    value: "0.00"
-    work: "Section 179 = 0"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line15"
-    value: "76802.87"
-    work: "76,802.87 - 0"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].bonus_full"
-    value: "76802.87"
-    work: "Line 15 x 100%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].bonus_forty"
-    value: "30721.15"
-    work: "Line 15 x 40%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].bonus_fullcase"
-    value: "76802.87"
-    work: "Acquired after 1/19/2025, so 100%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].bonus_2025"
-    value: "0.00"
-    work: "Not claimed"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line16"
-    value: "0.00"
-    work: "Elected none"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].bonus_allowed"
-    value: "0.00"
-    work: "0"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line17"
-    value: "11956.50"
-    work: "11,956.50 - 0"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line18"
-    value: "76802.87"
-    work: "76,802.87 - 0"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].qconv"
-    value: "mq3"
-    work: "Quarter q3"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].rate_hy"
-    value: "20.00%"
-    work: "HY year 1"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].rate_mq"
-    value: "15.00%"
-    work: "MQ Q3 year 1"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].rate_prior"
-    value: "20.00%"
-    work: "Convention hy, year 1"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line19_hy"
-    value: "15360.57"
-    work: "76,802.87 x 20%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line19_mq"
-    value: "11520.43"
-    work: "76,802.87 x 15%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line19_prior"
-    value: "15360.57"
-    work: "76,802.87 x 20%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line19"
-    value: "11520.43"
-    work: "2025 vehicle; mid-quarter test is yes"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line19_earlier"
-    value: "15360.57"
-    work: "line19_prior"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line19_2025"
-    value: "11520.43"
-    work: "Mid-quarter Q3 amount"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line20"
-    value: "11520.43"
-    work: "min(11,956.50, 11,520.43)"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].b100"
-    value: "78367.00"
-    work: "78,367 - 0"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].r1"
-    value: "20.00%"
-    work: "HY year 1"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].t1"
-    value: "15673.40"
-    work: "78,367 x 20%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].l1"
-    value: "12200.00"
-    work: "2025 limit without special allowance"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].t1s"
-    value: "15673.40"
-    work: "0 + 15,673.40"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].d1"
-    value: "12200.00"
-    work: "min(12,200, 15,673.40)"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].r2"
-    value: "32.00%"
-    work: "HY year 2"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].t2"
-    value: "25077.44"
-    work: "78,367 x 32%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].r3"
-    value: "19.20%"
-    work: "HY year 3"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].t3"
-    value: "15046.46"
-    work: "78,367 x 19.2%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].r4"
-    value: "11.52%"
-    work: "HY year 4"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].t4"
-    value: "9027.88"
-    work: "78,367 x 11.52%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].r5"
-    value: "11.52%"
-    work: "HY year 5"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].t5"
-    value: "9027.88"
-    work: "78,367 x 11.52%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].r6"
-    value: "5.76%"
-    work: "HY year 6"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].t6"
-    value: "4513.94"
-    work: "78,367 x 5.76%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].too_old"
-    value: "no"
-    work: "Placed in service 2025"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].bonus_v"
-    value: "0.00"
-    work: "No special allowance"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].macrs_pass"
-    value: "11520.43"
-    work: "Line 20"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].macrs_heavy"
-    value: "11520.43"
-    work: "Line 19"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].macrs_v"
-    value: "11520.43"
-    work: "Subject to the passenger auto limits"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].bonus"
-    value: "0.00"
-    work: "Leased: no depreciation"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].macrs"
-    value: "0.00"
-    work: "Leased: no depreciation"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].s179_2025"
-    value: "0.00"
-    work: "None"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].mq_q4"
-    value: "0.00"
-    work: "Not owned with actual expenses"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].mq_total"
-    value: "0.00"
-    work: "Not owned with actual expenses"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].cost179"
-    value: "0.00"
-    work: "Not owned with actual expenses"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].bonus_o"
-    value: "0.00"
-    work: "Not owned"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].macrs_o"
-    value: "0.00"
-    work: "Not owned"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].s179_2025_o"
-    value: "0.00"
-    work: "Not owned"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].q4_basis"
-    value: "0.00"
-    work: "Quarter q3"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].mq_q4_o"
-    value: "0.00"
-    work: "Not owned"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].mq_q4_a2"
-    value: "0.00"
-    work: "q4_basis = 0"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].mq_total_o"
-    value: "0.00"
-    work: "Not owned"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].mq_total_a2"
-    value: "76802.87"
-    work: "Business cost less 0 section 179"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].cost179_o"
-    value: "0.00"
-    work: "Not owned"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].cost179_a2"
-    value: "76802.87"
+    value: "47544.22"
     work: "Business cost"
 ```
 ```
@@ -9508,585 +8896,309 @@ lines:
 ```yaml
 lines:
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bm_c"
-    value: "14464.00"
-    work: "Business miles 14,464"
+    value: "26610.00"
+    work: "Business miles 26,610"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].cm_c"
-    value: "3165.00"
-    work: "Commuting miles 3,165"
+    value: "0.00"
+    work: "Commuting miles 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].om_c"
-    value: "3075.00"
-    work: "Other miles 3,075"
+    value: "3336.00"
+    work: "Other miles 3,336"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].nonbusiness_c"
-    value: "6240.00"
-    work: "3,165 + 3,075"
+    value: "3336.00"
+    work: "0 + 3,336"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].total_c"
-    value: "20704.00"
-    work: "14,464 + 6,240"
+    value: "29946.00"
+    work: "26,610 + 3,336"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].no_miles"
+    value: "no"
+    work: "Standard mileage rate is used and miles are reported"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].over_half"
     value: "yes"
-    work: "14,464 / 20,704 = 69.86% > 50%"
+    work: "26,610 / 29,946 = 88.86%, which is more than 50%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].smr_bad"
     value: "no"
     work: "Filer says the standard mileage rate may be used"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].smr_amount"
-    value: "10124.80"
-    work: "14,464 x 0.70"
+    value: "18627.00"
+    work: "26,610 x 0.70"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line9_standard"
-    value: "10124.80"
-    work: "10,124.80 + 0 parking and tolls"
+    value: "18627.00"
+    work: "18,627.00 + 0 parking and tolls"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].operating_business"
-    value: "2325.67"
-    work: "3,329 x 14,464 / 20,704"
+    value: "7129.23"
+    work: "8,023 x 26,610 / 29,946"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line9_actual"
-    value: "2325.67"
-    work: "2,325.67 + 0 parking and tolls"
+    value: "7129.23"
+    work: "7,129.23 + 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line9"
-    value: "2325.67"
-    work: "Actual expenses chosen"
+    value: "18627.00"
+    work: "Standard method chosen, so the standard amount is used"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].is_actual_owned"
     value: "no"
-    work: "Vehicle is leased"
+    work: "Standard mileage rate is used"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].is_actual_leased"
-    value: "yes"
-    work: "Leased and on actual expenses"
+    value: "no"
+    work: "Vehicle is owned and the standard rate is used"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].lease_business"
-    value: "3140.25"
-    work: "4,495 x 14,464 / 20,704"
+    value: "5243.63"
+    work: "5,901 x 26,610 / 29,946"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line20a"
-    value: "3140.25"
-    work: "Leased and on actual expenses, so the business lease portion goes on line 20a"
+    value: "0.00"
+    work: "Not leased, and with the standard rate no lease payments are deducted"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].low_use"
     value: "no"
-    work: "Business use is 69.86%"
+    work: "88.86% is more than 50%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].screened"
     value: "no"
-    work: "None of the screening conditions applies"
+    work: "Filer answered no to the screening question"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].year"
-    value: "5"
-    work: "Placed in service 2021, so 2025 is year 5"
+    value: "7"
+    work: "Placed in service 2019, so 2025 is year 7"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].is2025"
     value: "no"
-    work: "Placed in service 2021"
+    work: "Placed in service 2019"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].is2019"
-    value: "no"
-    work: "Placed in service 2021"
+    value: "yes"
+    work: "Placed in service 2019"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bus_cost"
-    value: "3493.04"
-    work: "5,000 x 69.86%"
+    value: "48214.52"
+    work: "Worksheet line 13: 54,259 x 26,610 / 29,946"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].s179_bad"
     value: "no"
-    work: "Elected 0 is not more than the business cost"
+    work: "Elected 0, which is not more than the business cost"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_mixed"
     value: "no"
-    work: "Same choice for all 5-year property"
+    work: "Choice is the same for all 5-year property"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].claims_bonus"
     value: "no"
     work: "Special allowance = none"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].lim_first_bonus"
     value: "20200.00"
-    work: "2025 first-year limit with the special allowance"
+    work: "Table 2 footnote: 2025 limit with the special allowance"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].lim_first_none"
+    value: "12200.00"
+    work: "Table 2: 2025, year 1"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].lim_2025"
+    value: "12200.00"
+    work: "No special allowance claimed"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].lim_prior"
-    value: "5860.00"
-    work: "2021 vehicle, 4th and later year limit"
+    value: "5760.00"
+    work: "Table 2: 2019, 4 or more years"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line7"
-    value: "5860.00"
-    work: "Limit for year 5 of a 2021 vehicle"
+    value: "5760.00"
+    work: "Prior-year vehicle limit"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line9w"
-    value: "4093.85"
-    work: "5,860 x 14,464 / 20,704"
+    value: "5118.33"
+    work: "5,760 x 26,610 / 29,946"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].s179_2025_ok"
     value: "0.00"
     work: "Not a 2025 vehicle"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line10"
     value: "0.00"
-    work: "Not the year placed in service, so -0-"
+    work: "Not the year placed in service"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line10_2025"
     value: "0.00"
-    work: "Not a 2025 vehicle"
+    work: "Elected 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].s179_line10"
     value: "0.00"
-    work: "Smaller of election 0 or line 9"
+    work: "Smaller of 0 or 5,118.33"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line11"
-    value: "4093.85"
-    work: "4,093.85 - 0"
+    value: "5118.33"
+    work: "5,118.33 - 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line14"
-    value: "5000.00"
-    work: "Section 179 claimed in the year placed in service"
+    value: "9850.00"
+    work: "Section 179 claimed in 2019, as given"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line15"
-    value: "0.00"
-    work: "3,493.04 - 5,000 is less than zero, so 0"
+    value: "38364.52"
+    work: "48,214.52 - 9,850"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_full"
-    value: "0.00"
-    work: "0 x 100%"
+    value: "38364.52"
+    work: "38,364.52 x 100%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_forty"
-    value: "0.00"
-    work: "0 x 40%"
+    value: "15345.81"
+    work: "38,364.52 x 40%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_fullcase"
-    value: "0.00"
-    work: "Acquired after January 19, 2025, so 100% of 0"
+    value: "38364.52"
+    work: "Acquired after January 19, 2025 = yes, so 100%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_2025"
     value: "0.00"
-    work: "Not claimed and not a 2025 vehicle"
+    work: "No allowance claimed and not a 2025 vehicle"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line16"
     value: "0.00"
-    work: "Not the year placed in service, so -0-"
+    work: "Enter -0- if not the year placed in service"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_allowed"
     value: "0.00"
     work: "Smaller of 0 or line 11"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line17"
-    value: "4093.85"
-    work: "4,093.85 - 0"
+    value: "5118.33"
+    work: "5,118.33 - 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line18"
-    value: "0.00"
-    work: "0 - 0"
+    value: "38364.52"
+    work: "38,364.52 - 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].qconv"
-    value: "mq3"
-    work: "Placed in service in Q3"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].rate_hy"
-    value: "20.00%"
-    work: "5-year, 200DB, half-year convention, year 1"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].rate_mq"
-    value: "15.00%"
-    work: "5-year, mid-quarter Q3, year 1"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].rate_prior"
-    value: "10.94%"
-    work: "5-year, mid-quarter Q4, year 5"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line19_hy"
-    value: "0.00"
-    work: "0 x 20%"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line19_mq"
-    value: "0.00"
-    work: "0 x 15%"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line19_prior"
-    value: "0.00"
-    work: "0 x 10.94%"
+    value: "mq1"
+    work: "Placed in service in quarter 1"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line19"
     value: "0.00"
-    work: "Prior-year rate applied"
+    work: "Year 7 is after the 5-year recovery period, so the rate is 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line19_earlier"
     value: "0.00"
-    work: "Line 19 for a pre-2025 vehicle"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line19_2025"
-    value: "0.00"
-    work: "Not a 2025 vehicle"
+    work: "After the recovery period"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line20"
     value: "0.00"
-    work: "Lesser of 4,093.85 or 0"
+    work: "Lesser of 5,118.33 or 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].b100"
-    value: "0.00"
-    work: "5,000 - 5,000"
+    value: "44409.00"
+    work: "54,259 - 9,850"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].r1"
-    value: "5.00%"
-    work: "Mid-quarter Q4, year 1"
+    value: "20.00%"
+    work: "5-year, 200DB, half-year convention, year 1"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t1"
-    value: "0.00"
-    work: "0 x 5%"
+    value: "8881.80"
+    work: "44,409 x 20%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].l1"
+    value: "10100.00"
+    work: "2019 first-year limit without the special allowance (footnote 6)"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t1s"
-    value: "5000.00"
-    work: "5,000 + 0"
+    value: "18731.80"
+    work: "9,850 + 8,881.80"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].d1"
+    value: "10100.00"
+    work: "Lesser of 10,100 or 18,731.80"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].r2"
-    value: "38.00%"
-    work: "Mid-quarter Q4, year 2"
+    value: "32.00%"
+    work: "HY table, year 2"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t2"
-    value: "0.00"
-    work: "0 x 38%"
+    value: "14210.88"
+    work: "44,409 x 32%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].l2"
-    value: "16400.00"
-    work: "2021 vehicle, 2nd year limit"
+    value: "16100.00"
+    work: "2019, 2nd year"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].d2"
-    value: "0.00"
-    work: "Lesser of 0 or 16,400"
+    value: "14210.88"
+    work: "Lesser of the limit or the amount"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].r3"
-    value: "22.80%"
-    work: "Mid-quarter Q4, year 3"
+    value: "19.20%"
+    work: "HY table, year 3"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t3"
-    value: "0.00"
-    work: "0 x 22.8%"
+    value: "8526.53"
+    work: "44,409 x 19.2%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].l3"
-    value: "9800.00"
-    work: "2021 vehicle, 3rd year limit"
+    value: "9700.00"
+    work: "2019, 3rd year"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].d3"
-    value: "0.00"
-    work: "Lesser of 0 or 9,800"
+    value: "8526.53"
+    work: "Lesser of the limit or the amount"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].r4"
-    value: "13.68%"
-    work: "Mid-quarter Q4, year 4"
+    value: "11.52%"
+    work: "HY table, year 4"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t4"
-    value: "0.00"
-    work: "0 x 13.68%"
+    value: "5115.92"
+    work: "44,409 x 11.52%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].l4"
-    value: "5860.00"
-    work: "2021 vehicle, 4th year limit"
+    value: "5760.00"
+    work: "2019, 4th and later years"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].d4"
-    value: "0.00"
-    work: "Lesser of 0 or 5,860"
+    value: "5115.92"
+    work: "Lesser of the limit or the amount"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].r5"
-    value: "10.94%"
-    work: "Mid-quarter Q4, year 5"
+    value: "11.52%"
+    work: "HY table, year 5"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t5"
-    value: "0.00"
-    work: "0 x 10.94%"
+    value: "5115.92"
+    work: "44,409 x 11.52%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].l5"
-    value: "5860.00"
-    work: "2021 vehicle, later-year limit"
+    value: "5760.00"
+    work: "2019, later years"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].d5"
-    value: "0.00"
-    work: "Lesser of 0 or 5,860"
+    value: "5115.92"
+    work: "Lesser of the limit or the amount"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].r6"
-    value: "9.58%"
-    work: "Mid-quarter Q4, year 6"
+    value: "5.76%"
+    work: "HY table, year 6"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t6"
-    value: "0.00"
-    work: "0 x 9.58%"
+    value: "2557.96"
+    work: "44,409 x 5.76%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].l6"
+    value: "5760.00"
+    work: "2019, later years"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].d6"
+    value: "2557.96"
+    work: "Lesser of the limit or the amount"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].d_total"
+    value: "45627.21"
+    work: "Sum of d1 through d6"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].unrecovered"
+    value: "8631.79"
+    work: "54,259 - 45,627.21"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].post_amount"
+    value: "5760.00"
+    work: "Lesser of 5,760 or 8,631.79"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].post"
+    value: "5118.33"
+    work: "5,760 x 26,610 / 29,946"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].too_old"
     value: "no"
-    work: "Placed in service 2021"
+    work: "Placed in service in 2019, not before"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_v"
     value: "0.00"
-    work: "Line 16 = 0"
+    work: "No special allowance"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].macrs_pass"
-    value: "0.00"
-    work: "Line 20"
+    value: "5118.33"
+    work: "Line 20 of 0 + post-recovery 5,118.33"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].macrs_heavy"
     value: "0.00"
-    work: "Line 19"
+    work: "No depreciation after the recovery period for a vehicle not subject to the limits"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].macrs_v"
-    value: "0.00"
-    work: "Passenger automobile, so macrs_pass"
+    value: "5118.33"
+    work: "Subject to the passenger automobile limits"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus"
     value: "0.00"
-    work: "Leased vehicle, no depreciation"
+    work: "Standard mileage rate, so no depreciation is deducted"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].macrs"
     value: "0.00"
-    work: "Leased vehicle, no depreciation"
+    work: "Standard mileage rate, so no depreciation is deducted"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].s179_2025"
     value: "0.00"
-    work: "Leased vehicle, not a 2025 vehicle"
+    work: "Not a 2025 vehicle; standard rate used"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].mq_q4"
     value: "0.00"
-    work: "Not a 2025 owned vehicle"
+    work: "Not placed in service in 2025"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].mq_total"
     value: "0.00"
-    work: "Not a 2025 owned vehicle"
+    work: "Not placed in service in 2025"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].cost179"
     value: "0.00"
-    work: "Not a 2025 owned vehicle"
+    work: "Not placed in service in 2025"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_o"
     value: "0.00"
-    work: "Not owned"
+    work: "Not owned on actual expenses"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].macrs_o"
     value: "0.00"
-    work: "Not owned"
+    work: "Not owned on actual expenses"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].s179_2025_o"
     value: "0.00"
-    work: "Not owned"
+    work: "Not owned on actual expenses"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].q4_basis"
     value: "0.00"
-    work: "Placed in service in Q3, not October to December"
+    work: "Placed in service in quarter 1, not October to December"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].mq_q4_o"
     value: "0.00"
-    work: "Not owned"
+    work: "Not owned on actual expenses"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].mq_q4_a2"
     value: "0.00"
     work: "Not a 2025 vehicle"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].mq_total_o"
     value: "0.00"
-    work: "Not owned"
+    work: "Not owned on actual expenses"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].mq_total_a2"
     value: "0.00"
     work: "Not a 2025 vehicle"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].cost179_o"
     value: "0.00"
-    work: "Not owned"
+    work: "Not owned on actual expenses"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].cost179_a2"
-    value: "0.00"
-    work: "Not a 2025 vehicle"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bm_c"
-    value: "16003.00"
-    work: "Business miles 16,003"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].cm_c"
-    value: "2910.00"
-    work: "Commuting miles 2,910"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].om_c"
-    value: "4.00"
-    work: "Other miles 4"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].nonbusiness_c"
-    value: "2914.00"
-    work: "2,910 + 4"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].total_c"
-    value: "18917.00"
-    work: "16,003 + 2,914"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].over_half"
-    value: "yes"
-    work: "16,003 / 18,917 = 84.60% > 50%"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].smr_bad"
-    value: "no"
-    work: "Filer says the standard mileage rate may be used"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].smr_amount"
-    value: "11202.10"
-    work: "16,003 x 0.70"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line9_standard"
-    value: "11202.10"
-    work: "11,202.10 + 0 parking and tolls"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].operating_business"
-    value: "3438.82"
-    work: "4,065 x 16,003 / 18,917"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line9_actual"
-    value: "3438.82"
-    work: "3,438.82 + 0 parking and tolls"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line9"
-    value: "11202.10"
-    work: "Standard mileage rate chosen"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].is_actual_owned"
-    value: "no"
-    work: "Standard rate, leased"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].is_actual_leased"
-    value: "no"
-    work: "Standard rate"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].lease_business"
-    value: "6767.67"
-    work: "8,000 x 16,003 / 18,917"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line20a"
-    value: "0.00"
-    work: "Standard rate, so no lease payments are deducted"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].low_use"
-    value: "no"
-    work: "Business use is 84.60%"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].screened"
-    value: "no"
-    work: "None of the screening conditions applies"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].year"
-    value: "4"
-    work: "Placed in service 2022, so 2025 is year 4"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].is2025"
-    value: "no"
-    work: "Placed in service 2022"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].is2019"
-    value: "no"
-    work: "Placed in service 2022"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bus_cost"
-    value: "34906.79"
-    work: "41,263 x 16,003 / 18,917"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].s179_bad"
-    value: "no"
-    work: "Elected 0 is not more than the business cost"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_mixed"
-    value: "no"
-    work: "Same choice for all 5-year property"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].claims_bonus"
-    value: "no"
-    work: "Special allowance = none"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].lim_first_bonus"
-    value: "20200.00"
-    work: "2025 first-year limit with the special allowance"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].lim_prior"
-    value: "6460.00"
-    work: "2022 vehicle, 4th year limit"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line7"
-    value: "6460.00"
-    work: "Limit for year 4 of a 2022 vehicle"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line9w"
-    value: "5464.89"
-    work: "6,460 x 16,003 / 18,917"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].s179_2025_ok"
-    value: "0.00"
-    work: "Not a 2025 vehicle"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line10"
-    value: "0.00"
-    work: "Not the year placed in service, so -0-"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line10_2025"
-    value: "0.00"
-    work: "Not a 2025 vehicle"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].s179_line10"
-    value: "0.00"
-    work: "Smaller of election 0 or line 9"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line11"
-    value: "5464.89"
-    work: "5,464.89 - 0"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line14"
-    value: "2368.00"
-    work: "Section 179 claimed in the year placed in service"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line15"
-    value: "32538.79"
-    work: "34,906.79 - 2,368"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_full"
-    value: "0.00"
-    work: "No allowance claimed, so 0"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_forty"
-    value: "0.00"
-    work: "No allowance claimed, so 0"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_fullcase"
-    value: "0.00"
-    work: "No allowance claimed, so 0"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_2025"
-    value: "0.00"
-    work: "Not a 2025 vehicle"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line16"
-    value: "0.00"
-    work: "Not the year placed in service, so -0-"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_allowed"
-    value: "0.00"
-    work: "Smaller of 0 or line 11"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line17"
-    value: "5464.89"
-    work: "5,464.89 - 0"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line18"
-    value: "32538.79"
-    work: "32,538.79 - 0"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].qconv"
-    value: "mq3"
-    work: "Placed in service in Q3"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].rate_hy"
-    value: "20.00%"
-    work: "5-year, half-year convention, year 1"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].rate_mq"
-    value: "15.00%"
-    work: "5-year, mid-quarter Q3, year 1"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].rate_prior"
-    value: "11.52%"
-    work: "5-year, half-year convention, year 4"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line19_hy"
-    value: "6507.76"
-    work: "32,538.79 x 20%"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line19_mq"
-    value: "4880.82"
-    work: "32,538.79 x 15%"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line19_prior"
-    value: "3748.47"
-    work: "32,538.79 x 11.52%"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line19"
-    value: "3748.47"
-    work: "Prior-year vehicle, so year-4 rate"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line19_earlier"
-    value: "3748.47"
-    work: "Line 19 for a pre-2025 vehicle"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line19_2025"
-    value: "0.00"
-    work: "Not a 2025 vehicle"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line20"
-    value: "3748.47"
-    work: "Lesser of 5,464.89 or 3,748.47"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].b100"
-    value: "38895.00"
-    work: "41,263 - 2,368"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].r1"
-    value: "20.00%"
-    work: "Half-year convention, year 1"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].t1"
-    value: "7779.00"
-    work: "38,895 x 20%"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].t1s"
-    value: "10147.00"
-    work: "2,368 + 7,779"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].r2"
-    value: "32.00%"
-    work: "Half-year convention, year 2"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].t2"
-    value: "12446.40"
-    work: "38,895 x 32%"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].l2"
-    value: "18000.00"
-    work: "2022 vehicle, 2nd year limit"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].d2"
-    value: "12446.40"
-    work: "Lesser of 12,446.40 or 18,000"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].r3"
-    value: "19.20%"
-    work: "Half-year convention, year 3"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].t3"
-    value: "7467.84"
-    work: "38,895 x 19.2%"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].l3"
-    value: "10800.00"
-    work: "2022 vehicle, 3rd year limit"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].d3"
-    value: "7467.84"
-    work: "Lesser of 7,467.84 or 10,800"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].r4"
-    value: "11.52%"
-    work: "Half-year convention, year 4"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].t4"
-    value: "4480.70"
-    work: "38,895 x 11.52%"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].l4"
-    value: "6460.00"
-    work: "2022 vehicle, 4th year limit"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].d4"
-    value: "4480.70"
-    work: "Lesser of 4,480.70 or 6,460"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].r5"
-    value: "11.52%"
-    work: "Half-year convention, year 5"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].t5"
-    value: "4480.70"
-    work: "38,895 x 11.52%"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].r6"
-    value: "5.76%"
-    work: "Half-year convention, year 6"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].t6"
-    value: "2240.35"
-    work: "38,895 x 5.76%"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].too_old"
-    value: "no"
-    work: "Placed in service 2022"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_v"
-    value: "0.00"
-    work: "Line 16 = 0"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].macrs_pass"
-    value: "3748.47"
-    work: "Line 20"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].macrs_heavy"
-    value: "3748.47"
-    work: "Line 19"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].macrs_v"
-    value: "3748.47"
-    work: "Passenger automobile, so macrs_pass"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus"
-    value: "0.00"
-    work: "Standard rate and leased, no depreciation"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].macrs"
-    value: "0.00"
-    work: "Standard rate and leased, no depreciation"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].s179_2025"
-    value: "0.00"
-    work: "Not owned on actual expenses, not a 2025 vehicle"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].mq_q4"
-    value: "0.00"
-    work: "Not a 2025 owned vehicle"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].mq_total"
-    value: "0.00"
-    work: "Not a 2025 owned vehicle"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].cost179"
-    value: "0.00"
-    work: "Not a 2025 owned vehicle"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_o"
-    value: "0.00"
-    work: "Not owned on actual expenses"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].macrs_o"
-    value: "0.00"
-    work: "Not owned on actual expenses"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].s179_2025_o"
-    value: "0.00"
-    work: "Not owned on actual expenses"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].q4_basis"
-    value: "0.00"
-    work: "Placed in service in Q3, not October to December"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].mq_q4_o"
-    value: "0.00"
-    work: "Not owned on actual expenses"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].mq_q4_a2"
-    value: "0.00"
-    work: "Not a 2025 vehicle"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].mq_total_o"
-    value: "0.00"
-    work: "Not owned on actual expenses"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].mq_total_a2"
-    value: "0.00"
-    work: "Not a 2025 vehicle"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].cost179_o"
-    value: "0.00"
-    work: "Not owned on actual expenses"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].cost179_a2"
     value: "0.00"
     work: "Not a 2025 vehicle"
 ```
@@ -10095,591 +9207,286 @@ lines:
 ### classm.scveh.4
 
 ```yaml
-```yaml
 lines:
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bm_c"
-    value: "27186.00"
-    work: "Business miles 27,186"
+    value: "29886.00"
+    work: "Business miles 29,886"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].cm_c"
     value: "0.00"
     work: "Commuting miles 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].om_c"
-    value: "3177.00"
-    work: "Other miles 3,177"
+    value: "391.00"
+    work: "Other miles 391"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].nonbusiness_c"
-    value: "3177.00"
-    work: "0 + 3,177"
+    value: "391.00"
+    work: "0 + 391"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].total_c"
-    value: "30363.00"
-    work: "27,186 + 3,177"
+    value: "30277.00"
+    work: "29,886 + 391"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].no_miles"
+    value: "no"
+    work: "Total miles 30,277 > 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].over_half"
     value: "yes"
-    work: "27,186/30,363 = 89.54% > 50%"
+    work: "29,886 / 30,277 = 98.71% > 50%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].smr_bad"
     value: "no"
-    work: "Filer may use the standard mileage rate"
+    work: "Filer answered yes, the standard mileage rate may be used"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].smr_amount"
-    value: "19030.20"
-    work: "27,186 x 0.70"
+    value: "20920.20"
+    work: "29,886 x 0.70"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line9_standard"
-    value: "19030.20"
-    work: "19,030.20 + 0 parking/tolls"
+    value: "20920.20"
+    work: "20,920.20 + 0 parking and tolls"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].operating_business"
-    value: "4402.51"
-    work: "4,917 x 27,186/30,363"
+    value: "9706.02"
+    work: "9,833 x 29,886 / 30,277"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line9_actual"
-    value: "4402.51"
-    work: "4,402.51 + 0"
+    value: "9706.02"
+    work: "9,706.02 + 0 parking and tolls"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line9"
-    value: "4402.51"
+    value: "9706.02"
     work: "Actual expenses chosen"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].is_actual_owned"
     value: "yes"
-    work: "Owned; actual expenses"
+    work: "Owned and actual expenses"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].is_actual_leased"
     value: "no"
-    work: "Not leased"
+    work: "Vehicle is owned"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].lease_business"
-    value: "0.00"
-    work: "0 lease payments x business %"
+    value: "5582.96"
+    work: "5,656 x 29,886 / 30,277"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line20a"
     value: "0.00"
-    work: "Owned vehicle; no lease"
+    work: "Not leased, so no line 20a amount"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].low_use"
     value: "no"
-    work: "89.54% > 50%"
+    work: "98.71% > 50%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].screened"
     value: "no"
-    work: "No special case applies"
+    work: "Filer answered no to the screening question"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].year"
-    value: "1"
-    work: "Placed in service 2025"
+    value: "2"
+    work: "Placed in service 2024, so 2025 is recovery year 2"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].is2025"
-    value: "yes"
-    work: "y2025"
+    value: "no"
+    work: "Placed in service 2024"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].is2019"
     value: "no"
-    work: "y2025"
+    work: "Placed in service 2024"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bus_cost"
-    value: "22276.71"
-    work: "24,880 x 27,186/30,363"
+    value: "7658.80"
+    work: "Worksheet line 13: 7,759 x 29,886 / 30,277"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].s179_bad"
     value: "no"
-    work: "14,596 <= 22,276.71; not an SUV"
+    work: "2025 election 0 is not more than 7,658.80 business cost"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_mixed"
     value: "no"
-    work: "Same choice for all 5-year property"
+    work: "Choice is the same for all 5-year property"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].claims_bonus"
     value: "no"
     work: "Special allowance = none"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].lim_first_bonus"
     value: "20200.00"
-    work: "Pub 946 table, 2025 1st year"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].lim_first_none"
-    value: "12200.00"
-    work: "Footnote 1: no special allowance"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].lim_2025"
-    value: "12200.00"
-    work: "No special allowance claimed"
+    work: "Table 2 footnote: 2025 first-year limit with special allowance"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].lim_prior"
-    value: "0.00"
-    work: "Not a prior-year vehicle"
+    value: "19800.00"
+    work: "Table 2: 2024 automobile, year 2 limit"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line7"
-    value: "12200.00"
-    work: "2025 vehicle limit"
+    value: "19800.00"
+    work: "Year-2 limit for a 2024 vehicle"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line9w"
-    value: "10923.47"
-    work: "12,200 x 27,186/30,363"
+    value: "19544.30"
+    work: "19,800 x 29,886 / 30,277"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].s179_2025_ok"
-    value: "14596.00"
-    work: "Elected section 179 cost"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line10"
-    value: "10923.47"
-    work: "Smaller of 14,596 or line 9 10,923.47"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line10_2025"
-    value: "10923.47"
-    work: "Smaller of 14,596 or 10,923.47"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].s179_line10"
-    value: "10923.47"
-    work: "Smaller of 14,596 or 10,923.47"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line11"
     value: "0.00"
-    work: "10,923.47 - 10,923.47"
+    work: "Not a 2025 vehicle"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line10"
+    value: "0.00"
+    work: "Enter -0-: 2025 is not the year placed in service"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line10_2025"
+    value: "0.00"
+    work: "Not a 2025 vehicle"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].s179_line10"
+    value: "0.00"
+    work: "Smaller of election 0 or line 9 19,544.30"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line11"
+    value: "19544.30"
+    work: "19,544.30 - 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line14"
-    value: "10923.47"
-    work: "Section 179 claimed in 2025 (line 10)"
+    value: "7759.00"
+    work: "Section 179 claimed in year placed in service"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line15"
-    value: "11353.24"
-    work: "22,276.71 - 10,923.47"
+    value: "0.00"
+    work: "7,658.80 - 7,759 is less than zero, so enter 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_full"
-    value: "11353.24"
-    work: "11,353.24 x 100%"
+    value: "0.00"
+    work: "100% x 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_forty"
-    value: "4541.30"
-    work: "11,353.24 x 40%"
+    value: "0.00"
+    work: "40% x 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_fullcase"
-    value: "11353.24"
-    work: "Acquired after Jan 19, 2025, so 100%"
+    value: "0.00"
+    work: "Line 15 is 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_2025"
     value: "0.00"
-    work: "No special allowance claimed"
+    work: "Not a 2025 vehicle; no allowance claimed"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line16"
     value: "0.00"
-    work: "Not claimed"
+    work: "Enter -0-: not the year placed in service"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_allowed"
     value: "0.00"
-    work: "Smaller of 0 or line 11 0"
+    work: "Smaller of 0 or line 11"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line17"
+    value: "19544.30"
+    work: "19,544.30 - 0"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line18"
     value: "0.00"
     work: "0 - 0"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line18"
-    value: "11353.24"
-    work: "11,353.24 - 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].qconv"
     value: "mq4"
-    work: "Placed in service in Q4"
+    work: "Placed in service in the fourth quarter"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].rate_hy"
     value: "20.00%"
-    work: "5-year 200DB HY, year 1"
+    work: "5-year 200DB half-year, year 1"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].rate_mq"
     value: "5.00%"
-    work: "5-year 200DB MQ Q4, year 1"
+    work: "5-year 200DB mid-quarter Q4, year 1"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].rate_prior"
-    value: "20.00%"
-    work: "HY convention given, year 1"
+    value: "32.00%"
+    work: "5-year 200DB half-year (convention used), year 2"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line19_hy"
-    value: "2270.65"
-    work: "11,353.24 x 20%"
+    value: "0.00"
+    work: "0 x 20%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line19_mq"
-    value: "567.66"
-    work: "11,353.24 x 5%"
+    value: "0.00"
+    work: "0 x 5%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line19_prior"
-    value: "2270.65"
-    work: "11,353.24 x 20%"
+    value: "0.00"
+    work: "0 x 32%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line19"
-    value: "567.66"
-    work: "Mid-quarter convention applies"
+    value: "0.00"
+    work: "Line 18 is 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line19_earlier"
     value: "0.00"
-    work: "2025 vehicle"
+    work: "Prior-year vehicle: 0 x 32%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line19_2025"
-    value: "567.66"
-    work: "MQ test is yes, so use the MQ rate"
+    value: "0.00"
+    work: "Not a 2025 vehicle"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line20"
     value: "0.00"
-    work: "Lesser of line 17 0 or 567.66"
+    work: "Lesser of 19,544.30 or 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].b100"
-    value: "13956.53"
-    work: "24,880 - 10,923.47"
+    value: "0.00"
+    work: "7,759 - 7,759"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].r1"
     value: "20.00%"
-    work: "5-year HY, year 1"
+    work: "5-year half-year, year 1"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t1"
-    value: "2791.31"
-    work: "13,956.53 x 20%"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].l1"
-    value: "12200.00"
-    work: "2025 limit without special allowance"
+    value: "0.00"
+    work: "0 x 20%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t1s"
-    value: "13714.78"
-    work: "10,923.47 + 2,791.31"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].d1"
-    value: "12200.00"
-    work: "Lesser of 12,200 or 13,714.78"
+    value: "7759.00"
+    work: "7,759 + 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].r2"
     value: "32.00%"
-    work: "5-year HY, year 2"
+    work: "5-year half-year, year 2"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t2"
-    value: "4466.09"
-    work: "13,956.53 x 32%"
+    value: "0.00"
+    work: "0 x 32%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].l2"
+    value: "19800.00"
+    work: "2024 vehicle, year 2 limit"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].d2"
+    value: "0.00"
+    work: "Lesser of 0 or 19,800"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].r3"
     value: "19.20%"
-    work: "5-year HY, year 3"
+    work: "5-year half-year, year 3"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t3"
-    value: "2679.65"
-    work: "13,956.53 x 19.2%"
+    value: "0.00"
+    work: "0 x 19.20%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].r4"
     value: "11.52%"
-    work: "5-year HY, year 4"
+    work: "5-year half-year, year 4"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t4"
-    value: "1607.79"
-    work: "13,956.53 x 11.52%"
+    value: "0.00"
+    work: "0 x 11.52%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].r5"
     value: "11.52%"
-    work: "5-year HY, year 5"
+    work: "5-year half-year, year 5"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t5"
-    value: "1607.79"
-    work: "13,956.53 x 11.52%"
+    value: "0.00"
+    work: "0 x 11.52%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].r6"
     value: "5.76%"
-    work: "5-year HY, year 6"
+    work: "5-year half-year, year 6"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t6"
-    value: "803.90"
-    work: "13,956.53 x 5.76%"
+    value: "0.00"
+    work: "0 x 5.76%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].too_old"
     value: "no"
-    work: "Placed in service 2025"
+    work: "Placed in service 2024"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_v"
     value: "0.00"
     work: "No special allowance"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].macrs_pass"
     value: "0.00"
-    work: "Worksheet line 20"
+    work: "Line 20 is 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].macrs_heavy"
-    value: "567.66"
-    work: "Line 18 x MQ rate, no limit"
+    value: "0.00"
+    work: "Line 19 is 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].macrs_v"
     value: "0.00"
-    work: "Subject to the passenger automobile limits"
+    work: "Passenger automobile, so 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus"
     value: "0.00"
-    work: "bonus_v"
+    work: "Line 25 is 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].macrs"
     value: "0.00"
-    work: "macrs_v"
+    work: "Column (h) is 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].s179_2025"
-    value: "10923.47"
-    work: "Line 10"
+    value: "0.00"
+    work: "No 2025 election"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].mq_q4"
-    value: "11353.24"
-    work: "22,276.71 - 10,923.47, Q4"
+    value: "0.00"
+    work: "Not placed in service in 2025"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].mq_total"
-    value: "11353.24"
-    work: "Business basis less section 179"
+    value: "0.00"
+    work: "Not placed in service in 2025"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].cost179"
-    value: "22276.71"
-    work: "Business cost of listed section 179 property"
+    value: "0.00"
+    work: "Not placed in service in 2025"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_o"
     value: "0.00"
-    work: "Owned, actual"
+    work: "Owned and actual; allowance 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].macrs_o"
     value: "0.00"
-    work: "Owned, actual"
+    work: "Owned and actual; column (h) 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].s179_2025_o"
-    value: "10923.47"
-    work: "Owned, actual"
+    value: "0.00"
+    work: "Owned and actual; 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].q4_basis"
-    value: "11353.24"
-    work: "Placed in service in Q4"
+    value: "7658.80"
+    work: "Q4: business cost 7,658.80 - 2025 section 179 election 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].mq_q4_o"
-    value: "11353.24"
-    work: "Owned, actual"
+    value: "0.00"
+    work: "Not a 2025 vehicle"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].mq_q4_a2"
-    value: "11353.24"
-    work: "2025 vehicle"
+    value: "0.00"
+    work: "Not a 2025 vehicle"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].mq_total_o"
-    value: "11353.24"
-    work: "Owned, actual"
+    value: "0.00"
+    work: "Not a 2025 vehicle"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].mq_total_a2"
-    value: "11353.24"
-    work: "2025 vehicle"
+    value: "0.00"
+    work: "Not a 2025 vehicle"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].cost179_o"
-    value: "22276.71"
-    work: "Owned, actual"
+    value: "0.00"
+    work: "Not a 2025 vehicle"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].cost179_a2"
-    value: "22276.71"
-    work: "2025 vehicle"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bm_c"
-    value: "29702.00"
-    work: "Business miles 29,702"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].cm_c"
-    value: "0.00"
-    work: "Commuting miles 0"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].om_c"
-    value: "3185.00"
-    work: "Other miles 3,185"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].nonbusiness_c"
-    value: "3185.00"
-    work: "0 + 3,185"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].total_c"
-    value: "32887.00"
-    work: "29,702 + 3,185"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].over_half"
-    value: "yes"
-    work: "29,702/32,887 = 90.32% > 50%"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].smr_bad"
-    value: "no"
-    work: "Filer may use the standard mileage rate"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].smr_amount"
-    value: "20791.40"
-    work: "29,702 x 0.70"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line9_standard"
-    value: "20791.40"
-    work: "20,791.40 + 0"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].operating_business"
-    value: "137.28"
-    work: "152 x 29,702/32,887"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line9_actual"
-    value: "137.28"
-    work: "137.28 + 0"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line9"
-    value: "137.28"
-    work: "Actual expenses chosen"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].is_actual_owned"
-    value: "yes"
-    work: "Owned; actual expenses"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].is_actual_leased"
-    value: "no"
-    work: "Not leased"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].lease_business"
-    value: "3096.01"
-    work: "3,428 x 29,702/32,887"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line20a"
-    value: "0.00"
-    work: "Owned vehicle, so no line 20a amount"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].low_use"
-    value: "no"
-    work: "90.32% > 50%"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].screened"
-    value: "no"
-    work: "No special case applies"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].year"
-    value: "6"
-    work: "2025 - 2020 + 1"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].is2025"
-    value: "no"
-    work: "y2020"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].is2019"
-    value: "no"
-    work: "y2020"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bus_cost"
-    value: "55566.50"
-    work: "61,525 x 29,702/32,887"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].s179_bad"
-    value: "no"
-    work: "Election 0"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_mixed"
-    value: "no"
-    work: "Same choice for all 5-year property"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].claims_bonus"
-    value: "no"
-    work: "Special allowance = none"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].lim_first_bonus"
-    value: "18100.00"
-    work: "Pub 946 table, 2020 1st year"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].lim_prior"
-    value: "5760.00"
-    work: "2020 vehicle, 4th and later year"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line7"
-    value: "5760.00"
-    work: "Year 6 limit"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line9w"
-    value: "5202.16"
-    work: "5,760 x 29,702/32,887"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].s179_2025_ok"
     value: "0.00"
     work: "Not a 2025 vehicle"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line10"
-    value: "0.00"
-    work: "Not the year placed in service"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line10_2025"
-    value: "0.00"
-    work: "Election 0"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].s179_line10"
-    value: "0.00"
-    work: "Election 0"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line11"
-    value: "5202.16"
-    work: "5,202.16 - 0"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line14"
-    value: "0.00"
-    work: "Section 179 claimed in 2020 = 0"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line15"
-    value: "55566.50"
-    work: "55,566.50 - 0"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_full"
-    value: "55566.50"
-    work: "55,566.50 x 100%"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_forty"
-    value: "22226.60"
-    work: "55,566.50 x 40%"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_fullcase"
-    value: "55566.50"
-    work: "Acquired after Jan 19, 2025 = yes"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_2025"
-    value: "0.00"
-    work: "Not a 2025 vehicle; not claimed"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line16"
-    value: "0.00"
-    work: "Not the year placed in service"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_allowed"
-    value: "0.00"
-    work: "Smaller of 0 or 5,202.16"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line17"
-    value: "5202.16"
-    work: "5,202.16 - 0"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line18"
-    value: "55566.50"
-    work: "55,566.50 - 0"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].qconv"
-    value: "mq1"
-    work: "Quarter q1"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].rate_hy"
-    value: "20.00%"
-    work: "5-year HY, year 1"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].rate_mq"
-    value: "35.00%"
-    work: "5-year MQ Q1, year 1"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].rate_prior"
-    value: "4.26%"
-    work: "5-year MQ Q2 (mq2), year 6"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line19_hy"
-    value: "11113.30"
-    work: "55,566.50 x 20%"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line19_mq"
-    value: "19448.28"
-    work: "55,566.50 x 35%"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line19_prior"
-    value: "2367.13"
-    work: "55,566.50 x 4.26%"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line19"
-    value: "2367.13"
-    work: "Prior-year vehicle rate"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line19_earlier"
-    value: "2367.13"
-    work: "Year 6 is within the recovery period"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line19_2025"
-    value: "0.00"
-    work: "Not a 2025 vehicle"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line20"
-    value: "2367.13"
-    work: "Lesser of 5,202.16 or 2,367.13"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].b100"
-    value: "61525.00"
-    work: "61,525 - 0"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].r1"
-    value: "25.00%"
-    work: "5-year MQ Q2, year 1"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].t1"
-    value: "15381.25"
-    work: "61,525 x 25%"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].t1s"
-    value: "15381.25"
-    work: "0 + 15,381.25"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].r2"
-    value: "30.00%"
-    work: "5-year MQ Q2, year 2"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].t2"
-    value: "18457.50"
-    work: "61,525 x 30%"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].l2"
-    value: "16100.00"
-    work: "2020 vehicle, 2nd year"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].d2"
-    value: "16100.00"
-    work: "Lesser of 16,100 or 18,457.50"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].r3"
-    value: "18.00%"
-    work: "5-year MQ Q2, year 3"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].t3"
-    value: "11074.50"
-    work: "61,525 x 18%"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].l3"
-    value: "9700.00"
-    work: "2020 vehicle, 3rd year"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].d3"
-    value: "9700.00"
-    work: "Lesser of 9,700 or 11,074.50"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].r4"
-    value: "11.37%"
-    work: "5-year MQ Q2, year 4"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].t4"
-    value: "6995.39"
-    work: "61,525 x 11.37%"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].l4"
-    value: "5760.00"
-    work: "2020 vehicle, 4th and later year"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].d4"
-    value: "5760.00"
-    work: "Lesser of 5,760 or 6,995.39"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].r5"
-    value: "11.37%"
-    work: "5-year MQ Q2, year 5"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].t5"
-    value: "6995.39"
-    work: "61,525 x 11.37%"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].l5"
-    value: "5760.00"
-    work: "2020 vehicle, 4th and later year"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].d5"
-    value: "5760.00"
-    work: "Lesser of 5,760 or 6,995.39"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].r6"
-    value: "4.26%"
-    work: "5-year MQ Q2, year 6"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].t6"
-    value: "2620.97"
-    work: "61,525 x 4.26%"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].l6"
-    value: "5760.00"
-    work: "2020 vehicle, 4th and later year"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].d6"
-    value: "2620.97"
-    work: "Lesser of 5,760 or 2,620.97"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].too_old"
-    value: "no"
-    work: "Placed in service 2020"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_v"
-    value: "0.00"
-    work: "Not the year placed in service"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].macrs_pass"
-    value: "2367.13"
-    work: "Worksheet line 20"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].macrs_heavy"
-    value: "2367.13"
-    work: "Line 18 x year-6 rate, no limit"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].macrs_v"
-    value: "2367.13"
-    work: "Passenger automobile"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus"
-    value: "0.00"
-    work: "bonus_v"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].macrs"
-    value: "2367.13"
-    work: "macrs_v"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].s179_2025"
-    value: "0.00"
-    work: "Not a 2025 vehicle"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].mq_q4"
-    value: "0.00"
-    work: "Not placed in service in 2025"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].mq_total"
-    value: "0.00"
-    work: "Not placed in service in 2025"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].cost179"
-    value: "0.00"
-    work: "Not placed in service in 2025"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_o"
-    value: "0.00"
-    work: "Owned, actual"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].macrs_o"
-    value: "2367.13"
-    work: "Owned, actual"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].s179_2025_o"
-    value: "0.00"
-    work: "Owned, actual"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].q4_basis"
-    value: "0.00"
-    work: "Quarter q1, not Q4"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].mq_q4_o"
-    value: "0.00"
-    work: "Not a 2025 vehicle"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].mq_q4_a2"
-    value: "0.00"
-    work: "Not a 2025 vehicle"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].mq_total_o"
-    value: "0.00"
-    work: "Not a 2025 vehicle"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].mq_total_a2"
-    value: "0.00"
-    work: "Not a 2025 vehicle"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].cost179_o"
-    value: "0.00"
-    work: "Not a 2025 vehicle"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].cost179_a2"
-    value: "0.00"
-    work: "Not a 2025 vehicle"
-```
 ```
 
 ### classm.scveh.5
@@ -10687,588 +9494,1152 @@ lines:
 ```yaml
 ```yaml
 lines:
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bm_c"
-    value: "21632.00"
-    work: "Business miles 21,632"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].cm_c"
-    value: "0.00"
-    work: "Commuting miles 0"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].om_c"
-    value: "1803.00"
-    work: "Other miles 1,803"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].nonbusiness_c"
-    value: "1803.00"
-    work: "0 + 1,803"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].total_c"
-    value: "23435.00"
-    work: "21,632 + 1,803"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].over_half"
-    value: "yes"
-    work: "21,632/23,435 = 92.31% > 50%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].smr_bad"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bm_c"
+    value: "13307.00"
+    work: "Business miles 13,307"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].cm_c"
+    value: "2928.00"
+    work: "Commuting miles 2,928"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].om_c"
+    value: "2824.00"
+    work: "Other miles 2,824"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].nonbusiness_c"
+    value: "5752.00"
+    work: "2928 + 2824"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].total_c"
+    value: "19059.00"
+    work: "13307 + 5752"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].no_miles"
     value: "no"
-    work: "Filer says the standard mileage rate may be used"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].smr_amount"
-    value: "15142.40"
-    work: "21,632 x 0.70"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line9_standard"
-    value: "15142.40"
-    work: "15,142.40 + 0 parking and tolls"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].operating_business"
-    value: "1853.51"
-    work: "2,008 x 21,632/23,435"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line9_actual"
-    value: "1853.51"
-    work: "1,853.51 + 0"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line9"
-    value: "1853.51"
+    work: "Total miles is more than 0"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].over_half"
+    value: "yes"
+    work: "13307/19059 = 69.82% > 50%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].smr_bad"
+    value: "no"
+    work: "The filer may use the standard mileage rate"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].smr_amount"
+    value: "9314.90"
+    work: "13307 x 0.70"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line9_standard"
+    value: "9314.90"
+    work: "9314.90 + 0 parking and tolls"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].operating_business"
+    value: "0.00"
+    work: "0 x 13307/19059"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line9_actual"
+    value: "0.00"
+    work: "0 + 0"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line9"
+    value: "0.00"
     work: "Actual expenses method"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].is_actual_owned"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].is_actual_owned"
+    value: "no"
+    work: "Vehicle is leased"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].is_actual_leased"
     value: "yes"
-    work: "Owned and actual expenses"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].is_actual_leased"
+    work: "Leased, actual expenses"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].lease_business"
+    value: "2493.27"
+    work: "3571 x 13307/19059"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line20a"
+    value: "2493.27"
+    work: "Leased on actual expenses, business portion of lease"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].low_use"
     value: "no"
-    work: "Not leased"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].lease_business"
-    value: "6701.44"
-    work: "7,260 x 21,632/23,435"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line20a"
-    value: "0.00"
-    work: "Not a leased vehicle on actual expenses"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].low_use"
+    work: "69.82% > 50%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].screened"
     value: "no"
-    work: "92.31% business use"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].screened"
+    work: "No screening condition applies"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].year"
+    value: "2"
+    work: "2025 - 2024 + 1"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].is2025"
     value: "no"
-    work: "None of the screening conditions apply"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].year"
-    value: "1"
-    work: "Placed in service in 2025"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].is2025"
-    value: "yes"
-    work: "y2025"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].is2019"
+    work: "Placed in service in 2024"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].is2019"
     value: "no"
-    work: "y2025"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bus_cost"
-    value: "58785.32"
-    work: "63,685 x 21,632/23,435"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].s179_bad"
+    work: "Placed in service in 2024"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bus_cost"
+    value: "54544.11"
+    work: "78121 x 13307/19059"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].s179_bad"
     value: "no"
     work: "Section 179 election is 0"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bonus_mixed"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_mixed"
     value: "no"
-    work: "Same choice for all 5-year property"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].claims_bonus"
-    value: "yes"
-    work: "Filer chose the 40% allowance"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].lim_first_bonus"
+    work: "Choice is the same for all 5-year property"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].claims_bonus"
+    value: "no"
+    work: "Special allowance = none"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].lim_first_bonus"
     value: "20200.00"
-    work: "2025 table, first year"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].lim_first_none"
-    value: "12200.00"
-    work: "2025 table, footnote 1"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].lim_2025"
-    value: "20200.00"
-    work: "Special allowance claimed"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].lim_prior"
+    work: "Table 2 footnote, 2025 with special allowance"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].lim_prior"
+    value: "19800.00"
+    work: "Table 2, placed in service 2024, year 2"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line7"
+    value: "19800.00"
+    work: "Year-2 limit"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line9w"
+    value: "13824.37"
+    work: "19800 x 13307/19059"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].s179_2025_ok"
     value: "0.00"
-    work: "Not a prior-year vehicle"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line7"
-    value: "20200.00"
-    work: "lim_2025"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line9w"
-    value: "18645.89"
-    work: "20,200 x 21,632/23,435"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].s179_2025_ok"
+    work: "Not a 2025 vehicle"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line10"
     value: "0.00"
-    work: "No section 179 elected"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line10"
+    work: "Not the year placed in service"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line10_2025"
     value: "0.00"
-    work: "No section 179"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line10_2025"
+    work: "Section 179 is 0"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].s179_line10"
     value: "0.00"
-    work: "min(0, line 9)"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].s179_line10"
+    work: "smaller of 0 or line 9"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line11"
+    value: "13824.37"
+    work: "13824.37 - 0"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line14"
     value: "0.00"
-    work: "min(0, line 9)"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line11"
-    value: "18645.89"
-    work: "18,645.89 - 0"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line14"
+    work: "Section 179 in the year placed in service = 0"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line15"
+    value: "54544.11"
+    work: "54544.11 - 0"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_full"
+    value: "54544.11"
+    work: "54544.11 x 100%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_forty"
+    value: "21817.64"
+    work: "54544.11 x 40%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_fullcase"
+    value: "54544.11"
+    work: "Acquired after 1/19/2025, so 100%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_2025"
     value: "0.00"
-    work: "No section 179"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line15"
-    value: "58785.32"
-    work: "58,785.32 - 0"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bonus_full"
-    value: "58785.32"
-    work: "100% x 58,785.32"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bonus_forty"
-    value: "23514.13"
-    work: "40% x 58,785.32"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bonus_fullcase"
-    value: "58785.32"
-    work: "Acquired after January 19, 2025, so 100%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bonus_2025"
-    value: "23514.13"
-    work: "Filer elected 40%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line16"
-    value: "23514.13"
-    work: "bonus_2025"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bonus_allowed"
-    value: "18645.89"
-    work: "min(23,514.13, line 11 18,645.89)"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line17"
+    work: "No special allowance claimed"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line16"
     value: "0.00"
-    work: "18,645.89 - 23,514.13 < 0, so 0"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line18"
-    value: "35271.19"
-    work: "58,785.32 - 23,514.13"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].qconv"
-    value: "mq3"
-    work: "Placed in service in q3"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].rate_hy"
+    work: "Not the year placed in service"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_allowed"
+    value: "0.00"
+    work: "smaller of 0 or line 11"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line17"
+    value: "13824.37"
+    work: "13824.37 - 0"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line18"
+    value: "54544.11"
+    work: "54544.11 - 0"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].qconv"
+    value: "mq4"
+    work: "Placed in service in Q4"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].rate_hy"
     value: "20.00%"
     work: "5-yr 200DB HY, year 1"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].rate_mq"
-    value: "15.00%"
-    work: "5-yr 200DB MQ Q3, year 1"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].rate_prior"
-    value: "20.00%"
-    work: "Year 1, HY applies (mid-quarter test is no)"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line19_hy"
-    value: "7054.24"
-    work: "35,271.19 x 20%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line19_mq"
-    value: "5290.68"
-    work: "35,271.19 x 15%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line19_prior"
-    value: "7054.24"
-    work: "35,271.19 x 20%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line19"
-    value: "7054.24"
-    work: "Half-year convention applies"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line19_earlier"
-    value: "7054.24"
-    work: "line19_prior; not a 2019 vehicle"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line19_2025"
-    value: "7054.24"
-    work: "Half-year convention, because the mid-quarter test is no"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line20"
-    value: "0.00"
-    work: "Lesser of 0 or 7,054.24"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].b100"
-    value: "63685.00"
-    work: "63,685 - 0"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].r1"
-    value: "20.00%"
-    work: "5-yr HY, year 1"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].t1"
-    value: "12737.00"
-    work: "63,685 x 20%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].l1"
-    value: "12200.00"
-    work: "2025 first-year limit, no special allowance"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].t1s"
-    value: "12737.00"
-    work: "0 + 12,737"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].d1"
-    value: "12200.00"
-    work: "Lesser of 12,200 or 12,737"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].r2"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].rate_mq"
+    value: "5.00%"
+    work: "5-yr 200DB MQ Q4, year 1"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].rate_prior"
     value: "32.00%"
-    work: "5-yr HY, year 2"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].t2"
-    value: "20379.20"
-    work: "63,685 x 32%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].r3"
+    work: "HY, year 2"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line19_hy"
+    value: "10908.82"
+    work: "54544.11 x 20%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line19_mq"
+    value: "2727.21"
+    work: "54544.11 x 5%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line19_prior"
+    value: "17454.12"
+    work: "54544.11 x 32%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line19"
+    value: "17454.12"
+    work: "Placed in service before 2025, so the year-2 rate"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line19_earlier"
+    value: "17454.12"
+    work: "line19_prior"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line19_2025"
+    value: "10908.82"
+    work: "Mid-quarter test no, so HY"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line20"
+    value: "13824.37"
+    work: "lesser of 13824.37 or 17454.12"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].b100"
+    value: "78121.00"
+    work: "78121 - 0"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].r1"
+    value: "20.00%"
+    work: "HY, year 1"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t1"
+    value: "15624.20"
+    work: "78121 x 20%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t1s"
+    value: "15624.20"
+    work: "0 + 15624.20"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].r2"
+    value: "32.00%"
+    work: "HY, year 2"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t2"
+    value: "24998.72"
+    work: "78121 x 32%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].l2"
+    value: "19800.00"
+    work: "Table 2, 2024, year 2"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].d2"
+    value: "19800.00"
+    work: "lesser of 19800 or 24998.72"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].r3"
     value: "19.20%"
-    work: "5-yr HY, year 3"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].t3"
-    value: "12227.52"
-    work: "63,685 x 19.2%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].r4"
+    work: "HY, year 3"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t3"
+    value: "14999.23"
+    work: "78121 x 19.2%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].r4"
     value: "11.52%"
-    work: "5-yr HY, year 4"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].t4"
-    value: "7336.51"
-    work: "63,685 x 11.52%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].r5"
+    work: "HY, year 4"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t4"
+    value: "8999.54"
+    work: "78121 x 11.52%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].r5"
     value: "11.52%"
-    work: "5-yr HY, year 5"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].t5"
-    value: "7336.51"
-    work: "63,685 x 11.52%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].r6"
+    work: "HY, year 5"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t5"
+    value: "8999.54"
+    work: "78121 x 11.52%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].r6"
     value: "5.76%"
-    work: "5-yr HY, year 6"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].t6"
-    value: "3668.26"
-    work: "63,685 x 5.76%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].too_old"
+    work: "HY, year 6"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t6"
+    value: "4499.77"
+    work: "78121 x 5.76%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].too_old"
+    value: "no"
+    work: "Placed in service 2024"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_v"
+    value: "0.00"
+    work: "line 16 allowed = 0"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].macrs_pass"
+    value: "13824.37"
+    work: "line 20"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].macrs_heavy"
+    value: "17454.12"
+    work: "line 19"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].macrs_v"
+    value: "13824.37"
+    work: "Subject to the passenger automobile limits"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus"
+    value: "0.00"
+    work: "Not owned and on actual expenses"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].macrs"
+    value: "0.00"
+    work: "Leased, no depreciation"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].s179_2025"
+    value: "0.00"
+    work: "Leased"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].mq_q4"
+    value: "0.00"
+    work: "Not owned and on actual expenses / not 2025"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].mq_total"
+    value: "0.00"
+    work: "Not 2025"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].cost179"
+    value: "0.00"
+    work: "Not 2025"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_o"
+    value: "0.00"
+    work: "Not owned"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].macrs_o"
+    value: "0.00"
+    work: "Not owned"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].s179_2025_o"
+    value: "0.00"
+    work: "Not owned"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].q4_basis"
+    value: "54544.11"
+    work: "Q4, so 54544.11 - 0"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].mq_q4_o"
+    value: "0.00"
+    work: "Not owned"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].mq_q4_a2"
+    value: "0.00"
+    work: "Not 2025"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].mq_total_o"
+    value: "0.00"
+    work: "Not owned"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].mq_total_a2"
+    value: "0.00"
+    work: "Not 2025"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].cost179_o"
+    value: "0.00"
+    work: "Not owned"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].cost179_a2"
+    value: "0.00"
+    work: "Not 2025"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bm_c"
+    value: "29252.00"
+    work: "Business miles 29,252"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].cm_c"
+    value: "726.00"
+    work: "Commuting miles 726"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].om_c"
+    value: "1699.00"
+    work: "Other miles 1,699"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].nonbusiness_c"
+    value: "2425.00"
+    work: "726 + 1699"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].total_c"
+    value: "31677.00"
+    work: "29252 + 2425"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].no_miles"
+    value: "no"
+    work: "Total miles is more than 0"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].over_half"
+    value: "yes"
+    work: "29252/31677 = 92.34%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].smr_bad"
+    value: "no"
+    work: "The standard mileage rate is available"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].smr_amount"
+    value: "20476.40"
+    work: "29252 x 0.70"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line9_standard"
+    value: "20476.40"
+    work: "20476.40 + 0"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].operating_business"
+    value: "2650.29"
+    work: "2870 x 29252/31677"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line9_actual"
+    value: "2650.29"
+    work: "2650.29 + 0"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line9"
+    value: "2650.29"
+    work: "Actual expenses method"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].is_actual_owned"
+    value: "yes"
+    work: "Owned, actual expenses"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].is_actual_leased"
+    value: "no"
+    work: "Owned"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].lease_business"
+    value: "961.31"
+    work: "1041 x 29252/31677"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line20a"
+    value: "0.00"
+    work: "Not leased"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].low_use"
+    value: "no"
+    work: "92.34% > 50%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].screened"
+    value: "no"
+    work: "No screening condition applies"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].year"
+    value: "1"
+    work: "Placed in service 2025"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].is2025"
+    value: "yes"
+    work: "Placed in service in 2025"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].is2019"
     value: "no"
     work: "Placed in service in 2025"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bonus_v"
-    value: "18645.89"
-    work: "bonus_allowed"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].macrs_pass"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bus_cost"
+    value: "41575.39"
+    work: "45022 x 29252/31677"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].s179_bad"
+    value: "no"
+    work: "14878 <= 41575.39; not an SUV"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_mixed"
+    value: "no"
+    work: "Same choice for the class"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].claims_bonus"
+    value: "no"
+    work: "Special allowance = none"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].lim_first_bonus"
+    value: "20200.00"
+    work: "Table 2 footnote"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].lim_first_none"
+    value: "12200.00"
+    work: "Table 2, 2025, year 1"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].lim_2025"
+    value: "12200.00"
+    work: "No special allowance"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].lim_prior"
+    value: "12200.00"
+    work: "Year 1 of a 2025 vehicle"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line7"
+    value: "12200.00"
+    work: "lim_2025"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line9w"
+    value: "11266.04"
+    work: "12200 x 29252/31677"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].s179_2025_ok"
+    value: "14878.00"
+    work: "Election allowed"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line10"
+    value: "11266.04"
+    work: "smaller of 14878 or 11266.04"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line10_2025"
+    value: "11266.04"
+    work: "smaller of 14878 or line 9"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].s179_line10"
+    value: "11266.04"
+    work: "smaller of 14878 or line 9"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line11"
+    value: "0.00"
+    work: "11266.04 - 11266.04"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line14"
+    value: "11266.04"
+    work: "Section 179 claimed in 2025"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line15"
+    value: "30309.35"
+    work: "41575.39 - 11266.04"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_full"
+    value: "30309.35"
+    work: "30309.35 x 100%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_forty"
+    value: "12123.74"
+    work: "30309.35 x 40%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_fullcase"
+    value: "30309.35"
+    work: "Acquired after 1/19/2025"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_2025"
+    value: "0.00"
+    work: "Not claimed"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line16"
+    value: "0.00"
+    work: "Not claimed"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_allowed"
+    value: "0.00"
+    work: "smaller of 0 or 0"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line17"
+    value: "0.00"
+    work: "0 - 0"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line18"
+    value: "30309.35"
+    work: "30309.35 - 0"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].qconv"
+    value: "mq3"
+    work: "Q3"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].rate_hy"
+    value: "20.00%"
+    work: "HY, year 1"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].rate_mq"
+    value: "15.00%"
+    work: "MQ Q3, year 1"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].rate_prior"
+    value: "20.00%"
+    work: "HY, year 1"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line19_hy"
+    value: "6061.87"
+    work: "30309.35 x 20%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line19_mq"
+    value: "4546.40"
+    work: "30309.35 x 15%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line19_prior"
+    value: "6061.87"
+    work: "30309.35 x 20%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line19"
+    value: "6061.87"
+    work: "MQ test no, so HY"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line19_earlier"
+    value: "6061.87"
+    work: "line19_prior"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line19_2025"
+    value: "6061.87"
+    work: "HY"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line20"
+    value: "0.00"
+    work: "lesser of 0 or 6061.87"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].b100"
+    value: "33755.96"
+    work: "45022 - 11266.04"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].r1"
+    value: "20.00%"
+    work: "HY, year 1"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].t1"
+    value: "6751.19"
+    work: "33755.96 x 20%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].l1"
+    value: "12200.00"
+    work: "Table 2, 2025, year 1"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].t1s"
+    value: "18017.23"
+    work: "11266.04 + 6751.19"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].d1"
+    value: "12200.00"
+    work: "lesser of 12200 or 18017.23"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].r2"
+    value: "32.00%"
+    work: "HY, year 2"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].t2"
+    value: "10801.91"
+    work: "33755.96 x 32%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].r3"
+    value: "19.20%"
+    work: "HY, year 3"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].t3"
+    value: "6481.14"
+    work: "33755.96 x 19.2%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].r4"
+    value: "11.52%"
+    work: "HY, year 4"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].t4"
+    value: "3888.69"
+    work: "33755.96 x 11.52%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].r5"
+    value: "11.52%"
+    work: "HY, year 5"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].t5"
+    value: "3888.69"
+    work: "33755.96 x 11.52%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].r6"
+    value: "5.76%"
+    work: "HY, year 6"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].t6"
+    value: "1944.34"
+    work: "33755.96 x 5.76%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].too_old"
+    value: "no"
+    work: "Placed in service 2025"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_v"
+    value: "0.00"
+    work: "No allowance"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].macrs_pass"
     value: "0.00"
     work: "line 20"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].macrs_heavy"
-    value: "7054.24"
-    work: "line 19, no limit"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].macrs_v"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].macrs_heavy"
+    value: "6061.87"
+    work: "line 19"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].macrs_v"
     value: "0.00"
-    work: "Subject to the passenger automobile limits"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bonus"
-    value: "18645.89"
-    work: "Owned, actual expenses"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].macrs"
+    work: "Subject to the limits"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus"
+    value: "0.00"
+    work: "bonus_o"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].macrs"
+    value: "0.00"
+    work: "macrs_o"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].s179_2025"
+    value: "11266.04"
+    work: "s179_2025_o"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].mq_q4"
+    value: "0.00"
+    work: "Q3"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].mq_total"
+    value: "30309.35"
+    work: "41575.39 - 11266.04"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].cost179"
+    value: "41575.39"
+    work: "Business cost"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_o"
+    value: "0.00"
+    work: "bonus_v"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].macrs_o"
     value: "0.00"
     work: "macrs_v"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].s179_2025_o"
+    value: "11266.04"
+    work: "line 10"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].q4_basis"
+    value: "0.00"
+    work: "Not Q4"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].mq_q4_o"
+    value: "0.00"
+    work: "Not Q4"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].mq_q4_a2"
+    value: "0.00"
+    work: "Not Q4"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].mq_total_o"
+    value: "30309.35"
+    work: "mq_total_a2"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].mq_total_a2"
+    value: "30309.35"
+    work: "41575.39 - 11266.04"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].cost179_o"
+    value: "41575.39"
+    work: "cost179_a2"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].cost179_a2"
+    value: "41575.39"
+    work: "Business cost"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bm_c"
+    value: "20767.00"
+    work: "Business miles 20,767"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].cm_c"
+    value: "3286.00"
+    work: "Commuting miles 3,286"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].om_c"
+    value: "3077.00"
+    work: "Other miles 3,077"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].nonbusiness_c"
+    value: "6363.00"
+    work: "3286 + 3077"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].total_c"
+    value: "27130.00"
+    work: "20767 + 6363"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].no_miles"
+    value: "no"
+    work: "Standard mileage method; miles > 0"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].over_half"
+    value: "yes"
+    work: "20767/27130 = 76.55%"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].smr_bad"
+    value: "no"
+    work: "Standard mileage rate is allowed"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].smr_amount"
+    value: "14536.90"
+    work: "20767 x 0.70"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line9_standard"
+    value: "14536.90"
+    work: "14536.90 + 0"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].operating_business"
+    value: "0.00"
+    work: "0 x pct"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line9_actual"
+    value: "0.00"
+    work: "0 + 0"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line9"
+    value: "14536.90"
+    work: "Standard mileage method"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].is_actual_owned"
+    value: "no"
+    work: "Standard mileage method"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].is_actual_leased"
+    value: "no"
+    work: "Standard mileage method"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].lease_business"
+    value: "0.00"
+    work: "0 x pct"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line20a"
+    value: "0.00"
+    work: "Not leased on actual expenses"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].low_use"
+    value: "no"
+    work: "76.55% > 50%"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].screened"
+    value: "no"
+    work: "No screening condition applies"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].year"
+    value: "6"
+    work: "2025 - 2020 + 1"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].is2025"
+    value: "no"
+    work: "Placed in service 2020"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].is2019"
+    value: "no"
+    work: "Placed in service 2020"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bus_cost"
+    value: "28476.74"
+    work: "37202 x 20767/27130"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].s179_bad"
+    value: "no"
+    work: "Election is 0"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bonus_mixed"
+    value: "no"
+    work: "Same choice"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].claims_bonus"
+    value: "no"
+    work: "Special allowance = none"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].lim_first_bonus"
+    value: "20200.00"
+    work: "Table 2 footnote"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].lim_prior"
+    value: "5760.00"
+    work: "Table 2, 2020, 4 or more years"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line7"
+    value: "5760.00"
+    work: "lim_prior"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line9w"
+    value: "4409.06"
+    work: "5760 x 20767/27130"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].s179_2025_ok"
+    value: "0.00"
+    work: "Not 2025"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line10"
+    value: "0.00"
+    work: "Not the year placed in service"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line10_2025"
+    value: "0.00"
+    work: "Section 179 is 0"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].s179_line10"
+    value: "0.00"
+    work: "Section 179 is 0"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line11"
+    value: "4409.06"
+    work: "4409.06 - 0"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line14"
+    value: "0.00"
+    work: "Given"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line15"
+    value: "28476.74"
+    work: "28476.74 - 0"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bonus_full"
+    value: "28476.74"
+    work: "x 100%"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bonus_forty"
+    value: "11390.70"
+    work: "x 40%"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bonus_fullcase"
+    value: "28476.74"
+    work: "Acquired after 1/19/2025"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bonus_2025"
+    value: "0.00"
+    work: "Not claimed"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line16"
+    value: "0.00"
+    work: "Not the year placed in service"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bonus_allowed"
+    value: "0.00"
+    work: "0"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line17"
+    value: "4409.06"
+    work: "4409.06 - 0"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line18"
+    value: "28476.74"
+    work: "28476.74 - 0"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].qconv"
+    value: "mq4"
+    work: "Q4"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].rate_hy"
+    value: "20.00%"
+    work: "HY, year 1"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].rate_mq"
+    value: "5.00%"
+    work: "MQ Q4, year 1"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].rate_prior"
+    value: "4.26%"
+    work: "MQ Q2, year 6"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line19_hy"
+    value: "5695.35"
+    work: "28476.74 x 20%"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line19_mq"
+    value: "1423.84"
+    work: "28476.74 x 5%"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line19_prior"
+    value: "1213.11"
+    work: "28476.74 x 4.26%"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line19"
+    value: "1213.11"
+    work: "Placed in service before 2025"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line19_earlier"
+    value: "1213.11"
+    work: "line19_prior"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line19_2025"
+    value: "5695.35"
+    work: "HY"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].line20"
+    value: "1213.11"
+    work: "lesser of 4409.06 or 1213.11"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].b100"
+    value: "37202.00"
+    work: "37202 - 0"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].r1"
+    value: "25.00%"
+    work: "MQ Q2, year 1"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].t1"
+    value: "9300.50"
+    work: "37202 x 25%"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].t1s"
+    value: "9300.50"
+    work: "0 + 9300.50"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].r2"
+    value: "30.00%"
+    work: "MQ Q2, year 2"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].t2"
+    value: "11160.60"
+    work: "37202 x 30%"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].l2"
+    value: "16100.00"
+    work: "2020, year 2"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].d2"
+    value: "11160.60"
+    work: "lesser"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].r3"
+    value: "18.00%"
+    work: "MQ Q2, year 3"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].t3"
+    value: "6696.36"
+    work: "37202 x 18%"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].l3"
+    value: "9700.00"
+    work: "2020, year 3"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].d3"
+    value: "6696.36"
+    work: "lesser"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].r4"
+    value: "11.37%"
+    work: "MQ Q2, year 4"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].t4"
+    value: "4229.87"
+    work: "37202 x 11.37%"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].l4"
+    value: "5760.00"
+    work: "2020, year 4 or more"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].d4"
+    value: "4229.87"
+    work: "lesser"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].r5"
+    value: "11.37%"
+    work: "MQ Q2, year 5"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].t5"
+    value: "4229.87"
+    work: "37202 x 11.37%"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].l5"
+    value: "5760.00"
+    work: "2020, year 4 or more"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].d5"
+    value: "4229.87"
+    work: "lesser"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].r6"
+    value: "4.26%"
+    work: "MQ Q2, year 6"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].t6"
+    value: "1584.81"
+    work: "37202 x 4.26%"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].l6"
+    value: "5760.00"
+    work: "2020, year 4 or more"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].d6"
+    value: "1584.81"
+    work: "lesser"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].too_old"
+    value: "no"
+    work: "Placed in service 2020"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bonus_v"
+    value: "0.00"
+    work: "No allowance"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].macrs_pass"
+    value: "1213.11"
+    work: "line 20"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].macrs_heavy"
+    value: "1213.11"
+    work: "line 19"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].macrs_v"
+    value: "1213.11"
+    work: "Subject to the limits"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bonus"
+    value: "0.00"
+    work: "Standard mileage"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_1].macrs"
+    value: "0.00"
+    work: "Standard mileage, no depreciation"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].s179_2025"
     value: "0.00"
-    work: "No section 179"
+    work: "Standard mileage"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].mq_q4"
     value: "0.00"
-    work: "Placed in service in Q3"
+    work: "Not owned on actual / not 2025"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].mq_total"
-    value: "58785.32"
-    work: "Business basis less section 179 of 0"
+    value: "0.00"
+    work: "Not 2025"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].cost179"
-    value: "58785.32"
-    work: "Business-use cost"
+    value: "0.00"
+    work: "Not 2025"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].bonus_o"
-    value: "18645.89"
-    work: "Owned, actual expenses"
+    value: "0.00"
+    work: "Not actual-owned"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].macrs_o"
     value: "0.00"
-    work: "Owned, actual expenses"
+    work: "Not actual-owned"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].s179_2025_o"
     value: "0.00"
-    work: "Owned, actual expenses"
+    work: "Not actual-owned"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].q4_basis"
-    value: "58785.32"
-    work: "58,785.32 - 0"
+    value: "28476.74"
+    work: "Q4, so 28476.74 - 0"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].mq_q4_o"
     value: "0.00"
-    work: "Not placed in service in Q4"
+    work: "Not actual-owned"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].mq_q4_a2"
     value: "0.00"
-    work: "Not placed in service in Q4"
+    work: "Not 2025"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].mq_total_o"
-    value: "58785.32"
-    work: "Owned, actual expenses"
+    value: "0.00"
+    work: "Not actual-owned"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].mq_total_a2"
-    value: "58785.32"
-    work: "2025 vehicle"
+    value: "0.00"
+    work: "Not 2025"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].cost179_o"
-    value: "58785.32"
-    work: "Owned, actual expenses"
+    value: "0.00"
+    work: "Not actual-owned"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_1].cost179_a2"
-    value: "58785.32"
-    work: "2025 vehicle"
+    value: "0.00"
+    work: "Not 2025"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].bm_c"
-    value: "15902.00"
-    work: "Business miles 15,902"
+    value: "15546.00"
+    work: "Business miles 15,546"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].cm_c"
     value: "0.00"
     work: "Commuting miles 0"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].om_c"
-    value: "12.00"
-    work: "Other miles 12"
+    value: "3799.00"
+    work: "Other miles 3,799"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].nonbusiness_c"
-    value: "12.00"
-    work: "0 + 12"
+    value: "3799.00"
+    work: "0 + 3799"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].total_c"
-    value: "15914.00"
-    work: "15,902 + 12"
+    value: "19345.00"
+    work: "15546 + 3799"
+  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].no_miles"
+    value: "no"
+    work: "Miles > 0"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].over_half"
     value: "yes"
-    work: "15,902/15,914 = 99.92%"
+    work: "15546/19345 = 80.36%"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].smr_bad"
     value: "no"
-    work: "Filer says the standard mileage rate may be used"
+    work: "Standard mileage rate is allowed"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].smr_amount"
-    value: "11131.40"
-    work: "15,902 x 0.70"
+    value: "10882.20"
+    work: "15546 x 0.70"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line9_standard"
-    value: "11131.40"
-    work: "11,131.40 + 0"
+    value: "10882.20"
+    work: "10882.20 + 0"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].operating_business"
-    value: "1017.23"
-    work: "1,018 x 15,902/15,914"
+    value: "1342.04"
+    work: "1670 x 15546/19345"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line9_actual"
-    value: "1017.23"
-    work: "1,017.23 + 0"
+    value: "1342.04"
+    work: "1342.04 + 0"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line9"
-    value: "11131.40"
+    value: "10882.20"
     work: "Standard mileage method"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].is_actual_owned"
     value: "no"
-    work: "Standard mileage, leased"
+    work: "Standard mileage method"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].is_actual_leased"
     value: "no"
     work: "Standard mileage method"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].lease_business"
-    value: "3068.68"
-    work: "3,071 x 15,902/15,914"
+    value: "1407.14"
+    work: "1751 x 15546/19345"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line20a"
     value: "0.00"
-    work: "No lease deduction under the standard mileage rate"
+    work: "Standard mileage; no lease deduction"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].low_use"
     value: "no"
-    work: "99.92% business use"
+    work: "80.36% > 50%"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].screened"
     value: "no"
-    work: "None of the screening conditions apply"
+    work: "No screening condition applies"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].year"
-    value: "6"
-    work: "Placed in service 2020, so 2025 is year 6"
+    value: "2"
+    work: "2025 - 2024 + 1"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].is2025"
     value: "no"
-    work: "y2020"
+    work: "Placed in service 2024"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].is2019"
     value: "no"
-    work: "y2020"
+    work: "Placed in service 2024"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].bus_cost"
-    value: "32395.55"
-    work: "32,420 x 15,902/15,914"
+    value: "56442.15"
+    work: "70235 x 15546/19345"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].s179_bad"
     value: "no"
-    work: "Section 179 election is 0"
+    work: "Election is 0"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].bonus_mixed"
     value: "no"
-    work: "Same choice for all 5-year property"
+    work: "Same choice"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].claims_bonus"
     value: "no"
-    work: "Special allowance is none"
+    work: "Special allowance = none"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].lim_first_bonus"
     value: "20200.00"
-    work: "2025 table, first year"
+    work: "Table 2 footnote"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].lim_prior"
-    value: "5760.00"
-    work: "2020 row, 4th and later year"
+    value: "19800.00"
+    work: "Table 2, 2024, year 2"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line7"
-    value: "5760.00"
+    value: "19800.00"
     work: "lim_prior"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line9w"
-    value: "5755.66"
-    work: "5,760 x 15,902/15,914"
+    value: "15911.65"
+    work: "19800 x 15546/19345"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].s179_2025_ok"
     value: "0.00"
-    work: "Not a 2025 vehicle"
+    work: "Not 2025"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line10"
     value: "0.00"
     work: "Not the year placed in service"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line10_2025"
     value: "0.00"
-    work: "Not a 2025 vehicle"
+    work: "Section 179 is 0"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].s179_line10"
     value: "0.00"
-    work: "min(0, line 9)"
+    work: "Section 179 is 0"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line11"
-    value: "5755.66"
-    work: "5,755.66 - 0"
+    value: "15911.65"
+    work: "15911.65 - 0"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line14"
     value: "0.00"
-    work: "No section 179 claimed"
+    work: "Given"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line15"
-    value: "32395.55"
-    work: "32,395.55 - 0"
+    value: "56442.15"
+    work: "56442.15 - 0"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].bonus_full"
-    value: "32395.55"
-    work: "100% x 32,395.55"
+    value: "56442.15"
+    work: "x 100%"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].bonus_forty"
-    value: "12958.22"
-    work: "40% x 32,395.55"
+    value: "22576.86"
+    work: "x 40%"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].bonus_fullcase"
-    value: "32395.55"
-    work: "Acquired after January 19, 2025, so 100%"
+    value: "56442.15"
+    work: "Acquired after 1/19/2025"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].bonus_2025"
     value: "0.00"
-    work: "No allowance claimed"
+    work: "Not claimed"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line16"
     value: "0.00"
     work: "Not the year placed in service"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].bonus_allowed"
     value: "0.00"
-    work: "min(0, line 11)"
+    work: "0"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line17"
-    value: "5755.66"
-    work: "5,755.66 - 0"
+    value: "15911.65"
+    work: "15911.65 - 0"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line18"
-    value: "32395.55"
-    work: "32,395.55 - 0"
+    value: "56442.15"
+    work: "56442.15 - 0"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].qconv"
     value: "mq1"
-    work: "Placed in service in q1"
+    work: "Q1"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].rate_hy"
     value: "20.00%"
-    work: "5-yr HY, year 1"
+    work: "HY, year 1"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].rate_mq"
     value: "35.00%"
-    work: "5-yr MQ Q1, year 1"
+    work: "MQ Q1, year 1"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].rate_prior"
-    value: "4.26%"
-    work: "5-yr MQ Q2 (mq2), year 6"
+    value: "34.00%"
+    work: "MQ Q3, year 2"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line19_hy"
-    value: "6479.11"
-    work: "32,395.55 x 20%"
+    value: "11288.43"
+    work: "56442.15 x 20%"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line19_mq"
-    value: "11338.44"
-    work: "32,395.55 x 35%"
+    value: "19754.75"
+    work: "56442.15 x 35%"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line19_prior"
-    value: "1380.05"
-    work: "32,395.55 x 4.26%"
+    value: "19190.33"
+    work: "56442.15 x 34%"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line19"
-    value: "1380.05"
-    work: "Prior-year vehicle"
+    value: "19190.33"
+    work: "Placed in service before 2025"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line19_earlier"
-    value: "1380.05"
-    work: "Not a 2019 vehicle"
+    value: "19190.33"
+    work: "line19_prior"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line19_2025"
-    value: "6479.11"
-    work: "Half-year convention, because the mid-quarter test is no"
+    value: "11288.43"
+    work: "HY"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].line20"
-    value: "1380.05"
-    work: "Lesser of 5,755.66 or 1,380.05"
+    value: "15911.65"
+    work: "lesser of 15911.65 or 19190.33"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].b100"
-    value: "32420.00"
-    work: "32,420 - 0"
+    value: "70235.00"
+    work: "70235 - 0"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].r1"
-    value: "25.00%"
-    work: "5-yr MQ Q2, year 1"
+    value: "15.00%"
+    work: "MQ Q3, year 1"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].t1"
-    value: "8105.00"
-    work: "32,420 x 25%"
+    value: "10535.25"
+    work: "70235 x 15%"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].t1s"
-    value: "8105.00"
-    work: "0 + 8,105"
+    value: "10535.25"
+    work: "0 + 10535.25"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].r2"
-    value: "30.00%"
-    work: "5-yr MQ Q2, year 2"
+    value: "34.00%"
+    work: "MQ Q3, year 2"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].t2"
-    value: "9726.00"
-    work: "32,420 x 30%"
+    value: "23879.90"
+    work: "70235 x 34%"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].l2"
-    value: "16100.00"
-    work: "2020 row, 2nd year"
+    value: "19800.00"
+    work: "2024, year 2"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].d2"
-    value: "9726.00"
-    work: "Lesser of 16,100 or 9,726"
+    value: "19800.00"
+    work: "lesser of 19800 or 23879.90"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].r3"
-    value: "18.00%"
-    work: "5-yr MQ Q2, year 3"
+    value: "20.40%"
+    work: "MQ Q3, year 3"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].t3"
-    value: "5835.60"
-    work: "32,420 x 18%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].l3"
-    value: "9700.00"
-    work: "2020 row, 3rd year"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].d3"
-    value: "5835.60"
-    work: "Lesser of 9,700 or 5,835.60"
+    value: "14327.94"
+    work: "70235 x 20.4%"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].r4"
-    value: "11.37%"
-    work: "5-yr MQ Q2, year 4"
+    value: "12.24%"
+    work: "MQ Q3, year 4"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].t4"
-    value: "3686.15"
-    work: "32,420 x 11.37%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].l4"
-    value: "5760.00"
-    work: "2020 row, 4th and later year"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].d4"
-    value: "3686.15"
-    work: "Lesser of 5,760 or 3,686.15"
+    value: "8596.76"
+    work: "70235 x 12.24%"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].r5"
-    value: "11.37%"
-    work: "5-yr MQ Q2, year 5"
+    value: "11.30%"
+    work: "MQ Q3, year 5"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].t5"
-    value: "3686.15"
-    work: "32,420 x 11.37%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].l5"
-    value: "5760.00"
-    work: "2020 row, 4th and later year"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].d5"
-    value: "3686.15"
-    work: "Lesser of 5,760 or 3,686.15"
+    value: "7936.56"
+    work: "70235 x 11.30%"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].r6"
-    value: "4.26%"
-    work: "5-yr MQ Q2, year 6"
+    value: "7.06%"
+    work: "MQ Q3, year 6"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].t6"
-    value: "1381.09"
-    work: "32,420 x 4.26%"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].l6"
-    value: "5760.00"
-    work: "2020 row, 4th and later year"
-  - printed: "person[taxpayer].sc[biz_b].scveh[car_2].d6"
-    value: "1381.09"
-    work: "Lesser of 5,760 or 1,381.09"
+    value: "4958.59"
+    work: "70235 x 7.06%"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].too_old"
     value: "no"
-    work: "Placed in service in 2020"
+    work: "Placed in service 2024"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].bonus_v"
     value: "0.00"
-    work: "Not the year placed in service"
+    work: "No allowance"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].macrs_pass"
-    value: "1380.05"
+    value: "15911.65"
     work: "line 20"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].macrs_heavy"
-    value: "1380.05"
+    value: "19190.33"
     work: "line 19"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].macrs_v"
-    value: "1380.05"
-    work: "Passenger automobile"
+    value: "15911.65"
+    work: "Subject to the limits"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].bonus"
     value: "0.00"
-    work: "Standard mileage, leased: no depreciation"
+    work: "Standard mileage"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].macrs"
     value: "0.00"
-    work: "Standard mileage, leased: no depreciation"
+    work: "Standard mileage, no depreciation"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].s179_2025"
     value: "0.00"
-    work: "Not owned with actual expenses"
+    work: "Standard mileage"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].mq_q4"
     value: "0.00"
-    work: "Not a 2025 owned vehicle"
+    work: "Not 2025"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].mq_total"
     value: "0.00"
-    work: "Not a 2025 owned vehicle"
+    work: "Not 2025"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].cost179"
     value: "0.00"
-    work: "Not a 2025 owned vehicle"
+    work: "Not 2025"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].bonus_o"
     value: "0.00"
-    work: "Not owned with actual expenses"
+    work: "Not actual-owned"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].macrs_o"
     value: "0.00"
-    work: "Not owned with actual expenses"
+    work: "Not actual-owned"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].s179_2025_o"
     value: "0.00"
-    work: "Not owned with actual expenses"
+    work: "Not actual-owned"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].q4_basis"
-    value: "32395.55"
-    work: "32,395.55 - 0"
+    value: "0.00"
+    work: "Q1, not Q4"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].mq_q4_o"
     value: "0.00"
-    work: "Not owned with actual expenses"
+    work: "Not actual-owned"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].mq_q4_a2"
     value: "0.00"
-    work: "Not a 2025 vehicle"
+    work: "Not 2025"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].mq_total_o"
     value: "0.00"
-    work: "Not owned with actual expenses"
+    work: "Not actual-owned"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].mq_total_a2"
     value: "0.00"
-    work: "Not a 2025 vehicle"
+    work: "Not 2025"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].cost179_o"
     value: "0.00"
-    work: "Not owned with actual expenses"
+    work: "Not actual-owned"
   - printed: "person[taxpayer].sc[biz_b].scveh[car_2].cost179_a2"
     value: "0.00"
-    work: "Not a 2025 vehicle"
+    work: "Not 2025"
 ```
 ```
 
@@ -11278,251 +10649,281 @@ lines:
 ```yaml
 lines:
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bm_c"
-    value: "19788.00"
-    work: "Business miles given: 19,788"
+    value: "18674.00"
+    work: "Business miles 18,674"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].cm_c"
-    value: "1842.00"
-    work: "Commuting miles given: 1,842"
+    value: "0.00"
+    work: "Commuting miles 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].om_c"
-    value: "2248.00"
-    work: "Other miles given: 2,248"
+    value: "3132.00"
+    work: "Other miles 3,132"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].nonbusiness_c"
-    value: "4090.00"
-    work: "1,842 + 2,248"
+    value: "3132.00"
+    work: "0 + 3,132"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].total_c"
-    value: "23878.00"
-    work: "19,788 + 4,090"
+    value: "21806.00"
+    work: "18,674 + 3,132"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].no_miles"
+    value: "no"
+    work: "Standard mileage method; total miles are not zero"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].over_half"
     value: "yes"
-    work: "19,788 / 23,878 = 82.87%, which is more than 50%"
+    work: "18,674 / 21,806 = 85.64% > 50%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].smr_bad"
     value: "no"
-    work: "Filer says the standard mileage rate may be used"
+    work: "The filer may use the standard mileage rate"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].smr_amount"
-    value: "13851.60"
-    work: "19,788 x 0.70"
+    value: "13071.80"
+    work: "18,674 x 0.70"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line9_standard"
-    value: "13884.60"
-    work: "13,851.60 + 33.00 parking and tolls"
+    value: "13071.80"
+    work: "13,071.80 + 0 parking and tolls"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].operating_business"
-    value: "2902.98"
-    work: "3,503 x 19,788 / 23,878"
+    value: "8563.70"
+    work: "10,000 x 18,674/21,806"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line9_actual"
-    value: "2935.98"
-    work: "2,902.98 + 33.00"
+    value: "8563.70"
+    work: "8,563.70 + 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line9"
-    value: "13884.60"
+    value: "13071.80"
     work: "Standard mileage method chosen"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].is_actual_owned"
     value: "no"
-    work: "Standard mileage method, not actual expenses"
+    work: "Standard mileage method"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].is_actual_leased"
     value: "no"
-    work: "Standard mileage method"
+    work: "Owned; standard mileage method"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].lease_business"
-    value: "1775.93"
-    work: "2,143 x 19,788 / 23,878"
+    value: "0.00"
+    work: "0 lease payments x business %"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line20a"
     value: "0.00"
-    work: "Standard mileage rate: no deduction for lease payments"
+    work: "Not leased on actual expenses"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].low_use"
     value: "no"
-    work: "Business use is 82.87%"
+    work: "85.64% > 50%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].screened"
     value: "no"
-    work: "Filer says none of the exceptions applies"
+    work: "None of the screens apply"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].year"
-    value: "2"
-    work: "Placed in service in 2024, so 2025 is recovery year 2"
+    value: "7"
+    work: "Placed in service 2019; 2025 is year 7"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].is2025"
     value: "no"
-    work: "Placed in service in 2024"
+    work: "Placed in service 2019"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].is2019"
-    value: "no"
-    work: "Placed in service in 2024"
+    value: "yes"
+    work: "Placed in service 2019"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bus_cost"
-    value: "28954.39"
-    work: "34,939 x 19,788 / 23,878"
+    value: "56076.81"
+    work: "65,482 x 18,674/21,806"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].s179_bad"
     value: "no"
-    work: "Section 179 election is 0"
+    work: "Elected section 179 is 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_mixed"
     value: "no"
-    work: "Filer says the choice is the same for all 5-year property"
+    work: "Same choice for all 5-year property"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].claims_bonus"
     value: "no"
     work: "Special allowance = none"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].lim_first_bonus"
     value: "20200.00"
-    work: "Pub 946 table, 2025, 1st year: $20,200"
+    work: "Table 2 footnote: 2025 limit with special allowance"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].lim_first_none"
+    value: "12200.00"
+    work: "Table 2: 2025 year 1 limit"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].lim_2025"
+    value: "12200.00"
+    work: "No special allowance claimed"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].lim_prior"
-    value: "19800.00"
-    work: "Pub 946 table, 2024, 2nd year: $19,800"
+    value: "5760.00"
+    work: "Table 2: 2019 vehicle, year 4 or more"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line7"
-    value: "19800.00"
-    work: "Year-2 limit for a 2024 vehicle"
+    value: "5760.00"
+    work: "Limit for the 2025 year of recovery"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line9w"
-    value: "16408.51"
-    work: "19,800 x 19,788 / 23,878"
+    value: "4932.69"
+    work: "5,760 x 18,674/21,806"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].s179_2025_ok"
     value: "0.00"
-    work: "Not a 2025 vehicle; election is 0"
+    work: "Not a 2025 vehicle"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line10"
     value: "0.00"
     work: "Not the year placed in service"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line10_2025"
     value: "0.00"
-    work: "Election is 0"
+    work: "Smaller of 0 or 4,932.69"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].s179_line10"
     value: "0.00"
-    work: "Smaller of 0 or line 9"
+    work: "Smaller of election 0 or line 9"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line11"
-    value: "16408.51"
-    work: "16,408.51 - 0"
+    value: "4932.69"
+    work: "4,932.69 - 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line14"
-    value: "0.00"
-    work: "Section 179 claimed in the year placed in service: 0"
+    value: "1714.00"
+    work: "Section 179 claimed in 2019"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line15"
-    value: "28954.39"
-    work: "28,954.39 - 0"
+    value: "54362.81"
+    work: "56,076.81 - 1,714"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_full"
-    value: "28954.39"
-    work: "28,954.39 x 100%"
+    value: "54362.81"
+    work: "54,362.81 x 100%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_forty"
-    value: "11581.76"
-    work: "28,954.39 x 40%"
+    value: "21745.12"
+    work: "54,362.81 x 40%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_fullcase"
-    value: "28954.39"
-    work: "Acquired after January 19, 2025, so 100%"
+    value: "54362.81"
+    work: "Acquired after Jan 19, 2025, so 100%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_2025"
     value: "0.00"
-    work: "No special allowance claimed; not a 2025 vehicle"
+    work: "No special allowance claimed"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line16"
     value: "0.00"
     work: "Not the year placed in service"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_allowed"
     value: "0.00"
-    work: "Line 16 is 0"
+    work: "Smaller of 0 or line 11"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line17"
-    value: "16408.51"
-    work: "16,408.51 - 0"
+    value: "4932.69"
+    work: "4,932.69 - 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line18"
-    value: "28954.39"
-    work: "28,954.39 - 0"
+    value: "54362.81"
+    work: "54,362.81 - 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].qconv"
-    value: "mq3"
-    work: "Quarter given is q3"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].rate_hy"
-    value: "20.00%"
-    work: "5-year 200DB half-year convention, year 1"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].rate_mq"
-    value: "15.00%"
-    work: "5-year 200DB mid-quarter, 3rd quarter, year 1"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].rate_prior"
-    value: "26.00%"
-    work: "5-year 200DB mid-quarter, 1st quarter (mq1), year 2"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line19_hy"
-    value: "5790.88"
-    work: "28,954.39 x 20%"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line19_mq"
-    value: "4343.16"
-    work: "28,954.39 x 15%"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line19_prior"
-    value: "7528.14"
-    work: "28,954.39 x 26%"
+    value: "mq4"
+    work: "Quarter q4"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line19"
-    value: "7528.14"
-    work: "Placed in service before 2025, so the year-2 rate applies"
+    value: "0.00"
+    work: "2019 vehicle is past the recovery period; no table rate"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line19_earlier"
-    value: "7528.14"
-    work: "Within the recovery period"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line19_2025"
-    value: "4343.16"
-    work: "Mid-quarter convention applies (given test is yes)"
+    value: "0.00"
+    work: "Zero after the recovery period"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].line20"
-    value: "7528.14"
-    work: "Lesser of 16,408.51 or 7,528.14"
+    value: "0.00"
+    work: "Lesser of 4,932.69 or 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].b100"
-    value: "34939.00"
-    work: "34,939 - 0"
+    value: "63768.00"
+    work: "65,482 - 1,714"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].r1"
-    value: "35.00%"
-    work: "Mid-quarter, 1st quarter, year 1"
+    value: "5.00%"
+    work: "5-year 200DB mid-quarter Q4, year 1"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t1"
-    value: "12228.65"
-    work: "34,939 x 35%"
+    value: "3188.40"
+    work: "63,768 x 5.00%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].l1"
+    value: "10100.00"
+    work: "2019 year 1 limit with no special allowance"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t1s"
-    value: "12228.65"
-    work: "0 + 12,228.65"
+    value: "4902.40"
+    work: "1,714 + 3,188.40"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].d1"
+    value: "4902.40"
+    work: "Lesser of 10,100 or 4,902.40"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].r2"
-    value: "26.00%"
-    work: "Mid-quarter, 1st quarter, year 2"
+    value: "38.00%"
+    work: "Mid-quarter Q4, year 2"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t2"
-    value: "9084.14"
-    work: "34,939 x 26%"
+    value: "24231.84"
+    work: "63,768 x 38%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].l2"
-    value: "19800.00"
-    work: "2024 vehicle, 2nd year limit"
+    value: "16100.00"
+    work: "2019 year 2 limit"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].d2"
-    value: "9084.14"
-    work: "Lesser of 19,800 or 9,084.14"
+    value: "16100.00"
+    work: "Lesser of 16,100 or 24,231.84"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].r3"
-    value: "15.60%"
-    work: "Mid-quarter, 1st quarter, year 3"
+    value: "22.80%"
+    work: "Mid-quarter Q4, year 3"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t3"
-    value: "5450.48"
-    work: "34,939 x 15.6%"
+    value: "14539.10"
+    work: "63,768 x 22.80%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].l3"
+    value: "9700.00"
+    work: "2019 year 3 limit"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].d3"
+    value: "9700.00"
+    work: "Lesser of 9,700 or 14,539.10"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].r4"
-    value: "11.01%"
-    work: "Mid-quarter, 1st quarter, year 4"
+    value: "13.68%"
+    work: "Mid-quarter Q4, year 4"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t4"
-    value: "3846.78"
-    work: "34,939 x 11.01%"
+    value: "8723.46"
+    work: "63,768 x 13.68%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].l4"
+    value: "5760.00"
+    work: "2019 limit, year 4 or later"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].d4"
+    value: "5760.00"
+    work: "Lesser of 5,760 or 8,723.46"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].r5"
-    value: "11.01%"
-    work: "Mid-quarter, 1st quarter, year 5"
+    value: "10.94%"
+    work: "Mid-quarter Q4, year 5"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t5"
-    value: "3846.78"
-    work: "34,939 x 11.01%"
+    value: "6976.22"
+    work: "63,768 x 10.94%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].l5"
+    value: "5760.00"
+    work: "2019 limit, year 4 or later"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].d5"
+    value: "5760.00"
+    work: "Lesser of 5,760 or 6,976.22"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].r6"
-    value: "1.38%"
-    work: "Mid-quarter, 1st quarter, year 6"
+    value: "9.58%"
+    work: "Mid-quarter Q4, year 6"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].t6"
-    value: "482.16"
-    work: "34,939 x 1.38%"
+    value: "6108.97"
+    work: "63,768 x 9.58%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].l6"
+    value: "5760.00"
+    work: "2019 limit, year 4 or later"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].d6"
+    value: "5760.00"
+    work: "Lesser of 5,760 or 6,108.97"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].d_total"
+    value: "47982.40"
+    work: "4,902.40 + 16,100 + 9,700 + 5,760 x 3"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].unrecovered"
+    value: "17499.60"
+    work: "65,482 - 47,982.40"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].post_amount"
+    value: "5760.00"
+    work: "Lesser of 5,760 or 17,499.60"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_1].post"
+    value: "4932.69"
+    work: "5,760 x 18,674/21,806"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].too_old"
     value: "no"
-    work: "Placed in service in 2024"
+    work: "Placed in service 2019"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_v"
     value: "0.00"
-    work: "No special allowance"
+    work: "bonus_allowed is 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].macrs_pass"
-    value: "7528.14"
-    work: "Worksheet line 20"
+    value: "4932.69"
+    work: "2019 passenger auto: deduction after the recovery period"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].macrs_heavy"
-    value: "7528.14"
-    work: "Line 19 without the limits"
+    value: "0.00"
+    work: "No deduction after the recovery period for property that is not a passenger auto"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].macrs_v"
-    value: "7528.14"
-    work: "Subject to the passenger automobile limits"
+    value: "0.00"
+    work: "Not subject to the auto limits, so the heavy-vehicle column applies"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus"
     value: "0.00"
-    work: "Standard mileage rate: no depreciation is deducted"
+    work: "Not on actual expenses"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].macrs"
     value: "0.00"
-    work: "Standard mileage rate: no depreciation is deducted"
+    work: "Standard mileage rate; no depreciation"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].s179_2025"
     value: "0.00"
-    work: "Standard mileage rate"
+    work: "Not on actual expenses"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].mq_q4"
     value: "0.00"
-    work: "Not an owned vehicle on actual expenses placed in service in 2025"
+    work: "Not a 2025 actual-expense vehicle"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].mq_total"
     value: "0.00"
-    work: "Not a 2025 vehicle"
+    work: "Not a 2025 actual-expense vehicle"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].cost179"
     value: "0.00"
-    work: "Not a 2025 vehicle"
+    work: "Not a 2025 actual-expense vehicle"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].bonus_o"
     value: "0.00"
     work: "Not owned on actual expenses"
@@ -11533,8 +10934,8 @@ lines:
     value: "0.00"
     work: "Not owned on actual expenses"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].q4_basis"
-    value: "0.00"
-    work: "Quarter given is q3, not q4"
+    value: "54362.81"
+    work: "Q4: line 15 basis after section 179"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_1].mq_q4_o"
     value: "0.00"
     work: "Not owned on actual expenses"
@@ -11554,98 +10955,95 @@ lines:
     value: "0.00"
     work: "Not a 2025 vehicle"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bm_c"
-    value: "23484.00"
-    work: "Business miles given: 23,484"
+    value: "22572.00"
+    work: "Business miles 22,572"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].cm_c"
     value: "0.00"
-    work: "Commuting miles given: 0"
+    work: "Commuting miles 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].om_c"
-    value: "1894.00"
-    work: "Other miles given: 1,894"
+    value: "2734.00"
+    work: "Other miles 2,734"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].nonbusiness_c"
-    value: "1894.00"
-    work: "0 + 1,894"
+    value: "2734.00"
+    work: "0 + 2,734"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].total_c"
-    value: "25378.00"
-    work: "23,484 + 1,894"
+    value: "25306.00"
+    work: "22,572 + 2,734"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].no_miles"
+    value: "no"
+    work: "Total miles are not zero"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].over_half"
     value: "yes"
-    work: "23,484 / 25,378 = 92.54%, which is more than 50%"
+    work: "22,572 / 25,306 = 89.20% > 50%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].smr_bad"
     value: "no"
-    work: "Filer says the standard mileage rate may be used"
+    work: "Actual expenses method; standard rate is available anyway"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].smr_amount"
-    value: "16438.80"
-    work: "23,484 x 0.70"
+    value: "15800.40"
+    work: "22,572 x 0.70"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line9_standard"
-    value: "17307.80"
-    work: "16,438.80 + 869.00 parking and tolls"
+    value: "15800.40"
+    work: "15,800.40 + 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].operating_business"
-    value: "8938.13"
-    work: "9,659 x 23,484 / 25,378"
+    value: "0.00"
+    work: "0 x business %"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line9_actual"
-    value: "9807.13"
-    work: "8,938.13 + 869.00"
+    value: "0.00"
+    work: "0 + 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line9"
-    value: "17307.80"
-    work: "Standard mileage method chosen"
+    value: "0.00"
+    work: "Actual expenses method chosen"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].is_actual_owned"
-    value: "no"
-    work: "Leased vehicle on the standard mileage rate"
+    value: "yes"
+    work: "Owned; actual expenses"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].is_actual_leased"
     value: "no"
-    work: "Standard mileage method"
+    work: "Owned"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].lease_business"
-    value: "0.00"
-    work: "Lease payments are 0"
+    value: "7012.61"
+    work: "7,862 x 22,572/25,306"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line20a"
     value: "0.00"
-    work: "Standard mileage rate: no deduction for lease payments"
+    work: "Not leased"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].low_use"
     value: "no"
-    work: "Business use is 92.54%"
+    work: "89.20% > 50%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].screened"
     value: "no"
-    work: "Filer says none of the exceptions applies"
+    work: "None of the screens apply"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].year"
-    value: "7"
-    work: "Placed in service in 2019, so 2025 is year 7"
+    value: "5"
+    work: "Placed in service 2021; 2025 is year 5"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].is2025"
     value: "no"
-    work: "Placed in service in 2019"
+    work: "Placed in service 2021"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].is2019"
-    value: "yes"
-    work: "Placed in service in 2019"
+    value: "no"
+    work: "Placed in service 2021"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bus_cost"
-    value: "70413.13"
-    work: "76,092 x 23,484 / 25,378"
+    value: "42373.56"
+    work: "47,506 x 22,572/25,306"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].s179_bad"
     value: "no"
-    work: "Section 179 election is 0"
+    work: "Elected section 179 is 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_mixed"
     value: "no"
-    work: "Filer says the choice is the same for all 5-year property"
+    work: "Same choice for all 5-year property"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].claims_bonus"
     value: "no"
     work: "Special allowance = none"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].lim_first_bonus"
-    value: "18100.00"
-    work: "Pub 946 table, 2019, 1st year: $18,100"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].lim_first_none"
-    value: "10100.00"
-    work: "2019 footnote 6: $10,100"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].lim_2025"
-    value: "12200.00"
-    work: "2025 with no special allowance: $12,200"
+    value: "20200.00"
+    work: "Table 2 footnote: 2025 limit with special allowance"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].lim_prior"
-    value: "5760.00"
-    work: "2019, 4th and later years: $5,760"
+    value: "5860.00"
+    work: "Table 2: 2021 vehicle, year 4 or more"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line7"
-    value: "5760.00"
-    work: "Year-7 limit for a 2019 vehicle"
+    value: "5860.00"
+    work: "Limit for year 5"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line9w"
-    value: "5330.12"
-    work: "5,760 x 23,484 / 25,378"
+    value: "5226.90"
+    work: "5,860 x 22,572/25,306"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].s179_2025_ok"
     value: "0.00"
     work: "Not a 2025 vehicle"
@@ -11654,169 +11052,166 @@ lines:
     work: "Not the year placed in service"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line10_2025"
     value: "0.00"
-    work: "Election is 0"
+    work: "Smaller of 0 or line 9"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].s179_line10"
     value: "0.00"
-    work: "Smaller of 0 or line 9"
+    work: "Smaller of election 0 or line 9"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line11"
-    value: "5330.12"
-    work: "5,330.12 - 0"
+    value: "5226.90"
+    work: "5,226.90 - 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line14"
     value: "0.00"
-    work: "Section 179 claimed in the year placed in service: 0"
+    work: "No section 179 claimed in 2021"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line15"
-    value: "70413.13"
-    work: "70,413.13 - 0"
+    value: "42373.56"
+    work: "42,373.56 - 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_full"
-    value: "70413.13"
-    work: "70,413.13 x 100%"
+    value: "42373.56"
+    work: "42,373.56 x 100%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_forty"
-    value: "28165.25"
-    work: "70,413.13 x 40%"
+    value: "16949.42"
+    work: "42,373.56 x 40%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_fullcase"
-    value: "28165.25"
-    work: "Not acquired after January 19, 2025, so 40%"
+    value: "42373.56"
+    work: "Acquired after Jan 19, 2025, so 100%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_2025"
     value: "0.00"
-    work: "No special allowance claimed; not a 2025 vehicle"
+    work: "No special allowance claimed"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line16"
     value: "0.00"
     work: "Not the year placed in service"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_allowed"
     value: "0.00"
-    work: "Line 16 is 0"
+    work: "Smaller of 0 or line 11"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line17"
-    value: "5330.12"
-    work: "5,330.12 - 0"
+    value: "5226.90"
+    work: "5,226.90 - 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line18"
-    value: "70413.13"
-    work: "70,413.13 - 0"
+    value: "42373.56"
+    work: "42,373.56 - 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].qconv"
-    value: "mq2"
-    work: "Quarter given is q2"
+    value: "mq3"
+    work: "Quarter q3"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].rate_hy"
+    value: "20.00%"
+    work: "5-year HY, year 1"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].rate_mq"
+    value: "15.00%"
+    work: "5-year mid-quarter Q3, year 1"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].rate_prior"
+    value: "11.52%"
+    work: "5-year HY, year 5"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line19_hy"
+    value: "8474.71"
+    work: "42,373.56 x 20%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line19_mq"
+    value: "6356.03"
+    work: "42,373.56 x 15%"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line19_prior"
+    value: "4881.43"
+    work: "42,373.56 x 11.52%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line19"
-    value: "0.00"
-    work: "After the recovery period: there is no table rate for year 7"
+    value: "4881.43"
+    work: "Earlier-year vehicle uses line19_prior"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line19_earlier"
-    value: "0.00"
-    work: "After the recovery period, the worksheet is not used"
+    value: "4881.43"
+    work: "Within the recovery period"
+  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line19_2025"
+    value: "6356.03"
+    work: "Mid-quarter test is met, so the MQ amount"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].line20"
-    value: "0.00"
-    work: "Lesser of 5,330.12 or 0"
+    value: "4881.43"
+    work: "Lesser of 5,226.90 or 4,881.43"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].b100"
-    value: "76092.00"
-    work: "76,092 - 0"
+    value: "47506.00"
+    work: "47,506 - 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].r1"
-    value: "5.00%"
-    work: "Mid-quarter, 4th quarter (mq4), year 1"
+    value: "20.00%"
+    work: "HY, year 1"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].t1"
-    value: "3804.60"
-    work: "76,092 x 5%"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].l1"
-    value: "10100.00"
-    work: "2019, 1st year, no special allowance"
+    value: "9501.20"
+    work: "47,506 x 20%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].t1s"
-    value: "3804.60"
-    work: "0 + 3,804.60"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].d1"
-    value: "3804.60"
-    work: "Lesser of 10,100 or 3,804.60"
+    value: "9501.20"
+    work: "0 + 9,501.20"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].r2"
-    value: "38.00%"
-    work: "Mid-quarter, 4th quarter, year 2"
+    value: "32.00%"
+    work: "HY, year 2"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].t2"
-    value: "28914.96"
-    work: "76,092 x 38%"
+    value: "15201.92"
+    work: "47,506 x 32%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].l2"
-    value: "16100.00"
-    work: "2019, 2nd year limit"
+    value: "16400.00"
+    work: "2021 year 2 limit"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].d2"
-    value: "16100.00"
-    work: "Lesser of 16,100 or 28,914.96"
+    value: "15201.92"
+    work: "Lesser of 16,400 or 15,201.92"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].r3"
-    value: "22.80%"
-    work: "Mid-quarter, 4th quarter, year 3"
+    value: "19.20%"
+    work: "HY, year 3"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].t3"
-    value: "17348.98"
-    work: "76,092 x 22.8%"
+    value: "9121.15"
+    work: "47,506 x 19.20%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].l3"
-    value: "9700.00"
-    work: "2019, 3rd year limit"
+    value: "9800.00"
+    work: "2021 year 3 limit"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].d3"
-    value: "9700.00"
-    work: "Lesser of 9,700 or 17,348.98"
+    value: "9121.15"
+    work: "Lesser of 9,800 or 9,121.15"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].r4"
-    value: "13.68%"
-    work: "Mid-quarter, 4th quarter, year 4"
+    value: "11.52%"
+    work: "HY, year 4"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].t4"
-    value: "10409.39"
-    work: "76,092 x 13.68%"
+    value: "5472.69"
+    work: "47,506 x 11.52%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].l4"
-    value: "5760.00"
-    work: "2019, 4th and later years limit"
+    value: "5860.00"
+    work: "2021 limit, year 4 or later"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].d4"
-    value: "5760.00"
-    work: "Lesser of 5,760 or 10,409.39"
+    value: "5472.69"
+    work: "Lesser of 5,860 or 5,472.69"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].r5"
-    value: "10.94%"
-    work: "Mid-quarter, 4th quarter, year 5"
+    value: "11.52%"
+    work: "HY, year 5"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].t5"
-    value: "8324.46"
-    work: "76,092 x 10.94%"
+    value: "5472.69"
+    work: "47,506 x 11.52%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].l5"
-    value: "5760.00"
-    work: "2019, 4th and later years limit"
+    value: "5860.00"
+    work: "2021 limit, year 4 or later"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].d5"
-    value: "5760.00"
-    work: "Lesser of 5,760 or 8,324.46"
+    value: "5472.69"
+    work: "Lesser of 5,860 or 5,472.69"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].r6"
-    value: "9.58%"
-    work: "Mid-quarter, 4th quarter, year 6"
+    value: "5.76%"
+    work: "HY, year 6"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].t6"
-    value: "7289.61"
-    work: "76,092 x 9.58%"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].l6"
-    value: "5760.00"
-    work: "2019, 4th and later years limit"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].d6"
-    value: "5760.00"
-    work: "Lesser of 5,760 or 7,289.61"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].d_total"
-    value: "46884.60"
-    work: "3,804.60 + 16,100 + 9,700 + 5,760 x 3"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].unrecovered"
-    value: "29207.40"
-    work: "76,092 - 46,884.60"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].post_amount"
-    value: "5760.00"
-    work: "Lesser of 5,760 or 29,207.40"
-  - printed: "person[taxpayer].sc[biz_a].scveh[car_2].post"
-    value: "5330.12"
-    work: "5,760 x 23,484 / 25,378"
+    value: "2736.35"
+    work: "47,506 x 5.76%"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].too_old"
     value: "no"
-    work: "Placed in service in 2019"
+    work: "Placed in service 2021"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_v"
     value: "0.00"
-    work: "No special allowance"
+    work: "bonus_allowed is 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].macrs_pass"
-    value: "5330.12"
-    work: "Deduction after the recovery period"
+    value: "4881.43"
+    work: "Line 20"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].macrs_heavy"
-    value: "0.00"
-    work: "No deduction after the recovery period for a vehicle not subject to the limits"
+    value: "4881.43"
+    work: "Line 19 with no limit"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].macrs_v"
-    value: "5330.12"
-    work: "Subject to the passenger automobile limits"
+    value: "4881.43"
+    work: "Subject to the auto limits, so the passenger column"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus"
     value: "0.00"
-    work: "Standard mileage rate; leased vehicle"
+    work: "bonus_o"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].macrs"
-    value: "0.00"
-    work: "Standard mileage rate; not owned"
+    value: "4881.43"
+    work: "macrs_o"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].s179_2025"
     value: "0.00"
-    work: "Standard mileage rate"
+    work: "s179_2025_o"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].mq_q4"
     value: "0.00"
     work: "Not a 2025 vehicle"
@@ -11828,31 +11223,31 @@ lines:
     work: "Not a 2025 vehicle"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].bonus_o"
     value: "0.00"
-    work: "Not owned on actual expenses"
+    work: "Owned on actual expenses: bonus_v 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].macrs_o"
-    value: "0.00"
-    work: "Not owned on actual expenses"
+    value: "4881.43"
+    work: "Owned on actual expenses: macrs_v"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].s179_2025_o"
     value: "0.00"
-    work: "Not owned on actual expenses"
+    work: "s179_2025_ok is 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].q4_basis"
     value: "0.00"
-    work: "Quarter given is q2, not q4"
+    work: "Placed in service in Q3, not Q4"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].mq_q4_o"
     value: "0.00"
-    work: "Not owned on actual expenses"
+    work: "mq_q4_a2 is 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].mq_q4_a2"
     value: "0.00"
     work: "Not a 2025 vehicle"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].mq_total_o"
     value: "0.00"
-    work: "Not owned on actual expenses"
+    work: "mq_total_a2 is 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].mq_total_a2"
     value: "0.00"
     work: "Not a 2025 vehicle"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].cost179_o"
     value: "0.00"
-    work: "Not owned on actual expenses"
+    work: "cost179_a2 is 0"
   - printed: "person[taxpayer].sc[biz_a].scveh[car_2].cost179_a2"
     value: "0.00"
     work: "Not a 2025 vehicle"

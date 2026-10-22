@@ -19,6 +19,12 @@
    "restated": "Add person.se_line12 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The Schedule SE instructions say to \"Enter the combined SE tax on Schedule 2 (Form 1040), line 4\" and support summing over spouses. However, the Schedule SE form itself is not provided, so nothing confirms that Schedule SE line 12 is the self-employment tax amount.",
    "ruling": "Ruling: representation; restatement accepted. Schedule SE line 12 is 'Self-employment tax. Add lines 10 and 11. Enter here and on Schedule 2 (Form 1040), line 4' (f1040sse, line 12); on a joint return each spouse's line 12 is summed (i1040sse, 'enter the combined SE tax on Schedule 2 (Form 1040), line 4')."
+  },
+  {
+   "printed": "4",
+   "restated": "Add person.se_line12 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The instructions say to \"Enter the combined SE tax on Schedule 2 (Form 1040), line 4\" for both spouses, so adding across people fits. But the text given never says that Schedule SE line 12 is the SE tax, and it says to enter -0- on line 4 in the line 1b case where both lines 4a and 4c are under $400 and the total of lines 1a and 2 is $434 or more. Schedule SE's own line wording is needed to check the operand.",
+   "ruling": "Ruling: representation; restatement accepted. Schedule SE line 12 is 'Self-employment tax. Add lines 10 and 11. Enter here and on Schedule 2 (Form 1040), line 4' (f1040sse p. 1); on a joint return each spouse's line 12 is added (i1040sse, 'enter the combined SE tax on Schedule 2 (Form 1040), line 4'). The line 1b case (Conservation Reserve Program payments) is refused through person.se_screen ('farm income (Schedule F) or Conservation Reserve Program payments'), and line 4c under $400 gives line 12 zero (se.owes). The tier 1 railroad compensation omitted from line 8a is the defect ruled under person.se_screen; it changes this line for a railroad employee with a Schedule C."
   }
  ]
 }

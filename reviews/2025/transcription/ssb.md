@@ -8,6 +8,7 @@ Second transcription of `Social Security Benefits Worksheet—Lines 6a and 6b` b
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | b8f26f756c50d8bb99bf7db7a91bddd32a81871aa7d8aab0452e2d607c29ab77 |
+| subject sha256 | 37ad56a0686e22e79b243bf2944489d09b485cef8c458299415b618430f4b072 |
 | printed lines compared | 19 |
 | agree / disagree / missing | 12 / 7 / 0 |
 | extra printed lines in second | none |

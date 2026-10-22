@@ -5,8 +5,50 @@
   {
    "printed": "16",
    "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": 0}, {\"of\": [{\"line\": \"2\"}, {\"line\": \"3\"}], \"op\": \"sum\"}], \"test\": \"le\"}, \"then\": {\"param\": \"sales.zero\"}}, {\"guard\": {\"args\": [{\"of\": [{\"line\": \"2\"}, {\"line\": \"3\"}], \"op\": \"sum\"}, {\"const\": 0}], \"test\": \"lt\"}, \"then\": {\"of\": [{\"line\": \"2\"}, {\"line\": \"3\"}], \"op\": \"sum\"}}], \"op\": \"choose\"}",
+   "second": "{\"from\": {\"line\": \"3\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"2\"}}",
+   "ruling": "Ruling: representation; project retained. 'Combine lines 2 and 3. If greater than zero, enter -0-' (Form 8995 (2025), line 16, printed in parentheses): the project stores the combination signed (line 2 plus its signed line 3 when below zero, zero otherwise); the second stores the size of the loss (its line 3 less line 2, floored at zero). The magnitudes are equal in every case; nothing in forms/2025 reads f8995.line16."
+  },
+  {
+   "printed": "16",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": 0}, {\"of\": [{\"line\": \"2\"}, {\"line\": \"3\"}], \"op\": \"sum\"}], \"test\": \"le\"}, \"then\": {\"param\": \"sales.zero\"}}, {\"guard\": {\"args\": [{\"of\": [{\"line\": \"2\"}, {\"line\": \"3\"}], \"op\": \"sum\"}, {\"const\": 0}], \"test\": \"lt\"}, \"then\": {\"of\": [{\"line\": \"2\"}, {\"line\": \"3\"}], \"op\": \"sum\"}}], \"op\": \"choose\"}",
+   "second": "{\"of\": [{\"from\": {\"line\": \"2\"}, \"op\": \"subtract\", \"take\": {\"line\": \"3\"}}, {\"param\": \"sales.zero\"}], \"op\": \"smaller_of\"}",
+   "ruling": "Ruling: equivalent; project retained. Both enter the combination of lines 2 and 3 when it is less than zero and zero otherwise ('Combine lines 2 and 3. If greater than zero, enter -0-', Form 8995 (2025) line 16). The second holds line 3 as the positive carryforward (qbi.carryforward) and subtracts it; the project holds line 3 signed (zero less qbi.carryforward) and adds it, so line 2 less the second's line 3 is the project's sum of lines 2 and 3; the second takes the smaller of that and zero, the project chooses on its sign."
+  },
+  {
+   "printed": "16",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": 0}, {\"of\": [{\"line\": \"2\"}, {\"line\": \"3\"}], \"op\": \"sum\"}], \"test\": \"le\"}, \"then\": {\"param\": \"sales.zero\"}}, {\"guard\": {\"args\": [{\"of\": [{\"line\": \"2\"}, {\"line\": \"3\"}], \"op\": \"sum\"}, {\"const\": 0}], \"test\": \"lt\"}, \"then\": {\"of\": [{\"line\": \"2\"}, {\"line\": \"3\"}], \"op\": \"sum\"}}], \"op\": \"choose\"}",
    "second": "{\"of\": [{\"of\": [{\"line\": \"2\"}, {\"line\": \"3\"}], \"op\": \"sum\"}, {\"param\": \"sales.zero\"}], \"op\": \"smaller_of\"}",
    "ruling": "Ruling: equivalent; project retained. Both enter the combination of lines 2 and 3 when it is less than zero and zero otherwise ('If greater than zero, enter -0-', f8995 line 16): the project as a choose on the sign, the second as the smaller of the sum and zero."
+  },
+  {
+   "printed": "17",
+   "project": "{\"param\": \"sales.zero\"}",
+   "second": "{\"from\": {\"line\": \"7\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"6\"}}",
+   "ruling": "Ruling: equivalent in value; project label defect. The project enters zero (qbi.zero, sales.zero = 0); the second figures line 7 less line 6 floored at zero, and line 7 is qbi.zero on both sides (a prior-year REIT or PTP loss carryforward is refused by qbi.unsupported) while line 6 is qbi.eligible, which is never negative, so its result is zero too. The project's label 'Amount from qbi.zero' is not the printed line: Form 8995 (2025) line 17 reads 'Total qualified REIT dividends and PTP (loss) carryforward. Combine lines 6 and 7. If greater than zero, enter -0-'. The label is now the printed text of line 17 (BUG-0076)."
+  },
+  {
+   "printed": "17",
+   "project": "{\"param\": \"sales.zero\"}",
+   "second": "{\"of\": [{\"from\": {\"line\": \"6\"}, \"op\": \"subtract\", \"take\": {\"line\": \"7\"}}, {\"param\": \"sales.zero\"}], \"op\": \"smaller_of\"}",
+   "ruling": "Ruling: equivalent; project retained. The project enters zero (sales.zero); the second enters the smaller of line 6 less line 7 and zero. Line 7 is qbi.zero on both sides (a prior-year REIT or PTP loss carryforward is refused by qbi.unsupported) and line 6 is qbi.eligible, a NonNegDollars copy of qbi.dividends, so line 6 less line 7 is never below zero and the second's result is zero too. The label is now the printed text of line 17 ('Total qualified REIT dividends and PTP (loss) carryforward. Combine lines 6 and 7. If greater than zero, enter -0-')."
+  },
+  {
+   "printed": "3",
+   "project": "{\"from\": {\"param\": \"sales.zero\"}, \"op\": \"subtract\", \"take\": {\"ref\": \"qbi.carryforward\"}}",
+   "second": "{\"ref\": \"qbi.carryforward\"}",
+   "ruling": "Ruling: representation; project retained. Both read the same input, the 2024 line 16 carryforward entered as a positive amount (qbi.carryforward). The project stores line 3 signed, as zero less that amount, matching the form's parentheses (Form 8995 (2025), line 3, '( )'); the second stores the size of the loss. The two values differ only in sign, and line 4 is the same on both sides."
+  },
+  {
+   "printed": "4",
+   "project": "{\"from\": {\"of\": [{\"line\": \"2\"}, {\"line\": \"3\"}], \"op\": \"sum\"}, \"op\": \"subtract_floor0\", \"take\": {\"param\": \"sales.zero\"}}",
+   "second": "{\"from\": {\"line\": \"2\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"3\"}}",
+   "ruling": "Ruling: equivalent; project retained. The project combines line 2 with its signed line 3 (zero less qbi.carryforward) and enters zero if the result is zero or less; the second subtracts its unsigned line 3 (qbi.carryforward) from line 2 with the same floor. Both are the larger of zero and line 2 less the carryforward."
+  },
+  {
+   "printed": "8",
+   "project": "{\"line\": \"6\"}",
+   "second": "{\"from\": {\"line\": \"6\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"7\"}}",
+   "ruling": "Ruling: equivalent in value; project label defect. The project copies line 6; the second enters line 6 less line 7 floored at zero, and line 7 is zero on both sides (qbi.zero; a prior-year REIT or PTP loss carryforward is refused by qbi.unsupported) with line 6 never negative, so both are line 6. The project's label 'Amount from f8995.line6' is not the printed line: Form 8995 (2025) line 8 reads 'Total qualified REIT dividends and PTP income. Combine lines 6 and 7. If zero or less, enter -0-'. The label is now the printed text of line 8 (BUG-0076)."
   }
  ]
 }

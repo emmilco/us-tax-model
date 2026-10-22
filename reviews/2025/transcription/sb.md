@@ -8,6 +8,7 @@ Second transcription of `Schedule B — supported interest and ordinary dividend
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | b46d252cd9632774dcecb4036cd854fe763e44d16578f59df233d4a4b4406636 |
+| subject sha256 | 8cbf53cdc390adfc64adcee83de78308e2bfaf4ad1ed432d17ec6cdd93e463a5 |
 | printed lines compared | 4 |
 | agree / disagree / missing | 4 / 0 / 0 |
 | extra printed lines in second | none |

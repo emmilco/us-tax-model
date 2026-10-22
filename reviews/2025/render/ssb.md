@@ -8,6 +8,7 @@ The rendered English of every printed line of `Social Security Benefits Workshee
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 74b96d2b6c0024ca6216e915dc9f48245f9360d636ac0c3d8de90c6f9e7e727b |
+| subject sha256 | 8f8000edb61eeaccbb106b30009ca8503893bd119c8d8b2f7184cff5dd90dea6 |
 | lines judged | 18 |
 | match / mismatch / unclear / missing | 18 / 0 / 0 / 0 |
 | verdicts for lines not in the form | none |

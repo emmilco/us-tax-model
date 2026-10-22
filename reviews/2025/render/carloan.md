@@ -8,6 +8,7 @@ The rendered English of every printed line of `Qualified passenger vehicle loan 
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | eaf5a136668e077ec084b6fb6fb359fb478217c6120ee593c1285bcc6cd01117 |
+| subject sha256 | e3ad60c7b6114981b47aa0a5d8ed5e62b56d05cba3b15e43adcebc34ddec9216 |
 | lines judged | 2 |
 | match / mismatch / unclear / missing | 0 / 2 / 0 / 0 |
 | verdicts for lines not in the form | none |

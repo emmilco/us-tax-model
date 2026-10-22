@@ -217,10 +217,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $0
       cite: [f8995] Form 8995 (2025), line 5 (2025; created 2025-09-12; 55380ad2)
       note: half-up to the cent per the ambiguity register
-  6   Amount from qbi.eligible
+  6   Qualified REIT dividends and publicly traded partnership (PTP) income or (loss) (see instructions)
       = $0
       cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
-  8   Amount from f8995.line6
+  8   Total qualified REIT dividends and PTP income. Combine lines 6 and 7. If zero or less, enter -0-
       = $0
       cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
   9   Multiply f8995.line8 by qbi.rate
@@ -231,10 +231,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   10  Add f8995.line5, f8995.line9
       = $0
       cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
-  11  Amount from qbi.taxable_before
+  11  Taxable income before qualified business income deduction (see instructions)
       = $0
       cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
-  12  Amount from qbi.net_capital_gain
+  12  Enter your net capital gain, if any, increased by any qualified dividends (see instructions)
       = $0
       cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
   13  Subtract f8995.line12 from f8995.line11; if zero or less, enter zero
@@ -302,6 +302,13 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $0
       cite: [i8889] p. 4, "Combine the amounts on line 13 of both Forms 8889 and enter this amount on Schedule 1 (Form 1040), line 13" (2025; da6f2f58)
       note: confirmed roster $f8889@person[taxpayer]:
+  (helper) Number of this person's Schedules C while this person has railroad retirement compensation
+      = 0
+      cite: [f1040sse] Schedule SE (2025), line 8a, "Total social security wages and tips (total of boxes 3 and 7 on Form(s) W-2) and railroad retirement (tier 1) compensation" (2025; created 2025-05-07; 05bc2b3e)
+      note: confirmed roster $sc@person[taxpayer]:
+  (gate) Self-employment and railroad retirement compensation together
+      = false
+      cite: [f1040sse] Schedule SE (2025), line 8a, "Total social security wages and tips (total of boxes 3 and 7 on Form(s) W-2) and railroad retirement (tier 1) compensation" (2025; created 2025-05-07; 05bc2b3e)
   (helper) Total W-2 box 1 for this person
       = $0
       cite: [f1040] Form 1040 (2025), line 1a (2025; created 2025-09-05; 3d31c226)
@@ -1052,8 +1059,9 @@ Derivations:
   person[taxpayer].hsa_repeated: test(person[taxpayer].hsa_forms = 0; 1 = 1)
   person[taxpayer].hsa_deduction: sum_over(person[taxpayer].hsa_repeated = false)
   s1.line13: sum_over(person[taxpayer].hsa_deduction = $0)
+  person[taxpayer].se_rrta: test(person[taxpayer].sc_rrta_count = 0; 0 = 0)
   person[taxpayer].has_sc: test(person[taxpayer].sc_count = 0; 0 = 0)
-  person[taxpayer].se_line13: choose(person[taxpayer].has_sc = false; true = true; person[taxpayer].has_sc = false; false = false; person[taxpayer].zero = $0)
+  person[taxpayer].se_line13: choose(person[taxpayer].se_rrta = false; person[taxpayer].has_sc = false; true = true; person[taxpayer].has_sc = false; false = false; person[taxpayer].zero = $0)
   s1.line15: sum_over(person[taxpayer].se_line13 = $0)
   person[taxpayer].s16: choose(person[taxpayer].has_sc = false; true = true; person[taxpayer].has_sc = false; false = false; person[taxpayer].zero = $0)
   s1.line16: sum_over(person[taxpayer].s16 = $0)

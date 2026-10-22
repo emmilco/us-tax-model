@@ -8,6 +8,7 @@ The rendered English of every printed line of `Proof-of-concept scope screening`
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | f72f7820b5cbfd18dd0db93fa0e964ad9c671074ca9d21129ddd269c34236a2b |
+| subject sha256 | 62f16ae76a1392af676a882a58fc523a8643e726038e087537e3ae63f01b0b79 |
 | lines judged | 5 |
 | match / mismatch / unclear / missing | 2 / 0 / 3 / 0 |
 | verdicts for lines not in the form | none |

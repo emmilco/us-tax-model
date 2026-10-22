@@ -8,6 +8,7 @@ The rendered English of every printed line of `Qualified Overtime Compensation F
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | dc033648850121e23c70671204ec9c4ce848708225343b3390b4ae3de86644c4 |
+| subject sha256 | 0c8625ff1305a43dc91f9975f63aeae7e8cd9091a03cc32579cf0ea8f4707e1d |
 | lines judged | 1 |
 | match / mismatch / unclear / missing | 1 / 0 / 0 / 0 |
 | verdicts for lines not in the form | none |

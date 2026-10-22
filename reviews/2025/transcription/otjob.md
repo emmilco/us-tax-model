@@ -8,6 +8,7 @@ Second transcription of `Qualified Overtime Compensation From More Than One Empl
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 17c5c01937ae2c35484eb37c6de922aa24db32bf0ac9251aab782a61a0fed045 |
+| subject sha256 | edf01867c3eb7f9d68ae0e8d453ccc8889f3e440839bcffcaa42e8a46215fe0a |
 | printed lines compared | 2 |
 | agree / disagree / missing | 2 / 0 / 0 |
 | extra printed lines in second | none |

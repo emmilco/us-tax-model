@@ -8,6 +8,7 @@ The rendered English of every printed line of `Tax on an amount — Tax Table or
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 40934e3dc4da7ab254c74404c93c57759961a8214aba870975559a7c75189678 |
+| subject sha256 | 22ccea2eddd72070bd9860d3ec62e1a63646409d38403d413ae8082c6f637752 |
 | lines judged | 4 |
 | match / mismatch / unclear / missing | 4 / 0 / 0 / 0 |
 | verdicts for lines not in the form | none |

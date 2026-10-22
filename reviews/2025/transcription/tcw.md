@@ -8,6 +8,7 @@ Second transcription of `Tax Computation Worksheet—Line 16` by an isolated mod
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 720ad5b3acf12b5ad914265c1ff8a642d40498c3e7d77912275d809bc7fc99c3 |
+| subject sha256 | 9601605f80aadb63f3b3be298a70609732feb6f06dc6aca72db74347e9627493 |
 | printed lines compared | 1 |
 | agree / disagree / missing | 0 / 1 / 0 |
 | extra printed lines in second | none |

@@ -7,11 +7,11 @@ the fixture test compares).
 
 | Metric | Value |
 | --- | --- |
-| Mutants | 1676 |
+| Mutants | 1683 |
 | Killed by the checker | 178 |
-| Killed by fixtures | 1355 |
-| Surviving | 143 (112 provably equivalent) |
-| Mutation score (raw) | 91.5% |
+| Killed by fixtures | 1363 |
+| Surviving | 142 (111 provably equivalent) |
+| Mutation score (raw) | 91.6% |
 | Mutation score (equivalent mutants excluded) | 98.0% |
 
 ## Surviving — classified equivalent
@@ -48,7 +48,6 @@ the fixture test compares).
 - `filter.person.person.hsa_share` (remove collection filter, person.person.hsa_share): person.hsa_share keeps only a Form 8889 that uses the spouse rule of line 6. Its total household.hsa_share_sum is read only by f8889.allocation_bad, which is reached only on a form that uses the rule and which already holds when exactly one form uses it (household.hsa_split_count is 1); when both forms use it the filter keeps every form. So dropping the filter changes no value that is read. (structural conditions re-checked this run.)
 - `operand.person.person.sep_s1.sc_total` (replace an operand, person.person.sep_s1): person.se_line2 copies person.sc_total, adding only the Schedule SE refusal; step 1 is read only by step 3, which also reads step 2 (person.se_line13), and step 2 refuses exactly when person.se_line2 does, so step 3 and everything after it are the same.
 - `operand.person.person.simple_catchup.simple_regular` (replace an operand, person.person.simple_catchup): person.simple_regular is the smaller of the deferral and the $16,500 limit, so the deferral less it, floored at zero, equals the deferral less $16,500 floored at zero at every input.
-- `boundary.person.person.files_se` (replace strict greater-than with inclusive, person.person.files_se): The boundary changes only the case where Schedule SE line 4c is zero; then lines 6, 12 and 13 are zero, so Part 1 of Worksheet B (person.sc_total less person.se_line13) equals Part 2 (person.sc_total).
 - `operand.qdcg.qdcg.line8.line7` (replace an operand, qdcg.qdcg.line8): Provably equivalent: line 8 is min(line 5, line 7) and line 7 is min(line 1, line 6) with line 5 ≤ line 1; min(line 5, min(line 1, line 6)) = min(line 5, line 6), so substituting line 6 for line 7 cannot change any value.
 - `operand.qdcg.qdcg.line12.line11` (replace an operand, qdcg.qdcg.line12): Copy-chain identity: qdcg.line11 and qdcg.line9 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `refusal.retirement.retirement.amount_a.0` (remove refusal, retirement.retirement.amount_a): retirement.amount_a reads retirement.show_a -> retirement.has_rollover -> retirement.rolled first, and retirement.rolled carries the identical refusal entry, so without the entry on retirement.amount_a the same refusal arrives through the chain. (structural conditions re-checked this run.)

@@ -8,6 +8,7 @@ Second transcription of `Household facts for dependents and head of household` b
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | ba32f76b42c895cbb54a568cbdaa66ec25ad33ee141a26dc6a7036f2982f8853 |
+| subject sha256 | bc8511de9acba90e250920c567674839e5bdbd41fa2d9a9a1e03c4bd3313dc54 |
 | printed lines compared | 9 |
 | agree / disagree / missing | 4 / 5 / 0 |
 | extra printed lines in second | none |

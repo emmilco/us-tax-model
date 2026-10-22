@@ -883,3 +883,41 @@ later grouping.
 - **Where:** `schema/data.schema.json`.
 - **Fix:** the schema requires an integer; the build already requires every document under a year's directories to state that year.
 - **Tags:** year-pinned; missed-by-search; caught-by-test
+
+## BUG-0076 — Defects found by rerunning the reviews of changed forms
+
+- **Date:** 2026-10-21
+- **Caught by:** T-044 part 2: the transcription, render and class M reviews of the 30 forms whose reviewed content had changed since their reviews (subject hashes) were run again; the disagreements were drafted for ruling by agents, and each defect below was confirmed by evaluating returns.
+- **Symptom:**
+  - A self-employed person with railroad retirement (tier 1) compensation got Schedule SE without it on line 8a: for $170,000 of railroad pay and a $30,000 Schedule C profit, SE tax $4,238.87 where the form gives $1,559.85, with no refusal.
+  - The W-2 roster question said only "List stable keys for Form W-2 — Social Security boxes by employer": a filer listing each Form W-2 of one employer got the excess social security credit (Schedule 3 line 11, $1,481.80 in the example) that i1040gi p. 117 allows only with more than one employer.
+  - The student loan interest question asked only whether the filer is claimed as a dependent; i1040gi p. 98 also bars it when the spouse on a joint return is.
+  - A vehicle on actual expenses with no miles divided by its total miles: line 9, line 31 and every total after it were unknown, with no question that could settle them and no refusal.
+  - Six Form 8995 lines (6, 7, 8, 11, 12, 17) carried placeholder labels ("Amount from qbi.zero") instead of their printed text.
+- **Root cause:** Schedule SE's line 8a was bound to the W-2 social security wages and the railroad screen covered only Schedule 3 and Form 8959; the roster's consolidation rule lived only in a note of `w2.yaml`; `sli.claimed` was written from the filer's side only; the business-use proration had no guard for a zero denominator; the Form 8995 labels were never filled in. The earlier reviews had either predated the change or ruled the first two as representation.
+- **Where:** `forms/2025/person.yaml`, `sc.yaml`, `se.yaml`, `sli.yaml`, `scveh.yaml`, `f8995.yaml`; `interview/questions-2025.yaml`.
+- **Fix:** (owner) railroad compensation with a Schedule C is refused at Schedule SE (`person.se_rrta`, counted through the person's businesses so the question reaches only a person with one); (owner) a vehicle on actual expenses with no miles is refused (`scveh.no_miles`); the W-2 question asks for one key per employer, combining an employer's Forms W-2; the student loan question asks about the spouse on a joint return; the Form 8995 labels are the printed text.
+- **Tags:** scope-gap; wording; divide-by-zero; no-refusal; caught-by-review
+
+## BUG-0077 — The class M tool lost answers, built no person cases, and was fed unrealistic returns
+
+- **Date:** 2026-10-21
+- **Caught by:** T-044 part 2's class M reruns: the draft rulings for `eic` noted that two lines printed "6" shared one answer; `person` had no cases.
+- **Symptom:**
+  - `classm.py` keyed the model's answers by printed number, so of EIC Worksheet B line 6 and Worksheet A line 6 one answer stood for both and some comparisons tested the wrong value.
+  - `classm-jobs` built no `person` case: a collection document whose lines take a shared definition's result (the person's Schedule SE lines) looked those results up by the bare line id, found nothing, and dropped every case; it also chose among cases it could not build.
+  - The generator gave every person SEP and SIMPLE amounts whatever their plan, so a person without a SIMPLE plan tripped the SIMPLE limits on lines nothing reads, and class M (which excludes a person entry with any refusal) found no usable return.
+- **Root cause:** the tools were written before a document had two lines with one printed number, before a collection called a shared definition (Stage 14), and before plans were generated (Stage 14).
+- **Where:** `tools/transcription/classm.py`, `rule.py`; `engine/src/classm.ts`, `generate.ts`.
+- **Fix:** a line to fill is named by a handle, its printed number with its id where two lines share the number, in the prompt, the answers, the log and the rulings; a collection's shared-definition results are given per entry; candidate cases are those a job can be built from; the generator gives a plan's amounts only to a person with that plan. `eic` and `person` were reviewed again.
+- **Tags:** tool-bug; review-input-gap; generator; caught-by-review
+
+## BUG-0078 — A SEP or SIMPLE limit was figured on the profit of every business
+
+- **Date:** 2026-10-21
+- **Caught by:** the render review of `person`, rerun for T-044 after BUG-0076's fixes; the draft ruling evaluated the case.
+- **Symptom:** a self-employed person with a SEP or SIMPLE plan and more than one Schedule C had the plan's limit figured on all businesses' profit: a $100,000 business with a 25% SEP allows $18,587.04, but with a second, $30,000 business the limit became $24,163.16 and a $20,000 contribution was deducted in full on Schedule 1 line 16.
+- **Root cause:** the Deduction Worksheet for Self-Employed step 1 (`person.sep_s1`) and the SIMPLE compensation read the person's total Schedule C profit, and the register entry `amb.2025.f7206_plan_attribution` rested on that premise. Pub. 560 p. 7: "If you have more than one business, but only one has a retirement plan, only the earned income from that business is considered for that plan" (also pp. 11 and 40).
+- **Where:** `forms/2025/person.yaml` (`person.plan_screened`); `ambiguities/2025.yaml` (`amb.2025.f7206_plan_attribution`, `amb.2025.qbi_attribution` reasons).
+- **Fix (owner):** a SEP or SIMPLE plan with more than one Schedule C is refused through the plan screen's gate; the two register reasons are corrected, their readings unchanged.
+- **Tags:** wrong-premise; overstatement; caught-by-review

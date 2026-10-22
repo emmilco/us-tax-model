@@ -8,6 +8,7 @@ The rendered English of every printed line of `Schedule 1-A (Form 1040) — Addi
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 3c9f3cdae2200e783e78eb7d7875c7bebecc572ef32efdd4b4492eb9ad20fc0f |
+| subject sha256 | e2c7e0e652b4b6d2c2c98723696702da3ed5cb5eb0c9669dce867a3158e0ef4b |
 | lines judged | 43 |
 | match / mismatch / unclear / missing | 42 / 1 / 0 / 0 |
 | verdicts for lines not in the form | none |

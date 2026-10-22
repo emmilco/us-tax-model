@@ -4,9 +4,10 @@
 
 | field | value |
 | --- | --- |
-| date | 2026-10-18 |
+| date | 2026-10-21 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
+| subject sha256 | 8a2bb2e41ef56332a720dab595e17e506650a0235792f20528e07020eec8807b |
 | cases | 5 |
 
 ## Source pages given to the model
@@ -17,7 +18,7 @@
 
 ## Lines
 
-### case classm.sli.1 — prompt sha256 38724804ac6fd459c777e27c8f1408141fb289292a47354b0b7908ed43d8962f; branches: sli.has:false, sli.claimed:false, sli.line1:left, sli.line5#3, sli.over:false, sli.divisor#3, sli.line8#1, sli.line9:floor, sli.eligible:true, sli.allowed#0, sli.deduction#1
+### case classm.sli.1 — prompt sha256 5274de8e029e6cd2e6c5c4d958f926d7bbc185e6211e926952b88223539c8b2c; branches: sli.has:false, sli.claimed:false, sli.line1:left, sli.line5#3, sli.over:false, sli.divisor#3, sli.line8#1, sli.line9:floor, sli.eligible:true, sli.allowed#0, sli.deduction#1
 
 ### classm.sli.1 — 1 — Enter the total interest you paid in 2025 on qualified student loans (see the in
 Status: **AGREE**
@@ -49,7 +50,7 @@ Status: **DISAGREE**
 
 Project: $-52,064.00
 Model: $0.00
-Work: Line 4 (32,936.00) is not more than line 5 (85,000.00): No, so skip lines 6 and 7
+Work: Line 4 (32,936) is not more than line 5 (85,000), so No: skip lines 6 and 7
 
 Ruling: representation; project retained; model value dropped from the fixture. The project figures every worksheet line: line 6 (line 4 less line 5) also when line 4 is not more than line 5, where the worksheet skips it, and the worksheet lines for a married filer filing separately, who cannot take the deduction. Line 8 uses line 6 only when line 4 is more than line 5, and the deduction (sli.deduction, which Schedule 1 line 21 copies) is zero for a married filer filing separately; on every case the model and the project agree on the deduction. [dropped]
 
@@ -63,17 +64,21 @@ Status: **AGREE**
 
 Value: $0.00
 
-### case classm.sli.2 — prompt sha256 ad8c883cd31130a50470b21c980544345d009850f89ec495ece009feff578b7e; branches: sli.has:true, sli.claimed:false, sli.line1:right, sli.line5#2, sli.over:true, sli.divisor#2, sli.line8#0, sli.line9:positive, sli.eligible:false, sli.allowed#1, sli.deduction#0
+### case classm.sli.2 — prompt sha256 a4a9e20907496524c5ba368342057da68f1c71e0a8f677ce97daf1fffffe93f3; branches: sli.has:true, sli.claimed:false, sli.line1:right, sli.line5#2, sli.over:true, sli.divisor#2, sli.line8#0, sli.line9:positive, sli.eligible:false, sli.allowed#1, sli.deduction#0
 
 ### classm.sli.2 — 1 — Enter the total interest you paid in 2025 on qualified student loans (see the in
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $2,500.00
+Project: $2,500.00
+Model: $0.00
+Work: Married filing separately cannot take this deduction, so $3,000 of interest counts as 0
+
+Ruling: representation; project retained; model value dropped from the fixture. A married filer filing separately cannot take the deduction (i1040gi p. 98, 'Your filing status is any status except married filing separately') and does not use the worksheet; the project figures every worksheet line for such a filer and applies the bar in sli.eligible, so sli.deduction, which Schedule 1 line 21 copies, is 0.00, as the model's line 9; the model wrote the bar into the lines instead. The project's line 1 is the interest 3,000.00 limited to 2,500.00 (p. 99, line 1). Dropped from the fixture as not evidence. [dropped]
 
 ### classm.sli.2 — 2 — Enter the amount from Form 1040 or 1040-SR, line 9
 Status: **AGREE**
 
-Value: $13,294.00
+Value: $2,584.00
 
 ### classm.sli.2 — 3 — Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 
 Status: **AGREE**
@@ -83,7 +88,7 @@ Value: $0.00
 ### classm.sli.2 — 4 — Subtract line 3 from line 2
 Status: **AGREE**
 
-Value: $13,294.00
+Value: $2,584.00
 
 ### classm.sli.2 — 5 — Enter the amount shown below for your filing status. Single, head of household, 
 Status: **AGREE**
@@ -93,31 +98,31 @@ Value: $0.00
 ### classm.sli.2 — 6 — Subtract line 5 from line 4
 Status: **DISAGREE**
 
-Project: $13,294.00
+Project: $2,584.00
 Model: $0.00
-Work: Skipped because line 5 has no amount for married filing separately
+Work: No line 5 amount for married filing separately; skip lines 6 and 7
 
-Ruling: representation; project retained; model value dropped from the fixture. The project figures every worksheet line: line 6 (line 4 less line 5) also when line 4 is not more than line 5, where the worksheet skips it, and the worksheet lines for a married filer filing separately, who cannot take the deduction. Line 8 uses line 6 only when line 4 is more than line 5, and the deduction (sli.deduction, which Schedule 1 line 21 copies) is zero for a married filer filing separately; on every case the model and the project agree on the deduction. [dropped]
+Ruling: representation; project retained; model value dropped from the fixture. A married filer filing separately cannot take the deduction (i1040gi p. 98, 'Your filing status is any status except married filing separately') and does not use the worksheet; the project figures every worksheet line for such a filer and applies the bar in sli.eligible, so sli.deduction, which Schedule 1 line 21 copies, is 0.00, as the model's line 9; the model wrote the bar into the lines instead. With no line 5 amount printed for this status the project's line 5 is 0.00, so line 4 is more than line 5 and line 6 is 2,584.00 less 0.00 = 2,584.00. Dropped from the fixture as not evidence. [dropped]
 
 ### classm.sli.2 — 8 — Multiply line 1 by line 7
 Status: **DISAGREE**
 
-Project: $2,215.00
+Project: $430.00
 Model: $0.00
-Work: Skipped because the phaseout doesn't apply; the deduction isn't allowed for married filing separately
+Work: Lines 6 and 7 skipped, so enter -0-
 
-Ruling: representation; project retained; model value dropped from the fixture. The project figures every worksheet line: line 6 (line 4 less line 5) also when line 4 is not more than line 5, where the worksheet skips it, and the worksheet lines for a married filer filing separately, who cannot take the deduction. Line 8 uses line 6 only when line 4 is more than line 5, and the deduction (sli.deduction, which Schedule 1 line 21 copies) is zero for a married filer filing separately; on every case the model and the project agree on the deduction. [dropped]
+Ruling: representation; project retained; model value dropped from the fixture. A married filer filing separately cannot take the deduction (i1040gi p. 98, 'Your filing status is any status except married filing separately') and does not use the worksheet; the project figures every worksheet line for such a filer and applies the bar in sli.eligible, so sli.deduction, which Schedule 1 line 21 copies, is 0.00, as the model's line 9; the model wrote the bar into the lines instead. The project's line 8 is 2,500.00 x 0.172 (2,584.00/15,000.00 = 0.17227, three places, amb.2025.sli_ratio_places) = 430.00. Dropped from the fixture as not evidence. [dropped]
 
 ### classm.sli.2 — 9 — Student loan interest deduction. Subtract line 8 from line 1. Enter the result h
 Status: **DISAGREE**
 
-Project: $285.00
+Project: $2,070.00
 Model: $0.00
-Work: Line 21 instructions: no deduction if married filing separately, so $0 goes to Schedule 1, line 21
+Work: 0.00 - 0.00; no deduction for married filing separately
 
-Ruling: representation; project retained; model value dropped from the fixture. The project figures every worksheet line: line 6 (line 4 less line 5) also when line 4 is not more than line 5, where the worksheet skips it, and the worksheet lines for a married filer filing separately, who cannot take the deduction. Line 8 uses line 6 only when line 4 is more than line 5, and the deduction (sli.deduction, which Schedule 1 line 21 copies) is zero for a married filer filing separately; on every case the model and the project agree on the deduction. [dropped]
+Ruling: representation; project retained; model value dropped from the fixture. A married filer filing separately cannot take the deduction (i1040gi p. 98, 'Your filing status is any status except married filing separately') and does not use the worksheet; the project figures every worksheet line for such a filer and applies the bar in sli.eligible, so sli.deduction, which Schedule 1 line 21 copies, is 0.00, as the model's line 9; the model wrote the bar into the lines instead. The project's line 9 is 2,500.00 less 430.00 = 2,070.00; the amount carried to Schedule 1 line 21 is sli.deduction, 0.00. Dropped from the fixture as not evidence. [dropped]
 
-### case classm.sli.3 — prompt sha256 c4a367c87980bc5e1ff5e15917f1049c9a4f1c98b2df2a8401a740aace548897; branches: sli.has:false, sli.claimed:true, sli.line1:left, sli.line5#4, sli.over:false, sli.divisor#4, sli.line8#1, sli.line9:floor, sli.eligible:false, sli.allowed#1, sli.deduction#1
+### case classm.sli.3 — prompt sha256 2f3ce6742eb6009a263d99000940013817cdc27ad8117fa1a62ae0a69c92b2d7; branches: sli.has:false, sli.claimed:true, sli.line1:left, sli.line5#0, sli.over:false, sli.divisor#0, sli.line8#1, sli.line9:floor, sli.eligible:false, sli.allowed#1, sli.deduction#1
 
 ### classm.sli.3 — 1 — Enter the total interest you paid in 2025 on qualified student loans (see the in
 Status: **AGREE**
@@ -127,7 +132,7 @@ Value: $0.00
 ### classm.sli.3 — 2 — Enter the amount from Form 1040 or 1040-SR, line 9
 Status: **AGREE**
 
-Value: $62,208.00
+Value: $-10,817.72
 
 ### classm.sli.3 — 3 — Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 
 Status: **AGREE**
@@ -137,7 +142,7 @@ Value: $0.00
 ### classm.sli.3 — 4 — Subtract line 3 from line 2
 Status: **AGREE**
 
-Value: $62,208.00
+Value: $-10,817.72
 
 ### classm.sli.3 — 5 — Enter the amount shown below for your filing status. Single, head of household, 
 Status: **AGREE**
@@ -147,11 +152,11 @@ Value: $85,000.00
 ### classm.sli.3 — 6 — Subtract line 5 from line 4
 Status: **DISAGREE**
 
-Project: $-22,792.00
+Project: $-95,817.72
 Model: $0.00
-Work: Line 4 (62,208) is not more than line 5 (85,000): No, so skip lines 6 and 7
+Work: Line 4 (-10,817.72) is not more than line 5 (85,000), so No: skip lines 6 and 7
 
-Ruling: representation; project retained; model value dropped from the fixture. The project figures every worksheet line: line 6 (line 4 less line 5) also when line 4 is not more than line 5, where the worksheet skips it, and the worksheet lines for a married filer filing separately, who cannot take the deduction. Line 8 uses line 6 only when line 4 is more than line 5, and the deduction (sli.deduction, which Schedule 1 line 21 copies) is zero for a married filer filing separately; on every case the model and the project agree on the deduction. [dropped]
+Ruling: representation; project retained; model value dropped from the fixture. The project figures line 6 (line 4 less line 5) also when line 4 is not more than line 5, where the worksheet says 'No. Skip lines 6 and 7, enter -0- on line 8' (i1040gi p. 99); line 8 reads line 6 only when line 4 is more than line 5 (sli.over), so lines 8 and 9 agree. Here line 4 is -10,817.72 and line 5 85,000.00, so the project's line 6 is -95,817.72; lines 8 and 9 are 0.00 in both. Dropped from the fixture as not evidence. [dropped]
 
 ### classm.sli.3 — 8 — Multiply line 1 by line 7
 Status: **AGREE**
@@ -163,7 +168,7 @@ Status: **AGREE**
 
 Value: $0.00
 
-### case classm.sli.4 — prompt sha256 7a1193d5f6156ec4fb44d133f58558fdbf13ee2b1c4493e7cdd3e2d7f0936dc5; branches: sli.has:false, sli.claimed:false, sli.line1:left, sli.line5#0, sli.over:false, sli.divisor#0, sli.line8#1, sli.line9:floor, sli.eligible:true, sli.allowed#0, sli.deduction#1
+### case classm.sli.4 — prompt sha256 4ad9e6f95b17c085c66dd6cc344578e11c28be98a77903358be0604ce725b775; branches: sli.has:false, sli.claimed:false, sli.line1:left, sli.line5#1, sli.over:false, sli.divisor#1, sli.line8#1, sli.line9:floor, sli.eligible:true, sli.allowed#0, sli.deduction#1
 
 ### classm.sli.4 — 1 — Enter the total interest you paid in 2025 on qualified student loans (see the in
 Status: **AGREE**
@@ -173,7 +178,7 @@ Value: $0.00
 ### classm.sli.4 — 2 — Enter the amount from Form 1040 or 1040-SR, line 9
 Status: **AGREE**
 
-Value: $40,807.00
+Value: $6,724.00
 
 ### classm.sli.4 — 3 — Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 
 Status: **AGREE**
@@ -183,21 +188,21 @@ Value: $0.00
 ### classm.sli.4 — 4 — Subtract line 3 from line 2
 Status: **AGREE**
 
-Value: $40,807.00
+Value: $6,724.00
 
 ### classm.sli.4 — 5 — Enter the amount shown below for your filing status. Single, head of household, 
 Status: **AGREE**
 
-Value: $85,000.00
+Value: $170,000.00
 
 ### classm.sli.4 — 6 — Subtract line 5 from line 4
 Status: **DISAGREE**
 
-Project: $-44,193.00
+Project: $-163,276.00
 Model: $0.00
-Work: Line 4 (40,807) is not more than line 5 (85,000), so No: skip lines 6 and 7
+Work: Line 4 (6724.00) is not more than line 5 (170000.00), so No: skip lines 6 and 7
 
-Ruling: representation; project retained; model value dropped from the fixture. The project figures every worksheet line: line 6 (line 4 less line 5) also when line 4 is not more than line 5, where the worksheet skips it, and the worksheet lines for a married filer filing separately, who cannot take the deduction. Line 8 uses line 6 only when line 4 is more than line 5, and the deduction (sli.deduction, which Schedule 1 line 21 copies) is zero for a married filer filing separately; on every case the model and the project agree on the deduction. [dropped]
+Ruling: representation; project retained; model value dropped from the fixture. The project figures line 6 (line 4 less line 5) also when line 4 is not more than line 5, where the worksheet says 'No. Skip lines 6 and 7, enter -0- on line 8' (i1040gi p. 99); line 8 reads line 6 only when line 4 is more than line 5 (sli.over), so lines 8 and 9 agree. Here line 4 is 6,724.00 and line 5 170,000.00, so the project's line 6 is -163,276.00; lines 8 and 9 are 0.00 in both. Dropped from the fixture as not evidence. [dropped]
 
 ### classm.sli.4 — 8 — Multiply line 1 by line 7
 Status: **AGREE**
@@ -209,17 +214,17 @@ Status: **AGREE**
 
 Value: $0.00
 
-### case classm.sli.5 — prompt sha256 3d701ad445735884924a5caeab5b8e842de4fca2628381cec088a1ba3a18d2ad; branches: sli.has:false, sli.claimed:false, sli.line1:left, sli.line5#1, sli.over:false, sli.divisor#1, sli.line8#1, sli.line9:floor, sli.eligible:true, sli.allowed#0, sli.deduction#1
+### case classm.sli.5 — prompt sha256 29482894b866d1190a7ffd8d5d5744371a324360f1fb51fcab7e5221d420dfa4; branches: sli.has:true, sli.claimed:false, sli.line1:right, sli.line5#4, sli.over:true, sli.divisor#4, sli.line8#0, sli.line9:floor, sli.eligible:true, sli.allowed#0, sli.deduction#0
 
 ### classm.sli.5 — 1 — Enter the total interest you paid in 2025 on qualified student loans (see the in
 Status: **AGREE**
 
-Value: $0.00
+Value: $2,500.00
 
 ### classm.sli.5 — 2 — Enter the amount from Form 1040 or 1040-SR, line 9
 Status: **AGREE**
 
-Value: $6,724.00
+Value: $272,822.00
 
 ### classm.sli.5 — 3 — Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 
 Status: **AGREE**
@@ -229,26 +234,22 @@ Value: $0.00
 ### classm.sli.5 — 4 — Subtract line 3 from line 2
 Status: **AGREE**
 
-Value: $6,724.00
+Value: $272,822.00
 
 ### classm.sli.5 — 5 — Enter the amount shown below for your filing status. Single, head of household, 
 Status: **AGREE**
 
-Value: $170,000.00
+Value: $85,000.00
 
 ### classm.sli.5 — 6 — Subtract line 5 from line 4
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $-163,276.00
-Model: $0.00
-Work: Line 4 (6,724) not more than line 5 (170,000); No: skip lines 6 and 7
-
-Ruling: representation; project retained; model value dropped from the fixture. The project figures every worksheet line: line 6 (line 4 less line 5) also when line 4 is not more than line 5, where the worksheet skips it, and the worksheet lines for a married filer filing separately, who cannot take the deduction. Line 8 uses line 6 only when line 4 is more than line 5, and the deduction (sli.deduction, which Schedule 1 line 21 copies) is zero for a married filer filing separately; on every case the model and the project agree on the deduction. [dropped]
+Value: $187,822.00
 
 ### classm.sli.5 — 8 — Multiply line 1 by line 7
 Status: **AGREE**
 
-Value: $0.00
+Value: $2,500.00
 
 ### classm.sli.5 — 9 — Student loan interest deduction. Subtract line 8 from line 1. Enter the result h
 Status: **AGREE**
@@ -263,28 +264,28 @@ Value: $0.00
 lines:
   - printed: "1"
     value: "0.00"
-    work: "Interest paid $0.00, which is under the $2,500 cap"
+    work: "Interest paid $0.00, under the $2,500 cap"
   - printed: "2"
     value: "32936.00"
-    work: "Form 1040 line 9 = 32,936.00"
+    work: "Form 1040, line 9"
   - printed: "3"
     value: "0.00"
-    work: "Sch 1 line 11 0.00 + line 13 0.00; no other lines 11-20, 23, 25 given = 0.00"
+    work: "Schedule 1 lines 11, 13, 15, 16, 17 are all 0; other lines in 11-20, 23, 25 not provided, taken as 0"
   - printed: "4"
     value: "32936.00"
-    work: "32,936.00 - 0.00 = 32,936.00"
+    work: "32,936.00 - 0.00"
   - printed: "5"
     value: "85000.00"
-    work: "Head of household = $85,000"
+    work: "Head of household amount is $85,000"
   - printed: "6"
     value: "blank"
-    work: "Line 4 (32,936.00) is not more than line 5 (85,000.00): No, so skip lines 6 and 7"
+    work: "Line 4 (32,936) is not more than line 5 (85,000), so No: skip lines 6 and 7"
   - printed: "8"
     value: "0.00"
-    work: "Line 6 answer No, so enter -0- on line 8"
+    work: "Line 6 answer is No, so enter -0-"
   - printed: "9"
     value: "0.00"
-    work: "0.00 - 0.00 = 0.00"
+    work: "0.00 - 0.00"
 ```
 
 ### classm.sli.2
@@ -293,60 +294,62 @@ lines:
 ```yaml
 lines:
   - printed: "1"
-    value: "2500.00"
-    work: "Smaller of interest paid $2,690.00 or the $2,500 cap"
+    value: "0.00"
+    work: "Married filing separately cannot take this deduction, so $3,000 of interest counts as 0"
   - printed: "2"
-    value: "13294.00"
+    value: "2584.00"
     work: "Form 1040, line 9"
   - printed: "3"
     value: "0.00"
-    work: "Schedule 1 lines 11–20, 23, 25: line 11 $0 + line 13 $0; no other amounts given = $0"
+    work: "Schedule 1 lines 11, 13, 15, 16, 17 all 0; no other amounts given"
   - printed: "4"
-    value: "13294.00"
-    work: "13,294.00 − 0.00"
+    value: "2584.00"
+    work: "2584.00 - 0.00"
   - printed: "5"
     value: "blank"
-    work: "The worksheet lists no amount for married filing separately; this status can't take the deduction"
+    work: "Worksheet lists no amount for married filing separately"
   - printed: "6"
     value: "blank"
-    work: "Skipped because line 5 has no amount for married filing separately"
+    work: "No line 5 amount for married filing separately; skip lines 6 and 7"
   - printed: "8"
-    value: "blank"
-    work: "Skipped because the phaseout doesn't apply; the deduction isn't allowed for married filing separately"
+    value: "0.00"
+    work: "Lines 6 and 7 skipped, so enter -0-"
   - printed: "9"
     value: "0.00"
-    work: "Line 21 instructions: no deduction if married filing separately, so $0 goes to Schedule 1, line 21"
+    work: "0.00 - 0.00; no deduction for married filing separately"
 ```
 ```
 
 ### classm.sli.3
 
 ```yaml
+```yaml
 lines:
   - printed: "1"
     value: "0.00"
-    work: "Qualified student loan interest paid is $0.00 (under the $2,500 cap). You also can't take this deduction because someone else claims you as a dependent."
+    work: "Interest paid $0.00 (not over $2,500 cap); also claimed as a dependent, so no deduction allowed"
   - printed: "2"
-    value: "62208.00"
-    work: "Form 1040, line 9 = 62,208.00"
+    value: "-10817.72"
+    work: "Form 1040 line 9 = -10,817.72"
   - printed: "3"
     value: "0.00"
-    work: "Schedule 1, lines 11 (0.00) + 13 (0.00); no amounts were given for the other lines, so they count as 0 = 0.00"
+    work: "Sch 1 lines 11 through 20, 23, 25: 0 + 0 + 0 + 0 + 0 (others none) = 0.00"
   - printed: "4"
-    value: "62208.00"
-    work: "62,208.00 - 0.00 = 62,208.00"
+    value: "-10817.72"
+    work: "-10,817.72 - 0.00 = -10,817.72"
   - printed: "5"
     value: "85000.00"
-    work: "Qualifying surviving spouse = $85,000"
+    work: "Single filing status = $85,000"
   - printed: "6"
     value: "blank"
-    work: "Line 4 (62,208) is not more than line 5 (85,000): No, so skip lines 6 and 7"
+    work: "Line 4 (-10,817.72) is not more than line 5 (85,000), so No: skip lines 6 and 7"
   - printed: "8"
     value: "0.00"
-    work: "The No answer on line 6 says to enter -0- on line 8"
+    work: "Line 6 answer is No, so enter -0-"
   - printed: "9"
     value: "0.00"
-    work: "0.00 - 0.00 = 0.00; goes on Schedule 1, line 21"
+    work: "0.00 - 0.00 = 0.00"
+```
 ```
 
 ### classm.sli.4
@@ -355,28 +358,28 @@ lines:
 lines:
   - printed: "1"
     value: "0.00"
-    work: "Interest paid $0.00; that is under the $2,500 cap"
+    work: "Interest paid $0.00, which is under the $2,500 cap"
   - printed: "2"
-    value: "40807.00"
+    value: "6724.00"
     work: "Form 1040, line 9"
   - printed: "3"
     value: "0.00"
-    work: "Sch 1 lines 11 through 20, 23 and 25: line 11 0 + line 13 0, no other amounts given = 0.00"
+    work: "Schedule 1 lines 11-20, 23, 25: 0+0+0+0+0 = 0.00"
   - printed: "4"
-    value: "40807.00"
-    work: "40,807.00 - 0.00"
+    value: "6724.00"
+    work: "6724.00 - 0.00"
   - printed: "5"
-    value: "85000.00"
-    work: "Single filer, so $85,000"
+    value: "170000.00"
+    work: "Married filing jointly amount is $170,000"
   - printed: "6"
-    value: ""
-    work: "Line 4 (40,807) is not more than line 5 (85,000), so No: skip lines 6 and 7"
+    value: "blank"
+    work: "Line 4 (6724.00) is not more than line 5 (170000.00), so No: skip lines 6 and 7"
   - printed: "8"
     value: "0.00"
-    work: "Line 6 answered No, so enter -0- on line 8"
+    work: "Line 6 answer was No, so enter -0-"
   - printed: "9"
     value: "0.00"
-    work: "0.00 - 0.00 = 0.00, carried to Schedule 1, line 21"
+    work: "0.00 - 0.00"
 ```
 
 ### classm.sli.5
@@ -385,28 +388,28 @@ lines:
 ```yaml
 lines:
   - printed: "1"
-    value: "0.00"
-    work: "Interest paid on qualified student loans $0.00; not more than $2,500"
+    value: "2500.00"
+    work: "Interest paid $3,000.00; capped at $2,500"
   - printed: "2"
-    value: "6724.00"
-    work: "Form 1040 line 9 = $6,724.00"
+    value: "272822.00"
+    work: "Form 1040, line 9"
   - printed: "3"
     value: "0.00"
-    work: "Sch 1 lines 11 ($0) + 13 ($0); no other amounts given for lines 11-20, 23, 25 = $0.00"
+    work: "Schedule 1 lines 11, 13, 15, 16, 17 are all 0; no other lines in 11-20, 23, 25 were given, so treated as 0"
   - printed: "4"
-    value: "6724.00"
-    work: "6,724.00 - 0.00 = 6,724.00"
+    value: "272822.00"
+    work: "272822.00 - 0.00"
   - printed: "5"
-    value: "170000.00"
-    work: "Married filing jointly = $170,000"
+    value: "85000.00"
+    work: "Qualifying surviving spouse: $85,000"
   - printed: "6"
-    value: "blank"
-    work: "Line 4 (6,724) not more than line 5 (170,000); No: skip lines 6 and 7"
+    value: "187822.00"
+    work: "Line 4 is more than line 5 (Yes): 272822.00 - 85000.00"
   - printed: "8"
-    value: "0.00"
-    work: "No on line 6: enter -0- on line 8"
+    value: "2500.00"
+    work: "Line 7: 187822 / 15000 = 12.521, 1.000 or more, so 1.000; 2500.00 x 1.000"
   - printed: "9"
     value: "0.00"
-    work: "0.00 - 0.00 = 0.00; to Schedule 1, line 21"
+    work: "2500.00 - 2500.00"
 ```
 ```

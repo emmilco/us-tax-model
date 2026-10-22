@@ -5,6 +5,12 @@
   {
    "printed": "22",
    "restated": "Add line 12, line 14, line 17, line 19a(g), line 19b(g), line 19c(g), line 19d(g), line 19e(g), line 19f(g), and line 21.",
+   "model": "The IRS text says 'Add amounts from line 12, lines 14 through 17, lines 19 and 20 in column (g), and line 21.' The restatement leaves out lines 15 and 16, lines 19g through 19j, and lines 20a through 20e, and no refusal names those exclusions.",
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. The omitted lines are refused on the asset: line 15 (property elected out of MACRS) and line 16 (other depreciation, including ACRS) through asset.screen ('by a method other than the MACRS percentage tables') and the years placed in service the tool offers (2005 to 2025); lines 19g to 19j (25-year, residential rental, nonresidential real property) through asset.screen ('real property ... or land') and the recovery-class lookup (macrs_period has only 3- to 20-year periods and 'outside'); line 20 (ADS) through asset.screen ('you depreciate it under ADS'), each refusing asset.cost (asset.screened). Vehicles are listed property on line 21. With those refused the total is the lines listed."
+  },
+  {
+   "printed": "22",
+   "restated": "Add line 12, line 14, line 17, line 19a(g), line 19b(g), line 19c(g), line 19d(g), line 19e(g), line 19f(g), and line 21.",
    "model": "The form says \"Add amounts from line 12, lines 14 through 17, lines 19 and 20 in column (g), and line 21.\" The restatement leaves out lines 15, 16, 19g through 19j and 20a through 20e, and no refusal covers those cases. Any amounts on those lines would be missing from the total.",
    "ruling": "Ruling: refusal located elsewhere; restatement accepted. The omitted lines are refused on the asset: line 15 (property elected out of MACRS) and line 16 (other depreciation, including ACRS) through asset.screen ('by a method other than the MACRS percentage tables') and the years placed in service the tool offers; lines 19g to 19j (25-year, residential rental, nonresidential real property) through asset.screen (real property) and the recovery-class lookup ('outside'); line 20 (ADS) through asset.screen ('you depreciate it under ADS'). With those refused the total is the lines listed."
   },
@@ -19,6 +25,12 @@
    "restated": "Enter the amount from sc helper \"Column (h), line 26, for this business\".",
    "model": "Line 26 covers only \"Property used more than 50% in a qualified business use.\" The helper adds column (h) depreciation over all listed assets and vehicles, so it also picks up line 27 property \"used 50% or less in a qualified business use.\"",
    "ruling": "Ruling: refusal located elsewhere; restatement accepted. Listed property used 50% or less (line 27) is refused on the asset and on the vehicle (asset.yaml and scveh.yaml, 'Listed property used 50% or less in a qualified business use (Form 4562 line 27)'), so every entry the helper adds belongs on line 26."
+  },
+  {
+   "printed": "26(h)",
+   "restated": "Enter the amount from sc helper \"Column (h), line 26, for this business\".",
+   "model": "Line 26 covers only 'Property used more than 50% in a qualified business use'; property used '50% or less' goes on line 27. The helper sums column (h) over all listed assets and vehicles without that test, so line 27 amounts would be included.",
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. Listed property used 50% or less (line 27) is refused on the asset (asset.basis refuses on asset.listed_low, 'Listed property used 50% or less in a qualified business use (Form 4562 line 27)') and on an owned vehicle depreciated by actual expenses (scveh.placed refuses on scveh.low_use); a leased vehicle or one on the standard mileage rate has no column (h) depreciation. Checked: classm.asset.1 with item_1 listed at 40% gives sc.f26h refused on listed_low, and car_1 owned at under 50% gives it refused on low_use. So every entry the helper adds belongs on line 26."
   },
   {
    "printed": "26(h)",

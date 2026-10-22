@@ -8,6 +8,7 @@ The rendered English of every printed line of `Qualified Dividends and Capital G
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 472dd447d2991d1413b06cbdbca58d60e201bd9c5839b488595c6392619122dd |
+| subject sha256 | a0b25be8a95c5226b85d36309782603707173964eec03a7a57b0dc3c10ccb305 |
 | lines judged | 25 |
 | match / mismatch / unclear / missing | 22 / 1 / 2 / 0 |
 | verdicts for lines not in the form | none |

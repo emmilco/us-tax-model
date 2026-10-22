@@ -1,13 +1,14 @@
 # Transcription agreement — qbi
 
-Second transcription of `Section 199A dividend-only deduction and form selection` by an isolated model (spec 6.5), compared line by line with `forms/2025/qbi.yaml`.
+Second transcription of `Qualified business income and section 199A dividends — amounts and the choice of Form 8995` by an isolated model (spec 6.5), compared line by line with `forms/2025/qbi.yaml`.
 
 | field | value |
 | --- | --- |
-| date | 2026-10-19 |
+| date | 2026-10-21 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 82db1ea3de027d900663e0d24af4f1324a5dbf6e09d2ee87c385f2f9c2689cbe |
+| prompt sha256 | 27b850dd1c9eed6fc84f589cfdfd3fd170e6c8a834f07e525106a72efd0fdf42 |
+| subject sha256 | 36aa33266cb50e80371e8f00f5728e2e75f9c427ce3ec58b5e6171f44216bbb6 |
 | printed lines compared | 5 |
 | agree / disagree / missing | 3 / 2 / 0 |
 | extra printed lines in second | none |
@@ -45,7 +46,7 @@ Second:
 {"from": {"ref": "f1040.line11a"}, "op": "subtract_floor0", "take": {"of": [{"ref": "f1040.line12e"}, {"ref": "f1040.line13b"}], "op": "sum"}}
 ```
 
-Second transcription's note: The corrected i8995 line 11 text says line 11a minus lines 12e and 13b and does not say to floor the result at zero. I floored it at zero because the requested helper definition says to; Form 8995 line 13 and Form 8995-A line 35 floor the subtraction at zero anyway.
+Second transcription's note: The line 11 instruction, as corrected after release, says line 11a minus lines 12e and 13b. It does not say what to do if the result is negative. The specification asks for a floor at zero, so this line enters zero when the result is zero or less.
 
 Ruling: representation; project retained. As ruled before: the project reads Form 1040 line 11b (line 11a for a filer without the Schedule 1-A deduction, which is refused) and subtracts the Schedule A choice plus line 13b, the zero behind the Schedule 1-A refusal, as the corrected instruction reads (i8995-correction); the second subtracts lines 12e and 13b from line 11a directly, equal in value within the slice. Stage 14 did not change this line.
 
@@ -67,7 +68,7 @@ Second:
 {"alternatives": [{"guard": {"args": [{"from": {"ref": "f1040.line11a"}, "op": "subtract_floor0", "take": {"of": [{"ref": "f1040.line12e"}, {"ref": "f1040.line13b"}], "op": "sum"}}, {"param": "qbi.threshold"}], "test": "le"}, "then": {"ref": "f8995.line15"}}, {"guard": {"args": [{"param": "qbi.threshold"}, {"from": {"ref": "f1040.line11a"}, "op": "subtract_floor0", "take": {"of": [{"ref": "f1040.line12e"}, {"ref": "f1040.line13b"}], "op": "sum"}}], "test": "lt"}, "then": {"ref": "f8995a.line39"}}], "op": "choose"}
 ```
 
-Second transcription's note: Patrons of agricultural or horticultural cooperatives must use Form 8995-A. I left that case to the qbi.unsupported screen and did not add it to the guards. At exactly the threshold I chose Form 8995, because its instructions say 'less than or equal to' and Form 8995-A says 'more than'.
+Second transcription's note: Form 8995 applies when taxable income is 'at or below' the threshold and you aren't a patron of a cooperative. Form 8995-A applies when it is 'above' the threshold, or when you are a patron. Patron status is covered by the qbi.unsupported screen. The 8995-A here is the dividend-only version, and its line 27 is zero. The text does not cover a Schedule C business whose QBI component needs Part II above the threshold; this transcription does not resolve that case.
 
 Ruling: representation; project retained. The difference is that of qbi.taxable_before (line 11b and the Schedule A choice plus line 13b against line 11a less line 12e), equal in value within the slice; the Stage 14 selection between Form 8995 and Form 8995-A agrees on both sides.
 
@@ -87,65 +88,66 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 lines:
   - id: qbi.zero
     printed: "(helper)"
-    label: "Year parameter sales.zero"
+    label: "Zero"
     type: NonNegDollars
     expr: {op: param, ref: sales.zero}
 
   - id: qbi.eligible
     printed: "(helper)"
-    label: "Amount from qbi.dividends (qualified REIT dividends, Form 1099-DIV box 5, for Form 8995 line 6 / Form 8995-A line 28)"
+    label: "Qualified REIT dividends and publicly traded partnership (PTP) income or (loss) (Form 8995, line 6; Form 8995-A, line 28): qualified REIT dividends reported on Form 1099-DIV, box 5"
     type: NonNegDollars
     expr: {op: copy, from: qbi.dividends}
     refuses: [qbi.unsupported]
+    note: "The instructions define qualified REIT dividends as the amount reported on Form 1099-DIV, line 5. PTP income or loss and other cases are covered by the qbi.unsupported screen. With that screen answered no, the amount is the section 199A dividends alone."
 
-  - id: qbi.h_deductions_before
+  - id: qbi.h_deductions_12e_13b
     printed: "(helper)"
-    label: "Form 1040 lines 12e and 13b added together"
+    label: "Form 1040, lines 12e and 13b added together"
     type: NonNegDollars
     expr: {op: sum, of: [f1040.line12e, f1040.line13b]}
 
   - id: qbi.taxable_before
     printed: "(helper)"
-    label: "Taxable income before qualified business income deduction. Form 1040 or 1040-SR filers: Form 1040 or 1040-SR, line 11a, minus lines 12e and 13b."
+    label: "Taxable income before qualified business income deduction: Form 1040 or 1040-SR, line 11a, minus lines 12e and 13b"
     type: NonNegDollars
-    expr: {op: subtract_floor0, from: f1040.line11a, take: qbi.h_deductions_before}
-    note: "The corrected i8995 line 11 text says line 11a minus lines 12e and 13b and does not say to floor the result at zero. I floored it at zero because the requested helper definition says to; Form 8995 line 13 and Form 8995-A line 35 floor the subtraction at zero anyway."
+    expr: {op: subtract_floor0, from: f1040.line11a, take: qbi.h_deductions_12e_13b}
+    note: "The line 11 instruction, as corrected after release, says line 11a minus lines 12e and 13b. It does not say what to do if the result is negative. The specification asks for a floor at zero, so this line enters zero when the result is zero or less."
 
   - id: qbi.net_capital_gain
     printed: "(helper)"
-    label: "Enter your net capital gain, if any, increased by any qualified dividends (Form 1040 line 3a plus your net capital gain)"
+    label: "Enter your net capital gain, if any, increased by any qualified dividends: Form 1040, line 3a, plus your net capital gain"
     type: NonNegDollars
     expr: {op: sum, of: [sd.net_gain, f1040.line3a]}
-    note: "The i8995 line 12 text says net capital gain is Form 1040 line 7a if you are not required to file Schedule D. If you file Schedule D, it is the smaller of Schedule D line 15 or 16, and nothing is added if either line is zero or less. I took sd.net_gain to be the zero-floored smaller of lines 15 and 16, as the requested definition says, and assumed it already covers the case where no Schedule D is filed."
+    note: "Line 12 instructions: if Schedule D is filed, net capital gain is the smaller of Schedule D line 15 or 16, or nothing if either is zero or less. If Schedule D is not required, it is Form 1040 line 7a. This line relies on sd.net_gain to supply the non-negative net capital gain in both cases."
 
   - id: qbi.h_threshold
     printed: "(helper)"
-    label: "Threshold: $197,300 ($394,600 if married filing jointly)"
+    label: "Taxable income threshold for Form 8995: $197,300 ($394,600 if married filing jointly)"
     type: NonNegDollars
     expr: {op: param, ref: qbi.threshold}
 
-  - id: qbi.h_use_8995
+  - id: qbi.h_at_or_below
     printed: "(helper)"
-    label: "Your 2025 taxable income before your QBI deduction is less than or equal to $394,600 if married filing jointly, and $197,300 for all other returns"
+    label: "Taxable income before the QBI deduction is at or below $197,300 ($394,600 if married filing jointly)"
     type: Bool
     expr: {op: test, le: [qbi.taxable_before, qbi.h_threshold]}
 
-  - id: qbi.h_use_8995a
+  - id: qbi.h_above
     printed: "(helper)"
-    label: "Taxable income before the QBI deduction is above the threshold (use Form 8995-A)"
+    label: "Taxable income before the QBI deduction is above $197,300 ($394,600 if married filing jointly)"
     type: Bool
-    expr: {op: test, not: qbi.h_use_8995}
+    expr: {op: test, gt: [qbi.taxable_before, qbi.h_threshold]}
 
   - id: qbi.deduction
     printed: "(helper)"
-    label: "Qualified business income deduction: Form 8995 line 15 if taxable income before the QBI deduction is at or below the threshold, otherwise Form 8995-A line 39"
+    label: "Qualified business income deduction: Form 8995, line 15, if taxable income before the QBI deduction is at or below $197,300 ($394,600 if married filing jointly); otherwise Form 8995-A, line 39"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - {guard: qbi.h_use_8995, then: f8995.line15}
-        - {guard: qbi.h_use_8995a, then: f8995a.line39}
+        - {guard: qbi.h_at_or_below, then: f8995.line15}
+        - {guard: qbi.h_above, then: f8995a.line39}
     refuses: [qbi.unsupported]
-    note: "Patrons of agricultural or horticultural cooperatives must use Form 8995-A. I left that case to the qbi.unsupported screen and did not add it to the guards. At exactly the threshold I chose Form 8995, because its instructions say 'less than or equal to' and Form 8995-A says 'more than'."
+    note: "Form 8995 applies when taxable income is 'at or below' the threshold and you aren't a patron of a cooperative. Form 8995-A applies when it is 'above' the threshold, or when you are a patron. Patron status is covered by the qbi.unsupported screen. The 8995-A here is the dividend-only version, and its line 27 is zero. The text does not cover a Schedule C business whose QBI component needs Part II above the threshold; this transcription does not resolve that case."
 ```
 ```

@@ -65,7 +65,7 @@ form:
     - id: f8995.line7
       printed: "7"
       type: NonNegDollars
-      label: Amount from qbi.zero
+      label: 'Qualified REIT dividends and qualified PTP (loss) carryforward from the prior year'
       expr:
         op: copy
         from: qbi.zero
@@ -109,7 +109,7 @@ form:
     - id: f8995.line17
       printed: "17"
       type: NonNegDollars
-      label: Amount from qbi.zero
+      label: 'Total qualified REIT dividends and PTP (loss) carryforward. Combine lines 6 and 7. If greater than zero, enter -0-'
       expr:
         op: copy
         from: qbi.zero
@@ -119,7 +119,7 @@ form:
     - id: f8995.line6
       printed: "6"
       type: NonNegDollars
-      label: Amount from qbi.eligible
+      label: 'Qualified REIT dividends and publicly traded partnership (PTP) income or (loss) (see instructions)'
       expr:
         op: copy
         from: qbi.eligible
@@ -129,7 +129,7 @@ form:
     - id: f8995.line8
       printed: "8"
       type: NonNegDollars
-      label: Amount from f8995.line6
+      label: 'Total qualified REIT dividends and PTP income. Combine lines 6 and 7. If zero or less, enter -0-'
       expr:
         op: copy
         from: f8995.line6
@@ -164,7 +164,7 @@ form:
     - id: f8995.line11
       printed: "11"
       type: NonNegDollars
-      label: Amount from qbi.taxable_before
+      label: 'Taxable income before qualified business income deduction (see instructions)'
       expr:
         op: copy
         from: qbi.taxable_before
@@ -174,7 +174,7 @@ form:
     - id: f8995.line12
       printed: "12"
       type: NonNegDollars
-      label: Amount from qbi.net_capital_gain
+      label: 'Enter your net capital gain, if any, increased by any qualified dividends (see instructions)'
       expr:
         op: copy
         from: qbi.net_capital_gain

@@ -8,6 +8,7 @@ The rendered English of every printed line of `Form 7206, line 2 — qualified l
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 56034c0085eb7128f9236c72f54e519b2e7ee4a2d2028fa9234f4b4512455e03 |
+| subject sha256 | 7470681aa9b71dbcc40db5df670c57193a834f34ac1be822d03a73c420eb27b9 |
 | lines judged | 2 |
 | match / mismatch / unclear / missing | 2 / 0 / 0 / 0 |
 | verdicts for lines not in the form | none |

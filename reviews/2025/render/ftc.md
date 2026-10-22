@@ -8,6 +8,7 @@ The rendered English of every printed line of `Foreign tax credit — election w
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | bc33c9c64dd7a2b0d9557552783b91f451dcff0159e52f4bd6c1f3eb8bb69170 |
+| subject sha256 | f2625c069fc948f264f0e0b8b8d13ccdb2d8070bade81d24bde08b944d0282e8 |
 | lines judged | 11 |
 | match / mismatch / unclear / missing | 9 / 0 / 2 / 0 |
 | verdicts for lines not in the form | none |

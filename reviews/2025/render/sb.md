@@ -8,6 +8,7 @@ The rendered English of every printed line of `Schedule B — supported interest
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 1b4e65077720724e8bec281c9ef1a95069c825fa6af3d03fbf976bd141352c15 |
+| subject sha256 | 1653644d146cd14999e7af99813dfad5a8f3bd84cea082c511a2dc8f699bcf55 |
 | lines judged | 6 |
 | match / mismatch / unclear / missing | 5 / 0 / 1 / 0 |
 | verdicts for lines not in the form | none |

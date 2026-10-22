@@ -8,6 +8,7 @@ Second transcription of `Qualified Dividends and Capital Gain Tax Worksheet—Li
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 37be61f61ee256f7852f2affba3530c29b6628fe87a99734dd395951c7286d7d |
+| subject sha256 | 0ec80da435463402c2d8e70745618a3a4b8e2d8949ed1b76192d41f26ba57324 |
 | printed lines compared | 26 |
 | agree / disagree / missing | 25 / 1 / 0 |
 | extra printed lines in second | none |

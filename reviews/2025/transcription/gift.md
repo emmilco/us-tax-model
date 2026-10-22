@@ -8,6 +8,7 @@ Second transcription of `Form 8283 — groups of similar noncash property` by an
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | ce0dc65622a81dad89d8ef3e99d136fcd9c683f67dc992802c39635e341678e7 |
+| subject sha256 | 583ad7a6fa5b933fa0a0fffda31e2cc72eab6b74f021ea484f649729eb2516bb |
 | printed lines compared | 1 |
 | agree / disagree / missing | 1 / 0 / 0 |
 | extra printed lines in second | none |

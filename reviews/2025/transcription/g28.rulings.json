@@ -1,0 +1,18 @@
+{
+ "kind": "transcription",
+ "form": "g28",
+ "rulings": [
+  {
+   "printed": "5",
+   "project": "{\"param\": \"sales.zero\"}",
+   "second": "{\"ref\": \"sd.line14\"}",
+   "ruling": "Ruling: equivalent; project retained. Both are zero: the project enters div.screen (sales.zero = 0) and the second sd.line14, which is sd.zero (sales.zero = 0), refused through sd.carryover and sd.other_forms (a Schedule K-1 capital loss carryover); a return with a capital loss carryover is refused on both readings. The sign question in the second's note does not arise."
+  },
+  {
+   "printed": "7",
+   "project": "{\"from\": {\"of\": [{\"line\": \"1\"}, {\"line\": \"2\"}, {\"line\": \"3\"}, {\"line\": \"4\"}, {\"line\": \"5\"}, {\"line\": \"6\"}], \"op\": \"sum\"}, \"op\": \"subtract_floor0\", \"take\": {\"param\": \"sales.zero\"}}",
+   "second": "{\"of\": [{\"of\": [{\"line\": \"1\"}, {\"line\": \"2\"}, {\"line\": \"3\"}, {\"line\": \"4\"}, {\"line\": \"5\"}, {\"line\": \"6\"}], \"op\": \"sum\"}, {\"param\": \"sales.zero\"}], \"op\": \"larger_of\"}",
+   "ruling": "Ruling: equivalent; project retained. Combining lines 1 through 6 and entering zero if the result is zero or less: the project subtracts zero (sales.zero) with a floor at zero, the second takes the larger of the sum and zero. The same value in every case."
+  }
+ ]
+}

@@ -8,6 +8,7 @@ Second transcription of `Schedule D — securities sales and supplied distributi
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 9205ddf764c99172363a980b51c5e0507edf927cef6c206561810944ff7bcf25 |
+| subject sha256 | 705b144100978501b6560fdba21b14526cf0ad2157399772a690a11397bde7b7 |
 | printed lines compared | 54 |
 | agree / disagree / missing | 13 / 41 / 0 |
 | extra printed lines in second | none |

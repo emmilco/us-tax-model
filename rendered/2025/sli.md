@@ -26,9 +26,9 @@
 
 ## (helper) — `sli.claimed`
 
-- **Authored helper label:** Are you claimed as a dependent on someone else's (such as your parent's) 2025 tax return?
-- **Encoded (Bool):** Input — Are you claimed as a dependent on someone else's (such as your parent's) 2025 tax return?
-- Expr: `{"op":"input","source":"Are you claimed as a dependent on someone else's (such as your parent's) 2025 tax return?"}`
+- **Authored helper label:** Are you, or your spouse if filing jointly, claimed as a dependent on someone else's (such as your parent's) 2025 tax return?
+- **Encoded (Bool):** Input — Are you, or your spouse if filing jointly, claimed as a dependent on someone else's (such as your parent's) 2025 tax return?
+- Expr: `{"op":"input","source":"Are you, or your spouse if filing jointly, claimed as a dependent on someone else's (such as your parent's) 2025 tax return?"}`
 - Cite: [i1040gi] p. 98, Schedule 1, line 21, 'You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return' (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `sli.max`
@@ -148,7 +148,7 @@
 ## (helper) — `sli.eligible`
 
 - **Authored helper label:** You can take the deduction: a filing status other than married filing separately, and not claimed as a dependent
-- **Encoded (Bool):** f1040 line Filing Status ≠ 'mfs' and helper "Are you claimed as a dependent on someone else's (such as your parent's) 2025 tax return?" = false
+- **Encoded (Bool):** f1040 line Filing Status ≠ 'mfs' and helper "Are you, or your spouse if filing jointly, claimed as a dependent on someone else's (such as your parent's) 2025 tax return?" = false
 - Expr: `{"all":[{"ne":["f1040.status",{"const":"mfs"}],"op":"test"},{"eq":["sli.claimed",{"const":false}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 98, Schedule 1, line 21, 'You can take this deduction only if all of the following apply' (2025; printed date 2026-02-25; sha256 482e9c48)
 

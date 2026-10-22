@@ -4,6 +4,30 @@
  "rulings": [
   {
    "case": "classm.s8812.1",
+   "printed": "18a",
+   "project": "$50,000.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 16b is $0 (no qualifying child with the required SSN) and the form says \"If zero, stop here; you cannot claim the additional child tax credit\" (Schedule 8812 (2025), line 16b), so the model leaves Parts II-A and II-B blank; the project figures every line and line 27 is $0 on both sides (agreed). Project's working: line 18a is the Earned Income Worksheet amount, wages $50,000.00 (not taking the EIC); line 19 = $50,000.00 - $2,500 = $47,500.00; line 20 = 15% = $7,125.00; line 21 = W-2 box 4 $3,100.00 + box 6 $725.00 = $3,825.00; line 23 = $3,825.00 + $0; line 25 = $3,825.00 - $0; line 26 = larger of $7,125.00 and $3,825.00.",
+   "drop": true
+  },
+  {
+   "case": "classm.s8812.1",
+   "printed": "19",
+   "project": "$47,500.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 16b is $0 (no qualifying child with the required SSN) and the form says \"If zero, stop here; you cannot claim the additional child tax credit\" (Schedule 8812 (2025), line 16b), so the model leaves Parts II-A and II-B blank; the project figures every line and line 27 is $0 on both sides (agreed). Project's working: line 18a is the Earned Income Worksheet amount, wages $50,000.00 (not taking the EIC); line 19 = $50,000.00 - $2,500 = $47,500.00; line 20 = 15% = $7,125.00; line 21 = W-2 box 4 $3,100.00 + box 6 $725.00 = $3,825.00; line 23 = $3,825.00 + $0; line 25 = $3,825.00 - $0; line 26 = larger of $7,125.00 and $3,825.00.",
+   "drop": true
+  },
+  {
+   "case": "classm.s8812.1",
+   "printed": "20",
+   "project": "$7,125.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 16b is $0 (no qualifying child with the required SSN) and the form says \"If zero, stop here; you cannot claim the additional child tax credit\" (Schedule 8812 (2025), line 16b), so the model leaves Parts II-A and II-B blank; the project figures every line and line 27 is $0 on both sides (agreed). Project's working: line 18a is the Earned Income Worksheet amount, wages $50,000.00 (not taking the EIC); line 19 = $50,000.00 - $2,500 = $47,500.00; line 20 = 15% = $7,125.00; line 21 = W-2 box 4 $3,100.00 + box 6 $725.00 = $3,825.00; line 23 = $3,825.00 + $0; line 25 = $3,825.00 - $0; line 26 = larger of $7,125.00 and $3,825.00.",
+   "drop": true
+  },
+  {
+   "case": "classm.s8812.1",
    "printed": "21",
    "project": "$2,925.57",
    "model": "$0.00",
@@ -12,10 +36,26 @@
   },
   {
    "case": "classm.s8812.1",
+   "printed": "21",
+   "project": "$3,825.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 16b is $0 (no qualifying child with the required SSN) and the form says \"If zero, stop here; you cannot claim the additional child tax credit\" (Schedule 8812 (2025), line 16b), so the model leaves Parts II-A and II-B blank; the project figures every line and line 27 is $0 on both sides (agreed). Project's working: line 18a is the Earned Income Worksheet amount, wages $50,000.00 (not taking the EIC); line 19 = $50,000.00 - $2,500 = $47,500.00; line 20 = 15% = $7,125.00; line 21 = W-2 box 4 $3,100.00 + box 6 $725.00 = $3,825.00; line 23 = $3,825.00 + $0; line 25 = $3,825.00 - $0; line 26 = larger of $7,125.00 and $3,825.00.",
+   "drop": true
+  },
+  {
+   "case": "classm.s8812.1",
    "printed": "23",
    "project": "$2,925.57",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The printed 'Stop here' (Schedule 8812 line 12 when line 8 is not more than line 11, line 16a or 16b at zero) and the skip of Part II-B for fewer than three children leave the later lines blank; the project computes every line regardless, and the lines past the stop do not reach Form 1040 (lines 14 and 27 carry the credits).",
+   "drop": true
+  },
+  {
+   "case": "classm.s8812.1",
+   "printed": "23",
+   "project": "$3,825.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 16b is $0 (no qualifying child with the required SSN) and the form says \"If zero, stop here; you cannot claim the additional child tax credit\" (Schedule 8812 (2025), line 16b), so the model leaves Parts II-A and II-B blank; the project figures every line and line 27 is $0 on both sides (agreed). Project's working: line 18a is the Earned Income Worksheet amount, wages $50,000.00 (not taking the EIC); line 19 = $50,000.00 - $2,500 = $47,500.00; line 20 = 15% = $7,125.00; line 21 = W-2 box 4 $3,100.00 + box 6 $725.00 = $3,825.00; line 23 = $3,825.00 + $0; line 25 = $3,825.00 - $0; line 26 = larger of $7,125.00 and $3,825.00.",
    "drop": true
   },
   {
@@ -36,10 +76,34 @@
   },
   {
    "case": "classm.s8812.1",
+   "printed": "25",
+   "project": "$3,825.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 16b is $0 (no qualifying child with the required SSN) and the form says \"If zero, stop here; you cannot claim the additional child tax credit\" (Schedule 8812 (2025), line 16b), so the model leaves Parts II-A and II-B blank; the project figures every line and line 27 is $0 on both sides (agreed). Project's working: line 18a is the Earned Income Worksheet amount, wages $50,000.00 (not taking the EIC); line 19 = $50,000.00 - $2,500 = $47,500.00; line 20 = 15% = $7,125.00; line 21 = W-2 box 4 $3,100.00 + box 6 $725.00 = $3,825.00; line 23 = $3,825.00 + $0; line 25 = $3,825.00 - $0; line 26 = larger of $7,125.00 and $3,825.00.",
+   "drop": true
+  },
+  {
+   "case": "classm.s8812.1",
    "printed": "26",
    "project": "$4,565.40",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The printed 'Stop here' (Schedule 8812 line 12 when line 8 is not more than line 11, line 16a or 16b at zero) and the skip of Part II-B for fewer than three children leave the later lines blank; the project computes every line regardless, and the lines past the stop do not reach Form 1040 (lines 14 and 27 carry the credits).",
+   "drop": true
+  },
+  {
+   "case": "classm.s8812.1",
+   "printed": "26",
+   "project": "$7,125.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 16b is $0 (no qualifying child with the required SSN) and the form says \"If zero, stop here; you cannot claim the additional child tax credit\" (Schedule 8812 (2025), line 16b), so the model leaves Parts II-A and II-B blank; the project figures every line and line 27 is $0 on both sides (agreed). Project's working: line 18a is the Earned Income Worksheet amount, wages $50,000.00 (not taking the EIC); line 19 = $50,000.00 - $2,500 = $47,500.00; line 20 = 15% = $7,125.00; line 21 = W-2 box 4 $3,100.00 + box 6 $725.00 = $3,825.00; line 23 = $3,825.00 + $0; line 25 = $3,825.00 - $0; line 26 = larger of $7,125.00 and $3,825.00.",
+   "drop": true
+  },
+  {
+   "case": "classm.s8812.2",
+   "printed": "13",
+   "project": "$28,770.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 8 ($0) is not more than line 11 ($6,000), and the form says \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit\" (Schedule 8812 (2025), line 12), so the model leaves line 13 blank. The project figures Credit Limit Worksheet A: line 1 Form 1040 line 18 $28,770.00 - line 2 $0 = $28,770.00, line 4 $0, line 5 $28,770.00; line 14 is the smaller of line 12 ($0) and line 13 = $0 on both sides (agreed).",
    "drop": true
   },
   {
@@ -68,10 +132,42 @@
   },
   {
    "case": "classm.s8812.3",
+   "printed": "21",
+   "project": "$2.51",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 16b is $1,700, not more than $5,100, and the filer is not a bona fide resident of Puerto Rico, so line 20 says \"skip Part II-B and enter the smaller of line 17 or line 20 on line 27\" (Schedule 8812 (2025), line 20); the model leaves Part II-B blank. The project figures Part II-B anyway and line 27 is the smaller of $1,700 and $0 = $0 on both sides (agreed). Project's working: line 21 = Additional Medicare Tax and RRTA Tax Worksheet line 16 (i1040s8812 p. 9) = box 4 $2.00 + box 6 $1.00 - Form 8959 line 22 $0.49 = $2.51; line 23 = $2.51 + $0; line 24 = Form 1040 line 27a $2.00 + Schedule 3 line 11 $0 = $2.00; line 25 = $0.51; line 26 = larger of $0 and $0.51.",
+   "drop": true
+  },
+  {
+   "case": "classm.s8812.3",
    "printed": "23",
    "project": "$1,248.63",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The printed 'Stop here' (Schedule 8812 line 12 when line 8 is not more than line 11, line 16a or 16b at zero) and the skip of Part II-B for fewer than three children leave the later lines blank; the project computes every line regardless, and the lines past the stop do not reach Form 1040 (lines 14 and 27 carry the credits).",
+   "drop": true
+  },
+  {
+   "case": "classm.s8812.3",
+   "printed": "23",
+   "project": "$2.51",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 16b is $1,700, not more than $5,100, and the filer is not a bona fide resident of Puerto Rico, so line 20 says \"skip Part II-B and enter the smaller of line 17 or line 20 on line 27\" (Schedule 8812 (2025), line 20); the model leaves Part II-B blank. The project figures Part II-B anyway and line 27 is the smaller of $1,700 and $0 = $0 on both sides (agreed). Project's working: line 21 = Additional Medicare Tax and RRTA Tax Worksheet line 16 (i1040s8812 p. 9) = box 4 $2.00 + box 6 $1.00 - Form 8959 line 22 $0.49 = $2.51; line 23 = $2.51 + $0; line 24 = Form 1040 line 27a $2.00 + Schedule 3 line 11 $0 = $2.00; line 25 = $0.51; line 26 = larger of $0 and $0.51.",
+   "drop": true
+  },
+  {
+   "case": "classm.s8812.3",
+   "printed": "24",
+   "project": "$2.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 16b is $1,700, not more than $5,100, and the filer is not a bona fide resident of Puerto Rico, so line 20 says \"skip Part II-B and enter the smaller of line 17 or line 20 on line 27\" (Schedule 8812 (2025), line 20); the model leaves Part II-B blank. The project figures Part II-B anyway and line 27 is the smaller of $1,700 and $0 = $0 on both sides (agreed). Project's working: line 21 = Additional Medicare Tax and RRTA Tax Worksheet line 16 (i1040s8812 p. 9) = box 4 $2.00 + box 6 $1.00 - Form 8959 line 22 $0.49 = $2.51; line 23 = $2.51 + $0; line 24 = Form 1040 line 27a $2.00 + Schedule 3 line 11 $0 = $2.00; line 25 = $0.51; line 26 = larger of $0 and $0.51.",
+   "drop": true
+  },
+  {
+   "case": "classm.s8812.3",
+   "printed": "25",
+   "project": "$0.51",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 16b is $1,700, not more than $5,100, and the filer is not a bona fide resident of Puerto Rico, so line 20 says \"skip Part II-B and enter the smaller of line 17 or line 20 on line 27\" (Schedule 8812 (2025), line 20); the model leaves Part II-B blank. The project figures Part II-B anyway and line 27 is the smaller of $1,700 and $0 = $0 on both sides (agreed). Project's working: line 21 = Additional Medicare Tax and RRTA Tax Worksheet line 16 (i1040s8812 p. 9) = box 4 $2.00 + box 6 $1.00 - Form 8959 line 22 $0.49 = $2.51; line 23 = $2.51 + $0; line 24 = Form 1040 line 27a $2.00 + Schedule 3 line 11 $0 = $2.00; line 25 = $0.51; line 26 = larger of $0 and $0.51.",
    "drop": true
   },
   {
@@ -85,9 +181,49 @@
   {
    "case": "classm.s8812.3",
    "printed": "26",
+   "project": "$0.51",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 16b is $1,700, not more than $5,100, and the filer is not a bona fide resident of Puerto Rico, so line 20 says \"skip Part II-B and enter the smaller of line 17 or line 20 on line 27\" (Schedule 8812 (2025), line 20); the model leaves Part II-B blank. The project figures Part II-B anyway and line 27 is the smaller of $1,700 and $0 = $0 on both sides (agreed). Project's working: line 21 = Additional Medicare Tax and RRTA Tax Worksheet line 16 (i1040s8812 p. 9) = box 4 $2.00 + box 6 $1.00 - Form 8959 line 22 $0.49 = $2.51; line 23 = $2.51 + $0; line 24 = Form 1040 line 27a $2.00 + Schedule 3 line 11 $0 = $2.00; line 25 = $0.51; line 26 = larger of $0 and $0.51.",
+   "drop": true
+  },
+  {
+   "case": "classm.s8812.3",
+   "printed": "26",
    "project": "$1,248.63",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The printed 'Stop here' (Schedule 8812 line 12 when line 8 is not more than line 11, line 16a or 16b at zero) and the skip of Part II-B for fewer than three children leave the later lines blank; the project computes every line regardless, and the lines past the stop do not reach Form 1040 (lines 14 and 27 carry the credits).",
+   "drop": true
+  },
+  {
+   "case": "classm.s8812.4",
+   "printed": "21",
+   "project": "$2,636.79",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 16b is $0 (no qualifying child with the required SSN) and the form says \"If zero, stop here; you cannot claim the additional child tax credit\" (Schedule 8812 (2025), line 16b), so the model leaves Parts II-A and II-B blank; the project figures every line and line 27 is $0 on both sides (agreed). Project's working: line 21 = Additional Medicare Tax and RRTA Tax Worksheet line 16 (i1040s8812 p. 9) = box 4 $2,137.00 + box 6 $500.00 - Additional Medicare Tax withheld (Form 8959 line 22) $0.21 = $2,636.79; line 23 = line 21 + $0; line 25 = line 23 - $0; line 26 = larger of $0 and $2,636.79.",
+   "drop": true
+  },
+  {
+   "case": "classm.s8812.4",
+   "printed": "23",
+   "project": "$2,636.79",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 16b is $0 (no qualifying child with the required SSN) and the form says \"If zero, stop here; you cannot claim the additional child tax credit\" (Schedule 8812 (2025), line 16b), so the model leaves Parts II-A and II-B blank; the project figures every line and line 27 is $0 on both sides (agreed). Project's working: line 21 = Additional Medicare Tax and RRTA Tax Worksheet line 16 (i1040s8812 p. 9) = box 4 $2,137.00 + box 6 $500.00 - Additional Medicare Tax withheld (Form 8959 line 22) $0.21 = $2,636.79; line 23 = line 21 + $0; line 25 = line 23 - $0; line 26 = larger of $0 and $2,636.79.",
+   "drop": true
+  },
+  {
+   "case": "classm.s8812.4",
+   "printed": "25",
+   "project": "$2,636.79",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 16b is $0 (no qualifying child with the required SSN) and the form says \"If zero, stop here; you cannot claim the additional child tax credit\" (Schedule 8812 (2025), line 16b), so the model leaves Parts II-A and II-B blank; the project figures every line and line 27 is $0 on both sides (agreed). Project's working: line 21 = Additional Medicare Tax and RRTA Tax Worksheet line 16 (i1040s8812 p. 9) = box 4 $2,137.00 + box 6 $500.00 - Additional Medicare Tax withheld (Form 8959 line 22) $0.21 = $2,636.79; line 23 = line 21 + $0; line 25 = line 23 - $0; line 26 = larger of $0 and $2,636.79.",
+   "drop": true
+  },
+  {
+   "case": "classm.s8812.4",
+   "printed": "26",
+   "project": "$2,636.79",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 16b is $0 (no qualifying child with the required SSN) and the form says \"If zero, stop here; you cannot claim the additional child tax credit\" (Schedule 8812 (2025), line 16b), so the model leaves Parts II-A and II-B blank; the project figures every line and line 27 is $0 on both sides (agreed). Project's working: line 21 = Additional Medicare Tax and RRTA Tax Worksheet line 16 (i1040s8812 p. 9) = box 4 $2,137.00 + box 6 $500.00 - Additional Medicare Tax withheld (Form 8959 line 22) $0.21 = $2,636.79; line 23 = line 21 + $0; line 25 = line 23 - $0; line 26 = larger of $0 and $2,636.79.",
    "drop": true
   }
  ]

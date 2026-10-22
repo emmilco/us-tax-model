@@ -16296,6 +16296,139 @@
           }
         }
       }
+    },
+    {
+      "id": "stage4.sdtw.line12_takes_line9",
+      "covers": [
+        "sdtw.line12:line9"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Worked by hand before recording: stage4.sdtw.special_rates with $10,000 of qualified dividends and $60,000 of net capital gain elected into investment income on Form 4952 line 4g ($20,000 of investment interest). Schedule D Tax Worksheet: line 2 10,000; line 3 60,000; line 4 100,000; line 5 0; line 6 10,000; line 7 100,000; line 8 60,000; line 9 40,000; line 10 50,000; line 11 20,000 + 30,000 = 50,000; line 12, the smaller of lines 9 and 11, 40,000.",
+      "inputs": {
+        "div.box2b": 3000000,
+        "div.box2c": 0,
+        "div.box2d": 2000000,
+        "div.box2e": 0,
+        "div.box2f": 0,
+        "div.box3": 0,
+        "div.box9": 0,
+        "div.box10": 0,
+        "div.box13": 0,
+        "div.basis_reconciled": true,
+        "f1040.status": "single",
+        "f1040.line3a": 1000000,
+        "f4952.line1": 2000000,
+        "f4952.carryover": false,
+        "f4952.unsupported": false,
+        "f4952.alternative_allocation": false,
+        "f4952.line4g": 6000000,
+        "f8959.unsupported": false,
+        "f8960.unsupported": false,
+        "f8960.refund": false,
+        "f8960.allocated_taxes": 0,
+        "ftc.taxes": 0,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "qbi.dividends": 0,
+        "qbi.unsupported": false,
+        "s2.amt": false,
+        "s2.other": false,
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0,
+        "sa.unsupported": false,
+        "sa.charity_limited": false,
+        "sa.excluded_income": false,
+        "sa.dependent": false,
+        "sa.spouse_extra": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
+        "sa.spouse_itemizes": false,
+        "sa.elect_itemize": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "sb.unsupported": false,
+        "sb.ordinary_dividends": 1000000,
+        "sb.line7a": false,
+        "sb.fbar_required": false,
+        "sb.form8938": false,
+        "sb.line8": false,
+        "scope.schedule1": false,
+        "scope.credits": false,
+        "scope.other_income": false,
+        "scope.other_line16": false,
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 10000000,
+        "$sales": [],
+        "$interest": [],
+        "$gift": [],
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
+        "person[taxpayer].rrta": false,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box3": 0,
+        "person[taxpayer].w2[a].box4": 0,
+        "person[taxpayer].w2[a].box7": 0,
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 21575000,
+        "$dependent": [],
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false,
+        "$retirement": [],
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "person[taxpayer].educator_expenses": 0,
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0
+      },
+      "expect": {
+        "sdtw.line6": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "sdtw.line8": {
+          "kind": "money",
+          "cents": 6000000
+        },
+        "sdtw.line9": {
+          "kind": "money",
+          "cents": 4000000
+        },
+        "sdtw.line10": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "sdtw.line11": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "sdtw.line12": {
+          "kind": "money",
+          "cents": 4000000
+        }
+      }
     }
   ]
 }

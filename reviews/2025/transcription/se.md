@@ -4,10 +4,11 @@ Second transcription of `Schedule SE (Form 1040) — Self-Employment Tax, one pe
 
 | field | value |
 | --- | --- |
-| date | 2026-10-19 |
+| date | 2026-10-21 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 1fe20ea5e43d0f6fe591091dbf05df0647babdac34ccf180edb50e1dd67c63d2 |
+| prompt sha256 | 26f02e26b8410c2229524f98959a269c21c61b0e9a9a59444903a3105b5ec266 |
+| subject sha256 | 0c850519b95a0d9a45ff9abb2ddb129d2a5755507a6929f64bfcc1024f606a73 |
 | printed lines compared | 1 |
 | agree / disagree / missing | 0 / 1 / 0 |
 | extra printed lines in second | none |
@@ -33,44 +34,38 @@ Project:
 Second:
 
 ```json
-{"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"input": "line2"}, {"const": 0}], "test": "le"}, "then": {"input": "line2"}}, {"guard": {"args": [{"const": 0}, {"input": "line2"}], "test": "lt"}, "then": {"amount": {"input": "line2"}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"of": [{"alternatives": [{"guard": {"args": [{"const": 10000}, {"amount": {"const": 0}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}], "test": "le"}, "then": {"amount": {"const": 0}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}, {"guard": {"args": [{"amount": {"const": 0}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}, {"const": 10000}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"alternatives": [{"guard": {"args": [{"input": "line2"}, {"const": 0}], "test": "le"}, "then": {"input": "line2"}}, {"guard": {"args": [{"const": 0}, {"input": "line2"}], "test": "lt"}, "then": {"amount": {"input": "line2"}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "op": "sum"}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"input": "line2"}, {"const": 0}], "test": "le"}, "then": {"input": "line2"}}, {"guard": {"args": [{"const": 0}, {"input": "line2"}], "test": "lt"}, "then": {"amount": {"input": "line2"}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"input": "line2"}, {"const": 0}], "test": "le"}, "then": {"input": "line2"}}, {"guard": {"args": [{"const": 0}, {"input": "line2"}], "test": "lt"}, "then": {"amount": {"input": "line2"}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"of": [{"alternatives": [{"guard": {"args": [{"const": 10000}, {"amount": {"const": 0}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}], "test": "le"}, "then": {"amount": {"const": 0}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}, {"guard": {"args": [{"amount": {"const": 0}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}, {"const": 10000}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"alternatives": [{"guard": {"args": [{"input": "line2"}, {"const": 0}], "test": "le"}, "then": {"input": "line2"}}, {"guard": {"args": [{"const": 0}, {"input": "line2"}], "test": "lt"}, "then": {"amount": {"input": "line2"}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "op": "sum"}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"input": "line2"}, {"const": 0}], "test": "le"}, "then": {"input": "line2"}}, {"guard": {"args": [{"const": 0}, {"input": "line2"}], "test": "lt"}, "then": {"amount": {"input": "line2"}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"input": "line8a"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}
+{"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"input": "line2"}, {"const": 0}], "test": "le"}, "then": {"input": "line2"}}, {"guard": {"args": [{"const": 0}, {"input": "line2"}], "test": "lt"}, "then": {"amount": {"input": "line2"}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"alternatives": [{"guard": {"args": [{"input": "line2"}, {"const": 0}], "test": "le"}, "then": {"input": "line2"}}, {"guard": {"args": [{"const": 0}, {"input": "line2"}], "test": "lt"}, "then": {"amount": {"input": "line2"}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"input": "line2"}, {"const": 0}], "test": "le"}, "then": {"input": "line2"}}, {"guard": {"args": [{"const": 0}, {"input": "line2"}], "test": "lt"}, "then": {"amount": {"input": "line2"}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"input": "line2"}, {"const": 0}], "test": "le"}, "then": {"input": "line2"}}, {"guard": {"args": [{"const": 0}, {"input": "line2"}], "test": "lt"}, "then": {"amount": {"input": "line2"}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"alternatives": [{"guard": {"args": [{"input": "line2"}, {"const": 0}], "test": "le"}, "then": {"input": "line2"}}, {"guard": {"args": [{"const": 0}, {"input": "line2"}], "test": "lt"}, "then": {"amount": {"input": "line2"}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"input": "line2"}, {"const": 0}], "test": "le"}, "then": {"input": "line2"}}, {"guard": {"args": [{"const": 0}, {"input": "line2"}], "test": "lt"}, "then": {"amount": {"input": "line2"}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"input": "line8a"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}
 ```
 
-Ruling: equivalent within scope; project retained. Both multiply line 12 by 50%. The second keeps line 5b (church employee income) as an explicit zero choose and tests line 3 for a profit where the project floors line 2 before the 92.35% multiplication; the project refuses church employee income through person.se_screen (i1040sse, Line 5a). The values agree for every amount on line 2.
+Ruling: equivalent; project retained. Both multiply line 12 by 50%. The project floors line 2 at zero inside the 92.35% branch and floors the $400-tested amount at zero, where the second does not; both floors sit in branches whose guards already require line 2 above zero or line 4c of $400 or more, so they never bind. The second's line 5b (church employee income) is zero, refused in the project through person.se_screen (i1040sse, Line 5a), and its line 8d is line 8a, Form 4137 tips and Form 8919 wages being refused (person.se_screen). The values agree for every amount on line 2.
+
+## Refusal gates listed by the second transcription
+
+Reported, not judged: the project often refuses before a worksheet is used, on the line that chooses it, which a per-line comparison cannot see.
+
+| line | gates listed | not read by the project's line |
+| --- | --- | --- |
+| line13 | f8959.unsupported | f8959.unsupported |
 
 ## Raw second transcription
 
 ```yaml
 ```yaml
 lines:
-  - id: se.h_line1a
-    printed: "(helper)"
-    label: "Net farm profit or (loss) from Schedule F, line 34, and farm partnerships, Schedule K-1 (Form 1065), box 14, code A"
-    type: Dollars
-    expr: {op: param, ref: sales.zero}
-    note: "Open: the tool takes self-employment income only from Schedule C (line2), and no input or screening input exists for farm income. Chosen: line 1a is zero (year parameter sales.zero). No screening input for SE farm income was provided, so this line cannot refuse."
-  - id: se.h_line1b
-    printed: "(helper)"
-    label: "If you received social security retirement or disability benefits, enter the amount of Conservation Reserve Program payments included on Schedule F, line 4b, or listed on Schedule K-1 (Form 1065), box 20, code AQ"
-    type: Dollars
-    expr: {op: param, ref: sales.zero}
-    note: "Open: CRP payments come from Schedule F or a partnership K-1, which the tool does not compute, and no input or screening input exists for them. The form prints this line in parentheses, so it enters line 3 as a negative amount. Chosen: zero."
   - id: se.line3
     printed: "3"
     label: "Combine lines 1a, 1b, and 2"
     type: Dollars
-    expr: {op: sum, of: [se.h_line1a, se.h_line1b, line2]}
-    note: "Open: the instructions add amounts on the dotted line, such as Chapter 11 bankruptcy income, community income and notary income. Chosen: these are not encoded, because no inputs exist for them."
-  - id: se.h_line4a_positive
+    expr: {op: copy, from: line2}
+    note: "Lines 1a (farm profit or loss) and 1b (Conservation Reserve Program payments) have no input and no screening input in this tool; only line 2 (Schedule C) is bound. Line 3 is therefore line 2 alone. Farm income and CRP payments are outside the tool, but no refusal input was supplied to name for them."
+
+  - id: se.h_4a_product
     printed: "(helper)"
-    label: "Line 3 is more than zero"
-    type: Bool
-    expr: {op: test, gt: [se.line3, {const: 0}]}
-  - id: se.h_line4a_product
-    printed: "(helper)"
-    label: "Multiply line 3 by 92.35% (0.9235)"
+    label: "Line 3 multiplied by 92.35% (0.9235)"
     type: Dollars
     expr: {op: multiply_rate, amount: se.line3, rate: {param: se.rate_9235}}
+    note: "The form does not state a rounding rule. The multiply_rate atom rounds half-up to the cent."
+
   - id: se.line4a
     printed: "4a"
     label: "If line 3 is more than zero, multiply line 3 by 92.35% (0.9235). Otherwise, enter amount from line 3"
@@ -78,129 +73,108 @@ lines:
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, eq: [se.h_line4a_positive, {const: true}]}
-          then: se.h_line4a_product
-        - guard: {op: test, eq: [se.h_line4a_positive, {const: false}]}
+        - guard: {op: test, gt: [se.line3, {const: 0}]}
+          then: se.h_4a_product
+        - guard: {op: test, le: [se.line3, {const: 0}]}
           then: se.line3
+
   - id: se.line4b
     printed: "4b"
     label: "If you elect one or both of the optional methods, enter the total of lines 15 and 17"
     type: NonNegDollars
     expr: {op: param, ref: sales.zero}
-    note: "Open: the tool does not compute the optional methods in Part II, and no election input or screening input exists for them. Chosen: no election, so line 4b is zero."
+    note: "Part II (farm and nonfarm optional methods, lines 14-17) is not part of this transcription. No input or screening input exists for electing them, so line 4b is the case with no election, which is zero."
+
   - id: se.line4c
     printed: "4c"
     label: "Combine lines 4a and 4b. If less than $400, stop; you don't owe self-employment tax"
     type: Dollars
     expr: {op: sum, of: [se.line4a, se.line4b]}
-    note: "Chosen: the stop below $400 is applied at line 6 through the helper se.h_owes, so lines 6 through 13 are zero when line 4c is less than $400. The church-employee-income exception (enter -0- and continue) is not encoded, because church employee income is outside the tool."
-  - id: se.h_owes
-    printed: "(helper)"
-    label: "Line 4c is $400 or more (otherwise stop; you don't owe self-employment tax)"
-    type: Bool
-    expr: {op: test, ge: [se.line4c, {param: se.floor}]}
-  - id: se.h_line5a
-    printed: "(helper)"
-    label: "Enter your church employee income from Form W-2"
-    type: NonNegDollars
-    expr: {op: param, ref: sales.zero}
-    note: "Open: church employee income is outside the tool, and no input or screening input exists for it. Chosen: zero."
-  - id: se.h_line5b_product
-    printed: "(helper)"
-    label: "Multiply line 5a by 92.35% (0.9235)"
-    type: NonNegDollars
-    expr: {op: multiply_rate, amount: se.h_line5a, rate: {param: se.rate_9235}}
-  - id: se.h_line5b_small
-    printed: "(helper)"
-    label: "Line 5a times 92.35% is less than $100"
-    type: Bool
-    expr: {op: test, lt: [se.h_line5b_product, {const: 10000}]}
+    note: "The church employee income exception ('enter -0- and continue') is not computed; church employee income is refused at line 5b. The stop rule is applied in helper se.h_4c_taxable."
+
   - id: se.h_zero
     printed: "(helper)"
     label: "Zero"
     type: NonNegDollars
     expr: {op: param, ref: sales.zero}
-  - id: se.line5b
-    printed: "5b"
-    label: "Multiply line 5a by 92.35% (0.9235). If less than $100, enter -0-"
+
+  - id: se.h_4c_taxable
+    printed: "(helper)"
+    label: "Line 4c when it is $400 or more; otherwise stop (no self-employment tax), zero"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, eq: [se.h_line5b_small, {const: true}]}
+        - guard: {op: test, ge: [se.line4c, {param: se.floor}]}
+          then: se.line4c
+        - guard: {op: test, lt: [se.line4c, {param: se.floor}]}
           then: se.h_zero
-        - guard: {op: test, eq: [se.h_line5b_small, {const: false}]}
-          then: se.h_line5b_product
-  - id: se.h_line6_sum
-    printed: "(helper)"
-    label: "Add lines 4c and 5b"
-    type: Dollars
-    expr: {op: sum, of: [se.line4c, se.line5b]}
+    note: "'If less than $400, stop; you don't owe self-employment tax' is read as making lines 6 through 13 zero when line 4c is under $400."
+
+  - id: se.line5b
+    printed: "5b"
+    label: "Multiply line 5a by 92.35% (0.9235)"
+    type: NonNegDollars
+    expr: {op: param, ref: sales.zero}
+    refuses: [f8959.unsupported]
+    note: "Line 5a (church employee income) has no input. Church employee income is covered by the screening input f8959.unsupported, so this line refuses on it and otherwise computes the case without church employee income, which is zero. The 'if less than $100, enter -0-' rule is moot in that case."
+
   - id: se.line6
     printed: "6"
     label: "Add lines 4c and 5b"
     type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, eq: [se.h_owes, {const: true}]}
-          then: se.h_line6_sum
-        - guard: {op: test, eq: [se.h_owes, {const: false}]}
-          then: se.h_zero
-    note: "Chosen: the stop at line 4c (less than $400, no self-employment tax) is encoded here as zero for line 6 and therefore for lines 10 through 13."
+    expr: {op: sum, of: [se.h_4c_taxable, se.line5b]}
+
   - id: se.line7
     printed: "7"
-    label: "Maximum amount of combined wages and self-employment earnings subject to social security tax or the 6.2% portion of the 7.65% railroad retirement (tier 1) tax for 2025"
+    label: "Maximum amount of combined wages and self-employment earnings subject to social security tax for 2025"
     type: NonNegDollars
     expr: {op: param, ref: se.wage_base}
-  - id: se.h_line8b
-    printed: "(helper)"
-    label: "Unreported tips subject to social security tax from Form 4137, line 10"
-    type: NonNegDollars
-    expr: {op: param, ref: sales.zero}
-    note: "Open: the tool does not prepare Form 4137, and no input or screening input exists for it. Chosen: zero."
-  - id: se.h_line8c
-    printed: "(helper)"
-    label: "Wages subject to social security tax from Form 8919, line 10"
-    type: NonNegDollars
-    expr: {op: param, ref: sales.zero}
-    note: "Open: the tool does not prepare Form 8919, and no input or screening input exists for it. Chosen: zero."
+
   - id: se.line8d
     printed: "8d"
     label: "Add lines 8a, 8b, and 8c"
     type: NonNegDollars
-    expr: {op: sum, of: [line8a, se.h_line8b, se.h_line8c]}
+    expr: {op: copy, from: line8a}
+    refuses: [f8959.unsupported]
+    note: "Line 8b (Form 4137 unreported tips) and line 8c (Form 8919 wages) have no inputs. The screening input f8959.unsupported covers Form 4137 tips and Form 8919 wages, so this line refuses on it and otherwise is line 8a alone. The 8a instruction to skip lines 8b-10 at $176,100 or more gives the same result, because line 9 floors at zero."
+
   - id: se.line9
     printed: "9"
     label: "Subtract line 8d from line 7. If zero or less, enter -0-"
     type: NonNegDollars
     expr: {op: subtract_floor0, from: se.line7, take: se.line8d}
-    note: "Line 8a's instruction to skip lines 8b through 10 when it is $176,100 or more gives the same result as this floor: line 9 is zero, so line 10 is zero."
-  - id: se.h_line10_base
+
+  - id: se.h_10_base
     printed: "(helper)"
     label: "The smaller of line 6 or line 9"
     type: NonNegDollars
     expr: {op: smaller_of, of: [se.line6, se.line9]}
+
   - id: se.line10
     printed: "10"
     label: "Multiply the smaller of line 6 or line 9 by 12.4% (0.124)"
     type: NonNegDollars
-    expr: {op: multiply_rate, amount: se.h_line10_base, rate: {param: se.rate_124}}
+    expr: {op: multiply_rate, amount: se.h_10_base, rate: {param: se.rate_124}}
+
   - id: se.line11
     printed: "11"
     label: "Multiply line 6 by 2.9% (0.029)"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: se.line6, rate: {param: se.rate_029}}
+
   - id: se.line12
     printed: "12"
     label: "Self-employment tax. Add lines 10 and 11"
     type: NonNegDollars
     expr: {op: sum, of: [se.line10, se.line11]}
+
   - id: se.line13
     printed: "13"
     label: "Deduction for one-half of self-employment tax. Multiply line 12 by 50% (0.50)"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: se.line12, rate: {param: se.rate_50}}
+
   - id: line13
     printed: "(helper)"
     label: "Deduction for one-half of self-employment tax. Multiply line 12 by 50% (0.50)"

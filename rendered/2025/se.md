@@ -12,9 +12,9 @@
 
 ## 8a — `line8a`
 
-- **IRS:** Total social security wages and tips (total of boxes 3 and 7 on Form(s) W-2)
-- **Encoded (NonNegDollars):** Input — Bound by the calling line (this person's Forms W-2, boxes 3 and 7).
-- Expr: `{"op":"input","source":"Bound by the calling line (this person's Forms W-2, boxes 3 and 7)."}`
+- **IRS:** Total social security wages and tips (total of boxes 3 and 7 on Form(s) W-2) and railroad retirement (tier 1) compensation
+- **Encoded (NonNegDollars):** Input — Bound by the calling line (this person's Forms W-2, boxes 3 and 7; railroad retirement compensation is refused, person.se_rrta).
+- Expr: `{"op":"input","source":"Bound by the calling line (this person's Forms W-2, boxes 3 and 7; railroad retirement compensation is refused, person.se_rrta)."}`
 - Cite: [f1040sse] Schedule SE (2025), line 8a (2025; created 2025-05-07; sha256 05bc2b3e)
 
 ## (helper) — `zero`

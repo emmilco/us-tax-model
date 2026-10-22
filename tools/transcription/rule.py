@@ -66,7 +66,9 @@ def drop_from_fixture(form, case_id, printed):
     fx = json.load(open(fx_path))
     jobs = json.load(open(os.path.join(ROOT, ".classm", "jobs.json")))["jobs"]
     job = next(j for j in jobs if j["id"] == case_id)
-    line_id = next(l["id"] for l in job["fill"] if l["printed"] == printed)
+    # The section is named by the line's handle (classm.handle): its printed number, or the
+    # number and the line's id where two lines share the number.
+    line_id = next(l["id"] for l in job["fill"] if printed in (l["printed"], f'{l["printed"]} ({l["id"]})'))
     for c in fx["cases"]:
         if c["id"] == case_id:
             c["expect"].pop(line_id, None)

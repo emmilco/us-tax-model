@@ -8,6 +8,7 @@ The rendered English of every printed line of `Tax Computation Worksheet—Line 
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | a3ca2faf380eef0217147c5dfd6f963ef880e7083d40a7a0f05e53cabbaec61e |
+| subject sha256 | c1a361001e6d9ce7e77b2893ef190e0970997d6c30121c865bd0fa21ff3af0f1 |
 | lines judged | 46 |
 | match / mismatch / unclear / missing | 46 / 0 / 0 / 0 |
 | verdicts for lines not in the form | none |

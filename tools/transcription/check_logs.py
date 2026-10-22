@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 """Fail unless every form has a transcription-agreement log and a render-comparison log,
-each with no open ruling, current source hashes, and rulings that agree with its sidecar. Runs offline in check-all; the logs
+each with no open ruling, current source hashes, an unchanged subject (what the review
+judged: subjects.py), and rulings that agree with its sidecar. Runs offline in check-all; the logs
 themselves are produced deliberately by transcribe.py and render_compare.py (network steps)."""
 import json, os, re, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import rulings  # noqa: E402
+import subjects  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.join(ROOT, "tools"))
@@ -49,7 +51,8 @@ def classm_forms():
 
 
 def check(kind, logs, optional_env, expected=None):
-    """One log per form under `logs`; no open ruling; every source hash current."""
+    """One log per form under `logs`; no open ruling; every source hash current; the
+    subject it reviewed (subjects.py) unchanged."""
     problems = []
     for fid in (expected if expected is not None else forms):
         path = os.path.join(logs, fid + ".md")
@@ -58,6 +61,12 @@ def check(kind, logs, optional_env, expected=None):
         text = open(path, encoding="utf-8").read()
         if "Ruling: open" in text:
             problems.append(f"{fid}: open ruling(s) in the {kind} log")
+        subject = re.search(r"^\| subject sha256 \| ([0-9a-f]{64}) \|$", text, flags=re.M)
+        if not subject:
+            problems.append(f"{fid}: the {kind} log records no subject hash (tools/transcription/subjects.py)")
+        elif subject.group(1) != subjects.current(kind, fid, Y):
+            what = {"transcription": "form", "render": "rendered English", "classm": "computation"}[kind]
+            problems.append(f"{fid}: the {kind} log reviewed an earlier {what} of {fid}; rerun the review")
         for row in re.findall(r"^\| (\S+) \| [^|]* \| [^|]* \| [^|]* \| ([0-9a-f]{64}) \|(?: [^|]* \| ([0-9a-f]{64}|-) \|)?$", text, flags=re.M):
             doc_id, sha, cols_sha = row
             if doc_id in docs and docs[doc_id]["text_sha256"] != sha:
@@ -73,7 +82,7 @@ def check(kind, logs, optional_env, expected=None):
     if missing:
         print(f"{kind} logs: {total - len(missing)}/{total} forms logged; missing: " + ", ".join(p.split(':')[0] for p in missing))
     elif not hard:
-        print(f"{kind} logs OK ({total} forms, no open rulings, snapshots current)")
+        print(f"{kind} logs OK ({total} forms, no open rulings, snapshots and subjects current)")
     return bool(hard or (missing and not allow_missing))
 
 

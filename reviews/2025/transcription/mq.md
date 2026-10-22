@@ -8,6 +8,7 @@ Second transcription of `Mid-quarter convention test for property placed in serv
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | eac391d4193d23a7e6d221377ff4cb7743d4d8e874e8cbb07b333a49963869cc |
+| subject sha256 | 7a635868298039249c562405cd29bd2de3cef651b51f0bf258cd0dd44a40e55b |
 | printed lines compared | 1 |
 | agree / disagree / missing | 1 / 0 / 0 |
 | extra printed lines in second | none |

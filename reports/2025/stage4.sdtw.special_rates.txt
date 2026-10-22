@@ -527,6 +527,13 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   rrta Do any wage statements report railroad retirement compensation or taxes (W-2 box 14), or did you file Form CT-2 as an employee representative?
       = false
       cite: [iw2w3] pp. 12–13, Railroad employers: RRTA compensation and taxes in box 14; boxes 3–7 are not used for RRTA (2025; printed date 2025-02-19; bfecbc99)
+  (helper) Number of this person's Schedules C while this person has railroad retirement compensation
+      = 0
+      cite: [f1040sse] Schedule SE (2025), line 8a, "Total social security wages and tips (total of boxes 3 and 7 on Form(s) W-2) and railroad retirement (tier 1) compensation" (2025; created 2025-05-07; 05bc2b3e)
+      note: confirmed roster $sc@person[taxpayer]:
+  (gate) Self-employment and railroad retirement compensation together
+      = false
+      cite: [f1040sse] Schedule SE (2025), line 8a, "Total social security wages and tips (total of boxes 3 and 7 on Form(s) W-2) and railroad retirement (tier 1) compensation" (2025; created 2025-05-07; 05bc2b3e)
   (helper) Total W-2 box 1 for this person
       = $215,750
       cite: [f1040] Form 1040 (2025), line 1a (2025; created 2025-09-05; 3d31c226)
@@ -1596,8 +1603,9 @@ Derivations:
   person[taxpayer].hsa_repeated: test(person[taxpayer].hsa_forms = 0; 1 = 1)
   person[taxpayer].hsa_deduction: sum_over(person[taxpayer].hsa_repeated = false)
   s1.line13: sum_over(person[taxpayer].hsa_deduction = $0)
+  person[taxpayer].se_rrta: test(person[taxpayer].sc_rrta_count = 0; 0 = 0)
   person[taxpayer].has_sc: test(person[taxpayer].sc_count = 0; 0 = 0)
-  person[taxpayer].se_line13: choose(person[taxpayer].has_sc = false; true = true; person[taxpayer].has_sc = false; false = false; person[taxpayer].zero = $0)
+  person[taxpayer].se_line13: choose(person[taxpayer].se_rrta = false; person[taxpayer].has_sc = false; true = true; person[taxpayer].has_sc = false; false = false; person[taxpayer].zero = $0)
   s1.line15: sum_over(person[taxpayer].se_line13 = $0)
   person[taxpayer].s16: choose(person[taxpayer].has_sc = false; true = true; person[taxpayer].has_sc = false; false = false; person[taxpayer].zero = $0)
   s1.line16: sum_over(person[taxpayer].s16 = $0)
@@ -1880,7 +1888,7 @@ Derivations:
   sdtw.line47: smaller_of(sdtw.line45 = $61,663; sdtw.line46 = $74,547.25)
   f1040.sdtw.line47: smaller_of(sdtw.line45 = $61,663; sdtw.line46 = $74,547.25)
   f1040.line16: choose(scope.other_line16 = false; f1040.gate.sdtw = true; true = true; sdtw.line47 = $61,663)
-  person[taxpayer].se_line12: choose(person[taxpayer].has_sc = false; true = true; person[taxpayer].has_sc = false; false = false; person[taxpayer].zero = $0)
+  person[taxpayer].se_line12: choose(person[taxpayer].se_rrta = false; person[taxpayer].has_sc = false; true = true; person[taxpayer].has_sc = false; false = false; person[taxpayer].zero = $0)
   s2.line4: sum_over(person[taxpayer].se_line12 = $0)
   person[taxpayer].medicare5: sum_over(person[taxpayer].rrta = false; person[taxpayer].w2[a].box5 = $200,000)
   f8959.line1: sum_over(f8959.unsupported = false; person[taxpayer].medicare5 = $200,000)
@@ -1891,7 +1899,7 @@ Derivations:
   f8959.line5: param(#medicare.threshold = $200,000)
   f8959.line6: subtract_floor0(f8959.line4 = $200,000; f8959.line5 = $200,000)
   f8959.line7: multiply_rate(f8959.line6 = $0; #medicare.additional_rate = 9/1000)
-  person[taxpayer].se_line6: choose(person[taxpayer].has_sc = false; true = true; person[taxpayer].has_sc = false; false = false; person[taxpayer].zero = $0)
+  person[taxpayer].se_line6: choose(person[taxpayer].se_rrta = false; person[taxpayer].has_sc = false; true = true; person[taxpayer].has_sc = false; false = false; person[taxpayer].zero = $0)
   f8959.line8: sum_over(f8959.unsupported = false; person[taxpayer].se_line6 = $0)
   f8959.line9: copy(f8959.line5 = $200,000)
   f8959.line10: copy(f8959.line4 = $200,000)

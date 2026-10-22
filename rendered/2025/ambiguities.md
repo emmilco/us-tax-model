@@ -184,8 +184,8 @@
 - Text at issue: Form 7206 line 9: "Enter the amount, if any, from Schedule 1 (Form 1040), line 16, ... attributable to the same trade or business in which the insurance plan is established." The instructions do not say how a contribution figured on all of a person's businesses is attributed to one.
 - Candidate readings: In proportion to the business's share of the person's net profits (line 4 over line 5, as line 7 does for self-employment tax). | Wholly to the business under which the plan is established.
 - **Chosen:** In proportion to the business's net profit over the total of the person's net profits (sc.f7206_line9).
-- Reason: The SEP and SIMPLE limits are figured on the person's net earnings from all businesses; line 7 apportions self-employment tax in the same way. With one business both readings give the whole amount.
-- Status: Owner accepted, after Stage 14.
+- Reason: A SEP or SIMPLE plan is supported only for a person with one Schedule C (Pub. 560 p. 7, "If you have more than one business, but only one has a retirement plan, only the earned income from that business is considered for that plan"; a plan with more than one Schedule C is refused, person.plan_screened), and with one business both readings give the whole amount.
+- Status: Owner accepted, after Stage 14. Reason corrected after T-044 (BUG-0078; owner ruling to refuse a plan with more than one Schedule C); the reading is unchanged.
 - Cite: [f7206] Form 7206 (2025), lines 6, 7 and 9 (2025; created 2025-10-02; sha256 822203c9)
 
 ## amb.2025.qbi_attribution
@@ -193,7 +193,7 @@
 - Text at issue: Form 8995 instructions, Line 1: "To figure the total amount of QBI, you must consider all items that are attributable to the trade or business. This includes, but isn't limited to, ... deductible part of self-employment tax, self-employment health insurance deduction, and contributions to qualified retirement plans." No method is given for a person with more than one business.
 - Candidate readings: Self-employment tax and retirement contributions in proportion to each business's net profit; the health insurance deduction to the business of its Form 7206. | Each item in proportion to net profit.
 - **Chosen:** The first (sc.qbi_se, sc.qbi_plan, sc.qbi_ded). Line 2 of Form 8995, the total, does not depend on the method.
-- Reason: Form 7206 is figured for the business under which the plan is established, so its deduction is attributable to that business; the other two are figured on all businesses together, as on Form 7206 line 7.
+- Reason: Form 7206 is figured for the business under which the plan is established, so its deduction is attributable to that business; self-employment tax is figured on all businesses together, as on Form 7206 line 7, and a retirement plan is supported only for a person with one Schedule C (person.plan_screened), so its contributions belong to that business.
 - Status: Owner accepted, after Stage 14.
 - Cite: [i8995] Line 1, Determining your qualified business income (2025; printed date 2026-01-26; sha256 875843ba)
 

@@ -42,11 +42,11 @@ form:
       locator: p. 98, Schedule 1, line 21
   - id: sli.claimed
     printed: (helper)
-    label: Are you claimed as a dependent on someone else's (such as your parent's) 2025 tax return?
+    label: Are you, or your spouse if filing jointly, claimed as a dependent on someone else's (such as your parent's) 2025 tax return?
     type: Bool
     expr:
       op: input
-      source: Are you claimed as a dependent on someone else's (such as your parent's) 2025 tax return?
+      source: Are you, or your spouse if filing jointly, claimed as a dependent on someone else's (such as your parent's) 2025 tax return?
     cite:
       doc: i1040gi
       locator: p. 98, Schedule 1, line 21, 'You, or your spouse if filing jointly, aren't claimed as a dependent on someone

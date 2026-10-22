@@ -8,6 +8,7 @@ The rendered English of every printed line of `Schedule A — supported itemized
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 5dfc7b17f56cb407e481e1b746cbfdc9be8cc1da271b809ffb28500dd2fcc6ac |
+| subject sha256 | a759081f45fbbbc73e6480b8812f0c1a42387e636620f56fee5bc2d684faaa8c |
 | lines judged | 24 |
 | match / mismatch / unclear / missing | 23 / 0 / 1 / 0 |
 | verdicts for lines not in the form | none |

@@ -8,6 +8,7 @@ The rendered English of every printed line of `Form 4562 — one item of depreci
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 5485b050048e723c6c66fd40fb055c6103d3bbd4a447c994e23a5c2d6204260f |
+| subject sha256 | 3f317e7cda60bc1ed6b72c1ac9c73ed519d44429278e796df75d70b610f58e63 |
 | lines judged | 15 |
 | match / mismatch / unclear / missing | 15 / 0 / 0 / 0 |
 | verdicts for lines not in the form | none |

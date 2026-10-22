@@ -8,6 +8,7 @@ The rendered English of every printed line of `Household facts for dependents an
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 945fa693bd212101627e7aef9616e2035b6a380cf63a650767e73ec0b617df9b |
+| subject sha256 | e0df7702060c20acc80f02f5843f03660a80f27edad5ca2ff095dd0f9150daeb |
 | lines judged | 28 |
 | match / mismatch / unclear / missing | 26 / 2 / 0 / 0 |
 | verdicts for lines not in the form | none |

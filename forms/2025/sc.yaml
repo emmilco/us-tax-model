@@ -18,6 +18,16 @@ form:
     cite:
       doc: i1040sc
       locator: p. 3, Line A, "complete a separate Schedule C for each business"
+  - id: sc.rrta
+    printed: (helper)
+    label: This business's owner has railroad retirement compensation
+    type: Bool
+    expr:
+      op: copy
+      from: person.rrta
+    cite:
+      doc: f1040sse
+      locator: 'Schedule SE (2025), line 8a, "Total social security wages and tips (total of boxes 3 and 7 on Form(s) W-2) and railroad retirement (tier 1) compensation"'
   - id: sc.zero
     printed: (helper)
     label: Zero

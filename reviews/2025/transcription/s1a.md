@@ -8,6 +8,7 @@ Second transcription of `Schedule 1-A (Form 1040) — Additional Deductions` by 
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | eb98091d1d930b295524d13c99e284a0b02586640b44c8ce59e9ef766a891e1a |
+| subject sha256 | 1623116cb1640efb3050727a89613bb1d38171f8dd2ee02ac5ff22192f383dce |
 | printed lines compared | 43 |
 | agree / disagree / missing | 10 / 33 / 0 |
 | extra printed lines in second | none |

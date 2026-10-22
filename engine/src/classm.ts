@@ -114,7 +114,8 @@ function buildJob(data: CanonicalData, doc: FormDoc, inputs: Inputs, r: EvalResu
     if (!computed(v)) return null;
     given.push({ ref, doc: hit.doc.id, printed: hit.line.printed, label: hit.line.label, value: v! });
   }
-  for (const line of defLines) {
+  // A collection's lines are keyed per entry: buildCollectionJob gives their shared-definition results per entry.
+  for (const line of entryLevel ? [] : defLines) {
     const v = val(line.id);
     if (!computed(v)) return null;
     given.push({ ref: line.id, doc: doc.id, printed: line.printed, label: line.label, value: v!, note: "result of the shared tax computation (Tax Table or Tax Computation Worksheet), given rather than worked" });
@@ -175,6 +176,9 @@ function buildCollectionJob(data: CanonicalData, doc: FormDoc, inputs: Inputs, r
   const entries: Record<string, EntryField[]> = {};
   const fill: Job["fill"] = []; const project: Record<string, Value> = {};
   const inputLines = doc.lines.filter((l) => l.expr.op === "input");
+  // Lines that take a shared definition's result (a person's Schedule SE lines): given per entry,
+  // as a single document's are, not worked (the definition has its own class M review).
+  const defIds = new Set(doc.lines.filter((l) => { const o = { refs: new Set<string>(), defs: false, sums: [] as { collection: string; field: string; where: Set<string> }[] }; walk(l.expr as Expr, o); return o.defs; }).map((l) => l.id));
   // Fields of an enclosing entry the document reads (a business reading its person's Schedule SE, say):
   // given with the entry, since the entry-level hand-work cannot see the enclosing document.
   const enclosingRefs = new Set<string>();
@@ -202,9 +206,17 @@ function buildCollectionJob(data: CanonicalData, doc: FormDoc, inputs: Inputs, r
       const label = data.forms.find((d) => d.id === collection)!.lines.find((x) => x.id === ref)!.label;
       entries[entry]!.push({ field: ref, label: `${label} (of the enclosing ${collection} entry, given)`, value: v! });
     }
+    for (const id of [...defIds].sort()) {
+      const key = fields.get(id); const v = key ? r.derivations.get(key)?.value : undefined;
+      if (!key || !v) continue;
+      if (!computed(v)) return null;
+      const line = doc.lines.find((x) => x.id === id)!;
+      entries[entry]!.push({ field: id, label: `${line.label} (result of the shared computation, given rather than worked)`, value: v });
+    }
     // The lines the evaluation reached for this entry: a test settled early leaves the rest
     // underived, as a STOP in the printed flow chart ends the hand-work.
     for (const l of collectionFill(doc)) {
+      if (defIds.has(l.id)) continue;
       const key = fields.get(l.id); const v = key ? r.derivations.get(key)?.value : undefined;
       if (!key || !v) continue;
       if (unusedHelper(l, v)) continue;
@@ -294,6 +306,11 @@ export function classmJobs(args: string[]): void {
         [...f.values()].every((key) => r.derivations.get(key)?.value.kind !== "refusal") &&
         collectionFill(doc).every((l) => { const v = r.derivations.get(f.get(l.id) ?? "")?.value; return !v || computed(v) || unusedHelper(l, v); }));
     });
+    // ...and only cases a job can be built from (everything the document reads computed, the
+    // fields of the collections it sums included): otherwise the greedy choice below can settle on
+    // the richest returns, those where a summed entry refuses, and build nothing.
+    const buildable = candidates.filter((i) => (isCollection ? buildCollectionJob : buildJob)(data, doc, corpus[i]!, results[i]!, 0, []) !== null);
+    candidates.splice(0, candidates.length, ...buildable);
     const reachable = new Set(keys.filter((k) => candidates.some((i) => keysPerCase[i]!.has(k))));
     const covered = new Set<string>(); const chosen: number[] = [];
     while (covered.size < reachable.size) {

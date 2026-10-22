@@ -16,6 +16,7 @@ import yaml
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import rulings  # noqa: E402
+import subjects  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.join(ROOT, "tools"))
@@ -775,6 +776,7 @@ def write_log(form_doc, model, prompt, used, results, extra, raw_text, meta, dry
            f"| model requested | {model} |",
            f"| model reported | {', '.join(meta.get('model_reported', [])) or '-'} |",
            f"| prompt sha256 | {hashlib.sha256(prompt.encode()).hexdigest()} |",
+           f"| subject sha256 | {subjects.current('transcription', fid, Y)} |",
            f"| printed lines compared | {len(results)} |",
            f"| agree / disagree / missing | {counts['AGREE']} / {counts['DISAGREE']} / {counts['MISSING']} |",
            f"| extra printed lines in second | {', '.join(extra) if extra else 'none'} |", "",

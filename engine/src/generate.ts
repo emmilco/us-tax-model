@@ -233,8 +233,12 @@ function putBusinesses(data: CanonicalData, inputs: Inputs, P: string, list: Bus
     inputs[`${P}.se_screen`] ??= false;
     inputs[`${P}.plan`] = plan.kind;
     inputs[`${P}.plan_screen`] ??= false;
-    Object.assign(inputs, { [`${P}.sep_rate`]: plan.sepRate, [`${P}.sep_contrib`]: plan.sepContrib, [`${P}.simple_deferral`]: plan.deferral,
-      [`${P}.simple_age`]: plan.age, [`${P}.simple_kind`]: plan.formula, [`${P}.simple_employer`]: plan.employer });
+    // A plan's amounts only for a person who has that plan: an interview asks no one else for them,
+    // and amounts for a plan the person lacks would trip that plan's limits on lines nothing reads.
+    const sep = plan.kind === "sep", simple = plan.kind === "simple";
+    Object.assign(inputs, { [`${P}.sep_rate`]: plan.sepRate, [`${P}.sep_contrib`]: sep ? plan.sepContrib : 0,
+      [`${P}.simple_deferral`]: simple ? plan.deferral : 0, [`${P}.simple_age`]: plan.age, [`${P}.simple_kind`]: plan.formula,
+      [`${P}.simple_employer`]: simple ? plan.employer : 0 });
   }
 }
 

@@ -8,6 +8,7 @@ Second transcription of `Form 1099-R distributions (IRAs, pensions and annuities
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | cddd23c6c05e4c358056e5bd35bebf55e9015dbd23ec62cbd84ed67fb2242453 |
+| subject sha256 | 749c206d7dded76f8927dfff5e415400bb2a0822c820d5a882a0571aaec1ef7a |
 | printed lines compared | 15 |
 | agree / disagree / missing | 11 / 4 / 0 |
 | extra printed lines in second | none |

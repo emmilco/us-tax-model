@@ -8,6 +8,7 @@ The rendered English of every printed line of `Schedule B — interest payer ent
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | b568c64494f81cf82762124f5f5e77f3867771057f62b0bb8cd0bc3b92158b1d |
+| subject sha256 | 9e5dae9f1d545f41c151b84697b69483d4da9f907bd412cd25c874e855ebbcb9 |
 | lines judged | 1 |
 | match / mismatch / unclear / missing | 1 / 0 / 0 / 0 |
 | verdicts for lines not in the form | none |

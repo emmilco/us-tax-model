@@ -8,6 +8,7 @@ The rendered English of every printed line of `Earned Income Credit (EIC)—Step
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | d8931883c119aa41efe00e17693f55ca6cc3f20ce1d78296e11af3aba9c91031 |
+| subject sha256 | 3d41e09cc85d34425c52dceb3b3c65ca451ce9553ef6c950b8b3c397854920c0 |
 | lines judged | 13 |
 | match / mismatch / unclear / missing | 12 / 1 / 0 / 0 |
 | verdicts for lines not in the form | none |

@@ -8,6 +8,7 @@ Second transcription of `Dependents — qualifying child and qualifying relative
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 2c895d71f70af1838bb0b6d6deb907924fe7bb4f54649f2f64cfc11db4c701dc |
+| subject sha256 | 35d5c59cf13072780bdc414bffabbd55aac50dab8288bee8641f8252133f30f3 |
 | printed lines compared | 10 |
 | agree / disagree / missing | 3 / 7 / 0 |
 | extra printed lines in second | none |

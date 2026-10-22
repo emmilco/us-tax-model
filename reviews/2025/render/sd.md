@@ -8,6 +8,7 @@ The rendered English of every printed line of `Schedule D — securities sales a
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 752662e57d6331cbae72524506603ae16628042606db7febc5a78f5710f868d5 |
+| subject sha256 | 230f7f25833346d7ea24794a35a3697e5a891a4537c9f5860d68aed1fdde6487 |
 | lines judged | 46 |
 | match / mismatch / unclear / missing | 14 / 32 / 0 / 0 |
 | verdicts for lines not in the form | none |

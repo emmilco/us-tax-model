@@ -1,13 +1,14 @@
 # Render comparison — qbi
 
-The rendered English of every printed line of `Section 199A dividend-only deduction and form selection` (`rendered/2025/qbi.md`) read against the archived IRS pages by an isolated model that saw the rendering and the pages, not the YAML (spec 6.5).
+The rendered English of every printed line of `Qualified business income and section 199A dividends — amounts and the choice of Form 8995` (`rendered/2025/qbi.md`) read against the archived IRS pages by an isolated model that saw the rendering and the pages, not the YAML (spec 6.5).
 
 | field | value |
 | --- | --- |
-| date | 2026-10-19 |
+| date | 2026-10-21 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 7eb3a171f22dc542b06c005f3042a11570f4ed839a2179c55881693719ddd986 |
+| prompt sha256 | b9bad7f717fe26a5a90f57385cdcfb11b8e88d1a3ed6432093063617c229596e |
+| subject sha256 | 160165d0edca43732df94a0a23b768e058d3593a5fd76c8e5a94f19506e9771a |
 | lines judged | 1 |
 | match / mismatch / unclear / missing | 0 / 1 / 0 / 0 |
 | verdicts for lines not in the form | none |
@@ -29,15 +30,17 @@ Status: **MISMATCH**
 
 Restated: Input — The qualified business loss carryforward from line 16 of your 2024 Form 8995 (or the corresponding line of your 2024 Form 8995-A), entered as a positive amount (zero if none)
 
-Model: The restatement takes only the 2024 Form 8995 line 16 (or Form 8995-A) carryforward. The IRS text also puts previously suspended losses on line 3: 'When losses or deductions previously suspended by other Code provisions are allowed in calculating taxable income, the qualified portion... is treated as a qualified net loss carryforward... See Line 3', and line 3 says 'Include here the qualified portion of trade or business (loss) carryforward allowed in calculating taxable income in the current year'. No refusal excludes that case.
+Model: The restatement covers only the prior-year line 16 carryforward. The instructions also say to 'Include here the qualified portion of trade or business (loss) carryforward allowed in calculating taxable income in the current year.' They add that when 'losses or deductions previously suspended by other Code provisions are allowed in calculating taxable income, the qualified portion ... is treated as a qualified net loss carryforward ... See Line 3,' so those allowed losses also belong on line 3 and the restatement leaves them out.
 
-Ruling: refusal located elsewhere; restatement accepted. Losses or deductions suspended in an earlier year by another provision and allowed this year are refused through qbi.unsupported ('losses or deductions suspended in an earlier year by another provision and allowed this year'), so line 3 is the 2024 Form 8995 line 16 carryforward, taken as printed (owner ruling 1a).
+Ruling: refusal located elsewhere; restatement accepted. Losses or deductions suspended in an earlier year by another provision and allowed this year (i8995 p. 3: 'treated as a qualified net loss carryforward ... See Line 3') are refused through qbi.unsupported ('losses or deductions suspended in an earlier year by another provision and allowed this year'), whose refusal on qbi.eligible reaches Form 8995 line 15 and Form 1040 line 13a (checked: qbi.unsupported true gives f8995.line15 and f1040.line13a refused); so within scope line 3 is the 2024 Form 8995 line 16 carryforward, taken as printed (owner ruling 1a).
 
 ## Raw response
 
 ```yaml
+```yaml
 lines:
   - key: "3"
     status: MISMATCH
-    reason: "The restatement takes only the 2024 Form 8995 line 16 (or Form 8995-A) carryforward. The IRS text also puts previously suspended losses on line 3: 'When losses or deductions previously suspended by other Code provisions are allowed in calculating taxable income, the qualified portion... is treated as a qualified net loss carryforward... See Line 3', and line 3 says 'Include here the qualified portion of trade or business (loss) carryforward allowed in calculating taxable income in the current year'. No refusal excludes that case."
+    reason: "The restatement covers only the prior-year line 16 carryforward. The instructions also say to 'Include here the qualified portion of trade or business (loss) carryforward allowed in calculating taxable income in the current year.' They add that when 'losses or deductions previously suspended by other Code provisions are allowed in calculating taxable income, the qualified portion ... is treated as a qualified net loss carryforward ... See Line 3,' so those allowed losses also belong on line 3 and the restatement leaves them out."
+```
 ```

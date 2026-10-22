@@ -117,6 +117,13 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $0
       cite: [i8889] p. 4, "Combine the amounts on line 13 of both Forms 8889 and enter this amount on Schedule 1 (Form 1040), line 13" (2025; da6f2f58)
       note: confirmed roster $f8889@person[taxpayer]:
+  (helper) Number of this person's Schedules C while this person has railroad retirement compensation
+      = 0
+      cite: [f1040sse] Schedule SE (2025), line 8a, "Total social security wages and tips (total of boxes 3 and 7 on Form(s) W-2) and railroad retirement (tier 1) compensation" (2025; created 2025-05-07; 05bc2b3e)
+      note: confirmed roster $sc@person[taxpayer]:
+  (gate) Self-employment and railroad retirement compensation together
+      = false
+      cite: [f1040sse] Schedule SE (2025), line 8a, "Total social security wages and tips (total of boxes 3 and 7 on Form(s) W-2) and railroad retirement (tier 1) compensation" (2025; created 2025-05-07; 05bc2b3e)
   (helper) Total W-2 box 1 for this person
       = $0
       cite: [f1040] Form 1040 (2025), line 1a (2025; created 2025-09-05; 3d31c226)
@@ -433,8 +440,9 @@ Derivations:
   person[taxpayer].hsa_repeated: test(person[taxpayer].hsa_forms = 0; 1 = 1)
   person[taxpayer].hsa_deduction: sum_over(person[taxpayer].hsa_repeated = false)
   s1.line13: sum_over(person[taxpayer].hsa_deduction = $0)
+  person[taxpayer].se_rrta: test(person[taxpayer].sc_rrta_count = 0; 0 = 0)
   person[taxpayer].has_sc: test(person[taxpayer].sc_count = 0; 0 = 0)
-  person[taxpayer].se_line13: choose(person[taxpayer].has_sc = false; true = true; person[taxpayer].has_sc = false; false = false; person[taxpayer].zero = $0)
+  person[taxpayer].se_line13: choose(person[taxpayer].se_rrta = false; person[taxpayer].has_sc = false; true = true; person[taxpayer].has_sc = false; false = false; person[taxpayer].zero = $0)
   s1.line15: sum_over(person[taxpayer].se_line13 = $0)
   person[taxpayer].s16: choose(person[taxpayer].has_sc = false; true = true; person[taxpayer].has_sc = false; false = false; person[taxpayer].zero = $0)
   s1.line16: sum_over(person[taxpayer].s16 = $0)

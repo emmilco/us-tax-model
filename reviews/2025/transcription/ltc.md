@@ -8,6 +8,7 @@ Second transcription of `Form 7206, line 2 — qualified long-term care insuranc
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | d37a9ecba7a2ba3a2d394c831302ca7bfe8be4102a07492c53f109cb02c9ed81 |
+| subject sha256 | 7725642cb923e811f4d5df5cade9656856609c785f5d22f318800bdb04234fe8 |
 | printed lines compared | 2 |
 | agree / disagree / missing | 1 / 1 / 0 |
 | extra printed lines in second | none |

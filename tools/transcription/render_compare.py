@@ -18,6 +18,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from transcribe import ROOT, RAW, manifest, excerpt_for, call_model, load_form  # noqa: E402
 from taxyear import Y  # noqa: E402
 import rulings  # noqa: E402
+import subjects  # noqa: E402
 
 RENDERED = os.path.join(ROOT, "rendered", Y)
 LOGS = os.path.join(ROOT, "reviews", Y, "render")
@@ -289,6 +290,7 @@ def write_log(form_doc, model, prompt, used, printed, verdicts, raw_text, meta):
            f"| model requested | {model} |",
            f"| model reported | {', '.join(meta.get('model_reported', [])) or '-'} |",
            f"| prompt sha256 | {hashlib.sha256(prompt.encode()).hexdigest()} |",
+           f"| subject sha256 | {subjects.current('render', fid, Y)} |",
            f"| lines judged | {len(results)} |",
            f"| match / mismatch / unclear / missing | {counts['MATCH']} / {counts['MISMATCH']} / {counts['UNCLEAR']} / {counts['MISSING']} |",
            f"| verdicts for lines not in the form | {', '.join(extra) if extra else 'none'} |", "",

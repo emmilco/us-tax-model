@@ -92,7 +92,15 @@
 
 - **Authored helper label:** Total miles, as cents
 - **Encoded (NonNegDollars):** Add helper "Business miles, as cents" and helper "Commuting and other miles, as cents".
+- **Refusal:** when scveh.no_miles is true, cannot complete A vehicle with actual expenses and no miles. The business-use percentage of a vehicle's actual expenses is its business miles divided by its total miles, so it cannot be figured for a vehicle with no miles in 2025. Enter the vehicle's miles, or leave out a vehicle that was not driven. Cite: [i4562] p. 14, Column (c), "by the total number of miles the vehicle is driven for all purposes" (2025; sha256 5c1c95b7)
 - Expr: `{"of":["scveh.bm_c","scveh.nonbusiness_c"],"op":"sum"}`
+- Cite: [i4562] p. 14, Column (c), "by the total number of miles the vehicle is driven for all purposes" (2025; sha256 5c1c95b7)
+
+## (gate) — `scveh.no_miles`
+
+- **Authored helper label:** Actual expenses claimed for a vehicle with no miles
+- **Encoded (Bool):** helper "Standard mileage rate or actual expenses" = 'actual' and line 44a = 0 (a count) and line 44b = 0 (a count) and line 44c = 0 (a count)
+- Expr: `{"all":[{"eq":["scveh.method",{"const":"actual"}],"op":"test"},{"eq":["scveh.miles_business",{"const":0,"type":"Count"}],"op":"test"},{"eq":["scveh.miles_commuting",{"const":0,"type":"Count"}],"op":"test"},{"eq":["scveh.miles_other",{"const":0,"type":"Count"}],"op":"test"}],"op":"test"}`
 - Cite: [i4562] p. 14, Column (c), "by the total number of miles the vehicle is driven for all purposes" (2025; sha256 5c1c95b7)
 
 ## (helper) — `scveh.over_half`

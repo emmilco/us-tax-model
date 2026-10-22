@@ -8,6 +8,7 @@ The rendered English of every printed line of `Form 1099-DIV — distribution co
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | b7a7d184024eaf4070dd8db4ecc8ec5e9333b4baa8f28be436c8a7b551d77606 |
+| subject sha256 | 4ad39baafac680e2a95d81964b30abeac08ebe2d3b396d444dd8508e7f4e4924 |
 | lines judged | 22 |
 | match / mismatch / unclear / missing | 22 / 0 / 0 / 0 |
 | verdicts for lines not in the form | none |

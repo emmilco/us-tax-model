@@ -8,6 +8,7 @@ The rendered English of every printed line of `Mid-quarter convention test for p
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 997576f594498bf787b99b8115599d0178508758c6515c0daf65058e883ed3a9 |
+| subject sha256 | 86bffe68cb283040dd41dc7e6fa521e2be2eb6bf380631710c0ccacb172dcca2 |
 | lines judged | 7 |
 | match / mismatch / unclear / missing | 5 / 2 / 0 / 0 |
 | verdicts for lines not in the form | none |

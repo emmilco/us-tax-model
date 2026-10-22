@@ -148,6 +148,44 @@ form:
     cite:
       doc: i4562
       locator: p. 14, Column (c), "by the total number of miles the vehicle is driven for all purposes"
+    refuses:
+    - when: scveh.no_miles
+      form: A vehicle with actual expenses and no miles
+      remedy: The business-use percentage of a vehicle's actual expenses is its business miles divided by its total miles,
+        so it cannot be figured for a vehicle with no miles in 2025. Enter the vehicle's miles, or leave out a vehicle
+        that was not driven.
+      cite:
+        doc: i4562
+        locator: p. 14, Column (c), "by the total number of miles the vehicle is driven for all purposes"
+  - id: scveh.no_miles
+    printed: (gate)
+    label: Actual expenses claimed for a vehicle with no miles
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - scveh.method
+        - const: actual
+      - op: test
+        eq:
+        - scveh.miles_business
+        - const: 0
+          type: Count
+      - op: test
+        eq:
+        - scveh.miles_commuting
+        - const: 0
+          type: Count
+      - op: test
+        eq:
+        - scveh.miles_other
+        - const: 0
+          type: Count
+    cite:
+      doc: i4562
+      locator: p. 14, Column (c), "by the total number of miles the vehicle is driven for all purposes"
   - id: scveh.over_half
     printed: (helper)
     label: Business use is more than 50%

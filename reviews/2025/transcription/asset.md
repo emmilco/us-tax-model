@@ -8,6 +8,7 @@ Second transcription of `Form 4562 — one item of depreciable property (other t
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | bf49cc71a35038787fbf85f0fd1283d5743f25be9dcdb4c50adf0b6718790d5d |
+| subject sha256 | 0f1df70975dae8df7b1ffdb285589a51a9f6b67c79822b31fe1d630b33de9de6 |
 | printed lines compared | 16 |
 | agree / disagree / missing | 1 / 15 / 0 |
 | extra printed lines in second | none |

@@ -8,6 +8,7 @@ Second transcription of `Qualified Tips From More Than One Employer Worksheet (S
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 2473921fcdae3d7ab4b224755411a3be7c3dede9a3fef4e9e2f36f2adaac8297 |
+| subject sha256 | 2a7723b9953e4329f2d8ffa0fd83943ff543a87316e13e7101d7b84b8aa7ea1d |
 | printed lines compared | 3 |
 | agree / disagree / missing | 1 / 2 / 0 |
 | extra printed lines in second | none |

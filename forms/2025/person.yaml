@@ -397,6 +397,36 @@ form:
         doc: iw2w3
         locator: "pp. 12–13, Railroad employers: RRTA compensation and taxes in box 14; boxes 3–7 are not
           used for RRTA"
+    - id: person.sc_rrta_count
+      printed: (helper)
+      label: Number of this person's Schedules C while this person has railroad retirement compensation
+      type: Count
+      expr:
+        op: sum_over
+        collection: sc
+        field: sc.one
+        where:
+          op: test
+          eq:
+          - sc.rrta
+          - const: true
+      cite:
+        doc: f1040sse
+        locator: 'Schedule SE (2025), line 8a, "Total social security wages and tips (total of boxes 3 and 7 on Form(s) W-2) and railroad retirement (tier 1) compensation"'
+    - id: person.se_rrta
+      printed: (gate)
+      label: Self-employment and railroad retirement compensation together
+      type: Bool
+      expr:
+        op: test
+        gt:
+        - person.sc_rrta_count
+        - const: 0
+          type: Count
+      note: Counted through the person's Schedules C, so the railroad question is asked only of a person with a business.
+      cite:
+        doc: f1040sse
+        locator: 'Schedule SE (2025), line 8a, "Total social security wages and tips (total of boxes 3 and 7 on Form(s) W-2) and railroad retirement (tier 1) compensation"'
     - id: person.employers
       printed: employers
       label: Total w2.one for this person
@@ -791,6 +821,14 @@ form:
       cite:
         doc: f1040sse
         locator: Schedule SE (2025), line 6; i8959 Line 8, "Schedule SE, line 6"
+      refuses:
+        - when: person.se_rrta
+          form: Schedule SE with railroad retirement (tier 1) compensation
+          remedy: Schedule SE line 8a adds railroad retirement (tier 1) compensation to the social security wages, and
+            this tool does not take railroad compensation. Prepare Schedule SE with the railroad retirement instructions.
+          cite:
+            doc: f1040sse
+            locator: 'Schedule SE (2025), line 8a, "Total social security wages and tips (total of boxes 3 and 7 on Form(s) W-2) and railroad retirement (tier 1) compensation"'
     - id: person.se_line12
       printed: (helper)
       label: Schedule SE line 12 (self-employment tax) for this person
@@ -818,6 +856,14 @@ form:
       cite:
         doc: f1040sse
         locator: Schedule SE (2025), line 12, "Enter here and on Schedule 2 (Form 1040), line 4"
+      refuses:
+        - when: person.se_rrta
+          form: Schedule SE with railroad retirement (tier 1) compensation
+          remedy: Schedule SE line 8a adds railroad retirement (tier 1) compensation to the social security wages, and
+            this tool does not take railroad compensation. Prepare Schedule SE with the railroad retirement instructions.
+          cite:
+            doc: f1040sse
+            locator: 'Schedule SE (2025), line 8a, "Total social security wages and tips (total of boxes 3 and 7 on Form(s) W-2) and railroad retirement (tier 1) compensation"'
     - id: person.se_line13
       printed: (helper)
       label: Schedule SE line 13 (deduction for one-half of self-employment tax) for this person
@@ -845,6 +891,14 @@ form:
       cite:
         doc: f1040sse
         locator: Schedule SE (2025), line 13, "Enter here and on Schedule 1 (Form 1040), line 15"
+      refuses:
+        - when: person.se_rrta
+          form: Schedule SE with railroad retirement (tier 1) compensation
+          remedy: Schedule SE line 8a adds railroad retirement (tier 1) compensation to the social security wages, and
+            this tool does not take railroad compensation. Prepare Schedule SE with the railroad retirement instructions.
+          cite:
+            doc: f1040sse
+            locator: 'Schedule SE (2025), line 8a, "Total social security wages and tips (total of boxes 3 and 7 on Form(s) W-2) and railroad retirement (tier 1) compensation"'
     - id: person.se_line4c
       printed: (helper)
       label: Schedule SE line 4c for this person
@@ -872,6 +926,14 @@ form:
       cite:
         doc: f1040sse
         locator: Schedule SE (2025), line 4c
+      refuses:
+        - when: person.se_rrta
+          form: Schedule SE with railroad retirement (tier 1) compensation
+          remedy: Schedule SE line 8a adds railroad retirement (tier 1) compensation to the social security wages, and
+            this tool does not take railroad compensation. Prepare Schedule SE with the railroad retirement instructions.
+          cite:
+            doc: f1040sse
+            locator: 'Schedule SE (2025), line 8a, "Total social security wages and tips (total of boxes 3 and 7 on Form(s) W-2) and railroad retirement (tier 1) compensation"'
     - id: person.plan
       printed: (helper)
       label: Retirement plan of this self-employed person
@@ -900,16 +962,31 @@ form:
           chapter 5, Caution, "apply only to self-employed individuals who have only one defined contribution plan"
     - id: person.plan_screened
       printed: (gate)
-      label: This person's retirement contributions are outside this tool
+      label: This person's retirement contributions are outside this tool (screened, or a plan with more than one Schedule C)
       type: Bool
       expr:
         op: test
-        eq:
-        - person.plan_screen
-        - const: true
+        any:
+        - op: test
+          eq:
+          - person.plan_screen
+          - const: true
+        - op: test
+          all:
+          - op: test
+            not:
+              op: test
+              eq:
+              - person.plan
+              - const: none
+          - op: test
+            gt:
+            - person.sc_count
+            - const: 1
+              type: Count
       cite:
         doc: p560
-        locator: pp. 8–11, 14–17, 38–40, chapters 2, 3 and 5
+        locator: 'pp. 8–11, 14–17, 38–40, chapters 2, 3 and 5; p. 7, "If you have more than one business, but only one has a retirement plan, only the earned income from that business is considered for that plan"'
     - id: person.cent
       printed: (helper)
       label: One cent
@@ -955,7 +1032,7 @@ form:
       refuses:
       - when: person.plan_screened
         form: Retirement plan contributions outside this tool (SARSEP, other plan rates, higher SIMPLE limits, more than one plan,
-          other elective deferrals, Roth contributions, excess contributions)
+          a plan with more than one Schedule C, other elective deferrals, Roth contributions, excess contributions)
         remedy: These retirement contributions are outside this tool.
         cite:
           doc: p560

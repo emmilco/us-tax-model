@@ -8,6 +8,7 @@ Second transcription of `Schedule D Tax Worksheet` by an isolated model (spec 6.
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 65ff58f9adbbc5d464076085e1b3f04c5a9c2fb76e9f31048f1f591b5d4b37d1 |
+| subject sha256 | 8254a99a8c4b44a59b8f31245708ea4e99f5f68e0c4f1bdc187c1abb9ca04d82 |
 | printed lines compared | 47 |
 | agree / disagree / missing | 29 / 18 / 0 |
 | extra printed lines in second | none |

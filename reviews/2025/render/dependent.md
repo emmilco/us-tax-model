@@ -8,6 +8,7 @@ The rendered English of every printed line of `Dependents — qualifying child a
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 7879c55766cb9faac1e511c86c28bb4e2405595f09f152bace06a02ef26b76e7 |
+| subject sha256 | 2ebe484fcf6e6ade83f4eb1ce42720a0c897cb75b8f3e69df27c997cf7b2426a |
 | lines judged | 48 |
 | match / mismatch / unclear / missing | 43 / 4 / 1 / 0 |
 | verdicts for lines not in the form | none |

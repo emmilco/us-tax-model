@@ -8,6 +8,7 @@ Second transcription of `Form 8949 and Schedule D — manually classified securi
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 346fc0a4d564f586c4e878248b517abb0751fae3790f53717c1699f2a0c9eaf0 |
+| subject sha256 | 11546ec12851651ce0a50b94b569a90a2396846b7f07dd9626ff7f38baf714b3 |
 | printed lines compared | 5 |
 | agree / disagree / missing | 3 / 2 / 0 |
 | extra printed lines in second | none |

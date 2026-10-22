@@ -8,6 +8,7 @@ The rendered English of every printed line of `Schedule D Tax Worksheet` (`rende
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 245fe057b1916fa11b61730702923d60bc428af9c14cf535cf83ed1ba6c7e476 |
+| subject sha256 | ad5dbe41f9378e5dbc65094fa635d34acd196f617c0b876328f6fc9e6d4fa2ae |
 | lines judged | 47 |
 | match / mismatch / unclear / missing | 45 / 2 / 0 / 0 |
 | verdicts for lines not in the form | none |

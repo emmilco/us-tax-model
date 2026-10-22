@@ -8,6 +8,7 @@ Second transcription of `Tax on an amount — Tax Table or Tax Computation Works
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 53a276666f071199eca3505de47d947e0e68ef8cbccc390232ceab58a69b97a0 |
+| subject sha256 | d0c69f842ce9ea7bd22a5bbf00f294261f16fed7b31f05acc1c765da59b58c5d |
 | printed lines compared | 1 |
 | agree / disagree / missing | 0 / 1 / 0 |
 | extra printed lines in second | none |

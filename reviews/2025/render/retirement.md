@@ -8,6 +8,7 @@ The rendered English of every printed line of `Form 1099-R distributions (IRAs, 
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 0ee876b574177fd661e52dc8af1c088464122d498bb2db9e8eea118a820ada15 |
+| subject sha256 | 9ce8a12583448781c361e9db53cf112182aeeced73e964a38f71d79f6168c622 |
 | lines judged | 10 |
 | match / mismatch / unclear / missing | 5 / 5 / 0 / 0 |
 | verdicts for lines not in the form | none |

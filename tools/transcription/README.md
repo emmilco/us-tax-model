@@ -28,9 +28,19 @@ python3 tools/transcription/transcribe.py --form qdcg --from-response   # re-com
 ```
 
 This is a deliberate network step like the source fetcher; it is not run by
-`check-all`. `check_logs.py` runs in `check-all` and fails on an open ruling
-a missing log, or a log made against a different source snapshot. Every form
-has a log; a new form fails `check-all` until it has one.
+`check-all`. `check_logs.py` runs in `check-all` and fails on an open ruling,
+a missing log, a log made against a different source snapshot, or a log whose
+subject has changed. Every form has a log; a new form fails `check-all` until
+it has one.
+
+Each log records the hash of its subject, what that kind of review judges
+(`subjects.py`): for a transcription the form's definition, for a render
+comparison the rendered English, for class M each line's id, type and
+expression, all without citations (`tools/citations.py` checks those). A change
+to the subject fails `check-all` until the review is run again; a change to a
+tool's prompt or to the pages a citation names does not, and is rerun
+deliberately. `classm.py` builds the data and rebuilds its document's jobs
+before every run, so it never works from jobs of older data.
 
 Raw prompts and responses are kept under the git-ignored `.transcription/`;
 the committed artifact is the log.

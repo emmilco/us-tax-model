@@ -8,6 +8,7 @@ Second transcription of `Schedule B — interest payer entries` by an isolated m
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 84fdddb96457084c1a0beed798609df7765cc3d8077cfaddf9095039c09e8092 |
+| subject sha256 | b89d6f8250dc868144904ad7b062d5a83a128ca31f2ebc94f5887a83a5b88f93 |
 | printed lines compared | 0 |
 | agree / disagree / missing | 0 / 0 / 0 |
 | extra printed lines in second | none |

@@ -8,6 +8,7 @@ Second transcription of `Foreign tax credit — election without Form 1116` by a
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 4832ac61714b63de68eba91cc30a786b5e5cd62c2e1977cd43a4593351438628 |
+| subject sha256 | 75bfec5dc24f26e9741c3462da47524b30152c4b52c7f20ad6b305b75ab8848a |
 | printed lines compared | 1 |
 | agree / disagree / missing | 1 / 0 / 0 |
 | extra printed lines in second | none |

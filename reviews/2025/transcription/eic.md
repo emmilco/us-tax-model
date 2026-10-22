@@ -8,6 +8,7 @@ Second transcription of `Earned Income Credit (EIC)—Steps 1 to 6 and Worksheet
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 64c87f516f39aebb7f0fa03919bca59ae7ce0a6af169f94a0d5e1a242b4aab96 |
+| subject sha256 | 946b685d8b4293b411f3cfeba2f47f6739f6dcd65ee5ebfee0d5aa976970bf13 |
 | printed lines compared | 18 |
 | agree / disagree / missing | 9 / 9 / 0 |
 | extra printed lines in second | none |

@@ -11,6 +11,13 @@
 - Expr: `{"op":"param","ref":"sc.one"}`
 - Cite: [i1040sc] p. 3, Line A, "complete a separate Schedule C for each business" (2025; sha256 b5536db9)
 
+## (helper) — `sc.rrta`
+
+- **Authored helper label:** This business's owner has railroad retirement compensation
+- **Encoded (Bool):** Enter the amount from person line rrta.
+- Expr: `{"from":"person.rrta","op":"copy"}`
+- Cite: [f1040sse] Schedule SE (2025), line 8a, "Total social security wages and tips (total of boxes 3 and 7 on Form(s) W-2) and railroad retirement (tier 1) compensation" (2025; created 2025-05-07; sha256 05bc2b3e)
+
 ## (helper) — `sc.zero`
 
 - **Authored helper label:** Zero

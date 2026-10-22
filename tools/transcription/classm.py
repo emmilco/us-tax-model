@@ -5,22 +5,25 @@ take every reachable branch of the document. Its answers are compared with the p
 and become class M fixtures (fixtures/<year>/classm.json); every disagreement is logged with
 a ruling.
 
-    node engine/dist/main.js classm-jobs                  # write .classm/jobs.json (offline)
     python3 tools/transcription/classm.py --doc qdcg [--model M] [--dry-run] [--from-response]
+
+It builds the data and rebuilds the document's jobs (classm-jobs, .classm/jobs.json)
+before every run but --from-response, so a run never works from jobs of older data.
     python3 tools/transcription/rule.py --kind classm --doc qdcg --rulings r.json
 
 Logs go to reviews/<year>/classm/<doc>.md. Rulings persist in <doc>.rulings.json beside the log
 (rulings.py) and are reapplied on rerun. A ruling may drop a line from the fixture (a model
 arithmetic error is not evidence) by giving {"ruling": "...", "drop": true}.
 """
-import argparse, datetime, hashlib, json, os, re, sys
+import argparse, datetime, hashlib, json, os, re, subprocess, sys
 from fractions import Fraction
 import yaml
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from transcribe import ROOT, manifest, excerpt_for, call_model, load_form  # noqa: E402
-from taxyear import YEAR, Y  # noqa: E402
+from taxyear import YEAR, Y, YEAR_ARGS  # noqa: E402
 import rulings  # noqa: E402
+import subjects  # noqa: E402
 
 JOBS = os.path.join(ROOT, ".classm", "jobs.json")
 RAW = os.path.join(ROOT, ".classm")
@@ -98,7 +101,7 @@ def build_prompt(form_doc, excerpt, job):
     for cname, entries in job["collections"].items():
         for entry, fields in entries.items():
             coll.append(f"- {entry}: " + "; ".join(f"{f['label']} = {dollars(f['value'])}" for f in fields))
-    fill = "\n".join(f'- line {l["printed"]} ({l["type"]}): {l["label"]}' for l in job["fill"])
+    fill = "\n".join(f'- line {handle(job, l)} ({l["type"]}): {l["label"]}' for l in job["fill"])
     return f"""You are filling in one IRS form or worksheet by hand for one taxpayer, working ONLY from the IRS
 text provided below and the amounts given here. Do not rely on memory of the tax law or of any
 software. Follow the printed line instructions exactly, including every "if zero or less, enter -0-",
@@ -122,7 +125,8 @@ filer supplies. Use them as they are; they are already correct. Amounts are doll
 # Lines to fill
 
 Work these lines of the document in order. Each is named by its printed number as it appears in the
-IRS text, with its value type: a money line takes a dollar amount; a Bool line takes yes or no; a
+IRS text (where two lines share a number, followed by a name in parentheses: answer with the whole
+handle, exactly as given), with its value type: a money line takes a dollar amount; a Bool line takes yes or no; a
 Count line takes a whole number. A line the instructions tell you to skip, or that is blank, is
 written as blank.
 
@@ -164,7 +168,7 @@ def build_entry_prompt(form_doc, excerpt, job):
     for cname, ents in job["collections"].items():
         for entry, fields in ents.items():
             coll.append(f"- {entry}: " + "; ".join(f"{f['label']} = {dollars(f['value'])}" for f in fields))
-    fill = "\n".join(f'- "{l["printed"]}" ({l["type"]}): {l["label"]}' for l in job["fill"])
+    fill = "\n".join(f'- "{handle(job, l)}" ({l["type"]}): {l["label"]}' for l in job["fill"])
     if job.get("kind") == "def":
         what = ("This is a shared computation the forms invoke on an amount: work it for the one amount and "
                 "filing status given.") if len(job["given"]) <= 1 else (
@@ -241,6 +245,14 @@ def parse_value(raw, vtype):
     return {"kind": "money", "cents": -cents if neg else cents}
 
 
+def handle(job, line):
+    """How a line to fill is named to the model and in the log: its printed number, or, where
+    two lines of the job share it (EIC Worksheets A and B both have a line 6), the number
+    followed by the line's id, so that one answer cannot stand for the other."""
+    shared = sum(1 for l in job["fill"] if l["printed"] == line["printed"]) > 1
+    return f'{line["printed"]} ({line["id"]})' if shared else line["printed"]
+
+
 def extract(text):
     # A response may hold an abandoned draft block before the finished one; the answer is the last block.
     blocks = re.findall(r"```(?:yaml)?\s*\n(.*?)```", text, re.S)
@@ -248,7 +260,9 @@ def extract(text):
     doc = yaml.safe_load(m if m is not None else text)
     out = {}
     for l in doc["lines"]:
-        out[str(l.get("printed", ""))] = {"value": l.get("value", ""), "work": str(l.get("work", "")).strip()}
+        # The prompt lists "line 6"; an answer may repeat the word.
+        key = re.sub(r"^line\s+", "", str(l.get("printed", "")).strip(), flags=re.I)
+        out[key] = {"value": l.get("value", ""), "work": str(l.get("work", "")).strip()}
     return out
 
 
@@ -271,6 +285,7 @@ def write_outputs(form_doc, model, jobs, runs, meta_all):
            f"| date | {datetime.date.today().isoformat()} |",
            f"| model requested | {model} |",
            f"| model reported | {', '.join(sorted({m for meta in meta_all.values() for m in meta.get('model_reported', [])})) or '-'} |",
+           f"| subject sha256 | {subjects.current('classm', fid, Y)} |",
            f"| cases | {len(jobs)} |"]
     used = runs[jobs[0]["id"]]["used"]
     out += ["", "## Source pages given to the model", "", "| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |", "| --- | --- | --- | --- | --- | --- | --- |"]
@@ -284,7 +299,7 @@ def write_outputs(form_doc, model, jobs, runs, meta_all):
         out.append("")
         expect = {}
         for l in job["fill"]:
-            v = run["verdicts"].get(l["printed"])
+            v = run["verdicts"].get(handle(job, l))
             proj = job["project"][l["id"]]
             if v is None:
                 status = "MISSING"; model_v = None
@@ -295,7 +310,7 @@ def write_outputs(form_doc, model, jobs, runs, meta_all):
                     model_v = None
                 status = "AGREE" if model_v is not None and same(model_v, proj) else "DISAGREE"
             counts[status] += 1
-            out.append(f"### {job['id']} — {l['printed']} — {l['label'][:80]}")
+            out.append(f"### {job['id']} — {handle(job, l)} — {l['label'][:80]}")
             out.append(f"Status: **{status}**")
             if status == "AGREE":
                 out += ["", f"Value: {dollars(proj)}", ""]
@@ -305,7 +320,7 @@ def write_outputs(form_doc, model, jobs, runs, meta_all):
                 out += ["", f"Project: {pv}", f"Model: {mv}"]
                 if v and v.get("work"):
                     out.append(f"Work: {v['work']}")
-                ruling = kept.get((job["id"], l["printed"], pv, mv), "Ruling: open")
+                ruling = kept.get((job["id"], handle(job, l), pv, mv), "Ruling: open")
                 out += ["", ruling, ""]
                 if model_v is not None and not ruling.endswith("[dropped]"):
                     expect[l["id"]] = model_v
@@ -332,7 +347,18 @@ def main():
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--from-response", action="store_true")
     a = ap.parse_args()
-    jobs = [j for j in json.load(open(JOBS))["jobs"] if j["doc"] == a.doc]
+    # The jobs are built from the canonical data, so build it and rebuild this document's jobs
+    # first: a run on jobs from older data would compare the model with old values. A lock keeps
+    # runs side by side (rerun_all.py) from building at once.
+    import fcntl
+    os.makedirs(os.path.dirname(JOBS), exist_ok=True)
+    with open(os.path.join(os.path.dirname(JOBS), "lock"), "w") as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        if not a.from_response:
+            main_js = os.path.join(ROOT, "engine", "dist", "main.js")
+            subprocess.run(["node", main_js, "build", *YEAR_ARGS], check=True, stdout=subprocess.DEVNULL)
+            subprocess.run(["node", main_js, "classm-jobs", "--docs", a.doc, *YEAR_ARGS], check=True, stdout=subprocess.DEVNULL)
+        jobs = [j for j in json.load(open(JOBS))["jobs"] if j["doc"] == a.doc]
     if not jobs:
         sys.exit(f"{a.doc}: no jobs in {JOBS}; run classm-jobs")
     form_doc = load_form(a.doc)

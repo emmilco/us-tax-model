@@ -344,9 +344,11 @@ bank:
       Unknown answers may be null; they never become zero.
   - input: $w2
     order: 5
-    help: Enter a JSON array of distinct keys. Empty [] means none. For gifts, group similar items across all donees.
-    prompt: For this person (you, or your spouse on a joint return) — List stable keys for Form W-2 — Social Security
-      boxes by employer.
+    help: Enter a JSON array of distinct keys, one per employer (for example ["employer_a","employer_b"]). Empty []
+      means none. The excess social security credit turns on the number of employers, not of Forms W-2, so an
+      employer's corrected or additional Forms W-2 are combined under that employer's key.
+    prompt: For this person (you, or your spouse on a joint return) — List one stable key for each employer that gave
+      you a Form W-2. If one employer gave you more than one Form W-2, use one key and enter their boxes combined.
   - input: w2.box1
     order: 3
     help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.

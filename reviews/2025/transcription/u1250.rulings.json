@@ -1,0 +1,90 @@
+{
+ "kind": "transcription",
+ "form": "u1250",
+ "rulings": [
+  {
+   "printed": "1",
+   "project": "{\"param\": \"sales.zero\"}",
+   "second": "{\"const\": 0}",
+   "ruling": "Ruling: equivalent; project retained. Zero on both sides: the project enters sales.zero, whose value is 0 (params/2025.yaml), and the second enters 0. Form 4797, Form 6252 and Schedule K-1 gains are refused through sd.other_forms, and sales of depreciable real property or of a partnership interest holding it through sales.special (the u1250 note: 'Form 4797 and other non-distribution sources are outside scope')."
+  },
+  {
+   "printed": "10",
+   "project": "{\"param\": \"sales.zero\"}",
+   "second": "{\"const\": 0}",
+   "ruling": "Ruling: equivalent; project retained. Zero on both sides: the project enters sales.zero, whose value is 0 (params/2025.yaml), and the second enters 0. A sale of an interest in a partnership holding section 1250 property is refused through sales.special ('an interest in a partnership, S corporation or trust holding such property') and Schedule K-1 gains through sd.other_forms."
+  },
+  {
+   "printed": "12",
+   "project": "{\"param\": \"sales.zero\"}",
+   "second": "{\"const\": 0}",
+   "ruling": "Ruling: equivalent; project retained. Zero on both sides: the project enters sales.zero, whose value is 0 (params/2025.yaml), and the second enters 0. Sales of section 1250 property, including installment sales, are refused through sales.special ('depreciable real property (section 1250 property)') and sd.other_forms (Forms 4797 and 6252)."
+  },
+  {
+   "printed": "15",
+   "project": "{\"ref\": \"g28.line6\"}",
+   "second": "{\"of\": [{\"const\": 0}, {\"ref\": \"sd.line7\"}], \"op\": \"smaller_of\"}",
+   "ruling": "Ruling: equivalent; project retained. The project copies g28.line6, which is the smaller of sd.line7 and sd.zero (0); the second takes the smaller of 0 and sd.line7. The same signed loss or zero."
+  },
+  {
+   "printed": "16",
+   "project": "{\"param\": \"sales.zero\"}",
+   "second": "{\"ref\": \"sd.line14\"}",
+   "ruling": "Ruling: equivalent; project retained. Zero on both sides: the project enters sales.zero, whose value is 0 (params/2025.yaml), and the second copies sd.line14, which is sd.zero (sales.zero = 0). A capital loss carryover is refused through sd.carryover and sd.other_forms on both readings, so the sign question in the second's note does not arise."
+  },
+  {
+   "printed": "17",
+   "project": "{\"from\": {\"param\": \"sales.zero\"}, \"op\": \"subtract_floor0\", \"take\": {\"of\": [{\"line\": \"14\"}, {\"line\": \"15\"}, {\"line\": \"16\"}], \"op\": \"sum\"}}",
+   "second": "{\"from\": {\"const\": 0}, \"op\": \"subtract_floor0\", \"take\": {\"of\": [{\"line\": \"14\"}, {\"line\": \"15\"}, {\"line\": \"16\"}], \"op\": \"sum\"}}",
+   "ruling": "Ruling: equivalent; project retained. Both enter zero less the sum of lines 14 to 16, floored at zero; the project writes the zero as sales.zero (value 0), the second as a constant."
+  },
+  {
+   "printed": "2",
+   "project": "{\"param\": \"sales.zero\"}",
+   "second": "{\"const\": 0}",
+   "ruling": "Ruling: equivalent; project retained. Zero on both sides: the project enters sales.zero, whose value is 0 (params/2025.yaml), and the second enters 0. Form 4797, Form 6252 and Schedule K-1 gains are refused through sd.other_forms, and sales of depreciable real property or of a partnership interest holding it through sales.special (the u1250 note: 'Form 4797 and other non-distribution sources are outside scope')."
+  },
+  {
+   "printed": "3",
+   "project": "{\"param\": \"sales.zero\"}",
+   "second": "{\"from\": {\"line\": \"1\"}, \"op\": \"subtract\", \"take\": {\"line\": \"2\"}}",
+   "ruling": "Ruling: equivalent; project retained. Zero on both sides: the project enters sales.zero, whose value is 0 (params/2025.yaml), and the second subtracts line 2 from line 1, both 0."
+  },
+  {
+   "printed": "4",
+   "project": "{\"param\": \"sales.zero\"}",
+   "second": "{\"const\": 0}",
+   "ruling": "Ruling: equivalent; project retained. Zero on both sides: the project enters sales.zero, whose value is 0 (params/2025.yaml), and the second enters 0. Form 4797, Form 6252 and Schedule K-1 gains are refused through sd.other_forms, and sales of depreciable real property or of a partnership interest holding it through sales.special (the u1250 note: 'Form 4797 and other non-distribution sources are outside scope')."
+  },
+  {
+   "printed": "5",
+   "project": "{\"param\": \"sales.zero\"}",
+   "second": "{\"const\": 0}",
+   "ruling": "Ruling: equivalent; project retained. Zero on both sides: the project enters sales.zero, whose value is 0 (params/2025.yaml), and the second enters 0. Schedule K-1 amounts are refused through sd.other_forms and scope.schedule1 (partnerships, S corporations, estates or trusts)."
+  },
+  {
+   "printed": "6",
+   "project": "{\"param\": \"sales.zero\"}",
+   "second": "{\"of\": [{\"line\": \"3\"}, {\"line\": \"4\"}, {\"line\": \"5\"}], \"op\": \"sum\"}",
+   "ruling": "Ruling: equivalent; project retained. Zero on both sides: the project enters sales.zero, whose value is 0 (params/2025.yaml), and the second adds lines 3 to 5, all 0."
+  },
+  {
+   "printed": "7",
+   "project": "{\"param\": \"sales.zero\"}",
+   "second": "{\"of\": [{\"const\": 0}, {\"line\": \"6\"}], \"op\": \"smaller_of\"}",
+   "ruling": "Ruling: equivalent; project retained. Zero on both sides: the project enters sales.zero, whose value is 0 (params/2025.yaml), and the second takes the smaller of 0 and line 6, which is 0."
+  },
+  {
+   "printed": "8",
+   "project": "{\"param\": \"sales.zero\"}",
+   "second": "{\"const\": 0}",
+   "ruling": "Ruling: equivalent; project retained. Zero on both sides: the project enters sales.zero, whose value is 0 (params/2025.yaml), and the second enters 0. Form 4797, Form 6252 and Schedule K-1 gains are refused through sd.other_forms, and sales of depreciable real property or of a partnership interest holding it through sales.special (the u1250 note: 'Form 4797 and other non-distribution sources are outside scope')."
+  },
+  {
+   "printed": "9",
+   "project": "{\"param\": \"sales.zero\"}",
+   "second": "{\"from\": {\"line\": \"7\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"8\"}}",
+   "ruling": "Ruling: equivalent; project retained. Zero on both sides: the project enters sales.zero, whose value is 0 (params/2025.yaml), and the second subtracts line 8 from line 7, both 0, floored at zero."
+  }
+ ]
+}

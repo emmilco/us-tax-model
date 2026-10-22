@@ -215,6 +215,21 @@
 - Expr: `{"op":"input","source":"Do any wage statements report railroad retirement compensation or taxes (W-2 box 14), or did you file Form CT-2 as an employee representative?"}`
 - Cite: [iw2w3] pp. 12–13, Railroad employers: RRTA compensation and taxes in box 14; boxes 3–7 are not used for RRTA (2025; printed date 2025-02-19; sha256 bfecbc99)
 
+## (helper) — `person.sc_rrta_count`
+
+- **Authored helper label:** Number of this person's Schedules C while this person has railroad retirement compensation
+- **Encoded (Count):** Add sc.one over every confirmed sc entry for which helper "This business's owner has railroad retirement compensation" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"sc","field":"sc.one","op":"sum_over","where":{"eq":["sc.rrta",{"const":true}],"op":"test"}}`
+- Cite: [f1040sse] Schedule SE (2025), line 8a, "Total social security wages and tips (total of boxes 3 and 7 on Form(s) W-2) and railroad retirement (tier 1) compensation" (2025; created 2025-05-07; sha256 05bc2b3e)
+
+## (gate) — `person.se_rrta`
+
+- **Authored helper label:** Self-employment and railroad retirement compensation together
+- **Encoded (Bool):** helper "Number of this person's Schedules C while this person has railroad retirement compensation" > 0 (a count)
+- Note: Counted through the person's Schedules C, so the railroad question is asked only of a person with a business.
+- Expr: `{"gt":["person.sc_rrta_count",{"const":0,"type":"Count"}],"op":"test"}`
+- Cite: [f1040sse] Schedule SE (2025), line 8a, "Total social security wages and tips (total of boxes 3 and 7 on Form(s) W-2) and railroad retirement (tier 1) compensation" (2025; created 2025-05-07; sha256 05bc2b3e)
+
 ## employers — `person.employers`
 
 - **Authored helper label:** Total w2.one for this person
@@ -407,6 +422,7 @@
 
 - **Authored helper label:** Schedule SE line 6 for this person
 - **Encoded (NonNegDollars):** Choose — [helper "This person has at least one Schedule C" = true → "line6" of Schedule SE (Form 1040) — Self-Employment Tax, one per person with line2 = helper "Schedule SE line 2 for this person" and line8a = line wages] [helper "This person has at least one Schedule C" = false → line zero]
+- **Refusal:** when person.se_rrta is true, cannot complete Schedule SE with railroad retirement (tier 1) compensation. Schedule SE line 8a adds railroad retirement (tier 1) compensation to the social security wages, and this tool does not take railroad compensation. Prepare Schedule SE with the railroad retirement instructions. Cite: [f1040sse] Schedule SE (2025), line 8a, "Total social security wages and tips (total of boxes 3 and 7 on Form(s) W-2) and railroad retirement (tier 1) compensation" (2025; created 2025-05-07; sha256 05bc2b3e)
 - Expr: `{"alternatives":[{"guard":{"eq":["person.has_sc",{"const":true}],"op":"test"},"then":{"bind":{"line2":"person.se_line2","line8a":"person.wages"},"def":"se","line":"line6"}},{"guard":{"eq":["person.has_sc",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
 - Cite: [f1040sse] Schedule SE (2025), line 6; i8959 Line 8, "Schedule SE, line 6" (2025; created 2025-05-07; sha256 05bc2b3e)
 
@@ -414,6 +430,7 @@
 
 - **Authored helper label:** Schedule SE line 12 (self-employment tax) for this person
 - **Encoded (NonNegDollars):** Choose — [helper "This person has at least one Schedule C" = true → "line12" of Schedule SE (Form 1040) — Self-Employment Tax, one per person with line2 = helper "Schedule SE line 2 for this person" and line8a = line wages] [helper "This person has at least one Schedule C" = false → line zero]
+- **Refusal:** when person.se_rrta is true, cannot complete Schedule SE with railroad retirement (tier 1) compensation. Schedule SE line 8a adds railroad retirement (tier 1) compensation to the social security wages, and this tool does not take railroad compensation. Prepare Schedule SE with the railroad retirement instructions. Cite: [f1040sse] Schedule SE (2025), line 8a, "Total social security wages and tips (total of boxes 3 and 7 on Form(s) W-2) and railroad retirement (tier 1) compensation" (2025; created 2025-05-07; sha256 05bc2b3e)
 - Expr: `{"alternatives":[{"guard":{"eq":["person.has_sc",{"const":true}],"op":"test"},"then":{"bind":{"line2":"person.se_line2","line8a":"person.wages"},"def":"se","line":"line12"}},{"guard":{"eq":["person.has_sc",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
 - Cite: [f1040sse] Schedule SE (2025), line 12, "Enter here and on Schedule 2 (Form 1040), line 4" (2025; created 2025-05-07; sha256 05bc2b3e)
 
@@ -421,6 +438,7 @@
 
 - **Authored helper label:** Schedule SE line 13 (deduction for one-half of self-employment tax) for this person
 - **Encoded (NonNegDollars):** Choose — [helper "This person has at least one Schedule C" = true → "line13" of Schedule SE (Form 1040) — Self-Employment Tax, one per person with line2 = helper "Schedule SE line 2 for this person" and line8a = line wages] [helper "This person has at least one Schedule C" = false → line zero]
+- **Refusal:** when person.se_rrta is true, cannot complete Schedule SE with railroad retirement (tier 1) compensation. Schedule SE line 8a adds railroad retirement (tier 1) compensation to the social security wages, and this tool does not take railroad compensation. Prepare Schedule SE with the railroad retirement instructions. Cite: [f1040sse] Schedule SE (2025), line 8a, "Total social security wages and tips (total of boxes 3 and 7 on Form(s) W-2) and railroad retirement (tier 1) compensation" (2025; created 2025-05-07; sha256 05bc2b3e)
 - Expr: `{"alternatives":[{"guard":{"eq":["person.has_sc",{"const":true}],"op":"test"},"then":{"bind":{"line2":"person.se_line2","line8a":"person.wages"},"def":"se","line":"line13"}},{"guard":{"eq":["person.has_sc",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
 - Cite: [f1040sse] Schedule SE (2025), line 13, "Enter here and on Schedule 1 (Form 1040), line 15" (2025; created 2025-05-07; sha256 05bc2b3e)
 
@@ -428,6 +446,7 @@
 
 - **Authored helper label:** Schedule SE line 4c for this person
 - **Encoded (NonNegDollars):** Choose — [helper "This person has at least one Schedule C" = true → "line4c" of Schedule SE (Form 1040) — Self-Employment Tax, one per person with line2 = helper "Schedule SE line 2 for this person" and line8a = line wages] [helper "This person has at least one Schedule C" = false → line zero]
+- **Refusal:** when person.se_rrta is true, cannot complete Schedule SE with railroad retirement (tier 1) compensation. Schedule SE line 8a adds railroad retirement (tier 1) compensation to the social security wages, and this tool does not take railroad compensation. Prepare Schedule SE with the railroad retirement instructions. Cite: [f1040sse] Schedule SE (2025), line 8a, "Total social security wages and tips (total of boxes 3 and 7 on Form(s) W-2) and railroad retirement (tier 1) compensation" (2025; created 2025-05-07; sha256 05bc2b3e)
 - Expr: `{"alternatives":[{"guard":{"eq":["person.has_sc",{"const":true}],"op":"test"},"then":{"bind":{"line2":"person.se_line2","line8a":"person.wages"},"def":"se","line":"line4c"}},{"guard":{"eq":["person.has_sc",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
 - Cite: [f1040sse] Schedule SE (2025), line 4c (2025; created 2025-05-07; sha256 05bc2b3e)
 
@@ -447,10 +466,10 @@
 
 ## (gate) — `person.plan_screened`
 
-- **Authored helper label:** This person's retirement contributions are outside this tool
-- **Encoded (Bool):** column (screen) (person.plan_screen) = true
-- Expr: `{"eq":["person.plan_screen",{"const":true}],"op":"test"}`
-- Cite: [p560] pp. 8–11, 14–17, 38–40, chapters 2, 3 and 5 (For use in preparing 2025 returns; sha256 1f1f7abe)
+- **Authored helper label:** This person's retirement contributions are outside this tool (screened, or a plan with more than one Schedule C)
+- **Encoded (Bool):** (column (screen) (person.plan_screen) = true or not helper "Retirement plan of this self-employed person" = 'none' and helper "Number of Schedules C for this person" > 1 (a count))
+- Expr: `{"any":[{"eq":["person.plan_screen",{"const":true}],"op":"test"},{"all":[{"not":{"eq":["person.plan",{"const":"none"}],"op":"test"},"op":"test"},{"gt":["person.sc_count",{"const":1,"type":"Count"}],"op":"test"}],"op":"test"}],"op":"test"}`
+- Cite: [p560] pp. 8–11, 14–17, 38–40, chapters 2, 3 and 5; p. 7, "If you have more than one business, but only one has a retirement plan, only the earned income from that business is considered for that plan" (For use in preparing 2025 returns; sha256 1f1f7abe)
 
 ## (helper) — `person.cent`
 
@@ -477,7 +496,7 @@
 
 - **Authored helper label:** Contributions to your own SEP IRA for 2025
 - **Encoded (NonNegDollars):** Input — The contributions you made for yourself to your SEP IRA for 2025 (by the due date of the return, including extensions)
-- **Refusal:** when person.plan_screened is true, cannot complete Retirement plan contributions outside this tool (SARSEP, other plan rates, higher SIMPLE limits, more than one plan, other elective deferrals, Roth contributions, excess contributions). These retirement contributions are outside this tool. Cite: [p560] pp. 8–11, 14–17, 38–40, chapters 2, 3 and 5 (For use in preparing 2025 returns; sha256 1f1f7abe)
+- **Refusal:** when person.plan_screened is true, cannot complete Retirement plan contributions outside this tool (SARSEP, other plan rates, higher SIMPLE limits, more than one plan, a plan with more than one Schedule C, other elective deferrals, Roth contributions, excess contributions). These retirement contributions are outside this tool. Cite: [p560] pp. 8–11, 14–17, 38–40, chapters 2, 3 and 5 (For use in preparing 2025 returns; sha256 1f1f7abe)
 - Expr: `{"op":"input","source":"The contributions you made for yourself to your SEP IRA for 2025 (by the due date of the return, including extensions)"}`
 - Cite: [p560] pp. 11, 39, chapter 2, Deduction Limit for Self-Employed Individuals; chapter 5, Deduction Worksheet for Self-Employed, "Next: Enter your actual contribution" (For use in preparing 2025 returns; sha256 1f1f7abe)
 

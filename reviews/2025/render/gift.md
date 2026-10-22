@@ -8,6 +8,7 @@ The rendered English of every printed line of `Form 8283 — groups of similar n
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 9eab6a6957a55b7a56bf66ce44e2634ae44967898fe58dea12e6e11ca14df857 |
+| subject sha256 | 3527279fb5d48036ff2f19346df56ca14dc621ca3c24e2ff1e7e5f97e5074d8e |
 | lines judged | 5 |
 | match / mismatch / unclear / missing | 5 / 0 / 0 / 0 |
 | verdicts for lines not in the form | none |

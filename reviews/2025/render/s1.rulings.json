@@ -10,6 +10,12 @@
   },
   {
    "printed": "10",
+   "restated": "Add line 3 and line 7.",
+   "model": "The form says 'Combine lines 1 through 7 and 9.' The restatement adds only lines 3 and 7. It omits lines 1, 2a, 4, 5, 6 and 9, and no refusal names those excluded cases.",
+   "ruling": "Ruling: refusal located elsewhere; project retained. Lines 1, 2a, 4 to 6 and 8a to 8z (so line 9) are refused by scope.schedule1 ('Any income or adjustment requiring Schedule 1 other than business income or loss from Schedule C, unemployment compensation, ...'), which refuses Form 1040 line 8, the line this one is entered on, and every line after it (checked: scope.schedule1 true gives f1040.line8 and line 11a refused); within scope they are zero, as the line's citation says. A Form 4797 gain (line 4) is also refused from Form 1040 line 7a on by sd.other_forms."
+  },
+  {
+   "printed": "10",
    "restated": "Enter the amount from line 7.",
    "model": "The form says \"Combine lines 1 through 7 and 9.\" The restatement uses only line 7 and has no refusal naming lines 1–6 and 9 as excluded.",
    "ruling": "Ruling: scope; project retained. Lines 1 to 6, 8a to 8z and 9 are outside this tool: scope.schedule1 refuses Form 1040 line 8, which copies this line, whenever any of them applies, so within scope they are zero (the line's citation says so)."
@@ -41,6 +47,12 @@
   {
    "printed": "21",
    "restated": "Enter the amount from sli helper \"Student loan interest deduction (Schedule 1, line 21)\".",
+   "model": "The form says only 'Student loan interest deduction.' The instructions and worksheet for line 21 are not among the pages given. That leaves the eligibility gates (not married filing separately, not claimed as a dependent) and the worksheet's line 9 unverifiable.",
+   "ruling": "Ruling: defect, fixed (BUG-0076). Lines 1 to 9 are the worksheet (i1040gi p. 99): line 1 capped at $2,500, lines 2 to 4 from Form 1040 line 9 less Schedule 1 lines 11 to 20, 23 and 25 (the ones out of scope refused by scope.schedule1), $85,000/$170,000 and $15,000/$30,000, ratio to three places capped at 1.000 (amb.2025.sli_ratio_places), and the Pub. 970 exception refused (sa.excluded_income). The gate differs: i1040gi p. 98 requires 'You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's ... 2025 tax return', and sli.claimed asks only 'Are you claimed as a dependent on someone else's (such as your parent's) 2025 tax return?'. Case: joint return, $2,000 of interest, the spouse claimed by a parent (sa.dependent yes, sli.claimed no): Schedule 1 line 21 is $1,010 and Form 1040 lines 10 and 11a carry it, unrefused; line 12e onward refuses on sa.dependent. sli.claimed should ask 'Are you, or your spouse if filing jointly, claimed as a dependent ...'. sli.claimed now asks 'Are you, or your spouse if filing jointly, claimed as a dependent ...', as i1040gi p. 98."
+  },
+  {
+   "printed": "21",
+   "restated": "Enter the amount from sli helper \"Student loan interest deduction (Schedule 1, line 21)\".",
    "model": "The pages given include no instructions or worksheet for Schedule 1 line 21, only the caption 'Student loan interest deduction.' Without them I cannot check the eligibility conditions (not MFS, not claimed as a dependent) or the value of sli line 9.",
    "ruling": "Ruling: representation; project retained. Line 21 copies the worksheet's result (sli.deduction); the worksheet and the line 21 instructions are judged line by line in the render log of `sli`, where they are given."
   },
@@ -61,6 +73,12 @@
    "restated": "Add line 11, line 13, line 15, line 16, line 17, and line 21.",
    "model": "The IRS line says 'Add lines 11 through 23 and 25.' The restatement adds only lines 11, 13, 15, 16, 17 and 21, so lines 12, 14, 18, 19a, 20, 23 and 25 are dropped and no refusal names them.",
    "ruling": "Ruling: scope; project retained. Lines 12, 14 to 20, 23 and 25 are outside this tool: scope.schedule1 refuses Form 1040 line 10, which copies this line, whenever any of them applies, so within scope they are zero (the line's citation says so). Stage 14 adds lines 15, 16 and 17 to the lines figured."
+  },
+  {
+   "printed": "26",
+   "restated": "Add line 11, line 13, line 15, line 16, line 17, and line 21.",
+   "model": "The form says 'Add lines 11 through 23 and 25.' The restatement adds only lines 11, 13, 15, 16, 17 and 21. It omits lines 12, 14, 18, 19a, 20, 23 and 25, and no refusal names those excluded cases.",
+   "ruling": "Ruling: refusal located elsewhere; project retained. Lines 12, 14, 18, 19a, 20, 23 and 24a to 24z (so line 25) are refused by scope.schedule1 ('Any income or adjustment requiring Schedule 1 other than ... educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction and student loan interest'), which refuses Form 1040 line 10, the line this one is entered on (checked: scope.schedule1 true gives f1040.line10 refused); within scope they are zero, as the line's citation says."
   }
  ]
 }
