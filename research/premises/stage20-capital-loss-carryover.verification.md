@@ -2,7 +2,7 @@
 
 # Verification: research/premises/stage20-capital-loss-carryover.md
 
-Checker: read-only adversarial pass, 2026-10-22, against the repository at HEAD 1c465c2 (working tree: HANDOFF-STAGE-15.md, TASKS.md and fixtures/2025/stage15.json modified, not by me). Page N = N-th form-feed chunk of `.cols.txt`.
+Checker: read-only adversarial pass, 2026-10-22, against the repository at HEAD 1c465c2 (working tree: handoffs/HANDOFF-STAGE-15.md, TASKS.md and fixtures/2025/stage15.json modified, not by me). Page N = N-th form-feed chunk of `.cols.txt`.
 
 ## Errors
 

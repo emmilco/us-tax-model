@@ -73,7 +73,7 @@ TypeScript, using `BigInt` for cents and rate components. No decimal library.
 - Evaluation is lazy and memoized over the line graph. There is no fixed-point iteration.
 - Each value carries a completeness state. An unknown operand makes the result unknown; a placeholder makes it a placeholder.
 - Evaluating a line returns its value and its derivation: atom, operands with values, citation, rounding applied, and for `choose` the guards examined and not taken.
-- Rounding is performed only by the `round` atom. The return-wide rounding setting decides which rounding lines are active.
+- Rounding is performed only by the `round` atom, where a cited instruction says so. Amounts are otherwise exact cents. The return-wide whole-dollar rounding setting of `spec.md` section 8 is deferred and not implemented; the output says so, and the register entries `amb.2025.multiplication_subcent` and `amb.2025.sales_rounding` in `ambiguities/2025.yaml` carry its status.
 - A refusal is a value, not an exception: evaluation reports which gate fired and its citation.
 
 The evaluator is small enough to read in one sitting. It contains no form-specific code. `opaque` functions live in one directory, each with its citation and tests.
@@ -84,8 +84,10 @@ Written alongside the first worksheet, not after.
 
 - `Atoms`: each atom defined over `Int`, mirroring the TypeScript semantics exactly, including half-up rounding.
 - `Lemmas`: the properties listed in `spec.md` section 6.3.
-- `Check`: the reference and acyclicity checker, with its soundness proof.
 - `Eval`: a reference evaluator that reads the canonical JSON.
+- `EvalProps`: the properties of that evaluator (termination by step budget, determinism), per `spec.md` section 6.3.
+
+There is no Lean checker and no soundness proof of the TypeScript checker; `spec.md` section 6.3 records that this was not pursued and why. The reference and acyclicity checks run in the TypeScript build (section 2.3), and both evaluators detect a cycle at evaluation time.
 
 Continuous integration runs the Lean evaluator and the TypeScript evaluator over every fixture and over generated inputs, and fails on any difference. Lean is not shipped to users.
 
@@ -132,7 +134,7 @@ ambiguities/<tax_year>.yaml    ambiguity register
 interview/                     questions and ordering
 schema/                        JSON Schema for all data
 engine/                        TypeScript: checker, evaluator, renderer, interview, output
-lean/                          Lean 4: Atoms, Lemmas, Check, Eval
+lean/                          Lean 4: Atoms, Lemmas, Eval, EvalProps
 fixtures/<tax_year>/           test fixtures by evidence class
 rendered/<tax_year>/           committed renderer output
 tools/                         source fetcher, fixture generator, mutation tool, year diff

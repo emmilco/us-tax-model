@@ -1,6 +1,6 @@
 # Handoff: Stage 10 (retirement income) done
 
-Read `HANDOFF.md` first, then `TASKS.md`, then this file; `HANDOFF-STAGE-9.md`
+Read `HANDOFF.md` first, then `TASKS.md`, then this file; `handoffs/HANDOFF-STAGE-9.md`
 describes the stage before. `PROJECT_INDEX.md` is current; `BUG_INVENTORY.md`
 has 34 entries.
 

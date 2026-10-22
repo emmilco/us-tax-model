@@ -1,6 +1,6 @@
 # Handoff: Stage 12 (the Schedule 1-A deductions) done
 
-Read `HANDOFF.md` first, then `TASKS.md`, then this file. `HANDOFF-STAGE-11.md`
+Read `HANDOFF.md` first, then `TASKS.md`, then this file. `handoffs/HANDOFF-STAGE-11.md`
 describes the stage before. `PROJECT_INDEX.md` is current; `BUG_INVENTORY.md`
 has 43 entries.
 

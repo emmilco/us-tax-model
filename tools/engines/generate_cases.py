@@ -237,9 +237,12 @@ def gen_case(rng, i):
         contrib = rng.randint(0, limit - employer)
         hsa_deduction = min(contrib, limit - employer)
         inputs.update({f"{HSA}.months_eligible": 12, f"{HSA}.months_family": 12 if family else 0, f"{HSA}.age55": age55,
-                       f"{HSA}.dec_coverage": "family" if family else "self_only", f"{HSA}.last_month": False, f"{HSA}.unsupported": False})
+                       f"{HSA}.dec_coverage": "family" if family else "self_only", f"{HSA}.last_month": False})
         features.add("hsa")
-    inputs.update({f"$f8889@{TAXPAYER}": ["hsa"], f"{HSA}.line2": contrib, f"{HSA}.line9": employer, f"{HSA}.line14a": 0}); facts["hsa_deduction"] = hsa_deduction
+    # The Form 8889 screen is answered on every return: the form asks it whenever the account exists,
+    # contributions or not, and an unanswered screen leaves Schedule 1 and everything after it unknown.
+    inputs.update({f"$f8889@{TAXPAYER}": ["hsa"], f"{HSA}.line2": contrib, f"{HSA}.line9": employer, f"{HSA}.line14a": 0,
+                   f"{HSA}.unsupported": False}); facts["hsa_deduction"] = hsa_deduction
     sli = rng.randint(1_000, 300_000) if rng.random() < 0.15 else 0
     inputs.update({"sli.interest": sli, "sli.claimed": False}); facts["student_loan_interest"] = sli
     if sli: features.add("student_loan_interest")

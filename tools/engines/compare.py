@@ -14,6 +14,18 @@ Categories per (engine, case, line):
   excluded       the engine cannot model a feature of the case; reason recorded
   explained      a disagreement with a cited cause in the investigation log
   UNEXPLAINED    a disagreement with no cause; fails the run
+
+Beside the Markdown report, a JSON summary of the same run (same path, .json)
+gives, per engine and per mapped line, the counts the evidence report reads:
+  project_line      the project line the mapped id names, or null for a virtual
+                    sum of lines (f1040.tax_before_credits)
+  compared          cases where both sides had a value and no limitation applied
+  compared_nonzero  of those, cases where the project value was not zero
+  excluded          cases set aside under an engine limitation
+  excluded_nonzero  of those, cases where the project value was computed and not zero
+  unexplained       compared cases whose difference has no cited cause
+together with the category counts above, the engine's version and its
+pass-through declarations (run_engines.py).
 """
 import argparse, json, sys, os
 from fractions import Fraction
@@ -180,6 +192,14 @@ def money(v):
     return v["cents"] if v and v.get("kind") == "money" else None
 
 
+VIRTUAL_LINES = {"f8959.tax": "f8959.line18", "f8960.tax": "f8960.line17", "f1040.tax_before_credits": None}
+
+
+def resolve_line(line):
+    """The project line a mapped id names; None for a virtual sum of several lines."""
+    return VIRTUAL_LINES.get(line, line)
+
+
 def project_line(values, line):
     """A project line in cents, with virtual ids for the two Schedule 2 taxes."""
     if line == "f8959.tax":
@@ -223,6 +243,7 @@ def main():
     tables = load_tables()
 
     stats = defaultdict(Counter)          # (engine, line) -> category counts
+    summary = defaultdict(Counter)        # (engine, line) -> compared / nonzero counts for the JSON summary
     unexplained, explained, excluded_reasons = [], [], defaultdict(Counter)
     for ename, eng in engines.items():
         for cid, elines in eng["lines"].items():
@@ -231,12 +252,18 @@ def main():
             feats = derived_features(case, values)
             schedule_mode = schedule_mode_expectations(values, case, tables)
             for line, ev in elines.items():
+                pv, kind = project_line(values, line)
                 reason = next((l["reason"] for l in eng["limitations"] if l["feature"] in feats and line in l["lines"]), None)
                 if reason:
-                    stats[(ename, line)]["excluded"] += 1; excluded_reasons[(ename, line)][reason] += 1; continue
-                pv, kind = project_line(values, line)
+                    stats[(ename, line)]["excluded"] += 1; excluded_reasons[(ename, line)][reason] += 1
+                    if pv is not None and pv != 0:
+                        summary[(ename, line)]["excluded_nonzero"] += 1
+                    continue
                 if pv is None:
                     stats[(ename, line)]["project-" + kind] += 1; continue
+                summary[(ename, line)]["compared"] += 1
+                if pv != 0:
+                    summary[(ename, line)]["compared_nonzero"] += 1
                 diff = ev - pv
                 bound = float_bound_cents(eng.get("precision", "float64"), ev, eng.get("components", {}).get(line, 1))
                 if diff == 0:
@@ -280,9 +307,25 @@ def main():
         lines_out += ["## Unexplained differences", "", "None.", ""]
     os.makedirs(os.path.dirname(a.report), exist_ok=True)
     open(a.report, "w").write("\n".join(lines_out))
+    summary_out = {"cases": len(cases), "engines": {}}
+    for ename, eng in engines.items():
+        per_line = {}
+        for (en, line), c in sorted(stats.items()):
+            if en != ename: continue
+            sm = summary[(ename, line)]
+            per_line[line] = {"project_line": resolve_line(line),
+                              "compared": sm["compared"], "compared_nonzero": sm["compared_nonzero"],
+                              "excluded": c["excluded"], "excluded_nonzero": sm["excluded_nonzero"],
+                              "unexplained": c["UNEXPLAINED"], "exact": c["exact"], "table_adjusted": c["table-adjusted"],
+                              "float": c["float"], "explained": c["explained"],
+                              "not_computed": sum(v for k, v in c.items() if k.startswith("project-"))}
+        summary_out["engines"][ename] = {"version": eng["version"], "pass_through": eng.get("pass_through", {"lines": [], "components": {}}),
+                                         "lines": per_line}
+    summary_path = os.path.splitext(a.report)[0] + ".json"
+    open(summary_path, "w").write(json.dumps(summary_out, indent=1) + "\n")
     total = sum(sum(c.values()) for c in stats.values())
     print(f"engine differential: {len(cases)} cases, {total} line comparisons, {len(unexplained)} unexplained, {len(explained)} explained")
-    print(f"report: {os.path.relpath(a.report, ROOT)}")
+    print(f"report: {os.path.relpath(a.report, ROOT)}; summary: {os.path.relpath(summary_path, ROOT)}")
     sys.exit(1 if unexplained else 0)
 
 

@@ -5,7 +5,7 @@
 // `test-fixtures` runs every case THROUGH THE COMMAND-LINE PROGRAM and
 // compares. `coverage` reports which case takes each choose-guard.
 
-import { mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { isDeepStrictEqual } from "node:util";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
@@ -14,7 +14,7 @@ import { loadCanonical } from "./canonical.js";
 import { branchKeys, templateKey } from "./branches.js";
 import { allTargets, evaluate } from "./eval.js";
 import { differentialClassC } from "./differential.js";
-import type { Inputs } from "./types.js";
+import type { FormDoc, Inputs, Line, LineRef } from "./types.js";
 import type { Value } from "./eval.js";
 import { YEAR, YEAR_ARGS, yearPath } from "./year.js";
 import { resolveInputs } from "./fixture-inputs.js";
@@ -147,22 +147,81 @@ export function reviewStage5(): void {
   console.log(`review: reports/${YEAR}/stage5-review.md and three whole-return values sheets`);
 }
 
+// The engine differential's summary (tools/engines/compare.py), read for the E column.
+interface EngineLineStats { project_line: string | null; compared: number; compared_nonzero: number; excluded: number; excluded_nonzero: number; unexplained: number }
+interface EngineSummary { cases: number; engines: Record<string, { version: string; pass_through: { lines: string[]; components: Record<string, string> }; lines: Record<string, EngineLineStats> }> }
+
+const ENGINE_SHORT: Record<string, string> = { "PolicyEngine-US": "PE", "Tax-Calculator": "TC" };
+const ENGINE_MIN_NONZERO = 50;
+
+// An engine asserts a line when it computes the line rather than taking it whole as an input, the
+// project value was nonzero on at least ENGINE_MIN_NONZERO compared returns, and fewer than half of
+// the nonzero returns the engine reached (compared or excluded) were excluded under a limitation.
+function engineAsserts(stats: EngineLineStats, passThroughLines: string[], mapped: string): boolean {
+  if (stats.project_line === null || passThroughLines.includes(mapped)) return false;
+  const reached = stats.compared_nonzero + stats.excluded_nonzero;
+  return stats.compared_nonzero >= ENGINE_MIN_NONZERO && stats.excluded_nonzero * 2 < reached;
+}
+
+// The model a class M fixture records in its note, or undefined when the note names none.
+function classMModel(note: string | undefined): string | undefined {
+  return note?.match(/Class M: ([^;]+);/)?.[1]?.trim();
+}
+
 export function evidenceReport(): void {
   const data = loadCanonical();
   const file = loadCases();
   const template = (key: string) => key.includes("[") ? key.replace(/(?:[a-zA-Z0-9_]+\[[^\]]+\]\.)+/g, m => m.split(".").filter(Boolean).at(-1)!.split("[")[0]+".") : key;
-  interface Classes { A: Set<string>; B: Set<string>; C: Set<string>; R: Set<string> }
+  interface Classes { A: Set<string>; B: Set<string>; C: Set<string>; M: Set<string>; R: Set<string> }
   const coverage = new Map<string, Classes>();
+  // Class M fixtures whose recorded model is not a Claude model, per line.
+  const secondFamilyM = new Map<string, Set<string>>();
   for (const doc of [...data.forms, ...data.defs]) {
-    for (const line of doc.lines) coverage.set(line.id, { A: new Set(), B: new Set(), C: new Set(), R: new Set() });
+    for (const line of doc.lines) { coverage.set(line.id, { A: new Set(), B: new Set(), C: new Set(), M: new Set(), R: new Set() }); secondFamilyM.set(line.id, new Set()); }
   }
   const unknownKeys = new Set<string>();
   const supplied = new Map<string, number>();
   const isInput = new Map<string, boolean>();
-  for (const doc of [...data.forms, ...data.defs]) for (const line of doc.lines) isInput.set(line.id, line.expr.op === "input");
+  const isComputed = new Map<string, boolean>();
+  for (const doc of [...data.forms, ...data.defs]) for (const line of doc.lines) {
+    isInput.set(line.id, line.expr.op === "input");
+    isComputed.set(line.id, line.expr.op !== "input" && line.expr.op !== "param" && line.expr.op !== "copy");
+  }
+  // A copy's value equals its source's exactly, so an outside-family assertion (B, second-family M or E)
+  // on a copy line is also credited to the first non-copy line along its copy chain. A string reference
+  // resolves within the line's own document, then in the document named by the id's prefix before the
+  // first dot (as the evaluator does); a def-instance reference, or a name that is a def parameter rather
+  // than a line, has no single line and leaves the chain unresolved, as does a cycle.
+  const docs = [...data.forms, ...data.defs];
+  const byDocId = new Map(docs.map(d => [d.id, d] as const));
+  const resolveRef = (from: FormDoc, ref: LineRef): { line: Line; doc: FormDoc } | undefined => {
+    if (typeof ref !== "string") return undefined;
+    const own = from.lines.find(l => l.id === ref);
+    if (own) return { line: own, doc: from };
+    const dot = ref.indexOf(".");
+    const target = dot > 0 ? byDocId.get(ref.slice(0, dot)) : undefined;
+    const line = target?.lines.find(l => l.id === ref);
+    return line && target ? { line, doc: target } : undefined;
+  };
+  // The copy lines walked (the asserted line first) and the non-copy line reached, or null when unresolved.
+  const copySource = (line: Line, doc: FormDoc): { path: string[]; source: string | null } => {
+    const path: string[] = [];
+    const seen = new Set<string>();
+    let cur: { line: Line; doc: FormDoc } | undefined = { line, doc };
+    while (cur && cur.line.expr.op === "copy") {
+      if (seen.has(cur.line.id)) return { path, source: null };
+      seen.add(cur.line.id);
+      path.push(cur.line.id);
+      cur = resolveRef(cur.doc, cur.line.expr.from);
+    }
+    return { path, source: cur ? cur.line.id : null };
+  };
   for (const c of file.cases) {
     const ev = (c.evidence ?? "").trim();
-    const cls: keyof Classes = ev === "C" ? "C" : ev.startsWith("B") ? "B" : ev.startsWith("A") ? "A" : "R";
+    const first = ev.charAt(0);
+    const cls: keyof Classes = first === "A" || first === "B" || first === "C" || first === "M" ? first : "R";
+    const model = cls === "M" ? classMModel(c.evidence_note) : undefined;
+    const secondFamily = model !== undefined && !/^claude/i.test(model);
     for (const key of Object.keys(c.inputs ?? {})) {
       if (key.startsWith("$")) continue;
       const id = template(key);
@@ -170,29 +229,112 @@ export function evidenceReport(): void {
     }
     for (const key of Object.keys(c.expect ?? {})) {
       if (key.startsWith("$")) continue;
-      const bucket = coverage.get(template(key));
+      const id = template(key);
+      const bucket = coverage.get(id);
       if (!bucket) { unknownKeys.add(key); continue; }
       bucket[cls].add(c.id);
+      if (secondFamily) secondFamilyM.get(id)!.add(c.id);
     }
   }
   for (const [key, who] of differentialClassC()) {
     const bucket = coverage.get(template(key));
     if (bucket) for (const w of who) bucket.C.add(w);
   }
+  // Engine differential: per line, the cell text and whether any engine asserts it.
+  const summaryPath = yearPath("reports", "engine_differential.json");
+  const summary: EngineSummary | null = existsSync(summaryPath) ? JSON.parse(readFileSync(summaryPath, "utf8")) as EngineSummary : null;
+  const engineCells = new Map<string, string[]>();
+  const engineAsserted = new Set<string>();
+  // Per line, the short names of the engines that assert it.
+  const engineAssertedBy = new Map<string, string[]>();
+  const passThroughNotes: string[] = [];
+  const virtualLines: string[] = [];
+  if (summary) {
+    for (const [name, eng] of Object.entries(summary.engines)) {
+      const short = ENGINE_SHORT[name] ?? name;
+      for (const [mapped, stats] of Object.entries(eng.lines)) {
+        if (stats.project_line === null) { virtualLines.push(`${mapped} (${short})`); continue; }
+        if (!coverage.has(stats.project_line)) { unknownKeys.add(mapped); continue; }
+        const asserts = engineAsserts(stats, eng.pass_through.lines, mapped);
+        if (asserts) { engineAsserted.add(stats.project_line); engineAssertedBy.set(stats.project_line, [...(engineAssertedBy.get(stats.project_line) ?? []), short]); }
+        const counts = `${stats.compared} compared (${stats.compared_nonzero} nonzero), ${stats.excluded} excluded${stats.unexplained > 0 ? `, ${stats.unexplained} UNEXPLAINED` : ""}`;
+        const cells = engineCells.get(stats.project_line) ?? [];
+        cells.push(asserts ? `${short}: ${counts}` : `${short} below rule: ${counts}`);
+        engineCells.set(stats.project_line, cells);
+      }
+      for (const line of eng.pass_through.lines) passThroughNotes.push(`${name} takes ${line} whole as an input`);
+      for (const [line, note] of Object.entries(eng.pass_through.components)) passThroughNotes.push(`${name} ${line}: ${note}`);
+    }
+  }
+  // Credits through copies: source line id -> "via" label (the copy chain walked) -> what is credited.
+  const creditB = new Map<string, Map<string, Set<string>>>();
+  const creditM2 = new Map<string, Map<string, Set<string>>>();
+  const creditE = new Map<string, Map<string, string[]>>();
+  let creditedB = 0, creditedM2 = 0, creditedE = 0, unresolvedAssertions = 0;
+  const unresolvedCopies: string[] = [];
+  const eSourcesGained: string[] = [];
+  for (const doc of docs) for (const l of doc.lines) {
+    if (l.expr.op !== "copy") continue;
+    const b = coverage.get(l.id)!.B, m2 = secondFamilyM.get(l.id)!, e = engineAssertedBy.get(l.id) ?? [];
+    const n = b.size + m2.size + e.length;
+    if (n === 0) continue;
+    const { path, source } = copySource(l, doc);
+    if (source === null) { unresolvedAssertions += n; unresolvedCopies.push(l.id); continue; }
+    const via = path.join(" → ");
+    if (b.size) { creditedB += b.size; const m = creditB.get(source) ?? new Map<string, Set<string>>(); m.set(via, b); creditB.set(source, m); }
+    if (m2.size) { creditedM2 += m2.size; const m = creditM2.get(source) ?? new Map<string, Set<string>>(); m.set(via, m2); creditM2.set(source, m); }
+    if (e.length) {
+      creditedE += e.length;
+      if (!engineAsserted.has(source) && !creditE.has(source)) eSourcesGained.push(source);
+      const m = creditE.get(source) ?? new Map<string, string[]>(); m.set(via, e); creditE.set(source, m);
+    }
+  }
+  const creditedOutside = (id: string) => creditB.has(id) || creditM2.has(id) || creditE.has(id);
+  // Scoreboard: computed lines with at least one assertion from outside the Claude family.
+  let computedN = 0, outside = 0, bLines = 0, m2Lines = 0, eLines = 0;
+  for (const doc of docs) for (const l of doc.lines) {
+    if (!isComputed.get(l.id)) continue;
+    computedN++;
+    const hasB = coverage.get(l.id)!.B.size > 0 || creditB.has(l.id), hasM2 = secondFamilyM.get(l.id)!.size > 0 || creditM2.has(l.id), hasE = engineAsserted.has(l.id) || creditE.has(l.id);
+    if (hasB) bLines++;
+    if (hasM2) m2Lines++;
+    if (hasE) eLines++;
+    if (hasB || hasM2 || hasE) outside++;
+  }
+  const pct = computedN === 0 ? "0.0" : (100 * outside / computedN).toFixed(1);
+  const linesWith = (cls: keyof Classes) => [...coverage.values()].filter(b => b[cls].size > 0).length;
+  const noneYet = (n: number) => n === 0 ? "none yet" : `${n} lines`;
+  const scoreboard = `Share of computed lines with at least one outside-family assertion: ${outside} of ${computedN} (${pct}%). B: ${bLines}, second-family M: ${m2Lines}, E: ${eLines}.`;
   const out: string[] = [];
   out.push("# Evidence coverage per line", "");
-  out.push(`Fixtures that assert each line, by evidence class. A — official IRS example. B — human hand-work (pending; marked where recorded). C — recorded value also confirmed by the independently written Lean reference evaluator (running evaluator agreement, reports/${YEAR}/evaluator_agreement.md); the external-calculator comparison is the Stage 5 differential and remains pending. M — an isolated model worked the document by hand from its archived pages and the amounts flowing into it (reviews/${YEAR}/classm/). R — recorded synthetic regression, no class claimed, human review pending.`, "");
+  out.push(`**Scoreboard.** ${scoreboard}`, "");
+  out.push("A computed line is one whose atom is not `input`, `param` or `copy`. An outside-family assertion on a line is a class B fixture (human hand-work), a class M fixture whose recorded model is not a Claude model (second-family M), or an engine assertion (E) under the rule stated below; the three sub-counts are over the same computed lines, so a line with two kinds counts once in the share. Class A, Claude-family M, C and R assertions do not move the number: the first three are one model family reading the archived text, and R is the project's own evaluator.", "");
+  out.push(`Fixtures that assert each line, by evidence class, as a count of cases (ids listed when two or fewer). A — official IRS worked example, cited. B — human hand-work recorded with the worker and the document revision; ${noneYet(linesWith("B"))}. C — a named, versioned calculator or engine record in fixtures/${YEAR}/differential/ (spec 6.1); ${noneYet(linesWith("C"))}. M — isolated model hand-work with the model, prompt hash and snapshot recorded (fixtures/${YEAR}/classm.json, reviews/${YEAR}/classm/); second-family M fixtures are those whose recorded model does not start with "claude". E — the engine differential (tools/engines; reports/${YEAR}/engine_differential.md and .json): PolicyEngine-US (PE) and Tax-Calculator (TC) run over ${summary ? summary.cases : "no"} generated returns. A line gets an E assertion only when, for at least one engine, the engine computes the line rather than taking it whole as an input, the project value was nonzero on at least ${ENGINE_MIN_NONZERO} compared returns, and fewer than half of the nonzero returns the engine reached (compared plus excluded) were excluded under an engine limitation; the cell prints each engine's compared, nonzero and excluded counts, and an engine that falls short of the rule is marked "below rule" and asserts nothing. R — recorded regression from the project's own evaluator, no class claimed; agreement with the Lean reference evaluator (reports/${YEAR}/evaluator_agreement.md) is evaluator agreement over the same data, not an independent engine, and earns no class.`, "");
+  out.push(`An outside-family assertion (B, second-family M or E) on a line whose atom is \`copy\` also credits the first line along its copy chain whose atom is not \`copy\`, because a copy's value equals its source's exactly, so agreement on the copy is agreement on the source; the table marks each such credit "via <copy line>" (the chain walked, when longer than one copy), the copy line keeps its own cell, and the sub-counts above include credited lines. In this report ${creditedB + creditedM2 + creditedE === 0 ? "no assertion is" : `${creditedB + creditedM2 + creditedE} assertions are`} credited through copies (B cases: ${creditedB}; second-family M cases: ${creditedM2}; engine-line assertions: ${creditedE}); ${unresolvedAssertions === 0 ? "every asserted copy line resolved to a source" : `${unresolvedAssertions} assertions on ${unresolvedCopies.length} copy lines could not be resolved statically and stay on the copy line only (${unresolvedCopies.join(", ")})`}.`, "");
+  if (summary) {
+    out.push(`Engine ids with no line of their own (never an E assertion): ${virtualLines.length ? virtualLines.join(", ") : "none"}. Mapped lines taken whole from the generator's facts: ${summary && Object.values(summary.engines).some(e => e.pass_through.lines.length) ? Object.entries(summary.engines).flatMap(([n, e]) => e.pass_through.lines.map(l => `${n} ${l}`)).join(", ") : "none"}. Components of compared lines that enter the engine as generator facts rather than the engine's own form arithmetic (the line still counts as engine-computed; the component does not): ${passThroughNotes.length ? passThroughNotes.join("; ") : "none"}.`, "");
+  } else {
+    out.push(`The engine differential summary (reports/${YEAR}/engine_differential.json) is not present, so no line carries an E assertion in this report.`, "");
+  }
   const fmt = (s: Set<string>) => s.size === 0 ? "—" : `${s.size}${s.size <= 2 ? " (" + [...s].join(", ") + ")" : ""}`;
+  // A class cell: the line's own cases, then each credit through a copy.
+  const fmtWith = (own: Set<string>, credits: Map<string, Set<string>> | undefined) => {
+    const parts = own.size ? [fmt(own)] : [];
+    for (const [via, ids] of credits ?? []) parts.push(`via ${via}: ${fmt(ids)}`);
+    return parts.length ? parts.join("; ") : "—";
+  };
   let totalGaps = 0; const allGaps: string[] = [];
   for (const doc of [...data.forms, ...data.defs]) {
     if (doc.lines.length === 0 || !coverage.has(doc.lines[0]!.id)) continue;
     out.push(`## ${doc.title ?? doc.id}`, "");
-    out.push("| line | A | B | C | R |", "| --- | --- | --- | --- | --- |");
+    out.push("| line | A | B | C | M | E | R |", "| --- | --- | --- | --- | --- | --- | --- |");
     const gaps: string[] = [];
     for (const l of doc.lines) {
       const b = coverage.get(l.id)!;
-      if (b.A.size + b.B.size + b.C.size + b.R.size === 0 && !isInput.get(l.id)) { gaps.push(l.id); allGaps.push(l.id); }
-      out.push(`| ${l.id} | ${fmt(b.A)} | ${fmt(b.B)} | ${fmt(b.C)} | ${fmt(b.R)} |`);
+      const asserted = b.A.size + b.B.size + b.C.size + b.M.size + b.R.size > 0 || engineAsserted.has(l.id) || creditedOutside(l.id);
+      if (!asserted && !isInput.get(l.id)) { gaps.push(l.id); allGaps.push(l.id); }
+      const e = [...(engineCells.get(l.id) ?? []), ...[...(creditE.get(l.id) ?? [])].map(([via, engines]) => `E via ${via} (${engines.join(", ")})`)];
+      out.push(`| ${l.id} | ${fmt(b.A)} | ${fmtWith(b.B, creditB.get(l.id))} | ${fmt(b.C)} | ${fmtWith(b.M, creditM2.get(l.id))} | ${e.length ? e.join("; ") : "—"} | ${fmt(b.R)} |`);
     }
     if (gaps.length) out.push("", `Unasserted lines: ${gaps.join(", ")}`);
     out.push("");
@@ -204,6 +346,8 @@ export function evidenceReport(): void {
   if (neverSupplied.length > 0) out.push("", `Input lines never supplied by any fixture: ${neverSupplied.join(", ")}.`);
   if (unknownKeys.size > 0) out.push(`Asserted keys not matching a line id: ${[...unknownKeys].slice(0, 40).join(", ")}${unknownKeys.size > 40 ? " …" : ""}`);
   writeFileSync(yearPath("reports", "evidence.md"), out.join("\n"));
+  console.log(`evidence: ${scoreboard}`);
+  console.log(`evidence: credited through copies — B cases ${creditedB}, second-family M cases ${creditedM2}, engine-line assertions ${creditedE}; source lines gaining E: ${eSourcesGained.length ? eSourcesGained.join(", ") : "none"}; unresolved copy references: ${unresolvedCopies.length ? unresolvedCopies.join(", ") : "none"}`);
   console.log(`evidence: per-line class coverage written; unasserted lines: ${totalGaps}`);
   console.log(`report: reports/${YEAR}/evidence.md`);
 }

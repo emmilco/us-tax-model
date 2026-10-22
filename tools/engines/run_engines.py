@@ -7,10 +7,14 @@ facts (not the project's computed lines) onto the engine's inputs and reads
 back the engine's federal lines in integer cents.
 
 Output: { "engines": { name: { "version", "precision", "lines": { case_id: { line: cents } },
-          "limitations": [ { feature, lines, reason } ] } } }
+          "limitations": [ { feature, lines, reason } ],
+          "pass_through": { "lines": [...], "components": { line: note } } } } }
 The comparison applies the limitations using the case's features, some of which
 are derived from the project's own values (for example whether Form 4952 limited
-the investment interest deduction).
+the investment interest deduction). `pass_through.lines` names mapped lines the
+engine takes whole from the generator's facts instead of computing (none today);
+`pass_through.components` names the components of a computed line that enter as
+generator facts, so the evidence report can say what the engine did not compute.
 """
 import argparse, json, sys, warnings
 from pathlib import Path
@@ -68,6 +72,13 @@ PE_MAP = {
     "s1.line15": ["self_employment_tax_ald"],
 }
 PE_PRECISION = "float32"
+# Lines the engine takes whole from the generator's facts (none), and components of computed
+# lines that enter as generator facts rather than the engine's own form arithmetic.
+PE_PASS_THROUGH = {"lines": [], "components": {
+    "f1040.line10": "the HSA deduction (Form 8889 line 13) enters as the generator's health_savings_account_ald; "
+                    "the engine computes the educator, half-of-self-employment-tax and student loan interest "
+                    "components and the sum",
+}}
 PE_LIMITATIONS = [
     {"feature": "schedule1a_stepped_phaseout", "lines": ['f1040.line13b', 'f1040.line15', 'f1040.line16', 'f1040.tax_before_credits', 'f1040.line19', 'f1040.line28'],
      "reason": "PolicyEngine-US reduces the tips, overtime and car loan interest deductions by the rate times the exact excess of modified AGI over the threshold; Schedule 1-A lines 11, 19 and 28 count whole $1,000 steps (rounded down, down and up) first"},
@@ -111,6 +122,12 @@ TC_MAP = {
     "s1.line15": ["c03260"],
 }
 TC_PRECISION = "float64"
+TC_PASS_THROUGH = {"lines": [], "components": {
+    "f1040.line10": "the HSA deduction (e03290) and the educator expenses deduction (e03220) enter as the generator's "
+                    "amounts; the engine computes the half-of-self-employment-tax component and the sum (returns "
+                    "with student loan interest are excluded)",
+    "f1040.line20": "the foreign tax paid (e07300) is a supplied amount; the engine computes the credit limit",
+}}
 TC_LIMITATIONS = [
     {"feature": "schedule1a_zero_tax", "lines": ['sa.line17'],
      "reason": "Tax-Calculator takes the standard deduction whenever the tax is the same either way; when the Schedule 1-A deductions leave no tax even with the standard deduction zeroed, its forced pass also takes the standard deduction, so the itemized total is not compared"},
@@ -223,7 +240,7 @@ def run_policyengine(cases):
         for i, pid in enumerate(order):
             lines[pid][line] = cents(combine(lambda n: float(var(n)[i]), spec))
     return {"version": pkg_version("policyengine-us"), "precision": PE_PRECISION, "lines": lines, "limitations": PE_LIMITATIONS,
-            "components": {line: len(spec) for line, spec in PE_MAP.items()}}
+            "pass_through": PE_PASS_THROUGH, "components": {line: len(spec) for line, spec in PE_MAP.items()}}
 
 
 def run_taxcalc(cases):
@@ -276,7 +293,7 @@ def run_taxcalc(cases):
         lines[c["id"]] = {line: cents(combine(lambda n: float(calc.array(n)[i]), spec)) for line, spec in TC_MAP.items()}
         lines[c["id"]]["sa.line17"] = cents(forced.array("c04470")[i])
     return {"version": tc.__version__, "precision": TC_PRECISION, "lines": lines, "limitations": TC_LIMITATIONS,
-            "components": {line: len(spec) for line, spec in TC_MAP.items()}}
+            "pass_through": TC_PASS_THROUGH, "components": {line: len(spec) for line, spec in TC_MAP.items()}}
 
 
 def main():

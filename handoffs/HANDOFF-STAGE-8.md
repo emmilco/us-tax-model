@@ -2,7 +2,7 @@
 
 Read `HANDOFF.md` first (what the project is; decisions not to reopen; hard
 constraints), then `TASKS.md` (everything known and not done), then this
-file. `HANDOFF-STAGE-7.md` describes the integrity stack in detail;
+file. `handoffs/HANDOFF-STAGE-7.md` describes the integrity stack in detail;
 `PROJECT_INDEX.md` is current; `BUG_INVENTORY.md` has 24 entries. Everything
 is committed; `npm run check-all` is green at `0c8872a`.
 

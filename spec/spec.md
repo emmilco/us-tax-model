@@ -99,6 +99,8 @@ Remaining, in the order of the estimate when this section was last revised (the 
 7. Married filing separately (97%, the target).
 8. Form 1116 and the remaining deferrals of 2.2, and the smaller situations the report lists.
 
+The integrity plan (`docs/2026-10-22_integrity_plan.md`) precedes the remaining stages. Its Phases 0 and 1 complete first. The tax-year-2026 rehearsal on the posted draft documents then decides whether work continues on the 2025 sources. Thereafter each stage closes under the plan's standing regime: the transcription and render reviews under two model families, the owner's reading of the stage's highest-stakes line, one second-family whole-return working, the engine mappings extended wherever an engine models the new feature, and the stage handoff reporting outside-family coverage before fixture counts. The plan's stop rule can pause coverage.
+
 State returns are outside the federal goal. New York is the first state intended once federal coverage is met; it is a separate decision with its own sources, and nothing in the federal encoding assumes it.
 
 ## 3. Evidentiary requirements
@@ -115,7 +117,7 @@ These are the acceptance criteria for the formalization. Each is checkable by a 
 8. **Year and revision pinning.** Every definition, parameter, example and source snapshot is pinned to a tax year and a document revision.
 9. **Third-party reproducibility.** One documented command rebuilds everything and runs every check with no network access and no trust in the authors.
 10. **No floating point.** Money is integer cents; rates are integer pairs; rounding happens only where an explicit, cited rounding step says so.
-11. **Independent construction.** No human line-by-line reading of the encoding against the source is claimed. Transcription, expected values and whole-return results are each produced at least twice by constructions that share no artifact (section 6.5), and every disagreement is logged with its resolution. The published trust statement is: *no human has read this encoding against the IRS text; it is verified by agreement among independent constructions, and every disagreement is recorded.*
+11. **Independent construction.** No human line-by-line reading of the encoding against the source is claimed. Transcription, expected values and whole-return results are each produced at least twice by constructions that share no artifact (section 6.5), and every disagreement is logged with its resolution. The published trust statement is: *no human has read this encoding against the IRS text; it is verified by agreement among independent constructions, and every disagreement is recorded.* Until the constructions include a reader outside the Claude model family, the statement means agreement within one family; the per-line evidence report states, line by line, which lines have an assertion from outside it.
 
 ## 4. Data model for forms
 
@@ -234,13 +236,13 @@ Every expected value in the test suite is labelled with one class.
 
 Research found official examples for single rules only: none for the Qualified Dividends and Capital Gain Tax Worksheet and none for a whole return in scope. Class A therefore cannot carry worksheet arithmetic. The project's public claims say this plainly.
 
-Class B is retained for human hand-work when it is offered; the project does not depend on it. Class M is its mechanical substitute. The classes differ in independence, and the evidence report keeps them distinct.
+Class B is retained for human hand-work when it is offered; the project does not depend on it. Class M is its mechanical substitute. The classes differ in independence, and the evidence report keeps them distinct. Agreement between the TypeScript and Lean evaluators is not class C: both read the same data files, so their agreement shows the evaluators agree, not that the data is right. The engine differential of section 6.5 is class C for a line where an engine computes that line from its own rules and the line is mapped to it.
 
 ### 6.2 Required coverage
 
 - Every official example found for a form in scope is a class A fixture.
 - Every worksheet has class B or class M fixtures that together take both sides of every `smaller_of`, `larger_of`, `subtract_floor0`, `choose` and gate. The inputs are generated from the encoded worksheet; the expected values are worked on the official document by a construction that has not seen the encoding.
-- Whole returns are compared (class C) against at least two independent engines run locally over generated inputs, for every tax year supported, and against named calculators where their records can be obtained. Differences are investigated to a cited cause, never tolerated by a margin. Where an engine is known to approximate (for example, by not using the Tax Table), the approximation is recorded as the cited cause once and the comparison excludes it thereafter.
+- Whole returns are compared (class C) against at least two independent engines run locally over generated inputs, for every tax year supported, and against named calculators where their records can be obtained. Differences are investigated to a cited cause, never tolerated by a margin. Where an engine is known to approximate (for example, by not using the Tax Table), the approximation is recorded as the cited cause once and the comparison excludes it thereafter. The two engines in use (PolicyEngine-US and Tax-Calculator) are totals-only oracles: they reach the forms through summary lines such as adjusted gross income, taxable income and tax, not through the worksheet lines. Line-level oracles (OpenTaxSolver and UsTaxes, named in `research/02_prior_art_tax_software.md`) are to be added under the integrity plan (`docs/2026-10-22_integrity_plan.md`).
 - A mutation score is computed and published per worksheet: the share of single-atom mutations that some fixture detects.
 - A report shows, per line, which evidence classes cover it.
 
@@ -292,6 +294,8 @@ Every language-model invocation in this section runs under the AI Security and I
 
 The shared blind spot of every model-driven check is that it reads the same English. The engine differential is the only check against a shared misreading, which is why it is required for every tax year supported.
 
+The checks also share a reader. As of 2026-10-22 every construction in this section (the authoring, the second transcription, the render comparison, class M hand-work and the blind fixture predictions) was produced by one model family, Claude. Agreement among readers of one family is weaker evidence than agreement among readers that differ, because they can share a misreading as well as a text. The engine differential is the only check outside that family. The integrity plan (`docs/2026-10-22_integrity_plan.md`) adds a second model family to the reviews and the hand-work, two line-level engines, and a human reading of the highest-stakes lines, and names the scoreboard: the share of computed lines with at least one assertion from outside the Claude family, with its sub-counts by source.
+
 ### 6.6 Bug inventory
 
 Every defect caught, by any check or reading, is recorded in `BUG_INVENTORY.md` at the repository root before or with its fix. The file is append-only: entries are never edited or removed, and a correction is a new entry citing the old one. Each entry records how the defect was caught, its symptom, its root cause, where it lived, why the existing checks did not catch it, the fix and its commit, and pattern tags. `check-all` fails if the committed prefix of the file changes or the ids are not sequential. The purpose is to make defect patterns visible, so that a recurring pattern becomes a new check rather than a recurring fix.
@@ -323,7 +327,7 @@ Expected values are never written as formulas of the parameters: an expectation 
 - A refusal names the form the tool cannot prepare, the answer or box that triggered it, and the instruction that requires it.
 - Any ambiguity entry that affected the return is shown with the reading chosen.
 - "I don't know" is an allowed answer. It leads to help naming the document box that holds the answer, or stops. It never becomes a default.
-- Rounding is a return-wide setting, whole dollars by default, with cents available. The setting and its instruction are shown.
+- Amounts are exact cents. A return-wide whole-dollar rounding setting, with its instruction shown, is deferred and not implemented; the output states this, and the deferral is tracked in the ambiguity register (`amb.2025.multiplication_subcent`, `amb.2025.sales_rounding`). The only rounding performed is by the `round` atom where a cited instruction says so.
 - Standing notices, at first run and on every output: this is not tax or legal advice; the user is responsible for the return; the tool implements published IRS forms and instructions, which are not the law itself; it is not affiliated with or endorsed by the IRS; and the list of what it covers and does not cover.
 
 ## 9. Operating constraints

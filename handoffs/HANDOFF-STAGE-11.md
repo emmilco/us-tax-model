@@ -1,6 +1,6 @@
 # Handoff: Stage 11 (unemployment compensation and the common Schedule 1 adjustments) done
 
-Read `HANDOFF.md` first, then `TASKS.md`, then this file; `HANDOFF-STAGE-10.md`
+Read `HANDOFF.md` first, then `TASKS.md`, then this file; `handoffs/HANDOFF-STAGE-10.md`
 describes the stage before and the overnight queue after it. `PROJECT_INDEX.md`
 is current; `BUG_INVENTORY.md` has 34 entries.
 

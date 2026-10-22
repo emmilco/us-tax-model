@@ -101,7 +101,7 @@ and `person.sav_trad` is replaced by, or derived from, that input. Affects D10.
 
 **O3. No Roth excess-contribution screen landed, so there is nothing to merge.** Map 5.3 item 3 ("Stage 15 planned its
 own for Roth (Stage 15 map R3). Merge them."). No Form 5329 or Roth excess screen exists in forms/2025 (`person.
-sav_excess` concerns W-2 box 12 elective deferrals). HANDOFF-STAGE-15.md, Open for the owner, item 4: "*Excess or
+sav_excess` concerns W-2 box 12 elective deferrals). handoffs/HANDOFF-STAGE-15.md, Open for the owner, item 4: "*Excess or
 recharacterized Roth IRA contributions* have no screen of their own (the `s2.other` screen is relied on for Form 5329,
 not verified). Should the traditional IRA screen also ask about them?" The shared screen in D10 / R-IRA-4 is new work,
 and it is tied to an open owner question. Affects D8, D10.

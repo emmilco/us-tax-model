@@ -1,7 +1,7 @@
 # Handoff: the queue cleared; Stage 9 (earned income credit) done
 
-Read `HANDOFF.md` first, then `TASKS.md`, then this file; `HANDOFF-STAGE-8.md`
-and `HANDOFF-STAGE-7.md` describe the earlier stages. `PROJECT_INDEX.md` is
+Read `HANDOFF.md` first, then `TASKS.md`, then this file; `handoffs/HANDOFF-STAGE-8.md`
+and `handoffs/HANDOFF-STAGE-7.md` describe the earlier stages. `PROJECT_INDEX.md` is
 current; `BUG_INVENTORY.md` has 29 entries.
 
 ## What was done (2026-10-17, after `0f95705`)

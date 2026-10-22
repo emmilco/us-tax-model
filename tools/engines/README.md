@@ -25,7 +25,8 @@ tools/engines/run.sh                  (ENGINE_CASES=1000 ENGINE_SEED=20260101 by
   generate_cases.py  -> .engines/work/cases.json     random in-scope returns, integer cents
   main.js eval --batch -> .engines/work/project.json  the project's lines and derivations
   run_engines.py     -> .engines/work/engines.json   each engine's lines, in cents
-  compare.py         -> reports/2025/engine_differential.md ; exit 1 on any unexplained difference
+  compare.py         -> reports/2025/engine_differential.md and engine_differential.json (per engine and line:
+                        cases compared, nonzero, excluded, unexplained; read by the evidence report) ; exit 1 on any unexplained difference
 ```
 
 Tax-Calculator runs with `exact_calculations=True`, so its phase-outs follow the printed $1,000 steps (Schedule 1-A lines 11, 19 and 28; Schedule 8812 line 10) rather than its smoothed default. Generated filers are 40, or 66 to 85 for the enhanced deduction for seniors; PolicyEngine-US is told they are not enrolled in Medicare, since medical expenses are all supplied.

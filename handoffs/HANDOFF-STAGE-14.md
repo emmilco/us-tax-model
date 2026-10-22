@@ -1,6 +1,6 @@
 # Handoff: Stage 14 (self-employment), complete
 
-Read `HANDOFF.md` first, then `TASKS.md`, then this file. `HANDOFF-STAGE-13.md`
+Read `HANDOFF.md` first, then `TASKS.md`, then this file. `handoffs/HANDOFF-STAGE-13.md`
 describes the stage before and holds the owner-confirmed Stage 14 scope (its
 "Next" section; TASKS.md T-039).
 

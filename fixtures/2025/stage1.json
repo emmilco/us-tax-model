@@ -7,8 +7,8 @@
         "tax_table band 0-5",
         "tax_on_amount table side"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
@@ -182,8 +182,8 @@
         "tax_table mid band",
         "single column"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
@@ -356,8 +356,8 @@
       "covers": [
         "tax_table last band"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
@@ -530,8 +530,8 @@
       "covers": [
         "tax_on_amount table side below the boundary"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
@@ -704,8 +704,8 @@
       "covers": [
         "tax_on_amount worksheet side at the exact $100,000 boundary"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
@@ -878,8 +878,8 @@
       "covers": [
         "tcw.single guard 0"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
@@ -1052,8 +1052,8 @@
       "covers": [
         "tcw.single guard 1"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
@@ -1226,8 +1226,8 @@
       "covers": [
         "tcw.single guard 2"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
@@ -1400,8 +1400,8 @@
       "covers": [
         "tcw.single guard 3"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
@@ -1574,8 +1574,8 @@
       "covers": [
         "tcw.single guard 4"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
@@ -1748,8 +1748,8 @@
       "covers": [
         "tcw.single b1/b2 seam (upper bound belongs to the next band)"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
@@ -1922,8 +1922,8 @@
       "covers": [
         "tcw.single b3/b4 seam"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
@@ -2096,8 +2096,8 @@
       "covers": [
         "tcw.single b4/b5 seam"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
@@ -2270,8 +2270,8 @@
       "covers": [
         "tcw.mfj guard 0 (via mfj)"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "mfj",
         "f1040.line3a": 0,
@@ -2455,8 +2455,8 @@
       "covers": [
         "tcw.mfj guard 1"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "mfj",
         "f1040.line3a": 0,
@@ -2640,8 +2640,8 @@
       "covers": [
         "tcw.mfj guard 2"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "mfj",
         "f1040.line3a": 0,
@@ -2825,8 +2825,8 @@
       "covers": [
         "tcw.mfj guard 3"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "mfj",
         "f1040.line3a": 0,
@@ -3010,8 +3010,8 @@
       "covers": [
         "tcw.mfj guard 4"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "mfj",
         "f1040.line3a": 0,
@@ -3195,8 +3195,8 @@
       "covers": [
         "tcw.mfs guard 0"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "mfs",
         "f1040.line3a": 0,
@@ -3370,8 +3370,8 @@
       "covers": [
         "tcw.mfs guard 1"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "mfs",
         "f1040.line3a": 0,
@@ -3545,8 +3545,8 @@
       "covers": [
         "tcw.mfs guard 2"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "mfs",
         "f1040.line3a": 0,
@@ -3720,8 +3720,8 @@
       "covers": [
         "tcw.mfs guard 3"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "mfs",
         "f1040.line3a": 0,
@@ -3895,8 +3895,8 @@
       "covers": [
         "tcw.mfs guard 4"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "mfs",
         "f1040.line3a": 0,
@@ -4070,8 +4070,8 @@
       "covers": [
         "tcw.hoh guard 0"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "hoh",
         "f1040.line3a": 0,
@@ -4265,8 +4265,8 @@
       "covers": [
         "tcw.hoh guard 1"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "hoh",
         "f1040.line3a": 0,
@@ -4460,8 +4460,8 @@
       "covers": [
         "tcw.hoh guard 2"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "hoh",
         "f1040.line3a": 0,
@@ -4655,8 +4655,8 @@
       "covers": [
         "tcw.hoh guard 3"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "hoh",
         "f1040.line3a": 0,
@@ -4850,8 +4850,8 @@
       "covers": [
         "tcw.hoh guard 4"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "hoh",
         "f1040.line3a": 0,
@@ -5045,8 +5045,8 @@
       "covers": [
         "tcw.tax qss guard (qss takes the joint section)"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "qss",
         "f1040.line3a": 0,
@@ -5219,8 +5219,8 @@
       "covers": [
         "tcw.tax qss guard, second band"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "qss",
         "f1040.line3a": 0,
@@ -5579,8 +5579,8 @@
         "qdcg path end to end with qualified dividends",
         "15% bracket"
       ],
-      "evidence": "B",
-      "evidence_note": "Worked by the agent against the archived worksheet text; human re-work pending. 50,000 taxable, 5,000 qualified dividends, single -> 5,412.50.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was B): agent work is not human hand-work; to be rerun through classm.py under the integrity plan; Worked by the agent against the archived worksheet text; human re-work pending. 50,000 taxable, 5,000 qualified dividends, single -> 5,412.50.",
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 500000,
@@ -5837,8 +5837,8 @@
       "covers": [
         "f1040.gate qdcg_applies true via capital gain distributions"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
@@ -6095,8 +6095,8 @@
       "covers": [
         "qdcg.line3 true side (Schedule D declared input)"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 500000,
@@ -6364,8 +6364,8 @@
       "covers": [
         "qdcg.line5 floor0 zero side"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 2000000,
@@ -6622,8 +6622,8 @@
       "covers": [
         "qdcg.line16 floor0 zero side"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 600000,
@@ -6881,8 +6881,8 @@
         "qdcg.line20 20% bracket region",
         "qdcg.line13 cap binds"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 70000000,
@@ -7139,8 +7139,8 @@
       "covers": [
         "qdcg.line7 takes line 1"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 1000000,
@@ -7397,8 +7397,8 @@
       "covers": [
         "qdcg mfj-keyed ceilings"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "mfj",
         "f1040.line3a": 10000000,
@@ -7666,8 +7666,8 @@
       "covers": [
         "qdcg mfs-keyed ceilings"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "mfs",
         "f1040.line3a": 1000000,
@@ -7925,8 +7925,8 @@
       "covers": [
         "qdcg hoh-keyed ceilings"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "hoh",
         "f1040.line3a": 1000000,
@@ -8204,8 +8204,8 @@
       "covers": [
         "qdcg qss-keyed ceilings"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "qss",
         "f1040.line3a": 1000000,
@@ -8462,8 +8462,8 @@
       "covers": [
         "QDCGT line 22 invoking the Tax Computation Worksheet (line 5 >= $100,000)"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 15000000,
@@ -8720,8 +8720,8 @@
       "covers": [
         "tcw.single band 1/2 boundary +99 cents (kills +$1 bound mutations)"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
@@ -8894,8 +8894,8 @@
       "covers": [
         "tcw.single band 2/3 boundary +99 cents (kills +$1 bound mutations)"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
@@ -9068,8 +9068,8 @@
       "covers": [
         "tcw.single band 3/4 boundary +99 cents (kills +$1 bound mutations)"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
@@ -9242,8 +9242,8 @@
       "covers": [
         "tcw.single band 4/5 boundary +99 cents (kills +$1 bound mutations)"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "single",
         "f1040.line3a": 0,
@@ -9416,8 +9416,8 @@
       "covers": [
         "tcw.mfj band 1/2 boundary +99 cents (kills +$1 bound mutations)"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "mfj",
         "f1040.line3a": 0,
@@ -9601,8 +9601,8 @@
       "covers": [
         "tcw.mfj band 2/3 boundary +99 cents (kills +$1 bound mutations)"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "mfj",
         "f1040.line3a": 0,
@@ -9786,8 +9786,8 @@
       "covers": [
         "tcw.mfj band 3/4 boundary +99 cents (kills +$1 bound mutations)"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "mfj",
         "f1040.line3a": 0,
@@ -9971,8 +9971,8 @@
       "covers": [
         "tcw.mfj band 4/5 boundary +99 cents (kills +$1 bound mutations)"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "mfj",
         "f1040.line3a": 0,
@@ -10156,8 +10156,8 @@
       "covers": [
         "tcw.mfs band 1/2 boundary +99 cents (kills +$1 bound mutations)"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "mfs",
         "f1040.line3a": 0,
@@ -10331,8 +10331,8 @@
       "covers": [
         "tcw.mfs band 2/3 boundary +99 cents (kills +$1 bound mutations)"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "mfs",
         "f1040.line3a": 0,
@@ -10506,8 +10506,8 @@
       "covers": [
         "tcw.mfs band 3/4 boundary +99 cents (kills +$1 bound mutations)"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "mfs",
         "f1040.line3a": 0,
@@ -10681,8 +10681,8 @@
       "covers": [
         "tcw.mfs band 4/5 boundary +99 cents (kills +$1 bound mutations)"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "mfs",
         "f1040.line3a": 0,
@@ -10856,8 +10856,8 @@
       "covers": [
         "tcw.hoh band 1/2 boundary +99 cents (kills +$1 bound mutations)"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "hoh",
         "f1040.line3a": 0,
@@ -11051,8 +11051,8 @@
       "covers": [
         "tcw.hoh band 2/3 boundary +99 cents (kills +$1 bound mutations)"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "hoh",
         "f1040.line3a": 0,
@@ -11246,8 +11246,8 @@
       "covers": [
         "tcw.hoh band 3/4 boundary +99 cents (kills +$1 bound mutations)"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "hoh",
         "f1040.line3a": 0,
@@ -11441,8 +11441,8 @@
       "covers": [
         "tcw.hoh band 4/5 boundary +99 cents (kills +$1 bound mutations)"
       ],
-      "evidence": "C",
-      "evidence_note": "Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
+      "evidence": "R",
+      "evidence_note": "Relabelled R 2026-10-22 (was C): Lean agreement is evaluator agreement, not an independent engine; Recorded from the TypeScript evaluator and confirmed by the independently written Lean reference evaluator (reports/2025/evaluator_agreement.md); human hand-work pending.",
       "inputs": {
         "f1040.status": "hoh",
         "f1040.line3a": 0,

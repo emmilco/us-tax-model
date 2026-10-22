@@ -62,6 +62,9 @@ step check_auto_limits python3 tools/check_auto_limits.py "$@"
 step check_bug_inventory python3 tools/check_bug_inventory.py
 step check_logs python3 tools/transcription/check_logs.py "$@"
 step check_table_logs python3 tools/transcription/check_table_logs.py "$@"
+# citations runs without --strict: the computed-line locators it lists under
+# "Locators to rewrite" are reported, not failed, until that list is empty;
+# then --strict is added here.
 step citations python3 tools/citations.py "$@"
 step citations_self_test python3 tools/citations.py --self-test "$@"
 step year_diff_self_test python3 tools/year_diff.py --self-test "$@"

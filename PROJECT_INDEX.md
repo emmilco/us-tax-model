@@ -2,19 +2,17 @@
 
 An open, verifiable formalization of the IRS forms-and-instructions layer for US federal individual income tax, plus a guided self-preparation interview tool as its first client. The user files their own return; the software never files, signs, or transmits.
 
-Stages 0–5 are implemented. Stage 5 computes the whole single-person return:
-Form 1040 lines 1a–37 end to end, the full interview profile, whole-return
-fixtures, per-line evidence coverage and the differential scaffolding. See
-`reports/2025/stage5-review.md`. The product goal, coverage plan and
-verification regime are in `spec/spec.md` sections 1, 2.4 and 6.5; the stages
-that follow (integrity stack, household architecture test, coverage) are in
-`spec/design.md` section 5. No human line-by-line reading is claimed; see the
-trust statement in spec 3. Stage 7 (the integrity stack), Stage 8 (dependents,
-head of household and Schedule 8812), Stage 9 (the earned income credit),
-Stage 10 (retirement income), Stage 11 (unemployment compensation and the common Schedule 1
-adjustments), Stage 12 (the Schedule 1-A deductions), Stage 13 (married filing jointly), Stage 14 (self-employment),
-Stage 15 (other credits) and Stage 16 (the remaining Schedule 1 items) are complete;
-see `HANDOFF-STAGE-16.md` to continue. The order of later stages follows the coverage estimate (spec 2.4, `reports/roadmap.html`).
+Stages 0 to 16 are implemented: the proof-of-concept return (Stages 0 to 5),
+the integrity stack (Stage 7), dependents, head of household and Schedule 8812
+(Stage 8), the earned income credit (9), retirement income (10), unemployment
+compensation and the common Schedule 1 adjustments (11), the Schedule 1-A
+deductions (12), married filing jointly (13), self-employment (14), other
+credits (15) and the remaining Schedule 1 items (16); see `HANDOFF-STAGE-16.md`
+to continue. The product goal, coverage plan and verification regime are in
+`spec/spec.md` sections 1, 2.4 and 6.5; the build order is in `spec/design.md`
+section 5. No human line-by-line reading is claimed; see the trust statement in
+spec 3 and its qualification. The integrity plan
+(`docs/2026-10-22_integrity_plan.md`) precedes the remaining stages. The order of later stages follows the coverage estimate (spec 2.4, `reports/roadmap.html`).
 
 ## Folder structure
 
@@ -22,17 +20,11 @@ see `HANDOFF-STAGE-16.md` to continue. The order of later stages follows the cov
 |------|---------|
 | `PROJECT_INDEX.md` | This file: structure, directory purposes, naming conventions |
 | `CLAUDE.md` | The owner's standing working guidance for agents in this project (inference cost) |
+| `README.md` | What the project is, the trust statement, the standing notices, what it covers and refuses, the one command and its prerequisites, where things are, licences |
+| `LICENSE` | Apache License, Version 2.0: the licence of the code (spec 9) |
+| `LICENSE-DATA` | CC0 1.0 Universal: the dedication of the data (`forms/`, `params/`, `tables/`, `fixtures/`, `ambiguities/`, `interview/`) to the public domain (spec 9) |
 | `HANDOFF-STAGE-16.md` | Current handoff: Stage 16 (the remaining Schedule 1 items: taxable state refund, other income with the line 8z collection, gambling, the IRA deduction with Form 8606 Part I, the early withdrawal penalty, alimony, taxable HSA distributions, canceled debt), with 25 owner questions |
-| `HANDOFF-STAGE-15.md` | Previous handoff: Stage 15 (other credits: Forms 2441, 8880 and 5695), the `rate_lookup` atom, with the owner's answers |
-| `HANDOFF-STAGE-14.md` | Previous handoff: Stage 14 (self-employment: Schedule C with vehicles, depreciable property and Form 4562, Schedule SE, Schedule 1 lines 3 and 15 to 17 with Form 7206, Form 8995 business income, EIC Worksheet B), with open items |
-| `HANDOFF-STAGE-13.md` | Previous handoff: Stage 13 (married filing jointly: per-person records, the joint rules, the Form 8889 spouse rules), with open items |
-| `HANDOFF-STAGE-12.md` | Previous handoff: the coverage goal and estimator, the roadmap, and Stage 12 (Schedule 1-A: tips, overtime, car loan interest, the enhanced deduction for seniors), with open items |
-| `HANDOFF-STAGE-11.md` | Previous handoff: Stage 11 (Schedule 1 line 7, educator expenses, the HSA deduction with Form 8889 Part I, student loan interest), the `prorate` atom, with open items |
-| `HANDOFF-STAGE-10.md` | Previous handoff: Stage 10 (Form 1099-R distributions and taxable social security benefits), the `multiply_count` atom, with open items |
-| `HANDOFF-STAGE-9.md` | Previous handoff: the commit guard, the interview-check bound, class M for collections and definitions, the per-band extraction and Stage 9 (earned income credit), with open items |
-| `HANDOFF-STAGE-8.md` | Previous handoff: Stage 8 done, the extraction-as-evidence work and the review reruns of 2026-10-17, facts a fresh session needs |
-| `HANDOFF-STAGE-7.md` | Previous handoff: the Stage 7 integrity stack in detail, with a Stage 8 section appended during the build |
-| `HANDOFF-STAGE-2.md` | Stage 2 handoff and acceptance checklist (historical) |
+| `handoffs/` | Superseded handoffs, one per stage, kept as the record of each build. `HANDOFF-STAGE-2.md`: the Stage 2 handoff (excess Social Security tax withheld) and its acceptance checklist, historical. `HANDOFF-STAGE-7.md`: the Stage 7 integrity stack in detail, with a Stage 8 section appended during the build. `HANDOFF-STAGE-8.md`: Stage 8 (dependents, head of household and Schedule 8812) done, the extraction-as-evidence work and the review reruns of 2026-10-17, facts a fresh session needs. `HANDOFF-STAGE-9.md`: the commit guard, the interview-check bound, class M for collections and definitions, the per-band extraction and Stage 9 (the earned income credit), with open items. `HANDOFF-STAGE-10.md`: Stage 10 (Form 1099-R distributions and taxable social security benefits), the `multiply_count` atom, with open items. `HANDOFF-STAGE-11.md`: Stage 11 (Schedule 1 line 7, educator expenses, the HSA deduction with Form 8889 Part I, student loan interest), the `prorate` atom, with open items. `HANDOFF-STAGE-12.md`: the coverage goal and estimator, the roadmap, and Stage 12 (Schedule 1-A: tips, overtime, car loan interest, the enhanced deduction for seniors), with open items. `HANDOFF-STAGE-13.md`: Stage 13 (married filing jointly: per-person records, the joint rules, the Form 8889 spouse rules), with open items. `HANDOFF-STAGE-14.md`: Stage 14 (self-employment: Schedule C with vehicles, depreciable property and Form 4562, Schedule SE, Schedule 1 lines 3 and 15 to 17 with Form 7206, Form 8995 business income, EIC Worksheet B), with open items. `HANDOFF-STAGE-15.md`: Stage 15 (other credits: Forms 2441, 8880 and 5695), the `rate_lookup` atom, with the owner's answers |
 | `spec/stage2-proposal.md` | Owner-approved modeling choices and concrete collection binding |
 | `reviews/2025/stage2.md` | Preserved owner approval and hand-work record (not generated) |
 | `interview/` | `questions-2025.yaml`, the question bank: each input's order and help, its prompt and citation filled at build from the form line (a collection's frame first) unless the bank gives interview wording of its own; the profiles `2025.yaml`, `sales-2025.yaml`, `stage4-2025.yaml` and `full-2025.yaml` (the whole return) give targets, initial answers and the inputs they ask; CLI and collection documentation |
@@ -41,6 +33,7 @@ see `HANDOFF-STAGE-16.md` to continue. The order of later stages follows the cov
 | `research/` | Research pass outputs. `report.md` is the cross-workstream synthesis with the committed recommendation; one detailed findings file per workstream sits beside it. `research/premises/` holds the premise maps of later roadmap stages (`stage<NN>-<slug>.md`, one per stage of spec 2.4's remaining list), written before each stage with a draft owner decision batch, each with an adversarial verification beside it (`stage<NN>-<slug>.verification.md`) that supersedes the map where they differ; once a stage's decisions are taken, they and its map's corrections are recorded in `sources/2025/PREMISES.md` |
 | `sources/2025/` | Archived IRS sources (PDFs and instruction web-page snapshots), their extracted text in two forms (`<id>.txt`, `pdftotext -layout`; `<id>.cols.txt`, reading order from line boxes, with `<id>.pages.json` classifying each page as prose, table, mixed or single), the hash/revision manifest, and Stage 0 premise findings; sources require revision review before encoding |
 | `sources/2024/` | The 2024 editions of the IRS forms, instructions and publications the 2025 definitions cite (and Rev. Proc. 2023-34), from `tools/sources-2024.json`, archived to compare with: the year-diff's validation pair (`reports/2025/year_diff_from_2024.*`). No definitions rest on them; their revisions are not inspected |
+| `docs/` | Hand-written project assessments, dated `YYYY-MM-DD_<slug>.md`: `2026-10-22_project_evaluation.md` evaluates organization, goal fulfilment and serious flaws as of Stage 16; `2026-10-22_integrity_plan.md` is the joint audit plan (phases, scoreboard, reading list, stop rule) that follows from it, awaiting the owner's decisions |
 | `TASKS.md` | The one tracked list of known, undone work: follow-ups from rulings and reviews, stage remainders, scope items, each with its source and trigger |
 | `BUG_INVENTORY.md` | Append-only record of every defect caught, with cause, catch method and pattern tags (spec 6.6); `tools/check_bug_inventory.py` enforces append-only in `check-all` |
 | `tools/` | Source fetcher (`fetch_sources.py`, which also derives and verifies the reading-order text), source catalog, reading-order extractor (`extract_text.py`), extraction conservation checks (`check_extraction.py`, in `check-all`), the image-grounded text-layer audit (`ocr_audit.py`, one-time), Tax Table and EIC Table extractors (`extract_tax_table.py`, `extract_eic_table.py`), bug-inventory check (`check_bug_inventory.py`), the commit guard (`check_all.sh` runs the suite and records the green tree; `green.sh` holds the shared tree hash); fixture generator and year diff land here or in `engine/` as they grow; the Stage 14 table extractors (`extract_macrs_tables.py`, Pub. 946 Appendix A; `extract_class_lives.py`, Appendix B) and table checks run in `check-all` (`check_macrs_tables.py`, rates against their derivation and the second printing in i4562; `check_auto_limits.py`, the passenger automobile limits against three printings) |
@@ -91,7 +84,7 @@ see `HANDOFF-STAGE-16.md` to continue. The order of later stages follows the cov
 - Spec documents: `spec/spec.md`, `spec/design.md`
 - Form and worksheet definitions: `forms/<year>/<form>.yaml`; line ids are `<form>.<name>` and survive renumbering (the printed number is a field)
 - Parameters and registers: one file per tax year (`params/<year>.yaml`, `ambiguities/<year>.yaml`)
-- Citation locators: `p. N, <heading>, "<quote>"`, segments separated by `;`, a segment naming another document first (`i4562 p. 4, Part I`); the heading is the first phrase after the pages and must be printed text, quotes verbatim with `...` for an omission (checked by `tools/citations.py`)
+- Citation locators: `p. N, <heading>, "<quote>"`, segments separated by `;`, a segment naming another document first (`i4562 p. 4, Part I`); the heading is the first phrase after the pages and must be printed text, quotes verbatim with `...` for an omission (checked by `tools/citations.py`). On a computed line (atom not `input`, `param` or `copy`) every segment must carry pages, a quote, or one printed line number of a form document (`Schedule 8812 (2025), line 10`, verified beside the label's words in the form's text); a span (`lines 1–18`), a list of lines or the document's title alone is listed under "Locators to rewrite" in `reports/<year>/citations.md` (fails only with `--strict`)
 - Tables: `tables/<year>/<table>.yaml`; generated tables record their extractor and source hash in a header comment
 - Adopting a year: archive its sources (`tools/sources-<year>.json`, `fetch_sources.py --year <year> --fetch`), run `tools/year_diff.py --from <old> --to <new> --adopt`, work through the report (including the definitions that still name the old year) and the new year's citation check until it builds, run `tools/fixtures_year.py --from <old> --to <new>`, then add the year to `years.json`
 - Boundary fixtures: an input on a parameter's boundary is written relative to it (`{"param": "medicare.threshold", "status": "mfj", "offset": -1}`), not as the year's amount

@@ -1080,3 +1080,108 @@ later grouping.
   distribution. Regression `stage16.cleanup.refuse.f8889.screen_no_amounts`; four class M cases whose generated
   returns answered the screen Yes with zero amounts were rebuilt.
 - **Tags:** screen-unreached; question-scope; caught-by-fixture
+
+## BUG-0089 — The evidence report counted class M fixtures as R
+
+- **Date:** 2026-10-22
+- **Caught by:** human-directed audit (two Claude sessions reviewing the repository at the owner's request, 2026-10-22;
+  `docs/2026-10-22_project_evaluation.md`).
+- **Symptom:** `reports/2025/evidence.md` has columns for classes A, B, C and R only; the 169 class M cases of
+  `fixtures/2025/classm.json` (model hand-work, spec 6.1) were counted in the R column, and the report's own header
+  described an M class it never printed. A reader of the report saw the project's largest body of non-recorded
+  evidence as synthetic regression.
+- **Root cause:** `evidenceReport`'s class mapping has no M branch:
+  `ev === "C" ? "C" : ev.startsWith("B") ? "B" : ev.startsWith("A") ? "A" : "R"`, so every label that is not A, B or
+  C falls into R.
+- **Where:** `engine/src/fixtures.ts` (`evidenceReport`).
+- **Why it survived:** the report is generated and read by the same tool chain; no check compares the classes printed
+  with the classes present in the fixture files; the header's prose was written for the class list the mapping never
+  implemented.
+- **Fix:** the evidence report gains an M column, an engine column and a scoreboard (integrity plan item 0.1).
+  Integrity plan item 0.1 commit.
+- **Tags:** tool-defect; evidence-blind-spot; report-misstates-class; caught-by-audit
+
+## BUG-0090 — Evidence labels misstated two classes
+
+- **Date:** 2026-10-22
+- **Caught by:** human-directed audit (two Claude sessions reviewing the repository at the owner's request, 2026-10-22;
+  `docs/2026-10-22_project_evaluation.md`).
+- **Symptom:** (i) `fixtures/2025/stage1.json`: 57 cases labelled "C" with the note "Recorded from the TypeScript
+  evaluator and confirmed by the independently written Lean reference evaluator"; spec 6.1 defines C as agreement with
+  an independent engine, and the Lean evaluator reads the same data. (ii) `fixtures/2025/stage1.json` case
+  `qdcg.handworked.single` labelled "B" (human hand-work) with the note "Worked by the agent"; spec 6.1 says model work
+  is never B. The evidence report therefore overstated both classes.
+- **Root cause:** the labels were assigned at Stage 1, before the evidence classes were applied strictly, and never
+  revisited.
+- **Where:** `fixtures/2025/stage1.json` (the 57 "C" cases; `qdcg.handworked.single`).
+- **Why it survived:** the evidence report prints labels without reading their notes; no check compares a label with
+  its note, and the notes said in plain words what the labels denied.
+- **Fix:** the 58 cases relabelled R with notes saying what the recording is (integrity plan item 0.1); a rerun
+  through `classm.py` under the plan will earn M properly. Integrity plan item 0.1 commit.
+- **Tags:** evidence-label-wrong; recorded-expectation-laundering; caught-by-audit
+
+## BUG-0091 — Citations that locate nothing passed the citation check
+
+- **Date:** 2026-10-22
+- **Caught by:** human-directed audit (two Claude sessions reviewing the repository at the owner's request, 2026-10-22;
+  `docs/2026-10-22_project_evaluation.md`).
+- **Symptom:** 164 citation segments in the form files (54 on computed lines' own citations) use whole-form span locators ("Schedule A (2025), lines 1–18", "Form 8959
+  (2025), lines 1–24", "Form 8960 (2025), Parts I–III, individual lines 1–17", "Form 8995 (2025), lines 1–17", the
+  Unrecaptured Section 1250 Gain Worksheet "lines 1–18", the 28% Rate Gain Worksheet "lines 1–7"), and 733 of 2,667
+  single-line locator segments name no page. A reader following such a citation is pointed at a whole form, or at a
+  line whose page nothing names. Spec 3 item 1 is satisfied in letter (a citation exists) and not in intent.
+- **Root cause:** `tools/citations.py` examines only segments that begin "p." or "pp." (its `SEGMENT_RE`); a span
+  locator or a form-line locator without a page is never examined, so the check cannot fail on it.
+- **Where:** `tools/citations.py` (segment selection); the 187 span locators and 733 page-less segments in
+  `forms/2025/`.
+- **Why it survived:** the check's scope was written from the locators it could verify (page, anchor, quote) and was
+  silent on the rest; BUG-0073's corrections ran inside that scope; the reviews are given the pages a locator names,
+  so a locator naming none was never put in front of a reader.
+- **Fix:** integrity plan item 0.2: span locators are forbidden on computed lines; form-line locators are verified
+  against the form's text; title-only anchors are rejected; the check writes a worklist of locators to rewrite. The
+  rewrites follow. Integrity plan item 0.2 commit.
+- **Tags:** citation/span-locator; check-scope-gap; caught-by-audit
+
+## BUG-0092 — Form 8889 tests marital status by filing status
+
+- **Date:** 2026-10-22
+- **Caught by:** human-directed audit (two Claude sessions reviewing the repository at the owner's request, 2026-10-22;
+  `docs/2026-10-22_project_evaluation.md`).
+- **Symptom:** `f8889.married_family` and `f8889.age55_unmarried` test `f1040.status = mfj`, so a married person filing
+  head of household (considered unmarried for filing status, but married under i8889's "unmarried"/"married" wording
+  for the line 3 chart and the age-55 amounts) gets the unmarried treatment on Form 8889 line 3.
+- **Root cause:** the instruction's word is marital and the encoding has no marital input here; `eic.yaml` already
+  carries one (`eic.married`) for its Step 3 rules. Of 38 lines whose label mentions married and whose expression
+  tests `f1040.status`, these two are the only ones where the instruction's word is marital rather than a filing
+  status.
+- **Where:** `forms/2025/f8889.yaml` (`f8889.married_family`, `f8889.age55_unmarried`).
+- **Why it survived:** the render review judges each line's English against the page, and "married filing jointly"
+  reads as a faithful rendering of "married" unless the reader holds the head-of-household case in mind; no fixture
+  has a married head-of-household filer with family HDHP coverage.
+- **Fix:** open; integrity plan item 2.4 (read a marital answer; add a fixture).
+- **Tags:** status-vs-marital; scope-screen-wider-than-line; latent-until-new-input; caught-by-audit
+
+## BUG-0093 — The engine differential left 1,443 of 1,700 generated returns unknown from Form 1040 line 10 down
+
+- **Date:** 2026-10-22
+- **Caught by:** the evidence-report rewrite of integrity plan item 0.1 (`docs/2026-10-22_integrity_plan.md`), which read
+  the engine differential's per-line counts and found `reports/2025/engine_differential.md` at c99e3c5 reporting 1,443
+  PolicyEngine-US and 1,231 Tax-Calculator cases "not computed" on `f1040.line10`, every one with the project reason
+  `no input supplied for person[taxpayer].f8889[hsa].unsupported`.
+- **Symptom:** since the Form 8889 screen's refusal entry moved to printed lines 13 and 16 (BUG-0088, c99e3c5), the screen
+  is required on every return that has a Form 8889 entry; `tools/engines/generate_cases.py` gave every return an entry
+  but answered the screen only on the returns with HSA contributions. On the other 1,443 returns Schedule 1 line 26,
+  Form 1040 line 10 and every line after it were unknown, so the differential compared the two engines against the
+  project on about 15% of its cases while reporting 0 unexplained differences.
+- **Root cause:** the generator's `f8889.unsupported` answer sat inside the HSA-contribution branch; the comparison
+  counts an unknown project value as "not computed" and no rule bounds that count, so a differential that compares
+  almost nothing still passes.
+- **Where:** `tools/engines/generate_cases.py` (the HSA block); `tools/engines/compare.py` (no floor on "not computed").
+- **Why it survived:** check-all's engine_differential step fails only on an unexplained difference; "not computed" is a
+  reported column, not a failure; the Stage 16 handoff's "1,700 cases, 0 unexplained" was measured before c99e3c5 and
+  the cleanup commit's regenerated report was not read.
+- **Fix:** the screen answer moved out of the conditional so every generated return answers it; the differential rerun
+  returns every count to its pre-c99e3c5 value (0 unexplained, 4 explained). Open: a floor in `compare.py` that fails
+  the run when "not computed" exceeds a stated share of cases on any mapped line, so a blind differential cannot pass
+  (integrity plan item 1.4). Integrity plan item 0.1 commit.
+- **Tags:** tool-defect; generator; comparison-blind-spot; silent-degradation; caught-by-audit

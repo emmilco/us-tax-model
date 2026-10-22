@@ -3167,7 +3167,7 @@ Synthetic regressions are not class B; independent human hand-work remains pendi
 | eic.wsb_line5_stop | synthetic regression (not class B) |
 | eic.separated_box | unobserved |
 | eic.clergy | unobserved |
-| f1040.status | A, B, C |
+| f1040.status | A, R |
 | f1040.line1a | M, synthetic regression (not class B) |
 | f1040.line1e | M, synthetic regression (not class B) |
 | f1040.line1z | M, synthetic regression (not class B) |
@@ -3175,7 +3175,7 @@ Synthetic regressions are not class B; independent human hand-work remains pendi
 | f1040.line2a | M, synthetic regression (not class B) |
 | f1040.line2b | M, synthetic regression (not class B) |
 | f1040.line3b | M, synthetic regression (not class B) |
-| f1040.line3a | A, B, C, synthetic regression (not class B) |
+| f1040.line3a | A, R, synthetic regression (not class B) |
 | f1040.line4a | M, synthetic regression (not class B) |
 | f1040.line4b | M, synthetic refusal regression, synthetic regression (not class B) |
 | f1040.ira_rollovers | unobserved |
@@ -3188,7 +3188,7 @@ Synthetic regressions are not class B; independent human hand-work remains pendi
 | f1040.line6b | M, synthetic refusal regression, synthetic regression (not class B) |
 | f1040.line6c | M, synthetic refusal regression |
 | f1040.line6d | M, synthetic regression (not class B) |
-| f1040.line7a | A, B, C, M, synthetic refusal regression, synthetic regression (not class B), synthetic regression (not independently hand-worked) |
+| f1040.line7a | A, M, R, synthetic refusal regression, synthetic regression (not class B), synthetic regression (not independently hand-worked) |
 | f1040.line8 | M, synthetic refusal regression, synthetic regression (not class B) |
 | f1040.line9 | M, synthetic refusal regression, synthetic regression (not class B) |
 | f1040.line10 | M, synthetic refusal regression, synthetic regression (not class B) |
@@ -3198,11 +3198,11 @@ Synthetic regressions are not class B; independent human hand-work remains pendi
 | f1040.line13a | M, synthetic regression (not class B) |
 | f1040.line13b | M, synthetic refusal regression, synthetic regression (not class B) |
 | f1040.line14 | M, synthetic regression (not class B) |
-| f1040.line15 | A, B, C, M, synthetic refusal regression, synthetic regression (not class B) |
-| f1040.gate.qdcg_applies | A, B, C, synthetic regression, synthetic regression (not independently hand-worked) |
+| f1040.line15 | A, M, R, synthetic refusal regression, synthetic regression (not class B) |
+| f1040.gate.qdcg_applies | A, R, synthetic regression, synthetic regression (not independently hand-worked) |
 | f1040.gate.sdtw | synthetic regression |
 | f1040.non_sdtw_tax | synthetic regression (not class B) |
-| f1040.line16 | A, B, C, M, synthetic refusal regression, synthetic regression (not class B), synthetic-regression |
+| f1040.line16 | A, M, R, synthetic refusal regression, synthetic regression (not class B), synthetic-regression |
 | f1040.line17 | M, synthetic regression (not class B) |
 | f1040.line18 | M, synthetic regression (not class B) |
 | f1040.line19 | M, synthetic refusal regression, synthetic regression (not class B) |
@@ -4077,33 +4077,33 @@ Synthetic regressions are not class B; independent human hand-work remains pendi
 | qbi.threshold | unobserved |
 | qbi.use_8995a | synthetic regression (not class B) |
 | qbi.deduction | synthetic refusal regression, synthetic regression (not class B) |
-| qdcg.schedule_d_filed | B, C |
-| qdcg.schedule_d_net_gain | C |
-| qdcg.line1 | A, B, C, M |
-| qdcg.line2 | A, B, C, M |
-| qdcg.line3 | B, C, M, synthetic regression, synthetic regression (not independently hand-worked) |
-| qdcg.line4 | B, C, M |
-| qdcg.line5 | B, C, M |
-| qdcg.line6 | A, B, C, M |
-| qdcg.line7 | A, B, C, M |
-| qdcg.line8 | B, C, M |
-| qdcg.line9 | B, C, M |
-| qdcg.line10 | B, C, M |
-| qdcg.line11 | B, C, M |
-| qdcg.line12 | B, C, M |
-| qdcg.line13 | A, B, C, M |
-| qdcg.line14 | A, B, C, M |
-| qdcg.line15 | B, C, M |
-| qdcg.line16 | B, C, M |
-| qdcg.line17 | B, C, M |
-| qdcg.line18 | B, C, M |
-| qdcg.line19 | B, C, M |
-| qdcg.line20 | B, C, M |
-| qdcg.line21 | B, C, M |
-| qdcg.line22 | B, C, synthetic-regression |
-| qdcg.line23 | B, C, M, synthetic-regression |
-| qdcg.line24 | A, B, C, synthetic-regression |
-| qdcg.line25 | B, C, M, synthetic-regression |
+| qdcg.schedule_d_filed | R |
+| qdcg.schedule_d_net_gain | R |
+| qdcg.line1 | A, M, R |
+| qdcg.line2 | A, M, R |
+| qdcg.line3 | M, R, synthetic regression, synthetic regression (not independently hand-worked) |
+| qdcg.line4 | M, R |
+| qdcg.line5 | M, R |
+| qdcg.line6 | A, M, R |
+| qdcg.line7 | A, M, R |
+| qdcg.line8 | M, R |
+| qdcg.line9 | M, R |
+| qdcg.line10 | M, R |
+| qdcg.line11 | M, R |
+| qdcg.line12 | M, R |
+| qdcg.line13 | A, M, R |
+| qdcg.line14 | A, M, R |
+| qdcg.line15 | M, R |
+| qdcg.line16 | M, R |
+| qdcg.line17 | M, R |
+| qdcg.line18 | M, R |
+| qdcg.line19 | M, R |
+| qdcg.line20 | M, R |
+| qdcg.line21 | M, R |
+| qdcg.line22 | R, synthetic-regression |
+| qdcg.line23 | M, R, synthetic-regression |
+| qdcg.line24 | A, R, synthetic-regression |
+| qdcg.line25 | M, R, synthetic-regression |
 | refund.zero | unobserved |
 | refund.received | unobserved |
 | refund.has | unobserved |

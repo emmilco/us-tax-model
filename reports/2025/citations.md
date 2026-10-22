@@ -6,6 +6,11 @@ compound anchor, its first member), on one of them or as a heading in force up t
 An anchor or quote that cannot match printed text carries a ruling in `reviews/2025/citations.json`,
 listed with its uses in `reports/2025/citations.html`.
 
+On a computed line (atom not input, param or copy) every segment of the line's locator must carry
+pages, a quote found in the document, or one printed line number of a form document found on a line
+of the form's text beside three consecutive words of the label. The segments that do not are listed
+under "Locators to rewrite"; they fail the check only with `--strict`.
+
 - anchors: 2313
 - anchors ruled: 45
 - quotes: 1252
@@ -13,3 +18,439 @@ listed with its uses in `reports/2025/citations.html`.
 - segments checked: 2398
 - findings without a ruling: 0
 - rulings no anchor uses: 0
+
+- computed lines: 1510
+- computed-line segments: 1756
+- computed-line segments rejected: list: 13
+- computed-line segments rejected: none: 160
+- computed-line segments rejected: span: 54
+- computed-line segments with a quote and no page: 120
+- computed-line segments with pages: 1146
+- form-line locators: 263
+- form-line locators not placed: 21
+- form-line locators on a booklet: 40
+- form-line locators verified: 202
+- quotes without a page found: 103
+- quotes without a page not found: 17
+- locators to rewrite: 305
+
+## Locators to rewrite
+
+Segments of computed-line locators that place nothing the check can verify, by form; each gives
+the line, the segment as written and what the check needs instead.
+
+### asset (7)
+
+- `asset.period` (`forms/2025/asset.yaml:46`) — “Appendix B, Tables B-1 and B-2, GDS (MACRS) column” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `asset.outside` (`forms/2025/asset.yaml:58`) — “Appendix B, Tables B-1 and B-2 (farming classes, classes with footnotes, and periods other than 3 to 20 years)” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `asset.is2025` (`forms/2025/asset.yaml:270`) — “Line 17” — a line number on i4562, not a form: a page (`p. N, <heading>`) with a quote
+- `asset.last` (`forms/2025/asset.yaml:350`) — “Appendix A, Tables A-1 to A-5 and A-8 to A-12” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `asset.rate_hy` (`forms/2025/asset.yaml:658`) — “Pub. 946 Tables A-1 and A-8” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `asset.rate_mq` (`forms/2025/asset.yaml:673`) — “Pub. 946 Tables A-2 to A-5 and A-9 to A-12” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `asset.rate_prior` (`forms/2025/asset.yaml:835`) — “Appendix A, Tables A-1 to A-5 and A-8 to A-12” — no line number, quote or page: a printed line number, a quote, or a page locator
+
+### carloan (2)
+
+- `carloan.mixed_qualifying` (`forms/2025/carloan.yaml:164`) — “(d)(6) Example 4” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `carloan.qpvli` (`forms/2025/carloan.yaml:322`) — “column (ii), interest deducted on Schedule C, E or F, is outside this tool (scope.schedule1)” — no line number, quote or page: a printed line number, a quote, or a page locator
+
+### dependent (1)
+
+- `dependent.actc_amount` (`forms/2025/dependent.yaml:770`) — “Schedule 8812 (2025), line 16b, “Number of qualifying children under age 17 with the required social security number x $1,700”” — the quote was not found in f1040s8812: quote the text as printed, on a page locator
+
+### div (6)
+
+- `div.section1202` (`forms/2025/div.yaml:180`) — “Instructions for Recipient, boxes 1–16” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `div.amt` (`forms/2025/div.yaml:192`) — “Instructions for Recipient, boxes 1–16” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `div.unsupported` (`forms/2025/div.yaml:228`) — “Instructions for Recipient, boxes 1–16” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `div.bad_special` (`forms/2025/div.yaml:254`) — “Instructions for Recipient, boxes 1–16” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `div.bad_components` (`forms/2025/div.yaml:318`) — “Instructions for Recipient, boxes 1a, 1b and 5” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `div.special_total` (`forms/2025/div.yaml:331`) — “Instructions for Recipient, capital gain components in boxes 2b–2d” — no line number, quote or page: a printed line number, a quote, or a page locator
+
+### eic (2)
+
+- `eic.wsb_4b` (`forms/2025/eic.yaml:860`) — “line 3, statutory employees, is refused)” — a line number on i1040gi, not a form: a page (`p. N, <heading>`) with a quote
+- `eic.wsb_line5_stop` (`forms/2025/eic.yaml:1700`) — “Step 5, question 3, has no such instruction, p. 42)” — no line number, quote or page: a printed line number, a quote, or a page locator
+
+### f1040 (5)
+
+- `f1040.line1a` (`forms/2025/f1040.yaml:28`) — “Instructions for Form 1040, pp. 23–24, lines 1a–1h” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `f1040.line15` (`forms/2025/f1040.yaml:471`) — “Instructions for Form 1040, line 15” — a line number on i1040gi, not a form: a page (`p. N, <heading>`) with a quote
+- `f1040.gate.qdcg_applies` (`forms/2025/f1040.yaml:505`) — “Instructions for Form 1040, line 16 (Qualified Dividends and Capital Gain Tax Worksheet)” — a line number on i1040gi, not a form: a page (`p. N, <heading>`) with a quote
+- `f1040.non_sdtw_tax` (`forms/2025/f1040.yaml:575`) — “Instructions for Form 1040, line 16” — a line number on i1040gi, not a form: a page (`p. N, <heading>`) with a quote
+- `f1040.line16` (`forms/2025/f1040.yaml:597`) — “Instructions for Form 1040, line 16” — a line number on i1040gi, not a form: a page (`p. N, <heading>`) with a quote
+
+### f2441 (2)
+
+- `f2441.household_notice` (`forms/2025/f2441.yaml:269`) — “Form 2441 (2025), Part I, “Caution. If the care provider is your household employee, you may owe employment taxes. For details, see the Instructions for Schedule H (Form 1040).”” — the quote was not found in f2441: quote the text as printed, on a page locator
+- `f2441.line24_20_21` (`forms/2025/f2441.yaml:1220`) — “Form 2441 (2025), lines 24 and 25” — several lines place nothing: cite the one printed line this value comes from, or a page with a quote
+
+### f4562 (1)
+
+- `f4562.line19e` (`forms/2025/f4562.yaml:102`) — “Column (g)” — no line number, quote or page: a printed line number, a quote, or a page locator
+
+### f5695 (1)
+
+- `f5695.doors_cost` (`forms/2025/f5695.yaml:777`) — “Form 5695 (2025), lines 19a, 19d and 19e” — several lines place nothing: cite the one printed line this value comes from, or a page with a quote
+
+### f8880 (1)
+
+- `f8880.line3_total` (`forms/2025/f8880.yaml:581`) — “Form 8880 (2025), lines 3 and 7 (with no contributions in either column, line 7 is zero)” — several lines place nothing: cite the one printed line this value comes from, or a page with a quote
+
+### f8889 (2)
+
+- `f8889.line3_last_month` (`forms/2025/f8889.yaml:599`) — “amb.2025.hsa_last_month_change)” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `f8889.has_dist` (`forms/2025/f8889.yaml:1335`) — “Form 8889 (2025), line 14a” — line 14a of f8889 was not found on a row of its text beside words of the label “Any HSA distributions in 2025”: cite the printed line whose text the label follows, or add a quote of the line as printed
+
+### f8959 (14)
+
+- `f8959.line1` (`forms/2025/f8959.yaml:39`) — “Form 8959 (2025), lines 1–24” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `f8959.line4` (`forms/2025/f8959.yaml:145`) — “Form 8959 (2025), lines 1–24” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `f8959.line6` (`forms/2025/f8959.yaml:166`) — “Form 8959 (2025), lines 1–24” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `f8959.line7` (`forms/2025/f8959.yaml:178`) — “Form 8959 (2025), lines 1–24” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `f8959.line11` (`forms/2025/f8959.yaml:210`) — “Form 8959 (2025), lines 1–24” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `f8959.line12` (`forms/2025/f8959.yaml:221`) — “Form 8959 (2025), lines 1–24” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `f8959.line13` (`forms/2025/f8959.yaml:233`) — “Form 8959 (2025), lines 1–24” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `f8959.line16` (`forms/2025/f8959.yaml:255`) — “Form 8959 (2025), lines 1–24” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `f8959.line17` (`forms/2025/f8959.yaml:267`) — “Form 8959 (2025), lines 1–24” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `f8959.line18` (`forms/2025/f8959.yaml:281`) — “Form 8959 (2025), lines 1–24” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `f8959.line19` (`forms/2025/f8959.yaml:292`) — “Form 8959 (2025), lines 1–24” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `f8959.line21` (`forms/2025/f8959.yaml:321`) — “Form 8959 (2025), lines 1–24” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `f8959.line22` (`forms/2025/f8959.yaml:333`) — “Form 8959 (2025), lines 1–24” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `f8959.line24` (`forms/2025/f8959.yaml:345`) — “Form 8959 (2025), lines 1–24” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+
+### f8960 (10)
+
+- `f8960.line4c` (`forms/2025/f8960.yaml:326`) — “Form 8960 (2025), Parts I–III, individual lines 1–17” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `f8960.line5d` (`forms/2025/f8960.yaml:349`) — “Form 8960 (2025), Parts I–III, individual lines 1–17” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `f8960.line8` (`forms/2025/f8960.yaml:367`) — “Form 8960 (2025), Parts I–III, individual lines 1–17” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `f8960.line9b` (`forms/2025/f8960.yaml:411`) — “any reasonable allocation method” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `f8960.line9d` (`forms/2025/f8960.yaml:432`) — “Form 8960 (2025), Parts I–III, individual lines 1–17” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `f8960.line11` (`forms/2025/f8960.yaml:444`) — “Form 8960 (2025), Parts I–III, individual lines 1–17” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `f8960.line12` (`forms/2025/f8960.yaml:455`) — “Form 8960 (2025), Parts I–III, individual lines 1–17” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `f8960.line15` (`forms/2025/f8960.yaml:501`) — “Form 8960 (2025), Parts I–III, individual lines 1–17” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `f8960.line16` (`forms/2025/f8960.yaml:513`) — “Form 8960 (2025), Parts I–III, individual lines 1–17” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `f8960.line17` (`forms/2025/f8960.yaml:525`) — “Form 8960 (2025), Parts I–III, individual lines 1–17” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+
+### f8995 (7)
+
+- `f8995.line2` (`forms/2025/f8995.yaml:18`) — “i8995 Line 1, the trades or businesses of the Schedule C entries” — a line number on i8995, not a form: a page (`p. N, <heading>`) with a quote
+- `f8995.line4_sum` (`forms/2025/f8995.yaml:41`) — “Form 8995 (2025), lines 4 and 16” — several lines place nothing: cite the one printed line this value comes from, or a page with a quote
+- `f8995.line9` (`forms/2025/f8995.yaml:150`) — “Form 8995 (2025), lines 1–17” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `f8995.line10` (`forms/2025/f8995.yaml:163`) — “Form 8995 (2025), lines 1–17” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `f8995.line13` (`forms/2025/f8995.yaml:194`) — “Form 8995 (2025), lines 1–17” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `f8995.line14` (`forms/2025/f8995.yaml:206`) — “Form 8995 (2025), lines 1–17” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `f8995.line15` (`forms/2025/f8995.yaml:219`) — “Form 8995 (2025), lines 1–17” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+
+### ftc (4)
+
+- `ftc.has_tax` (`forms/2025/ftc.yaml:104`) — “line 20 regular tax” — a line number on i1116, not a form: a page (`p. N, <heading>`) with a quote
+- `ftc.needs1116` (`forms/2025/ftc.yaml:141`) — “line 20 regular tax” — a line number on i1116, not a form: a page (`p. N, <heading>`) with a quote
+- `ftc.limited` (`forms/2025/ftc.yaml:154`) — “line 20 regular tax” — a line number on i1116, not a form: a page (`p. N, <heading>`) with a quote
+- `ftc.credit` (`forms/2025/ftc.yaml:178`) — “line 20 regular tax” — a line number on i1116, not a form: a page (`p. N, <heading>`) with a quote
+
+### gift (1)
+
+- `gift.section_b` (`forms/2025/gift.yaml:59`) — “f8283 Section A” — no line number, quote or page: a printed line number, a quote, or a page locator
+
+### household (10)
+
+- `household.persons` (`forms/2025/household.yaml:20`) — “Filing Status” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `household.taxpayers` (`forms/2025/household.yaml:36`) — “Filing Status” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `household.spouses` (`forms/2025/household.yaml:52`) — “Filing Status” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `household.roster_ok` (`forms/2025/household.yaml:94`) — “Filing Status” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `household.roster_bad` (`forms/2025/household.yaml:106`) — “Filing Status” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `household.hsa_both` (`forms/2025/household.yaml:136`) — “Steps 1 to 3” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `household.hsa_split_count` (`forms/2025/household.yaml:147`) — “Steps 1 to 3” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `household.hsa_agreed_count` (`forms/2025/household.yaml:158`) — “Steps 1 to 3” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `household.hsa_step1_sum` (`forms/2025/household.yaml:169`) — “Steps 1 to 3” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `household.hsa_share_sum` (`forms/2025/household.yaml:180`) — “Steps 1 to 3” — no line number, quote or page: a printed line number, a quote, or a page locator
+
+### ltc (1)
+
+- `ltc.limit` (`forms/2025/ltc.yaml:41`) — “Form 7206 (2025), line 2(b)” — line 2 of f7206 was not found on a row of its text beside words of the label “The amount for that person's age”: cite the printed line whose text the label follows, or add a quote of the line as printed
+
+### person (17)
+
+- `person.hsa_split` (`forms/2025/person.yaml:258`) — “Steps 1 to 3” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `person.hsa_agreed` (`forms/2025/person.yaml:280`) — “Steps 1 to 3” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `person.hsa_step1` (`forms/2025/person.yaml:296`) — “Steps 1 to 3” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `person.hsa_share` (`forms/2025/person.yaml:312`) — “Steps 1 to 3” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `person.hsa_taxable` (`forms/2025/person.yaml:344`) — “line 16” — line 16 of f8889 was not found on a row of its text beside words of the label “Form 8889 line 16 for this person”: cite the printed line whose text the label follows, or add a quote of the line as printed
+- `person.box2` (`forms/2025/person.yaml:538`) — “Form 1040 (2025), line 25a” — line 25a of f1040 was not found on a row of its text beside words of the label “Total W-2 box 2 for this person”: cite the printed line whose text the label follows, or add a quote of the line as printed
+- `person.medicare5` (`forms/2025/person.yaml:628`) — “Form 8959 (2025), lines 1–24” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `person.medicare6` (`forms/2025/person.yaml:646`) — “Form 8959 (2025), lines 1–24” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `person.se_line6` (`forms/2025/person.yaml:847`) — “Schedule SE (2025), line 6” — line 6 of f1040sse was not found on a row of its text beside words of the label “Schedule SE line 6 for this person”: cite the printed line whose text the label follows, or add a quote of the line as printed
+- `person.se_line6` (`forms/2025/person.yaml:847`) — “i8959 Line 8, “Schedule SE, line 6”” — the quote was not found in i8959: quote the text as printed, on a page locator
+- `person.se_line4c` (`forms/2025/person.yaml:952`) — “Schedule SE (2025), line 4c” — line 4c of f1040sse was not found on a row of its text beside words of the label “Schedule SE line 4c for this person”: cite the printed line whose text the label follows, or add a quote of the line as printed
+- `person.sep_s5` (`forms/2025/person.yaml:1130`) — “Rate Table for Self-Employed (for example 10% gives 0.090909) (amb.2025.sep_rate_places)” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `person.sep_excess` (`forms/2025/person.yaml:1201`) — “chapter 2, Excess contributions” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `person.plan_deduction` (`forms/2025/person.yaml:1523`) — “p560 chapter 5” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `person.positive_profits` (`forms/2025/person.yaml:1556`) — “Line 5, Form 7206 (2025), “Don't include any net losses”” — the quote was not found in i7206: quote the text as printed, on a page locator
+- `person.qbi` (`forms/2025/person.yaml:1578`) — “Line 1” — a line number on i8995, not a form: a page (`p. N, <heading>`) with a quote
+- `person.sav_line2` (`forms/2025/person.yaml:2065`) — “Form 8880 (2025), line 2” — line 2 of f8880 was not found on a row of its text beside words of the label “Form 8880 line 2 for this person (box 12 deferrals, volun…”: cite the printed line whose text the label follows, or add a quote of the line as printed
+
+### qbi (5)
+
+- `qbi.deductions_before` (`forms/2025/qbi.yaml:117`) — “Correction to 2025 Form 8995 instructions, line 11: Form 1040 line 11a minus lines 12e and 13b” — a line number on i8995-correction, not a form: a page (`p. N, <heading>`) with a quote
+- `qbi.taxable_before` (`forms/2025/qbi.yaml:129`) — “Correction to 2025 Form 8995 instructions, line 11: Form 1040 line 11a minus lines 12e and 13b” — a line number on i8995-correction, not a form: a page (`p. N, <heading>`) with a quote
+- `qbi.net_capital_gain` (`forms/2025/qbi.yaml:142`) — “Form 8995 (2025), lines 1–17” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `qbi.use_8995a` (`forms/2025/qbi.yaml:164`) — “Form 8995 (2025), lines 1–17” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `qbi.deduction` (`forms/2025/qbi.yaml:186`) — “Form 8995 (2025), lines 1–17” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+
+### qdcg (18)
+
+- `qdcg.line3` (`forms/2025/qdcg.yaml:53`) — “QDCGT worksheet, line 3” — a line number on i1040gi, not a form: a page (`p. N, <heading>`) with a quote
+- `qdcg.line4` (`forms/2025/qdcg.yaml:60`) — “QDCGT worksheet, line 4” — a line number on i1040gi, not a form: a page (`p. N, <heading>`) with a quote
+- `qdcg.line5` (`forms/2025/qdcg.yaml:67`) — “QDCGT worksheet, line 5” — a line number on i1040gi, not a form: a page (`p. N, <heading>`) with a quote
+- `qdcg.line7` (`forms/2025/qdcg.yaml:81`) — “QDCGT worksheet, line 7” — a line number on i1040gi, not a form: a page (`p. N, <heading>`) with a quote
+- `qdcg.line8` (`forms/2025/qdcg.yaml:88`) — “QDCGT worksheet, line 8” — a line number on i1040gi, not a form: a page (`p. N, <heading>`) with a quote
+- `qdcg.line9` (`forms/2025/qdcg.yaml:95`) — “QDCGT worksheet, line 9” — a line number on i1040gi, not a form: a page (`p. N, <heading>`) with a quote
+- `qdcg.line10` (`forms/2025/qdcg.yaml:102`) — “QDCGT worksheet, line 10” — a line number on i1040gi, not a form: a page (`p. N, <heading>`) with a quote
+- `qdcg.line12` (`forms/2025/qdcg.yaml:116`) — “QDCGT worksheet, line 12” — a line number on i1040gi, not a form: a page (`p. N, <heading>`) with a quote
+- `qdcg.line14` (`forms/2025/qdcg.yaml:130`) — “QDCGT worksheet, line 14” — a line number on i1040gi, not a form: a page (`p. N, <heading>`) with a quote
+- `qdcg.line15` (`forms/2025/qdcg.yaml:137`) — “QDCGT worksheet, line 15” — a line number on i1040gi, not a form: a page (`p. N, <heading>`) with a quote
+- `qdcg.line16` (`forms/2025/qdcg.yaml:144`) — “QDCGT worksheet, line 16” — a line number on i1040gi, not a form: a page (`p. N, <heading>`) with a quote
+- `qdcg.line17` (`forms/2025/qdcg.yaml:151`) — “QDCGT worksheet, line 17” — a line number on i1040gi, not a form: a page (`p. N, <heading>`) with a quote
+- `qdcg.line18` (`forms/2025/qdcg.yaml:158`) — “QDCGT worksheet, line 18” — a line number on i1040gi, not a form: a page (`p. N, <heading>`) with a quote
+- `qdcg.line19` (`forms/2025/qdcg.yaml:165`) — “QDCGT worksheet, line 19” — a line number on i1040gi, not a form: a page (`p. N, <heading>`) with a quote
+- `qdcg.line20` (`forms/2025/qdcg.yaml:172`) — “QDCGT worksheet, line 20” — a line number on i1040gi, not a form: a page (`p. N, <heading>`) with a quote
+- `qdcg.line21` (`forms/2025/qdcg.yaml:179`) — “QDCGT worksheet, line 21” — a line number on i1040gi, not a form: a page (`p. N, <heading>`) with a quote
+- `qdcg.line23` (`forms/2025/qdcg.yaml:198`) — “QDCGT worksheet, line 23” — a line number on i1040gi, not a form: a page (`p. N, <heading>`) with a quote
+- `qdcg.line25` (`forms/2025/qdcg.yaml:217`) — “QDCGT worksheet, line 25” — a line number on i1040gi, not a form: a page (`p. N, <heading>`) with a quote
+
+### refund (1)
+
+- `refund.line6` (`forms/2025/refund.yaml:713`) — “the same as the number of boxes times the amount)” — no line number, quote or page: a printed line number, a quote, or a page locator
+
+### retirement (2)
+
+- `retirement.direct` (`forms/2025/retirement.yaml:241`) — “Box 2a, “For a direct rollover ... zero should be shown and you must enter zero (-0-) on the Taxable amount line”” — the quote was not found in f1099r: quote the text as printed, on a page locator
+- `retirement.bad_code` (`forms/2025/retirement.yaml:276`) — “f1099r Box 7” — no line number, quote or page: a printed line number, a quote, or a page locator
+
+### s1 (5)
+
+- `s1.ebl_loss` (`forms/2025/s1.yaml:170`) — “Schedule 1 (2025), line 3” — line 3 of f1040s1 was not found on a row of its text beside words of the label “The net loss of all Schedules C (as a positive amount)”: cite the printed line whose text the label follows, or add a quote of the line as printed
+- `s1.sc_count` (`forms/2025/s1.yaml:225`) — “Schedule 1 (2025), line 3” — line 3 of f1040s1 was not found on a row of its text beside words of the label “Number of Schedules C on the return”: cite the printed line whose text the label follows, or add a quote of the line as printed
+- `s1.has_sc` (`forms/2025/s1.yaml:238`) — “Schedule 1 (2025), line 3” — line 3 of f1040s1 was not found on a row of its text beside words of the label “The return has a Schedule C”: cite the printed line whose text the label follows, or add a quote of the line as printed
+- `s1.line16` (`forms/2025/s1.yaml:802`) — “p560 chapter 3, Where To Deduct Contributions, and chapter 5” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `s1.line17` (`forms/2025/s1.yaml:813`) — “Form 7206 (2025), line 14” — a line number on i1040gi, not a form: a page (`p. N, <heading>`) with a quote
+
+### s1a (35)
+
+- `s1a.part2` (`forms/2025/s1a.yaml:254`) — “Part II caution, “If married, you must file jointly”” — the quote was not found in i1040gi: quote the text as printed, on a page locator
+- `s1a.line4a` (`forms/2025/s1a.yaml:301`) — “Part II caution, “If married, you must file jointly”” — the quote was not found in i1040gi: quote the text as printed, on a page locator
+- `s1a.line4b` (`forms/2025/s1a.yaml:342`) — “Part II caution, “If married, you must file jointly”” — the quote was not found in i1040gi: quote the text as printed, on a page locator
+- `s1a.line4c_one` (`forms/2025/s1a.yaml:355`) — “Schedule 1-A (2025), line 4c” — line 4c of f1040s1a was not found on a row of its text beside words of the label “Line 4c with one employer: the larger of line 4a or line 4b”: cite the printed line whose text the label follows, or add a quote of the line as printed
+- `s1a.line4c` (`forms/2025/s1a.yaml:401`) — “Part II caution, “If married, you must file jointly”” — the quote was not found in i1040gi: quote the text as printed, on a page locator
+- `s1a.line5` (`forms/2025/s1a.yaml:447`) — “Part II caution, “If married, you must file jointly”” — the quote was not found in i1040gi: quote the text as printed, on a page locator
+- `s1a.line6` (`forms/2025/s1a.yaml:482`) — “Part II caution, “If married, you must file jointly”” — the quote was not found in i1040gi: quote the text as printed, on a page locator
+- `s1a.line7` (`forms/2025/s1a.yaml:517`) — “Part II caution, “If married, you must file jointly”” — the quote was not found in i1040gi: quote the text as printed, on a page locator
+- `s1a.line8` (`forms/2025/s1a.yaml:580`) — “Part II caution, “If married, you must file jointly”” — the quote was not found in i1040gi: quote the text as printed, on a page locator
+- `s1a.line9` (`forms/2025/s1a.yaml:643`) — “Part II caution, “If married, you must file jointly”” — the quote was not found in i1040gi: quote the text as printed, on a page locator
+- `s1a.line10` (`forms/2025/s1a.yaml:677`) — “Part II caution, “If married, you must file jointly”” — the quote was not found in i1040gi: quote the text as printed, on a page locator
+- `s1a.line10_pos` (`forms/2025/s1a.yaml:701`) — “Schedule 1-A (2025), line 10” — line 10 of f1040s1a was not found on a row of its text beside words of the label “Line 10 if more than zero, otherwise zero”: cite the printed line whose text the label follows, or add a quote of the line as printed
+- `s1a.line12_calc` (`forms/2025/s1a.yaml:726`) — “Schedule 1-A (2025), lines 11 and 12” — several lines place nothing: cite the one printed line this value comes from, or a page with a quote
+- `s1a.line12` (`forms/2025/s1a.yaml:748`) — “Part II caution, “If married, you must file jointly”” — the quote was not found in i1040gi: quote the text as printed, on a page locator
+- `s1a.part3` (`forms/2025/s1a.yaml:956`) — “Part III caution” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `s1a.line14a` (`forms/2025/s1a.yaml:997`) — “Part III caution” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `s1a.line14b` (`forms/2025/s1a.yaml:1042`) — “Part III caution” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `s1a.line14c` (`forms/2025/s1a.yaml:1076`) — “Part III caution” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `s1a.line15` (`forms/2025/s1a.yaml:1170`) — “Part III caution” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `s1a.line16` (`forms/2025/s1a.yaml:1202`) — “Part III caution” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `s1a.line17` (`forms/2025/s1a.yaml:1264`) — “Part III caution” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `s1a.line18` (`forms/2025/s1a.yaml:1297`) — “Part III caution” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `s1a.line18_pos` (`forms/2025/s1a.yaml:1320`) — “Schedule 1-A (2025), line 18” — line 18 of f1040s1a was not found on a row of its text beside words of the label “Line 18 if more than zero, otherwise zero”: cite the printed line whose text the label follows, or add a quote of the line as printed
+- `s1a.line20_calc` (`forms/2025/s1a.yaml:1345`) — “Schedule 1-A (2025), lines 19 and 20” — several lines place nothing: cite the one printed line this value comes from, or a page with a quote
+- `s1a.line20` (`forms/2025/s1a.yaml:1367`) — “Part III caution” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `s1a.line27_pos` (`forms/2025/s1a.yaml:1756`) — “Schedule 1-A (2025), line 27” — line 27 of f1040s1a was not found on a row of its text beside words of the label “Line 27 if more than zero, otherwise zero”: cite the printed line whose text the label follows, or add a quote of the line as printed
+- `s1a.line29_calc` (`forms/2025/s1a.yaml:1781`) — “Schedule 1-A (2025), lines 28 and 29” — several lines place nothing: cite the one printed line this value comes from, or a page with a quote
+- `s1a.part5` (`forms/2025/s1a.yaml:1912`) — “Part V caution” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `s1a.line31` (`forms/2025/s1a.yaml:1944`) — “Part V caution” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `s1a.line32` (`forms/2025/s1a.yaml:2026`) — “Part V caution” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `s1a.line33` (`forms/2025/s1a.yaml:2059`) — “Part V caution” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `s1a.line33_pos` (`forms/2025/s1a.yaml:2082`) — “Schedule 1-A (2025), line 33” — line 33 of f1040s1a was not found on a row of its text beside words of the label “Line 33 if more than zero, otherwise zero”: cite the printed line whose text the label follows, or add a quote of the line as printed
+- `s1a.line34` (`forms/2025/s1a.yaml:2116`) — “Part V caution” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `s1a.line35_calc` (`forms/2025/s1a.yaml:2159`) — “Schedule 1-A (2025), lines 33 and 35” — several lines place nothing: cite the one printed line this value comes from, or a page with a quote
+- `s1a.line35` (`forms/2025/s1a.yaml:2181`) — “Part V caution” — no line number, quote or page: a printed line number, a quote, or a page locator
+
+### s2 (1)
+
+- `s2.line21` (`forms/2025/s2.yaml:151`) — “Schedule 2 (2025), lines 2, 3, 4, 11, 12, 18 and 21” — several lines place nothing: cite the one printed line this value comes from, or a page with a quote
+
+### s8812 (3)
+
+- `s8812.line18a` (`forms/2025/s8812.yaml:601`) — “combat pay is refused” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `s8812.line18a` (`forms/2025/s8812.yaml:601`) — “not taking the EIC, the Earned Income Worksheet)” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `s8812.line27` (`forms/2025/s8812.yaml:854`) — “Schedule 8812 (2025), lines 20 (Next) through 27” — several lines place nothing: cite the one printed line this value comes from, or a page with a quote
+
+### sa (20)
+
+- `sa.age65_count` (`forms/2025/sa.yaml:103`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `sa.age65` (`forms/2025/sa.yaml:116`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `sa.line3` (`forms/2025/sa.yaml:242`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `sa.line4` (`forms/2025/sa.yaml:254`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `sa.line5d` (`forms/2025/sa.yaml:267`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `sa.saltexcess` (`forms/2025/sa.yaml:308`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `sa.saltreduction` (`forms/2025/sa.yaml:320`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `sa.saltremaining` (`forms/2025/sa.yaml:332`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `sa.salthalf` (`forms/2025/sa.yaml:356`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `sa.mfs` (`forms/2025/sa.yaml:369`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `sa.line5e` (`forms/2025/sa.yaml:403`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `sa.line7` (`forms/2025/sa.yaml:635`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `sa.line8e` (`forms/2025/sa.yaml:648`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `sa.line10` (`forms/2025/sa.yaml:670`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `sa.line12` (`forms/2025/sa.yaml:681`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `sa.form8283` (`forms/2025/sa.yaml:714`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `sa.line14` (`forms/2025/sa.yaml:727`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `sa.line17` (`forms/2025/sa.yaml:743`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `sa.standardraw` (`forms/2025/sa.yaml:865`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+- `sa.itemizes` (`forms/2025/sa.yaml:923`) — “Schedule A (2025), lines 1–18” — a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote
+
+### sales (1)
+
+- `sales.digital` (`forms/2025/sales.yaml:166`) — “Parts I and II, boxes G–L” — no line number, quote or page: a printed line number, a quote, or a page locator
+
+### sc (10)
+
+- `sc.loss` (`forms/2025/sc.yaml:1068`) — “Line 32” — a line number on i1040sc, not a form: a page (`p. N, <heading>`) with a quote
+- `sc.f28` (`forms/2025/sc.yaml:1500`) — “Form 4562 (2025), line 28” — line 28 of f4562 was not found on a row of its text beside words of the label “Line 28 for this business”: cite the printed line whose text the label follows, or add a quote of the line as printed
+- `sc.f29` (`forms/2025/sc.yaml:1535`) — “Form 4562 (2025), line 29” — line 29 of f4562 was not found on a row of its text beside words of the label “Line 29 for this business”: cite the printed line whose text the label follows, or add a quote of the line as printed
+- `sc.dep_other` (`forms/2025/sc.yaml:1567`) — “Form 4562 (2025), line 22” — line 22 of f4562 was not found on a row of its text beside words of the label “Depreciation other than the section 179 deduction (Form 4…”: cite the printed line whose text the label follows, or add a quote of the line as printed
+- `sc.profit_pos` (`forms/2025/sc.yaml:1741`) — “Form 7206 (2025), lines 4 and 5” — several lines place nothing: cite the one printed line this value comes from, or a page with a quote
+- `sc.f7206_has` (`forms/2025/sc.yaml:1859`) — “Form 7206 (2025), line 6” — line 6 of f7206 was not found on a row of its text beside words of the label “Line 4 is more than zero”: cite the printed line whose text the label follows, or add a quote of the line as printed
+- `sc.f7206_line7_pos` (`forms/2025/sc.yaml:1872`) — “Form 7206 (2025), lines 6 and 7 (amb.2025.f7206_line15_person” — several lines place nothing: cite the one printed line this value comes from, or a page with a quote
+- `sc.f7206_line7_pos` (`forms/2025/sc.yaml:1872`) — “amb.2025.f7206_ratio_places)” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sc.f7206_line9_pos` (`forms/2025/sc.yaml:1918`) — “Form 7206 (2025), line 9 (amb.2025.f7206_plan_attribution)” — line 9 of f7206 was not found on a row of its text beside words of the label “This person's SEP or SIMPLE deduction times line 4 divide…”: cite the printed line whose text the label follows, or add a quote of the line as printed
+- `sc.qbi` (`forms/2025/sc.yaml:2105`) — “Form 8995 (2025), line 1(c)” — a line number on i8995, not a form: a page (`p. N, <heading>`) with a quote
+
+### scope (1)
+
+- `scope.ready` (`forms/2025/scope.yaml:60`) — “Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31” — several lines place nothing: cite the one printed line this value comes from, or a page with a quote
+
+### scveh (10)
+
+- `scveh.rate_hy` (`forms/2025/scveh.yaml:1132`) — “Appendix A, Table A-1, 5-year column” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `scveh.rate_mq` (`forms/2025/scveh.yaml:1146`) — “Appendix A, Tables A-2 to A-5, 5-year column” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `scveh.rate_prior` (`forms/2025/scveh.yaml:1160`) — “Appendix A, Tables A-1 to A-5, 5-year column” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `scveh.r1` (`forms/2025/scveh.yaml:1307`) — “Appendix A, Tables A-1 to A-5, 5-year column” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `scveh.r2` (`forms/2025/scveh.yaml:1376`) — “Appendix A, Tables A-1 to A-5, 5-year column” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `scveh.r3` (`forms/2025/scveh.yaml:1436`) — “Appendix A, Tables A-1 to A-5, 5-year column” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `scveh.r4` (`forms/2025/scveh.yaml:1496`) — “Appendix A, Tables A-1 to A-5, 5-year column” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `scveh.r5` (`forms/2025/scveh.yaml:1556`) — “Appendix A, Tables A-1 to A-5, 5-year column” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `scveh.r6` (`forms/2025/scveh.yaml:1616`) — “Appendix A, Tables A-1 to A-5, 5-year column” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `scveh.macrs_heavy` (`forms/2025/scveh.yaml:1787`) — “Pub. 946, “You cannot claim a depreciation deduction for listed property other than passenger automobiles after the recovery period ends”” — the quote was not found in i4562: quote the text as printed, on a page locator
+
+### sd (48)
+
+- `sd.count` (`forms/2025/sd.yaml:91`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.screen` (`forms/2025/sd.yaml:118`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.filed` (`forms/2025/sd.yaml:144`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line1a.d` (`forms/2025/sd.yaml:176`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line1a.e` (`forms/2025/sd.yaml:205`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line1a.g` (`forms/2025/sd.yaml:234`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line1a.h` (`forms/2025/sd.yaml:263`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line1b.d` (`forms/2025/sd.yaml:292`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line1b.e` (`forms/2025/sd.yaml:321`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line1b.g` (`forms/2025/sd.yaml:350`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line1b.h` (`forms/2025/sd.yaml:379`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line2.d` (`forms/2025/sd.yaml:408`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line2.e` (`forms/2025/sd.yaml:437`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line2.g` (`forms/2025/sd.yaml:466`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line2.h` (`forms/2025/sd.yaml:495`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line3.d` (`forms/2025/sd.yaml:524`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line3.e` (`forms/2025/sd.yaml:553`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line3.g` (`forms/2025/sd.yaml:582`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line3.h` (`forms/2025/sd.yaml:611`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line8a.d` (`forms/2025/sd.yaml:640`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line8a.e` (`forms/2025/sd.yaml:669`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line8a.g` (`forms/2025/sd.yaml:698`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line8a.h` (`forms/2025/sd.yaml:727`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line8b.d` (`forms/2025/sd.yaml:756`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line8b.e` (`forms/2025/sd.yaml:785`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line8b.g` (`forms/2025/sd.yaml:814`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line8b.h` (`forms/2025/sd.yaml:843`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line9.d` (`forms/2025/sd.yaml:872`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line9.e` (`forms/2025/sd.yaml:901`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line9.g` (`forms/2025/sd.yaml:930`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line9.h` (`forms/2025/sd.yaml:959`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line10.d` (`forms/2025/sd.yaml:988`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line10.e` (`forms/2025/sd.yaml:1017`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line10.g` (`forms/2025/sd.yaml:1046`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line10.h` (`forms/2025/sd.yaml:1075`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line13` (`forms/2025/sd.yaml:1238`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line7` (`forms/2025/sd.yaml:1255`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line15` (`forms/2025/sd.yaml:1273`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line16` (`forms/2025/sd.yaml:1285`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line17` (`forms/2025/sd.yaml:1303`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line20` (`forms/2025/sd.yaml:1325`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.limited_loss` (`forms/2025/sd.yaml:1347`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.has_loss` (`forms/2025/sd.yaml:1359`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line21` (`forms/2025/sd.yaml:1381`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.line22` (`forms/2025/sd.yaml:1393`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.to1040` (`forms/2025/sd.yaml:1415`) — “Schedule D (2025), Parts I–III” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sd.net_gain_raw` (`forms/2025/sd.yaml:1427`) — “QDCGT worksheet, line 3” — a line number on i1040gi, not a form: a page (`p. N, <heading>`) with a quote
+- `sd.net_gain` (`forms/2025/sd.yaml:1439`) — “QDCGT worksheet, line 3” — a line number on i1040gi, not a form: a page (`p. N, <heading>`) with a quote
+
+### se (1)
+
+- `line4a_pos` (`forms/2025/se.yaml:99`) — “Schedule SE (2025), line 4a” — line 4a of f1040sse was not found on a row of its text beside words of the label “Line 3 times 92.35%”: cite the printed line whose text the label follows, or add a quote of the line as printed
+
+### sli (2)
+
+- `sli.line8_figured` (`forms/2025/sli.yaml:283`) — “three places, amb.2025.sli_ratio_places)” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `sli.line8` (`forms/2025/sli.yaml:308`) — “line 8” — a line number on i1040gi, not a form: a page (`p. N, <heading>`) with a quote
+
+### tax_on_amount (3)
+
+- `below_boundary` (`forms/2025/tax_on_amount.yaml:37`) — “Instructions for Form 1040, line 16” — a line number on i1040gi, not a form: a page (`p. N, <heading>`) with a quote
+- `table_tax` (`forms/2025/tax_on_amount.yaml:46`) — “2025 Tax Table, p. 68” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `tax` (`forms/2025/tax_on_amount.yaml:75`) — “Instructions for Form 1040, line 16” — a line number on i1040gi, not a form: a page (`p. N, <heading>`) with a quote
+
+### tcw (45)
+
+- `single.row1.product` (`forms/2025/tcw.yaml:36`) — “TCW Section A, row 1” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `single.row1.tax` (`forms/2025/tcw.yaml:42`) — “TCW Section A, row 1” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `single.row2.product` (`forms/2025/tcw.yaml:48`) — “TCW Section A, row 2” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `single.row2.tax` (`forms/2025/tcw.yaml:54`) — “TCW Section A, row 2” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `single.row3.product` (`forms/2025/tcw.yaml:60`) — “TCW Section A, row 3” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `single.row3.tax` (`forms/2025/tcw.yaml:66`) — “TCW Section A, row 3” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `single.row4.product` (`forms/2025/tcw.yaml:72`) — “TCW Section A, row 4” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `single.row4.tax` (`forms/2025/tcw.yaml:78`) — “TCW Section A, row 4” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `single.row5.product` (`forms/2025/tcw.yaml:84`) — “TCW Section A, row 5” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `single.row5.tax` (`forms/2025/tcw.yaml:90`) — “TCW Section A, row 5” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `single.result` (`forms/2025/tcw.yaml:124`) — “TCW Section A” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfj.row1.product` (`forms/2025/tcw.yaml:132`) — “TCW Section B, row 1” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfj.row1.tax` (`forms/2025/tcw.yaml:138`) — “TCW Section B, row 1” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfj.row2.product` (`forms/2025/tcw.yaml:144`) — “TCW Section B, row 2” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfj.row2.tax` (`forms/2025/tcw.yaml:150`) — “TCW Section B, row 2” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfj.row3.product` (`forms/2025/tcw.yaml:156`) — “TCW Section B, row 3” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfj.row3.tax` (`forms/2025/tcw.yaml:162`) — “TCW Section B, row 3” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfj.row4.product` (`forms/2025/tcw.yaml:168`) — “TCW Section B, row 4” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfj.row4.tax` (`forms/2025/tcw.yaml:174`) — “TCW Section B, row 4” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfj.row5.product` (`forms/2025/tcw.yaml:180`) — “TCW Section B, row 5” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfj.row5.tax` (`forms/2025/tcw.yaml:186`) — “TCW Section B, row 5” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfj.result` (`forms/2025/tcw.yaml:220`) — “TCW Section B” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfs.row1.product` (`forms/2025/tcw.yaml:228`) — “TCW Section C, row 1” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfs.row1.tax` (`forms/2025/tcw.yaml:234`) — “TCW Section C, row 1” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfs.row2.product` (`forms/2025/tcw.yaml:240`) — “TCW Section C, row 2” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfs.row2.tax` (`forms/2025/tcw.yaml:246`) — “TCW Section C, row 2” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfs.row3.product` (`forms/2025/tcw.yaml:252`) — “TCW Section C, row 3” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfs.row3.tax` (`forms/2025/tcw.yaml:258`) — “TCW Section C, row 3” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfs.row4.product` (`forms/2025/tcw.yaml:264`) — “TCW Section C, row 4” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfs.row4.tax` (`forms/2025/tcw.yaml:270`) — “TCW Section C, row 4” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfs.row5.product` (`forms/2025/tcw.yaml:276`) — “TCW Section C, row 5” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfs.row5.tax` (`forms/2025/tcw.yaml:282`) — “TCW Section C, row 5” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `mfs.result` (`forms/2025/tcw.yaml:316`) — “TCW Section C” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `hoh.row1.product` (`forms/2025/tcw.yaml:324`) — “TCW Section D, row 1” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `hoh.row1.tax` (`forms/2025/tcw.yaml:330`) — “TCW Section D, row 1” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `hoh.row2.product` (`forms/2025/tcw.yaml:336`) — “TCW Section D, row 2” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `hoh.row2.tax` (`forms/2025/tcw.yaml:342`) — “TCW Section D, row 2” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `hoh.row3.product` (`forms/2025/tcw.yaml:348`) — “TCW Section D, row 3” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `hoh.row3.tax` (`forms/2025/tcw.yaml:354`) — “TCW Section D, row 3” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `hoh.row4.product` (`forms/2025/tcw.yaml:360`) — “TCW Section D, row 4” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `hoh.row4.tax` (`forms/2025/tcw.yaml:366`) — “TCW Section D, row 4” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `hoh.row5.product` (`forms/2025/tcw.yaml:372`) — “TCW Section D, row 5” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `hoh.row5.tax` (`forms/2025/tcw.yaml:378`) — “TCW Section D, row 5” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `hoh.result` (`forms/2025/tcw.yaml:412`) — “TCW Section D” — no line number, quote or page: a printed line number, a quote, or a page locator
+- `tax` (`forms/2025/tcw.yaml:431`) — “TCW, sections A-D” — no line number, quote or page: a printed line number, a quote, or a page locator

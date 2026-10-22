@@ -1,6 +1,6 @@
 # Handoff: Stage 13 (married filing jointly) done
 
-Read `HANDOFF.md` first, then `TASKS.md`, then this file. `HANDOFF-STAGE-12.md`
+Read `HANDOFF.md` first, then `TASKS.md`, then this file. `handoffs/HANDOFF-STAGE-12.md`
 describes the stage before. `PROJECT_INDEX.md` is current; `BUG_INVENTORY.md`
 has 49 entries.
 

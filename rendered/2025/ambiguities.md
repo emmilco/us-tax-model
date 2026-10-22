@@ -375,7 +375,7 @@
 - Candidate readings: A person over 12 unable to care for themselves who was born or died in 2025 qualifies on the time they were alive, as Pub. 503 says. | The dependent tests' answer stands, so such a person may not be counted.
 - **Chosen:** The second, as encoded (no question is added); it can only leave out a qualifying person, so it never overstates the credit.
 - Reason: The owner's ruling (Stage 15 question 13). The case is rare, and asking it would add a question for every dependent.
-- Status: Owner ruling, Stage 15 (HANDOFF-STAGE-15.md, question 13).
+- Status: Owner ruling, Stage 15 (handoffs/HANDOFF-STAGE-15.md, question 13).
 - Cite: [p503] p. 3, Who Is a Qualifying Person? (For use in preparing 2025 returns; sha256 3a00d0c1)
 
 ## amb.2025.line8z_kinds

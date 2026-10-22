@@ -18,8 +18,25 @@ segment that names pages of an archived PDF:
       paraphrase) needs a ruling in reviews/<year>/citations.json, keyed by
       document and anchor, as does a quote the extracted text cannot show
       verbatim (a worksheet box read out of order); a ruling no finding uses is
-      reported. Writes
-      reports/<year>/citations.md; exits 1 on any unruled finding.
+      reported.
+
+      On a computed line (a form line whose atom is not input, param or copy)
+      every segment of the line's own locator must also carry a credential
+      that places the cited text: pages (checked as above), a quote (which
+      must appear somewhere in the document), or one printed line number of a
+      form document ("Schedule 8812 (2025), line 10"), verified by finding
+      that number as a standalone token on the same line of the form's
+      archived text as three consecutive words of the project line's label
+      (fewer words when the label is shorter). A span of lines ("lines 1–18"),
+      a list of lines, a segment that is only the document's title, or one
+      that names no line, quote or page is rejected; so is a line number on
+      an instruction booklet, which needs a page. The rejected segments are
+      listed under "Locators to rewrite" in the report.
+
+      Writes reports/<year>/citations.md; exits 1 on any unruled page
+      finding. The computed-line findings are counted and listed but fail the
+      check only with --strict; the flag joins check-all once the list is
+      empty.
 
   --relocate
       for a year whose locators were carried over from an earlier year, find
@@ -32,7 +49,9 @@ segment that names pages of an archived PDF:
       move every page number of this year's (checked) locators by +2, then by
       -1, relocate, and report how many come back to the authored pages; exits
       1 if any is placed on a page other than its authored one (a segment left
-      for review is not a failure).
+      for review is not a failure). Then plant locators on a computed line: a
+      span of lines must be reported and a correct form-line locator must
+      verify; exits 1 otherwise.
 """
 
 import argparse
@@ -105,6 +124,30 @@ class Archive:
         d = self.docs[doc]
         pages = (self.sources / d.get("cols_file", d["text_file"])).read_text(encoding="utf-8").split("\f")
         return pages[page - 1] if 0 < page <= len(pages) else ""
+
+    def _raw_layers(self, doc):
+        d = self.docs.get(doc)
+        if not d:
+            return []
+        return [(self.sources / d[key]).read_text(encoding="utf-8")
+                for key in ("cols_file", "text_file") if key in d]
+
+    def whole(self, doc):
+        """The normalized text of each layer of any archived document, or None."""
+        key = ("whole", doc)
+        if key not in self.cache:
+            layers = [norm(t) for t in self._raw_layers(doc)]
+            self.cache[key] = layers or None
+        return self.cache[key]
+
+    def lines(self, doc):
+        """Each layer of any archived document as its normalized lines of text
+        (the lines of the extraction, not the printed line numbers), or None."""
+        key = ("lines", doc)
+        if key not in self.cache:
+            layers = [[norm(row) for row in t.split("\n")] for t in self._raw_layers(doc)]
+            self.cache[key] = layers or None
+        return self.cache[key]
 
 
 def on_pages(layers, pages, quote_parts, spill):
@@ -283,8 +326,174 @@ def citations(path):
     return out
 
 
+def form_files(year=Y):
+    return sorted(glob.glob(str(ROOT / "forms" / str(year) / "*.yaml")))
+
+
+COMPUTED_EXEMPT = {"input", "param", "copy"}
+
+
+def computed_lines(path):
+    """(form id, line id, label, doc, locator, file line) for each computed line
+    of a form file: a line whose atom is not input, param or copy, with the
+    1-based line of its locator scalar."""
+    def mapping(node):
+        return {k.value: v for k, v in node.value if isinstance(k, yaml.ScalarNode)} \
+            if isinstance(node, yaml.MappingNode) else {}
+    root = mapping(yaml.compose(open(path, encoding="utf-8")))
+    doc = mapping(root.get("form") or root.get("def"))
+    form_id = doc["id"].value if "id" in doc else os.path.basename(path)[:-5]
+    out = []
+    for node in (doc["lines"].value if "lines" in doc else []):
+        line = mapping(node)
+        op = mapping(line.get("expr")).get("op")
+        if op is None or op.value in COMPUTED_EXEMPT:
+            continue
+        cite = mapping(line.get("cite"))
+        if "doc" not in cite or "locator" not in cite:
+            continue
+        out.append((form_id, line["id"].value, line["label"].value if "label" in line else "",
+                    cite["doc"].value, cite["locator"].value, cite["locator"].start_mark.line + 1))
+    return out
+
+
 def rel(path):
     return os.path.relpath(path, ROOT)
+
+
+# ---------- computed lines ----------
+
+FORM_DOC_RE = re.compile(r"^f(?:w2|\d)")  # a form document, as opposed to instructions or a publication
+LINE_RE = re.compile(r"\b(lines?)\s+(\d+[a-z]?)\b", re.I)
+TITLE_RE = re.compile(r"^(?:form|schedule|instructions for (?:form|schedule)|publication|pub\.?)\s+[\w.-]+"
+                      r"(?:\s*\(form\s+[\w-]+\))?(?:\s*\(\d{4}\))?\.?$", re.I)
+# a number preceded by one of these words refers to a line, box, part or amount; it is not the printed number
+REF_WORDS = {"line", "lines", "box", "boxes", "form", "forms", "schedule", "schedules", "part", "parts", "step",
+             "steps", "column", "columns", "section", "sections", "page", "pages", "chapter", "worksheet", "table",
+             "tier", "age", "under", "over", "through", "and", "or", "to", "than", "of", "x", "code", "codes", "no"}
+LABEL_WORDS = 3  # consecutive words of the label that must share a line of text with the printed number
+
+
+def label_grams(label):
+    words = re.findall(r"[a-z0-9]+", norm(label))
+    n = min(LABEL_WORDS, len(words))
+    return [" ".join(words[i:i + n]) for i in range(len(words) - n + 1)] if n else []
+
+
+def number_in(row, number):
+    """Whether `number` is printed as a standalone token on the normalized text
+    row: not part of a larger number, a dollar amount, a decimal or a
+    percentage, and not preceded by a word that makes it a reference."""
+    pat = re.compile(r"(?<![\w$,.\-])" + re.escape(number) + r"(?![\w%]|[.,]\d)")
+    for m in pat.finditer(row):
+        prev = re.search(r"([a-z]+)\s*$", row[:m.start()])
+        if prev and prev.group(1) in REF_WORDS:
+            continue
+        return True
+    return False
+
+
+def line_beside_label(layers, number, label):
+    """Whether some row of a layer prints `number` as a standalone token and
+    LABEL_WORDS consecutive words of the label (all of them when it is shorter)."""
+    grams = label_grams(label)
+    if not grams:
+        return False
+    for layer in layers:
+        for row in layer:
+            if number_in(row, number):
+                words = " " + " ".join(re.findall(r"[a-z0-9]+", row)) + " "
+                if any(f" {g} " in words for g in grams):
+                    return True
+    return False
+
+
+def classify(plain, quotes):
+    """The credential a page-less segment offers: "quote", ("line", number), or
+    the reason it offers none: "span", "list", "title", "none"."""
+    text = plain.strip(" ,.")
+    if quotes:
+        return "quote"
+    m = LINE_RE.search(text)  # the first mention decides; a later one is a note
+    if m:
+        ranged = re.match(r"\s*(?:[–—-]|to\b|through\b)\s*\d", text[m.end():])
+        if ranged:
+            return "span"
+        return "list" if m.group(1).lower() == "lines" else ("line", m.group(2).lower())
+    if TITLE_RE.match(text):
+        return "title"
+    return "none"
+
+
+NEEDS = {
+    "span": "a span of lines places nothing: cite the one printed line this value comes from, or a page with a quote",
+    "list": "several lines place nothing: cite the one printed line this value comes from, or a page with a quote",
+    "title": "the document's title alone: a printed line number, a quote, or a page locator",
+    "none": "no line number, quote or page: a printed line number, a quote, or a page locator",
+    "booklet": "a line number on {doc}, not a form: a page (`p. N, <heading>`) with a quote",
+    "quote": "the quote was not found in {doc}: quote the text as printed, on a page locator",
+    "unplaced": "line {n} of {doc} was not found on a row of its text beside words of the label “{label}”: "
+                "cite the printed line whose text the label follows, or add a quote of the line as printed",
+    "notext": "{doc} has no archived text: cite a document with one",
+}
+
+
+def check_computed(arch, rows, rulings=frozenset()):
+    """Check every segment of each computed line's locator. `rows` are
+    (path, form id, line id, label, doc, locator, file line); `rulings` the
+    keys of reviews/<year>/citations.json, which excuse a quote here as in the
+    page check. Returns the counts and the findings (path, file line, form id,
+    line id, locator, segment, need)."""
+    counts, findings = collections.Counter(), []
+    for path, form_id, line_id, label, doc, locator, file_line in rows:
+        counts["computed lines"] += 1
+        for plain, quotes in split_top(locator):
+            counts["computed-line segments"] += 1
+            stripped = plain.strip()
+            m = SEGMENT_RE.match(stripped) or re.match(r"^(?P<doc>[a-z][a-z0-9-]*)\s", stripped)
+            seg_doc = m.group("doc") if m and m.group("doc") in arch.docs else doc
+            if m and "pp" in m.groupdict():
+                counts["computed-line segments with pages"] += 1
+                continue
+            need = None
+            kind = classify(plain, quotes)
+            if kind == "quote":
+                counts["computed-line segments with a quote and no page"] += 1
+                whole = arch.whole(seg_doc)
+                if whole is None:
+                    need = "notext"
+                else:
+                    missing = [q for q in quotes if parts_of(q) and ("quote", seg_doc, q) not in rulings
+                               and not any(all(p in w for p in parts_of(q)) for w in whole)]
+                    if missing:
+                        need = "quote"
+                        counts["quotes without a page not found"] += 1
+                    else:
+                        counts["quotes without a page found"] += 1
+            elif isinstance(kind, tuple):
+                counts["form-line locators"] += 1
+                if not FORM_DOC_RE.match(seg_doc):
+                    need = "booklet"
+                    counts["form-line locators on a booklet"] += 1
+                else:
+                    layers = arch.lines(seg_doc)
+                    if layers is None:
+                        need = "notext"
+                    elif line_beside_label(layers, kind[1], label):
+                        counts["form-line locators verified"] += 1
+                    else:
+                        need = "unplaced"
+                        counts["form-line locators not placed"] += 1
+            else:
+                need = kind
+                counts[f"computed-line segments rejected: {kind}"] += 1
+            if need:
+                n = kind[1] if isinstance(kind, tuple) else ""
+                short = label if len(label) <= 60 else label[:57].rstrip() + "…"
+                shown = re.sub("\x00", lambda _, it=iter(quotes): f"“{next(it)}”", stripped)
+                findings.append((rel(path), file_line, form_id, line_id, locator, shown,
+                                 NEEDS[need].format(n=n, doc=seg_doc, label=short)))
+    return counts, findings
 
 
 # ---------- check ----------
@@ -297,7 +506,7 @@ def load_rulings():
         {("quote", r["doc"], r["quote"]): r for r in data.get("quotes", [])}
 
 
-def check():
+def check(strict=False):
     arch, rulings = Archive(), load_rulings()
     used, uses = set(), collections.defaultdict(list)
     findings, counts = [], collections.Counter()
@@ -337,14 +546,22 @@ def check():
                 findings.append((rel(path), line, seg_doc, pages, "anchor", anchor,
                                  next((h for h in (pages_with(layers, k) for k in keys) if h), [])))
     unused = sorted(set(rulings) - used)
+    rows = [(path, *item) for path in form_files() for item in computed_lines(path)]
+    ccounts, rewrite = check_computed(arch, rows, rulings)
     out = [f"# Citation pages, tax year {Y}", "",
            "Generated by `tools/citations.py`: every quote in a page locator must appear on the cited pages",
            "(it may run on to the next page), and the locator's anchor, its first phrase after the pages (of a",
            "compound anchor, its first member), on one of them or as a heading in force up to two pages before.",
            f"An anchor or quote that cannot match printed text carries a ruling in `reviews/{Y}/citations.json`,",
-           f"listed with its uses in `reports/{Y}/citations.html`.", ""]
+           f"listed with its uses in `reports/{Y}/citations.html`.", "",
+           "On a computed line (atom not input, param or copy) every segment of the line's locator must carry",
+           "pages, a quote found in the document, or one printed line number of a form document found on a line",
+           "of the form's text beside three consecutive words of the label. The segments that do not are listed",
+           "under \"Locators to rewrite\"; they fail the check only with `--strict`.", ""]
     out += [f"- {k}: {v}" for k, v in sorted(counts.items())]
     out += [f"- findings without a ruling: {len(findings)}", f"- rulings no anchor uses: {len(unused)}", ""]
+    out += [f"- {k}: {v}" for k, v in sorted(ccounts.items())]
+    out += [f"- locators to rewrite: {len(rewrite)}", ""]
     if findings:
         out += ["## Findings", ""]
         for path, line, doc, pages, kind, text, found in findings:
@@ -353,13 +570,29 @@ def check():
         out.append("")
     if unused:
         out += ["## Unused rulings", ""] + [f"- {k} {d}: “{a}”" for k, d, a in unused] + [""]
+    if rewrite:
+        out += ["## Locators to rewrite", "",
+                "Segments of computed-line locators that place nothing the check can verify, by form; each gives",
+                "the line, the segment as written and what the check needs instead.", ""]
+        by_form = collections.defaultdict(list)
+        for row in rewrite:
+            by_form[row[2]].append(row)
+        for form_id in sorted(by_form):
+            out += [f"### {form_id} ({len(by_form[form_id])})", ""]
+            for path, line, _, line_id, locator, segment, need in by_form[form_id]:
+                out.append(f"- `{line_id}` (`{path}:{line}`) — “{segment}” — {need}")
+            out.append("")
     REPORT.parent.mkdir(parents=True, exist_ok=True)
     REPORT.write_text("\n".join(out))
     write_rulings_page(arch, rulings, uses)
     print(f"citations: {counts['segments checked']} segments, {counts['quotes']} quotes, {counts['anchors']} anchors "
           f"({counts['quotes ruled']} and {counts['anchors ruled']} ruled); {len(findings)} finding(s), {len(unused)} unused ruling(s)")
+    print(f"computed lines: {ccounts['computed lines']} lines, {ccounts['computed-line segments']} segments; "
+          f"{ccounts['form-line locators verified']} form-line locators verified, "
+          f"{ccounts['form-line locators not placed']} not placed; {len(rewrite)} locator segment(s) to rewrite"
+          + ("" if strict else " (reported only; --strict fails on them)"))
     print(f"report: reports/{Y}/citations.md")
-    return 1 if findings or unused else 0
+    return 1 if findings or unused or (strict and rewrite) else 0
 
 
 def write_rulings_page(arch, rulings, uses):
@@ -521,7 +754,28 @@ def self_test():
         for (path, line, _, (d, pages, anchor, _, _)), old, new in wrong:
             print(f"  WRONG {rel(path)}:{line} {d} authored p. {_pages_text(pages)}, relocated p. {_pages_text(new)} ({anchor})")
         status = status or (1 if wrong else 0)
-    return status
+    return status or self_test_computed(arch)
+
+
+def self_test_computed(arch):
+    """Plant locators on a computed line of Form 8959: the span must be reported,
+    the form-line locator of the line's own number must verify, and one naming
+    a line whose label is another's must not."""
+    label = "Add lines 1 through 3"
+    planted = [("span", "Form 8959 (2025), lines 1–24", True),
+               ("form line", "Form 8959 (2025), line 4", False),
+               ("wrong line", "Form 8959 (2025), line 7", True),
+               ("title", "Form 8959 (2025)", True),
+               ("quote", 'Form 8959 (2025), line 4, "Add lines 1 through 3"', False)]
+    bad = []
+    for name, locator, expect_finding in planted:
+        _, found = check_computed(arch, [(ROOT / "self-test", "f8959", "f8959.line4", label, "f8959", locator, 0)])
+        if bool(found) != expect_finding:
+            bad.append(f"  WRONG planted {name} locator “{locator}” {'reported' if found else 'passed'}")
+    print(f"self-test, planted computed-line locators: {len(planted) - len(bad)} of {len(planted)} behaved")
+    for b in bad:
+        print(b)
+    return 1 if bad else 0
 
 
 def relocate():
@@ -572,12 +826,13 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--relocate", action="store_true")
     ap.add_argument("--self-test", action="store_true")
+    ap.add_argument("--strict", action="store_true", help="fail on computed-line locators to rewrite, not only report them")
     a = ap.parse_args()
     if a.self_test:
         return self_test()
     if a.relocate:
         return relocate()
-    return check()
+    return check(strict=a.strict)
 
 
 if __name__ == "__main__":

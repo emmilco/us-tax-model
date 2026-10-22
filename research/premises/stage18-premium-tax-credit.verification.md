@@ -2,7 +2,7 @@
 
 # Verification: research/premises/stage18-premium-tax-credit.md
 
-Checked at commit 1c465c2. The working tree also has uncommitted changes to fixtures/2025/stage15.json, HANDOFF-STAGE-15.md and TASKS.md. Page N means the N-th form-feed chunk of `<id>.cols.txt`. Every quoted source passage in the map was located page by page with a script (kept outside the repo, in /tmp/verify18_scripts/). Every quote the map attributes to a page was found on that page. The one quote not found in `.cols.txt`, the Form 8962 line 4 text, is in `f8962.txt` lines 19 and 20; the column extraction splits it.
+Checked at commit 1c465c2. The working tree also has uncommitted changes to fixtures/2025/stage15.json, handoffs/HANDOFF-STAGE-15.md and TASKS.md. Page N means the N-th form-feed chunk of `<id>.cols.txt`. Every quoted source passage in the map was located page by page with a script (kept outside the repo, in /tmp/verify18_scripts/). Every quote the map attributes to a page was found on that page. The one quote not found in `.cols.txt`, the Form 8962 line 4 text, is in `f8962.txt` lines 19 and 20; the column extraction splits it.
 
 ## Errors
 
