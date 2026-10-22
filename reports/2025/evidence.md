@@ -181,12 +181,12 @@ Unasserted lines: dcprov.one
 | dependent.dc_disabled_qp | — | — | — | 5 |
 | dependent.dc_qp | — | — | — | 5 |
 | dependent.dc_no_tin | — | — | — | 5 |
-| dependent.dc_count | — | — | — | — |
+| dependent.dc_count | — | — | — | 1 (stage15.refuse.dependent.dc_no_tin) |
 | dependent.dc_paid | — | — | — | — |
-| dependent.dc_line2d | — | — | — | 1 (classm.dependent.5) |
+| dependent.dc_line2d | — | — | — | 2 (classm.dependent.5, stage15.refuse.dependent.dc_no_tin) |
 | dependent.dc_line2c | — | — | — | 5 |
 
-Unasserted lines: dependent.one, dependent.zero, dependent.ctc_per_child, dependent.odc_per_dependent, dependent.actc_per_child, dependent.dc_count
+Unasserted lines: dependent.one, dependent.zero, dependent.ctc_per_child, dependent.odc_per_dependent, dependent.actc_per_child
 
 ## Form 1099-DIV — distribution components and scope screening
 
@@ -336,20 +336,20 @@ Unasserted lines: eic.age_range_count, eic.zero, eic.qc_count, eic.married_rules
 | f1040.line8 | — | — | — | 12 |
 | f1040.line9 | — | — | — | 13 |
 | f1040.line10 | — | — | — | 17 |
-| f1040.line11a | — | — | — | 53 |
+| f1040.line11a | — | — | — | 98 |
 | f1040.line11b | — | — | — | 30 |
 | f1040.line12e | — | — | — | 32 |
 | f1040.line13a | — | — | — | 9 |
 | f1040.line13b | — | — | — | 15 |
 | f1040.line14 | — | — | — | 14 |
-| f1040.line15 | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 29 |
+| f1040.line15 | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 44 |
 | f1040.gate.qdcg_applies | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 7 |
 | f1040.gate.sdtw | — | — | — | 5 |
 | f1040.non_sdtw_tax | — | — | — | 2 (stage4.sdtw.special_rates, stage4.sdtw.skip22) |
-| f1040.line16 | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 31 |
+| f1040.line16 | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 46 |
 | f1040.line17 | — | — | — | 9 |
-| f1040.line18 | — | — | — | 50 |
-| f1040.line19 | — | — | — | 48 |
+| f1040.line18 | — | — | — | 95 |
+| f1040.line19 | — | — | — | 53 |
 | f1040.line20 | — | — | — | 7 |
 | f1040.line21 | — | — | — | 8 |
 | f1040.line22 | — | — | — | 8 |
@@ -394,75 +394,75 @@ Unasserted lines: f1040.ira_rollovers, f1040.plan_rollovers
 | f2441.related_count | — | — | — | — |
 | f2441.provider_ineligible | — | — | — | — |
 | f2441.line1_box | — | — | — | 5 |
-| f2441.statement_count | — | — | — | — |
-| f2441.statement_notice | — | — | — | — |
-| f2441.household_count | — | — | — | — |
-| f2441.household_notice | — | — | — | — |
+| f2441.statement_count | — | — | — | 1 (stage15.regress.f2441.providers_statement_household) |
+| f2441.statement_notice | — | — | — | 1 (stage15.regress.f2441.providers_statement_household) |
+| f2441.household_count | — | — | — | 1 (stage15.regress.f2441.providers_statement_household) |
+| f2441.household_notice | — | — | — | 1 (stage15.regress.f2441.providers_statement_household) |
 | f2441.provider_paid | — | — | — | — |
 | f2441.line1_paid | — | — | — | — |
-| f2441.qp_count | — | — | — | — |
-| f2441.line2_box | — | — | — | 5 |
-| f2441.paid_total | — | — | — | — |
+| f2441.qp_count | — | — | — | 3 |
+| f2441.line2_box | — | — | — | 6 |
+| f2441.paid_total | — | — | — | 2 (stage15.refuse.f2441.nondependent, stage15.refuse.f2441.related_provider) |
 | f2441.limit_one | — | — | — | — |
 | f2441.limit_two | — | — | — | — |
 | f2441.two_or_more | — | — | — | — |
-| f2441.limit | — | — | — | — |
+| f2441.limit | — | — | — | 1 (stage15.regress.f2441.nonqualifying_dependent) |
 | f2441.line3_expenses | — | — | — | — |
-| f2441.line3 | — | — | — | 14 |
+| f2441.line3 | — | — | — | 31 |
 | f2441.has_1e | — | — | — | — |
 | f2441.box10_persons | — | — | — | — |
 | f2441.one_box10 | — | — | — | — |
 | f2441.attrib_gate | — | — | — | — |
-| f2441.line4 | — | — | — | 15 |
+| f2441.line4 | — | — | — | 35 |
 | f2441.spouse_earned | — | — | — | — |
-| f2441.line5 | — | — | — | 15 |
+| f2441.line5 | — | — | — | 36 |
 | f2441.joint | — | — | — | — |
 | f2441.line6_34 | — | — | — | — |
 | f2441.line6_345 | — | — | — | — |
-| f2441.line6 | — | — | — | 15 |
-| f2441.line7 | — | — | — | 15 |
-| f2441.line8 | — | — | — | 15 |
-| f2441.line9a | — | — | — | 15 |
-| f2441.line9b | — | — | — | 5 |
+| f2441.line6 | — | — | — | 31 |
+| f2441.line7 | — | — | — | 31 |
+| f2441.line8 | — | — | — | 31 |
+| f2441.line9a | — | — | — | 31 |
+| f2441.line9b | — | — | — | 6 |
 | f2441.prior_year | — | — | — | — |
-| f2441.line9c | — | — | — | 15 |
+| f2441.line9c | — | — | — | 31 |
 | f2441.clw1 | — | — | — | 15 |
 | f2441.clw2 | — | — | — | 15 |
 | f2441.clw3 | — | — | — | 15 |
-| f2441.line10 | — | — | — | 15 |
-| f2441.line11 | — | — | — | 18 |
-| f2441.line12 | — | — | — | 9 |
-| f2441.line13 | — | — | — | 4 |
-| f2441.line14 | — | — | — | 4 |
+| f2441.line10 | — | — | — | 31 |
+| f2441.line11 | — | — | — | 35 |
+| f2441.line12 | — | — | — | 11 |
+| f2441.line13 | — | — | — | 6 |
+| f2441.line14 | — | — | — | 6 |
 | f2441.line15_sum | — | — | — | — |
 | f2441.line14_bad | — | — | — | — |
-| f2441.line15 | — | — | — | 9 |
+| f2441.line15 | — | — | — | 12 |
 | f2441.paid_2026 | — | — | — | — |
-| f2441.line16 | — | — | — | 9 |
-| f2441.line17 | — | — | — | 9 |
-| f2441.line18 | — | — | — | 6 |
+| f2441.line16 | — | — | — | 11 |
+| f2441.line17 | — | — | — | 11 |
+| f2441.line18 | — | — | — | 11 |
 | f2441.spouse_earned_b | — | — | — | — |
-| f2441.line19 | — | — | — | 5 |
+| f2441.line19 | — | — | — | 11 |
 | f2441.line20_17_18 | — | — | — | — |
 | f2441.line20_all | — | — | — | — |
-| f2441.line20 | — | — | — | 9 |
+| f2441.line20 | — | — | — | 11 |
 | f2441.plans_differ | — | — | — | — |
 | f2441.plan_max | — | — | — | — |
-| f2441.exclusion_max | — | — | — | — |
-| f2441.line21 | — | — | — | 9 |
-| f2441.line22 | — | — | — | 9 |
-| f2441.line23 | — | — | — | 9 |
+| f2441.exclusion_max | — | — | — | 1 (stage15.regress.f2441.exclusion_max) |
+| f2441.line21 | — | — | — | 13 |
+| f2441.line22 | — | — | — | 11 |
+| f2441.line23 | — | — | — | 11 |
 | f2441.line24_20_21 | — | — | — | — |
-| f2441.line24 | — | — | — | 9 |
-| f2441.line25 | — | — | — | 9 |
-| f2441.line26 | — | — | — | 9 |
-| f2441.line27 | — | — | — | 5 |
-| f2441.line28 | — | — | — | 9 |
-| f2441.line29 | — | — | — | 5 |
-| f2441.line30 | — | — | — | 6 |
-| f2441.line31 | — | — | — | 6 |
+| f2441.line24 | — | — | — | 11 |
+| f2441.line25 | — | — | — | 11 |
+| f2441.line26 | — | — | — | 12 |
+| f2441.line27 | — | — | — | 7 |
+| f2441.line28 | — | — | — | 11 |
+| f2441.line29 | — | — | — | 7 |
+| f2441.line30 | — | — | — | 7 |
+| f2441.line31 | — | — | — | 7 |
 
-Unasserted lines: f2441.zero, f2441.filing, f2441.spouse_died_gate, f2441.nondependent_gate, f2441.provider_count, f2441.related_count, f2441.provider_ineligible, f2441.statement_count, f2441.statement_notice, f2441.household_count, f2441.household_notice, f2441.provider_paid, f2441.line1_paid, f2441.qp_count, f2441.paid_total, f2441.limit_one, f2441.limit_two, f2441.two_or_more, f2441.limit, f2441.line3_expenses, f2441.has_1e, f2441.box10_persons, f2441.one_box10, f2441.attrib_gate, f2441.spouse_earned, f2441.joint, f2441.line6_34, f2441.line6_345, f2441.line15_sum, f2441.line14_bad, f2441.spouse_earned_b, f2441.line20_17_18, f2441.line20_all, f2441.exclusion_max, f2441.line24_20_21
+Unasserted lines: f2441.zero, f2441.filing, f2441.spouse_died_gate, f2441.nondependent_gate, f2441.provider_count, f2441.related_count, f2441.provider_ineligible, f2441.provider_paid, f2441.line1_paid, f2441.limit_one, f2441.limit_two, f2441.two_or_more, f2441.line3_expenses, f2441.has_1e, f2441.box10_persons, f2441.one_box10, f2441.attrib_gate, f2441.spouse_earned, f2441.joint, f2441.line6_34, f2441.line6_345, f2441.line15_sum, f2441.line14_bad, f2441.spouse_earned_b, f2441.line20_17_18, f2441.line20_all, f2441.line24_20_21
 
 ## Form 4562 — Depreciation and Amortization, one per business
 
@@ -525,29 +525,29 @@ Unasserted lines: f4952.zero, f4952.bad_dividends, f4952.bad_election, f4952.exc
 | f5695.part2_any | — | — | — | — |
 | f5695.business_use | — | — | — | — |
 | f5695.construction_later | — | — | — | — |
-| f5695.line1 | — | — | — | 2 (stage15.f5695.s1, stage15.f5695.s9) |
+| f5695.line1 | — | — | — | 5 |
 | f5695.line2 | — | — | — | 1 (stage15.f5695.s13) |
 | f5695.line3 | — | — | — | — |
 | f5695.line4 | — | — | — | 1 (stage15.f5695.s13) |
 | f5695.line5a | — | — | — | — |
 | f5695.battery_cost | — | — | — | — |
 | f5695.line5b | — | — | — | 8 |
-| f5695.line6a | — | — | — | 11 |
+| f5695.line6a | — | — | — | 16 |
 | f5695.rce_rate | — | — | — | — |
-| f5695.line6b | — | — | — | 11 |
+| f5695.line6b | — | — | — | 14 |
 | f5695.line7a | — | — | — | — |
-| f5695.line11 | — | — | — | 7 |
+| f5695.line11 | — | — | — | 8 |
 | f5695.line12 | — | — | — | 1 (stage15.f5695.s5) |
-| f5695.line13 | — | — | — | 12 |
+| f5695.line13 | — | — | — | 15 |
 | f5695.claiming_part1 | — | — | — | — |
-| f5695.rce_ws1 | — | — | — | 5 |
+| f5695.rce_ws1 | — | — | — | 8 |
 | f5695.ctc_line19 | — | — | — | — |
 | f5695.ctc | — | — | — | — |
-| f5695.rce_ws2 | — | — | — | 5 |
-| f5695.rce_ws3 | — | — | — | 5 |
-| f5695.line14 | — | — | — | 11 |
-| f5695.line15 | — | — | — | 12 |
-| f5695.line16 | — | — | — | 9 |
+| f5695.rce_ws2 | — | — | — | 9 |
+| f5695.rce_ws3 | — | — | — | 8 |
+| f5695.line14 | — | — | — | 14 |
+| f5695.line15 | — | — | — | 15 |
+| f5695.line16 | — | — | — | 12 |
 | f5695.line17a | — | — | — | — |
 | f5695.line17b | — | — | — | — |
 | f5695.line17c | — | — | — | — |
@@ -555,114 +555,114 @@ Unasserted lines: f4952.zero, f4952.bad_dividends, f4952.bad_election, f4952.exc
 | f5695.line17e | — | — | — | — |
 | f5695.sec_a_new_home | — | — | — | — |
 | f5695.eehi_rate | — | — | — | — |
-| f5695.line18a | — | — | — | 3 |
+| f5695.line18a | — | — | — | 5 |
 | f5695.ins_30 | — | — | — | — |
 | f5695.insulation_max | — | — | — | — |
 | f5695.ins_capped | — | — | — | — |
-| f5695.line18b | — | — | — | 10 |
-| f5695.line19a | — | — | — | 3 |
+| f5695.line18b | — | — | — | 13 |
+| f5695.line19a | — | — | — | 4 |
 | f5695.door1_30 | — | — | — | — |
 | f5695.door_max | — | — | — | — |
-| f5695.line19c | — | — | — | 10 |
+| f5695.line19c | — | — | — | 11 |
 | f5695.line19d_i | — | — | — | — |
 | f5695.line19d_ii | — | — | — | — |
-| f5695.line19e | — | — | — | 3 |
-| f5695.line19f | — | — | — | 10 |
-| f5695.line19g | — | — | — | 10 |
+| f5695.line19e | — | — | — | 4 |
+| f5695.line19f | — | — | — | 11 |
+| f5695.line19g | — | — | — | 11 |
 | f5695.doors_sum | — | — | — | — |
 | f5695.doors_max | — | — | — | — |
 | f5695.doors_cost | — | — | — | — |
 | f5695.qmid_doors | — | — | — | — |
 | f5695.doors_no_qmid | — | — | — | — |
-| f5695.doors_capped | — | — | — | — |
-| f5695.line19h | — | — | — | 10 |
+| f5695.doors_capped | — | — | — | 1 (stage15.refuse.f5695.qmid_doors_windows_ac) |
+| f5695.line19h | — | — | — | 11 |
 | f5695.line20a_i | — | — | — | — |
 | f5695.line20a_ii | — | — | — | — |
 | f5695.line20a_iii | — | — | — | — |
 | f5695.line20a_iv | — | — | — | — |
-| f5695.line20b | — | — | — | 3 |
-| f5695.line20c | — | — | — | 10 |
+| f5695.line20b | — | — | — | 4 |
+| f5695.line20c | — | — | — | 11 |
 | f5695.windows_30 | — | — | — | — |
 | f5695.windows_max | — | — | — | — |
 | f5695.qmid_windows | — | — | — | — |
 | f5695.windows_no_qmid | — | — | — | — |
-| f5695.windows_capped | — | — | — | — |
-| f5695.line20d | — | — | — | 10 |
+| f5695.windows_capped | — | — | — | 1 (stage15.refuse.f5695.qmid_doors_windows_ac) |
+| f5695.line20d | — | — | — | 11 |
 | f5695.line21a | — | — | — | — |
 | f5695.line21b | — | — | — | — |
 | f5695.sec_b_claimed | — | — | — | — |
 | f5695.b_new_home | — | — | — | — |
 | f5695.sec_b_new_home | — | — | — | — |
 | f5695.item_max | — | — | — | — |
-| f5695.line22a | — | — | — | 2 (stage15.f5695.s2, stage15.f5695.s10) |
-| f5695.line22b | — | — | — | 2 (stage15.f5695.s2, stage15.f5695.s10) |
-| f5695.line22c | — | — | — | 8 |
+| f5695.line22a | — | — | — | 3 |
+| f5695.line22b | — | — | — | 3 |
+| f5695.line22c | — | — | — | 9 |
 | f5695.ac_30 | — | — | — | — |
 | f5695.qmid_ac | — | — | — | — |
 | f5695.ac_no_qmid | — | — | — | — |
-| f5695.ac_capped | — | — | — | — |
-| f5695.line22d | — | — | — | 9 |
+| f5695.ac_capped | — | — | — | 1 (stage15.refuse.f5695.qmid_doors_windows_ac) |
+| f5695.line22d | — | — | — | 10 |
 | f5695.line23a_i | — | — | — | — |
 | f5695.line23a_ii | — | — | — | — |
-| f5695.line23b | — | — | — | — |
-| f5695.line23c | — | — | — | 6 |
+| f5695.line23b | — | — | — | 1 (stage15.f5695-2.e3) |
+| f5695.line23c | — | — | — | 7 |
 | f5695.wh_30 | — | — | — | — |
 | f5695.qmid_wh | — | — | — | — |
 | f5695.wh_no_qmid | — | — | — | — |
-| f5695.wh_capped | — | — | — | — |
-| f5695.line23d | — | — | — | 7 |
-| f5695.line24a | — | — | — | — |
-| f5695.line24b | — | — | — | — |
-| f5695.line24c | — | — | — | 7 |
+| f5695.wh_capped | — | — | — | 1 (stage15.refuse.f5695.qmid_wh_furnace_enabling_hp) |
+| f5695.line23d | — | — | — | 8 |
+| f5695.line24a | — | — | — | 2 (stage15.f5695-2.e4, stage15.f5695-2.e5) |
+| f5695.line24b | — | — | — | 2 (stage15.f5695-2.e4, stage15.f5695-2.e5) |
+| f5695.line24c | — | — | — | 9 |
 | f5695.furnace_30 | — | — | — | — |
 | f5695.qmid_furnace | — | — | — | — |
 | f5695.furnace_no_qmid | — | — | — | — |
-| f5695.furnace_capped | — | — | — | — |
-| f5695.line24d | — | — | — | 7 |
+| f5695.furnace_capped | — | — | — | 1 (stage15.refuse.f5695.qmid_wh_furnace_enabling_hp) |
+| f5695.line24d | — | — | — | 9 |
 | f5695.line25a | — | — | — | — |
 | f5695.enabling_claimed | — | — | — | — |
-| f5695.line25c | — | — | — | — |
+| f5695.line25c | — | — | — | 2 (stage15.f5695-2.e6, stage15.f5695-2.e7) |
 | f5695.enabling_30 | — | — | — | — |
 | f5695.qmid_enabling | — | — | — | — |
 | f5695.enabling_no_qmid | — | — | — | — |
-| f5695.enabling_capped | — | — | — | — |
-| f5695.line25e | — | — | — | 7 |
+| f5695.enabling_capped | — | — | — | 2 (stage15.refuse.f5695.qmid_wh_furnace_enabling_hp, stage15.regress.f5695.enabling_cap) |
+| f5695.line25e | — | — | — | 10 |
 | f5695.line26a | — | — | — | — |
-| f5695.line26b | — | — | — | 1 (stage15.f5695.s6) |
+| f5695.line26b | — | — | — | 2 (stage15.f5695.s6, stage15.f5695-2.e9) |
 | f5695.audit_30 | — | — | — | — |
 | f5695.audit_max | — | — | — | — |
 | f5695.audit_capped | — | — | — | — |
-| f5695.line26c | — | — | — | 8 |
-| f5695.line27 | — | — | — | 15 |
+| f5695.line26c | — | — | — | 10 |
+| f5695.line27 | — | — | — | 27 |
 | f5695.annual_max | — | — | — | — |
-| f5695.line28 | — | — | — | 15 |
-| f5695.line29a | — | — | — | 1 (stage15.f5695.s3) |
-| f5695.line29b | — | — | — | 1 (stage15.f5695.s3) |
-| f5695.line29c | — | — | — | — |
-| f5695.line29d | — | — | — | — |
+| f5695.line28 | — | — | — | 27 |
+| f5695.line29a | — | — | — | 3 |
+| f5695.line29b | — | — | — | 4 |
+| f5695.line29c | — | — | — | 1 (stage15.f5695-2.e10) |
+| f5695.line29d | — | — | — | 3 |
 | f5695.line29e | — | — | — | — |
-| f5695.line29f | — | — | — | — |
-| f5695.line29g | — | — | — | 8 |
+| f5695.line29f | — | — | — | 3 |
+| f5695.line29g | — | — | — | 11 |
 | f5695.hp_30 | — | — | — | — |
 | f5695.heat_pump_max | — | — | — | — |
 | f5695.qmid_hp | — | — | — | — |
 | f5695.hp_no_qmid | — | — | — | — |
-| f5695.hp_capped | — | — | — | — |
-| f5695.line29h | — | — | — | 8 |
+| f5695.hp_capped | — | — | — | 1 (stage15.refuse.f5695.qmid_wh_furnace_enabling_hp) |
+| f5695.line29h | — | — | — | 11 |
 | f5695.joint_occupancy | — | — | — | — |
 | f5695.separate_homes | — | — | — | — |
 | f5695.separate_homes_joint | — | — | — | — |
-| f5695.line30 | — | — | — | 15 |
-| f5695.eehi_ws1 | — | — | — | 8 |
-| f5695.eehi_ws2 | — | — | — | 8 |
-| f5695.eehi_ws3 | — | — | — | 8 |
-| f5695.line31 | — | — | — | 15 |
-| f5695.line32 | — | — | — | 15 |
+| f5695.line30 | — | — | — | 30 |
+| f5695.eehi_ws1 | — | — | — | 18 |
+| f5695.eehi_ws2 | — | — | — | 19 |
+| f5695.eehi_ws3 | — | — | — | 18 |
+| f5695.line31 | — | — | — | 25 |
+| f5695.line32 | — | — | — | 25 |
 | f5695.line32a | — | — | — | 7 |
 | f5695.condo | — | — | — | — |
 | f5695.line32b | — | — | — | 7 |
 
-Unasserted lines: f5695.zero, f5695.rce_rate, f5695.claiming_part1, f5695.ctc_line19, f5695.ctc, f5695.sec_a_claimed, f5695.sec_a_new_home, f5695.eehi_rate, f5695.ins_30, f5695.insulation_max, f5695.ins_capped, f5695.door1_30, f5695.door_max, f5695.doors_sum, f5695.doors_max, f5695.doors_cost, f5695.doors_no_qmid, f5695.doors_capped, f5695.windows_30, f5695.windows_max, f5695.windows_no_qmid, f5695.windows_capped, f5695.sec_b_claimed, f5695.sec_b_new_home, f5695.item_max, f5695.ac_30, f5695.ac_no_qmid, f5695.ac_capped, f5695.wh_30, f5695.wh_no_qmid, f5695.wh_capped, f5695.furnace_30, f5695.furnace_no_qmid, f5695.furnace_capped, f5695.enabling_claimed, f5695.enabling_30, f5695.enabling_no_qmid, f5695.enabling_capped, f5695.audit_30, f5695.audit_max, f5695.audit_capped, f5695.annual_max, f5695.hp_30, f5695.heat_pump_max, f5695.hp_no_qmid, f5695.hp_capped, f5695.separate_homes_joint
+Unasserted lines: f5695.zero, f5695.rce_rate, f5695.claiming_part1, f5695.ctc_line19, f5695.ctc, f5695.sec_a_claimed, f5695.sec_a_new_home, f5695.eehi_rate, f5695.ins_30, f5695.insulation_max, f5695.ins_capped, f5695.door1_30, f5695.door_max, f5695.doors_sum, f5695.doors_max, f5695.doors_cost, f5695.doors_no_qmid, f5695.windows_30, f5695.windows_max, f5695.windows_no_qmid, f5695.sec_b_claimed, f5695.sec_b_new_home, f5695.item_max, f5695.ac_30, f5695.ac_no_qmid, f5695.wh_30, f5695.wh_no_qmid, f5695.furnace_30, f5695.furnace_no_qmid, f5695.enabling_claimed, f5695.enabling_30, f5695.enabling_no_qmid, f5695.audit_30, f5695.audit_max, f5695.audit_capped, f5695.annual_max, f5695.hp_30, f5695.heat_pump_max, f5695.hp_no_qmid, f5695.separate_homes_joint
 
 ## Form 8880 — Credit for Qualified Retirement Savings Contributions (the saver's credit)
 
@@ -670,22 +670,22 @@ Unasserted lines: f5695.zero, f5695.rce_rate, f5695.claiming_part1, f5695.ctc_li
 | --- | --- | --- | --- | --- |
 | f8880.zero | — | — | — | — |
 | f8880.joint | — | — | — | — |
-| f8880.line1a | — | — | — | 19 |
-| f8880.line1b | — | — | — | 7 |
-| f8880.line2a | — | — | — | 18 |
-| f8880.line2b | — | — | — | 8 |
-| f8880.line3a | — | — | — | 18 |
-| f8880.line3b | — | — | — | 7 |
+| f8880.line1a | — | — | — | 34 |
+| f8880.line1b | — | — | — | 12 |
+| f8880.line2a | — | — | — | 33 |
+| f8880.line2b | — | — | — | 13 |
+| f8880.line3a | — | — | — | 33 |
+| f8880.line3b | — | — | — | 12 |
 | f8880.dist_2025 | — | — | — | — |
 | f8880.prior_joint_sum | — | — | — | — |
 | f8880.prior_joint | — | — | — | — |
-| f8880.prior_own_a | — | — | — | — |
-| f8880.prior_own_b | — | — | — | — |
-| f8880.line4a | — | — | — | 19 |
+| f8880.prior_own_a | — | — | — | 1 (stage15.regress.f8880.prior_own_b_spouse_only) |
+| f8880.prior_own_b | — | — | — | 1 (stage15.regress.f8880.prior_own_b_spouse_only) |
+| f8880.line4a | — | — | — | 35 |
 | f8880.line4b_joint | — | — | — | — |
-| f8880.line4b | — | — | — | 8 |
-| f8880.line5a | — | — | — | 18 |
-| f8880.line5b | — | — | — | 7 |
+| f8880.line4b | — | — | — | 14 |
+| f8880.line5a | — | — | — | 34 |
+| f8880.line5b | — | — | — | 13 |
 | f8880.cap | — | — | — | — |
 | f8880.inelig_a | — | — | — | — |
 | f8880.inelig_b | — | — | — | — |
@@ -693,23 +693,23 @@ Unasserted lines: f5695.zero, f5695.rce_rate, f5695.claiming_part1, f5695.ctc_li
 | f8880.elig_b | — | — | — | — |
 | f8880.line6a_figured | — | — | — | — |
 | f8880.line6b_figured | — | — | — | — |
-| f8880.line6a | — | — | — | 19 |
-| f8880.line6b | — | — | — | 8 |
-| f8880.line7 | — | — | — | 19 |
-| f8880.line8 | — | — | — | 15 |
-| f8880.line9 | — | — | — | 16 |
-| f8880.line10 | — | — | — | 16 |
-| f8880.clw1 | — | — | — | 12 |
-| f8880.clw2 | — | — | — | 12 |
-| f8880.clw3 | — | — | — | 12 |
-| f8880.line11 | — | — | — | 15 |
-| f8880.agi_limit | — | — | — | — |
+| f8880.line6a | — | — | — | 34 |
+| f8880.line6b | — | — | — | 13 |
+| f8880.line7 | — | — | — | 34 |
+| f8880.line8 | — | — | — | 31 |
+| f8880.line9 | — | — | — | 31 |
+| f8880.line10 | — | — | — | 28 |
+| f8880.clw1 | — | — | — | 24 |
+| f8880.clw2 | — | — | — | 24 |
+| f8880.clw3 | — | — | — | 24 |
+| f8880.line11 | — | — | — | 27 |
+| f8880.agi_limit | — | — | — | 1 (stage15.regress.f8880.agi_limit) |
 | f8880.line3_total | — | — | — | — |
-| f8880.can_take | — | — | — | — |
+| f8880.can_take | — | — | — | 1 (stage15.regress.f8880.agi_limit) |
 | f8880.line12_figured | — | — | — | — |
-| f8880.line12 | — | — | — | 16 |
+| f8880.line12 | — | — | — | 29 |
 
-Unasserted lines: f8880.zero, f8880.joint, f8880.dist_2025, f8880.prior_joint_sum, f8880.prior_joint, f8880.prior_own_a, f8880.prior_own_b, f8880.line4b_joint, f8880.cap, f8880.inelig_a, f8880.inelig_b, f8880.elig_a, f8880.elig_b, f8880.line6a_figured, f8880.line6b_figured, f8880.agi_limit, f8880.line3_total, f8880.can_take, f8880.line12_figured
+Unasserted lines: f8880.zero, f8880.joint, f8880.dist_2025, f8880.prior_joint_sum, f8880.prior_joint, f8880.line4b_joint, f8880.cap, f8880.inelig_a, f8880.inelig_b, f8880.elig_a, f8880.elig_b, f8880.line6a_figured, f8880.line6b_figured, f8880.line3_total, f8880.line12_figured
 
 ## Form 8889 — HSA contributions and deduction (Part I)
 
@@ -1169,16 +1169,16 @@ Unasserted lines: otjob.one, otjob.zero
 | person.sav_trad | — | — | — | — |
 | person.sav_able | — | — | — | — |
 | person.sav_roth | — | — | — | — |
-| person.sav_line1 | — | — | — | 7 |
+| person.sav_line1 | — | — | — | 9 |
 | person.sav_w2 | — | — | — | 7 |
 | person.sav_excess | — | — | — | — |
 | person.sav_excess_gate | — | — | — | 7 |
 | person.sav_voluntary | — | — | — | — |
 | person.sav_simple_plan | — | — | — | 7 |
 | person.sav_simple | — | — | — | 7 |
-| person.sav_line2 | — | — | — | 7 |
-| person.sav_prior_joint | — | — | — | — |
-| person.sav_prior_other | — | — | — | — |
+| person.sav_line2 | — | — | — | 8 |
+| person.sav_prior_joint | — | — | — | 1 (stage15.refuse.person.sav_able) |
+| person.sav_prior_other | — | — | — | 1 (stage15.refuse.person.sav_able) |
 
 Unasserted lines: person.one, person.educator_max, person.zero, person.cent, person.hundred, person.comp_limit, person.sep_s8, person.simple_cap, person.rate3, person.rate2, person.dc_zero
 
@@ -1536,11 +1536,11 @@ Unasserted lines: s2.zero
 | line | A | B | C | R |
 | --- | --- | --- | --- | --- |
 | s3.line1 | — | — | — | 3 |
-| s3.line2 | — | — | — | 16 |
+| s3.line2 | — | — | — | 33 |
 | s3.zero | — | — | — | — |
-| s3.line4 | — | — | — | 18 |
-| s3.line5a | — | — | — | 15 |
-| s3.line5b | — | — | — | 16 |
+| s3.line4 | — | — | — | 33 |
+| s3.line5a | — | — | — | 28 |
+| s3.line5b | — | — | — | 29 |
 | s3.line8 | — | — | — | 5 |
 | s3.mfs | — | — | — | — |
 | s3.line9 | — | — | — | — |
@@ -1573,13 +1573,13 @@ Unasserted lines: s3.zero, s3.mfs
 | s8812.line10 | — | — | — | 28 |
 | s8812.line11 | — | — | — | 28 |
 | s8812.line12 | — | — | — | 29 |
-| s8812.clw_a1 | — | — | — | 25 |
-| s8812.clw_a2 | — | — | — | 25 |
-| s8812.clw_a3 | — | — | — | 25 |
-| s8812.clw_a4 | — | — | — | 25 |
-| s8812.clw_a5 | — | — | — | 25 |
-| s8812.line13 | — | — | — | 27 |
-| s8812.line14 | — | — | — | 44 |
+| s8812.clw_a1 | — | — | — | 27 |
+| s8812.clw_a2 | — | — | — | 27 |
+| s8812.clw_a3 | — | — | — | 27 |
+| s8812.clw_a4 | — | — | — | 27 |
+| s8812.clw_a5 | — | — | — | 27 |
+| s8812.line13 | — | — | — | 29 |
+| s8812.line14 | — | — | — | 49 |
 | s8812.line16a | — | — | — | 28 |
 | s8812.line16b | — | — | — | 28 |
 | s8812.line17 | — | — | — | 28 |
@@ -1617,13 +1617,13 @@ Unasserted lines: s3.zero, s3.mfs
 | s8812.from_part_iia | — | — | — | 24 |
 | s8812.from_part_iib | — | — | — | 25 |
 | s8812.part_iib_result | — | — | — | 24 |
-| s8812.line27 | — | — | — | 45 |
+| s8812.line27 | — | — | — | 50 |
 | s8812.clwb_complete | — | — | — | — |
-| s8812.clwb_1 | — | — | — | 1 (stage15.f5695.s9) |
-| s8812.clwb_2 | — | — | — | 1 (stage15.f5695.s9) |
-| s8812.clwb_3 | — | — | — | 1 (stage15.f5695.s9) |
-| s8812.clwb_4 | — | — | — | 1 (stage15.f5695.s9) |
-| s8812.clwb_5 | — | — | — | 1 (stage15.f5695.s9) |
+| s8812.clwb_1 | — | — | — | 3 |
+| s8812.clwb_2 | — | — | — | 3 |
+| s8812.clwb_3 | — | — | — | 3 |
+| s8812.clwb_4 | — | — | — | 3 |
+| s8812.clwb_5 | — | — | — | 3 |
 | s8812.clwb_three | — | — | — | — |
 | s8812.clwb_5_covers | — | — | — | — |
 | s8812.clwb_7 | — | — | — | — |
@@ -1632,11 +1632,11 @@ Unasserted lines: s3.zero, s3.mfs
 | s8812.clwb_10 | — | — | — | — |
 | s8812.clwb_11_figured | — | — | — | — |
 | s8812.clwb_11_three | — | — | — | — |
-| s8812.clwb_11 | — | — | — | 1 (stage15.f5695.s9) |
-| s8812.clwb_12 | — | — | — | 1 (stage15.f5695.s9) |
-| s8812.clwb_13 | — | — | — | 1 (stage15.f5695.s9) |
-| s8812.clwb_14 | — | — | — | 1 (stage15.f5695.s9) |
-| s8812.clwb_15 | — | — | — | 1 (stage15.f5695.s9) |
+| s8812.clwb_11 | — | — | — | 4 |
+| s8812.clwb_12 | — | — | — | 3 |
+| s8812.clwb_13 | — | — | — | 3 |
+| s8812.clwb_14 | — | — | — | 3 |
+| s8812.clwb_15 | — | — | — | 3 |
 
 Unasserted lines: s8812.zero, s8812.eiw_2b, s8812.eiw_7_figured, s8812.eiw_3_positive, s8812.chart_eic, s8812.amt_ws6, s8812.clwb_complete, s8812.clwb_three, s8812.clwb_5_covers, s8812.clwb_7, s8812.clwb_8, s8812.clwb_9, s8812.clwb_10, s8812.clwb_11_figured, s8812.clwb_11_three
 
@@ -2356,7 +2356,7 @@ Unasserted lines: u1250.combined
 | w2.has_box10 | — | — | — | 1 (classm.w2.1) |
 | w2.box10_wages | — | — | — | — |
 | w2.box10_bad | — | — | — | 1 (classm.w2.1) |
-| w2.dc_net | — | — | — | 1 (classm.w2.1) |
+| w2.dc_net | — | — | — | 2 (classm.w2.1, stage15.refuse.w2.box10_bad) |
 | w2.dc_benefits | — | — | — | 1 (classm.w2.1) |
 | w2.dc_zero | — | — | — | — |
 | w2.box12_any | — | — | — | — |
@@ -2374,11 +2374,11 @@ Unasserted lines: u1250.combined
 | w2.g_governmental | — | — | — | — |
 | w2.g_elective | — | — | — | — |
 | w2.g_bad | — | — | — | 1 (classm.w2.1) |
-| w2.g_gov_part | — | — | — | 1 (classm.w2.1) |
+| w2.g_gov_part | — | — | — | 2 (classm.w2.1, stage15.refuse.w2.g_bad) |
 | w2.g_counted | — | — | — | 1 (classm.w2.1) |
 | w2.zero | — | — | — | — |
 | w2.code_h | — | — | — | 1 (classm.w2.1) |
-| w2.sav_listed | — | — | — | 1 (classm.w2.1) |
+| w2.sav_listed | — | — | — | 3 |
 | w2.sav_deferral | — | — | — | 1 (classm.w2.1) |
 
 Unasserted lines: w2.one, w2.dc_zero, w2.zero
@@ -2485,5 +2485,5 @@ Unasserted lines: below_boundary, table_tax, worksheet_tax, tax
 
 Unasserted lines: single.row1.product, single.row1.tax, single.row2.product, single.row2.tax, single.row3.product, single.row3.tax, single.row4.product, single.row4.tax, single.row5.product, single.row5.tax, single.result, mfj.row1.product, mfj.row1.tax, mfj.row2.product, mfj.row2.tax, mfj.row3.product, mfj.row3.tax, mfj.row4.product, mfj.row4.tax, mfj.row5.product, mfj.row5.tax, mfj.result, mfs.row1.product, mfs.row1.tax, mfs.row2.product, mfs.row2.tax, mfs.row3.product, mfs.row3.tax, mfs.row4.product, mfs.row4.tax, mfs.row5.product, mfs.row5.tax, mfs.result, hoh.row1.product, hoh.row1.tax, hoh.row2.product, hoh.row2.tax, hoh.row3.product, hoh.row3.tax, hoh.row4.product, hoh.row4.tax, hoh.row5.product, hoh.row5.tax, hoh.result, tax
 
-Unasserted computed lines across all documents: 575. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
+Unasserted computed lines across all documents: 555. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
 Asserted keys not matching a line id: person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line3, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.positive, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line4a, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line4b, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.owes, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line4c, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line5b, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line6, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line7, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line8d, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line9, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line10, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line11, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line12, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line13, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.below_boundary, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.tax, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.below_boundary, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.tax, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, root|inst:tax_on_amount#{"amount":"qdcg.line1","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, qdcg.f1040.line15, qdcg.f1040.line3a, qdcg.f1040.status, f1040.qdcg.line25, qdcg.sd.distributions

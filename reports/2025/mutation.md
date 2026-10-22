@@ -9,10 +9,10 @@ the fixture test compares).
 | --- | --- |
 | Mutants | 2087 |
 | Killed by the checker | 211 |
-| Killed by fixtures | 1598 |
-| Surviving | 278 (111 provably equivalent) |
-| Mutation score (raw) | 86.7% |
-| Mutation score (equivalent mutants excluded) | 91.5% |
+| Killed by fixtures | 1720 |
+| Surviving | 156 (111 provably equivalent) |
+| Mutation score (raw) | 92.5% |
+| Mutation score (equivalent mutants excluded) | 97.7% |
 
 ## Surviving — classified equivalent
 
@@ -132,87 +132,21 @@ the fixture test compares).
 
 | Mutant | Kind | Location | Note |
 | --- | --- | --- | --- |
-| refusal.dependent.dependent.dc_count.0 | remove refusal | dependent.dependent.dc_count |  |
-| refusal.dependent.dependent.dc_line2d.0 | remove refusal | dependent.dependent.dc_line2d |  |
 | refusal.f1040.f1040.line16.0 | remove refusal | f1040.f1040.line16 |  |
 | refusal.f1040.f1040.line29.0 | remove refusal | f1040.f1040.line29 |  |
 | refusal.f1040.f1040.line30.0 | remove refusal | f1040.f1040.line30 |  |
-| filter.f2441.f2441.statement_count | remove collection filter | f2441.f2441.statement_count |  |
-| filter.f2441.f2441.household_count | remove collection filter | f2441.f2441.household_count |  |
-| filter.f2441.f2441.qp_count | remove collection filter | f2441.f2441.qp_count |  |
-| refusal.f2441.f2441.qp_count.0 | remove refusal | f2441.f2441.qp_count |  |
-| boundary.f2441.f2441.line2_box | replace strict greater-than with inclusive | f2441.f2441.line2_box |  |
-| refusal.f2441.f2441.paid_total.0 | remove refusal | f2441.f2441.paid_total |  |
-| refusal.f2441.f2441.paid_total.1 | remove refusal | f2441.f2441.paid_total |  |
-| refusal.f2441.f2441.line4.0 | remove refusal | f2441.f2441.line4 |  |
-| refusal.f2441.f2441.line4.1 | remove refusal | f2441.f2441.line4 |  |
-| refusal.f2441.f2441.line4.2 | remove refusal | f2441.f2441.line4 |  |
-| refusal.f2441.f2441.line4.3 | remove refusal | f2441.f2441.line4 |  |
-| refusal.f2441.f2441.line5.0 | remove refusal | f2441.f2441.line5 |  |
-| refusal.f2441.f2441.line5.1 | remove refusal | f2441.f2441.line5 |  |
-| refusal.f2441.f2441.line5.2 | remove refusal | f2441.f2441.line5 |  |
-| refusal.f2441.f2441.line5.3 | remove refusal | f2441.f2441.line5 |  |
-| refusal.f2441.f2441.line5.4 | remove refusal | f2441.f2441.line5 |  |
-| operand.f2441.f2441.line6_34.line4 | replace an operand | f2441.f2441.line6_34 | f2441.line4 -> f2441.line5 (Dollars) |
-| refusal.f2441.f2441.line9b.0 | remove refusal | f2441.f2441.line9b |  |
-| refusal.f2441.f2441.line11.0 | remove refusal | f2441.f2441.line11 |  |
-| refusal.f2441.f2441.line15.0 | remove refusal | f2441.f2441.line15 |  |
-| refusal.f2441.f2441.line18.0 | remove refusal | f2441.f2441.line18 |  |
-| refusal.f2441.f2441.line18.1 | remove refusal | f2441.f2441.line18 |  |
-| refusal.f2441.f2441.line18.2 | remove refusal | f2441.f2441.line18 |  |
-| refusal.f2441.f2441.line19.0 | remove refusal | f2441.f2441.line19 |  |
-| refusal.f2441.f2441.line19.1 | remove refusal | f2441.f2441.line19 |  |
-| refusal.f2441.f2441.line19.2 | remove refusal | f2441.f2441.line19 |  |
-| refusal.f2441.f2441.line19.3 | remove refusal | f2441.f2441.line19 |  |
 | operand.f2441.f2441.line20_17_18.line18 | replace an operand | f2441.f2441.line20_17_18 | f2441.line18 -> f2441.line19 (Dollars) |
-| refusal.f2441.f2441.line21.0 | remove refusal | f2441.f2441.line21 |  |
 | operand.f2441.f2441.line24.line24_20_21 | replace an operand | f2441.f2441.line24 | f2441.line24_20_21 -> f2441.line21 (NonNegDollars) |
 | operand.f2441.f2441.line25.line24 | replace an operand | f2441.f2441.line25 | f2441.line24 -> f2441.line22 (NonNegDollars) |
-| refusal.f2441.f2441.line26.0 | remove refusal | f2441.f2441.line26 |  |
 | operand.f4952.f4952.line3.line2 | replace an operand | f4952.f4952.line3 | f4952.line2 -> f4952.zero (NonNegDollars) |
 | refusal.f4952.f4952.required.1 | remove refusal | f4952.f4952.required |  |
 | refusal.f4952.f4952.required.2 | remove refusal | f4952.f4952.required |  |
-| refusal.f5695.f5695.line6a.0 | remove refusal | f5695.f5695.line6a |  |
-| refusal.f5695.f5695.line6a.1 | remove refusal | f5695.f5695.line6a |  |
-| refusal.f5695.f5695.line11.0 | remove refusal | f5695.f5695.line11 |  |
-| refusal.f5695.f5695.rce_ws2.0 | remove refusal | f5695.f5695.rce_ws2 |  |
 | operand.f5695.f5695.line16.line15 | replace an operand | f5695.f5695.line16 | f5695.line15 -> f5695.line14 (NonNegDollars) |
-| operand.f5695.f5695.doors_sum.line19g | replace an operand | f5695.f5695.doors_sum | f5695.line19g -> f5695.line19f (NonNegDollars) |
 | operand.f5695.f5695.doors_cost.line19a | replace an operand | f5695.f5695.doors_cost | f5695.line19a -> f5695.doors_max (NonNegDollars) |
 | operand.f5695.f5695.doors_cost.line19f | replace an operand | f5695.f5695.doors_cost | f5695.line19f -> f5695.doors_max (NonNegDollars) |
-| refusal.f5695.f5695.doors_capped.0 | remove refusal | f5695.f5695.doors_capped |  |
-| refusal.f5695.f5695.windows_capped.0 | remove refusal | f5695.f5695.windows_capped |  |
-| operand.f5695.f5695.windows_capped.windows_30 | replace an operand | f5695.f5695.windows_capped | f5695.windows_30 -> f5695.line20c (NonNegDollars) |
-| refusal.f5695.f5695.ac_capped.0 | remove refusal | f5695.f5695.ac_capped |  |
-| operand.f5695.f5695.ac_capped.ac_30 | replace an operand | f5695.f5695.ac_capped | f5695.ac_30 -> f5695.line22c (NonNegDollars) |
-| refusal.f5695.f5695.wh_capped.0 | remove refusal | f5695.f5695.wh_capped |  |
 | operand.f5695.f5695.wh_capped.wh_30 | replace an operand | f5695.f5695.wh_capped | f5695.wh_30 -> f5695.line23c (NonNegDollars) |
-| operand.f5695.f5695.wh_capped.item_max | replace an operand | f5695.f5695.wh_capped | f5695.item_max -> f5695.line23c (NonNegDollars) |
-| operand.f5695.f5695.line24c.line24a | replace an operand | f5695.f5695.line24c | f5695.line24a -> f5695.line23d (NonNegDollars) |
-| operand.f5695.f5695.line24c.line24b | replace an operand | f5695.f5695.line24c | f5695.line24b -> f5695.line23d (NonNegDollars) |
-| operand.f5695.f5695.furnace_30.line24c | replace an operand | f5695.f5695.furnace_30 | f5695.line24c -> f5695.line23d (NonNegDollars) |
-| refusal.f5695.f5695.furnace_capped.0 | remove refusal | f5695.f5695.furnace_capped |  |
-| operand.f5695.f5695.furnace_capped.furnace_30 | replace an operand | f5695.f5695.furnace_capped | f5695.furnace_30 -> f5695.line24c (NonNegDollars) |
-| operand.f5695.f5695.furnace_capped.item_max | replace an operand | f5695.f5695.furnace_capped | f5695.item_max -> f5695.line24c (NonNegDollars) |
-| operand.f5695.f5695.enabling_30.line25c | replace an operand | f5695.f5695.enabling_30 | f5695.line25c -> f5695.line24d (NonNegDollars) |
-| refusal.f5695.f5695.enabling_capped.0 | remove refusal | f5695.f5695.enabling_capped |  |
-| minmax.f5695.f5695.enabling_capped | swap smaller_of/larger_of | f5695.f5695.enabling_capped |  |
-| operand.f5695.f5695.enabling_capped.enabling_30 | replace an operand | f5695.f5695.enabling_capped | f5695.enabling_30 -> f5695.line24d (NonNegDollars) |
-| operand.f5695.f5695.enabling_capped.item_max | replace an operand | f5695.f5695.enabling_capped | f5695.item_max -> f5695.line24d (NonNegDollars) |
 | operand.f5695.f5695.line27.line26c | replace an operand | f5695.f5695.line27 | f5695.line26c -> f5695.audit_capped (NonNegDollars) |
-| refusal.f5695.f5695.hp_capped.0 | remove refusal | f5695.f5695.hp_capped |  |
-| operand.f5695.f5695.hp_capped.hp_30 | replace an operand | f5695.f5695.hp_capped | f5695.hp_30 -> f5695.line29g (NonNegDollars) |
-| refusal.f5695.f5695.line30.0 | remove refusal | f5695.f5695.line30 |  |
-| refusal.f5695.f5695.line30.1 | remove refusal | f5695.f5695.line30 |  |
-| refusal.f5695.f5695.line30.2 | remove refusal | f5695.f5695.line30 |  |
-| refusal.f5695.f5695.line30.3 | remove refusal | f5695.f5695.line30 |  |
-| refusal.f5695.f5695.line30.4 | remove refusal | f5695.f5695.line30 |  |
 | operand.f5695.f5695.line30.line29h | replace an operand | f5695.f5695.line30 | f5695.line29h -> f5695.hp_capped (NonNegDollars) |
-| refusal.f5695.f5695.eehi_ws2.0 | remove refusal | f5695.f5695.eehi_ws2 |  |
-| filter.f8880.f8880.prior_own_b | remove collection filter | f8880.f8880.prior_own_b |  |
-| operand.f8880.f8880.line4b_joint.dist_2025 | replace an operand | f8880.f8880.line4b_joint | f8880.dist_2025 -> f8880.line4a (NonNegDollars) |
-| operand.f8880.f8880.line6b_figured.cap | replace an operand | f8880.f8880.line6b_figured | f8880.cap -> f8880.line6a_figured (NonNegDollars) |
-| refusal.f8880.f8880.line8.0 | remove refusal | f8880.f8880.line8 |  |
 | operand.f8959.f8959.line16.line14 | replace an operand | f8959.f8959.line16 | f8959.line14 -> f8959.line13 (NonNegDollars) |
 | operand.f8959.f8959.line16.line15 | replace an operand | f8959.f8959.line16 | f8959.line15 -> f8959.line13 (NonNegDollars) |
 | operand.f8959.f8959.line18.line17 | replace an operand | f8959.f8959.line18 | f8959.line17 -> f8959.line16 (NonNegDollars) |
@@ -222,19 +156,10 @@ the fixture test compares).
 | refusal.person.person.medicare5.0 | remove refusal | person.person.medicare5 |  |
 | refusal.person.person.medicare6.0 | remove refusal | person.person.medicare6 |  |
 | operand.person.person.dc_earned.eic_se | replace an operand | person.person.dc_earned | person.eic_se -> person.eic_se_has (Dollars) |
-| refusal.person.person.sav_line1.0 | remove refusal | person.person.sav_line1 |  |
-| refusal.person.person.sav_line1.1 | remove refusal | person.person.sav_line1 |  |
-| refusal.person.person.sav_line2.0 | remove refusal | person.person.sav_line2 |  |
-| refusal.person.person.sav_prior_joint.0 | remove refusal | person.person.sav_prior_joint |  |
-| refusal.person.person.sav_prior_other.0 | remove refusal | person.person.sav_prior_other |  |
 | refusal.s3.s3.line8.0 | remove refusal | s3.s3.line8 |  |
-| operand.s8812.s8812.clwb_7.line21 | replace an operand | s8812.s8812.clwb_7 | s8812.line21 -> s8812.clwb_3 (Dollars) |
 | operand.s8812.s8812.clwb_8.line22 | replace an operand | s8812.s8812.clwb_8 | s8812.line22 -> s8812.clwb_5 (NonNegDollars) |
-| operand.s8812.s8812.clwb_9.clwb_7 | replace an operand | s8812.s8812.clwb_9 | s8812.clwb_7 -> s8812.clwb_3 (Dollars) |
-| operand.s8812.s8812.clwb_9.clwb_8 | replace an operand | s8812.s8812.clwb_9 | s8812.clwb_8 -> s8812.clwb_3 (Dollars) |
 | operand.s8812.s8812.clwb_11_figured.clwb_9 | replace an operand | s8812.s8812.clwb_11_figured | s8812.clwb_9 -> s8812.clwb_8 (NonNegDollars) |
 | operand.s8812.s8812.clwb_11_figured.clwb_10 | replace an operand | s8812.s8812.clwb_11_figured | s8812.clwb_10 -> s8812.clwb_8 (NonNegDollars) |
-| refusal.s8812.s8812.clwb_11.0 | remove refusal | s8812.s8812.clwb_11 |  |
 | operand.s8812.s8812.clwb_12.clwb_11 | replace an operand | s8812.s8812.clwb_12 | s8812.clwb_11 -> s8812.clwb_11_three (NonNegDollars) |
 | refusal.sa.sa.line17.1 | remove refusal | sa.sa.line17 |  |
 | refusal.sa.sa.line17.2 | remove refusal | sa.sa.line17 |  |
@@ -252,50 +177,3 @@ the fixture test compares).
 | operand.sdtw.sdtw.raw42.line41 | replace an operand | sdtw.sdtw.raw42 | sdtw.line41 -> sdtw.raw41 (Dollars) |
 | operand.sdtw.sdtw.raw43.line42 | replace an operand | sdtw.sdtw.raw43 | sdtw.line42 -> sdtw.raw42 (Dollars) |
 | operand.sdtw.sdtw.line45.line43 | replace an operand | sdtw.sdtw.line45 | sdtw.line43 -> sdtw.raw43 (Dollars) |
-| refusal.w2.w2.dc_net.0 | remove refusal | w2.w2.dc_net |  |
-| refusal.w2.w2.g_gov_part.0 | remove refusal | w2.w2.g_gov_part |  |
-| refusal.w2.w2.sav_listed.0 | remove refusal | w2.w2.sav_listed |  |
-| refusal.w2.w2.sav_listed.1 | remove refusal | w2.w2.sav_listed |  |
-| operand.w2.w2.sav_listed.box12_f | replace an operand | w2.w2.sav_listed | w2.box12_f -> w2.zero (NonNegDollars) |
-| operand.w2.w2.sav_listed.box12_s | replace an operand | w2.w2.sav_listed | w2.box12_s -> w2.zero (NonNegDollars) |
-| operand.w2.w2.sav_listed.box12_bb | replace an operand | w2.w2.sav_listed | w2.box12_bb -> w2.zero (NonNegDollars) |
-| operand.w2.w2.sav_listed.box12_ee | replace an operand | w2.w2.sav_listed | w2.box12_ee -> w2.zero (NonNegDollars) |
-| param.dc.exclusion_max.$1 | shift a money parameter (+$1) | dc.exclusion_max |  |
-| param.f5695.audit_max.$1 | shift a money parameter (+$1) | f5695.audit_max |  |
-| param.f5695.insulation_max.$1 | shift a money parameter (+$1) | f5695.insulation_max |  |
-| param.savers.agi_limit.$1 | shift a money parameter (+$1) | savers.agi_limit |  |
-| table.dc_rate.band1.$1 | shift a rate band bound (+$1) | dc_rate |  |
-| table.dc_rate.band2.$1 | shift a rate band bound (+$1) | dc_rate |  |
-| table.dc_rate.band3.$1 | shift a rate band bound (+$1) | dc_rate |  |
-| table.dc_rate.band3.+1pt | shift a rate band's rates (+1 point) | dc_rate |  |
-| table.dc_rate.band4.$1 | shift a rate band bound (+$1) | dc_rate |  |
-| table.dc_rate.band4.+1pt | shift a rate band's rates (+1 point) | dc_rate |  |
-| table.dc_rate.band5.$1 | shift a rate band bound (+$1) | dc_rate |  |
-| table.dc_rate.band5.+1pt | shift a rate band's rates (+1 point) | dc_rate |  |
-| table.dc_rate.band6.$1 | shift a rate band bound (+$1) | dc_rate |  |
-| table.dc_rate.band6.+1pt | shift a rate band's rates (+1 point) | dc_rate |  |
-| table.dc_rate.band7.$1 | shift a rate band bound (+$1) | dc_rate |  |
-| table.dc_rate.band7.+1pt | shift a rate band's rates (+1 point) | dc_rate |  |
-| table.dc_rate.band8.$1 | shift a rate band bound (+$1) | dc_rate |  |
-| table.dc_rate.band9.$1 | shift a rate band bound (+$1) | dc_rate |  |
-| table.dc_rate.band9.+1pt | shift a rate band's rates (+1 point) | dc_rate |  |
-| table.dc_rate.band10.$1 | shift a rate band bound (+$1) | dc_rate |  |
-| table.dc_rate.band11.$1 | shift a rate band bound (+$1) | dc_rate |  |
-| table.dc_rate.band11.+1pt | shift a rate band's rates (+1 point) | dc_rate |  |
-| table.dc_rate.band12.$1 | shift a rate band bound (+$1) | dc_rate |  |
-| table.dc_rate.band12.+1pt | shift a rate band's rates (+1 point) | dc_rate |  |
-| table.dc_rate.band13.$1 | shift a rate band bound (+$1) | dc_rate |  |
-| table.dc_rate.band13.+1pt | shift a rate band's rates (+1 point) | dc_rate |  |
-| table.dc_rate.band14.$1 | shift a rate band bound (+$1) | dc_rate |  |
-| table.dc_rate.band14.+1pt | shift a rate band's rates (+1 point) | dc_rate |  |
-| table.savers_rate.band0.$1 | shift a rate band bound (+$1) | savers_rate |  |
-| table.savers_rate.band1.$1 | shift a rate band bound (+$1) | savers_rate |  |
-| table.savers_rate.band2.$1 | shift a rate band bound (+$1) | savers_rate |  |
-| table.savers_rate.band3.$1 | shift a rate band bound (+$1) | savers_rate |  |
-| table.savers_rate.band4.$1 | shift a rate band bound (+$1) | savers_rate |  |
-| table.savers_rate.band5.$1 | shift a rate band bound (+$1) | savers_rate |  |
-| table.savers_rate.band6.$1 | shift a rate band bound (+$1) | savers_rate |  |
-| table.savers_rate.band7.$1 | shift a rate band bound (+$1) | savers_rate |  |
-| table.savers_rate.band7.+1pt | shift a rate band's rates (+1 point) | savers_rate |  |
-| table.savers_rate.band8.$1 | shift a rate band bound (+$1) | savers_rate |  |
-| table.savers_rate.band9.+1pt | shift a rate band's rates (+1 point) | savers_rate |  |

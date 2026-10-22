@@ -615,8 +615,9 @@ function thresholdAtPlateau(param: string, tables: string[], col: number) {
   };
 }
 
-const normal = (v: { kind: string; cents?: number; value?: unknown }): string =>
-  v.kind === "refusal" ? stableStringify(v) : v.kind === "unknown" ? "unknown" : v.kind === "money" ? `money:${v.cents}` : `${v.kind}:${JSON.stringify(v.value)}`;
+const normal = (v: { kind: string; cents?: number; value?: unknown; num?: number; den?: number }): string =>
+  v.kind === "refusal" ? stableStringify(v) : v.kind === "unknown" ? "unknown" : v.kind === "money" ? `money:${v.cents}`
+    : v.kind === "rate" ? `rate:${v.num}/${v.den}` : `${v.kind}:${JSON.stringify(v.value)}`;
 
 type Outcome = "check" | "fixtures" | "survives";
 

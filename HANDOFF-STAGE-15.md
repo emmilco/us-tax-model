@@ -67,12 +67,15 @@ check-all green on tree df0960a: logs current with no open ruling (transcription
 907 rulings); fixtures 843/843 (41 new); integration 658; properties 6 over 400 returns, 0 failing; Lean compare
 1,443 cases, 0 differing; engine differential 1,700 cases, 0 unexplained; citations 2,044 segments, 0 findings.
 
-**Not yet adequate: mutation.** 2,087 mutants, adjusted score 91.5% (98.0% at the last commit); 167 survivors are
-not explained, 136 of them new and all in Stage 15 lines: 54 removed refusals (no refusal fixtures were written
-yet), 37 replaced operands, 35 rate-table bounds and rates (not every band has a case just past its edge), and 10
-others. check-all does not fail on unexplained survivors (it did not at the last commit either, with 31); the
-remaining Stage 15 work is fixtures that kill them: one refusal case per gate, a case just past each band edge of
-both rate tables, and cases separating the surviving operands.
+**Mutation, after the follow-up fixtures:** 2,087 mutants, adjusted score 97.7% (98.0% before Stage 15). The first
+close left 136 new survivors (91.5%); a second blind set (45 cases: every rate-table band edge, the operands) and
+33 refusal and 9 regression cases (`stage15.refuse.*`, `stage15.regress.*`) killed 122 of them, and BUG-0082 (the
+mutation tool compared every rate as equal) let four more be seen. 14 Stage 15 operand survivors remain (TASKS.md
+T-051): three are provably equivalent (Form 2441 lines 24 and 25 read line 22, always zero; Form 5695 line 16 is
+line 13 less the smaller of lines 13 and 14, so substituting line 14 gives the same result), the rest need cases
+(listed there). Two parameter mutants are killed only through a helper or an input outside its question's range
+(`savers.agi_limit`, which the line 9 table already enforces; `dc.exclusion_max`, which `f2441.plan_max` caps):
+near-equivalent. check-all does not fail on unexplained survivors (31 before this stage, 45 now).
 
 ## Open for the owner
 

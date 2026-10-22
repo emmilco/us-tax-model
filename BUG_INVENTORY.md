@@ -959,3 +959,18 @@ later grouping.
 - **Fix:** open (TASKS.md T-050): the three texts list the same supported items as the question, with the reviews
   of `scope` and `f1040` rerun after.
 - **Tags:** wording; stale-text; caught-by-review
+
+## BUG-0082 — Mutation testing could not see a change in a rate
+
+- **Date:** 2026-10-22
+- **Caught by:** the Stage 15 band-edge fixtures: four Form 8880 rate-table mutants survived although a fixture
+  asserted exactly the line each one changed; evaluating one by hand showed the line moving from 0.0 to 0.1.
+- **Symptom:** `engine/src/mutate.ts` compared values through a normal form that printed every rate as
+  "rate:undefined" (a rate has a numerator and denominator, not a `value`), so a mutant whose only effect was on
+  a rate line was never killed. This held for `keyed_lookup`'s rates (the MACRS tables) as well as for
+  `rate_lookup`. The fixture runner compares by deep equality and was not affected; `compare.ts` had the same
+  form and was corrected in 6051ec0.
+- **Root cause:** the normal form was written before any line returned a rate.
+- **Where:** `engine/src/mutate.ts` (`normal`).
+- **Fix:** rates compare as numerator and denominator, exactly. Four survivors are now killed.
+- **Tags:** test-tool; rate; caught-by-fixture
