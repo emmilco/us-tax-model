@@ -144,6 +144,42 @@ Each question is self-contained; the recommendation, where one was made, is firs
     credit, the education credits, the capital loss carryover with a backlog, Form 5329), each with a draft
     decision batch; the placement there, rather than PREMISES.md, was this session's choice.
 
+## Owner's answers (2026-10-22): all recommended answers below accepted
+
+Follow-ups: 4 is built in Stage 16 with D10 (one excess-contribution screen for traditional and Roth contributions); 7, 11 and 13 are done with T-050; the rest keep the encoding as built.
+
+1. Keep the stop order (contributions, then the AGI limit, then the worksheet): it follows the printed order, line 7's
+   stop before line 8, and the questions it costs high-income filers are a handful of no's.
+2. Keep the $200: the credit is right on those fixtures' facts.
+3. Keep `w2.g_bad`: it refuses only an impossible entry.
+4. Yes: ask, beside the traditional IRA screen, whether any 2025 Roth contribution was more than allowed or was
+   recharacterized, and refuse on Yes. Checked: no screen mentions excess contributions today (`s2.other` names the
+   additional tax on early distributions, not the 6% tax on excess contributions).
+5. Keep two amounts per person: one per year adds three questions per person and changes no line.
+6. Keep the encoding's display: it is the reading you chose (the ineligible person's line 6 is zero).
+7. Yes, clarify the two labels (their reviews are rerun with T-050's).
+8. Accept the refusal for "neither spouse has box 10": a credit with a 2024 grace-period amount on a joint return is rare.
+9. Keep line 1e on your line 4 when no credit remains: no amount differs.
+10. Accept the four Part I targets: the form says Part I "must" be completed.
+11. Refuse employer-provided care (an on-site facility) when there are also paid expenses: rare, and the alternative
+    counts a value as an expense paid, which the text does not say.
+12. Keep the student-or-disabled refusal broad: i2441 and Pub. 503 disagree, and refusing is the reading that cannot
+    be wrong.
+13. Leave it, and record the reading in the ambiguity register: rare, and it can only understate.
+14. Accept: a child aged 12 or under at the end of 2025 was under 13 all year.
+15. Accept as is (display only); the question when the care was given costs every parent of a disabled 13-year-old
+    one more question.
+16. Keep the refusal for Section B on a newly built home: i5695 says Part II "is only available for existing homes".
+17. Accept (no amount differs).
+18. Accept the stand-in; teaching the checker that guarded branches exclude each other is a larger change for no
+    difference at run time.
+19. Confirm: the joint-occupancy rule is for fuel cells only, and they are refused.
+20. Keep the filer's judgment with the fact sheet's description in the help.
+21. Accept: a renter answers No to "your main home that you owned".
+22. Done by T-052 (approved).
+23. Done by BUG-0079 (approved).
+24. For reading; nothing to decide here.
+
 ## Facts a fresh session needs
 
 - Credit order: Form 2441 (Schedule 3 line 1 only), Form 8880 (lines 1 and 2), Form 5695 Part II (lines 1, 2, 4),

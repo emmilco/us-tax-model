@@ -4,8 +4,8 @@ Offline checks that the archived IRS text is a faithful reading of the archived 
 
 | check | documents | failing |
 | --- | --- | --- |
-| layout vs reading order | 108 | 0 |
-| PDFKit against poppler | 108 | 0 |
+| layout vs reading order | 114 | 0 |
+| PDFKit against poppler | 114 | 0 |
 | PDF vs HTML snapshot | 12 | 0 |
 
 ## Per document
@@ -44,6 +44,8 @@ Offline checks that the archived IRS text is a faithful reading of the archived 
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
 - **f1095a** layout vs reading order: 3 pages, identical characters
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
+- **f1099c** layout vs reading order: 4 pages, identical characters
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
 - **f1099div** layout vs reading order: 6 pages, identical characters
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
 - **f1099g** layout vs reading order: 6 pages, identical characters
@@ -51,6 +53,8 @@ Offline checks that the archived IRS text is a faithful reading of the archived 
 - **f1099int** layout vs reading order: 7 pages, identical characters
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
 - **f1099r** layout vs reading order: 9 pages, identical characters
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
+- **f1099sa** layout vs reading order: 3 pages, identical characters
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
 - **f1120ssk** layout vs reading order: 1 pages, identical characters
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
@@ -126,6 +130,8 @@ Offline checks that the archived IRS text is a faithful reading of the archived 
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
 - **i1098et** layout vs reading order: 4 pages, identical characters
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 1 words poppler reads that PDFKit skips)
+- **i1099ac** layout vs reading order: 6 pages, identical characters
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 4 words poppler reads that PDFKit skips)
 - **i1099div** layout vs reading order: 5 pages, identical characters
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 11 words poppler reads that PDFKit skips)
 - **i1099int** layout vs reading order: 8 pages, identical characters (1 page(s) differ only in word spacing)
@@ -185,6 +191,8 @@ Offline checks that the archived IRS text is a faithful reading of the archived 
         - p. 8 accepted: ['accounts', 'character', 'continued', 'contract', 'conversions', 'equivalent'] — QBI Flow Chart (Figure 2): the HTML publication carries the chart as an image, so its text is not in the snapshot
         - p. 9 accepted: ['allowable', 'continued', 'respect'] — QBI Flow Chart (Figure 2, continued): carried as an image in the HTML publication
         - p. 11 accepted: ['v'] — QBI Loss Tracking Worksheet: the HTML renders the worksheet without its G(i) to G(vii) column labels
+- **i982** layout vs reading order: 4 pages, identical characters (3 page(s) differ only in word spacing)
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 5 words poppler reads that PDFKit skips)
 - **iw2w3** layout vs reading order: 35 pages, identical characters
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 40 words poppler reads that PDFKit skips)
 - **n-25-05** layout vs reading order: 5 pages, identical characters
@@ -205,10 +213,14 @@ Offline checks that the archived IRS text is a faithful reading of the archived 
         - p. 1 accepted: ['chinese'] — Language links on the first page (IRS.gov/Chinese and others) are not part of the HTML publication text
         - p. 18 accepted: ['al', 'ay', 'ct', 'de', 'du', 'er'] — Figure B (When Are Transportation Expenses Deductible?): the HTML publication carries the chart as an image
         - p. 60 accepted: ['develop', 'entries', 'ideas', 'let', 'reach'] — Index request note ("To help us develop a more useful index ...") printed above the PDF index; the HTML publication has no index
+- **p4681** layout vs reading order: 18 pages, identical characters (1 page(s) differ only in word spacing)
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (1 such occurrences; 16 words poppler reads that PDFKit skips)
 - **p501** layout vs reading order: 31 pages, identical characters (2 page(s) differ only in word spacing)
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (1 such occurrences; 28 words poppler reads that PDFKit skips)
 - **p503** layout vs reading order: 20 pages, identical characters (2 page(s) differ only in word spacing)
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 279 words poppler reads that PDFKit skips; PDFKit blind on page(s) [5])
+- **p504** layout vs reading order: 30 pages, identical characters (2 page(s) differ only in word spacing)
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (1 such occurrences; 20 words poppler reads that PDFKit skips)
 - **p505-2026** layout vs reading order: 48 pages, identical characters (8 page(s) differ only in word spacing)
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 437 words poppler reads that PDFKit skips)
 - **p525** layout vs reading order: 42 pages, identical characters (1 page(s) differ only in word spacing)

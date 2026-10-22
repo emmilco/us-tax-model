@@ -1454,3 +1454,11 @@ CLW B reuses `actc.per_child`, `actc.earned_floor`, `actc.rate` and `actc.three_
 12. **CLW B line 3 source.** CLW B line 3 cites the Earned Income Worksheet line 7 (`s8812.eiw_7`). The existing ACTC path uses line 18a through the Earned Income Chart, which for EIC takers uses EIC Worksheet B amounts. Confirm whether CLW B should read `eiw_7` even for EIC takers. The worksheet's "Before you begin: Complete the Earned Income Worksheet" says it should.
 13. **`scope.credits` refusal label.** The label lists Schedule 3 lines 2 to 4, 5b, 6d, 6f, 6l and 6m but not 5a, although the question covers 5a (`forms/2025/scope.yaml`, `forms/2025/s3.yaml`). This is cosmetic, and narrowing in T-048 replaces it anyway.
 14. **Source pinning.** f5695 and i5695 were fetched from the current-year `irs-pdf` address. The instructions are dated Jan 22, 2026 and the form says "Created 3/20/25". Confirm these are the final 2025 revisions and record them. (Revision status in the manifest: "content review is tracked separately in PREMISES.md".)
+
+## Stage 16 premise map — the remaining Schedule 1 items
+
+Status: **owner decisions taken 2026-10-22** (TASKS.md T-053). The map is `research/premises/stage16-schedule1-misc.md`,
+its adversarial verification `stage16-schedule1-misc.verification.md` (6 errors, 7 items out of date after Stage 15),
+and the decision batch, written from both, `stage16-schedule1-misc.decisions.md`: the owner accepted D1 to D14 as
+recommended. Where the map and its verification differ, the verification's checked facts govern.
+

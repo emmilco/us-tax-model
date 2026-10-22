@@ -319,6 +319,24 @@
       "revision_locator": "Footer, \"Form 1095-A (2025)\""
     },
     {
+      "id": "f1099c",
+      "url": "https://www.irs.gov/pub/irs-pdf/f1099c.pdf",
+      "resolved_url": "https://www.irs.gov/pub/irs-pdf/f1099c.pdf",
+      "fetched_at": "2026-10-22T14:53:59.709934+00:00",
+      "file": "f1099c.pdf",
+      "sha256": "826fe6811249e38b00df962b323c7ef838bc1e94a3c4522f9e10be4887f096a8",
+      "revision": "Rev. April 2025",
+      "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
+      "text_file": "f1099c.txt",
+      "text_sha256": "60446f8d9e487c481afdd7c557328e8da5f2c9b92be7af36e85ed179749b585e",
+      "cols_file": "f1099c.cols.txt",
+      "cols_sha256": "4f1baa6be9f3cb758ced191d5ce82f9dd3fb0fe749e43ad151108b3936d71ade",
+      "pages_file": "f1099c.pages.json",
+      "pages_sha256": "372f737e483f82fb2c56341f4136bf4a40ad67e993311a383a2f694f3435f675",
+      "extract_tool_version": "0.10",
+      "revision_locator": "Form heading, \"(Rev. April 2025)\""
+    },
+    {
       "id": "f1099div",
       "url": "https://www.irs.gov/pub/irs-pdf/f1099div.pdf",
       "resolved_url": "https://www.irs.gov/pub/irs-pdf/f1099div.pdf",
@@ -389,6 +407,24 @@
       "pages_sha256": "1720695b874f3c6d338e180a89287e3bf92aad86dcd06a7639a5cb0ed78c6554",
       "extract_tool_version": "0.10",
       "revision_locator": "PDF page 1, Copy A, form year box"
+    },
+    {
+      "id": "f1099sa",
+      "url": "https://www.irs.gov/pub/irs-pdf/f1099sa.pdf",
+      "resolved_url": "https://www.irs.gov/pub/irs-pdf/f1099sa.pdf",
+      "fetched_at": "2026-10-22T14:54:06.943122+00:00",
+      "file": "f1099sa.pdf",
+      "sha256": "cc2324629a9bd416180c1e10b66ce44d914937a6c4a11cc4bb8e17c22da44bd1",
+      "revision": "Rev. April 2025",
+      "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
+      "text_file": "f1099sa.txt",
+      "text_sha256": "a46028e7f712eba0cb21b1aa396e9ef44e1e87f10844bda5b2e137757c9cb22e",
+      "cols_file": "f1099sa.cols.txt",
+      "cols_sha256": "30406c9c3b242cc9274ce63d32eade5305781da3ec0d28745ac80e10926a164d",
+      "pages_file": "f1099sa.pages.json",
+      "pages_sha256": "6a987ab04f86022f0448debbd8b9db0efb0d2631df345b433ce2b1e58a619e82",
+      "extract_tool_version": "0.10",
+      "revision_locator": "Form heading, \"(Rev. April 2025)\""
     },
     {
       "id": "f1120ssk",
@@ -1076,6 +1112,24 @@
       "revision_locator": "Page 1 title, \"2025 Instructions for Forms 1098-E and 1098-T\""
     },
     {
+      "id": "i1099ac",
+      "url": "https://www.irs.gov/pub/irs-pdf/i1099ac.pdf",
+      "resolved_url": "https://www.irs.gov/pub/irs-pdf/i1099ac.pdf",
+      "fetched_at": "2026-10-22T14:54:01.005310+00:00",
+      "file": "i1099ac.pdf",
+      "sha256": "76b10cff7d76e79f73d8c84a32d2a165c494fa77aa80bd22aae0d6b187a00702",
+      "revision": "Rev. April 2025",
+      "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
+      "text_file": "i1099ac.txt",
+      "text_sha256": "65995b3d1bb7a14e4536443eb512193f8f9e0a34058f853cb106804d7bb3746d",
+      "cols_file": "i1099ac.cols.txt",
+      "cols_sha256": "6dd0931410b29c23758da91375675b992af291a50994cd432f55308165d7bfb2",
+      "pages_file": "i1099ac.pages.json",
+      "pages_sha256": "ac1237c2d33a9e7ab36f6b6dda2b0d5ea4065e3e81f435245768c823842fb0ef",
+      "extract_tool_version": "0.10",
+      "revision_locator": "Page 1 title, \"(Rev. April 2025)\""
+    },
+    {
       "id": "i1099div",
       "url": "https://www.irs.gov/pub/irs-pdf/i1099div.pdf",
       "resolved_url": "https://www.irs.gov/pub/irs-pdf/i1099div.pdf",
@@ -1601,6 +1655,24 @@
       "revision_locator": "Extracted text, line 1 title and 'Page Last Reviewed' footer line"
     },
     {
+      "id": "i982",
+      "url": "https://www.irs.gov/pub/irs-pdf/i982.pdf",
+      "resolved_url": "https://www.irs.gov/pub/irs-pdf/i982.pdf",
+      "fetched_at": "2026-10-22T14:53:58.237701+00:00",
+      "file": "i982.pdf",
+      "sha256": "638f899cf49c04265f20f5c3bacbc53f1d0270118a3311555c8551847a54b7a0",
+      "revision": "Rev. December 2021",
+      "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
+      "text_file": "i982.txt",
+      "text_sha256": "3c07f3ddd1da607da3923d74b0b28ae226e40b1fbf416e69046939525385ae02",
+      "cols_file": "i982.cols.txt",
+      "cols_sha256": "cfbedc066694df0ac999bc275e8ba36b548eb19075fdf973baf3174602522a1f",
+      "pages_file": "i982.pages.json",
+      "pages_sha256": "e7f01cff3303d2d8b1769d0d70f2a6391e22ee6391d2e1f009de45aac322e135",
+      "extract_tool_version": "0.10",
+      "revision_locator": "Page 1 title, \"(Rev. December 2021)\""
+    },
+    {
       "id": "iw2w3",
       "url": "https://www.irs.gov/pub/irs-prior/iw2w3--2025.pdf",
       "resolved_url": "https://www.irs.gov/pub/irs-prior/iw2w3--2025.pdf",
@@ -1795,6 +1867,24 @@
       "revision_locator": "Page title, \"Publication 463 (2025), Travel, Gift, and Car Expenses\""
     },
     {
+      "id": "p4681",
+      "url": "https://www.irs.gov/pub/irs-pdf/p4681.pdf",
+      "resolved_url": "https://www.irs.gov/pub/irs-pdf/p4681.pdf",
+      "fetched_at": "2026-10-22T14:53:54.823640+00:00",
+      "file": "p4681.pdf",
+      "sha256": "d87305a0e1817a7f7e7a06bde669586ef76c763878c674196542b624ad5958e7",
+      "revision": "2025",
+      "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
+      "text_file": "p4681.txt",
+      "text_sha256": "c280f0029d95f9f4186840c73600efd2af4bd3370a86a31fb4f2a9391887b2b6",
+      "cols_file": "p4681.cols.txt",
+      "cols_sha256": "21875d96efa2d4d7885584db3cf06d5830154aeff1eaf3370efad4fab5cc3a17",
+      "pages_file": "p4681.pages.json",
+      "pages_sha256": "15aa5f07e8b7b62ca67eb4a3c3d59c63267bda10bbe97f991f188a2dda47eb74",
+      "extract_tool_version": "0.10",
+      "revision_locator": "Cover, \"For use in preparing 2025 Returns\""
+    },
+    {
       "id": "p501",
       "url": "https://www.irs.gov/pub/irs-pdf/p501.pdf",
       "resolved_url": "https://www.irs.gov/pub/irs-pdf/p501.pdf",
@@ -1829,6 +1919,24 @@
       "pages_sha256": "7bc09716fdaa675e919fe073d76b36fae4b881c7d77d2b452301eefdeabb02ea",
       "extract_tool_version": "0.10",
       "revision_locator": "PDF page 1, \"2025 Returns\""
+    },
+    {
+      "id": "p504",
+      "url": "https://www.irs.gov/pub/irs-pdf/p504.pdf",
+      "resolved_url": "https://www.irs.gov/pub/irs-pdf/p504.pdf",
+      "fetched_at": "2026-10-22T14:53:52.962710+00:00",
+      "file": "p504.pdf",
+      "sha256": "61bb4d52fa8c218dd9e6eac95513f16ffc5aa602df6b2f9af88369fbc295b175",
+      "revision": "2025",
+      "revision_status": "Printed year/revision inspected in extracted text; content review is tracked separately in PREMISES.md",
+      "text_file": "p504.txt",
+      "text_sha256": "ab5181b8bd02383ed4b695d9d83000d78ca95964cb0345629815c6e68a309da1",
+      "cols_file": "p504.cols.txt",
+      "cols_sha256": "0d985ad253efcd055a01931d1edec50db41ac80ff214206dbb1d969cbaf7fd65",
+      "pages_file": "p504.pages.json",
+      "pages_sha256": "02fdecb751a4728666defc38bcd67cf475637a87970b9581e8916bc8d603f1ff",
+      "extract_tool_version": "0.10",
+      "revision_locator": "Cover, \"For use in preparing 2025 Returns\""
     },
     {
       "id": "p505-2026",
