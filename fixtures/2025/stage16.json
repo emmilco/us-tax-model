@@ -110,7 +110,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 100000,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -157,7 +156,8 @@
         "refund.you_born": false,
         "refund.you_blind": false,
         "refund.spouse_born": false,
-        "refund.spouse_blind": false
+        "refund.spouse_blind": false,
+        "s1.cod_any": false
       },
       "expect": {
         "s1.line1": {
@@ -299,7 +299,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 150000,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -346,7 +345,8 @@
         "refund.you_born": false,
         "refund.you_blind": false,
         "refund.spouse_born": false,
-        "refund.spouse_blind": false
+        "refund.spouse_blind": false,
+        "s1.cod_any": false
       },
       "expect": {
         "s1.line1": {
@@ -488,7 +488,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 300000,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -535,7 +534,8 @@
         "refund.you_born": false,
         "refund.you_blind": false,
         "refund.spouse_born": false,
-        "refund.spouse_blind": false
+        "refund.spouse_blind": false,
+        "s1.cod_any": false
       },
       "expect": {
         "refund.line1": {
@@ -709,7 +709,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 300000,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -756,7 +755,8 @@
         "refund.you_born": true,
         "refund.you_blind": false,
         "refund.spouse_born": false,
-        "refund.spouse_blind": false
+        "refund.spouse_blind": false,
+        "s1.cod_any": false
       },
       "expect": {
         "refund.line1": {
@@ -910,7 +910,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 300000,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -957,7 +956,8 @@
         "refund.you_born": true,
         "refund.you_blind": false,
         "refund.spouse_born": false,
-        "refund.spouse_blind": false
+        "refund.spouse_blind": false,
+        "s1.cod_any": false
       },
       "expect": {
         "refund.line1": {
@@ -1106,7 +1106,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 300000,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -1212,7 +1211,8 @@
         "refund.you_born": false,
         "refund.you_blind": false,
         "refund.spouse_born": true,
-        "refund.spouse_blind": false
+        "refund.spouse_blind": false,
+        "s1.cod_any": false
       },
       "expect": {
         "refund.line1": {
@@ -1378,7 +1378,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 300000,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -1425,7 +1424,8 @@
         "refund.you_born": false,
         "refund.you_blind": false,
         "refund.spouse_born": false,
-        "refund.spouse_blind": false
+        "refund.spouse_blind": false,
+        "s1.cod_any": false
       },
       "expect": {
         "refund.line1": {
@@ -1575,7 +1575,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 500000,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -1622,7 +1621,8 @@
         "refund.you_born": false,
         "refund.you_blind": false,
         "refund.spouse_born": false,
-        "refund.spouse_blind": false
+        "refund.spouse_blind": false,
+        "s1.cod_any": false
       },
       "expect": {
         "refund.line1": {
@@ -1796,7 +1796,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 300000,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -1843,7 +1842,8 @@
         "refund.you_born": true,
         "refund.you_blind": true,
         "refund.spouse_born": false,
-        "refund.spouse_blind": false
+        "refund.spouse_blind": false,
+        "s1.cod_any": false
       },
       "expect": {
         "refund.line1": {
@@ -2005,7 +2005,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 200000,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -2052,7 +2051,8 @@
         "refund.you_born": false,
         "refund.you_blind": false,
         "refund.spouse_born": false,
-        "refund.spouse_blind": false
+        "refund.spouse_blind": false,
+        "s1.cod_any": false
       },
       "expect": {
         "refund.line1": {
@@ -2220,7 +2220,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -2329,7 +2328,9 @@
         "person[spouse].ira_basis": 0,
         "person[spouse].ira_dist": false,
         "person[taxpayer].ira_basis_adjusted": false,
-        "person[spouse].ira_basis_adjusted": false
+        "person[spouse].ira_basis_adjusted": false,
+        "s1.cod_any": false,
+        "ira.se_capital": false
       },
       "expect": {
         "ira.line1a": {
@@ -2558,7 +2559,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -2601,7 +2601,9 @@
         "person[taxpayer].ira_dist": false,
         "ira.special": false,
         "ira.deduct_less": false,
-        "person[taxpayer].ira_basis_adjusted": false
+        "person[taxpayer].ira_basis_adjusted": false,
+        "s1.cod_any": false,
+        "ira.se_capital": false
       },
       "expect": {
         "ira.line1a": {
@@ -2780,7 +2782,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -2821,7 +2822,9 @@
         "person[taxpayer].ira_dist": false,
         "ira.special": false,
         "ira.deduct_less": false,
-        "person[taxpayer].ira_basis_adjusted": false
+        "person[taxpayer].ira_basis_adjusted": false,
+        "s1.cod_any": false,
+        "ira.se_capital": false
       },
       "expect": {
         "ira.line1a": {
@@ -3024,7 +3027,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -3065,7 +3067,9 @@
         "person[taxpayer].ira_dist": false,
         "ira.special": false,
         "ira.deduct_less": false,
-        "person[taxpayer].ira_basis_adjusted": false
+        "person[taxpayer].ira_basis_adjusted": false,
+        "s1.cod_any": false,
+        "ira.se_capital": false
       },
       "expect": {
         "ira.line1a": {
@@ -3268,7 +3272,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -3309,7 +3312,9 @@
         "person[taxpayer].ira_dist": false,
         "ira.special": false,
         "ira.deduct_less": false,
-        "person[taxpayer].ira_basis_adjusted": false
+        "person[taxpayer].ira_basis_adjusted": false,
+        "s1.cod_any": false,
+        "ira.se_capital": false
       },
       "expect": {
         "ira.line1a": {
@@ -3512,7 +3517,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -3553,7 +3557,9 @@
         "person[taxpayer].ira_dist": false,
         "ira.special": false,
         "ira.deduct_less": false,
-        "person[taxpayer].ira_basis_adjusted": false
+        "person[taxpayer].ira_basis_adjusted": false,
+        "s1.cod_any": false,
+        "ira.se_capital": false
       },
       "expect": {
         "ira.line1a": {
@@ -3776,7 +3782,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -3883,7 +3888,9 @@
         "person[spouse].ira_basis": 0,
         "person[spouse].ira_dist": false,
         "person[taxpayer].ira_basis_adjusted": false,
-        "person[spouse].ira_basis_adjusted": false
+        "person[spouse].ira_basis_adjusted": false,
+        "s1.cod_any": false,
+        "ira.se_capital": false
       },
       "expect": {
         "ira.line1a": {
@@ -4057,7 +4064,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -4164,7 +4170,9 @@
         "person[spouse].ira_basis": 0,
         "person[spouse].ira_dist": false,
         "person[taxpayer].ira_basis_adjusted": false,
-        "person[spouse].ira_basis_adjusted": false
+        "person[spouse].ira_basis_adjusted": false,
+        "s1.cod_any": false,
+        "ira.se_capital": false
       },
       "expect": {
         "ira.line1a": {
@@ -4407,7 +4415,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -4448,7 +4455,9 @@
         "person[taxpayer].ira_dist": false,
         "ira.special": false,
         "ira.deduct_less": false,
-        "person[taxpayer].ira_basis_adjusted": false
+        "person[taxpayer].ira_basis_adjusted": false,
+        "s1.cod_any": false,
+        "ira.se_capital": false
       },
       "expect": {
         "ira.line1a": {
@@ -4684,7 +4693,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -4731,7 +4739,9 @@
         "ssb.pub915": false,
         "ssb.lump_sum": false,
         "ssb.terror_disability": false,
-        "person[taxpayer].ira_basis_adjusted": false
+        "person[taxpayer].ira_basis_adjusted": false,
+        "s1.cod_any": false,
+        "ira.se_capital": false
       },
       "expect": {
         "ira.line1a": {
@@ -5017,7 +5027,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 500000,
         "s1.line8g": 0,
@@ -5051,7 +5060,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
         "s1.gambling_pro": false,
-        "sa.gambling_losses": 700000
+        "sa.gambling_losses": 700000,
+        "s1.cod_any": false
       },
       "expect": {
         "s1.line8b": {
@@ -5260,7 +5270,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 500000,
         "s1.line8g": 0,
@@ -5294,7 +5303,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
         "s1.gambling_pro": false,
-        "sa.gambling_losses": 120000
+        "sa.gambling_losses": 120000,
+        "s1.cod_any": false
       },
       "expect": {
         "s1.line8b": {
@@ -5467,7 +5477,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 300000,
         "s1.line8g": 0,
@@ -5501,7 +5510,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
         "s1.gambling_pro": false,
-        "sa.gambling_losses": 200000
+        "sa.gambling_losses": 200000,
+        "s1.cod_any": false
       },
       "expect": {
         "s1.line8b": {
@@ -5661,7 +5671,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -5754,7 +5763,8 @@
         "person[spouse].w2[e0].box12_any": false,
         "f2441.employer_care": false,
         "s1.gambling_pro": false,
-        "sa.gambling_losses": 0
+        "sa.gambling_losses": 0,
+        "s1.cod_any": false
       },
       "expect": {
         "s1.line8g": {
@@ -5927,7 +5937,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -5961,7 +5970,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
         "s1.gambling_pro": false,
-        "sa.gambling_losses": 0
+        "sa.gambling_losses": 0,
+        "s1.cod_any": false
       },
       "expect": {
         "s1.line8h": {
@@ -6146,7 +6156,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -6180,7 +6189,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
         "s1.gambling_pro": false,
-        "sa.gambling_losses": 0
+        "sa.gambling_losses": 0,
+        "s1.cod_any": false
       },
       "expect": {
         "s1.line8i": {
@@ -6353,7 +6363,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -6387,7 +6396,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
         "s1.gambling_pro": false,
-        "sa.gambling_losses": 0
+        "sa.gambling_losses": 0,
+        "s1.cod_any": false
       },
       "expect": {
         "s1.line8j": {
@@ -6560,7 +6570,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -6594,7 +6603,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
         "s1.gambling_pro": false,
-        "sa.gambling_losses": 0
+        "sa.gambling_losses": 0,
+        "s1.cod_any": false
       },
       "expect": {
         "s1.line8r": {
@@ -6767,7 +6777,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -6808,7 +6817,8 @@
         "oi8z[z0].kind": "rtaa",
         "oi8z[z0].amount": 150000,
         "oi8z[z1].kind": "kickbacks",
-        "oi8z[z1].amount": 80000
+        "oi8z[z1].amount": 80000,
+        "s1.cod_any": false
       },
       "expect": {
         "s1.line8z": {
@@ -6990,7 +7000,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 500000,
         "s1.line8g": 0,
@@ -7045,7 +7054,8 @@
         "dependent[a].us_half": true,
         "dependent[a].eic_ssn": true,
         "s1.gambling_pro": false,
-        "sa.gambling_losses": 0
+        "sa.gambling_losses": 0,
+        "s1.cod_any": false
       },
       "expect": {
         "s1.line8b": {
@@ -7298,7 +7308,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -7332,7 +7341,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
         "interest[bank_a].amount": 30000,
-        "interest[bank_a].penalty": 7500
+        "interest[bank_a].penalty": 7500,
+        "s1.cod_any": false
       },
       "expect": {
         "s1.line18": {
@@ -7491,7 +7501,6 @@
         "s1.alimony": true,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -7526,7 +7535,8 @@
         "f2441.employer_care": false,
         "s1.alimony_received": 1200000,
         "s1.alimony_paid": 0,
-        "s1.alimony_unsupported": false
+        "s1.alimony_unsupported": false,
+        "s1.cod_any": false
       },
       "expect": {
         "s1.line2a": {
@@ -7681,7 +7691,6 @@
         "s1.alimony": true,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -7716,7 +7725,8 @@
         "f2441.employer_care": false,
         "s1.alimony_received": 0,
         "s1.alimony_paid": 1800000,
-        "s1.alimony_unsupported": false
+        "s1.alimony_unsupported": false,
+        "s1.cod_any": false
       },
       "expect": {
         "s1.line19a": {
@@ -7877,7 +7887,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -7922,7 +7931,8 @@
         "person[taxpayer].f8889[hsa].rollover": 0,
         "person[taxpayer].f8889[hsa].medical": 100000,
         "person[taxpayer].f8889[hsa].line17a": false,
-        "person[taxpayer].f8889[hsa].subject_part": 0
+        "person[taxpayer].f8889[hsa].subject_part": 0,
+        "s1.cod_any": false
       },
       "expect": {
         "person[taxpayer].f8889[hsa].line14a": {
@@ -8123,7 +8133,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -8169,7 +8178,8 @@
         "person[taxpayer].f8889[hsa].medical": 0,
         "person[taxpayer].f8889[hsa].line17a": true,
         "person[taxpayer].f8889[hsa].subject_part": 150000,
-        "person[taxpayer].died_before_65": false
+        "person[taxpayer].died_before_65": false,
+        "s1.cod_any": false
       },
       "expect": {
         "person[taxpayer].f8889[hsa].line14a": {
@@ -8378,7 +8388,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -8424,7 +8433,8 @@
         "person[taxpayer].f8889[hsa].medical": 0,
         "person[taxpayer].f8889[hsa].line17a": true,
         "person[taxpayer].f8889[hsa].subject_part": 0,
-        "person[taxpayer].died_before_65": false
+        "person[taxpayer].died_before_65": false,
+        "s1.cod_any": false
       },
       "expect": {
         "person[taxpayer].f8889[hsa].line14a": {
@@ -8631,7 +8641,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 500000,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -8664,7 +8673,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_unsupported": false
+        "s1.cod_unsupported": false,
+        "s1.cod_any": true
       },
       "expect": {
         "s1.line8c": {
@@ -8823,7 +8833,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 60000,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -8856,7 +8865,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_unsupported": false
+        "s1.cod_unsupported": false,
+        "s1.cod_any": true
       },
       "expect": {
         "s1.line8c": {
@@ -9002,7 +9012,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -9123,7 +9132,8 @@
         "person[spouse].f8889[hsa].rollover": 0,
         "person[spouse].f8889[hsa].medical": 100000,
         "person[spouse].f8889[hsa].line17a": false,
-        "person[spouse].f8889[hsa].subject_part": 0
+        "person[spouse].f8889[hsa].subject_part": 0,
+        "s1.cod_any": false
       },
       "expect": {
         "person[taxpayer].f8889[hsa].line14a": {
@@ -9352,7 +9362,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -9386,7 +9395,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
         "interest[bank_a].amount": 1000000,
-        "interest[bank_a].penalty": 50000
+        "interest[bank_a].penalty": 50000,
+        "s1.cod_any": false
       },
       "expect": {
         "s1.line18": {
@@ -9579,7 +9589,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -9671,7 +9680,8 @@
         "person[spouse].sav_prior_other": 0,
         "person[spouse].w2[e0].box12_any": false,
         "f2441.employer_care": false,
-        "person[spouse].died_before_65": true
+        "person[spouse].died_before_65": true,
+        "s1.cod_any": false
       },
       "expect": {
         "sa.boxes_age65": {
@@ -9799,7 +9809,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 300000,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -9846,7 +9855,8 @@
         "refund.you_born": false,
         "refund.you_blind": false,
         "refund.spouse_born": false,
-        "refund.spouse_blind": false
+        "refund.spouse_blind": false,
+        "s1.cod_any": false
       },
       "expect": {
         "refund.line1": {
@@ -10023,7 +10033,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 300000,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -10070,7 +10079,8 @@
         "refund.you_born": false,
         "refund.you_blind": false,
         "refund.spouse_born": false,
-        "refund.spouse_blind": false
+        "refund.spouse_blind": false,
+        "s1.cod_any": false
       },
       "expect": {
         "refund.line1": {
@@ -10247,7 +10257,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 300000,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -10294,7 +10303,8 @@
         "refund.you_born": false,
         "refund.you_blind": false,
         "refund.spouse_born": false,
-        "refund.spouse_blind": false
+        "refund.spouse_blind": false,
+        "s1.cod_any": false
       },
       "expect": {
         "refund.taxable": {
@@ -10458,7 +10468,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 300000,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -10505,7 +10514,8 @@
         "refund.you_born": false,
         "refund.you_blind": false,
         "refund.spouse_born": false,
-        "refund.spouse_blind": false
+        "refund.spouse_blind": false,
+        "s1.cod_any": false
       },
       "expect": {
         "refund.taxable": {
@@ -10557,204 +10567,6 @@
             "locator": "pp. 88–89, Line 1, \"Exception. See Itemized Deduction Recoveries in Pub. 525 instead of using the State and Local Income Tax Refund Worksheet in these instructions if any of the following applies\", items 1 and 5; p525 p. 24, Recovery for 2 or more years, \"you must allocate, on a pro rata basis, the recovered amount between the years in which you paid it\"",
             "revision": "2025; printed date 2026-02-25",
             "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
-            "tax_year": 2025
-          }
-        }
-      }
-    },
-    {
-      "id": "stage16.refuse.s1.refund_other",
-      "covers": [
-        "s1:refuse"
-      ],
-      "evidence": "synthetic refusal regression",
-      "evidence_note": "Inputs are stage16.refund.f7 (single; 2024 itemized with state income tax, refund $3,000, Schedule A line 5d $15,000 and 5e $10,000, line 17 $30,000), with the other-recoveries question (a recovery of an amount deducted in an earlier year other than a state or local income tax refund) answered Yes. No worksheet line carries this gate, so refund.taxable is a number and Schedule 1 line 1's own entry decides its value; line 10 and Form 1040 line 8 carry the same refusal through it. The refused values are the evaluator's.",
-      "inputs": {
-        "f1040.status": "single",
-        "$person": [
-          "taxpayer"
-        ],
-        "person[taxpayer].role": "taxpayer",
-        "$f8889@person[taxpayer]": [],
-        "person[taxpayer].rrta": false,
-        "$interest": [],
-        "$sales": [],
-        "$gift": [],
-        "sb.ordinary_dividends": 0,
-        "sb.unsupported": false,
-        "sb.line7a": false,
-        "sb.fbar_required": false,
-        "sb.form8938": false,
-        "sb.line8": false,
-        "f1040.line3a": 0,
-        "div.box2b": 0,
-        "div.box2c": 0,
-        "div.box2d": 0,
-        "div.box2e": 0,
-        "div.box2f": 0,
-        "div.box3": 0,
-        "div.box9": 0,
-        "div.box10": 0,
-        "div.box13": 0,
-        "div.basis_reconciled": true,
-        "sd.other_forms": false,
-        "sd.carryover": false,
-        "sd.distributions": 0,
-        "qbi.dividends": 0,
-        "qbi.unsupported": false,
-        "f4952.line1": 0,
-        "f4952.line4g": 0,
-        "f4952.carryover": false,
-        "f4952.unsupported": false,
-        "f4952.alternative_allocation": false,
-        "f8959.unsupported": false,
-        "f8960.unsupported": false,
-        "f8960.refund": false,
-        "f8960.allocated_taxes": 0,
-        "ftc.taxes": 0,
-        "ftc.all_passive": true,
-        "ftc.statements": true,
-        "ftc.eligible": true,
-        "ftc.elect": true,
-        "s3.line9": 0,
-        "s3.line10": 0,
-        "s3.line12": 0,
-        "s3.line14": 0,
-        "sa.unsupported": false,
-        "sa.charity_limited": false,
-        "sa.excluded_income": false,
-        "sa.dependent": false,
-        "sa.spouse_extra": false,
-        "person[taxpayer].age65": false,
-        "person[taxpayer].blind": false,
-        "sa.spouse_itemizes": false,
-        "sa.elect_itemize": false,
-        "sa.line1": 0,
-        "sa.line5a": 0,
-        "sa.line5b": 0,
-        "sa.line5c": 0,
-        "sa.line8a": 0,
-        "sa.line11": 0,
-        "scope.schedule1": false,
-        "scope.credits": false,
-        "scope.other_income": false,
-        "scope.other_line16": false,
-        "s2.amt": false,
-        "s2.other": false,
-        "f1040.line25b": 0,
-        "f1040.line25c": 0,
-        "f1040.line26": 200000,
-        "f1040.line35a": 173300,
-        "f1040.line36": 0,
-        "$w2@person[taxpayer]": [
-          "emp_a"
-        ],
-        "person[taxpayer].w2[emp_a].box1": 5000000,
-        "person[taxpayer].w2[emp_a].box2": 0,
-        "person[taxpayer].w2[emp_a].box3": 5000000,
-        "person[taxpayer].w2[emp_a].box4": 310000,
-        "person[taxpayer].w2[emp_a].box5": 5000000,
-        "person[taxpayer].w2[emp_a].box6": 72500,
-        "person[taxpayer].w2[emp_a].box7": 0,
-        "$dependent": [],
-        "person[taxpayer].tin": true,
-        "person[taxpayer].work_ssn": true,
-        "household.home_cost": false,
-        "household.unmarried": true,
-        "s8812.combat_pay": false,
-        "s8812.puerto_rico": false,
-        "$retirement": [],
-        "ssb.benefits": 0,
-        "s1.uc_paid": 0,
-        "s1.alimony": false,
-        "s1.cod_amount": 0,
-        "refund.received": 300000,
-        "refund.other": true,
-        "s1.line8_other": false,
-        "s1.gambling_winnings": 0,
-        "s1.line8g": 0,
-        "s1.line8h": 0,
-        "s1.line8i": 0,
-        "s1.line8j": 0,
-        "s1.line8r": 0,
-        "$oi8z": [],
-        "s1.jury_to_employer": 0,
-        "person[taxpayer].educator_expenses": 0,
-        "sli.interest": 0,
-        "s1a.tips": false,
-        "s1a.overtime": false,
-        "s1a.carloan": false,
-        "$sc@person[taxpayer]": [],
-        "qbi.carryforward": 0,
-        "f5695.part1_any": false,
-        "f5695.part2_any": false,
-        "f2441.care": false,
-        "f2441.benefits": false,
-        "person[taxpayer].sav_born": true,
-        "person[taxpayer].sav_student": false,
-        "person[taxpayer].sav_claimed": false,
-        "person[taxpayer].sav_trad": false,
-        "person[taxpayer].sav_able": false,
-        "person[taxpayer].sav_roth": 0,
-        "person[taxpayer].sav_excess": false,
-        "person[taxpayer].sav_voluntary": 0,
-        "person[taxpayer].sav_prior_joint": 0,
-        "person[taxpayer].sav_prior_other": 0,
-        "person[taxpayer].w2[emp_a].box12_any": false,
-        "f2441.employer_care": false,
-        "refund.box8": false,
-        "refund.not_2024": false,
-        "refund.itemized": true,
-        "refund.sales": false,
-        "refund.exc_tax": false,
-        "refund.exc_who": false,
-        "refund.line5d_2024": 1500000,
-        "refund.line5e_2024": 1000000,
-        "refund.line17_2024": 3000000,
-        "refund.status": "single",
-        "refund.mfs_spouse_itemized": false,
-        "refund.you_born": false,
-        "refund.you_blind": false,
-        "refund.spouse_born": false,
-        "refund.spouse_blind": false
-      },
-      "expect": {
-        "s1.line1": {
-          "kind": "refusal",
-          "gate": "refund.other",
-          "form": "Pub. 525, Recoveries (Worksheet 2; other recoveries on Schedule 1, line 8z)",
-          "remedy": "A refund or other recovery of an amount deducted or credited in an earlier year, other than a state or local income tax refund, is outside this tool.",
-          "cite": {
-            "doc": "p525",
-            "locator": "p. 25, Where to report, \"Enter your state or local income tax refund on Schedule 1 (Form 1040), line 1, and the total of all other recoveries as other income on Schedule 1 (Form 1040), line 8z\"; i1040gi p. 89, Line 1, item 2",
-            "revision": "2025",
-            "snapshot": "39b0fa5e04c5d159a34583da12a91326f396f69286f4b7a6f399d34cebc2c25b",
-            "tax_year": 2025
-          }
-        },
-        "s1.line10": {
-          "kind": "refusal",
-          "gate": "refund.other",
-          "form": "Pub. 525, Recoveries (Worksheet 2; other recoveries on Schedule 1, line 8z)",
-          "remedy": "A refund or other recovery of an amount deducted or credited in an earlier year, other than a state or local income tax refund, is outside this tool.",
-          "cite": {
-            "doc": "p525",
-            "locator": "p. 25, Where to report, \"Enter your state or local income tax refund on Schedule 1 (Form 1040), line 1, and the total of all other recoveries as other income on Schedule 1 (Form 1040), line 8z\"; i1040gi p. 89, Line 1, item 2",
-            "revision": "2025",
-            "snapshot": "39b0fa5e04c5d159a34583da12a91326f396f69286f4b7a6f399d34cebc2c25b",
-            "tax_year": 2025
-          }
-        },
-        "f1040.line8": {
-          "kind": "refusal",
-          "gate": "refund.other",
-          "form": "Pub. 525, Recoveries (Worksheet 2; other recoveries on Schedule 1, line 8z)",
-          "remedy": "A refund or other recovery of an amount deducted or credited in an earlier year, other than a state or local income tax refund, is outside this tool.",
-          "cite": {
-            "doc": "p525",
-            "locator": "p. 25, Where to report, \"Enter your state or local income tax refund on Schedule 1 (Form 1040), line 1, and the total of all other recoveries as other income on Schedule 1 (Form 1040), line 8z\"; i1040gi p. 89, Line 1, item 2",
-            "revision": "2025",
-            "snapshot": "39b0fa5e04c5d159a34583da12a91326f396f69286f4b7a6f399d34cebc2c25b",
             "tax_year": 2025
           }
         }
@@ -10867,7 +10679,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 500000,
         "s1.line8g": 0,
@@ -10901,7 +10712,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
         "s1.gambling_pro": true,
-        "sa.gambling_losses": 700000
+        "sa.gambling_losses": 700000,
+        "s1.cod_any": false
       },
       "expect": {
         "s1.line8b": {
@@ -11065,7 +10877,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": true,
         "s1.gambling_winnings": 500000,
         "s1.line8g": 0,
@@ -11099,7 +10910,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
         "s1.gambling_pro": false,
-        "sa.gambling_losses": 700000
+        "sa.gambling_losses": 700000,
+        "s1.cod_any": false
       },
       "expect": {
         "s1.line8b": {
@@ -11254,7 +11066,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -11288,7 +11099,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
         "s1.gambling_pro": false,
-        "sa.gambling_losses": 0
+        "sa.gambling_losses": 0,
+        "s1.cod_any": false
       },
       "expect": {
         "s1.line8h": {
@@ -11456,7 +11268,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 500000,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -11489,7 +11300,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "s1.cod_unsupported": true
+        "s1.cod_unsupported": true,
+        "s1.cod_any": true
       },
       "expect": {
         "s1.cod_refused": {
@@ -11666,7 +11478,6 @@
         "s1.alimony": true,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -11701,7 +11512,8 @@
         "f2441.employer_care": false,
         "s1.alimony_received": 1200000,
         "s1.alimony_paid": 0,
-        "s1.alimony_unsupported": true
+        "s1.alimony_unsupported": true,
+        "s1.cod_any": false
       },
       "expect": {
         "s1.alimony_refused": {
@@ -11865,7 +11677,6 @@
         "s1.alimony": true,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -11900,7 +11711,8 @@
         "f2441.employer_care": false,
         "s1.alimony_received": 0,
         "s1.alimony_paid": 1800000,
-        "s1.alimony_unsupported": true
+        "s1.alimony_unsupported": true,
+        "s1.cod_any": false
       },
       "expect": {
         "s1.paid_refused": {
@@ -12064,7 +11876,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -12105,7 +11916,8 @@
         "oi8z[z0].kind": "recovery",
         "oi8z[z0].amount": 150000,
         "oi8z[z1].kind": "kickbacks",
-        "oi8z[z1].amount": 80000
+        "oi8z[z1].amount": 80000,
+        "s1.cod_any": false
       },
       "expect": {
         "oi8z[z0].taxable": {
@@ -12273,7 +12085,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -12314,7 +12125,8 @@
         "oi8z[z0].kind": "charitable_recapture",
         "oi8z[z0].amount": 150000,
         "oi8z[z1].kind": "kickbacks",
-        "oi8z[z1].amount": 80000
+        "oi8z[z1].amount": 80000,
+        "s1.cod_any": false
       },
       "expect": {
         "oi8z[z0].taxable": {
@@ -12482,7 +12294,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -12523,7 +12334,8 @@
         "oi8z[z0].kind": "other",
         "oi8z[z0].amount": 150000,
         "oi8z[z1].kind": "kickbacks",
-        "oi8z[z1].amount": 80000
+        "oi8z[z1].amount": 80000,
+        "s1.cod_any": false
       },
       "expect": {
         "oi8z[z0].taxable": {
@@ -12701,7 +12513,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -12797,7 +12608,8 @@
         "f2441.line14": 0,
         "f2441.plans_differ": false,
         "f2441.plan_max": 500000,
-        "f2441.employer_care": true
+        "f2441.employer_care": true,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.paid_total": {
@@ -12945,7 +12757,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -12990,7 +12801,8 @@
         "person[taxpayer].f8889[hsa].rollover": 400000,
         "person[taxpayer].f8889[hsa].medical": 100000,
         "person[taxpayer].f8889[hsa].line17a": false,
-        "person[taxpayer].f8889[hsa].subject_part": 0
+        "person[taxpayer].f8889[hsa].subject_part": 0,
+        "s1.cod_any": false
       },
       "expect": {
         "person[taxpayer].f8889[hsa].line14a": {
@@ -13160,7 +12972,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -13205,7 +13016,8 @@
         "person[taxpayer].f8889[hsa].rollover": 0,
         "person[taxpayer].f8889[hsa].medical": 100000,
         "person[taxpayer].f8889[hsa].line17a": false,
-        "person[taxpayer].f8889[hsa].subject_part": 0
+        "person[taxpayer].f8889[hsa].subject_part": 0,
+        "s1.cod_any": false
       },
       "expect": {
         "person[taxpayer].f8889[hsa].line14c": {
@@ -13366,7 +13178,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -13412,7 +13223,8 @@
         "person[taxpayer].f8889[hsa].medical": 0,
         "person[taxpayer].f8889[hsa].line17a": true,
         "person[taxpayer].f8889[hsa].subject_part": 500000,
-        "person[taxpayer].died_before_65": false
+        "person[taxpayer].died_before_65": false,
+        "s1.cod_any": false
       },
       "expect": {
         "person[taxpayer].f8889[hsa].line16": {
@@ -13554,7 +13366,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -13661,7 +13472,9 @@
         "person[spouse].ira_basis": 0,
         "person[spouse].ira_dist": false,
         "person[taxpayer].ira_basis_adjusted": false,
-        "person[spouse].ira_basis_adjusted": false
+        "person[spouse].ira_basis_adjusted": false,
+        "s1.cod_any": false,
+        "ira.se_capital": false
       },
       "expect": {
         "person[taxpayer].ira_line11": {
@@ -13829,7 +13642,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -13936,7 +13748,9 @@
         "person[spouse].ira_basis": 0,
         "person[spouse].ira_dist": false,
         "person[taxpayer].ira_basis_adjusted": false,
-        "person[spouse].ira_basis_adjusted": false
+        "person[spouse].ira_basis_adjusted": false,
+        "s1.cod_any": false,
+        "ira.se_capital": false
       },
       "expect": {
         "ira.line10": {
@@ -14104,7 +13918,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -14145,7 +13958,9 @@
         "person[taxpayer].ira_dist": false,
         "ira.special": false,
         "ira.deduct_less": false,
-        "person[taxpayer].ira_basis_adjusted": false
+        "person[taxpayer].ira_basis_adjusted": false,
+        "s1.cod_any": false,
+        "ira.se_capital": false
       },
       "expect": {
         "person[taxpayer].ira_line11": {
@@ -14309,7 +14124,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -14350,7 +14164,9 @@
         "person[taxpayer].ira_dist": false,
         "ira.special": false,
         "ira.deduct_less": false,
-        "person[taxpayer].ira_basis_adjusted": false
+        "person[taxpayer].ira_basis_adjusted": false,
+        "s1.cod_any": false,
+        "ira.se_capital": false
       },
       "expect": {
         "person[taxpayer].ira_line11": {
@@ -14501,7 +14317,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -14542,7 +14357,9 @@
         "person[taxpayer].ira_dist": false,
         "ira.special": false,
         "ira.deduct_less": false,
-        "person[taxpayer].ira_basis_adjusted": false
+        "person[taxpayer].ira_basis_adjusted": false,
+        "s1.cod_any": false,
+        "ira.se_capital": false
       },
       "expect": {
         "ira.line10": {
@@ -14697,7 +14514,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -14738,7 +14554,9 @@
         "person[taxpayer].ira_dist": false,
         "ira.special": true,
         "ira.deduct_less": false,
-        "person[taxpayer].ira_basis_adjusted": false
+        "person[taxpayer].ira_basis_adjusted": false,
+        "s1.cod_any": false,
+        "ira.se_capital": false
       },
       "expect": {
         "person[taxpayer].ira_line11": {
@@ -14889,7 +14707,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -14930,7 +14747,9 @@
         "person[taxpayer].ira_dist": false,
         "ira.special": false,
         "ira.deduct_less": false,
-        "person[taxpayer].ira_basis_adjusted": false
+        "person[taxpayer].ira_basis_adjusted": false,
+        "s1.cod_any": false,
+        "ira.se_capital": false
       },
       "expect": {
         "person[taxpayer].ira_line11": {
@@ -15081,7 +14900,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -15122,7 +14940,9 @@
         "person[taxpayer].ira_dist": false,
         "ira.special": false,
         "ira.deduct_less": false,
-        "person[taxpayer].ira_basis_adjusted": false
+        "person[taxpayer].ira_basis_adjusted": false,
+        "s1.cod_any": false,
+        "ira.se_capital": false
       },
       "expect": {
         "person[taxpayer].ira_line11": {
@@ -15274,7 +15094,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -15315,7 +15134,9 @@
         "person[taxpayer].ira_dist": true,
         "ira.special": false,
         "ira.deduct_less": false,
-        "person[taxpayer].ira_basis_adjusted": false
+        "person[taxpayer].ira_basis_adjusted": false,
+        "s1.cod_any": false,
+        "ira.se_capital": false
       },
       "expect": {
         "person[taxpayer].ira_line12": {
@@ -15487,7 +15308,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -15528,7 +15348,9 @@
         "person[taxpayer].ira_dist": false,
         "ira.special": false,
         "ira.deduct_less": false,
-        "person[taxpayer].ira_basis_adjusted": true
+        "person[taxpayer].ira_basis_adjusted": true,
+        "s1.cod_any": false,
+        "ira.se_capital": false
       },
       "expect": {
         "person[taxpayer].ira_8606_line2": {
@@ -15696,7 +15518,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -15743,7 +15564,9 @@
         "ssb.pub915": false,
         "ssb.lump_sum": false,
         "ssb.terror_disability": false,
-        "person[taxpayer].ira_basis_adjusted": false
+        "person[taxpayer].ira_basis_adjusted": false,
+        "s1.cod_any": false,
+        "ira.se_capital": false
       },
       "expect": {
         "person[taxpayer].ira_ssb_figured": {
@@ -15881,7 +15704,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -15922,7 +15744,9 @@
         "person[taxpayer].ira_dist": false,
         "ira.special": false,
         "ira.deduct_less": true,
-        "person[taxpayer].ira_basis_adjusted": false
+        "person[taxpayer].ira_basis_adjusted": false,
+        "s1.cod_any": false,
+        "ira.se_capital": false
       },
       "expect": {
         "ira.total": {
@@ -16064,7 +15888,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -16104,7 +15927,9 @@
         "person[taxpayer].ira_dist": false,
         "ira.special": false,
         "ira.deduct_less": false,
-        "person[taxpayer].ira_basis_adjusted": false
+        "person[taxpayer].ira_basis_adjusted": false,
+        "s1.cod_any": false,
+        "ira.se_capital": false
       },
       "expect": {
         "ira.line1a": {
@@ -16236,7 +16061,6 @@
         "s1.alimony": true,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -16287,7 +16111,9 @@
         "eic.married": false,
         "f1040.tax_exempt_interest": 0,
         "person[taxpayer].born_after_1960": true,
-        "person[taxpayer].born_before_2001": true
+        "person[taxpayer].born_before_2001": true,
+        "s1.cod_any": false,
+        "ira.se_capital": false
       },
       "expect": {
         "ira.line10": {
@@ -16443,7 +16269,6 @@
         "s1.alimony": true,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -16478,7 +16303,8 @@
         "f2441.employer_care": false,
         "s1.alimony_received": 0,
         "s1.alimony_paid": 600000,
-        "s1.alimony_unsupported": false
+        "s1.alimony_unsupported": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f1040.line11a": {
@@ -16618,7 +16444,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -16659,7 +16484,9 @@
         "person[taxpayer].ira_dist": false,
         "ira.special": false,
         "ira.deduct_less": false,
-        "person[taxpayer].ira_basis_adjusted": false
+        "person[taxpayer].ira_basis_adjusted": false,
+        "s1.cod_any": false,
+        "ira.se_capital": false
       },
       "expect": {
         "ira.line10": {
@@ -16782,7 +16609,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -16889,7 +16715,9 @@
         "person[spouse].ira_basis": 0,
         "person[spouse].ira_dist": false,
         "person[taxpayer].ira_basis_adjusted": false,
-        "person[spouse].ira_basis_adjusted": false
+        "person[spouse].ira_basis_adjusted": false,
+        "s1.cod_any": false,
+        "ira.se_capital": false
       },
       "expect": {
         "ira.line10": {
@@ -17020,7 +16848,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -17127,7 +16954,9 @@
         "person[spouse].ira_basis": 0,
         "person[spouse].ira_dist": false,
         "person[taxpayer].ira_basis_adjusted": false,
-        "person[spouse].ira_basis_adjusted": false
+        "person[spouse].ira_basis_adjusted": false,
+        "s1.cod_any": false,
+        "ira.se_capital": false
       },
       "expect": {
         "ira.line10": {
@@ -17258,7 +17087,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -17365,7 +17193,9 @@
         "person[spouse].ira_basis": 0,
         "person[spouse].ira_dist": false,
         "person[taxpayer].ira_basis_adjusted": false,
-        "person[spouse].ira_basis_adjusted": false
+        "person[spouse].ira_basis_adjusted": false,
+        "s1.cod_any": false,
+        "ira.se_capital": false
       },
       "expect": {
         "ira.line10": {
@@ -17495,7 +17325,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -17602,7 +17431,9 @@
         "person[spouse].ira_dist": false,
         "person[taxpayer].ira_basis_adjusted": false,
         "person[spouse].ira_basis_adjusted": false,
-        "$interest": []
+        "$interest": [],
+        "s1.cod_any": false,
+        "ira.se_capital": false
       },
       "expect": {
         "ira.line12a": {
@@ -17752,7 +17583,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -17797,7 +17627,8 @@
         "person[taxpayer].f8889[hsa].rollover": 0,
         "person[taxpayer].f8889[hsa].medical": 100000,
         "person[taxpayer].f8889[hsa].line17a": false,
-        "person[taxpayer].f8889[hsa].subject_part": 0
+        "person[taxpayer].f8889[hsa].subject_part": 0,
+        "s1.cod_any": false
       },
       "expect": {
         "person[taxpayer].f8889[hsa].line13": {
@@ -17957,7 +17788,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 150000,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -18001,7 +17831,8 @@
         "refund.line17_2024": 1600000,
         "refund.status": "single",
         "refund.you_born": false,
-        "refund.you_blind": false
+        "refund.you_blind": false,
+        "s1.cod_any": false
       },
       "expect": {
         "refund.line1": {
@@ -18157,7 +17988,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 200000,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -18197,7 +18027,8 @@
         "refund.exc_tax": false,
         "refund.exc_who": false,
         "refund.line5d_2024": 1200000,
-        "refund.line5e_2024": 1000000
+        "refund.line5e_2024": 1000000,
+        "s1.cod_any": false
       },
       "expect": {
         "refund.line1": {
@@ -18225,6 +18056,1529 @@
           "cents": 0
         },
         "s1.line1": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage16.refuse.refund.line5e_bad",
+      "covers": [
+        "refund:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage16.refund.f3 (a taxable state income tax refund figured on the worksheet) with the 2024 Schedule A line 5e entered $1 above line 5d, which cannot be (i1040sca p. 7, Line 5e, \"enter the smaller of line 5d or $40,000\"); worksheet line 2 carries the entry-error refusal and Schedule 1 line 1 reads it. The refused values are the evaluator's.",
+      "inputs": {
+        "f1040.status": "single",
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
+        "person[taxpayer].rrta": false,
+        "$interest": [],
+        "$sales": [],
+        "$gift": [],
+        "sb.ordinary_dividends": 0,
+        "sb.unsupported": false,
+        "sb.line7a": false,
+        "sb.fbar_required": false,
+        "sb.form8938": false,
+        "sb.line8": false,
+        "f1040.line3a": 0,
+        "div.box2b": 0,
+        "div.box2c": 0,
+        "div.box2d": 0,
+        "div.box2e": 0,
+        "div.box2f": 0,
+        "div.box3": 0,
+        "div.box9": 0,
+        "div.box10": 0,
+        "div.box13": 0,
+        "div.basis_reconciled": true,
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "qbi.dividends": 0,
+        "qbi.unsupported": false,
+        "f4952.line1": 0,
+        "f4952.line4g": 0,
+        "f4952.carryover": false,
+        "f4952.unsupported": false,
+        "f4952.alternative_allocation": false,
+        "f8959.unsupported": false,
+        "f8960.unsupported": false,
+        "f8960.refund": false,
+        "f8960.allocated_taxes": 0,
+        "ftc.taxes": 0,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0,
+        "sa.unsupported": false,
+        "sa.charity_limited": false,
+        "sa.excluded_income": false,
+        "sa.dependent": false,
+        "sa.spouse_extra": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
+        "sa.spouse_itemizes": false,
+        "sa.elect_itemize": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "scope.schedule1": false,
+        "scope.credits": false,
+        "scope.other_income": false,
+        "scope.other_line16": false,
+        "s2.amt": false,
+        "s2.other": false,
+        "f1040.line25b": 0,
+        "f1040.line25c": 0,
+        "f1040.line26": 200000,
+        "f1040.line35a": 173300,
+        "f1040.line36": 0,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 0,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].w2[emp_a].box7": 0,
+        "$dependent": [],
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false,
+        "$retirement": [],
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 300000,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
+        "person[taxpayer].educator_expenses": 0,
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false,
+        "refund.box8": false,
+        "refund.not_2024": false,
+        "refund.itemized": true,
+        "refund.sales": false,
+        "refund.exc_tax": false,
+        "refund.exc_who": false,
+        "refund.line5d_2024": 900000,
+        "refund.line5e_2024": 900100,
+        "refund.line17_2024": 2000000,
+        "refund.status": "single",
+        "refund.mfs_spouse_itemized": false,
+        "refund.you_born": false,
+        "refund.you_blind": false,
+        "refund.spouse_born": false,
+        "refund.spouse_blind": false,
+        "s1.cod_any": false
+      },
+      "expect": {
+        "refund.line2": {
+          "kind": "refusal",
+          "gate": "refund.line5e_bad",
+          "form": "State and Local Income Tax Refund Worksheet, line 2 (2024 Schedule A lines 5d and 5e)",
+          "remedy": "The amount on 2024 Schedule A line 5e cannot be more than line 5d, since line 5e is the smaller of line 5d and the limit. Check both amounts against your 2024 Schedule A.",
+          "cite": {
+            "doc": "i1040sca",
+            "locator": "p. 7, Line 5e, \"enter the smaller of line 5d or $40,000 ($20,000 if married filing separately)\"",
+            "revision": "2025; printed date 2025-12-08",
+            "snapshot": "b0999b12d9dc4b13868501a9c1879011c00d2fc035f13a1391251d355a6242c8",
+            "tax_year": 2025
+          }
+        },
+        "s1.line1": {
+          "kind": "refusal",
+          "gate": "refund.line5e_bad",
+          "form": "State and Local Income Tax Refund Worksheet, line 2 (2024 Schedule A lines 5d and 5e)",
+          "remedy": "The amount on 2024 Schedule A line 5e cannot be more than line 5d, since line 5e is the smaller of line 5d and the limit. Check both amounts against your 2024 Schedule A.",
+          "cite": {
+            "doc": "i1040sca",
+            "locator": "p. 7, Line 5e, \"enter the smaller of line 5d or $40,000 ($20,000 if married filing separately)\"",
+            "revision": "2025; printed date 2025-12-08",
+            "snapshot": "b0999b12d9dc4b13868501a9c1879011c00d2fc035f13a1391251d355a6242c8",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage16.refuse.ira.se_capital",
+      "covers": [
+        "ira:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage14.sc.basic (a single filer with one Schedule C) with a $3,000 traditional IRA contribution, no plan coverage, and Yes to the question whether the Schedule C income is from a business in which personal services are not a material income-producing factor (p590a pp. 6–7, Self-employment income); IRA Deduction Worksheet line 9 carries the refusal and Schedule 1 line 20 reads it. The refused values are the evaluator's.",
+      "inputs": {
+        "f1040.status": "single",
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
+        "person[taxpayer].rrta": false,
+        "$interest": [],
+        "$sales": [],
+        "$gift": [],
+        "sb.ordinary_dividends": 0,
+        "sb.unsupported": false,
+        "sb.line7a": false,
+        "sb.fbar_required": false,
+        "sb.form8938": false,
+        "sb.line8": false,
+        "f1040.line3a": 0,
+        "div.box2b": 0,
+        "div.box2c": 0,
+        "div.box2d": 0,
+        "div.box2e": 0,
+        "div.box2f": 0,
+        "div.box3": 0,
+        "div.box9": 0,
+        "div.box10": 0,
+        "div.box13": 0,
+        "div.basis_reconciled": true,
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "qbi.dividends": 0,
+        "qbi.unsupported": false,
+        "f4952.line1": 0,
+        "f4952.line4g": 0,
+        "f4952.carryover": false,
+        "f4952.unsupported": false,
+        "f4952.alternative_allocation": false,
+        "f8959.unsupported": false,
+        "f8960.unsupported": false,
+        "f8960.refund": false,
+        "f8960.allocated_taxes": 0,
+        "ftc.taxes": 0,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0,
+        "sa.unsupported": false,
+        "sa.charity_limited": false,
+        "sa.excluded_income": false,
+        "sa.dependent": false,
+        "sa.spouse_extra": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
+        "sa.spouse_itemizes": false,
+        "sa.elect_itemize": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "scope.schedule1": false,
+        "scope.credits": false,
+        "scope.other_income": false,
+        "scope.other_line16": false,
+        "s2.amt": false,
+        "s2.other": false,
+        "f1040.line25b": 0,
+        "f1040.line25c": 0,
+        "f1040.line26": 0,
+        "f1040.line35a": 0,
+        "f1040.line36": 0,
+        "$w2@person[taxpayer]": [],
+        "$dependent": [],
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false,
+        "$retirement": [],
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
+        "person[taxpayer].educator_expenses": 0,
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [
+          "shop"
+        ],
+        "qbi.carryforward": 0,
+        "person[taxpayer].sc[shop].statutory": false,
+        "person[taxpayer].sc[shop].passive": true,
+        "person[taxpayer].sc[shop].spouse_owned": false,
+        "person[taxpayer].sc[shop].method_other": false,
+        "person[taxpayer].sc[shop].special": false,
+        "person[taxpayer].sc[shop].line1": 6000000,
+        "person[taxpayer].sc[shop].line2": 100000,
+        "person[taxpayer].sc[shop].line6": 50000,
+        "person[taxpayer].sc[shop].line8": 120000,
+        "person[taxpayer].sc[shop].line10": 0,
+        "person[taxpayer].sc[shop].line11": 0,
+        "person[taxpayer].sc[shop].line14": 0,
+        "person[taxpayer].sc[shop].line15": 0,
+        "person[taxpayer].sc[shop].line16a": 0,
+        "person[taxpayer].sc[shop].line16b": 0,
+        "person[taxpayer].sc[shop].line17": 0,
+        "person[taxpayer].sc[shop].line18": 0,
+        "person[taxpayer].sc[shop].line19": 0,
+        "person[taxpayer].sc[shop].rent_equipment": 0,
+        "person[taxpayer].sc[shop].line20b": 0,
+        "person[taxpayer].sc[shop].line21": 0,
+        "person[taxpayer].sc[shop].line22": 80000,
+        "person[taxpayer].sc[shop].line23": 0,
+        "person[taxpayer].sc[shop].line24a": 0,
+        "person[taxpayer].sc[shop].meals_50": 60000,
+        "person[taxpayer].sc[shop].meals_80": 100000,
+        "person[taxpayer].sc[shop].meals_100": 0,
+        "person[taxpayer].sc[shop].line25": 40000,
+        "person[taxpayer].sc[shop].line26": 0,
+        "person[taxpayer].sc[shop].line48": 25000,
+        "person[taxpayer].sc[shop].ho_uses": false,
+        "person[taxpayer].sc[shop].at_risk": true,
+        "person[taxpayer].sc[shop].inventory_other": false,
+        "person[taxpayer].sc[shop].line35": 200000,
+        "person[taxpayer].sc[shop].line36": 1000000,
+        "person[taxpayer].sc[shop].line37": 0,
+        "person[taxpayer].sc[shop].line38": 0,
+        "person[taxpayer].sc[shop].line39": 0,
+        "person[taxpayer].sc[shop].line41": 300000,
+        "person[taxpayer].sc[shop].hi_uses": false,
+        "person[taxpayer].sc[shop].tips_ot": false,
+        "$scveh@person[taxpayer].sc[shop]": [],
+        "$asset@person[taxpayer].sc[shop]": [],
+        "$ltc@person[taxpayer].sc[shop]": [],
+        "person[taxpayer].se_screen": false,
+        "person[taxpayer].plan": "none",
+        "s179.line10": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": true,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "f2441.employer_care": false,
+        "s1.cod_any": false,
+        "person[taxpayer].ira_trad": 300000,
+        "person[taxpayer].ira_excess": false,
+        "person[taxpayer].ira_age50": false,
+        "person[taxpayer].ira_work_plan": false,
+        "person[taxpayer].ira_basis": 0,
+        "person[taxpayer].ira_dist": false,
+        "ira.special": false,
+        "ira.deduct_less": false,
+        "person[taxpayer].ira_basis_adjusted": false,
+        "ira.se_capital": true
+      },
+      "expect": {
+        "ira.line9": {
+          "kind": "refusal",
+          "gate": "ira.se_capital_gate",
+          "form": "IRA compensation from self-employment (Pub. 590-A)",
+          "remedy": "Self-employment income counts as IRA compensation only where your personal services are a material income-producing factor; Schedule C income mainly from investments or property is outside this tool.",
+          "cite": {
+            "doc": "p590a",
+            "locator": "pp. 6–7, Self-employment income, \"earnings from your trade or business (provided your personal services are a material income-producing factor)\"",
+            "revision": "2025",
+            "snapshot": "ca0e42873cfd66d2d9bfd082125d381f8a0c2f3b0a441d7d65ab5ccc06a0e1c7",
+            "tax_year": 2025
+          }
+        },
+        "s1.line20": {
+          "kind": "refusal",
+          "gate": "ira.se_capital_gate",
+          "form": "IRA compensation from self-employment (Pub. 590-A)",
+          "remedy": "Self-employment income counts as IRA compensation only where your personal services are a material income-producing factor; Schedule C income mainly from investments or property is outside this tool.",
+          "cite": {
+            "doc": "p590a",
+            "locator": "pp. 6–7, Self-employment income, \"earnings from your trade or business (provided your personal services are a material income-producing factor)\"",
+            "revision": "2025",
+            "snapshot": "ca0e42873cfd66d2d9bfd082125d381f8a0c2f3b0a441d7d65ab5ccc06a0e1c7",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage16.refuse.f8889.dec_self_all_family",
+      "covers": [
+        "f8889:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage11.hsa.self_full_year (single, self-only HDHP coverage all year, $3,000 contributed) with six eligible months, all of family coverage, but self-only coverage on December 1; December 1 is one of the months counted (i8889 p. 6, Line 3 Limitation Chart and Worksheet), so the answers contradict each other and Form 8889 refuses them as an entry error. The refused values are the evaluator's.",
+      "inputs": {
+        "f1040.status": "single",
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "person[taxpayer].rrta": false,
+        "$interest": [],
+        "$sales": [],
+        "$gift": [],
+        "sb.ordinary_dividends": 0,
+        "sb.unsupported": false,
+        "sb.line7a": false,
+        "sb.fbar_required": false,
+        "sb.form8938": false,
+        "sb.line8": false,
+        "f1040.line3a": 0,
+        "div.box2b": 0,
+        "div.box2c": 0,
+        "div.box2d": 0,
+        "div.box2e": 0,
+        "div.box2f": 0,
+        "div.box3": 0,
+        "div.box9": 0,
+        "div.box10": 0,
+        "div.box13": 0,
+        "div.basis_reconciled": true,
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "qbi.dividends": 0,
+        "qbi.unsupported": false,
+        "f4952.line1": 0,
+        "f4952.line4g": 0,
+        "f4952.carryover": false,
+        "f4952.unsupported": false,
+        "f4952.alternative_allocation": false,
+        "f8959.unsupported": false,
+        "f8960.unsupported": false,
+        "f8960.refund": false,
+        "f8960.allocated_taxes": 0,
+        "ftc.taxes": 0,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0,
+        "sa.unsupported": false,
+        "sa.charity_limited": false,
+        "sa.excluded_income": false,
+        "sa.dependent": false,
+        "sa.spouse_extra": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
+        "sa.spouse_itemizes": false,
+        "sa.elect_itemize": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "scope.schedule1": false,
+        "scope.credits": false,
+        "scope.other_income": false,
+        "scope.other_line16": false,
+        "s2.amt": false,
+        "s2.other": false,
+        "f1040.line25b": 0,
+        "f1040.line25c": 0,
+        "f1040.line26": 0,
+        "f1040.line35a": 0,
+        "f1040.line36": 0,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 0,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].w2[emp_a].box7": 0,
+        "$dependent": [],
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false,
+        "eic.qc_of_another": false,
+        "person[taxpayer].born_before_2001": true,
+        "eic.us_home": true,
+        "eic.married": false,
+        "$retirement": [],
+        "ssb.benefits": 0,
+        "person[taxpayer].born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
+        "person[taxpayer].educator_expenses": 0,
+        "person[taxpayer].f8889[hsa].line2": 300000,
+        "person[taxpayer].f8889[hsa].line9": 0,
+        "sli.interest": 0,
+        "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].months_eligible": 6,
+        "person[taxpayer].f8889[hsa].months_family": 6,
+        "person[taxpayer].f8889[hsa].age55": false,
+        "person[taxpayer].f8889[hsa].dec_coverage": "self_only",
+        "person[taxpayer].f8889[hsa].last_month": false,
+        "person[taxpayer].f8889[hsa].line14a": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false,
+        "s1.cod_any": false
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].bad_months": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].bad_months",
+          "form": "Form 8889 line 3 month counts",
+          "remedy": "The number of eligible months must be at most 12 and the number of family months at most the eligible months, and the December 1 coverage must agree with them (December 1 is one of the months counted). Check the answers.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 6, Line 3 Limitation Chart and Worksheet",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "s1.line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].bad_months",
+          "form": "Form 8889 line 3 month counts",
+          "remedy": "The number of eligible months must be at most 12 and the number of family months at most the eligible months, and the December 1 coverage must agree with them (December 1 is one of the months counted). Check the answers.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 6, Line 3 Limitation Chart and Worksheet",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line10": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].bad_months",
+          "form": "Form 8889 line 3 month counts",
+          "remedy": "The number of eligible months must be at most 12 and the number of family months at most the eligible months, and the December 1 coverage must agree with them (December 1 is one of the months counted). Check the answers.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 6, Line 3 Limitation Chart and Worksheet",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage16.refuse.f8889.dec_family_no_family",
+      "covers": [
+        "f8889:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage11.hsa.self_full_year (single, self-only HDHP coverage all year, $3,000 contributed) with six eligible months, none of family coverage, but family coverage on December 1; December 1 is one of the months counted (i8889 p. 6, Line 3 Limitation Chart and Worksheet), so the answers contradict each other and Form 8889 refuses them as an entry error. The refused values are the evaluator's.",
+      "inputs": {
+        "f1040.status": "single",
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "person[taxpayer].rrta": false,
+        "$interest": [],
+        "$sales": [],
+        "$gift": [],
+        "sb.ordinary_dividends": 0,
+        "sb.unsupported": false,
+        "sb.line7a": false,
+        "sb.fbar_required": false,
+        "sb.form8938": false,
+        "sb.line8": false,
+        "f1040.line3a": 0,
+        "div.box2b": 0,
+        "div.box2c": 0,
+        "div.box2d": 0,
+        "div.box2e": 0,
+        "div.box2f": 0,
+        "div.box3": 0,
+        "div.box9": 0,
+        "div.box10": 0,
+        "div.box13": 0,
+        "div.basis_reconciled": true,
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "qbi.dividends": 0,
+        "qbi.unsupported": false,
+        "f4952.line1": 0,
+        "f4952.line4g": 0,
+        "f4952.carryover": false,
+        "f4952.unsupported": false,
+        "f4952.alternative_allocation": false,
+        "f8959.unsupported": false,
+        "f8960.unsupported": false,
+        "f8960.refund": false,
+        "f8960.allocated_taxes": 0,
+        "ftc.taxes": 0,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0,
+        "sa.unsupported": false,
+        "sa.charity_limited": false,
+        "sa.excluded_income": false,
+        "sa.dependent": false,
+        "sa.spouse_extra": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
+        "sa.spouse_itemizes": false,
+        "sa.elect_itemize": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "scope.schedule1": false,
+        "scope.credits": false,
+        "scope.other_income": false,
+        "scope.other_line16": false,
+        "s2.amt": false,
+        "s2.other": false,
+        "f1040.line25b": 0,
+        "f1040.line25c": 0,
+        "f1040.line26": 0,
+        "f1040.line35a": 0,
+        "f1040.line36": 0,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 0,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].w2[emp_a].box7": 0,
+        "$dependent": [],
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false,
+        "eic.qc_of_another": false,
+        "person[taxpayer].born_before_2001": true,
+        "eic.us_home": true,
+        "eic.married": false,
+        "$retirement": [],
+        "ssb.benefits": 0,
+        "person[taxpayer].born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
+        "person[taxpayer].educator_expenses": 0,
+        "person[taxpayer].f8889[hsa].line2": 300000,
+        "person[taxpayer].f8889[hsa].line9": 0,
+        "sli.interest": 0,
+        "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].months_eligible": 6,
+        "person[taxpayer].f8889[hsa].months_family": 0,
+        "person[taxpayer].f8889[hsa].age55": false,
+        "person[taxpayer].f8889[hsa].dec_coverage": "family",
+        "person[taxpayer].f8889[hsa].last_month": false,
+        "person[taxpayer].f8889[hsa].line14a": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false,
+        "s1.cod_any": false
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].bad_months": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].bad_months",
+          "form": "Form 8889 line 3 month counts",
+          "remedy": "The number of eligible months must be at most 12 and the number of family months at most the eligible months, and the December 1 coverage must agree with them (December 1 is one of the months counted). Check the answers.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 6, Line 3 Limitation Chart and Worksheet",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "s1.line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].bad_months",
+          "form": "Form 8889 line 3 month counts",
+          "remedy": "The number of eligible months must be at most 12 and the number of family months at most the eligible months, and the December 1 coverage must agree with them (December 1 is one of the months counted). Check the answers.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 6, Line 3 Limitation Chart and Worksheet",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line10": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].bad_months",
+          "form": "Form 8889 line 3 month counts",
+          "remedy": "The number of eligible months must be at most 12 and the number of family months at most the eligible months, and the December 1 coverage must agree with them (December 1 is one of the months counted). Check the answers.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 6, Line 3 Limitation Chart and Worksheet",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage16.refuse.f8889.dec_covered_no_months",
+      "covers": [
+        "f8889:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage11.hsa.self_full_year (single, self-only HDHP coverage all year, $3,000 contributed) with no eligible month, but self-only coverage as an eligible individual on December 1; December 1 is one of the months counted (i8889 p. 6, Line 3 Limitation Chart and Worksheet), so the answers contradict each other and Form 8889 refuses them as an entry error. The refused values are the evaluator's.",
+      "inputs": {
+        "f1040.status": "single",
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "person[taxpayer].rrta": false,
+        "$interest": [],
+        "$sales": [],
+        "$gift": [],
+        "sb.ordinary_dividends": 0,
+        "sb.unsupported": false,
+        "sb.line7a": false,
+        "sb.fbar_required": false,
+        "sb.form8938": false,
+        "sb.line8": false,
+        "f1040.line3a": 0,
+        "div.box2b": 0,
+        "div.box2c": 0,
+        "div.box2d": 0,
+        "div.box2e": 0,
+        "div.box2f": 0,
+        "div.box3": 0,
+        "div.box9": 0,
+        "div.box10": 0,
+        "div.box13": 0,
+        "div.basis_reconciled": true,
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "qbi.dividends": 0,
+        "qbi.unsupported": false,
+        "f4952.line1": 0,
+        "f4952.line4g": 0,
+        "f4952.carryover": false,
+        "f4952.unsupported": false,
+        "f4952.alternative_allocation": false,
+        "f8959.unsupported": false,
+        "f8960.unsupported": false,
+        "f8960.refund": false,
+        "f8960.allocated_taxes": 0,
+        "ftc.taxes": 0,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0,
+        "sa.unsupported": false,
+        "sa.charity_limited": false,
+        "sa.excluded_income": false,
+        "sa.dependent": false,
+        "sa.spouse_extra": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
+        "sa.spouse_itemizes": false,
+        "sa.elect_itemize": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "scope.schedule1": false,
+        "scope.credits": false,
+        "scope.other_income": false,
+        "scope.other_line16": false,
+        "s2.amt": false,
+        "s2.other": false,
+        "f1040.line25b": 0,
+        "f1040.line25c": 0,
+        "f1040.line26": 0,
+        "f1040.line35a": 0,
+        "f1040.line36": 0,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 0,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].w2[emp_a].box7": 0,
+        "$dependent": [],
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false,
+        "eic.qc_of_another": false,
+        "person[taxpayer].born_before_2001": true,
+        "eic.us_home": true,
+        "eic.married": false,
+        "$retirement": [],
+        "ssb.benefits": 0,
+        "person[taxpayer].born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
+        "person[taxpayer].educator_expenses": 0,
+        "person[taxpayer].f8889[hsa].line2": 300000,
+        "person[taxpayer].f8889[hsa].line9": 0,
+        "sli.interest": 0,
+        "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].months_eligible": 0,
+        "person[taxpayer].f8889[hsa].months_family": 0,
+        "person[taxpayer].f8889[hsa].age55": false,
+        "person[taxpayer].f8889[hsa].dec_coverage": "self_only",
+        "person[taxpayer].f8889[hsa].last_month": false,
+        "person[taxpayer].f8889[hsa].line14a": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false,
+        "s1.cod_any": false
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].bad_months": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].bad_months",
+          "form": "Form 8889 line 3 month counts",
+          "remedy": "The number of eligible months must be at most 12 and the number of family months at most the eligible months, and the December 1 coverage must agree with them (December 1 is one of the months counted). Check the answers.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 6, Line 3 Limitation Chart and Worksheet",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "s1.line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].bad_months",
+          "form": "Form 8889 line 3 month counts",
+          "remedy": "The number of eligible months must be at most 12 and the number of family months at most the eligible months, and the December 1 coverage must agree with them (December 1 is one of the months counted). Check the answers.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 6, Line 3 Limitation Chart and Worksheet",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line10": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].bad_months",
+          "form": "Form 8889 line 3 month counts",
+          "remedy": "The number of eligible months must be at most 12 and the number of family months at most the eligible months, and the December 1 coverage must agree with them (December 1 is one of the months counted). Check the answers.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 6, Line 3 Limitation Chart and Worksheet",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage16.refuse.f8889.dec_none_all_year",
+      "covers": [
+        "f8889:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage11.hsa.self_full_year (single, self-only HDHP coverage all year, $3,000 contributed) with twelve eligible months, but not an eligible individual on December 1; December 1 is one of the months counted (i8889 p. 6, Line 3 Limitation Chart and Worksheet), so the answers contradict each other and Form 8889 refuses them as an entry error. The refused values are the evaluator's.",
+      "inputs": {
+        "f1040.status": "single",
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "person[taxpayer].rrta": false,
+        "$interest": [],
+        "$sales": [],
+        "$gift": [],
+        "sb.ordinary_dividends": 0,
+        "sb.unsupported": false,
+        "sb.line7a": false,
+        "sb.fbar_required": false,
+        "sb.form8938": false,
+        "sb.line8": false,
+        "f1040.line3a": 0,
+        "div.box2b": 0,
+        "div.box2c": 0,
+        "div.box2d": 0,
+        "div.box2e": 0,
+        "div.box2f": 0,
+        "div.box3": 0,
+        "div.box9": 0,
+        "div.box10": 0,
+        "div.box13": 0,
+        "div.basis_reconciled": true,
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "qbi.dividends": 0,
+        "qbi.unsupported": false,
+        "f4952.line1": 0,
+        "f4952.line4g": 0,
+        "f4952.carryover": false,
+        "f4952.unsupported": false,
+        "f4952.alternative_allocation": false,
+        "f8959.unsupported": false,
+        "f8960.unsupported": false,
+        "f8960.refund": false,
+        "f8960.allocated_taxes": 0,
+        "ftc.taxes": 0,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0,
+        "sa.unsupported": false,
+        "sa.charity_limited": false,
+        "sa.excluded_income": false,
+        "sa.dependent": false,
+        "sa.spouse_extra": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
+        "sa.spouse_itemizes": false,
+        "sa.elect_itemize": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "scope.schedule1": false,
+        "scope.credits": false,
+        "scope.other_income": false,
+        "scope.other_line16": false,
+        "s2.amt": false,
+        "s2.other": false,
+        "f1040.line25b": 0,
+        "f1040.line25c": 0,
+        "f1040.line26": 0,
+        "f1040.line35a": 0,
+        "f1040.line36": 0,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 0,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].w2[emp_a].box7": 0,
+        "$dependent": [],
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false,
+        "eic.qc_of_another": false,
+        "person[taxpayer].born_before_2001": true,
+        "eic.us_home": true,
+        "eic.married": false,
+        "$retirement": [],
+        "ssb.benefits": 0,
+        "person[taxpayer].born_after_1960": true,
+        "f1040.tax_exempt_interest": 0,
+        "div.box12": 0,
+        "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
+        "person[taxpayer].educator_expenses": 0,
+        "person[taxpayer].f8889[hsa].line2": 300000,
+        "person[taxpayer].f8889[hsa].line9": 0,
+        "sli.interest": 0,
+        "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].months_eligible": 12,
+        "person[taxpayer].f8889[hsa].months_family": 0,
+        "person[taxpayer].f8889[hsa].age55": false,
+        "person[taxpayer].f8889[hsa].dec_coverage": "none",
+        "person[taxpayer].f8889[hsa].last_month": false,
+        "person[taxpayer].f8889[hsa].line14a": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false,
+        "s1.cod_any": false
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].bad_months": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].bad_months",
+          "form": "Form 8889 line 3 month counts",
+          "remedy": "The number of eligible months must be at most 12 and the number of family months at most the eligible months, and the December 1 coverage must agree with them (December 1 is one of the months counted). Check the answers.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 6, Line 3 Limitation Chart and Worksheet",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "s1.line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].bad_months",
+          "form": "Form 8889 line 3 month counts",
+          "remedy": "The number of eligible months must be at most 12 and the number of family months at most the eligible months, and the December 1 coverage must agree with them (December 1 is one of the months counted). Check the answers.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 6, Line 3 Limitation Chart and Worksheet",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line10": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].bad_months",
+          "form": "Form 8889 line 3 month counts",
+          "remedy": "The number of eligible months must be at most 12 and the number of family months at most the eligible months, and the December 1 coverage must agree with them (December 1 is one of the months counted). Check the answers.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 6, Line 3 Limitation Chart and Worksheet",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage16.regress.s1.cod_yes_zero",
+      "covers": [
+        "s1:line8c"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Inputs are stage16.small.s7 (single; $5,000 of fully taxable canceled nonbusiness debt, the only Schedule 1 income) with Yes to the question whether any debt was canceled and an amount of $0; the exceptions question is not asked for a zero amount and is left out, as the interview leaves it. Line 8c is the amount, $0, and lines 9 and 10 add nothing else (i1040gi p. 91, Line 8c; Schedule 1 lines 9 and 10).",
+      "inputs": {
+        "f1040.status": "single",
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
+        "person[taxpayer].rrta": false,
+        "$interest": [],
+        "$sales": [],
+        "$gift": [],
+        "sb.ordinary_dividends": 0,
+        "sb.unsupported": false,
+        "sb.line7a": false,
+        "sb.fbar_required": false,
+        "sb.form8938": false,
+        "sb.line8": false,
+        "f1040.line3a": 0,
+        "div.box2b": 0,
+        "div.box2c": 0,
+        "div.box2d": 0,
+        "div.box2e": 0,
+        "div.box2f": 0,
+        "div.box3": 0,
+        "div.box9": 0,
+        "div.box10": 0,
+        "div.box13": 0,
+        "div.basis_reconciled": true,
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "qbi.dividends": 0,
+        "qbi.unsupported": false,
+        "f4952.line1": 0,
+        "f4952.line4g": 0,
+        "f4952.carryover": false,
+        "f4952.unsupported": false,
+        "f4952.alternative_allocation": false,
+        "f8959.unsupported": false,
+        "f8960.unsupported": false,
+        "f8960.refund": false,
+        "f8960.allocated_taxes": 0,
+        "ftc.taxes": 0,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0,
+        "sa.unsupported": false,
+        "sa.charity_limited": false,
+        "sa.excluded_income": false,
+        "sa.dependent": false,
+        "sa.spouse_extra": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
+        "sa.spouse_itemizes": false,
+        "sa.elect_itemize": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "scope.schedule1": false,
+        "scope.credits": false,
+        "scope.other_income": false,
+        "scope.other_line16": false,
+        "s2.amt": false,
+        "s2.other": false,
+        "f1040.line25b": 0,
+        "f1040.line25c": 0,
+        "f1040.line26": 200000,
+        "f1040.line35a": 173300,
+        "f1040.line36": 0,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 4500000,
+        "person[taxpayer].w2[emp_a].box2": 0,
+        "person[taxpayer].w2[emp_a].box3": 4500000,
+        "person[taxpayer].w2[emp_a].box4": 279000,
+        "person[taxpayer].w2[emp_a].box5": 4500000,
+        "person[taxpayer].w2[emp_a].box6": 65250,
+        "person[taxpayer].w2[emp_a].box7": 0,
+        "$dependent": [],
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false,
+        "$retirement": [],
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
+        "person[taxpayer].educator_expenses": 0,
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false,
+        "s1.cod_any": true
+      },
+      "expect": {
+        "s1.line8c": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line9": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line10": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage16.regress.s1.cod_no",
+      "covers": [
+        "s1:line8c"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Inputs are stage16.small.s7 (single; $5,000 of fully taxable canceled nonbusiness debt, the only Schedule 1 income) with No to the question whether any debt was canceled; the amount and the exceptions question are not asked after a No and are left out, as the interview leaves them. Line 8c is $0 and lines 9 and 10 add nothing else (Schedule 1 lines 8c, 9 and 10).",
+      "inputs": {
+        "f1040.status": "single",
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
+        "person[taxpayer].rrta": false,
+        "$interest": [],
+        "$sales": [],
+        "$gift": [],
+        "sb.ordinary_dividends": 0,
+        "sb.unsupported": false,
+        "sb.line7a": false,
+        "sb.fbar_required": false,
+        "sb.form8938": false,
+        "sb.line8": false,
+        "f1040.line3a": 0,
+        "div.box2b": 0,
+        "div.box2c": 0,
+        "div.box2d": 0,
+        "div.box2e": 0,
+        "div.box2f": 0,
+        "div.box3": 0,
+        "div.box9": 0,
+        "div.box10": 0,
+        "div.box13": 0,
+        "div.basis_reconciled": true,
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "qbi.dividends": 0,
+        "qbi.unsupported": false,
+        "f4952.line1": 0,
+        "f4952.line4g": 0,
+        "f4952.carryover": false,
+        "f4952.unsupported": false,
+        "f4952.alternative_allocation": false,
+        "f8959.unsupported": false,
+        "f8960.unsupported": false,
+        "f8960.refund": false,
+        "f8960.allocated_taxes": 0,
+        "ftc.taxes": 0,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "s3.line9": 0,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0,
+        "sa.unsupported": false,
+        "sa.charity_limited": false,
+        "sa.excluded_income": false,
+        "sa.dependent": false,
+        "sa.spouse_extra": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
+        "sa.spouse_itemizes": false,
+        "sa.elect_itemize": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "scope.schedule1": false,
+        "scope.credits": false,
+        "scope.other_income": false,
+        "scope.other_line16": false,
+        "s2.amt": false,
+        "s2.other": false,
+        "f1040.line25b": 0,
+        "f1040.line25c": 0,
+        "f1040.line26": 200000,
+        "f1040.line35a": 173300,
+        "f1040.line36": 0,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 4500000,
+        "person[taxpayer].w2[emp_a].box2": 0,
+        "person[taxpayer].w2[emp_a].box3": 4500000,
+        "person[taxpayer].w2[emp_a].box4": 279000,
+        "person[taxpayer].w2[emp_a].box5": 4500000,
+        "person[taxpayer].w2[emp_a].box6": 65250,
+        "person[taxpayer].w2[emp_a].box7": 0,
+        "$dependent": [],
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false,
+        "$retirement": [],
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "refund.received": 0,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
+        "person[taxpayer].educator_expenses": 0,
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false,
+        "s1.cod_any": false
+      },
+      "expect": {
+        "s1.line8c": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line9": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line10": {
           "kind": "money",
           "cents": 0
         }

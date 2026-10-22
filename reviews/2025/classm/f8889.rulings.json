@@ -42,6 +42,22 @@
   },
   {
    "case": "classm.f8889.1",
+   "printed": "person[spouse].f8889[hsa].line7_total",
+   "project": "$12,000.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The spouse is under 55 at the end of 2025, so line 7 does not apply (Form 8889 (2025), line 7, \"If you were age 55 or older at the end of 2025, married, and you or your spouse had family coverage\"; i8889 p. 7, Line 7, \"If, at the end of 2025, you were age 55 or older and married\"; f8889.line7_applies false) and line 7 is $0.00 in both; the project figures the Additional Contribution Amount Worksheet helper over every eligible month on every return ($1,000 x 12), where the model left the unused worksheet at zero. A helper of a branch not taken is not evidence. No change to the data.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.1",
+   "printed": "person[spouse].f8889[hsa].line7_worksheet",
+   "project": "$1,000.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. As line7_total on this case: line 7 does not apply (the spouse is under 55; f8889.line7_applies false), line 7 is $0.00 in both, and the worksheet's line 2 ($12,000 / 12) is figured by the project on a branch the return does not take. No change to the data.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.1",
    "printed": "person[spouse].f8889[hsa].share",
    "project": "$1,295.00",
    "model": "$0.00",
@@ -377,6 +393,14 @@
    "project": "$2,137.50",
    "model": "$4,300.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The spouse was eligible in 3 months only and does not use the last-month rule, so rules 3 and 4 (i8889 p. 4, Line 3, \"If you were, or were considered, an eligible individual for the entire year\") do not apply and line 3 is the Line 3 Limitation Chart and Worksheet ($8,550 x 3 / 12 = $2,137.50), on which the model agrees, as on lines 5 to 13 and the spouse rule of line 6 ($1,068.75). The helper is the branch not taken: the project evaluates it as the chart (no change of coverage type among the eligible months), the model entered the December 1 self-only amount ($4,300). No change to the data.",
+   "drop": true
+  },
+  {
+   "case": "classm.f8889.5",
+   "printed": "person[spouse].f8889[hsa].line3_all_year",
+   "project": "$2,137.50",
+   "model": "$8,550.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The spouse was an eligible individual for 3 months, all with family coverage, and does not use the last-month rule, so line 3 comes from the Line 3 Limitation Chart and Worksheet (i8889 p. 4, Line 3, rule 5; p. 6): $8,550 x 3 / 12 = $2,137.50, on which both agree (line 3 and step1_line3). line3_all_year is the helper for a filer eligible all year, which this return does not take; the model entered the full-year family amount under it, the project the chart amount. No change to the data.",
    "drop": true
   }
  ]

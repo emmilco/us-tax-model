@@ -2135,6 +2135,12 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = UNKNOWN (no input supplied for ira.special)
       cite: [i1040gi] p. 95, Line 20, "The income should be shown in (a) box 11 of your Form W-2, (b) box 12 of your Form W-2 with code Z, or (c) box 15 of Form 1099-MISC" and "Don’t include any repayments of qualified reservist distributions"; p590a p. 6, What Is Compensation?, "certain non-tuition fellowship and stipend payments not reported to you on Form W-2 are treated as taxable compensation for IRA purposes"; p590a p. 16, Difficulty of care payments (2025; printed date 2026-02-25; 482e9c48)
       note: Interpretation amb.2025.ira_fellowship: The first. The owner's decision (Stage 16 decision 8). The worksheet and the publication disagree; refusing cannot be wrong. Box 11 and code Z amounts are refused rather than taken as W-2 inputs, by the same decision. (p590a, p. 6, What Is Compensation?, "certain non-tuition fellowship and stipend payments not reported to you on Form W-2 are treated as taxable compensation for IRA purposes")
+  (screen) Is any Schedule C income on this return from a business in which your (or your spouse's) personal services are not a material income-producing factor (for example, income mainly from investments or from property)?
+      = UNKNOWN (no input supplied for ira.se_capital)
+      cite: [p590a] pp. 6–7, Self-employment income, "earnings from your trade or business (provided your personal services are a material income-producing factor)" (2025; ca0e4287)
+  (gate) Traditional IRA contributions with Schedule C income not from personal services (screen)
+      = false
+      cite: [p590a] pp. 6–7, Self-employment income, "provided your personal services are a material income-producing factor" (2025; ca0e4287)
   (gate) Traditional IRA contributions with an IRA deduction special case (screen)
       = false
       cite: [i1040gi] p. 95, Line 20, "But read the following list before you fill in the worksheet" (2025; printed date 2026-02-25; 482e9c48)
@@ -3159,9 +3165,6 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Any state or local income tax refund received in 2025
       = false
       cite: [i1040gi] p. 88, Line 1, "If you received a refund, credit, or offset of state or local income taxes in 2025" (2025; printed date 2026-02-25; 482e9c48)
-  (gate) In 2025, did you receive any other refund, reimbursement or recovery of an amount you deducted or took a credit for in an earlier year, other than a refund of state or local income tax (for example a refund of general sales tax, real estate tax or personal property tax, a refund of mortgage interest in box 4 of Form 1098, a reimbursement of medical expenses, or a payment on a bad debt you deducted)?
-      = false
-      cite: [p525] p. 24, Recoveries, "A recovery is a return of an amount you deducted or took a credit for in an earlier year" and "You may also have recoveries of nonitemized deductions (such as payments on previously deducted bad debts)"; p. 25, Where to report, "the total of all other recoveries as other income on Schedule 1 (Form 1040), line 8z"; i1040gi p. 89, Line 1, "2. You received a refund other than an income tax refund, such as a general sales tax or real property tax refund, in 2025 of an amount deducted or credit claimed in an earlier year" (2025; 39b0fa5e)
   (gate) Is box 8 ("If checked, box 2 is trade or business income") checked on any Form 1099-G that reports these refunds?
       = UNKNOWN (no input supplied for refund.box8)
       cite: [f1099g] p. 5, Instructions for Recipient, "Box 8. If this box is checked, the amount in box 2 is attributable to an income tax that applies exclusively to income from a trade or business" and "If taxable, report the amount in box 2 on Schedule C or F (Form 1040), as appropriate" (Rev. March 2024 (continuous-use form for calendar year 2025; the December 2026 revision is first used for 2026); fe46acb4)
@@ -3193,6 +3196,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) The amount on your 2024 Schedule A, line 5e
       = UNKNOWN (no input supplied for refund.line5e_2024)
       cite: [i1040gi] p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 2, "more than the amount on your 2024 Schedule A, line 5e" (2025; printed date 2026-02-25; 482e9c48)
+  (gate) The amount entered for 2024 Schedule A line 5e is more than the amount entered for line 5d
+      = UNKNOWN (no input supplied for refund.line5e_2024)
+      cite: [i1040sca] p. 7, Line 5e, "enter the smaller of line 5d or $40,000 ($20,000 if married filing separately)" (2025; printed date 2025-12-08; b0999b12)
   1   Enter the income tax refund from Form(s) 1099-G (or similar statement). But don’t enter more than the amount of your state and local income taxes shown on your 2024 Schedule A, line 5d
       = UNKNOWN (no input supplied for refund.exc_tax)
       cite: [i1040gi] p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 1, "Enter the income tax refund from Form(s) 1099-G (or similar statement). But don’t enter more than the amount of your state and local income taxes shown on your 2024 Schedule A, line 5d" (2025; printed date 2026-02-25; 482e9c48)
@@ -3201,7 +3207,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = UNKNOWN (no input supplied for refund.line5d_2024)
       cite: [i1040gi] p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 2, "Is the amount of state and local income taxes (or general sales taxes), real estate taxes, and personal property taxes paid in 2024" (2025; printed date 2026-02-25; 482e9c48)
   2   Subtract the amount on your 2024 Schedule A, line 5e, from the amount of state and local income taxes (or general sales taxes), real estate taxes, and personal property taxes paid in 2024 (generally, this is the amount reported on your 2024 Schedule A, line 5d)
-      = UNKNOWN (no input supplied for refund.line5d_2024)
+      = UNKNOWN (no input supplied for refund.line5e_2024)
       cite: [i1040gi] p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 2, "No. Enter the amount from line 1 on line 3 and go to line 4. Yes. Subtract the amount on your 2024 Schedule A, line 5e" (zero on No, so that line 3 is line 1) (2025; printed date 2026-02-25; 482e9c48)
   (helper) Is the amount on line 1 more than the amount on line 2?
       = UNKNOWN (no input supplied for refund.exc_tax)
@@ -3444,6 +3450,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = false
       cite: [i1040gi] p. 89, Line 2b, "On line 2b, enter the month and year of your original divorce or separation agreement that relates to the alimony payment, if any, reported on line 2a" (2025; printed date 2026-02-25; 482e9c48)
       note: Interpretation amb.2025.s1_unnumbered_lines: The first (s1.line2b_notice, s1.line19b_notice, s1.line19c_notice, shown when line 2a or line 19a is more than zero). The owner's decision (Stage 16 decision batch, D12). No amount depends on them. (i1040gi, p. 89, Line 2b, "enter the month and year of your original divorce or separation agreement"; p. 95, Line 19c, "On line 19c, enter the month and year of your original divorce or separation agreement")
+  (gate) Was any of your debt canceled or forgiven in 2025?
+      = false
+      cite: [p4681] p. 4, Form 1099-C Reference Guide, "Even if you didn't receive a Form 1099-C, you must report canceled debt as gross income on your tax return unless one of the exceptions or exclusions described later applies" (2025; d87305a0)
   (helper) Canceled nonbusiness debt (Form 1099-C box 2, and any canceled nonbusiness debt with no Form 1099-C)
       = $0
       cite: [p4681] p. 4, Form 1099-C Reference Guide, "Even if you didn't receive a Form 1099-C, you must report canceled debt as gross income on your tax return unless one of the exceptions or exclusions described later applies"; f1099c p. 4, Instructions for Debtor, "Box 2. Shows the amount of debt either actually or deemed discharged" (2025; d87305a0)
@@ -3456,10 +3465,14 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Canceled nonbusiness debt, before the screen for exceptions, exclusions and other debts
       = UNKNOWN (no input supplied for s1.cod_unsupported)
       cite: [p525] p. 20, Canceled Debts, "If the debt is a nonbusiness debt, report the canceled amount on Schedule 1 (Form 1040), line 8c" (2025; 39b0fa5e)
+  (helper) Cancellation of debt, when a debt was canceled
+      = $0
+      cite: [f1040s1] Schedule 1 (2025), line 8c; i1040gi p. 91, Line 8c, "Canceled debt may be shown in box 2 of Form 1099-C. However, part or all of your income from cancellation of debt may be nontaxable" (2025; created 2025-07-25; 8dafec71)
+      note: taken: {"eq":["s1.has_cod",{"const":false}],"op":"test"}
   8c  Cancellation of debt
       = $0
       cite: [f1040s1] Schedule 1 (2025), line 8c; i1040gi p. 91, Line 8c, "Canceled debt may be shown in box 2 of Form 1099-C. However, part or all of your income from cancellation of debt may be nontaxable" (2025; created 2025-07-25; 8dafec71)
-      note: taken: {"eq":["s1.has_cod",{"const":false}],"op":"test"}; Interpretation amb.2025.cod_fully_taxable: The first (s1.cod_amount, s1.cod_unsupported). Student loans are refused with the other exceptions. The owner's decision (Stage 16 decision batch, D2, "fully taxable canceled nonbusiness debt"). An excepted student loan discharge is nontaxable and usually comes with no Form 1099-C (p. 3, TIP), so a filer who reports one is refused rather than told how much of it to include; the conservative choice where D2 is silent. (p4681, p. 3, General Rules, "There are several exceptions and exclusions that may result in part or all of a canceled debt being nontaxable"; p. 4, Exceptions)
+      note: taken: {"eq":["s1.cod_any",{"const":false}],"op":"test"}; Interpretation amb.2025.cod_fully_taxable: The first (s1.cod_amount, s1.cod_unsupported). Student loans are refused with the other exceptions. The owner's decision (Stage 16 decision batch, D2, "fully taxable canceled nonbusiness debt"). An excepted student loan discharge is nontaxable and usually comes with no Form 1099-C (p. 3, TIP), so a filer who reports one is refused rather than told how much of it to include; the conservative choice where D2 is silent. (p4681, p. 3, General Rules, "There are several exceptions and exclusions that may result in part or all of a canceled debt being nontaxable"; p. 4, Exceptions)
   8f  Income from Form 8889
       = $0
       cite: [f1040s1] Schedule 1 (2025), line 8f; i1040gi p. 91, Line 8f, "Enter the total of the amounts from Form 8889, lines 16 and 20" (line 20, Part III, is refused by f8889.unsupported) (2025; created 2025-07-25; 8dafec71)
@@ -4766,7 +4779,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
 
 == Proof-of-concept scope screening ==
-  (helper) Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately (business income or loss from Schedule C; a taxable state or local income tax refund; alimony under an agreement made before 2019; unemployment compensation; the line 8 items asked one by one; educator expenses; the HSA deduction; the deductible part of self-employment tax; self-employed SEP and SIMPLE contributions; the self-employed health insurance deduction; the penalty on early withdrawal of savings; the IRA deduction; student loan interest; jury duty pay you gave your employer), including statutory-employee wages or clergy income; church employee income (wages from a church that elected exemption from social security and Medicare taxes); other qualified retirement plans for the self-employed (such as a solo 401(k) or other Keogh plan); sales of business property (Form 4797); a net operating loss deduction; rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1); rental of personal property; farm income (Schedule F); an exclusion of Medicaid waiver payments (Schedule 1 line 8s); or an adjustment on Schedule 1 line 12, 14 or 23? (Schedule 1-A deductions are asked separately.)
+  (helper) Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately (business income or loss from Schedule C; a taxable state or local income tax refund; alimony under an agreement made before 2019; unemployment compensation; the line 8 items asked one by one; educator expenses; the HSA deduction; the deductible part of self-employment tax; self-employed SEP and SIMPLE contributions; the self-employed health insurance deduction; the penalty on early withdrawal of savings; the IRA deduction; student loan interest; jury duty pay you gave your employer), including statutory-employee wages or clergy income; church employee income (wages from a church that elected exemption from social security and Medicare taxes); other qualified retirement plans for the self-employed (such as a solo 401(k) or other Keogh plan); a refund or other recovery of an amount you deducted or took a credit for in an earlier year, other than a state or local income tax refund (for example a refund of general sales tax, real estate tax or personal property tax, a refund of mortgage interest in box 4 of Form 1098, a reimbursement of medical expenses, or a payment on a bad debt you deducted); sales of business property (Form 4797); a net operating loss deduction; rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1); rental of personal property; farm income (Schedule F); an exclusion of Medicaid waiver payments (Schedule 1 line 8s); or an adjustment on Schedule 1 line 12, 14 or 23? (Schedule 1-A deductions are asked separately.)
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
   (helper) Do you want to claim any credit other than the foreign tax credit claimed without Form 1116, the excess social security credit, the child tax credit, the credit for other dependents, the additional child tax credit, the earned income credit, the credit for child and dependent care expenses (Form 2441), the retirement savings contributions credit (Form 8880), the residential energy credits (Form 5695) and the net premium tax credit you enter from Form 8962 (Schedule 3 line 9), or do you have any other amount for Schedule 3 Part I (for example a Form 8978 adjustment)?
@@ -5717,6 +5730,8 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   refund.line8: chose UNKNOWN (no input supplied for refund.status)
   refund.line8_mfs: chose UNKNOWN (no input supplied for refund.mfs_spouse_itemized)
   refund.line9: chose UNKNOWN (no input supplied for refund.exc_tax)
+  s1.cod_figured: chose $0 (guard 1)
+      not taken: guard 0 = false
   s179.line5: chose $2,500,000 (guard 0)
   s1a.line4a_calc: chose UNKNOWN (collection roster not confirmed)
   s1a.line4a: chose $0 (guard 0)
@@ -5931,7 +5946,7 @@ Derivations:
   refund.has: test(refund.received = $0; #sales.zero = $0)
   s1.refund.has: test(refund.received = $0; #sales.zero = $0)
   s1.zero: param(#sales.zero = $0)
-  s1.line1: choose(refund.other = false; refund.has = false; false = false; s1.zero = $0)
+  s1.line1: choose(refund.has = false; false = false; s1.zero = $0)
   s1.line2a: choose(s1.alimony = false; true = true; s1.alimony = false; false = false; s1.zero = $0)
   s1.zero_ebl: param(#sales.zero = $0)
   s1.ebl_total: sum_over(person[taxpayer].sc_total = $0)
@@ -5944,8 +5959,7 @@ Derivations:
   s1.has_gambling: test(s1.gambling_winnings = $0; #sales.zero = $0)
   s1.gambling_business: test(s1.has_gambling = false; true = true)
   s1.line8b: copy(s1.gambling_business = false; s1.gambling_winnings = $0)
-  s1.has_cod: test(s1.cod_amount = $0; #sales.zero = $0)
-  s1.line8c: choose(s1.has_cod = false; true = true; s1.has_cod = false; false = false; s1.zero = $0)
+  s1.line8c: choose(s1.cod_any = false; true = true; s1.cod_any = false; false = false; s1.zero = $0)
   s1.line8f: sum_over(person[taxpayer].hsa_taxable = $0)
   s1.line9: sum(s1.line8_other = false; s1.line8b = $0; s1.line8c = $0; s1.line8f = $0; s1.line8g = $0; s1.line8h = $0; s1.line8i = $0; s1.line8j = $0; s1.line8r = $0; s1.line8z = $0)
   s1.line10: sum(s1.line1 = $0; s1.line2a = $0; s1.line3 = $0; s1.line7 = $0; s1.line9 = $0)
@@ -6787,8 +6801,9 @@ Derivations:
   ira.wages: sum_over(person[taxpayer].box1 = $90,000)
   ira.s1.line2a: choose(s1.alimony = false; true = true; s1.alimony = false; false = false; s1.zero = $0)
   ira.line8: sum(ira.wages = $90,000; s1.line2a = $0)
+  ira.se_capital_gate: test(ira.any_trad = false; true = true)
   person[taxpayer].ira_se: choose(person[taxpayer].has_sc = false; true = true; person[taxpayer].has_sc = false; false = false; person[taxpayer].zero = $0)
-  ira.line9: sum_over(person[taxpayer].ira_se = $0)
+  ira.line9: sum_over(ira.se_capital_gate = false; person[taxpayer].ira_se = $0)
   ira.line10: sum(ira.line8 = $90,000; ira.line9 = $0)
   ira.age50_count: sum_over(person[taxpayer].ira_age50 = UNKNOWN (no input supplied for person[taxpayer].ira_age50); true = true)
   ira.kbh_none: param(#ira.kbh_none = $14,000)
@@ -6833,11 +6848,12 @@ Derivations:
   qbi.via_8995a: copy(qbi.business_any = false; f8995a.line39 = $60)
   refund.zero: param(#sales.zero = $0)
   refund.worksheet: test(refund.itemized = UNKNOWN (no input supplied for refund.itemized); true = true; refund.sales = UNKNOWN (no input supplied for refund.sales); false = false)
+  refund.line5e_bad: test(refund.line5e_2024 = UNKNOWN (no input supplied for refund.line5e_2024); refund.line5d_2024 = UNKNOWN (no input supplied for refund.line5d_2024))
   refund.line1: gate(refund.exc_tax = UNKNOWN (no input supplied for refund.exc_tax))
   refund.line2_more: test(refund.line5d_2024 = UNKNOWN (no input supplied for refund.line5d_2024); refund.line5e_2024 = UNKNOWN (no input supplied for refund.line5e_2024))
-  refund.line2: subtract_floor0(refund.line5d_2024 = UNKNOWN (no input supplied for refund.line5d_2024); refund.line5e_2024 = UNKNOWN (no input supplied for refund.line5e_2024))
-  refund.line3_more: test(refund.line1 = UNKNOWN (no input supplied for refund.exc_tax); refund.line2 = UNKNOWN (no input supplied for refund.line5d_2024))
-  refund.line3: subtract_floor0(refund.line1 = UNKNOWN (no input supplied for refund.exc_tax); refund.line2 = UNKNOWN (no input supplied for refund.line5d_2024))
+  refund.line2: gate(refund.line5e_bad = UNKNOWN (no input supplied for refund.line5e_2024))
+  refund.line3_more: test(refund.line1 = UNKNOWN (no input supplied for refund.exc_tax); refund.line2 = UNKNOWN (no input supplied for refund.line5e_2024))
+  refund.line3: subtract_floor0(refund.line1 = UNKNOWN (no input supplied for refund.exc_tax); refund.line2 = UNKNOWN (no input supplied for refund.line5e_2024))
   refund.line4: copy(refund.line17_2024 = UNKNOWN (no input supplied for refund.line17_2024))
   refund.std_single: param(#refund.std_single = $14,600)
   refund.std_joint: param(#refund.std_joint = $29,200)
@@ -6870,7 +6886,9 @@ Derivations:
   s1.sc_1a: test(s1.sc_1a_count = 0; 0 = 0)
   s1.alimony_refused: gate(s1.alimony_unsupported = UNKNOWN (no input supplied for s1.alimony_unsupported))
   s1.line2b_notice: test(s1.line2a = $0; #sales.zero = $0)
+  s1.has_cod: test(s1.cod_amount = $0; #sales.zero = $0)
   s1.cod_refused: gate(s1.cod_unsupported = UNKNOWN (no input supplied for s1.cod_unsupported))
+  s1.cod_figured: choose(s1.has_cod = false; true = true; s1.has_cod = false; false = false; s1.zero = $0)
   s1.paid_refused: gate(s1.alimony_unsupported = UNKNOWN (no input supplied for s1.alimony_unsupported))
   s1.line19b_notice: test(s1.line19a = $0; #sales.zero = $0)
   s1.line19c_notice: test(s1.line19a = $0; #sales.zero = $0)

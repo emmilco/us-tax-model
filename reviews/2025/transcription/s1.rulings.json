@@ -22,6 +22,12 @@
   },
   {
    "printed": "8c",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"s1.cod_any\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"s1.cod_any\"}], \"test\": \"eq\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"input\": \"s1.cod_amount\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"input\": \"s1.cod_amount\"}], \"test\": \"lt\"}, \"then\": {\"input\": \"s1.cod_amount\"}}], \"op\": \"choose\"}}], \"op\": \"choose\"}",
+   "second": "{\"input\": \"s1.cod_amount\"}",
+   "ruling": "Ruling: equivalent; project retained. The project asks first whether any debt was canceled (s1.cod_any, the owner's answer to Stage 16 question 13) and asks the amount only on a Yes; with no canceled debt both give zero, and with some both give the amount (i1040gi p. 91, Line 8c; p525 p. 20, Canceled Debts, \"If the debt is a nonbusiness debt, report the canceled amount on Schedule 1 (Form 1040), line 8c\"). A Yes with a zero amount gives zero in both. The project's guards place the exceptions-and-exclusions refusal (s1.cod_unsupported, on s1.cod_refused) only on a return that has canceled debt."
+  },
+  {
+   "printed": "8c",
    "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"input\": \"s1.cod_amount\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"input\": \"s1.cod_amount\"}], \"test\": \"lt\"}, \"then\": {\"input\": \"s1.cod_amount\"}}], \"op\": \"choose\"}",
    "second": "{\"input\": \"s1.cod_amount\"}",
    "ruling": "Ruling: equivalent; project retained. With no canceled debt both give zero; with some, both give the amount (i1040gi p. 91, Line 8c; p525 p. 20, Canceled Debts, \"If the debt is a nonbusiness debt, report the canceled amount on Schedule 1 (Form 1040), line 8c\"). The project's guard places the exceptions-and-exclusions refusal (s1.cod_unsupported, on s1.cod_refused) only on a return that has canceled debt."

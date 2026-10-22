@@ -100,7 +100,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -212,7 +211,8 @@
         "retirement[p].sav_404k": false,
         "retirement[p].sav_inherited": false,
         "f2441.employer_care": false,
-        "person[spouse].ira_excess": false
+        "person[spouse].ira_excess": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f8880.line1a": {
@@ -399,7 +399,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -432,7 +431,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "person[taxpayer].ira_excess": false
+        "person[taxpayer].ira_excess": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f8880.line1a": {
@@ -628,7 +628,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -670,7 +669,8 @@
         "person[taxpayer].w2[emp_a].box12_aa": 0,
         "person[taxpayer].w2[emp_a].box12_bb": 0,
         "person[taxpayer].w2[emp_a].box12_ee": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f8880.line1a": {
@@ -866,7 +866,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -899,7 +898,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "person[taxpayer].ira_excess": false
+        "person[taxpayer].ira_excess": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f8880.line1a": {
@@ -1095,7 +1095,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -1128,7 +1127,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "person[taxpayer].ira_excess": false
+        "person[taxpayer].ira_excess": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f8880.line1a": {
@@ -1324,7 +1324,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -1357,7 +1356,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "person[taxpayer].ira_excess": false
+        "person[taxpayer].ira_excess": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f8880.line1a": {
@@ -1516,7 +1516,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -1609,7 +1608,8 @@
         "person[spouse].w2[e0].box12_any": false,
         "f2441.employer_care": false,
         "person[spouse].ira_excess": false,
-        "person[taxpayer].ira_excess": false
+        "person[taxpayer].ira_excess": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f8880.line1a": {
@@ -1838,7 +1838,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -1892,7 +1891,8 @@
         "dependent[a].us_half": true,
         "dependent[a].eic_ssn": true,
         "f2441.employer_care": false,
-        "person[taxpayer].ira_excess": false
+        "person[taxpayer].ira_excess": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f8880.line1a": {
@@ -2100,7 +2100,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -2142,7 +2141,8 @@
         "person[taxpayer].w2[emp_a].box12_aa": 0,
         "person[taxpayer].w2[emp_a].box12_bb": 0,
         "person[taxpayer].w2[emp_a].box12_ee": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f8880.line1a": {
@@ -2293,7 +2293,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -2337,7 +2336,8 @@
         "person[taxpayer].w2[emp_a].box12_ee": 0,
         "person[taxpayer].w2[emp_a].g_governmental": true,
         "person[taxpayer].w2[emp_a].g_elective": 100000,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f8880.line1a": {
@@ -2533,7 +2533,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -2575,7 +2574,8 @@
         "person[taxpayer].w2[emp_a].box12_aa": 0,
         "person[taxpayer].w2[emp_a].box12_bb": 0,
         "person[taxpayer].w2[emp_a].box12_ee": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f8880.line1a": {
@@ -2771,7 +2771,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -2804,7 +2803,8 @@
         "person[taxpayer].sav_prior_other": 150000,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "person[taxpayer].ira_excess": false
+        "person[taxpayer].ira_excess": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f8880.line1a": {
@@ -2987,7 +2987,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -3089,7 +3088,8 @@
         "person[taxpayer].w2[e0].box12_bb": 0,
         "person[taxpayer].w2[e0].box12_ee": 0,
         "f2441.employer_care": false,
-        "person[spouse].ira_excess": false
+        "person[spouse].ira_excess": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f8880.line1a": {
@@ -3287,7 +3287,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -3430,7 +3429,8 @@
         "person[taxpayer].w2[e0].box12_aa": 200000,
         "person[taxpayer].w2[e0].box12_bb": 0,
         "person[taxpayer].w2[e0].box12_ee": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f8880.line1a": {
@@ -3662,7 +3662,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -3695,7 +3694,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "person[taxpayer].ira_excess": false
+        "person[taxpayer].ira_excess": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f8880.line1a": {
@@ -3904,7 +3904,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -3971,7 +3970,8 @@
         "dcprov[p0].paid": 400000,
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line3": {
@@ -4173,7 +4173,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -4322,7 +4321,8 @@
         "dcprov[p0].paid": 700000,
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line3": {
@@ -4523,7 +4523,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -4649,7 +4648,8 @@
         "dcprov[p0].paid": 500000,
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line3": {
@@ -4870,7 +4870,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -4943,7 +4942,8 @@
         "f2441.line14": 0,
         "f2441.plans_differ": false,
         "f2441.plan_max": 500000,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line11": {
@@ -5187,7 +5187,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -5260,7 +5259,8 @@
         "f2441.line14": 0,
         "f2441.plans_differ": false,
         "f2441.plan_max": 500000,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line11": {
@@ -5485,7 +5485,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -5642,7 +5641,8 @@
         "f2441.line14": 0,
         "f2441.plans_differ": false,
         "f2441.plan_max": 500000,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line3": {
@@ -5943,7 +5943,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -6011,7 +6010,8 @@
         "dcprov[p0].paid": 200000,
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line3": {
@@ -6212,7 +6212,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -6338,7 +6337,8 @@
         "dcprov[p0].paid": 400000,
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line3": {
@@ -6559,7 +6559,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -6626,7 +6625,8 @@
         "dcprov[p0].paid": 800000,
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line3": {
@@ -6847,7 +6847,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -6914,7 +6913,8 @@
         "dcprov[p0].paid": 200000,
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line3": {
@@ -7135,7 +7135,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -7202,7 +7201,8 @@
         "dcprov[p0].paid": 200000,
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line3": {
@@ -7423,7 +7423,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -7496,7 +7495,8 @@
         "f2441.line14": 20000,
         "f2441.plans_differ": false,
         "f2441.plan_max": 500000,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line11": {
@@ -7741,7 +7741,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -7831,7 +7830,8 @@
         "dcprov[p0].paid": 800000,
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line3": {
@@ -8039,7 +8039,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -8125,7 +8124,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.line1": {
@@ -8279,7 +8279,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -8424,7 +8423,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.line19a": {
@@ -8639,7 +8639,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -8725,7 +8724,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.line18a": {
@@ -8899,7 +8899,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -9044,7 +9043,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.line5b": {
@@ -9211,7 +9211,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -9297,7 +9296,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.line12": {
@@ -9456,7 +9456,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -9542,7 +9541,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.line26b": {
@@ -9713,7 +9713,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -9799,7 +9798,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.line19a": {
@@ -9986,7 +9986,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -10072,7 +10071,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.line20b": {
@@ -10257,7 +10257,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -10385,7 +10384,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.line1": {
@@ -10636,7 +10636,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -10722,7 +10721,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.line22a": {
@@ -10901,7 +10901,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -10987,7 +10986,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.line18a": {
@@ -11170,7 +11170,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -11256,7 +11255,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.line18a": {
@@ -11451,7 +11451,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -11537,7 +11536,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.line2": {
@@ -11725,7 +11725,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -11792,7 +11791,8 @@
         "dcprov[p0].paid": 300000,
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line3": {
@@ -11973,7 +11973,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -12040,7 +12039,8 @@
         "dcprov[p0].paid": 300000,
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line3": {
@@ -12221,7 +12221,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -12288,7 +12287,8 @@
         "dcprov[p0].paid": 300000,
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line3": {
@@ -12469,7 +12469,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -12536,7 +12535,8 @@
         "dcprov[p0].paid": 300000,
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line3": {
@@ -12717,7 +12717,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -12784,7 +12783,8 @@
         "dcprov[p0].paid": 300000,
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line3": {
@@ -12965,7 +12965,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -13032,7 +13031,8 @@
         "dcprov[p0].paid": 300000,
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line3": {
@@ -13213,7 +13213,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -13280,7 +13279,8 @@
         "dcprov[p0].paid": 300000,
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line3": {
@@ -13461,7 +13461,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -13528,7 +13527,8 @@
         "dcprov[p0].paid": 300000,
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line3": {
@@ -13709,7 +13709,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -13776,7 +13775,8 @@
         "dcprov[p0].paid": 300000,
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line3": {
@@ -13957,7 +13957,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -14024,7 +14023,8 @@
         "dcprov[p0].paid": 300000,
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line3": {
@@ -14205,7 +14205,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -14272,7 +14271,8 @@
         "dcprov[p0].paid": 300000,
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line3": {
@@ -14453,7 +14453,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -14520,7 +14519,8 @@
         "dcprov[p0].paid": 300000,
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line3": {
@@ -14701,7 +14701,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -14768,7 +14767,8 @@
         "dcprov[p0].paid": 300000,
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line3": {
@@ -14949,7 +14949,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -15016,7 +15015,8 @@
         "dcprov[p0].paid": 300000,
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line3": {
@@ -15177,7 +15177,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -15303,7 +15302,8 @@
         "dcprov[p0].paid": 500000,
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line3": {
@@ -15484,7 +15484,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -15557,7 +15556,8 @@
         "f2441.line14": 0,
         "f2441.plans_differ": false,
         "f2441.plan_max": 500000,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line12": {
@@ -15770,7 +15770,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -15866,7 +15865,8 @@
         "f2441.line14": 0,
         "f2441.plans_differ": false,
         "f2441.plan_max": 500000,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line3": {
@@ -16114,7 +16114,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -16200,7 +16199,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.line20b": {
@@ -16375,7 +16375,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -16461,7 +16460,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.line22a": {
@@ -16640,7 +16640,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -16726,7 +16725,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.line23b": {
@@ -16901,7 +16901,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -16987,7 +16986,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.line24a": {
@@ -17166,7 +17166,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -17252,7 +17251,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.line24a": {
@@ -17431,7 +17431,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -17517,7 +17516,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.line25c": {
@@ -17712,7 +17712,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -17798,7 +17797,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.line25c": {
@@ -17993,7 +17993,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -18079,7 +18078,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.line19a": {
@@ -18266,7 +18266,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -18352,7 +18351,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.line18a": {
@@ -18531,7 +18531,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -18617,7 +18616,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.line18a": {
@@ -18812,7 +18812,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -18898,7 +18897,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.line1": {
@@ -19080,7 +19080,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -19229,7 +19228,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.line1": {
@@ -19487,7 +19487,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -19636,7 +19635,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.line1": {
@@ -19886,7 +19886,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -19919,7 +19918,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "person[taxpayer].ira_excess": false
+        "person[taxpayer].ira_excess": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f8880.line1a": {
@@ -20118,7 +20118,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -20151,7 +20150,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "person[taxpayer].ira_excess": false
+        "person[taxpayer].ira_excess": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f8880.line1a": {
@@ -20359,7 +20359,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -20413,7 +20412,8 @@
         "dependent[a].us_half": true,
         "dependent[a].eic_ssn": true,
         "f2441.employer_care": false,
-        "person[taxpayer].ira_excess": false
+        "person[taxpayer].ira_excess": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f8880.line1a": {
@@ -20633,7 +20633,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -20687,7 +20686,8 @@
         "dependent[a].us_half": true,
         "dependent[a].eic_ssn": true,
         "f2441.employer_care": false,
-        "person[taxpayer].ira_excess": false
+        "person[taxpayer].ira_excess": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f8880.line1a": {
@@ -20898,7 +20898,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -20931,7 +20930,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "person[taxpayer].ira_excess": false
+        "person[taxpayer].ira_excess": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f8880.line1a": {
@@ -21093,7 +21093,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -21185,7 +21184,8 @@
         "person[spouse].sav_prior_other": 0,
         "person[spouse].w2[e0].box12_any": false,
         "f2441.employer_care": false,
-        "person[taxpayer].ira_excess": false
+        "person[taxpayer].ira_excess": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f8880.line1a": {
@@ -21395,7 +21395,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -21487,7 +21486,8 @@
         "person[spouse].sav_prior_other": 0,
         "person[spouse].w2[e0].box12_any": false,
         "f2441.employer_care": false,
-        "person[taxpayer].ira_excess": false
+        "person[taxpayer].ira_excess": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f8880.line1a": {
@@ -21719,7 +21719,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -21773,7 +21772,8 @@
         "dependent[a].us_half": true,
         "dependent[a].eic_ssn": true,
         "f2441.employer_care": false,
-        "person[taxpayer].ira_excess": false
+        "person[taxpayer].ira_excess": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f8880.line1a": {
@@ -21947,7 +21947,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -22039,7 +22038,8 @@
         "person[spouse].sav_prior_other": 0,
         "person[spouse].w2[e0].box12_any": false,
         "f2441.employer_care": false,
-        "person[taxpayer].ira_excess": false
+        "person[taxpayer].ira_excess": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f8880.line1a": {
@@ -22238,7 +22238,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -22280,7 +22279,8 @@
         "person[taxpayer].w2[emp_a].box12_aa": 0,
         "person[taxpayer].w2[emp_a].box12_bb": 0,
         "person[taxpayer].w2[emp_a].box12_ee": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f8880.line1a": {
@@ -22479,7 +22479,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -22521,7 +22520,8 @@
         "person[taxpayer].w2[emp_a].box12_aa": 0,
         "person[taxpayer].w2[emp_a].box12_bb": 0,
         "person[taxpayer].w2[emp_a].box12_ee": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f8880.line1a": {
@@ -22720,7 +22720,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -22762,7 +22761,8 @@
         "person[taxpayer].w2[emp_a].box12_aa": 0,
         "person[taxpayer].w2[emp_a].box12_bb": 60000,
         "person[taxpayer].w2[emp_a].box12_ee": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f8880.line1a": {
@@ -22961,7 +22961,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -23003,7 +23002,8 @@
         "person[taxpayer].w2[emp_a].box12_aa": 0,
         "person[taxpayer].w2[emp_a].box12_bb": 0,
         "person[taxpayer].w2[emp_a].box12_ee": 90000,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f8880.line1a": {
@@ -23189,7 +23189,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -23282,7 +23281,8 @@
         "person[spouse].w2[e0].box12_any": false,
         "f2441.employer_care": false,
         "person[spouse].ira_excess": false,
-        "person[taxpayer].ira_excess": false
+        "person[taxpayer].ira_excess": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f8880.line1a": {
@@ -23494,7 +23494,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -23597,7 +23596,8 @@
         "retirement[p].sav_inherited": false,
         "f2441.employer_care": false,
         "person[spouse].ira_excess": false,
-        "person[taxpayer].ira_excess": false
+        "person[taxpayer].ira_excess": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f8880.line1a": {
@@ -23804,7 +23804,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -23953,7 +23952,8 @@
         "dcprov[p0].paid": 700000,
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line4": {
@@ -24107,7 +24107,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -24256,7 +24255,8 @@
         "dcprov[p0].paid": 700000,
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line4": {
@@ -24410,7 +24410,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -24559,7 +24558,8 @@
         "dcprov[p0].paid": 700000,
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line4": {
@@ -24713,7 +24713,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -24862,7 +24861,8 @@
         "dcprov[p0].paid": 700000,
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line5": {
@@ -24990,7 +24990,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -25147,7 +25146,8 @@
         "f2441.line14": 0,
         "f2441.plans_differ": false,
         "f2441.plan_max": 500000,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line4": {
@@ -25294,7 +25294,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -25361,7 +25360,8 @@
         "dcprov[p0].paid": 400000,
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line9b": {
@@ -25476,7 +25476,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -25633,7 +25632,8 @@
         "f2441.line14": 0,
         "f2441.plans_differ": true,
         "f2441.plan_max": 500000,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line21": {
@@ -25748,7 +25748,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -25905,7 +25904,8 @@
         "f2441.line14": 200000,
         "f2441.plans_differ": false,
         "f2441.plan_max": 500000,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line15": {
@@ -26039,7 +26039,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -26106,7 +26105,8 @@
         "dcprov[p0].paid": 400000,
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.qp_count": {
@@ -26253,7 +26253,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -26320,7 +26319,8 @@
         "dcprov[p0].paid": 400000,
         "dcprov[p0].related": true,
         "f2441.paid_2026": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.paid_total": {
@@ -26454,7 +26454,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -26521,7 +26520,8 @@
         "dcprov[p0].paid": 400000,
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "dependent[a].dc_count": {
@@ -26668,7 +26668,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -26735,7 +26734,8 @@
         "dcprov[p0].paid": 400000,
         "dcprov[p0].related": false,
         "f2441.paid_2026": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line11": {
@@ -26869,7 +26869,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -26942,7 +26941,8 @@
         "f2441.line14": 0,
         "f2441.plans_differ": false,
         "f2441.plan_max": 500000,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line26": {
@@ -27067,7 +27067,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -27153,7 +27152,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.line6a": {
@@ -27278,7 +27278,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -27364,7 +27363,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.line6a": {
@@ -27489,7 +27489,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -27575,7 +27574,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.line11": {
@@ -27700,7 +27700,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -27786,7 +27785,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.rce_ws2": {
@@ -27898,7 +27898,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -28043,7 +28042,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.eehi_ws2": {
@@ -28155,7 +28155,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -28300,7 +28299,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.line30": {
@@ -28412,7 +28412,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -28557,7 +28556,8 @@
         "f5695.joint_occupancy": true,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.line30": {
@@ -28669,7 +28669,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -28814,7 +28813,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": true,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.line30": {
@@ -28926,7 +28926,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -29071,7 +29070,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.line30": {
@@ -29183,7 +29183,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -29328,7 +29327,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.line30": {
@@ -29440,7 +29440,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -29585,7 +29584,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.doors_capped": {
@@ -29723,7 +29723,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -29868,7 +29867,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.wh_capped": {
@@ -30019,7 +30019,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -30164,7 +30163,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.enabling_capped": {
@@ -30292,7 +30292,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -30378,7 +30377,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.line18b": {
@@ -30516,7 +30516,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -30644,7 +30643,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "s8812.clwb_11": {
@@ -30769,7 +30769,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -30802,7 +30801,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "person[taxpayer].ira_excess": false
+        "person[taxpayer].ira_excess": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f8880.line8": {
@@ -30914,7 +30914,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -31007,7 +31006,8 @@
         "person[spouse].w2[e0].box12_any": false,
         "f2441.employer_care": false,
         "person[spouse].ira_excess": false,
-        "person[taxpayer].ira_excess": false
+        "person[taxpayer].ira_excess": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f8880.prior_own_a": {
@@ -31143,7 +31143,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -31176,7 +31175,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "person[taxpayer].ira_excess": false
+        "person[taxpayer].ira_excess": false,
+        "s1.cod_any": false
       },
       "expect": {
         "person[taxpayer].sav_line1": {
@@ -31327,7 +31327,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -31369,7 +31368,8 @@
         "person[taxpayer].w2[emp_a].box12_aa": 0,
         "person[taxpayer].w2[emp_a].box12_bb": 0,
         "person[taxpayer].w2[emp_a].box12_ee": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "person[taxpayer].sav_line2": {
@@ -31494,7 +31494,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -31536,7 +31535,8 @@
         "person[taxpayer].w2[emp_a].box12_aa": 0,
         "person[taxpayer].w2[emp_a].box12_bb": 0,
         "person[taxpayer].w2[emp_a].box12_ee": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "person[taxpayer].w2[emp_a].sav_listed": {
@@ -31661,7 +31661,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -31703,7 +31702,8 @@
         "person[taxpayer].w2[emp_a].box12_aa": 0,
         "person[taxpayer].w2[emp_a].box12_bb": 0,
         "person[taxpayer].w2[emp_a].box12_ee": 0,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "person[taxpayer].w2[emp_a].sav_listed": {
@@ -31828,7 +31828,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -31872,7 +31871,8 @@
         "person[taxpayer].w2[emp_a].box12_ee": 0,
         "person[taxpayer].w2[emp_a].g_governmental": true,
         "person[taxpayer].w2[emp_a].g_elective": 150000,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "person[taxpayer].w2[emp_a].g_gov_part": {
@@ -32006,7 +32006,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -32079,7 +32078,8 @@
         "f2441.line14": 0,
         "f2441.plans_differ": false,
         "f2441.plan_max": 500000,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "person[taxpayer].w2[emp_a].dc_net": {
@@ -32214,7 +32214,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -32286,7 +32285,8 @@
         "dcprov[p1].household": false,
         "dcprov[p1].paid": 100000,
         "dcprov[p1].related": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.statement_count": {
@@ -32425,7 +32425,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -32515,7 +32514,8 @@
         "dependent[b].eic_ssn": true,
         "dependent[b].dc_paid": 0,
         "dependent[b].dc_incapable": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.qp_count": {
@@ -32651,7 +32651,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -32764,7 +32763,8 @@
         "dependent[c].eic_ssn": true,
         "dependent[c].dc_paid": 400000,
         "dependent[c].dc_incapable": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.qp_count": {
@@ -32874,7 +32874,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -33031,7 +33030,8 @@
         "f2441.line14": 0,
         "f2441.plans_differ": false,
         "f2441.plan_max": 600000,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.exclusion_max": {
@@ -33151,7 +33151,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -33184,7 +33183,8 @@
         "person[taxpayer].sav_prior_other": 0,
         "person[taxpayer].w2[emp_a].box12_any": false,
         "f2441.employer_care": false,
-        "person[taxpayer].ira_excess": false
+        "person[taxpayer].ira_excess": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f8880.agi_limit": {
@@ -33311,7 +33311,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -33397,7 +33396,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f5695.line18a": {
@@ -33577,7 +33577,6 @@
         "div.box12": 0,
         "s1.uc_paid": 0,
         "refund.received": 0,
-        "refund.other": false,
         "sli.interest": 0,
         "s1.uc_repaid": 0,
         "s1.uc_unsupported": false,
@@ -33711,7 +33710,8 @@
         "f2441.line14": 0,
         "f2441.plans_differ": false,
         "f2441.plan_max": 500000,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f2441.line12": {
@@ -33938,7 +33938,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -34024,7 +34023,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f1040.line11a": {
@@ -34218,7 +34218,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -34367,7 +34366,8 @@
         "f5695.joint_occupancy": false,
         "f5695.separate_homes": false,
         "f5695.condo": false,
-        "f2441.employer_care": false
+        "f2441.employer_care": false,
+        "s1.cod_any": false
       },
       "expect": {
         "f1040.line11a": {

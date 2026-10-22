@@ -1,4 +1,4 @@
-# Handoff: Stage 16 (the remaining Schedule 1 items), built and reviewed; owner questions open
+# Handoff: Stage 16 (the remaining Schedule 1 items), built and reviewed; owner's answers recorded
 
 Read `HANDOFF.md` first, then `TASKS.md` (T-053), then this file. The owner's decisions are D1 to D14 in
 `research/premises/stage16-schedule1-misc.decisions.md`, with the premise map and its verification beside it.
@@ -205,6 +205,38 @@ refund, 10 to 14 the small items, 15 to 19 the IRA deduction, and 20 to 25 cut a
     - none on December 1 with 12 eligible months.
     Under the last-month rule, such a set gives a wrong line 3. *Recommended:* refuse them as entry errors, like
     `f8889.bad_months`, at the start of the next stage. *Alternative:* leave them as the filer's responsibility.
+
+## Owner's answers (2026-10-22): all recommended answers accepted
+
+Kept as built: questions 1 to 4, 6 to 8, 10 to 12, 14, 15 (the fixtures follow the printed rounding rule), 17 to 21,
+23 and 24. To build:
+- 5: fold `refund.other` into the narrowed `scope.schedule1` question;
+- 9: refuse a 2024 Schedule A line 5e above line 5d as an entry error;
+- 13: give canceled debt its own yes/no gate;
+- 16: a screen, asked of a Schedule C filer who makes traditional IRA contributions, refusing self-employment income
+  mainly from capital;
+- 22: `amb.2025.hsa_last_month_all_year` takes reading 1 (owner ruling);
+- 25: refuse the four contradictory December 1 coverage answer sets (T-056).
+
+Built after the answers:
+- 5: `refund.other` is gone. `scope.schedule1` names other recoveries, and its refusal reaches line 8z through
+  Form 1040 line 8.
+- 9: `refund.line5e_bad` refuses worksheet line 2 (fixture `stage16.refuse.refund.line5e_bad`).
+- 13: `s1.cod_any` asks whether any debt was canceled; the amount is asked only on a Yes.
+- 16: `ira.se_capital` (asked when the return has a Schedule C and traditional contributions) refuses IRA worksheet
+  line 9 (fixture `stage16.refuse.ira.se_capital`).
+- 22: the register entry is marked as the owner's ruling.
+- 25: `f8889.bad_months` refuses the four sets (four fixtures `stage16.refuse.f8889.dec_*`).
+  - The generator's spouse HSA answers now follow the same consistent rule as the taxpayer's; this draws no new random
+    values.
+  - The class M jobs of `f8889`, `ira`, `refund` and `s1` were regenerated and their reviews rerun.
+- Evidence after these changes:
+  - Fixtures 1,034/1,034 pass. `stage16.json` now has 89 cases: the refusal regression for `refund.other` is gone, and
+    six refusal regressions and two canceled-debt regressions are new.
+  - Every review is rerun and ruled.
+  - Properties: 8, 0 failing.
+  - Mutation: 2,269 mutants, adjusted 98.1%, with no new survivor. Two new mutants of the canceled-debt gate are
+    killed by `stage16.regress.s1.cod_yes_zero` and `cod_no`, which leave out the answers the interview does not ask.
 
 ## Facts a fresh session needs
 

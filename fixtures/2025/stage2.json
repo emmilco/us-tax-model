@@ -38,7 +38,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -56,7 +55,8 @@
         "f2441.care": false,
         "f2441.benefits": false,
         "f2441.employer_care": false,
-        "person[taxpayer].sav_trad": false
+        "person[taxpayer].sav_trad": false,
+        "s1.cod_any": false
       },
       "expect": {
         "s3.line11": {
@@ -110,7 +110,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -128,7 +127,8 @@
         "f2441.care": false,
         "f2441.benefits": false,
         "f2441.employer_care": false,
-        "person[taxpayer].sav_trad": false
+        "person[taxpayer].sav_trad": false,
+        "s1.cod_any": false
       },
       "expect": {
         "s3.line11": {
@@ -182,7 +182,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -200,7 +199,8 @@
         "f2441.care": false,
         "f2441.benefits": false,
         "f2441.employer_care": false,
-        "person[taxpayer].sav_trad": false
+        "person[taxpayer].sav_trad": false,
+        "s1.cod_any": false
       },
       "expect": {
         "s3.line11": {
@@ -254,7 +254,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -272,7 +271,8 @@
         "f2441.care": false,
         "f2441.benefits": false,
         "f2441.employer_care": false,
-        "person[taxpayer].sav_trad": false
+        "person[taxpayer].sav_trad": false,
+        "s1.cod_any": false
       },
       "expect": {
         "s3.line11": {
@@ -326,7 +326,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -344,7 +343,8 @@
         "f2441.care": false,
         "f2441.benefits": false,
         "f2441.employer_care": false,
-        "person[taxpayer].sav_trad": false
+        "person[taxpayer].sav_trad": false,
+        "s1.cod_any": false
       },
       "expect": {
         "s3.line11": {
@@ -398,7 +398,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -416,7 +415,8 @@
         "f2441.care": false,
         "f2441.benefits": false,
         "f2441.employer_care": false,
-        "person[taxpayer].sav_trad": false
+        "person[taxpayer].sav_trad": false,
+        "s1.cod_any": false
       },
       "expect": {
         "s3.line11": {
@@ -470,7 +470,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -488,7 +487,8 @@
         "f2441.care": false,
         "f2441.benefits": false,
         "f2441.employer_care": false,
-        "person[taxpayer].sav_trad": false
+        "person[taxpayer].sav_trad": false,
+        "s1.cod_any": false
       },
       "expect": {
         "s3.line11": {
@@ -538,7 +538,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -556,7 +555,8 @@
         "f2441.care": false,
         "f2441.benefits": false,
         "f2441.employer_care": false,
-        "person[taxpayer].sav_trad": false
+        "person[taxpayer].sav_trad": false,
+        "s1.cod_any": false
       },
       "expect": {
         "s3.line11": {
@@ -612,7 +612,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -630,7 +629,8 @@
         "f2441.care": false,
         "f2441.benefits": false,
         "f2441.employer_care": false,
-        "person[taxpayer].sav_trad": false
+        "person[taxpayer].sav_trad": false,
+        "s1.cod_any": false
       },
       "expect": {
         "s3.line11": {
@@ -683,7 +683,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -701,7 +700,8 @@
         "f2441.care": false,
         "f2441.benefits": false,
         "f2441.employer_care": false,
-        "person[taxpayer].sav_trad": false
+        "person[taxpayer].sav_trad": false,
+        "s1.cod_any": false
       },
       "expect": {
         "s3.line11": {
@@ -785,7 +785,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -803,7 +802,8 @@
         "f2441.care": false,
         "f2441.benefits": false,
         "f2441.employer_care": false,
-        "person[taxpayer].sav_trad": false
+        "person[taxpayer].sav_trad": false,
+        "s1.cod_any": false
       },
       "expect": {
         "s3.line11": {
@@ -884,7 +884,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -902,7 +901,8 @@
         "f2441.care": false,
         "f2441.benefits": false,
         "f2441.employer_care": false,
-        "person[taxpayer].sav_trad": false
+        "person[taxpayer].sav_trad": false,
+        "s1.cod_any": false
       },
       "expect": {
         "s3.line11": {
@@ -947,7 +947,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -965,7 +964,8 @@
         "f2441.care": false,
         "f2441.benefits": false,
         "f2441.employer_care": false,
-        "person[taxpayer].sav_trad": false
+        "person[taxpayer].sav_trad": false,
+        "s1.cod_any": false
       },
       "expect": {
         "s3.line11": {
@@ -1011,7 +1011,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -1036,7 +1035,8 @@
         "f2441.benefits": false,
         "f2441.employer_care": false,
         "person[spouse].sav_trad": false,
-        "person[taxpayer].sav_trad": false
+        "person[taxpayer].sav_trad": false,
+        "s1.cod_any": false
       },
       "expect": {
         "s3.line11": {
@@ -1081,7 +1081,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -1099,7 +1098,8 @@
         "f2441.care": false,
         "f2441.benefits": false,
         "f2441.employer_care": false,
-        "person[taxpayer].sav_trad": false
+        "person[taxpayer].sav_trad": false,
+        "s1.cod_any": false
       },
       "expect": {
         "s3.line11": {
@@ -1171,7 +1171,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -1189,7 +1188,8 @@
         "f2441.care": false,
         "f2441.benefits": false,
         "f2441.employer_care": false,
-        "person[taxpayer].sav_trad": false
+        "person[taxpayer].sav_trad": false,
+        "s1.cod_any": false
       },
       "expect": {
         "s3.line11": {
@@ -1270,7 +1270,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -1288,7 +1287,8 @@
         "f2441.care": false,
         "f2441.benefits": false,
         "f2441.employer_care": false,
-        "person[taxpayer].sav_trad": false
+        "person[taxpayer].sav_trad": false,
+        "s1.cod_any": false
       },
       "expect": {
         "s3.line11": {
@@ -1342,7 +1342,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -1360,7 +1359,8 @@
         "f2441.care": false,
         "f2441.benefits": false,
         "f2441.employer_care": false,
-        "person[taxpayer].sav_trad": false
+        "person[taxpayer].sav_trad": false,
+        "s1.cod_any": false
       },
       "expect": {
         "s3.line11": {
@@ -1414,7 +1414,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -1432,7 +1431,8 @@
         "f2441.care": false,
         "f2441.benefits": false,
         "f2441.employer_care": false,
-        "person[taxpayer].sav_trad": false
+        "person[taxpayer].sav_trad": false,
+        "s1.cod_any": false
       },
       "expect": {
         "s3.line11": {
@@ -1490,7 +1490,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -1510,7 +1509,8 @@
         "f2441.benefits": false,
         "f2441.employer_care": false,
         "person[second].sav_trad": false,
-        "person[taxpayer].sav_trad": false
+        "person[taxpayer].sav_trad": false,
+        "s1.cod_any": false
       },
       "expect": {
         "s3.line11": {
@@ -1566,7 +1566,6 @@
         "s1.alimony": false,
         "s1.cod_amount": 0,
         "refund.received": 0,
-        "refund.other": false,
         "s1.line8_other": false,
         "s1.gambling_winnings": 0,
         "s1.line8g": 0,
@@ -1584,7 +1583,8 @@
         "f2441.care": false,
         "f2441.benefits": false,
         "f2441.employer_care": false,
-        "person[taxpayer].sav_trad": false
+        "person[taxpayer].sav_trad": false,
+        "s1.cod_any": false
       },
       "expect": {
         "s3.line11": {

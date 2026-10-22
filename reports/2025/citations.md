@@ -6,10 +6,10 @@ compound anchor, its first member), on one of them or as a heading in force up t
 An anchor or quote that cannot match printed text carries a ruling in `reviews/2025/citations.json`,
 listed with its uses in `reports/2025/citations.html`.
 
-- anchors: 2311
+- anchors: 2313
 - anchors ruled: 45
-- quotes: 1250
+- quotes: 1252
 - quotes ruled: 4
-- segments checked: 2396
+- segments checked: 2398
 - findings without a ruling: 0
 - rulings no anchor uses: 0

@@ -795,9 +795,6 @@ bank:
   - input: refund.received
     order: 10
     help: 'Money is integer cents; zero if none. A refund of federal income tax is not included. Interest paid on a state or local refund is interest income (Form 1040 line 2b), not part of this amount. Refunds of other taxes (sales, real estate, personal property) are asked separately.'
-  - input: refund.other
-    order: 10
-    help: 'Answer true or false. A recovery is a return of an amount you deducted or took a credit for in an earlier year. Answer false for a refund of an amount you did not deduct (for example a property tax refund for a year you took the standard deduction). Other recoveries are figured with Pub. 525 and are outside this tool.'
   - input: refund.box8
     order: 10
     help: 'Answer true or false. When box 8 is checked, the refund is of a tax on trade or business income; it is reported on Schedule C or F, which this tool does not do for such refunds.'
@@ -862,6 +859,10 @@ bank:
     order: 10
     help: Answer true or false. A payment is partly child support when the agreement reduces it on an event relating to
       a child, such as reaching a certain age (Pub. 504, Child support).
+  - input: s1.cod_any
+    order: 10
+    help: Answer true or false. A nonbusiness debt is a personal debt, such as a credit card or personal loan. True asks
+      the amount next.
   - input: s1.cod_amount
     order: 10
     help: Money is integer cents. A nonbusiness debt is a personal debt, such as a credit card or personal loan. Include
@@ -1580,6 +1581,10 @@ bank:
     order: 23
     help: Answer true or false. Each of these changes the compensation or the contribution limit for the IRA deduction; true
       refuses the return.
+  - input: ira.se_capital
+    order: 23
+    help: Answer true or false. Asked only when someone on the return has a Schedule C and made traditional IRA contributions;
+      true refuses the return.
   - input: ira.deduct_less
     order: 28
     help: Answer true or false. You may treat deductible contributions as nondeductible; this tool takes the most you can

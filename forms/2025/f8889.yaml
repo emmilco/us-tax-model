@@ -133,7 +133,8 @@ form:
         of the month?'
   - id: f8889.bad_months
     printed: (helper)
-    label: The month counts are impossible (more than 12 eligible months, or more family months than eligible months)
+    label: The month counts or the December 1 coverage are impossible (more than 12 eligible months, more family months
+      than eligible months, or a December 1 coverage the month counts cannot include)
     type: Bool
     expr:
       op: test
@@ -147,9 +148,53 @@ form:
         gt:
         - f8889.months_family
         - f8889.months_eligible
+      - op: test
+        all:
+        - op: test
+          eq:
+          - f8889.dec_coverage
+          - const: self_only
+        - op: test
+          eq:
+          - f8889.months_family
+          - f8889.months_eligible
+      - op: test
+        all:
+        - op: test
+          eq:
+          - f8889.dec_coverage
+          - const: family
+        - op: test
+          eq:
+          - f8889.months_family
+          - const: 0
+            type: Count
+      - op: test
+        all:
+        - op: test
+          ne:
+          - f8889.dec_coverage
+          - const: none
+        - op: test
+          eq:
+          - f8889.months_eligible
+          - const: 0
+            type: Count
+      - op: test
+        all:
+        - op: test
+          eq:
+          - f8889.dec_coverage
+          - const: none
+        - op: test
+          eq:
+          - f8889.months_eligible
+          - const: 12
+            type: Count
     cite:
       doc: i8889
-      locator: p. 6, Line 3 Limitation Chart and Worksheet (twelve months of 2025)
+      locator: p. 6, Line 3 Limitation Chart and Worksheet (twelve months of 2025, each counted on the first day of the month,
+        December 1 among them)
   - id: f8889.age55
     printed: (helper)
     label: Were you age 55 or older at the end of 2025?
@@ -1229,7 +1274,8 @@ form:
         locator: p. 14, Married Filing Separately
     - when: f8889.bad_months
       form: Form 8889 line 3 month counts
-      remedy: The number of eligible months must be at most 12 and the number of family months at most the eligible months.
+      remedy: The number of eligible months must be at most 12 and the number of family months at most the eligible months,
+        and the December 1 coverage must agree with them (December 1 is one of the months counted). Check the answers.
       cite:
         doc: i8889
         locator: p. 6, Line 3 Limitation Chart and Worksheet

@@ -82,7 +82,7 @@ const DEFAULT_TRUE_PERCENT = 10;
 // income tax refund and no other recovery); line 8 (gambling, Alaska Permanent Fund dividends, jury duty pay, prizes,
 // hobby income, scholarships and its screen), line 24a and gambling losses on Schedule A line 16.
 const NOT_DRAWN = new Set([
-  "refund.received", "refund.other", "refund.box8", "refund.not_2024", "refund.itemized", "refund.sales",
+  "refund.received", "refund.box8", "refund.not_2024", "refund.itemized", "refund.sales",
   "refund.exc_tax", "refund.exc_who", "refund.line5d_2024", "refund.line5e_2024", "refund.line17_2024",
   "refund.mfs_spouse_itemized", "refund.you_born", "refund.you_blind", "refund.spouse_born", "refund.spouse_blind",
   "s1.line8_other", "s1.gambling_winnings", "s1.gambling_pro", "s1.line8g", "s1.line8h", "s1.line8i", "s1.line8j", "s1.line8r",
@@ -93,7 +93,7 @@ const NOT_DRAWN = new Set([
 // depend on them. The IRA deduction's: with no traditional IRA contribution amount, none of them is reached.
 const UNDRAWN = new Set([
   "person[taxpayer].ira_trad", "person[taxpayer].ira_excess", "person[taxpayer].ira_age50", "person[taxpayer].ira_work_plan",
-  "person[taxpayer].ira_basis", "person[taxpayer].ira_basis_adjusted", "person[taxpayer].ira_dist", "ira.special", "ira.deduct_less",
+  "person[taxpayer].ira_basis", "person[taxpayer].ira_basis_adjusted", "person[taxpayer].ira_dist", "ira.special", "ira.se_capital", "ira.deduct_less",
 ]);
 
 // Money inputs the generator models with structure; every other declared
@@ -115,7 +115,7 @@ const MODELLED = new Set([
 // Inputs given their "no" or zero answer on every generated return and drawn from no arbitrary, so the random
 // stream is the same as without them: alimony, canceled debt and HSA distributions (Schedule 1 lines 2a, 8c, 8f, 19a).
 const FIXED = new Set([
-  "s1.alimony", "s1.alimony_received", "s1.alimony_paid", "s1.alimony_unsupported", "s1.cod_amount", "s1.cod_unsupported",
+  "s1.alimony", "s1.alimony_received", "s1.alimony_paid", "s1.alimony_unsupported", "s1.cod_any", "s1.cod_amount", "s1.cod_unsupported",
   `${HSA}.line14a`, `${HSA}.rollover`, `${HSA}.medical`, `${HSA}.line17a`, `${HSA}.subject_part`,
 ]);
 
@@ -659,7 +659,7 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
       const family = Math.min(h.familyMonths, h.months);
       Object.assign(inputs, { [`${H}.line2`]: h.contrib, [`${H}.line9`]: 0, [`${H}.unsupported`]: false, [`${H}.months_eligible`]: h.months,
         [`${H}.months_family`]: family, [`${H}.age55`]: h.age55, [`${H}.last_month`]: false,
-        [`${H}.dec_coverage`]: h.months === 12 ? (family === 12 ? "family" : family === 0 ? "self_only" : h.decFamily ? "family" : "self_only") : (h.decFamily && family > 0 ? "family" : "self_only"),
+        [`${H}.dec_coverage`]: h.months === 0 ? "none" : family === h.months ? "family" : family === 0 ? "self_only" : h.decFamily ? "family" : "self_only",
         [`${H}.allocation`]: h.agreed ? "agreed" : "equal", [`${H}.allocated`]: h.allocated,
         [`${H}.line14a`]: 0, [`${H}.rollover`]: 0, [`${H}.medical`]: 0, [`${H}.line17a`]: false, [`${H}.subject_part`]: 0 });
       // Your own Form 8889 uses the same allocation method; an agreed part is drawn from the same range.

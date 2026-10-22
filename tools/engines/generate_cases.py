@@ -73,9 +73,9 @@ def gen_case(rng, i):
         "sa.spouse_extra": False, "person[taxpayer].age65": False, "person[taxpayer].blind": False, "sa.spouse_itemizes": False, "sa.elect_itemize": False,
         "sa.line5c": 0,
         "scope.schedule1": False, "scope.credits": False, "scope.other_income": False,
-        "refund.received": 0, "refund.other": False,
+        "refund.received": 0,
         # Schedule 1 lines 2a, 8c and 19a: no alimony and no canceled debt.
-        "s1.alimony": False, "s1.cod_amount": 0,
+        "s1.alimony": False, "s1.cod_any": False, "s1.cod_amount": 0,
         "scope.other_line16": False, "s2.amt": False, "s2.other": False,
         "f1040.line25b": 0, "f1040.line25c": 0, "f1040.line26": 0, "f1040.line35a": 0, "f1040.line36": 0,
         # Earned income credit questions: an adult aged 25 to 64 living in the United States who is
@@ -86,7 +86,7 @@ def gen_case(rng, i):
         "f2441.care": False, "f2441.benefits": False, "f2441.employer_care": False,
     }
     inputs.update(saver_answers(TAXPAYER))
-    inputs.update({"ira.special": False, "ira.deduct_less": False})
+    inputs.update({"ira.special": False, "ira.se_capital": False, "ira.deduct_less": False})
     facts = {}
     features = set()
 

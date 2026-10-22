@@ -7,8 +7,8 @@ Second transcription of `State and Local Income Tax Refund Worksheet—Schedule 
 | date | 2026-10-22 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | da7a4f690137425f25d71f199f46c101191683d55fa91fa7da7666abbfc7e6bc |
-| subject sha256 | de47852d054764ef440862ab21cd30bc646c18ffc0326cbe73a8376137cac267 |
+| prompt sha256 | f68394f3e91afc533ce947e6a16e6f079a5eafae8c50959edc2cd36753369965 |
+| subject sha256 | 19b64f2343c301d334f12697341c4e987cb0338554757fa20f2d9aea79795acc |
 | printed lines compared | 11 |
 | agree / disagree / missing | 8 / 3 / 0 |
 | extra printed lines in second | none |
@@ -18,8 +18,9 @@ Second transcription of `State and Local Income Tax Refund Worksheet—Schedule 
 | document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
 | --- | --- | --- | --- | --- | --- | --- |
 | i1040gi | 2025; printed date 2026-02-25 | 33, 88, 89, 90 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 33, 88, 89 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
-| p525 | 2025 | 24, 25 | cited pages | 7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182 | 24, 25 | 27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65 |
 | f1099g | Rev. March 2024 (continuous-use form for calendar year 2025; the December 2026 revision is first used for 2026) | 1, 2, 3, 4, 5, 6 | whole document | c3505294585e00ec5e957f73aa97dee32ad4b6916cd3eb48fef7f3c79f123270 | 5 | 49cc781de5cf6d881cc347361880de4b4b20fca0f13397bc94c94e84a20cff6d |
+| i1040sca | 2025; printed date 2025-12-08 | 7 | cited pages | 18001c3e295230bbac198d1982e4c52265139aa983ef9cb9fb69d2a41a06119b | - | 5e2e018247f585c4ecb192b2c1a75e444bbf96b9653026722bc9720d70cc114c |
+| p525 | 2025 | 24 | pages named by another document's citation | 7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182 | 24 | 27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65 |
 
 ## Lines
 

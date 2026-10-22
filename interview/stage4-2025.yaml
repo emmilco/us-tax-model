@@ -171,7 +171,6 @@ interview:
   - oi8z.amount
   - s1.jury_to_employer
   - refund.received
-  - refund.other
   - refund.box8
   - refund.not_2024
   - refund.itemized
@@ -191,6 +190,7 @@ interview:
   - s1.alimony_received
   - s1.alimony_paid
   - s1.alimony_unsupported
+  - s1.cod_any
   - s1.cod_amount
   - s1.cod_unsupported
   - person.educator_expenses
@@ -218,6 +218,7 @@ interview:
   - person.ira_work_plan
   - person.ira_dist
   - ira.special
+  - ira.se_capital
   - ira.deduct_less
   - s1a.tips
   - s1a.overtime

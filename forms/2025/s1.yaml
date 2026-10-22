@@ -40,16 +40,6 @@ form:
       doc: f1040s1
       locator: Schedule 1 (2025), line 1; i1040gi p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line
         9, "Enter the smaller of line 3 or line 8 here and on Schedule 1, line 1"
-    refuses:
-    - when: refund.other
-      form: Pub. 525, Recoveries (Worksheet 2; other recoveries on Schedule 1, line 8z)
-      remedy: A refund or other recovery of an amount deducted or credited in an earlier year, other than a state or local
-        income tax refund, is outside this tool.
-      cite:
-        doc: p525
-        locator: p. 25, Where to report, "Enter your state or local income tax refund on Schedule 1 (Form 1040), line 1, and
-          the total of all other recoveries as other income on Schedule 1 (Form 1040), line 8z"; i1040gi p. 89, Line 1, item
-          2
   - id: s1.uc_paid
     printed: (helper)
     label: Unemployment compensation paid to you in 2025
@@ -583,6 +573,18 @@ form:
       locator: p. 89, Line 2b, "On line 2b, enter the month and year of your original divorce or separation agreement that
         relates to the alimony payment, if any, reported on line 2a"
     ambiguity: amb.2025.s1_unnumbered_lines
+  - id: s1.cod_any
+    printed: (gate)
+    label: Was any of your debt canceled or forgiven in 2025?
+    type: Bool
+    expr:
+      op: input
+      source: Was any of your debt canceled or forgiven in 2025 (for example, you received a Form 1099-C, or a lender forgave
+        a debt you owed without one)?
+    cite:
+      doc: p4681
+      locator: p. 4, Form 1099-C Reference Guide, "Even if you didn't receive a Form 1099-C, you must report canceled debt
+        as gross income on your tax return unless one of the exceptions or exclusions described later applies"
   - id: s1.cod_amount
     printed: (helper)
     label: Canceled nonbusiness debt (Form 1099-C box 2, and any canceled nonbusiness debt with no Form 1099-C)
@@ -648,9 +650,9 @@ form:
       cite:
         doc: p4681
         locator: p. 3, General Rules; p. 4, Exceptions; p. 6, Exclusions
-  - id: s1.line8c
-    printed: 8c
-    label: Cancellation of debt
+  - id: s1.cod_figured
+    printed: (helper)
+    label: Cancellation of debt, when a debt was canceled
     type: NonNegDollars
     expr:
       op: choose
@@ -665,6 +667,29 @@ form:
           op: test
           eq:
           - s1.has_cod
+          - const: false
+        then: s1.zero
+    cite:
+      doc: f1040s1
+      locator: Schedule 1 (2025), line 8c; i1040gi p. 91, Line 8c, "Canceled debt may be shown in box 2 of Form 1099-C. However,
+        part or all of your income from cancellation of debt may be nontaxable"
+  - id: s1.line8c
+    printed: 8c
+    label: Cancellation of debt
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - s1.cod_any
+          - const: true
+        then: s1.cod_figured
+      - guard:
+          op: test
+          eq:
+          - s1.cod_any
           - const: false
         then: s1.zero
     cite:

@@ -5,8 +5,20 @@
   {
    "printed": "12a",
    "restated": "Add person.ira_deduction over every confirmed person entry for which helper \"Whose entry is this, yours or your spouse's?\" = 'taxpayer', within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The IRS says \"On line 12a, enter the smallest of line 7a, 10, or 11a.\" The restatement sums a filer-supplied person.ira_deduction instead of taking that minimum. There is also no refusal for the caution \"If married filing jointly and line 10 is less than $14,000 ... stop here and use the worksheet in Pub. 590-A.\"",
+   "ruling": "Ruling: representation; project retained (model error). person.ira_deduction is not an entered amount: it is the smallest of the person's line 7, line 10 and line 11 (person.ira_line12; zero without traditional contributions, when line 11 is zero), defined per person on the person worksheet and compared operand by operand in the transcription log for person, where it is ruled. i1040gi p. 98, line 12, \"On line 12a, enter the smallest of line 7a, 10, or 11a\"."
+  },
+  {
+   "printed": "12a",
+   "restated": "Add person.ira_deduction over every confirmed person entry for which helper \"Whose entry is this, yours or your spouse's?\" = 'taxpayer', within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The IRS says \"On line 12a, enter the smallest of line 7a, 10, or 11a.\" The restatement takes an entered amount and does not compute that minimum.",
    "ruling": "Ruling: representation; project retained (model error). person.ira_deduction is not an entered amount: it is the smallest of the person's line 7, line 10 and line 11 (person.ira_line12; zero without traditional contributions, when line 11 is zero), defined per person on the person worksheet and compared operand by operand in the transcription log for person, where it is ruled. i1040gi p. 98, line 12, \"On line 12a, enter the smallest of line 7a, 10, or 11a\"."
+  },
+  {
+   "printed": "12b",
+   "restated": "Add person.ira_deduction over every confirmed person entry for which helper \"Whose entry is this, yours or your spouse's?\" = 'spouse', within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The IRS says \"On line 12b, enter the smallest of line 7b, 10, or 11b.\" The restatement sums a filer-supplied person.ira_deduction rather than that minimum, and the MFJ line 10 < $14,000 stop is not refused.",
+   "ruling": "Ruling: representation; project retained (model error). As line 12a, for the spouse entry: the smallest of line 7b, line 10 and line 11b (person.ira_line12), defined per person on the person worksheet and compared operand by operand in the transcription log for person, where it is ruled. i1040gi p. 98, line 12, \"On line 12b, enter the smallest of line 7b, 10, or 11b\"."
   },
   {
    "printed": "12b",
@@ -27,10 +39,28 @@
    "ruling": "Ruling: refusal located elsewhere; project retained. Schedule 1 lines 12, 14 and 23 are outside this tool: scope.schedule1 asks about \"an adjustment on Schedule 1 line 12, 14 or 23\" and refuses Form 1040 lines 8 and 10, so worksheet line 3 (Form 1040 line 9) refuses whenever one applies and within scope they are zero, as the line's citation says. The lines in scope (11, 13, 15 to 19a and 25) are all added. i1040gi p. 97, line 4, \"Enter the total of the amounts from Schedule 1, lines 11 through 19a, plus 23 and 25\"."
   },
   {
+   "printed": "4",
+   "restated": "Add s1 line 11, s1 line 13, s1 line 15, s1 line 16, s1 line 17, s1 line 18, s1 line 19a, and s1 line 25.",
+   "model": "The IRS says \"Enter the total of the amounts from Schedule 1, lines 11 through 19a, plus 23 and 25.\" The restatement omits Schedule 1 lines 12, 14 and 23.",
+   "ruling": "Ruling: refusal located elsewhere; project retained. Schedule 1 lines 12, 14 and 23 are outside this tool: scope.schedule1 asks about \"an adjustment on Schedule 1 line 12, 14 or 23\" and refuses Form 1040 lines 8 and 10, so worksheet line 3 (Form 1040 line 9) refuses whenever one applies and within scope they are zero, as the line's citation says. The lines in scope (11, 13, 15 to 19a and 25) are all added. i1040gi p. 97, line 4, \"Enter the total of the amounts from Schedule 1, lines 11 through 19a, plus 23 and 25\"."
+  },
+  {
+   "printed": "6a",
+   "restated": "Choose — [helper \"Lines 2 through 6 are completed (traditional IRA contributions, and someone is covered by a retirement plan)\" = true → helper \"Line 6, your column\"] [helper \"Lines 2 through 6 are completed (traditional IRA contributions, and someone is covered by a retirement plan)\" = false → helper \"Zero\"]",
+   "model": "The IRS line is computed: \"Subtract line 5 from line 2 in each column,\" with a stop if line 5 is not less than line 2. The restatement sums a filer-supplied person.ira_line6 that is not defined, so whether it equals line 2 minus line 5 cannot be judged.",
+   "ruling": "Ruling: representation; project retained (model error). person.ira_line6 is not an entered amount: it is the column's line 2 less line 5, floored at zero (zero on the No answer), defined per person on the person worksheet and compared operand by operand in the transcription log for person, where it is ruled; the restatement names it by field because it is another worksheet's line. i1040gi p. 97, line 6, \"Subtract line 5 from line 2 in each column\"."
+  },
+  {
    "printed": "6a",
    "restated": "Choose — [helper \"Lines 2 through 6 are completed (traditional IRA contributions, and someone is covered by a retirement plan)\" = true → helper \"Line 6, your column\"] [helper \"Lines 2 through 6 are completed (traditional IRA contributions, and someone is covered by a retirement plan)\" = false → helper \"Zero\"]",
    "model": "The IRS says \"Subtract line 5 from line 2 in each column.\" The restatement takes an entered per-person amount (ira_line6) instead of subtracting line 5 from line 2a.",
    "ruling": "Ruling: representation; project retained (model error). person.ira_line6 is not an entered amount: it is the column's line 2 less line 5, floored at zero (zero on the No answer), defined per person on the person worksheet and compared operand by operand in the transcription log for person, where it is ruled; the restatement names it by field because it is another worksheet's line. i1040gi p. 97, line 6, \"Subtract line 5 from line 2 in each column\"."
+  },
+  {
+   "printed": "6b",
+   "restated": "Choose — [helper \"Lines 2 through 6 are completed (traditional IRA contributions, and someone is covered by a retirement plan)\" = true → helper \"Line 6, your spouse's column\"] [helper \"Lines 2 through 6 are completed (traditional IRA contributions, and someone is covered by a retirement plan)\" = false → helper \"Zero\"]",
+   "model": "Same as 6a for the spouse's column. person.ira_line6 is undefined, so the \"Subtract line 5 from line 2\" computation and the STOP case are not shown.",
+   "ruling": "Ruling: representation; project retained (model error). As line 6a: person.ira_line6 of the spouse entry is line 2b less line 5, floored at zero, defined per person on the person worksheet and compared operand by operand in the transcription log for person, where it is ruled. i1040gi p. 97, line 6, \"Subtract line 5 from line 2 in each column\"."
   },
   {
    "printed": "6b",
@@ -41,8 +71,20 @@
   {
    "printed": "7a",
    "restated": "Choose — [helper \"Anyone on the return made traditional IRA contributions for 2025\" = true → helper \"Line 7, your column\"] [helper \"Anyone on the return made traditional IRA contributions for 2025\" = false → helper \"Zero\"]",
+   "model": "Line 7 is either $7,000/$8,000 or line 6 \"multiplied by the percentage,\" rounded up to a multiple of $10, with a $200 minimum. The restatement sums an undefined person.ira_line7, so none of this can be checked.",
+   "ruling": "Ruling: representation; project retained (model error). person.ira_line7 is not an entered amount: it is $7,000 or $8,000 when no one is covered or line 6 is at least $20,000 ($10,000 for a single filer or the column of a person not covered), zero on line 6's No, and otherwise line 6 times 35% or 40% (joint or qualifying surviving spouse, covered column) or 70% or 80%, increased to the next multiple of $10 and at least $200 (person.ira_prod, person.ira_rounded, person.ira_floor), defined per person on the person worksheet and compared operand by operand in the transcription log for person, where it is ruled. i1040gi p. 98, line 7, \"If the result isn’t a multiple of $10, increase it to the next multiple of $10 ... But if it is less than $200, enter $200\"."
+  },
+  {
+   "printed": "7a",
+   "restated": "Choose — [helper \"Anyone on the return made traditional IRA contributions for 2025\" = true → helper \"Line 7, your column\"] [helper \"Anyone on the return made traditional IRA contributions for 2025\" = false → helper \"Zero\"]",
    "model": "The IRS computes line 7 as \"Multiply lines 6a and 6b by the percentage below\" (70%/80% or 35%/40%), rounded up to a multiple of $10 with a $200 floor, or as $7,000/$8,000 when lines 2–6 are skipped or the line 6 result is $10,000/$20,000 or more. The restatement takes an entered amount and does none of this.",
    "ruling": "Ruling: representation; project retained (model error). person.ira_line7 is not an entered amount: it is $7,000 or $8,000 when no one is covered or line 6 is at least $20,000 ($10,000 for a single filer or the column of a person not covered), zero on line 6's No, and otherwise line 6 times 35% or 40% (joint or qualifying surviving spouse, covered column) or 70% or 80%, increased to the next multiple of $10 and at least $200 (person.ira_prod, person.ira_rounded, person.ira_floor), defined per person on the person worksheet and compared operand by operand in the transcription log for person, where it is ruled. i1040gi p. 98, line 7, \"If the result isn’t a multiple of $10, increase it to the next multiple of $10 ... But if it is less than $200, enter $200\"."
+  },
+  {
+   "printed": "7b",
+   "restated": "Choose — [helper \"Anyone on the return made traditional IRA contributions for 2025\" = true → helper \"Line 7, your spouse's column\"] [helper \"Anyone on the return made traditional IRA contributions for 2025\" = false → helper \"Zero\"]",
+   "model": "Same as 7a for the spouse's column. The percentage, rounding and $200 minimum are not shown because person.ira_line7 is undefined.",
+   "ruling": "Ruling: representation; project retained (model error). As line 7a, for the spouse entry: person.ira_line7 applies the percentages, the rounding up to a multiple of $10 and the $200 minimum, defined per person on the person worksheet and compared operand by operand in the transcription log for person, where it is ruled. i1040gi p. 98, line 7, \"Multiply lines 6a and 6b by the percentage below that applies to you\"."
   },
   {
    "printed": "7b",
@@ -55,6 +97,18 @@
    "restated": "Add helper \"Wages, salaries, tips, etc. (box 1 of the Forms W-2 of you and your spouse)\" and s1 line 2a.",
    "model": "Line 8 also includes \"Nontaxable combat pay. This amount should be reported in box 12 of Form W-2 with code Q or reported on Form 1040, line 1i.\" The restatement adds only W-2 box 1 wages and Schedule 1 line 2a.",
    "ruling": "Ruling: refusal located elsewhere; project retained. Nontaxable combat pay is refused: ira.combat_gate (traditional IRA contributions and s8812.combat_pay, \"Did you receive any nontaxable combat pay in 2025 (it is generally shown in Form W-2, box 12, code Q)?\") refuses person.ira_line11, so line 12 and Schedule 1 line 20, on every return that has it; within scope line 8 is wages and line 2a, as the line's citation says. i1040gi p. 98, line 8, \"Nontaxable combat pay. This amount should be reported in box 12 of Form W-2 with code Q\"."
+  },
+  {
+   "printed": "8",
+   "restated": "Add helper \"Wages, salaries, tips, etc. (box 1 of the Forms W-2 of you and your spouse)\" and s1 line 2a.",
+   "model": "Line 8 also includes \"Nontaxable combat pay. This amount should be reported in box 12 of Form W-2 with code Q.\" The restatement adds only box 1 wages and Schedule 1 line 2a. It also does not remove the nonqualified deferred compensation that item 5 says not to include on line 8, and no refusal covers that case.",
+   "ruling": "Ruling: refusal located elsewhere; project retained. Nontaxable combat pay is refused: ira.combat_gate (traditional IRA contributions and s8812.combat_pay, \"Did you receive any nontaxable combat pay in 2025 (it is generally shown in Form W-2, box 12, code Q)?\") refuses person.ira_line11, so line 12 and Schedule 1 line 20, on every return that has it; within scope line 8 is wages and line 2a, as the line's citation says. i1040gi p. 98, line 8, \"Nontaxable combat pay. This amount should be reported in box 12 of Form W-2 with code Q\"."
+  },
+  {
+   "printed": "9",
+   "restated": "Add person.ira_se over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The refusal properly excludes income where personal services are not \"a material income-producing factor.\" But person.ira_se is undefined, so it cannot be confirmed that it is net self-employment earnings \"minus any deductions on Schedule 1, lines 15 and 16\" with \"If zero or less, enter -0-.\"",
+   "ruling": "Ruling: representation; project retained. person.ira_se is defined per person in forms/2025/person.yaml: the person's Schedule C net profit or loss (person.sc_total) less that person's deductions on Schedule 1 lines 15 and 16 (person.ira_se_take), floored at zero for each person (person.ira_se_figured, the owner's reading amb.2025.ira_se_floor), and zero without a Schedule C; that is i1040gi p. 98, IRA Deduction Worksheet line 9, \"Enter the earned income you (and your spouse if filing jointly) received as a self-employed individual or a partner, minus any deductions on Schedule 1, lines 15 and 16. If zero or less, enter -0-\". The transcription comparison of person compares these helpers operand by operand; the render glossary does not follow a collection field into its definition (TASKS.md T-055). The new refusal (ira.se_capital_gate) is as the model reads it (p590a pp. 6–7)."
   }
  ]
 }

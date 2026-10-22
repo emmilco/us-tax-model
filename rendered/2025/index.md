@@ -27,7 +27,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | gift.md | form | 5 |
 | household.md | form | 28 |
 | interest.md | form | 2 |
-| ira.md | worksheet | 55 |
+| ira.md | worksheet | 57 |
 | ltc.md | form | 4 |
 | mq.md | worksheet | 7 |
 | oi8z.md | worksheet | 6 |
@@ -37,7 +37,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | qdcg.md | worksheet | 27 |
 | refund.md | form | 48 |
 | retirement.md | form | 64 |
-| s1.md | form | 64 |
+| s1.md | form | 66 |
 | s179.md | form | 26 |
 | s1a.md | form | 136 |
 | s2.md | form | 11 |

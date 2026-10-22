@@ -73,7 +73,7 @@
 - **Chosen:** The first (f8889.use_last_month, read by f8889.step1_total, f8889.married_family, f8889.self_in_family and line 7).
 - Reason: The rule is open to anyone eligible on December 1 and its coverage treatment is unqualified in the Form 8889 instructions; Pub. 969 Example 2 treats a filer covered all year who changed to family coverage as contributing under the last-month rule. The filer answers whether they use it, so a filer eligible all year who does not gets the second reading's result. Found by the Stage 16 transcription review of f8889.
 
-- Status: Proposed for the owner (Stage 16).
+- Status: Owner ruling after Stage 16 (reading 1).
 - Cite: [i8889] p. 2, Last-month rule; p. 4, Line 3, rules 2 to 4; p. 7, Line 6, Step 1 (2025; sha256 da6f2f58)
 
 ## amb.2025.sli_ratio_places

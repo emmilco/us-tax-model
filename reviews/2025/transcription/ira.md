@@ -7,8 +7,8 @@ Second transcription of `IRA Deduction Worksheet — Schedule 1, Line 20` by an 
 | date | 2026-10-22 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | fecb2cf77aec6c7d61d5e9eedc61e931c75c40c6727241ccc0a0e27490fffcba |
-| subject sha256 | 891691f523440b7cc1488f02ce1a16245da1fb869f4923a2fe99e976ec275ae3 |
+| prompt sha256 | fa55cca81f32f78033d1bc9d047bf4f2160cce2cb880139e609254a4c3a7bf0a |
+| subject sha256 | 73d69e1a339b596759a13fbe27014c5001245845d806c3c823008847d474da26 |
 | printed lines compared | 22 |
 | agree / disagree / missing | 6 / 16 / 0 |
 | extra printed lines in second | none |
@@ -18,8 +18,8 @@ Second transcription of `IRA Deduction Worksheet — Schedule 1, Line 20` by an 
 | document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
 | --- | --- | --- | --- | --- | --- | --- |
 | i1040gi | 2025; printed date 2026-02-25 | 31, 95, 96, 97, 98 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 31, 95, 96, 98 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
+| p590a | 2025 | 6, 7, 16, 35 | cited pages | be942a345a01a8f875a2a625b400d7760221e1a55a2c85dca5ab75826e6c801a | 6, 7, 35 | cbe3b3b920a64ff514424a52a467ab8efabacfe958197d1ca8aabaee71ca5a3b |
 | i8606 | 2025 | 5 | cited pages | 242e712835ef634f3af8f1d0f19435b236e9c54b80921d6017c153b3e6c2aec6 | 5 | 805e59f2458d33a3fc0a1d17ebede2ecd59e18d911069bbe84987e53e297ec79 |
-| p590a | 2025 | 6, 16, 35 | cited pages | be942a345a01a8f875a2a625b400d7760221e1a55a2c85dca5ab75826e6c801a | 6, 35 | cbe3b3b920a64ff514424a52a467ab8efabacfe958197d1ca8aabaee71ca5a3b |
 | f8606 | 2025 | 1, 2 | whole document | 1e2747fd38afcfefc11564f9673556808470614c153f2d34458afe98a560cb2c | - | 47a023b69eb81610f8bf73059c609131854d900f1694660f8496a7791f974233 |
 
 ## Lines

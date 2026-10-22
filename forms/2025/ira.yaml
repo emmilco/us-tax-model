@@ -573,6 +573,15 @@ form:
       locator: 'p. 98, IRA Deduction Worksheet—Continued, line 9, "Enter the earned income you (and your spouse if filing jointly)
         received as a self-employed individual or a partner" and "If zero or less, enter -0-"'
     ambiguity: amb.2025.ira_se_floor
+    refuses:
+    - when: ira.se_capital_gate
+      form: IRA compensation from self-employment (Pub. 590-A)
+      remedy: Self-employment income counts as IRA compensation only where your personal services are a material
+        income-producing factor; Schedule C income mainly from investments or property is outside this tool.
+      cite:
+        doc: p590a
+        locator: 'pp. 6–7, Self-employment income, "earnings from your trade or business (provided your personal services are
+          a material income-producing factor)"'
   - id: ira.line10
     printed: '10'
     label: Add lines 8 and 9
@@ -779,6 +788,41 @@ form:
         p. 6, What Is Compensation?, "certain non-tuition fellowship and stipend payments not reported to you on Form W-2 are
         treated as taxable compensation for IRA purposes"; p590a p. 16, Difficulty of care payments'
     ambiguity: amb.2025.ira_fellowship
+  - id: ira.se_capital
+    printed: (screen)
+    label: Is any Schedule C income on this return from a business in which your (or your spouse's) personal services are
+      not a material income-producing factor (for example, income mainly from investments or from property)?
+    type: Bool
+    expr:
+      op: input
+      source: Is any Schedule C income on this return from a business in which your (or your spouse's) personal services are
+        not a material income-producing factor (for example, income mainly from investments or from property)?
+    cite:
+      doc: p590a
+      locator: 'pp. 6–7, Self-employment income, "earnings from your trade or business (provided your personal services are a
+        material income-producing factor)"'
+  - id: ira.se_capital_gate
+    printed: (gate)
+    label: Traditional IRA contributions with Schedule C income not from personal services (screen)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - ira.any_trad
+        - const: true
+      - op: test
+        eq:
+        - s1.has_sc
+        - const: true
+      - op: test
+        eq:
+        - ira.se_capital
+        - const: true
+    cite:
+      doc: p590a
+      locator: 'pp. 6–7, Self-employment income, "provided your personal services are a material income-producing factor"'
   - id: ira.special_gate
     printed: (gate)
     label: Traditional IRA contributions with an IRA deduction special case (screen)

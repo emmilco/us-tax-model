@@ -46,26 +46,6 @@ form:
     cite:
       doc: i1040gi
       locator: p. 88, Line 1, "If you received a refund, credit, or offset of state or local income taxes in 2025"
-  - id: refund.other
-    printed: (gate)
-    label: In 2025, did you receive any other refund, reimbursement or recovery of an amount you deducted or took a credit
-      for in an earlier year, other than a refund of state or local income tax (for example a refund of general sales tax,
-      real estate tax or personal property tax, a refund of mortgage interest in box 4 of Form 1098, a reimbursement of
-      medical expenses, or a payment on a bad debt you deducted)?
-    type: Bool
-    expr:
-      op: input
-      source: In 2025, did you receive any other refund, reimbursement or recovery of an amount you deducted or took a credit
-        for in an earlier year, other than a refund of state or local income tax (for example a refund of general sales tax,
-        real estate tax or personal property tax, a refund of mortgage interest in box 4 of Form 1098, a reimbursement of
-        medical expenses, or a payment on a bad debt you deducted)?
-    cite:
-      doc: p525
-      locator: p. 24, Recoveries, "A recovery is a return of an amount you deducted or took a credit for in an earlier year"
-        and "You may also have recoveries of nonitemized deductions (such as payments on previously deducted bad debts)";
-        p. 25, Where to report, "the total of all other recoveries as other income on Schedule 1 (Form 1040), line 8z";
-        i1040gi p. 89, Line 1, "2. You received a refund other than an income tax refund, such as a general sales tax or
-        real property tax refund, in 2025 of an amount deducted or credit claimed in an earlier year"
   - id: refund.box8
     printed: (gate)
     label: Is box 8 ("If checked, box 2 is trade or business income") checked on any Form 1099-G that reports these refunds?
@@ -205,6 +185,18 @@ form:
       doc: i1040gi
       locator: p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 2, "more than the amount on your
         2024 Schedule A, line 5e"
+  - id: refund.line5e_bad
+    printed: (gate)
+    label: The amount entered for 2024 Schedule A line 5e is more than the amount entered for line 5d
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - refund.line5e_2024
+      - refund.line5d_2024
+    cite:
+      doc: i1040sca
+      locator: 'p. 7, Line 5e, "enter the smaller of line 5d or $40,000 ($20,000 if married filing separately)"'
   - id: refund.line1
     printed: '1'
     label: Enter the income tax refund from Form(s) 1099-G (or similar statement). But don’t enter more than the amount of
@@ -272,6 +264,14 @@ form:
       locator: p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 2, "No. Enter the amount from line
         1 on line 3 and go to line 4. Yes. Subtract the amount on your 2024 Schedule A, line 5e" (zero on No, so that line
         3 is line 1)
+    refuses:
+    - when: refund.line5e_bad
+      form: State and Local Income Tax Refund Worksheet, line 2 (2024 Schedule A lines 5d and 5e)
+      remedy: The amount on 2024 Schedule A line 5e cannot be more than line 5d, since line 5e is the smaller of line 5d and
+        the limit. Check both amounts against your 2024 Schedule A.
+      cite:
+        doc: i1040sca
+        locator: 'p. 7, Line 5e, "enter the smaller of line 5d or $40,000 ($20,000 if married filing separately)"'
   - id: refund.line3_more
     printed: (helper)
     label: Is the amount on line 1 more than the amount on line 2?

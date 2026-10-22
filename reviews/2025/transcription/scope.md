@@ -7,8 +7,8 @@ Second transcription of `Proof-of-concept scope screening` by an isolated model 
 | date | 2026-10-22 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | f4920b87bf532addfc166b21897ceff9a1c23a7f8264ee019bc5a5aa838b419b |
-| subject sha256 | 1ffbc71b5d50ef8b96e7ac1877b96f73d2b6985b9582ae5b1d411fc7a6c2cfa3 |
+| prompt sha256 | 112bede2e2e61d51379f9c5df4b039240e2f532e6a52eaefb8541d3b59c09bec |
+| subject sha256 | d6185340a93727cfa63e59b9df00637e2982b2ee78040bc10c3e9f7b0653ad4c |
 | printed lines compared | 0 |
 | agree / disagree / missing | 0 / 0 / 0 |
 | extra printed lines in second | none |

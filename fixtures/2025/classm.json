@@ -54,7 +54,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -521,7 +520,8 @@
     "person[spouse].sav_prior_joint": 0,
     "person[spouse].sav_prior_other": 0,
     "person[spouse].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "person[spouse].sc[biz_a].asset[item_1].period": {
@@ -1080,7 +1080,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 1824300,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 1495900,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -1492,7 +1491,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "person[taxpayer].sc[biz_a].asset[item_1].outside": {
@@ -1873,7 +1873,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -2211,7 +2210,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "person[taxpayer].sc[biz_a].asset[item_1].period": {
@@ -2619,7 +2619,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -2906,7 +2905,8 @@
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
     "person[taxpayer].w2[emp_b].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "person[taxpayer].sc[biz_a].asset[item_1].period": {
@@ -3097,7 +3097,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": true,
     "s1.alimony": false,
@@ -3455,7 +3454,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "carloan[vin_1].eligible": {
@@ -3585,7 +3585,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -3769,7 +3768,8 @@
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
     "person[taxpayer].w2[emp_b].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "carloan[vin_1].eligible": {
@@ -3907,7 +3907,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -4116,7 +4115,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "carloan[vin_1].eligible": {
@@ -4214,7 +4214,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 681200,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": true,
     "s1.alimony": false,
@@ -4406,7 +4405,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "carloan[vin_1].eligible": {
@@ -4599,7 +4599,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 1985100,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -4825,7 +4824,8 @@
     "carloan[vin_1].refi_whole": true,
     "carloan[vin_1].col_ii_input": 62500,
     "f2441.employer_care": false,
-    "person[taxpayer].ira_excess": false
+    "person[taxpayer].ira_excess": false,
+    "s1.cod_any": false
    },
    "expect": {
     "dcprov[prov_a].see_statement": {
@@ -4954,7 +4954,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -5209,7 +5208,8 @@
     "dcprov[prov_a].paid": 0,
     "dcprov[prov_a].related": false,
     "$retirement": [],
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "dependent[dep_a].qc_relationship": {
@@ -5678,7 +5678,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -5943,7 +5942,8 @@
     "dcprov[prov_a].paid": 0,
     "dcprov[prov_a].related": false,
     "$retirement": [],
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "dependent[dep_a].qc_relationship": {
@@ -6416,7 +6416,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -6836,7 +6835,8 @@
     "person[taxpayer].otjob[ot_1].special_rule": false,
     "person[taxpayer].otjob[ot_1].method": "employer_reported",
     "person[taxpayer].otjob[ot_1].statement": 2888900,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "dependent[dep_a].qc_relationship": {
@@ -7309,7 +7309,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -7507,7 +7506,8 @@
     "dcprov[prov_a].paid": 0,
     "dcprov[prov_a].related": false,
     "$retirement": [],
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "dependent[dep_a].qc_relationship": {
@@ -7744,7 +7744,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -7971,7 +7970,8 @@
     "dcprov[prov_a].related": false,
     "$retirement": [],
     "$tipjob@person[taxpayer]": [],
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "dependent[dep_a].qc_relationship": {
@@ -8261,7 +8261,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -8456,7 +8455,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "eic.line1": {
@@ -8534,7 +8534,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 2500000,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -8718,7 +8717,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "eic.wsb_4b": {
@@ -8804,7 +8804,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -9130,7 +9129,8 @@
     "person[spouse].sav_voluntary": 0,
     "person[spouse].sav_prior_joint": 0,
     "person[spouse].sav_prior_other": 0,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "eic.wsb_4b": {
@@ -9216,7 +9216,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -9420,7 +9419,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "eic.wsb_4b": {
@@ -9502,7 +9502,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -9651,7 +9650,8 @@
     "f2441.care": false,
     "f2441.benefits": false,
     "f2441.employer_care": false,
-    "person[taxpayer].sav_trad": false
+    "person[taxpayer].sav_trad": false,
+    "s1.cod_any": false
    },
    "expect": {
     "eic.line2": {
@@ -9725,7 +9725,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -9885,7 +9884,8 @@
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
     "person[taxpayer].w2[emp_b].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "eic.line2": {
@@ -9955,7 +9955,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -10159,7 +10158,8 @@
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
     "person[taxpayer].w2[emp_b].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "eic.line1": {
@@ -10237,7 +10237,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -10414,7 +10413,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "eic.wsb_4b": {
@@ -10563,7 +10563,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -10872,7 +10871,8 @@
     "dcprov[prov_a].paid": 0,
     "dcprov[prov_a].related": false,
     "$retirement": [],
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "f1040.line1a": {
@@ -11197,7 +11197,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -11482,7 +11481,8 @@
     "retirement[r1].sav_military": false,
     "retirement[r1].sav_404k": false,
     "retirement[r1].sav_inherited": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "f1040.line1a": {
@@ -11807,7 +11807,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -12089,7 +12088,8 @@
     "retirement[r1].sav_military": false,
     "retirement[r1].sav_404k": false,
     "retirement[r1].sav_inherited": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "f1040.line1a": {
@@ -12414,7 +12414,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -12563,7 +12562,8 @@
     "dcprov[prov_a].paid": 0,
     "dcprov[prov_a].related": false,
     "$retirement": [],
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "f1040.line1a": {
@@ -12890,7 +12890,6 @@
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -13156,7 +13155,9 @@
     "dcprov[prov_a].paid": 0,
     "dcprov[prov_a].related": false,
     "$retirement": [],
-    "person[taxpayer].ira_basis_adjusted": false
+    "person[taxpayer].ira_basis_adjusted": false,
+    "s1.cod_any": false,
+    "ira.se_capital": false
    },
    "expect": {
     "f2441.line1_box": {
@@ -13404,7 +13405,6 @@
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -13671,7 +13671,9 @@
     "retirement[r2].sav_military": false,
     "retirement[r2].sav_404k": false,
     "retirement[r2].sav_inherited": false,
-    "person[taxpayer].ira_basis_adjusted": false
+    "person[taxpayer].ira_basis_adjusted": false,
+    "s1.cod_any": false,
+    "ira.se_capital": false
    },
    "expect": {
     "f2441.line1_box": {
@@ -13898,7 +13900,6 @@
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -14275,7 +14276,9 @@
     "person[spouse].simple_kind": "nonelective",
     "person[spouse].simple_employer": 0,
     "person[taxpayer].ira_basis_adjusted": false,
-    "person[spouse].ira_basis_adjusted": false
+    "person[spouse].ira_basis_adjusted": false,
+    "s1.cod_any": false,
+    "ira.se_capital": false
    },
    "expect": {
     "f2441.line1_box": {
@@ -14527,7 +14530,6 @@
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -14905,7 +14907,9 @@
     "person[spouse].simple_kind": "match",
     "person[spouse].simple_employer": 0,
     "person[taxpayer].ira_basis_adjusted": false,
-    "person[spouse].ira_basis_adjusted": false
+    "person[spouse].ira_basis_adjusted": false,
+    "s1.cod_any": false,
+    "ira.se_capital": false
    },
    "expect": {
     "f2441.line1_box": {
@@ -15157,7 +15161,6 @@
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -15471,7 +15474,9 @@
     "dcprov[prov_a].paid": 0,
     "dcprov[prov_a].related": false,
     "$retirement": [],
-    "person[taxpayer].ira_basis_adjusted": false
+    "person[taxpayer].ira_basis_adjusted": false,
+    "s1.cod_any": false,
+    "ira.se_capital": false
    },
    "expect": {
     "f2441.line1_box": {
@@ -15719,7 +15724,6 @@
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -16095,7 +16099,9 @@
     "person[spouse].simple_kind": "match",
     "person[spouse].simple_employer": 0,
     "person[taxpayer].ira_basis_adjusted": false,
-    "person[spouse].ira_basis_adjusted": false
+    "person[spouse].ira_basis_adjusted": false,
+    "s1.cod_any": false,
+    "ira.se_capital": false
    },
    "expect": {
     "f2441.line1_box": {
@@ -16274,7 +16280,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -16620,7 +16625,8 @@
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
     "person[taxpayer].w2[emp_b].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "person[taxpayer].sc[biz_a].f4562[form].line12": {
@@ -16924,7 +16930,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -16953,7 +16958,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "f4952.line4a": {
@@ -17193,7 +17199,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -17222,7 +17227,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "f4952.line4a": {
@@ -17417,7 +17423,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -17436,7 +17441,8 @@
     "f2441.care": false,
     "f2441.benefits": false,
     "f2441.employer_care": false,
-    "person[taxpayer].sav_trad": false
+    "person[taxpayer].sav_trad": false,
+    "s1.cod_any": false
    },
    "expect": {
     "f4952.line4a": {
@@ -17613,7 +17619,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -17922,7 +17927,8 @@
     "dcprov[prov_a].paid": 0,
     "dcprov[prov_a].related": false,
     "$retirement": [],
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "f5695.line5b": {
@@ -18175,7 +18181,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": true,
     "s1.alimony": false,
@@ -18461,7 +18466,8 @@
     "person[spouse].simple_age": "age60_63",
     "person[spouse].simple_kind": "nonelective",
     "person[spouse].simple_employer": 0,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "f5695.line5b": {
@@ -18714,7 +18720,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -19008,7 +19013,8 @@
     "dcprov[prov_a].paid": 0,
     "dcprov[prov_a].related": false,
     "$retirement": [],
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "f5695.line5b": {
@@ -19261,7 +19267,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -19491,7 +19496,8 @@
     "person[taxpayer].tipjob[tip_2].qualified": true,
     "person[taxpayer].tipjob[tip_2].amount": 0,
     "$otjob@person[taxpayer]": [],
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "f5695.line5b": {
@@ -19740,7 +19746,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -19963,7 +19968,8 @@
     "$retirement": [],
     "$tipjob@person[taxpayer]": [],
     "$carloan": [],
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "f5695.line5b": {
@@ -20212,7 +20218,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -20367,7 +20372,8 @@
     "dcprov[prov_a].related": false,
     "$retirement": [],
     "f2441.employer_care": false,
-    "person[taxpayer].ira_excess": false
+    "person[taxpayer].ira_excess": false,
+    "s1.cod_any": false
    },
    "expect": {
     "f5695.line5b": {
@@ -20620,7 +20626,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -20855,7 +20860,8 @@
     "retirement[r2].sav_military": false,
     "retirement[r2].sav_404k": false,
     "retirement[r2].sav_inherited": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "f5695.line5b": {
@@ -21106,7 +21112,6 @@
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -21350,7 +21355,9 @@
     "retirement[r1].sav_404k": false,
     "retirement[r1].sav_inherited": false,
     "$otjob@person[taxpayer]": [],
-    "person[taxpayer].ira_basis_adjusted": false
+    "person[taxpayer].ira_basis_adjusted": false,
+    "s1.cod_any": false,
+    "ira.se_capital": false
    },
    "expect": {
     "person[taxpayer].f8606[form].files": {
@@ -21479,7 +21486,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -21788,7 +21794,8 @@
     "dcprov[prov_a].paid": 0,
     "dcprov[prov_a].related": false,
     "$retirement": [],
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "f8880.line1a": {
@@ -21977,7 +21984,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -22254,7 +22260,8 @@
     "person[spouse].simple_kind": "match",
     "person[spouse].simple_employer": 0,
     "f2441.employer_care": false,
-    "person[taxpayer].ira_excess": false
+    "person[taxpayer].ira_excess": false,
+    "s1.cod_any": false
    },
    "expect": {
     "f8880.line1a": {
@@ -22452,7 +22459,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -22666,7 +22672,8 @@
     "person[spouse].simple_age": "under50",
     "person[spouse].simple_kind": "match",
     "person[spouse].simple_employer": 0,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "f8880.line1a": {
@@ -22864,7 +22871,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -23094,7 +23100,8 @@
     "person[taxpayer].tipjob[tip_2].qualified": true,
     "person[taxpayer].tipjob[tip_2].amount": 0,
     "$otjob@person[taxpayer]": [],
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "f8880.line1a": {
@@ -23170,7 +23177,7 @@
     "f8889"
    ],
    "evidence": "M",
-   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 073cd3ce994829a0c26d2b6a7ff5bbb819fbb472058a8e69e7173a7fcdcacbd5; pages i8889 1,2,3,4,5,6,7,8,9 (bfbdc8bbe0b8); f8889 1 (f1ae3589453f); i1040gi 14 (6024dc94dd1f); branches f8889.any:false, f8889.any:true, f8889.unsupported:false, f8889.mfs:false, f8889.bad_months:false, f8889.age55:false, f8889.married_family:false, f8889.age55_line3:false, f8889.self_amount#1, f8889.age55_unmarried:false, f8889.family_amount#1, f8889.all_year:false, f8889.all_year:true, f8889.changed:false, f8889.dec_amount#0, f8889.dec_amount#2, f8889.last_month:false, f8889.use_last_month:false, f8889.line3_changed:left, f8889.line3_all_year#1, f8889.line3_last_month#1, f8889.line3_part_year#1, f8889.line3#0, f8889.line3#1, f8889.line5:floor, f8889.line5:positive, f8889.family_dec_year#1, f8889.family_dec_year#2, f8889.step1_total#1, f8889.step1:floor, f8889.share_raw#1, f8889.allocation_bad:false, f8889.self_all#1, f8889.self_dec_year#1, f8889.self_dec_year#2, f8889.self_in_family#1, f8889.step4_total:floor, f8889.step4_total:positive, f8889.split:false, f8889.line6#1, f8889.line7_total#1, f8889.line7_applies:false, f8889.line7#1, f8889.line12:floor, f8889.line12:positive, f8889.excess:false, f8889.line13_figured:left, f8889.line13#0, f8889.line13#1, f8889.has_dist:false, f8889.rollover_bad:false, f8889.line14b#1, f8889.line14c:floor, f8889.line15#1, f8889.line16_figured:floor, f8889.line16#1, f8889.has_taxable:false, f8889.line17a:false, f8889.subject_bad:false, f8889.subject#0, f8889.line17b#1; dropped after ruling: person[spouse].f8889[hsa].share_raw; dropped after ruling: person[spouse].f8889[hsa].share; dropped after ruling: person[spouse].f8889[hsa].line6_split; dropped after ruling: person[taxpayer].f8889[hsa].line3_all_year; dropped after ruling: person[taxpayer].f8889[hsa].share_raw; dropped after ruling: person[taxpayer].f8889[hsa].share; dropped after ruling: person[taxpayer].f8889[hsa].line6_split",
+   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 4b05b8d9c41274d132676f9bd02a97476e3b427ef7bf94f9acdefefe144a205e; pages i8889 1,2,3,4,5,6,7,8,9 (bfbdc8bbe0b8); f8889 1 (f1ae3589453f); i1040gi 14 (6024dc94dd1f); branches f8889.any:false, f8889.any:true, f8889.unsupported:false, f8889.mfs:false, f8889.bad_months:false, f8889.age55:false, f8889.married_family:false, f8889.age55_line3:false, f8889.self_amount#1, f8889.age55_unmarried:false, f8889.family_amount#1, f8889.all_year:false, f8889.all_year:true, f8889.changed:false, f8889.dec_amount#0, f8889.dec_amount#2, f8889.last_month:false, f8889.use_last_month:false, f8889.line3_changed:left, f8889.line3_all_year#1, f8889.line3_last_month#1, f8889.line3_part_year#1, f8889.line3#0, f8889.line3#1, f8889.line5:floor, f8889.line5:positive, f8889.family_dec_year#1, f8889.family_dec_year#2, f8889.step1_total#1, f8889.step1:floor, f8889.share_raw#1, f8889.allocation_bad:false, f8889.self_all#1, f8889.self_dec_year#1, f8889.self_dec_year#2, f8889.self_in_family#1, f8889.step4_total:floor, f8889.step4_total:positive, f8889.split:false, f8889.line6#1, f8889.line7_total#1, f8889.line7_applies:false, f8889.line7#1, f8889.line12:floor, f8889.line12:positive, f8889.excess:false, f8889.line13_figured:left, f8889.line13#0, f8889.line13#1, f8889.has_dist:false, f8889.rollover_bad:false, f8889.line14b#1, f8889.line14c:floor, f8889.line15#1, f8889.line16_figured:floor, f8889.line16#1, f8889.has_taxable:false, f8889.line17a:false, f8889.subject_bad:false, f8889.subject#0, f8889.line17b#1; dropped after ruling: person[spouse].f8889[hsa].line7_total; dropped after ruling: person[spouse].f8889[hsa].line7_worksheet",
    "inputs": {
     "div.box2b": 0,
     "div.box2c": 0,
@@ -23281,12 +23288,12 @@
     "household.home_cost": true,
     "household.unmarried": true,
     "ira.special": false,
+    "ira.se_capital": false,
     "ira.deduct_less": false,
     "qbi.dividends": 97400,
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -23317,6 +23324,7 @@
     "s1.alimony_received": 0,
     "s1.alimony_paid": 0,
     "s1.alimony_unsupported": false,
+    "s1.cod_any": false,
     "s1.cod_amount": 0,
     "s1.cod_unsupported": false,
     "s1.jury_to_employer": 0,
@@ -23402,6 +23410,7 @@
     "person[taxpayer].ira_age50": false,
     "person[taxpayer].ira_work_plan": false,
     "person[taxpayer].ira_basis": 0,
+    "person[taxpayer].ira_basis_adjusted": false,
     "person[taxpayer].ira_dist": false,
     "person[taxpayer].f8889[hsa].line2": 0,
     "person[taxpayer].f8889[hsa].line9": 0,
@@ -23525,6 +23534,7 @@
     "person[spouse].ira_age50": false,
     "person[spouse].ira_work_plan": false,
     "person[spouse].ira_basis": 0,
+    "person[spouse].ira_basis_adjusted": false,
     "person[spouse].ira_dist": false,
     "$w2@person[spouse]": [
      "emp_a",
@@ -23713,9 +23723,7 @@
     "person[spouse].f8889[hsa].rollover": 0,
     "person[spouse].f8889[hsa].medical": 0,
     "person[spouse].f8889[hsa].line17a": false,
-    "person[spouse].f8889[hsa].subject_part": 0,
-    "person[taxpayer].ira_basis_adjusted": false,
-    "person[spouse].ira_basis_adjusted": false
+    "person[spouse].f8889[hsa].subject_part": 0
    },
    "expect": {
     "person[spouse].f8889[hsa].any": {
@@ -23898,14 +23906,6 @@
      "kind": "money",
      "cents": 1200000
     },
-    "person[spouse].f8889[hsa].line7_total": {
-     "kind": "money",
-     "cents": 1200000
-    },
-    "person[spouse].f8889[hsa].line7_worksheet": {
-     "kind": "money",
-     "cents": 100000
-    },
     "person[spouse].f8889[hsa].line7_applies": {
      "kind": "bool",
      "value": false
@@ -24063,6 +24063,10 @@
      "value": false
     },
     "person[taxpayer].f8889[hsa].line3_changed": {
+     "kind": "money",
+     "cents": 0
+    },
+    "person[taxpayer].f8889[hsa].line3_all_year": {
      "kind": "money",
      "cents": 0
     },
@@ -24274,7 +24278,7 @@
     "f8889"
    ],
    "evidence": "M",
-   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 65316eb8f91e48c6121cfe0b1bf92d2da83b7d9529638424af54b54ea7fcadba; pages i8889 1,2,3,4,5,6,7,8,9 (bfbdc8bbe0b8); f8889 1 (f1ae3589453f); i1040gi 14 (6024dc94dd1f); branches f8889.any:true, f8889.unsupported:false, f8889.mfs:false, f8889.bad_months:false, f8889.age55:false, f8889.married_family:true, f8889.age55_line3:false, f8889.self_amount#1, f8889.age55_unmarried:false, f8889.family_amount#1, f8889.all_year:false, f8889.changed:false, f8889.dec_amount#1, f8889.last_month:true, f8889.use_last_month:true, f8889.line3_changed:right, f8889.line3_all_year#1, f8889.line3_last_month#1, f8889.line3_part_year#0, f8889.line3#1, f8889.line5:positive, f8889.family_dec_year#0, f8889.step1_total#0, f8889.step1:positive, f8889.share_raw#0, f8889.allocation_bad:false, f8889.self_all#0, f8889.self_dec_year#0, f8889.self_in_family#0, f8889.step4_total:floor, f8889.split:false, f8889.line6#1, f8889.line7_total#0, f8889.line7_applies:false, f8889.line7#1, f8889.line12:positive, f8889.excess:false, f8889.line13_figured:left, f8889.line13#0, f8889.has_dist:false, f8889.rollover_bad:false, f8889.line14b#1, f8889.line14c:floor, f8889.line15#1, f8889.line16_figured:floor, f8889.line16#1, f8889.has_taxable:false, f8889.line17a:false, f8889.subject_bad:false, f8889.subject#0, f8889.line17b#1; dropped after ruling: person[taxpayer].f8889[hsa].line3_all_year; dropped after ruling: person[taxpayer].f8889[hsa].line3_part_year",
+   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 986f112ead643a764a5997f90dab06f6fe1cadc83e2bb5c28bb578e41b63d86e; pages i8889 1,2,3,4,5,6,7,8,9 (bfbdc8bbe0b8); f8889 1 (f1ae3589453f); i1040gi 14 (6024dc94dd1f); branches f8889.any:true, f8889.unsupported:false, f8889.mfs:false, f8889.bad_months:false, f8889.age55:false, f8889.married_family:true, f8889.age55_line3:false, f8889.self_amount#1, f8889.age55_unmarried:false, f8889.family_amount#1, f8889.all_year:false, f8889.changed:false, f8889.dec_amount#1, f8889.last_month:true, f8889.use_last_month:true, f8889.line3_changed:right, f8889.line3_all_year#1, f8889.line3_last_month#1, f8889.line3_part_year#0, f8889.line3#1, f8889.line5:positive, f8889.family_dec_year#0, f8889.step1_total#0, f8889.step1:positive, f8889.share_raw#0, f8889.allocation_bad:false, f8889.self_all#0, f8889.self_dec_year#0, f8889.self_in_family#0, f8889.step4_total:floor, f8889.split:false, f8889.line6#1, f8889.line7_total#0, f8889.line7_applies:false, f8889.line7#1, f8889.line12:positive, f8889.excess:false, f8889.line13_figured:left, f8889.line13#0, f8889.has_dist:false, f8889.rollover_bad:false, f8889.line14b#1, f8889.line14c:floor, f8889.line15#1, f8889.line16_figured:floor, f8889.line16#1, f8889.has_taxable:false, f8889.line17a:false, f8889.subject_bad:false, f8889.subject#0, f8889.line17b#1",
    "inputs": {
     "div.box2b": 0,
     "div.box2c": 0,
@@ -24385,12 +24389,12 @@
     "household.home_cost": true,
     "household.unmarried": true,
     "ira.special": false,
+    "ira.se_capital": false,
     "ira.deduct_less": false,
     "qbi.dividends": 0,
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -24421,6 +24425,7 @@
     "s1.alimony_received": 0,
     "s1.alimony_paid": 0,
     "s1.alimony_unsupported": false,
+    "s1.cod_any": false,
     "s1.cod_amount": 0,
     "s1.cod_unsupported": false,
     "s1.jury_to_employer": 0,
@@ -24506,6 +24511,7 @@
     "person[taxpayer].ira_age50": false,
     "person[taxpayer].ira_work_plan": false,
     "person[taxpayer].ira_basis": 0,
+    "person[taxpayer].ira_basis_adjusted": false,
     "person[taxpayer].ira_dist": false,
     "person[taxpayer].f8889[hsa].line2": 416700,
     "person[taxpayer].f8889[hsa].line9": 178400,
@@ -24855,6 +24861,7 @@
     "person[spouse].ira_age50": false,
     "person[spouse].ira_work_plan": false,
     "person[spouse].ira_basis": 0,
+    "person[spouse].ira_basis_adjusted": false,
     "person[spouse].ira_dist": false,
     "$w2@person[spouse]": [
      "emp_a",
@@ -24916,9 +24923,7 @@
     "person[spouse].simple_deferral": 0,
     "person[spouse].simple_age": "age50",
     "person[spouse].simple_kind": "match",
-    "person[spouse].simple_employer": 0,
-    "person[taxpayer].ira_basis_adjusted": false,
-    "person[spouse].ira_basis_adjusted": false
+    "person[spouse].simple_employer": 0
    },
    "expect": {
     "person[taxpayer].f8889[hsa].any": {
@@ -25209,7 +25214,7 @@
     "f8889"
    ],
    "evidence": "M",
-   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 1198689eac002c56ec1f971e9d1539ae3c6533932aee0ee4852f69a55064a934; pages i8889 1,2,3,4,5,6,7,8,9 (bfbdc8bbe0b8); f8889 1 (f1ae3589453f); i1040gi 14 (6024dc94dd1f); branches f8889.any:false, f8889.unsupported:false, f8889.mfs:false, f8889.bad_months:false, f8889.age55:true, f8889.married_family:true, f8889.age55_line3:false, f8889.self_amount#1, f8889.age55_unmarried:false, f8889.family_amount#1, f8889.all_year:true, f8889.changed:true, f8889.dec_amount#1, f8889.last_month:false, f8889.use_last_month:false, f8889.line3_changed:right, f8889.line3_all_year#0, f8889.line3_last_month#0, f8889.line3_part_year#1, f8889.line3#0, f8889.line5:positive, f8889.family_dec_year#0, f8889.step1_total#1, f8889.step1:positive, f8889.share_raw#0, f8889.allocation_bad:false, f8889.self_all#1, f8889.self_dec_year#0, f8889.self_in_family#1, f8889.step4_total:positive, f8889.split:false, f8889.line6#1, f8889.line7_total#1, f8889.line7_applies:true, f8889.line7#0, f8889.line12:positive, f8889.excess:false, f8889.line13_figured:left, f8889.line13#1, f8889.has_dist:false, f8889.rollover_bad:false, f8889.line14b#1, f8889.line14c:floor, f8889.line15#1, f8889.line16_figured:floor, f8889.line16#1, f8889.has_taxable:false, f8889.line17a:false, f8889.subject_bad:false, f8889.subject#0, f8889.line17b#1; dropped after ruling: person[taxpayer].f8889[hsa].family_dec_year; dropped after ruling: person[taxpayer].f8889[hsa].self_dec_year",
+   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 96d139c643c2f683080e8ef8cdc3975ce2c64471f607ed1e895b89cf2a265dde; pages i8889 1,2,3,4,5,6,7,8,9 (bfbdc8bbe0b8); f8889 1 (f1ae3589453f); i1040gi 14 (6024dc94dd1f); branches f8889.any:false, f8889.unsupported:false, f8889.mfs:false, f8889.bad_months:false, f8889.age55:true, f8889.married_family:true, f8889.age55_line3:false, f8889.self_amount#1, f8889.age55_unmarried:false, f8889.family_amount#1, f8889.all_year:true, f8889.changed:true, f8889.dec_amount#1, f8889.last_month:false, f8889.use_last_month:false, f8889.line3_changed:right, f8889.line3_all_year#0, f8889.line3_last_month#0, f8889.line3_part_year#1, f8889.line3#0, f8889.line5:positive, f8889.family_dec_year#0, f8889.step1_total#1, f8889.step1:positive, f8889.share_raw#0, f8889.allocation_bad:false, f8889.self_all#1, f8889.self_dec_year#0, f8889.self_in_family#1, f8889.step4_total:positive, f8889.split:false, f8889.line6#1, f8889.line7_total#1, f8889.line7_applies:true, f8889.line7#0, f8889.line12:positive, f8889.excess:false, f8889.line13_figured:left, f8889.line13#1, f8889.has_dist:false, f8889.rollover_bad:false, f8889.line14b#1, f8889.line14c:floor, f8889.line15#1, f8889.line16_figured:floor, f8889.line16#1, f8889.has_taxable:false, f8889.line17a:false, f8889.subject_bad:false, f8889.subject#0, f8889.line17b#1",
    "inputs": {
     "div.box2b": 0,
     "div.box2c": 0,
@@ -25320,12 +25325,12 @@
     "household.home_cost": true,
     "household.unmarried": true,
     "ira.special": false,
+    "ira.se_capital": false,
     "ira.deduct_less": false,
     "qbi.dividends": 0,
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -25356,6 +25361,7 @@
     "s1.alimony_received": 0,
     "s1.alimony_paid": 0,
     "s1.alimony_unsupported": false,
+    "s1.cod_any": false,
     "s1.cod_amount": 0,
     "s1.cod_unsupported": false,
     "s1.jury_to_employer": 0,
@@ -25441,6 +25447,7 @@
     "person[taxpayer].ira_age50": false,
     "person[taxpayer].ira_work_plan": false,
     "person[taxpayer].ira_basis": 0,
+    "person[taxpayer].ira_basis_adjusted": false,
     "person[taxpayer].ira_dist": false,
     "person[taxpayer].f8889[hsa].line2": 0,
     "person[taxpayer].f8889[hsa].line9": 0,
@@ -25572,6 +25579,7 @@
     "person[spouse].ira_age50": false,
     "person[spouse].ira_work_plan": false,
     "person[spouse].ira_basis": 0,
+    "person[spouse].ira_basis_adjusted": false,
     "person[spouse].ira_dist": false,
     "person[spouse].died_before_65": false,
     "$w2@person[spouse]": [
@@ -25611,9 +25619,7 @@
     "person[spouse].simple_deferral": 0,
     "person[spouse].simple_age": "age60_63",
     "person[spouse].simple_kind": "nonelective",
-    "person[spouse].simple_employer": 0,
-    "person[taxpayer].ira_basis_adjusted": false,
-    "person[spouse].ira_basis_adjusted": false
+    "person[spouse].simple_employer": 0
    },
    "expect": {
     "person[taxpayer].f8889[hsa].any": {
@@ -25716,6 +25722,10 @@
      "kind": "money",
      "cents": 10260000
     },
+    "person[taxpayer].f8889[hsa].family_dec_year": {
+     "kind": "money",
+     "cents": 10260000
+    },
     "person[taxpayer].f8889[hsa].family_counted": {
      "kind": "money",
      "cents": 1710000
@@ -25767,6 +25777,10 @@
     "person[taxpayer].f8889[hsa].self_family_months": {
      "kind": "money",
      "cents": 860000
+    },
+    "person[taxpayer].f8889[hsa].self_dec_year": {
+     "kind": "money",
+     "cents": 5160000
     },
     "person[taxpayer].f8889[hsa].self_in_family": {
      "kind": "money",
@@ -25904,7 +25918,7 @@
     "f8889"
    ],
    "evidence": "M",
-   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 c6c6c484b38020fa7e17fc200fbc8c85fe911519aa19352bd53efb8b2d72fea7; pages i8889 1,2,3,4,5,6,7,8,9 (bfbdc8bbe0b8); f8889 1 (f1ae3589453f); i1040gi 14 (6024dc94dd1f); branches f8889.any:false, f8889.unsupported:false, f8889.mfs:false, f8889.bad_months:false, f8889.age55:true, f8889.married_family:false, f8889.age55_line3:true, f8889.self_amount#0, f8889.age55_unmarried:true, f8889.family_amount#0, f8889.all_year:false, f8889.changed:false, f8889.dec_amount#2, f8889.last_month:false, f8889.use_last_month:false, f8889.line3_changed:left, f8889.line3_all_year#1, f8889.line3_last_month#1, f8889.line3_part_year#1, f8889.line3#1, f8889.line5:floor, f8889.family_dec_year#2, f8889.step1_total#1, f8889.step1:floor, f8889.share_raw#0, f8889.allocation_bad:false, f8889.self_all#1, f8889.self_dec_year#2, f8889.self_in_family#1, f8889.step4_total:floor, f8889.split:false, f8889.line6#1, f8889.line7_total#1, f8889.line7_applies:false, f8889.line7#1, f8889.line12:floor, f8889.excess:false, f8889.line13_figured:left, f8889.line13#1, f8889.has_dist:false, f8889.rollover_bad:false, f8889.line14b#1, f8889.line14c:floor, f8889.line15#1, f8889.line16_figured:floor, f8889.line16#1, f8889.has_taxable:false, f8889.line17a:false, f8889.subject_bad:false, f8889.subject#0, f8889.line17b#1; dropped after ruling: person[taxpayer].f8889[hsa].family_year",
+   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 2ca958caaa8568afff66e040d207947b86997e5e7b5b223a9d71c7cb8a4b4e38; pages i8889 1,2,3,4,5,6,7,8,9 (bfbdc8bbe0b8); f8889 1 (f1ae3589453f); i1040gi 14 (6024dc94dd1f); branches f8889.any:false, f8889.unsupported:false, f8889.mfs:false, f8889.bad_months:false, f8889.age55:true, f8889.married_family:false, f8889.age55_line3:true, f8889.self_amount#0, f8889.age55_unmarried:true, f8889.family_amount#0, f8889.all_year:false, f8889.changed:false, f8889.dec_amount#2, f8889.last_month:false, f8889.use_last_month:false, f8889.line3_changed:left, f8889.line3_all_year#1, f8889.line3_last_month#1, f8889.line3_part_year#1, f8889.line3#1, f8889.line5:floor, f8889.family_dec_year#2, f8889.step1_total#1, f8889.step1:floor, f8889.share_raw#0, f8889.allocation_bad:false, f8889.self_all#1, f8889.self_dec_year#2, f8889.self_in_family#1, f8889.step4_total:floor, f8889.split:false, f8889.line6#1, f8889.line7_total#1, f8889.line7_applies:false, f8889.line7#1, f8889.line12:floor, f8889.excess:false, f8889.line13_figured:left, f8889.line13#1, f8889.has_dist:false, f8889.rollover_bad:false, f8889.line14b#1, f8889.line14c:floor, f8889.line15#1, f8889.line16_figured:floor, f8889.line16#1, f8889.has_taxable:false, f8889.line17a:false, f8889.subject_bad:false, f8889.subject#0, f8889.line17b#1",
    "inputs": {
     "div.box2b": 0,
     "div.box2c": 0,
@@ -26015,12 +26029,12 @@
     "household.home_cost": true,
     "household.unmarried": true,
     "ira.special": false,
+    "ira.se_capital": false,
     "ira.deduct_less": false,
     "qbi.dividends": 0,
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -26051,6 +26065,7 @@
     "s1.alimony_received": 0,
     "s1.alimony_paid": 0,
     "s1.alimony_unsupported": false,
+    "s1.cod_any": false,
     "s1.cod_amount": 0,
     "s1.cod_unsupported": false,
     "s1.jury_to_employer": 0,
@@ -26136,6 +26151,7 @@
     "person[taxpayer].ira_age50": false,
     "person[taxpayer].ira_work_plan": false,
     "person[taxpayer].ira_basis": 0,
+    "person[taxpayer].ira_basis_adjusted": false,
     "person[taxpayer].ira_dist": false,
     "person[taxpayer].f8889[hsa].line2": 0,
     "person[taxpayer].f8889[hsa].line9": 0,
@@ -26257,8 +26273,7 @@
     "dcprov[prov_a].household": false,
     "dcprov[prov_a].paid": 0,
     "dcprov[prov_a].related": false,
-    "$retirement": [],
-    "person[taxpayer].ira_basis_adjusted": false
+    "$retirement": []
    },
    "expect": {
     "person[taxpayer].f8889[hsa].any": {
@@ -26553,7 +26568,7 @@
     "f8889"
    ],
    "evidence": "M",
-   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 cdbf652bd007884983f15aa49d4d702a24bd43a793c102f9e4ac337d32201e79; pages i8889 1,2,3,4,5,6,7,8,9 (bfbdc8bbe0b8); f8889 1 (f1ae3589453f); i1040gi 14 (6024dc94dd1f); branches f8889.any:true, f8889.unsupported:false, f8889.mfs:false, f8889.bad_months:false, f8889.age55:false, f8889.married_family:true, f8889.age55_line3:false, f8889.self_amount#1, f8889.age55_unmarried:false, f8889.family_amount#1, f8889.all_year:false, f8889.all_year:true, f8889.changed:false, f8889.changed:true, f8889.dec_amount#0, f8889.dec_amount#1, f8889.last_month:false, f8889.use_last_month:false, f8889.line3_changed:right, f8889.line3_all_year#0, f8889.line3_all_year#1, f8889.line3_last_month#0, f8889.line3_last_month#1, f8889.line3_part_year#1, f8889.line3#0, f8889.line3#1, f8889.line5:positive, f8889.family_dec_year#0, f8889.family_dec_year#1, f8889.step1_total#1, f8889.step1:positive, f8889.share_raw#0, f8889.allocation_bad:false, f8889.self_all#1, f8889.self_dec_year#0, f8889.self_dec_year#1, f8889.self_in_family#1, f8889.step4_total:floor, f8889.step4_total:positive, f8889.split:true, f8889.line6#0, f8889.line7_total#1, f8889.line7_applies:false, f8889.line7#1, f8889.line12:positive, f8889.excess:false, f8889.line13_figured:left, f8889.line13#0, f8889.has_dist:false, f8889.rollover_bad:false, f8889.line14b#1, f8889.line14c:floor, f8889.line15#1, f8889.line16_figured:floor, f8889.line16#1, f8889.has_taxable:false, f8889.line17a:false, f8889.subject_bad:false, f8889.subject#0, f8889.line17b#1; dropped after ruling: person[spouse].f8889[hsa].line3_all_year",
+   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 21a4dfeabbcab896638c33c8dcdf7d899a8e87f333bc8e9f5e8497c540dcf827; pages i8889 1,2,3,4,5,6,7,8,9 (bfbdc8bbe0b8); f8889 1 (f1ae3589453f); i1040gi 14 (6024dc94dd1f); branches f8889.any:true, f8889.unsupported:false, f8889.mfs:false, f8889.bad_months:false, f8889.age55:false, f8889.married_family:true, f8889.age55_line3:false, f8889.self_amount#1, f8889.age55_unmarried:false, f8889.family_amount#1, f8889.all_year:false, f8889.all_year:true, f8889.changed:false, f8889.changed:true, f8889.dec_amount#1, f8889.last_month:false, f8889.use_last_month:false, f8889.line3_changed:right, f8889.line3_all_year#0, f8889.line3_all_year#1, f8889.line3_last_month#0, f8889.line3_last_month#1, f8889.line3_part_year#1, f8889.line3#0, f8889.line3#1, f8889.line5:positive, f8889.family_dec_year#0, f8889.step1_total#1, f8889.step1:positive, f8889.share_raw#0, f8889.allocation_bad:false, f8889.self_all#1, f8889.self_dec_year#0, f8889.self_in_family#1, f8889.step4_total:floor, f8889.step4_total:positive, f8889.split:true, f8889.line6#0, f8889.line7_total#1, f8889.line7_applies:false, f8889.line7#1, f8889.line12:positive, f8889.excess:false, f8889.line13_figured:left, f8889.line13#0, f8889.has_dist:false, f8889.rollover_bad:false, f8889.line14b#1, f8889.line14c:floor, f8889.line15#1, f8889.line16_figured:floor, f8889.line16#1, f8889.has_taxable:false, f8889.line17a:false, f8889.subject_bad:false, f8889.subject#0, f8889.line17b#1; dropped after ruling: person[spouse].f8889[hsa].line3_all_year",
    "inputs": {
     "div.box2b": 0,
     "div.box2c": 0,
@@ -26664,12 +26679,12 @@
     "household.home_cost": true,
     "household.unmarried": true,
     "ira.special": false,
+    "ira.se_capital": false,
     "ira.deduct_less": false,
     "qbi.dividends": 75700,
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -26700,6 +26715,7 @@
     "s1.alimony_received": 0,
     "s1.alimony_paid": 0,
     "s1.alimony_unsupported": false,
+    "s1.cod_any": false,
     "s1.cod_amount": 0,
     "s1.cod_unsupported": false,
     "s1.jury_to_employer": 0,
@@ -26785,6 +26801,7 @@
     "person[taxpayer].ira_age50": false,
     "person[taxpayer].ira_work_plan": false,
     "person[taxpayer].ira_basis": 0,
+    "person[taxpayer].ira_basis_adjusted": false,
     "person[taxpayer].ira_dist": false,
     "person[taxpayer].f8889[hsa].line2": 93900,
     "person[taxpayer].f8889[hsa].line9": 0,
@@ -26980,6 +26997,7 @@
     "person[spouse].ira_age50": false,
     "person[spouse].ira_work_plan": false,
     "person[spouse].ira_basis": 0,
+    "person[spouse].ira_basis_adjusted": false,
     "person[spouse].ira_dist": false,
     "$w2@person[spouse]": [],
     "$tipjob@person[spouse]": [],
@@ -27004,16 +27022,14 @@
     "person[spouse].f8889[hsa].months_family": 3,
     "person[spouse].f8889[hsa].age55": false,
     "person[spouse].f8889[hsa].last_month": false,
-    "person[spouse].f8889[hsa].dec_coverage": "self_only",
+    "person[spouse].f8889[hsa].dec_coverage": "family",
     "person[spouse].f8889[hsa].allocation": "equal",
     "person[spouse].f8889[hsa].allocated": 585200,
     "person[spouse].f8889[hsa].line14a": 0,
     "person[spouse].f8889[hsa].rollover": 0,
     "person[spouse].f8889[hsa].medical": 0,
     "person[spouse].f8889[hsa].line17a": false,
-    "person[spouse].f8889[hsa].subject_part": 0,
-    "person[taxpayer].ira_basis_adjusted": false,
-    "person[spouse].ira_basis_adjusted": false
+    "person[spouse].f8889[hsa].subject_part": 0
    },
    "expect": {
     "person[spouse].f8889[hsa].any": {
@@ -27078,7 +27094,7 @@
     },
     "person[spouse].f8889[hsa].dec_amount": {
      "kind": "money",
-     "cents": 430000
+     "cents": 855000
     },
     "person[spouse].f8889[hsa].use_last_month": {
      "kind": "bool",
@@ -27086,11 +27102,11 @@
     },
     "person[spouse].f8889[hsa].line3_changed": {
      "kind": "money",
-     "cents": 430000
+     "cents": 855000
     },
     "person[spouse].f8889[hsa].line3_last_month": {
      "kind": "money",
-     "cents": 430000
+     "cents": 855000
     },
     "person[spouse].f8889[hsa].line3_part_year": {
      "kind": "money",
@@ -27114,7 +27130,7 @@
     },
     "person[spouse].f8889[hsa].family_dec_year": {
      "kind": "money",
-     "cents": 0
+     "cents": 10260000
     },
     "person[spouse].f8889[hsa].family_counted": {
      "kind": "money",
@@ -27170,7 +27186,7 @@
     },
     "person[spouse].f8889[hsa].self_dec_year": {
      "kind": "money",
-     "cents": 0
+     "cents": 5160000
     },
     "person[spouse].f8889[hsa].self_in_family": {
      "kind": "money",
@@ -27643,7 +27659,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -27802,7 +27817,8 @@
     "retirement[r1].sav_military": false,
     "retirement[r1].sav_404k": false,
     "retirement[r1].sav_inherited": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "f8959.line1": {
@@ -27940,7 +27956,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -28216,7 +28231,8 @@
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
     "person[taxpayer].w2[emp_b].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "f8959.line1": {
@@ -28439,7 +28455,6 @@
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -28705,7 +28720,9 @@
     "dcprov[prov_a].paid": 0,
     "dcprov[prov_a].related": false,
     "$retirement": [],
-    "person[taxpayer].ira_basis_adjusted": false
+    "person[taxpayer].ira_basis_adjusted": false,
+    "s1.cod_any": false,
+    "ira.se_capital": false
    },
    "expect": {
     "f8960.line1": {
@@ -28932,7 +28949,6 @@
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -29297,7 +29313,9 @@
     "person[spouse].simple_kind": "match",
     "person[spouse].simple_employer": 0,
     "person[taxpayer].ira_basis_adjusted": false,
-    "person[spouse].ira_basis_adjusted": false
+    "person[spouse].ira_basis_adjusted": false,
+    "s1.cod_any": false,
+    "ira.se_capital": false
    },
    "expect": {
     "f8960.line1": {
@@ -29455,7 +29473,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -29650,7 +29667,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "f8995.line2": {
@@ -29772,7 +29790,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -30052,7 +30069,8 @@
     "person[spouse].sav_voluntary": 0,
     "person[spouse].sav_prior_joint": 0,
     "person[spouse].sav_prior_other": 0,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "f8995.line2": {
@@ -30174,7 +30192,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -30468,7 +30485,8 @@
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
     "person[taxpayer].w2[emp_b].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "f8995.line2": {
@@ -30716,7 +30734,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -30748,7 +30765,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "f8995a.line27": {
@@ -30994,7 +31012,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -31027,7 +31044,8 @@
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
     "person[taxpayer].w2[emp_b].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "f8995a.line27": {
@@ -31267,7 +31285,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -31296,7 +31313,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "g28.line1": {
@@ -31493,7 +31511,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -31522,7 +31539,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "g28.line1": {
@@ -31750,7 +31768,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -31779,7 +31796,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "gift[item_a].section_b": {
@@ -31806,7 +31824,7 @@
     "ira"
    ],
    "evidence": "M",
-   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 918eb3dc63f6e333af5c9106ed391bfd1058b102202e38271bfdb09da2087546; pages i1040gi 31,95,96,97,98 (6024dc94dd1f); i8606 5 (242e712835ef); p590a 6,16,35 (be942a345a01); f8606 1,2 (1e2747fd38af); branches ira.joint:false, ira.joint_type:false, ira.any_trad:false, ira.anyone_covered:false, ira.lines2to6:false, ira.cov_gate:false, ira.line1a:false, ira.line1b:false, ira.line2a#1, ira.line2b#1, ira.line6a#1, ira.line6b#1, ira.line7a#1, ira.line7b#1, ira.kbh_amount#0, ira.kbh_short:false, ira.both_kinds:false, ira.over_comp:false, ira.special:false, ira.special_gate:false, ira.combat_gate:false, ira.excl_gate:false, ira.deduct_less:false, ira.less_gate:false; dropped after ruling: ira.line3; dropped after ruling: ira.line5; dropped after ruling: ira.line7a",
+   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 92396b7fece1b111927b514e82d89aaecdc0aa427b5debedb84d09245991db02; pages i1040gi 31,95,96,97,98 (6024dc94dd1f); p590a 6,7,16,35 (be942a345a01); i8606 5 (242e712835ef); f8606 1,2 (1e2747fd38af); branches ira.joint:false, ira.joint_type:false, ira.any_trad:false, ira.anyone_covered:false, ira.lines2to6:false, ira.cov_gate:false, ira.line1a:false, ira.line1b:false, ira.line2a#1, ira.line2b#1, ira.line6a#1, ira.line6b#1, ira.line7a#1, ira.line7b#1, ira.kbh_amount#0, ira.kbh_short:false, ira.both_kinds:false, ira.over_comp:false, ira.special:false, ira.se_capital:false, ira.se_capital_gate:false, ira.special_gate:false, ira.combat_gate:false, ira.excl_gate:false, ira.deduct_less:false, ira.less_gate:false",
    "inputs": {
     "div.box2b": 0,
     "div.box2c": 0,
@@ -31917,12 +31935,12 @@
     "household.home_cost": true,
     "household.unmarried": true,
     "ira.special": false,
+    "ira.se_capital": false,
     "ira.deduct_less": false,
     "qbi.dividends": 0,
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -31953,6 +31971,7 @@
     "s1.alimony_received": 0,
     "s1.alimony_paid": 0,
     "s1.alimony_unsupported": false,
+    "s1.cod_any": false,
     "s1.cod_amount": 0,
     "s1.cod_unsupported": false,
     "s1.jury_to_employer": 0,
@@ -32038,6 +32057,7 @@
     "person[taxpayer].ira_age50": false,
     "person[taxpayer].ira_work_plan": false,
     "person[taxpayer].ira_basis": 0,
+    "person[taxpayer].ira_basis_adjusted": false,
     "person[taxpayer].ira_dist": false,
     "person[taxpayer].f8889[hsa].line2": 0,
     "person[taxpayer].f8889[hsa].line9": 0,
@@ -32187,8 +32207,7 @@
     "dcprov[prov_a].household": false,
     "dcprov[prov_a].paid": 0,
     "dcprov[prov_a].related": false,
-    "$retirement": [],
-    "person[taxpayer].ira_basis_adjusted": false
+    "$retirement": []
    },
    "expect": {
     "ira.line1a": {
@@ -32259,7 +32278,7 @@
     "ira"
    ],
    "evidence": "M",
-   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 12042d9c826c1ec8ab86cba0f2b8e26c3dbfb9811425aadabce4839785853b0b; pages i1040gi 31,95,96,97,98 (6024dc94dd1f); i8606 5 (242e712835ef); p590a 6,16,35 (be942a345a01); f8606 1,2 (1e2747fd38af); branches ira.joint:true, ira.joint_type:true, ira.any_trad:false, ira.anyone_covered:true, ira.lines2to6:false, ira.cov_gate:false, ira.line1a:false, ira.line1b:false, ira.line2a#1, ira.line2b#1, ira.line6a#1, ira.line6b#1, ira.line7a#1, ira.line7b#1, ira.kbh_amount#0, ira.kbh_short:false, ira.both_kinds:false, ira.over_comp:false, ira.special:false, ira.special_gate:false, ira.combat_gate:false, ira.excl_gate:false, ira.deduct_less:false, ira.less_gate:false; dropped after ruling: ira.line1b; dropped after ruling: ira.line2a; dropped after ruling: ira.line2b",
+   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 968a3f457c3f412123c057f133abf0b9298f304d2137690657469faea6181cce; pages i1040gi 31,95,96,97,98 (6024dc94dd1f); p590a 6,7,16,35 (be942a345a01); i8606 5 (242e712835ef); f8606 1,2 (1e2747fd38af); branches ira.joint:true, ira.joint_type:true, ira.any_trad:false, ira.anyone_covered:true, ira.lines2to6:false, ira.cov_gate:false, ira.line1a:false, ira.line1b:false, ira.line2a#1, ira.line2b#1, ira.line6a#1, ira.line6b#1, ira.line7a#1, ira.line7b#1, ira.kbh_amount#0, ira.kbh_short:false, ira.both_kinds:false, ira.over_comp:false, ira.special:false, ira.se_capital:false, ira.se_capital_gate:false, ira.special_gate:false, ira.combat_gate:false, ira.excl_gate:false, ira.deduct_less:false, ira.less_gate:false",
    "inputs": {
     "div.box2b": 0,
     "div.box2c": 0,
@@ -32370,12 +32389,12 @@
     "household.home_cost": false,
     "household.unmarried": true,
     "ira.special": false,
+    "ira.se_capital": false,
     "ira.deduct_less": false,
     "qbi.dividends": 0,
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -32406,6 +32425,7 @@
     "s1.alimony_received": 0,
     "s1.alimony_paid": 0,
     "s1.alimony_unsupported": false,
+    "s1.cod_any": false,
     "s1.cod_amount": 0,
     "s1.cod_unsupported": false,
     "s1.jury_to_employer": 0,
@@ -32491,6 +32511,7 @@
     "person[taxpayer].ira_age50": false,
     "person[taxpayer].ira_work_plan": false,
     "person[taxpayer].ira_basis": 0,
+    "person[taxpayer].ira_basis_adjusted": false,
     "person[taxpayer].ira_dist": false,
     "person[taxpayer].f8889[hsa].line2": 0,
     "person[taxpayer].f8889[hsa].line9": 0,
@@ -32641,6 +32662,7 @@
     "person[spouse].ira_age50": false,
     "person[spouse].ira_work_plan": false,
     "person[spouse].ira_basis": 0,
+    "person[spouse].ira_basis_adjusted": false,
     "person[spouse].ira_dist": false,
     "$w2@person[spouse]": [
      "emp_a",
@@ -32793,9 +32815,7 @@
     "person[spouse].simple_deferral": 0,
     "person[spouse].simple_age": "age60_63",
     "person[spouse].simple_kind": "match",
-    "person[spouse].simple_employer": 0,
-    "person[taxpayer].ira_basis_adjusted": false,
-    "person[spouse].ira_basis_adjusted": false
+    "person[spouse].simple_employer": 0
    },
    "expect": {
     "ira.line1a": {
@@ -32913,7 +32933,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -33162,7 +33181,8 @@
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
     "person[taxpayer].w2[emp_b].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "person[taxpayer].sc[biz_a].ltc[self].limit": {
@@ -33228,7 +33248,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -33591,7 +33610,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "person[taxpayer].sc[biz_a].ltc[self].limit": {
@@ -33726,7 +33746,6 @@
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -33969,7 +33988,9 @@
     "dcprov[prov_a].paid": 0,
     "dcprov[prov_a].related": false,
     "$retirement": [],
-    "person[taxpayer].ira_basis_adjusted": false
+    "person[taxpayer].ira_basis_adjusted": false,
+    "s1.cod_any": false,
+    "ira.se_capital": false
    },
    "expect": {
     "oi8z[item_a].recovery": {
@@ -34042,7 +34063,6 @@
     "qbi.unsupported": false,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -34279,7 +34299,8 @@
     "retirement[r1].sav_military": false,
     "retirement[r1].sav_404k": false,
     "retirement[r1].sav_inherited": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "person[spouse].otjob[ot_1].refused": {
@@ -34380,7 +34401,6 @@
     "qbi.unsupported": false,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -34573,7 +34593,8 @@
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
     "person[taxpayer].w2[emp_b].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "person[taxpayer].otjob[ot_1].refused": {
@@ -34662,7 +34683,6 @@
     "qbi.unsupported": false,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": true,
     "s1.alimony": false,
@@ -34836,7 +34856,8 @@
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
     "person[taxpayer].w2[emp_b].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "person[taxpayer].otjob[ot_1].refused": {
@@ -34979,7 +35000,6 @@
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -35230,7 +35250,9 @@
     "person[taxpayer].otjob[ot_1].special_rule": false,
     "person[taxpayer].otjob[ot_1].method": "employer_reported",
     "person[taxpayer].otjob[ot_1].statement": 847800,
-    "$carloan": []
+    "$carloan": [],
+    "s1.cod_any": false,
+    "ira.se_capital": false
    },
    "expect": {
     "person[taxpayer].has_educator_expenses": {
@@ -35905,7 +35927,6 @@
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -36156,7 +36177,9 @@
     "person[taxpayer].otjob[ot_1].special_rule": false,
     "person[taxpayer].otjob[ot_1].method": "employer_reported",
     "person[taxpayer].otjob[ot_1].statement": 847800,
-    "$carloan": []
+    "$carloan": [],
+    "s1.cod_any": false,
+    "ira.se_capital": false
    },
    "expect": {
     "person[taxpayer].has_educator_expenses": {
@@ -36831,7 +36854,6 @@
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -37195,7 +37217,9 @@
     "person[taxpayer].otjob[ot_2].special_rule": false,
     "person[taxpayer].otjob[ot_2].method": "total_double",
     "person[taxpayer].otjob[ot_2].statement": 3888400,
-    "$carloan": []
+    "$carloan": [],
+    "s1.cod_any": false,
+    "ira.se_capital": false
    },
    "expect": {
     "person[taxpayer].has_educator_expenses": {
@@ -37858,7 +37882,6 @@
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -38222,7 +38245,9 @@
     "person[taxpayer].otjob[ot_2].special_rule": false,
     "person[taxpayer].otjob[ot_2].method": "total_double",
     "person[taxpayer].otjob[ot_2].statement": 3888400,
-    "$carloan": []
+    "$carloan": [],
+    "s1.cod_any": false,
+    "ira.se_capital": false
    },
    "expect": {
     "person[taxpayer].has_educator_expenses": {
@@ -38942,7 +38967,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -38974,7 +38998,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "qdcg.line1": {
@@ -39256,7 +39281,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -39289,7 +39313,8 @@
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
     "person[taxpayer].w2[emp_b].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "qdcg.line1": {
@@ -39550,7 +39575,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -39582,7 +39606,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "qdcg.line1": {
@@ -39685,7 +39710,7 @@
     "refund"
    ],
    "evidence": "M",
-   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 c60cf09d17b23c04353ad7e8fde6ad5874688111c51cad7b02314baf4e166ceb; pages i1040gi 33,88,89,90 (6024dc94dd1f); p525 24,25 (7df495537860); f1099g 1,2,3,4,5,6 (c3505294585e); branches refund.has:false, refund.other:false, refund.box8:false, refund.not_2024:false, refund.itemized:false, refund.sales:false, refund.worksheet:false, refund.exc_tax:false, refund.exc_who:false, refund.line1:left, refund.line2_more:false, refund.line2:floor, refund.line3_more:false, refund.line3:floor, refund.mfs_spouse_itemized:false, refund.line5#0, refund.per_box#0, refund.you_born:false, refund.you_blind:false, refund.spouse_born:false, refund.spouse_blind:false, refund.spouse_boxes:false, refund.amt_you_born#1, refund.amt_you_blind#1, refund.amt_spouse_born#0, refund.amt_spouse_born_checked#1, refund.amt_spouse_blind#0, refund.amt_spouse_blind_checked#1, refund.line8_figured:floor, refund.line8#0, refund.line8_mfs#1, refund.line9_figured:left, refund.line9#0, refund.taxable#0",
+   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 1e966a46ec241b5438a780c4258facd244a806ace73418a5849e623bb216f55d; pages i1040gi 33,88,89,90 (6024dc94dd1f); f1099g 1,2,3,4,5,6 (c3505294585e); i1040sca 7 (18001c3e2952); p525 24 (7df495537860); branches refund.has:false, refund.box8:false, refund.not_2024:false, refund.itemized:false, refund.sales:false, refund.worksheet:false, refund.exc_tax:false, refund.exc_who:false, refund.line5e_bad:false, refund.line1:left, refund.line2_more:false, refund.line2:floor, refund.line3_more:false, refund.line3:floor, refund.mfs_spouse_itemized:false, refund.line5#0, refund.per_box#0, refund.you_born:false, refund.you_blind:false, refund.spouse_born:false, refund.spouse_blind:false, refund.spouse_boxes:false, refund.amt_you_born#1, refund.amt_you_blind#1, refund.amt_spouse_born#0, refund.amt_spouse_born_checked#1, refund.amt_spouse_blind#0, refund.amt_spouse_blind_checked#1, refund.line8_figured:floor, refund.line8#0, refund.line8_mfs#1, refund.line9_figured:left, refund.line9#0, refund.taxable#0",
    "inputs": {
     "div.box2b": 0,
     "div.box2c": 0,
@@ -39796,12 +39821,12 @@
     "household.home_cost": true,
     "household.unmarried": true,
     "ira.special": false,
+    "ira.se_capital": false,
     "ira.deduct_less": false,
     "qbi.dividends": 80000,
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -39832,6 +39857,7 @@
     "s1.alimony_received": 0,
     "s1.alimony_paid": 0,
     "s1.alimony_unsupported": false,
+    "s1.cod_any": false,
     "s1.cod_amount": 0,
     "s1.cod_unsupported": false,
     "s1.jury_to_employer": 0,
@@ -39917,6 +39943,7 @@
     "person[taxpayer].ira_age50": false,
     "person[taxpayer].ira_work_plan": false,
     "person[taxpayer].ira_basis": 0,
+    "person[taxpayer].ira_basis_adjusted": false,
     "person[taxpayer].ira_dist": false,
     "person[taxpayer].f8889[hsa].line2": 0,
     "person[taxpayer].f8889[hsa].line9": 0,
@@ -40044,8 +40071,7 @@
     "retirement[r1].sav_military": false,
     "retirement[r1].sav_404k": false,
     "retirement[r1].sav_inherited": false,
-    "$otjob@person[taxpayer]": [],
-    "person[taxpayer].ira_basis_adjusted": false
+    "$otjob@person[taxpayer]": []
    },
    "expect": {
     "refund.line1": {
@@ -40206,7 +40232,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -40406,7 +40431,8 @@
     "retirement[r2].sav_military": false,
     "retirement[r2].sav_404k": false,
     "retirement[r2].sav_inherited": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "retirement[r1].is_ira": {
@@ -40879,7 +40905,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 2192400,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -41087,7 +41112,8 @@
     "retirement[r2].sav_military": false,
     "retirement[r2].sav_404k": false,
     "retirement[r2].sav_inherited": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "retirement[r1].is_ira": {
@@ -41564,7 +41590,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -41802,7 +41827,8 @@
     "person[taxpayer].tipjob[tip_3].qualified": true,
     "person[taxpayer].tipjob[tip_3].amount": 1650700,
     "f2441.employer_care": false,
-    "person[taxpayer].ira_excess": false
+    "person[taxpayer].ira_excess": false,
+    "s1.cod_any": false
    },
    "expect": {
     "retirement[r1].is_ira": {
@@ -42271,7 +42297,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -42483,7 +42508,8 @@
     "retirement[r2].sav_military": false,
     "retirement[r2].sav_404k": false,
     "retirement[r2].sav_inherited": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "retirement[r1].is_ira": {
@@ -42842,7 +42868,7 @@
     "s1"
    ],
    "evidence": "M",
-   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 1c50b416671529f955a99c1b52169a14ba946fea2fc29166943ea87f55f30ffe; pages f1040s1 1,2 (30004f72691a); p525 20,25,31,33,34,35 (7df495537860); i1040gi 89,90,91,92,93,94,95,98,99,104,108 (6024dc94dd1f); i1040sc 1,14 (dc6f3ee7c7d3); rp-2024-40 17 (7520978136b2); p504 12,13,16 (ab5181b8bd02); p4681 3,4,6 (c280f0029d95); f1099c 1,2,3,4 (60446f8d9e48); i8889 4 (bfbdc8bbe0b8); branches s1.line1#0, s1.has_uc:false, s1.uc_unsupported:false, s1.line7_figured:floor, s1.line7#1, s1.line7_box:false, s1.ebl_loss:floor, s1.ebl:false, s1.has_sc:false, s1.sc_1a:false, s1.line8_other:false, s1.has_gambling:false, s1.gambling_pro:false, s1.gambling_business:false, s1.alimony:false, s1.alimony_unsupported:false, s1.line2a#1, s1.line2b_notice:false, s1.has_cod:false, s1.cod_unsupported:false, s1.line8c#1, s1.line19a#1, s1.line19b_notice:false, s1.line19c_notice:false, s1.jury_over:false",
+   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 e54f5a5fee101db284f0bdd48bfc280fd0d5b834566dccfccb7c15277b03f398; pages f1040s1 1,2 (30004f72691a); i1040gi 89,90,91,92,93,94,95,98,99,104,108 (6024dc94dd1f); i1040sc 1,14 (dc6f3ee7c7d3); rp-2024-40 17 (7520978136b2); p525 20,31,33,34,35 (7df495537860); p504 12,13,16 (ab5181b8bd02); p4681 3,4,6 (c280f0029d95); f1099c 1,2,3,4 (60446f8d9e48); i8889 4 (bfbdc8bbe0b8); branches s1.line1#0, s1.has_uc:false, s1.uc_unsupported:false, s1.line7_figured:floor, s1.line7#1, s1.line7_box:false, s1.ebl_loss:floor, s1.ebl:false, s1.has_sc:false, s1.sc_1a:false, s1.line8_other:false, s1.has_gambling:false, s1.gambling_pro:false, s1.gambling_business:false, s1.alimony:false, s1.alimony_unsupported:false, s1.line2a#1, s1.line2b_notice:false, s1.cod_any:false, s1.has_cod:false, s1.cod_unsupported:false, s1.cod_figured#1, s1.line8c#1, s1.line19a#1, s1.line19b_notice:false, s1.line19c_notice:false, s1.jury_over:false",
    "inputs": {
     "div.box2b": 0,
     "div.box2c": 0,
@@ -42953,12 +42979,12 @@
     "household.home_cost": true,
     "household.unmarried": true,
     "ira.special": false,
+    "ira.se_capital": false,
     "ira.deduct_less": false,
     "qbi.dividends": 0,
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -42989,6 +43015,7 @@
     "s1.alimony_received": 0,
     "s1.alimony_paid": 0,
     "s1.alimony_unsupported": false,
+    "s1.cod_any": false,
     "s1.cod_amount": 0,
     "s1.cod_unsupported": false,
     "s1.jury_to_employer": 0,
@@ -43074,6 +43101,7 @@
     "person[taxpayer].ira_age50": false,
     "person[taxpayer].ira_work_plan": false,
     "person[taxpayer].ira_basis": 0,
+    "person[taxpayer].ira_basis_adjusted": false,
     "person[taxpayer].ira_dist": false,
     "person[taxpayer].f8889[hsa].line2": 0,
     "person[taxpayer].f8889[hsa].line9": 0,
@@ -43223,8 +43251,7 @@
     "dcprov[prov_a].household": false,
     "dcprov[prov_a].paid": 0,
     "dcprov[prov_a].related": false,
-    "$retirement": [],
-    "person[taxpayer].ira_basis_adjusted": false
+    "$retirement": []
    },
    "expect": {
     "s1.line1": {
@@ -43331,7 +43358,7 @@
     "s1"
    ],
    "evidence": "M",
-   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 ddd7ff3432378fede2c6e4440dbb87280d23881dc9c8e11a29abb942dee6e7f0; pages f1040s1 1,2 (30004f72691a); p525 20,25,31,33,34,35 (7df495537860); i1040gi 89,90,91,92,93,94,95,98,99,104,108 (6024dc94dd1f); i1040sc 1,14 (dc6f3ee7c7d3); rp-2024-40 17 (7520978136b2); p504 12,13,16 (ab5181b8bd02); p4681 3,4,6 (c280f0029d95); f1099c 1,2,3,4 (60446f8d9e48); i8889 4 (bfbdc8bbe0b8); branches s1.line1#0, s1.has_uc:true, s1.uc_unsupported:false, s1.line7_figured:positive, s1.line7#0, s1.line7_box:true, s1.ebl_loss:positive, s1.ebl:false, s1.has_sc:true, s1.sc_1a:false, s1.line8_other:false, s1.has_gambling:false, s1.gambling_pro:false, s1.gambling_business:false, s1.alimony:false, s1.alimony_unsupported:false, s1.line2a#1, s1.line2b_notice:false, s1.has_cod:false, s1.cod_unsupported:false, s1.line8c#1, s1.line19a#1, s1.line19b_notice:false, s1.line19c_notice:false, s1.jury_over:false",
+   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 65ea0b13892804bae7d6d54de3ca975ce19be6dfd1460666b7ff2b3bb19f22a4; pages f1040s1 1,2 (30004f72691a); i1040gi 89,90,91,92,93,94,95,98,99,104,108 (6024dc94dd1f); i1040sc 1,14 (dc6f3ee7c7d3); rp-2024-40 17 (7520978136b2); p525 20,31,33,34,35 (7df495537860); p504 12,13,16 (ab5181b8bd02); p4681 3,4,6 (c280f0029d95); f1099c 1,2,3,4 (60446f8d9e48); i8889 4 (bfbdc8bbe0b8); branches s1.line1#0, s1.has_uc:true, s1.uc_unsupported:false, s1.line7_figured:positive, s1.line7#0, s1.line7_box:true, s1.ebl_loss:positive, s1.ebl:false, s1.has_sc:true, s1.sc_1a:false, s1.line8_other:false, s1.has_gambling:false, s1.gambling_pro:false, s1.gambling_business:false, s1.alimony:false, s1.alimony_unsupported:false, s1.line2a#1, s1.line2b_notice:false, s1.cod_any:false, s1.has_cod:false, s1.cod_unsupported:false, s1.cod_figured#1, s1.line8c#1, s1.line19a#1, s1.line19b_notice:false, s1.line19c_notice:false, s1.jury_over:false",
    "inputs": {
     "div.box2b": 0,
     "div.box2c": 0,
@@ -43442,12 +43469,12 @@
     "household.home_cost": true,
     "household.unmarried": true,
     "ira.special": false,
+    "ira.se_capital": false,
     "ira.deduct_less": false,
     "qbi.dividends": 0,
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -43478,6 +43505,7 @@
     "s1.alimony_received": 0,
     "s1.alimony_paid": 0,
     "s1.alimony_unsupported": false,
+    "s1.cod_any": false,
     "s1.cod_amount": 0,
     "s1.cod_unsupported": false,
     "s1.jury_to_employer": 0,
@@ -43563,6 +43591,7 @@
     "person[taxpayer].ira_age50": false,
     "person[taxpayer].ira_work_plan": false,
     "person[taxpayer].ira_basis": 0,
+    "person[taxpayer].ira_basis_adjusted": false,
     "person[taxpayer].ira_dist": false,
     "person[taxpayer].f8889[hsa].line2": 0,
     "person[taxpayer].f8889[hsa].line9": 0,
@@ -43801,8 +43830,7 @@
     "dcprov[prov_a].household": false,
     "dcprov[prov_a].paid": 0,
     "dcprov[prov_a].related": false,
-    "$retirement": [],
-    "person[taxpayer].ira_basis_adjusted": false
+    "$retirement": []
    },
    "expect": {
     "s1.line1": {
@@ -43909,7 +43937,7 @@
     "s1"
    ],
    "evidence": "M",
-   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 26d90667a7d949d9f4ef81703a9f58ede2655e4edc5a7f4e54d5e6e66aadce64; pages f1040s1 1,2 (30004f72691a); p525 20,25,31,33,34,35 (7df495537860); i1040gi 89,90,91,92,93,94,95,98,99,104,108 (6024dc94dd1f); i1040sc 1,14 (dc6f3ee7c7d3); rp-2024-40 17 (7520978136b2); p504 12,13,16 (ab5181b8bd02); p4681 3,4,6 (c280f0029d95); f1099c 1,2,3,4 (60446f8d9e48); i8889 4 (bfbdc8bbe0b8); branches s1.line1#0, s1.has_uc:false, s1.uc_unsupported:true, s1.line7#1, s1.line7_box:false, s1.ebl_loss:floor, s1.ebl:false, s1.has_sc:false, s1.sc_1a:false, s1.line8_other:false, s1.has_gambling:false, s1.gambling_pro:false, s1.gambling_business:false, s1.alimony:false, s1.alimony_unsupported:false, s1.line2a#1, s1.line2b_notice:false, s1.has_cod:false, s1.cod_unsupported:false, s1.line8c#1, s1.line19a#1, s1.line19b_notice:false, s1.line19c_notice:false, s1.jury_over:false",
+   "evidence_note": "Class M: claude-opus-5-5; prompt sha256 0f4acb17c7c66c1f2abc740df97a8bdc36d6dd3ea7426877e448a1bc57a6380e; pages f1040s1 1,2 (30004f72691a); i1040gi 89,90,91,92,93,94,95,98,99,104,108 (6024dc94dd1f); i1040sc 1,14 (dc6f3ee7c7d3); rp-2024-40 17 (7520978136b2); p525 20,31,33,34,35 (7df495537860); p504 12,13,16 (ab5181b8bd02); p4681 3,4,6 (c280f0029d95); f1099c 1,2,3,4 (60446f8d9e48); i8889 4 (bfbdc8bbe0b8); branches s1.line1#0, s1.has_uc:false, s1.uc_unsupported:true, s1.line7#1, s1.line7_box:false, s1.ebl_loss:floor, s1.ebl:false, s1.has_sc:false, s1.sc_1a:false, s1.line8_other:false, s1.has_gambling:false, s1.gambling_pro:false, s1.gambling_business:false, s1.alimony:false, s1.alimony_unsupported:false, s1.line2a#1, s1.line2b_notice:false, s1.cod_any:false, s1.has_cod:false, s1.cod_unsupported:false, s1.cod_figured#1, s1.line8c#1, s1.line19a#1, s1.line19b_notice:false, s1.line19c_notice:false, s1.jury_over:false",
    "inputs": {
     "div.box2b": 0,
     "div.box2c": 0,
@@ -44020,12 +44048,12 @@
     "household.home_cost": true,
     "household.unmarried": false,
     "ira.special": false,
+    "ira.se_capital": false,
     "ira.deduct_less": false,
     "qbi.dividends": 0,
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -44056,6 +44084,7 @@
     "s1.alimony_received": 0,
     "s1.alimony_paid": 0,
     "s1.alimony_unsupported": false,
+    "s1.cod_any": false,
     "s1.cod_amount": 0,
     "s1.cod_unsupported": false,
     "s1.jury_to_employer": 0,
@@ -44141,6 +44170,7 @@
     "person[taxpayer].ira_age50": false,
     "person[taxpayer].ira_work_plan": false,
     "person[taxpayer].ira_basis": 0,
+    "person[taxpayer].ira_basis_adjusted": false,
     "person[taxpayer].ira_dist": false,
     "person[taxpayer].f8889[hsa].line2": 0,
     "person[taxpayer].f8889[hsa].line9": 0,
@@ -44212,8 +44242,7 @@
     "dcprov[prov_a].household": false,
     "dcprov[prov_a].paid": 0,
     "dcprov[prov_a].related": false,
-    "$retirement": [],
-    "person[taxpayer].ira_basis_adjusted": false
+    "$retirement": []
    },
    "expect": {
     "s1.line1": {
@@ -44367,7 +44396,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -44526,7 +44554,8 @@
     "retirement[r1].sav_military": false,
     "retirement[r1].sav_404k": false,
     "retirement[r1].sav_inherited": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "s179.line2": {
@@ -44624,7 +44653,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 1084200,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -44981,7 +45009,8 @@
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
     "person[taxpayer].w2[emp_b].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "s179.line2": {
@@ -45079,7 +45108,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 2500000,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -45263,7 +45291,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "s179.line2": {
@@ -45360,7 +45389,6 @@
     "qbi.unsupported": false,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": true,
     "s1.alimony": false,
@@ -45607,7 +45635,8 @@
     "person[spouse].sav_prior_other": 0,
     "person[spouse].w2[emp_a].box12_any": false,
     "person[spouse].w2[emp_b].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "s1a.line1": {
@@ -45906,7 +45935,6 @@
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -46172,7 +46200,9 @@
     "dcprov[prov_a].paid": 0,
     "dcprov[prov_a].related": false,
     "$retirement": [],
-    "person[taxpayer].ira_basis_adjusted": false
+    "person[taxpayer].ira_basis_adjusted": false,
+    "s1.cod_any": false,
+    "ira.se_capital": false
    },
    "expect": {
     "s2.line2": {
@@ -46329,7 +46359,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -46638,7 +46667,8 @@
     "dcprov[prov_a].paid": 0,
     "dcprov[prov_a].related": false,
     "$retirement": [],
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "s3.line1": {
@@ -46795,7 +46825,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -47089,7 +47118,8 @@
     "dcprov[prov_a].paid": 0,
     "dcprov[prov_a].related": false,
     "$retirement": [],
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "s3.line1": {
@@ -47238,7 +47268,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": true,
     "s1.alimony": false,
@@ -47524,7 +47553,8 @@
     "person[spouse].simple_age": "age60_63",
     "person[spouse].simple_kind": "nonelective",
     "person[spouse].simple_employer": 0,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "s3.line1": {
@@ -47681,7 +47711,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -47990,7 +48019,8 @@
     "dcprov[prov_a].paid": 0,
     "dcprov[prov_a].related": false,
     "$retirement": [],
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "s8812.line1": {
@@ -48223,7 +48253,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -48407,7 +48436,8 @@
     "dcprov[prov_a].paid": 0,
     "dcprov[prov_a].related": false,
     "$retirement": [],
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "s8812.line1": {
@@ -48624,7 +48654,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -48866,7 +48895,8 @@
     "dcprov[prov_a].paid": 0,
     "dcprov[prov_a].related": false,
     "$retirement": [],
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "s8812.line1": {
@@ -49115,7 +49145,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -49345,7 +49374,8 @@
     "retirement[r1].sav_military": false,
     "retirement[r1].sav_404k": false,
     "retirement[r1].sav_inherited": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "s8812.line1": {
@@ -49560,7 +49590,6 @@
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -49825,7 +49854,9 @@
     "dcprov[prov_a].household": false,
     "dcprov[prov_a].paid": 0,
     "dcprov[prov_a].related": false,
-    "$retirement": []
+    "$retirement": [],
+    "s1.cod_any": false,
+    "ira.se_capital": false
    },
    "expect": {
     "sa.line2": {
@@ -50024,7 +50055,6 @@
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -50289,7 +50319,9 @@
     "dcprov[prov_a].household": false,
     "dcprov[prov_a].paid": 0,
     "dcprov[prov_a].related": false,
-    "$retirement": []
+    "$retirement": [],
+    "s1.cod_any": false,
+    "ira.se_capital": false
    },
    "expect": {
     "sa.line2": {
@@ -50488,7 +50520,6 @@
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -50747,7 +50778,9 @@
     "dcprov[prov_a].household": false,
     "dcprov[prov_a].paid": 0,
     "dcprov[prov_a].related": false,
-    "$retirement": []
+    "$retirement": [],
+    "s1.cod_any": false,
+    "ira.se_capital": false
    },
    "expect": {
     "sa.line2": {
@@ -50946,7 +50979,6 @@
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -51205,7 +51237,9 @@
     "dcprov[prov_a].household": false,
     "dcprov[prov_a].paid": 0,
     "dcprov[prov_a].related": false,
-    "$retirement": []
+    "$retirement": [],
+    "s1.cod_any": false,
+    "ira.se_capital": false
    },
    "expect": {
     "sa.line2": {
@@ -51404,7 +51438,6 @@
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -51641,7 +51674,9 @@
     "dcprov[prov_a].household": false,
     "dcprov[prov_a].paid": 0,
     "dcprov[prov_a].related": false,
-    "$retirement": []
+    "$retirement": [],
+    "s1.cod_any": false,
+    "ira.se_capital": false
    },
    "expect": {
     "sa.line2": {
@@ -51840,7 +51875,6 @@
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -52077,7 +52111,9 @@
     "dcprov[prov_a].household": false,
     "dcprov[prov_a].paid": 0,
     "dcprov[prov_a].related": false,
-    "$retirement": []
+    "$retirement": [],
+    "s1.cod_any": false,
+    "ira.se_capital": false
    },
    "expect": {
     "sa.line2": {
@@ -52276,7 +52312,6 @@
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -52627,7 +52662,9 @@
     "person[spouse].simple_deferral": 0,
     "person[spouse].simple_age": "under50",
     "person[spouse].simple_kind": "nonelective",
-    "person[spouse].simple_employer": 0
+    "person[spouse].simple_employer": 0,
+    "s1.cod_any": false,
+    "ira.se_capital": false
    },
    "expect": {
     "sa.line2": {
@@ -52826,7 +52863,6 @@
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -53177,7 +53213,9 @@
     "person[spouse].simple_deferral": 0,
     "person[spouse].simple_age": "under50",
     "person[spouse].simple_kind": "nonelective",
-    "person[spouse].simple_employer": 0
+    "person[spouse].simple_employer": 0,
+    "s1.cod_any": false,
+    "ira.se_capital": false
    },
    "expect": {
     "sa.line2": {
@@ -53376,7 +53414,6 @@
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -53635,7 +53672,9 @@
     "dcprov[prov_a].household": false,
     "dcprov[prov_a].paid": 0,
     "dcprov[prov_a].related": false,
-    "$retirement": []
+    "$retirement": [],
+    "s1.cod_any": false,
+    "ira.se_capital": false
    },
    "expect": {
     "sa.line2": {
@@ -53834,7 +53873,6 @@
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -54093,7 +54131,9 @@
     "dcprov[prov_a].household": false,
     "dcprov[prov_a].paid": 0,
     "dcprov[prov_a].related": false,
-    "$retirement": []
+    "$retirement": [],
+    "s1.cod_any": false,
+    "ira.se_capital": false
    },
    "expect": {
     "sa.line2": {
@@ -54292,7 +54332,6 @@
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -54605,7 +54644,9 @@
     "dcprov[prov_a].household": false,
     "dcprov[prov_a].paid": 0,
     "dcprov[prov_a].related": false,
-    "$retirement": []
+    "$retirement": [],
+    "s1.cod_any": false,
+    "ira.se_capital": false
    },
    "expect": {
     "sa.line2": {
@@ -54804,7 +54845,6 @@
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -55117,7 +55157,9 @@
     "dcprov[prov_a].household": false,
     "dcprov[prov_a].paid": 0,
     "dcprov[prov_a].related": false,
-    "$retirement": []
+    "$retirement": [],
+    "s1.cod_any": false,
+    "ira.se_capital": false
    },
    "expect": {
     "sa.line2": {
@@ -55316,7 +55358,6 @@
     "qbi.unsupported": true,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -55594,7 +55635,9 @@
     "carloan[vin_1].down": 818800,
     "carloan[vin_1].refi_balance": 4592600,
     "carloan[vin_1].refi_whole": true,
-    "carloan[vin_1].col_ii_input": 0
+    "carloan[vin_1].col_ii_input": 0,
+    "s1.cod_any": false,
+    "ira.se_capital": false
    },
    "expect": {
     "sa.line2": {
@@ -55793,7 +55836,6 @@
     "qbi.unsupported": true,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -56071,7 +56113,9 @@
     "carloan[vin_1].down": 818800,
     "carloan[vin_1].refi_balance": 4592600,
     "carloan[vin_1].refi_whole": true,
-    "carloan[vin_1].col_ii_input": 0
+    "carloan[vin_1].col_ii_input": 0,
+    "s1.cod_any": false,
+    "ira.se_capital": false
    },
    "expect": {
     "sa.line2": {
@@ -56315,7 +56359,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -56345,7 +56388,8 @@
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
     "person[taxpayer].w2[emp_b].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "sales[s1].covered": {
@@ -56689,7 +56733,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -56718,7 +56761,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "sb.line2": {
@@ -56921,7 +56965,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -56940,7 +56983,8 @@
     "f2441.care": false,
     "f2441.benefits": false,
     "f2441.employer_care": false,
-    "person[taxpayer].sav_trad": false
+    "person[taxpayer].sav_trad": false,
+    "s1.cod_any": false
    },
    "expect": {
     "sb.line2": {
@@ -57014,7 +57058,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -57421,7 +57464,8 @@
     "person[spouse].sav_voluntary": 0,
     "person[spouse].sav_prior_joint": 0,
     "person[spouse].sav_prior_other": 0,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "person[taxpayer].sc[biz_a].rrta": {
@@ -58291,7 +58335,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 2227800,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": true,
     "s1.alimony": false,
@@ -58661,7 +58704,8 @@
     "person[spouse].sav_prior_other": 0,
     "person[spouse].w2[emp_a].box12_any": false,
     "person[spouse].w2[emp_b].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "person[taxpayer].sc[biz_a].rrta": {
@@ -59511,7 +59555,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -59786,7 +59829,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "person[taxpayer].sc[biz_a].rrta": {
@@ -60216,7 +60260,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 230800,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -60552,7 +60595,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "person[taxpayer].sc[biz_a].rrta": {
@@ -61422,7 +61466,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -61758,7 +61801,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "person[taxpayer].sc[biz_a].scveh[car_1].cm_c": {
@@ -62784,7 +62828,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -63019,7 +63062,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "person[taxpayer].sc[biz_a].scveh[car_1].no_miles": {
@@ -63756,7 +63800,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -64022,7 +64065,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "person[taxpayer].sc[biz_a].scveh[car_1].cm_c": {
@@ -64426,7 +64470,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -64730,7 +64773,8 @@
     "person[spouse].sav_prior_joint": 0,
     "person[spouse].sav_prior_other": 0,
     "person[spouse].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "person[taxpayer].sc[biz_a].scveh[car_1].cm_c": {
@@ -65131,7 +65175,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 2500000,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -65546,7 +65589,8 @@
     "person[spouse].sav_prior_other": 0,
     "person[spouse].w2[emp_a].box12_any": false,
     "person[spouse].w2[emp_b].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "person[taxpayer].sc[biz_a].scveh[car_1].no_miles": {
@@ -66762,7 +66806,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": true,
     "s1.alimony": false,
@@ -67071,7 +67114,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "person[taxpayer].sc[biz_a].scveh[car_1].cm_c": {
@@ -67936,7 +67980,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -67965,7 +68008,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "sd.line1a.d": {
@@ -68336,7 +68380,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -68366,7 +68409,8 @@
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
     "person[taxpayer].w2[emp_b].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "sd.line1a.d": {
@@ -68691,7 +68735,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -68721,7 +68764,8 @@
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
     "person[taxpayer].w2[emp_b].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "sd.line1a.d": {
@@ -69085,7 +69129,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -69117,7 +69160,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "sdtw.line1": {
@@ -69465,7 +69509,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -69498,7 +69541,8 @@
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
     "person[taxpayer].w2[emp_b].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "sdtw.line1": {
@@ -69847,7 +69891,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -69879,7 +69922,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "sdtw.line1": {
@@ -70195,7 +70239,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -70227,7 +70270,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "sdtw.line1": {
@@ -70465,7 +70509,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -70766,7 +70809,8 @@
     "person[spouse].sav_prior_other": 0,
     "person[spouse].w2[emp_a].box12_any": false,
     "person[spouse].w2[emp_b].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "person[taxpayer]|inst:se#{\"line2\":\"person.se_line2\",\"line8a\":\"person.wages\"}.line3": {
@@ -70884,7 +70928,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -71232,7 +71275,8 @@
     "person[spouse].sav_voluntary": 0,
     "person[spouse].sav_prior_joint": 0,
     "person[spouse].sav_prior_other": 0,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "person[taxpayer]|inst:se#{\"line2\":\"person.se_line2\",\"line8a\":\"person.wages\"}.line3": {
@@ -71350,7 +71394,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -71749,7 +71792,8 @@
     "person[spouse].sav_voluntary": 0,
     "person[spouse].sav_prior_joint": 0,
     "person[spouse].sav_prior_other": 0,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "person[taxpayer]|inst:se#{\"line2\":\"person.se_line2\",\"line8a\":\"person.wages\"}.line3": {
@@ -71936,7 +71980,6 @@
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -72202,7 +72245,9 @@
     "dcprov[prov_a].paid": 0,
     "dcprov[prov_a].related": false,
     "$retirement": [],
-    "person[taxpayer].ira_basis_adjusted": false
+    "person[taxpayer].ira_basis_adjusted": false,
+    "s1.cod_any": false,
+    "ira.se_capital": false
    },
    "expect": {
     "sli.line1": {
@@ -72357,7 +72402,6 @@
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -72590,7 +72634,9 @@
     "retirement[r1].sav_military": false,
     "retirement[r1].sav_404k": false,
     "retirement[r1].sav_inherited": false,
-    "person[taxpayer].ira_basis_adjusted": false
+    "person[taxpayer].ira_basis_adjusted": false,
+    "s1.cod_any": false,
+    "ira.se_capital": false
    },
    "expect": {
     "sli.line3": {
@@ -72721,7 +72767,6 @@
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -72947,7 +72992,9 @@
     "dcprov[prov_a].paid": 0,
     "dcprov[prov_a].related": false,
     "$retirement": [],
-    "person[taxpayer].ira_basis_adjusted": false
+    "person[taxpayer].ira_basis_adjusted": false,
+    "s1.cod_any": false,
+    "ira.se_capital": false
    },
    "expect": {
     "sli.line1": {
@@ -73102,7 +73149,6 @@
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -73479,7 +73525,9 @@
     "person[spouse].simple_kind": "nonelective",
     "person[spouse].simple_employer": 0,
     "person[taxpayer].ira_basis_adjusted": false,
-    "person[spouse].ira_basis_adjusted": false
+    "person[spouse].ira_basis_adjusted": false,
+    "s1.cod_any": false,
+    "ira.se_capital": false
    },
    "expect": {
     "sli.line1": {
@@ -73634,7 +73682,6 @@
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -73938,7 +73985,9 @@
     "retirement[r1].sav_military": false,
     "retirement[r1].sav_404k": false,
     "retirement[r1].sav_inherited": false,
-    "person[taxpayer].ira_basis_adjusted": false
+    "person[taxpayer].ira_basis_adjusted": false,
+    "s1.cod_any": false,
+    "ira.se_capital": false
    },
    "expect": {
     "sli.line1": {
@@ -74093,7 +74142,6 @@
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -74359,7 +74407,9 @@
     "dcprov[prov_a].paid": 0,
     "dcprov[prov_a].related": false,
     "$retirement": [],
-    "person[taxpayer].ira_basis_adjusted": false
+    "person[taxpayer].ira_basis_adjusted": false,
+    "s1.cod_any": false,
+    "ira.se_capital": false
    },
    "expect": {
     "ssb.line1": {
@@ -74558,7 +74608,6 @@
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -74806,7 +74855,9 @@
     "retirement[r2].sav_military": false,
     "retirement[r2].sav_404k": false,
     "retirement[r2].sav_inherited": false,
-    "person[taxpayer].ira_basis_adjusted": false
+    "person[taxpayer].ira_basis_adjusted": false,
+    "s1.cod_any": false,
+    "ira.se_capital": false
    },
    "expect": {
     "ssb.line1": {
@@ -74993,7 +75044,6 @@
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -75179,7 +75229,9 @@
     "dcprov[prov_a].paid": 0,
     "dcprov[prov_a].related": false,
     "$retirement": [],
-    "person[taxpayer].ira_basis_adjusted": false
+    "person[taxpayer].ira_basis_adjusted": false,
+    "s1.cod_any": false,
+    "ira.se_capital": false
    },
    "expect": {
     "ssb.line1": {
@@ -75370,7 +75422,6 @@
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -75747,7 +75798,9 @@
     "person[spouse].simple_kind": "nonelective",
     "person[spouse].simple_employer": 0,
     "person[taxpayer].ira_basis_adjusted": false,
-    "person[spouse].ira_basis_adjusted": false
+    "person[spouse].ira_basis_adjusted": false,
+    "s1.cod_any": false,
+    "ira.se_capital": false
    },
    "expect": {
     "ssb.line1": {
@@ -75938,7 +75991,6 @@
     "qbi.unsupported": false,
     "qbi.carryforward": 0,
     "refund.received": 0,
-    "refund.other": false,
     "refund.box8": false,
     "refund.not_2024": false,
     "refund.itemized": false,
@@ -76143,7 +76195,9 @@
     "dcprov[prov_a].paid": 0,
     "dcprov[prov_a].related": false,
     "$retirement": [],
-    "person[taxpayer].ira_basis_adjusted": false
+    "person[taxpayer].ira_basis_adjusted": false,
+    "s1.cod_any": false,
+    "ira.se_capital": false
    },
    "expect": {
     "ssb.line1": {
@@ -76399,7 +76453,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -76431,7 +76484,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"qdcg.line5\",\"status\":\"f1040.status\"}.below_boundary": {
@@ -76582,7 +76636,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -76604,7 +76657,8 @@
     "f2441.care": false,
     "f2441.benefits": false,
     "f2441.employer_care": false,
-    "person[taxpayer].sav_trad": false
+    "person[taxpayer].sav_trad": false,
+    "s1.cod_any": false
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"f1040.line15\",\"status\":\"f1040.status\"}.below_boundary": {
@@ -76796,7 +76850,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -76828,7 +76881,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"qdcg.line5\",\"status\":\"f1040.status\"}|inst:tcw#{\"amount\":\"amount\",\"status\":\"status\"}.tax": {
@@ -76968,7 +77022,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -77000,7 +77053,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"qdcg.line5\",\"status\":\"f1040.status\"}|inst:tcw#{\"amount\":\"amount\",\"status\":\"status\"}.tax": {
@@ -77193,7 +77247,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -77225,7 +77278,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"qdcg.line5\",\"status\":\"f1040.status\"}|inst:tcw#{\"amount\":\"amount\",\"status\":\"status\"}.tax": {
@@ -77433,7 +77487,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -77465,7 +77518,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"qdcg.line1\",\"status\":\"f1040.status\"}|inst:tcw#{\"amount\":\"amount\",\"status\":\"status\"}.tax": {
@@ -77651,7 +77705,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -77683,7 +77736,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"qdcg.line5\",\"status\":\"f1040.status\"}|inst:tcw#{\"amount\":\"amount\",\"status\":\"status\"}.tax": {
@@ -77867,7 +77921,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -77900,7 +77953,8 @@
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
     "person[taxpayer].w2[emp_b].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"qdcg.line1\",\"status\":\"f1040.status\"}|inst:tcw#{\"amount\":\"amount\",\"status\":\"status\"}.tax": {
@@ -78041,7 +78095,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -78094,7 +78147,8 @@
     "person[spouse].sav_voluntary": 0,
     "person[spouse].sav_prior_joint": 0,
     "person[spouse].sav_prior_other": 0,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"f1040.line15\",\"status\":\"f1040.status\"}|inst:tcw#{\"amount\":\"amount\",\"status\":\"status\"}.tax": {
@@ -78279,7 +78333,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -78312,7 +78365,8 @@
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
     "person[taxpayer].w2[emp_b].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"qdcg.line1\",\"status\":\"f1040.status\"}|inst:tcw#{\"amount\":\"amount\",\"status\":\"status\"}.tax": {
@@ -78466,7 +78520,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -78499,7 +78552,8 @@
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
     "person[taxpayer].w2[emp_b].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"qdcg.line1\",\"status\":\"f1040.status\"}|inst:tcw#{\"amount\":\"amount\",\"status\":\"status\"}.tax": {
@@ -78648,7 +78702,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -78681,7 +78734,8 @@
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
     "person[taxpayer].w2[emp_b].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"f1040.line15\",\"status\":\"f1040.status\"}|inst:tcw#{\"amount\":\"amount\",\"status\":\"status\"}.tax": {
@@ -78854,7 +78908,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -78886,7 +78939,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"qdcg.line1\",\"status\":\"f1040.status\"}|inst:tcw#{\"amount\":\"amount\",\"status\":\"status\"}.tax": {
@@ -79077,7 +79131,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -79130,7 +79183,8 @@
     "person[spouse].sav_voluntary": 0,
     "person[spouse].sav_prior_joint": 0,
     "person[spouse].sav_prior_other": 0,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"qdcg.line5\",\"status\":\"f1040.status\"}|inst:tcw#{\"amount\":\"amount\",\"status\":\"status\"}.tax": {
@@ -79281,7 +79335,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -79314,7 +79367,8 @@
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
     "person[taxpayer].w2[emp_b].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"f1040.line15\",\"status\":\"f1040.status\"}|inst:tcw#{\"amount\":\"amount\",\"status\":\"status\"}.tax": {
@@ -79528,7 +79582,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -79560,7 +79613,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"f1040.line15\",\"status\":\"f1040.status\"}|inst:tcw#{\"amount\":\"amount\",\"status\":\"status\"}.tax": {
@@ -79773,7 +79827,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -79805,7 +79858,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"qdcg.line1\",\"status\":\"f1040.status\"}|inst:tcw#{\"amount\":\"amount\",\"status\":\"status\"}.tax": {
@@ -79946,7 +80000,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -79978,7 +80031,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"qdcg.line5\",\"status\":\"f1040.status\"}|inst:tcw#{\"amount\":\"amount\",\"status\":\"status\"}.tax": {
@@ -80169,7 +80223,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -80202,7 +80255,8 @@
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
     "person[taxpayer].w2[emp_b].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "root|inst:tax_on_amount#{\"amount\":\"qdcg.line5\",\"status\":\"f1040.status\"}|inst:tcw#{\"amount\":\"amount\",\"status\":\"status\"}.tax": {
@@ -80263,7 +80317,6 @@
     "qbi.unsupported": true,
     "s1.uc_paid": 2500000,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -80437,7 +80490,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "person[taxpayer].tipjob[tip_1].mixed": {
@@ -80645,7 +80699,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -80674,7 +80727,8 @@
     "person[taxpayer].sav_prior_joint": 0,
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "u1250.line1": {
@@ -80937,7 +80991,6 @@
     "s1.alimony": false,
     "s1.cod_amount": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.line8_other": false,
     "s1.gambling_winnings": 0,
     "s1.line8g": 0,
@@ -80967,7 +81020,8 @@
     "person[taxpayer].sav_prior_other": 0,
     "person[taxpayer].w2[emp_a].box12_any": false,
     "person[taxpayer].w2[emp_b].box12_any": false,
-    "f2441.employer_care": false
+    "f2441.employer_care": false,
+    "s1.cod_any": false
    },
    "expect": {
     "u1250.line1": {
@@ -81164,7 +81218,6 @@
     "qbi.carryforward": 0,
     "s1.uc_paid": 0,
     "refund.received": 0,
-    "refund.other": false,
     "s1.uc_repaid": 0,
     "s1.uc_unsupported": false,
     "s1.alimony": false,
@@ -81414,7 +81467,8 @@
     "person[spouse].simple_kind": "nonelective",
     "person[spouse].simple_employer": 0,
     "f2441.employer_care": false,
-    "person[taxpayer].ira_excess": false
+    "person[taxpayer].ira_excess": false,
+    "s1.cod_any": false
    },
    "expect": {
     "person[spouse].w2[emp_a].wages": {

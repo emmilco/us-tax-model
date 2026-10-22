@@ -434,9 +434,6 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Any state or local income tax refund received in 2025
       = false
       cite: [i1040gi] p. 88, Line 1, "If you received a refund, credit, or offset of state or local income taxes in 2025" (2025; printed date 2026-02-25; 482e9c48)
-  (gate) In 2025, did you receive any other refund, reimbursement or recovery of an amount you deducted or took a credit for in an earlier year, other than a refund of state or local income tax (for example a refund of general sales tax, real estate tax or personal property tax, a refund of mortgage interest in box 4 of Form 1098, a reimbursement of medical expenses, or a payment on a bad debt you deducted)?
-      = false
-      cite: [p525] p. 24, Recoveries, "A recovery is a return of an amount you deducted or took a credit for in an earlier year" and "You may also have recoveries of nonitemized deductions (such as payments on previously deducted bad debts)"; p. 25, Where to report, "the total of all other recoveries as other income on Schedule 1 (Form 1040), line 8z"; i1040gi p. 89, Line 1, "2. You received a refund other than an income tax refund, such as a general sales tax or real property tax refund, in 2025 of an amount deducted or credit claimed in an earlier year" (2025; 39b0fa5e)
 
 == Schedule 1 — Additional Income and Adjustments to Income (the lines this tool computes) ==
   (helper) Year parameter sales.zero
@@ -517,16 +514,13 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $0
       cite: [f1040s1] Schedule 1 (2025), line 2a; i1040gi p. 89, Line 2a, "Alimony received is not included in your income if you entered into a divorce or separation agreement after December 31, 2018" (2025; created 2025-07-25; 8dafec71)
       note: taken: {"eq":["s1.alimony",{"const":false}],"op":"test"}; Interpretation amb.2025.alimony_screen: The first (s1.alimony, s1.alimony_unsupported; amounts under an agreement entered into after 2018, or after a change that expressly excludes them, are not asked, as the questions say, and are neither income nor deductible). The owner's decision (Stage 16 decision batch, D2, with the screens of the premise map, R-ALI-1 and R-ALI-2). The statement listing the other agreements and recipients, and the recapture worksheet, are not prepared; a payment partly child support needs the Pub. 504 allocation rules. (p504, p. 12, Alimony, "If you paid alimony to more than one person, enter the SSN or ITIN of one of the recipients"; p. 16, Recapture of Alimony; p. 13, Underpayment)
-  (helper) Canceled nonbusiness debt (Form 1099-C box 2, and any canceled nonbusiness debt with no Form 1099-C)
-      = $0
-      cite: [p4681] p. 4, Form 1099-C Reference Guide, "Even if you didn't receive a Form 1099-C, you must report canceled debt as gross income on your tax return unless one of the exceptions or exclusions described later applies"; f1099c p. 4, Instructions for Debtor, "Box 2. Shows the amount of debt either actually or deemed discharged" (2025; d87305a0)
-  (helper) Any canceled nonbusiness debt
+  (gate) Was any of your debt canceled or forgiven in 2025?
       = false
-      cite: [i1040gi] p. 91, Line 8c (2025; printed date 2026-02-25; 482e9c48)
+      cite: [p4681] p. 4, Form 1099-C Reference Guide, "Even if you didn't receive a Form 1099-C, you must report canceled debt as gross income on your tax return unless one of the exceptions or exclusions described later applies" (2025; d87305a0)
   8c  Cancellation of debt
       = $0
       cite: [f1040s1] Schedule 1 (2025), line 8c; i1040gi p. 91, Line 8c, "Canceled debt may be shown in box 2 of Form 1099-C. However, part or all of your income from cancellation of debt may be nontaxable" (2025; created 2025-07-25; 8dafec71)
-      note: taken: {"eq":["s1.has_cod",{"const":false}],"op":"test"}; Interpretation amb.2025.cod_fully_taxable: The first (s1.cod_amount, s1.cod_unsupported). Student loans are refused with the other exceptions. The owner's decision (Stage 16 decision batch, D2, "fully taxable canceled nonbusiness debt"). An excepted student loan discharge is nontaxable and usually comes with no Form 1099-C (p. 3, TIP), so a filer who reports one is refused rather than told how much of it to include; the conservative choice where D2 is silent. (p4681, p. 3, General Rules, "There are several exceptions and exclusions that may result in part or all of a canceled debt being nontaxable"; p. 4, Exceptions)
+      note: taken: {"eq":["s1.cod_any",{"const":false}],"op":"test"}; Interpretation amb.2025.cod_fully_taxable: The first (s1.cod_amount, s1.cod_unsupported). Student loans are refused with the other exceptions. The owner's decision (Stage 16 decision batch, D2, "fully taxable canceled nonbusiness debt"). An excepted student loan discharge is nontaxable and usually comes with no Form 1099-C (p. 3, TIP), so a filer who reports one is refused rather than told how much of it to include; the conservative choice where D2 is silent. (p4681, p. 3, General Rules, "There are several exceptions and exclusions that may result in part or all of a canceled debt being nontaxable"; p. 4, Exceptions)
   8f  Income from Form 8889
       = $0
       cite: [f1040s1] Schedule 1 (2025), line 8f; i1040gi p. 91, Line 8f, "Enter the total of the amounts from Form 8889, lines 16 and 20" (line 20, Part III, is refused by f8889.unsupported) (2025; created 2025-07-25; 8dafec71)
@@ -920,7 +914,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
 
 == Proof-of-concept scope screening ==
-  (helper) Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately (business income or loss from Schedule C; a taxable state or local income tax refund; alimony under an agreement made before 2019; unemployment compensation; the line 8 items asked one by one; educator expenses; the HSA deduction; the deductible part of self-employment tax; self-employed SEP and SIMPLE contributions; the self-employed health insurance deduction; the penalty on early withdrawal of savings; the IRA deduction; student loan interest; jury duty pay you gave your employer), including statutory-employee wages or clergy income; church employee income (wages from a church that elected exemption from social security and Medicare taxes); other qualified retirement plans for the self-employed (such as a solo 401(k) or other Keogh plan); sales of business property (Form 4797); a net operating loss deduction; rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1); rental of personal property; farm income (Schedule F); an exclusion of Medicaid waiver payments (Schedule 1 line 8s); or an adjustment on Schedule 1 line 12, 14 or 23? (Schedule 1-A deductions are asked separately.)
+  (helper) Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately (business income or loss from Schedule C; a taxable state or local income tax refund; alimony under an agreement made before 2019; unemployment compensation; the line 8 items asked one by one; educator expenses; the HSA deduction; the deductible part of self-employment tax; self-employed SEP and SIMPLE contributions; the self-employed health insurance deduction; the penalty on early withdrawal of savings; the IRA deduction; student loan interest; jury duty pay you gave your employer), including statutory-employee wages or clergy income; church employee income (wages from a church that elected exemption from social security and Medicare taxes); other qualified retirement plans for the self-employed (such as a solo 401(k) or other Keogh plan); a refund or other recovery of an amount you deducted or took a credit for in an earlier year, other than a state or local income tax refund (for example a refund of general sales tax, real estate tax or personal property tax, a refund of mortgage interest in box 4 of Form 1098, a reimbursement of medical expenses, or a payment on a bad debt you deducted); sales of business property (Form 4797); a net operating loss deduction; rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1); rental of personal property; farm income (Schedule F); an exclusion of Medicaid waiver payments (Schedule 1 line 8s); or an adjustment on Schedule 1 line 12, 14 or 23? (Schedule 1-A deductions are asked separately.)
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
   (helper) Any nonresident alien status (you or your spouse, for any part of 2025) or other income or return treatment outside wages, interest, dividends, supported securities sales, Form 1099-R distributions and social security benefits, including wages or tips not on a Form W-2, Medicaid waiver payments (whether or not in Form W-2 box 1), adoption benefits, dependent care benefits other than those shown in box 10 of a Form W-2 (or a grace-period amount from such a plan), other earned income (Form 1040 lines 1b to 1d and 1f to 1h), or income or loss from a passive activity (including gain on selling an interest in one)?
@@ -1203,7 +1197,7 @@ Derivations:
   refund.has: test(refund.received = $0; #sales.zero = $0)
   s1.refund.has: test(refund.received = $0; #sales.zero = $0)
   s1.zero: param(#sales.zero = $0)
-  s1.line1: choose(refund.other = false; refund.has = false; false = false; s1.zero = $0)
+  s1.line1: choose(refund.has = false; false = false; s1.zero = $0)
   s1.line2a: choose(s1.alimony = false; true = true; s1.alimony = false; false = false; s1.zero = $0)
   s1.zero_ebl: param(#sales.zero = $0)
   s1.ebl_total: sum_over(person[taxpayer].sc_total = $0)
@@ -1216,8 +1210,7 @@ Derivations:
   s1.has_gambling: test(s1.gambling_winnings = $0; #sales.zero = $0)
   s1.gambling_business: test(s1.has_gambling = false; true = true)
   s1.line8b: copy(s1.gambling_business = false; s1.gambling_winnings = $0)
-  s1.has_cod: test(s1.cod_amount = $0; #sales.zero = $0)
-  s1.line8c: choose(s1.has_cod = false; true = true; s1.has_cod = false; false = false; s1.zero = $0)
+  s1.line8c: choose(s1.cod_any = false; true = true; s1.cod_any = false; false = false; s1.zero = $0)
   s1.line8f: sum_over(person[taxpayer].hsa_taxable = $0)
   s1.line9: sum(s1.line8_other = false; s1.line8b = $0; s1.line8c = $0; s1.line8f = $0; s1.line8g = $0; s1.line8h = $0; s1.line8i = $0; s1.line8j = $0; s1.line8r = $0; s1.line8z = $0)
   s1.line10: sum(s1.line1 = $0; s1.line2a = $0; s1.line3 = $0; s1.line7 = $0; s1.line9 = $0)

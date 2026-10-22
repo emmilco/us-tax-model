@@ -333,9 +333,9 @@ Unasserted lines: eic.age_range_count, eic.zero, eic.qc_count, eic.married_rules
 | f1040.line6c | — | — | — | 5 |
 | f1040.line6d | — | — | — | 6 |
 | f1040.line7a | 1 (example.official) | 1 (qdcg.handworked.single) | 57 | 66 |
-| f1040.line8 | — | — | — | 54 |
+| f1040.line8 | — | — | — | 53 |
 | f1040.line9 | — | — | — | 24 |
-| f1040.line10 | — | — | — | 39 |
+| f1040.line10 | — | — | — | 43 |
 | f1040.line11a | — | — | — | 144 |
 | f1040.line11b | — | — | — | 40 |
 | f1040.line12e | — | — | — | 48 |
@@ -739,7 +739,7 @@ Unasserted lines: f8880.zero, f8880.joint, f8880.dist_2025, f8880.prior_joint_su
 | f8889.mfs | — | — | — | 5 |
 | f8889.months_eligible | — | — | — | — |
 | f8889.months_family | — | — | — | — |
-| f8889.bad_months | — | — | — | 5 |
+| f8889.bad_months | — | — | — | 9 |
 | f8889.age55 | — | — | — | — |
 | f8889.twelve | — | — | — | — |
 | f8889.married_family | — | — | — | 5 |
@@ -770,7 +770,7 @@ Unasserted lines: f8880.zero, f8880.joint, f8880.dist_2025, f8880.prior_joint_su
 | f8889.line4 | — | — | — | 5 |
 | f8889.line5 | — | — | — | 5 |
 | f8889.family_year | — | — | — | 4 |
-| f8889.family_dec_year | — | — | — | 4 |
+| f8889.family_dec_year | — | — | — | 5 |
 | f8889.family_counted | — | — | — | 5 |
 | f8889.step1_total | — | — | — | 5 |
 | f8889.step1_line3 | — | — | — | 5 |
@@ -787,7 +787,7 @@ Unasserted lines: f8880.zero, f8880.joint, f8880.dist_2025, f8880.prior_joint_su
 | f8889.self_counted | — | — | — | 5 |
 | f8889.self_all | — | — | — | 5 |
 | f8889.self_family_months | — | — | — | 5 |
-| f8889.self_dec_year | — | — | — | 4 |
+| f8889.self_dec_year | — | — | — | 5 |
 | f8889.self_in_family | — | — | — | 5 |
 | f8889.step4_total | — | — | — | 5 |
 | f8889.step4 | — | — | — | 7 |
@@ -807,7 +807,7 @@ Unasserted lines: f8880.zero, f8880.joint, f8880.dist_2025, f8880.prior_joint_su
 | f8889.line12 | — | — | — | 7 |
 | f8889.excess | — | — | — | 5 |
 | f8889.line13_figured | — | — | — | 5 |
-| f8889.line13 | — | — | — | 19 |
+| f8889.line13 | — | — | — | 23 |
 | f8889.line14a | — | — | — | 6 |
 | f8889.has_dist | — | — | — | 5 |
 | f8889.rollover | — | — | — | — |
@@ -1063,7 +1063,7 @@ Unasserted lines: household.persons, household.taxpayers, household.spouses, hou
 | ira.line7b | — | — | — | 8 |
 | ira.wages | — | — | — | — |
 | ira.line8 | — | — | — | 12 |
-| ira.line9 | — | — | — | 11 |
+| ira.line9 | — | — | — | 12 |
 | ira.line10 | — | — | — | 18 |
 | ira.age50_count | — | — | — | — |
 | ira.kbh_none | — | — | — | — |
@@ -1075,6 +1075,8 @@ Unasserted lines: household.persons, household.taxpayers, household.spouses, hou
 | ira.all_total | — | — | — | — |
 | ira.over_comp | — | — | — | — |
 | ira.special | — | — | — | — |
+| ira.se_capital | — | — | — | — |
+| ira.se_capital_gate | — | — | — | — |
 | ira.special_gate | — | — | — | — |
 | ira.combat_gate | — | — | — | — |
 | ira.excl_gate | — | — | — | — |
@@ -1088,7 +1090,7 @@ Unasserted lines: household.persons, household.taxpayers, household.spouses, hou
 | ira.line20 | — | — | — | 10 |
 | ira.basis_total | — | — | — | — |
 
-Unasserted lines: ira.zero, ira.joint, ira.joint_type, ira.contrib_total, ira.roth_total, ira.any_trad, ira.cov_count, ira.anyone_covered, ira.lines2to6, ira.cov_gate, ira.cov_you, ira.cov_spouse, ira.line2a_sum, ira.line2b_sum, ira.line6a_sum, ira.line6b_sum, ira.line7a_sum, ira.line7b_sum, ira.wages, ira.age50_count, ira.kbh_none, ira.kbh_one, ira.kbh_both, ira.kbh_amount, ira.kbh_short, ira.both_kinds, ira.all_total, ira.over_comp, ira.special_gate, ira.combat_gate, ira.excl_gate, ira.less_gate, ira.basis_total
+Unasserted lines: ira.zero, ira.joint, ira.joint_type, ira.contrib_total, ira.roth_total, ira.any_trad, ira.cov_count, ira.anyone_covered, ira.lines2to6, ira.cov_gate, ira.cov_you, ira.cov_spouse, ira.line2a_sum, ira.line2b_sum, ira.line6a_sum, ira.line6b_sum, ira.line7a_sum, ira.line7b_sum, ira.wages, ira.age50_count, ira.kbh_none, ira.kbh_one, ira.kbh_both, ira.kbh_amount, ira.kbh_short, ira.both_kinds, ira.all_total, ira.over_comp, ira.se_capital_gate, ira.special_gate, ira.combat_gate, ira.excl_gate, ira.less_gate, ira.basis_total
 
 ## Form 7206, line 2 — qualified long-term care insurance, one per person covered
 
@@ -1410,7 +1412,6 @@ Unasserted lines: qbi.zero, qbi.eligible, qbi.business_any, qbi.deductions_befor
 | refund.zero | — | — | — | — |
 | refund.received | — | — | — | — |
 | refund.has | — | — | — | — |
-| refund.other | — | — | — | — |
 | refund.box8 | — | — | — | — |
 | refund.not_2024 | — | — | — | — |
 | refund.itemized | — | — | — | — |
@@ -1420,9 +1421,10 @@ Unasserted lines: qbi.zero, qbi.eligible, qbi.business_any, qbi.deductions_befor
 | refund.exc_who | — | — | — | — |
 | refund.line5d_2024 | — | — | — | — |
 | refund.line5e_2024 | — | — | — | — |
+| refund.line5e_bad | — | — | — | — |
 | refund.line1 | — | — | — | 13 |
 | refund.line2_more | — | — | — | 2 (stage16.mut.refund_single_unasked, stage16.mut.refund_line3_stop) |
-| refund.line2 | — | — | — | 5 |
+| refund.line2 | — | — | — | 6 |
 | refund.line3_more | — | — | — | 1 (stage16.mut.refund_line3_stop) |
 | refund.line3 | — | — | — | 10 |
 | refund.line17_2024 | — | — | — | — |
@@ -1456,7 +1458,7 @@ Unasserted lines: qbi.zero, qbi.eligible, qbi.business_any, qbi.deductions_befor
 | refund.line9 | — | — | — | 9 |
 | refund.taxable | — | — | — | 4 |
 
-Unasserted lines: refund.zero, refund.has, refund.worksheet, refund.std_single, refund.std_joint, refund.std_hoh, refund.box_married, refund.box_unmarried, refund.per_box, refund.spouse_boxes, refund.amt_you_born, refund.amt_you_blind, refund.amt_spouse_born, refund.amt_spouse_born_checked, refund.amt_spouse_blind, refund.amt_spouse_blind_checked, refund.line8_figured, refund.line8_mfs, refund.line9_figured
+Unasserted lines: refund.zero, refund.has, refund.worksheet, refund.line5e_bad, refund.std_single, refund.std_joint, refund.std_hoh, refund.box_married, refund.box_unmarried, refund.per_box, refund.spouse_boxes, refund.amt_you_born, refund.amt_you_blind, refund.amt_spouse_born, refund.amt_spouse_born_checked, refund.amt_spouse_blind, refund.amt_spouse_blind_checked, refund.line8_figured, refund.line8_mfs, refund.line9_figured
 
 ## Form 1099-R distributions (IRAs, pensions and annuities)
 
@@ -1572,16 +1574,18 @@ Unasserted lines: retirement.zero, retirement.one
 | s1.alimony_refused | — | — | — | 1 (stage16.refuse.s1.alimony_received) |
 | s1.line2a | — | — | — | 7 |
 | s1.line2b_notice | — | — | — | 2 (stage16.mut.ira_alimony_comp, stage16.mut.alimony_paid) |
+| s1.cod_any | — | — | — | — |
 | s1.cod_amount | — | — | — | — |
 | s1.has_cod | — | — | — | — |
 | s1.cod_unsupported | — | — | — | — |
 | s1.cod_refused | — | — | — | 1 (stage16.refuse.s1.cod_unsupported) |
-| s1.line8c | — | — | — | 6 |
+| s1.cod_figured | — | — | — | — |
+| s1.line8c | — | — | — | 8 |
 | s1.line8f | — | — | — | 10 |
-| s1.line9 | — | — | — | 25 |
-| s1.line10 | — | — | — | 45 |
+| s1.line9 | — | — | — | 27 |
+| s1.line10 | — | — | — | 46 |
 | s1.line11 | — | — | — | 8 |
-| s1.line13 | — | — | — | 16 |
+| s1.line13 | — | — | — | 20 |
 | s1.line15 | — | — | — | 11 |
 | s1.line16 | — | — | — | 12 |
 | s1.line17 | — | — | — | 6 |
@@ -1590,7 +1594,7 @@ Unasserted lines: retirement.zero, retirement.one
 | s1.line19a | — | — | — | 7 |
 | s1.line19b_notice | — | — | — | 2 (stage16.mut.ira_alimony_comp, stage16.mut.alimony_paid) |
 | s1.line19c_notice | — | — | — | 2 (stage16.mut.ira_alimony_comp, stage16.mut.alimony_paid) |
-| s1.line20 | — | — | — | 30 |
+| s1.line20 | — | — | — | 31 |
 | s1.line21 | — | — | — | 5 |
 | s1.jury_to_employer | — | — | — | — |
 | s1.jury_over | — | — | — | — |
@@ -1598,7 +1602,7 @@ Unasserted lines: retirement.zero, retirement.one
 | s1.line25 | — | — | — | 5 |
 | s1.line26 | — | — | — | 21 |
 
-Unasserted lines: s1.zero, s1.has_uc, s1.line7_figured, s1.ebl_loss, s1.ebl_total, s1.zero_ebl, s1.ebl_threshold, s1.ebl, s1.sc_count, s1.has_sc, s1.sc_1a_count, s1.sc_1a, s1.has_gambling, s1.gambling_business, s1.has_cod, s1.jury_over
+Unasserted lines: s1.zero, s1.has_uc, s1.line7_figured, s1.ebl_loss, s1.ebl_total, s1.zero_ebl, s1.ebl_threshold, s1.ebl, s1.sc_count, s1.has_sc, s1.sc_1a_count, s1.sc_1a, s1.has_gambling, s1.gambling_business, s1.has_cod, s1.cod_figured, s1.jury_over
 
 ## Form 4562, Part I — Election To Expense Certain Property Under Section 179 (Summary for the return)
 
@@ -2751,5 +2755,5 @@ Unasserted lines: below_boundary, table_tax, worksheet_tax, tax
 
 Unasserted lines: single.row1.product, single.row1.tax, single.row2.product, single.row2.tax, single.row3.product, single.row3.tax, single.row4.product, single.row4.tax, single.row5.product, single.row5.tax, single.result, mfj.row1.product, mfj.row1.tax, mfj.row2.product, mfj.row2.tax, mfj.row3.product, mfj.row3.tax, mfj.row4.product, mfj.row4.tax, mfj.row5.product, mfj.row5.tax, mfj.result, mfs.row1.product, mfs.row1.tax, mfs.row2.product, mfs.row2.tax, mfs.row3.product, mfs.row3.tax, mfs.row4.product, mfs.row4.tax, mfs.row5.product, mfs.row5.tax, mfs.result, hoh.row1.product, hoh.row1.tax, hoh.row2.product, hoh.row2.tax, hoh.row3.product, hoh.row3.tax, hoh.row4.product, hoh.row4.tax, hoh.row5.product, hoh.row5.tax, hoh.result, tax
 
-Unasserted computed lines across all documents: 623. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
+Unasserted computed lines across all documents: 626. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
 Asserted keys not matching a line id: person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line3, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.positive, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line4a, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line4b, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.owes, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line4c, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line5b, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line6, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line7, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line8d, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line9, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line10, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line11, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line12, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line13, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.below_boundary, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.tax, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.below_boundary, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.tax, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, root|inst:tax_on_amount#{"amount":"qdcg.line1","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, qdcg.f1040.line15, qdcg.f1040.line3a, qdcg.f1040.status, f1040.qdcg.line25, qdcg.sd.distributions

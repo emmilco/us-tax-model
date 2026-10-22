@@ -226,6 +226,7 @@
 
 - **IRS:** Enter the earned income you (and your spouse if filing jointly) received as a self-employed individual or a partner, minus any deductions on Schedule 1, lines 15 and 16. If zero or less, enter -0-
 - **Encoded (NonNegDollars):** Add person.ira_se over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.
+- **Refusal:** when ira.se_capital_gate is true, cannot complete IRA compensation from self-employment (Pub. 590-A). Self-employment income counts as IRA compensation only where your personal services are a material income-producing factor; Schedule C income mainly from investments or property is outside this tool. Cite: [p590a] pp. 6–7, Self-employment income, "earnings from your trade or business (provided your personal services are a material income-producing factor)" (2025; sha256 ca0e4287)
 - Interpretation: amb.2025.ira_se_floor
 - Expr: `{"collection":"person","field":"person.ira_se","op":"sum_over"}`
 - Cite: [i1040gi] p. 98, IRA Deduction Worksheet—Continued, line 9, "Enter the earned income you (and your spouse if filing jointly) received as a self-employed individual or a partner" and "If zero or less, enter -0-" (2025; printed date 2026-02-25; sha256 482e9c48)
@@ -308,6 +309,20 @@
 - Interpretation: amb.2025.ira_fellowship
 - Expr: `{"op":"input","source":"Does any of these apply to you (or your spouse on a joint return): income from a nonqualified deferred compensation plan or a nongovernmental section 457 plan (an amount in box 11 of your Form W-2, in box 12 with code Z, or in box 15 of Form 1099-MISC); taxable non-tuition fellowship or stipend payments for graduate or postdoctoral study not reported on a Form W-2; a repayment to an IRA of a qualified reservist distribution; or difficulty of care payments (qualified foster care payments) used to increase your nondeductible IRA contribution limit?"}`
 - Cite: [i1040gi] p. 95, Line 20, "The income should be shown in (a) box 11 of your Form W-2, (b) box 12 of your Form W-2 with code Z, or (c) box 15 of Form 1099-MISC" and "Don’t include any repayments of qualified reservist distributions"; p590a p. 6, What Is Compensation?, "certain non-tuition fellowship and stipend payments not reported to you on Form W-2 are treated as taxable compensation for IRA purposes"; p590a p. 16, Difficulty of care payments (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (screen) — `ira.se_capital`
+
+- **Authored helper label:** Is any Schedule C income on this return from a business in which your (or your spouse's) personal services are not a material income-producing factor (for example, income mainly from investments or from property)?
+- **Encoded (Bool):** Input — Is any Schedule C income on this return from a business in which your (or your spouse's) personal services are not a material income-producing factor (for example, income mainly from investments or from property)?
+- Expr: `{"op":"input","source":"Is any Schedule C income on this return from a business in which your (or your spouse's) personal services are not a material income-producing factor (for example, income mainly from investments or from property)?"}`
+- Cite: [p590a] pp. 6–7, Self-employment income, "earnings from your trade or business (provided your personal services are a material income-producing factor)" (2025; sha256 ca0e4287)
+
+## (gate) — `ira.se_capital_gate`
+
+- **Authored helper label:** Traditional IRA contributions with Schedule C income not from personal services (screen)
+- **Encoded (Bool):** helper "Anyone on the return made traditional IRA contributions for 2025" = true and s1 helper "The return has a Schedule C" = true and column (screen) (ira.se_capital) = true
+- Expr: `{"all":[{"eq":["ira.any_trad",{"const":true}],"op":"test"},{"eq":["s1.has_sc",{"const":true}],"op":"test"},{"eq":["ira.se_capital",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [p590a] pp. 6–7, Self-employment income, "provided your personal services are a material income-producing factor" (2025; sha256 ca0e4287)
 
 ## (gate) — `ira.special_gate`
 

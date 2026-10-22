@@ -8,7 +8,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 | tax_bounds | Form 1040 line 16 is non-negative, at most the top rate (37/100) on taxable income plus one Tax Table band ($50), and at most the tax on all taxable income from the Tax Table or Tax Computation Worksheet. | 400 | 134 | holds |
 | deduction_choice | With no election to itemize and no spouse itemizing, Form 1040 line 16 under the project's standard-or-itemized choice is at most line 16 under either deduction forced. | 400 | 133 | holds |
 | refusal_propagates | No line computes a value from an operand that is a refusal; every line evaluated from a refused operand is a refusal. | 400 | 346 | holds |
-| refusal_outranks_unknown | On generated returns with up to eight answers removed, every line evaluated from a refused operand is a refusal, whatever its other operands are; in particular an unknown operand does not hide a refused one. | 400 | 318 | holds |
+| refusal_outranks_unknown | On generated returns with up to eight answers removed, every line evaluated from a refused operand is a refusal, whatever its other operands are; in particular an unknown operand does not hide a refused one. | 400 | 326 | holds |
 | tax_monotone | Raising W-2 box 1 of the first employer, all else fixed, never lowers Form 1040 line 16. | 400 | 133 | holds |
 | tax_monotone_by_method | Raising W-2 box 1 of the first employer, all else fixed, never lowers the Qualified Dividends and Capital Gain Tax Worksheet line 25 or the Schedule D Tax Worksheet line 47, each where it is computed on both returns. | 400 | 133 | holds |
 | screens_respected | No generated return answers a screen No while an amount asked only after a Yes is nonzero (the generator's screens: Form 5695 Parts I and II, Sections A and B and lines 5a, 25a and 26a; Form 2441 care and benefits; Form W-2 box 12; the Simplified Method; owned vehicles; Form 7206). | 400 | 87 | holds |
@@ -24,7 +24,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 
 ## refusal_outranks_unknown
 
-- Cases with a refused operand somewhere: 318; cases with a line that has both a refused and an unknown operand (the order this property guards): 243.
+- Cases with a refused operand somewhere: 326; cases with a line that has both a refused and an unknown operand (the order this property guards): 250.
 
 ## tax_monotone
 
@@ -40,7 +40,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 
 ## Branch coverage of the generated corpus
 
-1937 of 2185 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
+1941 of 2193 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
 
 - asset.outside:true
 - asset.screen:true
@@ -131,6 +131,8 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - ira.both_kinds:true
 - ira.over_comp:true
 - ira.special:true
+- ira.se_capital:true
+- ira.se_capital_gate:true
 - ira.special_gate:true
 - ira.combat_gate:true
 - ira.excl_gate:true
@@ -171,7 +173,6 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - person.ira_dist_gate:true
 - person.ira_ssb#0
 - refund.has:true
-- refund.other:true
 - refund.box8:true
 - refund.not_2024:true
 - refund.itemized:true
@@ -179,6 +180,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - refund.worksheet:true
 - refund.exc_tax:true
 - refund.exc_who:true
+- refund.line5e_bad:true
 - refund.line1:right
 - refund.line2_more:true
 - refund.line2:positive
@@ -225,8 +227,10 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - s1.alimony_unsupported:true
 - s1.line2a#0
 - s1.line2b_notice:true
+- s1.cod_any:true
 - s1.has_cod:true
 - s1.cod_unsupported:true
+- s1.cod_figured#0
 - s1.line8c#0
 - s1.line19a#0
 - s1.line19b_notice:true

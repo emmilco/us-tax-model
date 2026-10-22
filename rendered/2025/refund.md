@@ -24,13 +24,6 @@
 - Expr: `{"gt":["refund.received",{"param":"sales.zero"}],"op":"test"}`
 - Cite: [i1040gi] p. 88, Line 1, "If you received a refund, credit, or offset of state or local income taxes in 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
 
-## (gate) — `refund.other`
-
-- **Authored helper label:** In 2025, did you receive any other refund, reimbursement or recovery of an amount you deducted or took a credit for in an earlier year, other than a refund of state or local income tax (for example a refund of general sales tax, real estate tax or personal property tax, a refund of mortgage interest in box 4 of Form 1098, a reimbursement of medical expenses, or a payment on a bad debt you deducted)?
-- **Encoded (Bool):** Input — In 2025, did you receive any other refund, reimbursement or recovery of an amount you deducted or took a credit for in an earlier year, other than a refund of state or local income tax (for example a refund of general sales tax, real estate tax or personal property tax, a refund of mortgage interest in box 4 of Form 1098, a reimbursement of medical expenses, or a payment on a bad debt you deducted)?
-- Expr: `{"op":"input","source":"In 2025, did you receive any other refund, reimbursement or recovery of an amount you deducted or took a credit for in an earlier year, other than a refund of state or local income tax (for example a refund of general sales tax, real estate tax or personal property tax, a refund of mortgage interest in box 4 of Form 1098, a reimbursement of medical expenses, or a payment on a bad debt you deducted)?"}`
-- Cite: [p525] p. 24, Recoveries, "A recovery is a return of an amount you deducted or took a credit for in an earlier year" and "You may also have recoveries of nonitemized deductions (such as payments on previously deducted bad debts)"; p. 25, Where to report, "the total of all other recoveries as other income on Schedule 1 (Form 1040), line 8z"; i1040gi p. 89, Line 1, "2. You received a refund other than an income tax refund, such as a general sales tax or real property tax refund, in 2025 of an amount deducted or credit claimed in an earlier year" (2025; sha256 39b0fa5e)
-
 ## (gate) — `refund.box8`
 
 - **Authored helper label:** Is box 8 ("If checked, box 2 is trade or business income") checked on any Form 1099-G that reports these refunds?
@@ -98,6 +91,13 @@
 - Expr: `{"op":"input","source":"The amount on your 2024 Schedule A, line 5e"}`
 - Cite: [i1040gi] p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 2, "more than the amount on your 2024 Schedule A, line 5e" (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (gate) — `refund.line5e_bad`
+
+- **Authored helper label:** The amount entered for 2024 Schedule A line 5e is more than the amount entered for line 5d
+- **Encoded (Bool):** helper "The amount on your 2024 Schedule A, line 5e" > helper "The amount on your 2024 Schedule A, line 5d"
+- Expr: `{"gt":["refund.line5e_2024","refund.line5d_2024"],"op":"test"}`
+- Cite: [i1040sca] p. 7, Line 5e, "enter the smaller of line 5d or $40,000 ($20,000 if married filing separately)" (2025; printed date 2025-12-08; sha256 b0999b12)
+
 ## 1 — `refund.line1`
 
 - **IRS:** Enter the income tax refund from Form(s) 1099-G (or similar statement). But don’t enter more than the amount of your state and local income taxes shown on your 2024 Schedule A, line 5d
@@ -119,6 +119,7 @@
 
 - **IRS:** Subtract the amount on your 2024 Schedule A, line 5e, from the amount of state and local income taxes (or general sales taxes), real estate taxes, and personal property taxes paid in 2024 (generally, this is the amount reported on your 2024 Schedule A, line 5d)
 - **Encoded (NonNegDollars):** Subtract helper "The amount on your 2024 Schedule A, line 5e" from helper "The amount on your 2024 Schedule A, line 5d". If zero or less, enter -0-.
+- **Refusal:** when refund.line5e_bad is true, cannot complete State and Local Income Tax Refund Worksheet, line 2 (2024 Schedule A lines 5d and 5e). The amount on 2024 Schedule A line 5e cannot be more than line 5d, since line 5e is the smaller of line 5d and the limit. Check both amounts against your 2024 Schedule A. Cite: [i1040sca] p. 7, Line 5e, "enter the smaller of line 5d or $40,000 ($20,000 if married filing separately)" (2025; printed date 2025-12-08; sha256 b0999b12)
 - Expr: `{"from":"refund.line5d_2024","op":"subtract_floor0","take":"refund.line5e_2024"}`
 - Cite: [i1040gi] p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 2, "No. Enter the amount from line 1 on line 3 and go to line 4. Yes. Subtract the amount on your 2024 Schedule A, line 5e" (zero on No, so that line 3 is line 1) (2025; printed date 2026-02-25; sha256 482e9c48)
 
