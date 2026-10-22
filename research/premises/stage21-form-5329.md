@@ -1,6 +1,7 @@
 > **Status: draft for the owner (2026-10-22).** Written by a read-only research agent from the archived
 > sources in `sources/2025/`, before the stage it maps; its decision batch is a draft and nothing in it is
 > decided. Every claim carries a locator and is testimony until checked again at authoring. Spot-checked by the integrating session: `retirement` is a return-level collection with no owner; distribution code 1 falls under `other` in `retirement_code`; the 3.2% share.
+> **Verified after Stage 15:** see `stage21-form-5329.verification.md` (8 errors, 4 items out of date), which supersedes this map where they differ.
 
 # Premise map: Stage 21, Form 5329 (additional taxes on qualified plans and other tax-favored accounts)
 

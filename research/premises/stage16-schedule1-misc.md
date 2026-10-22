@@ -1,6 +1,7 @@
 > **Status: draft for the owner (2026-10-22).** Written by a read-only research agent from the archived
 > sources in `sources/2025/`, before the stage it maps; its decision batch is a draft and nothing in it is
-> decided. Every claim carries a locator and is testimony until checked again at authoring. Spot-checked by the integrating session: the coverage figures against reports/2025/filer_coverage.md. Not confirmed: the IRA deduction and social security worksheet cycle (the line references found belong to the student loan interest worksheet; the IRA worksheet's references are split across columns in the extracted text).
+> decided. Every claim carries a locator and is testimony until checked again at authoring. Spot-checked by the integrating session: the coverage figures against reports/2025/filer_coverage.md. The IRA deduction and social security worksheet cycle was confirmed by the verification (i1040gi p. 97, IRA Deduction Worksheet line 3 reads Form 1040 line 9).
+> **Verified after Stage 15:** see `stage16-schedule1-misc.verification.md` (6 errors, 7 items out of date), which supersedes this map where they differ.
 
 # Stage 16 premise map: the remaining Schedule 1 income and adjustments (coverage group `schedule1_misc`)
 

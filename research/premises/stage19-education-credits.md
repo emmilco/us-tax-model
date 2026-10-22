@@ -1,6 +1,7 @@
 > **Status: draft for the owner (2026-10-22).** Written by a read-only research agent from the archived
 > sources in `sources/2025/`, before the stage it maps; its decision batch is a draft and nothing in it is
 > decided. Every claim carries a locator and is testimony until checked again at authoring. Spot-checked by the integrating session: the Form 8863 Credit Limit Worksheet line 5 subtracts Schedule 3 lines 1, 2, 6d and 6l (i8863), and the 4.5% share against the coverage report.
+> **Verified after Stage 15:** see `stage19-education-credits.verification.md` (2 errors, 7 items out of date), which supersedes this map where they differ.
 
 # Stage 19 premise map: the education credits (Form 8863)
 

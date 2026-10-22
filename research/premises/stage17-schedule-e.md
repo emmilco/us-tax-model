@@ -1,6 +1,7 @@
 > **Status: draft for the owner (2026-10-22).** Written by a read-only research agent from the archived
 > sources in `sources/2025/`, before the stage it maps; its decision batch is a draft and nothing in it is
 > decided. Every claim carries a locator and is testimony until checked again at authoring. Spot-checked by the integrating session: `scope.other_income` refuses passive activity income while tools/coverage/categories.json lists only `scope.schedule1` for the Schedule E categories (both confirmed in the files).
+> **Verified after Stage 15:** see `stage17-schedule-e.verification.md` (12 errors, 5 items out of date), which supersedes this map where they differ.
 
 # Stage 17 premise map — Schedule E (rental and royalty income, partnerships, S corporations, estates and trusts)
 

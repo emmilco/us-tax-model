@@ -1,6 +1,7 @@
 > **Status: draft for the owner (2026-10-22).** Written by a read-only research agent from the archived
 > sources in `sources/2025/`, before the stage it maps; its decision batch is a draft and nothing in it is
 > decided. Every claim carries a locator and is testimony until checked again at authoring. Spot-checked by the integrating session: Form 8962 Worksheet 2 drops the decimals and enters 401 above 400% (i8962, Line 5), so no existing atom figures line 5. Follow-up recorded as TASKS.md T-049.
+> **Verified after Stage 15:** see `stage18-premium-tax-credit.verification.md` (7 errors, 5 items out of date), which supersedes this map where they differ.
 
 # Premise map: the premium tax credit (spec 2.4 roadmap item 4; Form 8962 with Form 1095-A)
 

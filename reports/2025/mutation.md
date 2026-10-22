@@ -9,10 +9,10 @@ the fixture test compares).
 | --- | --- |
 | Mutants | 2087 |
 | Killed by the checker | 211 |
-| Killed by fixtures | 1720 |
-| Surviving | 156 (111 provably equivalent) |
-| Mutation score (raw) | 92.5% |
-| Mutation score (equivalent mutants excluded) | 97.7% |
+| Killed by fixtures | 1724 |
+| Surviving | 152 (111 provably equivalent) |
+| Mutation score (raw) | 92.7% |
+| Mutation score (equivalent mutants excluded) | 97.9% |
 
 ## Surviving — classified equivalent
 
@@ -135,16 +135,12 @@ the fixture test compares).
 | refusal.f1040.f1040.line16.0 | remove refusal | f1040.f1040.line16 |  |
 | refusal.f1040.f1040.line29.0 | remove refusal | f1040.f1040.line29 |  |
 | refusal.f1040.f1040.line30.0 | remove refusal | f1040.f1040.line30 |  |
-| operand.f2441.f2441.line20_17_18.line18 | replace an operand | f2441.f2441.line20_17_18 | f2441.line18 -> f2441.line19 (Dollars) |
 | operand.f2441.f2441.line24.line24_20_21 | replace an operand | f2441.f2441.line24 | f2441.line24_20_21 -> f2441.line21 (NonNegDollars) |
 | operand.f2441.f2441.line25.line24 | replace an operand | f2441.f2441.line25 | f2441.line24 -> f2441.line22 (NonNegDollars) |
 | operand.f4952.f4952.line3.line2 | replace an operand | f4952.f4952.line3 | f4952.line2 -> f4952.zero (NonNegDollars) |
 | refusal.f4952.f4952.required.1 | remove refusal | f4952.f4952.required |  |
 | refusal.f4952.f4952.required.2 | remove refusal | f4952.f4952.required |  |
 | operand.f5695.f5695.line16.line15 | replace an operand | f5695.f5695.line16 | f5695.line15 -> f5695.line14 (NonNegDollars) |
-| operand.f5695.f5695.doors_cost.line19a | replace an operand | f5695.f5695.doors_cost | f5695.line19a -> f5695.doors_max (NonNegDollars) |
-| operand.f5695.f5695.doors_cost.line19f | replace an operand | f5695.f5695.doors_cost | f5695.line19f -> f5695.doors_max (NonNegDollars) |
-| operand.f5695.f5695.wh_capped.wh_30 | replace an operand | f5695.f5695.wh_capped | f5695.wh_30 -> f5695.line23c (NonNegDollars) |
 | operand.f5695.f5695.line27.line26c | replace an operand | f5695.f5695.line27 | f5695.line26c -> f5695.audit_capped (NonNegDollars) |
 | operand.f5695.f5695.line30.line29h | replace an operand | f5695.f5695.line30 | f5695.line29h -> f5695.hp_capped (NonNegDollars) |
 | operand.f8959.f8959.line16.line14 | replace an operand | f8959.f8959.line16 | f8959.line14 -> f8959.line13 (NonNegDollars) |

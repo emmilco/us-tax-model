@@ -63,14 +63,14 @@ nonrefundable credits stay refused.
 
 ## Evidence
 
-check-all green on tree df0960a: logs current with no open ruling (transcription and render 51 forms, class M 44;
+check-all green at the close (commit 8d7c0fd): logs current with no open ruling (transcription and render 51 forms, class M 44;
 907 rulings); fixtures 843/843 (41 new); integration 658; properties 6 over 400 returns, 0 failing; Lean compare
 1,443 cases, 0 differing; engine differential 1,700 cases, 0 unexplained; citations 2,044 segments, 0 findings.
 
-**Mutation, after the follow-up fixtures:** 2,087 mutants, adjusted score 97.7% (98.0% before Stage 15). The first
+**Mutation, after the follow-up fixtures:** 2,087 mutants, adjusted score 97.9% after a third round (98.0% before Stage 15). The first
 close left 136 new survivors (91.5%); a second blind set (45 cases: every rate-table band edge, the operands) and
 33 refusal and 9 regression cases (`stage15.refuse.*`, `stage15.regress.*`) killed 122 of them, and BUG-0082 (the
-mutation tool compared every rate as equal) let four more be seen. 14 Stage 15 operand survivors remain (TASKS.md
+mutation tool compared every rate as equal) let four more be seen. 10 Stage 15 operand survivors remain (TASKS.md
 T-051): three are provably equivalent (Form 2441 lines 24 and 25 read line 22, always zero; Form 5695 line 16 is
 line 13 less the smaller of lines 13 and 14, so substituting line 14 gives the same result), the rest need cases
 (listed there). Two parameter mutants are killed only through a helper or an input outside its question's range
@@ -134,9 +134,13 @@ Each question is self-contained; the recommendation, where one was made, is firs
 
 **Across the stage**
 22. *Generated returns that answer a form's screen No but carry its amounts* (seen in class M for Forms 5695 and
-    2441; the ruled values agree): a generator inconsistency, or could the interview produce it? To check.
+    2441; the ruled values agree): checked after the close, the interview cannot produce them. With the screens No
+    and every Form 5695 or Form 2441 input removed, every line the full profile needs is known (Form 1040 lines 18 to
+    37, Schedule 8812, Worksheet B, the four Form 2441 Part I targets), so those questions are never asked; only the
+    test-return generator draws such amounts. Make the generator zero a part's amounts when its screen is No
+    (TASKS.md T-052; it changes the generated corpus behind properties, compare and the class M jobs)?
 23. *BUG-0079:* make a refusal outrank an unknown in every atom (both evaluators, with a property test)?
-24. *Premise maps for the later stages* are in `research/premises/` (Schedule 1, Schedule E, the premium tax
+24. *Premise maps for the later stages* are in `research/premises/`, each with an adversarial verification beside it (`<slug>.verification.md`: 43 errors and 36 out-of-date items across the six, several changing a recommended decision; read the two together) (Schedule 1, Schedule E, the premium tax
     credit, the education credits, the capital loss carryover with a backlog, Form 5329), each with a draft
     decision batch; the placement there, rather than PREMISES.md, was this session's choice.
 

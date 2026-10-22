@@ -1,6 +1,7 @@
 > **Status: draft for the owner (2026-10-22).** Written by a read-only research agent from the archived
 > sources in `sources/2025/`, before the stage it maps; its decision batch is a draft and nothing in it is
 > decided. Every claim carries a locator and is testimony until checked again at authoring. Spot-checked by the integrating session: the 3.5% share; i1040gi Exception 1 ("You have no capital losses") makes Schedule D required with a carryover; the operand-equivalence entries for Schedule D lines 6 and 14 in engine/src/mutate.ts.
+> **Verified after Stage 15:** see `stage20-capital-loss-carryover.verification.md` (8 errors, 8 items out of date), which supersedes this map where they differ.
 
 # Stage 20 premise map: the capital loss carryover (roadmap item 6), with a backlog of the smaller situations (roadmap item 9)
 
