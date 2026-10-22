@@ -73,7 +73,7 @@ The estimated tax penalty is not computed. The tool states that the IRS will fig
 
 ### 2.4 Coverage goal beyond the proof of concept
 
-The proof-of-concept slice (2.1) was chosen to exercise the architecture: worksheets, tables, keyed collections and per-person rules. The goal is coverage of all individual returns, measured over whole returns: a return counts as covered only when nothing on it is refused. The baseline is 80% of returns. Beyond it, coverage continues toward 90 to 95%, as far as it can go without reaching situations that are genuinely exotic.
+The proof-of-concept slice (2.1) was chosen to exercise the architecture: worksheets, tables, keyed collections and per-person rules. The goal is coverage of all individual returns, measured over whole returns: a return counts as covered only when nothing on it is refused. The first goal is 80% of returns; the target after it is 95%, which the estimate below reaches with the seventh of the remaining additions. Beyond it, coverage continues as far as it can go without reaching situations that are genuinely exotic. The estimate's percentages are of the situations it measures (the refusal gates without an IRS count are not in them), so they are an ordering and a rough measure, not a certified share.
 
 Coverage is estimated by `tools/coverage/estimate.py`, which writes `reports/2025/filer_coverage.md`. The archived IRS Statistics of Income counts give the share of returns each refused situation affects; household microdata (PolicyEngine-US), reweighted to match those counts, gives the overlaps between situations. The report states what it cannot measure.
 
@@ -84,19 +84,19 @@ Growth proceeds in order of the coverage each addition gains under that estimate
 - Unemployment compensation and the common Schedule 1 adjustments (educator expenses, student loan interest, HSA).
 - The Schedule 1-A deductions: the enhanced deduction for seniors, qualified overtime compensation, qualified tips and qualified passenger vehicle loan interest, for unmarried filers.
 - Married filing jointly: a person-by-person record for each spouse (facts, Forms W-2, tip and overtime employers, Form 8889), with the joint rules of the lines in scope, among them the spouses' standard deduction boxes, educator expenses per person, the Schedule 1-A deductions per spouse, the HSA rules for spouses with family coverage, and the identification rules of the earned income credit and the child tax credit.
+- Self-employment: Schedule C with Schedule SE, depreciation (Form 4562), the self-employed health insurance deduction, SEP and SIMPLE contributions and the qualified business income deduction.
 
-Remaining, in the order of the estimate when this section was last revised:
+Remaining, in the order of the estimate when this section was last revised (the estimated coverage after each, from about 58% now):
 
-1. Self-employment: Schedule C with Schedule SE and the qualified business income deduction beyond section 199A dividends.
-2. Other credits: child and dependent care, the saver's credit, the residential energy credits.
-3. The remaining Schedule 1 income and adjustments, among them a taxable state refund, other income, gambling winnings and the IRA deduction.
-4. Schedule E: rental and royalty income, partnerships, S corporations, estates and trusts.
-5. The premium tax credit.
-6. The education credits.
-7. The capital loss carryover.
-8. The additional tax on qualified retirement plans (Form 5329).
-9. Married filing separately.
-10. Form 1116 and the remaining deferrals of 2.2, and the smaller situations the report lists.
+1. Other credits: child and dependent care, the saver's credit, the residential energy credits (65%).
+2. The remaining Schedule 1 income and adjustments, among them a taxable state refund, other income, gambling winnings and the IRA deduction (73%).
+3. Schedule E: rental and royalty income, partnerships, S corporations, estates and trusts (80%, the first goal).
+4. The premium tax credit (85%).
+5. The education credits (89%).
+6. The capital loss carryover (92%).
+7. The additional tax on qualified retirement plans, Form 5329 (95%, the target).
+8. Married filing separately.
+9. Form 1116 and the remaining deferrals of 2.2, and the smaller situations the report lists.
 
 State returns are outside the federal goal. New York is the first state intended once federal coverage is met; it is a separate decision with its own sources, and nothing in the federal encoding assumes it.
 
