@@ -3,8 +3,9 @@ form:
   kind: form
   title: Schedule 1 — Additional Income and Adjustments to Income (the lines this tool computes)
   tax_year: 2025
-  note: Lines 7, 10, 11, 13, 21 and 26. Every other Schedule 1 item is refused by scope.schedule1 at Form 1040 lines 8 and
-    10.
+  note: Lines 1, 2a, 3, 7, 8b, 8c, 8f, 8g to 8j, 8r, 8z, 9, 10, 11, 13, 15 to 21, 24a, 25 and 26 (lines 2b, 19b and 19c are
+    written on the form by hand, with a notice on the values sheet). Every other Schedule 1 item is refused by
+    scope.schedule1 at Form 1040 lines 8 and 10, or by s1.line8_other at line 9.
   lines:
   - id: s1.zero
     printed: (helper)
@@ -16,6 +17,39 @@ form:
     cite:
       doc: f1040s1
       locator: Schedule 1 (2025), lines 7, 11, 21
+  - id: s1.line1
+    printed: '1'
+    label: Taxable refunds, credits, or offsets of state and local income taxes
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - refund.has
+          - const: false
+        then: s1.zero
+      - guard:
+          op: test
+          eq:
+          - refund.has
+          - const: true
+        then: refund.taxable
+    cite:
+      doc: f1040s1
+      locator: Schedule 1 (2025), line 1; i1040gi p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line
+        9, "Enter the smaller of line 3 or line 8 here and on Schedule 1, line 1"
+    refuses:
+    - when: refund.other
+      form: Pub. 525, Recoveries (Worksheet 2; other recoveries on Schedule 1, line 8z)
+      remedy: A refund or other recovery of an amount deducted or credited in an earlier year, other than a state or local
+        income tax refund, is outside this tool.
+      cite:
+        doc: p525
+        locator: p. 25, Where to report, "Enter your state or local income tax refund on Schedule 1 (Form 1040), line 1, and
+          the total of all other recoveries as other income on Schedule 1 (Form 1040), line 8z"; i1040gi p. 89, Line 1, item
+          2
   - id: s1.uc_paid
     printed: (helper)
     label: Unemployment compensation paid to you in 2025
@@ -254,6 +288,430 @@ form:
         cite:
           doc: i1040sc
           locator: p. 1, Reminders, Excess business loss limitation; rp-2024-40 section 3.32
+  - id: s1.line8_other
+    printed: (gate)
+    label: Do you have any income for Schedule 1 line 8 other than the items this tool computes?
+    type: Bool
+    expr:
+      op: input
+      source: 'Do you have any income (or loss or exclusion) for Schedule 1, line 8, other than gambling winnings (line 8b),
+        canceled debt (line 8c), income from Form 8889 (line 8f), Alaska Permanent Fund dividends (line 8g), jury duty pay
+        (line 8h), prizes and awards (line 8i), income from an activity not engaged in for profit (line 8j), scholarship and
+        fellowship grants not reported on Form W-2 (line 8r) and the other income asked item by item for line 8z? For
+        example: a net operating loss deduction (8a); the foreign earned income or housing exclusion from Form 2555 (8d);
+        income from Form 8853 (8e); stock options (8k); income from the rental of personal property (8l); Olympic and
+        Paralympic medals or USOC prize money (8m); a section 951(a) or 951A(a) inclusion (8n, 8o); a section 461(l) excess
+        business loss adjustment (8p); taxable distributions from an ABLE account (8q); nontaxable Medicaid waiver payments
+        (8s); a pension or annuity from a nonqualified deferred compensation plan or a nongovernmental section 457 plan
+        (8t); wages earned while incarcerated (8u); or digital assets received as ordinary income not reported elsewhere
+        (8v).'
+    cite:
+      doc: f1040s1
+      locator: Schedule 1 (2025), lines 8a to 8z
+  - id: s1.gambling_winnings
+    printed: (helper)
+    label: Gambling winnings not attributable to a trade or business
+    type: NonNegDollars
+    expr:
+      op: input
+      source: 'Your gambling winnings for 2025 not attributable to a trade or business: box 1 of every Form W-2G plus
+        winnings with no Form W-2G (lotteries, raffles, fantasy sports leagues, a lump sum from selling a right to future
+        lottery payments, and the fair market value of noncash prizes such as cars), without subtracting any losses; zero
+        if none'
+    cite:
+      doc: i1040gi
+      locator: 'p. 91, Line 8b, "Enter gambling winnings not attributable to a trade or business. Gambling winnings
+        include lotteries, raffles, a lump-sum payment from the sale of a right to receive future lottery payments, etc.";
+        p525 p. 33, Gambling winnings, "Winnings from fantasy sports leagues are gambling winnings" and "Include the amount
+        from box 1 on Schedule 1 (Form 1040), line 8b"'
+  - id: s1.has_gambling
+    printed: (helper)
+    label: Any gambling winnings
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - s1.gambling_winnings
+      - param: sales.zero
+    cite:
+      doc: i1040gi
+      locator: p. 91, Line 8b
+  - id: s1.gambling_pro
+    printed: (helper)
+    label: Are you (or your spouse) in the trade or business of gambling (a professional gambler)?
+    type: Bool
+    expr:
+      op: input
+      source: Are you (or, on a joint return, your spouse) in the trade or business of gambling (a professional gambler)?
+    cite:
+      doc: p525
+      locator: 'p. 33, Gambling winnings, "If you’re in the trade or business of gambling, use Schedule C (Form 1040). For
+        tax years 2018 through 2025, professional gambling losses and expenses are limited to the amount of your winnings"'
+  - id: s1.gambling_business
+    printed: (gate)
+    label: Gambling winnings of a professional gambler
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - s1.has_gambling
+        - const: true
+      - op: test
+        eq:
+        - s1.gambling_pro
+        - const: true
+    cite:
+      doc: p525
+      locator: 'p. 33, Gambling winnings, "If you’re in the trade or business of gambling, use Schedule C (Form 1040)"'
+  - id: s1.line8b
+    printed: 8b
+    label: Gambling
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: s1.gambling_winnings
+    cite:
+      doc: f1040s1
+      locator: Schedule 1 (2025), line 8b; i1040gi p. 91, Line 8b, "Enter gambling winnings not attributable to a trade or
+        business"
+    refuses:
+    - when: s1.gambling_business
+      form: Schedule C (gambling as a trade or business)
+      remedy: Gambling as a trade or business is reported on Schedule C, with losses and expenses limited to the winnings;
+        this tool does not compute it.
+      cite:
+        doc: p525
+        locator: 'p. 33, Gambling winnings, "For tax years 2018 through 2025, professional gambling losses and expenses are
+          limited to the amount of your winnings"'
+  - id: s1.line8g
+    printed: 8g
+    label: Alaska Permanent Fund dividends
+    type: NonNegDollars
+    expr:
+      op: input
+      source: 'Alaska Permanent Fund dividends paid to you (and, on a joint return, your spouse) in 2025, as shown on the
+        document the state of Alaska sends with the payment, without reducing them by any energy relief payment; zero if
+        none'
+    cite:
+      doc: f1040s1
+      locator: Schedule 1 (2025), line 8g; p525 p. 31, Alaska Permanent Fund dividend, "report it as income on Schedule 1
+        (Form 1040), line 8g"
+  - id: s1.line8h
+    printed: 8h
+    label: Jury duty pay
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Jury duty pay you (and, on a joint return, your spouse) received in 2025, including any you gave to your
+        employer; zero if none
+    cite:
+      doc: i1040gi
+      locator: 'p. 91, Line 8h, "Enter any jury duty pay and see the instructions for line 24a"; p525 p. 34, Jury duty,
+        "Jury duty pay you receive must be included in your income on Schedule 1 (Form 1040), line 8h"'
+  - id: s1.line8i
+    printed: 8i
+    label: Prizes and awards
+    type: NonNegDollars
+    expr:
+      op: input
+      source: 'Prizes and awards you (and, on a joint return, your spouse) received in 2025 that are not gambling winnings,
+        not wages from an employer and not Olympic or Paralympic medals or USOC prize money (for example a contest, quiz or
+        drawing prize, or a scholarship prize you need not use for education), goods or services at their fair market
+        value; leave out a prize you refused and a prize transferred under the section 74(b) rules; zero if none'
+    cite:
+      doc: i1040gi
+      locator: 'p. 91, Line 8i, "Enter prizes and awards but see the instructions for line 8m"; p525 p. 35, Prizes and awards,
+        "If you refuse to accept a prize, don’t include its value in your income. Prizes and awards in goods or services
+        must be included in your income at their FMV"'
+  - id: s1.line8j
+    printed: 8j
+    label: Activity not engaged in for profit income
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Income you (and, on a joint return, your spouse) received in 2025 from an activity not engaged in for profit,
+        such as a hobby (not a business you report on Schedule C and not the rental of personal property); zero if none
+    cite:
+      doc: i1040gi
+      locator: 'p. 91, Line 8j, "Activity not engaged in for profit income. See Pub. 525"; p525 p. 31, Activity not for
+        profit, "An example of this type of activity is a hobby or a farm you operate mostly for recreation and pleasure.
+        Enter this income on Schedule 1 (Form 1040), line 8j"'
+  - id: s1.line8r
+    printed: 8r
+    label: Scholarship and fellowship grants not reported on Form W-2
+    type: NonNegDollars
+    expr:
+      op: input
+      source: 'Scholarship and fellowship grants you (and, on a joint return, your spouse) received in 2025 that are not
+        reported on a Form W-2; if you were a degree candidate, only the part used for expenses other than tuition and
+        course-related expenses (for example room, board and travel); zero if none'
+    cite:
+      doc: i1040gi
+      locator: 'p. 92, Line 8r, "Enter the amount of scholarship and fellowship grants not reported on Form W-2. However, if
+        you were a degree candidate, include on line 8r only the amounts you used for expenses other than tuition and
+        course-related expenses. For example, amounts used for room, board, and travel must be reported on line 8r"'
+  - id: s1.line8z
+    printed: 8z
+    label: 'Other income. List type and amount:'
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: oi8z
+      field: oi8z.taxable
+    cite:
+      doc: i1040gi
+      locator: 'p. 92, Line 8z, "Use line 8z to report any taxable income not reported" and "List the type and amount of
+        income"'
+  - id: s1.alimony
+    printed: (helper)
+    label: Did you receive or pay alimony or separate maintenance in 2025 under a divorce or separation agreement entered
+      into on or before December 31, 2018, or must you include or may you deduct a recapture of alimony?
+    type: Bool
+    expr:
+      op: input
+      source: Did you receive or pay alimony or separate maintenance in 2025 under a divorce or separation agreement entered
+        into on or before December 31, 2018 (and not changed after 2018 to expressly provide that alimony received isn't
+        included in income), or must you include or may you deduct a recapture of alimony? Alimony under an agreement entered
+        into after 2018 is neither income nor deductible; answer false for it.
+    cite:
+      doc: i1040gi
+      locator: p. 89, Line 2a, "Enter amounts received as alimony or separate maintenance pursuant to a divorce or separation
+        agreement entered into on or before December 31, 2018"; p. 95, Line 19a, "You can't take a deduction for alimony
+        payments you made to or for your spouse if you entered into your divorce or separation agreement after December
+        31, 2018"
+  - id: s1.alimony_received
+    printed: (helper)
+    label: Alimony or separate maintenance received in 2025 under an agreement entered into on or before December 31, 2018
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Alimony or separate maintenance you received in 2025 under a divorce or separation agreement entered into on
+        or before December 31, 2018 (do not include child support, or payments made after the agreement was changed to
+        expressly provide that alimony received isn't included in your income); zero if none
+    cite:
+      doc: i1040gi
+      locator: p. 89, Line 2a, "Enter amounts received as alimony or separate maintenance pursuant to a divorce or separation
+        agreement entered into on or before December 31, 2018, unless that agreement was changed after December 31, 2018,
+        to expressly provide that alimony received isn't included in your income"
+  - id: s1.alimony_paid
+    printed: (helper)
+    label: Alimony or separate maintenance paid in 2025 under an agreement entered into on or before December 31, 2018
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Alimony or separate maintenance you paid in 2025 to or for a spouse or former spouse under a divorce or separation
+        agreement entered into on or before December 31, 2018 (do not include child support, or payments made after the
+        agreement was changed to expressly provide that alimony received isn't included in the recipient's income); zero
+        if none
+    cite:
+      doc: i1040gi
+      locator: p. 95, Line 19a, "If you made payments to or for your spouse or former spouse under a divorce or separation
+        agreement entered into on or before December 31, 2018, you may be able to take this deduction"
+  - id: s1.alimony_unsupported
+    printed: (gate)
+    label: 'Does any of these apply to alimony you received or paid: payments under more than one divorce or separation agreement,
+      or paid to more than one person; a recapture of alimony; or payments of which part is child support?'
+    type: Bool
+    expr:
+      op: input
+      source: 'Does any of these apply to alimony you received or paid: payments under more than one divorce or separation
+        agreement, or paid to more than one person; a recapture of alimony (payments that decreased or ended during the
+        first 3 calendar years, Pub. 504 Worksheet 1); or payments of which part is child support (including payments that
+        fell short of the total of child support and alimony required)?'
+    cite:
+      doc: p504
+      locator: p. 12, Alimony, "If you paid alimony to more than one person, enter the SSN or ITIN of one of the recipients";
+        p. 13, Underpayment, "the payments apply first to child support and then to alimony"; p. 16, Recapture of Alimony,
+        "If your alimony payments decrease or end during the first 3 calendar years, you may be subject to the recapture rule"
+  - id: s1.alimony_refused
+    printed: (helper)
+    label: Alimony received, before the screen for more than one agreement, recapture and child support
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: s1.alimony_received
+    cite:
+      doc: i1040gi
+      locator: p. 89, Line 2a; Line 2b, "Attach a statement listing the month and year of the other agreements"
+    refuses:
+    - when: s1.alimony_unsupported
+      form: Alimony under more than one agreement, recapture of alimony, or payments partly child support (Pub. 504)
+      remedy: Alimony from more than one divorce or separation agreement or paid to more than one person, the recapture of
+        alimony (Pub. 504 Worksheet 1), and payments of which part is child support are outside this tool.
+      cite:
+        doc: p504
+        locator: p. 12, Alimony; p. 13, Underpayment; p. 16, Recapture of Alimony
+  - id: s1.line2a
+    printed: 2a
+    label: Alimony received
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - s1.alimony
+          - const: true
+        then: s1.alimony_refused
+      - guard:
+          op: test
+          eq:
+          - s1.alimony
+          - const: false
+        then: s1.zero
+    cite:
+      doc: f1040s1
+      locator: Schedule 1 (2025), line 2a; i1040gi p. 89, Line 2a, "Alimony received is not included in your income if you
+        entered into a divorce or separation agreement after December 31, 2018"
+    ambiguity: amb.2025.alimony_screen
+  - id: s1.line2b_notice
+    printed: (helper)
+    label: 'Notice: write on Schedule 1 line 2b the month and year of your original divorce or separation agreement'
+    type: Bool
+    display: 'Notice on the values sheet: line 2b (the date of the agreement) is written on the form by hand; this tool does
+      not record it.'
+    expr:
+      op: test
+      gt:
+      - s1.line2a
+      - param: sales.zero
+    cite:
+      doc: i1040gi
+      locator: p. 89, Line 2b, "On line 2b, enter the month and year of your original divorce or separation agreement that
+        relates to the alimony payment, if any, reported on line 2a"
+    ambiguity: amb.2025.s1_unnumbered_lines
+  - id: s1.cod_amount
+    printed: (helper)
+    label: Canceled nonbusiness debt (Form 1099-C box 2, and any canceled nonbusiness debt with no Form 1099-C)
+    type: NonNegDollars
+    expr:
+      op: input
+      source: 'Canceled nonbusiness debt: the total of box 2 of your Forms 1099-C, plus any canceled nonbusiness debt for which
+        you received no Form 1099-C; zero if none'
+    cite:
+      doc: p4681
+      locator: p. 4, Form 1099-C Reference Guide, "Even if you didn't receive a Form 1099-C, you must report canceled debt
+        as gross income on your tax return unless one of the exceptions or exclusions described later applies"; f1099c p.
+        4, Instructions for Debtor, "Box 2. Shows the amount of debt either actually or deemed discharged"
+  - id: s1.has_cod
+    printed: (helper)
+    label: Any canceled nonbusiness debt
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - s1.cod_amount
+      - param: sales.zero
+    cite:
+      doc: i1040gi
+      locator: p. 91, Line 8c
+  - id: s1.cod_unsupported
+    printed: (gate)
+    label: 'Does any of these apply to a canceled debt: an exception or exclusion (Form 982), a business, rental or farm debt,
+      a foreclosure, repossession or abandonment, deductible interest, a debt you were not personally liable for, or a debt
+      owed jointly with someone other than your spouse on this return?'
+    type: Bool
+    expr:
+      op: input
+      source: 'Does any of these apply to a canceled debt: it was canceled in a bankruptcy case or while you were insolvent,
+        or is otherwise excluded from income (Form 982, for example qualified principal residence indebtedness); it was a
+        student loan, was canceled as a gift or inheritance, was a reduction of the price of property you bought from the
+        seller, or was owed to a corporation in which you hold stock; it was a business, rental or farm debt; it was canceled
+        in connection with a foreclosure, repossession or abandonment of property (Form 1099-C box 7, or a Form 1099-A);
+        it includes interest (Form 1099-C box 3) that would have been deductible if you had paid it; you were not personally
+        liable for it (box 5); or you and someone other than your spouse on this return were both liable for it?'
+    cite:
+      doc: p4681
+      locator: p. 3, General Rules, "There are several exceptions and exclusions that may result in part or all of a canceled
+        debt being nontaxable"; p. 4, Persons who each receive a Form 1099-C showing the full amount of debt; p. 6, Exclusions,
+        "If a canceled debt is excluded from your income, it is nontaxable"
+  - id: s1.cod_refused
+    printed: (helper)
+    label: Canceled nonbusiness debt, before the screen for exceptions, exclusions and other debts
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: s1.cod_amount
+    cite:
+      doc: p525
+      locator: p. 20, Canceled Debts, "If the debt is a nonbusiness debt, report the canceled amount on Schedule 1 (Form 1040),
+        line 8c"
+    refuses:
+    - when: s1.cod_unsupported
+      form: Form 982, Pub. 4681 exceptions, business or farm debt, foreclosures and repossessions
+      remedy: Canceled debt that is excluded from income or excepted, business, rental or farm debt, debt canceled in a foreclosure,
+        repossession or abandonment, deductible interest, nonrecourse debt and debt owed jointly with another person are
+        outside this tool; only fully taxable canceled nonbusiness debt is computed.
+      cite:
+        doc: p4681
+        locator: p. 3, General Rules; p. 4, Exceptions; p. 6, Exclusions
+  - id: s1.line8c
+    printed: 8c
+    label: Cancellation of debt
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - s1.has_cod
+          - const: true
+        then: s1.cod_refused
+      - guard:
+          op: test
+          eq:
+          - s1.has_cod
+          - const: false
+        then: s1.zero
+    cite:
+      doc: f1040s1
+      locator: Schedule 1 (2025), line 8c; i1040gi p. 91, Line 8c, "Canceled debt may be shown in box 2 of Form 1099-C. However,
+        part or all of your income from cancellation of debt may be nontaxable"
+    ambiguity: amb.2025.cod_fully_taxable
+  - id: s1.line8f
+    printed: 8f
+    label: Income from Form 8889
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: person
+      field: person.hsa_taxable
+    cite:
+      doc: f1040s1
+      locator: Schedule 1 (2025), line 8f; i1040gi p. 91, Line 8f, "Enter the total of the amounts from Form 8889, lines
+        16 and 20" (line 20, Part III, is refused by f8889.unsupported)
+  - id: s1.line9
+    printed: '9'
+    label: Total other income. Add lines 8a through 8z
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - s1.line8b
+      - s1.line8c
+      - s1.line8f
+      - s1.line8g
+      - s1.line8h
+      - s1.line8i
+      - s1.line8j
+      - s1.line8r
+      - s1.line8z
+    cite:
+      doc: f1040s1
+      locator: Schedule 1 (2025), line 9 (lines 8a, 8d, 8e, 8k to 8q and 8s to 8v are refused by s1.line8_other)
+    refuses:
+    - when: s1.line8_other
+      form: Schedule 1, line 8 (other income this tool does not compute)
+      remedy: Other income on Schedule 1 line 8 other than gambling winnings, canceled debt, income from Form 8889, Alaska
+        Permanent Fund dividends, jury duty pay, prizes and awards, income from an activity not engaged in for profit,
+        scholarship and fellowship grants not on Form W-2 and the supported line 8z items is outside this tool.
+      cite:
+        doc: i1040gi
+        locator: pp. 91–92, Lines 8a Through 8z
   - id: s1.line10
     printed: '10'
     label: Combine lines 1 through 7 and 9. This is your additional income. Enter here and on Form 1040, 1040-SR, or 1040-NR,
@@ -262,12 +720,15 @@ form:
     expr:
       op: sum
       of:
+      - s1.line1
+      - s1.line2a
       - s1.line3
       - s1.line7
+      - s1.line9
     cite:
       doc: f1040s1
-      locator: Schedule 1 (2025), line 10 (lines 1, 2, 4 to 6, 8a to 8z and 9 are outside this tool and refused at Form 1040 line
-        8 by scope.schedule1)
+      locator: Schedule 1 (2025), line 10 (lines 4 to 6, and the parts of lines 2 and 8 this tool does not compute, are outside
+        this tool and refused at Form 1040 line 8 by scope.schedule1 and the line 8 screen)
   - id: s1.line11
     printed: '11'
     label: Educator expenses
@@ -325,6 +786,102 @@ form:
     cite:
       doc: i1040gi
       locator: pp. 94–95, Schedule 1, line 17, Self-Employed Health Insurance Deduction; Form 7206 (2025), line 14
+  - id: s1.line18
+    printed: '18'
+    label: Penalty on early withdrawal of savings
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: interest
+      field: interest.penalty
+    cite:
+      doc: f1040s1
+      locator: Schedule 1 (2025), line 18; i1040gi p. 95, Line 18, "The Form 1099-INT or Form 1099-OID you received will
+        show the amount of any penalty you were charged"
+    ambiguity: amb.2025.ewp_oid
+  - id: s1.paid_refused
+    printed: (helper)
+    label: Alimony paid, before the screen for more than one agreement, recapture and child support
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: s1.alimony_paid
+    cite:
+      doc: p504
+      locator: p. 12, Alimony, "Enter your total payments on line 19a"
+    refuses:
+    - when: s1.alimony_unsupported
+      form: Alimony under more than one agreement, recapture of alimony, or payments partly child support (Pub. 504)
+      remedy: Alimony from more than one divorce or separation agreement or paid to more than one person, the recapture of
+        alimony (Pub. 504 Worksheet 1), and payments of which part is child support are outside this tool.
+      cite:
+        doc: p504
+        locator: p. 12, Alimony; p. 13, Underpayment; p. 16, Recapture of Alimony
+  - id: s1.line19a
+    printed: 19a
+    label: Alimony paid
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - s1.alimony
+          - const: true
+        then: s1.paid_refused
+      - guard:
+          op: test
+          eq:
+          - s1.alimony
+          - const: false
+        then: s1.zero
+    cite:
+      doc: f1040s1
+      locator: Schedule 1 (2025), line 19a; i1040gi p. 95, Line 19a
+    ambiguity: amb.2025.alimony_screen
+  - id: s1.line19b_notice
+    printed: (helper)
+    label: 'Notice: write on Schedule 1 line 19b the recipient''s SSN'
+    type: Bool
+    display: 'Notice on the values sheet: line 19b (the recipient''s SSN or ITIN) is written on the form by hand; this tool
+      does not record it.'
+    expr:
+      op: test
+      gt:
+      - s1.line19a
+      - param: sales.zero
+    cite:
+      doc: p504
+      locator: p. 12, Alimony, "In the space provided on line 19b, enter your recipient's SSN or ITIN"
+    ambiguity: amb.2025.s1_unnumbered_lines
+  - id: s1.line19c_notice
+    printed: (helper)
+    label: 'Notice: write on Schedule 1 line 19c the month and year of your original divorce or separation agreement'
+    type: Bool
+    display: 'Notice on the values sheet: line 19c (the date of the agreement) is written on the form by hand; this tool does
+      not record it.'
+    expr:
+      op: test
+      gt:
+      - s1.line19a
+      - param: sales.zero
+    cite:
+      doc: i1040gi
+      locator: p. 95, Line 19c, "On line 19c, enter the month and year of your original divorce or separation agreement that
+        relates to this deduction for alimony paid"
+    ambiguity: amb.2025.s1_unnumbered_lines
+  - id: s1.line20
+    printed: '20'
+    label: IRA deduction
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: ira.line20
+    cite:
+      doc: f1040s1
+      locator: Schedule 1 (2025), line 20; i1040gi p. 98, IRA Deduction Worksheet—Continued, line 12, "Add the amounts on lines
+        12a and 12b and enter the total on Schedule 1, line 20"
   - id: s1.line21
     printed: '21'
     label: Student loan interest deduction
@@ -335,6 +892,62 @@ form:
     cite:
       doc: f1040s1
       locator: Schedule 1 (2025), line 21
+  - id: s1.jury_to_employer
+    printed: (helper)
+    label: Jury duty pay you gave to your employer because your employer paid your salary while you served on the jury
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The part of the jury duty pay on line 8h that you (or, on a joint return, your spouse) gave to your employer
+        because your employer paid your salary while you served on the jury; zero if none
+    cite:
+      doc: i1040gi
+      locator: 'p. 99, Line 24a, "Enter your jury duty pay if you gave the pay to your employer because your employer paid
+        your salary while you served on the jury"; p525 p. 34, Jury duty, "you can deduct the amount turned over to your
+        employer as an adjustment to income"'
+  - id: s1.jury_over
+    printed: (gate)
+    label: The jury duty pay given to the employer is more than the jury duty pay on line 8h
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - s1.jury_to_employer
+      - s1.line8h
+    cite:
+      doc: i1040gi
+      locator: p. 99, Line 24a, "Enter your jury duty pay if you gave the pay to your employer"
+    ambiguity: amb.2025.jury_24a_cap
+  - id: s1.line24a
+    printed: 24a
+    label: Jury duty pay (see instructions)
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: s1.jury_to_employer
+    cite:
+      doc: f1040s1
+      locator: Schedule 1 (2025), line 24a; i1040gi p. 99, Line 24a, "Enter your jury duty pay if you gave the pay to your
+        employer because your employer paid your salary while you served on the jury"
+    refuses:
+    - when: s1.jury_over
+      form: Schedule 1, line 24a (more than the jury duty pay received)
+      remedy: The jury duty pay given to your employer cannot be more than the jury duty pay reported on line 8h; correct
+        the two amounts.
+      cite:
+        doc: i1040gi
+        locator: p. 99, Line 24a, "Enter your jury duty pay if you gave the pay to your employer"
+  - id: s1.line25
+    printed: '25'
+    label: Total other adjustments. Add lines 24a through 24z
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: s1.line24a
+    cite:
+      doc: f1040s1
+      locator: Schedule 1 (2025), line 25 (lines 24b to 24z are outside this tool and refused at Form 1040 line 10 by
+        scope.schedule1)
   - id: s1.line26
     printed: '26'
     label: Add lines 11 through 23 and 25. These are your adjustments to income. Enter here and on Form 1040, 1040-SR, or
@@ -348,8 +961,12 @@ form:
       - s1.line15
       - s1.line16
       - s1.line17
+      - s1.line18
+      - s1.line19a
+      - s1.line20
       - s1.line21
+      - s1.line25
     cite:
       doc: f1040s1
-      locator: Schedule 1 (2025), line 26 (lines 12, 14, 18 to 20, 23 and 25 are outside this tool and refused at Form 1040 line
+      locator: Schedule 1 (2025), line 26 (lines 12, 14 and 23 are outside this tool and refused at Form 1040 line
         10 by scope.schedule1)

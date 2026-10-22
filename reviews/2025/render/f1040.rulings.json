@@ -9,16 +9,34 @@
    "ruling": "Ruling: refusal located elsewhere; restatement accepted. A patron of an agricultural or horticultural cooperative, specified or not, is refused through qbi.unsupported ('are you a patron of any agricultural or horticultural cooperative, specified or not', amb.2025.qbi_cooperative_patron), so the threshold test alone chooses Form 8995."
   },
   {
+   "printed": "13a",
+   "restated": "Enter the amount from qbi helper \"Select Form 8995 or dividend-only Form 8995-A\".",
+   "model": "It chooses between Form 8995 and 8995-A only by the $197,300/$394,600 threshold. The IRS also requires for Form 8995 that \"You aren't a patron in a specified agricultural or horticultural cooperative,\" and no refusal names cooperative patrons.",
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted (as the prior ruling). A patron of an agricultural or horticultural cooperative, specified or not, is refused through qbi.unsupported (\"are you a patron of any agricultural or horticultural cooperative, specified or not\", amb.2025.qbi_cooperative_patron), so the threshold test alone chooses Form 8995. i1040gi p. 34, \"You aren't a patron in a specified agricultural or horticultural cooperative\". No change."
+  },
+  {
    "printed": "16",
    "restated": "Choose — [helper \"Schedule D Tax Worksheet required after its exceptions\" = true → sdtw line 47] [helper \"Schedule D Tax Worksheet required after its exceptions\" = false → helper \"Tax when Schedule D Tax Worksheet does not apply\"]",
    "model": "Several required texts are missing. The line 16 instructions say \"Figure the tax using one of the methods described later\", but the pages describing how to choose the method are not provided. The Tax Table and Tax Computation Worksheet texts are also absent, so the brackets and subtraction amounts cannot be checked.",
    "ruling": "Ruling: representation; project retained. The tax methods (Tax Table, Tax Computation Worksheet, the Qualified Dividends and Capital Gain Tax Worksheet and the Schedule D Tax Worksheet) are separate documents in this project (tax_on_amount, tcw, qdcg, sdtw), each with its own transcription and render review; the selection is ruled in the transcription log for line 16. Forms 8814 and 4972 and the box 3 taxes are refused through scope.other_line16."
   },
   {
+   "printed": "1a",
+   "restated": "Add person.box1 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Adding W-2 box 1 for you and your spouse (on a joint return) matches \"Enter the total amount from Form(s) W-2, box 1. If a joint return, also include your spouse's income.\" However, the instructions also say inmate wages and nonqualified deferred compensation or nongovernmental 457 amounts in box 1 must not go on line 1a (\"Do not report these wages on line 1a\"), and the text given doesn't show whether person.box1 leaves them out.",
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. Both amounts the instructions keep off line 1a are Schedule 1 line 8 items the project refuses: wages earned while an inmate (line 8u) and a pension or annuity from a nonqualified deferred compensation plan or nongovernmental section 457 plan reported in box 1 (line 8t) are named in the s1.line8_other screen (\"a pension or annuity from a nonqualified deferred compensation plan or a nongovernmental section 457 plan (8t); wages earned while incarcerated (8u)\"), refused on Schedule 1 line 9, which Form 1040 line 8 reads. Within scope box 1 holds neither, so line 1a is the box 1 total. i1040gi p. 23, Line 1a, \"If you earned wages while you were an inmate in a penal institution, report these amounts on Schedule 1, line 8u. Do not report these wages on line 1a\"; p. 24, \"If you received a pension or annuity from a nonqualified deferred compensation plan or a nongovernmental section 457 plan and it was reported in box 1 of Form W-2, do not include this amount on Form 1040, line 1a\". No change."
+  },
+  {
    "printed": "27a",
    "restated": "Enter the amount from eic helper \"Earned income credit for Form 1040, line 27a (Worksheet A, line 6 when Steps 1 to 5 are passed; zero otherwise)\".",
    "model": "Eligibility tests the filer alone where the IRS also counts the spouse on a joint return. Step 1 Q2 asks \"Do you, and your spouse if filing a joint return, have a social security number...\", and Step 4 Q2 asks \"Were you, or your spouse if filing a joint return, at least age 25 but under age 65\" and Q3 asks about \"your main home, and your spouse's if filing a joint return\". The program's inputs ask only \"Do you have an SSN\" and \"Were you born\", so a joint return can get a different result.",
    "ruling": "Ruling: scope; project retained. The spouse variants of the SSN and age tests arise only on a joint return, and married filing statuses are refused (s3.married); within scope the filer's own tests are the tests. The Step 4 birth-date boundary follows the instructions since BUG-0034."
+  },
+  {
+   "printed": "27a",
+   "restated": "Enter the amount from eic helper \"Earned income credit for Form 1040, line 27a (Worksheet A, line 6 when Steps 1 to 5 are passed; zero otherwise)\".",
+   "model": "It always takes Worksheet A line 6, but self-employment (Schedule C) is supported. Worksheet A says \"Use this worksheet only if you answered 'No' to Step 5, question 2. Otherwise, use Worksheet B,\" whose credit is line 11 (\"This is your earned income credit\").",
+   "ruling": "Ruling: model error; project retained (as the prior rulings on the same reading). For a filer with a Schedule C (eic.self_employed, Step 5 question 2 Yes) eic.line1 is Worksheet B line 6 (eic.wsb_6), and Worksheet A lines 2 to 6 serve as Worksheet B lines 7 to 11, which repeat them with line 6 in place of line 1 (i1040gi p. 46, Worksheet A, \"Use this worksheet only if you answered 'No' to Step 5, question 2. Otherwise, use Worksheet B\"; p. 48, Worksheet B lines 6 to 11, the same amounts). So the helper is Worksheet B line 11, \"This is your earned income credit\", for those filers (checked earlier: stage14.eic.wsb_stop_27c). The helper's label names only Worksheet A. No change."
   },
   {
    "printed": "27a",
@@ -43,6 +61,12 @@
    "restated": "Enter the amount from eic helper \"Earned income credit for Form 1040, line 27a (Worksheet A, line 6 when Steps 1 to 5 are passed; zero otherwise)\".",
    "model": "The restatement always takes Worksheet A line 6, but Worksheet A says 'Use this worksheet only if you answered No to Step 5, question 2. Otherwise, use Worksheet B'. Worksheet B line 11 ('This is your earned income credit') applies to Schedule C filers, who are in scope.",
    "ruling": "Ruling: model error; project retained (as the prior ruling on the same reading). For a filer with a Schedule C (eic.self_employed, Step 5 question 2 'Yes') eic.line1 is Worksheet B line 6 (eic.wsb_6, line 4b floored at zero), and Worksheet A lines 2 to 6 serve as Worksheet B lines 7 to 11, which repeat them word for word with line 6 in place of line 1 (i1040gi p. 46, Worksheet A, \"Use this worksheet only if you answered 'No' to Step 5, question 2. Otherwise, use Worksheet B\"; p. 48, Worksheet B lines 6 to 11, the same $10,620/$17,730 and $23,350/$30,470 amounts). So the helper is Worksheet B line 11, \"This is your earned income credit\", for those filers (checked earlier: stage14.eic.wsb_stop_27c, Schedule C line 1 $12,000, eic.line1 = wsb_6 = $11,152.22, line 27a $607). The helper's label names only Worksheet A. No change."
+  },
+  {
+   "printed": "27c",
+   "restated": "Enter the amount from eic helper \"The instructions say to check the box on line 27c (a STOP that says so, or Worksheet A line 2 is zero); the filer's own choice not to claim the EIC is not asked\".",
+   "model": "It covers the Step 1, Step 3, Step 4, Worksheet A line 2 and Worksheet B line 5 stops, but leaves out two Worksheet B stops: \"If line 4b is zero or less, STOP You can't take the credit. Check the box on Form 1040 or 1040-SR, line 27c\" and \"If line 7 is zero, STOP ... Check the box on Form 1040 or 1040-SR, line 27c.\"",
+   "ruling": "Ruling: model error; project retained (as the prior rulings on the same reading). The two Worksheet B STOPs are reached through the shared lines: eic.line1 is Worksheet B line 6 for a Schedule C filer, so Worksheet B line 7 is eic.line2, and \"If line 7 is zero, STOP ... Check the box on Form 1040 ... line 27c\" (i1040gi p. 48) is the term 'Worksheet A line 2 is zero' of eic.check_27c; \"If line 4b is zero or less, STOP You can't take the credit. Check the box on Form 1040 or 1040-SR, line 27c\" (p. 47) makes line 6 zero (eic.wsb_6 floors at zero), so line 7 is zero and the box is checked (stage14.eic.wsb_stop_27c). No change."
   },
   {
    "printed": "27c",
@@ -99,6 +123,12 @@
    "ruling": "Ruling: scope; project retained. Exception 3 (a qualified charitable distribution) and Exception 4 (an HSA funding distribution) are refused by retirement.special ('a qualified charitable distribution or HSA funding distribution'), so within scope only box 1 can apply."
   },
   {
+   "printed": "4c",
+   "restated": "helper \"Number of IRA distributions with a rollover\" > 0 (a count)",
+   "model": "Only the rollover box (box 1) is modeled, and no refusal names the other boxes. The IRS also says \"If Exception 3 applies to you, check box 2 on line 4c\" (QCD) and \"If Exception 4 applies to you, check box 3 on line 4c and enter 'HFD'.\"",
+   "ruling": "Ruling: scope; project retained (as the prior rulings). Exception 3 (a qualified charitable distribution) and Exception 4 (an HSA funding distribution) are refused by retirement.special (\"a qualified charitable distribution or HSA funding distribution\"), so within scope only box 1 can apply. i1040gi p. 28, \"If Exception 3 applies to you, check box 2 on line 4c\". No change."
+  },
+  {
    "printed": "5c",
    "restated": "helper \"Number of pension distributions with a rollover\" > 0 (a count)",
    "model": "Line 5c is restated as a single rollover flag, which covers only box 1. The IRS also says to 'check box 2 on line 5c' for the retired public safety officer premium election and 'check box 3' for another word or code, and no refusal names those cases.",
@@ -111,6 +141,12 @@
    "ruling": "Ruling: scope; project retained. The retired public safety officer premium exclusion (box 2) is refused by retirement.special ('the retired public safety officer premium exclusion'); box 3 applies only when another publication or instruction gives a word or code, and every such case in the Form 1099-R lines is behind the same screen."
   },
   {
+   "printed": "5c",
+   "restated": "helper \"Number of pension distributions with a rollover\" > 0 (a count)",
+   "model": "Only the rollover box is modeled, and no refusal names the others. The IRS also says to \"check box 2 on line 5c\" for the retired public safety officer premium exclusion, and box 3 when another instruction gives a word or code.",
+   "ruling": "Ruling: scope; project retained (as the prior rulings). The retired public safety officer premium exclusion (box 2) is refused by retirement.special (\"the retired public safety officer premium exclusion\"); box 3 applies only when another instruction gives a word or code, and every such case in the Form 1099-R lines is behind the same screen. i1040gi p. 28, \"check box 2 on line 5c\". No change."
+  },
+  {
    "printed": "6b",
    "restated": "Enter the amount from ssb line 18.",
    "model": "Worksheet line 18 is the normal source (\"Also enter this amount on Form 1040 or 1040-SR, line 6b\"). However, line 6c lets the filer elect the lump-sum method, which per the instructions may \"reduce the taxable amount\" via Pub. 915. Pub. 915 is not provided, and the program still enters line 18 with no refusal.",
@@ -121,6 +157,12 @@
    "restated": "Enter the amount from sd helper \"Capital gain or limited capital loss for Form 1040 line 7a\".",
    "model": "Form 1040 says only 'Capital gain or (loss). Attach Schedule D if required.' The text of Schedule D lines 16 and 21, which the restatement chooses between, is not in the pages given.",
    "ruling": "Ruling: representation; project retained. Schedule D says so on its own lines: line 16 'Combine lines 7 and 15' carries a gain to Form 1040 line 7a (through line 17's 'If line 16 is a gain, enter the amount from line 16 on Form 1040 line 7a'), and line 21 'If line 16 is a loss, enter here and on Form 1040, 1040-SR, or 1040-NR, line 7a, the smaller of' the loss or the limit (f1040sd); the Schedule D render log judges those lines."
+  },
+  {
+   "printed": "7a",
+   "restated": "Enter the amount from sd helper \"Capital gain or limited capital loss for Form 1040 line 7a\".",
+   "model": "It enters Schedule D line 16, or line 21 when line 16 is a loss. The Schedule D wording for lines 16 and 21, and how capital gain distributions reach line 7a when Schedule D isn't required, are not in the text given.",
+   "ruling": "Ruling: representation; project retained (as the prior rulings). Schedule D says so on its own lines: line 16 \"Combine lines 7 and 15\" carries a gain to Form 1040 line 7a (line 17, \"If line 16 is a gain, enter the amount from line 16 on Form 1040 line 7a\"), and line 21, \"If line 16 is a loss, enter here and on Form 1040, 1040-SR, or 1040-NR, line 7a, the smaller of\" the loss or the limit (f1040sd); capital gain distributions without Schedule D reach the same helper. The Schedule D render log judges those lines. No change."
   },
   {
    "printed": "7a",

@@ -331,6 +331,30 @@ form:
             doc: i8889
             locator: p. 3, "If, during the tax year, you are the beneficiary of two or more HSAs or you are a beneficiary of
               an HSA and you have your own HSA, you must complete a separate Form 8889 for each HSA"
+    - id: person.hsa_taxable
+      printed: (helper)
+      type: NonNegDollars
+      label: Form 8889 line 16 for this person
+      expr:
+        op: sum_over
+        collection: f8889
+        field: f8889.line16
+      cite:
+        doc: f8889
+        locator: 'Form 8889 (2025), Part II, "If you are filing jointly and both you and your spouse each have separate HSAs,
+          complete a separate Part II for each spouse"; line 16'
+    - id: person.hsa_addtax
+      printed: (helper)
+      type: NonNegDollars
+      label: Form 8889 line 17b for this person
+      expr:
+        op: sum_over
+        collection: f8889
+        field: f8889.line17b
+      cite:
+        doc: f8889
+        locator: Form 8889 (2025), line 17b, "Also, include this amount in the total on Schedule 2 (Form 1040), Part II, line
+          17c"
     - id: person.tip_employers
       printed: (helper)
       type: Count
@@ -1849,7 +1873,7 @@ form:
         locator: 'p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a) was
           born after January 1, 2008; (b) is claimed as a dependent on someone else’s 2025 tax return; or (c) was a student"'
     - id: person.sav_trad
-      printed: (screen)
+      printed: (helper)
       label: Did you make contributions (other than rollover contributions) to a traditional IRA for 2025?
       type: Bool
       expr:
@@ -1887,22 +1911,28 @@ form:
           (other than rollover contributions) to a traditional or Roth IRA"'
     - id: person.sav_line1
       printed: (helper)
-      label: Form 8880 line 1 for this person (Roth IRA contributions for 2025)
+      label: Form 8880 line 1 for this person (traditional IRA contributions for 2025, deductible or not, and Roth IRA
+        contributions for 2025)
       type: NonNegDollars
       expr:
-        op: copy
-        from: person.sav_roth
+        op: sum
+        of:
+        - person.ira_contrib
+        - person.sav_roth
       cite:
         doc: f8880
-        locator: Form 8880 (2025), line 1
+        locator: 'Form 8880 (2025), line 1, "Traditional and Roth IRA contributions"; p. 2, Who Can Take This Credit, "(a)
+          contributions (other than rollover contributions) to a traditional or Roth IRA"'
+      ambiguity: amb.2025.savers_traditional
       refuses:
-      - when: person.sav_trad
-        form: Traditional IRA contributions on Form 8880 line 1 (the IRA deduction, Form 8606)
-        remedy: Traditional IRA contributions are reported with the IRA deduction (Schedule 1, line 20) or on Form 8606, which
-          this tool does not prepare.
+      - when: person.ira_excess_gate
+        form: Excess or recharacterized IRA contributions (Form 5329 Parts III and IV, Pub. 590-A)
+        remedy: Traditional or Roth IRA contributions for 2025 that are more than allowed or were recharacterized, and an
+          excess contribution from an earlier year still in an IRA, are outside this tool.
         cite:
-          doc: i1040gi
-          locator: 'p. 95, Line 20, "If you made any nondeductible contributions to a traditional"'
+          doc: p590a
+          locator: 'p. 35, Excess Contributions, "Generally, an excess contribution is the amount contributed to your traditional
+            IRAs for the year that is more than the smaller of"'
       - when: person.sav_able
         form: ABLE account contributions or distributions on Form 8880 (Pub. 907)
         remedy: Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside
@@ -2100,6 +2130,1082 @@ form:
           doc: f8880
           locator: 'p. 2, What’s New, "See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about
             ABLE accounts"'
+    - id: person.ira_trad
+      printed: (helper)
+      label: Your traditional IRA contributions for 2025 (not rollovers)
+      type: NonNegDollars
+      expr:
+        op: input
+        source: 'Your contributions to your traditional IRAs for 2025, made in 2025 or made by April 15, 2026, and designated for
+          2025; do not include rollover contributions, contributions made in 2025 that you deducted for 2024, contributions withdrawn
+          (with their earnings) by the due date of your return, trustees'' fees billed separately, or employer contributions to
+          a SEP or SIMPLE IRA'
+      cite:
+        doc: i1040gi
+        locator: 'p. 98, IRA Deduction Worksheet—Continued, line 11, "Enter traditional IRA contributions made, or that will be
+          made by the due date of your 2025 return not counting extensions (April 15, 2026, for most people), for 2025"; p.
+          95, Line 20, "If you made contributions to your IRA in 2025 that you deducted for 2024, don’t include them in the
+          worksheet", "Don’t include rollover contributions in figuring your deduction" and "Don’t include trustees’ fees that
+          were billed separately"'
+    - id: person.ira_contrib
+      printed: (helper)
+      label: This person's traditional IRA contributions for 2025 (zero if the traditional IRA question was answered No)
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.sav_trad
+            - const: true
+          then: person.ira_trad
+        - guard:
+            op: test
+            eq:
+            - person.sav_trad
+            - const: false
+          then: person.zero
+      cite:
+        doc: i1040gi
+        locator: 'p. 98, IRA Deduction Worksheet—Continued, line 11, "Enter traditional IRA contributions made, or that will be
+          made by the due date of your 2025 return not counting extensions (April 15, 2026, for most people), for 2025"'
+    - id: person.ira_has
+      printed: (helper)
+      label: This person made traditional IRA contributions for 2025
+      type: Bool
+      expr:
+        op: test
+        gt:
+        - person.ira_contrib
+        - param: sales.zero
+      cite:
+        doc: i1040gi
+        locator: 'p. 95, Line 20, "If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction"'
+    - id: person.ira_any_contrib
+      printed: (helper)
+      label: This person made traditional or Roth IRA contributions for 2025
+      type: Bool
+      expr:
+        op: test
+        any:
+        - op: test
+          eq:
+          - person.ira_has
+          - const: true
+        - op: test
+          gt:
+          - person.sav_roth
+          - param: sales.zero
+      cite:
+        doc: f8880
+        locator: Form 8880 (2025), line 1, "Traditional and Roth IRA contributions"
+    - id: person.ira_excess
+      printed: (screen)
+      label: Were your 2025 IRA contributions more than allowed, recharacterized, or is an earlier excess contribution still in
+        your IRA?
+      type: Bool
+      expr:
+        op: input
+        source: 'Does any of these apply to you: your contributions for 2025 to traditional and Roth IRAs together were more than
+          you were allowed to contribute (more than $7,000, or $8,000 if age 50 or older at the end of 2025, or more than your
+          taxable compensation, or a Roth contribution above the limit for your income), and the excess was not withdrawn with
+          its earnings by the due date of your return; you recharacterized a 2025 contribution (moved it from a traditional to
+          a Roth IRA or the reverse); or an excess contribution from an earlier year is still in your traditional or Roth IRA?'
+      cite:
+        doc: p590a
+        locator: 'p. 35, Excess Contributions, "Generally, an excess contribution is the amount contributed to your traditional
+          IRAs for the year that is more than the smaller of"; p. 30, "Recharacterizing excess contributions"; i1040gi p. 95,
+          Line 20, "If the total of your IRA deduction on line 20 plus any nondeductible contributions to your traditional IRAs
+          shown on Form 8606 is less than your total traditional IRA contributions for 2025, see Pub. 590-A for special rules"'
+    - id: person.ira_excess_gate
+      printed: (gate)
+      label: This person's IRA contributions for 2025 are excess or recharacterized, or an earlier excess remains (screen)
+      type: Bool
+      expr:
+        op: test
+        all:
+        - op: test
+          eq:
+          - person.ira_any_contrib
+          - const: true
+        - op: test
+          eq:
+          - person.ira_excess
+          - const: true
+      cite:
+        doc: p590a
+        locator: 'p. 35, Excess Contributions, "In general, if the excess contributions for a year aren’t withdrawn by the date
+          your return for the year is due (including extensions), you are subject to a 6% tax"'
+    - id: person.ira_age50
+      printed: (helper)
+      label: Were you age 50 or older at the end of 2025?
+      type: Bool
+      expr:
+        op: input
+        source: Were you age 50 or older at the end of 2025?
+      cite:
+        doc: i1040gi
+        locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, "$8,000 if age 50 or older at the end of 2025"'
+      ambiguity: amb.2025.ira_age50
+    - id: person.ira_work_plan
+      printed: (helper)
+      label: Were you covered by a retirement plan at work in 2025?
+      type: Bool
+      expr:
+        op: input
+        source: Were you covered by a retirement plan at work for 2025 (a qualified pension, profit-sharing or 401(k), annuity,
+          SEP, SIMPLE or other employer plan), even if you were not vested in it?
+      cite:
+        doc: i1040gi
+        locator: 'p. 96, Were You Covered by a Retirement Plan?, "profit-sharing (including 401(k)), annuity, SEP, SIMPLE, etc.)
+          at work or through self-employment" and "The “Retirement plan” box in box 13 of your Form W-2 should be checked if you
+          were covered by a plan at work even if you weren’t vested in the plan"'
+      ambiguity: amb.2025.ira_covered
+    - id: person.ira_se_plan
+      printed: (helper)
+      label: This person contributed for themselves to a SEP or SIMPLE IRA as a self-employed person (person.plan)
+      type: Bool
+      expr:
+        op: test
+        all:
+        - op: test
+          eq:
+          - person.has_sc
+          - const: true
+        - op: test
+          not:
+            op: test
+            eq:
+            - person.plan
+            - const: none
+      cite:
+        doc: i1040gi
+        locator: 'p. 96, Were You Covered by a Retirement Plan?, "You are also covered by a plan if you were self-employed and
+          had a SEP, SIMPLE, or qualified retirement plan"'
+      ambiguity: amb.2025.ira_covered
+    - id: person.ira_cov
+      printed: (helper)
+      label: Covered by a retirement plan (worksheet line 1a or 1b for this person)
+      type: Bool
+      expr:
+        op: test
+        any:
+        - op: test
+          eq:
+          - person.ira_work_plan
+          - const: true
+        - op: test
+          eq:
+          - person.ira_se_plan
+          - const: true
+      cite:
+        doc: i1040gi
+        locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 1, "Were you covered by a retirement plan (see Were
+          You Covered by a Retirement Plan)?" and "If married filing jointly, was your spouse covered by a retirement plan?"'
+      ambiguity: amb.2025.ira_covered
+    - id: person.ira_limit_under50
+      printed: (helper)
+      label: $7,000
+      type: NonNegDollars
+      expr:
+        op: param
+        ref: ira.limit
+      cite:
+        doc: i1040gi
+        locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, "$7,000 if under age 50 at the end of 2025"'
+    - id: person.ira_limit_over50
+      printed: (helper)
+      label: $8,000
+      type: NonNegDollars
+      expr:
+        op: param
+        ref: ira.limit_50
+      cite:
+        doc: i1040gi
+        locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, "$8,000 if age 50 or older at the end of 2025"'
+    - id: person.ira_limit
+      printed: (helper)
+      label: The applicable amount for this person ($7,000 if under age 50 at the end of 2025; $8,000 if age 50 or older)
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.ira_age50
+            - const: true
+          then: person.ira_limit_over50
+        - guard:
+            op: test
+            eq:
+            - person.ira_age50
+            - const: false
+          then: person.ira_limit_under50
+      cite:
+        doc: i1040gi
+        locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, "$7,000 if under age 50 at the end of 2025" and "$8,000
+          if age 50 or older at the end of 2025"'
+    - id: person.ira_not_covered_joint
+      printed: (helper)
+      label: Married filing jointly and this person was not covered by a retirement plan
+      type: Bool
+      expr:
+        op: test
+        all:
+        - op: test
+          eq:
+          - ira.joint
+          - const: true
+        - op: test
+          eq:
+          - person.ira_cov
+          - const: false
+      cite:
+        doc: i1040gi
+        locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 2, "But if you checked “No” on either line 1a or 1b,
+          enter $246,000 for the person who wasn’t covered by a plan"'
+    - id: person.ira_line2_status
+      printed: (helper)
+      label: The line 2 amount for the filing status ($89,000; $146,000 if married filing jointly or qualifying surviving spouse)
+      type: NonNegDollars
+      expr:
+        op: param
+        ref: ira.line2
+      cite:
+        doc: i1040gi
+        locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 2, "Enter the amount shown below that applies to you"'
+    - id: person.ira_line2_nc
+      printed: (helper)
+      label: $246,000
+      type: NonNegDollars
+      expr:
+        op: param
+        ref: ira.line2_not_covered
+      cite:
+        doc: i1040gi
+        locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 2, "enter $246,000 for the person who wasn’t covered
+          by a plan"'
+    - id: person.ira_line2
+      printed: (helper)
+      label: Worksheet line 2 for this person's column
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.ira_not_covered_joint
+            - const: true
+          then: person.ira_line2_nc
+        - guard:
+            op: test
+            eq:
+            - person.ira_not_covered_joint
+            - const: false
+          then: person.ira_line2_status
+      cite:
+        doc: i1040gi
+        locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 2, "Married filing jointly, enter $146,000 in both
+          columns. But if you checked “No” on either line 1a or 1b, enter $246,000 for the person who wasn’t covered by a
+          plan"'
+    - id: person.ira_line6
+      printed: (helper)
+      label: 'Worksheet line 6 for this person''s column: is line 5 less than line 2? If yes, subtract line 5 from line 2 (if
+        no, zero: none of the contributions are deductible)'
+      type: NonNegDollars
+      expr:
+        op: subtract_floor0
+        from: person.ira_line2
+        take: ira.line5
+      cite:
+        doc: i1040gi
+        locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 6, "Is the amount on line 5 less than the amount on
+          line 2?", "None of your IRA contributions are deductible" and "Subtract line 5 from line 2 in each column"'
+    - id: person.ira_line6_yes
+      printed: (helper)
+      label: Line 5 is less than line 2 in this person's column (line 6, Yes)
+      type: Bool
+      expr:
+        op: test
+        gt:
+        - person.ira_line6
+        - param: sales.zero
+      cite:
+        doc: i1040gi
+        locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 6, "Is the amount on line 5 less than the amount on
+          line 2?"'
+    - id: person.ira_wide
+      printed: (helper)
+      label: This column takes the single rule (70% or 80%, the $10,000 threshold) — not married filing jointly or qualifying
+        surviving spouse, or the column of a person who wasn't covered by a retirement plan
+      type: Bool
+      expr:
+        op: test
+        any:
+        - op: test
+          eq:
+          - ira.joint_type
+          - const: false
+        - op: test
+          eq:
+          - person.ira_cov
+          - const: false
+      cite:
+        doc: i1040gi
+        locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 6, "($10,000 or more in the column for the IRA of
+          a person who wasn’t covered by a retirement plan)"; p. 98, IRA Deduction Worksheet—Continued, line 7, "then in the
+          column for the IRA of the person who wasn’t covered by a retirement plan, multiply by 70% (0.70)"'
+    - id: person.ira_full_narrow
+      printed: (helper)
+      label: $10,000
+      type: NonNegDollars
+      expr:
+        op: param
+        ref: ira.full_narrow
+      cite:
+        doc: i1040gi
+        locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 6, "and the result is $10,000 or more"'
+    - id: person.ira_full_joint
+      printed: (helper)
+      label: $20,000
+      type: NonNegDollars
+      expr:
+        op: param
+        ref: ira.full_joint
+      cite:
+        doc: i1040gi
+        locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 6, "and the result is $20,000 or more"'
+    - id: person.ira_full
+      printed: (helper)
+      label: The line 6 result at or above which this column takes the applicable amount ($10,000 or $20,000)
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.ira_wide
+            - const: true
+          then: person.ira_full_narrow
+        - guard:
+            op: test
+            eq:
+            - person.ira_wide
+            - const: false
+          then: person.ira_full_joint
+      cite:
+        doc: i1040gi
+        locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 6, "If single, head of household, or married filing
+          separately, and the result is $10,000 or more" and "If married filing jointly or qualifying surviving spouse, and the
+          result is $20,000 or more ($10,000 or more in the column for the IRA of a person who wasn’t covered by a retirement
+          plan)"'
+    - id: person.ira_at_full
+      printed: (helper)
+      label: The line 6 result is at or above the threshold (enter the applicable amount on line 7)
+      type: Bool
+      expr:
+        op: test
+        ge:
+        - person.ira_line6
+        - person.ira_full
+      cite:
+        doc: i1040gi
+        locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 6, "enter the applicable amount below on line 7 for
+          that column and go to line 8"'
+    - id: person.ira_p70
+      printed: (helper)
+      label: Line 6 multiplied by 70% (0.70)
+      type: NonNegDollars
+      expr:
+        op: multiply_rate
+        amount: person.ira_line6
+        rate:
+          param: ira.rate_70
+      cite:
+        doc: i1040gi
+        locator: 'p. 98, IRA Deduction Worksheet—Continued, line 7, "multiply by 70% (0.70)"'
+    - id: person.ira_p80
+      printed: (helper)
+      label: Line 6 multiplied by 80% (0.80)
+      type: NonNegDollars
+      expr:
+        op: multiply_rate
+        amount: person.ira_line6
+        rate:
+          param: ira.rate_80
+      cite:
+        doc: i1040gi
+        locator: 'p. 98, IRA Deduction Worksheet—Continued, line 7, "or by 80% (0.80)"'
+    - id: person.ira_p35
+      printed: (helper)
+      label: Line 6 multiplied by 35% (0.35)
+      type: NonNegDollars
+      expr:
+        op: multiply_rate
+        amount: person.ira_line6
+        rate:
+          param: ira.rate_35
+      cite:
+        doc: i1040gi
+        locator: 'p. 98, IRA Deduction Worksheet—Continued, line 7, "multiply by 35% (0.35)"'
+    - id: person.ira_p40
+      printed: (helper)
+      label: Line 6 multiplied by 40% (0.40)
+      type: NonNegDollars
+      expr:
+        op: multiply_rate
+        amount: person.ira_line6
+        rate:
+          param: ira.rate_40
+      cite:
+        doc: i1040gi
+        locator: 'p. 98, IRA Deduction Worksheet—Continued, line 7, "or by 40% (0.40)"'
+    - id: person.ira_prod_wide
+      printed: (helper)
+      label: Line 6 multiplied by 70% (0.70), or by 80% (0.80) for a person age 50 or older at the end of 2025
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.ira_age50
+            - const: true
+          then: person.ira_p80
+        - guard:
+            op: test
+            eq:
+            - person.ira_age50
+            - const: false
+          then: person.ira_p70
+      cite:
+        doc: i1040gi
+        locator: 'p. 98, IRA Deduction Worksheet—Continued, line 7, "Single, head of household, or married filing separately,
+          multiply by 70% (0.70) (or by 80% (0.80) in the column for the IRA of a person who is age 50 or older at the end of
+          2025)"'
+    - id: person.ira_prod_joint
+      printed: (helper)
+      label: Line 6 multiplied by 35% (0.35), or by 40% (0.40) for a person age 50 or older at the end of 2025
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.ira_age50
+            - const: true
+          then: person.ira_p40
+        - guard:
+            op: test
+            eq:
+            - person.ira_age50
+            - const: false
+          then: person.ira_p35
+      cite:
+        doc: i1040gi
+        locator: 'p. 98, IRA Deduction Worksheet—Continued, line 7, "Married filing jointly or qualifying surviving spouse, multiply
+          by 35% (0.35) (or by 40% (0.40) in the column for the IRA of a person who is age 50 or older at the end of 2025)"'
+    - id: person.ira_prod
+      printed: (helper)
+      label: Line 6 multiplied by the percentage that applies to this column
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.ira_wide
+            - const: true
+          then: person.ira_prod_wide
+        - guard:
+            op: test
+            eq:
+            - person.ira_wide
+            - const: false
+          then: person.ira_prod_joint
+      cite:
+        doc: i1040gi
+        locator: 'p. 98, IRA Deduction Worksheet—Continued, line 7, "Multiply lines 6a and 6b by the percentage below that applies
+          to you"'
+      ambiguity: amb.2025.ira_line7_cents
+    - id: person.ira_rounded
+      printed: (helper)
+      label: If the result isn't a multiple of $10, increase it to the next multiple of $10
+      type: NonNegDollars
+      expr:
+        op: round
+        of: person.ira_prod
+        unit: 1000
+        rule: up
+      cite:
+        doc: i1040gi
+        locator: 'p. 98, IRA Deduction Worksheet—Continued, line 7, "If the result isn’t a multiple of $10, increase it to the
+          next multiple of $10 (for example, increase $490.30 to $500)"'
+    - id: person.ira_min
+      printed: (helper)
+      label: $200
+      type: NonNegDollars
+      expr:
+        op: param
+        ref: ira.min
+      cite:
+        doc: i1040gi
+        locator: 'p. 98, IRA Deduction Worksheet—Continued, line 7, "But if it is less than $200, enter $200"'
+    - id: person.ira_floor
+      printed: (helper)
+      label: If the result is $200 or more, enter the result; but if it is less than $200, enter $200
+      type: NonNegDollars
+      expr:
+        op: larger_of
+        of:
+        - person.ira_rounded
+        - person.ira_min
+      cite:
+        doc: i1040gi
+        locator: 'p. 98, IRA Deduction Worksheet—Continued, line 7, "If the result is $200 or more, enter the result. But if
+          it is less than $200, enter $200"'
+    - id: person.ira_below
+      printed: (helper)
+      label: Line 7 when the line 6 result is under the threshold (zero when line 6 is No)
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.ira_line6_yes
+            - const: true
+          then: person.ira_floor
+        - guard:
+            op: test
+            eq:
+            - person.ira_line6_yes
+            - const: false
+          then: person.zero
+      cite:
+        doc: i1040gi
+        locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 6, "None of your IRA contributions are deductible";
+          p. 98, IRA Deduction Worksheet—Continued, line 7'
+    - id: person.ira_line7_figured
+      printed: (helper)
+      label: Line 7 when someone is covered by a retirement plan (lines 2 through 6 completed)
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.ira_at_full
+            - const: true
+          then: person.ira_limit
+        - guard:
+            op: test
+            eq:
+            - person.ira_at_full
+            - const: false
+          then: person.ira_below
+      cite:
+        doc: i1040gi
+        locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 6, "enter the applicable amount below on line 7 for
+          that column and go to line 8" and "Otherwise, go to line 7"'
+    - id: person.ira_line7
+      printed: (helper)
+      label: Worksheet line 7 for this person's column
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - ira.anyone_covered
+            - const: true
+          then: person.ira_line7_figured
+        - guard:
+            op: test
+            eq:
+            - ira.anyone_covered
+            - const: false
+          then: person.ira_limit
+      cite:
+        doc: i1040gi
+        locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, "If you checked “No” on line 1a (and “No” on line 1b if
+          married filing jointly), skip lines 2 through 6, enter the applicable amount below on line 7a (and line 7b, if applicable),
+          and go to line 8"'
+    - id: person.ira_over_limit
+      printed: (gate)
+      label: This person's traditional and Roth IRA contributions for 2025 together are more than the applicable amount
+      type: Bool
+      expr:
+        op: test
+        all:
+        - op: test
+          eq:
+          - person.ira_has
+          - const: true
+        - op: test
+          gt:
+          - person.ira_own_total
+          - person.ira_limit
+      cite:
+        doc: p590a
+        locator: 'p. 35, Excess Contributions, "Generally, an excess contribution is the amount contributed to your traditional
+          IRAs for the year that is more than the smaller of: • $7,000 ($8,000 if you are age 50 or older), or • Your taxable
+          compensation for the year"'
+    - id: person.ira_own_total
+      printed: (helper)
+      label: This person's traditional and Roth IRA contributions for 2025
+      type: NonNegDollars
+      expr:
+        op: sum
+        of:
+        - person.ira_contrib
+        - person.sav_roth
+      cite:
+        doc: i8606
+        locator: 'p. 5, Overall Contribution Limit for Traditional and Roth IRAs, "your limit on contributions to traditional
+          and Roth IRAs is generally the smaller of $7,000 ($8,000 if age 50 or older at the end of 2025) or your taxable compensation"'
+    - id: person.ira_line11
+      printed: (helper)
+      label: Worksheet line 11 for this person's column (traditional IRA contributions for 2025)
+      type: NonNegDollars
+      expr:
+        op: copy
+        from: person.ira_contrib
+      cite:
+        doc: i1040gi
+        locator: 'p. 98, IRA Deduction Worksheet—Continued, line 11, "Enter traditional IRA contributions made, or that will be
+          made by the due date of your 2025 return not counting extensions (April 15, 2026, for most people), for 2025 to your
+          IRA on line 11a and to your spouse’s IRA on line 11b"'
+      refuses:
+      - when: ira.both_kinds
+        form: Traditional and Roth IRA contributions on a joint return (Pub. 590-A)
+        remedy: On a joint return where you or your spouse made contributions to both a traditional IRA and a Roth IRA for 2025,
+          the IRA deduction is figured with Pub. 590-A, which this tool does not prepare.
+        cite:
+          doc: i1040gi
+          locator: 'p. 95, Line 20, "If you are filing a joint return and you or your spouse made contributions to both a traditional
+            IRA and a Roth IRA for 2025, don’t use the IRA Deduction Worksheet in these instructions"'
+      - when: ira.kbh_short
+        form: IRA deduction on a joint return with little compensation (Pub. 590-A worksheet)
+        remedy: On a joint return with line 10 of the IRA Deduction Worksheet under $14,000 ($15,000 or $16,000 with spouses
+          age 50 or older), the IRA deduction is figured with the worksheet in Pub. 590-A, which this tool does not prepare.
+        cite:
+          doc: i1040gi
+          locator: 'p. 98, IRA Deduction Worksheet—Continued, Caution, "stop here and use the worksheet in Pub. 590-A to figure
+            your IRA deduction"'
+      - when: person.ira_excess_gate
+        form: Excess or recharacterized IRA contributions (Form 5329 Parts III and IV, Pub. 590-A)
+        remedy: Traditional or Roth IRA contributions for 2025 that are more than allowed or were recharacterized, and an
+          excess contribution from an earlier year still in an IRA, are outside this tool.
+        cite:
+          doc: i1040gi
+          locator: 'p. 95, Line 20, "If the total of your IRA deduction on line 20 plus any nondeductible contributions to your
+            traditional IRAs shown on Form 8606 is less than your total traditional IRA contributions for 2025, see Pub. 590-A
+            for special rules"'
+      - when: person.ira_over_limit
+        form: Excess IRA contributions (Form 5329 Part III, Pub. 590-A)
+        remedy: Your traditional and Roth IRA contributions for 2025 are together more than $7,000 ($8,000 if age 50 or older),
+          an excess contribution, which is outside this tool.
+        cite:
+          doc: p590a
+          locator: 'p. 35, Excess Contributions, "Generally, an excess contribution is the amount contributed to your traditional
+            IRAs for the year that is more than the smaller of"'
+      - when: ira.over_comp
+        form: Excess IRA contributions (Form 5329 Part III, Pub. 590-A)
+        remedy: The traditional and Roth IRA contributions for 2025 on this return are more than the compensation on line 10
+          of the IRA Deduction Worksheet, an excess contribution, which is outside this tool.
+        cite:
+          doc: p590a
+          locator: 'p. 35, Excess Contributions, "Your taxable compensation for the year"'
+      - when: ira.special_gate
+        form: IRA deduction special cases (Pub. 590-A)
+        remedy: Nonqualified deferred compensation in box 1 (Form W-2 box 11 or code Z, Form 1099-MISC box 15), fellowship or
+          stipend payments not on a Form W-2, repayments of qualified reservist distributions and difficulty of care payments
+          change the IRA compensation or contribution limits; they are outside this tool.
+        cite:
+          doc: i1040gi
+          locator: 'p. 95, Line 20, "don’t include that income on line 8 of the worksheet" and "Don’t include any repayments
+            of qualified reservist distributions"; p590a p. 6, What Is Compensation?, "certain non-tuition fellowship and stipend
+            payments not reported to you on Form W-2 are treated as taxable compensation for IRA purposes"'
+      - when: ira.excl_gate
+        form: IRA deduction with excluded foreign or possession income (Pub. 590-A)
+        remedy: With a retirement plan coverage and Form 2555 (or excluded income from Form 4563 or Puerto Rico), the IRA
+          deduction is figured with Pub. 590-A, which this tool does not prepare.
+        cite:
+          doc: i1040gi
+          locator: 'p. 96, Were You Covered by a Retirement Plan?, "If you were covered by a retirement plan and you file Form
+            2555 or 8815, or you exclude employer-provided adoption benefits, see Pub. 590-A to figure the amount, if any, of
+            your IRA deduction"'
+      - when: ira.combat_gate
+        form: Nontaxable combat pay in IRA compensation (IRA Deduction Worksheet, line 8)
+        remedy: Nontaxable combat pay counts as compensation for the IRA deduction; it is outside this tool.
+        cite:
+          doc: i1040gi
+          locator: 'p. 98, IRA Deduction Worksheet—Continued, line 8, "Nontaxable combat pay. This amount should be reported
+            in box 12 of Form W-2 with code Q or reported on Form 1040, line 1i"'
+    - id: person.ira_7or10
+      printed: (helper)
+      label: The smaller of line 7 for this column and line 10
+      type: NonNegDollars
+      expr:
+        op: smaller_of
+        of:
+        - person.ira_line7
+        - ira.line10
+      cite:
+        doc: i1040gi
+        locator: 'p. 98, IRA Deduction Worksheet—Continued, line 12, "On line 12a, enter the smallest of line 7a, 10, or 11a"'
+    - id: person.ira_line12
+      printed: (helper)
+      label: Worksheet line 12 for this person's column (the smallest of line 7, 10 or 11). This is the most you can deduct
+      type: NonNegDollars
+      expr:
+        op: smaller_of
+        of:
+        - person.ira_7or10
+        - person.ira_line11
+      cite:
+        doc: i1040gi
+        locator: 'p. 98, IRA Deduction Worksheet—Continued, line 12, "On line 12a, enter the smallest of line 7a, 10, or 11a.
+          On line 12b, enter the smallest of line 7b, 10, or 11b. This is the most you can deduct"'
+      ambiguity: amb.2025.ira_deduct_less
+    - id: person.ira_deduction
+      printed: (helper)
+      label: This person's IRA deduction (worksheet line 12; zero with no traditional IRA contributions)
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.ira_has
+            - const: true
+          then: person.ira_line12
+        - guard:
+            op: test
+            eq:
+            - person.ira_has
+            - const: false
+          then: person.zero
+      cite:
+        doc: i1040gi
+        locator: 'p. 98, IRA Deduction Worksheet—Continued, line 12, "Add the amounts on lines 12a and 12b and enter the total
+          on Schedule 1, line 20"'
+      refuses:
+      - when: person.ira_dist_gate
+        form: Nondeductible IRA contributions with a 2025 distribution or conversion (Form 8606 lines 4 to 13, Pub. 590-B)
+        remedy: With nondeductible traditional IRA contributions for 2025 and a 2025 traditional IRA distribution or Roth
+          conversion, the taxable part of the distribution is figured on Form 8606 lines 4 to 13 (Pub. 590-B Worksheet 1-1),
+          which this tool does not prepare.
+        cite:
+          doc: p590a
+          locator: 'p. 15, Both contributions for 2025 and distributions in 2025, "you must figure the taxable part of the traditional
+            IRA distribution before you can figure your modified AGI"'
+    - id: person.ira_10or11
+      printed: (helper)
+      label: The smaller of line 10 or line 11 of the worksheet for this person
+      type: NonNegDollars
+      expr:
+        op: smaller_of
+        of:
+        - ira.line10
+        - person.ira_line11
+      cite:
+        doc: i8606
+        locator: 'p. 9, Line 1, "subtract line 12 of the worksheet (or the amount you chose to deduct on Schedule 1 (Form 1040),
+          line 20, if less) from the smaller of line 10 or line 11 of the worksheet"'
+    - id: person.ira_nd_figured
+      printed: (helper)
+      label: Nondeductible contributions figured from the worksheet (the smaller of line 10 or 11, less line 12)
+      type: NonNegDollars
+      expr:
+        op: subtract_floor0
+        from: person.ira_10or11
+        take: person.ira_line12
+      cite:
+        doc: i8606
+        locator: 'p. 9, Line 1, "subtract line 12 of the worksheet (or the amount you chose to deduct on Schedule 1 (Form 1040),
+          line 20, if less) from the smaller of line 10 or line 11 of the worksheet. Enter the result on line 1 of Form 8606"'
+    - id: person.ira_nondeductible
+      printed: (helper)
+      label: This person's nondeductible traditional IRA contributions for 2025 (Form 8606 line 1)
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.ira_has
+            - const: true
+          then: person.ira_nd_figured
+        - guard:
+            op: test
+            eq:
+            - person.ira_has
+            - const: false
+          then: person.zero
+      cite:
+        doc: f8606
+        locator: 'Form 8606 (2025), line 1, "Enter your nondeductible contributions to traditional IRAs for 2025, including those
+          made for 2025 from January 1, 2026, through April 15, 2026"'
+    - id: person.ira_files_8606
+      printed: (helper)
+      label: This person files Form 8606 for nondeductible contributions to a traditional IRA for 2025
+      type: Bool
+      expr:
+        op: test
+        gt:
+        - person.ira_nondeductible
+        - param: sales.zero
+      cite:
+        doc: i8606
+        locator: 'p. 2, Who Must File, "You made nondeductible contributions to a traditional IRA for 2025"'
+    - id: person.ira_basis
+      printed: (helper)
+      label: Your total basis in traditional IRAs before 2025 (Form 8606 line 2)
+      type: NonNegDollars
+      expr:
+        op: input
+        source: 'Your total basis in traditional IRAs (Form 8606 line 2): zero if this is the first year you file Form 8606;
+          otherwise the amount the Total Basis Chart in the Form 8606 instructions gives for the last Form 8606 you filed
+          (generally line 14 of that form)'
+      cite:
+        doc: i8606
+        locator: 'p. 9, Line 2, "Generally, if this is the first year you are required to file Form 8606, enter -0-. Otherwise,
+          use the Total Basis Chart to find the amount to enter on line 2"'
+    - id: person.ira_basis_adjusted
+      printed: (helper)
+      label: Your traditional IRA basis changed other than by nondeductible contributions
+      type: Bool
+      expr:
+        op: input
+        source: 'Did your traditional IRA basis change other than by nondeductible contributions? That is: did the last Form
+          8606 you filed with Part I completed have a Line 15c Worksheet with an amount on line 6; did you have a return of
+          excess traditional IRA contributions; did you transfer or receive a traditional IRA incident to divorce; or did you
+          roll over a nontaxable part of a qualified retirement plan to a traditional IRA that wasn''t previously reported on
+          Form 8606, line 2?'
+      cite:
+        doc: i8606
+        locator: 'p. 9, Line 2, "you may need to enter an amount that is more than -0- (even if this is the first year you are
+          required to file Form 8606) or increase or decrease the amount from the chart"; p. 9, Total Basis Chart, "the amount
+          from line 14 of that Form 8606 as adjusted to include the amount from line 6 of the Line 15c Worksheet, if any"'
+    - id: person.ira_basis_gate
+      printed: (gate)
+      label: A person who files Form 8606 and whose traditional IRA basis changed other than by nondeductible contributions
+      type: Bool
+      expr:
+        op: test
+        all:
+        - op: test
+          eq:
+          - person.ira_files_8606
+          - const: true
+        - op: test
+          eq:
+          - person.ira_basis_adjusted
+          - const: true
+      cite:
+        doc: i8606
+        locator: 'p. 9, Line 2, "increase or decrease the amount from the chart"'
+    - id: person.ira_8606_line2
+      printed: (helper)
+      label: Form 8606 line 2 for this person (asked only when the person files Form 8606)
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.ira_files_8606
+            - const: true
+          then: person.ira_basis
+        - guard:
+            op: test
+            eq:
+            - person.ira_files_8606
+            - const: false
+          then: person.zero
+      cite:
+        doc: f8606
+        locator: Form 8606 (2025), line 2, "Enter your total basis in traditional IRAs"
+      refuses:
+      - when: person.ira_basis_gate
+        form: Form 8606, line 2 (basis adjustments)
+        remedy: Adjusting the Form 8606 line 2 basis for a Line 15c Worksheet amount, a return of excess contributions, a
+          transfer incident to divorce or a rollover of a nontaxable part of a qualified plan is outside this tool.
+        cite:
+          doc: i8606
+          locator: 'p. 9, Line 2, "you may need to enter an amount that is more than -0- (even if this is the first year you
+            are required to file Form 8606) or increase or decrease the amount from the chart"'
+    - id: person.ira_dist
+      printed: (helper)
+      label: In 2025, did you take a distribution from a traditional IRA, or make a Roth IRA conversion?
+      type: Bool
+      expr:
+        op: input
+        source: In 2025, did you take a distribution from a traditional IRA (including a SEP or SIMPLE IRA), or make a Roth
+          IRA conversion? Do not count rollovers, qualified charitable distributions, a one-time distribution to fund an HSA,
+          recharacterizations, or returns of contributions made by the due date of the return.
+      cite:
+        doc: f8606
+        locator: 'Form 8606 (2025), Part I, "In 2025, did you take a distribution from a traditional IRA, or make a Roth IRA
+          conversion?" and "For this purpose, “distributions” does not include rollovers"'
+    - id: person.ira_dist_gate
+      printed: (gate)
+      label: Nondeductible contributions for 2025 with a 2025 traditional IRA distribution or Roth conversion
+      type: Bool
+      expr:
+        op: test
+        all:
+        - op: test
+          eq:
+          - person.ira_has
+          - const: true
+        - op: test
+          eq:
+          - person.ira_files_8606
+          - const: true
+        - op: test
+          eq:
+          - person.ira_dist
+          - const: true
+      cite:
+        doc: f8606
+        locator: 'Form 8606 (2025), Part I, "In 2025, did you take a distribution from a traditional IRA, or make a Roth IRA
+          conversion?" and "Go to line 4"'
+    - id: person.ira_8606_line14
+      printed: (helper)
+      label: Form 8606 line 14 for this person (total basis in traditional IRAs for 2025 and earlier years)
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: f8606
+        field: f8606.line14
+      cite:
+        doc: f8606
+        locator: Form 8606 (2025), line 14
+    - id: person.ira_ssb_lim
+      printed: (helper)
+      label: 'Social Security Benefits Worksheet copy of the IRA deduction: the smaller of the applicable amount and line 10'
+      type: NonNegDollars
+      expr:
+        op: smaller_of
+        of:
+        - person.ira_limit
+        - ira.line10
+      cite:
+        doc: i1040gi
+        locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, "skip lines 2 through 6, enter the applicable amount below
+          on line 7a"; p. 98, IRA Deduction Worksheet—Continued, line 12, "enter the smallest of line 7a, 10, or 11a"'
+      ambiguity: amb.2025.ira_ssb_copy
+    - id: person.ira_ssb_figured
+      printed: (helper)
+      label: 'Social Security Benefits Worksheet copy of the IRA deduction when no one is covered by a retirement plan: the
+        smallest of the applicable amount, line 10 and line 11'
+      type: NonNegDollars
+      expr:
+        op: smaller_of
+        of:
+        - person.ira_ssb_lim
+        - person.ira_line11
+      cite:
+        doc: i1040gi
+        locator: 'p. 98, IRA Deduction Worksheet—Continued, line 12, "enter the smallest of line 7a, 10, or 11a"'
+      ambiguity: amb.2025.ira_ssb_copy
+      refuses:
+      - when: ira.cov_gate
+        form: Social security benefits with an IRA deduction and retirement plan coverage (Pub. 590-A Appendix B)
+        remedy: With social security benefits, traditional IRA contributions for 2025 and you or your spouse covered by a retirement
+          plan, the taxable benefits and the IRA deduction are figured with the worksheets in Pub. 590-A, which this tool does
+          not prepare.
+        cite:
+          doc: i1040gi
+          locator: p. 31, Lines 6a and 6b, Exception
+    - id: person.ira_ssb
+      printed: (helper)
+      label: This person's IRA deduction as the Social Security Benefits Worksheet reads it (zero with no traditional IRA contributions)
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.ira_has
+            - const: true
+          then: person.ira_ssb_figured
+        - guard:
+            op: test
+            eq:
+            - person.ira_has
+            - const: false
+          then: person.zero
+      cite:
+        doc: i1040gi
+        locator: p. 32, Social Security Benefits Worksheet, line 6
+      ambiguity: amb.2025.ira_ssb_copy
+    - id: person.ira_se_take
+      printed: (helper)
+      label: This person's deductions on Schedule 1, lines 15 and 16
+      type: NonNegDollars
+      expr:
+        op: sum
+        of:
+        - person.se_line13
+        - person.s16
+      cite:
+        doc: i1040gi
+        locator: 'p. 98, IRA Deduction Worksheet—Continued, line 9, "minus any deductions on Schedule 1, lines 15 and 16"'
+    - id: person.ira_se_figured
+      printed: (helper)
+      label: This person's earned income as a self-employed individual, less Schedule 1 lines 15 and 16 (zero or less, zero)
+      type: NonNegDollars
+      expr:
+        op: subtract_floor0
+        from: person.sc_total
+        take: person.ira_se_take
+      cite:
+        doc: i1040gi
+        locator: 'p. 98, IRA Deduction Worksheet—Continued, line 9, "Enter the earned income you (and your spouse if filing jointly)
+          received as a self-employed individual or a partner" and "If zero or less, enter -0-"'
+      ambiguity: amb.2025.ira_se_floor
+    - id: person.ira_se
+      printed: (helper)
+      label: This person's part of worksheet line 9 (zero without a Schedule C)
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.has_sc
+            - const: true
+          then: person.ira_se_figured
+        - guard:
+            op: test
+            eq:
+            - person.has_sc
+            - const: false
+          then: person.zero
+      cite:
+        doc: i1040gi
+        locator: 'p. 98, IRA Deduction Worksheet—Continued, line 9, "Generally, this is your (and your spouse’s if filing jointly)
+          net earnings from self-employment if your personal services were a material income-producing factor"'
+      ambiguity: amb.2025.ira_se_earned
   collection:
     cite:
       doc: f1040

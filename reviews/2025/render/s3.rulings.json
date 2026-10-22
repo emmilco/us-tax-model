@@ -5,6 +5,12 @@
   {
    "printed": "1",
    "restated": "Enter the amount from ftc helper \"Credit is the smaller of creditable foreign tax and regular income tax; zero if no foreign tax\".",
+   "model": "Schedule 3 line 1 says only \"Foreign tax credit. Attach Form 1116 if required.\" The instructions that would define the no-Form-1116 election and cap the credit at Form 1040 line 16 are not in the pages given. The rule of the smaller of foreign taxes or line 16, and the election conditions, cannot be checked.",
+   "ruling": "Ruling: representation; project retained (as the prior rulings). The helper is the election to claim the credit without Form 1116 (i1116 p. 1, Election To Claim the Foreign Tax Credit Without Filing Form 1116: the credit is the smaller of the total foreign tax and the regular tax when all foreign income is passive, reported on payee statements and within the $300/$600 limit); every failed condition refuses through ftc.needs1116. The ftc worksheet has its own transcription and render logs, which hold those pages. No change."
+  },
+  {
+   "printed": "1",
+   "restated": "Enter the amount from ftc helper \"Credit is the smaller of creditable foreign tax and regular income tax; zero if no foreign tax\".",
    "model": "The form says only \"Foreign tax credit. Attach Form 1116 if required\", and the Line 1 instructions are not in the pages given. Nothing provided supports capping the credit at Form 1040 line 16, or the $300/$600 limit and other election conditions that trigger the Form 1116 refusal.",
    "ruling": "Ruling: representation; project retained. The helper is the election to claim the credit without Form 1116 (i1116 pp. 1–2, the election to claim the foreign tax credit without filing Form 1116: the credit is the smaller of the total foreign tax and the regular tax when all foreign income is passive, reported on payee statements and within the $300/$600 limit); every failed condition refuses through `ftc.needs1116`. The ftc worksheet has its own render log. No change to the data."
   },
@@ -25,6 +31,12 @@
    "restated": "Add person.credit over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "Line 11 is \"Excess social security and tier 1 RRTA tax withheld\". The restatement adds up person.credit for each person, but person.credit isn't defined in the glossary, and the text given has no instructions on how to work out the excess. The refusal for married filing separately is a valid narrowing, but the calculation itself can't be checked.",
    "ruling": "Ruling: representation; project retained (as the prior rulings). `person.credit` is the per-person credit of i1040gi p. 117: zero unless more than one employer and total social security wages over $176,100, otherwise the withholding above $10,918.20, refused when any one employer withheld more than the limit (Form 843, person.over) and when RRTA compensation is reported (person.rrta). The person worksheet has its own render log, where each of those lines was judged. On a joint return each spouse figures it from that spouse's own Forms W-2 and line 11 adds them (i1040gi p. 117, \"If you, or your spouse if filing a joint return, had more than one employer\"). No change to the data."
+  },
+  {
+   "printed": "11",
+   "restated": "Add person.credit over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The IRS line reads \"Excess social security and tier 1 RRTA tax withheld.\" The restatement sums person.credit, but that value is not defined in the glossary, and the excess-withholding computation is not in the pages given.",
+   "ruling": "Ruling: representation; project retained (as the prior rulings). person.credit is the per-person credit of i1040gi p. 117: zero unless more than one employer and total social security wages over $176,100, otherwise the withholding above $10,918.20, refused when any one employer withheld more than the limit (person.over, Form 843) and when RRTA compensation is reported (person.rrta). The person worksheet has its own render log. On a joint return each spouse figures it from that spouse's own Forms W-2 and line 11 adds them (i1040gi p. 117, \"If you, or your spouse if filing a joint return, had more than one employer\"). No change."
   },
   {
    "printed": "11",

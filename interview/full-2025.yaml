@@ -11,6 +11,7 @@ interview:
   - f2441.statement_notice
   - f2441.household_notice
   - f5695.line32b
+  - ira.basis_total
   initial: {}
   cite:
     doc: f1040

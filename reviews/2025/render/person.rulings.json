@@ -23,6 +23,18 @@
   {
    "printed": "Step 1",
    "restated": "Enter the amount from helper \"This person's Schedule C net profit or loss (all businesses)\".",
+   "model": "Step 1 adds Schedule C results across all of this person's businesses. Pub 560 says 'If you have more than one business, but only one has a retirement plan, only the earned income from that business is considered for that plan.' No refusal or screen excludes that case.",
+   "ruling": "Ruling: refusal located elsewhere; project retained (BUG-0078, as the prior ruling). Pub. 560 p. 7, Earned income, \"If you have more than one business, but only one has a retirement plan, only the earned income from that business is considered for that plan\": a SEP or SIMPLE plan with more than one Schedule C is refused (person.plan_screened: a plan and person.sc_count above 1), so step 1 is the profit of the business that has the plan on every return the tool completes. Statutory employee income and notary fees are refused on each Schedule C (sc.statutory, \"Is this business income you received as a statutory employee ... or fees you received as a notary public?\"), so no such Schedule C reaches step 1."
+  },
+  {
+   "printed": "Step 1",
+   "restated": "Enter the amount from helper \"This person's Schedule C net profit or loss (all businesses)\".",
+   "model": "Summing every Schedule C for the person ignores Pub 560: 'If you have more than one business, but only one has a retirement plan, only the earned income from that business is considered for that plan.' It also includes statutory-employee Schedules C, which are not self-employment income, and no screen excludes either case.",
+   "ruling": "Ruling: refusal located elsewhere; project retained (BUG-0078, as the prior ruling). Pub. 560 p. 7, Earned income, \"If you have more than one business, but only one has a retirement plan, only the earned income from that business is considered for that plan\": a SEP or SIMPLE plan with more than one Schedule C is refused (person.plan_screened: a plan and person.sc_count above 1), so step 1 is the profit of the business that has the plan on every return the tool completes. Statutory employee income and notary fees are refused on each Schedule C (sc.statutory, \"Is this business income you received as a statutory employee ... or fees you received as a notary public?\"), so no such Schedule C reaches step 1."
+  },
+  {
+   "printed": "Step 1",
+   "restated": "Enter the amount from helper \"This person's Schedule C net profit or loss (all businesses)\".",
    "model": "The restatement adds net profit from all of the person's Schedules C. Pub 560 says 'If you have more than one business, but only one has a retirement plan, only the earned income from that business is considered for that plan,' and nothing in the screens excludes that case.",
    "ruling": "Ruling: refusal located elsewhere; project retained (BUG-0078, as the prior ruling). Pub. 560 p. 7, Earned income: \"If you have more than one business, but only one has a retirement plan, only the earned income from that business is considered for that plan.\" The owner's remedy for BUG-0078 refuses a SEP or SIMPLE plan with more than one Schedule C: person.plan_screened is true when person.plan_screen is answered yes or the person has a plan and person.sc_count is more than 1, and it refuses the plan contributions (person.sep_contrib and the SIMPLE inputs, 'a plan with more than one Schedule C', shown in the glossary). So for every return the tool completes the person has one Schedule C, and step 1, the profit of all the person's businesses, is the profit of the business that has the plan. No change."
   },
@@ -55,6 +67,12 @@
    "restated": "Enter the amount from helper \"Schedule SE line 13 (deduction for one-half of self-employment tax) for this person\".",
    "model": "This uses Schedule SE line 13 computed from se_line2, which includes every Schedule C, even a statutory employee's or a notary's. The instructions say for statutory employees 'do not report this amount on Schedule SE (Form 1040), line 2'. Otherwise it matches 'Enter your deduction for self-employment tax from Schedule 1 (Form 1040), line 15' for this person.",
    "ruling": "Ruling: model error; project retained. Statutory employee income and notary fees are refused on each Schedule C (sc.statutory), so every Schedule C that reaches this line is one whose net profit Schedule SE line 2 takes; the second's filter excludes nothing the tool admits. Railroad retirement compensation with a Schedule C is refused (person.se_rrta), so line 8a is the W-2 boxes 3 and 7 for every person who reaches it."
+  },
+  {
+   "printed": "Step 2",
+   "restated": "Enter the amount from helper \"Schedule SE line 13 (deduction for one-half of self-employment tax) for this person\".",
+   "model": "Using this person's Schedule SE line 13, computed with lines 1a/1b, 4b, 5a, 8b and 8c screened to zero, matches Pub 560's 'deduction for self-employment tax from Schedule 1 (Form 1040), line 15'. However, it is not shown whether sc.result excludes statutory-employee or notary Schedules C: 'If you were a statutory employee, don't include the net profit or (loss) from Schedule C, line 31, on Schedule SE, line 2.'",
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted (as the prior rulings). Statutory employee income and notary fees are refused on each Schedule C (sc.statutory, through sc.screened), so every Schedule C result that reaches Schedule SE line 2 belongs there and Step 2 is this person's Schedule SE line 13, the deduction on Schedule 1 line 15. i1040sse p. 4, Statutory Employee Income, \"If you were a statutory employee, don’t include the net profit or (loss) from Schedule C, line 31, on Schedule SE, line 2\"."
   },
   {
    "printed": "employers",

@@ -7,17 +7,17 @@ Shares are of the 160,602,107 individual returns the IRS counted for tax year 20
 (Statistics of Income, Publication 1304, archived under `sources/2025/soi-*`). Overlaps between situations
 come from PolicyEngine-US microdata simulated for 2025, raked to every IRS count it can place.
 
-**Estimated coverage: 64.7%** of returns. If the IRS-only categories overlapped the rest
-completely the figure would be 74.1%; if they overlapped nothing, 60.7%.
+**Estimated coverage: 68.6%** of returns. If the IRS-only categories overlapped the rest
+completely the figure would be 76.5%; if they overlapped nothing, 65.7%.
 
 Limits of this estimate:
 
 - IRS counts are for 2023; the 2025 shares are assumed similar.
 - Where the IRS gives only parts of a situation with unknown overlap, the largest part is used, a lower bound.
-- 119 of the 129 refusal gates in the forms are not measured (no IRS count or
+- 148 of the 157 refusal gates in the forms are not measured (no IRS count or
   microdata variable), so the true coverage is lower by their share. Gates measured only in part (for example
   `scope.credits`, `scope.other_line16`) also refuse situations not counted here. Unmeasured:
-  `asset.bonus_mixed`, `asset.listed_low`, `asset.s179_bad`, `asset.screened`, `carloan.refi_nested`, `dependent.dc_no_tin`, `dependent.divorced_rule`, `dependent.income_exception`, `dependent.married`, `dependent.multiple_support`, `dependent.other_claimant`, `div.amt`, `div.bad_components`, `div.bad_special`, `div.section1202`, `div.unsupported`, `f2441.attrib_gate`, `f2441.line14_bad`, `f2441.nondependent_gate`, `f2441.plans_differ`, `f2441.prior_year`, `f2441.provider_ineligible`, `f2441.spouse_died_gate`, `f2441.student_disabled`, `f4952.alternative_allocation`, `f4952.bad_dividends`, `f4952.bad_election`, `f4952.carryover`, `f4952.unsupported`, `f5695.ac_no_qmid`, `f5695.business_use`, `f5695.construction_later`, `f5695.doors_no_qmid`, `f5695.enabling_no_qmid`, `f5695.furnace_no_qmid`, `f5695.hp_no_qmid`, `f5695.joint_occupancy`, `f5695.line7a`, `f5695.sec_a_new_home`, `f5695.sec_b_new_home`, `f5695.separate_homes_joint`, `f5695.wh_no_qmid`, `f5695.windows_no_qmid`, `f8889.allocation_bad`, `f8889.bad_months`, `f8889.excess`, `f8889.mfs`, `f8959.unsupported`, `f8960.bad_allocation`, `f8960.refund`, `f8960.unsupported`, `ftc.needs1116`, `gift.section_b`, `gift.special`, `household.hoh_fails`, `household.roster_bad`, `otjob.refused`, `person.hsa_repeated`, `person.over`, `person.plan_screened`, `person.rrta`, `person.sav_able`, `person.sav_excess_gate`, `person.sav_trad`, `person.se_rrta`, `person.se_screened`, `person.sep_excess`, `person.simple_excess`, `qbi.business_any`, `qbi.unsupported`, `retirement.annuity_rollover`, `retirement.bad_code`, `s1.ebl`, `s1.sc_1a`, `s1.uc_unsupported`, `s179.mfs`, `s179.multi`, `s179.orphan`, `s1a.senior_decedent`, `s1a.spouse_senior_decedent`, `s8812.combat_pay`, `s8812.puerto_rico`, `sa.charity_limited`, `sa.dependent`, `sa.mfs_spouse_extra`, `sa.unsupported`, `sales.bad_aggregate`, `sales.bad_code`, `sales.digital`, `sales.special`, `sb.fbar_required`, `sb.form8938`, `sb.line8`, `sb.unsupported`, `sc.hi_screened`, `sc.ho_both_limits`, `sc.ho_multi`, `sc.ho_screened`, `sc.inventory_other`, `sc.not_at_risk`, `sc.screened`, `scope.other_line16`, `scveh.bonus_mixed`, `scveh.low_use`, `scveh.no_miles`, `scveh.s179_bad`, `scveh.screened`, `scveh.smr_bad`, `scveh.too_old`, `sd.other_forms`, `sd.screen`, `ssb.lump_sum`, `ssb.pub915`, `ssb.terror_disability`, `tipjob.mixed`, `w2.box10_bad`, `w2.box12_userra`, `w2.code_h`, `w2.g_bad`.
+  `asset.bonus_mixed`, `asset.listed_low`, `asset.s179_bad`, `asset.screened`, `carloan.refi_nested`, `dependent.dc_no_tin`, `dependent.divorced_rule`, `dependent.income_exception`, `dependent.married`, `dependent.multiple_support`, `dependent.other_claimant`, `div.amt`, `div.bad_components`, `div.bad_special`, `div.section1202`, `div.unsupported`, `f2441.attrib_gate`, `f2441.employer_care_gate`, `f2441.line14_bad`, `f2441.nondependent_gate`, `f2441.plans_differ`, `f2441.prior_year`, `f2441.provider_ineligible`, `f2441.spouse_died_gate`, `f2441.student_disabled`, `f4952.alternative_allocation`, `f4952.bad_dividends`, `f4952.bad_election`, `f4952.carryover`, `f4952.unsupported`, `f5695.ac_no_qmid`, `f5695.business_use`, `f5695.construction_later`, `f5695.doors_no_qmid`, `f5695.enabling_no_qmid`, `f5695.furnace_no_qmid`, `f5695.hp_no_qmid`, `f5695.joint_occupancy`, `f5695.line7a`, `f5695.sec_a_new_home`, `f5695.sec_b_new_home`, `f5695.separate_homes_joint`, `f5695.wh_no_qmid`, `f5695.windows_no_qmid`, `f8606.dist`, `f8889.allocation_bad`, `f8889.bad_months`, `f8889.excess`, `f8889.mfs`, `f8889.rollover_bad`, `f8889.subject_bad`, `f8889.unsupported`, `f8959.unsupported`, `f8960.bad_allocation`, `f8960.refund`, `f8960.unsupported`, `ftc.needs1116`, `gift.section_b`, `gift.special`, `household.hoh_fails`, `household.roster_bad`, `ira.both_kinds`, `ira.combat_gate`, `ira.cov_gate`, `ira.excl_gate`, `ira.kbh_short`, `ira.less_gate`, `ira.over_comp`, `ira.special_gate`, `oi8z.additional_tax`, `oi8z.figured`, `oi8z.recovery`, `otjob.refused`, `person.hsa_repeated`, `person.ira_basis_gate`, `person.ira_dist_gate`, `person.ira_excess_gate`, `person.ira_over_limit`, `person.over`, `person.plan_screened`, `person.rrta`, `person.sav_able`, `person.sav_excess_gate`, `person.se_rrta`, `person.se_screened`, `person.sep_excess`, `person.simple_excess`, `qbi.business_any`, `qbi.unsupported`, `refund.box8`, `refund.exc_tax`, `refund.exc_who`, `refund.not_2024`, `refund.other`, `retirement.annuity_rollover`, `retirement.bad_code`, `s1.alimony_unsupported`, `s1.cod_unsupported`, `s1.ebl`, `s1.gambling_business`, `s1.jury_over`, `s1.line8_other`, `s1.sc_1a`, `s1.uc_unsupported`, `s179.mfs`, `s179.multi`, `s179.orphan`, `s1a.senior_decedent`, `s1a.spouse_senior_decedent`, `s8812.combat_pay`, `s8812.puerto_rico`, `sa.charity_limited`, `sa.dependent`, `sa.mfs_spouse_extra`, `sa.unsupported`, `sales.bad_aggregate`, `sales.bad_code`, `sales.digital`, `sales.special`, `sb.fbar_required`, `sb.form8938`, `sb.line8`, `sb.unsupported`, `sc.hi_screened`, `sc.ho_both_limits`, `sc.ho_multi`, `sc.ho_screened`, `sc.inventory_other`, `sc.not_at_risk`, `sc.screened`, `scope.other_line16`, `scveh.bonus_mixed`, `scveh.low_use`, `scveh.no_miles`, `scveh.s179_bad`, `scveh.screened`, `scveh.smr_bad`, `scveh.too_old`, `sd.other_forms`, `sd.screen`, `ssb.lump_sum`, `ssb.pub915`, `ssb.terror_disability`, `tipjob.mixed`, `w2.box10_bad`, `w2.box12_userra`, `w2.code_h`, `w2.g_bad`.
 
 ## Coverage gained by each group, in the order that gains most
 
@@ -25,14 +25,14 @@ Coverage here is of the measured situations only; 100% would still leave the unm
 
 | Step | Group | Coverage after | Gain if covered alone now |
 |---|---|---|---|
-| 1 | Other Schedule 1 income and adjustments | 72.4% (+7.7) | +7.7 |
-| 2 | Rental, royalty, partnership, S corporation, estate (Schedule E) | 79.1% (+6.7) | +4.8 |
-| 3 | Premium tax credit (Form 8962) | 84.0% (+4.9) | +4.2 |
-| 4 | Education credits (Form 8863) | 88.1% (+4.1) | +3.0 |
-| 5 | Capital loss carryover | 91.3% (+3.2) | +2.3 |
-| 6 | Additional tax on retirement plans (Form 5329) | 94.3% (+3.0) | +2.1 |
-| 7 | Married filing separately | 96.8% (+2.5) | +2.0 |
-| 8 | Farm income (Schedule F) | 97.9% (+1.1) | +0.3 |
+| 1 | Rental, royalty, partnership, S corporation, estate (Schedule E) | 73.8% (+5.3) | +5.3 |
+| 2 | Other Schedule 1 income and adjustments | 79.1% (+5.3) | +3.9 |
+| 3 | Premium tax credit (Form 8962) | 84.0% (+4.9) | +4.4 |
+| 4 | Education credits (Form 8863) | 88.1% (+4.1) | +3.3 |
+| 5 | Capital loss carryover | 91.3% (+3.2) | +2.5 |
+| 6 | Additional tax on retirement plans (Form 5329) | 94.3% (+3.0) | +2.2 |
+| 7 | Married filing separately | 96.8% (+2.5) | +2.1 |
+| 8 | Farm income (Schedule F) | 97.9% (+1.1) | +0.4 |
 | 9 | Other credits (dependent care, saver's, energy, others) | 98.8% (+0.9) | +0.6 |
 | 10 | Wages not on Form W-2 and other earned income | 99.5% (+0.8) | +0.5 |
 | 11 | Other Schedule 2 taxes (AMT and others) | 100.0% (+0.5) | +0.3 |
@@ -49,22 +49,14 @@ Coverage here is of the measured situations only; 100% would still leave the unm
 | Partnership or S corporation income or loss | Rental, royalty, partnership, S corporation, estate (Schedule E) | 3.5% | 5,554,014 | 7.1% | IRS count, overlap from microdata |
 | Additional tax on qualified plans (Form 5329) | Additional tax on retirement plans (Form 5329) | 3.2% | 5,092,999 | — | IRS count only (independence assumed) |
 | Married filing separately | Married filing separately | 2.6% | 4,139,858 | 1.2% | IRS count, overlap from microdata |
-| Taxable state or local income tax refund | Other Schedule 1 income and adjustments | 1.9% | 3,109,096 | 9.7% | IRS count, overlap from microdata |
-| IRA deduction | Other Schedule 1 income and adjustments | 1.6% | 2,503,934 | 16.9% | IRS count, overlap from microdata |
-| Gambling winnings | Other Schedule 1 income and adjustments | 1.4% | 2,304,901 | — | IRS count only (independence assumed) |
 | Farm income or loss | Farm income (Schedule F) | 1.1% | 1,743,031 | 0.1% | IRS count, overlap from microdata |
 | Sales of business property (Form 4797) | Other Schedule 1 income and adjustments | 1.1% | 1,720,509 | — | IRS count only (independence assumed) |
 | Other nonrefundable credits (general business, adoption, clean vehicle and others) | Other credits (dependent care, saver's, energy, others) | 0.9% | 1,467,567 | — | IRS count only (independence assumed) |
 | Wages or tips not on Form W-2, dependent care benefits, other earned income | Wages not on Form W-2 and other earned income | 0.8% | 1,267,621 | — | IRS count only (independence assumed) |
 | Net operating loss deduction | Other Schedule 1 income and adjustments | 0.6% | 1,019,019 | — | IRS count only (independence assumed) |
-| Penalty on early withdrawal of savings | Other Schedule 1 income and adjustments | 0.6% | 904,938 | — | IRS count only (independence assumed) |
 | Estate or trust income or loss | Rental, royalty, partnership, S corporation, estate (Schedule E) | 0.4% | 685,175 | 0.5% | IRS count, overlap from microdata |
 | Household employment, uncollected tip taxes, homebuyer credit repayment | Other Schedule 2 taxes (AMT and others) | 0.4% | 574,187 | — | IRS count only (independence assumed) |
-| Taxable HSA distributions | Other Schedule 1 income and adjustments | 0.3% | 464,689 | — | IRS count only (independence assumed) |
 | Foreign earned income exclusion (Form 2555) | Other Schedule 1 income and adjustments | 0.3% | 432,724 | — | IRS count only (independence assumed) |
-| Cancellation of debt | Other Schedule 1 income and adjustments | 0.2% | 386,021 | — | IRS count only (independence assumed) |
-| Alimony paid | Other Schedule 1 income and adjustments | 0.2% | 278,541 | 0.2% | IRS count, overlap from microdata |
-| Alimony received | Other Schedule 1 income and adjustments | 0.1% | 183,582 | 0.2% | IRS count, overlap from microdata |
 | Alternative minimum tax | Other Schedule 2 taxes (AMT and others) | 0.1% | 150,167 | — | IRS count only (independence assumed) |
 
 Raking converged with a largest share error of 7.1e-07.

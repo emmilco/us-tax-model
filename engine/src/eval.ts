@@ -285,6 +285,13 @@ function evalOperand(ctx: Ctx, frame: Frame, op: Operand, operandsOut?: { ref: s
   return value;
 }
 
+/** What an atom's evaluated operands leave it before it computes: the first refusal among them in
+ * operand order, else the first unknown, else null (every operand is known). A refusal outranks an
+ * unknown, so a refusal is not held back behind an operand whose value cannot change the outcome. */
+export function incompleteOperand(vals: Value[]): Value | null {
+  return vals.find((v) => v.kind === "refusal") ?? vals.find((v) => v.kind === "unknown") ?? null;
+}
+
 /** Half-up at the cent: floor((2*a*n + d) / (2*d)) computes round-half-up of a*n/d toward +infinity. */
 /** Round cents to a multiple of `unit` by the named rule; floor division throughout, as the Lean atoms. */
 export function roundToUnit(cents: number, unit: number, rule: string): number | null {
@@ -361,13 +368,13 @@ function evalExpr(ctx: Ctx, frame: Frame, lineId: string, expr: Expr, cite: Cite
         if (expr.where) {
           const selected = evalTest(ctx, inner, expr.where, ops);
           if (selected.kind === "refusal") return d(selected, "sum_over", ops);
-          if (selected.kind !== "bool") { missing = selected; continue; }
+          if (selected.kind !== "bool") { missing ??= selected; continue; }
           if (!selected.value) continue;
         }
         const item = evalLine(ctx, inner, expr.field);
         ops.push({ ref: item.line, value: item.value });
         if (item.value.kind === "refusal") return d(item.value, "sum_over", ops);
-        if (item.value.kind === "unknown") { missing = item.value; continue; }
+        if (item.value.kind === "unknown") { missing ??= item.value; continue; }
         if (item.value.kind === "money") total += BigInt(item.value.cents);
         else if (item.value.kind === "count") total += BigInt(item.value.value);
       }
@@ -377,21 +384,22 @@ function evalExpr(ctx: Ctx, frame: Frame, lineId: string, expr: Expr, cite: Cite
     case "sum": {
       let total = 0n;
       let unknown: Value | null = null;
+      let wrong: Value | null = null;
       for (const ref of expr.of) {
         const v = evalOperand(ctx, frame, ref, ops);
         if (v.kind === "money") total += BigInt(v.cents);
         else if (v.kind === "refusal") return d(v, "sum", ops);
-        else if (v.kind === "unknown") unknown = v;
-        else return d({ kind: "unknown", reason: `sum operand ${ref} is not money` }, "sum", ops);
+        else if (v.kind === "unknown") unknown ??= v;
+        else wrong ??= { kind: "unknown", reason: `sum operand ${operandDisplay(ref)} is not money` };
       }
-      return d(unknown ?? { kind: "money", cents: safeNumber(total) }, "sum", ops);
+      return d(unknown ?? wrong ?? { kind: "money", cents: safeNumber(total) }, "sum", ops);
     }
     case "subtract":
     case "subtract_floor0": {
       const from = evalOperand(ctx, frame, expr.from, ops);
       const take = evalOperand(ctx, frame, expr.take, ops);
-      if ((from.kind === "unknown" || from.kind === "refusal")) return d(from, expr.op, ops);
-      if ((take.kind === "unknown" || take.kind === "refusal")) return d(take, expr.op, ops);
+      const incomplete = incompleteOperand([from, take]);
+      if (incomplete) return d(incomplete, expr.op, ops);
       if (from.kind !== "money" || take.kind !== "money") {
         return d({ kind: "unknown", reason: "operands are not money" }, expr.op, ops);
       }
@@ -401,10 +409,16 @@ function evalExpr(ctx: Ctx, frame: Frame, lineId: string, expr: Expr, cite: Cite
     }
     case "smaller_of":
     case "larger_of": {
-      const vals: number[] = [];
+      const got: Value[] = [];
       for (const ref of expr.of) {
         const v = evalOperand(ctx, frame, ref, ops);
-        if ((v.kind === "unknown" || v.kind === "refusal")) return d(v, expr.op, ops);
+        got.push(v);
+        if (v.kind === "refusal") break;
+      }
+      const incomplete = incompleteOperand(got);
+      if (incomplete) return d(incomplete, expr.op, ops);
+      const vals: number[] = [];
+      for (const v of got) {
         if (v.kind !== "money") return d({ kind: "unknown", reason: "operands are not money" }, expr.op, ops);
         vals.push(v.cents);
       }
@@ -414,8 +428,8 @@ function evalExpr(ctx: Ctx, frame: Frame, lineId: string, expr: Expr, cite: Cite
     case "multiply_count": {
       const amount = evalOperand(ctx, frame, expr.amount, ops);
       const count = evalOperand(ctx, frame, expr.count, ops);
-      if (amount.kind === "unknown" || amount.kind === "refusal") return d(amount, "multiply_count", ops);
-      if (count.kind === "unknown" || count.kind === "refusal") return d(count, "multiply_count", ops);
+      const incomplete = incompleteOperand([amount, count]);
+      if (incomplete) return d(incomplete, "multiply_count", ops);
       if (amount.kind !== "money" || count.kind !== "count") {
         return d({ kind: "unknown", reason: "multiply_count operands wrong" }, "multiply_count", ops);
       }
@@ -425,7 +439,8 @@ function evalExpr(ctx: Ctx, frame: Frame, lineId: string, expr: Expr, cite: Cite
       const amount = evalOperand(ctx, frame, expr.amount, ops);
       const part = evalOperand(ctx, frame, expr.part, ops);
       const whole = evalOperand(ctx, frame, expr.whole, ops);
-      for (const v of [amount, part, whole]) if (v.kind === "unknown" || v.kind === "refusal") return d(v, "prorate", ops);
+      const incomplete = incompleteOperand([amount, part, whole]);
+      if (incomplete) return d(incomplete, "prorate", ops);
       if (amount.kind !== "money" || part.kind !== "money" || whole.kind !== "money" || whole.cents <= 0) {
         return d({ kind: "unknown", reason: "prorate operands wrong" }, "prorate", ops);
       }
@@ -437,8 +452,8 @@ function evalExpr(ctx: Ctx, frame: Frame, lineId: string, expr: Expr, cite: Cite
     case "multiply_rate": {
       const amount = evalOperand(ctx, frame, expr.amount, ops);
       const rate = evalOperand(ctx, frame, expr.rate, ops);
-      if ((amount.kind === "unknown" || amount.kind === "refusal")) return d(amount, "multiply_rate", ops);
-      if ((rate.kind === "unknown" || rate.kind === "refusal")) return d(rate, "multiply_rate", ops);
+      const incomplete = incompleteOperand([amount, rate]);
+      if (incomplete) return d(incomplete, "multiply_rate", ops);
       if (amount.kind !== "money" || rate.kind !== "rate") {
         return d({ kind: "unknown", reason: "multiply_rate operands wrong" }, "multiply_rate", ops);
       }
@@ -457,10 +472,16 @@ function evalExpr(ctx: Ctx, frame: Frame, lineId: string, expr: Expr, cite: Cite
     case "keyed_lookup": {
       const table = ctx.data.tables.find((t) => t.id === expr.table);
       if (!table || table.kind !== "keyed") return d({ kind: "unknown", reason: `table ${expr.table} missing` }, "keyed_lookup", ops);
-      const keyVals: (string | number)[] = [];
+      const got: Value[] = [];
       for (const ref of expr.keys) {
         const v = evalOperand(ctx, frame, ref, ops);
-        if (v.kind === "unknown" || v.kind === "refusal") return d(v, "keyed_lookup", ops);
+        got.push(v);
+        if (v.kind === "refusal") break;
+      }
+      const incomplete = incompleteOperand(got);
+      if (incomplete) return d(incomplete, "keyed_lookup", ops);
+      const keyVals: (string | number)[] = [];
+      for (const v of got) {
         if (v.kind === "enum") keyVals.push(v.value);
         else if (v.kind === "count") keyVals.push(v.value);
         else return d({ kind: "unknown", reason: "keyed_lookup key is not an enum or count" }, "keyed_lookup", ops);
@@ -481,14 +502,17 @@ function evalExpr(ctx: Ctx, frame: Frame, lineId: string, expr: Expr, cite: Cite
       const table = ctx.data.tables.find((t) => t.id === expr.table);
       if (!table || table.kind !== "rate_bands") return d({ kind: "unknown", reason: `table ${expr.table} missing` }, "rate_lookup", ops);
       const key = evalOperand(ctx, frame, expr.key, ops);
-      if (key.kind === "unknown" || key.kind === "refusal") return d(key, "rate_lookup", ops);
+      if (key.kind === "refusal") return d(key, "rate_lookup", ops);
+      const byStatus = table.columns !== undefined && table.columns.length > 0;
+      const status: Value | null = !byStatus ? null
+        : expr.status === undefined ? { kind: "unknown", reason: "rate_lookup status missing" }
+        : evalOperand(ctx, frame, expr.status, ops);
+      const incomplete = incompleteOperand(status ? [key, status] : [key]);
+      if (incomplete) return d(incomplete, "rate_lookup", ops);
       if (key.kind !== "money") return d({ kind: "unknown", reason: "rate_lookup key is not money" }, "rate_lookup", ops);
       let col = 0;
       const note: string[] = [];
-      if (table.columns && table.columns.length > 0) {
-        if (expr.status === undefined) return d({ kind: "unknown", reason: "rate_lookup status missing" }, "rate_lookup", ops);
-        const status = evalOperand(ctx, frame, expr.status, ops);
-        if (status.kind === "unknown" || status.kind === "refusal") return d(status, "rate_lookup", ops);
+      if (status && table.columns) {
         if (status.kind !== "enum") return d({ kind: "unknown", reason: "rate_lookup status is not an enum" }, "rate_lookup", ops);
         col = table.columns.findIndex((c) => c.statuses.includes(status.value));
         if (col < 0) return d({ kind: "unknown", reason: `no column for ${status.value}` }, "rate_lookup", ops);
@@ -508,8 +532,8 @@ function evalExpr(ctx: Ctx, frame: Frame, lineId: string, expr: Expr, cite: Cite
       const status = evalOperand(ctx, frame, expr.status, ops);
       const table = ctx.data.tables.find((t) => t.id === expr.table);
       if (!table || table.kind !== "tax_table") return d({ kind: "unknown", reason: `table ${expr.table} missing` }, "table_lookup", ops);
-      if (key.kind === "unknown" || key.kind === "refusal") return d(key, "table_lookup", ops);
-      if (status.kind === "unknown" || status.kind === "refusal") return d(status, "table_lookup", ops);
+      const incomplete = incompleteOperand([key, status]);
+      if (incomplete) return d(incomplete, "table_lookup", ops);
       if (key.kind !== "money" || status.kind !== "enum") {
         return d({ kind: "unknown", reason: "lookup key or status missing" }, "table_lookup", ops);
       }
@@ -581,7 +605,7 @@ function evalTest(ctx: Ctx, frame: Frame, test: TestExpr, ops?: { ref: string; v
     for (const t of tests) {
       const v = evalTest(ctx, frame, t, ops);
       if (v.kind === "refusal") return v;
-      if (v.kind !== "bool") { pending = v; continue; }
+      if (v.kind !== "bool") { pending ??= v; continue; }
       if (v.value !== isAll) return {kind:"bool", value: !isAll};
     }
     return pending ?? {kind:"bool", value:isAll};
@@ -599,8 +623,8 @@ function evalTest(ctx: Ctx, frame: Frame, test: TestExpr, ops?: { ref: string; v
     const certain = (key === "gt" || key === "le") ? av.lowerBound > bv.value : (key === "ge" || key === "lt") ? av.lowerBound >= bv.value : av.lowerBound > bv.value;
     if (certain) return {kind:"bool",value:key === "gt" || key === "ge" || key === "ne"};
   }
-  if ((av.kind === "unknown" || av.kind === "refusal")) return av;
-  if ((bv.kind === "unknown" || bv.kind === "refusal")) return bv;
+  const incomplete = incompleteOperand([av, bv]);
+  if (incomplete) return incomplete;
   let result: boolean;
   if ((av.kind === "money" && bv.kind === "money") || (av.kind === "count" && bv.kind === "count")) {
     const x = av.kind === "money" ? av.cents : av.value;

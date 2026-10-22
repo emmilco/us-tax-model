@@ -4,13 +4,13 @@ Second transcription of `Social Security Benefits Worksheet—Lines 6a and 6b` b
 
 | field | value |
 | --- | --- |
-| date | 2026-10-19 |
+| date | 2026-10-22 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | b8f26f756c50d8bb99bf7db7a91bddd32a81871aa7d8aab0452e2d607c29ab77 |
-| subject sha256 | 37ad56a0686e22e79b243bf2944489d09b485cef8c458299415b618430f4b072 |
+| prompt sha256 | ec42605cb91bfc70a97439091f201fdab15fd78f59c776186326b57b4cb5dc68 |
+| subject sha256 | f175d7d2b004e32273f8a05a00bea25f741221a1fc9c0f321ed9026de9666d77 |
 | printed lines compared | 19 |
-| agree / disagree / missing | 12 / 7 / 0 |
+| agree / disagree / missing | 14 / 5 / 0 |
 | extra printed lines in second | none |
 
 ## Source pages given to the model
@@ -57,23 +57,7 @@ Status: **AGREE**
 Status: **AGREE**
 
 ### 7 — Is the amount on line 6 less than the amount on line 5? If yes, subtract line 6 from line 
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"from": {"line": "5"}, "op": "subtract_floor0", "take": {"line": "6"}}
-```
-
-Second:
-
-```json
-{"alternatives": [{"guard": {"args": [{"line": "5"}, {"line": "6"}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"line": "6"}, {"line": "5"}], "test": "lt"}, "then": {"from": {"line": "5"}, "op": "subtract", "take": {"line": "6"}}}], "op": "choose"}
-```
-
-Second transcription's note: On the STOP branch, line 7 is set to zero. Every later line then evaluates to zero, so line 18 (Form 1040 line 6b) is zero as the STOP instructs.
-
-Ruling: equivalent; project retained. The STOP ('If no, STOP') makes every later line zero; the second writes line 7 as zero when line 6 is not less than line 5 and the difference otherwise, the project as the difference floored at zero, the same value.
+Status: **AGREE**
 
 ### 8 — $32,000 if married filing jointly; $25,000 if single, head of household, qualifying surviv
 Status: **DISAGREE**
@@ -87,12 +71,12 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "ssb.lived_apart"}], "test": "eq"}, {"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}, "then": {"param": "ssb.base_single"}}, {"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "ssb.lived_apart"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, "then": {"param": "ssb.base_joint"}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": false}, {"input": "ssb.lived_apart"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}, "then": {"param": "ssb.base_single"}}, {"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": false}, {"input": "ssb.lived_apart"}], "test": "eq"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, "then": {"param": "ssb.base_joint"}}], "op": "choose"}
 ```
 
-Second transcription's note: Lines 8 through 15 are skipped for married filing separately and living with your spouse at any time in 2025. They are given placeholder values in that case, and line 16 ignores them. The lived-apart status is taken from ssb.lived_apart.
+Second transcription's note: For married filing separately while living together, lines 8 through 15 are skipped. I enter zero on lines 8, 9 and 10, so lines 11 to 15 also come out zero. Line 16 then takes line 7 times 85%.
 
-Ruling: equivalent; project retained. As ruled before: both give $25,000 to single, head of household, qualifying surviving spouse and to married filing separately having lived apart all year, $32,000 to married filing jointly, and $0 to married filing separately having lived with the spouse; the guards are written differently.
+Ruling: equivalent; project retained. Both give $25,000 to single, head of household, qualifying surviving spouse and to married filing separately having lived apart all year, $32,000 to married filing jointly, and $0 to married filing separately having lived with the spouse; the second writes the $25,000 case as '(lived apart or not mfs) and not mfj'. The project asks the lived-apart question only of a married filer filing separately.
 
 ### 9 — Is the amount on line 8 less than the amount on line 7? If yes, subtract line 8 from line 
 Status: **DISAGREE**
@@ -106,12 +90,12 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"line": "7"}, {"line": "8"}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"line": "8"}, {"line": "7"}], "test": "lt"}, "then": {"from": {"line": "7"}, "op": "subtract", "take": {"line": "8"}}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": false}, {"input": "ssb.lived_apart"}], "test": "eq"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": false}, {"input": "ssb.lived_apart"}], "test": "ne"}], "test": "any"}, "then": {"from": {"line": "7"}, "op": "subtract_floor0", "take": {"line": "8"}}}], "op": "choose"}
 ```
 
-Second transcription's note: On the STOP branch, line 9 is set to zero. Lines 11 through 16 then evaluate to zero, so line 18 is zero (outside the married-filing-separately-together case, where line 9 is skipped).
+Second transcription's note: The 'No' branch (stop, zero taxable) is written as zero. Lines 11 through 16 then come out zero, so line 18 is 0.
 
-Ruling: equivalent; project retained. As line 7: the second's zero on the STOP branch equals the project's floor at zero.
+Ruling: equivalent on every return the tool completes; project retained. For a married filer filing separately who lived with the spouse the worksheet says to "skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16" (i1040gi p. 32, line 8); the second enters zero on the skipped line 9 and the project figures line 7 less $0, but line 16 takes line 7 times 85% in that case (ssb.line16_together), so no later line reads line 9, and a separate return is refused (scope.ready, s3.mfs). Otherwise both give line 7 less line 8 with zero on the STOP, as ruled before.
 
 ### 10 — Enter $12,000 if married filing jointly; $9,000 if single, head of household, qualifying s
 Status: **DISAGREE**
@@ -125,10 +109,8 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "ssb.lived_apart"}], "test": "eq"}, {"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}, "then": {"param": "ssb.adjust_single"}}, {"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "ssb.lived_apart"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, "then": {"param": "ssb.adjust_joint"}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": false}, {"input": "ssb.lived_apart"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}, "then": {"param": "ssb.adjust_single"}}, {"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": false}, {"input": "ssb.lived_apart"}], "test": "eq"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, "then": {"param": "ssb.adjust_joint"}}], "op": "choose"}
 ```
-
-Second transcription's note: For married filing separately and living together, this line is skipped. Its value is a placeholder zero that line 16 does not use.
 
 Ruling: equivalent; project retained. As line 8, with $9,000 and $12,000.
 
@@ -148,23 +130,7 @@ Status: **AGREE**
 Status: **AGREE**
 
 ### 16 — Add lines 14 and 15
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"alternatives": [{"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": false}, {"input": "ssb.lived_apart"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"line": "7"}, "op": "multiply_rate", "rate": {"param": "ssb.rate85"}}}, {"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": false}, {"input": "ssb.lived_apart"}], "test": "ne"}], "test": "any"}, "then": {"of": [{"line": "14"}, {"line": "15"}], "op": "sum"}}], "op": "choose"}
-```
-
-Second:
-
-```json
-{"alternatives": [{"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "ssb.lived_apart"}], "test": "ne"}], "test": "all"}, "then": {"amount": {"line": "7"}, "op": "multiply_rate", "rate": {"param": "ssb.rate85"}}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "ssb.lived_apart"}], "test": "eq"}, {"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"of": [{"line": "14"}, {"line": "15"}], "op": "sum"}}], "op": "choose"}
-```
-
-Second transcription's note: Line 8 instructs married filing separately filers who lived with their spouse at any time in 2025 to multiply line 7 by 85% and enter the result on line 16. That instruction is encoded here as the alternative branch.
-
-Ruling: equivalent; project retained. The guards differ only in writing 'lived apart is false' as 'lived apart is not true' on a Bool input; both enter 85% of line 7 for married filing separately having lived with the spouse, and lines 14 plus 15 otherwise.
+Status: **AGREE**
 
 ### 17 — Multiply line 1 by 85% (0.85)
 Status: **AGREE**
@@ -184,7 +150,7 @@ Second:
 {"of": [{"line": "16"}, {"line": "17"}], "op": "smaller_of"}
 ```
 
-Second transcription's note: The TIP and the line 6c instructions say a lump-sum election may reduce the taxable amount (see Pub. 915). The tool does not compute the election, so ssb.lump_sum refuses this line.
+Second transcription's note: The TIP says a lump-sum benefit payment for an earlier year may lower the taxable amount under Pub. 915's lump-sum election. The tool does not compute that election and refuses when it is chosen.
 
 Ruling: equivalent in value; project retained. With no benefits line 17 is $0, and the smaller of line 16 (never negative) and $0 is $0, so the project's zero branch gives the same value; it exists so a filer without benefits is never asked the worksheet's screens.
 
@@ -197,17 +163,16 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 | 1 | ssb.pub915, ssb.terror_disability | ssb.pub915, ssb.terror_disability |
 | 2 | ssb.pub915, ssb.terror_disability | - |
 | 5 | ssb.pub915, ssb.terror_disability | - |
-| 6 | scope.schedule1 | - |
-| 7 | scope.schedule1, ssb.pub915, ssb.terror_disability | - |
-| 9 | scope.schedule1, ssb.pub915, ssb.terror_disability | - |
-| 11 | scope.schedule1, ssb.pub915, ssb.terror_disability | - |
-| 12 | scope.schedule1, ssb.pub915, ssb.terror_disability | - |
-| 13 | scope.schedule1, ssb.pub915, ssb.terror_disability | - |
-| 14 | scope.schedule1, ssb.pub915, ssb.terror_disability | - |
-| 15 | scope.schedule1, ssb.pub915, ssb.terror_disability | - |
-| 16 | scope.schedule1, ssb.pub915, ssb.terror_disability | - |
+| 7 | ssb.pub915, ssb.terror_disability | - |
+| 9 | ssb.pub915, ssb.terror_disability | - |
+| 11 | ssb.pub915, ssb.terror_disability | - |
+| 12 | ssb.pub915, ssb.terror_disability | - |
+| 13 | ssb.pub915, ssb.terror_disability | - |
+| 14 | ssb.pub915, ssb.terror_disability | - |
+| 15 | ssb.pub915, ssb.terror_disability | - |
+| 16 | ssb.pub915, ssb.terror_disability | - |
 | 17 | ssb.pub915, ssb.terror_disability | ssb.pub915, ssb.terror_disability |
-| 18 | scope.schedule1, ssb.lump_sum, ssb.pub915, ssb.terror_disability | - |
+| 18 | ssb.lump_sum, ssb.pub915, ssb.terror_disability | - |
 
 ## Raw second transcription
 
@@ -220,49 +185,13 @@ lines:
     type: Bool
     expr: {op: test, gt: [ssb.benefits, {const: 0}]}
 
-  - id: ssb.h_zero
-    printed: "(helper)"
-    label: "Zero (for a STOP or a skipped line)"
-    type: NonNegDollars
-    expr: {op: param, ref: sales.zero}
-
-  - id: ssb.h_mfj
-    printed: "(helper)"
-    label: "Married filing jointly"
-    type: Bool
-    expr: {op: test, eq: [f1040.status, {const: "mfj"}]}
-
-  - id: ssb.h_mfs
-    printed: "(helper)"
-    label: "Married filing separately"
-    type: Bool
-    expr: {op: test, eq: [f1040.status, {const: "mfs"}]}
-
-  - id: ssb.h_not_lived_apart
-    printed: "(helper)"
-    label: "Did not live apart from your spouse for all of 2025"
-    type: Bool
-    expr: {op: test, not: {op: test, eq: [ssb.lived_apart, {const: true}]}}
-
-  - id: ssb.h_mfs_together
-    printed: "(helper)"
-    label: "Married filing separately and you lived with your spouse at any time in 2025"
-    type: Bool
-    expr: {op: test, all: [ssb.h_mfs, ssb.h_not_lived_apart]}
-
-  - id: ssb.h_other_status
-    printed: "(helper)"
-    label: "Single, head of household, qualifying surviving spouse, or married filing separately and you lived apart from your spouse for all of 2025"
-    type: Bool
-    expr: {op: test, not: {op: test, any: [ssb.h_mfj, ssb.h_mfs_together]}}
-
   - id: ssb.line1
     printed: "1"
     label: "Enter the total amount from box 5 of all your Forms SSA-1099 and RRB-1099. Also enter this amount on Form 1040 or 1040-SR, line 6a"
     type: NonNegDollars
     expr: {op: copy, from: ssb.benefits}
     refuses: [ssb.pub915, ssb.terror_disability]
-    note: "The Exception sends filers to Pub. 590-A or Pub. 915 instead of this worksheet, so ssb.pub915 refuses this line. Disability payments for terrorist-attack injuries are excluded from income, so ssb.terror_disability also refuses this line. The tool does not compute the excludable part."
+    note: "The Exception in the line 6a and 6b instructions sends some filers to Pub. 590-A or Pub. 915 instead of this worksheet. Those cases are covered by ssb.pub915. The tool also refuses when the benefits include disability payments for injuries from a terrorist attack, which are kept out of income (ssb.terror_disability). The tool does not work out the excluded part."
 
   - id: ssb.line2
     printed: "2"
@@ -288,105 +217,102 @@ lines:
     type: Dollars
     expr: {op: sum, of: [ssb.line2, ssb.line3, ssb.line4]}
 
+  - id: ssb.h_ira
+    printed: "(helper)"
+    label: "IRA deduction (Schedule 1, line 20) as counted on this worksheet, total over the persons on the return"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: person, field: person.ira_ssb}
+    note: "Line 6 includes Schedule 1, line 20 (IRA deduction). The IRA deduction can itself depend on line 6b through Form 1040 line 9. So this sums the per-person field kept for this worksheet (person.ira_ssb) instead of copying s1.line20. This assumes the two amounts are equal. When they could differ (traditional IRA contributions with someone covered by a retirement plan), ssb.pub915 refuses the worksheet."
+
   - id: ssb.line6
     printed: "6"
     label: "Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 25"
     type: NonNegDollars
-    expr: {op: sum, of: [s1.line11, s1.line13, s1.line15, s1.line16, s1.line17]}
-    refuses: [scope.schedule1]
-    note: "Only Schedule 1 lines 11, 13, 15, 16 and 17 exist in this tool. The other lines in the range (12, 14, 18-20, 23, 25) are adjustments that scope.schedule1 screens out. This line therefore lists that screen under refuses instead of treating those lines as zero."
-
-  - id: ssb.h_line7_less
-    printed: "(helper)"
-    label: "Is the amount on line 6 less than the amount on line 5?"
-    type: Bool
-    expr: {op: test, lt: [ssb.line6, ssb.line5]}
-
-  - id: ssb.h_line7_not_less
-    printed: "(helper)"
-    label: "Line 6 is not less than line 5 (none of the benefits are taxable)"
-    type: Bool
-    expr: {op: test, not: ssb.h_line7_less}
-
-  - id: ssb.h_line7_diff
-    printed: "(helper)"
-    label: "Subtract line 6 from line 5"
-    type: Dollars
-    expr: {op: subtract, from: ssb.line5, take: ssb.line6}
+    expr: {op: sum, of: [s1.line11, s1.line13, s1.line15, s1.line16, s1.line17, s1.line18, s1.line19a, ssb.h_ira, s1.line25]}
+    note: "No ids exist for Schedule 1 lines 12, 14 and 23. I assume they are outside the tool (scope.schedule1) and therefore zero, so they are left out. Line 20 comes from ssb.h_ira."
 
   - id: ssb.line7
     printed: "7"
-    label: "Is the amount on line 6 less than the amount on line 5? No. STOP None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b. Yes. Subtract line 6 from line 5"
+    label: "Is the amount on line 6 less than the amount on line 5? No. None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b. Yes. Subtract line 6 from line 5"
     type: NonNegDollars
+    expr: {op: subtract_floor0, from: ssb.line5, take: ssb.line6}
+    note: "The 'No' branch stops with zero taxable benefits. It is written as zero here, and that zero carries through to line 18 on every path, so line 18 is 0, as the STOP requires."
+
+  - id: ssb.h_joint
+    printed: "(helper)"
+    label: "Married filing jointly"
+    type: Bool
+    expr: {op: test, eq: [f1040.status, {const: "mfj"}]}
+
+  - id: ssb.h_mfs_together
+    printed: "(helper)"
+    label: "Married filing separately and you lived with your spouse at any time in 2025"
+    type: Bool
     expr:
-      op: choose
-      alternatives:
-        - {guard: ssb.h_line7_less, then: ssb.h_line7_diff}
-        - {guard: ssb.h_line7_not_less, then: ssb.h_zero}
-    note: "On the STOP branch, line 7 is set to zero. Every later line then evaluates to zero, so line 18 (Form 1040 line 6b) is zero as the STOP instructs."
+      op: test
+      all:
+        - {op: test, eq: [f1040.status, {const: "mfs"}]}
+        - {op: test, eq: [ssb.lived_apart, {const: false}]}
 
   - id: ssb.h_base_joint
     printed: "(helper)"
-    label: "$32,000 (married filing jointly)"
+    label: "$32,000"
     type: NonNegDollars
     expr: {op: param, ref: ssb.base_joint}
 
   - id: ssb.h_base_single
     printed: "(helper)"
-    label: "$25,000 (single, head of household, qualifying surviving spouse, or married filing separately and lived apart all year)"
+    label: "$25,000"
     type: NonNegDollars
     expr: {op: param, ref: ssb.base_single}
 
   - id: ssb.line8
     printed: "8"
-    label: "If you are: Married filing jointly, enter $32,000; Single, head of household, qualifying surviving spouse, or married filing separately and you lived apart from your spouse for all of 2025, enter $25,000; Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15"
+    label: "If you are: Married filing jointly, enter $32,000; Single, head of household, qualifying surviving spouse, or married filing separately and you lived apart from your spouse for all of 2025, enter $25,000; Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16. Then, go to line 17"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - {guard: ssb.h_mfj, then: ssb.h_base_joint}
-        - {guard: ssb.h_other_status, then: ssb.h_base_single}
-        - {guard: ssb.h_mfs_together, then: ssb.h_zero}
-    note: "Lines 8 through 15 are skipped for married filing separately and living with your spouse at any time in 2025. They are given placeholder values in that case, and line 16 ignores them. The lived-apart status is taken from ssb.lived_apart."
-
-  - id: ssb.h_line9_less
-    printed: "(helper)"
-    label: "Is the amount on line 8 less than the amount on line 7?"
-    type: Bool
-    expr: {op: test, lt: [ssb.line8, ssb.line7]}
-
-  - id: ssb.h_line9_not_less
-    printed: "(helper)"
-    label: "Line 8 is not less than line 7 (none of the benefits are taxable)"
-    type: Bool
-    expr: {op: test, not: ssb.h_line9_less}
+        - guard: {op: test, eq: [ssb.h_joint, {const: true}]}
+          then: ssb.h_base_joint
+        - guard:
+            op: test
+            all:
+              - {op: test, eq: [ssb.h_joint, {const: false}]}
+              - {op: test, eq: [ssb.h_mfs_together, {const: false}]}
+          then: ssb.h_base_single
+        - guard: {op: test, eq: [ssb.h_mfs_together, {const: true}]}
+          then: {const: 0}
+    note: "For married filing separately while living together, lines 8 through 15 are skipped. I enter zero on lines 8, 9 and 10, so lines 11 to 15 also come out zero. Line 16 then takes line 7 times 85%."
 
   - id: ssb.h_line9_diff
     printed: "(helper)"
-    label: "Subtract line 8 from line 7"
-    type: Dollars
-    expr: {op: subtract, from: ssb.line7, take: ssb.line8}
+    label: "Subtract line 8 from line 7 (zero if line 8 is not less than line 7)"
+    type: NonNegDollars
+    expr: {op: subtract_floor0, from: ssb.line7, take: ssb.line8}
 
   - id: ssb.line9
     printed: "9"
-    label: "Is the amount on line 8 less than the amount on line 7? No. STOP None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b. Yes. Subtract line 8 from line 7"
+    label: "Is the amount on line 8 less than the amount on line 7? No. None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b. Yes. Subtract line 8 from line 7"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - {guard: ssb.h_line9_less, then: ssb.h_line9_diff}
-        - {guard: ssb.h_line9_not_less, then: ssb.h_zero}
-    note: "On the STOP branch, line 9 is set to zero. Lines 11 through 16 then evaluate to zero, so line 18 is zero (outside the married-filing-separately-together case, where line 9 is skipped)."
+        - guard: {op: test, eq: [ssb.h_mfs_together, {const: false}]}
+          then: ssb.h_line9_diff
+        - guard: {op: test, eq: [ssb.h_mfs_together, {const: true}]}
+          then: {const: 0}
+    note: "The 'No' branch (stop, zero taxable) is written as zero. Lines 11 through 16 then come out zero, so line 18 is 0."
 
   - id: ssb.h_adjust_joint
     printed: "(helper)"
-    label: "$12,000 (married filing jointly)"
+    label: "$12,000"
     type: NonNegDollars
     expr: {op: param, ref: ssb.adjust_joint}
 
   - id: ssb.h_adjust_single
     printed: "(helper)"
-    label: "$9,000 (single, head of household, qualifying surviving spouse, or married filing separately and lived apart all year)"
+    label: "$9,000"
     type: NonNegDollars
     expr: {op: param, ref: ssb.adjust_single}
 
@@ -397,10 +323,16 @@ lines:
     expr:
       op: choose
       alternatives:
-        - {guard: ssb.h_mfj, then: ssb.h_adjust_joint}
-        - {guard: ssb.h_other_status, then: ssb.h_adjust_single}
-        - {guard: ssb.h_mfs_together, then: ssb.h_zero}
-    note: "For married filing separately and living together, this line is skipped. Its value is a placeholder zero that line 16 does not use."
+        - guard: {op: test, eq: [ssb.h_joint, {const: true}]}
+          then: ssb.h_adjust_joint
+        - guard:
+            op: test
+            all:
+              - {op: test, eq: [ssb.h_joint, {const: false}]}
+              - {op: test, eq: [ssb.h_mfs_together, {const: false}]}
+          then: ssb.h_adjust_single
+        - guard: {op: test, eq: [ssb.h_mfs_together, {const: true}]}
+          then: {const: 0}
 
   - id: ssb.line11
     printed: "11"
@@ -440,15 +372,9 @@ lines:
 
   - id: ssb.h_line16_mfs
     printed: "(helper)"
-    label: "Married filing separately and lived with your spouse at any time in 2025: multiply line 7 by 85% (0.85)"
+    label: "Married filing separately and lived with spouse: multiply line 7 by 85% (0.85)"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: ssb.line7, rate: {param: ssb.rate85}}
-
-  - id: ssb.h_not_mfs_together
-    printed: "(helper)"
-    label: "Not married filing separately while living with your spouse at any time in 2025"
-    type: Bool
-    expr: {op: test, not: ssb.h_mfs_together}
 
   - id: ssb.line16
     printed: "16"
@@ -457,9 +383,10 @@ lines:
     expr:
       op: choose
       alternatives:
-        - {guard: ssb.h_not_mfs_together, then: ssb.h_line16_sum}
-        - {guard: ssb.h_mfs_together, then: ssb.h_line16_mfs}
-    note: "Line 8 instructs married filing separately filers who lived with their spouse at any time in 2025 to multiply line 7 by 85% and enter the result on line 16. That instruction is encoded here as the alternative branch."
+        - guard: {op: test, eq: [ssb.h_mfs_together, {const: false}]}
+          then: ssb.h_line16_sum
+        - guard: {op: test, eq: [ssb.h_mfs_together, {const: true}]}
+          then: ssb.h_line16_mfs
 
   - id: ssb.line17
     printed: "17"
@@ -473,6 +400,6 @@ lines:
     type: NonNegDollars
     expr: {op: smaller_of, of: [ssb.line16, ssb.line17]}
     refuses: [ssb.lump_sum]
-    note: "The TIP and the line 6c instructions say a lump-sum election may reduce the taxable amount (see Pub. 915). The tool does not compute the election, so ssb.lump_sum refuses this line."
+    note: "The TIP says a lump-sum benefit payment for an earlier year may lower the taxable amount under Pub. 915's lump-sum election. The tool does not compute that election and refuses when it is chosen."
 ```
 ```

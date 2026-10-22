@@ -13,6 +13,7 @@ bank:
     asset: 'For this property — '
     ltc: 'For this person covered by long-term care insurance — '
     dcprov: 'For this care provider (Form 2441, Part I) — '
+    oi8z: 'For this item of other income (Schedule 1, line 8z) — '
   questions:
   - input: $person
     order: 0
@@ -98,7 +99,8 @@ bank:
   - input: f8960.unsupported
     order: 10
     help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+      Married filing separately and unsupported items are refused with citations. A penalty on early withdrawal of savings
+      (Schedule 1 line 18) is not another adjustment here; this tool enters it on line 10.
   - input: f8960.refund
     order: 10
     help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
@@ -150,6 +152,10 @@ bank:
   - input: interest.amount
     order: 10
     help: Money is integer cents. Answer true/false to screening questions. Unknown may be null.
+  - input: interest.penalty
+    order: 10
+    help: Money is integer cents. Enter the full taxable interest as interest; the penalty is deducted separately, on Schedule
+      1 line 18.
   - input: f1040.tax_exempt_interest
     order: 30
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
@@ -177,7 +183,8 @@ bank:
   - input: s2.other
     order: 10
     help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+      Married filing separately and unsupported items are refused with citations. The additional 20% tax on taxable HSA
+      distributions (Form 8889 line 17b) is figured by this tool; it is not another amount here.
   - input: s3.line9
     order: 10
     help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
@@ -194,6 +201,10 @@ bank:
     order: 10
     help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
       Married filing separately and unsupported items are refused with citations.
+  - input: sa.gambling_losses
+    order: 11
+    help: Money is integer cents. Enter all your gambling losses; the deduction on Schedule A line 16 is limited to your
+      winnings on Schedule 1 line 8b and counts only if you itemize.
   - input: sa.unsupported
     order: 10
     help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
@@ -546,6 +557,10 @@ bank:
     order: 22
     help: Money is integer cents. Answer true/false for questions. Unknown may be null; do not guess. Married filing
       separately and unsupported items are refused with citations.
+  - input: f2441.employer_care
+    order: 22
+    help: Money is integer cents. Answer true/false for questions. Unknown may be null; do not guess. Married filing
+      separately and unsupported items are refused with citations.
   - input: f2441.plan_max
     order: 22
     help: Money is integer cents. Answer true/false for questions. Unknown may be null; do not guess. Married filing
@@ -726,6 +741,136 @@ bank:
     order: 10
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
       do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: s1.line8_other
+    order: 10
+    help: Income from self-employment, or nonemployee compensation on Form 1099-MISC, 1099-NEC or 1099-K that is
+      self-employment income, belongs on Schedule C, not on line 8. Line 8c (canceled debt) and line 8f (income from Form
+      8889) are asked with their own forms. Answer true if you have any line 8 item not listed.
+  - input: s1.gambling_winnings
+    order: 10
+    help: Money is integer cents. Include every Form W-2G box 1 amount; the federal income tax withheld in Form W-2G box 4
+      goes on Form 1040 line 25c (the supplied total of withholding from other forms). Do not net your losses against
+      your winnings; losses are asked separately for Schedule A.
+  - input: s1.gambling_pro
+    order: 11
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: s1.line8g
+    order: 10
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: s1.line8h
+    order: 10
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: s1.line8i
+    order: 10
+    help: Money is integer cents. Olympic and Paralympic medals and USOC prize money (usually in Form 1099-MISC box 3) go on
+      line 8m, which this tool refuses (answer the line 8 screen true).
+  - input: s1.line8j
+    order: 10
+    help: Money is integer cents. The expenses of an activity not engaged in for profit are not subtracted here.
+  - input: s1.line8r
+    order: 10
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: $oi8z
+    order: 10
+    help: Enter a JSON array of distinct keys, one per item of other income you list on Schedule 1 line 8z (for example
+      ["rtaa_a","item_b"]); [] if none. Each entry asks the kind of income and its amount.
+    prompt: List a stable key for each item of other income for Schedule 1, line 8z (taxable income not reported elsewhere
+      on your return).
+  - input: oi8z.kind
+    order: 10
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: oi8z.amount
+    order: 10
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: s1.jury_to_employer
+    order: 10
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: refund.received
+    order: 10
+    help: 'Money is integer cents; zero if none. A refund of federal income tax is not included. Interest paid on a state or local refund is interest income (Form 1040 line 2b), not part of this amount. Refunds of other taxes (sales, real estate, personal property) are asked separately.'
+  - input: refund.other
+    order: 10
+    help: 'Answer true or false. A recovery is a return of an amount you deducted or took a credit for in an earlier year. Answer false for a refund of an amount you did not deduct (for example a property tax refund for a year you took the standard deduction). Other recoveries are figured with Pub. 525 and are outside this tool.'
+  - input: refund.box8
+    order: 10
+    help: 'Answer true or false. When box 8 is checked, the refund is of a tax on trade or business income; it is reported on Schedule C or F, which this tool does not do for such refunds.'
+  - input: refund.not_2024
+    order: 10
+    help: 'Answer true or false. Box 3 of Form 1099-G shows the tax year the refund is for. A refund for another year, or for 2024 tax when your last 2024 estimated payment was made in January 2025, is figured with Pub. 525 and is outside this tool.'
+  - input: refund.itemized
+    order: 10
+    help: 'Answer true or false: true if your 2024 return deducted itemized deductions on Schedule A rather than the standard deduction. If you did not itemize, none of your refund is taxable.'
+  - input: refund.sales
+    order: 10
+    help: 'Answer true or false. If you deducted general sales taxes instead of income taxes for 2024, none of your income tax refund is taxable.'
+  - input: refund.exc_tax
+    order: 10
+    help: 'Answer true or false. Any of these means the taxable part is figured with Pub. 525 (Itemized Deduction Recoveries, Worksheet 2) instead of the Form 1040 worksheet; that is outside this tool.'
+  - input: refund.exc_who
+    order: 10
+    help: 'Answer true or false. Any of these means the taxable part is figured with Pub. 525 (Itemized Deduction Recoveries) instead of the Form 1040 worksheet; that is outside this tool.'
+  - input: refund.line5d_2024
+    order: 10
+    help: 'Money is integer cents: the amount printed on line 5d of the Schedule A you filed for 2024.'
+  - input: refund.line5e_2024
+    order: 10
+    help: 'Money is integer cents: the amount printed on line 5e of the Schedule A you filed for 2024 (line 5d, limited).'
+  - input: refund.line17_2024
+    order: 10
+    help: 'Money is integer cents: the amount printed on line 17 of the Schedule A you filed for 2024.'
+  - input: refund.status
+    order: 10
+    help: 'One of single, mfj (married filing jointly), mfs (married filing separately), hoh (head of household) or qss (qualifying surviving spouse): the status on the return you filed for 2024, which may differ from your 2025 status.'
+  - input: refund.mfs_spouse_itemized
+    order: 10
+    help: 'Answer true or false. Asked only when your 2024 filing status was married filing separately.'
+  - input: refund.you_born
+    order: 10
+    help: 'Answer true or false.'
+  - input: refund.you_blind
+    order: 10
+    help: 'Answer true or false. Blind as defined for the standard deduction: totally blind, or with a certified statement from your eye doctor that you can''t see better than 20/200 in your better eye with glasses or contact lenses, or your field of vision is 20 degrees or less.'
+  - input: refund.spouse_born
+    order: 10
+    help: 'Answer true or false. Asked only when your 2024 filing status was married filing jointly or married filing separately; the spouse is the one on your 2024 return, who may not be your spouse in 2025.'
+  - input: refund.spouse_blind
+    order: 10
+    help: 'Answer true or false. Asked only when your 2024 filing status was married filing jointly or married filing separately; the spouse is the one on your 2024 return, who may not be your spouse in 2025.'
+  - input: s1.alimony
+    order: 10
+    help: Answer true or false. Alimony is a payment in cash to or for a spouse or former spouse under a divorce or separation
+      instrument; child support, noncash property settlements and voluntary payments are not alimony (Pub. 504). Payments
+      between you and your spouse on this joint return are not alimony.
+  - input: s1.alimony_received
+    order: 10
+    help: Money is integer cents. If the agreement was changed after 2018 to expressly provide that the post-2018 rules
+      apply, include only the payments made before the change took effect (Pub. 504, Certain Rules for Instruments Executed
+      or Modified After 2018, Example 2).
+  - input: s1.alimony_paid
+    order: 10
+    help: Money is integer cents. If the agreement was changed after 2018 to expressly provide that the post-2018 rules
+      apply, include only the payments made before the change took effect (Pub. 504, Certain Rules for Instruments Executed
+      or Modified After 2018, Example 2).
+  - input: s1.alimony_unsupported
+    order: 10
+    help: Answer true or false. A payment is partly child support when the agreement reduces it on an event relating to
+      a child, such as reaching a certain age (Pub. 504, Child support).
+  - input: s1.cod_amount
+    order: 10
+    help: Money is integer cents. A nonbusiness debt is a personal debt, such as a credit card or personal loan. Include
+      the whole box 2 amount even if it includes interest (box 3); the next question asks about the cases this tool does
+      not compute.
+  - input: s1.cod_unsupported
+    order: 10
+    help: Answer true or false. See Pub. 4681 for the exceptions and exclusions (for example insolvency, when your debts
+      were more than the value of everything you owned just before the cancellation).
   - input: person.educator_expenses
     order: 10
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
@@ -739,8 +884,9 @@ bank:
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
       do not guess. One Form 8889 per person.
     prompt: For this person (you, or your spouse on a joint return) — Did you, or your employer, contribute to a
-      health savings account (HSA) for you for 2025? Enter ["hsa"] for one Form 8889 covering all of your own HSAs,
-      or [] if there were no HSA contributions for you.
+      health savings account (HSA) for you for 2025, did you receive a distribution from your HSA in 2025 (Form 1099-SA),
+      or did you stop being an eligible individual during a testing period (Form 8889 Part III)? Enter ["hsa"] for one
+      Form 8889 covering all of your own HSAs, or [] if none of these applies to you.
     cite:
       doc: i8889
       locator: pp. 1-2, Who Must File; p. 4, Name and social security number (SSN), "complete a separate Form 8889
@@ -755,8 +901,8 @@ bank:
       do not guess. Married filing separately and unsupported items are refused with citations.
   - input: f8889.unsupported
     order: 10
-    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
-      do not guess. Married filing separately and unsupported items are refused with citations.
+    help: Answer true or false. HSA distributions that were not used for qualified medical expenses are not among these;
+      Form 8889 Part II asks about them separately.
   - input: f8889.months_eligible
     order: 10
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
@@ -781,6 +927,23 @@ bank:
     order: 10
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
       do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f8889.line14a
+    order: 10
+    help: Money is integer cents. A direct transfer from one of your HSAs to another (trustee to trustee) is not a distribution.
+  - input: f8889.rollover
+    order: 10
+    help: Money is integer cents. An HSA can receive only one rollover in a 1-year period.
+  - input: f8889.medical
+    order: 10
+    help: Money is integer cents. You cannot also deduct these expenses on Schedule A.
+  - input: f8889.line17a
+    order: 10
+    help: Answer true or false. Answer false if every taxable distribution was made before you became disabled or turned
+      65.
+  - input: f8889.subject_part
+    order: 10
+    help: Money is integer cents. The taxable distributions are your distributions less rollovers and the part used for
+      qualified medical expenses.
   - input: sli.interest
     order: 10
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
@@ -1381,9 +1544,46 @@ bank:
     help: Asked because someone can claim you or your spouse as a dependent. Answer true only if this person is actually
       claimed on someone else's 2025 return. Answer true or false.
   - input: person.sav_trad
-    order: 25
-    help: Traditional IRA contributions are outside this tool; the IRA deduction and Form 8606 are not prepared. Answer
-      true or false.
+    order: 22
+    help: Contributions to a traditional IRA (including a SEP IRA you contribute to yourself, but not employer contributions
+      to a SEP or SIMPLE IRA) for 2025, which may be made until April 15, 2026. They count for the IRA deduction (Schedule
+      1, line 20), Form 8606 and the saver's credit. Answer true or false.
+  - input: person.ira_trad
+    order: 22
+    help: Money is integer cents. Form 5498 or a statement from the IRA trustee, sent by June 1, 2026, shows the contributions
+      to your traditional IRA for 2025.
+  - input: person.ira_excess
+    order: 26
+    help: Answer true or false. An excess contribution, a recharacterization, or an earlier excess still in the IRA is reported
+      on Form 5329 or with Pub. 590-A rules, which this tool does not prepare; true refuses the return.
+  - input: person.ira_age50
+    order: 23
+    help: Answer true or false. Age 50 or older at the end of 2025 raises the contribution limit to $8,000 and changes the
+      IRA Deduction Worksheet's percentages.
+  - input: person.ira_work_plan
+    order: 23
+    help: Answer true or false. The "Retirement plan" box in box 13 of your Form W-2 should be checked if you were covered
+      by a plan at work, even if you were not vested in it. If you are not sure, ask your employer. Coverage under social
+      security or railroad retirement is not coverage by a plan. A SEP or SIMPLE IRA you contribute to as a self-employed
+      person is taken from your Schedule C answers.
+  - input: person.ira_basis
+    order: 27
+    help: Money is integer cents. Your basis is the total of your nondeductible contributions to traditional IRAs, less any
+      nontaxable distributions; zero if this is the first year you file Form 8606.
+  - input: person.ira_basis_adjusted
+    order: 27
+    help: Answer true or false. True refuses the return (the Form 8606 line 2 adjustments are not prepared).
+  - input: person.ira_dist
+    order: 27
+    help: Answer true or false. True refuses the return (Form 8606 lines 4 to 13 are not prepared).
+  - input: ira.special
+    order: 23
+    help: Answer true or false. Each of these changes the compensation or the contribution limit for the IRA deduction; true
+      refuses the return.
+  - input: ira.deduct_less
+    order: 28
+    help: Answer true or false. You may treat deductible contributions as nondeductible; this tool takes the most you can
+      deduct, and true refuses the return.
   - input: person.sav_able
     order: 25
     help: ABLE accounts (Pub. 907) are outside this tool. Answer true or false.

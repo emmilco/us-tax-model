@@ -120,7 +120,7 @@ form:
       refuses:
         - when: scope.credits
           form: Other credit forms (Schedule 3 lines 3 and 6a to 6z; Form 1040 lines 29 to 31)
-          remedy: Credits other than the foreign tax credit by election, the excess social security credit, the Schedule 8812 credits, the earned income credit, the child and dependent care credit, the saver's credit and the residential energy credits require forms outside this proof of concept.
+          remedy: Credits other than the foreign tax credit by election, the excess social security credit, the Schedule 8812 credits, the earned income credit, the child and dependent care credit, the saver's credit, the residential energy credits and the net premium tax credit entered from Form 8962 require forms outside this proof of concept.
           cite:
             doc: f1040
             locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31

@@ -334,6 +334,18 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = false
       cite: [i1040gi] p. 14, Head of Household (2025; printed date 2026-02-25; 482e9c48)
 
+== IRA Deduction Worksheet — Schedule 1, Line 20 ==
+  (helper) Add the amounts on lines 12a and 12b
+      = $0
+      cite: [i1040gi] p. 98, IRA Deduction Worksheet—Continued, line 12, "Add the amounts on lines 12a and 12b and enter the total on Schedule 1, line 20" (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
+  (gate) An IRA deduction above zero and the election to deduct less
+      = false
+      cite: [p590a] p. 16, Form 8606, "When you file, you can even designate otherwise deductible contributions as nondeductible contributions" (2025; ca0e4287)
+  (helper) The total of lines 12a and 12b for Schedule 1, line 20
+      = $0
+      cite: [i1040gi] p. 98, IRA Deduction Worksheet—Continued, line 12, "Add the amounts on lines 12a and 12b and enter the total on Schedule 1, line 20" (2025; printed date 2026-02-25; 482e9c48)
+
 == Each person on the return — per-person facts and totals (excess Social Security tax, Schedule SE, SEP and SIMPLE plans, health insurance and others) — person[taxpayer] ==
   (helper) Whose entry is this, yours or your spouse's?
       = taxpayer
@@ -420,6 +432,23 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $0
       cite: [f7206] Form 7206 (2025), line 14 (2025; created 2025-10-02; 822203c9)
       note: confirmed roster $sc@person[taxpayer]:
+  (helper) Did you make contributions (other than rollover contributions) to a traditional IRA for 2025?
+      = false
+      cite: [f8880] Form 8880 (2025), line 1, "Traditional and Roth IRA contributions"; i1040gi p. 95, Line 20, "If you made any nondeductible contributions to a traditional" (2025; created 2025-11-04; ba2b2877)
+  (helper) This person's traditional IRA contributions for 2025 (zero if the traditional IRA question was answered No)
+      = $0
+      cite: [i1040gi] p. 98, IRA Deduction Worksheet—Continued, line 11, "Enter traditional IRA contributions made, or that will be made by the due date of your 2025 return not counting extensions (April 15, 2026, for most people), for 2025" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["person.sav_trad",{"const":false}],"op":"test"}
+  (helper) This person made traditional IRA contributions for 2025
+      = false
+      cite: [i1040gi] p. 95, Line 20, "If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) This person's IRA deduction (worksheet line 12; zero with no traditional IRA contributions)
+      = $0
+      cite: [i1040gi] p. 98, IRA Deduction Worksheet—Continued, line 12, "Add the amounts on lines 12a and 12b and enter the total on Schedule 1, line 20" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["person.ira_has",{"const":false}],"op":"test"}
+  (gate) Nondeductible contributions for 2025 with a 2025 traditional IRA distribution or Roth conversion
+      = false
+      cite: [f8606] Form 8606 (2025), Part I, "In 2025, did you take a distribution from a traditional IRA, or make a Roth IRA conversion?" and "Go to line 4" (2025; 748a2bf2)
 
 == Form W-2 — wage, withholding and Social Security boxes by employer — person[taxpayer].w2[a] ==
   1   Wages, tips, other compensation
@@ -451,6 +480,15 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: guard incomplete
 
 == Schedule 1 — Additional Income and Adjustments to Income (the lines this tool computes) ==
+  (helper) Year parameter sales.zero
+      = $0
+      cite: [f1040s1] Schedule 1 (2025), lines 7, 11, 21 (2025; created 2025-07-25; 8dafec71)
+  8h  Jury duty pay
+      = $0
+      cite: [i1040gi] p. 91, Line 8h, "Enter any jury duty pay and see the instructions for line 24a"; p525 p. 34, Jury duty, "Jury duty pay you receive must be included in your income on Schedule 1 (Form 1040), line 8h" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Did you receive or pay alimony or separate maintenance in 2025 under a divorce or separation agreement entered into on or before December 31, 2018, or must you include or may you deduct a recapture of alimony?
+      = false
+      cite: [i1040gi] p. 89, Line 2a, "Enter amounts received as alimony or separate maintenance pursuant to a divorce or separation agreement entered into on or before December 31, 2018"; p. 95, Line 19a, "You can't take a deduction for alimony payments you made to or for your spouse if you entered into your divorce or separation agreement after December 31, 2018" (2025; printed date 2026-02-25; 482e9c48)
   11  Educator expenses
       = $0
       cite: [f1040s1] Schedule 1 (2025), line 11; i1040gi p. 93, "If you and your spouse are filing jointly and both of you were eligible educators, the maximum deduction is $600. However, neither spouse can deduct more than $300 of their qualified expenses" (2025; created 2025-07-25; 8dafec71)
@@ -471,18 +509,42 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $0
       cite: [i1040gi] pp. 94–95, Schedule 1, line 17, Self-Employed Health Insurance Deduction; Form 7206 (2025), line 14 (2025; printed date 2026-02-25; 482e9c48)
       note: confirmed roster $person: taxpayer
+  18  Penalty on early withdrawal of savings
+      = $0
+      cite: [f1040s1] Schedule 1 (2025), line 18; i1040gi p. 95, Line 18, "The Form 1099-INT or Form 1099-OID you received will show the amount of any penalty you were charged" (2025; created 2025-07-25; 8dafec71)
+      note: confirmed roster $interest:; Interpretation amb.2025.ewp_oid: The first (interest.penalty, totaled on s1.line18 and copied to Form 8960 line 10). The owner's decision (Stage 16 decision batch, D2, as corrected by the verification, E4) allows an input or a screen; the instruction treats the two forms alike, so an input loses nothing. Form 1099-OID is not archived, so its box number is not named. (i1040gi, p. 95, Line 18, "The Form 1099-INT or Form 1099-OID you received will show the amount of any penalty you were charged")
+  19a Alimony paid
+      = $0
+      cite: [f1040s1] Schedule 1 (2025), line 19a; i1040gi p. 95, Line 19a (2025; created 2025-07-25; 8dafec71)
+      note: taken: {"eq":["s1.alimony",{"const":false}],"op":"test"}; Interpretation amb.2025.alimony_screen: The first (s1.alimony, s1.alimony_unsupported; amounts under an agreement entered into after 2018, or after a change that expressly excludes them, are not asked, as the questions say, and are neither income nor deductible). The owner's decision (Stage 16 decision batch, D2, with the screens of the premise map, R-ALI-1 and R-ALI-2). The statement listing the other agreements and recipients, and the recapture worksheet, are not prepared; a payment partly child support needs the Pub. 504 allocation rules. (p504, p. 12, Alimony, "If you paid alimony to more than one person, enter the SSN or ITIN of one of the recipients"; p. 16, Recapture of Alimony; p. 13, Underpayment)
+  20  IRA deduction
+      = $0
+      cite: [f1040s1] Schedule 1 (2025), line 20; i1040gi p. 98, IRA Deduction Worksheet—Continued, line 12, "Add the amounts on lines 12a and 12b and enter the total on Schedule 1, line 20" (2025; created 2025-07-25; 8dafec71)
   21  Student loan interest deduction
       = $0
       cite: [f1040s1] Schedule 1 (2025), line 21 (2025; created 2025-07-25; 8dafec71)
+  (helper) Jury duty pay you gave to your employer because your employer paid your salary while you served on the jury
+      = $0
+      cite: [i1040gi] p. 99, Line 24a, "Enter your jury duty pay if you gave the pay to your employer because your employer paid your salary while you served on the jury"; p525 p. 34, Jury duty, "you can deduct the amount turned over to your employer as an adjustment to income" (2025; printed date 2026-02-25; 482e9c48)
+  (gate) The jury duty pay given to the employer is more than the jury duty pay on line 8h
+      = false
+      cite: [i1040gi] p. 99, Line 24a, "Enter your jury duty pay if you gave the pay to your employer" (2025; printed date 2026-02-25; 482e9c48)
+      note: Interpretation amb.2025.jury_24a_cap: The first (s1.jury_over refuses s1.line24a). The pay given to the employer is part of the pay received (p525 p. 34, "you can deduct the amount turned over to your employer"), so a larger amount is an entry error to correct, not a case to cap silently; as with w2.g_bad, the refusal fires only on an impossible entry. Premise map Q14, left open by D3. (i1040gi, p. 99, Line 24a, "Enter your jury duty pay if you gave the pay to your employer because your employer paid your salary while you served on the jury")
+  24a Jury duty pay (see instructions)
+      = $0
+      cite: [f1040s1] Schedule 1 (2025), line 24a; i1040gi p. 99, Line 24a, "Enter your jury duty pay if you gave the pay to your employer because your employer paid your salary while you served on the jury" (2025; created 2025-07-25; 8dafec71)
+  25  Total other adjustments. Add lines 24a through 24z
+      = $0
+      cite: [f1040s1] Schedule 1 (2025), line 25 (lines 24b to 24z are outside this tool and refused at Form 1040 line 10 by scope.schedule1) (2025; created 2025-07-25; 8dafec71)
   26  Add lines 11 through 23 and 25. These are your adjustments to income. Enter here and on Form 1040, 1040-SR, or 1040-NR, line 10
       = $0
-      cite: [f1040s1] Schedule 1 (2025), line 26 (lines 12, 14, 18 to 20, 23 and 25 are outside this tool and refused at Form 1040 line 10 by scope.schedule1) (2025; created 2025-07-25; 8dafec71)
+      cite: [f1040s1] Schedule 1 (2025), line 26 (lines 12, 14 and 23 are outside this tool and refused at Form 1040 line 10 by scope.schedule1) (2025; created 2025-07-25; 8dafec71)
 
 == Schedule 2 — Additional Taxes (the lines this tool computes) ==
   (helper) Are you required to file Form 6251 or do you have an AMT adjustment requiring its review?
       = false
       cite: [f1040s2] Schedule 2 (2025), lines 2, 3, 11, 12 and 21 (2025; created 2025-05-08; 64d867b6)
-  (helper) Any amount on Schedule 2 other than self-employment tax from Schedule SE, Additional Medicare Tax or Net Investment Income Tax, for example the alternative minimum tax, repayment of excess advance premium tax credit or of a clean vehicle credit, household employment taxes, the additional tax on early retirement or HSA distributions (often called a penalty), uncollected social security or Medicare tax on tips or group-term life insurance (W-2 box 12 codes A, B, M or N), tax on unreported tips (Form 4137), or interest on deferred tax?
+  (helper) Any amount on Schedule 2 other than self-employment tax from Schedule SE, Additional Medicare Tax, Net Investment Income Tax or the additional 20% tax on taxable HSA distributions (Form 8889 line 17b, which this tool figures), for example the alternative minimum tax, repayment of excess advance premium tax credit or of a clean vehicle credit, household employment taxes, the additional tax on early retirement distributions (often called a penalty) or on an HSA you did not keep as an eligible individual (Form 8889 Part III), uncollected social security or Medicare tax on tips or group-term life insurance (W-2 box 12 codes A, B, M or N), tax on unreported tips (Form 4137), or interest on deferred tax?
       = false
       cite: [f1040s2] Schedule 2 (2025), lines 2, 3, 11, 12 and 21 (2025; created 2025-05-08; 64d867b6)
   4   Self-employment tax. Attach Schedule SE
@@ -495,9 +557,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   12  Amount from f8960.line17
       = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
       cite: [f1040s2] Schedule 2 (2025), lines 2, 3, 11, 12 and 21 (2025; created 2025-05-08; 64d867b6)
-  21  Add s2.line4, s2.line11, s2.line12
+  21  Add s2.line4, s2.line11, s2.line12, s2.line18
       = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
-      cite: [f1040s2] Schedule 2 (2025), lines 2, 3, 4, 11, 12 and 21 (2025; created 2025-05-08; 64d867b6)
+      cite: [f1040s2] Schedule 2 (2025), lines 2, 3, 4, 11, 12, 18 and 21 (2025; created 2025-05-08; 64d867b6)
 
 == Schedule 3 — selected lines ==
   1   Foreign tax credit
@@ -508,7 +570,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040gi] p. 14, Married Filing Separately (2025; printed date 2026-02-25; 482e9c48)
 
 == Schedule A — supported itemized deductions and standard comparison ==
-  (helper) Any casualty or theft loss (including a disaster loss added to the standard deduction); a deduction from the Schedule A line 16 list; a foreign tax or generation-skipping tax deduction; mortgage interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds not all used to buy, build or improve the home, or debt over the limit); or the sales-tax election?
+  (helper) Any casualty or theft loss (including a disaster loss added to the standard deduction); a deduction from the Schedule A line 16 list other than gambling losses; a foreign tax or generation-skipping tax deduction; mortgage interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds not all used to buy, build or improve the home, or debt over the limit); or the sales-tax election?
       = false
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
   (helper) Are any charitable deductions reduced by income limits, or carried over from a prior year? Determine under Publication 526 before answering.
@@ -555,7 +617,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Year parameter sa.standard_extra
       = $2,000
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  (helper) Number of boxes checked for born before January 2, 1961 (you, and your spouse if filing jointly)
+  (helper) Number of boxes checked for born before January 2, 1961 (you, and your spouse if filing jointly), not counting a person who died in 2025 before reaching 65
       = 0
       cite: [i1040gi] p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; pp. 34–35, Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were Blind (2025; printed date 2026-02-25; 482e9c48)
       note: confirmed roster $person: taxpayer
@@ -621,10 +683,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
 
 == Proof-of-concept scope screening ==
-  (helper) Any income or adjustment requiring Schedule 1 other than business income or loss from Schedule C, unemployment compensation, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction and student loan interest, including a taxable state or local tax refund; alimony; an IRA deduction; statutory-employee wages or clergy income; church employee income (wages from a church that elected exemption from social security and Medicare taxes); other qualified retirement plans for the self-employed (such as a solo 401(k) or other Keogh plan); rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1); rental of personal property; farm income (Schedule F); gambling winnings, prizes or other income for Schedule 1 line 8; or an exclusion of Medicaid waiver payments (Schedule 1 line 8s)? (Schedule 1-A deductions are asked separately.)
+  (helper) Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately (business income or loss from Schedule C; a taxable state or local income tax refund; alimony under an agreement made before 2019; unemployment compensation; the line 8 items asked one by one; educator expenses; the HSA deduction; the deductible part of self-employment tax; self-employed SEP and SIMPLE contributions; the self-employed health insurance deduction; the penalty on early withdrawal of savings; the IRA deduction; student loan interest; jury duty pay you gave your employer), including statutory-employee wages or clergy income; church employee income (wages from a church that elected exemption from social security and Medicare taxes); other qualified retirement plans for the self-employed (such as a solo 401(k) or other Keogh plan); sales of business property (Form 4797); a net operating loss deduction; rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1); rental of personal property; farm income (Schedule F); an exclusion of Medicaid waiver payments (Schedule 1 line 8s); or an adjustment on Schedule 1 line 12, 14 or 23? (Schedule 1-A deductions are asked separately.)
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
-  (helper) Do you want to claim any credit other than the foreign tax credit claimed without Form 1116, the excess social security credit, the child tax credit, the credit for other dependents, the additional child tax credit, the earned income credit, the credit for child and dependent care expenses (Form 2441), the retirement savings contributions credit (Form 8880) and the residential energy credits (Form 5695), or do you have any other amount for Schedule 3 Part I (for example a Form 8978 adjustment)?
+  (helper) Do you want to claim any credit other than the foreign tax credit claimed without Form 1116, the excess social security credit, the child tax credit, the credit for other dependents, the additional child tax credit, the earned income credit, the credit for child and dependent care expenses (Form 2441), the retirement savings contributions credit (Form 8880), the residential energy credits (Form 5695) and the net premium tax credit you enter from Form 8962 (Schedule 3 line 9), or do you have any other amount for Schedule 3 Part I (for example a Form 8978 adjustment)?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
   (helper) Any nonresident alien status (you or your spouse, for any part of 2025) or other income or return treatment outside wages, interest, dividends, supported securities sales, Form 1099-R distributions and social security benefits, including wages or tips not on a Form W-2, Medicaid waiver payments (whether or not in Form W-2 box 1), adoption benefits, dependent care benefits other than those shown in box 10 of a Form W-2 (or a grace-period amount from such a plan), other earned income (Form 1040 lines 1b to 1d and 1f to 1h), or income or loss from a passive activity (including gain on selling an interest in one)?
@@ -772,6 +834,12 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   person[taxpayer].s16: chose $0 (guard 1)
       not taken: guard 0 = false
+  s1.line19a: chose $0 (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].ira_contrib: chose $0 (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].ira_deduction: chose $0 (guard 1)
+      not taken: guard 0 = false
   sli.deduction: chose $0 (guard 1)
       not taken: guard 0 = false
   s1.sli.deduction: chose $0 (guard 1)
@@ -866,13 +934,27 @@ Derivations:
   person[taxpayer].s16: choose(person[taxpayer].has_sc = false; true = true; person[taxpayer].has_sc = false; false = false; person[taxpayer].zero = $0)
   s1.line16: sum_over(person[taxpayer].s16 = $0)
   s1.line17: sum_over(person[taxpayer].sehi = $0)
+  s1.zero: param(#sales.zero = $0)
+  s1.line19a: choose(s1.alimony = false; true = true; s1.alimony = false; false = false; s1.zero = $0)
+  person[taxpayer].ira_contrib: choose(person[taxpayer].sav_trad = false; true = true; person[taxpayer].sav_trad = false; false = false; person[taxpayer].zero = $0)
+  person[taxpayer].ira_has: test(person[taxpayer].ira_contrib = $0; #sales.zero = $0)
+  person[taxpayer].ira_dist_gate: test(person[taxpayer].ira_has = false; true = true)
+  person[taxpayer].ira_deduction: choose(person[taxpayer].ira_dist_gate = false; person[taxpayer].ira_has = false; true = true; person[taxpayer].ira_has = false; false = false; person[taxpayer].zero = $0)
+  ira.total: sum_over(person[taxpayer].ira_deduction = $0)
+  ira.less_gate: test(ira.total = $0; #sales.zero = $0)
+  ira.line20: copy(ira.less_gate = false; ira.total = $0)
+  s1.ira.line20: copy(ira.less_gate = false; ira.total = $0)
+  s1.line20: copy(ira.line20 = $0)
   sli.has: test(sli.interest = $0; #sales.zero = $0)
   sli.zero: param(#sales.zero = $0)
   sli.deduction: choose(sli.has = false; true = true; sli.has = false; false = false; sli.zero = $0)
   s1.sli.deduction: choose(sli.has = false; true = true; sli.has = false; false = false; sli.zero = $0)
   s1.line21: copy(sli.deduction = $0)
-  s1.line26: sum(s1.line11 = $0; s1.line13 = $0; s1.line15 = $0; s1.line16 = $0; s1.line17 = $0; s1.line21 = $0)
-  f1040.s1.line26: sum(s1.line11 = $0; s1.line13 = $0; s1.line15 = $0; s1.line16 = $0; s1.line17 = $0; s1.line21 = $0)
+  s1.jury_over: test(s1.jury_to_employer = $0; s1.line8h = $0)
+  s1.line24a: copy(s1.jury_over = false; s1.jury_to_employer = $0)
+  s1.line25: copy(s1.line24a = $0)
+  s1.line26: sum(s1.line11 = $0; s1.line13 = $0; s1.line15 = $0; s1.line16 = $0; s1.line17 = $0; s1.line18 = $0; s1.line19a = $0; s1.line20 = $0; s1.line21 = $0; s1.line25 = $0)
+  f1040.s1.line26: sum(s1.line11 = $0; s1.line13 = $0; s1.line15 = $0; s1.line16 = $0; s1.line17 = $0; s1.line18 = $0; s1.line19a = $0; s1.line20 = $0; s1.line21 = $0; s1.line25 = $0)
   f1040.line10: copy(scope.schedule1 = false; s1.line26 = $0)
   f1040.line11a: subtract(f1040.line9 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); f1040.line10 = $0)
   f1040.line11b: copy(f1040.line11a = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
@@ -990,6 +1072,9 @@ Derivations:
   s3.ftc.credit: choose(ftc.needs1116 = false; ftc.has_tax = false; true = true; ftc.has_tax = false; false = false; ftc.zero = $0)
   s3.line1: copy(ftc.credit = $0)
 Interpretation amb.2025.box2c_scope: Refuse nonzero box 2c; no exclusion or AMT amount is silently omitted. Archived Schedule D instructions require the exclusion on Form 8949 code Q and describe an AMT adjustment for 50/60/75-percent exclusions. The existing explicit exclusions are retained; the owner was notified and asked, then said continue without selecting an expansion. (i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
+Interpretation amb.2025.ewp_oid: The first (interest.penalty, totaled on s1.line18 and copied to Form 8960 line 10). The owner's decision (Stage 16 decision batch, D2, as corrected by the verification, E4) allows an input or a screen; the instruction treats the two forms alike, so an input loses nothing. Form 1099-OID is not archived, so its box number is not named. (i1040gi, p. 95, Line 18, "The Form 1099-INT or Form 1099-OID you received will show the amount of any penalty you were charged")
+Interpretation amb.2025.alimony_screen: The first (s1.alimony, s1.alimony_unsupported; amounts under an agreement entered into after 2018, or after a change that expressly excludes them, are not asked, as the questions say, and are neither income nor deductible). The owner's decision (Stage 16 decision batch, D2, with the screens of the premise map, R-ALI-1 and R-ALI-2). The statement listing the other agreements and recipients, and the recapture worksheet, are not prepared; a payment partly child support needs the Pub. 504 allocation rules. (p504, p. 12, Alimony, "If you paid alimony to more than one person, enter the SSN or ITIN of one of the recipients"; p. 16, Recapture of Alimony; p. 13, Underpayment)
+Interpretation amb.2025.jury_24a_cap: The first (s1.jury_over refuses s1.line24a). The pay given to the employer is part of the pay received (p525 p. 34, "you can deduct the amount turned over to your employer"), so a larger amount is an entry error to correct, not a case to cap silently; as with w2.g_bad, the refusal fires only on an impossible entry. Premise map Q14, left open by D3. (i1040gi, p. 99, Line 24a, "Enter your jury duty pay if you gave the pay to your employer because your employer paid your salary while you served on the jury")
 Interpretation amb.2025.multiplication_subcent: Round the product half-up to the nearest cent at the multiplication. Matches the half-up convention of the printed whole-dollar rounding rules. The whole-dollar default is unaffected: whole-dollar amounts multiplied by these rates produce exact cents, so the reading only matters when cents are turned on.
  (i1040gi, QDCGT worksheet, lines 18 and 21; Rounding Off to Whole Dollars, p. 23)
 Interpretation amb.2025.sd4952_selection: Use the detailed worksheet conditions, including line 4g and exceptions. The worksheet explicitly limits its own use and the Form 1040 line 16 instructions repeat the line 4g condition. (i1040sd, p. 15, Schedule D Tax Worksheet, applicability; compare f1040sd line 20 and i1040gi p. 36)

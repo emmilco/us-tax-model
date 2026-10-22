@@ -110,6 +110,30 @@ register:
         doc: i8889
         locator: p. 4, Line 3, rules 2, 3 and 4
       status: Owner ruling after Stage 11 (keep rule 4).
+    - id: amb.2025.hsa_last_month_all_year
+      text_at_issue: 'Form 8889 instructions p. 2, Last-month rule, "You may consider yourself an ''eligible individual''
+        for the entire year if you are an eligible individual on the 1st day of the last month", and p. 4, Line 3, rule 2,
+        "You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last
+        month"; rules 3 and 4 name a filer who "were, or were considered," eligible for the entire year; Pub. 969 p. 5
+        adds "if you didn''t otherwise have coverage". Whether a filer eligible in all twelve months can use the rule''s
+        coverage treatment for the line 6 spouse rules (Step 1''s "months you were treated as having family coverage") and
+        line 7.'
+      readings:
+        - Any filer eligible on December 1 who uses the last-month rule is treated as having the December 1 coverage for
+          all twelve months.
+        - The rule applies only to a filer not eligible in every month; a filer eligible all year keeps the actual months of
+          family coverage.
+      chosen: The first (f8889.use_last_month, read by f8889.step1_total, f8889.married_family, f8889.self_in_family and
+        line 7).
+      reason: >
+        The rule is open to anyone eligible on December 1 and its coverage treatment is unqualified in the Form 8889
+        instructions; Pub. 969 Example 2 treats a filer covered all year who changed to family coverage as contributing
+        under the last-month rule. The filer answers whether they use it, so a filer eligible all year who does not gets
+        the second reading's result. Found by the Stage 16 transcription review of f8889.
+      cite:
+        doc: i8889
+        locator: p. 2, Last-month rule; p. 4, Line 3, rules 2 to 4; p. 7, Line 6, Step 1
+      status: Proposed for the owner (Stage 16).
     - id: amb.2025.sli_ratio_places
       text_at_issue: The Student Loan Interest Deduction Worksheet, line 7, says "Enter the result as a decimal (rounded to at
         least three places)".
@@ -664,3 +688,442 @@ register:
         locator: 'p. 2, Line 2, "Elective deferrals (including designated Roth contributions under section 402A, if applicable)
           to a 401(k), 403(b), governmental 457(b), SEP, SIMPLE, or the federal TSP"'
       status: Owner decision, Stage 15 (T-048).
+    - id: amb.2025.dc_born_died_half_year
+      text_at_issue: 'Pub. 503, Who Is a Qualifying Person?, "treated as having lived with you for more than half of 2025 if your
+        home was the person''s home more than half the time they were alive in 2025"; the dependent tests ask whether a person
+        who is not your qualifying child lived with you "the entire time" (dependent.months).'
+      readings:
+      - A person over 12 unable to care for themselves who was born or died in 2025 qualifies on the time they were alive, as
+        Pub. 503 says.
+      - The dependent tests' answer stands, so such a person may not be counted.
+      chosen: The second, as encoded (no question is added); it can only leave out a qualifying person, so it never overstates
+        the credit.
+      reason: The owner's ruling (Stage 15 question 13). The case is rare, and asking it would add a question for every
+        dependent.
+      cite:
+        doc: p503
+        locator: p. 3, Who Is a Qualifying Person?
+      status: Owner ruling, Stage 15 (HANDOFF-STAGE-15.md, question 13).
+    - id: amb.2025.line8z_kinds
+      text_at_issue: 'Schedule 1, line 8z: "Other income. List type and amount". i1040gi p. 92 gives examples; the project has
+        no text values, so the type cannot be written.'
+      readings:
+      - A collection of line 8z entries, each with a kind from a fixed list (shown on the values sheet in place of the type)
+        and an amount; the kinds that need no other form or worksheet are computed and the rest refused.
+      - One total for line 8z with a notice that the filer writes the type on the form.
+      chosen: 'The first (oi8z). Computed kinds: RTAA payments (Form 1099-G box 5) and kickbacks, side commissions, push money
+        or similar payments not from self-employment. Refused kinds: recoveries (Pub. 525 Recoveries), loss on corrective
+        distributions, charitable deduction recaptures (Schedule 2 line 17g), the taxable part of disaster relief
+        payments, Coverdell ESA or QTP distributions (Form 5329), dividends on insurance policies above the net premiums,
+        and any other kind.'
+      reason: 'The owner''s decision D4 (Stage 16). The closed list is the premise map''s R-OI-2 less insurance dividends:
+        Form 8960 line 7 takes "Other items of NII ... reported on Schedule 1 (Form 1040), line 8z", and an insurance
+        policy dividend above the premiums paid may be net investment income (an amount from an insurance contract) that
+        this tool would leave off Form 8960; an entry cannot read the return''s income to refuse only above the Form 8960
+        threshold (that would be a cycle through line 8z), so the conservative reading refuses it.'
+      cite:
+        doc: i1040gi
+        locator: 'p. 92, Line 8z, "List the type and amount of income" and "Examples of income to report on line 8z include
+          the following"; i8960 p. 13, Line 7—Other Modifications to Investment Income, "Other items of NII (or properly allocable deductions) not otherwise
+          included on Form 8960 reported on Schedule 1 (Form 1040), line 8z"'
+      status: Owner decision D4, Stage 16 (T-053); the refusal of insurance dividends is the authoring agent's conservative
+        choice, for the owner.
+    - id: amb.2025.gambling_losses
+      text_at_issue: 'Schedule A, line 16 (i1040sca p. 11): "Gambling losses ... but only to the extent of gambling winnings
+        reported on Schedule 1 (Form 1040), line 8b." A filer who does not itemize deducts none (p525 p. 33, "If you itemize
+        your deductions on Schedule A (Form 1040), you can deduct gambling losses").'
+      readings:
+      - Line 16 is the smaller of the year's gambling losses and line 8b; it enters Schedule A line 17 like any other
+        itemized deduction, so it counts only when itemized deductions are taken; with no winnings it is zero and the
+        losses are not asked.
+      - Gambling losses are not computed (Schedule A line 16 stays refused).
+      chosen: The first (sa.line16_gambling, sa.line16); a professional gambler (s1.gambling_pro) is refused at line 8b.
+      reason: The owner's decision D14 (Stage 16). The comparison of itemized and standard deductions (sa.itemizes) already
+        applies the "only when itemizing" condition. Whether a professional gambler is asked only when there are winnings
+        is the authoring agent's reading (a professional gambler with no winnings has nothing on line 8b or line 16).
+      cite:
+        doc: i1040sca
+        locator: 'p. 11, Other Itemized Deductions, "but only to the extent of gambling winnings reported on Schedule 1 (Form
+          1040), line 8b"; p525 p. 33, Gambling winnings, "If you’re in the trade or business of gambling, use Schedule C
+          (Form 1040)"'
+      status: Owner decision D14, Stage 16 (T-053).
+    - id: amb.2025.jury_24a_cap
+      text_at_issue: 'Schedule 1, line 24a (i1040gi p. 99): "Enter your jury duty pay if you gave the pay to your employer
+        because your employer paid your salary while you served on the jury." Nothing says what to do with an amount given
+        to the employer above the jury duty pay on line 8h.'
+      readings:
+      - The amount given to the employer is asked; an amount above line 8h is an impossible entry and is refused.
+      - Line 24a is the smaller of the amount given and line 8h.
+      chosen: The first (s1.jury_over refuses s1.line24a).
+      reason: 'The pay given to the employer is part of the pay received (p525 p. 34, "you can deduct the amount turned over
+        to your employer"), so a larger amount is an entry error to correct, not a case to cap silently; as with w2.g_bad,
+        the refusal fires only on an impossible entry. Premise map Q14, left open by D3.'
+      cite:
+        doc: i1040gi
+        locator: 'p. 99, Line 24a, "Enter your jury duty pay if you gave the pay to your employer because your employer paid
+          your salary while you served on the jury"'
+      status: The authoring agent's reading, Stage 16 (T-053), for the owner.
+    - id: amb.2025.refund_not_itemized
+      text_at_issue: 'i1040gi p. 88, Line 1, TIP: "None of your refund is taxable if, in the year you paid the tax, you either
+        (a) didn’t itemize deductions, or (b) elected to deduct state and local general sales taxes instead of state and local
+        income taxes." Pub. 525 p. 24 also says that when you could choose income or sales taxes "the maximum refund that
+        you may have to include in income is limited to the excess of the tax you chose to deduct for that year over the tax
+        you didn’t choose to deduct", which read alone suggests a cap rather than zero for a filer who deducted sales taxes.'
+      readings:
+      - Schedule 1 line 1 is zero, and the worksheet is not used, when you did not itemize for 2024 or deducted general sales
+        taxes instead of income taxes; the worksheet is used only when you itemized and deducted income taxes.
+      - A filer who deducted sales taxes includes the income tax refund up to the excess of the sales tax over the income
+        tax.
+      chosen: The first (refund.worksheet, refund.taxable).
+      reason: 'The owner''s decision D5, with the verification''s correction E5 of the premise map. The cap in Pub. 525 limits
+        the refund of the tax you chose to deduct; for an income tax refund when sales tax was deducted, Pub. 525 p. 24, Example
+        27, says "Because you didn’t choose to deduct the state income tax, you don’t include the state income tax refund in
+        income", agreeing with the TIP. A refund of the sales tax itself is a different recovery, refused (refund.other).'
+      cite:
+        doc: i1040gi
+        locator: 'p. 88, Line 1, "None of your refund is taxable if, in the year you paid the tax"; p525 p. 24, State tax refund,
+          "Because you didn’t choose to deduct the state income tax, you don’t include the state income tax refund in income"'
+      status: Owner decision, Stage 16 (T-053, D5).
+    - id: amb.2025.refund_exceptions
+      text_at_issue: 'i1040gi pp. 88-89, Line 1: "Exception. See Itemized Deduction Recoveries in Pub. 525 instead of using
+        the State and Local Income Tax Refund Worksheet in these instructions if any of the following applies", items 1 to
+        9; Pub. 525 p. 24 adds a nonresident alien. The exceptions say when the worksheet may not be used; they do not say
+        whether they matter when no worksheet is needed because you did not itemize for 2024 or deducted sales taxes.'
+      readings:
+      - Ask items 1 and 5 (a refund for another year, a last 2024 estimated payment made in 2025) and Form 1099-G box 8 of
+        every refund, and the rest (items 3, 4, 6, 7, 8, 9 and a 2024 Form 1040-NR) only when the worksheet would be used;
+        refuse on Yes. Item 2 (refunds of other taxes) is asked of every return with the other recoveries.
+      - Ask every exception of every refund, before the itemizing questions.
+      chosen: The first (refund.box8 and refund.not_2024 on refund.taxable; refund.exc_tax and refund.exc_who on refund.line1;
+        refund.other on Schedule 1 line 1).
+      reason: The TIP is stated for "the year you paid the tax", which is 2024 only when the refund is for 2024 and was paid
+        then, so items 1 and 5 can make a refund taxable even when you did not itemize for 2024, and a part of the refund for
+        a 2025 payment changes the 2025 deduction for taxes (Pub. 525 p. 24, Example 28). Items 3, 4, 6, 7, 8 and 9 and the
+        nonresident rule change only how much of a refund of a deducted tax is included; when no income tax was deducted
+        for 2024, none is (Pub. 525 p. 24, Deductions not itemized). Box 8 sends a taxable refund to Schedule C or F whatever
+        the itemizing. A recovery deducted on an earlier Form 8960 is refused by the existing screen f8960.refund, asked of
+        every return.
+      cite:
+        doc: i1040gi
+        locator: 'pp. 88–89, Line 1, "Exception. See Itemized Deduction Recoveries in Pub. 525 instead of using the State and
+          Local Income Tax Refund Worksheet"; p525 p. 24, Deductions not itemized'
+      status: Agent reading within the owner's decision D5, Stage 16 (T-053), for the owner's review.
+    - id: amb.2025.refund_cap_5d
+      text_at_issue: 'i1040gi p. 90, State and Local Income Tax Refund Worksheet, line 1: "But don’t enter more than the amount
+        of your state and local income taxes shown on your 2024 Schedule A, line 5d." Line 5d of the 2024 Schedule A is the
+        total of line 5a (income or general sales taxes), 5b (real estate taxes) and 5c (personal property taxes); the income
+        tax alone is on line 5a.'
+      readings:
+      - Cap line 1 at the amount on 2024 Schedule A line 5d, as printed.
+      - Cap line 1 at the income tax part, line 5a.
+      chosen: The first (refund.line1).
+      reason: The owner's decision D6(a). The worksheet names line 5d. A refund larger than the income tax deducted on line 5a
+        is exception 4 territory when sales taxes could have been deducted, and is caught there (refund.exc_tax).
+      cite:
+        doc: i1040gi
+        locator: 'p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 1, "But don’t enter more than
+          the amount of your state and local income taxes shown on your 2024 Schedule A, line 5d"'
+      status: Owner decision, Stage 16 (T-053, D6).
+    - id: amb.2025.refund_paid_5d
+      text_at_issue: 'i1040gi p. 90, State and Local Income Tax Refund Worksheet, line 2: "the amount of state and local income
+        taxes (or general sales taxes), real estate taxes, and personal property taxes paid in 2024 (generally, this is the
+        amount reported on your 2024 Schedule A, line 5d)". "Generally" admits a paid amount different from line 5d without
+        saying when.'
+      readings:
+      - Ask the amount reported on 2024 Schedule A line 5d, and use it both for the line 1 limit and for the amount paid on
+        line 2.
+      - Ask the amount paid in 2024 separately from line 5d.
+      chosen: The first (refund.line5d_2024).
+      reason: The owner's decision D6(b). The worksheet itself takes line 5d as the usual amount, and a filer reads it from
+        the 2024 return.
+      cite:
+        doc: i1040gi
+        locator: 'p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 2, "(generally, this is the amount
+          reported on your 2024 Schedule A, line 5d)"'
+      status: Owner decision, Stage 16 (T-053, D6).
+    - id: amb.2025.refund_boxes_2024
+      text_at_issue: 'i1040gi p. 90, State and Local Income Tax Refund Worksheet, line 6: "Check any boxes that apply. You
+        were born before January 2, 1960. You are blind. Spouse was born before January 2, 1960. Spouse is blind." with the
+        footnote "If your filing status is married filing separately, you can check the boxes for your spouse only if your
+        spouse had no income, isn’t filing a return, and can’t be claimed as a dependent on another person’s return." The
+        boxes are those of the 2024 standard deduction; the 2024 spouse may not be the 2025 spouse, and the worksheet does
+        not say when blindness is judged or when a spouse box applies for a 2024 status other than married filing separately.'
+      readings:
+      - Ask four yes/no questions about 2024 (born before January 2, 1960; blind at the end of 2024; the same for the spouse
+        on the 2024 return, with the married filing separately conditions in the spouse questions); ask the spouse questions
+        only when the 2024 filing status was married filing jointly or married filing separately; each box checked adds the
+        per-box amount.
+      - Ask one count of boxes checked.
+      - Derive the boxes from the 2025 person records.
+      chosen: The first (refund.you_born, refund.you_blind, refund.spouse_born, refund.spouse_blind, refund.spouse_boxes).
+      reason: The owner's decision D6(c) (four yes/no questions, since a 2024 spouse may not be the 2025 one). Blindness at
+        the end of the year and the spouse boxes for a joint or separate return follow the standard deduction instructions
+        (i1040gi p. 33, Line 12d, for 2025, "If you or your spouse (if you are married and filing a joint return) were born
+        before January 2, 1961, or were blind at the end of 2025" and "Don’t check any boxes for your spouse if your filing
+        status is head of household"); a single or qualifying surviving spouse return has no spouse whose boxes it checks.
+        The worksheet's "number of boxes checked" times the amount is written as the sum of the amount for each box checked
+        (no atom makes a count from yes/no answers on a return-level form); the two are equal.
+      cite:
+        doc: i1040gi
+        locator: 'p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 6, "Check any boxes that apply";
+          p. 33, Line 12d, "Don’t check any boxes for your spouse if your filing status is head of household"'
+      status: Owner decision D6(c), Stage 16 (T-053); the timing of blindness and the statuses with spouse boxes are the agent's
+        reading, for the owner's review.
+    - id: amb.2025.alimony_screen
+      text_at_issue: 'Form 1040 instructions, Lines 2a and 2b and Line 19a: alimony under a divorce or separation agreement entered
+        into on or before December 31, 2018 (and not changed to exclude it) is income to the recipient and deductible by the
+        payer; "If you are including alimony payments from more than one divorce or separation agreement in your income, enter
+        the total". Pub. 504 adds the recapture rule (Worksheet 1), the statement for more than one recipient and the rules
+        for payments partly child support.'
+      readings:
+      - Compute lines 2a and 19a from the amounts received and paid under pre-2019 agreements, and refuse, by one screen,
+        more than one agreement or recipient, a recapture of alimony, and payments of which part is child support.
+      - Compute them for any number of agreements, as line 2a's total, refusing only the recapture.
+      - Refuse alimony altogether.
+      chosen: The first (s1.alimony, s1.alimony_unsupported; amounts under an agreement entered into after 2018, or after
+        a change that expressly excludes them, are not asked, as the questions say, and are neither income nor deductible).
+      reason: The owner's decision (Stage 16 decision batch, D2, with the screens of the premise map, R-ALI-1 and R-ALI-2).
+        The statement listing the other agreements and recipients, and the recapture worksheet, are not prepared; a payment
+        partly child support needs the Pub. 504 allocation rules.
+      cite:
+        doc: p504
+        locator: p. 12, Alimony, "If you paid alimony to more than one person, enter the SSN or ITIN of one of the recipients";
+          p. 16, Recapture of Alimony; p. 13, Underpayment
+      status: Owner decision, Stage 16 (T-053).
+    - id: amb.2025.s1_unnumbered_lines
+      text_at_issue: 'Schedule 1 line 2b ("Date of original divorce or separation agreement"), line 19b ("Recipient''s SSN")
+        and line 19c (the date again) are not amounts; the project has no text or date values for them.'
+      readings:
+      - Ask nothing and show a notice on the values sheet that the filer writes them on the form.
+      - Ask them and show them on the values sheet.
+      chosen: The first (s1.line2b_notice, s1.line19b_notice, s1.line19c_notice, shown when line 2a or line 19a is more than
+        zero).
+      reason: The owner's decision (Stage 16 decision batch, D12). No amount depends on them.
+      cite:
+        doc: i1040gi
+        locator: p. 89, Line 2b, "enter the month and year of your original divorce or separation agreement"; p. 95, Line
+          19c, "On line 19c, enter the month and year of your original divorce or separation agreement"
+      status: Owner decision, Stage 16 (T-053).
+    - id: amb.2025.ewp_oid
+      text_at_issue: 'Form 1040 instructions, Line 18: "The Form 1099-INT or Form 1099-OID you received will show the amount
+        of any penalty you were charged." The Schedule B screen (sb.unsupported) refuses only original issue discount not
+        reported on a Form 1099-OID, so a penalty on a Form 1099-OID passes it.'
+      readings:
+      - One penalty input per interest payer that takes the penalty from either form (Form 1099-INT box 2, or the penalty
+        shown on Form 1099-OID).
+      - A Form 1099-INT box 2 input per payer, and a screen refusing a penalty reported on Form 1099-OID.
+      chosen: The first (interest.penalty, totaled on s1.line18 and copied to Form 8960 line 10).
+      reason: The owner's decision (Stage 16 decision batch, D2, as corrected by the verification, E4) allows an input or
+        a screen; the instruction treats the two forms alike, so an input loses nothing. Form 1099-OID is not archived, so
+        its box number is not named.
+      cite:
+        doc: i1040gi
+        locator: p. 95, Line 18, "The Form 1099-INT or Form 1099-OID you received will show the amount of any penalty you
+          were charged"
+      status: Owner decision, Stage 16 (T-053).
+    - id: amb.2025.cod_fully_taxable
+      text_at_issue: 'Form 1040 instructions, Line 8c: "Canceled debt may be shown in box 2 of Form 1099-C. However, part or
+        all of your income from cancellation of debt may be nontaxable. See Pub. 4681". Pub. 4681 lists exceptions (gifts,
+        student loans, deductible debt, price reductions) and exclusions (bankruptcy, insolvency and others, Form 982), and
+        treats foreclosures, repossessions and abandonments separately.'
+      readings:
+      - Compute line 8c only for canceled nonbusiness debt that is fully taxable, refusing by one screen every exception
+        or exclusion, business, rental or farm debt, foreclosures, repossessions and abandonments, deductible interest,
+        nonrecourse debt and debt owed jointly with someone other than the spouse on the return.
+      - Also compute an excepted student loan as not income (the premise map's R-COD-3).
+      chosen: The first (s1.cod_amount, s1.cod_unsupported). Student loans are refused with the other exceptions.
+      reason: The owner's decision (Stage 16 decision batch, D2, "fully taxable canceled nonbusiness debt"). An excepted
+        student loan discharge is nontaxable and usually comes with no Form 1099-C (p. 3, TIP), so a filer who reports one
+        is refused rather than told how much of it to include; the conservative choice where D2 is silent.
+      cite:
+        doc: p4681
+        locator: p. 3, General Rules, "There are several exceptions and exclusions that may result in part or all of a canceled
+          debt being nontaxable"; p. 4, Exceptions
+      status: Owner decision, Stage 16 (T-053); the student loan refusal is the encoding's choice, for the owner.
+    - id: amb.2025.hsa_partial_exception
+      text_at_issue: 'Form 8889 instructions, Lines 17a and 17b: "If any of the exceptions apply to any of the distributions
+        included on line 16, check the box on line 17a. Enter on line 17b only 20% (0.20) of any amount included on line 16
+        that does not meet any of the exceptions." When only part of line 16 is excepted (for example, the account beneficiary
+        turned 65 during the year), the part subject to the tax depends on when each distribution was made.'
+      readings:
+      - The line 17a box as a question, and when it is checked, an input for the part of line 16 subject to the tax (at
+        most line 16).
+      - Refuse a partial exception.
+      chosen: The first (f8889.line17a, f8889.subject_part).
+      reason: The owner's decision (Stage 16 decision batch, D13). With the box unchecked all of line 16 is subject to the
+        tax; with it checked and nothing subject, line 17b is zero.
+      cite:
+        doc: i8889
+        locator: p. 9, Exceptions to the Additional 20% Tax, "Enter on line 17b only 20% (0.20) of any amount included on
+          line 16 that does not meet any of the exceptions"
+    - id: amb.2025.ira_both_kinds
+      text_at_issue: 'i1040gi p. 95, Line 20, item 2: "If you are filing a joint return and you or your spouse made contributions
+        to both a traditional IRA and a Roth IRA for 2025, don’t use the IRA Deduction Worksheet in these instructions."'
+      readings:
+      - Refuse a joint return with any traditional and any Roth contribution for 2025 between the spouses (you traditional and
+        your spouse Roth included).
+      - Refuse only when one spouse contributed to both kinds.
+      chosen: The first (ira.both_kinds).
+      reason: The owner's decision (Stage 16 decision 8). The Kay Bailey Hutchison limit reduces one spouse's limit by Roth
+        contributions made for the other spouse (p590a p. 10), so the cross case can matter; the broad reading is the one that
+        cannot leave a return the worksheet does not serve.
+      cite:
+        doc: i1040gi
+        locator: 'p. 95, Line 20, "If you are filing a joint return and you or your spouse made contributions to both a traditional
+          IRA and a Roth IRA for 2025, don’t use the IRA Deduction Worksheet in these instructions"'
+      status: Owner decision, Stage 16 (T-053).
+    - id: amb.2025.ira_age50
+      text_at_issue: 'The IRA Deduction Worksheet uses "age 50 or older at the end of 2025" for the applicable amount, the line
+        7 rate and the caution below line 10; it gives no birth-date rule.'
+      readings:
+      - Ask each person directly whether they were age 50 or older at the end of 2025 (person.ira_age50).
+      - Derive it from a birth-date cut (born before January 1, 1976, or before January 2, 1976 under the day-before rule
+        Pub. 501 states for age 65).
+      chosen: The first.
+      reason: The owner's decision (Stage 16 decision 9(a)). The archived text states the day-before rule only for age 65 and
+        the standard deduction; asking the age at the end of 2025 is the worksheet's own wording, as person.simple_age is for
+        the SIMPLE catch-up.
+      cite:
+        doc: i1040gi
+        locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, "$8,000 if age 50 or older at the end of 2025"'
+      status: Owner decision, Stage 16 (T-053).
+    - id: amb.2025.ira_covered
+      text_at_issue: 'i1040gi p. 96: "The “Retirement plan” box in box 13 of your Form W-2 should be checked if you were covered
+        by a plan at work even if you weren’t vested in the plan. You are also covered by a plan if you were self-employed and
+        had a SEP, SIMPLE, or qualified retirement plan." Pub. 590-A p. 12 adds plan-year rules and exceptions (reservists,
+        volunteer firefighters) that box 13 alone does not settle.'
+      readings:
+      - One question per person whether they were covered by a retirement plan at work, with W-2 box 13 named in its help
+        (person.ira_work_plan), together with the self-employed person's own SEP or SIMPLE plan already asked (person.plan,
+        read only with a Schedule C).
+      - A box 13 input on each Form W-2, with a question for coverage not shown on a W-2.
+      chosen: The first (person.ira_cov).
+      reason: The owner's decision (Stage 16 decision 9(b)). A self-employed person's own qualified plan other than a SEP or
+        SIMPLE (such as a solo 401(k)) is refused by scope.schedule1, so person.plan covers the self-employed plans this tool
+        computes.
+      cite:
+        doc: i1040gi
+        locator: 'p. 96, Were You Covered by a Retirement Plan?, "The “Retirement plan” box in box 13 of your Form W-2 should
+          be checked if you were covered by a plan at work even if you weren’t vested in the plan"'
+      status: Owner decision, Stage 16 (T-053).
+    - id: amb.2025.ira_se_floor
+      text_at_issue: 'IRA Deduction Worksheet line 9: "Enter the earned income you (and your spouse if filing jointly) received
+        as a self-employed individual or a partner ... minus any deductions on Schedule 1, lines 15 and 16. If zero or less,
+        enter -0-." Pub. 590-A p. 7: "If you have a net loss from self-employment, don’t subtract the loss from your salaries
+        or wages when figuring your total compensation."'
+      readings:
+      - Floor each person's self-employment earned income at zero, then add the two (person.ira_se, ira.line9).
+      - Add the spouses' amounts and floor the total, as the worksheet prints it.
+      chosen: The first.
+      reason: The owner's decision (Stage 16 decision 9(c)). Pub. 590-A treats a self-employment loss as not reducing wages;
+        the readings differ only on a joint return where one spouse has a self-employment loss and the other a profit.
+      cite:
+        doc: p590a
+        locator: 'p. 7, Self-employment loss, "If you have a net loss from self-employment, don’t subtract the loss from your salaries
+          or wages when figuring your total compensation"'
+      status: Owner decision, Stage 16 (T-053).
+    - id: amb.2025.ira_se_earned
+      text_at_issue: 'IRA Deduction Worksheet line 9: "Generally, this is your (and your spouse’s if filing jointly) net earnings
+        from self-employment if your personal services were a material income-producing factor, minus any deductions on
+        Schedule 1, lines 15 and 16." Pub. 590-A pp. 6-7: "compensation is the net earnings from your trade or business (provided
+        your personal services are a material income-producing factor) reduced by" the plan deduction and the deductible part
+        of self-employment tax.'
+      readings:
+      - The person's Schedule C net profit or loss (person.sc_total), less that person's Schedule 1 lines 15 and 16, with
+        personal services taken as a material income-producing factor.
+      - Schedule SE net earnings from self-employment (line 6, 92.35% of the profit), less lines 15 and 16.
+      - Ask whether personal services were a material income-producing factor, and refuse when not.
+      chosen: The first.
+      reason: Pub. 590-A names the net earnings "from your trade or business" reduced by the two deductions, which is the net
+        profit; the 92.35% figure would reduce the profit for the tax twice. A Schedule C business whose income comes mainly
+        from capital rather than the owner's services is not screened (an open question for the owner).
+      cite:
+        doc: p590a
+        locator: 'p. 6, What Is Compensation?, "If you are self-employed (a sole proprietor or a partner), compensation is the
+          net"; p. 7, "earnings from your trade or business (provided your personal services are a material income-producing
+          factor) reduced by the total of"'
+      status: Authoring reading, Stage 16 (T-053); for the owner.
+    - id: amb.2025.ira_ssb_copy
+      text_at_issue: 'The Social Security Benefits Worksheet line 6 reads Schedule 1 line 20 (i1040gi p. 32, "Enter the total
+        of the amounts from Schedule 1, lines 11 through 20, and 23 and 25"), and the IRA Deduction Worksheet line 3 reads Form
+        1040 line 9, which includes the taxable benefits (p. 97). The instructions route every case in which both are figured
+        to Pub. 590-A (p. 31, Exception) or skip lines 2 through 6 of the IRA worksheet (p. 97), but the line graph has a cycle
+        the build rejects.'
+      readings:
+      - The Social Security Benefits Worksheet reads its own copy of line 20 figured on the no-coverage path (the smallest of
+        the applicable amount, line 10 and line 11 for each person, person.ira_ssb), which equals line 20 on every return the
+        worksheet serves; the copy refuses when someone is covered and there are traditional contributions (the p. 31
+        exception), and ssb.pub915 keeps its own question.
+      - IRA worksheet line 3 reads Form 1040 line 9 without the taxable benefits.
+      - Derive the p. 31 refusal from the contribution and coverage answers instead of ssb.pub915.
+      chosen: The first (ssb.ira_line20, person.ira_ssb, ira.cov_gate).
+      reason: The owner's decision (Stage 16 decision 7). The IRA worksheet stays a literal transcription, and the special
+        case sits where the instructions carve the exception, in the social security worksheet's own list. The copy's refusal
+        fires only on a return that ssb.pub915 already refuses when answered as the instructions require.
+      cite:
+        doc: i1040gi
+        locator: 'p. 31, Lines 6a and 6b, Exception; p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, "If you checked “No”
+          on line 1a (and “No” on line 1b if married filing jointly), skip lines 2 through 6"'
+      status: Owner decision, Stage 16 (T-053).
+    - id: amb.2025.ira_line7_cents
+      text_at_issue: 'IRA Deduction Worksheet line 7: "Multiply lines 6a and 6b by the percentage below that applies to you.
+        If the result isn’t a multiple of $10, increase it to the next multiple of $10 (for example, increase $490.30 to $500)."
+        Line 6 can carry cents, and the product can then have a fraction of a cent.'
+      readings:
+      - Round the product half-up to the cent (multiply_rate, amb.2025.multiplication_subcent), then increase it to the next
+        multiple of $10.
+      - Increase the exact product to the next multiple of $10.
+      chosen: The first.
+      reason: The project's rule for products (amb.2025.multiplication_subcent). The readings differ only when the exact product
+        is less than half a cent above a multiple of $10.
+      cite:
+        doc: i1040gi
+        locator: 'p. 98, IRA Deduction Worksheet—Continued, line 7, "If the result isn’t a multiple of $10, increase it to the
+          next multiple of $10 (for example, increase $490.30 to $500)"'
+      status: Authoring reading, Stage 16 (T-053).
+    - id: amb.2025.ira_deduct_less
+      text_at_issue: 'IRA Deduction Worksheet line 12: "This is the most you can deduct. ... Or, if you want, you can deduct
+        a smaller amount and treat the rest as a nondeductible contribution (see Form 8606)."'
+      readings:
+      - Compute the most you can deduct and refuse the election to deduct less (ira.deduct_less).
+      - Take an input for the amount you choose to deduct.
+      chosen: The first.
+      reason: The owner's decision (Stage 16 decision 8). An input with no default would be asked of every filer with a
+        deduction; the election is rare.
+      cite:
+        doc: i1040gi
+        locator: 'p. 98, IRA Deduction Worksheet—Continued, line 12, "Or, if you want, you can deduct a smaller amount and treat
+          the rest as a nondeductible contribution (see Form 8606)"'
+      status: Owner decision, Stage 16 (T-053).
+    - id: amb.2025.ira_fellowship
+      text_at_issue: 'Pub. 590-A p. 6: "certain non-tuition fellowship and stipend payments not reported to you on Form W-2 are
+        treated as taxable compensation for IRA purposes." IRA Deduction Worksheet line 8 lists wages, alimony and combat pay
+        only.'
+      readings:
+      - Refuse the IRA deduction when such payments exist (ira.special, with box 11 and code Z amounts, reservist repayments
+        and difficulty of care payments).
+      - Add them to line 8.
+      - Follow the worksheet and leave them out.
+      chosen: The first.
+      reason: The owner's decision (Stage 16 decision 8). The worksheet and the publication disagree; refusing cannot be
+        wrong. Box 11 and code Z amounts are refused rather than taken as W-2 inputs, by the same decision.
+      cite:
+        doc: p590a
+        locator: 'p. 6, What Is Compensation?, "certain non-tuition fellowship and stipend payments not reported to you on Form
+          W-2 are treated as taxable compensation for IRA purposes"'
+      status: Owner decision, Stage 16 (T-053).
+    - id: amb.2025.savers_traditional
+      text_at_issue: 'Form 8880 line 1: "Traditional and Roth IRA contributions, and ABLE account contributions by the designated
+        beneficiary for 2025. Do not include rollover contributions."'
+      readings:
+      - Count every traditional IRA contribution for 2025, deductible or not (IRA Deduction Worksheet line 11), with the Roth
+        contributions.
+      - Count only the deductible part.
+      chosen: The first (person.sav_line1 adds person.ira_contrib).
+      reason: The owner's decision (Stage 16 decision 10). The line names traditional IRA contributions without limiting them
+        to the deductible ones. Excess or recharacterized contributions, traditional or Roth, are refused by one screen per
+        person (person.ira_excess), which also answers Stage 15 owner question 4.
+      cite:
+        doc: f8880
+        locator: 'Form 8880 (2025), line 1, "Traditional and Roth IRA contributions"'
+      status: Owner decision, Stage 16 (T-053).

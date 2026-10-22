@@ -45,7 +45,10 @@ def saver_answers(person):
     """Form 8880: no retirement contributions or distributions in other years, and no screen fired."""
     return {f"{person}.sav_born": True, f"{person}.sav_student": False, f"{person}.sav_claimed": False, f"{person}.sav_trad": False,
             f"{person}.sav_able": False, f"{person}.sav_roth": 0, f"{person}.sav_excess": False, f"{person}.sav_voluntary": 0,
-            f"{person}.sav_prior_joint": 0, f"{person}.sav_prior_other": 0}
+            f"{person}.sav_prior_joint": 0, f"{person}.sav_prior_other": 0,
+            # The IRA deduction (Schedule 1 line 20, Form 8606): no traditional IRA contribution, so none of these is reached.
+            f"{person}.ira_trad": 0, f"{person}.ira_excess": False, f"{person}.ira_age50": False, f"{person}.ira_work_plan": False,
+            f"{person}.ira_basis": 0, f"{person}.ira_basis_adjusted": False, f"{person}.ira_dist": False}
 
 
 def gen_case(rng, i):
@@ -58,6 +61,9 @@ def gen_case(rng, i):
         "qbi.unsupported": False,
         "qbi.carryforward": 0,
         "f5695.part1_any": False, "f5695.part2_any": False,
+        # Schedule 1 line 8 and line 24a: no other income, no gambling (so no losses) and no jury duty pay.
+        "s1.line8_other": False, "s1.gambling_winnings": 0, "s1.gambling_pro": False, "s1.line8g": 0, "s1.line8h": 0,
+        "s1.line8i": 0, "s1.line8j": 0, "s1.line8r": 0, "$oi8z": [], "s1.jury_to_employer": 0, "sa.gambling_losses": 0,
         "$sc@person[taxpayer]": [],
         "f4952.line4g": 0, "f4952.carryover": False, "f4952.unsupported": False, "f4952.alternative_allocation": False,
         "f8959.unsupported": False, "f8960.unsupported": False, "f8960.refund": False, "f8960.allocated_taxes": 0,
@@ -67,6 +73,9 @@ def gen_case(rng, i):
         "sa.spouse_extra": False, "person[taxpayer].age65": False, "person[taxpayer].blind": False, "sa.spouse_itemizes": False, "sa.elect_itemize": False,
         "sa.line5c": 0,
         "scope.schedule1": False, "scope.credits": False, "scope.other_income": False,
+        "refund.received": 0, "refund.other": False,
+        # Schedule 1 lines 2a, 8c and 19a: no alimony and no canceled debt.
+        "s1.alimony": False, "s1.cod_amount": 0,
         "scope.other_line16": False, "s2.amt": False, "s2.other": False,
         "f1040.line25b": 0, "f1040.line25c": 0, "f1040.line26": 0, "f1040.line35a": 0, "f1040.line36": 0,
         # Earned income credit questions: an adult aged 25 to 64 living in the United States who is
@@ -74,9 +83,10 @@ def gen_case(rng, i):
         "f1040.tax_exempt_interest": 0, "div.box12": 0, "eic.qc_of_another": False, "person[taxpayer].born_before_2001": True, "person[taxpayer].born_after_1960": True, "eic.us_home": True, "eic.married": False,
         "$retirement": [],
         # Form 2441: no care expenses and no dependent care benefits.
-        "f2441.care": False, "f2441.benefits": False,
+        "f2441.care": False, "f2441.benefits": False, "f2441.employer_care": False,
     }
     inputs.update(saver_answers(TAXPAYER))
+    inputs.update({"ira.special": False, "ira.deduct_less": False})
     facts = {}
     features = set()
 
@@ -108,6 +118,7 @@ def gen_case(rng, i):
     interest = 0
     for k in range(n_int):
         a = log_uniform(rng, 1_000, 5_000_000); inputs[f"interest[bank_{chr(97 + k)}].amount"] = a; interest += a
+        inputs[f"interest[bank_{chr(97 + k)}].penalty"] = 0
     facts["interest"] = interest
 
     # Dividends: ordinary includes qualified; section 199A dividends are a separate subset.
@@ -228,7 +239,7 @@ def gen_case(rng, i):
         inputs.update({f"{HSA}.months_eligible": 12, f"{HSA}.months_family": 12 if family else 0, f"{HSA}.age55": age55,
                        f"{HSA}.dec_coverage": "family" if family else "self_only", f"{HSA}.last_month": False, f"{HSA}.unsupported": False})
         features.add("hsa")
-    inputs.update({f"$f8889@{TAXPAYER}": ["hsa"], f"{HSA}.line2": contrib, f"{HSA}.line9": employer}); facts["hsa_deduction"] = hsa_deduction
+    inputs.update({f"$f8889@{TAXPAYER}": ["hsa"], f"{HSA}.line2": contrib, f"{HSA}.line9": employer, f"{HSA}.line14a": 0}); facts["hsa_deduction"] = hsa_deduction
     sli = rng.randint(1_000, 300_000) if rng.random() < 0.15 else 0
     inputs.update({"sli.interest": sli, "sli.claimed": False}); facts["student_loan_interest"] = sli
     if sli: features.add("student_loan_interest")

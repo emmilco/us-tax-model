@@ -974,3 +974,87 @@ later grouping.
 - **Where:** `engine/src/mutate.ts` (`normal`).
 - **Fix:** rates compare as numerator and denominator, exactly. Four survivors are now killed.
 - **Tags:** test-tool; rate; caught-by-fixture
+
+## BUG-0083 — A line's refusal gates stop at the first unknown gate (the rest of BUG-0079)
+
+- **Date:** 2026-10-22
+- **Caught by:** the fix of BUG-0079 (owner-approved), which made both evaluators take an atom's and a comparison's
+  operands by one rule: the first refusal in operand order, else the first unknown, else compute (`smaller_of`,
+  `larger_of`, `keyed_lookup` and `rate_lookup` now evaluate past an unknown operand; `sum`, `sum_over`, `all` and
+  `any` keep the first unknown; `choose` guards and `all`/`any` keep their order and early stops, since a later
+  refusal there is not certain). A new property, `refusal_outranks_unknown` (answers removed from generated
+  returns), failed on `f8880.line10` before that fix and holds after it. BUG-0079's atoms are fixed by that change.
+- **Symptom:** a line's own list of refusal gates (`refuses`) is still read in order and stops at the first unknown
+  gate, so when gate 1 is unknown and gate 2 is true the line is reported unknown though it is certainly refused.
+  No return is produced wrongly; the refusal can come later in the interview.
+- **Root cause:** the gate list is not an atom and was left out of the operand rule.
+- **Where:** `engine/src/eval.ts` and `lean/TaxFormalization/Eval.lean` (the gate loop).
+- **Fix:** open, for the owner. Applying the rule there was tried and reverted: the interview then asks a few more
+  questions before refusing (658 integration invocations become 661, `stage4.refuse.scope.schedule1` and
+  `sales.refuse.digital.G` each asking one or two more).
+- **Tags:** evaluator; refusal-order; caught-by-property
+
+## BUG-0084 — The standard deduction counted the age box of a person who died before reaching 65
+
+- **Date:** 2026-10-22
+- **Caught by:** the Stage 16 transcription comparison of `sa` (sa.itemizes, sa.deduction): the second
+  transcription excluded a person who died in 2025 before reaching 65 from the age boxes.
+- **Symptom:** on a joint return whose spouse was born in 1960, died in 2025 before reaching 65 and had no SSN valid
+  for employment, Form 1040 line 12e was $33,100 instead of $31,500 and line 15 $76,900 instead of $78,500,
+  unrefused (i1040gi p. 33, Line 12d, Death of spouse in 2025, "don't check the box"; p501 p. 23, Death of taxpayer).
+- **Root cause:** `sa.boxes_age65` counted `person.age65` alone; the decedent rule was carried only by the Schedule
+  1-A Part V refusals (`s1a.senior_decedent`, `s1a.spouse_senior_decedent`), which a spouse without a work SSN does
+  not reach. The Stage 13 rulings on `sa.itemizes` and `sa.deduction` did not address the condition.
+- **Where:** `forms/2025/sa.yaml` (`sa.boxes_age65`).
+- **Fix:** `sa.boxes_age65` counts a person only when `person.age65` is true and `person.died_before_65` is false;
+  fixture `stage16.sa.decedent_spouse`; three fixtures with a person aged 65 or older gained the answer
+  `died_before_65` false.
+- **Tags:** refusal-reachability; stale-scope-ruling; caught-by-transcription-comparison
+
+## BUG-0085 — The HSA medical expense question left out people who would be dependents
+
+- **Date:** 2026-10-22
+- **Caught by:** the Stage 16 render review of `f8889` (line 15).
+- **Symptom:** the question for Form 8889 line 15 asked for qualified medical expenses "of you, your spouse and your
+  dependents", while the line 15 instructions also include anyone who would be a dependent except for filing a joint
+  return, having gross income, or the filer being someone else's dependent (i8889 p. 8), and a child of divorced or
+  separated parents for both parents (p. 9, TIP). A filer answering as worded could leave such expenses off line 15,
+  overstating line 16, Schedule 1 line 8f and the additional 20% tax on line 17b.
+- **Root cause:** the question paraphrased the instruction's three-item list as "your dependents".
+- **Where:** `forms/2025/f8889.yaml` (`f8889.medical`).
+- **Fix:** the question names the would-be dependents and the divorced-parents rule; no expression changed.
+- **Tags:** input-wording; question-scope; caught-by-render
+
+## BUG-0086 — The IRA basis question omitted the Form 8606 line 2 adjustments
+
+- **Date:** 2026-10-22
+- **Caught by:** the Stage 16 render comparison of Form 8606: line 2 MISMATCH, quoting the Total Basis Chart's 2024
+  row and the line 2 adjustments (i8606 p. 9).
+- **Symptom:** `person.ira_basis` asked for zero in a first year and otherwise line 14 of the last Form 8606. A filer
+  whose basis changed by a return of excess traditional IRA contributions, a transfer incident to divorce, a rollover
+  of the nontaxable part of a qualified plan, or line 6 of an earlier Line 15c Worksheet was led to enter the wrong
+  basis on Form 8606 lines 2, 3 and 14 (no 2025 tax effect, since a 2025 distribution or conversion is refused; the
+  error carries to the next year). The interview help said "zero if you never filed Form 8606".
+- **Root cause:** the question was written from the chart's general rule without the "increase or decrease the amount
+  from the chart" list beside it or the 2024 row's adjustment.
+- **Where:** `forms/2025/person.yaml` (`person.ira_basis`), `interview/questions-2025.yaml` (its help).
+- **Fix:** a per-person screen `person.ira_basis_adjusted`, asked of a person who files Form 8606, refuses Form 8606
+  line 2 (`person.ira_basis_gate` on `person.ira_8606_line2`); the basis question follows the Total Basis Chart and
+  the help says "zero if this is the first year you file Form 8606". Existing fixtures gained the answer false.
+- **Tags:** input-wording; screen-missing; caught-by-render
+
+## BUG-0087 — An HSA whose owner died with the estate as beneficiary was not refused
+
+- **Date:** 2026-10-22
+- **Caught by:** the Stage 16 rulings on the `f8889` transcription log (an observation beside the line 17b ruling:
+  the second transcription noted that the death exception is not covered by line 17a).
+- **Symptom:** on a final return where the estate is the HSA's beneficiary, the HSA's value at death is included on
+  line 14a and "is not subject to the additional 20% tax" (i8889 p. 3, Death of HSA Account Beneficiary). The line
+  17a question names only disability and age 65, and `f8889.unsupported` named only an HSA acquired because of
+  someone else's death, so such a return could be charged the 20% tax on an excepted amount. Final returns are in
+  scope (`person.died_before_65`).
+- **Root cause:** the death rule's two sides (the beneficiary's and the decedent's) were screened on one side only.
+- **Where:** `forms/2025/f8889.yaml` (`f8889.unsupported`).
+- **Fix:** the screen also names "the HSA of a person who died in 2025 whose estate is the beneficiary"; a Yes refuses
+  as before.
+- **Tags:** screen-missing; decedent; caught-by-review

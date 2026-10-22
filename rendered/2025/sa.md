@@ -5,9 +5,9 @@
 
 ## (helper) — `sa.unsupported`
 
-- **Authored helper label:** Any casualty or theft loss (including a disaster loss added to the standard deduction); a deduction from the Schedule A line 16 list; a foreign tax or generation-skipping tax deduction; mortgage interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds not all used to buy, build or improve the home, or debt over the limit); or the sales-tax election?
-- **Encoded (Bool):** Input — Any casualty or theft loss (including a disaster loss added to the standard deduction); a deduction from the Schedule A line 16 list; a foreign tax or generation-skipping tax deduction; mortgage interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds not all used to buy, build or improve the home, or debt over the limit); or the sales-tax election?
-- Expr: `{"op":"input","source":"Any casualty or theft loss (including a disaster loss added to the standard deduction); a deduction from the Schedule A line 16 list; a foreign tax or generation-skipping tax deduction; mortgage interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds not all used to buy, build or improve the home, or debt over the limit); or the sales-tax election?"}`
+- **Authored helper label:** Any casualty or theft loss (including a disaster loss added to the standard deduction); a deduction from the Schedule A line 16 list other than gambling losses; a foreign tax or generation-skipping tax deduction; mortgage interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds not all used to buy, build or improve the home, or debt over the limit); or the sales-tax election?
+- **Encoded (Bool):** Input — Any casualty or theft loss (including a disaster loss added to the standard deduction); a deduction from the Schedule A line 16 list other than gambling losses; a foreign tax or generation-skipping tax deduction; mortgage interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds not all used to buy, build or improve the home, or debt over the limit); or the sales-tax election?
+- Expr: `{"op":"input","source":"Any casualty or theft loss (including a disaster loss added to the standard deduction); a deduction from the Schedule A line 16 list other than gambling losses; a foreign tax or generation-skipping tax deduction; mortgage interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds not all used to buy, build or improve the home, or debt over the limit); or the sales-tax election?"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 
 ## (helper) — `sa.charity_limited`
@@ -287,15 +287,30 @@
 - Expr: `{"from":"sa.zero","op":"copy"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 
+## (helper) — `sa.gambling_losses`
+
+- **Authored helper label:** Gambling losses you had during 2025
+- **Encoded (NonNegDollars):** Input — Your gambling losses during 2025 (you and, on a joint return, your spouse), including the cost of nonwinning bingo, lottery and raffle tickets, in full, whether or not more than your winnings; zero if none
+- Expr: `{"op":"input","source":"Your gambling losses during 2025 (you and, on a joint return, your spouse), including the cost of nonwinning bingo, lottery and raffle tickets, in full, whether or not more than your winnings; zero if none"}`
+- Cite: [i1040sca] p. 11, Other Itemized Deductions, "Gambling losses (gambling losses include, but aren't limited to, the cost of nonwinning bingo, lottery, and raffle tickets)" (2025; printed date 2025-12-08; sha256 b0999b12)
+
+## (helper) — `sa.line16_gambling`
+
+- **Authored helper label:** Gambling losses, but only to the extent of gambling winnings reported on Schedule 1, line 8b
+- **Encoded (NonNegDollars):** Enter the smaller of helper "Gambling losses you had during 2025" or s1 line 8b.
+- Interpretation: amb.2025.gambling_losses
+- Expr: `{"of":["sa.gambling_losses","s1.line8b"],"op":"smaller_of"}`
+- Cite: [i1040sca] p. 11, Other Itemized Deductions, "but only to the extent of gambling winnings reported on Schedule 1 (Form 1040), line 8b"; p525 p. 33, Gambling winnings, "If you itemize your deductions on Schedule A (Form 1040), you can deduct gambling losses you had during the year, but only up to the amount of your winnings" (2025; printed date 2025-12-08; sha256 b0999b12)
+
 ## 16 — `sa.line16`
 
-- **IRS:** Amount from sa.zero
-- **Encoded (NonNegDollars):** Enter the amount from helper "Year parameter sales.zero".
+- **IRS:** Other—from list in instructions. List type and amount:
+- **Encoded (NonNegDollars):** Choose — [s1 helper "Any gambling winnings" = true → helper "Gambling losses, but only to the extent of gambling winnings reported on Schedule 1, line 8b"] [s1 helper "Any gambling winnings" = false → helper "Year parameter sales.zero"]
 - **Refusal:** when sa.unsupported is true, cannot complete Schedule A unsupported item / Form 4684. Prepare the applicable deduction or limitation; only the listed Schedule A items are supported. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.charity_limited is true, cannot complete Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.excluded_income is true, cannot complete Schedule A SALT Worksheet / Forms 2555 and 4563. Excluded-income addbacks are outside scope. Cite: [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12)
-- Expr: `{"from":"sa.zero","op":"copy"}`
-- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- Expr: `{"alternatives":[{"guard":{"eq":["s1.has_gambling",{"const":true}],"op":"test"},"then":"sa.line16_gambling"},{"guard":{"eq":["s1.has_gambling",{"const":false}],"op":"test"},"then":"sa.zero"}],"op":"choose"}`
+- Cite: [f1040sa] Schedule A (2025), line 16; i1040sca p. 11, Other Itemized Deductions, "Only the expenses listed next can be deducted on line 16" (2025; created 2025-11-20; sha256 c14acf34)
 
 ## 7 — `sa.line7`
 
@@ -375,15 +390,15 @@
 
 ## (helper) — `sa.boxes_age65`
 
-- **Authored helper label:** Number of boxes checked for born before January 2, 1961 (you, and your spouse if filing jointly)
-- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Were you born before January 2, 1961?" = true, within the current person when parent-bound. An unanswered roster is unknown.
-- Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"eq":["person.age65",{"const":true}],"op":"test"}}`
+- **Authored helper label:** Number of boxes checked for born before January 2, 1961 (you, and your spouse if filing jointly), not counting a person who died in 2025 before reaching 65
+- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Were you born before January 2, 1961?" = true and helper "Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before reaching age 65?" = false, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"all":[{"eq":["person.age65",{"const":true}],"op":"test"},{"eq":["person.died_before_65",{"const":false}],"op":"test"}],"op":"test"}}`
 - Cite: [i1040gi] p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; pp. 34–35, Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were Blind (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `sa.extra_age65`
 
 - **Authored helper label:** Additional standard deduction for each box checked for age
-- **Encoded (NonNegDollars):** Multiply helper "Year parameter sa.standard_extra" by the number on helper "Number of boxes checked for born before January 2, 1961 (you, and your spouse if filing jointly)".
+- **Encoded (NonNegDollars):** Multiply helper "Year parameter sa.standard_extra" by the number on helper "Number of boxes checked for born before January 2, 1961 (you, and your spouse if filing jointly), not counting a person who died in 2025 before reaching 65".
 - Expr: `{"amount":"sa.extra","count":"sa.boxes_age65","op":"multiply_count"}`
 - Cite: [i1040gi] p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; pp. 34–35, Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were Blind (2025; printed date 2026-02-25; sha256 482e9c48)
 

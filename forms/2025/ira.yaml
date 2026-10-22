@@ -1,0 +1,993 @@
+form:
+  id: ira
+  kind: worksheet
+  title: IRA Deduction Worksheet — Schedule 1, Line 20
+  tax_year: 2025
+  note: Columns "Your IRA" and "Spouse's IRA" (a joint return); each column's facts and lines 2, 6, 7, 11 and 12 are that
+    person's (person.ira_*), and lines 3 to 5 and 8 to 10 are figured once for the return. Contributions to both a traditional
+    and a Roth IRA on a joint return, line 10 under the Kay Bailey Hutchison amounts, excess or recharacterized contributions,
+    nonqualified deferred compensation, fellowships not on a Form W-2, reservist repayments, difficulty of care payments,
+    nontaxable combat pay, nondeductible contributions with a 2025 distribution or conversion, and the election to deduct less
+    than the most you can are refused. A placeholder stands for each Schedule 1 line another part of the stage computes
+    (2a, 18, 19a, 25).
+  lines:
+  - id: ira.zero
+    printed: (helper)
+    label: Zero
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: sales.zero
+    cite:
+      doc: i1040gi
+      locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20'
+  - id: ira.joint
+    printed: (helper)
+    label: Married filing jointly
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - f1040.status
+      - const: mfj
+    cite:
+      doc: i1040gi
+      locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, "If married filing jointly, was your spouse covered by a
+        retirement plan?"'
+  - id: ira.joint_type
+    printed: (helper)
+    label: Married filing jointly or qualifying surviving spouse
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        eq:
+        - f1040.status
+        - const: mfj
+      - op: test
+        eq:
+        - f1040.status
+        - const: qss
+    cite:
+      doc: i1040gi
+      locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 6, "If married filing jointly or qualifying surviving
+        spouse"'
+  - id: ira.contrib_total
+    printed: (helper)
+    label: Traditional IRA contributions for 2025 on this return (you and your spouse)
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: person
+      field: person.ira_contrib
+    cite:
+      doc: i1040gi
+      locator: 'p. 98, IRA Deduction Worksheet—Continued, line 11'
+  - id: ira.roth_total
+    printed: (helper)
+    label: Roth IRA contributions for 2025 on this return (you and your spouse)
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: person
+      field: person.sav_roth
+    cite:
+      doc: i1040gi
+      locator: 'p. 95, Line 20, "You can’t deduct contributions to a Roth IRA"'
+  - id: ira.any_trad
+    printed: (helper)
+    label: Anyone on the return made traditional IRA contributions for 2025
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - ira.contrib_total
+      - param: sales.zero
+    cite:
+      doc: i1040gi
+      locator: 'p. 95, Line 20, "If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction"'
+  - id: ira.cov_count
+    printed: (helper)
+    label: Number of persons on the return covered by a retirement plan
+    type: Count
+    expr:
+      op: sum_over
+      collection: person
+      field: person.one
+      where:
+        op: test
+        eq:
+        - person.ira_cov
+        - const: true
+    cite:
+      doc: i1040gi
+      locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 1'
+    ambiguity: amb.2025.ira_covered
+  - id: ira.anyone_covered
+    printed: (helper)
+    label: You (or, on a joint return, your spouse) were covered by a retirement plan (Yes on line 1a or 1b)
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - ira.cov_count
+      - const: 0
+        type: Count
+    cite:
+      doc: i1040gi
+      locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, "If you checked “No” on line 1a (and “No” on line 1b if
+        married filing jointly), skip lines 2 through 6" and "Otherwise, go to line 2"'
+  - id: ira.lines2to6
+    printed: (helper)
+    label: Lines 2 through 6 are completed (traditional IRA contributions, and someone is covered by a retirement plan)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - ira.any_trad
+        - const: true
+      - op: test
+        eq:
+        - ira.anyone_covered
+        - const: true
+    cite:
+      doc: i1040gi
+      locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, "skip lines 2 through 6" and "Otherwise, go to line 2"'
+  - id: ira.cov_gate
+    printed: (gate)
+    label: Social security benefits, traditional IRA contributions for 2025, and you or your spouse covered by a retirement
+      plan
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - ssb.has_benefits
+        - const: true
+      - op: test
+        eq:
+        - ira.any_trad
+        - const: true
+      - op: test
+        eq:
+        - ira.anyone_covered
+        - const: true
+    cite:
+      doc: i1040gi
+      locator: p. 31, Lines 6a and 6b, Exception
+    ambiguity: amb.2025.ira_ssb_copy
+  - id: ira.cov_you
+    printed: (helper)
+    label: You were covered by a retirement plan (1 if Yes)
+    type: Count
+    expr:
+      op: sum_over
+      collection: person
+      field: person.one
+      where:
+        op: test
+        all:
+        - op: test
+          eq:
+          - person.role
+          - const: taxpayer
+        - op: test
+          eq:
+          - person.ira_cov
+          - const: true
+    cite:
+      doc: i1040gi
+      locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 1a'
+  - id: ira.cov_spouse
+    printed: (helper)
+    label: Your spouse was covered by a retirement plan (1 if Yes)
+    type: Count
+    expr:
+      op: sum_over
+      collection: person
+      field: person.one
+      where:
+        op: test
+        all:
+        - op: test
+          eq:
+          - person.role
+          - const: spouse
+        - op: test
+          eq:
+          - person.ira_cov
+          - const: true
+    cite:
+      doc: i1040gi
+      locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 1b'
+  - id: ira.line1a
+    printed: 1a
+    label: Were you covered by a retirement plan (see Were You Covered by a Retirement Plan)?
+    type: Bool
+    display: The worksheet's line 1a answer, shown on the values sheet; the deduction reads each person's coverage (person.ira_cov).
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - ira.any_trad
+        - const: true
+      - op: test
+        gt:
+        - ira.cov_you
+        - const: 0
+          type: Count
+    cite:
+      doc: i1040gi
+      locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 1a, "Were you covered by a retirement plan (see Were
+        You Covered by a Retirement Plan)?"'
+  - id: ira.line1b
+    printed: 1b
+    label: If married filing jointly, was your spouse covered by a retirement plan?
+    type: Bool
+    display: The worksheet's line 1b answer, shown on the values sheet; the deduction reads each person's coverage (person.ira_cov).
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - ira.any_trad
+        - const: true
+      - op: test
+        gt:
+        - ira.cov_spouse
+        - const: 0
+          type: Count
+    cite:
+      doc: i1040gi
+      locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 1b, "If married filing jointly, was your spouse covered
+        by a retirement plan?"'
+  - id: ira.line2a_sum
+    printed: (helper)
+    label: Line 2, your column
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: person
+      field: person.ira_line2
+      where:
+        op: test
+        eq:
+        - person.role
+        - const: taxpayer
+    cite:
+      doc: i1040gi
+      locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 2'
+  - id: ira.line2b_sum
+    printed: (helper)
+    label: Line 2, your spouse's column
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: person
+      field: person.ira_line2
+      where:
+        op: test
+        eq:
+        - person.role
+        - const: spouse
+    cite:
+      doc: i1040gi
+      locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 2'
+  - id: ira.line2a
+    printed: 2a
+    label: Enter the amount shown below that applies to you (your IRA)
+    type: NonNegDollars
+    display: The worksheet's line 2 in your column, shown on the values sheet (zero when lines 2 through 6 are skipped); line
+      6 reads each person's line 2 (person.ira_line2).
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - ira.lines2to6
+          - const: true
+        then: ira.line2a_sum
+      - guard:
+          op: test
+          eq:
+          - ira.lines2to6
+          - const: false
+        then: ira.zero
+    cite:
+      doc: i1040gi
+      locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 2, "Enter the amount shown below that applies to you"'
+  - id: ira.line2b
+    printed: 2b
+    label: Enter the amount shown below that applies to you (your spouse's IRA)
+    type: NonNegDollars
+    display: The worksheet's line 2 in your spouse's column, shown on the values sheet (zero when lines 2 through 6 are skipped
+      or the return is not joint); line 6 reads each person's line 2 (person.ira_line2).
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - ira.lines2to6
+          - const: true
+        then: ira.line2b_sum
+      - guard:
+          op: test
+          eq:
+          - ira.lines2to6
+          - const: false
+        then: ira.zero
+    cite:
+      doc: i1040gi
+      locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 2, "Married filing jointly, enter $146,000 in both
+        columns"'
+  - id: ira.line3
+    printed: '3'
+    label: Enter the amount from Form 1040 or 1040-SR, line 9
+    type: Dollars
+    expr:
+      op: copy
+      from: f1040.line9
+    cite:
+      doc: i1040gi
+      locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 3, "Enter the amount from Form 1040 or 1040-SR, line
+        9"'
+  - id: ira.line4
+    printed: '4'
+    label: Enter the total of the amounts from Schedule 1, lines 11 through 19a, plus 23 and 25
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - s1.line11
+      - s1.line13
+      - s1.line15
+      - s1.line16
+      - s1.line17
+      - s1.line18
+      - s1.line19a
+      - s1.line25
+    cite:
+      doc: i1040gi
+      locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 4, "Enter the total of the amounts from Schedule 1,
+        lines 11 through 19a, plus 23 and 25" (lines 12, 14 and 23 are outside this tool and refused by scope.schedule1)'
+  - id: ira.line5
+    printed: '5'
+    label: Subtract line 4 from line 3. If married filing jointly, enter the result in both columns
+    type: Dollars
+    expr:
+      op: subtract
+      from: ira.line3
+      take: ira.line4
+    cite:
+      doc: i1040gi
+      locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 5, "Subtract line 4 from line 3. If married filing jointly,
+        enter the result in both columns"'
+  - id: ira.line6a_sum
+    printed: (helper)
+    label: Line 6, your column
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: person
+      field: person.ira_line6
+      where:
+        op: test
+        eq:
+        - person.role
+        - const: taxpayer
+    cite:
+      doc: i1040gi
+      locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 6'
+  - id: ira.line6b_sum
+    printed: (helper)
+    label: Line 6, your spouse's column
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: person
+      field: person.ira_line6
+      where:
+        op: test
+        eq:
+        - person.role
+        - const: spouse
+    cite:
+      doc: i1040gi
+      locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 6'
+  - id: ira.line6a
+    printed: 6a
+    label: Is the amount on line 5 less than the amount on line 2? If yes, subtract line 5 from line 2 (your IRA); if no, none
+      of your IRA contributions are deductible
+    type: NonNegDollars
+    display: The worksheet's line 6 in your column, shown on the values sheet (zero when line 6 is No or lines 2 through 6 are
+      skipped); line 7 reads each person's line 6 (person.ira_line6).
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - ira.lines2to6
+          - const: true
+        then: ira.line6a_sum
+      - guard:
+          op: test
+          eq:
+          - ira.lines2to6
+          - const: false
+        then: ira.zero
+    cite:
+      doc: i1040gi
+      locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 6, "Is the amount on line 5 less than the amount on
+        line 2?" and "Subtract line 5 from line 2 in each column"'
+  - id: ira.line6b
+    printed: 6b
+    label: Is the amount on line 5 less than the amount on line 2? If yes, subtract line 5 from line 2 (your spouse's IRA)
+    type: NonNegDollars
+    display: The worksheet's line 6 in your spouse's column, shown on the values sheet; line 7 reads each person's line 6 (person.ira_line6).
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - ira.lines2to6
+          - const: true
+        then: ira.line6b_sum
+      - guard:
+          op: test
+          eq:
+          - ira.lines2to6
+          - const: false
+        then: ira.zero
+    cite:
+      doc: i1040gi
+      locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 6, "Subtract line 5 from line 2 in each column"'
+  - id: ira.line7a_sum
+    printed: (helper)
+    label: Line 7, your column
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: person
+      field: person.ira_line7
+      where:
+        op: test
+        eq:
+        - person.role
+        - const: taxpayer
+    cite:
+      doc: i1040gi
+      locator: 'p. 98, IRA Deduction Worksheet—Continued, line 7'
+  - id: ira.line7b_sum
+    printed: (helper)
+    label: Line 7, your spouse's column
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: person
+      field: person.ira_line7
+      where:
+        op: test
+        eq:
+        - person.role
+        - const: spouse
+    cite:
+      doc: i1040gi
+      locator: 'p. 98, IRA Deduction Worksheet—Continued, line 7'
+  - id: ira.line7a
+    printed: 7a
+    label: Multiply line 6a by the percentage that applies to you, increased to a multiple of $10 and at least $200 (or the
+      applicable amount, when lines 2 through 6 are skipped or line 6 is at or above the threshold) (your IRA)
+    type: NonNegDollars
+    display: The worksheet's line 7 in your column, shown on the values sheet; line 12 reads each person's line 7 (person.ira_line7).
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - ira.any_trad
+          - const: true
+        then: ira.line7a_sum
+      - guard:
+          op: test
+          eq:
+          - ira.any_trad
+          - const: false
+        then: ira.zero
+    cite:
+      doc: i1040gi
+      locator: 'p. 98, IRA Deduction Worksheet—Continued, line 7, "Multiply lines 6a and 6b by the percentage below that applies
+        to you"'
+  - id: ira.line7b
+    printed: 7b
+    label: Multiply line 6b by the percentage that applies to you, increased to a multiple of $10 and at least $200 (or the
+      applicable amount) (your spouse's IRA)
+    type: NonNegDollars
+    display: The worksheet's line 7 in your spouse's column, shown on the values sheet; line 12 reads each person's line 7
+      (person.ira_line7).
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - ira.any_trad
+          - const: true
+        then: ira.line7b_sum
+      - guard:
+          op: test
+          eq:
+          - ira.any_trad
+          - const: false
+        then: ira.zero
+    cite:
+      doc: i1040gi
+      locator: 'p. 98, IRA Deduction Worksheet—Continued, line 7, "Multiply lines 6a and 6b by the percentage below that applies
+        to you"'
+  - id: ira.wages
+    printed: (helper)
+    label: Wages, salaries, tips, etc. (box 1 of the Forms W-2 of you and your spouse)
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: person
+      field: person.box1
+    cite:
+      doc: i1040gi
+      locator: 'p. 98, IRA Deduction Worksheet—Continued, line 8, "Wages, salaries, tips, etc. Generally, this is the amount
+        reported in box 1 of Form W-2"'
+  - id: ira.line8
+    printed: '8'
+    label: 'Enter the total of your (and your spouse''s if filing jointly): wages, salaries, tips, etc.; alimony and separate
+      maintenance payments reported on Schedule 1, line 2a; and nontaxable combat pay'
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - ira.wages
+      - s1.line2a
+    cite:
+      doc: i1040gi
+      locator: 'p. 98, IRA Deduction Worksheet—Continued, line 8, "Enter the total of your (and your spouse’s if filing jointly)"
+        (nontaxable combat pay is refused, ira.combat_gate)'
+  - id: ira.line9
+    printed: '9'
+    label: Enter the earned income you (and your spouse if filing jointly) received as a self-employed individual or a partner,
+      minus any deductions on Schedule 1, lines 15 and 16. If zero or less, enter -0-
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: person
+      field: person.ira_se
+    cite:
+      doc: i1040gi
+      locator: 'p. 98, IRA Deduction Worksheet—Continued, line 9, "Enter the earned income you (and your spouse if filing jointly)
+        received as a self-employed individual or a partner" and "If zero or less, enter -0-"'
+    ambiguity: amb.2025.ira_se_floor
+  - id: ira.line10
+    printed: '10'
+    label: Add lines 8 and 9
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - ira.line8
+      - ira.line9
+    cite:
+      doc: i1040gi
+      locator: 'p. 98, IRA Deduction Worksheet—Continued, line 10, "Add lines 8 and 9"'
+  - id: ira.age50_count
+    printed: (helper)
+    label: Number of spouses age 50 or older at the end of 2025
+    type: Count
+    expr:
+      op: sum_over
+      collection: person
+      field: person.one
+      where:
+        op: test
+        eq:
+        - person.ira_age50
+        - const: true
+    cite:
+      doc: i1040gi
+      locator: 'p. 98, IRA Deduction Worksheet—Continued, Caution, "($15,000 if one spouse is age 50 or older at the end of
+        2025; $16,000 if both spouses are age 50 or older at the end of 2025)"'
+  - id: ira.kbh_none
+    printed: (helper)
+    label: $14,000
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: ira.kbh_none
+    cite:
+      doc: i1040gi
+      locator: 'p. 98, IRA Deduction Worksheet—Continued, Caution, "If married filing jointly and line 10 is less than $14,000"'
+  - id: ira.kbh_one
+    printed: (helper)
+    label: $15,000
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: ira.kbh_one
+    cite:
+      doc: i1040gi
+      locator: 'p. 98, IRA Deduction Worksheet—Continued, Caution, "($15,000 if one spouse is age 50 or older at the end of
+        2025"'
+  - id: ira.kbh_both
+    printed: (helper)
+    label: $16,000
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: ira.kbh_both
+    cite:
+      doc: i1040gi
+      locator: 'p. 98, IRA Deduction Worksheet—Continued, Caution, "$16,000 if both spouses are age 50 or older at the end of
+        2025)"'
+  - id: ira.kbh_amount
+    printed: (helper)
+    label: The amount in the caution below line 10 ($14,000; $15,000 if one spouse is age 50 or older; $16,000 if both are)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          all:
+          - op: test
+            ge:
+            - ira.age50_count
+            - const: 0
+              type: Count
+          - op: test
+            lt:
+            - ira.age50_count
+            - const: 1
+              type: Count
+        then: ira.kbh_none
+      - guard:
+          op: test
+          all:
+          - op: test
+            ge:
+            - ira.age50_count
+            - const: 1
+              type: Count
+          - op: test
+            lt:
+            - ira.age50_count
+            - const: 2
+              type: Count
+        then: ira.kbh_one
+      - guard:
+          op: test
+          ge:
+          - ira.age50_count
+          - const: 2
+            type: Count
+        then: ira.kbh_both
+    cite:
+      doc: i1040gi
+      locator: 'p. 98, IRA Deduction Worksheet—Continued, Caution, "If married filing jointly and line 10 is less than $14,000
+        ($15,000 if one spouse is age 50 or older at the end of 2025; $16,000 if both spouses are age 50 or older at the end
+        of 2025)"'
+  - id: ira.kbh_short
+    printed: (gate)
+    label: Married filing jointly with traditional IRA contributions and line 10 less than the amount in the caution
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - ira.any_trad
+        - const: true
+      - op: test
+        eq:
+        - ira.joint
+        - const: true
+      - op: test
+        lt:
+        - ira.line10
+        - ira.kbh_amount
+    cite:
+      doc: i1040gi
+      locator: 'p. 98, IRA Deduction Worksheet—Continued, Caution, "stop here and use the worksheet in Pub. 590-A to figure
+        your IRA deduction"'
+  - id: ira.both_kinds
+    printed: (gate)
+    label: A joint return on which you or your spouse made contributions to both a traditional IRA and a Roth IRA for 2025
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - ira.joint
+        - const: true
+      - op: test
+        eq:
+        - ira.any_trad
+        - const: true
+      - op: test
+        gt:
+        - ira.roth_total
+        - param: sales.zero
+    cite:
+      doc: i1040gi
+      locator: 'p. 95, Line 20, "If you are filing a joint return and you or your spouse made contributions to both a traditional
+        IRA and a Roth IRA for 2025, don’t use the IRA Deduction Worksheet in these instructions"'
+    ambiguity: amb.2025.ira_both_kinds
+  - id: ira.all_total
+    printed: (helper)
+    label: Traditional and Roth IRA contributions for 2025 on this return
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - ira.contrib_total
+      - ira.roth_total
+    cite:
+      doc: i8606
+      locator: 'p. 5, Overall Contribution Limit for Traditional and Roth IRAs, "your limit on contributions to traditional
+        and Roth IRAs is generally the smaller of $7,000 ($8,000 if age 50 or older at the end of 2025) or your taxable compensation"'
+  - id: ira.over_comp
+    printed: (gate)
+    label: Traditional and Roth IRA contributions for 2025 more than the compensation on line 10
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - ira.any_trad
+        - const: true
+      - op: test
+        gt:
+        - ira.all_total
+        - ira.line10
+    cite:
+      doc: p590a
+      locator: 'p. 35, Excess Contributions, "Generally, an excess contribution is the amount contributed to your traditional
+        IRAs for the year that is more than the smaller of: • $7,000 ($8,000 if you are age 50 or older), or • Your taxable
+        compensation for the year"'
+  - id: ira.special
+    printed: (screen)
+    label: Does any of these apply to you or your spouse (the IRA deduction special cases)?
+    type: Bool
+    expr:
+      op: input
+      source: 'Does any of these apply to you (or your spouse on a joint return): income from a nonqualified deferred compensation
+        plan or a nongovernmental section 457 plan (an amount in box 11 of your Form W-2, in box 12 with code Z, or in box 15
+        of Form 1099-MISC); taxable non-tuition fellowship or stipend payments for graduate or postdoctoral study not reported
+        on a Form W-2; a repayment to an IRA of a qualified reservist distribution; or difficulty of care payments (qualified
+        foster care payments) used to increase your nondeductible IRA contribution limit?'
+    cite:
+      doc: i1040gi
+      locator: 'p. 95, Line 20, "The income should be shown in (a) box 11 of your Form W-2, (b) box 12 of your Form W-2 with
+        code Z, or (c) box 15 of Form 1099-MISC" and "Don’t include any repayments of qualified reservist distributions"; p590a
+        p. 6, What Is Compensation?, "certain non-tuition fellowship and stipend payments not reported to you on Form W-2 are
+        treated as taxable compensation for IRA purposes"; p590a p. 16, Difficulty of care payments'
+    ambiguity: amb.2025.ira_fellowship
+  - id: ira.special_gate
+    printed: (gate)
+    label: Traditional IRA contributions with an IRA deduction special case (screen)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - ira.any_trad
+        - const: true
+      - op: test
+        eq:
+        - ira.special
+        - const: true
+    cite:
+      doc: i1040gi
+      locator: 'p. 95, Line 20, "But read the following list before you fill in the worksheet"'
+  - id: ira.combat_gate
+    printed: (gate)
+    label: Traditional IRA contributions with nontaxable combat pay
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - ira.any_trad
+        - const: true
+      - op: test
+        eq:
+        - s8812.combat_pay
+        - const: true
+    cite:
+      doc: i1040gi
+      locator: 'p. 95, Line 20, "If you were a member of the U.S. Armed Forces, earned income includes any nontaxable combat
+        pay you received"'
+  - id: ira.excl_gate
+    printed: (gate)
+    label: Traditional IRA contributions, someone covered by a retirement plan, and Form 2555 or 4563 or income excluded as a
+      bona fide resident of Puerto Rico
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - ira.any_trad
+        - const: true
+      - op: test
+        eq:
+        - ira.anyone_covered
+        - const: true
+      - op: test
+        eq:
+        - sa.excluded_income
+        - const: true
+    cite:
+      doc: i1040gi
+      locator: 'p. 96, Were You Covered by a Retirement Plan?, "If you were covered by a retirement plan and you file Form 2555
+        or 8815, or you exclude employer-provided adoption benefits, see Pub. 590-A to figure the amount, if any, of your IRA
+        deduction"'
+  - id: ira.line11a
+    printed: 11a
+    label: Enter traditional IRA contributions made, or that will be made by the due date of your 2025 return not counting
+      extensions, for 2025 to your IRA
+    type: NonNegDollars
+    display: The worksheet's line 11 in your column, shown on the values sheet; line 12 reads each person's line 11 (person.ira_line11).
+    expr:
+      op: sum_over
+      collection: person
+      field: person.ira_contrib
+      where:
+        op: test
+        eq:
+        - person.role
+        - const: taxpayer
+    cite:
+      doc: i1040gi
+      locator: 'p. 98, IRA Deduction Worksheet—Continued, line 11, "Enter traditional IRA contributions made, or that will be
+        made by the due date of your 2025 return not counting extensions (April 15, 2026, for most people), for 2025 to your
+        IRA on line 11a"'
+  - id: ira.line11b
+    printed: 11b
+    label: Enter traditional IRA contributions made, or that will be made by the due date of your 2025 return not counting
+      extensions, for 2025 to your spouse's IRA
+    type: NonNegDollars
+    display: The worksheet's line 11 in your spouse's column, shown on the values sheet; line 12 reads each person's line 11
+      (person.ira_line11).
+    expr:
+      op: sum_over
+      collection: person
+      field: person.ira_contrib
+      where:
+        op: test
+        eq:
+        - person.role
+        - const: spouse
+    cite:
+      doc: i1040gi
+      locator: 'p. 98, IRA Deduction Worksheet—Continued, line 11, "and to your spouse’s IRA on line 11b"'
+  - id: ira.line12a
+    printed: 12a
+    label: Enter the smallest of line 7a, 10, or 11a. This is the most you can deduct (your IRA)
+    type: NonNegDollars
+    display: The worksheet's line 12 in your column, shown on the values sheet; line 20 adds each person's line 12 (person.ira_deduction).
+    expr:
+      op: sum_over
+      collection: person
+      field: person.ira_deduction
+      where:
+        op: test
+        eq:
+        - person.role
+        - const: taxpayer
+    cite:
+      doc: i1040gi
+      locator: 'p. 98, IRA Deduction Worksheet—Continued, line 12, "On line 12a, enter the smallest of line 7a, 10, or 11a"'
+  - id: ira.line12b
+    printed: 12b
+    label: Enter the smallest of line 7b, 10, or 11b. This is the most you can deduct (your spouse's IRA)
+    type: NonNegDollars
+    display: The worksheet's line 12 in your spouse's column, shown on the values sheet; line 20 adds each person's line 12
+      (person.ira_deduction).
+    expr:
+      op: sum_over
+      collection: person
+      field: person.ira_deduction
+      where:
+        op: test
+        eq:
+        - person.role
+        - const: spouse
+    cite:
+      doc: i1040gi
+      locator: 'p. 98, IRA Deduction Worksheet—Continued, line 12, "On line 12b, enter the smallest of line 7b, 10, or 11b"'
+  - id: ira.total
+    printed: (helper)
+    label: Add the amounts on lines 12a and 12b
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: person
+      field: person.ira_deduction
+    cite:
+      doc: i1040gi
+      locator: 'p. 98, IRA Deduction Worksheet—Continued, line 12, "Add the amounts on lines 12a and 12b and enter the total
+        on Schedule 1, line 20"'
+  - id: ira.deduct_less
+    printed: (screen)
+    label: Do you want to deduct less than the most you can deduct, treating the rest as a nondeductible contribution?
+    type: Bool
+    expr:
+      op: input
+      source: The most you (and your spouse) can deduct for your traditional IRA contributions is figured on line 12 of the
+        IRA Deduction Worksheet. Do you want to deduct a smaller amount and treat the rest as a nondeductible contribution?
+    cite:
+      doc: i1040gi
+      locator: 'p. 98, IRA Deduction Worksheet—Continued, line 12, "Or, if you want, you can deduct a smaller amount and treat
+        the rest as a nondeductible contribution (see Form 8606)"'
+    ambiguity: amb.2025.ira_deduct_less
+  - id: ira.less_gate
+    printed: (gate)
+    label: An IRA deduction above zero and the election to deduct less
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        gt:
+        - ira.total
+        - param: sales.zero
+      - op: test
+        eq:
+        - ira.deduct_less
+        - const: true
+    cite:
+      doc: p590a
+      locator: 'p. 16, Form 8606, "When you file, you can even designate otherwise deductible contributions as nondeductible
+        contributions"'
+  - id: ira.line20
+    printed: (helper)
+    label: The total of lines 12a and 12b for Schedule 1, line 20
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: ira.total
+    cite:
+      doc: i1040gi
+      locator: 'p. 98, IRA Deduction Worksheet—Continued, line 12, "Add the amounts on lines 12a and 12b and enter the total
+        on Schedule 1, line 20"'
+    refuses:
+    - when: ira.less_gate
+      form: An IRA deduction smaller than the most you can deduct (Form 8606)
+      remedy: Deducting less than the most you can and treating the rest as nondeductible is outside this tool; the tool
+        takes the most you can deduct.
+      cite:
+        doc: i1040gi
+        locator: 'p. 98, IRA Deduction Worksheet—Continued, line 12, "Or, if you want, you can deduct a smaller amount and treat
+          the rest as a nondeductible contribution (see Form 8606)"'
+  - id: ira.basis_total
+    printed: (helper)
+    label: Total basis in traditional IRAs on the Forms 8606 of this return (line 14 of each); a target of the interview, so
+      that each Form 8606 is completed
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: person
+      field: person.ira_8606_line14
+    cite:
+      doc: f8606
+      locator: Form 8606 (2025), line 14, "This is your total basis in traditional IRAs for 2025 and earlier years"

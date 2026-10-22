@@ -7,12 +7,12 @@ the fixture test compares).
 
 | Metric | Value |
 | --- | --- |
-| Mutants | 2087 |
-| Killed by the checker | 211 |
-| Killed by fixtures | 1724 |
-| Surviving | 152 (111 provably equivalent) |
-| Mutation score (raw) | 92.7% |
-| Mutation score (equivalent mutants excluded) | 97.9% |
+| Mutants | 2267 |
+| Killed by the checker | 234 |
+| Killed by fixtures | 1884 |
+| Surviving | 149 (109 provably equivalent) |
+| Mutation score (raw) | 93.4% |
+| Mutation score (equivalent mutants excluded) | 98.1% |
 
 ## Surviving — classified equivalent
 
@@ -42,17 +42,16 @@ the fixture test compares).
 - `operand.f8960.f8960.line6.zero` (replace an operand, f8960.f8960.line6): Copy-chain identity: f8960.zero and f8960.line5c expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f8960.f8960.line7.zero` (replace an operand, f8960.f8960.line7): Copy-chain identity: f8960.zero and f8960.line6 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f8960.f8960.line9c.zero` (replace an operand, f8960.f8960.line9c): Copy-chain identity: f8960.zero and f8960.line7 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
-- `operand.f8960.f8960.line10.zero` (replace an operand, f8960.f8960.line10): Copy-chain identity: f8960.zero and f8960.line9c expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
-- `operand.f8960.f8960.line4c.line4a` (replace an operand, f8960.f8960.line4c): Copy-chain identity: f8960.line4a and f8960.line10 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
-- `operand.f8960.f8960.line4c.line4b` (replace an operand, f8960.f8960.line4c): Copy-chain identity: f8960.line4b and f8960.line10 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f8995.f8995.line9.line8` (replace an operand, f8995.f8995.line9): Copy-chain identity: f8995.line8 and f8995.line6 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f8995a.f8995a.line31.line30` (replace an operand, f8995a.f8995a.line31): Copy-chain identity: f8995a.line30 and f8995a.line28 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
+- `filter.person.person.hsa_step1` (remove collection filter, person.person.hsa_step1): person.hsa_step1 keeps only a Form 8889 that uses the spouse rule of line 6. Its total household.hsa_step1_sum is read only by f8889.allocation_bad, which is reached only on a form that uses the rule and which already holds when exactly one form uses it (household.hsa_split_count is 1); when both forms use it the filter keeps every form. So dropping the filter changes no value that is read. (structural conditions re-checked this run.)
 - `operand.person.person.sep_s1.sc_total` (replace an operand, person.person.sep_s1): person.se_line2 copies person.sc_total, adding only the Schedule SE refusal; step 1 is read only by step 3, which also reads step 2 (person.se_line13), and step 2 refuses exactly when person.se_line2 does, so step 3 and everything after it are the same.
 - `operand.person.person.simple_catchup.simple_regular` (replace an operand, person.person.simple_catchup): person.simple_regular is the smaller of the deferral and the $16,500 limit, so the deferral less it, floored at zero, equals the deferral less $16,500 floored at zero at every input.
 - `operand.qdcg.qdcg.line8.line7` (replace an operand, qdcg.qdcg.line8): Provably equivalent: line 8 is min(line 5, line 7) and line 7 is min(line 1, line 6) with line 5 ≤ line 1; min(line 5, min(line 1, line 6)) = min(line 5, line 6), so substituting line 6 for line 7 cannot change any value.
 - `operand.qdcg.qdcg.line12.line11` (replace an operand, qdcg.qdcg.line12): Copy-chain identity: qdcg.line11 and qdcg.line9 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `refusal.retirement.retirement.amount_a.0` (remove refusal, retirement.retirement.amount_a): retirement.amount_a reads retirement.show_a -> retirement.has_rollover -> retirement.rolled first, and retirement.rolled carries the identical refusal entry, so without the entry on retirement.amount_a the same refusal arrives through the chain. (structural conditions re-checked this run.)
 - `refusal.retirement.retirement.amount_a.1` (remove refusal, retirement.retirement.amount_a): retirement.amount_a reads retirement.show_a -> retirement.has_rollover -> retirement.rolled first, and retirement.rolled carries the identical refusal entry, so without the entry on retirement.amount_a the same refusal arrives through the chain. (structural conditions re-checked this run.)
+- `operand.s1.s1.line26.line25` (replace an operand, s1.s1.line26): Copy-chain identity: s1.line25 and s1.line24a expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.s179.s179.line13.line12` (replace an operand, s179.s179.line13): Line 12 is the smaller of lines 9 + 10 and line 11, so (lines 9 + 10) less line 12, floored at zero, equals (lines 9 + 10) less line 11, floored at zero, at every input.
 - `operand.s1a.s1a.line2e.line2b` (replace an operand, s1a.s1a.line2e): Copy-chain identity: s1a.line2b and s1a.zero expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.s1a.s1a.line2e.line2c` (replace an operand, s1a.s1a.line2e): Copy-chain identity: s1a.line2c and s1a.zero expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
@@ -79,6 +78,7 @@ the fixture test compares).
 - `operand.s1a.s1a.line33_pos.line32` (replace an operand, s1a.s1a.line33_pos): s1a.line32 is s1a.line32_calc when s1a.part5 holds and $0 otherwise; the chain that reads it is reached only through the part's result line, which is $0 when the part does not apply, so reading s1a.line32_calc instead changes no value. (structural conditions re-checked this run.)
 - `operand.s1a.s1a.line35_figured.line34` (replace an operand, s1a.s1a.line35_figured): s1a.line34 is s1a.line34_calc when s1a.part5 holds and $0 otherwise; the chain that reads it is reached only through the part's result line, which is $0 when the part does not apply, so reading s1a.line34_calc instead changes no value. (structural conditions re-checked this run.)
 - `operand.s2.s2.line3.zero` (replace an operand, s2.s2.line3): Copy-chain identity: s2.zero and s2.line2 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
+- `operand.s2.s2.line21.line18` (replace an operand, s2.s2.line21): Copy-chain identity: s2.line18 and s2.line17c expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.s8812.s8812.line2b.zero` (replace an operand, s8812.s8812.line2b): Copy-chain identity: s8812.zero and s8812.line2a expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.s8812.s8812.line2c.zero` (replace an operand, s8812.s8812.line2c): Copy-chain identity: s8812.zero and s8812.line2b expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.s8812.s8812.line2d.line2a` (replace an operand, s8812.s8812.line2d): Shared-gate identity: s8812.line2a and s8812.line2b, s8812.line2c are the same value behind the same refusal gates (sa.excluded_income) with identical refusal text, and s8812.zero is that value ungated; whichever operand refuses, the sum carries the same refusal, and when none does the operands are equal.
@@ -91,8 +91,6 @@ the fixture test compares).
 - `operand.sa.sa.line8c.zero` (replace an operand, sa.sa.line8c): Copy-chain identity: sa.zero and sa.line8b expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.sa.sa.line13.zero` (replace an operand, sa.sa.line13): Copy-chain identity: sa.zero and sa.line8c expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.sa.sa.line15.zero` (replace an operand, sa.sa.line15): Copy-chain identity: sa.zero and sa.line13 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
-- `operand.sa.sa.line16.zero` (replace an operand, sa.sa.line16): Copy-chain identity: sa.zero and sa.line15 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
-- `operand.sa.sa.line7.line6` (replace an operand, sa.sa.line7): Copy-chain identity: sa.line6 and sa.line16 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `boundary.sc.sc.ho_over` (replace strict greater-than with inclusive, sc.sc.ho_over): At exactly 300 square feet both branches give the same amount: $5 times the square feet used and $5 times 300.
 - `operand.sc.sc.f7206_min.f7206_line13` (replace an operand, sc.sc.f7206_min): Copy-chain identity: sc.f7206_line13 and sc.f7206_line10 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.scveh.scveh.bonus_forty.line15` (replace an operand, scveh.scveh.bonus_forty): Copy-chain identity: scveh.line15 and scveh.bonus_full expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
@@ -148,7 +146,6 @@ the fixture test compares).
 | operand.f8959.f8959.line18.line17 | replace an operand | f8959.f8959.line18 | f8959.line17 -> f8959.line16 (NonNegDollars) |
 | operand.f8960.f8960.line8.line5d | replace an operand | f8960.f8960.line8 | f8960.line5d -> f8960.line5a (Dollars) |
 | operand.f8960.f8960.line9d.line9c | replace an operand | f8960.f8960.line9d | f8960.line9c -> f8960.line4c (NonNegDollars) |
-| operand.f8960.f8960.line12.line11 | replace an operand | f8960.f8960.line12 | f8960.line11 -> f8960.line9d (NonNegDollars) |
 | refusal.person.person.medicare5.0 | remove refusal | person.person.medicare5 |  |
 | refusal.person.person.medicare6.0 | remove refusal | person.person.medicare6 |  |
 | operand.person.person.dc_earned.eic_se | replace an operand | person.person.dc_earned | person.eic_se -> person.eic_se_has (Dollars) |

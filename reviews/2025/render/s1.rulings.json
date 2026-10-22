@@ -3,6 +3,18 @@
  "form": "s1",
  "rulings": [
   {
+   "printed": "1",
+   "restated": "Choose — [refund helper \"Any state or local income tax refund received in 2025\" = false → helper \"Year parameter sales.zero\"] [refund helper \"Any state or local income tax refund received in 2025\" = true → refund helper \"Taxable part of your refund (zero when you did not itemize for 2024 or deducted general sales taxes)\"]",
+   "model": "The worksheet's Before-you-begin note says to check the Exception to see 'if you can use this worksheet instead of Pub. 525'. The program refuses only exception items 1, 2 and 5 and still uses worksheet line 9 for items 3, 4, 6, 7, 8 and 9 (for example 'You owed alternative minimum tax in 2024', 'You could be claimed as a dependent by someone else in 2024', or a refund 'more than your 2024 state and local income tax deduction minus the amount you could have deducted as your 2024 state and local general sales taxes').",
+   "ruling": "Ruling: refusal located elsewhere; project retained. Exceptions 3, 4, 6 and 7 are refused by refund.exc_tax and exceptions 8 and 9 (with a 2024 Form 1040-NR) by refund.exc_who, both on worksheet line 1 (refund.line1), which line 9 always reads when the worksheet is used; exceptions 1 and 5 by refund.not_2024 on refund.taxable; exception 2 by refund.other on this line (i1040gi pp. 88–89, Line 1, \"Exception. See Itemized Deduction Recoveries in Pub. 525 instead of using the State and Local Income Tax Refund Worksheet in these instructions if any of the following applies\", items 1 to 9). The worksheet's refusals are judged in the render log of `refund`."
+  },
+  {
+   "printed": "10",
+   "restated": "Add line 1, line 2a, line 3, line 7, and line 9.",
+   "model": "The form says 'Combine lines 1 through 7 and 9'. The restatement omits lines 4, 5 and 6 (Form 4797/4684 gains, Schedule E, Schedule F), and no refusal names them.",
+   "ruling": "Ruling: refusal located elsewhere; project retained. Lines 4 to 6 are refused by scope.schedule1, which names them (\"sales of business property (Form 4797) ... rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1) ... farm income (Schedule F)\", and a Form 4684 gain under its opening \"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately\") and refuses Form 1040 line 8, the line this one is entered on, and every line after it; within scope they are zero, as the line's citation says (f1040s1, line 10, \"Combine lines 1 through 7 and 9\"). Lines 1, 2a, 3, 7 and 9 are figured."
+  },
+  {
    "printed": "10",
    "restated": "Add line 3 and line 7.",
    "model": "The IRS line says 'Combine lines 1 through 7 and 9.' The restatement adds only lines 3 and 7, so lines 1, 2a, 4, 5, 6 and 9 are dropped and no refusal names them.",
@@ -57,6 +69,18 @@
    "ruling": "Ruling: representation; project retained. Line 21 copies the worksheet's result (sli.deduction); the worksheet and the line 21 instructions are judged line by line in the render log of `sli`, where they are given."
   },
   {
+   "printed": "21",
+   "restated": "Enter the amount from sli helper \"Student loan interest deduction (Schedule 1, line 21)\".",
+   "model": "The text says 'Use Pub. 970 instead of the worksheet ... if you file Form 2555 or 4563, or you exclude income from sources within Puerto Rico.' Form 2555 is screened only indirectly through the line 8d refusal, and the Form 4563 and Puerto Rico cases are not refused, so the worksheet is applied where the IRS says not to use it.",
+   "ruling": "Ruling: refusal located elsewhere; project retained. Form 2555, Form 4563 and excluded Puerto Rico income are refused by sa.excluded_income (\"Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico?\") on worksheet line 1 (sli.line1), which the deduction reads (i1040gi p. 98, Line 21, \"Use Pub. 970 instead of the worksheet ... if you file Form 2555 or 4563, or you exclude income from sources within Puerto Rico\"). Line 21 copies the worksheet's result; the worksheet is judged in the render log of `sli`."
+  },
+  {
+   "printed": "25",
+   "restated": "Enter the amount from line 24a.",
+   "model": "The form says 'Add lines 24a through 24z'. The restatement uses only line 24a; lines 24d–24i, 24k and 24z are neither computed nor refused (24b, 24c and 24j are tied to refused lines 8l, 8m and 8d).",
+   "ruling": "Ruling: refusal located elsewhere; project retained. Lines 24b to 24z are refused by scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately\", which lists jury duty pay you gave your employer, line 24a, among those asked), which refuses Form 1040 line 10, the line line 26 is entered on; within scope they are zero, as the line's citation says (f1040s1, line 25, \"Add lines 24a through 24z\"). Line 24a is figured (decision D3)."
+  },
+  {
    "printed": "26",
    "restated": "Add line 11, line 13, and line 21.",
    "model": "The form says \"Add lines 11 through 23 and 25.\" The restatement adds only lines 11, 13 and 21 and has no refusal naming lines 12, 14–20, 22–23 and 25 as excluded.",
@@ -79,6 +103,18 @@
    "restated": "Add line 11, line 13, line 15, line 16, line 17, and line 21.",
    "model": "The form says 'Add lines 11 through 23 and 25.' The restatement adds only lines 11, 13, 15, 16, 17 and 21. It omits lines 12, 14, 18, 19a, 20, 23 and 25, and no refusal names those excluded cases.",
    "ruling": "Ruling: refusal located elsewhere; project retained. Lines 12, 14, 18, 19a, 20, 23 and 24a to 24z (so line 25) are refused by scope.schedule1 ('Any income or adjustment requiring Schedule 1 other than ... educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction and student loan interest'), which refuses Form 1040 line 10, the line this one is entered on (checked: scope.schedule1 true gives f1040.line10 refused); within scope they are zero, as the line's citation says."
+  },
+  {
+   "printed": "26",
+   "restated": "Add line 11, line 13, line 15, line 16, line 17, line 18, line 19a, line 20, line 21, and line 25.",
+   "model": "The form says 'Add lines 11 through 23 and 25'. The restatement omits line 12 (Form 2106 expenses), line 14 (moving expenses) and line 23 (Archer MSA deduction), and no refusal names them.",
+   "ruling": "Ruling: refusal located elsewhere; project retained. Lines 12, 14 and 23 are named in scope.schedule1 (\"or an adjustment on Schedule 1 line 12, 14 or 23?\"), which refuses Form 1040 line 10, the line this one is entered on; within scope they are zero, as the line's citation says (f1040s1, line 26, \"Add lines 11 through 23 and 25\"). Line 22 is reserved; every other line is added."
+  },
+  {
+   "printed": "8z",
+   "restated": "Add oi8z.taxable over every confirmed oi8z entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The line sums oi8z.taxable over 'the supported line 8z items', but neither those items nor how their taxable amounts are figured is defined in the text given. Whether each matches 'any taxable income not reported elsewhere' cannot be judged.",
+   "ruling": "Ruling: representation; project retained. oi8z.taxable is each line 8z entry's taxable amount, defined in forms/2025/oi8z.yaml: an entry's kind comes from a fixed list (decision D4), reemployment trade adjustment assistance and kickbacks are computed and every other kind is refused at the entry (i1040gi p. 92, Line 8z, \"Examples of income to report on line 8z include the following\"; p525 p. 34, Kickbacks). Those entries are judged in the render log of `oi8z`, where they are given."
   }
  ]
 }

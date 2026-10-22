@@ -3,6 +3,12 @@
  "form": "s1",
  "rulings": [
   {
+   "printed": "1",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"input\": \"refund.received\"}, {\"param\": \"sales.zero\"}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"param\": \"sales.zero\"}, {\"input\": \"refund.received\"}], \"test\": \"lt\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"refund.sales\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"refund.itemized\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"ref\": \"refund.line9\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"refund.sales\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"refund.itemized\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"param\": \"sales.zero\"}}], \"op\": \"choose\"}}], \"op\": \"choose\"}",
+   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"refund.sales\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"refund.itemized\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"ref\": \"refund.line9\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"refund.sales\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"refund.itemized\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"param\": \"sales.zero\"}}], \"op\": \"choose\"}",
+   "ruling": "Ruling: equivalent; project retained. The project gives zero when no refund was received (refund.has) and otherwise the worksheet result, zero unless you itemized for 2024 and deducted income taxes; the second gives the latter alone. With no refund, worksheet line 1 is zero (the smaller of zero and 2024 line 5d), so line 9 is zero and the two agree (i1040gi p. 90, State and Local Income Tax Refund Worksheet, line 1, \"Enter the income tax refund from Form(s) 1099-G\", and line 9, \"Enter the smaller of line 3 or line 8 here and on Schedule 1, line 1\"). The project's guard keeps the worksheet's questions and its exception screens from being asked of a filer with no refund."
+  },
+  {
    "printed": "11",
    "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"input\": \"s1.educator_expenses\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"input\": \"s1.educator_expenses\"}], \"test\": \"lt\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"s1.eligible_educator\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"s1.eligible_educator\"}], \"test\": \"eq\"}, \"then\": {\"of\": [{\"input\": \"s1.educator_expenses\"}, {\"param\": \"s1.educator_max\"}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}}], \"op\": \"choose\"}",
    "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"s1.eligible_educator\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"s1.eligible_educator\"}], \"test\": \"eq\"}, \"then\": {\"of\": [{\"input\": \"s1.educator_expenses\"}, {\"param\": \"s1.educator_max\"}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}",
@@ -13,6 +19,18 @@
    "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"input\": \"s1.uc_paid\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"input\": \"s1.uc_paid\"}], \"test\": \"lt\"}, \"then\": {\"from\": {\"input\": \"s1.uc_paid\"}, \"op\": \"subtract_floor0\", \"take\": {\"input\": \"s1.uc_repaid\"}}}], \"op\": \"choose\"}",
    "second": "{\"from\": {\"input\": \"s1.uc_paid\"}, \"op\": \"subtract\", \"take\": {\"input\": \"s1.uc_repaid\"}}",
    "ruling": "Ruling: equivalent within valid inputs; project retained. The amount repaid is part of a 2025 overpayment of the compensation received, so it never exceeds it and the floor at zero does not apply; with no unemployment compensation both give zero, and the project's guard keeps a filer without it from being asked about repayments."
+  },
+  {
+   "printed": "8c",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"input\": \"s1.cod_amount\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"input\": \"s1.cod_amount\"}], \"test\": \"lt\"}, \"then\": {\"input\": \"s1.cod_amount\"}}], \"op\": \"choose\"}",
+   "second": "{\"input\": \"s1.cod_amount\"}",
+   "ruling": "Ruling: equivalent; project retained. With no canceled debt both give zero; with some, both give the amount (i1040gi p. 91, Line 8c; p525 p. 20, Canceled Debts, \"If the debt is a nonbusiness debt, report the canceled amount on Schedule 1 (Form 1040), line 8c\"). The project's guard places the exceptions-and-exclusions refusal (s1.cod_unsupported, on s1.cod_refused) only on a return that has canceled debt."
+  },
+  {
+   "printed": "s1.has_gambling",
+   "project": "{\"args\": [{\"const\": 0}, {\"input\": \"s1.gambling_winnings\"}], \"test\": \"lt\"}",
+   "second": "{\"args\": [{\"const\": 0}, {\"line\": \"8b\"}], \"test\": \"lt\"}",
+   "ruling": "Ruling: equivalent; project retained. Line 8b is a copy of the gambling winnings input (s1.line8b, from s1.gambling_winnings; i1040gi p. 91, Line 8b, \"Enter gambling winnings not attributable to a trade or business\"), so winnings above zero and line 8b above zero are the same test; the comparison does not expand the same form's line inside a helper."
   }
  ]
 }

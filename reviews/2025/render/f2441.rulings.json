@@ -5,6 +5,12 @@
   {
    "printed": "16",
    "restated": "Add helper \"Total of the qualified expenses incurred and paid in 2025 for the qualifying persons (line 2, column (d), before excluding any benefits)\" and helper \"Qualified expenses for care of the qualifying persons in 2025 that you paid, or will pay, in 2026\".",
+   "model": "Line 16 is \"the total of all qualified expenses incurred in 2025 ... It doesn't matter when the expenses were paid.\" The restatement adds only 2025 expenses paid in 2025 and those paid in 2026. It leaves out 2025 care that was prepaid in 2024.",
+   "ruling": "Ruling: project retained (representation), as the prior ruling. The helper \"Total of the qualified expenses incurred and paid in 2025\" is the sum of each person's column (d), dependent.dc_paid, which asks for 2025 care prepaid in 2024 (\"Include care you prepaid in 2024 for 2025\"), as the publication directs (p503 p. 10, Expenses prepaid in an earlier year, \"you can count the prepaid expenses only in the year the care is received\"); f2441.paid_2026 adds 2025 care paid in 2026. So the line is all care incurred in 2025 whenever paid (i2441 p. 5, Line 16, \"It doesn't matter when the expenses were paid\"). No change."
+  },
+  {
+   "printed": "16",
+   "restated": "Add helper \"Total of the qualified expenses incurred and paid in 2025 for the qualifying persons (line 2, column (d), before excluding any benefits)\" and helper \"Qualified expenses for care of the qualifying persons in 2025 that you paid, or will pay, in 2026\".",
    "model": "The line 16 instructions say \"Enter the total of all qualified expenses incurred in 2025 ... It doesn't matter when the expenses were paid.\" The restatement adds only expenses paid in 2025 and those paid or to be paid in 2026. Expenses for 2025 care that were prepaid in 2024 are left out, and there is no refusal for them.",
    "ruling": "Ruling: project retained (representation). The restatement's helper \"Total of the qualified expenses incurred and paid in 2025\" is the sum of each person's column (d), dependent.dc_paid; the project's column (d) per person (dependent.dc_line2d) is a copy of dependent.dc_paid, so the sums are the same. 2025 care prepaid in 2024 is not left out: dependent.dc_paid asks for it (\"Include care you prepaid in 2024 for 2025\"), as the publication directs (p503 p. 10, Expenses prepaid in an earlier year, \"you can count the prepaid expenses only in the year the care is received. Claim the expenses for the later year as if they were actually paid in that later year\"), and f2441.paid_2026 adds 2025 care paid in 2026, so the line is all care incurred in 2025 whenever paid (i2441 p. 5, Line 16, \"It doesn't matter when the expenses were paid\"). No change to the data."
   },
@@ -13,6 +19,12 @@
    "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
    "model": "Line 22 says \"Is any amount on line 12 or 13 from your sole proprietorship or partnership? ... Yes. Enter the amount here.\" The restatement always enters $0 and has no refusal for amounts from a sole proprietorship or partnership.",
    "ruling": "Ruling: project retained (scope). Both Yes cases are refused on other lines, so the answer is always No and line 22 is zero (f2441 p. 2, line 22, \"Is any amount on line 12 or 13 from your sole proprietorship or partnership? No. Enter -0-\"): benefits from your own sole proprietorship by the Schedule C screen (sc.special, \"contributions you made on your own behalf, as a self-employed person, to a dependent care assistance program (Form 2441, Parts I and III)\"), a partnership by the Schedule 1 screen (scope.schedule1, \"partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)\"), and any benefit not shown in Form W-2 box 10 by scope.other_income (\"dependent care benefits other than those shown in box 10 of a Form W-2\"). The rendering's note names the refusals. No change to the data."
+  },
+  {
+   "printed": "22",
+   "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
+   "model": "The form says \"Is any amount on line 12 or 13 from your sole proprietorship or partnership? ... Yes. Enter the amount here.\" The restatement always enters $0, and there is no refusal for sole proprietorship or partnership benefits, even though line 12 includes them.",
+   "ruling": "Ruling: project retained (scope), as the prior ruling. Both Yes cases are refused on other lines, so the answer is always No and line 22 is zero (f2441 p. 2, line 22, \"Is any amount on line 12 or 13 from your sole proprietorship or partnership? No. Enter -0-\"): benefits from your own sole proprietorship by the Schedule C screen (sc.special, \"contributions you made on your own behalf, as a self-employed person, to a dependent care assistance program (Form 2441, Parts I and III)\"), a partnership by the Schedule 1 screen (scope.schedule1, \"partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)\"), and any benefit not shown in Form W-2 box 10 by scope.other_income. No change."
   },
   {
    "printed": "CLW 2",

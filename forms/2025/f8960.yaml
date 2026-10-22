@@ -287,13 +287,16 @@ form:
     - id: f8960.line10
       printed: "10"
       type: NonNegDollars
-      label: Amount from f8960.zero
+      label: Additional modifications (see instructions)
       expr:
         op: copy
-        from: f8960.zero
+        from: s1.line18
       cite:
-        doc: f8960
-        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+        doc: i8960
+        locator: 'p. 13, Line 7—Other Modifications to Investment Income, "Note: Early withdrawal penalty (Schedule 1 (Form
+          1040), line 18) is reported on Form 8960, line 10"; p. 18, Line 10—Additional Modifications, "On line 10, report
+          additional deductions or modifications to NII that aren''t otherwise reflected on lines 1–9" (the other line 10
+          modifications are refused by f8960.unsupported)'
       refuses:
         - when: f8960.unsupported
           form: Form 8960 additional adjustments

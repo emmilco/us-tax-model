@@ -83,13 +83,21 @@
 - Expr: `{"of":["ssb.line2","ssb.line3","ssb.line4"],"op":"sum"}`
 - Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 5 (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `ssb.ira_line20`
+
+- **Authored helper label:** Schedule 1, line 20 (IRA deduction) as this worksheet reads it, figured with no one covered by a retirement plan
+- **Encoded (NonNegDollars):** Add person.ira_ssb over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Interpretation: amb.2025.ira_ssb_copy
+- Expr: `{"collection":"person","field":"person.ira_ssb","op":"sum_over"}`
+- Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 6; p. 31, Lines 6a and 6b, Exception (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## 6 — `ssb.line6`
 
 - **IRS:** Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 25
-- **Encoded (NonNegDollars):** Add s1 line 11, s1 line 13, s1 line 15, s1 line 16, and s1 line 17.
-- **Refusal:** when scope.schedule1 is true, cannot complete Schedule 1 adjustments (Social Security Benefits Worksheet, line 6). Schedule 1 adjustments other than educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions and the self-employed health insurance deduction (lines 12, 14, 18 to 20, 23 and 25) are outside this tool. Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 6 (2025; printed date 2026-02-25; sha256 482e9c48)
-- Expr: `{"of":["s1.line11","s1.line13","s1.line15","s1.line16","s1.line17"],"op":"sum"}`
-- Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 6 (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Encoded (NonNegDollars):** Add s1 line 11, s1 line 13, s1 line 15, s1 line 16, s1 line 17, s1 line 18, s1 line 19a, helper "Schedule 1, line 20 (IRA deduction) as this worksheet reads it, figured with no one covered by a retirement plan", and s1 line 25.
+- **Refusal:** when scope.schedule1 is true, cannot complete Schedule 1 adjustments (Social Security Benefits Worksheet, line 6). Schedule 1 adjustments on lines 12, 14 and 23 are outside this tool. Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 6 (2025; printed date 2026-02-25; sha256 482e9c48)
+- Expr: `{"of":["s1.line11","s1.line13","s1.line15","s1.line16","s1.line17","s1.line18","s1.line19a","ssb.ira_line20","s1.line25"],"op":"sum"}`
+- Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 6 (line 20 through its copy for this worksheet, ssb.ira_line20) (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 7 — `ssb.line7`
 

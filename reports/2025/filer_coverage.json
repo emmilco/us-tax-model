@@ -5,12 +5,12 @@
  "microdata_filing_units_unweighted_total": 157629339.546014,
  "raking_max_share_error": 7.132191345032847e-07,
  "coverage": {
-  "central": 0.6472485889166303,
-  "low": 0.6072999132859158,
-  "high": 0.7405999390446065,
-  "microdata_part": 0.7405999390446065,
-  "irs_only_independent_factor": 0.8739517177811249,
-  "irs_only_share_sum": 0.1333000257586907
+  "central": 0.6855938015922951,
+  "low": 0.6567762423575846,
+  "high": 0.7647929821379662,
+  "microdata_part": 0.7647929821379662,
+  "irs_only_independent_factor": 0.8964436358656547,
+  "irs_only_share_sum": 0.10801673978038158
  },
  "categories": [
   {
@@ -135,54 +135,6 @@
    "basis": "IRS count only (independence assumed)"
   },
   {
-   "id": "ira_deduction",
-   "group": "schedule1_misc",
-   "label": "IRA deduction",
-   "gates": [
-    "scope.schedule1"
-   ],
-   "irs_returns": 2503934.0,
-   "microdata_share_before_raking": 0.1694866136957643,
-   "share": 0.015590916513470094,
-   "basis": "IRS count, overlap from microdata"
-  },
-  {
-   "id": "state_refund",
-   "group": "schedule1_misc",
-   "label": "Taxable state or local income tax refund",
-   "gates": [
-    "scope.schedule1"
-   ],
-   "irs_returns": 3109096.0,
-   "microdata_share_before_raking": 0.09672884080775841,
-   "share": 0.01935900036868337,
-   "basis": "IRS count, overlap from microdata"
-  },
-  {
-   "id": "alimony_received",
-   "group": "schedule1_misc",
-   "label": "Alimony received",
-   "gates": [
-    "scope.schedule1"
-   ],
-   "irs_returns": 183582.0,
-   "microdata_share_before_raking": 0.0019053227387494753,
-   "share": 0.0011430858235995868,
-   "basis": "IRS count, overlap from microdata"
-  },
-  {
-   "id": "alimony_paid",
-   "group": "schedule1_misc",
-   "label": "Alimony paid",
-   "gates": [
-    "scope.schedule1"
-   ],
-   "irs_returns": 278541.0,
-   "microdata_share_before_raking": 0.001841026848388117,
-   "share": 0.0017343548861238156,
-   "basis": "IRS count, overlap from microdata"
-  },
-  {
    "id": "other_income",
    "group": "schedule1_misc",
    "label": "Other income (Schedule 1 line 8z and similar)",
@@ -193,18 +145,6 @@
    "microdata_share_before_raking": 0.02492695317235646,
    "share": 0.048487987769674785,
    "basis": "IRS count, overlap from microdata"
-  },
-  {
-   "id": "gambling",
-   "group": "schedule1_misc",
-   "label": "Gambling winnings",
-   "gates": [
-    "scope.schedule1"
-   ],
-   "irs_returns": 2304901.0,
-   "microdata_share_before_raking": null,
-   "share": 0.014351623668299694,
-   "basis": "IRS count only (independence assumed)"
   },
   {
    "id": "nol",
@@ -219,18 +159,6 @@
    "basis": "IRS count only (independence assumed)"
   },
   {
-   "id": "cancellation_of_debt",
-   "group": "schedule1_misc",
-   "label": "Cancellation of debt",
-   "gates": [
-    "scope.schedule1"
-   ],
-   "irs_returns": 386021.0,
-   "microdata_share_before_raking": null,
-   "share": 0.0024035861497134657,
-   "basis": "IRS count only (independence assumed)"
-  },
-  {
    "id": "form4797",
    "group": "schedule1_misc",
    "label": "Sales of business property (Form 4797)",
@@ -240,30 +168,6 @@
    "irs_returns": 1720509.0,
    "microdata_share_before_raking": null,
    "share": 0.010712866923968813,
-   "basis": "IRS count only (independence assumed)"
-  },
-  {
-   "id": "hsa_distribution",
-   "group": "schedule1_misc",
-   "label": "Taxable HSA distributions",
-   "gates": [
-    "f8889.unsupported"
-   ],
-   "irs_returns": 464689.0,
-   "microdata_share_before_raking": null,
-   "share": 0.002893417830439796,
-   "basis": "IRS count only (independence assumed)"
-  },
-  {
-   "id": "early_withdrawal",
-   "group": "schedule1_misc",
-   "label": "Penalty on early withdrawal of savings",
-   "gates": [
-    "scope.schedule1"
-   ],
-   "irs_returns": 904938.0,
-   "microdata_share_before_raking": null,
-   "share": 0.005634658329856158,
    "basis": "IRS count only (independence assumed)"
   },
   {
@@ -317,13 +221,13 @@
  ],
  "greedy_order": [
   {
-   "group": "schedule1_misc",
-   "label": "Other Schedule 1 income and adjustments",
-   "coverage_after": 0.7242942966688722
-  },
-  {
    "group": "schedule_e",
    "label": "Rental, royalty, partnership, S corporation, estate (Schedule E)",
+   "coverage_after": 0.738224119793352
+  },
+  {
+   "group": "schedule1_misc",
+   "label": "Other Schedule 1 income and adjustments",
    "coverage_after": 0.79128905873272
   },
   {
@@ -374,20 +278,19 @@
  ],
  "coverage_without_model_only_category": {},
  "gain_if_covered_alone": {
-  "married": 0.019841715497374013,
-  "premium_tax_credit": 0.041933113135284805,
-  "education": 0.030390938874026774,
-  "other_credits": 0.0059690414783025725,
-  "schedule_e": 0.048293948629938854,
-  "capital_loss_carryover": 0.02348334068746205,
-  "retirement_penalty": 0.021197706414107897,
-  "schedule1_misc": 0.07704570775224195,
-  "schedule2_misc": 0.0029302890992332076,
-  "other_earned_income": 0.005149330343533265,
-  "farm": 0.002905131013902662
+  "married": 0.02072136235033495,
+  "premium_tax_credit": 0.04427372385482553,
+  "education": 0.03326176174784923,
+  "other_credits": 0.006322667842075025,
+  "schedule_e": 0.0526303182010569,
+  "capital_loss_carryover": 0.02487457383715963,
+  "retirement_penalty": 0.022453530798438814,
+  "schedule1_misc": 0.038700495076577135,
+  "schedule2_misc": 0.00310388941391182,
+  "other_earned_income": 0.005454394225542725,
+  "farm": 0.003560106755365555
  },
  "gates_mapped": [
-  "f8889.unsupported",
   "retirement.special",
   "s2.amt",
   "s2.other",
@@ -416,6 +319,7 @@
   "div.section1202",
   "div.unsupported",
   "f2441.attrib_gate",
+  "f2441.employer_care_gate",
   "f2441.line14_bad",
   "f2441.nondependent_gate",
   "f2441.plans_differ",
@@ -442,10 +346,14 @@
   "f5695.separate_homes_joint",
   "f5695.wh_no_qmid",
   "f5695.windows_no_qmid",
+  "f8606.dist",
   "f8889.allocation_bad",
   "f8889.bad_months",
   "f8889.excess",
   "f8889.mfs",
+  "f8889.rollover_bad",
+  "f8889.subject_bad",
+  "f8889.unsupported",
   "f8959.unsupported",
   "f8960.bad_allocation",
   "f8960.refund",
@@ -455,23 +363,47 @@
   "gift.special",
   "household.hoh_fails",
   "household.roster_bad",
+  "ira.both_kinds",
+  "ira.combat_gate",
+  "ira.cov_gate",
+  "ira.excl_gate",
+  "ira.kbh_short",
+  "ira.less_gate",
+  "ira.over_comp",
+  "ira.special_gate",
+  "oi8z.additional_tax",
+  "oi8z.figured",
+  "oi8z.recovery",
   "otjob.refused",
   "person.hsa_repeated",
+  "person.ira_basis_gate",
+  "person.ira_dist_gate",
+  "person.ira_excess_gate",
+  "person.ira_over_limit",
   "person.over",
   "person.plan_screened",
   "person.rrta",
   "person.sav_able",
   "person.sav_excess_gate",
-  "person.sav_trad",
   "person.se_rrta",
   "person.se_screened",
   "person.sep_excess",
   "person.simple_excess",
   "qbi.business_any",
   "qbi.unsupported",
+  "refund.box8",
+  "refund.exc_tax",
+  "refund.exc_who",
+  "refund.not_2024",
+  "refund.other",
   "retirement.annuity_rollover",
   "retirement.bad_code",
+  "s1.alimony_unsupported",
+  "s1.cod_unsupported",
   "s1.ebl",
+  "s1.gambling_business",
+  "s1.jury_over",
+  "s1.line8_other",
   "s1.sc_1a",
   "s1.uc_unsupported",
   "s179.mfs",

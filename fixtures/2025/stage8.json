@@ -129,6 +129,19 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
@@ -150,7 +163,8 @@
         "person[taxpayer].sav_voluntary": 0,
         "person[taxpayer].sav_prior_joint": 0,
         "person[taxpayer].sav_prior_other": 0,
-        "person[taxpayer].w2[emp_a].box12_any": false
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -601,6 +615,19 @@
         "f1040.tax_exempt_interest": 0,
         "div.box12": 0,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
@@ -622,7 +649,8 @@
         "person[taxpayer].sav_voluntary": 0,
         "person[taxpayer].sav_prior_joint": 0,
         "person[taxpayer].sav_prior_other": 0,
-        "person[taxpayer].w2[emp_a].box12_any": false
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -1145,6 +1173,19 @@
         "f1040.tax_exempt_interest": 0,
         "div.box12": 0,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
@@ -1166,7 +1207,8 @@
         "person[taxpayer].sav_voluntary": 0,
         "person[taxpayer].sav_prior_joint": 0,
         "person[taxpayer].sav_prior_other": 0,
-        "person[taxpayer].w2[emp_a].box12_any": false
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "dependent[a].actc_amount": {
@@ -1815,6 +1857,19 @@
         "f1040.tax_exempt_interest": 0,
         "div.box12": 0,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
@@ -1836,7 +1891,8 @@
         "person[taxpayer].sav_voluntary": 0,
         "person[taxpayer].sav_prior_joint": 0,
         "person[taxpayer].sav_prior_other": 0,
-        "person[taxpayer].w2[emp_a].box12_any": false
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "dependent[a].actc_amount": {
@@ -2433,6 +2489,19 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
@@ -2454,7 +2523,8 @@
         "person[taxpayer].sav_voluntary": 0,
         "person[taxpayer].sav_prior_joint": 0,
         "person[taxpayer].sav_prior_other": 0,
-        "person[taxpayer].w2[emp_a].box12_any": false
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -2895,6 +2965,19 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
@@ -2916,7 +2999,8 @@
         "person[taxpayer].sav_voluntary": 0,
         "person[taxpayer].sav_prior_joint": 0,
         "person[taxpayer].sav_prior_other": 0,
-        "person[taxpayer].w2[emp_a].box12_any": false
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "dependent[parent].actc_amount": {
@@ -3365,6 +3449,19 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
@@ -3383,7 +3480,8 @@
         "person[taxpayer].sav_voluntary": 0,
         "person[taxpayer].sav_prior_joint": 0,
         "person[taxpayer].sav_prior_other": 0,
-        "person[taxpayer].w2[emp_a].box12_any": false
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -4053,6 +4151,19 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
@@ -4074,7 +4185,8 @@
         "person[taxpayer].sav_voluntary": 0,
         "person[taxpayer].sav_prior_joint": 0,
         "person[taxpayer].sav_prior_other": 0,
-        "person[taxpayer].w2[emp_a].box12_any": false
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "dependent[age19].actc_amount": {
@@ -4770,6 +4882,19 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
@@ -4791,7 +4916,8 @@
         "person[taxpayer].sav_voluntary": 0,
         "person[taxpayer].sav_prior_joint": 0,
         "person[taxpayer].sav_prior_other": 0,
-        "person[taxpayer].w2[emp_a].box12_any": false
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "dependent[age17].actc_amount": {
@@ -5432,6 +5558,19 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
@@ -5453,7 +5592,8 @@
         "person[taxpayer].sav_voluntary": 0,
         "person[taxpayer].sav_prior_joint": 0,
         "person[taxpayer].sav_prior_other": 0,
-        "person[taxpayer].w2[emp_a].box12_any": false
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "dependent[all_year].actc_amount": {
@@ -6084,6 +6224,19 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
@@ -6102,7 +6255,8 @@
         "person[taxpayer].sav_voluntary": 0,
         "person[taxpayer].sav_prior_joint": 0,
         "person[taxpayer].sav_prior_other": 0,
-        "person[taxpayer].w2[emp_a].box12_any": false
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -6705,6 +6859,19 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
@@ -6726,7 +6893,8 @@
         "person[taxpayer].sav_voluntary": 0,
         "person[taxpayer].sav_prior_joint": 0,
         "person[taxpayer].sav_prior_other": 0,
-        "person[taxpayer].w2[emp_a].box12_any": false
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -7165,6 +7333,19 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
@@ -7186,7 +7367,8 @@
         "person[taxpayer].sav_voluntary": 0,
         "person[taxpayer].sav_prior_joint": 0,
         "person[taxpayer].sav_prior_other": 0,
-        "person[taxpayer].w2[emp_a].box12_any": false
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -7624,6 +7806,19 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
@@ -7645,7 +7840,8 @@
         "person[taxpayer].sav_voluntary": 0,
         "person[taxpayer].sav_prior_joint": 0,
         "person[taxpayer].sav_prior_other": 0,
-        "person[taxpayer].w2[emp_a].box12_any": false
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -8329,6 +8525,19 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
@@ -8350,7 +8559,8 @@
         "person[taxpayer].sav_voluntary": 0,
         "person[taxpayer].sav_prior_joint": 0,
         "person[taxpayer].sav_prior_other": 0,
-        "person[taxpayer].w2[emp_a].box12_any": false
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -9034,6 +9244,19 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
@@ -9055,7 +9278,8 @@
         "person[taxpayer].sav_voluntary": 0,
         "person[taxpayer].sav_prior_joint": 0,
         "person[taxpayer].sav_prior_other": 0,
-        "person[taxpayer].w2[emp_a].box12_any": false
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -9739,6 +9963,19 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
@@ -9760,7 +9997,8 @@
         "person[taxpayer].sav_voluntary": 0,
         "person[taxpayer].sav_prior_joint": 0,
         "person[taxpayer].sav_prior_other": 0,
-        "person[taxpayer].w2[emp_a].box12_any": false
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "dependent[parent].actc_amount": {
@@ -10429,6 +10667,19 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
@@ -10450,7 +10701,8 @@
         "person[taxpayer].sav_voluntary": 0,
         "person[taxpayer].sav_prior_joint": 0,
         "person[taxpayer].sav_prior_other": 0,
-        "person[taxpayer].w2[emp_a].box12_any": false
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "dependent[parent].actc_amount": {
@@ -11129,6 +11381,19 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
@@ -11147,7 +11412,8 @@
         "person[taxpayer].sav_voluntary": 0,
         "person[taxpayer].sav_prior_joint": 0,
         "person[taxpayer].sav_prior_other": 0,
-        "person[taxpayer].w2[emp_a].box12_any": false
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -11820,6 +12086,19 @@
         "$retirement": [],
         "ssb.benefits": 0,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
@@ -11830,7 +12109,9 @@
         "f5695.part1_any": false,
         "f5695.part2_any": false,
         "f2441.care": false,
-        "f2441.benefits": false
+        "f2441.benefits": false,
+        "f2441.employer_care": false,
+        "person[taxpayer].sav_trad": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -12430,6 +12711,19 @@
         "f1040.tax_exempt_interest": 0,
         "div.box12": 0,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
@@ -12451,7 +12745,8 @@
         "person[taxpayer].sav_voluntary": 0,
         "person[taxpayer].sav_prior_joint": 0,
         "person[taxpayer].sav_prior_other": 0,
-        "person[taxpayer].w2[emp_a].box12_any": false
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -13063,6 +13358,19 @@
         "f1040.tax_exempt_interest": 0,
         "div.box12": 0,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
@@ -13081,7 +13389,8 @@
         "person[taxpayer].sav_voluntary": 0,
         "person[taxpayer].sav_prior_joint": 0,
         "person[taxpayer].sav_prior_other": 0,
-        "person[taxpayer].w2[emp_a].box12_any": false
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -13152,7 +13461,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
+          "remedy": "Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -13165,7 +13474,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
+          "remedy": "Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -13178,7 +13487,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
+          "remedy": "Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -13191,7 +13500,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
+          "remedy": "Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -13204,7 +13513,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
+          "remedy": "Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -13245,7 +13554,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
+          "remedy": "Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -13262,7 +13571,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
+          "remedy": "Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -13279,7 +13588,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
+          "remedy": "Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -13292,7 +13601,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
+          "remedy": "Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -13369,7 +13678,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
+          "remedy": "Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -13386,7 +13695,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
+          "remedy": "Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -13399,7 +13708,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
+          "remedy": "Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -13412,7 +13721,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
+          "remedy": "Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -13425,7 +13734,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
+          "remedy": "Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -13438,7 +13747,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
+          "remedy": "Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -13451,7 +13760,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
+          "remedy": "Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -13464,7 +13773,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
+          "remedy": "Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -13477,7 +13786,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
+          "remedy": "Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -13490,7 +13799,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
+          "remedy": "Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -13507,7 +13816,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
+          "remedy": "Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -13520,7 +13829,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
+          "remedy": "Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -13537,7 +13846,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
+          "remedy": "Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -13550,7 +13859,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
+          "remedy": "Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -13575,7 +13884,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
+          "remedy": "Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -13588,7 +13897,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
+          "remedy": "Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -13601,7 +13910,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
+          "remedy": "Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -13614,7 +13923,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
+          "remedy": "Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -13643,7 +13952,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
+          "remedy": "Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -13676,7 +13985,7 @@
           "kind": "refusal",
           "gate": "scope.schedule1",
           "form": "Schedule 1",
-          "remedy": "Schedule 1 income and adjustments other than unemployment compensation, educator expenses, the HSA deduction and student loan interest are outside this tool.",
+          "remedy": "Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool.",
           "cite": {
             "doc": "f1040",
             "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
@@ -13825,6 +14134,19 @@
         "f1040.tax_exempt_interest": 0,
         "div.box12": 0,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
@@ -13843,7 +14165,8 @@
         "person[taxpayer].sav_voluntary": 0,
         "person[taxpayer].sav_prior_joint": 0,
         "person[taxpayer].sav_prior_other": 0,
-        "person[taxpayer].w2[emp_a].box12_any": false
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -14470,6 +14793,19 @@
         "f1040.tax_exempt_interest": 0,
         "div.box12": 0,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "s1a.tips": false,
@@ -14491,7 +14827,8 @@
         "person[taxpayer].sav_voluntary": 0,
         "person[taxpayer].sav_prior_joint": 0,
         "person[taxpayer].sav_prior_other": 0,
-        "person[taxpayer].w2[emp_a].box12_any": false
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "dependent[child].actc_amount": {

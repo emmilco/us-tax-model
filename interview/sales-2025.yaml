@@ -33,6 +33,7 @@ interview:
   - f4952.alternative_allocation
   - f4952.line4g
   - interest.amount
+  - interest.penalty
   - sb.unsupported
   - sb.ordinary_dividends
   - sb.line7a
@@ -69,6 +70,7 @@ interview:
   - sa.spouse_extra
   - sa.spouse_itemizes
   - sa.unsupported
+  - sa.gambling_losses
   - scope.other_income
   - scope.schedule1
   - scope.other_line16
@@ -124,6 +126,41 @@ interview:
   - s1.uc_paid
   - s1.uc_repaid
   - s1.uc_unsupported
+  - s1.line8_other
+  - s1.gambling_winnings
+  - s1.gambling_pro
+  - s1.line8g
+  - s1.line8h
+  - s1.line8i
+  - s1.line8j
+  - s1.line8r
+  - $oi8z
+  - oi8z.kind
+  - oi8z.amount
+  - s1.jury_to_employer
+  - refund.received
+  - refund.other
+  - refund.box8
+  - refund.not_2024
+  - refund.itemized
+  - refund.sales
+  - refund.exc_tax
+  - refund.exc_who
+  - refund.line5d_2024
+  - refund.line5e_2024
+  - refund.line17_2024
+  - refund.status
+  - refund.mfs_spouse_itemized
+  - refund.you_born
+  - refund.you_blind
+  - refund.spouse_born
+  - refund.spouse_blind
+  - s1.alimony
+  - s1.alimony_received
+  - s1.alimony_paid
+  - s1.alimony_unsupported
+  - s1.cod_amount
+  - s1.cod_unsupported
   - person.educator_expenses
   - person.eligible_educator
   - $f8889
@@ -135,8 +172,21 @@ interview:
   - f8889.age55
   - f8889.dec_coverage
   - f8889.last_month
+  - f8889.line14a
+  - f8889.rollover
+  - f8889.medical
+  - f8889.line17a
+  - f8889.subject_part
   - sli.interest
   - sli.claimed
+  - person.sav_trad
+  - person.ira_trad
+  - person.ira_excess
+  - person.ira_age50
+  - person.ira_work_plan
+  - person.ira_dist
+  - ira.special
+  - ira.deduct_less
   - s1a.tips
   - s1a.overtime
   - s1a.carloan

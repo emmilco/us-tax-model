@@ -5,8 +5,20 @@
   {
    "printed": "12",
    "restated": "Add gift.allowed over every confirmed gift entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Line 12 is \"Other than by cash or check,\" but the restatement sums gift.allowed, which the glossary does not define. Without that definition, the per-gift amount cannot be checked against the IRS property-gift rules.",
+   "ruling": "Ruling: representation; project retained. The gift collection holds noncash gifts only (forms/2025/gift.yaml, cited to i8283), and gift.allowed is each entry's deductible amount after its Form 8283 screens; cash and check gifts are the line 11 input (f1040sa line 12, \"Other than by cash or check\"). The per-gift rules are judged in the logs of `gift`. Same in substance as the earlier rulings on this line. No change to the data."
+  },
+  {
+   "printed": "12",
+   "restated": "Add gift.allowed over every confirmed gift entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "Line 12 is 'Other than by cash or check' (attach Form 8283 if over $500). The glossary does not define gift.allowed or the gift roster, and the line 12 instructions are not in the pages given, so the per-gift amount cannot be checked.",
    "ruling": "Ruling: representation; project retained. The gift collection holds noncash gifts only (forms/2025/gift.yaml, cited to i8283), and `gift.allowed` is each entry's deductible amount after its Form 8283 screens; cash and check gifts are the line 11 input. No change to the data."
+  },
+  {
+   "printed": "12",
+   "restated": "Add gift.allowed over every confirmed gift entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Line 12 is 'Other than by cash or check.' The restatement sums 'gift.allowed' over gift entries, but gift.allowed and the gift roster are not defined in the glossary. Without that definition I cannot tell whether the sum covers only noncash gifts at the deductible amount.",
+   "ruling": "Ruling: representation; project retained. The gift collection holds noncash gifts only (forms/2025/gift.yaml, cited to i8283), and gift.allowed is each entry's deductible amount after its Form 8283 screens; cash and check gifts are the line 11 input (f1040sa line 12, \"Other than by cash or check\"). The per-gift rules are judged in the logs of `gift`. Same in substance as the earlier rulings on this line. No change to the data."
   },
   {
    "printed": "12",

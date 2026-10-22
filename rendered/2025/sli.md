@@ -56,9 +56,9 @@
 ## 3 — `sli.line3`
 
 - **IRS:** Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 25
-- **Encoded (NonNegDollars):** Add s1 line 11, s1 line 13, s1 line 15, s1 line 16, and s1 line 17.
-- Expr: `{"of":["s1.line11","s1.line13","s1.line15","s1.line16","s1.line17"],"op":"sum"}`
-- Cite: [i1040gi] p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 3 (lines 12, 14 and 18 to 20, 23 and 25 are outside this tool and refused through line 2, Form 1040 line 9, by scope.schedule1) (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Encoded (NonNegDollars):** Add s1 line 11, s1 line 13, s1 line 15, s1 line 16, s1 line 17, s1 line 18, s1 line 19a, s1 line 20, and s1 line 25.
+- Expr: `{"of":["s1.line11","s1.line13","s1.line15","s1.line16","s1.line17","s1.line18","s1.line19a","s1.line20","s1.line25"],"op":"sum"}`
+- Cite: [i1040gi] p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 3 (lines 12, 14 and 23 are outside this tool and refused through line 2, Form 1040 line 9, by scope.schedule1) (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 4 — `sli.line4`
 

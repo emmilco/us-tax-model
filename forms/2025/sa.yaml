@@ -10,10 +10,10 @@ form:
     - id: sa.unsupported
       printed: (helper)
       type: Bool
-      label: 'Any casualty or theft loss (including a disaster loss added to the standard deduction); a deduction from the Schedule A line 16 list; a foreign tax or generation-skipping tax deduction; mortgage interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds not all used to buy, build or improve the home, or debt over the limit); or the sales-tax election?'
+      label: 'Any casualty or theft loss (including a disaster loss added to the standard deduction); a deduction from the Schedule A line 16 list other than gambling losses; a foreign tax or generation-skipping tax deduction; mortgage interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds not all used to buy, build or improve the home, or debt over the limit); or the sales-tax election?'
       expr:
         op: input
-        source: 'Any casualty or theft loss (including a disaster loss added to the standard deduction); a deduction from the Schedule A line 16 list; a foreign tax or generation-skipping tax deduction; mortgage interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds not all used to buy, build or improve the home, or debt over the limit); or the sales-tax election?'
+        source: 'Any casualty or theft loss (including a disaster loss added to the standard deduction); a deduction from the Schedule A line 16 list other than gambling losses; a foreign tax or generation-skipping tax deduction; mortgage interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds not all used to buy, build or improve the home, or debt over the limit); or the sales-tax election?'
       cite:
         doc: f1040sa
         locator: Schedule A (2025), lines 1–18
@@ -551,16 +551,56 @@ form:
           cite:
             doc: i1040sca
             locator: p. 7, State and Local Tax Deduction Worksheet
+    - id: sa.gambling_losses
+      printed: (helper)
+      type: NonNegDollars
+      label: Gambling losses you had during 2025
+      expr:
+        op: input
+        source: 'Your gambling losses during 2025 (you and, on a joint return, your spouse), including the cost of
+          nonwinning bingo, lottery and raffle tickets, in full, whether or not more than your winnings; zero if none'
+      cite:
+        doc: i1040sca
+        locator: 'p. 11, Other Itemized Deductions, "Gambling losses (gambling losses include, but aren''t limited to, the
+          cost of nonwinning bingo, lottery, and raffle tickets)"'
+    - id: sa.line16_gambling
+      printed: (helper)
+      type: NonNegDollars
+      label: Gambling losses, but only to the extent of gambling winnings reported on Schedule 1, line 8b
+      expr:
+        op: smaller_of
+        of:
+          - sa.gambling_losses
+          - s1.line8b
+      cite:
+        doc: i1040sca
+        locator: 'p. 11, Other Itemized Deductions, "but only to the extent of gambling winnings reported on Schedule 1 (Form
+          1040), line 8b"; p525 p. 33, Gambling winnings, "If you itemize your deductions on Schedule A (Form 1040), you can
+          deduct gambling losses you had during the year, but only up to the amount of your winnings"'
+      ambiguity: amb.2025.gambling_losses
     - id: sa.line16
       printed: "16"
       type: NonNegDollars
-      label: Amount from sa.zero
+      label: "Other—from list in instructions. List type and amount:"
       expr:
-        op: copy
-        from: sa.zero
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - s1.has_gambling
+                - const: true
+            then: sa.line16_gambling
+          - guard:
+              op: test
+              eq:
+                - s1.has_gambling
+                - const: false
+            then: sa.zero
       cite:
         doc: f1040sa
-        locator: Schedule A (2025), lines 1–18
+        locator: Schedule A (2025), line 16; i1040sca p. 11, Other Itemized Deductions, "Only the expenses listed next can be
+          deducted on line 16"
       refuses:
         - when: sa.unsupported
           form: Schedule A unsupported item / Form 4684
@@ -744,16 +784,23 @@ form:
     - id: sa.boxes_age65
       printed: (helper)
       type: Count
-      label: Number of boxes checked for born before January 2, 1961 (you, and your spouse if filing jointly)
+      label: Number of boxes checked for born before January 2, 1961 (you, and your spouse if filing jointly), not counting a
+        person who died in 2025 before reaching 65
       expr:
         op: sum_over
         collection: person
         field: person.one
         where:
           op: test
-          eq:
-          - person.age65
-          - const: true
+          all:
+          - op: test
+            eq:
+            - person.age65
+            - const: true
+          - op: test
+            eq:
+            - person.died_before_65
+            - const: false
       cite:
         doc: i1040gi
         locator: p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before

@@ -4,11 +4,11 @@ Second transcription of `Schedule B — interest payer entries` by an isolated m
 
 | field | value |
 | --- | --- |
-| date | 2026-10-17 |
+| date | 2026-10-22 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 84fdddb96457084c1a0beed798609df7765cc3d8077cfaddf9095039c09e8092 |
-| subject sha256 | b89d6f8250dc868144904ad7b062d5a83a128ca31f2ebc94f5887a83a5b88f93 |
+| prompt sha256 | b951272be41e10edd10638252ff06afd68b952453fa06c403b60af15246ce7a2 |
+| subject sha256 | dabfe10954ffe0a9cb9c00365364ffaed949ed3de18c94a857456e489f70cb71 |
 | printed lines compared | 0 |
 | agree / disagree / missing | 0 / 0 / 0 |
 | extra printed lines in second | none |
@@ -18,6 +18,8 @@ Second transcription of `Schedule B — interest payer entries` by an isolated m
 | document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
 | --- | --- | --- | --- | --- | --- | --- |
 | i1040sb | TY2025; printed April 23, 2025 | 1, 2, 3 | whole document | 2bf62267574473b36fd9a69b6e0837ef74d72ac7d5dcbf1d26e7047d099f1e05 | 1, 2, 3 | 0d38b25d416cb650ef264faf8c1f118dfa4666f3949fbba7120f8c04d4e6914e |
+| i1040gi | 2025; printed date 2026-02-25 | 95 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 95 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
+| f1099int | January 2024 (continuous-use form) | 5 | pages named by another document's citation | c4514fa301d16db6abe795e8493b92425cffbf37ac4c39a754b06be677f4a115 | 5 | b47750922f8b8b3274e9efb422b49fb83b89ea5ce9f68e24fb860381516355a2 |
 
 ## Lines
 

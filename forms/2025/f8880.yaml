@@ -6,8 +6,9 @@ form:
   note: Lines 1 to 12, column (a) for you and column (b) for your spouse on a joint return, with the Credit Limit
     Worksheet. Each column's contributions and eligibility are this person's (person.sav_*); line 4 takes the 2025
     Forms 1099-R of the return (both columns on a joint return) and each person's distributions of the other years
-    of the testing period. Traditional IRA and ABLE contributions, ABLE distributions, code H, year-designated box 12
-    entries and deferrals over the limit are refused.
+    of the testing period. Line 1 counts traditional IRA contributions for 2025, deductible or not (person.ira_contrib),
+    with the Roth contributions. Excess or recharacterized IRA contributions, ABLE contributions and distributions, code
+    H, year-designated box 12 entries and deferrals over the limit are refused.
   lines:
   - id: f8880.zero
     printed: (helper)
@@ -178,7 +179,8 @@ form:
       locator: 'p. 2, Line 4, "If you’re filing a joint return, include both spouses’ amounts in both columns"'
   - id: f8880.prior_own_a
     printed: (helper)
-    label: Your own distributions in 2023, 2024 and 2026 (before the due date) from years not filed jointly with your spouse
+    label: Your own distributions in 2023, 2024 and 2026 (before the due date) from years not filed jointly with your spouse;
+      on a return that is not joint, all of your distributions in those years
     type: NonNegDollars
     expr:
       op: sum_over
@@ -196,7 +198,7 @@ form:
   - id: f8880.prior_own_b
     printed: (helper)
     label: Your spouse's own distributions in 2023, 2024 and 2026 (before the due date) from years not filed jointly with
-      you
+      you (column (b), on a joint return only)
     type: NonNegDollars
     expr:
       op: sum_over

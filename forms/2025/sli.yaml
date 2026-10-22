@@ -103,10 +103,14 @@ form:
       - s1.line15
       - s1.line16
       - s1.line17
+      - s1.line18
+      - s1.line19a
+      - s1.line20
+      - s1.line25
     cite:
       doc: i1040gi
-      locator: p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 3 (lines 12, 14 and 18 to 20, 23 and
-        25 are outside this tool and refused through line 2, Form 1040 line 9, by scope.schedule1)
+      locator: p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 3 (lines 12, 14 and 23 are outside
+        this tool and refused through line 2, Form 1040 line 9, by scope.schedule1)
   - id: sli.line4
     printed: '4'
     label: Subtract line 3 from line 2

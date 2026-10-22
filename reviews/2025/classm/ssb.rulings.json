@@ -3,11 +3,59 @@
  "form": "ssb",
  "rulings": [
   {
+   "case": "classm.ssb.2",
+   "printed": "11",
+   "project": "$199,809.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer is married filing separately and lived with the spouse in 2025 (i1040gi p. 32, Social Security Benefits Worksheet, line 8, \"Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16. Then, go to line 17\"); the model left lines 8 to 15 blank, and the project figures every line (line 11 is line 9 less a $0.00 line 10, $199,809.00) but takes line 16 as line 7 x 85% for such a filer (ssb.mfs_together), $169,837.65, on which the model agrees, as on lines 17 ($39,287.00) and 18 ($39,287.00). A blank is not the number zero. No change to the data.",
+   "drop": true
+  },
+  {
+   "case": "classm.ssb.2",
+   "printed": "15",
+   "project": "$169,837.65",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer is married filing separately and lived with the spouse in 2025 (i1040gi p. 32, Social Security Benefits Worksheet, line 8, \"Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16. Then, go to line 17\"); the model left lines 8 to 15 blank, and the project figures every line (line 15 is line 11 x 85%, $169,837.65) but takes line 16 as line 7 x 85% for such a filer (ssb.mfs_together), $169,837.65, on which the model agrees, as on lines 17 ($39,287.00) and 18 ($39,287.00). A blank is not the number zero. No change to the data.",
+   "drop": true
+  },
+  {
+   "case": "classm.ssb.2",
+   "printed": "9",
+   "project": "$199,809.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer is married filing separately and lived with the spouse in 2025 (i1040gi p. 32, Social Security Benefits Worksheet, line 8, \"Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16. Then, go to line 17\"); the model left lines 8 to 15 blank, and the project figures every line (line 9 is line 7 less a $0.00 line 8, $199,809.00) but takes line 16 as line 7 x 85% for such a filer (ssb.mfs_together), $169,837.65, on which the model agrees, as on lines 17 ($39,287.00) and 18 ($39,287.00). A blank is not the number zero. No change to the data.",
+   "drop": true
+  },
+  {
+   "case": "classm.ssb.3",
+   "printed": "10",
+   "project": "$9,000.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 6 is not less than line 5 here (no benefits; line 1 $0.00), so the worksheet stops at line 7 (i1040gi p. 32, Social Security Benefits Worksheet, line 7, \"Is the amount on line 6 less than the amount on line 5? No. None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b. STOP\") and the model left the later lines blank; the project figures every line, line 10 being the $9,000 amount for a filer not married filing jointly (p. 32, line 10), and line 7 is $0.00, so lines 9, 11 and 15 to 18 are $0.00 in both, line 18 (Form 1040 line 6b) included. A blank is not the number zero; both blind predictors likewise leave the lines after a STOP blank (scenario I10, which stops at line 9). As the earlier ruling on classm.ssb.4 line 10. No change to the data.",
+   "drop": true
+  },
+  {
+   "case": "classm.ssb.3",
+   "printed": "8",
+   "project": "$25,000.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 6 is not less than line 5 here (no benefits; line 1 $0.00), so the worksheet stops at line 7 (i1040gi p. 32, Social Security Benefits Worksheet, line 7, \"Is the amount on line 6 less than the amount on line 5? No. None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b. STOP\") and the model left the later lines blank; the project figures every line, line 8 being the $25,000 base amount for a filer not married filing jointly (p. 32, line 8), and line 7 is $0.00, so lines 9, 11 and 15 to 18 are $0.00 in both, line 18 (Form 1040 line 6b) included. A blank is not the number zero; both blind predictors likewise leave the lines after a STOP blank (scenario I10, which stops at line 9). As the earlier ruling on classm.ssb.4 line 10. No change to the data.",
+   "drop": true
+  },
+  {
    "case": "classm.ssb.4",
    "printed": "10",
    "project": "$12,000.00",
    "model": "$0.00",
-   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where line 9 says STOP (none of the benefits are taxable), the model leaves the later lines blank; the project figures every line and line 18 is $0 either way (lines 11 to 16 are zero once line 9 is zero), as the EIC worksheet ruling.",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 6 is not less than line 5 here, so the worksheet stops at line 7 (i1040gi p. 32, Social Security Benefits Worksheet, line 7, \"None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b. STOP\") and the model leaves the later lines blank; the project figures every line (line 10 is the $12,000 amount for married filing jointly) and line 18 is $0 either way, as the EIC worksheet ruling.",
+   "drop": true
+  },
+  {
+   "case": "classm.ssb.4",
+   "printed": "8",
+   "project": "$32,000.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 6 is not less than line 5 here (no benefits; line 1 $0.00), so the worksheet stops at line 7 (i1040gi p. 32, Social Security Benefits Worksheet, line 7, \"Is the amount on line 6 less than the amount on line 5? No. None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b. STOP\") and the model left the later lines blank; the project figures every line, line 8 being the $32,000 base amount for married filing jointly (p. 32, line 8), and line 7 is $0.00, so lines 9, 11 and 15 to 18 are $0.00 in both, line 18 (Form 1040 line 6b) included. A blank is not the number zero; both blind predictors likewise leave the lines after a STOP blank (scenario I10, which stops at line 9). As the earlier ruling on classm.ssb.4 line 10. No change to the data.",
    "drop": true
   }
  ]

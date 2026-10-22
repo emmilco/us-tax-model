@@ -11,6 +11,12 @@
   {
    "printed": "3",
    "project": "{\"const\": 0}",
+   "second": "{\"line\": \"2\"}",
+   "ruling": "Ruling: equivalent; project retained. Line 3 is \"Add lines 1z and 2\" (f1040s2 p. 1, line 3); line 1z is zero within scope because every line 1 item is refused by s2.other (\"Any amount on Schedule 2 other than self-employment tax from Schedule SE, Additional Medicare Tax or Net Investment Income Tax\"), and line 2 is zero because the alternative minimum tax is refused by s2.amt. The second copies line 2, which is zero, where the project writes the constant 0, as ruled before."
+  },
+  {
+   "printed": "3",
+   "project": "{\"const\": 0}",
    "second": "{\"param\": \"sales.zero\"}",
    "ruling": "Ruling: equivalent; project retained. Lines 1z and 2 are both zero within scope (s2.other and s2.amt refuse them); the second copies the zero parameter where the project writes the constant 0."
   }

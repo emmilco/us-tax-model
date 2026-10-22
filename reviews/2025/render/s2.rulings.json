@@ -17,6 +17,18 @@
   {
    "printed": "4",
    "restated": "Add person.se_line12 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Adding across persons agrees with the instruction \"If both spouses have self-employment income, each must file a separate Schedule SE... Enter the combined SE tax on Schedule 2 (Form 1040), line 4.\" But nothing given here shows that Schedule SE line 12 is the SE tax amount; the Schedule SE form itself is not included.",
+   "ruling": "Ruling: representation; restatement accepted. Schedule SE line 12 is \"Self-employment tax. Add lines 10 and 11. Enter here and on Schedule 2 (Form 1040), line 4\" (f1040sse p. 1, line 12); on a joint return each spouse's line 12 is added (i1040sse p. 2, \"Enter the combined SE tax on Schedule 2 (Form 1040), line 4\"). The Schedule SE form was not among the pages given."
+  },
+  {
+   "printed": "4",
+   "restated": "Add person.se_line12 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Adding the amount across both spouses fits the instruction \"Enter the combined SE tax on Schedule 2 (Form 1040), line 4\". However, the text provided does not show which Schedule SE line holds the SE tax, so it cannot confirm that Schedule SE line 12 is that amount.",
+   "ruling": "Ruling: representation; restatement accepted. Schedule SE line 12 is \"Self-employment tax. Add lines 10 and 11. Enter here and on Schedule 2 (Form 1040), line 4\" (f1040sse p. 1, line 12); on a joint return each spouse's line 12 is added (i1040sse p. 2, \"Enter the combined SE tax on Schedule 2 (Form 1040), line 4\"). The Schedule SE form was not among the pages given."
+  },
+  {
+   "printed": "4",
+   "restated": "Add person.se_line12 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The Schedule SE instructions say to \"Enter the combined SE tax on Schedule 2 (Form 1040), line 4\" and support summing over spouses. However, the Schedule SE form itself is not provided, so nothing confirms that Schedule SE line 12 is the self-employment tax amount.",
    "ruling": "Ruling: representation; restatement accepted. Schedule SE line 12 is 'Self-employment tax. Add lines 10 and 11. Enter here and on Schedule 2 (Form 1040), line 4' (f1040sse, line 12); on a joint return each spouse's line 12 is summed (i1040sse, 'enter the combined SE tax on Schedule 2 (Form 1040), line 4')."
   },

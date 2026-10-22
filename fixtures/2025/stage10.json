@@ -123,6 +123,19 @@
         "retirement[a].special": false,
         "retirement[a].annuity": false,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
@@ -144,7 +157,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "retirement[a].sav_military": false,
         "retirement[a].sav_404k": false,
-        "retirement[a].sav_inherited": false
+        "retirement[a].sav_inherited": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "f1040.line4a": {
@@ -287,6 +301,19 @@
         "retirement[a].special": false,
         "retirement[a].annuity": false,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
@@ -308,7 +335,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "retirement[a].sav_military": false,
         "retirement[a].sav_404k": false,
-        "retirement[a].sav_inherited": false
+        "retirement[a].sav_inherited": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "f1040.line4a": {
@@ -447,6 +475,19 @@
         "retirement[r].special": false,
         "retirement[r].annuity": false,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
@@ -468,7 +509,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "retirement[r].sav_military": false,
         "retirement[r].sav_404k": false,
-        "retirement[r].sav_inherited": false
+        "retirement[r].sav_inherited": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "f1040.line4a": {
@@ -603,6 +645,19 @@
         "retirement[r].special": false,
         "retirement[r].annuity": false,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
@@ -624,7 +679,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "retirement[r].sav_military": false,
         "retirement[r].sav_404k": false,
-        "retirement[r].sav_inherited": false
+        "retirement[r].sav_inherited": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "f1040.line4b": {
@@ -764,6 +820,19 @@
         "retirement[a].special": false,
         "retirement[a].annuity": false,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
@@ -785,7 +854,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "retirement[a].sav_military": false,
         "retirement[a].sav_404k": false,
-        "retirement[a].sav_inherited": false
+        "retirement[a].sav_inherited": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "f1040.line4b": {
@@ -938,6 +1008,19 @@
         "retirement[a].special": true,
         "retirement[a].annuity": false,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
@@ -959,7 +1042,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "retirement[a].sav_military": false,
         "retirement[a].sav_404k": false,
-        "retirement[a].sav_inherited": false
+        "retirement[a].sav_inherited": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "f1040.line4b": {
@@ -1112,6 +1196,19 @@
         "retirement[p].special": false,
         "retirement[p].annuity": false,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
@@ -1133,7 +1230,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "retirement[p].sav_military": false,
         "retirement[p].sav_404k": false,
-        "retirement[p].sav_inherited": false
+        "retirement[p].sav_inherited": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "f1040.line5a": {
@@ -1272,6 +1370,19 @@
         "retirement[p].special": false,
         "retirement[p].annuity": false,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
@@ -1293,7 +1404,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "retirement[p].sav_military": false,
         "retirement[p].sav_404k": false,
-        "retirement[p].sav_inherited": false
+        "retirement[p].sav_inherited": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "f1040.line5a": {
@@ -1438,6 +1550,19 @@
         "retirement[p].joint_life": false,
         "retirement[p].age": 62,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
@@ -1459,7 +1584,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "retirement[p].sav_military": false,
         "retirement[p].sav_404k": false,
-        "retirement[p].sav_inherited": false
+        "retirement[p].sav_inherited": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "f1040.line5a": {
@@ -1615,6 +1741,19 @@
         "retirement[p].recovered": 500000,
         "retirement[p].last_line4": 10000,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
@@ -1636,7 +1775,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "retirement[p].sav_military": false,
         "retirement[p].sav_404k": false,
-        "retirement[p].sav_inherited": false
+        "retirement[p].sav_inherited": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "f1040.line5b": {
@@ -1785,6 +1925,19 @@
         "retirement[p].joint_life": true,
         "retirement[p].combined_age": 125,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
@@ -1806,7 +1959,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "retirement[p].sav_military": false,
         "retirement[p].sav_404k": false,
-        "retirement[p].sav_inherited": false
+        "retirement[p].sav_inherited": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "f1040.line5b": {
@@ -1959,6 +2113,19 @@
         "retirement[p].joint_life": false,
         "retirement[p].age": 72,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
@@ -1980,7 +2147,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "retirement[p].sav_military": false,
         "retirement[p].sav_404k": false,
-        "retirement[p].sav_inherited": false
+        "retirement[p].sav_inherited": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "f1040.line5b": {
@@ -2117,6 +2285,19 @@
         "ssb.lump_sum": false,
         "ssb.terror_disability": false,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
@@ -2135,7 +2316,8 @@
         "person[taxpayer].sav_voluntary": 0,
         "person[taxpayer].sav_prior_joint": 0,
         "person[taxpayer].sav_prior_other": 0,
-        "person[taxpayer].w2[emp_a].box12_any": false
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "f1040.line6a": {
@@ -2268,6 +2450,19 @@
         "ssb.lump_sum": false,
         "ssb.terror_disability": false,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
@@ -2286,7 +2481,8 @@
         "person[taxpayer].sav_voluntary": 0,
         "person[taxpayer].sav_prior_joint": 0,
         "person[taxpayer].sav_prior_other": 0,
-        "person[taxpayer].w2[emp_a].box12_any": false
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "f1040.line6b": {
@@ -2415,6 +2611,19 @@
         "ssb.lump_sum": false,
         "ssb.terror_disability": false,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
@@ -2433,7 +2642,8 @@
         "person[taxpayer].sav_voluntary": 0,
         "person[taxpayer].sav_prior_joint": 0,
         "person[taxpayer].sav_prior_other": 0,
-        "person[taxpayer].w2[emp_a].box12_any": false
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "f1040.line6b": {
@@ -2575,6 +2785,19 @@
         "ssb.lump_sum": false,
         "ssb.terror_disability": false,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
@@ -2596,7 +2819,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "retirement[a].sav_military": false,
         "retirement[a].sav_404k": false,
-        "retirement[a].sav_inherited": false
+        "retirement[a].sav_inherited": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "f1040.line6b": {
@@ -2726,6 +2950,19 @@
         "ssb.lump_sum": false,
         "ssb.terror_disability": false,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "person[spouse].role": "spouse",
@@ -2766,7 +3003,8 @@
         "person[spouse].sav_excess": false,
         "person[spouse].sav_voluntary": 0,
         "person[spouse].sav_prior_joint": 0,
-        "person[spouse].sav_prior_other": 0
+        "person[spouse].sav_prior_other": 0,
+        "f2441.employer_care": false
       },
       "expect": {
         "f1040.line6b": {
@@ -2892,6 +3130,19 @@
         "ssb.terror_disability": false,
         "ssb.lived_apart": false,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
@@ -2910,7 +3161,8 @@
         "person[taxpayer].sav_voluntary": 0,
         "person[taxpayer].sav_prior_joint": 0,
         "person[taxpayer].sav_prior_other": 0,
-        "person[taxpayer].w2[emp_a].box12_any": false
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "f1040.line6b": {
@@ -3040,6 +3292,19 @@
         "ssb.terror_disability": false,
         "ssb.lived_apart": true,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
@@ -3058,7 +3323,8 @@
         "person[taxpayer].sav_voluntary": 0,
         "person[taxpayer].sav_prior_joint": 0,
         "person[taxpayer].sav_prior_other": 0,
-        "person[taxpayer].w2[emp_a].box12_any": false
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "f1040.line6b": {
@@ -3187,6 +3453,19 @@
         "ssb.lump_sum": false,
         "ssb.terror_disability": false,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
@@ -3205,7 +3484,8 @@
         "person[taxpayer].sav_voluntary": 0,
         "person[taxpayer].sav_prior_joint": 0,
         "person[taxpayer].sav_prior_other": 0,
-        "person[taxpayer].w2[emp_a].box12_any": false
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "f1040.line6b": {
@@ -3339,6 +3619,19 @@
         "ssb.lump_sum": true,
         "ssb.terror_disability": false,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
@@ -3357,7 +3650,8 @@
         "person[taxpayer].sav_voluntary": 0,
         "person[taxpayer].sav_prior_joint": 0,
         "person[taxpayer].sav_prior_other": 0,
-        "person[taxpayer].w2[emp_a].box12_any": false
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "f1040.line6b": {
@@ -3509,6 +3803,19 @@
         "retirement[p].special": false,
         "retirement[p].annuity": false,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
@@ -3533,7 +3840,8 @@
         "retirement[a].sav_inherited": false,
         "retirement[p].sav_military": false,
         "retirement[p].sav_404k": false,
-        "retirement[p].sav_inherited": false
+        "retirement[p].sav_inherited": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "f1040.line4a": {
@@ -3688,6 +3996,19 @@
         "retirement[p].special": false,
         "retirement[p].annuity": false,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
@@ -3709,7 +4030,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "retirement[p].sav_military": false,
         "retirement[p].sav_404k": false,
-        "retirement[p].sav_inherited": false
+        "retirement[p].sav_inherited": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "f1040.line5a": {
@@ -3852,6 +4174,19 @@
         "retirement[r].special": true,
         "retirement[r].annuity": false,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
@@ -3873,7 +4208,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "retirement[r].sav_military": false,
         "retirement[r].sav_404k": false,
-        "retirement[r].sav_inherited": false
+        "retirement[r].sav_inherited": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "f1040.line4b": {
@@ -4061,6 +4397,19 @@
         "retirement[k4].joint_life": false,
         "retirement[k4].age": 71,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
@@ -4091,7 +4440,8 @@
         "retirement[k3].sav_inherited": false,
         "retirement[k4].sav_military": false,
         "retirement[k4].sav_404k": false,
-        "retirement[k4].sav_inherited": false
+        "retirement[k4].sav_inherited": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "f1040.line5a": {
@@ -4290,6 +4640,19 @@
         "retirement[j4].joint_life": true,
         "retirement[j4].combined_age": 150,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
@@ -4320,7 +4683,8 @@
         "retirement[j3].sav_inherited": false,
         "retirement[j4].sav_military": false,
         "retirement[j4].sav_404k": false,
-        "retirement[j4].sav_inherited": false
+        "retirement[j4].sav_inherited": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "f1040.line5b": {
@@ -4461,6 +4825,19 @@
         "ssb.lump_sum": false,
         "ssb.terror_disability": false,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
@@ -4479,7 +4856,8 @@
         "person[taxpayer].sav_voluntary": 0,
         "person[taxpayer].sav_prior_joint": 0,
         "person[taxpayer].sav_prior_other": 0,
-        "person[taxpayer].w2[emp_a].box12_any": false
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "f1040.line6b": {
@@ -4608,6 +4986,19 @@
         "ssb.lump_sum": false,
         "ssb.terror_disability": false,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
@@ -4626,7 +5017,8 @@
         "person[taxpayer].sav_voluntary": 0,
         "person[taxpayer].sav_prior_joint": 0,
         "person[taxpayer].sav_prior_other": 0,
-        "person[taxpayer].w2[emp_a].box12_any": false
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "f1040.line6b": {
@@ -4771,6 +5163,19 @@
         "retirement[p].joint_life": false,
         "retirement[p].age": 62,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
@@ -4792,7 +5197,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "retirement[p].sav_military": false,
         "retirement[p].sav_404k": false,
-        "retirement[p].sav_inherited": false
+        "retirement[p].sav_inherited": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "f1040.line5a": {
@@ -4933,6 +5339,19 @@
         "retirement[p].joint_life": false,
         "retirement[p].age": 62,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
@@ -4954,7 +5373,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "retirement[p].sav_military": false,
         "retirement[p].sav_404k": false,
-        "retirement[p].sav_inherited": false
+        "retirement[p].sav_inherited": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "f1040.line5a": {
@@ -5095,6 +5515,19 @@
         "retirement[p].joint_life": false,
         "retirement[p].age": 62,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
@@ -5116,7 +5549,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "retirement[p].sav_military": false,
         "retirement[p].sav_404k": false,
-        "retirement[p].sav_inherited": false
+        "retirement[p].sav_inherited": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "f1040.line5a": {
@@ -5263,6 +5697,19 @@
         "ssb.lump_sum": false,
         "ssb.terror_disability": true,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
@@ -5281,7 +5728,8 @@
         "person[taxpayer].sav_voluntary": 0,
         "person[taxpayer].sav_prior_joint": 0,
         "person[taxpayer].sav_prior_other": 0,
-        "person[taxpayer].w2[emp_a].box12_any": false
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "f1040.line6b": {
@@ -5421,6 +5869,19 @@
         "retirement[p].special": false,
         "retirement[p].annuity": false,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
@@ -5442,7 +5903,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "retirement[p].sav_military": false,
         "retirement[p].sav_404k": false,
-        "retirement[p].sav_inherited": false
+        "retirement[p].sav_inherited": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "f1040.line5a": {
@@ -5587,6 +6049,19 @@
         "retirement[p].joint_life": false,
         "retirement[p].age": 62,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
@@ -5608,7 +6083,8 @@
         "person[taxpayer].w2[emp_a].box12_any": false,
         "retirement[p].sav_military": false,
         "retirement[p].sav_404k": false,
-        "retirement[p].sav_inherited": false
+        "retirement[p].sav_inherited": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "f1040.line5a": {
@@ -5737,6 +6213,19 @@
         "ssb.lump_sum": false,
         "ssb.terror_disability": false,
         "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "refund.other": false,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
         "person[taxpayer].educator_expenses": 0,
         "sli.interest": 0,
         "$sc@person[taxpayer]": [],
@@ -5755,7 +6244,8 @@
         "person[taxpayer].sav_voluntary": 0,
         "person[taxpayer].sav_prior_joint": 0,
         "person[taxpayer].sav_prior_other": 0,
-        "person[taxpayer].w2[emp_a].box12_any": false
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false
       },
       "expect": {
         "f1040.line2a": {

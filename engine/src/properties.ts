@@ -9,7 +9,8 @@ import { join, resolve } from "node:path";
 import { loadCanonical } from "./canonical.js";
 import { evaluate, evaluateAll } from "./eval.js";
 import type { EvalResult, Value } from "./eval.js";
-import { returnArbitrary, sampleReturns } from "./generate.js";
+import { returnArbitrary, sampleReturns, screenInstances } from "./generate.js";
+import { loadInterview } from "./interview.js";
 import { branchKeys } from "./branches.js";
 import type { CanonicalData, Expr, Inputs, TestExpr } from "./types.js";
 import { YEAR, yearPath } from "./year.js";
@@ -185,16 +186,47 @@ export function runProperties(): number {
 
   // 4. A refusal never becomes a number: a line whose evaluated operands
   // include a refusal is itself a refusal.
+  const refusedOperandCheck = (r: EvalResult): Verdict & { both: number } => {
+    let anyRefused = false;
+    let both = 0;
+    for (const der of r.derivations.values()) {
+      const fromRefusal = der.operands.some((o) => o.value.kind === "refusal") || der.guardsNotTaken.some((g) => g.value.kind === "refusal");
+      if (!fromRefusal) continue;
+      anyRefused = true;
+      if (der.operands.some((o) => o.value.kind === "unknown")) both++;
+      if (der.value.kind !== "refusal") return { applicable: true, ok: false, both, detail: `${der.line} (${der.op}) has value ${der.value.kind} from a refused operand` };
+    }
+    return { applicable: anyRefused, ok: true, both };
+  };
   results.push(runProperty("refusal_propagates", "No line computes a value from an operand that is a refusal; every line evaluated from a refused operand is a refusal.", arb, (inputs) => {
     const r = evaluateAll(data, inputs);
     let anyRefusal = false;
-    for (const der of r.derivations.values()) {
-      if (der.value.kind === "refusal") anyRefusal = true;
-      const fromRefusal = der.operands.some((o) => o.value.kind === "refusal") || der.guardsNotTaken.some((g) => g.value.kind === "refusal");
-      if (fromRefusal && der.value.kind !== "refusal") return { applicable: true, ok: false, detail: `${der.line} (${der.op}) has value ${der.value.kind} from a refused operand` };
-    }
-    return { applicable: anyRefusal, ok: true };
+    for (const der of r.derivations.values()) if (der.value.kind === "refusal") anyRefusal = true;
+    const v = refusedOperandCheck(r);
+    return v.ok ? { applicable: anyRefusal, ok: true } : v;
   }));
+
+  // 4b. A refusal outranks an unknown. The same check on returns with some
+  // answers removed: a line one of whose evaluated operands is a refusal is a
+  // refusal, even when another of its operands is unknown, so a refusal is not
+  // held back behind an operand that cannot change the outcome.
+  {
+    let partialCases = 0;
+    let bothCases = 0;
+    const obs: string[] = [];
+    const r = runProperty("refusal_outranks_unknown", "On generated returns with up to eight answers removed, every line evaluated from a refused operand is a refusal, whatever its other operands are; in particular an unknown operand does not hide a refused one.", fc.tuple(arb, fc.uniqueArray(fc.nat(), { minLength: 1, maxLength: 8 })), ([inputs, drop]) => {
+      const keys = Object.keys(inputs).filter((k) => !k.startsWith("$")).sort();
+      if (keys.length === 0) return { applicable: false, ok: true };
+      const partial: Inputs = { ...inputs };
+      for (const i of drop) delete partial[keys[i % keys.length]!];
+      const v = refusedOperandCheck(evaluateAll(data, partial));
+      if (v.applicable) partialCases++;
+      if (v.both > 0) bothCases++;
+      return v;
+    }, obs);
+    obs.push(`Cases with a refused operand somewhere: ${partialCases}; cases with a line that has both a refused and an unknown operand (the order this property guards): ${bothCases}.`);
+    results.push(r);
+  }
 
   // 5. Tax does not decrease as wages rise, other inputs fixed. Raising box 1
   // of the first W-2 raises ordinary income without changing the method gates.
@@ -246,6 +278,58 @@ export function runProperties(): number {
       return { applicable, ok: true };
     }, obs);
     obs.push(`Cases compared: QDCG worksheet line 25 ${counts.qdcg}, Schedule D Tax Worksheet line 47 ${counts.sdtw}.`);
+    results.push(r);
+  }
+
+  // 7. The generator's screens. Answering a screen No skips its amounts, which the interview then never
+  // asks; a generated return must not carry them. The amounts behind each screen are found by evaluation
+  // over the corpus, not taken from the generator's list: a money input is behind a screen when the
+  // interview's targets read it in some return with the screen turned to Yes and in no return answering it
+  // No. (Turning a screen to Yes can make other inputs read too; those are read somewhere under a No.) Only
+  // returns whose targets compute without a refusal both ways are probed: a refusal stops the evaluation, and
+  // which inputs were read before it depends on the order of evaluation, not on the screen.
+  {
+    const targets = loadInterview("full").targets;
+    const generic = (k: string) => k.replace(/\[[^\]]*\]/g, "[]");
+    const reads = (inputs: Inputs): Set<string> | null => {
+      const r = evaluate(data, inputs, targets);
+      if (targets.some((t) => r.values.get(t)?.kind === "refusal")) return null;
+      const out = new Set<string>();
+      for (const d of r.derivations.values()) if (d.op === "input" && d.value.kind === "money") out.add(d.line);
+      return out;
+    };
+    /** For each screen answered No in a return, with every other screen turned to Yes (so the parts they open
+     * are reached): its name, the amounts of its entry read with it answered as generated, and those read only
+     * once it is turned to Yes as well. */
+    const probe = (inputs: Inputs) => {
+      const instances = screenInstances(inputs);
+      return instances.filter(({ screens }) => !screens.every((k) => inputs[k] === true)).flatMap(({ screens }) => {
+        const prefix = /^(.*\[[^\]]*\])\.[^.]+$/.exec(screens[0]!)?.[1] ?? "";
+        const own = (m: string) => m.startsWith(prefix);
+        const others = Object.fromEntries(instances.flatMap((i) => i.screens).filter((k) => !screens.includes(k)).map((k) => [k, true]));
+        const no = reads({ ...inputs, ...others });
+        const yes = no && reads({ ...inputs, ...others, ...Object.fromEntries(screens.map((k) => [k, true])) });
+        if (!no || !yes) return [];
+        return [{ name: screens.map(generic).join("+"), screens, underNo: [...no].filter(own), onlyYes: [...yes].filter((m) => own(m) && !no.has(m)) }];
+      });
+    };
+    const askedAfterYes = new Map<string, Set<string>>(), readUnderNo = new Map<string, Set<string>>();
+    for (const inputs of fc.sample(arb, { seed: SEED, numRuns: RUNS })) for (const p of probe(inputs)) {
+      for (const m of p.onlyYes) askedAfterYes.set(p.name, (askedAfterYes.get(p.name) ?? new Set()).add(generic(m)));
+      for (const m of p.underNo) readUnderNo.set(p.name, (readUnderNo.get(p.name) ?? new Set()).add(generic(m)));
+    }
+    const behind = new Map([...askedAfterYes].map(([name, s]) => [name, new Set([...s].filter((m) => !readUnderNo.get(name)?.has(m)))]));
+    const obs: string[] = [];
+    const r = runProperty("screens_respected", "No generated return answers a screen No while an amount asked only after a Yes is nonzero (the generator's screens: Form 5695 Parts I and II, Sections A and B and lines 5a, 25a and 26a; Form 2441 care and benefits; Form W-2 box 12; the Simplified Method; owned vehicles; Form 7206).", arb, (inputs) => {
+      let applicable = false;
+      for (const p of probe(inputs)) for (const m of p.onlyYes) {
+        if (!behind.get(p.name)?.has(generic(m))) continue;
+        applicable = true;
+        if (inputs[m] !== 0) return { applicable: true, ok: false, detail: `${p.screens.join(", ")} answered No, yet ${m} is ${inputs[m]} (asked only after a Yes)` };
+      }
+      return { applicable, ok: true };
+    }, obs);
+    obs.push(`Amounts found behind each screen answered No: ${[...behind].sort().filter(([, s]) => s.size > 0).map(([k, s]) => `${k}: ${[...s].sort().join(", ")}`).join("; ") || "none"}.`);
     results.push(r);
   }
 

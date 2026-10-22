@@ -9,10 +9,22 @@
    "ruling": "Ruling: representation; project retained. The dispositions of property in net investment income within the slice are the securities sales and capital gain distributions Schedule D carries to Form 1040 line 7a; every other disposition or adjustment (i8960 p. 9, line 5a) is refused by `f8960.unsupported` (\"Any annuity, rental, royalty, business/pass-through income, CFC/PFIC holding, section 911 exclusion, disposition adjustment, NOL or other NIIT modification outside this slice?\"). No change to the data."
   },
   {
+   "printed": "5a",
+   "restated": "Enter the amount from f1040 line 7a.",
+   "model": "The form says only \"Net gain or loss from disposition of property (see instructions)\", and the line 5a instructions are not in the pages given. The text cannot show whether Form 1040 line 7a (\"Capital gain or (loss)\") is the right source amount, including how capital losses are treated.",
+   "ruling": "Ruling: representation; project retained. Line 5a combines \"Form 1040 or 1040-SR, line 7a, and Schedule 1 (Form 1040), line 4\" (i8960 p. 9, Line 5a—Net Gain or Loss From Disposition of Property; that page was not among those given). Schedule 1 line 4 (Form 4797) is refused by scope.schedule1 (\"sales of business property (Form 4797)\"), so line 5a is Form 1040 line 7a, with a capital loss as limited there; any other disposition or adjustment is refused by f8960.unsupported (\"a disposition adjustment ... or another net investment income adjustment\")."
+  },
+  {
    "printed": "9b",
    "restated": "Choose — [sa helper \"Itemize if elected, required, or itemized total exceeds standard\" = true → helper \"Deductible state/local income and property taxes reasonably allocated to net investment income; exclude foreign taxes for which a credit is claimed\"] [sa helper \"Itemize if elected, required, or itemized total exceeds standard\" = false → helper \"Year parameter sales.zero\"]",
    "model": "The instructions include 'foreign income taxes' and 'foreign real property taxes' on line 9b, but the bad_allocation refusal caps the allocation at Schedule A line 5e, which holds only state and local taxes. A valid allocation that includes deductible foreign taxes would be refused as an error, and the text gives no basis for that cap.",
    "ruling": "Ruling: scope; project retained. A deduction for foreign income or foreign real property taxes is refused on Schedule A (sa.unsupported names the foreign tax deduction), so within scope the allocable taxes are the state and local taxes on Schedule A line 5e."
+  },
+  {
+   "printed": "9b",
+   "restated": "Choose — [sa helper \"Itemize if elected, required, or itemized total exceeds standard\" = true → helper \"Deductible state/local income and property taxes reasonably allocated to net investment income; exclude foreign taxes for which a credit is claimed\"] [sa helper \"Itemize if elected, required, or itemized total exceeds standard\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The instructions say \"Include state, local, and foreign income taxes you paid ... attributable to NII. Include also state, local, and foreign real property taxes\". The program's input covers only state and local taxes, and the bad_allocation check caps it at Schedule A line 5e. Foreign income and real property taxes that the filer deducted rather than credited are therefore left out, and no refusal names that exclusion.",
+   "ruling": "Ruling: scope; project retained. A deduction for foreign income or foreign real property taxes is refused on Schedule A (sa.unsupported, \"a foreign tax or generation-skipping tax deduction\"), so within scope the deducted taxes allocable to net investment income (i8960 p. 17, line 9b) are the state and local taxes on Schedule A line 5e, which is what the f8960.bad_allocation cap holds."
   }
  ]
 }

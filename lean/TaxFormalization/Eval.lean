@@ -67,6 +67,16 @@ def mkRate (n d : Int) : Json :=
 def kindOf (v : Json) : Option String := strGet v "kind"
 def isUnknown (v : Json) : Bool := kindOf v == some "unknown" || kindOf v == some "refusal"
 def isMoney (v : Json) : Bool := kindOf v == some "money"
+def isRefusal (v : Json) : Bool := kindOf v == some "refusal"
+
+/-- What an atom's evaluated operands leave it before it computes: the first refusal among
+them in operand order, else the first unknown, else none (every operand is known). A refusal
+outranks an unknown, so a refusal is not held back behind an operand whose value cannot change
+the outcome. -/
+def incompleteOperand (vs : List Json) : Option Json :=
+  match vs.find? isRefusal with
+  | some r => some r
+  | none => vs.find? (fun v => kindOf v == some "unknown")
 def isBool (v : Json) : Bool := kindOf v == some "bool"
 def isEnum (v : Json) : Bool := kindOf v == some "enum"
 def isRate (v : Json) : Bool := kindOf v == some "rate"
@@ -222,7 +232,8 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
       for x in ts do
         let v ← eval ctx fuel frame (.test x)
         if kindOf v == some "refusal" then return v
-        if isUnknown v then missing := some v
+        if isUnknown v then
+          missing := missing <|> some v
         else if objGet v "value" == some (Json.bool false) then return mkBool false
       return missing.getD (mkBool true)
     | _ =>
@@ -232,7 +243,8 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
       for x in ts do
         let v ← eval ctx fuel frame (.test x)
         if kindOf v == some "refusal" then return v
-        if isUnknown v then missing := some v
+        if isUnknown v then
+          missing := missing <|> some v
         else if objGet v "value" == some (Json.bool true) then return mkBool true
       return missing.getD (mkBool false)
     | _ =>
@@ -256,8 +268,7 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
               let certain := if k == "gt" || k == "le" then lower > bound else if k == "ge" || k == "lt" then lower ≥ bound else lower > bound
               if certain then return mkBool (k == "gt" || k == "ge" || k == "ne")
             | _, _ => pure ()
-            if isUnknown av then pure av
-            else if isUnknown bv then pure bv
+            if let some x := incompleteOperand [av, bv] then pure x
             else if (isMoney av && isMoney bv) || (kindOf av == some "count" && kindOf bv == some "count") then
               let x := (if isMoney av then moneyOf av else numGet av "value").getD 0
               let y := (if isMoney bv then moneyOf bv else numGet bv "value").getD 0
@@ -380,11 +391,13 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
               | some t => eval ctx fuel inner (.test t)
               | none => pure (mkBool true)
             if kindOf selected == some "refusal" then return selected
-            if isUnknown selected then missing := some selected
+            if isUnknown selected then
+              missing := missing <|> some selected
             else if objGet selected "value" == some (Json.bool true) then
               let v ← eval ctx fuel inner (.line field)
               if kindOf v == some "refusal" then return v
-              if isUnknown v then missing := some v
+              if isUnknown v then
+                missing := missing <|> some v
               else total := total + (if isCount then numGet v "value" else moneyOf v).getD 0
           match missing with
           | some v => return if isCount then Json.mkObj [("kind", Json.str "unknown"), ("reason", Json.str "partial count"), ("lowerBound", Json.num (JsonNumber.fromInt total))] else v
@@ -395,6 +408,7 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
       | some (.arr refs) =>
         let mut total : Int := 0
         let mut unk : Option Json := none
+        let mut wrong : Option Json := none
         for r in refs do
           match r.getStr? with
           | .ok ref => do
@@ -405,11 +419,12 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
             else if isUnknown v then
               if unk.isNone then unk := some v
             else
-              return unknown s!"sum operand {ref} is not money"
+              if wrong.isNone then wrong := some (unknown s!"sum operand {ref} is not money")
           | .error _ => return unknown "sum operand not a reference"
-        match unk with
-        | some u => return u
-        | none => return mkMoney total
+        match unk, wrong with
+        | some u, _ => return u
+        | none, some w => return w
+        | none, none => return mkMoney total
       | _ => pure (unknown "sum has no operands")
     | "subtract" | "subtract_floor0" =>
       match strGet expr "from" with
@@ -417,8 +432,7 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
         let fromV ← eval ctx fuel frame (.line fromRef)
         let takeJson := objGetD expr "take" Json.null
         let takeV ← eval ctx fuel frame (.operand takeJson)
-        if isUnknown fromV then pure fromV
-        else if isUnknown takeV then pure takeV
+        if let some x := incompleteOperand [fromV, takeV] then pure x
         else if isMoney fromV && isMoney takeV then
           let d := (moneyOf fromV).getD 0 - (moneyOf takeV).getD 0
           pure (mkMoney (if op == "subtract_floor0" then max 0 d else d))
@@ -427,15 +441,19 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
     | "smaller_of" | "larger_of" =>
       match objGet expr "of" with
       | some (.arr refs) =>
-        let mut vals : List Int := []
+        let mut got : Array Json := #[]
         for r in refs do
           match r.getStr? with
           | .ok ref =>
             let v ← eval ctx fuel frame (.line ref)
-            if isUnknown v then return v
-            if !(isMoney v) then return unknown "operands are not money"
-            vals := (moneyOf v).getD 0 :: vals
+            got := got.push v
+            if isRefusal v then break
           | .error _ => return unknown "operand not a reference"
+        if let some x := incompleteOperand got.toList then return x
+        let mut vals : List Int := []
+        for v in got do
+          if !(isMoney v) then return unknown "operands are not money"
+          vals := (moneyOf v).getD 0 :: vals
         match vals with
         | [] => pure (unknown "no operands")
         | x :: rest =>
@@ -447,8 +465,7 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
       | some amtRef, some cntRef =>
         let amtV ← eval ctx fuel frame (.line amtRef)
         let cntV ← eval ctx fuel frame (.line cntRef)
-        if isUnknown amtV then pure amtV
-        else if isUnknown cntV then pure cntV
+        if let some x := incompleteOperand [amtV, cntV] then pure x
         else if isMoney amtV && kindOf cntV == some "count" then
           pure (mkMoney (multiplyCount ((moneyOf amtV).getD 0) ((numGet cntV "value").getD 0)))
         else pure (unknown "multiply_count operands wrong")
@@ -459,9 +476,7 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
         let amtV ← eval ctx fuel frame (.line amtRef)
         let partV ← eval ctx fuel frame (.line partRef)
         let wholeV ← eval ctx fuel frame (.operand (objGetD expr "whole" Json.null))
-        if isUnknown amtV then pure amtV
-        else if isUnknown partV then pure partV
-        else if isUnknown wholeV then pure wholeV
+        if let some x := incompleteOperand [amtV, partV, wholeV] then pure x
         else if isMoney amtV && isMoney partV && isMoney wholeV && (moneyOf wholeV).getD 0 > 0 then
           let places := ((numGet expr "places").getD 0).toNat
           pure (mkMoney (prorate ((moneyOf amtV).getD 0) ((moneyOf partV).getD 0) ((moneyOf wholeV).getD 0) places))
@@ -472,8 +487,7 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
       | some amtRef =>
         let amtV ← eval ctx fuel frame (.line amtRef)
         let rateV ← eval ctx fuel frame (.operand (objGetD expr "rate" Json.null))
-        if isUnknown amtV then pure amtV
-        else if isUnknown rateV then pure rateV
+        if let some x := incompleteOperand [amtV, rateV] then pure x
         else if isMoney amtV && isRate rateV then
           let a := (moneyOf amtV).getD 0
           let n := (numGet rateV "num").getD 0
@@ -502,8 +516,7 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
       | some table =>
         let keyV ← eval ctx fuel frame (.line ((strGet expr "key").getD ""))
         let statusV ← eval ctx fuel frame (.line ((strGet expr "status").getD ""))
-        if isUnknown keyV then pure keyV
-        else if isUnknown statusV then pure statusV
+        if let some x := incompleteOperand [keyV, statusV] then pure x
         else
           let status := (strGet statusV "value").getD ""
           match columnIndex table status with
@@ -518,21 +531,25 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
       | none => pure (unknown s!"table {tableId} missing")
       | some table =>
         let keyV ← eval ctx fuel frame (.line ((strGet expr "key").getD ""))
-        if isUnknown keyV then pure keyV
+        if isRefusal keyV then pure keyV
         else
           let hasCols : Bool := match objGet table "columns" with
             | some (.arr cs) => cs.size != 0
             | _ => false
-          let colE : Except Json Nat ←
-            if hasCols then do
-              let statusV ← eval ctx fuel frame (.line ((strGet expr "status").getD ""))
-              if isUnknown statusV then pure (Except.error statusV)
-              else
+          let statusV? : Option Json ←
+            if hasCols then some <$> eval ctx fuel frame (.line ((strGet expr "status").getD ""))
+            else pure none
+          let colE : Except Json Nat :=
+            match incompleteOperand (keyV :: statusV?.toList) with
+            | some x => Except.error x
+            | none =>
+              match statusV? with
+              | some statusV =>
                 let status := (strGet statusV "value").getD ""
                 match columnIndex table status with
-                | some c => pure (Except.ok c)
-                | none => pure (Except.error (unknown s!"no column for {status}"))
-            else pure (Except.ok 0)
+                | some c => Except.ok c
+                | none => Except.error (unknown s!"no column for {status}")
+              | none => Except.ok 0
           match colE with
           | Except.error e => pure e
           | Except.ok col =>
@@ -546,16 +563,20 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
       | some table =>
         match objGet expr "keys" with
         | some (.arr refs) =>
-          let mut keys : List String := []
+          let mut got : Array Json := #[]
           for r in refs do
             match r.getStr? with
             | .ok ref => do
               let v ← eval ctx fuel frame (.line ref)
-              if isUnknown v then return v
-              if isEnum v then keys := keys ++ ["e:" ++ (strGet v "value").getD ""]
-              else if kindOf v == some "count" then keys := keys ++ ["c:" ++ toString ((numGet v "value").getD 0)]
-              else return unknown "keyed_lookup key is not an enum or count"
+              got := got.push v
+              if isRefusal v then break
             | .error _ => return unknown "keyed_lookup key not a reference"
+          if let some x := incompleteOperand got.toList then return x
+          let mut keys : List String := []
+          for v in got do
+            if isEnum v then keys := keys ++ ["e:" ++ (strGet v "value").getD ""]
+            else if kindOf v == some "count" then keys := keys ++ ["c:" ++ toString ((numGet v "value").getD 0)]
+            else return unknown "keyed_lookup key is not an enum or count"
           match keyedLookup (keyedRows table) keys with
           | some v => pure v
           | none => pure (unknown s!"no row of {tableId}")

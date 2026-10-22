@@ -20,6 +20,22 @@
   },
   {
    "case": "classm.person.1",
+   "printed": "person[taxpayer].ira_below",
+   "project": "$33,400.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. person.ira_below is the amount line 7 takes when the line 6 result is under the threshold (i1040gi p. 97, IRA Deduction Worksheet, line 6, \"If the result is less than $10,000, go to line 7\"); the project figures it whenever line 6 is Yes (line 6 x 70%, $33,399.10, raised to $33,400.00) and reads it only when the result is under the threshold (person.ira_line7_figured). Here line 6 is $47,713.00, \"$10,000 or more\", so line 7 is the applicable amount, \"$7,000 if under age 50 at the end of 2025\", $7,000.00, on which the model agrees, as on line 12 and the deduction ($0.00, no contributions). The model gave the unread helper zero because the threshold was not crossed. No change to the data.",
+   "drop": true
+  },
+  {
+   "case": "classm.person.1",
+   "printed": "person[taxpayer].sep_rate_c",
+   "project": "$0.01",
+   "model": "$1.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. As in the earlier rulings on this line: the plan rate is carried as an amount (1% as $0.01, plus 100% as $1.01) so that Pub. 560's rate for the self-employed, rate / (1 + rate) (p560 chapter 5, Rate Table for Self-Employed), is figured exactly; the model wrote the percentage as a number. The lines that use it agree: Deduction Worksheet for Self-Employed step 6 ($3,500.00, $350,000 x 1%) and steps 5, 7 and 21, the SEP deduction and Schedule 1 line 16 (all $0.00).",
+   "drop": true
+  },
+  {
+   "case": "classm.person.1",
    "printed": "person[taxpayer].sep_rate_c",
    "project": "$0.22",
    "model": "$22.00",
@@ -29,9 +45,49 @@
   {
    "case": "classm.person.1",
    "printed": "person[taxpayer].sep_rate_plus",
+   "project": "$1.01",
+   "model": "$101.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. As in the earlier rulings on this line: the plan rate is carried as an amount (1% as $0.01, plus 100% as $1.01) so that Pub. 560's rate for the self-employed, rate / (1 + rate) (p560 chapter 5, Rate Table for Self-Employed), is figured exactly; the model wrote the percentage as a number. The lines that use it agree: Deduction Worksheet for Self-Employed step 6 ($3,500.00, $350,000 x 1%) and steps 5, 7 and 21, the SEP deduction and Schedule 1 line 16 (all $0.00).",
+   "drop": true
+  },
+  {
+   "case": "classm.person.1",
+   "printed": "person[taxpayer].sep_rate_plus",
    "project": "$1.22",
    "model": "$122.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The plan rate is carried as an amount (22% as $0.22) so that Pub. 560's rate for the self-employed, rate / (1 + rate) (chapter 5, Rate Table for Self-Employed), is figured exactly; the model wrote the percentage as a number. The lines that use it agree: Deduction Worksheet for Self-Employed step 6 ($77,000.00) and steps 5, 7 and 21, the SEP deduction and Schedule 1 line 16 (all $0.00, no Schedule C).",
+   "drop": true
+  },
+  {
+   "case": "classm.person.2",
+   "printed": "person[taxpayer].ira_line2",
+   "project": "$10,000.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The project figures each person's line 2 amount from the filing status in every case (here married filing separately, $10,000: i1040gi p. 97, IRA Deduction Worksheet, line 2, \"Married filing separately and you lived with your spouse at any time in 2025, enter $10,000\"), and the printed worksheet lines 2a and 2b read it only when lines 2 through 6 are completed (ira.lines2to6); the model followed the skip (p. 97, \"If you checked 'No' on line 1a (and 'No' on line 1b if married filing jointly), skip lines 2 through 6, enter the applicable amount below on line 7a\"). With no one covered, line 7 is the applicable amount, $7,000.00, and line 6 and the deduction ($0.00) agree. No change to the data.",
+   "drop": true
+  },
+  {
+   "case": "classm.person.2",
+   "printed": "person[taxpayer].ot_employers",
+   "project": "2",
+   "model": "0",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. As with the tip roster, the project counts each employer entered on the overtime roster ('List stable keys for each employer that paid you overtime you are deducting'), the model only those with an amount above zero; both entries here are $0 because the filer answered that they were not an FLSA-eligible employee of either employer (otjob.flsa No, so otjob.col_b is zero). The count is read only to decide whether a person with a valid SSN received overtime (s1a.ot_ssn_count), and this return is married filing separately, for which Part III is not filled in (f1040s1a p. 1, Part III caution, \"If married, you must file jointly to claim this deduction\"; s1a.part3), so every Part III line is $0.00 either way. No change to the data.",
+   "drop": true
+  },
+  {
+   "case": "classm.person.2",
+   "printed": "person[taxpayer].sav_excess_gate",
+   "project": "no",
+   "model": "yes",
+   "ruling": "Ruling: model reading error; project retained; model value dropped from the fixture. The gate is the screen answer joined to an amount: it refuses only when this person has elective deferrals in Form W-2 box 12 above zero and answered that they are over the limit (person.sav_excess_gate; iw2w3 p. 20, Box 12—Codes, \"Even though the 2025 limit for elective deferrals and designated Roth contributions is $23,500, Alex's total elective deferral amount of $26,500 is reported in box 12 with code D\"). Here person.sav_w2 is $0.00, on which the model agrees, so no deferral can be over the limit and the gate is No; the model copied the screen answer (Yes) as the gate's value. No change to the data.",
+   "drop": true
+  },
+  {
+   "case": "classm.person.2",
+   "printed": "person[taxpayer].sep_rate_c",
+   "project": "$0.09",
+   "model": "$9.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. As in the earlier rulings on this line: the plan rate is carried as an amount (9% as $0.09, plus 100% as $1.09) so that Pub. 560's rate for the self-employed, rate / (1 + rate) (p560 chapter 5, Rate Table for Self-Employed), is figured exactly; the model wrote the percentage as a number. The lines that use it agree: Deduction Worksheet for Self-Employed step 6 ($31,500.00, $350,000 x 9%) and steps 5, 7 and 21, the SEP deduction and Schedule 1 line 16 (all $0.00).",
    "drop": true
   },
   {
@@ -45,9 +101,25 @@
   {
    "case": "classm.person.2",
    "printed": "person[taxpayer].sep_rate_plus",
+   "project": "$1.09",
+   "model": "$109.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. As in the earlier rulings on this line: the plan rate is carried as an amount (9% as $0.09, plus 100% as $1.09) so that Pub. 560's rate for the self-employed, rate / (1 + rate) (p560 chapter 5, Rate Table for Self-Employed), is figured exactly; the model wrote the percentage as a number. The lines that use it agree: Deduction Worksheet for Self-Employed step 6 ($31,500.00, $350,000 x 9%) and steps 5, 7 and 21, the SEP deduction and Schedule 1 line 16 (all $0.00).",
+   "drop": true
+  },
+  {
+   "case": "classm.person.2",
+   "printed": "person[taxpayer].sep_rate_plus",
    "project": "$1.25",
    "model": "$125.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The plan rate is carried as an amount (25% as $0.25) so that Pub. 560's rate for the self-employed, rate / (1 + rate), is figured exactly; the model wrote the percentage as a number. The lines that use it agree.",
+   "drop": true
+  },
+  {
+   "case": "classm.person.2",
+   "printed": "person[taxpayer].tip_employers",
+   "project": "2",
+   "model": "1",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. As in the earlier rulings on this line, the project counts each employer entered on the tip roster ('List stable keys for each employer from which you received tips you are deducting'), the model only those with an amount above zero (tip_1 $0, tip_2 $4,677). The count decides only whether line 4a is -0- and line 4c is the worksheet total (i1040gi p. 104, Line 4a, \"If you received qualified tips as an employee with respect to employment with more than one employer, enter -0- on line 4a\"). This return is married filing separately, and Part II is not filled in for it (f1040s1a p. 1, Part II caution, \"If married, you must file jointly to claim this deduction\"; s1a.part2), so every Part II line is $0.00 whichever count is used. No change to the data.",
    "drop": true
   },
   {

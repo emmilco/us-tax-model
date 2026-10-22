@@ -12,10 +12,26 @@
   },
   {
    "case": "classm.f2441.1",
+   "printed": "18",
+   "project": "$32,936.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer received no dependent care benefits (f2441.benefits No), and the form sends such a filer to Part II only (f2441 p. 1, Part I, \"Did you receive dependent care benefits? No. Complete only Part II below. Yes. Complete Part III on page 2 next.\"), so the model left Part III blank. The project figures every Part III line regardless; without benefits line 18 is the filer's earned income ($32,936.00), as on line 4, and nothing in Part III reaches the return: line 3 takes the column (d) total rather than line 31, and line 26 (Form 1040 line 1e) is zero, on which the model agrees. A blank is not the number zero. As the earlier rulings on this line. No change to the data.",
+   "drop": true
+  },
+  {
+   "case": "classm.f2441.1",
    "printed": "19",
    "project": "$-12,028.87",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer received no dependent care benefits (f2441.benefits no), and the form sends such a filer to Part II only (f2441 p. 1, Part I, \"Did you receive dependent care benefits? No. Complete only Part II below. Yes. Complete Part III on page 2 next.\"), so the model left Part III blank. The project figures every Part III line regardless; without benefits line 19 is the spouse's earned income on a joint return and line 18 otherwise, as on line 5, and nothing in Part III reaches the return: line 3 takes the column (d) total rather than line 31, and line 26 (Form 1040 line 1e) is zero, on which the model agrees. A blank is not the number zero. The two independent hand predictions also leave Part III blank on every return without benefits, and on the returns with benefits (S4, S5, S12) give line 19 equal to line 18 when not filing jointly, as the project does. No change to the data.",
+   "drop": true
+  },
+  {
+   "case": "classm.f2441.1",
+   "printed": "19",
+   "project": "$32,936.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer received no dependent care benefits (f2441.benefits No), and the form sends such a filer to Part II only (f2441 p. 1, Part I, \"Did you receive dependent care benefits? No. Complete only Part II below. Yes. Complete Part III on page 2 next.\"), so the model left Part III blank. The project figures every Part III line regardless; without benefits line 19 is line 18 on a return not filed jointly, as on line 5 ($32,936.00), and nothing in Part III reaches the return: line 3 takes the column (d) total rather than line 31, and line 26 (Form 1040 line 1e) is zero, on which the model agrees. A blank is not the number zero. As the earlier rulings on this line. No change to the data.",
    "drop": true
   },
   {
@@ -32,6 +48,86 @@
    "project": "$3,000.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer received no dependent care benefits (f2441.benefits no), and the form sends such a filer to Part II only (f2441 p. 1, Part I, \"Did you receive dependent care benefits? No. Complete only Part II below. Yes. Complete Part III on page 2 next.\"), so the model left Part III blank. The project figures every Part III line regardless; without benefits line 29 is line 27 less a zero line 28, and nothing in Part III reaches the return: line 3 takes the column (d) total rather than line 31, and line 26 (Form 1040 line 1e) is zero, on which the model agrees. A blank is not the number zero. The two independent hand predictions also leave Part III blank on every return without benefits, and on the returns with benefits (S4, S5, S12) give line 29 as line 27 less line 28, as the project does. No change to the data.",
+   "drop": true
+  },
+  {
+   "case": "classm.f2441.2",
+   "printed": "10",
+   "project": "$6,185.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer received dependent care benefits ($1,412.00, line 12) but paid no care expenses and has no qualifying person (line 2 empty), so no credit can be taken; the model left Part II blank (\"Part II skipped because no credit is claimed\"). The project figures every Part II line regardless: line 10 is CLW line 3, $6,185.00, and with benefits line 3 is line 31, $0.00 (f2441 p. 1, line 3, \"If you completed Part III, enter the amount from line 31\"), so line 6 (\"Enter the smallest of line 3, 4, or 5\"), line 9c and the credit on line 11 (Schedule 3 line 2) are $0.00, on all of which the model agrees. A blank is not the number zero. No change to the data.",
+   "drop": true
+  },
+  {
+   "case": "classm.f2441.2",
+   "printed": "27",
+   "project": "$3,000.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer received dependent care benefits ($1,412.00) but paid no care expenses and has no qualifying person, so no credit can be taken, and the model left lines 27 to 31 blank (f2441 p. 2, Part III, \"To claim the child and dependent care credit, complete lines 27 through 31 below.\"; i2441 p. 6, Lines 27 Through 31, \"you will need to complete lines 27 through 31 if you are also claiming the credit for child and dependent care expenses in Part II of the form\"). The project figures them regardless: line 27 is the $3,000 limit for fewer than two qualifying persons, $3,000.00. Line 30 (qualified expenses, $0.00) and line 31 (the smaller of lines 29 and 30, $0.00), which line 3 takes, agree, as do the excluded and taxable benefits on lines 25 ($0.00) and 26 ($1,412.00, Form 1040 line 1e). A blank is not the number zero. No change to the data.",
+   "drop": true
+  },
+  {
+   "case": "classm.f2441.2",
+   "printed": "29",
+   "project": "$3,000.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer received dependent care benefits ($1,412.00) but paid no care expenses and has no qualifying person, so no credit can be taken, and the model left lines 27 to 31 blank (f2441 p. 2, Part III, \"To claim the child and dependent care credit, complete lines 27 through 31 below.\"; i2441 p. 6, Lines 27 Through 31, \"you will need to complete lines 27 through 31 if you are also claiming the credit for child and dependent care expenses in Part II of the form\"). The project figures them regardless: line 29 is line 27 less a $0.00 line 28, $3,000.00. Line 30 (qualified expenses, $0.00) and line 31 (the smaller of lines 29 and 30, $0.00), which line 3 takes, agree, as do the excluded and taxable benefits on lines 25 ($0.00) and 26 ($1,412.00, Form 1040 line 1e). A blank is not the number zero. No change to the data.",
+   "drop": true
+  },
+  {
+   "case": "classm.f2441.2",
+   "printed": "4",
+   "project": "$37,824.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer received dependent care benefits ($1,412.00, line 12) but paid no care expenses and has no qualifying person (line 2 empty), so no credit can be taken; the model left Part II blank (\"Part II skipped because no credit is claimed\"). The project figures every Part II line regardless: line 4 is the filer's earned income with the taxable benefits, $37,824.00 (line 18, $36,412.00, plus line 26, $1,412.00), and with benefits line 3 is line 31, $0.00 (f2441 p. 1, line 3, \"If you completed Part III, enter the amount from line 31\"), so line 6 (\"Enter the smallest of line 3, 4, or 5\"), line 9c and the credit on line 11 (Schedule 3 line 2) are $0.00, on all of which the model agrees. A blank is not the number zero. No change to the data.",
+   "drop": true
+  },
+  {
+   "case": "classm.f2441.2",
+   "printed": "5",
+   "project": "$37,824.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer received dependent care benefits ($1,412.00, line 12) but paid no care expenses and has no qualifying person (line 2 empty), so no credit can be taken; the model left Part II blank (\"Part II skipped because no credit is claimed\"). The project figures every Part II line regardless: line 5 is line 4 on a return not filed jointly, $37,824.00, and with benefits line 3 is line 31, $0.00 (f2441 p. 1, line 3, \"If you completed Part III, enter the amount from line 31\"), so line 6 (\"Enter the smallest of line 3, 4, or 5\"), line 9c and the credit on line 11 (Schedule 3 line 2) are $0.00, on all of which the model agrees. A blank is not the number zero. No change to the data.",
+   "drop": true
+  },
+  {
+   "case": "classm.f2441.2",
+   "printed": "7",
+   "project": "$90,493.55",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer received dependent care benefits ($1,412.00, line 12) but paid no care expenses and has no qualifying person (line 2 empty), so no credit can be taken; the model left Part II blank (\"Part II skipped because no credit is claimed\"). The project figures every Part II line regardless: line 7 is Form 1040 line 11a, $90,493.55, and with benefits line 3 is line 31, $0.00 (f2441 p. 1, line 3, \"If you completed Part III, enter the amount from line 31\"), so line 6 (\"Enter the smallest of line 3, 4, or 5\"), line 9c and the credit on line 11 (Schedule 3 line 2) are $0.00, on all of which the model agrees. A blank is not the number zero. No change to the data.",
+   "drop": true
+  },
+  {
+   "case": "classm.f2441.2",
+   "printed": "8",
+   "project": "20%",
+   "model": "0%",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer received dependent care benefits ($1,412.00, line 12) but paid no care expenses and has no qualifying person (line 2 empty), so no credit can be taken; the model left Part II blank (\"Part II skipped because no credit is claimed\"). The project figures every Part II line regardless: line 8 is the decimal for line 7 over $43,000, 20%, and with benefits line 3 is line 31, $0.00 (f2441 p. 1, line 3, \"If you completed Part III, enter the amount from line 31\"), so line 6 (\"Enter the smallest of line 3, 4, or 5\"), line 9c and the credit on line 11 (Schedule 3 line 2) are $0.00, on all of which the model agrees. A blank is not the number zero. No change to the data.",
+   "drop": true
+  },
+  {
+   "case": "classm.f2441.2",
+   "printed": "CLW 1",
+   "project": "$6,185.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer received dependent care benefits ($1,412.00, line 12) but paid no care expenses and has no qualifying person (line 2 empty), so no credit can be taken; the model left Part II blank (\"Part II skipped because no credit is claimed\"). The project figures every Part II line regardless: line CLW 1 is Form 1040 line 18, $6,185.00, and with benefits line 3 is line 31, $0.00 (f2441 p. 1, line 3, \"If you completed Part III, enter the amount from line 31\"), so line 6 (\"Enter the smallest of line 3, 4, or 5\"), line 9c and the credit on line 11 (Schedule 3 line 2) are $0.00, on all of which the model agrees. A blank is not the number zero. No change to the data.",
+   "drop": true
+  },
+  {
+   "case": "classm.f2441.2",
+   "printed": "CLW 3",
+   "project": "$6,185.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer received dependent care benefits ($1,412.00, line 12) but paid no care expenses and has no qualifying person (line 2 empty), so no credit can be taken; the model left Part II blank (\"Part II skipped because no credit is claimed\"). The project figures every Part II line regardless: line CLW 3 is CLW line 1 less a $0.00 CLW line 2, $6,185.00, and with benefits line 3 is line 31, $0.00 (f2441 p. 1, line 3, \"If you completed Part III, enter the amount from line 31\"), so line 6 (\"Enter the smallest of line 3, 4, or 5\"), line 9c and the credit on line 11 (Schedule 3 line 2) are $0.00, on all of which the model agrees. A blank is not the number zero. No change to the data.",
+   "drop": true
+  },
+  {
+   "case": "classm.f2441.3",
+   "printed": "18",
+   "project": "$-103,568.92",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer received no dependent care benefits (f2441.benefits No), and the form sends such a filer to Part II only (f2441 p. 1, Part I, \"Did you receive dependent care benefits? No. Complete only Part II below. Yes. Complete Part III on page 2 next.\"), so the model left Part III blank. The project figures every Part III line regardless; without benefits line 18 is the filer's earned income (-$103,568.92), as on line 4, and nothing in Part III reaches the return: line 3 takes the column (d) total rather than line 31, and line 26 (Form 1040 line 1e) is zero, on which the model agrees. A blank is not the number zero. As the earlier rulings on this line. No change to the data.",
    "drop": true
   },
   {
@@ -77,6 +173,14 @@
   {
    "case": "classm.f2441.4",
    "printed": "19",
+   "project": "$-34,771.14",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer received no dependent care benefits (f2441.benefits No), and the form sends such a filer to Part II only (f2441 p. 1, Part I, \"Did you receive dependent care benefits? No. Complete only Part II below. Yes. Complete Part III on page 2 next.\"), so the model left Part III blank. The project figures every Part III line regardless; without benefits line 19 is the spouse's earned income on this joint return, as on line 5 (-$34,771.14), and nothing in Part III reaches the return: line 3 takes the column (d) total rather than line 31, and line 26 (Form 1040 line 1e) is zero, on which the model agrees. A blank is not the number zero. As the earlier rulings on this line. No change to the data.",
+   "drop": true
+  },
+  {
+   "case": "classm.f2441.4",
+   "printed": "19",
    "project": "$138,217.59",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer received no dependent care benefits (f2441.benefits no), and the form sends such a filer to Part II only (f2441 p. 1, Part I, \"Did you receive dependent care benefits? No. Complete only Part II below. Yes. Complete Part III on page 2 next.\"), so the model left Part III blank. The project figures every Part III line regardless; without benefits line 19 is the spouse's earned income on a joint return and line 18 otherwise, as on line 5, and nothing in Part III reaches the return: line 3 takes the column (d) total rather than line 31, and line 26 (Form 1040 line 1e) is zero, on which the model agrees. A blank is not the number zero. The two independent hand predictions also leave Part III blank on every return without benefits, and on the returns with benefits (S4, S5, S12) give line 19 equal to line 18 when not filing jointly, as the project does. No change to the data.",
@@ -96,6 +200,22 @@
    "project": "$3,000.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer received no dependent care benefits (f2441.benefits no), and the form sends such a filer to Part II only (f2441 p. 1, Part I, \"Did you receive dependent care benefits? No. Complete only Part II below. Yes. Complete Part III on page 2 next.\"), so the model left Part III blank. The project figures every Part III line regardless; without benefits line 29 is line 27 less a zero line 28, and nothing in Part III reaches the return: line 3 takes the column (d) total rather than line 31, and line 26 (Form 1040 line 1e) is zero, on which the model agrees. A blank is not the number zero. The two independent hand predictions also leave Part III blank on every return without benefits, and on the returns with benefits (S4, S5, S12) give line 29 as line 27 less line 28, as the project does. No change to the data.",
+   "drop": true
+  },
+  {
+   "case": "classm.f2441.5",
+   "printed": "18",
+   "project": "$-67,592.70",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer received no dependent care benefits (f2441.benefits No), and the form sends such a filer to Part II only (f2441 p. 1, Part I, \"Did you receive dependent care benefits? No. Complete only Part II below. Yes. Complete Part III on page 2 next.\"), so the model left Part III blank. The project figures every Part III line regardless; without benefits line 18 is the filer's earned income (-$67,592.70), as on line 4, and nothing in Part III reaches the return: line 3 takes the column (d) total rather than line 31, and line 26 (Form 1040 line 1e) is zero, on which the model agrees. A blank is not the number zero. As the earlier rulings on this line. No change to the data.",
+   "drop": true
+  },
+  {
+   "case": "classm.f2441.5",
+   "printed": "19",
+   "project": "$-67,592.70",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer received no dependent care benefits (f2441.benefits No), and the form sends such a filer to Part II only (f2441 p. 1, Part I, \"Did you receive dependent care benefits? No. Complete only Part II below. Yes. Complete Part III on page 2 next.\"), so the model left Part III blank. The project figures every Part III line regardless; without benefits line 19 is line 18 on a return not filed jointly, as on line 5 (-$67,592.70), and nothing in Part III reaches the return: line 3 takes the column (d) total rather than line 31, and line 26 (Form 1040 line 1e) is zero, on which the model agrees. A blank is not the number zero. As the earlier rulings on this line. No change to the data.",
    "drop": true
   },
   {
@@ -128,6 +248,38 @@
    "project": "$0.00",
    "model": "$4,570.00",
    "ruling": "Ruling: model reading error; project retained; model value dropped from the fixture. The filer answered No to paying for care (f2441.care) and each of the six dependents was given as not a qualifying person for Form 2441, yet the model added three dependents' column (d) amounts ($1,480, $1,850 and $1,240), treating them as qualifying under the filer's answer about a qualifying person who is not a dependent. Line 2 lists only qualifying persons (i2441 p. 3, Line 2, \"Don't list a person on line 2 unless they are listed as an eligible person under Qualifying Person(s), earlier\"), so column (d) is empty and line 3 is zero; that answer refuses the form (f2441.nondependent_gate) only when care was paid, which the filer denied. The model's own line 16 is zero, against its line 3, and line 6 and the credit are zero either way (line 4 is zero). No change to the data.",
+   "drop": true
+  },
+  {
+   "case": "classm.f2441.6",
+   "printed": "18",
+   "project": "$45,490.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer received no dependent care benefits (f2441.benefits No), and the form sends such a filer to Part II only (f2441 p. 1, Part I, \"Did you receive dependent care benefits? No. Complete only Part II below. Yes. Complete Part III on page 2 next.\"), so the model left Part III blank. The project figures every Part III line regardless; without benefits line 18 is the filer's earned income ($45,490.00), as on line 4, and nothing in Part III reaches the return: line 3 takes the column (d) total rather than line 31, and line 26 (Form 1040 line 1e) is zero, on which the model agrees. A blank is not the number zero. As the earlier rulings on this line. No change to the data.",
+   "drop": true
+  },
+  {
+   "case": "classm.f2441.6",
+   "printed": "19",
+   "project": "$403,681.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer received no dependent care benefits (f2441.benefits No), and the form sends such a filer to Part II only (f2441 p. 1, Part I, \"Did you receive dependent care benefits? No. Complete only Part II below. Yes. Complete Part III on page 2 next.\"), so the model left Part III blank. The project figures every Part III line regardless; without benefits line 19 is the spouse's earned income on this joint return, as on line 5 ($403,681.00), and nothing in Part III reaches the return: line 3 takes the column (d) total rather than line 31, and line 26 (Form 1040 line 1e) is zero, on which the model agrees. A blank is not the number zero. As the earlier rulings on this line. No change to the data.",
+   "drop": true
+  },
+  {
+   "case": "classm.f2441.6",
+   "printed": "27",
+   "project": "$3,000.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer received no dependent care benefits (f2441.benefits No), and the form sends such a filer to Part II only (f2441 p. 1, Part I, \"Did you receive dependent care benefits? No. Complete only Part II below. Yes. Complete Part III on page 2 next.\"), so the model left Part III blank. The project figures every Part III line regardless; without benefits line 27 is the $3,000 or $6,000 limit ($3,000.00), and nothing in Part III reaches the return: line 3 takes the column (d) total rather than line 31, and line 26 (Form 1040 line 1e) is zero, on which the model agrees. A blank is not the number zero. As the earlier rulings on this line. No change to the data.",
+   "drop": true
+  },
+  {
+   "case": "classm.f2441.6",
+   "printed": "29",
+   "project": "$3,000.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer received no dependent care benefits (f2441.benefits No), and the form sends such a filer to Part II only (f2441 p. 1, Part I, \"Did you receive dependent care benefits? No. Complete only Part II below. Yes. Complete Part III on page 2 next.\"), so the model left Part III blank. The project figures every Part III line regardless; without benefits line 29 is line 27 less a zero line 28 ($3,000.00), and nothing in Part III reaches the return: line 3 takes the column (d) total rather than line 31, and line 26 (Form 1040 line 1e) is zero, on which the model agrees. A blank is not the number zero. As the earlier rulings on this line. No change to the data.",
    "drop": true
   }
  ]

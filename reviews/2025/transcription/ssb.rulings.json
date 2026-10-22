@@ -47,6 +47,12 @@
   {
    "printed": "9",
    "project": "{\"from\": {\"line\": \"7\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"8\"}}",
+   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": false}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": false}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"from\": {\"line\": \"7\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"8\"}}}], \"op\": \"choose\"}",
+   "ruling": "Ruling: equivalent on every return the tool completes; project retained. For a married filer filing separately who lived with the spouse the worksheet says to \"skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16\" (i1040gi p. 32, line 8); the second enters zero on the skipped line 9 and the project figures line 7 less $0, but line 16 takes line 7 times 85% in that case (ssb.line16_together), so no later line reads line 9, and a separate return is refused (scope.ready, s3.mfs). Otherwise both give line 7 less line 8 with zero on the STOP, as ruled before."
+  },
+  {
+   "printed": "9",
+   "project": "{\"from\": {\"line\": \"7\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"8\"}}",
    "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"line\": \"7\"}, {\"line\": \"8\"}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"line\": \"8\"}, {\"line\": \"7\"}], \"test\": \"lt\"}, \"then\": {\"from\": {\"line\": \"7\"}, \"op\": \"subtract\", \"take\": {\"line\": \"8\"}}}], \"op\": \"choose\"}",
    "ruling": "Ruling: equivalent; project retained. As line 7: the second's zero on the STOP branch equals the project's floor at zero."
   },

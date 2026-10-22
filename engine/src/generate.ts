@@ -77,13 +77,46 @@ const BOOL_TRUE_PERCENT: Record<string, number> = {
 };
 const DEFAULT_TRUE_PERCENT = 10;
 
+// Inputs the generator does not draw: each keeps its default (false, zero, the first enum value), so adding them
+// leaves the random stream, and so every earlier generated return, unchanged. Schedule 1 line 1 (no state or local
+// income tax refund and no other recovery); line 8 (gambling, Alaska Permanent Fund dividends, jury duty pay, prizes,
+// hobby income, scholarships and its screen), line 24a and gambling losses on Schedule A line 16.
+const NOT_DRAWN = new Set([
+  "refund.received", "refund.other", "refund.box8", "refund.not_2024", "refund.itemized", "refund.sales",
+  "refund.exc_tax", "refund.exc_who", "refund.line5d_2024", "refund.line5e_2024", "refund.line17_2024",
+  "refund.mfs_spouse_itemized", "refund.you_born", "refund.you_blind", "refund.spouse_born", "refund.spouse_blind",
+  "s1.line8_other", "s1.gambling_winnings", "s1.gambling_pro", "s1.line8g", "s1.line8h", "s1.line8i", "s1.line8j", "s1.line8r",
+  "s1.jury_to_employer", "sa.gambling_losses",
+]);
+
+// Root inputs that draw nothing: they keep their default (false or zero), so the random stream does not
+// depend on them. The IRA deduction's: with no traditional IRA contribution amount, none of them is reached.
+const UNDRAWN = new Set([
+  "person[taxpayer].ira_trad", "person[taxpayer].ira_excess", "person[taxpayer].ira_age50", "person[taxpayer].ira_work_plan",
+  "person[taxpayer].ira_basis", "person[taxpayer].ira_basis_adjusted", "person[taxpayer].ira_dist", "ira.special", "ira.deduct_less",
+]);
+
 // Money inputs the generator models with structure; every other declared
 // money input is rarely nonzero.
+// Money inputs not otherwise modelled that should often be nonzero: the Form 5695 costs, so the parts' caps and
+// limits are reached when a part is answered Yes (applyScreens zeroes them when it is No).
+const EXTRA_NONZERO_PERCENT: Record<string, number> = Object.fromEntries(
+  ["line1", "line2", "line3", "line4", "battery_cost", "line12", "line18a", "line19a", "line19d_i", "line19d_ii", "line19e",
+    "line20a_i", "line20a_ii", "line20a_iii", "line20a_iv", "line20b", "line22a", "line22b", "line23a_i", "line23a_ii", "line23b",
+    "line24a", "line24b", "line25c", "line26b", "line29a", "line29b", "line29c", "line29d", "line29e", "line29f"].map((k) => [`f5695.${k}`, 50]));
+
 const MODELLED = new Set([
   "f1040.line3a", "sb.ordinary_dividends", "qbi.dividends", "sd.distributions", "div.box2b", "div.box2d",
   "sa.line1", "sa.line5a", "sa.line5b", "sa.line8a", "sa.line11", "f4952.line1", "f4952.line4g", "ftc.taxes",
   "s1.uc_paid", "s1.uc_repaid", "person[taxpayer].educator_expenses", `${HSA}.line2`, `${HSA}.line9`, `${HSA}.months_eligible`, `${HSA}.months_family`, "sli.interest",
   "person[taxpayer].sav_roth",
+]);
+
+// Inputs given their "no" or zero answer on every generated return and drawn from no arbitrary, so the random
+// stream is the same as without them: alimony, canceled debt and HSA distributions (Schedule 1 lines 2a, 8c, 8f, 19a).
+const FIXED = new Set([
+  "s1.alimony", "s1.alimony_received", "s1.alimony_paid", "s1.alimony_unsupported", "s1.cod_amount", "s1.cod_unsupported",
+  `${HSA}.line14a`, `${HSA}.rollover`, `${HSA}.medical`, `${HSA}.line17a`, `${HSA}.subject_part`,
 ]);
 
 interface Employer { box1: number; box2pct: number; box7: number; over: number; deferral: number }
@@ -145,6 +178,7 @@ interface Spec {
   extras: Record<string, number>;
   roth: number;
   businesses: Business[]; plan: Plan; spouseBusinesses: Business[]; spousePlan: Plan;
+  oi8z: { kind: string; amount: number }[];
 }
 
 // The Schedule C expense lines the generator fills (Part II), each usually zero.
@@ -253,8 +287,8 @@ function putBusinesses(data: CanonicalData, inputs: Inputs, P: string, list: Bus
 
 export function returnArbitrary(data: CanonicalData): fc.Arbitrary<Inputs> {
   const { roots } = declaredInputs(data);
-  const boolKeys = [...roots].filter(([, l]) => l.type === "Bool").map(([k]) => k);
-  const extraKeys = [...roots].filter(([k, l]) => l.type !== "Bool" && !l.type.startsWith("Enum(") && !MODELLED.has(k)).map(([k]) => k);
+  const boolKeys = [...roots].filter(([k, l]) => l.type === "Bool" && !NOT_DRAWN.has(k) && !FIXED.has(k) && !UNDRAWN.has(k)).map(([k]) => k);
+  const extraKeys = [...roots].filter(([k, l]) => l.type !== "Bool" && !l.type.startsWith("Enum(") && !MODELLED.has(k) && !NOT_DRAWN.has(k) && !FIXED.has(k) && !UNDRAWN.has(k)).map(([k]) => k);
   const employer = fc.record<Employer>({
     box1: money(40_000_000),
     box2pct: fc.integer({ min: 0, max: 30 }),
@@ -355,15 +389,74 @@ export function returnArbitrary(data: CanonicalData): fc.Arbitrary<Inputs> {
     }),
     roth: rareMoney(700_000, 20),
     flags: fc.record(Object.fromEntries(boolKeys.map((k) => [k, rareTrue(BOOL_TRUE_PERCENT[k] ?? DEFAULT_TRUE_PERCENT)]))),
-    extras: fc.record(Object.fromEntries(extraKeys.map((k) => [k, rareMoney(500_000, 2)]))),
+    extras: fc.record(Object.fromEntries(extraKeys.map((k) => [k, rareMoney(500_000, EXTRA_NONZERO_PERCENT[k] ?? 2)]))),
     // About a third of returns have a business; a joint return's spouse sometimes has one as well.
     businesses: fc.oneof({ weight: 6, arbitrary: fc.constant<Business[]>([]) }, { weight: 3, arbitrary: fc.array(businessArbitrary(), { minLength: 1, maxLength: 1 }) },
       { weight: 1, arbitrary: fc.array(businessArbitrary(), { minLength: 2, maxLength: 2 }) }),
     plan: planArbitrary,
     spouseBusinesses: fc.oneof({ weight: 4, arbitrary: fc.constant<Business[]>([]) }, { weight: 1, arbitrary: fc.array(businessArbitrary(), { minLength: 1, maxLength: 1 }) }),
     spousePlan: planArbitrary,
+    // About one return in twelve lists a line 8z item, mostly of the two computed kinds; the rest exercise the refusals.
+    oi8z: fc.oneof({ weight: 11, arbitrary: fc.constant<{ kind: string; amount: number }[]>([]) },
+      { weight: 1, arbitrary: fc.array(fc.record({
+        kind: fc.constantFrom("rtaa", "rtaa", "kickbacks", "kickbacks", "insurance_dividends", "recovery", "other"),
+        amount: money(1_500_000) }), { minLength: 1, maxLength: 2 }) }),
   });
   return spec.map((s) => buildInputs(data, s));
+}
+
+/** A screen and the amounts asked only after it is answered Yes. `entry` matches the collection entry the
+ * screen belongs to (its fields and amounts are relative to that entry), or is null for root screens, whose
+ * amounts are input keys or patterns over input keys. With several screens, the amounts are asked only when
+ * every one is Yes. */
+export interface Screen { entry: RegExp | null; when: string[]; amounts: (string | RegExp)[] }
+
+const F5695_PART1 = ["line1", "line2", "line3", "line4", "battery_cost", "line12"].map((k) => `f5695.${k}`);
+const F5695_SEC_A = ["line18a", "line19a", "line19d_i", "line19d_ii", "line19e", "line20a_i", "line20a_ii", "line20a_iii", "line20a_iv", "line20b"].map((k) => `f5695.${k}`);
+const F5695_SEC_B = ["line22a", "line22b", "line23a_i", "line23a_ii", "line23b", "line24a", "line24b", "line25c", "line29a", "line29b", "line29c", "line29d", "line29e", "line29f"].map((k) => `f5695.${k}`);
+const W2 = /^(?:.*\.)?w2\[[^\]]+\]$/;
+
+/** The screens of the generated return whose No answer skips amounts. The generator draws every amount and then
+ * zeroes those behind a No, so a generated return never answers a screen No while carrying its amounts (the
+ * interview never asks them), while every value drawn is drawn as it would be without the zeroing. */
+export const SCREENS: Screen[] = [
+  { entry: null, when: ["f5695.part1_any"], amounts: F5695_PART1 },
+  { entry: null, when: ["f5695.line5a"], amounts: ["f5695.battery_cost"] },
+  { entry: null, when: ["f5695.part2_any"], amounts: [...F5695_SEC_A, ...F5695_SEC_B, "f5695.line26b"] },
+  { entry: null, when: ["f5695.line17a", "f5695.line17b", "f5695.line17c"], amounts: F5695_SEC_A },
+  { entry: null, when: ["f5695.line21a", "f5695.line21b"], amounts: F5695_SEC_B },
+  { entry: null, when: ["f5695.line25a"], amounts: ["f5695.line25c"] },
+  { entry: null, when: ["f5695.line26a"], amounts: ["f5695.line26b"] },
+  { entry: null, when: ["f2441.care"], amounts: [/^dependent\[[^\]]+\]\.dc_paid$/] },
+  { entry: null, when: ["f2441.benefits"], amounts: ["f2441.line13", "f2441.line14", "f2441.paid_2026", "f2441.plan_max", /\.w2\[[^\]]+\]\.box10(?:_wages)?$/] },
+  { entry: W2, when: ["box12_any"], amounts: ["box12_d", "box12_e", "box12_f", "box12_g", "box12_h", "box12_s", "box12_aa", "box12_bb", "box12_ee", "g_elective"] },
+  { entry: /^retirement\[[^\]]+\]$/, when: ["annuity"], amounts: ["cost", "recovered", "last_line4"] },
+  { entry: /^retirement\[[^\]]+\]$/, when: ["used_last_year"], amounts: ["last_line4"] },
+  { entry: /^.*\.scveh\[[^\]]+\]$/, when: ["owned"], amounts: ["cost", "prior_179", "s179_elect"] },
+  { entry: /^.*\.sc\[[^\]]+\]$/, when: ["hi_uses"], amounts: ["f7206_line1"] },
+];
+
+/** Each screen of `SCREENS` as it applies to one return: its input keys and the keys of its amounts present. */
+export function screenInstances(inputs: Inputs): { screens: string[]; amounts: string[] }[] {
+  const keys = Object.keys(inputs).filter((k) => !k.startsWith("$"));
+  const out: { screens: string[]; amounts: string[] }[] = [];
+  for (const s of SCREENS) {
+    if (!s.entry) {
+      out.push({ screens: s.when, amounts: keys.filter((k) => s.amounts.some((a) => (typeof a === "string" ? a === k : a.test(k)))) });
+      continue;
+    }
+    const entries = new Set(keys.filter((k) => k.endsWith(`.${s.when[0]}`)).map((k) => k.slice(0, -s.when[0]!.length - 1)).filter((p) => s.entry!.test(p)));
+    for (const p of entries) out.push({ screens: s.when.map((f) => `${p}.${f}`), amounts: s.amounts.map((a) => `${p}.${a as string}`).filter((k) => k in inputs) });
+  }
+  return out;
+}
+
+/** Zero the amounts behind every screen answered No. */
+function applyScreens(inputs: Inputs): void {
+  for (const { screens, amounts } of screenInstances(inputs)) {
+    if (screens.every((k) => inputs[k] === true)) continue;
+    for (const k of amounts) inputs[k] = 0;
+  }
 }
 
 /** Form W-2 box 12 for the saver's credit: a code D elective deferral when the employer has one, no other code. */
@@ -421,7 +514,10 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
 
   const interest = investor ? [] : low ? s.interest.map((a) => a % 50_000) : s.interest;
   inputs["$interest"] = interest.map((_, i) => `bank_${String.fromCharCode(97 + i)}`);
-  interest.forEach((a, i) => { inputs[`interest[bank_${String.fromCharCode(97 + i)}].amount`] = a; });
+  interest.forEach((a, i) => {
+    inputs[`interest[bank_${String.fromCharCode(97 + i)}].amount`] = a;
+    inputs[`interest[bank_${String.fromCharCode(97 + i)}].penalty`] = 0;
+  });
 
   const ordinary = investor ? s.ordinary * 4 : low ? 0 : s.ordinary;
   inputs["sb.ordinary_dividends"] = ordinary;
@@ -462,6 +558,8 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
     inputs[`${D}.dc_under13`] = true; inputs[`${D}.dc_incapable`] = d.disabled; inputs[`${D}.dc_paid`] = (d.age * 37_000) % 900_000;
   });
   inputs["$dcprov"] = ["prov_a"];
+  inputs["$oi8z"] = s.oi8z.map((_, i) => `item_${String.fromCharCode(97 + i)}`);
+  s.oi8z.forEach((o, i) => { inputs[`oi8z[item_${String.fromCharCode(97 + i)}].kind`] = o.kind; inputs[`oi8z[item_${String.fromCharCode(97 + i)}].amount`] = o.amount; });
   Object.assign(inputs, { "dcprov[prov_a].tin_kind": "tin", "dcprov[prov_a].household": false, "dcprov[prov_a].paid": 0, "dcprov[prov_a].related": false });
   const HOUSEHOLD_KEYS: Record<string, string> = { taxpayer_tin: "person[taxpayer].tin", taxpayer_work_ssn: "person[taxpayer].work_ssn" };
   for (const [k, v] of Object.entries(s.household)) inputs[HOUSEHOLD_KEYS[k] ?? `household.${k}`] = v;
@@ -533,6 +631,8 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
       [`${P}.educator_expenses`]: sp.educator, [`${P}.eligible_educator`]: sp.eligible,
       [`${P}.sav_born`]: sp.born, [`${P}.sav_student`]: false, [`${P}.sav_claimed`]: false, [`${P}.sav_trad`]: false, [`${P}.sav_able`]: false,
       [`${P}.sav_roth`]: sp.roth, [`${P}.sav_excess`]: false, [`${P}.sav_voluntary`]: 0, [`${P}.sav_prior_joint`]: 0, [`${P}.sav_prior_other`]: 0,
+      [`${P}.ira_trad`]: 0, [`${P}.ira_excess`]: false, [`${P}.ira_age50`]: false, [`${P}.ira_work_plan`]: false, [`${P}.ira_basis`]: 0,
+      [`${P}.ira_basis_adjusted`]: false, [`${P}.ira_dist`]: false,
     });
     if (sp.age65) inputs[`${P}.died_before_65`] = sp.died;
     const keys = sp.employers.map((_, k) => `emp_${String.fromCharCode(97 + k)}`);
@@ -560,12 +660,14 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
       Object.assign(inputs, { [`${H}.line2`]: h.contrib, [`${H}.line9`]: 0, [`${H}.unsupported`]: false, [`${H}.months_eligible`]: h.months,
         [`${H}.months_family`]: family, [`${H}.age55`]: h.age55, [`${H}.last_month`]: false,
         [`${H}.dec_coverage`]: h.months === 12 ? (family === 12 ? "family" : family === 0 ? "self_only" : h.decFamily ? "family" : "self_only") : (h.decFamily && family > 0 ? "family" : "self_only"),
-        [`${H}.allocation`]: h.agreed ? "agreed" : "equal", [`${H}.allocated`]: h.allocated });
+        [`${H}.allocation`]: h.agreed ? "agreed" : "equal", [`${H}.allocated`]: h.allocated,
+        [`${H}.line14a`]: 0, [`${H}.rollover`]: 0, [`${H}.medical`]: 0, [`${H}.line17a`]: false, [`${H}.subject_part`]: 0 });
       // Your own Form 8889 uses the same allocation method; an agreed part is drawn from the same range.
       inputs[`${HSA}.allocation`] = h.agreed ? "agreed" : "equal";
       inputs[`${HSA}.allocated`] = Math.max(0, 855_000 - h.allocated);
     }
   }
+  applyScreens(inputs);
   return inputs;
 }
 

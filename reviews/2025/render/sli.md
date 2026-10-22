@@ -4,13 +4,13 @@ The rendered English of every printed line of `Student Loan Interest Deduction W
 
 | field | value |
 | --- | --- |
-| date | 2026-10-21 |
+| date | 2026-10-22 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 39a17ac76f55996e0b4e32b57ab5a2762789defa2aa28e63bdee7455dc5b3d70 |
-| subject sha256 | 7d5763f1ef4a0d17396f0302da999d2af49b1ef7b7779af0583a91721eb14138 |
+| prompt sha256 | b6d8bb710b67f5296af76c7849ff8e61fc8837977d9e2ebc72cc5cfbe7a82ced |
+| subject sha256 | 45830749bffa8b7df0c0523207e522a36b1f83bfcbd6b48fa5a3ee55b3f2e1df |
 | lines judged | 8 |
-| match / mismatch / unclear / missing | 5 / 3 / 0 / 0 |
+| match / mismatch / unclear / missing | 6 / 2 / 0 / 0 |
 | verdicts for lines not in the form | none |
 
 ## Source pages given to the model
@@ -24,54 +24,50 @@ The rendered English of every printed line of `Student Loan Interest Deduction W
 ### 1 — Enter the total interest you paid in 2025 on qualified student loans (see the instructions
 Status: **MATCH**
 
-Model: The worksheet says to 'Enter the total interest you paid in 2025 on qualified student loans... Don't enter more than $2,500', which is the smaller of interest or $2,500. The refusal matches the Exception: 'Use Pub. 970 instead of the worksheet... if you file Form 2555 or 4563, or you exclude income from sources within Puerto Rico.'
+Model: The IRS line says to enter the total interest paid in 2025 on qualified student loans and "Don't enter more than $2,500", which the restatement takes as the smaller of the two. The refusal correctly sends filers who file Form 2555 or 4563, or who exclude Puerto Rico income, to Pub. 970, as the Exception requires.
 
 ### 2 — Enter the amount from Form 1040 or 1040-SR, line 9
 Status: **MATCH**
 
-Model: The worksheet says 'Enter the amount from Form 1040 or 1040-SR, line 9.'
+Model: The IRS line says "Enter the amount from Form 1040 or 1040-SR, line 9", which is what the restatement does.
 
 ### 3 — Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 25
 Status: **MISMATCH**
 
-Restated: Add s1 line 11, s1 line 13, s1 line 15, s1 line 16, and s1 line 17.
+Restated: Add s1 line 11, s1 line 13, s1 line 15, s1 line 16, s1 line 17, s1 line 18, s1 line 19a, s1 line 20, and s1 line 25.
 
-Model: The IRS says 'Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 25.' The restatement adds only lines 11, 13, 15, 16 and 17, leaving out lines 12, 14, 18, 19, 20, 23 and 25.
+Model: The IRS says "Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 25". The restatement leaves out lines 12 and 14 (both inside "11 through 20") and line 23 (Archer MSA deduction), so line 3 is too small whenever any of those has an amount.
 
-Ruling: scope; project retained. Schedule 1 lines 11, 13, 15, 16 and 17 are the adjustments in scope and the restatement adds them; lines 12, 14, 18 to 20, 23 and 25 are outside this tool: scope.schedule1 refuses 'Any income or adjustment requiring Schedule 1 other than' those in scope (naming alimony and an IRA deduction among others), so within scope they are zero and line 3 is the printed total.
+Ruling: refusal located elsewhere; project retained (as the prior rulings). Schedule 1 lines 12, 14 and 23 are outside this tool: scope.schedule1 asks about "an adjustment on Schedule 1 line 12, 14 or 23" and refuses Form 1040 lines 8 and 10, so worksheet line 2 (Form 1040 line 9) refuses whenever one applies and within scope they are zero. The lines in scope (11, 13, 15 to 20 and 25) are all added. i1040gi, Student Loan Interest Deduction Worksheet, line 3, "Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 25".
 
 ### 4 — Subtract line 3 from line 2
 Status: **MATCH**
 
-Model: The worksheet says 'Subtract line 3 from line 2.'
+Model: The IRS line says "Subtract line 3 from line 2", which is what the restatement does.
 
 ### 5 — Enter the amount shown below for your filing status. Single, head of household, or qualify
 Status: **MISMATCH**
 
 Restated: Choose — [f1040 line Filing Status = 'single' → helper "Year parameter sli.base_other ($85,000)"] [f1040 line Filing Status = 'mfj' → helper "Year parameter sli.base_joint ($170,000)"] [f1040 line Filing Status = 'mfs' → helper "Year parameter sales.zero"] [f1040 line Filing Status = 'hoh' → helper "Year parameter sli.base_other ($85,000)"] [f1040 line Filing Status = 'qss' → helper "Year parameter sli.base_other ($85,000)"]
 
-Model: The worksheet gives $85,000 for single, head of household or qualifying surviving spouse and $170,000 for married filing jointly, and the restatement matches those. It also enters $0 for married filing separately, which lets an MFS filer compute a partial or full deduction. The IRS instead says the deduction applies only if 'Your filing status is any status except married filing separately.'
+Model: The worksheet gives amounts only for "Single, head of household, or qualifying surviving spouse—$85,000" and "Married filing jointly—$170,000", and the instructions allow the deduction only if "Your filing status is any status except married filing separately." The restatement gives married filing separately $0 instead of refusing it or setting the deduction to zero. A married-filing-separately filer with line 4 under $15,000 would then get a deduction above zero.
 
-Ruling: representation; project retained. A married filer filing separately cannot take the deduction, and the project gives zero for that status on Schedule 1 line 21 (sli.eligible tests the filing status and sli.allowed is zero), so the zero on line 5 for that status changes nothing; the line itself is shown only because the project figures every line.
+Ruling: representation; project retained (as the prior rulings). A married filer filing separately cannot take the deduction (i1040gi p. 98, Line 21, "Your filing status is any status except married filing separately"), and the project gives zero for that status on Schedule 1 line 21 (sli.eligible tests the filing status), so the zero on line 5 changes nothing; a separate return is also refused (scope.ready, s3.mfs).
 
 ### 6 — Subtract line 5 from line 4
 Status: **MATCH**
 
-Model: For 'Yes' the worksheet says 'Subtract line 5 from line 4.' For 'No' the IRS skips line 6. The restatement still computes a value in that case, but line 8 is gated on the same test, so the result is unaffected.
+Model: The IRS line says "Subtract line 5 from line 4" when the answer is Yes, and the restatement does that. It also computes line 6 when the answer is No, but line 8 is set to zero in that case, so the result does not change.
 
 ### 8 — Multiply line 1 by line 7
 Status: **MATCH**
 
-Model: The worksheet says 'No. Skip lines 6 and 7, enter -0- on line 8.' For 'Yes' it says divide line 6 by '$15,000 ($30,000 if married filing jointly)', round to at least three places, enter 1.000 if the result is 1.000 or more, then 'Multiply line 1 by line 7.' The restatement follows this.
+Model: This follows the IRS lines 6–8: if No, "enter -0- on line 8"; if Yes, "Divide line 6 by $15,000 ($30,000 if married filing jointly)", round to at least three places, cap at 1.000, and "Multiply line 1 by line 7". Rounding to exactly three places is allowed by "at least three places", and the floor at 0 never applies because line 6 is positive.
 
 ### 9 — Student loan interest deduction. Subtract line 8 from line 1. Enter the result here and on
-Status: **MISMATCH**
+Status: **MATCH**
 
-Restated: Subtract line 8 from line 1. If zero or less, enter -0-.
-
-Model: The arithmetic 'Subtract line 8 from line 1' matches. However, the instructions allow the deduction only if 'You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's... 2025 tax return.' Nothing in the restatement applies this condition, so a filer who is claimed as a dependent would still get a nonzero deduction.
-
-Ruling: representation; restatement accepted. Line 9 is the worksheet's arithmetic, which the restatement gives as printed; the conditions of i1040gi p. 98 ('You can take this deduction only if all of the following apply') are applied after it, on Schedule 1 line 21: sli.eligible requires a status other than married filing separately and sli.claimed false, where sli.claimed asks 'Are you, or your spouse if filing jointly, claimed as a dependent on someone else's ... 2025 tax return?', and sli.allowed enters zero otherwise, which sli.deduction and s1.line21 read. A filer, or a spouse on a joint return, claimed as a dependent gets no deduction.
+Model: The IRS line says "Subtract line 8 from line 1". The added floor at -0- has no effect because line 8 cannot be more than line 1. The married-filing-separately problem is flagged at line 5.
 
 ## Raw response
 
@@ -80,27 +76,27 @@ Ruling: representation; restatement accepted. Line 9 is the worksheet's arithmet
 lines:
   - key: "1"
     status: MATCH
-    reason: "The worksheet says to 'Enter the total interest you paid in 2025 on qualified student loans... Don't enter more than $2,500', which is the smaller of interest or $2,500. The refusal matches the Exception: 'Use Pub. 970 instead of the worksheet... if you file Form 2555 or 4563, or you exclude income from sources within Puerto Rico.'"
+    reason: "The IRS line says to enter the total interest paid in 2025 on qualified student loans and \"Don't enter more than $2,500\", which the restatement takes as the smaller of the two. The refusal correctly sends filers who file Form 2555 or 4563, or who exclude Puerto Rico income, to Pub. 970, as the Exception requires."
   - key: "2"
     status: MATCH
-    reason: "The worksheet says 'Enter the amount from Form 1040 or 1040-SR, line 9.'"
+    reason: "The IRS line says \"Enter the amount from Form 1040 or 1040-SR, line 9\", which is what the restatement does."
   - key: "3"
     status: MISMATCH
-    reason: "The IRS says 'Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 25.' The restatement adds only lines 11, 13, 15, 16 and 17, leaving out lines 12, 14, 18, 19, 20, 23 and 25."
+    reason: "The IRS says \"Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 25\". The restatement leaves out lines 12 and 14 (both inside \"11 through 20\") and line 23 (Archer MSA deduction), so line 3 is too small whenever any of those has an amount."
   - key: "4"
     status: MATCH
-    reason: "The worksheet says 'Subtract line 3 from line 2.'"
+    reason: "The IRS line says \"Subtract line 3 from line 2\", which is what the restatement does."
   - key: "5"
     status: MISMATCH
-    reason: "The worksheet gives $85,000 for single, head of household or qualifying surviving spouse and $170,000 for married filing jointly, and the restatement matches those. It also enters $0 for married filing separately, which lets an MFS filer compute a partial or full deduction. The IRS instead says the deduction applies only if 'Your filing status is any status except married filing separately.'"
+    reason: "The worksheet gives amounts only for \"Single, head of household, or qualifying surviving spouse—$85,000\" and \"Married filing jointly—$170,000\", and the instructions allow the deduction only if \"Your filing status is any status except married filing separately.\" The restatement gives married filing separately $0 instead of refusing it or setting the deduction to zero. A married-filing-separately filer with line 4 under $15,000 would then get a deduction above zero."
   - key: "6"
     status: MATCH
-    reason: "For 'Yes' the worksheet says 'Subtract line 5 from line 4.' For 'No' the IRS skips line 6. The restatement still computes a value in that case, but line 8 is gated on the same test, so the result is unaffected."
+    reason: "The IRS line says \"Subtract line 5 from line 4\" when the answer is Yes, and the restatement does that. It also computes line 6 when the answer is No, but line 8 is set to zero in that case, so the result does not change."
   - key: "8"
     status: MATCH
-    reason: "The worksheet says 'No. Skip lines 6 and 7, enter -0- on line 8.' For 'Yes' it says divide line 6 by '$15,000 ($30,000 if married filing jointly)', round to at least three places, enter 1.000 if the result is 1.000 or more, then 'Multiply line 1 by line 7.' The restatement follows this."
+    reason: "This follows the IRS lines 6–8: if No, \"enter -0- on line 8\"; if Yes, \"Divide line 6 by $15,000 ($30,000 if married filing jointly)\", round to at least three places, cap at 1.000, and \"Multiply line 1 by line 7\". Rounding to exactly three places is allowed by \"at least three places\", and the floor at 0 never applies because line 6 is positive."
   - key: "9"
-    status: MISMATCH
-    reason: "The arithmetic 'Subtract line 8 from line 1' matches. However, the instructions allow the deduction only if 'You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's... 2025 tax return.' Nothing in the restatement applies this condition, so a filer who is claimed as a dependent would still get a nonzero deduction."
+    status: MATCH
+    reason: "The IRS line says \"Subtract line 8 from line 1\". The added floor at -0- has no effect because line 8 cannot be more than line 1. The married-filing-separately problem is flagged at line 5."
 ```
 ```

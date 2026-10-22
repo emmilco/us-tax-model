@@ -1,0 +1,54 @@
+{
+ "kind": "classm",
+ "form": "ira",
+ "rulings": [
+  {
+   "case": "classm.ira.1",
+   "printed": "3",
+   "project": "$32,936.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The project figures line 3 (Form 1040 line 9, $32,936.00) on every return; the model left it blank because no one is covered by a retirement plan (i1040gi p. 97, IRA Deduction Worksheet, \"If you checked 'No' on line 1a (and 'No' on line 1b if married filing jointly), skip lines 2 through 6, enter the applicable amount below on line 7a (and line 7b, if applicable), and go to line 8\"). Line 6 reads line 5 only when lines 2 through 6 are completed (ira.lines2to6), so line 6a is $0.00 in both and the deduction (line 12a, $0.00) agrees. A blank is not the number zero. No change to the data.",
+   "drop": true
+  },
+  {
+   "case": "classm.ira.1",
+   "printed": "5",
+   "project": "$32,936.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The project figures line 5 (line 3 less line 4, $32,936.00 less $0.00) on every return; the model left it blank because no one is covered by a retirement plan (i1040gi p. 97, IRA Deduction Worksheet, \"If you checked 'No' on line 1a (and 'No' on line 1b if married filing jointly), skip lines 2 through 6, enter the applicable amount below on line 7a (and line 7b, if applicable), and go to line 8\"). Line 6 reads line 5 only when lines 2 through 6 are completed (ira.lines2to6), so line 6a is $0.00 in both and the deduction (line 12a, $0.00) agrees. A blank is not the number zero. No change to the data.",
+   "drop": true
+  },
+  {
+   "case": "classm.ira.1",
+   "printed": "7a",
+   "project": "$0.00",
+   "model": "$7,000.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer made no traditional IRA contributions for 2025 (line 11a $0.00, on which the model agrees), and the worksheet is for figuring the deduction for such contributions (i1040gi p. 95, Line 20, \"If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction ... Use the IRA Deduction Worksheet to figure the amount, if any, of your IRA deduction\"); the project shows the printed lines 7a and 7b as $0.00 for a return without traditional contributions (ira.any_trad) and the applicable amount, $7,000, otherwise (person.ira_line7). The model entered the applicable amount by the line 1 instruction (p. 97, \"enter the applicable amount below on line 7a ... $7,000 if under age 50 at the end of 2025\"). Line 12a, the smallest of lines 7a, 10 and 11a, is $0.00 either way, and the model agrees on it. No change to the data.",
+   "drop": true
+  },
+  {
+   "case": "classm.ira.2",
+   "printed": "1b",
+   "project": "no",
+   "model": "yes",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. No one on this joint return made traditional IRA contributions for 2025 (lines 11a and 11b $0.00, on which the model agrees), so the worksheet figures no deduction (i1040gi p. 95, Line 20, \"If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction\"). The project's printed line 1b answers Yes only on a return with traditional contributions (ira.any_trad); it is shown on the values sheet and nothing reads it, the deduction reading each person's coverage (person.ira_cov, Yes for the spouse here). The model answered from the spouse's coverage. Lines 6, 7 and 12 are $0.00 in both. No change to the data.",
+   "drop": true
+  },
+  {
+   "case": "classm.ira.2",
+   "printed": "2a",
+   "project": "$0.00",
+   "model": "$246,000.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. No one on this joint return made traditional IRA contributions for 2025 (lines 11a and 11b $0.00, on which the model agrees; i1040gi p. 95, Line 20, \"If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction\"), and the project shows lines 2 through 6 only when there are traditional contributions and someone is covered (ira.lines2to6), $0.00 otherwise. The model worked the line as if contributions had been made ($246,000 for the person not covered, p. 97, line 2, \"But if you checked 'No' on either line 1a or 1b, enter $246,000 for the person who wasn't covered by a plan\"). Line 6a is $0.00 in both (line 5, $384,470.80, is not less than line 2), as are lines 7a and 12a. No change to the data.",
+   "drop": true
+  },
+  {
+   "case": "classm.ira.2",
+   "printed": "2b",
+   "project": "$0.00",
+   "model": "$146,000.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. No one on this joint return made traditional IRA contributions for 2025 (lines 11a and 11b $0.00, on which the model agrees; i1040gi p. 95, Line 20, \"If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction\"), and the project shows lines 2 through 6 only when there are traditional contributions and someone is covered (ira.lines2to6), $0.00 otherwise. The model worked the line as if contributions had been made ($146,000, p. 97, line 2, \"Married filing jointly, enter $146,000 in both columns\"). Line 6b is $0.00 in both (line 5, $384,470.80, is not less than line 2), as are lines 7b and 12b. No change to the data.",
+   "drop": true
+  }
+ ]
+}

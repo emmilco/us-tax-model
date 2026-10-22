@@ -4,11 +4,11 @@ Second transcription of `Student Loan Interest Deduction Worksheet—Schedule 1,
 
 | field | value |
 | --- | --- |
-| date | 2026-10-21 |
+| date | 2026-10-22 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 0d8ad54da9b865266faa20b74de9ef1277f1b3ec7107273f01abdbdbd38afff2 |
-| subject sha256 | 50b6688fab8e4a18bf23815c6735c14c4bb12a324ba41bcb35704c1f20f2626b |
+| prompt sha256 | 4ba7aa15f66ede9994f45c36c46d6906223df273c128f02daa15a0f90fef6db0 |
+| subject sha256 | ff76da6d126a9abdc6f51becc98940ac3a40b516122237f06b10ea1df0276faf |
 | printed lines compared | 9 |
 | agree / disagree / missing | 4 / 5 / 0 |
 | extra printed lines in second | none |
@@ -36,7 +36,7 @@ Second:
 {"alternatives": [{"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": true}, {"input": "sli.claimed"}], "test": "ne"}], "test": "all"}, "then": {"line": "9"}}, {"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "sli.claimed"}], "test": "eq"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Second transcription's note: The line 21 instructions allow the deduction only if your filing status is not married filing separately and you (or your spouse if filing jointly) are not claimed as a dependent. In those cases the deduction is zero. The modified AGI limit ($100,000, or $200,000 jointly) is not a separate test, because line 7 reaches 1.000 there and line 9 becomes zero.
+Second transcription's note: The instructions allow the deduction only if your filing status is not married filing separately and you (or your spouse if filing jointly) are not claimed as a dependent on someone else's 2025 return; otherwise the deduction is zero. The condition that modified AGI is under $100,000 ($200,000 MFJ) is not coded separately: at those amounts line 7 reaches 1.000, so line 8 equals line 1 and line 9 is zero.
 
 Ruling: equivalent; project retained. The second omits the 'interest more than zero' guard; with no interest line 1 and line 9 are zero, so the value is the same, and the project's guard keeps a filer without student loan interest from being asked whether they are claimed as a dependent. The eligibility tests (not married filing separately, not claimed as a dependent) agree.
 
@@ -67,7 +67,7 @@ Second:
 {"alternatives": [{"guard": {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, "then": {"param": "sli.base_joint"}}, {"guard": {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, "then": {"param": "sli.base_other"}}], "op": "choose"}
 ```
 
-Second transcription's note: The worksheet prints no amount for married filing separately, because that status cannot take the deduction. The 'not mfj' branch uses $85,000 for it. The result does not matter, because sli.deduction is zero for married filing separately.
+Second transcription's note: Open: the line 5 table lists no amount for married filing separately. Chosen: every status other than married filing jointly uses $85,000. A married filing separately filer gets no deduction, which sli.deduction enforces, so this amount does not affect the result for that filer.
 
 Ruling: representation; project retained. The worksheet gives no amount for married filing separately, which cannot take the deduction; the project enters zero there and the second enters $85,000. Neither reaches Schedule 1 line 21: sli.deduction is zero for married filing separately.
 
@@ -86,7 +86,7 @@ Second:
 {"from": {"line": "4"}, "op": "subtract_floor0", "take": {"line": "5"}}
 ```
 
-Second transcription's note: The 'No' branch skips lines 6 and 7 and enters zero on line 8. Here line 6 is floored at zero instead. That gives a ratio of zero and makes line 8 zero, the same result as the printed instruction.
+Second transcription's note: The text says: 'Is the amount on line 4 more than the amount on line 5? No. Skip lines 6 and 7, enter -0- on line 8.' Chosen: line 6 is floored at zero. A zero line 6 makes the prorated line 8 zero, which matches the No branch.
 
 Ruling: equivalent; project retained. Line 6 is used only when line 4 is more than line 5 (line 8 skips it otherwise), where the signed difference and the floored one are the same.
 
@@ -105,7 +105,7 @@ Second:
 {"amount": {"line": "1"}, "op": "prorate", "part": {"line": "6"}, "places": 3, "whole": {"alternatives": [{"guard": {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, "then": {"param": "sli.divisor_joint"}}, {"guard": {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, "then": {"param": "sli.divisor_other"}}], "op": "choose"}}
 ```
 
-Second transcription's note: Line 7 says to round the decimal 'to at least three places'. This uses exactly three places, rounded half-up, per amb.2025.sli_ratio_places. Line 7's own rule, 'if 1.000 or more, enter 1.000', is the ratio cap built into prorate, so line 7 has no separate record.
+Second transcription's note: Line 7 ('Divide line 6 by $15,000 ($30,000 if married filing jointly). Enter the result as a decimal (rounded to at least three places). If the result is 1.000 or more, enter 1.000') is folded into this prorate. Open: 'at least three places' does not fix the number of places. Chosen: exactly three places, rounded half-up.
 
 Ruling: equivalent; project retained. The project skips to zero when line 4 is not more than line 5, as the worksheet says; the second always applies the ratio, which then has a part of zero or less, and prorate keeps the ratio at 0 or more, so it also gives zero (the same argument as the classified mutant on sli.line8).
 
@@ -124,7 +124,7 @@ Second:
 {"from": {"line": "1"}, "op": "subtract", "take": {"line": "8"}}
 ```
 
-Second transcription's note: Under the Exception, a filer with Form 2555 or 4563, or with income excluded from Puerto Rico sources, must use Pub. 970 instead of this worksheet. That case is handled by refusing on the sa.excluded_income screen.
+Second transcription's note: The Exception says to use Pub. 970 instead of this worksheet if you file Form 2555 or 4563, or you exclude income from sources within Puerto Rico. The tool refuses at this line on screening input sa.excluded_income.
 
 Ruling: equivalent; project retained. Line 8 never exceeds line 1: prorate's ratio is at most 1.000 (Lean lemma prorate_le_amount), so the floor at zero never applies.
 
@@ -135,9 +135,6 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 | line | gates listed | not read by the project's line |
 | --- | --- | --- |
 | sli.deduction | sa.excluded_income | - |
-| 3 | scope.schedule1 | scope.schedule1 |
-| 4 | scope.schedule1 | - |
-| 6 | scope.schedule1 | - |
 | 9 | sa.excluded_income | - |
 
 ## Raw second transcription
@@ -147,41 +144,53 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 lines:
   - id: sli.h_max
     printed: "(helper)"
-    label: "Line 1 limit, $2,500"
+    label: "Year parameter sli.max ($2,500)"
     type: NonNegDollars
     expr: {op: param, ref: sli.max}
+
   - id: sli.line1
     printed: "1"
     label: "Enter the total interest you paid in 2025 on qualified student loans (see the instructions for line 21). Don't enter more than $2,500"
     type: NonNegDollars
     expr: {op: smaller_of, of: [sli.interest, sli.h_max]}
+
   - id: sli.line2
     printed: "2"
     label: "Enter the amount from Form 1040 or 1040-SR, line 9"
     type: Dollars
     expr: {op: copy, from: f1040.line9}
+
   - id: sli.line3
     printed: "3"
     label: "Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 25"
     type: NonNegDollars
-    expr: {op: sum, of: [s1.line11, s1.line13, s1.line15, s1.line16, s1.line17]}
-    refuses: [scope.schedule1]
-    note: "Schedule 1 lines 12, 14, 18, 19, 20, 23 and 25 have no line in this tool. They fall under the scope.schedule1 screen, which this line lists under refuses. The sum covers only lines 11, 13, 15, 16 and 17, which this tool computes."
+    expr: {op: sum, of: [s1.line11, s1.line13, s1.line15, s1.line16, s1.line17, s1.line18, s1.line19a, s1.line20, s1.line25]}
+    note: "Open: the text names Schedule 1 lines 11 through 20, 23 and 25, but no ids exist for lines 12, 14 or 23. Chosen: sum the Schedule 1 lines in this range that exist (11, 13, 15, 16, 17, 18, 19a, 20, 25). The lines without ids are treated as outside the tool's scope, which is screened by scope.schedule1."
+
   - id: sli.line4
     printed: "4"
     label: "Subtract line 3 from line 2"
     type: Dollars
     expr: {op: subtract, from: sli.line2, take: sli.line3}
-  - id: sli.h_base_other
+
+  - id: sli.h_mfj
     printed: "(helper)"
-    label: "Line 5 amount: single, head of household, or qualifying surviving spouse, $85,000"
-    type: NonNegDollars
-    expr: {op: param, ref: sli.base_other}
+    label: "Married filing jointly"
+    type: Bool
+    expr: {op: test, eq: [f1040.status, {const: "mfj"}]}
+
   - id: sli.h_base_joint
     printed: "(helper)"
-    label: "Line 5 amount: married filing jointly, $170,000"
+    label: "Year parameter sli.base_joint ($170,000)"
     type: NonNegDollars
     expr: {op: param, ref: sli.base_joint}
+
+  - id: sli.h_base_other
+    printed: "(helper)"
+    label: "Year parameter sli.base_other ($85,000)"
+    type: NonNegDollars
+    expr: {op: param, ref: sli.base_other}
+
   - id: sli.line5
     printed: "5"
     label: "Enter the amount shown below for your filing status. Single, head of household, or qualifying surviving spouse—$85,000. Married filing jointly—$170,000"
@@ -189,65 +198,77 @@ lines:
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, eq: [f1040.status, {const: "mfj"}]}
-          then: sli.h_base_joint
-        - guard: {op: test, ne: [f1040.status, {const: "mfj"}]}
-          then: sli.h_base_other
-    note: "The worksheet prints no amount for married filing separately, because that status cannot take the deduction. The 'not mfj' branch uses $85,000 for it. The result does not matter, because sli.deduction is zero for married filing separately."
+        - {guard: {op: test, eq: [sli.h_mfj, {const: true}]}, then: sli.h_base_joint}
+        - {guard: {op: test, eq: [sli.h_mfj, {const: false}]}, then: sli.h_base_other}
+    note: "Open: the line 5 table lists no amount for married filing separately. Chosen: every status other than married filing jointly uses $85,000. A married filing separately filer gets no deduction, which sli.deduction enforces, so this amount does not affect the result for that filer."
+
   - id: sli.line6
     printed: "6"
-    label: "Is the amount on line 4 more than the amount on line 5? No. Skip lines 6 and 7, enter -0- on line 8, and go to line 9. Yes. Subtract line 5 from line 4"
+    label: "Subtract line 5 from line 4"
     type: NonNegDollars
     expr: {op: subtract_floor0, from: sli.line4, take: sli.line5}
-    note: "The 'No' branch skips lines 6 and 7 and enters zero on line 8. Here line 6 is floored at zero instead. That gives a ratio of zero and makes line 8 zero, the same result as the printed instruction."
-  - id: sli.h_divisor_other
-    printed: "(helper)"
-    label: "Line 7 divisor, $15,000"
-    type: NonNegDollars
-    expr: {op: param, ref: sli.divisor_other}
+    note: "The text says: 'Is the amount on line 4 more than the amount on line 5? No. Skip lines 6 and 7, enter -0- on line 8.' Chosen: line 6 is floored at zero. A zero line 6 makes the prorated line 8 zero, which matches the No branch."
+
   - id: sli.h_divisor_joint
     printed: "(helper)"
-    label: "Line 7 divisor, $30,000 if married filing jointly"
+    label: "Year parameter sli.divisor_joint ($30,000)"
     type: NonNegDollars
     expr: {op: param, ref: sli.divisor_joint}
+
+  - id: sli.h_divisor_other
+    printed: "(helper)"
+    label: "Year parameter sli.divisor_other ($15,000)"
+    type: NonNegDollars
+    expr: {op: param, ref: sli.divisor_other}
+
   - id: sli.h_divisor
     printed: "(helper)"
-    label: "Divide line 6 by $15,000 ($30,000 if married filing jointly)"
+    label: "Line 7 divisor: $15,000 ($30,000 if married filing jointly)"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, eq: [f1040.status, {const: "mfj"}]}
-          then: sli.h_divisor_joint
-        - guard: {op: test, ne: [f1040.status, {const: "mfj"}]}
-          then: sli.h_divisor_other
+        - {guard: {op: test, eq: [sli.h_mfj, {const: true}]}, then: sli.h_divisor_joint}
+        - {guard: {op: test, eq: [sli.h_mfj, {const: false}]}, then: sli.h_divisor_other}
+
   - id: sli.line8
     printed: "8"
     label: "Multiply line 1 by line 7"
     type: NonNegDollars
     expr: {op: prorate, amount: sli.line1, part: sli.line6, whole: sli.h_divisor, places: 3}
-    note: "Line 7 says to round the decimal 'to at least three places'. This uses exactly three places, rounded half-up, per amb.2025.sli_ratio_places. Line 7's own rule, 'if 1.000 or more, enter 1.000', is the ratio cap built into prorate, so line 7 has no separate record."
+    ambiguity: amb.2025.sli_ratio_places
+    note: "Line 7 ('Divide line 6 by $15,000 ($30,000 if married filing jointly). Enter the result as a decimal (rounded to at least three places). If the result is 1.000 or more, enter 1.000') is folded into this prorate. Open: 'at least three places' does not fix the number of places. Chosen: exactly three places, rounded half-up."
+
   - id: sli.line9
     printed: "9"
     label: "Student loan interest deduction. Subtract line 8 from line 1. Enter the result here and on Schedule 1, line 21"
     type: NonNegDollars
     expr: {op: subtract, from: sli.line1, take: sli.line8}
     refuses: [sa.excluded_income]
-    note: "Under the Exception, a filer with Form 2555 or 4563, or with income excluded from Puerto Rico sources, must use Pub. 970 instead of this worksheet. That case is handled by refusing on the sa.excluded_income screen."
-  - id: sli.h_zero
+    note: "The Exception says to use Pub. 970 instead of this worksheet if you file Form 2555 or 4563, or you exclude income from sources within Puerto Rico. The tool refuses at this line on screening input sa.excluded_income."
+
+  - id: sli.h_mfs
     printed: "(helper)"
-    label: "No deduction"
-    type: NonNegDollars
-    expr: {op: param, ref: sales.zero}
-  - id: sli.h_disallowed
+    label: "Married filing separately"
+    type: Bool
+    expr: {op: test, eq: [f1040.status, {const: "mfs"}]}
+
+  - id: sli.h_ineligible
     printed: "(helper)"
-    label: "Deduction not allowed: filing status is married filing separately, or you (or your spouse if filing jointly) are claimed as a dependent on someone else's 2025 return"
+    label: "Married filing separately, or you (or your spouse if filing jointly) are claimed as a dependent on someone else's 2025 return"
     type: Bool
     expr:
       op: test
       any:
-        - {op: test, eq: [f1040.status, {const: "mfs"}]}
+        - {op: test, eq: [sli.h_mfs, {const: true}]}
         - {op: test, eq: [sli.claimed, {const: true}]}
+
+  - id: sli.h_zero
+    printed: "(helper)"
+    label: "Year parameter sales.zero"
+    type: NonNegDollars
+    expr: {op: param, ref: sales.zero}
+
   - id: sli.deduction
     printed: "(helper)"
     label: "Student loan interest deduction (Schedule 1, line 21)"
@@ -255,10 +276,8 @@ lines:
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, eq: [sli.h_disallowed, {const: true}]}
-          then: sli.h_zero
-        - guard: {op: test, eq: [sli.h_disallowed, {const: false}]}
-          then: sli.line9
-    note: "The line 21 instructions allow the deduction only if your filing status is not married filing separately and you (or your spouse if filing jointly) are not claimed as a dependent. In those cases the deduction is zero. The modified AGI limit ($100,000, or $200,000 jointly) is not a separate test, because line 7 reaches 1.000 there and line 9 becomes zero."
+        - {guard: {op: test, eq: [sli.h_ineligible, {const: true}]}, then: sli.h_zero}
+        - {guard: {op: test, eq: [sli.h_ineligible, {const: false}]}, then: sli.line9}
+    note: "The instructions allow the deduction only if your filing status is not married filing separately and you (or your spouse if filing jointly) are not claimed as a dependent on someone else's 2025 return; otherwise the deduction is zero. The condition that modified AGI is under $100,000 ($200,000 MFJ) is not coded separately: at those amounts line 7 reaches 1.000, so line 8 equals line 1 and line 9 is zero."
 ```
 ```

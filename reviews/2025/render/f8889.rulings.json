@@ -15,6 +15,12 @@
    "ruling": "Ruling: representation; project retained. Line 13 chooses the helper f8889.line13_figured, whose citation is the Line 13 instructions (i8889 p. 7: 'Generally, enter the smaller of line 2 or line 12 on line 13 and on Schedule 1 (Form 1040), Part II, line 13'); the excerpt given for this printed line carried only the form's own citation."
   },
   {
+   "printed": "15",
+   "restated": "Choose — [helper \"Any HSA distributions in 2025\" = true → helper \"Qualified medical expenses paid using HSA distributions\"] [helper \"Any HSA distributions in 2025\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The input limits expenses to 'you, your spouse and your dependents', but the line 15 instructions also include '3. Any person who would be a dependent except that: a. The person filed a joint return. b. The person had gross income. c. You, or your spouse if filing jointly, are dependents of someone else.' A filer following the restatement could leave those expenses off line 15.",
+   "ruling": "Ruling: second construction right (fixed: BUG-0085, the f8889.medical question now names the would-be dependents and the divorced-parents rule). The question for f8889.medical names expenses \"of you, your spouse and your dependents\", but line 15 also takes the expenses of \"3. Any person who would be a dependent except that: a. The person filed a joint return. b. The person had gross income. c. You, or your spouse if filing jointly, are dependents of someone else\" (i8889 p. 8, Line 15), and the p. 9 TIP treats a child of divorced or separated parents as the dependent of both; a filer answering the question as worded can leave those expenses off line 15 and overstate line 16 and the 20% tax."
+  },
+  {
    "printed": "4",
    "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
    "model": "The program enters $0, and its refusal covers only Archer MSA contributions 'by you or your employer.' The form also says: 'If you or your spouse had family coverage under an HDHP at any time during 2025, also include any amount contributed to your spouse's Archer MSAs.' No refusal names that case.",
@@ -23,8 +29,20 @@
   {
    "printed": "7",
    "restated": "Choose — [helper \"Age 55 or older at the end of 2025, married, and treated as having family coverage at any time during 2025\" = true → helper \"Additional Contribution Amount Worksheet, line 2: divide line 1 by 12\"] [helper \"Age 55 or older at the end of 2025, married, and treated as having family coverage at any time during 2025\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The program multiplies $1,000 by every eligible month. The instructions count only months that meet both conditions, the first being 'You or your spouse had family coverage under an HDHP and were, or were considered to be, an eligible individual on the first day of the month', with the tip 'If items (1) and (2) apply to all months during 2025, enter $1,000'. The result differs when some eligible months had only self-only coverage.",
+   "ruling": "Ruling: reading recorded (amb.2025.hsa_line7_months, owner accepted after Stage 13); project retained. The register entry takes every eligible month, because line 3 leaves out the additional contribution amount for every month once a married filer had family coverage at any time (i8889 p. 5, Note, \"the additional contribution amount is figured on line 7 and is not included on line 3\"), so counting only family months would drop it for the self-only months altogether, and \"If items (1) and (2) apply to all months during 2025, enter $1,000\" (p. 7). The tension the model names is the one the register records."
+  },
+  {
+   "printed": "7",
+   "restated": "Choose — [helper \"Age 55 or older at the end of 2025, married, and treated as having family coverage at any time during 2025\" = true → helper \"Additional Contribution Amount Worksheet, line 2: divide line 1 by 12\"] [helper \"Age 55 or older at the end of 2025, married, and treated as having family coverage at any time during 2025\" = false → helper \"Year parameter sales.zero\"]",
    "model": "The worksheet counts months in which 'You or your spouse had family coverage under an HDHP and were, or were considered to be, an eligible individual on the first day of the month.' The program counts every eligible month, including self-only months. The Note says the additional amount 'is figured on line 7 and is not included on line 3' for married filers with family coverage. The text does not settle how self-only months are counted.",
    "ruling": "Ruling: genuine ambiguity (amb.2025.hsa_line7_months); project retained pending the owner (TASKS.md T-038). The register entry gives the reading: every eligible month counts, because line 3 leaves out the additional contribution amount for every month once a married filer had family coverage at any time (i8889 p. 5, Note), and 'If items (1) and (2) apply to all months during 2025, enter $1,000' (p. 7)."
+  },
+  {
+   "printed": "7",
+   "restated": "Choose — [helper \"Age 55 or older at the end of 2025, married, and treated as having family coverage at any time during 2025\" = true → helper \"Additional Contribution Amount Worksheet, line 2: divide line 1 by 12\"] [helper \"Age 55 or older at the end of 2025, married, and treated as having family coverage at any time during 2025\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The worksheet counts only months in which 'You or your spouse had family coverage under an HDHP and were, or were considered to be, an eligible individual on the first day of the month', but the program multiplies $1,000 by all eligible months, self-only months included. The line 3 note ('the additional contribution amount is figured on line 7 and is not included on line 3') is in tension with that worksheet wording.",
+   "ruling": "Ruling: reading recorded (amb.2025.hsa_line7_months, owner accepted after Stage 13); project retained. The register entry takes every eligible month, because line 3 leaves out the additional contribution amount for every month once a married filer had family coverage at any time (i8889 p. 5, Note, \"the additional contribution amount is figured on line 7 and is not included on line 3\"), so counting only family months would drop it for the self-only months altogether, and \"If items (1) and (2) apply to all months during 2025, enter $1,000\" (p. 7). The tension the model names is the one the register records."
   }
  ]
 }

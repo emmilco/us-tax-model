@@ -412,10 +412,9 @@
   {
    "id": "ira_deduction",
    "group": "schedule1_misc",
-   "gates": [
-    "scope.schedule1"
-   ],
-   "label": "IRA deduction",
+   "gates": [],
+   "refused": false,
+   "label": "IRA deduction (supported since Stage 16; its remaining refusals are unmeasured gates)",
    "micro": {
     "positive": [
      "traditional_ira_deduction"
@@ -435,10 +434,9 @@
   {
    "id": "state_refund",
    "group": "schedule1_misc",
-   "gates": [
-    "scope.schedule1"
-   ],
-   "label": "Taxable state or local income tax refund",
+   "gates": [],
+   "refused": false,
+   "label": "Taxable state or local income tax refund (supported since Stage 16; its remaining refusals are unmeasured gates)",
    "micro": {
     "positive": [
      "salt_refund_income"
@@ -458,10 +456,9 @@
   {
    "id": "alimony_received",
    "group": "schedule1_misc",
-   "gates": [
-    "scope.schedule1"
-   ],
-   "label": "Alimony received",
+   "gates": [],
+   "refused": false,
+   "label": "Alimony received (supported since Stage 16; its remaining refusals are unmeasured gates)",
    "micro": {
     "positive": [
      "alimony_income"
@@ -481,10 +478,9 @@
   {
    "id": "alimony_paid",
    "group": "schedule1_misc",
-   "gates": [
-    "scope.schedule1"
-   ],
-   "label": "Alimony paid",
+   "gates": [],
+   "refused": false,
+   "label": "Alimony paid (supported since Stage 16; its remaining refusals are unmeasured gates)",
    "micro": {
     "positive": [
      "alimony_expense"
@@ -527,15 +523,15 @@
       "header": "Net loss"
      }
     ]
-   }
+   },
+   "note": "Stage 16 computes part of it (Schedule 1 lines 8b, 8c, 8f, 8g to 8j, 8r and a closed list for 8z); the IRS count does not say which lines it holds, so the category stays refused and its gain is not measured."
   },
   {
    "id": "gambling",
    "group": "schedule1_misc",
-   "gates": [
-    "scope.schedule1"
-   ],
-   "label": "Gambling winnings",
+   "gates": [],
+   "refused": false,
+   "label": "Gambling winnings (supported since Stage 16; its remaining refusals are unmeasured gates)",
    "irs": {
     "combine": "sum",
     "cells": [
@@ -568,10 +564,9 @@
   {
    "id": "cancellation_of_debt",
    "group": "schedule1_misc",
-   "gates": [
-    "scope.schedule1"
-   ],
-   "label": "Cancellation of debt",
+   "gates": [],
+   "refused": false,
+   "label": "Cancellation of debt (supported since Stage 16; its remaining refusals are unmeasured gates)",
    "irs": {
     "combine": "sum",
     "cells": [
@@ -609,10 +604,9 @@
   {
    "id": "hsa_distribution",
    "group": "schedule1_misc",
-   "gates": [
-    "f8889.unsupported"
-   ],
-   "label": "Taxable HSA distributions",
+   "gates": [],
+   "refused": false,
+   "label": "Taxable HSA distributions (supported since Stage 16; its remaining refusals are unmeasured gates)",
    "irs": {
     "combine": "sum",
     "cells": [
@@ -627,10 +621,9 @@
   {
    "id": "early_withdrawal",
    "group": "schedule1_misc",
-   "gates": [
-    "scope.schedule1"
-   ],
-   "label": "Penalty on early withdrawal of savings",
+   "gates": [],
+   "refused": false,
+   "label": "Penalty on early withdrawal of savings (supported since Stage 16; its remaining refusals are unmeasured gates)",
    "irs": {
     "combine": "sum",
     "cells": [
